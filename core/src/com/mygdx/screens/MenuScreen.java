@@ -67,7 +67,6 @@ public class MenuScreen implements Screen {
 				// TODO Auto-generated method stub
 				System.out.println("asdf");
 				game.setScreen(new GameScreen(game));
-				
 				return true;
 			}
 			
