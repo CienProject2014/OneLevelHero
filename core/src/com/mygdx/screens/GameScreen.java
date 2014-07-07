@@ -1,15 +1,8 @@
-package com.mygdx.game.screens;
-
+package com.mygdx.screens;
 import com.badlogic.gdx.Screen;
-import com.mygdx.game.OneLevelHero;
 
 public class GameScreen implements Screen {
-	OneLevelHero game;
-	
-	GameScreen(OneLevelHero game){
-		this.game = game;
-	}
-	
+
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
