@@ -1,3 +1,3 @@
-Class OptionScreeen{
+Class OptionScreeen extends Screen{
 
 }
