@@ -1,7 +1,12 @@
 package com.mygdx.screens;
 import com.badlogic.gdx.Screen;
+import com.mygdx.game.OneLevelHero;
 
 public class GameScreen implements Screen {
+
+	public GameScreen(OneLevelHero game) {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void render(float delta) {

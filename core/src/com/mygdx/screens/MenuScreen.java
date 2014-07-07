@@ -15,7 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.*;
-import com.mygdx.game.screens.GameScreen;
+import com.mygdx.screens.GameScreen;
+import com.mygdx.screens.GameScreen;
 
 public class MenuScreen implements Screen {
 
