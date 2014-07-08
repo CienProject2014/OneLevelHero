@@ -8,9 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -54,24 +51,47 @@ public class MenuScreen implements Screen {
 		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		Skin skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		Table table = new Table(Assets.skin);
 		
-		startButton = new TextButton("New Game", skin);
-		optionsButton = new TextButton("Options", skin);
-		exitButton = new TextButton("Exit", skin);
+		startButton = new TextButton("New Game", Assets.skin);
+		optionsButton = new TextButton("Options", Assets.skin);
+		exitButton = new TextButton("Exit", Assets.skin);
 		
 		startButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				// TODO Auto-generated method stub
-				game.setScreen(new GameScreen(game));
-				
+				// TODO Auto-generated method stub				
 				return true;
 			}
-			
+			@Override
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				game.setScreen(new GameScreen(game));
+			}
+		});
+		optionsButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub				
+				return true;
+			}
+			@Override
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				game.setScreen(new OptionScreen(game));
+			}
+		});
+		exitButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub				
+				return true;
+			}
+			@Override
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				Gdx.app.exit();
+			}
 		});
 		
 		table.setFillParent(true);
