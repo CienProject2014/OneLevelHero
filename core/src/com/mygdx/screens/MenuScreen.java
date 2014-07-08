@@ -40,7 +40,7 @@ public class MenuScreen implements Screen {
 		System.out.println("Menu");
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		//stage.draw();
+		stage.draw();
 	}
 
 	@Override
@@ -54,12 +54,12 @@ public class MenuScreen implements Screen {
 		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		
+		Skin skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		Table table = new Table(Assets.skin);
 		
-		startButton = new TextButton("New Game", Assets.skin);
-		optionsButton = new TextButton("Options", Assets.skin);
-		exitButton = new TextButton("Exit", Assets.skin);
+		startButton = new TextButton("New Game", skin);
+		optionsButton = new TextButton("Options", skin);
+		exitButton = new TextButton("Exit", skin);
 		
 		startButton.addListener(new InputListener() {
 
