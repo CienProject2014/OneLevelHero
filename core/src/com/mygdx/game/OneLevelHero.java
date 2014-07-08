@@ -16,6 +16,7 @@ public class OneLevelHero extends Game {
 	public void create () {
 		/*batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");*/
+		//Assets.load();
 		setScreen(new MenuScreen(this));
 	}
 
