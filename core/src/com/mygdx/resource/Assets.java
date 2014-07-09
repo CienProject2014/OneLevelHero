@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.resource;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;

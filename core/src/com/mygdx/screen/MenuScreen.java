@@ -1,4 +1,4 @@
-package com.mygdx.screens;
+package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -13,9 +13,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.mygdx.game.Assets;
 import com.mygdx.game.OneLevelHero;
-import com.mygdx.screens.GameScreen;
+import com.mygdx.resource.Assets;
+import com.mygdx.screen.GameScreen;
+import com.mygdx.screen.OptionScreen;
+import com.mygdx.screen.CreditScreen;
 
 public class MenuScreen implements Screen {
 
@@ -23,6 +25,7 @@ public class MenuScreen implements Screen {
 	Stage stage;
 	TextButton startButton;
 	TextButton optionsButton;
+	TextButton creditButton;
 	TextButton exitButton;
 	TextButtonStyle textButtonStyle;
 	BitmapFont font;
@@ -55,6 +58,7 @@ public class MenuScreen implements Screen {
 		
 		startButton = new TextButton("New Game", Assets.skin);
 		optionsButton = new TextButton("Options", Assets.skin);
+		creditButton = new TextButton("Credit", Assets.skin);
 		exitButton = new TextButton("Exit", Assets.skin);
 		
 		startButton.addListener(new InputListener() {
@@ -66,6 +70,7 @@ public class MenuScreen implements Screen {
 			}
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				dispose();
 				game.setScreen(new GameScreen(game));
 			}
 		});
@@ -79,6 +84,18 @@ public class MenuScreen implements Screen {
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 				game.setScreen(new OptionScreen(game));
+			}
+		});
+		creditButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub				
+				return true;
+			}
+			@Override
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				game.setScreen(new CreditScreen(game));
 			}
 		});
 		exitButton.addListener(new InputListener() {
@@ -96,11 +113,11 @@ public class MenuScreen implements Screen {
 		
 		table.setFillParent(true);
 //		table.debug(); 
-		table.add(startButton).width(150).height(50);
+		table.add(startButton).expand().width(150).height(50).top().left();
+		table.add(optionsButton).width(150).height(50).top().right();
 		table.row();
-		table.add(optionsButton).width(150).height(50).padTop(10);
-		table.row();
-		table.add(exitButton).width(150).height(50).padTop(10);
+		table.add(creditButton).width(150).height(50).bottom().left();
+		table.add(exitButton).width(150).height(50).bottom().right();
 		
 		stage.addActor(table);
 	}
