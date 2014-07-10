@@ -54,12 +54,12 @@ public class MenuScreen implements Screen {
 		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		Skin skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-		Table table = new Table(Assets.skin);
+		//Skin skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		Table table = new Table();
 		
-		startButton = new TextButton("New Game", skin);
-		optionsButton = new TextButton("Options", skin);
-		exitButton = new TextButton("Exit", skin);
+		startButton = new TextButton("New Game", Assets.skin);
+		optionsButton = new TextButton("Options", Assets.skin);
+		exitButton = new TextButton("Exit", Assets.skin);
 		
 		startButton.addListener(new InputListener() {
 
@@ -67,8 +67,9 @@ public class MenuScreen implements Screen {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 				// TODO Auto-generated method stub
-				game.setScreen(new GameScreen(game));
-				
+				//game.setScreen(new GameScreen(game));
+				System.out.println("Start Game");
+				startButton.setText("Game Started");
 				return true;
 			}
 			
@@ -78,7 +79,7 @@ public class MenuScreen implements Screen {
 //		table.debug(); 
 		table.add(startButton).width(150).height(50);
 		table.row();
-		table.add(optionsButton).width(150).height(50).padTop(10);
+		table.add(optionsButton).width(150).height(50).padTop(20);
 		table.row();
 		table.add(exitButton).width(150).height(50).padTop(10);
 		
