@@ -13,6 +13,7 @@ import com.mygdx.resource.Assets;
 public class GameScreen implements Screen {
 	OneLevelHero game;
 	Stage stage;
+	TextButton newstartButton;
 	TextButton backButton;
 	
 	public GameScreen(OneLevelHero game) {
@@ -43,6 +44,7 @@ public class GameScreen implements Screen {
 		Table table = new Table(Assets.skin);
 		
 		backButton = new TextButton("Back", Assets.skin);
+		newstartButton = new TextButton("NewStart", Assets.skin);
 		
 		backButton.addListener(new InputListener() {
 			@Override
@@ -56,10 +58,23 @@ public class GameScreen implements Screen {
 				game.setScreen(new MenuScreen(game));
 			}
 		});
+		newstartButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub				
+				return true;
+			}
+			@Override
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				game.setScreen(new PrologueScreen(game));
+			}
+		});
 		
 		table.setFillParent(true);
-		table.add(backButton).expandX().padLeft(10);
-		table.left().bottom();
+		table.add(newstartButton).expand();
+		table.row();
+		table.add(backButton).bottom();
 		
 		stage.addActor(table);
 		//stage.addActor(backButton);

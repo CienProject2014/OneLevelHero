@@ -7,6 +7,9 @@ import com.mygdx.game.OneLevelHero;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		// 나중에 수정 요망
+		config.width = 960;
+		config.height = 540;
 		new LwjglApplication(new OneLevelHero(), config);
 	}
 }
