@@ -113,11 +113,11 @@ public class MenuScreen implements Screen {
 		
 		table.setFillParent(true);
 //		table.debug(); 
-		table.add(startButton).expand().width(150).height(50).top().left();
-		table.add(optionsButton).width(150).height(50).top().right();
+		table.add(startButton).expand().width(240).height(240).top().left();
+		table.add(optionsButton).width(240).height(240).top().right();
 		table.row();
-		table.add(creditButton).width(150).height(50).bottom().left();
-		table.add(exitButton).width(150).height(50).bottom().right();
+		table.add(creditButton).width(240).height(240).bottom().left();
+		table.add(exitButton).width(240).height(240).bottom().right();
 		
 		stage.addActor(table);
 	}
