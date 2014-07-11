@@ -1,26 +1,17 @@
 package com.mygdx.screen;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
-import com.mygdx.resource.Scripts;
-import com.mygdx.screen.GameScreen;
 import com.mygdx.screen.OptionScreen;
 import com.mygdx.screen.CreditScreen;
 
@@ -32,10 +23,8 @@ public class MenuScreen implements Screen {
 	TextButton optionsButton;
 	TextButton creditButton;
 	TextButton exitButton;
-	ImageButton imageButton;
 	TextButtonStyle textButtonStyle;
 	BitmapFont font;
-	PrologueScreen ps;
 	
 	public MenuScreen(OneLevelHero game) {
 		this.game = game;
@@ -63,13 +52,10 @@ public class MenuScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 		Table table = new Table(Assets.skin);
 		
-		Assets.buttonload();
-		
 		startButton = new TextButton("새로운 시작", Assets.skin);
 		optionsButton = new TextButton("옵션", Assets.skin);
 		creditButton = new TextButton("크레딧", Assets.skin);
 		exitButton = new TextButton("종료", Assets.skin);
-		imageButton = new ImageButton(Assets.ibuttond, Assets.ibuttonu);
 		
 		startButton.addListener(new InputListener() {
 			@Override
@@ -129,7 +115,6 @@ public class MenuScreen implements Screen {
 		table.add(creditButton).width(240).height(240).bottom().left();
 		table.add(exitButton).width(240).height(240).bottom().right();
 		table.row();
-		table.add(imageButton).width(240);
 		
 		
 		
