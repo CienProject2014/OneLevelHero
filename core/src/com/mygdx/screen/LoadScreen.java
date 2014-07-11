@@ -3,40 +3,31 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
-import com.mygdx.screen.GameScreen;
-import com.mygdx.screen.OptionScreen;
-import com.mygdx.screen.CreditScreen;
 
-public class MenuScreen implements Screen {
-
+public class LoadScreen implements Screen{
 	OneLevelHero game;
 	Stage stage;
-	TextButton startButton;
-	TextButton optionsButton;
-	TextButton creditButton;
-	TextButton exitButton;
-	TextButtonStyle textButtonStyle;
-	BitmapFont font;
+	TextButton newstartButton;
+	TextButton backButton;
 	
-	public MenuScreen(OneLevelHero game) {
+	public LoadScreen(OneLevelHero game) {
+		// TODO Auto-generated constructor stub
 		this.game = game;
 	}
 
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-		System.out.println("Menu");
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		System.out.println("Game");
 		stage.draw();
 	}
 
@@ -51,27 +42,27 @@ public class MenuScreen implements Screen {
 		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
+
 		Table table = new Table(Assets.skin);
 		
-		startButton = new TextButton("New Game", Assets.skin);
-		optionsButton = new TextButton("Options", Assets.skin);
-		creditButton = new TextButton("Credit", Assets.skin);
-		exitButton = new TextButton("Exit", Assets.skin);
+		backButton = new TextButton("Back", Assets.skin);
 		
-		startButton.addListener(new InputListener() {
+		newstartButton = new TextButton("NewStart", Assets.skin);
+		
+		backButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
+
 				// TODO Auto-generated method stub				
 				return true;
 			}
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				dispose();
-				game.setScreen(new GameScreen(game));
+				game.setScreen(new MenuScreen(game));
 			}
 		});
-		optionsButton.addListener(new InputListener() {
+		newstartButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -80,43 +71,17 @@ public class MenuScreen implements Screen {
 			}
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new OptionScreen(game));
-			}
-		});
-		creditButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub				
-				return true;
-			}
-			@Override
-			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new CreditScreen(game));
-			}
-		});
-		exitButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub				
-				return true;
-			}
-			@Override
-			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				Gdx.app.exit();
+				game.setScreen(new PrologueScreen(game));
 			}
 		});
 		
 		table.setFillParent(true);
-//		table.debug(); 
-		table.add(startButton).expand().width(240).height(240).top().left();
-		table.add(optionsButton).width(240).height(240).top().right();
+		table.add(newstartButton).expand();
 		table.row();
-		table.add(creditButton).width(240).height(240).bottom().left();
-		table.add(exitButton).width(240).height(240).bottom().right();
+		table.add(backButton).bottom();
 		
 		stage.addActor(table);
+		//stage.addActor(backButton);
 	}
 
 	@Override
@@ -142,5 +107,6 @@ public class MenuScreen implements Screen {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+
 }
