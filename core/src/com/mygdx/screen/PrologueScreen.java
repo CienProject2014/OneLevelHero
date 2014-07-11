@@ -82,7 +82,7 @@ public class PrologueScreen implements Screen{
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				stage.addActor(image[4]);
+				game.setScreen(new GameScreen(game));
 				return true;
 			}
 		});
