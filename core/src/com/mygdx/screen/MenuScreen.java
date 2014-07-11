@@ -3,8 +3,6 @@ package com.mygdx.screen;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.json.simple.parser.ParseException;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -74,7 +72,7 @@ public class MenuScreen implements Screen {
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 				dispose();
-				game.setScreen(new LoadScreen(game));
+				game.setScreen(new GameScreen(game));
 			}
 		});
 		optionsButton.addListener(new InputListener() {
