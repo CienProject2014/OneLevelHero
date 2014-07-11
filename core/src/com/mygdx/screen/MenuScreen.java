@@ -1,5 +1,10 @@
 package com.mygdx.screen;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.json.simple.parser.ParseException;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.resource.Scripts;
 import com.mygdx.screen.GameScreen;
 import com.mygdx.screen.OptionScreen;
 import com.mygdx.screen.CreditScreen;
@@ -34,7 +40,7 @@ public class MenuScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-		System.out.println("Menu");
+		//System.out.println("Menu");
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.draw();
@@ -53,10 +59,10 @@ public class MenuScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 		Table table = new Table(Assets.skin);
 		
-		startButton = new TextButton("New Game", Assets.skin);
-		optionsButton = new TextButton("Options", Assets.skin);
-		creditButton = new TextButton("Credit", Assets.skin);
-		exitButton = new TextButton("Exit", Assets.skin);
+		startButton = new TextButton("새로운 시작", Assets.skin);
+		optionsButton = new TextButton("옵션", Assets.skin);
+		creditButton = new TextButton("크레딧", Assets.skin);
+		exitButton = new TextButton("종료", Assets.skin);
 		
 		startButton.addListener(new InputListener() {
 			@Override
