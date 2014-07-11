@@ -147,9 +147,9 @@ public class GameScreen implements Screen {
 		table.add(inventoryButton).width(240).height(50).top();
 		table.add(optionButton).width(240).height(50).top().right();
 		table.row();
-		table.add(statusButton1).width(300).height(100).bottom();
-		table.add(statusButton2).width(300).height(100).bottom();
-		table.add(statusButton3).width(300).height(100).bottom();
+		table.add(statusButton1).width(320).height(100).bottom().left();
+		table.add(statusButton2).width(320).height(100).bottom().left();
+		table.add(statusButton3).width(320).height(100).bottom().left();
 		
 		
 		stage.addActor(table);
