@@ -2,6 +2,7 @@ package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -25,7 +26,8 @@ public class MenuScreen implements Screen {
 	TextButton exitButton;
 	TextButtonStyle textButtonStyle;
 	BitmapFont font;
-	
+	Sound sound = Gdx.audio.newSound(Gdx.files.internal("data/Test.mp3"));
+
 	public MenuScreen(OneLevelHero game) {
 		this.game = game;
 	}
@@ -36,6 +38,7 @@ public class MenuScreen implements Screen {
 		//System.out.println("Menu");
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
 		stage.draw();
 	}
 
@@ -48,6 +51,7 @@ public class MenuScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
+		long id = sound.play(1.0f);
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 		Table table = new Table(Assets.skin);
@@ -119,6 +123,7 @@ public class MenuScreen implements Screen {
 		
 		
 		stage.addActor(table);
+		
 	}
 
 	@Override

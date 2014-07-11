@@ -16,9 +16,9 @@ import com.mygdx.resource.Assets;
 public class GameScreen implements Screen {
 	
 	OneLevelHero game;
-	TextButton optionButton;
-	TextButton minimapButton;
-	TextButton inventoryButton;
+	ImageButton optionButton;
+	ImageButton minimapButton;
+	ImageButton inventoryButton;
 	Label location;
 	TextButton statusButton1;
 	TextButton statusButton2;
@@ -52,14 +52,18 @@ public class GameScreen implements Screen {
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 		Table table = new Table(Assets.skin);
+		Assets.buttonload();
 		
-		optionButton = new TextButton("option",Assets.skin);		
-		minimapButton = new TextButton("minimap",Assets.skin);
-		inventoryButton = new TextButton("invenroy",Assets.skin);
-		location = new Label("Hello", Assets.skin);
+		optionButton = new ImageButton(Assets.ibuttond,Assets.ibuttonu);		
+		minimapButton = new ImageButton(Assets.ibuttond,Assets.ibuttonu);
+		inventoryButton = new ImageButton(Assets.ibuttond,Assets.ibuttonu);
+		location = new Label("",Assets.skin);
 		statusButton1 = new TextButton("status1",Assets.skin);
 		statusButton2 = new TextButton("status2",Assets.skin);
 		statusButton3 = new TextButton("status3",Assets.skin);
+		
+		
+		location.setText("d");
 		
 		statusButton1.addListener(new InputListener() {
 			@Override
@@ -111,7 +115,7 @@ public class GameScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,int pointer, int button) {
 				// TODO Auto-generated method stub
-				Gdx.app.log("정보","invenrotyPopUp창이 나타납니다.");
+				Gdx.app.log("정보","inventoryPopUp창이 나타납니다.");
 			}			
 		});
 		optionButton.addListener(new InputListener() {
@@ -128,6 +132,7 @@ public class GameScreen implements Screen {
 				Gdx.app.log("정보","OptionScreen이 나타납니다.");
 			}			
 		});
+		
 		minimapButton.addListener(new InputListener() {
 
 			@Override
@@ -144,8 +149,8 @@ public class GameScreen implements Screen {
 		});
 		table.setFillParent(true);
 		table.add(minimapButton).expand().width(240).height(50).top().left();
-		table.add(inventoryButton).width(240).height(50).top();
-		table.add(optionButton).width(240).height(50).top().right();
+		table.add(inventoryButton).width(240).height(50).top().left();		
+		table.add(optionButton).width(240).height(50).top().left();
 		table.row();
 		table.add(statusButton1).width(320).height(100).bottom().left();
 		table.add(statusButton2).width(320).height(100).bottom().left();
