@@ -115,6 +115,9 @@ public class MenuScreen implements Screen {
 		table.row();
 		table.add(creditButton).width(240).height(240).bottom().left();
 		table.add(exitButton).width(240).height(240).bottom().right();
+		table.row();
+		
+		
 		
 		stage.addActor(table);
 	}
