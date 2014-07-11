@@ -1,8 +1,5 @@
 package com.mygdx.screen;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -15,8 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
-import com.mygdx.resource.Scripts;
-import com.mygdx.screen.GameScreen;
 import com.mygdx.screen.OptionScreen;
 import com.mygdx.screen.CreditScreen;
 
@@ -30,6 +25,7 @@ public class MenuScreen implements Screen {
 	TextButton exitButton;
 	TextButtonStyle textButtonStyle;
 	BitmapFont font;
+    
 	
 	public MenuScreen(OneLevelHero game) {
 		this.game = game;
