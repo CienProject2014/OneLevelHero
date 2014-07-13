@@ -10,8 +10,12 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.resource.ImagePrint;
+import com.mygdx.resource.Pos;
 import com.mygdx.resource.Scripts;
 
 public class PrologueScreen implements Screen{
@@ -48,8 +52,23 @@ public class PrologueScreen implements Screen{
 	public void show() {
 		// TODO Auto-generated method stub
 		stage = new Stage();
-		batch = new SpriteBatch();
+		Table table = new Table();
+		ImagePrint print = new ImagePrint(table);
+
+		image = new Image[4];
+		image[0] = new Image(new Texture(Gdx.files.internal("prologue/s#1.png")));
+		image[1] = new Image(new Texture(Gdx.files.internal("prologue/s#2.jpg")));
+		image[2] = new Image(new Texture(Gdx.files.internal("prologue/s#3.jpg")));
+		image[3] = new Image(new Texture(Gdx.files.internal("prologue/s#4.jpg")));
 		
+		Image t1 = new Image(new Texture(Gdx.files.internal("rabbit2.png")));
+		Image t2 = new Image(new Texture(Gdx.files.internal("rabbit2.png")));
+		table.setFillParent(true);
+		
+		print.show(t1, Pos.TOPLEFT);
+		print.show(t2, Pos.BOTTOMRIGHT);
+		
+		/*batch = new SpriteBatch();
 		script = new Scripts(1);
 		
 		String text = script.ScriptGetter("Prologue-scene1");
@@ -58,11 +77,7 @@ public class PrologueScreen implements Screen{
 		
 		System.out.println(text);
 		
-		image = new Image[4];
-		image[0] = new Image(new Texture(Gdx.files.internal("prologue/s#1.png")));
-		image[1] = new Image(new Texture(Gdx.files.internal("prologue/s#2.jpg")));
-		image[2] = new Image(new Texture(Gdx.files.internal("prologue/s#3.jpg")));
-		image[3] = new Image(new Texture(Gdx.files.internal("prologue/s#4.jpg")));
+		
 		Gdx.input.setInputProcessor(stage);
 		
 		stage.addActor(image[0]);	// 처음 이미지
@@ -106,7 +121,9 @@ public class PrologueScreen implements Screen{
 				game.setScreen(new GameScreen(game));
 				return true;
 			}
-		});
+		});*/
+		stage.addActor(table);
+		
 	}
 
 	@Override
