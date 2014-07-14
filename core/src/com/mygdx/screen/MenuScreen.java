@@ -103,7 +103,7 @@ public class MenuScreen implements Screen {
 			}
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				Gdx.app.exit();
+				game.setScreen(new TestScreen(game));
 			}
 		});
 		

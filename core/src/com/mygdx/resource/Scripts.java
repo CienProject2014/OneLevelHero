@@ -1,3 +1,6 @@
+/*
+ * String은 Texture에 들어가지 않는다.
+ */
 package com.mygdx.resource;
 
 import org.json.simple.JSONArray;

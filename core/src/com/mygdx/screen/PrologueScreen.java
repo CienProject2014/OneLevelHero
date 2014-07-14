@@ -1,3 +1,7 @@
+/*
+ * Texture 생성자 안에 파일의 경로를 적을때 Gdx.files.internal 안붙이고
+ * 그냥 파일 이름을 String으로 써주면 됨
+ */
 package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
@@ -15,7 +19,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
-import com.mygdx.resource.Images;
 import com.mygdx.resource.Pos;
 import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
@@ -28,7 +31,6 @@ public class PrologueScreen implements Screen{
 	Image[] image;
 	Scripts script;
 	Label textlabel;
-	Images print;
 	TextureRegion region;
 	Texture texture;
 	Sprite sprite;
@@ -45,7 +47,7 @@ public class PrologueScreen implements Screen{
 		//Gdx.app.log("Prologue Message", "Prologue");
 		
 		batch.begin();
-		print.show(texture, Pos.BOTTOMLEFT);
+		
 		batch.end();
 		
 		stage.draw();
@@ -62,9 +64,10 @@ public class PrologueScreen implements Screen{
 		stage = new Stage();
 		batch = new SpriteBatch();
 		Table table = new Table();
-		print = new Images(batch);
 		
-		scene = new Scene(batch);
+		scene = new Scene(batch, table);
+		script = new Scripts(1);
+		
 		scene.load("Prologue-scene1");
 		
 		Gdx.input.setInputProcessor(stage);
@@ -75,8 +78,8 @@ public class PrologueScreen implements Screen{
 		new Texture(Gdx.files.internal("prologue/scene4.jpg"));
 				
 		
-		
-		//textlabel = new Label(text, Assets.skin);
+		String text = script.ScriptGetter("Prologue-scene1");
+		textlabel = new Label(text, Assets.skin);
 		
 		stage.addActor(textlabel);
 		
@@ -84,8 +87,8 @@ public class PrologueScreen implements Screen{
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				scene.print();
-				texture = new Texture(Gdx.files.internal("prologue/scene2.jpg"));
+				//scene.print();
+				texture = new Texture("prologue/scene2.jpg");
 				textlabel.setText(script.ScriptGetter("Prologue-scene2"));
 				game.setScreen(new GameScreen(game));
 				return true;
