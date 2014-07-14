@@ -27,9 +27,9 @@ public class Scene {
 		// TODO Auto-generated method stub
 		
 	}
-	
+	/*
 	public void show() {
 		print.show(texture, pos);
 	}
-
+*/
 }
