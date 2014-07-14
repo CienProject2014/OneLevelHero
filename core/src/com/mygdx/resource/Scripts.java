@@ -24,8 +24,7 @@ public class Scripts {
 	}
 	
 	//Key값에 맞는 스크립트를 반환함
-	public String ScriptGetter(String key){
-				
+	public String ScriptGetter(String key) {
 		keyParser(key);
 		
 		JSONArray array = (JSONArray)object.get(key1);	
@@ -36,8 +35,7 @@ public class Scripts {
 	}
 	
 	//키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
-	void keyParser(String key){
-		
+	void keyParser(String key) {
 		String[] temp = key.split(delimiter);
 		key1 = temp[0];
 		key2 = temp[1];

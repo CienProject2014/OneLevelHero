@@ -4,14 +4,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.resource.Images;
+import com.mygdx.resource.Pos;
+import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
 
 public class PrologueScreen implements Screen{
@@ -22,18 +28,25 @@ public class PrologueScreen implements Screen{
 	Image[] image;
 	Scripts script;
 	Label textlabel;
+	Images print;
+	TextureRegion region;
+	Texture texture;
+	Sprite sprite;
+	Scene scene;
 	
 	public PrologueScreen(OneLevelHero game) {
-		// TODO Auto-generated constructor stub
 		this.game = game;
 	}
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		//Gdx.app.log("Prologue Message", "Prologue");
+		
+		batch.begin();
+		print.show(texture, Pos.BOTTOMLEFT);
+		batch.end();
 		
 		stage.draw();
 	}
@@ -46,29 +59,40 @@ public class PrologueScreen implements Screen{
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		stage = new Stage();
 		batch = new SpriteBatch();
+		Table table = new Table();
+		print = new Images(batch);
 		
-		script = new Scripts(1);
+		scene = new Scene(batch);
+		scene.load("Prologue-scene1");
 		
-		String text = script.ScriptGetter("Prologue-scene1");
-		
-		textlabel = new Label(text, Assets.skin);
-		
-		System.out.println(text);
-		
-		image = new Image[4];
-		image[0] = new Image(new Texture(Gdx.files.internal("prologue/s#1.png")));
-		image[1] = new Image(new Texture(Gdx.files.internal("prologue/s#2.jpg")));
-		image[2] = new Image(new Texture(Gdx.files.internal("prologue/s#3.jpg")));
-		image[3] = new Image(new Texture(Gdx.files.internal("prologue/s#4.jpg")));
 		Gdx.input.setInputProcessor(stage);
+
+		texture = new Texture(Gdx.files.internal("prologue/scene1.png"));
+		new Texture(Gdx.files.internal("prologue/scene2.jpg"));
+		new Texture(Gdx.files.internal("prologue/scene3.jpg"));
+		new Texture(Gdx.files.internal("prologue/scene4.jpg"));
+				
 		
-		stage.addActor(image[0]);	// 처음 이미지
+		
+		//textlabel = new Label(text, Assets.skin);
+		
 		stage.addActor(textlabel);
 		
-		image[0].addListener(new InputListener() {
+		stage.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				scene.print();
+				texture = new Texture(Gdx.files.internal("prologue/scene2.jpg"));
+				textlabel.setText(script.ScriptGetter("Prologue-scene2"));
+				game.setScreen(new GameScreen(game));
+				return true;
+			}
+		});
+		
+		/*image[0].addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -106,30 +130,28 @@ public class PrologueScreen implements Screen{
 				game.setScreen(new GameScreen(game));
 				return true;
 			}
-		});
+		});*/
+		
+		stage.addActor(table);
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 		
 	}
 
