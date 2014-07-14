@@ -33,7 +33,6 @@ public class PrologueScreen implements Screen{
 	Label textlabel;
 	TextureRegion region;
 	Texture texture;
-	Sprite sprite;
 	Scene scene;
 	
 	public PrologueScreen(OneLevelHero game) {
@@ -47,9 +46,9 @@ public class PrologueScreen implements Screen{
 		//Gdx.app.log("Prologue Message", "Prologue");
 		
 		batch.begin();
-		
+		scene.show(); // 배경 출력
 		batch.end();
-		
+
 		stage.draw();
 	}
 
@@ -64,26 +63,19 @@ public class PrologueScreen implements Screen{
 		stage = new Stage();
 		batch = new SpriteBatch();
 		Table table = new Table();
-		
-		scene = new Scene(batch, table);
-		script = new Scripts(1);
-		
+		table.setFillParent(true);
+		scene = new Scene(table, batch);
 		scene.load("Prologue-scene1");
+		scene.print();
 		
 		Gdx.input.setInputProcessor(stage);
 
-		texture = new Texture(Gdx.files.internal("prologue/scene1.png"));
+/*		texture = new Texture(Gdx.files.internal("prologue/scene1.png"));
 		new Texture(Gdx.files.internal("prologue/scene2.jpg"));
 		new Texture(Gdx.files.internal("prologue/scene3.jpg"));
-		new Texture(Gdx.files.internal("prologue/scene4.jpg"));
-				
-		
-		String text = script.ScriptGetter("Prologue-scene1");
-		textlabel = new Label(text, Assets.skin);
-		
-		stage.addActor(textlabel);
-		
-		stage.addListener(new InputListener() {
+		new Texture(Gdx.files.internal("prologue/scene4.jpg"));*/
+
+		/*stage.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -93,7 +85,7 @@ public class PrologueScreen implements Screen{
 				game.setScreen(new GameScreen(game));
 				return true;
 			}
-		});
+		});*/
 		
 		/*image[0].addListener(new InputListener() {
 			@Override

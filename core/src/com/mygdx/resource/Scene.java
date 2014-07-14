@@ -1,36 +1,25 @@
 package com.mygdx.resource;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
-public class Scene {
-	JSONParser parser = new JSONParser();
-	JSONObject object;
-	String key1;
-	String key2;
-	String delimiter = "-";
-	
+public class Scene {	
+	Scripts script;
+	Label textlabel;
+	String text;
 	
 	SpriteBatch batch;
 	Table table;
 	String scene;
-	Scripts script;
-	Texture img;
+	Image character;
+	Texture background;
 	
 	// batch는 이미지 출력을 위해, table은 이미지와 텍스트 레이아웃을 위해
-	public Scene(SpriteBatch batch, Table table) {
-		FileHandle file = Gdx.files.internal("data/image.json");
-		String text = file.readString();
-		Object obj = JSONValue.parse(text);
-		object = (JSONObject) obj;
-		
+	public Scene(Table table, SpriteBatch batch) {		
+		this.batch = batch;
 		script = new Scripts(1);
 		this.table = table;
 	}
@@ -39,29 +28,27 @@ public class Scene {
 	public void load(String scene) {
 		this.scene = scene;
 		
+		// 배경
+		background = new Texture("prologue/scene1.jpg");
+		
 		// 텍스트 파싱
-		String text = script.ScriptGetter(scene);
+		text = script.ScriptGetter(scene);
+		textlabel = new Label(text, Assets.skin);
 		//String str = "Prologue"+"-"+"scene"+"1";
 		
 		// 이미지 불러옴
-		img = new Texture("prologue/scene2.jpg");
+		character = new Image(new Texture("rabbit2.png"));
 	}
 
 	// 신(scene)을 넘기기 위한 함수
 	public void print() {
-		
+		table.bottom();
+		table.add(character);
+		table.add(textlabel);
 	}
 	
-	// batch.begin과 end상에 넣어서 실행할 함수
+	// render에 넣어서 실행할 함수. 배경만 그림
 	public void show() {
-		batch.draw(img, 0, 0);
-		
+		batch.draw(background, 0, 0);
 	}
-	
-	void keyParser(String key) {
-		String[] temp = key.split(delimiter);
-		key1 = temp[0];
-		key2 = temp[1];
-	}
-
 }
