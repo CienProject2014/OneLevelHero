@@ -1,6 +1,7 @@
 package com.mygdx.resource;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -11,7 +12,7 @@ public class Assets {
 	public static TextureRegionDrawable ibuttond;
 	public static TextureRegionDrawable ibuttonu;
 	public static TextureRegionDrawable ibuttonc;
-	
+
 	public static void load () {
 		
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));

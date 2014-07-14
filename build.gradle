@@ -24,6 +24,7 @@ allprojects {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        
     }
 }
 
@@ -59,8 +60,7 @@ project(":android") {
 
 project(":core") {
     apply plugin: "java"
-
-
+	
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
