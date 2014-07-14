@@ -10,4 +10,3 @@ eclipse.project {
     name = appName + "-core"
 
 }
-

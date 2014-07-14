@@ -48,7 +48,9 @@ public class Scene {
 	}
 
 	public void show() {
+
 		batch.draw(background, 0, 0);
+
 	}
 
 }

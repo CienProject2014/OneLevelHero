@@ -43,7 +43,6 @@ public class LoadScreen implements Screen{
 		Gdx.input.setInputProcessor(stage);
 
 		Table table = new Table(Assets.skin);
-		
 		backButton = new TextButton("Back", Assets.skin);
 		
 		newstartButton = new TextButton("NewStart", Assets.skin);
