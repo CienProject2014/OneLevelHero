@@ -1,23 +1,26 @@
 package com.mygdx.resource;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.resource.ImagePrint;
+import com.mygdx.resource.Images;
 
 public class Scene {
 	String scene;
 	Scripts script;
-	ImagePrint print;
-	Texture txt, image;
+	Images print;
+	Texture ttext, image;
 	
 	public Scene(SpriteBatch batch) {
 		script = new Scripts(1);
-		print = new ImagePrint(batch);
+		print = new Images(batch);
 	}
 	
 	public void load(String scene) {
 		this.scene = scene;
 		String text = script.ScriptGetter(scene);
+		ttext = new Texture(text);
+		image = new Texture(Gdx.files.internal("prologue/scene2.jpg"));
 	}
 
 	public void print() {

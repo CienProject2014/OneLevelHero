@@ -16,10 +16,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 
 
-public class ImagePrint extends Group{
+public class Images extends Group{
 	SpriteBatch batch;
 	
-	public ImagePrint(SpriteBatch batch) {
+	public Images(SpriteBatch batch) {
 		this.batch = batch;
 		System.out.println("table is loaded");
 	}

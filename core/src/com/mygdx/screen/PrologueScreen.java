@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
-import com.mygdx.resource.ImagePrint;
+import com.mygdx.resource.Images;
 import com.mygdx.resource.Pos;
 import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
@@ -28,7 +28,7 @@ public class PrologueScreen implements Screen{
 	Image[] image;
 	Scripts script;
 	Label textlabel;
-	ImagePrint print;
+	Images print;
 	TextureRegion region;
 	Texture texture;
 	Sprite sprite;
@@ -62,7 +62,7 @@ public class PrologueScreen implements Screen{
 		stage = new Stage();
 		batch = new SpriteBatch();
 		Table table = new Table();
-		print = new ImagePrint(batch);
+		print = new Images(batch);
 		
 		scene = new Scene(batch);
 		scene.load("Prologue-scene1");
