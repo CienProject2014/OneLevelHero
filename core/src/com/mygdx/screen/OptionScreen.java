@@ -3,12 +3,14 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.OneLevelHero;
+import com.mygdx.popup.SoundPopup;
 import com.mygdx.resource.Assets;
 
 class OptionScreen implements Screen{
@@ -46,12 +48,12 @@ class OptionScreen implements Screen{
 		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		Table table = new Table(Assets.skin);
-		
+		Table table = new Table(Assets.skin);		
 		soundButton = new TextButton("Sound", Assets.skin);
 		savedataButton = new TextButton("SaveData", Assets.skin);
 		bonusPointButton = new TextButton("BonusPoint", Assets.skin);
 		backButton = new TextButton("Back", Assets.skin);
+		
 		
 		soundButton.addListener(new InputListener() {
 			@Override
@@ -62,9 +64,10 @@ class OptionScreen implements Screen{
 			}
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new MenuScreen(game));
-			}
+				stage.addActor(new SoundPopup("SoundSetting"));
+			}			
 		});
+		
 		savedataButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,

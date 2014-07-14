@@ -14,6 +14,36 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.resource.Assets;
 
 public class SoundPopup extends Dialog{
+	
+	public SoundPopup(String title) {
+		super(title, Assets.skin);
+		initialize();  
+	}
+	
+	 private void initialize() {  
+         padTop(60); // set padding on top of the dialog title  
+         getButtonTable().defaults().height(60); // set buttons height  
+         setModal(true);  
+         setMovable(false);  
+         setResizable(false);  
+     }  
+	 
+	 public SoundPopup button(String buttonText, InputListener listener) {  
+         TextButton button = new TextButton(buttonText, Assets.skin);  
+         button.addListener(listener);  
+         button(button);  
+         return this;  
+     }  
+
+	 public float getPrefWidth() {  
+         // force dialog width  
+         return 480f;  
+     }  
+	 
+	 public float getPrefHeight() {  
+         // force dialog height  
+         return 240f;  
+     }  
 
 	@Override
 	public Table getContentTable() {
@@ -29,8 +59,9 @@ public class SoundPopup extends Dialog{
 
 	@Override
 	public Dialog text(String text) {
-		// TODO Auto-generated method stub
-		return super.text(text);
+		 super.text(new Label(text, Assets.skin));  
+         return this;  
+
 	}
 
 	@Override
@@ -111,10 +142,7 @@ public class SoundPopup extends Dialog{
 		super.cancel();
 	}
 
-	public SoundPopup(String title, Skin skin) {
-		super(title, skin);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 
 }
