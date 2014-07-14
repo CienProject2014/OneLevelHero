@@ -26,7 +26,7 @@ public class Scene {
 	}
 	
 	public void show() {
-		print.show(texture, pos);
+	//	print.show(texture, pos);
 	}
 
 }
