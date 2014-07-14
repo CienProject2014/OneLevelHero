@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.OneLevelHero;
+import com.mygdx.popup.SoundPopup;
 import com.mygdx.resource.Assets;
 
 class OptionScreen implements Screen{
@@ -62,7 +63,7 @@ class OptionScreen implements Screen{
 			}
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new MenuScreen(game));
+				stage.addActor(new SoundPopup("Sound",Assets.skin));
 			}
 		});
 		savedataButton.addListener(new InputListener() {

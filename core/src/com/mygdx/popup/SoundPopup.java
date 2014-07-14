@@ -14,7 +14,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.resource.Assets;
 
 public class SoundPopup extends Dialog{
-
+	
+	public SoundPopup(String title, Skin skin) {
+		super(title, skin);
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public Table getContentTable() {
 		// TODO Auto-generated method stub
@@ -111,10 +115,7 @@ public class SoundPopup extends Dialog{
 		super.cancel();
 	}
 
-	public SoundPopup(String title, Skin skin) {
-		super(title, skin);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 
 }
