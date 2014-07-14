@@ -3,15 +3,14 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Screen;
 import com.mygdx.game.OneLevelHero;
 
-public class SaveScreen implements Screen {
+public class BonusPointScreen implements Screen {
 	
 	OneLevelHero game;
 	
-	public SaveScreen(OneLevelHero game) {
-		this.game = game;
+	public BonusPointScreen(OneLevelHero game) {
 		// TODO Auto-generated constructor stub
+		this.game = game;
 	}
-
 
 	@Override
 	public void render(float delta) {
@@ -23,11 +22,6 @@ public class SaveScreen implements Screen {
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public SaveScreen() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
