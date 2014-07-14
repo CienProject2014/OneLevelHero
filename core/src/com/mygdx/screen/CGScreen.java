@@ -3,13 +3,24 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.game.OneLevelHero;
+import com.mygdx.resource.Assets;
+import com.mygdx.screen.CollectionScreen;
 
 public class CGScreen implements Screen {
 
     OneLevelHero game;
     Stage stage;
+    TextButton backButton;
+	TextButtonStyle textButtonStyle;
+	BitmapFont font;
 	
 	public CGScreen(OneLevelHero game){
 		this.game = game;
@@ -35,6 +46,30 @@ public class CGScreen implements Screen {
 	public void show() {
 		// TODO Auto-generated method stub
 		stage = new Stage();
+		Gdx.input.setInputProcessor(stage);
+		Table table = new Table(Assets.skin);
+
+		backButton = new TextButton("Back", Assets.skin);
+		
+		backButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+
+				// TODO Auto-generated method stub				
+				return true;
+			}
+			@Override
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				game.setScreen(new CollectionScreen(game));
+			}
+		});
+		
+		table.setFillParent(true);
+		table.add(backButton).bottom();
+		table.row();
+		
+		stage.addActor(table);
 	}
 
 	@Override

@@ -21,10 +21,10 @@ public class CollectionScreen implements Screen {
 
 	OneLevelHero game;
 	Stage stage;
-	
 	TextButton endingButton;
 	TextButton cgButton;
 	TextButton bgmButton;
+	TextButton backButton;
 	TextButtonStyle textButtonStyle;
 	BitmapFont font;
 
@@ -58,6 +58,7 @@ public class CollectionScreen implements Screen {
 		endingButton = new TextButton("엔딩", Assets.skin);
 		cgButton = new TextButton("CG", Assets.skin);
 		bgmButton = new TextButton("BGM", Assets.skin);
+		backButton = new TextButton("Back", Assets.skin);
 		
 		endingButton.addListener(new InputListener() {
 			@Override
@@ -95,6 +96,19 @@ public class CollectionScreen implements Screen {
 				game.setScreen(new BGMScreen(game));
 			}
 		});
+		backButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+
+				// TODO Auto-generated method stub				
+				return true;
+			}
+			@Override
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				game.setScreen(new MenuScreen(game));
+			}
+		});
 		
 		table.setFillParent(true);
 //		table.debug(); 
@@ -102,6 +116,7 @@ public class CollectionScreen implements Screen {
 		table.add(cgButton).width(240).height(240).top().right();
 		table.row();
 		table.add(bgmButton).width(240).height(240).bottom().left();
+		table.add(backButton).bottom();
 		table.row();
 		
 		stage.addActor(table);

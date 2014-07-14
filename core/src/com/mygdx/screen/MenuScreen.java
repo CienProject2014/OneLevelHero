@@ -128,7 +128,7 @@ public class MenuScreen implements Screen {
 		table.add(optionsButton).width(240).height(240).top().right();
 		table.row();
 		table.add(creditButton).width(240).height(240).bottom().left();
-		table.add(collectionButton).width(240).height(240).bottom().left();
+		table.add(collectionButton).width(240).height(240).bottom();
 		table.add(exitButton).width(240).height(240).bottom().right();
 		table.row();
 		
