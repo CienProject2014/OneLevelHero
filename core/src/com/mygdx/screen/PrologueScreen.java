@@ -78,6 +78,11 @@ public class PrologueScreen implements Screen{
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 				// TODO Auto-generated method stub
+				if(scene.isEnd) {
+					System.out.println("프롤로그 끝남");
+					game.setScreen(new GameScreen(game));
+				}
+				System.out.println("신 넥스트 ");
 				scene.next();
 				//stage.removeListener(this);
 				return true;

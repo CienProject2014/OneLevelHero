@@ -39,6 +39,13 @@ public class Characters {
 		return image;
 	}
 	
+	public int getNum(String key) {
+		JSONArray array = (JSONArray)object.get(key);
+		JSONObject sc = (JSONObject)array.get(0);
+		String str = (String) sc.get("number");
+		return Integer.parseInt(str);
+	}
+	
 	//키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
 	void keyParser(String key) {
 		String[] temp = key.split(delimiter);
