@@ -1,0 +1,10 @@
+{
+	"Prologue":
+	[
+		{
+			"scene1":"prologue/rabbit1.png",
+			"scene2":"prologue/rabbit2.png",
+			"scene3":"prologue/rabbit3.png"
+		}
+	]
+}
