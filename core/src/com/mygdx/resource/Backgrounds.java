@@ -1,16 +1,15 @@
-/*
- * String은 Texture에 들어가지 않는다.
- */
 package com.mygdx.resource;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 
-public class Scripts {
+public class Backgrounds {
 	
 	JSONParser parser = new JSONParser();
 	JSONObject object;
@@ -19,23 +18,25 @@ public class Scripts {
 	String key3;
 	String delimiter = "-";
 	
-	//스크립트 클래스를 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
-	public Scripts(int filenum){
-		FileHandle file = Gdx.files.internal("data/scene_script.json");
+	//Backgrounds 클래스를 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
+	public Backgrounds(int filenum){
+		FileHandle file = Gdx.files.internal("data/scene_background.json");
 		String text = file.readString();
 		Object obj = JSONValue.parse(text);
 		object = (JSONObject) obj;	
 	}
 	
-	//Key값에 맞는 스크립트를 반환함
-	public String ScriptGetter(String key) {
+	//Key값에 맞는 bgexture를 반환함
+	public Texture BackgroundGetter(String key) {
 		keyParser(key);
 		
 		JSONArray array = (JSONArray)object.get(key1);	
 		JSONObject sc = (JSONObject)array.get(0);
-		String script = (String) sc.get(key2+key3);
+		String dir = (String) sc.get(key2+key3);
+		
+		Texture image = new Texture(dir);
 	
-		return script;
+		return image;
 	}
 	
 	//키값을 받아서 파싱을 한다("-"를 기준으로 나눔)

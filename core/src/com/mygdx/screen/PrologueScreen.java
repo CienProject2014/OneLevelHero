@@ -58,23 +58,31 @@ public class PrologueScreen implements Screen{
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void show() {
 		stage = new Stage();
-
 		batch = new SpriteBatch();
 		Table table = new Table();
 		table.setFillParent(true);
 		scene = new Scene(table, batch);
-		scene.load("Prologue-scene1");
-		scene.print();
-		
-		Gdx.input.setInputProcessor(stage);
+		scene.load("Prologue-scene-1");
+		scene.start();
 
+		Gdx.input.setInputProcessor(stage);
+		
+		stage.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub
+				scene.next();
+				//stage.removeListener(this);
+				return true;
+			}
+		});
 
 		stage.addActor(table);
 		
