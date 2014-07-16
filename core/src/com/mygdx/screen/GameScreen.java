@@ -3,15 +3,20 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.resource.Scene;
 
 public class GameScreen implements Screen {
 	
@@ -19,12 +24,12 @@ public class GameScreen implements Screen {
 	ImageButton optionButton;
 	ImageButton minimapButton;
 	ImageButton inventoryButton;
-	Label location;
 	TextButton statusButton1;
 	TextButton statusButton2;
 	TextButton statusButton3;
+	Image background;
 	Stage stage;
-	
+	Scene scene;
 	
 	public GameScreen(OneLevelHero game){
 		this.game = game;
@@ -36,6 +41,7 @@ public class GameScreen implements Screen {
 		// TODO Auto-generated method stub
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+	
 		stage.draw();
 	}
 
@@ -50,20 +56,19 @@ public class GameScreen implements Screen {
 		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		Table table = new Table(Assets.skin);
-		Assets.buttonload();
 		
+		Table uitable = new Table(Assets.skin);
+		
+		Assets.buttonload();
 		optionButton = new ImageButton(Assets.ibuttond,Assets.ibuttonu);		
 		minimapButton = new ImageButton(Assets.ibuttond,Assets.ibuttonu);
 		inventoryButton = new ImageButton(Assets.ibuttond,Assets.ibuttonu);
-		location = new Label("",Assets.skin);
 		statusButton1 = new TextButton("status1",Assets.skin);
 		statusButton2 = new TextButton("status2",Assets.skin);
-		statusButton3 = new TextButton("status3",Assets.skin);
+		statusButton3 = new TextButton("status3",Assets.skin);			
+		background = new Image(new Texture("prologue/scene1.jpg"));
 		
-		
-		location.setText("d");
-		
+		//버튼 동작
 		statusButton1.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -146,17 +151,20 @@ public class GameScreen implements Screen {
 				Gdx.app.log("정보","minimap창이 나타납니다.");
 			}			
 		});
-		table.setFillParent(true);
-		table.add(minimapButton).expand().width(240).height(50).top().left();
-		table.add(inventoryButton).width(240).height(50).top().left();		
-		table.add(optionButton).width(240).height(50).top().left();
-		table.row();
-		table.add(statusButton1).width(320).height(100).bottom().left();
-		table.add(statusButton2).width(320).height(100).bottom().left();
-		table.add(statusButton3).width(320).height(100).bottom().left();
+		
+		//테이블 설정
+		uitable.setFillParent(true);
+		uitable.add(minimapButton).expand().width(240).height(50).top().left();
+		uitable.add(inventoryButton).width(240).height(50).top().left();		
+		uitable.add(optionButton).width(240).height(50).top().left();
+		uitable.row();	
+		uitable.add(statusButton1).width(320).height(100).bottom().left();
+		uitable.add(statusButton2).width(320).height(100).bottom().left();
+		uitable.add(statusButton3).width(320).height(100).bottom().left();
 		
 		
-		stage.addActor(table);
+		
+		stage.addActor(uitable);
 		//stage.addActor(backButton);
 	}
 

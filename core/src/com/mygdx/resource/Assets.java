@@ -12,7 +12,8 @@ public class Assets {
 	public static TextureRegionDrawable ibuttond;
 	public static TextureRegionDrawable ibuttonu;
 	public static TextureRegionDrawable ibuttonc;
-
+	public static float soundVolume = 0.5f;
+	public static float musicVolume = 0.5f;
 	public static void load () {
 		
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
