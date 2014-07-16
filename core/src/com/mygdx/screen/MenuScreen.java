@@ -28,7 +28,7 @@ public class MenuScreen implements Screen {
 	TextButtonStyle textButtonStyle;
 	BitmapFont font;
 
-	//Sound sound = Gdx.audio.newSound(Gdx.files.internal("data/Test.mp3"));
+	
 
 	public MenuScreen(OneLevelHero game) {
 		this.game = game;
@@ -53,8 +53,7 @@ public class MenuScreen implements Screen {
 	public void show() {
 		// TODO Auto-generated method stub
 
-		//long id = sound.play(1.0f);
-
+		
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 		Table table = new Table(Assets.skin);
