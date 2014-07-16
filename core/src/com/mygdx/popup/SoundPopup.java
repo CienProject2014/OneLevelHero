@@ -27,7 +27,7 @@ import com.mygdx.resource.Assets;
 public class SoundPopup extends Dialog{
 
 	Skin skin = Assets.skin;
-	Stage ui;
+
 	public SoundPopup(String title) {
 		super(title, Assets.skin);
 		initialize();  
@@ -46,7 +46,7 @@ public class SoundPopup extends Dialog{
 		//button("HelloWorld", new InputListener());
 		//다이얼로그 구현
 		//다이얼로그조절
-		ui = new Stage();
+
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
 		final Slider volume = new Slider(0.1f, 1, 0.1f, false, skin);
@@ -58,15 +58,12 @@ public class SoundPopup extends Dialog{
 		final Label panValue = new Label("0.0", skin);
 		table.setFillParent(true);
 
-		table.align(Align.left | Align.top);
-		
+		table.add(new Label("Volume", skin));
 		table.add(volume);
 		table.add(volumeValue);
 		table.row();
-		table.add(new Label("Pan", skin));
-		table.add(pan);
-		table.add(panValue);
-		ui.addActor(table);
+
+		
 /*
 		volume.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
@@ -81,8 +78,8 @@ public class SoundPopup extends Dialog{
 			}
 		});
 */
-		Gdx.input.setInputProcessor(ui);
-		super.add(table);
+
+		this.add(table);
 	}
 
 
