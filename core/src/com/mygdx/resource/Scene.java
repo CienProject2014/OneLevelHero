@@ -31,7 +31,11 @@ public class Scene {
 
 	String scene;
 	
+	public static final double TIME_TO_FADE = 60;
+	private double timeAcc = 0;
+	private float alpha = 0;
 	// batch는 이미지 출력을 위해, table은 이미지와 텍스트 레이아웃을 위해
+	
 	public Scene(Table table, SpriteBatch batch) {		
 		this.batch = batch;
 		
@@ -85,12 +89,25 @@ public class Scene {
 		
 		table.add(character);
 		table.add(script);
+		alpha = 0;
 	}
 
 	// 배경 그림
-	public void show() {
+	public void show(float delta) {
+		
+		alpha += (timeAcc / TIME_TO_FADE);
+		if (alpha >= 1) {
+            batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);            
+            
+        }
+		
+		else{
+		timeAcc += delta;		
+		batch.setColor(1.0f, 1.0f, 1.0f, alpha);	    
+		}
 		batch.draw(bgtexture, 0, 0);
-	}
+		
+		}
 	
 	public void clear() {
 		table.clear();

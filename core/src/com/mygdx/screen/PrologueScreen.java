@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -32,7 +34,7 @@ public class PrologueScreen implements Screen{
 	SpriteBatch batch;
 	Scene scene;
 	Table table;
-
+	
 	
 	public PrologueScreen(OneLevelHero game) {
 		this.game = game;
@@ -45,7 +47,8 @@ public class PrologueScreen implements Screen{
 		//Gdx.app.log("Prologue Message", "Prologue");
 
 		batch.begin();
-		scene.show(); // 배경 출력
+		scene.show(delta); // 배경 출력
+		System.out.println(delta);
 		batch.end();
 
 		stage.draw();
@@ -66,6 +69,7 @@ public class PrologueScreen implements Screen{
 		scene = new Scene(table, batch);
 		scene.load("Prologue-scene-1");
 		scene.start();
+	
 
 		Gdx.input.setInputProcessor(stage);
 		
@@ -74,6 +78,7 @@ public class PrologueScreen implements Screen{
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				scene.next();
+				
 				//stage.removeListener(this);
 				return true;
 			}

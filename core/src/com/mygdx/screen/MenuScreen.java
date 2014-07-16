@@ -64,7 +64,7 @@ public class MenuScreen implements Screen {
 		creditButton = new TextButton("크레딧", Assets.skin);
 		collectionButton = new TextButton("콜렉션", Assets.skin);
 		exitButton = new TextButton("종료", Assets.skin);
-		
+				
 		startButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
