@@ -32,7 +32,9 @@ class OptionScreen implements Screen{
 	public void render(float delta) {
 		// TODO Auto-generated method stub
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
+
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);		
+
 		stage.draw();
 	}
 
@@ -63,7 +65,7 @@ class OptionScreen implements Screen{
 			}
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				stage.addActor(new SoundPopup("SoundSetting"));
+				stage.addActor(new SoundPopup("SoundSetting", stage));
 			}			
 		});
 		

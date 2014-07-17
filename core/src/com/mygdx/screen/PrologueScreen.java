@@ -93,21 +93,25 @@ public class PrologueScreen implements Screen{
 
 	@Override
 	public void hide() {
+		System.out.println("hide");
 		
 	}
 
 	@Override
 	public void pause() {
+		System.out.println("pause");
 		
 	}
 
 	@Override
 	public void resume() {
+		System.out.println("resume");
 		
 	}
 
 	@Override
 	public void dispose() {
+		System.out.println("dispose");
 		
 	}
 

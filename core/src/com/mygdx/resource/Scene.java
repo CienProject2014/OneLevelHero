@@ -90,6 +90,7 @@ public class Scene {
 		String[] temp = scene.split("-");
 		int now = Integer.parseInt(temp[2]);	// next를 호출하는 상황은 첫 화면에서 +1된 상황이므로
 		
+		System.out.println("1. "+now+" "+num);
 		// 다음 신으로------------------------------
 		if(isNext(now))
 			now++;
@@ -98,6 +99,7 @@ public class Scene {
 		String scenenum = String.valueOf(now);
 		scene = temp[0]+"-"+temp[1]+"-"+scenenum;
 		// ----------------------------------------
+		System.out.println("2. "+now+" "+num);
 		
 		load(scene);
 		

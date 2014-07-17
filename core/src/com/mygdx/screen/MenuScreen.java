@@ -7,9 +7,12 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.screen.OptionScreen;
@@ -26,9 +29,10 @@ public class MenuScreen implements Screen {
 	TextButton exitButton;
 	TextButton collectionButton;
 	TextButtonStyle textButtonStyle;
-	BitmapFont font;
-
 	
+	Image logo;
+	
+	BitmapFont font;
 
 	public MenuScreen(OneLevelHero game) {
 		this.game = game;
@@ -58,12 +62,19 @@ public class MenuScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 		Table table = new Table(Assets.skin);
 		
+		Assets.load();
+		Assets.buttonload();
+		
+		//logo.setDrawable(Assets.logo);
+		
 		startButton = new TextButton("새로운 시작", Assets.skin);
 		optionsButton = new TextButton("옵션", Assets.skin);
 		creditButton = new TextButton("크레딧", Assets.skin);
 		collectionButton = new TextButton("콜렉션", Assets.skin);
 		exitButton = new TextButton("종료", Assets.skin);
-				
+		
+		Viewport vp = stage.getViewport();
+		
 		startButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -128,14 +139,23 @@ public class MenuScreen implements Screen {
 			}
 		});
 		
+		float heighttest = 0.5f;
+		float widthtest = 0.2f;
+		
+		System.out.println(heighttest * vp.getViewportHeight());
+		
+		int realheight = (int) (heighttest * vp.getViewportHeight());
+		int realwidth = (int) (widthtest * vp.getViewportWidth());
+		
 		table.setFillParent(true);
 //		table.debug(); 
-		table.add(startButton).expand().width(240).height(240).top().left();
-		table.add(optionsButton).width(240).height(240).top().right();
+		table.add(startButton).expand().width(realwidth).height(realheight).top().left();
+		table.add(optionsButton).width(realwidth).height(realheight).top().right();
 		table.row();
-		table.add(creditButton).width(240).height(240).bottom().left();
-		table.add(collectionButton).width(240).height(240).bottom();
-		table.add(exitButton).width(240).height(240).bottom().right();
+		table.add(creditButton).width(realwidth).height(realheight).bottom().left();
+		table.add(collectionButton).width(realwidth).height(realheight).bottom();
+		//table.add(exitButton).width(realheight).height(realheight).bottom().right();
+		table.add(logo).width((int)(0.6f * vp.getViewportWidth())).center().height(0.4f);
 		table.row();
 		
 		
@@ -146,23 +166,27 @@ public class MenuScreen implements Screen {
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
+
 		stage.dispose();
+
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		//stage.notifyAll();
+
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
+
 	}
 	
 }

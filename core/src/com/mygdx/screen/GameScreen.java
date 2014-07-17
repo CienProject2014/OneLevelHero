@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Scene;
@@ -56,6 +57,8 @@ public class GameScreen implements Screen {
 		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
+		
+		Viewport vp = stage.getViewport();
 		
 		Table uitable = new Table(Assets.skin);
 		

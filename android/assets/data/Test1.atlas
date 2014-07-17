@@ -1,0 +1,40 @@
+
+Test1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+title
+  rotate: false
+  xy: 1, 187
+  size: 840, 480
+  orig: 840, 480
+  offset: 0, 0
+  index: -1
+button_checked
+  rotate: false
+  xy: 1, 125
+  size: 290, 60
+  orig: 290, 60
+  offset: 0, 0
+  index: -1
+button_down
+  rotate: false
+  xy: 1, 63
+  size: 290, 60
+  orig: 290, 60
+  offset: 0, 0
+  index: -1
+button_normal
+  rotate: false
+  xy: 293, 125
+  size: 290, 60
+  orig: 290, 60
+  offset: 0, 0
+  index: -1
+button_toggle
+  rotate: false
+  xy: 1, 1
+  size: 290, 60
+  orig: 290, 60
+  offset: 0, 0
+  index: -1

@@ -20,6 +20,8 @@ public class OneLevelHero extends Game {
 		Assets.load();
 		setScreen(new MenuScreen(this));
 	}
+	
+	
 
 /*	@Override
 	public void render () {
