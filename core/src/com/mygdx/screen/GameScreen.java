@@ -157,7 +157,7 @@ public class GameScreen implements Screen {
 		uitable.add(minimapButton).expand().width(240).height(50).top().left();
 		uitable.add(inventoryButton).width(240).height(50).top().left();		
 		uitable.add(optionButton).width(240).height(50).top().left();
-		uitable.row();	
+		//uitable.row();	
 		uitable.add(statusButton1).width(320).height(100).bottom().left();
 		uitable.add(statusButton2).width(320).height(100).bottom().left();
 		uitable.add(statusButton3).width(320).height(100).bottom().left();
