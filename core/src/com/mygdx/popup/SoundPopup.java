@@ -74,7 +74,8 @@ public class SoundPopup extends Dialog{
 		
 		final Slider volume = new Slider(0f, 100f, 1f, false, skin);
 		volume.setValue(Assets.musicVolume*100);
-		final Label volumeValue = new Label("50.0", skin);
+		String volumeLabel = String.valueOf(Assets.musicVolume*100);
+		final Label volumeValue = new Label(volumeLabel, skin);
 		Table table = new Table();
 		final Slider pan = new Slider(-1f, 1f, 0.1f, false, skin);
 		pan.setValue(0);
@@ -97,8 +98,10 @@ public class SoundPopup extends Dialog{
 		volume.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				//sound.setVolume(soundId, volume.getValue());
-				volumeValue.setText("" + volume.getValue());
+				Assets.musicVolume = volume.getValue() / 100;
+				volumeValue.setText("" + Assets.musicVolume*100);
 				MenuScreen.sound.setVolume(MenuScreen.id, volume.getValue()/100 );
+			
 			}
 		});
 		pan.addListener(new ChangeListener() {
