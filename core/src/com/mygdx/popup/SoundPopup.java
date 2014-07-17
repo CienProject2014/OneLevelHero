@@ -38,7 +38,7 @@ public class SoundPopup extends Dialog{
 		getButtonTable().defaults().height(60); // set buttons height  
 		setResizable(false);
 		setWidth(600); //가로 크기 세팅
-		setHeight(400); //세로 크기 세팅
+		setHeight(600); //세로 크기 세팅
 		setMovable(true); //드래그로 이동가능  
 		//Sound sound = Gdx.audio.newSound(Gdx.files.internal("data/Test.mp3"));
 		//long id = sound.play(1.0f);
