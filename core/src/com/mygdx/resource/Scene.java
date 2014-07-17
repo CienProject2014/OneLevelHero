@@ -106,6 +106,7 @@ public class Scene {
 		table.add(character);
 		table.add(script);
 		alpha = 0;
+		timeAcc = 0;
 	}
 	
 	public boolean isNext(int i) {
