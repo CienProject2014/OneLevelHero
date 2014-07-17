@@ -24,9 +24,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.resource.Assets;
+import com.mygdx.screen.MenuScreen;
+import com.mygdx.screen.TestScreen;
 
 public class SoundPopup extends Dialog{
-
 	Skin skin = Assets.skin;
 	Stage scenestage;
 
@@ -43,7 +44,7 @@ public class SoundPopup extends Dialog{
 		float height = 0.5f;
 		float centerx = 0.5f - width/2;
 		float centery = 0.5f - height/2;
-		
+		getButtonTable();
 		padTop(60); // set padding on top of the dialog title  
 		getContentTable().defaults(); // set buttons height  
 		setResizable(false);
@@ -53,7 +54,7 @@ public class SoundPopup extends Dialog{
 		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up, Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
 		
 		text("배경음\n효과음");
-		button("완료", style, style);
+		
 		
 		Viewport vp = scenestage.getViewport();
 
@@ -63,23 +64,24 @@ public class SoundPopup extends Dialog{
 		setPosition((int)(centerx * vp.getViewportWidth()), (int)(centery * vp.getViewportHeight()));
 		
 		setMovable(true); //드래그로 이동가능  
-		//Sound sound = Gdx.audio.newSound(Gdx.files.internal("data/Test.mp3"));
-		//long id = sound.play(1.0f);
-
+		
+		
 		//button("HelloWorld", new InputListener());
 		//다이얼로그 구현
 		//다이얼로그조절
 
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
-		final Slider volume = new Slider(0.1f, 1, 0.1f, false, skin);
-		volume.setValue(1);
-		final Label volumeValue = new Label("1.0", skin);
+		final Slider volume = new Slider(0f, 100f, 1f, false, skin);
+		volume.setValue(Assets.musicVolume*100);
+		final Label volumeValue = new Label("50.0", skin);
 		Table table = new Table();
 		final Slider pan = new Slider(-1f, 1f, 0.1f, false, skin);
 		pan.setValue(0);
 		final Label panValue = new Label("0.0", skin);
-
+		
+		
+		
 		table.add(volume);
 		table.add(volumeValue);
 		table.row();
@@ -96,6 +98,7 @@ public class SoundPopup extends Dialog{
 			public void changed (ChangeEvent event, Actor actor) {
 				//sound.setVolume(soundId, volume.getValue());
 				volumeValue.setText("" + volume.getValue());
+				MenuScreen.sound.setVolume(MenuScreen.id, volume.getValue()/100 );
 			}
 		});
 		pan.addListener(new ChangeListener() {
@@ -107,17 +110,11 @@ public class SoundPopup extends Dialog{
 
 
 		getContentTable().add(table);
+		button("완료", "remove" , style);
+	
 	}
 
-
-
-	public SoundPopup button(String buttonText, InputListener listener) {  
-		TextButton button = new TextButton(buttonText, Assets.skin);  
-		button.addListener(listener);  
-		button(button);  
-		return this;  
-	}  
-
+	
 	public float getPrefWidth() {  
 		// force dialog width  
 		return 480f;  
@@ -174,6 +171,8 @@ public class SoundPopup extends Dialog{
 	@Override
 	public Dialog button(String text, Object object, TextButtonStyle buttonStyle) {
 		// TODO Auto-generated method stub
+		
+		
 		return super.button(text, object, buttonStyle);
 	}
 
@@ -198,7 +197,7 @@ public class SoundPopup extends Dialog{
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		super.hide();
+		remove();
 	}
 
 	@Override
@@ -216,7 +215,9 @@ public class SoundPopup extends Dialog{
 	@Override
 	protected void result(Object object) {
 		// TODO Auto-generated method stub
-		super.result(object);
+		if(object == "remove"){
+			remove();
+		}
 	}
 
 	@Override
