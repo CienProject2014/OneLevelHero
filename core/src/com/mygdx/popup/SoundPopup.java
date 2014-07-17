@@ -22,23 +22,46 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.resource.Assets;
 
 public class SoundPopup extends Dialog{
 
 	Skin skin = Assets.skin;
+	Stage scenestage;
 
-	public SoundPopup(String title) {
+	public SoundPopup(String title, Stage stage) {
 		super(title, Assets.skin);
+		scenestage = stage;
 		initialize();  
 	}
 
 	private void initialize() {  
+		
+		
+		float width = 0.6f;
+		float height = 0.5f;
+		float centerx = 0.5f - width/2;
+		float centery = 0.5f - height/2;
+		
 		padTop(60); // set padding on top of the dialog title  
-		getButtonTable().defaults().height(60); // set buttons height  
+		getContentTable().defaults(); // set buttons height  
 		setResizable(false);
-		setWidth(600); //가로 크기 세팅
-		setHeight(400); //세로 크기 세팅
+		
+		Assets.buttonload();
+		
+		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up, Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
+		
+		text("배경음\n효과음");
+		button("완료", style, style);
+		
+		Viewport vp = scenestage.getViewport();
+
+		setWidth((int)(width * vp.getViewportWidth())); //가로 크기 세팅
+		setHeight((int)(height * vp.getViewportHeight())); //세로 크기 세팅
+		
+		setPosition((int)(centerx * vp.getViewportWidth()), (int)(centery * vp.getViewportHeight()));
+		
 		setMovable(true); //드래그로 이동가능  
 		//Sound sound = Gdx.audio.newSound(Gdx.files.internal("data/Test.mp3"));
 		//long id = sound.play(1.0f);
@@ -56,30 +79,34 @@ public class SoundPopup extends Dialog{
 		final Slider pan = new Slider(-1f, 1f, 0.1f, false, skin);
 		pan.setValue(0);
 		final Label panValue = new Label("0.0", skin);
-		table.setFillParent(true);
 
-		table.add(new Label("Volume", skin));
 		table.add(volume);
 		table.add(volumeValue);
 		table.row();
-
 		
-/*
+		table.add(pan);
+		table.add(panValue);
+		
+
+		//table.setFillParent(true);
+		table.top();
+		
+
 		volume.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
-				sound.setVolume(soundId, volume.getValue());
+				//sound.setVolume(soundId, volume.getValue());
 				volumeValue.setText("" + volume.getValue());
 			}
 		});
 		pan.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
-				sound.setPan(soundId, pan.getValue(), volume.getValue());
+				//sound.setPan(soundId, pan.getValue(), volume.getValue());
 				panValue.setText("" + pan.getValue());
 			}
 		});
-*/
 
-		this.add(table);
+
+		getContentTable().add(table);
 	}
 
 
