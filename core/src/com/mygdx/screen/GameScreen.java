@@ -165,7 +165,6 @@ public class GameScreen implements Screen {
 		
 		
 		stage.addActor(uitable);
-		//stage.addActor(backButton);
 	}
 
 	@Override
