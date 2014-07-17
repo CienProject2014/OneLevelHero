@@ -2,9 +2,11 @@ package com.mygdx.resource;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
@@ -16,7 +18,7 @@ public class Assets {
 	public static TextureRegionDrawable menu_button_down;
 	public static TextureRegionDrawable menu_button_up;
 	public static TextureRegionDrawable menu_button_toggle;
-	public static TextureRegionDrawable logo;
+	public static Image logo;
 	public static BitmapFont font;
 	
 	public static float soundVolume = 0.5f;
@@ -38,7 +40,7 @@ public class Assets {
 		menu_button_down = new TextureRegionDrawable(buttonAtlas.findRegion("button_down"));
 		menu_button_up = new TextureRegionDrawable(buttonAtlas.findRegion("button_normal"));
 		menu_button_toggle = new TextureRegionDrawable(buttonAtlas.findRegion("button_toggle"));
-		logo = new TextureRegionDrawable(buttonAtlas.findRegion("title"));
+		logo = new Image(new TextureRegionDrawable(buttonAtlas.findRegion("title")));
 		
 		font = new BitmapFont(Gdx.files.internal("data/hangeul2.fnt"));
 	}
