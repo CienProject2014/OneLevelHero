@@ -167,7 +167,9 @@ public class MenuScreen implements Screen {
 	public void hide() {
 		// TODO Auto-generated method stub
 
+
 		stage.dispose();
+
 
 	}
 
