@@ -110,6 +110,7 @@ public class MenuScreen implements Screen {
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 				game.setScreen(new CreditScreen(game));
+				
 			}
 		});
 		collectionButton.addListener(new InputListener() {
@@ -122,6 +123,7 @@ public class MenuScreen implements Screen {
 			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 				game.setScreen(new CollectionScreen(game));
+				
 			}
 		});
 		exitButton.addListener(new InputListener() {
@@ -169,29 +171,27 @@ public class MenuScreen implements Screen {
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		System.out.println("hide");
-		
+
+		stage.dispose();
+
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		System.out.println("pause");
-		
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		System.out.println("resume");
-		
+
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		System.out.println("dispose");
-		
+
 	}
 	
 }
