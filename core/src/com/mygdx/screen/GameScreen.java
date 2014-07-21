@@ -28,6 +28,7 @@ public class GameScreen implements Screen {
 	TextButton statusButton1;
 	TextButton statusButton2;
 	TextButton statusButton3;
+	TextButton battleButton; //test
 	Image background;
 	Stage stage;
 	Scene scene;
@@ -68,7 +69,8 @@ public class GameScreen implements Screen {
 		inventoryButton = new ImageButton(Assets.ibuttond,Assets.ibuttonu);
 		statusButton1 = new TextButton("status1",Assets.skin);
 		statusButton2 = new TextButton("status2",Assets.skin);
-		statusButton3 = new TextButton("status3",Assets.skin);			
+		statusButton3 = new TextButton("status3",Assets.skin);		
+		battleButton = new TextButton("Battle",Assets.skin); //test
 		background = new Image(new Texture("prologue/scene1.jpg"));
 		
 		//버튼 동작
@@ -155,11 +157,29 @@ public class GameScreen implements Screen {
 			}			
 		});
 		
+		battleButton.addListener(new InputListener(){
+			
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,int pointer, int button) {
+				// TODO Auto-generated method stub
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y,int pointer, int button) {
+				// TODO Auto-generated method stub
+				game.setScreen(new BattleScreen(game));
+				Gdx.app.log("정보","전투가 시작됩니다");
+			}			
+		}); //test
+		
+		
 		//테이블 설정
 		uitable.setFillParent(true);
 		uitable.add(minimapButton).expand().width(240).height(50).top().left();
 		uitable.add(inventoryButton).width(240).height(50).top().left();		
 		uitable.add(optionButton).width(240).height(50).top().left();
+		uitable.add(battleButton).width(240).height(50).top().right();
 		//uitable.row();	
 		uitable.add(statusButton1).width(320).height(100).bottom().left();
 		uitable.add(statusButton2).width(320).height(100).bottom().left();
