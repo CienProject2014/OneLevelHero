@@ -7,15 +7,17 @@
 			"building":
 			[
 				{
-					"name" : "대장간",
-					"function" : "무기를 만듭니다",
-					"positionx" : "100",
-					"positiony" : "100"
+					"name" : "초코퐁듀가게",
+					"imagesource" : "village/chocho.png",
+					"function" : "초코퐁듀마시쪙",
+					"positionx" : "900",
+					"positiony" : "500"
 				},
 				{
-					"name" : "신전",
-					"function" : "저장을 합니다",
-					"positionx" : "200",
+					"name" : "드림팩토리",
+					"imagesource" : "village/factory.png",
+					"function" : "꿈을 만들자",
+					"positionx" : "400",
 					"positiony" : "200"
 				}
 			],
@@ -29,21 +31,16 @@
 			]
 		},
 		{
-			"num_of_building":2,
+			"num_of_building":1,
 			"num_of_npc":1,
 			"building":
 			[
 				{
-					"name" : "잡화점",
-					"function" : "잡화를 다룹니다",
+					"name" : "골동품 가게",
+					"imagesource" : "village/goldong.png",
+					"function" : "골동품을 다룹니다",
 					"positionx" : "400",
 					"positiony" : "400"
-				},
-				{
-					"name" : "도서관",
-					"function" : "하아...",
-					"positionx" : "500",
-					"positiony" : "500"
 				}
 			],
 			"npc":
