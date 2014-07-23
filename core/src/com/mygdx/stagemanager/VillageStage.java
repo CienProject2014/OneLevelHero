@@ -24,6 +24,7 @@ public class VillageStage extends Stage{
 	int num_of_building;
 	int num_of_npc;
 	TextButton buildingbutton[];
+	public TextButton sift_button;
 	
 	public VillageStage(){
 		super();
@@ -66,10 +67,9 @@ public class VillageStage extends Stage{
 			addActor(buildingbutton[i]);
 		}
 		
-		TextButton button = new TextButton("전환", Assets.skin);
-		button.center();
-
-		addActor(button);
+		sift_button = new TextButton("전환", Assets.skin);
+		sift_button.center();
+		addActor(sift_button);
 	}
 	
 	void keyParser(String key) {
