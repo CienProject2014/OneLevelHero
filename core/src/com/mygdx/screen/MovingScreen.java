@@ -3,13 +3,14 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.controller.MovingController;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 
@@ -23,6 +24,8 @@ public class MovingScreen implements Screen {
 	TextButton LeftButton;
 	Label pointLabel;
 	Table table;
+	SpriteBatch batch;
+	Texture texture = new Texture(Gdx.files.internal("data/justground.jpg"));
 
 	public MovingScreen(OneLevelHero game) {
 		this.game = game;
@@ -31,8 +34,11 @@ public class MovingScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
+		batch.begin();
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		batch.draw(texture, 0, 0);
+		batch.end();
 		stage.draw();
 	}
 
@@ -45,6 +51,7 @@ public class MovingScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
+		batch = new SpriteBatch();
 		stage = new Stage();
 		table = new Table();
 		table.setFillParent(true);
@@ -54,8 +61,6 @@ public class MovingScreen implements Screen {
 		LeftButton = new TextButton("Left", Assets.skin);
 		pointLabel = new Label("Point", Assets.skin);
 
-		
-		
 		goButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -82,7 +87,7 @@ public class MovingScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				MovingController.goBackward();
+				goBackward();
 			}
 		});
 
@@ -97,7 +102,7 @@ public class MovingScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				MovingController.goBackward();
+				goBackward();
 			}
 		});
 
@@ -112,21 +117,17 @@ public class MovingScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				MovingController.goBackward();
+				goBackward();
 			}
 		});
-		
-		if(MovingController()){
-			table.add(RightButton);
-		}
-		else if(MovingController()){
-			table.add(LeftButton);
-		}
-		else(MovingController()){
-			table.add(RightButton);
-			table.add(LeftButton);
-		}
-		
+
+		/*
+		 * if(MovingController()){ table.add(RightButton); } else
+		 * if(MovingController()){ table.add(LeftButton); }
+		 * else(MovingController()){ table.add(RightButton);
+		 * table.add(LeftButton); }
+		 */
+
 		table.add(goButton).expand().top().padTop(20);
 		table.row();
 		table.add(backButton).bottom().padBottom(20);
