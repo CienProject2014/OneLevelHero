@@ -17,14 +17,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.game.OneLevelHero;
-
 import com.mygdx.resource.Scene;
-
 import com.mygdx.resource.Scripts;
 
-public class PrologueScreen implements Screen{
+public class PrologueScreen implements Screen {
 	OneLevelHero game;
-	Stage stage;	
+	Stage stage;
 	Texture img;
 	Image[] image;
 	Scripts script;
@@ -34,8 +32,7 @@ public class PrologueScreen implements Screen{
 	SpriteBatch batch;
 	Scene scene;
 	Table table;
-	
-	
+
 	public PrologueScreen(OneLevelHero game) {
 		this.game = game;
 	}
@@ -44,7 +41,7 @@ public class PrologueScreen implements Screen{
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		//Gdx.app.log("Prologue Message", "Prologue");
+		// Gdx.app.log("Prologue Message", "Prologue");
 
 		batch.begin();
 		scene.show(delta); // 배경 출력
@@ -55,64 +52,62 @@ public class PrologueScreen implements Screen{
 
 	@Override
 	public void resize(int width, int height) {
-		
-		
+
 	}
 
 	@Override
 	public void show() {
 		stage = new Stage();
 		batch = new SpriteBatch();
-		Table table = new Table();
+		table = new Table();
 		table.setFillParent(true);
 		scene = new Scene(table, batch);
 		scene.load("Prologue-scene-1");
 		scene.start();
-	
 
 		Gdx.input.setInputProcessor(stage);
-		
+
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 				// TODO Auto-generated method stub
 				scene.next();
-				
-				if(scene.isEnd) {
+
+				if (scene.isEnd) {
 					game.setScreen(new GameScreen(game));
-				}				
-				
-				//stage.removeListener(this);
+				}
+
+				// stage.removeListener(this);
 				return true;
 			}
 		});
 
 		stage.addActor(table);
-		
+
 	}
 
 	@Override
 	public void hide() {
 		System.out.println("hide");
-		
+
 	}
 
 	@Override
 	public void pause() {
 		System.out.println("pause");
-		
+
 	}
 
 	@Override
 	public void resume() {
 		System.out.println("resume");
-		
+
 	}
 
 	@Override
 	public void dispose() {
 		System.out.println("dispose");
-		
+
 	}
 
 }
