@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
-public class Scene {
+public class PrologueScene {
 	// 신 진행 관련 변수
 	int num;	// load한 Event(예 Prologue)의 scene 갯수
 	public boolean isEnd;
@@ -40,7 +40,7 @@ public class Scene {
 	private float alpha = 0;
 	// batch는 이미지 출력을 위해, table은 이미지와 텍스트 레이아웃을 위해
 	
-	public Scene(Table table, SpriteBatch batch) {
+	public PrologueScene(Table table, SpriteBatch batch) {
 		isEnd = false;
 
 		this.batch = batch;

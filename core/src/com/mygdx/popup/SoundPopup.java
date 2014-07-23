@@ -1,132 +1,111 @@
 package com.mygdx.popup;
 
-import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Files.FileType;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.resource.Assets;
 import com.mygdx.screen.MenuScreen;
-import com.mygdx.screen.TestScreen;
 
-public class SoundPopup extends Dialog{
+public class SoundPopup extends Dialog {
 	Skin skin = Assets.skin;
 	Stage scenestage;
 
 	public SoundPopup(String title, Stage stage) {
 		super(title, Assets.skin);
 		scenestage = stage;
-		initialize();  
+		initialize();
 	}
 
-	private void initialize() {  
-		
-		
+	private void initialize() {
+
 		float width = 0.6f;
 		float height = 0.5f;
-		float centerx = 0.5f - width/2;
-		float centery = 0.5f - height/2;
+		float centerx = 0.5f - width / 2;
+		float centery = 0.5f - height / 2;
 		getButtonTable();
 		padTop(60); // set padding on top of the dialog title  
 		getContentTable().defaults(); // set buttons height  
 		setResizable(false);
-		
 		Assets.buttonload();
-		
+
 		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up, Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
-		
+
 		text("배경음\n효과음");
-		
-		
+
 		Viewport vp = scenestage.getViewport();
 
-		setWidth((int)(width * vp.getViewportWidth())); //가로 크기 세팅
-		setHeight((int)(height * vp.getViewportHeight())); //세로 크기 세팅
-		
-		setPosition((int)(centerx * vp.getViewportWidth()), (int)(centery * vp.getViewportHeight()));
-		
+		setWidth((int) (width * vp.getViewportWidth())); //가로 크기 세팅
+		setHeight((int) (height * vp.getViewportHeight())); //세로 크기 세팅
+
+		setPosition((int) (centerx * vp.getViewportWidth()), (int) (centery * vp.getViewportHeight()));
+
 		setMovable(true); //드래그로 이동가능  
-		
-		
+
 		//button("HelloWorld", new InputListener());
 		//다이얼로그 구현
 		//다이얼로그조절
 
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-		
+
 		final Slider volume = new Slider(0f, 100f, 1f, false, skin);
-		volume.setValue(Assets.musicVolume*100);
-		String volumeLabel = String.valueOf(Assets.musicVolume*100);
+		volume.setValue(Assets.musicVolume * 100);
+		String volumeLabel = String.valueOf(Assets.musicVolume * 100);
 		final Label volumeValue = new Label(volumeLabel, skin);
 		Table table = new Table();
 		final Slider pan = new Slider(-1f, 1f, 0.1f, false, skin);
 		pan.setValue(0);
 		final Label panValue = new Label("0.0", skin);
-		
-		
-		
+
 		table.add(volume);
 		table.add(volumeValue);
 		table.row();
-		
+
 		table.add(pan);
 		table.add(panValue);
-		
 
 		//table.setFillParent(true);
 		table.top();
-		
 
 		volume.addListener(new ChangeListener() {
-			public void changed (ChangeEvent event, Actor actor) {
+			public void changed(ChangeEvent event, Actor actor) {
 				//sound.setVolume(soundId, volume.getValue());
 				Assets.musicVolume = volume.getValue() / 100;
-				volumeValue.setText("" + Assets.musicVolume*100);
-				MenuScreen.sound.setVolume(MenuScreen.id, volume.getValue()/100 );
-			
+				volumeValue.setText("" + Assets.musicVolume * 100);
+				MenuScreen.sound.setVolume(MenuScreen.id, volume.getValue() / 100);
+
 			}
 		});
 		pan.addListener(new ChangeListener() {
-			public void changed (ChangeEvent event, Actor actor) {
+			public void changed(ChangeEvent event, Actor actor) {
 				//sound.setPan(soundId, pan.getValue(), volume.getValue());
 				panValue.setText("" + pan.getValue());
 			}
 		});
 
-
 		getContentTable().add(table);
-		button("완료", "remove" , style);
-	
+		button("완료", "remove", style);
+
 	}
 
-	
-	public float getPrefWidth() {  
+	public float getPrefWidth() {
 		// force dialog width  
-		return 480f;  
-	}  
+		return 480f;
+	}
 
-	public float getPrefHeight() {  
+	public float getPrefHeight() {
 		// force dialog height  
-		return 240f;  
-	}  
+		return 240f;
+	}
 
 	@Override
 	public Table getContentTable() {
@@ -142,8 +121,8 @@ public class SoundPopup extends Dialog{
 
 	@Override
 	public Dialog text(String text) {
-		super.text(new Label(text, Assets.skin));  
-		return this;  
+		super.text(new Label(text, Assets.skin));
+		return this;
 
 	}
 
@@ -174,8 +153,7 @@ public class SoundPopup extends Dialog{
 	@Override
 	public Dialog button(String text, Object object, TextButtonStyle buttonStyle) {
 		// TODO Auto-generated method stub
-		
-		
+
 		return super.button(text, object, buttonStyle);
 	}
 
@@ -218,7 +196,7 @@ public class SoundPopup extends Dialog{
 	@Override
 	protected void result(Object object) {
 		// TODO Auto-generated method stub
-		if(object == "remove"){
+		if (object == "remove") {
 			remove();
 		}
 	}
@@ -228,8 +206,5 @@ public class SoundPopup extends Dialog{
 		// TODO Auto-generated method stub
 		super.cancel();
 	}
-
-
-
 
 }
