@@ -1,0 +1,116 @@
+{
+	"Blackwood":
+	[
+		{
+			"num_of_building":2,
+			"num_of_npc":1,
+			"building":
+			[
+				{
+					"name" : "대장간",
+					"function" : "무기를 만듭니다",
+					"positionx" : "100",
+					"positiony" : "100"
+				},
+				{
+					"name" : "신전",
+					"function" : "저장을 합니다",
+					"positionx" : "200",
+					"positiony" : "200"
+				}
+			],
+			"npc":
+			[
+				{
+					"name" : "거지새끼",
+					"positionx" : "300",
+					"positiony" : "300"
+				}
+			]
+		},
+		{
+			"num_of_building":2,
+			"num_of_npc":1,
+			"building":
+			[
+				{
+					"name" : "잡화점",
+					"function" : "잡화를 다룹니다",
+					"positionx" : "400",
+					"positiony" : "400"
+				},
+				{
+					"name" : "도서관",
+					"function" : "하아...",
+					"positionx" : "500",
+					"positiony" : "500"
+				}
+			],
+			"npc":
+			[
+				{
+					"name" : "미개한 인간",
+					"positionx" : "600",
+					"positiony" : "600"
+				}
+			]	
+		}
+	],
+	"Test":
+	[
+		{
+			"num_of_building":2,
+			"num_of_npc":1,
+			"builiding":
+			[
+				{
+					"name" : "대장간",
+					"function" : "무기를 만듭니다",
+					"positionx" : "100",
+					"positiony" : "100"
+				},
+				{
+					"name" : "신전",
+					"function" : "저장을 합니다",
+					"positionx" : "200",
+					"positiony" : "200"
+				}
+			],
+			"npc":
+			[
+				{
+					"name" : "거지새끼",
+					"positionx" : "300",
+					"positiony" : "300"
+				}
+			]
+		},
+		{
+			"num_of_building":3,
+			"num_of_npc":1,
+			"builiding":
+			[
+				{
+					"name" : "잡화점",
+					"function" : "잡화를 다룹니다",
+					"positionx" : "400",
+					"positiony" : "400"
+				},
+				{
+					"name" : "도서관",
+					"function" : "하아...",
+					"positionx" : "500",
+					"positiony" : "500"
+				}
+			],
+			"npc":
+			[
+				{
+					"name" : "미개한 인간",
+					"positionx" : "600",
+					"positiony" : "600"
+				}
+			]	
+		}
+	]
+}
