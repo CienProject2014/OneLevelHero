@@ -35,6 +35,7 @@ public class PrologueScreen implements Screen {
 
 	public PrologueScreen(OneLevelHero game) {
 		this.game = game;
+		Gdx.app.log("d", "d");
 	}
 
 	@Override
