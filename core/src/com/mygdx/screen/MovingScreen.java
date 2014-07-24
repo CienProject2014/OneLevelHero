@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.controller.MovingController;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 
@@ -26,9 +27,18 @@ public class MovingScreen implements Screen {
 	Table table;
 	SpriteBatch batch;
 	Texture texture = new Texture(Gdx.files.internal("data/justground.jpg"));
+	
+	MovingController controller;
+	
+	String presentVil;
+	String targetVil;
+	
 
-	public MovingScreen(OneLevelHero game) {
+	public MovingScreen(OneLevelHero game, String present, String target) {
 		this.game = game;
+		this.presentVil = present;
+		this.targetVil = target;
+		controller = new MovingController();
 	}
 
 	@Override
@@ -60,6 +70,8 @@ public class MovingScreen implements Screen {
 		RightButton = new TextButton("Right", Assets.skin);
 		LeftButton = new TextButton("Left", Assets.skin);
 		pointLabel = new Label("Point", Assets.skin);
+		
+		Gdx.input.setInputProcessor(stage);
 
 		goButton.addListener(new InputListener() {
 			@Override
@@ -102,7 +114,7 @@ public class MovingScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				goBackward();
+				goRightward();
 			}
 		});
 
@@ -117,22 +129,39 @@ public class MovingScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				goBackward();
+				goLeftward();
 			}
 		});
-
-		/*
-		 * if(MovingController()){ table.add(RightButton); } else
-		 * if(MovingController()){ table.add(LeftButton); }
-		 * else(MovingController()){ table.add(RightButton);
-		 * table.add(LeftButton); }
-		 */
+		
+		controller.checkStage();
+		 
 
 		table.add(goButton).expand().top().padTop(20);
 		table.row();
 		table.add(backButton).bottom().padBottom(20);
 		stage.addActor(table);
 
+	}
+	
+	public void goForward() {
+		Gdx.app.log("test", "goForward");
+		
+	}
+
+	public void goBackward() {
+		Gdx.app.log("test", "goBackward");
+	}
+
+	public void goLeftward() {
+		Gdx.app.log("test", "goLeftward");
+	}
+
+	public void goRightward() {
+		Gdx.app.log("test", "goRightward");
+	}
+	
+	public static void setController() {
+		
 	}
 
 	@Override
@@ -156,22 +185,6 @@ public class MovingScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-
-	}
-
-	public static void goForward() {
-
-	}
-
-	public static void goBackward() {
-
-	}
-
-	public static void goLeft() {
-
-	}
-
-	public static void goRight() {
 
 	}
 

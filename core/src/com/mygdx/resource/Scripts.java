@@ -23,8 +23,8 @@ public class Scripts {
 	public Scripts(int filenum){
 		FileHandle file = Gdx.files.internal("data/scene_script.json");
 		String text = file.readString();
-		Object obj = JSONValue.parse(text);
-		object = (JSONObject) obj;	
+		object = (JSONObject)JSONValue.parse(text);
+		// 이부분 수정함. 오류뜨면 다른거 보고 다시 고치자.
 	}
 	
 	//Key값에 맞는 스크립트를 반환함

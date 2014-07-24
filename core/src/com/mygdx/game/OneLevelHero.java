@@ -16,7 +16,7 @@ public class OneLevelHero extends Game {
 		 * batch = new SpriteBatch(); img = new Texture("badlogic.jpg");
 		 */
 		Assets.load();
-		setScreen(new MovingScreen(this));
+		setScreen(new MovingScreen(this, "Village1", "Village2"));
 	}
 
 	/*
