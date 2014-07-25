@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.resource.Assets;
-import com.mygdx.screen.MovingScreen;
+import com.mygdx.screen.MenuScreen;
 
 public class OneLevelHero extends Game {
 	SpriteBatch batch;
@@ -16,7 +16,7 @@ public class OneLevelHero extends Game {
 		 * batch = new SpriteBatch(); img = new Texture("badlogic.jpg");
 		 */
 		Assets.load();
-		setScreen(new MovingScreen(this, "Village1", "Village2"));
+		setScreen(new MenuScreen(this));
 	}
 
 	/*

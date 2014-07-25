@@ -1,0 +1,59 @@
+
+MenuButton.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+button_credit_after
+  rotate: false
+  xy: 1, 382
+  size: 500, 379
+  orig: 500, 379
+  offset: 0, 0
+  index: -1
+button_credit_before
+  rotate: false
+  xy: 1, 1
+  size: 500, 379
+  orig: 500, 379
+  offset: 0, 0
+  index: -1
+button_extra_after
+  rotate: false
+  xy: 503, 382
+  size: 500, 379
+  orig: 500, 379
+  offset: 0, 0
+  index: -1
+button_extra_before
+  rotate: false
+  xy: 503, 1
+  size: 500, 379
+  orig: 500, 379
+  offset: 0, 0
+  index: -1
+
+MenuButton2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+button_option_after
+  rotate: false
+  xy: 1, 382
+  size: 500, 379
+  orig: 500, 379
+  offset: 0, 0
+  index: -1
+button_option_before
+  rotate: false
+  xy: 1, 1
+  size: 500, 379
+  orig: 500, 379
+  offset: 0, 0
+  index: -1
+button_start_after
+  rotate: false
+  xy: 503, 382
+  size: 500, 379
+  orig: 500, 379
+  offset: 0, 0
+  index: -1
