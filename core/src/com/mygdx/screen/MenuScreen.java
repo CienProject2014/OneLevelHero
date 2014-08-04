@@ -174,15 +174,15 @@ public class MenuScreen implements Screen {
 		// table.setSize(realheight, realwidth);
 		// table.debug();
 		table.add(extraButton).height(0.35f * realheight)
-				.width(0.40f * realwidth).expand().top().left();
+				.width(0.3f * realwidth).expand().top().left();
 		// table.add(Assets.logo).center();
 		table.add(creditButton).height(0.35f * realheight)
-				.width(0.40f * realwidth).expand().top().right();
+				.width(0.3f * realwidth).top().right();
 		table.row();
 		table.add(startButton).height(0.35f * realheight)
-				.width(0.40f * realwidth).expand().bottom().left();
+				.width(0.3f * realwidth).bottom().left();
 		table.add(optionsButton).height(0.35f * realheight)
-				.width(0.40f * realwidth).expand().bottom().right();
+				.width(0.3f * realwidth).bottom().right();
 		// table.add(exitButton).width(realheight).height(realheight).bottom().right();
 		// table.row();
 
@@ -191,10 +191,12 @@ public class MenuScreen implements Screen {
 
 		Assets.logo.setPosition((int) (0.2f * vp.getViewportWidth()),
 				(int) (0.3f * vp.getViewportHeight()));
-		// stage.addActor(background);
-		// stage.addActor(Assets.logo);
+
+		background.setSize(realwidth, realheight);
+		stage.addActor(background);
+		stage.addActor(Assets.logo);
+
 		stage.addActor(table);
-		Table.drawDebug(stage);
 		// stage.addActor(startButton);
 	}
 
