@@ -118,8 +118,7 @@ public class CollectionScreen implements Screen {
 		table.add(backButton).bottom();
 		table.row();
 		
-		stage.addActor(table);
-		//stage = new Stage();
+		stage.addActor(table);		
 	}
 
 	@Override

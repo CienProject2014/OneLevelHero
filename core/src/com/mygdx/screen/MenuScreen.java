@@ -65,7 +65,7 @@ public class MenuScreen implements Screen {
 		collectionButton = new TextButton("콜렉션", Assets.skin);
 		exitButton = new TextButton("종료", Assets.skin);
 
-		Viewport vp = stage.getViewport();
+		Viewport viewport = stage.getViewport();
 
 		startButton.addListener(new InputListener() {
 			@Override
@@ -134,13 +134,13 @@ public class MenuScreen implements Screen {
 		float heighttest = 0.38f;
 		float widthtest = 0.2f;
 
-		Gdx.app.log("ViewPort", String.valueOf(heighttest * vp.getViewportHeight()));
+		Gdx.app.log("ViewPort", String.valueOf(heighttest * viewport.getViewportHeight()));
 
-		int realheight = (int) (heighttest * vp.getViewportHeight());
-		int realwidth = (int) (widthtest * vp.getViewportWidth());
+		int realheight = (int) (heighttest * viewport.getViewportHeight());
+		int realwidth = (int) (widthtest * viewport.getViewportWidth());
 
-		Assets.logo.setHeight((int) (0.4f * vp.getViewportHeight()));
-		Assets.logo.setWidth((int) (0.6f * vp.getViewportWidth()));
+		Assets.logo.setHeight((int) (0.4f * viewport.getViewportHeight()));
+		Assets.logo.setWidth((int) (0.6f * viewport.getViewportWidth()));
 
 		table.setFillParent(true);
 		//		table.debug(); 
@@ -153,7 +153,7 @@ public class MenuScreen implements Screen {
 		//table.add(exitButton).width(realheight).height(realheight).bottom().right();
 		table.row();
 
-		Assets.logo.setPosition((int) (0.2f * vp.getViewportWidth()), (int) (0.3f * vp.getViewportHeight()));
+		Assets.logo.setPosition((int) (0.2f * viewport.getViewportWidth()), (int) (0.3f * viewport.getViewportHeight()));
 		stage.addActor(Assets.logo);
 		stage.addActor(table);
 	}
