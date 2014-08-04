@@ -26,10 +26,9 @@ public class MenuScreen implements Screen {
 	TextButton exitButton;
 	TextButton collectionButton;
 	TextButtonStyle textButtonStyle;
-
 	Image logo;
-
 	BitmapFont font;
+
 	public static Sound sound = Gdx.audio.newSound(Gdx.files.internal("data/Test.mp3"));
 	public static long id = sound.play(Assets.musicVolume);
 
@@ -52,14 +51,12 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void show() {
-
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 		Table table = new Table(Assets.skin);
 
 		Assets.load();
 		Assets.buttonload();
-
 		//logo.setDrawable(Assets.logo);
 
 		startButton = new TextButton("새로운 시작", Assets.skin);
@@ -137,7 +134,7 @@ public class MenuScreen implements Screen {
 		float heighttest = 0.38f;
 		float widthtest = 0.2f;
 
-		System.out.println(heighttest * vp.getViewportHeight());
+		Gdx.app.log("ViewPort", String.valueOf(heighttest * vp.getViewportHeight()));
 
 		int realheight = (int) (heighttest * vp.getViewportHeight());
 		int realwidth = (int) (widthtest * vp.getViewportWidth());
@@ -157,9 +154,7 @@ public class MenuScreen implements Screen {
 		table.row();
 
 		Assets.logo.setPosition((int) (0.2f * vp.getViewportWidth()), (int) (0.3f * vp.getViewportHeight()));
-
 		stage.addActor(Assets.logo);
-
 		stage.addActor(table);
 	}
 

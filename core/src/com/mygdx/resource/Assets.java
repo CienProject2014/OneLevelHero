@@ -11,7 +11,6 @@ public class Assets {
 	public static Skin skin;
 	public static TextureRegionDrawable ibuttond;
 	public static TextureRegionDrawable ibuttonu;
-
 	public static TextureRegionDrawable menu_button_down;
 	public static TextureRegionDrawable menu_button_up;
 	public static TextureRegionDrawable menu_button_toggle;
