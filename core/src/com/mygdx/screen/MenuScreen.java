@@ -16,7 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 
@@ -34,6 +33,7 @@ public class MenuScreen implements Screen {
 	SpriteBatch batch;
 	Sprite sprite;
 	BitmapFont font;
+
 	private static Music music = Gdx.audio.newMusic(Gdx.files
 			.internal("data/Test.mp3"));
 
@@ -69,7 +69,7 @@ public class MenuScreen implements Screen {
 		Image background = new Image(texture);
 
 		stage = new Stage();
-		Viewport vp = stage.getViewport();
+		Assets.loadSize(stage);
 		Gdx.input.setInputProcessor(stage);
 		Table table = new Table(Assets.skin);
 
@@ -168,11 +168,11 @@ public class MenuScreen implements Screen {
 		float heighttest = 0.38f;
 		float widthtest = 0.2f;
 
-		int realheight = (int) (heighttest * vp.getViewportHeight());
-		int realwidth = (int) (widthtest * vp.getViewportWidth());
+		int realheight = (int) (heighttest * Assets.realHeight);
+		int realwidth = (int) (widthtest * Assets.realWidth);
 
-		Assets.logo.setHeight((int) (0.4f * vp.getViewportHeight()));
-		Assets.logo.setWidth((int) (0.6f * vp.getViewportWidth()));
+		Assets.logo.setHeight((int) (0.4f * Assets.realHeight));
+		Assets.logo.setWidth((int) (0.6f * Assets.realWidth));
 		table.setFillParent(true);
 		// table.debug();
 		table.add(extraButton).expand().width(realwidth * 1.3f)
@@ -187,9 +187,9 @@ public class MenuScreen implements Screen {
 				.right();
 		// table.add(exitButton).width(realheight).height(realheight).bottom().right();
 		table.row();
-
-		Assets.logo.setPosition((int) (0.2f * vp.getViewportWidth()),
-				(int) (0.3f * vp.getViewportHeight()));
+		background.setSize(Assets.realWidth, Assets.realHeight);
+		Assets.logo.setPosition((int) (0.2f * Assets.realWidth),
+				(int) (0.3f * Assets.realHeight));
 		stage.addActor(background);
 		stage.addActor(Assets.logo);
 		stage.addActor(table);

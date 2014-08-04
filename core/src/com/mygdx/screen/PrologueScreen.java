@@ -62,6 +62,7 @@ public class PrologueScreen implements Screen {
 		table = new Table();
 		table.setFillParent(true);
 		scene = new Scene(table, batch);
+		scene.loadstage(stage);
 		scene.load("Prologue-scene-1");
 		scene.start();
 

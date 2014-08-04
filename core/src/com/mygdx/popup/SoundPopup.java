@@ -199,7 +199,7 @@ public class SoundPopup extends Dialog {
 	@Override
 	protected void result(Object object) {
 		// TODO Auto-generated method stub
-		if (object == "remove") {
+		if (object.equals("remove")) {
 			remove();
 		}
 	}

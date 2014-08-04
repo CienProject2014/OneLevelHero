@@ -3,9 +3,11 @@ package com.mygdx.resource;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class Assets {
 	public static Skin skin;
@@ -30,6 +32,15 @@ public class Assets {
 
 	public static float soundVolume = 0.5f;
 	public static float musicVolume = 0.5f;
+
+	public static float realWidth;
+	public static float realHeight;
+
+	public static void loadSize(Stage stage) {
+		Viewport vp = stage.getViewport();
+		realWidth = vp.getViewportWidth();
+		realHeight = vp.getViewportHeight();
+	}
 
 	public static void load() {
 
