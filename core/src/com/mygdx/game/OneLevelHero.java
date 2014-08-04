@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.resource.Assets;
-import com.mygdx.screen.WorldMapScreen;
+import com.mygdx.screen.MenuScreen;
 
 public class OneLevelHero extends Game {
 	SpriteBatch batch;
@@ -15,7 +15,7 @@ public class OneLevelHero extends Game {
 		/*batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");*/
 		Assets.load();
-		setScreen(new WorldMapScreen(this));
+		setScreen(new MenuScreen(this));
 	}
 
 	/*	@Override
