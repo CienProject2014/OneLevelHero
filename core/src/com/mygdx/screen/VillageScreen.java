@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.mygdx.game.OneLevelHero;
-import com.mygdx.stagemanager.VillageStage;
+import com.mygdx.stage.VillageStage;
 
 public class VillageScreen implements Screen {
 
@@ -73,9 +73,9 @@ public class VillageScreen implements Screen {
 		// TODO Auto-generated method stub
 		batch = new SpriteBatch();
 
-		vs1 = new VillageStage("Blackwood-0");
+		vs1 = new VillageStage("Blackwood-0", game);
 		Gdx.input.setInputProcessor(vs1);
-		vs2 = new VillageStage("Blackwood-1");
+		vs2 = new VillageStage("Blackwood-1", game);
 
 		ChangeListener sift = new ChangeListener() {
 
@@ -115,7 +115,8 @@ public class VillageScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-
+		vs1.dispose();
+		vs2.dispose();
 	}
 
 }

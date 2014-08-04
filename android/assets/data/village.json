@@ -7,18 +7,18 @@
 			"building":
 			[
 				{
-					"name" : "초코퐁듀가게",
+					"name" : "블랙우드여관",
 					"imagesource" : "village/chocho.png",
 					"function" : "초코퐁듀마시쪙",
-					"positionx" : "900",
-					"positiony" : "500"
+					"positionx" : "600",
+					"positiony" : "600"
 				},
 				{
-					"name" : "드림팩토리",
+					"name" : "촌장의 집",
 					"imagesource" : "village/factory.png",
 					"function" : "꿈을 만들자",
-					"positionx" : "400",
-					"positiony" : "200"
+					"positionx" : "1400",
+					"positiony" : "400"
 				}
 			],
 			"npc":
@@ -31,15 +31,29 @@
 			]
 		},
 		{
-			"num_of_building":1,
+			"num_of_building":3,
 			"num_of_npc":1,
 			"building":
 			[
 				{
-					"name" : "골동품 가게",
+					"name" : "텔레포트 비콘",
+					"imagesource" : "village/goldong.png",
+					"function" : "골동품을 다룹니다",
+					"positionx" : "100",
+					"positiony" : "100"
+				},
+				{
+					"name" : "잡화점",
 					"imagesource" : "village/goldong.png",
 					"function" : "골동품을 다룹니다",
 					"positionx" : "400",
+					"positiony" : "700"
+				},
+				{
+					"name" : "모에라에 여신상",
+					"imagesource" : "village/goldong.png",
+					"function" : "골동품을 다룹니다",
+					"positionx" : "900",
 					"positiony" : "400"
 				}
 			],
