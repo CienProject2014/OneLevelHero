@@ -62,7 +62,6 @@ public class MenuScreen implements Screen {
 	public void show() {
 		// TODO Auto-generated method stub
 		getMusic().setVolume(Assets.musicVolume);
-
 		getMusic().play();
 		Texture texture = new Texture(
 				Gdx.files.internal("data/MainMenu_Background.png"));
@@ -165,34 +164,42 @@ public class MenuScreen implements Screen {
 			}
 		});
 
-		float heighttest = 0.38f;
-		float widthtest = 0.2f;
-
-		int realheight = (int) (heighttest * Assets.realHeight);
-		int realwidth = (int) (widthtest * Assets.realWidth);
+		int realheight = (int) (Assets.realHeight);
+		int realwidth = (int) (Assets.realWidth);
 
 		Assets.logo.setHeight((int) (0.4f * Assets.realHeight));
 		Assets.logo.setWidth((int) (0.6f * Assets.realWidth));
 		table.setFillParent(true);
+
+		// table.setSize(realheight, realwidth);
 		// table.debug();
-		table.add(extraButton).expand().width(realwidth * 1.3f)
-				.height(realheight * 1.3f).top().left();
+		table.add(extraButton).height(0.35f * realheight)
+				.width(0.3f * realwidth).expand().top().left();
 		// table.add(Assets.logo).center();
-		table.add(creditButton).width(realwidth).height(realheight).top()
-				.right();
+		table.add(creditButton).height(0.35f * realheight)
+				.width(0.3f * realwidth).top().right();
 		table.row();
-		table.add(startButton).width(realwidth).height(realheight).bottom()
-				.left();
-		table.add(optionsButton).width(realwidth).height(realheight).bottom()
-				.right();
+		table.add(startButton).height(0.35f * realheight)
+				.width(0.3f * realwidth).bottom().left();
+		table.add(optionsButton).height(0.35f * realheight)
+				.width(0.3f * realwidth).bottom().right();
 		// table.add(exitButton).width(realheight).height(realheight).bottom().right();
-		table.row();
-		background.setSize(Assets.realWidth, Assets.realHeight);
+
+		// table.row();
+
+		table.debug(); // turn on all debug lines (table, cell, and widget)
+		table.debugTable();
+
 		Assets.logo.setPosition((int) (0.2f * Assets.realWidth),
 				(int) (0.3f * Assets.realHeight));
+
+		background.setSize(realwidth, realheight);
+
 		stage.addActor(background);
 		stage.addActor(Assets.logo);
+
 		stage.addActor(table);
+		// stage.addActor(startButton);
 	}
 
 	@Override
