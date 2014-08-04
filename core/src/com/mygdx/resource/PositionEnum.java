@@ -1,5 +1,5 @@
 package com.mygdx.resource;
 
-public enum Pos {
+public enum PositionEnum {
 	TOPLEFT, TOPCENTER, TOPRIGHT, BOTTOMLEFT, BOTTOMCENTER, BOTTOMRIGHT
 }
