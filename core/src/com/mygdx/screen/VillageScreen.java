@@ -15,6 +15,7 @@ public class VillageScreen implements Screen {
 	OneLevelHero game;
 	Image background;
 	SpriteBatch batch;
+	String villagename;
 
 	VillageStage vs1;
 	VillageStage vs2;
@@ -25,6 +26,11 @@ public class VillageScreen implements Screen {
 
 	public VillageScreen(OneLevelHero game) {
 		this.game = game;
+	}
+
+	public VillageScreen(OneLevelHero game, String villagename) {
+		this.game = game;
+		this.villagename = villagename;
 	}
 
 	@Override
@@ -73,9 +79,9 @@ public class VillageScreen implements Screen {
 		// TODO Auto-generated method stub
 		batch = new SpriteBatch();
 
-		vs1 = new VillageStage("Blackwood-0", game);
+		vs1 = new VillageStage(villagename + "-0", game);
 		Gdx.input.setInputProcessor(vs1);
-		vs2 = new VillageStage("Blackwood-1", game);
+		vs2 = new VillageStage(villagename + "-1", game);
 
 		ChangeListener sift = new ChangeListener() {
 
