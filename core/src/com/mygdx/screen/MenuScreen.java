@@ -76,8 +76,6 @@ public class MenuScreen implements Screen {
 		Assets.buttonload();
 		Assets.menuScreenButtonLoad();
 
-		// logo.setDrawable(Assets.logo);
-
 		startButton = new ImageButton(Assets.start_before, Assets.start_after);
 		optionsButton = new ImageButton(Assets.option_before,
 				Assets.option_after);
@@ -171,11 +169,8 @@ public class MenuScreen implements Screen {
 		Assets.logo.setWidth((int) (0.6f * Assets.realWidth));
 		table.setFillParent(true);
 
-		// table.setSize(realheight, realwidth);
-		// table.debug();
 		table.add(extraButton).height(0.35f * realheight)
 				.width(0.3f * realwidth).expand().top().left();
-		// table.add(Assets.logo).center();
 		table.add(creditButton).height(0.35f * realheight)
 				.width(0.3f * realwidth).top().right();
 		table.row();
@@ -183,11 +178,8 @@ public class MenuScreen implements Screen {
 				.width(0.3f * realwidth).bottom().left();
 		table.add(optionsButton).height(0.35f * realheight)
 				.width(0.3f * realwidth).bottom().right();
-		// table.add(exitButton).width(realheight).height(realheight).bottom().right();
 
-		// table.row();
-
-		table.debug(); // turn on all debug lines (table, cell, and widget)
+		table.debug();
 		table.debugTable();
 
 		Assets.logo.setPosition((int) (0.2f * Assets.realWidth),
@@ -199,7 +191,6 @@ public class MenuScreen implements Screen {
 		stage.addActor(Assets.logo);
 
 		stage.addActor(table);
-		// stage.addActor(startButton);
 	}
 
 	@Override
