@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.PrologueScene;
@@ -41,6 +40,7 @@ public class GameScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		stage.draw();
+		Table.drawDebug(stage);
 	}
 
 	@Override
@@ -55,9 +55,12 @@ public class GameScreen implements Screen {
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 
-		Viewport vp = stage.getViewport();
+		float realheight = Assets.realHeight;
+		float realwidth = Assets.realWidth;
 
-		Table uitable = new Table(Assets.skin);
+		Table fulltable = new Table(Assets.skin);
+		Table toptable = new Table(Assets.skin);
+		Table buttomtable = new Table(Assets.skin);
 
 		Assets.buttonload();
 
@@ -185,17 +188,30 @@ public class GameScreen implements Screen {
 		}); // test
 
 		// 테이블 설정
-		uitable.setFillParent(true);
-		uitable.add(minimapButton).expand().width(240).height(50).top().left();
-		uitable.add(inventoryButton).width(240).height(50).top().left();
-		uitable.add(optionButton).width(240).height(50).top().left();
-		uitable.add(battleButton).width(240).height(50).top().right();
-		// uitable.row();
-		uitable.add(statusButton1).width(320).height(100).bottom().left();
-		uitable.add(statusButton2).width(320).height(100).bottom().left();
-		uitable.add(statusButton3).width(320).height(100).bottom().left();
 
-		stage.addActor(uitable);
+		fulltable.setFillParent(true);
+
+		toptable.add(minimapButton).expand().width(100).height(50).top().left();
+		toptable.add(inventoryButton).width(100).height(50).top().left();
+		toptable.add(optionButton).width(100).height(50).top().left();
+		toptable.add(battleButton).width(100).height(50).top().right();
+
+		buttomtable.add(statusButton1).width(realwidth / 3)
+				.height(realheight / 7).bottom().left();
+		buttomtable.add(statusButton2).width(realwidth / 3)
+				.height(realheight / 7).bottom().left();
+		buttomtable.add(statusButton3).width(realwidth / 3)
+				.height(realheight / 7).bottom().left();
+
+		fulltable.add(toptable).expand().top();
+		fulltable.row();
+		fulltable.add(buttomtable).bottom();
+
+		fulltable.debug();
+		toptable.debug();
+		buttomtable.debug();
+
+		stage.addActor(fulltable);
 	}
 
 	@Override
