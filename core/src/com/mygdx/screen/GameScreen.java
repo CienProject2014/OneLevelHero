@@ -3,19 +3,16 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.OneLevelHero;
-import com.mygdx.resource.Assets;
+import com.mygdx.resource.GameUi;
 import com.mygdx.resource.PrologueScene;
 
-public class GameScreen implements Screen {
+public class GameScreen extends GameUi implements Screen {
 
 	OneLevelHero game;
 	ImageButton optionButton;
@@ -53,165 +50,14 @@ public class GameScreen implements Screen {
 	public void show() {
 		// TODO Auto-generated method stub
 		stage = new Stage();
+
+		GameUi ui = new GameUi();
+
 		Gdx.input.setInputProcessor(stage);
 
-		float realheight = Assets.realHeight;
-		float realwidth = Assets.realWidth;
+		ui.addGameUi();
+		stage.addActor(ui);
 
-		Table fulltable = new Table(Assets.skin);
-		Table toptable = new Table(Assets.skin);
-		Table buttomtable = new Table(Assets.skin);
-
-		Assets.buttonload();
-
-		optionButton = new ImageButton(Assets.ibuttond, Assets.ibuttonu);
-		minimapButton = new ImageButton(Assets.ibuttond, Assets.ibuttonu);
-		inventoryButton = new ImageButton(Assets.ibuttond, Assets.ibuttonu);
-		statusButton1 = new TextButton("status1", Assets.skin);
-		statusButton2 = new TextButton("status2", Assets.skin);
-		statusButton3 = new TextButton("status3", Assets.skin);
-		battleButton = new TextButton("Battle", Assets.skin);
-		background = new Image(new Texture("prologue/scene1.jpg"));
-
-		// 버튼 동작
-		statusButton1.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.log("정보", "Status1의 상태가 나타납니다.");
-			}
-		});
-		statusButton2.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.log("정보", "Status2의 상태가 나타납니다.");
-			}
-		});
-		statusButton3.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.log("정보", "Status3의 상태가 나타납니다.");
-			}
-		});
-		inventoryButton.addListener(new InputListener() {
-
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				Gdx.app.log("정보", "inventoryPopUp창이 나타납니다.");
-			}
-		});
-		optionButton.addListener(new InputListener() {
-
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				Gdx.app.log("정보", "OptionScreen이 나타납니다.");
-			}
-		});
-
-		minimapButton.addListener(new InputListener() {
-
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				Gdx.app.log("정보", "minimap창이 나타납니다.");
-			}
-		});
-
-		battleButton.addListener(new InputListener() {
-
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				game.setScreen(new BattleScreen(game));
-				Gdx.app.log("정보", "전투가 시작됩니다");
-			}
-		}); // test
-
-		// 테이블 설정
-
-		fulltable.setFillParent(true);
-
-		toptable.add(minimapButton).expand().width(100).height(50).top().left();
-		toptable.add(inventoryButton).width(100).height(50).top().left();
-		toptable.add(optionButton).width(100).height(50).top().left();
-		toptable.add(battleButton).width(100).height(50).top().right();
-
-		buttomtable.add(statusButton1).width(realwidth / 3)
-				.height(realheight / 7).bottom().left();
-		buttomtable.add(statusButton2).width(realwidth / 3)
-				.height(realheight / 7).bottom().left();
-		buttomtable.add(statusButton3).width(realwidth / 3)
-				.height(realheight / 7).bottom().left();
-
-		fulltable.add(toptable).expand().top();
-		fulltable.row();
-		fulltable.add(buttomtable).bottom();
-
-		fulltable.debug();
-		toptable.debug();
-		buttomtable.debug();
-
-		stage.addActor(fulltable);
 	}
 
 	@Override
