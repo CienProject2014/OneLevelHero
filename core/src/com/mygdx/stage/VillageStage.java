@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.screen.MenuScreen;
 
 public class VillageStage extends Stage {
 
@@ -27,8 +28,10 @@ public class VillageStage extends Stage {
 	int village_state;
 	int num_of_building;
 	int num_of_npc;
+	int num_of_exit;
 	// ImageButton buildingbutton[];
 	Label buildingbutton[];
+	TextButton exitbutton;
 
 	public TextButton sift_button;
 	public Texture background;
@@ -75,12 +78,48 @@ public class VillageStage extends Stage {
 				.toString());
 		num_of_npc = Integer
 				.parseInt(this_village.get("num_of_npc").toString());
+		num_of_exit = Integer.parseInt(this_village.get("num_of_exit")
+				.toString());
 
 		JSONArray buildingarray = (JSONArray) this_village.get("building");
 		JSONArray npcarray = (JSONArray) this_village.get("npc");
+		JSONArray exitarray = (JSONArray) this_village.get("exit");
 
 		// buildingbutton = new ImageButton[num_of_building];
 		buildingbutton = new Label[num_of_building];
+		for (int i = 0; i < num_of_exit; i++) {
+			JSONObject exit = (JSONObject) exitarray.get(i);
+			exitbutton = new TextButton("Exit", Assets.skin);
+
+			int positionx = Integer.parseInt((String) exit.get("positionx"));
+			int positiony = Integer.parseInt((String) exit.get("positiony"));
+
+			exitbutton.moveBy(positionx, positiony);
+
+			addActor(exitbutton);
+
+			exitbutton.addListener(new InputListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y,
+						int pointer, int button) {
+					// TODO Auto-generated method stub
+					System.out.println("down");
+					return true;
+				}
+
+				@Override
+				public void touchUp(InputEvent event, float x, float y,
+						int pointer, int button) {
+					// TODO Auto-generated method stub
+					System.out.println("up");
+
+					// 월드맵으로 바꾸삼
+					game.setScreen(new MenuScreen(game));
+
+					super.touchUp(event, x, y, pointer, button);
+				}
+			});
+		}
 
 		for (int i = 0; i < num_of_building; i++) {
 			JSONObject building = (JSONObject) buildingarray.get(i);
@@ -128,6 +167,7 @@ public class VillageStage extends Stage {
 					System.out.println("up");
 					event.getListenerActor().setColor(Color.WHITE);
 
+					// 기능 클래스 연결
 					// game.setScreen(new MenuScreen(game));
 
 					super.touchUp(event, x, y, pointer, button);

@@ -4,6 +4,7 @@
 		{
 			"num_of_building":2,
 			"num_of_npc":1,
+			"num_of_exit":1,
 			"building":
 			[
 				{
@@ -28,11 +29,20 @@
 					"positionx" : "300",
 					"positiony" : "300"
 				}
+			],
+			"exit":
+			[
+				{
+					"name" : "월드맵으로",
+					"positionx" : "610",
+					"positiony" : "10"
+				}
 			]
 		},
 		{
 			"num_of_building":3,
 			"num_of_npc":1,
+			"num_of_exit":0,
 			"building":
 			[
 				{
@@ -72,6 +82,7 @@
 		{
 			"num_of_building":2,
 			"num_of_npc":1,
+			"num_of_exit":0,
 			"builiding":
 			[
 				{
