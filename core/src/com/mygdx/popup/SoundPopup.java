@@ -33,27 +33,30 @@ public class SoundPopup extends Dialog {
 		float centerx = 0.5f - width / 2;
 		float centery = 0.5f - height / 2;
 		getButtonTable();
-		padTop(60); // set padding on top of the dialog title  
-		getContentTable().defaults(); // set buttons height  
+		padTop(60); // set padding on top of the dialog title
+		getContentTable().defaults(); // set buttons height
 		setResizable(false);
+
 		Assets.buttonload();
 
-		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up, Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
+		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up,
+				Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
 
 		text("배경음\n효과음");
 
 		Viewport vp = scenestage.getViewport();
 
-		setWidth((int) (width * vp.getViewportWidth())); //가로 크기 세팅
-		setHeight((int) (height * vp.getViewportHeight())); //세로 크기 세팅
+		setWidth((int) (width * vp.getViewportWidth())); // 가로 크기 세팅
+		setHeight((int) (height * vp.getViewportHeight())); // 세로 크기 세팅
 
-		setPosition((int) (centerx * vp.getViewportWidth()), (int) (centery * vp.getViewportHeight()));
+		setPosition((int) (centerx * vp.getViewportWidth()),
+				(int) (centery * vp.getViewportHeight()));
 
-		setMovable(true); //드래그로 이동가능  
+		setMovable(true); // 드래그로 이동가능
 
-		//button("HelloWorld", new InputListener());
-		//다이얼로그 구현
-		//다이얼로그조절
+		// button("HelloWorld", new InputListener());
+		// 다이얼로그 구현
+		// 다이얼로그조절
 
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 
@@ -73,21 +76,22 @@ public class SoundPopup extends Dialog {
 		table.add(pan);
 		table.add(panValue);
 
-		//table.setFillParent(true);
+		// table.setFillParent(true);
 		table.top();
 
 		volume.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				//sound.setVolume(soundId, volume.getValue());
+
+				// sound.setVolume(soundId, volume.getValue());
 				Assets.musicVolume = volume.getValue() / 100;
 				volumeValue.setText("" + Assets.musicVolume * 100);
-				MenuScreen.sound.setVolume(MenuScreen.id, volume.getValue() / 100);
+				MenuScreen.getMusic().setVolume(Assets.musicVolume);
 
 			}
 		});
 		pan.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				//sound.setPan(soundId, pan.getValue(), volume.getValue());
+
 				panValue.setText("" + pan.getValue());
 			}
 		});
@@ -98,12 +102,12 @@ public class SoundPopup extends Dialog {
 	}
 
 	public float getPrefWidth() {
-		// force dialog width  
+
 		return 480f;
 	}
 
 	public float getPrefHeight() {
-		// force dialog height  
+
 		return 240f;
 	}
 
@@ -196,7 +200,9 @@ public class SoundPopup extends Dialog {
 	@Override
 	protected void result(Object object) {
 		// TODO Auto-generated method stub
-		if (object == "remove") {
+
+		if (object.equals("remove")) {
+
 			remove();
 		}
 	}

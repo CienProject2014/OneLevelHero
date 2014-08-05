@@ -1,0 +1,54 @@
+{
+	"Village-1":
+	[
+		{
+			"Type":"default",
+			"Monster":{},
+			"Event":{},
+		},
+		
+		{
+			"Type":"default",
+			"Monster":{},
+			"Event":{},
+		},
+		
+		{
+			"Type":"haveRight",
+			"Monster":{},
+			"Event":{},
+		},
+		
+		{
+			"Type":"Final",
+			"Monster":{},
+			"Event":{},
+		}
+	]
+	"Village-2":
+	[
+		{
+			"Type":"haveBoth",
+			"Monster":{},
+			"Event":{},
+		},
+		
+		{
+			"Type":"haveRight",
+			"Monster":{},
+			"Event":{},
+		}
+		
+		{
+			"Type":"",
+			"Monster":{},
+			"Event":{},
+		}
+		
+		{
+			"Type":"Final",
+			"Monster":{},
+			"Event":{},
+		}
+	]
+}

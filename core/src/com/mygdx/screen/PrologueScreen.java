@@ -59,16 +59,19 @@ public class PrologueScreen implements Screen {
 	public void show() {
 		stage = new Stage();
 		batch = new SpriteBatch();
-		Table table = new Table();
+		table = new Table();
 		table.setFillParent(true);
+
 		scene = new PrologueScene(table, batch);
+		scene.loadstage(stage);
 		scene.load("Prologue-scene-1");
 		scene.start();
 
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				// TODO Auto-generated method stub
 				scene.next();
 
@@ -76,7 +79,6 @@ public class PrologueScreen implements Screen {
 					game.setScreen(new GameScreen(game));
 				}
 
-				//stage.removeListener(this);
 				return true;
 			}
 		});
@@ -87,25 +89,21 @@ public class PrologueScreen implements Screen {
 
 	@Override
 	public void hide() {
-		System.out.println("hide");
 
 	}
 
 	@Override
 	public void pause() {
-		System.out.println("pause");
 
 	}
 
 	@Override
 	public void resume() {
-		System.out.println("resume");
 
 	}
 
 	@Override
 	public void dispose() {
-		System.out.println("dispose");
 
 	}
 

@@ -67,8 +67,7 @@ public class GameScreen implements Screen {
 		statusButton1 = new TextButton("status1", Assets.skin);
 		statusButton2 = new TextButton("status2", Assets.skin);
 		statusButton3 = new TextButton("status3", Assets.skin);
-		battleButton = new TextButton("Battle", Assets.skin); // test
-
+		battleButton = new TextButton("Battle", Assets.skin);
 		background = new Image(new Texture("prologue/scene1.jpg"));
 
 		// 버튼 동작
