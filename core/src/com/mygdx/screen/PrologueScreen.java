@@ -35,7 +35,6 @@ public class PrologueScreen implements Screen {
 
 	public PrologueScreen(OneLevelHero game) {
 		this.game = game;
-		Gdx.app.log("d", "d");
 	}
 
 	@Override
@@ -70,8 +69,7 @@ public class PrologueScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				// TODO Auto-generated method stub
 				scene.next();
 

@@ -60,3 +60,6 @@ build/
 
 ## OS Specific
 .DS_Store
+
+## DesktopLauncher
+desktop/src/

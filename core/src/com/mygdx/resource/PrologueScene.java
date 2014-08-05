@@ -25,8 +25,8 @@ public class PrologueScene {
 	String text;
 
 	// 케릭터
-	Characters characloader;
-	Texture charactexture;
+	Characters characterLoader;
+	Texture characterTexture;
 	Image character;
 
 	// 배경
@@ -48,7 +48,7 @@ public class PrologueScene {
 
 		scriptloader = new Scripts(1);
 		bgloader = new Backgrounds(1);
-		characloader = new Characters(1);
+		characterLoader = new Characters(1);
 
 		this.table = table;
 	}
@@ -62,7 +62,7 @@ public class PrologueScene {
 
 		this.scene = scene;
 		// 신 갯수, 첫번째(Prologue)만 받아옴
-		num = characloader.getNum(scene.split("-")[0]);
+		num = characterLoader.getNum(scene.split("-")[0]);
 
 		// 배경 불러옴
 		bgtexture = bgloader.BackgroundGetter(scene);
@@ -70,26 +70,29 @@ public class PrologueScene {
 		// 텍스트 파싱
 		text = scriptloader.ScriptGetter(scene);
 		script = new Label(text, Assets.skin);
+
 		// String str = "Prologue"+"-"+"scene"+"-"+"1";
 		Assets.loadSize(stage);
 
 		// 케릭터 불러옴
-		charactexture = characloader.ImageGetter(scene);
-		character = new Image(charactexture);
+		characterTexture = characterLoader.ImageGetter(scene);
+		character = new Image(characterTexture);
 
 		// size설정
-		script.setSize(Assets.realWidth, Assets.realHeight);
+		script.setFontScale(0.7f);
+		script.setWrap(true);
+		script.setWidth(Assets.realWidth * 0.6f);
+
 		character.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
-		character
-				.setPosition(0.6f * Assets.realWidth, 0.4f * Assets.realHeight);
+		character.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
 
 	}
 
 	// 처음 시작
 	public void start() {
-		table.bottom(); // table 전체를 화면 아래로 쪽으로
+		table.bottom().left(); // table 전체를 화면 아래로 쪽으로
 		table.add(character);
-		table.add(script);
+		table.add(script).width(script.getWidth());
 	}
 
 	// 신(scene)을 넘기기 위한 함수
@@ -115,7 +118,7 @@ public class PrologueScene {
 		load(scene);
 
 		table.add(character);
-		table.add(script);
+		table.add(script).width(script.getWidth());
 		alpha = 0;
 		timeAcc = 0;
 	}
