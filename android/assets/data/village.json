@@ -1,0 +1,138 @@
+{
+	"Blackwood":
+	[
+		{
+			"num_of_building":2,
+			"num_of_npc":1,
+			"num_of_exit":1,
+			"building":
+			[
+				{
+					"name" : "블랙우드여관",
+					"imagesource" : "village/chocho.png",
+					"function" : "초코퐁듀마시쪙",
+					"positionx" : "600",
+					"positiony" : "600"
+				},
+				{
+					"name" : "촌장의 집",
+					"imagesource" : "village/factory.png",
+					"function" : "꿈을 만들자",
+					"positionx" : "1400",
+					"positiony" : "400"
+				}
+			],
+			"npc":
+			[
+				{
+					"name" : "거지새끼",
+					"positionx" : "300",
+					"positiony" : "300"
+				}
+			],
+			"exit":
+			[
+				{
+					"name" : "월드맵으로",
+					"positionx" : "610",
+					"positiony" : "10"
+				}
+			]
+		},
+		{
+			"num_of_building":3,
+			"num_of_npc":1,
+			"num_of_exit":0,
+			"building":
+			[
+				{
+					"name" : "텔레포트 비콘",
+					"imagesource" : "village/goldong.png",
+					"function" : "골동품을 다룹니다",
+					"positionx" : "100",
+					"positiony" : "100"
+				},
+				{
+					"name" : "잡화점",
+					"imagesource" : "village/goldong.png",
+					"function" : "골동품을 다룹니다",
+					"positionx" : "400",
+					"positiony" : "700"
+				},
+				{
+					"name" : "모에라에 여신상",
+					"imagesource" : "village/goldong.png",
+					"function" : "골동품을 다룹니다",
+					"positionx" : "900",
+					"positiony" : "400"
+				}
+			],
+			"npc":
+			[
+				{
+					"name" : "미개한 인간",
+					"positionx" : "600",
+					"positiony" : "600"
+				}
+			]	
+		}
+	],
+	"Test":
+	[
+		{
+			"num_of_building":2,
+			"num_of_npc":1,
+			"num_of_exit":0,
+			"builiding":
+			[
+				{
+					"name" : "대장간",
+					"function" : "무기를 만듭니다",
+					"positionx" : "100",
+					"positiony" : "100"
+				},
+				{
+					"name" : "신전",
+					"function" : "저장을 합니다",
+					"positionx" : "200",
+					"positiony" : "200"
+				}
+			],
+			"npc":
+			[
+				{
+					"name" : "거지새끼",
+					"positionx" : "300",
+					"positiony" : "300"
+				}
+			]
+		},
+		{
+			"num_of_building":3,
+			"num_of_npc":1,
+			"builiding":
+			[
+				{
+					"name" : "잡화점",
+					"function" : "잡화를 다룹니다",
+					"positionx" : "400",
+					"positiony" : "400"
+				},
+				{
+					"name" : "도서관",
+					"function" : "하아...",
+					"positionx" : "500",
+					"positiony" : "500"
+				}
+			],
+			"npc":
+			[
+				{
+					"name" : "미개한 인간",
+					"positionx" : "600",
+					"positiony" : "600"
+				}
+			]	
+		}
+	]
+}
