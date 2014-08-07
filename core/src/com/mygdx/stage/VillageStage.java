@@ -54,7 +54,6 @@ public class VillageStage extends Stage {
 
 	// 마을 정보 로딩
 	private void jsonread() {
-
 		FileHandle file = Gdx.files.internal("data/village.json");
 		String text = file.readString();
 		Object obj = JSONValue.parse(text);
@@ -68,18 +67,14 @@ public class VillageStage extends Stage {
 		viewportwidth = this.getWidth();
 		viewportheight = this.getHeight();
 
-		background = new Texture(Gdx.files.internal("village/blackwood"
-				+ village_state + ".png"));
+		background = new Texture(Gdx.files.internal("village/blackwood" + village_state + ".png"));
 
 		JSONArray village_data = (JSONArray) object.get(village_name);
 		JSONObject this_village = (JSONObject) village_data.get(village_state);
 
-		num_of_building = Integer.parseInt(this_village.get("num_of_building")
-				.toString());
-		num_of_npc = Integer
-				.parseInt(this_village.get("num_of_npc").toString());
-		num_of_exit = Integer.parseInt(this_village.get("num_of_exit")
-				.toString());
+		num_of_building = Integer.parseInt(this_village.get("num_of_building").toString());
+		num_of_npc = Integer.parseInt(this_village.get("num_of_npc").toString());
+		num_of_exit = Integer.parseInt(this_village.get("num_of_exit").toString());
 
 		JSONArray buildingarray = (JSONArray) this_village.get("building");
 		JSONArray npcarray = (JSONArray) this_village.get("npc");
@@ -100,16 +95,14 @@ public class VillageStage extends Stage {
 
 			exitbutton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					// TODO Auto-generated method stub
 					System.out.println("down");
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					// TODO Auto-generated method stub
 					System.out.println("up");
 
@@ -132,19 +125,16 @@ public class VillageStage extends Stage {
 			 * buildingbutton[i] = new ImageButton(buildingimg);
 			 */
 
-			buildingbutton[i] = new Label((String) building.get("name"),
-					Assets.skin);
+			buildingbutton[i] = new Label((String) building.get("name"), Assets.skin);
 
-			int positionx = Integer
-					.parseInt((String) building.get("positionx"));
-			int positiony = Integer
-					.parseInt((String) building.get("positiony"));
+			int positionx = Integer.parseInt((String) building.get("positionx"));
+			int positiony = Integer.parseInt((String) building.get("positiony"));
 
 			positionx = (int) (viewportwidth * (positionx / 1920.0));
 			positiony = (int) (viewportheight * (positiony / 1080.0));
 
-			System.out.println(positionx);
-			System.out.println(positiony);
+			Gdx.app.log("positionx", String.valueOf(positionx));
+			Gdx.app.log("positiony", String.valueOf(positiony));
 
 			buildingbutton[i].moveBy(positionx, positiony);
 
@@ -152,8 +142,7 @@ public class VillageStage extends Stage {
 
 			buildingbutton[i].addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					// TODO Auto-generated method stub
 					System.out.println("down");
 					event.getListenerActor().setColor(Color.RED);
@@ -161,8 +150,7 @@ public class VillageStage extends Stage {
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					// TODO Auto-generated method stub
 					System.out.println("up");
 					event.getListenerActor().setColor(Color.WHITE);
