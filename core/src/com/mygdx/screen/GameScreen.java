@@ -12,7 +12,7 @@ import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.GameUi;
 import com.mygdx.resource.PrologueScene;
 
-public class GameScreen extends GameUi implements Screen {
+public class GameScreen implements Screen {
 
 	OneLevelHero game;
 	ImageButton optionButton;
@@ -51,11 +51,10 @@ public class GameScreen extends GameUi implements Screen {
 		// TODO Auto-generated method stub
 		stage = new Stage();
 
-		GameUi ui = new GameUi();
+		GameUi ui = new GameUi(game);
 
 		Gdx.input.setInputProcessor(stage);
 
-		ui.addGameUi();
 		stage.addActor(ui);
 
 	}

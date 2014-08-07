@@ -3,7 +3,6 @@ package com.mygdx.stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -12,8 +11,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.screen.MenuScreen;
@@ -21,7 +22,7 @@ import com.mygdx.screen.MenuScreen;
 public class VillageStage extends Stage {
 
 	OneLevelHero game;
-	JSONParser parser = new JSONParser();
+	// JSONParser parser = new JSONParser();
 	JSONObject object;
 	String delimiter = "-";
 	String village_name;
@@ -65,11 +66,19 @@ public class VillageStage extends Stage {
 	// 마을 정보에 맞게 스테이지 형성
 	private void village_setter() {
 
+		Viewport vp = this.getViewport();
+
 		viewportwidth = this.getWidth();
-		viewportheight = this.getHeight();
+		viewportheight = this.getHeight() * 2;
+
+		// vp.setWorldSize(viewportwidth, viewportheight * 0.8f);
 
 		background = new Texture(Gdx.files.internal("village/blackwood"
 				+ village_state + ".png"));
+
+		Image backgroundImage = new Image(background);
+		backgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
+		addActor(backgroundImage);
 
 		JSONArray village_data = (JSONArray) object.get(village_name);
 		JSONObject this_village = (JSONObject) village_data.get(village_state);
@@ -93,6 +102,9 @@ public class VillageStage extends Stage {
 
 			int positionx = Integer.parseInt((String) exit.get("positionx"));
 			int positiony = Integer.parseInt((String) exit.get("positiony"));
+
+			positionx = (int) (viewportwidth * (positionx / 1920.0));
+			positiony = (int) (viewportheight * (positiony / 1080.0));
 
 			exitbutton.moveBy(positionx, positiony);
 
@@ -181,6 +193,7 @@ public class VillageStage extends Stage {
 		sift_button = new TextButton("전환", Assets.skin);
 		sift_button.center();
 		addActor(sift_button);
+
 	}
 
 	void keyParser(String key) {

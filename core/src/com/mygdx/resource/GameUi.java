@@ -11,22 +11,28 @@ import com.mygdx.screen.BattleScreen;
 
 public class GameUi extends Table {
 	OneLevelHero game;
+	ImageButton optionButton;
+	ImageButton minimapButton;
+	ImageButton inventoryButton;
+	TextButton statusButton1;
+	TextButton statusButton2;
+	TextButton statusButton3;
+	TextButton battleButton;
 
-	public void addGameUi() {
+	Table toptable;
+	Table buttomtable;
 
-		ImageButton optionButton;
-		ImageButton minimapButton;
-		ImageButton inventoryButton;
-		TextButton statusButton1;
-		TextButton statusButton2;
-		TextButton statusButton3;
-		TextButton battleButton;
+	float realheight;
+	float realwidth;
 
-		Table toptable = new Table(Assets.skin);
-		Table buttomtable = new Table(Assets.skin);
+	public GameUi(OneLevelHero game) {
+		// 초기화
+		this.game = game;
+		toptable = new Table(Assets.skin);
+		buttomtable = new Table(Assets.skin);
 
-		float realheight = Assets.realHeight;
-		float realwidth = Assets.realWidth;
+		realheight = Assets.realHeight;
+		realwidth = Assets.realWidth;
 
 		optionButton = new ImageButton(Assets.ibuttond, Assets.ibuttonu);
 		minimapButton = new ImageButton(Assets.ibuttond, Assets.ibuttonu);
@@ -35,6 +41,35 @@ public class GameUi extends Table {
 		statusButton2 = new TextButton("status2", Assets.skin);
 		statusButton3 = new TextButton("status3", Assets.skin);
 		battleButton = new TextButton("Battle", Assets.skin);
+
+		addListener();
+		makeTable();
+	}
+
+	// 테이블 디자인
+	public void makeTable() {
+
+		this.setFillParent(true);
+
+		toptable.add(minimapButton).expand().width(100).height(50).top().left();
+		toptable.add(inventoryButton).width(100).height(50).top().left();
+		toptable.add(optionButton).width(100).height(50).top().left();
+		toptable.add(battleButton).width(100).height(50).top().right();
+
+		buttomtable.add(statusButton1).width(realwidth / 3)
+				.height(realheight / 7).bottom().left();
+		buttomtable.add(statusButton2).width(realwidth / 3)
+				.height(realheight / 7).bottom().left();
+		buttomtable.add(statusButton3).width(realwidth / 3)
+				.height(realheight / 7).bottom().left();
+
+		this.add(toptable).expand().top();
+		this.row();
+		this.add(buttomtable).bottom();
+	}
+
+	// 리스너 할당
+	public void addListener() {
 
 		// 버튼 동작
 		statusButton1.addListener(new InputListener() {
@@ -147,24 +182,6 @@ public class GameUi extends Table {
 				Gdx.app.log("정보", "전투가 시작됩니다");
 			}
 		}); // test
-
-		this.setFillParent(true);
-
-		toptable.add(minimapButton).expand().width(100).height(50).top().left();
-		toptable.add(inventoryButton).width(100).height(50).top().left();
-		toptable.add(optionButton).width(100).height(50).top().left();
-		toptable.add(battleButton).width(100).height(50).top().right();
-
-		buttomtable.add(statusButton1).width(realwidth / 3)
-				.height(realheight / 7).bottom().left();
-		buttomtable.add(statusButton2).width(realwidth / 3)
-				.height(realheight / 7).bottom().left();
-		buttomtable.add(statusButton3).width(realwidth / 3)
-				.height(realheight / 7).bottom().left();
-
-		this.add(toptable).expand().top();
-		this.row();
-		this.add(buttomtable).bottom();
 
 	}
 }
