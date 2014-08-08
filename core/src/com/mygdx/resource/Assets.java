@@ -43,35 +43,23 @@ public class Assets {
 
 	public static void load() {
 
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
 	}
 
 	public static void buttonload() {
 
-		TextureAtlas textureAtlas = new TextureAtlas("data/imagebutton.atlas");
-		TextureAtlas buttonAtlas = new TextureAtlas("data/Test1.atlas");
+		TextureAtlas buttonAtlas = new TextureAtlas("skin/Test1.atlas");
 
-		ibuttond = new TextureRegionDrawable(
-				textureAtlas.findRegion("buttondown"));
-		ibuttonu = new TextureRegionDrawable(
-				textureAtlas.findRegion("buttonup"));
-
-		menu_button_down = new TextureRegionDrawable(
-				buttonAtlas.findRegion("button_down"));
-		menu_button_up = new TextureRegionDrawable(
-				buttonAtlas.findRegion("button_normal"));
-		menu_button_toggle = new TextureRegionDrawable(
-				buttonAtlas.findRegion("button_toggle"));
 		logo = new Image(new TextureRegionDrawable(
 				buttonAtlas.findRegion("title")));
 
-		font = new BitmapFont(Gdx.files.internal("data/hangeul2.fnt"));
+		font = new BitmapFont(Gdx.files.internal("skin/hangeul2.fnt"));
 	}
 
 	public static void menuScreenButtonLoad() {
 
-		TextureAtlas textureAtlas = new TextureAtlas("data/MenuButton.pack");
+		TextureAtlas textureAtlas = new TextureAtlas("skin/MenuButton.pack");
 
 		credit_before = new TextureRegionDrawable(
 				textureAtlas.findRegion("button_credit_before"));
