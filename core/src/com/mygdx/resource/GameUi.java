@@ -18,14 +18,13 @@ public class GameUi extends Table {
 	ImageButton optionButton;
 	TextButton worldMapButton;
 	TextButton leftTimeButton;
-
-	TextButton statusButton1;
-	TextButton statusButton2;
-	TextButton statusButton3;
 	TextButton battleButton;
 
 	Table toptable;
 	Table buttomtable;
+	Table status1table;
+	Table status2table;
+	Table status3table;
 
 	float realheight;
 	float realwidth;
@@ -51,9 +50,6 @@ public class GameUi extends Table {
 		helpButton = new ImageButton(Assets.helpButton, Assets.helpButton);
 		optionButton = new ImageButton(Assets.optionButton, Assets.optionButton);
 
-		statusButton1 = new TextButton("status1", Assets.skin);
-		statusButton2 = new TextButton("status2", Assets.skin);
-		statusButton3 = new TextButton("status3", Assets.skin);
 		battleButton = new TextButton("Battle", Assets.skin);
 
 		addListener();
@@ -74,17 +70,13 @@ public class GameUi extends Table {
 		toptable.add(leftTimeButton).width(realwidth / 4)
 				.height(realwidth / 12).top();
 		toptable.add(helpButton).width(realwidth / 8).height(realwidth / 12)
-				.top().left();
+				.top();
 		toptable.add(optionButton).width(realwidth / 8).height(realwidth / 12)
 				.top();
-		// toptable.add(battleButton).width(100).height(realwidth / 12).top();
 
-		buttomtable.add(statusButton1).width(realwidth / 3)
-				.height(realheight / 7).bottom().left();
-		buttomtable.add(statusButton2).width(realwidth / 3)
-				.height(realheight / 7).bottom().left();
-		buttomtable.add(statusButton3).width(realwidth / 3)
-				.height(realheight / 7).bottom().left();
+		buttomtable.add(status1table).bottom().left();
+		buttomtable.add(status2table).bottom();
+		buttomtable.add(status3table).bottom();
 
 		this.add(toptable).expand().top();
 		this.row();
@@ -94,49 +86,6 @@ public class GameUi extends Table {
 	// 리스너 할당
 	public void addListener() {
 
-		statusButton1.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.log("정보", "Status1의 상태가 나타납니다.");
-			}
-		});
-		statusButton2.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.log("정보", "Status2의 상태가 나타납니다.");
-			}
-		});
-		statusButton3.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.log("정보", "Status3의 상태가 나타납니다.");
-			}
-		});
 		bagButton.addListener(new InputListener() {
 
 			@Override
