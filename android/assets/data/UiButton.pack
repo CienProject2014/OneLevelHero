@@ -1,0 +1,47 @@
+
+UiButton.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+nameAndTime
+  rotate: false
+  xy: 1, 93
+  size: 480, 90
+  orig: 480, 90
+  offset: 0, 0
+  index: -1
+bagButton
+  rotate: false
+  xy: 1, 1
+  size: 240, 90
+  orig: 240, 90
+  offset: 0, 0
+  index: -1
+downArrowButton
+  rotate: false
+  xy: 483, 93
+  size: 240, 90
+  orig: 240, 90
+  offset: 0, 0
+  index: -1
+helpButton
+  rotate: false
+  xy: 243, 1
+  size: 240, 90
+  orig: 240, 90
+  offset: 0, 0
+  index: -1
+optionButton
+  rotate: false
+  xy: 725, 93
+  size: 240, 90
+  orig: 240, 90
+  offset: 0, 0
+  index: -1
+upArrowButton
+  rotate: false
+  xy: 485, 1
+  size: 240, 90
+  orig: 240, 90
+  offset: 0, 0
+  index: -1

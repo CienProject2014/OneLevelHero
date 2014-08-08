@@ -25,7 +25,12 @@ public class Assets {
 	public static TextureRegionDrawable option_after;
 	public static TextureRegionDrawable start_after;
 	public static TextureRegionDrawable start_before;
-
+	public static TextureRegionDrawable downArrowButton;
+	public static TextureRegionDrawable bagButton;
+	public static TextureRegionDrawable nameAndTime;
+	public static TextureRegionDrawable helpButton;
+	public static TextureRegionDrawable optionButton;
+	public static TextureRegionDrawable upArrowButton;
 	public static Image logo;
 	public static BitmapFont font;
 
@@ -95,4 +100,22 @@ public class Assets {
 
 	}
 
+	public static void gameUiButtonLoad() {
+
+		TextureAtlas textureAtlas = new TextureAtlas("data/UiButton.pack");
+
+		downArrowButton = new TextureRegionDrawable(
+				textureAtlas.findRegion("downArrowButton"));
+		bagButton = new TextureRegionDrawable(
+				textureAtlas.findRegion("bagButton"));
+		nameAndTime = new TextureRegionDrawable(
+				textureAtlas.findRegion("nameAndTime"));
+		helpButton = new TextureRegionDrawable(
+				textureAtlas.findRegion("helpButton"));
+		optionButton = new TextureRegionDrawable(
+				textureAtlas.findRegion("optionButton"));
+		upArrowButton = new TextureRegionDrawable(
+				textureAtlas.findRegion("upArrowButton"));
+
+	}
 }
