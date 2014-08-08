@@ -47,19 +47,15 @@ public class Assets {
 
 	}
 
-	public static void buttonload() {
+	public static void menuScreenButtonLoad() {
 
+		TextureAtlas textureAtlas = new TextureAtlas("skin/MenuButton.pack");
 		TextureAtlas buttonAtlas = new TextureAtlas("skin/Test1.atlas");
 
 		logo = new Image(new TextureRegionDrawable(
 				buttonAtlas.findRegion("title")));
 
 		font = new BitmapFont(Gdx.files.internal("skin/hangeul2.fnt"));
-	}
-
-	public static void menuScreenButtonLoad() {
-
-		TextureAtlas textureAtlas = new TextureAtlas("skin/MenuButton.pack");
 
 		credit_before = new TextureRegionDrawable(
 				textureAtlas.findRegion("button_credit_before"));

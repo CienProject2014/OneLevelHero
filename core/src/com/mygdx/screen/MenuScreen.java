@@ -70,7 +70,6 @@ public class MenuScreen implements Screen {
 		Table table = new Table(Assets.skin);
 
 		Assets.load();
-		Assets.buttonload();
 		Assets.menuScreenButtonLoad();
 
 		startButton = new ImageButton(Assets.start_before, Assets.start_after);

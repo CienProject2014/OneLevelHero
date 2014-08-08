@@ -8,20 +8,19 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.battle.Fight;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 
-public class BattleScreen implements Screen{
-	
+public class BattleScreen implements Screen {
+
 	OneLevelHero game;
 	Stage stage;
 	Fight fight;
 	TextButton fightButton;
 	TextButton fleeButton;
 	boolean a;
-	
+
 	public BattleScreen(OneLevelHero game) {
 		this.game = game;
 		// TODO Auto-generated constructor stub
@@ -33,13 +32,13 @@ public class BattleScreen implements Screen{
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.draw();
-		
+
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -47,30 +46,32 @@ public class BattleScreen implements Screen{
 		// TODO Auto-generated method stub
 		stage = new Stage();
 		fight = new Fight();
-		
+
 		Gdx.input.setInputProcessor(stage);
-		
-		//Viewport vp = stage.getViewport();
-		
+
+		// Viewport vp = stage.getViewport();
+
 		Table uitable = new Table(Assets.skin);
-		
-		Assets.buttonload();
-		fightButton = new TextButton("전투",Assets.skin);
-		fleeButton = new TextButton("도망",Assets.skin);
-		
+
+		Assets.load();
+		fightButton = new TextButton("전투", Assets.skin);
+		fleeButton = new TextButton("도망", Assets.skin);
+
 		fightButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				// TODO Auto-generated method stub				
+				// TODO Auto-generated method stub
 				return true;
 			}
+
 			@Override
-			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				Gdx.app.log("정보","전투");
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				Gdx.app.log("정보", "전투");
 				fight.decideOutcome();
-				if(fight.battleEnd)
+				if (fight.battleEnd)
 					game.setScreen(new GameScreen(game));
 			}
 		});
@@ -79,45 +80,47 @@ public class BattleScreen implements Screen{
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				// TODO Auto-generated method stub				
+				// TODO Auto-generated method stub
 				return true;
 			}
+
 			@Override
-			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				game.setScreen(new GameScreen(game));
-				Gdx.app.log("정보","전투에서 도망쳤습니다.");
+				Gdx.app.log("정보", "전투에서 도망쳤습니다.");
 			}
 		});
-		
+
 		uitable.setFillParent(true);
 		uitable.add(fightButton).width(320).height(100).top().right();
 		uitable.add(fleeButton).width(320).height(100).bottom().left();
-		
+
 		stage.addActor(uitable);
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -37,7 +37,7 @@ public class SoundPopup extends Dialog {
 		getContentTable().defaults(); // set buttons height
 		setResizable(false);
 
-		Assets.buttonload();
+		Assets.load();
 
 		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up,
 				Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
