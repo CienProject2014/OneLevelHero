@@ -33,6 +33,8 @@ public class GameUi extends Table {
 	public GameUi(OneLevelHero game) {
 		// 초기화
 		this.game = game;
+		Assets.gameUiButtonLoad();
+
 		toptable = new Table(Assets.skin);
 		buttomtable = new Table(Assets.skin);
 
@@ -92,7 +94,6 @@ public class GameUi extends Table {
 	// 리스너 할당
 	public void addListener() {
 
-		// 버튼 동작
 		statusButton1.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -136,7 +137,7 @@ public class GameUi extends Table {
 				Gdx.app.log("정보", "Status3의 상태가 나타납니다.");
 			}
 		});
-		inventoryButton.addListener(new InputListener() {
+		bagButton.addListener(new InputListener() {
 
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -169,7 +170,7 @@ public class GameUi extends Table {
 			}
 		});
 
-		minimapButton.addListener(new InputListener() {
+		downArrowButton.addListener(new InputListener() {
 
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -202,7 +203,6 @@ public class GameUi extends Table {
 				game.setScreen(new BattleScreen(game));
 				Gdx.app.log("정보", "전투가 시작됩니다");
 			}
-		}); // test
-
+		});
 	}
 }
