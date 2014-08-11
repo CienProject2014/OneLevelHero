@@ -1,8 +1,10 @@
 package com.mygdx.resource;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -20,12 +22,10 @@ public class GameUi extends Table {
 	TextButton worldMapButton;
 	TextButton leftTimeButton;
 	TextButton battleButton;
-
+	Image character;
 	Table toptable;
-	Table buttomtable;
-	Table status1table;
-	Table status2table;
-	Table status3table;
+	Table statusbartable;
+	Table statustable;
 
 	float realheight;
 	float realwidth;
@@ -36,7 +36,8 @@ public class GameUi extends Table {
 		Assets.gameUiButtonLoad();
 
 		toptable = new Table(Assets.skin);
-		buttomtable = new Table(Assets.skin);
+		statusbartable = new Table(Assets.skin);
+		statustable = new Table(Assets.skin);
 
 		realheight = Assets.realHeight;
 		realwidth = Assets.realWidth;
@@ -50,8 +51,8 @@ public class GameUi extends Table {
 		leftTimeButton = new TextButton("12h30m", style);
 		helpButton = new ImageButton(Assets.helpButton, Assets.helpButton);
 		optionButton = new ImageButton(Assets.optionButton, Assets.optionButton);
-
 		battleButton = new TextButton("Battle", Assets.skin);
+		character = new Image(new Texture(Gdx.files.internal("data/char1.jpg")));
 
 		addListener();
 		makeTable();
@@ -63,25 +64,35 @@ public class GameUi extends Table {
 		this.setFillParent(true);
 
 		toptable.add(downArrowButton).expand().width(realwidth / 8)
-				.height(realwidth / 12).top().left();
-		toptable.add(bagButton).width(realwidth / 8).height(realwidth / 12)
+				.height(realheight / 12).top().left();
+		toptable.add(bagButton).width(realwidth / 8).height(realheight / 12)
 				.top();
 		toptable.add(worldMapButton).width(realwidth / 4)
-				.height(realwidth / 12).top();
+				.height(realheight / 12).top();
 		toptable.add(leftTimeButton).width(realwidth / 4)
-				.height(realwidth / 12).top();
-		toptable.add(helpButton).width(realwidth / 8).height(realwidth / 12)
+				.height(realheight / 12).top();
+		toptable.add(helpButton).width(realwidth / 8).height(realheight / 12)
 				.top();
-		toptable.add(optionButton).width(realwidth / 8).height(realwidth / 12)
+		toptable.add(optionButton).width(realwidth / 8).height(realheight / 12)
 				.top();
 
-		buttomtable.add(status1table).bottom().left();
-		buttomtable.add(status2table).bottom();
-		buttomtable.add(status3table).bottom();
+		statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
+				.height(statustable.getMaxHeight() / 3);
+		statusbartable.row();
+		statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
+				.height(statustable.getMaxHeight() / 3);
+		statusbartable.row();
+		statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
+				.height(statustable.getMaxHeight() / 3);
+
+		statustable.add(character).width(100).height(realheight / 5);
+		statustable.add(statusbartable).width(50).height(realheight / 5);
 
 		this.add(toptable).expand().top();
 		this.row();
-		this.add(buttomtable).bottom();
+		this.add(statustable).bottom().width(realwidth / 3);
+		this.add(statustable).width(realwidth / 3);
+		this.add(statustable).width(realwidth / 3);
 	}
 
 	// 리스너 할당

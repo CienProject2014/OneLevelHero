@@ -23,7 +23,6 @@ public class Scripts {
 	// Key값에 맞는 스크립트를 반환함
 	public String ScriptGetter(String key) {
 		keyParser(key);
-
 		JSONArray array = (JSONArray) Assets.script_json.get(key1);
 		JSONObject sc = (JSONObject) array.get(0);
 		String script = (String) sc.get(key2 + key3);
