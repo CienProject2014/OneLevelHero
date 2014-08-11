@@ -60,7 +60,8 @@ public class VillageStage extends Stage {
 		viewportwidth = this.getWidth();
 		viewportheight = this.getHeight();
 
-		background = new Texture(Gdx.files.internal("village/blackwood.png"));
+		background = new Texture(
+				Gdx.files.internal("texture/village/blackwood.png"));
 
 		JSONArray village_data = (JSONArray) object.get(village_name);
 		JSONObject this_village = (JSONObject) village_data.get(village_state);

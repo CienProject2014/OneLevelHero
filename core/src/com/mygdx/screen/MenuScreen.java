@@ -46,7 +46,6 @@ public class MenuScreen implements Screen {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.draw();
-		Table.drawDebug(stage);
 
 	}
 
@@ -62,7 +61,7 @@ public class MenuScreen implements Screen {
 		getMusic().setVolume(Assets.musicVolume);
 		getMusic().play();
 		Texture texture = new Texture(
-				Gdx.files.internal("data/MainMenu_Background.png"));
+				Gdx.files.internal("texture/MainMenu_Background.png"));
 		Image background = new Image(texture);
 
 		stage = new Stage();
@@ -71,7 +70,6 @@ public class MenuScreen implements Screen {
 		Table table = new Table(Assets.skin);
 
 		Assets.load();
-		Assets.buttonload();
 		Assets.menuScreenButtonLoad();
 
 		startButton = new ImageButton(Assets.start_before, Assets.start_after);
@@ -81,9 +79,6 @@ public class MenuScreen implements Screen {
 				Assets.credit_after);
 		extraButton = new ImageButton(Assets.extra_before, Assets.extra_after);
 		exitButton = new TextButton("종료", Assets.skin);
-
-		startButton.setBounds(100, 100, 100, 100);
-		System.out.println(startButton.getPrefHeight());
 
 		startButton.addListener(new InputListener() {
 			@Override
@@ -166,14 +161,14 @@ public class MenuScreen implements Screen {
 		table.setFillParent(true);
 
 		table.add(extraButton).height(0.35f * realheight)
-				.width(0.3f * realwidth).expand().top().left().fill();
+				.width(0.3f * realwidth).expand().top().left();
 		table.add(creditButton).height(0.35f * realheight)
-				.width(0.3f * realwidth).top().right().fill();
+				.width(0.3f * realwidth).top().right();
 		table.row();
 		table.add(startButton).height(0.35f * realheight)
-				.width(0.3f * realwidth).bottom().left().fill();
+				.width(0.3f * realwidth).bottom().left();
 		table.add(optionsButton).height(0.35f * realheight)
-				.width(0.3f * realwidth).bottom().right().fill();
+				.width(0.3f * realwidth).bottom().right();
 
 		table.debug();
 		table.debugTable();
