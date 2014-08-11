@@ -59,33 +59,39 @@ public class WorldMapScreen implements Screen {
 
 		goToVillageButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new VillageScreen(game));
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				game.setScreen(new VillageScreen(game, "Blackwood"));
 			}
 		});
 
 		goToMovingButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				game.setScreen(new MovingScreen(game));
 			}
 		});
 
 		table.setFillParent(true);
-		table.add(goToVillageButton).expand().width(240).height(240).top().left();
+		table.add(goToVillageButton).expand().width(240).height(240).top()
+				.left();
 		table.add(goToMovingButton).width(240).height(240).top().right();
 		Viewport viewport = stage.getViewport();
-		background.setSize(viewport.getViewportWidth(), viewport.getWorldHeight());
+		background.setSize(viewport.getViewportWidth(),
+				viewport.getWorldHeight());
 		stage.addActor(background);
 		stage.addActor(table);
 	}

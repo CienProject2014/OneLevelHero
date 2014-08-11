@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.screen.BattleScreen;
+import com.mygdx.screen.WorldMapScreen;
 
 public class GameUi extends Table {
 	OneLevelHero game;
@@ -151,6 +152,22 @@ public class GameUi extends Table {
 				// TODO Auto-generated method stub
 				game.setScreen(new BattleScreen(game));
 				Gdx.app.log("정보", "전투가 시작됩니다");
+			}
+		});
+		worldMapButton.addListener(new InputListener() {
+
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub
+				game.setScreen(new WorldMapScreen(game));
 			}
 		});
 	}
