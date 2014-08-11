@@ -5,6 +5,7 @@ import org.json.simple.JSONValue;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.mygdx.unit.Status;
 
 public class StatusLoader {
 	private String statusVersion;
@@ -12,6 +13,7 @@ public class StatusLoader {
 	private String delimiter = "-";
 	private String unitName;
 	private int unitState;
+	Status status;
 
 	public StatusLoader(String statusVersion, String key) {
 		setStatusVersion(statusVersion); //스테이터스 버전을 설정함 (세이브 파일 or new)

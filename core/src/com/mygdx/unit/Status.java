@@ -1,8 +1,6 @@
-package com.mygdx.controller;
+package com.mygdx.unit;
 
-import com.mygdx.loader.StatusLoader;
-
-public class StatusController {
+public class Status {
 	private int attack;
 	private int defense;
 	private int critical;
@@ -11,11 +9,6 @@ public class StatusController {
 	private int healthPoint;
 	private int stamina;
 	private int debuff;
-	StatusLoader statusLoader;
-
-	StatusController(StatusLoader loader) {
-		this.statusLoader = new StatusLoader("new", "Hero");
-	}
 
 	public int getAttack() {
 		return attack;
@@ -80,5 +73,4 @@ public class StatusController {
 	public void setDebuff(int debuff) {
 		this.debuff = debuff;
 	}
-
 }
