@@ -26,7 +26,7 @@ public class MovingScreen implements Screen {
 	Label pointLabel;
 	Table table;
 	SpriteBatch batch;
-	Texture texture = new Texture(Gdx.files.internal("data/justground.jpg"));
+	Texture texture = new Texture(Gdx.files.internal("texture/justground.jpg"));
 
 	MovingController controller;
 

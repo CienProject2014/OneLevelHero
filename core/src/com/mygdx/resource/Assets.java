@@ -1,7 +1,9 @@
 package com.mygdx.resource;
 
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -17,8 +19,9 @@ public class Assets {
 			extra_before, extra_after, option_before, option_after,
 			start_after, start_before, downArrowButton, bagButton, nameAndTime,
 			helpButton, optionButton, upArrowButton;
-	public static FileHandle prologue_json, village_json, script_json,
-			charater_json, worldmap_json;
+	public static JSONObject prologue_json, script_json, charater_json,
+			worldmap_json, village_json;
+
 	public static Image logo;
 	public static BitmapFont font;
 
@@ -34,13 +37,19 @@ public class Assets {
 		realHeight = vp.getViewportHeight();
 	}
 
-	public static void jsonload() {
-		prologue_json = Gdx.files.internal("data/scene_background.json");
-		script_json = Gdx.files.internal("data/scene_script.json");
-		charater_json = Gdx.files.internal("data/scene_character.json");
-		village_json = Gdx.files.internal("data/village.json");
-		worldmap_json = Gdx.files.internal("data/worldmap.json");
+	public static void jsonLoad() {
+		prologue_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/scene_background.json").readString());
+		script_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/scene_script.json").readString());
+		charater_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/scene_character.json").readString());
+		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/village.json").readString());
+		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/worldmap.json").readString());
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
+
 	}
 
 	public static void menuScreenButtonLoad() {

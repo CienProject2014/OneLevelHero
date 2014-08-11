@@ -13,7 +13,7 @@ public class OneLevelHero extends Game {
 	@Override
 	public void create() {
 
-		Assets.jsonload();
+		Assets.jsonLoad();
 		setScreen(new MenuScreen(this));
 	}
 
