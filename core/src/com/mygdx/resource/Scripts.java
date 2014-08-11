@@ -5,13 +5,11 @@ package com.mygdx.resource;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 
 public class Scripts {
 
 	JSONParser parser = new JSONParser();
-	JSONObject object;
 	String key1;
 	String key2;
 	String key3;
@@ -19,16 +17,14 @@ public class Scripts {
 
 	// 스크립트 클래스를 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
 	public Scripts(int filenum) {
-		String text = Assets.script_json.readString();
-		object = (JSONObject) JSONValue.parse(text);
-		// 이부분 수정함. 오류뜨면 다른거 보고 다시 고치자.
+
 	}
 
 	// Key값에 맞는 스크립트를 반환함
 	public String ScriptGetter(String key) {
 		keyParser(key);
 
-		JSONArray array = (JSONArray) object.get(key1);
+		JSONArray array = (JSONArray) Assets.script_json.get(key1);
 		JSONObject sc = (JSONObject) array.get(0);
 		String script = (String) sc.get(key2 + key3);
 		return script;
