@@ -53,7 +53,6 @@ public class BattleScreen implements Screen {
 
 		Table uitable = new Table(Assets.skin);
 
-		Assets.load();
 		fightButton = new TextButton("전투", Assets.skin);
 		fleeButton = new TextButton("도망", Assets.skin);
 
@@ -72,7 +71,7 @@ public class BattleScreen implements Screen {
 				Gdx.app.log("정보", "전투");
 				fight.decideOutcome();
 				if (fight.battleEnd)
-					game.setScreen(new GameScreen(game));
+					game.setScreen(new VillageScreen(game));
 			}
 		});
 		fleeButton.addListener(new InputListener() {
@@ -87,7 +86,7 @@ public class BattleScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				game.setScreen(new GameScreen(game));
+				game.setScreen(new VillageScreen(game));
 				Gdx.app.log("정보", "전투에서 도망쳤습니다.");
 			}
 		});

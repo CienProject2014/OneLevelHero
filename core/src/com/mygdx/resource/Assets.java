@@ -1,6 +1,7 @@
 package com.mygdx.resource;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -11,26 +12,13 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class Assets {
 	public static Skin skin;
-	public static TextureRegionDrawable ibuttond;
-	public static TextureRegionDrawable ibuttonu;
-	public static TextureRegionDrawable menu_button_down;
-	public static TextureRegionDrawable menu_button_up;
-	public static TextureRegionDrawable menu_button_toggle;
-
-	public static TextureRegionDrawable credit_before;
-	public static TextureRegionDrawable credit_after;
-	public static TextureRegionDrawable extra_before;
-	public static TextureRegionDrawable extra_after;
-	public static TextureRegionDrawable option_before;
-	public static TextureRegionDrawable option_after;
-	public static TextureRegionDrawable start_after;
-	public static TextureRegionDrawable start_before;
-	public static TextureRegionDrawable downArrowButton;
-	public static TextureRegionDrawable bagButton;
-	public static TextureRegionDrawable nameAndTime;
-	public static TextureRegionDrawable helpButton;
-	public static TextureRegionDrawable optionButton;
-	public static TextureRegionDrawable upArrowButton;
+	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down,
+			menu_button_up, menu_button_toggle, credit_before, credit_after,
+			extra_before, extra_after, option_before, option_after,
+			start_after, start_before, downArrowButton, bagButton, nameAndTime,
+			helpButton, optionButton, upArrowButton;
+	public static FileHandle prologue_json, village_json, script_json,
+			charater_json, worldmap_json;
 	public static Image logo;
 	public static BitmapFont font;
 
@@ -46,10 +34,13 @@ public class Assets {
 		realHeight = vp.getViewportHeight();
 	}
 
-	public static void load() {
-
+	public static void jsonload() {
+		prologue_json = Gdx.files.internal("data/scene_background.json");
+		script_json = Gdx.files.internal("data/scene_script.json");
+		charater_json = Gdx.files.internal("data/scene_character.json");
+		village_json = Gdx.files.internal("data/village.json");
+		worldmap_json = Gdx.files.internal("data/worldmap.json");
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
-
 	}
 
 	public static void menuScreenButtonLoad() {
@@ -59,24 +50,19 @@ public class Assets {
 
 		logo = new Image(new TextureRegionDrawable(
 				buttonAtlas.findRegion("title")));
-
 		font = new BitmapFont(Gdx.files.internal("skin/hangeul2.fnt"));
-
 		credit_before = new TextureRegionDrawable(
 				textureAtlas.findRegion("button_credit_before"));
 		credit_after = new TextureRegionDrawable(
 				textureAtlas.findRegion("button_credit_after"));
-
 		extra_before = new TextureRegionDrawable(
 				textureAtlas.findRegion("button_extra_before"));
 		extra_after = new TextureRegionDrawable(
 				textureAtlas.findRegion("button_extra_after"));
-
 		option_before = new TextureRegionDrawable(
 				textureAtlas.findRegion("button_option_before"));
 		option_after = new TextureRegionDrawable(
 				textureAtlas.findRegion("button_option_after"));
-
 		start_after = new TextureRegionDrawable(
 				textureAtlas.findRegion("button_start_after"));
 		start_before = new TextureRegionDrawable(
@@ -87,7 +73,6 @@ public class Assets {
 	public static void gameUiButtonLoad() {
 
 		TextureAtlas textureAtlas = new TextureAtlas("data/UiButton.pack");
-
 		downArrowButton = new TextureRegionDrawable(
 				textureAtlas.findRegion("downArrowButton"));
 		bagButton = new TextureRegionDrawable(

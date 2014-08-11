@@ -5,7 +5,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -46,7 +45,6 @@ public class VillageStage extends Stage {
 
 	public VillageStage(String key, OneLevelHero game) {
 		super();
-		Assets.load();
 		keyParser(key);
 		jsonread();
 		village_setter();
@@ -56,8 +54,7 @@ public class VillageStage extends Stage {
 	// 마을 정보 로딩
 	private void jsonread() {
 
-		FileHandle file = Gdx.files.internal("data/village.json");
-		String text = file.readString();
+		String text = Assets.village_json.readString();
 		Object obj = JSONValue.parse(text);
 		object = (JSONObject) obj;
 
