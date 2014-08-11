@@ -69,12 +69,13 @@ public class PrologueScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				// TODO Auto-generated method stub
 				scene.next();
 
 				if (scene.isEnd) {
-					game.setScreen(new GameScreen(game));
+					game.setScreen(new VillageScreen(game, "Blackwood"));
 				}
 
 				return true;

@@ -148,7 +148,7 @@ public class MovingScreen implements Screen {
 	}
 
 	public void goBackward() {
-		Gdx.app.log("test", "goBackward");
+		game.setScreen(new WorldMapScreen(game));
 	}
 
 	public void goLeftward() {
