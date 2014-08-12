@@ -1,4 +1,6 @@
-package com.mygdx.resource;
+package com.mygdx.util;
+
+import com.mygdx.resource.SaveVersion;
 
 public class CurrentManager {
 	private SaveVersion saveVersion;

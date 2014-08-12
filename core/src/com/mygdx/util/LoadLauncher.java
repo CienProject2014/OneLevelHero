@@ -1,9 +1,10 @@
-package com.mygdx.resource;
+package com.mygdx.util;
 
 import org.json.simple.JSONObject;
 
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.loader.StatusLoader;
+import com.mygdx.resource.Assets;
 import com.mygdx.unit.Unit;
 
 public class LoadLauncher {

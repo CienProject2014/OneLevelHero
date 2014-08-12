@@ -4,9 +4,9 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.resource.Assets;
-import com.mygdx.resource.CurrentManager;
-import com.mygdx.resource.LoadLauncher;
 import com.mygdx.screen.MenuScreen;
+import com.mygdx.util.CurrentManager;
+import com.mygdx.util.LoadLauncher;
 
 public class OneLevelHero extends Game {
 	SpriteBatch batch;

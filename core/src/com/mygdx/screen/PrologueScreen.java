@@ -17,10 +17,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.game.OneLevelHero;
-import com.mygdx.resource.LoadLauncher;
 import com.mygdx.resource.PrologueScene;
 import com.mygdx.resource.SaveVersion;
 import com.mygdx.resource.Scripts;
+import com.mygdx.util.LoadLauncher;
 
 public class PrologueScreen implements Screen {
 	OneLevelHero game;
