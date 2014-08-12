@@ -54,7 +54,6 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		getMusic().setVolume(Assets.musicVolume);
 		getMusic().play();
 		Texture texture = new Texture(Gdx.files.internal("texture/MainMenu_Background.png"));
@@ -164,7 +163,6 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 		stage.dispose();
 

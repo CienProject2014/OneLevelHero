@@ -1,6 +1,5 @@
 package com.mygdx.popup;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -37,8 +36,7 @@ public class SoundPopup extends Dialog {
 		getContentTable().defaults(); // set buttons height
 		setResizable(false);
 
-		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up,
-				Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
+		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up, Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
 
 		text("배경음\n효과음");
 
@@ -47,8 +45,7 @@ public class SoundPopup extends Dialog {
 		setWidth((int) (width * vp.getViewportWidth())); // 가로 크기 세팅
 		setHeight((int) (height * vp.getViewportHeight())); // 세로 크기 세팅
 
-		setPosition((int) (centerx * vp.getViewportWidth()),
-				(int) (centery * vp.getViewportHeight()));
+		setPosition((int) (centerx * vp.getViewportWidth()), (int) (centery * vp.getViewportHeight()));
 
 		setMovable(true); // 드래그로 이동가능
 
@@ -56,7 +53,7 @@ public class SoundPopup extends Dialog {
 		// 다이얼로그 구현
 		// 다이얼로그조절
 
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		skin = Assets.skin;
 
 		final Slider volume = new Slider(0f, 100f, 1f, false, skin);
 		volume.setValue(Assets.musicVolume * 100);
