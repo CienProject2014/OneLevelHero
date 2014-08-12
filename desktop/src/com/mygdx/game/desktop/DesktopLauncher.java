@@ -8,8 +8,8 @@ public class DesktopLauncher {
 	public static void main(String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		// 나중에 수정 요망
-		config.width = 720;
-		config.height = 360;
+		config.width = 1080;
+		config.height = 720;
 		new LwjglApplication(new OneLevelHero(), config);
 	}
 }

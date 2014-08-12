@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -22,11 +23,14 @@ public class GameUi extends Table {
 	TextButton worldMapButton;
 	TextButton leftTimeButton;
 	TextButton battleButton;
+
 	Image character;
 	Table toptable;
+	Table bottomtable;
 	Table statusbartable;
 	Table statustable;
 
+	ProgressBar hpbar;
 	float realheight;
 	float realwidth;
 
@@ -34,14 +38,14 @@ public class GameUi extends Table {
 		// 초기화
 		this.game = game;
 		Assets.gameUiButtonLoad();
-
+		hpbar = new ProgressBar(0f, 100f, 1f, false, Assets.skin);
 		toptable = new Table(Assets.skin);
 		statusbartable = new Table(Assets.skin);
 		statustable = new Table(Assets.skin);
+		bottomtable = new Table(Assets.skin);
 
 		realheight = Assets.realHeight;
 		realwidth = Assets.realWidth;
-
 		TextButtonStyle style = new TextButtonStyle(Assets.nameAndTime,
 				Assets.nameAndTime, Assets.nameAndTime, Assets.font);
 		downArrowButton = new ImageButton(Assets.downArrowButton,
@@ -76,23 +80,26 @@ public class GameUi extends Table {
 		toptable.add(optionButton).width(realwidth / 8).height(realheight / 12)
 				.top();
 
-		statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
-				.height(statustable.getMaxHeight() / 3);
-		statusbartable.row();
-		statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
-				.height(statustable.getMaxHeight() / 3);
-		statusbartable.row();
-		statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
-				.height(statustable.getMaxHeight() / 3);
+		/*
+		 * 
+		 * statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
+		 * .height(statustable.getMaxHeight() / 3); statusbartable.row();
+		 * statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
+		 * .height(statustable.getMaxHeight() / 3); statusbartable.row();
+		 * statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
+		 * .height(statustable.getMaxHeight() / 3);
+		 * 
+		 * statustable.add(character).width(100).height(realheight / 5);
+		 * statustable.add(statusbartable).width(50).height(realheight / 5);
+		 * bottomtable.add(character).width(100).height(100);
+		 * bottomtable.add(statusbartable).width(100);
+		 * bottomtable.add(character).width(100).height(100);
+		 * bottomtable.add(statusbartable).width(100);
+		 * this.add(toptable).expand().top(); this.row();
+		 */
+		bottomtable.add(hpbar);
+		this.add(bottomtable).bottom();
 
-		statustable.add(character).width(100).height(realheight / 5);
-		statustable.add(statusbartable).width(50).height(realheight / 5);
-
-		this.add(toptable).expand().top();
-		this.row();
-		this.add(statustable).bottom().width(realwidth / 3);
-		this.add(statustable).width(realwidth / 3);
-		this.add(statustable).width(realwidth / 3);
 	}
 
 	// 리스너 할당
