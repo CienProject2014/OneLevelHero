@@ -50,7 +50,7 @@ public class WorldMapScreen implements Screen {
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 
-		texture = new Texture(Gdx.files.internal("data/WorldMap.jpg"));
+		texture = new Texture(Gdx.files.internal("texture/WorldMap.jpg"));
 		background = new Image(texture);
 		table = new Table(Assets.skin);
 

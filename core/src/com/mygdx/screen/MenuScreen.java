@@ -69,7 +69,6 @@ public class MenuScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 		Table table = new Table(Assets.skin);
 
-		Assets.load();
 		Assets.menuScreenButtonLoad();
 
 		startButton = new ImageButton(Assets.start_before, Assets.start_after);

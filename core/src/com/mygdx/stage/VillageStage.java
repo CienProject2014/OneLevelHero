@@ -2,10 +2,8 @@ package com.mygdx.stage;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -23,7 +21,6 @@ public class VillageStage extends Stage {
 
 	OneLevelHero game;
 	// JSONParser parser = new JSONParser();
-	JSONObject object;
 	String delimiter = "-";
 	String village_name;
 	int village_state;
@@ -46,21 +43,9 @@ public class VillageStage extends Stage {
 
 	public VillageStage(String key, OneLevelHero game) {
 		super();
-		Assets.load();
 		keyParser(key);
-		jsonread();
 		village_setter();
 		this.game = game;
-	}
-
-	// 마을 정보 로딩
-	private void jsonread() {
-
-		FileHandle file = Gdx.files.internal("data/village.json");
-		String text = file.readString();
-		Object obj = JSONValue.parse(text);
-		object = (JSONObject) obj;
-
 	}
 
 	// 마을 정보에 맞게 스테이지 형성
@@ -80,7 +65,8 @@ public class VillageStage extends Stage {
 		backgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
 		addActor(backgroundImage);
 
-		JSONArray village_data = (JSONArray) object.get(village_name);
+		JSONArray village_data = (JSONArray) Assets.village_json
+				.get(village_name);
 		JSONObject this_village = (JSONObject) village_data.get(village_state);
 
 		num_of_building = Integer.parseInt(this_village.get("num_of_building")
