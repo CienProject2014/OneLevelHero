@@ -1,0 +1,13 @@
+{
+	"Hero"
+	{
+		"attack" : 110,
+		"defense" : 34.5,
+		"critical" : 13.8,
+		"evade" : 13.8,
+		"accuracy" : 94.8,
+		"healthPoint" : 338,
+		"stamina" : 100
+		"debuff" : "null"
+	}
+}
