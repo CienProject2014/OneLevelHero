@@ -1,24 +1,24 @@
 package com.mygdx.loader;
 
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.Json;
+import com.mygdx.resource.SaveVersion;
 import com.mygdx.unit.Status;
 
 public class StatusLoader {
-	private String statusVersion;
+	private SaveVersion saveVersion;
 	private JSONObject object;
 	private String delimiter = "-";
 	private String unitName;
 	private int unitState;
 	Status status;
 
-	public StatusLoader(String statusVersion, String key) {
-		setStatusVersion(statusVersion); //스테이터스 버전을 설정함 (세이브 파일 or new)
-		keyParser(key); // 키값을 파싱함 (유닛이름과 status 상태)
-		jsonread(); // Json 정보를 로딩함
+	public StatusLoader(SaveVersion saveVersion, String key, JSONObject jsonString) {
+		setSaveVersion(saveVersion); //스테이터스 버전을 설정함 (세이브 파일 or new)
+		keyParser(key); // 키값을 파싱함 (유닛이름 및 status 상태)
+		setUnitName("Hero"); //임시로 유닛이름을 세팅해 놓음
+		readJson(jsonString); // Json 정보를 로딩함
 	}
 
 	// (1) 키값 파싱
@@ -28,10 +28,15 @@ public class StatusLoader {
 	}
 
 	// (2) JSON 정보 로딩
-	void jsonread() {
-		FileHandle file = Gdx.files.internal("data/status_" + getStatusVersion() + ".json");
-		Object obj = JSONValue.parse((String) file.readString());
-		setObject((JSONObject) obj);
+	public Status readJson(JSONObject jsonString) {
+		//Object obj = JSONValue.parse((String) file.readString());
+		//setObject((JSONObject) obj);
+
+		Json json = new Json();
+		Object getUnitJson = (Object) jsonString.get(getUnitName());
+
+		status = json.fromJson(Status.class, String.valueOf(getUnitJson));
+		return status;
 	}
 
 	public JSONObject getStatus() {
@@ -39,12 +44,12 @@ public class StatusLoader {
 		return unitNameData;
 	}
 
-	public String getStatusVersion() {
-		return statusVersion;
+	public SaveVersion getSaveVersion() {
+		return saveVersion;
 	}
 
-	public void setStatusVersion(String statusVersion) {
-		this.statusVersion = statusVersion;
+	public void setSaveVersion(SaveVersion saveVersion) {
+		this.saveVersion = saveVersion;
 	}
 
 	public JSONObject getObject() {
@@ -70,4 +75,5 @@ public class StatusLoader {
 	public void setUnitState(int unitState) {
 		this.unitState = unitState;
 	}
+
 }

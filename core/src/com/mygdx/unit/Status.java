@@ -8,7 +8,7 @@ public class Status {
 	private int accuracy;
 	private int healthPoint;
 	private int stamina;
-	private int debuff;
+	private String debuff;
 
 	public int getAttack() {
 		return attack;
@@ -66,11 +66,11 @@ public class Status {
 		this.stamina = stamina;
 	}
 
-	public int getDebuff() {
+	public String getDebuff() {
 		return debuff;
 	}
 
-	public void setDebuff(int debuff) {
+	public void setDebuff(String debuff) {
 		this.debuff = debuff;
 	}
 }

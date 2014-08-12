@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.game.OneLevelHero;
-import com.mygdx.loader.StatusLoader;
 
 public class TestScreen implements Screen {
 	OneLevelHero game;
@@ -34,8 +33,7 @@ public class TestScreen implements Screen {
 		Table table = new Table();
 		table.setFillParent(true);
 		stage.addActor(table);
-		StatusLoader statusLoader = new StatusLoader("new", "Hero");
-		statusLoader.getStatus();
+
 	}
 
 	@Override
