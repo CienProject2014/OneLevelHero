@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -24,13 +23,17 @@ public class GameUi extends Table {
 	TextButton leftTimeButton;
 	TextButton battleButton;
 
-	Image character;
+	Image[] character;
 	Table toptable;
 	Table bottomtable;
-	Table statusbartable;
-	Table statustable;
 
-	ProgressBar hpbar;
+	Table[] statusbartable;
+	Table[] charatertable;
+
+	StatusBar[] hpbar;
+	StatusBar[] expbar;
+	StatusBar[] turnbar;
+
 	float realheight;
 	float realwidth;
 
@@ -38,14 +41,29 @@ public class GameUi extends Table {
 		// 초기화
 		this.game = game;
 		Assets.gameUiButtonLoad();
-		hpbar = new ProgressBar(0f, 100f, 1f, false, Assets.skin);
-		toptable = new Table(Assets.skin);
-		statusbartable = new Table(Assets.skin);
-		statustable = new Table(Assets.skin);
-		bottomtable = new Table(Assets.skin);
 
 		realheight = Assets.realHeight;
 		realwidth = Assets.realWidth;
+		hpbar = new StatusBar[3];
+		expbar = new StatusBar[3];
+		turnbar = new StatusBar[3];
+		character = new Image[3];
+		statusbartable = new Table[3];
+		charatertable = new Table[3];
+
+		for (int i = 0; i < 3; i++) {
+			hpbar[i] = new StatusBar("hp", 0f, 100f, 1f, false, Assets.skin);
+			expbar[i] = new StatusBar("exp", 0f, 100f, 1f, false, Assets.skin);
+			turnbar[i] = new StatusBar("turn", 0f, 100f, 1f, false, Assets.skin);
+			statusbartable[i] = new Table(Assets.skin);
+			charatertable[i] = new Table(Assets.skin);
+			character[i] = new Image(new Texture(
+					Gdx.files.internal("texture/char" + (i + 1) + ".jpg")));
+		}
+
+		toptable = new Table(Assets.skin);
+		bottomtable = new Table(Assets.skin);
+
 		TextButtonStyle style = new TextButtonStyle(Assets.nameAndTime,
 				Assets.nameAndTime, Assets.nameAndTime, Assets.font);
 		downArrowButton = new ImageButton(Assets.downArrowButton,
@@ -56,7 +74,6 @@ public class GameUi extends Table {
 		helpButton = new ImageButton(Assets.helpButton, Assets.helpButton);
 		optionButton = new ImageButton(Assets.optionButton, Assets.optionButton);
 		battleButton = new TextButton("Battle", Assets.skin);
-		character = new Image(new Texture(Gdx.files.internal("data/char1.jpg")));
 
 		addListener();
 		makeTable();
@@ -80,24 +97,23 @@ public class GameUi extends Table {
 		toptable.add(optionButton).width(realwidth / 8).height(realheight / 12)
 				.top();
 
-		/*
-		 * 
-		 * statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
-		 * .height(statustable.getMaxHeight() / 3); statusbartable.row();
-		 * statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
-		 * .height(statustable.getMaxHeight() / 3); statusbartable.row();
-		 * statusbartable.add(bagButton).width(statustable.getMaxWidth() / 3)
-		 * .height(statustable.getMaxHeight() / 3);
-		 * 
-		 * statustable.add(character).width(100).height(realheight / 5);
-		 * statustable.add(statusbartable).width(50).height(realheight / 5);
-		 * bottomtable.add(character).width(100).height(100);
-		 * bottomtable.add(statusbartable).width(100);
-		 * bottomtable.add(character).width(100).height(100);
-		 * bottomtable.add(statusbartable).width(100);
-		 * this.add(toptable).expand().top(); this.row();
-		 */
-		bottomtable.add(hpbar);
+		for (int i = 0; i < 3; i++) {
+			charatertable[i].add(character[i]).width(realwidth / 4)
+					.height(realheight / 4);
+			statusbartable[i].add(hpbar[i]).width(realwidth / 12)
+					.height(realheight / 12).bottom();
+			statusbartable[i].row();
+			statusbartable[i].add(expbar[i]).width(realwidth / 12)
+					.height(realheight / 12).bottom();
+			statusbartable[i].row();
+			statusbartable[i].add(turnbar[i]).width(realwidth / 12)
+					.height(realheight / 12).bottom();
+			bottomtable.add(charatertable[i]);
+			bottomtable.add(statusbartable[i]);
+		}
+
+		this.add(toptable).expand().top();
+		this.row();
 		this.add(bottomtable).bottom();
 
 	}
