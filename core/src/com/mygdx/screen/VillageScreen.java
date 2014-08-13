@@ -74,7 +74,7 @@ public class VillageScreen implements Screen {
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
 
-		Assets.menuScreenButtonLoad();
+		Assets.menuScreenLoad();
 		Assets.loadSize(vs1);
 		GameUi UI = new GameUi(game);
 

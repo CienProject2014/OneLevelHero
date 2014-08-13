@@ -40,7 +40,7 @@ public class GameUi extends Table {
 	public GameUi(OneLevelHero game) {
 		// 초기화
 		this.game = game;
-		Assets.gameUiButtonLoad();
+		Assets.gameUILoad();
 
 		realheight = Assets.realHeight;
 		realwidth = Assets.realWidth;
