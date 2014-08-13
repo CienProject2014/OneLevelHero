@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -14,9 +15,12 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class Assets {
 	public static Skin skin;
+	public static Skin skins;
 	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down, menu_button_up, menu_button_toggle, credit_before, credit_after, extra_before, extra_after,
 			option_before, option_after, start_after, start_before, downArrowButton, bagButton, nameAndTime, helpButton, optionButton, upArrowButton;
+	public static Texture splash;
 	public static JSONObject prologue_json, script_json, charater_json, worldmap_json, village_json, status_json;
+	public static TextureAtlas icons;
 
 	public static Image logo;
 	public static BitmapFont font;
@@ -41,8 +45,9 @@ public class Assets {
 		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/worldmap.json").readString());
 		status_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/status_new.json").readString());
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
-
-
+		skins = new Skin(Gdx.files.internal("skins/uiskin.json"));
+		icons = new TextureAtlas("icons/icons.atlas");
+		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 	}
 
 	public static void menuScreenButtonLoad() {

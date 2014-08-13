@@ -18,6 +18,7 @@ public class OneLevelHero extends Game {
 	public void create() {
 		Assets.jsonLoad(); //어셋을 로드해 json 파일들을 메모리에 올린다.
 		currentManager = new CurrentManager();
+
 		setScreen(new MenuScreen(this));
 	}
 }
