@@ -30,7 +30,7 @@ public class VillageScreen implements Screen {
 
 	VillageStage villageStage1;
 	VillageStage villageStage2;
-	Stage uiStage;
+	GameUi uiStage;
 	public static Stage inventoryStage;
 	InventoryActor inventoryActor;
 	int key = 2;
@@ -74,8 +74,7 @@ public class VillageScreen implements Screen {
 		// TODO Auto-generated method stub
 		villageStage1 = new VillageStage(villageName + "-0", game);
 
-		// 배경 스테이지와 유아이 스테이지는 따로 관리해 준다.
-		uiStage = new Stage();
+		uiStage = new GameUi(game);
 
 		// 인벤토리 스테이지
 		inventoryStage = new Stage();
@@ -93,7 +92,6 @@ public class VillageScreen implements Screen {
 
 		Assets.menuScreenButtonLoad();
 		Assets.loadSize(villageStage1);
-		GameUi UI = new GameUi(game);
 
 		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth, Assets.realHeight / 2);
 		cam.translate(100, 300);
@@ -155,8 +153,6 @@ public class VillageScreen implements Screen {
 		});
 		// vs1.getCamera().translate(100, 100, 0);
 		// vs1.getCamera().update();
-
-		uiStage.addActor(UI);
 		// vs2.addActor(UI);
 
 		//인벤토리 세팅
@@ -168,8 +164,6 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-		Gdx.input.setInputProcessor(null);
 		dispose();
 	}
 
@@ -189,7 +183,7 @@ public class VillageScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 		villageStage1.dispose();
-		villageStage2.dispose();
+
 	}
 
 }

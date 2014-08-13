@@ -27,7 +27,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.resource.Assets;
-import com.mygdx.screen.VillageScreen;
 
 /**
  * @author Daniel Holderbaum
@@ -46,7 +45,6 @@ public class SlotActor extends ImageButton implements SlotListener {
 		slot.addListener(this);
 
 		SlotTooltip tooltip = new SlotTooltip(slot, skin);
-		VillageScreen.inventoryStage.addActor(tooltip);
 		addListener(new TooltipListener(tooltip, true));
 	}
 

@@ -33,7 +33,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.utils.Logger;
-import com.pixelscientists.gdx.splash.SplashScreen;
 
 /**
  * This is the main class of the game itself. It offers access to the
@@ -58,7 +57,7 @@ public class LibgdxUtils implements ApplicationListener {
 
 		@Override
 		public void create() {
-			setScreen(new SplashScreen());
+
 		}
 	};
 
