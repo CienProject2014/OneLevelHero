@@ -41,6 +41,7 @@ public class GameUi extends Table {
 		// 초기화
 		this.game = game;
 		Assets.gameUILoad();
+		Assets.fontLoad();
 
 		realheight = Assets.realHeight;
 		realwidth = Assets.realWidth;
