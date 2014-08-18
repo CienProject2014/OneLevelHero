@@ -79,12 +79,14 @@ public class PrologueScene {
 		character = new Image(characterTexture);
 
 		// size설정
-		script.setFontScale(0.7f);
+
+		script.setFontScale(Assets.realWidth / 1280);
 		script.setWrap(true);
-		script.setWidth(Assets.realWidth * 0.6f);
+		script.setWidth(Assets.realWidth * 0.8f);
 
 		character.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
-		character.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
+		character
+				.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
 
 	}
 
