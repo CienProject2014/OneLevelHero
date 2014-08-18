@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.resource.SaveVersion;
+import com.mygdx.unit.Bag;
 import com.mygdx.unit.Status;
 
 public class StatusLoader {
@@ -13,12 +14,13 @@ public class StatusLoader {
 	private String unitName;
 	private int unitState;
 	Status status;
+	Bag bag;
 
-	public StatusLoader(SaveVersion saveVersion, String key, JSONObject jsonString) {
+	public StatusLoader(SaveVersion saveVersion, String key, JSONObject status_json, JSONObject status_bag) {
 		setSaveVersion(saveVersion); //스테이터스 버전을 설정함 (세이브 파일 or new)
 		keyParser(key); // 키값을 파싱함 (유닛이름 및 status 상태)
 		setUnitName("Hero"); //임시로 유닛이름을 세팅해 놓음
-		readJson(jsonString); // Json 정보를 로딩함
+		readJson(status_json, status_bag); // Json 정보를 로딩함
 	}
 
 	// (1) 키값 파싱
@@ -28,20 +30,20 @@ public class StatusLoader {
 	}
 
 	// (2) JSON 정보 로딩
-	public Status readJson(JSONObject jsonString) {
-		//Object obj = JSONValue.parse((String) file.readString());
-		//setObject((JSONObject) obj);
-
+	public void readJson(JSONObject status_json, JSONObject status_bag) {
 		Json json = new Json();
-		Object getUnitJson = (Object) jsonString.get(getUnitName());
+		Object getUnitStatusJson = (Object) status_json.get(getUnitName()); //유닛이름에 해당하는 JSON 정보 받아오기
+		Object getUnitBagJson = (Object) status_bag.get(getUnitName());
+		status = json.fromJson(Status.class, String.valueOf(getUnitStatusJson)); //Status에 JSON값 주입하기
+		bag = json.fromJson(Bag.class, String.valueOf(getUnitBagJson)); //Bag에 JSON값 주입하기
+	}
 
-		status = json.fromJson(Status.class, String.valueOf(getUnitJson));
+	public Status getStatus() {
 		return status;
 	}
 
-	public JSONObject getStatus() {
-		JSONObject unitNameData = (JSONObject) object.get(unitName);
-		return unitNameData;
+	public Bag getBag() {
+		return bag;
 	}
 
 	public SaveVersion getSaveVersion() {

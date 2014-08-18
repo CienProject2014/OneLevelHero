@@ -1,0 +1,33 @@
+{
+	"dagger"
+	{
+		"category" : "weapon"
+		"ability" : 10,
+		"price" : 100,
+		"description" : "평범한 칼"	
+	}
+	
+	"leather_armor"
+	{
+		"category" : "armor"
+		"ability" : 5,
+		"price" : 200,
+		"description" : "싸구려 가죽으로 만든 갑옷",
+	}
+	
+	"leather_boots"
+	{
+		"category" : "boots",
+		"ability" : 2,
+		"price" : 50,
+		"description" : "싸구려 가죽으로 만든 신발",
+	}
+	
+	"leather_gloves"
+	{
+		"category" : "gloves",
+		"ability" : 2,
+		"price" : 50,
+		"description" : 싸구려 가죽으로 만든 장갑"
+	}
+}

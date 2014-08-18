@@ -7,18 +7,20 @@ import com.mygdx.resource.Assets;
 import com.mygdx.screen.MenuScreen;
 import com.mygdx.util.CurrentManager;
 import com.mygdx.util.LoadLauncher;
+import com.mygdx.util.SoundManager;
 
 public class OneLevelHero extends Game {
 	SpriteBatch batch;
 	Texture img;
 	public LoadLauncher loadLauncher;
 	public CurrentManager currentManager;
+	public SoundManager soundManager;
 
 	@Override
 	public void create() {
 		Assets.jsonLoad(); //어셋을 로드해 json 파일들을 메모리에 올린다.
 		currentManager = new CurrentManager();
-
+		soundManager = new SoundManager();
 		setScreen(new MenuScreen(this));
 	}
 }

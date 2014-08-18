@@ -1,7 +1,6 @@
 package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -10,13 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.mygdx.game.OneLevelHero;
-import com.mygdx.inventory.Inventory;
-import com.mygdx.inventory.InventoryActor;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.GameUi;
 import com.mygdx.stage.VillageStage;
@@ -28,11 +22,8 @@ public class VillageScreen implements Screen {
 	SpriteBatch batch;
 	String villageName;
 
-	VillageStage villageStage1;
-	VillageStage villageStage2;
+	VillageStage villageStage;
 	GameUi uiStage;
-	public static Stage inventoryStage;
-	InventoryActor inventoryActor;
 	int key = 2;
 
 	boolean state = true;
@@ -52,14 +43,8 @@ public class VillageScreen implements Screen {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		villageStage1.draw();
+		villageStage.draw();
 		uiStage.draw();
-		if (Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {
-			inventoryActor.setVisible(true);
-		}
-
-		inventoryStage.act(delta);
-		inventoryStage.draw();
 
 	}
 
@@ -72,54 +57,45 @@ public class VillageScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		villageStage1 = new VillageStage(villageName + "-0", game);
+		villageStage = new VillageStage(villageName + "-0", game);
 
 		uiStage = new GameUi(game);
-
-		// 인벤토리 스테이지
-		inventoryStage = new Stage();
 
 		// 여러 스테이지에 인풋 프로세서를 동시에 할당한다
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
 		// 우선권을 준다.
 
-		multiplexer.addProcessor(0, inventoryStage);
-		multiplexer.addProcessor(1, uiStage);
-		multiplexer.addProcessor(2, villageStage1);
+		multiplexer.addProcessor(0, uiStage);
+		multiplexer.addProcessor(1, villageStage);
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
 
 		Assets.menuScreenLoad();
 		Assets.fontLoad();
-		Assets.loadSize(villageStage1);
+		Assets.loadSize(villageStage);
 
-		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth,
-				Assets.realHeight / 2);
+		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth, Assets.realHeight / 2);
 		cam.translate(100, 300);
 		cam.position.set(Assets.realWidth / 2, Assets.realHeight / 2, 0);
-		villageStage1.getViewport().setCamera(cam);
+		villageStage.getViewport().setCamera(cam);
 
-		Gdx.app.log("LoadLauncher - getAttack()",
-				String.valueOf(game.loadLauncher.unit.status.getAttack()));
-		Gdx.app.log("CurrentManager - getVersion()",
-				String.valueOf(game.currentManager.getVersion()));
+		Gdx.app.log("LoadLauncher - getAttack()", String.valueOf(game.loadLauncher.unit.status.getAttack()));
+		Gdx.app.log("CurrentManager - getVersion()", String.valueOf(game.currentManager.getVersion()));
 
-		villageStage1.addListener(new InputListener() {
+		villageStage.addListener(new InputListener() {
 
 			Vector3 last_touch_down = new Vector3();
 			InputEvent event;
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				this.event = event;
 				return true;
 			}
 
 			@Override
-			public void touchDragged(InputEvent event, float x, float y,
-					int pointer) {
+			public void touchDragged(InputEvent event, float x, float y, int pointer) {
 				moveCamera((int) x, (int) y);
 				System.out.println((int) x);
 			}
@@ -128,10 +104,7 @@ public class VillageScreen implements Screen {
 				Vector3 new_position = getNewCameraPosition(touch_x, touch_y);
 
 				if (!cameraOutOfLimit(new_position))
-					villageStage1
-							.getCamera()
-							.translate(
-									new_position.sub(villageStage1.getCamera().position));
+					villageStage.getCamera().translate(new_position.sub(villageStage.getCamera().position));
 
 				last_touch_down.set(touch_x, touch_y, 0);
 			}
@@ -140,7 +113,7 @@ public class VillageScreen implements Screen {
 				Vector3 new_position = last_touch_down;
 				new_position.sub(x, y, 0);
 				new_position.y = -new_position.y;
-				new_position.add(villageStage1.getCamera().position);
+				new_position.add(villageStage.getCamera().position);
 
 				return new_position;
 			}
@@ -153,8 +126,7 @@ public class VillageScreen implements Screen {
 
 				if (position.x < x_left_limit || position.x > x_right_limit)
 					return true;
-				else if (position.y < y_bottom_limit
-						|| position.y > y_top_limit)
+				else if (position.y < y_bottom_limit || position.y > y_top_limit)
 					return true;
 				else
 					return false;
@@ -165,11 +137,6 @@ public class VillageScreen implements Screen {
 		// vs1.getCamera().update();
 		// vs2.addActor(UI);
 
-		// 인벤토리 세팅
-		Skin skin = Assets.skin;
-		DragAndDrop dragAndDrop = new DragAndDrop();
-		inventoryActor = new InventoryActor(new Inventory(), dragAndDrop, skin);
-		inventoryStage.addActor(inventoryActor);
 	}
 
 	@Override
@@ -192,7 +159,7 @@ public class VillageScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		villageStage1.dispose();
+		villageStage.dispose();
 
 	}
 
