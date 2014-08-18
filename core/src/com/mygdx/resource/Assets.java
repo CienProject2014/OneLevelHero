@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -22,7 +23,7 @@ public class Assets {
 			helpButton, optionButton, upArrowButton;
 	public static JSONObject prologue_json, script_json, charater_json,
 			worldmap_json, village_json, status_json;
-
+	public static Texture splash;
 	public static Image logo;
 	public static BitmapFont font;
 
@@ -52,6 +53,8 @@ public class Assets {
 		status_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/status_new.json").readString());
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
+		icons = new TextureAtlas("icons/icons.atlas");
+		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 
 	}
 
