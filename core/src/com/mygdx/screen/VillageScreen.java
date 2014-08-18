@@ -91,6 +91,7 @@ public class VillageScreen implements Screen {
 		Gdx.input.setInputProcessor(multiplexer);
 
 		Assets.menuScreenLoad();
+		Assets.fontLoad();
 		Assets.loadSize(villageStage1);
 
 		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth,

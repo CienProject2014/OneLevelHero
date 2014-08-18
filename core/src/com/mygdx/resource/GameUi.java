@@ -52,7 +52,7 @@ public class GameUi extends Stage {
 		this.game = game;
 		uiTable = new Table();
 		Assets.gameUILoad();
-
+		Assets.fontLoad();
 		realheight = Assets.realHeight;
 		realwidth = Assets.realWidth;
 		hpbar = new StatusBar[3];

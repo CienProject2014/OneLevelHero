@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class Assets {
 	public static Skin skin;
+	public static TextureAtlas icons;
 	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down,
 			menu_button_up, menu_button_toggle, credit_before, credit_after,
 			extra_before, extra_after, option_before, option_after,
