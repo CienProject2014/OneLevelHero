@@ -14,14 +14,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
-import com.mygdx.resource.PrologueScene;
+import com.mygdx.resource.EventScene;
 
 public class WorldMapScreen implements Screen {
 
 	private OneLevelHero game;
 	private Stage stage;
 	private SpriteBatch batch;
-	private PrologueScene scene;
+	private EventScene scene;
 	private Texture texture;
 	private Image background;
 	private TextButton goToVillageButton;
@@ -135,11 +135,11 @@ public class WorldMapScreen implements Screen {
 		this.batch = batch;
 	}
 
-	public PrologueScene getScene() {
+	public EventScene getScene() {
 		return scene;
 	}
 
-	public void setScene(PrologueScene scene) {
+	public void setScene(EventScene scene) {
 		this.scene = scene;
 	}
 

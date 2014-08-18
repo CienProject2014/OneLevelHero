@@ -22,15 +22,14 @@ import com.mygdx.resource.GameUi;
 import com.mygdx.stage.VillageStage;
 
 public class VillageScreen implements Screen {
-
-	OneLevelHero game;
+	OneLevelHero game;	// Screen마다 사용자(user)의 정보를 가지고 있어야 함.
 	Image background;
 	SpriteBatch batch;
 	String villageName;
 
 	VillageStage villageStage1;
 	VillageStage villageStage2;
-	GameUi uiStage;
+	GameUi uiTable;
 	public static Stage inventoryStage;
 	InventoryActor inventoryActor;
 	int key = 2;
@@ -39,6 +38,7 @@ public class VillageScreen implements Screen {
 
 	public VillageScreen(OneLevelHero game) {
 		this.game = game;
+		villageName = "Blackwood";
 	}
 
 	public VillageScreen(OneLevelHero game, String villagename) {
@@ -53,7 +53,7 @@ public class VillageScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		villageStage1.draw();
-		uiStage.draw();
+		uiTable.draw();
 		if (Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {
 			inventoryActor.setVisible(true);
 		}
@@ -71,10 +71,9 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		villageStage1 = new VillageStage(villageName + "-0", game);
 
-		uiStage = new GameUi(game);
+		uiTable = new GameUi(game);
 
 		// 인벤토리 스테이지
 		inventoryStage = new Stage();
@@ -85,7 +84,7 @@ public class VillageScreen implements Screen {
 		// 우선권을 준다.
 
 		multiplexer.addProcessor(0, inventoryStage);
-		multiplexer.addProcessor(1, uiStage);
+		multiplexer.addProcessor(1, uiTable);
 		multiplexer.addProcessor(2, villageStage1);
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
@@ -101,6 +100,7 @@ public class VillageScreen implements Screen {
 		Gdx.app.log("LoadLauncher - getAttack()", String.valueOf(game.loadLauncher.unit.status.getAttack()));
 		Gdx.app.log("CurrentManager - getVersion()", String.valueOf(game.currentManager.getVersion()));
 
+		// 화면 스크롤
 		villageStage1.addListener(new InputListener() {
 
 			Vector3 last_touch_down = new Vector3();
@@ -164,6 +164,7 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void hide() {
+		Gdx.app.log("DEBUG", "Village hide is called");
 		dispose();
 	}
 
@@ -182,8 +183,7 @@ public class VillageScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
+		Gdx.app.log("DEBUG", "Village dispose is called");
 		villageStage1.dispose();
-
 	}
-
 }
