@@ -79,7 +79,7 @@ public class SlotSource extends Source {
 			if (targetSlot.getItem() == payloadSlot.getItem() || targetSlot.getItem() == null) {
 				targetSlot.add(payloadSlot.getItem(), payloadSlot.getAmount());
 			} else {
-				Item targetType = targetSlot.getItem();
+				ItemEnum targetType = targetSlot.getItem();
 				int targetAmount = targetSlot.getAmount();
 				targetSlot.take(targetAmount);
 				targetSlot.add(payloadSlot.getItem(), payloadSlot.getAmount());
