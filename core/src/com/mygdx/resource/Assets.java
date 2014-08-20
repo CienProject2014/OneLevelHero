@@ -19,7 +19,7 @@ public class Assets {
 	public static TextureAtlas items;
 	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down, menu_button_up, menu_button_toggle, credit_before, credit_after, extra_before, extra_after,
 			option_before, option_after, start_after, start_before, downArrowButton, bagButton, nameAndTime, helpButton, optionButton, upArrowButton;
-	public static JSONObject prologue_json, script_json, charater_json, worldmap_json, village_json, status_json, bag_json;
+	public static JSONObject prologue_json, script_json, charater_json, worldmap_json, village_json, status_json, bag_json, credit_list;
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -45,10 +45,12 @@ public class Assets {
 		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/worldmap.json").readString());
 		status_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/status_new.json").readString());
 		bag_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/bag_new.json").readString());
+		credit_list = (JSONObject) JSONValue.parse(Gdx.files.internal("data/credit_list.json").readString());
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		mainMusic = Gdx.audio.newMusic(Gdx.files.internal("data/buyeo.mp3"));
+
 	}
 
 	public static void menuScreenLoad() {
