@@ -10,12 +10,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.mygdx.game.OneLevelHero;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.resource.Assets;
+import com.mygdx.util.ScreenEnum;
 
 public class CollectionScreen implements Screen {
 
-	OneLevelHero game;
 	Stage stage;
 	TextButton endingButton;
 	TextButton cgButton;
@@ -24,8 +24,8 @@ public class CollectionScreen implements Screen {
 	TextButtonStyle textButtonStyle;
 	BitmapFont font;
 
-	public CollectionScreen(OneLevelHero game) {
-		this.game = game;
+	public CollectionScreen() {
+
 	}
 
 	@Override
@@ -55,60 +55,62 @@ public class CollectionScreen implements Screen {
 
 		endingButton.addListener(new InputListener() {
 			@Override
-
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				// TODO Auto-generated method stub				
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub
 
 				return true;
 			}
 
 			@Override
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				new ScreenController(ScreenEnum.END);
 			}
 		});
 		cgButton.addListener(new InputListener() {
 			@Override
-
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 
 				new ScreenController(ScreenEnum.CG);
 			}
 		});
 		bgmButton.addListener(new InputListener() {
 			@Override
-
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 
 				new ScreenController(ScreenEnum.BGM);
 			}
 		});
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				new ScreenController(ScreenEnum.MENU);
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				new ScreenController(ScreenEnum.MAIN);
 			}
 		});
 

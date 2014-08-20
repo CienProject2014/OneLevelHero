@@ -10,21 +10,21 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.mygdx.game.OneLevelHero;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.resource.Assets;
+import com.mygdx.util.ScreenEnum;
 
 public class EndingScreen implements Screen {
 
-	OneLevelHero game;
 	Stage stage;
 	TextButton backButton;
 	TextButtonStyle textButtonStyle;
 	BitmapFont font;
-	
-	public EndingScreen(OneLevelHero game){
-		this.game = game;
+
+	public EndingScreen() {
+
 	}
-	
+
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
@@ -37,7 +37,7 @@ public class EndingScreen implements Screen {
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -48,50 +48,52 @@ public class EndingScreen implements Screen {
 		Table table = new Table(Assets.skin);
 
 		backButton = new TextButton("Back", Assets.skin);
-		
+
 		backButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				// TODO Auto-generated method stub				
+				// TODO Auto-generated method stub
 				return true;
 			}
+
 			@Override
-			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new CollectionScreen(game));
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				new ScreenController(ScreenEnum.COLLETION);
 			}
 		});
-		
+
 		table.setFillParent(true);
 		table.add(backButton).bottom();
 		table.row();
-		
+
 		stage.addActor(table);
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

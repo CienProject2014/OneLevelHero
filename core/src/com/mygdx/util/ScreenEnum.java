@@ -1,7 +1,11 @@
 package com.mygdx.util;
 
+import com.mygdx.screen.BGMScreen;
 import com.mygdx.screen.BonusPointScreen;
+import com.mygdx.screen.CGScreen;
+import com.mygdx.screen.CollectionScreen;
 import com.mygdx.screen.CreditScreen;
+import com.mygdx.screen.EndingScreen;
 import com.mygdx.screen.EventScreen;
 import com.mygdx.screen.LoadScreen;
 import com.mygdx.screen.MenuScreen;
@@ -53,7 +57,7 @@ public enum ScreenEnum {
 	EXTRA {
 		@Override
 		protected com.badlogic.gdx.Screen getScreenInstance() {
-			return new OptionScreen();
+			return new CollectionScreen();
 		}
 	},
 	SAVE {
@@ -103,7 +107,14 @@ public enum ScreenEnum {
 		protected com.badlogic.gdx.Screen getScreenInstance() {
 			return new BGMScreen();
 		}
+	},
+	COLLETION {
+		@Override
+		protected com.badlogic.gdx.Screen getScreenInstance() {
+			return new CollectionScreen();
+		}
 	}
+
 	;
 
 	protected abstract com.badlogic.gdx.Screen getScreenInstance();

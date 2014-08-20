@@ -8,8 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.game.OneLevelHero;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.resource.Assets;
+import com.mygdx.util.ScreenEnum;
 
 public class CreditScreen implements Screen {
 
@@ -43,15 +44,17 @@ public class CreditScreen implements Screen {
 
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 
-				// TODO Auto-generated method stub				
+				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				new ScreenController(ScreenEnum.MENU);
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				new ScreenController(ScreenEnum.MAIN);
 			}
 		});
 		table.setFillParent(true);
@@ -59,7 +62,7 @@ public class CreditScreen implements Screen {
 		table.add(backButton).expand().bottom().width(240).height(240).right();
 		table.row();
 
-		stage.addActor(table); //stage에 table액터 추가하기
+		stage.addActor(table); // stage에 table액터 추가하기
 	}
 
 	@Override
