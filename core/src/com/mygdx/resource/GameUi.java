@@ -16,6 +16,7 @@ import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryActor;
 import com.mygdx.screen.BattleScreen;
+import com.mygdx.screen.EventScreen;
 import com.mygdx.screen.WorldMapScreen;
 
 public class GameUi extends Stage {
@@ -195,6 +196,19 @@ public class GameUi extends Stage {
 				game.setScreen(new WorldMapScreen(game));
 			}
 		});
+		helpButton.addListener(new InputListener() {
+
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				game.setScreen(new EventScreen(game, "Event"));
+			}
+		});
+		
 	}
 
 	@Override

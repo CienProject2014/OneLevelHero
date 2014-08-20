@@ -2,6 +2,11 @@ package com.mygdx.resource;
 
 /*
  * Scene클래스는 GameScreen에서 벗어나 EventScreen에서 대화(이벤트)할 때 사용함. 
+ * 사용방법: 
+ * 1. Screen에서 setStage로 stage변수 전달.
+ * 2. load("Prologue-scene-1")처럼 문자열 전달. 1은 첫번째를 의미
+ * 3. start()로 첫 장면 호출
+ * 4. 터치 혹은 이벤트 발생시 next()로 다음 신
  */
 
 import com.badlogic.gdx.graphics.Texture;
@@ -11,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
-public class PrologueScene {
+public class EventScene {
 	// 신 진행 관련 변수
 	int num; // load한 Event(예 Prologue)의 scene 갯수
 	public boolean isEnd;
@@ -40,7 +45,7 @@ public class PrologueScene {
 	private double timeAcc = 0;
 	private float alpha = 0;
 
-	public PrologueScene(Table table, SpriteBatch batch) {
+	public EventScene(Table table, SpriteBatch batch) {
 
 		isEnd = false;
 
@@ -53,7 +58,7 @@ public class PrologueScene {
 		this.table = table;
 	}
 
-	public void loadstage(Stage stage) {
+	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
 
@@ -61,10 +66,10 @@ public class PrologueScene {
 	public void load(String scene) {
 
 		this.scene = scene;
-		// 신 갯수, 첫번째(Prologue)만 받아옴
+		// 신 갯수를 받아옴. scene_character.json에 임시로 저장.
 		num = characterLoader.getNum(scene.split("-")[0]);
 
-		// 배경 불러옴
+		// 배경 json 불러옴
 		bgtexture = bgloader.BackgroundGetter(scene);
 
 		// 텍스트 파싱
@@ -132,6 +137,10 @@ public class PrologueScene {
 			return false;
 		else
 			return false;
+	}
+	
+	public boolean isEnd() {
+		return isEnd;
 	}
 
 	// 배경 그림
