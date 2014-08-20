@@ -1,5 +1,6 @@
 package com.mygdx.event;
 
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.screen.EventScreen2;
 import com.mygdx.util.EventManager;

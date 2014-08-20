@@ -3,12 +3,12 @@ package com.mygdx.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.EventTrigger;
 import com.mygdx.resource.Assets;
 import com.mygdx.util.CurrentManager;
 import com.mygdx.util.EventManager;
 import com.mygdx.util.LoadLauncher;
-import com.mygdx.util.ScreenEnum;
 import com.mygdx.util.ScreenManager;
 import com.mygdx.util.SoundManager;
 

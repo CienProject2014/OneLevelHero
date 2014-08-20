@@ -1,7 +1,7 @@
 package com.mygdx.controller;
 
 import com.badlogic.gdx.utils.Timer.Task;
-import com.mygdx.util.ScreenEnum;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.util.ScreenManager;
 
 public class ScreenController extends Task {

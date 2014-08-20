@@ -9,9 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.popup.SoundPopup;
 import com.mygdx.resource.Assets;
-import com.mygdx.util.ScreenEnum;
 
 public class OptionScreen implements Screen {
 

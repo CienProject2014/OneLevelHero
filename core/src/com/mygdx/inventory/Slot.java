@@ -22,6 +22,7 @@
 package com.mygdx.inventory;
 
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.enums.ItemEnum;
 
 /**
  * @author Daniel Holderbaum

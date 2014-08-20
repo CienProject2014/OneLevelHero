@@ -1,4 +1,4 @@
-package com.mygdx.event;
+package com.mygdx.enums;
 
 public enum EventTypeEnum {
 	CHAT("chat");

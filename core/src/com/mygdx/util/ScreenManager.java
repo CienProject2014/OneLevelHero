@@ -1,6 +1,7 @@
 package com.mygdx.util;
 
 import com.badlogic.gdx.utils.IntMap;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.game.OneLevelHero;
 
 public final class ScreenManager {

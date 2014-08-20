@@ -17,9 +17,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.resource.EventScene;
 import com.mygdx.resource.Scripts;
-import com.mygdx.util.ScreenEnum;
 
 public class PrologueScreen implements Screen {
 

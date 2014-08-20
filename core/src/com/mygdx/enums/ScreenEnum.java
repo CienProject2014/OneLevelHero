@@ -1,4 +1,4 @@
-package com.mygdx.util;
+package com.mygdx.enums;
 
 import com.mygdx.screen.BGMScreen;
 import com.mygdx.screen.BonusPointScreen;

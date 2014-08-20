@@ -1,6 +1,6 @@
 package com.mygdx.util;
 
-import com.mygdx.event.EventTypeEnum;
+import com.mygdx.enums.EventTypeEnum;
 
 public class EventManager {
 	private String event;
