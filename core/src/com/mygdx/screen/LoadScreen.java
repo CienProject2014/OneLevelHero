@@ -10,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.resource.SaveVersion;
+import com.mygdx.util.LoadLauncher;
 
 public class LoadScreen implements Screen {
 	OneLevelHero game;
@@ -44,35 +46,32 @@ public class LoadScreen implements Screen {
 
 		Table table = new Table(Assets.skin);
 		backButton = new TextButton("Back", Assets.skin);
-
 		newstartButton = new TextButton("NewStart", Assets.skin);
-
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				game.setScreen(new MenuScreen(game));
 			}
 		});
 		newstartButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				game.loadLauncher = new LoadLauncher(game); //각종 설정들을 올린다.
+				game.loadLauncher.jsonSetting();
+				game.currentManager.setVersion(SaveVersion.NEW);
 				game.setScreen(new PrologueScreen(game));
 			}
 		});

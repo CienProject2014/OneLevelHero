@@ -18,9 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.PrologueScene;
-import com.mygdx.resource.SaveVersion;
 import com.mygdx.resource.Scripts;
-import com.mygdx.util.LoadLauncher;
 
 public class PrologueScreen implements Screen {
 	OneLevelHero game;
@@ -75,10 +73,8 @@ public class PrologueScreen implements Screen {
 				scene.next();
 
 				if (scene.isEnd) {
-					game.loadLauncher = new LoadLauncher(game); //각종 설정들을 올린다.
-					game.loadLauncher.jsonSetting();
-					game.currentManager.setVersion(SaveVersion.NEW);
-					game.setScreen(new VillageScreen(game, "Blackwood"));
+
+					game.eventTrigger.makeEvent();
 				}
 
 				return true;
