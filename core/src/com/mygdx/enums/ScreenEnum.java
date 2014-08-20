@@ -20,103 +20,103 @@ public enum ScreenEnum {
 
 	MAIN {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new MenuScreen();
 		}
 	},
 	OPTION {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new OptionScreen();
 		}
 	},
 	PROLOGUE {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new PrologueScreen();
 		}
 	},
 	VILLAGE {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new VillageScreen();
 		}
 	},
 	WORLD {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new WorldMapScreen();
 		}
 	},
 	CREDIT {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new CreditScreen();
 		}
 	},
 	EXTRA {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new CollectionScreen();
 		}
 	},
 	SAVE {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new SaveScreen();
 		}
 	},
 	BONUS {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new BonusPointScreen();
 		}
 	},
 	LOAD {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new LoadScreen();
 		}
 	},
 	EVENT {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new EventScreen();
 		}
 	},
 	MOVING {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new MovingScreen();
 		}
 	},
 	END {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new EndingScreen();
 		}
 	},
 	CG {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new CGScreen();
 		}
 	},
 	BGM {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new BGMScreen();
 		}
 	},
 	COLLETION {
 		@Override
-		protected com.badlogic.gdx.Screen getScreenInstance() {
+		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new CollectionScreen();
 		}
 	}
 
 	;
 
-	protected abstract com.badlogic.gdx.Screen getScreenInstance();
+	public abstract com.badlogic.gdx.Screen getScreenInstance();
 
 }
