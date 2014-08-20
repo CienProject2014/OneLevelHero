@@ -9,8 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.battle.Fight;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.util.ScreenEnum;
 
 public class BattleScreen implements Screen {
 
@@ -48,9 +50,6 @@ public class BattleScreen implements Screen {
 		fight = new Fight();
 
 		Gdx.input.setInputProcessor(stage);
-
-		// Viewport vp = stage.getViewport();
-
 		Table uitable = new Table(Assets.skin);
 
 		fightButton = new TextButton("전투", Assets.skin);
@@ -71,7 +70,7 @@ public class BattleScreen implements Screen {
 				Gdx.app.log("정보", "전투");
 				fight.decideOutcome();
 				if (fight.battleEnd)
-					game.setScreen(new VillageScreen(game));
+					new ScreenController(ScreenEnum.VILLAGE);
 			}
 		});
 		fleeButton.addListener(new InputListener() {
@@ -86,7 +85,7 @@ public class BattleScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				game.setScreen(new VillageScreen(game));
+				new ScreenController(ScreenEnum.VILLAGE);
 				Gdx.app.log("정보", "전투에서 도망쳤습니다.");
 			}
 		});

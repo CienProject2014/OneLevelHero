@@ -8,18 +8,18 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.game.OneLevelHero;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.resource.Assets;
+import com.mygdx.util.ScreenEnum;
 
 public class LoadScreen implements Screen {
-	OneLevelHero game;
+
 	Stage stage;
 	TextButton newstartButton;
 	TextButton backButton;
 
-	public LoadScreen(OneLevelHero game) {
-		// TODO Auto-generated constructor stub
-		this.game = game;
+	public LoadScreen() {
+
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class LoadScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				game.setScreen(new MenuScreen(game));
+				new ScreenController(ScreenEnum.MAIN);
 			}
 		});
 		newstartButton.addListener(new InputListener() {
@@ -73,7 +73,7 @@ public class LoadScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				game.setScreen(new PrologueScreen(game));
+				new ScreenController(ScreenEnum.PROLOGUE);
 			}
 		});
 

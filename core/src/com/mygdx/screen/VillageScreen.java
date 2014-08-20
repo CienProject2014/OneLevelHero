@@ -14,10 +14,10 @@ import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.GameUi;
 import com.mygdx.stage.VillageStage;
+import com.mygdx.util.World;
 
 public class VillageScreen implements Screen {
 
-	OneLevelHero game;
 	Image background;
 	SpriteBatch batch;
 	String villageName;
@@ -28,13 +28,14 @@ public class VillageScreen implements Screen {
 
 	boolean state = true;
 
-	public VillageScreen(OneLevelHero game) {
-		this.game = game;
+	public VillageScreen(String villagename) {
+
+		this.villageName = villagename;
 	}
 
-	public VillageScreen(OneLevelHero game, String villagename) {
-		this.game = game;
-		this.villageName = villagename;
+	public VillageScreen(World world) {
+		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override
@@ -57,9 +58,9 @@ public class VillageScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		villageStage = new VillageStage(villageName + "-0", game);
+		villageStage = new VillageStage(villageName + "-0");
 
-		uiStage = new GameUi(game);
+		uiStage = new GameUi();
 
 		// 여러 스테이지에 인풋 프로세서를 동시에 할당한다
 		InputMultiplexer multiplexer = new InputMultiplexer();
@@ -75,13 +76,16 @@ public class VillageScreen implements Screen {
 		Assets.fontLoad();
 		Assets.loadSize(villageStage);
 
-		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth, Assets.realHeight / 2);
+		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth,
+				Assets.realHeight / 2);
 		cam.translate(100, 300);
 		cam.position.set(Assets.realWidth / 2, Assets.realHeight / 2, 0);
 		villageStage.getViewport().setCamera(cam);
 
-		Gdx.app.log("LoadLauncher - getAttack()", String.valueOf(game.loadLauncher.unit.status.getAttack()));
-		Gdx.app.log("CurrentManager - getVersion()", String.valueOf(game.currentManager.getVersion()));
+		Gdx.app.log("LoadLauncher - getAttack()", String
+				.valueOf(OneLevelHero.loadLauncher.unit.status.getAttack()));
+		Gdx.app.log("CurrentManager - getVersion()",
+				String.valueOf(OneLevelHero.currentManager.getVersion()));
 
 		villageStage.addListener(new InputListener() {
 
@@ -89,13 +93,15 @@ public class VillageScreen implements Screen {
 			InputEvent event;
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				this.event = event;
 				return true;
 			}
 
 			@Override
-			public void touchDragged(InputEvent event, float x, float y, int pointer) {
+			public void touchDragged(InputEvent event, float x, float y,
+					int pointer) {
 				moveCamera((int) x, (int) y);
 				System.out.println((int) x);
 			}
@@ -104,7 +110,10 @@ public class VillageScreen implements Screen {
 				Vector3 new_position = getNewCameraPosition(touch_x, touch_y);
 
 				if (!cameraOutOfLimit(new_position))
-					villageStage.getCamera().translate(new_position.sub(villageStage.getCamera().position));
+					villageStage
+							.getCamera()
+							.translate(
+									new_position.sub(villageStage.getCamera().position));
 
 				last_touch_down.set(touch_x, touch_y, 0);
 			}
@@ -126,7 +135,8 @@ public class VillageScreen implements Screen {
 
 				if (position.x < x_left_limit || position.x > x_right_limit)
 					return true;
-				else if (position.y < y_bottom_limit || position.y > y_top_limit)
+				else if (position.y < y_bottom_limit
+						|| position.y > y_top_limit)
 					return true;
 				else
 					return false;

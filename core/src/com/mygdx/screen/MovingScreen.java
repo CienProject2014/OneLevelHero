@@ -12,8 +12,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.MovingController;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.util.ScreenEnum;
 
 public class MovingScreen implements Screen {
 
@@ -148,7 +150,7 @@ public class MovingScreen implements Screen {
 	}
 
 	public void goBackward() {
-		game.setScreen(new WorldMapScreen(game));
+		new ScreenController(ScreenEnum.WORLD);
 	}
 
 	public void goLeftward() {

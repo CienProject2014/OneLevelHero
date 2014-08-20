@@ -16,14 +16,16 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.PrologueScene;
 import com.mygdx.resource.SaveVersion;
 import com.mygdx.resource.Scripts;
 import com.mygdx.util.LoadLauncher;
+import com.mygdx.util.ScreenEnum;
 
 public class PrologueScreen implements Screen {
-	OneLevelHero game;
+
 	Stage stage;
 	Texture img;
 	Image[] image;
@@ -35,8 +37,8 @@ public class PrologueScreen implements Screen {
 	PrologueScene scene;
 	Table table;
 
-	public PrologueScreen(OneLevelHero game) {
-		this.game = game;
+	public PrologueScreen() {
+
 	}
 
 	@Override
@@ -71,14 +73,16 @@ public class PrologueScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				scene.next();
 
 				if (scene.isEnd) {
-					game.loadLauncher = new LoadLauncher(game); //각종 설정들을 올린다.
-					game.loadLauncher.jsonSetting();
-					game.currentManager.setVersion(SaveVersion.NEW);
-					game.setScreen(new VillageScreen(game, "Blackwood"));
+					OneLevelHero.loadLauncher = new LoadLauncher();
+					OneLevelHero.loadLauncher.jsonSetting(); // 설정들을
+					OneLevelHero.currentManager.setVersion(SaveVersion.NEW); // 올린다.
+
+					new ScreenController(ScreenEnum.VILLAGE);
 				}
 
 				return true;

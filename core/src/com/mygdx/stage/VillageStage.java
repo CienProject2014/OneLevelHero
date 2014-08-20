@@ -13,13 +13,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mygdx.game.OneLevelHero;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.resource.Assets;
-import com.mygdx.screen.MenuScreen;
+import com.mygdx.util.ScreenEnum;
 
 public class VillageStage extends Stage {
 
-	OneLevelHero game;
 	// JSONParser parser = new JSONParser();
 	String delimiter = "-";
 	String village_name;
@@ -41,11 +40,10 @@ public class VillageStage extends Stage {
 		super();
 	}
 
-	public VillageStage(String key, OneLevelHero game) {
+	public VillageStage(String key) {
 		super();
 		keyParser(key);
 		village_setter();
-		this.game = game;
 	}
 
 	// 마을 정보에 맞게 스테이지 형성
@@ -111,8 +109,7 @@ public class VillageStage extends Stage {
 					// TODO Auto-generated method stub
 					System.out.println("up");
 
-					// 월드맵으로 바꾸삼
-					game.setScreen(new MenuScreen(game));
+					new ScreenController(ScreenEnum.MAIN);
 
 					super.touchUp(event, x, y, pointer, button);
 				}

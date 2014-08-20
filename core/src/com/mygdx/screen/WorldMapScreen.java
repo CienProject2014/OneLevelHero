@@ -12,9 +12,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.PrologueScene;
+import com.mygdx.util.ScreenEnum;
 
 public class WorldMapScreen implements Screen {
 
@@ -28,8 +30,8 @@ public class WorldMapScreen implements Screen {
 	private TextButton goToMovingButton;
 	private Table table;
 
-	public WorldMapScreen(OneLevelHero game) {
-		this.setGame(game);
+	public WorldMapScreen() {
+
 	}
 
 	@Override
@@ -67,7 +69,7 @@ public class WorldMapScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				game.setScreen(new VillageScreen(game, "Blackwood"));
+				new ScreenController(ScreenEnum.VILLAGE);
 			}
 		});
 

@@ -14,8 +14,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.util.ScreenEnum;
 
 public class MenuScreen implements Screen {
 
@@ -32,8 +34,8 @@ public class MenuScreen implements Screen {
 
 	private static Music music;
 
-	public MenuScreen(OneLevelHero game) {
-		this.game = game;
+	public MenuScreen() {
+
 	}
 
 	@Override
@@ -52,8 +54,9 @@ public class MenuScreen implements Screen {
 	public void show() {
 		setMusic(Assets.mainMusic);
 		getMusic().setVolume(Assets.musicVolume);
-		game.soundManager.playMusic(getMusic());
-		Texture texture = new Texture(Gdx.files.internal("texture/MainMenu_Background.png"));
+		OneLevelHero.soundManager.playMusic(getMusic());
+		Texture texture = new Texture(
+				Gdx.files.internal("texture/MainMenu_Background.png"));
 		Image background = new Image(texture);
 
 		stage = new Stage();
@@ -64,53 +67,63 @@ public class MenuScreen implements Screen {
 		Assets.menuScreenLoad();
 
 		startButton = new ImageButton(Assets.start_before, Assets.start_after);
-		optionsButton = new ImageButton(Assets.option_before, Assets.option_after);
-		creditButton = new ImageButton(Assets.credit_before, Assets.credit_after);
+		optionsButton = new ImageButton(Assets.option_before,
+				Assets.option_after);
+		creditButton = new ImageButton(Assets.credit_before,
+				Assets.credit_after);
 		extraButton = new ImageButton(Assets.extra_before, Assets.extra_after);
 
 		startButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new LoadScreen(game));
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				new ScreenController(ScreenEnum.LOAD);
 			}
 		});
 		optionsButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new OptionScreen(game));
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				new ScreenController(ScreenEnum.OPTION);
 			}
 		});
 		creditButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new CreditScreen(game));
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				new ScreenController(ScreenEnum.CREDIT);
 
 			}
 		});
 		extraButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new CollectionScreen(game));
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				new ScreenController(ScreenEnum.EXTRA);
 
 			}
 		});
@@ -122,16 +135,21 @@ public class MenuScreen implements Screen {
 		Assets.logo.setWidth((int) (0.6f * Assets.realWidth));
 		table.setFillParent(true);
 
-		table.add(extraButton).height(0.35f * realheight).width(0.3f * realwidth).expand().top().left();
-		table.add(creditButton).height(0.35f * realheight).width(0.3f * realwidth).top().right();
+		table.add(extraButton).height(0.35f * realheight)
+				.width(0.3f * realwidth).expand().top().left();
+		table.add(creditButton).height(0.35f * realheight)
+				.width(0.3f * realwidth).top().right();
 		table.row();
-		table.add(startButton).height(0.35f * realheight).width(0.3f * realwidth).bottom().left();
-		table.add(optionsButton).height(0.35f * realheight).width(0.3f * realwidth).bottom().right();
+		table.add(startButton).height(0.35f * realheight)
+				.width(0.3f * realwidth).bottom().left();
+		table.add(optionsButton).height(0.35f * realheight)
+				.width(0.3f * realwidth).bottom().right();
 
 		table.debug();
 		table.debugTable();
 
-		Assets.logo.setPosition((int) (0.2f * Assets.realWidth), (int) (0.3f * Assets.realHeight));
+		Assets.logo.setPosition((int) (0.2f * Assets.realWidth),
+				(int) (0.3f * Assets.realHeight));
 
 		background.setSize(realwidth, realheight);
 

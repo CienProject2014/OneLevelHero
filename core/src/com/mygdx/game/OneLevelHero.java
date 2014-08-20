@@ -4,23 +4,25 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.resource.Assets;
-import com.mygdx.screen.MenuScreen;
 import com.mygdx.util.CurrentManager;
 import com.mygdx.util.LoadLauncher;
+import com.mygdx.util.ScreenEnum;
+import com.mygdx.util.ScreenManager;
 import com.mygdx.util.SoundManager;
 
 public class OneLevelHero extends Game {
 	SpriteBatch batch;
 	Texture img;
-	public LoadLauncher loadLauncher;
-	public CurrentManager currentManager;
-	public SoundManager soundManager;
+	public static LoadLauncher loadLauncher;
+	public static CurrentManager currentManager;
+	public static SoundManager soundManager;
 
 	@Override
 	public void create() {
-		Assets.jsonLoad(); //어셋을 로드해 json 파일들을 메모리에 올린다.
+		Assets.jsonLoad(); // 어셋을 로드해 json 파일들을 메모리에 올린다.
 		currentManager = new CurrentManager();
 		soundManager = new SoundManager();
-		setScreen(new MenuScreen(this));
+		ScreenManager.getInstance().initialize(this);
+		ScreenManager.getInstance().show(ScreenEnum.MAIN);
 	}
 }
