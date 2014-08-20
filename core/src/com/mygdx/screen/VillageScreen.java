@@ -22,7 +22,7 @@ import com.mygdx.resource.GameUi;
 import com.mygdx.stage.VillageStage;
 
 public class VillageScreen implements Screen {
-	OneLevelHero game;	// Screen마다 사용자(user)의 정보를 가지고 있어야 함.
+	OneLevelHero game; // Screen마다 사용자(user)의 정보를 가지고 있어야 함.
 	Image background;
 	SpriteBatch batch;
 	String villageName;
@@ -89,7 +89,7 @@ public class VillageScreen implements Screen {
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
 
-		Assets.menuScreenButtonLoad();
+		Assets.menuScreenLoad();
 		Assets.loadSize(villageStage1);
 
 		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth, Assets.realHeight / 2);
@@ -156,7 +156,7 @@ public class VillageScreen implements Screen {
 		// vs2.addActor(UI);
 
 		//인벤토리 세팅
-		Skin skin = Assets.skins;
+		Skin skin = Assets.skin;
 		DragAndDrop dragAndDrop = new DragAndDrop();
 		inventoryActor = new InventoryActor(new Inventory(), dragAndDrop, skin);
 		inventoryStage.addActor(inventoryActor);
@@ -182,7 +182,6 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 		Gdx.app.log("DEBUG", "Village dispose is called");
 		villageStage1.dispose();
 	}

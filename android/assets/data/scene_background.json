@@ -19,4 +19,14 @@
 			"scene4":"texture/prologue/scene4.jpg"
 		}
 	]
+	"Blackwood":
+	[
+		{
+			"number":4,
+			"scene1":"texture/prologue/scene1.jpg",
+			"scene2":"texture/prologue/scene2.jpg",
+			"scene3":"texture/prologue/scene3.jpg",
+			"scene4":"texture/prologue/scene4.jpg"
+		}
+	]
 }

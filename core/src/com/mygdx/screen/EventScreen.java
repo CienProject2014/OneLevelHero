@@ -3,33 +3,41 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.event.EventTypeEnum;
 import com.mygdx.game.OneLevelHero;
-import com.mygdx.resource.Assets;
+import com.mygdx.resource.EventScene;
 
 public class EventScreen implements Screen {
 	OneLevelHero game;
-	TextButton nextButton; //테스트를 위한 임시버튼입니다. 구현이 완료되면 지워주세요.
+	SpriteBatch batch;
+	EventScene scene;
 	Stage stage;
 	Table table;
-	EventTypeEnum eventTypeEnum;
-	String eventCode;
+	String event;
 
-	public EventScreen(OneLevelHero game, EventTypeEnum eventTypeEnum, String eventCode) {
+	public EventScreen(OneLevelHero game) {
 		this.game = game;
-		this.eventTypeEnum = eventTypeEnum;
-		this.eventCode = eventCode;
+	}
+
+	public EventScreen(OneLevelHero game, String event) {
+		this.game = game;
+		this.event = event;
+		game.eventManager.setEvent(event);
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+		batch.begin();
+		scene.show(delta); // 배경 출력
+		batch.end();
+
 		stage.draw();
 	}
 
@@ -41,32 +49,40 @@ public class EventScreen implements Screen {
 
 	@Override
 	public void show() {
-
 		stage = new Stage();
-		Gdx.input.setInputProcessor(stage);
-		table = new Table(Assets.skin);
-		nextButton = new TextButton("Go Village Screen", Assets.skin);
-		nextButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
+		batch = new SpriteBatch();
+		table = new Table();
+		table.setFillParent(true);
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new VillageScreen(game, "Blackwood"));
+		scene = new EventScene(table, batch);
+		scene.setStage(stage);
+		scene.load("Blackwood-scene-1");
+		scene.start();
+
+		Gdx.input.setInputProcessor(stage);
+
+		stage.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				scene.next();
+
+				if (scene.isEnd) {
+					// back to previous screen
+					// that envoke this event screen
+
+					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
+					game.setScreen(new VillageScreen(game));
+				}
+
+				return true;
 			}
 		});
 
-		table.setFillParent(true);
-		table.add(nextButton).expand();
 		stage.addActor(table);
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-
+		Gdx.app.log("DEBUG", "EventScreen hide is called");
 	}
 
 	@Override

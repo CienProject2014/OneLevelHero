@@ -66,14 +66,14 @@ public class EventScene {
 	public void load(String scene) {
 
 		this.scene = scene;
-		// 신 갯수를 받아옴. scene_character.json에 임시로 저장.
+		// scene 갯수를 받아옴. scene_character.json에 임시로 저장.
 		num = characterLoader.getNum(scene.split("-")[0]);
 
 		// 배경 json 불러옴
-		bgtexture = bgloader.BackgroundGetter(scene);
+		bgtexture = bgloader.getBackground(scene);
 
 		// 텍스트 파싱
-		text = scriptloader.ScriptGetter(scene);
+		text = scriptloader.getScript(scene);
 		script = new Label(text, Assets.skin);
 
 		// String str = "Prologue"+"-"+"scene"+"-"+"1";
@@ -90,8 +90,7 @@ public class EventScene {
 		script.setWidth(Assets.realWidth * 0.8f);
 
 		character.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
-		character
-				.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
+		character.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
 
 	}
 
@@ -138,7 +137,7 @@ public class EventScene {
 		else
 			return false;
 	}
-	
+
 	public boolean isEnd() {
 		return isEnd;
 	}
@@ -149,7 +148,6 @@ public class EventScene {
 		alpha += (timeAcc / TIME_TO_FADE);
 		if (alpha >= 1) {
 			batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-
 		}
 
 		else {

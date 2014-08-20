@@ -20,6 +20,7 @@ import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.EventScene;
 import com.mygdx.resource.SaveVersion;
 import com.mygdx.resource.Scripts;
+import com.mygdx.util.LoadLauncher;
 
 public class PrologueScreen implements Screen {
 	OneLevelHero game;
@@ -73,13 +74,12 @@ public class PrologueScreen implements Screen {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				scene.next();
 
-
 				if (scene.isEnd()) {
 					game.loadLauncher = new LoadLauncher(game); //각종 설정들을 올린다.
 					game.loadLauncher.jsonSetting();
 					game.currentManager.setVersion(SaveVersion.NEW);
-					dispose();	// should dispose before setScreen
-					game.setScreen(new VillageScreen(game, "Blackwood"));
+					dispose(); // should dispose before setScreen
+					game.setScreen(new EventScreen(game, "Event"));
 				}
 				return true;
 			}
@@ -107,9 +107,9 @@ public class PrologueScreen implements Screen {
 	@Override
 	public void dispose() {
 		// dispose manually
-/*		stage.dispose();
-		batch.dispose();
-		img.dispose();*/
+		/*		stage.dispose();
+				batch.dispose();
+				img.dispose();*/
 	}
 
 }

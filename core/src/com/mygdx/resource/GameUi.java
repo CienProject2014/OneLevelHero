@@ -187,7 +187,6 @@ public class GameUi extends Stage {
 
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				// TODO Auto-generated method stub
 				return true;
 			}
 
@@ -208,7 +207,7 @@ public class GameUi extends Stage {
 				game.setScreen(new EventScreen(game, "Event"));
 			}
 		});
-		
+
 	}
 
 	@Override

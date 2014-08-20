@@ -29,6 +29,6 @@ public class LoadLauncher {
 		statusLoader = new StatusLoader(game.currentManager.getVersion(), "Hero", status_json, bag_json); //statusLoader에서 jsonObject를 파싱하고 클래스 정보를 주입함		
 		unit = new Unit(statusLoader.getStatus(), statusLoader.getBag()); //unit클래스에 파싱한 json 정보를 뿌려줌
 		game.currentManager.setUnit(unit); //currentManager가 unit을 소유하도록 만든다.
-		game.eventManager.setCode("b-01-01");
+		game.eventManager.setEvent("b-01-01");
 	}
 }

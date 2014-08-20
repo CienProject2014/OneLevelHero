@@ -1,7 +1,7 @@
 package com.mygdx.event;
 
 import com.mygdx.game.OneLevelHero;
-import com.mygdx.screen.EventScreen;
+import com.mygdx.screen.EventScreen2;
 import com.mygdx.util.EventManager;
 
 public class EventTrigger {
@@ -20,6 +20,6 @@ public class EventTrigger {
 	}
 
 	public void makeEvent() {
-		game.setScreen(new EventScreen(game, EventTypeEnum.CHAT, "blackwood-01-01"));
+		game.setScreen(new EventScreen2(game, EventTypeEnum.CHAT, "blackwood-01-01"));
 	}
 }
