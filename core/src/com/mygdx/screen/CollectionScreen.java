@@ -1,4 +1,4 @@
-package com.mygdx.screen;
+﻿package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -26,7 +26,6 @@ public class CollectionScreen implements Screen {
 
 	public CollectionScreen(OneLevelHero game) {
 		this.game = game;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -45,7 +44,6 @@ public class CollectionScreen implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 		Table table = new Table(Assets.skin);
@@ -57,64 +55,64 @@ public class CollectionScreen implements Screen {
 
 		endingButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
+
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				// TODO Auto-generated method stub				
+
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				game.setScreen(new EndingScreen(game));
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				new ScreenController(ScreenEnum.END);
 			}
 		});
 		cgButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				game.setScreen(new CGScreen(game));
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+
+				new ScreenController(ScreenEnum.CG);
 			}
 		});
 		bgmButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				game.setScreen(new BGMScreen(game));
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+
+				new ScreenController(ScreenEnum.BGM);
 			}
 		});
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				game.setScreen(new MenuScreen());
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				new ScreenController(ScreenEnum.MENU);
 			}
 		});
 
 		table.setFillParent(true);
-		// table.debug();
 		table.add(endingButton).expand().width(240).height(240).top().left();
 		table.add(cgButton).width(240).height(240).top().right();
 		table.row();
