@@ -7,23 +7,33 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.mygdx.enums.ScriptsEnum;
+
 public class Scripts {
 
 	JSONParser parser = new JSONParser();
 	String key1;
 	String key2;
 	String key3;
+	JSONArray array;
 	String delimiter = "-";
+	ScriptsEnum scriptsEnum;
 
 	// 스크립트 클래스를 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
-	public Scripts(int filenum) {
-
+	public Scripts(ScriptsEnum scriptsEnum) {
+		this.scriptsEnum = scriptsEnum;
 	}
 
 	// Key값에 맞는 스크립트를 반환함
 	public String getScript(String key) {
 		keyParser(key);
-		JSONArray array = (JSONArray) Assets.script_json.get(key1);
+
+		for (ScriptsEnum e : ScriptsEnum.values()) {
+			if (e == scriptsEnum) {
+				array = (JSONArray) scriptsEnum.getJsonObject().get(key1);
+
+			}
+		}
 		JSONObject sc = (JSONObject) array.get(0);
 		String script = (String) sc.get(key2 + key3);
 		return script;

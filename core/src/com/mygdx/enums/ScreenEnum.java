@@ -113,9 +113,7 @@ public enum ScreenEnum {
 		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new CollectionScreen();
 		}
-	}
-
-	;
+	};
 
 	public abstract com.badlogic.gdx.Screen getScreenInstance();
 

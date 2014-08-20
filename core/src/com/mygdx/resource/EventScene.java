@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.mygdx.enums.ScriptsEnum;
 
 public class EventScene {
 	// 신 진행 관련 변수
@@ -25,7 +26,7 @@ public class EventScene {
 	Table table;
 
 	// 스크립트
-	Scripts scriptloader;
+	Scripts scripts;
 	Label script;
 	String text;
 
@@ -51,7 +52,7 @@ public class EventScene {
 
 		this.batch = batch;
 
-		scriptloader = new Scripts(1);
+		scripts = new Scripts(ScriptsEnum.SCRIPT_JSON);
 		bgloader = new Backgrounds(1);
 		characterLoader = new Characters(1);
 
@@ -73,7 +74,7 @@ public class EventScene {
 		bgtexture = bgloader.getBackground(scene);
 
 		// 텍스트 파싱
-		text = scriptloader.getScript(scene);
+		text = scripts.getScript(scene);
 		script = new Label(text, Assets.skin);
 
 		// String str = "Prologue"+"-"+"scene"+"-"+"1";
