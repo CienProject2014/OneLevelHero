@@ -85,7 +85,26 @@ public enum ScreenEnum {
 		protected com.badlogic.gdx.Screen getScreenInstance() {
 			return new MovingScreen();
 		}
-	};
+	},
+	END {
+		@Override
+		protected com.badlogic.gdx.Screen getScreenInstance() {
+			return new EndingScreen();
+		}
+	},
+	CG {
+		@Override
+		protected com.badlogic.gdx.Screen getScreenInstance() {
+			return new CGScreen();
+		}
+	},
+	BGM {
+		@Override
+		protected com.badlogic.gdx.Screen getScreenInstance() {
+			return new BGMScreen();
+		}
+	}
+	;
 
 	protected abstract com.badlogic.gdx.Screen getScreenInstance();
 
