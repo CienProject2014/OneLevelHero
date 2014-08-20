@@ -28,13 +28,13 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Slot {
 
-	private Item item;
+	private ItemEnum item;
 
 	private int amount;
 
 	private Array<SlotListener> slotListeners = new Array<SlotListener>();
 
-	public Slot(Item item, int amount) {
+	public Slot(ItemEnum item, int amount) {
 		this.item = item;
 		this.amount = amount;
 	}
@@ -65,7 +65,7 @@ public class Slot {
 		return this.item == other.item && this.amount >= other.amount;
 	}
 
-	public boolean add(Item item, int amount) {
+	public boolean add(ItemEnum item, int amount) {
 		if (this.item == item || this.item == null) {
 			this.item = item;
 			this.amount += amount;
@@ -95,7 +95,7 @@ public class Slot {
 		}
 	}
 
-	public Item getItem() {
+	public ItemEnum getItem() {
 		return item;
 	}
 

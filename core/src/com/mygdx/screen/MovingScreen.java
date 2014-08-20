@@ -13,13 +13,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.MovingController;
 import com.mygdx.controller.ScreenController;
-import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.util.ScreenEnum;
 
 public class MovingScreen implements Screen {
 
-	OneLevelHero game;
 	Stage stage;
 	TextButton goButton;
 	TextButton backButton;
@@ -35,10 +33,8 @@ public class MovingScreen implements Screen {
 	String presentVil;
 	String targetVil;
 
-	public MovingScreen(OneLevelHero game) {
-		this.game = game;
+	public MovingScreen() {
 		controller = new MovingController();
-
 	}
 
 	@Override

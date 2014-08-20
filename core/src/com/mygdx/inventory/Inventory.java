@@ -39,7 +39,7 @@ public class Inventory {
 
 		// create some random items
 		for (Slot slot : slots) {
-			slot.add(Item.values()[MathUtils.random(0, Item.values().length - 1)], 1);
+			slot.add(ItemEnum.values()[MathUtils.random(0, ItemEnum.values().length - 1)], 1);
 		}
 
 		// create a few random empty slots
@@ -49,7 +49,7 @@ public class Inventory {
 		}
 	}
 
-	public int checkInventory(Item item) {
+	public int checkInventory(ItemEnum item) {
 		int amount = 0;
 
 		for (Slot slot : slots) {
@@ -61,7 +61,7 @@ public class Inventory {
 		return amount;
 	}
 
-	public boolean store(Item item, int amount) {
+	public boolean store(ItemEnum item, int amount) {
 		// first check for a slot with the same item type
 		Slot itemSlot = firstSlotWithItem(item);
 		if (itemSlot != null) {
@@ -84,7 +84,7 @@ public class Inventory {
 		return slots;
 	}
 
-	private Slot firstSlotWithItem(Item item) {
+	private Slot firstSlotWithItem(ItemEnum item) {
 		for (Slot slot : slots) {
 			if (slot.getItem() == item) {
 				return slot;

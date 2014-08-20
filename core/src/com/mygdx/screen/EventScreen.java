@@ -1,41 +1,34 @@
-﻿/*
- * Texture 생성자 안에 파일의 경로를 적을때 Gdx.files.internal 안붙이고
- * 그냥 파일 이름을 String으로 써주면 됨
- */
 package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.EventScene;
-import com.mygdx.resource.Scripts;
 import com.mygdx.util.ScreenEnum;
 
-public class PrologueScreen implements Screen {
-
-	Stage stage;
-	Texture img;
-	Image[] image;
-	Scripts script;
-	Label textlabel;
-	TextureRegion region;
-	Texture texture;
+public class EventScreen implements Screen {
+	OneLevelHero game;
 	SpriteBatch batch;
 	EventScene scene;
+	Stage stage;
 	Table table;
+	String event;
 
-	public PrologueScreen() {
+	public EventScreen() {
 
+	}
+
+	public EventScreen(OneLevelHero game, String event) {
+		this.game = game;
+		this.event = event;
+		game.eventManager.setEvent(event);
 	}
 
 	@Override
@@ -52,6 +45,7 @@ public class PrologueScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
 
 	}
 
@@ -64,7 +58,7 @@ public class PrologueScreen implements Screen {
 
 		scene = new EventScene(table, batch);
 		scene.setStage(stage);
-		scene.load("Prologue-scene-1");
+		scene.load("Blackwood-scene-1");
 		scene.start();
 
 		Gdx.input.setInputProcessor(stage);
@@ -75,39 +69,41 @@ public class PrologueScreen implements Screen {
 				scene.next();
 
 				if (scene.isEnd) {
+					// back to previous screen
+					// that envoke this event screen
 
-					new ScreenController(ScreenEnum.EVENT);
-
+					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
+					new ScreenController(ScreenEnum.VILLAGE);
 				}
+
 				return true;
 			}
 		});
 
 		stage.addActor(table);
-
 	}
 
 	@Override
 	public void hide() {
-
+		Gdx.app.log("DEBUG", "EventScreen hide is called");
 	}
 
 	@Override
 	public void pause() {
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void resume() {
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void dispose() {
-		// dispose manually
-		/*
-		 * stage.dispose(); batch.dispose(); img.dispose();
-		 */
+		// TODO Auto-generated method stub
+
 	}
 
 }

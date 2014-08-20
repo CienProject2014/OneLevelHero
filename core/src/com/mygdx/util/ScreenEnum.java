@@ -1,10 +1,11 @@
 package com.mygdx.util;
 
-import com.mygdx.resource.Assets;
 import com.mygdx.screen.BonusPointScreen;
 import com.mygdx.screen.CreditScreen;
+import com.mygdx.screen.EventScreen;
 import com.mygdx.screen.LoadScreen;
 import com.mygdx.screen.MenuScreen;
+import com.mygdx.screen.MovingScreen;
 import com.mygdx.screen.OptionScreen;
 import com.mygdx.screen.PrologueScreen;
 import com.mygdx.screen.SaveScreen;
@@ -34,7 +35,7 @@ public enum ScreenEnum {
 	VILLAGE {
 		@Override
 		protected com.badlogic.gdx.Screen getScreenInstance() {
-			return new VillageScreen(Assets.world);
+			return new VillageScreen();
 		}
 	},
 	WORLD {
@@ -71,6 +72,18 @@ public enum ScreenEnum {
 		@Override
 		protected com.badlogic.gdx.Screen getScreenInstance() {
 			return new LoadScreen();
+		}
+	},
+	EVENT {
+		@Override
+		protected com.badlogic.gdx.Screen getScreenInstance() {
+			return new EventScreen();
+		}
+	},
+	MOVING {
+		@Override
+		protected com.badlogic.gdx.Screen getScreenInstance() {
+			return new MovingScreen();
 		}
 	};
 

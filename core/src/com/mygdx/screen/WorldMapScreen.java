@@ -15,7 +15,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
-import com.mygdx.resource.PrologueScene;
+import com.mygdx.resource.EventScene;
 import com.mygdx.util.ScreenEnum;
 
 public class WorldMapScreen implements Screen {
@@ -23,7 +23,7 @@ public class WorldMapScreen implements Screen {
 	private OneLevelHero game;
 	private Stage stage;
 	private SpriteBatch batch;
-	private PrologueScene scene;
+	private EventScene scene;
 	private Texture texture;
 	private Image background;
 	private TextButton goToVillageButton;
@@ -83,7 +83,7 @@ public class WorldMapScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				game.setScreen(new MovingScreen(game));
+				new ScreenController(ScreenEnum.MOVING);
 			}
 		});
 
@@ -137,11 +137,11 @@ public class WorldMapScreen implements Screen {
 		this.batch = batch;
 	}
 
-	public PrologueScene getScene() {
+	public EventScene getScene() {
 		return scene;
 	}
 
-	public void setScene(PrologueScene scene) {
+	public void setScene(EventScene scene) {
 		this.scene = scene;
 	}
 

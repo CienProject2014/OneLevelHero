@@ -1,13 +1,13 @@
 package com.mygdx.util;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.IntMap;
+import com.mygdx.game.OneLevelHero;
 
 public final class ScreenManager {
 
 	private static ScreenManager instance;
 
-	private Game game;
+	private static OneLevelHero game;
 
 	private IntMap<com.badlogic.gdx.Screen> screens;
 
@@ -22,8 +22,12 @@ public final class ScreenManager {
 		return instance;
 	}
 
-	public void initialize(Game game) {
-		this.game = game;
+	public void initialize(OneLevelHero game) {
+		ScreenManager.game = game;
+	}
+
+	public static OneLevelHero getGame() {
+		return game;
 	}
 
 	public void show(ScreenEnum screen) {

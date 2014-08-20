@@ -9,26 +9,28 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.event.EventTypeEnum;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
-import com.mygdx.resource.SaveVersion;
-import com.mygdx.util.LoadLauncher;
 import com.mygdx.util.ScreenEnum;
-import com.mygdx.util.ScreenManager;
 
-public class LoadScreen implements Screen {
-
+public class EventScreen2 implements Screen {
+	OneLevelHero game;
+	TextButton nextButton; // 테스트를 위한 임시버튼입니다. 구현이 완료되면 지워주세요.
 	Stage stage;
-	TextButton newstartButton;
-	TextButton backButton;
+	Table table;
+	EventTypeEnum eventTypeEnum;
+	String eventCode;
 
-	public LoadScreen() {
-
+	public EventScreen2(OneLevelHero game, EventTypeEnum eventTypeEnum,
+			String eventCode) {
+		this.game = game;
+		this.eventTypeEnum = eventTypeEnum;
+		this.eventCode = eventCode;
 	}
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.draw();
@@ -42,55 +44,28 @@ public class LoadScreen implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
+
 		stage = new Stage();
-		final OneLevelHero game = ScreenManager.getGame();
 		Gdx.input.setInputProcessor(stage);
-
-		Table table = new Table(Assets.skin);
-		backButton = new TextButton("Back", Assets.skin);
-		newstartButton = new TextButton("NewStart", Assets.skin);
-		backButton.addListener(new InputListener() {
+		table = new Table(Assets.skin);
+		nextButton = new TextButton("Go Village Screen", Assets.skin);
+		nextButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
-				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.MAIN);
-
-			}
-		});
-		newstartButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				game.loadLauncher = new LoadLauncher(); // 각종 설정들을 올린다.
-				game.loadLauncher.jsonSetting();
-				game.currentManager.setVersion(SaveVersion.NEW);
-				new ScreenController(ScreenEnum.PROLOGUE);
-
+				new ScreenController(ScreenEnum.VILLAGE);
 			}
 		});
 
 		table.setFillParent(true);
-		table.add(newstartButton).expand();
-		table.row();
-		table.add(backButton).bottom();
+		table.add(nextButton).expand();
 		stage.addActor(table);
-		// stage.addActor(backButton);
 	}
 
 	@Override

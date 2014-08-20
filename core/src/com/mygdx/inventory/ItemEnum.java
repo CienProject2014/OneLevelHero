@@ -24,13 +24,13 @@ package com.mygdx.inventory;
 /**
  * @author Daniel Holderbaum
  */
-public enum Item {
+public enum ItemEnum {
 
 	DAGGER("dagger"), LEATHER_ARMOR("leather_armor"), LEATHER_BOOTS("leather_boots"), LEATHER_GLOVES("leather_gloves"), NOTHING("nothing");
 
 	private String textureRegion;
 
-	private Item(String textureRegion) {
+	private ItemEnum(String textureRegion) {
 		this.textureRegion = textureRegion;
 	}
 

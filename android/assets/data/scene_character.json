@@ -8,4 +8,15 @@
 			"scene3":"texture/prologue/rabbit3.png"
 		}
 	]
+	
+	"Blackwood":
+	[
+		{
+			"number":"4",
+			"scene1":"texture/npc/paras_happy.jpg",
+			"scene2":"texture/npc/yongsa_sad.jpg",
+			"scene3":"texture/npc/paras_angry.jpg"
+			"scene4":"texture/npc/yongsa_happy.jpg"
+		}
+	]
 }

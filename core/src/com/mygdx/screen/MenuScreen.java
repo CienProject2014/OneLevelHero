@@ -18,6 +18,7 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.util.ScreenEnum;
+import com.mygdx.util.ScreenManager;
 
 public class MenuScreen implements Screen {
 
@@ -52,9 +53,10 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void show() {
+		OneLevelHero game = ScreenManager.getGame();
 		setMusic(Assets.mainMusic);
 		getMusic().setVolume(Assets.musicVolume);
-		OneLevelHero.soundManager.playMusic(getMusic());
+		game.soundManager.playMusic(getMusic());
 		Texture texture = new Texture(
 				Gdx.files.internal("texture/MainMenu_Background.png"));
 		Image background = new Image(texture);

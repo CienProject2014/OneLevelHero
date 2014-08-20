@@ -21,7 +21,7 @@ public class Backgrounds {
 	}
 
 	// Key값에 맞는 bgexture를 반환함
-	public Texture BackgroundGetter(String key) {
+	public Texture getBackground(String key) {
 		keyParser(key);
 
 		JSONArray array = (JSONArray) Assets.prologue_json.get(key1);
