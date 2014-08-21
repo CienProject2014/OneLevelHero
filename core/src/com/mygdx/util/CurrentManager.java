@@ -8,6 +8,11 @@ public class CurrentManager {
 	private String village;
 	private Unit unit;
 
+	private String currentPosition = "O";
+	private String currentState = "village";
+	private String currentStarting;
+	private String currentDestination;
+
 	public CurrentManager() {
 
 	}
@@ -34,5 +39,37 @@ public class CurrentManager {
 
 	public void setUnit(Unit unit) {
 		this.unit = unit;
+	}
+
+	public String getCurrentPosition() {
+		return currentPosition;
+	}
+
+	public void setCurrentPosition(String currentPosition) {
+		this.currentPosition = currentPosition;
+	}
+
+	public String getCurrentState() {
+		return currentState;
+	}
+
+	public void setCurrentState(String currentState) {
+		this.currentState = currentState;
+	}
+
+	public String getCurrentStarting() {
+		return currentStarting;
+	}
+
+	public void setCurrentStarting(String currentStarting) {
+		this.currentStarting = currentStarting;
+	}
+
+	public String getCurrentDestination() {
+		return currentDestination;
+	}
+
+	public void setCurrentDestination(String currentDestination) {
+		this.currentDestination = currentDestination;
 	}
 }
