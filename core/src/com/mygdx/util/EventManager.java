@@ -5,11 +5,12 @@ import com.mygdx.enums.EventTypeEnum;
 public class EventManager {
 	private String event;
 	EventTypeEnum eventType;
-	private String VillageCode;
-	private String NPCCode;
+	//private String VillageCode;
+	//private String NPCCode;
 
 	private String title;
-	private String delimiter = "-";
+
+	//private String delimiter = "-";
 
 	public void parseEvent(String event) {
 

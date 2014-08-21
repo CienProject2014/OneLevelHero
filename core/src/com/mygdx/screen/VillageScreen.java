@@ -96,33 +96,27 @@ public class VillageScreen implements Screen {
 		Assets.menuScreenLoad();
 		Assets.loadSize(villageStage);
 
-		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth,
-				Assets.realHeight / 2);
+		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth, Assets.realHeight / 2);
 		cam.translate(100, 300);
 		cam.position.set(Assets.realWidth / 2, Assets.realHeight / 2, 0);
 		villageStage.getViewport().setCamera(cam);
 
-		Gdx.app.log("LoadLauncher - getAttack()",
-				String.valueOf(game.loadLauncher.unit.status.getAttack()));
-		Gdx.app.log("CurrentManager - getVersion()",
-				String.valueOf(game.currentManager.getVersion()));
+		Gdx.app.log("LoadLauncher - getAttack()", String.valueOf(game.loadLauncher.unit.status.getAttack()));
+		Gdx.app.log("CurrentManager - getVersion()", String.valueOf(game.currentManager.getVersion()));
 
 		// 화면 스크롤
 		villageStage.addListener(new InputListener() {
 
 			Vector3 last_touch_down = new Vector3();
-			InputEvent event;
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				this.event = event;
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				this.setEvent(event);
 				return true;
 			}
 
 			@Override
-			public void touchDragged(InputEvent event, float x, float y,
-					int pointer) {
+			public void touchDragged(InputEvent event, float x, float y, int pointer) {
 				moveCamera((int) x, (int) y);
 				System.out.println((int) x);
 			}
@@ -132,10 +126,7 @@ public class VillageScreen implements Screen {
 
 				if (!cameraOutOfLimit(new_position))
 
-					villageStage
-							.getCamera()
-							.translate(
-									new_position.sub(villageStage.getCamera().position));
+					villageStage.getCamera().translate(new_position.sub(villageStage.getCamera().position));
 
 				last_touch_down.set(touch_x, touch_y, 0);
 			}
@@ -157,11 +148,13 @@ public class VillageScreen implements Screen {
 
 				if (position.x < x_left_limit || position.x > x_right_limit)
 					return true;
-				else if (position.y < y_bottom_limit
-						|| position.y > y_top_limit)
+				else if (position.y < y_bottom_limit || position.y > y_top_limit)
 					return true;
 				else
 					return false;
+			}
+
+			public void setEvent(InputEvent event) {
 			}
 
 		});

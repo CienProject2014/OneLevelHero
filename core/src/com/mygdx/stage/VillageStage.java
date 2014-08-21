@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.resource.Assets;
@@ -49,33 +48,28 @@ public class VillageStage extends Stage {
 	// 마을 정보에 맞게 스테이지 형성
 	private void village_setter() {
 
-		Viewport vp = this.getViewport();
+		//Viewport vp = this.getViewport();
 
 		viewportwidth = this.getWidth();
 		viewportheight = this.getHeight() * 2;
 
 		// vp.setWorldSize(viewportwidth, viewportheight * 0.8f);
 
-		background = new Texture(Gdx.files.internal("village/blackwood"
-				+ village_state + ".png"));
+		background = new Texture(Gdx.files.internal("village/blackwood" + village_state + ".png"));
 
 		Image backgroundImage = new Image(background);
 		backgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
 		addActor(backgroundImage);
 
-		JSONArray village_data = (JSONArray) Assets.village_json
-				.get(village_name);
+		JSONArray village_data = (JSONArray) Assets.village_json.get(village_name);
 		JSONObject this_village = (JSONObject) village_data.get(village_state);
 
-		num_of_building = Integer.parseInt(this_village.get("num_of_building")
-				.toString());
-		num_of_npc = Integer
-				.parseInt(this_village.get("num_of_npc").toString());
-		num_of_exit = Integer.parseInt(this_village.get("num_of_exit")
-				.toString());
+		num_of_building = Integer.parseInt(this_village.get("num_of_building").toString());
+		num_of_npc = Integer.parseInt(this_village.get("num_of_npc").toString());
+		num_of_exit = Integer.parseInt(this_village.get("num_of_exit").toString());
 
 		JSONArray buildingarray = (JSONArray) this_village.get("building");
-		JSONArray npcarray = (JSONArray) this_village.get("npc");
+		//JSONArray npcarray = (JSONArray) this_village.get("npc");
 		JSONArray exitarray = (JSONArray) this_village.get("exit");
 
 		// buildingbutton = new ImageButton[num_of_building];
@@ -96,16 +90,14 @@ public class VillageStage extends Stage {
 
 			exitbutton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					// TODO Auto-generated method stub
 					System.out.println("down");
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					// TODO Auto-generated method stub
 					System.out.println("up");
 
@@ -127,13 +119,10 @@ public class VillageStage extends Stage {
 			 * buildingbutton[i] = new ImageButton(buildingimg);
 			 */
 
-			buildingbutton[i] = new Label((String) building.get("name"),
-					Assets.skin);
+			buildingbutton[i] = new Label((String) building.get("name"), Assets.skin);
 
-			int positionx = Integer
-					.parseInt((String) building.get("positionx"));
-			int positiony = Integer
-					.parseInt((String) building.get("positiony"));
+			int positionx = Integer.parseInt((String) building.get("positionx"));
+			int positiony = Integer.parseInt((String) building.get("positiony"));
 
 			positionx = (int) (viewportwidth * (positionx / 1920.0));
 			positiony = (int) (viewportheight * (positiony / 1080.0));
@@ -147,8 +136,7 @@ public class VillageStage extends Stage {
 
 			buildingbutton[i].addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					// TODO Auto-generated method stub
 					System.out.println("down");
 					event.getListenerActor().setColor(Color.RED);
@@ -156,8 +144,7 @@ public class VillageStage extends Stage {
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					// TODO Auto-generated method stub
 					System.out.println("up");
 					event.getListenerActor().setColor(Color.WHITE);
