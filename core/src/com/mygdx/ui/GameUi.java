@@ -1,4 +1,4 @@
-package com.mygdx.resource;
+package com.mygdx.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,6 +17,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryActor;
+import com.mygdx.resource.Assets;
 import com.mygdx.screen.BattleScreen;
 
 public class GameUi extends Stage {
@@ -41,9 +42,9 @@ public class GameUi extends Stage {
 	Table[] statusbartable;
 	Table[] charatertable;
 
-	StatusBar[] hpbar;
-	StatusBar[] expbar;
-	StatusBar[] turnbar;
+	StatusBarUi[] hpbar;
+	StatusBarUi[] expbar;
+	StatusBarUi[] turnbar;
 
 	float realheight;
 	float realwidth;
@@ -55,17 +56,18 @@ public class GameUi extends Stage {
 		Assets.fontLoad();
 		realheight = Assets.realHeight;
 		realwidth = Assets.realWidth;
-		hpbar = new StatusBar[3];
-		expbar = new StatusBar[3];
-		turnbar = new StatusBar[3];
+		hpbar = new StatusBarUi[3];
+		expbar = new StatusBarUi[3];
+		turnbar = new StatusBarUi[3];
 		character = new Image[3];
 		statusbartable = new Table[3];
 		charatertable = new Table[3];
 
 		for (int i = 0; i < 3; i++) {
-			hpbar[i] = new StatusBar("hp", 0f, 100f, 1f, false, Assets.skin);
-			expbar[i] = new StatusBar("exp", 0f, 100f, 1f, false, Assets.skin);
-			turnbar[i] = new StatusBar("turn", 0f, 100f, 1f, false, Assets.skin);
+			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, Assets.skin);
+			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, Assets.skin);
+			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false,
+					Assets.skin);
 			statusbartable[i] = new Table(Assets.skin);
 			charatertable[i] = new Table(Assets.skin);
 			character[i] = new Image(new Texture(
@@ -131,7 +133,7 @@ public class GameUi extends Stage {
 			bottomtable.add(statusbartable[i]);
 		}
 
-		uiTable.add(toptable).expand().top();
+		uiTable.add(toptable).expand().top().height((realheight) / 12);
 		uiTable.row();
 		uiTable.add(bottomtable).bottom();
 
@@ -233,6 +235,20 @@ public class GameUi extends Stage {
 			}
 		});
 
+		character[0].addListener(new InputListener() {
+
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				new ScreenController(ScreenEnum.STATUS);
+			}
+		});
 	}
 
 	@Override

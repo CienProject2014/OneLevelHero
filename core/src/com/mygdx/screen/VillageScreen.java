@@ -18,8 +18,8 @@ import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryActor;
 import com.mygdx.resource.Assets;
-import com.mygdx.resource.GameUi;
 import com.mygdx.stage.VillageStage;
+import com.mygdx.ui.GameUi;
 import com.mygdx.util.ScreenManager;
 import com.mygdx.util.World;
 

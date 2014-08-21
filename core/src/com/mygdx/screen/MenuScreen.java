@@ -53,7 +53,7 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void show() {
-		OneLevelHero game = ScreenManager.getGame();
+		game = ScreenManager.getGame();
 		setMusic(Assets.mainMusic);
 		getMusic().setVolume(Assets.musicVolume);
 		game.soundManager.playMusic(getMusic());

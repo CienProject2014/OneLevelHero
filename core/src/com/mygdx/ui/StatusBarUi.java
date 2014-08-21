@@ -1,4 +1,4 @@
-package com.mygdx.resource;
+package com.mygdx.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -7,12 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
-public class StatusBar extends ProgressBar {
+public class StatusBarUi extends ProgressBar {
 
 	private String name;
-	private ProgressBarStyle style;
 
-	public StatusBar(String name, float min, float max, float stepSize,
+	public StatusBarUi(String name, float min, float max, float stepSize,
 			boolean vertical, Skin skin) {
 		super(min, max, stepSize, vertical, skin.get("default-"
 				+ (vertical ? "vertical" : "horizontal"),

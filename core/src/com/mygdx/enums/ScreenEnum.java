@@ -13,6 +13,7 @@ import com.mygdx.screen.MovingScreen;
 import com.mygdx.screen.OptionScreen;
 import com.mygdx.screen.PrologueScreen;
 import com.mygdx.screen.SaveScreen;
+import com.mygdx.screen.StatusScreen;
 import com.mygdx.screen.VillageScreen;
 import com.mygdx.screen.WorldMapScreen;
 
@@ -112,6 +113,12 @@ public enum ScreenEnum {
 		@Override
 		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new CollectionScreen();
+		}
+	},
+	STATUS {
+		@Override
+		public com.badlogic.gdx.Screen getScreenInstance() {
+			return new StatusScreen();
 		}
 	};
 
