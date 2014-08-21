@@ -30,7 +30,7 @@ public class WorldStage extends Stage {
 	private worldNode dungeons[];
 	private worldNode turningpoints[];
 
-	private int worldmapsize = 3;
+	private int worldmapsize = 1;
 
 	private int villageNumber;
 	private int dungeonNumber;
@@ -166,7 +166,7 @@ public class WorldStage extends Stage {
 		background = new Image(new Texture(
 				Gdx.files.internal("texture/worldmap/WorldMap.png")));
 
-		background.setBounds(0, 0, 1920 * 3, 1080 * 3);
+		background.setBounds(0, 0, 1920 * worldmapsize, 1080 * worldmapsize);
 
 		nodeSize = 90 * worldmapsize;
 
@@ -297,8 +297,8 @@ public class WorldStage extends Stage {
 			addActor(roadnode[i]);
 		}
 
-		camera.translate(temp.posX * 3 - Assets.realWidth / 2, temp.posY * 3
-				- Assets.realHeight / 2, 0);
+		camera.translate(temp.posX * worldmapsize - Assets.realWidth / 2,
+				temp.posY * worldmapsize - Assets.realHeight / 2, 0);
 		camera.update();
 
 		temp.addListener(new InputListener() {
