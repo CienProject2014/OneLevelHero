@@ -3,14 +3,13 @@ package com.mygdx.util;
 import com.mygdx.enums.EventTypeEnum;
 
 public class EventManager {
-	private String event;
+	private String eventCode;
 	EventTypeEnum eventType;
-	//private String VillageCode;
-	//private String NPCCode;
-
 	private String title;
 
-	//private String delimiter = "-";
+	public EventManager() {
+		setEventCode("Prologue-scene-1-1");
+	}
 
 	public void parseEvent(String event) {
 
@@ -32,12 +31,16 @@ public class EventManager {
 		this.title = title;
 	}
 
-	public String getEvent() {
-		return event;
+	public String getEventCode() {
+		return eventCode;
 	}
 
-	public void setEvent(String event) {
-		this.event = event;
+	public void setEventCode(String eventCode) {
+		this.eventCode = eventCode;
 	}
 
+	public String getEventVillageName() {
+		String villageName[] = eventCode.split("-");
+		return villageName[0];
+	}
 }

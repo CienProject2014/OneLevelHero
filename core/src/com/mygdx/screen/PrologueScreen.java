@@ -18,11 +18,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.resource.EventScene;
+import com.mygdx.event.ChatScene;
+import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Scripts;
+import com.mygdx.util.ScreenManager;
 
 public class PrologueScreen implements Screen {
 
+	OneLevelHero game;
 	Stage stage;
 	Texture img;
 	Image[] image;
@@ -31,11 +34,11 @@ public class PrologueScreen implements Screen {
 	TextureRegion region;
 	Texture texture;
 	SpriteBatch batch;
-	EventScene scene;
+	ChatScene scene;
 	Table table;
 
 	public PrologueScreen() {
-
+		this.game = ScreenManager.getGame();
 	}
 
 	@Override
@@ -46,7 +49,6 @@ public class PrologueScreen implements Screen {
 		batch.begin();
 		scene.show(delta); // 배경 출력
 		batch.end();
-
 		stage.draw();
 	}
 
@@ -61,21 +63,19 @@ public class PrologueScreen implements Screen {
 		batch = new SpriteBatch();
 		table = new Table();
 		table.setFillParent(true);
-
-		scene = new EventScene(table, batch);
+		scene = new ChatScene(table, batch);
 		scene.setStage(stage);
-		scene.load("Prologue-scene-1");
+		scene.load(game.eventManager.getEventCode());
 		scene.start();
 
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				scene.next();
 
-				if (scene.isEnd) {
-
+				if (scene.isEnd()) {
+					game.eventTrigger.makeEvent("Blackwood-parath-1-1");
 					new ScreenController(ScreenEnum.EVENT);
 
 				}
@@ -104,10 +104,7 @@ public class PrologueScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// dispose manually
-		/*
-		 * stage.dispose(); batch.dispose(); img.dispose();
-		 */
+
 	}
 
 }
