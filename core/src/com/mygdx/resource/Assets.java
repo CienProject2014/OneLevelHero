@@ -25,8 +25,9 @@ public class Assets {
 			extra_before, extra_after, option_before, option_after,
 			start_after, start_before, downArrowButton, bagButton, nameAndTime,
 			helpButton, optionButton, upArrowButton;
-	public static JSONObject prologue_json, script_json, charater_json,
-			worldmap_json, village_json, status_json, bag_json, credit_list;
+	public static JSONObject scene_background, prologue_json, script_json,
+			charater_json, worldmap_json, village_json, bag_json, credit_list,
+			status_new_left;
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -48,7 +49,7 @@ public class Assets {
 	}
 
 	public static void jsonLoad() {
-		prologue_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+		scene_background = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/scene_background.json").readString());
 		script_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/scene_script.json").readString());
@@ -58,8 +59,8 @@ public class Assets {
 				"data/village.json").readString());
 		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/worldmap.json").readString());
-		status_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/status_new.json").readString());
+		status_new_left = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/status/status_new_left.json").readString());
 		bag_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/bag_new.json").readString());
 		credit_list = (JSONObject) JSONValue.parse(Gdx.files.internal(

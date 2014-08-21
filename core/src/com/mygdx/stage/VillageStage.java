@@ -13,8 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.resource.Assets;
-import com.mygdx.util.ScreenEnum;
 import com.mygdx.util.ScreenManager;
 
 public class VillageStage extends Stage {
