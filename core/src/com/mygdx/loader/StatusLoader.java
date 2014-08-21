@@ -10,7 +10,7 @@ import com.mygdx.unit.Status;
 public class StatusLoader {
 	private SaveVersion saveVersion;
 	private JSONObject object;
-	private String delimiter = "-";
+	//private String delimiter = "-";
 	private String unitName;
 	private int unitState;
 	Status status;
@@ -25,7 +25,7 @@ public class StatusLoader {
 
 	// (1) 키값 파싱
 	void keyParser(String key) {
-		String[] temp = key.split(delimiter);
+		//	String[] temp = key.split(delimiter);
 		setUnitName("Hero");
 	}
 

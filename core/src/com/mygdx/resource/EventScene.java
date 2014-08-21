@@ -15,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.mygdx.enums.ScriptsEnum;
 
 public class EventScene {
 	// 신 진행 관련 변수
@@ -52,7 +51,7 @@ public class EventScene {
 
 		this.batch = batch;
 
-		scripts = new Scripts(ScriptsEnum.SCRIPT_JSON);
+		scripts = new Scripts(Assets.script_json);
 		bgloader = new Backgrounds(1);
 		characterLoader = new Characters(1);
 

@@ -1,11 +1,9 @@
 package com.mygdx.controller;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.resource.Assets;
 
 public class MovingController {
 
@@ -17,11 +15,11 @@ public class MovingController {
 
 	public MovingController() {
 
-		JSONArray dungeons = (JSONArray) Assets.worldmap_json.get("Village-1");
-		JSONObject dg1 = (JSONObject) dungeons.get(0);
-		JSONObject dg2 = (JSONObject) dungeons.get(1);
-		JSONObject monster = (JSONObject) dg1.get("Monster");
-		JSONObject event = (JSONObject) dg1.get("Event");
+		//JSONArray dungeons = (JSONArray) Assets.worldmap_json.get("Village-1");
+		//JSONObject dg1 = (JSONObject) dungeons.get(0);
+		//JSONObject dg2 = (JSONObject) dungeons.get(1);
+		//JSONObject monster = (JSONObject) dg1.get("Monster");
+		//JSONObject event = (JSONObject) dg1.get("Event");
 
 	}
 
