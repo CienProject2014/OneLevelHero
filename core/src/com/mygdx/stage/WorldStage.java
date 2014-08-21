@@ -38,6 +38,7 @@ public class WorldStage extends Stage {
 
 	private TextButtonStyle villageStyle;
 	private TextButtonStyle dungeonStyle;
+	private TextButtonStyle turningpointStyle;
 
 	private TextureRegionDrawable arrow;
 
@@ -51,9 +52,7 @@ public class WorldStage extends Stage {
 
 	private Camera camera;
 
-	private HashMap<String, worldNode> worldHashmap = new HashMap<String, worldNode>();
-
-	private class worldNode extends TextButton {
+	public class worldNode extends TextButton {
 
 		private String key;
 		private String name;
@@ -67,6 +66,7 @@ public class WorldStage extends Stage {
 		public worldNode(String text, Skin skin) {
 			super(text, skin);
 			// TODO Auto-generated constructor stub
+
 		}
 
 		public worldNode(String text, TextButtonStyle style) {
@@ -75,7 +75,7 @@ public class WorldStage extends Stage {
 		}
 
 		private void setOption(JSONObject jsonObject) {
-			this.type = (String) jsonObject.get("type");
+			this.setType((String) jsonObject.get("type"));
 			this.name = (String) jsonObject.get("name");
 			this.position = (String) jsonObject.get("position");
 			this.key = (String) jsonObject.get("key");
@@ -96,6 +96,22 @@ public class WorldStage extends Stage {
 			setBounds(posX * worldmapsize - nodeSize / 2, posY * worldmapsize
 					- nodeSize / 2, nodeSize, nodeSize);
 
+		}
+
+		public String getType() {
+			return type;
+		}
+
+		public void setType(String type) {
+			this.type = type;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
 		}
 	}
 
@@ -164,12 +180,20 @@ public class WorldStage extends Stage {
 				new TextureRegion(new Texture(Gdx.files
 						.internal("texture/worldmap/dungeoncircle.png"))));
 
+		TextureRegionDrawable turningpointarrow = new TextureRegionDrawable(
+				new TextureRegion(new Texture(Gdx.files
+						.internal("texture/worldmap/turningpoint.png"))));
+
 		villageStyle = new TextButtonStyle(villagecircle, villagecircle,
 				villagecircle, Assets.font);
 		dungeonStyle = new TextButtonStyle(dungeoncircle, dungeoncircle,
 				dungeoncircle, Assets.font);
+		turningpointStyle = new TextButtonStyle(turningpointarrow,
+				dungeoncircle, dungeoncircle, Assets.font);
 
 		worldData = (JSONArray) Assets.worldmap_json.get("Worldmap");
+
+		Assets.villageHashmap = new HashMap<String, String>();
 
 		for (int i = 0; i < worldData.size(); i++) {
 			JSONObject temp = (JSONObject) worldData.get(i);
@@ -193,12 +217,15 @@ public class WorldStage extends Stage {
 			JSONObject temp = (JSONObject) worldData.get(i);
 			String type = (String) temp.get("type");
 
+			Assets.villageHashmap.put((String) temp.get("key"),
+					(String) temp.get("name"));
+
 			if (type.equals("village")) {
 
 				villages[villageCount] = new worldNode("default", villageStyle);
 				villages[villageCount].setOption(temp);
 
-				worldHashmap.put(villages[villageCount].key,
+				Assets.worldHashmap.put(villages[villageCount].key,
 						villages[villageCount]);
 				addActor(villages[villageCount]);
 				villageCount++;
@@ -206,26 +233,25 @@ public class WorldStage extends Stage {
 			} else if (type.equals("dungeon")) {
 				dungeons[dungeonCount] = new worldNode("default", dungeonStyle);
 				dungeons[dungeonCount].setOption(temp);
-				worldHashmap.put(dungeons[dungeonCount].key,
+				Assets.worldHashmap.put(dungeons[dungeonCount].key,
 						dungeons[dungeonCount]);
 				addActor(dungeons[dungeonCount]);
 				dungeonCount++;
 			} else {
 				turningpoints[turningpointCount] = new worldNode("default",
-						Assets.skin);
+						turningpointStyle);
 				turningpoints[turningpointCount].setOption(temp);
-				worldHashmap.put(turningpoints[turningpointCount].key,
+				Assets.worldHashmap.put(turningpoints[turningpointCount].key,
 						turningpoints[turningpointCount]);
 				turningpointCount++;
 			}
 		}
-
 	}
 
 	// 현재 위치를 화살표로 표시해줌
 	private void setCurrentPosition() {
 
-		worldNode temp = worldHashmap
+		worldNode temp = Assets.worldHashmap
 				.get(ScreenManager.getGame().currentManager
 						.getCurrentPosition());
 
@@ -281,7 +307,12 @@ public class WorldStage extends Stage {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				new ScreenController(ScreenEnum.VILLAGE);
+				worldNode temp;
+				temp = (worldNode) event.getListenerActor();
+
+				if (!temp.type.equals("turningpoint")) {
+					new ScreenController(ScreenEnum.VILLAGE);
+				}
 
 				return true;
 			}

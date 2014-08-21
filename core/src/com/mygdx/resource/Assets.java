@@ -1,5 +1,7 @@
 package com.mygdx.resource;
 
+import java.util.HashMap;
+
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
@@ -13,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.stage.WorldStage.worldNode;
 
 public class Assets {
 	public static Skin skin;
@@ -34,6 +37,9 @@ public class Assets {
 
 	public static float realWidth;
 	public static float realHeight;
+
+	public static HashMap<String, String> villageHashmap;
+	public static HashMap<String, worldNode> worldHashmap = new HashMap<String, worldNode>();
 
 	public static void loadSize(Stage stage) {
 		Viewport vp = stage.getViewport();

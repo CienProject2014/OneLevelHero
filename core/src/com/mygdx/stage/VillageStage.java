@@ -63,6 +63,9 @@ public class VillageStage extends Stage {
 				.get(ScreenManager.getGame().currentManager
 						.getCurrentPosition());
 
+		// 일단은 이렇게 한닷
+		villageData = (JSONObject) Assets.village_json.get("B");
+
 		JSONArray buildingArray = (JSONArray) villageData.get("building");
 		JSONArray npcArray = (JSONArray) villageData.get("npc");
 		JSONArray exitArray = (JSONArray) villageData.get("exit");

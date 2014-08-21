@@ -8,7 +8,7 @@ public class CurrentManager {
 	private String village;
 	private Unit unit;
 
-	private String currentPosition = "B";
+	private String currentPosition = "S";
 	private String currentState = "village";
 	private String currentStarting;
 	private String currentDestination;
