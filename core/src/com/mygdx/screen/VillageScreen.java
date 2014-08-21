@@ -21,7 +21,6 @@ import com.mygdx.resource.Assets;
 import com.mygdx.resource.GameUi;
 import com.mygdx.stage.VillageStage;
 import com.mygdx.util.ScreenManager;
-import com.mygdx.util.World;
 
 public class VillageScreen implements Screen {
 
@@ -40,10 +39,6 @@ public class VillageScreen implements Screen {
 
 	public VillageScreen(String villagename) {
 		this.villageName = villagename;
-	}
-
-	public VillageScreen(World world) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public VillageScreen() {

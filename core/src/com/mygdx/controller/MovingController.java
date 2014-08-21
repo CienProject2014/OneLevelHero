@@ -1,6 +1,5 @@
 package com.mygdx.controller;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -17,11 +16,10 @@ public class MovingController {
 
 	public MovingController() {
 
-		JSONArray dungeons = (JSONArray) Assets.worldmap_json.get("Village-1");
-		JSONObject dg1 = (JSONObject) dungeons.get(0);
-		JSONObject dg2 = (JSONObject) dungeons.get(1);
-		JSONObject monster = (JSONObject) dg1.get("Monster");
-		JSONObject event = (JSONObject) dg1.get("Event");
+		JSONObject dungeons = (JSONObject) Assets.worldmap_json.get("Road");
+	}
+
+	public void ChangeDestination() {
 
 	}
 
@@ -34,10 +32,4 @@ public class MovingController {
 		return "checkDirection";
 	}
 
-	public void keyParser(String key) {
-		String[] temp = key.split(delimiter);
-		key1 = temp[0];
-		key2 = temp[1];
-		key3 = temp[2];
-	}
 }

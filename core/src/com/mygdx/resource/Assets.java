@@ -17,9 +17,13 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 public class Assets {
 	public static Skin skin;
 	public static TextureAtlas items;
-	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down, menu_button_up, menu_button_toggle, credit_before, credit_after, extra_before, extra_after,
-			option_before, option_after, start_after, start_before, downArrowButton, bagButton, nameAndTime, helpButton, optionButton, upArrowButton;
-	public static JSONObject prologue_json, script_json, charater_json, worldmap_json, village_json, status_json, bag_json, credit_list;
+	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down,
+			menu_button_up, menu_button_toggle, credit_before, credit_after,
+			extra_before, extra_after, option_before, option_after,
+			start_after, start_before, downArrowButton, bagButton, nameAndTime,
+			helpButton, optionButton, upArrowButton;
+	public static JSONObject prologue_json, script_json, charater_json,
+			worldmap_json, village_json, status_json, bag_json, credit_list;
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -38,14 +42,22 @@ public class Assets {
 	}
 
 	public static void jsonLoad() {
-		prologue_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/scene_background.json").readString());
-		script_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/scene_script.json").readString());
-		charater_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/scene_character.json").readString());
-		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/village.json").readString());
-		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/worldmap.json").readString());
-		status_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/status_new.json").readString());
-		bag_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/bag_new.json").readString());
-		credit_list = (JSONObject) JSONValue.parse(Gdx.files.internal("data/credit_list.json").readString());
+		prologue_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/scene_background.json").readString());
+		script_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/scene_script.json").readString());
+		charater_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/scene_character.json").readString());
+		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/village.json").readString());
+		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/worldmap.json").readString());
+		status_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/status_new.json").readString());
+		bag_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/bag_new.json").readString());
+		credit_list = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/credit_list.json").readString());
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
@@ -58,27 +70,42 @@ public class Assets {
 		TextureAtlas textureAtlas = new TextureAtlas("skin/MenuButton.pack");
 		TextureAtlas buttonAtlas = new TextureAtlas("skin/Test1.atlas");
 
-		logo = new Image(new TextureRegionDrawable(buttonAtlas.findRegion("title")));
-		credit_before = new TextureRegionDrawable(textureAtlas.findRegion("button_credit_before"));
-		credit_after = new TextureRegionDrawable(textureAtlas.findRegion("button_credit_after"));
-		extra_before = new TextureRegionDrawable(textureAtlas.findRegion("button_extra_before"));
-		extra_after = new TextureRegionDrawable(textureAtlas.findRegion("button_extra_after"));
-		option_before = new TextureRegionDrawable(textureAtlas.findRegion("button_option_before"));
-		option_after = new TextureRegionDrawable(textureAtlas.findRegion("button_option_after"));
-		start_after = new TextureRegionDrawable(textureAtlas.findRegion("button_start_after"));
-		start_before = new TextureRegionDrawable(textureAtlas.findRegion("button_start_after"));
+		logo = new Image(new TextureRegionDrawable(
+				buttonAtlas.findRegion("title")));
+		credit_before = new TextureRegionDrawable(
+				textureAtlas.findRegion("button_credit_before"));
+		credit_after = new TextureRegionDrawable(
+				textureAtlas.findRegion("button_credit_after"));
+		extra_before = new TextureRegionDrawable(
+				textureAtlas.findRegion("button_extra_before"));
+		extra_after = new TextureRegionDrawable(
+				textureAtlas.findRegion("button_extra_after"));
+		option_before = new TextureRegionDrawable(
+				textureAtlas.findRegion("button_option_before"));
+		option_after = new TextureRegionDrawable(
+				textureAtlas.findRegion("button_option_after"));
+		start_after = new TextureRegionDrawable(
+				textureAtlas.findRegion("button_start_after"));
+		start_before = new TextureRegionDrawable(
+				textureAtlas.findRegion("button_start_after"));
 
 	}
 
 	public static void gameUILoad() {
 
 		TextureAtlas textureAtlas = new TextureAtlas("data/UiButton.pack");
-		downArrowButton = new TextureRegionDrawable(textureAtlas.findRegion("downArrowButton"));
-		bagButton = new TextureRegionDrawable(textureAtlas.findRegion("bagButton"));
-		nameAndTime = new TextureRegionDrawable(textureAtlas.findRegion("nameAndTime"));
-		helpButton = new TextureRegionDrawable(textureAtlas.findRegion("helpButton"));
-		optionButton = new TextureRegionDrawable(textureAtlas.findRegion("optionButton"));
-		upArrowButton = new TextureRegionDrawable(textureAtlas.findRegion("upArrowButton"));
+		downArrowButton = new TextureRegionDrawable(
+				textureAtlas.findRegion("downArrowButton"));
+		bagButton = new TextureRegionDrawable(
+				textureAtlas.findRegion("bagButton"));
+		nameAndTime = new TextureRegionDrawable(
+				textureAtlas.findRegion("nameAndTime"));
+		helpButton = new TextureRegionDrawable(
+				textureAtlas.findRegion("helpButton"));
+		optionButton = new TextureRegionDrawable(
+				textureAtlas.findRegion("optionButton"));
+		upArrowButton = new TextureRegionDrawable(
+				textureAtlas.findRegion("upArrowButton"));
 
 	}
 
