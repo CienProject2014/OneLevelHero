@@ -1,4 +1,4 @@
-package com.mygdx.resource;
+﻿package com.mygdx.resource;
 
 import java.util.HashMap;
 
@@ -20,14 +20,15 @@ import com.mygdx.stage.WorldStage.worldNode;
 public class Assets {
 	public static Skin skin;
 	public static TextureAtlas items;
-	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down,
-			menu_button_up, menu_button_toggle, credit_before, credit_after,
-			extra_before, extra_after, option_before, option_after,
-			start_after, start_before, downArrowButton, bagButton, nameAndTime,
-			helpButton, optionButton, upArrowButton;
-	public static JSONObject scene_background, prologue_json, script_json,
-			charater_json, worldmap_json, village_json, bag_json, credit_list,
-			status_new_left;
+	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down, menu_button_up, menu_button_toggle, credit_before, credit_after, extra_before, extra_after,
+			option_before, option_after, start_after, start_before, downArrowButton, bagButton, nameAndTime, helpButton, optionButton, upArrowButton;
+
+	//NPC얼굴
+	public static Texture yongsa_happy, yongsa_sad, parath_angry, parath_happy;
+
+	//JSON
+	public static JSONObject worldmap_json, village_json, status_new_left, bag_json, credit_list, prologue_background, prologue_script, prologue_character, blackwood_script,
+			blackwood_character, blackwood_background;
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -49,27 +50,26 @@ public class Assets {
 	}
 
 	public static void jsonLoad() {
-		scene_background = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/scene_background.json").readString());
-		script_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/scene_script.json").readString());
-		charater_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/scene_character.json").readString());
-		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/village.json").readString());
-		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/worldmap.json").readString());
-		status_new_left = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/status/status_new_left.json").readString());
-		bag_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/bag_new.json").readString());
-		credit_list = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/credit_list.json").readString());
+
+		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/village.json").readString());
+		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/worldmap.json").readString());
+		status_new_left = (JSONObject) JSONValue.parse(Gdx.files.internal("data/status/status_new_left.json").readString());
+		bag_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/bag_new.json").readString());
+		credit_list = (JSONObject) JSONValue.parse(Gdx.files.internal("data/credit_list.json").readString());
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		mainMusic = Gdx.audio.newMusic(Gdx.files.internal("data/buyeo.mp3"));
 
+		//prologue event json 로드
+		prologue_background = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/prologue/prologue_background.json").readString());
+		prologue_script = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/prologue/prologue_script.json").readString());
+		prologue_character = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/prologue/prologue_character.json").readString());
+
+		//blackwood event json 로드
+		blackwood_script = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/blackwood/blackwood_script.json").readString());
+		blackwood_character = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/blackwood/blackwood_character.json").readString());
+		blackwood_background = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/blackwood/blackwood_background.json").readString());
 	}
 
 	public static void menuScreenLoad() {
@@ -114,6 +114,13 @@ public class Assets {
 		upArrowButton = new TextureRegionDrawable(
 				textureAtlas.findRegion("upArrowButton"));
 
+	}
+
+	public static void characterImageLoad() {
+		yongsa_happy = new Texture(Gdx.files.internal("texture/npc/yongsa_happy.jpg"));
+		yongsa_sad = new Texture(Gdx.files.internal("texture/npc/yongsa_sad.jpg"));
+		parath_happy = new Texture(Gdx.files.internal("texture/npc/parath_happy.jpg"));
+		parath_angry = new Texture(Gdx.files.internal("texture/npc/parath_angry.jpg"));
 	}
 
 	public static void fontLoad() {

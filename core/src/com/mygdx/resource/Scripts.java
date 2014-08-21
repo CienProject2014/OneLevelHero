@@ -4,14 +4,12 @@
 package com.mygdx.resource;
 
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 public class Scripts {
-
-	JSONParser parser = new JSONParser();
 	String keyOfVillage;
 	String keyOfNPC;
-	String keyOfNumber;
+	String keyOfSerialNumber;
+	String keyOfSceneNumber;
 
 	String delimiter = "-";
 	JSONObject fileName;
@@ -21,20 +19,20 @@ public class Scripts {
 		this.fileName = fileName;
 	}
 
-	// Key값에 맞는 스크립트를 반환함
-	public String getScript(String key) {
-		keyParser(key);
-
-		JSONObject keyObject = (JSONObject) fileName.get(keyOfVillage);
-		String script = (String) keyObject.get(keyOfNPC + keyOfNumber);
+	// eventCode값에 맞는 스크립트를 반환함
+	public String getScript(String eventCode) {
+		parseEventCode(eventCode);
+		JSONObject keyObject = (JSONObject) fileName.get(keyOfNPC + keyOfSerialNumber);
+		String script = (String) keyObject.get(keyOfSceneNumber);
 		return script;
 	}
 
 	// 키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
-	void keyParser(String key) {
+	void parseEventCode(String key) {
 		String[] temp = key.split(delimiter);
 		keyOfVillage = temp[0];
 		keyOfNPC = temp[1];
-		keyOfNumber = temp[2];
+		keyOfSerialNumber = temp[2];
+		keyOfSceneNumber = temp[3];
 	}
 }

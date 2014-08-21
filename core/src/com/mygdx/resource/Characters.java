@@ -1,11 +1,8 @@
 package com.mygdx.resource;
 
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Characters {
@@ -15,29 +12,28 @@ public class Characters {
 	String keyOfVillage;
 	String keyOfNPC;
 	String keyOfNumber;
+	String keyOfSceneNumber;
 	String delimiter = "-";
+	JSONObject fileName;
+	int count;
 
 	// 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
-	public Characters(int filenum) {
-		FileHandle file = Gdx.files.internal("data/scene_character.json");
-		String text = file.readString();
-		Object obj = JSONValue.parse(text);
-		object = (JSONObject) obj;
+	public Characters(JSONObject fileName) {
+		this.fileName = fileName;
 	}
 
 	//Key값에 맞는 이미지를 반환함
-	public Texture ImageGetter(String key) {
-		keyParser(key);
-
-		JSONObject keyObject = (JSONObject) object.get(keyOfVillage);
-		String dir = (String) keyObject.get(keyOfNPC + keyOfNumber);
-
-		Texture image = new Texture(dir);
+	public Texture getImage(String key) {
+		keyParser(key); // 키값을 나눈다
+		JSONObject keyObject = (JSONObject) fileName.get(keyOfNPC + keyOfNumber);
+		String dir = (String) keyObject.get(keyOfSceneNumber); //이미지 경로 계산
+		Texture image = new Texture(dir); //이미지 경로 주입
 		return image;
 	}
 
-	public int getNum(String key) {
-		JSONObject keyObject = (JSONObject) object.get(key);
+	// scene 갯수를 받아옴.
+	public int getNumberOfScene(String npcAndNumKey) {
+		JSONObject keyObject = (JSONObject) fileName.get(npcAndNumKey);
 		String str = (String) keyObject.get("number");
 		return Integer.parseInt(str);
 	}
@@ -48,5 +44,6 @@ public class Characters {
 		keyOfVillage = temp[0];
 		keyOfNPC = temp[1];
 		keyOfNumber = temp[2];
+		keyOfSceneNumber = temp[3];
 	}
 }

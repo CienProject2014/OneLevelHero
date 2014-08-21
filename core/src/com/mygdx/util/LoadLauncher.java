@@ -34,6 +34,5 @@ public class LoadLauncher {
 
 		unitLeft = new Hero("YongSa", statusLoader.getStatus(), statusLoader.getBag()); // unit클래스에 파싱한 json 정보를 뿌려줌
 		game.currentManager.setUnit(unitLeft); // currentManager가 unit을 소유하도록 만든다.
-		game.eventManager.setEvent("b-01-01");
 	}
 }

@@ -10,13 +10,14 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.event.ChatScene;
 import com.mygdx.game.OneLevelHero;
-import com.mygdx.resource.EventScene;
+import com.mygdx.util.ScreenManager;
 
 public class EventScreen implements Screen {
-	OneLevelHero game;
+	OneLevelHero game = ScreenManager.getGame();
 	SpriteBatch batch;
-	EventScene scene;
+	ChatScene scene;
 	Stage stage;
 	Table table;
 	String event;
@@ -28,7 +29,6 @@ public class EventScreen implements Screen {
 	public EventScreen(OneLevelHero game, String event) {
 		this.game = game;
 		this.event = event;
-		game.eventManager.setEvent(event);
 	}
 
 	@Override
@@ -56,19 +56,18 @@ public class EventScreen implements Screen {
 		table = new Table();
 		table.setFillParent(true);
 
-		scene = new EventScene(table, batch);
+		scene = new ChatScene(table, batch);
 		scene.setStage(stage);
-		scene.load("Blackwood-scene-1");
+		scene.load(game.eventManager.getEventCode());
 		scene.start();
 
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				scene.next();
 
-				if (scene.isEnd) {
+				if (scene.isEnd()) {
 					// back to previous screen
 					// that envoke this event screen
 
@@ -85,7 +84,6 @@ public class EventScreen implements Screen {
 
 	@Override
 	public void hide() {
-		Gdx.app.log("DEBUG", "EventScreen hide is called");
 	}
 
 	@Override
@@ -105,5 +103,4 @@ public class EventScreen implements Screen {
 		// TODO Auto-generated method stub
 
 	}
-
 }

@@ -23,12 +23,12 @@ public class OneLevelHero extends Game {
 
 	@Override
 	public void create() {
-		Assets.jsonLoad(); // 어셋을 로드해 json 파일들을 메모리에 올린다.
-		currentManager = new CurrentManager();
-		soundManager = new SoundManager();
-		eventManager = new EventManager();
+		Assets.jsonLoad(); // 어셋을 로드해 json 파일들을 메모리에 올린다.	
+		this.currentManager = new CurrentManager();
+		this.soundManager = new SoundManager();
+		this.eventManager = new EventManager();
+		this.eventTrigger = new EventTrigger();
 		ScreenManager.getInstance().initialize(this);
 		ScreenManager.getInstance().show(ScreenEnum.MAIN);
-
 	}
 }

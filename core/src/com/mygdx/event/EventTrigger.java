@@ -1,26 +1,23 @@
 package com.mygdx.event;
 
-import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.game.OneLevelHero;
-import com.mygdx.screen.EventScreen2;
-import com.mygdx.util.EventManager;
+import com.mygdx.util.ScreenManager;
 
 public class EventTrigger {
-	OneLevelHero game;
-	EventManager eventManager;
 
-	EventTrigger(OneLevelHero game, String title) {
-		this.game = game;
-		game.eventManager = eventManager;
+	public EventTrigger() {
 	}
 
-	private boolean hasEvent;
+	private boolean event;
 
 	public boolean hasEvent() {
-		return hasEvent;
+		return event;
 	}
 
-	public void makeEvent() {
-		game.setScreen(new EventScreen2(game, EventTypeEnum.CHAT, "blackwood-01-01"));
+	public void setEvent(boolean event) {
+		this.event = event;
+	}
+
+	public void makeEvent(String eventCode) {
+		ScreenManager.getGame().eventManager.setEventCode(eventCode);
 	}
 }
