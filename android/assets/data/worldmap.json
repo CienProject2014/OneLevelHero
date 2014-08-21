@@ -14,7 +14,7 @@
 				},
 				{
 					"roadkey" : "Ks",
-					"destination" : "TIO",
+					"destination" : "MTO",
 					"direction" : "270"
 				}
 			]
@@ -27,7 +27,7 @@
 			"connection":[
 				{
 					"roadkey" : "Ow",
-					"destination" : "TIO",
+					"destination" : "MTO",
 					"direction" : "180"
 				},
 				{
@@ -357,7 +357,7 @@
 			"key":"KAT",
 			"name":"카딜라 - 티타니아산",
 			"type":"turningpoint",
-			"position":"380-210",
+			"position":"140-440",
 			"connection":[
 				{
 					"roadkey" : "KATe",
@@ -366,7 +366,7 @@
 				},
 				{
 					"roadkey" : "Ks",
-					"destination" : "SOM",
+					"destination" : "K",
 					"direction" : "90"
 				},
 				{
@@ -380,7 +380,7 @@
 			"key":"MTO",
 			"name":"오베론 - 티타니아산",
 			"type":"turningpoint",
-			"position":"440-140",
+			"position":"210-380",
 			"connection":[
 				{
 					"roadkey" : "Ts",

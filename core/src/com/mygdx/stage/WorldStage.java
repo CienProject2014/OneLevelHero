@@ -189,7 +189,7 @@ public class WorldStage extends Stage {
 		dungeonStyle = new TextButtonStyle(dungeoncircle, dungeoncircle,
 				dungeoncircle, Assets.font);
 		turningpointStyle = new TextButtonStyle(turningpointarrow,
-				dungeoncircle, dungeoncircle, Assets.font);
+				turningpointarrow, turningpointarrow, Assets.font);
 
 		worldData = (JSONArray) Assets.worldmap_json.get("Worldmap");
 
