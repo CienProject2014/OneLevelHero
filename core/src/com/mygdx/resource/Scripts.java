@@ -3,17 +3,16 @@
  */
 package com.mygdx.resource;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class Scripts {
 
 	JSONParser parser = new JSONParser();
-	String key1;
-	String key2;
-	String key3;
-	JSONArray array;
+	String keyOfVillage;
+	String keyOfNPC;
+	String keyOfNumber;
+
 	String delimiter = "-";
 	JSONObject fileName;
 
@@ -26,18 +25,16 @@ public class Scripts {
 	public String getScript(String key) {
 		keyParser(key);
 
-		array = (JSONArray) fileName.get(key1);
-		JSONObject sc = (JSONObject) array.get(0);
-		String script = (String) sc.get(key2 + key3);
+		JSONObject keyObject = (JSONObject) fileName.get(keyOfVillage);
+		String script = (String) keyObject.get(keyOfNPC + keyOfNumber);
 		return script;
 	}
 
 	// 키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
 	void keyParser(String key) {
 		String[] temp = key.split(delimiter);
-		key1 = temp[0];
-		key2 = temp[1];
-		key3 = temp[2];
+		keyOfVillage = temp[0];
+		keyOfNPC = temp[1];
+		keyOfNumber = temp[2];
 	}
-
 }

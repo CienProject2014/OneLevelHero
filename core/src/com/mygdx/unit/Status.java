@@ -73,4 +73,5 @@ public class Status {
 	public void setDebuff(String debuff) {
 		this.debuff = debuff;
 	}
+
 }

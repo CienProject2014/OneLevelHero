@@ -10,7 +10,6 @@ import com.mygdx.unit.Status;
 public class StatusLoader {
 	private SaveVersion saveVersion;
 	private JSONObject object;
-	//private String delimiter = "-";
 	private String unitName;
 	private int unitState;
 	Status status;
@@ -19,14 +18,12 @@ public class StatusLoader {
 	public StatusLoader(SaveVersion saveVersion, String key, JSONObject status_json, JSONObject status_bag) {
 		setSaveVersion(saveVersion); //스테이터스 버전을 설정함 (세이브 파일 or new)
 		keyParser(key); // 키값을 파싱함 (유닛이름 및 status 상태)
-		setUnitName("Hero"); //임시로 유닛이름을 세팅해 놓음
 		readJson(status_json, status_bag); // Json 정보를 로딩함
 	}
 
 	// (1) 키값 파싱
 	void keyParser(String key) {
-		//	String[] temp = key.split(delimiter);
-		setUnitName("Hero");
+		setUnitName("YongSa");
 	}
 
 	// (2) JSON 정보 로딩
@@ -77,5 +74,4 @@ public class StatusLoader {
 	public void setUnitState(int unitState) {
 		this.unitState = unitState;
 	}
-
 }

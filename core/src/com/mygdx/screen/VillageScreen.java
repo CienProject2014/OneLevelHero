@@ -101,7 +101,7 @@ public class VillageScreen implements Screen {
 		cam.position.set(Assets.realWidth / 2, Assets.realHeight / 2, 0);
 		villageStage.getViewport().setCamera(cam);
 
-		Gdx.app.log("LoadLauncher - getAttack()", String.valueOf(game.loadLauncher.unit.status.getAttack()));
+		Gdx.app.log("LoadLauncher - getAttack()", String.valueOf(game.loadLauncher.unitLeft.status.getAttack()));
 		Gdx.app.log("CurrentManager - getVersion()", String.valueOf(game.currentManager.getVersion()));
 
 		// 화면 스크롤
