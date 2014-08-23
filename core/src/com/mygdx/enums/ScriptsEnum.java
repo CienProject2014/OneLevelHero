@@ -6,7 +6,7 @@ import com.mygdx.resource.Assets;
 
 public enum ScriptsEnum {
 
-	SCRIPT_JSON(Assets.prologue_script), CREDIT_LIST(Assets.credit_list);
+	SCRIPT_JSON(Assets.prologue_json), CREDIT_LIST(Assets.credit_list);
 
 	private JSONObject jsonObject;
 

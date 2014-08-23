@@ -3,36 +3,43 @@
  */
 package com.mygdx.resource;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Scripts {
 	String keyOfVillage;
 	String keyOfNPC;
 	String keyOfSerialNumber;
-	String keyOfSceneNumber;
 
 	String delimiter = "-";
+	JSONArray jsonArray;
 	JSONObject fileName;
 
-	// 스크립트 클래스를 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
+	// 스크립트 클래스를 생성해 줄 때 어떤 파일을 읽어올지 지정함
 	public Scripts(JSONObject fileName) {
 		this.fileName = fileName;
 	}
 
 	// eventCode값에 맞는 스크립트를 반환함
-	public String getScript(String eventCode) {
+	public String getScript(String eventCode, int keyOfSceneNumber) {
 		parseEventCode(eventCode);
-		JSONObject keyObject = (JSONObject) fileName.get(keyOfNPC + keyOfSerialNumber);
-		String script = (String) keyObject.get(keyOfSceneNumber);
-		return script;
+		return parseJSONScript(keyOfSceneNumber);
 	}
 
-	// 키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
-	void parseEventCode(String key) {
+	// 과정(1) 키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
+	private void parseEventCode(String key) {
 		String[] temp = key.split(delimiter);
 		keyOfVillage = temp[0];
 		keyOfNPC = temp[1];
 		keyOfSerialNumber = temp[2];
-		keyOfSceneNumber = temp[3];
 	}
+
+	// 과정(2) jsonObject를 받아와서 리턴한다.
+	private String parseJSONScript(int keyOfSceneNumber) {
+		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfSerialNumber);
+		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
+		String script = (String) sceneObject.get("script");
+		return script;
+	}
+
 }

@@ -17,7 +17,7 @@ import com.mygdx.util.ScreenManager;
 public class EventScreen implements Screen {
 	OneLevelHero game = ScreenManager.getGame();
 	SpriteBatch batch;
-	ChatScene scene;
+	ChatScene chatScene;
 	Stage stage;
 	Table table;
 	String event;
@@ -37,7 +37,7 @@ public class EventScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		scene.show(delta); // 배경 출력
+		chatScene.show(delta); // 배경 출력
 		batch.end();
 
 		stage.draw();
@@ -56,30 +56,40 @@ public class EventScreen implements Screen {
 		table = new Table();
 		table.setFillParent(true);
 
-		scene = new ChatScene(table, batch);
-		scene.setStage(stage);
-		scene.load(game.eventManager.getEventCode());
-		scene.start();
+		showEventScene();
 
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				scene.next();
-
-				if (scene.isEnd()) {
+				if (chatScene.isNext()) {
+					chatScene.showNextScene();
+				} else {
 					// back to previous screen
 					// that envoke this event screen
 
 					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
 					new ScreenController(ScreenEnum.VILLAGE);
-				}
 
+				}
 				return true;
 			}
 		});
 
 		stage.addActor(table);
+	}
+
+	private void showEventScene() {
+		//인스턴스 생성
+		chatScene = new ChatScene(table, batch);
+		//스테이지 주입하기
+		chatScene.setStage(stage);
+		//로드전 세팅
+		chatScene.settingBeforeLoad(game.eventManager.getEventCode());
+		// 파싱을 하기 위한 로드
+		chatScene.load();
+		// 씬 뿌려주기
+		chatScene.showView();
 	}
 
 	@Override

@@ -8,7 +8,7 @@ public class EventManager {
 	private String title;
 
 	public EventManager() {
-		setEventCode("Prologue-scene-1-1");
+		setEventCode("Prologue-scene-1");
 	}
 
 	public void parseEvent(String event) {

@@ -1,0 +1,24 @@
+{
+  "parath1": [
+    {
+      "script": "(이벤트 시작!)파라스 : 용사님.. 일어나세요..!",
+      "character": "texture/npc/parath_happy.jpg",
+      "background": "texture/prologue/scene1.jpg"
+    },
+    {
+      "script": "용사 : 으...으음..?",
+      "character": "texture/npc/yongsa_sad.jpg",
+      "background": "texture/prologue/scene2.jpg"
+    },
+    {
+      "script": "파라스 : 일어나 2새끼야",
+      "character": "texture/npc/parath_angry.jpg",
+      "background": "texture/prologue/scene4.jpg"
+    },
+    {
+      "script": "용사 : 네...",
+      "character": "texture/npc/yongsa_happy.jpg",
+      "background": "texture/prologue/scene3.jpg"
+    }
+  ]
+}

@@ -18,7 +18,7 @@ import com.mygdx.screen.WorldMapScreen;
 
 public enum ScreenEnum {
 
-	MAIN {
+	MENU {
 		@Override
 		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new MenuScreen();

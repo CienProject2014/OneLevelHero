@@ -34,7 +34,7 @@ public class PrologueScreen implements Screen {
 	TextureRegion region;
 	Texture texture;
 	SpriteBatch batch;
-	ChatScene scene;
+	ChatScene chatScene;
 	Table table;
 
 	public PrologueScreen() {
@@ -47,7 +47,7 @@ public class PrologueScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		scene.show(delta); // 배경 출력
+		chatScene.show(delta); // 배경 출력
 		batch.end();
 		stage.draw();
 	}
@@ -63,28 +63,43 @@ public class PrologueScreen implements Screen {
 		batch = new SpriteBatch();
 		table = new Table();
 		table.setFillParent(true);
-		scene = new ChatScene(table, batch);
-		scene.setStage(stage);
-		scene.load(game.eventManager.getEventCode());
-		scene.start();
+		showEventScene();
 
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				scene.next();
+				if (chatScene.isNext()) {
+					chatScene.showNextScene();
+				} else {
+					// back to previous screen
+					// that envoke this event screen
 
-				if (scene.isEnd()) {
-					game.eventTrigger.makeEvent("Blackwood-parath-1-1");
+					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
+					game.eventManager.setEventCode("Blackwood-parath-1");
 					new ScreenController(ScreenEnum.EVENT);
 
 				}
+
 				return true;
 			}
 		});
 
 		stage.addActor(table);
 
+	}
+
+	private void showEventScene() {
+		//인스턴스 생성
+		chatScene = new ChatScene(table, batch);
+		//스테이지 주입하기
+		chatScene.setStage(stage);
+		//로드전 세팅
+		chatScene.settingBeforeLoad(game.eventManager.getEventCode());
+		// 파싱을 하기 위한 로드
+		chatScene.load();
+		// 씬 뿌려주기
+		chatScene.showView();
 	}
 
 	@Override

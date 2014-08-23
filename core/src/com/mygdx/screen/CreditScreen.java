@@ -3,6 +3,7 @@
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -10,13 +11,24 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.event.CreditScene;
+import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.util.ScreenManager;
 
 public class CreditScreen implements Screen {
-
+	OneLevelHero game = ScreenManager.getGame();
+	SpriteBatch batch;
+	CreditScene creditScene;
 	TextButton backButton;
 	Table table;
 	Stage stage;
+	String event;
+
+	public CreditScreen(OneLevelHero game, String event) {
+		this.game = game;
+		this.event = event;
+	}
 
 	public CreditScreen() {
 
@@ -26,6 +38,10 @@ public class CreditScreen implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		batch.begin();
+		creditScene.show(delta); // 배경 출력
+		batch.end();
+
 		stage.draw();
 	}
 
@@ -37,28 +53,48 @@ public class CreditScreen implements Screen {
 
 	@Override
 	public void show() {
+		batch = new SpriteBatch();
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 		table = new Table(Assets.skin);
-		backButton = new TextButton("Back", Assets.skin);
-
-		backButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				new ScreenController(ScreenEnum.MAIN);
-			}
-		});
 		table.setFillParent(true);
 		table.row();
-		table.add(backButton).expand().bottom().width(240).height(240).right();
-		table.row();
+
+		showEventScene();
+
+		Gdx.input.setInputProcessor(stage);
+
+		stage.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				if (creditScene.isNext()) {
+					creditScene.showNextScene();
+				} else {
+					// back to previous screen
+					// that envoke this event screen
+
+					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
+					new ScreenController(ScreenEnum.MENU);
+
+				}
+				return true;
+			}
+		});
 
 		stage.addActor(table); // stage에 table액터 추가하기
+	}
+
+	private void showEventScene() {
+		//인스턴스 생성
+		creditScene = new CreditScene(table, batch);
+		//스테이지 주입하기
+		creditScene.setStage(stage);
+		//로드전 세팅
+		game.eventManager.setEventCode("Credit-scene-1");
+		creditScene.settingBeforeLoad(game.eventManager.getEventCode());
+		// 파싱을 하기 위한 로드
+		creditScene.load();
+		// 씬 뿌려주기
+		creditScene.showView();
 	}
 
 	@Override

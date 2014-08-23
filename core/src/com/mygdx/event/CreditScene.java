@@ -1,14 +1,5 @@
 package com.mygdx.event;
 
-/*
- * Scene클래스는 GameScreen에서 벗어나 EventScreen에서 대화(이벤트)할 때 사용함. 
- * 사용방법: 
- * 1. Screen에서 setStage로 stage변수 전달.
- * 2. load("Prologue-scene-1")처럼 문자열 전달. 1은 첫번째를 의미
- * 3. start()로 첫 장면 호출
- * 4. 터치 혹은 이벤트 발생시 next()로 다음 신
- */
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -22,11 +13,10 @@ import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
-import com.mygdx.resource.JSONFile;
 import com.mygdx.resource.Scripts;
 import com.mygdx.util.ScreenManager;
 
-public class ChatScene {
+public class CreditScene {
 	// 신 진행 관련 변수
 	OneLevelHero game = ScreenManager.getGame();
 	String villageName;
@@ -67,15 +57,14 @@ public class ChatScene {
 	private double timeAcc = 0;
 	private float alpha = 0;
 
-	public ChatScene(Table table, SpriteBatch batch) {
+	public CreditScene(Table table, SpriteBatch batch) {
 		this.batch = batch;
-		villageName = game.eventManager.getEventVillageName();
-		//villageName을 받아와 동적으로 jsonFile할당 (0번 = script, 1번 = character, 2번 = background)
-		jsonFile = JSONFile.getJsonFile(villageName);
+		jsonFile = Assets.credit_list;
 		scripts = new Scripts(jsonFile);
 		character = new Characters(jsonFile);
 		background = new Backgrounds(jsonFile);
 		this.table = table;
+
 	}
 
 	//load해오기전에 setting 해줘야 할 것들
@@ -192,5 +181,4 @@ public class ChatScene {
 	public void clear() {
 		table.clear();
 	}
-
 }

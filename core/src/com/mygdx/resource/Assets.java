@@ -24,11 +24,10 @@ public class Assets {
 			option_before, option_after, start_after, start_before, downArrowButton, bagButton, nameAndTime, helpButton, optionButton, upArrowButton;
 
 	//NPC얼굴
-	public static Texture yongsa_happy, yongsa_sad, parath_angry, parath_happy;
+	public static Texture yongsa_happy, yongsa_sad, parath_angry, parath_happy, nothing_image;
 
 	//JSON
-	public static JSONObject worldmap_json, village_json, status_new_left, bag_json, credit_list, prologue_background, prologue_script, prologue_character, blackwood_script,
-			blackwood_character, blackwood_background;
+	public static JSONObject worldmap_json, village_json, status_new_left, bag_json, credit_list, blackwood_json, prologue_json, blackwood_character, blackwood_background;
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -62,14 +61,10 @@ public class Assets {
 		mainMusic = Gdx.audio.newMusic(Gdx.files.internal("data/buyeo.mp3"));
 
 		//prologue event json 로드
-		prologue_background = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/prologue/prologue_background.json").readString());
-		prologue_script = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/prologue/prologue_script.json").readString());
-		prologue_character = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/prologue/prologue_character.json").readString());
+		prologue_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/prologue.json").readString());
 
 		//blackwood event json 로드
-		blackwood_script = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/blackwood/blackwood_script.json").readString());
-		blackwood_character = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/blackwood/blackwood_character.json").readString());
-		blackwood_background = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/blackwood/blackwood_background.json").readString());
+		blackwood_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/blackwood.json").readString());
 	}
 
 	public static void menuScreenLoad() {
@@ -77,46 +72,32 @@ public class Assets {
 		TextureAtlas textureAtlas = new TextureAtlas("skin/MenuButton.pack");
 		TextureAtlas buttonAtlas = new TextureAtlas("skin/Test1.atlas");
 
-		logo = new Image(new TextureRegionDrawable(
-				buttonAtlas.findRegion("title")));
-		credit_before = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_credit_before"));
-		credit_after = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_credit_after"));
-		extra_before = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_extra_before"));
-		extra_after = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_extra_after"));
-		option_before = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_option_before"));
-		option_after = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_option_after"));
-		start_after = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_start_after"));
-		start_before = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_start_after"));
+		logo = new Image(new TextureRegionDrawable(buttonAtlas.findRegion("title")));
+		credit_before = new TextureRegionDrawable(textureAtlas.findRegion("button_credit_before"));
+		credit_after = new TextureRegionDrawable(textureAtlas.findRegion("button_credit_after"));
+		extra_before = new TextureRegionDrawable(textureAtlas.findRegion("button_extra_before"));
+		extra_after = new TextureRegionDrawable(textureAtlas.findRegion("button_extra_after"));
+		option_before = new TextureRegionDrawable(textureAtlas.findRegion("button_option_before"));
+		option_after = new TextureRegionDrawable(textureAtlas.findRegion("button_option_after"));
+		start_after = new TextureRegionDrawable(textureAtlas.findRegion("button_start_after"));
+		start_before = new TextureRegionDrawable(textureAtlas.findRegion("button_start_after"));
 
 	}
 
 	public static void gameUILoad() {
 
 		TextureAtlas textureAtlas = new TextureAtlas("data/UiButton.pack");
-		downArrowButton = new TextureRegionDrawable(
-				textureAtlas.findRegion("downArrowButton"));
-		bagButton = new TextureRegionDrawable(
-				textureAtlas.findRegion("bagButton"));
-		nameAndTime = new TextureRegionDrawable(
-				textureAtlas.findRegion("nameAndTime"));
-		helpButton = new TextureRegionDrawable(
-				textureAtlas.findRegion("helpButton"));
-		optionButton = new TextureRegionDrawable(
-				textureAtlas.findRegion("optionButton"));
-		upArrowButton = new TextureRegionDrawable(
-				textureAtlas.findRegion("upArrowButton"));
+		downArrowButton = new TextureRegionDrawable(textureAtlas.findRegion("downArrowButton"));
+		bagButton = new TextureRegionDrawable(textureAtlas.findRegion("bagButton"));
+		nameAndTime = new TextureRegionDrawable(textureAtlas.findRegion("nameAndTime"));
+		helpButton = new TextureRegionDrawable(textureAtlas.findRegion("helpButton"));
+		optionButton = new TextureRegionDrawable(textureAtlas.findRegion("optionButton"));
+		upArrowButton = new TextureRegionDrawable(textureAtlas.findRegion("upArrowButton"));
 
 	}
 
 	public static void characterImageLoad() {
+		nothing_image = new Texture(Gdx.files.internal("texture/nothing_image.png"));
 		yongsa_happy = new Texture(Gdx.files.internal("texture/npc/yongsa_happy.jpg"));
 		yongsa_sad = new Texture(Gdx.files.internal("texture/npc/yongsa_sad.jpg"));
 		parath_happy = new Texture(Gdx.files.internal("texture/npc/parath_happy.jpg"));

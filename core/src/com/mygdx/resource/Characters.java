@@ -1,5 +1,6 @@
 package com.mygdx.resource;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -12,9 +13,10 @@ public class Characters {
 	String keyOfVillage;
 	String keyOfNPC;
 	String keyOfNumber;
-	String keyOfSceneNumber;
 	String delimiter = "-";
 	JSONObject fileName;
+	JSONArray jsonArray;
+	Texture image;
 	int count;
 
 	// 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
@@ -22,28 +24,34 @@ public class Characters {
 		this.fileName = fileName;
 	}
 
-	//Key값에 맞는 이미지를 반환함
-	public Texture getImage(String key) {
+	// Key값에 맞는 이미지를 반환함
+	public Texture getImage(String key, int keyOfSceneNumber) {
 		keyParser(key); // 키값을 나눈다
-		JSONObject keyObject = (JSONObject) fileName.get(keyOfNPC + keyOfNumber);
-		String dir = (String) keyObject.get(keyOfSceneNumber); //이미지 경로 계산
-		Texture image = new Texture(dir); //이미지 경로 주입
-		return image;
+
+		//JSON에서 불러온 이미지를 리턴한다
+		return parseJSONImage(keyOfSceneNumber);
 	}
 
-	// scene 갯수를 받아옴.
-	public int getNumberOfScene(String npcAndNumKey) {
-		JSONObject keyObject = (JSONObject) fileName.get(npcAndNumKey);
-		String str = (String) keyObject.get("number");
-		return Integer.parseInt(str);
-	}
-
-	//키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
-	void keyParser(String key) {
+	// 과정 (1) 키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
+	private void keyParser(String key) {
 		String[] temp = key.split(delimiter);
 		keyOfVillage = temp[0];
 		keyOfNPC = temp[1];
 		keyOfNumber = temp[2];
-		keyOfSceneNumber = temp[3];
 	}
+
+	// 과정 (2) JSON에서 불러온 이미지를 리턴
+	private Texture parseJSONImage(int keyOfSceneNumber) {
+		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfNumber);
+		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
+		String dir = (String) sceneObject.get("character"); //이미지 경로 계산
+		if (dir.equals("nothing")) {
+			image = Assets.nothing_image;
+		} else {
+			image = new Texture(dir); //이미지 경로 주입
+		}
+
+		return image;
+	}
+
 }
