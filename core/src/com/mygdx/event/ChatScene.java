@@ -23,10 +23,11 @@ import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
 import com.mygdx.resource.JSONFile;
+import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
 import com.mygdx.util.ScreenManager;
 
-public class ChatScene {
+public class ChatScene implements Scene {
 	// 신 진행 관련 변수
 	OneLevelHero game = ScreenManager.getGame();
 	String villageName;
@@ -67,8 +68,9 @@ public class ChatScene {
 	private double timeAcc = 0;
 	private float alpha = 0;
 
-	public ChatScene(Table table, SpriteBatch batch) {
+	public ChatScene(Table table, SpriteBatch batch, String eventCode, Stage stage) {
 		this.batch = batch;
+		this.stage = stage;
 		villageName = game.eventManager.getEventVillageName();
 		//villageName을 받아와 동적으로 jsonFile할당 (0번 = script, 1번 = character, 2번 = background)
 		jsonFile = JSONFile.getJsonFile(villageName);
@@ -76,23 +78,22 @@ public class ChatScene {
 		character = new Characters(jsonFile);
 		background = new Backgrounds(jsonFile);
 		this.table = table;
-	}
 
-	//load해오기전에 setting 해줘야 할 것들
-	public void settingBeforeLoad(String eventCode) {
+		//이벤트 코드 파싱
 		this.eventCode = eventCode;
 		//이벤트 코드 파싱
 		parseEventCode(this.eventCode);
 
-		// scene 갯수를 받아옴. 배열값과의 비교를 위해 1을 빼준다.
-		counter = getNumberOfScene(jsonArray) - 1;
-
 		//sceneNumber 초기화
 		clearSceneNumber();
+
+		// scene 갯수를 받아옴. 배열값과의 비교를 위해 1을 빼준다.
+		counter = getNumberOfScene(jsonArray) - 1;
 	}
 
 	// (1) eventCode는 Prologue-scene-1과 같은 형식(Prologue와 숫자 바뀜)
 	public void load() {
+
 		clear();
 		// Background json 불러옴
 		backgroundTexture = background.getBackground(eventCode, keyOfSceneNumber);
@@ -113,10 +114,8 @@ public class ChatScene {
 
 		characterImage.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
 		characterImage.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
-	}
 
-	// (2) 로드후 시작
-	public void showView() {
+		//뿌려주기
 		table.bottom().left(); // table 전체를 화면 아래 쪽으로
 		table.add(characterImage);
 		table.add(script).width(script.getWidth());
@@ -126,11 +125,9 @@ public class ChatScene {
 	public void showNextScene() {
 		// 다음 신으로 가기위한 세팅
 		keyOfSceneNumber++;
-		parseEventCode(eventCode);
 
 		// 다음씬 로드하고 뿌려주기
 		load();
-		showView();
 		alpha = 0;
 		timeAcc = 0;
 	}
@@ -183,10 +180,6 @@ public class ChatScene {
 		}
 		batch.draw(backgroundTexture, 0, 0, Assets.realWidth, Assets.realHeight);
 
-	}
-
-	public void setStage(Stage stage) {
-		this.stage = stage;
 	}
 
 	public void clear() {

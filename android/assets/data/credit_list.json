@@ -1,13 +1,13 @@
 {
   "scene1": [
     {
-      "script": "김대훈(11), 김민수(11), 홍정현(11),조영란(12), 최하진(13)",
+      "script": "김대훈(11), 김민수(11), 홍정현(11), 조영란(12), 최하진(13)",
       "character": "nothing",
       "background": "texture/credit/prog_team1.png"
     },
     {
-      "script": "박종덕(08), 남강민(11), 신벼리(11), 유홍석(11),김수연(12), 채대언(13)",
-      "character": "nothing",
+      "script": "박종덕(08), 남강민(11), 신벼리(11), 유홍석(11), 김수연(12), 채대언(13)",
+      "charactGDer": "nothing",
       "background": "texture/credit/plan_team1.png"
     },
     {

@@ -13,10 +13,11 @@ import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
+import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
 import com.mygdx.util.ScreenManager;
 
-public class CreditScene {
+public class CreditScene implements Scene {
 	// 신 진행 관련 변수
 	OneLevelHero game = ScreenManager.getGame();
 	String villageName;

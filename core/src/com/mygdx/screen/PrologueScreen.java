@@ -91,15 +91,9 @@ public class PrologueScreen implements Screen {
 
 	private void showEventScene() {
 		//인스턴스 생성
-		chatScene = new ChatScene(table, batch);
-		//스테이지 주입하기
-		chatScene.setStage(stage);
-		//로드전 세팅
-		chatScene.settingBeforeLoad(game.eventManager.getEventCode());
-		// 파싱을 하기 위한 로드
+		chatScene = new ChatScene(table, batch, game.eventManager.getEventCode(), stage);
 		chatScene.load();
 		// 씬 뿌려주기
-		chatScene.showView();
 	}
 
 	@Override

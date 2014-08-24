@@ -16,12 +16,11 @@ public class Fight {
 
 	public void decideOutcome() {
 		outcome = random.nextBoolean();
-		System.out.println(outcome);
+		Gdx.app.log("outcome", String.valueOf(outcome));
 		if (outcome)
 			victory();
 		else
 			defeat();
-
 	}
 
 	public void victory() {
