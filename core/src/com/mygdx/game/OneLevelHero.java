@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.EventTrigger;
 import com.mygdx.resource.Assets;
-import com.mygdx.resource.ResourceFile;
+import com.mygdx.resource.JSONFile;
 import com.mygdx.util.CurrentManager;
 import com.mygdx.util.EventManager;
 import com.mygdx.util.LoadLauncher;
@@ -21,7 +21,7 @@ public class OneLevelHero extends Game {
 	public SoundManager soundManager;
 	public EventManager eventManager;
 	public EventTrigger eventTrigger;
-	public ResourceFile resourceFile;
+	public JSONFile resourceFile;
 
 	@Override
 	public void create() {

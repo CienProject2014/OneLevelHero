@@ -21,7 +21,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
-import com.mygdx.resource.ResourceFile;
+import com.mygdx.resource.JSONFile;
 import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
 
@@ -71,7 +71,7 @@ public class ChatScene implements Scene {
 		parseEventCode(eventCode);
 
 		//villageName을 받아와 동적으로 jsonFile할당 (0번 = script, 1번 = character, 2번 = background)
-		jsonFile = ResourceFile.getJsonFile(keyOfVillage);
+		jsonFile = JSONFile.getJsonFile(keyOfVillage);
 		scripts = new Scripts(jsonFile);
 		character = new Characters(jsonFile);
 		background = new Backgrounds(jsonFile);
