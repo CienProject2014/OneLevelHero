@@ -10,11 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.SaveVersion;
+import com.mygdx.util.CurrentManager;
 import com.mygdx.util.LoadLauncher;
-import com.mygdx.util.ScreenManager;
 
 public class LoadScreen implements Screen {
 
@@ -44,7 +43,6 @@ public class LoadScreen implements Screen {
 	public void show() {
 		// TODO Auto-generated method stub
 		stage = new Stage();
-		final OneLevelHero game = ScreenManager.getGame();
 		Gdx.input.setInputProcessor(stage);
 
 		Table table = new Table(Assets.skin);
@@ -77,9 +75,9 @@ public class LoadScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				game.loadLauncher = new LoadLauncher(); // 각종 설정들을 올린다.
-				game.loadLauncher.jsonSetting();
-				game.currentManager.setVersion(SaveVersion.NEW);
+				LoadLauncher.getInstance().jsonSetting();
+				CurrentManager.getInstance().setVersion(SaveVersion.NEW);
+				LoadLauncher.getInstance().dispose();
 				new ScreenController(ScreenEnum.PROLOGUE);
 
 			}

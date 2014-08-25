@@ -12,6 +12,14 @@ public class CurrentManager {
 	private String currentState = "village";
 	private String currentStarting;
 	private String currentDestination;
+	private static CurrentManager instance;
+
+	public static CurrentManager getInstance() {
+		if (null == instance) {
+			instance = new CurrentManager();
+		}
+		return instance;
+	}
 
 	public CurrentManager() {
 

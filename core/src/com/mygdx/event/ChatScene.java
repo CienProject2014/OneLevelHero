@@ -18,20 +18,18 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
 import com.mygdx.resource.JSONFile;
 import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
-import com.mygdx.util.ScreenManager;
+import com.mygdx.util.EventManager;
 
 public class ChatScene implements Scene {
 	// 신 진행 관련 변수
-	OneLevelHero game = ScreenManager.getGame();
 	String villageName;
-	private int counter; // load한 Event(예 Prologue)의 scene 갯수	
+	private int counter; // load한 Event(예 Prologue)의 scene 갯수
 
 	// 스크립트, 케릭터 레이아웃 관리 테이블
 	Table table;
@@ -53,13 +51,13 @@ public class ChatScene implements Scene {
 	Stage stage;
 	String eventCode;
 
-	//파싱되는 키값
+	// 파싱되는 키값
 	String keyOfVillage;
 	String keyOfNPC;
 	String keyOfSerialNumber;
 	int keyOfSceneNumber;
 
-	//JsonFile
+	// JsonFile
 	JSONObject jsonFile;
 	JSONArray jsonArray;
 	String sceneNum;
@@ -68,23 +66,25 @@ public class ChatScene implements Scene {
 	private double timeAcc = 0;
 	private float alpha = 0;
 
-	public ChatScene(Table table, SpriteBatch batch, String eventCode, Stage stage) {
+	public ChatScene(Table table, SpriteBatch batch, String eventCode,
+			Stage stage) {
 		this.batch = batch;
 		this.stage = stage;
-		villageName = game.eventManager.getEventVillageName();
-		//villageName을 받아와 동적으로 jsonFile할당 (0번 = script, 1번 = character, 2번 = background)
+		villageName = EventManager.getInstance().getEventVillageName();
+		// villageName을 받아와 동적으로 jsonFile할당 (0번 = script, 1번 = character, 2번 =
+		// background)
 		jsonFile = JSONFile.getJsonFile(villageName);
 		scripts = new Scripts(jsonFile);
 		character = new Characters(jsonFile);
 		background = new Backgrounds(jsonFile);
 		this.table = table;
 
-		//이벤트 코드 파싱
+		// 이벤트 코드 파싱
 		this.eventCode = eventCode;
-		//이벤트 코드 파싱
+		// 이벤트 코드 파싱
 		parseEventCode(this.eventCode);
 
-		//sceneNumber 초기화
+		// sceneNumber 초기화
 		clearSceneNumber();
 
 		// scene 갯수를 받아옴. 배열값과의 비교를 위해 1을 빼준다.
@@ -96,12 +96,12 @@ public class ChatScene implements Scene {
 
 		clear();
 		// Background json 불러옴
-		backgroundTexture = background.getBackground(eventCode, keyOfSceneNumber);
+		backgroundTexture = background.getBackground(eventCode,
+				keyOfSceneNumber);
 
 		// 스크립트 파싱
 		text = scripts.getScript(eventCode, keyOfSceneNumber);
 		script = new Label(text, Assets.skin);
-		Assets.loadSize(stage);
 
 		// 케릭터 불러옴
 		characterTexture = character.getImage(eventCode, keyOfSceneNumber);
@@ -112,10 +112,12 @@ public class ChatScene implements Scene {
 		script.setWrap(true);
 		script.setWidth(Assets.realWidth * 0.8f);
 
-		characterImage.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
-		characterImage.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
+		characterImage.setSize(Assets.realWidth * 0.2f,
+				Assets.realHeight * 0.2f);
+		characterImage.setPosition(0.2f * Assets.realWidth,
+				0.7f * Assets.realHeight);
 
-		//뿌려주기
+		// 뿌려주기
 		table.bottom().left(); // table 전체를 화면 아래 쪽으로
 		table.add(characterImage);
 		table.add(script).width(script.getWidth());
@@ -132,7 +134,7 @@ public class ChatScene implements Scene {
 		timeAcc = 0;
 	}
 
-	//다음 씬이 존재하는지 체크
+	// 다음 씬이 존재하는지 체크
 	public boolean isNext() {
 		if (keyOfSceneNumber < counter) {
 			return true;

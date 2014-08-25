@@ -19,13 +19,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.ChatScene;
-import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Scripts;
-import com.mygdx.util.ScreenManager;
+import com.mygdx.util.EventManager;
 
 public class PrologueScreen implements Screen {
 
-	OneLevelHero game;
 	Stage stage;
 	Texture img;
 	Image[] image;
@@ -38,7 +36,6 @@ public class PrologueScreen implements Screen {
 	Table table;
 
 	public PrologueScreen() {
-		this.game = ScreenManager.getGame();
 	}
 
 	@Override
@@ -68,7 +65,8 @@ public class PrologueScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				if (chatScene.isNext()) {
 					chatScene.showNextScene();
 				} else {
@@ -76,7 +74,8 @@ public class PrologueScreen implements Screen {
 					// that envoke this event screen
 
 					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
-					game.eventManager.setEventCode("Blackwood-parath-1");
+					EventManager.getInstance().setEventCode(
+							"Blackwood-parath-1");
 					new ScreenController(ScreenEnum.EVENT);
 
 				}
@@ -90,8 +89,9 @@ public class PrologueScreen implements Screen {
 	}
 
 	private void showEventScene() {
-		//인스턴스 생성
-		chatScene = new ChatScene(table, batch, game.eventManager.getEventCode(), stage);
+		// 인스턴스 생성
+		chatScene = new ChatScene(table, batch, EventManager.getInstance()
+				.getEventCode(), stage);
 		chatScene.load();
 		// 씬 뿌려주기
 	}

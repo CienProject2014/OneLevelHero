@@ -9,19 +9,16 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
 import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
-import com.mygdx.util.ScreenManager;
 
 public class CreditScene implements Scene {
 	// 신 진행 관련 변수
-	OneLevelHero game = ScreenManager.getGame();
 	String villageName;
-	private int counter; // load한 Event(예 Prologue)의 scene 갯수	
+	private int counter; // load한 Event(예 Prologue)의 scene 갯수
 
 	// 스크립트, 케릭터 레이아웃 관리 테이블
 	Table table;
@@ -43,13 +40,13 @@ public class CreditScene implements Scene {
 	Stage stage;
 	String eventCode;
 
-	//파싱되는 키값
+	// 파싱되는 키값
 	String keyOfVillage;
 	String keyOfNPC;
 	String keyOfSerialNumber;
 	int keyOfSceneNumber;
 
-	//JsonFile
+	// JsonFile
 	JSONObject jsonFile;
 	JSONArray jsonArray;
 	String sceneNum;
@@ -68,16 +65,16 @@ public class CreditScene implements Scene {
 
 	}
 
-	//load해오기전에 setting 해줘야 할 것들
+	// load해오기전에 setting 해줘야 할 것들
 	public void settingBeforeLoad(String eventCode) {
 		this.eventCode = eventCode;
-		//이벤트 코드 파싱
+		// 이벤트 코드 파싱
 		parseEventCode(this.eventCode);
 
 		// scene 갯수를 받아옴. 배열값과의 비교를 위해 1을 빼준다.
 		counter = getNumberOfScene(jsonArray) - 1;
 
-		//sceneNumber 초기화
+		// sceneNumber 초기화
 		clearSceneNumber();
 	}
 
@@ -85,12 +82,12 @@ public class CreditScene implements Scene {
 	public void load() {
 		clear();
 		// Background json 불러옴
-		backgroundTexture = background.getBackground(eventCode, keyOfSceneNumber);
+		backgroundTexture = background.getBackground(eventCode,
+				keyOfSceneNumber);
 
 		// 스크립트 파싱
 		text = scripts.getScript(eventCode, keyOfSceneNumber);
 		script = new Label(text, Assets.skin);
-		Assets.loadSize(stage);
 
 		// 케릭터 불러옴
 		characterTexture = character.getImage(eventCode, keyOfSceneNumber);
@@ -101,8 +98,10 @@ public class CreditScene implements Scene {
 		script.setWrap(true);
 		script.setWidth(Assets.realWidth * 0.8f);
 
-		characterImage.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
-		characterImage.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
+		characterImage.setSize(Assets.realWidth * 0.2f,
+				Assets.realHeight * 0.2f);
+		characterImage.setPosition(0.2f * Assets.realWidth,
+				0.7f * Assets.realHeight);
 	}
 
 	// (2) 로드후 시작
@@ -125,7 +124,7 @@ public class CreditScene implements Scene {
 		timeAcc = 0;
 	}
 
-	//다음 씬이 존재하는지 체크
+	// 다음 씬이 존재하는지 체크
 	public boolean isNext() {
 		if (keyOfSceneNumber < counter) {
 			return true;

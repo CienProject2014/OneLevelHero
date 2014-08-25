@@ -17,7 +17,7 @@ import com.mygdx.controller.MovingController;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.resource.Assets;
-import com.mygdx.util.ScreenManager;
+import com.mygdx.util.CurrentManager;
 
 public class MovingScreen implements Screen {
 
@@ -71,11 +71,10 @@ public class MovingScreen implements Screen {
 	public void show() {
 		// TODO Auto-generated method stub
 
-		currentDestination = ScreenManager.getGame().currentManager
+		currentDestination = CurrentManager.getInstance()
 				.getCurrentDestination();
-		currentPosition = ScreenManager.getGame().currentManager
-				.getCurrentPosition();
-		currentStartingpoint = ScreenManager.getGame().currentManager
+		currentPosition = CurrentManager.getInstance().getCurrentPosition();
+		currentStartingpoint = CurrentManager.getInstance()
 				.getCurrentStarting();
 
 		JSONObject roadJson = (JSONObject) Assets.worldmap_json.get("Road");
@@ -153,18 +152,16 @@ public class MovingScreen implements Screen {
 		}
 		if (leftlength == 0) {
 
-			ScreenManager.getGame().currentManager
-					.setCurrentState(Assets.worldHashmap
-							.get(currentDestination).getType());
+			CurrentManager.getInstance().setCurrentState(
+					Assets.worldHashmap.get(currentDestination).getType());
 
-			ScreenManager.getGame().currentManager
-					.setCurrentPosition(currentDestination);
+			CurrentManager.getInstance().setCurrentPosition(currentDestination);
 
-			ScreenManager.getGame().currentManager.setCurrentDestination(null);
+			CurrentManager.getInstance().setCurrentDestination(null);
 
-			ScreenManager.getGame().currentManager.setCurrentStarting(null);
+			CurrentManager.getInstance().setCurrentStarting(null);
 
-			String currentState = ScreenManager.getGame().currentManager
+			String currentState = CurrentManager.getInstance()
 					.getCurrentState();
 
 			if (currentState.equals("village")) {

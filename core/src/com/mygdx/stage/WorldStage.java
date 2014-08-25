@@ -21,7 +21,6 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.resource.Assets;
 import com.mygdx.util.CurrentManager;
-import com.mygdx.util.ScreenManager;
 
 public class WorldStage extends Stage {
 
@@ -251,9 +250,8 @@ public class WorldStage extends Stage {
 	// 현재 위치를 화살표로 표시해줌
 	private void setCurrentPosition() {
 
-		worldNode temp = Assets.worldHashmap
-				.get(ScreenManager.getGame().currentManager
-						.getCurrentPosition());
+		worldNode temp = Assets.worldHashmap.get(CurrentManager.getInstance()
+				.getCurrentPosition());
 
 		int connectionNum = temp.connection.size();
 
@@ -280,13 +278,14 @@ public class WorldStage extends Stage {
 
 					RoadNode temp;
 					temp = (RoadNode) event.getListenerActor();
-					CurrentManager currentTemp = ScreenManager.getGame().currentManager;
 
-					currentTemp.setCurrentDestination(temp.destination);
-					currentTemp.setCurrentStarting(currentTemp
-							.getCurrentPosition());
-					currentTemp.setCurrentPosition(temp.roadkey);
-					currentTemp.setCurrentState("road");
+					CurrentManager.getInstance().setCurrentDestination(
+							temp.destination);
+					CurrentManager.getInstance().setCurrentStarting(
+							CurrentManager.getInstance().getCurrentPosition());
+					CurrentManager.getInstance().setCurrentPosition(
+							temp.roadkey);
+					CurrentManager.getInstance().setCurrentState("road");
 
 					new ScreenController(ScreenEnum.MOVING);
 

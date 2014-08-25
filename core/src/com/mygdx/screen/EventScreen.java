@@ -11,11 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.ChatScene;
-import com.mygdx.game.OneLevelHero;
-import com.mygdx.util.ScreenManager;
+import com.mygdx.util.EventManager;
 
 public class EventScreen implements Screen {
-	OneLevelHero game = ScreenManager.getGame();
 	SpriteBatch batch;
 	ChatScene chatScene;
 	Stage stage;
@@ -26,8 +24,7 @@ public class EventScreen implements Screen {
 
 	}
 
-	public EventScreen(OneLevelHero game, String event) {
-		this.game = game;
+	public EventScreen(String event) {
 		this.event = event;
 	}
 
@@ -61,7 +58,8 @@ public class EventScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				if (chatScene.isNext()) {
 					chatScene.showNextScene();
 				} else {
@@ -80,8 +78,9 @@ public class EventScreen implements Screen {
 	}
 
 	private void showEventScene() {
-		//인스턴스 생성
-		chatScene = new ChatScene(table, batch, game.eventManager.getEventCode(), stage);
+		// 인스턴스 생성
+		chatScene = new ChatScene(table, batch, EventManager.getInstance()
+				.getEventCode(), stage);
 		// 파싱을 하기 위한 로드
 		chatScene.load();
 		// 씬 뿌려주기

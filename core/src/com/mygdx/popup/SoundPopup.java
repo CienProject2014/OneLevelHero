@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -16,7 +15,6 @@ import com.mygdx.resource.Assets;
 import com.mygdx.screen.MenuScreen;
 
 public class SoundPopup extends Dialog {
-	Skin skin = Assets.skin;
 	Stage scenestage;
 
 	public SoundPopup(String title, Stage stage) {
@@ -26,7 +24,6 @@ public class SoundPopup extends Dialog {
 	}
 
 	private void initialize() {
-		Assets.fontLoad();
 		float width = 0.6f;
 		float height = 0.5f;
 		float centerx = 0.5f - width / 2;
@@ -55,16 +52,14 @@ public class SoundPopup extends Dialog {
 		// 다이얼로그 구현
 		// 다이얼로그조절
 
-		skin = Assets.skin;
-
-		final Slider volume = new Slider(0f, 100f, 1f, false, skin);
+		final Slider volume = new Slider(0f, 100f, 1f, false, Assets.skin);
 		volume.setValue(Assets.musicVolume * 100);
 		String volumeLabel = String.valueOf(Assets.musicVolume * 100);
-		final Label volumeValue = new Label(volumeLabel, skin);
+		final Label volumeValue = new Label(volumeLabel, Assets.skin);
 		Table table = new Table();
-		final Slider pan = new Slider(-1f, 1f, 0.1f, false, skin);
+		final Slider pan = new Slider(-1f, 1f, 0.1f, false, Assets.skin);
 		pan.setValue(0);
-		final Label panValue = new Label("0.0", skin);
+		final Label panValue = new Label("0.0", Assets.skin);
 
 		table.add(volume);
 		table.add(volumeValue);

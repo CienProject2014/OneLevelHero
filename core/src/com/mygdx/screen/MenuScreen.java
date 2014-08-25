@@ -16,13 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
-import com.mygdx.util.ScreenManager;
+import com.mygdx.util.SoundManager;
 
 public class MenuScreen implements Screen {
 
-	OneLevelHero game;
 	Stage stage;
 	ImageButton startButton;
 	ImageButton optionsButton;
@@ -53,10 +51,9 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void show() {
-		OneLevelHero game = ScreenManager.getGame();
 		setMusic(Assets.mainMusic);
 		getMusic().setVolume(Assets.musicVolume);
-		game.soundManager.playMusic(getMusic());
+		SoundManager.getInstance().playMusic(getMusic());
 		Texture texture = new Texture(
 				Gdx.files.internal("texture/MainMenu_Background.png"));
 		Image background = new Image(texture);

@@ -12,12 +12,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.CreditScene;
-import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
-import com.mygdx.util.ScreenManager;
+import com.mygdx.util.EventManager;
 
 public class CreditScreen implements Screen {
-	OneLevelHero game = ScreenManager.getGame();
 	SpriteBatch batch;
 	CreditScene creditScene;
 	TextButton backButton;
@@ -25,8 +23,7 @@ public class CreditScreen implements Screen {
 	Stage stage;
 	String event;
 
-	public CreditScreen(OneLevelHero game, String event) {
-		this.game = game;
+	public CreditScreen(String event) {
 		this.event = event;
 	}
 
@@ -65,7 +62,8 @@ public class CreditScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				if (creditScene.isNext()) {
 					creditScene.showNextScene();
 				} else {
@@ -84,13 +82,14 @@ public class CreditScreen implements Screen {
 	}
 
 	private void showEventScene() {
-		//인스턴스 생성
+		// 인스턴스 생성
 		creditScene = new CreditScene(table, batch);
-		//스테이지 주입하기
+		// 스테이지 주입하기
 		creditScene.setStage(stage);
-		//로드전 세팅
-		game.eventManager.setEventCode("Credit-scene-1");
-		creditScene.settingBeforeLoad(game.eventManager.getEventCode());
+		// 로드전 세팅
+		EventManager.getInstance().setEventCode("Credit-scene-1");
+		creditScene
+				.settingBeforeLoad(EventManager.getInstance().getEventCode());
 		// 파싱을 하기 위한 로드
 		creditScene.load();
 		// 씬 뿌려주기

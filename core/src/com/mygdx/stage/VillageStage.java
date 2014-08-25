@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.resource.Assets;
-import com.mygdx.util.ScreenManager;
+import com.mygdx.util.CurrentManager;
 
 public class VillageStage extends Stage {
 
@@ -60,8 +60,7 @@ public class VillageStage extends Stage {
 		addActor(backgroundImage);
 
 		JSONObject villageData = (JSONObject) Assets.village_json
-				.get(ScreenManager.getGame().currentManager
-						.getCurrentPosition());
+				.get(CurrentManager.getInstance().getCurrentPosition());
 
 		// 일단은 이렇게 한닷
 		villageData = (JSONObject) Assets.village_json.get("B");

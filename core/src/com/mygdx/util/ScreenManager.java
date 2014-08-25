@@ -27,10 +27,6 @@ public final class ScreenManager {
 		ScreenManager.game = game;
 	}
 
-	public static OneLevelHero getGame() {
-		return game;
-	}
-
 	public void show(ScreenEnum screen) {
 		if (null == game)
 			return;

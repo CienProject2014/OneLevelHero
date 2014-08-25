@@ -1,6 +1,6 @@
 package com.mygdx.event;
 
-import com.mygdx.util.ScreenManager;
+import com.mygdx.util.EventManager;
 
 public class EventTrigger {
 
@@ -18,6 +18,6 @@ public class EventTrigger {
 	}
 
 	public void makeEvent(String eventCode) {
-		ScreenManager.getGame().eventManager.setEventCode(eventCode);
+		EventManager.getInstance().setEventCode(eventCode);
 	}
 }

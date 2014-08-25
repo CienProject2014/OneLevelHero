@@ -6,9 +6,17 @@ public class EventManager {
 	private String eventCode;
 	EventTypeEnum eventType;
 	private String title;
+	private static EventManager instance;
 
 	public EventManager() {
 		setEventCode("Prologue-scene-1");
+	}
+
+	public static EventManager getInstance() {
+		if (null == instance) {
+			instance = new EventManager();
+		}
+		return instance;
 	}
 
 	public void parseEvent(String event) {
