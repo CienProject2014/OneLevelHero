@@ -2,7 +2,7 @@ package com.mygdx.resource;
 
 import org.json.simple.JSONObject;
 
-public class ResourceFile {
+public class JSONFile {
 
 	static JSONObject jsonFile;
 
