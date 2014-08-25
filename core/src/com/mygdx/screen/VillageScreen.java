@@ -84,8 +84,7 @@ public class VillageScreen implements Screen {
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
 
-		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth,
-				Assets.realHeight / 2);
+		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth, Assets.realHeight / 2);
 		cam.translate(100, 300);
 		cam.position.set(Assets.realWidth / 2, Assets.realHeight / 2, 0);
 		villageStage.getViewport().setCamera(cam);
@@ -96,17 +95,14 @@ public class VillageScreen implements Screen {
 			Vector3 last_touch_down = new Vector3();
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				this.setEvent(event);
 				return true;
 			}
 
 			@Override
-			public void touchDragged(InputEvent event, float x, float y,
-					int pointer) {
+			public void touchDragged(InputEvent event, float x, float y, int pointer) {
 				moveCamera((int) x, (int) y);
-				System.out.println((int) x);
 			}
 
 			private void moveCamera(int touch_x, int touch_y) {
@@ -114,10 +110,7 @@ public class VillageScreen implements Screen {
 
 				if (!cameraOutOfLimit(new_position))
 
-					villageStage
-							.getCamera()
-							.translate(
-									new_position.sub(villageStage.getCamera().position));
+					villageStage.getCamera().translate(new_position.sub(villageStage.getCamera().position));
 
 				last_touch_down.set(touch_x, touch_y, 0);
 			}
@@ -139,8 +132,7 @@ public class VillageScreen implements Screen {
 
 				if (position.x < x_left_limit || position.x > x_right_limit)
 					return true;
-				else if (position.y < y_bottom_limit
-						|| position.y > y_top_limit)
+				else if (position.y < y_bottom_limit || position.y > y_top_limit)
 					return true;
 				else
 					return false;
@@ -156,8 +148,7 @@ public class VillageScreen implements Screen {
 
 		// 인벤토리 세팅
 		DragAndDrop dragAndDrop = new DragAndDrop();
-		inventoryActor = new InventoryActor(new Inventory(), dragAndDrop,
-				Assets.skin);
+		inventoryActor = new InventoryActor(new Inventory(), dragAndDrop, Assets.skin);
 		inventoryStage.addActor(inventoryActor);
 	}
 

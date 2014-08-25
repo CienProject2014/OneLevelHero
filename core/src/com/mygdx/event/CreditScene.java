@@ -79,8 +79,7 @@ public class CreditScene implements Scene {
 	public void load() {
 		clear();
 		// Background json 불러옴
-		backgroundTexture = background.getBackground(eventCode,
-				keyOfSceneNumber);
+		backgroundTexture = background.getBackground(eventCode, keyOfSceneNumber);
 
 		// 스크립트 파싱
 		text = scripts.getScript(eventCode, keyOfSceneNumber);
@@ -137,7 +136,7 @@ public class CreditScene implements Scene {
 	}
 
 	private int getNumberOfScene(JSONArray jsonArray) {
-		jsonArray = (JSONArray) jsonFile.get(keyOfNPC + keyOfSerialNumber);
+		jsonArray = (JSONArray) jsonFile.get(keyOfNPC + "_" + keyOfSerialNumber);
 		int counter = jsonArray.size();
 		return counter;
 	}

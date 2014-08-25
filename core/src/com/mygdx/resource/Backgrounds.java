@@ -49,7 +49,7 @@ public class Backgrounds {
 
 	//과정 (2) JSON에있는 이미지를 받아온다.
 	private Texture parseJSONImage(int keyOfSceneNumber) {
-		jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfNumber);
+		jsonArray = (JSONArray) fileName.get(keyOfNPC + "_" + keyOfNumber);
 		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
 		String imageName = (String) sceneObject.get("background");
 		if (resourceFileList.containsKey(imageName))

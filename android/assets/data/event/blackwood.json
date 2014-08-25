@@ -1,5 +1,5 @@
 {
-  "parath1": [
+  "parath_prologue": [
     {
       "script": "(이벤트 시작!)파라스 : 용사님.. 일어나세요..!",
       "character": "parath_happy",
@@ -19,6 +19,13 @@
       "script": "용사 : 네...",
       "character": "yongsa_happy",
       "background": "scene4"
+    }
+  ],
+  "parath_default": [
+    {
+      "script": "오오.. 일어나신건가요 용사님? 우리 이제 여행을 떠나볼까요?",
+      "character": "nothing",
+      "background": "background_parath"
     }
   ]
 }

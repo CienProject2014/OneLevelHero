@@ -46,7 +46,7 @@ public class Characters {
 
 	// 과정 (2) JSON에서 불러온 이미지를 리턴
 	private Texture parseJSONImage(int keyOfSceneNumber) {
-		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfNumber);
+		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + "_" + keyOfNumber);
 		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
 		String imageName = (String) sceneObject.get("character"); //이미지 이름 추출
 

@@ -30,7 +30,8 @@ public class VillageStage extends Stage {
 	Label buildingbutton[];
 	TextButton exitbutton;
 
-	public TextButton sift_button;
+	private TextButton sift_button;
+	private TextButton parathButton;
 	public Texture background;
 
 	float viewportwidth;
@@ -52,15 +53,13 @@ public class VillageStage extends Stage {
 		viewportwidth = this.getWidth();
 		viewportheight = this.getHeight() * 2;
 
-		background = new Texture(Gdx.files.internal("village/blackwood"
-				+ village_state + ".png"));
+		background = new Texture(Gdx.files.internal("village/blackwood" + village_state + ".png"));
 
 		Image backgroundImage = new Image(background);
 		backgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
 		addActor(backgroundImage);
 
-		JSONObject villageData = (JSONObject) Assets.village_json
-				.get(CurrentManager.getInstance().getCurrentPosition());
+		JSONObject villageData = (JSONObject) Assets.village_json.get(CurrentManager.getInstance().getCurrentPosition());
 
 		// 일단은 이렇게 한닷
 		villageData = (JSONObject) Assets.village_json.get("B");
@@ -91,18 +90,14 @@ public class VillageStage extends Stage {
 
 			exitbutton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					// TODO Auto-generated method stub
-					System.out.println("down");
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					Gdx.app.log("info", "Down");
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
-					// TODO Auto-generated method stub
-					System.out.println("up");
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					Gdx.app.log("info", "Up");
 
 					new ScreenController(ScreenEnum.WORLD);
 
@@ -113,7 +108,7 @@ public class VillageStage extends Stage {
 
 		for (int i = 0; i < num_of_building; i++) {
 			JSONObject building = (JSONObject) buildingArray.get(i);
-			System.out.println((String) building.get("name"));
+			Gdx.app.log("Building Name", String.valueOf(building.get("name")));
 			/*
 			 * Texture buildingtex = new Texture( Gdx.files.internal((String)
 			 * building.get("imagesource"))); TextureRegionDrawable buildingimg
@@ -122,19 +117,13 @@ public class VillageStage extends Stage {
 			 * buildingbutton[i] = new ImageButton(buildingimg);
 			 */
 
-			buildingbutton[i] = new Label((String) building.get("name"),
-					Assets.skin);
+			buildingbutton[i] = new Label((String) building.get("name"), Assets.skin);
 
-			int positionx = Integer
-					.parseInt((String) building.get("positionx"));
-			int positiony = Integer
-					.parseInt((String) building.get("positiony"));
+			int positionx = Integer.parseInt((String) building.get("positionx"));
+			int positiony = Integer.parseInt((String) building.get("positiony"));
 
 			positionx = (int) (viewportwidth * (positionx / 1920.0));
 			positiony = (int) (viewportheight * (positiony / 1080.0));
-
-			System.out.println(positionx);
-			System.out.println(positiony);
 
 			buildingbutton[i].moveBy(positionx, positiony);
 
@@ -142,19 +131,15 @@ public class VillageStage extends Stage {
 
 			buildingbutton[i].addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					// TODO Auto-generated method stub
-					System.out.println("down");
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					Gdx.app.log("info", "Up");
 					event.getListenerActor().setColor(Color.RED);
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
-					// TODO Auto-generated method stub
-					System.out.println("up");
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					Gdx.app.log("info", "Down");
 					event.getListenerActor().setColor(Color.WHITE);
 
 					// 기능 클래스 연결
@@ -169,8 +154,11 @@ public class VillageStage extends Stage {
 
 		// 전환 버튼 기능은 빌리지 스크린에서 구현
 		sift_button = new TextButton("전환", Assets.skin);
+		parathButton = new TextButton("파라스", Assets.skin);
 		sift_button.center();
+		parathButton.top();
 		addActor(sift_button);
+		addActor(parathButton);
 
 	}
 
