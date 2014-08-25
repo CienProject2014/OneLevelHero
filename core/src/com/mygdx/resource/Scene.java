@@ -6,4 +6,6 @@ public interface Scene {
 	void showNextScene();
 
 	boolean isNext();
+
+	void show(float delta);
 }

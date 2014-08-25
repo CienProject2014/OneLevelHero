@@ -9,14 +9,17 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.ChatScene;
+import com.mygdx.event.SelectScene;
+import com.mygdx.resource.Scene;
 import com.mygdx.util.EventManager;
 
 public class EventScreen implements Screen {
 
 	private SpriteBatch batch;
-	private ChatScene chatScene;
+	private Scene scene;
 	private Stage stage;
 	private Table table;
 	private String event;
@@ -35,7 +38,7 @@ public class EventScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		chatScene.show(delta); // 배경 출력
+		scene.show(delta); // 배경 출력
 		batch.end();
 
 		stage.draw();
@@ -60,8 +63,8 @@ public class EventScreen implements Screen {
 
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if (chatScene.isNext()) {
-					chatScene.showNextScene();
+				if (scene.isNext()) {
+					scene.showNextScene();
 				} else {
 					// back to previous screen
 					// that envoke this event screen
@@ -79,10 +82,16 @@ public class EventScreen implements Screen {
 
 	private void showEventScene() {
 		// 인스턴스 생성
-		chatScene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
+		if (EventManager.getInstance().getEventType() == EventTypeEnum.CHAT)
+			scene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
+		else if (EventManager.getInstance().getEventType() == EventTypeEnum.SELECT)
+			scene = new SelectScene(table, batch, EventManager.getInstance().getEventCode());
+		else
+			Gdx.app.log("error", "scene할당 에러");
+
 		// 파싱을 하기 위한 로드
 
-		chatScene.load();
+		scene.load();
 
 	}
 

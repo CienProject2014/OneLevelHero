@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.ChatScene;
 import com.mygdx.util.EventManager;
@@ -63,6 +64,7 @@ public class PrologueScreen implements Screen {
 
 					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
 					EventManager.getInstance().setEventCode("Blackwood-parath-prologue");
+					EventManager.getInstance().setEventType(EventTypeEnum.CHAT);
 					new ScreenController(ScreenEnum.EVENT);
 
 				}
