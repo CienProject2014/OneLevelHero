@@ -7,7 +7,8 @@
 		"evade" : 13.8,
 		"accuracy" : 94.8,
 		"healthPoint" : 338,
-		"stamina" : 100
-		"debuff" : "null"
+		"stamina" : 100,
+		"debuff" : "null",
+		"job" : "warrior"
 	}
 }
