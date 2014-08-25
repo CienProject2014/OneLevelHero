@@ -24,7 +24,8 @@ public class Assets {
 			option_before, option_after, start_after, start_before, downArrowButton, bagButton, nameAndTime, helpButton, optionButton, upArrowButton;
 
 	//NPC얼굴
-	public static Texture scene1, scene2, scene3, scene4, rabbit1, rabbit2, rabbit3, yongsa_happy, yongsa_sad, parath_angry, parath_happy, nothing_image;
+	public static Texture prog_team1, plan_team1, graphic_team1, scene1, scene2, scene3, scene4, rabbit1, rabbit2, rabbit3, yongsa_happy, yongsa_sad, parath_angry, parath_happy,
+			nothing_image;
 
 	//JSON
 	public static JSONObject worldmap_json, village_json, status_new_left, bag_json, credit_list, blackwood_json, prologue_json, blackwood_character, blackwood_background;
@@ -122,6 +123,9 @@ public class Assets {
 		scene2 = new Texture(Gdx.files.internal("texture/prologue/scene2.jpg"));
 		scene3 = new Texture(Gdx.files.internal("texture/prologue/scene3.jpg"));
 		scene4 = new Texture(Gdx.files.internal("texture/prologue/scene4.jpg"));
+		prog_team1 = new Texture(Gdx.files.internal("texture/credit/prog_team1.png"));
+		plan_team1 = new Texture(Gdx.files.internal("texture/credit/plan_team1.png"));
+		graphic_team1 = new Texture(Gdx.files.internal("texture/credit/graphic_team1.png"));
 
 		//HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
 		resourceFileList.put("yongsa_happy", yongsa_happy);
@@ -135,6 +139,10 @@ public class Assets {
 		resourceFileList.put("scene2", scene2);
 		resourceFileList.put("scene3", scene3);
 		resourceFileList.put("scene4", scene4);
+		resourceFileList.put("prog_team1", prog_team1);
+		resourceFileList.put("plan_team1", plan_team1);
+		resourceFileList.put("graphic_team1", graphic_team1);
+		resourceFileList.put("nothing_image", nothing_image);
 	}
 
 	private static void fontLoad() {

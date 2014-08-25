@@ -8,12 +8,9 @@ import org.json.simple.parser.JSONParser;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.game.OneLevelHero;
-import com.mygdx.util.ScreenManager;
 
 public class Characters {
 
-	OneLevelHero game = ScreenManager.getGame();
 	JSONParser parser = new JSONParser();
 	JSONObject object;
 	String keyOfVillage;
@@ -52,14 +49,12 @@ public class Characters {
 		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfNumber);
 		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
 		String imageName = (String) sceneObject.get("character"); //이미지 이름 추출
-		if (imageName.equals("nothing")) {
-			image = Assets.nothing_image;
-		} else {
-			if (resourceFileList.containsKey(imageName))
-				image = (Texture) resourceFileList.get(imageName); //이미지 경로 주입
-			else
-				Gdx.app.log("error", "imageName not found - character");
-		}
+
+		if (resourceFileList.containsKey(imageName))
+			image = (Texture) resourceFileList.get(imageName); //이미지 경로 주입
+		else
+			Gdx.app.log("error", "imageName not found - character");
+
 		return image;
 	}
 }

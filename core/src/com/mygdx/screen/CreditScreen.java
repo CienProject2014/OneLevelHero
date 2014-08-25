@@ -62,8 +62,7 @@ public class CreditScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				if (creditScene.isNext()) {
 					creditScene.showNextScene();
 				} else {
@@ -84,8 +83,7 @@ public class CreditScreen implements Screen {
 	private void showEventScene() {
 
 		EventManager.getInstance().setEventCode("Credit-scene-1");
-		creditScene
-				.settingBeforeLoad(EventManager.getInstance().getEventCode());
+		creditScene = new CreditScene(table, batch, stage, EventManager.getInstance().getEventCode());
 
 		// 파싱을 하기 위한 로드
 		creditScene.load();
