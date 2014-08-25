@@ -1,9 +1,0 @@
-diff a/core/src/com/mygdx/resource/Assets.java b/core/src/com/mygdx/resource/Assets.java	(rejected hunks)
-@@ -38,6 +38,7 @@
- 	}
- 
- 	public static void jsonLoad() {
-+		scene_background = (JSONObject) JSONValue.parse(Gdx.files.internal("data/scene_background.json").readString());
- 		script_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/scene_script.json").readString());
- 		charater_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/scene_character.json").readString());
- 		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/village.json").readString());

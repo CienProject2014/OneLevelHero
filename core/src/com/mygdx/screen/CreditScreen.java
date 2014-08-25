@@ -82,18 +82,13 @@ public class CreditScreen implements Screen {
 	}
 
 	private void showEventScene() {
-		// 인스턴스 생성
-		creditScene = new CreditScene(table, batch);
-		// 스테이지 주입하기
-		creditScene.setStage(stage);
-		// 로드전 세팅
+
 		EventManager.getInstance().setEventCode("Credit-scene-1");
 		creditScene
 				.settingBeforeLoad(EventManager.getInstance().getEventCode());
+
 		// 파싱을 하기 위한 로드
 		creditScene.load();
-		// 씬 뿌려주기
-		creditScene.showView();
 	}
 
 	@Override

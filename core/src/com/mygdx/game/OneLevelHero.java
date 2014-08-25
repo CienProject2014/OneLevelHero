@@ -1,4 +1,4 @@
-package com.mygdx.game;
+﻿package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
 import com.mygdx.enums.ScreenEnum;
@@ -9,11 +9,14 @@ public class OneLevelHero extends Game {
 
 	@Override
 	public void create() {
-		Assets.jsonLoad(); // 어셋을 로드해 json 파일들을 메모리에 올린다.
-		Assets.characterImageLoad();
-		Assets.menuScreenLoad();
-		Assets.gameUILoad();
-		Assets.fontLoad();
+		
+	SpriteBatch batch;
+	Texture img;
+	public LoadLauncher loadLauncher;	
+
+	@Override
+	public void create() {
+		Assets.loadAll();		
 		ScreenManager.getInstance().initialize(this);
 		ScreenManager.getInstance().show(ScreenEnum.MENU);
 	}

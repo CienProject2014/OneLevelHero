@@ -33,8 +33,7 @@ public class SoundPopup extends Dialog {
 		getContentTable().defaults(); // set buttons height
 		setResizable(false);
 
-		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up,
-				Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
+		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up, Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
 
 		text("배경음\n효과음");
 
@@ -43,8 +42,7 @@ public class SoundPopup extends Dialog {
 		setWidth((int) (width * vp.getViewportWidth())); // 가로 크기 세팅
 		setHeight((int) (height * vp.getViewportHeight())); // 세로 크기 세팅
 
-		setPosition((int) (centerx * vp.getViewportWidth()),
-				(int) (centery * vp.getViewportHeight()));
+		setPosition((int) (centerx * vp.getViewportWidth()), (int) (centery * vp.getViewportHeight()));
 
 		setMovable(true); // 드래그로 이동가능
 

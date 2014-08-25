@@ -1,4 +1,4 @@
-package com.mygdx.screen;
+﻿package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -14,11 +14,12 @@ import com.mygdx.event.ChatScene;
 import com.mygdx.util.EventManager;
 
 public class EventScreen implements Screen {
-	SpriteBatch batch;
-	ChatScene chatScene;
-	Stage stage;
-	Table table;
-	String event;
+
+	private SpriteBatch batch;
+	private ChatScene chatScene;
+	private Stage stage;
+	private Table table;
+	private String event;
 
 	public EventScreen() {
 
@@ -82,8 +83,9 @@ public class EventScreen implements Screen {
 		chatScene = new ChatScene(table, batch, EventManager.getInstance()
 				.getEventCode(), stage);
 		// 파싱을 하기 위한 로드
+
 		chatScene.load();
-		// 씬 뿌려주기
+
 	}
 
 	@Override
@@ -106,5 +108,13 @@ public class EventScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public String getEvent() {
+		return event;
+	}
+
+	public void setEvent(String event) {
+		this.event = event;
 	}
 }
