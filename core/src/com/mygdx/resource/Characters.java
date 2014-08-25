@@ -53,7 +53,7 @@ public class Characters {
 		if (resourceFileList.containsKey(imageName))
 			image = (Texture) resourceFileList.get(imageName); //이미지 경로 주입
 		else
-			Gdx.app.log("error", "imageName not found - character");
+			Gdx.app.log("error", "imageName not found - character :" + String.valueOf(imageName));
 
 		return image;
 	}

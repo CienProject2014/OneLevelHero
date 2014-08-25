@@ -52,14 +52,11 @@ public class Backgrounds {
 		jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfNumber);
 		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
 		String imageName = (String) sceneObject.get("background");
-		if (imageName.equals("nothing")) {
-			image = Assets.nothing_image;
-		} else {
-			if (resourceFileList.containsKey(imageName))
-				image = (Texture) resourceFileList.get(imageName); //이미지 경로 주입
-			else
-				Gdx.app.log("error", "imageName not found - background");
-		}
+		if (resourceFileList.containsKey(imageName))
+			image = (Texture) resourceFileList.get(imageName); //이미지 경로 주입
+		else
+			Gdx.app.log("error", "imageName not found - background :" + String.valueOf(imageName));
+
 		return image;
 	}
 
