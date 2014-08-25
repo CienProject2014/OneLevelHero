@@ -1,13 +1,19 @@
 package com.mygdx.resource;
 
+import java.util.HashMap;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.game.OneLevelHero;
+import com.mygdx.util.ScreenManager;
 
 public class Characters {
 
+	OneLevelHero game = ScreenManager.getGame();
 	JSONParser parser = new JSONParser();
 	JSONObject object;
 	String keyOfVillage;
@@ -18,6 +24,7 @@ public class Characters {
 	JSONArray jsonArray;
 	Texture image;
 	int count;
+	HashMap<String, Object> resourceFileList = Assets.resourceFileList;
 
 	// 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
 	public Characters(JSONObject fileName) {
@@ -44,14 +51,15 @@ public class Characters {
 	private Texture parseJSONImage(int keyOfSceneNumber) {
 		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfNumber);
 		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
-		String dir = (String) sceneObject.get("character"); //이미지 경로 계산
-		if (dir.equals("nothing")) {
+		String imageName = (String) sceneObject.get("character"); //이미지 이름 추출
+		if (imageName.equals("nothing")) {
 			image = Assets.nothing_image;
 		} else {
-			image = new Texture(dir); //이미지 경로 주입
+			if (resourceFileList.containsKey(imageName))
+				image = (Texture) resourceFileList.get(imageName); //이미지 경로 주입
+			else
+				Gdx.app.log("error", "imageName not found - character");
 		}
-
 		return image;
 	}
-
 }

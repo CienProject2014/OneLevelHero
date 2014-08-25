@@ -58,27 +58,25 @@ public class CreditScene implements Scene {
 	private double timeAcc = 0;
 	private float alpha = 0;
 
-	public CreditScene(Table table, SpriteBatch batch) {
+	public CreditScene(Table table, SpriteBatch batch, Stage stage, String eventCode) {
 		this.batch = batch;
 		jsonFile = Assets.credit_list;
 		scripts = new Scripts(jsonFile);
 		character = new Characters(jsonFile);
 		background = new Backgrounds(jsonFile);
 		this.table = table;
-
-	}
-
-	//load해오기전에 setting 해줘야 할 것들
-	public void settingBeforeLoad(String eventCode) {
+		this.stage = stage;
 		this.eventCode = eventCode;
+
 		//이벤트 코드 파싱
-		parseEventCode(this.eventCode);
+		parseEventCode(eventCode);
+
+		//sceneNumber 초기화
+		clearSceneNumber();
 
 		// scene 갯수를 받아옴. 배열값과의 비교를 위해 1을 빼준다.
 		counter = getNumberOfScene(jsonArray) - 1;
 
-		//sceneNumber 초기화
-		clearSceneNumber();
 	}
 
 	// (1) eventCode는 Prologue-scene-1과 같은 형식(Prologue와 숫자 바뀜)
@@ -103,24 +101,20 @@ public class CreditScene implements Scene {
 
 		characterImage.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
 		characterImage.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
-	}
 
-	// (2) 로드후 시작
-	public void showView() {
+		// 이미지 뿌려주기
 		table.bottom().left(); // table 전체를 화면 아래 쪽으로
 		table.add(characterImage);
 		table.add(script).width(script.getWidth());
 	}
 
-	// (3) 신(scene)을 넘기기 위한 함수, load() 이후 실행된다.
+	// (2) 신(scene)을 넘기기 위한 함수, load() 이후 실행된다.
 	public void showNextScene() {
 		// 다음 신으로 가기위한 세팅
 		keyOfSceneNumber++;
-		parseEventCode(eventCode);
 
 		// 다음씬 로드하고 뿌려주기
 		load();
-		showView();
 		alpha = 0;
 		timeAcc = 0;
 	}

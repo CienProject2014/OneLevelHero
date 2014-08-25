@@ -87,17 +87,12 @@ public class VillageScreen implements Screen {
 		multiplexer.addProcessor(2, villageStage);
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
-
-		Assets.menuScreenLoad();
 		Assets.loadSize(villageStage);
 
 		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth, Assets.realHeight / 2);
 		cam.translate(100, 300);
 		cam.position.set(Assets.realWidth / 2, Assets.realHeight / 2, 0);
 		villageStage.getViewport().setCamera(cam);
-
-		Gdx.app.log("LoadLauncher - getAttack()", String.valueOf(game.loadLauncher.unitLeft.status.getAttack()));
-		Gdx.app.log("CurrentManager - getVersion()", String.valueOf(game.currentManager.getVersion()));
 
 		// 화면 스크롤
 		villageStage.addListener(new InputListener() {

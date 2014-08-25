@@ -15,12 +15,12 @@ import com.mygdx.game.OneLevelHero;
 import com.mygdx.util.ScreenManager;
 
 public class EventScreen implements Screen {
-	OneLevelHero game = ScreenManager.getGame();
-	SpriteBatch batch;
-	ChatScene chatScene;
-	Stage stage;
-	Table table;
-	String event;
+	private OneLevelHero game = ScreenManager.getGame();
+	private SpriteBatch batch;
+	private ChatScene chatScene;
+	private Stage stage;
+	private Table table;
+	private String event;
 
 	public EventScreen() {
 
@@ -28,7 +28,7 @@ public class EventScreen implements Screen {
 
 	public EventScreen(OneLevelHero game, String event) {
 		this.game = game;
-		this.event = event;
+		this.setEvent(event);
 	}
 
 	@Override
@@ -82,9 +82,9 @@ public class EventScreen implements Screen {
 	private void showEventScene() {
 		//인스턴스 생성
 		chatScene = new ChatScene(table, batch, game.eventManager.getEventCode(), stage);
-		// 파싱을 하기 위한 로드
+		// 파싱을 하기 위한 로드, 씬을 뿌려줌
 		chatScene.load();
-		// 씬 뿌려주기
+
 	}
 
 	@Override
@@ -107,5 +107,13 @@ public class EventScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public String getEvent() {
+		return event;
+	}
+
+	public void setEvent(String event) {
+		this.event = event;
 	}
 }

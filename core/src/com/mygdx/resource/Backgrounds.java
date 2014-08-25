@@ -1,9 +1,12 @@
 package com.mygdx.resource;
 
+import java.util.HashMap;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Backgrounds {
@@ -16,6 +19,8 @@ public class Backgrounds {
 	String delimiter = "-";
 	JSONObject fileName;
 	JSONArray jsonArray;
+	Texture image;
+	HashMap<String, Object> resourceFileList = Assets.resourceFileList;
 
 	// Backgrounds 클래스를 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
 	public Backgrounds(JSONObject fileName) {
@@ -46,8 +51,15 @@ public class Backgrounds {
 	private Texture parseJSONImage(int keyOfSceneNumber) {
 		jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfNumber);
 		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
-		String dir = (String) sceneObject.get("background"); //배경 경로 받아오기
-		Texture image = new Texture(dir); //경로 넣어주기
+		String imageName = (String) sceneObject.get("background");
+		if (imageName.equals("nothing")) {
+			image = Assets.nothing_image;
+		} else {
+			if (resourceFileList.containsKey(imageName))
+				image = (Texture) resourceFileList.get(imageName); //이미지 경로 주입
+			else
+				Gdx.app.log("error", "imageName not found - background");
+		}
 		return image;
 	}
 

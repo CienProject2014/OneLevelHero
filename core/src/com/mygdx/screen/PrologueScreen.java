@@ -7,35 +7,24 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.ChatScene;
 import com.mygdx.game.OneLevelHero;
-import com.mygdx.resource.Scripts;
 import com.mygdx.util.ScreenManager;
 
 public class PrologueScreen implements Screen {
 
-	OneLevelHero game;
-	Stage stage;
-	Texture img;
-	Image[] image;
-	Scripts script;
-	Label textlabel;
-	TextureRegion region;
-	Texture texture;
-	SpriteBatch batch;
-	ChatScene chatScene;
-	Table table;
+	private OneLevelHero game;
+	private Stage stage;
+	private SpriteBatch batch;
+	private ChatScene chatScene;
+	private Table table;
 
 	public PrologueScreen() {
 		this.game = ScreenManager.getGame();
@@ -92,8 +81,9 @@ public class PrologueScreen implements Screen {
 	private void showEventScene() {
 		//인스턴스 생성
 		chatScene = new ChatScene(table, batch, game.eventManager.getEventCode(), stage);
-		chatScene.load();
 		// 씬 뿌려주기
+		chatScene.load();
+
 	}
 
 	@Override
