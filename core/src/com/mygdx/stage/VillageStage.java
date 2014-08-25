@@ -16,6 +16,7 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.resource.Assets;
 import com.mygdx.util.CurrentManager;
+import com.mygdx.util.EventManager;
 
 public class VillageStage extends Stage {
 
@@ -28,9 +29,10 @@ public class VillageStage extends Stage {
 	int num_of_exit;
 	// ImageButton buildingbutton[];
 	Label buildingbutton[];
+	TextButton npcbutton[];
 	TextButton exitbutton;
 
-	public TextButton sift_button;
+	private TextButton sift_button;
 	public Texture background;
 
 	float viewportwidth;
@@ -52,15 +54,13 @@ public class VillageStage extends Stage {
 		viewportwidth = this.getWidth();
 		viewportheight = this.getHeight() * 2;
 
-		background = new Texture(Gdx.files.internal("village/blackwood"
-				+ village_state + ".png"));
+		background = new Texture(Gdx.files.internal("village/blackwood" + village_state + ".png"));
 
 		Image backgroundImage = new Image(background);
 		backgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
 		addActor(backgroundImage);
 
-		JSONObject villageData = (JSONObject) Assets.village_json
-				.get(CurrentManager.getInstance().getCurrentPosition());
+		JSONObject villageData = (JSONObject) Assets.village_json.get(CurrentManager.getInstance().getCurrentPosition());
 
 		// 일단은 이렇게 한닷
 		villageData = (JSONObject) Assets.village_json.get("B");
@@ -75,6 +75,8 @@ public class VillageStage extends Stage {
 
 		// buildingbutton = new ImageButton[num_of_building];
 		buildingbutton = new Label[num_of_building];
+		npcbutton = new TextButton[num_of_npc];
+
 		for (int i = 0; i < num_of_exit; i++) {
 			JSONObject exit = (JSONObject) exitArray.get(i);
 			exitbutton = new TextButton("Exit", Assets.skin);
@@ -91,18 +93,14 @@ public class VillageStage extends Stage {
 
 			exitbutton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					// TODO Auto-generated method stub
-					System.out.println("down");
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					Gdx.app.log("info", "Down");
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
-					// TODO Auto-generated method stub
-					System.out.println("up");
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					Gdx.app.log("info", "Up");
 
 					new ScreenController(ScreenEnum.WORLD);
 
@@ -113,7 +111,6 @@ public class VillageStage extends Stage {
 
 		for (int i = 0; i < num_of_building; i++) {
 			JSONObject building = (JSONObject) buildingArray.get(i);
-			System.out.println((String) building.get("name"));
 			/*
 			 * Texture buildingtex = new Texture( Gdx.files.internal((String)
 			 * building.get("imagesource"))); TextureRegionDrawable buildingimg
@@ -122,19 +119,13 @@ public class VillageStage extends Stage {
 			 * buildingbutton[i] = new ImageButton(buildingimg);
 			 */
 
-			buildingbutton[i] = new Label((String) building.get("name"),
-					Assets.skin);
+			buildingbutton[i] = new Label((String) building.get("name"), Assets.skin);
 
-			int positionx = Integer
-					.parseInt((String) building.get("positionx"));
-			int positiony = Integer
-					.parseInt((String) building.get("positiony"));
+			int positionx = Integer.parseInt((String) building.get("positionx"));
+			int positiony = Integer.parseInt((String) building.get("positiony"));
 
 			positionx = (int) (viewportwidth * (positionx / 1920.0));
 			positiony = (int) (viewportheight * (positiony / 1080.0));
-
-			System.out.println(positionx);
-			System.out.println(positiony);
 
 			buildingbutton[i].moveBy(positionx, positiony);
 
@@ -142,19 +133,15 @@ public class VillageStage extends Stage {
 
 			buildingbutton[i].addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					// TODO Auto-generated method stub
-					System.out.println("down");
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					Gdx.app.log("info", "Up");
 					event.getListenerActor().setColor(Color.RED);
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
-					// TODO Auto-generated method stub
-					System.out.println("up");
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					Gdx.app.log("info", "Down");
 					event.getListenerActor().setColor(Color.WHITE);
 
 					// 기능 클래스 연결
@@ -162,9 +149,41 @@ public class VillageStage extends Stage {
 
 					super.touchUp(event, x, y, pointer, button);
 				}
+			});// buildingbutton[i].set
+		}
+
+		for (int i = 0; i < num_of_npc; i++) {
+			JSONObject npc = (JSONObject) npcArray.get(i);
+
+			npcbutton[i] = new TextButton((String) npc.get("name"), Assets.skin);
+
+			int positionx = Integer.parseInt((String) npc.get("positionx"));
+			int positiony = Integer.parseInt((String) npc.get("positiony"));
+
+			positionx = (int) (viewportwidth * (positionx / 1920.0));
+			positiony = (int) (viewportheight * (positiony / 1080.0));
+
+			Gdx.app.log("Position X : ", String.valueOf(positionx));
+
+			npcbutton[i].moveBy(positionx, positiony);
+
+			addActor(npcbutton[i]);
+			npcbutton[i].addListener(new InputListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+
+					return true;
+				}
+
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					EventManager.getInstance().setEventCode("Blackwood-parath-default");
+					new ScreenController(ScreenEnum.EVENT);
+
+					super.touchUp(event, x, y, pointer, button);
+				}
 			});
 
-			// buildingbutton[i].set
 		}
 
 		// 전환 버튼 기능은 빌리지 스크린에서 구현

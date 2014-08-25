@@ -14,7 +14,6 @@ import org.json.simple.JSONObject;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -46,7 +45,6 @@ public class ChatScene implements Scene {
 	private Backgrounds background;
 	private Texture backgroundTexture;
 	private SpriteBatch batch;
-	private Stage stage;
 	private String eventCode;
 
 	//파싱되는 키값
@@ -63,11 +61,9 @@ public class ChatScene implements Scene {
 	private double timeAcc = 0;
 	private float alpha = 0;
 
-	public ChatScene(Table table, SpriteBatch batch, String eventCode,
-			Stage stage) {
+	public ChatScene(Table table, SpriteBatch batch, String eventCode) {
 		this.batch = batch;
 		this.eventCode = eventCode;
-		this.stage = stage;
 
 		//이벤트 코드 파싱
 		parseEventCode(eventCode);
@@ -91,13 +87,11 @@ public class ChatScene implements Scene {
 
 		clear();
 		// Background json 불러옴
-		backgroundTexture = background.getBackground(eventCode,
-				keyOfSceneNumber);
+		backgroundTexture = background.getBackground(eventCode, keyOfSceneNumber);
 
 		// 스크립트 파싱
 
 		script = new Label(scripts.getScript(eventCode, keyOfSceneNumber), Assets.skin);
-		
 
 		// 케릭터 불러옴
 		characterImage = new Image(character.getImage(eventCode, keyOfSceneNumber));
@@ -107,10 +101,8 @@ public class ChatScene implements Scene {
 		script.setWrap(true);
 		script.setWidth(Assets.realWidth * 0.8f);
 
-		characterImage.setSize(Assets.realWidth * 0.2f,
-				Assets.realHeight * 0.2f);
-		characterImage.setPosition(0.2f * Assets.realWidth,
-				0.7f * Assets.realHeight);
+		characterImage.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
+		characterImage.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
 
 		// 뿌려주기
 		table.bottom().left(); // table 전체를 화면 아래 쪽으로
@@ -152,7 +144,7 @@ public class ChatScene implements Scene {
 	}
 
 	private int getTotalSceneNumber(JSONArray jsonArray) {
-		jsonArray = (JSONArray) jsonFile.get(keyOfNPC + keyOfSerialNumber);
+		jsonArray = (JSONArray) jsonFile.get(keyOfNPC + "_" + keyOfSerialNumber);
 		int counter = jsonArray.size();
 		return counter;
 	}

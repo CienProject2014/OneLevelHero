@@ -36,7 +36,7 @@ public class Scripts {
 
 	// 과정(2) jsonObject를 받아와서 리턴한다.
 	private String parseJSONScript(int keyOfSceneNumber) {
-		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfSerialNumber);
+		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + "_" + keyOfSerialNumber);
 		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
 		String script = (String) sceneObject.get("script");
 		return script;

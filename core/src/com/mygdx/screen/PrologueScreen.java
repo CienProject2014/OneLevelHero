@@ -62,7 +62,7 @@ public class PrologueScreen implements Screen {
 					// that envoke this event screen
 
 					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
-					EventManager.getInstance().setEventCode("Blackwood-parath-1");
+					EventManager.getInstance().setEventCode("Blackwood-parath-prologue");
 					new ScreenController(ScreenEnum.EVENT);
 
 				}
@@ -77,7 +77,7 @@ public class PrologueScreen implements Screen {
 
 	private void showEventScene() {
 		// 인스턴스 생성
-		chatScene = new ChatScene(table, batch, EventManager.getInstance().getEventCode(), stage);
+		chatScene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
 
 		chatScene.load();
 

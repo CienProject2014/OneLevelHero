@@ -19,9 +19,10 @@
     ],
     "npc": [
       {
-        "name": "거지새끼",
-        "positionx": "300",
-        "positiony": "300"
+      	"key": "Parath",
+        "name": "파라스",
+        "positionx": "1200",
+        "positiony": "100"
       }
     ],
     "exit": [
