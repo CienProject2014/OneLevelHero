@@ -7,35 +7,24 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.resource.EventScene;
-import com.mygdx.resource.Scripts;
+import com.mygdx.event.ChatScene;
+import com.mygdx.util.EventManager;
 
 public class PrologueScreen implements Screen {
 
-	Stage stage;
-	Texture img;
-	Image[] image;
-	Scripts script;
-	Label textlabel;
-	TextureRegion region;
-	Texture texture;
-	SpriteBatch batch;
-	EventScene scene;
-	Table table;
+	private Stage stage;
+	private SpriteBatch batch;
+	private ChatScene chatScene;
+	private Table table;
 
 	public PrologueScreen() {
-
 	}
 
 	@Override
@@ -44,9 +33,8 @@ public class PrologueScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		scene.show(delta); // 배경 출력
+		chatScene.show(delta); // 배경 출력
 		batch.end();
-
 		stage.draw();
 	}
 
@@ -61,29 +49,37 @@ public class PrologueScreen implements Screen {
 		batch = new SpriteBatch();
 		table = new Table();
 		table.setFillParent(true);
-
-		scene = new EventScene(table, batch);
-		scene.setStage(stage);
-		scene.load("Prologue-scene-1");
-		scene.start();
+		showEventScene();
 
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				scene.next();
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				if (chatScene.isNext()) {
+					chatScene.showNextScene();
+				} else {
+					// back to previous screen
+					// that envoke this event screen
 
-				if (scene.isEnd) {
-
+					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
+					EventManager.getInstance().setEventCode("Blackwood-parath-1");
 					new ScreenController(ScreenEnum.EVENT);
 
 				}
+
 				return true;
 			}
 		});
 
 		stage.addActor(table);
+
+	}
+
+	private void showEventScene() {
+		// 인스턴스 생성
+		chatScene = new ChatScene(table, batch, EventManager.getInstance().getEventCode(), stage);
+
+		chatScene.load();
 
 	}
 
@@ -104,10 +100,7 @@ public class PrologueScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// dispose manually
-		/*
-		 * stage.dispose(); batch.dispose(); img.dispose();
-		 */
+
 	}
 
 }

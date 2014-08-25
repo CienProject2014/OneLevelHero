@@ -31,17 +31,17 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
  */
 public class SlotTarget extends Target {
 
-	private Slot targetSlot;
+	//private Slot targetSlot;
 
 	public SlotTarget(SlotActor actor) {
 		super(actor);
-		targetSlot = actor.getSlot();
+		//targetSlot = actor.getSlot();
 		getActor().setColor(Color.LIGHT_GRAY);
 	}
 
 	@Override
 	public boolean drag(Source source, Payload payload, float x, float y, int pointer) {
-		Slot payloadSlot = (Slot) payload.getObject();
+		//Slot payloadSlot = (Slot) payload.getObject();
 		// if (targetSlot.getItem() == payloadSlot.getItem() ||
 		// targetSlot.getItem() == null) {
 		getActor().setColor(Color.WHITE);

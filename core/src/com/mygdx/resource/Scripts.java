@@ -5,46 +5,41 @@ package com.mygdx.resource;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import com.mygdx.enums.ScriptsEnum;
 
 public class Scripts {
+	String keyOfVillage;
+	String keyOfNPC;
+	String keyOfSerialNumber;
 
-	JSONParser parser = new JSONParser();
-	String key1;
-	String key2;
-	String key3;
-	JSONArray array;
 	String delimiter = "-";
-	ScriptsEnum scriptsEnum;
+	JSONArray jsonArray;
+	JSONObject fileName;
 
-	// 스크립트 클래스를 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
-	public Scripts(ScriptsEnum scriptsEnum) {
-		this.scriptsEnum = scriptsEnum;
+	// 스크립트 클래스를 생성해 줄 때 어떤 파일을 읽어올지 지정함
+	public Scripts(JSONObject fileName) {
+		this.fileName = fileName;
 	}
 
-	// Key값에 맞는 스크립트를 반환함
-	public String getScript(String key) {
-		keyParser(key);
-
-		for (ScriptsEnum e : ScriptsEnum.values()) {
-			if (e == scriptsEnum) {
-				array = (JSONArray) scriptsEnum.getJsonObject().get(key1);
-
-			}
-		}
-		JSONObject sc = (JSONObject) array.get(0);
-		String script = (String) sc.get(key2 + key3);
-		return script;
+	// eventCode값에 맞는 스크립트를 반환함
+	public String getScript(String eventCode, int keyOfSceneNumber) {
+		parseEventCode(eventCode);
+		return parseJSONScript(keyOfSceneNumber);
 	}
 
-	// 키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
-	void keyParser(String key) {
+	// 과정(1) 키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
+	private void parseEventCode(String key) {
 		String[] temp = key.split(delimiter);
-		key1 = temp[0];
-		key2 = temp[1];
-		key3 = temp[2];
+		keyOfVillage = temp[0];
+		keyOfNPC = temp[1];
+		keyOfSerialNumber = temp[2];
+	}
+
+	// 과정(2) jsonObject를 받아와서 리턴한다.
+	private String parseJSONScript(int keyOfSceneNumber) {
+		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfSerialNumber);
+		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
+		String script = (String) sceneObject.get("script");
+		return script;
 	}
 
 }

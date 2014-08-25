@@ -1,4 +1,4 @@
-package com.mygdx.screen;
+﻿package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -10,25 +10,23 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.game.OneLevelHero;
-import com.mygdx.resource.EventScene;
+import com.mygdx.event.ChatScene;
+import com.mygdx.util.EventManager;
 
 public class EventScreen implements Screen {
-	OneLevelHero game;
-	SpriteBatch batch;
-	EventScene scene;
-	Stage stage;
-	Table table;
-	String event;
+
+	private SpriteBatch batch;
+	private ChatScene chatScene;
+	private Stage stage;
+	private Table table;
+	private String event;
 
 	public EventScreen() {
 
 	}
 
-	public EventScreen(OneLevelHero game, String event) {
-		this.game = game;
+	public EventScreen(String event) {
 		this.event = event;
-		game.eventManager.setEvent(event);
 	}
 
 	@Override
@@ -37,7 +35,7 @@ public class EventScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		scene.show(delta); // 배경 출력
+		chatScene.show(delta); // 배경 출력
 		batch.end();
 
 		stage.draw();
@@ -56,26 +54,23 @@ public class EventScreen implements Screen {
 		table = new Table();
 		table.setFillParent(true);
 
-		scene = new EventScene(table, batch);
-		scene.setStage(stage);
-		scene.load("Blackwood-scene-1");
-		scene.start();
+		showEventScene();
 
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				scene.next();
-
-				if (scene.isEnd) {
+				if (chatScene.isNext()) {
+					chatScene.showNextScene();
+				} else {
 					// back to previous screen
 					// that envoke this event screen
 
 					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
 					new ScreenController(ScreenEnum.VILLAGE);
-				}
 
+				}
 				return true;
 			}
 		});
@@ -83,9 +78,18 @@ public class EventScreen implements Screen {
 		stage.addActor(table);
 	}
 
+	private void showEventScene() {
+		// 인스턴스 생성
+		chatScene = new ChatScene(table, batch, EventManager.getInstance()
+				.getEventCode(), stage);
+		// 파싱을 하기 위한 로드
+
+		chatScene.load();
+
+	}
+
 	@Override
 	public void hide() {
-		Gdx.app.log("DEBUG", "EventScreen hide is called");
 	}
 
 	@Override
@@ -106,4 +110,11 @@ public class EventScreen implements Screen {
 
 	}
 
+	public String getEvent() {
+		return event;
+	}
+
+	public void setEvent(String event) {
+		this.event = event;
+	}
 }

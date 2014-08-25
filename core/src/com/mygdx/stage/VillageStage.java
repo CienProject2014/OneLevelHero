@@ -12,10 +12,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.resource.Assets;
+import com.mygdx.util.CurrentManager;
 
 public class VillageStage extends Stage {
 
@@ -49,12 +49,8 @@ public class VillageStage extends Stage {
 	// 마을 정보에 맞게 스테이지 형성
 	private void village_setter() {
 
-		Viewport vp = this.getViewport();
-
 		viewportwidth = this.getWidth();
 		viewportheight = this.getHeight() * 2;
-
-		// vp.setWorldSize(viewportwidth, viewportheight * 0.8f);
 
 		background = new Texture(Gdx.files.internal("village/blackwood"
 				+ village_state + ".png"));
@@ -63,25 +59,24 @@ public class VillageStage extends Stage {
 		backgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
 		addActor(backgroundImage);
 
-		JSONArray village_data = (JSONArray) Assets.village_json
-				.get(village_name);
-		JSONObject this_village = (JSONObject) village_data.get(village_state);
+		JSONObject villageData = (JSONObject) Assets.village_json
+				.get(CurrentManager.getInstance().getCurrentPosition());
 
-		num_of_building = Integer.parseInt(this_village.get("num_of_building")
-				.toString());
-		num_of_npc = Integer
-				.parseInt(this_village.get("num_of_npc").toString());
-		num_of_exit = Integer.parseInt(this_village.get("num_of_exit")
-				.toString());
+		// 일단은 이렇게 한닷
+		villageData = (JSONObject) Assets.village_json.get("B");
 
-		JSONArray buildingarray = (JSONArray) this_village.get("building");
-		JSONArray npcarray = (JSONArray) this_village.get("npc");
-		JSONArray exitarray = (JSONArray) this_village.get("exit");
+		JSONArray buildingArray = (JSONArray) villageData.get("building");
+		JSONArray npcArray = (JSONArray) villageData.get("npc");
+		JSONArray exitArray = (JSONArray) villageData.get("exit");
+
+		num_of_building = buildingArray.size();
+		num_of_npc = npcArray.size();
+		num_of_exit = exitArray.size();
 
 		// buildingbutton = new ImageButton[num_of_building];
 		buildingbutton = new Label[num_of_building];
 		for (int i = 0; i < num_of_exit; i++) {
-			JSONObject exit = (JSONObject) exitarray.get(i);
+			JSONObject exit = (JSONObject) exitArray.get(i);
 			exitbutton = new TextButton("Exit", Assets.skin);
 
 			int positionx = Integer.parseInt((String) exit.get("positionx"));
@@ -109,7 +104,7 @@ public class VillageStage extends Stage {
 					// TODO Auto-generated method stub
 					System.out.println("up");
 
-					new ScreenController(ScreenEnum.MAIN);
+					new ScreenController(ScreenEnum.WORLD);
 
 					super.touchUp(event, x, y, pointer, button);
 				}
@@ -117,7 +112,7 @@ public class VillageStage extends Stage {
 		}
 
 		for (int i = 0; i < num_of_building; i++) {
-			JSONObject building = (JSONObject) buildingarray.get(i);
+			JSONObject building = (JSONObject) buildingArray.get(i);
 			System.out.println((String) building.get("name"));
 			/*
 			 * Texture buildingtex = new Texture( Gdx.files.internal((String)

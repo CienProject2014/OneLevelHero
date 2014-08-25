@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -16,7 +15,6 @@ import com.mygdx.resource.Assets;
 import com.mygdx.screen.MenuScreen;
 
 public class SoundPopup extends Dialog {
-	Skin skin = Assets.skin;
 	Stage scenestage;
 
 	public SoundPopup(String title, Stage stage) {
@@ -26,7 +24,6 @@ public class SoundPopup extends Dialog {
 	}
 
 	private void initialize() {
-		Assets.fontLoad();
 		float width = 0.6f;
 		float height = 0.5f;
 		float centerx = 0.5f - width / 2;
@@ -36,8 +33,7 @@ public class SoundPopup extends Dialog {
 		getContentTable().defaults(); // set buttons height
 		setResizable(false);
 
-		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up,
-				Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
+		TextButtonStyle style = new TextButtonStyle(Assets.menu_button_up, Assets.menu_button_down, Assets.menu_button_toggle, Assets.font);
 
 		text("배경음\n효과음");
 
@@ -46,8 +42,7 @@ public class SoundPopup extends Dialog {
 		setWidth((int) (width * vp.getViewportWidth())); // 가로 크기 세팅
 		setHeight((int) (height * vp.getViewportHeight())); // 세로 크기 세팅
 
-		setPosition((int) (centerx * vp.getViewportWidth()),
-				(int) (centery * vp.getViewportHeight()));
+		setPosition((int) (centerx * vp.getViewportWidth()), (int) (centery * vp.getViewportHeight()));
 
 		setMovable(true); // 드래그로 이동가능
 
@@ -55,16 +50,14 @@ public class SoundPopup extends Dialog {
 		// 다이얼로그 구현
 		// 다이얼로그조절
 
-		skin = Assets.skin;
-
-		final Slider volume = new Slider(0f, 100f, 1f, false, skin);
+		final Slider volume = new Slider(0f, 100f, 1f, false, Assets.skin);
 		volume.setValue(Assets.musicVolume * 100);
 		String volumeLabel = String.valueOf(Assets.musicVolume * 100);
-		final Label volumeValue = new Label(volumeLabel, skin);
+		final Label volumeValue = new Label(volumeLabel, Assets.skin);
 		Table table = new Table();
-		final Slider pan = new Slider(-1f, 1f, 0.1f, false, skin);
+		final Slider pan = new Slider(-1f, 1f, 0.1f, false, Assets.skin);
 		pan.setValue(0);
-		final Label panValue = new Label("0.0", skin);
+		final Label panValue = new Label("0.0", Assets.skin);
 
 		table.add(volume);
 		table.add(volumeValue);

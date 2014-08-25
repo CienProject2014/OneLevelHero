@@ -1,56 +1,60 @@
 package com.mygdx.resource;
 
+import java.util.HashMap;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Characters {
-	
+
 	JSONParser parser = new JSONParser();
 	JSONObject object;
-	String key1;
-	String key2;
-	String key3;
+	String keyOfVillage;
+	String keyOfNPC;
+	String keyOfNumber;
 	String delimiter = "-";
-	
+	JSONObject fileName;
+	JSONArray jsonArray;
+	Texture image;
+	int count;
+	HashMap<String, Object> resourceFileList = Assets.resourceFileList;
+
 	// 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
-	public Characters(int filenum){
-		FileHandle file = Gdx.files.internal("data/scene_character.json");
-		String text = file.readString();
-		Object obj = JSONValue.parse(text);
-		object = (JSONObject) obj;	
+	public Characters(JSONObject fileName) {
+		this.fileName = fileName;
 	}
-	
-	//Key값에 맞는 이미지를 반환함
-	public Texture ImageGetter(String key) {
-		keyParser(key);
-		
-		JSONArray array = (JSONArray)object.get(key1);	
-		JSONObject sc = (JSONObject)array.get(0);
-		String dir = (String) sc.get(key2+key3);
-		
-		Texture image = new Texture(dir);
-	
-		return image;
+
+	// Key값에 맞는 이미지를 반환함
+	public Texture getImage(String key, int keyOfSceneNumber) {
+		keyParser(key); // 키값을 나눈다
+
+		//JSON에서 불러온 이미지를 리턴한다
+		return parseJSONImage(keyOfSceneNumber);
 	}
-	
-	public int getNum(String key) {
-		JSONArray array = (JSONArray)object.get(key);
-		JSONObject sc = (JSONObject)array.get(0);
-		String str = (String) sc.get("number");
-		return Integer.parseInt(str);
-	}
-	
-	//키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
-	void keyParser(String key) {
+
+	// 과정 (1) 키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
+	private void keyParser(String key) {
 		String[] temp = key.split(delimiter);
-		key1 = temp[0];
-		key2 = temp[1];
-		key3 = temp[2];
+		keyOfVillage = temp[0];
+		keyOfNPC = temp[1];
+		keyOfNumber = temp[2];
+	}
+
+	// 과정 (2) JSON에서 불러온 이미지를 리턴
+	private Texture parseJSONImage(int keyOfSceneNumber) {
+		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + keyOfNumber);
+		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
+		String imageName = (String) sceneObject.get("character"); //이미지 이름 추출
+
+		if (resourceFileList.containsKey(imageName))
+			image = (Texture) resourceFileList.get(imageName); //이미지 경로 주입
+		else
+			Gdx.app.log("error", "imageName not found - character :" + String.valueOf(imageName));
+
+		return image;
 	}
 }

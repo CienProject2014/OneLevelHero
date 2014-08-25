@@ -1,54 +1,703 @@
 {
-	"Village-1":
+	"Worldmap":
 	[
 		{
-			"Type":"default",
-			"Monster":{},
-			"Event":{},
+			"key":"K",
+			"name":"카딜라",
+			"type":"village",
+			"position":"40-205",
+			"connection":[
+				{
+					"roadkey" : "Ke",
+					"destination" : "O",
+					"direction" : "45"
+				},
+				{
+					"roadkey" : "Ks",
+					"destination" : "MTO",
+					"direction" : "270"
+				}
+			]
 		},
-		
 		{
-			"Type":"default",
-			"Monster":{},
-			"Event":{},
+			"key":"O",
+			"name":"오베론",
+			"type":"village",
+			"position":"260-310",
+			"connection":[
+				{
+					"roadkey" : "Ow",
+					"destination" : "MTO",
+					"direction" : "180"
+				},
+				{
+					"roadkey" : "Oe",
+					"destination" : "OBC",
+					"direction" : "0"
+				},
+				{
+					"roadkey" : "Ke",
+					"destination" : "K",
+					"direction" : "90"
+				}
+			]
+		},	
+		{
+			"key":"W",
+			"name":"윈터폴",
+			"type":"village",
+			"position":"860-40",
+			"connection":[
+				{
+					"roadkey" : "Ws",
+					"destination" : "CV",
+					"direction" : "270"
+				}
+			]
 		},
-		
 		{
-			"Type":"haveRight",
-			"Monster":{},
-			"Event":{},
+			"key":"C",
+			"name":"콥웨브",
+			"type":"village",
+			"position":"810-250",
+			"connection":[
+				{
+					"roadkey" : "Cn",
+					"destination" : "CV",
+					"direction" : "90"
+				},
+				{
+					"roadkey" : "Cw",
+					"destination" : "OBC",
+					"direction" : "180"
+				},
+				{
+					"roadkey" : "Cs",
+					"destination" : "R",
+					"direction" : "270"
+				},
+				{
+					"roadkey" : "Ce",
+					"destination" : "B",
+					"direction" : "0"
+				},
+				{
+					"roadkey" : "Mw",
+					"destination" : "M",
+					"direction" : "45"
+				}
+			]
 		},
-		
 		{
-			"Type":"Final",
-			"Monster":{},
-			"Event":{},
-		}
-	]
-	"Village-2":
-	[
-		{
-			"Type":"haveBoth",
-			"Monster":{},
-			"Event":{},
+			"key":"R",
+			"name":"레드로즈",
+			"type":"village",
+			"position":"765-425",
+			"connection":[
+				{
+					"roadkey" : "Cs",
+					"destination" : "C",
+					"direction" : "90"
+				},
+				{
+					"roadkey" : "Rs",
+					"destination" : "ELR",
+					"direction" : "270"
+				}
+			]
 		},
-		
 		{
-			"Type":"haveRight",
-			"Monster":{},
-			"Event":{},
-		}
-		
+			"key":"P",
+			"name":"미라지 포트",
+			"type":"village",
+			"position":"1200-730",
+			"connection":[
+				{
+					"roadkey" : "Mw",
+					"destination" : "ELM",
+					"direction" : "180"
+				},
+				{
+					"roadkey" : "Ms",
+					"destination" : "SOM",
+					"direction" : "270"
+				}
+			]
+		},
 		{
-			"Type":"",
-			"Monster":{},
-			"Event":{},
-		}
-		
+			"key":"S",
+			"name":"사우스케이프",
+			"type":"village",
+			"position":"830-950",
+			"connection":[
+				{
+					"roadkey" : "Sn",
+					"destination" : "SOR",
+					"direction" : "90"
+				},
+				{
+					"roadkey" : "Se",
+					"destination" : "SOM",
+					"direction" : "0"
+				}
+			]
+		},
 		{
-			"Type":"Final",
-			"Monster":{},
-			"Event":{},
+			"key":"B",
+			"name":"블랙우드",
+			"type":"village",
+			"position":"1310-350",
+			"connection":[
+				{
+					"roadkey" : "Bn",
+					"destination" : "M",
+					"direction" : "125"
+				},
+				{
+					"roadkey" : "Be",
+					"destination" : "BF",
+					"direction" : "30"
+				},
+				{
+					"roadkey" : "Bs",
+					"destination" : "CD",
+					"direction" : "300"
+				},
+				{
+					"roadkey" : "Ce",
+					"destination" : "C",
+					"direction" : "160"
+				}
+			]
+		},
+		{
+			"key":"V",
+			"name":"바이칼 성",
+			"type":"village",
+			"position":"1685-80",
+			"connection":[
+				{
+					"roadkey" : "Ve",
+					"destination" : "GL",
+					"direction" : "0"
+				},
+				{
+					"roadkey" : "Vs",
+					"destination" : "BF",
+					"direction" : "270"
+				},
+				{
+					"roadkey" : "Vw",
+					"destination" : "MIV",
+					"direction" : "180"
+				}
+			]
+		},
+		{
+			"key":"H",
+			"name":"보니체아",
+			"type":"village",
+			"position":"1700-825",
+			"connection":[
+			]
+		},
+		{
+			"key":"M",
+			"name":"미들 릿지",
+			"type":"village",
+			"position":"1200-140",
+			"connection":[
+				{
+					"roadkey" : "Me",
+					"destination" : "MIV",
+					"direction" : "0"
+				},
+				{
+					"roadkey" : "Bn",
+					"destination" : "BF",
+					"direction" : "270"
+				},
+				{
+					"roadkey" : "Mw",
+					"destination" : "C",
+					"direction" : "180"
+				}
+			]
+		},
+		{
+			"key":"MT",
+			"name":"티타니아 산",
+			"type":"dungeon",
+			"position":"125-350",
+			"connection":[
+				{
+					"roadkey" : "Ts",
+					"destination" : "MTO",
+					"direction" : "270"
+				}
+			]
+		},
+		{
+			"key":"CV",
+			"name":"수정 협곡",
+			"type":"dungeon",
+			"position":"740-110",
+			"connection":[
+				{
+					"roadkey" : "Ws",
+					"destination" : "W",
+					"direction" : "90"
+				},
+				{
+					"roadkey" : "CVw",
+					"destination" : "OBC",
+					"direction" : "180"
+				},
+				{
+					"roadkey" : "Cn",
+					"destination" : "C",
+					"direction" : "270"
+				}
+			]
+		},
+		{
+			"key":"EF",
+			"name":"엘프의 숲",
+			"type":"dungeon",
+			"position":"800-650",
+			"connection":[
+				{
+					"roadkey" : "EFe",
+					"destination" : "ELM",
+					"direction" : "0"
+				},
+				{
+					"roadkey" : "EFw",
+					"destination" : "ELR",
+					"direction" : "180"
+				}
+			]
+		},
+		{
+			"key":"TM",
+			"name":"모에라에 신전",
+			"type":"dungeon",
+			"position":"1000-620",
+			"connection":[
+				{
+					"roadkey" : "TMs",
+					"destination" : "ELM",
+					"direction" : "270"
+				}
+			]
+		},
+		{
+			"key":"CT",
+			"name":"폭풍의 곶",
+			"type":"dungeon",
+			"position":"1150-1030",
+			"connection":[
+				{
+					"roadkey" : "CTn",
+					"destination" : "SOM",
+					"direction" : "90"
+				}
+			]
+		},
+		{
+			"key":"CD",
+			"name":"마왕성",
+			"type":"dungeon",
+			"position":"1380-475",
+			"connection":[
+				{
+					"roadkey" : "Bs",
+					"destination" : "BF",
+					"direction" : "90"
+				}
+			]
+		},
+		{
+			"key":"BF",
+			"name":"블랙우드 숲",
+			"type":"dungeon",
+			"position":"1510-250",
+			"connection":[
+				{
+					"roadkey" : "BFn",
+					"destination" : "MIV",
+					"direction" : "90"
+				},
+				{
+					"roadkey" : "Be",
+					"destination" : "B",
+					"direction" : "180"
+				},
+				{
+					"roadkey" : "Vs",
+					"destination" : "V",
+					"direction" : "45"
+				}
+			]
+		},
+		{
+			"key":"GL",
+			"name":"금빛 호수",
+			"type":"dungeon",
+			"position":"1800-180",
+			"connection":[
+				{
+					"roadkey" : "Ve",
+					"destination" : "V",
+					"direction" : "90"
+				}
+			]
+		},
+		{
+			"key":"KAT",
+			"name":"카딜라 - 티타니아산",
+			"type":"turningpoint",
+			"position":"140-440",
+			"connection":[
+				{
+					"roadkey" : "KATe",
+					"destination" : "MTO",
+					"direction" : "0"
+				},
+				{
+					"roadkey" : "Ks",
+					"destination" : "K",
+					"direction" : "90"
+				},
+				{
+					"roadkey" : "KATs",
+					"destination" : "SOR",
+					"direction" : "270"
+				}
+			]
+		},
+		{
+			"key":"MTO",
+			"name":"오베론 - 티타니아산",
+			"type":"turningpoint",
+			"position":"210-380",
+			"connection":[
+				{
+					"roadkey" : "Ts",
+					"destination" : "MT",
+					"direction" : "90"
+				},
+				{
+					"roadkey" : "Ow",
+					"destination" : "O",
+					"direction" : "0"
+				},
+				{
+					"roadkey" : "KATe",
+					"destination" : "KAT",
+					"direction" : "180"
+				}
+			]
+		},
+		{
+			"key":"SOR",
+			"name":"카딜라 - 사우스케이프",
+			"type":"turningpoint",
+			"position":"660-660",
+			"connection":[
+				{
+					"roadkey" : "KATs",
+					"destination" : "KAT",
+					"direction" : "90"
+				},
+				{
+					"roadkey" : "Sn",
+					"destination" : "S",
+					"direction" : "270"
+				},
+				{
+					"roadkey" : "SORe",
+					"destination" : "ELR",
+					"direction" : "45"
+				}
+			]
+		},
+		{
+			"key":"ELR",
+			"name":"엘프의 숲 - 레드로즈",
+			"type":"turningpoint",
+			"position":"720-610",
+			"connection":[
+				{
+					"roadkey" : "Rs",
+					"destination" : "R",
+					"direction" : "90"
+				},
+				{
+					"roadkey" : "SORe",
+					"destination" : "SOR",
+					"direction" : "180"
+				},
+				{
+					"roadkey" : "EFw",
+					"destination" : "EF",
+					"direction" : "315"
+				}
+			]
+		},
+		{
+			"key":"ELM",
+			"name":"모에라에 신전 - 엘프의 숲",
+			"type":"turningpoint",
+			"position":"970-710",
+			"connection":[
+				{
+					"roadkey" : "EFe",
+					"destination" : "EF",
+					"direction" : "180"
+				},
+				{
+					"roadkey" : "TMs",
+					"destination" : "TM",
+					"direction" : "90"
+				},
+				{
+					"roadkey" : "Mw",
+					"destination" : "P",
+					"direction" : "0"
+				}
+			]
+		},
+		{
+			"key":"SOM",
+			"name":"폭풍의 곶 - 사우스케이프",
+			"type":"turningpoint",
+			"position":"1020-910",
+			"connection":[
+				{
+					"roadkey" : "Se",
+					"destination" : "S",
+					"direction" : "180"
+				},
+				{
+					"roadkey" : "Ms",
+					"destination" : "P",
+					"direction" : "0"
+				},
+				{
+					"roadkey" : "CTn",
+					"destination" : "CT",
+					"direction" : "270"
+				}
+			]
+		},
+		{
+			"key":"OBC",
+			"name":"오베론 - 수정협곡",
+			"type":"turningpoint",
+			"position":"172-30",
+			"connection":[
+				{
+					"roadkey" : "Oe",
+					"destination" : "O",
+					"direction" : "180"
+				},
+				{
+					"roadkey" : "CVw",
+					"destination" : "CV",
+					"direction" : "45"
+				},
+				{
+					"roadkey" : "Cw",
+					"destination" : "C",
+					"direction" : "315"
+				}
+			]
+		},
+		{
+			"key":"MIV",
+			"name":"미들릿지 - 바이칼성",
+			"type":"turningpoint",
+			"position":"1020-910",
+			"connection":[
+				{
+					"roadkey" : "Me",
+					"destination" : "M",
+					"direction" : "180"
+				},
+				{
+					"roadkey" : "Vw",
+					"destination" : "V",
+					"direction" : "0"
+				},
+				{
+					"roadkey" : "BFn",
+					"destination" : "BF",
+					"direction" : "270"
+				}
+			]
 		}
-	]
+	],
+	"Road":{
+		"Ke":{
+			"name":"파인 강가",
+			"background":"null",
+			"length":"7"
+		},
+		"Ks":{
+			"name":"카딜라 성 근교",
+			"background":"null",
+			"length":"6"
+		},
+		"Ts":{
+			"name":"티타니아 산길",
+			"background":"null",
+			"length":"3"
+		},
+		"KATs":{
+			"name":"카딜라의 길",
+			"background":"null",
+			"length":"17"
+		},
+		"KATe":{
+			"name":"오베론 샛길",
+			"background":"null",
+			"length":"3"
+		},
+		"Ow":{
+			"name":"오베론 앞길",
+			"background":"null",
+			"length":"2"
+		},
+		"Oe":{
+			"name":"오베론 브릿지",
+			"background":"null",
+			"length":"2"
+		},
+		"Sn":{
+			"name":"카달라의 길",
+			"background":"null",
+			"length":"11"
+		},
+		"SORe":{
+			"name":"레드로즈행 길",
+			"background":"null",
+			"length":"4"
+		},
+		"Se":{
+			"name":"사우스케이프 근교",
+			"background":"null",
+			"length":"7"
+		},
+		"EFw":{
+			"name":"숲길",
+			"background":"null",
+			"length":"3"
+		},
+		"EFe":{
+			"name":"모에라에 방면 숲길",
+			"background":"null",
+			"length":"5"
+		},
+		"TMs":{
+			"name":"모에라에 신전 근교",
+			"background":"null",
+			"length":"3"
+		},
+		"Mw":{
+			"name":"미라지 포트 앞 숲길",
+			"background":"null",
+			"length":"6"
+		},
+		"CTn":{
+			"name":"백사장",
+			"background":"null",
+			"length":"3"
+		},
+		"Ms":{
+			"name":"미라지 포트 근교",
+			"background":"null",
+			"length":"9"
+		},
+		"Rs":{
+			"name":"레드로즈 남쪽 다리",
+			"background":"null",
+			"length":"2"
+		},
+		"Cs":{
+			"name":"레드로즈 북쪽 다리",
+			"background":"null",
+			"length":"2"
+		},
+		"Cw":{
+			"name":"루트 콥웨브",
+			"background":"null",
+			"length":"13"
+		},
+		"Cn":{
+			"name":"협곡 사잇길",
+			"background":"null",
+			"length":"3"
+		},
+		"Ce":{
+			"name":"오솔길",
+			"background":"null",
+			"length":"7"
+		},
+		"Mw":{
+			"name":"글린트 평야",
+			"background":"null",
+			"length":"10"
+		},
+		"Ws":{
+			"name":"윈터폴 근교",
+			"background":"null",
+			"length":"2"
+		},
+		"CVw":{
+			"name":"파인 평야",
+			"background":"null",
+			"length":"7"
+		},
+		"Me":{
+			"name":"산길",
+			"background":"null",
+			"length":"7"
+		},
+		"Bn":{
+			"name":"글린트 강가",
+			"background":"null",
+			"length":"5"
+		},
+		"Bs":{
+			"name":"블랙우드 근교",
+			"background":"null",
+			"length":"2"
+		},
+		"Be":{
+			"name":"블랙우드 숲길",
+			"background":"null",
+			"length":"4"
+		},
+		"BFn":{
+			"name":"던전 향하는 길",
+			"background":"null",
+			"length":"3"
+		},
+		"Vs":{
+			"name":"바이칼 성 남부",
+			"background":"null",
+			"length":"4"
+		},
+		"Vw":{
+			"name":"바이칼 성 서부",
+			"background":"null",
+			"length":"5"
+		},
+		"Ve":{
+			"name":"호수 산책로",
+			"background":"null",
+			"length":"2"
+		}
+	}
 }
