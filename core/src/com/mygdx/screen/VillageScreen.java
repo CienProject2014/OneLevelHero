@@ -18,8 +18,6 @@ import com.mygdx.inventory.InventoryActor;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.GameUi;
 import com.mygdx.stage.VillageStage;
-import com.mygdx.util.CurrentManager;
-import com.mygdx.util.LoadLauncher;
 
 public class VillageScreen implements Screen {
 
@@ -91,11 +89,6 @@ public class VillageScreen implements Screen {
 		cam.translate(100, 300);
 		cam.position.set(Assets.realWidth / 2, Assets.realHeight / 2, 0);
 		villageStage.getViewport().setCamera(cam);
-
-		Gdx.app.log("LoadLauncher - getAttack()", String.valueOf(LoadLauncher
-				.getInstance().unitLeft.status.getAttack()));
-		Gdx.app.log("CurrentManager - getVersion()",
-				String.valueOf(CurrentManager.getInstance().getVersion()));
 
 		// 화면 스크롤
 		villageStage.addListener(new InputListener() {
