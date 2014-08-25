@@ -28,6 +28,7 @@ public class VillageStage extends Stage {
 	int num_of_exit;
 	// ImageButton buildingbutton[];
 	Label buildingbutton[];
+	TextButton npcbutton[];
 	TextButton exitbutton;
 
 	public TextButton sift_button;
@@ -75,6 +76,8 @@ public class VillageStage extends Stage {
 
 		// buildingbutton = new ImageButton[num_of_building];
 		buildingbutton = new Label[num_of_building];
+		npcbutton = new TextButton[num_of_npc];
+
 		for (int i = 0; i < num_of_exit; i++) {
 			JSONObject exit = (JSONObject) exitArray.get(i);
 			exitbutton = new TextButton("Exit", Assets.skin);
@@ -113,7 +116,6 @@ public class VillageStage extends Stage {
 
 		for (int i = 0; i < num_of_building; i++) {
 			JSONObject building = (JSONObject) buildingArray.get(i);
-			System.out.println((String) building.get("name"));
 			/*
 			 * Texture buildingtex = new Texture( Gdx.files.internal((String)
 			 * building.get("imagesource"))); TextureRegionDrawable buildingimg
@@ -132,9 +134,6 @@ public class VillageStage extends Stage {
 
 			positionx = (int) (viewportwidth * (positionx / 1920.0));
 			positiony = (int) (viewportheight * (positiony / 1080.0));
-
-			System.out.println(positionx);
-			System.out.println(positiony);
 
 			buildingbutton[i].moveBy(positionx, positiony);
 
@@ -162,9 +161,25 @@ public class VillageStage extends Stage {
 
 					super.touchUp(event, x, y, pointer, button);
 				}
-			});
+			});// buildingbutton[i].set
+		}
 
-			// buildingbutton[i].set
+		for (int i = 0; i < num_of_npc; i++) {
+			JSONObject npc = (JSONObject) npcArray.get(i);
+
+			npcbutton[i] = new TextButton((String) npc.get("name"), Assets.skin);
+
+			int positionx = Integer.parseInt((String) npc.get("positionx"));
+			int positiony = Integer.parseInt((String) npc.get("positiony"));
+
+			positionx = (int) (viewportwidth * (positionx / 1920.0));
+			positiony = (int) (viewportheight * (positiony / 1080.0));
+
+			System.out.println(positionx);
+
+			npcbutton[i].moveBy(positionx, positiony);
+
+			addActor(npcbutton[i]);
 		}
 
 		// 전환 버튼 기능은 빌리지 스크린에서 구현

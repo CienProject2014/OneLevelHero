@@ -32,6 +32,8 @@ public class VillageScreen implements Screen {
 	InventoryActor inventoryActor;
 	int key = 2;
 
+	OrthographicCamera cam;
+
 	boolean state = true;
 
 	public VillageScreen(String villagename) {
@@ -55,6 +57,9 @@ public class VillageScreen implements Screen {
 
 		inventoryStage.act(delta);
 		inventoryStage.draw();
+
+		// villageStage.getCamera().translate(0, 2, 0);
+		villageStage.getCamera().update();
 
 	}
 
@@ -86,8 +91,8 @@ public class VillageScreen implements Screen {
 
 		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth,
 				Assets.realHeight / 2);
-		cam.translate(100, 300);
-		cam.position.set(Assets.realWidth / 2, Assets.realHeight / 2, 0);
+		// cam.translate(100, 300);
+		cam.position.set(Assets.realWidth / 2, Assets.realHeight / 7, 0);
 		villageStage.getViewport().setCamera(cam);
 
 		// 화면 스크롤
