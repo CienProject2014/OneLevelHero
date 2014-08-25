@@ -77,7 +77,7 @@ public class PrologueScreen implements Screen {
 
 	private void showEventScene() {
 		// 인스턴스 생성
-		chatScene = new ChatScene(table, batch, EventManager.getInstance().getEventCode(), stage);
+		chatScene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
 
 		chatScene.load();
 

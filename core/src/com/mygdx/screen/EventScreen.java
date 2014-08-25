@@ -59,8 +59,7 @@ public class EventScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				if (chatScene.isNext()) {
 					chatScene.showNextScene();
 				} else {
@@ -80,8 +79,7 @@ public class EventScreen implements Screen {
 
 	private void showEventScene() {
 		// 인스턴스 생성
-		chatScene = new ChatScene(table, batch, EventManager.getInstance()
-				.getEventCode(), stage);
+		chatScene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
 		// 파싱을 하기 위한 로드
 
 		chatScene.load();

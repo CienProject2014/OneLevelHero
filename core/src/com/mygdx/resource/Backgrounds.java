@@ -55,7 +55,7 @@ public class Backgrounds {
 		if (resourceFileList.containsKey(imageName))
 			image = (Texture) resourceFileList.get(imageName); //이미지 경로 주입
 		else
-			Gdx.app.log("error", "imageName not found - background :" + String.valueOf(imageName));
+			Gdx.app.log("error", "imageName not found - background : " + String.valueOf(imageName));
 
 		return image;
 	}

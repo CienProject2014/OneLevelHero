@@ -16,6 +16,7 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.resource.Assets;
 import com.mygdx.util.CurrentManager;
+import com.mygdx.util.EventManager;
 
 public class VillageStage extends Stage {
 
@@ -32,7 +33,6 @@ public class VillageStage extends Stage {
 	TextButton exitbutton;
 
 	private TextButton sift_button;
-	private TextButton parathButton;
 	public Texture background;
 
 	float viewportwidth;
@@ -163,20 +163,33 @@ public class VillageStage extends Stage {
 			positionx = (int) (viewportwidth * (positionx / 1920.0));
 			positiony = (int) (viewportheight * (positiony / 1080.0));
 
-			System.out.println(positionx);
+			Gdx.app.log("Position X : ", String.valueOf(positionx));
 
 			npcbutton[i].moveBy(positionx, positiony);
 
 			addActor(npcbutton[i]);
+			npcbutton[i].addListener(new InputListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+
+					return true;
+				}
+
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					EventManager.getInstance().setEventCode("Blackwood-parath-default");
+					new ScreenController(ScreenEnum.EVENT);
+
+					super.touchUp(event, x, y, pointer, button);
+				}
+			});
+
 		}
 
 		// 전환 버튼 기능은 빌리지 스크린에서 구현
 		sift_button = new TextButton("전환", Assets.skin);
-		parathButton = new TextButton("파라스", Assets.skin);
 		sift_button.center();
-		parathButton.top();
 		addActor(sift_button);
-		addActor(parathButton);
 
 	}
 

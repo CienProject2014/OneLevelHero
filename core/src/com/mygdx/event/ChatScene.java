@@ -14,7 +14,6 @@ import org.json.simple.JSONObject;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -46,7 +45,6 @@ public class ChatScene implements Scene {
 	private Backgrounds background;
 	private Texture backgroundTexture;
 	private SpriteBatch batch;
-	private Stage stage;
 	private String eventCode;
 
 	//파싱되는 키값
@@ -63,10 +61,9 @@ public class ChatScene implements Scene {
 	private double timeAcc = 0;
 	private float alpha = 0;
 
-	public ChatScene(Table table, SpriteBatch batch, String eventCode, Stage stage) {
+	public ChatScene(Table table, SpriteBatch batch, String eventCode) {
 		this.batch = batch;
 		this.eventCode = eventCode;
-		this.stage = stage;
 
 		//이벤트 코드 파싱
 		parseEventCode(eventCode);
