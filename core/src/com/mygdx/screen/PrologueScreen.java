@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -23,7 +22,6 @@ public class PrologueScreen implements Screen {
 	private Stage stage;
 	private SpriteBatch batch;
 	private ChatScene chatScene;
-	private Table table;
 
 	public PrologueScreen() {
 	}
@@ -46,10 +44,8 @@ public class PrologueScreen implements Screen {
 
 	@Override
 	public void show() {
-		stage = new Stage();
+		stage = new ChatScene(batch, EventManager.getInstance().getEventCode());
 		batch = new SpriteBatch();
-		table = new Table();
-		table.setFillParent(true);
 		showEventScene();
 
 		Gdx.input.setInputProcessor(stage);
@@ -60,12 +56,10 @@ public class PrologueScreen implements Screen {
 				if (chatScene.isNext()) {
 					chatScene.showNextScene();
 				} else {
-					// back to previous screen
-					// that envoke this event screen
-
 					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
 
-					EventManager.getInstance().setEventCode("Blackwood-parath-prologue");
+					EventManager.getInstance().setEventCode(
+							"Blackwood-parath-prologue");
 					EventManager.getInstance().setEventType(EventTypeEnum.CHAT);
 					new ScreenController(ScreenEnum.EVENT);
 
@@ -75,16 +69,12 @@ public class PrologueScreen implements Screen {
 			}
 		});
 
-		stage.addActor(table);
-
 	}
 
 	private void showEventScene() {
 		// 인스턴스 생성
-		chatScene = new ChatScene(table, batch, EventManager.getInstance()
+		chatScene = new ChatScene(batch, EventManager.getInstance()
 				.getEventCode());
-
-		chatScene.load();
 
 	}
 

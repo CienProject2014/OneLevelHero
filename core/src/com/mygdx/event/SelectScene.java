@@ -5,31 +5,22 @@ import org.json.simple.JSONObject;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
-import com.mygdx.resource.Characters;
 import com.mygdx.resource.JSONFile;
 import com.mygdx.resource.Scripts;
 
-public class SelectScene implements Scene {
+public class SelectScene extends Stage implements Scene {
 
 	// 신 진행 관련 변수
-
-	private int counter; // load한 Event(예 Prologue)의 scene 갯수	
-
-	// 스크립트, 케릭터 레이아웃 관리 테이블
-	private Table table;
+	private int counter; // load한 Event(예 Prologue)의 scene 갯수
 
 	// 스크립트
 	private Scripts scripts;
 	private Label script;
-
-	// 케릭터
-	private Characters character;
-	private Image characterImage;
 
 	// 배경
 	private Backgrounds background;
@@ -37,78 +28,77 @@ public class SelectScene implements Scene {
 	private SpriteBatch batch;
 	private String eventCode;
 
-	//파싱되는 키값
+	// 파싱되는 키값
 	private String keyOfVillage;
 	private String keyOfNPC;
 	private String keyOfSerialNumber;
 	int keyOfSceneNumber;
 
-	//JsonFile
+	// JsonFile
 	private JSONObject jsonFile;
 	private JSONArray jsonArray;
 
-	//EventTrigger
+	// Button
+	private TextButtonStyle[] chatStyle;
+
+	// EventTrigger
 	EventTrigger eventTrigger;
 
 	public static final double TIME_TO_FADE = 60;
 	private double timeAcc = 0;
 	private float alpha = 0;
 
-	public SelectScene(Table table, SpriteBatch batch, String eventCode) {
-		this.batch = batch;
+	public SelectScene(SpriteBatch batch, String eventCode) {
 		this.eventCode = eventCode;
 		this.eventTrigger = EventTrigger.getInstance();
-
-		//이벤트 코드 파싱
+		this.batch = batch;
+		// 이벤트 코드 파싱
 		parseEventCode(eventCode);
 
-		//villageName을 받아와 동적으로 jsonFile할당 (0번 = script, 1번 = character, 2번 = background)
+		// villageName을 받아와 동적으로 jsonFile할당 (0번 = script, 1번 = character, 2번 =
+		// background)
 		jsonFile = JSONFile.getJsonFile(keyOfVillage);
 		scripts = new Scripts(jsonFile);
-		character = new Characters(jsonFile);
 		background = new Backgrounds(jsonFile);
-		this.table = table;
 
-		//sceneNumber 초기화
+		// sceneNumber 초기화
 		clearSceneNumber();
 
 		// scene 갯수를 받아옴. 배열값과의 비교를 위해 1을 빼준다.
 		counter = getTotalSceneNumber(jsonArray) - 1;
+		load();
 	}
 
 	// (1) eventCode는 Prologue-scene-1과 같은 형식(Prologue와 숫자 바뀜)
 	public void load() {
-
-		clear();
 		// Background json 불러옴
-		backgroundTexture = background.getBackground(eventCode, keyOfSceneNumber);
+		backgroundTexture = background.getBackground(eventCode,
+				keyOfSceneNumber);
 
 		// 스크립트 파싱
 
-		script = new Label(scripts.getScript(eventCode, keyOfSceneNumber), Assets.skin);
+		script = new Label(scripts.getScript(eventCode, keyOfSceneNumber),
+				Assets.skin);
 
-		// 케릭터 불러옴
-		characterImage = new Image(character.getImage(eventCode, keyOfSceneNumber));
-
-		// size설정
 		script.setFontScale(Assets.realWidth / 1280);
 		script.setWrap(true);
-		script.setWidth(Assets.realWidth * 0.8f);
+		// size설정
+		script.setSize(Assets.realWidth * 0.781f, Assets.realHeight * 0.185f);
 
-		characterImage.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
-		characterImage.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
+		// 위치 설정
+		script.setPosition(Assets.realWidth * 0.109375f,
+				Assets.realHeight * 0.185f);
 
 		// 뿌려주기
-		table.bottom().left(); // table 전체를 화면 아래 쪽으로
-		table.add(characterImage);
-		table.add(script).width(script.getWidth());
+		this.addActor(script);
 	}
 
-	// SelectScene에서는 6개의 이벤트 버튼을 뿌려준다.
-	public void showEventButton() {
-
-	}
-
+	/*
+	 * public Stage makeButtonStage() { showEventButton(); chatButton[0]
+	 * .setSize(Assets.realWidth * 0.5f, Assets.realHeight * 0.5f);
+	 * chatButton[0].setPosition(Assets.realWidth * 0.109375f, Assets.realHeight
+	 * * 0.74f); return buttonStage; }
+	 */
 	// (2) 신(scene)을 넘기기 위한 함수, load() 이후 실행된다.
 	public void showNextScene() {
 		// 다음 신으로 가기위한 세팅
@@ -143,7 +133,8 @@ public class SelectScene implements Scene {
 	}
 
 	private int getTotalSceneNumber(JSONArray jsonArray) {
-		jsonArray = (JSONArray) jsonFile.get(keyOfNPC + "_" + keyOfSerialNumber);
+		jsonArray = (JSONArray) jsonFile
+				.get(keyOfNPC + "_" + keyOfSerialNumber);
 		int counter = jsonArray.size();
 		return counter;
 	}
@@ -163,6 +154,5 @@ public class SelectScene implements Scene {
 	}
 
 	public void clear() {
-		table.clear();
 	}
 }

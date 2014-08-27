@@ -1,0 +1,47 @@
+
+chatbutton.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+chatbutton1
+  rotate: false
+  xy: 1, 607
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+chatbutton2
+  rotate: false
+  xy: 1, 405
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+chatbutton3
+  rotate: false
+  xy: 403, 607
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+chatbutton4
+  rotate: false
+  xy: 1, 203
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+chatbutton5
+  rotate: false
+  xy: 403, 405
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+chatbutton6
+  rotate: false
+  xy: 1, 1
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1

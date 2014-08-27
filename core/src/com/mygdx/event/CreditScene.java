@@ -54,19 +54,19 @@ public class CreditScene implements Scene {
 	private double timeAcc = 0;
 	private float alpha = 0;
 
-	public CreditScene(Table table, SpriteBatch batch, String eventCode) {
+	public CreditScene(Stage stage, SpriteBatch batch, String eventCode) {
 		this.batch = batch;
 		jsonFile = Assets.credit_list;
 		scripts = new Scripts(jsonFile);
 		character = new Characters(jsonFile);
 		background = new Backgrounds(jsonFile);
-		this.table = table;
+		this.stage = stage;
 		this.eventCode = eventCode;
 
-		//이벤트 코드 파싱
+		// 이벤트 코드 파싱
 		parseEventCode(eventCode);
 
-		//sceneNumber 초기화
+		// sceneNumber 초기화
 		clearSceneNumber();
 
 		// scene 갯수를 받아옴. 배열값과의 비교를 위해 1을 빼준다.
@@ -77,7 +77,8 @@ public class CreditScene implements Scene {
 	public void load() {
 		clear();
 		// Background json 불러옴
-		backgroundTexture = background.getBackground(eventCode, keyOfSceneNumber);
+		backgroundTexture = background.getBackground(eventCode,
+				keyOfSceneNumber);
 
 		// 스크립트 파싱
 		text = scripts.getScript(eventCode, keyOfSceneNumber);
@@ -91,13 +92,16 @@ public class CreditScene implements Scene {
 		script.setFontScale(Assets.realWidth / 1280);
 		script.setWrap(true);
 		script.setWidth(Assets.realWidth * 0.8f);
-		characterImage.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
-		characterImage.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
+		characterImage.setSize(Assets.realWidth * 0.2f,
+				Assets.realHeight * 0.2f);
+		characterImage.setPosition(0.2f * Assets.realWidth,
+				0.7f * Assets.realHeight);
 
 		// 이미지 뿌려주기
 		table.bottom().left(); // table 전체를 화면 아래 쪽으로
 		table.add(characterImage);
 		table.add(script).width(script.getWidth());
+
 	}
 
 	// (2) 신(scene)을 넘기기 위한 함수, load() 이후 실행된다.
@@ -134,7 +138,8 @@ public class CreditScene implements Scene {
 	}
 
 	private int getNumberOfScene(JSONArray jsonArray) {
-		jsonArray = (JSONArray) jsonFile.get(keyOfNPC + "_" + keyOfSerialNumber);
+		jsonArray = (JSONArray) jsonFile
+				.get(keyOfNPC + "_" + keyOfSerialNumber);
 		int counter = jsonArray.size();
 		return counter;
 	}

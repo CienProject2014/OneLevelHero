@@ -16,7 +16,6 @@ import com.mygdx.event.ChatScene;
 import com.mygdx.event.CreditScene;
 import com.mygdx.event.Scene;
 import com.mygdx.event.SelectScene;
-import com.mygdx.resource.Assets;
 import com.mygdx.util.EventManager;
 
 public class CreditScreen implements Screen {
@@ -57,16 +56,14 @@ public class CreditScreen implements Screen {
 		batch = new SpriteBatch();
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		table = new Table(Assets.skin);
-		table.setFillParent(true);
-		table.row();
 
 		showEventScene();
 
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				if (scene.isNext()) {
 					scene.showNextScene();
 				} else {
@@ -80,8 +77,6 @@ public class CreditScreen implements Screen {
 				return true;
 			}
 		});
-
-		stage.addActor(table); // stage에 table액터 추가하기
 	}
 
 	private void showEventScene() {
@@ -89,11 +84,14 @@ public class CreditScreen implements Screen {
 		EventManager.getInstance().setEventCode("Credit-scene-1");
 		EventManager.getInstance().setEventType(EventTypeEnum.CREDIT);
 		if (EventManager.getInstance().getEventType() == EventTypeEnum.CHAT)
-			scene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
+			scene = new ChatScene(batch, EventManager.getInstance()
+					.getEventCode());
 		else if (EventManager.getInstance().getEventType() == EventTypeEnum.SELECT)
-			scene = new SelectScene(table, batch, EventManager.getInstance().getEventCode());
+			scene = new SelectScene(batch, EventManager.getInstance()
+					.getEventCode());
 		else if (EventManager.getInstance().getEventType() == EventTypeEnum.CREDIT)
-			scene = new CreditScene(table, batch, EventManager.getInstance().getEventCode());
+			scene = new CreditScene(stage, batch, EventManager.getInstance()
+					.getEventCode());
 		else
 			Gdx.app.log("Error", "Scene 주입 에러");
 		// 파싱을 하기 위한 로드
