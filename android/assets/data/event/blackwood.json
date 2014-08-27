@@ -1,31 +1,103 @@
 {
-  "parath_prologue": [
-    {
-      "script": "(이벤트 시작!)파라스 : 용사님.. 일어나세요..!",
-      "character": "parath_happy",
-      "background": "scene1"
-    },
-    {
-      "script": "용사 : 으...으음..?",
-      "character": "yongsa_sad",
-      "background": "scene2"
-    },
-    {
-      "script": "파라스 : 일어나 2새끼야",
-      "character": "parath_angry",
-      "background": "scene3"
-    },
-    {
-      "script": "용사 : 네...",
-      "character": "yongsa_happy",
-      "background": "scene4"
-    }
-  ],
-  "parath_default": [
+  "parath_0": [
     {
       "script": "오오.. 일어나신건가요 용사님? 우리 이제 여행을 떠나볼까요?",
       "character": "nothing_image",
       "background": "parath_background"
+    }
+  ],
+  "waiji_0": [
+    {
+      "script": [
+        "블랙우드 마을에 온 것을 환영하네",
+        "뭔가 할 말이 있는가?",
+        "내 손녀 아레이치가 귀엽지? 나도 알고 있다네.",
+        "내가 블랙우드 촌장 와이지일세. 무슨일인가"
+      ],
+      "character": "nothing_image",
+      "background": "waiji_background"
+    }
+  ],
+  "waiji_1": [
+    {
+      "script": "그래, 기운은 차렸는가?",
+      "character": "waiji_happy",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "네. 면목이 없습니다. 죄송할 따름입니다.",
+      "character": "yongsa_sad",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "용사님은 최선을 다한거잖아요. 너무 상심하지 마세요.",
+      "character": "parath_happy",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "…….........................",
+      "character": "yongsa_sad",
+      "background": "blackwood_center"
+    },
+    {
+      "script": " 저주때문에 침울해 하는것 같구만..",
+      "character": "waiji_happy",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "너무 걱정하지 말게나. 콥웨브의 바르워스님이 소식을 듣고 자네를 소환했다네.",
+      "character": "waiji_happy",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "정말입니까? 제 저주를 해결할 방법이 있는 건가요?",
+      "character": "yongsa_angry",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "아마도 그렇지 않을까? 괜히 부르지는 않을테니 말일세.",
+      "character": "waiji_happy",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "감사합니다. 지금 바로 콥웨브로 떠나겠습니다.",
+      "character": "yongsa_happy",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "저어… 용사님… 저도 여행에 데려가주세요!",
+      "character": "parath_happy",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "응? 하지만 넌 아직…",
+      "character": "yongsa_sad",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "어머니의 허락은 받았어요. 절대 발목을 잡지는 않을게요! 그리고 저주에 걸린 용사님보다는 더 도움이 되지 않을까요?",
+      "character": "parath_happy",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "뭐임마? 이녀석이!",
+      "character": "yongsa_angry",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "허허… 데려가는게 어떻겠나. 그아이도 이제 어엿한 청년이고 분명 쓸모가 있을걸세.",
+      "character": "waiji_happy",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "하아, 알겠습니다. 파라스, 내 짐까지 챙겨 와라. 콥웨브로 떠난다.",
+      "character": "yongsa_sick",
+      "background": "blackwood_center"
+    },
+    {
+      "script": "야호! 꼭 기다리고 있으셔야돼요!",
+      "character": "parath_happy",
+      "background": "blackwood_center"
     }
   ]
 }

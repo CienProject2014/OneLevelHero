@@ -4,7 +4,7 @@
  * Scene클래스는 GameScreen에서 벗어나 EventScreen에서 대화(이벤트)할 때 사용함. 
  * 사용방법: 
  * 1. Screen에서 setStage로 stage변수 전달.
- * 2. load("Prologue-scene-1")처럼 문자열 전달. 1은 첫번째를 의미
+ * 2. load("Pg-scene-1")처럼 문자열 전달. 0은 기본대사, 1은 첫번째이벤트를 의미
  * 3. start()로 첫 장면 호출
  * 4. 터치 혹은 이벤트 발생시 next()로 다음 신
  */
@@ -81,7 +81,7 @@ public class ChatScene implements Scene {
 		counter = getTotalSceneNumber(jsonArray) - 1;
 	}
 
-	// (1) eventCode는 Prologue-scene-1과 같은 형식(Prologue와 숫자 바뀜)
+	// (1) eventCode는 Pg-scene-1과 같은 형식(Prologue와 숫자 바뀜)
 	public void load() {
 
 		clear();

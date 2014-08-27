@@ -63,7 +63,7 @@ public class PrologueScreen implements Screen {
 					// that envoke this event screen
 
 					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
-					EventManager.getInstance().setEventCode("Blackwood-parath-prologue");
+					EventManager.getInstance().setEventCode("P-scene-2");
 					EventManager.getInstance().setEventType(EventTypeEnum.CHAT);
 					new ScreenController(ScreenEnum.EVENT);
 

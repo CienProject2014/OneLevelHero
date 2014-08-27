@@ -9,7 +9,7 @@ public class EventManager {
 	private static EventManager instance;
 
 	public EventManager() {
-		setEventCode("Prologue-scene-1");
+		setEventCode("Prg-scene-1");
 		setEventType(EventTypeEnum.CHAT);
 	}
 

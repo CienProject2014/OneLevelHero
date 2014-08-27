@@ -178,7 +178,7 @@ public class VillageStage extends Stage {
 
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					EventManager.getInstance().setEventCode("Blackwood-parath-default");
+					EventManager.getInstance().setEventCode("B-waiji-0");
 					EventManager.getInstance().setEventType(EventTypeEnum.SELECT);
 					NPC parathNPC = new NPC();
 					EventTrigger.getInstance().setNpcEvent(parathNPC);

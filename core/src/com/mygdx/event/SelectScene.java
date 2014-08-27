@@ -76,7 +76,7 @@ public class SelectScene implements Scene {
 		counter = getTotalSceneNumber(jsonArray) - 1;
 	}
 
-	// (1) eventCode는 Prologue-scene-1과 같은 형식(Prologue와 숫자 바뀜)
+	// (1) eventCode는 Pg-scene-1과 같은 형식(Prologue와 숫자 바뀜)
 	public void load() {
 
 		clear();

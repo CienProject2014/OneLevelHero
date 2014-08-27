@@ -20,5 +20,27 @@
       "character": "rabbit3",
       "background": "scene4"
     }
+  ],
+  "scene_2": [
+    {
+      "script": "(이벤트 시작!)파라스 : 용사님.. 일어나세요..!",
+      "character": "parath_happy",
+      "background": "scene1"
+    },
+    {
+      "script": "용사 : 으...으음..?",
+      "character": "yongsa_sad",
+      "background": "scene2"
+    },
+    {
+      "script": "파라스 : 일어나 2새끼야",
+      "character": "parath_angry",
+      "background": "scene3"
+    },
+    {
+      "script": "용사 : 네...",
+      "character": "yongsa_happy",
+      "background": "scene4"
+    }
   ]
 }
