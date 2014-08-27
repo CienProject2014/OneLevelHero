@@ -48,6 +48,11 @@ public class EventManager {
 		this.eventCode = eventCode;
 	}
 
+	public void setEventCode(String eventCode, EventTypeEnum eventType) {
+		this.eventCode = eventCode;
+		this.eventType = eventType;
+	}
+
 	public String getEventVillageName() {
 		String villageName[] = eventCode.split("-");
 		return villageName[0];

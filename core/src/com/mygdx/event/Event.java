@@ -1,6 +1,6 @@
 package com.mygdx.event;
 
-public class NPCEvent {
+public class Event {
 	private String eventType;
 	private String villageName;
 	private String npcName;

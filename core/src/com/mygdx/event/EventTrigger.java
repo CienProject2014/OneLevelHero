@@ -39,7 +39,7 @@ public class EventTrigger {
 	public NPC setNpcEvent(NPC npc) {
 		json = new Json();
 		Object jsonObject = Assets.parath;
-		npc.setEvent(json.fromJson(NPCEvent.class, json.toJson(jsonObject)));
+		npc.setEvent(json.fromJson(Event.class, json.toJson(jsonObject)));
 		return npc;
 	}
 }

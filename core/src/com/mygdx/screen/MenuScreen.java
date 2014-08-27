@@ -53,7 +53,7 @@ public class MenuScreen implements Screen {
 		setMusic(Assets.mainMusic);
 		getMusic().setVolume(Assets.musicVolume);
 		SoundManager.getInstance().playMusic(getMusic());
-		Texture texture = new Texture(Gdx.files.internal("texture/MainMenu_Background.png"));
+		Texture texture = Assets.main_background;
 		Image background = new Image(texture);
 
 		stage = new Stage();

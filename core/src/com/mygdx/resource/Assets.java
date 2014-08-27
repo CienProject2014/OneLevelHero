@@ -25,7 +25,7 @@ public class Assets {
 
 	//NPC얼굴
 	public static Texture parath_background, prog_team1, plan_team1, graphic_team1, scene1, scene2, scene3, scene4, rabbit1, rabbit2, rabbit3, yongsa_happy, yongsa_sad,
-			parath_angry, yongsa_angry, parath_happy, waiji_happy, yongsa_sick, nothing_image, waiji_background, blackwood_center;
+			parath_angry, yongsa_angry, parath_happy, waiji_happy, yongsa_sick, nothing_image, waiji_background, blackwood_center, main_background;
 
 	//JSON
 	public static JSONObject worldmap_json, village_json, status_new_left, bag_json, credit_list, blackwood_json, prologue_json, blackwood_character, blackwood_background, waiji,
@@ -135,6 +135,7 @@ public class Assets {
 		parath_background = new Texture(Gdx.files.internal("texture/npc/parath_background.png"));
 		waiji_background = new Texture(Gdx.files.internal("texture/npc/waiji_background.png"));
 		blackwood_center = new Texture(Gdx.files.internal("texture/blackwood/blackwood_center.png"));
+		main_background = new Texture(Gdx.files.internal("texture/MainMenu_Background.png"));
 
 		//HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
 		resourceFileList.put("yongsa_happy", yongsa_happy);
@@ -158,6 +159,7 @@ public class Assets {
 		resourceFileList.put("blackwood_center", blackwood_center);
 		resourceFileList.put("yongsa_sick", yongsa_sick);
 		resourceFileList.put("yongsa_angry", yongsa_angry);
+		resourceFileList.put("main_background", main_background);
 	}
 
 	private static void fontLoad() {

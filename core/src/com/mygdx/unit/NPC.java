@@ -1,15 +1,15 @@
 package com.mygdx.unit;
 
-import com.mygdx.event.NPCEvent;
+import com.mygdx.event.Event;
 
 public class NPC {
-	private NPCEvent npcEvent;
+	private Event npcEvent;
 
-	public NPCEvent getEvent() {
+	public Event getEvent() {
 		return npcEvent;
 	}
 
-	public void setEvent(NPCEvent event) {
+	public void setEvent(Event event) {
 		this.npcEvent = event;
 	}
 
