@@ -4,20 +4,19 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.EventTrigger;
 import com.mygdx.resource.Assets;
-import com.mygdx.unit.NPC;
 import com.mygdx.util.CurrentManager;
 import com.mygdx.util.EventManager;
 
@@ -31,15 +30,52 @@ public class VillageStage extends Stage {
 	int num_of_npc;
 	int num_of_exit;
 	// ImageButton buildingbutton[];
-	Label buildingbutton[];
+	Building buildingbutton[];
 	TextButton npcbutton[];
 	TextButton exitbutton;
 
-	private TextButton sift_button;
-	public Texture background;
+	public TextButton sift_button;
+	private TextureAtlas villageAtlas;
 
 	float viewportwidth;
 	float viewportheight;
+
+	private Camera camera;
+	private String currentState = "down";
+
+	private class Building extends Image {
+
+		private String name;
+		private String buildingkey;
+		private float posX;
+		private float posY;
+		private float width;
+		private float height;
+
+		public Building() {
+		}
+
+		public Building(TextureRegion region) {
+			super(region);
+		}
+
+		public Building(JSONObject buildinginfo) {
+
+			super(villageAtlas.findRegion((String) buildinginfo.get("key")));
+
+			name = (String) buildinginfo.get("name");
+			buildingkey = (String) buildinginfo.get("key");
+
+			posX = viewportwidth * Float.parseFloat((String) buildinginfo.get("positionX"));
+			posY = viewportheight * Float.parseFloat((String) buildinginfo.get("positionY"));
+
+			width = viewportwidth * Float.parseFloat((String) buildinginfo.get("width"));
+			height = viewportheight * Float.parseFloat((String) buildinginfo.get("height"));
+
+			setBounds(posX - width / 2, posY - height / 2, width, height);
+
+		}
+	}
 
 	public VillageStage() {
 		super();
@@ -54,19 +90,35 @@ public class VillageStage extends Stage {
 	// 마을 정보에 맞게 스테이지 형성
 	private void village_setter() {
 
-		viewportwidth = this.getWidth();
-		viewportheight = this.getHeight() * 2;
+		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth, Assets.realHeight);
+		// cam.translate(100, 300);
+		cam.position.set(Assets.realWidth / 2, Assets.realHeight * 0.25f, 0);
+		getViewport().setCamera(cam);
 
-		background = new Texture(Gdx.files.internal("village/blackwood" + village_state + ".png"));
+		camera = getViewport().getCamera();
+
+		// 마을 제이슨 완성 시 이걸로
+		JSONObject villageData = (JSONObject) Assets.village_json.get(CurrentManager.getInstance().getCurrentPosition());
+		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
+		villageData = (JSONObject) Assets.village_json.get("B");
+
+		float ratio = Float.parseFloat((String) villageData.get("ratio"));
+
+		viewportwidth = Assets.realWidth;
+		viewportheight = viewportwidth * ratio;
+
+		villageAtlas = new TextureAtlas(Gdx.files.internal("texture/village/" + (String) villageData.get("imagesource")));
+
+		TextureRegion background = villageAtlas.findRegion((String) villageData.get("background"));
+		TextureRegion frontground = villageAtlas.findRegion((String) villageData.get("frontground"));
 
 		Image backgroundImage = new Image(background);
 		backgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
 		addActor(backgroundImage);
 
-		JSONObject villageData = (JSONObject) Assets.village_json.get(CurrentManager.getInstance().getCurrentPosition());
-
-		// 일단은 이렇게 한닷
-		villageData = (JSONObject) Assets.village_json.get("B");
+		Image frontgroundImage = new Image(frontground);
+		frontgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
+		addActor(frontgroundImage);
 
 		JSONArray buildingArray = (JSONArray) villageData.get("building");
 		JSONArray npcArray = (JSONArray) villageData.get("npc");
@@ -76,123 +128,83 @@ public class VillageStage extends Stage {
 		num_of_npc = npcArray.size();
 		num_of_exit = exitArray.size();
 
-		// buildingbutton = new ImageButton[num_of_building];
-		buildingbutton = new Label[num_of_building];
+		buildingbutton = new Building[num_of_building];
 		npcbutton = new TextButton[num_of_npc];
 
-		for (int i = 0; i < num_of_exit; i++) {
-			JSONObject exit = (JSONObject) exitArray.get(i);
-			exitbutton = new TextButton("Exit", Assets.skin);
-
-			int positionx = Integer.parseInt((String) exit.get("positionx"));
-			int positiony = Integer.parseInt((String) exit.get("positiony"));
-
-			positionx = (int) (viewportwidth * (positionx / 1920.0));
-			positiony = (int) (viewportheight * (positiony / 1080.0));
-
-			exitbutton.moveBy(positionx, positiony);
-
-			addActor(exitbutton);
-
-			exitbutton.addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					Gdx.app.log("info", "Down");
-					return true;
-				}
-
-				@Override
-				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					Gdx.app.log("info", "Up");
-
-					new ScreenController(ScreenEnum.WORLD);
-
-					super.touchUp(event, x, y, pointer, button);
-				}
-			});
-		}
-
 		for (int i = 0; i < num_of_building; i++) {
-			JSONObject building = (JSONObject) buildingArray.get(i);
-			/*
-			 * Texture buildingtex = new Texture( Gdx.files.internal((String)
-			 * building.get("imagesource"))); TextureRegionDrawable buildingimg
-			 * = new TextureRegionDrawable( new TextureRegion(buildingtex));
-			 * 
-			 * buildingbutton[i] = new ImageButton(buildingimg);
-			 */
+			JSONObject buildinginfo = (JSONObject) buildingArray.get(i);
 
-			buildingbutton[i] = new Label((String) building.get("name"), Assets.skin);
-
-			int positionx = Integer.parseInt((String) building.get("positionx"));
-			int positiony = Integer.parseInt((String) building.get("positiony"));
-
-			positionx = (int) (viewportwidth * (positionx / 1920.0));
-			positiony = (int) (viewportheight * (positiony / 1080.0));
-
-			buildingbutton[i].moveBy(positionx, positiony);
-
-			addActor(buildingbutton[i]);
+			buildingbutton[i] = new Building(buildinginfo);
 
 			buildingbutton[i].addListener(new InputListener() {
+
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					Gdx.app.log("info", "Up");
-					event.getListenerActor().setColor(Color.RED);
+					// TODO Auto-generated method stub
 					return true;
 				}
 
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					Gdx.app.log("info", "Down");
-					event.getListenerActor().setColor(Color.WHITE);
 
-					// 기능 클래스 연결
-					// game.setScreen(new MenuScreen(game));
-
-					super.touchUp(event, x, y, pointer, button);
+					System.out.println(((Building) event.getListenerActor()).name);
 				}
-			});// buildingbutton[i].set
+			});
+			addActor(buildingbutton[i]);
 		}
 
 		for (int i = 0; i < num_of_npc; i++) {
-			JSONObject npc = (JSONObject) npcArray.get(i);
+			JSONObject npcinfo = (JSONObject) npcArray.get(i);
 
-			npcbutton[i] = new TextButton((String) npc.get("name"), Assets.skin);
+			npcbutton[i] = new TextButton((String) npcinfo.get("name"), Assets.skin);
 
-			int positionx = Integer.parseInt((String) npc.get("positionx"));
-			int positiony = Integer.parseInt((String) npc.get("positiony"));
+			float posX = viewportwidth * Float.parseFloat((String) npcinfo.get("positionX"));
+			float posY = viewportheight * Float.parseFloat((String) npcinfo.get("positionY"));
 
-			positionx = (int) (viewportwidth * (positionx / 1920.0));
-			positiony = (int) (viewportheight * (positiony / 1080.0));
+			npcbutton[i].moveBy(posX, posY);
 
-			npcbutton[i].moveBy(positionx, positiony);
+			npcbutton[0].addListener(new InputListener() {
 
-			addActor(npcbutton[i]);
-			npcbutton[i].addListener(new InputListener() {
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
+					// TODO Auto-generated method stub
 					return true;
 				}
 
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					EventManager.getInstance().setEventCode("B-waiji-0");
-					EventManager.getInstance().setEventType(EventTypeEnum.SELECT);
-					NPC parathNPC = new NPC();
-					EventTrigger.getInstance().setNpcEvent(parathNPC);
+					EventManager.getInstance().setEventCode("B-waiji-0", EventTypeEnum.CHAT);
 					new ScreenController(ScreenEnum.EVENT);
-
-					super.touchUp(event, x, y, pointer, button);
 				}
 			});
-
+			addActor(npcbutton[i]);
 		}
 
 		// 전환 버튼 기능은 빌리지 스크린에서 구현
 		sift_button = new TextButton("전환", Assets.skin);
 		sift_button.center();
+
+		sift_button.addListener(new InputListener() {
+
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				// TODO Auto-generated method stub
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+
+				if (currentState.equals("down")) {
+					currentState = "moveup";
+				} else if (currentState.equals("up")) {
+					currentState = "movedown";
+					System.out.println(currentState);
+				}
+
+				event.getListenerActor().setVisible(false);
+			}
+		});
 		addActor(sift_button);
 
 	}
@@ -201,5 +213,39 @@ public class VillageStage extends Stage {
 		String[] temp = key.split(delimiter);
 		village_name = temp[0];
 		village_state = Integer.parseInt(temp[1]);
+	}
+
+	@Override
+	public void draw() {
+		moveCam();
+		super.draw();
+	}
+
+	private void moveCam() {
+		int movingSpeed = 6;
+		checkBound();
+		if (currentState.equals("moveup")) {
+			camera.translate(0, movingSpeed, 0);
+			sift_button.moveBy(0, movingSpeed);
+
+		} else if (currentState.equals("movedown")) {
+			camera.translate(0, -movingSpeed, 0);
+			sift_button.moveBy(0, -movingSpeed);
+		} else {
+
+		}
+	}
+
+	private void checkBound() {
+		if (camera.position.y > (viewportheight - Assets.realHeight / 2)) {
+			camera.position.y = viewportheight - Assets.realHeight / 2;
+			currentState = "up";
+			sift_button.setVisible(true);
+
+		} else if (camera.position.y < Assets.realHeight * 0.25f) {
+			camera.position.y = Assets.realHeight * 0.25f;
+			currentState = "down";
+			sift_button.setVisible(true);
+		}
 	}
 }

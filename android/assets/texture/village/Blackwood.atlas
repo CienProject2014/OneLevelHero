@@ -1,0 +1,61 @@
+
+Blackwood.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background
+  rotate: false
+  xy: 1, 1383
+  size: 2880, 2250
+  orig: 2880, 2250
+  offset: 0, 0
+  index: -1
+tree
+  rotate: false
+  xy: 2883, 1383
+  size: 2880, 2250
+  orig: 2880, 2250
+  offset: 0, 0
+  index: -1
+inn
+  rotate: false
+  xy: 1, 551
+  size: 733, 830
+  orig: 733, 830
+  offset: 0, 0
+  index: -1
+waiji
+  rotate: false
+  xy: 5765, 2970
+  size: 676, 663
+  orig: 676, 663
+  offset: 0, 0
+  index: -1
+portal
+  rotate: false
+  xy: 736, 1034
+  size: 739, 347
+  orig: 739, 347
+  offset: 0, 0
+  index: -1
+moerae
+  rotate: false
+  xy: 1, 1
+  size: 456, 548
+  orig: 456, 548
+  offset: 0, 0
+  index: -1
+generalstore
+  rotate: false
+  xy: 5765, 2653
+  size: 485, 315
+  orig: 485, 315
+  offset: 0, 0
+  index: -1
+wood
+  rotate: false
+  xy: 6443, 3267
+  size: 335, 366
+  orig: 335, 366
+  offset: 0, 0
+  index: -1

@@ -1,35 +1,77 @@
 {
   "B": {
     "name": "블랙우드",
+    "imagesource": "Blackwood.atlas"
+    "background": "background",
+    "frontground": "tree",
+    "ratio": "0.782",
     "building": [
       {
         "name": "블랙우드여관",
-        "imagesource": "village/chocho.png",
-        "function": "초코퐁듀마시쪙",
-        "positionx": "600",
-        "positiony": "600"
+        "key": "inn",
+        "positionX": "0.3424",
+        "positionY": "0.5388",
+        "width": "0.3152",
+        "height": "0.3643"
       },
       {
         "name": "촌장의 집",
-        "imagesource": "village/factory.png",
-        "function": "꿈을 만들자",
-        "positionx": "1400",
-        "positiony": "400"
+        "key": "waiji",
+        "positionX": "0.8727",
+        "positionY": "0.1512",
+        "width": "0.2303",
+        "height": "0.2907"
+      },
+      {
+        "name": "모에라에 여신상",
+        "key": "moerae",
+        "positionX": "0.630",
+        "positionY": "0.6398",
+        "width": "0.1636",
+        "height": "0.2403"
+      },
+      {
+        "name": "채대언 트롤",
+        "key": "wood",
+        "positionX": "0.103",
+        "positionY": "0.2791",
+        "width": "0.1212",
+        "height": "0.155"
+      },
+      {
+        "name": "포탈",
+        "key": "portal",
+        "positionX": "0.1848",
+        "positionY": "0.7132",
+        "width": "0.2485",
+        "height": "0.1473"
+      },
+      {
+        "name": "잡화점",
+        "key": "generalstore",
+        "positionX": "0.5212",
+        "positionY": "0.8140",
+        "width": "0.1697",
+        "height": "0.1395"
       }
     ],
     "npc": [
       {
-      	"key": "Parath",
-        "name": "파라스",
-        "positionx": "1200",
-        "positiony": "100"
+      	"key": "waiji",
+        "name": "와이지 촌장",
+        "positionX": "0.72",
+        "positionY": "0.06",
+        "width": "0.10",
+        "height": "0.10"
       }
     ],
     "exit": [
       {
         "name": "월드맵으로",
-        "positionx": "1200",
-        "positiony": "10"
+        "positionX": "0.12",
+        "positionY": "0.12",
+        "width": "0.5",
+        "height": "0.5"
       }
     ]
   }

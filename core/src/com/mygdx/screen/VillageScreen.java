@@ -7,9 +7,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
@@ -46,7 +43,6 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		villageStage.draw();
@@ -89,64 +85,6 @@ public class VillageScreen implements Screen {
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
 
-		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth, Assets.realHeight / 2);
-		// cam.translate(100, 300);
-		cam.position.set(Assets.realWidth / 2, Assets.realHeight / 7, 0);
-		villageStage.getViewport().setCamera(cam);
-
-		// 화면 스크롤
-		villageStage.addListener(new InputListener() {
-
-			Vector3 last_touch_down = new Vector3();
-
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				this.setEvent(event);
-				return true;
-			}
-
-			@Override
-			public void touchDragged(InputEvent event, float x, float y, int pointer) {
-				moveCamera((int) x, (int) y);
-			}
-
-			private void moveCamera(int touch_x, int touch_y) {
-				Vector3 new_position = getNewCameraPosition(touch_x, touch_y);
-
-				if (!cameraOutOfLimit(new_position))
-
-					villageStage.getCamera().translate(new_position.sub(villageStage.getCamera().position));
-
-				last_touch_down.set(touch_x, touch_y, 0);
-			}
-
-			private Vector3 getNewCameraPosition(int x, int y) {
-				Vector3 new_position = last_touch_down;
-				new_position.sub(x, y, 0);
-				new_position.y = -new_position.y;
-				new_position.add(villageStage.getCamera().position);
-
-				return new_position;
-			}
-
-			private boolean cameraOutOfLimit(Vector3 position) {
-				int x_left_limit = (int) Assets.realWidth / 2;
-				int x_right_limit = (int) Assets.realWidth / 2;
-				int y_bottom_limit = (int) Assets.realHeight / 5;
-				int y_top_limit = (int) (Assets.realHeight / 4) * 7;
-
-				if (position.x < x_left_limit || position.x > x_right_limit)
-					return true;
-				else if (position.y < y_bottom_limit || position.y > y_top_limit)
-					return true;
-				else
-					return false;
-			}
-
-			public void setEvent(InputEvent event) {
-			}
-
-		});
 		// vs1.getCamera().translate(100, 100, 0);
 		// vs1.getCamera().update();
 		// vs2.addActor(UI);
