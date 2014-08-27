@@ -54,7 +54,8 @@ public class PrologueScreen implements Screen {
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				if (chatScene.isNext()) {
 					chatScene.showNextScene();
 				} else {
@@ -62,7 +63,8 @@ public class PrologueScreen implements Screen {
 					// that envoke this event screen
 
 					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
-					EventManager.getInstance().setEventCode("Blackwood-parath-prologue");
+					EventManager.getInstance().setEventCode(
+							"Blackwood-parath-prologue");
 					new ScreenController(ScreenEnum.EVENT);
 
 				}
@@ -77,7 +79,8 @@ public class PrologueScreen implements Screen {
 
 	private void showEventScene() {
 		// 인스턴스 생성
-		chatScene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
+		chatScene = new ChatScene(table, batch, EventManager.getInstance()
+				.getEventCode());
 
 		chatScene.load();
 
@@ -100,7 +103,7 @@ public class PrologueScreen implements Screen {
 
 	@Override
 	public void dispose() {
-
+		chatScene.clear();
 	}
 
 }
