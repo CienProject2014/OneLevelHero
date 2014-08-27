@@ -10,14 +10,18 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.event.ChatScene;
 import com.mygdx.event.CreditScene;
+import com.mygdx.event.Scene;
+import com.mygdx.event.SelectScene;
 import com.mygdx.resource.Assets;
 import com.mygdx.util.EventManager;
 
 public class CreditScreen implements Screen {
 	SpriteBatch batch;
-	CreditScene creditScene;
+	Scene scene;
 	TextButton backButton;
 	Table table;
 	Stage stage;
@@ -36,7 +40,7 @@ public class CreditScreen implements Screen {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		creditScene.show(delta); // 배경 출력
+		scene.show(delta); // 배경 출력
 		batch.end();
 
 		stage.draw();
@@ -63,8 +67,8 @@ public class CreditScreen implements Screen {
 
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if (creditScene.isNext()) {
-					creditScene.showNextScene();
+				if (scene.isNext()) {
+					scene.showNextScene();
 				} else {
 					// back to previous screen
 					// that envoke this event screen
@@ -83,10 +87,17 @@ public class CreditScreen implements Screen {
 	private void showEventScene() {
 
 		EventManager.getInstance().setEventCode("Credit-scene-1");
-		creditScene = new CreditScene(table, batch, stage, EventManager.getInstance().getEventCode());
-
+		EventManager.getInstance().setEventType(EventTypeEnum.CREDIT);
+		if (EventManager.getInstance().getEventType() == EventTypeEnum.CHAT)
+			scene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
+		else if (EventManager.getInstance().getEventType() == EventTypeEnum.SELECT)
+			scene = new SelectScene(table, batch, EventManager.getInstance().getEventCode());
+		else if (EventManager.getInstance().getEventType() == EventTypeEnum.CREDIT)
+			scene = new CreditScene(table, batch, EventManager.getInstance().getEventCode());
+		else
+			Gdx.app.log("Error", "Scene 주입 에러");
 		// 파싱을 하기 위한 로드
-		creditScene.load();
+		scene.load();
 	}
 
 	@Override

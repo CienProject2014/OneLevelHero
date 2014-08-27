@@ -28,7 +28,8 @@ public class Assets {
 			parath_angry, parath_happy, nothing_image;
 
 	//JSON
-	public static JSONObject worldmap_json, village_json, status_new_left, bag_json, credit_list, blackwood_json, prologue_json, blackwood_character, blackwood_background;
+	public static JSONObject worldmap_json, village_json, status_new_left, bag_json, credit_list, blackwood_json, prologue_json, blackwood_character, blackwood_background,
+			blackwood_parath;
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -69,6 +70,7 @@ public class Assets {
 		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		mainMusic = Gdx.audio.newMusic(Gdx.files.internal("data/buyeo.mp3"));
+		blackwood_parath = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/blackwood_parath.json").readString());
 
 		//prologue event json 로드
 		prologue_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/prologue.json").readString());
@@ -78,6 +80,7 @@ public class Assets {
 		//HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
 		resourceFileList.put("blackwood_json", blackwood_json);
 		resourceFileList.put("prologue_json", prologue_json);
+		resourceFileList.put("blackwood_parath.json", blackwood_parath);
 
 	}
 

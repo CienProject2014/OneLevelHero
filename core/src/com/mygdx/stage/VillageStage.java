@@ -15,7 +15,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.event.EventTrigger;
 import com.mygdx.resource.Assets;
+import com.mygdx.unit.NPC;
 import com.mygdx.util.CurrentManager;
 import com.mygdx.util.EventManager;
 
@@ -178,6 +180,8 @@ public class VillageStage extends Stage {
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					EventManager.getInstance().setEventCode("Blackwood-parath-default");
 					EventManager.getInstance().setEventType(EventTypeEnum.SELECT);
+					NPC parathNPC = new NPC();
+					EventTrigger.getInstance().setNpcEvent(parathNPC);
 					new ScreenController(ScreenEnum.EVENT);
 
 					super.touchUp(event, x, y, pointer, button);

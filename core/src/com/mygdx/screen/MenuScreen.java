@@ -20,7 +20,6 @@ import com.mygdx.resource.Assets;
 import com.mygdx.util.SoundManager;
 
 public class MenuScreen implements Screen {
-
 	Stage stage;
 	ImageButton startButton;
 	ImageButton optionsButton;
@@ -54,9 +53,7 @@ public class MenuScreen implements Screen {
 		setMusic(Assets.mainMusic);
 		getMusic().setVolume(Assets.musicVolume);
 		SoundManager.getInstance().playMusic(getMusic());
-		Texture texture = new Texture(
-				Gdx.files.internal("texture/MainMenu_Background.png"));
-
+		Texture texture = new Texture(Gdx.files.internal("texture/MainMenu_Background.png"));
 		Image background = new Image(texture);
 
 		stage = new Stage();
@@ -140,6 +137,7 @@ public class MenuScreen implements Screen {
 		stage.addActor(Assets.logo);
 
 		stage.addActor(table);
+
 	}
 
 	@Override

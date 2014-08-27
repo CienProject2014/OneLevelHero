@@ -1,4 +1,4 @@
-package com.mygdx.resource;
+package com.mygdx.event;
 
 public interface Scene {
 	void load();

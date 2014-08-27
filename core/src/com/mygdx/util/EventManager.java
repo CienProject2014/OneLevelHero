@@ -10,6 +10,7 @@ public class EventManager {
 
 	public EventManager() {
 		setEventCode("Prologue-scene-1");
+		setEventType(EventTypeEnum.CHAT);
 	}
 
 	public static EventManager getInstance() {

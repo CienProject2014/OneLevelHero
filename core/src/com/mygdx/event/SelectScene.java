@@ -12,7 +12,6 @@ import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
 import com.mygdx.resource.JSONFile;
-import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
 
 public class SelectScene implements Scene {
@@ -48,6 +47,9 @@ public class SelectScene implements Scene {
 	private JSONObject jsonFile;
 	private JSONArray jsonArray;
 
+	//EventTrigger
+	EventTrigger eventTrigger;
+
 	public static final double TIME_TO_FADE = 60;
 	private double timeAcc = 0;
 	private float alpha = 0;
@@ -55,6 +57,7 @@ public class SelectScene implements Scene {
 	public SelectScene(Table table, SpriteBatch batch, String eventCode) {
 		this.batch = batch;
 		this.eventCode = eventCode;
+		this.eventTrigger = EventTrigger.getInstance();
 
 		//이벤트 코드 파싱
 		parseEventCode(eventCode);

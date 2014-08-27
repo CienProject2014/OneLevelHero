@@ -8,6 +8,7 @@ import org.json.simple.parser.JSONParser;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 
 public class Characters {
 
@@ -20,6 +21,7 @@ public class Characters {
 	JSONObject fileName;
 	JSONArray jsonArray;
 	Texture image;
+	Button[] eventButton;
 	int count;
 	HashMap<String, Object> resourceFileList = Assets.resourceFileList;
 

@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
-import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
 
 public class CreditScene implements Scene {
@@ -55,14 +54,13 @@ public class CreditScene implements Scene {
 	private double timeAcc = 0;
 	private float alpha = 0;
 
-	public CreditScene(Table table, SpriteBatch batch, Stage stage, String eventCode) {
+	public CreditScene(Table table, SpriteBatch batch, String eventCode) {
 		this.batch = batch;
 		jsonFile = Assets.credit_list;
 		scripts = new Scripts(jsonFile);
 		character = new Characters(jsonFile);
 		background = new Backgrounds(jsonFile);
 		this.table = table;
-		this.stage = stage;
 		this.eventCode = eventCode;
 
 		//이벤트 코드 파싱

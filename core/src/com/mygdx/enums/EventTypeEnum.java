@@ -1,5 +1,5 @@
 package com.mygdx.enums;
 
 public enum EventTypeEnum {
-	CHAT, SELECT;
+	CHAT, SELECT, CREDIT;
 }

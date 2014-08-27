@@ -12,8 +12,8 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.ChatScene;
+import com.mygdx.event.Scene;
 import com.mygdx.event.SelectScene;
-import com.mygdx.resource.Scene;
 import com.mygdx.util.EventManager;
 
 public class EventScreen implements Screen {
