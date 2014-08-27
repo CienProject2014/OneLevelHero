@@ -21,7 +21,6 @@ import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
 import com.mygdx.resource.JSONFile;
-import com.mygdx.resource.Scene;
 import com.mygdx.resource.Scripts;
 
 public class ChatScene implements Scene {

@@ -24,16 +24,16 @@ public final class ScreenManager {
 	}
 
 	public void initialize(OneLevelHero game) {
-		ScreenManager.game = game;
+		ScreenManager.setGame(game);
 	}
 
 	public void show(ScreenEnum screen) {
-		if (null == game)
+		if (null == getGame())
 			return;
 		if (!screens.containsKey(screen.ordinal())) {
 			screens.put(screen.ordinal(), screen.getScreenInstance());
 		}
-		game.setScreen(screens.get(screen.ordinal()));
+		getGame().setScreen(screens.get(screen.ordinal()));
 	}
 
 	public void dispose(ScreenEnum screen) {
@@ -48,5 +48,13 @@ public final class ScreenManager {
 		}
 		screens.clear();
 		instance = null;
+	}
+
+	public static OneLevelHero getGame() {
+		return game;
+	}
+
+	public static void setGame(OneLevelHero game) {
+		ScreenManager.game = game;
 	}
 }

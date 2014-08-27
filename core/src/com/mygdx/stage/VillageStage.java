@@ -13,8 +13,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.event.EventTrigger;
 import com.mygdx.resource.Assets;
+import com.mygdx.unit.NPC;
 import com.mygdx.util.CurrentManager;
 import com.mygdx.util.EventManager;
 
@@ -163,8 +166,6 @@ public class VillageStage extends Stage {
 			positionx = (int) (viewportwidth * (positionx / 1920.0));
 			positiony = (int) (viewportheight * (positiony / 1080.0));
 
-			Gdx.app.log("Position X : ", String.valueOf(positionx));
-
 			npcbutton[i].moveBy(positionx, positiony);
 
 			addActor(npcbutton[i]);
@@ -178,6 +179,9 @@ public class VillageStage extends Stage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					EventManager.getInstance().setEventCode("Blackwood-parath-default");
+					EventManager.getInstance().setEventType(EventTypeEnum.SELECT);
+					NPC parathNPC = new NPC();
+					EventTrigger.getInstance().setNpcEvent(parathNPC);
 					new ScreenController(ScreenEnum.EVENT);
 
 					super.touchUp(event, x, y, pointer, button);

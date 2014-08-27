@@ -1,0 +1,13 @@
+{
+  "eventType": "Select",
+  "villageName": "Blackwood",
+  "npcName": "parath",
+  "eventCode": [
+    "Blackwood-parath-1",
+    "Blackwood-parath-2",
+    "Blackwood-parath-3",
+    "Blackwood-parath-4",
+    "Blackwood-parath-5",
+    "Blackwood-parath-6"
+  ]
+}

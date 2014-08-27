@@ -1,4 +1,4 @@
-package com.mygdx.resource;
+package com.mygdx.event;
 
 public interface Scene {
 	void load();
@@ -6,4 +6,6 @@ public interface Scene {
 	void showNextScene();
 
 	boolean isNext();
+
+	void show(float delta);
 }
