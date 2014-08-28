@@ -28,7 +28,7 @@ public class Assets {
 			parath_angry, parath_happy, nothing_image;
 
 	//JSON
-	public static JSONObject worldmap_json, village_json, status_new_left, bag_json, credit_list, blackwood_json, prologue_json, blackwood_character, blackwood_background;
+	public static JSONObject worldmap_json, village_json, dungeon_json, status_new_left, bag_json, credit_list, blackwood_json, prologue_json, blackwood_character, blackwood_background;
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -62,6 +62,7 @@ public class Assets {
 	private static void jsonLoad() {
 		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/village.json").readString());
 		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/worldmap.json").readString());
+		dungeon_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/dungeon.json").readString());
 		status_new_left = (JSONObject) JSONValue.parse(Gdx.files.internal("data/status/status_new_left.json").readString());
 		bag_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/bag_new.json").readString());
 		credit_list = (JSONObject) JSONValue.parse(Gdx.files.internal("data/credit_list.json").readString());

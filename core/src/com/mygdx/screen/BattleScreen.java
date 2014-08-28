@@ -13,6 +13,7 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.resource.Assets;
+import com.mygdx.util.CurrentManager;
 
 public class BattleScreen implements Screen {
 
@@ -23,9 +24,12 @@ public class BattleScreen implements Screen {
 	TextButton fleeButton;
 	boolean a;
 
+	public BattleScreen() {
+		
+	}
+
 	public BattleScreen(OneLevelHero game) {
 		this.game = game;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -47,7 +51,7 @@ public class BattleScreen implements Screen {
 	public void show() {
 		// TODO Auto-generated method stub
 		stage = new Stage();
-		fight = new Fight();
+		fight = new Fight(CurrentManager.getInstance().getCurrentDungeon());
 
 		Gdx.input.setInputProcessor(stage);
 		Table uitable = new Table(Assets.skin);

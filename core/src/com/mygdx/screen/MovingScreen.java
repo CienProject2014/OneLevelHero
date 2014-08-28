@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.controller.BattleController;
 import com.mygdx.controller.MovingController;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
@@ -37,6 +38,7 @@ public class MovingScreen implements Screen {
 	Image background;
 
 	MovingController controller;
+	BattleController battle;
 
 	String presentVil;
 	String targetVil;
@@ -70,6 +72,8 @@ public class MovingScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
+		
+		battle.setDungeon();
 
 		currentDestination = CurrentManager.getInstance()
 				.getCurrentDestination();
@@ -149,6 +153,9 @@ public class MovingScreen implements Screen {
 		Gdx.app.log("test", "goForward");
 		if (leftlength > 0) {
 			leftlength--;
+			if(battle.isOccur()) {
+				battle.start();
+			}
 		}
 		if (leftlength == 0) {
 

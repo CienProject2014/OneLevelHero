@@ -1,6 +1,7 @@
 package com.mygdx.enums;
 
 import com.mygdx.screen.BGMScreen;
+import com.mygdx.screen.BattleScreen;
 import com.mygdx.screen.BonusPointScreen;
 import com.mygdx.screen.CGScreen;
 import com.mygdx.screen.CollectionScreen;
@@ -119,6 +120,12 @@ public enum ScreenEnum {
 		@Override
 		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new StatusScreen();
+		}
+	},
+	BATTLE {
+		@Override
+		public com.badlogic.gdx.Screen getScreenInstance() {
+			return new BattleScreen();
 		}
 	};
 

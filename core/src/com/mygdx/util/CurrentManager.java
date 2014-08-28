@@ -12,6 +12,8 @@ public class CurrentManager {
 	private String currentState = "village";
 	private String currentStarting;
 	private String currentDestination;
+	private String currentDungeon;
+
 	private static CurrentManager instance;
 
 	public static CurrentManager getInstance() {
@@ -79,5 +81,13 @@ public class CurrentManager {
 
 	public void setCurrentDestination(String currentDestination) {
 		this.currentDestination = currentDestination;
+	}
+	
+	public String getCurrentDungeon() {
+		return currentDungeon;
+	}
+
+	public void setCurrentDungeon(String currentDungeon) {
+		this.currentDungeon = currentDungeon;
 	}
 }
