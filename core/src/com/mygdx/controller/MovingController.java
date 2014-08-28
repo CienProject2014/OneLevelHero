@@ -16,6 +16,7 @@ public class MovingController {
 
 	public MovingController() {
 
+		@SuppressWarnings("unused")
 		JSONObject dungeons = (JSONObject) Assets.worldmap_json.get("Road");
 	}
 

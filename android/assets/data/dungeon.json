@@ -1,7 +1,7 @@
 {
   "setting": {
-    "vil1": {
-      "vil2": "dungeon1",
+    "O": {
+      "K": "dungeon1",
       "vil3": "dungeon2"
     },
     "vil2": {
@@ -14,17 +14,31 @@
     }
   },
   "actual": {
-    "dungeon1": [
-      "Monster1",
-      "Monster2",
-      "Monster3",
-      "Monster4"
-    ],
-    "dungeon2": [
-      "Monster1",
-      "Monster2",
-      "Monster3",
-      "Monster4"
-    ]
+    "dungeon1": {
+      "monsterNumber": 3,
+      "itemNumber": 2,
+      "item": [
+        "Item1",
+        "Item2"
+      ],
+      "monster": [
+        "Monster2",
+        "Monster3",
+        "Monster1"
+      ]
+    },
+    "dungeon2": {
+      "monsterNumber": 2,
+      "itemNumber": 3,
+      "item": [
+        "Item1",
+        "Item2",
+        "Item3"
+      ],
+      "monster": [
+        "Monster2",
+        "Monster3"
+      ]
+    }
   }
 }

@@ -18,7 +18,6 @@ import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryActor;
 import com.mygdx.resource.Assets;
-import com.mygdx.screen.BattleScreen;
 
 public class GameUi extends Stage {
 	Table uiTable;
@@ -178,7 +177,7 @@ public class GameUi extends Stage {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new BattleScreen(game));
+				new ScreenController(ScreenEnum.BATTLE);
 				Gdx.app.log("정보", "전투가 시작됩니다");
 			}
 		});

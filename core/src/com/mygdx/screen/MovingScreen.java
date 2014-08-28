@@ -32,6 +32,8 @@ public class MovingScreen implements Screen {
 
 	int roadlength;
 	int leftlength;
+	int temp;
+	boolean battled;
 
 	Texture texture = new Texture(Gdx.files.internal("texture/justground.jpg"));
 
@@ -48,13 +50,14 @@ public class MovingScreen implements Screen {
 	String currentStartingpoint;
 
 	public MovingScreen() {
+		Gdx.app.log("DEBUG", "MovingScreen constructor");
 		controller = new MovingController();
+		battle = new BattleController();
+		battled = false;
 	}
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
-
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		movingLabel.setText(Assets.worldHashmap.get(currentDestination)
@@ -71,10 +74,7 @@ public class MovingScreen implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		
-		battle.setDungeon();
-
+		Gdx.app.log("DEBUG", "MovingSceen show");
 		currentDestination = CurrentManager.getInstance()
 				.getCurrentDestination();
 		currentPosition = CurrentManager.getInstance().getCurrentPosition();
@@ -85,8 +85,12 @@ public class MovingScreen implements Screen {
 
 		JSONObject roadInfo = (JSONObject) roadJson.get(currentPosition);
 
-		leftlength = Integer.parseInt((String) roadInfo.get("length"));
 		roadlength = Integer.parseInt((String) roadInfo.get("length"));
+		leftlength = roadlength;
+		if(battled) {
+			leftlength = temp;
+			battled = false;
+		}
 
 		stage = new Stage();
 		table = new Table();
@@ -154,6 +158,8 @@ public class MovingScreen implements Screen {
 		if (leftlength > 0) {
 			leftlength--;
 			if(battle.isOccur()) {
+				temp = leftlength;
+				battled = true;
 				battle.start();
 			}
 		}
@@ -207,25 +213,25 @@ public class MovingScreen implements Screen {
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-
+		Gdx.app.log("DEBUG", "MovingSceen hide");
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-
+		Gdx.app.log("DEBUG", "MovingSceen pause");
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-
+		Gdx.app.log("DEBUG", "MovingSceen resume");
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-
+		Gdx.app.log("DEBUG", "MovingSceen dispose");
 	}
 
 }
