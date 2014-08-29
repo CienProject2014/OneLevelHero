@@ -7,21 +7,19 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.ChatScene;
 import com.mygdx.util.EventManager;
+import com.mygdx.util.SceneManager;
 
 public class PrologueScreen implements Screen {
 
 	private Stage stage;
-	private SpriteBatch batch;
-	private ChatScene chatScene;
+	private SceneManager scene;
 
 	public PrologueScreen() {
 	}
@@ -31,9 +29,6 @@ public class PrologueScreen implements Screen {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		batch.begin();
-		chatScene.show(delta); // 배경 출력
-		batch.end();
 		stage.draw();
 	}
 
@@ -44,17 +39,17 @@ public class PrologueScreen implements Screen {
 
 	@Override
 	public void show() {
-		stage = new ChatScene(batch, EventManager.getInstance().getEventCode());
-		batch = new SpriteBatch();
-		showEventScene();
+		scene = new SceneManager(EventManager.getInstance().getEventCode());
+		stage = scene.getSceneUi();
 
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				if (chatScene.isNext()) {
-					chatScene.showNextScene();
+				if (scene.isNext()) {
+					scene.showNextScene();
+					stage = scene.getSceneUi();
 				} else {
 					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
 
@@ -68,13 +63,6 @@ public class PrologueScreen implements Screen {
 				return true;
 			}
 		});
-
-	}
-
-	private void showEventScene() {
-		// 인스턴스 생성
-		chatScene = new ChatScene(batch, EventManager.getInstance()
-				.getEventCode());
 
 	}
 
@@ -95,7 +83,6 @@ public class PrologueScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		chatScene.clear();
 	}
 
 }

@@ -24,7 +24,7 @@
   "parath_default": [
     {
       "script": "오오.. 일어나신건가요 용사님? 우리 이제 여행을 떠나볼까요?",
-      "character": "nothing_image",
+      "character": "parath_happy",
       "background": "parath_background"
     }
   ]

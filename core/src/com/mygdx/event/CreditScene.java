@@ -162,7 +162,6 @@ public class CreditScene implements Scene {
 			timeAcc += delta;
 			batch.setColor(1.0f, 1.0f, 1.0f, alpha);
 		}
-		batch.draw(backgroundTexture, 0, 0, Assets.realWidth, Assets.realHeight);
 
 	}
 

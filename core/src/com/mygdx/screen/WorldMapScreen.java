@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.event.ChatScene;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.stage.WorldStage;
 
@@ -12,7 +11,6 @@ public class WorldMapScreen implements Screen {
 
 	private OneLevelHero game;
 	private SpriteBatch batch;
-	private ChatScene scene;
 	private WorldStage worldmap;
 
 	public WorldMapScreen() {
@@ -77,14 +75,6 @@ public class WorldMapScreen implements Screen {
 
 	public void setBatch(SpriteBatch batch) {
 		this.batch = batch;
-	}
-
-	public ChatScene getScene() {
-		return scene;
-	}
-
-	public void setScene(ChatScene scene) {
-		this.scene = scene;
 	}
 
 }

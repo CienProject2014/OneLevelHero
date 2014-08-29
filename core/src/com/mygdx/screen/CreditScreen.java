@@ -12,10 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.ChatScene;
 import com.mygdx.event.CreditScene;
 import com.mygdx.event.Scene;
-import com.mygdx.event.SelectScene;
 import com.mygdx.util.EventManager;
 
 public class CreditScreen implements Screen {
@@ -83,13 +81,8 @@ public class CreditScreen implements Screen {
 
 		EventManager.getInstance().setEventCode("Credit-scene-1");
 		EventManager.getInstance().setEventType(EventTypeEnum.CREDIT);
-		if (EventManager.getInstance().getEventType() == EventTypeEnum.CHAT)
-			scene = new ChatScene(batch, EventManager.getInstance()
-					.getEventCode());
-		else if (EventManager.getInstance().getEventType() == EventTypeEnum.SELECT)
-			scene = new SelectScene(batch, EventManager.getInstance()
-					.getEventCode());
-		else if (EventManager.getInstance().getEventType() == EventTypeEnum.CREDIT)
+
+		if (EventManager.getInstance().getEventType() == EventTypeEnum.CREDIT)
 			scene = new CreditScene(stage, batch, EventManager.getInstance()
 					.getEventCode());
 		else
