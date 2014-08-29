@@ -51,6 +51,17 @@ public class SceneUi extends Stage {
 	}
 
 	private void makeSelectScene() {
+
+		script.setFontScale(Assets.realWidth / 1280);
+		script.setWrap(true);
+		script.setSize(Assets.realWidth * 0.781f, Assets.realHeight * 0.185f);
+		script.setPosition(Assets.realWidth * 0.109375f, Assets.realHeight * 0.185f);
+		characterImage.setSize(Assets.realWidth * 0.250f, Assets.realHeight * 0.555f);
+		characterImage.setPosition(Assets.realWidth * 0.375f, Assets.realHeight * 0.37f);
+		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
+	}
+
+	private void makeChatScene() {
 		script.setFontScale(Assets.realWidth / 1280);
 		script.setWrap(true);
 		script.setPosition(Assets.realWidth * 0.2f, 0);
@@ -60,16 +71,4 @@ public class SceneUi extends Stage {
 		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
 
 	}
-
-	private void makeChatScene() {
-		script.setFontScale(Assets.realWidth / 1280);
-		script.setWrap(true);
-		script.setSize(Assets.realWidth * 0.781f, Assets.realHeight * 0.185f);
-		script.setPosition(Assets.realWidth * 0.109375f, Assets.realHeight * 0.185f);
-		characterImage.setSize(Assets.realWidth * 0.250f, Assets.realHeight * 0.555f);
-		characterImage.setPosition(Assets.realWidth * 0.375f, Assets.realHeight * 0.37f);
-		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
-
-	}
-
 }

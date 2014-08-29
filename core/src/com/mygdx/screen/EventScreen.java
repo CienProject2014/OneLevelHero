@@ -65,14 +65,11 @@ public class EventScreen implements Screen {
 		Gdx.input.setInputProcessor(multiplexer);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				if (scene.isNext()) {
 					scene.showNextScene();
 					stage = scene.getSceneUi();
 				} else {
-
-					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
 					new ScreenController(ScreenEnum.VILLAGE);
 
 				}
