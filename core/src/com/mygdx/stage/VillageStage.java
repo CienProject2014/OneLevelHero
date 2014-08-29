@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -112,10 +113,10 @@ public class VillageStage extends Stage {
 		villageAtlas = new TextureAtlas(Gdx.files.internal("texture/village/"
 				+ (String) villageData.get("imagesource")));
 
-		TextureRegion background = villageAtlas.findRegion((String) villageData
-				.get("background"));
-		TextureRegion frontground = villageAtlas
-				.findRegion((String) villageData.get("frontground"));
+		Texture background = new Texture(Gdx.files.internal("texture/village/"
+				+ (String) villageData.get("background")));
+		Texture frontground = new Texture(Gdx.files.internal("texture/village/"
+				+ (String) villageData.get("frontground")));
 
 		Image backgroundImage = new Image(background);
 		backgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
