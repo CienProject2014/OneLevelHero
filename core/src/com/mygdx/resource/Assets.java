@@ -23,6 +23,9 @@ public class Assets {
 	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down, menu_button_up, menu_button_toggle, credit_before, credit_after, extra_before, extra_after,
 			option_before, option_after, start_after, start_before, downArrowButton, bagButton, nameAndTime, helpButton, optionButton, upArrowButton;
 
+	//NPC 이름
+	public static Image YongSa, Parath;
+
 	//NPC얼굴
 	public static Texture parath_background, prog_team1, plan_team1, graphic_team1, scene1, scene2, scene3, scene4, rabbit1, rabbit2, rabbit3, yongsa_happy, yongsa_sad,
 			parath_angry, yongsa_angry, parath_happy, waiji_happy, yongsa_sick, nothing_image, waiji_background, blackwood_center, main_background;
@@ -114,7 +117,10 @@ public class Assets {
 
 	}
 
-	public static void characterImageLoad() {
+	private static void characterImageLoad() {
+		YongSa = new Image(new Texture(Gdx.files.internal("texture/npc/YongSa.jpg")));
+		Parath = new Image(new Texture(Gdx.files.internal("texture/npc/Parath.png")));
+
 		rabbit1 = new Texture(Gdx.files.internal("texture/prologue/rabbit1.png"));
 		rabbit2 = new Texture(Gdx.files.internal("texture/prologue/rabbit2.png"));
 		rabbit3 = new Texture(Gdx.files.internal("texture/prologue/rabbit3.png"));
@@ -161,6 +167,8 @@ public class Assets {
 		resourceFileList.put("yongsa_sick", yongsa_sick);
 		resourceFileList.put("yongsa_angry", yongsa_angry);
 		resourceFileList.put("main_background", main_background);
+		resourceFileList.put("YongSa", YongSa);
+		resourceFileList.put("Parath", Parath);
 	}
 
 	private static void fontLoad() {

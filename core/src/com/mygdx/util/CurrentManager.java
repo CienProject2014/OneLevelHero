@@ -10,7 +10,7 @@ public class CurrentManager {
 	private Hero leftHero;
 	private Hero centerHero;
 	private Hero rightHero;
-	Party party;
+	public Party party;
 
 	private String currentPosition = "O";
 	private String currentState = "village";

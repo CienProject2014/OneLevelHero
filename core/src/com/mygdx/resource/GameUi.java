@@ -1,7 +1,6 @@
 package com.mygdx.resource;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -20,6 +19,7 @@ import com.mygdx.inventory.InventoryActor;
 import com.mygdx.message.AlertMessage;
 import com.mygdx.message.Message;
 import com.mygdx.screen.BattleScreen;
+import com.mygdx.util.CurrentManager;
 
 public class GameUi extends Stage {
 	Table uiTable;
@@ -27,6 +27,7 @@ public class GameUi extends Stage {
 	InventoryActor inventoryActor;
 	DragAndDrop dragAndDrop;
 	Message alertMessage;
+	Characters character;
 
 	ImageButton downArrowButton;
 	ImageButton bagButton;
@@ -36,8 +37,9 @@ public class GameUi extends Stage {
 	TextButton leftTimeButton;
 	TextButton battleButton;
 	public static Stage inventoryStage;
+	private int battleMemberNumber;
 
-	Image[] character;
+	Image[] characterImage;
 	Table toptable;
 	Table bottomtable;
 
@@ -53,24 +55,25 @@ public class GameUi extends Stage {
 
 	public GameUi() {
 		// 초기화
+		character = new Characters();
 		uiTable = new Table();
 		realheight = Assets.realHeight;
 		realwidth = Assets.realWidth;
 		hpbar = new StatusBar[3];
 		expbar = new StatusBar[3];
 		turnbar = new StatusBar[3];
-		character = new Image[3];
 		statusbartable = new Table[3];
 		charatertable = new Table[3];
+		battleMemberNumber = CurrentManager.getInstance().party.getBattleMemberList().size();
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < battleMemberNumber; i++) {
 			hpbar[i] = new StatusBar("hp", 0f, 100f, 1f, false, Assets.skin);
 			expbar[i] = new StatusBar("exp", 0f, 100f, 1f, false, Assets.skin);
 			turnbar[i] = new StatusBar("turn", 0f, 100f, 1f, false, Assets.skin);
 			statusbartable[i] = new Table(Assets.skin);
 			charatertable[i] = new Table(Assets.skin);
-			character[i] = new Image(new Texture(Gdx.files.internal("texture/char" + (i + 1) + ".jpg")));
 		}
+		characterImage = character.getBattleMemberImage();
 
 		toptable = new Table(Assets.skin);
 		bottomtable = new Table(Assets.skin);
@@ -116,8 +119,7 @@ public class GameUi extends Stage {
 		toptable.add(helpButton).width(realwidth / 8).height(realheight / 12).top();
 		toptable.add(optionButton).width(realwidth / 8).height(realheight / 12).top();
 
-		for (int i = 0; i < 3; i++) {
-			charatertable[i].add(character[i]).width(realwidth / 4).height(realheight / 4);
+		for (int i = 0; i < battleMemberNumber; i++) {
 			statusbartable[i].add(hpbar[i]).width(realwidth / 12).height(realheight / 12).bottom();
 			statusbartable[i].row();
 			statusbartable[i].add(expbar[i]).width(realwidth / 12).height(realheight / 12).bottom();
@@ -127,6 +129,10 @@ public class GameUi extends Stage {
 			bottomtable.add(statusbartable[i]);
 		}
 
+		//GameUi의 캐릭터를 동적으로 부여해줌
+		for (int i = 0; i < battleMemberNumber; i++) {
+			charatertable[i].add(characterImage[i]).width(realwidth / 4).height(realheight / 4);
+		}
 		uiTable.add(toptable).expand().top();
 		uiTable.row();
 		uiTable.add(bottomtable).bottom();

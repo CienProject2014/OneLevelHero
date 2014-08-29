@@ -57,4 +57,5 @@ public class EventManager {
 		String villageName[] = eventCode.split("-");
 		return villageName[0];
 	}
+
 }

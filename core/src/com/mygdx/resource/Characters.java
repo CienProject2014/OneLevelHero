@@ -1,5 +1,6 @@
 package com.mygdx.resource;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.json.simple.JSONArray;
@@ -9,9 +10,11 @@ import org.json.simple.parser.JSONParser;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.mygdx.unit.Hero;
+import com.mygdx.util.CurrentManager;
 
 public class Characters {
-
 	JSONParser parser = new JSONParser();
 	JSONObject object;
 	String keyOfVillage;
@@ -25,6 +28,10 @@ public class Characters {
 	int count;
 	HashMap<String, Object> resourceFileList = Assets.resourceFileList;
 
+	public Characters() {
+
+	}
+
 	// 생성해 줄 때 어떤 파일을 읽어올지 지정할 예정
 	public Characters(JSONObject fileName) {
 		this.fileName = fileName;
@@ -36,6 +43,22 @@ public class Characters {
 
 		//JSON에서 불러온 이미지를 리턴한다
 		return parseJSONImage(keyOfSceneNumber);
+	}
+
+	public Texture getImage(String key) {
+		return getImage(key, 1);
+	}
+
+	public Image[] getBattleMemberImage() {
+
+		ArrayList<Hero> battleMemberList = CurrentManager.getInstance().party.getBattleMemberList();
+
+		Image[] memberImage = new Image[battleMemberList.size()];
+		for (int i = 0; i < battleMemberList.size(); i++) {
+
+			memberImage[i] = (Image) resourceFileList.get(battleMemberList.get(i).getUnitName());
+		}
+		return memberImage;
 	}
 
 	// 과정 (1) 키값을 받아서 파싱을 한다("-"를 기준으로 나눔)
