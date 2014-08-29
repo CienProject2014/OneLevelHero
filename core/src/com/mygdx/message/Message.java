@@ -21,6 +21,7 @@ public class Message extends Dialog {
 		setModal(true);
 		setMovable(true);
 		setResizable(false);
+		setVisible(false);
 	}
 
 	@Override

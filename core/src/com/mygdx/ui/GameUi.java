@@ -67,14 +67,12 @@ public class GameUi extends Stage {
 
 		statusbartable = new Table[3];
 		charatertable = new Table[3];
-		battleMemberNumber = CurrentManager.getInstance().party
-				.getBattleMemberList().size();
+		battleMemberNumber = CurrentManager.getInstance().party.getBattleMemberList().size();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
 			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, Assets.skin);
 			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, Assets.skin);
-			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false,
-					Assets.skin);
+			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false, Assets.skin);
 			statusbartable[i] = new Table(Assets.skin);
 			charatertable[i] = new Table(Assets.skin);
 
@@ -84,10 +82,8 @@ public class GameUi extends Stage {
 		toptable = new Table(Assets.skin);
 		bottomtable = new Table(Assets.skin);
 
-		TextButtonStyle style = new TextButtonStyle(Assets.nameAndTime,
-				Assets.nameAndTime, Assets.nameAndTime, Assets.font);
-		downArrowButton = new ImageButton(Assets.downArrowButton,
-				Assets.downArrowButton);
+		TextButtonStyle style = new TextButtonStyle(Assets.nameAndTime, Assets.nameAndTime, Assets.nameAndTime, Assets.font);
+		downArrowButton = new ImageButton(Assets.downArrowButton, Assets.downArrowButton);
 		bagButton = new ImageButton(Assets.bagButton, Assets.bagButton);
 		worldMapButton = new TextButton("worldMap", style);
 		leftTimeButton = new TextButton("12h30m", style);
@@ -99,13 +95,11 @@ public class GameUi extends Stage {
 		dragAndDrop = new DragAndDrop();
 		Skin skin = Assets.skin;
 		inventoryActor = new InventoryActor(new Inventory(), dragAndDrop, skin);
-		alertMessage = new AlertMessage("Reward", Assets.skin).text(
-				"파라스가 동료로 합류했다").button("EXIT", new InputListener() {
+		alertMessage = new AlertMessage("Reward", Assets.skin).text("파라스가 동료로 합류했다").button("EXIT", new InputListener() {
 			// button to exit app
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				alertMessage.setVisible(false);
-				return false;
+				return true;
 			}
 		});
 
@@ -122,36 +116,26 @@ public class GameUi extends Stage {
 
 		uiTable.setFillParent(true);
 
-		toptable.add(downArrowButton).expand().width(realwidth / 8)
-				.height(realheight / 12).top().left();
-		toptable.add(bagButton).width(realwidth / 8).height(realheight / 12)
-				.top();
-		toptable.add(worldMapButton).width(realwidth / 4)
-				.height(realheight / 12).top();
-		toptable.add(leftTimeButton).width(realwidth / 4)
-				.height(realheight / 12).top();
-		toptable.add(helpButton).width(realwidth / 8).height(realheight / 12)
-				.top();
-		toptable.add(optionButton).width(realwidth / 8).height(realheight / 12)
-				.top();
+		toptable.add(downArrowButton).expand().width(realwidth / 8).height(realheight / 12).top().left();
+		toptable.add(bagButton).width(realwidth / 8).height(realheight / 12).top();
+		toptable.add(worldMapButton).width(realwidth / 4).height(realheight / 12).top();
+		toptable.add(leftTimeButton).width(realwidth / 4).height(realheight / 12).top();
+		toptable.add(helpButton).width(realwidth / 8).height(realheight / 12).top();
+		toptable.add(optionButton).width(realwidth / 8).height(realheight / 12).top();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
-			statusbartable[i].add(hpbar[i]).width(realwidth / 12)
-					.height(realheight / 12).bottom();
+			statusbartable[i].add(hpbar[i]).width(realwidth / 12).height(realheight / 12).bottom();
 			statusbartable[i].row();
-			statusbartable[i].add(expbar[i]).width(realwidth / 12)
-					.height(realheight / 12).bottom();
+			statusbartable[i].add(expbar[i]).width(realwidth / 12).height(realheight / 12).bottom();
 			statusbartable[i].row();
-			statusbartable[i].add(turnbar[i]).width(realwidth / 12)
-					.height(realheight / 12).bottom();
+			statusbartable[i].add(turnbar[i]).width(realwidth / 12).height(realheight / 12).bottom();
 			bottomtable.add(charatertable[i]);
 			bottomtable.add(statusbartable[i]);
 		}
 
 		// GameUi의 캐릭터를 동적으로 부여해줌
 		for (int i = 0; i < battleMemberNumber; i++) {
-			charatertable[i].add(characterImage[i]).width(realwidth / 4)
-					.height(realheight / 4);
+			charatertable[i].add(characterImage[i]).width(realwidth / 4).height(realheight / 4);
 		}
 		uiTable.add(toptable).expand().top();
 		uiTable.row();
@@ -165,15 +149,13 @@ public class GameUi extends Stage {
 		bagButton.addListener(new InputListener() {
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				inventoryActor.setVisible(true);
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.log("정보", "inventoryPopUp창이 나타납니다.");
 
 			}
@@ -181,14 +163,12 @@ public class GameUi extends Stage {
 		optionButton.addListener(new InputListener() {
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.log("정보", "OptionScreen이 나타납니다.");
 			}
 		});
@@ -196,15 +176,13 @@ public class GameUi extends Stage {
 		downArrowButton.addListener(new InputListener() {
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.log("정보", "minimap창이 나타납니다.");
 			}
 		});
@@ -212,15 +190,13 @@ public class GameUi extends Stage {
 		battleButton.addListener(new InputListener() {
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				game.setScreen(new BattleScreen(game));
 				Gdx.app.log("정보", "전투가 시작됩니다");
 			}
@@ -228,44 +204,39 @@ public class GameUi extends Stage {
 		worldMapButton.addListener(new InputListener() {
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				new ScreenController(ScreenEnum.WORLD);
 			}
 		});
 		helpButton.addListener(new InputListener() {
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				alertMessage.setVisible(true);
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				alertMessage.setVisible(true);
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+
 			}
 		});
 
 		characterImage[0].addListener(new InputListener() {
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				new ScreenController(ScreenEnum.STATUS);
 			}
 		});

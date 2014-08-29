@@ -173,7 +173,7 @@ public class VillageStage extends Stage {
 
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					EventManager.getInstance().setEventCode("B-waiji-0", EventTypeEnum.CHAT);
+					EventManager.getInstance().setEventCode("B-waiji-0", EventTypeEnum.SELECT);
 					new ScreenController(ScreenEnum.EVENT);
 				}
 			});
