@@ -39,7 +39,6 @@ public class SceneManager {
 		clearSceneNumber();
 		counter = getTotalSceneNumber(jsonArray) - 1;
 		makeResource();
-
 	}
 
 	public SceneUi getSceneUi() {
@@ -47,12 +46,9 @@ public class SceneManager {
 	}
 
 	private void makeResource() {
-		backgroundImage = new Image(background.getBackground(eventCode,
-				keyOfSceneNumber));
-		script = new Label(scripts.getScript(eventCode, keyOfSceneNumber),
-				Assets.skin);
-		characterImage = new Image(character.getImage(eventCode,
-				keyOfSceneNumber));
+		backgroundImage = new Image(background.getBackground(eventCode, keyOfSceneNumber));
+		script = new Label(scripts.getScript(eventCode, keyOfSceneNumber), Assets.skin);
+		characterImage = new Image(character.getImage(eventCode, keyOfSceneNumber));
 		makeUi();
 	}
 
@@ -72,8 +68,7 @@ public class SceneManager {
 	}
 
 	private int getTotalSceneNumber(JSONArray jsonArray) {
-		jsonArray = (JSONArray) jsonFile
-				.get(keyOfNPC + "_" + keyOfSerialNumber);
+		jsonArray = (JSONArray) jsonFile.get(keyOfNPC + "_" + keyOfSerialNumber);
 		counter = jsonArray.size();
 		return counter;
 	}

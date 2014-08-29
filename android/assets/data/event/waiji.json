@@ -9,9 +9,9 @@
     "B-waiji-4",
     "B-waiji-5",
     "B-waiji-6"
-  ]
-  "eventReward" : [
-  	"party-pcarath",
+  ],
+  "rewardCode" : [
+  	"party-parath",
   	"none",
   	"none",
   	"none",

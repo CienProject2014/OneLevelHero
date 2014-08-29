@@ -10,6 +10,7 @@ import com.mygdx.util.ScreenManager;
 public class EventTrigger {
 	private static EventTrigger instance;
 	private Json json;
+	private NPC eventNPC;
 
 	public static EventTrigger getInstance() {
 		if (null == instance) {
@@ -36,11 +37,20 @@ public class EventTrigger {
 		EventManager.getInstance().setEventCode(eventCode);
 	}
 
-	public NPC setNpcEvent(NPC npc) {
+	public EventTrigger setNpcEvent() {
 		json = new Json();
-		Object jsonObject = Assets.parath;
-		npc.setEvent(json.fromJson(Event.class, json.toJson(jsonObject)));
-		return npc;
+		Object jsonObject = Assets.waiji;
+		eventNPC = new NPC();
+		eventNPC.setEvent(json.fromJson(Event.class, json.toJson(jsonObject)));
+		return this;
+	}
+
+	public NPC getEventNPC() {
+		return eventNPC;
+	}
+
+	public void setEventNPC(NPC eventNPC) {
+		this.eventNPC = eventNPC;
 	}
 
 }

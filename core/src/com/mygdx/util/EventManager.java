@@ -1,12 +1,14 @@
 package com.mygdx.util;
 
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.unit.NPC;
 
 public class EventManager {
 	private String eventCode;
 	EventTypeEnum eventType;
 	private String title;
 	private static EventManager instance;
+	private NPC eventNpc;
 
 	public EventManager() {
 		setEventCode("Prg-scene-1");
@@ -58,4 +60,11 @@ public class EventManager {
 		return villageName[0];
 	}
 
+	public NPC getEventNpc() {
+		return eventNpc;
+	}
+
+	public void setEventNpc(NPC eventNpc) {
+		this.eventNpc = eventNpc;
+	}
 }

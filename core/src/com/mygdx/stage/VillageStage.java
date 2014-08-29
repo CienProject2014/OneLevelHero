@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.event.EventTrigger;
 import com.mygdx.resource.Assets;
 import com.mygdx.util.CurrentManager;
 import com.mygdx.util.EventManager;
@@ -174,6 +175,7 @@ public class VillageStage extends Stage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					EventManager.getInstance().setEventCode("B-waiji-0", EventTypeEnum.SELECT);
+					EventTrigger.getInstance().setNpcEvent();
 					new ScreenController(ScreenEnum.EVENT);
 				}
 			});
