@@ -1,10 +1,10 @@
 package com.mygdx.message;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
-public class AlertMessage implements Message {
+public class AlertMessage extends Message {
 
-	public void write(String message) {
-		Gdx.app.log("AlertMessage", message);
+	public AlertMessage(String title, Skin skin) {
+		super(title, skin);
 	}
 }

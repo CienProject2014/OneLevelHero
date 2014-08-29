@@ -17,6 +17,8 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryActor;
+import com.mygdx.message.AlertMessage;
+import com.mygdx.message.Message;
 import com.mygdx.screen.BattleScreen;
 
 public class GameUi extends Stage {
@@ -24,6 +26,7 @@ public class GameUi extends Stage {
 	OneLevelHero game;
 	InventoryActor inventoryActor;
 	DragAndDrop dragAndDrop;
+	Message alertMessage;
 
 	ImageButton downArrowButton;
 	ImageButton bagButton;
@@ -85,11 +88,19 @@ public class GameUi extends Stage {
 		dragAndDrop = new DragAndDrop();
 		Skin skin = Assets.skin;
 		inventoryActor = new InventoryActor(new Inventory(), dragAndDrop, skin);
+		alertMessage = new AlertMessage("Reward", Assets.skin).text("파라스가 동료로 합류했다").button("EXIT", new InputListener() {
+			// button to exit app  
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				alertMessage.setVisible(false);
+				return false;
+			}
+		});
 
 		addListener();
 		makeTable();
 		addActor(uiTable);
 		addActor(inventoryActor); // 인벤토리 Actor 추가
+		addActor(alertMessage);
 
 	}
 
@@ -202,7 +213,7 @@ public class GameUi extends Stage {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				new ScreenController(ScreenEnum.EVENT);
+				alertMessage.setVisible(true);
 			}
 		});
 
@@ -211,6 +222,7 @@ public class GameUi extends Stage {
 	@Override
 	public void dispose() {
 		inventoryActor.remove();
+		alertMessage.remove();
 		super.dispose();
 	}
 }
