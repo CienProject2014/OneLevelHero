@@ -1,0 +1,21 @@
+{
+  "eventType": "Select",
+  "villageName": "Blackwood",
+  "npcName": "waiji",
+  "eventCode": [
+    "B-waiji-1",
+    "B-waiji-2",
+    "B-waiji-3",
+    "B-waiji-4",
+    "B-waiji-5",
+    "B-waiji-6"
+  ]
+  "eventReward" : [
+  	"party-parath",
+  	"none",
+  	"none",
+  	"none",
+  	"none",
+  	"none"
+  ]
+}

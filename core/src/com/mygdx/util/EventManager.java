@@ -9,7 +9,7 @@ public class EventManager {
 	private static EventManager instance;
 
 	public EventManager() {
-		setEventCode("Prologue-scene-1");
+		setEventCode("Prg-scene-1");
 		setEventType(EventTypeEnum.CHAT);
 	}
 
@@ -46,6 +46,11 @@ public class EventManager {
 
 	public void setEventCode(String eventCode) {
 		this.eventCode = eventCode;
+	}
+
+	public void setEventCode(String eventCode, EventTypeEnum eventType) {
+		this.eventCode = eventCode;
+		this.eventType = eventType;
 	}
 
 	public String getEventVillageName() {

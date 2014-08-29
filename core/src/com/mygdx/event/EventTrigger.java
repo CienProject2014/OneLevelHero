@@ -37,11 +37,10 @@ public class EventTrigger {
 	}
 
 	public NPC setNpcEvent(NPC npc) {
-		Json json = new Json();
-		Object jsonObject = Assets.blackwood_parath;
-		npc.setEvent(json.fromJson(NPCEvent.class, json.toJson(jsonObject)));
-		System.out.println(json.toJson(event));
-		System.out.println(String.valueOf(jsonObject));
+		json = new Json();
+		Object jsonObject = Assets.parath;
+		npc.setEvent(json.fromJson(Event.class, json.toJson(jsonObject)));
 		return npc;
 	}
+
 }

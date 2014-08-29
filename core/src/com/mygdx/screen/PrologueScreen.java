@@ -51,11 +51,13 @@ public class PrologueScreen implements Screen {
 					scene.showNextScene();
 					stage = scene.getSceneUi();
 				} else {
-					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
 
-					EventManager.getInstance().setEventCode(
-							"Blackwood-parath-prologue");
-					EventManager.getInstance().setEventType(EventTypeEnum.CHAT);
+					// back to previous screen
+					// that envoke this event screen
+
+					EventManager.getInstance().setEventCode("Prg-scene-2",
+							EventTypeEnum.CHAT);
+
 					new ScreenController(ScreenEnum.EVENT);
 
 				}

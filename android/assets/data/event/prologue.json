@@ -20,5 +20,27 @@
       "character": "rabbit3",
       "background": "scene4"
     }
+  ],
+  "scene_2": [
+    {
+      "script": "용사님.. 일어나세요..!",
+      "character": "parath_happy",
+      "background": "scene1"
+    },
+    {
+      "script": "으으...",
+      "character": "yongsa_sad",
+      "background": "scene2"
+    },
+    {
+      "script": "벌써 삼일째에요.. 이젠 기운을 차릴 때도 됐잖아요. 촌장님이 찾으셔요.",
+      "character": "parath_angry",
+      "background": "scene3"
+    },
+    {
+      "script": "용사 : 정말, 귀찮은데..",
+      "character": "yongsa_sick",
+      "background": "scene4"
+    }
   ]
 }

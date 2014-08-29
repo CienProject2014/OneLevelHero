@@ -32,7 +32,7 @@ public class CGScreen implements Screen {
 		// TODO Auto-generated method stub
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		System.out.println("CG");
+		Gdx.app.log("info", "CGScreen");
 		stage.draw();
 	}
 
@@ -53,16 +53,14 @@ public class CGScreen implements Screen {
 
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				new ScreenController(ScreenEnum.COLLETION);
 			}
 		});

@@ -79,7 +79,7 @@ public class CreditScreen implements Screen {
 
 	private void showEventScene() {
 
-		EventManager.getInstance().setEventCode("Credit-scene-1");
+		EventManager.getInstance().setEventCode("Crd-scene-1");
 		EventManager.getInstance().setEventType(EventTypeEnum.CREDIT);
 
 		if (EventManager.getInstance().getEventType() == EventTypeEnum.CREDIT)

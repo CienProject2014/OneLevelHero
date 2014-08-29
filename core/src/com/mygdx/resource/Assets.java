@@ -20,23 +20,25 @@ import com.mygdx.stage.WorldStage.worldNode;
 public class Assets {
 	public static Skin skin;
 	public static TextureAtlas items;
+
 	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down,
 			menu_button_up, menu_button_toggle, credit_before, credit_after,
 			extra_before, extra_after, option_before, option_after,
 			start_after, start_before, downArrowButton, bagButton, nameAndTime,
 			helpButton, optionButton, upArrowButton;
 	public static TextureRegionDrawable[] chatButton;
-
 	// NPC얼굴
 	public static Texture parath_background, prog_team1, plan_team1,
 			graphic_team1, scene1, scene2, scene3, scene4, rabbit1, rabbit2,
-			rabbit3, yongsa_happy, yongsa_sad, parath_angry, parath_happy,
-			nothing_image;
+			rabbit3, yongsa_happy, yongsa_sad, parath_angry, yongsa_angry,
+			parath_happy, waiji_happy, yongsa_sick, nothing_image,
+			waiji_background, blackwood_center, main_background;
 
 	// JSON
 	public static JSONObject worldmap_json, village_json, status_new_left,
 			bag_json, credit_list, blackwood_json, prologue_json,
-			blackwood_character, blackwood_background, blackwood_parath;
+			blackwood_character, blackwood_background, waiji, parath;
+
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -69,23 +71,27 @@ public class Assets {
 	}
 
 	private static void jsonLoad() {
-		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/village.json").readString());
+
 		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/worldmap.json").readString());
+		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/village.json").readString());
 		status_new_left = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/status/status_new_left.json").readString());
 		bag_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/bag_new.json").readString());
 		credit_list = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/credit_list.json").readString());
+
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		mainMusic = Gdx.audio.newMusic(Gdx.files.internal("data/buyeo.mp3"));
-		blackwood_parath = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/event/blackwood_parath.json").readString());
 
+		parath = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/event/parath.json").readString());
+		waiji = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/event/waiji.json").readString());
 		// prologue event json 로드
 		prologue_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/event/prologue.json").readString());
@@ -96,8 +102,8 @@ public class Assets {
 		// HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
 		resourceFileList.put("blackwood_json", blackwood_json);
 		resourceFileList.put("prologue_json", prologue_json);
-		resourceFileList.put("blackwood_parath.json", blackwood_parath);
-
+		resourceFileList.put("parath.json", parath);
+		resourceFileList.put("waiji.json", waiji);
 	}
 
 	private static void menuScreenLoad() {
@@ -155,16 +161,24 @@ public class Assets {
 				Gdx.files.internal("texture/nothing_image.png"));
 		yongsa_happy = new Texture(
 				Gdx.files.internal("texture/npc/yongsa_happy.jpg"));
+		yongsa_sick = new Texture(
+				Gdx.files.internal("texture/npc/yongsa_sick.jpg"));
 		yongsa_sad = new Texture(
-				Gdx.files.internal("texture/npc/yongsa_sad.jpg"));
+				Gdx.files.internal("texture/npc/yongsa_sad.png"));
 		parath_happy = new Texture(
 				Gdx.files.internal("texture/npc/parath_happy.jpg"));
+		yongsa_angry = new Texture(
+				Gdx.files.internal("texture/npc/yongsa_angry.png"));
 		parath_angry = new Texture(
 				Gdx.files.internal("texture/npc/parath_angry.jpg"));
+		waiji_happy = new Texture(
+				Gdx.files.internal("texture/npc/waiji_happy.png"));
+
 		scene1 = new Texture(Gdx.files.internal("texture/prologue/scene1.jpg"));
 		scene2 = new Texture(Gdx.files.internal("texture/prologue/scene2.jpg"));
 		scene3 = new Texture(Gdx.files.internal("texture/prologue/scene3.jpg"));
 		scene4 = new Texture(Gdx.files.internal("texture/prologue/scene4.jpg"));
+
 		prog_team1 = new Texture(
 				Gdx.files.internal("texture/credit/prog_team1.png"));
 		plan_team1 = new Texture(
@@ -173,12 +187,20 @@ public class Assets {
 				Gdx.files.internal("texture/credit/graphic_team1.png"));
 		parath_background = new Texture(
 				Gdx.files.internal("texture/npc/parath_background.png"));
+		waiji_background = new Texture(
+				Gdx.files.internal("texture/npc/waiji_background.png"));
+		blackwood_center = new Texture(
+				Gdx.files.internal("texture/blackwood/blackwood_center.png"));
+		main_background = new Texture(
+				Gdx.files.internal("texture/MainMenu_Background.png"));
 
 		// HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
+
 		resourceFileList.put("yongsa_happy", yongsa_happy);
 		resourceFileList.put("yongsa_sad", yongsa_sad);
 		resourceFileList.put("parath_happy", parath_happy);
 		resourceFileList.put("parath_angry", parath_angry);
+		resourceFileList.put("waiji_happy", waiji_happy);
 		resourceFileList.put("rabbit1", rabbit1);
 		resourceFileList.put("rabbit2", rabbit2);
 		resourceFileList.put("rabbit3", rabbit3);
@@ -191,6 +213,11 @@ public class Assets {
 		resourceFileList.put("graphic_team1", graphic_team1);
 		resourceFileList.put("nothing_image", nothing_image);
 		resourceFileList.put("parath_background", parath_background);
+		resourceFileList.put("waiji_background", waiji_background);
+		resourceFileList.put("blackwood_center", blackwood_center);
+		resourceFileList.put("yongsa_sick", yongsa_sick);
+		resourceFileList.put("yongsa_angry", yongsa_angry);
+		resourceFileList.put("main_background", main_background);
 	}
 
 	private static void fontLoad() {

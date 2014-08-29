@@ -20,6 +20,7 @@ public class EventScreen implements Screen {
 	private SceneManager scene;
 	private SceneUi stage;
 	private Stage buttonStage;
+
 	private String event;
 
 	public EventScreen() {
@@ -78,6 +79,7 @@ public class EventScreen implements Screen {
 				return true;
 			}
 		});
+
 	}
 
 	@Override
