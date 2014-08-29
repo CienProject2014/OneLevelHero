@@ -61,8 +61,9 @@ public class Assets {
 	}
 
 	private static void jsonLoad() {
-		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/village.json").readString());
+
 		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/worldmap.json").readString());
+		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/village.json").readString());
 		status_new_left = (JSONObject) JSONValue.parse(Gdx.files.internal("data/status/status_new_left.json").readString());
 		bag_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/bag_new.json").readString());
 		credit_list = (JSONObject) JSONValue.parse(Gdx.files.internal("data/credit_list.json").readString());

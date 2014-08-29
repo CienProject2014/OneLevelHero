@@ -17,7 +17,7 @@ import com.mygdx.event.SelectScene;
 import com.mygdx.util.EventManager;
 
 public class EventScreen implements Screen {
-
+	EventTypeEnum eventType;
 	private SpriteBatch batch;
 	private Scene scene;
 	private Stage stage;
@@ -82,13 +82,20 @@ public class EventScreen implements Screen {
 
 	private void showEventScene() {
 		// 인스턴스 생성
-		if (EventManager.getInstance().getEventType() == EventTypeEnum.CHAT)
-			scene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
-		else if (EventManager.getInstance().getEventType() == EventTypeEnum.SELECT)
-			scene = new SelectScene(table, batch, EventManager.getInstance().getEventCode());
-		else
-			Gdx.app.log("error", "scene할당 에러");
+		eventType = EventManager.getInstance().getEventType();
 
+		switch (eventType) {
+			case CHAT:
+				scene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
+				break;
+			case SELECT:
+				scene = new SelectScene(table, batch, EventManager.getInstance().getEventCode());
+				break;
+			default:
+				scene = new ChatScene(table, batch, EventManager.getInstance().getEventCode());
+				Gdx.app.log("error", "scene할당 에러");
+				break;
+		}
 		// 파싱을 하기 위한 로드
 
 		scene.load();

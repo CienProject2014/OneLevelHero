@@ -42,4 +42,5 @@ public class EventTrigger {
 		npc.setEvent(json.fromJson(Event.class, json.toJson(jsonObject)));
 		return npc;
 	}
+
 }

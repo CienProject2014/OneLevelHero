@@ -5,6 +5,7 @@ public class Event {
 	private String villageName;
 	private String npcName;
 	private String[] eventCode;
+	private String[] rewardCode;
 
 	public String getEventType() {
 		return eventType;
@@ -36,5 +37,13 @@ public class Event {
 
 	public void setEventCode(String[] eventCode) {
 		this.eventCode = eventCode;
+	}
+
+	public String[] getRewardCode() {
+		return rewardCode;
+	}
+
+	public void setRewardCode(String[] rewardCode) {
+		this.rewardCode = rewardCode;
 	}
 }

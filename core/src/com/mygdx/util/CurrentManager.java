@@ -1,12 +1,16 @@
 package com.mygdx.util;
 
 import com.mygdx.resource.SaveVersion;
-import com.mygdx.unit.Unit;
+import com.mygdx.unit.Hero;
+import com.mygdx.unit.Party;
 
 public class CurrentManager {
 	private SaveVersion saveVersion;
 	private String village;
-	private Unit unit;
+	private Hero leftHero;
+	private Hero centerHero;
+	private Hero rightHero;
+	Party party;
 
 	private String currentPosition = "O";
 	private String currentState = "village";
@@ -22,7 +26,7 @@ public class CurrentManager {
 	}
 
 	public CurrentManager() {
-
+		party = new Party();
 	}
 
 	public SaveVersion getVersion() {
@@ -41,12 +45,40 @@ public class CurrentManager {
 		this.village = village;
 	}
 
-	public Unit getUnit() {
-		return unit;
+	public SaveVersion getSaveVersion() {
+		return saveVersion;
 	}
 
-	public void setUnit(Unit unit) {
-		this.unit = unit;
+	public void setSaveVersion(SaveVersion saveVersion) {
+		this.saveVersion = saveVersion;
+	}
+
+	public Hero getLeftHero() {
+		return leftHero;
+	}
+
+	public void setLeftHero(Hero leftHero) {
+		this.leftHero = leftHero;
+	}
+
+	public Hero getCenterHero() {
+		return centerHero;
+	}
+
+	public void setCenterHero(Hero centerHero) {
+		this.centerHero = centerHero;
+	}
+
+	public Hero getRightHero() {
+		return rightHero;
+	}
+
+	public void setRightHero(Hero rightHero) {
+		this.rightHero = rightHero;
+	}
+
+	public static void setInstance(CurrentManager instance) {
+		CurrentManager.instance = instance;
 	}
 
 	public String getCurrentPosition() {
@@ -79,5 +111,13 @@ public class CurrentManager {
 
 	public void setCurrentDestination(String currentDestination) {
 		this.currentDestination = currentDestination;
+	}
+
+	public Party getParty() {
+		return party;
+	}
+
+	public void setParty(Party party) {
+		this.party = party;
 	}
 }
