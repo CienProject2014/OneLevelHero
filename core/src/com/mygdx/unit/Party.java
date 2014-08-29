@@ -5,8 +5,25 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 
 public class Party {
-	ArrayList<Hero> partyList = new ArrayList<Hero>();
-	ArrayList<Hero> battleMemberList = new ArrayList<Hero>();
+	private ArrayList<Hero> partyList = new ArrayList<Hero>();
+	private ArrayList<Hero> battleMemberList = new ArrayList<Hero>();
+
+	public ArrayList<Hero> getPartyList() {
+		return partyList;
+	}
+
+	public void setPartyList(ArrayList<Hero> partyList) {
+		this.partyList = partyList;
+	}
+
+	public ArrayList<Hero> getBattleMemberList() {
+		return battleMemberList;
+	}
+
+	public void setBattleMemberList(ArrayList<Hero> battleMemberList) {
+		this.battleMemberList = battleMemberList;
+	}
+
 	final int BATTLEMEMBERLIST = 3;
 
 	public void addParty(Hero hero) {

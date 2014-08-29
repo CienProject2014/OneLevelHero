@@ -39,6 +39,9 @@ public class Assets {
 			bag_json, credit_list, blackwood_json, prologue_json,
 			blackwood_character, blackwood_background, waiji, parath;
 
+	// NPC 이름
+	public static Image YongSa, Parath;
+
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -151,6 +154,12 @@ public class Assets {
 	}
 
 	private static void characterImageLoad() {
+
+		YongSa = new Image(new Texture(
+				Gdx.files.internal("texture/npc/YongSa.jpg")));
+		Parath = new Image(new Texture(
+				Gdx.files.internal("texture/npc/Parath.png")));
+
 		rabbit1 = new Texture(
 				Gdx.files.internal("texture/prologue/rabbit1.png"));
 		rabbit2 = new Texture(
@@ -218,6 +227,8 @@ public class Assets {
 		resourceFileList.put("yongsa_sick", yongsa_sick);
 		resourceFileList.put("yongsa_angry", yongsa_angry);
 		resourceFileList.put("main_background", main_background);
+		resourceFileList.put("YongSa", YongSa);
+		resourceFileList.put("Parath", Parath);
 	}
 
 	private static void fontLoad() {
