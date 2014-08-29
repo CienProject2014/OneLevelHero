@@ -2,8 +2,8 @@
   "B": {
     "name": "블랙우드",
     "imagesource": "Blackwood.atlas"
-    "background": "background",
-    "frontground": "tree",
+    "background": "BlackwoodBG.png",
+    "frontground": "BlackwoodFG.png",
     "ratio": "0.782",
     "building": [
       {
