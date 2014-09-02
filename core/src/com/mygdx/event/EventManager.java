@@ -1,9 +1,7 @@
-package com.mygdx.util;
+package com.mygdx.event;
 
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.event.Event;
-import com.mygdx.event.EventKey;
 import com.mygdx.resource.Assets;
 import com.mygdx.unit.NPC;
 
@@ -15,7 +13,7 @@ public class EventManager {
 	private EventKey eventKey;
 
 	public EventManager() {
-		setEventCode("Prg-scene-1");
+		setEventCode("Prg-scene-1-F");
 		parseEventCode(eventCode);
 		setEventType(EventTypeEnum.CHAT);
 	}
@@ -84,6 +82,7 @@ public class EventManager {
 		eventKey.setKeyOfVillage(temp[0]);
 		eventKey.setKeyOfNpc(temp[1]);
 		eventKey.setKeyOfSerialNumber(temp[2]);
+		eventKey.setKeyOfReward(temp[3]);
 		return eventKey;
 	}
 }

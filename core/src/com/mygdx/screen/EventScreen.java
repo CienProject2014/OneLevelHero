@@ -10,10 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.event.EventManager;
+import com.mygdx.event.RewardManager;
+import com.mygdx.event.SceneManager;
 import com.mygdx.ui.SceneUi;
 import com.mygdx.ui.SelectButtonUi;
-import com.mygdx.util.EventManager;
-import com.mygdx.util.SceneManager;
 
 public class EventScreen implements Screen {
 
@@ -24,7 +25,6 @@ public class EventScreen implements Screen {
 	private String event;
 
 	public EventScreen() {
-
 	}
 
 	public EventScreen(String event) {
@@ -70,6 +70,9 @@ public class EventScreen implements Screen {
 					sceneManager.showNextScene();
 					stage = sceneManager.getSceneUi();
 				} else {
+					System.out.println(EventManager.getInstance().getEventKey().getKeyOfReward());
+					if (EventManager.getInstance().getEventKey().getKeyOfReward().equals("T"))
+						RewardManager.getInstance().setCurrentReward(true);
 					new ScreenController(ScreenEnum.VILLAGE);
 
 				}

@@ -1,11 +1,10 @@
-package com.mygdx.util;
+package com.mygdx.event;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.mygdx.event.EventKey;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;

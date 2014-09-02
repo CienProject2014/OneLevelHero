@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.mygdx.event.EventManager;
 import com.mygdx.resource.Assets;
-import com.mygdx.util.EventManager;
 
 public class SceneUi extends Stage {
 	private Label script;

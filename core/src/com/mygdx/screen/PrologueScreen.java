@@ -13,8 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.util.EventManager;
-import com.mygdx.util.SceneManager;
+import com.mygdx.event.EventManager;
+import com.mygdx.event.SceneManager;
 
 public class PrologueScreen implements Screen {
 
@@ -54,7 +54,7 @@ public class PrologueScreen implements Screen {
 					// back to previous screen
 					// that envoke this event screen
 
-					EventManager.getInstance().setEventCode("Prg-scene-2", EventTypeEnum.CHAT);
+					EventManager.getInstance().setEventCode("Prg-scene-2-F", EventTypeEnum.CHAT);
 
 					new ScreenController(ScreenEnum.EVENT);
 

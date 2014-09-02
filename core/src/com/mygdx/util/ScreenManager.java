@@ -1,5 +1,6 @@
 package com.mygdx.util;
 
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.IntMap;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.game.OneLevelHero;
@@ -10,10 +11,10 @@ public final class ScreenManager {
 
 	private static OneLevelHero game;
 
-	private IntMap<com.badlogic.gdx.Screen> screens;
+	private IntMap<Screen> screens;
 
 	private ScreenManager() {
-		screens = new IntMap<com.badlogic.gdx.Screen>();
+		screens = new IntMap<Screen>();
 	}
 
 	public static ScreenManager getInstance() {

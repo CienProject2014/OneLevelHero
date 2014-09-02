@@ -1,5 +1,6 @@
 package com.mygdx.enums;
 
+import com.badlogic.gdx.Screen;
 import com.mygdx.screen.BGMScreen;
 import com.mygdx.screen.BonusPointScreen;
 import com.mygdx.screen.CGScreen;
@@ -16,42 +17,38 @@ import com.mygdx.screen.SaveScreen;
 import com.mygdx.screen.StatusScreen;
 import com.mygdx.screen.VillageScreen;
 import com.mygdx.screen.WorldMapScreen;
+import com.mygdx.util.ScreenManager;
 
 public enum ScreenEnum {
 
 	MENU {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new MenuScreen();
 		}
 	},
 	OPTION {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new OptionScreen();
 		}
 	},
 	PROLOGUE {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new PrologueScreen();
 		}
 	},
 	VILLAGE {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
+			ScreenManager.getInstance().dispose(VILLAGE);
 			return new VillageScreen();
 		}
 	},
 	WORLD_MAP {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new WorldMapScreen();
 		}
 	},
 	CREDIT {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new CreditScreen();
 		}
 	},
@@ -62,66 +59,58 @@ public enum ScreenEnum {
 		}
 	},
 	SAVE {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new SaveScreen();
 		}
 	},
 	BONUS {
 		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new BonusPointScreen();
 		}
 	},
 	LOAD {
 		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new LoadScreen();
 		}
 	},
 	EVENT {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new EventScreen();
 		}
 	},
 	MOVING {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new MovingScreen();
 		}
 	},
 	END {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new EndingScreen();
 		}
 	},
 	CG {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new CGScreen();
 		}
 	},
 	BGM {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new BGMScreen();
 		}
 	},
 	COLLETION {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new CollectionScreen();
 		}
 	},
 	STATUS {
-		@Override
-		public com.badlogic.gdx.Screen getScreenInstance() {
+		public Screen getScreenInstance() {
 			return new StatusScreen();
 		}
 	};
 
-	public abstract com.badlogic.gdx.Screen getScreenInstance();
+	public abstract Screen getScreenInstance();
 
 }

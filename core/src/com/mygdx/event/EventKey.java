@@ -4,6 +4,7 @@ public class EventKey {
 	private String keyOfVillage;
 	private String keyOfNpc;
 	private String keyOfSerialNumber;
+	private String keyOfReward;
 
 	public String getKeyOfVillage() {
 		return keyOfVillage;
@@ -27,5 +28,13 @@ public class EventKey {
 
 	public void setKeyOfSerialNumber(String keyOfSerialNumber) {
 		this.keyOfSerialNumber = keyOfSerialNumber;
+	}
+
+	public String getKeyOfReward() {
+		return keyOfReward;
+	}
+
+	public void setKeyOfReward(String keyOfReward) {
+		this.keyOfReward = keyOfReward;
 	}
 }

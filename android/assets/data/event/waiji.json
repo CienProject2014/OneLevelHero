@@ -3,17 +3,17 @@
   "villageName": "Blackwood",
   "npcName": "waiji",
   "eventCode": [
-    "B-waiji-1",
-    "B-waiji-2",
-    "B-waiji-3",
-    "B-waiji-4",
-    "B-waiji-5",
-    "B-waiji-6"
+    "B-waiji-1-T",
+    "B-waiji-2-T",
+    "B-waiji-3-T",
+    "B-waiji-4-F",
+    "B-waiji-5-F",
+    "B-waiji-6-F"
   ],
   "rewardCode" : [
   	"party-parath",
-  	"none",
-  	"none",
+  	"gold-100",
+  	"item-sword",
   	"none",
   	"none",
   	"none"

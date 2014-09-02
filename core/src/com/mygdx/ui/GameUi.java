@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.event.RewardManager;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryActor;
@@ -95,9 +96,12 @@ public class GameUi extends Stage {
 		dragAndDrop = new DragAndDrop();
 		Skin skin = Assets.skin;
 		inventoryActor = new InventoryActor(new Inventory(), dragAndDrop, skin);
-		alertMessage = new AlertMessage("Reward", Assets.skin).text("파라스가 동료로 합류했다").button("EXIT", new InputListener() {
+
+		//알림 메시지
+		alertMessage = new AlertMessage("보상", Assets.skin).text("보상을받음").button("확인", new InputListener() {
 			// button to exit app
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				RewardManager.getInstance().setCurrentReward(false);
 				alertMessage.setVisible(false);
 				return true;
 			}
@@ -109,6 +113,10 @@ public class GameUi extends Stage {
 		addActor(inventoryActor); // 인벤토리 Actor 추가
 		addActor(alertMessage);
 
+		//이벤트 보상 메시지가 있는지 확인
+		if (RewardManager.getInstance().isCurrentReward()) {
+			alertMessage.setVisible(true);
+		}
 	}
 
 	// 테이블 디자인

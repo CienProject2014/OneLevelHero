@@ -13,8 +13,8 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.CreditScene;
+import com.mygdx.event.EventManager;
 import com.mygdx.event.Scene;
-import com.mygdx.util.EventManager;
 
 public class CreditScreen implements Screen {
 	SpriteBatch batch;
