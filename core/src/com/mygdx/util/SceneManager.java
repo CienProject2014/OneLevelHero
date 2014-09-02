@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.mygdx.event.EventKey;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
@@ -13,10 +14,6 @@ import com.mygdx.resource.Scripts;
 import com.mygdx.ui.SceneUi;
 
 public class SceneManager {
-	private String eventCode;
-	private String keyOfVillage;
-	private String keyOfNPC;
-	private String keyOfSerialNumber;
 	private JSONObject jsonFile;
 	private JSONArray jsonArray;
 	private Scripts scripts;
@@ -28,11 +25,11 @@ public class SceneManager {
 	private int keyOfSceneNumber;
 	private int counter;
 	private SceneUi stage;
+	private EventKey eventKey;
 
-	public SceneManager(String eventCode) {
-		this.eventCode = eventCode;
-		parseEventCode(eventCode);
-		jsonFile = JSONFile.getJsonFile(keyOfVillage);
+	public SceneManager(EventKey eventKey) {
+		this.eventKey = eventKey;
+		jsonFile = JSONFile.getJsonFile(this.eventKey.getKeyOfVillage());
 		scripts = new Scripts(jsonFile);
 		character = new Characters(jsonFile);
 		background = new Backgrounds(jsonFile);
@@ -46,9 +43,9 @@ public class SceneManager {
 	}
 
 	private void makeResource() {
-		backgroundImage = new Image(background.getBackground(eventCode, keyOfSceneNumber));
-		script = new Label(scripts.getScript(eventCode, keyOfSceneNumber), Assets.skin);
-		characterImage = new Image(character.getImage(eventCode, keyOfSceneNumber));
+		backgroundImage = new Image(background.getBackground(eventKey, keyOfSceneNumber));
+		script = new Label(scripts.getScript(eventKey, keyOfSceneNumber), Assets.skin);
+		characterImage = new Image(character.getImage(eventKey, keyOfSceneNumber));
 		makeUi();
 	}
 
@@ -56,19 +53,12 @@ public class SceneManager {
 		stage = new SceneUi(script, characterImage, backgroundImage);
 	}
 
-	private void parseEventCode(String eventCode) {
-		String[] temp = eventCode.split("-");
-		keyOfVillage = temp[0];
-		keyOfNPC = temp[1];
-		keyOfSerialNumber = temp[2];
-	}
-
 	private void clearSceneNumber() {
 		keyOfSceneNumber = 0;
 	}
 
 	private int getTotalSceneNumber(JSONArray jsonArray) {
-		jsonArray = (JSONArray) jsonFile.get(keyOfNPC + "_" + keyOfSerialNumber);
+		jsonArray = (JSONArray) jsonFile.get(eventKey.getKeyOfNpc() + "_" + eventKey.getKeyOfSerialNumber());
 		counter = jsonArray.size();
 		return counter;
 	}

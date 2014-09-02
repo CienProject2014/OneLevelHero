@@ -211,7 +211,7 @@ public class GameUi extends Stage {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				new ScreenController(ScreenEnum.WORLD);
+				new ScreenController(ScreenEnum.WORLD_MAP);
 			}
 		});
 		helpButton.addListener(new InputListener() {

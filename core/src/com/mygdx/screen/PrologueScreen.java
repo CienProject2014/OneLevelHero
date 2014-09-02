@@ -39,14 +39,13 @@ public class PrologueScreen implements Screen {
 
 	@Override
 	public void show() {
-		scene = new SceneManager(EventManager.getInstance().getEventCode());
+		scene = new SceneManager(EventManager.getInstance().getEventKey());
 		stage = scene.getSceneUi();
 
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				if (scene.isNext()) {
 					scene.showNextScene();
 					stage = scene.getSceneUi();
@@ -55,8 +54,7 @@ public class PrologueScreen implements Screen {
 					// back to previous screen
 					// that envoke this event screen
 
-					EventManager.getInstance().setEventCode("Prg-scene-2",
-							EventTypeEnum.CHAT);
+					EventManager.getInstance().setEventCode("Prg-scene-2", EventTypeEnum.CHAT);
 
 					new ScreenController(ScreenEnum.EVENT);
 

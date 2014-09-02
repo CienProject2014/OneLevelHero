@@ -13,6 +13,7 @@ import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
 import com.mygdx.resource.Scripts;
+import com.mygdx.util.EventManager;
 
 public class CreditScene implements Scene {
 	// 신 진행 관련 변수
@@ -38,6 +39,7 @@ public class CreditScene implements Scene {
 	SpriteBatch batch;
 	Stage stage;
 	String eventCode;
+	private EventKey eventKey;
 
 	// 파싱되는 키값
 	String keyOfVillage;
@@ -61,11 +63,7 @@ public class CreditScene implements Scene {
 		character = new Characters(jsonFile);
 		background = new Backgrounds(jsonFile);
 		this.stage = stage;
-		this.eventCode = eventCode;
-
-		// 이벤트 코드 파싱
-		parseEventCode(eventCode);
-
+		this.eventKey = EventManager.getInstance().getParsedEventKey(eventCode);
 		// sceneNumber 초기화
 		clearSceneNumber();
 
@@ -77,25 +75,22 @@ public class CreditScene implements Scene {
 	public void load() {
 		clear();
 		// Background json 불러옴
-		backgroundTexture = background.getBackground(eventCode,
-				keyOfSceneNumber);
+		backgroundTexture = background.getBackground(eventKey, keyOfSceneNumber);
 
 		// 스크립트 파싱
-		text = scripts.getScript(eventCode, keyOfSceneNumber);
+		text = scripts.getScript(eventKey, keyOfSceneNumber);
 		script = new Label(text, Assets.skin);
 
 		// 케릭터 불러옴
-		characterTexture = character.getImage(eventCode, keyOfSceneNumber);
+		characterTexture = character.getImage(eventKey, keyOfSceneNumber);
 		characterImage = new Image(characterTexture);
 
 		// size설정
 		script.setFontScale(Assets.realWidth / 1280);
 		script.setWrap(true);
 		script.setWidth(Assets.realWidth * 0.8f);
-		characterImage.setSize(Assets.realWidth * 0.2f,
-				Assets.realHeight * 0.2f);
-		characterImage.setPosition(0.2f * Assets.realWidth,
-				0.7f * Assets.realHeight);
+		characterImage.setSize(Assets.realWidth * 0.2f, Assets.realHeight * 0.2f);
+		characterImage.setPosition(0.2f * Assets.realWidth, 0.7f * Assets.realHeight);
 
 		// 이미지 뿌려주기
 		table.bottom().left(); // table 전체를 화면 아래 쪽으로
@@ -138,8 +133,7 @@ public class CreditScene implements Scene {
 	}
 
 	private int getNumberOfScene(JSONArray jsonArray) {
-		jsonArray = (JSONArray) jsonFile
-				.get(keyOfNPC + "_" + keyOfSerialNumber);
+		jsonArray = (JSONArray) jsonFile.get(keyOfNPC + "_" + keyOfSerialNumber);
 		int counter = jsonArray.size();
 		return counter;
 	}

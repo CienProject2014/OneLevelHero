@@ -174,7 +174,7 @@ public class MovingScreen implements Screen {
 
 			} else if (currentState.equals("turningpoint")) {
 
-				new ScreenController(ScreenEnum.WORLD);
+				new ScreenController(ScreenEnum.WORLD_MAP);
 
 			} else {
 

@@ -17,7 +17,7 @@ import com.mygdx.util.SceneManager;
 
 public class EventScreen implements Screen {
 
-	private SceneManager scene;
+	private SceneManager sceneManager;
 	private SceneUi stage;
 	private Stage buttonStage;
 
@@ -51,9 +51,9 @@ public class EventScreen implements Screen {
 
 	@Override
 	public void show() {
-		scene = new SceneManager(EventManager.getInstance().getEventCode());
+		sceneManager = new SceneManager(EventManager.getInstance().getEventKey());
 		buttonStage = new SelectButtonUi();
-		stage = scene.getSceneUi();
+		stage = sceneManager.getSceneUi();
 
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
@@ -66,9 +66,9 @@ public class EventScreen implements Screen {
 
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if (scene.isNext()) {
-					scene.showNextScene();
-					stage = scene.getSceneUi();
+				if (sceneManager.isNext()) {
+					sceneManager.showNextScene();
+					stage = sceneManager.getSceneUi();
 				} else {
 					new ScreenController(ScreenEnum.VILLAGE);
 

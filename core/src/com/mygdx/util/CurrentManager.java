@@ -7,6 +7,7 @@ import com.mygdx.unit.Party;
 public class CurrentManager {
 	private SaveVersion saveVersion;
 	private String village;
+	//<String, Enum>타입의 HashMap으로 바꾸기
 	private Hero leftHero;
 	private Hero centerHero;
 	private Hero rightHero;

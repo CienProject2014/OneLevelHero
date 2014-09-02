@@ -17,7 +17,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.EventTrigger;
 import com.mygdx.resource.Assets;
 import com.mygdx.util.CurrentManager;
 import com.mygdx.util.EventManager;
@@ -68,15 +67,11 @@ public class VillageStage extends Stage {
 			name = (String) buildinginfo.get("name");
 			buildingkey = (String) buildinginfo.get("key");
 
-			posX = viewportwidth
-					* Float.parseFloat((String) buildinginfo.get("positionX"));
-			posY = viewportheight
-					* Float.parseFloat((String) buildinginfo.get("positionY"));
+			posX = viewportwidth * Float.parseFloat((String) buildinginfo.get("positionX"));
+			posY = viewportheight * Float.parseFloat((String) buildinginfo.get("positionY"));
 
-			width = viewportwidth
-					* Float.parseFloat((String) buildinginfo.get("width"));
-			height = viewportheight
-					* Float.parseFloat((String) buildinginfo.get("height"));
+			width = viewportwidth * Float.parseFloat((String) buildinginfo.get("width"));
+			height = viewportheight * Float.parseFloat((String) buildinginfo.get("height"));
 
 			setBounds(posX - width / 2, posY - height / 2, width, height);
 
@@ -96,8 +91,7 @@ public class VillageStage extends Stage {
 	// 마을 정보에 맞게 스테이지 형성
 	private void village_setter() {
 
-		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth,
-				Assets.realHeight);
+		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth, Assets.realHeight);
 		// cam.translate(100, 300);
 		cam.position.set(Assets.realWidth / 2, Assets.realHeight * 0.25f, 0);
 		getViewport().setCamera(cam);
@@ -105,8 +99,7 @@ public class VillageStage extends Stage {
 		camera = getViewport().getCamera();
 
 		// 마을 제이슨 완성 시 이걸로
-		JSONObject villageData = (JSONObject) Assets.village_json
-				.get(CurrentManager.getInstance().getCurrentPosition());
+		JSONObject villageData = (JSONObject) Assets.village_json.get(CurrentManager.getInstance().getCurrentPosition());
 		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
 		villageData = (JSONObject) Assets.village_json.get("B");
 
@@ -115,13 +108,10 @@ public class VillageStage extends Stage {
 		viewportwidth = Assets.realWidth;
 		viewportheight = viewportwidth * ratio;
 
-		villageAtlas = new TextureAtlas(Gdx.files.internal("texture/village/"
-				+ (String) villageData.get("imagesource")));
+		villageAtlas = new TextureAtlas(Gdx.files.internal("texture/village/" + (String) villageData.get("imagesource")));
 
-		Texture background = new Texture(Gdx.files.internal("texture/village/"
-				+ (String) villageData.get("background")));
-		Texture frontground = new Texture(Gdx.files.internal("texture/village/"
-				+ (String) villageData.get("frontground")));
+		Texture background = new Texture(Gdx.files.internal("texture/village/" + (String) villageData.get("background")));
+		Texture frontground = new Texture(Gdx.files.internal("texture/village/" + (String) villageData.get("frontground")));
 
 		Image backgroundImage = new Image(background);
 		backgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
@@ -150,15 +140,13 @@ public class VillageStage extends Stage {
 			buildingbutton[i].addListener(new InputListener() {
 
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					// TODO Auto-generated method stub
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
 					System.out.println(((Building) event.getListenerActor()).name);
 				}
@@ -169,31 +157,24 @@ public class VillageStage extends Stage {
 		for (int i = 0; i < num_of_npc; i++) {
 			JSONObject npcinfo = (JSONObject) npcArray.get(i);
 
-			npcbutton[i] = new TextButton((String) npcinfo.get("name"),
-					Assets.skin);
+			npcbutton[i] = new TextButton((String) npcinfo.get("name"), Assets.skin);
 
-			float posX = viewportwidth
-					* Float.parseFloat((String) npcinfo.get("positionX"));
-			float posY = viewportheight
-					* Float.parseFloat((String) npcinfo.get("positionY"));
+			float posX = viewportwidth * Float.parseFloat((String) npcinfo.get("positionX"));
+			float posY = viewportheight * Float.parseFloat((String) npcinfo.get("positionY"));
 
 			npcbutton[i].moveBy(posX, posY);
 
 			npcbutton[0].addListener(new InputListener() {
 
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					// TODO Auto-generated method stub
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
-					EventManager.getInstance().setEventCode("B-waiji-0",
-							EventTypeEnum.SELECT);
-					EventTrigger.getInstance().setNpcEvent();
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					EventManager.getInstance().setEventCode("B-waiji-0", EventTypeEnum.SELECT).setNpcEvent();
 					new ScreenController(ScreenEnum.EVENT);
 				}
 			});
@@ -207,15 +188,13 @@ public class VillageStage extends Stage {
 		sift_button.addListener(new InputListener() {
 
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
 				if (currentState.equals("down")) {
 					currentState = "moveup";

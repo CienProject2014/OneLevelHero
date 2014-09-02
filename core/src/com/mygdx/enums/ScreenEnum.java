@@ -43,7 +43,7 @@ public enum ScreenEnum {
 			return new VillageScreen();
 		}
 	},
-	WORLD {
+	WORLD_MAP {
 		@Override
 		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new WorldMapScreen();

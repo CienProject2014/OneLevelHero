@@ -11,6 +11,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.mygdx.event.EventKey;
 import com.mygdx.unit.Hero;
 import com.mygdx.util.CurrentManager;
 
@@ -27,6 +28,7 @@ public class Characters {
 	Button[] eventButton;
 	int count;
 	HashMap<String, Object> resourceFileList = Assets.resourceFileList;
+	private EventKey eventKey;
 
 	public Characters() {
 
@@ -38,15 +40,14 @@ public class Characters {
 	}
 
 	// Key값에 맞는 이미지를 반환함
-	public Texture getImage(String key, int keyOfSceneNumber) {
-		keyParser(key); // 키값을 나눈다
-
+	public Texture getImage(EventKey eventKey, int keyOfSceneNumber) {
+		this.eventKey = eventKey;
 		//JSON에서 불러온 이미지를 리턴한다
 		return parseJSONImage(keyOfSceneNumber);
 	}
 
-	public Texture getImage(String key) {
-		return getImage(key, 1);
+	public Texture getImage(EventKey eventKey) {
+		return getImage(eventKey, 1);
 	}
 
 	public Image[] getBattleMemberImage() {
@@ -71,7 +72,7 @@ public class Characters {
 
 	// 과정 (2) JSON에서 불러온 이미지를 리턴
 	private Texture parseJSONImage(int keyOfSceneNumber) {
-		JSONArray jsonArray = (JSONArray) fileName.get(keyOfNPC + "_" + keyOfNumber);
+		JSONArray jsonArray = (JSONArray) fileName.get(eventKey.getKeyOfNpc() + "_" + eventKey.getKeyOfSerialNumber());
 		JSONObject sceneObject = (JSONObject) jsonArray.get(keyOfSceneNumber);
 		String imageName = (String) sceneObject.get("character"); //이미지 이름 추출
 
