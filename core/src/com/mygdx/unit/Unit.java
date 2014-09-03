@@ -1,5 +1,7 @@
 package com.mygdx.unit;
 
+import com.badlogic.gdx.Gdx;
+
 public class Unit {
 	public Status status;
 	public Bag bag;
@@ -9,6 +11,7 @@ public class Unit {
 		this.unitName = unitName;
 		this.status = status;
 		this.bag = bag;
+		Gdx.app.log("DEBUG", "unit is constructed");
 	}
 
 	public String getUnitName() {
@@ -18,5 +21,4 @@ public class Unit {
 	public void setUnitName(String unitName) {
 		this.unitName = unitName;
 	}
-
 }

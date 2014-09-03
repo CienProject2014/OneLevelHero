@@ -6,6 +6,7 @@ import com.mygdx.loader.StatusLoader;
 import com.mygdx.resource.Assets;
 import com.mygdx.unit.Hero;
 
+
 public class LoadLauncher {
 	JSONObject status_new_left, bag_json;
 	StatusLoader statusLoader;

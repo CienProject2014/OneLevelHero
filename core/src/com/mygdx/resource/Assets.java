@@ -28,7 +28,19 @@ public class Assets {
 			parath_angry, parath_happy, nothing_image;
 
 	//JSON
-	public static JSONObject worldmap_json, village_json, dungeon_json, status_new_left, bag_json, credit_list, blackwood_json, prologue_json, blackwood_character, blackwood_background;
+	public static JSONObject 
+							worldmap_json, 
+							village_json, 
+							dungeon_json, 
+							status_new_left, 
+							bag_json, 
+							credit_list, 
+							blackwood_json, 
+							prologue_json, 
+							blackwood_character, 
+							blackwood_background,
+							monster_json;
+	
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -70,6 +82,9 @@ public class Assets {
 		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		mainMusic = Gdx.audio.newMusic(Gdx.files.internal("data/buyeo.mp3"));
+		
+		// 몬스터 설정 로드
+		monster_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/monster.json").readString());
 
 		//prologue event json 로드
 		prologue_json = (JSONObject) JSONValue.parse(Gdx.files.internal("data/event/prologue.json").readString());

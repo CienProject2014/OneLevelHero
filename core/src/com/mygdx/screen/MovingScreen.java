@@ -32,7 +32,7 @@ public class MovingScreen implements Screen {
 
 	int roadlength;
 	int leftlength;
-	int temp;
+	public static int temp;
 	boolean battled;
 
 	Texture texture = new Texture(Gdx.files.internal("texture/justground.jpg"));

@@ -16,13 +16,12 @@ public class BattleScreen implements Screen {
 	OneLevelHero game;
 	GameUi uiTable;
 	BattleStage battleStage;
-	Fight fight; // 실제 전투가 일어나는 알고리즘 담당.
 	TextButton fightButton;
 	TextButton fleeButton;
-	boolean a;
+	boolean isFight;
 
 	public BattleScreen() {
-		
+		isFight = false;
 	}
 
 	@Override
@@ -31,7 +30,8 @@ public class BattleScreen implements Screen {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		battleStage.draw();
-		uiTable.draw();
+		if(battleStage.isFight)
+			uiTable.draw();
 	}
 
 	@Override
@@ -42,17 +42,13 @@ public class BattleScreen implements Screen {
 
 	@Override
 	public void show() {
-		battleStage = new BattleStage();
+		battleStage = new BattleStage(CurrentManager.getInstance().getCurrentDungeon());
 		uiTable = new GameUi();
-		fight = new Fight(CurrentManager.getInstance().getCurrentDungeon());
-
-		InputMultiplexer multiplexer = new InputMultiplexer();
 		
+		InputMultiplexer multiplexer = new InputMultiplexer();
 		multiplexer.addProcessor(0, uiTable);
 		multiplexer.addProcessor(1, battleStage);
-		
 		Gdx.input.setInputProcessor(multiplexer);
-		
 	}
 
 	@Override
