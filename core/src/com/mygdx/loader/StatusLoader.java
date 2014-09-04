@@ -23,7 +23,7 @@ public class StatusLoader {
 
 	// (1) 키값 파싱
 	void keyParser(String key) {
-		setUnitName("YongSa");
+		setUnitName("yongsa");
 	}
 
 	// (2) JSON 정보 로딩

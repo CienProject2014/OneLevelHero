@@ -18,11 +18,11 @@ public class NPC {
 		}
 	}
 
-	public Event getEvent() {
+	public Event getNpcEvent() {
 		return npcEvent;
 	}
 
-	public void setEvent(Event event) {
+	public void setNpcEvent(Event event) {
 		this.npcEvent = event;
 	}
 

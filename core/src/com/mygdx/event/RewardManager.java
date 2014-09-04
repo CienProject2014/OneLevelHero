@@ -12,7 +12,7 @@ public class RewardManager {
 	private String rewardCode;
 
 	public RewardManager() {
-		setRewardCode("none");
+		setRewardCode("none-none");
 		setCurrentReward(false);
 	}
 
@@ -30,21 +30,14 @@ public class RewardManager {
 
 		String[] temp = rewardCode.split("-");
 		rewardKey = new RewardKey();
-		if (temp[0].equals("party")) {
-			rewardKey.setKeyOfRewardType(RewardTypeEnum.PARTY);
-		} else if (temp[0].equals("gold")) {
-			rewardKey.setKeyOfRewardType(RewardTypeEnum.GOLD);
-		} else if (temp[0].equals("item")) {
-			rewardKey.setKeyOfRewardType(RewardTypeEnum.ITEM);
-		} else {
-			Gdx.app.log("error", "rewardType 주입 에러");
-		}
+		rewardKey.setKeyOfRewardType(temp[0]);
 		rewardKey.setKeyOfRewardValue(temp[1]);
 		return rewardKey;
 	}
 
 	public RewardKey getRewardKey() {
-		parseRewardCode(rewardCode);
+		rewardCode = EventManager.getInstance().getEventKey().getKeyOfReward();
+
 		return rewardKey;
 	}
 
@@ -61,8 +54,9 @@ public class RewardManager {
 		return currentReward;
 	}
 
-	public void setCurrentReward(Boolean currentReward) {
+	public RewardManager setCurrentReward(Boolean currentReward) {
 		this.currentReward = currentReward;
+		return this;
 	}
 
 	public String getRewardCode() {
@@ -70,7 +64,36 @@ public class RewardManager {
 	}
 
 	public void setRewardCode(String rewardCode) {
+		parseRewardCode(rewardCode);
 		this.rewardCode = rewardCode;
+	}
+
+	public void doReward() {
+
+		String rewardType = RewardManager.getInstance().rewardKey.getKeyOfRewardType();
+		switch (RewardTypeEnum.valueOf(rewardType)) {
+			case PARTY:
+				RewardManager rewardManager = new PartyRewardManager();
+				rewardManager.doReward();
+				return;
+			default:
+				Gdx.app.log("error", "rewardType 주입 오류");
+				return;
+		}
+
+	}
+
+	public String getRewardMessage() {
+		String rewardType = RewardManager.getInstance().rewardKey.getKeyOfRewardType();
+		switch (RewardTypeEnum.valueOf(rewardType)) {
+			case PARTY:
+				RewardManager rewardManager = new PartyRewardManager();
+				return rewardManager.getRewardMessage();
+
+			default:
+				Gdx.app.log("error", "rewardType 주입 오류");
+				return null;
+		}
 	}
 
 }

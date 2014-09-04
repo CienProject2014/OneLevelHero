@@ -71,8 +71,10 @@ public class EventScreen implements Screen {
 					stage = sceneManager.getSceneUi();
 				} else {
 					System.out.println(EventManager.getInstance().getEventKey().getKeyOfReward());
-					if (EventManager.getInstance().getEventKey().getKeyOfReward().equals("T"))
+					if (EventManager.getInstance().getEventKey().getKeyOfReward().equals("T")) {
 						RewardManager.getInstance().setCurrentReward(true);
+						RewardManager.getInstance().doReward();
+					}
 					new ScreenController(ScreenEnum.VILLAGE);
 
 				}

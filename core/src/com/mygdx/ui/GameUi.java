@@ -98,10 +98,11 @@ public class GameUi extends Stage {
 		inventoryActor = new InventoryActor(new Inventory(), dragAndDrop, skin);
 
 		//알림 메시지
-		alertMessage = new AlertMessage("보상", Assets.skin).text("보상을받음").button("확인", new InputListener() {
+		alertMessage = new AlertMessage("[ 보상 ]", Assets.skin).text(RewardManager.getInstance().getRewardMessage()).button("확인", new InputListener() {
 			// button to exit app
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				RewardManager.getInstance().setCurrentReward(false);
+
 				alertMessage.setVisible(false);
 				return true;
 			}

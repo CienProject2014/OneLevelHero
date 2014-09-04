@@ -70,9 +70,9 @@ public class EventManager {
 
 	public EventManager setNpcEvent() {
 		Json json = new Json();
-		Object jsonObject = Assets.waiji;
+		Object jsonObject = Assets.waiji_json;
 		eventNpc = new NPC();
-		eventNpc.setEvent(json.fromJson(Event.class, json.toJson(jsonObject)));
+		eventNpc.setNpcEvent(json.fromJson(Event.class, json.toJson(jsonObject)));
 		return this;
 	}
 
@@ -83,6 +83,13 @@ public class EventManager {
 		eventKey.setKeyOfNpc(temp[1]);
 		eventKey.setKeyOfSerialNumber(temp[2]);
 		eventKey.setKeyOfReward(temp[3]);
+		if (eventKey.getKeyOfReward().equals("T")) {
+			String[] rewardCodeArray = eventNpc.getNpcEvent().getRewardCode();
+			String rewardCode = rewardCodeArray[Integer.valueOf(eventKey.getKeyOfSerialNumber()) - 1];
+			RewardManager.getInstance().setRewardCode(rewardCode);
+		} else {
+			RewardManager.getInstance().setRewardCode("NONE-none");
+		}
 		return eventKey;
 	}
 }

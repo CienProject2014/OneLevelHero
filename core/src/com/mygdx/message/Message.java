@@ -15,9 +15,10 @@ public class Message extends Dialog {
 	}
 
 	private void initialize() {
-		padTop(60); // set padding on top of the dialog title  
-		getButtonTable().defaults().height(60); // set buttons height  
-		setPosition(300, 100);
+		padTop(70); // set padding on top of the dialog title  
+		getButtonTable().defaults().height(50); // set buttons height  
+		setPosition(400, 400);
+		setSize(600, 200);
 		setModal(true);
 		setMovable(true);
 		setResizable(false);

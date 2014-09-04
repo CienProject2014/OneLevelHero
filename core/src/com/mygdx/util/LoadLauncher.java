@@ -44,7 +44,7 @@ public class LoadLauncher {
 		// statusLoader에서 jsonObject를 파싱하고 클래스 정보를 주입함
 		statusLoader = new StatusLoader(CurrentManager.getInstance().getVersion(), "Hero", status_new_left, bag_json);
 
-		leftHero = new Hero("YongSa", statusLoader.getStatus(), statusLoader.getBag()); // unit클래스에 파싱한 json 정보를 뿌려줌
+		leftHero = new Hero("yongsa", statusLoader.getStatus(), statusLoader.getBag()); // unit클래스에 파싱한 json 정보를 뿌려줌
 
 		CurrentManager.getInstance().setLeftHero(leftHero); // currentManager가 unit을	 소유하도록 만든다.
 	}

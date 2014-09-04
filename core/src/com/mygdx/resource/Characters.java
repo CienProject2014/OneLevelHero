@@ -56,7 +56,6 @@ public class Characters {
 
 		Image[] memberImage = new Image[battleMemberList.size()];
 		for (int i = 0; i < battleMemberList.size(); i++) {
-
 			memberImage[i] = (Image) resourceFileList.get(battleMemberList.get(i).getUnitName());
 		}
 		return memberImage;

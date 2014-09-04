@@ -62,7 +62,7 @@ public class SelectButtonUi extends Stage {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				String eventCode = EventManager.getInstance().getEventNpc().getEvent().getEventCode()[0];
+				String eventCode = EventManager.getInstance().getEventNpc().getNpcEvent().getEventCode()[0];
 				EventManager.getInstance().setEventCode(eventCode, EventTypeEnum.CHAT);
 				new ScreenController(ScreenEnum.EVENT);
 			}

@@ -1,9 +1,8 @@
 package com.mygdx.event;
 
-import com.mygdx.enums.RewardTypeEnum;
 
 public class RewardKey {
-	private RewardTypeEnum keyOfRewardType;
+	private String keyOfRewardType;
 	private String keyOfRewardValue;
 
 	public String getKeyOfRewardValue() {
@@ -14,11 +13,11 @@ public class RewardKey {
 		this.keyOfRewardValue = keyOfRewardValue;
 	}
 
-	public RewardTypeEnum getKeyOfRewardType() {
+	public String getKeyOfRewardType() {
 		return keyOfRewardType;
 	}
 
-	public void setKeyOfRewardType(RewardTypeEnum keyOfRewardType) {
+	public void setKeyOfRewardType(String keyOfRewardType) {
 		this.keyOfRewardType = keyOfRewardType;
 	}
 }
