@@ -27,6 +27,12 @@ public class Party {
 	final int BATTLEMEMBERLIST = 3;
 
 	public void addParty(Hero hero) {
+		for (int i = 0; i < partyList.size(); i++) {
+			if (partyList.get(i).getUnitName().equals(hero.getUnitName())) {
+				Gdx.app.log("Error", hero.getUnitName() + "가 이미 멤버에 있습니다.");
+				return;
+			}
+		}
 		partyList.add(hero);
 		Gdx.app.log("Info", hero.getUnitName() + "를 파티에 추가했습니다.");
 		if (battleMemberList.size() < 3) {
@@ -50,6 +56,7 @@ public class Party {
 	}
 
 	public void addBattleMember(Hero hero) {
+
 		if (partyList.contains(hero)) {
 			battleMemberList.add(hero);
 			Gdx.app.log("Info", hero.getUnitName() + "를 전투 멤버에 추가했습니다.");
