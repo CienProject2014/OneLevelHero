@@ -1,0 +1,27 @@
+{
+  "unitName": "waiji",
+  "event": [
+    {
+      "eventType": "CHAT",
+      "reward": {
+        "rewardType": "PARTY",
+        "rewardTarget": "parath"
+      },
+      "scene": [
+        {
+          "script": "그래, 기운은 차렸는가?",
+          
+        }
+      ]
+    }
+  ],
+  "greeting": {
+    "eventType": "CHAT",
+    "scene": [
+      {
+        "script": "블랙우드 마을에 온 것을 환영하네",
+       
+      }
+    ]
+  }
+}

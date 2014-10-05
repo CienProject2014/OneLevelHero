@@ -3,8 +3,8 @@
   "villageName": "Blackwood",
   "npcName": "waiji",
   "eventCode": [
-    "B-waiji-1-T",
-    "B-waiji-2-T",
+    "PARTY-parath",
+    "B-waiji-NONE-none",
     "B-waiji-3-T",
     "B-waiji-4-F",
     "B-waiji-5-F",

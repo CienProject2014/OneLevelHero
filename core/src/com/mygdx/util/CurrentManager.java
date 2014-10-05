@@ -1,10 +1,12 @@
 package com.mygdx.util;
 
+import java.io.Serializable;
+
 import com.mygdx.resource.SaveVersion;
 import com.mygdx.unit.Hero;
 import com.mygdx.unit.Party;
 
-public class CurrentManager {
+public class CurrentManager implements Serializable {
 	private SaveVersion saveVersion;
 	private String village;
 	//<String, Enum>타입의 HashMap으로 바꾸기
