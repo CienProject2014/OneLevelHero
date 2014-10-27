@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.CreditScene;
 import com.mygdx.event.EventManager;
 import com.mygdx.event.Scene;
 
@@ -78,7 +77,7 @@ public class CreditScreen implements Screen {
 	}
 
 	private void showEventScene() {
-
+/*
 		EventManager.getInstance().setEventCode("Crd-scene-1");
 		EventManager.getInstance().setEventType(EventTypeEnum.CREDIT);
 
@@ -89,6 +88,7 @@ public class CreditScreen implements Screen {
 			Gdx.app.log("Error", "Scene 주입 에러");
 		// 파싱을 하기 위한 로드
 		scene.load();
+		*/
 	}
 
 	@Override
