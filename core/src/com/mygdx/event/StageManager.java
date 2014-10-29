@@ -10,9 +10,9 @@ import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
 import com.mygdx.resource.JSONFile;
 import com.mygdx.resource.Scripts;
-import com.mygdx.ui.SceneUi;
+import com.mygdx.stage.EventStage;
 
-public class SceneManager {
+public class StageManager {
 	private JSONObject jsonFile;
 	private JSONArray jsonArray;
 	private Scripts scripts;
@@ -23,10 +23,10 @@ public class SceneManager {
 	private Image backgroundImage;
 	private int keyOfSceneNumber;
 	private int counter;
-	private SceneUi stage;
+	private EventStage stage;
 	private EventKey eventKey;
 
-	public SceneManager(EventKey eventKey) {
+	public StageManager(EventKey eventKey) {
 		this.eventKey = eventKey;
 		jsonFile = JSONFile.getJsonFile(this.eventKey.getKeyOfVillage());
 		scripts = new Scripts(jsonFile);
@@ -37,7 +37,7 @@ public class SceneManager {
 		makeResource();
 	}
 
-	public SceneUi getSceneUi() {
+	public EventStage getStage() {
 		return stage;
 	}
 
@@ -45,11 +45,11 @@ public class SceneManager {
 		backgroundImage = new Image(background.getBackground(eventKey, keyOfSceneNumber));
 		script = new Label(scripts.getScript(eventKey, keyOfSceneNumber), Assets.skin);
 		characterImage = new Image(character.getImage(eventKey, keyOfSceneNumber));
-		makeUi();
+		makeStage();
 	}
 
-	private void makeUi() {
-		stage = new SceneUi(script, characterImage, backgroundImage);
+	private void makeStage() {
+		stage = new EventStage(script, characterImage, backgroundImage);
 	}
 
 	private void clearSceneNumber() {

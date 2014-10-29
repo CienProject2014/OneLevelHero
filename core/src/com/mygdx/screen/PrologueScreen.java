@@ -14,12 +14,12 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.EventManager;
-import com.mygdx.event.SceneManager;
+import com.mygdx.event.StageManager;
 
 public class PrologueScreen implements Screen {
 
 	private Stage stage;
-	private SceneManager scene;
+	private StageManager scene;
 
 	public PrologueScreen() {
 	}
@@ -39,8 +39,8 @@ public class PrologueScreen implements Screen {
 
 	@Override
 	public void show() {
-		scene = new SceneManager(EventManager.getInstance().getEventKey());
-		stage = scene.getSceneUi();
+		scene = new StageManager(EventManager.getInstance().getEventKey());
+		stage = scene.getStage();
 
 		Gdx.input.setInputProcessor(stage);
 
@@ -48,7 +48,7 @@ public class PrologueScreen implements Screen {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				if (scene.isNext()) {
 					scene.showNextScene();
-					stage = scene.getSceneUi();
+					stage = scene.getStage();
 				} else {
 
 					// back to previous screen

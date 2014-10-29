@@ -1,4 +1,4 @@
-package com.mygdx.ui;
+package com.mygdx.stage;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -7,12 +7,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.event.EventManager;
 import com.mygdx.resource.Assets;
 
-public class SceneUi extends Stage {
+public class EventStage extends Stage {
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
 
-	public SceneUi(Label script, Image characterImage, Image backgroundImage) {
+	public EventStage(Label script, Image characterImage, Image backgroundImage) {
 
 		this.script = script;
 		this.characterImage = characterImage;

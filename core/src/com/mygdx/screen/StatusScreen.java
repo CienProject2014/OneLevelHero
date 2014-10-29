@@ -3,11 +3,11 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.mygdx.ui.StatusUi;
+import com.mygdx.stage.StatusStage;
 
 public class StatusScreen implements Screen {
 
-	StatusUi statusUi;
+	StatusStage statusUi;
 
 	@Override
 	public void render(float delta) {
@@ -27,7 +27,7 @@ public class StatusScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		statusUi = new StatusUi();
+		statusUi = new StatusStage();
 	}
 
 	@Override

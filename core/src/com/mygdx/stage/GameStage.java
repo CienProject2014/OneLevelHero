@@ -1,4 +1,4 @@
-package com.mygdx.ui;
+package com.mygdx.stage;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -22,9 +22,10 @@ import com.mygdx.message.Message;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Characters;
 import com.mygdx.screen.BattleScreen;
+import com.mygdx.ui.StatusBarUi;
 import com.mygdx.util.CurrentManager;
 
-public class GameUi extends Stage {
+public class GameStage extends Stage {
 	Table uiTable;
 	OneLevelHero game;
 	InventoryActor inventoryActor;
@@ -56,7 +57,7 @@ public class GameUi extends Stage {
 	float realheight;
 	float realwidth;
 
-	public GameUi() {
+	public GameStage() {
 		// 초기화
 		character = new Characters();
 		uiTable = new Table();

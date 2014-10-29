@@ -1,4 +1,4 @@
-package com.mygdx.ui;
+package com.mygdx.stage;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.resource.Assets;
 
-public class StatusUi extends Stage {
+public class StatusStage extends Stage {
 	// 사용될 변수 선언
 	Table uiTable;
 	Table rightTable;
@@ -31,7 +31,7 @@ public class StatusUi extends Stage {
 	Image character;
 	Label[] status;
 
-	public StatusUi() {
+	public StatusStage() {
 		skin = Assets.skin;
 		// Table 초기화
 		uiTable = new Table(skin);

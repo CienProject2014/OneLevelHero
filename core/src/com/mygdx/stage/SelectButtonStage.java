@@ -1,4 +1,4 @@
-package com.mygdx.ui;
+package com.mygdx.stage;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -11,12 +11,12 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.EventManager;
 import com.mygdx.resource.Assets;
 
-public class SelectButtonUi extends Stage {
+public class SelectButtonStage extends Stage {
 
 	private TextButton[] chatButton;
 	private TextButtonStyle[] chatStyle;
 
-	public SelectButtonUi() {
+	public SelectButtonStage() {
 		chatButton = new TextButton[6];
 		chatStyle = new TextButtonStyle[6];
 		showEventButton();

@@ -2,7 +2,7 @@ package com.mygdx.model;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
-public class Scene {
+public class Stage {
 	private String script;
 	private Image character;
 	private Image background;

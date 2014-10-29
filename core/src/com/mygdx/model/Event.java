@@ -5,7 +5,7 @@ import java.util.List;
 public class Event {
 	private String eventType;
 	private Reward reward;
-	private List<Scene> scene;
+	private List<Stage> stage;
 
 	public String getEventType() {
 		return eventType;
@@ -23,12 +23,12 @@ public class Event {
 		this.reward = reward;
 	}
 
-	public List<Scene> getScene() {
-		return scene;
+	public List<Stage> getScene() {
+		return stage;
 	}
 
-	public void setScene(List<Scene> scene) {
-		this.scene = scene;
+	public void setScene(List<Stage> scene) {
+		this.stage = scene;
 	}
 
 }

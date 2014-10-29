@@ -9,8 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.inventory.InventoryActor;
+import com.mygdx.stage.GameStage;
 import com.mygdx.stage.VillageStage;
-import com.mygdx.ui.GameUi;
 
 public class VillageScreen implements Screen {
 
@@ -19,7 +19,7 @@ public class VillageScreen implements Screen {
 	String villageName;
 
 	VillageStage villageStage;
-	GameUi uiTable;
+	GameStage uiTable;
 
 	public static Stage inventoryStage;
 	InventoryActor inventoryActor;
@@ -59,7 +59,7 @@ public class VillageScreen implements Screen {
 		// TODO Auto-generated method stub
 		villageStage = new VillageStage(villageName + "-0");
 
-		uiTable = new GameUi();
+		uiTable = new GameStage();
 		// 인벤토리 스테이지
 		inventoryStage = new Stage();
 
