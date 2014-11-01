@@ -2,7 +2,7 @@ package com.mygdx.event;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.RewardTypeEnum;
-import com.mygdx.util.CurrentManager;
+import com.mygdx.manager.CurrentManager;
 
 public class Reward {
 	public void doReward(RewardTypeEnum rewardType, String rewardString) {

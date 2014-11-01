@@ -2,16 +2,18 @@ package com.mygdx.model;
 
 import java.util.List;
 
+import com.mygdx.enums.EventTypeEnum;
+
 public class Event {
-	private String eventType;
+	private EventTypeEnum eventType;
 	private Reward reward;
 	private List<Stage> stage;
 
-	public String getEventType() {
+	public EventTypeEnum getEventType() {
 		return eventType;
 	}
 
-	public void setEventType(String eventType) {
+	public void setEventType(EventTypeEnum eventType) {
 		this.eventType = eventType;
 	}
 

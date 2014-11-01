@@ -1,4 +1,4 @@
-package com.mygdx.util;
+package com.mygdx.manager;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.IntMap;

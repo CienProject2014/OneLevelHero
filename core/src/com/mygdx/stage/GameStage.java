@@ -17,13 +17,13 @@ import com.mygdx.event.RewardManager;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryActor;
+import com.mygdx.manager.CurrentManager;
 import com.mygdx.message.AlertMessage;
 import com.mygdx.message.Message;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Characters;
 import com.mygdx.screen.BattleScreen;
 import com.mygdx.ui.StatusBarUi;
-import com.mygdx.util.CurrentManager;
 
 public class GameStage extends Stage {
 	Table uiTable;

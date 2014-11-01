@@ -19,8 +19,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.CurrentManager;
 import com.mygdx.resource.Assets;
-import com.mygdx.util.CurrentManager;
 
 public class WorldStage extends Stage {
 

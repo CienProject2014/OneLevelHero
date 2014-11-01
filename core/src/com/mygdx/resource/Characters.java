@@ -12,8 +12,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.event.EventKey;
+import com.mygdx.manager.CurrentManager;
 import com.mygdx.unit.Hero;
-import com.mygdx.util.CurrentManager;
 
 public class Characters {
 	JSONParser parser = new JSONParser();

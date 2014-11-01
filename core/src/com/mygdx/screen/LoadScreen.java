@@ -10,10 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.CurrentManager;
+import com.mygdx.manager.LoadLauncher;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.SaveVersion;
-import com.mygdx.util.CurrentManager;
-import com.mygdx.util.LoadLauncher;
 
 public class LoadScreen implements Screen {
 

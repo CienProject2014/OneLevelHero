@@ -16,8 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.resource.Assets;
-import com.mygdx.util.SoundManager;
 
 public class MenuScreen implements Screen {
 	Stage stage;
