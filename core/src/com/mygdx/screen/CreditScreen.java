@@ -12,8 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.EventManager;
 import com.mygdx.event.Scene;
+import com.mygdx.manager.EventManager;
 
 public class CreditScreen implements Screen {
 	SpriteBatch batch;

@@ -1,10 +1,13 @@
-package com.mygdx.event;
+package com.mygdx.manager;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.mygdx.event.EventKey;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.Backgrounds;
 import com.mygdx.resource.Characters;
@@ -12,7 +15,7 @@ import com.mygdx.resource.JSONFile;
 import com.mygdx.resource.Scripts;
 import com.mygdx.stage.EventStage;
 
-public class StageManager {
+public class StageManager implements Manager {
 	private JSONObject jsonFile;
 	private JSONArray jsonArray;
 	private Scripts scripts;
@@ -25,6 +28,7 @@ public class StageManager {
 	private int counter;
 	private EventStage stage;
 	private EventKey eventKey;
+	private static StageManager instance;
 
 	public StageManager(EventKey eventKey) {
 		this.eventKey = eventKey;
@@ -78,5 +82,16 @@ public class StageManager {
 
 		// 다음씬 로드하고 뿌려주기
 		makeResource();
+	}
+	
+	public static StageManager getinstance(){
+		return instance;
+	}
+
+
+	@Override
+	public Stage setStage(String name) {
+		// TODO Auto-generated method stub
+		return stage;
 	}
 }

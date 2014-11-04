@@ -1,11 +1,15 @@
-package com.mygdx.event;
+package com.mygdx.manager;
 
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.event.Event;
+import com.mygdx.event.EventKey;
 import com.mygdx.resource.Assets;
 import com.mygdx.unit.NPC;
 
-public class EventManager {
+public class EventManager implements Manager {
 	private String eventCode;
 	private EventTypeEnum eventType;
 	private static EventManager instance;
@@ -91,5 +95,12 @@ public class EventManager {
 			RewardManager.getInstance().setRewardCode("NONE-none");
 		}
 		return eventKey;
+	}
+
+
+	@Override
+	public Stage setStage(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

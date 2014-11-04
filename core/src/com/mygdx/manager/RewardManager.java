@@ -1,7 +1,8 @@
-package com.mygdx.event;
+package com.mygdx.manager;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.RewardTypeEnum;
+import com.mygdx.event.RewardKey;
 
 public class RewardManager {
 

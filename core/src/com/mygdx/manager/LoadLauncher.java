@@ -1,4 +1,4 @@
-package com.mygdx.util;
+package com.mygdx.manager;
 
 import org.json.simple.JSONObject;
 

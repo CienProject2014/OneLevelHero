@@ -13,8 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.EventManager;
-import com.mygdx.event.StageManager;
+import com.mygdx.manager.EventManager;
+import com.mygdx.manager.StageManager;
 
 public class PrologueScreen implements Screen {
 

@@ -1,7 +1,6 @@
-package com.mygdx.event;
+package com.mygdx.manager;
 
 import com.mygdx.unit.Hero;
-import com.mygdx.util.CurrentManager;
 
 public class PartyRewardManager extends RewardManager {
 	private String NpcName = "";

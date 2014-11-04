@@ -16,8 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.MovingController;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.CurrentManager;
 import com.mygdx.resource.Assets;
-import com.mygdx.util.CurrentManager;
 
 public class MovingScreen implements Screen {
 

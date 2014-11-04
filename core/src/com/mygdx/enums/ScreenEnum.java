@@ -1,6 +1,7 @@
 package com.mygdx.enums;
 
 import com.badlogic.gdx.Screen;
+import com.mygdx.manager.ScreenManager;
 import com.mygdx.screen.BGMScreen;
 import com.mygdx.screen.BonusPointScreen;
 import com.mygdx.screen.CGScreen;
@@ -17,7 +18,6 @@ import com.mygdx.screen.SaveScreen;
 import com.mygdx.screen.StatusScreen;
 import com.mygdx.screen.VillageScreen;
 import com.mygdx.screen.WorldMapScreen;
-import com.mygdx.util.ScreenManager;
 
 public enum ScreenEnum {
 

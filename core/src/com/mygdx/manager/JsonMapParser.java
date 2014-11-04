@@ -1,6 +1,6 @@
 
 
-package com.mygdx.util;
+package com.mygdx.manager;
 
 import java.util.HashMap;
 import java.util.Map;
