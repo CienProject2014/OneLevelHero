@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.mygdx.event.EventManager;
 import com.mygdx.model.NPC;
 import com.mygdx.resource.Assets;
 
@@ -22,7 +21,10 @@ public class EventStage extends Stage {
 	}
 
 	public EventStage makeStage(NPC currentNPC, int eventNumber) {
+		//씬 만들어오기
 		makeScene(currentNPC, eventNumber);
+
+		// 스크립트/캐릭터/백그라운드 세팅
 		script.setFontScale(Assets.realWidth / 1280);
 		script.setWrap(true);
 		script.setSize(Assets.realWidth * 0.781f, Assets.realHeight * 0.185f);
@@ -61,23 +63,6 @@ public class EventStage extends Stage {
 		this.addActor(script);
 		this.addActor(characterImage);
 
-	}
-
-	private void settingActor() {
-		switch (EventManager.getInstance().getEventType()) {
-			case CHAT:
-				makeChatScene();
-				break;
-			case SELECT:
-				makeSelectScene();
-				break;
-			case CREDIT:
-				makeCreditScene();
-				break;
-			default:
-				Gdx.app.log("error", " scene 주입 에러");
-				break;
-		}
 	}
 
 	private void makeCreditScene() {

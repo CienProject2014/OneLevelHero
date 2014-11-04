@@ -25,7 +25,7 @@ import com.mygdx.resource.Characters;
 import com.mygdx.screen.BattleScreen;
 import com.mygdx.ui.StatusBarUi;
 
-public class GameStage extends Stage {
+public class GameUiStage extends Stage {
 	Table uiTable;
 	OneLevelHero game;
 	InventoryActor inventoryActor;
@@ -57,7 +57,7 @@ public class GameStage extends Stage {
 	float realheight;
 	float realwidth;
 
-	public GameStage() {
+	public GameUiStage() {
 		// 초기화
 		character = new Characters();
 		uiTable = new Table();

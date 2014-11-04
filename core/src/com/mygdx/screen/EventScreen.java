@@ -51,7 +51,8 @@ public class EventScreen implements Screen {
 
 	@Override
 	public void show() {
-		stageManager = new StageManager(EventManager.getInstance().getEventKey());
+		stageManager = new StageManager(EventManager.getInstance()
+				.getEventKey());
 		buttonStage = new SelectButtonStage();
 		stage = stageManager.getStage();
 
@@ -65,13 +66,14 @@ public class EventScreen implements Screen {
 		Gdx.input.setInputProcessor(multiplexer);
 
 		stage.addListener(new InputListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				if (stageManager.isNext()) {
 					stageManager.showNextScene();
 					stage = stageManager.getStage();
 				} else {
-					System.out.println(EventManager.getInstance().getEventKey().getKeyOfReward());
-					if (EventManager.getInstance().getEventKey().getKeyOfReward().equals("T")) {
+					if (EventManager.getInstance().getEventKey()
+							.getKeyOfReward().equals("T")) {
 						RewardManager.getInstance().setCurrentReward(true);
 						RewardManager.getInstance().doReward();
 					}
