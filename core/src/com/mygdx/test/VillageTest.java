@@ -5,14 +5,11 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.mygdx.util.JsonMapParser;
 
 public class VillageTest {
 
-	public static void main(String[] args) throws JsonParseException,
-			JsonMappingException, IOException {
+	public static void main(String[] args) throws IOException {
 
 		String filePath = "/Users/yuinacor/Documents/git/OneLevelHero/android/assets/data/village.json";
 

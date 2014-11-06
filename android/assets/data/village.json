@@ -1,7 +1,7 @@
 {
   "B": {
     "name": "블랙우드",
-    "imagesource": "Blackwood.atlas"
+    "imagesource": "Blackwood.atlas",
     "background": "BlackwoodBG.png",
     "frontground": "BlackwoodFG.png",
     "ratio": "0.782",
