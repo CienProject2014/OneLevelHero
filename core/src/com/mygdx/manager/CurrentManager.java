@@ -2,6 +2,7 @@ package com.mygdx.manager;
 
 import java.io.Serializable;
 
+import com.mygdx.model.NPC;
 import com.mygdx.resource.SaveVersion;
 import com.mygdx.unit.Hero;
 import com.mygdx.unit.Party;
@@ -14,6 +15,7 @@ public class CurrentManager implements Serializable {
 	private Hero centerHero;
 	private Hero rightHero;
 	public Party party;
+	private NPC currentNPC;
 
 	private String currentPosition = "O";
 	private String currentState = "village";
@@ -122,5 +124,13 @@ public class CurrentManager implements Serializable {
 
 	public void setParty(Party party) {
 		this.party = party;
+	}
+
+	public NPC getCurrentNPC() {
+		return currentNPC;
+	}
+
+	public void setCurrentNPC(NPC currentNPC) {
+		this.currentNPC = currentNPC;
 	}
 }

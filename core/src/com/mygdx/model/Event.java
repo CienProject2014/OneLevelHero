@@ -7,7 +7,7 @@ import com.mygdx.enums.EventTypeEnum;
 public class Event {
 	private EventTypeEnum eventType;
 	private Reward reward;
-	private List<Stage> stage;
+	private List<EventStage> eventStage;
 
 	public EventTypeEnum getEventType() {
 		return eventType;
@@ -25,12 +25,12 @@ public class Event {
 		this.reward = reward;
 	}
 
-	public List<Stage> getScene() {
-		return stage;
+	public List<EventStage> getScene() {
+		return eventStage;
 	}
 
-	public void setScene(List<Stage> scene) {
-		this.stage = scene;
+	public void setScene(List<EventStage> scene) {
+		this.eventStage = scene;
 	}
 
 }
