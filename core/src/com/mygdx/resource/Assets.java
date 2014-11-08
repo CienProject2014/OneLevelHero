@@ -1,6 +1,7 @@
 ﻿package com.mygdx.resource;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -14,10 +15,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.model.NPC;
 import com.mygdx.stage.WorldStage.worldNode;
+import com.mygdx.util.JsonMapParser;
 
 public class Assets {
 	public static Skin skin;
@@ -39,7 +40,8 @@ public class Assets {
 	// JSON
 	public static JSONObject worldmap_json, village_json, status_new_left,
 			bag_json, credit_list, blackwood_json, prologue_json,
-			blackwood_character, blackwood_background, waiji_json, parath_json;
+			blackwood_character, blackwood_background, waiji_json, parath_json,
+			npc_json;
 
 	// NPC 이름
 	public static Image yongsa, parath;
@@ -60,7 +62,7 @@ public class Assets {
 	public static HashMap<String, Texture> imageFileList = new HashMap<String, Texture>();
 	public static HashMap<String, String> villageHashmap;
 	public static HashMap<String, worldNode> worldHashmap = new HashMap<String, worldNode>();
-	public static HashMap<String, NPC> npcList = new HashMap<String, NPC>();
+	public static Map<String, NPC> npcMap;
 
 	public static void loadAll() {
 		jsonLoad();
@@ -69,6 +71,7 @@ public class Assets {
 		characterImageLoad();
 		fontLoad();
 		chatButtonLoad();
+		npcLoad();
 	}
 
 	public static void loadSize(Stage stage) {
@@ -78,7 +81,8 @@ public class Assets {
 	}
 
 	private static void jsonLoad() {
-
+		npc_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/event/npc.json").readString());
 		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/worldmap.json").readString());
 		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
@@ -115,9 +119,9 @@ public class Assets {
 
 	private static void npcLoad() {
 		//npc 리스트를 담은 Json을 불러온다.
-		Json json = new Json();
-		NPC waiji = json.fromJson(NPC.class,
-				Gdx.files.internal("data/NPC.json"));
+
+		npcMap = JsonMapParser.mapParse(NPC.class, npc_json.toString());
+
 	}
 
 	private static void menuScreenLoad() {

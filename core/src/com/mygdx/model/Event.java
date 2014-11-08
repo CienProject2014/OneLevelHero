@@ -25,12 +25,12 @@ public class Event {
 		this.reward = reward;
 	}
 
-	public List<EventStage> getScene() {
+	public List<EventStage> getEventStage() {
 		return eventStage;
 	}
 
-	public void setScene(List<EventStage> scene) {
-		this.eventStage = scene;
+	public void setEventStage(List<EventStage> eventStage) {
+		this.eventStage = eventStage;
 	}
 
 }

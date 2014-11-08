@@ -11,7 +11,7 @@ public class VillageTest {
 
 	public static void main(String[] args) throws IOException {
 
-		String filePath = "/Users/yuinacor/Documents/git/OneLevelHero/android/assets/data/village.json";
+		String filePath = "C:\\Users\\Velmont\\Documents\\GitHub\\OneLevelHero\\android\\assets\\data\\village.json";
 
 		Scanner in = new Scanner(new File(filePath));
 		StringBuffer buffer = new StringBuffer();
@@ -26,6 +26,7 @@ public class VillageTest {
 				buffer.toString());
 
 		System.out.println(village);
+		System.out.println(village.keySet());
 		System.out.println(village.get("B"));
 
 	}

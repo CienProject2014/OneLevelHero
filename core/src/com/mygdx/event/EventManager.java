@@ -3,7 +3,6 @@ package com.mygdx.event;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.resource.Assets;
-import com.mygdx.unit.NPC;
 
 public class EventManager {
 	private String eventCode;
@@ -85,7 +84,8 @@ public class EventManager {
 		eventKey.setKeyOfReward(temp[3]);
 		if (eventKey.getKeyOfReward().equals("T")) {
 			String[] rewardCodeArray = eventNpc.getNpcEvent().getRewardCode();
-			String rewardCode = rewardCodeArray[Integer.valueOf(eventKey.getKeyOfSerialNumber()) - 1];
+			String rewardCode = rewardCodeArray[Integer.valueOf(eventKey
+					.getKeyOfSerialNumber()) - 1];
 			RewardManager.getInstance().setRewardCode(rewardCode);
 		} else {
 			RewardManager.getInstance().setRewardCode("NONE-none");

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Village {
 
+	//inner클래스인 Settable static 클래스
 	public static class Settable {
 		private String name;
 		private double positionX;
@@ -53,6 +54,7 @@ public class Village {
 
 	}
 
+	//inner클래스이며 Settable을 상속하는 Building 클래스
 	public static class Building extends Settable {
 		private String key;
 
@@ -66,6 +68,7 @@ public class Village {
 
 	}
 
+	//inner 클래스이며 Settable을 상속하는 NPC클래스
 	public static class NPC extends Settable {
 		private String key;
 

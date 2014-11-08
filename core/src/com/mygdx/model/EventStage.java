@@ -5,24 +5,17 @@ import com.mygdx.resource.Assets;
 
 public class EventStage {
 	private String script;
+	private String characterPath;
+	private String backgroundPath;
 	private Image character;
 	private Image background;
-
-	public String getScript() {
-		return script;
-	}
-
-	public void setScript(String script) {
-		this.script = script;
-	}
 
 	public Image getCharacter() {
 		return character;
 	}
 
-	//임시로 asset에서 Image객체를 추출하여 가져온다.
-	public void setCharacter(String character) {
-		this.character = (Image) Assets.resourceFileList.get(character);
+	public void setCharacter(String characterPath) {
+		this.character = (Image) Assets.resourceFileList.get(characterPath);
 	}
 
 	public Image getBackground() {
@@ -31,6 +24,34 @@ public class EventStage {
 
 	public void setBackground(Image background) {
 		this.background = background;
+		setBackgroundPath(backgroundPath);
+	}
+
+	public String getCharacterPath() {
+		return characterPath;
+	}
+
+	public void setCharacterPath(String characterPath) {
+		this.characterPath = characterPath;
+		setCharacter(characterPath);
+	}
+
+	public String getBackgroundPath() {
+		return backgroundPath;
+	}
+
+	public void setBackgroundPath(String backgroundPath) {
+		this.backgroundPath = backgroundPath;
+		this.background = (Image) Assets.resourceFileList.get(backgroundPath);
+
+	}
+
+	public String getScript() {
+		return script;
+	}
+
+	public void setScript(String script) {
+		this.script = script;
 	}
 
 }

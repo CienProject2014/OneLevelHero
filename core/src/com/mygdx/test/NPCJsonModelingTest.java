@@ -1,11 +1,12 @@
-package com.mygdx.model;
+package com.mygdx.test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
-import com.badlogic.gdx.utils.Json;
+import com.mygdx.model.NPC;
+import com.mygdx.util.JsonMapParser;
 
 public class NPCJsonModelingTest {
 	public static void main(String[] args) throws IOException {
@@ -16,13 +17,12 @@ public class NPCJsonModelingTest {
 		while (in.hasNext()) {
 			buffer.append(in.next());
 		}
-
-		Json json = new Json();
-		//Map<String, NPC> npcMap = json.fromJson(Map.Class, buffer.toString());
-		HashMap<String, NPC> npcMap = new HashMap<String, NPC>();
-		npcMap.put("waiji", json.fromJson(NPC.class, buffer.toString()));
-		System.out.println(npcMap.get("waiji"));
 		in.close();
 
+		Map<String, NPC> npcMap = JsonMapParser.mapParse(NPC.class,
+				buffer.toString());
+
+		System.out
+				.println(npcMap.get("waiji").getEvent().get(0).getEventType());
 	}
 }
