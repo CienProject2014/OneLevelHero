@@ -2,10 +2,12 @@ package com.mygdx.model;
 
 import java.util.List;
 
+import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 
 public class Event {
 	private EventTypeEnum eventType;
+	private EventStateEnum eventState;
 	private Reward reward;
 	private List<EventStage> eventStage;
 
@@ -31,6 +33,14 @@ public class Event {
 
 	public void setEventStage(List<EventStage> eventStage) {
 		this.eventStage = eventStage;
+	}
+
+	public EventStateEnum getEventState() {
+		return eventState;
+	}
+
+	public void setEventState(EventStateEnum eventState) {
+		this.eventState = eventState;
 	}
 
 }

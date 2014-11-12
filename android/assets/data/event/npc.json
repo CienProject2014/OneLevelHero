@@ -3,6 +3,7 @@
     "unitName": "waiji",
     "event": [
       {
+      	"eventState" :"OPENED",
         "eventType": "CHAT",
         "reward": {
           "rewardType": "PARTY",

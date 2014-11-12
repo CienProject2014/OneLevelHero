@@ -22,7 +22,7 @@ public class NPCJsonModelingTest {
 		Map<String, NPC> npcMap = JsonMapParser.mapParse(NPC.class,
 				buffer.toString());
 
-		System.out
-				.println(npcMap.get("waiji").getEvent().get(0).getEventType());
+		System.out.println(npcMap.get("waiji").getEvent().get(0)
+				.getEventState());
 	}
 }

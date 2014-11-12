@@ -4,6 +4,15 @@ import java.util.List;
 
 public class NPC extends Unit {
 	private List<Event> event;
+
+	public List<Event> getEvent() {
+		return event;
+	}
+
+	public void setEvent(List<Event> event) {
+		this.event = event;
+	}
+
 	private Event greeting;
 
 	@Override
@@ -36,14 +45,6 @@ public class NPC extends Unit {
 		} else if (!greeting.equals(other.greeting))
 			return false;
 		return true;
-	}
-
-	public List<Event> getEvent() {
-		return event;
-	}
-
-	public void setEvent(List<Event> event) {
-		this.event = event;
 	}
 
 	public Event getGreeting() {
