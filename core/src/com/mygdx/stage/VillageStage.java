@@ -304,7 +304,8 @@ public class VillageStage extends Stage {
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
 					// 1. CurrentManager에 CurrentNpc정보를 전달한다.
-					CurrentManager.getInstance().setCurrentNPC(waiji);
+					CurrentManager.getInstance().setCurrentNPC("waiji");
+					CurrentManager.getInstance().setCurrentEventNumber(0);
 					new ScreenController(ScreenEnum.EVENT);
 				}
 			});

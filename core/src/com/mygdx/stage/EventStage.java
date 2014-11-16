@@ -4,7 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.mygdx.model.NPC;
+import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.model.EventScene;
 import com.mygdx.resource.Assets;
 
 public class EventStage extends Stage {
@@ -20,56 +21,51 @@ public class EventStage extends Stage {
 		return instance;
 	}
 
-	public EventStage makeStage(NPC currentNPC, int eventNumber) {
-		//씬 만들어오기
-		makeScene(currentNPC, eventNumber);
+	public EventStage makeStage(EventScene eventScene, EventTypeEnum eventType) {
+		//씬 만들어주기
 
-		// 스크립트/캐릭터/백그라운드 세팅
-		script.setFontScale(Assets.realWidth / 1280);
-		script.setWrap(true);
-		script.setSize(Assets.realWidth * 0.781f, Assets.realHeight * 0.185f);
-		script.setPosition(Assets.realWidth * 0.109375f,
-				Assets.realHeight * 0.185f);
-		characterImage.setSize(Assets.realWidth * 0.250f,
-				Assets.realHeight * 0.555f);
-		characterImage.setPosition(Assets.realWidth * 0.375f,
-				Assets.realHeight * 0.37f);
-		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
+		backgroundImage = eventScene.getBackground();
+		script = new Label(eventScene.getScript(), Assets.skin);
+		characterImage = eventScene.getCharacter();
 
-		return this;
-	}
-
-	private void makeScene(NPC currentNPC, int eventNumber) {
-		switch (currentNPC.getEvent().get(eventNumber).getEventType()) {
-
+		switch (eventType) {
 			case CHAT:
-				makeChatScene();
+				makeChatStage();
 				break;
 			case SELECT:
-				makeSelectScene();
+				makeSelectStage();
 				break;
 			case CREDIT:
-				makeCreditScene();
+				makeCreditStage();
 				break;
 			default:
 				Gdx.app.log("error", " scene 주입 에러");
 				break;
 		}
 
-	}
+		// 스크립트/캐릭터/백그라운드 설정값 세팅
+		script.setFontScale(Assets.realWidth / 1280);
+		script.setWrap(true);
+		script.setSize(Assets.realWidth * 0.781f, Assets.realHeight * 0.185f);
+		script.setPosition(Assets.realWidth * 0.109375f,
+				Assets.realHeight * 0.185f);
+		characterImage.setSize(Assets.realWidth * 0.250f,
+				Assets.realHeight * 0.555f);
+		characterImage.setPosition(Assets.realWidth * 0.375f,
+				Assets.realHeight * 0.37f);
+		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
 
-	private void addActor() {
 		this.addActor(backgroundImage);
 		this.addActor(script);
 		this.addActor(characterImage);
+		return this;
+	}
+
+	private void makeCreditStage() {
 
 	}
 
-	private void makeCreditScene() {
-
-	}
-
-	private void makeSelectScene() {
+	private void makeSelectStage() {
 
 		script.setFontScale(Assets.realWidth / 1280);
 		script.setWrap(true);
@@ -83,7 +79,7 @@ public class EventStage extends Stage {
 		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
 	}
 
-	private void makeChatScene() {
+	private void makeChatStage() {
 		script.setFontScale(Assets.realWidth / 1280);
 		script.setWrap(true);
 		script.setPosition(Assets.realWidth * 0.2f, 0);

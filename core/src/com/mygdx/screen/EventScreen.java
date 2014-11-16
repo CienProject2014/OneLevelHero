@@ -11,24 +11,24 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.event.EventManager;
-import com.mygdx.event.RewardManager;
-import com.mygdx.event.StageManager;
-import com.mygdx.stage.EventStage;
+import com.mygdx.manager.EventStageManager;
+import com.mygdx.model.Event;
+import com.mygdx.model.EventScene;
+import com.mygdx.model.NPC;
 import com.mygdx.stage.SelectButtonStage;
 
 public class EventScreen implements Screen {
-
-	private StageManager stageManager;
-	private EventStage stage;
+	private Stage eventStage;
 	private Stage buttonStage;
-
-	private String event;
+	private NPC npc;
+	private int eventNumber;
 
 	public EventScreen() {
 	}
 
-	public EventScreen(String event) {
-		this.event = event;
+	public EventScreen(NPC npc, int eventNumber) {
+		this.npc = npc;
+		this.eventNumber = eventNumber;
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class EventScreen implements Screen {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		stage.draw();
+		eventStage.draw();
 		if (EventManager.getInstance().getEventType() == EventTypeEnum.SELECT) {
 			buttonStage.draw();
 		}
@@ -51,35 +51,33 @@ public class EventScreen implements Screen {
 
 	@Override
 	public void show() {
-		stageManager = new StageManager(EventManager.getInstance()
-				.getEventKey());
+
 		buttonStage = new SelectButtonStage();
-		stage = stageManager.getStage();
+		final Event events = npc.getEvent().get(eventNumber);
+		final EventScene eventScene = events.getEventScene().iterator().next();
+		eventStage = EventStageManager.getInstance().makeStage(eventScene,
+				events.getEventType());
 
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
 		// 우선권을 준다.
 
 		multiplexer.addProcessor(0, buttonStage);
-		multiplexer.addProcessor(1, stage);
+		multiplexer.addProcessor(1, eventStage);
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
 
-		stage.addListener(new InputListener() {
+		eventStage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				if (stageManager.isNext()) {
-					stageManager.showNextScene();
-					stage = stageManager.getStage();
-				} else {
-					if (EventManager.getInstance().getEventKey()
-							.getKeyOfReward().equals("T")) {
-						RewardManager.getInstance().setCurrentReward(true);
-						RewardManager.getInstance().doReward();
-					}
-					new ScreenController(ScreenEnum.VILLAGE);
 
+				while (events.getEventScene().iterator().hasNext()) {
+
+					eventStage = EventStageManager.getInstance().makeStage(
+							eventScene, events.getEventType());
 				}
+				new ScreenController(ScreenEnum.VILLAGE);
+
 				return true;
 			}
 		});
@@ -108,11 +106,4 @@ public class EventScreen implements Screen {
 
 	}
 
-	public String getEvent() {
-		return event;
-	}
-
-	public void setEvent(String event) {
-		this.event = event;
-	}
 }

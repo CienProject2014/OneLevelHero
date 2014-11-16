@@ -3,7 +3,7 @@ package com.mygdx.model;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.resource.Assets;
 
-public class EventStage {
+public class EventScene {
 	private String script;
 	private String characterPath;
 	private String backgroundPath;

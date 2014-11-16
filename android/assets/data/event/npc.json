@@ -9,7 +9,7 @@
           "rewardType": "PARTY",
           "rewardTarget": "parath"
         },
-        "eventStage": [
+        "eventScene": [
           {
             "script": "그래, 기운은 차렸는가?",
             "characterPath": "waiji_happy",
@@ -95,7 +95,7 @@
     ],
     "greeting": {
       "eventType": "CHAT",
-      "eventStage": [
+      "eventScene": [
         {
           "script": "블랙우드 마을에 온 것을 환영하네",
           "characterPath": "waiji_happy",

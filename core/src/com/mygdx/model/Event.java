@@ -9,7 +9,7 @@ public class Event {
 	private EventTypeEnum eventType;
 	private EventStateEnum eventState;
 	private Reward reward;
-	private List<EventStage> eventStage;
+	private List<EventScene> eventScene;
 
 	public EventTypeEnum getEventType() {
 		return eventType;
@@ -27,12 +27,12 @@ public class Event {
 		this.reward = reward;
 	}
 
-	public List<EventStage> getEventStage() {
-		return eventStage;
+	public List<EventScene> getEventScene() {
+		return eventScene;
 	}
 
-	public void setEventStage(List<EventStage> eventStage) {
-		this.eventStage = eventStage;
+	public void setEventScene(List<EventScene> eventScene) {
+		this.eventScene = eventScene;
 	}
 
 	public EventStateEnum getEventState() {

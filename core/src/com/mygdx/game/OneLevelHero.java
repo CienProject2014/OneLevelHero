@@ -11,7 +11,7 @@ public class OneLevelHero extends Game {
 
 	@Override
 	public void create() {
-		LoadManager.getInstance().initialize(this);
+		LoadManager.getInstance();
 		ScreenManager.getInstance().initialize(this);
 		ScreenManager.getInstance().show(ScreenEnum.MENU);
 		Gdx.input.setCatchBackKey(true);
