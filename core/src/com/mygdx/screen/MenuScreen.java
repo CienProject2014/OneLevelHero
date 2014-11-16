@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.mygdx.Factory.StageFactory;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.Manager;
@@ -32,7 +33,6 @@ public class MenuScreen implements Screen {
 	Sprite sprite;
 	BitmapFont font;
 	
-	private Manager stageManager = ScreenController.stageManager;
 	private static Music music;
 
 	public MenuScreen() {
@@ -44,7 +44,7 @@ public class MenuScreen implements Screen {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.draw();
-
+		
 	}
 
 	@Override
@@ -57,10 +57,10 @@ public class MenuScreen implements Screen {
 		setMusic(Assets.mainMusic);
 		getMusic().setVolume(Assets.musicVolume);
 		SoundManager.getInstance().playMusic(getMusic());
-		
-		stage= ScreenController.stageManager.setStage("");
-	
+		stage = new Stage();
 		Assets.loadSize(stage);
+		stage= new StageFactory().makeStage("main");
+		
 		Gdx.input.setInputProcessor(stage);
 
 	

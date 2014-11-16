@@ -15,13 +15,11 @@ public class MenuStage extends Stage{
 	
 	private ImageButton[] button;
 	
-	public MenuStage(String name){
-	//이름에 따라 다른 stage생서할 예정
-			makeMainStage();
-		
+	public MenuStage(String stageName){
+			makeMainMenu();
 	}
 	
-	private void makeMainStage(){
+	public void makeMainMenu(){
 		button = new ImageButton[4];
 		Texture texture = Assets.main_background;
 		Image background = new Image(texture);
@@ -116,7 +114,6 @@ public class MenuStage extends Stage{
 		this.addActor(background);
 		this.addActor(Assets.logo);
 		this.addActor(table);
-		
-	}
 
+	}
 }

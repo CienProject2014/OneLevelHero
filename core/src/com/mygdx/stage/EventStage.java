@@ -22,6 +22,10 @@ public class EventStage extends Stage {
 
 	}
 
+	public EventStage() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private void addActor() {
 		this.addActor(backgroundImage);
 		this.addActor(script);

@@ -2,7 +2,7 @@ package com.mygdx.manager;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.IntMap;
-import com.mygdx.Factory.ManagerFactory;
+import com.mygdx.Factory.StageFactory;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.game.OneLevelHero;
@@ -46,10 +46,6 @@ public final class ScreenManager  {
 		screens.remove(screen.ordinal()).dispose();
 	}
 	
-	public void setManager(ScreenEnum screen){		
-		new ManagerFactory().getManager(screen);		
-	}	
-
 	public void dispose() {
 		for (com.badlogic.gdx.Screen screen : screens.values()) {
 			screen.dispose();

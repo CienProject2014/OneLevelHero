@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.mygdx.controller.StageController;
 import com.mygdx.inventory.InventoryActor;
 import com.mygdx.stage.GameStage;
 import com.mygdx.stage.VillageStage;
