@@ -15,12 +15,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.RewardManager;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryActor;
 import com.mygdx.manager.CurrentManager;
-import com.mygdx.message.Message;
 import com.mygdx.model.Hero;
 import com.mygdx.resource.Assets;
 import com.mygdx.screen.BattleScreen;
@@ -31,7 +29,7 @@ public class GameUiStage extends Stage {
 	OneLevelHero game;
 	InventoryActor inventoryActor;
 	DragAndDrop dragAndDrop;
-	Message alertMessage;
+	//Message alertMessage; 메시지 필드 임시 보류
 
 	ImageButton downArrowButton;
 	ImageButton bagButton;
@@ -65,7 +63,7 @@ public class GameUiStage extends Stage {
 		hpbar = new StatusBarUi[3];
 		expbar = new StatusBarUi[3];
 		turnbar = new StatusBarUi[3];
-
+		characterImage = new Image[3];
 		statusbartable = new Table[3];
 		charatertable = new Table[3];
 		battleMemberNumber = CurrentManager.getInstance().getParty()
@@ -83,8 +81,10 @@ public class GameUiStage extends Stage {
 		//캐릭터 이미지 세팅
 		List<Hero> currentBattleMemberList = CurrentManager.getInstance()
 				.getParty().getBattleMemberList();
-		Gdx.app.log("currentBattleMemberList",
-				String.valueOf(currentBattleMemberList.get(0).getFaceImage()));
+		Gdx.app.log(
+				"currentBattleMemberList",
+				String.valueOf(currentBattleMemberList.get(0).getFaceImage()
+						.getStage()));
 		Gdx.app.log("currentImage",
 				String.valueOf(Assets.imageFileList.get("yongsa")));
 		for (int i = 0; i < currentBattleMemberList.size(); i++) {
@@ -129,12 +129,14 @@ public class GameUiStage extends Stage {
 		makeTable();
 		addActor(uiTable);
 		addActor(inventoryActor); // 인벤토리 Actor 추가
-		addActor(alertMessage);
+		//addActor(alertMessage);
 
-		//이벤트 보상 메시지가 있는지 확인
+		//이벤트 보상 메시지가 있는지 확인 (임시 보류)
+		/*
 		if (RewardManager.getInstance().isCurrentReward()) {
 			alertMessage.setVisible(true);
 		}
+		*/
 	}
 
 	// 테이블 디자인
@@ -265,7 +267,7 @@ public class GameUiStage extends Stage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				alertMessage.setVisible(true);
+				//alertMessage.setVisible(true);
 				return true;
 			}
 
@@ -295,7 +297,7 @@ public class GameUiStage extends Stage {
 	@Override
 	public void dispose() {
 		inventoryActor.remove();
-		alertMessage.remove();
+		//alertMessage.remove();
 		super.dispose();
 	}
 }

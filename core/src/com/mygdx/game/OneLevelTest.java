@@ -14,6 +14,7 @@ public class OneLevelTest extends Game {
 		LoadManager.getInstance();
 		ScreenManager.getInstance().initialize(this);
 		ScreenManager.getInstance().show(ScreenEnum.VILLAGE);
+
 		Gdx.input.setCatchBackKey(true);
 	}
 

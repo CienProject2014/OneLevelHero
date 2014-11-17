@@ -75,6 +75,10 @@ public class Assets {
 		chatButtonLoad();
 		npcLoad();
 		heroLoad();
+		//해상도 설정
+
+		// 화면의 Size를 별도로 설정해주어야 한다
+		loadSize(new Stage());
 	}
 
 	public static void loadSize(Stage stage) {
