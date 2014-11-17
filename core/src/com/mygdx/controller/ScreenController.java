@@ -7,6 +7,7 @@ import com.mygdx.manager.ScreenManager;
 public class ScreenController extends Task {
 
 	private ScreenEnum screen = null;
+	private ScreenManager screenManager = ScreenManager.getInstance();
 
 	public ScreenController(ScreenEnum screen) {
 		this.screen = screen;
@@ -16,7 +17,7 @@ public class ScreenController extends Task {
 	@Override
 	public void run() {
 		/* easily implemented screen switching thanks to singleton pattern */
-		ScreenManager.getInstance().show(screen);
+		screenManager.show(screen);
 	}
 
 }

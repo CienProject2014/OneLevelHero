@@ -10,9 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
-import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.EventManager;
 import com.mygdx.event.Scene;
 
 public class CreditScreen implements Screen {
@@ -77,18 +75,18 @@ public class CreditScreen implements Screen {
 	}
 
 	private void showEventScene() {
-/*
-		EventManager.getInstance().setEventCode("Crd-scene-1");
-		EventManager.getInstance().setEventType(EventTypeEnum.CREDIT);
+		/*
+				EventManager.getInstance().setEventCode("Crd-scene-1");
+				EventManager.getInstance().setEventType(EventTypeEnum.CREDIT);
 
-		if (EventManager.getInstance().getEventType() == EventTypeEnum.CREDIT)
-			scene = new CreditScene(stage, batch, EventManager.getInstance()
-					.getEventCode());
-		else
-			Gdx.app.log("Error", "Scene 주입 에러");
-		// 파싱을 하기 위한 로드
-		scene.load();
-		*/
+				if (EventManager.getInstance().getEventType() == EventTypeEnum.CREDIT)
+					scene = new CreditScene(stage, batch, EventManager.getInstance()
+							.getEventCode());
+				else
+					Gdx.app.log("Error", "Scene 주입 에러");
+				// 파싱을 하기 위한 로드
+				scene.load();
+				*/
 	}
 
 	@Override

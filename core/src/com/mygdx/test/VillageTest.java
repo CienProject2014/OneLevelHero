@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.mygdx.util.JsonMapParser;
+import com.mygdx.manager.JsonMapParser;
 
 public class VillageTest {
 

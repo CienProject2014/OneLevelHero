@@ -3,6 +3,7 @@
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.LoadManager;
 import com.mygdx.manager.ScreenManager;
@@ -13,7 +14,7 @@ public class OneLevelHero extends Game {
 	public void create() {
 		LoadManager.getInstance();
 		ScreenManager.getInstance().initialize(this);
-		ScreenManager.getInstance().show(ScreenEnum.MENU);
+		new ScreenController(ScreenEnum.MENU);
 		Gdx.input.setCatchBackKey(true);
 	}
 

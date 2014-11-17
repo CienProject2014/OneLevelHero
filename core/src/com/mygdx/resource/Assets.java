@@ -16,10 +16,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.manager.JsonMapParser;
 import com.mygdx.model.Hero;
 import com.mygdx.model.NPC;
 import com.mygdx.stage.WorldStage.worldNode;
-import com.mygdx.util.JsonMapParser;
 
 public class Assets {
 	public static Skin skin;
