@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.CurrentManager;
-import com.mygdx.manager.LoadLauncher;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.SaveVersion;
 
@@ -50,29 +49,31 @@ public class LoadScreen implements Screen {
 		newstartButton = new TextButton("NewStart", Assets.skin);
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				new ScreenController(ScreenEnum.MENU);
 
 			}
 		});
 		newstartButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				LoadLauncher.getInstance().loadSetting();
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				CurrentManager.getInstance().setVersion(SaveVersion.NEW);
-				LoadLauncher.getInstance().dispose();
 				new ScreenController(ScreenEnum.PROLOGUE);
 
 			}

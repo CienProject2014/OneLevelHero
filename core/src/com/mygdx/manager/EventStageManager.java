@@ -9,7 +9,8 @@ public class EventStageManager {
 	private static EventStageManager instance;
 
 	public Stage makeStage(EventScene eventScene) {
-		return EventStage.getInstance().makeStage(eventScene);
+		return EventStage.getInstance().makeStage(eventScene,
+				EventTypeEnum.CHAT);
 	}
 
 	public Stage makeStage(EventScene eventScene, EventTypeEnum eventType) {

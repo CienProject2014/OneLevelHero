@@ -8,9 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.controller.ScreenController;
-import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.EventManager;
 import com.mygdx.manager.EventStageManager;
 import com.mygdx.model.Event;
 import com.mygdx.model.EventScene;
@@ -37,9 +35,11 @@ public class EventScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		eventStage.draw();
+		/*
 		if (EventManager.getInstance().getEventType() == EventTypeEnum.SELECT) {
 			buttonStage.draw();
 		}
+		*/
 
 	}
 
