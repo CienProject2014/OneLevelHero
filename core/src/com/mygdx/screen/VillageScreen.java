@@ -141,7 +141,7 @@ public class VillageScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-
+		villageStage = new VillageStage(villageName + "-0");
 		gameUiStage = new GameUiStage();
 		// 인벤토리 스테이지
 		inventoryStage = new Stage();
