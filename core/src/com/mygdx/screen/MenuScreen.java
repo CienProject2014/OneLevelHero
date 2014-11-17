@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.mygdx.Factory.StageFactory;
+import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.SoundManager;
 import com.mygdx.resource.Assets;
 

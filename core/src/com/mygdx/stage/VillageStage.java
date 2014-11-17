@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.CurrentManager;
+import com.mygdx.manager.EventManager;
 import com.mygdx.resource.Assets;
 
 public class VillageStage extends Stage {
@@ -214,7 +215,6 @@ public class VillageStage extends Stage {
 		getViewport().setCamera(cam);
 
 		camera = getViewport().getCamera();
-
 		// 마을 제이슨 완성 시 이걸로
 		JSONObject villageData = (JSONObject) Assets.village_json
 				.get(CurrentManager.getInstance().getCurrentPosition());
@@ -278,7 +278,7 @@ public class VillageStage extends Stage {
 		}
 
 		for (int i = 0; i < num_of_npc; i++) {
-			JSONObject npcinfo = (JSONObject) npcArray.get(i);
+			final JSONObject npcinfo = (JSONObject) npcArray.get(i);
 
 			npcbutton[i] = new TextButton((String) npcinfo.get("name"),
 					Assets.skin);
@@ -303,9 +303,10 @@ public class VillageStage extends Stage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-					// 1. CurrentManager에 CurrentNpc정보를 전달한다.
-					CurrentManager.getInstance().setCurrentNPC("waiji");
-					CurrentManager.getInstance().setCurrentEventNumber(0);
+					System.out.println(npcinfo.get("key"));
+					// EventManager에 CurrentNpc정보를 전달한다.
+					EventManager.getInstance().setEventInfo(
+							Assets.npcMap.get(npcinfo.get("key")), 0);
 					new ScreenController(ScreenEnum.EVENT);
 				}
 			});

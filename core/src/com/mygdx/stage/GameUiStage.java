@@ -81,12 +81,7 @@ public class GameUiStage extends Stage {
 		//캐릭터 이미지 세팅
 		List<Hero> currentBattleMemberList = CurrentManager.getInstance()
 				.getParty().getBattleMemberList();
-		Gdx.app.log(
-				"currentBattleMemberList",
-				String.valueOf(currentBattleMemberList.get(0).getFaceImage()
-						.getStage()));
-		Gdx.app.log("currentImage",
-				String.valueOf(Assets.imageFileList.get("yongsa")));
+
 		for (int i = 0; i < currentBattleMemberList.size(); i++) {
 			characterImage[i] = currentBattleMemberList.get(i).getFaceImage();
 		}

@@ -3,9 +3,9 @@ package com.mygdx.manager;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.IntMap;
-import com.mygdx.Factory.StageFactory;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.StageFactory;
 
 public final class ScreenManager  {
 
