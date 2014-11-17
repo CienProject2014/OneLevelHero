@@ -1,9 +1,0 @@
-{
-	"Hero" :
-	{
-		"weapon" : "dagger", 
-		"armor" : "leather_armor",
-		"boots" : "leather_boots", 
-		"gloves" : "leather_gloves" 		
-	}
-}

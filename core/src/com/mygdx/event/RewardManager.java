@@ -70,7 +70,8 @@ public class RewardManager {
 
 	public void doReward() {
 
-		String rewardType = RewardManager.getInstance().rewardKey.getKeyOfRewardType();
+		String rewardType = RewardManager.getInstance().rewardKey
+				.getKeyOfRewardType();
 		switch (RewardTypeEnum.valueOf(rewardType)) {
 			case PARTY:
 				RewardManager rewardManager = new PartyRewardManager();
@@ -81,19 +82,6 @@ public class RewardManager {
 				return;
 		}
 
-	}
-
-	public String getRewardMessage() {
-		String rewardType = RewardManager.getInstance().rewardKey.getKeyOfRewardType();
-		switch (RewardTypeEnum.valueOf(rewardType)) {
-			case PARTY:
-				RewardManager rewardManager = new PartyRewardManager();
-				return rewardManager.getRewardMessage();
-
-			default:
-				Gdx.app.log("error", "rewardType 주입 오류");
-				return null;
-		}
 	}
 
 }

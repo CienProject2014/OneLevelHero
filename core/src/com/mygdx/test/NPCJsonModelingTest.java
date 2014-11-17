@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import com.mygdx.model.NPC;
+import com.mygdx.resource.Assets;
 import com.mygdx.util.JsonMapParser;
 
 public class NPCJsonModelingTest {
@@ -21,8 +22,8 @@ public class NPCJsonModelingTest {
 
 		Map<String, NPC> npcMap = JsonMapParser.mapParse(NPC.class,
 				buffer.toString());
-
+		System.out.println(Assets.resourceFileList.get("blackwood_center"));
 		System.out.println(npcMap.get("waiji").getEvent().get(0)
-				.getEventState());
+				.getEventScene().get(0).getBackground());
 	}
 }

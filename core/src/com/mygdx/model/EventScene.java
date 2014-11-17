@@ -11,20 +11,23 @@ public class EventScene {
 	private Image background;
 
 	public Image getCharacter() {
+		if (this.character == null)
+			character = (Image) Assets.resourceFileList.get(characterPath);
 		return character;
 	}
 
-	public void setCharacter(String characterPath) {
-		this.character = (Image) Assets.resourceFileList.get(characterPath);
+	public void setCharacter(Image character) {
+		this.character = character;
 	}
 
 	public Image getBackground() {
+		if (background == null)
+			background = (Image) Assets.imageFileList.get(backgroundPath);
 		return background;
 	}
 
 	public void setBackground(Image background) {
 		this.background = background;
-		setBackgroundPath(backgroundPath);
 	}
 
 	public String getCharacterPath() {
@@ -33,7 +36,6 @@ public class EventScene {
 
 	public void setCharacterPath(String characterPath) {
 		this.characterPath = characterPath;
-		setCharacter(characterPath);
 	}
 
 	public String getBackgroundPath() {
@@ -42,7 +44,6 @@ public class EventScene {
 
 	public void setBackgroundPath(String backgroundPath) {
 		this.backgroundPath = backgroundPath;
-		this.background = (Image) Assets.resourceFileList.get(backgroundPath);
 
 	}
 

@@ -1,41 +1,49 @@
-package com.mygdx.unit;
+package com.mygdx.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 
 public class Party {
-	private ArrayList<Hero> partyList = new ArrayList<Hero>();
-	private ArrayList<Hero> battleMemberList = new ArrayList<Hero>();
+	private List<Hero> partyList = new ArrayList<Hero>();
+	private List<Hero> battleMemberList = new ArrayList<Hero>();
+	final int BATTLE_MEMBER_SIZE = 3;
 
-	public ArrayList<Hero> getPartyList() {
+	public List<Hero> getPartyList() {
 		return partyList;
 	}
 
-	public void setPartyList(ArrayList<Hero> partyList) {
+	public void setPartyList(List<Hero> partyList) {
 		this.partyList = partyList;
 	}
 
-	public ArrayList<Hero> getBattleMemberList() {
+	public List<Hero> getBattleMemberList() {
 		return battleMemberList;
 	}
 
-	public void setBattleMemberList(ArrayList<Hero> battleMemberList) {
+	public void setBattleMemberList(List<Hero> battleMemberList) {
 		this.battleMemberList = battleMemberList;
 	}
 
-	final int BATTLEMEMBERLIST = 3;
+	//파티 리스트로 추가하는 방식
+	public void addPartyList(List<Hero> heroes) {
+		partyList.addAll(heroes);
+
+	}
+
+	public void addBattleMemberList(List<Hero> heroes) {
+		battleMemberList.addAll(heroes);
+	}
 
 	public void addParty(Hero hero) {
-		for (int i = 0; i < partyList.size(); i++) {
-			if (partyList.get(i).getUnitName().equals(hero.getUnitName())) {
-				Gdx.app.log("Error", hero.getUnitName() + "가 이미 멤버에 있습니다.");
-				return;
-			}
-		}
+		//이미 있는 파티멤버일 경우
+		if (partyList.contains(hero))
+			Gdx.app.log("Error", hero.getUnitName() + "가 이미 멤버에 있습니다.");
+
 		partyList.add(hero);
 		Gdx.app.log("Info", hero.getUnitName() + "를 파티에 추가했습니다.");
-		if (battleMemberList.size() < 3) {
+		if (battleMemberList.size() < BATTLE_MEMBER_SIZE) {
 			battleMemberList.add(hero);
 			Gdx.app.log("Info", hero.getUnitName() + "를 전투 멤버에 추가했습니다.");
 		} else {
@@ -64,4 +72,5 @@ public class Party {
 			Gdx.app.log("Error", hero.getUnitName() + "가 파티 리스트에 없습니다.");
 		}
 	}
+
 }

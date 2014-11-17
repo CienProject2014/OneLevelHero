@@ -1,5 +1,7 @@
 package com.mygdx.stage;
 
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -18,8 +20,8 @@ import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryActor;
 import com.mygdx.manager.CurrentManager;
-import com.mygdx.message.AlertMessage;
 import com.mygdx.message.Message;
+import com.mygdx.model.Hero;
 import com.mygdx.resource.Assets;
 import com.mygdx.screen.BattleScreen;
 import com.mygdx.ui.StatusBarUi;
@@ -66,7 +68,7 @@ public class GameUiStage extends Stage {
 
 		statusbartable = new Table[3];
 		charatertable = new Table[3];
-		battleMemberNumber = CurrentManager.getInstance().party
+		battleMemberNumber = CurrentManager.getInstance().getParty()
 				.getBattleMemberList().size();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
@@ -78,7 +80,16 @@ public class GameUiStage extends Stage {
 			charatertable[i] = new Table(Assets.skin);
 
 		}
-		characterImage = character.getBattleMemberImage();
+		//캐릭터 이미지 세팅
+		List<Hero> currentBattleMemberList = CurrentManager.getInstance()
+				.getParty().getBattleMemberList();
+		Gdx.app.log("currentBattleMemberList",
+				String.valueOf(currentBattleMemberList.get(0).getFaceImage()));
+		Gdx.app.log("currentImage",
+				String.valueOf(Assets.imageFileList.get("yongsa")));
+		for (int i = 0; i < currentBattleMemberList.size(); i++) {
+			characterImage[i] = currentBattleMemberList.get(i).getFaceImage();
+		}
 
 		toptable = new Table(Assets.skin);
 		bottomtable = new Table(Assets.skin);
@@ -100,6 +111,7 @@ public class GameUiStage extends Stage {
 		inventoryActor = new InventoryActor(new Inventory(), dragAndDrop, skin);
 
 		//알림 메시지
+		/*
 		alertMessage = new AlertMessage("[ 보상 ]", Assets.skin).text(
 				RewardManager.getInstance().getRewardMessage()).button("확인",
 				new InputListener() {
@@ -112,7 +124,7 @@ public class GameUiStage extends Stage {
 						return true;
 					}
 				});
-
+		 */
 		addListener();
 		makeTable();
 		addActor(uiTable);

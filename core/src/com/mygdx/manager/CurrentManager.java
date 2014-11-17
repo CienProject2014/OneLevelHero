@@ -1,20 +1,19 @@
 package com.mygdx.manager;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.mygdx.model.Hero;
 import com.mygdx.model.NPC;
+import com.mygdx.model.Party;
 import com.mygdx.resource.Assets;
 import com.mygdx.resource.SaveVersion;
-import com.mygdx.unit.Hero;
-import com.mygdx.unit.Party;
 
 public class CurrentManager implements Serializable {
 	private SaveVersion saveVersion;
 	private String village;
 	//<String, Enum>타입의 HashMap으로 바꾸기
-	private Hero leftHero;
-	private Hero centerHero;
-	private Hero rightHero;
+	public List<Hero> heroes;
 	public Party party;
 	private NPC currentNPC;
 	private int currentEventNumber;
@@ -23,6 +22,7 @@ public class CurrentManager implements Serializable {
 	private String currentState = "village";
 	private String currentStarting;
 	private String currentDestination;
+
 	private static CurrentManager instance;
 
 	public static CurrentManager getInstance() {
@@ -58,30 +58,6 @@ public class CurrentManager implements Serializable {
 
 	public void setSaveVersion(SaveVersion saveVersion) {
 		this.saveVersion = saveVersion;
-	}
-
-	public Hero getLeftHero() {
-		return leftHero;
-	}
-
-	public void setLeftHero(Hero leftHero) {
-		this.leftHero = leftHero;
-	}
-
-	public Hero getCenterHero() {
-		return centerHero;
-	}
-
-	public void setCenterHero(Hero centerHero) {
-		this.centerHero = centerHero;
-	}
-
-	public Hero getRightHero() {
-		return rightHero;
-	}
-
-	public void setRightHero(Hero rightHero) {
-		this.rightHero = rightHero;
 	}
 
 	public static void setInstance(CurrentManager instance) {
@@ -142,5 +118,13 @@ public class CurrentManager implements Serializable {
 
 	public void setCurrentEventNumber(int currentEventNumber) {
 		this.currentEventNumber = currentEventNumber;
+	}
+
+	public List<Hero> getHeroes() {
+		return heroes;
+	}
+
+	public void setHeroes(List<Hero> heroes) {
+		this.heroes = heroes;
 	}
 }

@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.model.Hero;
 import com.mygdx.model.NPC;
 import com.mygdx.stage.WorldStage.worldNode;
 import com.mygdx.util.JsonMapParser;
@@ -41,7 +42,7 @@ public class Assets {
 	public static JSONObject worldmap_json, village_json, status_new_left,
 			bag_json, credit_list, blackwood_json, prologue_json,
 			blackwood_character, blackwood_background, waiji_json, parath_json,
-			npc_json;
+			npc_json, hero_json;
 
 	// NPC 이름
 	public static Image yongsa, parath;
@@ -59,9 +60,10 @@ public class Assets {
 
 	public static JSONObject jsonFile;
 	public static HashMap<String, Object> resourceFileList = new HashMap<String, Object>();
-	public static HashMap<String, Texture> imageFileList = new HashMap<String, Texture>();
+	public static HashMap<String, Image> imageFileList = new HashMap<String, Image>();
 	public static HashMap<String, String> villageHashmap;
 	public static HashMap<String, worldNode> worldHashmap = new HashMap<String, worldNode>();
+	public static Map<String, Hero> heroMap;
 	public static Map<String, NPC> npcMap;
 
 	public static void loadAll() {
@@ -72,6 +74,7 @@ public class Assets {
 		fontLoad();
 		chatButtonLoad();
 		npcLoad();
+		heroLoad();
 	}
 
 	public static void loadSize(Stage stage) {
@@ -81,16 +84,14 @@ public class Assets {
 	}
 
 	private static void jsonLoad() {
+		hero_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/event/hero.json").readString());
 		npc_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/event/npc.json").readString());
 		worldmap_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/worldmap.json").readString());
 		village_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/village.json").readString());
-		status_new_left = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/status/status_new_left.json").readString());
-		bag_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/bag_new.json").readString());
 		credit_list = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/credit_list.json").readString());
 
@@ -115,6 +116,11 @@ public class Assets {
 		resourceFileList.put("prologue_json", prologue_json);
 		resourceFileList.put("parath_json", parath_json);
 		resourceFileList.put("waiji_json", waiji_json);
+	}
+
+	private static void heroLoad() {
+		//hero 리스트를 담은 Json을 불러와 객체화한다.
+		heroMap = JsonMapParser.mapParse(Hero.class, hero_json.toString());
 	}
 
 	private static void npcLoad() {
@@ -220,11 +226,11 @@ public class Assets {
 
 		// HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
 
-		imageFileList.put("yongsa_happy", yongsa_happy);
-		imageFileList.put("yongsa_sad", yongsa_sad);
-		imageFileList.put("parath_happy", parath_happy);
+		resourceFileList.put("yongsa_happy", yongsa_happy);
+		resourceFileList.put("yongsa_sad", yongsa_sad);
+		resourceFileList.put("parath_happy", parath_happy);
 		resourceFileList.put("parath_angry", parath_angry);
-		imageFileList.put("waiji_happy", waiji_happy);
+		resourceFileList.put("waiji_happy", waiji_happy);
 		resourceFileList.put("rabbit1", rabbit1);
 		resourceFileList.put("rabbit2", rabbit2);
 		resourceFileList.put("rabbit3", rabbit3);
@@ -242,8 +248,8 @@ public class Assets {
 		resourceFileList.put("yongsa_sick", yongsa_sick);
 		resourceFileList.put("yongsa_angry", yongsa_angry);
 		resourceFileList.put("main_background", main_background);
-		resourceFileList.put("yongsa", yongsa);
-		resourceFileList.put("parath", parath);
+		imageFileList.put("yongsa", yongsa);
+		imageFileList.put("parath", parath);
 	}
 
 	private static void fontLoad() {
