@@ -6,6 +6,10 @@ public class EventManager {
 	private static EventManager instance;
 	private EventInfo eventInfo;
 
+	private EventManager() {
+		eventInfo = new EventInfo();
+	}
+
 	public class EventInfo {
 		private NPC npc;
 		private int eventNumber;

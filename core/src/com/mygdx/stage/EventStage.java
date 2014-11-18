@@ -1,29 +1,30 @@
 package com.mygdx.stage;
 
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.manager.EventManager;
+import com.mygdx.manager.EventManager.EventInfo;
 import com.mygdx.model.EventScene;
 import com.mygdx.resource.Assets;
 
 public class EventStage extends Stage {
-	private static EventStage instance;
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
+	private List<EventScene> eventScene;
+	private EventTypeEnum eventType;
+	private EventInfo eventInfo;
 
-	public static EventStage getInstance() {
-		if (null == instance) {
-			instance = new EventStage();
-		}
-		return instance;
-	}
-
-	public EventStage makeStage(EventScene eventScene, EventTypeEnum eventType) {
+	public EventStage() {
 		//씬 만들어주기
-
+		eventInfo = EventManager.getInstance().getEventInfo();
+		eventScene = eventInfo.getNpc().getEvent()
+				.get(eventInfo.getEventNumber()).getEventScene();
 		backgroundImage = eventScene.getBackground();
 		script = new Label(eventScene.getScript(), Assets.skin);
 		characterImage = eventScene.getCharacter();
@@ -58,7 +59,7 @@ public class EventStage extends Stage {
 		this.addActor(backgroundImage);
 		this.addActor(script);
 		this.addActor(characterImage);
-		return this;
+
 	}
 
 	private void makeCreditStage() {

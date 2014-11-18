@@ -303,8 +303,9 @@ public class VillageStage extends Stage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-					System.out.println(npcinfo.get("key"));
+
 					// EventManager에 CurrentNpc정보를 전달한다.
+					System.out.println(Assets.npcMap.get(npcinfo.get("key")));
 					EventManager.getInstance().setEventInfo(
 							Assets.npcMap.get(npcinfo.get("key")), 0);
 					new ScreenController(ScreenEnum.EVENT);

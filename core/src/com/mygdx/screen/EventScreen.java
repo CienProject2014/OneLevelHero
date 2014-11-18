@@ -1,5 +1,7 @@
 ﻿package com.mygdx.screen;
 
+import java.util.Iterator;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -9,24 +11,19 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.StageFactory;
+import com.mygdx.manager.EventManager;
+import com.mygdx.manager.EventManager.EventInfo;
 import com.mygdx.manager.EventStageManager;
-import com.mygdx.model.Event;
 import com.mygdx.model.EventScene;
-import com.mygdx.model.NPC;
 import com.mygdx.stage.SelectButtonStage;
 
 public class EventScreen implements Screen {
 	private Stage eventStage;
 	private Stage buttonStage;
-	private NPC npc;
-	private int eventNumber;
+	private EventInfo eventInfo;
 
 	public EventScreen() {
-	}
-
-	public EventScreen(NPC npc, int eventNumber) {
-		this.npc = npc;
-		this.eventNumber = eventNumber;
 	}
 
 	@Override
@@ -53,11 +50,11 @@ public class EventScreen implements Screen {
 	public void show() {
 
 		buttonStage = new SelectButtonStage();
-		final Event events = npc.getEvent().get(eventNumber);
-		final EventScene eventScene = events.getEventScene().iterator().next();
-		eventStage = EventStageManager.getInstance().makeStage(eventScene,
-				events.getEventType());
 
+		eventInfo = EventManager.getInstance().getEventInfo();
+		final Iterator<EventScene> iterator = eventInfo.getNpc().getEvent()
+				.get(0).getEventScene().iterator();
+		eventStage = StageFactory.getInstance().makeStage("event");
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
 		// 우선권을 준다.
