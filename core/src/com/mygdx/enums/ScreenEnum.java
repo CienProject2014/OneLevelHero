@@ -13,7 +13,6 @@ import com.mygdx.screen.LoadScreen;
 import com.mygdx.screen.MenuScreen;
 import com.mygdx.screen.MovingScreen;
 import com.mygdx.screen.OptionScreen;
-import com.mygdx.screen.PrologueScreen;
 import com.mygdx.screen.SaveScreen;
 import com.mygdx.screen.StatusScreen;
 import com.mygdx.screen.VillageScreen;
@@ -29,11 +28,6 @@ public enum ScreenEnum {
 	OPTION {
 		public Screen getScreenInstance() {
 			return new OptionScreen();
-		}
-	},
-	PROLOGUE {
-		public Screen getScreenInstance() {
-			return new PrologueScreen();
 		}
 	},
 	VILLAGE {

@@ -3,18 +3,15 @@ package com.mygdx.manager;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.IntMap;
-import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.Factory.StageFactory;
 
-public final class ScreenManager  {
+public final class ScreenManager {
 
 	private static ScreenManager instance;
 
 	private static Game game;
 
 	private IntMap<Screen> screens;
-	
 
 	private ScreenManager() {
 		screens = new IntMap<Screen>();
@@ -45,7 +42,7 @@ public final class ScreenManager  {
 			return;
 		screens.remove(screen.ordinal()).dispose();
 	}
-	
+
 	public void dispose() {
 		for (com.badlogic.gdx.Screen screen : screens.values()) {
 			screen.dispose();
