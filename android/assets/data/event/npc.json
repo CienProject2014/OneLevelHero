@@ -1,11 +1,60 @@
 {
-  
+  "prologue": {
+    "event": [
+      {
+        "eventState": "OPENED",
+        "eventType": "CHAT",
+        "eventScene": [
+          {
+            "script": "대륙의 중심, 블랙우드 마을에 마왕이 출현했다.",
+            "characterPath": "rabbit1",
+            "backgroundPath": "scene1"
+          },
+          {
+            "script": "마을의 촌장은 지나가던 용사에게 토벌을 부탁했고",
+            "characterPath": "rabbit2",
+            "backgroundPath": "scene2"
+          },
+          {
+            "script": "이를 수락한 용사는 곧장 마왕성으로 돌격했으나 그것은 함정에 불과했다. ",
+            "characterPath": "rabbit3",
+            "backgroundPath": "scene3"
+          },
+          {
+            "script": "용사는 결국 마왕의 간악한 꾀에 넘어가 레벨 다운의 저주에 걸리고 말았다...",
+            "characterPath": "rabbit3",
+            "backgroundPath": "scene4"
+          },
+          {
+            "script": "용사님.. 일어나세요..!",
+            "characterPath": "parath_happy",
+            "backgroundPath": "scene1"
+          },
+          {
+            "script": "으으...",
+            "characterPath": "yongsa_sad",
+            "backgroundPath": "scene2"
+          },
+          {
+            "script": "벌써 삼일째에요.. 이젠 기운을 차릴 때도 됐잖아요. 촌장님이 찾으셔요.",
+            "characterPath": "parath_angry",
+            "backgroundPath": "scene3"
+          },
+          {
+            "script": "용사 : 정말, 귀찮은데..",
+            "characterPath": "yongsa_sick",
+            "backgroundPath": "scene4"
+          }
+        ]
+      }
+    ]
+  },
   "waiji": {
-  	"faceImagePath" : "waiji",
+    "faceImagePath": "waiji",
     "unitName": "waiji",
     "event": [
       {
-      	"eventState" :"OPENED",
+        "eventState": "OPENED",
         "eventType": "CHAT",
         "reward": {
           "rewardType": "PARTY",

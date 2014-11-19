@@ -164,7 +164,7 @@ public class VillageStage extends Stage {
 
 	private class Building extends Image {
 
-		private String name;
+		//		private String name;
 		private float posX;
 		private float posY;
 		private float width;
@@ -174,7 +174,6 @@ public class VillageStage extends Stage {
 
 			super(villageAtlas.findRegion((String) buildinginfo.get("key")));
 
-			name = (String) buildinginfo.get("name");
 			setBuildingkey((String) buildinginfo.get("key"));
 
 			posX = viewportwidth
