@@ -50,8 +50,10 @@ public class EventScreen implements Screen {
 		eventInfo = EventManager.getInstance().getEventInfo();
 		final Iterator<EventScene> iterator = eventInfo.getNpc().getEvent()
 				.get(eventInfo.getEventNumber()).getEventScene().iterator();
-		final List<EventScene> greetingScene = eventInfo.getNpc().getGreeting()
-				.getEventScene();
+		List<EventScene> greetingScene = null;
+		if (eventInfo.getNpc().getGreeting() != null) {
+			greetingScene = eventInfo.getNpc().getGreeting().getEventScene();
+		}
 		if (eventInfo.isGreeting()) {
 			eventStage = StageFactory.getInstance().makeStage(
 					greetingScene.get((int) (Math.random() * greetingScene
