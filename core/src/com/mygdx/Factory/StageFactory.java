@@ -1,4 +1,4 @@
-package com.mygdx.factory;
+package com.mygdx.Factory;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.model.EventScene;

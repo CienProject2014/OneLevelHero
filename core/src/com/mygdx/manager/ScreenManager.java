@@ -5,7 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.IntMap;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.StageFactory;
+import com.mygdx.Factory.StageFactory;
 
 public final class ScreenManager  {
 
