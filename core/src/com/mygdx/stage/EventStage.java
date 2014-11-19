@@ -28,8 +28,11 @@ public class EventStage extends Stage {
 		backgroundImage = new Image(eventScene.getBackground());
 		script = new Label(eventScene.getScript(), Assets.skin);
 		characterImage = new Image(eventScene.getCharacter());
-		eventType = eventInfo.getNpc().getEvent()
-				.get(eventInfo.getEventNumber()).getEventType();
+		if (!eventInfo.isGreeting())
+			eventType = eventInfo.getNpc().getEvent()
+					.get(eventInfo.getEventNumber()).getEventType();
+		else
+			eventType = eventInfo.getNpc().getGreeting().getEventType();
 		switch (eventType) {
 			case CHAT:
 				makeChatStage();
@@ -79,6 +82,7 @@ public class EventStage extends Stage {
 		characterImage.setPosition(Assets.realWidth * 0.375f,
 				Assets.realHeight * 0.37f);
 		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
+
 	}
 
 	private void makeChatStage() {

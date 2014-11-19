@@ -51,7 +51,7 @@ public class MenuScreen implements Screen {
 		SoundManager.getInstance().playMusic(getMusic());
 		stage = new Stage();
 		Assets.loadSize(stage);
-		stage = new StageFactory().makeStage("main");
+		stage = StageFactory.getInstance().makeStage("main");
 
 		Gdx.input.setInputProcessor(stage);
 

@@ -271,7 +271,6 @@ public class VillageStage extends Stage {
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
 
-					System.out.println(((Building) event.getListenerActor()).name);
 				}
 			});
 			addActor(buildingbutton[i]);
@@ -305,9 +304,8 @@ public class VillageStage extends Stage {
 						int pointer, int button) {
 
 					// EventManager에 CurrentNpc정보를 전달한다.
-					System.out.println(Assets.npcMap.get(npcinfo.get("key")));
 					EventManager.getInstance().setEventInfo(
-							Assets.npcMap.get(npcinfo.get("key")), 0);
+							Assets.npcMap.get(npcinfo.get("key")), true);
 					new ScreenController(ScreenEnum.EVENT);
 				}
 			});

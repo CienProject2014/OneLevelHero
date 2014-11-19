@@ -13,6 +13,7 @@ public class EventManager {
 	public class EventInfo {
 		private NPC npc;
 		private int eventNumber;
+		private boolean greeting;
 
 		public NPC getNpc() {
 			return npc;
@@ -29,6 +30,14 @@ public class EventManager {
 		public void setEventNumber(int eventNumber) {
 			this.eventNumber = eventNumber;
 		}
+
+		public boolean isGreeting() {
+			return greeting;
+		}
+
+		public void setGreeting(boolean greeting) {
+			this.greeting = greeting;
+		}
 	}
 
 	public static EventManager getInstance() {
@@ -42,9 +51,18 @@ public class EventManager {
 		return eventInfo;
 	}
 
-	public void setEventInfo(NPC npc, int eventNumber) {
+	public void setEventInfo(NPC npc, int eventNumber, boolean isGreeting) {
 		eventInfo.setNpc(npc);
 		eventInfo.setEventNumber(eventNumber);
+		eventInfo.setGreeting(isGreeting);
+	}
+
+	public void setEventInfo(NPC npc, int eventNumber) {
+		setEventInfo(npc, eventNumber, false);
+	}
+
+	public void setEventInfo(NPC npc, boolean isGreeting) {
+		setEventInfo(npc, 0, isGreeting);
 	}
 
 }

@@ -96,7 +96,7 @@
       }
     ],
     "greeting": {
-      "eventType": "CHAT",
+      "eventType": "SELECT",
       "eventScene": [
         {
           "script": "블랙우드 마을에 온 것을 환영하네",

@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.EventManager;
+import com.mygdx.manager.EventManager.EventInfo;
 import com.mygdx.resource.Assets;
 
 public class SelectButtonStage extends Stage {
@@ -70,8 +72,9 @@ public class SelectButtonStage extends Stage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				//String eventCode = EventManager.getInstance().getEventNpc().getNpcEvent().getEventCode()[0];
-				//EventManager.getInstance().setEventCode(eventCode, EventTypeEnum.CHAT);
+				EventInfo eventInfo = EventManager.getInstance().getEventInfo();
+				EventManager.getInstance().setEventInfo(eventInfo.getNpc(), 0,
+						false);
 				new ScreenController(ScreenEnum.EVENT);
 			}
 		});
