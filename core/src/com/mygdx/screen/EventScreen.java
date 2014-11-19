@@ -14,7 +14,6 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.EventManager.EventInfo;
-import com.mygdx.manager.EventStageManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.stage.SelectButtonStage;
 
@@ -54,7 +53,7 @@ public class EventScreen implements Screen {
 		eventInfo = EventManager.getInstance().getEventInfo();
 		final Iterator<EventScene> iterator = eventInfo.getNpc().getEvent()
 				.get(0).getEventScene().iterator();
-		eventStage = StageFactory.getInstance().makeStage("event");
+		eventStage = StageFactory.getInstance().makeStage(iterator.next());
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
 		// 우선권을 준다.
@@ -68,13 +67,12 @@ public class EventScreen implements Screen {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				while (events.getEventScene().iterator().hasNext()) {
-
-					eventStage = EventStageManager.getInstance().makeStage(
-							eventScene, events.getEventType());
+				if (iterator.hasNext()) {
+					eventStage = StageFactory.getInstance().makeStage(
+							iterator.next());
+				} else {
+					new ScreenController(ScreenEnum.VILLAGE);
 				}
-				new ScreenController(ScreenEnum.VILLAGE);
-
 				return true;
 			}
 		});

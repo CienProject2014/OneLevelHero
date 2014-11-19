@@ -83,7 +83,8 @@ public class GameUiStage extends Stage {
 				.getParty().getBattleMemberList();
 
 		for (int i = 0; i < currentBattleMemberList.size(); i++) {
-			characterImage[i] = currentBattleMemberList.get(i).getFaceImage();
+			characterImage[i] = new Image(currentBattleMemberList.get(i)
+					.getFaceImage());
 		}
 
 		toptable = new Table(Assets.skin);

@@ -1,7 +1,5 @@
 package com.mygdx.stage;
 
-import java.util.List;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -16,19 +14,22 @@ public class EventStage extends Stage {
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
-	private List<EventScene> eventScene;
 	private EventTypeEnum eventType;
 	private EventInfo eventInfo;
 
 	public EventStage() {
+
+	}
+
+	public EventStage(EventScene eventScene) {
 		//씬 만들어주기
 		eventInfo = EventManager.getInstance().getEventInfo();
-		eventScene = eventInfo.getNpc().getEvent()
-				.get(eventInfo.getEventNumber()).getEventScene();
-		backgroundImage = eventScene.getBackground();
-		script = new Label(eventScene.getScript(), Assets.skin);
-		characterImage = eventScene.getCharacter();
 
+		backgroundImage = new Image(eventScene.getBackground());
+		script = new Label(eventScene.getScript(), Assets.skin);
+		characterImage = new Image(eventScene.getCharacter());
+		eventType = eventInfo.getNpc().getEvent()
+				.get(eventInfo.getEventNumber()).getEventType();
 		switch (eventType) {
 			case CHAT:
 				makeChatStage();

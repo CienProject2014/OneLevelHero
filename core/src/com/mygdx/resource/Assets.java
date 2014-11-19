@@ -45,7 +45,7 @@ public class Assets {
 			npc_json, hero_json;
 
 	// NPC 이름
-	public static Image yongsa, parath;
+	public static Texture yongsa, parath, waiji;
 
 	public static Music music, mainMusic;
 	public static Texture splash;
@@ -60,7 +60,7 @@ public class Assets {
 
 	public static JSONObject jsonFile;
 	public static HashMap<String, Object> resourceFileList = new HashMap<String, Object>();
-	public static HashMap<String, Image> imageFileList = new HashMap<String, Image>();
+	public static HashMap<String, Texture> imageFileList = new HashMap<String, Texture>();
 	public static HashMap<String, String> villageHashmap;
 	public static HashMap<String, worldNode> worldHashmap = new HashMap<String, worldNode>();
 	public static Map<String, Hero> heroMap;
@@ -180,10 +180,9 @@ public class Assets {
 
 	private static void characterImageLoad() {
 
-		yongsa = new Image(new Texture(
-				Gdx.files.internal("texture/npc/YongSa.jpg")));
-		parath = new Image(new Texture(
-				Gdx.files.internal("texture/npc/Parath.png")));
+		yongsa = new Texture(Gdx.files.internal("texture/npc/YongSa.jpg"));
+		parath = new Texture(Gdx.files.internal("texture/npc/Parath.png"));
+		waiji = new Texture(Gdx.files.internal("texture/npc/waiji_happy.png"));
 
 		rabbit1 = new Texture(
 				Gdx.files.internal("texture/prologue/rabbit1.png"));
@@ -230,11 +229,11 @@ public class Assets {
 
 		// HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
 
-		resourceFileList.put("yongsa_happy", yongsa_happy);
-		resourceFileList.put("yongsa_sad", yongsa_sad);
-		resourceFileList.put("parath_happy", parath_happy);
-		resourceFileList.put("parath_angry", parath_angry);
-		resourceFileList.put("waiji_happy", waiji_happy);
+		imageFileList.put("yongsa_happy", yongsa_happy);
+		imageFileList.put("yongsa_sad", yongsa_sad);
+		imageFileList.put("parath_happy", parath_happy);
+		imageFileList.put("parath_angry", parath_angry);
+		imageFileList.put("waiji_happy", waiji_happy);
 		resourceFileList.put("rabbit1", rabbit1);
 		resourceFileList.put("rabbit2", rabbit2);
 		resourceFileList.put("rabbit3", rabbit3);
@@ -243,17 +242,18 @@ public class Assets {
 		resourceFileList.put("scene3", scene3);
 		resourceFileList.put("scene4", scene4);
 		resourceFileList.put("prog_team1", prog_team1);
-		resourceFileList.put("plan_team1", plan_team1);
-		resourceFileList.put("graphic_team1", graphic_team1);
-		resourceFileList.put("nothing_image", nothing_image);
-		resourceFileList.put("parath_background", parath_background);
-		resourceFileList.put("waiji_background", waiji_background);
-		resourceFileList.put("blackwood_center", blackwood_center);
-		resourceFileList.put("yongsa_sick", yongsa_sick);
-		resourceFileList.put("yongsa_angry", yongsa_angry);
-		resourceFileList.put("main_background", main_background);
+		imageFileList.put("plan_team1", plan_team1);
+		imageFileList.put("graphic_team1", graphic_team1);
+		imageFileList.put("nothing_image", nothing_image);
+		imageFileList.put("parath_background", parath_background);
+		imageFileList.put("waiji_background", waiji_background);
+		imageFileList.put("blackwood_center", blackwood_center);
+		imageFileList.put("yongsa_sick", yongsa_sick);
+		imageFileList.put("yongsa_angry", yongsa_angry);
+		imageFileList.put("main_background", main_background);
 		imageFileList.put("yongsa", yongsa);
 		imageFileList.put("parath", parath);
+		imageFileList.put("waiji", waiji);
 	}
 
 	private static void fontLoad() {

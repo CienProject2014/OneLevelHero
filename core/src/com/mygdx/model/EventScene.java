@@ -1,32 +1,32 @@
 package com.mygdx.model;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.resource.Assets;
 
 public class EventScene {
 	private String script;
 	private String characterPath;
 	private String backgroundPath;
-	private Image character;
-	private Image background;
+	private Texture character;
+	private Texture background;
 
-	public Image getCharacter() {
-		if (this.character == null)
-			character = (Image) Assets.resourceFileList.get(characterPath);
+	public Texture getCharacter() {
+		if (character == null)
+			character = Assets.imageFileList.get(characterPath);
 		return character;
 	}
 
-	public void setCharacter(Image character) {
+	public void setCharacter(Texture character) {
 		this.character = character;
 	}
 
-	public Image getBackground() {
+	public Texture getBackground() {
 		if (background == null)
-			background = (Image) Assets.imageFileList.get(backgroundPath);
+			background = Assets.imageFileList.get(backgroundPath);
 		return background;
 	}
 
-	public void setBackground(Image background) {
+	public void setBackground(Texture background) {
 		this.background = background;
 	}
 

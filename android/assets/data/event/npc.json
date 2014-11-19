@@ -1,7 +1,7 @@
 {
   
   "waiji": {
-  	"faceImagePath" : "waiji_happy",
+  	"faceImagePath" : "waiji",
     "unitName": "waiji",
     "event": [
       {

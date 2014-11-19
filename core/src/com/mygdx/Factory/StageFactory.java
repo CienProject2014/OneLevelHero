@@ -1,6 +1,7 @@
 package com.mygdx.factory;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.model.EventScene;
 import com.mygdx.stage.EventStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.VillageStage;
@@ -28,4 +29,9 @@ public class StageFactory {
 			return new MenuStage(stageName);
 		}
 	}
+
+	public Stage makeStage(EventScene eventScene) {
+		return new EventStage(eventScene);
+	}
+
 }

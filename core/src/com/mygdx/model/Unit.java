@@ -1,11 +1,11 @@
 package com.mygdx.model;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.resource.Assets;
 
 public class Unit {
 	private String unitName;
-	private Image faceImage;
+	private Texture faceImage;
 	private String faceImagePath;
 
 	public String getUnitName() {
@@ -16,13 +16,13 @@ public class Unit {
 		this.unitName = unitName;
 	}
 
-	public Image getFaceImage() {
+	public Texture getFaceImage() {
 		if (faceImage == null)
-			faceImage = (Image) Assets.imageFileList.get(faceImagePath);
+			faceImage = Assets.imageFileList.get(faceImagePath);
 		return faceImage;
 	}
 
-	public void setFaceImage(Image faceImage) {
+	public void setFaceImage(Texture faceImage) {
 		this.faceImage = faceImage;
 	}
 
