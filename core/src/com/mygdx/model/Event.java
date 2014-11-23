@@ -1,5 +1,6 @@
 package com.mygdx.model;
 
+import java.util.Iterator;
 import java.util.List;
 
 import com.mygdx.enums.EventStateEnum;
@@ -9,7 +10,7 @@ public class Event {
 	private EventTypeEnum eventType;
 	private EventStateEnum eventState;
 	private Reward reward;
-	private List<EventScene> eventScene;
+	private List<EventScene> eventScenes;
 
 	public EventTypeEnum getEventType() {
 		return eventType;
@@ -27,12 +28,16 @@ public class Event {
 		this.reward = reward;
 	}
 
-	public List<EventScene> getEventScene() {
-		return eventScene;
+	public List<EventScene> getEventScenes() {
+		return eventScenes;
 	}
 
-	public void setEventScene(List<EventScene> eventScene) {
-		this.eventScene = eventScene;
+	public void setEventScenes(List<EventScene> eventScenes) {
+		this.eventScenes = eventScenes;
+	}
+
+	public Iterator<EventScene> getEventSceneIterator() {
+		return eventScenes.iterator();
 	}
 
 	public EventStateEnum getEventState() {

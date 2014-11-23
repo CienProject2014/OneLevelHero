@@ -2,24 +2,45 @@ package com.mygdx.model;
 
 import java.util.List;
 
+import com.badlogic.gdx.Application;
+
 public class NPC extends Unit {
-	private List<Event> event;
 
-	public List<Event> getEvent() {
-		return event;
-	}
+	private Application app;
 
-	public void setEvent(List<Event> event) {
-		this.event = event;
-	}
-
+	private List<Event> events;
 	private Event greeting;
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> event) {
+		this.events = event;
+	}
+
+	public Event getEvent(int eventNo) {
+		try {
+			return events.get(eventNo);
+		} catch (IndexOutOfBoundsException e) {
+			app.error("error", String.format("eventNo %d not exist", eventNo));
+			return null;
+		}
+	}
+
+	public Event getGreeting() {
+		return greeting;
+	}
+
+	public void setGreeting(Event greeting) {
+		this.greeting = greeting;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((event == null) ? 0 : event.hashCode());
+		result = prime * result + ((events == null) ? 0 : events.hashCode());
 		result = prime * result
 				+ ((greeting == null) ? 0 : greeting.hashCode());
 		return result;
@@ -34,10 +55,10 @@ public class NPC extends Unit {
 		if (getClass() != obj.getClass())
 			return false;
 		NPC other = (NPC) obj;
-		if (event == null) {
-			if (other.event != null)
+		if (events == null) {
+			if (other.events != null)
 				return false;
-		} else if (!event.equals(other.event))
+		} else if (!events.equals(other.events))
 			return false;
 		if (greeting == null) {
 			if (other.greeting != null)
@@ -47,11 +68,4 @@ public class NPC extends Unit {
 		return true;
 	}
 
-	public Event getGreeting() {
-		return greeting;
-	}
-
-	public void setGreeting(Event greeting) {
-		this.greeting = greeting;
-	}
 }
