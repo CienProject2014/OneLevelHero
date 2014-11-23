@@ -58,7 +58,6 @@ public class EventScreen implements Screen {
 			eventStage = StageFactory.getInstance().makeStage(
 					greetingScene.get((int) (Math.random() * greetingScene
 							.size())));
-
 		} else {
 			eventStage = StageFactory.getInstance().makeStage(iterator.next());
 		}

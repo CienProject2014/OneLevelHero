@@ -9,7 +9,6 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.EventManager.EventInfo;
-import com.mygdx.manager.ScreenManager;
 import com.mygdx.resource.Assets;
 
 public class SelectButtonStage extends Stage {
