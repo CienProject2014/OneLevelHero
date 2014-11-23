@@ -42,7 +42,7 @@ public class EventStage extends Stage {
 		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
 		
 		if (!eventInfo.isGreeting())
-			eventType = eventInfo.getNpc().getEvent()
+			eventType = eventInfo.getNpc().getEvents()
 					.get(eventInfo.getEventNumber()).getEventType();
 		else
 			eventType = eventInfo.getNpc().getGreeting().getEventType();
