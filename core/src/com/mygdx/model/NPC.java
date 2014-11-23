@@ -11,12 +11,20 @@ public class NPC extends Unit {
 	private List<Event> events;
 	private Event greeting;
 
+	public Application getApp() {
+		return app;
+	}
+
+	public void setApp(Application app) {
+		this.app = app;
+	}
+
 	public List<Event> getEvents() {
 		return events;
 	}
 
-	public void setEvents(List<Event> event) {
-		this.events = event;
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 	public Event getEvent(int eventNo) {

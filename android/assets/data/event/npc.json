@@ -1,10 +1,10 @@
 {
   "prologue": {
-    "event": [
+    "events": [
       {
         "eventState": "OPENED",
         "eventType": "CHAT",
-        "eventScene": [
+        "eventScenes": [
           {
             "script": "대륙의 중심, 블랙우드 마을에 마왕이 출현했다.",
             "characterPath": "rabbit1",
@@ -52,7 +52,7 @@
   "waiji": {
     "faceImagePath": "waiji",
     "unitName": "waiji",
-    "event": [
+    "events": [
       {
         "eventState": "OPENED",
         "eventType": "CHAT",
@@ -60,7 +60,7 @@
           "rewardType": "PARTY",
           "rewardTarget": "parath"
         },
-        "eventScene": [
+        "eventScenes": [
           {
             "script": "그래, 기운은 차렸는가?",
             "characterPath": "waiji_happy",
@@ -146,7 +146,7 @@
     ],
     "greeting": {
       "eventType": "SELECT",
-      "eventScene": [
+      "eventScenes": [
         {
           "script": "블랙우드 마을에 온 것을 환영하네",
           "characterPath": "waiji_happy",

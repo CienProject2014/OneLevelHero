@@ -62,7 +62,7 @@ public class CreditScreen implements Screen {
 				//	scene.showNextScene();
 				//	} else {
 				//		// back to previous screen
-				// that envoke this event screen
+				// that invoke this event screen
 
 				// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
 				new ScreenController(ScreenEnum.MENU);

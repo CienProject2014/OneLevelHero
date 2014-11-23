@@ -41,16 +41,6 @@ public class EventScreen implements Screen {
 
 	public EventScreen() {
 
-		selectButtonStage = new SelectButtonStage();
-		eventInfo = eventManager.getEventInfo();
-
-		NPC npc = eventInfo.getNpc();
-
-		iterator = getEventSceneIterator(npc, eventInfo.getEventNumber());
-
-		if (eventInfo.isGreeting()) {
-			greetingScenes = npc.getGreeting().getEventScenes();
-		}
 	}
 
 	private Iterator<EventScene> getEventSceneIterator(NPC npc, int eventNo) {
@@ -78,12 +68,22 @@ public class EventScreen implements Screen {
 
 	@Override
 	public void show() {
+		selectButtonStage = new SelectButtonStage();
+		eventInfo = eventManager.getEventInfo();
 
-		// for shuffle
-		List<EventScene> shuffleList = new ArrayList<EventScene>(greetingScenes);
-		Collections.shuffle(shuffleList);
+		NPC npc = eventInfo.getNpc();
+
+		iterator = getEventSceneIterator(npc, eventInfo.getEventNumber());
 
 		if (eventInfo.isGreeting()) {
+			greetingScenes = npc.getGreeting().getEventScenes();
+
+		}
+		if (eventInfo.isGreeting()) {
+			// for shuffle
+			List<EventScene> shuffleList = new ArrayList<EventScene>(
+					greetingScenes);
+			Collections.shuffle(shuffleList);
 			eventStage = stageFactory.makeStage(shuffleList.get(0));
 		} else {
 			eventStage = stageFactory.makeStage(iterator.next());
