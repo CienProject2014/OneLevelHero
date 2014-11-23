@@ -23,7 +23,7 @@ public class NPCJsonModelingTest {
 		Map<String, NPC> npcMap = JsonMapParser.mapParse(NPC.class,
 				buffer.toString());
 		System.out.println(Assets.resourceFileList.get("blackwood_center"));
-		System.out.println(npcMap.get("waiji").getEvent().get(0)
-				.getEventScene().get(0).getBackground());
+		System.out.println(npcMap.get("waiji").getEvents().get(0)
+				.getEventScenes().get(0).getBackground());
 	}
 }

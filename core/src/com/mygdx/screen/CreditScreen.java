@@ -11,11 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.event.Scene;
 
 public class CreditScreen implements Screen {
 	SpriteBatch batch;
-	Scene scene;
+	//Scene scene;
 	TextButton backButton;
 	Table table;
 	Stage stage;
@@ -34,7 +33,7 @@ public class CreditScreen implements Screen {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		scene.show(delta); // 배경 출력
+		//scene.show(delta); // 배경 출력
 		batch.end();
 
 		stage.draw();
@@ -59,16 +58,16 @@ public class CreditScreen implements Screen {
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				if (scene.isNext()) {
-					scene.showNextScene();
-				} else {
-					// back to previous screen
-					// that envoke this event screen
+				//if (scene.isNext()) {
+				//	scene.showNextScene();
+				//	} else {
+				//		// back to previous screen
+				// that envoke this event screen
 
-					// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
-					new ScreenController(ScreenEnum.MENU);
+				// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
+				new ScreenController(ScreenEnum.MENU);
 
-				}
+				//	}
 				return true;
 			}
 		});
