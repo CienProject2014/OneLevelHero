@@ -66,6 +66,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
 
         compile fileTree(dir: 'libs', include: '*.jar')
+        testCompile group: 'junit', name: 'junit', version: '4.+'
 
     }
 }

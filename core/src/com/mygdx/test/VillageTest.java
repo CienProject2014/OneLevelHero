@@ -5,13 +5,16 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.junit.Test;
+
 import com.mygdx.manager.JsonMapParser;
 
 public class VillageTest {
 
-	public static void main(String[] args) throws IOException {
+	@Test
+	public void villageParseTest() throws IOException {
 
-		String filePath = "C:\\Users\\Velmont\\Documents\\GitHub\\OneLevelHero\\android\\assets\\data\\village.json";
+		String filePath = "../android/assets/data/village.json";
 
 		Scanner in = new Scanner(new File(filePath));
 		StringBuffer buffer = new StringBuffer();
