@@ -214,9 +214,11 @@ public class VillageStage extends Stage {
 		getViewport().setCamera(cam);
 
 		camera = getViewport().getCamera();
+
 		// 마을 제이슨 완성 시 이걸로
 		JSONObject villageData = (JSONObject) Assets.village_json
-				.get(CurrentManager.getInstance().getCurrentPosition());
+				.get(CurrentManager.getInstance().getVillageInfo()
+						.getCurrentPosition());
 		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
 		villageData = (JSONObject) Assets.village_json.get("B");
 

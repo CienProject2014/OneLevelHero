@@ -71,10 +71,11 @@ public class MovingScreen implements Screen {
 	public void show() {
 		// TODO Auto-generated method stub
 
-		currentDestination = CurrentManager.getInstance()
+		currentDestination = CurrentManager.getInstance().getVillageInfo()
 				.getCurrentDestination();
-		currentPosition = CurrentManager.getInstance().getCurrentPosition();
-		currentStartingpoint = CurrentManager.getInstance()
+		currentPosition = CurrentManager.getInstance().getVillageInfo()
+				.getCurrentPosition();
+		currentStartingpoint = CurrentManager.getInstance().getVillageInfo()
 				.getCurrentStarting();
 
 		JSONObject roadJson = (JSONObject) Assets.worldmap_json.get("Road");
@@ -152,16 +153,23 @@ public class MovingScreen implements Screen {
 		}
 		if (leftlength == 0) {
 
-			CurrentManager.getInstance().setCurrentState(
-					Assets.worldHashmap.get(currentDestination).getType());
+			CurrentManager
+					.getInstance()
+					.getVillageInfo()
+					.setCurrentState(
+							Assets.worldHashmap.get(currentDestination)
+									.getType());
 
-			CurrentManager.getInstance().setCurrentPosition(currentDestination);
+			CurrentManager.getInstance().getVillageInfo()
+					.setCurrentPosition(currentDestination);
 
-			CurrentManager.getInstance().setCurrentDestination(null);
+			CurrentManager.getInstance().getVillageInfo()
+					.setCurrentDestination(null);
 
-			CurrentManager.getInstance().setCurrentStarting(null);
+			CurrentManager.getInstance().getVillageInfo()
+					.setCurrentStarting(null);
 
-			String currentState = CurrentManager.getInstance()
+			String currentState = CurrentManager.getInstance().getVillageInfo()
 					.getCurrentState();
 
 			if (currentState.equals("village")) {

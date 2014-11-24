@@ -1,27 +1,29 @@
 package com.mygdx.manager;
 
 import java.io.Serializable;
-import java.util.List;
 
 import com.mygdx.model.Hero;
-import com.mygdx.model.NPC;
+import com.mygdx.model.Inventory;
 import com.mygdx.model.Party;
-import com.mygdx.resource.Assets;
+import com.mygdx.model.VillageInfo;
 import com.mygdx.resource.SaveVersion;
 
 public class CurrentManager implements Serializable {
+	// (1) 버전관리
 	private SaveVersion saveVersion;
-	private String village;
-	//<String, Enum>타입의 HashMap으로 바꾸기
-	public List<Hero> heroes;
-	public Party party;
-	private NPC currentNPC;
-	private int currentEventNumber;
 
-	private String currentPosition = "O";
-	private String currentState = "village";
-	private String currentStarting;
-	private String currentDestination;
+	// (2) 용사 및 파티원 정보, 인벤토리 관리
+	private Hero hero;
+	private Party party;
+	private Inventory inventory;
+
+	// (3) 마을 관리
+	private VillageInfo villageInfo;
+
+	// (4) 시간 관리
+
+	// (5) 보상 미션 및 퀘스트 관리
+	private RewardInfo rewardInfo;
 
 	private static CurrentManager instance;
 
@@ -32,7 +34,8 @@ public class CurrentManager implements Serializable {
 		return instance;
 	}
 
-	public CurrentManager() {
+	private CurrentManager() {
+		villageInfo = new VillageInfo();
 		party = new Party();
 	}
 
@@ -42,14 +45,6 @@ public class CurrentManager implements Serializable {
 
 	public void setVersion(SaveVersion saveVersion) {
 		this.saveVersion = saveVersion;
-	}
-
-	public String getVillage() {
-		return village;
-	}
-
-	public void setVillage(String village) {
-		this.village = village;
 	}
 
 	public SaveVersion getSaveVersion() {
@@ -64,38 +59,6 @@ public class CurrentManager implements Serializable {
 		CurrentManager.instance = instance;
 	}
 
-	public String getCurrentPosition() {
-		return currentPosition;
-	}
-
-	public void setCurrentPosition(String currentPosition) {
-		this.currentPosition = currentPosition;
-	}
-
-	public String getCurrentState() {
-		return currentState;
-	}
-
-	public void setCurrentState(String currentState) {
-		this.currentState = currentState;
-	}
-
-	public String getCurrentStarting() {
-		return currentStarting;
-	}
-
-	public void setCurrentStarting(String currentStarting) {
-		this.currentStarting = currentStarting;
-	}
-
-	public String getCurrentDestination() {
-		return currentDestination;
-	}
-
-	public void setCurrentDestination(String currentDestination) {
-		this.currentDestination = currentDestination;
-	}
-
 	public Party getParty() {
 		return party;
 	}
@@ -104,27 +67,28 @@ public class CurrentManager implements Serializable {
 		this.party = party;
 	}
 
-	public NPC getCurrentNPC() {
-		return currentNPC;
+	public VillageInfo getVillageInfo() {
+		return villageInfo;
 	}
 
-	public void setCurrentNPC(String currentNpcName) {
-		this.currentNPC = Assets.npcMap.get(currentNpcName);
+	public void setVillageInfo(VillageInfo villageInfo) {
+		this.villageInfo = villageInfo;
 	}
 
-	public int getCurrentEventNumber() {
-		return currentEventNumber;
+	public Hero getHero() {
+		return hero;
 	}
 
-	public void setCurrentEventNumber(int currentEventNumber) {
-		this.currentEventNumber = currentEventNumber;
+	public void setHero(Hero hero) {
+		this.hero = hero;
 	}
 
-	public List<Hero> getHeroes() {
-		return heroes;
+	public Inventory getInventory() {
+		return inventory;
 	}
 
-	public void setHeroes(List<Hero> heroes) {
-		this.heroes = heroes;
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
+
 }

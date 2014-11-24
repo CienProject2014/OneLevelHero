@@ -18,24 +18,6 @@ public class Party {
 		this.partyList = partyList;
 	}
 
-	public List<Hero> getBattleMemberList() {
-		return battleMemberList;
-	}
-
-	public void setBattleMemberList(List<Hero> battleMemberList) {
-		this.battleMemberList = battleMemberList;
-	}
-
-	//파티 리스트로 추가하는 방식
-	public void addPartyList(List<Hero> heroes) {
-		partyList.addAll(heroes);
-
-	}
-
-	public void addBattleMemberList(List<Hero> heroes) {
-		battleMemberList.addAll(heroes);
-	}
-
 	public void addParty(Hero hero) {
 		//이미 있는 파티멤버일 경우
 		if (partyList.contains(hero))
@@ -71,6 +53,14 @@ public class Party {
 		} else {
 			Gdx.app.log("Error", hero.getUnitName() + "가 파티 리스트에 없습니다.");
 		}
+	}
+
+	public List<Hero> getBattleMemberList() {
+		return battleMemberList;
+	}
+
+	public void setBattleMemberList(List<Hero> battleMemberList) {
+		this.battleMemberList = battleMemberList;
 	}
 
 }

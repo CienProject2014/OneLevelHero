@@ -1,13 +1,14 @@
 package com.mygdx.model;
 
 public class Hero extends LivingUnit implements Fightable {
-	private Inventory inventory;
+	private Equipment equipment;
 
-	public Inventory getInventory() {
-		return inventory;
+	public Equipment getEquipment() {
+		return equipment;
 	}
 
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
+	public void setEquipment(Equipment equipment) {
+		this.equipment = equipment;
 	}
+
 }

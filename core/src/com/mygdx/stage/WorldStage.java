@@ -251,7 +251,7 @@ public class WorldStage extends Stage {
 	private void setCurrentPosition() {
 
 		worldNode temp = Assets.worldHashmap.get(CurrentManager.getInstance()
-				.getCurrentPosition());
+				.getVillageInfo().getCurrentPosition());
 
 		int connectionNum = temp.connection.size();
 
@@ -279,13 +279,19 @@ public class WorldStage extends Stage {
 					RoadNode temp;
 					temp = (RoadNode) event.getListenerActor();
 
-					CurrentManager.getInstance().setCurrentDestination(
-							temp.destination);
-					CurrentManager.getInstance().setCurrentStarting(
-							CurrentManager.getInstance().getCurrentPosition());
-					CurrentManager.getInstance().setCurrentPosition(
-							temp.roadkey);
-					CurrentManager.getInstance().setCurrentState("road");
+					CurrentManager.getInstance().getVillageInfo()
+							.setCurrentDestination(temp.destination);
+					CurrentManager
+							.getInstance()
+							.getVillageInfo()
+							.setCurrentStarting(
+									CurrentManager.getInstance()
+											.getVillageInfo()
+											.getCurrentPosition());
+					CurrentManager.getInstance().getVillageInfo()
+							.setCurrentPosition(temp.roadkey);
+					CurrentManager.getInstance().getVillageInfo()
+							.setCurrentState("road");
 
 					new ScreenController(ScreenEnum.MOVING);
 
