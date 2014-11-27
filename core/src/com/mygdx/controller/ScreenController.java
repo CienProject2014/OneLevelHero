@@ -3,6 +3,7 @@ package com.mygdx.controller;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.ScreenManager;
+import com.mygdx.model.EventInfo;
 
 public class ScreenController extends Task {
 
@@ -12,6 +13,10 @@ public class ScreenController extends Task {
 	public ScreenController(ScreenEnum screen) {
 		this.screen = screen;
 		run();
+	}
+
+	public ScreenController(ScreenEnum screen, EventInfo eventInfo) {
+		this.screen = screen;
 	}
 
 	@Override

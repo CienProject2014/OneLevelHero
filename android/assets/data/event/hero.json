@@ -13,7 +13,7 @@
       "job": "warrior",
       "debuff": "null"
     },
-    "inventory": {
+    "equipment": {
       "weapon": "sword",
       "armor": "leather_armor",
       "boots": "leather_boots",
@@ -34,7 +34,7 @@
       "job": "assassin",
       "debuff": "null"
     },
-    "inventory": {
+    "equipment": {
       "weapon": "dagger",
       "armor": "leather_armor",
       "boots": "leather_boots",

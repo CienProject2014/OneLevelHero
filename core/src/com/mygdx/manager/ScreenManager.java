@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.IntMap;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.model.EventInfo;
 
 public final class ScreenManager {
 
@@ -57,5 +58,15 @@ public final class ScreenManager {
 
 	public static void setGame(Game game) {
 		ScreenManager.game = game;
+	}
+
+	public void show(ScreenEnum screen, EventInfo eventInfo) {
+		if (null == getGame())
+			return;
+		if (!screens.containsKey(screen.ordinal())) {
+			screens.put(screen.ordinal(), screen.getScreenInstance());
+		}
+		getGame().setScreen(screens.get(screen.ordinal()));
+
 	}
 }

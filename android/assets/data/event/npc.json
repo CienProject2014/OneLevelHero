@@ -58,7 +58,8 @@
         "eventType": "CHAT",
         "reward": {
           "rewardType": "PARTY",
-          "rewardTarget": "parath"
+          "rewardTarget": "parath",
+          "rewardState" : "NOT_CLEARED"
         },
         "eventScenes": [
           {

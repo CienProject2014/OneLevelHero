@@ -14,12 +14,16 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.StageFactory;
+import com.mygdx.manager.CurrentManager;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.EventManager.EventInfo;
+import com.mygdx.manager.RewardInfo;
+import com.mygdx.model.EventInfo;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
+import com.mygdx.model.Reward;
 import com.mygdx.stage.SelectButtonStage;
 
 public class EventScreen implements Screen {
@@ -27,6 +31,8 @@ public class EventScreen implements Screen {
 	// It needs interface layer, for test!
 	private EventManager eventManager = EventManager.getInstance();
 	private StageFactory stageFactory = StageFactory.getInstance();
+	private RewardInfo rewardInfo = CurrentManager.getInstance()
+			.getRewardInfo();
 
 	// Already libgdx using interface!
 	private GL20 gl = Gdx.gl;
@@ -75,10 +81,25 @@ public class EventScreen implements Screen {
 
 		iterator = getEventSceneIterator(npc, eventInfo.getEventNumber());
 
+		//RewardState를 ING로 변경
+		/*
+		if (!eventInfo.isGreeting())
+			rewardInfo.getEventRewardQueue().offer(
+					eventInfo.getNpc().getEvent(eventInfo.getEventNumber())
+							.getReward());
+			*/
+
 		if (eventInfo.isGreeting()) {
 			greetingScenes = npc.getGreeting().getEventScenes();
-
+		} else {
+			//리워드를 eventRewardQueue에 추가
+			Reward reward = npc.getEvent(eventInfo.getEventNumber())
+					.getReward();
+			if (reward != null)
+				if (reward.getRewardState() == RewardStateEnum.NOT_CLEARED)
+					rewardInfo.addEventReward(reward);
 		}
+
 		if (eventInfo.isGreeting()) {
 			// for shuffle
 			List<EventScene> shuffleList = new ArrayList<EventScene>(

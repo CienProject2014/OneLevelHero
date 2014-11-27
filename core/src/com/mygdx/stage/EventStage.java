@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.EventManager.EventInfo;
+import com.mygdx.model.EventInfo;
 import com.mygdx.model.EventScene;
 import com.mygdx.resource.Assets;
 
@@ -40,7 +40,7 @@ public class EventStage extends Stage {
 		characterImage.setPosition(Assets.realWidth * 0.375f,
 				Assets.realHeight * 0.185f);
 		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
-		
+
 		if (!eventInfo.isGreeting())
 			eventType = eventInfo.getNpc().getEvents()
 					.get(eventInfo.getEventNumber()).getEventType();
@@ -60,7 +60,6 @@ public class EventStage extends Stage {
 				Gdx.app.log("error", " scene 주입 에러");
 				break;
 		}
-
 
 		this.addActor(backgroundImage);
 		this.addActor(script);

@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.EventManager.EventInfo;
+import com.mygdx.model.EventInfo;
 import com.mygdx.resource.Assets;
 
 public class SelectButtonStage extends Stage {

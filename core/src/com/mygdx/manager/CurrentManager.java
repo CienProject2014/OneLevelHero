@@ -37,6 +37,7 @@ public class CurrentManager implements Serializable {
 	private CurrentManager() {
 		villageInfo = new VillageInfo();
 		party = new Party();
+		rewardInfo = new RewardInfo();
 	}
 
 	public SaveVersion getVersion() {
@@ -89,6 +90,14 @@ public class CurrentManager implements Serializable {
 
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
+	}
+
+	public RewardInfo getRewardInfo() {
+		return rewardInfo;
+	}
+
+	public void setRewardInfo(RewardInfo rewardInfo) {
+		this.rewardInfo = rewardInfo;
 	}
 
 }

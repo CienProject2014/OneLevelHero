@@ -25,16 +25,13 @@ public class LoadManager {
 	private void setHero() {
 
 		//추후 JSON에서 불러오도록 바꿀 것
-		Hero yongsa = Assets.heroMap.get("yongsa");
-		this.hero = yongsa;
-
-		CurrentManager.getInstance().setHero(hero); // currentManager가 unit을 소유하도록 만든다.
+		setHero(Assets.heroMap.get("yongsa"));
+		CurrentManager.getInstance().setHero(hero); // currentManager가 hero을 소유하도록 만든다.
 	}
 
 	// 해당 Hero들을 Party구성원에 포함시킨다
 	private void setPartyList() {
 		CurrentManager.getInstance().getParty().addParty(hero);
-		CurrentManager.getInstance().getParty().addBattleMember(hero);
 	}
 
 	public Hero getHero() {
