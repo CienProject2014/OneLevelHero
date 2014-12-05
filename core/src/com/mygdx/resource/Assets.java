@@ -269,7 +269,5 @@ public class Assets {
 			chatButton[i] = new TextureRegionDrawable(
 					textureAtlas.findRegion("chatbutton" + (i + 1)));
 		}
-
 	}
-
 }

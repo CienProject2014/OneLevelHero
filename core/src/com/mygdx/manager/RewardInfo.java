@@ -8,31 +8,36 @@ import com.mygdx.model.Reward;
 
 public class RewardInfo {
 	// (1) 보상 달성 여부 큐
-	private Queue<Reward> eventRewardQueue;
+	private Queue<Reward> rewardQueue;
 
-	// (2) 퀘스트 달성 여부 큐
+	// (2) 이미 달성한 이벤트 큐
+	private Queue<Reward> achievedRewardQueue;
 
+	// (3) 퀘스트 달성 여부 큐
+
+	// 아직 미구현
 	public RewardInfo() {
-		eventRewardQueue = new LinkedList<Reward>();
+		rewardQueue = new LinkedList<Reward>();
+		achievedRewardQueue = new LinkedList<Reward>();
 	}
 
 	public void addEventReward(Reward reward) {
-
 		reward.setRewardState(RewardStateEnum.ING);
-		eventRewardQueue.add(reward);
+		rewardQueue.add(reward);
 	}
 
-	public void removeEventReward(Reward reward) {
-		reward.setRewardState(RewardStateEnum.CLEARED);
-		eventRewardQueue.remove(reward);
+	// (1)에서 뺀후 (2)의 큐에 집어넣는다.
+	public void removeEventReward() {
+		rewardQueue.peek().setRewardState(RewardStateEnum.CLEARED);
+		achievedRewardQueue.add(rewardQueue.poll());
 	}
 
-	public Queue<Reward> getEventRewardQueue() {
-		return eventRewardQueue;
+	public Queue<Reward> getRewardQueue() {
+		return rewardQueue;
 	}
 
-	public void setEventRewardQueue(Queue<Reward> eventRewardQueue) {
-		this.eventRewardQueue = eventRewardQueue;
+	public Queue<Reward> getAchievedRewardQueue() {
+		return achievedRewardQueue;
 	}
 
 }

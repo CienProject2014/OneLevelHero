@@ -11,7 +11,6 @@ public class LoadManager {
 		Assets.loadAll();
 		setHero();
 		setPartyList();
-
 	}
 
 	public static LoadManager getInstance() {
