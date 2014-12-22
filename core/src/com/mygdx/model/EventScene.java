@@ -12,7 +12,7 @@ public class EventScene {
 
 	public Texture getCharacter() {
 		if (character == null)
-			character = Assets.imageFileList.get(characterPath);
+			character = Assets.imageFileMap.get(characterPath);
 		return character;
 	}
 
@@ -22,7 +22,7 @@ public class EventScene {
 
 	public Texture getBackground() {
 		if (background == null)
-			background = Assets.imageFileList.get(backgroundPath);
+			background = Assets.imageFileMap.get(backgroundPath);
 		return background;
 	}
 

@@ -10,6 +10,7 @@ public class JsonMapParser {
 
 	private static final Json JSON = new Json();
 
+	@SuppressWarnings("unchecked")
 	public static <T> Map<String, T> mapParse(Class<T> clazz, String jsonString) {
 
 		HashMap<String, JsonValue> parsedMap = JSON.fromJson(HashMap.class,
@@ -23,5 +24,4 @@ public class JsonMapParser {
 
 		return result;
 	}
-
 }
