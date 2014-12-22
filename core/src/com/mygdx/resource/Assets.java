@@ -83,12 +83,14 @@ public class Assets {
 		loadSize(new Stage());
 	}
 
+	// Stage 크기 설정
 	public static void loadSize(Stage stage) {
 		Viewport vp = stage.getViewport();
 		realWidth = vp.getViewportWidth();
 		realHeight = vp.getViewportHeight();
 	}
 
+	//JsonFile의 path를 읽어온다.
 	private static void jsonLoad() {
 		json_file_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/load/json_file_path.json").readString());
