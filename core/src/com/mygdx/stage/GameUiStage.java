@@ -17,9 +17,11 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
-import com.mygdx.inventory.InventoryActor;
+import com.mygdx.inventory.InventoryPopup;
 import com.mygdx.manager.CurrentManager;
+import com.mygdx.message.MessagePopup;
 import com.mygdx.model.Hero;
+import com.mygdx.popup.StatusMessagePopup;
 import com.mygdx.resource.Assets;
 import com.mygdx.screen.BattleScreen;
 import com.mygdx.ui.StatusBarUi;
@@ -27,10 +29,10 @@ import com.mygdx.ui.StatusBarUi;
 public class GameUiStage extends Stage {
 	Table uiTable;
 	OneLevelHero game;
-	InventoryActor inventoryActor;
+	InventoryPopup inventoryActor;
 	DragAndDrop dragAndDrop;
-	//Message alertMessage; 메시지 필드 임시 보류
-
+	//MessagePopup alertMessage; 메시지 필드 임시 보류
+	private MessagePopup statusMessagePopup;
 	ImageButton downArrowButton;
 	ImageButton bagButton;
 	ImageButton helpButton;
@@ -104,7 +106,7 @@ public class GameUiStage extends Stage {
 		// 인벤토리 Actor 만들기
 		dragAndDrop = new DragAndDrop();
 		Skin skin = Assets.skin;
-		inventoryActor = new InventoryActor(new Inventory(), dragAndDrop, skin);
+		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop, skin);
 
 		//알림 메시지
 		/*
@@ -121,10 +123,13 @@ public class GameUiStage extends Stage {
 					}
 				});
 		 */
+		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", Assets.skin);
 		addListener();
 		makeTable();
 		addActor(uiTable);
-		addActor(inventoryActor); // 인벤토리 Actor 추가
+		addActor(inventoryActor);
+		addActor(statusMessagePopup);
+		// 인벤토리 Actor 추가
 		//addActor(alertMessage);
 
 		//이벤트 보상 메시지가 있는지 확인 (임시 보류)
@@ -132,7 +137,7 @@ public class GameUiStage extends Stage {
 		if (RewardManager.getInstance().isCurrentReward()) {
 			alertMessage.setVisible(true);
 		}
-		*/
+		 */
 	}
 
 	// 테이블 디자인
@@ -185,6 +190,7 @@ public class GameUiStage extends Stage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
+
 				inventoryActor.setVisible(true);
 				return true;
 			}
@@ -263,7 +269,9 @@ public class GameUiStage extends Stage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				//alertMessage.setVisible(true);
+
+				statusMessagePopup.setVisible(true);
+				Gdx.app.log("status visibility", "true");
 				return true;
 			}
 

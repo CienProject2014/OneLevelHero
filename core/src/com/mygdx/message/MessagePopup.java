@@ -7,9 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.resource.Assets;
 
-public class Message extends Dialog {
+public class MessagePopup extends Dialog {
 
-	public Message(String title, Skin skin) {
+	public MessagePopup(String title, Skin skin) {
 		super(title, skin);
 		initialize();
 	}
@@ -26,12 +26,12 @@ public class Message extends Dialog {
 	}
 
 	@Override
-	public Message text(String text) {
+	public MessagePopup text(String text) {
 		super.text(new Label(text, Assets.skin));
 		return this;
 	}
 
-	public Message button(String buttonText, InputListener listener) {
+	public MessagePopup button(String buttonText, InputListener listener) {
 		TextButton button = new TextButton(buttonText, Assets.skin);
 		button.addListener(listener);
 		button(button);

@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.mygdx.inventory.InventoryActor;
+import com.mygdx.inventory.InventoryPopup;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.VillageStage;
 
@@ -24,7 +24,7 @@ public class VillageScreen implements Screen {
 	private GameUiStage gameUiStage;
 
 	public static Stage inventoryStage;
-	private InventoryActor inventoryActor;
+	private InventoryPopup inventoryActor;
 	private int key = 2;
 
 	private OrthographicCamera cam;
@@ -79,11 +79,11 @@ public class VillageScreen implements Screen {
 		VillageScreen.inventoryStage = inventoryStage;
 	}
 
-	public InventoryActor getInventoryActor() {
+	public InventoryPopup getInventoryActor() {
 		return inventoryActor;
 	}
 
-	public void setInventoryActor(InventoryActor inventoryActor) {
+	public void setInventoryActor(InventoryPopup inventoryActor) {
 		this.inventoryActor = inventoryActor;
 	}
 
