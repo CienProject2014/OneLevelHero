@@ -17,13 +17,12 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.StageFactory;
-import com.mygdx.manager.CurrentManager;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.RewardInfo;
+import com.mygdx.manager.RewardManager;
 import com.mygdx.model.EventInfo;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
-import com.mygdx.model.Reward;
+import com.mygdx.model.RewardInfo;
 import com.mygdx.stage.SelectButtonStage;
 
 public class EventScreen implements Screen {
@@ -31,8 +30,7 @@ public class EventScreen implements Screen {
 	// It needs interface layer, for test!
 	private EventManager eventManager = EventManager.getInstance();
 	private StageFactory stageFactory = StageFactory.getInstance();
-	private RewardInfo rewardInfo = CurrentManager.getInstance()
-			.getRewardInfo();
+	private RewardManager rewardManager = RewardManager.getInstance();
 
 	// Already libgdx using interface!
 	private GL20 gl = Gdx.gl;
@@ -81,23 +79,25 @@ public class EventScreen implements Screen {
 
 		iterator = getEventSceneIterator(npc, eventInfo.getEventNumber());
 
-		//RewardState를 ING로 변경
-		/*
-		if (!eventInfo.isGreeting())
-			rewardInfo.getEventRewardQueue().offer(
-					eventInfo.getNpc().getEvent(eventInfo.getEventNumber())
-							.getReward());
-			*/
-
 		if (eventInfo.isGreeting()) {
 			greetingScenes = npc.getGreeting().getEventScenes();
 		} else {
 			//리워드를 eventRewardQueue에 추가
-			Reward reward = npc.getEvent(eventInfo.getEventNumber())
+			RewardInfo rewardInfo = npc.getEvent(eventInfo.getEventNumber())
 					.getReward();
-			if (reward != null)
-				if (reward.getRewardState() == RewardStateEnum.NOT_CLEARED)
-					rewardInfo.addEventReward(reward);
+			if (rewardInfo != null)
+				if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED) {
+					rewardManager.addEventReward(rewardInfo);
+
+					/* //2개 이상의 보상 테스트
+					RewardInfo rewardInfo2 = new RewardInfo();
+					rewardInfo2.setRewardState(RewardStateEnum.NOT_CLEARED);
+					rewardInfo2.setRewardTarget("300");
+					rewardInfo2.setRewardType(RewardTypeEnum.GOLD);
+					rewardManager.addEventReward(rewardInfo2);
+					*/
+				}
+
 		}
 
 		if (eventInfo.isGreeting()) {

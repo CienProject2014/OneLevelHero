@@ -117,6 +117,7 @@ public class VillageScreen implements Screen {
 
 	public VillageScreen() {
 		villageName = "Blackwood";
+
 	}
 
 	@Override

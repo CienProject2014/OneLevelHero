@@ -1,4 +1,4 @@
-package com.mygdx.message;
+package com.mygdx.popup;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 

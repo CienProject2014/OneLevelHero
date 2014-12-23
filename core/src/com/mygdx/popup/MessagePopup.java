@@ -1,16 +1,20 @@
-package com.mygdx.message;
+package com.mygdx.popup;
 
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.inventory.HidingClickListener;
 import com.mygdx.resource.Assets;
 
 public class MessagePopup extends Dialog {
 
 	public MessagePopup(String title, Skin skin) {
 		super(title, skin);
+		TextButton closeButton = new TextButton("X", skin);
+		closeButton.addListener(new HidingClickListener(this));
+		getButtonTable().add(closeButton).height(getPadTop());
 		initialize();
 	}
 

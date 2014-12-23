@@ -9,7 +9,7 @@ import com.mygdx.enums.EventTypeEnum;
 public class Event {
 	private EventTypeEnum eventType;
 	private EventStateEnum eventState;
-	private Reward reward;
+	private RewardInfo reward;
 	private List<EventScene> eventScenes;
 
 	public EventTypeEnum getEventType() {
@@ -20,11 +20,11 @@ public class Event {
 		this.eventType = eventType;
 	}
 
-	public Reward getReward() {
+	public RewardInfo getReward() {
 		return reward;
 	}
 
-	public void setReward(Reward reward) {
+	public void setReward(RewardInfo reward) {
 		this.reward = reward;
 	}
 

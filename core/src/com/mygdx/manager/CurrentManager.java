@@ -1,9 +1,12 @@
 package com.mygdx.manager;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import com.mygdx.model.Inventory;
 import com.mygdx.model.Party;
+import com.mygdx.model.RewardInfo;
 import com.mygdx.model.VillageInfo;
 import com.mygdx.resource.SaveVersion;
 
@@ -21,7 +24,11 @@ public class CurrentManager implements Serializable {
 	// (4) 시간 관리
 
 	// (5) 보상 미션 및 퀘스트 관리
-	private RewardInfo rewardInfo;
+	// (5-1) 보상 달성 여부 큐
+	private Queue<RewardInfo> rewardQueue;
+
+	// (5-2) 이미 달성한 이벤트 큐
+	private Queue<RewardInfo> achievedRewardQueue;
 
 	private static CurrentManager instance;
 
@@ -35,7 +42,8 @@ public class CurrentManager implements Serializable {
 	private CurrentManager() {
 		villageInfo = new VillageInfo();
 		party = new Party();
-		rewardInfo = new RewardInfo();
+		setRewardQueue(new LinkedList<RewardInfo>());
+		setAchievedRewardQueue(new LinkedList<RewardInfo>());
 	}
 
 	public SaveVersion getVersion() {
@@ -82,12 +90,20 @@ public class CurrentManager implements Serializable {
 		this.inventory = inventory;
 	}
 
-	public RewardInfo getRewardInfo() {
-		return rewardInfo;
+	public Queue<RewardInfo> getRewardQueue() {
+		return rewardQueue;
 	}
 
-	public void setRewardInfo(RewardInfo rewardInfo) {
-		this.rewardInfo = rewardInfo;
+	public void setRewardQueue(Queue<RewardInfo> rewardQueue) {
+		this.rewardQueue = rewardQueue;
+	}
+
+	public Queue<RewardInfo> getAchievedRewardQueue() {
+		return achievedRewardQueue;
+	}
+
+	public void setAchievedRewardQueue(Queue<RewardInfo> achievedRewardQueue) {
+		this.achievedRewardQueue = achievedRewardQueue;
 	}
 
 }

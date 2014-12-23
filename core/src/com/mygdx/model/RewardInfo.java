@@ -1,19 +1,12 @@
 package com.mygdx.model;
 
 import com.mygdx.enums.RewardStateEnum;
+import com.mygdx.enums.RewardTypeEnum;
 
-public class Reward {
-	private String rewardType;
+public class RewardInfo {
+	private RewardTypeEnum rewardType;
 	private String rewardTarget;
 	private RewardStateEnum rewardState;
-
-	public String getRewardType() {
-		return rewardType;
-	}
-
-	public void setRewardType(String rewardType) {
-		this.rewardType = rewardType;
-	}
 
 	public String getRewardTarget() {
 		return rewardTarget;
@@ -30,5 +23,13 @@ public class Reward {
 
 	public void setRewardState(RewardStateEnum rewardState) {
 		this.rewardState = rewardState;
+	}
+
+	public RewardTypeEnum getRewardType() {
+		return rewardType;
+	}
+
+	public void setRewardType(RewardTypeEnum rewardType) {
+		this.rewardType = rewardType;
 	}
 }

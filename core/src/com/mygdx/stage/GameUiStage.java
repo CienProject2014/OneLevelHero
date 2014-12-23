@@ -1,6 +1,8 @@
 package com.mygdx.stage;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -14,48 +16,54 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryPopup;
 import com.mygdx.manager.CurrentManager;
-import com.mygdx.message.MessagePopup;
+import com.mygdx.manager.RewardManager;
 import com.mygdx.model.Hero;
+import com.mygdx.model.RewardInfo;
+import com.mygdx.popup.AlertMessagePopup;
+import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
 import com.mygdx.resource.Assets;
 import com.mygdx.screen.BattleScreen;
 import com.mygdx.ui.StatusBarUi;
 
 public class GameUiStage extends Stage {
-	Table uiTable;
-	OneLevelHero game;
-	InventoryPopup inventoryActor;
-	DragAndDrop dragAndDrop;
-	//MessagePopup alertMessage; 메시지 필드 임시 보류
+	private Table uiTable;
+	private OneLevelHero game;
+	private InventoryPopup inventoryActor;
+	private DragAndDrop dragAndDrop;
+	private Stack<MessagePopup> alertMessage;
+
+	private RewardManager rewardManager;
 	private MessagePopup statusMessagePopup;
-	ImageButton downArrowButton;
-	ImageButton bagButton;
-	ImageButton helpButton;
-	ImageButton optionButton;
-	TextButton worldMapButton;
-	TextButton leftTimeButton;
-	TextButton battleButton;
+	private ImageButton downArrowButton;
+	private ImageButton bagButton;
+	private ImageButton helpButton;
+	private ImageButton optionButton;
+	private TextButton worldMapButton;
+	private TextButton leftTimeButton;
+	private TextButton battleButton;
 	public static Stage inventoryStage;
 	private int battleMemberNumber;
 
-	Image[] characterImage;
-	Table toptable;
-	Table bottomtable;
+	private Image[] characterImage;
+	private Table toptable;
+	private Table bottomtable;
 
-	Table[] statusbartable;
-	Table[] charatertable;
+	private Table[] statusbartable;
+	private Table[] charatertable;
 
-	StatusBarUi[] hpbar;
-	StatusBarUi[] expbar;
-	StatusBarUi[] turnbar;
+	private StatusBarUi[] hpbar;
+	private StatusBarUi[] expbar;
+	private StatusBarUi[] turnbar;
 
-	float realheight;
-	float realwidth;
+	private float realheight;
+	private float realwidth;
 
 	public GameUiStage() {
 		// 초기화
@@ -70,6 +78,8 @@ public class GameUiStage extends Stage {
 		charatertable = new Table[3];
 		battleMemberNumber = CurrentManager.getInstance().getParty()
 				.getBattleMemberList().size();
+		rewardManager = RewardManager.getInstance();
+		alertMessage = new Stack<MessagePopup>();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
 			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, Assets.skin);
@@ -108,36 +118,35 @@ public class GameUiStage extends Stage {
 		Skin skin = Assets.skin;
 		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop, skin);
 
-		//알림 메시지
-		/*
-		alertMessage = new AlertMessage("[ 보상 ]", Assets.skin).text(
-				RewardManager.getInstance().getRewardMessage()).button("확인",
-				new InputListener() {
-					// button to exit app
-					public boolean touchDown(InputEvent event, float x,
-							float y, int pointer, int button) {
-						RewardManager.getInstance().setCurrentReward(false);
+		//보상 이벤트 처리
+		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
+				.iterator();
+		while (iterator.hasNext()) {
+			RewardInfo nextIterator = iterator.next();
+			if (nextIterator.getRewardState().equals(RewardStateEnum.ING)) {
 
-						alertMessage.setVisible(false);
-						return true;
-					}
-				});
-		 */
+				alertMessage.add(new AlertMessagePopup("[ 보상 ]", Assets.skin)
+						.text(rewardManager.getRewardMessage(nextIterator)));
+
+			}
+			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
+					+ nextIterator.getRewardType());
+		}
+		//알림 메시지
 		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", Assets.skin);
 		addListener();
 		makeTable();
 		addActor(uiTable);
 		addActor(inventoryActor);
 		addActor(statusMessagePopup);
-		// 인벤토리 Actor 추가
-		//addActor(alertMessage);
 
-		//이벤트 보상 메시지가 있는지 확인 (임시 보류)
-		/*
-		if (RewardManager.getInstance().isCurrentReward()) {
-			alertMessage.setVisible(true);
+		Iterator<MessagePopup> alertMessageIterator = alertMessage.iterator();
+		while (alertMessageIterator.hasNext()) {
+			MessagePopup nextIterator = alertMessageIterator.next();
+			addActor(nextIterator);
+			nextIterator.setVisible(true);
+			rewardManager.pollRewardQueue();
 		}
-		 */
 	}
 
 	// 테이블 디자인
