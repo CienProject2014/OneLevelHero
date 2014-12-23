@@ -2,7 +2,6 @@ package com.mygdx.manager;
 
 import java.io.Serializable;
 
-import com.mygdx.model.Hero;
 import com.mygdx.model.Inventory;
 import com.mygdx.model.Party;
 import com.mygdx.model.VillageInfo;
@@ -13,7 +12,6 @@ public class CurrentManager implements Serializable {
 	private SaveVersion saveVersion;
 
 	// (2) 용사 및 파티원 정보, 인벤토리 관리
-	private Hero hero;
 	private Party party;
 	private Inventory inventory;
 
@@ -74,14 +72,6 @@ public class CurrentManager implements Serializable {
 
 	public void setVillageInfo(VillageInfo villageInfo) {
 		this.villageInfo = villageInfo;
-	}
-
-	public Hero getHero() {
-		return hero;
-	}
-
-	public void setHero(Hero hero) {
-		this.hero = hero;
 	}
 
 	public Inventory getInventory() {

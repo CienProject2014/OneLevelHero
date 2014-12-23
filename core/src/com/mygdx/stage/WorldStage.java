@@ -190,7 +190,8 @@ public class WorldStage extends Stage {
 		turningpointStyle = new TextButtonStyle(turningpointarrow,
 				turningpointarrow, turningpointarrow, Assets.font);
 
-		worldData = (JSONArray) Assets.worldmap_json.get("Worldmap");
+		worldData = (JSONArray) Assets.jsonFileMap.get("worldmap_json")
+				.getJsonFile().get("Worldmap");
 
 		Assets.villageHashmap = new HashMap<String, String>();
 

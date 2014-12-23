@@ -78,7 +78,8 @@ public class MovingScreen implements Screen {
 		currentStartingpoint = CurrentManager.getInstance().getVillageInfo()
 				.getCurrentStarting();
 
-		JSONObject roadJson = (JSONObject) Assets.worldmap_json.get("Road");
+		JSONObject roadJson = (JSONObject) Assets.jsonObjectMap.get(
+				"worldmap_json").get("Road");
 
 		JSONObject roadInfo = (JSONObject) roadJson.get(currentPosition);
 

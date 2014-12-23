@@ -1,7 +1,9 @@
 ﻿package com.mygdx.resource;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -40,11 +42,7 @@ public class Assets {
 			waiji_background, blackwood_center, main_background;
 
 	// JSON
-	public static JSONObject worldmap_json, village_json, status_new_left,
-			bag_json, credit_list, blackwood_json, prologue_json,
-			blackwood_character, blackwood_background, waiji_json, parath_json,
-			npc_json, hero_json, json_file_path;
-
+	public static JSONObject json_file_path;
 	// NPC 이름
 	public static Texture yongsa, parath, waiji;
 
@@ -59,6 +57,7 @@ public class Assets {
 	public static float realWidth;
 	public static float realHeight;
 
+	public static Map<String, JSONObject> jsonObjectMap = new HashMap<String, JSONObject>();
 	public static Map<String, JsonFile> jsonFileMap = new HashMap<String, JsonFile>();
 	public static Map<String, Object> resourceFileMap = new HashMap<String, Object>();
 	public static Map<String, Texture> imageFileMap = new HashMap<String, Texture>();
@@ -97,37 +96,28 @@ public class Assets {
 		jsonFileMap = JsonMapParser.mapParse(JsonFile.class,
 				json_file_path.toString());
 
-		hero_json = jsonFileMap.get("hero_json").getJsonFile();
-		npc_json = jsonFileMap.get("npc_json").getJsonFile();
-		worldmap_json = jsonFileMap.get("worldmap_json").getJsonFile();
-
-		village_json = jsonFileMap.get("village_json").getJsonFile();
-		credit_list = jsonFileMap.get("credit" + "_list").getJsonFile();
-
-		parath_json = jsonFileMap.get("parath_json").getJsonFile();
-		waiji_json = jsonFileMap.get("waiji_json").getJsonFile();
-		// prologue event json 로드
-		prologue_json = jsonFileMap.get("prologue_json").getJsonFile();
-		// blackwood event json 로드
-		blackwood_json = jsonFileMap.get("blackwood_json").getJsonFile();
-
+		Iterator<Entry<String, JsonFile>> iterator = jsonFileMap.entrySet()
+				.iterator();
+		while (iterator.hasNext()) {
+			Entry<String, JsonFile> nextIterator = iterator.next();
+			jsonObjectMap.put(nextIterator.getKey(), nextIterator.getValue()
+					.getJsonFile());
+		}
 		// HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
-		resourceFileMap.put("blackwood_json", blackwood_json);
-		resourceFileMap.put("prologue_json", prologue_json);
-		resourceFileMap.put("parath_json", parath_json);
-		resourceFileMap.put("waiji_json", waiji_json);
+
 	}
 
 	private static void heroLoad() {
 		//hero 리스트를 담은 Json을 불러와 객체화한다.
-		heroMap = JsonMapParser.mapParse(Hero.class, hero_json.toString());
+		heroMap = JsonMapParser.mapParse(Hero.class,
+				jsonObjectMap.get("hero_json").toString());
 
 	}
 
 	private static void npcLoad() {
 		//npc 리스트를 담은 Json을 불러온다.
-
-		npcMap = JsonMapParser.mapParse(NPC.class, npc_json.toString());
+		npcMap = JsonMapParser.mapParse(NPC.class, jsonObjectMap
+				.get("npc_json").toString());
 
 	}
 

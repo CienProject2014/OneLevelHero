@@ -16,7 +16,8 @@ public class MovingController {
 
 	public MovingController() {
 
-		JSONObject dungeons = (JSONObject) Assets.worldmap_json.get("Road");
+		JSONObject dungeons = (JSONObject) Assets.jsonObjectMap.get(
+				"worldmap_json").get("Road");
 	}
 
 	public void ChangeDestination() {
