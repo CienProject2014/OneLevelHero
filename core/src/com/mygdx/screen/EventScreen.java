@@ -75,7 +75,7 @@ public class EventScreen implements Screen {
 		selectButtonStage = new SelectButtonStage();
 		eventInfo = eventManager.getEventInfo();
 
-		NPC npc = eventInfo.getNpc();
+		final NPC npc = eventInfo.getNpc();
 
 		iterator = getEventSceneIterator(npc, eventInfo.getEventNumber());
 
@@ -132,6 +132,11 @@ public class EventScreen implements Screen {
 					if (iterator.hasNext()) {
 						eventStage = stageFactory.makeStage(iterator.next());
 					} else {
+						//보상이 있을경우 보상실행
+						RewardInfo rewardInfo = npc.getEvent(
+								eventInfo.getEventNumber()).getReward();
+						if (rewardInfo != null)
+							rewardManager.doReward();
 						new ScreenController(ScreenEnum.VILLAGE);
 					}
 				}

@@ -20,9 +20,10 @@ public class Party {
 
 	public void addParty(Hero hero) {
 		//이미 있는 파티멤버일 경우
-		if (partyList.contains(hero))
+		if (partyList.contains(hero)) {
 			Gdx.app.log("Error", hero.getUnitName() + "가 이미 멤버에 있습니다.");
-
+			return;
+		}
 		partyList.add(hero);
 		Gdx.app.log("Info", hero.getUnitName() + "를 파티에 추가했습니다.");
 		if (battleMemberList.size() < BATTLE_MEMBER_SIZE) {
