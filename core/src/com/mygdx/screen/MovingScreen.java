@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.controller.BattleController;
 import com.mygdx.controller.MovingController;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
@@ -31,12 +32,15 @@ public class MovingScreen implements Screen {
 
 	int roadlength;
 	int leftlength;
+	public static int temp;
+	boolean battled;
 
 	Texture texture = new Texture(Gdx.files.internal("texture/justground.jpg"));
 
 	Image background;
 
 	MovingController controller;
+	BattleController battle;
 
 	String presentVil;
 	String targetVil;
@@ -46,13 +50,14 @@ public class MovingScreen implements Screen {
 	String currentStartingpoint;
 
 	public MovingScreen() {
+		Gdx.app.log("DEBUG", "MovingScreen constructor");
 		controller = new MovingController();
+		battle = new BattleController();
+		battled = false;
 	}
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
-
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		movingLabel.setText(Assets.worldHashmap.get(currentDestination)
@@ -69,8 +74,7 @@ public class MovingScreen implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-
+		Gdx.app.log("DEBUG", "MovingSceen show");
 		currentDestination = CurrentManager.getInstance().getVillageInfo()
 				.getCurrentDestination();
 		currentPosition = CurrentManager.getInstance().getVillageInfo()
@@ -83,8 +87,12 @@ public class MovingScreen implements Screen {
 
 		JSONObject roadInfo = (JSONObject) roadJson.get(currentPosition);
 
-		leftlength = Integer.parseInt((String) roadInfo.get("length"));
 		roadlength = Integer.parseInt((String) roadInfo.get("length"));
+		leftlength = roadlength;
+		if (battled) {
+			leftlength = temp;
+			battled = false;
+		}
 
 		stage = new Stage();
 		table = new Table();
@@ -151,6 +159,11 @@ public class MovingScreen implements Screen {
 		Gdx.app.log("test", "goForward");
 		if (leftlength > 0) {
 			leftlength--;
+			if (battle.isOccur()) {
+				temp = leftlength;
+				battled = true;
+				battle.start();
+			}
 		}
 		if (leftlength == 0) {
 
@@ -209,25 +222,25 @@ public class MovingScreen implements Screen {
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-
+		Gdx.app.log("DEBUG", "MovingSceen hide");
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-
+		Gdx.app.log("DEBUG", "MovingSceen pause");
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-
+		Gdx.app.log("DEBUG", "MovingSceen resume");
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-
+		Gdx.app.log("DEBUG", "MovingSceen dispose");
 	}
 
 }

@@ -6,6 +6,7 @@ public class VillageInfo {
 	private String currentState = "village";
 	private String currentStarting;
 	private String currentDestination;
+	private String currentDungeon;
 
 	public String getVillage() {
 		return village;
@@ -45,5 +46,13 @@ public class VillageInfo {
 
 	public void setCurrentDestination(String currentDestination) {
 		this.currentDestination = currentDestination;
+	}
+
+	public String getCurrentDungeon() {
+		return currentDungeon;
+	}
+
+	public void setCurrentDungeon(String currentDungeon) {
+		this.currentDungeon = currentDungeon;
 	}
 }

@@ -1,0 +1,38 @@
+{
+  "Monster1": {
+    "attack": 100,
+    "defense": 10,
+    "critical": 2,
+    "evade": 1,
+    "accuracy": 50,
+    "healthPoint": 1000,
+    "stamina": 1000,
+    "speed": 30,
+    "job": "monster",
+    "debuff": 0
+  },
+  "Monster2": {
+    "attack": 100,
+    "defense": 10,
+    "critical": 2,
+    "evade": 1,
+    "accuracy": 50,
+    "healthPoint": 1000,
+    "stamina": 1000,
+    "speed": 30,
+    "job": "monster",
+    "debuff": 0
+  },
+  "Monster3": {
+    "attack": 100,
+    "defense": 10,
+    "critical": 2,
+    "evade": 1,
+    "accuracy": 50,
+    "healthPoint": 1000,
+    "stamina": 1000,
+    "speed": 30,
+    "job": "monster",
+    "debuff": 0
+  }
+}

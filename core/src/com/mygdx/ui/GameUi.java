@@ -1,10 +1,7 @@
-package com.mygdx.stage;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Stack;
+package com.mygdx.ui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,55 +13,42 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.mygdx.controller.ScreenController;
-import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryPopup;
-import com.mygdx.manager.CurrentManager;
-import com.mygdx.manager.RewardManager;
-import com.mygdx.model.Hero;
-import com.mygdx.model.RewardInfo;
-import com.mygdx.popup.AlertMessagePopup;
-import com.mygdx.popup.MessagePopup;
-import com.mygdx.popup.StatusMessagePopup;
 import com.mygdx.resource.Assets;
-import com.mygdx.ui.StatusBarUi;
 
-public class GameUiStage extends Stage {
-	private Table uiTable;
-	private OneLevelHero game;
-	private InventoryPopup inventoryActor;
-	private DragAndDrop dragAndDrop;
-	private Stack<MessagePopup> alertMessage;
+public class GameUi extends Stage {
+	Table uiTable;
+	OneLevelHero game;
+	InventoryPopup inventoryActor;
+	DragAndDrop dragAndDrop;
 
-	private RewardManager rewardManager;
-	private MessagePopup statusMessagePopup;
-	private ImageButton downArrowButton;
-	private ImageButton bagButton;
-	private ImageButton helpButton;
-	private ImageButton optionButton;
-	private TextButton worldMapButton;
-	private TextButton leftTimeButton;
-	private TextButton battleButton;
+	ImageButton downArrowButton;
+	ImageButton bagButton;
+	ImageButton helpButton;
+	ImageButton optionButton;
+	TextButton worldMapButton;
+	TextButton leftTimeButton;
+	TextButton battleButton;
 	public static Stage inventoryStage;
-	private int battleMemberNumber;
 
-	private Image[] characterImage;
-	private Table toptable;
-	private Table bottomtable;
+	Image[] character;
+	Table toptable;
+	Table bottomtable;
 
-	private Table[] statusbartable;
-	private Table[] charatertable;
+	Table[] statusbartable;
+	Table[] charatertable;
 
-	private StatusBarUi[] hpbar;
-	private StatusBarUi[] expbar;
-	private StatusBarUi[] turnbar;
+	StatusBarUi[] hpbar;
+	StatusBarUi[] expbar;
+	StatusBarUi[] turnbar;
 
-	private float realheight;
-	private float realwidth;
+	float realheight;
+	float realwidth;
 
-	public GameUiStage() {
+	public GameUi() {
 		// 초기화
 		uiTable = new Table();
 		realheight = Assets.realHeight;
@@ -72,30 +56,19 @@ public class GameUiStage extends Stage {
 		hpbar = new StatusBarUi[3];
 		expbar = new StatusBarUi[3];
 		turnbar = new StatusBarUi[3];
-		characterImage = new Image[3];
+		character = new Image[3];
 		statusbartable = new Table[3];
 		charatertable = new Table[3];
-		battleMemberNumber = CurrentManager.getInstance().getParty()
-				.getBattleMemberList().size();
-		rewardManager = RewardManager.getInstance();
-		alertMessage = new Stack<MessagePopup>();
 
-		for (int i = 0; i < battleMemberNumber; i++) {
+		for (int i = 0; i < 3; i++) {
 			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, Assets.skin);
 			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, Assets.skin);
 			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false,
 					Assets.skin);
 			statusbartable[i] = new Table(Assets.skin);
 			charatertable[i] = new Table(Assets.skin);
-
-		}
-		//캐릭터 이미지 세팅
-		List<Hero> currentBattleMemberList = CurrentManager.getInstance()
-				.getParty().getBattleMemberList();
-
-		for (int i = 0; i < currentBattleMemberList.size(); i++) {
-			characterImage[i] = new Image(currentBattleMemberList.get(i)
-					.getFaceImage());
+			character[i] = new Image(new Texture(
+					Gdx.files.internal("texture/char" + (i + 1) + ".jpg")));
 		}
 
 		toptable = new Table(Assets.skin);
@@ -117,35 +90,11 @@ public class GameUiStage extends Stage {
 		Skin skin = Assets.skin;
 		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop, skin);
 
-		//보상 이벤트 처리
-		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
-				.iterator();
-		while (iterator.hasNext()) {
-			RewardInfo nextIterator = iterator.next();
-			if (nextIterator.getRewardState().equals(RewardStateEnum.ING)) {
-
-				alertMessage.add(new AlertMessagePopup("[ 보상 ]", Assets.skin)
-						.text(rewardManager.getRewardMessage(nextIterator)));
-
-			}
-			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
-					+ nextIterator.getRewardType());
-		}
-		//알림 메시지
-		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", Assets.skin);
 		addListener();
 		makeTable();
 		addActor(uiTable);
-		addActor(inventoryActor);
-		addActor(statusMessagePopup);
+		addActor(inventoryActor); // 인벤토리 Actor 추가
 
-		Iterator<MessagePopup> alertMessageIterator = alertMessage.iterator();
-		while (alertMessageIterator.hasNext()) {
-			MessagePopup nextIterator = alertMessageIterator.next();
-			addActor(nextIterator);
-			nextIterator.setVisible(true);
-			rewardManager.pollRewardQueue();
-		}
 	}
 
 	// 테이블 디자인
@@ -166,7 +115,9 @@ public class GameUiStage extends Stage {
 		toptable.add(optionButton).width(realwidth / 8).height(realheight / 12)
 				.top();
 
-		for (int i = 0; i < battleMemberNumber; i++) {
+		for (int i = 0; i < 3; i++) {
+			charatertable[i].add(character[i]).width(realwidth / 4)
+					.height(realheight / 4);
 			statusbartable[i].add(hpbar[i]).width(realwidth / 12)
 					.height(realheight / 12).bottom();
 			statusbartable[i].row();
@@ -179,12 +130,7 @@ public class GameUiStage extends Stage {
 			bottomtable.add(statusbartable[i]);
 		}
 
-		// GameUi의 캐릭터를 동적으로 부여해줌
-		for (int i = 0; i < battleMemberNumber; i++) {
-			charatertable[i].add(characterImage[i]).width(realwidth / 4)
-					.height(realheight / 4);
-		}
-		uiTable.add(toptable).expand().top();
+		uiTable.add(toptable).expand().top().height((realheight) / 12);
 		uiTable.row();
 		uiTable.add(bottomtable).bottom();
 
@@ -198,7 +144,6 @@ public class GameUiStage extends Stage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 				inventoryActor.setVisible(true);
 				return true;
 			}
@@ -277,20 +222,17 @@ public class GameUiStage extends Stage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
-				statusMessagePopup.setVisible(true);
-				Gdx.app.log("status visibility", "true");
 				return true;
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-
+				new ScreenController(ScreenEnum.EVENT);
 			}
 		});
 
-		characterImage[0].addListener(new InputListener() {
+		character[0].addListener(new InputListener() {
 
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -309,7 +251,6 @@ public class GameUiStage extends Stage {
 	@Override
 	public void dispose() {
 		inventoryActor.remove();
-		//alertMessage.remove();
 		super.dispose();
 	}
 }

@@ -13,6 +13,15 @@ public class Fight {
 	VillageScreen gameScreen;
 	boolean outcome;
 	public boolean battleEnd = false;
+	String dungeonID;
+	
+	public Fight() {
+		
+	}
+	
+	public Fight(String dungeonID) {
+		this.dungeonID = dungeonID;
+	}
 
 	public void decideOutcome() {
 		outcome = random.nextBoolean();

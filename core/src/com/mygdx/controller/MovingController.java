@@ -15,7 +15,6 @@ public class MovingController {
 	String delimiter = "-";
 
 	public MovingController() {
-
 		JSONObject dungeons = (JSONObject) Assets.jsonObjectMap.get(
 				"worldmap_json").get("Road");
 	}

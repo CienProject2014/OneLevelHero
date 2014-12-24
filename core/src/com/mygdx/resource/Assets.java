@@ -46,6 +46,12 @@ public class Assets {
 	// NPC 이름
 	public static Texture yongsa, parath, waiji;
 
+	//JSON
+	public static JSONObject worldmap_json, village_json, dungeon_json,
+			status_new_left, bag_json, credit_list, blackwood_json,
+			prologue_json, blackwood_character, blackwood_background,
+			monster_json;
+
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -91,6 +97,12 @@ public class Assets {
 
 	//JsonFile의 path를 읽어온다.
 	private static void jsonLoad() {
+		dungeon_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/dungeon.json").readString());
+
+		// 몬스터 설정 로드
+		monster_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/monster.json").readString());
 		json_file_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/load/json_file_path.json").readString());
 		jsonFileMap = JsonMapParser.mapParse(JsonFile.class,

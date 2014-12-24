@@ -18,7 +18,7 @@ public class CurrentManager implements Serializable {
 	private Party party;
 	private Inventory inventory;
 
-	// (3) 마을 관리
+	// (3) 마을/던전관리
 	private VillageInfo villageInfo;
 
 	// (4) 시간 관리
