@@ -82,4 +82,11 @@ public class Status {
 	public void setDebuff(String debuff) {
 		this.debuff = debuff;
 	}
+
+	public String toString() {
+		return "공격력 : " + getAttack() + " ,방어력 : " + getDefense() + ", 치명타 : "
+				+ getCritical() + ", 회피율 : " + getCritical() + ", 명중률 "
+				+ ", 체력 : " + getHealthPoint() + ", 스태미나 : " + getStamina()
+				+ ", 직업 : " + getJob();
+	}
 }
