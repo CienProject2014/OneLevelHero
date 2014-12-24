@@ -5,13 +5,16 @@ import org.json.simple.JSONObject;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.battle.Fight;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
@@ -21,18 +24,18 @@ import com.mygdx.resource.Assets;
 import com.mygdx.screen.MovingScreen;
 
 public class BattleStage extends Stage {
-	float viewportWidth, viewportHeight;
-	float realWidth, realHeight;
+	private float viewportWidth, viewportHeight;
+	private float realWidth, realHeight;
 
-	Fight fight;
+	private Fight fight;
 
 	public boolean isFight;
 
 	public Texture background;
-	Image backgroundImage;
+	private Image backgroundImage;
 
 	// 던전 정보 ---------------------
-	JSONObject dungeonInfo;
+	private JSONObject dungeonInfo;
 	//-------------------------------
 
 	// 유닛 정보 ---------------------
@@ -45,16 +48,19 @@ public class BattleStage extends Stage {
 	//-------------------------------
 
 	// 테이블 ------------------------
-	Table monsterTable;
-	Table monster1, monster2, monster3;
-	Table selTable;
+	private Table monsterTable;
+	private Table monster1, monster2, monster3;
+	private Table selTable;
 	//-------------------------------
 
 	// 버튼 --------------------------
-	TextButton fightButton;
-	TextButton fleeButton;
-	ImageButton test;
-	int positionX[], positionY[];
+	private TextButton fightButton;
+	private TextButton fleeButton;
+	private ImageButton test;
+	private int positionX[], positionY[];
+
+	//라벨 -------------------------
+	private Label fightLabel;
 
 	//-------------------------------
 
@@ -85,23 +91,30 @@ public class BattleStage extends Stage {
 		isFight = false;
 
 		// --------------------- Background //
-		background = new Texture(Gdx.files.internal("village/blackwood.png"));
+		background = new Texture(
+				Gdx.files
+						.internal("texture/unit/monster/griffith_background.png"));
 		backgroundImage = new Image(background);
 		backgroundImage.setBounds(0, 0, viewportWidth, viewportHeight);
 
 		// ------------------------- Select //
 		selTable = new Table(Assets.skin);
+		fightLabel = new Label("몬스터와 조우했다!", Assets.skin);
 		fightButton = new TextButton("싸운다", Assets.skin);
 		fleeButton = new TextButton("도망친다", Assets.skin);
 
-		//--------------------------- Table //
+		//--------------------------- monster Table //
 		monsterTable = new Table(Assets.skin);
+		Texture griffith_texture = new Texture(
+				Gdx.files.internal("texture/unit/monster/griffith_unit.png"));
+		TextureRegionDrawable griffith = new TextureRegionDrawable(
+				new TextureRegion(griffith_texture));
 		monster1 = new Table(Assets.skin);
-		monster1.setBackground(Assets.start_after);
+		monster1.setBackground(griffith);
 		monster2 = new Table(Assets.skin);
-		monster2.setBackground(Assets.option_after);
+		monster2.setBackground(griffith);
 		monster3 = new Table(Assets.skin);
-		monster3.setBackground(Assets.extra_after);
+		monster3.setBackground(griffith);
 
 		// ------------------------ Monster //
 		// 몬스터
@@ -129,25 +142,31 @@ public class BattleStage extends Stage {
 		@SuppressWarnings("unused")
 		float factor; // 화면 크기에 따른 비율 교정용 변수
 
-		addActor(backgroundImage);
-
-		// ------------------------ Monster //
-		monsterTable.setFillParent(true);
-		monsterTable.add(monster1);
-		monsterTable.add(monster2);
-		monsterTable.add(monster3);
-		addActor(monsterTable);
 		//------------------------- Monster //
 
 		if (!isFight) {
 			// ------------------------- Select //
+			addActor(backgroundImage);
 			selTable.setFillParent(true);
+			selTable.add(fightLabel);
+			selTable.row();
 			selTable.add(fightButton);
 			selTable.add(fleeButton);
 			addActor(selTable);
-			fightButton.moveBy(0, 50);
-			fleeButton.moveBy(0, 50);
 			//-------------------------- Select //
+		} else {
+			// ------------------------ Monster //
+			background = new Texture(
+					Gdx.files.internal("texture/battle/forest.png"));
+			backgroundImage = new Image(background);
+			backgroundImage.setBounds(0, 0, viewportWidth, viewportHeight);
+			addActor(backgroundImage);
+			monsterTable.setFillParent(true);
+			monsterTable.add(monster1);
+			monsterTable.add(monster2);
+			monsterTable.add(monster3);
+			addActor(monsterTable);
+
 		}
 	}
 
