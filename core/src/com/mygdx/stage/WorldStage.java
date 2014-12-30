@@ -19,8 +19,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CurrentManager;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
+import com.mygdx.state.CurrentState;
 
 public class WorldStage extends Stage {
 
@@ -251,7 +251,7 @@ public class WorldStage extends Stage {
 	// 현재 위치를 화살표로 표시해줌
 	private void setCurrentPosition() {
 
-		worldNode temp = Assets.worldHashmap.get(CurrentManager.getInstance()
+		worldNode temp = Assets.worldHashmap.get(CurrentState.getInstance()
 				.getVillageInfo().getCurrentPosition());
 
 		int connectionNum = temp.connection.size();
@@ -280,18 +280,18 @@ public class WorldStage extends Stage {
 					RoadNode temp;
 					temp = (RoadNode) event.getListenerActor();
 
-					CurrentManager.getInstance().getVillageInfo()
+					CurrentState.getInstance().getVillageInfo()
 							.setCurrentDestination(temp.destination);
-					CurrentManager
+					CurrentState
 							.getInstance()
 							.getVillageInfo()
 							.setCurrentStarting(
-									CurrentManager.getInstance()
+									CurrentState.getInstance()
 											.getVillageInfo()
 											.getCurrentPosition());
-					CurrentManager.getInstance().getVillageInfo()
+					CurrentState.getInstance().getVillageInfo()
 							.setCurrentPosition(temp.roadkey);
-					CurrentManager.getInstance().getVillageInfo()
+					CurrentState.getInstance().getVillageInfo()
 							.setCurrentState("road");
 
 					new ScreenController(ScreenEnum.MOVING);

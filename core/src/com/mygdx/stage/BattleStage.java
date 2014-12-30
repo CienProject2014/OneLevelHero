@@ -19,10 +19,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.battle.Fight;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CurrentManager;
 import com.mygdx.model.Monster;
-import com.mygdx.resource.Assets;
 import com.mygdx.screen.MovingScreen;
+import com.mygdx.state.Assets;
+import com.mygdx.state.CurrentState;
 
 public class BattleStage extends Stage {
 	private float viewportWidth, viewportHeight;
@@ -80,7 +80,7 @@ public class BattleStage extends Stage {
 
 		JSONObject actual = (JSONObject) Assets.jsonObjectMap.get(
 				"dungeon_json").get("actual");
-		dungeonInfo = (JSONObject) actual.get(CurrentManager.getInstance()
+		dungeonInfo = (JSONObject) actual.get(CurrentState.getInstance()
 				.getVillageInfo().getCurrentDungeon());
 
 		initialize(); // 초기화

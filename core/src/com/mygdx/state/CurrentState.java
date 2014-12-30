@@ -1,16 +1,16 @@
-package com.mygdx.manager;
+package com.mygdx.state;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import com.mygdx.controller.SaveVersion;
 import com.mygdx.model.Inventory;
 import com.mygdx.model.Party;
 import com.mygdx.model.RewardInfo;
 import com.mygdx.model.VillageInfo;
-import com.mygdx.resource.SaveVersion;
 
-public class CurrentManager implements Serializable {
+public class CurrentState implements Serializable {
 	// (1) 버전관리
 	private SaveVersion saveVersion;
 
@@ -30,16 +30,16 @@ public class CurrentManager implements Serializable {
 	// (5-2) 이미 달성한 이벤트 큐
 	private Queue<RewardInfo> achievedRewardQueue;
 
-	private static CurrentManager instance;
+	private static CurrentState instance;
 
-	public static CurrentManager getInstance() {
+	public static CurrentState getInstance() {
 		if (null == instance) {
-			instance = new CurrentManager();
+			instance = new CurrentState();
 		}
 		return instance;
 	}
 
-	private CurrentManager() {
+	private CurrentState() {
 		villageInfo = new VillageInfo();
 		party = new Party();
 		setRewardQueue(new LinkedList<RewardInfo>());
@@ -62,8 +62,8 @@ public class CurrentManager implements Serializable {
 		this.saveVersion = saveVersion;
 	}
 
-	public static void setInstance(CurrentManager instance) {
-		CurrentManager.instance = instance;
+	public static void setInstance(CurrentState instance) {
+		CurrentState.instance = instance;
 	}
 
 	public Party getParty() {

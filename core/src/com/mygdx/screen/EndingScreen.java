@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
 
 public class EndingScreen implements Screen {
 

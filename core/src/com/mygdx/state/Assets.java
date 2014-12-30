@@ -1,4 +1,4 @@
-﻿package com.mygdx.resource;
+﻿package com.mygdx.state;
 
 import java.util.HashMap;
 import java.util.Map;

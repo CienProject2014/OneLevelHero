@@ -30,7 +30,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
 import com.mygdx.enums.ItemEnum;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
 
 /**
  * @author Daniel Holderbaum

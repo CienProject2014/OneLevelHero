@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
 
 public class MenuStage extends Stage{
 	

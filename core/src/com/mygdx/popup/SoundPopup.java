@@ -11,8 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mygdx.resource.Assets;
 import com.mygdx.screen.MenuScreen;
+import com.mygdx.state.Assets;
 
 public class SoundPopup extends Dialog {
 	Stage scenestage;

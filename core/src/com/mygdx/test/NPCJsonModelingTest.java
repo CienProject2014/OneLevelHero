@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import com.mygdx.manager.JsonMapParser;
 import com.mygdx.model.NPC;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
 
 public class NPCJsonModelingTest {
 	public static void main(String[] args) throws IOException {

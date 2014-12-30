@@ -15,9 +15,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CurrentManager;
 import com.mygdx.manager.EventManager;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
+import com.mygdx.state.CurrentState;
 
 public class VillageStage extends Stage {
 
@@ -219,7 +219,7 @@ public class VillageStage extends Stage {
 		JSONObject villageData = (JSONObject) Assets.jsonFileMap
 				.get("village_json")
 				.getJsonFile()
-				.get(CurrentManager.getInstance().getVillageInfo()
+				.get(CurrentState.getInstance().getVillageInfo()
 						.getCurrentPosition());
 		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
 		villageData = (JSONObject) Assets.jsonObjectMap.get("village_json")

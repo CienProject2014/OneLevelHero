@@ -8,7 +8,7 @@ import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.model.EventInfo;
 import com.mygdx.model.EventScene;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
 
 public class EventStage extends Stage {
 	private Label script;

@@ -7,8 +7,8 @@ import org.json.simple.parser.JSONParser;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CurrentManager;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
+import com.mygdx.state.CurrentState;
 
 public class BattleController {
 	Random random;
@@ -24,17 +24,17 @@ public class BattleController {
 	// 출발지와 도착지의 정보를 받아서 해당하는 던전을 CurrentDungeon으로 설정.
 	void setDungeon() {
 		JSONObject setting = (JSONObject) Assets.jsonObjectMap.get("dungeon_json").get("setting");
-		JSONObject startVillage = (JSONObject) setting.get(CurrentManager
+		JSONObject startVillage = (JSONObject) setting.get(CurrentState
 				.getInstance().getVillageInfo().getCurrentStarting());
-		String dungeonID = (String) startVillage.get(CurrentManager
+		String dungeonID = (String) startVillage.get(CurrentState
 				.getInstance().getVillageInfo().getCurrentDestination());
 
-		Gdx.app.log("DEBUG", CurrentManager.getInstance().getVillageInfo()
+		Gdx.app.log("DEBUG", CurrentState.getInstance().getVillageInfo()
 				.getCurrentStarting()
 				+ " and "
-				+ CurrentManager.getInstance().getVillageInfo()
+				+ CurrentState.getInstance().getVillageInfo()
 						.getCurrentDestination() + " and " + dungeonID);
-		CurrentManager.getInstance().getVillageInfo()
+		CurrentState.getInstance().getVillageInfo()
 				.setCurrentDungeon(dungeonID);
 	}
 
