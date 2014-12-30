@@ -23,7 +23,7 @@ public class EventStage extends Stage {
 
 	public EventStage(EventScene eventScene) {
 		//씬 만들어주기
-		eventInfo = EventManager.getInstance().getEventInfo();
+		eventInfo = EventManager.getEventInfo();
 
 		backgroundImage = new Image(eventScene.getBackground());
 		script = new Label(eventScene.getScript(), Assets.skin);

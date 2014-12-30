@@ -72,9 +72,8 @@ public class SelectButtonStage extends Stage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				EventInfo eventInfo = EventManager.getInstance().getEventInfo();
-				EventManager.getInstance().setEventInfo(eventInfo.getNpc(), 0,
-						false);
+				EventInfo eventInfo = EventManager.getEventInfo();
+				EventManager.setEventInfo(eventInfo.getNpc(), 0, false);
 				new ScreenController(ScreenEnum.EVENT);
 			}
 		});

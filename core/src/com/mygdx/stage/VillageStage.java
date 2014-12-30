@@ -308,9 +308,9 @@ public class VillageStage extends Stage {
 						int pointer, int button) {
 
 					// EventManager에 CurrentNpc정보를 전달한다.
-					EventManager.getInstance().setEventInfo(
+					EventManager.setEventInfo(
 							Assets.npcMap.get(npcinfo.get("key")), true);
-					new ScreenController(ScreenEnum.EVENT);
+					new ScreenController(ScreenEnum.GREETING);
 				}
 			});
 			addActor(npcbutton[i]);

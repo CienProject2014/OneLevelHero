@@ -1,7 +1,6 @@
 ﻿package com.mygdx.resource;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -45,12 +44,6 @@ public class Assets {
 	public static JSONObject json_file_path;
 	// NPC 이름
 	public static Texture yongsa, parath, waiji;
-
-	//JSON
-	public static JSONObject worldmap_json, village_json, dungeon_json,
-			status_new_left, bag_json, credit_list, blackwood_json,
-			prologue_json, blackwood_character, blackwood_background,
-			monster_json;
 
 	public static Music music, mainMusic;
 	public static Texture splash;
@@ -97,25 +90,16 @@ public class Assets {
 
 	//JsonFile의 path를 읽어온다.
 	private static void jsonLoad() {
-		dungeon_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/dungeon.json").readString());
-
-		// 몬스터 설정 로드
-		monster_json = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/monster.json").readString());
 		json_file_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/load/json_file_path.json").readString());
 		jsonFileMap = JsonMapParser.mapParse(JsonFile.class,
 				json_file_path.toString());
 
-		Iterator<Entry<String, JsonFile>> iterator = jsonFileMap.entrySet()
-				.iterator();
-		while (iterator.hasNext()) {
-			Entry<String, JsonFile> nextIterator = iterator.next();
-			jsonObjectMap.put(nextIterator.getKey(), nextIterator.getValue()
-					.getJsonFile());
-		}
+		//jsonFile을 jsonObjectMap에 넣어준다.
 		// HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
+		for (Entry<String, JsonFile> entry : jsonFileMap.entrySet()) {
+			jsonObjectMap.put(entry.getKey(), entry.getValue().getJsonFile());
+		}
 
 	}
 
@@ -130,7 +114,6 @@ public class Assets {
 		//npc 리스트를 담은 Json을 불러온다.
 		npcMap = JsonMapParser.mapParse(NPC.class, jsonObjectMap
 				.get("npc_json").toString());
-
 	}
 
 	private static void menuScreenLoad() {

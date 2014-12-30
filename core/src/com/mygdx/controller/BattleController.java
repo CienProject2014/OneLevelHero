@@ -23,7 +23,7 @@ public class BattleController {
 
 	// 출발지와 도착지의 정보를 받아서 해당하는 던전을 CurrentDungeon으로 설정.
 	void setDungeon() {
-		JSONObject setting = (JSONObject) Assets.dungeon_json.get("setting");
+		JSONObject setting = (JSONObject) Assets.jsonObjectMap.get("dungeon_json").get("setting");
 		JSONObject startVillage = (JSONObject) setting.get(CurrentManager
 				.getInstance().getVillageInfo().getCurrentStarting());
 		String dungeonID = (String) startVillage.get(CurrentManager

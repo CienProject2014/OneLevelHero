@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -72,23 +73,23 @@ public class BattleStage extends Stage {
 		super();
 
 		fight = new Fight(dungeonID);
-
 		viewportWidth = this.getWidth();
 		viewportHeight = this.getHeight();
 		realHeight = Assets.realHeight;
 		realWidth = Assets.realWidth;
 
-		JSONObject actual = (JSONObject) Assets.dungeon_json.get("actual");
+		JSONObject actual = (JSONObject) Assets.jsonObjectMap.get(
+				"dungeon_json").get("actual");
 		dungeonInfo = (JSONObject) actual.get(CurrentManager.getInstance()
 				.getVillageInfo().getCurrentDungeon());
 
 		initialize(); // 초기화
-		setLayout(); // 디자인, addActor
+		setFightLayout(); // 디자인, addActor
 		addListener(); // 리스너 할당
 	}
 
 	private void initialize() {
-		isFight = false;
+		isFight = false; // 싸우기 전 화면을 보여준다
 
 		// --------------------- Background //
 		background = new Texture(
@@ -111,8 +112,10 @@ public class BattleStage extends Stage {
 				new TextureRegion(griffith_texture));
 		monster1 = new Table(Assets.skin);
 		monster1.setBackground(griffith);
+
 		monster2 = new Table(Assets.skin);
 		monster2.setBackground(griffith);
+
 		monster3 = new Table(Assets.skin);
 		monster3.setBackground(griffith);
 
@@ -138,7 +141,7 @@ public class BattleStage extends Stage {
 				//---------------------------- Item //*/
 	}
 
-	private void setLayout() {
+	private void setFightLayout() {
 		@SuppressWarnings("unused")
 		float factor; // 화면 크기에 따른 비율 교정용 변수
 
@@ -162,11 +165,23 @@ public class BattleStage extends Stage {
 			backgroundImage.setBounds(0, 0, viewportWidth, viewportHeight);
 			addActor(backgroundImage);
 			monsterTable.setFillParent(true);
+			monsterTable.pad(150);
+			monsterTable.moveBy(0, 100);
 			monsterTable.add(monster1);
 			monsterTable.add(monster2);
 			monsterTable.add(monster3);
-			addActor(monsterTable);
+			monsterTable.row();
+			monster3.setColor(Color.DARK_GRAY);
+			Texture enemybg = new Texture(
+					Gdx.files.internal("texture/enemybg2.png"));
+			Image enemybgImg = new Image(enemybg);
+			Image enemybgImg2 = new Image(enemybg);
+			Image enemybgImg3 = new Image(enemybg);
 
+			monsterTable.add(enemybgImg);
+			monsterTable.add(enemybgImg2);
+			monsterTable.add(enemybgImg3);
+			addActor(monsterTable);
 		}
 	}
 
@@ -183,7 +198,7 @@ public class BattleStage extends Stage {
 					int pointer, int button) {
 				clear();
 				isFight = true;
-				setLayout();
+				setFightLayout(); //refresh해준다.
 			}
 		});
 		fleeButton.addListener(new InputListener() {

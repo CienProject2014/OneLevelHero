@@ -1,6 +1,8 @@
-﻿package com.mygdx.screen;
+package com.mygdx.screen;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -14,10 +16,12 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.RewardManager;
+import com.mygdx.model.EventInfo;
 import com.mygdx.model.EventScene;
+import com.mygdx.model.NPC;
+import com.mygdx.stage.SelectButtonStage;
 
-public class EventScreen implements Screen {
+public class GreetingScreen implements Screen {
 
 	// It needs interface layer, for test!
 	private StageFactory stageFactory = StageFactory.getInstance();
@@ -27,12 +31,12 @@ public class EventScreen implements Screen {
 	private Input input = Gdx.input;
 
 	private Stage eventStage;
+	private Stage selectButtonStage;
+	private EventInfo eventInfo;
 
-	private InputMultiplexer multiplexer;
-	private Iterator<EventScene> iterator;
+	private List<EventScene> greetingScenes;
 
-	public EventScreen() {
-
+	public GreetingScreen() {
 	}
 
 	@Override
@@ -41,6 +45,7 @@ public class EventScreen implements Screen {
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		eventStage.draw();
+		selectButtonStage.draw();
 
 	}
 
@@ -52,11 +57,22 @@ public class EventScreen implements Screen {
 
 	@Override
 	public void show() {
-		iterator = EventManager.getEventIterator();
-		eventStage = stageFactory.makeStage(iterator.next());
+		selectButtonStage = new SelectButtonStage();
+		eventInfo = EventManager.getEventInfo();
+		final NPC npc = eventInfo.getNpc();
+		greetingScenes = npc.getGreeting().getEventScenes();
 
-		multiplexer = new InputMultiplexer();
-		multiplexer.addProcessor(0, eventStage);
+		// for shuffle
+		List<EventScene> shuffleList = new ArrayList<EventScene>(greetingScenes);
+		Collections.shuffle(shuffleList);
+		eventStage = stageFactory.makeStage(shuffleList.get(0));
+
+		InputMultiplexer multiplexer = new InputMultiplexer();
+		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
+		// 우선권을 준다.
+
+		multiplexer.addProcessor(0, selectButtonStage);
+		multiplexer.addProcessor(1, eventStage);
 
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		input.setInputProcessor(multiplexer);
@@ -65,12 +81,7 @@ public class EventScreen implements Screen {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				if (iterator.hasNext()) {
-					eventStage = stageFactory.makeStage(iterator.next());
-				} else {
-					RewardManager.doReward(); //보상이 있을경우 보상실행
-					new ScreenController(ScreenEnum.VILLAGE);
-				}
+				new ScreenController(ScreenEnum.VILLAGE);
 
 				return true;
 			}
