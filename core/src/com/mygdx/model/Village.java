@@ -1,4 +1,4 @@
-package com.mygdx.test;
+package com.mygdx.model;
 
 import java.util.List;
 
@@ -131,10 +131,6 @@ public class Village {
 		this.ratio = ratio;
 	}
 
-	public List<Building> getBuilding() {
-		return building;
-	}
-
 	public void setBuilding(List<Building> building) {
 		this.building = building;
 	}
@@ -161,6 +157,11 @@ public class Village {
 				+ ", background=" + background + ", frontground=" + frontground
 				+ ", ratio=" + ratio + ", building=" + building + ", npc="
 				+ npc + ", exit=" + exit + "]";
+	}
+
+	public List<Building> getBuilding() {
+		// TODO Auto-generated method stub
+		return building;
 	}
 
 }

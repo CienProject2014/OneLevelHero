@@ -1,7 +1,6 @@
 package com.mygdx.stage;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
@@ -16,8 +15,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
+import com.mygdx.model.Village;
+import com.mygdx.model.Village.Building;
+import com.mygdx.model.Village.NPC;
+import com.mygdx.model.Village.Settable;
 import com.mygdx.state.Assets;
-import com.mygdx.state.CurrentState;
 
 public class VillageStage extends Stage {
 
@@ -29,9 +31,10 @@ public class VillageStage extends Stage {
 	private int num_of_npc;
 	private int num_of_exit;
 	// ImageButton buildingbutton[];
-	private Building buildingbutton[];
+	private BuildingImage buildingbutton[];
 	private TextButton npcbutton[];
 	private TextButton exitbutton;
+	private Village village;
 
 	public TextButton sift_button;
 	private TextureAtlas villageAtlas;
@@ -87,11 +90,11 @@ public class VillageStage extends Stage {
 		this.num_of_exit = num_of_exit;
 	}
 
-	public Building[] getBuildingbutton() {
+	public BuildingImage[] getBuildingbutton() {
 		return buildingbutton;
 	}
 
-	public void setBuildingbutton(Building[] buildingbutton) {
+	public void setBuildingbutton(BuildingImage[] buildingbutton) {
 		this.buildingbutton = buildingbutton;
 	}
 
@@ -162,7 +165,7 @@ public class VillageStage extends Stage {
 	private Camera camera;
 	private String currentState = "down";
 
-	private class Building extends Image {
+	public class BuildingImage extends Image {
 
 		//		private String name;
 		private float posX;
@@ -170,24 +173,19 @@ public class VillageStage extends Stage {
 		private float width;
 		private float height;
 
-		public Building(JSONObject buildinginfo) {
+		public BuildingImage(Building buildinginfo) {
 
-			super(villageAtlas.findRegion((String) buildinginfo.get("key")));
+			super(villageAtlas.findRegion(buildinginfo.getKey()));
 
-			setBuildingkey((String) buildinginfo.get("key"));
+			setBuildingkey(buildinginfo.getKey());
 
-			posX = viewportwidth
-					* Float.parseFloat((String) buildinginfo.get("positionX"));
-			posY = viewportheight
-					* Float.parseFloat((String) buildinginfo.get("positionY"));
+			posX = (viewportwidth * (float) buildinginfo.getPositionX());
+			posY = (viewportheight * (float) buildinginfo.getPositionX());
 
-			width = viewportwidth
-					* Float.parseFloat((String) buildinginfo.get("width"));
-			height = viewportheight
-					* Float.parseFloat((String) buildinginfo.get("height"));
+			width = (viewportwidth * (float) buildinginfo.getWidth());
+			height = (viewportheight * (float) buildinginfo.getHeight());
 
 			setBounds(posX - width / 2, posY - height / 2, width, height);
-
 		}
 
 		public void setBuildingkey(String buildingkey) {
@@ -216,27 +214,28 @@ public class VillageStage extends Stage {
 		camera = getViewport().getCamera();
 
 		// 마을 제이슨 완성 시 이걸로
-		JSONObject villageData = (JSONObject) Assets.jsonFileMap
+		/* JSONObject villageData = (JSONObject) Assets.jsonFileMap
 				.get("village_json")
 				.getJsonFile()
 				.get(CurrentState.getInstance().getVillageInfo()
 						.getCurrentPosition());
-		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
-		villageData = (JSONObject) Assets.jsonObjectMap.get("village_json")
-				.get("B");
+						*/
 
-		float ratio = Float.parseFloat((String) villageData.get("ratio"));
+		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
+		village = Assets.villageMap.get("Blackwood");
+
+		float ratio = (float) village.getRatio();
 
 		viewportwidth = Assets.realWidth;
 		viewportheight = viewportwidth * ratio;
 
 		villageAtlas = new TextureAtlas(Gdx.files.internal("texture/village/"
-				+ (String) villageData.get("imagesource")));
+				+ (String) village.getImagesource()));
 
 		Texture background = new Texture(Gdx.files.internal("texture/village/"
-				+ (String) villageData.get("background")));
+				+ (String) village.getBackground()));
 		Texture frontground = new Texture(Gdx.files.internal("texture/village/"
-				+ (String) villageData.get("frontground")));
+				+ (String) village.getFrontground()));
 
 		Image backgroundImage = new Image(background);
 		backgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
@@ -246,21 +245,21 @@ public class VillageStage extends Stage {
 		frontgroundImage.setBounds(0, 0, viewportwidth, viewportheight);
 		addActor(frontgroundImage);
 
-		JSONArray buildingArray = (JSONArray) villageData.get("building");
-		JSONArray npcArray = (JSONArray) villageData.get("npc");
-		JSONArray exitArray = (JSONArray) villageData.get("exit");
+		List<Building> buildingArray = village.getBuilding();
+		List<NPC> npcArray = village.getNpc();
+		List<Settable> exitArray = village.getExit();
 
 		num_of_building = buildingArray.size();
 		num_of_npc = npcArray.size();
 		num_of_exit = exitArray.size();
 
-		buildingbutton = new Building[num_of_building];
+		buildingbutton = new BuildingImage[num_of_building];
 		npcbutton = new TextButton[num_of_npc];
 
 		for (int i = 0; i < num_of_building; i++) {
-			JSONObject buildinginfo = (JSONObject) buildingArray.get(i);
+			Building buildinginfo = buildingArray.get(i);
 
-			buildingbutton[i] = new Building(buildinginfo);
+			buildingbutton[i] = new BuildingImage(buildinginfo);
 
 			buildingbutton[i].addListener(new InputListener() {
 
@@ -281,15 +280,12 @@ public class VillageStage extends Stage {
 		}
 
 		for (int i = 0; i < num_of_npc; i++) {
-			final JSONObject npcinfo = (JSONObject) npcArray.get(i);
+			final NPC npcinfo = npcArray.get(i);
 
-			npcbutton[i] = new TextButton((String) npcinfo.get("name"),
-					Assets.skin);
+			npcbutton[i] = new TextButton(npcinfo.getName(), Assets.skin);
 
-			float posX = viewportwidth
-					* Float.parseFloat((String) npcinfo.get("positionX"));
-			float posY = viewportheight
-					* Float.parseFloat((String) npcinfo.get("positionY"));
+			float posX = (viewportwidth * (float) npcinfo.getPositionX());
+			float posY = (viewportheight * (float) npcinfo.getPositionY());
 
 			npcbutton[i].moveBy(posX, posY);
 
@@ -309,7 +305,7 @@ public class VillageStage extends Stage {
 
 					// EventManager에 CurrentNpc정보를 전달한다.
 					EventManager.setEventInfo(
-							Assets.npcMap.get(npcinfo.get("key")), true);
+							Assets.npcMap.get(npcinfo.getKey()), true);
 					new ScreenController(ScreenEnum.GREETING);
 				}
 			});

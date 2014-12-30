@@ -1,7 +1,5 @@
 package com.mygdx.stage;
 
-import java.util.HashMap;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -193,8 +191,6 @@ public class WorldStage extends Stage {
 		worldData = (JSONArray) Assets.jsonFileMap.get("worldmap_json")
 				.getJsonFile().get("Worldmap");
 
-		Assets.villageHashmap = new HashMap<String, String>();
-
 		for (int i = 0; i < worldData.size(); i++) {
 			JSONObject temp = (JSONObject) worldData.get(i);
 			String type = (String) temp.get("type");
@@ -216,9 +212,6 @@ public class WorldStage extends Stage {
 
 			JSONObject temp = (JSONObject) worldData.get(i);
 			String type = (String) temp.get("type");
-
-			Assets.villageHashmap.put((String) temp.get("key"),
-					(String) temp.get("name"));
 
 			if (type.equals("village")) {
 
@@ -286,8 +279,7 @@ public class WorldStage extends Stage {
 							.getInstance()
 							.getVillageInfo()
 							.setCurrentStarting(
-									CurrentState.getInstance()
-											.getVillageInfo()
+									CurrentState.getInstance().getVillageInfo()
 											.getCurrentPosition());
 					CurrentState.getInstance().getVillageInfo()
 							.setCurrentPosition(temp.roadkey);
