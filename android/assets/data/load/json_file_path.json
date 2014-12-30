@@ -6,27 +6,18 @@
     "JsonFilePath": "data/event/npc.json"
   },
   "worldmap_json": {
-    "JsonFilePath": "data/worldmap.json"
+    "JsonFilePath": "data/map/worldmap.json"
   },
   "village_json": {
-    "JsonFilePath": "data/village.json"
+    "JsonFilePath": "data/map/village.json"
   },
   "credit_list": {
-    "JsonFilePath": "data/credit_list.json"
+    "JsonFilePath": "data/event/credit_list.json"
   },
   "skin": {
     "JsonFilePath": "skin/uiskin.json"
   },
-  "parath_json": {
-    "JsonFilePath": "data/event/parath.json"
-  },
-  "waiji_json": {
-    "JsonFilePath": "data/event/waiji.json"
-  },
-  "prologue_json": {
-    "JsonFilePath": "data/event/prologue.json"
-  },
-  "blackwood_json": {
-    "JsonFilePath": "data/event/blackwood.json"
+  "dungeon_json":{
+  	"JsonFilePath" : "data/map/dungeon.json"
   }
 }
