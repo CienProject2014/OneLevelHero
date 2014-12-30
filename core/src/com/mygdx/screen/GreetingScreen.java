@@ -45,8 +45,7 @@ public class GreetingScreen implements Screen {
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		eventStage.draw();
-		if (eventInfo.isGreeting())
-			selectButtonStage.draw();
+		selectButtonStage.draw();
 
 	}
 

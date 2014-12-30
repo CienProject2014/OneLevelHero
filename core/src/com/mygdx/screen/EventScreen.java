@@ -68,8 +68,7 @@ public class EventScreen implements Screen {
 				if (iterator.hasNext()) {
 					eventStage = stageFactory.makeStage(iterator.next());
 				} else {
-					//보상이 있을경우 보상실행
-					RewardManager.doReward();
+					RewardManager.doReward(); //보상이 있을경우 보상실행
 					new ScreenController(ScreenEnum.VILLAGE);
 				}
 
