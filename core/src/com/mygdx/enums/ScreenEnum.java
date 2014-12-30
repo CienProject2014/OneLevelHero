@@ -10,6 +10,7 @@ import com.mygdx.screen.CollectionScreen;
 import com.mygdx.screen.CreditScreen;
 import com.mygdx.screen.EndingScreen;
 import com.mygdx.screen.EventScreen;
+import com.mygdx.screen.GreetingScreen;
 import com.mygdx.screen.LoadScreen;
 import com.mygdx.screen.MenuScreen;
 import com.mygdx.screen.MovingScreen;
@@ -20,6 +21,14 @@ import com.mygdx.screen.VillageScreen;
 import com.mygdx.screen.WorldMapScreen;
 
 public enum ScreenEnum {
+
+	GREETING {
+		@Override
+		public Screen getScreenInstance() {
+			return new GreetingScreen();
+		}
+
+	},
 
 	MENU {
 		public Screen getScreenInstance() {

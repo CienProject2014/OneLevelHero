@@ -3,6 +3,8 @@ package com.mygdx.manager;
 import java.util.Queue;
 
 import com.mygdx.enums.RewardStateEnum;
+import com.mygdx.model.EventInfo;
+import com.mygdx.model.NPC;
 import com.mygdx.model.Party;
 import com.mygdx.model.RewardInfo;
 import com.mygdx.resource.Assets;
@@ -49,23 +51,30 @@ public class RewardManager {
 	}
 
 	public void doReward() {
-		switch (rewardQueue.peek().getRewardType()) {
-			case EXPERIENCE:
-				return;
-			case GOLD:
-				return;
-			case ITEM:
-				return;
-			case NONE:
-				return;
-			case PARTY:
-				Party party = CurrentManager.getInstance().getParty();
-				party.addParty(Assets.heroMap.get(rewardQueue.peek()
-						.getRewardTarget()));
-				return;
-			default:
-				return;
+		EventManager.getInstance();
+		EventInfo eventInfo = EventManager.getEventInfo();
+		NPC npc = eventInfo.getNpc();
+		RewardInfo rewardInfo = npc.getEvent(eventInfo.getEventNumber())
+				.getReward();
+		if (rewardInfo != null) {
+			switch (rewardQueue.peek().getRewardType()) {
+				case EXPERIENCE:
+					return;
+				case GOLD:
+					return;
+				case ITEM:
+					return;
+				case NONE:
+					return;
+				case PARTY:
+					Party party = CurrentManager.getInstance().getParty();
+					party.addParty(Assets.heroMap.get(rewardQueue.peek()
+							.getRewardTarget()));
+					return;
+				default:
+					return;
 
+			}
 		}
 	}
 
