@@ -25,7 +25,6 @@ public class VillageScreen implements Screen {
 
 	public static Stage inventoryStage;
 	private InventoryPopup inventoryActor;
-	private int key = 2;
 
 	private OrthographicCamera cam;
 
@@ -87,14 +86,6 @@ public class VillageScreen implements Screen {
 		this.inventoryActor = inventoryActor;
 	}
 
-	public int getKey() {
-		return key;
-	}
-
-	public void setKey(int key) {
-		this.key = key;
-	}
-
 	public OrthographicCamera getCam() {
 		return cam;
 	}
@@ -116,8 +107,8 @@ public class VillageScreen implements Screen {
 	}
 
 	public VillageScreen() {
+		//마을 이름을 받는 곳이 필요함
 		villageName = "Blackwood";
-
 	}
 
 	@Override
@@ -142,7 +133,7 @@ public class VillageScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		villageStage = new VillageStage(villageName + "-0");
+		villageStage = new VillageStage(villageName);
 		gameUiStage = new GameUiStage();
 		// 인벤토리 스테이지
 		inventoryStage = new Stage();
@@ -164,7 +155,6 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void hide() {
-		Gdx.app.log("DEBUG", "Village hide is called");
 		dispose();
 	}
 
@@ -182,7 +172,6 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		Gdx.app.log("DEBUG", "Village dispose is called");
 		villageStage.dispose();
 	}
 }

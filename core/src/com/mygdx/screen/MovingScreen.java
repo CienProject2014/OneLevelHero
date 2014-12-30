@@ -22,32 +22,33 @@ import com.mygdx.state.CurrentState;
 
 public class MovingScreen implements Screen {
 
-	Stage stage;
-	TextButton goButton;
-	TextButton backButton;
+	private Stage stage;
+	private TextButton goButton;
+	private TextButton backButton;
 
-	Label movingLabel;
-	Label roadName;
-	Table table;
+	private Label movingLabel;
+	private Label roadName;
+	private Table table;
 
-	int roadlength;
-	int leftlength;
+	private int roadlength;
+	private int leftlength;
 	public static int temp;
-	boolean battled;
+	private boolean battled;
 
-	Texture texture = new Texture(Gdx.files.internal("texture/justground.jpg"));
+	private Texture texture = new Texture(
+			Gdx.files.internal("texture/justground.jpg"));
 
-	Image background;
+	private Image background;
 
-	MovingController controller;
-	BattleController battle;
+	private MovingController controller;
+	private BattleController battle;
 
-	String presentVil;
-	String targetVil;
+	private String presentVillage;
+	private String targetVillage;
 
-	String currentPosition;
-	String currentDestination;
-	String currentStartingpoint;
+	private String currentPosition;
+	private String currentDestination;
+	private String currentStartingpoint;
 
 	public MovingScreen() {
 		Gdx.app.log("DEBUG", "MovingScreen constructor");
@@ -241,6 +242,22 @@ public class MovingScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 		Gdx.app.log("DEBUG", "MovingSceen dispose");
+	}
+
+	public String getPresentVillage() {
+		return presentVillage;
+	}
+
+	public void setPresentVillage(String presentVillage) {
+		this.presentVillage = presentVillage;
+	}
+
+	public String getTargetVillage() {
+		return targetVillage;
+	}
+
+	public void setTargetVillage(String targetVillage) {
+		this.targetVillage = targetVillage;
 	}
 
 }

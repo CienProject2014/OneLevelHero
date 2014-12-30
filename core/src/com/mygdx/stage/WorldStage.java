@@ -62,13 +62,11 @@ public class WorldStage extends Stage {
 
 		public worldNode(String text, Skin skin) {
 			super(text, skin);
-			// TODO Auto-generated constructor stub
 
 		}
 
 		public worldNode(String text, TextButtonStyle style) {
 			super(text, style);
-			// TODO Auto-generated constructor stub
 		}
 
 		private void setOption(JSONObject jsonObject) {
@@ -119,14 +117,12 @@ public class WorldStage extends Stage {
 		private int direction;
 
 		public RoadNode(TextureRegionDrawable arrow) {
-			// TODO Auto-generated constructor stub
 			super(arrow);
 			setSize(nodeSize / 2, nodeSize / 2);
 			setOrigin(this.getWidth() / 2, this.getHeight() / 2);
 		}
 
 		public void setOption(JSONObject object) {
-			// TODO Auto-generated method stub
 
 			roadkey = (String) object.get("roadkey");
 			direction = Integer.parseInt((String) object.get("direction"));
@@ -149,21 +145,18 @@ public class WorldStage extends Stage {
 	}
 
 	public WorldStage() {
-		super();
 		camera = getViewport().getCamera();
 
-		world_setter();
+		setWorldMap();
 		setCurrentPosition();
 
 	}
 
 	// 월드맵 정보에 맞게 스테이지 형성
-	private void world_setter() {
+	private void setWorldMap() {
 
 		background = new Image(new Texture(
 				Gdx.files.internal("texture/worldmap/WorldMap.png")));
-
-		background.setBounds(0, 0, 1920 * worldmapsize, 1080 * worldmapsize);
 
 		nodeSize = 90 * worldmapsize;
 
