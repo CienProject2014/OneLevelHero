@@ -50,10 +50,18 @@ public class RewardManager {
 		achievedRewardQueue.add(rewardQueue.poll());
 	}
 
+	private static EventInfo getEventInfo() {
+		return EventManager.getEventInfo();
+	}
+
+	private static RewardInfo getRewardInfo() {
+		RewardInfo rewardInfo = getEventInfo().getNpc()
+				.getEvent(getEventInfo().getEventNumber()).getReward();
+		return rewardInfo;
+	}
+
 	public static void doReward() {
-		EventInfo eventInfo = EventManager.getEventInfo();
-		RewardInfo rewardInfo = eventInfo.getNpc()
-				.getEvent(eventInfo.getEventNumber()).getReward();
+		RewardInfo rewardInfo = getRewardInfo();
 		if (rewardInfo != null) {
 			switch (rewardQueue.peek().getRewardType()) {
 				case EXPERIENCE:
