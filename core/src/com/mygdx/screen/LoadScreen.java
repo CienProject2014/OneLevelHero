@@ -77,8 +77,8 @@ public class LoadScreen implements Screen {
 				CurrentManager.getInstance().setVersion(SaveVersion.NEW);
 
 				//프롤로그 정보 주입
-				EventManager.getInstance().setEventInfo(
-						Assets.npcMap.get("prologue"), 0, false);
+				EventManager.setEventInfo(Assets.npcMap.get("prologue"), 0,
+						false);
 				new ScreenController(ScreenEnum.EVENT);
 
 			}

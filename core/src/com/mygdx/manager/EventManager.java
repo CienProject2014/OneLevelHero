@@ -9,14 +9,10 @@ import com.mygdx.model.NPC;
 import com.mygdx.model.RewardInfo;
 
 public class EventManager {
-	private static EventManager instance;
-	private static EventInfo eventInfo;
+	private static EventInfo eventInfo = new EventInfo();
 	private static Iterator<EventScene> iterator;
-	private static RewardManager rewardManager = RewardManager.getInstance();
 
 	private EventManager() {
-		eventInfo = new EventInfo();
-
 	}
 
 	public static Iterator<EventScene> getEventIterator() {
@@ -27,7 +23,6 @@ public class EventManager {
 		addEventRewardQueue(npc);
 
 		return iterator;
-
 	}
 
 	private static void addEventRewardQueue(NPC npc) {
@@ -35,33 +30,26 @@ public class EventManager {
 				.getReward();
 		if (rewardInfo != null) {
 			if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED) {
-				rewardManager.addEventReward(rewardInfo);
+				RewardManager.addEventReward(rewardInfo);
 			}
 		}
-	}
-
-	public static EventManager getInstance() {
-		if (null == instance) {
-			instance = new EventManager();
-		}
-		return instance;
 	}
 
 	public static EventInfo getEventInfo() {
 		return eventInfo;
 	}
 
-	public void setEventInfo(NPC npc, int eventNumber, boolean isGreeting) {
+	public static void setEventInfo(NPC npc, int eventNumber, boolean isGreeting) {
 		eventInfo.setNpc(npc);
 		eventInfo.setEventNumber(eventNumber);
 		eventInfo.setGreeting(isGreeting);
 	}
 
-	public void setEventInfo(NPC npc, int eventNumber) {
+	public static void setEventInfo(NPC npc, int eventNumber) {
 		setEventInfo(npc, eventNumber, false);
 	}
 
-	public void setEventInfo(NPC npc, boolean isGreeting) {
+	public static void setEventInfo(NPC npc, boolean isGreeting) {
 		setEventInfo(npc, 0, isGreeting);
 	}
 

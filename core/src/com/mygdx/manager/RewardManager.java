@@ -4,7 +4,6 @@ import java.util.Queue;
 
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.model.EventInfo;
-import com.mygdx.model.NPC;
 import com.mygdx.model.Party;
 import com.mygdx.model.RewardInfo;
 import com.mygdx.resource.Assets;
@@ -19,11 +18,11 @@ public class RewardManager {
 		return achievedRewardQueue;
 	}
 
-	private Queue<RewardInfo> rewardQueue;
-	private Queue<RewardInfo> achievedRewardQueue;
+	private static Queue<RewardInfo> rewardQueue;
+	private static Queue<RewardInfo> achievedRewardQueue;
 	// (3) 퀘스트 달성 여부 큐
-
 	// 아직 미구현
+
 	private static RewardManager instance;
 
 	public static RewardManager getInstance() {
@@ -39,23 +38,21 @@ public class RewardManager {
 				.getAchievedRewardQueue();
 	}
 
-	public void addEventReward(RewardInfo rewardInfo) {
+	public static void addEventReward(RewardInfo rewardInfo) {
 		rewardInfo.setRewardState(RewardStateEnum.ING);
 		rewardQueue.add(rewardInfo);
 	}
 
 	// (1)에서 뺀후 (2)의 큐에 집어넣는다.
-	public void pollRewardQueue() {
+	public static void pollRewardQueue() {
 		rewardQueue.peek().setRewardState(RewardStateEnum.CLEARED);
 		achievedRewardQueue.add(rewardQueue.poll());
 	}
 
-	public void doReward() {
-		EventManager.getInstance();
+	public static void doReward() {
 		EventInfo eventInfo = EventManager.getEventInfo();
-		NPC npc = eventInfo.getNpc();
-		RewardInfo rewardInfo = npc.getEvent(eventInfo.getEventNumber())
-				.getReward();
+		RewardInfo rewardInfo = eventInfo.getNpc()
+				.getEvent(eventInfo.getEventNumber()).getReward();
 		if (rewardInfo != null) {
 			switch (rewardQueue.peek().getRewardType()) {
 				case EXPERIENCE:
@@ -73,12 +70,11 @@ public class RewardManager {
 					return;
 				default:
 					return;
-
 			}
 		}
 	}
 
-	public String getRewardMessage(RewardInfo rewardInfo) {
+	public static String getRewardMessage(RewardInfo rewardInfo) {
 		switch (rewardInfo.getRewardType()) {
 			case EXPERIENCE:
 				return rewardInfo.getRewardTarget() + "의 경험치를 획득했습니다.";

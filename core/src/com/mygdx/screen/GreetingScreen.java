@@ -24,7 +24,6 @@ import com.mygdx.stage.SelectButtonStage;
 public class GreetingScreen implements Screen {
 
 	// It needs interface layer, for test!
-	private EventManager eventManager = EventManager.getInstance();
 	private StageFactory stageFactory = StageFactory.getInstance();
 
 	// Already libgdx using interface!
@@ -60,7 +59,7 @@ public class GreetingScreen implements Screen {
 	@Override
 	public void show() {
 		selectButtonStage = new SelectButtonStage();
-		eventInfo = eventManager.getEventInfo();
+		eventInfo = EventManager.getEventInfo();
 		final NPC npc = eventInfo.getNpc();
 		greetingScenes = npc.getGreeting().getEventScenes();
 

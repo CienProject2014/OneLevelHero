@@ -21,7 +21,6 @@ public class EventScreen implements Screen {
 
 	// It needs interface layer, for test!
 	private StageFactory stageFactory = StageFactory.getInstance();
-	private RewardManager rewardManager = RewardManager.getInstance();
 
 	// Already libgdx using interface!
 	private GL20 gl = Gdx.gl;
@@ -70,7 +69,7 @@ public class EventScreen implements Screen {
 					eventStage = stageFactory.makeStage(iterator.next());
 				} else {
 					//보상이 있을경우 보상실행
-					rewardManager.doReward();
+					RewardManager.doReward();
 					new ScreenController(ScreenEnum.VILLAGE);
 				}
 
