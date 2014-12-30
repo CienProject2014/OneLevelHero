@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.controller.SaveVersion;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CurrentManager;
 import com.mygdx.manager.EventManager;
-import com.mygdx.resource.Assets;
-import com.mygdx.resource.SaveVersion;
+import com.mygdx.state.Assets;
+import com.mygdx.state.CurrentState;
 
 public class LoadScreen implements Screen {
 
@@ -74,7 +74,7 @@ public class LoadScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				CurrentManager.getInstance().setVersion(SaveVersion.NEW);
+				CurrentState.getInstance().setVersion(SaveVersion.NEW);
 
 				//프롤로그 정보 주입
 				EventManager.setEventInfo(Assets.npcMap.get("prologue"), 0,

@@ -6,7 +6,8 @@ import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.model.EventInfo;
 import com.mygdx.model.Party;
 import com.mygdx.model.RewardInfo;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
+import com.mygdx.state.CurrentState;
 
 public class RewardManager {
 
@@ -33,8 +34,8 @@ public class RewardManager {
 	}
 
 	public RewardManager() {
-		rewardQueue = CurrentManager.getInstance().getRewardQueue();
-		achievedRewardQueue = CurrentManager.getInstance()
+		rewardQueue = CurrentState.getInstance().getRewardQueue();
+		achievedRewardQueue = CurrentState.getInstance()
 				.getAchievedRewardQueue();
 	}
 
@@ -49,10 +50,18 @@ public class RewardManager {
 		achievedRewardQueue.add(rewardQueue.poll());
 	}
 
+	private static EventInfo getEventInfo() {
+		return EventManager.getEventInfo();
+	}
+
+	private static RewardInfo getRewardInfo() {
+		RewardInfo rewardInfo = getEventInfo().getNpc()
+				.getEvent(getEventInfo().getEventNumber()).getReward();
+		return rewardInfo;
+	}
+
 	public static void doReward() {
-		EventInfo eventInfo = EventManager.getEventInfo();
-		RewardInfo rewardInfo = eventInfo.getNpc()
-				.getEvent(eventInfo.getEventNumber()).getReward();
+		RewardInfo rewardInfo = getRewardInfo();
 		if (rewardInfo != null) {
 			switch (rewardQueue.peek().getRewardType()) {
 				case EXPERIENCE:
@@ -64,7 +73,7 @@ public class RewardManager {
 				case NONE:
 					return;
 				case PARTY:
-					Party party = CurrentManager.getInstance().getParty();
+					Party party = CurrentState.getInstance().getParty();
 					party.addParty(Assets.heroMap.get(rewardQueue.peek()
 							.getRewardTarget()));
 					return;

@@ -5,9 +5,9 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.manager.CurrentManager;
 import com.mygdx.stage.BattleStage;
 import com.mygdx.stage.GameUiStage;
+import com.mygdx.state.CurrentState;
 
 public class BattleScreen implements Screen {
 
@@ -39,7 +39,7 @@ public class BattleScreen implements Screen {
 
 	@Override
 	public void show() {
-		battleStage = new BattleStage(CurrentManager.getInstance()
+		battleStage = new BattleStage(CurrentState.getInstance()
 				.getVillageInfo().getCurrentDungeon());
 		uiTable = new GameUiStage();
 

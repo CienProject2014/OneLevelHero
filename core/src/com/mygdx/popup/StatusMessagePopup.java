@@ -5,9 +5,9 @@ import java.util.Iterator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.mygdx.manager.CurrentManager;
 import com.mygdx.model.Hero;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
+import com.mygdx.state.CurrentState;
 
 public class StatusMessagePopup extends MessagePopup {
 	Stage stage;
@@ -32,7 +32,7 @@ public class StatusMessagePopup extends MessagePopup {
 		Table table = new Table();
 		text("파티원");
 		table.row();
-		Iterator<Hero> iterator = CurrentManager.getInstance().getParty()
+		Iterator<Hero> iterator = CurrentState.getInstance().getParty()
 				.getBattleMemberList().iterator();
 		while (iterator.hasNext()) {
 			Hero nextIterator = iterator.next();

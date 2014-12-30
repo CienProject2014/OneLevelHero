@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.SoundManager;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
 
 public class MenuScreen implements Screen {
 	private Stage stage;

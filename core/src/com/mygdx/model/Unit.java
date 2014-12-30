@@ -1,7 +1,7 @@
 package com.mygdx.model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
 
 public class Unit {
 	private String unitName;

@@ -21,14 +21,14 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryPopup;
-import com.mygdx.manager.CurrentManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.model.Hero;
 import com.mygdx.model.RewardInfo;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
+import com.mygdx.state.CurrentState;
 import com.mygdx.ui.StatusBarUi;
 
 public class GameUiStage extends Stage {
@@ -75,7 +75,7 @@ public class GameUiStage extends Stage {
 		characterImage = new Image[3];
 		statusbartable = new Table[3];
 		charatertable = new Table[3];
-		battleMemberNumber = CurrentManager.getInstance().getParty()
+		battleMemberNumber = CurrentState.getInstance().getParty()
 				.getBattleMemberList().size();
 		rewardManager = RewardManager.getInstance();
 		alertMessage = new Stack<MessagePopup>();
@@ -90,7 +90,7 @@ public class GameUiStage extends Stage {
 
 		}
 		//캐릭터 이미지 세팅
-		List<Hero> currentBattleMemberList = CurrentManager.getInstance()
+		List<Hero> currentBattleMemberList = CurrentState.getInstance()
 				.getParty().getBattleMemberList();
 
 		for (int i = 0; i < currentBattleMemberList.size(); i++) {

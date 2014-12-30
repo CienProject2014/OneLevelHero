@@ -4,7 +4,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
 
 public class MovingController {
 

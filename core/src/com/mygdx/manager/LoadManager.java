@@ -1,7 +1,8 @@
 package com.mygdx.manager;
 
 import com.mygdx.model.Hero;
-import com.mygdx.resource.Assets;
+import com.mygdx.state.Assets;
+import com.mygdx.state.CurrentState;
 
 public class LoadManager {
 	private static LoadManager instance;
@@ -30,7 +31,7 @@ public class LoadManager {
 
 	// 해당 Hero들을 Party구성원에 포함시킨다
 	private void setPartyList() {
-		CurrentManager.getInstance().getParty().addParty(hero);
+		CurrentState.getInstance().getParty().addParty(hero);
 	}
 
 	public Hero getHero() {
