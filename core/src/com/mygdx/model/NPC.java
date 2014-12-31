@@ -2,22 +2,13 @@ package com.mygdx.model;
 
 import java.util.List;
 
-import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 
 public class NPC extends Unit {
 
-	private Application app;
-
+	private int eventCount;
 	private List<Event> events;
 	private Event greeting;
-
-	public Application getApp() {
-		return app;
-	}
-
-	public void setApp(Application app) {
-		this.app = app;
-	}
 
 	public List<Event> getEvents() {
 		return events;
@@ -31,7 +22,8 @@ public class NPC extends Unit {
 		try {
 			return events.get(eventNo);
 		} catch (IndexOutOfBoundsException e) {
-			app.error("error", String.format("eventNo %d not exist", eventNo));
+			Gdx.app.error("error",
+					String.format("eventNo %d not exist", eventNo));
 			return null;
 		}
 	}
@@ -74,6 +66,15 @@ public class NPC extends Unit {
 		} else if (!greeting.equals(other.greeting))
 			return false;
 		return true;
+	}
+
+	public int getEventCount() {
+		eventCount = events.size();
+		return eventCount;
+	}
+
+	public void setEventCount(int eventCount) {
+		this.eventCount = eventCount;
 	}
 
 }
