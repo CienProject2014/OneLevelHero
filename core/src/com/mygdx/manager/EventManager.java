@@ -2,6 +2,7 @@ package com.mygdx.manager;
 
 import java.util.Iterator;
 
+import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.model.EventInfo;
 import com.mygdx.model.EventScene;
@@ -37,6 +38,11 @@ public class EventManager {
 
 	public static EventInfo getEventInfo() {
 		return eventInfo;
+	}
+
+	public static void endEvent() {
+		eventInfo.getNpc().getEvent(eventInfo.getEventNumber())
+				.setEventState(EventStateEnum.CLEARED);
 	}
 
 	public static void setEventInfo(NPC npc, int eventNumber, boolean isGreeting) {
