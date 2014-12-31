@@ -1,1 +1,2 @@
-include 'desktop', 'android', 'core','overlap2d'
+include 'desktop', 'core', 'android','Overlap2dRuntime'
+project(':Overlap2dRuntime').projectDir = new File(settingsDir, 'overlap2d-runtime-libgdx-master')
