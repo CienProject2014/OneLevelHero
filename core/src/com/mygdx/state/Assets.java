@@ -21,6 +21,7 @@ import com.mygdx.manager.JsonMapParser;
 import com.mygdx.model.Hero;
 import com.mygdx.model.JsonFile;
 import com.mygdx.model.NPC;
+import com.mygdx.model.Village;
 import com.mygdx.stage.WorldStage.worldNode;
 
 public class Assets {
@@ -60,10 +61,11 @@ public class Assets {
 	public static Map<String, JsonFile> jsonFileMap = new HashMap<String, JsonFile>();
 	public static Map<String, Object> resourceFileMap = new HashMap<String, Object>();
 	public static Map<String, Texture> imageFileMap = new HashMap<String, Texture>();
-	public static Map<String, String> villageHashmap;
+
 	public static Map<String, worldNode> worldHashmap = new HashMap<String, worldNode>();
 	public static Map<String, Hero> heroMap;
 	public static Map<String, NPC> npcMap;
+	public static Map<String, Village> villageMap;
 
 	public static void loadAll() {
 		jsonLoad();
@@ -74,6 +76,7 @@ public class Assets {
 		chatButtonLoad();
 		npcLoad();
 		heroLoad();
+		villageLoad();
 		etcResourceLoad();
 		//해상도 설정
 
@@ -100,14 +103,18 @@ public class Assets {
 		for (Entry<String, JsonFile> entry : jsonFileMap.entrySet()) {
 			jsonObjectMap.put(entry.getKey(), entry.getValue().getJsonFile());
 		}
-
 	}
 
 	private static void heroLoad() {
 		//hero 리스트를 담은 Json을 불러와 객체화한다.
 		heroMap = JsonMapParser.mapParse(Hero.class,
 				jsonObjectMap.get("hero_json").toString());
+	}
 
+	private static void villageLoad() {
+		//village 리스트를 담은 Json을 불러와 객체화한다.
+		villageMap = JsonMapParser.mapParse(Village.class,
+				jsonObjectMap.get("village_json").toString());
 	}
 
 	private static void npcLoad() {

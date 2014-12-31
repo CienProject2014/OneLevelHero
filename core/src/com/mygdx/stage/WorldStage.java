@@ -1,7 +1,5 @@
 package com.mygdx.stage;
 
-import java.util.HashMap;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -64,13 +62,11 @@ public class WorldStage extends Stage {
 
 		public worldNode(String text, Skin skin) {
 			super(text, skin);
-			// TODO Auto-generated constructor stub
 
 		}
 
 		public worldNode(String text, TextButtonStyle style) {
 			super(text, style);
-			// TODO Auto-generated constructor stub
 		}
 
 		private void setOption(JSONObject jsonObject) {
@@ -121,14 +117,12 @@ public class WorldStage extends Stage {
 		private int direction;
 
 		public RoadNode(TextureRegionDrawable arrow) {
-			// TODO Auto-generated constructor stub
 			super(arrow);
 			setSize(nodeSize / 2, nodeSize / 2);
 			setOrigin(this.getWidth() / 2, this.getHeight() / 2);
 		}
 
 		public void setOption(JSONObject object) {
-			// TODO Auto-generated method stub
 
 			roadkey = (String) object.get("roadkey");
 			direction = Integer.parseInt((String) object.get("direction"));
@@ -151,21 +145,18 @@ public class WorldStage extends Stage {
 	}
 
 	public WorldStage() {
-		super();
 		camera = getViewport().getCamera();
 
-		world_setter();
+		setWorldMap();
 		setCurrentPosition();
 
 	}
 
 	// 월드맵 정보에 맞게 스테이지 형성
-	private void world_setter() {
+	private void setWorldMap() {
 
 		background = new Image(new Texture(
 				Gdx.files.internal("texture/worldmap/WorldMap.png")));
-
-		background.setBounds(0, 0, 1920 * worldmapsize, 1080 * worldmapsize);
 
 		nodeSize = 90 * worldmapsize;
 
@@ -193,8 +184,6 @@ public class WorldStage extends Stage {
 		worldData = (JSONArray) Assets.jsonFileMap.get("worldmap_json")
 				.getJsonFile().get("Worldmap");
 
-		Assets.villageHashmap = new HashMap<String, String>();
-
 		for (int i = 0; i < worldData.size(); i++) {
 			JSONObject temp = (JSONObject) worldData.get(i);
 			String type = (String) temp.get("type");
@@ -216,9 +205,6 @@ public class WorldStage extends Stage {
 
 			JSONObject temp = (JSONObject) worldData.get(i);
 			String type = (String) temp.get("type");
-
-			Assets.villageHashmap.put((String) temp.get("key"),
-					(String) temp.get("name"));
 
 			if (type.equals("village")) {
 
@@ -286,8 +272,7 @@ public class WorldStage extends Stage {
 							.getInstance()
 							.getVillageInfo()
 							.setCurrentStarting(
-									CurrentState.getInstance()
-											.getVillageInfo()
+									CurrentState.getInstance().getVillageInfo()
 											.getCurrentPosition());
 					CurrentState.getInstance().getVillageInfo()
 							.setCurrentPosition(temp.roadkey);

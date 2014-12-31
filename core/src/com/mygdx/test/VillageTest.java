@@ -8,13 +8,14 @@ import java.util.Scanner;
 import org.junit.Test;
 
 import com.mygdx.manager.JsonMapParser;
+import com.mygdx.model.Village;
 
 public class VillageTest {
 
 	@Test
 	public void villageParseTest() throws IOException {
 
-		String filePath = "../android/assets/data/village.json";
+		String filePath = "../android/assets/data/map/village.json";
 
 		Scanner in = new Scanner(new File(filePath));
 		StringBuffer buffer = new StringBuffer();
