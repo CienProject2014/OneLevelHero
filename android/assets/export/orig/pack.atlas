@@ -1,0 +1,34 @@
+
+pack.png
+size: 3004,1692
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+worldmaplight01
+  rotate: false
+  xy: 2, 848
+  size: 1500, 844
+  orig: 1500, 844
+  offset: 0, 0
+  index: -1
+worldmaplight02
+  rotate: false
+  xy: 2, 2
+  size: 1500, 844
+  orig: 1500, 844
+  offset: 0, 0
+  index: -1
+worldmaplight03
+  rotate: false
+  xy: 1504, 848
+  size: 1500, 844
+  orig: 1500, 844
+  offset: 0, 0
+  index: -1
+worldmaplight04
+  rotate: false
+  xy: 1504, 2
+  size: 1500, 844
+  orig: 1500, 844
+  offset: 0, 0
+  index: -1

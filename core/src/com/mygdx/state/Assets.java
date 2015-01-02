@@ -63,6 +63,7 @@ public class Assets {
 	public static Map<String, Texture> imageFileMap = new HashMap<String, Texture>();
 
 	public static Map<String, worldNode> worldHashmap = new HashMap<String, worldNode>();
+	
 	public static Map<String, Hero> heroMap;
 	public static Map<String, NPC> npcMap;
 	public static Map<String, Village> villageMap;

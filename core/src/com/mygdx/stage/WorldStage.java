@@ -75,7 +75,6 @@ public class WorldStage extends Stage {
 			this.position = (String) jsonObject.get("position");
 			this.key = (String) jsonObject.get("key");
 			this.connection = (JSONArray) jsonObject.get("connection");
-
 			setting();
 		}
 
