@@ -19,6 +19,7 @@ import com.mygdx.screen.SaveScreen;
 import com.mygdx.screen.StatusScreen;
 import com.mygdx.screen.VillageScreen;
 import com.mygdx.screen.WorldMapScreen;
+import com.mygdx.screen.WorldMapScreen2;
 import com.mygdx.test.Overlap2DTest;
 
 public enum ScreenEnum {
@@ -56,6 +57,11 @@ public enum ScreenEnum {
 	WORLD_MAP {
 		public Screen getScreenInstance() {
 			return new WorldMapScreen();
+		}
+	},
+	WORLD_MAP2 {
+		public Screen getScreenInstance() {
+			return new WorldMapScreen2();
 		}
 	},
 	CREDIT {

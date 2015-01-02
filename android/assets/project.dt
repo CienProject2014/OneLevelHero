@@ -1,1 +1,1 @@
-{"resolutions":[{"width":480,"height":320,"name":"small"}],"scenes":[{"ambientColor":[0.5,0.5,0.5,1],"physicsPropertiesVO":{},"sceneName":"MainScene"}],"meshes":{"0":{"minPolygonData":[[{"x":-78.5,"y":24.5},{"x":194.49988,"y":-45.5},{"x":232.49988,"y":106.5},{"x":36.49994,"y":66.5}]]}},"originalResolution":{"width":800,"height":480,"name":"orig"},"assetMeshMap":{"groundGrass":0}}
+{"scenes":[{"ambientColor":[0.5,0.5,0.5,1],"physicsPropertiesVO":{},"sceneName":"MainScene"}],"originalResolution":{"width":1920,"height":1080,"name":"orig"}}
