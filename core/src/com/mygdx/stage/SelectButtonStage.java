@@ -24,6 +24,8 @@ public class SelectButtonStage extends Stage {
 	private int eventCount;
 	private NPC eventNpc;
 	private static final int MAX_EVENT_LENGTH = 6;
+	private static final int BUTTON_WIDTH = 0;
+	private static final int BUTTON_HEIGHT = 1;
 	private final float buttonPosition[][] = {
 			{ Assets.realWidth * 0.109375f, Assets.realHeight * 0.74f },
 			{ Assets.realWidth * 0.109375f, Assets.realHeight * 0.555f },
@@ -38,8 +40,8 @@ public class SelectButtonStage extends Stage {
 		EventInfo eventInfo = EventManager.getEventInfo();
 		eventNpc = eventInfo.getNpc();
 		eventCount = eventNpc.getEventCount();
-		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
-		chatStyles = new ArrayList<TextButtonStyle>();
+		chatButtons = new ArrayList<>(MAX_EVENT_LENGTH);
+		chatStyles = new ArrayList<>(MAX_EVENT_LENGTH);
 
 		showEventButton();
 		setSize();
@@ -59,15 +61,16 @@ public class SelectButtonStage extends Stage {
 
 	private void setSize() {
 		for (TextButton chatButton : chatButtons) {
-			chatButton.setSize(buttonSize[0], buttonSize[1]);
+			chatButton.setSize(buttonSize[BUTTON_WIDTH],
+					buttonSize[BUTTON_HEIGHT]);
 		}
 	}
 
 	// Assets.realHeight * 0.185f
 	private void setButtonPosition() {
 		for (int i = 0; i < eventCount; i++) {
-			chatButtons.get(i).setPosition(buttonPosition[i][0],
-					buttonPosition[i][1]);
+			chatButtons.get(i).setPosition(buttonPosition[i][BUTTON_WIDTH],
+					buttonPosition[i][BUTTON_HEIGHT]);
 		}
 	}
 
@@ -75,7 +78,7 @@ public class SelectButtonStage extends Stage {
 		for (int i = 0; i < eventCount; i++) {
 			//이벤트가 달성되었는지 검사(현재는 리워드)
 			if (eventNpc.getEvent(i).getEventState() == EventStateEnum.CLEARED)
-				chatButtons.get(0).setColor(Color.DARK_GRAY);
+				chatButtons.get(i).setColor(Color.DARK_GRAY);
 			else {
 				chatButtons.get(i).addListener(new InputListener() {
 					@Override
