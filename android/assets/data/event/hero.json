@@ -1,7 +1,7 @@
 {
   "yongsa": {
-    "unitName": "yongsa",
-    "faceImagePath": "yongsa",
+    "name": "yongsa",
+    "faceTexturePath": "yongsa",
     "status": {
       "attack": 110,
       "defense": 34.5,
@@ -10,6 +10,7 @@
       "accuracy": 94.8,
       "healthPoint": 338,
       "stamina": 100,
+      "speed": 1000,
       "job": "warrior",
       "debuff": "null"
     },
@@ -21,8 +22,8 @@
     }
   },
   "parath": {
-    "unitName": "parath",
-    "faceImagePath": "parath",
+    "name": "parath",
+    "faceTexturePath": "parath",
     "status": {
       "attack": 110,
       "defense": 34.5,
@@ -31,6 +32,7 @@
       "accuracy": 94.8,
       "healthPoint": 338,
       "stamina": 100,
+      "speed": 900,
       "job": "assassin",
       "debuff": "null"
     },

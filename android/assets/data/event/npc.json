@@ -50,8 +50,8 @@
     ]
   },
   "waiji": {
-    "faceImagePath": "waiji",
-    "unitName": "waiji",
+    "faceTexturePath": "waiji",
+    "name": "waiji",
     "events": [
       {
         "eventState": "OPENED",

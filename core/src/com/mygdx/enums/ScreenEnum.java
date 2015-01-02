@@ -8,6 +8,7 @@ import com.mygdx.screen.BonusPointScreen;
 import com.mygdx.screen.CGScreen;
 import com.mygdx.screen.CollectionScreen;
 import com.mygdx.screen.CreditScreen;
+import com.mygdx.screen.EncounterScreen;
 import com.mygdx.screen.EndingScreen;
 import com.mygdx.screen.EventScreen;
 import com.mygdx.screen.GreetingScreen;
@@ -22,20 +23,20 @@ import com.mygdx.screen.WorldMapScreen;
 import com.mygdx.test.Overlap2DTest;
 
 public enum ScreenEnum {
+	
+    OVERLAP {
+        @Override
+        public Screen getScreenInstance() {
+            return new Overlap2DTest();
+        }
+    },
+    GREETING {
+        @Override
+        public Screen getScreenInstance() {
+            return new GreetingScreen();
+        }
 
-	OVERLAP {
-		@Override
-		public Screen getScreenInstance() {
-			return new Overlap2DTest();
-		}
-	},
-	GREETING {
-		@Override
-		public Screen getScreenInstance() {
-			return new GreetingScreen();
-		}
-
-	},
+    },
 
 	MENU {
 		public Screen getScreenInstance() {
@@ -125,6 +126,12 @@ public enum ScreenEnum {
 		@Override
 		public com.badlogic.gdx.Screen getScreenInstance() {
 			return new BattleScreen();
+		}
+	},
+	ENCOUNT {
+		@Override
+		public com.badlogic.gdx.Screen getScreenInstance() {
+			return new EncounterScreen();
 		}
 	};
 

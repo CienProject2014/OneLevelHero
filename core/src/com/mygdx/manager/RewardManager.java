@@ -74,7 +74,7 @@ public class RewardManager {
 					return;
 				case PARTY:
 					Party party = CurrentState.getInstance().getParty();
-					party.addParty(Assets.heroMap.get(rewardQueue.peek()
+					party.addHero(Assets.heroMap.get(rewardQueue.peek()
 							.getRewardTarget()));
 					return;
 				default:

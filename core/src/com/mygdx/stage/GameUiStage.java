@@ -33,7 +33,6 @@ import com.mygdx.ui.StatusBarUi;
 
 public class GameUiStage extends Stage {
 	private Table uiTable;
-	private OneLevelHero game;
 	private InventoryPopup inventoryActor;
 	private DragAndDrop dragAndDrop;
 	private Stack<MessagePopup> alertMessage;
@@ -67,8 +66,8 @@ public class GameUiStage extends Stage {
 	public GameUiStage() {
 		// 초기화
 		uiTable = new Table();
-		realheight = Assets.realHeight;
-		realwidth = Assets.realWidth;
+		realheight = Assets.windowHeight;
+		realwidth = Assets.windowWidth;
 		hpbar = new StatusBarUi[3];
 		expbar = new StatusBarUi[3];
 		turnbar = new StatusBarUi[3];
@@ -95,7 +94,7 @@ public class GameUiStage extends Stage {
 
 		for (int i = 0; i < currentBattleMemberList.size(); i++) {
 			characterImage[i] = new Image(currentBattleMemberList.get(i)
-					.getFaceImage());
+					.getFaceTexture());
 		}
 
 		toptable = new Table(Assets.skin);

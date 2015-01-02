@@ -185,10 +185,10 @@ public class VillageStage extends Stage {
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
 
-		OrthographicCamera cam = new OrthographicCamera(Assets.realWidth,
-				Assets.realHeight);
+		OrthographicCamera cam = new OrthographicCamera(Assets.windowWidth,
+				Assets.windowHeight);
 		// cam.translate(100, 300);
-		cam.position.set(Assets.realWidth / 2, Assets.realHeight * 0.25f, 0);
+		cam.position.set(Assets.windowWidth / 2, Assets.windowHeight * 0.25f, 0);
 		getViewport().setCamera(cam);
 
 		camera = getViewport().getCamera();
@@ -206,7 +206,7 @@ public class VillageStage extends Stage {
 
 		float ratio = (float) village.getRatio();
 
-		viewportWidth = Assets.realWidth;
+		viewportWidth = Assets.windowWidth;
 		viewportHeight = viewportWidth * ratio;
 
 		villageAtlas = new TextureAtlas(Gdx.files.internal("texture/village/"
@@ -339,13 +339,13 @@ public class VillageStage extends Stage {
 	}
 
 	private void checkBound() {
-		if (camera.position.y > (viewportHeight - Assets.realHeight / 2)) {
-			camera.position.y = viewportHeight - Assets.realHeight / 2;
+		if (camera.position.y > (viewportHeight - Assets.windowHeight / 2)) {
+			camera.position.y = viewportHeight - Assets.windowHeight / 2;
 			currentState = "up";
 			siftButton.setVisible(true);
 
-		} else if (camera.position.y < Assets.realHeight * 0.25f) {
-			camera.position.y = Assets.realHeight * 0.25f;
+		} else if (camera.position.y < Assets.windowHeight * 0.25f) {
+			camera.position.y = Assets.windowHeight * 0.25f;
 			currentState = "down";
 			siftButton.setVisible(true);
 		}

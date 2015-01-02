@@ -88,28 +88,28 @@ public class MenuStage extends Stage{
 			}
 		});
 
-		int realheight = (int) (Assets.realHeight);
-		int realwidth = (int) (Assets.realWidth);
+		int windowHeight = (int) (Assets.windowHeight);
+		int windowWidth = (int) (Assets.windowWidth);
 
-		Assets.logo.setHeight((int) (0.4f * Assets.realHeight));
-		Assets.logo.setWidth((int) (0.6f * Assets.realWidth));
+		Assets.logo.setHeight((int) (0.4f * Assets.windowHeight));
+		Assets.logo.setWidth((int) (0.6f * Assets.windowWidth));
 		table.setFillParent(true);
 
-		table.add(button[3]).height(0.35f * realheight)
-				.width(0.3f * realwidth).expand().top().left();
-		table.add(button[2]).height(0.35f * realheight)
-				.width(0.3f * realwidth).top().right();
+		table.add(button[3]).height(0.35f * windowHeight)
+				.width(0.3f * windowWidth).expand().top().left();
+		table.add(button[2]).height(0.35f * windowHeight)
+				.width(0.3f * windowWidth).top().right();
 		table.row();
-		table.add(button[0]).height(0.35f * realheight)
-				.width(0.3f * realwidth).bottom().left();
-		table.add(button[1]).height(0.35f * realheight)
-				.width(0.3f * realwidth).bottom().right();
+		table.add(button[0]).height(0.35f * windowHeight)
+				.width(0.3f * windowWidth).bottom().left();
+		table.add(button[1]).height(0.35f * windowHeight)
+				.width(0.3f * windowWidth).bottom().right();
 
 
-		Assets.logo.setPosition((int) (0.2f * Assets.realWidth),
-				(int) (0.3f * Assets.realHeight));
+		Assets.logo.setPosition((int) (0.2f * Assets.windowWidth),
+				(int) (0.3f * Assets.windowHeight));
 
-		background.setSize(realwidth, realheight);
+		background.setSize(windowWidth, windowHeight);
 
 		this.addActor(background);
 		this.addActor(Assets.logo);
