@@ -1,7 +1,10 @@
 package com.mygdx.state;
+
 //package com.mygdx.state;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -19,36 +22,24 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.manager.JsonMapParser;
+import com.mygdx.model.AtlasUiFile;
 import com.mygdx.model.DungeonInfo;
 import com.mygdx.model.Hero;
 import com.mygdx.model.JsonFile;
 import com.mygdx.model.Monster;
 import com.mygdx.model.NPC;
-import com.mygdx.model.Village;
-import com.mygdx.stage.WorldStage;
+import com.mygdx.model.TextureFile;
 import com.mygdx.stage.WorldStage.worldNode;
 
 public class Assets {
 	public static Skin skin;
 	public static TextureAtlas items;
 
-	public static TextureRegionDrawable ibuttond, ibuttonu, menu_button_down,
-			menu_button_up, menu_button_toggle, credit_before, credit_after,
-			extra_before, extra_after, option_before, option_after,
-			start_after, start_before, downArrowButton, bagButton, nameAndTime,
-			helpButton, optionButton, upArrowButton;
 	public static TextureRegionDrawable[] chatButton;
-	// NPC얼굴
-	public static Texture parath_background, prog_team1, plan_team1,
-			graphic_team1, scene1, scene2, scene3, scene4, rabbit1, rabbit2,
-			rabbit3, yongsa_happy, yongsa_sad, parath_angry, yongsa_angry,
-			parath_happy, waiji_happy, yongsa_sick, nothing_image,
-			waiji_background, blackwood_center, main_background, b2;
 
 	// JSON
-	public static JSONObject json_file_path;
-	// NPC 이름
-	public static Texture yongsa, parath, waiji;
+	public static JSONObject json_file_path, character_file_path,
+			background_file_path, atlas_ui_path;
 
 	// JSON
 	public static JSONObject worldmap_json, village_json, dungeon_json,
@@ -67,25 +58,33 @@ public class Assets {
 	public static float windowWidth;
 	public static float windowHeight;
 
-	public static Map<String, JSONObject> jsonObjectMap = new HashMap<String, JSONObject>();
-	public static Map<String, JsonFile> jsonFileMap = new HashMap<String, JsonFile>();
-	public static Map<String, Object> resourceFileMap = new HashMap<String, Object>();
-	public static Map<String, Texture> imageFileMap = new HashMap<String, Texture>();
-    public static Map<String, Village> villageMap;
-	public static Map<String, worldNode> worldHashmap = new HashMap<String, worldNode>();
 	public static Map<String, DungeonInfo> dungeonMap;
+
+	public static Map<String, JSONObject> jsonObjectMap = new HashMap<>();
+	public static Map<String, JsonFile> jsonFileMap = new HashMap<>();
+
+	private static Map<String, TextureFile> characterFileMap = new HashMap<>();
+	public static Map<String, Texture> characterTextureMap = new HashMap<>();
+
+	private static Map<String, TextureFile> backgroundFileMap = new HashMap<>();
+	public static Map<String, Texture> backgroundTextureMap = new HashMap<>();
+
+	public static Map<String, worldNode> worldHashmap = new HashMap<>();
+	public static List<String> menuScreenUiFileList = new ArrayList<>();
+
+	private static Map<String, AtlasUiFile> atlasUiFileMap;
+	public static Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<>();;
+
 	public static Map<String, Hero> heroMap;
 	public static Map<String, NPC> npcMap;
 	public static Map<String, Monster> monsterMap;
 
 	public static void loadAll() {
-		jsonLoad();
-		menuScreenLoad();
-		gameUILoad();
-		characterImageLoad();
+		jsonObjectLoad();
+		atlasUiTextureLoad();
+		sceneTextureLoad();
 		fontLoad();
 		chatButtonLoad();
-        villageLoad();
 		dungeonLoad();
 		npcLoad();
 		heroLoad();
@@ -104,32 +103,21 @@ public class Assets {
 		windowHeight = vp.getViewportHeight();
 	}
 
-	// JsonFile의 path를 읽어온다.
-	private static void jsonLoad() {
-
+	//JsonFile의 path를 읽어온다.
+	private static void jsonObjectLoad() {
 		json_file_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/load/json_file_path.json").readString());
 		jsonFileMap = JsonMapParser.mapParse(JsonFile.class,
 				json_file_path.toString());
-
-        //jsonFile을 jsonObjectMap에 넣어준다.
-        // HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
-        for (Entry<String, JsonFile> entry : jsonFileMap.entrySet()) {
-            jsonObjectMap.put(entry.getKey(), entry.getValue().getJsonFile());
-        }
-
+		for (Entry<String, JsonFile> entry : jsonFileMap.entrySet()) {
+			jsonObjectMap.put(entry.getKey(), entry.getValue().getFile());
+		}
 	}
-        
-    private static void villageLoad() {
-        //village 리스트를 담은 Json을 불러와 객체화한다.
-        villageMap = JsonMapParser.mapParse(Village.class,
-                jsonObjectMap.get("village_json").toString());
-    }
-
 
 	private static void dungeonLoad() {
 		dungeonMap = JsonMapParser.mapParse(DungeonInfo.class, jsonObjectMap
 				.get("dungeon_json").get("actual").toString());
+
 	}
 
 	private static void heroLoad() {
@@ -153,128 +141,38 @@ public class Assets {
 
 	}
 
-	private static void menuScreenLoad() {
-
-		TextureAtlas textureAtlas = new TextureAtlas("skin/MenuButton.pack");
-		TextureAtlas buttonAtlas = new TextureAtlas("skin/Test1.atlas");
-
-		logo = new Image(new TextureRegionDrawable(
-				buttonAtlas.findRegion("title")));
-		credit_before = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_credit_before"));
-		credit_after = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_credit_after"));
-		extra_before = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_extra_before"));
-		extra_after = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_extra_after"));
-		option_before = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_option_before"));
-		option_after = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_option_after"));
-		start_after = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_start_after"));
-		start_before = new TextureRegionDrawable(
-				textureAtlas.findRegion("button_start_after"));
-
+	private static void atlasUiTextureLoad() {
+		atlas_ui_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/load/atlas_ui_path.json").readString());
+		atlasUiFileMap = JsonMapParser.mapParse(AtlasUiFile.class,
+				atlas_ui_path.toString());
+		for (Entry<String, AtlasUiFile> entry : atlasUiFileMap.entrySet()) {
+			//FIXME atlasUiFileMap의 자료구조는 Map인데 Key값은 전혀 사용되지 않음
+			for (String element : entry.getValue().getElement())
+				atlasUiMap.put(element, new TextureRegionDrawable(entry
+						.getValue().getFile().findRegion(element)));
+		}
 	}
 
-	private static void gameUILoad() {
+	private static void sceneTextureLoad() {
+		//character
+		character_file_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/load/character_file_path.json").readString());
+		characterFileMap = JsonMapParser.mapParse(TextureFile.class,
+				character_file_path.toString());
+		for (Entry<String, TextureFile> entry : characterFileMap.entrySet()) {
+			characterTextureMap.put(entry.getKey(), entry.getValue().getFile());
+		}
 
-		TextureAtlas textureAtlas = new TextureAtlas("data/UiButton.pack");
-		downArrowButton = new TextureRegionDrawable(
-				textureAtlas.findRegion("downArrowButton"));
-		bagButton = new TextureRegionDrawable(
-				textureAtlas.findRegion("bagButton"));
-		nameAndTime = new TextureRegionDrawable(
-				textureAtlas.findRegion("nameAndTime"));
-		helpButton = new TextureRegionDrawable(
-				textureAtlas.findRegion("helpButton"));
-		optionButton = new TextureRegionDrawable(
-				textureAtlas.findRegion("optionButton"));
-		upArrowButton = new TextureRegionDrawable(
-				textureAtlas.findRegion("upArrowButton"));
-
-	}
-
-	private static void characterImageLoad() {
-
-		yongsa = new Texture(Gdx.files.internal("texture/npc/YongSa.jpg"));
-		parath = new Texture(Gdx.files.internal("texture/npc/Parath.png"));
-		waiji = new Texture(Gdx.files.internal("texture/npc/waiji_happy.png"));
-
-		rabbit1 = new Texture(
-				Gdx.files.internal("texture/prologue/rabbit1.png"));
-		rabbit2 = new Texture(
-				Gdx.files.internal("texture/prologue/rabbit2.png"));
-		rabbit3 = new Texture(
-				Gdx.files.internal("texture/prologue/rabbit3.png"));
-		nothing_image = new Texture(
-				Gdx.files.internal("texture/nothing_image.png"));
-		yongsa_happy = new Texture(
-				Gdx.files.internal("texture/npc/yongsa_happy.jpg"));
-		yongsa_sick = new Texture(
-				Gdx.files.internal("texture/npc/yongsa_sick.jpg"));
-		yongsa_sad = new Texture(
-				Gdx.files.internal("texture/npc/yongsa_sad.png"));
-		parath_happy = new Texture(
-				Gdx.files.internal("texture/npc/parath_happy.jpg"));
-		yongsa_angry = new Texture(
-				Gdx.files.internal("texture/npc/yongsa_angry.png"));
-		parath_angry = new Texture(
-				Gdx.files.internal("texture/npc/parath_angry.jpg"));
-		waiji_happy = new Texture(
-				Gdx.files.internal("texture/npc/waiji_happy.png"));
-		b2 = new Texture(Gdx.files.internal("texture/unit/monster/b2.png"));
-
-		scene1 = new Texture(Gdx.files.internal("texture/prologue/scene1.jpg"));
-		scene2 = new Texture(Gdx.files.internal("texture/prologue/scene2.jpg"));
-		scene3 = new Texture(Gdx.files.internal("texture/prologue/scene3.jpg"));
-		scene4 = new Texture(Gdx.files.internal("texture/prologue/scene4.jpg"));
-
-		prog_team1 = new Texture(
-				Gdx.files.internal("texture/credit/prog_team1.png"));
-		plan_team1 = new Texture(
-				Gdx.files.internal("texture/credit/plan_team1.png"));
-		graphic_team1 = new Texture(
-				Gdx.files.internal("texture/credit/graphic_team1.png"));
-		parath_background = new Texture(
-				Gdx.files.internal("texture/npc/parath_background.png"));
-		waiji_background = new Texture(
-				Gdx.files.internal("texture/npc/waiji_background.png"));
-		blackwood_center = new Texture(
-				Gdx.files.internal("texture/blackwood/blackwood_center.png"));
-		main_background = new Texture(
-				Gdx.files.internal("texture/MainMenu_Background.png"));
-
-		// HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
-
-		imageFileMap.put("yongsa_happy", yongsa_happy);
-		imageFileMap.put("yongsa_sad", yongsa_sad);
-		imageFileMap.put("parath_happy", parath_happy);
-		imageFileMap.put("parath_angry", parath_angry);
-		imageFileMap.put("waiji_happy", waiji_happy);
-		imageFileMap.put("rabbit1", rabbit1);
-		imageFileMap.put("rabbit2", rabbit2);
-		imageFileMap.put("rabbit3", rabbit3);
-		imageFileMap.put("scene1", scene1);
-		imageFileMap.put("scene2", scene2);
-		imageFileMap.put("scene3", scene3);
-		imageFileMap.put("scene4", scene4);
-		imageFileMap.put("prog_team1", prog_team1);
-		imageFileMap.put("plan_team1", plan_team1);
-		imageFileMap.put("graphic_team1", graphic_team1);
-		imageFileMap.put("nothing_image", nothing_image);
-		imageFileMap.put("parath_background", parath_background);
-		imageFileMap.put("waiji_background", waiji_background);
-		imageFileMap.put("blackwood_center", blackwood_center);
-		imageFileMap.put("yongsa_sick", yongsa_sick);
-		imageFileMap.put("yongsa_angry", yongsa_angry);
-		imageFileMap.put("main_background", main_background);
-		imageFileMap.put("yongsa", yongsa);
-		imageFileMap.put("parath", parath);
-		imageFileMap.put("waiji", waiji);
-		imageFileMap.put("b2", b2);
+		//background
+		background_file_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
+				"data/load/background_file_path.json").readString());
+		backgroundFileMap = JsonMapParser.mapParse(TextureFile.class,
+				background_file_path.toString());
+		for (Entry<String, TextureFile> entry : backgroundFileMap.entrySet()) {
+			backgroundTextureMap
+					.put(entry.getKey(), entry.getValue().getFile());
+		}
 	}
 
 	private static void fontLoad() {
@@ -292,9 +190,9 @@ public class Assets {
 		}
 	}
 
+	//임시용, 추후 제거 예정
 	private static void etcResourceLoad() {
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
-
 		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		mainMusic = Gdx.audio.newMusic(Gdx.files.internal("data/buyeo.mp3"));

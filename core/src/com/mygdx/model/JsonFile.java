@@ -5,25 +5,26 @@ import org.json.simple.JSONValue;
 
 import com.badlogic.gdx.Gdx;
 
-public class JsonFile {
-	private String JsonFilePath;
-	private JSONObject jsonFile;
+public class JsonFile implements AssetsFile<JSONObject> {
+	private String filePath;
+	private JSONObject file;
 
-	public String getJsonFilePath() {
-		return JsonFilePath;
+	public JSONObject getFile() {
+		file = (JSONObject) JSONValue.parse(Gdx.files.internal(filePath)
+				.readString());
+		return file;
 	}
 
-	public void setJsonFilePath(String jsonFilePath) {
-		JsonFilePath = jsonFilePath;
+	public String getFilePath() {
+		return filePath;
 	}
 
-	public JSONObject getJsonFile() {
-		jsonFile = (JSONObject) JSONValue.parse(Gdx.files
-				.internal(JsonFilePath).readString());
-		return jsonFile;
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
-	public void setJsonFile(JSONObject jsonFile) {
-		this.jsonFile = jsonFile;
+	public void setFile(JSONObject file) {
+		this.file = file;
 	}
+
 }

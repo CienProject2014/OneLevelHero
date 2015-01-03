@@ -1,6 +1,5 @@
 package com.mygdx.manager;
 
-import com.badlogic.gdx.Gdx;
 import com.mygdx.model.Hero;
 import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
@@ -32,7 +31,6 @@ public class LoadManager {
 
 	// 해당 Hero들을 Party구성원에 포함시킨다
 	private void setPartyList() {
-		Gdx.app.log("asdf", "노 문제 "+hero.getStatus().getHealthPoint());
 		CurrentState.getInstance().getParty().addHero(hero);
 	}
 

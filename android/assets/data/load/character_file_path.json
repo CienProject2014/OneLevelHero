@@ -1,0 +1,44 @@
+{
+  "yongsa": {
+    "filePath": "texture/npc/YongSa.jpg"
+  },
+  "parath": {
+    "filePath": "texture/npc/Parath.png"
+  },
+  "waiji": {
+    "filePath": "texture/npc/waiji_happy.png"
+  },
+  "rabbit1": {
+    "filePath": "texture/prologue/rabbit1.png"
+  },
+  "rabbit2": {
+    "filePath": "texture/prologue/rabbit2.png"
+  },
+  "rabbit3": {
+    "filePath": "texture/prologue/rabbit3.png"
+  },
+  "nothing_imgage": {
+    "filePath": "texture/nothing_image.png"
+  },
+  "yongsa_happy": {
+    "filePath": "texture/npc/yongsa_happy.jpg"
+  },
+  "yongsa_sick": {
+    "filePath": "texture/npc/yongsa_sick.jpg"
+  },
+  "yongsa_sad": {
+    "filePath": "texture/npc/yongsa_sad.png"
+  },
+  "yongsa_angry": {
+    "filePath": "texture/npc/yongsa_angry.png"
+  },
+  "parath_happy": {
+    "filePath": "texture/npc/parath_happy.jpg"
+  },
+  "parath_angry":{
+  	"filePath" : "texture/npc/parath_angry.jpg"
+  },
+  "waiji_happy": {
+    "filePath": "texture/npc/waiji_happy.png"
+  }
+}

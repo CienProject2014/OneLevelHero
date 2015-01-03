@@ -3,7 +3,6 @@ package com.mygdx.factory;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.manager.PlatformResourceManager;
 import com.mygdx.model.EventScene;
-import com.mygdx.stage.BattleStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.EventStage;
 import com.mygdx.stage.MenuStage;
@@ -24,10 +23,10 @@ public class StageFactory {
 	}
 
 	public Stage makeStage(String stageName) {
-		// Multi-Resolution 을 지원하기 위한 플랫폼
+		//FIXME Multi-Resolution 을 지원하기 위한 플랫폼, 버그가 있다
 		PlatformResourceManager rm = new PlatformResourceManager();
 		rm.initPlatformerResources();
-		
+
 		if (stageName == "event") {
 			return new EventStage();
 		} else if (stageName == "village") {
@@ -37,7 +36,7 @@ public class StageFactory {
 		} else if (stageName == "encount") {
 			return new EncounterStage();
 		} else if (stageName == "battle") {
-			return new BattleStage(rm);
+			return new VillageStage(); //FIXME 버그발견, 처리후 추후 수정바람
 		} else {
 			return new MenuStage(stageName);
 		}

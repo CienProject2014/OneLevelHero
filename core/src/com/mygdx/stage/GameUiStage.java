@@ -2,6 +2,7 @@ package com.mygdx.stage;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 import com.badlogic.gdx.Gdx;
@@ -15,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -63,6 +65,8 @@ public class GameUiStage extends Stage {
 	private float realheight;
 	private float realwidth;
 
+	private Map<String, TextureRegionDrawable> atlasUiMap = Assets.atlasUiMap;
+
 	public GameUiStage() {
 		// 초기화
 		uiTable = new Table();
@@ -100,15 +104,19 @@ public class GameUiStage extends Stage {
 		toptable = new Table(Assets.skin);
 		bottomtable = new Table(Assets.skin);
 
-		TextButtonStyle style = new TextButtonStyle(Assets.nameAndTime,
-				Assets.nameAndTime, Assets.nameAndTime, Assets.font);
-		downArrowButton = new ImageButton(Assets.downArrowButton,
-				Assets.downArrowButton);
-		bagButton = new ImageButton(Assets.bagButton, Assets.bagButton);
+		TextButtonStyle style = new TextButtonStyle(
+				atlasUiMap.get("nameAndTime"), atlasUiMap.get("nameAndTime"),
+				atlasUiMap.get("nameAndTime"), Assets.font);
+		downArrowButton = new ImageButton(atlasUiMap.get("downArrowButton"),
+				atlasUiMap.get("downArrowButton"));
+		bagButton = new ImageButton(atlasUiMap.get("bagButton"),
+				Assets.atlasUiMap.get("bagButton"));
 		worldMapButton = new TextButton("worldMap", style);
 		leftTimeButton = new TextButton("12h30m", style);
-		helpButton = new ImageButton(Assets.helpButton, Assets.helpButton);
-		optionButton = new ImageButton(Assets.optionButton, Assets.optionButton);
+		helpButton = new ImageButton(atlasUiMap.get("helpButton"),
+				atlasUiMap.get("helpButton"));
+		optionButton = new ImageButton(atlasUiMap.get("optionButton"),
+				atlasUiMap.get("optionButton"));
 		battleButton = new TextButton("Battle", Assets.skin);
 
 		// 인벤토리 Actor 만들기

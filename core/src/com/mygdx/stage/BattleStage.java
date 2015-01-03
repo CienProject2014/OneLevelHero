@@ -25,14 +25,14 @@ import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 public class BattleStage extends Overlap2DStage {
 	// Multi-Resolution 을 위한 클래스
 	private PlatformResourceManager rm;
-	
+
 	// Table
-	Table uiTable;		// 화면 전체 테이블
-	Table orderTable;	// 순서를 나타내는 테이블
-	
+	Table uiTable; // 화면 전체 테이블
+	Table orderTable; // 순서를 나타내는 테이블
+
 	// Value
-	float maximumWidth = Assets.windowWidth*0.0625f;
-	float maximumHeight = Assets.windowHeight*0.125f;
+	float maximumWidth = Assets.windowWidth * 0.0625f;
+	float maximumHeight = Assets.windowHeight * 0.125f;
 
 	// Button
 	private SimpleButtonScript attackButton;
@@ -50,7 +50,7 @@ public class BattleStage extends Overlap2DStage {
 	public BattleStage(PlatformResourceManager rm) {
 		super(new StretchViewport(rm.stageWidth, rm.currentResolution.height));
 		this.rm = rm;
-		
+
 		controller = new BattleManager();
 
 		// Overlap2D로 만든 신(Scene)
@@ -59,67 +59,68 @@ public class BattleStage extends Overlap2DStage {
 		sceneLoader.loadScene("BattleUI");
 		addActor(sceneLoader.getRoot());
 		setButton();
-		
+
 		// 좌측 순서를 나타내는 테이블
 		makeOrderedList();
 		makeTable();
-		
+
 		addActor(uiTable);
 	}
-	
+
 	@Override
 	public void act(float delta) {
 		super.act(delta);
 		//makeTable();
 	}
-	
+
 	public void makeOrderedList() {
 		units = new ArrayList<LivingUnit>(4);
 		units.addAll(CurrentState.getInstance().getParty().getPartyList());
 		units.add(CurrentState.getInstance().getCurrentDungeon().getMonster());
-		
+
 		Collections.sort(units);
-		
+
 		orderedUnits = new LinkedList<LivingUnit>(units);
 
-		for (LivingUnit unit: units) {
-			Gdx.app.log("BattleStage", "유닛이름: "+unit.getName());
+		for (LivingUnit unit : units) {
+			Gdx.app.log("BattleStage", "유닛이름: " + unit.getName());
 		}
 	}
-	
+
 	public LivingUnit getCurrentActor() {
 		LivingUnit unit = orderedUnits.poll();
 		orderedUnits.add(unit);
 		return unit;
 	}
-	
+
 	public void makeTable() {
 		uiTable = new Table();
 		uiTable.align(Align.left);
-		
-		
+
 		orderTable = new Table();
-		
-		for(LivingUnit unit : orderedUnits) {
+
+		for (LivingUnit unit : orderedUnits) {
 			Gdx.app.log("BattleStage", unit.getName());
-			orderTable.add(new Image(unit.getFaceTexture())).width(maximumWidth).height(maximumHeight);
+			orderTable.add(new Image(unit.getFaceTexture()))
+					.width(maximumWidth).height(maximumHeight);
 			orderTable.row();
 		}
-		
+
 		uiTable.add(orderTable);
 		uiTable.setFillParent(true);
 	}
-	
+
 	public void updateTable() {
 		uiTable.clear();
 		orderTable.clear();
-		
-		for(LivingUnit unit : orderedUnits) {
-			Gdx.app.log("asfasd", unit.getName());
-			orderTable.add(new Image(unit.getFaceTexture())).width(maximumWidth).height(maximumHeight);
+
+		for (LivingUnit unit : orderedUnits) {
+			Gdx.app.log("Unit name", unit.getName());
+			orderTable.add(new Image(unit.getFaceTexture()))
+					.width(maximumWidth).height(maximumHeight);
 			orderTable.row();
 		}
-		
+
 		uiTable.add(orderTable);
 	}
 
@@ -132,7 +133,7 @@ public class BattleStage extends Overlap2DStage {
 				.getCompositeById("inventoryButton"));
 		escapeButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
 				.getCompositeById("escapeButton"));
-		
+
 		addListener();
 	}
 
@@ -186,6 +187,7 @@ public class BattleStage extends Overlap2DStage {
 	}
 
 	private Image getMonsterImage() {
-		return new Image(CurrentState.getInstance().getCurrentDungeon().getMonster().getFaceTexture());
+		return new Image(CurrentState.getInstance().getCurrentDungeon()
+				.getMonster().getFaceTexture());
 	}
 }

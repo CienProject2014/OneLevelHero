@@ -1,0 +1,31 @@
+{
+  "logoAtlas": {
+    "filePath": "skin/Logo.atlas",
+    "element": [
+      "title"
+    ]
+  },
+  "menuButtonAtlas": {
+    "filePath": "skin/MenuButton.pack",
+    "element": [
+      "button_credit_before",
+      "button_credit_after",
+      "button_extra_before",
+      "button_extra_after",
+      "button_option_before",
+      "button_option_after",
+      "button_start_after"
+    ]
+  },
+  "gameUiButtonAtlas": {
+    "filePath": "skin/GameUiButton.pack",
+    "element": [
+      "downArrowButton",
+      "bagButton",
+      "nameAndTime",
+      "helpButton",
+      "optionButton",
+      "upArrowButton"
+    ]
+  }
+}

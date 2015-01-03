@@ -188,7 +188,8 @@ public class VillageStage extends Stage {
 		OrthographicCamera cam = new OrthographicCamera(Assets.windowWidth,
 				Assets.windowHeight);
 		// cam.translate(100, 300);
-		cam.position.set(Assets.windowWidth / 2, Assets.windowHeight * 0.25f, 0);
+		cam.position
+				.set(Assets.windowWidth / 2, Assets.windowHeight * 0.25f, 0);
 		getViewport().setCamera(cam);
 
 		camera = getViewport().getCamera();
@@ -202,10 +203,11 @@ public class VillageStage extends Stage {
 						*/
 
 		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
-		village = Assets.villageMap.get("Blackwood");
-		
-		if(village == null)
-		Gdx.app.log("asdf", "asdf");
+		village = (Village) Assets.jsonObjectMap.get("village_json").get(
+				"Blackwood");
+
+		if (village == null)
+			Gdx.app.log("asdf", "asdf");
 
 		float ratio = (float) village.getRatio();
 

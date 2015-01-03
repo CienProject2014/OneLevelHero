@@ -182,7 +182,7 @@ public class WorldStage extends Stage {
 				turningpointarrow, turningpointarrow, Assets.font);
 
 		worldData = (JSONArray) Assets.jsonFileMap.get("worldmap_json")
-				.getJsonFile().get("Worldmap");
+				.getFile().get("Worldmap");
 
 		for (int i = 0; i < worldData.size(); i++) {
 			JSONObject temp = (JSONObject) worldData.get(i);
