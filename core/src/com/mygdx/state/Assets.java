@@ -1,4 +1,5 @@
-﻿﻿package com.mygdx.state;
+package com.mygdx.state;
+//package com.mygdx.state;
 
 import java.util.HashMap;
 import java.util.Map;
