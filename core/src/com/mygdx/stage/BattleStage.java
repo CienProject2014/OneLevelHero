@@ -82,8 +82,8 @@ public class BattleStage extends Overlap2DStage {
 		
 		orderedUnits = new LinkedList<LivingUnit>(units);
 
-		for (int i = 0; i < units.size(); i++) {
-			Gdx.app.log("BattleStage", "유닛이름: "+units.get(i).getName());
+		for (LivingUnit unit: units) {
+			Gdx.app.log("BattleStage", "유닛이름: "+unit.getName());
 		}
 	}
 	
@@ -101,7 +101,7 @@ public class BattleStage extends Overlap2DStage {
 		orderTable = new Table();
 		
 		for(LivingUnit unit : orderedUnits) {
-			Gdx.app.log("asfasd", unit.getName());
+			Gdx.app.log("BattleStage", unit.getName());
 			orderTable.add(new Image(unit.getFaceTexture())).width(maximumWidth).height(maximumHeight);
 			orderTable.row();
 		}

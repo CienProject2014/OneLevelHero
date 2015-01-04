@@ -41,19 +41,18 @@ public class PlatformResourceManager extends ResourceManager {
 	 * @param projctInfoVo
 	 * @return ResolutionEntryVO
 	 */
-	public ResolutionEntryVO getBestResolutionMatch(ProjectInfoVO projctInfoVo) {
-		float deltaSize = Math.abs(projctInfoVo.originalResolution.height
+	public ResolutionEntryVO getBestResolutionMatch(ProjectInfoVO projectInfoVo) {
+		float deltaSize = Math.abs(projectInfoVo.originalResolution.height
 				- Gdx.graphics.getHeight());
-		ResolutionEntryVO result = projctInfoVo.originalResolution;
+		ResolutionEntryVO result = projectInfoVo.originalResolution;
 
-		for (int i = 0; i < projctInfoVo.resolutions.size(); i++) {
-			float newDeltaSize = Math
-					.abs(projctInfoVo.resolutions.get(i).height
-							- Gdx.graphics.getHeight());
+		for (ResolutionEntryVO revo : projectInfoVo.resolutions) {
+			float newDeltaSize = Math.abs(revo.height
+					- Gdx.graphics.getHeight());
 			System.out.println(newDeltaSize);
 			if (deltaSize > newDeltaSize) {
 				deltaSize = newDeltaSize;
-				result = projctInfoVo.resolutions.get(i);
+				result = revo;
 			}
 		}
 

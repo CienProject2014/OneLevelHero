@@ -29,8 +29,9 @@ public class DungeonInfo {
 		this.items = items;
 	}
 	public Monster getMonster() {
-		if (monster == null)
+		if (monster == null) {
 			monster = Assets.monsterMap.get(monsterName);
+		}
 		return monster;
 	}
 	public void setMonster(Monster monster) {

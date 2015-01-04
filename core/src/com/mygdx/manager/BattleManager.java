@@ -1,13 +1,11 @@
 package com.mygdx.manager;
 
-import com.badlogic.gdx.Gdx;
 import com.mygdx.battle.Battle;
 import com.mygdx.model.LivingUnit;
-import com.mygdx.stage.CharacterUiStage;
 import com.mygdx.state.CurrentState;
 
 public class BattleManager {
-	private static Battle battle;
+	private Battle battle;
 	
 	public BattleManager() {
 		battle = new Battle();

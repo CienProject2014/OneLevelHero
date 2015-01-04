@@ -65,10 +65,6 @@ public class CurrentState implements Serializable {
 		this.saveVersion = saveVersion;
 	}
 
-    public static void setInstance(CurrentState instance) {
-        CurrentState.instance = instance;
-	}
-
 	public Party getParty() {
 		return party;
 	}

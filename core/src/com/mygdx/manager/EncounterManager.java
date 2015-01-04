@@ -11,11 +11,7 @@ import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
 
 public class EncounterManager {
-	Random random = new Random();
-
-	public EncounterManager() {
-		
-	}
+	private Random random = new Random();
 
 	public void start() {
 		setDungeon();
