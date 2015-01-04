@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import com.mygdx.controller.SaveVersion;
+import com.mygdx.model.DungeonInfo;
 import com.mygdx.model.Inventory;
 import com.mygdx.model.Party;
 import com.mygdx.model.RewardInfo;
@@ -20,6 +21,7 @@ public class CurrentState implements Serializable {
 
 	// (3) 마을/던전관리
 	private VillageInfo villageInfo;
+	private DungeonInfo dungeonInfo;
 
 	// (4) 시간 관리
 
@@ -30,17 +32,18 @@ public class CurrentState implements Serializable {
 	// (5-2) 이미 달성한 이벤트 큐
 	private Queue<RewardInfo> achievedRewardQueue;
 
-	private static CurrentState instance;
+    private static CurrentState instance;
 
-	public static CurrentState getInstance() {
+    public static CurrentState getInstance() {
 		if (null == instance) {
-			instance = new CurrentState();
+            instance = new CurrentState();
 		}
 		return instance;
 	}
 
-	private CurrentState() {
+    private CurrentState() {
 		villageInfo = new VillageInfo();
+		dungeonInfo = new DungeonInfo();
 		party = new Party();
 		setRewardQueue(new LinkedList<RewardInfo>());
 		setAchievedRewardQueue(new LinkedList<RewardInfo>());
@@ -62,10 +65,6 @@ public class CurrentState implements Serializable {
 		this.saveVersion = saveVersion;
 	}
 
-	public static void setInstance(CurrentState instance) {
-		CurrentState.instance = instance;
-	}
-
 	public Party getParty() {
 		return party;
 	}
@@ -80,6 +79,18 @@ public class CurrentState implements Serializable {
 
 	public void setVillageInfo(VillageInfo villageInfo) {
 		this.villageInfo = villageInfo;
+	}
+
+	public DungeonInfo getCurrentDungeon() {
+		return dungeonInfo;
+	}
+
+	private void setDungeonInfo(DungeonInfo dungeonInfo) {
+		this.dungeonInfo = dungeonInfo;
+	}
+
+	public void setCurrentDungeon(String dungeonID) {
+		setDungeonInfo(Assets.dungeonMap.get(dungeonID));
 	}
 
 	public Inventory getInventory() {

@@ -1,4 +1,5 @@
-﻿package com.mygdx.state;
+package com.mygdx.state;
+//package com.mygdx.state;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,10 +19,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.manager.JsonMapParser;
+import com.mygdx.model.DungeonInfo;
 import com.mygdx.model.Hero;
 import com.mygdx.model.JsonFile;
+import com.mygdx.model.Monster;
 import com.mygdx.model.NPC;
 import com.mygdx.model.Village;
+import com.mygdx.stage.WorldStage;
 import com.mygdx.stage.WorldStage.worldNode;
 
 public class Assets {
@@ -39,12 +43,18 @@ public class Assets {
 			graphic_team1, scene1, scene2, scene3, scene4, rabbit1, rabbit2,
 			rabbit3, yongsa_happy, yongsa_sad, parath_angry, yongsa_angry,
 			parath_happy, waiji_happy, yongsa_sick, nothing_image,
-			waiji_background, blackwood_center, main_background;
+			waiji_background, blackwood_center, main_background, b2;
 
 	// JSON
 	public static JSONObject json_file_path;
 	// NPC 이름
 	public static Texture yongsa, parath, waiji;
+
+	// JSON
+	public static JSONObject worldmap_json, village_json, dungeon_json,
+			status_new_left, bag_json, credit_list, blackwood_json,
+			prologue_json, blackwood_character, blackwood_background,
+			monster_json;
 
 	public static Music music, mainMusic;
 	public static Texture splash;
@@ -54,18 +64,19 @@ public class Assets {
 	public static float soundVolume = 0.5f;
 	public static float musicVolume = 0.5f;
 
-	public static float realWidth;
-	public static float realHeight;
+	public static float windowWidth;
+	public static float windowHeight;
 
 	public static Map<String, JSONObject> jsonObjectMap = new HashMap<String, JSONObject>();
 	public static Map<String, JsonFile> jsonFileMap = new HashMap<String, JsonFile>();
 	public static Map<String, Object> resourceFileMap = new HashMap<String, Object>();
 	public static Map<String, Texture> imageFileMap = new HashMap<String, Texture>();
-
+    public static Map<String, Village> villageMap;
 	public static Map<String, worldNode> worldHashmap = new HashMap<String, worldNode>();
+	public static Map<String, DungeonInfo> dungeonMap;
 	public static Map<String, Hero> heroMap;
 	public static Map<String, NPC> npcMap;
-	public static Map<String, Village> villageMap;
+	public static Map<String, Monster> monsterMap;
 
 	public static void loadAll() {
 		jsonLoad();
@@ -74,11 +85,13 @@ public class Assets {
 		characterImageLoad();
 		fontLoad();
 		chatButtonLoad();
+        villageLoad();
+		dungeonLoad();
 		npcLoad();
 		heroLoad();
-		villageLoad();
+		monsterLoad();
 		etcResourceLoad();
-		//해상도 설정
+		// 해상도 설정
 
 		// 화면의 Size를 별도로 설정해주어야 한다
 		loadSize(new Stage());
@@ -87,40 +100,57 @@ public class Assets {
 	// Stage 크기 설정
 	public static void loadSize(Stage stage) {
 		Viewport vp = stage.getViewport();
-		realWidth = vp.getViewportWidth();
-		realHeight = vp.getViewportHeight();
+		windowWidth = vp.getViewportWidth();
+		windowHeight = vp.getViewportHeight();
 	}
 
-	//JsonFile의 path를 읽어온다.
+	// JsonFile의 path를 읽어온다.
 	private static void jsonLoad() {
+
 		json_file_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
 				"data/load/json_file_path.json").readString());
 		jsonFileMap = JsonMapParser.mapParse(JsonFile.class,
 				json_file_path.toString());
 
-		//jsonFile을 jsonObjectMap에 넣어준다.
-		// HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
-		for (Entry<String, JsonFile> entry : jsonFileMap.entrySet()) {
-			jsonObjectMap.put(entry.getKey(), entry.getValue().getJsonFile());
-		}
+        //jsonFile을 jsonObjectMap에 넣어준다.
+        // HashMap에 넣어두어 언제든지 Object타입으로 쓸 수 있도록 한다.
+        for (Entry<String, JsonFile> entry : jsonFileMap.entrySet()) {
+            jsonObjectMap.put(entry.getKey(), entry.getValue().getJsonFile());
+        }
+
+	}
+        
+    private static void villageLoad() {
+        //village 리스트를 담은 Json을 불러와 객체화한다.
+        villageMap = JsonMapParser.mapParse(Village.class,
+                jsonObjectMap.get("village_json").toString());
+    }
+
+
+	private static void dungeonLoad() {
+		dungeonMap = JsonMapParser.mapParse(DungeonInfo.class, jsonObjectMap
+				.get("dungeon_json").get("actual").toString());
 	}
 
 	private static void heroLoad() {
-		//hero 리스트를 담은 Json을 불러와 객체화한다.
+		// hero 리스트를 담은 Json을 불러와 객체화한다.
 		heroMap = JsonMapParser.mapParse(Hero.class,
 				jsonObjectMap.get("hero_json").toString());
-	}
 
-	private static void villageLoad() {
-		//village 리스트를 담은 Json을 불러와 객체화한다.
-		villageMap = JsonMapParser.mapParse(Village.class,
-				jsonObjectMap.get("village_json").toString());
 	}
 
 	private static void npcLoad() {
-		//npc 리스트를 담은 Json을 불러온다.
+		// npc 리스트를 담은 Json을 불러온다.
 		npcMap = JsonMapParser.mapParse(NPC.class, jsonObjectMap
 				.get("npc_json").toString());
+
+	}
+
+	private static void monsterLoad() {
+		// monster 리스트를 담은 Json을 불러온다.
+		monsterMap = JsonMapParser.mapParse(Monster.class,
+				jsonObjectMap.get("monster_json").toString());
+
 	}
 
 	private static void menuScreenLoad() {
@@ -195,6 +225,7 @@ public class Assets {
 				Gdx.files.internal("texture/npc/parath_angry.jpg"));
 		waiji_happy = new Texture(
 				Gdx.files.internal("texture/npc/waiji_happy.png"));
+		b2 = new Texture(Gdx.files.internal("texture/unit/monster/b2.png"));
 
 		scene1 = new Texture(Gdx.files.internal("texture/prologue/scene1.jpg"));
 		scene2 = new Texture(Gdx.files.internal("texture/prologue/scene2.jpg"));
@@ -243,6 +274,7 @@ public class Assets {
 		imageFileMap.put("yongsa", yongsa);
 		imageFileMap.put("parath", parath);
 		imageFileMap.put("waiji", waiji);
+		imageFileMap.put("b2", b2);
 	}
 
 	private static void fontLoad() {

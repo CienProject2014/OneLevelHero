@@ -25,14 +25,14 @@ public class SelectButtonStage extends Stage {
 	private NPC eventNpc;
 	private static final int MAX_EVENT_LENGTH = 6;
 	private final float buttonPosition[][] = {
-			{ Assets.realWidth * 0.109375f, Assets.realHeight * 0.74f },
-			{ Assets.realWidth * 0.109375f, Assets.realHeight * 0.555f },
-			{ Assets.realWidth * 0.109375f, Assets.realHeight * 0.37f },
-			{ Assets.realWidth * 0.68f, Assets.realHeight * 0.74f },
-			{ Assets.realWidth * 0.68f, Assets.realHeight * 0.555f },
-			{ Assets.realWidth * 0.68f, Assets.realHeight * 0.37f } };
-	private final float buttonSize[] = { Assets.realWidth * 0.208f,
-			Assets.realHeight * 0.185f };
+			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.74f },
+			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.555f },
+			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.37f },
+			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.74f },
+			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.555f },
+			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.37f } };
+	private final float buttonSize[] = { Assets.windowWidth * 0.208f,
+			Assets.windowHeight * 0.185f };
 
 	public SelectButtonStage() {
 		EventInfo eventInfo = EventManager.getEventInfo();
@@ -63,7 +63,7 @@ public class SelectButtonStage extends Stage {
 		}
 	}
 
-	// Assets.realHeight * 0.185f
+	// Assets.windowHeight * 0.185f
 	private void setButtonPosition() {
 		for (int i = 0; i < eventCount; i++) {
 			chatButtons.get(i).setPosition(buttonPosition[i][0],

@@ -288,8 +288,8 @@ public class WorldStage extends Stage {
 			addActor(roadnode[i]);
 		}
 
-		camera.translate(temp.posX * worldmapsize - Assets.realWidth / 2,
-				temp.posY * worldmapsize - Assets.realHeight / 2, 0);
+		camera.translate(temp.posX * worldmapsize - Assets.windowWidth / 2,
+				temp.posY * worldmapsize - Assets.windowHeight / 2, 0);
 		camera.update();
 
 		temp.addListener(new InputListener() {

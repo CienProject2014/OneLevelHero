@@ -36,7 +36,7 @@ public class StatusMessagePopup extends MessagePopup {
 				.getBattleMemberList().iterator();
 		while (iterator.hasNext()) {
 			Hero nextIterator = iterator.next();
-			text("이름 : " + nextIterator.getUnitName());
+			text("이름 : " + nextIterator.getName());
 			text(", " + nextIterator.getStatus().toString());
 		}
 

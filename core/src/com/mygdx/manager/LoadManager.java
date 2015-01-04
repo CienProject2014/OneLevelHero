@@ -1,5 +1,6 @@
 package com.mygdx.manager;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.model.Hero;
 import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
@@ -23,15 +24,16 @@ public class LoadManager {
 
 	// Hero클래스가 status정보를 갖도록 한다.
 	private void setHero() {
-
 		//추후 JSON에서 불러오도록 바꿀 것
 		setHero(Assets.heroMap.get("yongsa"));
-		//CurrentState.getInstance().setHero(hero); // currentManager가 hero을 소유하도록 만든다.
+		//CurrentManager.getInstance().setHero(hero); // currentManager가 hero을 소유하도록 만든다.
+		this.hero.getStatus().setSpeed(8);
 	}
 
 	// 해당 Hero들을 Party구성원에 포함시킨다
 	private void setPartyList() {
-		CurrentState.getInstance().getParty().addParty(hero);
+		Gdx.app.log("asdf", "노 문제 "+hero.getStatus().getHealthPoint());
+		CurrentState.getInstance().getParty().addHero(hero);
 	}
 
 	public Hero getHero() {
