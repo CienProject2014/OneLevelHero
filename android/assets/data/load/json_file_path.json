@@ -1,10 +1,13 @@
 {
   "hero_json": {
-    "JsonFilePath": "data/event/hero.json"
+    "JsonFilePath": "data/unit/hero.json"
   },
   "npc_json": {
-    "JsonFilePath": "data/event/npc.json"
+    "JsonFilePath": "data/unit/npc.json"
   },
+  "monster_json":{
+  	"JsonFilePath" : "data/unit/monster.json"
+  }
   "worldmap_json": {
     "JsonFilePath": "data/map/worldmap.json"
   },
@@ -12,10 +15,16 @@
     "JsonFilePath": "data/map/village.json"
   },
   "credit_list": {
-    "JsonFilePath": "data/event/credit_list.json"
+    "JsonFilePath": "data/credit_list.json"
   },
   "skin": {
     "JsonFilePath": "skin/uiskin.json"
+  },
+  "prologue_json": {
+    "JsonFilePath": "data/event/prologue.json"
+  },
+  "blackwood_json": {
+    "JsonFilePath": "data/event/blackwood.json"
   },
   "dungeon_json":{
   	"JsonFilePath" : "data/map/dungeon.json"

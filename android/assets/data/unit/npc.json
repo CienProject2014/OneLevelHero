@@ -1,0 +1,174 @@
+{
+  "prologue": {
+    "events": [
+      {
+        "eventState": "OPENED",
+        "eventType": "CHAT",
+        "eventScenes": [
+          {
+            "script": "대륙의 중심, 블랙우드 마을에 마왕이 출현했다.",
+            "characterPath": "rabbit1",
+            "backgroundPath": "scene1"
+          },
+          {
+            "script": "마을의 촌장은 지나가던 용사에게 토벌을 부탁했고",
+            "characterPath": "rabbit2",
+            "backgroundPath": "scene2"
+          },
+          {
+            "script": "이를 수락한 용사는 곧장 마왕성으로 돌격했으나 그것은 함정에 불과했다. ",
+            "characterPath": "rabbit3",
+            "backgroundPath": "scene3"
+          },
+          {
+            "script": "용사는 결국 마왕의 간악한 꾀에 넘어가 레벨 다운의 저주에 걸리고 말았다...",
+            "characterPath": "rabbit3",
+            "backgroundPath": "scene4"
+          },
+          {
+            "script": "용사님.. 일어나세요..!",
+            "characterPath": "parath_happy",
+            "backgroundPath": "scene1"
+          },
+          {
+            "script": "으으...",
+            "characterPath": "yongsa_sad",
+            "backgroundPath": "scene2"
+          },
+          {
+            "script": "벌써 삼일째에요.. 이젠 기운을 차릴 때도 됐잖아요. 촌장님이 찾으셔요.",
+            "characterPath": "parath_angry",
+            "backgroundPath": "scene3"
+          },
+          {
+            "script": "용사 : 정말, 귀찮은데..",
+            "characterPath": "yongsa_sick",
+            "backgroundPath": "scene4"
+          }
+        ]
+      }
+    ]
+  },
+  "waiji": {
+    "faceTexturePath": "waiji",
+    "name": "waiji",
+    "events": [
+      {
+        "eventState": "OPENED",
+        "eventType": "CHAT",
+        "reward": {
+          "rewardType": "PARTY",
+          "rewardTarget": "parath",
+          "rewardState" : "NOT_CLEARED"
+        },
+        "eventScenes": [
+          {
+            "script": "그래, 기운은 차렸는가?",
+            "characterPath": "waiji_happy",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "네. 면목이 없습니다. 죄송할 따름입니다.",
+            "characterPath": "yongsa_sad",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "용사님은 최선을 다한거잖아요. 너무 상심하지 마세요.",
+            "characterPath": "parath_happy",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "…….........................",
+            "characterPath": "yongsa_sad",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": " 저주때문에 침울해 하는것 같구만..",
+            "characterPath": "waiji_happy",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "너무 걱정하지 말게나. 콥웨브의 바르워스님이 소식을 듣고 자네를 소환했다네.",
+            "characterPath": "waiji_happy",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "정말입니까? 제 저주를 해결할 방법이 있는 건가요?",
+            "characterPath": "yongsa_angry",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "아마도 그렇지 않을까? 괜히 부르지는 않을테니 말일세.",
+            "characterPath": "waiji_happy",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "감사합니다. 지금 바로 콥웨브로 떠나겠습니다.",
+            "characterPath": "yongsa_happy",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "저어… 용사님… 저도 여행에 데려가주세요!",
+            "characterPath": "parath_happy",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "응? 하지만 넌 아직…",
+            "characterPath": "yongsa_sad",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "어머니의 허락은 받았어요. 절대 발목을 잡지는 않을게요! 그리고 저주에 걸린 용사님보다는 더 도움이 되지 않을까요?",
+            "characterPath": "parath_happy",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "뭐임마? 이녀석이!",
+            "characterPath": "yongsa_angry",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "허허… 데려가는게 어떻겠나. 그아이도 이제 어엿한 청년이고 분명 쓸모가 있을걸세.",
+            "characterPath": "waiji_happy",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "하아, 알겠습니다. 파라스, 내 짐까지 챙겨 와라. 콥웨브로 떠난다.",
+            "characterPath": "yongsa_sick",
+            "backgroundPath": "blackwood_center"
+          },
+          {
+            "script": "야호! 꼭 기다리고 있으셔야돼요!",
+            "characterPath": "parath_happy",
+            "backgroundPath": "blackwood_center"
+          }
+        ]
+      }
+    ],
+    "greeting": {
+      "eventType": "SELECT",
+      "eventScenes": [
+        {
+          "script": "블랙우드 마을에 온 것을 환영하네",
+          "characterPath": "waiji_happy",
+          "backgroundPath": "waiji_background"
+        },
+        {
+          "script": "뭔가 할 말이 있는가?",
+          "characterPath": "waiji_happy",
+          "backgroundPath": "waiji_background"
+        },
+        {
+          "script": "내 손녀 아레이치가 귀엽지? 나도 알고 있다네.",
+          "characterPath": "waiji_happy",
+          "backgroundPath": "waiji_background"
+        },
+        {
+          "script": "내가 블랙우드 촌장 와이지일세. 무슨일인가",
+          "characterPath": "waiji_happy",
+          "backgroundPath": "waiji_background"
+        }
+      ]
+    }
+  }
+}
