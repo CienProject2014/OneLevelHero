@@ -1,7 +1,6 @@
 package com.mygdx.factory;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.manager.PlatformResourceManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.EventStage;
@@ -24,8 +23,8 @@ public class StageFactory {
 
 	public Stage makeStage(String stageName) {
 		//FIXME Multi-Resolution 을 지원하기 위한 플랫폼, 버그가 있다
-		PlatformResourceManager rm = new PlatformResourceManager();
-		rm.initPlatformerResources();
+		//PlatformResourceManager rm = new PlatformResourceManager();
+		//rm.initPlatformerResources();
 
 		if (stageName == "event") {
 			return new EventStage();
