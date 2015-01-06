@@ -1,11 +1,11 @@
-{
-  "logoAtlas": {
+[
+  {
     "filePath": "skin/Logo.atlas",
     "element": [
       "title"
     ]
   },
-  "menuButtonAtlas": {
+  {
     "filePath": "skin/MenuButton.pack",
     "element": [
       "button_credit_before",
@@ -17,7 +17,7 @@
       "button_start_after"
     ]
   },
-  "gameUiButtonAtlas": {
+  {
     "filePath": "skin/GameUiButton.pack",
     "element": [
       "downArrowButton",
@@ -28,4 +28,4 @@
       "upArrowButton"
     ]
   }
-}
+]
