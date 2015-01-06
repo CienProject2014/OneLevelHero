@@ -203,8 +203,7 @@ public class VillageStage extends Stage {
 						*/
 
 		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
-		village = (Village) Assets.jsonObjectMap.get("village_json").get(
-				"Blackwood");
+		village = Assets.villageMap.get("Blackwood");
 
 		if (village == null)
 			Gdx.app.log("asdf", "asdf");
