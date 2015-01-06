@@ -2,7 +2,6 @@ package com.mygdx.state;
 
 //package com.mygdx.state;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +20,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mygdx.manager.JsonMapParser;
+import com.mygdx.enums.JsonEnum;
+import com.mygdx.manager.JsonParser;
 import com.mygdx.model.AtlasUiFile;
 import com.mygdx.model.DungeonInfo;
 import com.mygdx.model.Hero;
@@ -29,24 +29,20 @@ import com.mygdx.model.JsonFile;
 import com.mygdx.model.Monster;
 import com.mygdx.model.NPC;
 import com.mygdx.model.TextureFile;
-import com.mygdx.stage.WorldStage.worldNode;
+import com.mygdx.model.Village;
+import com.mygdx.stage.WorldStage.WorldNode;
 
+/**
+ * 각종 리소스들을 static하게 관리해주는 Assets 클래스
+ * Stage및 Screen에 필요한 요소들을 전달해준다.
+ * @author Velmont
+ * 
+ */
 public class Assets {
 	public static Skin skin;
 	public static TextureAtlas items;
 
 	public static TextureRegionDrawable[] chatButton;
-
-	// JSON
-	public static JSONObject json_file_path, character_file_path,
-			background_file_path, atlas_ui_path;
-
-	// JSON
-	public static JSONObject worldmap_json, village_json, dungeon_json,
-			status_new_left, bag_json, credit_list, blackwood_json,
-			prologue_json, blackwood_character, blackwood_background,
-			monster_json;
-
 	public static Music music, mainMusic;
 	public static Texture splash;
 	public static Image logo;
@@ -60,26 +56,20 @@ public class Assets {
 
 	public static Map<String, DungeonInfo> dungeonMap;
 
+	public static Map<String, JsonFile> filePathMap = new HashMap<>();
 	public static Map<String, JSONObject> jsonObjectMap = new HashMap<>();
-	public static Map<String, JsonFile> jsonFileMap = new HashMap<>();
-
-	private static Map<String, TextureFile> characterFileMap = new HashMap<>();
 	public static Map<String, Texture> characterTextureMap = new HashMap<>();
-
-	private static Map<String, TextureFile> backgroundFileMap = new HashMap<>();
 	public static Map<String, Texture> backgroundTextureMap = new HashMap<>();
-
-	public static Map<String, worldNode> worldHashmap = new HashMap<>();
-	public static List<String> menuScreenUiFileList = new ArrayList<>();
-
-	private static Map<String, AtlasUiFile> atlasUiFileMap;
-	public static Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<>();;
+	public static Map<String, WorldNode> worldHashmap = new HashMap<>();
+	public static Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<>();
 
 	public static Map<String, Hero> heroMap;
 	public static Map<String, NPC> npcMap;
 	public static Map<String, Monster> monsterMap;
+	public static Map<String, Village> villageMap;
 
 	public static void loadAll() {
+		loadFilePath();
 		jsonObjectLoad();
 		atlasUiTextureLoad();
 		sceneTextureLoad();
@@ -89,11 +79,25 @@ public class Assets {
 		npcLoad();
 		heroLoad();
 		monsterLoad();
+		villageLoad();
+		worldMapLoad();
 		etcResourceLoad();
 		// 해상도 설정
 
 		// 화면의 Size를 별도로 설정해주어야 한다
 		loadSize(new Stage());
+	}
+
+	private static void loadFilePath() {
+		filePathMap = JsonParser.parseMap(
+				JsonFile.class,
+				String.valueOf(JSONValue.parse(Gdx.files.internal(
+						"data/load/file_path.json").readString())));
+	}
+
+	private static void worldMapLoad() {
+		// TODO worldNode 관련한 이슈 구현 메서드
+
 	}
 
 	// Stage 크기 설정
@@ -105,70 +109,78 @@ public class Assets {
 
 	//JsonFile의 path를 읽어온다.
 	private static void jsonObjectLoad() {
-		json_file_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/load/json_file_path.json").readString());
-		jsonFileMap = JsonMapParser.mapParse(JsonFile.class,
-				json_file_path.toString());
+		Map<String, JsonFile> jsonFileMap = JsonParser.parseMap(JsonFile.class,
+				filePathMap.get(JsonEnum.JSON_FILE_PATH.getJsonName())
+						.getJsonString());
 		for (Entry<String, JsonFile> entry : jsonFileMap.entrySet()) {
 			jsonObjectMap.put(entry.getKey(), entry.getValue().getFile());
 		}
 	}
 
 	private static void dungeonLoad() {
-		dungeonMap = JsonMapParser.mapParse(DungeonInfo.class, jsonObjectMap
-				.get("dungeon_json").get("actual").toString());
+		dungeonMap = JsonParser.parseMap(
+				DungeonInfo.class,
+				jsonObjectMap.get(JsonEnum.DUNGEON_JSON.getJsonName())
+						.get("actual").toString());
 
 	}
 
 	private static void heroLoad() {
-		// hero 리스트를 담은 Json을 불러와 객체화한다.
-		heroMap = JsonMapParser.mapParse(Hero.class,
-				jsonObjectMap.get("hero_json").toString());
 
-	}
-
-	private static void npcLoad() {
-		// npc 리스트를 담은 Json을 불러온다.
-		npcMap = JsonMapParser.mapParse(NPC.class, jsonObjectMap
-				.get("npc_json").toString());
+		//hero 리스트를 담은 Json을 불러와 객체화한다.
+		heroMap = JsonParser.parseMap(Hero.class,
+				jsonObjectMap.get(JsonEnum.HERO_JSON.getJsonName()).toString());
 
 	}
 
 	private static void monsterLoad() {
 		// monster 리스트를 담은 Json을 불러온다.
-		monsterMap = JsonMapParser.mapParse(Monster.class,
-				jsonObjectMap.get("monster_json").toString());
+		monsterMap = JsonParser.parseMap(Monster.class,
+				jsonObjectMap.get(JsonEnum.MONSTER_JSON.getJsonName())
+						.toString());
+	}
 
+	private static void villageLoad() {
+		//village 리스트를 담은 Json을 불러와 객체화한다.
+		villageMap = JsonParser.parseMap(Village.class,
+				jsonObjectMap.get(JsonEnum.VILLAGE_JSON.getJsonName())
+						.toString());
+	}
+
+	private static void npcLoad() {
+		//npc 리스트를 담은 Json을 불러온다.
+		npcMap = JsonParser.parseMap(NPC.class,
+				jsonObjectMap.get(JsonEnum.NPC_JSON.getJsonName()).toString());
 	}
 
 	private static void atlasUiTextureLoad() {
-		atlas_ui_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/load/atlas_ui_path.json").readString());
-		atlasUiFileMap = JsonMapParser.mapParse(AtlasUiFile.class,
-				atlas_ui_path.toString());
-		for (Entry<String, AtlasUiFile> entry : atlasUiFileMap.entrySet()) {
-			//FIXME atlasUiFileMap의 자료구조는 Map인데 Key값은 전혀 사용되지 않음
-			for (String element : entry.getValue().getElement())
-				atlasUiMap.put(element, new TextureRegionDrawable(entry
-						.getValue().getFile().findRegion(element)));
+		List<AtlasUiFile> atlasUiFileList = JsonParser.parseList(
+				AtlasUiFile.class,
+				filePathMap.get(JsonEnum.ATLAS_UI_PATH.getJsonName())
+						.getJsonString());
+		for (AtlasUiFile atlasUiFile : atlasUiFileList) {
+			for (String element : atlasUiFile.getElement()) {
+				atlasUiMap.put(element, new TextureRegionDrawable(atlasUiFile
+						.getFile().findRegion(element)));
+			}
 		}
 	}
 
 	private static void sceneTextureLoad() {
 		//character
-		character_file_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/load/character_file_path.json").readString());
-		characterFileMap = JsonMapParser.mapParse(TextureFile.class,
-				character_file_path.toString());
+		Map<String, TextureFile> characterFileMap = JsonParser.parseMap(
+				TextureFile.class,
+				filePathMap.get(JsonEnum.CHARACTER_FILE_PATH.getJsonName())
+						.getJsonString());
 		for (Entry<String, TextureFile> entry : characterFileMap.entrySet()) {
 			characterTextureMap.put(entry.getKey(), entry.getValue().getFile());
 		}
 
 		//background
-		background_file_path = (JSONObject) JSONValue.parse(Gdx.files.internal(
-				"data/load/background_file_path.json").readString());
-		backgroundFileMap = JsonMapParser.mapParse(TextureFile.class,
-				background_file_path.toString());
+		Map<String, TextureFile> backgroundFileMap = JsonParser.parseMap(
+				TextureFile.class,
+				filePathMap.get(JsonEnum.BACKGROUND_FILE_PATH.getJsonName())
+						.getJsonString());
 		for (Entry<String, TextureFile> entry : backgroundFileMap.entrySet()) {
 			backgroundTextureMap
 					.put(entry.getKey(), entry.getValue().getFile());

@@ -15,6 +15,12 @@ public class JsonFile implements AssetsFile<JSONObject> {
 		return file;
 	}
 
+	public String getJsonString() {
+		return String.valueOf(JSONValue.parse(Gdx.files.internal(filePath)
+				.readString()));
+
+	}
+
 	public String getFilePath() {
 		return filePath;
 	}

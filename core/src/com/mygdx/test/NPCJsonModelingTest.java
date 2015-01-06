@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.mygdx.manager.JsonMapParser;
+import com.mygdx.manager.JsonParser;
 import com.mygdx.model.NPC;
 import com.mygdx.state.Assets;
 
@@ -20,7 +20,7 @@ public class NPCJsonModelingTest {
 		}
 		in.close();
 
-		Map<String, NPC> npcMap = JsonMapParser.mapParse(NPC.class,
+		Map<String, NPC> npcMap = JsonParser.parseMap(NPC.class,
 				buffer.toString());
 		System.out.println(Assets.backgroundTextureMap.get("blackwood_center"));
 		System.out.println(npcMap.get("waiji").getEvents().get(0)

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-import com.mygdx.manager.JsonMapParser;
+import com.mygdx.manager.JsonParser;
 import com.mygdx.model.Village;
 
 public class VillageTest {
@@ -26,7 +26,7 @@ public class VillageTest {
 
 		in.close();
 
-		Map<String, Village> village = JsonMapParser.mapParse(Village.class,
+		Map<String, Village> village = JsonParser.parseMap(Village.class,
 				buffer.toString());
 
 		System.out.println(village);
