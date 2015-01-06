@@ -62,4 +62,4 @@ build/
 .DS_Store
 
 ## DesktopLauncher
-desktop/src/
+desktop/src/DesktopLauncher.java

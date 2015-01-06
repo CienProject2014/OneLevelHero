@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.controller.ScreenController;
+import com.mygdx.enums.JsonEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
@@ -23,9 +24,9 @@ import com.mygdx.state.CurrentState;
 public class WorldStage extends Stage {
 
 	private Image background;
-	private worldNode villages[];
-	private worldNode dungeons[];
-	private worldNode turningpoints[];
+	private WorldNode villages[];
+	private WorldNode dungeons[];
+	private WorldNode turningpoints[];
 
 	private int worldmapsize = 1;
 
@@ -49,7 +50,7 @@ public class WorldStage extends Stage {
 
 	private Camera camera;
 
-	public class worldNode extends TextButton {
+	public class WorldNode extends TextButton {
 
 		private String key;
 		private String name;
@@ -60,12 +61,12 @@ public class WorldStage extends Stage {
 		private int posX;
 		private int posY;
 
-		public worldNode(String text, Skin skin) {
+		public WorldNode(String text, Skin skin) {
 			super(text, skin);
 
 		}
 
-		public worldNode(String text, TextButtonStyle style) {
+		public WorldNode(String text, TextButtonStyle style) {
 			super(text, style);
 		}
 
@@ -181,8 +182,9 @@ public class WorldStage extends Stage {
 		turningpointStyle = new TextButtonStyle(turningpointarrow,
 				turningpointarrow, turningpointarrow, Assets.font);
 
-		worldData = (JSONArray) Assets.jsonFileMap.get("worldmap_json")
-				.getJsonFile().get("Worldmap");
+		//FIXME 다음 이슈로 분리 후 곧바로 수정 예정
+		worldData = (JSONArray) Assets.jsonObjectMap
+				.get(JsonEnum.WORLDMAP_JSON).get("Worldmap");
 
 		for (int i = 0; i < worldData.size(); i++) {
 			JSONObject temp = (JSONObject) worldData.get(i);
@@ -197,9 +199,9 @@ public class WorldStage extends Stage {
 			}
 		}
 
-		villages = new worldNode[villageNumber];
-		dungeons = new worldNode[dungeonNumber];
-		turningpoints = new worldNode[turningporintNumber];
+		villages = new WorldNode[villageNumber];
+		dungeons = new WorldNode[dungeonNumber];
+		turningpoints = new WorldNode[turningporintNumber];
 
 		for (int i = 0; i < worldData.size(); i++) {
 
@@ -208,7 +210,7 @@ public class WorldStage extends Stage {
 
 			if (type.equals("village")) {
 
-				villages[villageCount] = new worldNode("default", villageStyle);
+				villages[villageCount] = new WorldNode("default", villageStyle);
 				villages[villageCount].setOption(temp);
 
 				Assets.worldHashmap.put(villages[villageCount].key,
@@ -217,14 +219,14 @@ public class WorldStage extends Stage {
 				villageCount++;
 
 			} else if (type.equals("dungeon")) {
-				dungeons[dungeonCount] = new worldNode("default", dungeonStyle);
+				dungeons[dungeonCount] = new WorldNode("default", dungeonStyle);
 				dungeons[dungeonCount].setOption(temp);
 				Assets.worldHashmap.put(dungeons[dungeonCount].key,
 						dungeons[dungeonCount]);
 				addActor(dungeons[dungeonCount]);
 				dungeonCount++;
 			} else {
-				turningpoints[turningpointCount] = new worldNode("default",
+				turningpoints[turningpointCount] = new WorldNode("default",
 						turningpointStyle);
 				turningpoints[turningpointCount].setOption(temp);
 				Assets.worldHashmap.put(turningpoints[turningpointCount].key,
@@ -237,7 +239,7 @@ public class WorldStage extends Stage {
 	// 현재 위치를 화살표로 표시해줌
 	private void setCurrentPosition() {
 
-		worldNode temp = Assets.worldHashmap.get(CurrentState.getInstance()
+		WorldNode temp = Assets.worldHashmap.get(CurrentState.getInstance()
 				.getVillageInfo().getCurrentPosition());
 
 		int connectionNum = temp.connection.size();
@@ -298,8 +300,8 @@ public class WorldStage extends Stage {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				worldNode temp;
-				temp = (worldNode) event.getListenerActor();
+				WorldNode temp;
+				temp = (WorldNode) event.getListenerActor();
 
 				if (!temp.type.equals("turningpoint")) {
 					new ScreenController(ScreenEnum.VILLAGE);

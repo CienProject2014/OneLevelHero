@@ -2,8 +2,8 @@
 	"Worldmap":
 	[
 		{
-			"key":"K",
-			"name":"카딜라",
+			"key":"kadillaCastle",
+			"name":"카딜라 성",
 			"type":"village",
 			"position":"40-205",
 			"connection":[
@@ -20,7 +20,7 @@
 			]
 		},
 		{
-			"key":"O",
+			"key":"oberon",
 			"name":"오베론",
 			"type":"village",
 			"position":"260-310",
@@ -43,7 +43,7 @@
 			]
 		},	
 		{
-			"key":"W",
+			"key":"winterfall",
 			"name":"윈터폴",
 			"type":"village",
 			"position":"860-40",
@@ -56,7 +56,7 @@
 			]
 		},
 		{
-			"key":"C",
+			"key":"cobweb",
 			"name":"콥웨브",
 			"type":"village",
 			"position":"810-250",
@@ -89,7 +89,7 @@
 			]
 		},
 		{
-			"key":"R",
+			"key":"redroseCastle",
 			"name":"레드로즈",
 			"type":"village",
 			"position":"765-425",
@@ -107,7 +107,7 @@
 			]
 		},
 		{
-			"key":"P",
+			"key":"miragePort",
 			"name":"미라지 포트",
 			"type":"village",
 			"position":"1200-730",
@@ -125,7 +125,7 @@
 			]
 		},
 		{
-			"key":"S",
+			"key":"southcape",
 			"name":"사우스케이프",
 			"type":"village",
 			"position":"830-950",
@@ -143,7 +143,7 @@
 			]
 		},
 		{
-			"key":"B",
+			"key":"blackwood",
 			"name":"블랙우드",
 			"type":"village",
 			"position":"1310-350",
@@ -171,7 +171,7 @@
 			]
 		},
 		{
-			"key":"V",
+			"key":"vaicalCastle",
 			"name":"바이칼 성",
 			"type":"village",
 			"position":"1685-80",
@@ -194,7 +194,7 @@
 			]
 		},
 		{
-			"key":"H",
+			"key":"boniche",
 			"name":"보니체아",
 			"type":"village",
 			"position":"1700-825",
@@ -202,7 +202,7 @@
 			]
 		},
 		{
-			"key":"M",
+			"key":"middle-ridge",
 			"name":"미들 릿지",
 			"type":"village",
 			"position":"1200-140",
@@ -225,7 +225,7 @@
 			]
 		},
 		{
-			"key":"MT",
+			"key":"mountainTitania",
 			"name":"티타니아 산",
 			"type":"dungeon",
 			"position":"125-350",
@@ -238,7 +238,7 @@
 			]
 		},
 		{
-			"key":"CV",
+			"key":"crystallizedValley",
 			"name":"수정 협곡",
 			"type":"dungeon",
 			"position":"740-110",
@@ -261,7 +261,7 @@
 			]
 		},
 		{
-			"key":"EF",
+			"key":"elvenForest",
 			"name":"엘프의 숲",
 			"type":"dungeon",
 			"position":"800-650",
@@ -279,7 +279,7 @@
 			]
 		},
 		{
-			"key":"TM",
+			"key":"templeOfMoerae",
 			"name":"모에라에 신전",
 			"type":"dungeon",
 			"position":"1000-620",
@@ -292,7 +292,7 @@
 			]
 		},
 		{
-			"key":"CT",
+			"key":"capeOfTempest",
 			"name":"폭풍의 곶",
 			"type":"dungeon",
 			"position":"1150-1030",
@@ -305,7 +305,7 @@
 			]
 		},
 		{
-			"key":"CD",
+			"key":"devilCastle",
 			"name":"마왕성",
 			"type":"dungeon",
 			"position":"1380-475",
@@ -318,7 +318,7 @@
 			]
 		},
 		{
-			"key":"BF",
+			"key":"blackwoodForest",
 			"name":"블랙우드 숲",
 			"type":"dungeon",
 			"position":"1510-250",
@@ -341,7 +341,7 @@
 			]
 		},
 		{
-			"key":"GL",
+			"key":"goldenLake",
 			"name":"금빛 호수",
 			"type":"dungeon",
 			"position":"1800-180",

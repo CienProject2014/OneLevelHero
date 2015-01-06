@@ -15,10 +15,10 @@ public class Unit {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public Texture getFaceTexture() {
 		if (faceTexture == null)
-			faceTexture = Assets.imageFileMap.get(faceTexturePath);
+			faceTexture = Assets.characterTextureMap.get(faceTexturePath);
 		return faceTexture;
 	}
 
