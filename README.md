@@ -13,6 +13,6 @@ sdk.dir=안드로이드sdk경로
 
 
 
-![OneLevelHero](https://drive.google.com/file/d/0B3fwr0XqDQ7JLTJfcnUzSGZGeEE/view?pli=1).
+![OneLevelHero](http://drive.google.com/file/d/0B3fwr0XqDQ7JLTJfcnUzSGZGeEE/view?pli=1).
 
 
