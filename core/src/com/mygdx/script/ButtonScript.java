@@ -5,15 +5,16 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.script.IScript;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
-public class ButtonScript implements IScript{
+public class ButtonScript implements IScript {
 	private WorldMapStage stage;
 	private CompositeItem postionbutton;
 	private CompositeItem button;
 	private SimpleButtonScript playButtonScript;
-	
-	public ButtonScript(WorldMapStage stage){
+
+	public ButtonScript(WorldMapStage stage) {
 		this.stage = stage;
 	}
+
 	@Override
 	public void init(CompositeItem item) {
 		// TODO Auto-generated method stub
@@ -21,7 +22,7 @@ public class ButtonScript implements IScript{
 		postionbutton = button.getCompositeById("oberon");
 		playButtonScript = new SimpleButtonScript();
 		playButtonScript.init(postionbutton);
-		
+
 	}
 
 	@Override

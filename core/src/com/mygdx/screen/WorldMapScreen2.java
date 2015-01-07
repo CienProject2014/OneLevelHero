@@ -26,11 +26,12 @@ public class WorldMapScreen2 implements Screen {
 		batch.begin();
 		cam.update();
 		batch.end();
-		touchPadStage.act(Gdx.graphics.getDeltaTime());  
+		touchPadStage.act(Gdx.graphics.getDeltaTime());
 		worldMapStage.draw();
 		touchPadStage.draw();
 
 	}
+
 
 	@Override
 	public void resize(int width, int height) {
