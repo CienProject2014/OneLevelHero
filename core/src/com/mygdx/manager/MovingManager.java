@@ -36,7 +36,7 @@ public class MovingManager {
 		currentPosition = villageInfo.getCurrentPosition();
 		currentStartingpoint = villageInfo.getCurrentStarting();
 
-		roadJson = (JSONObject) Assets.jsonObjectMap.get("worldmap_json").get(
+		roadJson = (JSONObject) Assets.jsonStringMap.get("worldmap_json").get(
 				"Road");
 
 		roadInfo = (JSONObject) roadJson.get(currentPosition);

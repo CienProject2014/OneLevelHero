@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
@@ -25,7 +22,7 @@ import com.mygdx.manager.JsonParser;
 import com.mygdx.model.AtlasUiFile;
 import com.mygdx.model.DungeonInfo;
 import com.mygdx.model.Hero;
-import com.mygdx.model.JsonFile;
+import com.mygdx.model.JsonStringFile;
 import com.mygdx.model.Monster;
 import com.mygdx.model.NPC;
 import com.mygdx.model.TextureFile;
@@ -56,8 +53,8 @@ public class Assets {
 
 	public static Map<String, DungeonInfo> dungeonMap;
 
-	public static Map<String, JsonFile> filePathMap = new HashMap<>();
-	public static Map<String, JSONObject> jsonObjectMap = new HashMap<>();
+	public static Map<String, JsonStringFile> filePathMap = new HashMap<>();
+	public static Map<String, String> jsonStringMap = new HashMap<>();
 	public static Map<String, Texture> characterTextureMap = new HashMap<>();
 	public static Map<String, Texture> backgroundTextureMap = new HashMap<>();
 	public static Map<String, WorldNode> worldHashmap = new HashMap<>();
@@ -89,10 +86,8 @@ public class Assets {
 	}
 
 	private static void loadFilePath() {
-		filePathMap = JsonParser.parseMap(
-				JsonFile.class,
-				String.valueOf(JSONValue.parse(Gdx.files.internal(
-						"data/load/file_path.json").readString())));
+		filePathMap = JsonParser.parseMap(JsonStringFile.class, Gdx.files
+				.internal("data/load/file_path.json").readString());
 	}
 
 	private static void worldMapLoad() {
@@ -109,19 +104,18 @@ public class Assets {
 
 	//JsonFile의 path를 읽어온다.
 	private static void jsonObjectLoad() {
-		Map<String, JsonFile> jsonFileMap = JsonParser.parseMap(JsonFile.class,
+		Map<String, JsonStringFile> jsonFileMap = JsonParser.parseMap(
+				JsonStringFile.class,
 				filePathMap.get(JsonEnum.JSON_FILE_PATH.getJsonName())
-						.getJsonString());
-		for (Entry<String, JsonFile> entry : jsonFileMap.entrySet()) {
-			jsonObjectMap.put(entry.getKey(), entry.getValue().getFile());
+						.getFile());
+		for (Entry<String, JsonStringFile> entry : jsonFileMap.entrySet()) {
+			jsonStringMap.put(entry.getKey(), entry.getValue().getFile());
 		}
 	}
 
 	private static void dungeonLoad() {
-		dungeonMap = JsonParser.parseMap(
-				DungeonInfo.class,
-				jsonObjectMap.get(JsonEnum.DUNGEON_JSON.getJsonName())
-						.get("actual").toString());
+		dungeonMap = JsonParser.parseMap(DungeonInfo.class,
+				jsonStringMap.get(JsonEnum.DUNGEON_JSON.getJsonName()));
 
 	}
 
@@ -129,35 +123,33 @@ public class Assets {
 
 		//hero 리스트를 담은 Json을 불러와 객체화한다.
 		heroMap = JsonParser.parseMap(Hero.class,
-				jsonObjectMap.get(JsonEnum.HERO_JSON.getJsonName()).toString());
+				jsonStringMap.get(JsonEnum.HERO_JSON.getJsonName()));
 
 	}
 
 	private static void monsterLoad() {
 		// monster 리스트를 담은 Json을 불러온다.
 		monsterMap = JsonParser.parseMap(Monster.class,
-				jsonObjectMap.get(JsonEnum.MONSTER_JSON.getJsonName())
-						.toString());
+				jsonStringMap.get(JsonEnum.MONSTER_JSON.getJsonName()));
 	}
 
 	private static void villageLoad() {
 		//village 리스트를 담은 Json을 불러와 객체화한다.
 		villageMap = JsonParser.parseMap(Village.class,
-				jsonObjectMap.get(JsonEnum.VILLAGE_JSON.getJsonName())
-						.toString());
+				jsonStringMap.get(JsonEnum.VILLAGE_JSON.getJsonName()));
 	}
 
 	private static void npcLoad() {
 		//npc 리스트를 담은 Json을 불러온다.
 		npcMap = JsonParser.parseMap(NPC.class,
-				jsonObjectMap.get(JsonEnum.NPC_JSON.getJsonName()).toString());
+				jsonStringMap.get(JsonEnum.NPC_JSON.getJsonName()));
 	}
 
 	private static void atlasUiTextureLoad() {
-		List<AtlasUiFile> atlasUiFileList = JsonParser.parseList(
-				AtlasUiFile.class,
-				filePathMap.get(JsonEnum.ATLAS_UI_PATH.getJsonName())
-						.getJsonString());
+		List<AtlasUiFile> atlasUiFileList = JsonParser
+				.parseList(AtlasUiFile.class,
+
+				filePathMap.get(JsonEnum.ATLAS_UI_PATH.getJsonName()).getFile());
 		for (AtlasUiFile atlasUiFile : atlasUiFileList) {
 			for (String element : atlasUiFile.getElement()) {
 				atlasUiMap.put(element, new TextureRegionDrawable(atlasUiFile
@@ -171,7 +163,7 @@ public class Assets {
 		Map<String, TextureFile> characterFileMap = JsonParser.parseMap(
 				TextureFile.class,
 				filePathMap.get(JsonEnum.CHARACTER_FILE_PATH.getJsonName())
-						.getJsonString());
+						.getFile());
 		for (Entry<String, TextureFile> entry : characterFileMap.entrySet()) {
 			characterTextureMap.put(entry.getKey(), entry.getValue().getFile());
 		}
@@ -180,7 +172,7 @@ public class Assets {
 		Map<String, TextureFile> backgroundFileMap = JsonParser.parseMap(
 				TextureFile.class,
 				filePathMap.get(JsonEnum.BACKGROUND_FILE_PATH.getJsonName())
-						.getJsonString());
+						.getFile());
 		for (Entry<String, TextureFile> entry : backgroundFileMap.entrySet()) {
 			backgroundTextureMap
 					.put(entry.getKey(), entry.getValue().getFile());

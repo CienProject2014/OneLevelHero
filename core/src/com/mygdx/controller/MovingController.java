@@ -16,7 +16,8 @@ public class MovingController {
 	String delimiter = "-";
 
 	public MovingController() {
-		JSONObject dungeons = (JSONObject) Assets.jsonObjectMap.get(
+		//FIXME 이슈로 분리후 수정예정
+		JSONObject dungeons = (JSONObject) Assets.jsonStringMap.get(
 				JsonEnum.WORLDMAP_JSON.getJsonName()).get("Road");
 	}
 

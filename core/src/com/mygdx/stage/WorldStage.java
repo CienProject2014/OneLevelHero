@@ -183,8 +183,8 @@ public class WorldStage extends Stage {
 				turningpointarrow, turningpointarrow, Assets.font);
 
 		//FIXME 다음 이슈로 분리 후 곧바로 수정 예정
-		worldData = (JSONArray) Assets.jsonObjectMap
-				.get(JsonEnum.WORLDMAP_JSON).get("Worldmap");
+		worldData = (JSONArray) Assets.jsonStringMap
+				.get(JsonEnum.WORLDMAP_JSON);
 
 		for (int i = 0; i < worldData.size(); i++) {
 			JSONObject temp = (JSONObject) worldData.get(i);
