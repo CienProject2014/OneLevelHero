@@ -13,6 +13,6 @@ sdk.dir=안드로이드sdk경로
 
 
 
-![OneLevelHero](http://docs.google.com/file/d/0B3fwr0XqDQ7JLTJfcnUzSGZGeEE/edit).
+![OneLevelHero](http://docs.google.com/file/d/0B3fwr0XqDQ7JLTJfcnUzSGZGeEE).
 
 
