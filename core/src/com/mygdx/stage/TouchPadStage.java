@@ -36,9 +36,7 @@ public class TouchPadStage extends Stage {
         touchpad = new Touchpad(10, touchpadStyle);
         //setBounds(x,y,width,height)
         touchpad.setBounds(15, 15, 200, 200);
-        addActor(touchpad);
-
-		
+        addActor(touchpad);		
 	}
 
 }

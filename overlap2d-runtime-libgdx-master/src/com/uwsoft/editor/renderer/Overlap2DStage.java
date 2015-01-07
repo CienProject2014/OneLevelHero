@@ -50,10 +50,10 @@ public class Overlap2DStage extends Stage {
 	protected void initStage() {
 		essentials = new Essentials();
 		SpineReflectionHelper refdata = new SpineReflectionHelper();
-		if(refdata.isSpineAviable){
+		if(refdata.isSpineAviable){	
 			essentials.spineReflectionHelper = refdata;
 		}
-		initLightsConfiguration();
+		initLightsConfiguration();	
 	}
 
     /**

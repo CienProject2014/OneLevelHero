@@ -6,13 +6,8 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
-import com.badlogic.gdx.scenes.scene2d.ui.Touchpad.TouchpadStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.mygdx.stage.TouchPadStage;
 import com.mygdx.stage.WorldMapStage;
 import com.mygdx.state.Assets;
@@ -27,12 +22,11 @@ public class WorldMapScreen2 implements Screen {
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);	    
 		batch.begin();
-
-	    cam.update();
+		cam.update();
 		batch.end();
-		 touchPadStage.act(Gdx.graphics.getDeltaTime());  
+		touchPadStage.act(Gdx.graphics.getDeltaTime());  
 		worldMapStage.draw();
 		touchPadStage.draw();
 
@@ -52,15 +46,16 @@ public class WorldMapScreen2 implements Screen {
 		InputProcessor MapInputProcessor = new MapInputProcessor();
 		multiplexer = new InputMultiplexer();
 		cam = new OrthographicCamera();
-		
 		cam.setToOrtho(false, Assets.realWidth, Assets.realHeight);
+		
 		worldMapStage.getViewport().setCamera(cam);		
-		
-		multiplexer.addProcessor(0,touchPadStage);
+		multiplexer.addProcessor(0, worldMapStage);
 		multiplexer.addProcessor(1,MapInputProcessor);
+		multiplexer.addProcessor(2,touchPadStage);
+		//Gdx.input.setInputProcessor(MapInputProcessor);
 		
+		Gdx.input.setInputProcessor(multiplexer);
 		batch = new SpriteBatch();
-
 	}
 
 	@Override
@@ -92,7 +87,7 @@ public class WorldMapScreen2 implements Screen {
 
 	   
 	    public boolean touchDragged(int x, int y, int pointer) {
-	        moveCamera( x, y ); 
+	    	moveCamera( x, y ); 
 	        return false;
 	    }
 
@@ -101,9 +96,7 @@ public class WorldMapScreen2 implements Screen {
 
 	        if( !cameraOutOfLimit( new_position ) ){
 	            worldMapStage.getCamera().translate( new_position.sub( worldMapStage.getCamera().position ) );
-	            
-	        }
-	        	
+	        }	        	
 	        last_touch_down.set( touch_x, touch_y, 0);
 	    }
 
