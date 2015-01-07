@@ -1,6 +1,6 @@
 OneLevelHero
 ============
-
+libgdx
 Role Playing Game
 
 사용시 주의 사항.  
@@ -13,6 +13,6 @@ sdk.dir=안드로이드sdk경로
 
 
 
-![OneLevelHero](http://drive.google.com/file/d/0B3fwr0XqDQ7JLTJfcnUzSGZGeEE/view?usp=sharing).
+![OneLevelHero](http://cien.woobi.co.kr/dokuwiki/lib/exe/fetch.php?media=onelevelhero.jpg).
 
 
