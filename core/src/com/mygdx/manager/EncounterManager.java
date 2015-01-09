@@ -3,6 +3,7 @@ package com.mygdx.manager;
 import java.util.Random;
 
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.controller.ScreenController;
@@ -38,8 +39,9 @@ public class EncounterManager {
 	private String getDungeonID() {
 		// 1. 던전 설정을 전부 불러와서 
 		// FIXME 이슈 분리후 수정예정
-		JSONObject setting = (JSONObject) Assets.jsonStringMap.get(
-				"dungeon_json").get("setting");
+		JSONObject dungeon = (JSONObject) JSONValue.parse(Assets.jsonMap
+				.get("dungeon_json"));
+		JSONObject setting = (JSONObject) dungeon.get("setting");
 		// 2. 출발하는 마을을 가져온 후
 		JSONObject startVillage = (JSONObject) setting.get(CurrentState
 				.getInstance().getVillageInfo().getCurrentStarting());

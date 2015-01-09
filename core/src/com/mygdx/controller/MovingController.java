@@ -4,8 +4,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.enums.JsonEnum;
-import com.mygdx.state.Assets;
 
 public class MovingController {
 
@@ -16,9 +14,6 @@ public class MovingController {
 	String delimiter = "-";
 
 	public MovingController() {
-		//FIXME 이슈로 분리후 수정예정
-		JSONObject dungeons = (JSONObject) Assets.jsonStringMap.get(
-				JsonEnum.WORLDMAP_JSON.getJsonName()).get("Road");
 	}
 
 	public void ChangeDestination() {

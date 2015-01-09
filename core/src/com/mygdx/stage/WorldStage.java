@@ -1,8 +1,5 @@
 package com.mygdx.stage;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,139 +8,33 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.controller.ScreenController;
-import com.mygdx.enums.JsonEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.model.WorldMapInfo;
+import com.mygdx.model.WorldMapInfo.NodeInfo;
 import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
 
 public class WorldStage extends Stage {
 
 	private Image background;
-	private WorldNode villages[];
-	private WorldNode dungeons[];
-	private WorldNode turningpoints[];
 
 	private int worldmapsize = 1;
 
-	private int villageNumber;
-	private int dungeonNumber;
-	private int turningporintNumber;
-
-	private TextButtonStyle villageStyle;
-	private TextButtonStyle dungeonStyle;
-	private TextButtonStyle turningpointStyle;
+	private int villageInfoSize;
+	private int dungeonSize;
+	private int turningPointSize;
 
 	private TextureRegionDrawable arrow;
 
-	private int villageCount;
-	private int dungeonCount;
-	private int turningpointCount;
-
-	private JSONArray worldData;
+	private WorldMapInfo worldInfo;
 
 	private int nodeSize;
 
 	private Camera camera;
-
-	public class WorldNode extends TextButton {
-
-		private String key;
-		private String name;
-		private String type;
-		private String position;
-		private JSONArray connection;
-
-		private int posX;
-		private int posY;
-
-		public WorldNode(String text, Skin skin) {
-			super(text, skin);
-
-		}
-
-		public WorldNode(String text, TextButtonStyle style) {
-			super(text, style);
-		}
-
-		private void setOption(JSONObject jsonObject) {
-			this.setType((String) jsonObject.get("type"));
-			this.name = (String) jsonObject.get("name");
-			this.position = (String) jsonObject.get("position");
-			this.key = (String) jsonObject.get("key");
-			this.connection = (JSONArray) jsonObject.get("connection");
-
-			setting();
-		}
-
-		private void setting() {
-
-			setText(name);
-
-			String temppos[] = position.split("-");
-
-			posX = Integer.parseInt(temppos[0]);
-			posY = 1080 - Integer.parseInt(temppos[1]);
-
-			setBounds(posX * worldmapsize - nodeSize / 2, posY * worldmapsize
-					- nodeSize / 2, nodeSize, nodeSize);
-
-		}
-
-		public String getType() {
-			return type;
-		}
-
-		public void setType(String type) {
-			this.type = type;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-	}
-
-	private class RoadNode extends Image {
-
-		private String roadkey;
-		private String destination;
-		private int direction;
-
-		public RoadNode(TextureRegionDrawable arrow) {
-			super(arrow);
-			setSize(nodeSize / 2, nodeSize / 2);
-			setOrigin(this.getWidth() / 2, this.getHeight() / 2);
-		}
-
-		public void setOption(JSONObject object) {
-
-			roadkey = (String) object.get("roadkey");
-			direction = Integer.parseInt((String) object.get("direction"));
-			destination = (String) object.get("destination");
-
-			setRotation((float) direction);
-
-			moveBy((float) nodeSize / 1.2f
-					* (float) Math.cos((double) direction * 3.151592 / 180.0),
-					(float) nodeSize
-							/ 1.2f
-							* (float) Math
-									.sin((double) direction * 3.151592 / 180.0));
-		}
-
-		public void setPosition(int positionX, int positionY) {
-			setPosition((float) positionX * worldmapsize - this.getWidth() / 2,
-					(float) positionY * worldmapsize - this.getHeight() / 2);
-		}
-	}
 
 	public WorldStage() {
 		camera = getViewport().getCamera();
@@ -175,142 +66,48 @@ public class WorldStage extends Stage {
 				new TextureRegion(new Texture(Gdx.files
 						.internal("texture/worldmap/turningpoint.png"))));
 
-		villageStyle = new TextButtonStyle(villagecircle, villagecircle,
-				villagecircle, Assets.font);
-		dungeonStyle = new TextButtonStyle(dungeoncircle, dungeoncircle,
-				dungeoncircle, Assets.font);
-		turningpointStyle = new TextButtonStyle(turningpointarrow,
-				turningpointarrow, turningpointarrow, Assets.font);
+		worldInfo = Assets.worldInfo;
 
-		//FIXME 다음 이슈로 분리 후 곧바로 수정 예정
-		worldData = (JSONArray) Assets.jsonStringMap
-				.get(JsonEnum.WORLDMAP_JSON);
-
-		for (int i = 0; i < worldData.size(); i++) {
-			JSONObject temp = (JSONObject) worldData.get(i);
-			String type = (String) temp.get("type");
-
-			if (type.equals("village")) {
-				villageNumber++;
-			} else if (type.equals("dungeon")) {
-				dungeonNumber++;
-			} else {
-				turningporintNumber++;
-			}
-		}
-
-		villages = new WorldNode[villageNumber];
-		dungeons = new WorldNode[dungeonNumber];
-		turningpoints = new WorldNode[turningporintNumber];
-
-		for (int i = 0; i < worldData.size(); i++) {
-
-			JSONObject temp = (JSONObject) worldData.get(i);
-			String type = (String) temp.get("type");
-
-			if (type.equals("village")) {
-
-				villages[villageCount] = new WorldNode("default", villageStyle);
-				villages[villageCount].setOption(temp);
-
-				Assets.worldHashmap.put(villages[villageCount].key,
-						villages[villageCount]);
-				addActor(villages[villageCount]);
-				villageCount++;
-
-			} else if (type.equals("dungeon")) {
-				dungeons[dungeonCount] = new WorldNode("default", dungeonStyle);
-				dungeons[dungeonCount].setOption(temp);
-				Assets.worldHashmap.put(dungeons[dungeonCount].key,
-						dungeons[dungeonCount]);
-				addActor(dungeons[dungeonCount]);
-				dungeonCount++;
-			} else {
-				turningpoints[turningpointCount] = new WorldNode("default",
-						turningpointStyle);
-				turningpoints[turningpointCount].setOption(temp);
-				Assets.worldHashmap.put(turningpoints[turningpointCount].key,
-						turningpoints[turningpointCount]);
-				turningpointCount++;
-			}
-		}
 	}
 
 	// 현재 위치를 화살표로 표시해줌
 	private void setCurrentPosition() {
 
-		WorldNode temp = Assets.worldHashmap.get(CurrentState.getInstance()
-				.getVillageInfo().getCurrentPosition());
+		NodeInfo currentNodeInfo = worldInfo.getNodeInfo().get(
+				worldInfo.getNodeInfo().get(
+						CurrentState.getInstance().getVillageInfo()
+								.getCurrentPosition()));
 
-		int connectionNum = temp.connection.size();
-
-		JSONArray connections = new JSONArray();
-
-		connections = temp.connection;
+		int connectionNum = currentNodeInfo.getConnection().size();
 
 		arrow = new TextureRegionDrawable(new TextureRegion(new Texture(
 				Gdx.files.internal("texture/worldmap/arrow.png"))));
 
-		RoadNode roadnode[] = new RoadNode[connectionNum];
-
-		for (int i = 0; i < connectionNum; i++) {
-			roadnode[i] = new RoadNode(arrow);
-
-			roadnode[i].setPosition(temp.posX, temp.posY);
-			roadnode[i].setOption((JSONObject) connections.get(i));
-
-			roadnode[i].addListener(new InputListener() {
-
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-
-					RoadNode temp;
-					temp = (RoadNode) event.getListenerActor();
-
-					CurrentState.getInstance().getVillageInfo()
-							.setCurrentDestination(temp.destination);
-					CurrentState
-							.getInstance()
-							.getVillageInfo()
-							.setCurrentStarting(
-									CurrentState.getInstance().getVillageInfo()
-											.getCurrentPosition());
-					CurrentState.getInstance().getVillageInfo()
-							.setCurrentPosition(temp.roadkey);
-					CurrentState.getInstance().getVillageInfo()
-							.setCurrentState("road");
-
-					new ScreenController(ScreenEnum.MOVING);
-
-					return true;
-				}
-			});
-
-			addActor(roadnode[i]);
-		}
-
-		camera.translate(temp.posX * worldmapsize - Assets.windowWidth / 2,
-				temp.posY * worldmapsize - Assets.windowHeight / 2, 0);
+		camera.translate(currentNodeInfo.getPositionX() * worldmapsize
+				- Assets.windowWidth / 2, currentNodeInfo.getPositionY()
+				* worldmapsize - Assets.windowHeight / 2, 0);
 		camera.update();
 
-		temp.addListener(new InputListener() {
+		TextureRegionDrawable villagecircle = new TextureRegionDrawable(
+				new TextureRegion(new Texture(Gdx.files
+						.internal("texture/worldmap/villagecircle.png"))));
+
+		TextButton currentNodeButton = new TextButton("currentNodeButton",
+				new TextButtonStyle(villagecircle, villagecircle,
+						villagecircle, Assets.font));
+
+		currentNodeButton.addListener(new InputListener() {
 
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				WorldNode temp;
-				temp = (WorldNode) event.getListenerActor();
-
-				if (!temp.type.equals("turningpoint")) {
-					new ScreenController(ScreenEnum.VILLAGE);
-				}
+				new ScreenController(ScreenEnum.VILLAGE);
 
 				return true;
 			}
 		});
 
-		addActor(temp);
+		addActor(currentNodeButton);
 	}
 }
