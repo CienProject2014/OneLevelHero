@@ -1,0 +1,35 @@
+{
+  "scene1": {
+    "filePath": "texture/prologue/scene1.jpg"
+  },
+  "scene2": {
+    "filePath": "texture/prologue/scene2.jpg"
+  },
+  "scene3": {
+    "filePath": "texture/prologue/scene3.jpg"
+  },
+  "scene4": {
+    "filePath": "texture/prologue/scene4.jpg"
+  },
+  "prog_team1": {
+    "filePath": "texture/credit/prog_team1.png"
+  },
+  "plan_team1": {
+    "filePath": "texture/credit/plan_team1.png"
+  },
+  "graphic_team1": {
+    "filePath": "texture/credit/graphic_team1.png"
+  },
+  "parath_background": {
+    "filePath": "texture/npc/parath_background.png"
+  },
+  "waiji_background": {
+    "filePath": "texture/npc/waiji_background.png"
+  },
+  "blackwood_center": {
+    "filePath": "texture/blackwood/blackwood_center.png"
+  },
+  "main_background": {
+    "filePath": "texture/MainMenu_Background.png"
+  }
+}

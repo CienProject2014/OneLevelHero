@@ -1,220 +1,193 @@
 package com.mygdx.stage;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.mygdx.battle.Fight;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.model.Monster;
-import com.mygdx.screen.MovingScreen;
+import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.PlatformResourceManager;
+import com.mygdx.model.LivingUnit;
 import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
+import com.uwsoft.editor.renderer.Overlap2DStage;
+import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
-public class BattleStage extends Stage {
-	private float viewportWidth, viewportHeight;
-	private float realWidth, realHeight;
+public class BattleStage extends Overlap2DStage {
+	// Multi-Resolution 을 위한 클래스
+	private PlatformResourceManager rm;
 
-	private Fight fight;
+	// Table
+	Table uiTable; // 화면 전체 테이블
+	Table orderTable; // 순서를 나타내는 테이블
 
-	public boolean isFight;
+	// Value
+	float maximumWidth = Assets.windowWidth * 0.0625f;
+	float maximumHeight = Assets.windowHeight * 0.125f;
 
-	public Texture background;
-	private Image backgroundImage;
+	// Button
+	private SimpleButtonScript attackButton;
+	private SimpleButtonScript skillButton;
+	private SimpleButtonScript inventoryButton;
+	private SimpleButtonScript escapeButton;
 
-	// 던전 정보 ---------------------
-	private JSONObject dungeonInfo;
-	//-------------------------------
+	// Battle controller
+	private BattleManager controller;
 
-	// 유닛 정보 ---------------------
-	private int monsterNumber; // 몬스터 수
-	private String monsterName[]; // 몬스터 이름
-	//	private int itemNumber;					// 아이템 수
-	//	private String item[];					// 아이템 이름
-	private Monster monsters[]; // 몬스터 객체
-	//	private Hero heros[];					// 영웅 객체
-	//-------------------------------
+	// Unit array
+	private ArrayList<LivingUnit> units;
+	private Queue<LivingUnit> orderedUnits;
 
-	// 테이블 ------------------------
-	private Table monsterTable;
-	private Table monster1, monster2, monster3;
-	private Table selTable;
-	//-------------------------------
+	public BattleStage(PlatformResourceManager rm) {
+		super(new StretchViewport(rm.stageWidth, rm.currentResolution.height));
+		this.rm = rm;
 
-	// 버튼 --------------------------
-	private TextButton fightButton;
-	private TextButton fleeButton;
-	private ImageButton test;
-	private int positionX[], positionY[];
+		controller = new BattleManager();
 
-	//라벨 -------------------------
-	private Label fightLabel;
+		// Overlap2D로 만든 신(Scene)
+		initSceneLoader(rm);
+		sceneLoader.setResolution(rm.currentResolution.name);
+		sceneLoader.loadScene("BattleUI");
+		addActor(sceneLoader.getRoot());
+		setButton();
 
-	//-------------------------------
+		// 좌측 순서를 나타내는 테이블
+		makeOrderedList();
+		makeTable();
 
-	public BattleStage() {
-		super();
+		addActor(uiTable);
 	}
 
-	public BattleStage(String dungeonID) {
-		super();
-
-		fight = new Fight(dungeonID);
-		viewportWidth = this.getWidth();
-		viewportHeight = this.getHeight();
-		realHeight = Assets.realHeight;
-		realWidth = Assets.realWidth;
-
-		JSONObject actual = (JSONObject) Assets.jsonObjectMap.get(
-				"dungeon_json").get("actual");
-		dungeonInfo = (JSONObject) actual.get(CurrentState.getInstance()
-				.getVillageInfo().getCurrentDungeon());
-
-		initialize(); // 초기화
-		setFightLayout(); // 디자인, addActor
-		addListener(); // 리스너 할당
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+		//makeTable();
 	}
 
-	private void initialize() {
-		isFight = false; // 싸우기 전 화면을 보여준다
+	public void makeOrderedList() {
+		units = new ArrayList<LivingUnit>(4);
+		units.addAll(CurrentState.getInstance().getParty().getPartyList());
+		units.add(CurrentState.getInstance().getCurrentDungeon().getMonster());
 
-		// --------------------- Background //
-		background = new Texture(
-				Gdx.files
-						.internal("texture/unit/monster/griffith_background.png"));
-		backgroundImage = new Image(background);
-		backgroundImage.setBounds(0, 0, viewportWidth, viewportHeight);
+		Collections.sort(units);
 
-		// ------------------------- Select //
-		selTable = new Table(Assets.skin);
-		fightLabel = new Label("몬스터와 조우했다!", Assets.skin);
-		fightButton = new TextButton("싸운다", Assets.skin);
-		fleeButton = new TextButton("도망친다", Assets.skin);
+		orderedUnits = new LinkedList<LivingUnit>(units);
 
-		//--------------------------- monster Table //
-		monsterTable = new Table(Assets.skin);
-		Texture griffith_texture = new Texture(
-				Gdx.files.internal("texture/unit/monster/griffith_unit.png"));
-		TextureRegionDrawable griffith = new TextureRegionDrawable(
-				new TextureRegion(griffith_texture));
-		monster1 = new Table(Assets.skin);
-		monster1.setBackground(griffith);
-
-		monster2 = new Table(Assets.skin);
-		monster2.setBackground(griffith);
-
-		monster3 = new Table(Assets.skin);
-		monster3.setBackground(griffith);
-
-		// ------------------------ Monster //
-		// 몬스터
-		monsterNumber = ((Long) dungeonInfo.get("monsterNumber")).intValue();
-		monsterName = new String[monsterNumber];
-		monsters = new Monster[monsterNumber];
-		JSONArray monsterArray = (JSONArray) dungeonInfo.get("monster");
-		for (int i = 0; i < monsterNumber; i++) {
-			monsterName[i] = (String) monsterArray.get(i);
-			//monsters[i] = monsterLoader.load(monsterName[i]); // 몬스터 로드
-		}
-
-		// 아이템을 몬스터가 갖고 있게 할지, 던전에서 갖고 있을지...
-		/*		// --------------------------- Item //
-				// 아이템
-				itemNumber =  ((Long)dungeonInfo.get("itemNumber")).intValue();
-				item = new String[itemNumber];
-				JSONArray items = (JSONArray) dungeonInfo.get("item");
-				for(int i=0; i<itemNumber; i++)
-					item[i] = (String) items.get(i);
-				//---------------------------- Item //*/
-	}
-
-	private void setFightLayout() {
-		@SuppressWarnings("unused")
-		float factor; // 화면 크기에 따른 비율 교정용 변수
-
-		//------------------------- Monster //
-
-		if (!isFight) {
-			// ------------------------- Select //
-			addActor(backgroundImage);
-			selTable.setFillParent(true);
-			selTable.add(fightLabel);
-			selTable.row();
-			selTable.add(fightButton);
-			selTable.add(fleeButton);
-			addActor(selTable);
-			//-------------------------- Select //
-		} else {
-			// ------------------------ Monster //
-			background = new Texture(
-					Gdx.files.internal("texture/battle/forest.png"));
-			backgroundImage = new Image(background);
-			backgroundImage.setBounds(0, 0, viewportWidth, viewportHeight);
-			addActor(backgroundImage);
-			monsterTable.setFillParent(true);
-			monsterTable.pad(150);
-			monsterTable.moveBy(0, 100);
-			monsterTable.add(monster1);
-			monsterTable.add(monster2);
-			monsterTable.add(monster3);
-			monsterTable.row();
-			monster3.setColor(Color.DARK_GRAY);
-			Texture enemybg = new Texture(
-					Gdx.files.internal("texture/enemybg2.png"));
-			Image enemybgImg = new Image(enemybg);
-			Image enemybgImg2 = new Image(enemybg);
-			Image enemybgImg3 = new Image(enemybg);
-
-			monsterTable.add(enemybgImg);
-			monsterTable.add(enemybgImg2);
-			monsterTable.add(enemybgImg3);
-			addActor(monsterTable);
+		for (LivingUnit unit : units) {
+			Gdx.app.log("BattleStage", "유닛이름: " + unit.getName());
 		}
 	}
 
-	private void addListener() {
-		fightButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
+	public LivingUnit getCurrentActor() {
+		LivingUnit unit = orderedUnits.poll();
+		orderedUnits.add(unit);
+		return unit;
+	}
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				clear();
-				isFight = true;
-				setFightLayout(); //refresh해준다.
+	public void makeTable() {
+		uiTable = new Table();
+		uiTable.align(Align.left);
+
+		orderTable = new Table();
+
+		for (LivingUnit unit : orderedUnits) {
+			Gdx.app.log("BattleStage", unit.getName());
+			orderTable.add(new Image(unit.getFaceTexture()))
+					.width(maximumWidth).height(maximumHeight);
+			orderTable.row();
+		}
+
+		uiTable.add(orderTable);
+		uiTable.setFillParent(true);
+	}
+
+	public void updateTable() {
+		uiTable.clear();
+		orderTable.clear();
+
+		for (LivingUnit unit : orderedUnits) {
+			Gdx.app.log("Unit name", unit.getName());
+			orderTable.add(new Image(unit.getFaceTexture()))
+					.width(maximumWidth).height(maximumHeight);
+			orderTable.row();
+		}
+
+		uiTable.add(orderTable);
+	}
+
+	public void setButton() {
+		attackButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
+				.getCompositeById("attackButton"));
+		skillButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
+				.getCompositeById("skillButton"));
+		inventoryButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
+				.getCompositeById("inventoryButton"));
+		escapeButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
+				.getCompositeById("escapeButton"));
+
+		addListener();
+	}
+
+	public void addListener() {
+		attackButton.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.log("BattleStage", "어택!");
+				// 한 가지 시나리오를 예로 생각해보자.
+				// 공격 버튼을 눌러 공격을 하면, 다음 턴엔 몬스터가 날 때릴 것이다.
+				// 그렇다면 공격버튼이 눌린 것을 알아채고,
+				// 몬스터의 턴을 실행해줄 클래스가 하나 필요하다.
+				// 바로 BattleController가 해주면 된다.
+				// 거기서 GameUiStage의 act도 실행해주면 된다.
+				CurrentState
+						.getInstance()
+						.getParty()
+						.getBattleMemberList()
+						.get(0)
+						.getStatus()
+						.setHealthPoint(
+								CurrentState.getInstance().getParty()
+										.getBattleMemberList().get(0)
+										.getStatus().getHealthPoint() - 10);
+
+				controller.userAttack(getCurrentActor());
+				updateTable();
 			}
 		});
-		fleeButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				MovingScreen.temp++; // 임시. 캡슐화 고려 필요
+		skillButton.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.log("BattleStage", "스킬!");
+				controller.userSkill(getCurrentActor(), "짱쎈공격");
+				updateTable();
+			}
+		});
+
+		inventoryButton.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.log("BattleStage", "인벤토리!");
+
+			}
+		});
+
+		escapeButton.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.log("BattleStage", "도망!");
 				new ScreenController(ScreenEnum.MOVING);
 			}
 		});
+	}
 
+	private Image getMonsterImage() {
+		return new Image(CurrentState.getInstance().getCurrentDungeon()
+				.getMonster().getFaceTexture());
 	}
 }

@@ -79,7 +79,7 @@ public class StatusStage extends Stage {
 	}
 
 	public void makeLeftTable() {
-		leftTable.setSize(Assets.realWidth / 8, (Assets.realHeight / 12) * 11);
+		leftTable.setSize(Assets.windowWidth / 8, (Assets.windowHeight / 12) * 11);
 		leftTable.left();
 		leftTable.add(statusTextButton);
 		leftTable.row();
@@ -91,8 +91,8 @@ public class StatusStage extends Stage {
 	}
 
 	public void makeRightTable() {
-		rightTable.setSize(Assets.realWidth * 7 / 8,
-				Assets.realHeight * 11 / 12);
+		rightTable.setSize(Assets.windowWidth * 7 / 8,
+				Assets.windowHeight * 11 / 12);
 		makeRightTopTable();
 		makeRightBottomTable();
 		rightTable.add(rightTopTable);
@@ -101,8 +101,8 @@ public class StatusStage extends Stage {
 	}
 
 	public void makeRightTopTable() {
-		rightTopTable.setSize((Assets.realWidth / 8) * 7,
-				(Assets.realHeight / 12) * 11);
+		rightTopTable.setSize((Assets.windowWidth / 8) * 7,
+				(Assets.windowHeight / 12) * 11);
 		makeStatusTable();
 		makeLabelTable();
 		rightTopTable.add(statusTable);
@@ -110,8 +110,8 @@ public class StatusStage extends Stage {
 	}
 
 	public void makeRightBottomTable() {
-		rightBottomTable.setSize((Assets.realWidth / 8) * 7,
-				(Assets.realHeight / 12) * 1);
+		rightBottomTable.setSize((Assets.windowWidth / 8) * 7,
+				(Assets.windowHeight / 12) * 1);
 		rightBottomTable.add(characterTextButton[0]);
 		rightBottomTable.add(characterTextButton[1]);
 		rightBottomTable.add(characterTextButton[2]);

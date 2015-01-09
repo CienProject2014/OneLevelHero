@@ -1,5 +1,6 @@
 
 pack.png
+<<<<<<< HEAD
 size: 3980,2022
 format: RGBA8888
 filter: Linear,Linear
@@ -198,5 +199,86 @@ worldmapyellowcircle
   xy: 3006, 1319
   size: 117, 117
   orig: 117, 117
+=======
+size: 1922,1694
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+attackButton
+  rotate: false
+  xy: 484, 552
+  size: 300, 60
+  orig: 300, 60
+  offset: 0, 0
+  index: -1
+battleUIBackground
+  rotate: false
+  xy: 2, 614
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+buttonBackground
+  rotate: false
+  xy: 2, 368
+  size: 300, 60
+  orig: 300, 60
+  offset: 0, 0
+  index: -1
+buttonBackgroundwhite
+  rotate: false
+  xy: 484, 490
+  size: 300, 60
+  orig: 300, 60
+  offset: 0, 0
+  index: -1
+gameui0004longbuttonr
+  rotate: false
+  xy: 2, 522
+  size: 480, 90
+  orig: 480, 90
+  offset: 0, 0
+  index: -1
+gameui0005longbuttonl
+  rotate: false
+  xy: 2, 430
+  size: 480, 90
+  orig: 480, 90
+  offset: 0, 0
+  index: -1
+gameui0007helpbutton
+  rotate: false
+  xy: 2, 93
+  size: 240, 89
+  orig: 240, 89
+  offset: 0, 0
+  index: -1
+gameui0008optionbutton
+  rotate: false
+  xy: 2, 2
+  size: 240, 89
+  orig: 240, 89
+  offset: 0, 0
+  index: -1
+gameui0009bagbutton
+  rotate: false
+  xy: 2, 276
+  size: 240, 90
+  orig: 240, 90
+  offset: 0, 0
+  index: -1
+gameui0010smallbuttonb
+  rotate: false
+  xy: 2, 184
+  size: 240, 90
+  orig: 240, 90
+  offset: 0, 0
+  index: -1
+skillButton
+  rotate: false
+  xy: 786, 552
+  size: 300, 60
+  orig: 300, 60
+>>>>>>> Developer
   offset: 0, 0
   index: -1

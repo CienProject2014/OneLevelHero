@@ -15,30 +15,25 @@
   },
   "actual": {
     "dungeon1": {
-      "monsterNumber": 3,
-      "itemNumber": 2,
-      "item": [
+      "name": "dungeon1",
+      "itemNumber": "2",
+      "items": [
         "Item1",
         "Item2"
       ],
-      "monster": [
-        "Monster2",
-        "Monster3",
-        "Monster1"
-      ]
+      "monsterName": "b2",
+      "background": "forest"
     },
     "dungeon2": {
-      "monsterNumber": 2,
-      "itemNumber": 3,
-      "item": [
+      "name": "dungeon2",
+      "itemNumber": "3",
+      "items": [
         "Item1",
         "Item2",
         "Item3"
       ],
-      "monster": [
-        "Monster2",
-        "Monster3"
-      ]
+      "monsterName": "Monster2",
+      "background": "forest"
     }
   }
 }

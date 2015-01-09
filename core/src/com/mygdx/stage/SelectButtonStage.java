@@ -19,21 +19,31 @@ import com.mygdx.state.Assets;
 
 public class SelectButtonStage extends Stage {
 
-	private List<TextButton> chatButton;
-	private List<TextButtonStyle> chatStyle;
+	private List<TextButton> chatButtons;
+	private List<TextButtonStyle> chatStyles;
 	private int eventCount;
 	private NPC eventNpc;
+	private static final int MAX_EVENT_LENGTH = 6;
+	private final float buttonPosition[][] = {
+			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.74f },
+			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.555f },
+			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.37f },
+			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.74f },
+			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.555f },
+			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.37f } };
+	private final float buttonSize[] = { Assets.windowWidth * 0.208f,
+			Assets.windowHeight * 0.185f };
 
 	public SelectButtonStage() {
 		EventInfo eventInfo = EventManager.getEventInfo();
 		eventNpc = eventInfo.getNpc();
 		eventCount = eventNpc.getEventCount();
-		chatButton = new ArrayList<TextButton>();
-		chatStyle = new ArrayList<TextButtonStyle>();
+		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
+		chatStyles = new ArrayList<TextButtonStyle>();
 
 		showEventButton();
 		setSize();
-		setPosition();
+		setButtonPosition();
 		addActors();
 		addListener();
 
@@ -41,102 +51,33 @@ public class SelectButtonStage extends Stage {
 
 	private void showEventButton() {
 		for (int i = 0; i < eventCount; i++) {
-			chatStyle.add(new TextButtonStyle(Assets.chatButton[i],
+			chatStyles.add(new TextButtonStyle(Assets.chatButton[i],
 					Assets.chatButton[i], Assets.chatButton[i], Assets.font));
-			chatButton.add(new TextButton("", chatStyle.get(i)));
+			chatButtons.add(new TextButton("", chatStyles.get(i)));
 		}
 	}
 
 	private void setSize() {
-		for (int i = 0; i < eventCount; i++) {
-			chatButton.get(i).setSize(Assets.realWidth * 0.208f,
-					Assets.realHeight * 0.185f);
+		for (TextButton chatButton : chatButtons) {
+			chatButton.setSize(buttonSize[0], buttonSize[1]);
 		}
 	}
 
-	// Assets.realHeight * 0.185f
-	private void setPosition() {
-		switch (eventCount) {
-			case 1:
-				chatButton.get(0).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.74f);
-				break;
-			case 2:
-				chatButton.get(0).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.74f);
-				chatButton.get(1).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.555f);
-				break;
-			case 3:
-				chatButton.get(0).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.74f);
-				chatButton.get(1).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.555f);
-				chatButton.get(2).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.37f);
-				break;
-			case 4:
-				chatButton.get(0).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.74f);
-				chatButton.get(1).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.555f);
-				chatButton.get(2).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.37f);
-				chatButton.get(3).setPosition(Assets.realWidth * 0.68f,
-						Assets.realHeight * 0.74f);
-				break;
-			case 5:
-				chatButton.get(0).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.74f);
-				chatButton.get(1).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.555f);
-				chatButton.get(2).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.37f);
-				chatButton.get(3).setPosition(Assets.realWidth * 0.68f,
-						Assets.realHeight * 0.74f);
-				chatButton.get(4).setPosition(Assets.realWidth * 0.68f,
-						Assets.realHeight * 0.555f);
-				break;
-			case 6:
-				chatButton.get(0).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.74f);
-				chatButton.get(1).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.555f);
-				chatButton.get(2).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.37f);
-				chatButton.get(3).setPosition(Assets.realWidth * 0.68f,
-						Assets.realHeight * 0.74f);
-				chatButton.get(4).setPosition(Assets.realWidth * 0.68f,
-						Assets.realHeight * 0.555f);
-				chatButton.get(5).setPosition(Assets.realWidth * 0.68f,
-						Assets.realHeight * 0.37f);
-				break;
-			default:
-				chatButton.get(0).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.74f);
-				chatButton.get(1).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.555f);
-				chatButton.get(2).setPosition(Assets.realWidth * 0.109375f,
-						Assets.realHeight * 0.37f);
-				chatButton.get(3).setPosition(Assets.realWidth * 0.68f,
-						Assets.realHeight * 0.74f);
-				chatButton.get(4).setPosition(Assets.realWidth * 0.68f,
-						Assets.realHeight * 0.555f);
-				chatButton.get(5).setPosition(Assets.realWidth * 0.68f,
-						Assets.realHeight * 0.37f);
-
-				break;
+	// Assets.windowHeight * 0.185f
+	private void setButtonPosition() {
+		for (int i = 0; i < eventCount; i++) {
+			chatButtons.get(i).setPosition(buttonPosition[i][0],
+					buttonPosition[i][1]);
 		}
-
 	}
 
 	private void addListener() {
 		for (int i = 0; i < eventCount; i++) {
 			//이벤트가 달성되었는지 검사(현재는 리워드)
 			if (eventNpc.getEvent(i).getEventState() == EventStateEnum.CLEARED)
-				chatButton.get(0).setColor(Color.DARK_GRAY);
+				chatButtons.get(0).setColor(Color.DARK_GRAY);
 			else {
-				chatButton.get(i).addListener(new InputListener() {
+				chatButtons.get(i).addListener(new InputListener() {
 					@Override
 					public boolean touchDown(InputEvent event, float x,
 							float y, int pointer, int button) {
@@ -156,8 +97,8 @@ public class SelectButtonStage extends Stage {
 	}
 
 	private void addActors() {
-		for (int i = 0; i < eventCount; i++) {
-			this.addActor(chatButton.get(i));
+		for (TextButton chatButton : chatButtons) {
+			this.addActor(chatButton);
 		}
 	}
 }

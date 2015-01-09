@@ -4,33 +4,33 @@ import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.state.Assets;
 
 public class Unit {
-	private String unitName;
-	private Texture faceImage;
-	private String faceImagePath;
+	private String name;
+	private Texture faceTexture;
+	private String faceTexturePath;
 
-	public String getUnitName() {
-		return unitName;
+	public String getName() {
+		return name;
 	}
 
-	public void setUnitName(String unitName) {
-		this.unitName = unitName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Texture getFaceImage() {
-		if (faceImage == null)
-			faceImage = Assets.imageFileMap.get(faceImagePath);
-		return faceImage;
+	public Texture getFaceTexture() {
+		if (faceTexture == null)
+			faceTexture = Assets.characterTextureMap.get(faceTexturePath);
+		return faceTexture;
 	}
 
-	public void setFaceImage(Texture faceImage) {
-		this.faceImage = faceImage;
+	public void setFaceTexture(Texture faceTexture) {
+		this.faceTexture = faceTexture;
 	}
 
-	public String getFaceImagePath() {
-		return faceImagePath;
+	public String getFaceTexturePath() {
+		return faceTexturePath;
 	}
 
-	public void setFaceImagePath(String faceImagePath) {
-		this.faceImagePath = faceImagePath;
+	public void setFaceTexturePath(String faceTexturePath) {
+		this.faceTexturePath = faceTexturePath;
 	}
 }

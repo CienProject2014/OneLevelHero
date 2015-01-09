@@ -4,7 +4,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.state.Assets;
 
 public class MovingController {
 
@@ -15,8 +14,6 @@ public class MovingController {
 	String delimiter = "-";
 
 	public MovingController() {
-		JSONObject dungeons = (JSONObject) Assets.jsonObjectMap.get(
-				"worldmap_json").get("Road");
 	}
 
 	public void ChangeDestination() {

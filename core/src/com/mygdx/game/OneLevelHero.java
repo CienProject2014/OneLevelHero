@@ -5,8 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.LoadManager;
 import com.mygdx.manager.ScreenManager;
+import com.mygdx.manager.LoadManager;
 
 public class OneLevelHero extends Game {
 

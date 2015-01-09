@@ -18,11 +18,11 @@ public class WorldMapScreen2 implements Screen {
 	private OrthographicCamera cam;
 	private SpriteBatch batch;
 	private InputMultiplexer multiplexer;
-	
+
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);	    
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		cam.update();
 		batch.end();
@@ -32,10 +32,8 @@ public class WorldMapScreen2 implements Screen {
 
 	}
 
-
 	@Override
 	public void resize(int width, int height) {
-
 
 	}
 
@@ -47,14 +45,14 @@ public class WorldMapScreen2 implements Screen {
 		InputProcessor MapInputProcessor = new MapInputProcessor();
 		multiplexer = new InputMultiplexer();
 		cam = new OrthographicCamera();
-		cam.setToOrtho(false, Assets.realWidth, Assets.realHeight);
-		
-		worldMapStage.getViewport().setCamera(cam);		
+		cam.setToOrtho(false, Assets.windowWidth, Assets.windowHeight);
+
+		worldMapStage.getViewport().setCamera(cam);
 		multiplexer.addProcessor(0, worldMapStage);
-		multiplexer.addProcessor(1,MapInputProcessor);
-		multiplexer.addProcessor(2,touchPadStage);
+		multiplexer.addProcessor(1, MapInputProcessor);
+		multiplexer.addProcessor(2, touchPadStage);
 		//Gdx.input.setInputProcessor(MapInputProcessor);
-		
+
 		Gdx.input.setInputProcessor(multiplexer);
 		batch = new SpriteBatch();
 	}
@@ -82,48 +80,47 @@ public class WorldMapScreen2 implements Screen {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	public class MapInputProcessor implements InputProcessor {
-	    Vector3 last_touch_down = new Vector3();
+		Vector3 last_touch_down = new Vector3();
 
-	   
-	    public boolean touchDragged(int x, int y, int pointer) {
-	    	moveCamera( x, y ); 
-	        return false;
-	    }
+		public boolean touchDragged(int x, int y, int pointer) {
+			moveCamera(x, y);
+			return false;
+		}
 
-	    private void moveCamera( int touch_x, int touch_y ) {
-	        Vector3 new_position = getNewCameraPosition( touch_x, touch_y );
+		private void moveCamera(int touch_x, int touch_y) {
+			Vector3 new_position = getNewCameraPosition(touch_x, touch_y);
 
-	        if( !cameraOutOfLimit( new_position ) ){
-	            worldMapStage.getCamera().translate( new_position.sub( worldMapStage.getCamera().position ) );
-	        }	        	
-	        last_touch_down.set( touch_x, touch_y, 0);
-	    }
+			if (!cameraOutOfLimit(new_position)) {
+				worldMapStage.getCamera().translate(
+						new_position.sub(worldMapStage.getCamera().position));
+			}
+			last_touch_down.set(touch_x, touch_y, 0);
+		}
 
-	    private Vector3 getNewCameraPosition( int x, int y ) {
-	        Vector3 new_position = last_touch_down;
-	        new_position.sub(x, y, 0);
-	        new_position.y = -new_position.y;
-	        new_position.add( worldMapStage.getCamera().position );
+		private Vector3 getNewCameraPosition(int x, int y) {
+			Vector3 new_position = last_touch_down;
+			new_position.sub(x, y, 0);
+			new_position.y = -new_position.y;
+			new_position.add(worldMapStage.getCamera().position);
 
-	        return new_position;
-	    }
+			return new_position;
+		}
 
-	    private boolean cameraOutOfLimit( Vector3 position ) {
-	        int x_left_limit = (int) (Assets.realWidth / 2);
-	        int x_right_limit = (int) (3000-(Assets.realWidth / 2));
-	        int y_bottom_limit = (int) (Assets.realHeight /2);
-	        int y_top_limit = (int) (1688-(Assets.realHeight / 2));
-	        
+		private boolean cameraOutOfLimit(Vector3 position) {
+			int x_left_limit = (int) (Assets.windowWidth / 2);
+			int x_right_limit = (int) (3000 - (Assets.windowWidth / 2));
+			int y_bottom_limit = (int) (Assets.windowHeight / 2);
+			int y_top_limit = (int) (1688 - (Assets.windowHeight / 2));
 
-	        if( position.x < x_left_limit || position.x > x_right_limit )
-	            return true;
-	        else if( position.y < y_bottom_limit || position.y > y_top_limit )
-	            return true;
-	        else
-	          return false;
-	}
+			if (position.x < x_left_limit || position.x > x_right_limit)
+				return true;
+			else if (position.y < y_bottom_limit || position.y > y_top_limit)
+				return true;
+			else
+				return false;
+		}
 
 		@Override
 		public boolean keyDown(int keycode) {

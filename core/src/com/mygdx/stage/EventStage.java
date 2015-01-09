@@ -30,16 +30,16 @@ public class EventStage extends Stage {
 		characterImage = new Image(eventScene.getCharacter());
 
 		// 스크립트/캐릭터/백그라운드 설정값 세팅
-		script.setFontScale(Assets.realWidth / 1280);
+		script.setFontScale(Assets.windowWidth / 1280);
 		script.setWrap(true);
-		script.setSize(Assets.realWidth * 0.781f, Assets.realHeight * 0.185f);
-		script.setPosition(Assets.realWidth * 0.309375f,
-				Assets.realHeight * 0.185f);
-		characterImage.setSize(Assets.realWidth * 0.250f,
-				Assets.realHeight * 0.555f);
-		characterImage.setPosition(Assets.realWidth * 0.375f,
-				Assets.realHeight * 0.185f);
-		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
+		script.setSize(Assets.windowWidth * 0.781f, Assets.windowHeight * 0.185f);
+		script.setPosition(Assets.windowWidth * 0.309375f,
+				Assets.windowHeight * 0.185f);
+		characterImage.setSize(Assets.windowWidth * 0.250f,
+				Assets.windowHeight * 0.555f);
+		characterImage.setPosition(Assets.windowWidth * 0.375f,
+				Assets.windowHeight * 0.185f);
+		backgroundImage.setSize(Assets.windowWidth, Assets.windowHeight);
 
 		if (!eventInfo.isGreeting())
 			eventType = eventInfo.getNpc().getEvents()
@@ -73,28 +73,28 @@ public class EventStage extends Stage {
 
 	private void makeSelectStage() {
 
-		script.setFontScale(Assets.realWidth / 1280);
+		script.setFontScale(Assets.windowWidth / 1280);
 		script.setWrap(true);
-		script.setSize(Assets.realWidth * 0.781f, Assets.realHeight * 0.185f);
-		script.setPosition(Assets.realWidth * 0.109375f,
-				Assets.realHeight * 0.185f);
-		characterImage.setSize(Assets.realWidth * 0.250f,
-				Assets.realHeight * 0.555f);
-		characterImage.setPosition(Assets.realWidth * 0.375f,
-				Assets.realHeight * 0.37f);
-		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
+		script.setSize(Assets.windowWidth * 0.781f, Assets.windowHeight * 0.185f);
+		script.setPosition(Assets.windowWidth * 0.109375f,
+				Assets.windowHeight * 0.185f);
+		characterImage.setSize(Assets.windowWidth * 0.250f,
+				Assets.windowHeight * 0.555f);
+		characterImage.setPosition(Assets.windowWidth * 0.375f,
+				Assets.windowHeight * 0.37f);
+		backgroundImage.setSize(Assets.windowWidth, Assets.windowHeight);
 
 	}
 
 	private void makeChatStage() {
-		script.setFontScale(Assets.realWidth / 1280);
+		script.setFontScale(Assets.windowWidth / 1280);
 		script.setWrap(true);
-		script.setPosition(Assets.realWidth * 0.2f, 0);
-		script.setSize(Assets.realWidth * 0.8f, Assets.realHeight * 0.3f);
-		characterImage.setSize(Assets.realWidth * 0.2f,
-				Assets.realHeight * 0.2f);
+		script.setPosition(Assets.windowWidth * 0.2f, 0);
+		script.setSize(Assets.windowWidth * 0.8f, Assets.windowHeight * 0.3f);
+		characterImage.setSize(Assets.windowWidth * 0.2f,
+				Assets.windowHeight * 0.2f);
 		characterImage.setPosition(0, 0);
-		backgroundImage.setSize(Assets.realWidth, Assets.realHeight);
+		backgroundImage.setSize(Assets.windowWidth, Assets.windowHeight);
 
 	}
 }

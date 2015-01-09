@@ -1,38 +1,66 @@
 {
   "Monster1": {
-    "attack": 100,
-    "defense": 10,
-    "critical": 2,
-    "evade": 1,
-    "accuracy": 50,
-    "healthPoint": 1000,
-    "stamina": 1000,
-    "speed": 30,
-    "job": "monster",
-    "debuff": 0
+    "name": "Monster1",
+    "faceTexturePath": "a1",
+    "status": {
+      "attack": 100,
+      "defense": 10,
+      "critical": 2,
+      "evade": 1,
+      "accuracy": 50,
+      "healthPoint": 1000,
+      "stamina": 1000,
+      "speed": 30,
+      "job": "monster",
+      "debuff": 0
+    }
   },
   "Monster2": {
-    "attack": 100,
-    "defense": 10,
-    "critical": 2,
-    "evade": 1,
-    "accuracy": 50,
-    "healthPoint": 1000,
-    "stamina": 1000,
-    "speed": 30,
-    "job": "monster",
-    "debuff": 0
+    "name": "Monster2",
+    "faceTexturePath": "a2",
+    "status": {
+      "attack": 100,
+      "defense": 10,
+      "critical": 2,
+      "evade": 1,
+      "accuracy": 50,
+      "healthPoint": 1000,
+      "stamina": 1000,
+      "speed": 30,
+      "job": "monster",
+      "debuff": 0
+    }
   },
   "Monster3": {
-    "attack": 100,
-    "defense": 10,
-    "critical": 2,
-    "evade": 1,
-    "accuracy": 50,
-    "healthPoint": 1000,
-    "stamina": 1000,
-    "speed": 30,
-    "job": "monster",
-    "debuff": 0
+    "name": "Monster3",
+    "faceTexturePath": "c1",
+    "status": {
+      "attack": 100,
+      "defense": 10,
+      "critical": 2,
+      "evade": 1,
+      "accuracy": 50,
+      "healthPoint": 1000,
+      "stamina": 1000,
+      "speed": 30,
+      "job": "monster",
+      "debuff": 0
+    }
+  },
+  "b2": {
+    "name": "b2",
+    "faceTexturePath": "b2",
+    "status": {
+      "attack": 100,
+      "defense": 10,
+      "critical": 2,
+      "evade": 1,
+      "accuracy": 50,
+      "healthPoint": 1000,
+      "stamina": 1000,
+      "speed": 30,
+      "job": "monster",
+      "debuff": 0
+    }
   }
 }

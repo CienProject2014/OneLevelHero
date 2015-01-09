@@ -23,15 +23,15 @@ public class LoadManager {
 
 	// Hero클래스가 status정보를 갖도록 한다.
 	private void setHero() {
-
 		//추후 JSON에서 불러오도록 바꿀 것
 		setHero(Assets.heroMap.get("yongsa"));
 		//CurrentManager.getInstance().setHero(hero); // currentManager가 hero을 소유하도록 만든다.
+		this.hero.getStatus().setSpeed(8);
 	}
 
 	// 해당 Hero들을 Party구성원에 포함시킨다
 	private void setPartyList() {
-		CurrentState.getInstance().getParty().addParty(hero);
+		CurrentState.getInstance().getParty().addHero(hero);
 	}
 
 	public Hero getHero() {
