@@ -1,5 +1,5 @@
 package com.mygdx.model;
 
-public class WorldMap {
+public class TimeInfo {
 
 }

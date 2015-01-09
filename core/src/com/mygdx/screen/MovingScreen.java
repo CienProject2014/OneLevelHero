@@ -36,15 +36,16 @@ public class MovingScreen implements Screen {
 	public MovingScreen() {
 		Gdx.app.log("DEBUG", "MovingScreen constructor");
 		manager = new MovingManager();
-		
+
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		movingLabel.setText(Assets.worldHashmap.get(manager.getCurrentDestination())
-				.getName() + "까지" + manager.getLeftLength());
+		movingLabel.setText(Assets.worldInfo.getNodeInfo()
+				.get(manager.getCurrentDestination()).getName()
+				+ "까지" + manager.getLeftLength());
 
 		stage.draw();
 	}
@@ -58,7 +59,7 @@ public class MovingScreen implements Screen {
 	@Override
 	public void show() {
 		Gdx.app.log("DEBUG", "MovingSceen show");
-		
+
 		stage = new Stage();
 		table = new Table();
 		table.setFillParent(true);

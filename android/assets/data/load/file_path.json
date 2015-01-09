@@ -1,0 +1,14 @@
+{
+  "atlas_ui_path": {
+    "filePath": "data/load/atlas_ui_path.json"
+  },
+  "background_file_path": {
+    "filePath": "data/load/background_file_path.json"
+  },
+  "character_file_path": {
+    "filePath": "data/load/character_file_path.json"
+  },
+  "json_file_path":{
+  	"filePath":"data/load/json_file_path.json"
+  }
+}

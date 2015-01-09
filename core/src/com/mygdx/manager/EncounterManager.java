@@ -3,6 +3,7 @@ package com.mygdx.manager;
 import java.util.Random;
 
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.controller.ScreenController;
@@ -36,9 +37,11 @@ public class EncounterManager {
 
 	// 출발지와 도착지의 정보를 받아서 해당하는 던전을 리턴.
 	private String getDungeonID() {
-		// 1. 던전 설정을 전부 불러와서
-		JSONObject setting = (JSONObject) Assets.jsonObjectMap.get(
-				"dungeon_json").get("setting");
+		// 1. 던전 설정을 전부 불러와서 
+		// FIXME 이슈 분리후 수정예정
+		JSONObject dungeon = (JSONObject) JSONValue.parse(Assets.jsonMap
+				.get("dungeon_json"));
+		JSONObject setting = (JSONObject) dungeon.get("setting");
 		// 2. 출발하는 마을을 가져온 후
 		JSONObject startVillage = (JSONObject) setting.get(CurrentState
 				.getInstance().getVillageInfo().getCurrentStarting());

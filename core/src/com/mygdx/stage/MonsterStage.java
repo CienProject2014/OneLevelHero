@@ -52,18 +52,17 @@ public class MonsterStage extends Stage {
 	}
 
 	private Image getMonsterImage() {
-		Gdx.app.log("asdf", CurrentState.getInstance().getCurrentDungeon()
-		.getMonster().getName());
+		Gdx.app.log("Monster Name", CurrentState.getInstance()
+				.getCurrentDungeon().getMonster().getName());
 		return new Image(CurrentState.getInstance().getCurrentDungeon()
 				.getMonster().getFaceTexture());
-		//Gdx.app.log("asdf", 
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		return new TextureRegionDrawable(new TextureRegion(new Texture(
 				Gdx.files.internal("texture/battle/"
 						+ CurrentState.getInstance().getCurrentDungeon()
-								.getBackground()+".png"))));
+								.getBackground() + ".png"))));
 	}
 
 }

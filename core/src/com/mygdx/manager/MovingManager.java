@@ -1,18 +1,16 @@
 package com.mygdx.manager;
 
-import org.json.simple.JSONObject;
-
 import com.badlogic.gdx.Gdx;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.model.VillageInfo;
+import com.mygdx.model.WorldMapInfo.RodeInfo;
 import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
 
 public class MovingManager {
 
-	private JSONObject roadJson;
-	private JSONObject roadInfo;
+	private RodeInfo currentRodeInfo;
 
 	private int roadLength;
 	private int leftLength;
@@ -36,12 +34,9 @@ public class MovingManager {
 		currentPosition = villageInfo.getCurrentPosition();
 		currentStartingpoint = villageInfo.getCurrentStarting();
 
-		roadJson = (JSONObject) Assets.jsonObjectMap.get("worldmap_json").get(
-				"Road");
+		currentRodeInfo = Assets.worldInfo.getRodeInfo().get(currentPosition);
 
-		roadInfo = (JSONObject) roadJson.get(currentPosition);
-
-		roadLength = Integer.parseInt((String) roadInfo.get("length"));
+		roadLength = currentRodeInfo.getLength();
 		leftLength = roadLength;
 		if (battled) {
 			leftLength = temp;
@@ -55,7 +50,7 @@ public class MovingManager {
 	}
 
 	public String getRoadName() {
-		return (String) roadInfo.get("name");
+		return currentRodeInfo.getName();
 	}
 
 	public String getCurrentDestination() {
@@ -75,13 +70,12 @@ public class MovingManager {
 		Gdx.app.log("test", "goForward");
 		if (isLeft()) {
 			thenEncounterMonster();
-		}
-		else {
+		} else {
 			thenGoVillage();
 		}
 
 	}
-	
+
 	private void thenEncounterMonster() {
 		leftLength--;
 		if (encounter.isOccur()) {
@@ -90,10 +84,10 @@ public class MovingManager {
 			encounter.start();
 		}
 	}
-	
+
 	private void thenGoVillage() {
-		villageInfo.setCurrentState(Assets.worldHashmap.get(
-				currentDestination).getType());
+		villageInfo.setCurrentState(Assets.worldInfo.getNodeInfo()
+				.get(currentDestination).getType());
 
 		villageInfo.setCurrentPosition(currentDestination);
 
@@ -119,15 +113,15 @@ public class MovingManager {
 
 		}
 	}
-	
+
 	private boolean isLeft() {
-		return (leftLength > 0)? true : false;
+		return (leftLength > 0) ? true : false;
 	}
 
 	public void goBackward() {
 
 		String temp = currentDestination;
-		
+
 		currentDestination = currentStartingpoint;
 		currentStartingpoint = temp;
 
