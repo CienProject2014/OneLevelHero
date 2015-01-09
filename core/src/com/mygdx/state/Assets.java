@@ -27,7 +27,7 @@ import com.mygdx.model.Monster;
 import com.mygdx.model.NPC;
 import com.mygdx.model.TextureFile;
 import com.mygdx.model.Village;
-import com.mygdx.stage.WorldStage.WorldNode;
+import com.mygdx.model.WorldMapInfo;
 
 /**
  * 각종 리소스들을 static하게 관리해주는 Assets 클래스
@@ -54,45 +54,53 @@ public class Assets {
 	public static Map<String, DungeonInfo> dungeonMap;
 
 	public static Map<String, JsonStringFile> filePathMap = new HashMap<>();
-	public static Map<String, String> jsonStringMap = new HashMap<>();
+	public static Map<String, String> jsonMap = new HashMap<>();
 	public static Map<String, Texture> characterTextureMap = new HashMap<>();
 	public static Map<String, Texture> backgroundTextureMap = new HashMap<>();
-	public static Map<String, WorldNode> worldHashmap = new HashMap<>();
 	public static Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<>();
 
 	public static Map<String, Hero> heroMap;
 	public static Map<String, NPC> npcMap;
 	public static Map<String, Monster> monsterMap;
 	public static Map<String, Village> villageMap;
+	public static WorldMapInfo worldInfo;
 
 	public static void loadAll() {
 		loadFilePath();
 		jsonObjectLoad();
+		resourceFileLoad();
+		mapInfoLoad();
+		unitInfoLoad();
+
+		// 해상도 설정
+		// 화면의 Size를 별도로 설정해주어야 한다
+		loadSize(new Stage());
+	}
+
+	private static void resourceFileLoad() {
 		atlasUiTextureLoad();
 		sceneTextureLoad();
 		fontLoad();
 		chatButtonLoad();
-		dungeonLoad();
-		npcLoad();
-		heroLoad();
-		monsterLoad();
-		villageLoad();
-		worldMapLoad();
 		etcResourceLoad();
-		// 해상도 설정
 
-		// 화면의 Size를 별도로 설정해주어야 한다
-		loadSize(new Stage());
+	}
+
+	private static void mapInfoLoad() {
+		dungeonInfoLoad();
+		villageInfoLoad();
+		worldInfoLoad();
+	}
+
+	private static void unitInfoLoad() {
+		npcInfoLoad();
+		heroInfoLoad();
+		monsterInfoLoad();
 	}
 
 	private static void loadFilePath() {
 		filePathMap = JsonParser.parseMap(JsonStringFile.class, Gdx.files
 				.internal("data/load/file_path.json").readString());
-	}
-
-	private static void worldMapLoad() {
-		// TODO worldNode 관련한 이슈 구현 메서드
-
 	}
 
 	// Stage 크기 설정
@@ -109,40 +117,43 @@ public class Assets {
 				filePathMap.get(JsonEnum.JSON_FILE_PATH.getJsonName())
 						.getFile());
 		for (Entry<String, JsonStringFile> entry : jsonFileMap.entrySet()) {
-			jsonStringMap.put(entry.getKey(), entry.getValue().getFile());
+			jsonMap.put(entry.getKey(), entry.getValue().getFile());
 		}
 	}
 
-	private static void dungeonLoad() {
-		dungeonMap = JsonParser.parseMap(DungeonInfo.class,
-				jsonStringMap.get(JsonEnum.DUNGEON_JSON.getJsonName()));
+	private static void dungeonInfoLoad() {
+		//dungeonMap = JsonParser.parseMap(DungeonInfo.class,jsonMap.get(JsonEnum.DUNGEON_JSON.getJsonName()));
 
 	}
 
-	private static void heroLoad() {
+	private static void heroInfoLoad() {
 
 		//hero 리스트를 담은 Json을 불러와 객체화한다.
 		heroMap = JsonParser.parseMap(Hero.class,
-				jsonStringMap.get(JsonEnum.HERO_JSON.getJsonName()));
+				jsonMap.get(JsonEnum.HERO_JSON.getJsonName()));
 
 	}
 
-	private static void monsterLoad() {
+	private static void worldInfoLoad() {
+		//worldInfo = new Json().fromJson(WorldMapInfo.class,jsonMap.get(JsonEnum.WORLDMAP_JSON.getJsonName()));
+	}
+
+	private static void monsterInfoLoad() {
 		// monster 리스트를 담은 Json을 불러온다.
 		monsterMap = JsonParser.parseMap(Monster.class,
-				jsonStringMap.get(JsonEnum.MONSTER_JSON.getJsonName()));
+				jsonMap.get(JsonEnum.MONSTER_JSON.getJsonName()));
 	}
 
-	private static void villageLoad() {
+	private static void villageInfoLoad() {
 		//village 리스트를 담은 Json을 불러와 객체화한다.
 		villageMap = JsonParser.parseMap(Village.class,
-				jsonStringMap.get(JsonEnum.VILLAGE_JSON.getJsonName()));
+				jsonMap.get(JsonEnum.VILLAGE_JSON.getJsonName()));
 	}
 
-	private static void npcLoad() {
+	private static void npcInfoLoad() {
 		//npc 리스트를 담은 Json을 불러온다.
 		npcMap = JsonParser.parseMap(NPC.class,
-				jsonStringMap.get(JsonEnum.NPC_JSON.getJsonName()));
+				jsonMap.get(JsonEnum.NPC_JSON.getJsonName()));
 	}
 
 	private static void atlasUiTextureLoad() {
