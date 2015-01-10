@@ -34,7 +34,7 @@ public class MovingManager {
 		currentPosition = villageInfo.getCurrentPosition();
 		currentStartingpoint = villageInfo.getCurrentStarting();
 
-		currentRodeInfo = Assets.worldInfo.getRodeInfo().get(currentPosition);
+		currentRodeInfo = Assets.worldMapInfo.getRodeInfo().get(currentPosition);
 
 		roadLength = currentRodeInfo.getLength();
 		leftLength = roadLength;
@@ -86,7 +86,7 @@ public class MovingManager {
 	}
 
 	private void thenGoVillage() {
-		villageInfo.setCurrentState(Assets.worldInfo.getNodeInfo()
+		villageInfo.setCurrentState(Assets.worldMapInfo.getNodeInfo()
 				.get(currentDestination).getType());
 
 		villageInfo.setCurrentPosition(currentDestination);

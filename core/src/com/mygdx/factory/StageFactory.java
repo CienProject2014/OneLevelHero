@@ -3,6 +3,7 @@ package com.mygdx.factory;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.manager.PlatformResourceManager;
 import com.mygdx.model.EventScene;
+import com.mygdx.stage.BattleStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.EventStage;
 import com.mygdx.stage.MenuStage;
@@ -35,7 +36,7 @@ public class StageFactory {
 		} else if (stageName == "encount") {
 			return new EncounterStage();
 		} else if (stageName == "battle") {
-			return new VillageStage(); //FIXME 임시 bugfix
+			return new BattleStage(rm);
 		} else {
 			return new MenuStage(stageName);
 		}

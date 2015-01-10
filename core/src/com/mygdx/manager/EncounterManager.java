@@ -39,7 +39,7 @@ public class EncounterManager {
 	private String getDungeonID() {
 		// 1. 던전 설정을 전부 불러와서 
 		// FIXME 이슈 분리후 수정예정
-		JSONObject dungeon = (JSONObject) JSONValue.parse(Assets.jsonMap
+		JSONObject dungeon = (JSONObject) JSONValue.parse(Assets.jsonStringMap
 				.get("dungeon_json"));
 		JSONObject setting = (JSONObject) dungeon.get("setting");
 		// 2. 출발하는 마을을 가져온 후

@@ -16,18 +16,19 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.JsonParser;
 import com.mygdx.model.AtlasUiFile;
-import com.mygdx.model.DungeonInfo;
 import com.mygdx.model.Hero;
 import com.mygdx.model.JsonStringFile;
 import com.mygdx.model.Monster;
 import com.mygdx.model.NPC;
+import com.mygdx.model.RoadInfo;
 import com.mygdx.model.TextureFile;
 import com.mygdx.model.Village;
-import com.mygdx.model.WorldMapInfo;
+import com.mygdx.model.WorldNodeInfo;
 
 /**
  * 각종 리소스들을 static하게 관리해주는 Assets 클래스
@@ -51,10 +52,10 @@ public class Assets {
 	public static float windowWidth;
 	public static float windowHeight;
 
-	public static Map<String, DungeonInfo> dungeonMap;
+	public static Map<String, RoadInfo> dungeonMap;
 
 	public static Map<String, JsonStringFile> filePathMap = new HashMap<>();
-	public static Map<String, String> jsonMap = new HashMap<>();
+	public static Map<String, String> jsonStringMap = new HashMap<>();
 	public static Map<String, Texture> characterTextureMap = new HashMap<>();
 	public static Map<String, Texture> backgroundTextureMap = new HashMap<>();
 	public static Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<>();
@@ -63,7 +64,7 @@ public class Assets {
 	public static Map<String, NPC> npcMap;
 	public static Map<String, Monster> monsterMap;
 	public static Map<String, Village> villageMap;
-	public static WorldMapInfo worldInfo;
+	public static ObjectMap<String, WorldNodeInfo> worldNodeInfoMap;
 
 	public static void loadAll() {
 		loadFilePath();
@@ -87,9 +88,9 @@ public class Assets {
 	}
 
 	private static void mapInfoLoad() {
-		dungeonInfoLoad();
+		roadInfoLoad();
 		villageInfoLoad();
-		worldInfoLoad();
+		worldMapInfoLoad();
 	}
 
 	private static void unitInfoLoad() {
@@ -117,11 +118,11 @@ public class Assets {
 				filePathMap.get(JsonEnum.JSON_FILE_PATH.getJsonName())
 						.getFile());
 		for (Entry<String, JsonStringFile> entry : jsonFileMap.entrySet()) {
-			jsonMap.put(entry.getKey(), entry.getValue().getFile());
+			jsonStringMap.put(entry.getKey(), entry.getValue().getFile());
 		}
 	}
 
-	private static void dungeonInfoLoad() {
+	private static void roadInfoLoad() {
 		//dungeonMap = JsonParser.parseMap(DungeonInfo.class,jsonMap.get(JsonEnum.DUNGEON_JSON.getJsonName()));
 
 	}
@@ -130,30 +131,31 @@ public class Assets {
 
 		//hero 리스트를 담은 Json을 불러와 객체화한다.
 		heroMap = JsonParser.parseMap(Hero.class,
-				jsonMap.get(JsonEnum.HERO_JSON.getJsonName()));
+				jsonStringMap.get(JsonEnum.HERO_JSON.getJsonName()));
 
 	}
 
-	private static void worldInfoLoad() {
-		//worldInfo = new Json().fromJson(WorldMapInfo.class,jsonMap.get(JsonEnum.WORLDMAP_JSON.getJsonName()));
+	private static void worldMapInfoLoad() {
+		worldNodeInfoMap = JsonParser.parseObjectMap(WorldNodeInfo.class,
+				jsonStringMap.get(JsonEnum.WORLDMAP_JSON.getJsonName()));
 	}
 
 	private static void monsterInfoLoad() {
 		// monster 리스트를 담은 Json을 불러온다.
 		monsterMap = JsonParser.parseMap(Monster.class,
-				jsonMap.get(JsonEnum.MONSTER_JSON.getJsonName()));
+				jsonStringMap.get(JsonEnum.MONSTER_JSON.getJsonName()));
 	}
 
 	private static void villageInfoLoad() {
 		//village 리스트를 담은 Json을 불러와 객체화한다.
 		villageMap = JsonParser.parseMap(Village.class,
-				jsonMap.get(JsonEnum.VILLAGE_JSON.getJsonName()));
+				jsonStringMap.get(JsonEnum.VILLAGE_JSON.getJsonName()));
 	}
 
 	private static void npcInfoLoad() {
 		//npc 리스트를 담은 Json을 불러온다.
 		npcMap = JsonParser.parseMap(NPC.class,
-				jsonMap.get(JsonEnum.NPC_JSON.getJsonName()));
+				jsonStringMap.get(JsonEnum.NPC_JSON.getJsonName()));
 	}
 
 	private static void atlasUiTextureLoad() {
