@@ -13,8 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.model.WorldMapInfo;
-import com.mygdx.model.WorldMapInfo.NodeInfo;
+import com.mygdx.model.WorldNodeInfo;
 import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
 
@@ -30,7 +29,7 @@ public class WorldStage extends Stage {
 
 	private TextureRegionDrawable arrow;
 
-	private WorldMapInfo worldInfo;
+	private WorldNodeInfo worldNodeInfo;
 
 	private int nodeSize;
 
@@ -66,14 +65,14 @@ public class WorldStage extends Stage {
 				new TextureRegion(new Texture(Gdx.files
 						.internal("texture/worldmap/turningpoint.png"))));
 
-		worldInfo = Assets.worldInfo;
+		worldInfo = Assets.worldMapInfo;
 
 	}
 
 	// 현재 위치를 화살표로 표시해줌
 	private void setCurrentPosition() {
 
-		NodeInfo currentNodeInfo = worldInfo.getNodeInfo().get(
+		WorldNodeInfo currentNodeInfo = worldInfo.getNodeInfo().get(
 				worldInfo.getNodeInfo().get(
 						CurrentState.getInstance().getVillageInfo()
 								.getCurrentPosition()));

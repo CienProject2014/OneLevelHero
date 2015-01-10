@@ -1,712 +1,469 @@
 {
-  "nodeInfo": {
-    "kadillaCastle": {
-      "key": "kadillaCastle",
-      "name": "카딜라 성",
-      "type": "village",
-      "positionX": "40",
-      "positionY": "205",
-      "connection": [
-        {
-          "roadkey" : "kadillaCastle-east",
-          "destination": "oberon",
-          "direction" : "45"
-        },
-        {
-          "roadkey": "kadillaCastle-south",
-          "destination": "mountainTitania-oberon",
-          "direction": "270"
-        }
-      ]
-    },
-    "oberon": {
-      "key": "oberon",
-      "name": "오베론",
-      "type": "village",
-      "positionX": "260",
-      "positionY": "310",
-      "connection": [
-        {
-          "roadkey": "oberon-west",
-          "destination": "mountainTitania-oberon",
-          "direction": "180"
-        },
-        {
-          "roadkey": "kadillaCastle-east",
-          "destination": "kadillaCastle",
-          "direction": "90"
-        }
-      ]
-    },
-    "winterfall": {
-      "key": "winterfall",
-      "name": "윈터폴",
-      "type": "village",
-      "positionX": "860",
-      "positionY": "40",
-      "connection": [
-        {
-          "roadkey": "winterfall-south",
-          "destination": "crystallizedValley",
-          "direction": "270"
-        }
-      ]
-    },
-    "cobweb": {
-      "key": "cobweb",
-      "name": "콥웨브",
-      "type": "village",
-      "positionX": "810",
-      "positionY": "250",
-      "connection": [
-        {
-          "roadkey": "cobweb-north",
-          "destination": "crystallizedValley",
-          "direction": "90"
-        },
-        {
-          "roadkey": "cobweb-south",
-          "destination": "redroseCastle",
-          "direction": "270"
-        },
-        {
-          "roadkey": "cobweb-east",
-          "destination": "blackwood",
-          "direction": "0"
-        },
-        {
-          "roadkey": "middleRidge-west",
-          "destination": "middleRidge",
-          "direction": "45"
-        }
-      ]
-    },
-    "redroseCastle": {
-      "key": "redroseCastle",
-      "name": "레드로즈 성",
-      "type": "village",
-      "positionX": "765",
-      "positionY": "425",
-      "connection": [
-        {
-          "roadkey": "cobweb-south",
-          "destination": "cobweb",
-          "direction": "90"
-        },
-        {
-          "roadkey": "redroseCastle-south",
-          "destination": "elvenForest-redRoseCastle-cross",
-          "direction": "270"
-        }
-      ]
-    },
-    "miragePort": {
-      "key": "miragePort",
-      "name": "미라지 포트",
-      "type": "village",
-      "positionX": "1200",
-      "positionY": "730",
-      "connection": [
-        {
-          "roadkey": "miragePort-west",
-          "destination": "ELM",
-          "direction": "180"
-        },
-        {
-          "roadkey": "miragePort-south",
-          "destination": "southcape-miragePort-cross",
-          "direction": "270"
-        }
-      ]
-    },
-    "southcape": {
-      "key": "southcape",
-      "name": "사우스케이프",
-      "type": "village",
-      "positionX": "830",
-      "positionY": "950",
-      "connection": [
-        {
-          "roadkey": "southcape-north",
-          "destination": "southcape-redroseCastle-cross",
-          "direction": "90"
-        },
-        {
-          "roadkey": "southcape-east",
-          "destination": "southcape-miragePort-cross",
-          "direction": "0"
-        }
-      ]
-    },
-    "blackwood": {
-      "key": "blackwood",
-      "name": "블랙우드",
-      "type": "village",
-      "positionX": "1310",
-      "positionY": "350",
-      "connection": [
-        {
-          "roadkey": "blackwood-north",
-          "destination": "middleRidge",
-          "direction": "125"
-        },
-        {
-          "roadkey": "blackwood-east",
-          "destination": "blackwoodForest",
-          "direction": "30"
-        },
-        {
-          "roadkey": "blackwood-south",
-          "destination": "CD",
-          "direction": "300"
-        },
-        {
-          "roadkey": "Ce",
-          "destination": "C",
-          "direction": "160"
-        }
-      ]
-    },
-    "vaicalCastle": {
-      "key": "vaicalCastle",
-      "name": "바이칼 성",
-      "type": "village",
-      "positionX": "1685",
-      "positionY": "80",
-      "connection": [
-        {
-          "roadkey": "Ve",
-          "destination": "GL",
-          "direction": "0"
-        },
-        {
-          "roadkey": "Vs",
-          "destination": "BF",
-          "direction": "270"
-        },
-        {
-          "roadkey": "Vw",
-          "destination": "MIV",
-          "direction": "180"
-        }
-      ]
-    },
-    "boniche": {
-      "key": "boniche",
-      "name": "보니체아",
-      "type": "village",
-      "positionX": "1700",
-      "positionY": "825",
-      "connection": []
-    },
-    "middle-ridge": {
-      "key": "middle-ridge",
-      "name": "미들 릿지",
-      "type": "village",
-      "positionX": "1200",
-      "positionY": "140",
-      "connection": [
-        {
-          "roadkey": "Me",
-          "destination": "MIV",
-          "direction": "0"
-        },
-        {
-          "roadkey": "Bn",
-          "destination": "BF",
-          "direction": "270"
-        },
-        {
-          "roadkey": "Mw",
-          "destination": "C",
-          "direction": "180"
-        }
-      ]
-    },
-    "mountainTitania": {
-      "key": "mountainTitania",
-      "name": "티타니아 산",
-      "type": "dungeon",
-      "positionX": "125",
-      "positionY": "350",
-      "connection": [
-        {
-          "roadkey": "Ts",
-          "destination": "MTO",
-          "direction": "270"
-        }
-      ]
-    },
-    "crystallizedValley": {
-      "key": "crystallizedValley",
-      "name": "수정 협곡",
-      "type": "dungeon",
-      "positionX": "740",
-      "positionY": "110",
-      "connection": [
-        {
-          "roadkey": "Ws",
-          "destination": "W",
-          "direction": "90"
-        },
-        {
-          "roadkey": "CVw",
-          "destination": "OBC",
-          "direction": "180"
-        },
-        {
-          "roadkey": "Cn",
-          "destination": "C",
-          "direction": "270"
-        }
-      ]
-    },
-    "elvenForest": {
-      "key": "elvenForest",
-      "name": "엘프의 숲",
-      "type": "dungeon",
-      "positionX": "800",
-      "positionY": "650",
-      "connection": [
-        {
-          "roadkey": "EFe",
-          "destination": "ELM",
-          "direction": "0"
-        },
-        {
-          "roadkey": "EFw",
-          "destination": "ELR",
-          "direction": "180"
-        }
-      ]
-    },
-    "templeOfMoerae": {
-      "key": "templeOfMoerae",
-      "name": "모에라에 신전",
-      "type": "dungeon",
-      "positionX": "1000",
-      "positionY": "620",
-      "connection": [
-        {
-          "roadkey": "TMs",
-          "destination": "ELM",
-          "direction": "270"
-        }
-      ]
-    },
-    "capeOfTempest": {
-      "key": "capeOfTempest",
-      "name": "폭풍의 곶",
-      "type": "dungeon",
-      "positionX": "1150",
-      "positionY": "1030",
-      "connection": [
-        {
-          "roadkey": "CTn",
-          "destination": "SOM",
-          "direction": "90"
-        }
-      ]
-    },
-    "devilCastle": {
-      "key": "devilCastle",
-      "name": "마왕성",
-      "type": "dungeon",
-      "positionX": "1380",
-      "positionY": "475",
-      "connection": [
-        {
-          "roadkey": "Bs",
-          "destination": "BF",
-          "direction": "90"
-        }
-      ]
-    },
-    "blackwoodForest": {
-      "key": "blackwoodForest",
-      "name": "블랙우드 숲",
-      "type": "dungeon",
-      "positionX": "1510",
-      "positionY": "250",
-      "connection": [
-        {
-          "roadkey": "BFn",
-          "destination": "MIV",
-          "direction": "90"
-        },
-        {
-          "roadkey": "Be",
-          "destination": "B",
-          "direction": "180"
-        },
-        {
-          "roadkey": "Vs",
-          "destination": "V",
-          "direction": "45"
-        }
-      ]
-    },
-    "goldenLake": {
-      "key": "goldenLake",
-      "name": "금빛 호수",
-      "type": "dungeon",
-      "positionX": "1800",
-      "positionY": "180",
-      "connection": [
-        {
-          "roadkey": "Ve",
-          "destination": "V",
-          "direction": "90"
-        }
-      ]
-    },
-    "KAT": {
-      "key": "KAT",
-      "name": "카딜라 - 티타니아산",
-      "type": "turningpoint",
-      "position": "140-440",
-      "connection": [
-        {
-          "roadkey": "KATe",
-          "destination": "MTO",
-          "direction": "0"
-        },
-        {
-          "roadkey": "Ks",
-          "destination": "K",
-          "direction": "90"
-        },
-        {
-          "roadkey": "KATs",
-          "destination": "SOR",
-          "direction": "270"
-        }
-      ]
-    },
-    "MTO": {
-      "key": "MTO",
-      "name": "오베론 - 티타니아산",
-      "type": "turningpoint",
-      "positionX": "210",
-      "positionY": "380",
-      "connection": [
-        {
-          "roadkey": "Ts",
-          "destination": "MT",
-          "direction": "90"
-        },
-        {
-          "roadkey": "Ow",
-          "destination": "O",
-          "direction": "0"
-        },
-        {
-          "roadkey": "KATe",
-          "destination": "KAT",
-          "direction": "180"
-        }
-      ]
-    },
-    "SOR": {
-      "key": "SOR",
-      "name": "카딜라 - 사우스케이프",
-      "type": "turningpoint",
-      "positionX": "660",
-      "positionY": "660",
-      "connection": [
-        {
-          "roadkey": "KATs",
-          "destination": "KAT",
-          "direction": "90"
-        },
-        {
-          "roadkey": "Sn",
-          "destination": "S",
-          "direction": "270"
-        },
-        {
-          "roadkey": "SORe",
-          "destination": "ELR",
-          "direction": "45"
-        }
-      ]
-    },
-    "ELR": {
-      "key": "ELR",
-      "name": "엘프의 숲 - 레드로즈",
-      "type": "turningpoint",
-      "positionX": "720",
-      "positionY": "610",
-      "connection": [
-        {
-          "roadkey": "Rs",
-          "destination": "R",
-          "direction": "90"
-        },
-        {
-          "roadkey": "SORe",
-          "destination": "SOR",
-          "direction": "180"
-        },
-        {
-          "roadkey": "EFw",
-          "destination": "EF",
-          "direction": "315"
-        }
-      ]
-    },
-    "ELM": {
-      "key": "ELM",
-      "name": "모에라에 신전 - 엘프의 숲",
-      "type": "turningpoint",
-      "positionX": "970",
-      "positionY": "710",
-      "connection": [
-        {
-          "roadkey": "EFe",
-          "destination": "EF",
-          "direction": "180"
-        },
-        {
-          "roadkey": "TMs",
-          "destination": "TM",
-          "direction": "90"
-        },
-        {
-          "roadkey": "Mw",
-          "destination": "P",
-          "direction": "0"
-        }
-      ]
-    },
-    "SOM": {
-      "key": "SOM",
-      "name": "폭풍의 곶 - 사우스케이프",
-      "type": "turningpoint",
-      "positionX": "1020",
-      "positionY": "910",
-      "connection": [
-        {
-          "roadkey": "Se",
-          "destination": "S",
-          "direction": "180"
-        },
-        {
-          "roadkey": "Ms",
-          "destination": "P",
-          "direction": "0"
-        },
-        {
-          "roadkey": "CTn",
-          "destination": "CT",
-          "direction": "270"
-        }
-      ]
-    },
-    "OBC": {
-      "key": "OBC",
-      "name": "오베론 - 수정협곡",
-      "type": "turningpoint",
-      "positionX": "172",
-      "positionY": "30",
-      "connection": [
-        {
-          "roadkey": "Oe",
-          "destination": "O",
-          "direction": "180"
-        },
-        {
-          "roadkey": "CVw",
-          "destination": "CV",
-          "direction": "45"
-        },
-        {
-          "roadkey": "Cw",
-          "destination": "C",
-          "direction": "315"
-        }
-      ]
-    },
-    "MIV": {
-      "key": "MIV",
-      "name": "미들릿지 - 바이칼성",
-      "type": "turningpoint",
-      "positionX": "1020",
-      "positionY": "910",
-      "connection": [
-        {
-          "roadkey": "Me",
-          "destination": "M",
-          "direction": "180"
-        },
-        {
-          "roadkey": "Vw",
-          "destination": "V",
-          "direction": "0"
-        },
-        {
-          "roadkey": "BFn",
-          "destination": "BF",
-          "direction": "270"
-        }
-      ]
+  "Kadilla Castle": {
+    "nodeName": "카딜라 성",
+    "type": "village",
+    "connection": {
+      "Oberon": {
+        "roadCount": "7",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Dogbenefit Camp": {
+        "roadCount": "6",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
     }
   },
-  "RoadNode": {
-    "Ke": {
-      "name": "파인 강가",
-      "background": "null",
-      "length": "7"
-    },
-    "Ks": {
-      "name": "카딜라 성 근교",
-      "background": "null",
-      "length": "6"
-    },
-    "Ts": {
-      "name": "티타니아 산길",
-      "background": "null",
-      "length": "3"
-    },
-    "KATs": {
-      "name": "카딜라의 길",
-      "background": "null",
-      "length": "17"
-    },
-    "KATe": {
-      "name": "오베론 샛길",
-      "background": "null",
-      "length": "3"
-    },
-    "Ow": {
-      "name": "오베론 앞길",
-      "background": "null",
-      "length": "2"
-    },
-    "Oe": {
-      "name": "오베론 브릿지",
-      "background": "null",
-      "length": "2"
-    },
-    "Sn": {
-      "name": "카달라의 길",
-      "background": "null",
-      "length": "11"
-    },
-    "SORe": {
-      "name": "레드로즈행 길",
-      "background": "null",
-      "length": "4"
-    },
-    "Se": {
-      "name": "사우스케이프 근교",
-      "background": "null",
-      "length": "7"
-    },
-    "EFw": {
-      "name": "숲길",
-      "background": "null",
-      "length": "3"
-    },
-    "EFe": {
-      "name": "모에라에 방면 숲길",
-      "background": "null",
-      "length": "5"
-    },
-    "TMs": {
-      "name": "모에라에 신전 근교",
-      "background": "null",
-      "length": "3"
-    },
-    "Mw": {
-      "name": "글린트 평야",
-      "background": "null",
-      "length": "10"
-    },
-    "CTn": {
-      "name": "백사장",
-      "background": "null",
-      "length": "3"
-    },
-    "Ms": {
-      "name": "미라지 포트 근교",
-      "background": "null",
-      "length": "9"
-    },
-    "Rs": {
-      "name": "레드로즈 남쪽 다리",
-      "background": "null",
-      "length": "2"
-    },
-    "Cs": {
-      "name": "레드로즈 북쪽 다리",
-      "background": "null",
-      "length": "2"
-    },
-    "Cw": {
-      "name": "루트 콥웨브",
-      "background": "null",
-      "length": "13"
-    },
-    "Cn": {
-      "name": "협곡 사잇길",
-      "background": "null",
-      "length": "3"
-    },
-    "Ce": {
-      "name": "오솔길",
-      "background": "null",
-      "length": "7"
-    },
-    "Ws": {
-      "name": "윈터폴 근교",
-      "background": "null",
-      "length": "2"
-    },
-    "CVw": {
-      "name": "파인 평야",
-      "background": "null",
-      "length": "7"
-    },
-    "Me": {
-      "name": "산길",
-      "background": "null",
-      "length": "7"
-    },
-    "Bn": {
-      "name": "글린트 강가",
-      "background": "null",
-      "length": "5"
-    },
-    "Bs": {
-      "name": "블랙우드 근교",
-      "background": "null",
-      "length": "2"
-    },
-    "Be": {
-      "name": "블랙우드 숲길",
-      "background": "null",
-      "length": "4"
-    },
-    "BFn": {
-      "name": "던전 향하는 길",
-      "background": "null",
-      "length": "3"
-    },
-    "Vs": {
-      "name": "바이칼 성 남부",
-      "background": "null",
-      "length": "4"
-    },
-    "Vw": {
-      "name": "바이칼 성 서부",
-      "background": "null",
-      "length": "5"
-    },
-    "Ve": {
-      "name": "호수 산책로",
-      "background": "null",
-      "length": "2"
+  "Oberon": {
+    "nodeName": "오베론",
+    "type": "village",
+    "connection": {
+      "Kadilla Castle": {
+        "roadCount": "7",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Retreat Stone": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Winterfall": {
+    "nodeName": "윈터폴",
+    "type": "village",
+    "connection": {
+      "Crystallized Valley": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Cobweb": {
+    "nodeName": "콥웨브",
+    "type": "village",
+    "connection": {
+      "Crystallized Valley": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Middle Ridge": {
+        "roadCount": "10",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Blackwood": {
+        "roadCount": "13",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Redrose Castle": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Redrose Castle": {
+    "nodeName": "레드로즈 성",
+    "type": "village",
+    "connection": {
+      "Cobweb": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Cemetery": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Mirage Port": {
+    "nodeName": "미라지 포트",
+    "type": "village",
+    "connection": {
+      "Entrance of the Temple of Moerae": {
+        "roadCount": "6",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Statue of Golden Beetle Stone": {
+        "roadCount": "7",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Southcape": {
+    "nodeName": "사우스케이프",
+    "type": "village",
+    "connection": {
+      "Caravanserial Place": {
+        "roadCount": "11",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Statue of Golden Beetle Stone": {
+        "roadCount": "7",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Blackwood": {
+    "nodeName": "블랙우드",
+    "type": "village",
+    "connection": {
+      "Cobweb": {
+        "roadCount": "13",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Middle Ridge": {
+        "roadCount": "5",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Blackwood Forest": {
+        "roadCount": "4",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Devil Castle": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Vaical Castle": {
+    "nodeName": "바이칼 성",
+    "type": "village",
+    "connection": {
+      "Middle Ridge": {
+        "roadCount": "12",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Golden Lake": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Boniche": {
+    "nodeName": "보니체아",
+    "type": "village",
+    "connection": {}
+  },
+  "Middle Ridge": {
+    "nodeName": "미들 릿지",
+    "type": "village",
+    "connection": {
+      "Cobweb": {
+        "roadCount": "10",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Vaical Castle": {
+        "roadCount": "12",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Blackwood": {
+        "roadCount": "5",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Mountain Titania": {
+    "nodeName": "티타니아 산",
+    "type": "dungeon",
+    "connection": {
+      "Retreat Stone": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Crystallized Valley": {
+    "nodeName": "수정 협곡",
+    "type": "dungeon",
+    "connection": {
+      "Winterfall": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Cobweb": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Elven Forest": {
+    "nodeName": "엘프의 숲",
+    "type": "dungeon",
+    "connection": {
+      "Cemetery": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Entrance of the Temple of Moerae": {
+        "roadCount": "5",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Temple of Moerae": {
+    "nodeName": "모에라에 신전",
+    "type": "dungeon",
+    "connection": {
+      "Entrance of the Temple of Moerae": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Cape of Tempest": {
+    "nodeName": "폭풍의 곶",
+    "type": "dungeon",
+    "connection": {
+      "Statue of Golden Beetle Stone": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Devil Castle": {
+    "nodeName": "마왕성",
+    "type": "dungeon",
+    "connection": {
+      "Blackwood": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Blackwood Forest": {
+    "nodeName": "블랙우드 숲",
+    "type": "dungeon",
+    "connection": {
+      "Blackwood": {
+        "roadCount": "4",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Vaical Castle": {
+        "roadCount": "4",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Golden Lake": {
+    "nodeName": "금빛 호수",
+    "type": "dungeon",
+    "connection": {
+      "Vaical Castle": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Retreat Stone": {
+    "nodeName": "회군의 바위",
+    "type": "turningpoint",
+    "connection": {
+      "Mountain Titania": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Oberon": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Dogbenefit Camp": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Dogbenefit Camp": {
+    "nodeName": "도그베네핏 야영지",
+    "type": "turningpoint",
+    "connection": {
+      "Kadilla Castle": {
+        "roadCount": "6",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Retreat Stone": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Caravanserial Place": {
+        "roadCount": "17",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Cemetery": {
+    "nodeName": "공동묘지",
+    "type": "turningpoint",
+    "connection": {
+      "RedroseCastle": {
+        "roadCount": "2",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Elven Forest": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Caravanserial Place": {
+        "roadCount": "4",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Caravanserial Place": {
+    "nodeName": "여행자의 쉼터",
+    "type": "turningpoint",
+    "connection": {
+      "Dogbenefit Camp": {
+        "roadCount": "17",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Cemetery": {
+        "roadCount": "4",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Southcape": {
+        "roadCount": "11",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Entrance of the Temple of Moerae": {
+    "nodeName": "모에라에 신전 입구",
+    "type": "turningpoint",
+    "connection": {
+      "Elven Forest": {
+        "roadCount": "5",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Temple of Moerae": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Mirage Port": {
+        "roadCount": "6",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
+    }
+  },
+  "Statue of Golden Beetle Stone": {
+    "nodeName": "황금 풍뎅이 석상",
+    "type": "turningpoint",
+    "connection": {
+      "Mirage Port": {
+        "roadCount": "7",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Cape of Tempest": {
+        "roadCount": "3",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      },
+      "Southcape": {
+        "roadCount": "7",
+        "roadMonster": [
+          "assassin girl"
+        ]
+      }
     }
   }
 }

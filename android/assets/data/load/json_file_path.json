@@ -17,8 +17,8 @@
   "skin": {
     "filePath": "skin/uiskin.json"
   },
-  "dungeon_json":{
-  	"filePath" : "data/map/dungeon.json"
+  "road_json":{
+  	"filePath" : "data/map/road.json"
   },
   "monster_json":{
   	"filePath" : "data/unit/monster.json"
