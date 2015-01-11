@@ -4,13 +4,13 @@
     "type": "village",
     "connection": {
       "Oberon": {
-        "roadCount": "7",
+        "roadLength": "7",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Dogbenefit Camp": {
-        "roadCount": "6",
+        "roadLength": "6",
         "roadMonster": [
           "assassin girl"
         ]
@@ -22,13 +22,13 @@
     "type": "village",
     "connection": {
       "Kadilla Castle": {
-        "roadCount": "7",
+        "roadLength": "7",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Retreat Stone": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
@@ -40,7 +40,7 @@
     "type": "village",
     "connection": {
       "Crystallized Valley": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
@@ -52,25 +52,25 @@
     "type": "village",
     "connection": {
       "Crystallized Valley": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Middle Ridge": {
-        "roadCount": "10",
+        "roadLength": "10",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Blackwood": {
-        "roadCount": "13",
+        "roadLength": "13",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Redrose Castle": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
@@ -82,13 +82,13 @@
     "type": "village",
     "connection": {
       "Cobweb": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Cemetery": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
@@ -100,13 +100,13 @@
     "type": "village",
     "connection": {
       "Entrance of the Temple of Moerae": {
-        "roadCount": "6",
+        "roadLength": "6",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Statue of Golden Beetle Stone": {
-        "roadCount": "7",
+        "roadLength": "7",
         "roadMonster": [
           "assassin girl"
         ]
@@ -118,13 +118,13 @@
     "type": "village",
     "connection": {
       "Caravanserial Place": {
-        "roadCount": "11",
+        "roadLength": "11",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Statue of Golden Beetle Stone": {
-        "roadCount": "7",
+        "roadLength": "7",
         "roadMonster": [
           "assassin girl"
         ]
@@ -136,25 +136,25 @@
     "type": "village",
     "connection": {
       "Cobweb": {
-        "roadCount": "13",
+        "roadLength": "13",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Middle Ridge": {
-        "roadCount": "5",
+        "roadLength": "5",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Blackwood Forest": {
-        "roadCount": "4",
+        "roadLength": "4",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Devil Castle": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
@@ -166,13 +166,13 @@
     "type": "village",
     "connection": {
       "Middle Ridge": {
-        "roadCount": "12",
+        "roadLength": "12",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Golden Lake": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
@@ -189,19 +189,19 @@
     "type": "village",
     "connection": {
       "Cobweb": {
-        "roadCount": "10",
+        "roadLength": "10",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Vaical Castle": {
-        "roadCount": "12",
+        "roadLength": "12",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Blackwood": {
-        "roadCount": "5",
+        "roadLength": "5",
         "roadMonster": [
           "assassin girl"
         ]
@@ -213,7 +213,7 @@
     "type": "dungeon",
     "connection": {
       "Retreat Stone": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
@@ -225,13 +225,13 @@
     "type": "dungeon",
     "connection": {
       "Winterfall": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Cobweb": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
@@ -243,13 +243,13 @@
     "type": "dungeon",
     "connection": {
       "Cemetery": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Entrance of the Temple of Moerae": {
-        "roadCount": "5",
+        "roadLength": "5",
         "roadMonster": [
           "assassin girl"
         ]
@@ -261,7 +261,7 @@
     "type": "dungeon",
     "connection": {
       "Entrance of the Temple of Moerae": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
@@ -273,7 +273,7 @@
     "type": "dungeon",
     "connection": {
       "Statue of Golden Beetle Stone": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
@@ -285,7 +285,7 @@
     "type": "dungeon",
     "connection": {
       "Blackwood": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
@@ -297,13 +297,13 @@
     "type": "dungeon",
     "connection": {
       "Blackwood": {
-        "roadCount": "4",
+        "roadLength": "4",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Vaical Castle": {
-        "roadCount": "4",
+        "roadLength": "4",
         "roadMonster": [
           "assassin girl"
         ]
@@ -315,7 +315,7 @@
     "type": "dungeon",
     "connection": {
       "Vaical Castle": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
@@ -327,19 +327,19 @@
     "type": "turningpoint",
     "connection": {
       "Mountain Titania": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Oberon": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Dogbenefit Camp": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
@@ -351,19 +351,19 @@
     "type": "turningpoint",
     "connection": {
       "Kadilla Castle": {
-        "roadCount": "6",
+        "roadLength": "6",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Retreat Stone": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Caravanserial Place": {
-        "roadCount": "17",
+        "roadLength": "17",
         "roadMonster": [
           "assassin girl"
         ]
@@ -375,19 +375,19 @@
     "type": "turningpoint",
     "connection": {
       "RedroseCastle": {
-        "roadCount": "2",
+        "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Elven Forest": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Caravanserial Place": {
-        "roadCount": "4",
+        "roadLength": "4",
         "roadMonster": [
           "assassin girl"
         ]
@@ -399,19 +399,19 @@
     "type": "turningpoint",
     "connection": {
       "Dogbenefit Camp": {
-        "roadCount": "17",
+        "roadLength": "17",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Cemetery": {
-        "roadCount": "4",
+        "roadLength": "4",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Southcape": {
-        "roadCount": "11",
+        "roadLength": "11",
         "roadMonster": [
           "assassin girl"
         ]
@@ -423,19 +423,19 @@
     "type": "turningpoint",
     "connection": {
       "Elven Forest": {
-        "roadCount": "5",
+        "roadLength": "5",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Temple of Moerae": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Mirage Port": {
-        "roadCount": "6",
+        "roadLength": "6",
         "roadMonster": [
           "assassin girl"
         ]
@@ -447,19 +447,19 @@
     "type": "turningpoint",
     "connection": {
       "Mirage Port": {
-        "roadCount": "7",
+        "roadLength": "7",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Cape of Tempest": {
-        "roadCount": "3",
+        "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Southcape": {
-        "roadCount": "7",
+        "roadLength": "7",
         "roadMonster": [
           "assassin girl"
         ]
