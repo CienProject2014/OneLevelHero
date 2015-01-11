@@ -31,23 +31,22 @@ public class CharacterUiStage extends Stage {
 
 	public CharacterUiStage() {
 		uiTable = new Table();
-		
+
 		initialize();
-		
+
 		makeTable();
-		
+
 		uiTable.setFillParent(true);
 		uiTable.align(Align.bottom);
 		uiTable.add(bottomTable);
 
 		addActor(uiTable);
 	}
-	
-	
+
 	private void initialize() {
 		realHeight = Assets.windowHeight;
 		realWidth = Assets.windowWidth;
-		
+
 		bottomTable = new Table(Assets.skin);
 		statusbarTable = new Table[3];
 		charaterTable = new Table[3];
@@ -61,11 +60,11 @@ public class CharacterUiStage extends Stage {
 
 	// CurrentManager 에서 멤버를 가져와 Table 을 만든다.
 	private void makeTable() {
-		
+
 		battleMemberList = CurrentState.getInstance().getParty()
 				.getBattleMemberList();
 		battleMemberNumber = battleMemberList.size();
-		
+
 		for (int i = 0; i < battleMemberNumber; i++) {
 			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, Assets.skin);
 			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, Assets.skin);
@@ -75,18 +74,18 @@ public class CharacterUiStage extends Stage {
 			hpbar[i].setName("hpbar[" + i + "]");
 			hpbarName[i] = hpbar[i].getName();
 		}
-		
+
 		// 캐릭터 이미지 세팅
 		for (int i = 0; i < battleMemberNumber; i++) {
 			characterImage[i] = new Image(battleMemberList.get(i)
 					.getFaceTexture());
 		}
-		
+
 		for (int i = 0; i < battleMemberNumber; i++) {
 			statusbarTable[i] = new Table(Assets.skin);
 			charaterTable[i] = new Table(Assets.skin);
 		}
-		
+
 		for (int i = 0; i < battleMemberNumber; i++) {
 			statusbarTable[i].add(hpbar[i]).width(realWidth / 12)
 					.height(realHeight / 12).bottom();
@@ -106,7 +105,7 @@ public class CharacterUiStage extends Stage {
 					.height(realHeight / 4);
 		}
 	}
-	
+
 	// 정보 업데이트
 	@Override
 	public void act(float delta) {
@@ -115,8 +114,8 @@ public class CharacterUiStage extends Stage {
 		// Screen - act 에서 실행시킨다.
 		for (int i = 0; i < battleMemberNumber; i++) {
 			int hpValue = battleMemberList.get(i).getStatus().getHealthPoint();
-			Gdx.app.log("asdf", "이름? "+hpbar[i].getName());
-			
+			Gdx.app.log("이름?", hpbar[i].getName());
+
 			if (!hpbar[i].setValue(hpValue))
 				Gdx.app.log("GameUiStage", "체력 설정 실패");
 

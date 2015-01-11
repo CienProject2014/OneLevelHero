@@ -1,5 +1,10 @@
 package com.mygdx.manager;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mygdx.enums.WorldNodeEnum;
+import com.mygdx.model.CurrentPosition.CurrentMovingInfo;
 import com.mygdx.model.Hero;
 import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
@@ -12,6 +17,24 @@ public class LoadManager {
 		Assets.loadAll();
 		setHero();
 		setPartyList();
+		setCurrentPosition();
+	}
+
+	private void setCurrentPosition() {
+		//Blackwood 마을에서부터 게임을 시작한다.
+		CurrentState.getInstance().getCurrentPosition()
+				.setCurrentNode(WorldNodeEnum.BLACKWOOD.getNodeName());
+
+		//FIXME 초기 CurrentMoving 정보를 주입한다.
+		CurrentMovingInfo currentMovingInfo = CurrentState.getInstance()
+				.getCurrentPosition().getCurrentMovingInfo();
+		currentMovingInfo.setStartNode("Blackwood");
+		currentMovingInfo.setDestinationNode("Blackwood Forest");
+		currentMovingInfo.setRoadLength(7);
+		currentMovingInfo.setLeftRoadLength(7);
+		List<String> monsterList = new ArrayList();
+		monsterList.add("assassin girl");
+		currentMovingInfo.setRoadMonsterList(monsterList);
 	}
 
 	public static LoadManager getInstance() {

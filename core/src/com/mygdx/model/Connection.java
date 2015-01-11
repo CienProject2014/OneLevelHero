@@ -8,15 +8,15 @@ import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
 
 public class Connection implements Serializable {
-	private int roadCount;
+	private int roadLength;
 	private List<String> roadMonster;
 
-	public int getRoadCount() {
-		return roadCount;
+	public int getroadLength() {
+		return roadLength;
 	}
 
-	public void setRoadCount(int roadCount) {
-		this.roadCount = roadCount;
+	public void setroadLength(int roadLength) {
+		this.roadLength = roadLength;
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class Connection implements Serializable {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {
-		roadCount = json.readValue("roadCount", Integer.class, jsonData);
+		roadLength = json.readValue("roadLength", Integer.class, jsonData);
 		roadMonster = json.readValue("roadMonster", ArrayList.class,
 				String.class, jsonData);
 

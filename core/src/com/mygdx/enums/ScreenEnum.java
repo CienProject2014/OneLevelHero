@@ -20,24 +20,23 @@ import com.mygdx.screen.SaveScreen;
 import com.mygdx.screen.StatusScreen;
 import com.mygdx.screen.VillageScreen;
 import com.mygdx.screen.WorldMapScreen;
-import com.mygdx.screen.WorldMapScreen2;
 import com.mygdx.test.Overlap2DTest;
 
 public enum ScreenEnum {
-	
-    OVERLAP {
-        @Override
-        public Screen getScreenInstance() {
-            return new Overlap2DTest();
-        }
-    },
-    GREETING {
-        @Override
-        public Screen getScreenInstance() {
-            return new GreetingScreen();
-        }
 
-    },
+	OVERLAP {
+		@Override
+		public Screen getScreenInstance() {
+			return new Overlap2DTest();
+		}
+	},
+	GREETING {
+		@Override
+		public Screen getScreenInstance() {
+			return new GreetingScreen();
+		}
+
+	},
 
 	MENU {
 		public Screen getScreenInstance() {
@@ -62,7 +61,7 @@ public enum ScreenEnum {
 	},
 	WORLD_MAP2 {
 		public Screen getScreenInstance() {
-			return new WorldMapScreen2();
+			return new WorldMapScreen();
 		}
 	},
 	CREDIT {

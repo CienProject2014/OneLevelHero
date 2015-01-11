@@ -16,7 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.JsonParser;
@@ -57,6 +56,7 @@ public class Assets {
 	public static Map<String, JsonStringFile> filePathMap = new HashMap<>();
 	public static Map<String, String> jsonStringMap = new HashMap<>();
 	public static Map<String, Texture> characterTextureMap = new HashMap<>();
+	public static Map<String, Texture> monsterTextureMap = new HashMap<>();
 	public static Map<String, Texture> backgroundTextureMap = new HashMap<>();
 	public static Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<>();
 
@@ -64,7 +64,7 @@ public class Assets {
 	public static Map<String, NPC> npcMap;
 	public static Map<String, Monster> monsterMap;
 	public static Map<String, Village> villageMap;
-	public static ObjectMap<String, WorldNodeInfo> worldNodeInfoMap;
+	public static Map<String, WorldNodeInfo> worldNodeInfoMap;
 
 	public static void loadAll() {
 		loadFilePath();
@@ -84,7 +84,6 @@ public class Assets {
 		fontLoad();
 		chatButtonLoad();
 		etcResourceLoad();
-
 	}
 
 	private static void mapInfoLoad() {
@@ -123,20 +122,17 @@ public class Assets {
 	}
 
 	private static void roadInfoLoad() {
-		//dungeonMap = JsonParser.parseMap(DungeonInfo.class,jsonMap.get(JsonEnum.DUNGEON_JSON.getJsonName()));
 
 	}
 
 	private static void heroInfoLoad() {
-
 		//hero 리스트를 담은 Json을 불러와 객체화한다.
 		heroMap = JsonParser.parseMap(Hero.class,
 				jsonStringMap.get(JsonEnum.HERO_JSON.getJsonName()));
-
 	}
 
 	private static void worldMapInfoLoad() {
-		worldNodeInfoMap = JsonParser.parseObjectMap(WorldNodeInfo.class,
+		worldNodeInfoMap = JsonParser.parseMap(WorldNodeInfo.class,
 				jsonStringMap.get(JsonEnum.WORLDMAP_JSON.getJsonName()));
 	}
 
@@ -161,8 +157,8 @@ public class Assets {
 	private static void atlasUiTextureLoad() {
 		List<AtlasUiFile> atlasUiFileList = JsonParser
 				.parseList(AtlasUiFile.class,
-
-				filePathMap.get(JsonEnum.ATLAS_UI_PATH.getJsonName()).getFile());
+						filePathMap.get(JsonEnum.ATLAS_UI_PATH.getJsonName())
+								.getFile());
 		for (AtlasUiFile atlasUiFile : atlasUiFileList) {
 			for (String element : atlasUiFile.getElement()) {
 				atlasUiMap.put(element, new TextureRegionDrawable(atlasUiFile
@@ -181,6 +177,14 @@ public class Assets {
 			characterTextureMap.put(entry.getKey(), entry.getValue().getFile());
 		}
 
+		Map<String, TextureFile> monsterFileMap = JsonParser.parseMap(
+				TextureFile.class,
+				filePathMap.get(JsonEnum.MONSTER_FILE_PATH.getJsonName())
+						.getFile());
+		for (Entry<String, TextureFile> entry : monsterFileMap.entrySet()) {
+			monsterTextureMap.put(entry.getKey(), entry.getValue().getFile());
+		}
+
 		//background
 		Map<String, TextureFile> backgroundFileMap = JsonParser.parseMap(
 				TextureFile.class,
@@ -193,9 +197,7 @@ public class Assets {
 	}
 
 	private static void fontLoad() {
-
 		font = new BitmapFont(Gdx.files.internal("skin/hangeul2.fnt"));
-
 	}
 
 	private static void chatButtonLoad() {

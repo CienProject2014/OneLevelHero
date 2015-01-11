@@ -11,32 +11,29 @@ import com.mygdx.state.CurrentState;
 
 public class RewardManager {
 
-	public Queue<RewardInfo> getRewardQueue() {
-		return rewardQueue;
-	}
+	private static Queue<RewardInfo> rewardQueue = CurrentState.getInstance()
+			.getRewardQueue();;
+	private static Queue<RewardInfo> achievedRewardQueue = CurrentState
+			.getInstance().getAchievedRewardQueue();;
 
-	public Queue<RewardInfo> getAchievedRewardQueue() {
-		return achievedRewardQueue;
-	}
-
-	private static Queue<RewardInfo> rewardQueue;
-	private static Queue<RewardInfo> achievedRewardQueue;
 	// (3) 퀘스트 달성 여부 큐
 	// 아직 미구현
 
-	private static RewardManager instance;
-
-	public static RewardManager getInstance() {
-		if (null == instance) {
-			instance = new RewardManager();
-		}
-		return instance;
+	public static Queue<RewardInfo> getRewardQueue() {
+		return rewardQueue;
 	}
 
-	public RewardManager() {
-		rewardQueue = CurrentState.getInstance().getRewardQueue();
-		achievedRewardQueue = CurrentState.getInstance()
-				.getAchievedRewardQueue();
+	public static void setRewardQueue(Queue<RewardInfo> rewardQueue) {
+		RewardManager.rewardQueue = rewardQueue;
+	}
+
+	public static Queue<RewardInfo> getAchievedRewardQueue() {
+		return achievedRewardQueue;
+	}
+
+	public static void setAchievedRewardQueue(
+			Queue<RewardInfo> achievedRewardQueue) {
+		RewardManager.achievedRewardQueue = achievedRewardQueue;
 	}
 
 	public static void addEventReward(RewardInfo rewardInfo) {

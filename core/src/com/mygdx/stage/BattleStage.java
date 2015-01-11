@@ -17,6 +17,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.PlatformResourceManager;
 import com.mygdx.model.LivingUnit;
+import com.mygdx.model.Monster;
 import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
 import com.uwsoft.editor.renderer.Overlap2DStage;
@@ -41,7 +42,8 @@ public class BattleStage extends Overlap2DStage {
 	private SimpleButtonScript escapeButton;
 
 	// Battle controller
-	private BattleManager controller;
+	private BattleManager battleManager;
+	private Monster monster;
 
 	// Unit array
 	private ArrayList<LivingUnit> units;
@@ -51,8 +53,9 @@ public class BattleStage extends Overlap2DStage {
 		super(new StretchViewport(rm.stageWidth, rm.currentResolution.height));
 		this.rm = rm;
 
-		controller = new BattleManager();
-
+		battleManager = new BattleManager();
+		monster = CurrentState.getInstance().getCurrentPosition()
+				.getCurrentMovingInfo().getSelectedMonster();
 		// Overlap2D로 만든 신(Scene)
 		initSceneLoader(rm);
 		sceneLoader.setResolution(rm.currentResolution.name);
@@ -76,7 +79,7 @@ public class BattleStage extends Overlap2DStage {
 	public void makeOrderedList() {
 		units = new ArrayList<LivingUnit>(4);
 		units.addAll(CurrentState.getInstance().getParty().getPartyList());
-		units.add(CurrentState.getInstance().getCurrentDungeon().getMonster());
+		units.add(monster);
 
 		Collections.sort(units);
 
@@ -158,7 +161,7 @@ public class BattleStage extends Overlap2DStage {
 										.getBattleMemberList().get(0)
 										.getStatus().getHealthPoint() - 10);
 
-				controller.userAttack(getCurrentActor());
+				battleManager.userAttack(getCurrentActor());
 				updateTable();
 			}
 		});
@@ -166,7 +169,7 @@ public class BattleStage extends Overlap2DStage {
 		skillButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "스킬!");
-				controller.userSkill(getCurrentActor(), "짱쎈공격");
+				battleManager.userSkill(getCurrentActor(), "짱쎈공격");
 				updateTable();
 			}
 		});
@@ -187,7 +190,6 @@ public class BattleStage extends Overlap2DStage {
 	}
 
 	private Image getMonsterImage() {
-		return new Image(CurrentState.getInstance().getCurrentDungeon()
-				.getMonster().getFaceTexture());
+		return new Image(monster.getFaceTexture());
 	}
 }
