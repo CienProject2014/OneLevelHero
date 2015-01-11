@@ -38,7 +38,7 @@ public class MovingScreen implements Screen {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		movingLabel.setText(currentMovingInfo.getDestinationNode() + "까지"
-				+ currentMovingInfo.getLeftRoadLength());
+				+ MovingManager.getLeftRoadLength());
 
 		stage.draw();
 	}

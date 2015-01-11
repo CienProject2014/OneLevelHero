@@ -5,6 +5,7 @@ import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.model.CurrentPosition;
 import com.mygdx.model.CurrentPosition.CurrentMovingInfo;
+import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
 
 public class MovingManager {
@@ -15,29 +16,35 @@ public class MovingManager {
 	private static int roadLength = currentMovingInfo.getRoadLength();
 	private static int leftRoadLength = currentMovingInfo.getLeftRoadLength();
 
+	public static int getLeftRoadLength() {
+		return leftRoadLength;
+	}
+
+	public static void setLeftRoadLength(int leftRoadLength) {
+		MovingManager.leftRoadLength = leftRoadLength;
+	}
+
 	public static void ChangeDestination() {
 	}
 
 	public static String checkStage() {
-		Gdx.app.log("Test", "checkDirection");
 		return "checkDirection";
 	}
 
 	public static void goForward() {
-		Gdx.app.log("test", "goForward");
 		if (isRoadLeft()) {
-			movingRoad();
 			leftRoadLength--;
+			movingRoad();
+			Gdx.app.log("LeftRoadLength", String.valueOf(leftRoadLength));
 		} else {
 			goIntoDestinationNode();
 		}
 	}
 
 	public static void goBackward() {
-		Gdx.app.log("test", "goForward");
 		if (roadLength > leftRoadLength) {
-			movingRoad();
 			leftRoadLength++;
+			movingRoad();
 		} else {
 			goIntoDestinationNode();
 		}
@@ -52,14 +59,23 @@ public class MovingManager {
 	private static void goIntoDestinationNode() {
 		//목적지 노드에 도착해서 현재 위치로 설정함
 		currentPosition.setCurrentNode(currentMovingInfo.getDestinationNode());
+		System.out.println(Assets.worldNodeInfoMap.get(
+				currentPosition.getCurrentNode()).getType());
 
-		if (currentPosition.getCurrentNode().equals("village")) {
-			new ScreenController(ScreenEnum.VILLAGE);
-		} else if (currentPosition.getCurrentNode().equals("dungeon")) {
-			new ScreenController(ScreenEnum.VILLAGE);
-		} else if (currentPosition.getCurrentNode().equals("turningpoint")) {
-			new ScreenController(ScreenEnum.WORLD_MAP);
-		} else {
+		switch (Assets.worldNodeInfoMap.get(currentPosition.getCurrentNode())
+				.getType()) {
+			case "village":
+				new ScreenController(ScreenEnum.VILLAGE);
+				break;
+			case "dungeon":
+				new ScreenController(ScreenEnum.VILLAGE);
+				break;
+			case "turningpoint":
+				new ScreenController(ScreenEnum.WORLD_MAP);
+				break;
+			default:
+				new ScreenController(ScreenEnum.VILLAGE);
+				break;
 		}
 	}
 

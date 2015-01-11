@@ -56,8 +56,6 @@ public class MonsterStage extends Stage {
 	}
 
 	private Image getMonsterImage() {
-		Gdx.app.log("Monster Name", monster.getName());
-		Gdx.app.log("Monster FilePath", monster.getFaceTexturePath());
 		return new Image(monster.getFaceTexture());
 	}
 
