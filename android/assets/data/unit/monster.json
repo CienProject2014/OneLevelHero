@@ -1,7 +1,7 @@
 {
-  "Monster1": {
-    "name": "Monster1",
-    "faceTexturePath": "a1",
+  "assassin girl": {
+    "name": "assassin girl",
+    "faceTexturePath": "assassin girl",
     "status": {
       "attack": 100,
       "defense": 10,

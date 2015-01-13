@@ -1,12 +1,11 @@
 package com.mygdx.model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.state.Assets;
 
 public class Unit {
 	private String name;
-	private Texture faceTexture;
-	private String faceTexturePath;
+	protected Texture faceTexture;
+	protected String faceTexturePath;
 
 	public String getName() {
 		return name;
@@ -17,8 +16,6 @@ public class Unit {
 	}
 
 	public Texture getFaceTexture() {
-		if (faceTexture == null)
-			faceTexture = Assets.characterTextureMap.get(faceTexturePath);
 		return faceTexture;
 	}
 

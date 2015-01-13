@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.mygdx.model.Monster;
 import com.mygdx.state.CurrentState;
 
 public class MonsterStage extends Stage {
@@ -19,6 +20,7 @@ public class MonsterStage extends Stage {
 	private float topPadValue; // 몬스터 테이블의 세로축 위치
 	private float innerTableWidth; // 몬스터 테이블의 최대 가로 크기
 	private float innerTableHeight; // 몬스터 테이블의 최대 세로 크기
+	private static Monster monster;
 
 	public MonsterStage() {
 		windowWidth = Gdx.graphics.getWidth();
@@ -27,6 +29,8 @@ public class MonsterStage extends Stage {
 		topPadValue = windowHeight * 0.125f;
 		innerTableWidth = windowWidth * 0.75f;
 		innerTableHeight = windowHeight * 0.625f;
+		monster = CurrentState.getInstance().getCurrentPosition()
+				.getCurrentMovingInfo().getSelectedMonster();
 
 		setMonsterTable();
 	}
@@ -52,17 +56,12 @@ public class MonsterStage extends Stage {
 	}
 
 	private Image getMonsterImage() {
-		Gdx.app.log("Monster Name", CurrentState.getInstance()
-				.getCurrentDungeon().getMonster().getName());
-		return new Image(CurrentState.getInstance().getCurrentDungeon()
-				.getMonster().getFaceTexture());
+		return new Image(monster.getFaceTexture());
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		return new TextureRegionDrawable(new TextureRegion(new Texture(
-				Gdx.files.internal("texture/battle/"
-						+ CurrentState.getInstance().getCurrentDungeon()
-								.getBackground() + ".png"))));
+				Gdx.files.internal("texture/battle/forest.png"))));
 	}
 
 }

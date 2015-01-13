@@ -12,7 +12,7 @@ public class OneLevelTest extends Game {
 	public void create() {
 		LoadManager.getInstance();
 		ScreenManager.getInstance().initialize(this);
-		new ScreenController(ScreenEnum.WORLD_MAP);
+		new ScreenController(ScreenEnum.MOVING);
 	}
 
 }

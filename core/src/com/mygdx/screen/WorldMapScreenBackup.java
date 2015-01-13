@@ -1,20 +1,26 @@
-package com.mygdx.test;
+package com.mygdx.screen;
 
+/*
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.stage.WorldStage;
 
-// 충돌 문제로 관련 리소스를 삭제했기떄문에 더 이상 동작하지 않음 소스만 참조할 것
-public class Overlap2DTest implements Screen {
-	private GameStage stage;
+public class WorldMapScreenBackup implements Screen {
+
+	private SpriteBatch batch;
+	private WorldStage worldmap;
+
+	public WorldMapScreenBackup() {
+
+	}
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0, 0, 0, 0);
+		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		stage.act();
-		stage.draw();
+		worldmap.draw();
 	}
 
 	@Override
@@ -25,7 +31,9 @@ public class Overlap2DTest implements Screen {
 
 	@Override
 	public void show() {
-		stage = new GameStage();
+
+		worldmap = new WorldStage();
+		Gdx.input.setInputProcessor(worldmap);
 	}
 
 	@Override
@@ -49,7 +57,19 @@ public class Overlap2DTest implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-
 	}
 
+	public SpriteBatch getBatch() {
+		return batch;
+	}
+
+	public void setBatch(SpriteBatch batch) {
+		this.batch = batch;
+	}
+
+	
+	
+	
+	
 }
+*/

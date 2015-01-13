@@ -8,6 +8,9 @@
   "character_file_path": {
     "filePath": "data/load/character_file_path.json"
   },
+  "monster_file_path":{
+  	"filePath": "data/load/monster_file_path.json"
+  },
   "json_file_path":{
   	"filePath":"data/load/json_file_path.json"
   }

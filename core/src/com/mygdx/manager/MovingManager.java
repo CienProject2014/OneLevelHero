@@ -3,129 +3,84 @@ package com.mygdx.manager;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.model.VillageInfo;
-import com.mygdx.model.WorldMapInfo.RodeInfo;
+import com.mygdx.model.CurrentPosition;
+import com.mygdx.model.CurrentPosition.CurrentMovingInfo;
 import com.mygdx.state.Assets;
 import com.mygdx.state.CurrentState;
 
 public class MovingManager {
+	private static CurrentPosition currentPosition = CurrentState.getInstance()
+			.getCurrentPosition();
+	private static CurrentMovingInfo currentMovingInfo = currentPosition
+			.getCurrentMovingInfo();
+	private static int roadLength = currentMovingInfo.getRoadLength();
+	private static int leftRoadLength = currentMovingInfo.getLeftRoadLength();
 
-	private RodeInfo currentRodeInfo;
-
-	private int roadLength;
-	private int leftLength;
-	public static int temp;
-	private boolean battled;
-
-	private EncounterManager encounter;
-	private String currentPosition;
-	private String currentDestination;
-	private String currentStartingpoint;
-
-	VillageInfo villageInfo;
-
-	public MovingManager() {
-		encounter = new EncounterManager();
-		battled = false;
-
-		villageInfo = CurrentState.getInstance().getVillageInfo();
-
-		currentDestination = villageInfo.getCurrentDestination();
-		currentPosition = villageInfo.getCurrentPosition();
-		currentStartingpoint = villageInfo.getCurrentStarting();
-
-		currentRodeInfo = Assets.worldInfo.getRodeInfo().get(currentPosition);
-
-		roadLength = currentRodeInfo.getLength();
-		leftLength = roadLength;
-		if (battled) {
-			leftLength = temp;
-			battled = false;
-		}
-
+	public static int getLeftRoadLength() {
+		return leftRoadLength;
 	}
 
-	public int getLeftLength() {
-		return leftLength;
+	public static void setLeftRoadLength(int leftRoadLength) {
+		MovingManager.leftRoadLength = leftRoadLength;
 	}
 
-	public String getRoadName() {
-		return currentRodeInfo.getName();
+	public static void ChangeDestination() {
 	}
 
-	public String getCurrentDestination() {
-		return currentDestination;
-	}
-
-	public void ChangeDestination() {
-
-	}
-
-	public String checkStage() {
-		Gdx.app.log("Test", "checkDirection");
+	public static String checkStage() {
 		return "checkDirection";
 	}
 
-	public void goForward() {
-		Gdx.app.log("test", "goForward");
-		if (isLeft()) {
-			thenEncounterMonster();
+	public static void goForward() {
+		if (isRoadLeft()) {
+			leftRoadLength--;
+			movingRoad();
+			Gdx.app.log("LeftRoadLength", String.valueOf(leftRoadLength));
 		} else {
-			thenGoVillage();
-		}
-
-	}
-
-	private void thenEncounterMonster() {
-		leftLength--;
-		if (encounter.isOccur()) {
-			temp = leftLength;
-			battled = true;
-			encounter.start();
+			goIntoDestinationNode();
 		}
 	}
 
-	private void thenGoVillage() {
-		villageInfo.setCurrentState(Assets.worldInfo.getNodeInfo()
-				.get(currentDestination).getType());
-
-		villageInfo.setCurrentPosition(currentDestination);
-
-		villageInfo.setCurrentDestination(null);
-
-		villageInfo.setCurrentStarting(null);
-
-		String currentState = villageInfo.getCurrentState();
-
-		if (currentState.equals("village")) {
-
-			new ScreenController(ScreenEnum.VILLAGE);
-
-		} else if (currentState.equals("dungeon")) {
-
-			new ScreenController(ScreenEnum.VILLAGE);
-
-		} else if (currentState.equals("turningpoint")) {
-
-			new ScreenController(ScreenEnum.WORLD_MAP);
-
+	public static void goBackward() {
+		if (roadLength > leftRoadLength) {
+			leftRoadLength++;
+			movingRoad();
 		} else {
-
+			goIntoDestinationNode();
 		}
 	}
 
-	private boolean isLeft() {
-		return (leftLength > 0) ? true : false;
+	private static void movingRoad() {
+		if (EncounterManager.isBattleOccured()) {
+			EncounterManager.encountEnemy();
+		}
 	}
 
-	public void goBackward() {
+	private static void goIntoDestinationNode() {
+		//목적지 노드에 도착해서 현재 위치로 설정함
+		currentPosition.setCurrentNode(currentMovingInfo.getDestinationNode());
+		System.out.println(Assets.worldNodeInfoMap.get(
+				currentPosition.getCurrentNode()).getType());
 
-		String temp = currentDestination;
+		switch (Assets.worldNodeInfoMap.get(currentPosition.getCurrentNode())
+				.getType()) {
+			case "village":
+				new ScreenController(ScreenEnum.VILLAGE);
+				break;
+			case "dungeon":
+				new ScreenController(ScreenEnum.VILLAGE);
+				break;
+			case "turningpoint":
+				new ScreenController(ScreenEnum.WORLD_MAP);
+				break;
+			default:
+				new ScreenController(ScreenEnum.VILLAGE);
+				break;
+		}
+	}
 
-		currentDestination = currentStartingpoint;
-		currentStartingpoint = temp;
-
-		leftLength = roadLength - leftLength;
+	private static boolean isRoadLeft() {
+		return (leftRoadLength > 0) ? true : false;
 	}
 
 }

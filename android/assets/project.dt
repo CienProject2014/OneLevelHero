@@ -1,1 +1,2 @@
 {"resolutions":[{"width":1280,"height":720,"name":"TestLauncher"}],"scenes":[{"ambientColor":[0.5,0.5,0.5,1],"physicsPropertiesVO":{},"sceneName":"MainScene"},{"ambientColor":[0.5,0.5,0.5,1],"physicsPropertiesVO":{},"sceneName":"BattleUI"},{"ambientColor":[0.5,0.5,0.5,1],"physicsPropertiesVO":{},"sceneName":"GameUI"}],"originalResolution":{"width":1920,"height":1080,"name":"orig"}}
+

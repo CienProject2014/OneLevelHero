@@ -7,31 +7,30 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.MovingManager;
 import com.mygdx.state.Assets;
 
 public class EncounterStage extends Stage {
 	private TextButton fightButton;
 	private TextButton fleeButton;
-	
+
 	private Table selTable;
-	
+
 	public EncounterStage() {
 		fightButton = new TextButton("싸운다", Assets.skin);
 		fleeButton = new TextButton("도망친다", Assets.skin);
-		
+
 		selTable = new Table(Assets.skin);
 		selTable.setFillParent(true);
 		//selTable.row();
 		selTable.add(fightButton);
 		selTable.add(fleeButton);
-		
+
 		selTable.bottom();
-		addActor(selTable);	// show selTable 
-		
+		addActor(selTable); // show selTable 
+
 		addListener(); // 리스너 할당
 	}
-	
+
 	private void addListener() {
 		fightButton.addListener(new InputListener() {
 			@Override
@@ -57,7 +56,7 @@ public class EncounterStage extends Stage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				MovingManager.temp++; // 임시. 캡슐화 고려 필요
+
 				new ScreenController(ScreenEnum.MOVING);
 			}
 		});

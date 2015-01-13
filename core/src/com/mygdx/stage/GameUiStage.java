@@ -20,7 +20,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.game.OneLevelHero;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryPopup;
 import com.mygdx.manager.RewardManager;
@@ -38,8 +37,6 @@ public class GameUiStage extends Stage {
 	private InventoryPopup inventoryActor;
 	private DragAndDrop dragAndDrop;
 	private Stack<MessagePopup> alertMessage;
-
-	private RewardManager rewardManager;
 	private MessagePopup statusMessagePopup;
 	private ImageButton downArrowButton;
 	private ImageButton bagButton;
@@ -80,7 +77,6 @@ public class GameUiStage extends Stage {
 		charatertable = new Table[3];
 		battleMemberNumber = CurrentState.getInstance().getParty()
 				.getBattleMemberList().size();
-		rewardManager = RewardManager.getInstance();
 		alertMessage = new Stack<MessagePopup>();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
@@ -125,7 +121,7 @@ public class GameUiStage extends Stage {
 		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop, skin);
 
 		// 보상 이벤트 처리
-		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
+		Iterator<RewardInfo> iterator = RewardManager.getRewardQueue()
 				.iterator();
 		while (iterator.hasNext()) {
 			RewardInfo nextIterator = iterator.next();

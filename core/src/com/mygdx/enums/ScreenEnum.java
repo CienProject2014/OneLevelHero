@@ -59,6 +59,11 @@ public enum ScreenEnum {
 			return new WorldMapScreen();
 		}
 	},
+	WORLD_MAP2 {
+		public Screen getScreenInstance() {
+			return new WorldMapScreen();
+		}
+	},
 	CREDIT {
 		public Screen getScreenInstance() {
 			return new CreditScreen();

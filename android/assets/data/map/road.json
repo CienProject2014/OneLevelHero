@@ -1,22 +1,7 @@
 {
-  "setting": {
-    "O": {
-      "K": "dungeon1",
-      "vil3": "dungeon2"
-    },
-    "vil2": {
-      "vil1": "dungeon1",
-      "vil3": "dungeon2"
-    },
-    "vil3": {
-      "vil1": "dungeon2",
-      "vil2": "dungeon2"
-    }
-  },
-  "actual": {
     "dungeon1": {
       "name": "dungeon1",
-      "itemNumber": "2",
+      "itemCount": "2",
       "items": [
         "Item1",
         "Item2"
@@ -36,4 +21,3 @@
       "background": "forest"
     }
   }
-}
