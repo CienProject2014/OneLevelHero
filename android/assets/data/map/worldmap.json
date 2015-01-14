@@ -5,12 +5,14 @@
     "connection": {
       "Oberon": {
         "roadLength": "7",
+        "arrowName": "10to3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Dogbenefit Camp": {
         "roadLength": "6",
+        "arrowName" : "10to21",
         "roadMonster": [
           "assassin girl"
         ]
@@ -23,12 +25,14 @@
     "connection": {
       "Kadilla Castle": {
         "roadLength": "7",
+        "arrowName" : "3to10",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Retreat Stone": {
         "roadLength": "2",
+        "arrowName" : "3to20",
         "roadMonster": [
           "assassin girl"
         ]
@@ -40,6 +44,7 @@
     "type": "village",
     "connection": {
       "Crystallized Valley": {
+      	"arrowName" : "8to13",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
@@ -52,24 +57,28 @@
     "type": "village",
     "connection": {
       "Crystallized Valley": {
+      	"arrowName" : "2to13",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Middle Ridge": {
+      	"arrowName": "2to5",
         "roadLength": "10",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Blackwood": {
+      	"arrowName" : "2to1",
         "roadLength": "13",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Redrose Castle": {
+      	"arrowName" : "2to7",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
@@ -82,12 +91,14 @@
     "type": "village",
     "connection": {
       "Cobweb": {
+      	"arrowName" : "7to2",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Cemetery": {
+      	"arrowName" : "7to22",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
@@ -100,6 +111,7 @@
     "type": "village",
     "connection": {
       "Entrance of the Temple of Moerae": {
+        "arrowName" : "9to24",
         "roadLength": "6",
         "roadMonster": [
           "assassin girl"
@@ -107,6 +119,7 @@
       },
       "Statue of Golden Beetle Stone": {
         "roadLength": "7",
+        "arrowName" : "9to25",
         "roadMonster": [
           "assassin girl"
         ]
@@ -118,12 +131,14 @@
     "type": "village",
     "connection": {
       "Caravanserial Place": {
+      	"arrowName" : "4to23",
         "roadLength": "11",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Statue of Golden Beetle Stone": {
+      	"arrowName" : "4to25",
         "roadLength": "7",
         "roadMonster": [
           "assassin girl"
@@ -136,24 +151,28 @@
     "type": "village",
     "connection": {
       "Cobweb": {
+      	"arrowName" : "1to2",
         "roadLength": "13",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Middle Ridge": {
+      	"arrowName" : "1to5",
         "roadLength": "5",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Blackwood Forest": {
+      	"arrowName" : "1to17",
         "roadLength": "4",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Devil Castle": {
+      	"arrowName" : "1to16",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
@@ -166,12 +185,14 @@
     "type": "village",
     "connection": {
       "Middle Ridge": {
+      	"arrowName" : "6to5",
         "roadLength": "12",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Golden Lake": {
+      	"arrowName" : "6to18",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
@@ -189,18 +210,21 @@
     "type": "village",
     "connection": {
       "Cobweb": {
+      	"arrowName" : "5to2",
         "roadLength": "10",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Vaical Castle": {
+      	"arrowName" : "5to6",
         "roadLength": "12",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Blackwood": {
+      	"arrowName" : "5to1",
         "roadLength": "5",
         "roadMonster": [
           "assassin girl"
@@ -213,6 +237,7 @@
     "type": "dungeon",
     "connection": {
       "Retreat Stone": {
+      	"arrowName" : "12to20",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
@@ -225,12 +250,14 @@
     "type": "dungeon",
     "connection": {
       "Winterfall": {
+      	"arrowName" : "13to8",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Cobweb": {
+      	"arrowName" : "13to2",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
@@ -243,12 +270,14 @@
     "type": "dungeon",
     "connection": {
       "Cemetery": {
+      	"arrowName" : "14to22",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Entrance of the Temple of Moerae": {
+        "arrowName" : "14to24",
         "roadLength": "5",
         "roadMonster": [
           "assassin girl"
@@ -261,6 +290,7 @@
     "type": "dungeon",
     "connection": {
       "Entrance of the Temple of Moerae": {
+        "arrowName" : "15to24",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
@@ -273,6 +303,7 @@
     "type": "dungeon",
     "connection": {
       "Statue of Golden Beetle Stone": {
+        "arrowName" : "15to19",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
@@ -285,6 +316,7 @@
     "type": "dungeon",
     "connection": {
       "Blackwood": {
+      	"arrowName" : "15to16",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
@@ -297,12 +329,14 @@
     "type": "dungeon",
     "connection": {
       "Blackwood": {
+      	"arrowName" : "17to1",
         "roadLength": "4",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Vaical Castle": {
+      	"arrowName" : "17to6",
         "roadLength": "4",
         "roadMonster": [
           "assassin girl"
@@ -315,6 +349,7 @@
     "type": "dungeon",
     "connection": {
       "Vaical Castle": {
+      	"arrowName" : "18to6",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
@@ -327,18 +362,21 @@
     "type": "turningpoint",
     "connection": {
       "Mountain Titania": {
+      	"arrowName" : "20to12",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Oberon": {
+      	"arrowName" : "20to3",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Dogbenefit Camp": {
+      	"arrowName" : "20to21",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
@@ -351,18 +389,21 @@
     "type": "turningpoint",
     "connection": {
       "Kadilla Castle": {
+      	"arrowName" : "21to10",
         "roadLength": "6",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Retreat Stone": {
+      	"arrowName" : "21to20",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Caravanserial Place": {
+      	"arrowName" : "21to23",
         "roadLength": "17",
         "roadMonster": [
           "assassin girl"
@@ -375,18 +416,21 @@
     "type": "turningpoint",
     "connection": {
       "RedroseCastle": {
+      	"arrowName" : "22to7",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Elven Forest": {
+      	"arrowName" : "22to14",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Caravanserial Place": {
+      	"arrowName" : "22to23",
         "roadLength": "4",
         "roadMonster": [
           "assassin girl"
@@ -399,18 +443,21 @@
     "type": "turningpoint",
     "connection": {
       "Dogbenefit Camp": {
+      	"arrowName" : "23to21",
         "roadLength": "17",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Cemetery": {
+      	"arrowName" : "23to22",
         "roadLength": "4",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Southcape": {
+      	"arrowName" : "23to4",
         "roadLength": "11",
         "roadMonster": [
           "assassin girl"
@@ -423,18 +470,21 @@
     "type": "turningpoint",
     "connection": {
       "Elven Forest": {
+      	"arrowName" : "24to14",
         "roadLength": "5",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Temple of Moerae": {
+      	"arrowName" : "24to15",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Mirage Port": {
+      	"arrowName" : "24to9",
         "roadLength": "6",
         "roadMonster": [
           "assassin girl"
@@ -447,18 +497,21 @@
     "type": "turningpoint",
     "connection": {
       "Mirage Port": {
+      	"arrowName" : "25to9",
         "roadLength": "7",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Cape of Tempest": {
+      	"arrowName" : "25to19",
         "roadLength": "3",
         "roadMonster": [
           "assassin girl"
         ]
       },
       "Southcape": {
+      	"arrowName" : "25to4",
         "roadLength": "7",
         "roadMonster": [
           "assassin girl"

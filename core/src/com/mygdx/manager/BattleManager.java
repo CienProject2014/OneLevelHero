@@ -20,7 +20,6 @@ public class BattleManager {
 	public void userSkill(LivingUnit unit, String skill) {
 		// FIXME
 		battle.skillAttack(unit, skill);
-
 		monsterAction();
 	}
 
