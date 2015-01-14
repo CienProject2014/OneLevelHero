@@ -6,7 +6,26 @@ import com.mygdx.state.Assets;
 public class EventScene {
 	private String script;
 	private String characterPath;
+	private int faceNumber;
+
+	public int getFaceNumber() {
+		return faceNumber;
+	}
+
+	public void setFaceNumber(int faceNumber) {
+		this.faceNumber = faceNumber;
+	}
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
 	private String backgroundPath;
+	private String direction;
 	private Texture character;
 	private Texture background;
 
