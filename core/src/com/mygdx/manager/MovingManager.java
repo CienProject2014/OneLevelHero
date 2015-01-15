@@ -1,6 +1,5 @@
 package com.mygdx.manager;
 
-import com.badlogic.gdx.Gdx;
 import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.model.CurrentPosition;
@@ -35,9 +34,8 @@ public class MovingManager {
 		if (isRoadLeft()) {
 			leftRoadLength--;
 			movingRoad();
-			Gdx.app.log("LeftRoadLength", String.valueOf(leftRoadLength));
 		} else {
-			goIntoDestinationNode();
+			goIntoCurrentNode();
 		}
 	}
 
@@ -46,7 +44,10 @@ public class MovingManager {
 			leftRoadLength++;
 			movingRoad();
 		} else {
-			goIntoDestinationNode();
+			//목적지 노드에 도착해서 현재 위치로 설정함
+			currentPosition.setCurrentNode(currentMovingInfo
+					.getDestinationNode());
+			goIntoCurrentNode();
 		}
 	}
 
@@ -56,12 +57,7 @@ public class MovingManager {
 		}
 	}
 
-	private static void goIntoDestinationNode() {
-		//목적지 노드에 도착해서 현재 위치로 설정함
-		currentPosition.setCurrentNode(currentMovingInfo.getDestinationNode());
-		System.out.println(Assets.worldNodeInfoMap.get(
-				currentPosition.getCurrentNode()).getType());
-
+	private static void goIntoCurrentNode() {
 		switch (Assets.worldNodeInfoMap.get(currentPosition.getCurrentNode())
 				.getType()) {
 			case "village":
