@@ -23,7 +23,7 @@ public class LoadManager {
 	private void setCurrentPosition() {
 		//Blackwood 마을에서부터 게임을 시작한다.
 		CurrentState.getInstance().getCurrentPosition()
-				.setCurrentNode(WorldNodeEnum.BLACKWOOD.getNodeName());
+				.setCurrentNode(WorldNodeEnum.BLACKWOOD.toString());
 
 		//FIXME 초기 CurrentMoving 정보를 주입한다.
 		CurrentMovingInfo currentMovingInfo = CurrentState.getInstance()

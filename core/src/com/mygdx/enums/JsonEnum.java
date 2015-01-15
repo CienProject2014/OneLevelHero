@@ -14,13 +14,14 @@ public enum JsonEnum {
 		this.jsonName = jsonName;
 	}
 
-	public String getJsonName() {
+	@Override
+	public String toString() {
 		return jsonName;
 	}
 
 	public static JsonEnum findJsonEnum(String jsonName) {
 		for (JsonEnum jsonEnum : JsonEnum.values()) {
-			if (jsonEnum.getJsonName().equals(jsonName))
+			if (jsonEnum.toString().equals(jsonName))
 				return jsonEnum;
 		}
 		return JsonEnum.NULL_JSON;

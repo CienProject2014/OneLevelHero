@@ -9,7 +9,8 @@ public enum WorldNodeEnum {
 		this.nodeName = nodeName;
 	}
 
-	public String getNodeName() {
+	@Override
+	public String toString() {
 		return nodeName;
 	}
 }

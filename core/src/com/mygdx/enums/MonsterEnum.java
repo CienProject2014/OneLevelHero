@@ -9,7 +9,8 @@ public enum MonsterEnum {
 		this.monsterName = monsterName;
 	}
 
-	public String getMonsterName() {
+	@Override
+	public String toString() {
 		return monsterName;
 	}
 }
