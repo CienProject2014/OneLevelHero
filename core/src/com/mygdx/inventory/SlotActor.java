@@ -52,11 +52,12 @@ public class SlotActor extends ImageButton implements SlotListener {
 		TextureAtlas items = Assets.items;
 		TextureRegion image;
 		if (slot.getItem() != null) {
-			image = items.findRegion(slot.getItem().getTextureRegion());
+			image = items.findRegion(slot.getItem().toString());
 		} else {
 			image = items.findRegion("nothing");
 		}
-		ImageButtonStyle style = new ImageButtonStyle(skin.get(ButtonStyle.class));
+		ImageButtonStyle style = new ImageButtonStyle(
+				skin.get(ButtonStyle.class));
 		style.imageUp = new TextureRegionDrawable(image);
 		style.imageDown = new TextureRegionDrawable(image);
 

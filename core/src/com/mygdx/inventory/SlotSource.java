@@ -51,12 +51,13 @@ public class SlotSource extends Source {
 		}
 
 		Payload payload = new Payload();
-		Slot payloadSlot = new Slot(sourceSlot.getItem(), sourceSlot.getAmount());
+		Slot payloadSlot = new Slot(sourceSlot.getItem(),
+				sourceSlot.getAmount());
 		sourceSlot.take(sourceSlot.getAmount());
 		payload.setObject(payloadSlot);
 
 		TextureAtlas items = Assets.items;
-		TextureRegion item = items.findRegion(payloadSlot.getItem().getTextureRegion());
+		TextureRegion item = items.findRegion(payloadSlot.getItem().toString());
 
 		Actor dragActor = new Image(item);
 		payload.setDragActor(dragActor);
@@ -73,11 +74,13 @@ public class SlotSource extends Source {
 	}
 
 	@Override
-	public void dragStop(InputEvent event, float x, float y, int pointer, Payload payload, Target target) {
+	public void dragStop(InputEvent event, float x, float y, int pointer,
+			Payload payload, Target target) {
 		Slot payloadSlot = (Slot) payload.getObject();
 		if (target != null) {
 			Slot targetSlot = ((SlotActor) target.getActor()).getSlot();
-			if (targetSlot.getItem() == payloadSlot.getItem() || targetSlot.getItem() == null) {
+			if (targetSlot.getItem() == payloadSlot.getItem()
+					|| targetSlot.getItem() == null) {
 				targetSlot.add(payloadSlot.getItem(), payloadSlot.getAmount());
 			} else {
 				ItemEnum targetType = targetSlot.getItem();
