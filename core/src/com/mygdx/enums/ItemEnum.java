@@ -26,16 +26,17 @@ package com.mygdx.enums;
  */
 public enum ItemEnum {
 
-	DAGGER("dagger"), LEATHER_ARMOR("leather_armor"), LEATHER_BOOTS("leather_boots"), LEATHER_GLOVES("leather_gloves"), NOTHING("nothing");
+	DAGGER("dagger"), LEATHER_ARMOR("leather_armor"), LEATHER_BOOTS(
+			"leather_boots"), LEATHER_GLOVES("leather_gloves"), NOTHING(
+			"nothing");
 
-	private String textureRegion;
+	private String itemName;
 
-	private ItemEnum(String textureRegion) {
-		this.textureRegion = textureRegion;
+	private ItemEnum(String itemName) {
+		this.itemName = itemName;
 	}
 
-	public String getTextureRegion() {
-		return textureRegion;
+	public String toString() {
+		return itemName;
 	}
-
 }
