@@ -1,7 +1,6 @@
 {
   "yongsa": {
     "name": "yongsa",
-    "faceTexturePath": "yongsa",
     "status": {
       "attack": 110,
       "defense": 34.5,
@@ -22,8 +21,7 @@
     }
   },
   "parath": {
-    "name": "parath",
-    "faceTexturePath": "parath",
+    "name": "parath",   
     "status": {
       "attack": 110,
       "defense": 34.5,

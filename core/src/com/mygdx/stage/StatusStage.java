@@ -12,24 +12,24 @@ import com.mygdx.state.Assets;
 
 public class StatusStage extends Stage {
 	// 사용될 변수 선언
-	Table uiTable;
-	Table rightTable;
-	Table statusTable;
-	Table labelTable;
-	Table leftTable;
-	Table rightTopTable;
-	Table rightBottomTable;
+	private Table uiTable;
+	private Table rightTable;
+	private Table statusTable;
+	private Table labelTable;
+	private Table leftTable;
+	private Table rightTopTable;
+	private Table rightBottomTable;
 
-	Skin skin;
-	TextButton characterChangeTextButton;
-	TextButton statusTextButton;
-	TextButton bagTextButton;
-	TextButton skillTextButton;
-	TextButton exitTextButton;
-	TextButton[] characterTextButton;
+	private Skin skin;
+	private TextButton characterChangeTextButton;
+	private TextButton statusTextButton;
+	private TextButton bagTextButton;
+	private TextButton skillTextButton;
+	private TextButton exitTextButton;
+	private TextButton[] characterTextButton;
 
-	Image character;
-	Label[] status;
+	private Image character;
+	private Label[] status;
 
 	public StatusStage() {
 		skin = Assets.skin;
@@ -79,7 +79,8 @@ public class StatusStage extends Stage {
 	}
 
 	public void makeLeftTable() {
-		leftTable.setSize(Assets.windowWidth / 8, (Assets.windowHeight / 12) * 11);
+		leftTable.setSize(Assets.windowWidth / 8,
+				(Assets.windowHeight / 12) * 11);
 		leftTable.left();
 		leftTable.add(statusTextButton);
 		leftTable.row();

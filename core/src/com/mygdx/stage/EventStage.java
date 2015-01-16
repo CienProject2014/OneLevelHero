@@ -28,11 +28,11 @@ public class EventStage extends Stage {
 		backgroundImage = new Image(eventScene.getBackground());
 		script = new Label(eventScene.getScript(), Assets.skin);
 		characterImage = new Image(eventScene.getCharacter());
-
 		// 스크립트/캐릭터/백그라운드 설정값 세팅
 		script.setFontScale(Assets.windowWidth / 1280);
 		script.setWrap(true);
-		script.setSize(Assets.windowWidth * 0.781f, Assets.windowHeight * 0.185f);
+		script.setSize(Assets.windowWidth * 0.781f,
+				Assets.windowHeight * 0.185f);
 		script.setPosition(Assets.windowWidth * 0.309375f,
 				Assets.windowHeight * 0.185f);
 		characterImage.setSize(Assets.windowWidth * 0.250f,
@@ -75,7 +75,8 @@ public class EventStage extends Stage {
 
 		script.setFontScale(Assets.windowWidth / 1280);
 		script.setWrap(true);
-		script.setSize(Assets.windowWidth * 0.781f, Assets.windowHeight * 0.185f);
+		script.setSize(Assets.windowWidth * 0.781f,
+				Assets.windowHeight * 0.185f);
 		script.setPosition(Assets.windowWidth * 0.109375f,
 				Assets.windowHeight * 0.185f);
 		characterImage.setSize(Assets.windowWidth * 0.250f,

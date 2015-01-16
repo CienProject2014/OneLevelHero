@@ -1,7 +1,6 @@
 {
   "assassin girl": {
     "name": "assassin girl",
-    "faceTexturePath": "assassin girl",
     "status": {
       "attack": 100,
       "defense": 10,
@@ -17,7 +16,6 @@
   },
   "Monster2": {
     "name": "Monster2",
-    "faceTexturePath": "a2",
     "status": {
       "attack": 100,
       "defense": 10,
@@ -33,7 +31,6 @@
   },
   "Monster3": {
     "name": "Monster3",
-    "faceTexturePath": "c1",
     "status": {
       "attack": 100,
       "defense": 10,
@@ -49,7 +46,6 @@
   },
   "b2": {
     "name": "b2",
-    "faceTexturePath": "b2",
     "status": {
       "attack": 100,
       "defense": 10,

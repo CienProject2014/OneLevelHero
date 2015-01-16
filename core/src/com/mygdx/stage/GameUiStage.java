@@ -94,7 +94,7 @@ public class GameUiStage extends Stage {
 
 		for (int i = 0; i < currentBattleMemberList.size(); i++) {
 			characterImage[i] = new Image(currentBattleMemberList.get(i)
-					.getFaceTexture());
+					.getStatusTexture());
 		}
 
 		toptable = new Table(Assets.skin);

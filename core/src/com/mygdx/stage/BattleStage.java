@@ -104,7 +104,7 @@ public class BattleStage extends Overlap2DStage {
 
 		for (LivingUnit unit : orderedUnits) {
 			Gdx.app.log("BattleStage", unit.getName());
-			orderTable.add(new Image(unit.getFaceTexture()))
+			orderTable.add(new Image(unit.getStatusTexture()))
 					.width(maximumWidth).height(maximumHeight);
 			orderTable.row();
 		}
@@ -119,7 +119,7 @@ public class BattleStage extends Overlap2DStage {
 
 		for (LivingUnit unit : orderedUnits) {
 			Gdx.app.log("Unit name", unit.getName());
-			orderTable.add(new Image(unit.getFaceTexture()))
+			orderTable.add(new Image(unit.getStatusTexture()))
 					.width(maximumWidth).height(maximumHeight);
 			orderTable.row();
 		}
@@ -190,6 +190,6 @@ public class BattleStage extends Overlap2DStage {
 	}
 
 	private Image getMonsterImage() {
-		return new Image(monster.getFaceTexture());
+		return new Image(monster.getStatusTexture());
 	}
 }

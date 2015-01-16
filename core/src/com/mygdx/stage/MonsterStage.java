@@ -56,7 +56,7 @@ public class MonsterStage extends Stage {
 	}
 
 	private Image getMonsterImage() {
-		return new Image(monster.getFaceTexture());
+		return new Image(monster.getBattleTexture());
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
