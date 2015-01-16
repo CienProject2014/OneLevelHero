@@ -1,13 +1,4 @@
 {
-  "yongsa": {
-    "filePath": "texture/npc/yongsa.jpg"
-  },
-  "parath": {
-    "filePath": "texture/npc/parath.png"
-  },
-  "waiji": {
-    "filePath": "texture/npc/waiji_happy.png"
-  },
   "rabbit1": {
     "filePath": "texture/prologue/rabbit1.png"
   },
@@ -17,28 +8,40 @@
   "rabbit3": {
     "filePath": "texture/prologue/rabbit3.png"
   },
-  "nothing_imgage": {
-    "filePath": "texture/nothing_image.png"
+  "nothing_image": {
+    "filePath": "texture/character/nothing_image.png"
   },
-  "yongsa_happy": {
-    "filePath": "texture/npc/yongsa_happy.jpg"
+  "yongsa_202": {
+    "filePath": "texture/character/yongsa_202.png"
   },
-  "yongsa_sick": {
-    "filePath": "texture/npc/yongsa_sick.jpg"
+  "yongsa_204": {
+    "filePath": "texture/character/yongsa_204.png"
   },
-  "yongsa_sad": {
-    "filePath": "texture/npc/yongsa_sad.png"
+  "yongsa_206": {
+    "filePath": "texture/character/yongsa_206.png"
   },
-  "yongsa_angry": {
-    "filePath": "texture/npc/yongsa_angry.png"
+  "yongsa_207": {
+    "filePath": "texture/character/yongsa_207.png"
+  },  
+  "yongsa_401":{
+  	"filePath" : "texture/character/yongsa_401.png"
   },
-  "parath_happy": {
-    "filePath": "texture/npc/parath_happy.jpg"
+  "yongsa_501":{
+  	"filePath" : "texture/character/yongsa_501.png"
   },
-  "parath_angry":{
-  	"filePath" : "texture/npc/parath_angry.jpg"
+  "parath_202": {
+    "filePath": "texture/character/parath_202.png"
   },
-  "waiji_happy": {
-    "filePath": "texture/npc/waiji_happy.png"
+  "parath_203": {
+    "filePath": "texture/character/parath_203.png"
+  },
+  "parath_501":{
+  	"filePath":"texture/character/parath_501.png"
+  },
+  "waiji_202": {
+    "filePath": "texture/character/waiji_202.png"
+  },
+  "waiji_601": {
+    "filePath": "texture/character/waiji_601.png"
   }
 }

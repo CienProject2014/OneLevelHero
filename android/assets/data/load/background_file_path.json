@@ -20,16 +20,13 @@
   "graphic_team1": {
     "filePath": "texture/credit/graphic_team1.png"
   },
-  "parath_background": {
-    "filePath": "texture/npc/parath_background.png"
-  },
-  "waiji_background": {
-    "filePath": "texture/npc/waiji_background.png"
-  },
   "blackwood_center": {
     "filePath": "texture/blackwood/blackwood_center.png"
   },
   "main_background": {
     "filePath": "texture/MainMenu_Background.png"
+  },
+  "waiji_background":{
+  	"filePath" : "texture/blackwood/waiji_background.png"
   }
 }
