@@ -49,7 +49,6 @@ public class PlatformResourceManager extends ResourceManager {
 		for (ResolutionEntryVO revo : projectInfoVo.resolutions) {
 			float newDeltaSize = Math.abs(revo.height
 					- Gdx.graphics.getHeight());
-			System.out.println(newDeltaSize);
 			if (deltaSize > newDeltaSize) {
 				deltaSize = newDeltaSize;
 				result = revo;

@@ -78,7 +78,7 @@ public class CharacterUiStage extends Stage {
 		// 캐릭터 이미지 세팅
 		for (int i = 0; i < battleMemberNumber; i++) {
 			characterImage[i] = new Image(battleMemberList.get(i)
-					.getFaceTexture());
+					.getStatusTexture());
 		}
 
 		for (int i = 0; i < battleMemberNumber; i++) {

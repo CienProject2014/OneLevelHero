@@ -1,11 +1,24 @@
 package com.mygdx.model;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.manager.UnitTextureManager;
 
 public class Unit {
 	private String name;
-	protected Texture faceTexture;
-	protected String faceTexturePath;
+	private Texture statusTexture;
+	private Texture battleTexture;
+	private Texture npcTexture;
+
+	public Texture getBattleTexture() {
+		if (battleTexture == null) {
+			UnitTextureManager.setBattleTexture(this);
+		}
+		return battleTexture;
+	}
+
+	public void setBattleTexture(Texture battleTexture) {
+		this.battleTexture = battleTexture;
+	}
 
 	public String getName() {
 		return name;
@@ -15,19 +28,26 @@ public class Unit {
 		this.name = name;
 	}
 
-	public Texture getFaceTexture() {
-		return faceTexture;
+	public Texture getStatusTexture() {
+		if (statusTexture == null) {
+			UnitTextureManager.setStatusTexture(this);
+		}
+		return statusTexture;
 	}
 
-	public void setFaceTexture(Texture faceTexture) {
-		this.faceTexture = faceTexture;
+	public void setStatusTexture(Texture statusTexture) {
+
+		this.statusTexture = statusTexture;
 	}
 
-	public String getFaceTexturePath() {
-		return faceTexturePath;
+	public Texture getNpcTexture() {
+		return npcTexture;
 	}
 
-	public void setFaceTexturePath(String faceTexturePath) {
-		this.faceTexturePath = faceTexturePath;
+	public void setNpcTexture(Texture npcTexture) {
+		if (npcTexture == null) {
+			UnitTextureManager.setNpcTexture(this);
+		}
+		this.npcTexture = npcTexture;
 	}
 }
