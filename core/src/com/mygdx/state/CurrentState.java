@@ -38,6 +38,7 @@ public class CurrentState implements Serializable {
 		if (null == instance) {
 			instance = new CurrentState();
 		}
+
 		return instance;
 	}
 
@@ -46,6 +47,8 @@ public class CurrentState implements Serializable {
 		setRewardQueue(new LinkedList<RewardInfo>());
 		setAchievedRewardQueue(new LinkedList<RewardInfo>());
 		currentPosition = new CurrentPosition();
+		villageInfo = new VillageInfo();
+		villageInfo.setCurrentPosition("Blackwood");
 	}
 
 	public SaveVersion getVersion() {

@@ -51,31 +51,42 @@ public class MovingManager {
 	}
 
 	private static void movingRoad() {
-		if (EncounterManager.isBattleOccured()) {
-			EncounterManager.encountEnemy();
-		}
+		/*
+		 * if (EncounterManager.isBattleOccured()) {
+		 * EncounterManager.encountEnemy(); }
+		 */
 	}
 
 	private static void goIntoDestinationNode() {
-		//목적지 노드에 도착해서 현재 위치로 설정함
+		// 목적지 노드에 도착해서 현재 위치로 설정함
 		currentPosition.setCurrentNode(currentMovingInfo.getDestinationNode());
-		System.out.println(Assets.worldNodeInfoMap.get(
-				currentPosition.getCurrentNode()).getType());
 
 		switch (Assets.worldNodeInfoMap.get(currentPosition.getCurrentNode())
 				.getType()) {
-			case "village":
-				new ScreenController(ScreenEnum.VILLAGE);
-				break;
-			case "dungeon":
-				new ScreenController(ScreenEnum.VILLAGE);
-				break;
-			case "turningpoint":
-				new ScreenController(ScreenEnum.WORLD_MAP);
-				break;
-			default:
-				new ScreenController(ScreenEnum.VILLAGE);
-				break;
+		case "village":
+			CurrentState.getInstance().getVillageInfo()
+					.setCurrentPosition(currentMovingInfo.getDestinationNode());
+
+			new ScreenController(ScreenEnum.VILLAGE);
+			break;
+		case "dungeon":
+			CurrentState.getInstance().getVillageInfo()
+					.setCurrentPosition(currentMovingInfo.getDestinationNode());
+
+			new ScreenController(ScreenEnum.VILLAGE);
+			break;
+		case "turningpoint":
+			CurrentState.getInstance().getVillageInfo()
+					.setCurrentPosition(currentMovingInfo.getDestinationNode());
+
+			new ScreenController(ScreenEnum.WORLD_MAP);
+			break;
+		default:
+			CurrentState.getInstance().getVillageInfo()
+					.setCurrentPosition(currentMovingInfo.getDestinationNode());
+
+			new ScreenController(ScreenEnum.VILLAGE);
+			break;
 		}
 	}
 

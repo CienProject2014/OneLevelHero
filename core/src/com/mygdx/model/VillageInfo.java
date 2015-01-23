@@ -2,7 +2,7 @@ package com.mygdx.model;
 
 public class VillageInfo {
 	private String village;
-	private String currentPosition = "O";
+	private String currentPosition;
 	private String currentState = "village";
 	private String currentStarting;
 	private String currentDestination;

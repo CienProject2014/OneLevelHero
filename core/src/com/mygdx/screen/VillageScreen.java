@@ -107,7 +107,7 @@ public class VillageScreen implements Screen {
 	}
 
 	public VillageScreen() {
-		//마을 이름을 받는 곳이 필요함
+		// 마을 이름을 받는 곳이 필요함
 		villageName = "Blackwood";
 	}
 
@@ -119,7 +119,7 @@ public class VillageScreen implements Screen {
 		gameUiStage.draw();
 		// villageStage.getCamera().translate(0, 2, 0);
 
-		//카메라를 지속적으로 업데이트 해준다.
+		// 카메라를 지속적으로 업데이트 해준다.
 		villageStage.getCamera().update();
 
 	}
@@ -172,6 +172,5 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		villageStage.dispose();
 	}
 }

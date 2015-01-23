@@ -4,19 +4,19 @@ import java.util.List;
 
 public class CurrentPosition {
 
-	private String currentNode; //현재 마을/던전/교차로 이름	
-	transient private CurrentMovingInfo currentMovingInfo; //가장 최근의 움직임 이력
+	private String currentNode; // 현재 마을/던전/교차로 이름
+	transient private CurrentMovingInfo currentMovingInfo; // 가장 최근의 움직임 이력
 
 	public CurrentPosition() {
 		currentMovingInfo = new CurrentMovingInfo();
 	}
 
 	public class CurrentMovingInfo {
-		private String startNode; //무빙 시작 노드		
-		private String destinationNode; //무빙 목표 노드		
+		private String startNode; // 무빙 시작 노드
+		private String destinationNode; // 무빙 목표 노드
 		private int roadLength; // 총 길 개수
-		private int leftRoadLength; //남은 길의 개수
-		private List<String> roadMonsterList; //해당 길에 서식하는 몬스터 리스트
+		private int leftRoadLength; // 남은 길의 개수
+		private List<String> roadMonsterList; // 해당 길에 서식하는 몬스터 리스트
 		private Monster selectedMonster; // 추첨된 몬스터
 
 		public String getStartNode() {
