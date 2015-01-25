@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.currentState;
 
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.RewardTypeEnum;

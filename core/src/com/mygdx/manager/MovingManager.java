@@ -1,82 +1,111 @@
 package com.mygdx.manager;
 
-import com.mygdx.controller.ScreenController;
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.mygdx.currentState.MovingInfo;
+import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.model.CurrentPosition;
-import com.mygdx.model.CurrentPosition.CurrentMovingInfo;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
-import com.mygdx.state.CurrentState;
 
+@Component
 public class MovingManager {
-	private static CurrentPosition currentPosition = CurrentState.getInstance()
-			.getCurrentPosition();
-	private static CurrentMovingInfo currentMovingInfo = currentPosition
-			.getCurrentMovingInfo();
-	private static int roadLength = currentMovingInfo.getRoadLength();
-	private static int leftRoadLength = currentMovingInfo.getLeftRoadLength();
+	@Autowired
+	private ScreenFactory screenFactory;
+	@Autowired
+	private PositionInfo positionInfo;
+	@Autowired
+	private MovingInfo movingInfo;
+	@Autowired
+	private EncounterManager encounterManager;
 
-	public static int getLeftRoadLength() {
+	private int roadLength;
+	private int leftRoadLength;
+
+	@PostConstruct
+	public void init() {
+		roadLength = movingInfo.getRoadLength();
+		leftRoadLength = movingInfo.getLeftRoadLength();
+	}
+
+	public int getLeftRoadLength() {
 		return leftRoadLength;
 	}
 
-	public static void setLeftRoadLength(int leftRoadLength) {
-		MovingManager.leftRoadLength = leftRoadLength;
+	public void setLeftRoadLength(int leftRoadLength) {
+		movingInfo.setLeftRoadLength(leftRoadLength);
 	}
 
-	public static void ChangeDestination() {
+	public void ChangeDestination() {
 	}
 
-	public static String checkStage() {
+	public String checkStage() {
 		return "checkDirection";
 	}
 
-	public static void goForward() {
+	public void goForward() {
 		if (isRoadLeft()) {
-			leftRoadLength--;
+			minusLeftRoadLength();
 			movingRoad();
 		} else {
 			goIntoCurrentNode();
 		}
 	}
 
-	public static void goBackward() {
-		if (roadLength > leftRoadLength) {
-			leftRoadLength++;
+	public void goBackward() {
+		if (!isRoadFull()) {
+			plusLeftRoadLength();
 			movingRoad();
 		} else {
 			//목적지 노드에 도착해서 현재 위치로 설정함
-			currentPosition.setCurrentNode(currentMovingInfo
-					.getDestinationNode());
+			positionInfo.setCurrentNode(movingInfo.getDestinationNode());
 			goIntoCurrentNode();
 		}
 	}
 
-	private static void movingRoad() {
-		if (EncounterManager.isBattleOccured()) {
-			EncounterManager.encountEnemy();
+	private void plusLeftRoadLength() {
+		leftRoadLength += 1;
+		movingInfo.setLeftRoadLength(leftRoadLength);
+	}
+
+	public void minusLeftRoadLength() {
+		leftRoadLength -= 1;
+		movingInfo.setLeftRoadLength(leftRoadLength);
+	}
+
+	private void movingRoad() {
+		if (encounterManager.isBattleOccured()) {
+			encounterManager.encountEnemy();
 		}
 	}
 
-	private static void goIntoCurrentNode() {
-		switch (Assets.worldNodeInfoMap.get(currentPosition.getCurrentNode())
+	private void goIntoCurrentNode() {
+		switch (Assets.worldNodeInfoMap.get(positionInfo.getCurrentNode())
 				.getType()) {
 			case "village":
-				new ScreenController(ScreenEnum.VILLAGE);
+				screenFactory.show(ScreenEnum.VILLAGE);
 				break;
 			case "dungeon":
-				new ScreenController(ScreenEnum.VILLAGE);
+				screenFactory.show(ScreenEnum.VILLAGE);
 				break;
 			case "turningpoint":
-				new ScreenController(ScreenEnum.WORLD_MAP);
+				screenFactory.show(ScreenEnum.WORLD_MAP);
 				break;
 			default:
-				new ScreenController(ScreenEnum.VILLAGE);
+				screenFactory.show(ScreenEnum.VILLAGE);
 				break;
 		}
 	}
 
-	private static boolean isRoadLeft() {
+	private boolean isRoadLeft() {
 		return (leftRoadLength > 0) ? true : false;
+	}
+
+	private boolean isRoadFull() {
+		return (roadLength > leftRoadLength) ? true : false;
 	}
 
 }

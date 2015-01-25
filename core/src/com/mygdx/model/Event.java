@@ -3,6 +3,7 @@ package com.mygdx.model;
 import java.util.Iterator;
 import java.util.List;
 
+import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 

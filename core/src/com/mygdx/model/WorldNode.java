@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.manager.JsonParser;
 
-public class WorldNodeInfo implements Serializable {
+public class WorldNode implements Serializable {
 	private String nodeName;
 	private String type;
 	private Map<String, Connection> connection;

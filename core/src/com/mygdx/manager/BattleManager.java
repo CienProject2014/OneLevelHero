@@ -1,14 +1,27 @@
 package com.mygdx.manager;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.mygdx.battle.Battle;
+import com.mygdx.currentState.CurrentState;
+import com.mygdx.currentState.MovingInfo;
 import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
-import com.mygdx.state.CurrentState;
 
+@Component
 public class BattleManager {
+	@Autowired
+	private MovingInfo movingInfo;
 	private Battle battle = new Battle();
-	private Monster monster = CurrentState.getInstance().getCurrentPosition()
-			.getCurrentMovingInfo().getSelectedMonster();
+	private Monster monster;
+
+	@PostConstruct
+	public void init() {
+		monster = movingInfo.getSelectedMonster();
+	}
 
 	public void userAttack(LivingUnit unit) {
 		// FIXME

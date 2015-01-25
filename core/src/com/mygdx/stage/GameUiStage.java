@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -17,22 +21,26 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.mygdx.controller.ScreenController;
+import com.mygdx.currentState.CurrentState;
+import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryPopup;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.model.Hero;
-import com.mygdx.model.RewardInfo;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
 import com.mygdx.state.Assets;
-import com.mygdx.state.CurrentState;
 import com.mygdx.ui.StatusBarUi;
 
+@Component
+@Scope(value = "prototype")
 public class GameUiStage extends Stage {
+	@Autowired
+	private ScreenFactory screenFactory;
 	private Table uiTable;
 	private InventoryPopup inventoryActor;
 	private DragAndDrop dragAndDrop;
@@ -64,7 +72,7 @@ public class GameUiStage extends Stage {
 
 	private Map<String, TextureRegionDrawable> atlasUiMap = Assets.atlasUiMap;
 
-	public GameUiStage() {
+	public Stage init() {
 		// 초기화
 		uiTable = new Table();
 		realheight = Assets.windowHeight;
@@ -149,6 +157,7 @@ public class GameUiStage extends Stage {
 			nextIterator.setVisible(true);
 			RewardManager.pollRewardQueue();
 		}
+		return this;
 	}
 
 	// 테이블 디자인
@@ -256,7 +265,7 @@ public class GameUiStage extends Stage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.BATTLE);
+				screenFactory.show(ScreenEnum.BATTLE);
 				Gdx.app.log("정보", "전투가 시작됩니다");
 			}
 		});
@@ -272,7 +281,7 @@ public class GameUiStage extends Stage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.WORLD_MAP);
+				screenFactory.show(ScreenEnum.WORLD_MAP);
 			}
 		});
 		helpButton.addListener(new InputListener() {
@@ -304,7 +313,7 @@ public class GameUiStage extends Stage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.STATUS);
+				screenFactory.show(ScreenEnum.STATUS);
 			}
 		});
 	}

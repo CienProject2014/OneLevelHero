@@ -1,5 +1,8 @@
 package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -10,16 +13,18 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
 
+@Component
 public class EndingScreen implements Screen {
-
-	Stage stage;
-	TextButton backButton;
-	TextButtonStyle textButtonStyle;
-	BitmapFont font;
+	@Autowired
+	private ScreenFactory screenFactory;
+	private Stage stage;
+	private TextButton backButton;
+	private TextButtonStyle textButtonStyle;
+	private BitmapFont font;
 
 	public EndingScreen() {
 
@@ -51,15 +56,17 @@ public class EndingScreen implements Screen {
 
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 
 				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				new ScreenController(ScreenEnum.COLLETION);
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				screenFactory.show(ScreenEnum.COLLETION);
 			}
 		});
 

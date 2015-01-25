@@ -1,29 +1,34 @@
-package com.mygdx.state;
+package com.mygdx.currentState;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import com.mygdx.controller.SaveVersion;
-import com.mygdx.model.CurrentPosition;
-import com.mygdx.model.Inventory;
-import com.mygdx.model.Party;
-import com.mygdx.model.RewardInfo;
-import com.mygdx.model.VillageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.mygdx.controller.SaveVersion;
+
+@Component
 public class CurrentState implements Serializable {
 	// (1) 버전관리
 	private SaveVersion saveVersion;
 
 	// (2) 용사 및 파티원 정보, 인벤토리 관리
-	private Party party;
-	private Inventory inventory;
+	@Autowired
+	private PartyInfo partyInfo;
+	@Autowired
+	private InventoryInfo inventoryInfo;
 
 	// (3) 마을/무빙로드관리
-	private VillageInfo villageInfo;
-	private CurrentPosition currentPosition;
+	@Autowired
+	private PositionInfo positionInfo;
+	@Autowired
+	transient private MovingInfo movingInfo; //가장 최근의 움직임 이력
 
 	// (4) 시간 관리
+	@Autowired
+	private TimeInfo timeInfo;
 
 	// (5) 보상 미션 및 퀘스트 관리
 	// (5-1) 보상 달성 여부 큐
@@ -42,10 +47,9 @@ public class CurrentState implements Serializable {
 	}
 
 	private CurrentState() {
-		party = new Party();
 		setRewardQueue(new LinkedList<RewardInfo>());
 		setAchievedRewardQueue(new LinkedList<RewardInfo>());
-		currentPosition = new CurrentPosition();
+		setPositionInfo(new PositionInfo());
 	}
 
 	public SaveVersion getVersion() {
@@ -64,28 +68,20 @@ public class CurrentState implements Serializable {
 		this.saveVersion = saveVersion;
 	}
 
-	public Party getParty() {
-		return party;
+	public PartyInfo getParty() {
+		return partyInfo;
 	}
 
-	public void setParty(Party party) {
-		this.party = party;
+	public void setParty(PartyInfo party) {
+		this.partyInfo = party;
 	}
 
-	public VillageInfo getVillageInfo() {
-		return villageInfo;
+	public InventoryInfo getInventory() {
+		return inventoryInfo;
 	}
 
-	public void setVillageInfo(VillageInfo villageInfo) {
-		this.villageInfo = villageInfo;
-	}
-
-	public Inventory getInventory() {
-		return inventory;
-	}
-
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
+	public void setInventory(InventoryInfo inventory) {
+		this.inventoryInfo = inventory;
 	}
 
 	public Queue<RewardInfo> getRewardQueue() {
@@ -104,12 +100,28 @@ public class CurrentState implements Serializable {
 		this.achievedRewardQueue = achievedRewardQueue;
 	}
 
-	public CurrentPosition getCurrentPosition() {
-		return currentPosition;
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
 	}
 
-	public void setCurrentPosition(CurrentPosition currentPosition) {
-		this.currentPosition = currentPosition;
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
+	}
+
+	public TimeInfo getTimeInfo() {
+		return timeInfo;
+	}
+
+	public void setTimeInfo(TimeInfo timeInfo) {
+		this.timeInfo = timeInfo;
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
 	}
 
 }

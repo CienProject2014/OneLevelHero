@@ -1,4 +1,6 @@
-package com.mygdx.model;
+package com.mygdx.currentState;
+
+import com.mygdx.model.NPC;
 
 public class EventInfo {
 	private NPC npc;

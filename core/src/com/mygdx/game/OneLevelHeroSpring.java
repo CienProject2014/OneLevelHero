@@ -1,30 +1,24 @@
 package com.mygdx.game;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.LoadManager;
-import com.mygdx.manager.ScreenManager;
+import com.mygdx.factory.ScreenFactory;
 
-@Configuration
-@ComponentScan
+@Component
 public class OneLevelHeroSpring extends Game {
 
 	@Override
 	public void create() {
-
-		//		ApplicationContext context = new AnnotationConfigApplicationContext(
-		//				OneLevelHeroSpring.class);
-
-		LoadManager.getInstance();
-		ScreenManager.getInstance().initialize(this);
-		new ScreenController(ScreenEnum.MENU);
 		Gdx.input.setCatchBackKey(true);
+		ApplicationContext context = new AnnotationConfigApplicationContext(
+				OneLevelHeroApplicationContext.class);
+		context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
 	}
 
 	public boolean keyDown(int keycode) {

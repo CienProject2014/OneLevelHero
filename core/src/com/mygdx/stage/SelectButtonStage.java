@@ -3,28 +3,35 @@ package com.mygdx.stage;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.mygdx.controller.ScreenController;
+import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
-import com.mygdx.model.EventInfo;
 import com.mygdx.model.NPC;
 import com.mygdx.state.Assets;
 
+@Component
+@Scope(value = "prototype")
 public class SelectButtonStage extends Stage {
-
+	@Autowired
+	private ScreenFactory screenFactory;
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
 	private int eventCount;
 	private NPC eventNpc;
 	private static final int MAX_EVENT_LENGTH = 6;
-	private final float buttonPosition[][] = {
+	private static final float buttonPosition[][] = {
 			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.74f },
 			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.555f },
 			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.37f },
@@ -34,7 +41,7 @@ public class SelectButtonStage extends Stage {
 	private final float buttonSize[] = { Assets.windowWidth * 0.208f,
 			Assets.windowHeight * 0.185f };
 
-	public SelectButtonStage() {
+	public Stage init() {
 		EventInfo eventInfo = EventManager.getEventInfo();
 		eventNpc = eventInfo.getNpc();
 		eventCount = eventNpc.getEventCount();
@@ -46,7 +53,7 @@ public class SelectButtonStage extends Stage {
 		setButtonPosition();
 		addActors();
 		addListener();
-
+		return this;
 	}
 
 	private void showEventButton() {
@@ -89,7 +96,7 @@ public class SelectButtonStage extends Stage {
 							int pointer, int button) {
 						EventInfo eventInfo = EventManager.getEventInfo();
 						EventManager.setEventInfo(eventInfo.getNpc(), 0, false);
-						new ScreenController(ScreenEnum.EVENT);
+						screenFactory.show(ScreenEnum.EVENT);
 					}
 				});
 			}

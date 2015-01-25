@@ -1,13 +1,20 @@
 package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.StageFactory;
 
+@Component
 public class EncounterScreen implements Screen {
+	@Autowired
+	private StageFactory stageFactory;
 	private Stage encountStage;
 	private Stage monsterStage;
 
@@ -16,8 +23,8 @@ public class EncounterScreen implements Screen {
 
 	@Override
 	public void show() {
-		encountStage = StageFactory.getInstance().makeStage("encount");
-		monsterStage = StageFactory.getInstance().makeStage("monster");
+		encountStage = stageFactory.makeStage(StageEnum.ENCOUNTER);
+		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
 
 		setInputProcessor();
 	}

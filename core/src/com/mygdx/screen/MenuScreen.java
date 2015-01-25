@@ -1,22 +1,29 @@
 package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.SoundManager;
 import com.mygdx.state.Assets;
 
+@Component
+@Scope(value = "prototype")
 public class MenuScreen implements Screen {
+	@Autowired
+	private SoundManager soundManager;
+	@Autowired
+	private StageFactory stageFactory;
 	private Stage stage;
 
 	private static Music music;
-
-	public MenuScreen() {
-
-	}
 
 	@Override
 	public void render(float delta) {
@@ -32,13 +39,11 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void show() {
-		//stageManager.setStage("Hello");
 		setMusic(Assets.mainMusic);
 		getMusic().setVolume(Assets.musicVolume);
-		SoundManager.getInstance().playMusic(getMusic());
-		stage = new Stage();
-		Assets.loadSize(stage);
-		stage = StageFactory.getInstance().makeStage("main");
+		soundManager.playMusic(getMusic());
+
+		stage = stageFactory.makeStage(StageEnum.MENU);
 
 		Gdx.input.setInputProcessor(stage);
 

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
@@ -12,19 +15,21 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.controller.ScreenController;
+import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.EventManager;
-import com.mygdx.model.EventInfo;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 import com.mygdx.stage.SelectButtonStage;
 
+@Component
+@Scope(value = "prototype")
 public class GreetingScreen implements Screen {
-
+	private ScreenFactory screenFactory;
 	// It needs interface layer, for test!
-	private StageFactory stageFactory = StageFactory.getInstance();
+	private StageFactory stageFactory;
 
 	// Already libgdx using interface!
 	private GL20 gl = Gdx.gl;
@@ -37,6 +42,22 @@ public class GreetingScreen implements Screen {
 	private List<EventScene> greetingScenes;
 
 	public GreetingScreen() {
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
+	public StageFactory getStageFactory() {
+		return stageFactory;
+	}
+
+	public void setStageFactory(StageFactory stageFactory) {
+		this.stageFactory = stageFactory;
 	}
 
 	@Override
@@ -65,7 +86,7 @@ public class GreetingScreen implements Screen {
 		// for shuffle
 		List<EventScene> shuffleList = new ArrayList<EventScene>(greetingScenes);
 		Collections.shuffle(shuffleList);
-		eventStage = stageFactory.makeStage(shuffleList.get(0));
+		eventStage = stageFactory.makeEventStage(shuffleList.get(0));
 
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
@@ -81,7 +102,7 @@ public class GreetingScreen implements Screen {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				new ScreenController(ScreenEnum.VILLAGE);
+				screenFactory.show(ScreenEnum.VILLAGE);
 
 				return true;
 			}

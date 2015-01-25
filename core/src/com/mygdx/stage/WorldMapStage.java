@@ -1,13 +1,18 @@
 package com.mygdx.stage;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
+@Component
+@Scope(value = "prototype")
 public class WorldMapStage extends Overlap2DStage {
 	private CompositeItem item;
 
-	public WorldMapStage() {
-
+	public Stage makeStage() {
 		// SceneLoader를 초기화
 		initSceneLoader();
 		// MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다.
@@ -22,5 +27,6 @@ public class WorldMapStage extends Overlap2DStage {
 		item = sceneLoader.getRoot().getCompositeById("currentPosition");
 
 		addActor(sceneLoader.getRoot());
+		return this;
 	}
 }

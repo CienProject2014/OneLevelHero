@@ -1,5 +1,8 @@
 package com.mygdx.stage;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -10,6 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.state.Assets;
 
+@Component
+@Scope(value = "prototype")
 public class StatusStage extends Stage {
 	// 사용될 변수 선언
 	private Table uiTable;
@@ -31,7 +36,7 @@ public class StatusStage extends Stage {
 	private Image character;
 	private Label[] status;
 
-	public StatusStage() {
+	public Stage makeStage() {
 		skin = Assets.skin;
 		// Table 초기화
 		uiTable = new Table(skin);
@@ -66,6 +71,7 @@ public class StatusStage extends Stage {
 		// 테이블 완성
 		makeuiTable();
 		addActor(uiTable);
+		return this;
 
 	}
 

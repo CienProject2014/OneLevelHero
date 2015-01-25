@@ -2,12 +2,12 @@ package com.mygdx.manager;
 
 import java.util.Iterator;
 
+import com.mygdx.currentState.EventInfo;
+import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.RewardStateEnum;
-import com.mygdx.model.EventInfo;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
-import com.mygdx.model.RewardInfo;
 
 public class EventManager {
 	private static EventInfo eventInfo = new EventInfo();

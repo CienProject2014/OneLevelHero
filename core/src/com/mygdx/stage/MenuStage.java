@@ -1,5 +1,9 @@
 package com.mygdx.stage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -7,19 +11,18 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
 
+@Component
+@Scope(value = "prototype")
 public class MenuStage extends Stage {
-
+	@Autowired
+	private ScreenFactory screenFactory;
 	private ImageButton[] button;
 
-	public MenuStage(String stageName) {
-		makeMainMenu();
-	}
-
-	public void makeMainMenu() {
+	public Stage init() {
 		button = new ImageButton[4];
 		Texture texture = Assets.backgroundTextureMap.get("main_background");
 		Image background = new Image(texture);
@@ -50,7 +53,7 @@ public class MenuStage extends Stage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.LOAD);
+				screenFactory.show(ScreenEnum.LOAD);
 			}
 		});
 		button[1].addListener(new InputListener() {
@@ -63,7 +66,7 @@ public class MenuStage extends Stage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.OPTION);
+				screenFactory.show(ScreenEnum.OPTION);
 			}
 		});
 		button[2].addListener(new InputListener() {
@@ -76,7 +79,7 @@ public class MenuStage extends Stage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.CREDIT);
+				screenFactory.show(ScreenEnum.CREDIT);
 
 			}
 		});
@@ -90,7 +93,7 @@ public class MenuStage extends Stage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.COLLETION);
+				screenFactory.show(ScreenEnum.COLLETION);
 
 			}
 		});
@@ -119,6 +122,6 @@ public class MenuStage extends Stage {
 		this.addActor(background);
 		this.addActor(logo);
 		this.addActor(table);
-
+		return this;
 	}
 }

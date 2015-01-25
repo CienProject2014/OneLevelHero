@@ -2,12 +2,12 @@ package com.mygdx.manager;
 
 import java.util.Queue;
 
+import com.mygdx.currentState.CurrentState;
+import com.mygdx.currentState.EventInfo;
+import com.mygdx.currentState.PartyInfo;
+import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
-import com.mygdx.model.EventInfo;
-import com.mygdx.model.Party;
-import com.mygdx.model.RewardInfo;
 import com.mygdx.state.Assets;
-import com.mygdx.state.CurrentState;
 
 public class RewardManager {
 
@@ -70,7 +70,7 @@ public class RewardManager {
 				case NONE:
 					return;
 				case PARTY:
-					Party party = CurrentState.getInstance().getParty();
+					PartyInfo party = CurrentState.getInstance().getParty();
 					party.addHero(Assets.heroMap.get(rewardQueue.peek()
 							.getRewardTarget()));
 					return;

@@ -1,5 +1,6 @@
-package com.mygdx.model;
+package com.mygdx.currentState;
 
+import com.mygdx.model.Monster;
 import com.mygdx.state.Assets;
 
 public class RoadInfo {

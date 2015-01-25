@@ -1,5 +1,8 @@
 package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
@@ -12,7 +15,9 @@ import com.mygdx.stage.TouchPadStage;
 import com.mygdx.stage.WorldMapStage;
 import com.mygdx.state.Assets;
 
+@Component
 public class WorldMapScreen implements Screen {
+	@Autowired
 	private WorldMapStage worldMapStage;
 	private TouchPadStage touchPadStage;
 	private OrthographicCamera cam;

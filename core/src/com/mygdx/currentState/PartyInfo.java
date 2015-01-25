@@ -1,15 +1,19 @@
-package com.mygdx.model;
+package com.mygdx.currentState;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.badlogic.gdx.Gdx;
+import org.springframework.stereotype.Component;
 
-public class Party {
+import com.badlogic.gdx.Gdx;
+import com.mygdx.model.Hero;
+
+@Component
+public class PartyInfo {
 	private List<Hero> partyList = new ArrayList<Hero>();
 	private List<Hero> battleMemberList = new ArrayList<Hero>();
-	final int BATTLE_MEMBER_SIZE = 3;
+	private final static int BATTLE_MEMBER_SIZE = 3;
 
 	public List<Hero> getPartyList() {
 		return partyList;
@@ -65,11 +69,11 @@ public class Party {
 	public void setBattleMemberList(List<Hero> battleMemberList) {
 		this.battleMemberList = battleMemberList;
 	}
-	
+
 	public Hero pickRandomHero() {
 		Random random = new Random();
 		int index = random.nextInt(battleMemberList.size());
-		
+
 		return battleMemberList.get(index);
 	}
 

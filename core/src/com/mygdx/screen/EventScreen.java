@@ -2,6 +2,10 @@
 
 import java.util.Iterator;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
@@ -10,17 +14,20 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.model.EventScene;
 
+@Component
+@Scope(value = "prototype")
 public class EventScreen implements Screen {
-
-	// It needs interface layer, for test!
-	private StageFactory stageFactory = StageFactory.getInstance();
+	@Autowired
+	private StageFactory stageFactory;
+	@Autowired
+	private ScreenFactory screenFactory;
 
 	// Already libgdx using interface!
 	private GL20 gl = Gdx.gl;
@@ -53,7 +60,7 @@ public class EventScreen implements Screen {
 	@Override
 	public void show() {
 		iterator = EventManager.getEventIterator();
-		eventStage = stageFactory.makeStage(iterator.next());
+		eventStage = stageFactory.makeEventStage(iterator.next());
 
 		multiplexer = new InputMultiplexer();
 		multiplexer.addProcessor(0, eventStage);
@@ -66,11 +73,11 @@ public class EventScreen implements Screen {
 					int pointer, int button) {
 
 				if (iterator.hasNext()) {
-					eventStage = stageFactory.makeStage(iterator.next());
+					eventStage = stageFactory.makeEventStage(iterator.next());
 				} else {
 					RewardManager.doReward(); //보상이 있을경우 보상실행
 					EventManager.endEvent(); //해당 이벤트 상태를 종료처리
-					new ScreenController(ScreenEnum.VILLAGE);
+					screenFactory.show(ScreenEnum.VILLAGE);
 				}
 
 				return true;

@@ -2,6 +2,10 @@ package com.mygdx.stage;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -12,16 +16,19 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.model.Village;
 import com.mygdx.model.Village.Building;
 import com.mygdx.model.Village.NPC;
 import com.mygdx.state.Assets;
 
+@Component
+@Scope(value = "prototype")
 public class VillageStage extends Stage {
-
+	@Autowired
+	private ScreenFactory screenFactory;
 	// JSONParser parser = new JSONParser();
 	private String delimiter = "-";
 	private String villageName;
@@ -172,14 +179,9 @@ public class VillageStage extends Stage {
 		}
 	}
 
-	public VillageStage() {
-		super();
-	}
-
-	public VillageStage(String villageName) {
-		super();
-		this.villageName = villageName;
+	public Stage init() {
 		setVillage();
+		return this;
 	}
 
 	// 마을 정보에 맞게 스테이지 형성
@@ -285,7 +287,7 @@ public class VillageStage extends Stage {
 					// EventManager에 CurrentNpc정보를 전달한다.
 					EventManager.setEventInfo(
 							Assets.npcMap.get(npcinfo.getKey()), true);
-					new ScreenController(ScreenEnum.GREETING);
+					screenFactory.show(ScreenEnum.GREETING);
 				}
 			});
 			addActor(npcButton[i]);

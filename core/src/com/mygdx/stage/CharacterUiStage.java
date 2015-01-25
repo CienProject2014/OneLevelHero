@@ -2,17 +2,25 @@ package com.mygdx.stage;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.mygdx.currentState.PartyInfo;
 import com.mygdx.model.Hero;
 import com.mygdx.state.Assets;
-import com.mygdx.state.CurrentState;
 import com.mygdx.ui.StatusBarUi;
 
+@Component
+@Scope(value = "prototype")
 public class CharacterUiStage extends Stage {
+	@Autowired
+	private PartyInfo partyInfo;
 	private float realWidth, realHeight;
 
 	private Table uiTable; // 전체 화면을 차지하는 테이블
@@ -29,7 +37,7 @@ public class CharacterUiStage extends Stage {
 	private StatusBarUi[] turnbar;
 	private String[] hpbarName;
 
-	public CharacterUiStage() {
+	public Stage init() {
 		uiTable = new Table();
 
 		initialize();
@@ -41,6 +49,7 @@ public class CharacterUiStage extends Stage {
 		uiTable.add(bottomTable);
 
 		addActor(uiTable);
+		return this;
 	}
 
 	private void initialize() {
@@ -58,11 +67,10 @@ public class CharacterUiStage extends Stage {
 		characterImage = new Image[3];
 	}
 
-	// CurrentManager 에서 멤버를 가져와 Table 을 만든다.
+	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
 	private void makeTable() {
 
-		battleMemberList = CurrentState.getInstance().getParty()
-				.getBattleMemberList();
+		battleMemberList = partyInfo.getBattleMemberList();
 		battleMemberNumber = battleMemberList.size();
 
 		for (int i = 0; i < battleMemberNumber; i++) {

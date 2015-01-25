@@ -1,7 +1,10 @@
 package com.mygdx.screen;
 
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Screen;
 
+@Component
 public class BonusPointScreen implements Screen {
 
 	public BonusPointScreen() {

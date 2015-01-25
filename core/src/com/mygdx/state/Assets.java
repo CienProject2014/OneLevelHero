@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.currentState.RoadInfo;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.JsonParser;
 import com.mygdx.model.AtlasUiFile;
@@ -24,10 +25,9 @@ import com.mygdx.model.Hero;
 import com.mygdx.model.JsonStringFile;
 import com.mygdx.model.Monster;
 import com.mygdx.model.NPC;
-import com.mygdx.model.RoadInfo;
 import com.mygdx.model.TextureFile;
 import com.mygdx.model.Village;
-import com.mygdx.model.WorldNodeInfo;
+import com.mygdx.model.WorldNode;
 
 /**
  * 각종 리소스들을 static하게 관리해주는 Assets 클래스
@@ -64,7 +64,7 @@ public class Assets {
 	public static Map<String, NPC> npcMap;
 	public static Map<String, Monster> monsterMap;
 	public static Map<String, Village> villageMap;
-	public static Map<String, WorldNodeInfo> worldNodeInfoMap;
+	public static Map<String, WorldNode> worldNodeInfoMap;
 
 	public static void loadAll() {
 		loadFilePath();
@@ -131,7 +131,7 @@ public class Assets {
 	}
 
 	private static void worldMapInfoLoad() {
-		worldNodeInfoMap = JsonParser.parseMap(WorldNodeInfo.class,
+		worldNodeInfoMap = JsonParser.parseMap(WorldNode.class,
 				jsonStringMap.get(JsonEnum.WORLDMAP_JSON.toString()));
 	}
 

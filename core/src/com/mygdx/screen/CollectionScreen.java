@@ -1,5 +1,9 @@
 ﻿package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -10,19 +14,22 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
 
+@Component
+@Scope(value = "prototype")
 public class CollectionScreen implements Screen {
-
-	Stage stage;
-	TextButton endingButton;
-	TextButton cgButton;
-	TextButton bgmButton;
-	TextButton backButton;
-	TextButtonStyle textButtonStyle;
-	BitmapFont font;
+	@Autowired
+	private ScreenFactory screenFactory;
+	private Stage stage;
+	private TextButton endingButton;
+	private TextButton cgButton;
+	private TextButton bgmButton;
+	private TextButton backButton;
+	private TextButtonStyle textButtonStyle;
+	private BitmapFont font;
 
 	public CollectionScreen() {
 
@@ -65,7 +72,7 @@ public class CollectionScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.END);
+				screenFactory.show(ScreenEnum.ENDING);
 			}
 		});
 		cgButton.addListener(new InputListener() {
@@ -80,7 +87,7 @@ public class CollectionScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				new ScreenController(ScreenEnum.CG);
+				screenFactory.show(ScreenEnum.CG);
 			}
 		});
 		bgmButton.addListener(new InputListener() {
@@ -95,7 +102,7 @@ public class CollectionScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				new ScreenController(ScreenEnum.BGM);
+				screenFactory.show(ScreenEnum.BGM);
 			}
 		});
 		backButton.addListener(new InputListener() {
@@ -110,7 +117,7 @@ public class CollectionScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.MENU);
+				screenFactory.show(ScreenEnum.MENU);
 			}
 		});
 

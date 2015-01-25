@@ -1,5 +1,9 @@
 package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -9,17 +13,20 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.SaveVersion;
-import com.mygdx.controller.ScreenController;
+import com.mygdx.currentState.CurrentState;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.state.Assets;
-import com.mygdx.state.CurrentState;
 
+@Component
+@Scope(value = "prototype")
 public class LoadScreen implements Screen {
-
-	Stage stage;
-	TextButton newstartButton;
-	TextButton backButton;
+	@Autowired
+	private ScreenFactory screenFactory;
+	private Stage stage;
+	private TextButton newstartButton;
+	private TextButton backButton;
 
 	public LoadScreen() {
 
@@ -60,7 +67,7 @@ public class LoadScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				new ScreenController(ScreenEnum.MENU);
+				screenFactory.show(ScreenEnum.MENU);
 
 			}
 		});
@@ -79,7 +86,7 @@ public class LoadScreen implements Screen {
 				//프롤로그 정보 주입
 				EventManager.setEventInfo(Assets.npcMap.get("prologue"), 0,
 						false);
-				new ScreenController(ScreenEnum.EVENT);
+				screenFactory.show(ScreenEnum.EVENT);
 
 			}
 		});

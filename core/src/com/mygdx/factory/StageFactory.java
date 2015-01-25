@@ -1,49 +1,88 @@
 package com.mygdx.factory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.PlatformResourceManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.stage.BattleStage;
+import com.mygdx.stage.CharacterUiStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.EventStage;
+import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
+import com.mygdx.stage.SelectButtonStage;
+import com.mygdx.stage.StatusStage;
+import com.mygdx.stage.TouchPadStage;
 import com.mygdx.stage.VillageStage;
+import com.mygdx.stage.WorldMapStage;
 
+@Component
 public class StageFactory {
-	private static StageFactory instance;
+	@Autowired
+	private BattleStage battleStage;
+	@Autowired
+	private CharacterUiStage characterUiStage;
+	@Autowired
+	private EncounterStage encounterStage;
+	@Autowired
+	private EventStage eventStage;
+	@Autowired
+	private GameUiStage gameUiStage;
+	@Autowired
+	private MenuStage menuStage;
+	@Autowired
+	private MonsterStage monsterStage;
+	@Autowired
+	private SelectButtonStage selectButtonStage;
+	@Autowired
+	private StatusStage statusStage;
+	@Autowired
+	private TouchPadStage touchPadStage;
+	@Autowired
+	private VillageStage villageStage;
+	@Autowired
+	private WorldMapStage worldMapStage;
 
-	private StageFactory() {
-	}
-
-	public static StageFactory getInstance() {
-		if (null == instance) {
-			instance = new StageFactory();
-		}
-		return instance;
-	}
-
-	public Stage makeStage(String stageName) {
+	public Stage makeStage(StageEnum stageEnum) {
 		PlatformResourceManager rm = new PlatformResourceManager();
 		rm.initPlatformerResources();
 
-		if (stageName == "event") {
-			return new EventStage();
-		} else if (stageName == "village") {
-			return new VillageStage();
-		} else if (stageName == "monster") {
-			return new MonsterStage();
-		} else if (stageName == "encount") {
-			return new EncounterStage();
-		} else if (stageName == "battle") {
-			return new BattleStage(rm);
-		} else {
-			return new MenuStage(stageName);
+		switch (stageEnum) {
+			case CHARACTER_UI:
+				return characterUiStage.init();
+			case ENCOUNTER:
+				return encounterStage.init();
+			case GAME_UI:
+				return gameUiStage.init();
+			case MENU:
+				return menuStage.init();
+			case MONSTER:
+				return monsterStage.makeStage();
+			case SELECT_BUTTON:
+				return selectButtonStage.init();
+			case STATUS:
+				return statusStage.makeStage();
+			case TOUCH_PAD:
+				return touchPadStage.makeStage();
+			case VILLAGE:
+				return villageStage.init();
+			case WORLD_MAP:
+				return worldMapStage.makeStage();
+			default:
+				return villageStage.init(); //FIXME
 		}
 	}
 
-	public Stage makeStage(EventScene eventScene) {
-		return new EventStage(eventScene);
+	public Stage makeBattleStage(PlatformResourceManager rm) {
+		return battleStage.init(rm);
+	}
+
+	public Stage makeEventStage(EventScene eventScene) {
+		return eventStage.init(eventScene);
 	}
 
 }

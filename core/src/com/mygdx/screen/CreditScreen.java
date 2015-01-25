@@ -1,5 +1,9 @@
 ﻿package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -9,16 +13,24 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.controller.ScreenController;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 
+/**
+ * 기여자 목록을 뿌려주는 Screen 클래스
+ * @author Velmont
+ *
+ */
+@Component
+@Scope(value = "prototype")
 public class CreditScreen implements Screen {
-	SpriteBatch batch;
-	//Scene scene;
-	TextButton backButton;
-	Table table;
-	Stage stage;
-	String event;
+	@Autowired
+	private ScreenFactory screenFactory;
+	private SpriteBatch batch;
+	private TextButton backButton;
+	private Table table;
+	private Stage stage;
+	private String event;
 
 	public CreditScreen(String event) {
 		this.event = event;
@@ -65,7 +77,7 @@ public class CreditScreen implements Screen {
 				// that invoke this event screen
 
 				// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
-				new ScreenController(ScreenEnum.MENU);
+				screenFactory.show(ScreenEnum.MENU);
 
 				//	}
 				return true;

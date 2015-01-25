@@ -1,5 +1,9 @@
 package com.mygdx.stage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -8,10 +12,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.mygdx.currentState.MovingInfo;
 import com.mygdx.model.Monster;
-import com.mygdx.state.CurrentState;
 
+@Component
+@Scope(value = "prototype")
 public class MonsterStage extends Stage {
+	@Autowired
+	private MovingInfo movingInfo;
 	private int windowWidth;
 	private int windowHeight;
 
@@ -20,19 +28,18 @@ public class MonsterStage extends Stage {
 	private float topPadValue; // 몬스터 테이블의 세로축 위치
 	private float innerTableWidth; // 몬스터 테이블의 최대 가로 크기
 	private float innerTableHeight; // 몬스터 테이블의 최대 세로 크기
-	private static Monster monster;
+	private Monster monster;
 
-	public MonsterStage() {
+	public Stage makeStage() {
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
 
 		topPadValue = windowHeight * 0.125f;
 		innerTableWidth = windowWidth * 0.75f;
 		innerTableHeight = windowHeight * 0.625f;
-		monster = CurrentState.getInstance().getCurrentPosition()
-				.getCurrentMovingInfo().getSelectedMonster();
-
+		monster = movingInfo.getSelectedMonster();
 		setMonsterTable();
+		return this;
 	}
 
 	// 불러온 몬스터의 이미지를 테이블에 넣는다.

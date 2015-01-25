@@ -5,9 +5,9 @@ import java.util.Iterator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.mygdx.currentState.CurrentState;
 import com.mygdx.model.Hero;
 import com.mygdx.state.Assets;
-import com.mygdx.state.CurrentState;
 
 public class StatusMessagePopup extends MessagePopup {
 	Stage stage;

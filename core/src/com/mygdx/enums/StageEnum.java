@@ -1,0 +1,5 @@
+package com.mygdx.enums;
+
+public enum StageEnum {
+	BATTLE, CHARACTER_UI, ENCOUNTER, EVENT, GAME_UI, MENU, MONSTER, SELECT_BUTTON, STATUS, TOUCH_PAD, VILLAGE, WORLD_MAP;
+}

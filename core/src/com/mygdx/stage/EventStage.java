@@ -1,15 +1,20 @@
 package com.mygdx.stage;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.EventManager;
-import com.mygdx.model.EventInfo;
 import com.mygdx.model.EventScene;
 import com.mygdx.state.Assets;
 
+@Component
+@Scope(value = "prototype")
 public class EventStage extends Stage {
 	private Label script;
 	private Image characterImage;
@@ -17,11 +22,7 @@ public class EventStage extends Stage {
 	private EventTypeEnum eventType;
 	private EventInfo eventInfo;
 
-	public EventStage() {
-
-	}
-
-	public EventStage(EventScene eventScene) {
+	public Stage init(EventScene eventScene) {
 		//씬 만들어주기
 		eventInfo = EventManager.getEventInfo();
 
@@ -64,7 +65,7 @@ public class EventStage extends Stage {
 		this.addActor(backgroundImage);
 		this.addActor(script);
 		this.addActor(characterImage);
-
+		return this;
 	}
 
 	private void makeCreditStage() {

@@ -5,27 +5,37 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.mygdx.controller.ScreenController;
+import com.mygdx.currentState.CurrentState;
+import com.mygdx.currentState.MovingInfo;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.PlatformResourceManager;
 import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
 import com.mygdx.state.Assets;
-import com.mygdx.state.CurrentState;
 import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
+@Component
+@Scope(value = "prototype")
 public class BattleStage extends Overlap2DStage {
-	// Multi-Resolution 을 위한 클래스
-	private PlatformResourceManager rm;
+	@Autowired
+	private ScreenFactory screenFactory;
+	@Autowired
+	private MovingInfo movingInfo;
 
 	// Table
 	Table uiTable; // 화면 전체 테이블
@@ -49,13 +59,11 @@ public class BattleStage extends Overlap2DStage {
 	private ArrayList<LivingUnit> units;
 	private Queue<LivingUnit> orderedUnits;
 
-	public BattleStage(PlatformResourceManager rm) {
-		super(new StretchViewport(rm.stageWidth, rm.currentResolution.height));
-		this.rm = rm;
-
-		battleManager = new BattleManager();
-		monster = CurrentState.getInstance().getCurrentPosition()
-				.getCurrentMovingInfo().getSelectedMonster();
+	public Stage init(PlatformResourceManager rm) {
+		StretchViewport viewport = new StretchViewport(rm.stageWidth,
+				rm.currentResolution.height);
+		this.setViewport(viewport);
+		monster = movingInfo.getSelectedMonster();
 		// Overlap2D로 만든 신(Scene)
 		initSceneLoader(rm);
 		sceneLoader.setResolution(rm.currentResolution.name);
@@ -68,6 +76,7 @@ public class BattleStage extends Overlap2DStage {
 		makeTable();
 
 		addActor(uiTable);
+		return this;
 	}
 
 	@Override
@@ -184,7 +193,7 @@ public class BattleStage extends Overlap2DStage {
 		escapeButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "도망!");
-				new ScreenController(ScreenEnum.MOVING);
+				screenFactory.show(ScreenEnum.MOVING);
 			}
 		});
 	}

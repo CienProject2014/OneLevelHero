@@ -1,5 +1,8 @@
 package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -11,13 +14,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.currentState.MovingInfo;
 import com.mygdx.manager.MovingManager;
-import com.mygdx.model.CurrentPosition.CurrentMovingInfo;
 import com.mygdx.state.Assets;
-import com.mygdx.state.CurrentState;
 
+@Component
 public class MovingScreen implements Screen {
-
+	@Autowired
+	private MovingInfo movingInfo;
+	@Autowired
+	private MovingManager movingManager;
 	private Stage stage;
 	private TextButton goButton;
 	private TextButton backButton;
@@ -26,19 +32,16 @@ public class MovingScreen implements Screen {
 	private Texture texture = new Texture(
 			Gdx.files.internal("texture/justground.jpg"));
 	private Image background;
-	private CurrentMovingInfo currentMovingInfo;
 
 	public MovingScreen() {
-		currentMovingInfo = CurrentState.getInstance().getCurrentPosition()
-				.getCurrentMovingInfo();
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		movingLabel.setText(currentMovingInfo.getDestinationNode() + "까지"
-				+ MovingManager.getLeftRoadLength());
+		movingLabel.setText(movingInfo.getDestinationNode() + "까지"
+				+ movingInfo.getLeftRoadLength());
 
 		stage.draw();
 	}
@@ -78,7 +81,7 @@ public class MovingScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				MovingManager.goForward();
+				movingManager.goForward();
 			}
 		});
 
@@ -93,7 +96,7 @@ public class MovingScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				MovingManager.goBackward();
+				movingManager.goBackward();
 			}
 		});
 		table.add(movingLabel).top();
