@@ -5,16 +5,17 @@ import java.util.Iterator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.mygdx.currentState.CurrentState;
+import com.mygdx.currentState.PartyInfo;
 import com.mygdx.model.Hero;
 import com.mygdx.state.Assets;
 
 public class StatusMessagePopup extends MessagePopup {
-	Stage stage;
+	private PartyInfo partyInfo;
+	private Stage stage;
 
-	public StatusMessagePopup(String title, Skin skin) {
+	public StatusMessagePopup(String title, Skin skin, PartyInfo partyInfo) {
 		super(title, Assets.skin);
-
+		this.partyInfo = partyInfo;
 		setPosition(400, 300);
 		defaults().space(8);
 		row().fill().expandX();
@@ -32,8 +33,7 @@ public class StatusMessagePopup extends MessagePopup {
 		Table table = new Table();
 		text("파티원");
 		table.row();
-		Iterator<Hero> iterator = CurrentState.getInstance().getParty()
-				.getBattleMemberList().iterator();
+		Iterator<Hero> iterator = partyInfo.getBattleMemberList().iterator();
 		while (iterator.hasNext()) {
 			Hero nextIterator = iterator.next();
 			text("이름 : " + nextIterator.getName());

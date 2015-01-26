@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -17,19 +18,22 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
-import com.mygdx.stage.SelectButtonStage;
 
 @Component
 @Scope(value = "prototype")
 public class GreetingScreen implements Screen {
+	@Autowired
 	private ScreenFactory screenFactory;
-	// It needs interface layer, for test!
+	@Autowired
 	private StageFactory stageFactory;
+	@Autowired
+	private EventManager eventManager;
 
 	// Already libgdx using interface!
 	private GL20 gl = Gdx.gl;
@@ -65,8 +69,8 @@ public class GreetingScreen implements Screen {
 		gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		eventStage.draw();
 		selectButtonStage.draw();
+		eventStage.draw();
 
 	}
 
@@ -78,11 +82,11 @@ public class GreetingScreen implements Screen {
 
 	@Override
 	public void show() {
-		selectButtonStage = new SelectButtonStage();
-		eventInfo = EventManager.getEventInfo();
+		eventInfo = eventManager.getEventInfo();
 		final NPC npc = eventInfo.getNpc();
 		greetingScenes = npc.getGreeting().getEventScenes();
 
+		selectButtonStage = stageFactory.makeStage(StageEnum.SELECT_BUTTON);
 		// for shuffle
 		List<EventScene> shuffleList = new ArrayList<EventScene>(greetingScenes);
 		Collections.shuffle(shuffleList);

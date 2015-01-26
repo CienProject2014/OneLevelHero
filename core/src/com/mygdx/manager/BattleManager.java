@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.mygdx.battle.Battle;
-import com.mygdx.currentState.CurrentState;
 import com.mygdx.currentState.MovingInfo;
+import com.mygdx.currentState.PartyInfo;
 import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
 
@@ -15,6 +15,8 @@ import com.mygdx.model.Monster;
 public class BattleManager {
 	@Autowired
 	private MovingInfo movingInfo;
+	@Autowired
+	private PartyInfo partyInfo;
 	private Battle battle = new Battle();
 	private Monster monster;
 
@@ -42,8 +44,7 @@ public class BattleManager {
 
 	public void monsterAction() {
 		// FIXME
-		battle.attack(monster, CurrentState.getInstance().getParty()
-				.pickRandomHero());
+		battle.attack(monster, partyInfo.pickRandomHero());
 	}
 
 	public void nextTurn() {

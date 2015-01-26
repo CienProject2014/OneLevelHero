@@ -17,8 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.mygdx.currentState.CurrentState;
 import com.mygdx.currentState.MovingInfo;
+import com.mygdx.currentState.PartyInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.BattleManager;
@@ -36,6 +36,8 @@ public class BattleStage extends Overlap2DStage {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private MovingInfo movingInfo;
+	@Autowired
+	private PartyInfo partyInfo;
 
 	// Table
 	Table uiTable; // 화면 전체 테이블
@@ -87,7 +89,7 @@ public class BattleStage extends Overlap2DStage {
 
 	public void makeOrderedList() {
 		units = new ArrayList<LivingUnit>(4);
-		units.addAll(CurrentState.getInstance().getParty().getPartyList());
+		units.addAll(partyInfo.getPartyList());
 		units.add(monster);
 
 		Collections.sort(units);
@@ -159,15 +161,12 @@ public class BattleStage extends Overlap2DStage {
 				// 몬스터의 턴을 실행해줄 클래스가 하나 필요하다.
 				// 바로 BattleController가 해주면 된다.
 				// 거기서 GameUiStage의 act도 실행해주면 된다.
-				CurrentState
-						.getInstance()
-						.getParty()
+				partyInfo
 						.getBattleMemberList()
 						.get(0)
 						.getStatus()
 						.setHealthPoint(
-								CurrentState.getInstance().getParty()
-										.getBattleMemberList().get(0)
+								partyInfo.getBattleMemberList().get(0)
 										.getStatus().getHealthPoint() - 10);
 
 				battleManager.userAttack(getCurrentActor());

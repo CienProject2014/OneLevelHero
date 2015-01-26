@@ -55,25 +55,25 @@ public class StageFactory {
 			case CHARACTER_UI:
 				return characterUiStage.init();
 			case ENCOUNTER:
-				return encounterStage.init();
+				return encounterStage.makeStage();
 			case GAME_UI:
-				return gameUiStage.init();
+				return gameUiStage.makeStage();
 			case MENU:
-				return menuStage.init();
+				return menuStage.makeStage();
 			case MONSTER:
 				return monsterStage.makeStage();
 			case SELECT_BUTTON:
-				return selectButtonStage.init();
+				return selectButtonStage.makeStage();
 			case STATUS:
 				return statusStage.makeStage();
 			case TOUCH_PAD:
 				return touchPadStage.makeStage();
 			case VILLAGE:
-				return villageStage.init();
+				return villageStage.makeStage();
 			case WORLD_MAP:
 				return worldMapStage.makeStage();
 			default:
-				return villageStage.init(); //FIXME
+				return villageStage.makeStage(); //FIXME
 		}
 	}
 
@@ -82,7 +82,7 @@ public class StageFactory {
 	}
 
 	public Stage makeEventStage(EventScene eventScene) {
-		return eventStage.init(eventScene);
+		return eventStage.makeStage(eventScene);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.mygdx.stage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -16,15 +17,17 @@ import com.mygdx.state.Assets;
 @Component
 @Scope(value = "prototype")
 public class EventStage extends Stage {
+	@Autowired
+	private EventManager eventManager;
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
 	private EventTypeEnum eventType;
 	private EventInfo eventInfo;
 
-	public Stage init(EventScene eventScene) {
+	public Stage makeStage(EventScene eventScene) {
 		//씬 만들어주기
-		eventInfo = EventManager.getEventInfo();
+		eventInfo = eventManager.getEventInfo();
 
 		backgroundImage = new Image(eventScene.getBackground());
 		script = new Label(eventScene.getScript(), Assets.skin);
@@ -73,7 +76,6 @@ public class EventStage extends Stage {
 	}
 
 	private void makeSelectStage() {
-
 		script.setFontScale(Assets.windowWidth / 1280);
 		script.setWrap(true);
 		script.setSize(Assets.windowWidth * 0.781f,

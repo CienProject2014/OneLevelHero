@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.model.Village;
@@ -29,8 +30,9 @@ import com.mygdx.state.Assets;
 public class VillageStage extends Stage {
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private EventManager eventManager;
 	// JSONParser parser = new JSONParser();
-	private String delimiter = "-";
 	private String villageName;
 
 	public String getVillageName() {
@@ -68,14 +70,6 @@ public class VillageStage extends Stage {
 
 	private float viewportWidth;
 	private float viewportHeight;
-
-	public String getDelimiter() {
-		return delimiter;
-	}
-
-	public void setDelimiter(String delimiter) {
-		this.delimiter = delimiter;
-	}
 
 	public BuildingImage[] getBuildingbutton() {
 		return buildingButton;
@@ -179,7 +173,7 @@ public class VillageStage extends Stage {
 		}
 	}
 
-	public Stage init() {
+	public Stage makeStage() {
 		setVillage();
 		return this;
 	}
@@ -195,17 +189,8 @@ public class VillageStage extends Stage {
 		getViewport().setCamera(cam);
 
 		camera = getViewport().getCamera();
-
-		// 마을 제이슨 완성 시 이걸로
-		/* JSONObject villageData = (JSONObject) Assets.jsonFileMap
-				.get("village_json")
-				.getJsonFile()
-				.get(CurrentState.getInstance().getVillageInfo()
-						.getCurrentPosition());
-						*/
-
 		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
-		village = Assets.villageMap.get("Blackwood");
+		village = Assets.villageMap.get(WorldNodeEnum.BLACKWOOD.toString());
 
 		if (village == null)
 			Gdx.app.log("asdf", "asdf");
@@ -285,7 +270,7 @@ public class VillageStage extends Stage {
 						int pointer, int button) {
 
 					// EventManager에 CurrentNpc정보를 전달한다.
-					EventManager.setEventInfo(
+					eventManager.setEventInfo(
 							Assets.npcMap.get(npcinfo.getKey()), true);
 					screenFactory.show(ScreenEnum.GREETING);
 				}

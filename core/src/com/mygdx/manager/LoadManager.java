@@ -23,12 +23,10 @@ public class LoadManager {
 	private MovingInfo movingInfo;
 	@Autowired
 	private PartyInfo partyInfo;
-
 	private Hero hero;
 
 	@PostConstruct
 	public void init() {
-		Assets.loadAll();
 		setHero();
 		setPartyList();
 		setCurrentPosition();

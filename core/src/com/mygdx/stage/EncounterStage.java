@@ -23,7 +23,7 @@ public class EncounterStage extends Stage {
 
 	private Table selTable;
 
-	public Stage init() {
+	public Stage makeStage() {
 		fightButton = new TextButton("싸운다", Assets.skin);
 		fleeButton = new TextButton("도망친다", Assets.skin);
 

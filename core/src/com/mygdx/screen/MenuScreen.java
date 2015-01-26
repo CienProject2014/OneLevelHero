@@ -52,7 +52,7 @@ public class MenuScreen implements Screen {
 	@Override
 	public void hide() {
 
-		stage.dispose();
+		//		stage.dispose();
 
 	}
 

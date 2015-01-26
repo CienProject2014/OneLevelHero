@@ -1,7 +1,10 @@
 package com.mygdx.currentState;
 
+import org.springframework.stereotype.Component;
+
 import com.mygdx.model.NPC;
 
+@Component
 public class EventInfo {
 	private NPC npc;
 	private int eventNumber;

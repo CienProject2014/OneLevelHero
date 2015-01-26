@@ -24,6 +24,10 @@ import com.mygdx.state.Assets;
 public class LoadScreen implements Screen {
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private CurrentState currentState;
+	@Autowired
+	private EventManager eventManager;
 	private Stage stage;
 	private TextButton newstartButton;
 	private TextButton backButton;
@@ -81,10 +85,10 @@ public class LoadScreen implements Screen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				CurrentState.getInstance().setVersion(SaveVersion.NEW);
+				currentState.setVersion(SaveVersion.NEW);
 
 				//프롤로그 정보 주입
-				EventManager.setEventInfo(Assets.npcMap.get("prologue"), 0,
+				eventManager.setEventInfo(Assets.npcMap.get("prologue"), 0,
 						false);
 				screenFactory.show(ScreenEnum.EVENT);
 

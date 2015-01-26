@@ -1,8 +1,6 @@
 package com.mygdx.currentState;
 
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,25 +29,12 @@ public class CurrentState implements Serializable {
 	private TimeInfo timeInfo;
 
 	// (5) 보상 미션 및 퀘스트 관리
-	// (5-1) 보상 달성 여부 큐
-	private Queue<RewardInfo> rewardQueue;
 
-	// (5-2) 이미 달성한 이벤트 큐
-	private Queue<RewardInfo> achievedRewardQueue;
-
-	private static CurrentState instance;
-
-	public static CurrentState getInstance() {
-		if (null == instance) {
-			instance = new CurrentState();
-		}
-		return instance;
-	}
+	@Autowired
+	private RewardQueueInfo rewardQueueInfo;
 
 	private CurrentState() {
-		setRewardQueue(new LinkedList<RewardInfo>());
-		setAchievedRewardQueue(new LinkedList<RewardInfo>());
-		setPositionInfo(new PositionInfo());
+
 	}
 
 	public SaveVersion getVersion() {
@@ -82,22 +67,6 @@ public class CurrentState implements Serializable {
 
 	public void setInventory(InventoryInfo inventory) {
 		this.inventoryInfo = inventory;
-	}
-
-	public Queue<RewardInfo> getRewardQueue() {
-		return rewardQueue;
-	}
-
-	public void setRewardQueue(Queue<RewardInfo> rewardQueue) {
-		this.rewardQueue = rewardQueue;
-	}
-
-	public Queue<RewardInfo> getAchievedRewardQueue() {
-		return achievedRewardQueue;
-	}
-
-	public void setAchievedRewardQueue(Queue<RewardInfo> achievedRewardQueue) {
-		this.achievedRewardQueue = achievedRewardQueue;
 	}
 
 	public PositionInfo getPositionInfo() {

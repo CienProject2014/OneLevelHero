@@ -8,11 +8,9 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.mygdx.inventory.InventoryPopup;
-import com.mygdx.stage.GameUiStage;
-import com.mygdx.stage.VillageStage;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.enums.StageEnum;
+import com.mygdx.factory.StageFactory;
 
 /**
  *  VillageStage와 GameUiStage를 addActor()해서 보여주는 Screen
@@ -24,16 +22,12 @@ import com.mygdx.stage.VillageStage;
 @Component
 public class VillageScreen implements Screen {
 
-	private Image background;
-	private SpriteBatch batch;
 	private String villageName;
 
 	@Autowired
-	private VillageStage villageStage;
-	@Autowired
-	private GameUiStage gameUiStage;
-
-	private InventoryPopup inventoryActor;
+	private StageFactory stageFactory;
+	private Stage villageStage;
+	private Stage gameUiStage;
 
 	private OrthographicCamera cam;
 
@@ -93,7 +87,8 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void show() {
-
+		villageStage = stageFactory.makeStage(StageEnum.VILLAGE);
+		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		// 여러 스테이지에 인풋 프로세서를 동시에 할당한다
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
@@ -128,6 +123,6 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		villageStage.dispose();
+		//			villageStage.dispose();
 	}
 }

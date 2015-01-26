@@ -26,6 +26,8 @@ import com.mygdx.state.Assets;
 public class SelectButtonStage extends Stage {
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private EventManager eventManager;
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
 	private int eventCount;
@@ -38,11 +40,11 @@ public class SelectButtonStage extends Stage {
 			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.74f },
 			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.555f },
 			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.37f } };
-	private final float buttonSize[] = { Assets.windowWidth * 0.208f,
+	private static final float buttonSize[] = { Assets.windowWidth * 0.208f,
 			Assets.windowHeight * 0.185f };
 
-	public Stage init() {
-		EventInfo eventInfo = EventManager.getEventInfo();
+	public Stage makeStage() {
+		EventInfo eventInfo = eventManager.getEventInfo();
 		eventNpc = eventInfo.getNpc();
 		eventCount = eventNpc.getEventCount();
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
@@ -82,7 +84,7 @@ public class SelectButtonStage extends Stage {
 		for (int i = 0; i < eventCount; i++) {
 			//이벤트가 달성되었는지 검사(현재는 리워드)
 			if (eventNpc.getEvent(i).getEventState() == EventStateEnum.CLEARED)
-				chatButtons.get(0).setColor(Color.DARK_GRAY);
+				chatButtons.get(i).setColor(Color.DARK_GRAY);
 			else {
 				chatButtons.get(i).addListener(new InputListener() {
 					@Override
@@ -94,8 +96,8 @@ public class SelectButtonStage extends Stage {
 					@Override
 					public void touchUp(InputEvent event, float x, float y,
 							int pointer, int button) {
-						EventInfo eventInfo = EventManager.getEventInfo();
-						EventManager.setEventInfo(eventInfo.getNpc(), 0, false);
+						EventInfo eventInfo = eventManager.getEventInfo();
+						eventManager.setEventInfo(eventInfo.getNpc(), 0, false);
 						screenFactory.show(ScreenEnum.EVENT);
 					}
 				});

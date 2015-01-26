@@ -28,7 +28,6 @@ import com.mygdx.screen.WorldMapScreen;
 
 @Component
 public class ScreenFactory {
-	@Autowired
 	private OneLevelHeroSpring oneLevelHeroSpring;
 	@Autowired
 	private BattleScreen battleScreen;
@@ -113,6 +112,10 @@ public class ScreenFactory {
 			default:
 				return menuScreen; //FIXME
 		}
+	}
+
+	public void setGame(OneLevelHeroSpring oneLevelHeroSpring) {
+		this.oneLevelHeroSpring = oneLevelHeroSpring;
 	}
 
 	public void show(ScreenEnum screenEnum) {

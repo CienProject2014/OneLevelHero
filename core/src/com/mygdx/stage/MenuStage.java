@@ -22,7 +22,7 @@ public class MenuStage extends Stage {
 	private ScreenFactory screenFactory;
 	private ImageButton[] button;
 
-	public Stage init() {
+	public Stage makeStage() {
 		button = new ImageButton[4];
 		Texture texture = Assets.backgroundTextureMap.get("main_background");
 		Image background = new Image(texture);

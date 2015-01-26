@@ -28,6 +28,10 @@ public class EventScreen implements Screen {
 	private StageFactory stageFactory;
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private EventManager eventManager;
+	@Autowired
+	private RewardManager rewardManager;
 
 	// Already libgdx using interface!
 	private GL20 gl = Gdx.gl;
@@ -59,7 +63,7 @@ public class EventScreen implements Screen {
 
 	@Override
 	public void show() {
-		iterator = EventManager.getEventIterator();
+		iterator = eventManager.getEventIterator();
 		eventStage = stageFactory.makeEventStage(iterator.next());
 
 		multiplexer = new InputMultiplexer();
@@ -75,8 +79,8 @@ public class EventScreen implements Screen {
 				if (iterator.hasNext()) {
 					eventStage = stageFactory.makeEventStage(iterator.next());
 				} else {
-					RewardManager.doReward(); //보상이 있을경우 보상실행
-					EventManager.endEvent(); //해당 이벤트 상태를 종료처리
+					rewardManager.doReward(); //보상이 있을경우 보상실행
+					eventManager.endEvent(); //해당 이벤트 상태를 종료처리
 					screenFactory.show(ScreenEnum.VILLAGE);
 				}
 

@@ -21,7 +21,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.mygdx.currentState.CurrentState;
+import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -41,11 +41,17 @@ import com.mygdx.ui.StatusBarUi;
 public class GameUiStage extends Stage {
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private PartyInfo partyInfo;
+	@Autowired
+	private RewardManager rewardManager;
+
 	private Table uiTable;
 	private InventoryPopup inventoryActor;
+	private StatusMessagePopup statusMessagePopup;
 	private DragAndDrop dragAndDrop;
 	private Stack<MessagePopup> alertMessage;
-	private MessagePopup statusMessagePopup;
+
 	private ImageButton downArrowButton;
 	private ImageButton bagButton;
 	private ImageButton helpButton;
@@ -72,7 +78,7 @@ public class GameUiStage extends Stage {
 
 	private Map<String, TextureRegionDrawable> atlasUiMap = Assets.atlasUiMap;
 
-	public Stage init() {
+	public Stage makeStage() {
 		// 초기화
 		uiTable = new Table();
 		realheight = Assets.windowHeight;
@@ -83,8 +89,7 @@ public class GameUiStage extends Stage {
 		characterImage = new Image[3];
 		statusbartable = new Table[3];
 		charatertable = new Table[3];
-		battleMemberNumber = CurrentState.getInstance().getParty()
-				.getBattleMemberList().size();
+		battleMemberNumber = partyInfo.getBattleMemberList().size();
 		alertMessage = new Stack<MessagePopup>();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
@@ -97,8 +102,7 @@ public class GameUiStage extends Stage {
 
 		}
 		// 캐릭터 이미지 세팅
-		List<Hero> currentBattleMemberList = CurrentState.getInstance()
-				.getParty().getBattleMemberList();
+		List<Hero> currentBattleMemberList = partyInfo.getBattleMemberList();
 
 		for (int i = 0; i < currentBattleMemberList.size(); i++) {
 			characterImage[i] = new Image(currentBattleMemberList.get(i)
@@ -129,21 +133,22 @@ public class GameUiStage extends Stage {
 		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop, skin);
 
 		// 보상 이벤트 처리
-		Iterator<RewardInfo> iterator = RewardManager.getRewardQueue()
+		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
 				.iterator();
 		while (iterator.hasNext()) {
 			RewardInfo nextIterator = iterator.next();
 			if (nextIterator.getRewardState().equals(RewardStateEnum.ING)) {
 
 				alertMessage.add(new AlertMessagePopup("[ 보상 ]", Assets.skin)
-						.text(RewardManager.getRewardMessage(nextIterator)));
+						.text(rewardManager.getRewardMessage(nextIterator)));
 
 			}
 			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
 					+ nextIterator.getRewardType());
 		}
 		// 알림 메시지
-		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", Assets.skin);
+		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", Assets.skin,
+				partyInfo);
 		addListener();
 		makeTable();
 		addActor(uiTable);
@@ -155,7 +160,7 @@ public class GameUiStage extends Stage {
 			MessagePopup nextIterator = alertMessageIterator.next();
 			addActor(nextIterator);
 			nextIterator.setVisible(true);
-			RewardManager.pollRewardQueue();
+			rewardManager.pollRewardQueue();
 		}
 		return this;
 	}
