@@ -27,8 +27,6 @@ public class StageFactory {
 	private ApplicationContext context;
 
 	public Stage makeStage(StageEnum stageEnum) {
-		PlatformResourceManager rm = new PlatformResourceManager();
-		rm.initPlatformerResources();
 
 		switch (stageEnum) {
 			case CHARACTER_UI:

@@ -6,10 +6,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -25,6 +24,7 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
 @Component
+@Scope("prototype")
 public class WorldMapStage extends Overlap2DStage {
 	@Autowired
 	private WorldMapManager worldMapManager;
@@ -32,7 +32,6 @@ public class WorldMapStage extends Overlap2DStage {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private PositionInfo positionInfo;
-	private Camera camera;
 	private CompositeItem item;
 	private ImageItem current;
 
@@ -54,7 +53,6 @@ public class WorldMapStage extends Overlap2DStage {
 		current.setTouchable(Touchable.enabled);
 		item.setX(current.getX() - 15);
 		item.setY(current.getY() - 15);
-		camera = getViewport().getCamera();
 		// arrow = sceneLoader.getRoot().getCompositeById("1to2");
 
 		List<CompositeItem> arrowList = new ArrayList<>();
@@ -87,6 +85,7 @@ public class WorldMapStage extends Overlap2DStage {
 
 		}
 		addActor(sceneLoader.getRoot());
+		setCamera();
 		return this;
 	}
 
@@ -98,11 +97,33 @@ public class WorldMapStage extends Overlap2DStage {
 		this.current = current;
 	}
 
-	public Camera getCamera() {
-		return camera;
+	public void setCamera() {
+		int x_left_limit = (int) (Assets.windowWidth / 2);
+		int x_right_limit = (int) (3000 - (Assets.windowWidth / 2));
+		int y_bottom_limit = (int) (Assets.windowHeight / 2);
+		int y_top_limit = (int) (1688 - (Assets.windowHeight / 2));
+
+		float xvalue = this.getCurrent().getX() - Assets.windowWidth / 2, yvalue = this
+				.getCurrent().getY() - Assets.windowHeight / 2;
+		// x값이 오른쪽으로 벗어날 경우
+		if (this.getCurrent().getX() > x_right_limit) {
+
+			xvalue = 3000 - Assets.windowWidth;
+		}
+		// x값이 왼쪽으로 벗어날 경우
+		if (this.getCurrent().getX() < x_left_limit) {
+
+			xvalue = 0;
+		}
+		// y값이 위로 벗어날 경우
+		if (this.getCurrent().getY() > y_top_limit) {
+			yvalue = 1688 - Assets.windowHeight;
+		}
+		// y값이 아래로 벗어날 경우
+		if (this.getCurrent().getY() < y_bottom_limit) {
+			yvalue = 0;
+		}
+		getCamera().translate(xvalue, yvalue, 0);
 	}
 
-	public void setCamera(OrthographicCamera cam) {
-		this.camera = cam;
-	}
 }
