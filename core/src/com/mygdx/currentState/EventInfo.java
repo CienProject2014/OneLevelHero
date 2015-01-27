@@ -2,8 +2,14 @@ package com.mygdx.currentState;
 
 import org.springframework.stereotype.Component;
 
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.model.NPC;
 
+/**
+ * npc정보, eventNumber, greeting여부 정보를 갖고있음
+ * @author Velmont
+ *
+ */
 @Component
 public class EventInfo {
 	private NPC npc;
@@ -32,5 +38,9 @@ public class EventInfo {
 
 	public void setGreeting(boolean greeting) {
 		this.greeting = greeting;
+	}
+
+	public EventTypeEnum getEventType() {
+		return npc.getEvents().get(eventNumber).getEventType();
 	}
 }

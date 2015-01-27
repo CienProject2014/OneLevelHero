@@ -1,6 +1,7 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -11,15 +12,18 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.mygdx.stage.TouchPadStage;
-import com.mygdx.stage.WorldMapStage;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.enums.StageEnum;
+import com.mygdx.factory.StageFactory;
 import com.mygdx.state.Assets;
 
 @Component
+@Scope("prototype")
 public class WorldMapScreen implements Screen {
 	@Autowired
-	private WorldMapStage worldMapStage;
-	private TouchPadStage touchPadStage;
+	private StageFactory stageFactory;
+	private Stage worldMapStage;
+	private Stage touchPadStage;
 	private OrthographicCamera cam;
 	private SpriteBatch batch;
 	private InputMultiplexer multiplexer;
@@ -34,7 +38,6 @@ public class WorldMapScreen implements Screen {
 		touchPadStage.act(Gdx.graphics.getDeltaTime());
 		worldMapStage.draw();
 		touchPadStage.draw();
-
 	}
 
 	@Override
@@ -44,19 +47,17 @@ public class WorldMapScreen implements Screen {
 
 	@Override
 	public void show() {
-
-		worldMapStage = new WorldMapStage();
-		touchPadStage = new TouchPadStage();
 		InputProcessor MapInputProcessor = new MapInputProcessor();
 		multiplexer = new InputMultiplexer();
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, Assets.windowWidth, Assets.windowHeight);
 
+		worldMapStage = stageFactory.makeStage(StageEnum.WORLD_MAP);
+		touchPadStage = stageFactory.makeStage(StageEnum.TOUCH_PAD);
 		worldMapStage.getViewport().setCamera(cam);
 		multiplexer.addProcessor(0, worldMapStage);
 		multiplexer.addProcessor(1, MapInputProcessor);
 		multiplexer.addProcessor(2, touchPadStage);
-		//Gdx.input.setInputProcessor(MapInputProcessor);
 
 		Gdx.input.setInputProcessor(multiplexer);
 		batch = new SpriteBatch();

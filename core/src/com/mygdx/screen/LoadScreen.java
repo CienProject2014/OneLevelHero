@@ -20,7 +20,7 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.state.Assets;
 
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class LoadScreen implements Screen {
 	@Autowired
 	private ScreenFactory screenFactory;
@@ -31,10 +31,6 @@ public class LoadScreen implements Screen {
 	private Stage stage;
 	private TextButton newstartButton;
 	private TextButton backButton;
-
-	public LoadScreen() {
-
-	}
 
 	@Override
 	public void render(float delta) {

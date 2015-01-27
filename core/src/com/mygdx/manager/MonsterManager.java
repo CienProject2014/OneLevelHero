@@ -2,8 +2,6 @@ package com.mygdx.manager;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,11 +25,6 @@ public class MonsterManager {
 	//FIXME 추후 몬스터 객체를 바로 받아오는 방법으로 바꾸자
 	private List<String> monsterStringList;
 
-	@PostConstruct
-	public void init() {
-		monsterStringList = movingInfo.getRoadMonsterList();
-	}
-
 	public void createMonster() {
 		Monster selectedMonster = Assets.monsterMap.get(selectMonster());
 		movingInfo.setSelectedMonster(selectedMonster);
@@ -40,6 +33,7 @@ public class MonsterManager {
 	private String selectMonster() {
 		//랜덤하게 몬스터를 뽑아오는 로직 
 		//FIXME 여기서는 인덱스0의 몬스터를 얻어오며 기획에 따라 수정하자
+		monsterStringList = movingInfo.getRoadMonsterList();
 		String selectedMonsterString = monsterStringList.get(0);
 		return selectedMonsterString;
 	}

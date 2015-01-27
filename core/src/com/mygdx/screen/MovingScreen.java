@@ -1,6 +1,7 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -19,6 +20,7 @@ import com.mygdx.manager.MovingManager;
 import com.mygdx.state.Assets;
 
 @Component
+@Scope("prototype")
 public class MovingScreen implements Screen {
 	@Autowired
 	private MovingInfo movingInfo;
@@ -32,9 +34,6 @@ public class MovingScreen implements Screen {
 	private Texture texture = new Texture(
 			Gdx.files.internal("texture/justground.jpg"));
 	private Image background;
-
-	public MovingScreen() {
-	}
 
 	@Override
 	public void render(float delta) {

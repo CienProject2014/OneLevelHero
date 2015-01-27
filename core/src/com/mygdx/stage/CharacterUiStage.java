@@ -37,7 +37,7 @@ public class CharacterUiStage extends Stage {
 	private StatusBarUi[] turnbar;
 	private String[] hpbarName;
 
-	public Stage init() {
+	public Stage makeStage() {
 		uiTable = new Table();
 
 		initialize();

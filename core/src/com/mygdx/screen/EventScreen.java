@@ -22,7 +22,7 @@ import com.mygdx.manager.RewardManager;
 import com.mygdx.model.EventScene;
 
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class EventScreen implements Screen {
 	@Autowired
 	private StageFactory stageFactory;
@@ -40,11 +40,7 @@ public class EventScreen implements Screen {
 	private Stage eventStage;
 
 	private InputMultiplexer multiplexer;
-	private Iterator<EventScene> iterator;
-
-	public EventScreen() {
-
-	}
+	private Iterator<EventScene> eventSceneIterator;
 
 	@Override
 	public void render(float delta) {
@@ -63,8 +59,8 @@ public class EventScreen implements Screen {
 
 	@Override
 	public void show() {
-		iterator = eventManager.getEventIterator();
-		eventStage = stageFactory.makeEventStage(iterator.next());
+		eventSceneIterator = eventManager.getEventSceneIterator();
+		eventStage = stageFactory.makeEventStage(eventSceneIterator.next());
 
 		multiplexer = new InputMultiplexer();
 		multiplexer.addProcessor(0, eventStage);
@@ -76,11 +72,12 @@ public class EventScreen implements Screen {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				if (iterator.hasNext()) {
-					eventStage = stageFactory.makeEventStage(iterator.next());
+				if (eventSceneIterator.hasNext()) {
+					eventStage = stageFactory.makeEventStage(eventSceneIterator
+							.next());
 				} else {
 					rewardManager.doReward(); //보상이 있을경우 보상실행
-					eventManager.endEvent(); //해당 이벤트 상태를 종료처리
+					eventManager.finishEvent(); //해당 이벤트 상태를 종료처리
 					screenFactory.show(ScreenEnum.VILLAGE);
 				}
 

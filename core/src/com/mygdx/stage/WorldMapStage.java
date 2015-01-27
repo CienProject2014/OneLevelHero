@@ -8,16 +8,16 @@ import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class WorldMapStage extends Overlap2DStage {
-	private CompositeItem item;
+	private static CompositeItem item;
 
 	public Stage makeStage() {
 		// SceneLoader를 초기화
 		initSceneLoader();
 		// MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다.
 		// SceneVO가 반환되는데, 이것은 CompositeVO를 가지고 있다.
-		// CompositeVO는 그 Scene이 가지고 있는 Lable, Button등을 다 가지고 있다.
+		// CompositeVO는 그 Scene이 가지고 있는 Label, Button등을 다 가지고 있다.
 		sceneLoader.loadScene("MainScene");
 		// getRoot()할시, CompositeItem이 반환된다.
 		// CompositeItem은 COomposite들의 집합이다.

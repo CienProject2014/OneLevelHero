@@ -15,7 +15,7 @@ import com.mygdx.manager.SoundManager;
 import com.mygdx.state.Assets;
 
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class MenuScreen implements Screen {
 	@Autowired
 	private SoundManager soundManager;

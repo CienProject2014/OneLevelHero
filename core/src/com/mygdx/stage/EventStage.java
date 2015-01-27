@@ -14,25 +14,33 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.state.Assets;
 
+/**
+ * make and return stage(Event)
+ * @author Velmont
+ *
+ */
 @Component
 @Scope(value = "prototype")
 public class EventStage extends Stage {
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private EventInfo eventInfo;
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
-	private EventTypeEnum eventType;
-	private EventInfo eventInfo;
 
+	/**
+	 * EventManager로부터 eventScene정보를 받아 그래픽처리를 해준다.
+	 * @param eventScene
+	 * @return
+	 */
 	public Stage makeStage(EventScene eventScene) {
-		//씬 만들어주기
-		eventInfo = eventManager.getEventInfo();
-
 		backgroundImage = new Image(eventScene.getBackground());
 		script = new Label(eventScene.getScript(), Assets.skin);
 		characterImage = new Image(eventScene.getCharacter());
-		// 스크립트/캐릭터/백그라운드 설정값 세팅
+
+		// 스크립트/캐릭터/백그라운드 크기값 세팅
 		script.setFontScale(Assets.windowWidth / 1280);
 		script.setWrap(true);
 		script.setSize(Assets.windowWidth * 0.781f,
@@ -45,11 +53,21 @@ public class EventStage extends Stage {
 				Assets.windowHeight * 0.185f);
 		backgroundImage.setSize(Assets.windowWidth, Assets.windowHeight);
 
-		if (!eventInfo.isGreeting())
-			eventType = eventInfo.getNpc().getEvents()
-					.get(eventInfo.getEventNumber()).getEventType();
-		else
-			eventType = eventInfo.getNpc().getGreeting().getEventType();
+		//Greeting인지 아닌지 여부에 따라 처리
+		EventTypeEnum eventType;
+		if (eventInfo.isGreeting()) {
+			eventType = EventTypeEnum.SELECT;
+		} else {
+			eventType = eventInfo.getEventType();
+		}
+		makeEventStage(eventType);
+		this.addActor(backgroundImage);
+		this.addActor(script);
+		this.addActor(characterImage);
+		return this;
+	}
+
+	private void makeEventStage(EventTypeEnum eventType) {
 		switch (eventType) {
 			case CHAT:
 				makeChatStage();
@@ -64,11 +82,6 @@ public class EventStage extends Stage {
 				Gdx.app.log("error", " scene 주입 에러");
 				break;
 		}
-
-		this.addActor(backgroundImage);
-		this.addActor(script);
-		this.addActor(characterImage);
-		return this;
 	}
 
 	private void makeCreditStage() {
@@ -77,7 +90,7 @@ public class EventStage extends Stage {
 
 	private void makeSelectStage() {
 		script.setFontScale(Assets.windowWidth / 1280);
-		script.setWrap(true);
+		script.setWrap(true); //스크립트가 끝에 다다르면 자동 개행
 		script.setSize(Assets.windowWidth * 0.781f,
 				Assets.windowHeight * 0.185f);
 		script.setPosition(Assets.windowWidth * 0.109375f,
@@ -87,7 +100,6 @@ public class EventStage extends Stage {
 		characterImage.setPosition(Assets.windowWidth * 0.375f,
 				Assets.windowHeight * 0.37f);
 		backgroundImage.setSize(Assets.windowWidth, Assets.windowHeight);
-
 	}
 
 	private void makeChatStage() {
@@ -99,6 +111,6 @@ public class EventStage extends Stage {
 				Assets.windowHeight * 0.2f);
 		characterImage.setPosition(0, 0);
 		backgroundImage.setSize(Assets.windowWidth, Assets.windowHeight);
-
 	}
+
 }

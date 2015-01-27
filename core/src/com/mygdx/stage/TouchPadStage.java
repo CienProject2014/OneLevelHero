@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Touchpad.TouchpadStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class TouchPadStage extends Stage {
 	private Touchpad touchpad;
 	private TouchpadStyle touchpadStyle;

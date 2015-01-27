@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.badlogic.gdx.Game;
-import com.mygdx.game.OneLevelHero;
+import com.mygdx.game.OneLevelHeroSpring;
 
 public class GoToVillageScreenTest {
 
@@ -17,7 +17,7 @@ public class GoToVillageScreenTest {
 
 	@Before
 	public void initialize() {
-		Game game = new OneLevelHero();
+		Game game = new OneLevelHeroSpring();
 		//LoadManager.getInstance();
 		//ScreenManager.getInstance().initialize(game);
 	}

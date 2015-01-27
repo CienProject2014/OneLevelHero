@@ -28,6 +28,8 @@ public class SelectButtonStage extends Stage {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private EventInfo eventInfo;
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
 	private int eventCount;
@@ -44,7 +46,6 @@ public class SelectButtonStage extends Stage {
 			Assets.windowHeight * 0.185f };
 
 	public Stage makeStage() {
-		EventInfo eventInfo = eventManager.getEventInfo();
 		eventNpc = eventInfo.getNpc();
 		eventCount = eventNpc.getEventCount();
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
@@ -96,7 +97,6 @@ public class SelectButtonStage extends Stage {
 					@Override
 					public void touchUp(InputEvent event, float x, float y,
 							int pointer, int button) {
-						EventInfo eventInfo = eventManager.getEventInfo();
 						eventManager.setEventInfo(eventInfo.getNpc(), 0, false);
 						screenFactory.show(ScreenEnum.EVENT);
 					}

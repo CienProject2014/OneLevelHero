@@ -28,14 +28,11 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private TimeInfo timeInfo;
 
-	// (5) 보상 미션 및 퀘스트 관리
-
+	// (5) 보상 미션 및 이벤트 관리
+	@Autowired
+	private EventInfo eventInfo;
 	@Autowired
 	private RewardQueueInfo rewardQueueInfo;
-
-	private CurrentState() {
-
-	}
 
 	public SaveVersion getVersion() {
 		return saveVersion;

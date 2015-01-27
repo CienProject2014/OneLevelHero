@@ -1,6 +1,7 @@
 package com.mygdx.factory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -23,29 +24,7 @@ import com.mygdx.stage.WorldMapStage;
 @Component
 public class StageFactory {
 	@Autowired
-	private BattleStage battleStage;
-	@Autowired
-	private CharacterUiStage characterUiStage;
-	@Autowired
-	private EncounterStage encounterStage;
-	@Autowired
-	private EventStage eventStage;
-	@Autowired
-	private GameUiStage gameUiStage;
-	@Autowired
-	private MenuStage menuStage;
-	@Autowired
-	private MonsterStage monsterStage;
-	@Autowired
-	private SelectButtonStage selectButtonStage;
-	@Autowired
-	private StatusStage statusStage;
-	@Autowired
-	private TouchPadStage touchPadStage;
-	@Autowired
-	private VillageStage villageStage;
-	@Autowired
-	private WorldMapStage worldMapStage;
+	private ApplicationContext context;
 
 	public Stage makeStage(StageEnum stageEnum) {
 		PlatformResourceManager rm = new PlatformResourceManager();
@@ -53,36 +32,36 @@ public class StageFactory {
 
 		switch (stageEnum) {
 			case CHARACTER_UI:
-				return characterUiStage.init();
+				return context.getBean(CharacterUiStage.class).makeStage();
 			case ENCOUNTER:
-				return encounterStage.makeStage();
+				return context.getBean(EncounterStage.class).makeStage();
 			case GAME_UI:
-				return gameUiStage.makeStage();
+				return context.getBean(GameUiStage.class).makeStage();
 			case MENU:
-				return menuStage.makeStage();
+				return context.getBean(MenuStage.class).makeStage();
 			case MONSTER:
-				return monsterStage.makeStage();
+				return context.getBean(MonsterStage.class).makeStage();
 			case SELECT_BUTTON:
-				return selectButtonStage.makeStage();
+				return context.getBean(SelectButtonStage.class).makeStage();
 			case STATUS:
-				return statusStage.makeStage();
+				return context.getBean(StatusStage.class).makeStage();
 			case TOUCH_PAD:
-				return touchPadStage.makeStage();
+				return context.getBean(TouchPadStage.class).makeStage();
 			case VILLAGE:
-				return villageStage.makeStage();
+				return context.getBean(VillageStage.class).makeStage();
 			case WORLD_MAP:
-				return worldMapStage.makeStage();
+				return context.getBean(WorldMapStage.class).makeStage();
 			default:
-				return villageStage.makeStage(); //FIXME
+				return context.getBean(VillageStage.class).makeStage(); //FIXME
 		}
 	}
 
 	public Stage makeBattleStage(PlatformResourceManager rm) {
-		return battleStage.init(rm);
+		return context.getBean(BattleStage.class).makeStage(rm);
 	}
 
 	public Stage makeEventStage(EventScene eventScene) {
-		return eventStage.makeStage(eventScene);
+		return context.getBean(EventStage.class).makeStage(eventScene);
 	}
 
 }

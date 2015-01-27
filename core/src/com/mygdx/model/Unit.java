@@ -1,7 +1,7 @@
 package com.mygdx.model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.manager.UnitTextureManager;
+import com.mygdx.manager.TextureManager;
 
 public class Unit {
 	private String name;
@@ -11,7 +11,11 @@ public class Unit {
 
 	public Texture getBattleTexture() {
 		if (battleTexture == null) {
-			UnitTextureManager.setBattleTexture(this);
+			if (this instanceof NPC || this instanceof Hero) {
+				battleTexture = TextureManager.getCharacterBattleTexture(name);
+			} else {
+				battleTexture = TextureManager.getMonsterBattleTexture(name);
+			}
 		}
 		return battleTexture;
 	}
@@ -30,7 +34,7 @@ public class Unit {
 
 	public Texture getStatusTexture() {
 		if (statusTexture == null) {
-			UnitTextureManager.setStatusTexture(this);
+			statusTexture = TextureManager.getStatusTexture(name);
 		}
 		return statusTexture;
 	}
@@ -46,7 +50,7 @@ public class Unit {
 
 	public void setNpcTexture(Texture npcTexture) {
 		if (npcTexture == null) {
-			UnitTextureManager.setNpcTexture(this);
+			npcTexture = TextureManager.getNpcTexture(name);
 		}
 		this.npcTexture = npcTexture;
 	}

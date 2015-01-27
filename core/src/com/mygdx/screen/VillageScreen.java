@@ -1,6 +1,7 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -20,6 +21,7 @@ import com.mygdx.factory.StageFactory;
  */
 
 @Component
+@Scope("prototype")
 public class VillageScreen implements Screen {
 
 	private String villageName;

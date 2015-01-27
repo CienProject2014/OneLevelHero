@@ -11,7 +11,7 @@ import com.mygdx.factory.ScreenFactory;
 @Component
 public class EncounterManager {
 	@Autowired
-	private ScreenFactory ScreenFactory;
+	private ScreenFactory screenFactory;
 	@Autowired
 	private MonsterManager monsterManager;
 	private Random random = new Random();
@@ -19,7 +19,7 @@ public class EncounterManager {
 	public void encountEnemy() {
 		//몬스터 소환!
 		monsterManager.createMonster();
-		ScreenFactory.show(ScreenEnum.ENCOUNTER);
+		screenFactory.show(ScreenEnum.ENCOUNTER);
 	}
 
 	//FIXME 전투 랜덤으로 발생, 기획에 맞게 바꿀 것

@@ -16,7 +16,7 @@ import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
 
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class MenuStage extends Stage {
 	@Autowired
 	private ScreenFactory screenFactory;

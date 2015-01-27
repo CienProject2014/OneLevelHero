@@ -16,7 +16,7 @@ import com.mygdx.currentState.MovingInfo;
 import com.mygdx.model.Monster;
 
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class MonsterStage extends Stage {
 	@Autowired
 	private MovingInfo movingInfo;
@@ -63,7 +63,8 @@ public class MonsterStage extends Stage {
 	}
 
 	private Image getMonsterImage() {
-		return new Image(monster.getBattleTexture());
+		Texture monsterTexture = monster.getBattleTexture();
+		return new Image(monsterTexture);
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {

@@ -22,7 +22,7 @@ import com.mygdx.factory.ScreenFactory;
  *
  */
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class CreditScreen implements Screen {
 	@Autowired
 	private ScreenFactory screenFactory;

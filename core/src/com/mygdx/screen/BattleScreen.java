@@ -8,27 +8,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.PlatformResourceManager;
-import com.mygdx.stage.BattleStage;
-import com.mygdx.stage.CharacterUiStage;
-import com.mygdx.stage.GameUiStage;
-import com.mygdx.stage.MonsterStage;
 
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class BattleScreen implements Screen {
 	@Autowired
 	private StageFactory stageFactory;
-	@Autowired
-	private GameUiStage uiStage;
-	@Autowired
-	private CharacterUiStage characStage;
-	@Autowired
-	private MonsterStage monsterStage; // monster Table 을 포함하는 Stage
-	@Autowired
-	private BattleStage battleStage; // battle ui Table 을 포함하는 Stage
+	private Stage gameUiStage, characterUiStage, monsterStage, battleStage;
 
 	public BattleScreen() {
 
@@ -47,11 +37,11 @@ public class BattleScreen implements Screen {
 		battleStage.draw();
 
 		// 유저의 스테이터스를 실시간으로 업데이트 한다.
-		characStage.act(delta);
-		characStage.draw();
+		characterUiStage.act(delta);
+		characterUiStage.draw();
 
-		uiStage.act();
-		uiStage.draw();
+		gameUiStage.act();
+		gameUiStage.draw();
 
 	}
 
@@ -62,12 +52,12 @@ public class BattleScreen implements Screen {
 
 	@Override
 	public void show() {
-		uiStage = new GameUiStage();
-		characStage = new CharacterUiStage();
-		monsterStage = (MonsterStage) stageFactory.makeStage(StageEnum.MONSTER);
+		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
+		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
+		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
 		PlatformResourceManager rm = new PlatformResourceManager();
 		rm.initPlatformerResources();
-		battleStage = (BattleStage) stageFactory.makeBattleStage(rm);
+		battleStage = stageFactory.makeBattleStage(rm);
 
 		setInputProcessor();
 	}
@@ -75,8 +65,8 @@ public class BattleScreen implements Screen {
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		// CharacterUiStage 를 Static 하게 사용하면 addProcessor도 한 번만 하면 되지 않을까?
-		multiplexer.addProcessor(0, uiStage);
-		multiplexer.addProcessor(1, characStage);
+		multiplexer.addProcessor(0, gameUiStage);
+		multiplexer.addProcessor(1, characterUiStage);
 		multiplexer.addProcessor(2, monsterStage);
 		multiplexer.addProcessor(3, battleStage);
 		Gdx.input.setInputProcessor(multiplexer);

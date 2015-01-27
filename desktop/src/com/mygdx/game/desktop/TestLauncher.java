@@ -2,7 +2,7 @@ package com.mygdx.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.mygdx.game.OneLevelTest;
+import com.mygdx.game.OneLevelTestSpring;
 
 public class TestLauncher {
 	public static void main(String[] arg) {
@@ -11,6 +11,6 @@ public class TestLauncher {
 		config.title = "One Level Hero";
 		config.width = 1280;
 		config.height = 720;
-		new LwjglApplication(new OneLevelTest(), config);
+		new LwjglApplication(new OneLevelTestSpring(), config);
 	}
 }

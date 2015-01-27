@@ -3,22 +3,19 @@ package com.mygdx.battle;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.game.OneLevelHero;
 import com.mygdx.screen.VillageScreen;
 
 public class Fight {
-
-	OneLevelHero game;
 	Random random = new Random();
 	VillageScreen gameScreen;
 	boolean outcome;
 	public boolean battleEnd = false;
 	String dungeonID;
-	
+
 	public Fight() {
-		
+
 	}
-	
+
 	public Fight(String dungeonID) {
 		this.dungeonID = dungeonID;
 	}

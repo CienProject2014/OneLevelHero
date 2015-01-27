@@ -5,7 +5,6 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 
 public class NPC extends Unit {
-
 	private int eventCount;
 	private List<Event> events;
 	private Event greeting;

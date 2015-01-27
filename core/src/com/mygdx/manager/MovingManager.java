@@ -35,6 +35,10 @@ public class MovingManager {
 		return leftRoadLength;
 	}
 
+	public void setRoadLength(int roadLength) {
+		this.roadLength = roadLength;
+	}
+
 	public void setLeftRoadLength(int leftRoadLength) {
 		movingInfo.setLeftRoadLength(leftRoadLength);
 	}

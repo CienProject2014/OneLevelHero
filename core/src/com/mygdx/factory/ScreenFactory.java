@@ -1,12 +1,13 @@
 package com.mygdx.factory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.IntMap;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.game.OneLevelHeroSpring;
 import com.mygdx.screen.BGMScreen;
 import com.mygdx.screen.BattleScreen;
 import com.mygdx.screen.BonusPointScreen;
@@ -28,43 +29,18 @@ import com.mygdx.screen.WorldMapScreen;
 
 @Component
 public class ScreenFactory {
-	private OneLevelHeroSpring oneLevelHeroSpring;
 	@Autowired
-	private BattleScreen battleScreen;
-	@Autowired
-	private BGMScreen bgmScreen;
-	@Autowired
-	private BonusPointScreen bonusPointScreen;
-	@Autowired
-	private CGScreen cgScreen;
-	@Autowired
-	private CollectionScreen collectionScreen;
-	@Autowired
-	private CreditScreen creditScreen;;
-	@Autowired
-	private EncounterScreen encounterScreen;
-	@Autowired
-	private EndingScreen endingScreen;
-	@Autowired
-	private EventScreen eventScreen;
-	@Autowired
-	private GreetingScreen greetingScreen;
-	@Autowired
-	private LoadScreen loadScreen;
-	@Autowired
-	private MenuScreen menuScreen;
-	@Autowired
-	private MovingScreen movingScreen;
-	@Autowired
-	private OptionScreen optionScreen;
-	@Autowired
-	private SaveScreen saveScreen;
-	@Autowired
-	private StatusScreen statusScreen;
-	@Autowired
-	private VillageScreen villageScreen;
-	@Autowired
-	private WorldMapScreen worldMapScreen;
+	private ApplicationContext context;
+	private Game game;
+
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
 	private IntMap<Screen> screens;
 
 	public ScreenFactory() {
@@ -74,57 +50,53 @@ public class ScreenFactory {
 	private Screen getScreenInstance(ScreenEnum screenEnum) {
 		switch (screenEnum) {
 			case BATTLE:
-				return battleScreen;
+				return context.getBean(BattleScreen.class);
 			case BGM:
-				return bgmScreen;
+				return context.getBean(BGMScreen.class);
 			case BONUS_POINT:
-				return bonusPointScreen;
+				return context.getBean(BonusPointScreen.class);
 			case CG:
-				return cgScreen;
+				return context.getBean(CGScreen.class);
 			case COLLETION:
-				return collectionScreen;
+				return context.getBean(CollectionScreen.class);
 			case CREDIT:
-				return creditScreen;
+				return context.getBean(CreditScreen.class);
 			case ENCOUNTER:
-				return encounterScreen;
+				return context.getBean(EncounterScreen.class);
 			case ENDING:
-				return endingScreen;
+				return context.getBean(EndingScreen.class);
 			case EVENT:
-				return eventScreen;
+				return context.getBean(EventScreen.class);
 			case GREETING:
-				return greetingScreen;
+				return context.getBean(GreetingScreen.class);
 			case LOAD:
-				return loadScreen;
+				return context.getBean(LoadScreen.class);
 			case MENU:
-				return menuScreen;
+				return context.getBean(MenuScreen.class);
 			case MOVING:
-				return movingScreen;
+				return context.getBean(MovingScreen.class);
 			case OPTION:
-				return optionScreen;
+				return context.getBean(OptionScreen.class);
 			case SAVE:
-				return saveScreen;
+				return context.getBean(SaveScreen.class);
 			case STATUS:
-				return statusScreen;
+				return context.getBean(StatusScreen.class);
 			case VILLAGE:
-				return villageScreen;
+				return context.getBean(VillageScreen.class);
 			case WORLD_MAP:
-				return worldMapScreen;
+				return context.getBean(WorldMapScreen.class);
 			default:
-				return menuScreen; //FIXME
+				return context.getBean(VillageScreen.class); //FIXME
 		}
 	}
 
-	public void setGame(OneLevelHeroSpring oneLevelHeroSpring) {
-		this.oneLevelHeroSpring = oneLevelHeroSpring;
-	}
-
 	public void show(ScreenEnum screenEnum) {
-		if (oneLevelHeroSpring == null)
+		if (game == null)
 			return;
 		if (!screens.containsKey(screenEnum.ordinal())) {
 			screens.put(screenEnum.ordinal(), getScreenInstance(screenEnum));
 		}
-		oneLevelHeroSpring.setScreen(screens.get(screenEnum.ordinal()));
+		game.setScreen(screens.get(screenEnum.ordinal()));
 	}
 
 	public void dispose(ScreenEnum screen) {

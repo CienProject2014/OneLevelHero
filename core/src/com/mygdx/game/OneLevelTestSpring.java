@@ -10,7 +10,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
 
-public class OneLevelHeroSpring extends Game {
+public class OneLevelTestSpring extends Game {
 
 	@Override
 	public void create() {
@@ -19,8 +19,7 @@ public class OneLevelHeroSpring extends Game {
 		ApplicationContext context = new AnnotationConfigApplicationContext(
 				OneLevelHeroApplicationContext.class);
 		context.getBean(ScreenFactory.class).setGame(this);
-		context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
-
+		context.getBean(ScreenFactory.class).show(ScreenEnum.MOVING);
 	}
 
 	public boolean keyDown(int keycode) {

@@ -26,7 +26,7 @@ import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class GreetingScreen implements Screen {
 	@Autowired
 	private ScreenFactory screenFactory;
@@ -34,6 +34,8 @@ public class GreetingScreen implements Screen {
 	private StageFactory stageFactory;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private EventInfo eventInfo;
 
 	// Already libgdx using interface!
 	private GL20 gl = Gdx.gl;
@@ -41,8 +43,6 @@ public class GreetingScreen implements Screen {
 
 	private Stage eventStage;
 	private Stage selectButtonStage;
-	private EventInfo eventInfo;
-
 	private List<EventScene> greetingScenes;
 
 	public GreetingScreen() {
@@ -69,8 +69,8 @@ public class GreetingScreen implements Screen {
 		gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		selectButtonStage.draw();
 		eventStage.draw();
+		selectButtonStage.draw();
 
 	}
 
@@ -82,7 +82,6 @@ public class GreetingScreen implements Screen {
 
 	@Override
 	public void show() {
-		eventInfo = eventManager.getEventInfo();
 		final NPC npc = eventInfo.getNpc();
 		greetingScenes = npc.getGreeting().getEventScenes();
 

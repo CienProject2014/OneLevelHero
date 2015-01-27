@@ -61,7 +61,7 @@ public class BattleStage extends Overlap2DStage {
 	private ArrayList<LivingUnit> units;
 	private Queue<LivingUnit> orderedUnits;
 
-	public Stage init(PlatformResourceManager rm) {
+	public Stage makeStage(PlatformResourceManager rm) {
 		StretchViewport viewport = new StretchViewport(rm.stageWidth,
 				rm.currentResolution.height);
 		this.setViewport(viewport);
@@ -115,7 +115,7 @@ public class BattleStage extends Overlap2DStage {
 
 		for (LivingUnit unit : orderedUnits) {
 			Gdx.app.log("BattleStage", unit.getName());
-			orderTable.add(new Image(unit.getStatusTexture()))
+			orderTable.add(new Image(unit.getBattleTexture()))
 					.width(maximumWidth).height(maximumHeight);
 			orderTable.row();
 		}
@@ -130,7 +130,7 @@ public class BattleStage extends Overlap2DStage {
 
 		for (LivingUnit unit : orderedUnits) {
 			Gdx.app.log("Unit name", unit.getName());
-			orderTable.add(new Image(unit.getStatusTexture()))
+			orderTable.add(new Image(unit.getBattleTexture()))
 					.width(maximumWidth).height(maximumHeight);
 			orderTable.row();
 		}
@@ -195,9 +195,5 @@ public class BattleStage extends Overlap2DStage {
 				screenFactory.show(ScreenEnum.MOVING);
 			}
 		});
-	}
-
-	private Image getMonsterImage() {
-		return new Image(monster.getStatusTexture());
 	}
 }

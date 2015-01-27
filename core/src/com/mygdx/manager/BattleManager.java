@@ -1,7 +1,5 @@
 package com.mygdx.manager;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,12 +18,8 @@ public class BattleManager {
 	private Battle battle = new Battle();
 	private Monster monster;
 
-	@PostConstruct
-	public void init() {
-		monster = movingInfo.getSelectedMonster();
-	}
-
 	public void userAttack(LivingUnit unit) {
+		monster = movingInfo.getSelectedMonster();
 		// FIXME
 		battle.attack(unit, monster);
 

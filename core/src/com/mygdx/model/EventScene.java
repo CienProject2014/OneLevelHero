@@ -7,6 +7,10 @@ public class EventScene {
 	private String script;
 	private String characterPath;
 	private int faceNumber;
+	private String backgroundPath;
+	private String speakerPosition;
+	private Texture character;
+	private Texture background;
 
 	public int getFaceNumber() {
 		return faceNumber;
@@ -15,19 +19,6 @@ public class EventScene {
 	public void setFaceNumber(int faceNumber) {
 		this.faceNumber = faceNumber;
 	}
-
-	public String getDirection() {
-		return direction;
-	}
-
-	public void setDirection(String direction) {
-		this.direction = direction;
-	}
-
-	private String backgroundPath;
-	private String direction;
-	private Texture character;
-	private Texture background;
 
 	public Texture getCharacter() {
 		if (character == null)
@@ -72,6 +63,14 @@ public class EventScene {
 
 	public void setScript(String script) {
 		this.script = script;
+	}
+
+	public String getSpeakerPosition() {
+		return speakerPosition;
+	}
+
+	public void setSpeakerPosition(String speakerPosition) {
+		this.speakerPosition = speakerPosition;
 	}
 
 }

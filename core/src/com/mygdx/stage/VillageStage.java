@@ -193,7 +193,7 @@ public class VillageStage extends Stage {
 		village = Assets.villageMap.get(WorldNodeEnum.BLACKWOOD.toString());
 
 		if (village == null)
-			Gdx.app.log("asdf", "asdf");
+			Gdx.app.log("Error", "village is null");
 
 		float ratio = (float) village.getRatio();
 
