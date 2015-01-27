@@ -91,4 +91,34 @@ public class WorldMapStage extends Overlap2DStage {
 		this.setCamera(cam);
 	}
 
+	public void settingCamera() {
+
+		int x_left_limit = (int) (Assets.windowWidth / 2);
+		int x_right_limit = (int) (3000 - (Assets.windowWidth / 2));
+		int y_bottom_limit = (int) (Assets.windowHeight / 2);
+		int y_top_limit = (int) (1688 - (Assets.windowHeight / 2));
+
+		float xvalue = this.getCurrent().getX() - Assets.windowWidth / 2, yvalue = this
+				.getCurrent().getY() - Assets.windowHeight / 2;
+		// x값이 오른쪽으로 벗어날 경우
+		if (this.getCurrent().getX() > x_right_limit) {
+
+			xvalue = 3000 - Assets.windowWidth;
+		}
+		// x값이 왼쪽으로 벗어날 경우
+		if (this.getCurrent().getX() < x_left_limit) {
+
+			xvalue = 0;
+		}
+		// y값이 위로 벗어날 경우
+		if (this.getCurrent().getY() > y_top_limit) {
+			yvalue = 1688 - Assets.windowHeight;
+		}
+		// y값이 아래로 벗어날 경우
+		if (this.getCurrent().getY() < y_bottom_limit) {
+			yvalue = 0;
+		}
+		this.getCamera().translate(xvalue, yvalue, 0);
+	}
+
 }
