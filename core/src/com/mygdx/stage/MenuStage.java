@@ -24,13 +24,14 @@ public class MenuStage extends Stage {
 
 	public Stage makeStage() {
 		button = new ImageButton[4];
+		Image logo = new Image(Assets.atlasUiMap.get("title"));
 		Texture texture = Assets.backgroundTextureMap.get("main_background");
 		Image background = new Image(texture);
 
 		Table table = new Table(Assets.skin);
 
 		button[0] = new ImageButton(
-		//FIXME 버튼하나 없음
+		// FIXME 버튼하나 없음
 				Assets.atlasUiMap.get("button_start_after"),
 				Assets.atlasUiMap.get("button_start_after"));
 		button[1] = new ImageButton(
@@ -98,26 +99,22 @@ public class MenuStage extends Stage {
 			}
 		});
 
-		int windowHeight = (int) (Assets.windowHeight);
-		int windowWidth = (int) (Assets.windowWidth);
-		Image logo = new Image(Assets.atlasUiMap.get("title"));
 		logo.setHeight((int) (0.4f * Assets.windowHeight));
 		logo.setWidth((int) (0.6f * Assets.windowWidth));
 		table.setFillParent(true);
 
-		table.add(button[3]).height(0.35f * windowHeight)
-				.width(0.3f * windowWidth).expand().top().left();
-		table.add(button[2]).height(0.35f * windowHeight)
-				.width(0.3f * windowWidth).top().right();
+		table.add(button[3]).height(0.35f * Assets.windowHeight)
+				.width(0.3f * Assets.windowWidth).expand().top().left();
+		table.add(button[2]).height(0.35f * Assets.windowHeight)
+				.width(0.3f * Assets.windowWidth).top().right();
 		table.row();
-		table.add(button[0]).height(0.35f * windowHeight)
-				.width(0.3f * windowWidth).bottom().left();
-		table.add(button[1]).height(0.35f * windowHeight)
-				.width(0.3f * windowWidth).bottom().right();
-
+		table.add(button[0]).height(0.35f * Assets.windowHeight)
+				.width(0.3f * Assets.windowWidth).bottom().left();
+		table.add(button[1]).height(0.35f * Assets.windowHeight)
+				.width(0.3f * Assets.windowWidth).bottom().right();
 		logo.setPosition((int) (0.2f * Assets.windowWidth),
 				(int) (0.3f * Assets.windowHeight));
-		background.setSize(windowWidth, windowHeight);
+		background.setSize(Assets.windowWidth, Assets.windowHeight);
 
 		this.addActor(background);
 		this.addActor(logo);

@@ -78,7 +78,7 @@
         ]
       },
       "Redrose Castle": {
-      	"arrowName" : "2to7",
+      	"arrowName" : "2to6",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
@@ -91,7 +91,7 @@
     "type": "village",
     "connection": {
       "Cobweb": {
-      	"arrowName" : "7to2",
+      	"arrowName" : "6to2",
         "roadLength": "2",
         "roadMonster": [
           "assassin girl"
