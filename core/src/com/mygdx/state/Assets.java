@@ -142,7 +142,6 @@ public class Assets {
 	}
 
 	private static void villageInfoLoad() {
-		//village 리스트를 담은 Json을 불러와 객체화한다.
 		villageMap = JsonParser.parseMap(Village.class,
 				jsonStringMap.get(JsonEnum.VILLAGE_JSON.toString()));
 	}

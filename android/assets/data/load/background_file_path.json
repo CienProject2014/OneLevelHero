@@ -21,12 +21,18 @@
     "filePath": "texture/credit/graphic_team1.png"
   },
   "blackwood_center": {
-    "filePath": "texture/blackwood/blackwood_center.png"
+    "filePath": "texture/village/blackwood/blackwood_center.png"
   },
   "main_background": {
     "filePath": "texture/MainMenu_Background.png"
   },
   "waiji_background":{
-  	"filePath" : "texture/blackwood/waiji_background.png"
+  	"filePath" : "texture/village/blackwood/waiji_background.png"
+  },
+  "blackwood_bg_701":{
+  	"filePath" : "texture/village/blackwood/blackwood_bg_701.png"
+  },
+   "blackwood_bg_702":{
+  	"filePath" : "texture/village/blackwood/blackwood_bg_702.png"
   }
 }

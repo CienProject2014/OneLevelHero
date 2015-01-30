@@ -3,7 +3,7 @@ package com.mygdx.manager;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.enums.UnitTextureEnum;
+import com.mygdx.enums.TextureEnum;
 import com.mygdx.state.Assets;
 
 /**
@@ -18,22 +18,28 @@ public class TextureManager {
 
 	public static Texture getCharacterBattleTexture(String name) {
 		return Assets.characterTextureMap.get(name + "_"
-				+ UnitTextureEnum.BATTLE_ALLY_NORMAL);
+				+ TextureEnum.BATTLE_ALLY_NORMAL);
 	}
 
 	public static Texture getMonsterBattleTexture(String name) {
-		System.out.println((name + "_" + UnitTextureEnum.BATTLE_ENEMY_NORMAL));
+		System.out.println((name + "_" + TextureEnum.BATTLE_ENEMY_NORMAL));
 		return Assets.monsterTextureMap.get(name + "_"
-				+ UnitTextureEnum.BATTLE_ENEMY_NORMAL);
+				+ TextureEnum.BATTLE_ENEMY_NORMAL);
 	}
 
 	public static Texture getStatusTexture(String name) {
 		return Assets.characterTextureMap.get(name + "_"
-				+ UnitTextureEnum.STATUS_NORMAL);
+				+ TextureEnum.STATUS_NORMAL);
 	}
 
 	public static Texture getNpcTexture(String name) {
 		return Assets.characterTextureMap.get(name + "_"
-				+ UnitTextureEnum.NPC_NORMAL);
+				+ TextureEnum.NPC_NORMAL);
+	}
+
+	public static Texture getBackgroundTexture(String name,
+			TextureEnum unitTextureEnum) {
+
+		return Assets.backgroundTextureMap.get(name + "_" + unitTextureEnum);
 	}
 }

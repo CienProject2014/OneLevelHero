@@ -19,7 +19,7 @@ public class OneLevelTestSpring extends Game {
 		ApplicationContext context = new AnnotationConfigApplicationContext(
 				OneLevelHeroApplicationContext.class);
 		context.getBean(ScreenFactory.class).setGame(this);
-		context.getBean(ScreenFactory.class).show(ScreenEnum.WORLD_MAP);
+		context.getBean(ScreenFactory.class).show(ScreenEnum.VILLAGE);
 	}
 
 	public boolean keyDown(int keycode) {

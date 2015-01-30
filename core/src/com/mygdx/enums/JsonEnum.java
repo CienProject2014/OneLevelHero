@@ -6,7 +6,8 @@ public enum JsonEnum {
 			"dungeon_json"), ATLAS_UI_PATH("atlas_ui_path"), BACKGROUND_FILE_PATH(
 			"background_file_path"), CHARACTER_FILE_PATH("character_file_path"), JSON_FILE_PATH(
 			"json_file_path"), MONSTER_JSON("monster_json"), NULL_JSON(
-			"null_json"), MONSTER_FILE_PATH("monster_file_path");
+			"null_json"), MONSTER_FILE_PATH("monster_file_path"), VILLAGE_JSON2(
+			"village_json2");
 
 	private String jsonName;
 
