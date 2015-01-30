@@ -10,10 +10,6 @@ public class DesktopLauncher {
 		// 나중에 수정 요망
 		config.title = "One Level Hero";
 		config.width = 1280;
-<<<<<<< HEAD
-=======
-
->>>>>>> remote/#106_Remaking_WorldMapScreen
 		config.height = 720;
 
 		new LwjglApplication(new OneLevelHeroSpring(), config);
