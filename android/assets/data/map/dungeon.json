@@ -1,0 +1,13 @@
+{
+  "Blackwood Forest":{
+    "dungeonName" : "블랙우드 숲",
+    "properLevel" : 45,
+    "attribute" : "나무",
+    "minimap" : [
+      ["O", "X", "X", "X"],        
+      ["O", "O", "O", "O"],
+      ["O", "X", "O", "X"],
+      ["X", "X", "O", "O"]
+    ]
+  }
+}
