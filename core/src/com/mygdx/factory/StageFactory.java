@@ -19,7 +19,6 @@ import com.mygdx.stage.SelectButtonStage;
 import com.mygdx.stage.StatusStage;
 import com.mygdx.stage.TouchPadStage;
 import com.mygdx.stage.VillageStage;
-import com.mygdx.stage.VillageStageBackup;
 import com.mygdx.stage.WorldMapStage;
 
 @Component
@@ -51,7 +50,7 @@ public class StageFactory {
 			case WORLD_MAP:
 				return context.getBean(WorldMapStage.class).makeStage();
 			default:
-				return context.getBean(VillageStageBackup.class).makeStage(); //FIXME
+				return context.getBean(VillageStage.class).makeStage(); //FIXME
 		}
 	}
 

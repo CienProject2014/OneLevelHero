@@ -1,30 +1,6 @@
 package com.mygdx.stage;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.enums.ScreenEnum;
-import com.mygdx.enums.WorldNodeEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.manager.EventManager;
-import com.mygdx.model.Village2;
-import com.mygdx.model.Village2.Building;
-import com.mygdx.model.Village2.NPC;
-import com.mygdx.state.Assets;
-
+/*
 @Component
 @Scope(value = "prototype")
 public class VillageStageBackup extends Stage {
@@ -342,3 +318,4 @@ public class VillageStageBackup extends Stage {
 		}
 	}
 }
+*/

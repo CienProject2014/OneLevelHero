@@ -32,14 +32,22 @@ public class TextureManager {
 				+ TextureEnum.STATUS_NORMAL);
 	}
 
+	public static Texture getStatusTexture(String name, TextureEnum textureEnum) {
+		return Assets.characterTextureMap.get(name + "_" + textureEnum);
+	}
+
 	public static Texture getNpcTexture(String name) {
 		return Assets.characterTextureMap.get(name + "_"
 				+ TextureEnum.NPC_NORMAL);
 	}
 
-	public static Texture getBackgroundTexture(String name,
-			TextureEnum unitTextureEnum) {
+	public static Texture getNpcTexture(String name, TextureEnum textureEnum) {
+		return Assets.characterTextureMap.get(name + "_" + textureEnum);
+	}
 
-		return Assets.backgroundTextureMap.get(name + "_" + unitTextureEnum);
+	public static Texture getBackgroundTexture(String name,
+			TextureEnum textureEnum) {
+
+		return Assets.backgroundTextureMap.get(name + "_" + textureEnum);
 	}
 }
