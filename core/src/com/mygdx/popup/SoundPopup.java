@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.manager.VolumeManager;
 import com.mygdx.screen.MenuScreen;
 import com.mygdx.state.Assets;
 
@@ -77,7 +78,7 @@ public class SoundPopup extends Dialog {
 			public void changed(ChangeEvent event, Actor actor) {
 
 				// sound.setVolume(soundId, volume.getValue());
-				Assets.musicVolume = volume.getValue() / 100;
+				VolumeManager.musicVolume = volume.getValue() / 100;
 				volumeValue.setText("" + Assets.musicVolume * 100);
 				MenuScreen.getMusic().setVolume(Assets.musicVolume);
 

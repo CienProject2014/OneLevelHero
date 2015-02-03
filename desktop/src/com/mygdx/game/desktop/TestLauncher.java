@@ -13,4 +13,9 @@ public class TestLauncher {
 		config.height = 720;
 		new LwjglApplication(new OneLevelTestSpring(), config);
 	}
+	
+	public static void testInit(){
+		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		new LwjglApplication(new OneLevelTestSpring(), config);
+	}
 }

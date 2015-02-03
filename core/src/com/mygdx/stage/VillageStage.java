@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -29,6 +30,7 @@ public class VillageStage extends Overlap2DStage {
 	private float viewportHeight;
 	private Camera camera;
 	private BackgroundDirection backgroundDirection;
+	private OrthographicCamera cam;
 
 	public enum BackgroundDirection {
 		UP, DOWN, MOVE_UP, MOVE_DOWN;
@@ -41,24 +43,28 @@ public class VillageStage extends Overlap2DStage {
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
+		cam = new OrthographicCamera(Assets.windowWidth, Assets.windowHeight);
+		cam.position
+				.set(Assets.windowWidth / 2, Assets.windowHeight * 0.25f, 0);
+		getViewport().setCamera(cam);
+		camera = getViewport().getCamera();
+		float ratio = (float) 0.782; //FIXME
+		viewportWidth = Assets.windowWidth;
+		viewportHeight = viewportWidth * ratio;
+
 		initSceneLoader();
 		sceneLoader.loadScene("VillageScene");
 
 		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
 		villageInfo = Assets.villageMap.get(WorldNodeEnum.BLACKWOOD.toString());
+		Image background = new Image(villageInfo.getBackgroundUp());
+		background.setBounds(0, 0, viewportWidth, viewportHeight);
+
 		backgroundDirection = BackgroundDirection.UP;
 
-		float ratio = 0.782f; //FIXME
-		viewportWidth = Assets.windowWidth;
-		viewportHeight = viewportWidth * ratio;
-		OrthographicCamera cam = new OrthographicCamera(Assets.windowWidth,
-				Assets.windowHeight);
-		cam.position
-				.set(Assets.windowWidth / 2, Assets.windowHeight * 0.25f, 0);
-
 		addActor(sceneLoader.getRoot());
-		getViewport().setCamera(cam);
-		camera = getViewport().getCamera();
+		//addActor(background);
+
 		// 전환 버튼 기능은 빌리지 스크린에서 구현
 		//shiftButton.center();
 		/*
@@ -123,4 +129,13 @@ public class VillageStage extends Overlap2DStage {
 			//shiftButton.setVisible(true);
 		}
 	}
+
+	public OrthographicCamera getCam() {
+		return cam;
+	}
+
+	public void setCam(OrthographicCamera cam) {
+		this.cam = cam;
+	}
+
 }

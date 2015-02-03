@@ -8,12 +8,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
 
-public class OneLevelTestSpring extends Game {
+public class OneLevelTestCase extends Game {
 	@Autowired
-	@Qualifier("Game")
+	@Qualifier("Test")
 	private Assets assets;
 
 	@Override
@@ -23,6 +24,7 @@ public class OneLevelTestSpring extends Game {
 		ApplicationContext context = new AnnotationConfigApplicationContext(
 				OneLevelHeroApplicationContext.class);
 		context.getBean(ScreenFactory.class).setGame(this);
+		context.getBean(ScreenFactory.class).show(ScreenEnum.VILLAGE);
 	}
 
 	public boolean keyDown(int keycode) {

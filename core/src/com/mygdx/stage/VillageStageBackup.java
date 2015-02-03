@@ -1,5 +1,6 @@
 package com.mygdx.stage;
 
+
 /*
 @Component
 @Scope(value = "prototype")

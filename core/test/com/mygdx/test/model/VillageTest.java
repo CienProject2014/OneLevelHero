@@ -20,7 +20,7 @@ public class VillageTest {
 	private Map<String, Village> villageMap;
 
 	@Before
-	public void villageParseTest() throws IOException {
+	public void setVillageMap() throws IOException {
 
 		String filePath = "../android/assets/data/map/village.json";
 
