@@ -63,7 +63,7 @@ public class BattleStage extends Overlap2DStage {
 	private Queue<LivingUnit> orderedUnits;
 
 	public BattleStage() {
-		Gdx.app.log("BattleStage", "Constructor() call");
+		Gdx.app.debug("BattleStage", "Constructor() call");
 	}
 
 	public Stage makeStage(PlatformResourceManager rm) {

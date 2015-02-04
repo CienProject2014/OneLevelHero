@@ -1,13 +1,9 @@
 package com.mygdx.state;
 
-//package com.mygdx.state;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -37,7 +33,6 @@ import com.mygdx.model.WorldNode;
  * 
  */
 
-@Component
 public class Assets {
 	public Skin skin;
 	public TextureAtlas items;

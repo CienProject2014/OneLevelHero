@@ -11,8 +11,6 @@ public class DesktopLauncher {
 		config.title = "One Level Hero";
 		config.width = 1280;
 		config.height = 720;
-
 		new LwjglApplication(new OneLevelHero(), config);
-
 	}
 }

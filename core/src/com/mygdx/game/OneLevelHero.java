@@ -25,6 +25,7 @@ public class OneLevelHero extends Game {
 		StaticAssets.loadAll();
 		context = new AnnotationConfigApplicationContext(
 				OneLevelHeroApplicationContext.class);
+		Gdx.app.debug("OneLevelHero", "ComponentScan 끝");
 		gameLoad();
 	}
 
