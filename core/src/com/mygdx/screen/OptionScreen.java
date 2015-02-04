@@ -19,6 +19,8 @@ import com.mygdx.state.Assets;
 @Component
 public class OptionScreen implements Screen {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private ScreenFactory screenFactory;
 	private Stage stage;
 	private TextButton soundButton;
@@ -52,11 +54,11 @@ public class OptionScreen implements Screen {
 		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		Table table = new Table(Assets.skin);
-		soundButton = new TextButton("Sound", Assets.skin);
-		savedataButton = new TextButton("SaveData", Assets.skin);
-		bonusPointButton = new TextButton("BonusPoint", Assets.skin);
-		backButton = new TextButton("Back", Assets.skin);
+		Table table = new Table(assets.skin);
+		soundButton = new TextButton("Sound", assets.skin);
+		savedataButton = new TextButton("SaveData", assets.skin);
+		bonusPointButton = new TextButton("BonusPoint", assets.skin);
+		backButton = new TextButton("Back", assets.skin);
 
 		soundButton.addListener(new InputListener() {
 			@Override

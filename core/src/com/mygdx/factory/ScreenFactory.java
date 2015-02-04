@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.IntMap;
 import com.mygdx.enums.ScreenEnum;
@@ -38,6 +39,7 @@ public class ScreenFactory {
 	}
 
 	public void setGame(Game game) {
+		Gdx.app.debug("ScreenFactory", "ScreenFactory.setGame(Game game)");
 		this.game = game;
 	}
 
@@ -86,11 +88,13 @@ public class ScreenFactory {
 			case WORLD_MAP:
 				return context.getBean(WorldMapScreen.class);
 			default:
-				return context.getBean(VillageScreen.class); //FIXME
+				return context.getBean(VillageScreen.class); // FIXME
 		}
 	}
 
 	public void show(ScreenEnum screenEnum) {
+		Gdx.app.debug("ScreenFactory", "Show " + screenEnum.toString()
+				+ "Screen");
 		if (game == null)
 			return;
 		if (!screens.containsKey(screenEnum.ordinal())) {

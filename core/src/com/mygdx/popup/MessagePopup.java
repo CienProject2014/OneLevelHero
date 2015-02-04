@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.inventory.HidingClickListener;
-import com.mygdx.state.Assets;
+import com.mygdx.state.StaticAssets;
 
 public class MessagePopup extends Dialog {
 
@@ -31,12 +31,12 @@ public class MessagePopup extends Dialog {
 
 	@Override
 	public MessagePopup text(String text) {
-		super.text(new Label(text, Assets.skin));
+		super.text(new Label(text, StaticAssets.skin));
 		return this;
 	}
 
 	public MessagePopup button(String buttonText, InputListener listener) {
-		TextButton button = new TextButton(buttonText, Assets.skin);
+		TextButton button = new TextButton(buttonText, StaticAssets.skin);
 		button.addListener(listener);
 		button(button);
 		return this;

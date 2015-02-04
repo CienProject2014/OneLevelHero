@@ -14,6 +14,8 @@ import com.mygdx.state.Assets;
 @Component
 public class RewardManager {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private RewardQueueInfo rewardQueueInfo;
 	@Autowired
 	private EventManager eventManager;
@@ -54,7 +56,7 @@ public class RewardManager {
 				case NONE:
 					return;
 				case PARTY:
-					partyInfo.addHero(Assets.heroMap.get(getRewardQueue()
+					partyInfo.addHero(assets.heroMap.get(getRewardQueue()
 							.peek().getRewardTarget()));
 					return;
 				default:

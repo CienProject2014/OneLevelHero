@@ -27,6 +27,8 @@ import com.uwsoft.editor.renderer.actor.ImageItem;
 @Scope("prototype")
 public class WorldMapStage extends Overlap2DStage {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private WorldMapManager worldMapManager;
 	@Autowired
 	private ScreenFactory screenFactory;
@@ -57,7 +59,7 @@ public class WorldMapStage extends Overlap2DStage {
 
 		List<CompositeItem> arrowList = new ArrayList<>();
 		String currentNode = positionInfo.getCurrentNode();
-		Map<String, Connection> connectionMap = Assets.worldNodeInfoMap.get(
+		Map<String, Connection> connectionMap = assets.worldNodeInfoMap.get(
 				currentNode).getConnection();
 		for (final Entry<String, Connection> connection : connectionMap
 				.entrySet()) {
@@ -98,17 +100,17 @@ public class WorldMapStage extends Overlap2DStage {
 	}
 
 	public void setCamera() {
-		int x_left_limit = (int) (Assets.windowWidth / 2);
-		int x_right_limit = (int) (3000 - (Assets.windowWidth / 2));
-		int y_bottom_limit = (int) (Assets.windowHeight / 2);
-		int y_top_limit = (int) (1688 - (Assets.windowHeight / 2));
+		int x_left_limit = (int) (assets.windowWidth / 2);
+		int x_right_limit = (int) (3000 - (assets.windowWidth / 2));
+		int y_bottom_limit = (int) (assets.windowHeight / 2);
+		int y_top_limit = (int) (1688 - (assets.windowHeight / 2));
 
-		float xvalue = this.getCurrent().getX() - Assets.windowWidth / 2, yvalue = this
-				.getCurrent().getY() - Assets.windowHeight / 2;
+		float xvalue = this.getCurrent().getX() - assets.windowWidth / 2, yvalue = this
+				.getCurrent().getY() - assets.windowHeight / 2;
 		// x값이 오른쪽으로 벗어날 경우
 		if (this.getCurrent().getX() > x_right_limit) {
 
-			xvalue = 3000 - Assets.windowWidth;
+			xvalue = 3000 - assets.windowWidth;
 		}
 		// x값이 왼쪽으로 벗어날 경우
 		if (this.getCurrent().getX() < x_left_limit) {
@@ -117,7 +119,7 @@ public class WorldMapStage extends Overlap2DStage {
 		}
 		// y값이 위로 벗어날 경우
 		if (this.getCurrent().getY() > y_top_limit) {
-			yvalue = 1688 - Assets.windowHeight;
+			yvalue = 1688 - assets.windowHeight;
 		}
 		// y값이 아래로 벗어날 경우
 		if (this.getCurrent().getY() < y_bottom_limit) {

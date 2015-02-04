@@ -19,6 +19,8 @@ import com.mygdx.state.Assets;
 @Component
 public class MonsterManager {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private PositionInfo positionInfo;
 	@Autowired
 	private MovingInfo movingInfo;
@@ -26,7 +28,7 @@ public class MonsterManager {
 	private List<String> monsterStringList;
 
 	public void createMonster() {
-		Monster selectedMonster = Assets.monsterMap.get(selectMonster());
+		Monster selectedMonster = assets.monsterMap.get(selectMonster());
 		movingInfo.setSelectedMonster(selectedMonster);
 	}
 

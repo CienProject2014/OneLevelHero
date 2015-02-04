@@ -1,167 +1,85 @@
 package com.mygdx.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class Village {
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
+import com.mygdx.enums.TextureEnum;
+import com.mygdx.manager.JsonParser;
+import com.mygdx.manager.TextureManager;
 
-	//inner클래스인 Settable static 클래스
-	public static class Settable {
-		private String name;
-		private double positionX;
-		private double positionY;
-		private double width;
-		private double height;
+/**
+ * Village 모델 클래스
+ * @author Velmont
+ *
+ */
+public class Village implements Serializable {
+	private String villageName;
+	private String backgroundPath;
+	private List<String> villageNpc;
+	private Map<String, Building> building;
 
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public double getPositionX() {
-			return positionX;
-		}
-
-		public void setPositionX(double positionX) {
-			this.positionX = positionX;
-		}
-
-		public double getPositionY() {
-			return positionY;
-		}
-
-		public void setPositionY(double positionY) {
-			this.positionY = positionY;
-		}
-
-		public double getWidth() {
-			return width;
-		}
-
-		public void setWidth(double width) {
-			this.width = width;
-		}
-
-		public double getHeight() {
-			return height;
-		}
-
-		public void setHeight(double height) {
-			this.height = height;
-		}
-
+	public String getVillageName() {
+		return villageName;
 	}
 
-	//inner클래스이며 Settable을 상속하는 Building 클래스
-	public static class Building extends Settable {
-		private String key;
-
-		public String getKey() {
-			return key;
-		}
-
-		public void setKey(String key) {
-			this.key = key;
-		}
-
+	public void setVillageName(String villageName) {
+		this.villageName = villageName;
 	}
 
-	//inner 클래스이며 Settable을 상속하는 NPC클래스
-	public static class NPC extends Settable {
-		private String key;
-
-		public String getKey() {
-			return key;
-		}
-
-		public void setKey(String key) {
-			this.key = key;
-		}
-
+	public Texture getBackgroundUp() {
+		return TextureManager.getBackgroundTexture(backgroundPath,
+				TextureEnum.BACKGROUND_UP);
 	}
 
-	private String name;
-	private String imagesource;
-	private String background;
-	private String frontground;
-	private double ratio;
-	private List<Building> building;
-	private List<NPC> npc;
-	private List<Settable> exit;
-
-	public String getName() {
-		return name;
+	public Texture getBackgroundDown() {
+		return TextureManager.getBackgroundTexture(backgroundPath,
+				TextureEnum.BACKGROUND_DOWN);
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public List<String> getVillageNpc() {
+		return villageNpc;
 	}
 
-	public String getImagesource() {
-		return imagesource;
+	public void setVillageNpc(List<String> villageNpc) {
+		this.villageNpc = villageNpc;
 	}
 
-	public void setImagesource(String imagesource) {
-		this.imagesource = imagesource;
-	}
-
-	public String getBackground() {
-		return background;
-	}
-
-	public void setBackground(String background) {
-		this.background = background;
-	}
-
-	public String getFrontground() {
-		return frontground;
-	}
-
-	public void setFrontground(String frontground) {
-		this.frontground = frontground;
-	}
-
-	public double getRatio() {
-		return ratio;
-	}
-
-	public void setRatio(double ratio) {
-		this.ratio = ratio;
-	}
-
-	public void setBuilding(List<Building> building) {
-		this.building = building;
-	}
-
-	public List<NPC> getNpc() {
-		return npc;
-	}
-
-	public void setNpc(List<NPC> npc) {
-		this.npc = npc;
-	}
-
-	public List<Settable> getExit() {
-		return exit;
-	}
-
-	public void setExit(List<Settable> exit) {
-		this.exit = exit;
-	}
-
-	@Override
-	public String toString() {
-		return "Village [name=" + name + ", imagesource=" + imagesource
-				+ ", background=" + background + ", frontground=" + frontground
-				+ ", ratio=" + ratio + ", building=" + building + ", npc="
-				+ npc + ", exit=" + exit + "]";
-	}
-
-	public List<Building> getBuilding() {
-		// TODO Auto-generated method stub
+	public Map<String, Building> getBuilding() {
 		return building;
 	}
 
+	public void setBuilding(Map<String, Building> building) {
+		this.building = building;
+	}
+
+	@Override
+	public void write(Json json) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		villageName = json.readValue("villageName", String.class, jsonData);
+		backgroundPath = json.readValue("backgroundPath", String.class,
+				jsonData);
+		villageNpc = json.readValue("villageNpc", ArrayList.class,
+				String.class, jsonData);
+		building = JsonParser.parseMap(Building.class, jsonData.get("building")
+				.toString());
+	}
+
+	public String getBackgroundPath() {
+		return backgroundPath;
+	}
+
+	public void setBackgroundPath(String backgroundPath) {
+		this.backgroundPath = backgroundPath;
+	}
 }

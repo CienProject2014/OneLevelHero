@@ -37,8 +37,10 @@ import com.mygdx.state.Assets;
 import com.mygdx.ui.StatusBarUi;
 
 @Component
-@Scope(value = "prototype")
+@Scope("prototype")
 public class GameUiStage extends Stage {
+	@Autowired
+	private Assets assets;
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
@@ -76,13 +78,14 @@ public class GameUiStage extends Stage {
 	private float realheight;
 	private float realwidth;
 
-	private Map<String, TextureRegionDrawable> atlasUiMap = Assets.atlasUiMap;
+	private Map<String, TextureRegionDrawable> atlasUiMap;
 
 	public Stage makeStage() {
+		atlasUiMap = assets.atlasUiMap;
 		// 초기화
 		uiTable = new Table();
-		realheight = Assets.windowHeight;
-		realwidth = Assets.windowWidth;
+		realheight = assets.windowHeight;
+		realwidth = assets.windowWidth;
 		hpbar = new StatusBarUi[3];
 		expbar = new StatusBarUi[3];
 		turnbar = new StatusBarUi[3];
@@ -93,12 +96,12 @@ public class GameUiStage extends Stage {
 		alertMessage = new Stack<MessagePopup>();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
-			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, Assets.skin);
-			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, Assets.skin);
+			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, assets.skin);
+			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, assets.skin);
 			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false,
-					Assets.skin);
-			statusbartable[i] = new Table(Assets.skin);
-			charatertable[i] = new Table(Assets.skin);
+					assets.skin);
+			statusbartable[i] = new Table(assets.skin);
+			charatertable[i] = new Table(assets.skin);
 
 		}
 		// 캐릭터 이미지 세팅
@@ -109,27 +112,27 @@ public class GameUiStage extends Stage {
 					.getStatusTexture());
 		}
 
-		toptable = new Table(Assets.skin);
-		bottomtable = new Table(Assets.skin);
+		toptable = new Table(assets.skin);
+		bottomtable = new Table(assets.skin);
 
 		TextButtonStyle style = new TextButtonStyle(
 				atlasUiMap.get("nameAndTime"), atlasUiMap.get("nameAndTime"),
-				atlasUiMap.get("nameAndTime"), Assets.font);
+				atlasUiMap.get("nameAndTime"), assets.font);
 		downArrowButton = new ImageButton(atlasUiMap.get("downArrowButton"),
 				atlasUiMap.get("downArrowButton"));
 		bagButton = new ImageButton(atlasUiMap.get("bagButton"),
-				Assets.atlasUiMap.get("bagButton"));
+				assets.atlasUiMap.get("bagButton"));
 		worldMapButton = new TextButton("worldMap", style);
 		leftTimeButton = new TextButton("12h30m", style);
 		helpButton = new ImageButton(atlasUiMap.get("helpButton"),
 				atlasUiMap.get("helpButton"));
 		optionButton = new ImageButton(atlasUiMap.get("optionButton"),
 				atlasUiMap.get("optionButton"));
-		battleButton = new TextButton("Battle", Assets.skin);
+		battleButton = new TextButton("Battle", assets.skin);
 
 		// 인벤토리 Actor 만들기
 		dragAndDrop = new DragAndDrop();
-		Skin skin = Assets.skin;
+		Skin skin = assets.skin;
 		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop, skin);
 
 		// 보상 이벤트 처리
@@ -139,7 +142,7 @@ public class GameUiStage extends Stage {
 			RewardInfo nextIterator = iterator.next();
 			if (nextIterator.getRewardState().equals(RewardStateEnum.ING)) {
 
-				alertMessage.add(new AlertMessagePopup("[ 보상 ]", Assets.skin)
+				alertMessage.add(new AlertMessagePopup("[ 보상 ]", assets.skin)
 						.text(rewardManager.getRewardMessage(nextIterator)));
 
 			}
@@ -147,7 +150,7 @@ public class GameUiStage extends Stage {
 					+ nextIterator.getRewardType());
 		}
 		// 알림 메시지
-		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", Assets.skin,
+		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", assets.skin,
 				partyInfo);
 		addListener();
 		makeTable();

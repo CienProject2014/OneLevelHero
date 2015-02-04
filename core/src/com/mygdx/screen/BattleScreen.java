@@ -1,7 +1,6 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -14,7 +13,6 @@ import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.PlatformResourceManager;
 
 @Component
-@Scope("prototype")
 public class BattleScreen implements Screen {
 	@Autowired
 	private StageFactory stageFactory;

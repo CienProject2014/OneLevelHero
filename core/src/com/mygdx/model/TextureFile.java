@@ -13,6 +13,12 @@ public class TextureFile implements AssetsFile<Texture> {
 		return file;
 	}
 
+	@Override
+	public Texture getTestFile() {
+		file = new Texture(Gdx.files.internal("../android/assets/" + filePath));
+		return file;
+	}
+
 	public String getFilePath() {
 		return filePath;
 	}

@@ -1,9 +1,17 @@
 package com.mygdx.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.state.Assets;
+import com.mygdx.state.StaticAssets;
 
+@Component
 public class EventScene {
+	@Autowired
+	private Assets assets;
 	private String script;
 	private String characterPath;
 	private int faceNumber;
@@ -11,6 +19,10 @@ public class EventScene {
 	private String speakerPosition;
 	private Texture character;
 	private Texture background;
+
+	public EventScene() {
+		Gdx.app.debug("EventScene", "EventScene is constructed");
+	}
 
 	public int getFaceNumber() {
 		return faceNumber;
@@ -22,7 +34,7 @@ public class EventScene {
 
 	public Texture getCharacter() {
 		if (character == null)
-			character = Assets.characterTextureMap.get(characterPath);
+			character = StaticAssets.characterTextureMap.get(characterPath);
 		return character;
 	}
 
@@ -31,8 +43,9 @@ public class EventScene {
 	}
 
 	public Texture getBackground() {
-		if (background == null)
-			background = Assets.backgroundTextureMap.get(backgroundPath);
+		if (background == null) {
+			background = StaticAssets.backgroundTextureMap.get(backgroundPath);
+		}
 		return background;
 	}
 

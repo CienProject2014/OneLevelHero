@@ -1,5 +1,6 @@
 package com.mygdx.stage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,8 @@ import com.mygdx.state.Assets;
 @Component
 @Scope(value = "prototype")
 public class StatusStage extends Stage {
+	@Autowired
+	private Assets assets;
 	// 사용될 변수 선언
 	private Table uiTable;
 	private Table rightTable;
@@ -37,7 +40,7 @@ public class StatusStage extends Stage {
 	private Label[] status;
 
 	public Stage makeStage() {
-		skin = Assets.skin;
+		skin = assets.skin;
 		// Table 초기화
 		uiTable = new Table(skin);
 		rightBottomTable = new Table(skin);
@@ -85,8 +88,8 @@ public class StatusStage extends Stage {
 	}
 
 	public void makeLeftTable() {
-		leftTable.setSize(Assets.windowWidth / 8,
-				(Assets.windowHeight / 12) * 11);
+		leftTable.setSize(assets.windowWidth / 8,
+				(assets.windowHeight / 12) * 11);
 		leftTable.left();
 		leftTable.add(statusTextButton);
 		leftTable.row();
@@ -98,8 +101,8 @@ public class StatusStage extends Stage {
 	}
 
 	public void makeRightTable() {
-		rightTable.setSize(Assets.windowWidth * 7 / 8,
-				Assets.windowHeight * 11 / 12);
+		rightTable.setSize(assets.windowWidth * 7 / 8,
+				assets.windowHeight * 11 / 12);
 		makeRightTopTable();
 		makeRightBottomTable();
 		rightTable.add(rightTopTable);
@@ -108,8 +111,8 @@ public class StatusStage extends Stage {
 	}
 
 	public void makeRightTopTable() {
-		rightTopTable.setSize((Assets.windowWidth / 8) * 7,
-				(Assets.windowHeight / 12) * 11);
+		rightTopTable.setSize((assets.windowWidth / 8) * 7,
+				(assets.windowHeight / 12) * 11);
 		makeStatusTable();
 		makeLabelTable();
 		rightTopTable.add(statusTable);
@@ -117,8 +120,8 @@ public class StatusStage extends Stage {
 	}
 
 	public void makeRightBottomTable() {
-		rightBottomTable.setSize((Assets.windowWidth / 8) * 7,
-				(Assets.windowHeight / 12) * 1);
+		rightBottomTable.setSize((assets.windowWidth / 8) * 7,
+				(assets.windowHeight / 12) * 1);
 		rightBottomTable.add(characterTextButton[0]);
 		rightBottomTable.add(characterTextButton[1]);
 		rightBottomTable.add(characterTextButton[2]);

@@ -1,7 +1,5 @@
 package com.mygdx.manager;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +12,8 @@ import com.mygdx.state.Assets;
 @Component
 public class MovingManager {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
 	private PositionInfo positionInfo;
@@ -21,34 +21,6 @@ public class MovingManager {
 	private MovingInfo movingInfo;
 	@Autowired
 	private EncounterManager encounterManager;
-
-	private int roadLength;
-	private int leftRoadLength;
-
-	@PostConstruct
-	public void init() {
-		roadLength = movingInfo.getRoadLength();
-		leftRoadLength = movingInfo.getLeftRoadLength();
-	}
-
-	public int getLeftRoadLength() {
-		return leftRoadLength;
-	}
-
-	public void setRoadLength(int roadLength) {
-		this.roadLength = roadLength;
-	}
-
-	public void setLeftRoadLength(int leftRoadLength) {
-		movingInfo.setLeftRoadLength(leftRoadLength);
-	}
-
-	public void ChangeDestination() {
-	}
-
-	public String checkStage() {
-		return "checkDirection";
-	}
 
 	public void goForward() {
 		if (isRoadLeft()) {
@@ -71,13 +43,11 @@ public class MovingManager {
 	}
 
 	private void plusLeftRoadLength() {
-		leftRoadLength += 1;
-		movingInfo.setLeftRoadLength(leftRoadLength);
+		movingInfo.setLeftRoadLength(movingInfo.getLeftRoadLength() + 1);
 	}
 
 	public void minusLeftRoadLength() {
-		leftRoadLength -= 1;
-		movingInfo.setLeftRoadLength(leftRoadLength);
+		movingInfo.setLeftRoadLength(movingInfo.getLeftRoadLength() - 1);
 	}
 
 	private void movingRoad() {
@@ -87,7 +57,7 @@ public class MovingManager {
 	}
 
 	private void goIntoCurrentNode() {
-		switch (Assets.worldNodeInfoMap.get(positionInfo.getCurrentNode())
+		switch (assets.worldNodeInfoMap.get(positionInfo.getCurrentNode())
 				.getType()) {
 			case "village":
 				screenFactory.show(ScreenEnum.VILLAGE);
@@ -105,11 +75,12 @@ public class MovingManager {
 	}
 
 	private boolean isRoadLeft() {
-		return (leftRoadLength > 0) ? true : false;
+		return (movingInfo.getLeftRoadLength() > 0) ? true : false;
 	}
 
 	private boolean isRoadFull() {
-		return (roadLength > leftRoadLength) ? true : false;
+		return (movingInfo.getRoadLength() > movingInfo.getLeftRoadLength()) ? true
+				: false;
 	}
 
 }

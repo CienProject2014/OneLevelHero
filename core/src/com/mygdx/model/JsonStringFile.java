@@ -11,6 +11,11 @@ public class JsonStringFile implements AssetsFile<String> {
 		return file;
 	}
 
+	public String getTestFile() {
+		file = Gdx.files.internal("../android/assets/" + filePath).readString();
+		return file;
+	}
+
 	public void setFile(String file) {
 		this.file = file;
 	}

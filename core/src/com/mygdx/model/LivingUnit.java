@@ -1,8 +1,6 @@
 package com.mygdx.model;
 
-import org.springframework.stereotype.Component;
 
-@Component
 public class LivingUnit extends Unit implements Comparable<LivingUnit> {
 	private Status status;
 

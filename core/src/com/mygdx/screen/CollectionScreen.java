@@ -1,7 +1,6 @@
 ﻿package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -19,8 +18,9 @@ import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
 
 @Component
-@Scope("prototype")
 public class CollectionScreen implements Screen {
+	@Autowired
+	private Assets assets;
 	@Autowired
 	private ScreenFactory screenFactory;
 	private Stage stage;
@@ -53,12 +53,12 @@ public class CollectionScreen implements Screen {
 	public void show() {
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		Table table = new Table(Assets.skin);
+		Table table = new Table(assets.skin);
 
-		endingButton = new TextButton("엔딩", Assets.skin);
-		cgButton = new TextButton("CG", Assets.skin);
-		bgmButton = new TextButton("BGM", Assets.skin);
-		backButton = new TextButton("Back", Assets.skin);
+		endingButton = new TextButton("엔딩", assets.skin);
+		cgButton = new TextButton("CG", assets.skin);
+		bgmButton = new TextButton("BGM", assets.skin);
+		backButton = new TextButton("Back", assets.skin);
 
 		endingButton.addListener(new InputListener() {
 			@Override

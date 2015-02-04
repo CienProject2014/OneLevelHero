@@ -15,6 +15,12 @@ public class AtlasUiFile implements AssetsFile<TextureAtlas> {
 		return file;
 	}
 
+	@Override
+	public TextureAtlas getTestFile() {
+		TextureAtlas file = new TextureAtlas("../android/assets/" + filePath);
+		return file;
+	}
+
 	public List<String> getElement() {
 		return element;
 	}

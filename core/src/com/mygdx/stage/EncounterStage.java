@@ -17,6 +17,8 @@ import com.mygdx.state.Assets;
 @Scope(value = "prototype")
 public class EncounterStage extends Stage {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private ScreenFactory screenFactory;
 	private TextButton fightButton;
 	private TextButton fleeButton;
@@ -24,10 +26,10 @@ public class EncounterStage extends Stage {
 	private Table selTable;
 
 	public Stage makeStage() {
-		fightButton = new TextButton("싸운다", Assets.skin);
-		fleeButton = new TextButton("도망친다", Assets.skin);
+		fightButton = new TextButton("싸운다", assets.skin);
+		fleeButton = new TextButton("도망친다", assets.skin);
 
-		selTable = new Table(Assets.skin);
+		selTable = new Table(assets.skin);
 		selTable.setFillParent(true);
 		//selTable.row();
 		selTable.add(fightButton);

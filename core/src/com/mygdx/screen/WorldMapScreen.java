@@ -1,7 +1,6 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -15,7 +14,6 @@ import com.mygdx.factory.StageFactory;
 import com.mygdx.inputProcessor.MapInputProcessor;
 
 @Component
-@Scope("prototype")
 public class WorldMapScreen implements Screen {
 	@Autowired
 	private StageFactory stageFactory;

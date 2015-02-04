@@ -20,6 +20,8 @@ import com.mygdx.ui.StatusBarUi;
 @Scope(value = "prototype")
 public class CharacterUiStage extends Stage {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private PartyInfo partyInfo;
 	private float realWidth, realHeight;
 
@@ -53,10 +55,10 @@ public class CharacterUiStage extends Stage {
 	}
 
 	private void initialize() {
-		realHeight = Assets.windowHeight;
-		realWidth = Assets.windowWidth;
+		realHeight = assets.windowHeight;
+		realWidth = assets.windowWidth;
 
-		bottomTable = new Table(Assets.skin);
+		bottomTable = new Table(assets.skin);
 		statusbarTable = new Table[3];
 		charaterTable = new Table[3];
 
@@ -74,10 +76,10 @@ public class CharacterUiStage extends Stage {
 		battleMemberNumber = battleMemberList.size();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
-			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, Assets.skin);
-			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, Assets.skin);
+			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, assets.skin);
+			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, assets.skin);
 			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false,
-					Assets.skin);
+					assets.skin);
 
 			hpbar[i].setName("hpbar[" + i + "]");
 			hpbarName[i] = hpbar[i].getName();
@@ -90,8 +92,8 @@ public class CharacterUiStage extends Stage {
 		}
 
 		for (int i = 0; i < battleMemberNumber; i++) {
-			statusbarTable[i] = new Table(Assets.skin);
-			charaterTable[i] = new Table(Assets.skin);
+			statusbarTable[i] = new Table(assets.skin);
+			charaterTable[i] = new Table(assets.skin);
 		}
 
 		for (int i = 0; i < battleMemberNumber; i++) {

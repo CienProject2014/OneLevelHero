@@ -641,3 +641,58 @@ worldmaptextwinterfall
   orig: 116, 43
   offset: 0, 0
   index: -1
+
+village_pack.png
+size: 1920,4259
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+blackwood_bg_1
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1500
+  orig: 1920, 1500
+  offset: 0, 0
+  index: -1
+blackwood3
+  rotate: false
+  xy: 0, 1500
+  size: 512, 316
+  orig: 512, 316
+  offset: 0, 0
+  index: -1
+blackwood4
+  rotate: false
+  xy: 0, 1816
+  size: 677, 671
+  orig: 677, 671
+  offset: 0, 0
+  index: -1
+blackwood5
+  rotate: false
+  xy: 0, 2487
+  size: 347, 383
+  orig: 347, 383
+  offset: 0, 0
+  index: -1
+blackwood2
+  rotate: false
+  xy: 0, 2870
+  size: 500, 234
+  orig: 500, 234
+  offset: 0, 0
+  index: -1
+blackwood1
+  rotate: false
+  xy: 0, 3104
+  size: 735, 832
+  orig: 735, 832
+  offset: 0, 0
+  index: -1
+blackwood6
+  rotate: false
+  xy: 0, 3936
+  size: 282, 323
+  orig: 282, 323
+  offset: 0, 0
+  index: -1
