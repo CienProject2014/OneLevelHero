@@ -91,8 +91,8 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
             loadSceneVO(projectVO.scenes.get(i).sceneName);
             scheduleScene(projectVO.scenes.get(i).sceneName);
         }
-        prepareAssetsToLoad();
-        loadAssets();
+        prepareassetsToLoad();
+        loadassets();
     }
 
     /**
@@ -102,8 +102,8 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
     public void initScene(String sceneName) {
         loadSceneVO(sceneName);
         scheduleScene(sceneName);
-        prepareAssetsToLoad();
-        loadAssets();
+        prepareassetsToLoad();
+        loadassets();
     }
 
     /**
@@ -114,12 +114,12 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
     public void unLoadScene(String sceneName) {
         unScheduleScene(sceneName);
         loadedSceneVOs.remove(sceneName);
-        loadAssets();
+        loadassets();
     }
 
     /**
      * Schedules scene for later loading
-     * if later prepareAssetsToLoad function will be called it will only prepare assets that are used in scheduled scene
+     * if later prepareassetsToLoad function will be called it will only prepare assets that are used in scheduled scene
      *
      * @param name - scene file name without ".dt" extension
      */
@@ -148,7 +148,7 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
      * removes all the duplicates, and makes list of assets that are only needed.
      *
      */
-    public void prepareAssetsToLoad() {
+    public void prepareassetsToLoad() {
         particleEffectNamesToLoad.clear();
         spineAnimNamesToLoad.clear();
         spriteAnimNamesToLoad.clear();
@@ -176,7 +176,7 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
      * Loads all the scheduled assets into memory including
      * main atlas pack, particle effects, sprite animations, spine animations and fonts
      */
-    public void loadAssets() {
+    public void loadassets() {
         loadAtlasPack();
         loadParticleEffects();
         loadSpineAnimations();

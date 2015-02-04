@@ -3,11 +3,10 @@ package com.mygdx.manager;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.PositionInfo;
@@ -27,11 +26,15 @@ public class LoadManager {
 	private PartyInfo partyInfo;
 	private Hero hero;
 
-	@PostConstruct
-	public void init() {
+	public void loadNewGame() {
+		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();
 		setPartyList();
 		setCurrentPosition();
+	}
+
+	public LoadManager() {
+		Gdx.app.debug("LoadManager", "Constructor() call");
 	}
 
 	private void setCurrentPosition() {

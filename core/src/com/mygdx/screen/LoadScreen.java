@@ -1,7 +1,6 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -17,17 +16,21 @@ import com.mygdx.currentState.CurrentState;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.LoadManager;
 import com.mygdx.state.Assets;
 
 @Component
-@Scope("prototype")
 public class LoadScreen implements Screen {
+	@Autowired
+	private Assets assets;
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
 	private CurrentState currentState;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private LoadManager loadManager;
 	private Stage stage;
 	private TextButton newstartButton;
 	private TextButton backButton;
@@ -52,9 +55,9 @@ public class LoadScreen implements Screen {
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 
-		Table table = new Table(Assets.skin);
-		backButton = new TextButton("Back", Assets.skin);
-		newstartButton = new TextButton("NewStart", Assets.skin);
+		Table table = new Table(assets.skin);
+		backButton = new TextButton("Back", assets.skin);
+		newstartButton = new TextButton("NewStart", assets.skin);
 		backButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -82,9 +85,9 @@ public class LoadScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				currentState.setVersion(SaveVersion.NEW);
-
+				loadManager.loadNewGame();
 				//프롤로그 정보 주입
-				eventManager.setEventInfo(Assets.npcMap.get("prologue"), 0,
+				eventManager.setEventInfo(assets.npcMap.get("prologue"), 0,
 						false);
 				screenFactory.show(ScreenEnum.EVENT);
 

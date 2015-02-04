@@ -25,6 +25,8 @@ import com.mygdx.state.Assets;
 @Scope(value = "prototype")
 public class SelectButtonStage extends Stage {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
 	private EventManager eventManager;
@@ -34,16 +36,16 @@ public class SelectButtonStage extends Stage {
 	private List<TextButtonStyle> chatStyles;
 	private int eventCount;
 	private NPC eventNpc;
-	private static final int MAX_EVENT_LENGTH = 6;
-	private static final float buttonPosition[][] = {
-			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.74f },
-			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.555f },
-			{ Assets.windowWidth * 0.109375f, Assets.windowHeight * 0.37f },
-			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.74f },
-			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.555f },
-			{ Assets.windowWidth * 0.68f, Assets.windowHeight * 0.37f } };
-	private static final float buttonSize[] = { Assets.windowWidth * 0.208f,
-			Assets.windowHeight * 0.185f };
+	private final int MAX_EVENT_LENGTH = 6;
+	private final float buttonPosition[][] = {
+			{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.74f },
+			{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.555f },
+			{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.37f },
+			{ assets.windowWidth * 0.68f, assets.windowHeight * 0.74f },
+			{ assets.windowWidth * 0.68f, assets.windowHeight * 0.555f },
+			{ assets.windowWidth * 0.68f, assets.windowHeight * 0.37f } };
+	private final float buttonSize[] = { assets.windowWidth * 0.208f,
+			assets.windowHeight * 0.185f };
 
 	public Stage makeStage() {
 		eventNpc = eventInfo.getNpc();
@@ -61,8 +63,8 @@ public class SelectButtonStage extends Stage {
 
 	private void showEventButton() {
 		for (int i = 0; i < eventCount; i++) {
-			chatStyles.add(new TextButtonStyle(Assets.chatButton[i],
-					Assets.chatButton[i], Assets.chatButton[i], Assets.font));
+			chatStyles.add(new TextButtonStyle(assets.chatButton[i],
+					assets.chatButton[i], assets.chatButton[i], assets.font));
 			chatButtons.add(new TextButton("", chatStyles.get(i)));
 		}
 	}
@@ -73,7 +75,7 @@ public class SelectButtonStage extends Stage {
 		}
 	}
 
-	// Assets.windowHeight * 0.185f
+	// assets.windowHeight * 0.185f
 	private void setButtonPosition() {
 		for (int i = 0; i < eventCount; i++) {
 			chatButtons.get(i).setPosition(buttonPosition[i][0],

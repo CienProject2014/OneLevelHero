@@ -1,7 +1,6 @@
 ﻿package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -22,7 +21,6 @@ import com.mygdx.factory.ScreenFactory;
  *
  */
 @Component
-@Scope("prototype")
 public class CreditScreen implements Screen {
 	@Autowired
 	private ScreenFactory screenFactory;

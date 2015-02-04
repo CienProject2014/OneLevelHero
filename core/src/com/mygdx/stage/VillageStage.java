@@ -20,6 +20,8 @@ import com.uwsoft.editor.renderer.Overlap2DStage;
 @Scope(value = "prototype")
 public class VillageStage extends Overlap2DStage {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
 	private EventManager eventManager;
@@ -43,20 +45,20 @@ public class VillageStage extends Overlap2DStage {
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		cam = new OrthographicCamera(Assets.windowWidth, Assets.windowHeight);
+		cam = new OrthographicCamera(assets.windowWidth, assets.windowHeight);
 		cam.position
-				.set(Assets.windowWidth / 2, Assets.windowHeight * 0.25f, 0);
+				.set(assets.windowWidth / 2, assets.windowHeight * 0.25f, 0);
 		getViewport().setCamera(cam);
 		camera = getViewport().getCamera();
 		float ratio = (float) 0.782; //FIXME
-		viewportWidth = Assets.windowWidth;
+		viewportWidth = assets.windowWidth;
 		viewportHeight = viewportWidth * ratio;
 
 		initSceneLoader();
 		sceneLoader.loadScene("VillageScene");
 
 		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
-		villageInfo = Assets.villageMap.get(WorldNodeEnum.BLACKWOOD.toString());
+		villageInfo = assets.villageMap.get(WorldNodeEnum.BLACKWOOD.toString());
 		Image background = new Image(villageInfo.getBackgroundUp());
 		background.setBounds(0, 0, viewportWidth, viewportHeight);
 
@@ -116,16 +118,16 @@ public class VillageStage extends Overlap2DStage {
 	}
 
 	private void checkBound() {
-		if (camera.position.y > (viewportHeight - Assets.windowHeight / 2)) {
-			camera.position.y = viewportHeight - Assets.windowHeight / 2;
+		if (camera.position.y > (viewportHeight - assets.windowHeight / 2)) {
+			camera.position.y = viewportHeight - assets.windowHeight / 2;
 			backgroundDirection = BackgroundDirection.UP;
-			//shiftButton = new TextButton("아래로", Assets.skin);
+			//shiftButton = new TextButton("아래로", assets.skin);
 			//shiftButton.setVisible(true);
 
-		} else if (camera.position.y < Assets.windowHeight * 0.25f) {
-			camera.position.y = Assets.windowHeight * 0.25f;
+		} else if (camera.position.y < assets.windowHeight * 0.25f) {
+			camera.position.y = assets.windowHeight * 0.25f;
 			backgroundDirection = BackgroundDirection.DOWN;
-			//shiftButton = new TextButton("위로", Assets.skin);
+			//shiftButton = new TextButton("위로", assets.skin);
 			//shiftButton.setVisible(true);
 		}
 	}

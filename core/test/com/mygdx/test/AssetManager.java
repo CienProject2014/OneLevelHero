@@ -23,7 +23,7 @@ public class AssetManager implements IResourceRetriever {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void loadAssets() {
+	public void loadassets() {
 		mainPack = new TextureAtlas(
 				Gdx.files.internal("overlap2d/orig/pack.atlas"));
 		ParticleEffect rain = new ParticleEffect();
@@ -87,11 +87,11 @@ public class AssetManager implements IResourceRetriever {
 		return null;
 	}
 
-	public TextureAtlas getAssets() {
+	public TextureAtlas getassets() {
 		return mainPack;
 	}
 
-	public void setAssets(TextureAtlas assets) {
+	public void setassets(TextureAtlas assets) {
 		this.mainPack = assets;
 	}
 

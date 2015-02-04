@@ -1,7 +1,6 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -15,8 +14,9 @@ import com.mygdx.manager.SoundManager;
 import com.mygdx.state.Assets;
 
 @Component
-@Scope("prototype")
 public class MenuScreen implements Screen {
+	@Autowired
+	private Assets assets;
 	@Autowired
 	private SoundManager soundManager;
 	@Autowired
@@ -25,12 +25,15 @@ public class MenuScreen implements Screen {
 
 	private static Music music;
 
+	public MenuScreen() {
+		Gdx.app.debug("MenuScreen", "Constructor() call");
+	}
+
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.draw();
-
 	}
 
 	@Override
@@ -39,8 +42,8 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void show() {
-		setMusic(Assets.mainMusic);
-		getMusic().setVolume(Assets.musicVolume);
+		setMusic(assets.mainMusic);
+		getMusic().setVolume(assets.musicVolume);
 		soundManager.playMusic(getMusic());
 
 		stage = stageFactory.makeStage(StageEnum.MENU);

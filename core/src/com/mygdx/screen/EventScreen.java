@@ -3,7 +3,6 @@
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -22,7 +21,6 @@ import com.mygdx.manager.RewardManager;
 import com.mygdx.model.EventScene;
 
 @Component
-@Scope("prototype")
 public class EventScreen implements Screen {
 	@Autowired
 	private StageFactory stageFactory;

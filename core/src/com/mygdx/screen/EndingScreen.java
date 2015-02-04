@@ -20,6 +20,8 @@ import com.mygdx.state.Assets;
 @Component
 public class EndingScreen implements Screen {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private ScreenFactory screenFactory;
 	private Stage stage;
 	private TextButton backButton;
@@ -50,9 +52,9 @@ public class EndingScreen implements Screen {
 		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		Table table = new Table(Assets.skin);
+		Table table = new Table(assets.skin);
 
-		backButton = new TextButton("Back", Assets.skin);
+		backButton = new TextButton("Back", assets.skin);
 
 		backButton.addListener(new InputListener() {
 			@Override

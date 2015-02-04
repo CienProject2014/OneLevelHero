@@ -1,7 +1,6 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -20,8 +19,9 @@ import com.mygdx.manager.MovingManager;
 import com.mygdx.state.Assets;
 
 @Component
-@Scope("prototype")
 public class MovingScreen implements Screen {
+	@Autowired
+	private Assets assets;
 	@Autowired
 	private MovingInfo movingInfo;
 	@Autowired
@@ -53,20 +53,19 @@ public class MovingScreen implements Screen {
 
 	@Override
 	public void show() {
-		Gdx.app.log("DEBUG", "MovingSceen show");
 		stage = new Stage();
 		table = new Table();
 		table.setFillParent(true);
-		goButton = new TextButton("Go", Assets.skin);
-		backButton = new TextButton("Back", Assets.skin);
-		movingLabel = new Label("Point", Assets.skin);
+		goButton = new TextButton("Go", assets.skin);
+		backButton = new TextButton("Back", assets.skin);
+		movingLabel = new Label("Point", assets.skin);
 
 		movingLabel.setColor(0, 0, 0, 1);
 
 		Gdx.input.setInputProcessor(stage);
 
 		background = new Image(texture);
-		background.setSize(Assets.windowWidth, Assets.windowHeight);
+		background.setSize(assets.windowWidth, assets.windowHeight);
 
 		goButton.addListener(new InputListener() {
 			@Override
@@ -114,26 +113,18 @@ public class MovingScreen implements Screen {
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-		Gdx.app.log("DEBUG", "MovingSceen hide");
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-		Gdx.app.log("DEBUG", "MovingSceen pause");
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-		Gdx.app.log("DEBUG", "MovingSceen resume");
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-		Gdx.app.log("DEBUG", "MovingSceen dispose");
 	}
 
 }

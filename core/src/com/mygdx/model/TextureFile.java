@@ -17,7 +17,6 @@ public class TextureFile implements AssetsFile<Texture> {
 	public Texture getTestFile() {
 		file = new Texture(Gdx.files.internal("../android/assets/" + filePath));
 		return file;
-
 	}
 
 	public String getFilePath() {

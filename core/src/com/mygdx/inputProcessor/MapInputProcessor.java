@@ -3,14 +3,14 @@ package com.mygdx.inputProcessor;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.state.Assets;
+import com.mygdx.state.StaticAssets;
 
 public class MapInputProcessor implements InputProcessor {
 
-	private int x_left_limit = (int) (Assets.windowWidth / 2);
-	private int x_right_limit = (int) (3000 - (Assets.windowWidth / 2));
-	private int y_bottom_limit = (int) (Assets.windowHeight / 2);
-	private int y_top_limit = (int) (1688 - (Assets.windowHeight / 2));
+	private int x_left_limit = (int) (StaticAssets.windowWidth / 2);
+	private int x_right_limit = (int) (3000 - (StaticAssets.windowWidth / 2));
+	private int y_bottom_limit = (int) (StaticAssets.windowHeight / 2);
+	private int y_top_limit = (int) (1688 - (StaticAssets.windowHeight / 2));
 	private Stage stage;
 	Vector3 last_touch_down = new Vector3();
 

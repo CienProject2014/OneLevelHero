@@ -30,7 +30,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
 import com.mygdx.enums.ItemEnum;
-import com.mygdx.state.Assets;
+import com.mygdx.state.StaticAssets;
 
 /**
  * @author Daniel Holderbaum
@@ -56,7 +56,7 @@ public class SlotSource extends Source {
 		sourceSlot.take(sourceSlot.getAmount());
 		payload.setObject(payloadSlot);
 
-		TextureAtlas items = Assets.items;
+		TextureAtlas items = StaticAssets.items;
 		TextureRegion item = items.findRegion(payloadSlot.getItem().toString());
 
 		Actor dragActor = new Image(item);

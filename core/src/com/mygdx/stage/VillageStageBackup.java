@@ -158,23 +158,23 @@ public class VillageStageBackup extends Stage {
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
 
-		OrthographicCamera cam = new OrthographicCamera(Assets.windowWidth,
-				Assets.windowHeight);
+		OrthographicCamera cam = new OrthographicCamera(assets.windowWidth,
+				assets.windowHeight);
 		// cam.translate(100, 300);
 		cam.position
-				.set(Assets.windowWidth / 2, Assets.windowHeight * 0.25f, 0);
+				.set(assets.windowWidth / 2, assets.windowHeight * 0.25f, 0);
 		getViewport().setCamera(cam);
 
 		camera = getViewport().getCamera();
 		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
-		village = Assets.villageMap.get(WorldNodeEnum.BLACKWOOD.toString());
+		village = assets.villageMap.get(WorldNodeEnum.BLACKWOOD.toString());
 
 		if (village == null)
 			Gdx.app.log("Error", "village is null");
 
 		float ratio = (float) village.getRatio();
 
-		viewportWidth = Assets.windowWidth;
+		viewportWidth = assets.windowWidth;
 		viewportHeight = viewportWidth * ratio;
 
 		villageAtlas = new TextureAtlas(Gdx.files.internal("texture/village/"
@@ -225,7 +225,7 @@ public class VillageStageBackup extends Stage {
 		for (int i = 0; i < npcArray.size(); i++) {
 			final NPC npcinfo = npcArray.get(i);
 
-			npcButton[i] = new TextButton(npcinfo.getName(), Assets.skin);
+			npcButton[i] = new TextButton(npcinfo.getName(), assets.skin);
 
 			float posX = viewportWidth * (float) npcinfo.getPositionX();
 			float posY = viewportHeight * (float) npcinfo.getPositionY();
@@ -248,7 +248,7 @@ public class VillageStageBackup extends Stage {
 
 					// EventManager에 CurrentNpc정보를 전달한다.
 					eventManager.setEventInfo(
-							Assets.npcMap.get(npcinfo.getKey()), true);
+							assets.npcMap.get(npcinfo.getKey()), true);
 					screenFactory.show(ScreenEnum.GREETING);
 				}
 			});
@@ -256,7 +256,7 @@ public class VillageStageBackup extends Stage {
 		}
 
 		// 전환 버튼 기능은 빌리지 스크린에서 구현
-		siftButton = new TextButton("전환", Assets.skin);
+		siftButton = new TextButton("전환", assets.skin);
 		siftButton.center();
 
 		siftButton.addListener(new InputListener() {
@@ -307,13 +307,13 @@ public class VillageStageBackup extends Stage {
 	}
 
 	private void checkBound() {
-		if (camera.position.y > (viewportHeight - Assets.windowHeight / 2)) {
-			camera.position.y = viewportHeight - Assets.windowHeight / 2;
+		if (camera.position.y > (viewportHeight - assets.windowHeight / 2)) {
+			camera.position.y = viewportHeight - assets.windowHeight / 2;
 			currentState = "up";
 			siftButton.setVisible(true);
 
-		} else if (camera.position.y < Assets.windowHeight * 0.25f) {
-			camera.position.y = Assets.windowHeight * 0.25f;
+		} else if (camera.position.y < assets.windowHeight * 0.25f) {
+			camera.position.y = assets.windowHeight * 0.25f;
 			currentState = "down";
 			siftButton.setVisible(true);
 		}

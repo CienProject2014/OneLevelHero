@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -30,8 +29,9 @@ import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
 @Component
-@Scope(value = "prototype")
 public class BattleStage extends Overlap2DStage {
+	@Autowired
+	private Assets assets;
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
@@ -41,11 +41,12 @@ public class BattleStage extends Overlap2DStage {
 
 	// Table
 	Table uiTable; // 화면 전체 테이블
+
 	Table orderTable; // 순서를 나타내는 테이블
 
 	// Value
-	float maximumWidth = Assets.windowWidth * 0.0625f;
-	float maximumHeight = Assets.windowHeight * 0.125f;
+	float maximumWidth;
+	float maximumHeight;
 
 	// Button
 	private SimpleButtonScript attackButton;
@@ -61,7 +62,14 @@ public class BattleStage extends Overlap2DStage {
 	private ArrayList<LivingUnit> units;
 	private Queue<LivingUnit> orderedUnits;
 
+	public BattleStage() {
+		Gdx.app.log("BattleStage", "Constructor() call");
+	}
+
 	public Stage makeStage(PlatformResourceManager rm) {
+		Gdx.app.debug("BattleStage", "makeStage(Rm rm)");
+		maximumWidth = assets.windowWidth * 0.0625f;
+		maximumHeight = assets.windowHeight * 0.125f;
 		StretchViewport viewport = new StretchViewport(rm.stageWidth,
 				rm.currentResolution.height);
 		this.setViewport(viewport);

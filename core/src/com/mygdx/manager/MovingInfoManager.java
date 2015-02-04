@@ -1,7 +1,5 @@
 package com.mygdx.manager;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,20 +16,14 @@ import com.mygdx.state.Assets;
 @Component
 public class MovingInfoManager {
 	@Autowired
+	private Assets assets;
+	@Autowired
 	private MovingInfo movingInfo;
 	@Autowired
 	private PositionInfo positionInfo;
 
-	private WorldNode worldNodeInfo;
-
-	@PostConstruct
-	public void init() {
-		worldNodeInfo = Assets.worldNodeInfoMap.get(positionInfo
-				.getCurrentNode());
-	}
-
 	/** 월드맵 정보에서 roadLength, startNode, destination, roadMonster 정보를 CurrentState의 movingInfo에 전달한다. */
-	public void createMovingInfo(String destinationNode) {
+	public void createMovingInfo(String destinationNode, WorldNode worldNodeInfo) {
 		movingInfo.setStartNode(positionInfo.getCurrentNode());
 		movingInfo.setDestinationNode(destinationNode);
 		movingInfo.setRoadLength(worldNodeInfo.getConnection()
@@ -41,5 +33,4 @@ public class MovingInfoManager {
 		movingInfo.setRoadMonsterList(worldNodeInfo.getConnection()
 				.get(destinationNode).getRoadMonster());
 	}
-
 }

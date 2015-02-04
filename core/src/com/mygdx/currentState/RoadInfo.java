@@ -1,5 +1,6 @@
 package com.mygdx.currentState;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.mygdx.model.Monster;
@@ -7,6 +8,8 @@ import com.mygdx.state.Assets;
 
 @Component
 public class RoadInfo {
+	@Autowired
+	private Assets assets;
 	private String name;
 	private int itemNumber;
 	private String[] items;
@@ -40,7 +43,7 @@ public class RoadInfo {
 
 	public Monster getMonster() {
 		if (monster == null) {
-			monster = Assets.monsterMap.get(monsterName);
+			monster = assets.monsterMap.get(monsterName);
 		}
 		return monster;
 	}

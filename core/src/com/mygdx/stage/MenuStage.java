@@ -14,35 +14,39 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
+import com.mygdx.state.StaticAssets;
 
 @Component
 @Scope("prototype")
 public class MenuStage extends Stage {
+	@Autowired
+	private Assets assets;
 	@Autowired
 	private ScreenFactory screenFactory;
 	private ImageButton[] button;
 
 	public Stage makeStage() {
 		button = new ImageButton[4];
-		Image logo = new Image(Assets.atlasUiMap.get("title"));
-		Texture texture = Assets.backgroundTextureMap.get("main_background");
+		Image logo = new Image(assets.atlasUiMap.get("title"));
+		Texture texture = StaticAssets.backgroundTextureMap
+				.get("main_background");
 		Image background = new Image(texture);
 
-		Table table = new Table(Assets.skin);
+		Table table = new Table(assets.skin);
 
 		button[0] = new ImageButton(
 		// FIXME 버튼하나 없음
-				Assets.atlasUiMap.get("button_start_after"),
-				Assets.atlasUiMap.get("button_start_after"));
+				assets.atlasUiMap.get("button_start_after"),
+				assets.atlasUiMap.get("button_start_after"));
 		button[1] = new ImageButton(
-				Assets.atlasUiMap.get("button_option_before"),
-				Assets.atlasUiMap.get("button_option_after"));
+				assets.atlasUiMap.get("button_option_before"),
+				assets.atlasUiMap.get("button_option_after"));
 		button[2] = new ImageButton(
-				Assets.atlasUiMap.get("button_credit_before"),
-				Assets.atlasUiMap.get("button_credit_after"));
+				assets.atlasUiMap.get("button_credit_before"),
+				assets.atlasUiMap.get("button_credit_after"));
 		button[3] = new ImageButton(
-				Assets.atlasUiMap.get("button_extra_before"),
-				Assets.atlasUiMap.get("button_extra_after"));
+				assets.atlasUiMap.get("button_extra_before"),
+				assets.atlasUiMap.get("button_extra_after"));
 
 		button[0].addListener(new InputListener() {
 			@Override
@@ -99,22 +103,22 @@ public class MenuStage extends Stage {
 			}
 		});
 
-		logo.setHeight((int) (0.4f * Assets.windowHeight));
-		logo.setWidth((int) (0.6f * Assets.windowWidth));
+		logo.setHeight((int) (0.4f * assets.windowHeight));
+		logo.setWidth((int) (0.6f * assets.windowWidth));
 		table.setFillParent(true);
 
-		table.add(button[3]).height(0.35f * Assets.windowHeight)
-				.width(0.3f * Assets.windowWidth).expand().top().left();
-		table.add(button[2]).height(0.35f * Assets.windowHeight)
-				.width(0.3f * Assets.windowWidth).top().right();
+		table.add(button[3]).height(0.35f * assets.windowHeight)
+				.width(0.3f * assets.windowWidth).expand().top().left();
+		table.add(button[2]).height(0.35f * assets.windowHeight)
+				.width(0.3f * assets.windowWidth).top().right();
 		table.row();
-		table.add(button[0]).height(0.35f * Assets.windowHeight)
-				.width(0.3f * Assets.windowWidth).bottom().left();
-		table.add(button[1]).height(0.35f * Assets.windowHeight)
-				.width(0.3f * Assets.windowWidth).bottom().right();
-		logo.setPosition((int) (0.2f * Assets.windowWidth),
-				(int) (0.3f * Assets.windowHeight));
-		background.setSize(Assets.windowWidth, Assets.windowHeight);
+		table.add(button[0]).height(0.35f * assets.windowHeight)
+				.width(0.3f * assets.windowWidth).bottom().left();
+		table.add(button[1]).height(0.35f * assets.windowHeight)
+				.width(0.3f * assets.windowWidth).bottom().right();
+		logo.setPosition((int) (0.2f * assets.windowWidth),
+				(int) (0.3f * assets.windowHeight));
+		background.setSize(assets.windowWidth, assets.windowHeight);
 
 		this.addActor(background);
 		this.addActor(logo);

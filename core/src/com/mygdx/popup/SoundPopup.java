@@ -1,5 +1,7 @@
 package com.mygdx.popup;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -14,12 +16,15 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.manager.VolumeManager;
 import com.mygdx.screen.MenuScreen;
 import com.mygdx.state.Assets;
+import com.mygdx.state.StaticAssets;
 
 public class SoundPopup extends Dialog {
-	Stage scenestage;
+	@Autowired
+	private Assets assets;
+	private Stage scenestage;
 
 	public SoundPopup(String title, Stage stage) {
-		super(title, Assets.skin);
+		super(title, StaticAssets.skin);
 		scenestage = stage;
 		initialize();
 	}
@@ -35,9 +40,9 @@ public class SoundPopup extends Dialog {
 		setResizable(false);
 
 		TextButtonStyle style = new TextButtonStyle(
-				Assets.atlasUiMap.get("menu_button_up"),
-				Assets.atlasUiMap.get("menu_button_down"),
-				Assets.atlasUiMap.get("menu_button_toggle"), Assets.font);
+				assets.atlasUiMap.get("menu_button_up"),
+				assets.atlasUiMap.get("menu_button_down"),
+				assets.atlasUiMap.get("menu_button_toggle"), assets.font);
 
 		text("배경음\n효과음");
 
@@ -55,14 +60,14 @@ public class SoundPopup extends Dialog {
 		// 다이얼로그 구현
 		// 다이얼로그조절
 
-		final Slider volume = new Slider(0f, 100f, 1f, false, Assets.skin);
-		volume.setValue(Assets.musicVolume * 100);
-		String volumeLabel = String.valueOf(Assets.musicVolume * 100);
-		final Label volumeValue = new Label(volumeLabel, Assets.skin);
+		final Slider volume = new Slider(0f, 100f, 1f, false, assets.skin);
+		volume.setValue(assets.musicVolume * 100);
+		String volumeLabel = String.valueOf(assets.musicVolume * 100);
+		final Label volumeValue = new Label(volumeLabel, assets.skin);
 		Table table = new Table();
-		final Slider pan = new Slider(-1f, 1f, 0.1f, false, Assets.skin);
+		final Slider pan = new Slider(-1f, 1f, 0.1f, false, assets.skin);
 		pan.setValue(0);
-		final Label panValue = new Label("0.0", Assets.skin);
+		final Label panValue = new Label("0.0", assets.skin);
 
 		table.add(volume);
 		table.add(volumeValue);
@@ -79,8 +84,8 @@ public class SoundPopup extends Dialog {
 
 				// sound.setVolume(soundId, volume.getValue());
 				VolumeManager.musicVolume = volume.getValue() / 100;
-				volumeValue.setText("" + Assets.musicVolume * 100);
-				MenuScreen.getMusic().setVolume(Assets.musicVolume);
+				volumeValue.setText("" + assets.musicVolume * 100);
+				MenuScreen.getMusic().setVolume(assets.musicVolume);
 
 			}
 		});
@@ -120,7 +125,7 @@ public class SoundPopup extends Dialog {
 
 	@Override
 	public Dialog text(String text) {
-		super.text(new Label(text, Assets.skin));
+		super.text(new Label(text, assets.skin));
 		return this;
 
 	}

@@ -1,30 +1,30 @@
 package com.mygdx.game;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.state.Assets;
+import com.mygdx.state.StaticAssets;
 
 public class OneLevelTestCase extends Game {
 	@Autowired
-	@Qualifier("Test")
-	private Assets assets;
+	private ScreenFactory screenFactory;
+	@Autowired
+	private ApplicationContext context;
 
 	@Override
 	public void create() {
 		Gdx.input.setCatchBackKey(true);
-		assets.loadAll();
-		ApplicationContext context = new AnnotationConfigApplicationContext(
+		//디버그용 로그도 보이도록 설정
+		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+		StaticAssets.loadAll();
+		context = new AnnotationConfigApplicationContext(
 				OneLevelHeroApplicationContext.class);
-		context.getBean(ScreenFactory.class).setGame(this);
-		context.getBean(ScreenFactory.class).show(ScreenEnum.VILLAGE);
 	}
 
 	public boolean keyDown(int keycode) {
