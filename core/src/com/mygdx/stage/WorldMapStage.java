@@ -53,8 +53,8 @@ public class WorldMapStage extends Overlap2DStage {
 		current = sceneLoader.getRoot().getImageById(
 				positionInfo.getCurrentNode());
 		current.setTouchable(Touchable.enabled);
-		item.setX(current.getX() - 15);
-		item.setY(current.getY() - 15);
+		item.setX(current.getX() - 15); //FIXME
+		item.setY(current.getY() - 15); //FIXME
 		// arrow = sceneLoader.getRoot().getCompositeById("1to2");
 
 		List<CompositeItem> arrowList = new ArrayList<>();

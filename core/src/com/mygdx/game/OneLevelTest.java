@@ -11,6 +11,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.manager.LoadManager;
 import com.mygdx.state.StaticAssets;
 
 @Component
@@ -28,12 +29,30 @@ public class OneLevelTest extends Game {
 		StaticAssets.loadAll();
 		context = new AnnotationConfigApplicationContext(
 				OneLevelHeroApplicationContext.class);
+		Gdx.app.debug("OneLevelTest", "ComponentScan 끝");
 		gameLoad();
 	}
 
 	public void gameLoad() {
 		context.getBean(ScreenFactory.class).setGame(this);
+		//가고자 하는 스크린의 메서드를 선택하자.
+		goVillageScreen();
+	}
+
+	//메뉴스크린은 게임을 로드할 필요가 없다.
+	private void goMenuScreen() {
 		context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
+	}
+
+	//이하 게임에 곧장 진입하고자 하는 경우
+	private void goVillageScreen() {
+		context.getBean(LoadManager.class).loadNewGame();
+		context.getBean(ScreenFactory.class).show(ScreenEnum.VILLAGE);
+	}
+
+	private void goWorldMapScreen() {
+		context.getBean(LoadManager.class).loadNewGame();
+		context.getBean(ScreenFactory.class).show(ScreenEnum.WORLD_MAP);
 	}
 
 	public boolean keyDown(int keycode) {

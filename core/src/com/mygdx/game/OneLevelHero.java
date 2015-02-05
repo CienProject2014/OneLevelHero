@@ -25,6 +25,7 @@ public class OneLevelHero extends Game {
 		StaticAssets.loadAll();
 		context = new AnnotationConfigApplicationContext(
 				OneLevelHeroApplicationContext.class);
+
 		gameLoad();
 	}
 
