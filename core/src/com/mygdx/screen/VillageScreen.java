@@ -7,7 +7,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.StageFactory;
@@ -21,15 +20,12 @@ import com.mygdx.factory.StageFactory;
 
 @Component
 public class VillageScreen implements Screen {
-
 	private String villageName;
 
 	@Autowired
 	private StageFactory stageFactory;
 	private Stage villageStage;
 	private Stage gameUiStage;
-
-	private OrthographicCamera cam;
 
 	private boolean state = true;
 
@@ -39,14 +35,6 @@ public class VillageScreen implements Screen {
 
 	public void setVillageName(String villageName) {
 		this.villageName = villageName;
-	}
-
-	public OrthographicCamera getCam() {
-		return cam;
-	}
-
-	public void setCam(OrthographicCamera cam) {
-		this.cam = cam;
 	}
 
 	public boolean isState() {
@@ -72,11 +60,9 @@ public class VillageScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		villageStage.draw();
-		villageStage.act();
-
 		gameUiStage.draw();
 		// 카메라를 지속적으로 업데이트 해준다.
-		villageStage.getCamera().update();
+		villageStage.getViewport().getCamera().update();
 
 	}
 
@@ -100,10 +86,6 @@ public class VillageScreen implements Screen {
 		multiplexer.addProcessor(1, villageStage);
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
-
-		// vs1.getCamera().translate(100, 100, 0);
-		// vs1.getCamera().update();
-		// vs2.addActor(UI);
 	}
 
 	@Override

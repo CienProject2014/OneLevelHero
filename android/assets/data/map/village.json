@@ -7,12 +7,7 @@
       "waiji"
     ],
     "building" : 
-    {
-      "Inn":{
-        "buildingName" : "블랙우드 여관",
-        "buildingType" : "inn",
-        "buildingPath" : "blackwood_inn_601"
-      },
+    {   
       "Village Head's House":{
         "buildingName" : "촌장의 집",
         "buildingType" : "house",
