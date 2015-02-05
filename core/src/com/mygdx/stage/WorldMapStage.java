@@ -34,8 +34,9 @@ public class WorldMapStage extends Overlap2DStage {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private PositionInfo positionInfo;
-	private CompositeItem item;
-	private ImageItem current;
+	private CompositeItem currentPosition;
+	private ImageItem currentNode;
+	private final int SET_POSITION = 15;
 
 	public Stage makeStage() {
 		// SceneLoader를 초기화
@@ -49,12 +50,11 @@ public class WorldMapStage extends Overlap2DStage {
 		// getCompositeById로 하나하나 가져올수 있다.
 		// 현재 위치 버튼을 가져온다.
 		// getX로 Image의 위치를 가져올 수 있다.
-		item = sceneLoader.getRoot().getCompositeById("current");
-		current = sceneLoader.getRoot().getImageById(
-				positionInfo.getCurrentNode());
-		current.setTouchable(Touchable.enabled);
-		item.setX(current.getX() - 15);
-		item.setY(current.getY() - 15);
+		currentPosition = sceneLoader.getRoot().getCompositeById("current");
+		currentNode = sceneLoader.getRoot().getImageById(
+				positionInfo.getCurrentNode());// 카메라 위치를 현재노드로 잡기 위하여 가져옴
+		currentPosition.setX(currentNode.getX() - SET_POSITION);
+		currentPosition.setY(currentNode.getY() - SET_POSITION);
 		// arrow = sceneLoader.getRoot().getCompositeById("1to2");
 
 		List<CompositeItem> arrowList = new ArrayList<>();
@@ -92,11 +92,11 @@ public class WorldMapStage extends Overlap2DStage {
 	}
 
 	public ImageItem getCurrent() {
-		return current;
+		return currentNode;
 	}
 
 	public void setCurrent(ImageItem current) {
-		this.current = current;
+		this.currentNode = current;
 	}
 
 	public void setCamera() {
