@@ -60,23 +60,23 @@ public class MovingManager {
 	private void goIntoCurrentNode() {
 		switch (assets.worldNodeInfoMap.get(positionInfo.getCurrentNode())
 				.getType()) {
-		case "village":
-			screenFactory.show(ScreenEnum.VILLAGE);
-			break;
-		case "dungeon":
-			screenFactory.show(ScreenEnum.VILLAGE);
-			break;
-		case "turningpoint":
-			screenFactory.show(ScreenEnum.WORLD_MAP);
-			break;
-		default:
-			screenFactory.show(ScreenEnum.VILLAGE);
-			break;
+			case "village":
+				screenFactory.show(ScreenEnum.VILLAGE);
+				break;
+			case "dungeon":
+				screenFactory.show(ScreenEnum.VILLAGE);
+				break;
+			case "turningpoint":
+				screenFactory.show(ScreenEnum.WORLD_MAP);
+				break;
+			default:
+				screenFactory.show(ScreenEnum.VILLAGE);
+				break;
 		}
 	}
 
 	private boolean isRoadLeft() {
-		return (movingInfo.getLeftRoadLength() >= 0) ? true : false;
+		return (movingInfo.getLeftRoadLength() > 0) ? true : false;
 	}
 
 	private boolean isRoadFull() {
