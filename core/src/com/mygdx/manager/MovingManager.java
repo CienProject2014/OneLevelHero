@@ -27,6 +27,7 @@ public class MovingManager {
 			minusLeftRoadLength();
 			movingRoad();
 		} else {
+			positionInfo.setCurrentNode(movingInfo.getDestinationNode());
 			goIntoCurrentNode();
 		}
 	}
@@ -36,7 +37,7 @@ public class MovingManager {
 			plusLeftRoadLength();
 			movingRoad();
 		} else {
-			//목적지 노드에 도착해서 현재 위치로 설정함
+			// 목적지 노드에 도착해서 현재 위치로 설정함
 			positionInfo.setCurrentNode(movingInfo.getDestinationNode());
 			goIntoCurrentNode();
 		}
@@ -59,28 +60,27 @@ public class MovingManager {
 	private void goIntoCurrentNode() {
 		switch (assets.worldNodeInfoMap.get(positionInfo.getCurrentNode())
 				.getType()) {
-			case "village":
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			case "dungeon":
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			case "turningpoint":
-				screenFactory.show(ScreenEnum.WORLD_MAP);
-				break;
-			default:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
+		case "village":
+			screenFactory.show(ScreenEnum.VILLAGE);
+			break;
+		case "dungeon":
+			screenFactory.show(ScreenEnum.VILLAGE);
+			break;
+		case "turningpoint":
+			screenFactory.show(ScreenEnum.WORLD_MAP);
+			break;
+		default:
+			screenFactory.show(ScreenEnum.VILLAGE);
+			break;
 		}
 	}
 
 	private boolean isRoadLeft() {
-		return (movingInfo.getLeftRoadLength() > 0) ? true : false;
+		return (movingInfo.getLeftRoadLength() >= 0) ? true : false;
 	}
 
 	private boolean isRoadFull() {
-		return (movingInfo.getRoadLength() > movingInfo.getLeftRoadLength()) ? true
+		return (movingInfo.getRoadLength() <= movingInfo.getLeftRoadLength()) ? true
 				: false;
 	}
-
 }

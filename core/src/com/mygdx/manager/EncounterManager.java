@@ -17,14 +17,14 @@ public class EncounterManager {
 	private Random random = new Random();
 
 	public void encountEnemy() {
-		//몬스터 소환!
+		// 몬스터 소환!
 		monsterManager.createMonster();
 		screenFactory.show(ScreenEnum.ENCOUNTER);
 	}
 
-	//FIXME 전투 랜덤으로 발생, 기획에 맞게 바꿀 것
+	// FIXME 전투 랜덤으로 발생, 기획에 맞게 바꿀 것
 	public boolean isBattleOccured() {
-		return random.nextBoolean();
+		return false;
 	}
 
 }

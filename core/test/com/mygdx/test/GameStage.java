@@ -8,7 +8,7 @@ public class GameStage extends Overlap2DStage {
 
 	public GameStage() {
 		initSceneLoader();
-		sceneLoader.loadScene("MainScene");
+		sceneLoader.loadScene("GameScene");
 		addActor(sceneLoader.getRoot());
 	}
 }
