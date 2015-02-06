@@ -53,10 +53,10 @@ public class Assets {
 
 	public Map<String, RoadInfo> dungeonMap;
 
-	public Map<String, JsonStringFile> filePathMap = new HashMap<>();
-	public Map<String, String> jsonStringMap = new HashMap<>();
-	public Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<>();
-	public Map<String, Music> musicMap = new HashMap<>();
+	public Map<String, JsonStringFile> filePathMap = new HashMap<String, JsonStringFile>();
+	public Map<String, String> jsonStringMap = new HashMap<String, String>();
+	public Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<String, TextureRegionDrawable>();
+	public Map<String, Music> musicMap = new HashMap<String, Music>();
 
 	public Map<String, Hero> heroMap;
 	public Map<String, NPC> npcMap;

@@ -79,7 +79,7 @@ public class BuildingStage extends Overlap2DStage {
 	}
 
 	private void setNpcList() {
-		npcButtonList = new ArrayList<>();
+		npcButtonList = new ArrayList<CompositeItem>();
 		for (final String npcName : buildingInfo.getBuildingNpc()) {
 			CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(
 					npcName);

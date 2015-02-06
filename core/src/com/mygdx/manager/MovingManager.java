@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
+import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
@@ -58,15 +59,16 @@ public class MovingManager {
 	}
 
 	private void goIntoCurrentNode() {
-		switch (assets.worldNodeInfoMap.get(positionInfo.getCurrentNode())
-				.getType()) {
-			case "village":
+		String placeType = assets.worldNodeInfoMap.get(
+				positionInfo.getCurrentNode()).getType();
+		switch (PlaceEnum.findPlaceEnum(placeType)) {
+			case VILLAGE:
 				screenFactory.show(ScreenEnum.VILLAGE);
 				break;
-			case "dungeon":
+			case DUNGEON:
 				screenFactory.show(ScreenEnum.VILLAGE);
 				break;
-			case "turningpoint":
+			case FORK:
 				screenFactory.show(ScreenEnum.WORLD_MAP);
 				break;
 			default:

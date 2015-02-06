@@ -17,9 +17,9 @@ import com.mygdx.model.TextureFile;
 
 public class StaticAssets {
 	public static Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
-	public static Map<String, Texture> characterTextureMap = new HashMap<>();
-	public static Map<String, Texture> monsterTextureMap = new HashMap<>();
-	public static Map<String, Texture> backgroundTextureMap = new HashMap<>();
+	public static Map<String, Texture> characterTextureMap = new HashMap<String, Texture>();
+	public static Map<String, Texture> monsterTextureMap = new HashMap<String, Texture>();
+	public static Map<String, Texture> backgroundTextureMap = new HashMap<String, Texture>();
 	public static TextureAtlas items = new TextureAtlas(
 			"texture/items/items.pack");
 	public static float windowWidth;
@@ -38,7 +38,7 @@ public class StaticAssets {
 	}
 
 	public static void loadTexture() {
-		Map<String, JsonStringFile> filePathMap = new HashMap<>();
+		Map<String, JsonStringFile> filePathMap = new HashMap<String, JsonStringFile>();
 		filePathMap = JsonParser.parseMap(JsonStringFile.class, Gdx.files
 				.internal("data/load/file_path.json").readString());
 		Map<String, TextureFile> characterFileMap = JsonParser.parseMap(

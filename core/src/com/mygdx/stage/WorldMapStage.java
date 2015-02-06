@@ -57,7 +57,7 @@ public class WorldMapStage extends Overlap2DStage {
 		currentPosition.setY(currentNode.getY() - SET_POSITION);
 		// arrow = sceneLoader.getRoot().getCompositeById("1to2");
 
-		List<CompositeItem> arrowList = new ArrayList<>();
+		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
 		String currentNode = positionInfo.getCurrentNode();
 		Map<String, Connection> connectionMap = assets.worldNodeInfoMap.get(
 				currentNode).getConnection();

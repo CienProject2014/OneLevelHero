@@ -48,7 +48,7 @@ public class LoadManager {
 		movingInfo.setDestinationNode("Blackwood Forest");
 		movingInfo.setRoadLength(7);
 		movingInfo.setLeftRoadLength(7);
-		List<String> monsterList = new ArrayList<>();
+		List<String> monsterList = new ArrayList<String>();
 		monsterList.add("assassin girl");
 		movingInfo.setRoadMonsterList(monsterList);
 	}

@@ -13,4 +13,12 @@ public enum WorldNodeEnum {
 	public String toString() {
 		return nodeName;
 	}
+
+	public static WorldNodeEnum findWorldNodeEnum(String jsonName) {
+		for (WorldNodeEnum worldNodeEnum : WorldNodeEnum.values()) {
+			if (worldNodeEnum.toString().equals(jsonName))
+				return worldNodeEnum;
+		}
+		return null;
+	}
 }
