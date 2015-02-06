@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.state.Assets;
@@ -28,6 +29,8 @@ public class EventStage extends Stage {
 	private EventManager eventManager;
 	@Autowired
 	private EventInfo eventInfo;
+	@Autowired
+	private ScreenFactory screenFactory;
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;

@@ -642,7 +642,7 @@ worldmaptextwinterfall
   offset: 0, 0
   index: -1
 
-village_pack.png
+blackwood_pack.png
 size: 1280,2822
 format: RGBA8888
 filter: Linear,Linear
@@ -703,3 +703,38 @@ blackwood7
   orig: 1143, 723
   offset: 0, 0
   index: -1
+  
+blackwood_headhouse_pack.png
+size: 1280,1229
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+chest_after_open
+  rotate: false
+  xy: 0, 0
+  size: 150, 159
+  orig: 150, 159
+  offset: 0, 0
+  index: -1
+chest_before_open
+  rotate: false
+  xy: 0, 159
+  size: 150, 132
+  orig: 150, 132
+  offset: 0, 0
+  index: -1
+headhouse
+  rotate: false
+  xy: 0, 291
+  size: 1280, 540
+  orig: 1280, 540
+  offset: 0, 0
+  index: -1
+waiji_601
+  rotate: false
+  xy: 0, 831
+  size: 200, 398
+  orig: 200, 398
+  offset: 0, 0
+  index: -1
+

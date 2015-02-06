@@ -1,8 +1,5 @@
 package com.mygdx.test.stage;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,7 +38,5 @@ public class VillageStageTest {
 
 	@Test
 	public void confirmStageInfo() {
-		assertThat(villageStage.getCam().viewportHeight,
-				is(StaticAssets.windowHeight));
 	}
 }

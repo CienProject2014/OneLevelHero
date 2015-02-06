@@ -18,6 +18,7 @@ public class Building implements Serializable {
 	private BuildingTypeEnum buildingType;
 	private String buildingPath;
 	private List<String> buildingNpc;
+	private String sceneName;
 
 	public String getBuildingName() {
 		return buildingName;
@@ -60,6 +61,7 @@ public class Building implements Serializable {
 		buildingPath = json.readValue("buildingPath", String.class, jsonData);
 		buildingNpc = json.readValue("buildingNpc", ArrayList.class,
 				String.class, jsonData);
+		sceneName = json.readValue("sceneName", String.class, jsonData);
 
 	}
 
@@ -67,5 +69,13 @@ public class Building implements Serializable {
 	public void write(Json json) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public String getSceneName() {
+		return sceneName;
+	}
+
+	public void setSceneName(String sceneName) {
+		this.sceneName = sceneName;
 	}
 }

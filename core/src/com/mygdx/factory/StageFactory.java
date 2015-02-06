@@ -9,6 +9,7 @@ import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.PlatformResourceManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.stage.BattleStage;
+import com.mygdx.stage.BuildingStage;
 import com.mygdx.stage.CharacterUiStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.EventStage;
@@ -29,6 +30,8 @@ public class StageFactory {
 	public Stage makeStage(StageEnum stageEnum) {
 
 		switch (stageEnum) {
+			case BUILDING:
+				return context.getBean(BuildingStage.class).makeStage();
 			case CHARACTER_UI:
 				return context.getBean(CharacterUiStage.class).makeStage();
 			case ENCOUNTER:

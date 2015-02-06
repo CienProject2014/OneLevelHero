@@ -219,13 +219,13 @@ public class GameUiStage extends Stage {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				inventoryActor.setVisible(true);
 				return true;
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
+				inventoryActor.setVisible(true);
 				Gdx.app.log("정보", "inventoryPopUp창이 나타납니다.");
 
 			}
@@ -298,8 +298,6 @@ public class GameUiStage extends Stage {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				statusMessagePopup.setVisible(true);
-				Gdx.app.log("status visibility", "true");
 				return true;
 			}
 
@@ -315,13 +313,14 @@ public class GameUiStage extends Stage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
+				statusMessagePopup.setVisible(true);
 				return true;
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.STATUS);
+				//screenFactory.show(ScreenEnum.STATUS);
 			}
 		});
 	}

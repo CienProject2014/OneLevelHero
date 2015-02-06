@@ -91,6 +91,8 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void hide() {
+		gameUiStage.dispose();
+		villageStage.dispose();
 		dispose();
 	}
 
