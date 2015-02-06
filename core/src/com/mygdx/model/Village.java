@@ -20,6 +20,7 @@ import com.mygdx.manager.TextureManager;
 public class Village implements Serializable {
 	private String villageName;
 	private String backgroundPath;
+	private String sceneName;
 	private List<String> villageNpc;
 	private Map<String, Building> building;
 
@@ -73,6 +74,7 @@ public class Village implements Serializable {
 				String.class, jsonData);
 		building = JsonParser.parseMap(Building.class, jsonData.get("building")
 				.toString());
+		sceneName = json.readValue("sceneName", String.class, jsonData);
 	}
 
 	public String getBackgroundPath() {
@@ -81,5 +83,13 @@ public class Village implements Serializable {
 
 	public void setBackgroundPath(String backgroundPath) {
 		this.backgroundPath = backgroundPath;
+	}
+
+	public String getSceneName() {
+		return sceneName;
+	}
+
+	public void setSceneName(String sceneName) {
+		this.sceneName = sceneName;
 	}
 }

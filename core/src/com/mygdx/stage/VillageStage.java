@@ -1,14 +1,11 @@
 package com.mygdx.stage;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -16,7 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.enums.WorldNodeEnum;
+import com.mygdx.currentState.PositionInfo;
+import com.mygdx.enums.PlaceEnum;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.model.Building;
@@ -34,6 +33,8 @@ public class VillageStage extends Overlap2DStage {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private PositionInfo positionInfo;
 
 	private Village villageInfo;
 	public TextButton shiftButton;
@@ -42,7 +43,6 @@ public class VillageStage extends Overlap2DStage {
 	private Camera camera;
 	private BackgroundDirection backgroundDirection;
 	private OrthographicCamera cam;
-	private List<CompositeItem> buildingButtonList;
 
 	public enum BackgroundDirection {
 		UP, DOWN, MOVE_UP, MOVE_DOWN;
@@ -55,29 +55,18 @@ public class VillageStage extends Overlap2DStage {
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		Gdx.app.debug("VillageStage", "assets.windowWidth : "
-				+ assets.windowWidth + " assets.windowHeight : "
-				+ assets.windowHeight);
 		cam = new OrthographicCamera(assets.windowWidth, assets.windowHeight);
 		cam.position
 				.set(assets.windowWidth / 2, assets.windowHeight * 0.25f, 0);
-		Gdx.app.debug("VillageStage", "cam.position : " + assets.windowWidth
-				/ 2 + ", " + assets.windowHeight * 0.25f);
 
 		getViewport().setCamera(cam);
 		camera = getViewport().getCamera();
 
-		float ratio = 0.782f; //FIXME
-		viewportWidth = assets.windowWidth;
-		viewportHeight = viewportWidth * ratio;
-		Gdx.app.debug("VillageStage", "viewportWidth : " + viewportWidth
-				+ ", viewportHeight : " + viewportHeight);
-
 		initSceneLoader();
-		sceneLoader.loadScene("VillageScene");
+		villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
+		sceneLoader.loadScene(villageInfo.getSceneName());
 
 		// 아직까진 블랙 우드밖에 없으므로 직접 B를 넣어주자
-		villageInfo = assets.villageMap.get(WorldNodeEnum.BLACKWOOD.toString());
 
 		backgroundDirection = BackgroundDirection.DOWN;
 
@@ -132,6 +121,10 @@ public class VillageStage extends Overlap2DStage {
 	}
 
 	private void checkCameraPosition() {
+		float ratio = 0.782f; //FIXME
+		viewportWidth = assets.windowWidth;
+		viewportHeight = viewportWidth * ratio;
+
 		if (camera.position.y > (viewportHeight - assets.windowHeight / 2)) {
 			camera.position.y = viewportHeight - assets.windowHeight / 2;
 			backgroundDirection = BackgroundDirection.UP;
@@ -147,13 +140,26 @@ public class VillageStage extends Overlap2DStage {
 	}
 
 	private void setBuildingButton() {
-		buildingButtonList = new ArrayList<>();
-		for (Entry<String, Building> building : villageInfo.getBuilding()
+		for (final Entry<String, Building> building : villageInfo.getBuilding()
 				.entrySet()) {
 			CompositeItem buildingButton = sceneLoader.getRoot()
 					.getCompositeById(building.getValue().getBuildingPath());
 			buildingButton.setTouchable(Touchable.enabled);
-			buildingButtonList.add(buildingButton);
+			buildingButton.addListener(new InputListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y,
+						int pointer, int button) {
+					return true;
+				}
+
+				@Override
+				public void touchUp(InputEvent event, float x, float y,
+						int pointer, int button) {
+					positionInfo.setCurrentBuilding(building.getKey());
+					positionInfo.setCurrentPlace(PlaceEnum.BUILDING);
+					screenFactory.show(ScreenEnum.BUILDING);
+				}
+			});
 		}
 	}
 }

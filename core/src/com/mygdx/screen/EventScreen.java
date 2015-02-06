@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
@@ -30,6 +31,8 @@ public class EventScreen implements Screen {
 	private EventManager eventManager;
 	@Autowired
 	private RewardManager rewardManager;
+	@Autowired
+	private PositionInfo positionInfo;
 
 	// Already libgdx using interface!
 	private GL20 gl = Gdx.gl;
@@ -69,19 +72,40 @@ public class EventScreen implements Screen {
 		eventStage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 				if (eventSceneIterator.hasNext()) {
 					eventStage = stageFactory.makeEventStage(eventSceneIterator
 							.next());
 				} else {
 					rewardManager.doReward(); //보상이 있을경우 보상실행
 					eventManager.finishEvent(); //해당 이벤트 상태를 종료처리
-					screenFactory.show(ScreenEnum.VILLAGE);
+					goPreviousPlace();
 				}
-
 				return true;
 			}
 		});
+	}
+
+	private void goPreviousPlace() {
+		switch (positionInfo.getCurrentPlace()) {
+			case BUILDING:
+				screenFactory.show(ScreenEnum.BUILDING);
+				break;
+			case VILLAGE:
+				screenFactory.show(ScreenEnum.VILLAGE);
+				break;
+			case DUNGEON:
+				//screenFactory.show(ScreenEnum.DUNGEON);
+				screenFactory.show(ScreenEnum.VILLAGE); //FIXME
+				break;
+			case FORK:
+				//screenFactory.show(ScreenEnum.FORK);
+				screenFactory.show(ScreenEnum.VILLAGE); //FIXME
+				break;
+			default:
+				Gdx.app.log("EventScreen",
+						"positionInfo.getCurrentPlace() is not valid");
+				break;
+		}
 
 	}
 

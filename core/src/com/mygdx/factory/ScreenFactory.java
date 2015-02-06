@@ -12,6 +12,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.screen.BGMScreen;
 import com.mygdx.screen.BattleScreen;
 import com.mygdx.screen.BonusPointScreen;
+import com.mygdx.screen.BuildingScreen;
 import com.mygdx.screen.CGScreen;
 import com.mygdx.screen.CollectionScreen;
 import com.mygdx.screen.CreditScreen;
@@ -57,6 +58,8 @@ public class ScreenFactory {
 				return context.getBean(BGMScreen.class);
 			case BONUS_POINT:
 				return context.getBean(BonusPointScreen.class);
+			case BUILDING:
+				return context.getBean(BuildingScreen.class);
 			case CG:
 				return context.getBean(CGScreen.class);
 			case COLLETION:

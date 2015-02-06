@@ -2,19 +2,17 @@
   "Blackwood" : {
     "villageName" : "블랙우드",
     "backgroundPath" : "blackwood_bg",
-    "villageNpc" :
-    [
-      "waiji"
-    ],
+    "sceneName" : "blackwood_scene",
     "building" : 
     {   
       "Village Head's House":{
         "buildingName" : "촌장의 집",
         "buildingType" : "house",
         "buildingPath" : "blackwood_headhouse_602",
+        "sceneName" : "blackwood_headhouse_scene",
         "buildingNpc" : 
         [
-          "innkeeper"
+          "waiji"
         ]
       }
     }

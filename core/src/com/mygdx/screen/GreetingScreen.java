@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.currentState.EventInfo;
+import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -34,6 +35,8 @@ public class GreetingScreen implements Screen {
 	private EventManager eventManager;
 	@Autowired
 	private EventInfo eventInfo;
+	@Autowired
+	private PositionInfo positionInfo;
 
 	// Already libgdx using interface!
 	private GL20 gl = Gdx.gl;
@@ -103,11 +106,34 @@ public class GreetingScreen implements Screen {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
 
-				screenFactory.show(ScreenEnum.VILLAGE);
-
+				goPreviousPlace();
 				return true;
 			}
 		});
+
+	}
+
+	private void goPreviousPlace() {
+		switch (positionInfo.getCurrentPlace()) {
+			case BUILDING:
+				screenFactory.show(ScreenEnum.BUILDING);
+				break;
+			case VILLAGE:
+				screenFactory.show(ScreenEnum.VILLAGE);
+				break;
+			case DUNGEON:
+				//screenFactory.show(ScreenEnum.DUNGEON);
+				screenFactory.show(ScreenEnum.VILLAGE); //FIXME
+				break;
+			case FORK:
+				//screenFactory.show(ScreenEnum.FORK);
+				screenFactory.show(ScreenEnum.VILLAGE); //FIXME
+				break;
+			default:
+				Gdx.app.log("EventScreen",
+						"positionInfo.getCurrentPlace() is not valid");
+				break;
+		}
 
 	}
 

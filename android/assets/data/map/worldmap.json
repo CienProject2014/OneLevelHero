@@ -359,7 +359,7 @@
   },
   "Retreat Stone": {
     "nodeName": "회군의 바위",
-    "type": "turningpoint",
+    "type": "fork",
     "connection": {
       "Mountain Titania": {
       	"arrowName" : "20to12",
@@ -386,7 +386,7 @@
   },
   "Dogbenefit Camp": {
     "nodeName": "도그베네핏 야영지",
-    "type": "turningpoint",
+    "type": "fork",
     "connection": {
       "Kadilla Castle": {
       	"arrowName" : "21to10",
@@ -413,7 +413,7 @@
   },
   "Cemetery": {
     "nodeName": "공동묘지",
-    "type": "turningpoint",
+    "type": "fork",
     "connection": {
       "RedroseCastle": {
       	"arrowName" : "22to7",
@@ -440,7 +440,7 @@
   },
   "Caravanserial Place": {
     "nodeName": "여행자의 쉼터",
-    "type": "turningpoint",
+    "type": "fork",
     "connection": {
       "Dogbenefit Camp": {
       	"arrowName" : "23to21",
@@ -467,7 +467,7 @@
   },
   "Entrance of the Temple of Moerae": {
     "nodeName": "모에라에 신전 입구",
-    "type": "turningpoint",
+    "type": "fork",
     "connection": {
       "Elven Forest": {
       	"arrowName" : "24to14",
@@ -494,7 +494,7 @@
   },
   "Statue of Golden Beetle Stone": {
     "nodeName": "황금 풍뎅이 석상",
-    "type": "turningpoint",
+    "type": "fork",
     "connection": {
       "Mirage Port": {
       	"arrowName" : "25to9",

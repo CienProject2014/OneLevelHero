@@ -35,6 +35,9 @@
   "parath_203": {
     "filePath": "texture/character/parath_203.png"
   },
+  "parath_401":{
+  	"filePath" : "texture/character/parath_401.png"
+  },
   "parath_501":{
   	"filePath":"texture/character/parath_501.png"
   },

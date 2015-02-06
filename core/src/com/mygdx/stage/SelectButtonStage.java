@@ -18,6 +18,7 @@ import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.PlaceManager;
 import com.mygdx.model.NPC;
 import com.mygdx.state.Assets;
 
@@ -32,22 +33,17 @@ public class SelectButtonStage extends Stage {
 	private EventManager eventManager;
 	@Autowired
 	private EventInfo eventInfo;
+	@Autowired
+	private PlaceManager placeManager;
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
 	private int eventCount;
 	private NPC eventNpc;
 	private final int MAX_EVENT_LENGTH = 6;
-	private final float buttonPosition[][] = {
-			{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.74f },
-			{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.555f },
-			{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.37f },
-			{ assets.windowWidth * 0.68f, assets.windowHeight * 0.74f },
-			{ assets.windowWidth * 0.68f, assets.windowHeight * 0.555f },
-			{ assets.windowWidth * 0.68f, assets.windowHeight * 0.37f } };
-	private final float buttonSize[] = { assets.windowWidth * 0.208f,
-			assets.windowHeight * 0.185f };
+	private TextButton exitButton;
 
 	public Stage makeStage() {
+
 		eventNpc = eventInfo.getNpc();
 		eventCount = eventNpc.getEventCount();
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
@@ -58,7 +54,31 @@ public class SelectButtonStage extends Stage {
 		setButtonPosition();
 		addActors();
 		addListener();
+		setexitButton();
 		return this;
+	}
+
+	private void setexitButton() {
+		exitButton = new TextButton("나가기", assets.skin);
+		exitButton.center();
+		exitButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// TODO Auto-generated method stub
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				placeManager.goPreviousPlace();
+				event.getListenerActor().setVisible(false);
+			}
+		});
+
+		addActor(exitButton);
+
 	}
 
 	private void showEventButton() {
@@ -70,6 +90,8 @@ public class SelectButtonStage extends Stage {
 	}
 
 	private void setSize() {
+		final float buttonSize[] = { assets.windowWidth * 0.208f,
+				assets.windowHeight * 0.185f };
 		for (TextButton chatButton : chatButtons) {
 			chatButton.setSize(buttonSize[0], buttonSize[1]);
 		}
@@ -77,6 +99,13 @@ public class SelectButtonStage extends Stage {
 
 	// assets.windowHeight * 0.185f
 	private void setButtonPosition() {
+		final float buttonPosition[][] = {
+				{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.74f },
+				{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.555f },
+				{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.37f },
+				{ assets.windowWidth * 0.68f, assets.windowHeight * 0.74f },
+				{ assets.windowWidth * 0.68f, assets.windowHeight * 0.555f },
+				{ assets.windowWidth * 0.68f, assets.windowHeight * 0.37f } };
 		for (int i = 0; i < eventCount; i++) {
 			chatButtons.get(i).setPosition(buttonPosition[i][0],
 					buttonPosition[i][1]);
