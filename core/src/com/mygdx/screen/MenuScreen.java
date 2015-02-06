@@ -5,12 +5,11 @@ import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.StageFactory;
-import com.mygdx.manager.SoundManager;
+import com.mygdx.manager.MusicManager;
 import com.mygdx.state.Assets;
 
 @Component
@@ -18,12 +17,10 @@ public class MenuScreen implements Screen {
 	@Autowired
 	private Assets assets;
 	@Autowired
-	private SoundManager soundManager;
+	private MusicManager musicManager;
 	@Autowired
 	private StageFactory stageFactory;
 	private Stage stage;
-
-	private static Music music;
 
 	public MenuScreen() {
 		Gdx.app.debug("MenuScreen", "Constructor() call");
@@ -42,10 +39,8 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void show() {
-		setMusic(assets.mainMusic);
-		getMusic().setVolume(assets.musicVolume);
-		soundManager.playMusic(getMusic());
-
+		musicManager.setMusicAndPlay(assets.musicMap.get("opening"),
+				assets.musicVolume);
 		stage = stageFactory.makeStage(StageEnum.MENU);
 
 		Gdx.input.setInputProcessor(stage);
@@ -76,13 +71,4 @@ public class MenuScreen implements Screen {
 		// TODO Auto-generated method stub
 
 	}
-
-	public static Music getMusic() {
-		return music;
-	}
-
-	public static void setMusic(Music music) {
-		MenuScreen.music = music;
-	}
-
 }

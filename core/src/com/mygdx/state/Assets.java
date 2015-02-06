@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.currentState.RoadInfo;
 import com.mygdx.enums.JsonEnum;
@@ -22,6 +23,7 @@ import com.mygdx.model.AtlasUiFile;
 import com.mygdx.model.Hero;
 import com.mygdx.model.JsonStringFile;
 import com.mygdx.model.Monster;
+import com.mygdx.model.MusicFile;
 import com.mygdx.model.NPC;
 import com.mygdx.model.Village;
 import com.mygdx.model.WorldNode;
@@ -54,11 +56,13 @@ public class Assets {
 	public Map<String, JsonStringFile> filePathMap = new HashMap<>();
 	public Map<String, String> jsonStringMap = new HashMap<>();
 	public Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<>();
+	public Map<String, Music> musicMap = new HashMap<>();
 
 	public Map<String, Hero> heroMap;
 	public Map<String, NPC> npcMap;
 	public Map<String, Monster> monsterMap;
 	public Map<String, Village> villageMap;
+	public Map<String, Music> villageMusicMap;
 	public Map<String, WorldNode> worldNodeInfoMap;
 
 	public Assets() {
@@ -78,36 +82,37 @@ public class Assets {
 		loadUnitInfo();
 	}
 
-	public void loadFilePath() {
+	private void loadFilePath() {
 		Gdx.app.debug("Assets", "loadFilePath()");
 		filePathMap = JsonParser.parseMap(JsonStringFile.class, Gdx.files
 				.internal("data/load/file_path.json").readString());
 	}
 
-	public void loadResourceFile() {
+	private void loadResourceFile() {
 		Gdx.app.debug("Assets", "loadResourceFile()");
-		atlasUiTextureLoad();
-		fontLoad();
-		chatButtonLoad();
-		etcResourceLoad();
+		loadAtlasUiTexture();
+		loadFont();
+		loadChatButton();
+		loadMusic();
+		loadEtcResources();
 	}
 
-	public void loadMapInfo() {
+	private void loadMapInfo() {
 		Gdx.app.debug("Assets", "loadMapInfo()");
-		roadInfoLoad();
-		villageInfoLoad();
-		worldMapInfoLoad();
+		loadRoadInfo();
+		loadVillageInfo();
+		loadWorldMapInfo();
 	}
 
-	public void loadUnitInfo() {
+	private void loadUnitInfo() {
 		Gdx.app.debug("Assets", "loadUnitInfo()");
-		npcInfoLoad();
-		heroInfoLoad();
-		monsterInfoLoad();
+		loadNpcInfo();
+		loadHeroInfo();
+		loadMonsterInfo();
 	}
 
 	// Stage 크기 설정
-	public void loadSize(Stage stage) {
+	private void loadSize(Stage stage) {
 		Gdx.app.debug("Assets", "loadWindowSize()");
 		Viewport vp = stage.getViewport();
 		windowWidth = vp.getViewportWidth();
@@ -115,7 +120,7 @@ public class Assets {
 	}
 
 	// JsonFile의 path를 읽어온다.
-	public void loadJsonObject() {
+	private void loadJsonObject() {
 		Gdx.app.debug("Assets", "loadJsonObject()");
 		Map<String, JsonStringFile> jsonFileMap = JsonParser.parseMap(
 				JsonStringFile.class,
@@ -125,39 +130,39 @@ public class Assets {
 		}
 	}
 
-	public void roadInfoLoad() {
+	private void loadRoadInfo() {
 
 	}
 
-	public void heroInfoLoad() {
+	private void loadHeroInfo() {
 		// hero 리스트를 담은 Json을 불러와 객체화한다.
 		heroMap = JsonParser.parseMap(Hero.class,
 				jsonStringMap.get(JsonEnum.HERO_JSON.toString()));
 	}
 
-	public void worldMapInfoLoad() {
+	private void loadWorldMapInfo() {
 		worldNodeInfoMap = JsonParser.parseMap(WorldNode.class,
 				jsonStringMap.get(JsonEnum.WORLDMAP_JSON.toString()));
 	}
 
-	public void monsterInfoLoad() {
+	private void loadMonsterInfo() {
 		// monster 리스트를 담은 Json을 불러온다.
 		monsterMap = JsonParser.parseMap(Monster.class,
 				jsonStringMap.get(JsonEnum.MONSTER_JSON.toString()));
 	}
 
-	public void villageInfoLoad() {
+	private void loadVillageInfo() {
 		villageMap = JsonParser.parseMap(Village.class,
 				jsonStringMap.get(JsonEnum.VILLAGE_JSON.toString()));
 	}
 
-	public void npcInfoLoad() {
+	private void loadNpcInfo() {
 		// npc 리스트를 담은 Json을 불러온다.
 		npcMap = JsonParser.parseMap(NPC.class,
 				jsonStringMap.get(JsonEnum.NPC_JSON.toString()));
 	}
 
-	public void atlasUiTextureLoad() {
+	private void loadAtlasUiTexture() {
 		List<AtlasUiFile> atlasUiFileList = JsonParser.parseList(
 				AtlasUiFile.class,
 				filePathMap.get(JsonEnum.ATLAS_UI_PATH.toString()).getFile());
@@ -169,11 +174,11 @@ public class Assets {
 		}
 	}
 
-	public void fontLoad() {
+	private void loadFont() {
 		font = new BitmapFont(Gdx.files.internal("skin/hangeul2.fnt"));
 	}
 
-	public void chatButtonLoad() {
+	private void loadChatButton() {
 		TextureAtlas textureAtlas = new TextureAtlas("skin/chatbutton.pack");
 		chatButton = new TextureRegionDrawable[6];
 		for (int i = 0; i < 6; i++) {
@@ -182,11 +187,26 @@ public class Assets {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	private void loadMusic() {
+		Map<String, MusicFile> musicFileMap = JsonParser.parseMap(
+				MusicFile.class,
+				filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString()).getFile());
+		for (Entry<String, MusicFile> entry : musicFileMap.entrySet()) {
+			musicMap.put(entry.getKey(), entry.getValue().getFile());
+		}
+
+		//Village MusicList
+		String villageMusicJsonString = filePathMap.get(
+				JsonEnum.VILLAGE_MUSIC_LIST.toString()).getFile();
+		villageMusicMap = new Json().fromJson(HashMap.class,
+				villageMusicJsonString);
+	}
+
 	// 임시용, 추후 제거 예정
-	public void etcResourceLoad() {
+	public void loadEtcResources() {
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
-		mainMusic = Gdx.audio.newMusic(Gdx.files.internal("data/buyeo.mp3"));
 	}
 }

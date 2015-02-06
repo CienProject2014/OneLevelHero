@@ -34,6 +34,10 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private RewardQueueInfo rewardQueueInfo;
 
+	// (6) 사운드 관리
+	@Autowired
+	private MusicInfo musicInfo;
+
 	public SaveVersion getVersion() {
 		return saveVersion;
 	}

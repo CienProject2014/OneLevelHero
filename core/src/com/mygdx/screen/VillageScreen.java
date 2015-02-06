@@ -1,6 +1,7 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
@@ -10,6 +11,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.StageFactory;
+import com.mygdx.manager.MusicManager;
+import com.mygdx.state.Assets;
 
 /**
  * VillageStage와 GameUiStage를 addActor()해서 보여주는 Screen 마을의 경우 multiplexer를 이용하여
@@ -19,12 +22,16 @@ import com.mygdx.factory.StageFactory;
  * 
  */
 
+@Scope(value = "prototype")
 @Component
 public class VillageScreen implements Screen {
 	private String villageName;
-
 	@Autowired
 	private StageFactory stageFactory;
+	@Autowired
+	private MusicManager musicManager;
+	@Autowired
+	private Assets assets;
 	private Stage villageStage;
 	private Stage gameUiStage;
 
@@ -75,6 +82,8 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void show() {
+		musicManager.setMusicAndPlay(assets.musicMap.get("kingkai's_planet"),
+				assets.musicVolume);
 		villageStage = stageFactory.makeStage(StageEnum.VILLAGE);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 

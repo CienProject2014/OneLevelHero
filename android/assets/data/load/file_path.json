@@ -13,5 +13,11 @@
   },
   "json_file_path":{
   	"filePath":"data/load/json_file_path.json"
+  },
+  "music_file_path":{
+  	"filePath":"data/load/music_file_path.json"
+  },
+  "village_music_list":{
+  	"filePath":"data/sound/village_music_list.json"
   }
 }
