@@ -27,7 +27,6 @@ public class NPCJsonModelingTest {
 
 		Map<String, NPC> npcMap = JsonParser.parseMap(NPC.class,
 				buffer.toString());
-		System.out.println(assets.backgroundTextureMap.get("blackwood_center"));
 		System.out.println(npcMap.get("waiji").getEvents().get(0)
 				.getEventScenes().get(0).getBackground());
 	}

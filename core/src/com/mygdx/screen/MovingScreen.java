@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.MusicManager;
 import com.mygdx.state.Assets;
 
 @Component
@@ -26,6 +27,8 @@ public class MovingScreen implements Screen {
 	private MovingInfo movingInfo;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private MusicManager musicManager;
 	private Stage stage;
 	private TextButton goButton;
 	private TextButton backButton;
@@ -59,7 +62,6 @@ public class MovingScreen implements Screen {
 		goButton = new TextButton("Go", assets.skin);
 		backButton = new TextButton("Back", assets.skin);
 		movingLabel = new Label("Point", assets.skin);
-
 		movingLabel.setColor(0, 0, 0, 1);
 
 		Gdx.input.setInputProcessor(stage);

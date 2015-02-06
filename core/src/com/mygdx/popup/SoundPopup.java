@@ -13,20 +13,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.VolumeManager;
-import com.mygdx.screen.MenuScreen;
 import com.mygdx.state.Assets;
 import com.mygdx.state.StaticAssets;
 
 public class SoundPopup extends Dialog {
 	@Autowired
 	private Assets assets;
+	@Autowired
+	private MusicManager musicManager;
 	private Stage scenestage;
 
+	@Autowired
 	public SoundPopup(String title, Stage stage) {
 		super(title, StaticAssets.skin);
 		scenestage = stage;
-		initialize();
 	}
 
 	private void initialize() {
@@ -85,7 +87,7 @@ public class SoundPopup extends Dialog {
 				// sound.setVolume(soundId, volume.getValue());
 				VolumeManager.musicVolume = volume.getValue() / 100;
 				volumeValue.setText("" + assets.musicVolume * 100);
-				MenuScreen.getMusic().setVolume(assets.musicVolume);
+				musicManager.getMusic().setVolume(assets.musicVolume);
 
 			}
 		});
