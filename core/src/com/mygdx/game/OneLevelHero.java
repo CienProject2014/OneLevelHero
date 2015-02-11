@@ -1,7 +1,7 @@
 package com.mygdx.game;
 
+import org.robospring.RoboSpring;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -17,7 +17,7 @@ public class OneLevelHero extends Game {
 	public void create() {
 		Gdx.input.setCatchBackKey(true);
 		StaticAssets.loadAll();
-		context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		context = RoboSpring.getContext();
 		gameLoad();
 	}
 

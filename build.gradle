@@ -31,7 +31,6 @@ allprojects {
 project(":desktop") {
     apply plugin: "java"
 
-
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion" 
@@ -73,13 +72,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
 		compile project(":Overlap2dRuntime")
-        compile fileTree(dir: 'libs', include: '*.jar')
-		
-        testCompile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"         
-        testCompile "com.badlogicgames.gdx:gdx:$gdxVersion"                                
-        testCompile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"       
-        testCompile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"                          
-        testCompile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        compile fileTree(dir: 'libs', include: '*.jar')             
 		
     }
 }
