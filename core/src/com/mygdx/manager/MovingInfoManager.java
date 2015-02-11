@@ -1,7 +1,6 @@
 package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
@@ -13,8 +12,8 @@ import com.mygdx.state.Assets;
  * @author Velmont
  *
  */
-@Component
 public class MovingInfoManager {
+
 	@Autowired
 	private Assets assets;
 	@Autowired
@@ -33,4 +32,29 @@ public class MovingInfoManager {
 		movingInfo.setRoadMonsterList(worldNodeInfo.getConnection()
 				.get(destinationNode).getRoadMonster());
 	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
+	}
+
 }

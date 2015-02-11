@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -22,8 +20,6 @@ import com.mygdx.manager.PlaceManager;
 import com.mygdx.model.NPC;
 import com.mygdx.state.Assets;
 
-@Component
-@Scope(value = "prototype")
 public class SelectButtonStage extends Stage {
 	@Autowired
 	private Assets assets;
@@ -141,4 +137,37 @@ public class SelectButtonStage extends Stage {
 			this.addActor(chatButton);
 		}
 	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+
+	public PlaceManager getPlaceManager() {
+		return placeManager;
+	}
+
+	public void setPlaceManager(PlaceManager placeManager) {
+		this.placeManager = placeManager;
+	}
+
 }

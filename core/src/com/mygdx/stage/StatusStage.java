@@ -1,8 +1,6 @@
 package com.mygdx.stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,8 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.state.Assets;
 
-@Component
-@Scope(value = "prototype")
 public class StatusStage extends Stage {
 	@Autowired
 	private Assets assets;
@@ -168,4 +164,13 @@ public class StatusStage extends Stage {
 	public void dispose() {
 		super.dispose();
 	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
 }

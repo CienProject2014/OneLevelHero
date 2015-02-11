@@ -3,7 +3,6 @@ package com.mygdx.manager;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
@@ -16,7 +15,6 @@ import com.mygdx.state.Assets;
  *
  */
 
-@Component
 public class MonsterManager {
 	@Autowired
 	private Assets assets;
@@ -38,5 +36,29 @@ public class MonsterManager {
 		monsterStringList = movingInfo.getRoadMonsterList();
 		String selectedMonsterString = monsterStringList.get(0);
 		return selectedMonsterString;
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
 	}
 }

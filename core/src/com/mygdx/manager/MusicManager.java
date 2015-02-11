@@ -1,14 +1,12 @@
 package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.audio.Music;
 import com.mygdx.currentState.MusicInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.state.Assets;
 
-@Component
 public class MusicManager {
 	@Autowired
 	private MusicInfo musicInfo;
@@ -16,6 +14,30 @@ public class MusicManager {
 	private Assets assets;
 	@Autowired
 	private PositionInfo positionInfo;
+
+	public MusicInfo getMusicInfo() {
+		return musicInfo;
+	}
+
+	public void setMusicInfo(MusicInfo musicInfo) {
+		this.musicInfo = musicInfo;
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
+	}
 
 	public void playMusic(Music music) {
 		musicInfo.getMusic().play();

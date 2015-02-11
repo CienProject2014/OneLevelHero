@@ -3,8 +3,6 @@ package com.mygdx.stage;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,8 +14,6 @@ import com.mygdx.model.Hero;
 import com.mygdx.state.Assets;
 import com.mygdx.ui.StatusBarUi;
 
-@Component
-@Scope(value = "prototype")
 public class CharacterUiStage extends Stage {
 	@Autowired
 	private Assets assets;
@@ -131,6 +127,22 @@ public class CharacterUiStage extends Stage {
 
 			hpbar[i].act(delta);
 		}
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public PartyInfo getPartyInfo() {
+		return partyInfo;
+	}
+
+	public void setPartyInfo(PartyInfo partyInfo) {
+		this.partyInfo = partyInfo;
 	}
 
 }

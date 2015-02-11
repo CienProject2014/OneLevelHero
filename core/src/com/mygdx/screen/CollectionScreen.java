@@ -1,7 +1,6 @@
 ﻿package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -17,7 +16,6 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
 
-@Component
 public class CollectionScreen implements Screen {
 	@Autowired
 	private Assets assets;
@@ -154,6 +152,22 @@ public class CollectionScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
 	}
 
 }

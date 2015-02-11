@@ -34,7 +34,6 @@ import com.mygdx.model.WorldNode;
  * @author Velmont
  * 
  */
-
 public class Assets {
 	public Skin skin;
 	public TextureAtlas items;

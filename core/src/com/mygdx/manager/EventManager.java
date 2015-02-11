@@ -3,7 +3,6 @@ package com.mygdx.manager;
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.RewardInfo;
@@ -18,8 +17,8 @@ import com.mygdx.model.NPC;
  * @author Velmont
  *
  */
-@Component
 public class EventManager {
+
 	@Autowired
 	private EventInfo eventInfo;
 	@Autowired
@@ -65,4 +64,21 @@ public class EventManager {
 	public void setEventInfo(NPC npc, boolean isGreeting) {
 		setEventInfo(npc, 0, isGreeting);
 	}
+
+	public EventInfo getEventInfo() {
+		return eventInfo;
+	}
+
+	public void setEventInfo(EventInfo eventInfo) {
+		this.eventInfo = eventInfo;
+	}
+
+	public RewardManager getRewardManager() {
+		return rewardManager;
+	}
+
+	public void setRewardManager(RewardManager rewardManager) {
+		this.rewardManager = rewardManager;
+	}
+
 }

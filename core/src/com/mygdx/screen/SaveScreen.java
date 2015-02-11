@@ -1,10 +1,7 @@
 package com.mygdx.screen;
 
-import org.springframework.stereotype.Component;
-
 import com.badlogic.gdx.Screen;
 
-@Component
 public class SaveScreen implements Screen {
 	@Override
 	public void render(float delta) {

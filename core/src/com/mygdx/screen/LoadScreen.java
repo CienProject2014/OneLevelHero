@@ -1,7 +1,6 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -19,12 +18,12 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.LoadManager;
 import com.mygdx.state.Assets;
 
-@Component
 public class LoadScreen implements Screen {
 	@Autowired
 	private Assets assets;
 	@Autowired
 	private ScreenFactory screenFactory;
+
 	@Autowired
 	private CurrentState currentState;
 	@Autowired
@@ -126,4 +125,43 @@ public class LoadScreen implements Screen {
 
 	}
 
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+
+	public LoadManager getLoadManager() {
+		return loadManager;
+	}
+
+	public void setLoadManager(LoadManager loadManager) {
+		this.loadManager = loadManager;
+	}
+
+	public CurrentState getCurrentState() {
+		return currentState;
+	}
+
+	public void setCurrentState(CurrentState currentState) {
+		this.currentState = currentState;
+	}
 }

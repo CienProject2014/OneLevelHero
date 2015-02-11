@@ -1,16 +1,11 @@
 package com.mygdx.screen;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.mygdx.stage.StatusStage;
 
-@Component
 public class StatusScreen implements Screen {
-	@Autowired
 	private StatusStage statusStage;
 
 	@Override

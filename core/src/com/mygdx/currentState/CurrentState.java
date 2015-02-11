@@ -3,11 +3,9 @@ package com.mygdx.currentState;
 import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.mygdx.controller.SaveVersion;
 
-@Component
 public class CurrentState implements Serializable {
 	// (1) 버전관리
 	private SaveVersion saveVersion;
@@ -17,7 +15,6 @@ public class CurrentState implements Serializable {
 	private PartyInfo partyInfo;
 	@Autowired
 	private InventoryInfo inventoryInfo;
-
 	// (3) 마을/무빙로드관리
 	@Autowired
 	private PositionInfo positionInfo;
@@ -54,20 +51,52 @@ public class CurrentState implements Serializable {
 		this.saveVersion = saveVersion;
 	}
 
-	public PartyInfo getParty() {
-		return partyInfo;
-	}
-
-	public void setParty(PartyInfo party) {
-		this.partyInfo = party;
-	}
-
 	public InventoryInfo getInventory() {
 		return inventoryInfo;
 	}
 
+	public InventoryInfo getInventoryInfo() {
+		return inventoryInfo;
+	}
+
+	public void setInventoryInfo(InventoryInfo inventoryInfo) {
+		this.inventoryInfo = inventoryInfo;
+	}
+
+	public EventInfo getEventInfo() {
+		return eventInfo;
+	}
+
+	public void setEventInfo(EventInfo eventInfo) {
+		this.eventInfo = eventInfo;
+	}
+
+	public RewardQueueInfo getRewardQueueInfo() {
+		return rewardQueueInfo;
+	}
+
+	public void setRewardQueueInfo(RewardQueueInfo rewardQueueInfo) {
+		this.rewardQueueInfo = rewardQueueInfo;
+	}
+
+	public MusicInfo getMusicInfo() {
+		return musicInfo;
+	}
+
+	public void setMusicInfo(MusicInfo musicInfo) {
+		this.musicInfo = musicInfo;
+	}
+
 	public void setInventory(InventoryInfo inventory) {
 		this.inventoryInfo = inventory;
+	}
+
+	public PartyInfo getPartyInfo() {
+		return partyInfo;
+	}
+
+	public void setPartyInfo(PartyInfo partyInfo) {
+		this.partyInfo = partyInfo;
 	}
 
 	public PositionInfo getPositionInfo() {

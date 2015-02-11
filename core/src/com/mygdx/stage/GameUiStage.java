@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Stack;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -36,8 +34,6 @@ import com.mygdx.popup.StatusMessagePopup;
 import com.mygdx.state.Assets;
 import com.mygdx.ui.StatusBarUi;
 
-@Component
-@Scope("prototype")
 public class GameUiStage extends Stage {
 	@Autowired
 	private Assets assets;
@@ -331,4 +327,53 @@ public class GameUiStage extends Stage {
 		// alertMessage.remove();
 		super.dispose();
 	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
+	public PartyInfo getPartyInfo() {
+		return partyInfo;
+	}
+
+	public void setPartyInfo(PartyInfo partyInfo) {
+		this.partyInfo = partyInfo;
+	}
+
+	public RewardManager getRewardManager() {
+		return rewardManager;
+	}
+
+	public void setRewardManager(RewardManager rewardManager) {
+		this.rewardManager = rewardManager;
+	}
+
+	public TextButton getWorldMapButton() {
+		return worldMapButton;
+	}
+
+	public void setWorldMapButton(TextButton worldMapButton) {
+		this.worldMapButton = worldMapButton;
+	}
+
+	public static Stage getInventoryStage() {
+		return inventoryStage;
+	}
+
+	public static void setInventoryStage(Stage inventoryStage) {
+		GameUiStage.inventoryStage = inventoryStage;
+	}
+
 }

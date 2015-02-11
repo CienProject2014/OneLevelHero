@@ -1,5 +1,5 @@
 package com.mygdx.test.stage;
-
+/*
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ import com.mygdx.test.GdxTestRunner;
  * @author Velmont
  *
  */
-
+/*
 @RunWith(GdxTestRunner.class)
 public class VillageStageTest {
 	private VillageStage villageStage;
@@ -40,3 +40,4 @@ public class VillageStageTest {
 	public void confirmStageInfo() {
 	}
 }
+*/

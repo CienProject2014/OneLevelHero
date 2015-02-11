@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -23,8 +21,6 @@ import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
-@Component
-@Scope("prototype")
 public class WorldMapStage extends Overlap2DStage {
 	@Autowired
 	private Assets assets;
@@ -126,6 +122,54 @@ public class WorldMapStage extends Overlap2DStage {
 			yvalue = 0;
 		}
 		getCamera().translate(xvalue, yvalue, 0);
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public WorldMapManager getWorldMapManager() {
+		return worldMapManager;
+	}
+
+	public void setWorldMapManager(WorldMapManager worldMapManager) {
+		this.worldMapManager = worldMapManager;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
+	}
+
+	public CompositeItem getCurrentPosition() {
+		return currentPosition;
+	}
+
+	public void setCurrentPosition(CompositeItem currentPosition) {
+		this.currentPosition = currentPosition;
+	}
+
+	public ImageItem getCurrentNode() {
+		return currentNode;
+	}
+
+	public void setCurrentNode(ImageItem currentNode) {
+		this.currentNode = currentNode;
 	}
 
 }

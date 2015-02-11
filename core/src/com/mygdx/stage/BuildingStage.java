@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -22,7 +21,6 @@ import com.mygdx.state.Assets;
 import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
-@Component
 public class BuildingStage extends Overlap2DStage {
 	@Autowired
 	private Assets assets;
@@ -103,4 +101,61 @@ public class BuildingStage extends Overlap2DStage {
 			npcButtonList.add(npcButton);
 		}
 	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
+	}
+
+	public NpcManager getNpcManager() {
+		return npcManager;
+	}
+
+	public void setNpcManager(NpcManager npcManager) {
+		this.npcManager = npcManager;
+	}
+
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
+	public PlaceManager getPlaceManager() {
+		return placeManager;
+	}
+
+	public void setPlaceManager(PlaceManager placeManager) {
+		this.placeManager = placeManager;
+	}
+
+	public Building getBuildingInfo() {
+		return buildingInfo;
+	}
+
+	public void setBuildingInfo(Building buildingInfo) {
+		this.buildingInfo = buildingInfo;
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
 }

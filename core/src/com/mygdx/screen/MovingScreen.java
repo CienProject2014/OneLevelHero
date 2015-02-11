@@ -1,7 +1,6 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -19,7 +18,6 @@ import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.state.Assets;
 
-@Component
 public class MovingScreen implements Screen {
 	@Autowired
 	private Assets assets;
@@ -127,6 +125,38 @@ public class MovingScreen implements Screen {
 
 	@Override
 	public void dispose() {
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
+	}
+
+	public MovingManager getMovingManager() {
+		return movingManager;
+	}
+
+	public void setMovingManager(MovingManager movingManager) {
+		this.movingManager = movingManager;
+	}
+
+	public MusicManager getMusicManager() {
+		return musicManager;
+	}
+
+	public void setMusicManager(MusicManager musicManager) {
+		this.musicManager = musicManager;
 	}
 
 }

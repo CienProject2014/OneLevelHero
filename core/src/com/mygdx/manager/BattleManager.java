@@ -1,7 +1,6 @@
 package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.mygdx.battle.Battle;
 import com.mygdx.currentState.MovingInfo;
@@ -9,7 +8,6 @@ import com.mygdx.currentState.PartyInfo;
 import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
 
-@Component
 public class BattleManager {
 	@Autowired
 	private MovingInfo movingInfo;
@@ -43,6 +41,22 @@ public class BattleManager {
 
 	public void nextTurn() {
 		// TODO
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
+	}
+
+	public PartyInfo getPartyInfo() {
+		return partyInfo;
+	}
+
+	public void setPartyInfo(PartyInfo partyInfo) {
+		this.partyInfo = partyInfo;
 	}
 
 }

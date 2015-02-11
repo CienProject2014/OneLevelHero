@@ -3,7 +3,6 @@ package com.mygdx.manager;
 import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.RewardInfo;
@@ -11,7 +10,6 @@ import com.mygdx.currentState.RewardQueueInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.state.Assets;
 
-@Component
 public class RewardManager {
 	@Autowired
 	private Assets assets;
@@ -80,5 +78,37 @@ public class RewardManager {
 			default:
 				return "보상 없음";
 		}
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public RewardQueueInfo getRewardQueueInfo() {
+		return rewardQueueInfo;
+	}
+
+	public void setRewardQueueInfo(RewardQueueInfo rewardQueueInfo) {
+		this.rewardQueueInfo = rewardQueueInfo;
+	}
+
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+
+	public PartyInfo getPartyInfo() {
+		return partyInfo;
+	}
+
+	public void setPartyInfo(PartyInfo partyInfo) {
+		this.partyInfo = partyInfo;
 	}
 }

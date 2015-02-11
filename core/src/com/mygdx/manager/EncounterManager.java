@@ -3,17 +3,16 @@ package com.mygdx.manager;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 
-@Component
 public class EncounterManager {
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
 	private MonsterManager monsterManager;
+
 	private Random random = new Random();
 
 	public void encountEnemy() {
@@ -25,6 +24,22 @@ public class EncounterManager {
 	// FIXME 전투 랜덤으로 발생, 기획에 맞게 바꿀 것
 	public boolean isBattleOccured() {
 		return false;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
+	public MonsterManager getMonsterManager() {
+		return monsterManager;
+	}
+
+	public void setMonsterManager(MonsterManager monsterManager) {
+		this.monsterManager = monsterManager;
 	}
 
 }

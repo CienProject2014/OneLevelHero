@@ -1,14 +1,12 @@
 package com.mygdx.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.state.Assets;
 import com.mygdx.state.StaticAssets;
 
-@Component
 public class EventScene {
 	@Autowired
 	private Assets assets;

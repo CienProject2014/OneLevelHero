@@ -1,10 +1,8 @@
 package com.mygdx.currentState;
 
-import org.springframework.stereotype.Component;
-
 import com.badlogic.gdx.audio.Music;
 
-@Component
+
 public class MusicInfo {
 	private Music music;
 

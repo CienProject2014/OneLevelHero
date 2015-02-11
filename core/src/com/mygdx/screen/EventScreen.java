@@ -3,7 +3,6 @@
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -21,7 +20,6 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.model.EventScene;
 
-@Component
 public class EventScreen implements Screen {
 	@Autowired
 	private StageFactory stageFactory;
@@ -129,6 +127,46 @@ public class EventScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public StageFactory getStageFactory() {
+		return stageFactory;
+	}
+
+	public void setStageFactory(StageFactory stageFactory) {
+		this.stageFactory = stageFactory;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+
+	public RewardManager getRewardManager() {
+		return rewardManager;
+	}
+
+	public void setRewardManager(RewardManager rewardManager) {
+		this.rewardManager = rewardManager;
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
 	}
 
 }

@@ -1,7 +1,6 @@
 ﻿package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -20,7 +19,6 @@ import com.mygdx.factory.ScreenFactory;
  * @author Velmont
  *
  */
-@Component
 public class CreditScreen implements Screen {
 	@Autowired
 	private ScreenFactory screenFactory;
@@ -120,6 +118,14 @@ public class CreditScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
 	}
 
 }

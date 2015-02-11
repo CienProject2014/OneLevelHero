@@ -1,14 +1,12 @@
 package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 
-@Component
 public class PlaceManager {
 	@Autowired
 	private PositionInfo positionInfo;
@@ -37,5 +35,21 @@ public class PlaceManager {
 				break;
 		}
 
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
 	}
 }
