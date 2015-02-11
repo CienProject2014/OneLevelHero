@@ -12,6 +12,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.LoadManager;
+import com.mygdx.manager.MonsterManager;
 import com.mygdx.state.StaticAssets;
 
 @Component
@@ -37,6 +38,7 @@ public class OneLevelTest extends Game {
 		context.getBean(ScreenFactory.class).setGame(this);
 		//가고자 하는 스크린의 메서드를 선택하자.
 		goVillageScreen();
+		//goEncounterScreen();
 	}
 
 	//메뉴스크린은 게임을 로드할 필요가 없다.
@@ -53,6 +55,12 @@ public class OneLevelTest extends Game {
 	private void goWorldMapScreen() {
 		context.getBean(LoadManager.class).loadNewGame();
 		context.getBean(ScreenFactory.class).show(ScreenEnum.WORLD_MAP);
+	}
+	
+	private void goEncounterScreen(){
+		context.getBean(LoadManager.class).loadNewGame();
+		context.getBean(MonsterManager.class).createMonster();
+		context.getBean(ScreenFactory.class).show(ScreenEnum.ENCOUNTER);
 	}
 
 	public boolean keyDown(int keycode) {

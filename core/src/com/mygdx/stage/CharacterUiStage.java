@@ -123,11 +123,11 @@ public class CharacterUiStage extends Stage {
 
 		// Screen - act 에서 실행시킨다.
 		for (int i = 0; i < battleMemberNumber; i++) {
-			int hpValue = battleMemberList.get(i).getStatus().getHealthPoint();
-			Gdx.app.log("이름?", hpbar[i].getName());
+			int hpValue = battleMemberList.get(i).getStatus().getHp();
+			//Gdx.app.log("이름?", hpbar[i].getName());
 
-			if (!hpbar[i].setValue(hpValue))
-				Gdx.app.log("GameUiStage", "체력 설정 실패");
+//			if (!hpbar[i].setValue(hpValue))
+//				Gdx.app.log("GameUiStage", "체력 설정 실패");
 
 			hpbar[i].act(delta);
 		}

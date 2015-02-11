@@ -24,7 +24,6 @@ public class EncounterManager {
 
 	// FIXME 전투 랜덤으로 발생, 기획에 맞게 바꿀 것
 	public boolean isBattleOccured() {
-		return false;
+		return true;
 	}
-
 }

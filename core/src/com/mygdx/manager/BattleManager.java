@@ -15,6 +15,7 @@ public class BattleManager {
 	private MovingInfo movingInfo;
 	@Autowired
 	private PartyInfo partyInfo;
+	
 	private Battle battle = new Battle();
 	private Monster monster;
 
@@ -22,21 +23,18 @@ public class BattleManager {
 		monster = movingInfo.getSelectedMonster();
 		// FIXME
 		battle.attack(unit, monster);
-
-		monsterAction();
 	}
 
 	public void userSkill(LivingUnit unit, String skill) {
 		// FIXME
 		battle.skillAttack(unit, skill);
-		monsterAction();
 	}
 
 	public void useItem(String item) {
 		// TODO
 	}
 
-	public void monsterAction() {
+	public void monsterAttack() {
 		// FIXME
 		battle.attack(monster, partyInfo.pickRandomHero());
 	}
