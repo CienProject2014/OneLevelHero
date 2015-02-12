@@ -1,1 +1,299 @@
-{"composite":{"layers":[{"layerName":"Default"}],"sComposites":[{"layerName":"Default","itemIdentifier":"attackButton","composite":{"layers":[{"layerName":"Default"},{"layerName":"pressed"},{"layerName":"normal"},{"layerName":"text"}],"sImages":[{"layerName":"normal","imageName":"buttonBackground","zIndex":1,"tint":[1,1,1,1]},{"layerName":"pressed","imageName":"buttonBackgroundwhite","x":-1.2207031E-4,"tint":[0.8,0,0,1]}],"sLabels":[{"size":42,"layerName":"text","zIndex":2,"y":3.4999542,"text":"Attack","style":"courbd","x":75.99991,"tint":[1,1,1,1]}]},"y":809.49994,"x":1620,"tint":[1,1,1,1]},{"layerName":"Default","itemIdentifier":"skillButton","zIndex":1,"composite":{"layers":[{"layerName":"Default"},{"layerName":"pressed"},{"layerName":"normal"},{"layerName":"text"}],"sImages":[{"layerName":"normal","imageName":"buttonBackground","zIndex":1,"tint":[1,1,1,1]},{"layerName":"pressed","imageName":"buttonBackgroundwhite","tint":[0.8,0,0,1]}],"sLabels":[{"size":42,"layerName":"text","zIndex":2,"y":4.500021,"text":"Skill","style":"courbd","x":89.00014,"tint":[1,1,1,1]}]},"y":725.5,"x":1620,"tint":[1,1,1,1]},{"layerName":"Default","itemIdentifier":"inventoryButton","zIndex":2,"composite":{"layers":[{"layerName":"Default"},{"layerName":"pressed"},{"layerName":"normal"},{"layerName":"text"}],"sImages":[{"layerName":"normal","imageName":"buttonBackgroundwhite","y":-4.386902E-5,"x":-1.0000305,"zIndex":1,"tint":[1,1,1,1]},{"layerName":"pressed","imageName":"buttonBackgroundwhite","y":-4.386902E-5,"x":-1.0000305,"tint":[0.4,0.4,1,1]}],"sLabels":[{"size":42,"layerName":"text","zIndex":2,"y":5.500002,"text":"Inventory","style":"courbd","x":41.000122,"tint":[0,0,0,1]}]},"y":634.5,"x":1620,"tint":[0,0,0,1]},{"layerName":"Default","itemIdentifier":"escapeButton","zIndex":3,"composite":{"layers":[{"layerName":"Default"},{"layerName":"pressed"},{"layerName":"normal"},{"layerName":"text"}],"sImages":[{"layerName":"normal","imageName":"buttonBackgroundwhite","zIndex":1,"tint":[1,1,1,1]},{"layerName":"pressed","imageName":"buttonBackgroundwhite","tint":[0.4,0.4,1,1]}],"sLabels":[{"size":42,"layerName":"text","zIndex":2,"y":6.49992,"text":"Escape","style":"courbd","x":80.9998,"tint":[0,0,0,1]}]},"y":540.49994,"x":1620,"tint":[0,0,0,1]}]},"ambientColor":[0.5,0.5,0.5,1],"physicsPropertiesVO":{},"sceneName":"battle_ui_scene"}
+{
+  "composite": {
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ],
+    "sComposites": [
+      {
+        "layerName": "Default",
+        "itemIdentifier": "attackButton",
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "text"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "normal",
+              "imageName": "buttonBackground",
+              "zIndex": 1,
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "layerName": "pressed",
+              "imageName": "buttonBackgroundwhite",
+              "x": -0.00012207031,
+              "tint": [
+                0.8,
+                0,
+                0,
+                1
+              ]
+            }
+          ],
+          "sLabels": [
+            {
+              "size": 42,
+              "layerName": "text",
+              "zIndex": 2,
+              "y": 3.4999542,
+              "text": "Attack",
+              "style": "courbd",
+              "x": 75.99991,
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 809.49994,
+        "x": 1620,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Default",
+        "itemIdentifier": "skillButton",
+        "zIndex": 1,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "text"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "normal",
+              "imageName": "buttonBackground",
+              "zIndex": 1,
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "layerName": "pressed",
+              "imageName": "buttonBackgroundwhite",
+              "tint": [
+                0.8,
+                0,
+                0,
+                1
+              ]
+            }
+          ],
+          "sLabels": [
+            {
+              "size": 42,
+              "layerName": "text",
+              "zIndex": 2,
+              "y": 4.500021,
+              "text": "Skill",
+              "style": "courbd",
+              "x": 89.00014,
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 725.5,
+        "x": 1620,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Default",
+        "itemIdentifier": "inventoryButton",
+        "zIndex": 2,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "text"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "normal",
+              "imageName": "buttonBackgroundwhite",
+              "y": -0.00004386902,
+              "x": -1.0000305,
+              "zIndex": 1,
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "layerName": "pressed",
+              "imageName": "buttonBackgroundwhite",
+              "y": -0.00004386902,
+              "x": -1.0000305,
+              "tint": [
+                0.4,
+                0.4,
+                1,
+                1
+              ]
+            }
+          ],
+          "sLabels": [
+            {
+              "size": 42,
+              "layerName": "text",
+              "zIndex": 2,
+              "y": 5.500002,
+              "text": "Inventory",
+              "style": "courbd",
+              "x": 41.000122,
+              "tint": [
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 634.5,
+        "x": 1620,
+        "tint": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "layerName": "Default",
+        "itemIdentifier": "escapeButton",
+        "zIndex": 3,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "text"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "normal",
+              "imageName": "buttonBackgroundwhite",
+              "zIndex": 1,
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "layerName": "pressed",
+              "imageName": "buttonBackgroundwhite",
+              "tint": [
+                0.4,
+                0.4,
+                1,
+                1
+              ]
+            }
+          ],
+          "sLabels": [
+            {
+              "size": 42,
+              "layerName": "text",
+              "zIndex": 2,
+              "y": 6.49992,
+              "text": "Escape",
+              "style": "courbd",
+              "x": 80.9998,
+              "tint": [
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 540.49994,
+        "x": 1620,
+        "tint": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ]
+  },
+  "ambientColor": [
+    0.5,
+    0.5,
+    0.5,
+    1
+  ],
+  "physicsPropertiesVO": {},
+  "sceneName": "battle_ui_scene"
+}

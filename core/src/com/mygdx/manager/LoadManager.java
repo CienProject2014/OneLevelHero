@@ -56,7 +56,7 @@ public class LoadManager {
 	private void setHero() {
 		// 추후 JSON에서 불러오도록 바꿀 것
 		setHero(assets.heroMap.get("yongsa"));
-		this.hero.getStatus().setSpeed(8); // FIXME
+		this.hero.getStatus().setSpd(8); // FIXME
 	}
 
 	// 해당 Hero들을 Party구성원에 포함시킨다

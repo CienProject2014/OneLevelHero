@@ -1,79 +1,75 @@
 package com.mygdx.model;
 
 public class Status {
-	private int attack;
-	private int defense;
-	private int critical;
-	private int evade;
-	private int accuracy;
-	private int healthPoint;
-	private int stamina;
-	private int speed;
-	private String job;
-	private String debuff;
-
-	public int getAttack() {
-		return attack;
-	}
-
-	public void setAttack(int attack) {
-		this.attack = attack;
-	}
-
-	public int getDefense() {
-		return defense;
-	}
-
-	public void setDefense(int defense) {
-		this.defense = defense;
-	}
-
-	public int getCritical() {
-		return critical;
-	}
-
-	public void setCritical(int critical) {
-		this.critical = critical;
-	}
-
-	public int getEvade() {
-		return evade;
-	}
-
-	public void setEvade(int evade) {
-		this.evade = evade;
-	}
-
-	public int getAccuracy() {
-		return accuracy;
-	}
-
-	public void setAccuracy(int accuracy) {
-		this.accuracy = accuracy;
-	}
-
-	public int getHealthPoint() {
-		return healthPoint;
-	}
-
-	public void setHealthPoint(int healthPoint) {
-		this.healthPoint = healthPoint;
-	}
-
-	public int getStamina() {
-		return stamina;
-	}
-
-	public void setStamina(int stamina) {
-		this.stamina = stamina;
-	}
+	private int atk;	// attack
+	private int matk;	// magic attack
+	private int def;	// defense
+	private int mdef;	// magic defense
+	private int hp;		// health point
+	private int stm;	// stamina
+	private int spd;	// speed
+	private String job;	// job
+	// minimum 0 ~ maximum 80
+	private int fr;	// fire resistance
+	private int wr; // water 
+	private int lr; // lightning
 	
-	public int getSpeed() {
-		return speed;
+	private int[] stack;
+
+	public int getAtk() {
+		return atk;
 	}
 
-	public void setSpeed(int speed) {
-		this.speed = speed;
+	public void setAtk(int atk) {
+		this.atk = atk;
+	}
+
+	public int getMatk() {
+		return matk;
+	}
+
+	public void setMatk(int matk) {
+		this.matk = matk;
+	}
+
+	public int getDef() {
+		return def;
+	}
+
+	public void setDef(int def) {
+		this.def = def;
+	}
+
+	public int getMdef() {
+		return mdef;
+	}
+
+	public void setMdef(int mdef) {
+		this.mdef = mdef;
+	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	public int getStm() {
+		return stm;
+	}
+
+	public void setStm(int stm) {
+		this.stm = stm;
+	}
+
+	public int getSpd() {
+		return spd;
+	}
+
+	public void setSpd(int spd) {
+		this.spd = spd;
 	}
 
 	public String getJob() {
@@ -84,18 +80,28 @@ public class Status {
 		this.job = job;
 	}
 
-	public String getDebuff() {
-		return debuff;
+	public int getFr() {
+		return fr;
 	}
 
-	public void setDebuff(String debuff) {
-		this.debuff = debuff;
+	public void setFr(int fr) {
+		this.fr = fr;
 	}
 
-	public String toString() {
-		return "공격력 : " + getAttack() + " ,방어력 : " + getDefense() + ", 치명타 : "
-				+ getCritical() + ", 회피율 : " + getCritical() + ", 명중률 "
-				+ ", 체력 : " + getHealthPoint() + ", 스태미나 : " + getStamina()
-				+ ", 직업 : " + getJob();
+	public int getWr() {
+		return wr;
 	}
+
+	public void setWr(int wr) {
+		this.wr = wr;
+	}
+
+	public int getLr() {
+		return lr;
+	}
+
+	public void setLr(int lr) {
+		this.lr = lr;
+	}
+	
 }

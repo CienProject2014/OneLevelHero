@@ -23,6 +23,9 @@
   "yongsa_207": {
     "filePath": "texture/character/yongsa_207.png"
   },  
+  "yongsa_301":{
+  	"filePath" : "texture/character/yongsa_301.png"
+  },
   "yongsa_401":{
   	"filePath" : "texture/character/yongsa_401.png"
   },
@@ -34,6 +37,9 @@
   },
   "parath_203": {
     "filePath": "texture/character/parath_203.png"
+  },
+  "parath_301":{
+  	"filePath" : "texture/character/parath_301.png"
   },
   "parath_401":{
   	"filePath" : "texture/character/parath_401.png"

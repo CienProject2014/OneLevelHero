@@ -52,8 +52,8 @@ public class StageFactory {
 		}
 	}
 
-	public Stage makeBattleStage(PlatformResourceManager rm) {
-		return context.getBean(BattleStage.class).makeStage(rm);
+	public Stage makeBattleStage() {
+		return context.getBean(BattleStage.class).makeStage();
 	}
 
 	public Stage makeEventStage(EventScene eventScene) {

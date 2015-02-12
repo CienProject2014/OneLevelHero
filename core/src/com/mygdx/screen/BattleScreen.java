@@ -29,16 +29,15 @@ public class BattleScreen implements Screen {
 							// 예를 들어, 움직이는 몬스터
 		monsterStage.draw();
 
-		battleStage.act(); // 버튼 애니메이션을 위함
-		battleStage.draw();
-
 		// 유저의 스테이터스를 실시간으로 업데이트 한다.
 		characterUiStage.act(delta);
 		characterUiStage.draw();
 
 		gameUiStage.act();
 		gameUiStage.draw();
-
+		
+		battleStage.act(); // 버튼 애니메이션을 위함
+		battleStage.draw();
 	}
 
 	@Override
@@ -51,9 +50,7 @@ public class BattleScreen implements Screen {
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
 		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
-		PlatformResourceManager rm = new PlatformResourceManager();
-		rm.initPlatformerResources();
-		battleStage = stageFactory.makeBattleStage(rm);
+		battleStage = stageFactory.makeBattleStage();
 
 		setInputProcessor();
 	}

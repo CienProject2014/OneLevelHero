@@ -8,6 +8,8 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -21,6 +23,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.PlatformResourceManager;
+import com.mygdx.model.Hero;
 import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
 import com.mygdx.state.Assets;
@@ -39,7 +42,6 @@ public class BattleStage extends Overlap2DStage {
 
 	// Table
 	Table uiTable; // 화면 전체 테이블
-
 	Table orderTable; // 순서를 나타내는 테이블
 
 	// Value
@@ -53,29 +55,66 @@ public class BattleStage extends Overlap2DStage {
 	private SimpleButtonScript escapeButton;
 
 	// Battle controller
+	@Autowired
 	private BattleManager battleManager;
 	private Monster monster;
 
 	// Unit array
 	private ArrayList<LivingUnit> units;
 	private Queue<LivingUnit> orderedUnits;
+	
+	// Orthographic Camera
+	private OrthographicCamera cam;
+	
+	// Trigger
+	private boolean monsterTrigger;
 
 	public BattleStage() {
 		Gdx.app.debug("BattleStage", "Constructor() call");
 	}
+	
+	@Override
+	public void act(float delta) {
+		if (monsterTrigger){
+			LivingUnit actor = getCurrentActor();
+			if (!(actor instanceof Monster)){
+				// 일어날 수 없는 시나리오
+				// 몬스터의 턴이 아니라면 monsterTrigger가 true여서는 안된다.
+				return;
+			}
+			battleManager.monsterAttack();
+			updateTable();
+			
+			monsterTrigger = false;
+		}
+		
+		super.act(delta);
+	}
 
-	public Stage makeStage(PlatformResourceManager rm) {
+	public LivingUnit getCurrentActor() {
+		LivingUnit unit = orderedUnits.poll();
+		orderedUnits.add(unit);
+		return unit;
+	}
+	
+	public LivingUnit getNextActor() {
+		LivingUnit unit = orderedUnits.peek();
+		return unit;
+	}
+
+	public Stage makeStage() {
+		cam = new OrthographicCamera(1920f, 1080f);
+		cam.position.set(1920/ 2.0f, 1080/2.0f, 0);
+		getViewport().setCamera(cam);
+		
 		Gdx.app.debug("BattleStage", "makeStage(Rm rm)");
 		maximumWidth = assets.windowWidth * 0.0625f;
 		maximumHeight = assets.windowHeight * 0.125f;
-		StretchViewport viewport = new StretchViewport(rm.stageWidth,
-				rm.currentResolution.height);
-		this.setViewport(viewport);
 		monster = movingInfo.getSelectedMonster();
+
 		// Overlap2D로 만든 신(Scene)
-		initSceneLoader(rm);
-		sceneLoader.setResolution(rm.currentResolution.name);
-		sceneLoader.loadScene("BattleUI");
+		initSceneLoader();
+		sceneLoader.loadScene("battle_ui_scene");
 		addActor(sceneLoader.getRoot());
 		setButton();
 
@@ -83,14 +122,7 @@ public class BattleStage extends Overlap2DStage {
 		makeOrderedList();
 		makeTable();
 
-		addActor(uiTable);
 		return this;
-	}
-
-	@Override
-	public void act(float delta) {
-		super.act(delta);
-		//makeTable();
 	}
 
 	public void makeOrderedList() {
@@ -107,29 +139,21 @@ public class BattleStage extends Overlap2DStage {
 		}
 	}
 
-	public LivingUnit getCurrentActor() {
-		LivingUnit unit = orderedUnits.poll();
-		orderedUnits.add(unit);
-		return unit;
-	}
-
 	public void makeTable() {
 		uiTable = new Table();
 		uiTable.align(Align.left);
-
+		uiTable.setWidth(maximumWidth);
+		uiTable.setY(maximumHeight);
+		
 		orderTable = new Table();
 
-		for (LivingUnit unit : orderedUnits) {
-			Gdx.app.log("BattleStage", unit.getName());
-			orderTable.add(new Image(unit.getBattleTexture()))
-					.width(maximumWidth).height(maximumHeight);
-			orderTable.row();
-		}
+		updateTable();
 
-		uiTable.add(orderTable);
 		uiTable.setFillParent(true);
+		
+		addActor(uiTable);
 	}
-
+	
 	public void updateTable() {
 		uiTable.clear();
 		orderTable.clear();
@@ -143,7 +167,7 @@ public class BattleStage extends Overlap2DStage {
 
 		uiTable.add(orderTable);
 	}
-
+	
 	public void setButton() {
 		attackButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
 				.getCompositeById("attackButton"));
@@ -161,30 +185,27 @@ public class BattleStage extends Overlap2DStage {
 		attackButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "어택!");
-				// 한 가지 시나리오를 예로 생각해보자.
-				// 공격 버튼을 눌러 공격을 하면, 다음 턴엔 몬스터가 날 때릴 것이다.
-				// 그렇다면 공격버튼이 눌린 것을 알아채고,
-				// 몬스터의 턴을 실행해줄 클래스가 하나 필요하다.
-				// 바로 BattleController가 해주면 된다.
-				// 거기서 GameUiStage의 act도 실행해주면 된다.
-				partyInfo
-						.getBattleMemberList()
-						.get(0)
-						.getStatus()
-						.setHealthPoint(
-								partyInfo.getBattleMemberList().get(0)
-										.getStatus().getHealthPoint() - 10);
-
-				battleManager.userAttack(getCurrentActor());
+				
+				LivingUnit actor = getCurrentActor();
+				
+				if (!(actor instanceof Hero)){
+					// 일어날 수 없는 시나리오
+					// 만약 몬스터의 턴이라면 이 이벤트가 호출되지 않아야 한다.
+					return;
+				}
+				
+				battleManager.userAttack(actor);
 				updateTable();
+				
+				if (getNextActor() instanceof Monster){
+					monsterTrigger = true;
+				}
 			}
 		});
 
 		skillButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "스킬!");
-				battleManager.userSkill(getCurrentActor(), "짱쎈공격");
-				updateTable();
 			}
 		});
 
