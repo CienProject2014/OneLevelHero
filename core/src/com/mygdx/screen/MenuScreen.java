@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.MusicManager;
+import com.mygdx.manager.MusicManager.MusicCondition;
 import com.mygdx.state.Assets;
 
 public class MenuScreen implements Screen {
@@ -38,7 +39,7 @@ public class MenuScreen implements Screen {
 	@Override
 	public void show() {
 		musicManager.setMusicAndPlay(assets.musicMap.get("opening"),
-				assets.musicVolume);
+				assets.musicVolume, MusicCondition.IF_IS_NOT_PLAYING);
 		stage = stageFactory.makeStage(StageEnum.MENU);
 
 		Gdx.input.setInputProcessor(stage);

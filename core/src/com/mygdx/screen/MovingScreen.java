@@ -105,6 +105,7 @@ public class MovingScreen implements Screen {
 		stage.addActor(background);
 		stage.addActor(table);
 
+		musicManager.setMovingMusicAndPlay();
 	}
 
 	public static void setController() {

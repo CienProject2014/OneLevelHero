@@ -9,11 +9,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.StageFactory;
-import com.mygdx.manager.PlatformResourceManager;
+import com.mygdx.manager.MusicManager;
 
 public class BattleScreen implements Screen {
 	@Autowired
 	private StageFactory stageFactory;
+	@Autowired
+	private MusicManager musicManager;
 	private Stage gameUiStage, characterUiStage, monsterStage, battleStage;
 
 	public BattleScreen() {
@@ -35,7 +37,7 @@ public class BattleScreen implements Screen {
 
 		gameUiStage.act();
 		gameUiStage.draw();
-		
+
 		battleStage.act(); // 버튼 애니메이션을 위함
 		battleStage.draw();
 	}
@@ -53,6 +55,7 @@ public class BattleScreen implements Screen {
 		battleStage = stageFactory.makeBattleStage();
 
 		setInputProcessor();
+		musicManager.setBattleMusicAndPlay();
 	}
 
 	private void setInputProcessor() {
@@ -92,4 +95,13 @@ public class BattleScreen implements Screen {
 	public void setStageFactory(StageFactory stageFactory) {
 		this.stageFactory = stageFactory;
 	}
+
+	public MusicManager getMusicManager() {
+		return musicManager;
+	}
+
+	public void setMusicManager(MusicManager musicManager) {
+		this.musicManager = musicManager;
+	}
+
 }

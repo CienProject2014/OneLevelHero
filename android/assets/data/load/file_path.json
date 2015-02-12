@@ -17,7 +17,13 @@
   "music_file_path":{
   	"filePath":"data/load/music_file_path.json"
   },
-  "village_music_list":{
-  	"filePath":"data/sound/village_music_list.json"
+  "world_node_music_list":{
+  	"filePath":"data/sound/world_node_music_list.json"
+  },
+  "battle_music_list":{
+  	"filePath":"data/sound/battle_music_list.json"
+  },
+  "moving_music_list":{
+  	"filePath":"data/sound/moving_music_list.json"
   }
 }

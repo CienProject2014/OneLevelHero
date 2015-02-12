@@ -4,6 +4,7 @@ import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -59,7 +60,13 @@ public class VillageStage extends Overlap2DStage {
 		camera = getViewport().getCamera();
 
 		initSceneLoader();
-		villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
+		Gdx.app.log("VillageStage",
+				String.valueOf(positionInfo.getCurrentNode()));
+
+		//임시로 블랙우드 정보를 넣는다.
+		//villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
+		villageInfo = assets.villageMap.get("Blackwood");
+
 		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
 		//sceneLoader.loadScene(villageInfo.getSceneName());
 		sceneLoader.loadScene("blackwood_scene");

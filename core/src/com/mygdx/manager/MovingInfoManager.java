@@ -31,6 +31,8 @@ public class MovingInfoManager {
 				.get(destinationNode).getroadLength());
 		movingInfo.setRoadMonsterList(worldNodeInfo.getConnection()
 				.get(destinationNode).getRoadMonster());
+		movingInfo.setArrowName(worldNodeInfo.getConnection()
+				.get(destinationNode).getArrowName());
 	}
 
 	public Assets getAssets() {
