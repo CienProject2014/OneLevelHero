@@ -4,5 +4,17 @@
 	},
 	"kingkai's_planet":{
 		"filePath" : "sound/kingkai's_planet.mp3"
+	},
+	"bigup":{
+		"filePath" : "sound/bigup.mp3"
+	},
+	"densetsu_fight":{
+		"filePath" : "sound/densetsu_fight.mp3"
+	},
+	"grandpapa_eleven":{
+		"filePath" : "sound/grandpapa_eleven.mp3"
+	},
+	"old_battle":{
+		"filePath" : "sound/old_battle.mp3"
 	}
 }

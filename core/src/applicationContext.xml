@@ -78,6 +78,7 @@
 		<property name="musicInfo" ref="musicInfo"/>
 		<property name="assets" ref="assets"/>
 		<property name="positionInfo" ref="positionInfo"/>
+		<property name="movingInfo" ref="movingInfo"/>
 	</bean>
 	<bean id="npcManager" class="com.mygdx.manager.NpcManager">
 		<property name="assets" ref="assets"/>
@@ -104,6 +105,7 @@
 	
 	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen" scope="prototype" >
 		<property name="stageFactory" ref="stageFactory"/>
+		<property name="musicManager" ref="musicManager"/>
 	</bean>
 	<bean id="bgmScreen" class="com.mygdx.screen.BGMScreen" scope="prototype" >
 		<property name="assets" ref="assets"/>

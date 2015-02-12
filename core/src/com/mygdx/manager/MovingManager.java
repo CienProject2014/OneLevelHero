@@ -26,6 +26,7 @@ public class MovingManager {
 			minusLeftRoadLength();
 			movingRoad();
 		} else {
+			// 목적지 노드에 도착해서 현재 위치로 설정함
 			positionInfo.setCurrentNode(movingInfo.getDestinationNode());
 			goIntoCurrentNode();
 		}
@@ -36,8 +37,8 @@ public class MovingManager {
 			plusLeftRoadLength();
 			movingRoad();
 		} else {
-			// 목적지 노드에 도착해서 현재 위치로 설정함
-			positionInfo.setCurrentNode(movingInfo.getDestinationNode());
+			// 원래 노드로 다시 돌아옴
+			positionInfo.setCurrentNode(movingInfo.getStartNode());
 			goIntoCurrentNode();
 		}
 	}

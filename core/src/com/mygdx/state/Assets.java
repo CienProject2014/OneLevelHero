@@ -56,12 +56,14 @@ public class Assets {
 	public Map<String, String> jsonStringMap = new HashMap<String, String>();
 	public Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<String, TextureRegionDrawable>();
 	public Map<String, Music> musicMap = new HashMap<String, Music>();
+	public Map<String, Music> worldNodeMusicMap = new HashMap<String, Music>();;
+	public Map<String, Music> battleMusicMap = new HashMap<String, Music>();
+	public Map<String, Music> movingMusicMap = new HashMap<String, Music>();
 
 	public Map<String, Hero> heroMap;
 	public Map<String, NPC> npcMap;
 	public Map<String, Monster> monsterMap;
 	public Map<String, Village> villageMap;
-	public Map<String, Music> villageMusicMap;
 	public Map<String, WorldNode> worldNodeInfoMap;
 
 	public Assets() {
@@ -195,11 +197,34 @@ public class Assets {
 			musicMap.put(entry.getKey(), entry.getValue().getFile());
 		}
 
-		//Village MusicList
-		String villageMusicJsonString = filePathMap.get(
-				JsonEnum.VILLAGE_MUSIC_LIST.toString()).getFile();
-		villageMusicMap = new Json().fromJson(HashMap.class,
-				villageMusicJsonString);
+		//WorldNode MusicList
+		String worldNodeMusicJsonString = filePathMap.get(
+				JsonEnum.WORLD_NODE_MUSIC_LIST.toString()).getFile();
+		Map<String, String> worldNodeMusicStringMap = new Json().fromJson(
+				HashMap.class, worldNodeMusicJsonString);
+		for (Entry<String, String> entry : worldNodeMusicStringMap.entrySet()) {
+			worldNodeMusicMap.put(entry.getKey(),
+					musicMap.get(entry.getValue()));
+		}
+
+		//Battle MusicList
+		String battleMusicJsonString = filePathMap.get(
+				JsonEnum.BATTLE_MUSIC_LIST.toString()).getFile();
+		Map<String, String> battleMusicStringMap = new Json().fromJson(
+				HashMap.class, battleMusicJsonString);
+		for (Entry<String, String> entry : battleMusicStringMap.entrySet()) {
+			battleMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
+		}
+
+		//Moving MusicList
+		String movingMusicJsonString = filePathMap.get(
+				JsonEnum.MOVING_MUSIC_LIST.toString()).getFile();
+		Map<String, String> movingMusicStringMap = new Json().fromJson(
+				HashMap.class, movingMusicJsonString);
+		for (Entry<String, String> entry : movingMusicStringMap.entrySet()) {
+			movingMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
+		}
+
 	}
 
 	// 임시용, 추후 제거 예정

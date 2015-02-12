@@ -77,8 +77,6 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void show() {
-		musicManager.setMusicAndPlay(assets.musicMap.get("kingkai's_planet"),
-				assets.musicVolume);
 		villageStage = stageFactory.makeStage(StageEnum.VILLAGE);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 
@@ -91,6 +89,7 @@ public class VillageScreen implements Screen {
 		multiplexer.addProcessor(1, villageStage);
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
+		musicManager.setWorldNodeMusicAndPlay();
 	}
 
 	@Override
