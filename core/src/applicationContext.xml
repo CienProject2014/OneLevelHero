@@ -102,88 +102,88 @@
 		<property name="assets" ref="assets"/>
 	</bean>
 	
-	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen">
+	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen" scope="prototype" >
 		<property name="stageFactory" ref="stageFactory"/>
 	</bean>
-	<bean id="bgmScreen" class="com.mygdx.screen.BGMScreen">
+	<bean id="bgmScreen" class="com.mygdx.screen.BGMScreen" scope="prototype" >
 		<property name="assets" ref="assets"/>
 		<property name="screenFactory" ref="screenFactory"/>
 	</bean>
-	<bean id="bonusPointScreen" class="com.mygdx.screen.BonusPointScreen"/>
-	<bean id="buildingScreen" class="com.mygdx.screen.BuildingScreen">
+	<bean id="bonusPointScreen" class="com.mygdx.screen.BonusPointScreen" scope="prototype" />
+	<bean id="buildingScreen" class="com.mygdx.screen.BuildingScreen" scope="prototype" >
 		<property name="stageFactory" ref="stageFactory"/>
 	</bean>
-	<bean id="cgScreen" class="com.mygdx.screen.CGScreen">
+	<bean id="cgScreen" class="com.mygdx.screen.CGScreen" scope="prototype" >
 		<property name="assets" ref="assets"/>
 		<property name="screenFactory" ref="screenFactory"/>
 	</bean>
-	<bean id="collectionScreen" class="com.mygdx.screen.CollectionScreen">
+	<bean id="collectionScreen" class="com.mygdx.screen.CollectionScreen" scope="prototype" >
 		<property name="assets" ref="assets"/>
 		<property name="screenFactory" ref="screenFactory"/>
 	</bean>
-	<bean id="creditScreen" class="com.mygdx.screen.CreditScreen">
+	<bean id="creditScreen" class="com.mygdx.screen.CreditScreen" scope="prototype" >
 		<property name="screenFactory" ref="screenFactory"/>
 	</bean>
-	<bean id="encounterScreen" class="com.mygdx.screen.EncounterScreen">
+	<bean id="encounterScreen" class="com.mygdx.screen.EncounterScreen" scope="prototype" >
 		<property name="stageFactory" ref="stageFactory"/>
 	</bean>
-	<bean id="endingScreen" class="com.mygdx.screen.EndingScreen">
+	<bean id="endingScreen" class="com.mygdx.screen.EndingScreen" scope="prototype" >
 		<property name="assets" ref="assets"/>
 		<property name="screenFactory" ref="screenFactory"/>
 	</bean>
-	<bean id="eventScreen" class="com.mygdx.screen.EventScreen">
+	<bean id="eventScreen" class="com.mygdx.screen.EventScreen" scope="prototype" >
 		<property name="stageFactory" ref="stageFactory"/>
 		<property name="screenFactory" ref="screenFactory"/>
 		<property name="eventManager" ref="eventManager"/>
 		<property name="rewardManager" ref="rewardManager"/>
 		<property name="positionInfo" ref="positionInfo"/>
 	</bean>
-	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen">
+	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen" scope="prototype" > 
 		<property name="screenFactory" ref="screenFactory"/>
 		<property name="stageFactory" ref="stageFactory"/>
 		<property name="eventManager" ref="eventManager"></property>
 		<property name="eventInfo" ref="eventInfo"/>
 		<property name="positionInfo" ref="positionInfo"></property>
 	</bean>
-	<bean id="loadScreen" class="com.mygdx.screen.LoadScreen">
+	<bean id="loadScreen" class="com.mygdx.screen.LoadScreen" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="screenFactory" ref="screenFactory"/>
 		<property name="currentState" ref="currentState"></property>
 		<property name="eventManager" ref="eventManager"></property>
 		<property name="loadManager" ref="loadManager"></property>
 	</bean>
-	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen">
+	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="musicManager" ref="musicManager"></property>
 	</bean>
-	<bean id="movingScreen" class="com.mygdx.screen.MovingScreen">
+	<bean id="movingScreen" class="com.mygdx.screen.MovingScreen" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="movingInfo" ref="movingInfo"></property>
 		<property name="movingManager" ref="movingManager"></property>
 		<property name="musicManager" ref="musicManager"></property>
 	</bean>
-	<bean id="optionScreen" class="com.mygdx.screen.OptionScreen">
+	<bean id="optionScreen" class="com.mygdx.screen.OptionScreen" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
 	</bean>
-	<bean id="saveScreen" class="com.mygdx.screen.SaveScreen"/>
-	<bean id="statusScreen" class="com.mygdx.screen.StatusScreen"/>
-	<bean id="villageScreen" class="com.mygdx.screen.VillageScreen">
+	<bean id="saveScreen" class="com.mygdx.screen.SaveScreen" scope="prototype" />
+	<bean id="statusScreen" class="com.mygdx.screen.StatusScreen" scope="prototype" />
+	<bean id="villageScreen" class="com.mygdx.screen.VillageScreen" scope="prototype" >
 		<property name="stageFactory" ref="stageFactory"></property>
 		<property name="musicManager" ref="musicManager"/>
 		<property name="assets" ref="assets"></property>
 	</bean>
-	<bean id="worldMapScreen" class="com.mygdx.screen.WorldMapScreen">
+	<bean id="worldMapScreen" class="com.mygdx.screen.WorldMapScreen" scope="prototype" >
 		<property name="stageFactory" ref="stageFactory"></property>
 	</bean>
 	
-	<bean id="battleStage" class="com.mygdx.stage.BattleStage">
+	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype" >
 		<property name="assets" ref="assets"/>
-		<property name="screenFactory" ref="screenFactory"></property>]
+		<property name="screenFactory" ref="screenFactory"></property>
 		<property name="movingInfo" ref="movingInfo"></property>
 		<property name="partyInfo" ref="partyInfo"></property>
 	</bean>
-	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage">
+	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage" scope="prototype" >
 		<property name="assets" ref="assets"/>
 		<property name="positionInfo" ref="positionInfo"></property>
 		<property name="npcManager" ref="npcManager"></property>
@@ -191,50 +191,50 @@
 		<property name="screenFactory" ref="screenFactory"></property>
 		<property name="placeManager" ref="placeManager"></property>
 	</bean>
-	<bean id="characterUiStage" class="com.mygdx.stage.CharacterUiStage">
+	<bean id="characterUiStage" class="com.mygdx.stage.CharacterUiStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="partyInfo" ref="partyInfo"></property>
 	</bean>
-	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage">
+	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
 	</bean>
-	<bean id="eventStage" class="com.mygdx.stage.EventStage">
+	<bean id="eventStage" class="com.mygdx.stage.EventStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="eventManager" ref="eventManager"></property>
 		<property name="eventInfo" ref="eventInfo"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
 	</bean>
-	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage">
+	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
 		<property name="partyInfo" ref="partyInfo"></property>
 		<property name="rewardManager" ref="rewardManager"></property>
 	</bean>
-	<bean id="menuStage" class="com.mygdx.stage.MenuStage">
+	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
 	</bean>
-	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage">
+	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage" scope="prototype" >
 		<property name="movingInfo" ref="movingInfo"></property>
 	</bean>
-	<bean id="selectButtonStage" class="com.mygdx.stage.SelectButtonStage">
+	<bean id="selectButtonStage" class="com.mygdx.stage.SelectButtonStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
 		<property name="eventManager" ref="eventManager"></property>
 		<propery name="eventInfo" ref="eventInfo"></propery>
 		<property name="placeManager" ref="placeManager"></property>
 	</bean>
-	<bean id="statusStage" class="com.mygdx.stage.StatusStage">
+	<bean id="statusStage" class="com.mygdx.stage.StatusStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 	</bean>
-	<bean id="villageStage" class="com.mygdx.stage.VillageStage">
+	<bean id="villageStage" class="com.mygdx.stage.VillageStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
 		<property name="eventManager" ref="eventManager"></property>
 		<property name="positionInfo" ref="positionInfo"></property>
 	</bean>
-	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage">
+	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="worldMapManager" ref="worldMapManager"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
