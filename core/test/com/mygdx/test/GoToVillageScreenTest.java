@@ -1,5 +1,5 @@
 package com.mygdx.test;
-
+/*
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
@@ -29,3 +29,4 @@ public class GoToVillageScreenTest {
 	}
 
 }
+*/

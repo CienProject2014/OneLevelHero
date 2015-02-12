@@ -2,11 +2,9 @@ package com.mygdx.currentState;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import com.mygdx.model.Monster;
 
-@Component
+
 public class MovingInfo {
 	private String startNode; //무빙 시작 노드		
 	private String destinationNode; //무빙 목표 노드		

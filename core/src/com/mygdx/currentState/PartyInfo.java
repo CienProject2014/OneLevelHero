@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.springframework.stereotype.Component;
-
 import com.badlogic.gdx.Gdx;
 import com.mygdx.model.Hero;
 
-@Component
 public class PartyInfo {
 	private List<Hero> partyList = new ArrayList<Hero>();
 	private List<Hero> battleMemberList = new ArrayList<Hero>();

@@ -1,8 +1,6 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -21,9 +19,6 @@ import com.mygdx.state.Assets;
  * @author Velmont
  * 
  */
-
-@Scope(value = "prototype")
-@Component
 public class VillageScreen implements Screen {
 	private String villageName;
 	@Autowired
@@ -120,4 +115,37 @@ public class VillageScreen implements Screen {
 	@Override
 	public void dispose() {
 	}
+
+	public StageFactory getStageFactory() {
+		return stageFactory;
+	}
+
+	public void setStageFactory(StageFactory stageFactory) {
+		this.stageFactory = stageFactory;
+	}
+
+	public MusicManager getMusicManager() {
+		return musicManager;
+	}
+
+	public void setMusicManager(MusicManager musicManager) {
+		this.musicManager = musicManager;
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public Stage getVillageStage() {
+		return villageStage;
+	}
+
+	public void setVillageStage(Stage villageStage) {
+		this.villageStage = villageStage;
+	}
+
 }

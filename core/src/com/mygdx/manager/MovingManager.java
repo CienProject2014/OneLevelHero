@@ -1,7 +1,6 @@
 package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
@@ -10,7 +9,6 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
 
-@Component
 public class MovingManager {
 	@Autowired
 	private Assets assets;
@@ -84,5 +82,45 @@ public class MovingManager {
 	private boolean isRoadFull() {
 		return (movingInfo.getRoadLength() <= movingInfo.getLeftRoadLength()) ? true
 				: false;
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
+	}
+
+	public EncounterManager getEncounterManager() {
+		return encounterManager;
+	}
+
+	public void setEncounterManager(EncounterManager encounterManager) {
+		this.encounterManager = encounterManager;
 	}
 }

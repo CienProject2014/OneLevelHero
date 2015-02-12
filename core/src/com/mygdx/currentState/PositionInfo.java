@@ -1,10 +1,8 @@
 package com.mygdx.currentState;
 
-import org.springframework.stereotype.Component;
-
 import com.mygdx.enums.PlaceEnum;
 
-@Component
+
 public class PositionInfo {
 	private PlaceEnum currentPlace; //마을인지, 갈림길인지, 던전인지, 건물안인지
 	private String currentNode; //현재 마을/던전/교차로 이름	

@@ -2,8 +2,6 @@ package com.mygdx.game;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
@@ -15,7 +13,7 @@ import com.mygdx.manager.LoadManager;
 import com.mygdx.manager.MonsterManager;
 import com.mygdx.state.StaticAssets;
 
-@Component
+/*
 public class OneLevelTest extends Game {
 	@Autowired
 	private ScreenFactory screenFactory;
@@ -73,3 +71,4 @@ public class OneLevelTest extends Game {
 		return false;
 	}
 }
+*/

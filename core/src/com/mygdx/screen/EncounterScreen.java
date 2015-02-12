@@ -1,7 +1,6 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -11,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.StageFactory;
 
-@Component
 public class EncounterScreen implements Screen {
 	@Autowired
 	private StageFactory stageFactory;
@@ -73,6 +71,14 @@ public class EncounterScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public StageFactory getStageFactory() {
+		return stageFactory;
+	}
+
+	public void setStageFactory(StageFactory stageFactory) {
+		this.stageFactory = stageFactory;
 	}
 
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.MovingInfo;
@@ -15,10 +14,10 @@ import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.model.Hero;
 import com.mygdx.state.Assets;
 
-@Component
 public class LoadManager {
 	@Autowired
 	private Assets assets;
+
 	@Autowired
 	private PositionInfo positionInfo;
 	@Autowired
@@ -71,5 +70,37 @@ public class LoadManager {
 
 	public void setHero(Hero hero) {
 		this.hero = hero;
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
+	}
+
+	public PartyInfo getPartyInfo() {
+		return partyInfo;
+	}
+
+	public void setPartyInfo(PartyInfo partyInfo) {
+		this.partyInfo = partyInfo;
 	}
 }

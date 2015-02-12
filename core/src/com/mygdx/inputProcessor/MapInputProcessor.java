@@ -12,7 +12,7 @@ public class MapInputProcessor implements InputProcessor {
 	private int y_bottom_limit = (int) (StaticAssets.windowHeight / 2);
 	private int y_top_limit = (int) (1688 - (StaticAssets.windowHeight / 2));
 	private Stage stage;
-	Vector3 last_touch_down = new Vector3();
+	private Vector3 last_touch_down = new Vector3();
 
 	public MapInputProcessor(Stage stage) {
 		this.stage = stage;

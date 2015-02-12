@@ -1,7 +1,6 @@
 package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -12,7 +11,6 @@ import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.state.Assets;
 
-@Component
 public class MenuScreen implements Screen {
 	@Autowired
 	private Assets assets;
@@ -71,4 +69,29 @@ public class MenuScreen implements Screen {
 		// TODO Auto-generated method stub
 
 	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public MusicManager getMusicManager() {
+		return musicManager;
+	}
+
+	public void setMusicManager(MusicManager musicManager) {
+		this.musicManager = musicManager;
+	}
+
+	public StageFactory getStageFactory() {
+		return stageFactory;
+	}
+
+	public void setStageFactory(StageFactory stageFactory) {
+		this.stageFactory = stageFactory;
+	}
+
 }

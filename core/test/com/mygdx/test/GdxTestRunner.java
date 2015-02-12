@@ -1,5 +1,5 @@
 package com.mygdx.test;
-
+/*
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,7 +67,7 @@ public class GdxTestRunner extends BlockJUnit4ClassRunner implements
 
 	/**
 	    *
-	    */
+	    
 	private void waitUntilInvokedInRenderMethod() {
 		try {
 			while (true) {
@@ -83,3 +83,4 @@ public class GdxTestRunner extends BlockJUnit4ClassRunner implements
 	}
 
 }
+*/

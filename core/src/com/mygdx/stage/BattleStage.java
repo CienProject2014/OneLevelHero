@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
@@ -31,7 +30,6 @@ import com.mygdx.state.Assets;
 import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
-@Component
 public class BattleStage extends Overlap2DStage {
 	@Autowired
 	private Assets assets;
@@ -225,4 +223,45 @@ public class BattleStage extends Overlap2DStage {
 			}
 		});
 	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
+	}
+
+	public BattleManager getBattleManager() {
+		return battleManager;
+	}
+
+	public void setBattleManager(BattleManager battleManager) {
+		this.battleManager = battleManager;
+	}
+
+	public PartyInfo getPartyInfo() {
+		return partyInfo;
+	}
+
+	public void setPartyInfo(PartyInfo partyInfo) {
+		this.partyInfo = partyInfo;
+	}
+
 }

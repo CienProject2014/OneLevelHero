@@ -3,8 +3,8 @@ buildscript {
         mavenCentral()
         mavenLocal()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.10+'
+    dependencies {		
+        classpath 'com.android.tools.build:gradle:0.10.+'
     }
 }
 
@@ -30,7 +30,6 @@ allprojects {
 
 project(":desktop") {
     apply plugin: "java"
-
 
     dependencies {
         compile project(":core")
@@ -70,19 +69,10 @@ project(":core") {
 	sourceSets.test.java.srcDirs = ["test/"]	
 	
     dependencies {
-		compile "org.springframework:spring-context:4.1.3.RELEASE"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
 		compile project(":Overlap2dRuntime")
-        compile fileTree(dir: 'libs', include: '*.jar')
-		
-        testCompile "junit:junit:4.+"
-		testCompile "org.mockito:mockito-all:1.9.5"
-        testCompile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"         
-        testCompile "com.badlogicgames.gdx:gdx:$gdxVersion"                                
-        testCompile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"       
-        testCompile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"                          
-        testCompile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        compile fileTree(dir: 'libs', include: '*.jar')             
 		
     }
 }

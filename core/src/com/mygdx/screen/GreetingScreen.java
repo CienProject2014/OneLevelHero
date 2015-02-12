@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -25,7 +24,6 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
-@Component
 public class GreetingScreen implements Screen {
 	@Autowired
 	private ScreenFactory screenFactory;
@@ -157,6 +155,30 @@ public class GreetingScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+
+	public EventInfo getEventInfo() {
+		return eventInfo;
+	}
+
+	public void setEventInfo(EventInfo eventInfo) {
+		this.eventInfo = eventInfo;
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
 	}
 
 }

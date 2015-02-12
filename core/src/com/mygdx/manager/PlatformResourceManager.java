@@ -1,21 +1,15 @@
 package com.mygdx.manager;
 
-import javax.annotation.PostConstruct;
-
-import org.springframework.stereotype.Component;
-
 import com.badlogic.gdx.Gdx;
 import com.uwsoft.editor.renderer.data.ProjectInfoVO;
 import com.uwsoft.editor.renderer.data.ResolutionEntryVO;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
-@Component
 public class PlatformResourceManager extends ResourceManager {
 	public ResolutionEntryVO currentResolution;
 
 	public float stageWidth;
 
-	@PostConstruct
 	public void initPlatformerResources() {
 		// Loading project configuration file that keeps list of available
 		// resolutions

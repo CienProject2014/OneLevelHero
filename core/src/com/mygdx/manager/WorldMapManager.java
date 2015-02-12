@@ -1,13 +1,11 @@
 package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.model.WorldNode;
 import com.mygdx.state.Assets;
 
-@Component
 public class WorldMapManager {
 	@Autowired
 	private MovingInfoManager movingInfoManager;
@@ -22,4 +20,29 @@ public class WorldMapManager {
 				.getCurrentNode());
 		movingInfoManager.createMovingInfo(destinationNode, worldNodeInfo);
 	}
+
+	public MovingInfoManager getMovingInfoManager() {
+		return movingInfoManager;
+	}
+
+	public void setMovingInfoManager(MovingInfoManager movingInfoManager) {
+		this.movingInfoManager = movingInfoManager;
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
 }

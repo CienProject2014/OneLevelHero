@@ -1,9 +1,7 @@
 package com.mygdx.game;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -12,20 +10,15 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.StaticAssets;
 
-@Component
 public class OneLevelHero extends Game {
-	@Autowired
-	private ScreenFactory screenFactory;
-	@Autowired
 	private ApplicationContext context;
 
 	@Override
 	public void create() {
 		Gdx.input.setCatchBackKey(true);
 		StaticAssets.loadAll();
-		context = new AnnotationConfigApplicationContext(
-				OneLevelHeroApplicationContext.class);
-
+		//context = RoboSpring.getContext(); 안드로이드에서 실행시
+		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		gameLoad();
 	}
 

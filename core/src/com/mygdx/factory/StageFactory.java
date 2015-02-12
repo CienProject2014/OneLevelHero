@@ -2,7 +2,6 @@ package com.mygdx.factory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
@@ -18,11 +17,9 @@ import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
 import com.mygdx.stage.SelectButtonStage;
 import com.mygdx.stage.StatusStage;
-import com.mygdx.stage.TouchPadStage;
 import com.mygdx.stage.VillageStage;
 import com.mygdx.stage.WorldMapStage;
 
-@Component
 public class StageFactory {
 	@Autowired
 	private ApplicationContext context;
@@ -46,8 +43,6 @@ public class StageFactory {
 				return context.getBean(SelectButtonStage.class).makeStage();
 			case STATUS:
 				return context.getBean(StatusStage.class).makeStage();
-			case TOUCH_PAD:
-				return context.getBean(TouchPadStage.class).makeStage();
 			case VILLAGE:
 				return context.getBean(VillageStage.class).makeStage();
 			case WORLD_MAP:

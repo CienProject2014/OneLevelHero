@@ -2,7 +2,6 @@ package com.mygdx.factory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -29,7 +28,6 @@ import com.mygdx.screen.StatusScreen;
 import com.mygdx.screen.VillageScreen;
 import com.mygdx.screen.WorldMapScreen;
 
-@Component
 public class ScreenFactory {
 	@Autowired
 	private ApplicationContext context;

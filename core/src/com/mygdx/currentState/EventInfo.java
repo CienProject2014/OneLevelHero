@@ -1,7 +1,5 @@
 package com.mygdx.currentState;
 
-import org.springframework.stereotype.Component;
-
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.model.NPC;
 
@@ -10,7 +8,7 @@ import com.mygdx.model.NPC;
  * @author Velmont
  *
  */
-@Component
+
 public class EventInfo {
 	private NPC npc;
 	private int eventNumber;

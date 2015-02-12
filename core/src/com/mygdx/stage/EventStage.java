@@ -1,8 +1,6 @@
 package com.mygdx.stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -20,8 +18,6 @@ import com.mygdx.state.Assets;
  * @author Velmont
  *
  */
-@Component
-@Scope(value = "prototype")
 public class EventStage extends Stage {
 	@Autowired
 	private Assets assets;
@@ -116,6 +112,38 @@ public class EventStage extends Stage {
 				assets.windowHeight * 0.2f);
 		characterImage.setPosition(0, 0);
 		backgroundImage.setSize(assets.windowWidth, assets.windowHeight);
+	}
+
+	public Assets getAssets() {
+		return assets;
+	}
+
+	public void setAssets(Assets assets) {
+		this.assets = assets;
+	}
+
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+
+	public EventInfo getEventInfo() {
+		return eventInfo;
+	}
+
+	public void setEventInfo(EventInfo eventInfo) {
+		this.eventInfo = eventInfo;
+	}
+
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
 	}
 
 }

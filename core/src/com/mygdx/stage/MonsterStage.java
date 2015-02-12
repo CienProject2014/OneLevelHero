@@ -1,8 +1,6 @@
 package com.mygdx.stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -15,8 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.model.Monster;
 
-@Component
-@Scope("prototype")
 public class MonsterStage extends Stage {
 	@Autowired
 	private MovingInfo movingInfo;
@@ -70,6 +66,14 @@ public class MonsterStage extends Stage {
 	private TextureRegionDrawable getBackgroundTRD() {
 		return new TextureRegionDrawable(new TextureRegion(new Texture(
 				Gdx.files.internal("texture/battle/forest.png"))));
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
 	}
 
 }
