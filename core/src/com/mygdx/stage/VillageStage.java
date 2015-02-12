@@ -60,7 +60,7 @@ public class VillageStage extends Overlap2DStage {
 		camera = getViewport().getCamera();
 
 		initSceneLoader();
-		Gdx.app.log("VillageStage",
+		Gdx.app.debug("VillageStage",
 				String.valueOf(positionInfo.getCurrentNode()));
 
 		//임시로 블랙우드 정보를 넣는다.
