@@ -725,66 +725,67 @@ worldmaptextwinterfall
   index: -1
 
 blackwood_pack.png
-size: 1280,2822
+size: 1920,4376
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 blackwood_bg
   rotate: false
   xy: 0, 0
-  size: 1280, 1000
-  orig: 1280, 1000
+  size: 1920, 1500
+  orig: 1920, 1500
   offset: 0, 0
   index: -1
 blackwood1
   rotate: false
-  xy: 0, 1000
-  size: 233, 264
-  orig: 233, 264
+  xy: 0, 1500
+  size: 350, 396
+  orig: 350, 396
   offset: 0, 0
   index: -1
 blackwood2
   rotate: false
-  xy: 0, 1264
-  size: 233, 109
-  orig: 233, 109
+  xy: 0, 1896
+  size: 350, 164
+  orig: 350, 164
   offset: 0, 0
   index: -1
 blackwood3
   rotate: false
-  xy: 0, 1373
-  size: 222, 144
-  orig: 222, 144
+  xy: 0, 2060
+  size: 333, 216
+  orig: 333, 216
   offset: 0, 0
   index: -1
 blackwood4
   rotate: false
-  xy: 0, 1517
-  size: 233, 231
-  orig: 233, 231
+  xy: 0, 2276
+  size: 350, 347
+  orig: 350, 347
   offset: 0, 0
   index: -1
 blackwood5
   rotate: false
-  xy: 0, 1748
-  size: 146, 161
-  orig: 146, 161
+  xy: 0, 2623
+  size: 220, 243
+  orig: 220, 243
   offset: 0, 0
   index: -1
 blackwood6
   rotate: false
-  xy: 0, 1909
-  size: 166, 190
-  orig: 166, 190
+  xy: 0, 2866
+  size: 250, 286
+  orig: 250, 286
   offset: 0, 0
   index: -1
 blackwood7
   rotate: false
-  xy: 0, 2099
-  size: 1143, 723
-  orig: 1143, 723
+  xy: 0, 3152
+  size: 1715, 1224
+  orig: 1715, 1224
   offset: 0, 0
   index: -1
+
   
 blackwood_headhouse_pack.png
 size: 1280,1229

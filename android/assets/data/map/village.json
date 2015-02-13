@@ -5,10 +5,10 @@
     "sceneName" : "blackwood_scene",
     "building" : 
     {   
-      "Village Head's House":{
+      "blackwood_headhouse":{
         "buildingName" : "촌장의 집",
         "buildingType" : "house",
-        "buildingPath" : "blackwood_headhouse_602",
+        "buildingPath" : "blackwood_headhouse",
         "sceneName" : "blackwood_headhouse_scene",
         "buildingNpc" : 
         [
