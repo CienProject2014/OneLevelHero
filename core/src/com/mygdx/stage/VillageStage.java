@@ -58,14 +58,12 @@ public class VillageStage extends Overlap2DStage {
 		cam = new OrthographicCamera(assets.windowWidth, assets.windowHeight);
 		cam.position
 				.set(assets.windowWidth / 2, assets.windowHeight * 0.25f, 0);
-
 		getViewport().setCamera(cam);
 		camera = getViewport().getCamera();
-
 		initSceneLoader();
 		villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
 		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
-		//sceneLoader.loadScene(villageInfo.getSceneName());
+		// sceneLoader.loadScene(villageInfo.getSceneName());
 		sceneLoader.loadScene("blackwood_scene");
 
 		backgroundDirection = BackgroundDirection.DOWN;
@@ -121,7 +119,7 @@ public class VillageStage extends Overlap2DStage {
 	}
 
 	private void checkCameraPosition() {
-		float ratio = 0.782f; //FIXME
+		float ratio = 0.782f; // FIXME
 		viewportWidth = assets.windowWidth;
 		viewportHeight = viewportWidth * ratio;
 

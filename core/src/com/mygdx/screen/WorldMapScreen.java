@@ -24,7 +24,6 @@ public class WorldMapScreen implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
 		worldMapStage.draw();
 	}
 
@@ -35,10 +34,8 @@ public class WorldMapScreen implements Screen {
 
 	@Override
 	public void show() {
-
 		worldMapStage = stageFactory.makeStage(StageEnum.WORLD_MAP);
 		InputProcessor MapInputProcessor = new MapInputProcessor(worldMapStage);
-
 		multiplexer = new InputMultiplexer();
 		multiplexer.addProcessor(0, worldMapStage);
 		multiplexer.addProcessor(1, MapInputProcessor);

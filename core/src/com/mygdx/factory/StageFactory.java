@@ -16,8 +16,8 @@ import com.mygdx.stage.EventStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
-import com.mygdx.stage.SelectButtonStage;
 import com.mygdx.stage.StatusStage;
+import com.mygdx.stage.SelectButtonStage;
 import com.mygdx.stage.TouchPadStage;
 import com.mygdx.stage.VillageStage;
 import com.mygdx.stage.WorldMapStage;
@@ -30,30 +30,30 @@ public class StageFactory {
 	public Stage makeStage(StageEnum stageEnum) {
 
 		switch (stageEnum) {
-			case BUILDING:
-				return context.getBean(BuildingStage.class).makeStage();
-			case CHARACTER_UI:
-				return context.getBean(CharacterUiStage.class).makeStage();
-			case ENCOUNTER:
-				return context.getBean(EncounterStage.class).makeStage();
-			case GAME_UI:
-				return context.getBean(GameUiStage.class).makeStage();
-			case MENU:
-				return context.getBean(MenuStage.class).makeStage();
-			case MONSTER:
-				return context.getBean(MonsterStage.class).makeStage();
-			case SELECT_BUTTON:
-				return context.getBean(SelectButtonStage.class).makeStage();
-			case STATUS:
-				return context.getBean(StatusStage.class).makeStage();
-			case TOUCH_PAD:
-				return context.getBean(TouchPadStage.class).makeStage();
-			case VILLAGE:
-				return context.getBean(VillageStage.class).makeStage();
-			case WORLD_MAP:
-				return context.getBean(WorldMapStage.class).makeStage();
-			default:
-				return context.getBean(VillageStage.class).makeStage(); //FIXME
+		case BUILDING:
+			return context.getBean(BuildingStage.class).makeStage();
+		case CHARACTER_UI:
+			return context.getBean(CharacterUiStage.class).makeStage();
+		case ENCOUNTER:
+			return context.getBean(EncounterStage.class).makeStage();
+		case GAME_UI:
+			return context.getBean(GameUiStage.class).makeStage();
+		case MENU:
+			return context.getBean(MenuStage.class).makeStage();
+		case MONSTER:
+			return context.getBean(MonsterStage.class).makeStage();
+		case SELECT_BUTTON:
+			return context.getBean(SelectButtonStage.class).makeStage();
+		case STATUS:
+			return context.getBean(StatusStage.class).makeStage();
+		case TOUCH_PAD:
+			return context.getBean(TouchPadStage.class).makeStage();
+		case VILLAGE:
+			return context.getBean(VillageStage.class).makeStage();
+		case WORLD_MAP:
+			return context.getBean(WorldMapStage.class).makeStage();
+		default:
+			return context.getBean(VillageStage.class).makeStage(); // FIXME
 		}
 	}
 

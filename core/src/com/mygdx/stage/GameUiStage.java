@@ -313,14 +313,14 @@ public class GameUiStage extends Stage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				statusMessagePopup.setVisible(true);
+				// statusMessagePopup.setVisible(true);
 				return true;
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				//screenFactory.show(ScreenEnum.STATUS);
+				screenFactory.show(ScreenEnum.STATUS);
 			}
 		});
 	}
