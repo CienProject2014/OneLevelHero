@@ -33,10 +33,10 @@ public class VillageStage extends Overlap2DStage {
 	@Autowired
 	private PositionInfo positionInfo;
 
+	final private float STAGE_WIDTH = 1920;
+	final private float STAGE_HEIGHT = 1080;
 	private Village villageInfo;
 	public TextButton shiftButton;
-	private float viewportWidth;
-	private float viewportHeight;
 	private Camera camera;
 	private BackgroundDirection backgroundDirection;
 	private OrthographicCamera cam;
@@ -52,9 +52,8 @@ public class VillageStage extends Overlap2DStage {
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		cam = new OrthographicCamera(assets.windowWidth, assets.windowHeight);
-		cam.position
-				.set(assets.windowWidth / 2, assets.windowHeight * 0.25f, 0);
+		cam = new OrthographicCamera(STAGE_WIDTH, STAGE_HEIGHT);
+		cam.position.set(STAGE_WIDTH / 2, STAGE_HEIGHT * 0.25f, 0);
 
 		getViewport().setCamera(cam);
 		camera = getViewport().getCamera();
@@ -63,12 +62,12 @@ public class VillageStage extends Overlap2DStage {
 		Gdx.app.debug("VillageStage",
 				String.valueOf(positionInfo.getCurrentNode()));
 
-		//임시로 블랙우드 정보를 넣는다.
-		//villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
+		// 임시로 블랙우드 정보를 넣는다.
+		// villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
 		villageInfo = assets.villageMap.get("Blackwood");
 
 		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
-		//sceneLoader.loadScene(villageInfo.getSceneName());
+		// sceneLoader.loadScene(villageInfo.getSceneName());
 		sceneLoader.loadScene("blackwood_scene");
 
 		backgroundDirection = BackgroundDirection.DOWN;
@@ -124,18 +123,14 @@ public class VillageStage extends Overlap2DStage {
 	}
 
 	private void checkCameraPosition() {
-		float ratio = 0.782f; //FIXME
-		viewportWidth = assets.windowWidth;
-		viewportHeight = viewportWidth * ratio;
-
-		if (camera.position.y > (viewportHeight - assets.windowHeight / 2)) {
-			camera.position.y = viewportHeight - assets.windowHeight / 2;
+		if (camera.position.y > 1500 - 540) {
+			camera.position.y = 1500 - 540;
 			backgroundDirection = BackgroundDirection.UP;
 
 			shiftButton.setVisible(true);
 
-		} else if (camera.position.y < assets.windowHeight * 0.25f) {
-			camera.position.y = assets.windowHeight * 0.25f;
+		} else if (camera.position.y < STAGE_HEIGHT * 0.25f) {
+			camera.position.y = STAGE_HEIGHT * 0.25f;
 			backgroundDirection = BackgroundDirection.DOWN;
 
 			shiftButton.setVisible(true);
