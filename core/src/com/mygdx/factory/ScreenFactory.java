@@ -15,6 +15,7 @@ import com.mygdx.screen.BuildingScreen;
 import com.mygdx.screen.CGScreen;
 import com.mygdx.screen.CollectionScreen;
 import com.mygdx.screen.CreditScreen;
+import com.mygdx.screen.DungeonEntranceScreen;
 import com.mygdx.screen.EncounterScreen;
 import com.mygdx.screen.EndingScreen;
 import com.mygdx.screen.EventScreen;
@@ -64,6 +65,8 @@ public class ScreenFactory {
 				return context.getBean(CollectionScreen.class);
 			case CREDIT:
 				return context.getBean(CreditScreen.class);
+			case DUNGEON_ENTRANCE:
+				return context.getBean(DungeonEntranceScreen.class);
 			case ENCOUNTER:
 				return context.getBean(EncounterScreen.class);
 			case ENDING:
@@ -95,9 +98,11 @@ public class ScreenFactory {
 
 	public void show(ScreenEnum screenEnum) {
 		Gdx.app.debug("ScreenFactory", "Show " + screenEnum.toString()
-				+ "Screen");
-		if (game == null)
+				+ " Screen");
+		if (game == null) {
+			Gdx.app.debug("ScreenFactory", "game is null");
 			return;
+		}
 		if (!screens.containsKey(screenEnum.ordinal())) {
 			screens.put(screenEnum.ordinal(), getScreenInstance(screenEnum));
 		}

@@ -39,6 +39,16 @@
       ],
       "physicsPropertiesVO": {},
       "sceneName": "battle_ui_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "blackwood_forest_scene"
     }
   ],
   "originalResolution": {

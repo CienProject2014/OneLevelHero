@@ -23,6 +23,7 @@
 		<property name="positionInfo" ref="positionInfo"/>
 		<property name="movingInfo" ref="movingInfo"/>
 	</bean>
+	
 	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo"/>
 	<bean id="inventoryInfo" class="com.mygdx.currentState.InventoryInfo"/>
 	<bean id="movingInfo" class="com.mygdx.currentState.MovingInfo"/>
@@ -126,6 +127,9 @@
 	<bean id="creditScreen" class="com.mygdx.screen.CreditScreen" scope="prototype" >
 		<property name="screenFactory" ref="screenFactory"/>
 	</bean>
+	<bean id="dungeonEntranceScreen" class="com.mygdx.screen.DungeonEntranceScreen" scope="prototype">
+		<property name="stageFactory" ref="stageFactory"></property>
+	</bean>
 	<bean id="encounterScreen" class="com.mygdx.screen.EncounterScreen" scope="prototype" >
 		<property name="stageFactory" ref="stageFactory"/>
 	</bean>
@@ -196,6 +200,10 @@
 	<bean id="characterUiStage" class="com.mygdx.stage.CharacterUiStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="partyInfo" ref="partyInfo"></property>
+	</bean>
+	<bean id="dungeonEntranceStage" class="com.mygdx.stage.DungeonEntranceStage" scope="prototype">
+		<property name="positionInfo" ref="positionInfo"></property>
+		<property name="screenFactory" ref="screenFactory"></property>
 	</bean>
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>

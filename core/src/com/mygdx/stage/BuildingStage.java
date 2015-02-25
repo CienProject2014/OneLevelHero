@@ -41,11 +41,11 @@ public class BuildingStage extends Overlap2DStage {
 	public Stage makeStage() {
 		makeScene();
 		setNpcList();
-		setexitButton();
+		setExitButton();
 		return this;
 	}
 
-	private void setexitButton() {
+	private void setExitButton() {
 		exitButton = new TextButton("나가기", assets.skin);
 		exitButton.center();
 		exitButton.addListener(new InputListener() {
