@@ -44,6 +44,8 @@
 		<property name="movingInfo" ref="movingInfo"/>
 		<property name="partyInfo" ref="partyInfo"/>
 	</bean>
+	<bean id="cameraManager" class="com.mygdx.manager.CameraManager">
+	</bean>
 	<bean id="encounterManager" class="com.mygdx.manager.EncounterManager">
 		<property name="screenFactory" ref="screenFactory"/>
 		<property name="monsterManager" ref="monsterManager"/>
@@ -241,7 +243,7 @@
 	<bean id="villageStage" class="com.mygdx.stage.VillageStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
-		<property name="eventManager" ref="eventManager"></property>
+		<property name="cameraManager" ref="cameraManager"></property>
 		<property name="positionInfo" ref="positionInfo"></property>
 	</bean>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage" scope="prototype" >
