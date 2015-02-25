@@ -198,6 +198,7 @@
 		<property name="eventManager" ref="eventManager"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
 		<property name="placeManager" ref="placeManager"></property>
+		<property name="cameraManager" ref="cameraManager"></property>
 	</bean>
 	<bean id="characterUiStage" class="com.mygdx.stage.CharacterUiStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>

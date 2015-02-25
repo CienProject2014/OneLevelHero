@@ -69,7 +69,7 @@ public class DungeonEntranceStage extends Overlap2DStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				Gdx.app.log("DungeonEntranceStage", "게임이 저장되었다.");
+				Gdx.app.log("DungeonEntranceStage", "게임이 저장되었다...");
 			}
 		});
 

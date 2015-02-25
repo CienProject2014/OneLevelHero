@@ -55,8 +55,7 @@ public class VillageStage extends Overlap2DStage {
 		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
 		// sceneLoader.loadScene(villageInfo.getSceneName());
 		sceneLoader.loadScene("blackwood_scene");
-		cameraManager.settingCamera(this, sceneLoader.getRoot().getWidth(),
-				sceneLoader.getRoot().getHeight());
+		cameraManager.setCameraSize(this);
 		backgroundDirection = BackgroundDirection.DOWN;
 		addActor(sceneLoader.getRoot());
 		setBuildingButton();
@@ -84,8 +83,6 @@ public class VillageStage extends Overlap2DStage {
 			}
 		});
 		addActor(shiftButton);
-		System.out.println(this.getCamera().position);
-		System.out.println(this.getCamera().viewportHeight);
 	}
 
 	@Override
@@ -160,18 +157,6 @@ public class VillageStage extends Overlap2DStage {
 
 	public ScreenFactory getScreenFactory() {
 		return screenFactory;
-	}
-
-	public int hashCode() {
-		return cameraManager.hashCode();
-	}
-
-	public boolean equals(Object obj) {
-		return cameraManager.equals(obj);
-	}
-
-	public String toString() {
-		return cameraManager.toString();
 	}
 
 	public void setScreenFactory(ScreenFactory screenFactory) {
