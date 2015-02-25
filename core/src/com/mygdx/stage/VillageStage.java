@@ -5,8 +5,6 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,7 +14,7 @@ import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.manager.EventManager;
+import com.mygdx.manager.CameraManager;
 import com.mygdx.model.Building;
 import com.mygdx.model.Village;
 import com.mygdx.state.Assets;
@@ -29,17 +27,13 @@ public class VillageStage extends Overlap2DStage {
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
-	private EventManager eventManager;
-	@Autowired
 	private PositionInfo positionInfo;
+	@Autowired
+	private CameraManager cameraManager;
 
-	final private float STAGE_WIDTH = 1920;
-	final private float STAGE_HEIGHT = 1080;
 	private Village villageInfo;
 	public TextButton shiftButton;
-	private Camera camera;
 	private BackgroundDirection backgroundDirection;
-	private OrthographicCamera cam;
 
 	public enum BackgroundDirection {
 		UP, DOWN, MOVE_UP, MOVE_DOWN;
@@ -52,31 +46,22 @@ public class VillageStage extends Overlap2DStage {
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		cam = new OrthographicCamera(STAGE_WIDTH, STAGE_HEIGHT);
-		cam.position.set(STAGE_WIDTH / 2, STAGE_HEIGHT * 0.25f, 0);
-
-		getViewport().setCamera(cam);
-		camera = getViewport().getCamera();
-
 		initSceneLoader();
 		Gdx.app.debug("VillageStage",
 				String.valueOf(positionInfo.getCurrentNode()));
-
 		// 임시로 블랙우드 정보를 넣는다.
 		// villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
 		villageInfo = assets.villageMap.get("Blackwood");
-
 		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
 		// sceneLoader.loadScene(villageInfo.getSceneName());
 		sceneLoader.loadScene("blackwood_scene");
-
+		cameraManager.settingCamera(this, sceneLoader.getRoot().getWidth(),
+				sceneLoader.getRoot().getHeight());
 		backgroundDirection = BackgroundDirection.DOWN;
-
 		addActor(sceneLoader.getRoot());
 		setBuildingButton();
 		shiftButton = new TextButton("전환", assets.skin);
 		shiftButton.center();
-
 		shiftButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -98,8 +83,9 @@ public class VillageStage extends Overlap2DStage {
 				event.getListenerActor().setVisible(false);
 			}
 		});
-
 		addActor(shiftButton);
+		System.out.println(this.getCamera().position);
+		System.out.println(this.getCamera().viewportHeight);
 	}
 
 	@Override
@@ -109,13 +95,13 @@ public class VillageStage extends Overlap2DStage {
 	}
 
 	private void moveCam() {
-		int movingSpeed = 6;
+		int movingSpeed = 10;
 		checkCameraPosition();
 		if (backgroundDirection.equals(BackgroundDirection.MOVE_UP)) {
-			camera.translate(0, movingSpeed, 0);
+			this.getCamera().translate(0, movingSpeed, 0);
 			shiftButton.moveBy(0, movingSpeed);
 		} else if (backgroundDirection.equals(BackgroundDirection.MOVE_DOWN)) {
-			camera.translate(0, -movingSpeed, 0);
+			this.getCamera().translate(0, -movingSpeed, 0);
 			shiftButton.moveBy(0, -movingSpeed);
 		} else {
 
@@ -123,14 +109,17 @@ public class VillageStage extends Overlap2DStage {
 	}
 
 	private void checkCameraPosition() {
-		if (camera.position.y > 1500 - 540) {
-			camera.position.y = 1500 - 540;
+		if (this.getCamera().position.y > sceneLoader.getRoot().getHeight()
+				- this.getCamera().viewportHeight / 2 * 0.90f) {
+			this.getCamera().position.y = sceneLoader.getRoot().getHeight()
+					- this.getCamera().viewportHeight / 2 * 0.90f;
 			backgroundDirection = BackgroundDirection.UP;
 
 			shiftButton.setVisible(true);
 
-		} else if (camera.position.y < STAGE_HEIGHT * 0.25f) {
-			camera.position.y = STAGE_HEIGHT * 0.25f;
+		} else if (this.getCamera().position.y < sceneLoader.getRoot()
+				.getHeight() * 0.25f) {
+			this.getCamera().position.y = sceneLoader.getRoot().getHeight() * 0.25f;
 			backgroundDirection = BackgroundDirection.DOWN;
 
 			shiftButton.setVisible(true);
@@ -173,16 +162,20 @@ public class VillageStage extends Overlap2DStage {
 		return screenFactory;
 	}
 
+	public int hashCode() {
+		return cameraManager.hashCode();
+	}
+
+	public boolean equals(Object obj) {
+		return cameraManager.equals(obj);
+	}
+
+	public String toString() {
+		return cameraManager.toString();
+	}
+
 	public void setScreenFactory(ScreenFactory screenFactory) {
 		this.screenFactory = screenFactory;
-	}
-
-	public EventManager getEventManager() {
-		return eventManager;
-	}
-
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
 	}
 
 	public PositionInfo getPositionInfo() {
@@ -193,4 +186,11 @@ public class VillageStage extends Overlap2DStage {
 		this.positionInfo = positionInfo;
 	}
 
+	public CameraManager getCameraManager() {
+		return cameraManager;
+	}
+
+	public void setCameraManager(CameraManager cameraManager) {
+		this.cameraManager = cameraManager;
+	}
 }
