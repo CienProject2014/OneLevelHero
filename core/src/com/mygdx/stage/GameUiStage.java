@@ -19,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.currentState.PartyInfo;
@@ -307,22 +308,16 @@ public class GameUiStage extends Stage {
 
 			}
 		});
-
-		characterImage[0].addListener(new InputListener() {
-
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// statusMessagePopup.setVisible(true);
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				screenFactory.show(ScreenEnum.STATUS);
-			}
-		});
+		for (int i = 0; i < partyInfo.getBattleMemberList().size(); i++) {
+			final int index = i;
+			characterImage[i].addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					partyInfo.setSelectedInedex(index);
+					screenFactory.show(ScreenEnum.STATUS);
+				};
+			});
+		}
 	}
 
 	@Override

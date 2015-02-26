@@ -1,6 +1,5 @@
 package com.mygdx.model;
 
-
 public class LivingUnit extends Unit implements Comparable<LivingUnit> {
 	private Status status;
 
@@ -14,9 +13,9 @@ public class LivingUnit extends Unit implements Comparable<LivingUnit> {
 
 	@Override
 	public int compareTo(LivingUnit obj) {
-		if (this.getStatus().getSpeed() == obj.getStatus().getSpeed())
+		if (this.getStatus().getSpd() == obj.getStatus().getSpd())
 			return 0;
-		else if (this.getStatus().getSpeed() > obj.getStatus().getSpeed())
+		else if (this.getStatus().getSpd() > obj.getStatus().getSpd())
 			return 1;
 		else
 			return -1;

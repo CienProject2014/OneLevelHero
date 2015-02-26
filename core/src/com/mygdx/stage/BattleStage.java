@@ -92,7 +92,7 @@ public class BattleStage extends Overlap2DStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		//makeTable();
+		// makeTable();
 	}
 
 	public void makeOrderedList() {
@@ -169,13 +169,6 @@ public class BattleStage extends Overlap2DStage {
 				// 몬스터의 턴을 실행해줄 클래스가 하나 필요하다.
 				// 바로 BattleController가 해주면 된다.
 				// 거기서 GameUiStage의 act도 실행해주면 된다.
-				partyInfo
-						.getBattleMemberList()
-						.get(0)
-						.getStatus()
-						.setHealthPoint(
-								partyInfo.getBattleMemberList().get(0)
-										.getStatus().getHealthPoint() - 10);
 
 				battleManager.userAttack(getCurrentActor());
 				updateTable();

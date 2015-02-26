@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -121,16 +120,6 @@ public class CharacterUiStage extends Stage {
 	public void act(float delta) {
 		super.act(delta);
 
-		// Screen - act 에서 실행시킨다.
-		for (int i = 0; i < battleMemberNumber; i++) {
-			int hpValue = battleMemberList.get(i).getStatus().getHealthPoint();
-			Gdx.app.log("이름?", hpbar[i].getName());
-
-			if (!hpbar[i].setValue(hpValue))
-				Gdx.app.log("GameUiStage", "체력 설정 실패");
-
-			hpbar[i].act(delta);
-		}
 	}
 
 }

@@ -1,79 +1,106 @@
 package com.mygdx.model;
 
+
 public class Status {
-	private int attack;
-	private int defense;
-	private int critical;
-	private int evade;
-	private int accuracy;
-	private int healthPoint;
-	private int stamina;
-	private int speed;
+	private int atk;
+	private int ftg;
+	private int exp;
+	private int matk;
+	private int def;
+	private int mdef;
+	private int hp;
+	private int spd;
+	private float fr;
+	private float wr;
+	private float er;
 	private String job;
-	private String debuff;
 
-	public int getAttack() {
-		return attack;
+	public int getAtk() {
+		return atk;
 	}
 
-	public void setAttack(int attack) {
-		this.attack = attack;
+	public void setAtk(int atk) {
+		this.atk = atk;
 	}
 
-	public int getDefense() {
-		return defense;
+	public int getFtg() {
+		return ftg;
 	}
 
-	public void setDefense(int defense) {
-		this.defense = defense;
+	public void setFtg(int ftg) {
+		this.ftg = ftg;
 	}
 
-	public int getCritical() {
-		return critical;
+	public int getExp() {
+		return exp;
 	}
 
-	public void setCritical(int critical) {
-		this.critical = critical;
+	public void setExp(int exp) {
+		this.exp = exp;
 	}
 
-	public int getEvade() {
-		return evade;
+	public int getMatk() {
+		return matk;
 	}
 
-	public void setEvade(int evade) {
-		this.evade = evade;
+	public void setMatk(int matk) {
+		this.matk = matk;
 	}
 
-	public int getAccuracy() {
-		return accuracy;
+	public int getDef() {
+		return def;
 	}
 
-	public void setAccuracy(int accuracy) {
-		this.accuracy = accuracy;
+	public void setDef(int def) {
+		this.def = def;
 	}
 
-	public int getHealthPoint() {
-		return healthPoint;
+	public int getMdef() {
+		return mdef;
 	}
 
-	public void setHealthPoint(int healthPoint) {
-		this.healthPoint = healthPoint;
+	public void setMdef(int mdef) {
+		this.mdef = mdef;
 	}
 
-	public int getStamina() {
-		return stamina;
+	public int getHp() {
+		return hp;
 	}
 
-	public void setStamina(int stamina) {
-		this.stamina = stamina;
-	}
-	
-	public int getSpeed() {
-		return speed;
+	public void setHp(int hp) {
+		this.hp = hp;
 	}
 
-	public void setSpeed(int speed) {
-		this.speed = speed;
+	public int getSpd() {
+		return spd;
+	}
+
+	public void setSpd(int spd) {
+		this.spd = spd;
+	}
+
+	public float getFr() {
+		return fr;
+	}
+
+	public void setFr(float fr) {
+		this.fr = fr;
+	}
+
+	public float getWr() {
+		return wr;
+	}
+
+	public void setWr(float wr) {
+		this.wr = wr;
+	}
+
+	public float getEr() {
+		return er;
+	}
+
+	public void setEr(float er) {
+		this.er = er;
 	}
 
 	public String getJob() {
@@ -84,18 +111,14 @@ public class Status {
 		this.job = job;
 	}
 
-	public String getDebuff() {
-		return debuff;
-	}
+	public String[] getStatusList() {
+		String[] array = { String.valueOf(atk), String.valueOf(ftg),
+				String.valueOf(exp), String.valueOf(atk), String.valueOf(matk),
+				String.valueOf(def), String.valueOf(mdef), String.valueOf(hp),
+				String.valueOf(spd), String.valueOf(fr), String.valueOf(wr),
+				String.valueOf(er), job };
 
-	public void setDebuff(String debuff) {
-		this.debuff = debuff;
-	}
+		return array;
 
-	public String toString() {
-		return "공격력 : " + getAttack() + " ,방어력 : " + getDefense() + ", 치명타 : "
-				+ getCritical() + ", 회피율 : " + getCritical() + ", 명중률 "
-				+ ", 체력 : " + getHealthPoint() + ", 스태미나 : " + getStamina()
-				+ ", 직업 : " + getJob();
 	}
 }

@@ -2,16 +2,17 @@
   "yongsa": {
     "name": "yongsa",
     "status": {
-      "attack": 110,
-      "defense": 34.5,
-      "critical": 13.8,
-      "evade": 13.8,
-      "accuracy": 94.8,
-      "healthPoint": 338,
-      "stamina": 100,
-      "speed": 1000,
+      "atk": 110,
+      "def": 34.5,
+      "hp": 338,
+      "spd": 1000,
       "job": "warrior",
-      "debuff": "null"
+      "ftg" : 100,
+      "exp" : 0,
+      "mdef" : 0,
+      "fr" : 0.1,
+      "wr" : 0.1,
+      "er" : 0.1
     },
     "equipment": {
       "weapon": "sword",
@@ -23,16 +24,17 @@
   "parath": {
     "name": "parath",   
     "status": {
-      "attack": 110,
-      "defense": 34.5,
-      "critical": 13.8,
-      "evade": 13.8,
-      "accuracy": 94.8,
-      "healthPoint": 338,
-      "stamina": 100,
-      "speed": 900,
-      "job": "assassin",
-      "debuff": "null"
+      "atk": 110,
+      "def": 34.5,
+      "hp": 338,
+      "spd": 1000,
+      "job": "warrior",
+      "ftg" : 100,
+      "exp" : 0,
+      "mdef" : 0,
+      "fr" : 0.1,
+      "wr" : 0.1,
+      "er" : 0.1
     },
     "equipment": {
       "weapon": "dagger",
