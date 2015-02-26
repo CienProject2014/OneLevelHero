@@ -207,6 +207,7 @@
 	<bean id="dungeonEntranceStage" class="com.mygdx.stage.DungeonEntranceStage" scope="prototype">
 		<property name="positionInfo" ref="positionInfo"></property>
 		<property name="screenFactory" ref="screenFactory"></property>
+		<property name="cameraManager" ref="cameraManager"></property>
 	</bean>
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>

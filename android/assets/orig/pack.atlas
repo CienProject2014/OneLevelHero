@@ -821,3 +821,38 @@ chest_before_open
   orig: 225, 198
   offset: 0, 0
   index: -1
+
+  
+blackwood_forest_pack.png
+size: 2820,1080
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background_bg
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+signpost
+  rotate: false
+  xy: 1920, 0
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: false
+  xy: 2220, 0
+  size: 300, 138
+  orig: 300, 138
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 2520, 0
+  size: 300, 102
+  orig: 300, 102
+  offset: 0, 0
+  index: -1

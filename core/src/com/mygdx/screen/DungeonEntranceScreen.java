@@ -29,6 +29,7 @@ public class DungeonEntranceScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		dungeonStage.draw();
+		dungeonStage.getCamera().update();
 		gameUiStage.draw();
 		// 카메라를 지속적으로 업데이트 해준다.
 

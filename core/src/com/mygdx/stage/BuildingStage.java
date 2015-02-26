@@ -14,6 +14,7 @@ import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.CameraManager;
+import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.NpcManager;
 import com.mygdx.manager.PlaceManager;
@@ -76,7 +77,7 @@ public class BuildingStage extends Overlap2DStage {
 				.getBuilding().get(positionInfo.getCurrentBuilding());
 		initSceneLoader();
 		sceneLoader.loadScene(buildingInfo.getSceneName());
-		cameraManager.setCameraSize(this);
+		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
 	}
 

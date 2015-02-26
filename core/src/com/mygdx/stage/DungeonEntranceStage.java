@@ -10,14 +10,22 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.manager.CameraManager;
+import com.mygdx.manager.CameraManager.CameraPosition;
 import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
+/**
+ * @author Velmont
+ *
+ */
 public class DungeonEntranceStage extends Overlap2DStage {
 	@Autowired
 	private PositionInfo positionInfo;
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private CameraManager cameraManager;
 	private CompositeItem entranceButton, saveButton, restButton,
 			worldMapButton;
 
@@ -29,7 +37,9 @@ public class DungeonEntranceStage extends Overlap2DStage {
 
 	private void makeScene() {
 		initSceneLoader();
+		//우선은 blackwood_forest_scene으로 통일하자
 		sceneLoader.loadScene("blackwood_forest_scene");
+		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
 	}
 
@@ -120,6 +130,14 @@ public class DungeonEntranceStage extends Overlap2DStage {
 
 	public void setScreenFactory(ScreenFactory screenFactory) {
 		this.screenFactory = screenFactory;
+	}
+
+	public CameraManager getCameraManager() {
+		return cameraManager;
+	}
+
+	public void setCameraManager(CameraManager cameraManager) {
+		this.cameraManager = cameraManager;
 	}
 
 }

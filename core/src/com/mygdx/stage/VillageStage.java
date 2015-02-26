@@ -15,6 +15,7 @@ import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.CameraManager;
+import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.model.Building;
 import com.mygdx.model.Village;
 import com.mygdx.state.Assets;
@@ -55,7 +56,7 @@ public class VillageStage extends Overlap2DStage {
 		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
 		// sceneLoader.loadScene(villageInfo.getSceneName());
 		sceneLoader.loadScene("blackwood_scene");
-		cameraManager.setCameraSize(this);
+		cameraManager.setCameraSize(this, CameraPosition.ABOVE_GAME_UI);
 		backgroundDirection = BackgroundDirection.DOWN;
 		addActor(sceneLoader.getRoot());
 		setBuildingButton();
