@@ -5,9 +5,14 @@
       "atk": 110,
       "def": 34.5,
       "hp": 338,
-      "stm": 100,
       "spd": 1000,
       "job": "warrior",
+      "ftg" : 100,
+      "exp" : 0,
+      "mdef" : 0,
+      "fr" : 0.1,
+      "wr" : 0.1,
+      "er" : 0.1
     },
     "equipment": {
       "weapon": "sword",
@@ -22,9 +27,14 @@
       "atk": 110,
       "def": 34.5,
       "hp": 338,
-      "stm": 100,
-      "spd": 900,
-      "job": "assassin",
+      "spd": 1000,
+      "job": "warrior",
+      "ftg" : 100,
+      "exp" : 0,
+      "mdef" : 0,
+      "fr" : 0.1,
+      "wr" : 0.1,
+      "er" : 0.1
     },
     "equipment": {
       "weapon": "dagger",

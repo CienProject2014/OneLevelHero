@@ -2,23 +2,65 @@
   "assassin girl": {
     "name": "assassin girl",
     "status": {
-      "atk": 100,
-      "def": 10,
-      "hp": 1000,
-      "stm": 1000,
-      "spd": 30,
+      "atk": 110,
+      "def": 34.5,
+      "hp": 338,
+      "spd": 1000,
       "job": "monster",
+      "ftg" : 100,
+      "exp" : 0,
+      "mdef" : 0,
+      "fr" : 0.1,
+      "wr" : 0.1,
+      "er" : 0.1
     }
   },
   "Monster2": {
     "name": "Monster2",
     "status": {
-      "atk": 100,
-      "def": 10,
-      "hp": 1000,
-      "stm": 1000,
-      "spd": 30,
+      "atk": 110,
+      "def": 34.5,
+      "hp": 338,
+      "spd": 1000,
       "job": "monster",
+      "ftg" : 100,
+      "exp" : 0,
+      "mdef" : 0,
+      "fr" : 0.1,
+      "wr" : 0.1,
+      "er" : 0.1
+    }
+  },
+  "Monster3": {
+    "name": "Monster3",
+    "status": {
+      "atk": 110,
+      "def": 34.5,
+      "hp": 338,
+      "spd": 1000,
+      "job": "monster",
+      "ftg" : 100,
+      "exp" : 0,
+      "mdef" : 0,
+      "fr" : 0.1,
+      "wr" : 0.1,
+      "er" : 0.1
+    }
+  },
+  "b2": {
+    "name": "b2",
+    "status": {
+      "atk": 110,
+      "def": 34.5,
+      "hp": 338,
+      "spd": 1000,
+      "job": "monster",
+      "ftg" : 100,
+      "exp" : 0,
+      "mdef" : 0,
+      "fr" : 0.1,
+      "wr" : 0.1,
+      "er" : 0.1
     }
   }
 }

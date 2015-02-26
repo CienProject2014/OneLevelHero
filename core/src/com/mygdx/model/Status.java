@@ -1,20 +1,19 @@
 package com.mygdx.model;
 
+
 public class Status {
-	private int atk;	// attack
-	private int matk;	// magic attack
-	private int def;	// defense
-	private int mdef;	// magic defense
-	private int hp;		// health point
-	private int stm;	// stamina
-	private int spd;	// speed
-	private String job;	// job
-	// minimum 0 ~ maximum 80
-	private int fr;	// fire resistance
-	private int wr; // water 
-	private int lr; // lightning
-	
-	private int[] stack;
+	private int atk;
+	private int ftg;
+	private int exp;
+	private int matk;
+	private int def;
+	private int mdef;
+	private int hp;
+	private int spd;
+	private float fr;
+	private float wr;
+	private float er;
+	private String job;
 
 	public int getAtk() {
 		return atk;
@@ -22,6 +21,22 @@ public class Status {
 
 	public void setAtk(int atk) {
 		this.atk = atk;
+	}
+
+	public int getFtg() {
+		return ftg;
+	}
+
+	public void setFtg(int ftg) {
+		this.ftg = ftg;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
 	}
 
 	public int getMatk() {
@@ -56,20 +71,36 @@ public class Status {
 		this.hp = hp;
 	}
 
-	public int getStm() {
-		return stm;
-	}
-
-	public void setStm(int stm) {
-		this.stm = stm;
-	}
-
 	public int getSpd() {
 		return spd;
 	}
 
 	public void setSpd(int spd) {
 		this.spd = spd;
+	}
+
+	public float getFr() {
+		return fr;
+	}
+
+	public void setFr(float fr) {
+		this.fr = fr;
+	}
+
+	public float getWr() {
+		return wr;
+	}
+
+	public void setWr(float wr) {
+		this.wr = wr;
+	}
+
+	public float getEr() {
+		return er;
+	}
+
+	public void setEr(float er) {
+		this.er = er;
 	}
 
 	public String getJob() {
@@ -80,28 +111,14 @@ public class Status {
 		this.job = job;
 	}
 
-	public int getFr() {
-		return fr;
-	}
+	public String[] getStatusList() {
+		String[] array = { String.valueOf(atk), String.valueOf(ftg),
+				String.valueOf(exp), String.valueOf(atk), String.valueOf(matk),
+				String.valueOf(def), String.valueOf(mdef), String.valueOf(hp),
+				String.valueOf(spd), String.valueOf(fr), String.valueOf(wr),
+				String.valueOf(er), job };
 
-	public void setFr(int fr) {
-		this.fr = fr;
-	}
+		return array;
 
-	public int getWr() {
-		return wr;
 	}
-
-	public void setWr(int wr) {
-		this.wr = wr;
-	}
-
-	public int getLr() {
-		return lr;
-	}
-
-	public void setLr(int lr) {
-		this.lr = lr;
-	}
-	
 }

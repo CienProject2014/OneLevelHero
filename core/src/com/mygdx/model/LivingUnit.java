@@ -1,6 +1,5 @@
 package com.mygdx.model;
 
-
 public class LivingUnit extends Unit implements Comparable<LivingUnit> {
 	private Status status;
 

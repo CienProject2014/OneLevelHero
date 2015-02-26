@@ -175,7 +175,9 @@
 		<property name="screenFactory" ref="screenFactory"></property>
 	</bean>
 	<bean id="saveScreen" class="com.mygdx.screen.SaveScreen" scope="prototype" />
-	<bean id="statusScreen" class="com.mygdx.screen.StatusScreen" scope="prototype" />
+	<bean id="statusScreen" class="com.mygdx.screen.StatusScreen" scope="prototype" >
+		<property name="stageFactory" ref="stageFactory"></property>
+	</bean>
 	<bean id="villageScreen" class="com.mygdx.screen.VillageScreen" scope="prototype" >
 		<property name="stageFactory" ref="stageFactory"></property>
 		<property name="musicManager" ref="musicManager"/>
@@ -240,7 +242,8 @@
 		<property name="placeManager" ref="placeManager"></property>
 	</bean>
 	<bean id="statusStage" class="com.mygdx.stage.StatusStage" scope="prototype" >
-		<property name="assets" ref="assets"></property>
+		<property name="screenFactory" ref="screenFactory"></property>
+		<property name="partyInfo" ref="partyInfo"></property>
 	</bean>
 	<bean id="villageStage" class="com.mygdx.stage.VillageStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>

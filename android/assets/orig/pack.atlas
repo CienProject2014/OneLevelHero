@@ -821,7 +821,6 @@ chest_before_open
   orig: 225, 198
   offset: 0, 0
   index: -1
-
   
 blackwood_forest_pack.png
 size: 2820,1080
@@ -854,5 +853,116 @@ button
   xy: 2520, 0
   size: 300, 102
   orig: 300, 102
+  offset: 0, 0
+  index: -1
+  
+status_pack.png
+size: 4096,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background
+  rotate: false
+  xy: 2, 2
+  size: 1690, 960
+  orig: 1690, 960
+  offset: 0, 0
+  index: -1
+close
+  rotate: false
+  xy: 3058, 540
+  size: 230, 240
+  orig: 230, 240
+  offset: 0, 0
+  index: -1
+endinglist
+  rotate: false
+  xy: 1694, 100
+  size: 560, 140
+  orig: 560, 140
+  offset: 0, 0
+  index: -1
+eresist
+  rotate: false
+  xy: 2256, 330
+  size: 800, 180
+  orig: 800, 180
+  offset: 0, 0
+  index: -1
+hero1
+  rotate: false
+  xy: 3860, 812
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+hero2
+  rotate: false
+  xy: 3058, 388
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+hero3
+  rotate: false
+  xy: 2488, 178
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+hero4
+  rotate: false
+  xy: 3210, 388
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+hero5
+  rotate: false
+  xy: 2640, 178
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+inventory
+  rotate: false
+  xy: 3290, 540
+  size: 230, 240
+  orig: 230, 240
+  offset: 0, 0
+  index: -1
+largehero
+  rotate: false
+  xy: 1694, 242
+  size: 560, 720
+  orig: 560, 720
+  offset: 0, 0
+  index: -1
+level
+  rotate: false
+  xy: 2256, 512
+  size: 800, 450
+  orig: 800, 450
+  offset: 0, 0
+  index: -1
+name
+  rotate: false
+  xy: 3058, 782
+  size: 800, 180
+  orig: 800, 180
+  offset: 0, 0
+  index: -1
+skill
+  rotate: false
+  xy: 3522, 540
+  size: 230, 240
+  orig: 230, 240
+  offset: 0, 0
+  index: -1
+status
+  rotate: false
+  xy: 2256, 88
+  size: 230, 240
+  orig: 230, 240
   offset: 0, 0
   index: -1
