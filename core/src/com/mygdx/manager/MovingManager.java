@@ -2,6 +2,7 @@ package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.PlaceEnum;
@@ -65,13 +66,14 @@ public class MovingManager {
 				screenFactory.show(ScreenEnum.VILLAGE);
 				break;
 			case DUNGEON:
-				screenFactory.show(ScreenEnum.VILLAGE);
+				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
 				break;
 			case FORK:
-				screenFactory.show(ScreenEnum.WORLD_MAP);
+				screenFactory.show(ScreenEnum.VILLAGE);
 				break;
 			default:
 				screenFactory.show(ScreenEnum.VILLAGE);
+				Gdx.app.debug("MovingManager", "CurrentNode 타입 오류");
 				break;
 		}
 	}

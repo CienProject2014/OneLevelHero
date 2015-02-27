@@ -1,7 +1,7 @@
 package com.mygdx.enums;
 
 public enum WorldNodeEnum {
-	BLACKWOOD("Blackwood");
+	BLACKWOOD("Blackwood"), BLACKWOOD_FOREST("Blackwood Forest");
 
 	private String nodeName;
 

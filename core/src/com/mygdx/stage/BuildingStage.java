@@ -13,6 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.manager.CameraManager;
+import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.NpcManager;
 import com.mygdx.manager.PlaceManager;
@@ -34,6 +36,8 @@ public class BuildingStage extends Overlap2DStage {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private PlaceManager placeManager;
+	@Autowired
+	private CameraManager cameraManager;
 	private List<CompositeItem> npcButtonList;
 	private Building buildingInfo;
 	private TextButton exitButton;
@@ -41,11 +45,11 @@ public class BuildingStage extends Overlap2DStage {
 	public Stage makeStage() {
 		makeScene();
 		setNpcList();
-		setexitButton();
+		setExitButton();
 		return this;
 	}
 
-	private void setexitButton() {
+	private void setExitButton() {
 		exitButton = new TextButton("나가기", assets.skin);
 		exitButton.center();
 		exitButton.addListener(new InputListener() {
@@ -73,6 +77,7 @@ public class BuildingStage extends Overlap2DStage {
 				.getBuilding().get(positionInfo.getCurrentBuilding());
 		initSceneLoader();
 		sceneLoader.loadScene(buildingInfo.getSceneName());
+		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
 	}
 
@@ -156,6 +161,14 @@ public class BuildingStage extends Overlap2DStage {
 
 	public void setAssets(Assets assets) {
 		this.assets = assets;
+	}
+
+	public CameraManager getCameraManager() {
+		return cameraManager;
+	}
+
+	public void setCameraManager(CameraManager cameraManager) {
+		this.cameraManager = cameraManager;
 	}
 
 }

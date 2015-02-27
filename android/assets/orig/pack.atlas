@@ -725,98 +725,287 @@ worldmaptextwinterfall
   index: -1
 
 blackwood_pack.png
-size: 1280,2822
+size: 3985,1847
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 blackwood_bg
   rotate: false
   xy: 0, 0
-  size: 1280, 1000
-  orig: 1280, 1000
-  offset: 0, 0
-  index: -1
-blackwood1
-  rotate: false
-  xy: 0, 1000
-  size: 233, 264
-  orig: 233, 264
-  offset: 0, 0
-  index: -1
-blackwood2
-  rotate: false
-  xy: 0, 1264
-  size: 233, 109
-  orig: 233, 109
-  offset: 0, 0
-  index: -1
-blackwood3
-  rotate: false
-  xy: 0, 1373
-  size: 222, 144
-  orig: 222, 144
-  offset: 0, 0
-  index: -1
-blackwood4
-  rotate: false
-  xy: 0, 1517
-  size: 233, 231
-  orig: 233, 231
-  offset: 0, 0
-  index: -1
-blackwood5
-  rotate: false
-  xy: 0, 1748
-  size: 146, 161
-  orig: 146, 161
-  offset: 0, 0
-  index: -1
-blackwood6
-  rotate: false
-  xy: 0, 1909
-  size: 166, 190
-  orig: 166, 190
+  size: 1920, 1500
+  orig: 1920, 1500
   offset: 0, 0
   index: -1
 blackwood7
   rotate: false
-  xy: 0, 2099
-  size: 1143, 723
-  orig: 1143, 723
+  xy: 1920, 0
+  size: 1715, 1224
+  orig: 1715, 1224
   offset: 0, 0
   index: -1
+blackwood1
+  rotate: false
+  xy: 3635, 0
+  size: 350, 396
+  orig: 350, 396
+  offset: 0, 0
+  index: -1
+blackwood4
+  rotate: false
+  xy: 0, 1500
+  size: 350, 347
+  orig: 350, 347
+  offset: 0, 0
+  index: -1
+blackwood6
+  rotate: false
+  xy: 350, 1500
+  size: 250, 286
+  orig: 250, 286
+  offset: 0, 0
+  index: -1
+blackwood5
+  rotate: false
+  xy: 600, 1500
+  size: 220, 243
+  orig: 220, 243
+  offset: 0, 0
+  index: -1
+blackwood3
+  rotate: false
+  xy: 820, 1500
+  size: 333, 216
+  orig: 333, 216
+  offset: 0, 0
+  index: -1
+blackwood2
+  rotate: false
+  xy: 1153, 1500
+  size: 350, 164
+  orig: 350, 164
+  offset: 0, 0
+  index: -1
+
+
   
 blackwood_headhouse_pack.png
-size: 1280,1229
+size: 2670,810
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-chest_after_open
+headhouse_bg
   rotate: false
   xy: 0, 0
-  size: 150, 159
-  orig: 150, 159
-  offset: 0, 0
-  index: -1
-chest_before_open
-  rotate: false
-  xy: 0, 159
-  size: 150, 132
-  orig: 150, 132
-  offset: 0, 0
-  index: -1
-headhouse
-  rotate: false
-  xy: 0, 291
-  size: 1280, 540
-  orig: 1280, 540
+  size: 1920, 810
+  orig: 1920, 810
   offset: 0, 0
   index: -1
 waiji_601
   rotate: false
-  xy: 0, 831
-  size: 200, 398
-  orig: 200, 398
+  xy: 1920, 0
+  size: 300, 597
+  orig: 300, 597
+  offset: 0, 0
+  index: -1
+chest_after_open
+  rotate: false
+  xy: 2220, 0
+  size: 225, 239
+  orig: 225, 239
+  offset: 0, 0
+  index: -1
+chest_before_open
+  rotate: false
+  xy: 2445, 0
+  size: 225, 198
+  orig: 225, 198
+  offset: 0, 0
+  index: -1
+  
+blackwood_forest_entrance_pack.png
+size: 2820,1080
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background_bg
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+signpost
+  rotate: false
+  xy: 1920, 0
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: false
+  xy: 2220, 0
+  size: 300, 138
+  orig: 300, 138
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 2520, 0
+  size: 300, 102
+  orig: 300, 102
+  offset: 0, 0
+  index: -1
+  
+status_pack.png
+size: 4096,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background
+  rotate: false
+  xy: 2, 2
+  size: 1690, 960
+  orig: 1690, 960
+  offset: 0, 0
+  index: -1
+close
+  rotate: false
+  xy: 3058, 540
+  size: 230, 240
+  orig: 230, 240
+  offset: 0, 0
+  index: -1
+endinglist
+  rotate: false
+  xy: 1694, 100
+  size: 560, 140
+  orig: 560, 140
+  offset: 0, 0
+  index: -1
+eresist
+  rotate: false
+  xy: 2256, 330
+  size: 800, 180
+  orig: 800, 180
+  offset: 0, 0
+  index: -1
+hero1
+  rotate: false
+  xy: 3860, 812
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+hero2
+  rotate: false
+  xy: 3058, 388
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+hero3
+  rotate: false
+  xy: 2488, 178
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+hero4
+  rotate: false
+  xy: 3210, 388
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+hero5
+  rotate: false
+  xy: 2640, 178
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+inventory
+  rotate: false
+  xy: 3290, 540
+  size: 230, 240
+  orig: 230, 240
+  offset: 0, 0
+  index: -1
+largehero
+  rotate: false
+  xy: 1694, 242
+  size: 560, 720
+  orig: 560, 720
+  offset: 0, 0
+  index: -1
+level
+  rotate: false
+  xy: 2256, 512
+  size: 800, 450
+  orig: 800, 450
+  offset: 0, 0
+  index: -1
+name
+  rotate: false
+  xy: 3058, 782
+  size: 800, 180
+  orig: 800, 180
+  offset: 0, 0
+  index: -1
+skill
+  rotate: false
+  xy: 3522, 540
+  size: 230, 240
+  orig: 230, 240
+  offset: 0, 0
+  index: -1
+status
+  rotate: false
+  xy: 2256, 88
+  size: 230, 240
+  orig: 230, 240
   offset: 0, 0
   index: -1
 
+  
+blackwood_forest_dungeon_pack.png
+size: 2436,1080
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dungeon_bg
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+arrow_up
+  rotate: false
+  xy: 1920, 0
+  size: 129, 77
+  orig: 129, 77
+  offset: 0, 0
+  index: -1
+arrow_down
+  rotate: false
+  xy: 2049, 0
+  size: 129, 77
+  orig: 129, 77
+  offset: 0, 0
+  index: -1
+arrow_left
+  rotate: false
+  xy: 2178, 0
+  size: 129, 66
+  orig: 129, 66
+  offset: 0, 0
+  index: -1
+arrow_right
+  rotate: false
+  xy: 2307, 0
+  size: 129, 66
+  orig: 129, 66
+  offset: 0, 0
+  index: -1
+ 

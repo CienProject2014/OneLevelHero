@@ -10,6 +10,16 @@ import com.mygdx.model.Hero;
 public class PartyInfo {
 	private List<Hero> partyList = new ArrayList<Hero>();
 	private List<Hero> battleMemberList = new ArrayList<Hero>();
+	private int selectedInedex = 0;
+
+	public int getSelectedInedex() {
+		return selectedInedex;
+	}
+
+	public void setSelectedInedex(int selectedInedex) {
+		this.selectedInedex = selectedInedex;
+	}
+
 	private final static int BATTLE_MEMBER_SIZE = 3;
 
 	public List<Hero> getPartyList() {
@@ -21,7 +31,7 @@ public class PartyInfo {
 	}
 
 	public void addHero(Hero hero) {
-		//이미 있는 파티멤버일 경우
+		// 이미 있는 파티멤버일 경우
 		if (partyList.contains(hero)) {
 			Gdx.app.log("Error", hero.getName() + "가 이미 멤버에 있습니다.");
 			return;
@@ -33,7 +43,7 @@ public class PartyInfo {
 
 			Gdx.app.log("Info", hero.getName() + "를 전투 멤버에 추가했습니다.");
 		} else {
-			//배틀멤버리스트가 꽉찼다면 배틀멤버리스트에 추가할건지 물어본다. 추후 구현
+			// 배틀멤버리스트가 꽉찼다면 배틀멤버리스트에 추가할건지 물어본다. 추후 구현
 		}
 	}
 

@@ -35,17 +35,16 @@ public class WorldMapStage extends Overlap2DStage {
 	private final int SET_POSITION = 15;
 
 	public Stage makeStage() {
-		// SceneLoader를 초기화
 		initSceneLoader();
-		// MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다.
-		// SceneVO가 반환되는데, 이것은 CompositeVO를 가지고 있다.
-		// CompositeVO는 그 Scene이 가지고 있는 Label, Button등을 다 가지고 있다.
+		/* MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다.
+		   SceneVO가 반환되는데, 이것은 CompositeVO를 가지고 있다.
+		   CompositeVO는 그 Scene이 가지고 있는 Label, Button등을 다 가지고 있다. */
 		sceneLoader.loadScene("worldmap_scene");
-		// getRoot()할시, CompositeItem이 반환된다.
-		// CompositeItem은 Composite들의 집합이다.
-		// getCompositeById로 하나하나 가져올수 있다.
-		// 현재 위치 버튼을 가져온다.
-		// getX로 Image의 위치를 가져올 수 있다.
+		/* getRoot()할시, CompositeItem이 반환된다.
+		   CompositeItem은 Composite들의 집합이다.
+		   getCompositeById로 하나하나 가져올수 있다.
+		   현재 위치 버튼을 가져온다.
+		   getX로 Image의 위치를 가져올 수 있다. */
 		currentPosition = sceneLoader.getRoot().getCompositeById("current");
 		currentNode = sceneLoader.getRoot().getImageById(
 				positionInfo.getCurrentNode());// 카메라 위치를 현재노드로 잡기 위하여 가져옴

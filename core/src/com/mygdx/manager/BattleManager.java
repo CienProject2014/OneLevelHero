@@ -13,7 +13,7 @@ public class BattleManager {
 	private MovingInfo movingInfo;
 	@Autowired
 	private PartyInfo partyInfo;
-	
+
 	private Battle battle = new Battle();
 	private Monster monster;
 
