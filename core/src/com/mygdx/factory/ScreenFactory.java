@@ -16,6 +16,7 @@ import com.mygdx.screen.CGScreen;
 import com.mygdx.screen.CollectionScreen;
 import com.mygdx.screen.CreditScreen;
 import com.mygdx.screen.DungeonEntranceScreen;
+import com.mygdx.screen.DungeonScreen;
 import com.mygdx.screen.EncounterScreen;
 import com.mygdx.screen.EndingScreen;
 import com.mygdx.screen.EventScreen;
@@ -65,6 +66,8 @@ public class ScreenFactory {
 				return context.getBean(CollectionScreen.class);
 			case CREDIT:
 				return context.getBean(CreditScreen.class);
+			case DUNGEON:
+				return context.getBean(DungeonScreen.class);
 			case DUNGEON_ENTRANCE:
 				return context.getBean(DungeonEntranceScreen.class);
 			case ENCOUNTER:

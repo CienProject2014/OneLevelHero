@@ -16,5 +16,8 @@
 	},
 	"old_battle":{
 		"filePath" : "sound/old_battle.mp3"
+	},
+	"mihok_forest":{
+		"filePath" : "sound/mihok_forest.mp3"
 	}
 }

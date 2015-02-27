@@ -11,6 +11,7 @@ import com.mygdx.stage.BattleStage;
 import com.mygdx.stage.BuildingStage;
 import com.mygdx.stage.CharacterUiStage;
 import com.mygdx.stage.DungeonEntranceStage;
+import com.mygdx.stage.DungeonStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.EventStage;
 import com.mygdx.stage.GameUiStage;
@@ -32,6 +33,8 @@ public class StageFactory {
 				return context.getBean(BuildingStage.class).makeStage();
 			case CHARACTER_UI:
 				return context.getBean(CharacterUiStage.class).makeStage();
+			case DUNGEON:
+				return context.getBean(DungeonStage.class).makeStage();
 			case DUNGEON_ENTRANCE:
 				return context.getBean(DungeonEntranceStage.class).makeStage();
 			case ENCOUNTER:

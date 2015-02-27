@@ -19,15 +19,14 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  * @author Velmont
  *
  */
-public class DungeonEntranceStage extends Overlap2DStage {
+public class DungeonStage extends Overlap2DStage {
 	@Autowired
 	private PositionInfo positionInfo; //나중에 쓸거임 지우지 마셈
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
 	private CameraManager cameraManager;
-	private CompositeItem entranceButton, saveButton, restButton,
-			worldMapButton;
+	private CompositeItem arrowUp, arrowDown, arrowLeft, arrowRight;
 
 	public Stage makeStage() {
 		makeScene();
@@ -37,22 +36,20 @@ public class DungeonEntranceStage extends Overlap2DStage {
 
 	private void makeScene() {
 		initSceneLoader();
-		//우선은 blackwood_forest_entrance_scene으로 통일하자
-		sceneLoader.loadScene("blackwood_forest_entrance_scene");
+		//우선은 blackwood_forest_dungeon_scene으로 통일하자
+		sceneLoader.loadScene("blackwood_forest_dungeon_scene");
 		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
 	}
 
 	private void setButton() {
-		entranceButton = sceneLoader.getRoot().getCompositeById(
-				"entrance_button");
-		saveButton = sceneLoader.getRoot().getCompositeById("save_button");
-		restButton = sceneLoader.getRoot().getCompositeById("rest_button");
-		worldMapButton = sceneLoader.getRoot().getCompositeById(
-				"worldmap_button");
+		arrowUp = sceneLoader.getRoot().getCompositeById("arrow_up");
+		arrowDown = sceneLoader.getRoot().getCompositeById("arrow_down");
+		arrowLeft = sceneLoader.getRoot().getCompositeById("arrow_left");
+		arrowRight = sceneLoader.getRoot().getCompositeById("arrow_right");
 
-		entranceButton.setTouchable(Touchable.enabled);
-		entranceButton.addListener(new InputListener() {
+		arrowUp.setTouchable(Touchable.enabled);
+		arrowUp.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -63,13 +60,12 @@ public class DungeonEntranceStage extends Overlap2DStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				Gdx.app.debug("DungeonEntranceStage", "던전으로 들어가자!");
-				screenFactory.show(ScreenEnum.DUNGEON);
+				Gdx.app.debug("DungeonStage", "앞으로 이동");
 			}
 		});
 
-		saveButton.setTouchable(Touchable.enabled);
-		saveButton.addListener(new InputListener() {
+		arrowDown.setTouchable(Touchable.enabled);
+		arrowDown.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -80,12 +76,13 @@ public class DungeonEntranceStage extends Overlap2DStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				Gdx.app.debug("DungeonEntranceStage", "게임이 저장되었다...");
+				Gdx.app.debug("DungeonStage", "뒤로 이동");
+				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
 			}
 		});
 
-		restButton.setTouchable(Touchable.enabled);
-		restButton.addListener(new InputListener() {
+		arrowLeft.setTouchable(Touchable.enabled);
+		arrowLeft.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -96,12 +93,12 @@ public class DungeonEntranceStage extends Overlap2DStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				Gdx.app.debug("DungeonEntranceStage", "잘 쉬었도다...");
+				Gdx.app.debug("DungeonStage", "왼쪽으로 이동");
 			}
 		});
 
-		worldMapButton.setTouchable(Touchable.enabled);
-		worldMapButton.addListener(new InputListener() {
+		arrowRight.setTouchable(Touchable.enabled);
+		arrowRight.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -112,9 +109,10 @@ public class DungeonEntranceStage extends Overlap2DStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.WORLD_MAP);
+				Gdx.app.debug("DungeonStage", "오른쪽으로 이동");
 			}
 		});
+
 	}
 
 	public PositionInfo getPositionInfo() {

@@ -129,6 +129,10 @@
 	<bean id="creditScreen" class="com.mygdx.screen.CreditScreen" scope="prototype" >
 		<property name="screenFactory" ref="screenFactory"/>
 	</bean>
+	<bean id="dungeonScreen" class="com.mygdx.screen.DungeonScreen" scope="prototype">
+		<property name="stageFactory" ref="stageFactory"></property>
+		<property name="musicManager" ref="musicManager"></property>
+	</bean>
 	<bean id="dungeonEntranceScreen" class="com.mygdx.screen.DungeonEntranceScreen" scope="prototype">
 		<property name="stageFactory" ref="stageFactory"></property>
 	</bean>
@@ -205,6 +209,11 @@
 	<bean id="characterUiStage" class="com.mygdx.stage.CharacterUiStage" scope="prototype" >
 		<property name="assets" ref="assets"></property>
 		<property name="partyInfo" ref="partyInfo"></property>
+	</bean>
+	<bean id="dungeonStage" class="com.mygdx.stage.DungeonStage" scope="prototype">
+		<property name="positionInfo" ref="positionInfo"></property>
+		<property name="screenFactory" ref="screenFactory"></property>
+		<property name="cameraManager" ref="cameraManager"></property>
 	</bean>
 	<bean id="dungeonEntranceStage" class="com.mygdx.stage.DungeonEntranceStage" scope="prototype">
 		<property name="positionInfo" ref="positionInfo"></property>

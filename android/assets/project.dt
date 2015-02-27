@@ -48,9 +48,9 @@
         1
       ],
       "physicsPropertiesVO": {},
-      "sceneName": "blackwood_forest_scene"
+      "sceneName": "blackwood_forest_entrance_scene"
     },
-	{
+    {
       "ambientColor": [
         0.5,
         0.5,
@@ -59,6 +59,16 @@
       ],
       "physicsPropertiesVO": {},
       "sceneName": "status_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "blackwood_forest_dungeon_scene"
     }
   ],
   "originalResolution": {

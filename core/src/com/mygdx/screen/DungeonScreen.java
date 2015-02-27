@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.StageFactory;
+import com.mygdx.manager.MusicManager;
 
 /**
  * DungeonEntranceStage와 GameUiStage를 addActor()해서 보여주는 Screen. 던전입구의 경우 multiplexer를 이용하여
@@ -17,10 +18,12 @@ import com.mygdx.factory.StageFactory;
  * @author Velmont
  * 
  */
-public class DungeonEntranceScreen implements Screen {
+public class DungeonScreen implements Screen {
 	@Autowired
 	private StageFactory stageFactory;
-	private Stage dungeonEntranceStage;
+	@Autowired
+	private MusicManager musicManager;
+	private Stage dungeonStage;
 	private Stage gameUiStage;
 
 	@Override
@@ -28,8 +31,8 @@ public class DungeonEntranceScreen implements Screen {
 		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		dungeonEntranceStage.draw();
-		dungeonEntranceStage.getCamera().update();
+		dungeonStage.draw();
+		dungeonStage.getCamera().update();
 		gameUiStage.draw();
 		// 카메라를 지속적으로 업데이트 해준다.
 
@@ -43,7 +46,7 @@ public class DungeonEntranceScreen implements Screen {
 
 	@Override
 	public void show() {
-		dungeonEntranceStage = stageFactory.makeStage(StageEnum.DUNGEON_ENTRANCE);
+		dungeonStage = stageFactory.makeStage(StageEnum.DUNGEON);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 
 		// 여러 스테이지에 인풋 프로세서를 동시에 할당한다
@@ -52,15 +55,16 @@ public class DungeonEntranceScreen implements Screen {
 		// 우선권을 준다.
 
 		multiplexer.addProcessor(0, gameUiStage);
-		multiplexer.addProcessor(1, dungeonEntranceStage);
+		multiplexer.addProcessor(1, dungeonStage);
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
+		musicManager.setWorldNodeMusicAndPlay();
 	}
 
 	@Override
 	public void hide() {
 		gameUiStage.dispose();
-		dungeonEntranceStage.dispose();
+		dungeonStage.dispose();
 		dispose();
 	}
 
@@ -86,6 +90,14 @@ public class DungeonEntranceScreen implements Screen {
 
 	public void setStageFactory(StageFactory stageFactory) {
 		this.stageFactory = stageFactory;
+	}
+
+	public MusicManager getMusicManager() {
+		return musicManager;
+	}
+
+	public void setMusicManager(MusicManager musicManager) {
+		this.musicManager = musicManager;
 	}
 
 }
