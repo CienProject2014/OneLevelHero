@@ -24,7 +24,7 @@ public class BattleScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
+
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		monsterStage.act(); // 몬스터 스테이지에 움직이는 요소가 있을 경우
