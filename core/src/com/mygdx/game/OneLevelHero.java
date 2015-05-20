@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import java.util.Objects;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -25,6 +27,10 @@ public class OneLevelHero extends Game {
 	public void gameLoad() {
 		context.getBean(ScreenFactory.class).setGame(this);
 		context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
+
+		Gdx.app.log("gameLoad", "Memory_total :" + Objects.toString(Runtime.getRuntime().totalMemory() / (1024 * 1024)) + "MB");
+		Gdx.app.log("gameLoad", "Memory_free :" + Objects.toString(Runtime.getRuntime().freeMemory() / (1024 * 1024)) + "MB");
+		Gdx.app.log("gameLoad", "Memory_use :" + Objects.toString((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024)) + "MB");
 	}
 
 	public boolean keyDown(int keycode) {

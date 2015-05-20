@@ -2,6 +2,7 @@ package com.mygdx.state;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Map.Entry;
 
 import com.badlogic.gdx.Gdx;
@@ -9,19 +10,19 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.JsonParser;
 import com.mygdx.model.JsonStringFile;
 import com.mygdx.model.TextureFile;
 
-public class StaticAssets {
+public class StaticAssets implements Disposable {
 	public static Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 	public static Map<String, Texture> characterTextureMap = new HashMap<String, Texture>();
 	public static Map<String, Texture> monsterTextureMap = new HashMap<String, Texture>();
 	public static Map<String, Texture> backgroundTextureMap = new HashMap<String, Texture>();
-	public static TextureAtlas items = new TextureAtlas(
-			"texture/items/items.pack");
+	public static TextureAtlas items = new TextureAtlas("texture/items/items.pack");
 	public static float windowWidth;
 	public static float windowHeight;
 
@@ -29,6 +30,10 @@ public class StaticAssets {
 		Gdx.app.debug("StaticAssets", "StaticAssets.loadAll() called");
 		loadSize(new Stage());
 		loadTexture();
+
+		Gdx.app.log("StaticAssets", "Memory_total :" + Objects.toString(Runtime.getRuntime().totalMemory() / (1024 * 1024)) + "MB");
+		Gdx.app.log("StaticAssets", "Memory_free :" + Objects.toString(Runtime.getRuntime().freeMemory() / (1024 * 1024)) + "MB");
+		Gdx.app.log("StaticAssets", "Memory_use :" + Objects.toString((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024)) + "MB");
 	}
 
 	public static void loadSize(Stage stage) {
@@ -65,5 +70,18 @@ public class StaticAssets {
 			backgroundTextureMap
 					.put(entry.getKey(), entry.getValue().getFile());
 		}
+	}
+
+	@Override
+	public void dispose() {
+		Gdx.app.log("StaticAssets", "Dispose");
+		skin.dispose();
+		for (Entry<String, Texture> entry : characterTextureMap.entrySet())
+			entry.getValue().dispose();
+		for (Entry<String, Texture> entry : monsterTextureMap.entrySet())
+			entry.getValue().dispose();
+		for (Entry<String, Texture> entry : backgroundTextureMap.entrySet())
+			entry.getValue().dispose();
+		items.dispose();
 	}
 }

@@ -2,13 +2,15 @@ package com.mygdx.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Disposable;
 
-public class TextureFile implements AssetsFile<Texture> {
+public class TextureFile implements Disposable, AssetsFile<Texture> {
 	private String filePath;
 	private Texture file;
 
 	@Override
 	public Texture getFile() {
+		Gdx.app.log("TextureFile", "getFile");
 		file = new Texture(Gdx.files.internal(filePath));
 		return file;
 	}
@@ -29,5 +31,11 @@ public class TextureFile implements AssetsFile<Texture> {
 
 	public void setFile(Texture file) {
 		this.file = file;
+	}
+
+	@Override
+	public void dispose() {
+		Gdx.app.log("TextureFile", "Dispose");
+		file.dispose();
 	}
 }

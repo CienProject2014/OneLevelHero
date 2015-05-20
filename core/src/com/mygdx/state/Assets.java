@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.currentState.RoadInfo;
@@ -30,11 +32,11 @@ import com.mygdx.model.WorldNode;
 
 /**
  * 각종 리소스들을 관리해주는 assets 클래스, Stage및 Screen에 필요한 요소들을 전달해준다.
- * 
+ *
  * @author Velmont
- * 
+ *
  */
-public class Assets {
+public class Assets implements Disposable {
 	public Skin skin;
 	public TextureAtlas items;
 
@@ -81,6 +83,10 @@ public class Assets {
 		loadResourceFile();
 		loadMapInfo();
 		loadUnitInfo();
+
+		Gdx.app.log("Assets", "Memory_total :" + Objects.toString(Runtime.getRuntime().totalMemory() / (1024 * 1024)) + "MB");
+		Gdx.app.log("Assets", "Memory_free :" + Objects.toString(Runtime.getRuntime().freeMemory() / (1024 * 1024)) + "MB");
+		Gdx.app.log("Assets", "Memory_use :" + Objects.toString((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024)) + "MB");
 	}
 
 	private void loadFilePath() {
@@ -132,7 +138,6 @@ public class Assets {
 	}
 
 	private void loadRoadInfo() {
-
 	}
 
 	private void loadHeroInfo() {
@@ -224,7 +229,6 @@ public class Assets {
 		for (Entry<String, String> entry : movingMusicStringMap.entrySet()) {
 			movingMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
 		}
-
 	}
 
 	// 임시용, 추후 제거 예정
@@ -232,5 +236,13 @@ public class Assets {
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
+	}
+
+	@Override
+	public void dispose() {
+		Gdx.app.log("Assets", "Dispose");
+		skin.dispose();
+		items.dispose();
+		splash.dispose();
 	}
 }

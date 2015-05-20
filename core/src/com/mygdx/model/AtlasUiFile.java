@@ -2,22 +2,26 @@ package com.mygdx.model;
 
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Disposable;
 
-public class AtlasUiFile implements AssetsFile<TextureAtlas> {
+public class AtlasUiFile implements Disposable, AssetsFile<TextureAtlas> {
 	private List<String> element;
 	private String name;
 	private String filePath;;
+	private TextureAtlas file;
 
 	@Override
 	public TextureAtlas getFile() {
-		TextureAtlas file = new TextureAtlas(filePath);
+		Gdx.app.log("AtlasUiFile", "getFile");
+		file = new TextureAtlas(filePath);
 		return file;
 	}
 
 	@Override
 	public TextureAtlas getTestFile() {
-		TextureAtlas file = new TextureAtlas("../android/assets/" + filePath);
+		file = new TextureAtlas("../android/assets/" + filePath);
 		return file;
 	}
 
@@ -45,4 +49,9 @@ public class AtlasUiFile implements AssetsFile<TextureAtlas> {
 		this.filePath = filePath;
 	}
 
+	@Override
+	public void dispose() {
+		Gdx.app.log("TextureFile", "Dispose");
+		file.dispose();
+	}
 }

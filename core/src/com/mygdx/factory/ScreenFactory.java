@@ -100,6 +100,7 @@ public class ScreenFactory {
 	}
 
 	public void show(ScreenEnum screenEnum) {
+		Gdx.app.log("ScreenFactory", "show : " + screenEnum.toString());
 		Gdx.app.debug("ScreenFactory", "Show " + screenEnum.toString()
 				+ " Screen");
 		if (game == null) {
@@ -124,5 +125,4 @@ public class ScreenFactory {
 		}
 		screens.clear();
 	}
-
 }
