@@ -9,7 +9,7 @@ import com.mygdx.enums.ScreenEnum;
 
 /**
  * 기여자 목록을 뿌려주는 Screen 클래스
- * 
+ *
  * @author Velmont
  *
  */
@@ -68,7 +68,7 @@ public class CreditScreen extends RootScreen {
 		/*
 		 * EventManager.getInstance().setEventCode("Crd-scene-1");
 		 * EventManager.getInstance().setEventType(EventTypeEnum.CREDIT);
-		 * 
+		 *
 		 * if (EventManager.getInstance().getEventType() == EventTypeEnum.CREDIT)
 		 * 	scene = new CreditScene(stage, batch, EventManager.getInstance().getEventCode());
 		 * else Gdx.app.log("Error", "Scene 주입 에러"); // 파싱을 하기 위한 로드 scene.load();

@@ -10,7 +10,7 @@ import com.mygdx.enums.BuildingTypeEnum;
 
 /**
  * 마을 내부에 존재하는 건물
- * 
+ *
  * @author Velmont
  *
  */

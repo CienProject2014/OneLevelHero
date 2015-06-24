@@ -12,7 +12,7 @@ import com.mygdx.model.EventScene;
 
 /**
  * make and return stage(Event)
- * 
+ *
  * @author Velmont
  *
  */
@@ -25,7 +25,7 @@ public class EventStage extends RootStage {
 
 	/**
 	 * EventManager로부터 eventScene정보를 받아 그래픽처리를 해준다.
-	 * 
+	 *
 	 * @param eventScene
 	 * @return
 	 */
@@ -53,6 +53,7 @@ public class EventStage extends RootStage {
 		this.addActor(backgroundImage);
 		this.addActor(script);
 		this.addActor(characterImage);
+
 		return this;
 	}
 

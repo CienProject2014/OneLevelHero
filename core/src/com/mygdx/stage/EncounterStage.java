@@ -27,6 +27,7 @@ public class EncounterStage extends RootStage {
 		addActor(selTable); // show selTable
 
 		addListener(); // 리스너 할당
+
 		return this;
 	}
 

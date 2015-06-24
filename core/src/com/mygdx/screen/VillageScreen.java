@@ -8,9 +8,9 @@ import com.mygdx.enums.StageEnum;
 /**
  * VillageStage와 GameUiStage를 addActor()해서 보여주는 Screen 마을의 경우 multiplexer를 이용하여
  * 2개의 화면을 교차로 보여준다.
- * 
+ *
  * @author Velmont
- * 
+ *
  */
 public class VillageScreen extends RootScreen {
 	private String villageName;

@@ -27,6 +27,7 @@ public class StatusStage extends RootOverlap2DStage {
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
+
 		sceneLoader.loadScene("status_scene");
 		addActor(sceneLoader.getRoot());
 		setCamera();

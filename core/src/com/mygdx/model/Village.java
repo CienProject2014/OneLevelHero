@@ -14,7 +14,7 @@ import com.mygdx.manager.TextureManager;
 
 /**
  * Village 모델 클래스
- * 
+ *
  * @author Velmont
  *
  */

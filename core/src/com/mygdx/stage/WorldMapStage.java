@@ -27,6 +27,7 @@ public class WorldMapStage extends RootOverlap2DStage {
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
+
 		/*
 		 * MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다.
 		 * SceneVO가 반환되는데, 이것은 CompositeVO를 가지고 있다.
@@ -69,6 +70,7 @@ public class WorldMapStage extends RootOverlap2DStage {
 		}
 		addActor(sceneLoader.getRoot());
 		setCamera();
+
 		return this;
 	}
 

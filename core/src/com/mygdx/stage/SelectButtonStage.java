@@ -72,6 +72,7 @@ public class SelectButtonStage extends RootStage {
 		addActors();
 		addListener();
 		setexitButton();
+
 		return this;
 	}
 

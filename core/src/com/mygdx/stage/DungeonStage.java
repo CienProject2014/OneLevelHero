@@ -24,8 +24,10 @@ public class DungeonStage extends RootOverlap2DStage {
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
+
 		makeScene();
 		setButton();
+
 		return this;
 	}
 

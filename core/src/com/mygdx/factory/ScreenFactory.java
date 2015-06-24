@@ -51,7 +51,7 @@ public class ScreenFactory {
 	}
 
 	private Screen getScreenInstance(ScreenEnum screenEnum) {
-		Gdx.app.debug("ScreenFactory", "getScreenInstance(" + screenEnum.toString() + ")");
+		Gdx.app.log("ScreenFactory", "getScreenInstance(" + screenEnum.toString() + ")");
 		switch (screenEnum) {
 		case BATTLE:
 			return context.getBean(BattleScreen.class);

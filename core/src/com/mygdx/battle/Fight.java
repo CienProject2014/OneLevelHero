@@ -11,7 +11,7 @@ public class Fight {
 	boolean outcome;
 	public boolean battleEnd = false;
 	String dungeonID;
-	
+
 	public Fight() {}
 
 	public Fight(String dungeonID) {

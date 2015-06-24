@@ -13,7 +13,7 @@ import com.mygdx.model.NPC;
 
 /**
  * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스 CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을 CHAT이벤트가 끝날때까지 리턴해준다.
- * 
+ *
  * @author Velmont
  *
  */

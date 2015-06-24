@@ -10,20 +10,20 @@
            http://www.springframework.org/schema/util/spring-util.xsd
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
-           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 	<context:annotation-config/>
-	
+
 	<bean id="assets" class="com.mygdx.state.Assets"/>
-	
+
 	<bean id="currentState" class="com.mygdx.currentState.CurrentState">
 		<property name="partyInfo" ref="partyInfo"/>
 		<property name="inventoryInfo" ref="inventoryInfo"/>
 		<property name="positionInfo" ref="positionInfo"/>
 		<property name="movingInfo" ref="movingInfo"/>
 	</bean>
-	
+
 	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo"/>
 	<bean id="inventoryInfo" class="com.mygdx.currentState.InventoryInfo"/>
 	<bean id="movingInfo" class="com.mygdx.currentState.MovingInfo"/>
@@ -36,10 +36,10 @@
 		<property name="assets" ref="assets"/>
 	</bean>
 	<bean id="timeInfo" class="com.mygdx.currentState.TimeInfo"/>
-	
+
 	<bean id="screenFactory" class="com.mygdx.factory.ScreenFactory"/>
 	<bean id="stageFactory" class="com.mygdx.factory.StageFactory"/>
-	
+
 	<bean id="battleManager" class="com.mygdx.manager.BattleManager">
 		<property name="movingInfo" ref="movingInfo"/>
 		<property name="partyInfo" ref="partyInfo"/>
@@ -105,7 +105,7 @@
 		<property name="positionInfo" ref="positionInfo"/>
 		<property name="assets" ref="assets"/>
 	</bean>
-	
+
 	<bean id="rootScreen" class="com.mygdx.screen.RootScreen" scope="prototype">
 		<property name="assets" ref="assets"/>
 		<property name="screenFactory" ref="screenFactory"/>
@@ -145,7 +145,7 @@
 	<bean id="statusScreen" class="com.mygdx.screen.StatusScreen" scope="prototype"/>
 	<bean id="villageScreen" class="com.mygdx.screen.VillageScreen" scope="prototype"/>
 	<bean id="worldMapScreen" class="com.mygdx.screen.WorldMapScreen" scope="prototype"/>
-	
+
 	<bean id="rootStage" class="com.mygdx.stage.RootStage" scope="prototype">
 		<property name="assets" ref="assets"/>
 		<property name="screenFactory" ref="screenFactory"/>

@@ -27,7 +27,9 @@ public class VillageStage extends RootOverlap2DStage {
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
+
 		setVillage();
+
 		return this;
 	}
 

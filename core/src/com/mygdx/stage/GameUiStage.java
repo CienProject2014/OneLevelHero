@@ -2,7 +2,6 @@ package com.mygdx.stage;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +12,11 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -66,10 +63,7 @@ public class GameUiStage extends RootStage {
 	private float realheight;
 	private float realwidth;
 
-	private Map<String, TextureRegionDrawable> atlasUiMap;
-
 	public Stage makeStage() {
-		atlasUiMap = assets.atlasUiMap;
 		// 초기화
 		uiTable = new Table();
 		realheight = assets.windowHeight;
@@ -99,19 +93,18 @@ public class GameUiStage extends RootStage {
 		toptable = new Table(assets.skin);
 		bottomtable = new Table(assets.skin);
 
-		TextButtonStyle style = new TextButtonStyle(atlasUiMap.get("nameAndTime"), atlasUiMap.get("nameAndTime"), atlasUiMap.get("nameAndTime"), assets.font);
-		downArrowButton = new ImageButton(atlasUiMap.get("downArrowButton"), atlasUiMap.get("downArrowButton"));
-		bagButton = new ImageButton(atlasUiMap.get("bagButton"), assets.atlasUiMap.get("bagButton"));
+		TextButtonStyle style = new TextButtonStyle(assets.atlasUiMap.get("nameAndTime"), assets.atlasUiMap.get("nameAndTime"), assets.atlasUiMap.get("nameAndTime"), assets.font);
+		downArrowButton = new ImageButton(assets.atlasUiMap.get("downArrowButton"), assets.atlasUiMap.get("downArrowButton"));
+		bagButton = new ImageButton(assets.atlasUiMap.get("bagButton"), assets.atlasUiMap.get("bagButton"));
 		worldMapButton = new TextButton("worldMap", style);
 		leftTimeButton = new TextButton("12h30m", style);
-		helpButton = new ImageButton(atlasUiMap.get("helpButton"), atlasUiMap.get("helpButton"));
-		optionButton = new ImageButton(atlasUiMap.get("optionButton"), atlasUiMap.get("optionButton"));
+		helpButton = new ImageButton(assets.atlasUiMap.get("helpButton"), assets.atlasUiMap.get("helpButton"));
+		optionButton = new ImageButton(assets.atlasUiMap.get("optionButton"), assets.atlasUiMap.get("optionButton"));
 		battleButton = new TextButton("Battle", assets.skin);
 
 		// 인벤토리 Actor 만들기
 		dragAndDrop = new DragAndDrop();
-		Skin skin = assets.skin;
-		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop, skin);
+		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop, assets.skin);
 
 		// 보상 이벤트 처리
 		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue().iterator();
@@ -136,6 +129,7 @@ public class GameUiStage extends RootStage {
 			nextIterator.setVisible(true);
 			rewardManager.pollRewardQueue();
 		}
+
 		return this;
 	}
 
@@ -255,7 +249,6 @@ public class GameUiStage extends RootStage {
 	@Override
 	public void dispose() {
 		inventoryActor.remove();
-		// alertMessage.remove();
 		super.dispose();
 	}
 

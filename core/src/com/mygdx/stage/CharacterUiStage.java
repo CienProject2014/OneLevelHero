@@ -38,6 +38,7 @@ public class CharacterUiStage extends RootStage {
 		uiTable.add(bottomTable);
 
 		addActor(uiTable);
+
 		return this;
 	}
 
@@ -65,7 +66,6 @@ public class CharacterUiStage extends RootStage {
 			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, assets.skin);
 			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, assets.skin);
 			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false, assets.skin);
-
 			hpbar[i].setName("hpbar[" + i + "]");
 			hpbarName[i] = hpbar[i].getName();
 		}
@@ -104,7 +104,7 @@ public class CharacterUiStage extends RootStage {
 			/*
 			 * int hpValue = battleMemberList.get(i).getStatus().getHp();
 			 * Gdx.app.log("이름?", hpbar[i].getName());
-			 * 
+			 *
 			 * if (!hpbar[i].setValue(hpValue))
 			 * 	Gdx.app.log("GameUiStage", "체력 설정 실패");
 			 */

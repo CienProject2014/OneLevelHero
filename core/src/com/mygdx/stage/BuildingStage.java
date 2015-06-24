@@ -27,9 +27,11 @@ public class BuildingStage extends RootOverlap2DStage {
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
+
 		makeScene();
 		setNpcList();
 		setExitButton();
+
 		return this;
 	}
 

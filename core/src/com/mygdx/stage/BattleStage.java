@@ -92,6 +92,7 @@ public class BattleStage extends RootOverlap2DStage {
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
+
 		cam = new OrthographicCamera(1920f, 1080f);
 		cam.position.set(1920 / 2.0f, 1080 / 2.0f, 0);
 		getViewport().setCamera(cam);

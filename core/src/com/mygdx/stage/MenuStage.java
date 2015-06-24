@@ -95,6 +95,7 @@ public class MenuStage extends RootStage {
 		this.addActor(background);
 		this.addActor(logo);
 		this.addActor(table);
+
 		return this;
 	}
 }

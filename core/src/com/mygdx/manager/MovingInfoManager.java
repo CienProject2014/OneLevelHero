@@ -9,7 +9,7 @@ import com.mygdx.state.Assets;
 
 /**
  * WorldMapScreen에서 목적지 노드를 선택할 시에 movingInfo를 설정해주는 클래스.
- * 
+ *
  * @author Velmont
  *
  */

@@ -36,6 +36,7 @@ public class MonsterStage extends RootStage {
 		innerTableHeight = windowHeight * 0.625f;
 		monster = movingInfo.getSelectedMonster();
 		setMonsterTable();
+
 		return this;
 	}
 

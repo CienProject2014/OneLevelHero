@@ -8,9 +8,9 @@ import com.mygdx.enums.StageEnum;
 /**
  * DungeonEntranceStage와 GameUiStage를 addActor()해서 보여주는 Screen.
  * 던전입구의 경우 multiplexer를 이용하여 2개의 화면을 교차로 보여준다.
- * 
+ *
  * @author Velmont
- * 
+ *
  */
 public class DungeonEntranceScreen extends RootScreen {
 	private Stage dungeonEntranceStage;

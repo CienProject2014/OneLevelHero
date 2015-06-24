@@ -11,7 +11,7 @@ import com.mygdx.state.Assets;
 
 /**
  * WorldMap에서 MovingInfoManager를 통해 설정된 MovingInfo를 받아와서 Monster를 만들어낸다.
- * 
+ *
  * @author Velmont
  *
  */
