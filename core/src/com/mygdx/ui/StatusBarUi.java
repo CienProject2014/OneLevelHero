@@ -15,33 +15,26 @@ public class StatusBarUi extends ProgressBar implements Disposable {
 
 	public StatusBarUi(String name, float min, float max, float stepSize,
 			boolean vertical, Skin skin) {
-		super(min, max, stepSize, vertical, skin.get("default-"
-				+ (vertical ? "vertical" : "horizontal"),
-				ProgressBarStyle.class));
-		Gdx.app.log("StatusBarUi", "Called");
+		super(min, max, stepSize, vertical, skin.get("default-" + (vertical ? "vertical" : "horizontal"), ProgressBarStyle.class));
+		Gdx.app.debug("StatusBarUi", "Called");
 		this.name = name;
 		setStyle(barsStyle(this.name));
 	}
 
 	public ProgressBarStyle barsStyle(String name) {
 		bartexture = new Texture(Gdx.files.internal("texture/bgcolour.png"));
-		TextureRegion barregion = new TextureRegion(bartexture);
-		TextureRegionDrawable bardrawable = new TextureRegionDrawable(barregion);
-		bartextureknob = new Texture(Gdx.files.internal("texture/" + name
-				+ "colour.png"));
-		TextureRegion barregionknob = new TextureRegion(bartexture);
-		TextureRegionDrawable bardrawableknob = new TextureRegionDrawable(
-				barregionknob);
+		bartextureknob = new Texture(Gdx.files.internal("texture/" + name + "colour.png"));
 
-		ProgressBarStyle style = new ProgressBarStyle(bardrawable,
-				bardrawableknob);
+		ProgressBarStyle style = new ProgressBarStyle(
+				new TextureRegionDrawable(new TextureRegion(bartexture)),
+				new TextureRegionDrawable(new TextureRegion(bartexture)));
 
 		return style;
 	}
 
 	@Override
 	public void dispose() {
-		Gdx.app.log("StatusBarUi", "Dispose");
+		Gdx.app.debug("StatusBarUi", "Dispose");
 		bartexture.dispose();
 		bartextureknob.dispose();
 	}

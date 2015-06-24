@@ -83,8 +83,7 @@ public class MusicManager {
 			int delayTime = 2000;
 			Timer.schedule(new Task() {
 				@Override
-				public void run() {
-				}
+				public void run() {}
 			}, delayTime);
 			setMusic(music);
 			setVolume(volume);
@@ -92,9 +91,8 @@ public class MusicManager {
 			break;
 		case IF_IS_NOT_PLAYING:
 			if (musicInfo.getMusic() != null) {
-				if (musicInfo.getMusic().isPlaying()) {
+				if (musicInfo.getMusic().isPlaying())
 					return;
-				}
 			} else {
 				setMusic(music);
 				setVolume(volume);
@@ -119,8 +117,7 @@ public class MusicManager {
 	}
 
 	public void setWorldNodeMusicAndPlay() {
-		Music music = assets.worldNodeMusicMap.get(positionInfo
-				.getCurrentNode());
+		Music music = assets.worldNodeMusicMap.get(positionInfo.getCurrentNode());
 		setMusicAndPlay(music);
 	}
 

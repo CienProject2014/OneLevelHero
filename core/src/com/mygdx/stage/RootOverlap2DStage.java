@@ -23,43 +23,34 @@ public class RootOverlap2DStage extends Overlap2DStage {
 	protected PartyInfo partyInfo;
 	@Autowired
 	protected PositionInfo positionInfo;
-
+	
 	public Assets getAssets() {
 		return assets;
 	}
-
 	public void setAssets(Assets assets) {
 		this.assets = assets;
 	}
-
 	public ScreenFactory getScreenFactory() {
 		return screenFactory;
 	}
-
 	public void setScreenFactory(ScreenFactory screenFactory) {
 		this.screenFactory = screenFactory;
 	}
-
 	public CameraManager getCameraManager() {
 		return cameraManager;
 	}
-
 	public void setCameraManager(CameraManager cameraManager) {
 		this.cameraManager = cameraManager;
 	}
-
 	public PartyInfo getPartyInfo() {
 		return partyInfo;
 	}
-
 	public void setPartyInfo(PartyInfo partyInfo) {
 		this.partyInfo = partyInfo;
 	}
-
 	public PositionInfo getPositionInfo() {
 		return positionInfo;
 	}
-
 	public void setPositionInfo(PositionInfo positionInfo) {
 		this.positionInfo = positionInfo;
 	}

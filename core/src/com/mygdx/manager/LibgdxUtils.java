@@ -54,8 +54,7 @@ public class LibgdxUtils implements ApplicationListener {
 	 */
 	public static final Game game = new Game() {
 		@Override
-		public void create() {
-		}
+		public void create() {}
 	};
 
 	/**
@@ -132,11 +131,9 @@ public class LibgdxUtils implements ApplicationListener {
 		game.dispose();
 		assets.dispose();
 
-		if (spriteBatch != null) {
+		if (spriteBatch != null)
 			spriteBatch.dispose();
-		}
-		if (modelBatch != null) {
+		if (modelBatch != null)
 			modelBatch.dispose();
-		}
 	}
 }

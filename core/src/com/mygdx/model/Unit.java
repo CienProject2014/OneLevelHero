@@ -11,11 +11,10 @@ public class Unit {
 
 	public Texture getBattleTexture() {
 		if (battleTexture == null) {
-			if (this instanceof NPC || this instanceof Hero) {
+			if (this instanceof NPC || this instanceof Hero)
 				battleTexture = TextureManager.getCharacterBattleTexture(name);
-			} else {
+			else
 				battleTexture = TextureManager.getMonsterBattleTexture(name);
-			}
 		}
 		return battleTexture;
 	}
@@ -33,9 +32,9 @@ public class Unit {
 	}
 
 	public Texture getStatusTexture() {
-		if (statusTexture == null) {
+		if (statusTexture == null)
 			statusTexture = TextureManager.getStatusTexture(name);
-		}
+
 		return statusTexture;
 	}
 
@@ -48,9 +47,9 @@ public class Unit {
 	}
 
 	public void setNpcTexture(Texture npcTexture) {
-		if (npcTexture == null) {
+		if (npcTexture == null)
 			npcTexture = TextureManager.getNpcTexture(name);
-		}
+
 		this.npcTexture = npcTexture;
 	}
 }

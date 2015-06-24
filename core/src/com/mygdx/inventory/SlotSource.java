@@ -45,9 +45,8 @@ public class SlotSource extends Source {
 
 	@Override
 	public Payload dragStart(InputEvent event, float x, float y, int pointer) {
-		if (sourceSlot.getAmount() == 0) {
+		if (sourceSlot.getAmount() == 0)
 			return null;
-		}
 
 		Payload payload = new Payload();
 		Slot payloadSlot = new Slot(sourceSlot.getItem(),
@@ -78,18 +77,16 @@ public class SlotSource extends Source {
 		Slot payloadSlot = (Slot) payload.getObject();
 		if (target != null) {
 			Slot targetSlot = ((SlotActor) target.getActor()).getSlot();
-			if (targetSlot.getItem() == payloadSlot.getItem()
-					|| targetSlot.getItem() == null) {
+			if (targetSlot.getItem() == payloadSlot.getItem() || targetSlot.getItem() == null)
 				targetSlot.add(payloadSlot.getItem(), payloadSlot.getAmount());
-			} else {
+			else {
 				ItemEnum targetType = targetSlot.getItem();
 				int targetAmount = targetSlot.getAmount();
 				targetSlot.take(targetAmount);
 				targetSlot.add(payloadSlot.getItem(), payloadSlot.getAmount());
 				sourceSlot.add(targetType, targetAmount);
 			}
-		} else {
+		} else
 			sourceSlot.add(payloadSlot.getItem(), payloadSlot.getAmount());
-		}
 	}
 }

@@ -122,9 +122,8 @@ public class BattleStage extends RootOverlap2DStage {
 
 		orderedUnits = new LinkedList<LivingUnit>(units);
 
-		for (LivingUnit unit : units) {
+		for (LivingUnit unit : units)
 			Gdx.app.log("BattleStage", "유닛이름: " + unit.getName());
-		}
 	}
 
 	public void makeTable() {
@@ -148,8 +147,7 @@ public class BattleStage extends RootOverlap2DStage {
 
 		for (LivingUnit unit : orderedUnits) {
 			Gdx.app.log("Unit name", unit.getName());
-			orderTable.add(new Image(unit.getBattleTexture()))
-					.width(maximumWidth).height(maximumHeight);
+			orderTable.add(new Image(unit.getBattleTexture())).width(maximumWidth).height(maximumHeight);
 			orderTable.row();
 		}
 
@@ -157,14 +155,10 @@ public class BattleStage extends RootOverlap2DStage {
 	}
 
 	public void setButton() {
-		attackButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
-				.getCompositeById("attackButton"));
-		skillButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
-				.getCompositeById("skillButton"));
-		inventoryButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
-				.getCompositeById("inventoryButton"));
-		escapeButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
-				.getCompositeById("escapeButton"));
+		attackButton = SimpleButtonScript.selfInit(sceneLoader.getRoot().getCompositeById("attackButton"));
+		skillButton = SimpleButtonScript.selfInit(sceneLoader.getRoot().getCompositeById("skillButton"));
+		inventoryButton = SimpleButtonScript.selfInit(sceneLoader.getRoot().getCompositeById("inventoryButton"));
+		escapeButton = SimpleButtonScript.selfInit(sceneLoader.getRoot().getCompositeById("escapeButton"));
 
 		addListener();
 	}
@@ -186,9 +180,8 @@ public class BattleStage extends RootOverlap2DStage {
 				battleManager.userAttack(actor);
 				updateTable();
 
-				if (getNextActor() instanceof Monster) {
+				if (getNextActor() instanceof Monster)
 					monsterTrigger = true;
-				}
 			}
 		});
 
@@ -213,14 +206,6 @@ public class BattleStage extends RootOverlap2DStage {
 				screenFactory.show(ScreenEnum.MOVING);
 			}
 		});
-	}
-
-	public BattleManager getBattleManager() {
-		return battleManager;
-	}
-
-	public void setBattleManager(BattleManager battleManager) {
-		this.battleManager = battleManager;
 	}
 
 	public MovingInfo getMovingInfo() {

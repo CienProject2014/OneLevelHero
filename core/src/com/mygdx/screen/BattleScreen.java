@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
-import com.mygdx.factory.StageFactory;
-import com.mygdx.manager.MusicManager;
 
 public class BattleScreen extends RootScreen {
 	private Stage gameUiStage, characterUiStage, monsterStage, battleStage;
@@ -53,37 +51,5 @@ public class BattleScreen extends RootScreen {
 		multiplexer.addProcessor(2, monsterStage);
 		multiplexer.addProcessor(3, battleStage);
 		Gdx.input.setInputProcessor(multiplexer);
-	}
-
-	@Override
-	public void hide() {}
-
-	@Override
-	public void pause() {}
-
-	@Override
-	public void resume() {}
-
-	@Override
-	public void dispose() {}
-
-	@Override
-	public StageFactory getStageFactory() {
-		return stageFactory;
-	}
-
-	@Override
-	public void setStageFactory(StageFactory stageFactory) {
-		this.stageFactory = stageFactory;
-	}
-
-	@Override
-	public MusicManager getMusicManager() {
-		return musicManager;
-	}
-
-	@Override
-	public void setMusicManager(MusicManager musicManager) {
-		this.musicManager = musicManager;
 	}
 }

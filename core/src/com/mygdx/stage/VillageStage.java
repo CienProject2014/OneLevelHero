@@ -33,8 +33,7 @@ public class VillageStage extends RootOverlap2DStage {
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		Gdx.app.debug("VillageStage",
-				String.valueOf(positionInfo.getCurrentNode()));
+		Gdx.app.debug("VillageStage", String.valueOf(positionInfo.getCurrentNode()));
 		// 임시로 블랙우드 정보를 넣는다.
 		// villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
 		villageInfo = assets.villageMap.get("Blackwood");
@@ -49,14 +48,12 @@ public class VillageStage extends RootOverlap2DStage {
 		shiftButton.center();
 		shiftButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (backgroundDirection.equals(BackgroundDirection.DOWN))
 					backgroundDirection = BackgroundDirection.MOVE_UP;
 				else if (backgroundDirection.equals(BackgroundDirection.UP))
@@ -87,15 +84,12 @@ public class VillageStage extends RootOverlap2DStage {
 	}
 
 	private void checkCameraPosition() {
-		if (this.getCamera().position.y > sceneLoader.getRoot().getHeight()
-				- this.getCamera().viewportHeight / 2 * 0.90f) {
-			this.getCamera().position.y = sceneLoader.getRoot().getHeight()
-					- this.getCamera().viewportHeight / 2 * 0.90f;
+		if (this.getCamera().position.y > sceneLoader.getRoot().getHeight() - this.getCamera().viewportHeight / 2 * 0.90f) {
+			this.getCamera().position.y = sceneLoader.getRoot().getHeight() - this.getCamera().viewportHeight / 2 * 0.90f;
 			backgroundDirection = BackgroundDirection.UP;
 
 			shiftButton.setVisible(true);
-		} else if (this.getCamera().position.y < sceneLoader.getRoot()
-				.getHeight() * 0.25f) {
+		} else if (this.getCamera().position.y < sceneLoader.getRoot().getHeight() * 0.25f) {
 			this.getCamera().position.y = sceneLoader.getRoot().getHeight() * 0.25f;
 			backgroundDirection = BackgroundDirection.DOWN;
 
@@ -104,21 +98,17 @@ public class VillageStage extends RootOverlap2DStage {
 	}
 
 	private void setBuildingButton() {
-		for (final Entry<String, Building> building : villageInfo.getBuilding()
-				.entrySet()) {
-			CompositeItem buildingButton = sceneLoader.getRoot()
-					.getCompositeById(building.getValue().getBuildingPath());
+		for (final Entry<String, Building> building : villageInfo.getBuilding().entrySet()) {
+			CompositeItem buildingButton = sceneLoader.getRoot().getCompositeById(building.getValue().getBuildingPath());
 			buildingButton.setTouchable(Touchable.enabled);
 			buildingButton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					positionInfo.setCurrentBuilding(building.getKey());
 					positionInfo.setCurrentPlace(PlaceEnum.BUILDING);
 					screenFactory.show(ScreenEnum.BUILDING);

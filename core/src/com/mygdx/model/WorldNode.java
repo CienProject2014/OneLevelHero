@@ -43,7 +43,6 @@ public class WorldNode implements Serializable {
 	public void read(Json json, JsonValue jsonData) {
 		nodeName = json.readValue("nodeName", String.class, jsonData);
 		type = json.readValue("type", String.class, jsonData);
-		connection = JsonParser.parseMap(Connection.class,
-				jsonData.get("connection").toString());
+		connection = JsonParser.parseMap(Connection.class, jsonData.get("connection").toString());
 	}
 }

@@ -52,8 +52,7 @@ public class SlotTooltip extends Window implements SlotListener {
 		// title displays the amount
 		setTitle(slot.getAmount() + "x " + slot.getItem());
 		clear();
-		Label label = new Label("Super awesome description of "
-				+ slot.getItem(), skin);
+		Label label = new Label("Super awesome description of " + slot.getItem(), skin);
 		add(label);
 		pack();
 	}
@@ -63,8 +62,7 @@ public class SlotTooltip extends Window implements SlotListener {
 		super.setVisible(visible);
 		// the listener sets this to true in case the slot is hovered
 		// however, we don't want that in case the slot is empty
-		if (slot.isEmpty()) {
+		if (slot.isEmpty())
 			super.setVisible(false);
-		}
 	}
 }

@@ -15,8 +15,7 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  *
  */
 public class DungeonEntranceStage extends RootOverlap2DStage {
-	private CompositeItem entranceButton, saveButton, restButton,
-			worldMapButton;
+	private CompositeItem entranceButton, saveButton, restButton, worldMapButton;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
@@ -37,20 +36,17 @@ public class DungeonEntranceStage extends RootOverlap2DStage {
 				"entrance_button");
 		saveButton = sceneLoader.getRoot().getCompositeById("save_button");
 		restButton = sceneLoader.getRoot().getCompositeById("rest_button");
-		worldMapButton = sceneLoader.getRoot().getCompositeById(
-				"worldmap_button");
+		worldMapButton = sceneLoader.getRoot().getCompositeById("worldmap_button");
 
 		entranceButton.setTouchable(Touchable.enabled);
 		entranceButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonEntranceStage", "던전으로 들어가자!");
 				screenFactory.show(ScreenEnum.DUNGEON);
 			}
@@ -59,14 +55,12 @@ public class DungeonEntranceStage extends RootOverlap2DStage {
 		saveButton.setTouchable(Touchable.enabled);
 		saveButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonEntranceStage", "게임이 저장되었다...");
 			}
 		});
@@ -74,14 +68,12 @@ public class DungeonEntranceStage extends RootOverlap2DStage {
 		restButton.setTouchable(Touchable.enabled);
 		restButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonEntranceStage", "잘 쉬었도다...");
 			}
 		});
@@ -89,14 +81,12 @@ public class DungeonEntranceStage extends RootOverlap2DStage {
 		worldMapButton.setTouchable(Touchable.enabled);
 		worldMapButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.WORLD_MAP);
 			}
 		});

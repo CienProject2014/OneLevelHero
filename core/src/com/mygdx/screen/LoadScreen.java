@@ -40,32 +40,27 @@ public class LoadScreen extends RootScreen {
 		newstartButton = new TextButton("NewStart", assets.skin);
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.MENU);
 			}
 		});
 		newstartButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentState.setVersion(SaveVersion.NEW);
 				loadManager.loadNewGame();
 				// 프롤로그 정보 주입
-				eventManager.setEventInfo(assets.npcMap.get("prologue"), 0,
-						false);
+				eventManager.setEventInfo(assets.npcMap.get("prologue"), 0, false);
 				screenFactory.show(ScreenEnum.EVENT);
 			}
 		});
@@ -78,19 +73,19 @@ public class LoadScreen extends RootScreen {
 		// stage.addActor(backButton);
 	}
 
-	public LoadManager getLoadManager() {
-		return loadManager;
-	}
-
-	public void setLoadManager(LoadManager loadManager) {
-		this.loadManager = loadManager;
-	}
-
 	public CurrentState getCurrentState() {
 		return currentState;
 	}
 
 	public void setCurrentState(CurrentState currentState) {
 		this.currentState = currentState;
+	}
+
+	public LoadManager getLoadManager() {
+		return loadManager;
+	}
+
+	public void setLoadManager(LoadManager loadManager) {
+		this.loadManager = loadManager;
 	}
 }

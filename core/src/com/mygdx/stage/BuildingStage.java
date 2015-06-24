@@ -38,14 +38,12 @@ public class BuildingStage extends RootOverlap2DStage {
 		exitButton.center();
 		exitButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.VILLAGE);
 				event.getListenerActor().setVisible(false);
 			}
@@ -55,8 +53,7 @@ public class BuildingStage extends RootOverlap2DStage {
 	}
 
 	private void makeScene() {
-		buildingInfo = assets.villageMap.get(positionInfo.getCurrentNode())
-				.getBuilding().get(positionInfo.getCurrentBuilding());
+		buildingInfo = assets.villageMap.get(positionInfo.getCurrentNode()).getBuilding().get(positionInfo.getCurrentBuilding());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
@@ -65,19 +62,16 @@ public class BuildingStage extends RootOverlap2DStage {
 	private void setNpcList() {
 		npcButtonList = new ArrayList<CompositeItem>();
 		for (final String npcName : buildingInfo.getBuildingNpc()) {
-			CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(
-					npcName);
+			CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(npcName);
 			npcButton.setTouchable(Touchable.enabled);
 			npcButton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					eventManager.setEventInfo(assets.npcMap.get(npcName), true);
 					screenFactory.show(ScreenEnum.GREETING);
 				}
@@ -92,13 +86,5 @@ public class BuildingStage extends RootOverlap2DStage {
 
 	public void setEventManager(EventManager eventManager) {
 		this.eventManager = eventManager;
-	}
-
-	public Building getBuildingInfo() {
-		return buildingInfo;
-	}
-
-	public void setBuildingInfo(Building buildingInfo) {
-		this.buildingInfo = buildingInfo;
 	}
 }

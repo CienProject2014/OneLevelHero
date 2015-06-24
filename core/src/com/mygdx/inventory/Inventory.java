@@ -33,15 +33,12 @@ public class Inventory {
 
 	public Inventory() {
 		slots = new Array<Slot>(25);
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < 25; i++)
 			slots.add(new Slot(null, 0));
-		}
 
 		// create some random items
-		for (Slot slot : slots) {
-			slot.add(ItemEnum.values()[MathUtils.random(0,
-					ItemEnum.values().length - 1)], 1);
-		}
+		for (Slot slot : slots)
+			slot.add(ItemEnum.values()[MathUtils.random(0, ItemEnum.values().length - 1)], 1);
 
 		// create a few random empty slots
 		for (int i = 0; i < 3; i++) {
@@ -53,11 +50,9 @@ public class Inventory {
 	public int checkInventory(ItemEnum item) {
 		int amount = 0;
 
-		for (Slot slot : slots) {
-			if (slot.getItem() == item) {
+		for (Slot slot : slots)
+			if (slot.getItem() == item)
 				amount += slot.getAmount();
-			}
-		}
 
 		return amount;
 	}
@@ -86,11 +81,9 @@ public class Inventory {
 	}
 
 	private Slot firstSlotWithItem(ItemEnum item) {
-		for (Slot slot : slots) {
-			if (slot.getItem() == item) {
+		for (Slot slot : slots)
+			if (slot.getItem() == item)
 				return slot;
-			}
-		}
 
 		return null;
 	}

@@ -38,17 +38,12 @@ public class StatusStage extends RootOverlap2DStage {
 
 	private void labelSet() {
 		labels = sceneLoader.getRoot().dataVO.composite.sLabels;
-		LabelItem labelItem = sceneLoader.getRoot().getLabelById(
-				labels.get(0).itemIdentifier);
-		labelItem.setText(partyInfo.getBattleMemberList()
-				.get(partyInfo.getSelectedInedex()).getName());
+		LabelItem labelItem = sceneLoader.getRoot().getLabelById(labels.get(0).itemIdentifier);
+		labelItem.setText(partyInfo.getBattleMemberList().get(partyInfo.getSelectedInedex()).getName());
 
 		for (int i = 1; i < labels.size(); i++) {
-			labelItem = sceneLoader.getRoot().getLabelById(
-					labels.get(i).itemIdentifier);
-			labelItem.setText(partyInfo.getBattleMemberList()
-					.get(partyInfo.getSelectedInedex()).getStatus()
-					.getStatusList()[i]);
+			labelItem = sceneLoader.getRoot().getLabelById(labels.get(i).itemIdentifier);
+			labelItem.setText(partyInfo.getBattleMemberList().get(partyInfo.getSelectedInedex()).getStatus().getStatusList()[i]);
 		}
 	}
 
@@ -61,8 +56,7 @@ public class StatusStage extends RootOverlap2DStage {
 
 		for (int i = 0; i < 5; i++) {
 			int index = i + 1;
-			partyListImage.add(sceneLoader.getRoot().getCompositeById(
-					"image" + index));
+			partyListImage.add(sceneLoader.getRoot().getCompositeById("image" + index));
 			partyListImage.get(i).setVisible(false);
 			/*
 			 * partyListImage.setTouchable(Touchable.disabled);
@@ -75,43 +69,36 @@ public class StatusStage extends RootOverlap2DStage {
 
 		for (int i = 0; i < currentPartyList.size(); i++) {
 			final int index = i;
-			heroLargeImage[i] = new Image(currentPartyList.get(i)
-					.getStatusTexture());
+			heroLargeImage[i] = new Image(currentPartyList.get(i).getStatusTexture());
 			partyListImage.get(i).setVisible(true);
 			partyListImage.get(i).setTouchable(Touchable.enabled);
 			partyListImage.get(i).addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					partyInfo.setSelectedInedex(index);
 					screenFactory.show(ScreenEnum.STATUS);
 				}
 			});
 		}
 
-		heroLargeImage[partyInfo.getSelectedInedex()].setSize(
-				largeImage.getWidth(), largeImage.getHeight());
-		heroLargeImage[partyInfo.getSelectedInedex()].setPosition(
-				largeImage.getX(), largeImage.getY());
+		heroLargeImage[partyInfo.getSelectedInedex()].setSize(largeImage.getWidth(), largeImage.getHeight());
+		heroLargeImage[partyInfo.getSelectedInedex()].setPosition(largeImage.getX(), largeImage.getY());
 		addActor(heroLargeImage[partyInfo.getSelectedInedex()]);
 		closeButton = sceneLoader.getRoot().getCompositeById("close");
 		closeButton.setTouchable(Touchable.enabled);
 		closeButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.VILLAGE);
 			}
 		});

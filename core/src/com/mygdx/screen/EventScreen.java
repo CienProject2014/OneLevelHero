@@ -46,12 +46,10 @@ public class EventScreen extends RootScreen {
 
 		eventStage.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				if (eventSceneIterator.hasNext()) {
-					eventStage = stageFactory.makeEventStage(eventSceneIterator
-							.next());
-				} else {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				if (eventSceneIterator.hasNext())
+					eventStage = stageFactory.makeEventStage(eventSceneIterator.next());
+				else {
 					rewardManager.doReward(); // 보상이 있을경우 보상실행
 					eventManager.finishEvent(); // 해당 이벤트 상태를 종료처리
 					goPreviousPlace();
@@ -78,8 +76,7 @@ public class EventScreen extends RootScreen {
 			screenFactory.show(ScreenEnum.VILLAGE); // FIXME
 			break;
 		default:
-			Gdx.app.log("EventScreen",
-					"positionInfo.getCurrentPlace() is not valid");
+			Gdx.app.log("EventScreen", "positionInfo.getCurrentPlace() is not valid");
 			break;
 		}
 	}

@@ -111,11 +111,7 @@ public class Status {
 	}
 
 	public String[] getStatusList() {
-		String[] array = { String.valueOf(atk), String.valueOf(ftg),
-				String.valueOf(exp), String.valueOf(atk), String.valueOf(matk),
-				String.valueOf(def), String.valueOf(mdef), String.valueOf(hp),
-				String.valueOf(spd), String.valueOf(fr), String.valueOf(wr),
-				String.valueOf(er), job };
+		String[] array = { String.valueOf(atk), String.valueOf(ftg), String.valueOf(exp), String.valueOf(atk), String.valueOf(matk), String.valueOf(def), String.valueOf(mdef), String.valueOf(hp), String.valueOf(spd), String.valueOf(fr), String.valueOf(wr), String.valueOf(er), job };
 
 		return array;
 	}

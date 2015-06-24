@@ -30,8 +30,7 @@ public class PlaceManager {
 			screenFactory.show(ScreenEnum.VILLAGE); // FIXME
 			break;
 		default:
-			Gdx.app.log("EventScreen",
-					"positionInfo.getCurrentPlace() is not valid");
+			Gdx.app.log("EventScreen", "positionInfo.getCurrentPlace() is not valid");
 			break;
 		}
 	}

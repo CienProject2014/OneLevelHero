@@ -11,8 +11,7 @@ public class CameraManager {
 		ABOVE_GAME_UI, BELOW_GAME_UI;
 	}
 
-	public void setCameraSize(Overlap2DStage stage,
-			CameraPosition cameraPosition) {
+	public void setCameraSize(Overlap2DStage stage, CameraPosition cameraPosition) {
 		float width = stage.sceneLoader.getRoot().getWidth();
 		float height = stage.sceneLoader.getRoot().getHeight();
 		cam = new OrthographicCamera(width, height);

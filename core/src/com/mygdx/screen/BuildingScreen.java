@@ -27,9 +27,4 @@ public class BuildingScreen extends RootScreen {
 		multiplexer.addProcessor(1, buildingStage);
 		Gdx.input.setInputProcessor(multiplexer);
 	}
-
-	@Override
-	public void hide() {
-		dispose();
-	}
 }

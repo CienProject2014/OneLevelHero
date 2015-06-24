@@ -45,14 +45,12 @@ public class DungeonStage extends RootOverlap2DStage {
 		arrowUp.setTouchable(Touchable.enabled);
 		arrowUp.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonStage", "앞으로 이동");
 			}
 		});
@@ -60,14 +58,12 @@ public class DungeonStage extends RootOverlap2DStage {
 		arrowDown.setTouchable(Touchable.enabled);
 		arrowDown.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonStage", "뒤로 이동");
 				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
 			}
@@ -76,14 +72,12 @@ public class DungeonStage extends RootOverlap2DStage {
 		arrowLeft.setTouchable(Touchable.enabled);
 		arrowLeft.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonStage", "왼쪽으로 이동");
 			}
 		});
@@ -91,16 +85,22 @@ public class DungeonStage extends RootOverlap2DStage {
 		arrowRight.setTouchable(Touchable.enabled);
 		arrowRight.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonStage", "오른쪽으로 이동");
 			}
 		});
+	}
+
+	public PositionInfo getPositionInfo() {
+		return positionInfo;
+	}
+
+	public void setPositionInfo(PositionInfo positionInfo) {
+		this.positionInfo = positionInfo;
 	}
 }

@@ -59,8 +59,7 @@ public class MovingManager {
 	}
 
 	private void goIntoCurrentNode() {
-		String placeType = assets.worldNodeInfoMap.get(
-				positionInfo.getCurrentNode()).getType();
+		String placeType = assets.worldNodeInfoMap.get(positionInfo.getCurrentNode()).getType();
 		switch (PlaceEnum.findPlaceEnum(placeType)) {
 		case VILLAGE:
 			screenFactory.show(ScreenEnum.VILLAGE);
@@ -83,8 +82,7 @@ public class MovingManager {
 	}
 
 	private boolean isRoadFull() {
-		return (movingInfo.getRoadLength() <= movingInfo.getLeftRoadLength()) ? true
-				: false;
+		return (movingInfo.getRoadLength() <= movingInfo.getLeftRoadLength()) ? true : false;
 	}
 
 	public Assets getAssets() {

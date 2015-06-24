@@ -15,10 +15,10 @@ public enum WorldNodeEnum {
 	}
 
 	public static WorldNodeEnum findWorldNodeEnum(String jsonName) {
-		for (WorldNodeEnum worldNodeEnum : WorldNodeEnum.values()) {
+		for (WorldNodeEnum worldNodeEnum : WorldNodeEnum.values())
 			if (worldNodeEnum.toString().equals(jsonName))
 				return worldNodeEnum;
-		}
+
 		return null;
 	}
 }

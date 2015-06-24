@@ -51,6 +51,7 @@ public class ScreenFactory {
 	}
 
 	private Screen getScreenInstance(ScreenEnum screenEnum) {
+		Gdx.app.debug("ScreenFactory", "getScreenInstance(" + screenEnum.toString() + ")");
 		switch (screenEnum) {
 		case BATTLE:
 			return context.getBean(BattleScreen.class);
@@ -100,16 +101,13 @@ public class ScreenFactory {
 	}
 
 	public void show(ScreenEnum screenEnum) {
-		Gdx.app.log("ScreenFactory", "Show : " + screenEnum.toString());
-		Gdx.app.debug("ScreenFactory", "Show " + screenEnum.toString()
-				+ " Screen");
+		Gdx.app.debug("ScreenFactory", "show(" + screenEnum.toString() + ")");
 		if (game == null) {
 			Gdx.app.debug("ScreenFactory", "game is null");
 			return;
 		}
-		if (!screens.containsKey(screenEnum.ordinal())) {
+		if (!screens.containsKey(screenEnum.ordinal()))
 			screens.put(screenEnum.ordinal(), getScreenInstance(screenEnum));
-		}
 		game.setScreen(screens.get(screenEnum.ordinal()));
 	}
 
@@ -120,9 +118,8 @@ public class ScreenFactory {
 	}
 
 	public void dispose() {
-		for (com.badlogic.gdx.Screen screen : screens.values()) {
+		for (com.badlogic.gdx.Screen screen : screens.values())
 			screen.dispose();
-		}
 		screens.clear();
 	}
 }

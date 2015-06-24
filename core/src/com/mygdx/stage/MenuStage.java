@@ -16,8 +16,7 @@ public class MenuStage extends RootStage {
 	public Stage makeStage() {
 		button = new ImageButton[4];
 		Image logo = new Image(assets.atlasUiMap.get("title"));
-		Texture texture = StaticAssets.backgroundTextureMap
-				.get("main_background");
+		Texture texture = StaticAssets.backgroundTextureMap.get("main_background");
 		Image background = new Image(texture);
 
 		Table table = new Table(assets.skin);
@@ -38,53 +37,45 @@ public class MenuStage extends RootStage {
 
 		button[0].addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.LOAD);
 			}
 		});
 		button[1].addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.OPTION);
 			}
 		});
 		button[2].addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.CREDIT);
 			}
 		});
 		button[3].addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.COLLETION);
 			}
 		});
@@ -93,17 +84,12 @@ public class MenuStage extends RootStage {
 		logo.setWidth((int) (0.6f * assets.windowWidth));
 		table.setFillParent(true);
 
-		table.add(button[3]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).expand().top().left();
-		table.add(button[2]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).top().right();
+		table.add(button[3]).height(0.35f * assets.windowHeight).width(0.3f * assets.windowWidth).expand().top().left();
+		table.add(button[2]).height(0.35f * assets.windowHeight).width(0.3f * assets.windowWidth).top().right();
 		table.row();
-		table.add(button[0]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).bottom().left();
-		table.add(button[1]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).bottom().right();
-		logo.setPosition((int) (0.2f * assets.windowWidth),
-				(int) (0.3f * assets.windowHeight));
+		table.add(button[0]).height(0.35f * assets.windowHeight).width(0.3f * assets.windowWidth).bottom().left();
+		table.add(button[1]).height(0.35f * assets.windowHeight).width(0.3f * assets.windowWidth).bottom().right();
+		logo.setPosition((int) (0.2f * assets.windowWidth), (int) (0.3f * assets.windowHeight));
 		background.setSize(assets.windowWidth, assets.windowHeight);
 
 		this.addActor(background);

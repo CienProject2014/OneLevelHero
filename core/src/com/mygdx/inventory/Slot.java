@@ -79,9 +79,8 @@ public class Slot {
 	public boolean take(int amount) {
 		if (this.amount >= amount) {
 			this.amount -= amount;
-			if (this.amount == 0) {
+			if (this.amount == 0)
 				item = null;
-			}
 			notifyListeners();
 			return true;
 		}
@@ -90,9 +89,8 @@ public class Slot {
 	}
 
 	private void notifyListeners() {
-		for (SlotListener slotListener : slotListeners) {
+		for (SlotListener slotListener : slotListeners)
 			slotListener.hasChanged(this);
-		}
 	}
 
 	public ItemEnum getItem() {
