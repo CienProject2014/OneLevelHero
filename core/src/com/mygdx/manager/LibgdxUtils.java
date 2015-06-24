@@ -42,7 +42,6 @@ import com.badlogic.gdx.utils.Logger;
  * @author Daniel Holderbaum
  */
 public class LibgdxUtils implements ApplicationListener {
-
 	/**
 	 * This is the {@link Logger} which will be used throughout the whole
 	 * application.
@@ -54,10 +53,8 @@ public class LibgdxUtils implements ApplicationListener {
 	 * {@link Screen}s.
 	 */
 	public static final Game game = new Game() {
-
 		@Override
 		public void create() {
-
 		}
 	};
 

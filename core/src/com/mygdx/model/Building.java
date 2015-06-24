@@ -10,6 +10,7 @@ import com.mygdx.enums.BuildingTypeEnum;
 
 /**
  * 마을 내부에 존재하는 건물
+ * 
  * @author Velmont
  *
  */
@@ -62,14 +63,10 @@ public class Building implements Serializable {
 		buildingNpc = json.readValue("buildingNpc", ArrayList.class,
 				String.class, jsonData);
 		sceneName = json.readValue("sceneName", String.class, jsonData);
-
 	}
 
 	@Override
-	public void write(Json json) {
-		// TODO Auto-generated method stub
-
-	}
+	public void write(Json json) {}
 
 	public String getSceneName() {
 		return sceneName;

@@ -27,11 +27,14 @@ public class StatusBarUi extends ProgressBar implements Disposable {
 		bartexture = new Texture(Gdx.files.internal("texture/bgcolour.png"));
 		TextureRegion barregion = new TextureRegion(bartexture);
 		TextureRegionDrawable bardrawable = new TextureRegionDrawable(barregion);
-		bartextureknob = new Texture(Gdx.files.internal("texture/" + name + "colour.png"));
+		bartextureknob = new Texture(Gdx.files.internal("texture/" + name
+				+ "colour.png"));
 		TextureRegion barregionknob = new TextureRegion(bartexture);
-		TextureRegionDrawable bardrawableknob = new TextureRegionDrawable(barregionknob);
+		TextureRegionDrawable bardrawableknob = new TextureRegionDrawable(
+				barregionknob);
 
-		ProgressBarStyle style = new ProgressBarStyle(bardrawable,bardrawableknob);
+		ProgressBarStyle style = new ProgressBarStyle(bardrawable,
+				bardrawableknob);
 
 		return style;
 	}

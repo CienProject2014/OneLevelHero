@@ -14,7 +14,6 @@ public class AtlasUiFile implements Disposable, AssetsFile<TextureAtlas> {
 
 	@Override
 	public TextureAtlas getFile() {
-		Gdx.app.log("AtlasUiFile", "getFile");
 		file = new TextureAtlas(filePath);
 		return file;
 	}

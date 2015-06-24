@@ -8,7 +8,6 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,29 +15,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.mygdx.currentState.MovingInfo;
-import com.mygdx.currentState.PartyInfo;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.manager.PlatformResourceManager;
 import com.mygdx.model.Hero;
 import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
-import com.mygdx.state.Assets;
-import com.uwsoft.editor.renderer.Overlap2DStage;
+import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
-public class BattleStage extends Overlap2DStage {
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private ScreenFactory screenFactory;
+public class BattleStage extends RootOverlap2DStage {
 	@Autowired
 	private MovingInfo movingInfo;
-	@Autowired
-	private PartyInfo partyInfo;
 
 	// Table
 	Table uiTable; // 화면 전체 테이블
@@ -62,32 +50,32 @@ public class BattleStage extends Overlap2DStage {
 	// Unit array
 	private ArrayList<LivingUnit> units;
 	private Queue<LivingUnit> orderedUnits;
-	
+
 	// Orthographic Camera
 	private OrthographicCamera cam;
-	
+
 	// Trigger
 	private boolean monsterTrigger;
 
 	public BattleStage() {
 		Gdx.app.debug("BattleStage", "Constructor() call");
 	}
-	
+
 	@Override
 	public void act(float delta) {
-		if (monsterTrigger){
+		if (monsterTrigger) {
 			LivingUnit actor = getCurrentActor();
-			if (!(actor instanceof Monster)){
+			if (!(actor instanceof Monster)) {
 				// 일어날 수 없는 시나리오
 				// 몬스터의 턴이 아니라면 monsterTrigger가 true여서는 안된다.
 				return;
 			}
 			battleManager.monsterAttack();
 			updateTable();
-			
+
 			monsterTrigger = false;
 		}
-		
+
 		super.act(delta);
 	}
 
@@ -96,24 +84,24 @@ public class BattleStage extends Overlap2DStage {
 		orderedUnits.add(unit);
 		return unit;
 	}
-	
+
 	public LivingUnit getNextActor() {
 		LivingUnit unit = orderedUnits.peek();
 		return unit;
 	}
 
 	public Stage makeStage() {
+		initSceneLoader(StaticAssets.rm);
 		cam = new OrthographicCamera(1920f, 1080f);
-		cam.position.set(1920/ 2.0f, 1080/2.0f, 0);
+		cam.position.set(1920 / 2.0f, 1080 / 2.0f, 0);
 		getViewport().setCamera(cam);
-		
+
 		Gdx.app.debug("BattleStage", "makeStage(Rm rm)");
 		maximumWidth = assets.windowWidth * 0.0625f;
 		maximumHeight = assets.windowHeight * 0.125f;
 		monster = movingInfo.getSelectedMonster();
 
 		// Overlap2D로 만든 신(Scene)
-		initSceneLoader();
 		sceneLoader.loadScene("battle_ui_scene");
 		addActor(sceneLoader.getRoot());
 		setButton();
@@ -144,16 +132,16 @@ public class BattleStage extends Overlap2DStage {
 		uiTable.align(Align.left);
 		uiTable.setWidth(maximumWidth);
 		uiTable.setY(maximumHeight);
-		
+
 		orderTable = new Table();
 
 		updateTable();
 
 		uiTable.setFillParent(true);
-		
+
 		addActor(uiTable);
 	}
-	
+
 	public void updateTable() {
 		uiTable.clear();
 		orderTable.clear();
@@ -167,7 +155,7 @@ public class BattleStage extends Overlap2DStage {
 
 		uiTable.add(orderTable);
 	}
-	
+
 	public void setButton() {
 		attackButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
 				.getCompositeById("attackButton"));
@@ -183,69 +171,48 @@ public class BattleStage extends Overlap2DStage {
 
 	public void addListener() {
 		attackButton.addListener(new ClickListener() {
+			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "어택!");
-				
+
 				LivingUnit actor = getCurrentActor();
-				
-				if (!(actor instanceof Hero)){
+
+				if (!(actor instanceof Hero)) {
 					// 일어날 수 없는 시나리오
 					// 만약 몬스터의 턴이라면 이 이벤트가 호출되지 않아야 한다.
 					return;
 				}
-				
+
 				battleManager.userAttack(actor);
 				updateTable();
-				
-				if (getNextActor() instanceof Monster){
+
+				if (getNextActor() instanceof Monster) {
 					monsterTrigger = true;
 				}
 			}
 		});
 
 		skillButton.addListener(new ClickListener() {
+			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "스킬!");
 			}
 		});
 
 		inventoryButton.addListener(new ClickListener() {
+			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "인벤토리!");
-
 			}
 		});
 
 		escapeButton.addListener(new ClickListener() {
+			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "도망!");
 				screenFactory.show(ScreenEnum.MOVING);
 			}
 		});
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
 	}
 
 	public BattleManager getBattleManager() {
@@ -256,12 +223,11 @@ public class BattleStage extends Overlap2DStage {
 		this.battleManager = battleManager;
 	}
 
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
 	}
 
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
 	}
-
 }

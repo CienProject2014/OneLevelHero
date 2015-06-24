@@ -9,7 +9,6 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
 public class JsonParser {
-
 	private static final Json JSON = new Json();
 
 	@SuppressWarnings("unchecked")

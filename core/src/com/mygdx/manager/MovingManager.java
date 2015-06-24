@@ -62,19 +62,19 @@ public class MovingManager {
 		String placeType = assets.worldNodeInfoMap.get(
 				positionInfo.getCurrentNode()).getType();
 		switch (PlaceEnum.findPlaceEnum(placeType)) {
-			case VILLAGE:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			case DUNGEON:
-				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-				break;
-			case FORK:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			default:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				Gdx.app.debug("MovingManager", "CurrentNode 타입 오류");
-				break;
+		case VILLAGE:
+			screenFactory.show(ScreenEnum.VILLAGE);
+			break;
+		case DUNGEON:
+			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
+			break;
+		case FORK:
+			screenFactory.show(ScreenEnum.VILLAGE);
+			break;
+		default:
+			screenFactory.show(ScreenEnum.VILLAGE);
+			Gdx.app.debug("MovingManager", "CurrentNode 타입 오류");
+			break;
 		}
 	}
 

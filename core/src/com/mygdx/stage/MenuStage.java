@@ -1,7 +1,5 @@
 package com.mygdx.stage;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -10,15 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.state.Assets;
 import com.mygdx.state.StaticAssets;
 
-public class MenuStage extends Stage {
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private ScreenFactory screenFactory;
+public class MenuStage extends RootStage {
 	private ImageButton[] button;
 
 	public Stage makeStage() {
@@ -81,7 +73,6 @@ public class MenuStage extends Stage {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				screenFactory.show(ScreenEnum.CREDIT);
-
 			}
 		});
 		button[3].addListener(new InputListener() {
@@ -95,7 +86,6 @@ public class MenuStage extends Stage {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				screenFactory.show(ScreenEnum.COLLETION);
-
 			}
 		});
 
@@ -121,21 +111,4 @@ public class MenuStage extends Stage {
 		this.addActor(table);
 		return this;
 	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
 }

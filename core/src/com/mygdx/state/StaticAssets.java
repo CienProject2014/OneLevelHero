@@ -2,7 +2,6 @@ package com.mygdx.state;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
 
 import com.badlogic.gdx.Gdx;
@@ -16,24 +15,27 @@ import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.JsonParser;
 import com.mygdx.model.JsonStringFile;
 import com.mygdx.model.TextureFile;
+import com.uwsoft.editor.renderer.resources.ResourceManager;
 
 public class StaticAssets implements Disposable {
 	public static Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 	public static Map<String, Texture> characterTextureMap = new HashMap<String, Texture>();
 	public static Map<String, Texture> monsterTextureMap = new HashMap<String, Texture>();
 	public static Map<String, Texture> backgroundTextureMap = new HashMap<String, Texture>();
-	public static TextureAtlas items = new TextureAtlas("texture/items/items.pack");
+	public static TextureAtlas items = new TextureAtlas(
+			"texture/items/items.pack");
 	public static float windowWidth;
 	public static float windowHeight;
+
+	public static ResourceManager rm = new ResourceManager();
 
 	public static void loadAll() {
 		Gdx.app.debug("StaticAssets", "StaticAssets.loadAll() called");
 		loadSize(new Stage());
 		loadTexture();
 
-		Gdx.app.log("StaticAssets", "Memory_total :" + Objects.toString(Runtime.getRuntime().totalMemory() / (1024 * 1024)) + "MB");
-		Gdx.app.log("StaticAssets", "Memory_free :" + Objects.toString(Runtime.getRuntime().freeMemory() / (1024 * 1024)) + "MB");
-		Gdx.app.log("StaticAssets", "Memory_use :" + Objects.toString((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024)) + "MB");
+		// Loading all assets/resources into memory
+		rm.initAllResources();
 	}
 
 	public static void loadSize(Stage stage) {

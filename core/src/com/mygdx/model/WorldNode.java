@@ -37,10 +37,7 @@ public class WorldNode implements Serializable {
 	}
 
 	@Override
-	public void write(Json json) {
-		// TODO Auto-generated method stub
-
-	}
+	public void write(Json json) {}
 
 	@Override
 	public void read(Json json, JsonValue jsonData) {
@@ -48,7 +45,5 @@ public class WorldNode implements Serializable {
 		type = json.readValue("type", String.class, jsonData);
 		connection = JsonParser.parseMap(Connection.class,
 				jsonData.get("connection").toString());
-
 	}
-
 }

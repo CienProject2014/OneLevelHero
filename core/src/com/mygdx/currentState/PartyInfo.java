@@ -60,7 +60,6 @@ public class PartyInfo {
 	}
 
 	public void addBattleMember(Hero hero) {
-
 		if (partyList.contains(hero)) {
 			battleMemberList.add(hero);
 			Gdx.app.log("Info", hero.getName() + "를 전투 멤버에 추가했습니다.");
@@ -83,5 +82,4 @@ public class PartyInfo {
 
 		return battleMemberList.get(index);
 	}
-
 }

@@ -17,7 +17,6 @@ public class RewardInfo {
 	}
 
 	public RewardStateEnum getRewardState() {
-
 		return rewardState;
 	}
 

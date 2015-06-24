@@ -2,36 +2,21 @@ package com.mygdx.stage;
 
 import java.util.Map.Entry;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.manager.CameraManager;
 import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.model.Building;
 import com.mygdx.model.Village;
-import com.mygdx.state.Assets;
-import com.uwsoft.editor.renderer.Overlap2DStage;
+import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
-public class VillageStage extends Overlap2DStage {
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private ScreenFactory screenFactory;
-	@Autowired
-	private PositionInfo positionInfo;
-	@Autowired
-	private CameraManager cameraManager;
-
+public class VillageStage extends RootOverlap2DStage {
 	private Village villageInfo;
 	public TextButton shiftButton;
 	private BackgroundDirection backgroundDirection;
@@ -41,13 +26,13 @@ public class VillageStage extends Overlap2DStage {
 	}
 
 	public Stage makeStage() {
+		initSceneLoader(StaticAssets.rm);
 		setVillage();
 		return this;
 	}
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		initSceneLoader();
 		Gdx.app.debug("VillageStage",
 				String.valueOf(positionInfo.getCurrentNode()));
 		// 임시로 블랙우드 정보를 넣는다.
@@ -66,19 +51,16 @@ public class VillageStage extends Overlap2DStage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				// TODO Auto-generated method stub
 				return true;
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-
-				if (backgroundDirection.equals(BackgroundDirection.DOWN)) {
+				if (backgroundDirection.equals(BackgroundDirection.DOWN))
 					backgroundDirection = BackgroundDirection.MOVE_UP;
-				} else if (backgroundDirection.equals(BackgroundDirection.UP)) {
+				else if (backgroundDirection.equals(BackgroundDirection.UP))
 					backgroundDirection = BackgroundDirection.MOVE_DOWN;
-				}
 
 				event.getListenerActor().setVisible(false);
 			}
@@ -101,8 +83,6 @@ public class VillageStage extends Overlap2DStage {
 		} else if (backgroundDirection.equals(BackgroundDirection.MOVE_DOWN)) {
 			this.getCamera().translate(0, -movingSpeed, 0);
 			shiftButton.moveBy(0, -movingSpeed);
-		} else {
-
 		}
 	}
 
@@ -114,7 +94,6 @@ public class VillageStage extends Overlap2DStage {
 			backgroundDirection = BackgroundDirection.UP;
 
 			shiftButton.setVisible(true);
-
 		} else if (this.getCamera().position.y < sceneLoader.getRoot()
 				.getHeight() * 0.25f) {
 			this.getCamera().position.y = sceneLoader.getRoot().getHeight() * 0.25f;
@@ -146,37 +125,5 @@ public class VillageStage extends Overlap2DStage {
 				}
 			});
 		}
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public CameraManager getCameraManager() {
-		return cameraManager;
-	}
-
-	public void setCameraManager(CameraManager cameraManager) {
-		this.cameraManager = cameraManager;
 	}
 }

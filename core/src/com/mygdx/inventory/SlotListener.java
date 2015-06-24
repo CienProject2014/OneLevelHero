@@ -25,7 +25,6 @@ package com.mygdx.inventory;
  * @author Daniel Holderbaum
  */
 public interface SlotListener {
-
 	/**
 	 * Will be called whenever the slot has changed.
 	 * 
@@ -33,5 +32,4 @@ public interface SlotListener {
 	 *            The changed slot.
 	 */
 	void hasChanged(Slot slot);
-
 }

@@ -30,8 +30,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
  * @author Daniel Holderbaum
  */
 public class InventoryPopup extends Window {
-
-	public InventoryPopup(Inventory inventory, DragAndDrop dragAndDrop, Skin skin) {
+	public InventoryPopup(Inventory inventory, DragAndDrop dragAndDrop,
+			Skin skin) {
 		super("Inventory...", skin);
 
 		TextButton closeButton = new TextButton("X", skin);
@@ -60,5 +60,4 @@ public class InventoryPopup extends Window {
 		// it is hidden by default
 		setVisible(false);
 	}
-
 }

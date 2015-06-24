@@ -14,6 +14,7 @@ import com.mygdx.manager.TextureManager;
 
 /**
  * Village 모델 클래스
+ * 
  * @author Velmont
  *
  */
@@ -59,10 +60,7 @@ public class Village implements Serializable {
 	}
 
 	@Override
-	public void write(Json json) {
-		// TODO Auto-generated method stub
-
-	}
+	public void write(Json json) {}
 
 	@SuppressWarnings("unchecked")
 	@Override

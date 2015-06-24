@@ -75,5 +75,4 @@ public class NPC extends Unit {
 	public void setEventCount(int eventCount) {
 		this.eventCount = eventCount;
 	}
-
 }

@@ -37,7 +37,6 @@ public class VillageStageTest {
 	}
 
 	@Test
-	public void confirmStageInfo() {
-	}
+	public void confirmStageInfo() {}
 }
 */

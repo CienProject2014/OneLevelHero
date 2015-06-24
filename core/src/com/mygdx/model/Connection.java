@@ -21,10 +21,7 @@ public class Connection implements Serializable {
 	}
 
 	@Override
-	public void write(Json json) {
-		// TODO Auto-generated method stub
-
-	}
+	public void write(Json json) {}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -33,7 +30,6 @@ public class Connection implements Serializable {
 		roadMonster = json.readValue("roadMonster", ArrayList.class,
 				String.class, jsonData);
 		arrowName = json.readValue("arrowName", String.class, jsonData);
-
 	}
 
 	public List<String> getRoadMonster() {
@@ -51,5 +47,4 @@ public class Connection implements Serializable {
 	public void setArrowName(String arrowName) {
 		this.arrowName = arrowName;
 	}
-
 }

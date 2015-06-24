@@ -32,7 +32,6 @@ import com.mygdx.state.StaticAssets;
  * @author Daniel Holderbaum
  */
 public class SlotActor extends ImageButton implements SlotListener {
-
 	private Slot slot;
 
 	private Skin skin;
@@ -73,5 +72,4 @@ public class SlotActor extends ImageButton implements SlotListener {
 	public void hasChanged(Slot slot) {
 		setStyle(createStyle(skin, slot));
 	}
-
 }

@@ -1,5 +1,3 @@
 package com.mygdx.popup;
 
-public class LoadPopup {
-
-}
+public class LoadPopup {}

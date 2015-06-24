@@ -31,7 +31,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
  * @author Daniel Holderbaum
  */
 public class HidingClickListener extends ClickListener {
-
 	private Actor actor;
 
 	public HidingClickListener(Actor actor) {
@@ -42,5 +41,4 @@ public class HidingClickListener extends ClickListener {
 	public void clicked(InputEvent event, float x, float y) {
 		actor.setVisible(false);
 	}
-
 }

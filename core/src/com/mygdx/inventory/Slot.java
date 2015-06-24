@@ -28,7 +28,6 @@ import com.mygdx.enums.ItemEnum;
  * @author Daniel Holderbaum
  */
 public class Slot {
-
 	private ItemEnum item;
 
 	private int amount;

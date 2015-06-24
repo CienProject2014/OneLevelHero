@@ -4,16 +4,13 @@ import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.model.LivingUnit;
-import com.mygdx.model.Unit;
 
 public class Battle {
-
 	private Random random = new Random();
 	private boolean outcome;
 	private String dungeonID;
 
-	public Battle() {
-	}
+	public Battle() {}
 
 	public Battle(String dungeonID) {
 		this();

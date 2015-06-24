@@ -1,13 +1,11 @@
 package com.mygdx.test;
 
-import com.uwsoft.editor.renderer.Overlap2DStage;
-import com.uwsoft.editor.renderer.actor.ImageItem;
+import com.mygdx.stage.RootOverlap2DStage;
+import com.mygdx.state.StaticAssets;
 
-public class GameStage extends Overlap2DStage {
-	private ImageItem sheep;
-
+public class GameStage extends RootOverlap2DStage {
 	public GameStage() {
-		initSceneLoader();
+		initSceneLoader(StaticAssets.rm);
 		sceneLoader.loadScene("GameScene");
 		addActor(sceneLoader.getRoot());
 	}

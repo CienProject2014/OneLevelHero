@@ -40,7 +40,6 @@ public class Unit {
 	}
 
 	public void setStatusTexture(Texture statusTexture) {
-
 		this.statusTexture = statusTexture;
 	}
 

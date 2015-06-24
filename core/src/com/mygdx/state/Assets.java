@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -83,10 +82,6 @@ public class Assets implements Disposable {
 		loadResourceFile();
 		loadMapInfo();
 		loadUnitInfo();
-
-		Gdx.app.log("Assets", "Memory_total :" + Objects.toString(Runtime.getRuntime().totalMemory() / (1024 * 1024)) + "MB");
-		Gdx.app.log("Assets", "Memory_free :" + Objects.toString(Runtime.getRuntime().freeMemory() / (1024 * 1024)) + "MB");
-		Gdx.app.log("Assets", "Memory_use :" + Objects.toString((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024)) + "MB");
 	}
 
 	private void loadFilePath() {
@@ -137,8 +132,7 @@ public class Assets implements Disposable {
 		}
 	}
 
-	private void loadRoadInfo() {
-	}
+	private void loadRoadInfo() {}
 
 	private void loadHeroInfo() {
 		// hero 리스트를 담은 Json을 불러와 객체화한다.
@@ -202,7 +196,7 @@ public class Assets implements Disposable {
 			musicMap.put(entry.getKey(), entry.getValue().getFile());
 		}
 
-		//WorldNode MusicList
+		// WorldNode MusicList
 		String worldNodeMusicJsonString = filePathMap.get(
 				JsonEnum.WORLD_NODE_MUSIC_LIST.toString()).getFile();
 		Map<String, String> worldNodeMusicStringMap = new Json().fromJson(
@@ -212,7 +206,7 @@ public class Assets implements Disposable {
 					musicMap.get(entry.getValue()));
 		}
 
-		//Battle MusicList
+		// Battle MusicList
 		String battleMusicJsonString = filePathMap.get(
 				JsonEnum.BATTLE_MUSIC_LIST.toString()).getFile();
 		Map<String, String> battleMusicStringMap = new Json().fromJson(
@@ -221,7 +215,7 @@ public class Assets implements Disposable {
 			battleMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
 		}
 
-		//Moving MusicList
+		// Moving MusicList
 		String movingMusicJsonString = filePathMap.get(
 				JsonEnum.MOVING_MUSIC_LIST.toString()).getFile();
 		Map<String, String> movingMusicStringMap = new Json().fromJson(

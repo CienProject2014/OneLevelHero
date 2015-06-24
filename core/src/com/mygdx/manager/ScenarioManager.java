@@ -1,5 +1,3 @@
 package com.mygdx.manager;
 
-public class ScenarioManager {
-
-}
+public class ScenarioManager {}

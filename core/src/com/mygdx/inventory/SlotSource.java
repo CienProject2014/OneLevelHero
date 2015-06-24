@@ -36,7 +36,6 @@ import com.mygdx.state.StaticAssets;
  * @author Daniel Holderbaum
  */
 public class SlotSource extends Source {
-
 	private Slot sourceSlot;
 
 	public SlotSource(SlotActor actor) {

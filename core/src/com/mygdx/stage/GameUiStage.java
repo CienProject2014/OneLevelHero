@@ -20,11 +20,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryPopup;
 import com.mygdx.manager.RewardManager;
@@ -32,16 +30,9 @@ import com.mygdx.model.Hero;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
-import com.mygdx.state.Assets;
 import com.mygdx.ui.StatusBarUi;
 
-public class GameUiStage extends Stage {
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private ScreenFactory screenFactory;
-	@Autowired
-	private PartyInfo partyInfo;
+public class GameUiStage extends RootStage {
 	@Autowired
 	private RewardManager rewardManager;
 
@@ -99,7 +90,6 @@ public class GameUiStage extends Stage {
 					assets.skin);
 			statusbartable[i] = new Table(assets.skin);
 			charatertable[i] = new Table(assets.skin);
-
 		}
 		// 캐릭터 이미지 세팅
 		List<Hero> currentBattleMemberList = partyInfo.getBattleMemberList();
@@ -138,10 +128,8 @@ public class GameUiStage extends Stage {
 		while (iterator.hasNext()) {
 			RewardInfo nextIterator = iterator.next();
 			if (nextIterator.getRewardState().equals(RewardStateEnum.ING)) {
-
 				alertMessage.add(new AlertMessagePopup("[ 보상 ]", assets.skin)
 						.text(rewardManager.getRewardMessage(nextIterator)));
-
 			}
 			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
 					+ nextIterator.getRewardType());
@@ -167,7 +155,6 @@ public class GameUiStage extends Stage {
 
 	// 테이블 디자인
 	public void makeTable() {
-
 		uiTable.setFillParent(true);
 
 		toptable.add(downArrowButton).expand().width(realwidth / 8)
@@ -204,18 +191,14 @@ public class GameUiStage extends Stage {
 		uiTable.add(toptable).expand().top();
 		uiTable.row();
 		uiTable.add(bottomtable).bottom();
-
 	}
 
 	// 리스너 할당
 	public void addListener() {
-
 		bagButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 				return true;
 			}
 
@@ -224,11 +207,9 @@ public class GameUiStage extends Stage {
 					int pointer, int button) {
 				inventoryActor.setVisible(true);
 				Gdx.app.log("정보", "inventoryPopUp창이 나타납니다.");
-
 			}
 		});
 		optionButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -243,11 +224,9 @@ public class GameUiStage extends Stage {
 		});
 
 		downArrowButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				// TODO Auto-generated method stub
 				return true;
 			}
 
@@ -259,11 +238,9 @@ public class GameUiStage extends Stage {
 		});
 
 		battleButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				// TODO Auto-generated method stub
 				return true;
 			}
 
@@ -275,11 +252,9 @@ public class GameUiStage extends Stage {
 			}
 		});
 		worldMapButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 				return true;
 			}
 
@@ -290,18 +265,15 @@ public class GameUiStage extends Stage {
 			}
 		});
 		helpButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 				return true;
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 			}
 		});
 		for (int i = 0; i < partyInfo.getBattleMemberList().size(); i++) {
@@ -321,30 +293,6 @@ public class GameUiStage extends Stage {
 		inventoryActor.remove();
 		// alertMessage.remove();
 		super.dispose();
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
 	}
 
 	public RewardManager getRewardManager() {
@@ -370,5 +318,4 @@ public class GameUiStage extends Stage {
 	public static void setInventoryStage(Stage inventoryStage) {
 		GameUiStage.inventoryStage = inventoryStage;
 	}
-
 }

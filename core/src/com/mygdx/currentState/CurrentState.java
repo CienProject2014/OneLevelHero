@@ -19,7 +19,7 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private PositionInfo positionInfo;
 	@Autowired
-	transient private MovingInfo movingInfo; //가장 최근의 움직임 이력
+	transient private MovingInfo movingInfo; // 가장 최근의 움직임 이력
 
 	// (4) 시간 관리
 	@Autowired
@@ -122,5 +122,4 @@ public class CurrentState implements Serializable {
 	public void setMovingInfo(MovingInfo movingInfo) {
 		this.movingInfo = movingInfo;
 	}
-
 }

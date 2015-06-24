@@ -29,7 +29,6 @@ import com.mygdx.enums.ItemEnum;
  * @author Daniel Holderbaum
  */
 public class Inventory {
-
 	private Array<Slot> slots;
 
 	public Inventory() {
@@ -40,7 +39,8 @@ public class Inventory {
 
 		// create some random items
 		for (Slot slot : slots) {
-			slot.add(ItemEnum.values()[MathUtils.random(0, ItemEnum.values().length - 1)], 1);
+			slot.add(ItemEnum.values()[MathUtils.random(0,
+					ItemEnum.values().length - 1)], 1);
 		}
 
 		// create a few random empty slots
@@ -94,5 +94,4 @@ public class Inventory {
 
 		return null;
 	}
-
 }

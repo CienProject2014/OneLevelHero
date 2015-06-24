@@ -10,7 +10,6 @@ public class TextureFile implements Disposable, AssetsFile<Texture> {
 
 	@Override
 	public Texture getFile() {
-		Gdx.app.log("TextureFile", "getFile");
 		file = new Texture(Gdx.files.internal(filePath));
 		return file;
 	}

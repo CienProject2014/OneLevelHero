@@ -2,23 +2,14 @@ package com.mygdx.stage;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.mygdx.currentState.PartyInfo;
 import com.mygdx.model.Hero;
-import com.mygdx.state.Assets;
 import com.mygdx.ui.StatusBarUi;
 
-public class CharacterUiStage extends Stage {
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private PartyInfo partyInfo;
+public class CharacterUiStage extends RootStage {
 	private float realWidth, realHeight;
 
 	private Table uiTable; // 전체 화면을 차지하는 테이블
@@ -67,7 +58,6 @@ public class CharacterUiStage extends Stage {
 
 	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
 	private void makeTable() {
-
 		battleMemberList = partyInfo.getBattleMemberList();
 		battleMemberNumber = battleMemberList.size();
 
@@ -119,30 +109,14 @@ public class CharacterUiStage extends Stage {
 
 		// Screen - act 에서 실행시킨다.
 		for (int i = 0; i < battleMemberNumber; i++) {
-			int hpValue = battleMemberList.get(i).getStatus().getHp();
-			//Gdx.app.log("이름?", hpbar[i].getName());
-
-//			if (!hpbar[i].setValue(hpValue))
-//				Gdx.app.log("GameUiStage", "체력 설정 실패");
-
+			/*
+			 * int hpValue = battleMemberList.get(i).getStatus().getHp();
+			 * Gdx.app.log("이름?", hpbar[i].getName());
+			 * 
+			 * if (!hpbar[i].setValue(hpValue)) Gdx.app.log("GameUiStage",
+			 * "체력 설정 실패");
+			 */
 			hpbar[i].act(delta);
 		}
 	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
-	}
-
 }

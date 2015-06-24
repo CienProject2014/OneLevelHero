@@ -25,7 +25,6 @@ package com.mygdx.enums;
  * @author Daniel Holderbaum
  */
 public enum ItemEnum {
-
 	DAGGER("dagger"), LEATHER_ARMOR("leather_armor"), LEATHER_BOOTS(
 			"leather_boots"), LEATHER_GLOVES("leather_gloves"), NOTHING(
 			"nothing");
@@ -36,6 +35,7 @@ public enum ItemEnum {
 		this.itemName = itemName;
 	}
 
+	@Override
 	public String toString() {
 		return itemName;
 	}

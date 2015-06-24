@@ -8,31 +8,24 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.manager.EventManager;
 import com.mygdx.model.EventScene;
-import com.mygdx.state.Assets;
 
 /**
  * make and return stage(Event)
+ * 
  * @author Velmont
  *
  */
-public class EventStage extends Stage {
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private EventManager eventManager;
+public class EventStage extends RootStage {
 	@Autowired
 	private EventInfo eventInfo;
-	@Autowired
-	private ScreenFactory screenFactory;
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
 
 	/**
 	 * EventManager로부터 eventScene정보를 받아 그래픽처리를 해준다.
+	 * 
 	 * @param eventScene
 	 * @return
 	 */
@@ -54,7 +47,7 @@ public class EventStage extends Stage {
 				assets.windowHeight * 0.185f);
 		backgroundImage.setSize(assets.windowWidth, assets.windowHeight);
 
-		//Greeting인지 아닌지 여부에 따라 처리
+		// Greeting인지 아닌지 여부에 따라 처리
 		EventTypeEnum eventType;
 		if (eventInfo.isGreeting()) {
 			eventType = EventTypeEnum.SELECT;
@@ -70,28 +63,26 @@ public class EventStage extends Stage {
 
 	private void makeEventStage(EventTypeEnum eventType) {
 		switch (eventType) {
-			case CHAT:
-				makeChatStage();
-				break;
-			case SELECT:
-				makeSelectStage();
-				break;
-			case CREDIT:
-				makeCreditStage();
-				break;
-			default:
-				Gdx.app.log("error", " scene 주입 에러");
-				break;
+		case CHAT:
+			makeChatStage();
+			break;
+		case SELECT:
+			makeSelectStage();
+			break;
+		case CREDIT:
+			makeCreditStage();
+			break;
+		default:
+			Gdx.app.log("error", " scene 주입 에러");
+			break;
 		}
 	}
 
-	private void makeCreditStage() {
-
-	}
+	private void makeCreditStage() {}
 
 	private void makeSelectStage() {
 		script.setFontScale(assets.windowWidth / 1280);
-		script.setWrap(true); //스크립트가 끝에 다다르면 자동 개행
+		script.setWrap(true); // 스크립트가 끝에 다다르면 자동 개행
 		script.setSize(assets.windowWidth * 0.781f,
 				assets.windowHeight * 0.185f);
 		script.setPosition(assets.windowWidth * 0.109375f,
@@ -114,22 +105,6 @@ public class EventStage extends Stage {
 		backgroundImage.setSize(assets.windowWidth, assets.windowHeight);
 	}
 
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public EventManager getEventManager() {
-		return eventManager;
-	}
-
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
-	}
-
 	public EventInfo getEventInfo() {
 		return eventInfo;
 	}
@@ -137,13 +112,4 @@ public class EventStage extends Stage {
 	public void setEventInfo(EventInfo eventInfo) {
 		this.eventInfo = eventInfo;
 	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
 }

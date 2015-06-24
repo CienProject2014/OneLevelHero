@@ -65,7 +65,6 @@ public class EventScene {
 
 	public void setBackgroundPath(String backgroundPath) {
 		this.backgroundPath = backgroundPath;
-
 	}
 
 	public String getScript() {
@@ -83,5 +82,4 @@ public class EventScene {
 	public void setSpeakerPosition(String speakerPosition) {
 		this.speakerPosition = speakerPosition;
 	}
-
 }
