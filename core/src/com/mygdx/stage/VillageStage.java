@@ -19,10 +19,9 @@ import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.model.Building;
 import com.mygdx.model.Village;
 import com.mygdx.state.Assets;
-import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
-public class VillageStage extends Overlap2DStage {
+public class VillageStage extends OneLevel2DStage {
 	@Autowired
 	private Assets assets;
 	@Autowired
@@ -47,7 +46,7 @@ public class VillageStage extends Overlap2DStage {
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		initSceneLoader();
+		initScene("blackwood_scene");
 		Gdx.app.debug("VillageStage",
 				String.valueOf(positionInfo.getCurrentNode()));
 		// 임시로 블랙우드 정보를 넣는다.
