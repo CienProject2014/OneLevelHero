@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.state.StaticAssets;
 
 public class MapInputProcessor implements InputProcessor {
-
 	private int x_left_limit = (int) (StaticAssets.windowWidth / 2);
 	private int x_right_limit = (int) (3000 - (StaticAssets.windowWidth / 2));
 	private int y_bottom_limit = (int) (StaticAssets.windowHeight / 2);
@@ -18,6 +17,7 @@ public class MapInputProcessor implements InputProcessor {
 		this.stage = stage;
 	}
 
+	@Override
 	public boolean touchDragged(int x, int y, int pointer) {
 		moveCamera(x, y);
 		return false;
@@ -43,7 +43,6 @@ public class MapInputProcessor implements InputProcessor {
 	}
 
 	private boolean cameraOutOfLimit(Vector3 position) {
-
 		if (position.x < x_left_limit || position.x > x_right_limit)
 			return true;
 		else if (position.y < y_bottom_limit || position.y > y_top_limit)
@@ -54,19 +53,16 @@ public class MapInputProcessor implements InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean keyTyped(char character) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -78,20 +74,16 @@ public class MapInputProcessor implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean scrolled(int amount) {
-		// TODO Auto-generated method stub
 		return false;
 	}
-
 }

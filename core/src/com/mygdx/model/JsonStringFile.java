@@ -6,11 +6,13 @@ public class JsonStringFile implements AssetsFile<String> {
 	private String filePath;
 	private String file;
 
+	@Override
 	public String getFile() {
 		file = Gdx.files.internal(filePath).readString();
 		return file;
 	}
 
+	@Override
 	public String getTestFile() {
 		file = Gdx.files.internal("../android/assets/" + filePath).readString();
 		return file;
@@ -27,5 +29,4 @@ public class JsonStringFile implements AssetsFile<String> {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
-
 }

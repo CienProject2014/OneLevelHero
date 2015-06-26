@@ -9,7 +9,6 @@ import com.mygdx.inventory.HidingClickListener;
 import com.mygdx.state.StaticAssets;
 
 public class MessagePopup extends Dialog {
-
 	public MessagePopup(String title, Skin skin) {
 		super(title, skin);
 		TextButton closeButton = new TextButton("X", skin);
@@ -19,8 +18,8 @@ public class MessagePopup extends Dialog {
 	}
 
 	private void initialize() {
-		padTop(70); // set padding on top of the dialog title  
-		getButtonTable().defaults().height(50); // set buttons height  
+		padTop(70); // set padding on top of the dialog title
+		getButtonTable().defaults().height(50); // set buttons height
 		setPosition(400, 400);
 		setSize(600, 200);
 		setModal(true);
@@ -44,13 +43,13 @@ public class MessagePopup extends Dialog {
 
 	@Override
 	public float getPrefWidth() {
-		// force dialog width  
+		// force dialog width
 		return 480f;
 	}
 
 	@Override
 	public float getPrefHeight() {
-		// force dialog height  
+		// force dialog height
 		return 240f;
 	}
 }

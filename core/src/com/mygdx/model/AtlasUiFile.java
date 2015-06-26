@@ -8,16 +8,17 @@ public class AtlasUiFile implements AssetsFile<TextureAtlas> {
 	private List<String> element;
 	private String name;
 	private String filePath;;
+	private TextureAtlas file;
 
 	@Override
 	public TextureAtlas getFile() {
-		TextureAtlas file = new TextureAtlas(filePath);
+		file = new TextureAtlas(filePath);
 		return file;
 	}
 
 	@Override
 	public TextureAtlas getTestFile() {
-		TextureAtlas file = new TextureAtlas("../android/assets/" + filePath);
+		file = new TextureAtlas("../android/assets/" + filePath);
 		return file;
 	}
 
@@ -44,5 +45,4 @@ public class AtlasUiFile implements AssetsFile<TextureAtlas> {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
-
 }

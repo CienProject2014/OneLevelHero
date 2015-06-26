@@ -1,31 +1,18 @@
 package com.mygdx.screen;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
-import com.mygdx.factory.StageFactory;
-import com.mygdx.manager.MusicManager;
 
-public class BattleScreen implements Screen {
-	@Autowired
-	private StageFactory stageFactory;
-	@Autowired
-	private MusicManager musicManager;
+public class BattleScreen extends RootScreen {
 	private Stage gameUiStage, characterUiStage, monsterStage, battleStage;
 
-	public BattleScreen() {
-
-	}
+	public BattleScreen() {}
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
 
 		monsterStage.act(); // 몬스터 스테이지에 움직이는 요소가 있을 경우
 							// 예를 들어, 움직이는 몬스터
@@ -43,9 +30,7 @@ public class BattleScreen implements Screen {
 	}
 
 	@Override
-	public void resize(int width, int height) {
-
-	}
+	public void resize(int width, int height) {}
 
 	@Override
 	public void show() {
@@ -67,41 +52,4 @@ public class BattleScreen implements Screen {
 		multiplexer.addProcessor(3, battleStage);
 		Gdx.input.setInputProcessor(multiplexer);
 	}
-
-	@Override
-	public void hide() {
-
-	}
-
-	@Override
-	public void pause() {
-
-	}
-
-	@Override
-	public void resume() {
-
-	}
-
-	@Override
-	public void dispose() {
-
-	}
-
-	public StageFactory getStageFactory() {
-		return stageFactory;
-	}
-
-	public void setStageFactory(StageFactory stageFactory) {
-		this.stageFactory = stageFactory;
-	}
-
-	public MusicManager getMusicManager() {
-		return musicManager;
-	}
-
-	public void setMusicManager(MusicManager musicManager) {
-		this.musicManager = musicManager;
-	}
-
 }

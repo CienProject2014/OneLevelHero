@@ -13,9 +13,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.model.Monster;
 
-public class MonsterStage extends Stage {
+public class MonsterStage extends OneLevelStage {
 	@Autowired
 	private MovingInfo movingInfo;
+
 	private int windowWidth;
 	private int windowHeight;
 
@@ -35,6 +36,7 @@ public class MonsterStage extends Stage {
 		innerTableHeight = windowHeight * 0.625f;
 		monster = movingInfo.getSelectedMonster();
 		setMonsterTable();
+
 		return this;
 	}
 
@@ -50,12 +52,11 @@ public class MonsterStage extends Stage {
 
 		table.align(Align.top); // table을 위로 정렬
 		table.add(innerTable) // table안에 innerTable 넣는다.
-				.padTop(topPadValue) // 상단바에 겹치지 않게 위쪽 Padding(1/8)
-				.width(innerTableWidth) // 최대 가로 크기(3/4)
-				.height(innerTableHeight); // 최대 세로 크기(5/8)
+			.padTop(topPadValue) // 상단바에 겹치지 않게 위쪽 Padding(1/8)
+			.width(innerTableWidth) // 최대 가로 크기(3/4)
+			.height(innerTableHeight); // 최대 세로 크기(5/8)
 
 		this.addActor(table);
-
 	}
 
 	private Image getMonsterImage() {
@@ -64,8 +65,7 @@ public class MonsterStage extends Stage {
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
-		return new TextureRegionDrawable(new TextureRegion(new Texture(
-				Gdx.files.internal("texture/battle/forest.png"))));
+		return new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("texture/battle/forest.png"))));
 	}
 
 	public MovingInfo getMovingInfo() {
@@ -75,5 +75,4 @@ public class MonsterStage extends Stage {
 	public void setMovingInfo(MovingInfo movingInfo) {
 		this.movingInfo = movingInfo;
 	}
-
 }

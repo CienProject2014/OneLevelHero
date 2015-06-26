@@ -3,8 +3,6 @@ package com.mygdx.stage;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -12,20 +10,15 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.mygdx.currentState.PartyInfo;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
 import com.mygdx.model.Hero;
+import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 import com.uwsoft.editor.renderer.data.LabelVO;
 
-public class StatusStage extends OneLevel2DStage {
-	@Autowired
-	private ScreenFactory screenFactory;
-	@Autowired
-	private PartyInfo partyInfo;
+public class StatusStage extends OverlapStage {
 	private Camera cam;
 	private CompositeItem closeButton;
 	private ImageItem largeImage;
@@ -33,8 +26,7 @@ public class StatusStage extends OneLevel2DStage {
 	private Image[] heroLargeImage;
 
 	public Stage makeStage() {
-
-		initScene("status_scene");
+		initSceneLoader(StaticAssets.rm);
 		sceneLoader.loadScene("status_scene");
 		addActor(sceneLoader.getRoot());
 		setCamera();
@@ -58,7 +50,6 @@ public class StatusStage extends OneLevel2DStage {
 					.get(partyInfo.getSelectedInedex()).getStatus()
 					.getStatusList()[i]);
 		}
-
 	}
 
 	private void imageSet() {
@@ -92,7 +83,6 @@ public class StatusStage extends OneLevel2DStage {
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y,
 						int pointer, int button) {
-					// TODO Auto-generated method stub
 					return true;
 				}
 
@@ -116,7 +106,6 @@ public class StatusStage extends OneLevel2DStage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				// TODO Auto-generated method stub
 				return true;
 			}
 
@@ -133,21 +122,4 @@ public class StatusStage extends OneLevel2DStage {
 		cam.position.set(1920 / 2, 1080 / 2, 0);
 		getViewport().setCamera(cam);
 	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
-	}
-
 }

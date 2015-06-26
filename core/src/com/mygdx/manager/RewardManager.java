@@ -45,38 +45,38 @@ public class RewardManager {
 	public void doReward() {
 		if (getRewardQueue().peek() != null) {
 			switch (getRewardQueue().peek().getRewardType()) {
-				case EXPERIENCE:
-					return;
-				case GOLD:
-					return;
-				case ITEM:
-					return;
-				case NONE:
-					return;
-				case PARTY:
-					partyInfo.addHero(assets.heroMap.get(getRewardQueue()
-							.peek().getRewardTarget()));
-					return;
-				default:
-					return;
+			case EXPERIENCE:
+				return;
+			case GOLD:
+				return;
+			case ITEM:
+				return;
+			case NONE:
+				return;
+			case PARTY:
+				partyInfo.addHero(assets.heroMap.get(getRewardQueue().peek()
+						.getRewardTarget()));
+				return;
+			default:
+				return;
 			}
 		}
 	}
 
 	public String getRewardMessage(RewardInfo rewardInfo) {
 		switch (rewardInfo.getRewardType()) {
-			case EXPERIENCE:
-				return rewardInfo.getRewardTarget() + "의 경험치를 획득했습니다.";
-			case GOLD:
-				return rewardInfo.getRewardTarget() + "의 골드를 획득했습니다.";
-			case ITEM:
-				return rewardInfo.getRewardTarget() + "아이템을 획득했습니다.";
-			case NONE:
-				return "보상 없음";
-			case PARTY:
-				return rewardInfo.getRewardTarget() + "이 파티에 합류하였습니다.";
-			default:
-				return "보상 없음";
+		case EXPERIENCE:
+			return rewardInfo.getRewardTarget() + "의 경험치를 획득했습니다.";
+		case GOLD:
+			return rewardInfo.getRewardTarget() + "의 골드를 획득했습니다.";
+		case ITEM:
+			return rewardInfo.getRewardTarget() + "아이템을 획득했습니다.";
+		case NONE:
+			return "보상 없음";
+		case PARTY:
+			return rewardInfo.getRewardTarget() + "이 파티에 합류하였습니다.";
+		default:
+			return "보상 없음";
 		}
 	}
 

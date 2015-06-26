@@ -3,7 +3,6 @@ package com.mygdx.model;
 import java.util.List;
 
 public class CurrentPosition {
-
 	private String currentNode; // 현재 마을/던전/교차로 이름
 	transient private CurrentMovingInfo currentMovingInfo; // 가장 최근의 움직임 이력
 
@@ -66,7 +65,6 @@ public class CurrentPosition {
 		public void setRoadMonsterList(List<String> roadMonsterList) {
 			this.roadMonsterList = roadMonsterList;
 		}
-
 	}
 
 	public String getCurrentNode() {

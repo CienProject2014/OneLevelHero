@@ -12,9 +12,7 @@ public class Fight {
 	public boolean battleEnd = false;
 	String dungeonID;
 
-	public Fight() {
-
-	}
+	public Fight() {}
 
 	public Fight(String dungeonID) {
 		this.dungeonID = dungeonID;
@@ -38,5 +36,4 @@ public class Fight {
 		Gdx.app.log("정보", "전투패배");
 		battleEnd = true;
 	}
-
 }

@@ -1,32 +1,19 @@
 package com.mygdx.screen;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
-import com.mygdx.factory.StageFactory;
-import com.mygdx.manager.MusicManager;
-import com.mygdx.state.Assets;
 
 /**
  * VillageStage와 GameUiStage를 addActor()해서 보여주는 Screen 마을의 경우 multiplexer를 이용하여
  * 2개의 화면을 교차로 보여준다.
- * 
+ *
  * @author Velmont
- * 
+ *
  */
-public class VillageScreen implements Screen {
+public class VillageScreen extends RootScreen {
 	private String villageName;
-	@Autowired
-	private StageFactory stageFactory;
-	@Autowired
-	private MusicManager musicManager;
-	@Autowired
-	private Assets assets;
 	private Stage villageStage;
 	private Stage gameUiStage;
 
@@ -59,20 +46,12 @@ public class VillageScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
 
 		villageStage.draw();
 		gameUiStage.draw();
 		// 카메라를 지속적으로 업데이트 해준다.
 		villageStage.getViewport().getCamera().update();
-
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -99,46 +78,6 @@ public class VillageScreen implements Screen {
 		dispose();
 	}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-	}
-
-	public StageFactory getStageFactory() {
-		return stageFactory;
-	}
-
-	public void setStageFactory(StageFactory stageFactory) {
-		this.stageFactory = stageFactory;
-	}
-
-	public MusicManager getMusicManager() {
-		return musicManager;
-	}
-
-	public void setMusicManager(MusicManager musicManager) {
-		this.musicManager = musicManager;
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
 	public Stage getVillageStage() {
 		return villageStage;
 	}
@@ -146,5 +85,4 @@ public class VillageScreen implements Screen {
 	public void setVillageStage(Stage villageStage) {
 		this.villageStage = villageStage;
 	}
-
 }

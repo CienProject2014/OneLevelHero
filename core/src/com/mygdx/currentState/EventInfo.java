@@ -5,6 +5,7 @@ import com.mygdx.model.NPC;
 
 /**
  * npc정보, eventNumber, greeting여부 정보를 갖고있음
+ *
  * @author Velmont
  *
  */

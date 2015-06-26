@@ -14,6 +14,7 @@ import com.mygdx.manager.TextureManager;
 
 /**
  * Village 모델 클래스
+ *
  * @author Velmont
  *
  */
@@ -33,13 +34,11 @@ public class Village implements Serializable {
 	}
 
 	public Texture getBackgroundUp() {
-		return TextureManager.getBackgroundTexture(backgroundPath,
-				TextureEnum.BACKGROUND_UP);
+		return TextureManager.getBackgroundTexture(backgroundPath, TextureEnum.BACKGROUND_UP);
 	}
 
 	public Texture getBackgroundDown() {
-		return TextureManager.getBackgroundTexture(backgroundPath,
-				TextureEnum.BACKGROUND_DOWN);
+		return TextureManager.getBackgroundTexture(backgroundPath, TextureEnum.BACKGROUND_DOWN);
 	}
 
 	public List<String> getVillageNpc() {
@@ -59,21 +58,15 @@ public class Village implements Serializable {
 	}
 
 	@Override
-	public void write(Json json) {
-		// TODO Auto-generated method stub
-
-	}
+	public void write(Json json) {}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void read(Json json, JsonValue jsonData) {
 		villageName = json.readValue("villageName", String.class, jsonData);
-		backgroundPath = json.readValue("backgroundPath", String.class,
-				jsonData);
-		villageNpc = json.readValue("villageNpc", ArrayList.class,
-				String.class, jsonData);
-		building = JsonParser.parseMap(Building.class, jsonData.get("building")
-				.toString());
+		backgroundPath = json.readValue("backgroundPath", String.class, jsonData);
+		villageNpc = json.readValue("villageNpc", ArrayList.class, String.class, jsonData);
+		building = JsonParser.parseMap(Building.class, jsonData.get("building") .toString());
 		sceneName = json.readValue("sceneName", String.class, jsonData);
 	}
 

@@ -2,7 +2,6 @@ package com.mygdx.popup;
 
 import java.util.Iterator;
 
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.currentState.PartyInfo;
@@ -11,7 +10,6 @@ import com.mygdx.state.StaticAssets;
 
 public class StatusMessagePopup extends MessagePopup {
 	private PartyInfo partyInfo;
-	private Stage stage;
 
 	public StatusMessagePopup(String title, Skin skin, PartyInfo partyInfo) {
 		super(title, StaticAssets.skin);
@@ -50,6 +48,5 @@ public class StatusMessagePopup extends MessagePopup {
 
 		// table.setFillParent(true);
 		table.top();
-
 	}
 }

@@ -1,5 +1,5 @@
 package com.mygdx.test.model;
-
+/*
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -8,13 +8,12 @@ import java.util.Scanner;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.manager.JsonParser;
 import com.mygdx.model.Village;
-/*
+
 public class VillageTest {
 	private Map<String, Village> villageMap;
 
 	@Before
 	public void setVillageMap() throws IOException {
-
 		String filePath = "../android/assets/data/map/village.json";
 
 		Scanner in = new Scanner(new File(filePath));

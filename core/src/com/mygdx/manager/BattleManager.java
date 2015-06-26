@@ -56,5 +56,4 @@ public class BattleManager {
 	public void setPartyInfo(PartyInfo partyInfo) {
 		this.partyInfo = partyInfo;
 	}
-
 }

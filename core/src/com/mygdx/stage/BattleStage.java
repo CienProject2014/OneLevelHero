@@ -16,25 +16,17 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.currentState.MovingInfo;
-import com.mygdx.currentState.PartyInfo;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.model.Hero;
 import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
-import com.mygdx.state.Assets;
+import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
-public class BattleStage extends OneLevel2DStage {
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private ScreenFactory screenFactory;
+public class BattleStage extends OverlapStage {
 	@Autowired
 	private MovingInfo movingInfo;
-	@Autowired
-	private PartyInfo partyInfo;
 
 	// Table
 	Table uiTable; // 화면 전체 테이블
@@ -99,6 +91,8 @@ public class BattleStage extends OneLevel2DStage {
 	}
 
 	public Stage makeStage() {
+		initSceneLoader(StaticAssets.rm);
+
 		cam = new OrthographicCamera(1920f, 1080f);
 		cam.position.set(1920 / 2.0f, 1080 / 2.0f, 0);
 		getViewport().setCamera(cam);
@@ -109,7 +103,6 @@ public class BattleStage extends OneLevel2DStage {
 		monster = movingInfo.getSelectedMonster();
 
 		// Overlap2D로 만든 신(Scene)
-		initScene("battle_ui_scene");
 		sceneLoader.loadScene("battle_ui_scene");
 		addActor(sceneLoader.getRoot());
 		setButton();
@@ -130,9 +123,8 @@ public class BattleStage extends OneLevel2DStage {
 
 		orderedUnits = new LinkedList<LivingUnit>(units);
 
-		for (LivingUnit unit : units) {
+		for (LivingUnit unit : units)
 			Gdx.app.log("BattleStage", "유닛이름: " + unit.getName());
-		}
 	}
 
 	public void makeTable() {
@@ -179,6 +171,7 @@ public class BattleStage extends OneLevel2DStage {
 
 	public void addListener() {
 		attackButton.addListener(new ClickListener() {
+			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "어택!");
 
@@ -200,40 +193,26 @@ public class BattleStage extends OneLevel2DStage {
 		});
 
 		skillButton.addListener(new ClickListener() {
+			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "스킬!");
 			}
 		});
 
 		inventoryButton.addListener(new ClickListener() {
+			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "인벤토리!");
-
 			}
 		});
 
 		escapeButton.addListener(new ClickListener() {
+			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "도망!");
 				screenFactory.show(ScreenEnum.MOVING);
 			}
 		});
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
 	}
 
 	public MovingInfo getMovingInfo() {
@@ -243,21 +222,4 @@ public class BattleStage extends OneLevel2DStage {
 	public void setMovingInfo(MovingInfo movingInfo) {
 		this.movingInfo = movingInfo;
 	}
-
-	public BattleManager getBattleManager() {
-		return battleManager;
-	}
-
-	public void setBattleManager(BattleManager battleManager) {
-		this.battleManager = battleManager;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
-	}
-
 }

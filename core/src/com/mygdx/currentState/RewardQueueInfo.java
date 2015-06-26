@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class RewardQueueInfo {
-
 	// (5-1) 보상 달성 여부 큐
 	private Queue<RewardInfo> rewardQueue = new LinkedList<RewardInfo>();
 
@@ -26,5 +25,4 @@ public class RewardQueueInfo {
 	public void setAchievedRewardQueue(Queue<RewardInfo> achievedRewardQueue) {
 		this.achievedRewardQueue = achievedRewardQueue;
 	}
-
 }

@@ -16,7 +16,7 @@ import com.mygdx.test.GdxTestRunner;
 
 /**
  * 아직 미구현
- * 
+ *
  * @author Velmont
  *
  */
@@ -37,7 +37,6 @@ public class VillageStageTest {
 	}
 
 	@Test
-	public void confirmStageInfo() {
-	}
+	public void confirmStageInfo() {}
 }
 */

@@ -20,5 +20,4 @@ public class LivingUnit extends Unit implements Comparable<LivingUnit> {
 		else
 			return -1;
 	}
-
 }
