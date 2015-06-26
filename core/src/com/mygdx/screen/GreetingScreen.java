@@ -65,7 +65,7 @@ public class GreetingScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-
+		gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		eventStage.draw();
@@ -113,24 +113,24 @@ public class GreetingScreen implements Screen {
 
 	private void goPreviousPlace() {
 		switch (positionInfo.getCurrentPlace()) {
-		case BUILDING:
-			screenFactory.show(ScreenEnum.BUILDING);
-			break;
-		case VILLAGE:
-			screenFactory.show(ScreenEnum.VILLAGE);
-			break;
-		case DUNGEON:
-			// screenFactory.show(ScreenEnum.DUNGEON);
-			screenFactory.show(ScreenEnum.VILLAGE); // FIXME
-			break;
-		case FORK:
-			// screenFactory.show(ScreenEnum.FORK);
-			screenFactory.show(ScreenEnum.VILLAGE); // FIXME
-			break;
-		default:
-			Gdx.app.log("EventScreen",
-					"positionInfo.getCurrentPlace() is not valid");
-			break;
+			case BUILDING:
+				screenFactory.show(ScreenEnum.BUILDING);
+				break;
+			case VILLAGE:
+				screenFactory.show(ScreenEnum.VILLAGE);
+				break;
+			case DUNGEON:
+				//screenFactory.show(ScreenEnum.DUNGEON);
+				screenFactory.show(ScreenEnum.VILLAGE); //FIXME
+				break;
+			case FORK:
+				//screenFactory.show(ScreenEnum.FORK);
+				screenFactory.show(ScreenEnum.VILLAGE); //FIXME
+				break;
+			default:
+				Gdx.app.log("EventScreen",
+						"positionInfo.getCurrentPlace() is not valid");
+				break;
 		}
 
 	}
