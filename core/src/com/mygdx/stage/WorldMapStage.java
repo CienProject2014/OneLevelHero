@@ -17,11 +17,10 @@ import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.WorldMapManager;
 import com.mygdx.model.Connection;
 import com.mygdx.state.Assets;
-import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
-public class WorldMapStage extends Overlap2DStage {
+public class WorldMapStage extends OneLevel2DStage {
 	@Autowired
 	private Assets assets;
 	@Autowired
@@ -35,7 +34,7 @@ public class WorldMapStage extends Overlap2DStage {
 	private final int SET_POSITION = 15;
 
 	public Stage makeStage() {
-		initSceneLoader();
+		initScene("worldmap_scene");
 		/* MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다.
 		   SceneVO가 반환되는데, 이것은 CompositeVO를 가지고 있다.
 		   CompositeVO는 그 Scene이 가지고 있는 Label, Button등을 다 가지고 있다. */

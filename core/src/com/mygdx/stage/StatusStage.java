@@ -16,13 +16,12 @@ import com.mygdx.currentState.PartyInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.model.Hero;
-import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 import com.uwsoft.editor.renderer.data.LabelVO;
 
-public class StatusStage extends Overlap2DStage {
+public class StatusStage extends OneLevel2DStage {
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
@@ -35,7 +34,7 @@ public class StatusStage extends Overlap2DStage {
 
 	public Stage makeStage() {
 
-		initSceneLoader();
+		initScene("status_scene");
 		sceneLoader.loadScene("status_scene");
 		addActor(sceneLoader.getRoot());
 		setCamera();

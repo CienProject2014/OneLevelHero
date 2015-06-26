@@ -20,10 +20,9 @@ import com.mygdx.manager.NpcManager;
 import com.mygdx.manager.PlaceManager;
 import com.mygdx.model.Building;
 import com.mygdx.state.Assets;
-import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
-public class BuildingStage extends Overlap2DStage {
+public class BuildingStage extends OneLevel2DStage {
 	@Autowired
 	private Assets assets;
 	@Autowired
@@ -75,7 +74,7 @@ public class BuildingStage extends Overlap2DStage {
 	private void makeScene() {
 		buildingInfo = assets.villageMap.get(positionInfo.getCurrentNode())
 				.getBuilding().get(positionInfo.getCurrentBuilding());
-		initSceneLoader();
+		initScene(buildingInfo.getSceneName());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
