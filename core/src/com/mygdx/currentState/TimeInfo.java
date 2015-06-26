@@ -1,3 +1,4 @@
 package com.mygdx.currentState;
 
-public class TimeInfo {}
+public class TimeInfo {
+}

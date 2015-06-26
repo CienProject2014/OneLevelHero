@@ -25,7 +25,9 @@ package com.mygdx.enums;
  * @author Daniel Holderbaum
  */
 public enum ItemEnum {
-	DAGGER("dagger"), LEATHER_ARMOR("leather_armor"), LEATHER_BOOTS("leather_boots"), LEATHER_GLOVES("leather_gloves"), NOTHING("nothing");
+	DAGGER("dagger"), LEATHER_ARMOR("leather_armor"), LEATHER_BOOTS(
+			"leather_boots"), LEATHER_GLOVES("leather_gloves"), NOTHING(
+			"nothing");
 
 	private String itemName;
 

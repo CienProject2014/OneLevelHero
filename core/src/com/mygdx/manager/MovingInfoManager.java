@@ -28,10 +28,14 @@ public class MovingInfoManager {
 	public void createMovingInfo(String destinationNode, WorldNode worldNodeInfo) {
 		movingInfo.setStartNode(positionInfo.getCurrentNode());
 		movingInfo.setDestinationNode(destinationNode);
-		movingInfo.setRoadLength(worldNodeInfo.getConnection().get(destinationNode).getroadLength());
-		movingInfo.setLeftRoadLength(worldNodeInfo.getConnection().get(destinationNode).getroadLength());
-		movingInfo.setRoadMonsterList(worldNodeInfo.getConnection().get(destinationNode).getRoadMonster());
-		movingInfo.setArrowName(worldNodeInfo.getConnection().get(destinationNode).getArrowName());
+		movingInfo.setRoadLength(worldNodeInfo.getConnection()
+				.get(destinationNode).getroadLength());
+		movingInfo.setLeftRoadLength(worldNodeInfo.getConnection()
+				.get(destinationNode).getroadLength());
+		movingInfo.setRoadMonsterList(worldNodeInfo.getConnection()
+				.get(destinationNode).getRoadMonster());
+		movingInfo.setArrowName(worldNodeInfo.getConnection()
+				.get(destinationNode).getArrowName());
 	}
 
 	public Assets getAssets() {

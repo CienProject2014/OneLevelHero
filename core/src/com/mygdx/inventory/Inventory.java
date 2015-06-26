@@ -38,7 +38,8 @@ public class Inventory {
 
 		// create some random items
 		for (Slot slot : slots)
-			slot.add(ItemEnum.values()[MathUtils.random(0, ItemEnum.values().length - 1)], 1);
+			slot.add(ItemEnum.values()[MathUtils.random(0,
+					ItemEnum.values().length - 1)], 1);
 
 		// create a few random empty slots
 		for (int i = 0; i < 3; i++) {

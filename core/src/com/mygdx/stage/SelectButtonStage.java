@@ -46,12 +46,14 @@ public class SelectButtonStage extends OneLevelStage {
 			else {
 				chatButtons.get(i).addListener(new InputListener() {
 					@Override
-					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					public boolean touchDown(InputEvent event, float x,
+							float y, int pointer, int button) {
 						return true;
 					}
 
 					@Override
-					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					public void touchUp(InputEvent event, float x, float y,
+							int pointer, int button) {
 						eventManager.setEventInfo(eventInfo.getNpc(), 0, false);
 						screenFactory.show(ScreenEnum.EVENT);
 					}
@@ -86,7 +88,8 @@ public class SelectButtonStage extends OneLevelStage {
 				{ assets.windowWidth * 0.68f, assets.windowHeight * 0.555f },
 				{ assets.windowWidth * 0.68f, assets.windowHeight * 0.37f } };
 		for (int i = 0; i < eventCount; i++)
-			chatButtons.get(i).setPosition(buttonPosition[i][0], buttonPosition[i][1]);
+			chatButtons.get(i).setPosition(buttonPosition[i][0],
+					buttonPosition[i][1]);
 	}
 
 	private void setexitButton() {
@@ -94,12 +97,14 @@ public class SelectButtonStage extends OneLevelStage {
 		exitButton.center();
 		exitButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				placeManager.goPreviousPlace();
 				event.getListenerActor().setVisible(false);
 			}
@@ -109,14 +114,16 @@ public class SelectButtonStage extends OneLevelStage {
 	}
 
 	private void setSize() {
-		final float buttonSize[] = { assets.windowWidth * 0.208f, assets.windowHeight * 0.185f };
+		final float buttonSize[] = { assets.windowWidth * 0.208f,
+				assets.windowHeight * 0.185f };
 		for (TextButton chatButton : chatButtons)
 			chatButton.setSize(buttonSize[0], buttonSize[1]);
 	}
 
 	private void showEventButton() {
 		for (int i = 0; i < eventCount; i++) {
-			chatStyles.add(new TextButtonStyle(assets.chatButton[i], assets.chatButton[i], assets.chatButton[i], assets.font));
+			chatStyles.add(new TextButtonStyle(assets.chatButton[i],
+					assets.chatButton[i], assets.chatButton[i], assets.font));
 			chatButtons.add(new TextButton("", chatStyles.get(i)));
 		}
 	}

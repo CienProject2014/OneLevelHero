@@ -19,16 +19,19 @@ public class TextureManager {
 	}
 
 	public static Texture getCharacterBattleTexture(String name) {
-		return StaticAssets.characterTextureMap.get(name + "_" + TextureEnum.BATTLE_ALLY_NORMAL);
+		return StaticAssets.characterTextureMap.get(name + "_"
+				+ TextureEnum.BATTLE_ALLY_NORMAL);
 	}
 
 	public static Texture getMonsterBattleTexture(String name) {
 		System.out.println((name + "_" + TextureEnum.BATTLE_ENEMY_NORMAL));
-		return StaticAssets.monsterTextureMap.get(name + "_" + TextureEnum.BATTLE_ENEMY_NORMAL);
+		return StaticAssets.monsterTextureMap.get(name + "_"
+				+ TextureEnum.BATTLE_ENEMY_NORMAL);
 	}
 
 	public static Texture getStatusTexture(String name) {
-		return StaticAssets.characterTextureMap.get(name + "_" + TextureEnum.STATUS_NORMAL);
+		return StaticAssets.characterTextureMap.get(name + "_"
+				+ TextureEnum.STATUS_NORMAL);
 	}
 
 	public static Texture getStatusTexture(String name, TextureEnum textureEnum) {
@@ -36,7 +39,8 @@ public class TextureManager {
 	}
 
 	public static Texture getNpcTexture(String name) {
-		return StaticAssets.characterTextureMap.get(name + "_" + TextureEnum.NPC_NORMAL);
+		return StaticAssets.characterTextureMap.get(name + "_"
+				+ TextureEnum.NPC_NORMAL);
 	}
 
 	public static Texture getNpcTexture(String name, TextureEnum textureEnum) {

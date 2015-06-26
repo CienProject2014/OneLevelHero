@@ -57,14 +57,17 @@ public class Building implements Serializable {
 	@Override
 	public void read(Json json, JsonValue jsonData) {
 		buildingName = json.readValue("buildingName", String.class, jsonData);
-		buildingType = json.readValue("buildingType", BuildingTypeEnum.class, jsonData);
+		buildingType = json.readValue("buildingType", BuildingTypeEnum.class,
+				jsonData);
 		buildingPath = json.readValue("buildingPath", String.class, jsonData);
-		buildingNpc = json.readValue("buildingNpc", ArrayList.class, String.class, jsonData);
+		buildingNpc = json.readValue("buildingNpc", ArrayList.class,
+				String.class, jsonData);
 		sceneName = json.readValue("sceneName", String.class, jsonData);
 	}
 
 	@Override
-	public void write(Json json) {}
+	public void write(Json json) {
+	}
 
 	public String getSceneName() {
 		return sceneName;

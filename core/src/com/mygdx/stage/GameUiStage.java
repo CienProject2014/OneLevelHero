@@ -80,7 +80,8 @@ public class GameUiStage extends OneLevelStage {
 		for (int i = 0; i < battleMemberNumber; i++) {
 			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, assets.skin);
 			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, assets.skin);
-			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false, assets.skin);
+			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false,
+					assets.skin);
 			statusbartable[i] = new Table(assets.skin);
 			charatertable[i] = new Table(assets.skin);
 		}
@@ -88,34 +89,48 @@ public class GameUiStage extends OneLevelStage {
 		List<Hero> currentBattleMemberList = partyInfo.getBattleMemberList();
 
 		for (int i = 0; i < currentBattleMemberList.size(); i++)
-			characterImage[i] = new Image(currentBattleMemberList.get(i).getStatusTexture());
+			characterImage[i] = new Image(currentBattleMemberList.get(i)
+					.getStatusTexture());
 
 		toptable = new Table(assets.skin);
 		bottomtable = new Table(assets.skin);
 
-		TextButtonStyle style = new TextButtonStyle(assets.atlasUiMap.get("nameAndTime"), assets.atlasUiMap.get("nameAndTime"), assets.atlasUiMap.get("nameAndTime"), assets.font);
-		downArrowButton = new ImageButton(assets.atlasUiMap.get("downArrowButton"), assets.atlasUiMap.get("downArrowButton"));
-		bagButton = new ImageButton(assets.atlasUiMap.get("bagButton"), assets.atlasUiMap.get("bagButton"));
+		TextButtonStyle style = new TextButtonStyle(
+				assets.atlasUiMap.get("nameAndTime"),
+				assets.atlasUiMap.get("nameAndTime"),
+				assets.atlasUiMap.get("nameAndTime"), assets.font);
+		downArrowButton = new ImageButton(
+				assets.atlasUiMap.get("downArrowButton"),
+				assets.atlasUiMap.get("downArrowButton"));
+		bagButton = new ImageButton(assets.atlasUiMap.get("bagButton"),
+				assets.atlasUiMap.get("bagButton"));
 		worldMapButton = new TextButton("worldMap", style);
 		leftTimeButton = new TextButton("12h30m", style);
-		helpButton = new ImageButton(assets.atlasUiMap.get("helpButton"), assets.atlasUiMap.get("helpButton"));
-		optionButton = new ImageButton(assets.atlasUiMap.get("optionButton"), assets.atlasUiMap.get("optionButton"));
+		helpButton = new ImageButton(assets.atlasUiMap.get("helpButton"),
+				assets.atlasUiMap.get("helpButton"));
+		optionButton = new ImageButton(assets.atlasUiMap.get("optionButton"),
+				assets.atlasUiMap.get("optionButton"));
 		battleButton = new TextButton("Battle", assets.skin);
 
 		// 인벤토리 Actor 만들기
 		dragAndDrop = new DragAndDrop();
-		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop, assets.skin);
+		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop,
+				assets.skin);
 
 		// 보상 이벤트 처리
-		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue().iterator();
+		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
+				.iterator();
 		while (iterator.hasNext()) {
 			RewardInfo nextIterator = iterator.next();
 			if (nextIterator.getRewardState().equals(RewardStateEnum.ING))
-				alertMessage.add(new AlertMessagePopup("[ 보상 ]", assets.skin).text(rewardManager.getRewardMessage(nextIterator)));
-			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", " + nextIterator.getRewardType());
+				alertMessage.add(new AlertMessagePopup("[ 보상 ]", assets.skin)
+						.text(rewardManager.getRewardMessage(nextIterator)));
+			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
+					+ nextIterator.getRewardType());
 		}
 		// 알림 메시지
-		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", assets.skin, partyInfo);
+		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", assets.skin,
+				partyInfo);
 		addListener();
 		makeTable();
 		addActor(uiTable);
@@ -137,26 +152,36 @@ public class GameUiStage extends OneLevelStage {
 	public void makeTable() {
 		uiTable.setFillParent(true);
 
-		toptable.add(downArrowButton).expand().width(realwidth / 8).height(realheight / 12).top().left();
-		toptable.add(bagButton).width(realwidth / 8).height(realheight / 12).top();
-		toptable.add(worldMapButton).width(realwidth / 4).height(realheight / 12).top();
-		toptable.add(leftTimeButton).width(realwidth / 4).height(realheight / 12).top();
-		toptable.add(helpButton).width(realwidth / 8).height(realheight / 12).top();
-		toptable.add(optionButton).width(realwidth / 8).height(realheight / 12).top();
+		toptable.add(downArrowButton).expand().width(realwidth / 8)
+				.height(realheight / 12).top().left();
+		toptable.add(bagButton).width(realwidth / 8).height(realheight / 12)
+				.top();
+		toptable.add(worldMapButton).width(realwidth / 4)
+				.height(realheight / 12).top();
+		toptable.add(leftTimeButton).width(realwidth / 4)
+				.height(realheight / 12).top();
+		toptable.add(helpButton).width(realwidth / 8).height(realheight / 12)
+				.top();
+		toptable.add(optionButton).width(realwidth / 8).height(realheight / 12)
+				.top();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
-			statusbartable[i].add(hpbar[i]).width(realwidth / 12).height(realheight / 12).bottom();
+			statusbartable[i].add(hpbar[i]).width(realwidth / 12)
+					.height(realheight / 12).bottom();
 			statusbartable[i].row();
-			statusbartable[i].add(expbar[i]).width(realwidth / 12).height(realheight / 12).bottom();
+			statusbartable[i].add(expbar[i]).width(realwidth / 12)
+					.height(realheight / 12).bottom();
 			statusbartable[i].row();
-			statusbartable[i].add(turnbar[i]).width(realwidth / 12).height(realheight / 12).bottom();
+			statusbartable[i].add(turnbar[i]).width(realwidth / 12)
+					.height(realheight / 12).bottom();
 			bottomtable.add(charatertable[i]);
 			bottomtable.add(statusbartable[i]);
 		}
 
 		// GameUi의 캐릭터를 동적으로 부여해줌
 		for (int i = 0; i < battleMemberNumber; i++)
-			charatertable[i].add(characterImage[i]).width(realwidth / 4).height(realheight / 4);
+			charatertable[i].add(characterImage[i]).width(realwidth / 4)
+					.height(realheight / 4);
 
 		uiTable.add(toptable).expand().top();
 		uiTable.row();
@@ -167,71 +192,83 @@ public class GameUiStage extends OneLevelStage {
 	public void addListener() {
 		bagButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				inventoryActor.setVisible(true);
 				Gdx.app.log("정보", "inventoryPopUp창이 나타납니다.");
 			}
 		});
 		optionButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				Gdx.app.log("정보", "OptionScreen이 나타납니다.");
 			}
 		});
 
 		downArrowButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				Gdx.app.log("정보", "minimap창이 나타납니다.");
 			}
 		});
 
 		battleButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				screenFactory.show(ScreenEnum.BATTLE);
 				Gdx.app.log("정보", "전투가 시작됩니다");
 			}
 		});
 		worldMapButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				screenFactory.show(ScreenEnum.WORLD_MAP);
 			}
 		});
 		helpButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 			}
 		});
 		for (int i = 0; i < partyInfo.getBattleMemberList().size(); i++) {

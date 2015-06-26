@@ -12,7 +12,8 @@ public class Fight {
 	public boolean battleEnd = false;
 	String dungeonID;
 
-	public Fight() {}
+	public Fight() {
+	}
 
 	public Fight(String dungeonID) {
 		this.dungeonID = dungeonID;

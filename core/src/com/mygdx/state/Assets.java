@@ -85,7 +85,8 @@ public class Assets {
 
 	private void loadFilePath() {
 		Gdx.app.debug("Assets", "loadFilePath()");
-		filePathMap = JsonParser.parseMap(JsonStringFile.class, Gdx.files.internal("data/load/file_path.json").readString());
+		filePathMap = JsonParser.parseMap(JsonStringFile.class, Gdx.files
+				.internal("data/load/file_path.json").readString());
 	}
 
 	private void loadResourceFile() {
@@ -122,41 +123,52 @@ public class Assets {
 	// JsonFile의 path를 읽어온다.
 	private void loadJsonObject() {
 		Gdx.app.debug("Assets", "loadJsonObject()");
-		Map<String, JsonStringFile> jsonFileMap = JsonParser.parseMap(JsonStringFile.class, filePathMap.get(JsonEnum.JSON_FILE_PATH.toString()).getFile());
+		Map<String, JsonStringFile> jsonFileMap = JsonParser.parseMap(
+				JsonStringFile.class,
+				filePathMap.get(JsonEnum.JSON_FILE_PATH.toString()).getFile());
 		for (Entry<String, JsonStringFile> entry : jsonFileMap.entrySet())
 			jsonStringMap.put(entry.getKey(), entry.getValue().getFile());
 	}
 
-	private void loadRoadInfo() {}
+	private void loadRoadInfo() {
+	}
 
 	private void loadHeroInfo() {
 		// hero 리스트를 담은 Json을 불러와 객체화한다.
-		heroMap = JsonParser.parseMap(Hero.class, jsonStringMap.get(JsonEnum.HERO_JSON.toString()));
+		heroMap = JsonParser.parseMap(Hero.class,
+				jsonStringMap.get(JsonEnum.HERO_JSON.toString()));
 	}
 
 	private void loadWorldMapInfo() {
-		worldNodeInfoMap = JsonParser.parseMap(WorldNode.class, jsonStringMap.get(JsonEnum.WORLDMAP_JSON.toString()));
+		worldNodeInfoMap = JsonParser.parseMap(WorldNode.class,
+				jsonStringMap.get(JsonEnum.WORLDMAP_JSON.toString()));
 	}
 
 	private void loadMonsterInfo() {
 		// monster 리스트를 담은 Json을 불러온다.
-		monsterMap = JsonParser.parseMap(Monster.class, jsonStringMap.get(JsonEnum.MONSTER_JSON.toString()));
+		monsterMap = JsonParser.parseMap(Monster.class,
+				jsonStringMap.get(JsonEnum.MONSTER_JSON.toString()));
 	}
 
 	private void loadVillageInfo() {
-		villageMap = JsonParser.parseMap(Village.class, jsonStringMap.get(JsonEnum.VILLAGE_JSON.toString()));
+		villageMap = JsonParser.parseMap(Village.class,
+				jsonStringMap.get(JsonEnum.VILLAGE_JSON.toString()));
 	}
 
 	private void loadNpcInfo() {
 		// npc 리스트를 담은 Json을 불러온다.
-		npcMap = JsonParser.parseMap(NPC.class, jsonStringMap.get(JsonEnum.NPC_JSON.toString()));
+		npcMap = JsonParser.parseMap(NPC.class,
+				jsonStringMap.get(JsonEnum.NPC_JSON.toString()));
 	}
 
 	private void loadAtlasUiTexture() {
-		List<AtlasUiFile> atlasUiFileList = JsonParser.parseList(AtlasUiFile.class, filePathMap.get(JsonEnum.ATLAS_UI_PATH.toString()).getFile());
+		List<AtlasUiFile> atlasUiFileList = JsonParser.parseList(
+				AtlasUiFile.class,
+				filePathMap.get(JsonEnum.ATLAS_UI_PATH.toString()).getFile());
 		for (AtlasUiFile atlasUiFile : atlasUiFileList)
 			for (String element : atlasUiFile.getElement())
-				atlasUiMap.put(element, new TextureRegionDrawable(atlasUiFile.getFile().findRegion(element)));
+				atlasUiMap.put(element, new TextureRegionDrawable(atlasUiFile
+						.getFile().findRegion(element)));
 	}
 
 	private void loadFont() {
@@ -167,31 +179,40 @@ public class Assets {
 		TextureAtlas textureAtlas = new TextureAtlas("skin/chatbutton.pack");
 		chatButton = new TextureRegionDrawable[6];
 		for (int i = 0; i < 6; i++)
-			chatButton[i] = new TextureRegionDrawable(textureAtlas.findRegion("chatbutton" + (i + 1)));
+			chatButton[i] = new TextureRegionDrawable(
+					textureAtlas.findRegion("chatbutton" + (i + 1)));
 	}
 
 	@SuppressWarnings("unchecked")
 	private void loadMusic() {
-		Map<String, MusicFile> musicFileMap = JsonParser.parseMap(MusicFile.class, filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString()).getFile());
+		Map<String, MusicFile> musicFileMap = JsonParser.parseMap(
+				MusicFile.class,
+				filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString()).getFile());
 		for (Entry<String, MusicFile> entry : musicFileMap.entrySet())
 			musicMap.put(entry.getKey(), entry.getValue().getFile());
 
 		// WorldNode MusicList
 		String worldNodeMusicJsonString = filePathMap.get(
 				JsonEnum.WORLD_NODE_MUSIC_LIST.toString()).getFile();
-		Map<String, String> worldNodeMusicStringMap = new Json().fromJson(HashMap.class, worldNodeMusicJsonString);
+		Map<String, String> worldNodeMusicStringMap = new Json().fromJson(
+				HashMap.class, worldNodeMusicJsonString);
 		for (Entry<String, String> entry : worldNodeMusicStringMap.entrySet())
-			worldNodeMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
+			worldNodeMusicMap.put(entry.getKey(),
+					musicMap.get(entry.getValue()));
 
 		// Battle MusicList
-		String battleMusicJsonString = filePathMap.get(JsonEnum.BATTLE_MUSIC_LIST.toString()).getFile();
-		Map<String, String> battleMusicStringMap = new Json().fromJson(HashMap.class, battleMusicJsonString);
+		String battleMusicJsonString = filePathMap.get(
+				JsonEnum.BATTLE_MUSIC_LIST.toString()).getFile();
+		Map<String, String> battleMusicStringMap = new Json().fromJson(
+				HashMap.class, battleMusicJsonString);
 		for (Entry<String, String> entry : battleMusicStringMap.entrySet())
 			battleMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
 
 		// Moving MusicList
-		String movingMusicJsonString = filePathMap.get(JsonEnum.MOVING_MUSIC_LIST.toString()).getFile();
-		Map<String, String> movingMusicStringMap = new Json().fromJson(HashMap.class, movingMusicJsonString);
+		String movingMusicJsonString = filePathMap.get(
+				JsonEnum.MOVING_MUSIC_LIST.toString()).getFile();
+		Map<String, String> movingMusicStringMap = new Json().fromJson(
+				HashMap.class, movingMusicJsonString);
 		for (Entry<String, String> entry : movingMusicStringMap.entrySet())
 			movingMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
 	}

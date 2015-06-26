@@ -21,7 +21,8 @@ public class NPC extends Unit {
 		try {
 			return events.get(eventNo);
 		} catch (IndexOutOfBoundsException e) {
-			Gdx.app.error("error", String.format("eventNo %d not exist", eventNo));
+			Gdx.app.error("error",
+					String.format("eventNo %d not exist", eventNo));
 			return null;
 		}
 	}
@@ -39,7 +40,8 @@ public class NPC extends Unit {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((events == null) ? 0 : events.hashCode());
-		result = prime * result + ((greeting == null) ? 0 : greeting.hashCode());
+		result = prime * result
+				+ ((greeting == null) ? 0 : greeting.hashCode());
 		return result;
 	}
 

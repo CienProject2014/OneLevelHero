@@ -21,7 +21,8 @@ public class MenuScreen extends RootScreen {
 
 	@Override
 	public void show() {
-		musicManager.setMusicAndPlay(assets.musicMap.get("opening"), assets.musicVolume, MusicCondition.IF_IS_NOT_PLAYING);
+		musicManager.setMusicAndPlay(assets.musicMap.get("opening"),
+				assets.musicVolume, MusicCondition.IF_IS_NOT_PLAYING);
 		stage = stageFactory.makeStage(StageEnum.MENU);
 
 		Gdx.input.setInputProcessor(stage);

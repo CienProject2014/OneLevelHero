@@ -8,7 +8,8 @@ import com.mygdx.enums.StageEnum;
 public class BattleScreen extends RootScreen {
 	private Stage gameUiStage, characterUiStage, monsterStage, battleStage;
 
-	public BattleScreen() {}
+	public BattleScreen() {
+	}
 
 	@Override
 	public void render(float delta) {
@@ -30,7 +31,8 @@ public class BattleScreen extends RootScreen {
 	}
 
 	@Override
-	public void resize(int width, int height) {}
+	public void resize(int width, int height) {
+	}
 
 	@Override
 	public void show() {

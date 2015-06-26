@@ -7,7 +7,8 @@ public class PositionInfo {
 	private String currentNode; // 현재 마을/던전/교차로 이름
 	private String currentBuilding;
 
-	public PositionInfo() {}
+	public PositionInfo() {
+	}
 
 	public String getCurrentNode() {
 		return currentNode;

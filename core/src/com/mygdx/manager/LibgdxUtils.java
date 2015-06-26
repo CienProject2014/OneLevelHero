@@ -54,7 +54,8 @@ public class LibgdxUtils implements ApplicationListener {
 	 */
 	public static final Game game = new Game() {
 		@Override
-		public void create() {}
+		public void create() {
+		}
 	};
 
 	/**

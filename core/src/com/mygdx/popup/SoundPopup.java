@@ -53,7 +53,8 @@ public class SoundPopup extends Dialog {
 		setWidth((int) (width * vp.getViewportWidth())); // 가로 크기 세팅
 		setHeight((int) (height * vp.getViewportHeight())); // 세로 크기 세팅
 
-		setPosition((int) (centerx * vp.getViewportWidth()), (int) (centery * vp.getViewportHeight()));
+		setPosition((int) (centerx * vp.getViewportWidth()),
+				(int) (centery * vp.getViewportHeight()));
 
 		setMovable(true); // 드래그로 이동가능
 

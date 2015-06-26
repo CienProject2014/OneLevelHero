@@ -13,7 +13,8 @@ public class JsonParser {
 
 	@SuppressWarnings("unchecked")
 	public static <T> Map<String, T> parseMap(Class<T> clazz, String jsonString) {
-		Map<String, JsonValue> parsedMap = JSON.fromJson(HashMap.class, jsonString);
+		Map<String, JsonValue> parsedMap = JSON.fromJson(HashMap.class,
+				jsonString);
 
 		Map<String, T> result = new HashMap<String, T>();
 

@@ -1,3 +1,4 @@
 package com.mygdx.currentState;
 
-public class InventoryInfo {}
+public class InventoryInfo {
+}

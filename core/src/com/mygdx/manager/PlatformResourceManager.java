@@ -22,7 +22,8 @@ public class PlatformResourceManager extends ResourceManager {
 		// Game stage width should be dynamic based on screen size, so if you
 		// have wider screen, instead of stretching
 		// It will be just more level visible for player.
-		stageWidth = Gdx.graphics.getHeight() / currentResolution.height * Gdx.graphics.getWidth();
+		stageWidth = Gdx.graphics.getHeight() / currentResolution.height
+				* Gdx.graphics.getWidth();
 
 		// Sets working resolution, so init all resources will load in to memory
 		// resources of that resolution/size only
@@ -41,7 +42,8 @@ public class PlatformResourceManager extends ResourceManager {
 	 * @return ResolutionEntryVO
 	 */
 	public ResolutionEntryVO getBestResolutionMatch(ProjectInfoVO projectInfoVo) {
-		float deltaSize = Math.abs(projectInfoVo.originalResolution.height - Gdx.graphics.getHeight());
+		float deltaSize = Math.abs(projectInfoVo.originalResolution.height
+				- Gdx.graphics.getHeight());
 		ResolutionEntryVO result = projectInfoVo.originalResolution;
 
 		for (ResolutionEntryVO revo : projectInfoVo.resolutions) {

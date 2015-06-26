@@ -12,7 +12,8 @@ public class BGMScreen extends RootScreen {
 	private Stage stage;
 	private TextButton backButton;
 
-	public BGMScreen() {}
+	public BGMScreen() {
+	}
 
 	@Override
 	public void render(float delta) {
@@ -31,12 +32,14 @@ public class BGMScreen extends RootScreen {
 
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				screenFactory.show(ScreenEnum.COLLETION);
 			}
 		});

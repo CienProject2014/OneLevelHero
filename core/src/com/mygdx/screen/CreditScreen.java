@@ -22,7 +22,8 @@ public class CreditScreen extends RootScreen {
 		this.event = event;
 	}
 
-	public CreditScreen() {}
+	public CreditScreen() {
+	}
 
 	@Override
 	public void render(float delta) {

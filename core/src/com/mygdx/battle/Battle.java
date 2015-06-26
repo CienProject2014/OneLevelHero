@@ -10,7 +10,8 @@ public class Battle {
 	private boolean outcome;
 	private String dungeonID;
 
-	public Battle() {}
+	public Battle() {
+	}
 
 	public Battle(String dungeonID) {
 		this();
@@ -35,8 +36,10 @@ public class Battle {
 
 	public void attack(LivingUnit attacker, LivingUnit defender) {
 		defender.getStatus().setHp(
-				defender.getStatus().getHp() + defender.getStatus().getDef() - defender.getStatus().getAtk());
-		Gdx.app.log("Battle", attacker.getName() + "가 " + defender.getName() + "를 공격하였습니다!");
+				defender.getStatus().getHp() + defender.getStatus().getDef()
+						- defender.getStatus().getAtk());
+		Gdx.app.log("Battle", attacker.getName() + "가 " + defender.getName()
+				+ "를 공격하였습니다!");
 	}
 
 	public void skillAttack(LivingUnit unit, String skillID) {

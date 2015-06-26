@@ -52,9 +52,9 @@ public class MonsterStage extends OneLevelStage {
 
 		table.align(Align.top); // table을 위로 정렬
 		table.add(innerTable) // table안에 innerTable 넣는다.
-			.padTop(topPadValue) // 상단바에 겹치지 않게 위쪽 Padding(1/8)
-			.width(innerTableWidth) // 최대 가로 크기(3/4)
-			.height(innerTableHeight); // 최대 세로 크기(5/8)
+				.padTop(topPadValue) // 상단바에 겹치지 않게 위쪽 Padding(1/8)
+				.width(innerTableWidth) // 최대 가로 크기(3/4)
+				.height(innerTableHeight); // 최대 세로 크기(5/8)
 
 		this.addActor(table);
 	}
@@ -65,7 +65,8 @@ public class MonsterStage extends OneLevelStage {
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
-		return new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("texture/battle/forest.png"))));
+		return new TextureRegionDrawable(new TextureRegion(new Texture(
+				Gdx.files.internal("texture/battle/forest.png"))));
 	}
 
 	public MovingInfo getMovingInfo() {

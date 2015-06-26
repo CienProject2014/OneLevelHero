@@ -9,7 +9,8 @@ public class EncounterScreen extends RootScreen {
 	private Stage encountStage;
 	private Stage monsterStage;
 
-	public EncounterScreen() {}
+	public EncounterScreen() {
+	}
 
 	@Override
 	public void show() {

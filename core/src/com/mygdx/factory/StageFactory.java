@@ -29,33 +29,33 @@ public class StageFactory {
 	public Stage makeStage(StageEnum stageEnum) {
 		Gdx.app.log("StageFactory", "makeStage(" + stageEnum.toString() + ")");
 		switch (stageEnum) {
-		case BUILDING:
-			return context.getBean(BuildingStage.class).makeStage();
-		case CHARACTER_UI:
-			return context.getBean(CharacterUiStage.class).makeStage();
-		case DUNGEON:
-			return context.getBean(DungeonStage.class).makeStage();
-		case DUNGEON_ENTRANCE:
-			return context.getBean(DungeonEntranceStage.class).makeStage();
-		case ENCOUNTER:
-			return context.getBean(EncounterStage.class).makeStage();
-		case GAME_UI:
-			return context.getBean(GameUiStage.class).makeStage();
-		case MENU:
-			return context.getBean(MenuStage.class).makeStage();
-		case MONSTER:
-			return context.getBean(MonsterStage.class).makeStage();
-		case SELECT_BUTTON:
-			return context.getBean(SelectButtonStage.class).makeStage();
-		case STATUS:
-			return context.getBean(StatusStage.class).makeStage();
-		case VILLAGE:
-			return context.getBean(VillageStage.class).makeStage();
-		case WORLD_MAP:
-			return context.getBean(WorldMapStage.class).makeStage();
-		default:
-			Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
-			return context.getBean(VillageStage.class).makeStage(); // FIXME
+			case BUILDING:
+				return context.getBean(BuildingStage.class).makeStage();
+			case CHARACTER_UI:
+				return context.getBean(CharacterUiStage.class).makeStage();
+			case DUNGEON:
+				return context.getBean(DungeonStage.class).makeStage();
+			case DUNGEON_ENTRANCE:
+				return context.getBean(DungeonEntranceStage.class).makeStage();
+			case ENCOUNTER:
+				return context.getBean(EncounterStage.class).makeStage();
+			case GAME_UI:
+				return context.getBean(GameUiStage.class).makeStage();
+			case MENU:
+				return context.getBean(MenuStage.class).makeStage();
+			case MONSTER:
+				return context.getBean(MonsterStage.class).makeStage();
+			case SELECT_BUTTON:
+				return context.getBean(SelectButtonStage.class).makeStage();
+			case STATUS:
+				return context.getBean(StatusStage.class).makeStage();
+			case VILLAGE:
+				return context.getBean(VillageStage.class).makeStage();
+			case WORLD_MAP:
+				return context.getBean(WorldMapStage.class).makeStage();
+			default:
+				Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
+				return context.getBean(VillageStage.class).makeStage(); // FIXME
 		}
 	}
 

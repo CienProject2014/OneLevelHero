@@ -29,7 +29,8 @@ public class GreetingScreen extends RootScreen {
 	private Stage selectButtonStage;
 	private List<EventScene> greetingScenes;
 
-	public GreetingScreen() {}
+	public GreetingScreen() {
+	}
 
 	@Override
 	public void render(float delta) {
@@ -72,23 +73,24 @@ public class GreetingScreen extends RootScreen {
 
 	private void goPreviousPlace() {
 		switch (positionInfo.getCurrentPlace()) {
-		case BUILDING:
-			screenFactory.show(ScreenEnum.BUILDING);
-			break;
-		case VILLAGE:
-			screenFactory.show(ScreenEnum.VILLAGE);
-			break;
-		case DUNGEON:
-			// screenFactory.show(ScreenEnum.DUNGEON);
-			screenFactory.show(ScreenEnum.VILLAGE); // FIXME
-			break;
-		case FORK:
-			// screenFactory.show(ScreenEnum.FORK);
-			screenFactory.show(ScreenEnum.VILLAGE); // FIXME
-			break;
-		default:
-			Gdx.app.log("EventScreen", "positionInfo.getCurrentPlace() is not valid");
-			break;
+			case BUILDING:
+				screenFactory.show(ScreenEnum.BUILDING);
+				break;
+			case VILLAGE:
+				screenFactory.show(ScreenEnum.VILLAGE);
+				break;
+			case DUNGEON:
+				// screenFactory.show(ScreenEnum.DUNGEON);
+				screenFactory.show(ScreenEnum.VILLAGE); // FIXME
+				break;
+			case FORK:
+				// screenFactory.show(ScreenEnum.FORK);
+				screenFactory.show(ScreenEnum.VILLAGE); // FIXME
+				break;
+			default:
+				Gdx.app.log("EventScreen",
+						"positionInfo.getCurrentPlace() is not valid");
+				break;
 		}
 	}
 

@@ -51,7 +51,9 @@ public class SlotTarget extends Target {
 	}
 
 	@Override
-	public void drop(Source source, Payload payload, float x, float y, int pointer) {}
+	public void drop(Source source, Payload payload, float x, float y,
+			int pointer) {
+	}
 
 	@Override
 	public void reset(Source source, Payload payload) {

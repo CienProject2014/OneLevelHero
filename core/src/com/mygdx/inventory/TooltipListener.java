@@ -52,7 +52,8 @@ public class TooltipListener extends InputListener {
 	public boolean mouseMoved(InputEvent event, float x, float y) {
 		if (inside && followCursor) {
 			event.getListenerActor().localToStageCoordinates(tmp.set(x, y));
-			tooltip.setPosition(tmp.x + position.x + offset.x, tmp.y + position.y + offset.y);
+			tooltip.setPosition(tmp.x + position.x + offset.x, tmp.y
+					+ position.y + offset.y);
 		}
 		return false;
 	}
@@ -64,12 +65,14 @@ public class TooltipListener extends InputListener {
 		tooltip.setVisible(true);
 		tmp.set(x, y);
 		event.getListenerActor().localToStageCoordinates(tmp);
-		tooltip.setPosition(tmp.x + position.x + offset.x, tmp.y + position.y + offset.y);
+		tooltip.setPosition(tmp.x + position.x + offset.x, tmp.y + position.y
+				+ offset.y);
 		tooltip.toFront();
 	}
 
 	@Override
-	public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+	public void exit(InputEvent event, float x, float y, int pointer,
+			Actor toActor) {
 		inside = false;
 		tooltip.setVisible(false);
 	}
