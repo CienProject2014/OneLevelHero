@@ -29,7 +29,7 @@ public class EncounterScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
+
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		// 나중에 부르는 걸 위에 그림.

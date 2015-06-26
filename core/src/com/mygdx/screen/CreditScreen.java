@@ -16,6 +16,7 @@ import com.mygdx.factory.ScreenFactory;
 
 /**
  * 기여자 목록을 뿌려주는 Screen 클래스
+ * 
  * @author Velmont
  *
  */
@@ -38,10 +39,10 @@ public class CreditScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
+
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		//scene.show(delta); // 배경 출력
+		// scene.show(delta); // 배경 출력
 		batch.end();
 
 		stage.draw();
@@ -66,16 +67,16 @@ public class CreditScreen implements Screen {
 		stage.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				//if (scene.isNext()) {
-				//	scene.showNextScene();
-				//	} else {
-				//		// back to previous screen
+				// if (scene.isNext()) {
+				// scene.showNextScene();
+				// } else {
+				// // back to previous screen
 				// that invoke this event screen
 
 				// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
 				screenFactory.show(ScreenEnum.MENU);
 
-				//	}
+				// }
 				return true;
 			}
 		});
@@ -83,17 +84,14 @@ public class CreditScreen implements Screen {
 
 	private void showEventScene() {
 		/*
-				EventManager.getInstance().setEventCode("Crd-scene-1");
-				EventManager.getInstance().setEventType(EventTypeEnum.CREDIT);
-
-				if (EventManager.getInstance().getEventType() == EventTypeEnum.CREDIT)
-					scene = new CreditScene(stage, batch, EventManager.getInstance()
-							.getEventCode());
-				else
-					Gdx.app.log("Error", "Scene 주입 에러");
-				// 파싱을 하기 위한 로드
-				scene.load();
-				*/
+		 * EventManager.getInstance().setEventCode("Crd-scene-1");
+		 * EventManager.getInstance().setEventType(EventTypeEnum.CREDIT);
+		 * 
+		 * if (EventManager.getInstance().getEventType() ==
+		 * EventTypeEnum.CREDIT) scene = new CreditScene(stage, batch,
+		 * EventManager.getInstance() .getEventCode()); else
+		 * Gdx.app.log("Error", "Scene 주입 에러"); // 파싱을 하기 위한 로드 scene.load();
+		 */
 	}
 
 	@Override
