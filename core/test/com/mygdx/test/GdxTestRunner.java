@@ -14,7 +14,6 @@ import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 
 public class GdxTestRunner extends BlockJUnit4ClassRunner implements
 		ApplicationListener {
-
 	private Map<FrameworkMethod, RunNotifier> invokeInRender = new HashMap<FrameworkMethod, RunNotifier>();
 
 	public GdxTestRunner(Class<?> klass) throws InitializationError {
@@ -25,12 +24,10 @@ public class GdxTestRunner extends BlockJUnit4ClassRunner implements
 	}
 
 	@Override
-	public void create() {
-	}
+	public void create() {}
 
 	@Override
-	public void resume() {
-	}
+	public void resume() {}
 
 	@Override
 	public void render() {
@@ -44,16 +41,13 @@ public class GdxTestRunner extends BlockJUnit4ClassRunner implements
 	}
 
 	@Override
-	public void resize(int width, int height) {
-	}
+	public void resize(int width, int height) {}
 
 	@Override
-	public void pause() {
-	}
+	public void pause() {}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
 	protected void runChild(FrameworkMethod method, RunNotifier notifier) {
@@ -67,7 +61,7 @@ public class GdxTestRunner extends BlockJUnit4ClassRunner implements
 
 	/**
 	    *
-	    
+
 	private void waitUntilInvokedInRenderMethod() {
 		try {
 			while (true) {
@@ -81,6 +75,5 @@ public class GdxTestRunner extends BlockJUnit4ClassRunner implements
 			e.printStackTrace();
 		}
 	}
-
 }
 */

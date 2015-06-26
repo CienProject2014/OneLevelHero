@@ -3,8 +3,6 @@ package com.mygdx.screen;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -15,18 +13,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.manager.MovingManager;
-import com.mygdx.manager.MusicManager;
-import com.mygdx.state.Assets;
 
-public class MovingScreen implements Screen {
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private MovingInfo movingInfo;
+public class MovingScreen extends RootScreen {
 	@Autowired
 	private MovingManager movingManager;
 	@Autowired
-	private MusicManager musicManager;
+	private MovingInfo movingInfo;
 	private Stage stage;
 	private TextButton goButton;
 	private TextButton backButton;
@@ -38,18 +30,11 @@ public class MovingScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
 
 		movingLabel.setText(movingInfo.getDestinationNode() + "까지"
 				+ movingInfo.getLeftRoadLength());
 		stage.draw();
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -71,7 +56,6 @@ public class MovingScreen implements Screen {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				// TODO Auto-generated method stub
 				return true;
 			}
 
@@ -86,7 +70,6 @@ public class MovingScreen implements Screen {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				// TODO Auto-generated method stub
 				return true;
 			}
 
@@ -109,39 +92,6 @@ public class MovingScreen implements Screen {
 	}
 
 	public static void setController() {
-
-	}
-
-	@Override
-	public void hide() {
-	}
-
-	@Override
-	public void pause() {
-	}
-
-	@Override
-	public void resume() {
-	}
-
-	@Override
-	public void dispose() {
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
 	}
 
 	public MovingManager getMovingManager() {
@@ -152,12 +102,11 @@ public class MovingScreen implements Screen {
 		this.movingManager = movingManager;
 	}
 
-	public MusicManager getMusicManager() {
-		return musicManager;
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
 	}
 
-	public void setMusicManager(MusicManager musicManager) {
-		this.musicManager = musicManager;
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
 	}
-
 }

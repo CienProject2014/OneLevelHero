@@ -1,47 +1,29 @@
 package com.mygdx.screen;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
-import com.mygdx.factory.StageFactory;
-import com.mygdx.manager.MusicManager;
 
 /**
- * DungeonEntranceStage와 GameUiStage를 addActor()해서 보여주는 Screen. 던전입구의 경우 multiplexer를 이용하여
- * 2개의 화면을 교차로 보여준다.
- * 
+ * DungeonEntranceStage와 GameUiStage를 addActor()해서 보여주는 Screen.
+ * 던전입구의 경우 multiplexer를 이용하여 2개의 화면을 교차로 보여준다.
+ *
  * @author Velmont
- * 
+ *
  */
-public class DungeonScreen implements Screen {
-	@Autowired
-	private StageFactory stageFactory;
-	@Autowired
-	private MusicManager musicManager;
+public class DungeonScreen extends RootScreen {
 	private Stage dungeonStage;
 	private Stage gameUiStage;
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
 
 		dungeonStage.draw();
 		dungeonStage.getCamera().update();
 		gameUiStage.draw();
 		// 카메라를 지속적으로 업데이트 해준다.
-
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -65,39 +47,5 @@ public class DungeonScreen implements Screen {
 	public void hide() {
 		gameUiStage.dispose();
 		dungeonStage.dispose();
-		dispose();
 	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-	}
-
-	public StageFactory getStageFactory() {
-		return stageFactory;
-	}
-
-	public void setStageFactory(StageFactory stageFactory) {
-		this.stageFactory = stageFactory;
-	}
-
-	public MusicManager getMusicManager() {
-		return musicManager;
-	}
-
-	public void setMusicManager(MusicManager musicManager) {
-		this.musicManager = musicManager;
-	}
-
 }

@@ -15,8 +15,6 @@ public class MusicFile implements AssetsFile<Music> {
 
 	@Override
 	public Music getTestFile() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

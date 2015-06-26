@@ -13,9 +13,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.model.Monster;
 
-public class MonsterStage extends Stage {
+public class MonsterStage extends OneLevelStage {
 	@Autowired
 	private MovingInfo movingInfo;
+
 	private int windowWidth;
 	private int windowHeight;
 
@@ -35,6 +36,7 @@ public class MonsterStage extends Stage {
 		innerTableHeight = windowHeight * 0.625f;
 		monster = movingInfo.getSelectedMonster();
 		setMonsterTable();
+
 		return this;
 	}
 
@@ -55,7 +57,6 @@ public class MonsterStage extends Stage {
 				.height(innerTableHeight); // 최대 세로 크기(5/8)
 
 		this.addActor(table);
-
 	}
 
 	private Image getMonsterImage() {
@@ -75,5 +76,4 @@ public class MonsterStage extends Stage {
 	public void setMovingInfo(MovingInfo movingInfo) {
 		this.movingInfo = movingInfo;
 	}
-
 }

@@ -1,17 +1,17 @@
 /* Copyright (c) 2014 PixelScientists
- * 
+ *
  * The MIT License (MIT)
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -30,11 +30,10 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
  * Makes a given tooltip actor visible when the actor this listener is attached
  * to was hovered. It will also hide the tooltip when the mouse is not hovering
  * anymore.
- * 
+ *
  * @author Daniel Holderbaum
  */
 public class TooltipListener extends InputListener {
-
 	private boolean inside;
 
 	private Actor tooltip;
@@ -53,23 +52,27 @@ public class TooltipListener extends InputListener {
 	public boolean mouseMoved(InputEvent event, float x, float y) {
 		if (inside && followCursor) {
 			event.getListenerActor().localToStageCoordinates(tmp.set(x, y));
-			tooltip.setPosition(tmp.x + position.x + offset.x, tmp.y + position.y + offset.y);
+			tooltip.setPosition(tmp.x + position.x + offset.x, tmp.y
+					+ position.y + offset.y);
 		}
 		return false;
 	}
 
 	@Override
-	public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+	public void enter(InputEvent event, float x, float y, int pointer,
+			Actor fromActor) {
 		inside = true;
 		tooltip.setVisible(true);
 		tmp.set(x, y);
 		event.getListenerActor().localToStageCoordinates(tmp);
-		tooltip.setPosition(tmp.x + position.x + offset.x, tmp.y + position.y + offset.y);
+		tooltip.setPosition(tmp.x + position.x + offset.x, tmp.y + position.y
+				+ offset.y);
 		tooltip.toFront();
 	}
 
 	@Override
-	public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+	public void exit(InputEvent event, float x, float y, int pointer,
+			Actor toActor) {
 		inside = false;
 		tooltip.setVisible(false);
 	}
@@ -81,5 +84,4 @@ public class TooltipListener extends InputListener {
 	public void setOffset(float offsetX, float offsetY) {
 		offset.set(offsetX, offsetY);
 	}
-
 }

@@ -49,9 +49,9 @@ public class RoadInfo {
 	}
 
 	public Monster getMonster() {
-		if (monster == null) {
+		if (monster == null)
 			monster = assets.monsterMap.get(monsterName);
-		}
+
 		return monster;
 	}
 

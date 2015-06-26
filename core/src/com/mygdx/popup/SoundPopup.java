@@ -82,46 +82,42 @@ public class SoundPopup extends Dialog {
 		table.top();
 
 		volume.addListener(new ChangeListener() {
+			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-
 				// sound.setVolume(soundId, volume.getValue());
 				VolumeManager.musicVolume = volume.getValue() / 100;
 				volumeValue.setText("" + assets.musicVolume * 100);
 				musicManager.getMusic().setVolume(assets.musicVolume);
-
 			}
 		});
 		pan.addListener(new ChangeListener() {
+			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-
 				panValue.setText("" + pan.getValue());
 			}
 		});
 
 		getContentTable().add(table);
 		button("완료", "remove", style);
-
 	}
 
+	@Override
 	public float getPrefWidth() {
-
 		return 480f;
 	}
 
+	@Override
 	public float getPrefHeight() {
-
 		return 240f;
 	}
 
 	@Override
 	public Table getContentTable() {
-		// TODO Auto-generated method stub
 		return super.getContentTable();
 	}
 
 	@Override
 	public Table getButtonTable() {
-		// TODO Auto-generated method stub
 		return super.getButtonTable();
 	}
 
@@ -129,90 +125,71 @@ public class SoundPopup extends Dialog {
 	public Dialog text(String text) {
 		super.text(new Label(text, assets.skin));
 		return this;
-
 	}
 
 	@Override
 	public Dialog text(String text, LabelStyle labelStyle) {
-		// TODO Auto-generated method stub
 		return super.text(text, labelStyle);
 	}
 
 	@Override
 	public Dialog text(Label label) {
-		// TODO Auto-generated method stub
 		return super.text(label);
 	}
 
 	@Override
 	public Dialog button(String text) {
-		// TODO Auto-generated method stub
 		return super.button(text);
 	}
 
 	@Override
 	public Dialog button(String text, Object object) {
-		// TODO Auto-generated method stub
 		return super.button(text, object);
 	}
 
 	@Override
 	public Dialog button(String text, Object object, TextButtonStyle buttonStyle) {
-		// TODO Auto-generated method stub
-
 		return super.button(text, object, buttonStyle);
 	}
 
 	@Override
 	public Dialog button(Button button) {
-		// TODO Auto-generated method stub
 		return super.button(button);
 	}
 
 	@Override
 	public Dialog button(Button button, Object object) {
-		// TODO Auto-generated method stub
 		return super.button(button, object);
 	}
 
 	@Override
 	public Dialog show(Stage stage) {
-		// TODO Auto-generated method stub
 		return super.show(stage);
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 		remove();
 	}
 
 	@Override
 	public void setObject(Actor actor, Object object) {
-		// TODO Auto-generated method stub
 		super.setObject(actor, object);
 	}
 
 	@Override
 	public Dialog key(int keycode, Object object) {
-		// TODO Auto-generated method stub
 		return super.key(keycode, object);
 	}
 
 	@Override
 	protected void result(Object object) {
-		// TODO Auto-generated method stub
-
-		if (object.equals("remove")) {
-
+		if (object.equals("remove"))
 			remove();
-		}
 	}
 
 	@Override
 	public void cancel() {
-		// TODO Auto-generated method stub
 		super.cancel();
 	}
-
 }

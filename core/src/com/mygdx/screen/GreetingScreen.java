@@ -9,35 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.currentState.EventInfo;
-import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.factory.StageFactory;
-import com.mygdx.manager.EventManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
-public class GreetingScreen implements Screen {
+public class GreetingScreen extends RootScreen {
 	@Autowired
-	private ScreenFactory screenFactory;
-	@Autowired
-	private StageFactory stageFactory;
-	@Autowired
-	private EventManager eventManager;
-	@Autowired
-	private EventInfo eventInfo;
-	@Autowired
-	private PositionInfo positionInfo;
+	protected EventInfo eventInfo;
 
 	// Already libgdx using interface!
-	private GL20 gl = Gdx.gl;
 	private Input input = Gdx.input;
 
 	private Stage eventStage;
@@ -47,36 +32,12 @@ public class GreetingScreen implements Screen {
 	public GreetingScreen() {
 	}
 
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public StageFactory getStageFactory() {
-		return stageFactory;
-	}
-
-	public void setStageFactory(StageFactory stageFactory) {
-		this.stageFactory = stageFactory;
-	}
-
 	@Override
 	public void render(float delta) {
-		gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
 
 		eventStage.draw();
 		selectButtonStage.draw();
-
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -101,14 +62,13 @@ public class GreetingScreen implements Screen {
 		input.setInputProcessor(multiplexer);
 
 		eventStage.addListener(new InputListener() {
+			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 				goPreviousPlace();
 				return true;
 			}
 		});
-
 	}
 
 	private void goPreviousPlace() {
@@ -120,49 +80,18 @@ public class GreetingScreen implements Screen {
 				screenFactory.show(ScreenEnum.VILLAGE);
 				break;
 			case DUNGEON:
-				//screenFactory.show(ScreenEnum.DUNGEON);
-				screenFactory.show(ScreenEnum.VILLAGE); //FIXME
+				// screenFactory.show(ScreenEnum.DUNGEON);
+				screenFactory.show(ScreenEnum.VILLAGE); // FIXME
 				break;
 			case FORK:
-				//screenFactory.show(ScreenEnum.FORK);
-				screenFactory.show(ScreenEnum.VILLAGE); //FIXME
+				// screenFactory.show(ScreenEnum.FORK);
+				screenFactory.show(ScreenEnum.VILLAGE); // FIXME
 				break;
 			default:
 				Gdx.app.log("EventScreen",
 						"positionInfo.getCurrentPlace() is not valid");
 				break;
 		}
-
-	}
-
-	@Override
-	public void hide() {
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public EventManager getEventManager() {
-		return eventManager;
-	}
-
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
 	}
 
 	public EventInfo getEventInfo() {
@@ -172,13 +101,4 @@ public class GreetingScreen implements Screen {
 	public void setEventInfo(EventInfo eventInfo) {
 		this.eventInfo = eventInfo;
 	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
 }

@@ -48,5 +48,4 @@ public class Event {
 	public void setEventState(EventStateEnum eventState) {
 		this.eventState = eventState;
 	}
-
 }

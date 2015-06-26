@@ -9,7 +9,6 @@ import com.badlogic.gdx.Game;
 import com.mygdx.game.OneLevelHero;
 
 public class GoToVillageScreenTest {
-
 	@Test
 	public void test() {
 		fail("Not yet implemented");
@@ -27,6 +26,5 @@ public class GoToVillageScreenTest {
 	public void goMenuScreen() {
 		//new ScreenController(ScreenEnum.MENU);
 	}
-
 }
 */

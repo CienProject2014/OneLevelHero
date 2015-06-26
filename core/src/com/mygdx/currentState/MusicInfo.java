@@ -2,7 +2,6 @@ package com.mygdx.currentState;
 
 import com.badlogic.gdx.audio.Music;
 
-
 public class MusicInfo {
 	private Music music;
 

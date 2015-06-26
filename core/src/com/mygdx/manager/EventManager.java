@@ -12,13 +12,12 @@ import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
 /**
- * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스
- * CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을 CHAT이벤트가 끝날때까지 리턴해준다.
+ * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스 CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을 CHAT이벤트가 끝날때까지 리턴해준다.
+ *
  * @author Velmont
  *
  */
 public class EventManager {
-
 	@Autowired
 	private EventInfo eventInfo;
 	@Autowired
@@ -30,7 +29,7 @@ public class EventManager {
 		eventSceneIterator = npc.getEvent(eventInfo.getEventNumber())
 				.getEventSceneIterator();
 
-		//리워드를 eventRewardQueue에 추가
+		// 리워드를 eventRewardQueue에 추가
 		addEventRewardQueue(npc);
 
 		return eventSceneIterator;
@@ -39,11 +38,9 @@ public class EventManager {
 	private void addEventRewardQueue(NPC npc) {
 		RewardInfo rewardInfo = npc.getEvent(eventInfo.getEventNumber())
 				.getReward();
-		if (rewardInfo != null) {
-			if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED) {
+		if (rewardInfo != null)
+			if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED)
 				rewardManager.addEventReward(rewardInfo);
-			}
-		}
 	}
 
 	public void finishEvent() {
@@ -80,5 +77,4 @@ public class EventManager {
 	public void setRewardManager(RewardManager rewardManager) {
 		this.rewardManager = rewardManager;
 	}
-
 }

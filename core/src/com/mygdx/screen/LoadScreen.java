@@ -3,8 +3,6 @@ package com.mygdx.screen;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -13,44 +11,27 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.SaveVersion;
 import com.mygdx.currentState.CurrentState;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.manager.EventManager;
 import com.mygdx.manager.LoadManager;
-import com.mygdx.state.Assets;
 
-public class LoadScreen implements Screen {
+public class LoadScreen extends RootScreen {
 	@Autowired
-	private Assets assets;
-	@Autowired
-	private ScreenFactory screenFactory;
-
-	@Autowired
-	private CurrentState currentState;
-	@Autowired
-	private EventManager eventManager;
+	protected CurrentState currentState;
 	@Autowired
 	private LoadManager loadManager;
+
 	private Stage stage;
 	private TextButton newstartButton;
 	private TextButton backButton;
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
-		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
+
 		stage.draw();
 	}
 
 	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 
@@ -61,8 +42,6 @@ public class LoadScreen implements Screen {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
-				// TODO Auto-generated method stub
 				return true;
 			}
 
@@ -70,7 +49,6 @@ public class LoadScreen implements Screen {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				screenFactory.show(ScreenEnum.MENU);
-
 			}
 		});
 		newstartButton.addListener(new InputListener() {
@@ -85,11 +63,10 @@ public class LoadScreen implements Screen {
 					int pointer, int button) {
 				currentState.setVersion(SaveVersion.NEW);
 				loadManager.loadNewGame();
-				//프롤로그 정보 주입
+				// 프롤로그 정보 주입
 				eventManager.setEventInfo(assets.npcMap.get("prologue"), 0,
 						false);
 				screenFactory.show(ScreenEnum.EVENT);
-
 			}
 		});
 
@@ -101,52 +78,12 @@ public class LoadScreen implements Screen {
 		// stage.addActor(backButton);
 	}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-
+	public CurrentState getCurrentState() {
+		return currentState;
 	}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public EventManager getEventManager() {
-		return eventManager;
-	}
-
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
+	public void setCurrentState(CurrentState currentState) {
+		this.currentState = currentState;
 	}
 
 	public LoadManager getLoadManager() {
@@ -155,13 +92,5 @@ public class LoadScreen implements Screen {
 
 	public void setLoadManager(LoadManager loadManager) {
 		this.loadManager = loadManager;
-	}
-
-	public CurrentState getCurrentState() {
-		return currentState;
-	}
-
-	public void setCurrentState(CurrentState currentState) {
-		this.currentState = currentState;
 	}
 }
