@@ -27,6 +27,8 @@ public class OneLevelTest extends Game {
 		//context = RoboSpring.getContext(); 안드로이드에서 실행시
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		gameLoad();
+		
+		goEncounterScreen();
 	}
 
 	public void gameLoad() {

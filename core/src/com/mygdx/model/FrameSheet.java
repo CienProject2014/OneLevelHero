@@ -2,13 +2,13 @@ package com.mygdx.model;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class AnimationSheet {
+public class FrameSheet {
 	private Texture texture;
 	private int frameNumber;
 	private int row;
 	private int column;
 	
-	public AnimationSheet(SheetFile file) {
+	public FrameSheet(SheetFile file) {
 		this.texture = file.getFile();
 		this.frameNumber = file.getFrameNumber();
 		this.row = file.getRow();
@@ -30,6 +30,7 @@ public class AnimationSheet {
 	public int getColumn() {
 		return column;
 	}
+	
 	
 
 }

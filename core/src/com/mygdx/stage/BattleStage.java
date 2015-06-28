@@ -8,7 +8,6 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,13 +15,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.manager.PlatformResourceManager;
 import com.mygdx.model.Hero;
 import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
@@ -36,8 +33,9 @@ public class BattleStage extends Overlap2DStage {
 	@Autowired	private MovingInfo movingInfo;
 	@Autowired	private PartyInfo partyInfo;
 
+	
 	//================================================================================
-	// GUI related variables
+	// GUI variables
 	//================================================================================
 	// Table
 	Table uiTable; // 화면 전체 테이블
@@ -52,9 +50,9 @@ public class BattleStage extends Overlap2DStage {
 	private SimpleButtonScript skillButton;
 	private SimpleButtonScript inventoryButton;
 	private SimpleButtonScript escapeButton;
-
+	
 	//================================================================================
-	// Battle Logic related variables
+	// Battle Logic variables
 	//================================================================================
 	@Autowired	private BattleManager battleManager;
 	private Monster monster;
@@ -68,14 +66,14 @@ public class BattleStage extends Overlap2DStage {
 	
 	// Trigger
 	private boolean monsterTrigger;
-
-	//================================================================================
-	// Method implementations
-	//================================================================================
-	public BattleStage() {
-		Gdx.app.debug("BattleStage", "Constructor() call");
-	}
 	
+	//================================================================================
+	// Animation
+	//================================================================================
+	
+	//================================================================================
+	// Overriding Methods(Overlap2DStage)
+	//================================================================================
 	@Override
 	public void act(float delta) {
 		if (monsterTrigger){
@@ -93,14 +91,21 @@ public class BattleStage extends Overlap2DStage {
 		
 		super.act(delta);
 	}
-
+	
+	//================================================================================
+	// Methods
+	//================================================================================
+	public BattleStage() {
+		Gdx.app.debug("BattleStage", "Constructor() call");
+	}
+	
 	public LivingUnit getCurrentActor() {
 		LivingUnit unit = orderedUnits.poll();
 		orderedUnits.add(unit);
 		return unit;
 	}
 	
-	public LivingUnit getNextActor() {
+	public LivingUnit whoIsNextActor() {
 		LivingUnit unit = orderedUnits.peek();
 		return unit;
 	}
@@ -200,7 +205,7 @@ public class BattleStage extends Overlap2DStage {
 				battleManager.userAttack(actor);
 				updateTable();
 				
-				if (getNextActor() instanceof Monster){
+				if (whoIsNextActor() instanceof Monster){
 					monsterTrigger = true;
 				}
 			}
@@ -227,6 +232,9 @@ public class BattleStage extends Overlap2DStage {
 		});
 	}
 
+	//================================================================================
+	// Getter Setter
+	//================================================================================
 	public Assets getAssets() {
 		return assets;
 	}
@@ -266,5 +274,4 @@ public class BattleStage extends Overlap2DStage {
 	public void setPartyInfo(PartyInfo partyInfo) {
 		this.partyInfo = partyInfo;
 	}
-
 }

@@ -40,9 +40,11 @@
 	<bean id="screenFactory" class="com.mygdx.factory.ScreenFactory"/>
 	<bean id="stageFactory" class="com.mygdx.factory.StageFactory"/>
 	
+	<bean id="animationManager" class="com.mygdx.manager.AnimationManager"/>
 	<bean id="battleManager" class="com.mygdx.manager.BattleManager">
 		<property name="movingInfo" ref="movingInfo"/>
 		<property name="partyInfo" ref="partyInfo"/>
+		<property name="animationManager" ref="animationManager"/>
 	</bean>
 	<bean id="cameraManager" class="com.mygdx.manager.CameraManager">
 	</bean>
@@ -109,6 +111,7 @@
 	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen" scope="prototype" >
 		<property name="stageFactory" ref="stageFactory"/>
 		<property name="musicManager" ref="musicManager"/>
+		<property name="animationManager" ref="animationManager"/>
 	</bean>
 	<bean id="bgmScreen" class="com.mygdx.screen.BGMScreen" scope="prototype" >
 		<property name="assets" ref="assets"/>
