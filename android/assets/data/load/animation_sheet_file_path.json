@@ -1,0 +1,8 @@
+{
+  "attack_cutting": {
+    "filePath": "texture/animation_sheet/attack_cutting.png",
+	"frameNumber": 6,
+	"row": 2,
+	"column": 5
+  }
+}

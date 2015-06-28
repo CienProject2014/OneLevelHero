@@ -12,7 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.JsonParser;
+import com.mygdx.model.AnimationSheet;
 import com.mygdx.model.JsonStringFile;
+import com.mygdx.model.SheetFile;
 import com.mygdx.model.TextureFile;
 
 public class StaticAssets {
@@ -20,6 +22,7 @@ public class StaticAssets {
 	public static Map<String, Texture> characterTextureMap = new HashMap<String, Texture>();
 	public static Map<String, Texture> monsterTextureMap = new HashMap<String, Texture>();
 	public static Map<String, Texture> backgroundTextureMap = new HashMap<String, Texture>();
+	public static Map<String, AnimationSheet> animationSheetMap = new HashMap<String, AnimationSheet>();
 	public static TextureAtlas items = new TextureAtlas(
 			"texture/items/items.pack");
 	public static float windowWidth;
@@ -41,6 +44,7 @@ public class StaticAssets {
 		Map<String, JsonStringFile> filePathMap = new HashMap<String, JsonStringFile>();
 		filePathMap = JsonParser.parseMap(JsonStringFile.class, Gdx.files
 				.internal("data/load/file_path.json").readString());
+
 		Map<String, TextureFile> characterFileMap = JsonParser.parseMap(
 				TextureFile.class,
 				filePathMap.get(JsonEnum.CHARACTER_FILE_PATH.toString())
@@ -64,6 +68,15 @@ public class StaticAssets {
 		for (Entry<String, TextureFile> entry : backgroundFileMap.entrySet()) {
 			backgroundTextureMap
 					.put(entry.getKey(), entry.getValue().getFile());
+		}
+
+		Map<String, SheetFile> animationSheetFileMap = JsonParser.parseMap(
+				SheetFile.class,
+				filePathMap.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString())
+						.getFile());
+		for(Entry<String, SheetFile> entry : animationSheetFileMap.entrySet()) {
+			AnimationSheet sheet = new AnimationSheet(entry.getValue());
+			animationSheetMap.put(entry.getKey(), sheet);
 		}
 	}
 }

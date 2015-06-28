@@ -31,15 +31,14 @@ import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
 public class BattleStage extends Overlap2DStage {
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private ScreenFactory screenFactory;
-	@Autowired
-	private MovingInfo movingInfo;
-	@Autowired
-	private PartyInfo partyInfo;
+	@Autowired	private Assets assets;
+	@Autowired	private ScreenFactory screenFactory;
+	@Autowired	private MovingInfo movingInfo;
+	@Autowired	private PartyInfo partyInfo;
 
+	//================================================================================
+	// GUI related variables
+	//================================================================================
 	// Table
 	Table uiTable; // 화면 전체 테이블
 	Table orderTable; // 순서를 나타내는 테이블
@@ -54,9 +53,10 @@ public class BattleStage extends Overlap2DStage {
 	private SimpleButtonScript inventoryButton;
 	private SimpleButtonScript escapeButton;
 
-	// Battle controller
-	@Autowired
-	private BattleManager battleManager;
+	//================================================================================
+	// Battle Logic related variables
+	//================================================================================
+	@Autowired	private BattleManager battleManager;
 	private Monster monster;
 
 	// Unit array
@@ -69,6 +69,9 @@ public class BattleStage extends Overlap2DStage {
 	// Trigger
 	private boolean monsterTrigger;
 
+	//================================================================================
+	// Method implementations
+	//================================================================================
 	public BattleStage() {
 		Gdx.app.debug("BattleStage", "Constructor() call");
 	}
