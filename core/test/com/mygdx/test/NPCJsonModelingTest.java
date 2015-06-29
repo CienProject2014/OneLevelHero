@@ -20,9 +20,8 @@ public class NPCJsonModelingTest {
 		Scanner in = new Scanner(new File(filePath));
 		StringBuffer buffer = new StringBuffer();
 
-		while (in.hasNext()) {
+		while (in.hasNext())
 			buffer.append(in.next());
-		}
 		in.close();
 
 		Map<String, NPC> npcMap = JsonParser.parseMap(NPC.class,

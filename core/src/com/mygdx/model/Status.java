@@ -1,6 +1,5 @@
 package com.mygdx.model;
 
-
 public class Status {
 	private int atk;
 	private int ftg;
@@ -119,6 +118,5 @@ public class Status {
 				String.valueOf(er), job };
 
 		return array;
-
 	}
 }

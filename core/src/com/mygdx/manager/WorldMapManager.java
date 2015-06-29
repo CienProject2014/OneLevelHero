@@ -14,7 +14,7 @@ public class WorldMapManager {
 	@Autowired
 	private Assets assets;
 
-	//목적 노드 결정
+	// 목적 노드 결정
 	public void selectDestinationNode(String destinationNode) {
 		WorldNode worldNodeInfo = assets.worldNodeInfoMap.get(positionInfo
 				.getCurrentNode());
@@ -44,5 +44,4 @@ public class WorldMapManager {
 	public void setAssets(Assets assets) {
 		this.assets = assets;
 	}
-
 }

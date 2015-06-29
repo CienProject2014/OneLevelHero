@@ -1,17 +1,17 @@
 /* Copyright (c) 2014 PixelScientists
- * 
+ *
  * The MIT License (MIT)
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -29,19 +29,17 @@ import com.mygdx.enums.ItemEnum;
  * @author Daniel Holderbaum
  */
 public class Inventory {
-
 	private Array<Slot> slots;
 
 	public Inventory() {
 		slots = new Array<Slot>(25);
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < 25; i++)
 			slots.add(new Slot(null, 0));
-		}
 
 		// create some random items
-		for (Slot slot : slots) {
-			slot.add(ItemEnum.values()[MathUtils.random(0, ItemEnum.values().length - 1)], 1);
-		}
+		for (Slot slot : slots)
+			slot.add(ItemEnum.values()[MathUtils.random(0,
+					ItemEnum.values().length - 1)], 1);
 
 		// create a few random empty slots
 		for (int i = 0; i < 3; i++) {
@@ -53,11 +51,9 @@ public class Inventory {
 	public int checkInventory(ItemEnum item) {
 		int amount = 0;
 
-		for (Slot slot : slots) {
-			if (slot.getItem() == item) {
+		for (Slot slot : slots)
+			if (slot.getItem() == item)
 				amount += slot.getAmount();
-			}
-		}
 
 		return amount;
 	}
@@ -86,13 +82,10 @@ public class Inventory {
 	}
 
 	private Slot firstSlotWithItem(ItemEnum item) {
-		for (Slot slot : slots) {
-			if (slot.getItem() == item) {
+		for (Slot slot : slots)
+			if (slot.getItem() == item)
 				return slot;
-			}
-		}
 
 		return null;
 	}
-
 }

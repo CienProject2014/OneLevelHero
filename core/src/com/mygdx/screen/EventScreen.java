@@ -7,33 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.factory.StageFactory;
-import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.model.EventScene;
 
-public class EventScreen implements Screen {
-	@Autowired
-	private StageFactory stageFactory;
-	@Autowired
-	private ScreenFactory screenFactory;
-	@Autowired
-	private EventManager eventManager;
+public class EventScreen extends BaseScreen {
 	@Autowired
 	private RewardManager rewardManager;
-	@Autowired
-	private PositionInfo positionInfo;
 
 	// Already libgdx using interface!
-	private GL20 gl = Gdx.gl;
 	private Input input = Gdx.input;
 
 	private Stage eventStage;
@@ -43,17 +28,9 @@ public class EventScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
 
 		eventStage.draw();
-
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -68,14 +45,15 @@ public class EventScreen implements Screen {
 		input.setInputProcessor(multiplexer);
 
 		eventStage.addListener(new InputListener() {
+			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				if (eventSceneIterator.hasNext()) {
+				if (eventSceneIterator.hasNext())
 					eventStage = stageFactory.makeEventStage(eventSceneIterator
 							.next());
-				} else {
-					rewardManager.doReward(); //보상이 있을경우 보상실행
-					eventManager.finishEvent(); //해당 이벤트 상태를 종료처리
+				else {
+					rewardManager.doReward(); // 보상이 있을경우 보상실행
+					eventManager.finishEvent(); // 해당 이벤트 상태를 종료처리
 					goPreviousPlace();
 				}
 				return true;
@@ -92,65 +70,18 @@ public class EventScreen implements Screen {
 				screenFactory.show(ScreenEnum.VILLAGE);
 				break;
 			case DUNGEON:
-				//screenFactory.show(ScreenEnum.DUNGEON);
-				screenFactory.show(ScreenEnum.VILLAGE); //FIXME
+				// screenFactory.show(ScreenEnum.DUNGEON);
+				screenFactory.show(ScreenEnum.VILLAGE); // FIXME
 				break;
 			case FORK:
-				//screenFactory.show(ScreenEnum.FORK);
-				screenFactory.show(ScreenEnum.VILLAGE); //FIXME
+				// screenFactory.show(ScreenEnum.FORK);
+				screenFactory.show(ScreenEnum.VILLAGE); // FIXME
 				break;
 			default:
 				Gdx.app.log("EventScreen",
 						"positionInfo.getCurrentPlace() is not valid");
 				break;
 		}
-
-	}
-
-	@Override
-	public void hide() {
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public StageFactory getStageFactory() {
-		return stageFactory;
-	}
-
-	public void setStageFactory(StageFactory stageFactory) {
-		this.stageFactory = stageFactory;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public EventManager getEventManager() {
-		return eventManager;
-	}
-
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
 	}
 
 	public RewardManager getRewardManager() {
@@ -160,13 +91,4 @@ public class EventScreen implements Screen {
 	public void setRewardManager(RewardManager rewardManager) {
 		this.rewardManager = rewardManager;
 	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
 }

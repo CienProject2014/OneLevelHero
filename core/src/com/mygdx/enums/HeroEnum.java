@@ -12,5 +12,4 @@ public enum HeroEnum {
 	public String toString() {
 		return heroName;
 	}
-
 }

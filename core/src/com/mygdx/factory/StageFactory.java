@@ -27,7 +27,7 @@ public class StageFactory {
 	private ApplicationContext context;
 
 	public Stage makeStage(StageEnum stageEnum) {
-
+		Gdx.app.log("StageFactory", "makeStage(" + stageEnum.toString() + ")");
 		switch (stageEnum) {
 			case BUILDING:
 				return context.getBean(BuildingStage.class).makeStage();
@@ -54,8 +54,8 @@ public class StageFactory {
 			case WORLD_MAP:
 				return context.getBean(WorldMapStage.class).makeStage();
 			default:
-				Gdx.app.log("StageFactory", "StageEnum 주입 에러");
-				return context.getBean(VillageStage.class).makeStage(); //FIXME
+				Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
+				return context.getBean(VillageStage.class).makeStage(); // FIXME
 		}
 	}
 
@@ -66,5 +66,4 @@ public class StageFactory {
 	public Stage makeEventStage(EventScene eventScene) {
 		return context.getBean(EventStage.class).makeStage(eventScene);
 	}
-
 }

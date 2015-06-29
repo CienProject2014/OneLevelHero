@@ -21,10 +21,10 @@ public class OneLevelTest extends Game {
 	@Override
 	public void create() {
 		Gdx.input.setCatchBackKey(true);
-		//디버그용 로그도 보이도록 설정
+		// 디버그용 로그도 보이도록 설정
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		StaticAssets.loadAll();
-		//context = RoboSpring.getContext(); 안드로이드에서 실행시
+		// context = RoboSpring.getContext(); 안드로이드에서 실행시
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		gameLoad();
 		
@@ -33,16 +33,16 @@ public class OneLevelTest extends Game {
 
 	public void gameLoad() {
 		context.getBean(ScreenFactory.class).setGame(this);
-		//가고자 하는 스크린의 메서드를 선택하자.
+		// 가고자 하는 스크린의 메서드를 선택하자.
 		goDungeonEntranceScreen();
 	}
 
-	//메뉴스크린은 게임을 로드할 필요가 없다.
+	// 메뉴스크린은 게임을 로드할 필요가 없다.
 	private void goMenuScreen() {
 		context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
 	}
 
-	//이하 게임에 곧장 진입하고자 하는 경우
+	// 이하 게임에 곧장 진입하고자 하는 경우
 	private void goVillageScreen() {
 		context.getBean(LoadManager.class).loadNewGame();
 		context.getBean(ScreenFactory.class).show(ScreenEnum.VILLAGE);
@@ -67,7 +67,6 @@ public class OneLevelTest extends Game {
 	}
 
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
 		if (keycode == Keys.BACK) {
 			// Do back button handling (show pause menu?)
 			// This will exit the app but you can add other

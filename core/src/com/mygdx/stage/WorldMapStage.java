@@ -11,40 +11,36 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.WorldMapManager;
 import com.mygdx.model.Connection;
-import com.mygdx.state.Assets;
-import com.uwsoft.editor.renderer.Overlap2DStage;
+import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
-public class WorldMapStage extends Overlap2DStage {
-	@Autowired
-	private Assets assets;
+public class WorldMapStage extends BaseOverlapStage {
 	@Autowired
 	private WorldMapManager worldMapManager;
-	@Autowired
-	private ScreenFactory screenFactory;
-	@Autowired
-	private PositionInfo positionInfo;
 	private CompositeItem currentPosition;
 	private ImageItem currentNode;
 	private final int SET_POSITION = 15;
 
 	public Stage makeStage() {
-		initSceneLoader();
-		/* MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다.
-		   SceneVO가 반환되는데, 이것은 CompositeVO를 가지고 있다.
-		   CompositeVO는 그 Scene이 가지고 있는 Label, Button등을 다 가지고 있다. */
+		initSceneLoader(StaticAssets.rm);
+
+		/*
+		 * MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다.
+		 * SceneVO가 반환되는데, 이것은 CompositeVO를 가지고 있다.
+		 * CompositeVO는 그 Scene이 가지고 있는 Label, Button등을 다 가지고 있다.
+		 */
 		sceneLoader.loadScene("worldmap_scene");
-		/* getRoot()할시, CompositeItem이 반환된다.
-		   CompositeItem은 Composite들의 집합이다.
-		   getCompositeById로 하나하나 가져올수 있다.
-		   현재 위치 버튼을 가져온다.
-		   getX로 Image의 위치를 가져올 수 있다. */
+		/*
+		 * getRoot()할시, CompositeItem이 반환된다.
+		 * CompositeItem은 Composite들의 집합이다.
+		 * getCompositeById로 하나하나 가져올수 있다.
+		 * 현재 위치 버튼을 가져온다.
+		 * getX로 Image의 위치를 가져올 수 있다.
+		 */
 		currentPosition = sceneLoader.getRoot().getCompositeById("current");
 		currentNode = sceneLoader.getRoot().getImageById(
 				positionInfo.getCurrentNode());// 카메라 위치를 현재노드로 잡기 위하여 가져옴
@@ -66,23 +62,21 @@ public class WorldMapStage extends Overlap2DStage {
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y,
 						int pointer, int button) {
-					// TODO Auto-generated method stub
 					return true;
 				}
 
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-
 					worldMapManager.selectDestinationNode(connection.getKey());
 					screenFactory.show(ScreenEnum.MOVING);
 				}
 			});
 			arrowList.add(arrow);
-
 		}
 		addActor(sceneLoader.getRoot());
 		setCamera();
+
 		return this;
 	}
 
@@ -103,32 +97,19 @@ public class WorldMapStage extends Overlap2DStage {
 		float xvalue = this.getCurrent().getX() - assets.windowWidth / 2, yvalue = this
 				.getCurrent().getY() - assets.windowHeight / 2;
 		// x값이 오른쪽으로 벗어날 경우
-		if (this.getCurrent().getX() > xRightLimit) {
-
+		if (this.getCurrent().getX() > xRightLimit)
 			xvalue = 3000 - assets.windowWidth;
-		}
 		// x값이 왼쪽으로 벗어날 경우
-		if (this.getCurrent().getX() < xLeftLimit) {
-
+		if (this.getCurrent().getX() < xLeftLimit)
 			xvalue = 0;
-		}
 		// y값이 위로 벗어날 경우
-		if (this.getCurrent().getY() > yTopLimit) {
+		if (this.getCurrent().getY() > yTopLimit)
 			yvalue = 1688 - assets.windowHeight;
-		}
 		// y값이 아래로 벗어날 경우
-		if (this.getCurrent().getY() < yBottomLimit) {
+		if (this.getCurrent().getY() < yBottomLimit)
 			yvalue = 0;
-		}
+
 		getCamera().translate(xvalue, yvalue, 0);
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
 	}
 
 	public WorldMapManager getWorldMapManager() {
@@ -138,37 +119,4 @@ public class WorldMapStage extends Overlap2DStage {
 	public void setWorldMapManager(WorldMapManager worldMapManager) {
 		this.worldMapManager = worldMapManager;
 	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public CompositeItem getCurrentPosition() {
-		return currentPosition;
-	}
-
-	public void setCurrentPosition(CompositeItem currentPosition) {
-		this.currentPosition = currentPosition;
-	}
-
-	public ImageItem getCurrentNode() {
-		return currentNode;
-	}
-
-	public void setCurrentNode(ImageItem currentNode) {
-		this.currentNode = currentNode;
-	}
-
 }

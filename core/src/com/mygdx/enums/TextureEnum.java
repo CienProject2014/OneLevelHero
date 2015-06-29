@@ -29,5 +29,4 @@ public enum TextureEnum {
 	public String toString() {
 		return textureNumber;
 	}
-
 }

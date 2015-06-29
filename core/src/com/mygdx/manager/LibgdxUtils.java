@@ -1,17 +1,17 @@
 /* Copyright (c) 2014 PixelScientists
- * 
+ *
  * The MIT License (MIT)
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -38,11 +38,10 @@ import com.badlogic.gdx.utils.Logger;
  * This is the main class of the game itself. It offers access to the
  * {@link Game}, {@link SpriteBatch}, {@link AssetManager} and {@link Logger}
  * instances and delegates everything to the {@link Game}.
- * 
+ *
  * @author Daniel Holderbaum
  */
 public class LibgdxUtils implements ApplicationListener {
-
 	/**
 	 * This is the {@link Logger} which will be used throughout the whole
 	 * application.
@@ -54,10 +53,8 @@ public class LibgdxUtils implements ApplicationListener {
 	 * {@link Screen}s.
 	 */
 	public static final Game game = new Game() {
-
 		@Override
 		public void create() {
-
 		}
 	};
 
@@ -135,11 +132,9 @@ public class LibgdxUtils implements ApplicationListener {
 		game.dispose();
 		assets.dispose();
 
-		if (spriteBatch != null) {
+		if (spriteBatch != null)
 			spriteBatch.dispose();
-		}
-		if (modelBatch != null) {
+		if (modelBatch != null)
 			modelBatch.dispose();
-		}
 	}
 }

@@ -1,6 +1,5 @@
 package com.mygdx.model;
 
-
 public class MusicStringFile implements AssetsFile<String> {
 	private String file;
 	private String filePath;
@@ -13,8 +12,6 @@ public class MusicStringFile implements AssetsFile<String> {
 
 	@Override
 	public String getTestFile() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

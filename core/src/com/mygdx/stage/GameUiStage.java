@@ -2,7 +2,6 @@ package com.mygdx.stage;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +12,14 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryPopup;
 import com.mygdx.manager.RewardManager;
@@ -32,16 +27,9 @@ import com.mygdx.model.Hero;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
-import com.mygdx.state.Assets;
 import com.mygdx.ui.StatusBarUi;
 
-public class GameUiStage extends Stage {
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private ScreenFactory screenFactory;
-	@Autowired
-	private PartyInfo partyInfo;
+public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private RewardManager rewardManager;
 
@@ -75,10 +63,7 @@ public class GameUiStage extends Stage {
 	private float realheight;
 	private float realwidth;
 
-	private Map<String, TextureRegionDrawable> atlasUiMap;
-
 	public Stage makeStage() {
-		atlasUiMap = assets.atlasUiMap;
 		// 초기화
 		uiTable = new Table();
 		realheight = assets.windowHeight;
@@ -99,50 +84,47 @@ public class GameUiStage extends Stage {
 					assets.skin);
 			statusbartable[i] = new Table(assets.skin);
 			charatertable[i] = new Table(assets.skin);
-
 		}
 		// 캐릭터 이미지 세팅
 		List<Hero> currentBattleMemberList = partyInfo.getBattleMemberList();
 
-		for (int i = 0; i < currentBattleMemberList.size(); i++) {
+		for (int i = 0; i < currentBattleMemberList.size(); i++)
 			characterImage[i] = new Image(currentBattleMemberList.get(i)
 					.getStatusTexture());
-		}
 
 		toptable = new Table(assets.skin);
 		bottomtable = new Table(assets.skin);
 
 		TextButtonStyle style = new TextButtonStyle(
-				atlasUiMap.get("nameAndTime"), atlasUiMap.get("nameAndTime"),
-				atlasUiMap.get("nameAndTime"), assets.font);
-		downArrowButton = new ImageButton(atlasUiMap.get("downArrowButton"),
-				atlasUiMap.get("downArrowButton"));
-		bagButton = new ImageButton(atlasUiMap.get("bagButton"),
+				assets.atlasUiMap.get("nameAndTime"),
+				assets.atlasUiMap.get("nameAndTime"),
+				assets.atlasUiMap.get("nameAndTime"), assets.font);
+		downArrowButton = new ImageButton(
+				assets.atlasUiMap.get("downArrowButton"),
+				assets.atlasUiMap.get("downArrowButton"));
+		bagButton = new ImageButton(assets.atlasUiMap.get("bagButton"),
 				assets.atlasUiMap.get("bagButton"));
 		worldMapButton = new TextButton("worldMap", style);
 		leftTimeButton = new TextButton("12h30m", style);
-		helpButton = new ImageButton(atlasUiMap.get("helpButton"),
-				atlasUiMap.get("helpButton"));
-		optionButton = new ImageButton(atlasUiMap.get("optionButton"),
-				atlasUiMap.get("optionButton"));
+		helpButton = new ImageButton(assets.atlasUiMap.get("helpButton"),
+				assets.atlasUiMap.get("helpButton"));
+		optionButton = new ImageButton(assets.atlasUiMap.get("optionButton"),
+				assets.atlasUiMap.get("optionButton"));
 		battleButton = new TextButton("Battle", assets.skin);
 
 		// 인벤토리 Actor 만들기
 		dragAndDrop = new DragAndDrop();
-		Skin skin = assets.skin;
-		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop, skin);
+		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop,
+				assets.skin);
 
 		// 보상 이벤트 처리
 		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
 				.iterator();
 		while (iterator.hasNext()) {
 			RewardInfo nextIterator = iterator.next();
-			if (nextIterator.getRewardState().equals(RewardStateEnum.ING)) {
-
+			if (nextIterator.getRewardState().equals(RewardStateEnum.ING))
 				alertMessage.add(new AlertMessagePopup("[ 보상 ]", assets.skin)
 						.text(rewardManager.getRewardMessage(nextIterator)));
-
-			}
 			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
 					+ nextIterator.getRewardType());
 		}
@@ -162,12 +144,12 @@ public class GameUiStage extends Stage {
 			nextIterator.setVisible(true);
 			rewardManager.pollRewardQueue();
 		}
+
 		return this;
 	}
 
 	// 테이블 디자인
 	public void makeTable() {
-
 		uiTable.setFillParent(true);
 
 		toptable.add(downArrowButton).expand().width(realwidth / 8)
@@ -197,25 +179,21 @@ public class GameUiStage extends Stage {
 		}
 
 		// GameUi의 캐릭터를 동적으로 부여해줌
-		for (int i = 0; i < battleMemberNumber; i++) {
+		for (int i = 0; i < battleMemberNumber; i++)
 			charatertable[i].add(characterImage[i]).width(realwidth / 4)
 					.height(realheight / 4);
-		}
+
 		uiTable.add(toptable).expand().top();
 		uiTable.row();
 		uiTable.add(bottomtable).bottom();
-
 	}
 
 	// 리스너 할당
 	public void addListener() {
-
 		bagButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 				return true;
 			}
 
@@ -224,11 +202,9 @@ public class GameUiStage extends Stage {
 					int pointer, int button) {
 				inventoryActor.setVisible(true);
 				Gdx.app.log("정보", "inventoryPopUp창이 나타납니다.");
-
 			}
 		});
 		optionButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -243,11 +219,9 @@ public class GameUiStage extends Stage {
 		});
 
 		downArrowButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				// TODO Auto-generated method stub
 				return true;
 			}
 
@@ -259,11 +233,9 @@ public class GameUiStage extends Stage {
 		});
 
 		battleButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				// TODO Auto-generated method stub
 				return true;
 			}
 
@@ -275,11 +247,9 @@ public class GameUiStage extends Stage {
 			}
 		});
 		worldMapButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 				return true;
 			}
 
@@ -290,18 +260,15 @@ public class GameUiStage extends Stage {
 			}
 		});
 		helpButton.addListener(new InputListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 				return true;
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-
 			}
 		});
 		for (int i = 0; i < partyInfo.getBattleMemberList().size(); i++) {
@@ -319,32 +286,7 @@ public class GameUiStage extends Stage {
 	@Override
 	public void dispose() {
 		inventoryActor.remove();
-		// alertMessage.remove();
 		super.dispose();
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
 	}
 
 	public RewardManager getRewardManager() {
@@ -354,21 +296,4 @@ public class GameUiStage extends Stage {
 	public void setRewardManager(RewardManager rewardManager) {
 		this.rewardManager = rewardManager;
 	}
-
-	public TextButton getWorldMapButton() {
-		return worldMapButton;
-	}
-
-	public void setWorldMapButton(TextButton worldMapButton) {
-		this.worldMapButton = worldMapButton;
-	}
-
-	public static Stage getInventoryStage() {
-		return inventoryStage;
-	}
-
-	public static void setInventoryStage(Stage inventoryStage) {
-		GameUiStage.inventoryStage = inventoryStage;
-	}
-
 }

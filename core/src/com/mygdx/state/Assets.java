@@ -30,9 +30,9 @@ import com.mygdx.model.WorldNode;
 
 /**
  * 각종 리소스들을 관리해주는 assets 클래스, Stage및 Screen에 필요한 요소들을 전달해준다.
- * 
+ *
  * @author Velmont
- * 
+ *
  */
 public class Assets {
 	public Skin skin;
@@ -126,13 +126,11 @@ public class Assets {
 		Map<String, JsonStringFile> jsonFileMap = JsonParser.parseMap(
 				JsonStringFile.class,
 				filePathMap.get(JsonEnum.JSON_FILE_PATH.toString()).getFile());
-		for (Entry<String, JsonStringFile> entry : jsonFileMap.entrySet()) {
+		for (Entry<String, JsonStringFile> entry : jsonFileMap.entrySet())
 			jsonStringMap.put(entry.getKey(), entry.getValue().getFile());
-		}
 	}
 
 	private void loadRoadInfo() {
-
 	}
 
 	private void loadHeroInfo() {
@@ -167,12 +165,10 @@ public class Assets {
 		List<AtlasUiFile> atlasUiFileList = JsonParser.parseList(
 				AtlasUiFile.class,
 				filePathMap.get(JsonEnum.ATLAS_UI_PATH.toString()).getFile());
-		for (AtlasUiFile atlasUiFile : atlasUiFileList) {
-			for (String element : atlasUiFile.getElement()) {
+		for (AtlasUiFile atlasUiFile : atlasUiFileList)
+			for (String element : atlasUiFile.getElement())
 				atlasUiMap.put(element, new TextureRegionDrawable(atlasUiFile
 						.getFile().findRegion(element)));
-			}
-		}
 	}
 
 	private void loadFont() {
@@ -182,10 +178,9 @@ public class Assets {
 	private void loadChatButton() {
 		TextureAtlas textureAtlas = new TextureAtlas("skin/chatbutton.pack");
 		chatButton = new TextureRegionDrawable[6];
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 6; i++)
 			chatButton[i] = new TextureRegionDrawable(
 					textureAtlas.findRegion("chatbutton" + (i + 1)));
-		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -193,38 +188,33 @@ public class Assets {
 		Map<String, MusicFile> musicFileMap = JsonParser.parseMap(
 				MusicFile.class,
 				filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString()).getFile());
-		for (Entry<String, MusicFile> entry : musicFileMap.entrySet()) {
+		for (Entry<String, MusicFile> entry : musicFileMap.entrySet())
 			musicMap.put(entry.getKey(), entry.getValue().getFile());
-		}
 
-		//WorldNode MusicList
+		// WorldNode MusicList
 		String worldNodeMusicJsonString = filePathMap.get(
 				JsonEnum.WORLD_NODE_MUSIC_LIST.toString()).getFile();
 		Map<String, String> worldNodeMusicStringMap = new Json().fromJson(
 				HashMap.class, worldNodeMusicJsonString);
-		for (Entry<String, String> entry : worldNodeMusicStringMap.entrySet()) {
+		for (Entry<String, String> entry : worldNodeMusicStringMap.entrySet())
 			worldNodeMusicMap.put(entry.getKey(),
 					musicMap.get(entry.getValue()));
-		}
 
-		//Battle MusicList
+		// Battle MusicList
 		String battleMusicJsonString = filePathMap.get(
 				JsonEnum.BATTLE_MUSIC_LIST.toString()).getFile();
 		Map<String, String> battleMusicStringMap = new Json().fromJson(
 				HashMap.class, battleMusicJsonString);
-		for (Entry<String, String> entry : battleMusicStringMap.entrySet()) {
+		for (Entry<String, String> entry : battleMusicStringMap.entrySet())
 			battleMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
-		}
 
-		//Moving MusicList
+		// Moving MusicList
 		String movingMusicJsonString = filePathMap.get(
 				JsonEnum.MOVING_MUSIC_LIST.toString()).getFile();
 		Map<String, String> movingMusicStringMap = new Json().fromJson(
 				HashMap.class, movingMusicJsonString);
-		for (Entry<String, String> entry : movingMusicStringMap.entrySet()) {
+		for (Entry<String, String> entry : movingMusicStringMap.entrySet())
 			movingMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
-		}
-
 	}
 
 	// 임시용, 추후 제거 예정

@@ -5,11 +5,11 @@ import java.util.List;
 import com.mygdx.model.Monster;
 
 public class MovingInfo {
-	private String startNode; //무빙 시작 노드		
-	private String destinationNode; //무빙 목표 노드		
+	private String startNode; // 무빙 시작 노드
+	private String destinationNode; // 무빙 목표 노드
 	private int roadLength; // 총 길 개수
-	private int leftRoadLength; //남은 길의 개수
-	private List<String> roadMonsterList; //해당 길에 서식하는 몬스터 리스트
+	private int leftRoadLength; // 남은 길의 개수
+	private List<String> roadMonsterList; // 해당 길에 서식하는 몬스터 리스트
 	private Monster selectedMonster; // 추첨된 몬스터
 	private String arrowName;
 
@@ -68,5 +68,4 @@ public class MovingInfo {
 	public void setRoadMonsterList(List<String> roadMonsterList) {
 		this.roadMonsterList = roadMonsterList;
 	}
-
 }

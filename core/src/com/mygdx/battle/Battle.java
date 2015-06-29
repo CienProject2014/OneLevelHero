@@ -4,10 +4,8 @@ import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.model.LivingUnit;
-import com.mygdx.model.Unit;
 
 public class Battle {
-
 	private Random random = new Random();
 	private boolean outcome;
 	private String dungeonID;
@@ -41,10 +39,10 @@ public class Battle {
 				defender.getStatus().getHp() + defender.getStatus().getDef()
 						- defender.getStatus().getAtk());
 		Gdx.app.log("Battle", attacker.getName() + "가 " + defender.getName()
-				+ " 를 공격하였습니다!");
+				+ "를 공격하였습니다!");
 	}
 
 	public void skillAttack(LivingUnit unit, String skillID) {
-		Gdx.app.log("Battle", unit.getName() + "가 " + skillID + " 를 사용하였습니다!");
+		Gdx.app.log("Battle", unit.getName() + "가 " + skillID + "를 사용하였습니다!");
 	}
 }
