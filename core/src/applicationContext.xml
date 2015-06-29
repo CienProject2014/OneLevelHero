@@ -146,13 +146,13 @@
 	<bean id="villageScreen" class="com.mygdx.screen.VillageScreen" scope="prototype"/>
 	<bean id="worldMapScreen" class="com.mygdx.screen.WorldMapScreen" scope="prototype"/>
 
-	<bean id="rootStage" class="com.mygdx.stage.RootStage" scope="prototype">
+	<bean id="oneLevelStage" class="com.mygdx.stage.OneLevelStage" scope="prototype">
 		<property name="assets" ref="assets"/>
 		<property name="screenFactory" ref="screenFactory"/>
 		<property name="cameraManager" ref="cameraManager"/>
 		<property name="partyInfo" ref="partyInfo"/>
 	</bean>
-	<bean id="rootOverlap2DStage" class="com.mygdx.stage.RootOverlap2DStage" scope="prototype">
+	<bean id="overlapStage" class="com.mygdx.stage.OverlapStage" scope="prototype">
 		<property name="rm" ref="rm"/>
 		<property name="assets" ref="assets"/>
 		<property name="screenFactory" ref="screenFactory"/>

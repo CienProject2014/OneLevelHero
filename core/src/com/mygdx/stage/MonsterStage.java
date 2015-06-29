@@ -47,7 +47,6 @@ public class MonsterStage extends OneLevelStage {
 		table.setBackground(getBackgroundTRD());
 
 		innerTable = new Table();
-		innerTable.setBackground(getBackgroundTRD());
 		innerTable.add(getMonsterImage()); // table 안의 innerTable에 몬스터 이미지 넣는다.
 
 		table.align(Align.top); // table을 위로 정렬
