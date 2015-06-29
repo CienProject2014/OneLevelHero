@@ -42,7 +42,9 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 		worldMapButton = sceneLoader.getRoot().getCompositeById(
 				"worldmap_button");
 
-		entranceButton.setTouchable(Touchable.enabled);
+		sceneLoader.getRoot().getLabelById("entrance_label")
+				.setTouchable(Touchable.disabled);
+
 		entranceButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -58,7 +60,6 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 			}
 		});
 
-		saveButton.setTouchable(Touchable.enabled);
 		saveButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -73,7 +74,6 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 			}
 		});
 
-		restButton.setTouchable(Touchable.enabled);
 		restButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -88,7 +88,6 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 			}
 		});
 
-		worldMapButton.setTouchable(Touchable.enabled);
 		worldMapButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
