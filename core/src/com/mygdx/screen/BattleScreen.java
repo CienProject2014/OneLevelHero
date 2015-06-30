@@ -27,7 +27,7 @@ public class BattleScreen extends BaseScreen {
 
 		// Animation이 진행중일때는 사용자의 입력에 대한 행동을 수행하지 않음
 
-		if (animationManager.isPlaying()) {
+		if (animationManager.hasPlayable()) {
 			animationManager.nextFrame(delta);
 		} else {
 			monsterStage.act();

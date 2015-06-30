@@ -27,10 +27,7 @@ import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 public class BattleStage extends BaseOverlapStage {
 	@Autowired
 	private MovingInfo movingInfo;
-	
-	//================================================================================
-	// GUI variables
-	//================================================================================
+
 	// Table
 	Table uiTable; // 화면 전체 테이블
 	Table orderTable; // 순서를 나타내는 테이블
@@ -44,11 +41,8 @@ public class BattleStage extends BaseOverlapStage {
 	private SimpleButtonScript skillButton;
 	private SimpleButtonScript inventoryButton;
 	private SimpleButtonScript escapeButton;
-	
-	//================================================================================
-	// Battle Logic variables
-	//================================================================================
-	@Autowired	
+
+	@Autowired
 	private BattleManager battleManager;
 	private Monster monster;
 
@@ -61,10 +55,7 @@ public class BattleStage extends BaseOverlapStage {
 
 	// Trigger
 	private boolean monsterTrigger;
-	
-	//================================================================================
-	// Overriding Methods(Overlap2DStage)
-	//================================================================================
+
 	@Override
 	public void act(float delta) {
 		if (monsterTrigger) {
@@ -82,20 +73,17 @@ public class BattleStage extends BaseOverlapStage {
 
 		super.act(delta);
 	}
-	
-	//================================================================================
-	// Methods
-	//================================================================================
+
 	public BattleStage() {
 		Gdx.app.debug("BattleStage", "Constructor() call");
 	}
-	
+
 	public LivingUnit getCurrentActor() {
 		LivingUnit unit = orderedUnits.poll();
 		orderedUnits.add(unit);
 		return unit;
 	}
-	
+
 	public LivingUnit whoIsNextActor() {
 		LivingUnit unit = orderedUnits.peek();
 		return unit;
@@ -196,8 +184,8 @@ public class BattleStage extends BaseOverlapStage {
 
 				battleManager.userAttack(actor);
 				updateTable();
-				
-				if (whoIsNextActor() instanceof Monster){
+
+				if (whoIsNextActor() instanceof Monster) {
 					monsterTrigger = true;
 				}
 			}
@@ -226,9 +214,6 @@ public class BattleStage extends BaseOverlapStage {
 		});
 	}
 
-	//================================================================================
-	// Getter Setter
-	//================================================================================
 	public MovingInfo getMovingInfo() {
 		return movingInfo;
 	}
