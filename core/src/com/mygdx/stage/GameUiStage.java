@@ -27,6 +27,7 @@ import com.mygdx.model.Hero;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
+import com.mygdx.state.StaticAssets;
 import com.mygdx.ui.StatusBarUi;
 
 public class GameUiStage extends BaseOneLevelStage {
@@ -66,8 +67,8 @@ public class GameUiStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		// 초기화
 		uiTable = new Table();
-		realheight = assets.windowHeight;
-		realwidth = assets.windowWidth;
+		realheight = StaticAssets.windowHeight;
+		realwidth = StaticAssets.windowWidth;
 		hpbar = new StatusBarUi[3];
 		expbar = new StatusBarUi[3];
 		turnbar = new StatusBarUi[3];

@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.model.Hero;
+import com.mygdx.state.StaticAssets;
 import com.mygdx.ui.StatusBarUi;
 
 public class CharacterUiStage extends BaseOneLevelStage {
@@ -43,8 +44,8 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	}
 
 	private void initialize() {
-		realHeight = assets.windowHeight;
-		realWidth = assets.windowWidth;
+		realHeight = StaticAssets.windowHeight;
+		realWidth = StaticAssets.windowWidth;
 
 		bottomTable = new Table(assets.skin);
 		statusbarTable = new Table[3];
@@ -110,9 +111,9 @@ public class CharacterUiStage extends BaseOneLevelStage {
 			/*
 			 * int hpValue = battleMemberList.get(i).getStatus().getHp();
 			 * Gdx.app.log("이름?", hpbar[i].getName());
-			 *
-			 * if (!hpbar[i].setValue(hpValue))
-			 * 	Gdx.app.log("GameUiStage", "체력 설정 실패");
+			 * 
+			 * if (!hpbar[i].setValue(hpValue)) Gdx.app.log("GameUiStage",
+			 * "체력 설정 실패");
 			 */
 			hpbar[i].act(delta);
 		}
