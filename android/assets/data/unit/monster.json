@@ -1,6 +1,7 @@
 {
   "assassin girl": {
     "name": "assassin girl",
+	"type": "small",
     "status": {
       "atk": 110,
       "def": 34.5,
@@ -13,10 +14,11 @@
       "fr" : 0.1,
       "wr" : 0.1,
       "er" : 0.1
-    }
+    },
   },
   "Monster2": {
     "name": "Monster2",
+	"type": "small",
     "status": {
       "atk": 110,
       "def": 34.5,
@@ -33,6 +35,7 @@
   },
   "Monster3": {
     "name": "Monster3",
+	"type": "medium",
     "status": {
       "atk": 110,
       "def": 34.5,
@@ -49,6 +52,7 @@
   },
   "b2": {
     "name": "b2",
+	"type": "large",
     "status": {
       "atk": 110,
       "def": 34.5,
