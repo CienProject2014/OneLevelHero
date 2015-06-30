@@ -8,13 +8,14 @@ import com.mygdx.currentState.PartyInfo;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
+import com.mygdx.state.StaticAssets;
 
 public class BattleManager {
 	@Autowired
 	private MovingInfo movingInfo;
 	@Autowired
 	private PartyInfo partyInfo;
-	
+
 	private AnimationManager animationManager;
 
 	private Battle battle = new Battle();
@@ -24,7 +25,9 @@ public class BattleManager {
 		monster = movingInfo.getSelectedMonster();
 		// FIXME
 		battle.attack(unit, monster);
-		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, 544, 264);
+		int x = (int) (StaticAssets.windowWidth / 2);
+		int y = (int) (StaticAssets.windowHeight / 2);
+		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, x, y);
 	}
 
 	public void userSkill(LivingUnit unit, String skill) {
@@ -39,13 +42,15 @@ public class BattleManager {
 	public void monsterAttack() {
 		// FIXME
 		battle.attack(monster, partyInfo.pickRandomHero());
-		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING, 544, 80);
+		int x = (int) (StaticAssets.windowWidth / 2);
+		int y = (int) (StaticAssets.windowHeight / 8);
+		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING, x, y);
 	}
 
 	public void nextTurn() {
 		// TODO
 	}
-	
+
 	public MovingInfo getMovingInfo() {
 		return movingInfo;
 	}

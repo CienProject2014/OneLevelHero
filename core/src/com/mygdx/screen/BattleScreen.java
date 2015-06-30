@@ -22,7 +22,8 @@ public class BattleScreen extends BaseScreen {
 
 		monsterStage.draw();
 		characterUiStage.draw();
-		gameUiStage.draw();
+		// FIXME GameUi와 CharacherUi의 분리가 필요
+		// gameUiStage.draw();
 		battleStage.draw();
 
 		// Animation이 진행중일때는 사용자의 입력에 대한 행동을 수행하지 않음
@@ -38,10 +39,6 @@ public class BattleScreen extends BaseScreen {
 	}
 
 	@Override
-	public void resize(int width, int height) {
-	}
-
-	@Override
 	public void show() {
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
@@ -54,7 +51,6 @@ public class BattleScreen extends BaseScreen {
 
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
-		// CharacterUiStage 를 Static 하게 사용하면 addProcessor도 한 번만 하면 되지 않을까?
 		multiplexer.addProcessor(0, gameUiStage);
 		multiplexer.addProcessor(1, characterUiStage);
 		multiplexer.addProcessor(2, monsterStage);

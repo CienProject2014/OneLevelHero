@@ -115,6 +115,7 @@
 		<property name="musicManager" ref="musicManager"/>
 		<property name="eventManager" ref="eventManager"/>
 		<property name="positionInfo" ref="positionInfo"/>
+		<property name="movingInfo" ref="movingInfo"/>
 	</bean>
 	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen" scope="prototype">
 	    <property name="animationManager" ref="animationManager"/>
@@ -141,7 +142,6 @@
 	</bean>
 	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen" scope="prototype"/>
 	<bean id="movingScreen" class="com.mygdx.screen.MovingScreen" scope="prototype">
-		<property name="movingInfo" ref="movingInfo"/>
 		<property name="movingManager" ref="movingManager"/>
 	</bean>
 	<bean id="optionScreen" class="com.mygdx.screen.OptionScreen" scope="prototype"/>
@@ -155,17 +155,18 @@
 		<property name="screenFactory" ref="screenFactory"/>
 		<property name="cameraManager" ref="cameraManager"/>
 		<property name="partyInfo" ref="partyInfo"/>
+		<property name="movingInfo" ref="movingInfo"/>
 	</bean>
 	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage" scope="prototype">
 		<property name="rm" ref="rm"/>
 		<property name="assets" ref="assets"/>
-		<property name="screenFactory" ref="screenFactory"/>
 		<property name="cameraManager" ref="cameraManager"/>
+		<property name="movingInfo" ref="movingInfo"/>
 		<property name="partyInfo" ref="partyInfo"/>
 		<property name="positionInfo" ref="positionInfo"/>
+		<property name="screenFactory" ref="screenFactory"/>
 	</bean>
 	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype">
-		<property name="movingInfo" ref="movingInfo"/>
 	</bean>
 	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage" scope="prototype">
 		<property name="eventManager" ref="eventManager"/>
@@ -184,7 +185,6 @@
 	</bean>
 	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype"/>
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage" scope="prototype">
-		<property name="movingInfo" ref="movingInfo"/>
 	</bean>
 	<bean id="selectButtonStage" class="com.mygdx.stage.SelectButtonStage" scope="prototype">
 		<property name="eventManager" ref="eventManager"/>
