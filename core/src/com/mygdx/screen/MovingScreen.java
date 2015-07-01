@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.manager.MovingManager;
+import com.mygdx.state.StaticAssets;
 
 public class MovingScreen extends RootScreen {
 	@Autowired
@@ -50,7 +51,7 @@ public class MovingScreen extends RootScreen {
 		Gdx.input.setInputProcessor(stage);
 
 		background = new Image(texture);
-		background.setSize(assets.windowWidth, assets.windowHeight);
+		background.setSize(StaticAssets.windowWidth, StaticAssets.windowHeight);
 
 		goButton.addListener(new InputListener() {
 			@Override

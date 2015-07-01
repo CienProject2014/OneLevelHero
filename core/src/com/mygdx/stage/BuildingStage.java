@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.manager.EventManager;
 import com.mygdx.model.Building;
 import com.mygdx.state.StaticAssets;
@@ -60,7 +59,7 @@ public class BuildingStage extends OverlapStage {
 		buildingInfo = assets.villageMap.get(positionInfo.getCurrentNode())
 				.getBuilding().get(positionInfo.getCurrentBuilding());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
-		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
+		cameraManager.setCameraSize(this);
 		addActor(sceneLoader.getRoot());
 	}
 

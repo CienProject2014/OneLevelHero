@@ -3,6 +3,7 @@ package com.mygdx.stage;
 import java.util.Map.Entry;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -10,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.model.Building;
 import com.mygdx.model.Village;
 import com.mygdx.state.StaticAssets;
@@ -43,7 +43,10 @@ public class VillageStage extends OverlapStage {
 		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
 		// sceneLoader.loadScene(villageInfo.getSceneName());
 		sceneLoader.loadScene("blackwood_scene");
-		cameraManager.setCameraSize(this, CameraPosition.ABOVE_GAME_UI);
+		float width = sceneLoader.getRoot().getWidth();
+		float height = sceneLoader.getRoot().getHeight();
+		getViewport().setCamera(new OrthographicCamera(width, height));
+		getCamera().position.set(width / 2, height / 4, 0);
 		backgroundDirection = BackgroundDirection.DOWN;
 		addActor(sceneLoader.getRoot());
 		setBuildingButton();
