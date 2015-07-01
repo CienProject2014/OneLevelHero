@@ -29,7 +29,7 @@ import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
 import com.mygdx.ui.StatusBarUi;
 
-public class GameUiStage extends OneLevelStage {
+public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private RewardManager rewardManager;
 

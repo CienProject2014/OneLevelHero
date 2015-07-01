@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.model.Monster;
 
-public class MonsterStage extends OneLevelStage {
+public class MonsterStage extends BaseOneLevelStage {
 	@Autowired
 	private MovingInfo movingInfo;
 

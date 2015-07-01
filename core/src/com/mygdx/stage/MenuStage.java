@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.state.StaticAssets;
 
-public class MenuStage extends OneLevelStage {
+public class MenuStage extends BaseOneLevelStage {
 	private ImageButton[] button;
 
 	public Stage makeStage() {

@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.manager.MovingManager;
 
-public class MovingScreen extends RootScreen {
+public class MovingScreen extends BaseScreen {
 	@Autowired
 	private MovingManager movingManager;
 	@Autowired

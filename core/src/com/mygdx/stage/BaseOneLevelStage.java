@@ -8,7 +8,7 @@ import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.CameraManager;
 import com.mygdx.state.Assets;
 
-public class OneLevelStage extends Stage {
+public class BaseOneLevelStage extends Stage {
 	@Autowired
 	protected Assets assets;
 

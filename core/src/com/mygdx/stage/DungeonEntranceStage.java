@@ -14,7 +14,7 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  * @author Velmont
  *
  */
-public class DungeonEntranceStage extends OverlapStage {
+public class DungeonEntranceStage extends BaseOverlapStage {
 	private CompositeItem entranceButton, saveButton, restButton,
 			worldMapButton;
 

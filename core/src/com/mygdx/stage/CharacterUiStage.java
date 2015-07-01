@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.model.Hero;
 import com.mygdx.ui.StatusBarUi;
 
-public class CharacterUiStage extends OneLevelStage {
+public class CharacterUiStage extends BaseOneLevelStage {
 	private float realWidth, realHeight;
 
 	private Table uiTable; // 전체 화면을 차지하는 테이블

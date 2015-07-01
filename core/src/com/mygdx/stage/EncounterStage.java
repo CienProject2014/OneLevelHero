@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.enums.ScreenEnum;
 
-public class EncounterStage extends OneLevelStage {
+public class EncounterStage extends BaseOneLevelStage {
 	private TextButton fightButton;
 	private TextButton fleeButton;
 

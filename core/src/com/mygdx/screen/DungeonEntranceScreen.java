@@ -12,7 +12,7 @@ import com.mygdx.enums.StageEnum;
  * @author Velmont
  *
  */
-public class DungeonEntranceScreen extends RootScreen {
+public class DungeonEntranceScreen extends BaseScreen {
 	private Stage dungeonEntranceStage;
 	private Stage gameUiStage;
 

@@ -16,7 +16,7 @@ import com.mygdx.model.EventScene;
  * @author Velmont
  *
  */
-public class EventStage extends OneLevelStage {
+public class EventStage extends BaseOneLevelStage {
 	@Autowired
 	private EventInfo eventInfo;
 	private Label script;

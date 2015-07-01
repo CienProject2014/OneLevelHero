@@ -5,7 +5,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 
-public class EncounterScreen extends RootScreen {
+public class EncounterScreen extends BaseScreen {
 	private Stage encountStage;
 	private Stage monsterStage;
 

@@ -24,10 +24,13 @@ import com.mygdx.model.Monster;
 import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
-public class BattleStage extends OverlapStage {
+public class BattleStage extends BaseOverlapStage {
 	@Autowired
 	private MovingInfo movingInfo;
-
+	
+	//================================================================================
+	// GUI variables
+	//================================================================================
 	// Table
 	Table uiTable; // 화면 전체 테이블
 	Table orderTable; // 순서를 나타내는 테이블
@@ -41,9 +44,11 @@ public class BattleStage extends OverlapStage {
 	private SimpleButtonScript skillButton;
 	private SimpleButtonScript inventoryButton;
 	private SimpleButtonScript escapeButton;
-
-	// Battle controller
-	@Autowired
+	
+	//================================================================================
+	// Battle Logic variables
+	//================================================================================
+	@Autowired	
 	private BattleManager battleManager;
 	private Monster monster;
 
@@ -56,11 +61,10 @@ public class BattleStage extends OverlapStage {
 
 	// Trigger
 	private boolean monsterTrigger;
-
-	public BattleStage() {
-		Gdx.app.debug("BattleStage", "Constructor() call");
-	}
-
+	
+	//================================================================================
+	// Overriding Methods(Overlap2DStage)
+	//================================================================================
 	@Override
 	public void act(float delta) {
 		if (monsterTrigger) {
@@ -78,14 +82,21 @@ public class BattleStage extends OverlapStage {
 
 		super.act(delta);
 	}
-
+	
+	//================================================================================
+	// Methods
+	//================================================================================
+	public BattleStage() {
+		Gdx.app.debug("BattleStage", "Constructor() call");
+	}
+	
 	public LivingUnit getCurrentActor() {
 		LivingUnit unit = orderedUnits.poll();
 		orderedUnits.add(unit);
 		return unit;
 	}
-
-	public LivingUnit getNextActor() {
+	
+	public LivingUnit whoIsNextActor() {
 		LivingUnit unit = orderedUnits.peek();
 		return unit;
 	}
@@ -185,8 +196,8 @@ public class BattleStage extends OverlapStage {
 
 				battleManager.userAttack(actor);
 				updateTable();
-
-				if (getNextActor() instanceof Monster) {
+				
+				if (whoIsNextActor() instanceof Monster){
 					monsterTrigger = true;
 				}
 			}
@@ -215,6 +226,9 @@ public class BattleStage extends OverlapStage {
 		});
 	}
 
+	//================================================================================
+	// Getter Setter
+	//================================================================================
 	public MovingInfo getMovingInfo() {
 		return movingInfo;
 	}
@@ -222,4 +236,13 @@ public class BattleStage extends OverlapStage {
 	public void setMovingInfo(MovingInfo movingInfo) {
 		this.movingInfo = movingInfo;
 	}
+
+	public BattleManager getBattleManager() {
+		return battleManager;
+	}
+
+	public void setBattleManager(BattleManager battleManager) {
+		this.battleManager = battleManager;
+	}
+
 }

@@ -14,7 +14,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.model.EventScene;
 
-public class EventScreen extends RootScreen {
+public class EventScreen extends BaseScreen {
 	@Autowired
 	private RewardManager rewardManager;
 

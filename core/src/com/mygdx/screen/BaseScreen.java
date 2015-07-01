@@ -12,7 +12,7 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.state.Assets;
 
-public class RootScreen implements Screen {
+public abstract class BaseScreen implements Screen {
 	@Autowired
 	protected Assets assets;
 

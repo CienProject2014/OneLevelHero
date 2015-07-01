@@ -1,11 +1,16 @@
 package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
+import com.mygdx.manager.AnimationManager;
 
-public class BattleScreen extends RootScreen {
+public class BattleScreen extends BaseScreen {
+	@Autowired
+	private AnimationManager animationManager;
 	private Stage gameUiStage, characterUiStage, monsterStage, battleStage;
 
 	public BattleScreen() {
@@ -15,19 +20,21 @@ public class BattleScreen extends RootScreen {
 	public void render(float delta) {
 		super.render(delta);
 
-		monsterStage.act(); // 몬스터 스테이지에 움직이는 요소가 있을 경우
-							// 예를 들어, 움직이는 몬스터
 		monsterStage.draw();
-
-		// 유저의 스테이터스를 실시간으로 업데이트 한다.
-		characterUiStage.act(delta);
 		characterUiStage.draw();
-
-		gameUiStage.act();
 		gameUiStage.draw();
-
-		battleStage.act(); // 버튼 애니메이션을 위함
 		battleStage.draw();
+
+		// Animation이 진행중일때는 사용자의 입력에 대한 행동을 수행하지 않음
+
+		if (animationManager.isPlaying()) {
+			animationManager.nextFrame(delta);
+		} else {
+			monsterStage.act();
+			characterUiStage.act(delta);
+			gameUiStage.act();
+			battleStage.act();
+		}
 	}
 
 	@Override
@@ -42,7 +49,7 @@ public class BattleScreen extends RootScreen {
 		battleStage = stageFactory.makeBattleStage();
 
 		setInputProcessor();
-		musicManager.setBattleMusicAndPlay();
+		// musicManager.setBattleMusicAndPlay();
 	}
 
 	private void setInputProcessor() {
@@ -53,5 +60,13 @@ public class BattleScreen extends RootScreen {
 		multiplexer.addProcessor(2, monsterStage);
 		multiplexer.addProcessor(3, battleStage);
 		Gdx.input.setInputProcessor(multiplexer);
+	}
+
+	public AnimationManager getAnimationManager() {
+		return animationManager;
+	}
+
+	public void setAnimationManager(AnimationManager animationManager) {
+		this.animationManager = animationManager;
 	}
 }

@@ -18,7 +18,7 @@ import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
-public class WorldMapStage extends OverlapStage {
+public class WorldMapStage extends BaseOverlapStage {
 	@Autowired
 	private WorldMapManager worldMapManager;
 	private CompositeItem currentPosition;

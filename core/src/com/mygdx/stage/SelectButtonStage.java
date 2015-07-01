@@ -18,7 +18,7 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PlaceManager;
 import com.mygdx.model.NPC;
 
-public class SelectButtonStage extends OneLevelStage {
+public class SelectButtonStage extends BaseOneLevelStage {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
