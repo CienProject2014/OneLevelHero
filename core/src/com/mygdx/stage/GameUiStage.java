@@ -105,7 +105,8 @@ public class GameUiStage extends OneLevelStage {
 		bagButton = new ImageButton(assets.atlasUiMap.get("bagButton"),
 				assets.atlasUiMap.get("bagButton"));
 		worldMapButton = new TextButton("worldMap", style);
-		leftTimeButton = new TextButton("12h30m", style);
+		leftTimeButton = new TextButton(timeInfo.getDay() + "d"
+				+ timeInfo.getHour() + "h" + timeInfo.getMinute() + "m", style);
 		helpButton = new ImageButton(assets.atlasUiMap.get("helpButton"),
 				assets.atlasUiMap.get("helpButton"));
 		optionButton = new ImageButton(assets.atlasUiMap.get("optionButton"),

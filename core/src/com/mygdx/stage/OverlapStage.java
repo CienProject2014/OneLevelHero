@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.PositionInfo;
+import com.mygdx.currentState.TimeInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.CameraManager;
 import com.mygdx.state.Assets;
@@ -23,6 +24,8 @@ public class OverlapStage extends Overlap2DStage {
 	protected PartyInfo partyInfo;
 	@Autowired
 	protected PositionInfo positionInfo;
+	@Autowired
+	protected TimeInfo timeInfo;
 
 	public Assets getAssets() {
 		return assets;
@@ -62,5 +65,13 @@ public class OverlapStage extends Overlap2DStage {
 
 	public void setPositionInfo(PositionInfo positionInfo) {
 		this.positionInfo = positionInfo;
+	}
+
+	public TimeInfo getTimeInfo() {
+		return timeInfo;
+	}
+
+	public void setTimeInfo(TimeInfo timeInfo) {
+		this.timeInfo = timeInfo;
 	}
 }

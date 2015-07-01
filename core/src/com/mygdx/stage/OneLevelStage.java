@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.currentState.PartyInfo;
+import com.mygdx.currentState.TimeInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.CameraManager;
 import com.mygdx.state.Assets;
@@ -20,6 +21,8 @@ public class OneLevelStage extends Stage {
 
 	@Autowired
 	protected PartyInfo partyInfo;
+	@Autowired
+	protected TimeInfo timeInfo;
 
 	public Assets getAssets() {
 		return assets;
@@ -51,5 +54,13 @@ public class OneLevelStage extends Stage {
 
 	public void setPartyInfo(PartyInfo partyInfo) {
 		this.partyInfo = partyInfo;
+	}
+
+	public TimeInfo getTimeInfo() {
+		return timeInfo;
+	}
+
+	public void setTimeInfo(TimeInfo timeInfo) {
+		this.timeInfo = timeInfo;
 	}
 }
