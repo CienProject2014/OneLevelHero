@@ -43,6 +43,12 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 
 		sceneLoader.getRoot().getLabelById("entrance_label")
 				.setTouchable(Touchable.disabled);
+		sceneLoader.getRoot().getLabelById("save_label")
+				.setTouchable(Touchable.disabled);
+		sceneLoader.getRoot().getLabelById("rest_label")
+				.setTouchable(Touchable.disabled);
+		sceneLoader.getRoot().getLabelById("worldmap_label")
+				.setTouchable(Touchable.disabled);
 
 		entranceButton.addListener(new InputListener() {
 			@Override
