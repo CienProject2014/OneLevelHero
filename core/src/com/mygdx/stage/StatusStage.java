@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -28,8 +27,8 @@ public class StatusStage extends BaseOverlapStage {
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
 		sceneLoader.loadScene("status_scene");
+		cameraManager.setCameraSize(this);
 		addActor(sceneLoader.getRoot());
-		setCamera();
 		labelSet();
 		imageSet();
 
@@ -115,11 +114,5 @@ public class StatusStage extends BaseOverlapStage {
 				screenFactory.show(ScreenEnum.VILLAGE);
 			}
 		});
-	}
-
-	private void setCamera() {
-		cam = new OrthographicCamera(1920f, 1080f);
-		cam.position.set(1920 / 2, 1080 / 2, 0);
-		getViewport().setCamera(cam);
 	}
 }

@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar.ProgressBarStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.JsonParser;
 import com.mygdx.model.FrameSheet;
@@ -60,9 +59,8 @@ public class StaticAssets {
 	}
 
 	public static void loadSize(Stage stage) {
-		Viewport vp = stage.getViewport();
-		windowWidth = vp.getViewportWidth();
-		windowHeight = vp.getViewportHeight();
+		windowWidth = stage.getWidth();
+		windowHeight = stage.getHeight();
 	}
 
 	public static void loadTexture() {
