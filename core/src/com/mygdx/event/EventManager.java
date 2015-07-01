@@ -3,12 +3,20 @@ package com.mygdx.event;
 import java.util.Vector;
 
 import com.mygdx.event.listener.EventListener;
+import com.mygdx.event.listener.ScreenChangeEventListener;
 
 public class EventManager {
 	private Vector<EventListener> listeners;
 	private Vector<Event> events;
 
 	public EventManager() {
+		addListener(new ScreenChangeEventListener());
+
+		// Event evt = new Event();
+		// evt.info.put(ScreenChangeEvent.TAG_TYPE, ScreenChangeEvent.TYPE);
+		// evt.info.put(ScreenChangeEvent.TAG_TARGET, ScreenEnum.BATTLE);
+		// ==
+		// Event evt = new ScreenChangeEvent(ScreenEnum.BATTLE);
 	}
 
 	public void update() {
