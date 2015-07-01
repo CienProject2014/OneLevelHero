@@ -3,6 +3,8 @@ package com.mygdx.stage;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -17,6 +19,7 @@ import com.uwsoft.editor.renderer.actor.LabelItem;
 import com.uwsoft.editor.renderer.data.LabelVO;
 
 public class StatusStage extends OverlapStage {
+	private Camera cam;
 	private CompositeItem closeButton;
 	private ImageItem largeImage;
 	private List<LabelVO> labels;
@@ -25,8 +28,8 @@ public class StatusStage extends OverlapStage {
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
 		sceneLoader.loadScene("status_scene");
-		cameraManager.setCameraSize(this);
 		addActor(sceneLoader.getRoot());
+		setCamera();
 		labelSet();
 		imageSet();
 
@@ -112,5 +115,11 @@ public class StatusStage extends OverlapStage {
 				screenFactory.show(ScreenEnum.VILLAGE);
 			}
 		});
+	}
+
+	private void setCamera() {
+		cam = new OrthographicCamera(1920f, 1080f);
+		cam.position.set(1920 / 2, 1080 / 2, 0);
+		getViewport().setCamera(cam);
 	}
 }

@@ -93,13 +93,13 @@ public class BattleStage extends OverlapStage {
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
 
-		cam = new OrthographicCamera(1920, 1080);
-		cam.position.set(1920 / 2, 1080 / 2, 0);
+		cam = new OrthographicCamera(1920f, 1080f);
+		cam.position.set(1920 / 2.0f, 1080 / 2.0f, 0);
 		getViewport().setCamera(cam);
 
 		Gdx.app.debug("BattleStage", "makeStage(Rm rm)");
-		maximumWidth = StaticAssets.windowWidth * 0.0625f;
-		maximumHeight = StaticAssets.windowHeight * 0.125f;
+		maximumWidth = assets.windowWidth * 0.0625f;
+		maximumHeight = assets.windowHeight * 0.125f;
 		monster = movingInfo.getSelectedMonster();
 
 		// Overlap2D로 만든 신(Scene)

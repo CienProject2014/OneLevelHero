@@ -89,23 +89,22 @@ public class MenuStage extends OneLevelStage {
 			}
 		});
 
-		float width = StaticAssets.windowWidth;
-		float height = StaticAssets.windowHeight;
-		logo.setHeight((int) (0.4f * height));
-		logo.setWidth((int) (0.6f * width));
+		logo.setHeight((int) (0.4f * assets.windowHeight));
+		logo.setWidth((int) (0.6f * assets.windowWidth));
 		table.setFillParent(true);
 
-		table.add(button[3]).height(0.35f * height).width(0.3f * width)
-				.expand().top().left();
-		table.add(button[2]).height(0.35f * height).width(0.3f * width).top()
-				.right();
+		table.add(button[3]).height(0.35f * assets.windowHeight)
+				.width(0.3f * assets.windowWidth).expand().top().left();
+		table.add(button[2]).height(0.35f * assets.windowHeight)
+				.width(0.3f * assets.windowWidth).top().right();
 		table.row();
-		table.add(button[0]).height(0.35f * height).width(0.3f * width)
-				.bottom().left();
-		table.add(button[1]).height(0.35f * height).width(0.3f * width)
-				.bottom().right();
-		logo.setPosition((int) (0.2f * width), (int) (0.3f * height));
-		background.setSize(width, height);
+		table.add(button[0]).height(0.35f * assets.windowHeight)
+				.width(0.3f * assets.windowWidth).bottom().left();
+		table.add(button[1]).height(0.35f * assets.windowHeight)
+				.width(0.3f * assets.windowWidth).bottom().right();
+		logo.setPosition((int) (0.2f * assets.windowWidth),
+				(int) (0.3f * assets.windowHeight));
+		background.setSize(assets.windowWidth, assets.windowHeight);
 
 		this.addActor(background);
 		this.addActor(logo);

@@ -17,7 +17,6 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PlaceManager;
 import com.mygdx.model.NPC;
-import com.mygdx.state.StaticAssets;
 
 public class SelectButtonStage extends OneLevelStage {
 	@Autowired
@@ -81,15 +80,13 @@ public class SelectButtonStage extends OneLevelStage {
 
 	// assets.windowHeight * 0.185f
 	private void setButtonPosition() {
-		float width = StaticAssets.windowWidth;
-		float height = StaticAssets.windowHeight;
 		final float buttonPosition[][] = {
-				{ width * 0.109375f, height * 0.74f },
-				{ width * 0.109375f, height * 0.555f },
-				{ width * 0.109375f, height * 0.37f },
-				{ width * 0.68f, height * 0.74f },
-				{ width * 0.68f, height * 0.555f },
-				{ width * 0.68f, height * 0.37f } };
+				{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.74f },
+				{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.555f },
+				{ assets.windowWidth * 0.109375f, assets.windowHeight * 0.37f },
+				{ assets.windowWidth * 0.68f, assets.windowHeight * 0.74f },
+				{ assets.windowWidth * 0.68f, assets.windowHeight * 0.555f },
+				{ assets.windowWidth * 0.68f, assets.windowHeight * 0.37f } };
 		for (int i = 0; i < eventCount; i++)
 			chatButtons.get(i).setPosition(buttonPosition[i][0],
 					buttonPosition[i][1]);
@@ -117,9 +114,8 @@ public class SelectButtonStage extends OneLevelStage {
 	}
 
 	private void setSize() {
-		float width = StaticAssets.windowWidth;
-		float height = StaticAssets.windowHeight;
-		final float buttonSize[] = { width * 0.208f, height * 0.185f };
+		final float buttonSize[] = { assets.windowWidth * 0.208f,
+				assets.windowHeight * 0.185f };
 		for (TextButton chatButton : chatButtons)
 			chatButton.setSize(buttonSize[0], buttonSize[1]);
 	}

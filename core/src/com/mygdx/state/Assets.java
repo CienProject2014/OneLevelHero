@@ -10,10 +10,12 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.currentState.RoadInfo;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.JsonParser;
@@ -45,6 +47,9 @@ public class Assets {
 	public float soundVolume = 0.5f;
 	public float musicVolume = 0.5f;
 
+	public float windowWidth;
+	public float windowHeight;
+
 	public Map<String, RoadInfo> dungeonMap;
 
 	public Map<String, JsonStringFile> filePathMap = new HashMap<String, JsonStringFile>();
@@ -70,6 +75,7 @@ public class Assets {
 		// 해상도 설정
 		// 화면의 Size를 별도로 설정해주어야 한다
 
+		loadSize(new Stage());
 		loadFilePath();
 		loadJsonObject();
 		loadResourceFile();
@@ -104,6 +110,14 @@ public class Assets {
 		loadNpcInfo();
 		loadHeroInfo();
 		loadMonsterInfo();
+	}
+
+	// Stage 크기 설정
+	private void loadSize(Stage stage) {
+		Gdx.app.debug("Assets", "loadWindowSize()");
+		Viewport vp = stage.getViewport();
+		windowWidth = vp.getViewportWidth();
+		windowHeight = vp.getViewportHeight();
 	}
 
 	// JsonFile의 path를 읽어온다.

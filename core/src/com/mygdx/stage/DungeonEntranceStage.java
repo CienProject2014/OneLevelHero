@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
@@ -29,7 +30,7 @@ public class DungeonEntranceStage extends OverlapStage {
 	private void makeScene() {
 		// 우선은 blackwood_forest_entrance_scene으로 통일하자
 		sceneLoader.loadScene("blackwood_forest_entrance_scene");
-		cameraManager.setCameraSize(this);
+		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
 	}
 
@@ -42,12 +43,6 @@ public class DungeonEntranceStage extends OverlapStage {
 				"worldmap_button");
 
 		sceneLoader.getRoot().getLabelById("entrance_label")
-				.setTouchable(Touchable.disabled);
-		sceneLoader.getRoot().getLabelById("save_label")
-				.setTouchable(Touchable.disabled);
-		sceneLoader.getRoot().getLabelById("rest_label")
-				.setTouchable(Touchable.disabled);
-		sceneLoader.getRoot().getLabelById("worldmap_label")
 				.setTouchable(Touchable.disabled);
 
 		entranceButton.addListener(new InputListener() {
