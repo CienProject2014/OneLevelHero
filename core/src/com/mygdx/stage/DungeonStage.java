@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
@@ -34,7 +33,7 @@ public class DungeonStage extends BaseOverlapStage {
 	private void makeScene() {
 		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
 		sceneLoader.loadScene("blackwood_forest_dungeon_scene");
-		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
+		cameraManager.setCameraSize(this);
 		addActor(sceneLoader.getRoot());
 	}
 
@@ -106,10 +105,12 @@ public class DungeonStage extends BaseOverlapStage {
 		});
 	}
 
+	@Override
 	public PositionInfo getPositionInfo() {
 		return positionInfo;
 	}
 
+	@Override
 	public void setPositionInfo(PositionInfo positionInfo) {
 		this.positionInfo = positionInfo;
 	}

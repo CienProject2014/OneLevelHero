@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
@@ -28,6 +29,8 @@ public abstract class BaseScreen implements Screen {
 
 	@Autowired
 	protected PositionInfo positionInfo;
+	@Autowired
+	protected MovingInfo movingInfo;
 
 	@Override
 	public void render(float delta) {
@@ -104,5 +107,13 @@ public abstract class BaseScreen implements Screen {
 
 	public void setPositionInfo(PositionInfo positionInfo) {
 		this.positionInfo = positionInfo;
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
 	}
 }
