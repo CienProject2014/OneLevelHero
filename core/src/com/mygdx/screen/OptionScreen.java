@@ -1,12 +1,11 @@
 package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
 import com.mygdx.popup.SoundPopup;
 
 public class OptionScreen extends RootScreen {
@@ -36,59 +35,31 @@ public class OptionScreen extends RootScreen {
 		bonusPointButton = new TextButton("BonusPoint", assets.skin);
 		backButton = new TextButton("Back", assets.skin);
 
-		soundButton.addListener(new InputListener() {
+		soundButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				stage.addActor(new SoundPopup("SoundSetting", stage));
 			}
-		});
+		}));
 
-		savedataButton.addListener(new InputListener() {
+		savedataButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.SAVE);
 			}
-		});
-		bonusPointButton.addListener(new InputListener() {
+		}));
+		bonusPointButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.BONUS_POINT);
 			}
-		});
-		backButton.addListener(new InputListener() {
+		}));
+		backButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.MENU);
 			}
-		});
+		}));
 
 		table.setFillParent(true);
 		table.add(soundButton).expand().width(240).height(240).top().left();

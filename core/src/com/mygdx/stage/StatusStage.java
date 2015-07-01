@@ -5,12 +5,11 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
 import com.mygdx.model.Hero;
 import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -79,20 +78,13 @@ public class StatusStage extends OverlapStage {
 					.getStatusTexture());
 			partyListImage.get(i).setVisible(true);
 			partyListImage.get(i).setTouchable(Touchable.enabled);
-			partyListImage.get(i).addListener(new InputListener() {
+			partyListImage.get(i).addListener(new TouchListener(new Runnable() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					return true;
-				}
-
-				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void run() {
 					partyInfo.setSelectedInedex(index);
 					screenFactory.show(ScreenEnum.STATUS);
 				}
-			});
+			}));
 		}
 
 		heroLargeImage[partyInfo.getSelectedInedex()].setSize(
@@ -102,19 +94,12 @@ public class StatusStage extends OverlapStage {
 		addActor(heroLargeImage[partyInfo.getSelectedInedex()]);
 		closeButton = sceneLoader.getRoot().getCompositeById("close");
 		closeButton.setTouchable(Touchable.enabled);
-		closeButton.addListener(new InputListener() {
+		closeButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.VILLAGE);
 			}
-		});
+		}));
 	}
 
 	private void setCamera() {

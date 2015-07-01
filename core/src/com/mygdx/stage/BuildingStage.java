@@ -5,12 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
 import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.manager.EventManager;
 import com.mygdx.model.Building;
@@ -38,20 +37,13 @@ public class BuildingStage extends OverlapStage {
 	private void setExitButton() {
 		exitButton = new TextButton("나가기", assets.skin);
 		exitButton.center();
-		exitButton.addListener(new InputListener() {
+		exitButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.VILLAGE);
-				event.getListenerActor().setVisible(false);
+				exitButton.setVisible(false);
 			}
-		});
+		}));
 
 		addActor(exitButton);
 	}
@@ -70,20 +62,13 @@ public class BuildingStage extends OverlapStage {
 			CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(
 					npcName);
 			npcButton.setTouchable(Touchable.enabled);
-			npcButton.addListener(new InputListener() {
+			npcButton.addListener(new TouchListener(new Runnable() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					return true;
-				}
-
-				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void run() {
 					eventManager.setEventInfo(assets.npcMap.get(npcName), true);
 					screenFactory.show(ScreenEnum.GREETING);
 				}
-			});
+			}));
 			npcButtonList.add(npcButton);
 		}
 	}

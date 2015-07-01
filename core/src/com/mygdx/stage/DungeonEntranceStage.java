@@ -1,11 +1,10 @@
 package com.mygdx.stage;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
+import com.mygdx.listener.TouchListenerWithLog;
 import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -45,61 +44,35 @@ public class DungeonEntranceStage extends OverlapStage {
 		sceneLoader.getRoot().getLabelById("entrance_label")
 				.setTouchable(Touchable.disabled);
 
-		entranceButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
+		entranceButton.addListener(new TouchListenerWithLog(
+				"DungeonEntranceStage", "던전으로 들어가자!", new Runnable() {
+					@Override
+					public void run() {
+						screenFactory.show(ScreenEnum.DUNGEON);
+					}
+				}));
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.debug("DungeonEntranceStage", "던전으로 들어가자!");
-				screenFactory.show(ScreenEnum.DUNGEON);
-			}
-		});
+		saveButton.addListener(new TouchListenerWithLog("DungeonEntranceStage",
+				"게임이 저장되었다...", new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+					}
+				}));
 
-		saveButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
+		restButton.addListener(new TouchListenerWithLog("DungeonEntranceStage",
+				"잘 쉬었도다...", new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+					}
+				}));
 
+		worldMapButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.debug("DungeonEntranceStage", "게임이 저장되었다...");
-			}
-		});
-
-		restButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.debug("DungeonEntranceStage", "잘 쉬었도다...");
-			}
-		});
-
-		worldMapButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.WORLD_MAP);
 			}
-		});
+		}));
 	}
 }

@@ -7,11 +7,10 @@ import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
 import com.mygdx.manager.WorldMapManager;
 import com.mygdx.model.Connection;
 import com.mygdx.state.StaticAssets;
@@ -29,17 +28,15 @@ public class WorldMapStage extends OverlapStage {
 		initSceneLoader(StaticAssets.rm);
 
 		/*
-		 * MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다.
-		 * SceneVO가 반환되는데, 이것은 CompositeVO를 가지고 있다.
-		 * CompositeVO는 그 Scene이 가지고 있는 Label, Button등을 다 가지고 있다.
+		 * MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다. SceneVO가 반환되는데,
+		 * 이것은 CompositeVO를 가지고 있다. CompositeVO는 그 Scene이 가지고 있는 Label, Button등을
+		 * 다 가지고 있다.
 		 */
 		sceneLoader.loadScene("worldmap_scene");
 		/*
-		 * getRoot()할시, CompositeItem이 반환된다.
-		 * CompositeItem은 Composite들의 집합이다.
-		 * getCompositeById로 하나하나 가져올수 있다.
-		 * 현재 위치 버튼을 가져온다.
-		 * getX로 Image의 위치를 가져올 수 있다.
+		 * getRoot()할시, CompositeItem이 반환된다. CompositeItem은 Composite들의 집합이다.
+		 * getCompositeById로 하나하나 가져올수 있다. 현재 위치 버튼을 가져온다. getX로 Image의 위치를 가져올
+		 * 수 있다.
 		 */
 		currentPosition = sceneLoader.getRoot().getCompositeById("current");
 		currentNode = sceneLoader.getRoot().getImageById(
@@ -58,20 +55,13 @@ public class WorldMapStage extends OverlapStage {
 					connection.getValue().getArrowName());
 			arrow.setVisible(true);
 			arrow.setTouchable(Touchable.enabled);
-			arrow.addListener(new InputListener() {
+			arrow.addListener(new TouchListener(new Runnable() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					return true;
-				}
-
-				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void run() {
 					worldMapManager.selectDestinationNode(connection.getKey());
 					screenFactory.show(ScreenEnum.MOVING);
 				}
-			});
+			}));
 			arrowList.add(arrow);
 		}
 		addActor(sceneLoader.getRoot());

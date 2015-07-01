@@ -1,13 +1,12 @@
 package com.mygdx.stage;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
 import com.mygdx.state.StaticAssets;
 
 public class MenuStage extends OneLevelStage {
@@ -36,58 +35,30 @@ public class MenuStage extends OneLevelStage {
 				assets.atlasUiMap.get("button_extra_before"),
 				assets.atlasUiMap.get("button_extra_after"));
 
-		button[0].addListener(new InputListener() {
+		button[0].addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.LOAD);
 			}
-		});
-		button[1].addListener(new InputListener() {
+		}));
+		button[1].addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.OPTION);
 			}
-		});
-		button[2].addListener(new InputListener() {
+		}));
+		button[2].addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.CREDIT);
 			}
-		});
-		button[3].addListener(new InputListener() {
+		}));
+		button[3].addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.COLLETION);
 			}
-		});
+		}));
 
 		logo.setHeight((int) (0.4f * assets.windowHeight));
 		logo.setWidth((int) (0.6f * assets.windowWidth));

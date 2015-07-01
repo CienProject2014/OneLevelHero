@@ -4,14 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.currentState.MovingInfo;
+import com.mygdx.listener.TouchListener;
 import com.mygdx.manager.MovingManager;
 
 public class MovingScreen extends RootScreen {
@@ -52,33 +51,19 @@ public class MovingScreen extends RootScreen {
 		background = new Image(texture);
 		background.setSize(assets.windowWidth, assets.windowHeight);
 
-		goButton.addListener(new InputListener() {
+		goButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				movingManager.goForward();
 			}
-		});
+		}));
 
-		backButton.addListener(new InputListener() {
+		backButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				movingManager.goBackward();
 			}
-		});
+		}));
 		table.add(movingLabel).top();
 		table.row();
 		table.add(goButton).expand().top().padTop(20);

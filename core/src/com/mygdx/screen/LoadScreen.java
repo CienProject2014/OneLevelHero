@@ -3,14 +3,13 @@ package com.mygdx.screen;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.SaveVersion;
 import com.mygdx.currentState.CurrentState;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
 import com.mygdx.manager.LoadManager;
 
 public class LoadScreen extends RootScreen {
@@ -38,29 +37,15 @@ public class LoadScreen extends RootScreen {
 		Table table = new Table(assets.skin);
 		backButton = new TextButton("Back", assets.skin);
 		newstartButton = new TextButton("NewStart", assets.skin);
-		backButton.addListener(new InputListener() {
+		backButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.MENU);
 			}
-		});
-		newstartButton.addListener(new InputListener() {
+		}));
+		newstartButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				currentState.setVersion(SaveVersion.NEW);
 				loadManager.loadNewGame();
 				// 프롤로그 정보 주입
@@ -68,7 +53,7 @@ public class LoadScreen extends RootScreen {
 						false);
 				screenFactory.show(ScreenEnum.EVENT);
 			}
-		});
+		}));
 
 		table.setFillParent(true);
 		table.add(newstartButton).expand();
