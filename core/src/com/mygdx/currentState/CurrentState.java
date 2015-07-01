@@ -26,15 +26,25 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private TimeInfo timeInfo;
 
-	// (5) 보상 미션 및 이벤트 관리
+	// (5) 보상 미션 및 이벤트, 스토리 분기 관리
 	@Autowired
 	private EventInfo eventInfo;
 	@Autowired
 	private RewardQueueInfo rewardQueueInfo;
+	@Autowired
+	private StoryInfo storyInfo;
 
 	// (6) 사운드 관리
 	@Autowired
 	private MusicInfo musicInfo;
+
+	public StoryInfo getStoryInfo() {
+		return storyInfo;
+	}
+
+	public void setStoryInfo(StoryInfo storyInfo) {
+		this.storyInfo = storyInfo;
+	}
 
 	public SaveVersion getVersion() {
 		return saveVersion;

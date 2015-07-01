@@ -122,11 +122,12 @@ public class GameUiStage extends OneLevelStage {
 				.iterator();
 		while (iterator.hasNext()) {
 			RewardInfo nextIterator = iterator.next();
-			if (nextIterator.getRewardState().equals(RewardStateEnum.ING))
+			if (nextIterator.getRewardState() == RewardStateEnum.ING)
 				alertMessage.add(new AlertMessagePopup("[ 보상 ]", assets.skin)
 						.text(rewardManager.getRewardMessage(nextIterator)));
-			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
-					+ nextIterator.getRewardType());
+			Gdx.app.log("GameUiStage",
+					"리워드정보 - " + nextIterator.getRewardTarget() + ", "
+							+ nextIterator.getRewardType());
 		}
 		// 알림 메시지
 		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", assets.skin,

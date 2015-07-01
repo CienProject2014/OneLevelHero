@@ -6,6 +6,7 @@ import com.mygdx.enums.RewardTypeEnum;
 public class RewardInfo {
 	private RewardTypeEnum rewardType;
 	private String rewardTarget;
+	private String rewardTargetAttribute;
 	private RewardStateEnum rewardState;
 
 	public String getRewardTarget() {
@@ -30,5 +31,13 @@ public class RewardInfo {
 
 	public void setRewardType(RewardTypeEnum rewardType) {
 		this.rewardType = rewardType;
+	}
+
+	public String getRewardTargetAttribute() {
+		return rewardTargetAttribute;
+	}
+
+	public void setRewardTargetAttribute(String rewardTargetAttribute) {
+		this.rewardTargetAttribute = rewardTargetAttribute;
 	}
 }

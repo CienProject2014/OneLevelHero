@@ -50,7 +50,7 @@ public class EventStage extends OneLevelStage {
 		// Greeting인지 아닌지 여부에 따라 처리
 		EventTypeEnum eventType;
 		if (eventInfo.isGreeting())
-			eventType = EventTypeEnum.SELECT;
+			eventType = EventTypeEnum.SELECT_EVENT;
 		else
 			eventType = eventInfo.getEventType();
 		makeEventStage(eventType);
@@ -66,8 +66,11 @@ public class EventStage extends OneLevelStage {
 			case CHAT:
 				makeChatStage();
 				break;
-			case SELECT:
-				makeSelectStage();
+			case SELECT_EVENT:
+				makeSelectEventStage();
+				break;
+			case SELECT_COMPONENT:
+				makeSelectComponentStage();
 				break;
 			case CREDIT:
 				makeCreditStage();
@@ -81,7 +84,7 @@ public class EventStage extends OneLevelStage {
 	private void makeCreditStage() {
 	}
 
-	private void makeSelectStage() {
+	private void makeSelectEventStage() {
 		script.setFontScale(assets.windowWidth / 1280);
 		script.setWrap(true); // 스크립트가 끝에 다다르면 자동 개행
 		script.setSize(assets.windowWidth * 0.781f,
@@ -93,6 +96,21 @@ public class EventStage extends OneLevelStage {
 		characterImage.setPosition(assets.windowWidth * 0.375f,
 				assets.windowHeight * 0.37f);
 		backgroundImage.setSize(assets.windowWidth, assets.windowHeight);
+	}
+
+	private void makeSelectComponentStage() {
+		script.setFontScale(assets.windowWidth / 1280);
+		script.setWrap(true); // 스크립트가 끝에 다다르면 자동 개행
+		script.setSize(assets.windowWidth * 0.781f,
+				assets.windowHeight * 0.185f);
+		script.setPosition(assets.windowWidth * 0.109375f,
+				assets.windowHeight * 0.185f);
+		characterImage.setSize(assets.windowWidth * 0.250f,
+				assets.windowHeight * 0.555f);
+		characterImage.setPosition(assets.windowWidth * 0.375f,
+				assets.windowHeight * 0.37f);
+		backgroundImage.setSize(assets.windowWidth, assets.windowHeight);
+
 	}
 
 	private void makeChatStage() {

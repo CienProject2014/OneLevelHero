@@ -8,6 +8,8 @@ import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.currentState.RewardQueueInfo;
 import com.mygdx.enums.RewardStateEnum;
+import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.state.Assets;
 
 public class RewardManager {
@@ -19,6 +21,8 @@ public class RewardManager {
 	private EventManager eventManager;
 	@Autowired
 	private PartyInfo partyInfo;
+	@Autowired
+	private ScreenFactory screenFactory;
 
 	// (3) 퀘스트 달성 여부 큐
 	// 아직 미구현
@@ -32,7 +36,9 @@ public class RewardManager {
 	}
 
 	public void addEventReward(RewardInfo rewardInfo) {
-		rewardInfo.setRewardState(RewardStateEnum.ING);
+		if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED) {
+			rewardInfo.setRewardState(RewardStateEnum.ING);
+		}
 		getRewardQueue().add(rewardInfo);
 	}
 
@@ -44,7 +50,16 @@ public class RewardManager {
 
 	public void doReward() {
 		if (getRewardQueue().peek() != null) {
-			switch (getRewardQueue().peek().getRewardType()) {
+			RewardInfo peekReward = getRewardQueue().peek();
+
+			switch (peekReward.getRewardType()) {
+				case EVENT:
+					eventManager.setEventInfo(assets.npcMap.get(peekReward
+							.getRewardTarget()), Integer.parseInt(peekReward
+							.getRewardTargetAttribute()));
+					pollRewardQueue();
+					screenFactory.show(ScreenEnum.EVENT);
+					return;
 				case EXPERIENCE:
 					return;
 				case GOLD:

@@ -22,6 +22,11 @@
 		<property name="inventoryInfo" ref="inventoryInfo"/>
 		<property name="positionInfo" ref="positionInfo"/>
 		<property name="movingInfo" ref="movingInfo"/>
+		<property name="timeInfo" ref="timeInfo"/>
+		<property name="eventInfo" ref="eventInfo"/>
+		<property name="rewardQueueInfo" ref="rewardQueueInfo"/>
+		<property name="storyInfo" ref="storyInfo"/>
+		<property name="musicInfo" ref="musicInfo"/>
 	</bean>
 
 	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo"/>
@@ -35,6 +40,7 @@
 	<bean id="roadInfo" class="com.mygdx.currentState.RoadInfo">
 		<property name="assets" ref="assets"/>
 	</bean>
+	<bean id="storyInfo" class="com.mygdx.currentState.StoryInfo"/>
 	<bean id="timeInfo" class="com.mygdx.currentState.TimeInfo"/>
 
 	<bean id="screenFactory" class="com.mygdx.factory.ScreenFactory"/>

@@ -1,6 +1,7 @@
 package com.mygdx.currentState;
 
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.model.Event;
 import com.mygdx.model.NPC;
 
 /**
@@ -12,7 +13,7 @@ import com.mygdx.model.NPC;
 
 public class EventInfo {
 	private NPC npc;
-	private int eventNumber;
+	private Event currentEvent;
 	private boolean greeting;
 
 	public NPC getNpc() {
@@ -21,14 +22,6 @@ public class EventInfo {
 
 	public void setNpc(NPC npc) {
 		this.npc = npc;
-	}
-
-	public int getEventNumber() {
-		return eventNumber;
-	}
-
-	public void setEventNumber(int eventNumber) {
-		this.eventNumber = eventNumber;
 	}
 
 	public boolean isGreeting() {
@@ -40,6 +33,16 @@ public class EventInfo {
 	}
 
 	public EventTypeEnum getEventType() {
-		return npc.getEvents().get(eventNumber).getEventType();
+		if (isGreeting())
+			return EventTypeEnum.SELECT_EVENT;
+		return getCurrentEvent().getEventType();
+	}
+
+	public Event getCurrentEvent() {
+		return currentEvent;
+	}
+
+	public void setCurrentEvent(Event currentEvent) {
+		this.currentEvent = currentEvent;
 	}
 }

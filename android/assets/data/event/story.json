@@ -1,0 +1,44 @@
+{
+  "101": {
+    "quarterName": "Prologue",
+    "eventNpc": {
+      "prologue": "0"
+    },
+    "nextQuarter": {
+      "102": {
+        "conditionType": "select",
+        "target": "yes"
+      }
+    }
+  },
+  "102": {
+    "quarterName": "와이지와의 조우",
+    "eventNpc": {
+      "eventNpc": {
+        "waiji": "와이지와의 조우"
+      },
+      "nextQuarter": {
+        "201": {
+          "conditionType": "move",
+          "target": "redrose_castle"
+        },
+        "301": {
+          "conditionType": "move",
+          "target": "middle_ridge"
+        },
+        "401": {
+          "conditionType": "move",
+          "target": "kadilla_castle"
+        },
+        "501": {
+          "conditionType": "move",
+          "target": "cobweb"
+        },
+        "601": {
+          "condtionType": "move",
+          "target": "winterfall"
+        }
+      }
+    }
+  }
+}

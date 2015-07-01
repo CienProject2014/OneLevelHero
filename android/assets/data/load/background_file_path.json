@@ -34,5 +34,8 @@
   },
    "blackwood_bg_702":{
   	"filePath" : "texture/village/blackwood/blackwood_bg_702.png"
+  },
+  "black_background":{
+  	"filePath" : "texture/prologue/black_background.png"
   }
 }

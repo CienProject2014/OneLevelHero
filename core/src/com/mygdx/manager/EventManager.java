@@ -26,7 +26,7 @@ public class EventManager {
 
 	public Iterator<EventScene> getEventSceneIterator() {
 		NPC npc = eventInfo.getNpc();
-		eventSceneIterator = npc.getEvent(eventInfo.getEventNumber())
+		eventSceneIterator = eventInfo.getCurrentEvent()
 				.getEventSceneIterator();
 
 		// 리워드를 eventRewardQueue에 추가
@@ -36,21 +36,20 @@ public class EventManager {
 	}
 
 	private void addEventRewardQueue(NPC npc) {
-		RewardInfo rewardInfo = npc.getEvent(eventInfo.getEventNumber())
-				.getReward();
+		RewardInfo rewardInfo = eventInfo.getCurrentEvent().getReward();
 		if (rewardInfo != null)
-			if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED)
+			if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED
+					|| rewardInfo.getRewardState() == RewardStateEnum.NO_ISSUE)
 				rewardManager.addEventReward(rewardInfo);
 	}
 
 	public void finishEvent() {
-		eventInfo.getNpc().getEvent(eventInfo.getEventNumber())
-				.setEventState(EventStateEnum.CLEARED);
+		eventInfo.getCurrentEvent().setEventState(EventStateEnum.CLEARED);
 	}
 
 	public void setEventInfo(NPC npc, int eventNumber, boolean isGreeting) {
 		eventInfo.setNpc(npc);
-		eventInfo.setEventNumber(eventNumber);
+		eventInfo.setCurrentEvent(npc.getEvent(eventNumber));
 		eventInfo.setGreeting(isGreeting);
 	}
 
