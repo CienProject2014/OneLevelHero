@@ -1,13 +1,14 @@
 package com.mygdx.event;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 import com.mygdx.event.listener.EventListener;
 import com.mygdx.event.listener.ScreenChangeEventListener;
 
 public class EventManager {
-	private Vector<EventListener> listeners;
-	private Vector<Event> events;
+	private LinkedList<EventListener> listeners;
+	private ArrayList<Event> events;
 
 	public EventManager() {
 		addListener(new ScreenChangeEventListener());
