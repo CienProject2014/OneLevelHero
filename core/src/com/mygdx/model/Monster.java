@@ -2,15 +2,24 @@ package com.mygdx.model;
 
 import com.mygdx.enums.MonsterEnum;
 
-public class Monster extends LivingUnit implements Fightable {
-	private MonsterEnum.TypeEnum type;
+public class Monster extends Unit {
+	private MonsterEnum.SizeType sizeType;
+	private MonsterEnum.ElementType elementType;
 
-	public MonsterEnum.TypeEnum getType() {
-		return type;
+	public MonsterEnum.SizeType getSizeType() {
+		return sizeType;
 	}
 
-	public void setType(MonsterEnum.TypeEnum type) {
-		this.type = type;
+	public void setSizeType(MonsterEnum.SizeType type) {
+		this.sizeType = type;
+	}
+
+	public MonsterEnum.ElementType getElementType() {
+		return elementType;
+	}
+
+	public void setElementType(MonsterEnum.ElementType elementType) {
+		this.elementType = elementType;
 	}
 
 }

@@ -6,8 +6,8 @@ import com.mygdx.battle.Battle;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.enums.TextureEnum;
-import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
+import com.mygdx.model.Unit;
 import com.mygdx.state.StaticAssets;
 
 public class BattleManager {
@@ -21,7 +21,7 @@ public class BattleManager {
 	private Battle battle = new Battle();
 	private Monster monster;
 
-	public void userAttack(LivingUnit unit) {
+	public void userAttack(Unit unit) {
 		monster = movingInfo.getSelectedMonster();
 		// FIXME
 		battle.attack(unit, monster);
@@ -30,7 +30,7 @@ public class BattleManager {
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, x, y);
 	}
 
-	public void userSkill(LivingUnit unit, String skill) {
+	public void userSkill(Unit unit, String skill) {
 		// FIXME
 		battle.skillAttack(unit, skill);
 	}

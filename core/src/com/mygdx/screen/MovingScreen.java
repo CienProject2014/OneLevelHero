@@ -17,7 +17,6 @@ import com.mygdx.state.StaticAssets;
 public class MovingScreen extends BaseScreen {
 	@Autowired
 	private MovingManager movingManager;
-	@Autowired
 	private Stage stage;
 	private TextButton goButton;
 	private TextButton backButton;

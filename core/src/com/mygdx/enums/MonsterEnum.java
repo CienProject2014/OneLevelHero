@@ -22,23 +22,23 @@ public enum MonsterEnum {
 		return null;
 	}
 
-	public enum TypeEnum {
+	public enum SizeType {
 		SMALL("small"), MEDIUM("medium"), LARGE("large");
 
-		private String typeName;
+		private String name;
 		private float factor;
 
-		TypeEnum(String typeName) {
-			this.typeName = typeName;
+		SizeType(String typeName) {
+			this.name = typeName;
 		}
 
 		@Override
 		public String toString() {
-			return typeName;
+			return name;
 		}
 
-		public static TypeEnum findTypeEnum(String jsonName) {
-			for (TypeEnum typeEnum : TypeEnum.values())
+		public static SizeType findTypeEnum(String jsonName) {
+			for (SizeType typeEnum : SizeType.values())
 				if (typeEnum.toString().equals(jsonName))
 					return typeEnum;
 
@@ -46,4 +46,26 @@ public enum MonsterEnum {
 		}
 	}
 
+	public enum ElementType {
+		FIRE("fire"), WATER("water"), EARTH("earth");
+
+		private String name;
+
+		ElementType(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String toString() {
+			return name;
+		}
+
+		public static ElementType findTypeEnum(String jsonName) {
+			for (ElementType type : ElementType.values())
+				if (type.toString().equals(jsonName))
+					return type;
+
+			return null;
+		}
+	}
 }

@@ -15,7 +15,10 @@ public class StatusBarUi extends ProgressBar {
 				ProgressBarStyle.class));
 		Gdx.app.debug("StatusBarUi", "Called");
 		this.name = name;
+		ProgressBarStyle pbs = barsStyle(this.name);
+		pbs.knobBefore = pbs.knob;
 		setStyle(barsStyle(this.name));
+
 	}
 
 	public ProgressBarStyle barsStyle(String barStyle) {

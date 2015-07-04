@@ -10,28 +10,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mygdx.enums.ScreenEnum;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.model.Hero;
-import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
+import com.mygdx.model.Unit;
 import com.mygdx.state.StaticAssets;
-import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
-public class BattleStage extends BaseOverlapStage {
+public class BattleStage extends BaseOneLevelStage {
 	// Table
 	private Stack tableStack; // 전체 테이블을 포함하는 테이블 스택
 	private Table uiTable; // 화면 전체 테이블
 	private Table orderTable; // 순서를 나타내는 테이블
 	private Table gridTable; // grid 테이블
 	private Table tileTable;
+	private Table tempTable;
 
 	// Grid Tabler관련
 	private boolean gridFlag;
@@ -55,18 +57,15 @@ public class BattleStage extends BaseOverlapStage {
 	private float uiButtonHeight;
 
 	// Button
-	private SimpleButtonScript attackButton;
-	private SimpleButtonScript skillButton;
-	private SimpleButtonScript inventoryButton;
-	private SimpleButtonScript escapeButton;
+	private ImageButton tempButton;
 
 	@Autowired
 	private BattleManager battleManager;
 	private Monster monster;
 
 	// Unit array
-	private ArrayList<LivingUnit> units;
-	private Queue<LivingUnit> orderedUnits;
+	private ArrayList<Unit> units;
+	private Queue<Unit> orderedUnits;
 
 	// Orthographic Camera
 	private OrthographicCamera cam;
@@ -79,7 +78,7 @@ public class BattleStage extends BaseOverlapStage {
 		if (gridFlag) {
 
 		} else if (monsterTrigger) {
-			LivingUnit actor = getCurrentActor();
+			Unit actor = getCurrentActor();
 			if (!(actor instanceof Monster)) {
 				// 일어날 수 없는 시나리오
 				// 몬스터의 턴이 아니라면 monsterTrigger가 true여서는 안된다.
@@ -211,8 +210,6 @@ public class BattleStage extends BaseOverlapStage {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		Gdx.app.log("BattleStage", "down (" + screenX + ", " + screenY + ")");
-
 		if (gridFlag && isInsideHitbox(screenX, screenY)) {
 			showTileWhereClicked(screenX, screenY);
 		}
@@ -221,7 +218,6 @@ public class BattleStage extends BaseOverlapStage {
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		Gdx.app.log("BattleStage", "drag (" + screenX + ", " + screenY + ")");
 		if (gridFlag) {
 			showTileWhereMoved(screenX, screenY);
 			// TODO clickedTileRow와 Column을 이용해서, 시작점부터 끝점까지 지나는 타일들을 배열로
@@ -232,12 +228,10 @@ public class BattleStage extends BaseOverlapStage {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		Gdx.app.log("BattleStage", "up (" + screenX + ", " + screenY + ")");
-
 		if (gridFlag && isInsideHitbox(screenX, screenY)) {
 			Gdx.app.log("BattleStage", "어택!");
 
-			LivingUnit actor = getCurrentActor();
+			Unit actor = getCurrentActor();
 
 			if (!(actor instanceof Hero)) {
 				// 일어날 수 없는 시나리오
@@ -264,14 +258,14 @@ public class BattleStage extends BaseOverlapStage {
 		Gdx.app.debug("BattleStage", "Constructor() call");
 	}
 
-	private LivingUnit getCurrentActor() {
-		LivingUnit unit = orderedUnits.poll();
+	private Unit getCurrentActor() {
+		Unit unit = orderedUnits.poll();
 		orderedUnits.add(unit);
 		return unit;
 	}
 
-	private LivingUnit whoIsNextActor() {
-		LivingUnit unit = orderedUnits.peek();
+	private Unit whoIsNextActor() {
+		Unit unit = orderedUnits.peek();
 		return unit;
 	}
 
@@ -304,27 +298,13 @@ public class BattleStage extends BaseOverlapStage {
 	public Stage makeStage() {
 		Gdx.app.debug("BattleStage", "makeStage(Rm rm)");
 
-		initSceneLoader(StaticAssets.rm);
-
-		// TODO Desktop의 해상도를 1920, 1080 이외로 바꿀 시 코멘트 해제
-		/*
-		 * cam = new OrthographicCamera(1920f, 1080f); cam.position.set(1920 /
-		 * 2.0f, 1080 / 2.0f, 0); getViewport().setCamera(cam);
-		 */
-
 		resolutionWork();
 
 		monster = movingInfo.getSelectedMonster();
 
 		tileWork();
 
-		// Overlap2D로 만든 신(Scene)
-		sceneLoader.loadScene("battle_ui_scene");
-		addActor(sceneLoader.getRoot());
-
-		setButton();
-
-		makeOrderedList();
+		makeFirstOrder();
 
 		makeAllTable();
 
@@ -336,18 +316,24 @@ public class BattleStage extends BaseOverlapStage {
 	/**
 	 * 전투 참여 유닛들의 순서를 결정
 	 */
-	private void makeOrderedList() {
-		units = new ArrayList<LivingUnit>(4);
+	private void makeFirstOrder() {
+		units = new ArrayList<Unit>(4);
 		units.addAll(partyInfo.getPartyList());
 		units.add(monster);
 
+		// 행동게이지 초기화
+		for (Unit unit : units) {
+			unit.setGauge(100);
+		}
+
+		// 속도에 따라 정렬
 		Collections.sort(units);
 
-		orderedUnits = new LinkedList<LivingUnit>(units);
+		orderedUnits = new LinkedList<Unit>(units);
+	}
 
-		for (LivingUnit unit : units) {
-			Gdx.app.log("BattleStage", "유닛이름: " + unit.getName());
-		}
+	private void makeOrder() {
+		Collections.sort(units);
 	}
 
 	private void makeGridTable() {
@@ -392,19 +378,38 @@ public class BattleStage extends BaseOverlapStage {
 		uiTable.setY(uiButtonHeight);
 	}
 
+	private void makeTempTable() {
+		tempTable = new Table();
+		tempButton = new ImageButton(new SpriteDrawable(new Sprite(
+				getTempTexture(), 50, 50)));
+
+		tempTable.setFillParent(true);
+
+		tempTable.align(Align.right);
+		tempTable.add(tempButton);
+	}
+
+	private Texture getTempTexture() {
+		return new Texture(Gdx.files.internal("texture/battle/grass.png"));
+	}
+
 	private void makeTableStack() {
 		tableStack = new Stack();
 		tableStack.setFillParent(true);
 		tableStack.add(uiTable);
 		tableStack.add(tileTable);
 		tableStack.add(gridTable);
+		tableStack.add(tempTable);
 	}
 
 	private void makeAllTable() {
 		makeUiTable();
 		makeGridTable();
 		makeTileTable();
+		makeTempTable();
 		makeTableStack();
+
+		addListener();
 
 		this.addActor(tableStack);
 	}
@@ -413,8 +418,9 @@ public class BattleStage extends BaseOverlapStage {
 		uiTable.clear();
 		orderTable.clear();
 
-		for (LivingUnit unit : orderedUnits) {
-			Gdx.app.log("Unit name", unit.getName());
+		makeOrder();
+
+		for (Unit unit : orderedUnits) {
 			orderTable.add(new Image(unit.getBattleTexture()))
 					.width(uiButtonWidth).height(uiButtonHeight);
 			orderTable.row();
@@ -424,7 +430,6 @@ public class BattleStage extends BaseOverlapStage {
 	}
 
 	public void showGrid() {
-		Gdx.app.log("BattleStage", "Grid 출력");
 		gridTable.setVisible(true);
 		gridFlag = true;
 	}
@@ -434,21 +439,8 @@ public class BattleStage extends BaseOverlapStage {
 		gridFlag = false;
 	}
 
-	private void setButton() {
-		attackButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
-				.getCompositeById("attackButton"));
-		skillButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
-				.getCompositeById("skillButton"));
-		inventoryButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
-				.getCompositeById("inventoryButton"));
-		escapeButton = SimpleButtonScript.selfInit(sceneLoader.getRoot()
-				.getCompositeById("escapeButton"));
-
-		addListener();
-	}
-
 	private void addListener() {
-		attackButton.addListener(new ClickListener() {
+		tempButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				if (!gridFlag) {
@@ -456,31 +448,10 @@ public class BattleStage extends BaseOverlapStage {
 				} else {
 
 				}
+
 			}
 		});
 
-		skillButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				Gdx.app.log("BattleStage", "스킬!");
-				hideGrid();
-			}
-		});
-
-		inventoryButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				Gdx.app.log("BattleStage", "인벤토리!");
-			}
-		});
-
-		escapeButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				Gdx.app.log("BattleStage", "도망!");
-				screenFactory.show(ScreenEnum.MOVING);
-			}
-		});
 	}
 
 	private Image getGridImage() {

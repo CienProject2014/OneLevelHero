@@ -32,8 +32,8 @@ public class StaticAssets {
 					Gdx.files.internal("texture/bgcolour.png")), 50, 50));
 	public static ProgressBarStyle barstyle_hp = new ProgressBarStyle(
 			bartexture_bg, new TextureRegionDrawable(new TextureRegion(
-					new Texture(Gdx.files.internal("texture/hpcolour.png")),
-					50, 50)));
+					new Texture(Gdx.files.internal("texture/hpcolour.png")), 0,
+					50)));
 	public static ProgressBarStyle barstyle_exp = new ProgressBarStyle(
 			bartexture_bg, new TextureRegionDrawable(new TextureRegion(
 					new Texture(Gdx.files.internal("texture/expcolour.png")),

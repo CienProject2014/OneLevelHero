@@ -9,8 +9,8 @@ public class TestLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		// 나중에 수정 요망
 		config.title = "One Level Hero";
-		config.width = 1920;
-		config.height = 1080;
+		config.width = 1280;
+		config.height = 720;
 		new LwjglApplication(new OneLevelTest(), config);
 	}
 }
