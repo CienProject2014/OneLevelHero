@@ -1,7 +1,7 @@
 {
   "Mawang": {
 	"name": "Mawang",
-	"type": "medium",
+	"sizeType": "medium",
 	"elementType": "fire",
 	"status": {
       "atk": 25,
@@ -22,7 +22,7 @@
   },
   "assassin girl": {
     "name": "assassin girl",
-	"type": "small",
+	"sizeType": "small",
 	"elementType": "fire",
     "status": {
       "atk": 25,
@@ -43,7 +43,7 @@
   },
   "Monster2": {
     "name": "Monster2",
-	"type": "small",
+	"sizeType": "small",
 	"elementType": "water",
     "status": {
       "atk": 10,
@@ -64,7 +64,7 @@
   },
   "Monster3": {
     "name": "Monster3",
-	"type": "medium",
+	"sizeType": "medium",
 	"elementType": "earth",
     "status": {
       "atk": 10,
@@ -85,7 +85,8 @@
   },
   "b2": {
     "name": "b2",
-	"type": "large",
+	"sizeType": "large",
+	"elementType": "earth",
     "status": {
       "atk": 10,
 	  "matk": 10,
