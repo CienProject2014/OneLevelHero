@@ -5,14 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.mygdx.battle.Battle;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
+import com.mygdx.enums.TextureEnum;
 import com.mygdx.model.LivingUnit;
 import com.mygdx.model.Monster;
+import com.mygdx.state.StaticAssets;
 
 public class BattleManager {
 	@Autowired
 	private MovingInfo movingInfo;
 	@Autowired
 	private PartyInfo partyInfo;
+
+	private AnimationManager animationManager;
 
 	private Battle battle = new Battle();
 	private Monster monster;
@@ -21,6 +25,9 @@ public class BattleManager {
 		monster = movingInfo.getSelectedMonster();
 		// FIXME
 		battle.attack(unit, monster);
+		int x = (int) (StaticAssets.windowWidth / 2);
+		int y = (int) (StaticAssets.windowHeight / 2);
+		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, x, y);
 	}
 
 	public void userSkill(LivingUnit unit, String skill) {
@@ -35,6 +42,9 @@ public class BattleManager {
 	public void monsterAttack() {
 		// FIXME
 		battle.attack(monster, partyInfo.pickRandomHero());
+		int x = (int) (StaticAssets.windowWidth / 2);
+		int y = (int) (StaticAssets.windowHeight / 8);
+		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING, x, y);
 	}
 
 	public void nextTurn() {
@@ -56,4 +66,13 @@ public class BattleManager {
 	public void setPartyInfo(PartyInfo partyInfo) {
 		this.partyInfo = partyInfo;
 	}
+
+	public AnimationManager getAnimationManager() {
+		return animationManager;
+	}
+
+	public void setAnimationManager(AnimationManager animationManager) {
+		this.animationManager = animationManager;
+	}
+
 }

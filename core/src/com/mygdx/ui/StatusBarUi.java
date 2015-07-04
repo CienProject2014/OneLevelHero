@@ -20,14 +20,14 @@ public class StatusBarUi extends ProgressBar {
 
 	public ProgressBarStyle barsStyle(String barStyle) {
 		switch (barStyle) {
-			case "hp":
-				return StaticAssets.barstyle_hp;
-			case "exp":
-				return StaticAssets.barstyle_exp;
-			case "turn":
-				return StaticAssets.barstyle_turn;
-			default:
-				return StaticAssets.barstyle_hp;
+		case "hp":
+			return StaticAssets.barstyle_hp;
+		case "exp":
+			return StaticAssets.barstyle_exp;
+		case "turn":
+			return StaticAssets.barstyle_turn;
+		default:
+			return StaticAssets.barstyle_hp;
 		}
 	}
 }
