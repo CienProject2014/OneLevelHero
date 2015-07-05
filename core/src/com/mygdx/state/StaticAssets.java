@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -26,27 +28,25 @@ public class StaticAssets {
 	public static Map<String, Texture> monsterTextureMap = new HashMap<String, Texture>();
 	public static Map<String, Texture> backgroundTextureMap = new HashMap<String, Texture>();
 	public static Map<String, FrameSheet> animationSheetMap = new HashMap<String, FrameSheet>();
+	public static Map<String, Texture> battleUiTextureMap = new HashMap<String, Texture>();
 
 	public static TextureRegionDrawable bartexture_bg = new TextureRegionDrawable(
 			new TextureRegion(new Texture(
-					Gdx.files.internal("texture/bgcolour.png")), 50, 50));
+					Gdx.files.internal("texture/bgcolour.png")), 50, 22));
 	public static ProgressBarStyle barstyle_hp = new ProgressBarStyle(
 			bartexture_bg, new TextureRegionDrawable(new TextureRegion(
 					new Texture(Gdx.files.internal("texture/hpcolour.png")), 0,
-					50)));
-	public static ProgressBarStyle barstyle_exp = new ProgressBarStyle(
-			bartexture_bg, new TextureRegionDrawable(new TextureRegion(
-					new Texture(Gdx.files.internal("texture/expcolour.png")),
-					50, 50)));
+					22)));
 	public static ProgressBarStyle barstyle_turn = new ProgressBarStyle(
 			bartexture_bg, new TextureRegionDrawable(new TextureRegion(
 					new Texture(Gdx.files.internal("texture/turncolour.png")),
-					50, 50)));
+					0, 22)));
 
 	public static TextureAtlas items = new TextureAtlas(
 			"texture/items/items.pack");
 	public static float windowWidth;
 	public static float windowHeight;
+	public static float resolutionFactor; // (기준해상도/현재해상도)
 
 	public static ResourceManager rm = new ResourceManager();
 
@@ -63,6 +63,7 @@ public class StaticAssets {
 		Viewport vp = stage.getViewport();
 		windowWidth = vp.getViewportWidth();
 		windowHeight = vp.getViewportHeight();
+		resolutionFactor = 1920f / windowWidth;
 	}
 
 	public static void loadTexture() {
@@ -95,18 +96,36 @@ public class StaticAssets {
 					.put(entry.getKey(), entry.getValue().getFile());
 		}
 
-		try {
-			animationSheetMap = JsonParser.parseMap(
-					FrameSheet.class,
-					filePathMap.get(
-							JsonEnum.ANIMATION_SHEET_FILE_PATH.toString())
-							.getFile());
+		animationSheetMap = JsonParser.parseMap(FrameSheet.class, filePathMap
+				.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).getFile());
 
-			for (Entry<String, FrameSheet> entry : animationSheetMap.entrySet()) {
-				entry.getValue().loadTexture();
+		for (Entry<String, FrameSheet> entry : animationSheetMap.entrySet()) {
+			entry.getValue().loadTexture();
+		}
+
+		// FIXME 실험적으로 사용한 코드
+		Map<String, TextureFile> battleUiFileMap = new HashMap<String, TextureFile>();
+
+		FileHandle fh;
+		FileHandle[] fhs;
+
+		if (Gdx.app.getType() == ApplicationType.Android) {
+			fh = Gdx.files.internal("texture/battle");
+		} else {
+			// ApplicationType.Desktop ..
+			fh = Gdx.files.internal("./bin/texture/battle");
+		}
+
+		if (fh.isDirectory()) {
+			fhs = fh.list();
+
+			for (int i = 0; i < fhs.length; i++) {
+				Gdx.app.log("StaticAssets", fhs[i].name());
+				battleUiTextureMap.put(fhs[i].nameWithoutExtension(),
+						new Texture(fhs[i].path()));
 			}
-		} catch (NullPointerException e) {
-			Gdx.app.log("StaticAssets", "AnimationSheet 로딩 오류");
+		} else {
+			fhs = null;
 		}
 
 	}

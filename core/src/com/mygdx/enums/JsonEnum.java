@@ -9,7 +9,8 @@ public enum JsonEnum {
 			"null_json"), MONSTER_FILE_PATH("monster_file_path"), MUSIC_FILE_PATH(
 			"music_file_path"), WORLD_NODE_MUSIC_LIST("world_node_music_list"), BATTLE_MUSIC_LIST(
 			"battle_music_list"), MOVING_MUSIC_LIST("moving_music_list"), ANIMATION_SHEET_FILE_PATH(
-			"animation_sheet_file_path");
+			"animation_sheet_file_path"), BATTLE_UI_FILE_PATH(
+			"battle_ui_file_path");
 
 	private String jsonName;
 

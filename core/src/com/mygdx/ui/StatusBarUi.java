@@ -14,6 +14,7 @@ public class StatusBarUi extends ProgressBar {
 				+ (vertical ? "vertical" : "horizontal"),
 				ProgressBarStyle.class));
 		Gdx.app.debug("StatusBarUi", "Called");
+
 		this.name = name;
 		ProgressBarStyle pbs = barsStyle(this.name);
 		pbs.knobBefore = pbs.knob;
@@ -25,9 +26,7 @@ public class StatusBarUi extends ProgressBar {
 		switch (barStyle) {
 		case "hp":
 			return StaticAssets.barstyle_hp;
-		case "exp":
-			return StaticAssets.barstyle_exp;
-		case "turn":
+		case "gauge":
 			return StaticAssets.barstyle_turn;
 		default:
 			return StaticAssets.barstyle_hp;
