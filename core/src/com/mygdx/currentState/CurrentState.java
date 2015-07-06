@@ -30,13 +30,29 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private EventInfo eventInfo;
 	@Autowired
-	private RewardQueueInfo rewardQueueInfo;
+	private RewardInfo rewardInfo;
 	@Autowired
 	private StoryInfo storyInfo;
 
 	// (6) 사운드 관리
 	@Autowired
 	private MusicInfo musicInfo;
+
+	public EventInfo getEventInfo() {
+		return eventInfo;
+	}
+
+	public void setEventInfo(EventInfo eventInfo) {
+		this.eventInfo = eventInfo;
+	}
+
+	public RewardInfo getRewardInfo() {
+		return rewardInfo;
+	}
+
+	public void setRewardInfo(RewardInfo rewardInfo) {
+		this.rewardInfo = rewardInfo;
+	}
 
 	public StoryInfo getStoryInfo() {
 		return storyInfo;
@@ -72,22 +88,6 @@ public class CurrentState implements Serializable {
 
 	public void setInventoryInfo(InventoryInfo inventoryInfo) {
 		this.inventoryInfo = inventoryInfo;
-	}
-
-	public EventInfo getEventInfo() {
-		return eventInfo;
-	}
-
-	public void setEventInfo(EventInfo eventInfo) {
-		this.eventInfo = eventInfo;
-	}
-
-	public RewardQueueInfo getRewardQueueInfo() {
-		return rewardQueueInfo;
-	}
-
-	public void setRewardQueueInfo(RewardQueueInfo rewardQueueInfo) {
-		this.rewardQueueInfo = rewardQueueInfo;
 	}
 
 	public MusicInfo getMusicInfo() {

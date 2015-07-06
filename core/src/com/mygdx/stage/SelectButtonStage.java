@@ -13,12 +13,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PlaceManager;
 import com.mygdx.manager.RewardManager;
+import com.mygdx.model.EventPack;
 import com.mygdx.model.NPC;
 
 public class SelectButtonStage extends OneLevelStage {
@@ -29,7 +29,7 @@ public class SelectButtonStage extends OneLevelStage {
 	@Autowired
 	private RewardManager rewardManager;
 	@Autowired
-	protected EventInfo eventInfo;
+	protected EventPack eventInfo;
 
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
@@ -52,7 +52,8 @@ public class SelectButtonStage extends OneLevelStage {
 				chatButtons.get(i).addListener(new ClickListener() {
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
-						eventManager.setEventInfo(eventInfo.getNpc(), 0, false);
+						eventManager.setEventPack(eventInfo.getCurrentNpc(), 0,
+								false);
 						screenFactory.show(ScreenEnum.EVENT);
 					};
 				});
@@ -75,7 +76,7 @@ public class SelectButtonStage extends OneLevelStage {
 
 	public Stage makeStage() {
 
-		eventNpc = eventInfo.getNpc();
+		eventNpc = eventInfo.getCurrentNpc();
 		eventCount = eventNpc.getEventCount();
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
 		chatStyles = new ArrayList<TextButtonStyle>();
@@ -190,11 +191,11 @@ public class SelectButtonStage extends OneLevelStage {
 		this.placeManager = placeManager;
 	}
 
-	public EventInfo getEventInfo() {
+	public EventPack getEventInfo() {
 		return eventInfo;
 	}
 
-	public void setEventInfo(EventInfo eventInfo) {
+	public void setEventInfo(EventPack eventInfo) {
 		this.eventInfo = eventInfo;
 	}
 }

@@ -1,43 +1,29 @@
 package com.mygdx.currentState;
 
-import com.mygdx.enums.RewardStateEnum;
-import com.mygdx.enums.RewardTypeEnum;
+import java.util.LinkedList;
+import java.util.Queue;
+
+import com.mygdx.model.RewardPack;
 
 public class RewardInfo {
-	private RewardTypeEnum rewardType;
-	private String rewardTarget;
-	private String rewardTargetAttribute;
-	private RewardStateEnum rewardState;
+	// 보상 달성 여부 큐
+	private Queue<RewardPack> rewardQueue = new LinkedList<RewardPack>();
+	// 이미 달성한 보상 큐
+	private Queue<RewardPack> achievedRewardQueue = new LinkedList<RewardPack>();
 
-	public String getRewardTarget() {
-		return rewardTarget;
+	public Queue<RewardPack> getRewardQueue() {
+		return rewardQueue;
 	}
 
-	public void setRewardTarget(String rewardTarget) {
-		this.rewardTarget = rewardTarget;
+	public void setRewardQueue(Queue<RewardPack> rewardQueue) {
+		this.rewardQueue = rewardQueue;
 	}
 
-	public RewardStateEnum getRewardState() {
-		return rewardState;
+	public Queue<RewardPack> getAchievedRewardQueue() {
+		return achievedRewardQueue;
 	}
 
-	public void setRewardState(RewardStateEnum rewardState) {
-		this.rewardState = rewardState;
-	}
-
-	public RewardTypeEnum getRewardType() {
-		return rewardType;
-	}
-
-	public void setRewardType(RewardTypeEnum rewardType) {
-		this.rewardType = rewardType;
-	}
-
-	public String getRewardTargetAttribute() {
-		return rewardTargetAttribute;
-	}
-
-	public void setRewardTargetAttribute(String rewardTargetAttribute) {
-		this.rewardTargetAttribute = rewardTargetAttribute;
+	public void setAchievedRewardQueue(Queue<RewardPack> achievedRewardQueue) {
+		this.achievedRewardQueue = achievedRewardQueue;
 	}
 }

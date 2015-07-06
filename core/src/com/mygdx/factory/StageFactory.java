@@ -1,5 +1,7 @@
 package com.mygdx.factory;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -63,7 +65,7 @@ public class StageFactory {
 		return context.getBean(BattleStage.class).makeStage();
 	}
 
-	public Stage makeEventStage(EventScene eventScene) {
-		return context.getBean(EventStage.class).makeStage(eventScene);
+	public Stage makeEventStage(Iterator<EventScene> eventSceneIterator) {
+		return context.getBean(EventStage.class).makeStage(eventSceneIterator);
 	}
 }

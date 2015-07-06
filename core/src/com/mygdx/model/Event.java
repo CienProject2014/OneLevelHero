@@ -3,7 +3,6 @@ package com.mygdx.model;
 import java.util.Iterator;
 import java.util.List;
 
-import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 
@@ -11,7 +10,7 @@ public class Event {
 	private String eventName;
 	private EventTypeEnum eventType;
 	private EventStateEnum eventState;
-	private RewardInfo reward;
+	private RewardPack reward;
 	private List<EventScene> eventScenes;
 	private List<String> eventComponent;
 
@@ -23,11 +22,11 @@ public class Event {
 		this.eventType = eventType;
 	}
 
-	public RewardInfo getReward() {
+	public RewardPack getReward() {
 		return reward;
 	}
 
-	public void setReward(RewardInfo reward) {
+	public void setReward(RewardPack reward) {
 		this.reward = reward;
 	}
 

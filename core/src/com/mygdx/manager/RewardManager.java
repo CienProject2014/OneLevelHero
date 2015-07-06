@@ -6,17 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.RewardInfo;
-import com.mygdx.currentState.RewardQueueInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.model.RewardPack;
 import com.mygdx.state.Assets;
 
 public class RewardManager {
 	@Autowired
 	private Assets assets;
 	@Autowired
-	private RewardQueueInfo rewardQueueInfo;
+	private RewardInfo rewardInfo;
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -24,18 +24,26 @@ public class RewardManager {
 	@Autowired
 	private ScreenFactory screenFactory;
 
+	public ScreenFactory getScreenFactory() {
+		return screenFactory;
+	}
+
+	public void setScreenFactory(ScreenFactory screenFactory) {
+		this.screenFactory = screenFactory;
+	}
+
 	// (3) 퀘스트 달성 여부 큐
 	// 아직 미구현
 
-	public Queue<RewardInfo> getRewardQueue() {
-		return rewardQueueInfo.getRewardQueue();
+	public Queue<RewardPack> getRewardQueue() {
+		return rewardInfo.getRewardQueue();
 	}
 
-	public Queue<RewardInfo> getAchievedRewardQueue() {
-		return rewardQueueInfo.getAchievedRewardQueue();
+	public Queue<RewardPack> getAchievedRewardQueue() {
+		return rewardInfo.getAchievedRewardQueue();
 	}
 
-	public void addEventReward(RewardInfo rewardInfo) {
+	public void addEventReward(RewardPack rewardInfo) {
 		if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED) {
 			rewardInfo.setRewardState(RewardStateEnum.ING);
 		}
@@ -50,11 +58,11 @@ public class RewardManager {
 
 	public void doReward() {
 		if (getRewardQueue().peek() != null) {
-			RewardInfo peekReward = getRewardQueue().peek();
+			RewardPack peekReward = getRewardQueue().peek();
 
 			switch (peekReward.getRewardType()) {
 				case EVENT:
-					eventManager.setEventInfo(assets.npcMap.get(peekReward
+					eventManager.setEventPack(assets.npcMap.get(peekReward
 							.getRewardTarget()), Integer.parseInt(peekReward
 							.getRewardTargetAttribute()));
 					pollRewardQueue();
@@ -78,7 +86,7 @@ public class RewardManager {
 		}
 	}
 
-	public String getRewardMessage(RewardInfo rewardInfo) {
+	public String getRewardMessage(RewardPack rewardInfo) {
 		switch (rewardInfo.getRewardType()) {
 			case EXPERIENCE:
 				return rewardInfo.getRewardTarget() + "의 경험치를 획득했습니다.";
@@ -103,14 +111,6 @@ public class RewardManager {
 		this.assets = assets;
 	}
 
-	public RewardQueueInfo getRewardQueueInfo() {
-		return rewardQueueInfo;
-	}
-
-	public void setRewardQueueInfo(RewardQueueInfo rewardQueueInfo) {
-		this.rewardQueueInfo = rewardQueueInfo;
-	}
-
 	public EventManager getEventManager() {
 		return eventManager;
 	}
@@ -125,5 +125,13 @@ public class RewardManager {
 
 	public void setPartyInfo(PartyInfo partyInfo) {
 		this.partyInfo = partyInfo;
+	}
+
+	public RewardInfo getRewardInfo() {
+		return rewardInfo;
+	}
+
+	public void setRewardInfo(RewardInfo rewardInfo) {
+		this.rewardInfo = rewardInfo;
 	}
 }

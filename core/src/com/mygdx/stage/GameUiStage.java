@@ -17,13 +17,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
-import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryPopup;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.model.Hero;
+import com.mygdx.model.RewardPack;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
@@ -118,10 +118,10 @@ public class GameUiStage extends OneLevelStage {
 				assets.skin);
 
 		// 보상 이벤트 처리
-		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
+		Iterator<RewardPack> iterator = rewardManager.getRewardQueue()
 				.iterator();
 		while (iterator.hasNext()) {
-			RewardInfo nextIterator = iterator.next();
+			RewardPack nextIterator = iterator.next();
 			if (nextIterator.getRewardState() == RewardStateEnum.ING)
 				alertMessage.add(new AlertMessagePopup("[ 보상 ]", assets.skin)
 						.text(rewardManager.getRewardMessage(nextIterator)));

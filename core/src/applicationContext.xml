@@ -24,7 +24,7 @@
 		<property name="movingInfo" ref="movingInfo"/>
 		<property name="timeInfo" ref="timeInfo"/>
 		<property name="eventInfo" ref="eventInfo"/>
-		<property name="rewardQueueInfo" ref="rewardQueueInfo"/>
+		<property name="rewardInfo" ref="rewardInfo"/>
 		<property name="storyInfo" ref="storyInfo"/>
 		<property name="musicInfo" ref="musicInfo"/>
 	</bean>
@@ -36,7 +36,6 @@
 	<bean id="partyInfo" class="com.mygdx.currentState.PartyInfo"/>
 	<bean id="positionInfo" class="com.mygdx.currentState.PositionInfo"/>
 	<bean id="rewardInfo" class="com.mygdx.currentState.RewardInfo"/>
-	<bean id="rewardQueueInfo" class="com.mygdx.currentState.RewardQueueInfo"/>
 	<bean id="roadInfo" class="com.mygdx.currentState.RoadInfo">
 		<property name="assets" ref="assets"/>
 	</bean>
@@ -59,6 +58,7 @@
 	<bean id="eventManager" class="com.mygdx.manager.EventManager">
 		<property name="eventInfo" ref="eventInfo"/>
 		<property name="rewardManager" ref="rewardManager"/>
+		<property name="stageFactory" ref="stageFactory"/>
 	</bean>
 	<bean id="loadManager" class="com.mygdx.manager.LoadManager">
 		<property name="assets" ref="assets"/>
@@ -99,9 +99,10 @@
 	<bean id="platformResourceManager" class="com.mygdx.manager.PlatformResourceManager"/>
 	<bean id="rewardManager" class="com.mygdx.manager.RewardManager">
 		<property name="assets" ref="assets"/>
-		<property name="rewardQueueInfo" ref="rewardQueueInfo"/>
+		<property name="rewardInfo" ref="rewardInfo"/>
 		<property name="eventManager" ref="eventManager"/>
 		<property name="partyInfo" ref="partyInfo"/>
+		<property name="screenFactory" ref="screenFactory"/>
 	</bean>
 	<bean id="saveManager" class="com.mygdx.manager.SaveManager"/>
 	<bean id="scenarioManager" class="com.mygdx.manager.ScenarioManager"/>
@@ -133,6 +134,7 @@
 	<bean id="endingScreen" class="com.mygdx.screen.EndingScreen" scope="prototype"/>
 	<bean id="eventScreen" class="com.mygdx.screen.EventScreen" scope="prototype">
 		<property name="rewardManager" ref="rewardManager"/>
+		<property name="eventInfo" ref="eventInfo"></property>
 	</bean>
 	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen" scope="prototype">
 		<property name="eventInfo" ref="eventInfo"/>

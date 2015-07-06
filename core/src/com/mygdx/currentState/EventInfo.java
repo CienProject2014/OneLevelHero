@@ -1,48 +1,29 @@
 package com.mygdx.currentState;
 
-import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.model.Event;
-import com.mygdx.model.NPC;
+import java.util.LinkedList;
+import java.util.Queue;
 
-/**
- * npc정보, eventNumber, greeting여부 정보를 갖고있음
- *
- * @author Velmont
- *
- */
+import com.mygdx.model.EventPack;
 
 public class EventInfo {
-	private NPC npc;
-	private Event currentEvent;
-	private boolean greeting;
+	// 현재 진행중인 이벤트 큐
+	private Queue<EventPack> eventQueue = new LinkedList<>();
+	// 진행이 끝난 이벤트 큐
+	private Queue<EventPack> closedEventQueue = new LinkedList<>();
 
-	public NPC getNpc() {
-		return npc;
+	public Queue<EventPack> getEventQueue() {
+		return eventQueue;
 	}
 
-	public void setNpc(NPC npc) {
-		this.npc = npc;
+	public void setEventQueue(Queue<EventPack> eventQueue) {
+		this.eventQueue = eventQueue;
 	}
 
-	public boolean isGreeting() {
-		return greeting;
+	public Queue<EventPack> getClosedEventQueue() {
+		return closedEventQueue;
 	}
 
-	public void setGreeting(boolean greeting) {
-		this.greeting = greeting;
-	}
-
-	public EventTypeEnum getEventType() {
-		if (isGreeting())
-			return EventTypeEnum.SELECT_EVENT;
-		return getCurrentEvent().getEventType();
-	}
-
-	public Event getCurrentEvent() {
-		return currentEvent;
-	}
-
-	public void setCurrentEvent(Event currentEvent) {
-		this.currentEvent = currentEvent;
+	public void setClosedEventQueue(Queue<EventPack> closedEventQueue) {
+		this.closedEventQueue = closedEventQueue;
 	}
 }

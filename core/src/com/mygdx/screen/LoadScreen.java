@@ -64,7 +64,7 @@ public class LoadScreen extends RootScreen {
 				currentState.setVersion(SaveVersion.NEW);
 				loadManager.loadNewGame();
 				// 프롤로그 정보 주입
-				eventManager.setEventInfo(assets.npcMap.get("prologue"), 0,
+				eventManager.setEventPack(assets.npcMap.get("prologue"), 0,
 						false);
 				screenFactory.show(ScreenEnum.EVENT);
 			}

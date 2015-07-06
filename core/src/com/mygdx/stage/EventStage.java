@@ -1,13 +1,17 @@
 package com.mygdx.stage;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.manager.EventManager;
 import com.mygdx.model.EventScene;
 
 /**
@@ -18,7 +22,7 @@ import com.mygdx.model.EventScene;
  */
 public class EventStage extends OneLevelStage {
 	@Autowired
-	private EventInfo eventInfo;
+	private EventManager eventManager;
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
@@ -29,10 +33,32 @@ public class EventStage extends OneLevelStage {
 	 * @param eventScene
 	 * @return
 	 */
-	public Stage makeStage(EventScene eventScene) {
-		backgroundImage = new Image(eventScene.getBackground());
-		script = new Label(eventScene.getScript(), assets.skin);
-		characterImage = new Image(eventScene.getCharacter());
+
+	public Stage makeStage(final Iterator<EventScene> eventSceneIterator) {
+		if (eventSceneIterator.hasNext()) {
+			setScene(eventSceneIterator.next());
+
+			this.addListener(new InputListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y,
+						int pointer, int button) {
+					if (eventSceneIterator.hasNext()) {
+						setScene(eventSceneIterator.next());
+					} else {
+						eventManager.finishEvent(); // 해당 이벤트 상태를 종료처리
+
+					}
+					return true;
+				}
+			});
+		}
+		return this;
+	}
+
+	private void setScene(EventScene currentScene) {
+		backgroundImage = new Image(currentScene.getBackground());
+		script = new Label(currentScene.getScript(), assets.skin);
+		characterImage = new Image(currentScene.getCharacter());
 
 		// 스크립트/캐릭터/백그라운드 크기값 세팅
 		script.setFontScale(assets.windowWidth / 1280);
@@ -48,17 +74,20 @@ public class EventStage extends OneLevelStage {
 		backgroundImage.setSize(assets.windowWidth, assets.windowHeight);
 
 		// Greeting인지 아닌지 여부에 따라 처리
+		/*
 		EventTypeEnum eventType;
 		if (eventInfo.isGreeting())
 			eventType = EventTypeEnum.SELECT_EVENT;
 		else
 			eventType = eventInfo.getEventType();
+		
 		makeEventStage(eventType);
+		*/
+		makeChatStage(); //FIXME : 임시 메서드
 		this.addActor(backgroundImage);
 		this.addActor(script);
 		this.addActor(characterImage);
 
-		return this;
 	}
 
 	private void makeEventStage(EventTypeEnum eventType) {
@@ -122,13 +151,5 @@ public class EventStage extends OneLevelStage {
 				assets.windowHeight * 0.2f);
 		characterImage.setPosition(0, 0);
 		backgroundImage.setSize(assets.windowWidth, assets.windowHeight);
-	}
-
-	public EventInfo getEventInfo() {
-		return eventInfo;
-	}
-
-	public void setEventInfo(EventInfo eventInfo) {
-		this.eventInfo = eventInfo;
 	}
 }

@@ -1,22 +1,17 @@
 ﻿package com.mygdx.screen;
 
-import java.util.Iterator;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.enums.RewardTypeEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.RewardManager;
-import com.mygdx.model.EventScene;
+import com.mygdx.model.EventPack;
 
 public class EventScreen extends RootScreen {
 	@Autowired
@@ -31,25 +26,25 @@ public class EventScreen extends RootScreen {
 	private Stage selectButtonStage;
 
 	private InputMultiplexer multiplexer;
-	private Iterator<EventScene> eventSceneIterator;
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		eventStage.draw();
-		if (eventInfo.getEventType() == EventTypeEnum.SELECT_COMPONENT
-				|| eventInfo.getEventType() == EventTypeEnum.SELECT_EVENT) {
+		EventPack currentEventPack = eventInfo.getEventQueue().peek();
+		if (currentEventPack.getEventType() == EventTypeEnum.SELECT_COMPONENT
+				|| currentEventPack.getEventType() == EventTypeEnum.SELECT_EVENT) {
 			selectButtonStage.draw();
 		}
 	}
 
 	@Override
 	public void show() {
-		eventSceneIterator = eventManager.getEventSceneIterator();
-		eventStage = stageFactory.makeEventStage(eventSceneIterator.next());
+		eventStage = eventManager.getEvent();
+		EventPack currentEventPack = eventInfo.getEventQueue().peek();
 		multiplexer = new InputMultiplexer();
-		if (eventInfo.getEventType() == EventTypeEnum.SELECT_COMPONENT
-				|| eventInfo.getEventType() == EventTypeEnum.SELECT_EVENT) {
+		if (currentEventPack.getEventType() == EventTypeEnum.SELECT_COMPONENT
+				|| currentEventPack.getEventType() == EventTypeEnum.SELECT_EVENT) {
 			selectButtonStage = stageFactory.makeStage(StageEnum.SELECT_BUTTON);
 			multiplexer.addProcessor(0, selectButtonStage);
 			multiplexer.addProcessor(1, eventStage);
@@ -59,23 +54,6 @@ public class EventScreen extends RootScreen {
 
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		input.setInputProcessor(multiplexer);
-
-		eventStage.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				if (eventSceneIterator.hasNext()) {
-					eventStage = stageFactory.makeEventStage(eventSceneIterator
-							.next());
-				} else {
-					eventManager.finishEvent(); // 해당 이벤트 상태를 종료처리
-					rewardManager.doReward(); // 보상이 있을경우 보상실행
-					if (rewardManager.getRewardQueue().peek().getRewardType() != RewardTypeEnum.EVENT)
-						goPreviousPlace();
-				}
-				return true;
-			}
-		});
 	}
 
 	private void goPreviousPlace() {
@@ -107,5 +85,13 @@ public class EventScreen extends RootScreen {
 
 	public void setRewardManager(RewardManager rewardManager) {
 		this.rewardManager = rewardManager;
+	}
+
+	public EventInfo getEventInfo() {
+		return eventInfo;
+	}
+
+	public void setEventInfo(EventInfo eventInfo) {
+		this.eventInfo = eventInfo;
 	}
 }
