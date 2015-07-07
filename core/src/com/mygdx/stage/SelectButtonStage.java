@@ -13,12 +13,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PlaceManager;
-import com.mygdx.manager.RewardManager;
-import com.mygdx.model.EventPack;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.NPC;
 
 public class SelectButtonStage extends OneLevelStage {
@@ -27,9 +27,9 @@ public class SelectButtonStage extends OneLevelStage {
 	@Autowired
 	private PlaceManager placeManager;
 	@Autowired
-	private RewardManager rewardManager;
+	private StorySectionManager storySectionManager;
 	@Autowired
-	protected EventPack eventInfo;
+	private EventInfo eventInfo;
 
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
@@ -52,8 +52,6 @@ public class SelectButtonStage extends OneLevelStage {
 				chatButtons.get(i).addListener(new ClickListener() {
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
-						eventManager.setEventPack(eventInfo.getCurrentNpc(), 0,
-								false);
 						screenFactory.show(ScreenEnum.EVENT);
 					};
 				});
@@ -62,26 +60,26 @@ public class SelectButtonStage extends OneLevelStage {
 	}
 
 	private void addComponentButtonListener() {
+		final List<String> componentString = new ArrayList<>();
 		for (int i = 0; i < eventInfo.getCurrentEvent().getEventComponent()
 				.size(); i++) {
+			componentString.add(eventInfo.getCurrentEvent().getEventComponent()
+					.get(i));
+			final String currentString = componentString.get(i);
 			chatButtons.get(i).addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					eventManager.finishEvent(); // 해당 이벤트 상태를 종료처리
-					rewardManager.doReward();
+					storySectionManager.goNextStorySection(currentString);
 				};
 			});
 		}
 	}
 
 	public Stage makeStage() {
-
-		eventNpc = eventInfo.getCurrentNpc();
-		eventCount = eventNpc.getEventCount();
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
 		chatStyles = new ArrayList<TextButtonStyle>();
 
-		switch (eventInfo.getEventType()) {
+		switch (eventInfo.getEventQueue().peek().getEventType()) {
 			case SELECT_EVENT:
 				showEventButton();
 				setEventButtonPosition();
@@ -112,8 +110,8 @@ public class SelectButtonStage extends OneLevelStage {
 	}
 
 	private void showComponentButton() {
-		for (int i = 0; i < eventInfo.getCurrentEvent().getEventComponent()
-				.size(); i++) {
+		for (int i = 0; i < eventInfo.getEventQueue().peek()
+				.getEventComponent().size(); i++) {
 			chatStyles.add(new TextButtonStyle(assets.chatButton[i],
 					assets.chatButton[i], assets.chatButton[i], assets.font));
 			chatButtons.add(new TextButton("", chatStyles.get(i)));
@@ -139,8 +137,8 @@ public class SelectButtonStage extends OneLevelStage {
 		final float buttonPosition[][] = {
 				{ assets.windowWidth * 0.3f, assets.windowHeight * 0.6f },
 				{ assets.windowWidth * 0.6f, assets.windowHeight * 0.6f } };
-		for (int i = 0; i < eventInfo.getCurrentEvent().getEventComponent()
-				.size(); i++) {
+		for (int i = 0; i < eventInfo.getEventQueue().peek()
+				.getEventComponent().size(); i++) {
 			chatButtons.get(i).setPosition(buttonPosition[i][0],
 					buttonPosition[i][1]);
 
@@ -191,11 +189,19 @@ public class SelectButtonStage extends OneLevelStage {
 		this.placeManager = placeManager;
 	}
 
-	public EventPack getEventInfo() {
+	public EventInfo getEventInfo() {
 		return eventInfo;
 	}
 
-	public void setEventInfo(EventPack eventInfo) {
+	public void setEventInfo(EventInfo eventInfo) {
 		this.eventInfo = eventInfo;
+	}
+
+	public StorySectionManager getStorySectionManager() {
+		return storySectionManager;
+	}
+
+	public void setStorySectionManager(StorySectionManager storySectionManager) {
+		this.storySectionManager = storySectionManager;
 	}
 }

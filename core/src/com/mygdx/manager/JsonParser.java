@@ -25,6 +25,16 @@ public class JsonParser {
 	}
 
 	@SuppressWarnings("unchecked")
+	public static <T, K> Map<T, K> parseDoubleGenericMap(Class<T> clazz1,
+			Class<K> clazz2, String jsonString) {
+		Map<T, JsonValue> parseMap = JSON.fromJson(HashMap.class, jsonString);
+		Map<T, K> result = new HashMap<T, K>();
+		for (T key : parseMap.keySet())
+			result.put(key, (K) JSON.readValue(clazz2, parseMap.get(key)));
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
 	public static <T> List<T> parseList(Class<T> clazz, String jsonString) {
 		List<JsonValue> parsedList = JSON.fromJson(ArrayList.class, jsonString);
 		List<T> result = new ArrayList<T>();

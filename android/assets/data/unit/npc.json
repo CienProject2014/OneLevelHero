@@ -2,13 +2,13 @@
   "prologue": {
     "events": [
       {
-        "eventState": "OPENED",
-        "eventType": "SELECT_COMPONENT",
+        "eventState": "closed",
+        "eventType": "select_component",
         "reward": {
-          "rewardType": "EVENT",
+          "rewardType": "event",
           "rewardTarget": "prologue",
           "rewardTargetAttribute" : "1",
-          "rewardState": "NO_ISSUE"
+          "rewardState": "no_issue"
         },
         "eventComponent": [
           "예",
@@ -23,13 +23,13 @@
         ]
       },
       {
-        "eventState": "OPENED",
-        "eventType": "CHAT",
+        "eventState": "opened",
+        "eventType": "chat",
         "reward": {
-          "rewardType": "EVENT",
+          "rewardType": "event",
           "rewardTarget": "prologue",
           "rewardTargetAttribute" : "2",
-          "rewardState": "NO_ISSUE"
+          "rewardState": "no_issue"
         },
         "eventScenes": [
           {
@@ -50,13 +50,13 @@
         ]
       },
       {
-        "eventState": "OPENED",
-        "eventType": "CHAT",
+        "eventState": "opened",
+        "eventType": "chat",
         "reward": {
-          "rewardType": "EVENT",
+          "rewardType": "event",
           "rewardTarget": "prologue",
           "rewardTargetAttribute" : "3",
-          "rewardState": "NO_ISSUE"
+          "rewardState": "no_issue"
         },
         "eventScenes": [
           {
@@ -72,12 +72,12 @@
     "name": "waiji",
     "events": [
       {
-        "eventState": "OPENED",
-        "eventType": "CHAT",
+        "eventState": "opened",
+        "eventType": "chat",
         "reward": {
-          "rewardType": "PARTY",
+          "rewardType": "party",
           "rewardTarget": "parath",
-          "rewardState": "NOT_CLEARED"
+          "rewardState": "not_cleared"
         },
         "eventScenes": [
           {
@@ -164,7 +164,7 @@
       }
     ],
     "greeting": {
-      "eventType": "SELECT_EVENT",
+      "eventType": "select_event",
       "eventScenes": [
         {
           "script": "블랙우드 마을에 온 것을 환영하네",

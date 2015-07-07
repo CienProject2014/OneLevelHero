@@ -3,8 +3,12 @@ package com.mygdx.model;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
+import com.mygdx.manager.JsonParser;
 
-public class NPC extends Unit {
+public class NPC extends Unit implements Serializable {
 	private List<Event> events;
 	private Event greeting;
 
@@ -68,5 +72,16 @@ public class NPC extends Unit {
 
 	public int getEventCount() {
 		return events.size();
+	}
+
+	@Override
+	public void write(Json json) {
+	}
+
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		events = JsonParser.parseList(Event.class, jsonData.get("events")
+				.toString());
+		greeting = json.readValue("greeting", Event.class, jsonData);
 	}
 }

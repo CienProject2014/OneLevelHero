@@ -32,7 +32,7 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private RewardInfo rewardInfo;
 	@Autowired
-	private StoryInfo storyInfo;
+	private StorySectionInfo storySectionInfo;
 
 	// (6) 사운드 관리
 	@Autowired
@@ -54,12 +54,12 @@ public class CurrentState implements Serializable {
 		this.rewardInfo = rewardInfo;
 	}
 
-	public StoryInfo getStoryInfo() {
-		return storyInfo;
+	public StorySectionInfo getStorySectionInfo() {
+		return storySectionInfo;
 	}
 
-	public void setStoryInfo(StoryInfo storyInfo) {
-		this.storyInfo = storyInfo;
+	public void setStorySectionInfo(StorySectionInfo storySectionInfo) {
+		this.storySectionInfo = storySectionInfo;
 	}
 
 	public SaveVersion getVersion() {

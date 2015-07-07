@@ -1,6 +1,12 @@
 package com.mygdx.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.state.Assets;
 
 /**
  * npc정보, eventNumber, greeting여부 정보를 갖고있음
@@ -9,8 +15,12 @@ import com.mygdx.enums.EventTypeEnum;
  *
  */
 
-public class EventPack {
-	private NPC currentNpc;
+public class EventPack implements Serializable {
+	@Autowired
+	private Assets assets;
+
+	private String eventNpc;
+	private int eventNumber;
 	private Event currentEvent;
 	private boolean greeting;
 
@@ -36,11 +46,29 @@ public class EventPack {
 		this.currentEvent = currentEvent;
 	}
 
-	public NPC getCurrentNpc() {
-		return currentNpc;
+	public int getEventNumber() {
+		return eventNumber;
 	}
 
-	public void setCurrentNpc(NPC currentNpc) {
-		this.currentNpc = currentNpc;
+	public void setEventNumber(int eventNumber) {
+		this.eventNumber = eventNumber;
+	}
+
+	@Override
+	public void write(Json json) {
+	}
+
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		eventNpc = json.readValue("eventNpc", String.class, jsonData);
+		eventNumber = json.readValue("eventNumber", Integer.class, jsonData);
+	}
+
+	public String getEventNpc() {
+		return eventNpc;
+	}
+
+	public void setEventNpc(String eventNpc) {
+		this.eventNpc = eventNpc;
 	}
 }

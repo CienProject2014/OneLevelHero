@@ -10,8 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.EventQueueManager;
 import com.mygdx.model.EventScene;
 
 /**
@@ -23,6 +25,10 @@ import com.mygdx.model.EventScene;
 public class EventStage extends OneLevelStage {
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private EventQueueManager eventQueueManager;
+	@Autowired
+	private EventInfo eventInfo;
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
@@ -46,7 +52,6 @@ public class EventStage extends OneLevelStage {
 						setScene(eventSceneIterator.next());
 					} else {
 						eventManager.finishEvent(); // 해당 이벤트 상태를 종료처리
-
 					}
 					return true;
 				}
@@ -83,7 +88,7 @@ public class EventStage extends OneLevelStage {
 		
 		makeEventStage(eventType);
 		*/
-		makeChatStage(); //FIXME : 임시 메서드
+		makeEventStage(eventInfo.getCurrentEvent().getEventType());
 		this.addActor(backgroundImage);
 		this.addActor(script);
 		this.addActor(characterImage);
@@ -152,4 +157,29 @@ public class EventStage extends OneLevelStage {
 		characterImage.setPosition(0, 0);
 		backgroundImage.setSize(assets.windowWidth, assets.windowHeight);
 	}
+
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+
+	public EventQueueManager getEventQueueManager() {
+		return eventQueueManager;
+	}
+
+	public void setEventQueueManager(EventQueueManager eventQueueManager) {
+		this.eventQueueManager = eventQueueManager;
+	}
+
+	public EventInfo getEventInfo() {
+		return eventInfo;
+	}
+
+	public void setEventInfo(EventInfo eventInfo) {
+		this.eventInfo = eventInfo;
+	}
+
 }

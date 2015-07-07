@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.controller.SaveVersion;
 import com.mygdx.currentState.CurrentState;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.EventQueueManager;
 import com.mygdx.manager.LoadManager;
 
 public class LoadScreen extends RootScreen {
@@ -18,7 +19,8 @@ public class LoadScreen extends RootScreen {
 	protected CurrentState currentState;
 	@Autowired
 	private LoadManager loadManager;
-
+	@Autowired
+	private EventQueueManager eventQueueManager;
 	private Stage stage;
 	private TextButton newstartButton;
 	private TextButton backButton;
@@ -26,7 +28,6 @@ public class LoadScreen extends RootScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
 		stage.draw();
 	}
 
@@ -63,10 +64,7 @@ public class LoadScreen extends RootScreen {
 					int pointer, int button) {
 				currentState.setVersion(SaveVersion.NEW);
 				loadManager.loadNewGame();
-				// 프롤로그 정보 주입
-				eventManager.setEventPack(assets.npcMap.get("prologue"), 0,
-						false);
-				screenFactory.show(ScreenEnum.EVENT);
+				eventQueueManager.runEventQueue();
 			}
 		});
 
@@ -93,4 +91,13 @@ public class LoadScreen extends RootScreen {
 	public void setLoadManager(LoadManager loadManager) {
 		this.loadManager = loadManager;
 	}
+
+	public EventQueueManager getEventQueueManager() {
+		return eventQueueManager;
+	}
+
+	public void setEventQueueManager(EventQueueManager eventQueueManager) {
+		this.eventQueueManager = eventQueueManager;
+	}
+
 }

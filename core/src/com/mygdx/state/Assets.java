@@ -25,6 +25,7 @@ import com.mygdx.model.JsonStringFile;
 import com.mygdx.model.Monster;
 import com.mygdx.model.MusicFile;
 import com.mygdx.model.NPC;
+import com.mygdx.model.StorySection;
 import com.mygdx.model.Village;
 import com.mygdx.model.WorldNode;
 
@@ -65,6 +66,7 @@ public class Assets {
 	public Map<String, Monster> monsterMap;
 	public Map<String, Village> villageMap;
 	public Map<String, WorldNode> worldNodeInfoMap;
+	public Map<String, StorySection> storySectionMap;
 
 	public Assets() {
 		Gdx.app.debug("OneLevelHeroApplicationContext", "Assets Bean 우선 로드");
@@ -81,6 +83,7 @@ public class Assets {
 		loadResourceFile();
 		loadMapInfo();
 		loadUnitInfo();
+		loadStoryInfo();
 	}
 
 	private void loadFilePath() {
@@ -159,6 +162,11 @@ public class Assets {
 		// npc 리스트를 담은 Json을 불러온다.
 		npcMap = JsonParser.parseMap(NPC.class,
 				jsonStringMap.get(JsonEnum.NPC_JSON.toString()));
+	}
+
+	private void loadStoryInfo() {
+		storySectionMap = JsonParser.parseMap(StorySection.class,
+				jsonStringMap.get(JsonEnum.STORY_JSON.toString()));
 	}
 
 	private void loadAtlasUiTexture() {

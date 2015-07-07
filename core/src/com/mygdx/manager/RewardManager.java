@@ -1,6 +1,6 @@
 package com.mygdx.manager;
 
-import java.util.Queue;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,7 +9,7 @@ import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.model.RewardPack;
+import com.mygdx.model.Reward;
 import com.mygdx.state.Assets;
 
 public class RewardManager {
@@ -35,58 +35,58 @@ public class RewardManager {
 	// (3) 퀘스트 달성 여부 큐
 	// 아직 미구현
 
-	public Queue<RewardPack> getRewardQueue() {
-		return rewardInfo.getRewardQueue();
+	public List<Reward> getRewardList() {
+		return rewardInfo.getRewardList();
 	}
 
-	public Queue<RewardPack> getAchievedRewardQueue() {
-		return rewardInfo.getAchievedRewardQueue();
+	public List<Reward> getAchievedRewardList() {
+		return rewardInfo.getAchievedRewardList();
 	}
 
-	public void addEventReward(RewardPack rewardInfo) {
-		if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED) {
-			rewardInfo.setRewardState(RewardStateEnum.ING);
+	public void addEventReward(Reward reward) {
+		if (reward.getRewardState() == RewardStateEnum.NOT_CLEARED) {
+			reward.setRewardState(RewardStateEnum.ING);
 		}
-		getRewardQueue().add(rewardInfo);
+		getRewardList().add(reward);
 	}
 
-	// (1)에서 뺀후 (2)의 큐에 집어넣는다.
-	public void pollRewardQueue() {
-		getRewardQueue().peek().setRewardState(RewardStateEnum.CLEARED);
-		getAchievedRewardQueue().add(getRewardQueue().poll());
+	// (1)에서 뺀후 (2)의 리스트에 집어넣는다.
+	public void pollRewardQueue(Reward reward) {
+		reward.setRewardState(RewardStateEnum.CLEARED);
+		rewardInfo.getRewardList().remove(reward);
+		getAchievedRewardList().add(reward);
 	}
 
 	public void doReward() {
-		if (getRewardQueue().peek() != null) {
-			RewardPack peekReward = getRewardQueue().peek();
-
-			switch (peekReward.getRewardType()) {
-				case EVENT:
-					eventManager.setEventPack(assets.npcMap.get(peekReward
-							.getRewardTarget()), Integer.parseInt(peekReward
-							.getRewardTargetAttribute()));
-					pollRewardQueue();
-					screenFactory.show(ScreenEnum.EVENT);
-					return;
-				case EXPERIENCE:
-					return;
-				case GOLD:
-					return;
-				case ITEM:
-					return;
-				case NONE:
-					return;
-				case PARTY:
-					partyInfo.addHero(assets.heroMap.get(getRewardQueue()
-							.peek().getRewardTarget()));
-					return;
-				default:
-					return;
+		if (!getRewardList().isEmpty()) {
+			for (Reward reward : getRewardList()) {
+				switch (reward.getRewardType()) {
+					case EVENT:
+						eventManager.setCurrentEventPack(assets.npcMap
+								.get(reward.getRewardTarget()), Integer
+								.parseInt(reward.getRewardTargetAttribute()));
+						screenFactory.show(ScreenEnum.EVENT);
+						return;
+					case EXPERIENCE:
+						return;
+					case GOLD:
+						return;
+					case ITEM:
+						return;
+					case NONE:
+						return;
+					case PARTY:
+						partyInfo.addHero(assets.heroMap.get(reward
+								.getRewardTarget()));
+						return;
+					default:
+						return;
+				}
 			}
 		}
 	}
 
-	public String getRewardMessage(RewardPack rewardInfo) {
+	public String getRewardMessage(Reward rewardInfo) {
 		switch (rewardInfo.getRewardType()) {
 			case EXPERIENCE:
 				return rewardInfo.getRewardTarget() + "의 경험치를 획득했습니다.";

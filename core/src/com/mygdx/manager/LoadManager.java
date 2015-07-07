@@ -17,13 +17,15 @@ import com.mygdx.state.Assets;
 public class LoadManager {
 	@Autowired
 	private Assets assets;
-
 	@Autowired
 	private PositionInfo positionInfo;
 	@Autowired
 	private MovingInfo movingInfo;
 	@Autowired
 	private PartyInfo partyInfo;
+	@Autowired
+	private StorySectionManager storySectionManager;
+
 	private Hero hero;
 
 	public void loadNewGame() {
@@ -31,10 +33,16 @@ public class LoadManager {
 		setHero();
 		setPartyList();
 		setCurrentPosition();
+		setCurrentStorySection();
 	}
 
 	public LoadManager() {
 		Gdx.app.debug("LoadManager", "Constructor() call");
+	}
+
+	private void setCurrentStorySection() {
+		// 분기 정보 주입
+		storySectionManager.setCurrentStorySection(101);
 	}
 
 	private void setCurrentPosition() {
@@ -102,5 +110,13 @@ public class LoadManager {
 
 	public void setPartyInfo(PartyInfo partyInfo) {
 		this.partyInfo = partyInfo;
+	}
+
+	public StorySectionManager getStorySectionManager() {
+		return storySectionManager;
+	}
+
+	public void setStorySectionManager(StorySectionManager storySectionManager) {
+		this.storySectionManager = storySectionManager;
 	}
 }

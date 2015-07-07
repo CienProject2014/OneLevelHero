@@ -42,7 +42,7 @@ public class GreetingScreen extends RootScreen {
 
 	@Override
 	public void show() {
-		final NPC npc = eventInfo.getCurrentNpc();
+		final NPC npc = assets.npcMap.get(eventInfo.getEventNpc());
 		greetingScenes = npc.getGreeting().getEventScenes();
 
 		selectButtonStage = stageFactory.makeStage(StageEnum.SELECT_BUTTON);

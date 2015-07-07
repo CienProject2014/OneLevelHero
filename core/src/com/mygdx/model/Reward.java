@@ -1,9 +1,12 @@
 package com.mygdx.model;
 
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.RewardTypeEnum;
 
-public class RewardPack {
+public class Reward implements Serializable {
 	private RewardTypeEnum rewardType;
 	private String rewardTarget;
 	private String rewardTargetAttribute;
@@ -39,5 +42,20 @@ public class RewardPack {
 
 	public void setRewardTargetAttribute(String rewardTargetAttribute) {
 		this.rewardTargetAttribute = rewardTargetAttribute;
+	}
+
+	@Override
+	public void write(Json json) {
+	}
+
+	@Override
+	public void read(Json json, JsonValue jsonData) {
+		rewardType = RewardTypeEnum.findRewardTypeEnum(json.readValue(
+				"eventType", String.class, jsonData));
+		rewardTarget = json.readValue("rewardTarget", String.class, jsonData);
+		rewardTargetAttribute = json.readValue("rewardTargetAttribute",
+				String.class, jsonData);
+		rewardState = RewardStateEnum.findRewardStateEnum(json.readValue(
+				"eventState", String.class, jsonData));
 	}
 }
