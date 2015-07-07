@@ -15,7 +15,7 @@ import com.mygdx.model.Village;
 import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
-public class VillageStage extends OverlapStage {
+public class VillageStage extends BaseOverlapStage {
 	private Village villageInfo;
 	public TextButton shiftButton;
 	private BackgroundDirection backgroundDirection;

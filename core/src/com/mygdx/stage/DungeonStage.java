@@ -10,7 +10,13 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  * @author Velmont
  *
  */
+<<<<<<< HEAD
 public class DungeonStage extends OverlapStage {
+=======
+public class DungeonStage extends BaseOverlapStage {
+	@Autowired
+	private PositionInfo positionInfo; // 나중에 쓸거임 지우지 마셈
+>>>>>>> Developer
 	private CompositeItem arrowUp, arrowDown, arrowLeft, arrowRight;
 
 	public Stage makeStage() {

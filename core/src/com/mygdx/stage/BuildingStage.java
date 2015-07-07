@@ -16,7 +16,7 @@ import com.mygdx.model.Building;
 import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
-public class BuildingStage extends OverlapStage {
+public class BuildingStage extends BaseOverlapStage {
 	@Autowired
 	private EventManager eventManager;
 

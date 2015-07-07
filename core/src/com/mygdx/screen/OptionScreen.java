@@ -8,7 +8,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.listener.TouchListener;
 import com.mygdx.popup.SoundPopup;
 
-public class OptionScreen extends RootScreen {
+public class OptionScreen extends BaseScreen {
 	private Stage stage;
 	private TextButton soundButton;
 	private TextButton savedataButton;

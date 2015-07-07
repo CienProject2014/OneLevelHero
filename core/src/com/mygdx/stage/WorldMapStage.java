@@ -17,7 +17,7 @@ import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
-public class WorldMapStage extends OverlapStage {
+public class WorldMapStage extends BaseOverlapStage {
 	@Autowired
 	private WorldMapManager worldMapManager;
 	private CompositeItem currentPosition;
@@ -79,22 +79,22 @@ public class WorldMapStage extends OverlapStage {
 	}
 
 	public void setCamera() {
-		int xLeftLimit = (int) (assets.windowWidth / 2);
-		int xRightLimit = (int) (3000 - (assets.windowWidth / 2));
-		int yBottomLimit = (int) (assets.windowHeight / 2);
-		int yTopLimit = (int) (1688 - (assets.windowHeight / 2));
+		int xLeftLimit = (int) (StaticAssets.windowWidth / 2);
+		int xRightLimit = (int) (3000 - (StaticAssets.windowWidth / 2));
+		int yBottomLimit = (int) (StaticAssets.windowHeight / 2);
+		int yTopLimit = (int) (1688 - (StaticAssets.windowHeight / 2));
 
-		float xvalue = this.getCurrent().getX() - assets.windowWidth / 2, yvalue = this
-				.getCurrent().getY() - assets.windowHeight / 2;
+		float xvalue = this.getCurrent().getX() - StaticAssets.windowWidth / 2, yvalue = this
+				.getCurrent().getY() - StaticAssets.windowHeight / 2;
 		// x값이 오른쪽으로 벗어날 경우
 		if (this.getCurrent().getX() > xRightLimit)
-			xvalue = 3000 - assets.windowWidth;
+			xvalue = 3000 - StaticAssets.windowWidth;
 		// x값이 왼쪽으로 벗어날 경우
 		if (this.getCurrent().getX() < xLeftLimit)
 			xvalue = 0;
 		// y값이 위로 벗어날 경우
 		if (this.getCurrent().getY() > yTopLimit)
-			yvalue = 1688 - assets.windowHeight;
+			yvalue = 1688 - StaticAssets.windowHeight;
 		// y값이 아래로 벗어날 경우
 		if (this.getCurrent().getY() < yBottomLimit)
 			yvalue = 0;

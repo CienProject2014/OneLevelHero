@@ -12,7 +12,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.listener.TouchListener;
 import com.mygdx.manager.LoadManager;
 
-public class LoadScreen extends RootScreen {
+public class LoadScreen extends BaseScreen {
 	@Autowired
 	protected CurrentState currentState;
 	@Autowired

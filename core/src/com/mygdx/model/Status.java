@@ -2,16 +2,18 @@ package com.mygdx.model;
 
 public class Status {
 	private int atk;
-	private int ftg;
-	private int exp;
 	private int matk;
 	private int def;
 	private int mdef;
-	private int hp;
-	private int spd;
-	private float fr;
-	private float wr;
-	private float er;
+	private int hp; // 현재 체력
+	private int maxHp; // 최대 체력
+	private int spd; // speed
+	private int ftg; // fatigue(피로도)
+	private int exp; // 경험치
+	private int maxExp; // 최대 경험치(레벨업)
+	private float fr; // fire resistance
+	private float wr; // water
+	private float er; // earths
 	private String job;
 
 	public int getAtk() {
@@ -20,22 +22,6 @@ public class Status {
 
 	public void setAtk(int atk) {
 		this.atk = atk;
-	}
-
-	public int getFtg() {
-		return ftg;
-	}
-
-	public void setFtg(int ftg) {
-		this.ftg = ftg;
-	}
-
-	public int getExp() {
-		return exp;
-	}
-
-	public void setExp(int exp) {
-		this.exp = exp;
 	}
 
 	public int getMatk() {
@@ -70,12 +56,44 @@ public class Status {
 		this.hp = hp;
 	}
 
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
+	}
+
 	public int getSpd() {
 		return spd;
 	}
 
 	public void setSpd(int spd) {
 		this.spd = spd;
+	}
+
+	public int getFtg() {
+		return ftg;
+	}
+
+	public void setFtg(int ftg) {
+		this.ftg = ftg;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+	public int getMaxExp() {
+		return maxExp;
+	}
+
+	public void setMaxExp(int maxExp) {
+		this.maxExp = maxExp;
 	}
 
 	public float getFr() {

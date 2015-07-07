@@ -17,7 +17,7 @@ import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 import com.uwsoft.editor.renderer.data.LabelVO;
 
-public class StatusStage extends OverlapStage {
+public class StatusStage extends BaseOverlapStage {
 	private Camera cam;
 	private CompositeItem closeButton;
 	private ImageItem largeImage;

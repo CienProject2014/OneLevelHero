@@ -9,7 +9,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.listener.TouchListener;
 import com.mygdx.state.StaticAssets;
 
-public class MenuStage extends OneLevelStage {
+public class MenuStage extends BaseOneLevelStage {
 	private ImageButton[] button;
 
 	public Stage makeStage() {
@@ -60,22 +60,22 @@ public class MenuStage extends OneLevelStage {
 			}
 		}));
 
-		logo.setHeight((int) (0.4f * assets.windowHeight));
-		logo.setWidth((int) (0.6f * assets.windowWidth));
+		logo.setHeight((int) (0.4f * StaticAssets.windowHeight));
+		logo.setWidth((int) (0.6f * StaticAssets.windowWidth));
 		table.setFillParent(true);
 
-		table.add(button[3]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).expand().top().left();
-		table.add(button[2]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).top().right();
+		table.add(button[3]).height(0.35f * StaticAssets.windowHeight)
+				.width(0.3f * StaticAssets.windowWidth).expand().top().left();
+		table.add(button[2]).height(0.35f * StaticAssets.windowHeight)
+				.width(0.3f * StaticAssets.windowWidth).top().right();
 		table.row();
-		table.add(button[0]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).bottom().left();
-		table.add(button[1]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).bottom().right();
-		logo.setPosition((int) (0.2f * assets.windowWidth),
-				(int) (0.3f * assets.windowHeight));
-		background.setSize(assets.windowWidth, assets.windowHeight);
+		table.add(button[0]).height(0.35f * StaticAssets.windowHeight)
+				.width(0.3f * StaticAssets.windowWidth).bottom().left();
+		table.add(button[1]).height(0.35f * StaticAssets.windowHeight)
+				.width(0.3f * StaticAssets.windowWidth).bottom().right();
+		logo.setPosition((int) (0.2f * StaticAssets.windowWidth),
+				(int) (0.3f * StaticAssets.windowHeight));
+		background.setSize(StaticAssets.windowWidth, StaticAssets.windowHeight);
 
 		this.addActor(background);
 		this.addActor(logo);

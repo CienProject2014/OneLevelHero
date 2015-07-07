@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.MusicManager.MusicCondition;
 
-public class MenuScreen extends RootScreen {
+public class MenuScreen extends BaseScreen {
 	private Stage stage;
 
 	public MenuScreen() {

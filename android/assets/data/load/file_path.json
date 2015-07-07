@@ -11,6 +11,9 @@
   "monster_file_path":{
   	"filePath": "data/load/monster_file_path.json"
   },
+  "animation_sheet_file_path":{
+	"filePath": "data/load/animation_sheet_file_path.json"
+  },
   "json_file_path":{
   	"filePath":"data/load/json_file_path.json"
   },

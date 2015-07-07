@@ -12,7 +12,7 @@ import com.mygdx.listener.TouchListener;
  * @author Velmont
  *
  */
-public class CreditScreen extends RootScreen {
+public class CreditScreen extends BaseScreen {
 	private SpriteBatch batch;
 	private Stage stage;
 	private String event;

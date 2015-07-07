@@ -2,14 +2,16 @@ package com.mygdx.stage;
 
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.model.Hero;
+import com.mygdx.state.StaticAssets;
 import com.mygdx.ui.StatusBarUi;
 
-public class CharacterUiStage extends OneLevelStage {
+public class CharacterUiStage extends BaseOneLevelStage {
 	private float realWidth, realHeight;
 
 	private Table uiTable; // 전체 화면을 차지하는 테이블
@@ -43,8 +45,8 @@ public class CharacterUiStage extends OneLevelStage {
 	}
 
 	private void initialize() {
-		realHeight = assets.windowHeight;
-		realWidth = assets.windowWidth;
+		realHeight = StaticAssets.windowHeight;
+		realWidth = StaticAssets.windowWidth;
 
 		bottomTable = new Table(assets.skin);
 		statusbarTable = new Table[3];
@@ -107,14 +109,15 @@ public class CharacterUiStage extends OneLevelStage {
 
 		// Screen - act 에서 실행시킨다.
 		for (int i = 0; i < battleMemberNumber; i++) {
-			/*
-			 * int hpValue = battleMemberList.get(i).getStatus().getHp();
-			 * Gdx.app.log("이름?", hpbar[i].getName());
-			 *
-			 * if (!hpbar[i].setValue(hpValue))
-			 * 	Gdx.app.log("GameUiStage", "체력 설정 실패");
-			 */
-			hpbar[i].act(delta);
+			float currentHp = battleMemberList.get(i).getStatus().getHp();
+			float maxHp = battleMemberList.get(i).getStatus().getMaxHp();
+			int hpValue = (int) ((currentHp / maxHp) * 100);
+
+			if (hpbar[i].setValue(hpValue)) {
+				// Gdx.app.log("CharacterUiStage", "체력 설정 성공");
+				hpbar[i].act(delta);
+				Gdx.app.log("CharacterUiStage", "체력: " + hpValue);
+			}
 		}
 	}
 }
