@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
 public class TouchListener extends InputListener {
-	Runnable func;
+	private Runnable func;
 
 	public TouchListener(Runnable func) {
 		this.func = func;

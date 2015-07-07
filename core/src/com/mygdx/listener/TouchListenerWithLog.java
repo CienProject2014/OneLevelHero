@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
 public class TouchListenerWithLog extends InputListener {
-	String tag, msg;
-	Runnable func;
+	private String tag, msg;
+	private Runnable func;
 
 	public TouchListenerWithLog(String tag, String msg, Runnable func) {
 		this.tag = tag;
