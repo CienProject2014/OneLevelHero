@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.enums.ScreenEnum;
 
-public class CGScreen extends RootScreen {
+public class CGScreen extends BaseScreen {
 	private Stage stage;
 	private TextButton backButton;
 

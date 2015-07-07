@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.inputProcessor.MapInputProcessor;
 
-public class WorldMapScreen extends RootScreen {
+public class WorldMapScreen extends BaseScreen {
 	private Stage worldMapStage;
 	private InputMultiplexer multiplexer;
 

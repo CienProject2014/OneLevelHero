@@ -18,7 +18,7 @@ import com.mygdx.enums.StageEnum;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
-public class GreetingScreen extends RootScreen {
+public class GreetingScreen extends BaseScreen {
 	@Autowired
 	protected EventInfo eventInfo;
 
