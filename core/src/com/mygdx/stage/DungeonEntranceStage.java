@@ -3,12 +3,8 @@ package com.mygdx.stage;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.enums.ScreenEnum;
-<<<<<<< HEAD
 import com.mygdx.listener.TouchListener;
 import com.mygdx.listener.TouchListenerWithLog;
-import com.mygdx.manager.CameraManager.CameraPosition;
-=======
->>>>>>> Developer
 import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 

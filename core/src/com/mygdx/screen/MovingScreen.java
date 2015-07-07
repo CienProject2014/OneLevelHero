@@ -9,11 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-<<<<<<< HEAD
-import com.mygdx.currentState.MovingInfo;
 import com.mygdx.listener.TouchListener;
-=======
->>>>>>> Developer
 import com.mygdx.manager.MovingManager;
 import com.mygdx.state.StaticAssets;
 
