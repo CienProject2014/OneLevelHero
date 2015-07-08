@@ -7,11 +7,10 @@ import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
 import com.mygdx.manager.WorldMapManager;
 import com.mygdx.model.Connection;
 import com.mygdx.state.StaticAssets;
@@ -56,20 +55,13 @@ public class WorldMapStage extends BaseOverlapStage {
 					connection.getValue().getArrowName());
 			arrow.setVisible(true);
 			arrow.setTouchable(Touchable.enabled);
-			arrow.addListener(new InputListener() {
+			arrow.addListener(new TouchListener(new Runnable() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					return true;
-				}
-
-				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void run() {
 					worldMapManager.selectDestinationNode(connection.getKey());
 					screenFactory.show(ScreenEnum.MOVING);
 				}
-			});
+			}));
 			arrowList.add(arrow);
 		}
 		addActor(sceneLoader.getRoot());

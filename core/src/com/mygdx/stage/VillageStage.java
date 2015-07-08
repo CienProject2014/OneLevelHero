@@ -3,13 +3,12 @@ package com.mygdx.stage;
 import java.util.Map.Entry;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
 import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.model.Building;
 import com.mygdx.model.Village;
@@ -49,24 +48,17 @@ public class VillageStage extends BaseOverlapStage {
 		setBuildingButton();
 		shiftButton = new TextButton("전환", assets.skin);
 		shiftButton.center();
-		shiftButton.addListener(new InputListener() {
+		shiftButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				if (backgroundDirection.equals(BackgroundDirection.DOWN))
 					backgroundDirection = BackgroundDirection.MOVE_UP;
 				else if (backgroundDirection.equals(BackgroundDirection.UP))
 					backgroundDirection = BackgroundDirection.MOVE_DOWN;
 
-				event.getListenerActor().setVisible(false);
+				shiftButton.setVisible(false);
 			}
-		});
+		}));
 		addActor(shiftButton);
 	}
 
@@ -111,21 +103,14 @@ public class VillageStage extends BaseOverlapStage {
 			CompositeItem buildingButton = sceneLoader.getRoot()
 					.getCompositeById(building.getValue().getBuildingPath());
 			buildingButton.setTouchable(Touchable.enabled);
-			buildingButton.addListener(new InputListener() {
+			buildingButton.addListener(new TouchListener(new Runnable() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					return true;
-				}
-
-				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void run() {
 					positionInfo.setCurrentBuilding(building.getKey());
 					positionInfo.setCurrentPlace(PlaceEnum.BUILDING);
 					screenFactory.show(ScreenEnum.BUILDING);
 				}
-			});
+			}));
 		}
 	}
 }

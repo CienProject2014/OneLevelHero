@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -22,6 +21,8 @@ import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryPopup;
+import com.mygdx.listener.TouchListener;
+import com.mygdx.listener.TouchListenerWithLog;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.model.Hero;
 import com.mygdx.popup.AlertMessagePopup;
@@ -192,87 +193,49 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	// 리스너 할당
 	public void addListener() {
-		bagButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
+		bagButton.addListener(new TouchListenerWithLog("정보",
+				"inventoryPopUp창이 나타납니다.", new Runnable() {
+					@Override
+					public void run() {
+						inventoryActor.setVisible(true);
+					}
+				}));
+		optionButton.addListener(new TouchListenerWithLog("정보",
+				"OptionScreen이 나타납니다.", new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+					}
+				}));
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				inventoryActor.setVisible(true);
-				Gdx.app.log("정보", "inventoryPopUp창이 나타납니다.");
-			}
-		});
-		optionButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
+		downArrowButton.addListener(new TouchListenerWithLog("정보",
+				"minimap창이 나타납니다.", new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+					}
+				}));
 
+		battleButton.addListener(new TouchListenerWithLog("정보", "전투가 시작됩니다",
+				new Runnable() {
+					@Override
+					public void run() {
+						screenFactory.show(ScreenEnum.BATTLE);
+					}
+				}));
+		worldMapButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.log("정보", "OptionScreen이 나타납니다.");
-			}
-		});
-
-		downArrowButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.log("정보", "minimap창이 나타납니다.");
-			}
-		});
-
-		battleButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				screenFactory.show(ScreenEnum.BATTLE);
-				Gdx.app.log("정보", "전투가 시작됩니다");
-			}
-		});
-		worldMapButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.WORLD_MAP);
-			}
-		});
-		helpButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
 			}
-		});
+		}));
+		helpButton.addListener(new TouchListener(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+			}
+		}));
 		for (int i = 0; i < partyInfo.getBattleMemberList().size(); i++) {
 			final int index = i;
 			characterImage[i].addListener(new ClickListener() {

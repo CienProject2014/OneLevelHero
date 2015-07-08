@@ -1,12 +1,11 @@
 package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
 
 public class CGScreen extends BaseScreen {
 	private Stage stage;
@@ -31,19 +30,12 @@ public class CGScreen extends BaseScreen {
 
 		backButton = new TextButton("Back", assets.skin);
 
-		backButton.addListener(new InputListener() {
+		backButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				screenFactory.show(ScreenEnum.COLLETION);
 			}
-		});
+		}));
 
 		table.setFillParent(true);
 		table.add(backButton).bottom();

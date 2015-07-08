@@ -6,14 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.TouchListener;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PlaceManager;
 import com.mygdx.model.NPC;
@@ -45,20 +44,15 @@ public class SelectButtonStage extends BaseOneLevelStage {
 			if (eventNpc.getEvent(i).getEventState() == EventStateEnum.CLEARED)
 				chatButtons.get(i).setColor(Color.DARK_GRAY);
 			else {
-				chatButtons.get(i).addListener(new InputListener() {
-					@Override
-					public boolean touchDown(InputEvent event, float x,
-							float y, int pointer, int button) {
-						return true;
-					}
-
-					@Override
-					public void touchUp(InputEvent event, float x, float y,
-							int pointer, int button) {
-						eventManager.setEventInfo(eventInfo.getNpc(), 0, false);
-						screenFactory.show(ScreenEnum.EVENT);
-					}
-				});
+				chatButtons.get(i).addListener(
+						new TouchListener(new Runnable() {
+							@Override
+							public void run() {
+								eventManager.setEventInfo(eventInfo.getNpc(),
+										0, false);
+								screenFactory.show(ScreenEnum.EVENT);
+							}
+						}));
 			}
 		}
 	}
@@ -102,20 +96,13 @@ public class SelectButtonStage extends BaseOneLevelStage {
 	private void setexitButton() {
 		exitButton = new TextButton("나가기", assets.skin);
 		exitButton.center();
-		exitButton.addListener(new InputListener() {
+		exitButton.addListener(new TouchListener(new Runnable() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void run() {
 				placeManager.goPreviousPlace();
-				event.getListenerActor().setVisible(false);
+				exitButton.setVisible(false);
 			}
-		});
+		}));
 
 		addActor(exitButton);
 	}
