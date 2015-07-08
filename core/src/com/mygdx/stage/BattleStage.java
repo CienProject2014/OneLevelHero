@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.model.Hero;
 import com.mygdx.model.Monster;
@@ -33,7 +34,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private Table orderTable; // 순서를 나타내는 테이블
 	private Table gridTable; // grid 테이블
 	private Table tileTable;
-	private Table tempTable;
+	private Table RMenuTable; // 오른쪽 테이블
 
 	// Grid Tabler관련
 	private boolean gridFlag;
@@ -55,9 +56,16 @@ public class BattleStage extends BaseOneLevelStage {
 	// Value
 	private float uiButtonWidth;
 	private float uiButtonHeight;
+	private float RButtonWidth;
+	private float RButtonHeight;
 
 	// Button
-	private ImageButton tempButton;
+	private ImageButton attackButton;
+	private ImageButton skillButton;
+	private ImageButton inventoryButton;
+	private ImageButton defenseButton;
+	private ImageButton waitButton;
+	private ImageButton escapeButton;
 
 	@Autowired
 	private BattleManager battleManager;
@@ -272,7 +280,8 @@ public class BattleStage extends BaseOneLevelStage {
 	private void resolutionWork() {
 		uiButtonWidth = StaticAssets.windowWidth * 0.0625f;
 		uiButtonHeight = StaticAssets.windowHeight * 0.125f;
-
+		RButtonHeight = StaticAssets.windowHeight * 0.1278f;
+		RButtonWidth = RButtonHeight;
 		topPadValue = StaticAssets.windowHeight * 0.125f;
 
 		// FIXME 상수 대신 monster 타입에 따라 다른 크기 사용해야 함
@@ -378,19 +387,36 @@ public class BattleStage extends BaseOneLevelStage {
 		uiTable.setY(uiButtonHeight);
 	}
 
-	private void makeTempTable() {
-		tempTable = new Table();
-		tempButton = new ImageButton(new SpriteDrawable(new Sprite(
-				getTempTexture(), 50, 50)));
+	private void makeRMenuTable() {
+		RMenuTable = new Table();
 
-		tempTable.setFillParent(true);
+		RMenuTable.right().bottom();
+		RMenuTable.padBottom(StaticAssets.windowHeight * 0.013f).padRight(
+				StaticAssets.windowWidth * 0.007f);
+		RMenuTable.setFillParent(true);
+		RMenuTable.add(attackButton).width(RButtonWidth).height(RButtonHeight);
+		RMenuTable.row();
+		RMenuTable.add().height(StaticAssets.windowHeight * 0.0138f);
+		RMenuTable.row();
+		RMenuTable.add(skillButton).width(RButtonWidth).height(RButtonHeight);
+		RMenuTable.row();
+		RMenuTable.add().height(StaticAssets.windowHeight * 0.0138f);
+		RMenuTable.row();
+		RMenuTable.add(inventoryButton).width(RButtonWidth)
+				.height(RButtonHeight);
+		RMenuTable.row();
+		RMenuTable.add().height(StaticAssets.windowHeight * 0.0138f);
+		RMenuTable.row();
+		RMenuTable.add(defenseButton).width(RButtonWidth).height(RButtonHeight);
+		RMenuTable.row();
+		RMenuTable.add().height(StaticAssets.windowHeight * 0.0138f);
+		RMenuTable.row();
+		RMenuTable.add(waitButton).width(RButtonWidth).height(RButtonHeight);
+		RMenuTable.row();
+		RMenuTable.add().height(StaticAssets.windowHeight * 0.0138f);
+		RMenuTable.row();
+		RMenuTable.add(escapeButton).width(RButtonWidth).height(RButtonHeight);
 
-		tempTable.align(Align.right);
-		tempTable.add(tempButton);
-	}
-
-	private Texture getTempTexture() {
-		return new Texture(Gdx.files.internal("texture/battle/grass.png"));
 	}
 
 	private void makeTableStack() {
@@ -399,14 +425,15 @@ public class BattleStage extends BaseOneLevelStage {
 		tableStack.add(uiTable);
 		tableStack.add(tileTable);
 		tableStack.add(gridTable);
-		tableStack.add(tempTable);
+		tableStack.add(RMenuTable);
 	}
 
 	private void makeAllTable() {
+		makeRButton();
 		makeUiTable();
 		makeGridTable();
 		makeTileTable();
-		makeTempTable();
+		makeRMenuTable();
 		makeTableStack();
 
 		addListener();
@@ -439,18 +466,77 @@ public class BattleStage extends BaseOneLevelStage {
 		gridFlag = false;
 	}
 
-	private void addListener() {
-		tempButton.addListener(new ClickListener() {
+	public void addListener() {
+
+		// 클릭시 발동
+		attackButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+
+				Gdx.app.log("BattleStage", "공격!");
 				if (!gridFlag) {
 					showGrid();
 				} else {
 
 				}
+			}
+		});
+
+		skillButton.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.log("BattleStage", "스킬!");
+				hideGrid();
+			}
+		});
+
+		inventoryButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.log("BattleStage", "인벤토리!");
+			}
+		});
+		defenseButton.addListener(new ClickListener() {
+
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.log("BattleStage", "방어!");
 
 			}
 		});
+		waitButton.addListener(new ClickListener() {
+
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.log("BattleStage", "기다립시다!");
+
+			}
+		});
+		escapeButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				Gdx.app.log("BattleStage", "도망!");
+				screenFactory.show(ScreenEnum.MOVING);
+			}
+		});
+	}
+
+	private void makeRButton() {
+
+		// 이미지 추가
+		attackButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/battle/RMenu_01.png"))));
+		skillButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/battle/RMenu_02.png"))));
+		inventoryButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/battle/RMenu_03.png"))));
+		defenseButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/battle/RMenu_04.png"))));
+		waitButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture(
+				"texture/battle/RMenu_05.png"))));
+		escapeButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/battle/RMenu_06.png"))));
+
+		addListener();
 
 	}
 
