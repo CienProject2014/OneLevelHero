@@ -9,6 +9,7 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.PositionInfo;
+import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.model.Hero;
@@ -24,6 +25,8 @@ public class LoadManager {
 	private MovingInfo movingInfo;
 	@Autowired
 	private PartyInfo partyInfo;
+	@Autowired
+	private TimeInfo timeInfo;
 	private Hero hero;
 
 	public void loadNewGame() {
@@ -31,6 +34,7 @@ public class LoadManager {
 		setHero();
 		setPartyList();
 		setCurrentPosition();
+		timeInfo.setTime(1, 8, 0);
 	}
 
 	public LoadManager() {
@@ -102,5 +106,13 @@ public class LoadManager {
 
 	public void setPartyInfo(PartyInfo partyInfo) {
 		this.partyInfo = partyInfo;
+	}
+
+	public TimeInfo getTimeInfo() {
+		return timeInfo;
+	}
+
+	public void setTimeInfo(TimeInfo timeInfo) {
+		this.timeInfo = timeInfo;
 	}
 }
