@@ -10,7 +10,7 @@ import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.model.Event;
-import com.mygdx.model.EventPack;
+import com.mygdx.model.EventPacket;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 import com.mygdx.state.Assets;
@@ -45,8 +45,8 @@ public class EventManager {
 			case SELECT_EVENT:
 				return doMoveEvent(eventInfo);
 			default:
-				Gdx.app.log("EventManager", "EventTypeEnum 주입 오류");
-				return null;
+				Gdx.app.error("EventManager", "EventTypeEnum 정보가 없습니다.");
+				throw new NullPointerException();
 		}
 	}
 
@@ -56,8 +56,8 @@ public class EventManager {
 			Stage eventStage = stageFactory.makeEventStage(eventSceneIterator);
 			return eventStage;
 		} else {
-			Gdx.app.log("EventManager", "EventInfo - SceneIterator 주입 에러");
-			return null;
+			Gdx.app.error("EventManager", "EventInfo의 SceneIterator 정보가 없습니다.");
+			throw new NullPointerException();
 		}
 	}
 
@@ -92,15 +92,9 @@ public class EventManager {
 	}
 
 	private void addEventRewardQueue(NPC npc) {
-		//RewardInfo rewardInfo = eventQueueInfo.getCurrentEvent().getReward();
-		//if (rewardInfo != null)
-		//	if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED
-		//			|| rewardInfo.getRewardState() == RewardStateEnum.NO_ISSUE)
-		//		rewardManager.addEventReward(rewardInfo);
 	}
 
 	public void finishEvent() {
-		//eventQueueInfo.getCurrentEvent().setEventState(EventStateEnum.CLEARED);
 	}
 
 	public void addEventQueue(NPC npc, int eventNumber, boolean isGreeting) {
@@ -144,12 +138,12 @@ public class EventManager {
 		this.stageFactory = stageFactory;
 	}
 
-	public void setCurrentEventPack(EventPack eventPack) {
+	public void setCurrentEventPack(EventPacket eventPack) {
 
 	}
 
 	//eventQueue에 event를 주입하고 상태를 OPEN한다.
-	public void injectEvent(EventPack eventPack) {
+	public void injectEvent(EventPacket eventPack) {
 		Event injectedEvent = assets.npcMap.get(eventPack.getEventNpc())
 				.getEvent(eventPack.getEventNumber());
 		injectedEvent.setEventState(EventStateEnum.OPENED);

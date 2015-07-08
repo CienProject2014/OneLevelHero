@@ -5,7 +5,7 @@ import java.util.Iterator;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.currentState.StorySectionInfo;
-import com.mygdx.model.EventPack;
+import com.mygdx.model.EventPacket;
 import com.mygdx.state.Assets;
 
 public class StorySectionManager {
@@ -47,7 +47,7 @@ public class StorySectionManager {
 
 	//eventQueue에 이벤트들을 주입하고, eventState를 OPEN한다.
 	private void injectSectionEvent() {
-		Iterator<EventPack> currentStorySectionIterator = storySectionInfo
+		Iterator<EventPacket> currentStorySectionIterator = storySectionInfo
 				.getCurrentStorySection().getEventList().iterator();
 		while (currentStorySectionIterator.hasNext()) {
 			eventManager.injectEvent(currentStorySectionIterator.next());

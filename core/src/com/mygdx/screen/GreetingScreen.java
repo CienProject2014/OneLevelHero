@@ -14,13 +14,13 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
-import com.mygdx.model.EventPack;
+import com.mygdx.model.EventPacket;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
 public class GreetingScreen extends RootScreen {
 	@Autowired
-	protected EventPack eventInfo;
+	protected EventPacket eventInfo;
 
 	// Already libgdx using interface!
 	private Input input = Gdx.input;
@@ -94,11 +94,11 @@ public class GreetingScreen extends RootScreen {
 		}
 	}
 
-	public EventPack getEventInfo() {
+	public EventPacket getEventInfo() {
 		return eventInfo;
 	}
 
-	public void setEventInfo(EventPack eventInfo) {
+	public void setEventInfo(EventPacket eventInfo) {
 		this.eventInfo = eventInfo;
 	}
 }

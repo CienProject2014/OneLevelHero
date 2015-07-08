@@ -1,11 +1,11 @@
 package com.mygdx.currentState;
 
-import java.util.Map;
+import java.util.HashMap;
 
 import com.mygdx.model.StorySection;
 
 public class StorySectionInfo {
-	private Map<String, StorySection> achievedStorySectionMap;
+	private HashMap<Integer, StorySection> achievedStorySectionMap;
 	private int currentStorySectionNumber;
 	private StorySection currentStorySection;
 
@@ -13,7 +13,7 @@ public class StorySectionInfo {
 		//달성 맵에 현재 사용하던 분기 등록
 		if (getCurrentStorySection() != null) {
 			getAchievedStorySectionMap().put(
-					String.valueOf(this.getCurrentStorySectionNumber()),
+					this.getCurrentStorySectionNumber(),
 					this.getCurrentStorySection());
 		}
 	}
@@ -34,12 +34,11 @@ public class StorySectionInfo {
 		this.currentStorySection = currentStorySection;
 	}
 
-	public Map<String, StorySection> getAchievedStorySectionMap() {
+	public HashMap<Integer, StorySection> getAchievedStorySectionMap() {
 		return achievedStorySectionMap;
 	}
 
-	public void setAchievedStorySectionMap(
-			Map<String, StorySection> achievedStorySectionMap) {
+	public void setAchievedStorySectionMap(HashMap<Integer, StorySection> achievedStorySectionMap) {
 		this.achievedStorySectionMap = achievedStorySectionMap;
 	}
 

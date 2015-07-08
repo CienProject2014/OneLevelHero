@@ -2,7 +2,7 @@
   "prologue": {
     "events": [
       {
-        "eventState": "closed",
+        "eventState": "not_opened",
         "eventType": "select_component",
         "reward": {
           "rewardType": "event",

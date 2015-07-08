@@ -4,20 +4,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.Json.Serializable;
-import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.manager.JsonParser;
 
-public class Event implements Serializable {
+public class Event {
 	private String eventName;
 	private EventTypeEnum eventType;
 	private EventStateEnum eventState;
 	private Reward reward;
-	private List<EventScene> eventScenes;
-	private List<String> eventComponent;
+	private ArrayList<EventScene> eventScenes;
+	private ArrayList<String> eventComponent;
 
 	public EventTypeEnum getEventType() {
 		return eventType;
@@ -39,7 +35,7 @@ public class Event implements Serializable {
 		return eventScenes;
 	}
 
-	public void setEventScenes(List<EventScene> eventScenes) {
+	public void setEventScenes(ArrayList<EventScene> eventScenes) {
 		this.eventScenes = eventScenes;
 	}
 
@@ -67,26 +63,8 @@ public class Event implements Serializable {
 		return eventComponent;
 	}
 
-	public void setEventComponent(List<String> eventComponent) {
+	public void setEventComponent(ArrayList<String> eventComponent) {
 		this.eventComponent = eventComponent;
 	}
 
-	@Override
-	public void write(Json json) {
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public void read(Json json, JsonValue jsonData) {
-		eventName = json.readValue("eventName", String.class, jsonData);
-		eventType = EventTypeEnum.findEventTypeEnum(json.readValue("eventType",
-				String.class, jsonData));
-		eventState = EventStateEnum.findEventStateEnum(json.readValue(
-				"eventState", String.class, jsonData));
-		reward = json.readValue("reward", Reward.class, jsonData);
-		eventScenes = JsonParser.parseList(EventScene.class,
-				jsonData.get("eventScenes").toString());
-		eventComponent = json.readValue("eventComponent", ArrayList.class,
-				String.class, jsonData);
-	}
 }

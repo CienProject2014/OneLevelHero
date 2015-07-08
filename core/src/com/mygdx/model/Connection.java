@@ -3,13 +3,9 @@ package com.mygdx.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.Json.Serializable;
-import com.badlogic.gdx.utils.JsonValue;
-
-public class Connection implements Serializable {
+public class Connection {
 	private int roadLength;
-	private List<String> roadMonster;
+	private ArrayList<String> roadMonster;
 	private String arrowName;
 
 	public int getroadLength() {
@@ -20,24 +16,11 @@ public class Connection implements Serializable {
 		this.roadLength = roadLength;
 	}
 
-	@Override
-	public void write(Json json) {
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public void read(Json json, JsonValue jsonData) {
-		roadLength = json.readValue("roadLength", Integer.class, jsonData);
-		roadMonster = json.readValue("roadMonster", ArrayList.class,
-				String.class, jsonData);
-		arrowName = json.readValue("arrowName", String.class, jsonData);
-	}
-
 	public List<String> getRoadMonster() {
 		return roadMonster;
 	}
 
-	public void setRoadMonster(List<String> roadMonster) {
+	public void setRoadMonster(ArrayList<String> roadMonster) {
 		this.roadMonster = roadMonster;
 	}
 

@@ -14,9 +14,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.manager.JsonParser;
 import com.mygdx.model.JsonStringFile;
 import com.mygdx.model.TextureFile;
+import com.mygdx.util.JsonParser;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
 public class StaticAssets {

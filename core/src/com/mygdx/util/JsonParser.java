@@ -1,4 +1,4 @@
-package com.mygdx.manager;
+package com.mygdx.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,8 +25,8 @@ public class JsonParser {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T, K> Map<T, K> parseDoubleGenericMap(Class<T> clazz1,
-			Class<K> clazz2, String jsonString) {
+	public static <T, K> Map<T, K> parseMap(Class<T> clazz1, Class<K> clazz2,
+			String jsonString) {
 		Map<T, JsonValue> parseMap = JSON.fromJson(HashMap.class, jsonString);
 		Map<T, K> result = new HashMap<T, K>();
 		for (T key : parseMap.keySet())

@@ -38,7 +38,7 @@
         "target": "cobweb"
       },
       "601": {
-        "condtionType": "move",
+        "conditionType": "move",
         "target": "winterfall"
       }
     }

@@ -60,6 +60,9 @@ public class GameUiStage extends OneLevelStage {
 	private float realheight;
 	private float realwidth;
 
+	private final String STATUS_MESSAGE = "[ 스테이터스 ]";
+	private final String REWARD_MESSAGE = "[ 보상 ]";
+
 	public Stage makeStage() {
 		// 초기화
 		uiTable = new Table();
@@ -129,8 +132,8 @@ public class GameUiStage extends OneLevelStage {
 		}
 		*/
 		// 알림 메시지
-		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", assets.skin,
-				partyInfo);
+		statusMessagePopup = new StatusMessagePopup(STATUS_MESSAGE,
+				assets.skin, partyInfo);
 		addListener();
 		makeTable();
 		addActor(uiTable);

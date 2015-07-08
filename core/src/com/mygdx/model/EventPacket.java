@@ -2,9 +2,6 @@ package com.mygdx.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.Json.Serializable;
-import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.state.Assets;
 
@@ -15,13 +12,12 @@ import com.mygdx.state.Assets;
  *
  */
 
-public class EventPack implements Serializable {
+public class EventPacket {
 	@Autowired
 	private Assets assets;
 
 	private String eventNpc;
 	private int eventNumber;
-	private Event currentEvent;
 	private boolean greeting;
 
 	public boolean isGreeting() {
@@ -35,15 +31,8 @@ public class EventPack implements Serializable {
 	public EventTypeEnum getEventType() {
 		if (isGreeting())
 			return EventTypeEnum.SELECT_EVENT;
-		return getCurrentEvent().getEventType();
-	}
-
-	public Event getCurrentEvent() {
-		return currentEvent;
-	}
-
-	public void setCurrentEvent(Event currentEvent) {
-		this.currentEvent = currentEvent;
+		return assets.npcMap.get(getEventNpc()).getEvent(getEventNumber())
+				.getEventType();
 	}
 
 	public int getEventNumber() {
@@ -52,16 +41,6 @@ public class EventPack implements Serializable {
 
 	public void setEventNumber(int eventNumber) {
 		this.eventNumber = eventNumber;
-	}
-
-	@Override
-	public void write(Json json) {
-	}
-
-	@Override
-	public void read(Json json, JsonValue jsonData) {
-		eventNpc = json.readValue("eventNpc", String.class, jsonData);
-		eventNumber = json.readValue("eventNumber", Integer.class, jsonData);
 	}
 
 	public String getEventNpc() {
