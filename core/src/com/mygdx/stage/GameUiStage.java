@@ -24,9 +24,10 @@ import com.mygdx.manager.RewardManager;
 import com.mygdx.model.Hero;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
+import com.mygdx.state.StaticAssets;
 import com.mygdx.ui.StatusBarUi;
 
-public class GameUiStage extends OneLevelStage {
+public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private RewardManager rewardManager;
 
@@ -66,8 +67,8 @@ public class GameUiStage extends OneLevelStage {
 	public Stage makeStage() {
 		// 초기화
 		uiTable = new Table();
-		realheight = assets.windowHeight;
-		realwidth = assets.windowWidth;
+		realheight = StaticAssets.windowHeight;
+		realwidth = StaticAssets.windowWidth;
 		hpbar = new StatusBarUi[3];
 		expbar = new StatusBarUi[3];
 		turnbar = new StatusBarUi[3];
@@ -105,7 +106,8 @@ public class GameUiStage extends OneLevelStage {
 		bagButton = new ImageButton(assets.atlasUiMap.get("bagButton"),
 				assets.atlasUiMap.get("bagButton"));
 		worldMapButton = new TextButton("worldMap", style);
-		leftTimeButton = new TextButton("12h30m", style);
+		leftTimeButton = new TextButton(timeInfo.getDay() + "d"
+				+ timeInfo.getHour() + "h" + timeInfo.getMinute() + "m", style);
 		helpButton = new ImageButton(assets.atlasUiMap.get("helpButton"),
 				assets.atlasUiMap.get("helpButton"));
 		optionButton = new ImageButton(assets.atlasUiMap.get("optionButton"),

@@ -11,14 +11,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.currentState.MovingInfo;
 import com.mygdx.manager.MovingManager;
+import com.mygdx.state.StaticAssets;
 
-public class MovingScreen extends RootScreen {
+public class MovingScreen extends BaseScreen {
 	@Autowired
 	private MovingManager movingManager;
-	@Autowired
-	private MovingInfo movingInfo;
 	private Stage stage;
 	private TextButton goButton;
 	private TextButton backButton;
@@ -50,7 +48,7 @@ public class MovingScreen extends RootScreen {
 		Gdx.input.setInputProcessor(stage);
 
 		background = new Image(texture);
-		background.setSize(assets.windowWidth, assets.windowHeight);
+		background.setSize(StaticAssets.windowWidth, StaticAssets.windowHeight);
 
 		goButton.addListener(new InputListener() {
 			@Override
@@ -102,11 +100,4 @@ public class MovingScreen extends RootScreen {
 		this.movingManager = movingManager;
 	}
 
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
-	}
 }

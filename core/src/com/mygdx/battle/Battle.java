@@ -3,7 +3,7 @@ package com.mygdx.battle;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.model.LivingUnit;
+import com.mygdx.model.Unit;
 
 public class Battle {
 	private Random random = new Random();
@@ -34,15 +34,16 @@ public class Battle {
 		Gdx.app.log("정보", "전투패배");
 	}
 
-	public void attack(LivingUnit attacker, LivingUnit defender) {
-		defender.getStatus().setHp(
-				defender.getStatus().getHp() + defender.getStatus().getDef()
-						- defender.getStatus().getAtk());
+	public void attack(Unit attacker, Unit defender) {
+		int attackDmg = attacker.getStatus().getAtk();
+		int defendDmg = defender.getStatus().getDef();
+		int defendHp = defender.getStatus().getHp();
+		defender.getStatus().setHp(defendHp + (defendDmg - attackDmg));
 		Gdx.app.log("Battle", attacker.getName() + "가 " + defender.getName()
 				+ "를 공격하였습니다!");
 	}
 
-	public void skillAttack(LivingUnit unit, String skillID) {
+	public void skillAttack(Unit unit, String skillID) {
 		Gdx.app.log("Battle", unit.getName() + "가 " + skillID + "를 사용하였습니다!");
 	}
 }

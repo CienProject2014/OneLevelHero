@@ -18,7 +18,7 @@ import com.mygdx.model.EventPacket;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
-public class GreetingScreen extends RootScreen {
+public class GreetingScreen extends BaseScreen {
 	@Autowired
 	protected EventPacket eventInfo;
 

@@ -2,14 +2,15 @@ package com.mygdx.stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
-import com.mygdx.currentState.PositionInfo;
+import com.mygdx.currentState.TimeInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.CameraManager;
 import com.mygdx.state.Assets;
-import com.uwsoft.editor.renderer.Overlap2DStage;
 
-public class OverlapStage extends Overlap2DStage {
+public class BaseOneLevelStage extends Stage {
 	@Autowired
 	protected Assets assets;
 
@@ -22,7 +23,10 @@ public class OverlapStage extends Overlap2DStage {
 	@Autowired
 	protected PartyInfo partyInfo;
 	@Autowired
-	protected PositionInfo positionInfo;
+	protected TimeInfo timeInfo;
+
+	@Autowired
+	protected MovingInfo movingInfo;
 
 	public Assets getAssets() {
 		return assets;
@@ -56,11 +60,19 @@ public class OverlapStage extends Overlap2DStage {
 		this.partyInfo = partyInfo;
 	}
 
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
+	public TimeInfo getTimeInfo() {
+		return timeInfo;
 	}
 
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
+	public void setTimeInfo(TimeInfo timeInfo) {
+		this.timeInfo = timeInfo;
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
 	}
 }

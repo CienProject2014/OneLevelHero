@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
@@ -12,7 +13,7 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.state.Assets;
 
-public class RootScreen implements Screen {
+public abstract class BaseScreen implements Screen {
 	@Autowired
 	protected Assets assets;
 
@@ -25,9 +26,10 @@ public class RootScreen implements Screen {
 	protected MusicManager musicManager;
 	@Autowired
 	protected EventManager eventManager;
-
 	@Autowired
 	protected PositionInfo positionInfo;
+	@Autowired
+	protected MovingInfo movingInfo;
 
 	@Override
 	public void render(float delta) {
@@ -104,5 +106,13 @@ public class RootScreen implements Screen {
 
 	public void setPositionInfo(PositionInfo positionInfo) {
 		this.positionInfo = positionInfo;
+	}
+
+	public MovingInfo getMovingInfo() {
+		return movingInfo;
+	}
+
+	public void setMovingInfo(MovingInfo movingInfo) {
+		this.movingInfo = movingInfo;
 	}
 }

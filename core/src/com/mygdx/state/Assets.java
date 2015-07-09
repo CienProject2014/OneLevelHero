@@ -15,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.currentState.RoadInfo;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.model.AtlasUiFile;
@@ -47,9 +46,6 @@ public class Assets {
 
 	public float soundVolume = 0.5f;
 	public float musicVolume = 0.5f;
-
-	public float windowWidth;
-	public float windowHeight;
 
 	public Map<String, RoadInfo> dungeonMap;
 
@@ -117,10 +113,12 @@ public class Assets {
 
 	// Stage 크기 설정
 	private void loadSize(Stage stage) {
-		Gdx.app.debug("Assets", "loadWindowSize()");
-		Viewport vp = stage.getViewport();
-		windowWidth = vp.getViewportWidth();
-		windowHeight = vp.getViewportHeight();
+		// TODO StaticAssets으로 이동
+		/*
+		 * Gdx.app.debug("Assets", "loadWindowSize()"); Viewport vp =
+		 * stage.getViewport(); windowWidth = vp.getViewportWidth();
+		 * windowHeight = vp.getViewportHeight();
+		 */
 	}
 
 	// JsonFile의 path를 읽어온다.

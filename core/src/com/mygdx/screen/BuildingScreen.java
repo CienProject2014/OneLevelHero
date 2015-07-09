@@ -5,7 +5,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 
-public class BuildingScreen extends RootScreen {
+public class BuildingScreen extends BaseScreen {
 	private Stage buildingStage;
 	private Stage gameUiStage;
 

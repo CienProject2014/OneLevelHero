@@ -14,8 +14,9 @@ import com.mygdx.currentState.EventInfo;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PlaceManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.state.StaticAssets;
 
-public class SelectStage extends OneLevelStage {
+public class SelectStage extends BaseOneLevelStage {
 	@Autowired
 	protected EventManager eventManager;
 	@Autowired
@@ -66,8 +67,8 @@ public class SelectStage extends OneLevelStage {
 	}
 
 	protected void setButtonSize() {
-		final float buttonSize[] = { assets.windowWidth * 0.208f,
-				assets.windowHeight * 0.185f };
+		final float buttonSize[] = { StaticAssets.windowWidth * 0.208f,
+				StaticAssets.windowHeight * 0.185f };
 		for (TextButton chatButton : chatButtons)
 			chatButton.setSize(buttonSize[0], buttonSize[1]);
 	}

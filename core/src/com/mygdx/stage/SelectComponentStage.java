@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.NextSectionPacket;
+import com.mygdx.state.StaticAssets;
 
 public class SelectComponentStage extends SelectStage {
 	@Autowired
@@ -43,8 +44,10 @@ public class SelectComponentStage extends SelectStage {
 
 	private void setComponentButtonPosition() {
 		final float buttonPosition[][] = {
-				{ assets.windowWidth * 0.3f, assets.windowHeight * 0.6f },
-				{ assets.windowWidth * 0.6f, assets.windowHeight * 0.6f } };
+				{ StaticAssets.windowWidth * 0.3f,
+						StaticAssets.windowHeight * 0.6f },
+				{ StaticAssets.windowWidth * 0.6f,
+						StaticAssets.windowHeight * 0.6f } };
 		for (int i = 0; i < eventInfo.getCurrentEvent().getEventComponent()
 				.size(); i++) {
 			chatButtons.get(i).setPosition(buttonPosition[i][0],

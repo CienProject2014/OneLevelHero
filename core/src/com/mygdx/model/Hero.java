@@ -1,6 +1,6 @@
 package com.mygdx.model;
 
-public class Hero extends LivingUnit implements Fightable {
+public class Hero extends Unit {
 	private Equipment equipment;
 
 	public Equipment getEquipment() {

@@ -5,7 +5,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 
-public class StatusScreen extends RootScreen {
+public class StatusScreen extends BaseScreen {
 	private Stage statusStage;
 
 	@Override

@@ -45,10 +45,11 @@
 	<bean id="screenFactory" class="com.mygdx.factory.ScreenFactory"/>
 	<bean id="stageFactory" class="com.mygdx.factory.StageFactory"/>
 
-
+	<bean id="animationManager" class="com.mygdx.manager.AnimationManager"/>
 	<bean id="battleManager" class="com.mygdx.manager.BattleManager">
 		<property name="movingInfo" ref="movingInfo"/>
 		<property name="partyInfo" ref="partyInfo"/>
+		<property name="animationManager" ref="animationManager"/>
 	</bean>
 	<bean id="cameraManager" class="com.mygdx.manager.CameraManager">
 	</bean>
@@ -68,13 +69,15 @@
 		<property name="eventManager" ref="eventManager"/>
 		<property name="screenFactory" ref="screenFactory"/>
 		<property name="positionInfo" ref="positionInfo"/>
+		
 	</bean>
 	<bean id="loadManager" class="com.mygdx.manager.LoadManager">
 		<property name="assets" ref="assets"/>
 		<property name="positionInfo" ref="positionInfo"/>
 		<property name="movingInfo" ref="movingInfo"/>
 		<property name="partyInfo" ref="partyInfo"/>
-		<property name="storySectionManager" ref="storySectionManager"></property>
+		<property name="storySectionManager" ref="storySectionManager"/>
+		<property name="timeInfo" ref="timeInfo"/>
 	</bean>
 	<bean id="monsterManager" class="com.mygdx.manager.MonsterManager">
 		<property name="assets" ref="assets"/>
@@ -129,8 +132,18 @@
 		<property name="assets" ref="assets"/>
 	</bean>
 
-	
-	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen" scope="prototype"/>
+	<bean id="baseScreen" class="com.mygdx.screen.BaseScreen" scope="prototype">
+		<property name="assets" ref="assets"/>
+		<property name="screenFactory" ref="screenFactory"/>
+		<property name="stageFactory" ref="stageFactory"/>
+		<property name="musicManager" ref="musicManager"/>
+		<property name="eventManager" ref="eventManager"/>
+		<property name="positionInfo" ref="positionInfo"/>
+		<property name="movingInfo" ref="movingInfo"/>
+	</bean>
+	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen" scope="prototype">
+	    <property name="animationManager" ref="animationManager"/>
+	</bean>
 	<bean id="bgmScreen" class="com.mygdx.screen.BGMScreen" scope="prototype"/>
 	<bean id="bonusPointScreen" class="com.mygdx.screen.BonusPointScreen" scope="prototype"/>
 	<bean id="buildingScreen" class="com.mygdx.screen.BuildingScreen" scope="prototype"/>
@@ -155,39 +168,32 @@
 	</bean>
 	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen" scope="prototype"/>
 	<bean id="movingScreen" class="com.mygdx.screen.MovingScreen" scope="prototype">
-		<property name="movingInfo" ref="movingInfo"/>
 		<property name="movingManager" ref="movingManager"/>
 	</bean>
 	<bean id="optionScreen" class="com.mygdx.screen.OptionScreen" scope="prototype"/>
-	<bean id="rootScreen" class="com.mygdx.screen.RootScreen" scope="prototype">
-		<property name="assets" ref="assets"/>
-		<property name="screenFactory" ref="screenFactory"/>
-		<property name="stageFactory" ref="stageFactory"/>
-		<property name="musicManager" ref="musicManager"/>
-		<property name="eventManager" ref="eventManager"/>
-		<property name="positionInfo" ref="positionInfo"/>
-	</bean>
+	
 	<bean id="saveScreen" class="com.mygdx.screen.SaveScreen" scope="prototype"/>
 	<bean id="statusScreen" class="com.mygdx.screen.StatusScreen" scope="prototype"/>
 	<bean id="villageScreen" class="com.mygdx.screen.VillageScreen" scope="prototype"/>
 	<bean id="worldMapScreen" class="com.mygdx.screen.WorldMapScreen" scope="prototype"/>
 
-	<bean id="oneLevelStage" class="com.mygdx.stage.OneLevelStage" scope="prototype">
+	<bean id="baseOneLevelStage" class="com.mygdx.stage.BaseOneLevelStage" scope="prototype">
 		<property name="assets" ref="assets"/>
 		<property name="screenFactory" ref="screenFactory"/>
 		<property name="cameraManager" ref="cameraManager"/>
 		<property name="partyInfo" ref="partyInfo"/>
+		<property name="movingInfo" ref="movingInfo"/>
 	</bean>
-	<bean id="overlapStage" class="com.mygdx.stage.OverlapStage" scope="prototype">
+	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage" scope="prototype">
 		<property name="rm" ref="rm"/>
 		<property name="assets" ref="assets"/>
-		<property name="screenFactory" ref="screenFactory"/>
 		<property name="cameraManager" ref="cameraManager"/>
+		<property name="movingInfo" ref="movingInfo"/>
 		<property name="partyInfo" ref="partyInfo"/>
 		<property name="positionInfo" ref="positionInfo"/>
+		<property name="screenFactory" ref="screenFactory"/>
 	</bean>
 	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype">
-		<property name="movingInfo" ref="movingInfo"/>
 	</bean>
 	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage" scope="prototype">
 		<property name="eventManager" ref="eventManager"/>
@@ -208,7 +214,6 @@
 	</bean>
 	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype"/>
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage" scope="prototype">
-		<property name="movingInfo" ref="movingInfo"/>
 	</bean>
 	<bean id="selectEventStage" class="com.mygdx.stage.SelectEventStage" scope="prototype">
 		<property name="eventManager" ref="eventManager"/>
