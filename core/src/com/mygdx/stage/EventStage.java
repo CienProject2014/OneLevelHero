@@ -51,7 +51,8 @@ public class EventStage extends OneLevelStage {
 					if (eventSceneIterator.hasNext()) {
 						setScene(eventSceneIterator.next());
 					} else {
-						eventManager.finishEvent(); // 해당 이벤트 상태를 종료처리
+						eventQueueManager.runEventQueue();
+						Gdx.app.log("EventStage", "runEventQueue");
 					}
 					return true;
 				}

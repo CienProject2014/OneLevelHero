@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mygdx.controller.SaveVersion;
+import com.mygdx.enums.SaveVersion;
 
 public class CurrentState implements Serializable {
 	// (1) 버전관리

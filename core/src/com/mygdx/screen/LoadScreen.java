@@ -8,8 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.controller.SaveVersion;
 import com.mygdx.currentState.CurrentState;
+import com.mygdx.enums.SaveVersion;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventQueueManager;
 import com.mygdx.manager.LoadManager;
@@ -65,6 +65,7 @@ public class LoadScreen extends RootScreen {
 				currentState.setVersion(SaveVersion.NEW);
 				loadManager.loadNewGame();
 				eventQueueManager.runEventQueue();
+				Gdx.app.log("LoadScreen", "runEventQueue");
 			}
 		});
 

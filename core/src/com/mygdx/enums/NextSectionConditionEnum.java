@@ -1,16 +1,17 @@
 package com.mygdx.enums;
 
 public enum NextSectionConditionEnum {
-	BATTLE("battle"), TIME("time"), MOVE("move"), SELECT("select");
-	private String nextSectionCondition;
+	BATTLE("battle"), TIME("time"), MOVE("move"), SELECT("select"), SELECT_COMPONENT(
+			"select_component");
+	private String code;
 
-	NextSectionConditionEnum(String nextSectionCondition) {
-		this.nextSectionCondition = nextSectionCondition;
+	NextSectionConditionEnum(String code) {
+		this.code = code;
 	}
 
 	@Override
 	public String toString() {
-		return nextSectionCondition;
+		return code;
 	}
 
 	public static NextSectionConditionEnum findNextSectionConditionEnum(

@@ -2,45 +2,56 @@
   "101": {
     "eventList": [
       {
-        "eventNpc" : "prologue",
-        "eventNumber" : "0"
+        "eventNpc": "prologue",
+        "eventNumber": "0"
       }
     ],
-    "nextSection": {
-      "102": {
-        "conditionType": "select",
-        "target": "예"
+    "nextSectionList": [
+      {
+        "nextSectionNumber": "102",
+        "conditionType": "select_component",
+        "targetComponent": "예"
+      },
+      {
+        "nextSectionNumber": "113",
+        "conditionType": "select_component",
+        "targetComponent": "아니오"
       }
-    }
+    ]
   },
   "102": {
     "eventList": [
       {
-        "eventNpc" : "waiji",
-        "eventNumber" : "0"
+        "eventNpc": "prologue",
+        "eventNumber": "1"
       }
     ],
-    "nextSection": {
-      "201": {
+    "nextSectionList": [
+      {
+        "nextSectionNumber": "201",
         "conditionType": "move",
-        "target": "redrose_castle"
+        "targetComponent": "redrose_castle"
       },
-      "301": {
+      {
+        "nextSectionNumber": "301",
         "conditionType": "move",
-        "target": "middle_ridge"
+        "targetComponent": "middle_ridge"
       },
-      "401": {
+      {
+        "nextSectionNumber": "401",
         "conditionType": "move",
-        "target": "kadilla_castle"
+        "targetComponent": "kadilla_castle"
       },
-      "501": {
+      {
+        "nextSectionNumber": "501",
         "conditionType": "move",
-        "target": "cobweb"
+        "targetComponent": "cobweb"
       },
-      "601": {
+      {
+        "nextSectionNumber": "601",
         "conditionType": "move",
-        "target": "winterfall"
+        "targetComponent": "winterfall"
       }
-    }
+    ]
   }
 }

@@ -23,7 +23,7 @@
         ]
       },
       {
-        "eventState": "opened",
+        "eventState": "not_opened",
         "eventType": "chat",
         "reward": {
           "rewardType": "event",
@@ -46,6 +46,16 @@
             "script": "마침 근방을 지나가던 용사 일행은, 곧바로 마왕성에 쳐들어간다.",
             "characterPath": "rabbit3",
             "backgroundPath": "scene3"
+          },
+          {
+          	"script" : "저게 마왕인가!",
+          	"characterPath" : "yongsa_204",
+          	"backgroundPath": "bg_devilcastle_01"
+          },
+          {
+          	"script" : "이얍!",
+          	"characterPath" : "parath_203",
+          	"backgroundPath" : "bg_devilcastle_01"
           }
         ]
       },

@@ -1,10 +1,9 @@
 package com.mygdx.manager;
 
-import java.util.Iterator;
+import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
@@ -29,10 +28,10 @@ public class EventQueueManager {
 	private PositionInfo positionInfo;
 
 	public void runEventQueue() {
-		Iterator<Event> eventQueueIterator = eventInfo.getEventQueue()
-				.iterator();
-		if (eventQueueIterator.hasNext()) {
-			eventInfo.setCurrentEvent(eventQueueIterator.next());
+		Queue<Event> eventQueue = eventInfo.getEventQueue();
+		if (!eventQueue.isEmpty()) {
+			eventInfo.setCurrentEvent(eventQueue.peek());
+			eventInfo.getClosedEventList().add(eventQueue.poll());
 			screenFactory.show(ScreenEnum.EVENT);
 		} else {
 			goPreviousPlace();
@@ -40,26 +39,8 @@ public class EventQueueManager {
 	}
 
 	private void goPreviousPlace() {
-		switch (positionInfo.getCurrentPlace()) {
-			case BUILDING:
-				screenFactory.show(ScreenEnum.BUILDING);
-				break;
-			case VILLAGE:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			case DUNGEON:
-				// screenFactory.show(ScreenEnum.DUNGEON);
-				screenFactory.show(ScreenEnum.VILLAGE); // FIXME
-				break;
-			case FORK:
-				// screenFactory.show(ScreenEnum.FORK);
-				screenFactory.show(ScreenEnum.VILLAGE); // FIXME
-				break;
-			default:
-				Gdx.app.log("EventScreen",
-						"positionInfo.getCurrentPlace() is not valid");
-				break;
-		}
+		screenFactory.show(ScreenEnum.findScreenEnum(positionInfo
+				.getCurrentPlace().toString()));
 	}
 
 	public EventInfo getEventInfo() {

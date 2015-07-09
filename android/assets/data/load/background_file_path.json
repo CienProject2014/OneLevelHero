@@ -37,5 +37,8 @@
   },
   "black_background":{
   	"filePath" : "texture/prologue/black_background.png"
+  },
+  "bg_devilcastle_01":{
+  	"filePath" : "texture/prologue/bg_devilcastle_01.png"
   }
 }

@@ -1,11 +1,14 @@
 package com.mygdx.currentState;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.mygdx.model.NextSectionPacket;
 import com.mygdx.model.StorySection;
 
 public class StorySectionInfo {
-	private HashMap<Integer, StorySection> achievedStorySectionMap;
+	private HashMap<Integer, StorySection> achievedStorySectionMap = new HashMap<>();
+	private ArrayList<NextSectionPacket> nextStorySectionList = new ArrayList<>();
 	private int currentStorySectionNumber;
 	private StorySection currentStorySection;
 
@@ -38,8 +41,18 @@ public class StorySectionInfo {
 		return achievedStorySectionMap;
 	}
 
-	public void setAchievedStorySectionMap(HashMap<Integer, StorySection> achievedStorySectionMap) {
+	public void setAchievedStorySectionMap(
+			HashMap<Integer, StorySection> achievedStorySectionMap) {
 		this.achievedStorySectionMap = achievedStorySectionMap;
+	}
+
+	public ArrayList<NextSectionPacket> getNextStorySectionList() {
+		return nextStorySectionList;
+	}
+
+	public void setNextStorySectionList(
+			ArrayList<NextSectionPacket> nextStorySectionList) {
+		this.nextStorySectionList = nextStorySectionList;
 	}
 
 }

@@ -5,10 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -21,7 +19,7 @@ import com.mygdx.manager.PlaceManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.NPC;
 
-public class SelectButtonStage extends OneLevelStage {
+public class SelectEventStage extends OneLevelStage {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -36,7 +34,6 @@ public class SelectButtonStage extends OneLevelStage {
 	private int eventCount;
 	private NPC eventNpc;
 	private final int MAX_EVENT_LENGTH = 6;
-	private TextButton exitButton;
 
 	private void addActors() {
 		for (TextButton chatButton : chatButtons)
@@ -59,42 +56,13 @@ public class SelectButtonStage extends OneLevelStage {
 		}
 	}
 
-	private void addComponentButtonListener() {
-		final List<String> componentString = new ArrayList<>();
-		for (int i = 0; i < eventInfo.getCurrentEvent().getEventComponent()
-				.size(); i++) {
-			componentString.add(eventInfo.getCurrentEvent().getEventComponent()
-					.get(i));
-			final String currentString = componentString.get(i);
-			chatButtons.get(i).addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					storySectionManager.goNextStorySection(currentString);
-				};
-			});
-		}
-	}
-
 	public Stage makeStage() {
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
 		chatStyles = new ArrayList<TextButtonStyle>();
 
-		switch (eventInfo.getEventQueue().peek().getEventType()) {
-			case SELECT_EVENT:
-				showEventButton();
-				setEventButtonPosition();
-				addEventButtonListener();
-				setExitButton();
-				break;
-			case SELECT_COMPONENT:
-				showComponentButton();
-				setComponentButtonPosition();
-				addComponentButtonListener();
-				break;
-			default:
-				Gdx.app.log("SelectButtonStage", "eventType 주입 에러");
-				break;
-		}
+		showEventButton();
+		setEventButtonPosition();
+		addEventButtonListener();
 		setButtonSize();
 		addActors();
 		return this;
@@ -102,16 +70,6 @@ public class SelectButtonStage extends OneLevelStage {
 
 	private void showEventButton() {
 		for (int i = 0; i < eventCount; i++) {
-			chatStyles.add(new TextButtonStyle(assets.chatButton[i],
-					assets.chatButton[i], assets.chatButton[i], assets.font));
-			chatButtons.add(new TextButton("", chatStyles.get(i)));
-		}
-
-	}
-
-	private void showComponentButton() {
-		for (int i = 0; i < eventInfo.getEventQueue().peek()
-				.getEventComponent().size(); i++) {
 			chatStyles.add(new TextButtonStyle(assets.chatButton[i],
 					assets.chatButton[i], assets.chatButton[i], assets.font));
 			chatButtons.add(new TextButton("", chatStyles.get(i)));
@@ -131,39 +89,6 @@ public class SelectButtonStage extends OneLevelStage {
 			chatButtons.get(i).setPosition(buttonPosition[i][0],
 					buttonPosition[i][1]);
 		}
-	}
-
-	private void setComponentButtonPosition() {
-		final float buttonPosition[][] = {
-				{ assets.windowWidth * 0.3f, assets.windowHeight * 0.6f },
-				{ assets.windowWidth * 0.6f, assets.windowHeight * 0.6f } };
-		for (int i = 0; i < eventInfo.getEventQueue().peek()
-				.getEventComponent().size(); i++) {
-			chatButtons.get(i).setPosition(buttonPosition[i][0],
-					buttonPosition[i][1]);
-
-		}
-	}
-
-	private void setExitButton() {
-		exitButton = new TextButton("나가기", assets.skin);
-		exitButton.center();
-		exitButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				placeManager.goPreviousPlace();
-				event.getListenerActor().setVisible(false);
-			}
-		});
-
-		addActor(exitButton);
 	}
 
 	private void setButtonSize() {
@@ -204,4 +129,5 @@ public class SelectButtonStage extends OneLevelStage {
 	public void setStorySectionManager(StorySectionManager storySectionManager) {
 		this.storySectionManager = storySectionManager;
 	}
+
 }

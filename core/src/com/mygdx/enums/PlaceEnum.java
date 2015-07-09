@@ -2,20 +2,20 @@ package com.mygdx.enums;
 
 public enum PlaceEnum {
 	BUILDING("building"), FORK("fork"), VILLAGE("village"), DUNGEON("dungeon");
-	private String placeEnumString;
+	private String code;
 
-	PlaceEnum(String placeEnumString) {
-		this.placeEnumString = placeEnumString;
+	PlaceEnum(String code) {
+		this.code = code;
 	}
 
 	@Override
 	public String toString() {
-		return placeEnumString;
+		return code;
 	}
 
-	public static PlaceEnum findPlaceEnum(String placeEnumString) {
+	public static PlaceEnum findPlaceEnum(String code) {
 		for (PlaceEnum placeEnum : PlaceEnum.values()) {
-			if (placeEnum.toString().equals(placeEnumString))
+			if (placeEnum.toString().equals(code))
 				return placeEnum;
 		}
 		return null;

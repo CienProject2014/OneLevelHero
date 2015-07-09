@@ -42,7 +42,7 @@ public class LoadManager {
 
 	private void setCurrentStorySection() {
 		// 분기 정보 주입
-		storySectionManager.setCurrentStorySection(101);
+		storySectionManager.setNewSection(101);
 	}
 
 	private void setCurrentPosition() {

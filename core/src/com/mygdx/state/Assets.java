@@ -66,7 +66,7 @@ public class Assets {
 	public Map<String, Monster> monsterMap;
 	public Map<String, Village> villageMap;
 	public Map<String, WorldNode> worldNodeInfoMap;
-	public Map<String, StorySection> storySectionMap;
+	public Map<Integer, StorySection> storySectionMap;
 
 	public Assets() {
 		Gdx.app.debug("OneLevelHeroApplicationContext", "Assets Bean 우선 로드");
@@ -165,7 +165,8 @@ public class Assets {
 	}
 
 	private void loadStoryInfo() {
-		storySectionMap = JsonParser.parseMap(StorySection.class,
+		storySectionMap = JsonParser.parseMap(Integer.class,
+				StorySection.class,
 				jsonStringMap.get(JsonEnum.STORY_JSON.toString()));
 	}
 

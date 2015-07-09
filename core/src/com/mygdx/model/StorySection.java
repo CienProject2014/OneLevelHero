@@ -1,21 +1,11 @@
 package com.mygdx.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class StorySection {
-	private String sectionName;
 	private ArrayList<EventPacket> eventList;
-	private HashMap<String, NextSectionCondition> nextSection;
-
-	public String getSectionName() {
-		return sectionName;
-	}
-
-	public void setSectionName(String sectionName) {
-		this.sectionName = sectionName;
-	}
+	private ArrayList<NextSectionPacket> nextSectionList;
 
 	public List<EventPacket> getEventList() {
 		return eventList;
@@ -25,11 +15,12 @@ public class StorySection {
 		this.eventList = eventList;
 	}
 
-	public HashMap<String, NextSectionCondition> getNextSection() {
-		return nextSection;
+	public ArrayList<NextSectionPacket> getNextSectionList() {
+		return nextSectionList;
 	}
 
-	public void setNextSection(HashMap<String, NextSectionCondition> nextSection) {
-		this.nextSection = nextSection;
+	public void setNextSectionList(
+			ArrayList<NextSectionPacket> nextSectionList) {
+		this.nextSectionList = nextSectionList;
 	}
 }

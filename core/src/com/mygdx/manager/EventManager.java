@@ -41,7 +41,7 @@ public class EventManager {
 			case CREDIT:
 				return doCreditEventeventInfo();
 			case SELECT_COMPONENT:
-				return doSelectComponentEvent(eventInfo);
+				return getSelectComponentEvent(eventInfo);
 			case SELECT_EVENT:
 				return doMoveEvent(eventInfo);
 			default:
@@ -50,7 +50,7 @@ public class EventManager {
 		}
 	}
 
-	private Stage doSelectComponentEvent(EventInfo eventInfo) {
+	private Stage getSelectComponentEvent(EventInfo eventInfo) {
 		Iterator<EventScene> eventSceneIterator = getEventSceneIterator(eventInfo);
 		if (eventSceneIterator.hasNext()) {
 			Stage eventStage = stageFactory.makeEventStage(eventSceneIterator);
@@ -81,6 +81,12 @@ public class EventManager {
 			return null;
 		}
 
+	}
+
+	public Event getEvent(EventPacket eventPacket) {
+		Event event = assets.npcMap.get(eventPacket.getEventNpc()).getEvent(
+				eventPacket.getEventNumber());
+		return event;
 	}
 
 	public Iterator<EventScene> getEventSceneIterator(EventInfo eventInfo) {
@@ -143,11 +149,11 @@ public class EventManager {
 	}
 
 	//eventQueue에 event를 주입하고 상태를 OPEN한다.
-	public void injectEvent(EventPacket eventPack) {
-		Event injectedEvent = assets.npcMap.get(eventPack.getEventNpc())
+	public void insertEvent(EventPacket eventPack) {
+		Event insertedEvent = assets.npcMap.get(eventPack.getEventNpc())
 				.getEvent(eventPack.getEventNumber());
-		injectedEvent.setEventState(EventStateEnum.OPENED);
-		eventInfo.getEventQueue().add(injectedEvent);
+		insertedEvent.setEventState(EventStateEnum.OPENED);
+		eventInfo.getEventQueue().add(insertedEvent);
 	}
 
 	public Assets getAssets() {

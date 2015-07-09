@@ -45,7 +45,7 @@ public class GreetingScreen extends RootScreen {
 		final NPC npc = assets.npcMap.get(eventInfo.getEventNpc());
 		greetingScenes = npc.getGreeting().getEventScenes();
 
-		selectButtonStage = stageFactory.makeStage(StageEnum.SELECT_BUTTON);
+		selectButtonStage = stageFactory.makeStage(StageEnum.SELECT_EVENT);
 		// for shuffle
 		List<EventScene> shuffleList = new ArrayList<EventScene>(greetingScenes);
 		Collections.shuffle(shuffleList);
