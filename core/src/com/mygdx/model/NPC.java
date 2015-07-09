@@ -1,19 +1,18 @@
 package com.mygdx.model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 
 public class NPC extends Unit {
-	private int eventCount;
-	private List<Event> events;
+	private ArrayList<Event> events;
 	private Event greeting;
 
-	public List<Event> getEvents() {
+	public ArrayList<Event> getEvents() {
 		return events;
 	}
 
-	public void setEvents(List<Event> events) {
+	public void setEvents(ArrayList<Event> events) {
 		this.events = events;
 	}
 
@@ -68,11 +67,7 @@ public class NPC extends Unit {
 	}
 
 	public int getEventCount() {
-		eventCount = events.size();
-		return eventCount;
+		return events.size();
 	}
 
-	public void setEventCount(int eventCount) {
-		this.eventCount = eventCount;
-	}
 }

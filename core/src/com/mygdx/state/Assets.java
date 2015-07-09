@@ -17,15 +17,16 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.currentState.RoadInfo;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.manager.JsonParser;
 import com.mygdx.model.AtlasUiFile;
 import com.mygdx.model.Hero;
 import com.mygdx.model.JsonStringFile;
 import com.mygdx.model.Monster;
 import com.mygdx.model.MusicFile;
 import com.mygdx.model.NPC;
+import com.mygdx.model.StorySection;
 import com.mygdx.model.Village;
 import com.mygdx.model.WorldNode;
+import com.mygdx.util.JsonParser;
 
 /**
  * 각종 리소스들을 관리해주는 assets 클래스, Stage및 Screen에 필요한 요소들을 전달해준다.
@@ -61,6 +62,7 @@ public class Assets {
 	public Map<String, Monster> monsterMap;
 	public Map<String, Village> villageMap;
 	public Map<String, WorldNode> worldNodeInfoMap;
+	public Map<Integer, StorySection> storySectionMap;
 
 	public Assets() {
 		Gdx.app.debug("OneLevelHeroApplicationContext", "Assets Bean 우선 로드");
@@ -77,6 +79,7 @@ public class Assets {
 		loadResourceFile();
 		loadMapInfo();
 		loadUnitInfo();
+		loadStoryInfo();
 	}
 
 	private void loadFilePath() {
@@ -157,6 +160,12 @@ public class Assets {
 		// npc 리스트를 담은 Json을 불러온다.
 		npcMap = JsonParser.parseMap(NPC.class,
 				jsonStringMap.get(JsonEnum.NPC_JSON.toString()));
+	}
+
+	private void loadStoryInfo() {
+		storySectionMap = JsonParser.parseMap(Integer.class,
+				StorySection.class,
+				jsonStringMap.get(JsonEnum.STORY_JSON.toString()));
 	}
 
 	private void loadAtlasUiTexture() {

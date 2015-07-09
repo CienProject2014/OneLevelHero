@@ -1,5 +1,7 @@
 package com.mygdx.factory;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -17,7 +19,8 @@ import com.mygdx.stage.EventStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
-import com.mygdx.stage.SelectButtonStage;
+import com.mygdx.stage.SelectComponentStage;
+import com.mygdx.stage.SelectEventStage;
 import com.mygdx.stage.StatusStage;
 import com.mygdx.stage.VillageStage;
 import com.mygdx.stage.WorldMapStage;
@@ -45,8 +48,10 @@ public class StageFactory {
 				return context.getBean(MenuStage.class).makeStage();
 			case MONSTER:
 				return context.getBean(MonsterStage.class).makeStage();
-			case SELECT_BUTTON:
-				return context.getBean(SelectButtonStage.class).makeStage();
+			case SELECT_EVENT:
+				return context.getBean(SelectEventStage.class).makeStage();
+			case SELECT_COMPONENT:
+				return context.getBean(SelectComponentStage.class).makeStage();
 			case STATUS:
 				return context.getBean(StatusStage.class).makeStage();
 			case VILLAGE:
@@ -63,7 +68,7 @@ public class StageFactory {
 		return context.getBean(BattleStage.class).makeStage();
 	}
 
-	public Stage makeEventStage(EventScene eventScene) {
-		return context.getBean(EventStage.class).makeStage(eventScene);
+	public Stage makeEventStage(Iterator<EventScene> eventSceneIterator) {
+		return context.getBean(EventStage.class).makeStage(eventSceneIterator);
 	}
 }

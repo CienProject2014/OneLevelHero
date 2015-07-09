@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mygdx.controller.SaveVersion;
+import com.mygdx.enums.SaveVersion;
 
 public class CurrentState implements Serializable {
 	// (1) 버전관리
@@ -26,15 +26,41 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private TimeInfo timeInfo;
 
-	// (5) 보상 미션 및 이벤트 관리
+	// (5) 보상 미션 및 이벤트, 스토리 분기 관리
 	@Autowired
 	private EventInfo eventInfo;
 	@Autowired
-	private RewardQueueInfo rewardQueueInfo;
+	private RewardInfo rewardInfo;
+	@Autowired
+	private StorySectionInfo storySectionInfo;
 
 	// (6) 사운드 관리
 	@Autowired
 	private MusicInfo musicInfo;
+
+	public EventInfo getEventInfo() {
+		return eventInfo;
+	}
+
+	public void setEventInfo(EventInfo eventInfo) {
+		this.eventInfo = eventInfo;
+	}
+
+	public RewardInfo getRewardInfo() {
+		return rewardInfo;
+	}
+
+	public void setRewardInfo(RewardInfo rewardInfo) {
+		this.rewardInfo = rewardInfo;
+	}
+
+	public StorySectionInfo getStorySectionInfo() {
+		return storySectionInfo;
+	}
+
+	public void setStorySectionInfo(StorySectionInfo storySectionInfo) {
+		this.storySectionInfo = storySectionInfo;
+	}
 
 	public SaveVersion getVersion() {
 		return saveVersion;
@@ -62,22 +88,6 @@ public class CurrentState implements Serializable {
 
 	public void setInventoryInfo(InventoryInfo inventoryInfo) {
 		this.inventoryInfo = inventoryInfo;
-	}
-
-	public EventInfo getEventInfo() {
-		return eventInfo;
-	}
-
-	public void setEventInfo(EventInfo eventInfo) {
-		this.eventInfo = eventInfo;
-	}
-
-	public RewardQueueInfo getRewardQueueInfo() {
-		return rewardQueueInfo;
-	}
-
-	public void setRewardQueueInfo(RewardQueueInfo rewardQueueInfo) {
-		this.rewardQueueInfo = rewardQueueInfo;
 	}
 
 	public MusicInfo getMusicInfo() {

@@ -64,7 +64,7 @@ public class ScreenFactory {
 				return context.getBean(BuildingScreen.class);
 			case CG:
 				return context.getBean(CGScreen.class);
-			case COLLETION:
+			case COLLECTION:
 				return context.getBean(CollectionScreen.class);
 			case CREDIT:
 				return context.getBean(CreditScreen.class);

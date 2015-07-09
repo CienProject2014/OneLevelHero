@@ -17,14 +17,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
-import com.mygdx.currentState.RewardInfo;
-import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.inventory.Inventory;
 import com.mygdx.inventory.InventoryPopup;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.model.Hero;
-import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
 import com.mygdx.state.StaticAssets;
@@ -63,6 +60,9 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	private float realheight;
 	private float realwidth;
+
+	private final String STATUS_MESSAGE = "[ 스테이터스 ]";
+	private final String REWARD_MESSAGE = "[ 보상 ]";
 
 	public Stage makeStage() {
 		// 초기화
@@ -120,19 +120,22 @@ public class GameUiStage extends BaseOneLevelStage {
 				assets.skin);
 
 		// 보상 이벤트 처리
-		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
+		/*
+		Iterator<Reward> iterator = rewardManager.getRewardQueue()
 				.iterator();
 		while (iterator.hasNext()) {
-			RewardInfo nextIterator = iterator.next();
-			if (nextIterator.getRewardState().equals(RewardStateEnum.ING))
+			Reward nextIterator = iterator.next();
+			if (nextIterator.getRewardState() == RewardStateEnum.ING)
 				alertMessage.add(new AlertMessagePopup("[ 보상 ]", assets.skin)
 						.text(rewardManager.getRewardMessage(nextIterator)));
-			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
-					+ nextIterator.getRewardType());
+			Gdx.app.log("GameUiStage",
+					"리워드정보 - " + nextIterator.getRewardTarget() + ", "
+							+ nextIterator.getRewardType());
 		}
+		*/
 		// 알림 메시지
-		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", assets.skin,
-				partyInfo);
+		statusMessagePopup = new StatusMessagePopup(STATUS_MESSAGE,
+				assets.skin, partyInfo);
 		addListener();
 		makeTable();
 		addActor(uiTable);
@@ -144,7 +147,7 @@ public class GameUiStage extends BaseOneLevelStage {
 			MessagePopup nextIterator = alertMessageIterator.next();
 			addActor(nextIterator);
 			nextIterator.setVisible(true);
-			rewardManager.pollRewardQueue();
+			//rewardManager.pollRewardQueue();
 		}
 
 		return this;

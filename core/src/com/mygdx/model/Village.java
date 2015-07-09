@@ -1,15 +1,11 @@
 package com.mygdx.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.Json.Serializable;
-import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.enums.TextureEnum;
-import com.mygdx.manager.JsonParser;
 import com.mygdx.manager.TextureManager;
 
 /**
@@ -18,12 +14,12 @@ import com.mygdx.manager.TextureManager;
  * @author Velmont
  *
  */
-public class Village implements Serializable {
+public class Village {
 	private String villageName;
 	private String backgroundPath;
 	private String sceneName;
-	private List<String> villageNpc;
-	private Map<String, Building> building;
+	private ArrayList<String> villageNpc;
+	private HashMap<String, Building> building;
 
 	public String getVillageName() {
 		return villageName;
@@ -47,33 +43,16 @@ public class Village implements Serializable {
 		return villageNpc;
 	}
 
-	public void setVillageNpc(List<String> villageNpc) {
+	public void setVillageNpc(ArrayList<String> villageNpc) {
 		this.villageNpc = villageNpc;
 	}
 
-	public Map<String, Building> getBuilding() {
+	public HashMap<String, Building> getBuilding() {
 		return building;
 	}
 
-	public void setBuilding(Map<String, Building> building) {
+	public void setBuilding(HashMap<String, Building> building) {
 		this.building = building;
-	}
-
-	@Override
-	public void write(Json json) {
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public void read(Json json, JsonValue jsonData) {
-		villageName = json.readValue("villageName", String.class, jsonData);
-		backgroundPath = json.readValue("backgroundPath", String.class,
-				jsonData);
-		villageNpc = json.readValue("villageNpc", ArrayList.class,
-				String.class, jsonData);
-		building = JsonParser.parseMap(Building.class, jsonData.get("building")
-				.toString());
-		sceneName = json.readValue("sceneName", String.class, jsonData);
 	}
 
 	public String getBackgroundPath() {

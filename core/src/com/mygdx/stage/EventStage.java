@@ -1,13 +1,19 @@
 package com.mygdx.stage;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.manager.EventManager;
+import com.mygdx.manager.EventQueueManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.state.StaticAssets;
 
@@ -18,6 +24,10 @@ import com.mygdx.state.StaticAssets;
  *
  */
 public class EventStage extends BaseOneLevelStage {
+	@Autowired
+	private EventManager eventManager;
+	@Autowired
+	private EventQueueManager eventQueueManager;
 	@Autowired
 	private EventInfo eventInfo;
 	private Label script;
@@ -30,10 +40,32 @@ public class EventStage extends BaseOneLevelStage {
 	 * @param eventScene
 	 * @return
 	 */
-	public Stage makeStage(EventScene eventScene) {
-		backgroundImage = new Image(eventScene.getBackground());
-		script = new Label(eventScene.getScript(), assets.skin);
-		characterImage = new Image(eventScene.getCharacter());
+
+	public Stage makeStage(final Iterator<EventScene> eventSceneIterator) {
+		if (eventSceneIterator.hasNext()) {
+			setScene(eventSceneIterator.next());
+
+			this.addListener(new InputListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y,
+						int pointer, int button) {
+					if (eventSceneIterator.hasNext()) {
+						setScene(eventSceneIterator.next());
+					} else {
+						eventQueueManager.runEventQueue();
+						Gdx.app.log("EventStage", "runEventQueue");
+					}
+					return true;
+				}
+			});
+		}
+		return this;
+	}
+
+	private void setScene(EventScene currentScene) {
+		backgroundImage = new Image(currentScene.getBackground());
+		script = new Label(currentScene.getScript(), assets.skin);
+		characterImage = new Image(currentScene.getCharacter());
 
 		// 스크립트/캐릭터/백그라운드 크기값 세팅
 		script.setFontScale(StaticAssets.windowWidth / 1280);
@@ -50,40 +82,46 @@ public class EventStage extends BaseOneLevelStage {
 				StaticAssets.windowHeight);
 
 		// Greeting인지 아닌지 여부에 따라 처리
+		/*
 		EventTypeEnum eventType;
 		if (eventInfo.isGreeting())
-			eventType = EventTypeEnum.SELECT;
+			eventType = EventTypeEnum.SELECT_EVENT;
 		else
 			eventType = eventInfo.getEventType();
+		
 		makeEventStage(eventType);
+		*/
+		makeEventStage(eventInfo.getCurrentEvent().getEventType());
 		this.addActor(backgroundImage);
 		this.addActor(script);
 		this.addActor(characterImage);
 
-		return this;
 	}
 
 	private void makeEventStage(EventTypeEnum eventType) {
 		switch (eventType) {
-		case CHAT:
-			makeChatStage();
-			break;
-		case SELECT:
-			makeSelectStage();
-			break;
-		case CREDIT:
-			makeCreditStage();
-			break;
-		default:
-			Gdx.app.log("error", " scene 주입 에러");
-			break;
+			case CHAT:
+				makeChatStage();
+				break;
+			case SELECT_EVENT:
+				makeSelectEventStage();
+				break;
+			case SELECT_COMPONENT:
+				makeSelectComponentStage();
+				break;
+			case CREDIT:
+				makeCreditStage();
+				break;
+			default:
+				Gdx.app.log("error", " scene 주입 에러");
+				break;
 		}
 	}
 
 	private void makeCreditStage() {
 	}
 
-	private void makeSelectStage() {
+	private void makeSelectEventStage() {
 		script.setFontScale(StaticAssets.windowWidth / 1280);
 		script.setWrap(true); // 스크립트가 끝에 다다르면 자동 개행
 		script.setSize(StaticAssets.windowWidth * 0.781f,
@@ -96,6 +134,22 @@ public class EventStage extends BaseOneLevelStage {
 				StaticAssets.windowHeight * 0.37f);
 		backgroundImage.setSize(StaticAssets.windowWidth,
 				StaticAssets.windowHeight);
+	}
+
+	private void makeSelectComponentStage() {
+		script.setFontScale(StaticAssets.windowWidth / 1280);
+		script.setWrap(true); // 스크립트가 끝에 다다르면 자동 개행
+		script.setSize(StaticAssets.windowWidth * 0.781f,
+				StaticAssets.windowHeight * 0.185f);
+		script.setPosition(StaticAssets.windowWidth * 0.109375f,
+				StaticAssets.windowHeight * 0.185f);
+		characterImage.setSize(StaticAssets.windowWidth * 0.250f,
+				StaticAssets.windowHeight * 0.555f);
+		characterImage.setPosition(StaticAssets.windowWidth * 0.375f,
+				StaticAssets.windowHeight * 0.37f);
+		backgroundImage.setSize(StaticAssets.windowWidth,
+				StaticAssets.windowHeight);
+
 	}
 
 	private void makeChatStage() {
@@ -111,6 +165,22 @@ public class EventStage extends BaseOneLevelStage {
 				StaticAssets.windowHeight);
 	}
 
+	public EventManager getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(EventManager eventManager) {
+		this.eventManager = eventManager;
+	}
+
+	public EventQueueManager getEventQueueManager() {
+		return eventQueueManager;
+	}
+
+	public void setEventQueueManager(EventQueueManager eventQueueManager) {
+		this.eventQueueManager = eventQueueManager;
+	}
+
 	public EventInfo getEventInfo() {
 		return eventInfo;
 	}
@@ -118,4 +188,5 @@ public class EventStage extends BaseOneLevelStage {
 	public void setEventInfo(EventInfo eventInfo) {
 		this.eventInfo = eventInfo;
 	}
+
 }

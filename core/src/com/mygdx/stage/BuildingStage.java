@@ -80,7 +80,7 @@ public class BuildingStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-					eventManager.setEventInfo(assets.npcMap.get(npcName), true);
+					eventManager.setEventPack(assets.npcMap.get(npcName), true);
 					screenFactory.show(ScreenEnum.GREETING);
 				}
 			});

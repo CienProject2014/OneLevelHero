@@ -1,45 +1,41 @@
 package com.mygdx.currentState;
 
-import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.model.NPC;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
-/**
- * npc정보, eventNumber, greeting여부 정보를 갖고있음
- *
- * @author Velmont
- *
- */
+import com.mygdx.model.Event;
 
 public class EventInfo {
-	private NPC npc;
-	private int eventNumber;
-	private boolean greeting;
+	// 현재 진행중인 이벤트 큐
+	private Queue<Event> eventQueue = new LinkedList<>();
+	// 진행이 끝난 이벤트 스택
+	private List<Event> closedEventList = new ArrayList<>();
+	private Event currentEvent;
 
-	public NPC getNpc() {
-		return npc;
+	public Queue<Event> getEventQueue() {
+		return eventQueue;
 	}
 
-	public void setNpc(NPC npc) {
-		this.npc = npc;
+	public void setEventQueue(Queue<Event> eventQueue) {
+		this.eventQueue = eventQueue;
 	}
 
-	public int getEventNumber() {
-		return eventNumber;
+	public List<Event> getClosedEventList() {
+		return closedEventList;
 	}
 
-	public void setEventNumber(int eventNumber) {
-		this.eventNumber = eventNumber;
+	public void setClosedEventList(List<Event> closedEventList) {
+		this.closedEventList = closedEventList;
 	}
 
-	public boolean isGreeting() {
-		return greeting;
+	public Event getCurrentEvent() {
+		return currentEvent;
 	}
 
-	public void setGreeting(boolean greeting) {
-		this.greeting = greeting;
+	public void setCurrentEvent(Event currentEvent) {
+		this.currentEvent = currentEvent;
 	}
 
-	public EventTypeEnum getEventType() {
-		return npc.getEvents().get(eventNumber).getEventType();
-	}
 }

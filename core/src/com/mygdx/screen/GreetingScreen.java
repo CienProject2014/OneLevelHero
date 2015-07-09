@@ -12,15 +12,15 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
+import com.mygdx.model.EventPacket;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
 public class GreetingScreen extends BaseScreen {
 	@Autowired
-	protected EventInfo eventInfo;
+	protected EventPacket eventInfo;
 
 	// Already libgdx using interface!
 	private Input input = Gdx.input;
@@ -42,14 +42,14 @@ public class GreetingScreen extends BaseScreen {
 
 	@Override
 	public void show() {
-		final NPC npc = eventInfo.getNpc();
+		final NPC npc = assets.npcMap.get(eventInfo.getEventNpc());
 		greetingScenes = npc.getGreeting().getEventScenes();
 
-		selectButtonStage = stageFactory.makeStage(StageEnum.SELECT_BUTTON);
+		selectButtonStage = stageFactory.makeStage(StageEnum.SELECT_EVENT);
 		// for shuffle
 		List<EventScene> shuffleList = new ArrayList<EventScene>(greetingScenes);
 		Collections.shuffle(shuffleList);
-		eventStage = stageFactory.makeEventStage(shuffleList.get(0));
+		//eventStage = stageFactory.makeEventStage(shuffleList.get(0));
 
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
@@ -94,11 +94,11 @@ public class GreetingScreen extends BaseScreen {
 		}
 	}
 
-	public EventInfo getEventInfo() {
+	public EventPacket getEventInfo() {
 		return eventInfo;
 	}
 
-	public void setEventInfo(EventInfo eventInfo) {
+	public void setEventInfo(EventPacket eventInfo) {
 		this.eventInfo = eventInfo;
 	}
 }

@@ -1,4 +1,4 @@
-package com.mygdx.manager;
+package com.mygdx.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +21,16 @@ public class JsonParser {
 		for (String key : parsedMap.keySet())
 			result.put(key, JSON.readValue(clazz, parsedMap.get(key)));
 
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T, K> Map<T, K> parseMap(Class<T> clazz1, Class<K> clazz2,
+			String jsonString) {
+		Map<T, JsonValue> parseMap = JSON.fromJson(HashMap.class, jsonString);
+		Map<T, K> result = new HashMap<T, K>();
+		for (T key : parseMap.keySet())
+			result.put(key, (K) JSON.readValue(clazz2, parseMap.get(key)));
 		return result;
 	}
 

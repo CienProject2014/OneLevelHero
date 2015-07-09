@@ -1,0 +1,57 @@
+{
+  "101": {
+    "eventList": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "0"
+      }
+    ],
+    "nextSectionList": [
+      {
+        "nextSectionNumber": "102",
+        "conditionType": "select_component",
+        "targetComponent": "예"
+      },
+      {
+        "nextSectionNumber": "113",
+        "conditionType": "select_component",
+        "targetComponent": "아니오"
+      }
+    ]
+  },
+  "102": {
+    "eventList": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "1"
+      }
+    ],
+    "nextSectionList": [
+      {
+        "nextSectionNumber": "201",
+        "conditionType": "move",
+        "targetComponent": "redrose_castle"
+      },
+      {
+        "nextSectionNumber": "301",
+        "conditionType": "move",
+        "targetComponent": "middle_ridge"
+      },
+      {
+        "nextSectionNumber": "401",
+        "conditionType": "move",
+        "targetComponent": "kadilla_castle"
+      },
+      {
+        "nextSectionNumber": "501",
+        "conditionType": "move",
+        "targetComponent": "cobweb"
+      },
+      {
+        "nextSectionNumber": "601",
+        "conditionType": "move",
+        "targetComponent": "winterfall"
+      }
+    ]
+  }
+}
