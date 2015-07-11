@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.state.Assets;
-import com.mygdx.state.StaticAssets;
+import com.mygdx.assets.Assets;
+import com.mygdx.assets.StaticAssets;
 
 public class EventScene {
 	@Autowired

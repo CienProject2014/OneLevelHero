@@ -1,4 +1,4 @@
-package com.mygdx.state;
+package com.mygdx.assets;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,26 +73,26 @@ public class StaticAssets {
 		Map<String, TextureFile> characterFileMap = JsonParser.parseMap(
 				TextureFile.class,
 				filePathMap.get(JsonEnum.CHARACTER_FILE_PATH.toString())
-						.getFile());
+						.loadFile());
 		for (Entry<String, TextureFile> entry : characterFileMap.entrySet()) {
-			characterTextureMap.put(entry.getKey(), entry.getValue().getFile());
+			characterTextureMap.put(entry.getKey(), entry.getValue().loadFile());
 		}
 
 		Map<String, TextureFile> monsterFileMap = JsonParser.parseMap(
 				TextureFile.class,
 				filePathMap.get(JsonEnum.MONSTER_FILE_PATH.toString())
-						.getFile());
+						.loadFile());
 		for (Entry<String, TextureFile> entry : monsterFileMap.entrySet()) {
-			monsterTextureMap.put(entry.getKey(), entry.getValue().getFile());
+			monsterTextureMap.put(entry.getKey(), entry.getValue().loadFile());
 		}
 
 		Map<String, TextureFile> backgroundFileMap = JsonParser.parseMap(
 				TextureFile.class,
 				filePathMap.get(JsonEnum.BACKGROUND_FILE_PATH.toString())
-						.getFile());
+						.loadFile());
 		for (Entry<String, TextureFile> entry : backgroundFileMap.entrySet()) {
 			backgroundTextureMap
-					.put(entry.getKey(), entry.getValue().getFile());
+					.put(entry.getKey(), entry.getValue().loadFile());
 		}
 
 		try {
@@ -100,7 +100,7 @@ public class StaticAssets {
 					FrameSheet.class,
 					filePathMap.get(
 							JsonEnum.ANIMATION_SHEET_FILE_PATH.toString())
-							.getFile());
+							.loadFile());
 
 			for (Entry<String, FrameSheet> entry : animationSheetMap.entrySet()) {
 				entry.getValue().loadTexture();

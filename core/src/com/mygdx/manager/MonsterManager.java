@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.model.Monster;
-import com.mygdx.state.Assets;
 
 /**
  * WorldMap에서 MovingInfoManager를 통해 설정된 MovingInfo를 받아와서 Monster를 만들어낸다.
@@ -18,7 +18,7 @@ import com.mygdx.state.Assets;
 
 public class MonsterManager {
 	@Autowired
-	private Assets assets;
+	private UnitAssets unitAssets;
 	@Autowired
 	private PositionInfo positionInfo;
 	@Autowired
@@ -27,7 +27,7 @@ public class MonsterManager {
 	private List<String> monsterStringList;
 
 	public void createMonster() {
-		Monster selectedMonster = assets.monsterMap.get(selectMonster());
+		Monster selectedMonster = unitAssets.getMonster(selectMonster());
 		movingInfo.setSelectedMonster(selectedMonster);
 	}
 
@@ -37,14 +37,6 @@ public class MonsterManager {
 		monsterStringList = movingInfo.getRoadMonsterList();
 		String selectedMonsterString = monsterStringList.get(0);
 		return selectedMonsterString;
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
 	}
 
 	public PositionInfo getPositionInfo() {
@@ -61,5 +53,13 @@ public class MonsterManager {
 
 	public void setMovingInfo(MovingInfo movingInfo) {
 		this.movingInfo = movingInfo;
+	}
+
+	public UnitAssets getUnitAssets() {
+		return unitAssets;
+	}
+
+	public void setUnitAssets(UnitAssets unitAssets) {
+		this.unitAssets = unitAssets;
 	}
 }

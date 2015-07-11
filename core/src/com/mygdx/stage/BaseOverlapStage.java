@@ -2,13 +2,13 @@ package com.mygdx.stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mygdx.assets.Assets;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.currentState.TimeInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.CameraManager;
-import com.mygdx.state.Assets;
 import com.uwsoft.editor.renderer.Overlap2DStage;
 
 public class BaseOverlapStage extends Overlap2DStage {

@@ -4,9 +4,9 @@ import java.util.Iterator;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.model.Hero;
-import com.mygdx.state.StaticAssets;
 
 public class StatusMessagePopup extends MessagePopup {
 	private PartyInfo partyInfo;

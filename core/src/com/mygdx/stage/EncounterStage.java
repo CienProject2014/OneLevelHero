@@ -1,23 +1,28 @@
 package com.mygdx.stage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 
 public class EncounterStage extends BaseOneLevelStage {
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	private TextButton fightButton;
 	private TextButton fleeButton;
 
 	private Table selTable;
 
 	public Stage makeStage() {
-		fightButton = new TextButton("싸운다", assets.skin);
-		fleeButton = new TextButton("도망친다", assets.skin);
+		fightButton = new TextButton("싸운다", uiComponentAssets.getSkin());
+		fleeButton = new TextButton("도망친다", uiComponentAssets.getSkin());
 
-		selTable = new Table(assets.skin);
+		selTable = new Table(uiComponentAssets.getSkin());
 		selTable.setFillParent(true);
 		// selTable.row();
 		selTable.add(fightButton);
@@ -60,4 +65,13 @@ public class EncounterStage extends BaseOneLevelStage {
 			}
 		});
 	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
+	}
+
 }

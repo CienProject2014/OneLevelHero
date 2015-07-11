@@ -4,15 +4,15 @@ import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.currentState.RewardQueueInfo;
 import com.mygdx.enums.RewardStateEnum;
-import com.mygdx.state.Assets;
 
 public class RewardManager {
 	@Autowired
-	private Assets assets;
+	private UnitAssets unitAssets;
 	@Autowired
 	private RewardQueueInfo rewardQueueInfo;
 	@Autowired
@@ -54,7 +54,7 @@ public class RewardManager {
 				case NONE:
 					return;
 				case PARTY:
-					partyInfo.addHero(assets.heroMap.get(getRewardQueue()
+					partyInfo.addHero(unitAssets.getHero(getRewardQueue()
 							.peek().getRewardTarget()));
 					return;
 				default:
@@ -80,14 +80,6 @@ public class RewardManager {
 		}
 	}
 
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
 	public RewardQueueInfo getRewardQueueInfo() {
 		return rewardQueueInfo;
 	}
@@ -110,5 +102,13 @@ public class RewardManager {
 
 	public void setPartyInfo(PartyInfo partyInfo) {
 		this.partyInfo = partyInfo;
+	}
+
+	public UnitAssets getUnitAssets() {
+		return unitAssets;
+	}
+
+	public void setUnitAssets(UnitAssets unitAssets) {
+		this.unitAssets = unitAssets;
 	}
 }

@@ -2,8 +2,8 @@ package com.mygdx.manager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.TextureEnum;
-import com.mygdx.state.StaticAssets;
 
 /**
  * 각각의 유닛에 Texture를 할당해서 쓸 수 있도록 하는 로직 StaticAssets을 다루기 때문에 싱글턴 클래스가 아니다.

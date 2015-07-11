@@ -6,10 +6,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.model.EventScene;
-import com.mygdx.state.StaticAssets;
 
 /**
  * make and return stage(Event)
@@ -18,6 +19,8 @@ import com.mygdx.state.StaticAssets;
  *
  */
 public class EventStage extends BaseOneLevelStage {
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private EventInfo eventInfo;
 	private Label script;
@@ -32,7 +35,7 @@ public class EventStage extends BaseOneLevelStage {
 	 */
 	public Stage makeStage(EventScene eventScene) {
 		backgroundImage = new Image(eventScene.getBackground());
-		script = new Label(eventScene.getScript(), assets.skin);
+		script = new Label(eventScene.getScript(), uiComponentAssets.getSkin());
 		characterImage = new Image(eventScene.getCharacter());
 
 		// 스크립트/캐릭터/백그라운드 크기값 세팅
@@ -65,18 +68,18 @@ public class EventStage extends BaseOneLevelStage {
 
 	private void makeEventStage(EventTypeEnum eventType) {
 		switch (eventType) {
-		case CHAT:
-			makeChatStage();
-			break;
-		case SELECT:
-			makeSelectStage();
-			break;
-		case CREDIT:
-			makeCreditStage();
-			break;
-		default:
-			Gdx.app.log("error", " scene 주입 에러");
-			break;
+			case CHAT:
+				makeChatStage();
+				break;
+			case SELECT:
+				makeSelectStage();
+				break;
+			case CREDIT:
+				makeCreditStage();
+				break;
+			default:
+				Gdx.app.log("error", " scene 주입 에러");
+				break;
 		}
 	}
 
@@ -117,5 +120,13 @@ public class EventStage extends BaseOneLevelStage {
 
 	public void setEventInfo(EventInfo eventInfo) {
 		this.eventInfo = eventInfo;
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
 	}
 }

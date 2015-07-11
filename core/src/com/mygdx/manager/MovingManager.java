@@ -3,16 +3,16 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.state.Assets;
 
 public class MovingManager {
 	@Autowired
-	private Assets assets;
+	private WorldMapAssets worldMapAssets;
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
@@ -59,7 +59,7 @@ public class MovingManager {
 	}
 
 	private void goIntoCurrentNode() {
-		String placeType = assets.worldNodeInfoMap.get(
+		String placeType = worldMapAssets.getWorldNodeInfo(
 				positionInfo.getCurrentNode()).getType();
 		switch (PlaceEnum.findPlaceEnum(placeType)) {
 			case VILLAGE:
@@ -85,14 +85,6 @@ public class MovingManager {
 	private boolean isRoadFull() {
 		return (movingInfo.getRoadLength() <= movingInfo.getLeftRoadLength()) ? true
 				: false;
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
 	}
 
 	public ScreenFactory getScreenFactory() {
@@ -125,5 +117,13 @@ public class MovingManager {
 
 	public void setEncounterManager(EncounterManager encounterManager) {
 		this.encounterManager = encounterManager;
+	}
+
+	public WorldMapAssets getWorldMapAssets() {
+		return worldMapAssets;
+	}
+
+	public void setWorldMapAssets(WorldMapAssets worldMapAssets) {
+		this.worldMapAssets = worldMapAssets;
 	}
 }

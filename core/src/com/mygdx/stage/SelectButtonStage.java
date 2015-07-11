@@ -11,13 +11,14 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PlaceManager;
 import com.mygdx.model.NPC;
-import com.mygdx.state.StaticAssets;
 
 public class SelectButtonStage extends BaseOneLevelStage {
 	@Autowired
@@ -26,6 +27,8 @@ public class SelectButtonStage extends BaseOneLevelStage {
 	private PlaceManager placeManager;
 	@Autowired
 	protected EventInfo eventInfo;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
@@ -100,7 +103,7 @@ public class SelectButtonStage extends BaseOneLevelStage {
 	}
 
 	private void setexitButton() {
-		exitButton = new TextButton("나가기", assets.skin);
+		exitButton = new TextButton("나가기", uiComponentAssets.getSkin());
 		exitButton.center();
 		exitButton.addListener(new InputListener() {
 			@Override
@@ -129,8 +132,10 @@ public class SelectButtonStage extends BaseOneLevelStage {
 
 	private void showEventButton() {
 		for (int i = 0; i < eventCount; i++) {
-			chatStyles.add(new TextButtonStyle(assets.chatButton[i],
-					assets.chatButton[i], assets.chatButton[i], assets.font));
+			chatStyles.add(new TextButtonStyle(uiComponentAssets
+					.getChatButton()[i], uiComponentAssets.getChatButton()[i],
+					uiComponentAssets.getChatButton()[i], uiComponentAssets
+							.getFont()));
 			chatButtons.add(new TextButton("", chatStyles.get(i)));
 		}
 	}
@@ -157,5 +162,13 @@ public class SelectButtonStage extends BaseOneLevelStage {
 
 	public void setEventInfo(EventInfo eventInfo) {
 		this.eventInfo = eventInfo;
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
 	}
 }
