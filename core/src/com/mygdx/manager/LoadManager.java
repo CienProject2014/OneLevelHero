@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.PositionInfo;
@@ -13,11 +14,10 @@ import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.model.Hero;
-import com.mygdx.state.Assets;
 
 public class LoadManager {
 	@Autowired
-	private Assets assets;
+	private UnitAssets unitAssets;
 
 	@Autowired
 	private PositionInfo positionInfo;
@@ -59,7 +59,7 @@ public class LoadManager {
 	// Hero클래스가 status정보를 갖도록 한다.
 	private void setHero() {
 		// 추후 JSON에서 불러오도록 바꿀 것
-		setHero(assets.heroMap.get("yongsa"));
+		setHero(unitAssets.getHero("yongsa"));
 		this.hero.getStatus().setSpd(8); // FIXME
 	}
 
@@ -74,14 +74,6 @@ public class LoadManager {
 
 	public void setHero(Hero hero) {
 		this.hero = hero;
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
 	}
 
 	public PositionInfo getPositionInfo() {
@@ -114,5 +106,13 @@ public class LoadManager {
 
 	public void setTimeInfo(TimeInfo timeInfo) {
 		this.timeInfo = timeInfo;
+	}
+
+	public UnitAssets getUnitAssets() {
+		return unitAssets;
+	}
+
+	public void setUnitAssets(UnitAssets unitAssets) {
+		this.unitAssets = unitAssets;
 	}
 }

@@ -1,0 +1,29 @@
+package com.mygdx.assets;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.mygdx.enums.JsonEnum;
+import com.mygdx.manager.JsonParser;
+import com.mygdx.model.AtlasUiFile;
+import com.mygdx.model.JsonStringFile;
+
+public class AtlasUiAssets implements FileAssetsInitializable {
+	public Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<String, TextureRegionDrawable>();
+
+	public void set(Map<String, JsonStringFile> filePathMap) {
+		List<AtlasUiFile> atlasUiFileList = JsonParser.parseList(
+				AtlasUiFile.class,
+				filePathMap.get(JsonEnum.ATLAS_UI_PATH.toString()).loadFile());
+		for (AtlasUiFile atlasUiFile : atlasUiFileList)
+			for (String element : atlasUiFile.getElement())
+				atlasUiMap.put(element, new TextureRegionDrawable(atlasUiFile
+						.loadFile().findRegion(element)));
+	}
+
+	public TextureRegionDrawable getAtlasUiFile(String atlasUiFileString) {
+		return atlasUiMap.get(atlasUiFileString);
+	}
+}

@@ -29,8 +29,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ItemEnum;
-import com.mygdx.state.StaticAssets;
 
 /**
  * @author Daniel Holderbaum

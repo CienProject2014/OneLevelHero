@@ -2,16 +2,21 @@ package com.mygdx.stage;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.model.Hero;
-import com.mygdx.state.StaticAssets;
 import com.mygdx.ui.StatusBarUi;
 
 public class CharacterUiStage extends BaseOneLevelStage {
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	private float realWidth, realHeight;
 
 	private Table uiTable; // 전체 화면을 차지하는 테이블
@@ -48,7 +53,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		realHeight = StaticAssets.windowHeight;
 		realWidth = StaticAssets.windowWidth;
 
-		bottomTable = new Table(assets.skin);
+		bottomTable = new Table(uiComponentAssets.getSkin());
 		statusbarTable = new Table[3];
 		charaterTable = new Table[3];
 
@@ -65,10 +70,12 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		battleMemberNumber = battleMemberList.size();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
-			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, assets.skin);
-			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, assets.skin);
+			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false,
+					uiComponentAssets.getSkin());
+			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false,
+					uiComponentAssets.getSkin());
 			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false,
-					assets.skin);
+					uiComponentAssets.getSkin());
 			hpbar[i].setName("hpbar[" + i + "]");
 			hpbarName[i] = hpbar[i].getName();
 		}
@@ -79,8 +86,8 @@ public class CharacterUiStage extends BaseOneLevelStage {
 					.getStatusTexture());
 
 		for (int i = 0; i < battleMemberNumber; i++) {
-			statusbarTable[i] = new Table(assets.skin);
-			charaterTable[i] = new Table(assets.skin);
+			statusbarTable[i] = new Table(uiComponentAssets.getSkin());
+			charaterTable[i] = new Table(uiComponentAssets.getSkin());
 		}
 
 		for (int i = 0; i < battleMemberNumber; i++) {
@@ -119,5 +126,13 @@ public class CharacterUiStage extends BaseOneLevelStage {
 				Gdx.app.log("CharacterUiStage", "체력: " + hpValue);
 			}
 		}
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
 	}
 }

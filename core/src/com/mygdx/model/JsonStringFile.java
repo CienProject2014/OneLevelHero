@@ -7,7 +7,7 @@ public class JsonStringFile implements AssetsFile<String> {
 	private String file;
 
 	@Override
-	public String getFile() {
+	public String loadFile() {
 		file = Gdx.files.internal(filePath).readString();
 		return file;
 	}

@@ -7,13 +7,13 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.LoadManager;
 import com.mygdx.manager.MonsterManager;
-import com.mygdx.state.StaticAssets;
 
 public class OneLevelTest extends Game {
 	private ApplicationContext context;

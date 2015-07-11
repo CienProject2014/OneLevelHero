@@ -3,7 +3,7 @@ package com.mygdx.inputProcessor;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.state.StaticAssets;
+import com.mygdx.assets.StaticAssets;
 
 public class MapInputProcessor implements InputProcessor {
 	private int x_left_limit = (int) (StaticAssets.windowWidth / 2);

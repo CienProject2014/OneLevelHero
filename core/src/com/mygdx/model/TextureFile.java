@@ -8,7 +8,7 @@ public class TextureFile implements AssetsFile<Texture> {
 	private Texture file;
 
 	@Override
-	public Texture getFile() {
+	public Texture loadFile() {
 		file = new Texture(Gdx.files.internal(filePath));
 		return file;
 	}

@@ -2,22 +2,22 @@ package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mygdx.assets.UnitAssets;
 import com.mygdx.model.NPC;
-import com.mygdx.state.Assets;
 
 public class NpcManager {
 	@Autowired
-	private Assets assets;
+	private UnitAssets unitAssets;
 
-	public Assets getAssets() {
-		return assets;
+	public UnitAssets getUnitAssets() {
+		return unitAssets;
 	}
 
-	public void setAssets(Assets assets) {
-		this.assets = assets;
+	public void setUnitAssets(UnitAssets unitAssets) {
+		this.unitAssets = unitAssets;
 	}
 
 	public NPC getNpc(String npcName) {
-		return assets.npcMap.get(npcName);
+		return unitAssets.getNpc(npcName);
 	}
 }

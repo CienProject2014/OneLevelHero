@@ -2,21 +2,29 @@ package com.mygdx.stage;
 
 import java.util.Map.Entry;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.assets.WorldNodeAssets;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.model.Building;
 import com.mygdx.model.Village;
-import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class VillageStage extends BaseOverlapStage {
+	@Autowired
+	private WorldNodeAssets worldNodeAssets;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	private Village villageInfo;
 	public TextButton shiftButton;
 	private BackgroundDirection backgroundDirection;
@@ -39,7 +47,7 @@ public class VillageStage extends BaseOverlapStage {
 				String.valueOf(positionInfo.getCurrentNode()));
 		// 임시로 블랙우드 정보를 넣는다.
 		// villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
-		villageInfo = assets.villageMap.get("Blackwood");
+		villageInfo = worldNodeAssets.getVillage("Blackwood");
 		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
 		// sceneLoader.loadScene(villageInfo.getSceneName());
 		sceneLoader.loadScene("blackwood_scene");
@@ -47,7 +55,7 @@ public class VillageStage extends BaseOverlapStage {
 		backgroundDirection = BackgroundDirection.DOWN;
 		addActor(sceneLoader.getRoot());
 		setBuildingButton();
-		shiftButton = new TextButton("전환", assets.skin);
+		shiftButton = new TextButton("전환", uiComponentAssets.getSkin());
 		shiftButton.center();
 		shiftButton.addListener(new InputListener() {
 			@Override
@@ -127,5 +135,29 @@ public class VillageStage extends BaseOverlapStage {
 				}
 			});
 		}
+	}
+
+	public WorldNodeAssets getWorldNodeAssets() {
+		return worldNodeAssets;
+	}
+
+	public void setWorldNodeAssets(WorldNodeAssets worldNodeAssets) {
+		this.worldNodeAssets = worldNodeAssets;
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
+	}
+
+	public Village getVillageInfo() {
+		return villageInfo;
+	}
+
+	public void setVillageInfo(Village villageInfo) {
+		this.villageInfo = villageInfo;
 	}
 }

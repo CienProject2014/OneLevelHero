@@ -5,7 +5,7 @@ public class MusicStringFile implements AssetsFile<String> {
 	private String filePath;
 
 	@Override
-	public String getFile() {
+	public String loadFile() {
 		file = filePath;
 		return file;
 	}

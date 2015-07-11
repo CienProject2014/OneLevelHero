@@ -1,5 +1,7 @@
 package com.mygdx.stage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -7,34 +9,40 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.state.StaticAssets;
 
 public class MenuStage extends BaseOneLevelStage {
+	@Autowired
+	private AtlasUiAssets atlasUiAssets;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	private ImageButton[] button;
 
 	public Stage makeStage() {
 		button = new ImageButton[4];
-		Image logo = new Image(assets.atlasUiMap.get("title"));
+		Image logo = new Image(atlasUiAssets.getAtlasUiFile("title"));
 		Texture texture = StaticAssets.backgroundTextureMap
 				.get("main_background");
 		Image background = new Image(texture);
 
-		Table table = new Table(assets.skin);
+		Table table = new Table(uiComponentAssets.getSkin());
 
 		button[0] = new ImageButton(
-		// FIXME 버튼하나 없음
-				assets.atlasUiMap.get("button_start_after"),
-				assets.atlasUiMap.get("button_start_after"));
+				// FIXME 버튼하나 없음
+				atlasUiAssets.getAtlasUiFile("button_start_after"),
+				atlasUiAssets.getAtlasUiFile("button_start_after"));
 		button[1] = new ImageButton(
-				assets.atlasUiMap.get("button_option_before"),
-				assets.atlasUiMap.get("button_option_after"));
+				atlasUiAssets.getAtlasUiFile("button_option_before"),
+				atlasUiAssets.getAtlasUiFile("button_option_after"));
 		button[2] = new ImageButton(
-				assets.atlasUiMap.get("button_credit_before"),
-				assets.atlasUiMap.get("button_credit_after"));
+				atlasUiAssets.getAtlasUiFile("button_credit_before"),
+				atlasUiAssets.getAtlasUiFile("button_credit_after"));
 		button[3] = new ImageButton(
-				assets.atlasUiMap.get("button_extra_before"),
-				assets.atlasUiMap.get("button_extra_after"));
+				atlasUiAssets.getAtlasUiFile("button_extra_before"),
+				atlasUiAssets.getAtlasUiFile("button_extra_after"));
 
 		button[0].addListener(new InputListener() {
 			@Override
@@ -111,5 +119,21 @@ public class MenuStage extends BaseOneLevelStage {
 		this.addActor(table);
 
 		return this;
+	}
+
+	public AtlasUiAssets getAtlasUiAssets() {
+		return atlasUiAssets;
+	}
+
+	public void setAtlasUiAssets(AtlasUiAssets atlasUiAssets) {
+		this.atlasUiAssets = atlasUiAssets;
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
 	}
 }

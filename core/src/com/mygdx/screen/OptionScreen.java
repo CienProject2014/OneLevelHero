@@ -1,15 +1,20 @@
 package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.popup.SoundPopup;
 
 public class OptionScreen extends BaseScreen {
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	private Stage stage;
 	private TextButton soundButton;
 	private TextButton savedataButton;
@@ -30,11 +35,12 @@ public class OptionScreen extends BaseScreen {
 	public void show() {
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		Table table = new Table(assets.skin);
-		soundButton = new TextButton("Sound", assets.skin);
-		savedataButton = new TextButton("SaveData", assets.skin);
-		bonusPointButton = new TextButton("BonusPoint", assets.skin);
-		backButton = new TextButton("Back", assets.skin);
+		Table table = new Table(uiComponentAssets.getSkin());
+		soundButton = new TextButton("Sound", uiComponentAssets.getSkin());
+		savedataButton = new TextButton("SaveData", uiComponentAssets.getSkin());
+		bonusPointButton = new TextButton("BonusPoint",
+				uiComponentAssets.getSkin());
+		backButton = new TextButton("Back", uiComponentAssets.getSkin());
 
 		soundButton.addListener(new InputListener() {
 			@Override
@@ -99,5 +105,13 @@ public class OptionScreen extends BaseScreen {
 		table.row();
 
 		stage.addActor(table);
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
 	}
 }

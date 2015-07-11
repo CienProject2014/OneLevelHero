@@ -6,9 +6,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.mygdx.assets.Assets;
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.state.StaticAssets;
 
 public class OneLevelHero extends Game {
 	private ApplicationContext context;
@@ -23,6 +24,7 @@ public class OneLevelHero extends Game {
 	}
 
 	public void gameLoad() {
+		context.getBean(Assets.class).initialize();
 		context.getBean(ScreenFactory.class).setGame(this);
 		context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
 	}

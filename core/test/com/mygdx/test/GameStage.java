@@ -1,7 +1,7 @@
 package com.mygdx.test;
 
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.stage.BaseOverlapStage;
-import com.mygdx.state.StaticAssets;
 
 public class GameStage extends BaseOverlapStage {
 	public GameStage() {

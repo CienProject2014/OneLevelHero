@@ -2,12 +2,12 @@ package com.mygdx.currentState;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mygdx.assets.UnitAssets;
 import com.mygdx.model.Monster;
-import com.mygdx.state.Assets;
 
 public class RoadInfo {
 	@Autowired
-	private Assets assets;
+	private UnitAssets unitAssets;
 	private String name;
 	private int itemNumber;
 
@@ -22,14 +22,6 @@ public class RoadInfo {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
 	}
 
 	public int getItemNumber() {
@@ -50,7 +42,7 @@ public class RoadInfo {
 
 	public Monster getMonster() {
 		if (monster == null)
-			monster = assets.monsterMap.get(monsterName);
+			monster = unitAssets.getMonster(monsterName);
 
 		return monster;
 	}
@@ -66,4 +58,13 @@ public class RoadInfo {
 	public void setBackground(String background) {
 		this.background = background;
 	}
+
+	public UnitAssets getUnitAssets() {
+		return unitAssets;
+	}
+
+	public void setUnitAssets(UnitAssets unitAssets) {
+		this.unitAssets = unitAssets;
+	}
+
 }

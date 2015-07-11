@@ -2,10 +2,10 @@ package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mygdx.assets.Assets;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.model.WorldNode;
-import com.mygdx.state.Assets;
 
 /**
  * WorldMapScreen에서 목적지 노드를 선택할 시에 movingInfo를 설정해주는 클래스.

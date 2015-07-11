@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.mygdx.assets.Assets;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MusicManager;
-import com.mygdx.state.Assets;
 
 public abstract class BaseScreen implements Screen {
 	@Autowired
@@ -58,14 +58,6 @@ public abstract class BaseScreen implements Screen {
 
 	@Override
 	public void dispose() {
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
 	}
 
 	public ScreenFactory getScreenFactory() {
