@@ -68,7 +68,7 @@ public class SelectButtonStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		eventNpc = eventInfo.getNpc();
-		eventCount = eventNpc.getEventCount();
+		eventCount = eventNpc.getEvents().size();
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
 		chatStyles = new ArrayList<TextButtonStyle>();
 
