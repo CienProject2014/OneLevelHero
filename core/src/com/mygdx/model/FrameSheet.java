@@ -11,7 +11,7 @@ public class FrameSheet implements AssetsFile<Texture> {
 	private Texture texture;
 
 	@Override
-	public Texture getFile() {
+	public Texture loadFile() {
 		texture = new Texture(Gdx.files.internal(filePath));
 		return texture;
 	}

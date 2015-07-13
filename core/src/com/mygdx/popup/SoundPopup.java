@@ -13,19 +13,24 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.currentState.SoundInfo;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.VolumeManager;
-import com.mygdx.state.Assets;
-import com.mygdx.state.StaticAssets;
 
 public class SoundPopup extends Dialog {
 	@Autowired
-	private Assets assets;
+	private AtlasUiAssets atlasUiAssets;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private MusicManager musicManager;
+	@Autowired
+	private SoundInfo soundInfo;
 	private Stage scenestage;
 
-	@Autowired
 	public SoundPopup(String title, Stage stage) {
 		super(title, StaticAssets.skin);
 		scenestage = stage;
@@ -42,9 +47,10 @@ public class SoundPopup extends Dialog {
 		setResizable(false);
 
 		TextButtonStyle style = new TextButtonStyle(
-				assets.atlasUiMap.get("menu_button_up"),
-				assets.atlasUiMap.get("menu_button_down"),
-				assets.atlasUiMap.get("menu_button_toggle"), assets.font);
+				atlasUiAssets.getAtlasUiFile("menu_button_up"),
+				atlasUiAssets.getAtlasUiFile("menu_button_down"),
+				atlasUiAssets.getAtlasUiFile("menu_button_toggle"),
+				uiComponentAssets.getFont());
 
 		text("배경음\n효과음");
 
@@ -62,14 +68,17 @@ public class SoundPopup extends Dialog {
 		// 다이얼로그 구현
 		// 다이얼로그조절
 
-		final Slider volume = new Slider(0f, 100f, 1f, false, assets.skin);
-		volume.setValue(assets.musicVolume * 100);
-		String volumeLabel = String.valueOf(assets.musicVolume * 100);
-		final Label volumeValue = new Label(volumeLabel, assets.skin);
+		final Slider volume = new Slider(0f, 100f, 1f, false,
+				uiComponentAssets.getSkin());
+		volume.setValue(soundInfo.getMusicVolume() * 100);
+		String volumeLabel = String.valueOf(soundInfo.getMusicVolume() * 100);
+		final Label volumeValue = new Label(volumeLabel,
+				uiComponentAssets.getSkin());
 		Table table = new Table();
-		final Slider pan = new Slider(-1f, 1f, 0.1f, false, assets.skin);
+		final Slider pan = new Slider(-1f, 1f, 0.1f, false,
+				uiComponentAssets.getSkin());
 		pan.setValue(0);
-		final Label panValue = new Label("0.0", assets.skin);
+		final Label panValue = new Label("0.0", uiComponentAssets.getSkin());
 
 		table.add(volume);
 		table.add(volumeValue);
@@ -86,8 +95,8 @@ public class SoundPopup extends Dialog {
 			public void changed(ChangeEvent event, Actor actor) {
 				// sound.setVolume(soundId, volume.getValue());
 				VolumeManager.musicVolume = volume.getValue() / 100;
-				volumeValue.setText("" + assets.musicVolume * 100);
-				musicManager.getMusic().setVolume(assets.musicVolume);
+				volumeValue.setText("" + soundInfo.getMusicVolume() * 100);
+				musicManager.getMusic().setVolume(soundInfo.getMusicVolume());
 			}
 		});
 		pan.addListener(new ChangeListener() {
@@ -123,7 +132,7 @@ public class SoundPopup extends Dialog {
 
 	@Override
 	public Dialog text(String text) {
-		super.text(new Label(text, assets.skin));
+		super.text(new Label(text, uiComponentAssets.getSkin()));
 		return this;
 	}
 
@@ -191,5 +200,37 @@ public class SoundPopup extends Dialog {
 	@Override
 	public void cancel() {
 		super.cancel();
+	}
+
+	public AtlasUiAssets getAtlasUiAssets() {
+		return atlasUiAssets;
+	}
+
+	public void setAtlasUiAssets(AtlasUiAssets atlasUiAssets) {
+		this.atlasUiAssets = atlasUiAssets;
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
+	}
+
+	public MusicManager getMusicManager() {
+		return musicManager;
+	}
+
+	public void setMusicManager(MusicManager musicManager) {
+		this.musicManager = musicManager;
+	}
+
+	public SoundInfo getSoundInfo() {
+		return soundInfo;
+	}
+
+	public void setSoundInfo(SoundInfo soundInfo) {
+		this.soundInfo = soundInfo;
 	}
 }

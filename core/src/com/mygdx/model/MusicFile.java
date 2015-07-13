@@ -8,7 +8,7 @@ public class MusicFile implements AssetsFile<Music> {
 	private String filePath;
 
 	@Override
-	public Music getFile() {
+	public Music loadFile() {
 		file = Gdx.audio.newMusic(Gdx.files.internal(filePath));
 		return file;
 	}

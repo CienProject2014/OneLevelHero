@@ -11,7 +11,7 @@ public class AtlasUiFile implements AssetsFile<TextureAtlas> {
 	private TextureAtlas file;
 
 	@Override
-	public TextureAtlas getFile() {
+	public TextureAtlas loadFile() {
 		file = new TextureAtlas(filePath);
 		return file;
 	}

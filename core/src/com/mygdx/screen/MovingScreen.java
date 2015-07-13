@@ -11,12 +11,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.manager.MovingManager;
-import com.mygdx.state.StaticAssets;
 
 public class MovingScreen extends BaseScreen {
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	private Stage stage;
 	private TextButton goButton;
 	private TextButton backButton;
@@ -40,9 +43,9 @@ public class MovingScreen extends BaseScreen {
 		stage = new Stage();
 		table = new Table();
 		table.setFillParent(true);
-		goButton = new TextButton("Go", assets.skin);
-		backButton = new TextButton("Back", assets.skin);
-		movingLabel = new Label("Point", assets.skin);
+		goButton = new TextButton("Go", uiComponentAssets.getSkin());
+		backButton = new TextButton("Back", uiComponentAssets.getSkin());
+		movingLabel = new Label("Point", uiComponentAssets.getSkin());
 		movingLabel.setColor(0, 0, 0, 1);
 
 		Gdx.input.setInputProcessor(stage);
@@ -100,4 +103,11 @@ public class MovingScreen extends BaseScreen {
 		this.movingManager = movingManager;
 	}
 
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
+	}
 }

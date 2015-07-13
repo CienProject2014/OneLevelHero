@@ -10,16 +10,25 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.assets.UnitAssets;
+import com.mygdx.assets.WorldNodeAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.manager.EventManager;
 import com.mygdx.model.Building;
-import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class BuildingStage extends BaseOverlapStage {
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private WorldNodeAssets worldNodeAssets;
+	@Autowired
+	private UnitAssets unitAssets;
 
 	private List<CompositeItem> npcButtonList;
 	private Building buildingInfo;
@@ -36,7 +45,7 @@ public class BuildingStage extends BaseOverlapStage {
 	}
 
 	private void setExitButton() {
-		exitButton = new TextButton("나가기", assets.skin);
+		exitButton = new TextButton("나가기", uiComponentAssets.getSkin());
 		exitButton.center();
 		exitButton.addListener(new InputListener() {
 			@Override
@@ -57,8 +66,9 @@ public class BuildingStage extends BaseOverlapStage {
 	}
 
 	private void makeScene() {
-		buildingInfo = assets.villageMap.get(positionInfo.getCurrentNode())
-				.getBuilding().get(positionInfo.getCurrentBuilding());
+		buildingInfo = worldNodeAssets
+				.getVillage(positionInfo.getCurrentNode()).getBuilding()
+				.get(positionInfo.getCurrentBuilding());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
@@ -80,7 +90,7 @@ public class BuildingStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-					eventManager.setEventInfo(assets.npcMap.get(npcName), true);
+					eventManager.setEventInfo(unitAssets.getNpc(npcName), true);
 					screenFactory.show(ScreenEnum.GREETING);
 				}
 			});
@@ -94,5 +104,37 @@ public class BuildingStage extends BaseOverlapStage {
 
 	public void setEventManager(EventManager eventManager) {
 		this.eventManager = eventManager;
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
+	}
+
+	public WorldNodeAssets getWorldNodeAssets() {
+		return worldNodeAssets;
+	}
+
+	public void setWorldNodeAssets(WorldNodeAssets worldNodeAssets) {
+		this.worldNodeAssets = worldNodeAssets;
+	}
+
+	public UnitAssets getUnitAssets() {
+		return unitAssets;
+	}
+
+	public void setUnitAssets(UnitAssets unitAssets) {
+		this.unitAssets = unitAssets;
+	}
+
+	public Building getBuildingInfo() {
+		return buildingInfo;
+	}
+
+	public void setBuildingInfo(Building buildingInfo) {
+		this.buildingInfo = buildingInfo;
 	}
 }

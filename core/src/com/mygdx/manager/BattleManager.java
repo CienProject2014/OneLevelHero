@@ -2,13 +2,13 @@ package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.battle.Battle;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.model.Monster;
 import com.mygdx.model.Unit;
-import com.mygdx.state.StaticAssets;
 
 public class BattleManager {
 	@Autowired

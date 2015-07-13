@@ -1,14 +1,19 @@
 ﻿package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 
 public class CollectionScreen extends BaseScreen {
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	private Stage stage;
 	private TextButton endingButton;
 	private TextButton cgButton;
@@ -29,12 +34,12 @@ public class CollectionScreen extends BaseScreen {
 	public void show() {
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		Table table = new Table(assets.skin);
+		Table table = new Table(uiComponentAssets.getSkin());
 
-		endingButton = new TextButton("엔딩", assets.skin);
-		cgButton = new TextButton("CG", assets.skin);
-		bgmButton = new TextButton("BGM", assets.skin);
-		backButton = new TextButton("Back", assets.skin);
+		endingButton = new TextButton("엔딩", uiComponentAssets.getSkin());
+		cgButton = new TextButton("CG", uiComponentAssets.getSkin());
+		bgmButton = new TextButton("BGM", uiComponentAssets.getSkin());
+		backButton = new TextButton("Back", uiComponentAssets.getSkin());
 
 		endingButton.addListener(new InputListener() {
 			@Override
@@ -99,4 +104,13 @@ public class CollectionScreen extends BaseScreen {
 
 		stage.addActor(table);
 	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
+	}
+
 }

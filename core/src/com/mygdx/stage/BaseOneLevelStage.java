@@ -3,12 +3,12 @@ package com.mygdx.stage;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.assets.Assets;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.TimeInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.CameraManager;
-import com.mygdx.state.Assets;
 
 public class BaseOneLevelStage extends Stage {
 	@Autowired

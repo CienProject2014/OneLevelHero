@@ -2,11 +2,12 @@ package com.mygdx.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mygdx.state.Assets;
+import com.mygdx.assets.UnitAssets;
 
 public class DungeonInfo {
+	//FIXME : 왜 모델에 Info가 있는거죠?
 	@Autowired
-	private Assets assets;
+	private UnitAssets unitAssets;
 	private String name;
 	private int itemNumber;
 	private String[] items;
@@ -40,7 +41,7 @@ public class DungeonInfo {
 
 	public Monster getMonster() {
 		if (monster == null)
-			monster = assets.monsterMap.get(monsterName);
+			monster = unitAssets.getMonster(monsterName);
 
 		return monster;
 	}

@@ -6,20 +6,23 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
+import com.mygdx.assets.MusicAssets;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.MusicInfo;
 import com.mygdx.currentState.PositionInfo;
-import com.mygdx.state.Assets;
+import com.mygdx.currentState.SoundInfo;
 
 public class MusicManager {
 	@Autowired
 	private MusicInfo musicInfo;
 	@Autowired
-	private Assets assets;
+	private SoundInfo soundInfo;
 	@Autowired
 	private PositionInfo positionInfo;
 	@Autowired
 	private MovingInfo movingInfo;
+	@Autowired
+	private MusicAssets musicAssets;
 
 	public enum MusicCondition {
 		WHENEVER, IF_IS_NOT_PLAYING;
@@ -31,14 +34,6 @@ public class MusicManager {
 
 	public void setMusicInfo(MusicInfo musicInfo) {
 		this.musicInfo = musicInfo;
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
 	}
 
 	public PositionInfo getPositionInfo() {
@@ -106,7 +101,7 @@ public class MusicManager {
 	}
 
 	public void setMusicAndPlay(Music music, MusicCondition musicCondition) {
-		setMusicAndPlay(music, assets.musicVolume, musicCondition);
+		setMusicAndPlay(music, soundInfo.getMusicVolume(), musicCondition);
 	}
 
 	public void setMusicAndPlay(Music music, float volume) {
@@ -114,22 +109,22 @@ public class MusicManager {
 	}
 
 	public void setMusicAndPlay(Music music) {
-		setMusicAndPlay(music, assets.musicVolume);
+		setMusicAndPlay(music, soundInfo.getMusicVolume());
 	}
 
 	public void setWorldNodeMusicAndPlay() {
-		Music music = assets.worldNodeMusicMap.get(positionInfo
+		Music music = musicAssets.getWorldNodeMusic(positionInfo
 				.getCurrentNode());
 		setMusicAndPlay(music);
 	}
 
 	public void setBattleMusicAndPlay() {
-		Music music = assets.battleMusicMap.get(movingInfo.getArrowName());
+		Music music = musicAssets.getBattleMusicMap(movingInfo.getArrowName());
 		setMusicAndPlay(music);
 	}
 
 	public void setMovingMusicAndPlay() {
-		Music music = assets.movingMusicMap.get(movingInfo.getArrowName());
+		Music music = musicAssets.getMovingMusicMap(movingInfo.getArrowName());
 		setMusicAndPlay(music);
 	}
 
@@ -139,5 +134,21 @@ public class MusicManager {
 
 	public void setMovingInfo(MovingInfo movingInfo) {
 		this.movingInfo = movingInfo;
+	}
+
+	public SoundInfo getSoundInfo() {
+		return soundInfo;
+	}
+
+	public void setSoundInfo(SoundInfo soundInfo) {
+		this.soundInfo = soundInfo;
+	}
+
+	public MusicAssets getMusicAssets() {
+		return musicAssets;
+	}
+
+	public void setMusicAssets(MusicAssets musicAssets) {
+		this.musicAssets = musicAssets;
 	}
 }

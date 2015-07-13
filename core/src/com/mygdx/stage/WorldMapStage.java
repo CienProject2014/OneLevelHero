@@ -11,16 +11,19 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.WorldMapManager;
 import com.mygdx.model.Connection;
-import com.mygdx.state.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
 public class WorldMapStage extends BaseOverlapStage {
 	@Autowired
 	private WorldMapManager worldMapManager;
+	@Autowired
+	private WorldMapAssets worldMapAssets;
 	private CompositeItem currentPosition;
 	private ImageItem currentNode;
 	private final int SET_POSITION = 15;
@@ -48,8 +51,8 @@ public class WorldMapStage extends BaseOverlapStage {
 
 		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
 		String currentNode = positionInfo.getCurrentNode();
-		Map<String, Connection> connectionMap = assets.worldNodeInfoMap.get(
-				currentNode).getConnection();
+		Map<String, Connection> connectionMap = worldMapAssets
+				.getWorldNodeInfo(currentNode).getConnection();
 		for (final Entry<String, Connection> connection : connectionMap
 				.entrySet()) {
 			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(
@@ -117,4 +120,13 @@ public class WorldMapStage extends BaseOverlapStage {
 	public void setWorldMapManager(WorldMapManager worldMapManager) {
 		this.worldMapManager = worldMapManager;
 	}
+
+	public WorldMapAssets getWorldMapAssets() {
+		return worldMapAssets;
+	}
+
+	public void setWorldMapAssets(WorldMapAssets worldMapAssets) {
+		this.worldMapAssets = worldMapAssets;
+	}
+
 }

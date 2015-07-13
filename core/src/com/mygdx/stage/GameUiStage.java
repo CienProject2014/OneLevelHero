@@ -17,6 +17,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
+import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -27,12 +30,15 @@ import com.mygdx.model.Hero;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
-import com.mygdx.state.StaticAssets;
 import com.mygdx.ui.StatusBarUi;
 
 public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private RewardManager rewardManager;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private AtlasUiAssets atlasUiAssets;
 
 	private Table uiTable;
 	private InventoryPopup inventoryActor;
@@ -79,12 +85,14 @@ public class GameUiStage extends BaseOneLevelStage {
 		alertMessage = new Stack<MessagePopup>();
 
 		for (int i = 0; i < battleMemberNumber; i++) {
-			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, assets.skin);
-			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, assets.skin);
+			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false,
+					uiComponentAssets.getSkin());
+			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false,
+					uiComponentAssets.getSkin());
 			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false,
-					assets.skin);
-			statusbartable[i] = new Table(assets.skin);
-			charatertable[i] = new Table(assets.skin);
+					uiComponentAssets.getSkin());
+			statusbartable[i] = new Table(uiComponentAssets.getSkin());
+			charatertable[i] = new Table(uiComponentAssets.getSkin());
 		}
 		// 캐릭터 이미지 세팅
 		List<Hero> currentBattleMemberList = partyInfo.getBattleMemberList();
@@ -93,31 +101,34 @@ public class GameUiStage extends BaseOneLevelStage {
 			characterImage[i] = new Image(currentBattleMemberList.get(i)
 					.getStatusTexture());
 
-		toptable = new Table(assets.skin);
-		bottomtable = new Table(assets.skin);
+		toptable = new Table(uiComponentAssets.getSkin());
+		bottomtable = new Table(uiComponentAssets.getSkin());
 
 		TextButtonStyle style = new TextButtonStyle(
-				assets.atlasUiMap.get("nameAndTime"),
-				assets.atlasUiMap.get("nameAndTime"),
-				assets.atlasUiMap.get("nameAndTime"), assets.font);
+				atlasUiAssets.getAtlasUiFile("nameAndTime"),
+				atlasUiAssets.getAtlasUiFile("nameAndTime"),
+				atlasUiAssets.getAtlasUiFile("nameAndTime"),
+				uiComponentAssets.getFont());
 		downArrowButton = new ImageButton(
-				assets.atlasUiMap.get("downArrowButton"),
-				assets.atlasUiMap.get("downArrowButton"));
-		bagButton = new ImageButton(assets.atlasUiMap.get("bagButton"),
-				assets.atlasUiMap.get("bagButton"));
+				atlasUiAssets.getAtlasUiFile("downArrowButton"),
+				atlasUiAssets.getAtlasUiFile("downArrowButton"));
+		bagButton = new ImageButton(atlasUiAssets.getAtlasUiFile("bagButton"),
+				atlasUiAssets.getAtlasUiFile("bagButton"));
 		worldMapButton = new TextButton("worldMap", style);
 		leftTimeButton = new TextButton(timeInfo.getDay() + "d"
 				+ timeInfo.getHour() + "h" + timeInfo.getMinute() + "m", style);
-		helpButton = new ImageButton(assets.atlasUiMap.get("helpButton"),
-				assets.atlasUiMap.get("helpButton"));
-		optionButton = new ImageButton(assets.atlasUiMap.get("optionButton"),
-				assets.atlasUiMap.get("optionButton"));
-		battleButton = new TextButton("Battle", assets.skin);
+		helpButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("helpButton"),
+				atlasUiAssets.getAtlasUiFile("helpButton"));
+		optionButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("optionButton"),
+				atlasUiAssets.getAtlasUiFile("optionButton"));
+		battleButton = new TextButton("Battle", uiComponentAssets.getSkin());
 
 		// 인벤토리 Actor 만들기
 		dragAndDrop = new DragAndDrop();
 		inventoryActor = new InventoryPopup(new Inventory(), dragAndDrop,
-				assets.skin);
+				uiComponentAssets.getSkin());
 
 		// 보상 이벤트 처리
 		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
@@ -125,14 +136,15 @@ public class GameUiStage extends BaseOneLevelStage {
 		while (iterator.hasNext()) {
 			RewardInfo nextIterator = iterator.next();
 			if (nextIterator.getRewardState().equals(RewardStateEnum.ING))
-				alertMessage.add(new AlertMessagePopup("[ 보상 ]", assets.skin)
-						.text(rewardManager.getRewardMessage(nextIterator)));
+				alertMessage.add(new AlertMessagePopup("[ 보상 ]",
+						uiComponentAssets.getSkin()).text(rewardManager
+						.getRewardMessage(nextIterator)));
 			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
 					+ nextIterator.getRewardType());
 		}
 		// 알림 메시지
-		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", assets.skin,
-				partyInfo);
+		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]",
+				uiComponentAssets.getSkin(), partyInfo);
 		addListener();
 		makeTable();
 		addActor(uiTable);
@@ -297,5 +309,21 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	public void setRewardManager(RewardManager rewardManager) {
 		this.rewardManager = rewardManager;
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
+	}
+
+	public AtlasUiAssets getAtlasUiAssets() {
+		return atlasUiAssets;
+	}
+
+	public void setAtlasUiAssets(AtlasUiAssets atlasUiAssets) {
+		this.atlasUiAssets = atlasUiAssets;
 	}
 }

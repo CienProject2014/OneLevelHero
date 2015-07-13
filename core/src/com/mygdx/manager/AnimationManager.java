@@ -7,9 +7,9 @@ import java.util.Queue;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.model.FrameSheet;
-import com.mygdx.state.StaticAssets;
 
 public class AnimationManager {
 	private SpriteBatch spriteBatch;

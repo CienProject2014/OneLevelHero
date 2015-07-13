@@ -3,7 +3,7 @@ package com.mygdx.ui;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.mygdx.state.StaticAssets;
+import com.mygdx.assets.StaticAssets;
 
 public class StatusBarUi extends ProgressBar {
 	private String name;

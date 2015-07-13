@@ -4,17 +4,24 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.model.Hero;
-import com.mygdx.state.StaticAssets;
 import com.mygdx.ui.StatusBarUi;
 
 public class CharacterUiStage extends BaseOneLevelStage {
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
+	private float realWidth, realHeight;
+
 	private Table uiTable; // 전체 화면을 차지하는 테이블
 	private Table statusTable;
 
@@ -44,12 +51,12 @@ public class CharacterUiStage extends BaseOneLevelStage {
 			heroStatusList.add(new HeroStatus(battleMemberList.get(i)));
 		}
 
-		statusTable = new Table(assets.skin);
+		statusTable = new Table();
 	}
 
 	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
 	private Table makeUiTable() {
-		Table table = new Table(assets.skin);
+		Table table = new Table();
 
 		table.setFillParent(true);
 
@@ -85,7 +92,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		vg.space(4f * StaticAssets.resolutionFactor);
 
 		vg.addActor(new Label(status.getHp() + "/" + status.getMaxHp(),
-				assets.skin));
+				uiComponentAssets.getSkin()));
 		vg.addActor(status.getHpBar());
 		vg.addActor(status.getGaugeBar());
 
@@ -121,9 +128,11 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		public HeroStatus(Hero hero) {
 			this.hero = hero;
-			hpBar = new StatusBarUi("hp", 0, 100, 1, false, assets.skin);
+			hpBar = new StatusBarUi("hp", 0, 100, 1, false,
+					uiComponentAssets.getSkin());
 			hpBar.setValue(getHpPercent());
-			gaugeBar = new StatusBarUi("gauge", 0, 100, 1, false, assets.skin);
+			gaugeBar = new StatusBarUi("gauge", 0, 100, 1, false,
+					uiComponentAssets.getSkin());
 			gaugeBar.setValue(getGaugePercent());
 		}
 
@@ -176,5 +185,13 @@ public class CharacterUiStage extends BaseOneLevelStage {
 			this.gaugeBar = gaugeBar;
 		}
 
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
 	}
 }
