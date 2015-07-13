@@ -1,25 +1,13 @@
 package com.mygdx.model;
 
-import java.util.List;
-
 import com.badlogic.gdx.Gdx;
 
-public class NPC extends Unit {
-	private int eventCount;
-	private List<Event> events;
+public class NPC extends EventElement {
 	private Event greeting;
-
-	public List<Event> getEvents() {
-		return events;
-	}
-
-	public void setEvents(List<Event> events) {
-		this.events = events;
-	}
 
 	public Event getEvent(int eventNo) {
 		try {
-			return events.get(eventNo);
+			return getEvents().get(eventNo);
 		} catch (IndexOutOfBoundsException e) {
 			Gdx.app.error("error",
 					String.format("eventNo %d not exist", eventNo));
@@ -65,14 +53,5 @@ public class NPC extends Unit {
 		} else if (!greeting.equals(other.greeting))
 			return false;
 		return true;
-	}
-
-	public int getEventCount() {
-		eventCount = events.size();
-		return eventCount;
-	}
-
-	public void setEventCount(int eventCount) {
-		this.eventCount = eventCount;
 	}
 }

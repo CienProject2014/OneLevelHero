@@ -9,7 +9,6 @@ public class Unit implements Comparable<Unit> {
 	private int gauge;
 	private Texture statusTexture;
 	private Texture battleTexture;
-	private Texture npcTexture;
 
 	public String getName() {
 		return name;
@@ -65,7 +64,7 @@ public class Unit implements Comparable<Unit> {
 
 	public Texture getBattleTexture() {
 		if (battleTexture == null) {
-			if (this instanceof NPC || this instanceof Hero)
+			if (this instanceof Hero)
 				battleTexture = TextureManager.getCharacterBattleTexture(name);
 			else
 				battleTexture = TextureManager.getMonsterBattleTexture(name);
@@ -75,16 +74,5 @@ public class Unit implements Comparable<Unit> {
 
 	public void setBattleTexture(Texture battleTexture) {
 		this.battleTexture = battleTexture;
-	}
-
-	public Texture getNpcTexture() {
-		return npcTexture;
-	}
-
-	public void setNpcTexture(Texture npcTexture) {
-		if (npcTexture == null)
-			npcTexture = TextureManager.getNpcTexture(name);
-
-		this.npcTexture = npcTexture;
 	}
 }
