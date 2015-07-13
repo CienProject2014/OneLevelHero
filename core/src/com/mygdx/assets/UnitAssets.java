@@ -3,10 +3,10 @@ package com.mygdx.assets;
 import java.util.Map;
 
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.manager.JsonParser;
 import com.mygdx.model.Hero;
 import com.mygdx.model.Monster;
 import com.mygdx.model.NPC;
+import com.mygdx.util.JsonParser;
 
 public class UnitAssets implements JsonAssetsInitializable {
 	private Map<String, Hero> heroMap;

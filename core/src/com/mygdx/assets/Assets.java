@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.manager.JsonParser;
 import com.mygdx.model.JsonStringFile;
+import com.mygdx.util.JsonParser;
 
 /**
  * 각종 리소스들을 관리해주는 assets 클래스, Stage및 Screen에 필요한 요소들을 전달해준다.
