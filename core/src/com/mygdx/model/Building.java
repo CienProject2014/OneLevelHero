@@ -1,11 +1,7 @@
 package com.mygdx.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.Json.Serializable;
-import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.enums.BuildingTypeEnum;
 
 /**
@@ -14,7 +10,7 @@ import com.mygdx.enums.BuildingTypeEnum;
  * @author Velmont
  *
  */
-public class Building{
+public class Building {
 	private String buildingName;
 	private BuildingTypeEnum buildingType;
 	private String buildingPath;

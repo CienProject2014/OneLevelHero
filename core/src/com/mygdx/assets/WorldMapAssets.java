@@ -3,8 +3,8 @@ package com.mygdx.assets;
 import java.util.Map;
 
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.manager.JsonParser;
 import com.mygdx.model.WorldNode;
+import com.mygdx.util.JsonParser;
 
 public class WorldMapAssets implements JsonAssetsInitializable {
 	private Map<String, WorldNode> worldNodeInfoMap;
