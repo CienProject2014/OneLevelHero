@@ -68,7 +68,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 			HeroStatus status = (HeroStatus) i.next();
 			Table heroTable = makeHeroTable(status);
 
-			table.add(heroTable).padBottom(58f);
+			table.add(heroTable).padBottom(58f * StaticAssets.resolutionFactor);
 			table.row();
 		}
 
