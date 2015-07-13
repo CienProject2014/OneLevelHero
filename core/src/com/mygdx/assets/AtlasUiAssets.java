@@ -6,9 +6,9 @@ import java.util.Map;
 
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.manager.JsonParser;
 import com.mygdx.model.AtlasUiFile;
 import com.mygdx.model.JsonStringFile;
+import com.mygdx.util.JsonParser;
 
 public class AtlasUiAssets implements FileAssetsInitializable {
 	public Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<String, TextureRegionDrawable>();

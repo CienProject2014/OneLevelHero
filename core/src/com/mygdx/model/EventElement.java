@@ -1,10 +1,11 @@
 package com.mygdx.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EventElement {
 	protected String name;
-	protected List<Event> events;
+	protected ArrayList<Event> events;
 
 	public String getName() {
 		return name;
@@ -14,7 +15,7 @@ public class EventElement {
 		this.name = name;
 	}
 
-	public void setEvents(List<Event> events) {
+	public void setEvents(ArrayList<Event> events) {
 		this.events = events;
 	}
 
