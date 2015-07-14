@@ -49,7 +49,6 @@ public class Building {
 	public void setBuildingNpc(List<String> buildingNpc) {
 		this.buildingNpc = buildingNpc;
 	}
-	
 	public List<String> getGameObject(){
 		return gameObject;
 	}
