@@ -15,7 +15,8 @@ public class Building {
 	private BuildingTypeEnum buildingType;
 	private String buildingPath;
 	private List<String> buildingNpc;
-	private String sceneName;
+	private List<String> gameObject;
+	private String sceneName; 
 
 	public String getBuildingName() {
 		return buildingName;
@@ -47,6 +48,13 @@ public class Building {
 
 	public void setBuildingNpc(List<String> buildingNpc) {
 		this.buildingNpc = buildingNpc;
+	}
+	public List<String> getGameObject(){
+		return gameObject;
+	}
+	
+	public void setGameObject(List<String> gameObject) {
+		this.gameObject = gameObject;
 	}
 
 	public String getSceneName() {

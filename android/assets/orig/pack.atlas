@@ -788,39 +788,41 @@ blackwood2
 
 
   
+
 blackwood_headhouse_pack.png
-size: 2670,810
+size: 2048,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-headhouse_bg
+chestafteropen
   rotate: false
-  xy: 0, 0
-  size: 1920, 810
-  orig: 1920, 810
-  offset: 0, 0
-  index: -1
-waiji_601
-  rotate: false
-  xy: 1920, 0
-  size: 300, 597
-  orig: 300, 597
-  offset: 0, 0
-  index: -1
-chest_after_open
-  rotate: false
-  xy: 2220, 0
+  xy: 2, 2
   size: 225, 239
   orig: 225, 239
   offset: 0, 0
   index: -1
-chest_before_open
+chestbeforeopen
   rotate: false
-  xy: 2445, 0
+  xy: 304, 642
   size: 225, 198
   orig: 225, 198
   offset: 0, 0
   index: -1
+headhousebg
+  rotate: false
+  xy: 2, 842
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+waiji601
+  rotate: false
+  xy: 2, 243
+  size: 300, 597
+  orig: 300, 597
+  offset: 0, 0
+  index: -1
+
   
 blackwood_forest_entrance_pack.png
 size: 2820,1080
