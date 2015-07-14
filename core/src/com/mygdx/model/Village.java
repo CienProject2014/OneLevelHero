@@ -23,6 +23,7 @@ public class Village implements Serializable {
 	private String backgroundPath;
 	private String sceneName;
 	private List<String> villageNpc;
+	
 	private Map<String, Building> building;
 
 	public String getVillageName() {

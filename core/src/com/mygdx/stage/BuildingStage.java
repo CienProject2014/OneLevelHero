@@ -14,6 +14,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.assets.WorldNodeAssets;
+import com.mygdx.enums.GameObjectEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.CameraManager.CameraPosition;
 import com.mygdx.manager.EventManager;
@@ -31,6 +32,7 @@ public class BuildingStage extends BaseOverlapStage {
 	private UnitAssets unitAssets;
 
 	private List<CompositeItem> npcButtonList;
+	private List<CompositeItem> gameObjectList;
 	private Building buildingInfo;
 	private TextButton exitButton;
 
@@ -39,10 +41,13 @@ public class BuildingStage extends BaseOverlapStage {
 
 		makeScene();
 		setNpcList();
+		setItemList();
 		setExitButton();
 
 		return this;
 	}
+	
+	
 
 	private void setExitButton() {
 		exitButton = new TextButton("나가기", uiComponentAssets.getSkin());
@@ -73,6 +78,7 @@ public class BuildingStage extends BaseOverlapStage {
 		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
 	}
+	
 
 	private void setNpcList() {
 		npcButtonList = new ArrayList<CompositeItem>();
@@ -97,7 +103,34 @@ public class BuildingStage extends BaseOverlapStage {
 			npcButtonList.add(npcButton);
 		}
 	}
+	
+	private void setItemList(){
+		gameObjectList = new ArrayList<CompositeItem>();
+		for(final String objectName: buildingInfo.getGameObject()){
+			final CompositeItem objectButton = sceneLoader.getRoot().getCompositeById(objectName);
+			objectButton.setVisible(true);
+			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.getCode(), false);
+			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.getCode(), true);
+			objectButton.setTouchable(Touchable.enabled);
+			objectButton.addListener(new InputListener(){
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y,
+						int pointer, int button) {
+					return true;
+				}
 
+				@Override
+				public void touchUp(InputEvent event, float x, float y,
+						int pointer, int button) {
+					objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.getCode(), true);
+					objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.getCode(), false);
+					
+					/*screenFactory.show(ScreenEnum.GREETING);*/
+				}
+			}); 
+			gameObjectList.add(objectButton);
+		}
+	}
 	public EventManager getEventManager() {
 		return eventManager;
 	}
