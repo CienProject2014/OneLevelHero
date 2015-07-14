@@ -1,7 +1,42 @@
 {
   "BattleStage": {
-	"RButtonWidth": 0.1278,
-	"RButtonHeight": 0.125,
-	"gridPadTOP": 0.125
+	"RMenuTablePadTop": 161,
+	"RMenuTablePadBottom": 15,
+	"RMenuTablePadRight": 15,
+	"RButtonWidth": 138,
+	"RButtonHeight": 138,
+	"RButtonSpace": 15,
+	"gridPadTop": 228,
+	"gridTableWidthSmall": 640,
+	"gridTableHeightSmall": 640,
+	"gridTableWidthMedium": 640,
+	"gridTableHeightMedium": 640,
+	"gridTableWidthLarge": 640,
+	"gridTableHeightLarge": 640
+  },
+  "CharacterUiStage": {
+	"heroTablePadLeft": 13,
+	"heroTablePadBottom": 58,
+	"heroImageWidth": 158,
+	"heroImageHeight": 158,
+	"heroBarSpace": 4,
+	"heroBarHorizontalSpace": 6,
+	"barTableWidth": 144,
+	"buffTableWidth": 138,
+	"buffTableHeight": 30
+  },
+  "MonsterStage": {
+	"monsterPadTop": 228,
+	"monsterTableWidth": 1440,
+	"monsterTableHeight": 675
+  },
+  "GameUiStage": {
+	"padLeft": 15,
+	"padTop": 15,
+	"buttonPadRight": 14,
+	"TButtonWidthSmall": 145,
+	"TButtonHeightSmall": 131,
+	"TButtonWidthLarge": 620,
+	"TButtonHeightLarge": 131
   }
 }

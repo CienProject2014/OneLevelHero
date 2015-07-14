@@ -7,6 +7,7 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.mygdx.assets.Assets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
@@ -34,6 +35,7 @@ public class OneLevelTest extends Game {
 	}
 
 	public void gameLoad() {
+		context.getBean(Assets.class).initialize();
 		context.getBean(ScreenFactory.class).setGame(this);
 		context.getBean(LoadManager.class).loadNewGame();
 	}
@@ -53,8 +55,7 @@ public class OneLevelTest extends Game {
 	}
 
 	private void goDungeonEntranceScreen() {
-		context.getBean(PositionInfo.class).setCurrentNode(
-				WorldNodeEnum.BLACKWOOD_FOREST.toString());
+		context.getBean(PositionInfo.class).setCurrentNode(WorldNodeEnum.BLACKWOOD_FOREST.toString());
 		context.getBean(ScreenFactory.class).show(ScreenEnum.DUNGEON_ENTRANCE);
 	}
 

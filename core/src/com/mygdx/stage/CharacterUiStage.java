@@ -1,6 +1,7 @@
 package com.mygdx.stage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.model.Hero;
@@ -20,9 +20,8 @@ import com.mygdx.ui.StatusBarUi;
 public class CharacterUiStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
-	private float realWidth, realHeight;
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("CharacterUiStage");
 
-	private Table uiTable; // 전체 화면을 차지하는 테이블
 	private Table statusTable;
 
 	private int battleMemberNumber;
@@ -31,18 +30,18 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private List<HeroStatus> heroStatusList;
 
 	public Stage makeStage() {
-		uiTable = new Table();
+		super.makeStage();
 
-		initialize();
+		listInitialize();
 
+		Table uiTable;
 		uiTable = makeUiTable();
-
-		addActor(uiTable);
+		tableStack.add(uiTable);
 
 		return this;
 	}
 
-	private void initialize() {
+	private void listInitialize() {
 		battleMemberList = partyInfo.getBattleMemberList();
 		battleMemberNumber = battleMemberList.size();
 
@@ -57,8 +56,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
 	private Table makeUiTable() {
 		Table table = new Table();
-
-		table.setFillParent(true);
 
 		statusTable = makeStatusTable();
 
@@ -75,7 +72,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 			HeroStatus status = (HeroStatus) i.next();
 			Table heroTable = makeHeroTable(status);
 
-			table.add(heroTable).padBottom(58f * StaticAssets.resolutionFactor);
+			table.add(heroTable).padBottom(uiConstantsMap.get("heroTablePadBottom"));
 			table.row();
 		}
 
@@ -83,32 +80,31 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	}
 
 	private Table makeHeroTable(HeroStatus status) {
-		Table table = new Table();
+		Table heroTable = new Table();
 
-		table.add(new Image(status.getHero().getStatusTexture())).padRight(
-				13f * StaticAssets.resolutionFactor);
+		heroTable.add(new Image(status.getHero().getStatusTexture())).padRight(uiConstantsMap.get("heroTablePadLeft"))
+				.width(uiConstantsMap.get("heroImageWidth")).height(uiConstantsMap.get("heroImageHeight"));
 
-		VerticalGroup vg = new VerticalGroup();
-		vg.space(4f * StaticAssets.resolutionFactor);
+		Table barTable = new Table();
+		HorizontalGroup buffGroup = new HorizontalGroup();
+		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
+		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_faint")));
+		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_satan")));
+		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_ice")));
+		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_fire")));
 
-		vg.addActor(new Label(status.getHp() + "/" + status.getMaxHp(),
-				uiComponentAssets.getSkin()));
-		vg.addActor(status.getHpBar());
-		vg.addActor(status.getGaugeBar());
+		barTable.add(new Label(status.getHp() + "/" + status.getMaxHp(), uiComponentAssets.getSkin()))
+				.padBottom(uiConstantsMap.get("heroBarSpace")).row();
+		barTable.add(status.getHpBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
+				.width(uiConstantsMap.get("barTableWidth")).row();
+		barTable.add(status.getGaugeBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
+				.width(uiConstantsMap.get("barTableWidth")).row();
+		barTable.add(buffGroup).width(uiConstantsMap.get("buffTableWidth"))
+				.height(uiConstantsMap.get("buffTableHeight"));
 
-		HorizontalGroup hg = new HorizontalGroup();
-		hg.space(6f * StaticAssets.resolutionFactor);
+		heroTable.add(barTable);
 
-		hg.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_faint")));
-		hg.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_satan")));
-		hg.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_ice")));
-		hg.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_fire")));
-		// FIXME 현재는 버프 테이블 사용하지 않음.
-		// vg.addActor(hg);
-
-		table.add(vg);
-
-		return table;
+		return heroTable;
 	}
 
 	// 정보 업데이트
@@ -128,11 +124,9 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		public HeroStatus(Hero hero) {
 			this.hero = hero;
-			hpBar = new StatusBarUi("hp", 0, 100, 1, false,
-					uiComponentAssets.getSkin());
+			hpBar = new StatusBarUi("hp", 0, 100, 1, false, uiComponentAssets.getSkin());
 			hpBar.setValue(getHpPercent());
-			gaugeBar = new StatusBarUi("gauge", 0, 100, 1, false,
-					uiComponentAssets.getSkin());
+			gaugeBar = new StatusBarUi("gauge", 0, 100, 1, false, uiComponentAssets.getSkin());
 			gaugeBar.setValue(getGaugePercent());
 		}
 
@@ -150,8 +144,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		}
 
 		public int getHpPercent() {
-			float factor = (float) hero.getStatus().getHp()
-					/ hero.getStatus().getMaxHp();
+			float factor = (float) hero.getStatus().getHp() / hero.getStatus().getMaxHp();
 			return (int) (factor * 100);
 		}
 

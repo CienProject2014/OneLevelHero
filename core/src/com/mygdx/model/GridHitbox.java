@@ -1,19 +1,23 @@
 package com.mygdx.model;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
+import java.util.HashMap;
+
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
-import com.mygdx.state.StaticAssets;
 
 public class GridHitbox extends Table {
-	Tile[][] tiles;
-	float tableWidth;
-	float tableHeight;
-	int rows;
-	int columns;
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
+
+	private Tile[][] tiles;
+	private float tableWidth;
+	private float tableHeight;
+	private int rows;
+	private int columns;
+
+	private boolean gridShow;
 
 	public GridHitbox(MonsterEnum.SizeType sizeType) {
 		switch (sizeType) {
@@ -21,21 +25,28 @@ public class GridHitbox extends Table {
 			// TODO 추후 구현
 			break;
 		case MEDIUM:
-			tableWidth = 640f * StaticAssets.resolutionFactor;
-			tableHeight = 640f * StaticAssets.resolutionFactor;
+			tableWidth = uiConstantsMap.get("gridTableWidthMedium");
+			tableHeight = uiConstantsMap.get("gridTableHeightMedium");
 			rows = 5;
 			columns = 5;
 			tiles = new Tile[rows][columns];
+			for (int i = 0; i < rows; i++) {
+				for (int j = 0; j < columns; j++) {
+					tiles[i][j] = new Tile();
+				}
+			}
 			break;
 		case LARGE:
 			// TODO 추후 구현
 			break;
 		}
+
+		makeGridTable(sizeType);
 	}
 
-	public void makeGridTable() {
+	public void makeGridTable(MonsterEnum.SizeType sizeType) {
 		align(Align.top);
-		add(getGridImage()) // gridTable에 gridImage 넣는다.
+		add(getGridImage(sizeType)) // gridTable에 gridImage 넣는다.
 				// .padTop(topPadValue) // 상단바에 겹치지 않게 위쪽 Padding(1/8)
 				.width(tableWidth) // 최대 가로 크기
 				.height(tableHeight); // 최대 세로 크기
@@ -43,10 +54,12 @@ public class GridHitbox extends Table {
 	}
 
 	public void showGrid() {
+		gridShow = true;
 		setVisible(true);
 	}
 
 	public void hideGrid() {
+		gridShow = false;
 		setVisible(false);
 	}
 
@@ -91,12 +104,10 @@ public class GridHitbox extends Table {
 		}
 	}
 
-	private boolean isInside(float centerX, float centerY, float width,
-			float height, int x, int y) {
+	private boolean isInside(float centerX, float centerY, float width, float height, int x, int y) {
 		int revertedY = (int) (StaticAssets.windowHeight - y);
 
-		if (x > (centerX - width / 2) && x < (centerX + width / 2)
-				&& revertedY < (centerY + height / 2)
+		if (x > (centerX - width / 2) && x < (centerX + width / 2) && revertedY < (centerY + height / 2)
 				&& revertedY > (centerY - height / 2)) {
 			return true;
 		}
@@ -138,6 +149,15 @@ public class GridHitbox extends Table {
 		this.tableHeight = tableHeight;
 	}
 
+	private Image getGridImage(MonsterEnum.SizeType sizeType) {
+		// FIXME medium대신 monster.getType() 사용해야 함.
+		return new Image(StaticAssets.battleUiTextureMap.get("grid_" + sizeType));
+	}
+
+	public boolean isGridShow() {
+		return gridShow;
+	}
+
 	public class Tile {
 		Image image = new Image(StaticAssets.battleUiTextureMap.get("tile"));
 
@@ -163,14 +183,4 @@ public class GridHitbox extends Table {
 
 	}
 
-	private Image getGridImage() {
-		// FIXME medium대신 monster.getType() 사용해야 함.
-		return new Image(new Texture(Gdx.files.internal("texture/battle/grid_"
-				+ "medium" + ".png")));
-	}
-
-	private Image getTileImage() {
-		return new Image(new Texture(
-				Gdx.files.internal("texture/battle/tile.png")));
-	}
 }
