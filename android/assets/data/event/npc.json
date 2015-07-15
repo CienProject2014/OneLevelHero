@@ -2,8 +2,8 @@
   "prologue": {
     "events": [
       {
-        "eventState": "OPENED",
-        "eventType": "CHAT",
+        "eventState": "not_opened",
+        "eventType": "chat",
         "eventScenes": [
           {
             "script": "대륙의 중심, 블랙우드 마을에 마왕이 출현했다.",
@@ -53,8 +53,8 @@
     "name": "waiji",
     "events": [
       {
-        "eventState": "OPENED",
-        "eventType": "CHAT",
+        "eventState": "not_opened",
+        "eventType": "chat",
         "reward": {
           "rewardType": "PARTY",
           "rewardTarget": "parath",
@@ -145,7 +145,7 @@
       }
     ],
     "greeting": {
-      "eventType": "SELECT",
+      "eventType": "greeting",
       "eventScenes": [
         {
           "script": "블랙우드 마을에 온 것을 환영하네",
