@@ -1,5 +1,7 @@
 package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -14,9 +16,13 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.LoadManager;
 
 public class LoadScreen extends BaseScreen {
+	@Autowired
 	protected CurrentState currentState;
+	@Autowired
 	private LoadManager loadManager;
+	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
 	private EventAssets eventAssets;
 
 	private Stage stage;
@@ -75,37 +81,5 @@ public class LoadScreen extends BaseScreen {
 		table.add(backButton).bottom();
 		stage.addActor(table);
 		// stage.addActor(backButton);
-	}
-
-	public CurrentState getCurrentState() {
-		return currentState;
-	}
-
-	public void setCurrentState(CurrentState currentState) {
-		this.currentState = currentState;
-	}
-
-	public LoadManager getLoadManager() {
-		return loadManager;
-	}
-
-	public void setLoadManager(LoadManager loadManager) {
-		this.loadManager = loadManager;
-	}
-
-	public EventAssets getEventAssets() {
-		return eventAssets;
-	}
-
-	public void setEventAssets(EventAssets eventAssets) {
-		this.eventAssets = eventAssets;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
 	}
 }

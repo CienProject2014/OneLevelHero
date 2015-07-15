@@ -302,28 +302,4 @@ public class GameUiStage extends BaseOneLevelStage {
 		inventoryActor.remove();
 		super.dispose();
 	}
-
-	public RewardManager getRewardManager() {
-		return rewardManager;
-	}
-
-	public void setRewardManager(RewardManager rewardManager) {
-		this.rewardManager = rewardManager;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
-	}
-
-	public AtlasUiAssets getAtlasUiAssets() {
-		return atlasUiAssets;
-	}
-
-	public void setAtlasUiAssets(AtlasUiAssets atlasUiAssets) {
-		this.atlasUiAssets = atlasUiAssets;
-	}
 }

@@ -136,28 +136,4 @@ public class VillageStage extends BaseOverlapStage {
 			});
 		}
 	}
-
-	public WorldNodeAssets getWorldNodeAssets() {
-		return worldNodeAssets;
-	}
-
-	public void setWorldNodeAssets(WorldNodeAssets worldNodeAssets) {
-		this.worldNodeAssets = worldNodeAssets;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
-	}
-
-	public Village getVillageInfo() {
-		return villageInfo;
-	}
-
-	public void setVillageInfo(Village villageInfo) {
-		this.villageInfo = villageInfo;
-	}
 }

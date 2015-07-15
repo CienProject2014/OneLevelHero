@@ -105,12 +105,4 @@ public class DungeonStage extends BaseOverlapStage {
 			}
 		});
 	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
 }

@@ -15,7 +15,7 @@ public class BattleManager {
 	private MovingInfo movingInfo;
 	@Autowired
 	private PartyInfo partyInfo;
-
+	@Autowired
 	private AnimationManager animationManager;
 
 	private Battle battle = new Battle();

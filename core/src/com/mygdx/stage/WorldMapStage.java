@@ -112,21 +112,4 @@ public class WorldMapStage extends BaseOverlapStage {
 
 		getCamera().translate(xvalue, yvalue, 0);
 	}
-
-	public WorldMapManager getWorldMapManager() {
-		return worldMapManager;
-	}
-
-	public void setWorldMapManager(WorldMapManager worldMapManager) {
-		this.worldMapManager = worldMapManager;
-	}
-
-	public WorldMapAssets getWorldMapAssets() {
-		return worldMapAssets;
-	}
-
-	public void setWorldMapAssets(WorldMapAssets worldMapAssets) {
-		this.worldMapAssets = worldMapAssets;
-	}
-
 }

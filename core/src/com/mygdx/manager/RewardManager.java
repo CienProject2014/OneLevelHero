@@ -79,36 +79,4 @@ public class RewardManager {
 				return "보상 없음";
 		}
 	}
-
-	public RewardQueueInfo getRewardQueueInfo() {
-		return rewardQueueInfo;
-	}
-
-	public void setRewardQueueInfo(RewardQueueInfo rewardQueueInfo) {
-		this.rewardQueueInfo = rewardQueueInfo;
-	}
-
-	public EventManager getEventManager() {
-		return eventManager;
-	}
-
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
-	}
-
-	public UnitAssets getUnitAssets() {
-		return unitAssets;
-	}
-
-	public void setUnitAssets(UnitAssets unitAssets) {
-		this.unitAssets = unitAssets;
-	}
 }

@@ -66,12 +66,4 @@ public class EncounterStage extends BaseOneLevelStage {
 		});
 	}
 
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
-	}
-
 }

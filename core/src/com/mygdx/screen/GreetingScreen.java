@@ -93,12 +93,4 @@ public class GreetingScreen extends BaseScreen {
 				break;
 		}
 	}
-
-	public EventManager getEventManager() {
-		return eventManager;
-	}
-
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
-	}
 }
