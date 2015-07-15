@@ -8,6 +8,8 @@ import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.RewardStateEnum;
+import com.mygdx.model.Event;
+import com.mygdx.model.EventPacket;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
@@ -22,59 +24,44 @@ public class EventManager {
 	private EventInfo eventInfo;
 	@Autowired
 	private RewardManager rewardManager;
-	private static Iterator<EventScene> eventSceneIterator;
+
+	private Iterator<EventScene> eventSceneIterator;
 
 	public Iterator<EventScene> getEventSceneIterator() {
-		NPC npc = eventInfo.getNpc();
-		eventSceneIterator = npc.getEvent(eventInfo.getEventNumber())
+		eventSceneIterator = eventInfo.getCurrentEvent()
 				.getEventSceneIterator();
-
-		// 리워드를 eventRewardQueue에 추가
-		addEventRewardQueue(npc);
+		addEventRewardQueue(eventInfo.getCurrentEvent().getReward());
 
 		return eventSceneIterator;
 	}
 
-	private void addEventRewardQueue(NPC npc) {
-		RewardInfo rewardInfo = npc.getEvent(eventInfo.getEventNumber())
-				.getReward();
-		if (rewardInfo != null)
-			if (rewardInfo.getRewardState() == RewardStateEnum.NOT_CLEARED)
-				rewardManager.addEventReward(rewardInfo);
+	private void addEventRewardQueue(RewardInfo rewardPacket) {
+		if (rewardPacket != null)
+			if (rewardPacket.getRewardState() == RewardStateEnum.NOT_CLEARED)
+				rewardManager.addEventReward(rewardPacket);
+	}
+
+	public NPC getCurrentNpc() {
+		return eventInfo.getCurrentNpc();
+	}
+
+	public Event getCurrentEvent() {
+		return eventInfo.getCurrentEvent();
 	}
 
 	public void finishEvent() {
-		eventInfo.getNpc().getEvent(eventInfo.getEventNumber())
-				.setEventState(EventStateEnum.CLEARED);
+		eventInfo.getCurrentEvent().setEventState(EventStateEnum.CLEARED);
 	}
 
-	public void setEventInfo(NPC npc, int eventNumber, boolean isGreeting) {
-		eventInfo.setNpc(npc);
-		eventInfo.setEventNumber(eventNumber);
-		eventInfo.setGreeting(isGreeting);
+	public void setCurrentEventInfo(EventPacket eventPacket) {
+		eventInfo.setCurrentEventInfo(eventPacket);
 	}
 
-	public void setEventInfo(NPC npc, int eventNumber) {
-		setEventInfo(npc, eventNumber, false);
+	public void setCurrentEventNumber(int eventNumber) {
+		eventInfo.setCurrentEventNumber(eventNumber);
 	}
 
-	public void setEventInfo(NPC npc, boolean isGreeting) {
-		setEventInfo(npc, 0, isGreeting);
-	}
-
-	public EventInfo getEventInfo() {
-		return eventInfo;
-	}
-
-	public void setEventInfo(EventInfo eventInfo) {
-		this.eventInfo = eventInfo;
-	}
-
-	public RewardManager getRewardManager() {
-		return rewardManager;
-	}
-
-	public void setRewardManager(RewardManager rewardManager) {
-		this.rewardManager = rewardManager;
+	public void setCurrentEventNpc(String npcName) {
+		eventInfo.setCurrentEventNpc(npcName);
 	}
 }

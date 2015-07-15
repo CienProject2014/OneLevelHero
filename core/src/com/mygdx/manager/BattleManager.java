@@ -50,29 +50,4 @@ public class BattleManager {
 	public void nextTurn() {
 		// TODO
 	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
-	}
-
-	public AnimationManager getAnimationManager() {
-		return animationManager;
-	}
-
-	public void setAnimationManager(AnimationManager animationManager) {
-		this.animationManager = animationManager;
-	}
-
 }

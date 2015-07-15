@@ -20,7 +20,7 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PlaceManager;
 import com.mygdx.model.NPC;
 
-public class SelectButtonStage extends BaseOneLevelStage {
+public class SelectEventStage extends BaseOneLevelStage {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -32,10 +32,10 @@ public class SelectButtonStage extends BaseOneLevelStage {
 
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
-	private int eventCount;
-	private NPC eventNpc;
 	private final int MAX_EVENT_LENGTH = 6;
 	private TextButton exitButton;
+	private int eventSize;
+	private NPC eventNpc;
 
 	private void addActors() {
 		for (TextButton chatButton : chatButtons)
@@ -43,7 +43,7 @@ public class SelectButtonStage extends BaseOneLevelStage {
 	}
 
 	private void addListener() {
-		for (int i = 0; i < eventCount; i++) {
+		for (int i = 0; i < eventSize; i++) {
 			// 이벤트가 달성되었는지 검사(현재는 리워드)
 			if (eventNpc.getEvent(i).getEventState() == EventStateEnum.CLEARED)
 				chatButtons.get(i).setColor(Color.DARK_GRAY);
@@ -58,7 +58,7 @@ public class SelectButtonStage extends BaseOneLevelStage {
 					@Override
 					public void touchUp(InputEvent event, float x, float y,
 							int pointer, int button) {
-						eventManager.setEventInfo(eventInfo.getNpc(), 0, false);
+						eventManager.setCurrentEventNumber(0);
 						screenFactory.show(ScreenEnum.EVENT);
 					}
 				});
@@ -67,11 +67,10 @@ public class SelectButtonStage extends BaseOneLevelStage {
 	}
 
 	public Stage makeStage() {
-		eventNpc = eventInfo.getNpc();
-		eventCount = eventNpc.getEvents().size();
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
 		chatStyles = new ArrayList<TextButtonStyle>();
-
+		eventNpc = eventManager.getCurrentNpc();
+		eventSize = eventNpc.getEvents().size();
 		showEventButton();
 		setSize();
 		setButtonPosition();
@@ -97,7 +96,7 @@ public class SelectButtonStage extends BaseOneLevelStage {
 						StaticAssets.windowHeight * 0.555f },
 				{ StaticAssets.windowWidth * 0.68f,
 						StaticAssets.windowHeight * 0.37f } };
-		for (int i = 0; i < eventCount; i++)
+		for (int i = 0; i < eventSize; i++)
 			chatButtons.get(i).setPosition(buttonPosition[i][0],
 					buttonPosition[i][1]);
 	}
@@ -131,7 +130,7 @@ public class SelectButtonStage extends BaseOneLevelStage {
 	}
 
 	private void showEventButton() {
-		for (int i = 0; i < eventCount; i++) {
+		for (int i = 0; i < eventSize; i++) {
 			chatStyles.add(new TextButtonStyle(uiComponentAssets
 					.getChatButton()[i], uiComponentAssets.getChatButton()[i],
 					uiComponentAssets.getChatButton()[i], uiComponentAssets
@@ -140,35 +139,11 @@ public class SelectButtonStage extends BaseOneLevelStage {
 		}
 	}
 
-	public EventManager getEventManager() {
-		return eventManager;
+	public int getEventSize() {
+		return eventSize;
 	}
 
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
-	}
-
-	public PlaceManager getPlaceManager() {
-		return placeManager;
-	}
-
-	public void setPlaceManager(PlaceManager placeManager) {
-		this.placeManager = placeManager;
-	}
-
-	public EventInfo getEventInfo() {
-		return eventInfo;
-	}
-
-	public void setEventInfo(EventInfo eventInfo) {
-		this.eventInfo = eventInfo;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
+	public void setEventSize(int eventSize) {
+		this.eventSize = eventSize;
 	}
 }

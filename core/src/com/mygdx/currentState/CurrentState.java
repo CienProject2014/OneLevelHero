@@ -56,71 +56,7 @@ public class CurrentState implements Serializable {
 		return inventoryInfo;
 	}
 
-	public InventoryInfo getInventoryInfo() {
-		return inventoryInfo;
-	}
-
-	public void setInventoryInfo(InventoryInfo inventoryInfo) {
-		this.inventoryInfo = inventoryInfo;
-	}
-
-	public EventInfo getEventInfo() {
-		return eventInfo;
-	}
-
-	public void setEventInfo(EventInfo eventInfo) {
-		this.eventInfo = eventInfo;
-	}
-
-	public RewardQueueInfo getRewardQueueInfo() {
-		return rewardQueueInfo;
-	}
-
-	public void setRewardQueueInfo(RewardQueueInfo rewardQueueInfo) {
-		this.rewardQueueInfo = rewardQueueInfo;
-	}
-
-	public MusicInfo getMusicInfo() {
-		return musicInfo;
-	}
-
-	public void setMusicInfo(MusicInfo musicInfo) {
-		this.musicInfo = musicInfo;
-	}
-
 	public void setInventory(InventoryInfo inventory) {
 		this.inventoryInfo = inventory;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public TimeInfo getTimeInfo() {
-		return timeInfo;
-	}
-
-	public void setTimeInfo(TimeInfo timeInfo) {
-		this.timeInfo = timeInfo;
-	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
 	}
 }

@@ -83,12 +83,4 @@ public class EventScreen extends BaseScreen {
 				break;
 		}
 	}
-
-	public RewardManager getRewardManager() {
-		return rewardManager;
-	}
-
-	public void setRewardManager(RewardManager rewardManager) {
-		this.rewardManager = rewardManager;
-	}
 }

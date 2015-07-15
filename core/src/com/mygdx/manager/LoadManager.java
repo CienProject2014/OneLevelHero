@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.currentState.PartyInfo;
@@ -14,11 +15,15 @@ import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.model.Hero;
+import com.mygdx.model.StorySection;
 
 public class LoadManager {
 	@Autowired
 	private UnitAssets unitAssets;
-
+	@Autowired
+	private EventAssets eventAssets;
+	@Autowired
+	private StorySectionManager storySectionManager;
 	@Autowired
 	private PositionInfo positionInfo;
 	@Autowired
@@ -28,17 +33,25 @@ public class LoadManager {
 	@Autowired
 	private TimeInfo timeInfo;
 	private Hero hero;
+	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
 	public void loadNewGame() {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();
 		setPartyList();
 		setCurrentPosition();
+		setStorySection();
 		timeInfo.setTime(1, 8, 0);
 	}
 
 	public LoadManager() {
 		Gdx.app.debug("LoadManager", "Constructor() call");
+	}
+
+	private void setStorySection() {
+		StorySection prologueStorySection = eventAssets
+				.getStorySection(PROLOGUE_STORYSECTION_NUMBER);
+		storySectionManager.setCurrentStorySection(prologueStorySection);
 	}
 
 	private void setCurrentPosition() {
@@ -74,45 +87,5 @@ public class LoadManager {
 
 	public void setHero(Hero hero) {
 		this.hero = hero;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
-	}
-
-	public TimeInfo getTimeInfo() {
-		return timeInfo;
-	}
-
-	public void setTimeInfo(TimeInfo timeInfo) {
-		this.timeInfo = timeInfo;
-	}
-
-	public UnitAssets getUnitAssets() {
-		return unitAssets;
-	}
-
-	public void setUnitAssets(UnitAssets unitAssets) {
-		this.unitAssets = unitAssets;
 	}
 }

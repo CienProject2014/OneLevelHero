@@ -1,6 +1,10 @@
 package com.mygdx.currentState;
 
-import com.mygdx.enums.EventTypeEnum;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.mygdx.assets.EventAssets;
+import com.mygdx.model.Event;
+import com.mygdx.model.EventPacket;
 import com.mygdx.model.NPC;
 
 /**
@@ -11,35 +15,38 @@ import com.mygdx.model.NPC;
  */
 
 public class EventInfo {
-	private NPC npc;
-	private int eventNumber;
-	private boolean greeting;
+	@Autowired
+	private EventAssets eventAssets;
 
-	public NPC getNpc() {
-		return npc;
+	private EventPacket currentEventInfo;
+
+	public NPC getCurrentNpc() {
+		String npcName = currentEventInfo.getEventNpc();
+		return eventAssets.getNpc(npcName);
 	}
 
-	public void setNpc(NPC npc) {
-		this.npc = npc;
+	public Event getCurrentEvent() {
+		return eventAssets.getEvent(currentEventInfo.getEventNpc(),
+				currentEventInfo.getEventNumber());
 	}
 
-	public int getEventNumber() {
-		return eventNumber;
+	public void setCurrentEventNpc(String npcString) {
+		EventPacket eventPacket = new EventPacket();
+		eventPacket.setEventNpc(npcString);
+		eventPacket.setEventNumber(0);
+		setCurrentEventInfo(eventPacket);
 	}
 
-	public void setEventNumber(int eventNumber) {
-		this.eventNumber = eventNumber;
+	public void setCurrentEventNumber(int eventNumber) {
+		currentEventInfo.setEventNumber(eventNumber);
 	}
 
-	public boolean isGreeting() {
-		return greeting;
+	public EventPacket getCurrentEventInfo() {
+		return currentEventInfo;
 	}
 
-	public void setGreeting(boolean greeting) {
-		this.greeting = greeting;
+	public void setCurrentEventInfo(EventPacket currentEventInfo) {
+		this.currentEventInfo = currentEventInfo;
 	}
 
-	public EventTypeEnum getEventType() {
-		return npc.getEvents().get(eventNumber).getEventType();
-	}
 }

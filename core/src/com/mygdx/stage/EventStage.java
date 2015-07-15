@@ -8,8 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.manager.EventManager;
 import com.mygdx.model.EventScene;
 
 /**
@@ -22,7 +22,7 @@ public class EventStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
-	private EventInfo eventInfo;
+	private EventManager eventManager;
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
@@ -53,12 +53,7 @@ public class EventStage extends BaseOneLevelStage {
 				StaticAssets.windowHeight);
 
 		// Greeting인지 아닌지 여부에 따라 처리
-		EventTypeEnum eventType;
-		if (eventInfo.isGreeting())
-			eventType = EventTypeEnum.SELECT;
-		else
-			eventType = eventInfo.getEventType();
-		makeEventStage(eventType);
+		makeEventStage(eventManager.getCurrentEvent().getEventType());
 		this.addActor(backgroundImage);
 		this.addActor(script);
 		this.addActor(characterImage);
@@ -71,8 +66,10 @@ public class EventStage extends BaseOneLevelStage {
 			case CHAT:
 				makeChatStage();
 				break;
-			case SELECT:
-				makeSelectStage();
+			case SELECT_EVENT:
+			case GREETING:
+			case SELECT_COMPONENT:
+				makeSelectEventStage();
 				break;
 			case CREDIT:
 				makeCreditStage();
@@ -86,7 +83,7 @@ public class EventStage extends BaseOneLevelStage {
 	private void makeCreditStage() {
 	}
 
-	private void makeSelectStage() {
+	private void makeSelectEventStage() {
 		script.setFontScale(StaticAssets.windowWidth / 1280);
 		script.setWrap(true); // 스크립트가 끝에 다다르면 자동 개행
 		script.setSize(StaticAssets.windowWidth * 0.781f,
@@ -112,21 +109,5 @@ public class EventStage extends BaseOneLevelStage {
 		characterImage.setPosition(0, 0);
 		backgroundImage.setSize(StaticAssets.windowWidth,
 				StaticAssets.windowHeight);
-	}
-
-	public EventInfo getEventInfo() {
-		return eventInfo;
-	}
-
-	public void setEventInfo(EventInfo eventInfo) {
-		this.eventInfo = eventInfo;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
 	}
 }

@@ -59,12 +59,4 @@ public class RoadInfo {
 		this.background = background;
 	}
 
-	public UnitAssets getUnitAssets() {
-		return unitAssets;
-	}
-
-	public void setUnitAssets(UnitAssets unitAssets) {
-		this.unitAssets = unitAssets;
-	}
-
 }
