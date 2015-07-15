@@ -28,5 +28,8 @@
   },
   "moving_music_list":{
   	"filePath":"data/sound/moving_music_list.json"
+  },
+  "ui_constants_file":{
+	"filePath":"data/load/ui_constants.json"
   }
 }

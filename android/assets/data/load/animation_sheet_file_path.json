@@ -1,12 +1,12 @@
 {
   "attack_cutting": {
-    "filePath": "texture/animation_sheet/attack_cutting.png",
+    "filePath": "texture/animation_sheet/804_attack_cutting.png",
 	"frameNumber": 6,
 	"row": 2,
 	"column": 5
   },
   "attack_cutting2": {
-	"filePath": "texture/animation_sheet/attack_cutting2.png",
+	"filePath": "texture/animation_sheet/804_attack_cutting2.png",
 	"frameNumber": 24,
 	"row": 5,
 	"column": 5

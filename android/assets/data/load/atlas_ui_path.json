@@ -20,12 +20,15 @@
   {
     "filePath": "skin/GameUiButton.pack",
     "element": [
-      "downArrowButton",
-      "bagButton",
-      "nameAndTime",
-      "helpButton",
-      "optionButton",
-      "upArrowButton"
+	  "back_button",
+	  "back_toggle_button",
+	  "time_info_button",
+	  "quest_log_button",
+	  "quest_log_toggle_button",
+	  "help_button",
+	  "help_toggle_button",
+	  "setting_button",
+	  "setting_toggle_button"
     ]
   }
 ]

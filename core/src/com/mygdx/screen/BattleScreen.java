@@ -23,7 +23,7 @@ public class BattleScreen extends BaseScreen {
 		monsterStage.draw();
 		characterUiStage.draw();
 		// FIXME GameUi와 CharacherUi의 분리가 필요
-		// gameUiStage.draw();
+		gameUiStage.draw();
 		battleStage.draw();
 
 		// Animation이 진행중일때는 사용자의 입력에 대한 행동을 수행하지 않음
@@ -36,6 +36,19 @@ public class BattleScreen extends BaseScreen {
 			gameUiStage.act();
 			battleStage.act();
 		}
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		// gameUiStage.getViewport().update(width, height, false);
+		// characterUiStage.getViewport().update(width, height, false);
+		// /*
+		// * monsterStage.setViewport(new FitViewport(width, height,
+		// monsterStage
+		// * .getCamera()));
+		// */
+		// // monsterStage.getViewport().update(width, height, false);
+		// battleStage.getViewport().update(width, height, false);
 	}
 
 	@Override
