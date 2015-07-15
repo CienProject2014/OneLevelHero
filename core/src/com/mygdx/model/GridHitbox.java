@@ -9,7 +9,8 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
 
 public class GridHitbox extends Table {
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("BattleStage");
 
 	private Tile[][] tiles;
 	private float tableWidth;
@@ -46,6 +47,7 @@ public class GridHitbox extends Table {
 
 	public void makeGridTable(MonsterEnum.SizeType sizeType) {
 		align(Align.top);
+		padTop(uiConstantsMap.get("gridPadTop"));
 		add(getGridImage(sizeType)) // gridTable에 gridImage 넣는다.
 				// .padTop(topPadValue) // 상단바에 겹치지 않게 위쪽 Padding(1/8)
 				.width(tableWidth) // 최대 가로 크기
@@ -104,10 +106,12 @@ public class GridHitbox extends Table {
 		}
 	}
 
-	private boolean isInside(float centerX, float centerY, float width, float height, int x, int y) {
+	private boolean isInside(float centerX, float centerY, float width,
+			float height, int x, int y) {
 		int revertedY = (int) (StaticAssets.windowHeight - y);
 
-		if (x > (centerX - width / 2) && x < (centerX + width / 2) && revertedY < (centerY + height / 2)
+		if (x > (centerX - width / 2) && x < (centerX + width / 2)
+				&& revertedY < (centerY + height / 2)
 				&& revertedY > (centerY - height / 2)) {
 			return true;
 		}
@@ -151,7 +155,8 @@ public class GridHitbox extends Table {
 
 	private Image getGridImage(MonsterEnum.SizeType sizeType) {
 		// FIXME medium대신 monster.getType() 사용해야 함.
-		return new Image(StaticAssets.battleUiTextureMap.get("grid_" + sizeType));
+		return new Image(
+				StaticAssets.battleUiTextureMap.get("grid_" + sizeType));
 	}
 
 	public boolean isGridShow() {
