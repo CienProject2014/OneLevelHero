@@ -170,41 +170,8 @@ public class DungeonStage extends BaseOverlapStage {
 		/*
 		 * TODO
 		 * 
-		 * 미니맵을 출력 범위 지정 후 클리어. Connection에서 from이 null인 것을 추려내 최상위 Root를 구해
-		 * 트리구성. 트리의 깊이로 Width를 각 깊이별 노드의 갯수로 각각의 Height를 나누어서 Graph를 구성해서 Node의
-		 * 속성에 따른 출력. currentHeading으로 화살표 표시.
+		 * 미니맵 이미지와 각각의 노드, 경로별로 별도의 알파맵이 존재해 탐색에 따라 블랜드하여 처리하는 방식으로 단순화
 		 */
-
-		// TODO Clear
-
-		// Draw connections
-		for (int x = 1; x < mapInfo.graph.size(); x++) {
-			ArrayList<Node> layer = mapInfo.graph.get(x), privLayer = mapInfo.graph
-					.get(x - 1);
-
-			for (int y = 0; y < layer.size(); y++) {
-				for (Connection e : mapInfo.connections) {
-					if (e.isTo(layer.get(y))) {
-						for (int privY = 0; privY < privLayer.size(); privY++) {
-							if (e.getFrom() == privLayer.get(privY)) {
-								// TODO Draw Line
-							}
-						}
-					}
-				}
-			}
-		}
-
-		// Draw nodes
-		for (int x = 0; x < mapInfo.graph.size(); x++) {
-			ArrayList<Node> layer = mapInfo.graph.get(x);
-
-			for (int y = 0; y < layer.size(); y++) {
-				// TODO Draw Node
-			}
-		}
-
-		// TODO Draw arrow(heading)
 
 		super.draw();
 	}

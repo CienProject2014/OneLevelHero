@@ -1,5 +1,7 @@
 package com.mygdx.dungeonMap;
 
+import java.util.HashMap;
+
 public class Node {
 	public final static int FLG_NULL = 0;
 	public final static int FLG_ENTRANCE = (1 << 0);
@@ -9,6 +11,7 @@ public class Node {
 	public final static int FLG_BOSS = (1 << 4) | FLG_ENCOUNT;
 
 	private int flg;
+	public HashMap<String, Object> data;	// NOTE TEMP
 
 	public Node(int flg) {
 		this.flg = flg;
