@@ -124,13 +124,11 @@ public class DungeonStage extends BaseOverlapStage {
 		selectableBackward.clear();
 
 		Node currentNode = mapInfo.nodes.get(currentPos);
-		for (Connection e : mapInfo.connections) {
-			if (e.getFrom() == currentNode) {
+		for (Connection e : mapInfo.connections)
+			if (e.isFrom(currentNode))
 				selectableForward.add(e);
-			} else if (e.getTo() == currentNode) {
+			else if (e.isTo(currentNode))
 				selectableBackward.add(e);
-			}
-		}
 
 		switch ((currentHeading ? selectableBackward : selectableForward)
 				.size()) {
@@ -162,9 +160,9 @@ public class DungeonStage extends BaseOverlapStage {
 		update();
 
 		Node currentNode = mapInfo.nodes.get(currentPos);
-		if (currentNode.chkFlg(Node.FLG_ENTRANCE)) {
+		if (currentNode.chkFlg(Node.FLG_ENTRANCE))
 			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-		}
+
 	}
 
 	@Override
@@ -176,6 +174,37 @@ public class DungeonStage extends BaseOverlapStage {
 		 * 트리구성. 트리의 깊이로 Width를 각 깊이별 노드의 갯수로 각각의 Height를 나누어서 Graph를 구성해서 Node의
 		 * 속성에 따른 출력. currentHeading으로 화살표 표시.
 		 */
+
+		// TODO Clear
+
+		// Draw connections
+		for (int x = 1; x < mapInfo.graph.size(); x++) {
+			ArrayList<Node> layer = mapInfo.graph.get(x), privLayer = mapInfo.graph
+					.get(x - 1);
+
+			for (int y = 0; y < layer.size(); y++) {
+				for (Connection e : mapInfo.connections) {
+					if (e.isTo(layer.get(y))) {
+						for (int privY = 0; privY < privLayer.size(); privY++) {
+							if (e.getFrom() == privLayer.get(privY)) {
+								// TODO Draw Line
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// Draw nodes
+		for (int x = 0; x < mapInfo.graph.size(); x++) {
+			ArrayList<Node> layer = mapInfo.graph.get(x);
+
+			for (int y = 0; y < layer.size(); y++) {
+				// TODO Draw Node
+			}
+		}
+
+		// TODO Draw arrow(heading)
 
 		super.draw();
 	}

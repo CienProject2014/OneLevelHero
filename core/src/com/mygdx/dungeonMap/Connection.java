@@ -8,8 +8,12 @@ public class Connection {
 		this.to = to;
 	}
 
-	public boolean chkReferExist(Node node) {
-		return node == from | node == to;
+	public boolean isFrom(Node node) {
+		return node == from;
+	}
+
+	public boolean isTo(Node node) {
+		return node == to;
 	}
 
 	public Node getFrom() {
