@@ -1,14 +1,18 @@
 package com.mygdx.stage;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.PositionInfo;
+import com.mygdx.dungeonMap.Connection;
+import com.mygdx.dungeonMap.Info;
+import com.mygdx.dungeonMap.Node;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.CameraManager.CameraPosition;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -20,32 +24,42 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
 public class DungeonStage extends BaseOverlapStage {
 	@Autowired
 	private PositionInfo positionInfo; // 나중에 쓸거임 지우지 마셈
-	private CompositeItem arrowUp, arrowDown, arrowLeft, arrowRight;
+	private CompositeItem arrowTurn, arrowLeft, arrowCenter, arrowRight;
+
+	private Info mapInfo;
+
+	private int currentPos;
+	private boolean currentHeading;
+
+	private ArrayList<Connection> selectableForward, selectableBackward;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
 
-		makeScene();
+		// FIXME UI
+		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
+		makeScene("blackwood_forest_dungeon_scene");
 		setButton();
 
 		return this;
 	}
 
-	private void makeScene() {
-		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
-		sceneLoader.loadScene("blackwood_forest_dungeon_scene");
+	private void makeScene(String sceneName) {
+		// FIXME UI
+		sceneLoader.loadScene(sceneName);
 		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
 	}
 
 	private void setButton() {
-		arrowUp = sceneLoader.getRoot().getCompositeById("arrow_up");
-		arrowDown = sceneLoader.getRoot().getCompositeById("arrow_down");
+		// FIXME UI
+		arrowTurn = sceneLoader.getRoot().getCompositeById("arrow_down");
 		arrowLeft = sceneLoader.getRoot().getCompositeById("arrow_left");
+		arrowCenter = sceneLoader.getRoot().getCompositeById("arrow_up");
 		arrowRight = sceneLoader.getRoot().getCompositeById("arrow_right");
 
-		arrowUp.setTouchable(Touchable.enabled);
-		arrowUp.addListener(new InputListener() {
+		arrowTurn.setTouchable(Touchable.enabled);
+		arrowTurn.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -55,23 +69,7 @@ public class DungeonStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				Gdx.app.debug("DungeonStage", "앞으로 이동");
-			}
-		});
-
-		arrowDown.setTouchable(Touchable.enabled);
-		arrowDown.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.debug("DungeonStage", "뒤로 이동");
-				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
+				actionTurn();
 			}
 		});
 
@@ -86,7 +84,22 @@ public class DungeonStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				Gdx.app.debug("DungeonStage", "왼쪽으로 이동");
+				actionMove(0);
+			}
+		});
+
+		arrowCenter.setTouchable(Touchable.enabled);
+		arrowCenter.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				actionMove(1);
 			}
 		});
 
@@ -101,16 +114,69 @@ public class DungeonStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				Gdx.app.debug("DungeonStage", "오른쪽으로 이동");
+				actionMove(2);
 			}
 		});
 	}
 
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
+	private void update() {
+		selectableForward.clear();
+		selectableBackward.clear();
+
+		Node currentNode = mapInfo.nodes.get(currentPos);
+		for (Connection e : mapInfo.connections) {
+			if (e.getFrom() == currentNode) {
+				selectableForward.add(e);
+			} else if (e.getTo() == currentNode) {
+				selectableBackward.add(e);
+			}
+		}
+
+		switch ((currentHeading ? selectableBackward : selectableForward)
+				.size()) {
+		case 0:
+			arrowLeft.setTouchable(Touchable.disabled);
+		case 1:
+			arrowLeft.setTouchable(Touchable.enabled);
+			arrowCenter.setTouchable(Touchable.disabled);
+		case 2:
+			arrowCenter.setTouchable(Touchable.enabled);
+			arrowRight.setTouchable(Touchable.disabled);
+		case 3:
+			arrowRight.setTouchable(Touchable.enabled);
+		}
+		arrowTurn.setVisible(arrowTurn.getTouchable() == Touchable.enabled);
+		arrowCenter.setVisible(arrowCenter.getTouchable() == Touchable.enabled);
+		arrowLeft.setVisible(arrowLeft.getTouchable() == Touchable.enabled);
+		arrowRight.setVisible(arrowRight.getTouchable() == Touchable.enabled);
 	}
 
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
+	private void actionTurn() {
+		currentHeading = !currentHeading;
+	}
+
+	private void actionMove(int index) {
+		currentPos = mapInfo.nodes.indexOf((currentHeading ? selectableBackward
+				: selectableForward).get(index));
+
+		update();
+
+		Node currentNode = mapInfo.nodes.get(currentPos);
+		if (currentNode.chkFlg(Node.FLG_ENTRANCE)) {
+			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
+		}
+	}
+
+	@Override
+	public void draw() {
+		/*
+		 * TODO
+		 * 
+		 * 미니맵을 출력 범위 지정 후 클리어. Connection에서 from이 null인 것을 추려내 최상위 Root를 구해
+		 * 트리구성. 트리의 깊이로 Width를 각 깊이별 노드의 갯수로 각각의 Height를 나누어서 Graph를 구성해서 Node의
+		 * 속성에 따른 출력. currentHeading으로 화살표 표시.
+		 */
+
+		super.draw();
 	}
 }
