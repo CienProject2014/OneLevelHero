@@ -1,11 +1,7 @@
 package com.mygdx.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.Json.Serializable;
-import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.enums.BuildingTypeEnum;
 
 /**
@@ -14,12 +10,13 @@ import com.mygdx.enums.BuildingTypeEnum;
  * @author Velmont
  *
  */
-public class Building implements Serializable {
+public class Building {
 	private String buildingName;
 	private BuildingTypeEnum buildingType;
 	private String buildingPath;
 	private List<String> buildingNpc;
-	private String sceneName;
+	private List<String> gameObject;
+	private String sceneName; 
 
 	public String getBuildingName() {
 		return buildingName;
@@ -52,21 +49,12 @@ public class Building implements Serializable {
 	public void setBuildingNpc(List<String> buildingNpc) {
 		this.buildingNpc = buildingNpc;
 	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public void read(Json json, JsonValue jsonData) {
-		buildingName = json.readValue("buildingName", String.class, jsonData);
-		buildingType = json.readValue("buildingType", BuildingTypeEnum.class,
-				jsonData);
-		buildingPath = json.readValue("buildingPath", String.class, jsonData);
-		buildingNpc = json.readValue("buildingNpc", ArrayList.class,
-				String.class, jsonData);
-		sceneName = json.readValue("sceneName", String.class, jsonData);
+	public List<String> getGameObject(){
+		return gameObject;
 	}
-
-	@Override
-	public void write(Json json) {
+	
+	public void setGameObject(List<String> gameObject) {
+		this.gameObject = gameObject;
 	}
 
 	public String getSceneName() {

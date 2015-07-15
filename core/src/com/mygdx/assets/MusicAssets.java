@@ -7,9 +7,9 @@ import java.util.Map.Entry;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.manager.JsonParser;
 import com.mygdx.model.JsonStringFile;
 import com.mygdx.model.MusicFile;
+import com.mygdx.util.JsonParser;
 
 public class MusicAssets implements FileAssetsInitializable {
 	private Map<String, Music> musicMap = new HashMap<>();

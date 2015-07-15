@@ -3,7 +3,7 @@
     "filePath": "data/unit/hero.json"
   },
   "npc_json": {
-    "filePath": "data/unit/npc.json"
+    "filePath": "data/event/npc.json"
   },
   "worldmap_json": {
     "filePath": "data/map/worldmap.json"
