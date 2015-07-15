@@ -38,5 +38,19 @@
 	"TButtonHeightSmall": 131,
 	"TButtonWidthLarge": 620,
 	"TButtonHeightLarge": 131
+  },
+  "EventStage": {
+	"scriptWidth": 1920,
+	"scriptHeight": 365,
+	"scriptPadLeft": 8,
+	"scriptPadBottom": 58,
+	"scriptTitleWidth": 748,
+	"scriptTitleHeight": 57,
+	"scriptTitlePadBottom": 11,
+	"scriptContentWidth": 748,
+	"scriptContentHeight": 189,
+	"talkerPadLeft": 15,
+	"talkerWidth": 567,
+	"talkerHeight": 933
   }
 }
