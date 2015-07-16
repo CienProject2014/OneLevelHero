@@ -14,6 +14,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.EventScene;
 
@@ -30,6 +31,8 @@ public class EventStage extends BaseOneLevelStage {
 	private EventManager eventManager;
 	@Autowired
 	private StorySectionManager storySectionManager;
+	@Autowired
+	private RewardManager rewardManager;
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
@@ -45,6 +48,8 @@ public class EventStage extends BaseOneLevelStage {
 					if (eventSceneIterator.hasNext()) {
 						setScene(eventSceneIterator.next());
 					} else {
+						rewardManager.doReward(); // 보상이 있을경우 보상실행
+						eventManager.finishEvent();
 						storySectionManager.runStorySequence();
 					}
 					return true;
