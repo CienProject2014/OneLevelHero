@@ -14,8 +14,8 @@ public class CameraManager {
 	}
 
 	public CameraManager() {
-		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WINDTH, StaticAssets.BASE_WINDOW_HEIGHT);
-		cam.position.set(StaticAssets.BASE_WINDOW_WINDTH / 2f, StaticAssets.BASE_WINDOW_HEIGHT / 2f, 0);
+		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
+		cam.position.set(StaticAssets.BASE_WINDOW_WIDTH / 2f, StaticAssets.BASE_WINDOW_HEIGHT / 2f, 0);
 	}
 
 	public void setCameraSize(BaseOverlapStage stage, CameraPosition cameraPosition) {

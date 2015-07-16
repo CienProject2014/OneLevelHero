@@ -12,7 +12,9 @@
 	"gridTableWidthMedium": 640,
 	"gridTableHeightMedium": 640,
 	"gridTableWidthLarge": 640,
-	"gridTableHeightLarge": 640
+	"gridTableHeightLarge": 640,
+	"gridTileWidth": 128,
+	"gridTileHeight": 128
   },
   "CharacterUiStage": {
 	"heroTablePadLeft": 13,

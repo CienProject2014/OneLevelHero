@@ -43,9 +43,8 @@ public class MonsterStage extends BaseOneLevelStage {
 
 		outerTable.setBackground(getBackgroundTRD(), false);
 		outerTable.align(Align.top); // table을 위로 정렬
-		// outerTable.add(monsterTable).padTop(uiConstantsMap.get("monsterPadTop"))
-		// .width(uiConstantsMap.get("monsterTableWidth")).height(uiConstantsMap.get("monsterTableHeight"));
-		outerTable.add(monsterTable);
+		outerTable.add(monsterTable).padTop(uiConstantsMap.get("monsterPadTop"))
+				.width(uiConstantsMap.get("monsterTableWidth")).height(uiConstantsMap.get("monsterTableHeight"));
 
 		tableStack.add(outerTable);
 	}
