@@ -33,13 +33,19 @@ public class StaticAssets {
 	public static Map<String, HashMap<String, Float>> uiConstantsMap = new HashMap<String, HashMap<String, Float>>();
 
 	public static TextureRegionDrawable bartexture_bg = new TextureRegionDrawable(
-			new TextureRegion(new Texture(Gdx.files.internal("texture/bgcolour.png")), 50, 22));
-	public static ProgressBarStyle barstyle_hp = new ProgressBarStyle(bartexture_bg, new TextureRegionDrawable(
-			new TextureRegion(new Texture(Gdx.files.internal("texture/hpcolour.png")), 0, 22)));
-	public static ProgressBarStyle barstyle_turn = new ProgressBarStyle(bartexture_bg, new TextureRegionDrawable(
-			new TextureRegion(new Texture(Gdx.files.internal("texture/turncolour.png")), 0, 22)));
+			new TextureRegion(new Texture(
+					Gdx.files.internal("texture/bgcolour.png")), 50, 22));
+	public static ProgressBarStyle barstyle_hp = new ProgressBarStyle(
+			bartexture_bg, new TextureRegionDrawable(new TextureRegion(
+					new Texture(Gdx.files.internal("texture/hpcolour.png")), 0,
+					22)));
+	public static ProgressBarStyle barstyle_turn = new ProgressBarStyle(
+			bartexture_bg, new TextureRegionDrawable(new TextureRegion(
+					new Texture(Gdx.files.internal("texture/turncolour.png")),
+					0, 22)));
 
-	public static TextureAtlas items = new TextureAtlas("texture/items/items.pack");
+	public static TextureAtlas items = new TextureAtlas(
+			"texture/items/items.pack");
 	public static final float BASE_WINDOW_WINDTH = 1920;
 	public static final float BASE_WINDOW_HEIGHT = 1080;
 	public static float windowWidth;
@@ -51,8 +57,8 @@ public class StaticAssets {
 	public static void loadAll() {
 		Gdx.app.debug("StaticAssets", "StaticAssets.loadAll() called");
 
-		filePathMap = JsonParser.parseMap(JsonStringFile.class,
-				Gdx.files.internal("data/load/file_path.json").readString());
+		filePathMap = JsonParser.parseMap(JsonStringFile.class, Gdx.files
+				.internal("data/load/file_path.json").readString());
 
 		loadSize(new Stage());
 		loadTexture();
@@ -81,26 +87,34 @@ public class StaticAssets {
 	}
 
 	public static void loadTexture() {
-		Map<String, TextureFile> characterFileMap = JsonParser.parseMap(TextureFile.class,
-				filePathMap.get(JsonEnum.CHARACTER_FILE_PATH.toString()).loadFile());
+		Map<String, TextureFile> characterFileMap = JsonParser.parseMap(
+				TextureFile.class,
+				filePathMap.get(JsonEnum.CHARACTER_FILE_PATH.toString())
+						.loadFile());
 		for (Entry<String, TextureFile> entry : characterFileMap.entrySet()) {
-			characterTextureMap.put(entry.getKey(), entry.getValue().loadFile());
+			characterTextureMap
+					.put(entry.getKey(), entry.getValue().loadFile());
 		}
 
-		Map<String, TextureFile> monsterFileMap = JsonParser.parseMap(TextureFile.class,
-				filePathMap.get(JsonEnum.MONSTER_FILE_PATH.toString()).loadFile());
+		Map<String, TextureFile> monsterFileMap = JsonParser.parseMap(
+				TextureFile.class,
+				filePathMap.get(JsonEnum.MONSTER_FILE_PATH.toString())
+						.loadFile());
 		for (Entry<String, TextureFile> entry : monsterFileMap.entrySet()) {
 			monsterTextureMap.put(entry.getKey(), entry.getValue().loadFile());
 		}
 
-		Map<String, TextureFile> backgroundFileMap = JsonParser.parseMap(TextureFile.class,
-				filePathMap.get(JsonEnum.BACKGROUND_FILE_PATH.toString()).loadFile());
+		Map<String, TextureFile> backgroundFileMap = JsonParser.parseMap(
+				TextureFile.class,
+				filePathMap.get(JsonEnum.BACKGROUND_FILE_PATH.toString())
+						.loadFile());
 		for (Entry<String, TextureFile> entry : backgroundFileMap.entrySet()) {
-			backgroundTextureMap.put(entry.getKey(), entry.getValue().loadFile());
+			backgroundTextureMap.put(entry.getKey(), entry.getValue()
+					.loadFile());
 		}
 
-		animationSheetMap = JsonParser.parseMap(FrameSheet.class,
-				filePathMap.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
+		animationSheetMap = JsonParser.parseMap(FrameSheet.class, filePathMap
+				.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
 
 		FileHandle fh;
 		FileHandle[] fhs;
@@ -115,13 +129,15 @@ public class StaticAssets {
 		if (fh.isDirectory()) {
 			fhs = fh.list();
 
-			for (int i = 0; i < fhs.length; i++) {
-				Gdx.app.log("StaticAssets", fhs[i].name());
-				battleUiTextureMap.put(fhs[i].nameWithoutExtension(), new Texture(fhs[i].path()));
+			for (FileHandle e : fhs) {
+				Gdx.app.log("StaticAssets", e.name());
+				if (e.extension().matches("^(png|jpg)")) {
+					battleUiTextureMap.put(e.nameWithoutExtension(),
+							new Texture(e.path()));
+				}
 			}
 		} else {
 			fhs = null;
 		}
-
 	}
 }
