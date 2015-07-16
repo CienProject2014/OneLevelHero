@@ -117,11 +117,15 @@
 	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage"
 		scope="prototype" />
+	<bean id="selectComponentStage" class="com.mygdx.stage.SelectComponentStage"
+		scope="prototype"/>
 	<bean id="selectEventStage" class="com.mygdx.stage.SelectEventStage"
 		scope="prototype"/>
+	 
 	<bean id="statusStage" class="com.mygdx.stage.StatusStage" scope="prototype" />
 	<bean id="villageStage" class="com.mygdx.stage.VillageStage"
 		scope="prototype"/>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
+	
 </beans>
