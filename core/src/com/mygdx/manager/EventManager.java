@@ -4,10 +4,13 @@ import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.RewardStateEnum;
+import com.mygdx.factory.StageFactory;
 import com.mygdx.model.Event;
 import com.mygdx.model.EventPacket;
 import com.mygdx.model.EventScene;
@@ -24,8 +27,36 @@ public class EventManager {
 	private EventInfo eventInfo;
 	@Autowired
 	private RewardManager rewardManager;
+	@Autowired
+	private StageFactory stageFactory;
 
 	private Iterator<EventScene> eventSceneIterator;
+
+	public Stage getEvent() {
+		Event currentEvent = eventInfo.getCurrentEvent();
+		switch (currentEvent.getEventType()) {
+			case CHAT:
+			case CREDIT:
+			case SELECT_COMPONENT:
+			case SELECT_EVENT:
+				return getChatScene();
+			case MOVE:
+			default:
+				Gdx.app.error("EventManager", "EventTypeEnum 정보가 없습니다.");
+				throw new NullPointerException();
+		}
+	}
+
+	private Stage getChatScene() {
+		Iterator<EventScene> eventSceneIterator = getEventSceneIterator();
+		if (eventSceneIterator.hasNext()) {
+			Stage eventStage = stageFactory.makeEventStage(eventSceneIterator);
+			return eventStage;
+		} else {
+			Gdx.app.log("EventManager", "EventInfo - SceneIterator 주입 에러");
+			return null;
+		}
+	}
 
 	public Iterator<EventScene> getEventSceneIterator() {
 		eventSceneIterator = eventInfo.getCurrentEvent()

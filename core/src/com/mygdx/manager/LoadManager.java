@@ -42,6 +42,7 @@ public class LoadManager {
 		setCurrentPosition();
 		setStorySection();
 		timeInfo.setTime(1, 8, 0);
+		storySectionManager.runStorySequence();
 	}
 
 	public LoadManager() {
@@ -51,7 +52,9 @@ public class LoadManager {
 	private void setStorySection() {
 		StorySection prologueStorySection = eventAssets
 				.getStorySection(PROLOGUE_STORYSECTION_NUMBER);
+
 		storySectionManager.setCurrentStorySection(prologueStorySection);
+		storySectionManager.insertStorySequence();
 	}
 
 	private void setCurrentPosition() {

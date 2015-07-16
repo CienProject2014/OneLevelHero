@@ -69,9 +69,8 @@ public class LoadScreen extends BaseScreen {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				currentState.setVersion(SaveVersion.NEW);
-				loadManager.loadNewGame();
 				eventManager.setCurrentEventNpc(PROLOGUE);
-				screenFactory.show(ScreenEnum.EVENT);
+				loadManager.loadNewGame();
 			}
 		});
 

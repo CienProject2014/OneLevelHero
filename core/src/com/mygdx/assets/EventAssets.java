@@ -22,7 +22,7 @@ public class EventAssets implements JsonAssetsInitializable {
 	}
 
 	public StorySection getStorySection(int storySectionNumber) {
-		return storySectionMap.get(storySectionNumber);
+		return storySectionMap.get(String.valueOf(storySectionNumber));
 	}
 
 	public NPC getNpc(String npcString) {

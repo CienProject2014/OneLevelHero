@@ -1,8 +1,12 @@
 package com.mygdx.stage;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -10,6 +14,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.EventScene;
 
 /**
@@ -23,40 +28,36 @@ public class EventStage extends BaseOneLevelStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
 	private Label script;
 	private Image characterImage;
 	private Image backgroundImage;
 
-	/**
-	 * EventManager로부터 eventScene정보를 받아 그래픽처리를 해준다.
-	 *
-	 * @param eventScene
-	 * @return
-	 */
+	public Stage makeStage(final Iterator<EventScene> eventSceneIterator) {
+		if (eventSceneIterator.hasNext()) {
+			setScene(eventSceneIterator.next());
+
+			this.addListener(new InputListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y,
+						int pointer, int button) {
+					if (eventSceneIterator.hasNext()) {
+						setScene(eventSceneIterator.next());
+					} else {
+						storySectionManager.runStorySequence();
+					}
+					return true;
+				}
+			});
+		}
+
+		return this;
+	}
+
 	public Stage makeStage(EventScene eventScene) {
-		backgroundImage = new Image(eventScene.getBackground());
-		script = new Label(eventScene.getScript(), uiComponentAssets.getSkin());
-		characterImage = new Image(eventScene.getCharacter());
-
-		// 스크립트/캐릭터/백그라운드 크기값 세팅
-		script.setFontScale(StaticAssets.windowWidth / 1280);
-		script.setWrap(true);
-		script.setSize(StaticAssets.windowWidth * 0.781f,
-				StaticAssets.windowHeight * 0.185f);
-		script.setPosition(StaticAssets.windowWidth * 0.309375f,
-				StaticAssets.windowHeight * 0.185f);
-		characterImage.setSize(StaticAssets.windowWidth * 0.250f,
-				StaticAssets.windowHeight * 0.555f);
-		characterImage.setPosition(StaticAssets.windowWidth * 0.375f,
-				StaticAssets.windowHeight * 0.185f);
-		backgroundImage.setSize(StaticAssets.windowWidth,
-				StaticAssets.windowHeight);
-
-		// Greeting인지 아닌지 여부에 따라 처리
-		makeEventStage(eventManager.getCurrentEvent().getEventType());
-		this.addActor(backgroundImage);
-		this.addActor(script);
-		this.addActor(characterImage);
+		setScene(eventScene);
+		makeSelectEventStage();
 
 		return this;
 	}
@@ -78,6 +79,32 @@ public class EventStage extends BaseOneLevelStage {
 				Gdx.app.log("error", " scene 주입 에러");
 				break;
 		}
+	}
+
+	public void setScene(EventScene eventScene) {
+		backgroundImage = new Image(eventScene.getBackground());
+		script = new Label(eventScene.getScript(), uiComponentAssets.getSkin());
+		characterImage = new Image(eventScene.getCharacter());
+
+		// 스크립트/캐릭터/백그라운드 크기값 세팅
+		script.setFontScale(StaticAssets.windowWidth / 1280);
+		script.setWrap(true);
+		script.setSize(StaticAssets.windowWidth * 0.781f,
+				StaticAssets.windowHeight * 0.185f);
+		script.setPosition(StaticAssets.windowWidth * 0.309375f,
+				StaticAssets.windowHeight * 0.185f);
+		characterImage.setSize(StaticAssets.windowWidth * 0.250f,
+				StaticAssets.windowHeight * 0.555f);
+		characterImage.setPosition(StaticAssets.windowWidth * 0.375f,
+				StaticAssets.windowHeight * 0.185f);
+		backgroundImage.setSize(StaticAssets.windowWidth,
+				StaticAssets.windowHeight);
+		// Greeting인지 아닌지 여부에 따라 처리
+		makeEventStage(eventManager.getCurrentEvent().getEventType());
+		this.addActor(backgroundImage);
+		this.addActor(script);
+		this.addActor(characterImage);
+
 	}
 
 	private void makeCreditStage() {

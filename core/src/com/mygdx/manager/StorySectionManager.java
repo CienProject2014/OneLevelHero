@@ -6,12 +6,14 @@ import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.model.EventPacket;
 import com.mygdx.model.StorySection;
+import com.mygdx.model.StorySectionPacket;
 
 public class StorySectionManager {
 	@Autowired
@@ -24,7 +26,16 @@ public class StorySectionManager {
 	private PositionInfo positionInfo;
 	private Queue<EventPacket> eventSequenceQueue = new LinkedList<>();
 
+	public void setNewStorySection(int storyNumber) {
+		storySectionInfo.setCurrentStorySection(storyNumber);
+	}
+
+	public List<StorySectionPacket> getNestSections() {
+		return storySectionInfo.getCurrentStorySection().getNextSections();
+	}
+
 	public void insertStorySequence() {
+		Gdx.app.log("StorySectionManager", "insertStorySequence");
 		List<EventPacket> sequencialEvent = storySectionInfo
 				.getCurrentStorySection().getSequencialEvents();
 		for (EventPacket eventPacket : sequencialEvent) {
@@ -33,6 +44,7 @@ public class StorySectionManager {
 	}
 
 	public void runStorySequence() {
+		Gdx.app.log("StorySectionManager", "runStorySequence");
 		if (!eventSequenceQueue.isEmpty()) {
 			EventPacket polledEventPacket = eventSequenceQueue.poll();
 			eventManager.setCurrentEventInfo(polledEventPacket);

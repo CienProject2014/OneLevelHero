@@ -1,5 +1,7 @@
 package com.mygdx.factory;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -17,6 +19,7 @@ import com.mygdx.stage.EventStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
+import com.mygdx.stage.SelectComponentStage;
 import com.mygdx.stage.SelectEventStage;
 import com.mygdx.stage.StatusStage;
 import com.mygdx.stage.VillageStage;
@@ -47,6 +50,8 @@ public class StageFactory {
 				return context.getBean(MonsterStage.class).makeStage();
 			case SELECT_EVENT:
 				return context.getBean(SelectEventStage.class).makeStage();
+			case SELECT_COMPONENT:
+				return context.getBean(SelectComponentStage.class).makeStage();
 			case STATUS:
 				return context.getBean(StatusStage.class).makeStage();
 			case VILLAGE:
@@ -61,6 +66,10 @@ public class StageFactory {
 
 	public Stage makeBattleStage() {
 		return context.getBean(BattleStage.class).makeStage();
+	}
+
+	public Stage makeEventStage(Iterator<EventScene> eventSceneIterator) {
+		return context.getBean(EventStage.class).makeStage(eventSceneIterator);
 	}
 
 	public Stage makeEventStage(EventScene eventScene) {
