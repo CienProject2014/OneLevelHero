@@ -49,6 +49,7 @@ public class StorySectionManager {
 			EventPacket polledEventPacket = eventSequenceQueue.poll();
 			eventManager.setCurrentEventInfo(polledEventPacket);
 			screenFactory.show(ScreenEnum.EVENT);
+
 		} else {
 			goPreviousPlace();
 		}

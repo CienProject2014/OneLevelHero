@@ -96,6 +96,7 @@
 		scope="prototype" />
 	<bean id="worldMapScreen" class="com.mygdx.screen.WorldMapScreen"
 		scope="prototype" />
+		
 	<bean id="baseOneLevelStage" class="com.mygdx.stage.BaseOneLevelStage"
 		scope="prototype"/>
 	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage"

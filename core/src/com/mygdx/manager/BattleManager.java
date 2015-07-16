@@ -42,8 +42,8 @@ public class BattleManager {
 	public void monsterAttack() {
 		// FIXME
 		battle.attack(monster, partyInfo.pickRandomHero());
-		int x = (int) (StaticAssets.windowWidth / 2);
-		int y = (int) (StaticAssets.windowHeight / 8);
+		int x = (int) (StaticAssets.windowWidth / 8);
+		int y = (int) (StaticAssets.windowHeight / 2);
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING, x, y);
 	}
 

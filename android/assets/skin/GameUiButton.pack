@@ -1,47 +1,76 @@
 
 GameUiButton.png
+size: 916,409
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-nameAndTime
+back_button
   rotate: false
-  xy: 1, 93
-  size: 480, 90
-  orig: 480, 90
+  xy: 624, 278
+  size: 145, 131
+  orig: 145, 131
   offset: 0, 0
   index: -1
-bagButton
+back_toggle_button
   rotate: false
-  xy: 1, 1
-  size: 240, 90
-  orig: 240, 90
+  xy: 610, 145
+  size: 145, 131
+  orig: 145, 131
   offset: 0, 0
   index: -1
-downArrowButton
+help_button
   rotate: false
-  xy: 483, 93
-  size: 240, 90
-  orig: 240, 90
+  xy: 2, 2
+  size: 302, 274
+  orig: 302, 274
   offset: 0, 0
   index: -1
-helpButton
+help_toggle_button
   rotate: false
-  xy: 243, 1
-  size: 240, 90
-  orig: 240, 90
+  xy: 306, 3
+  size: 302, 273
+  orig: 302, 273
   offset: 0, 0
   index: -1
-optionButton
+place_info_button
   rotate: false
-  xy: 725, 93
-  size: 240, 90
-  orig: 240, 90
+  xy: 2, 278
+  size: 620, 131
+  orig: 620, 131
   offset: 0, 0
   index: -1
-upArrowButton
+time_info_button
   rotate: false
-  xy: 485, 1
-  size: 240, 90
-  orig: 240, 90
+  xy: 2, 278
+  size: 620, 131
+  orig: 620, 131
+  offset: 0, 0
+  index: -1
+quest_log_button
+  rotate: false
+  xy: 771, 278
+  size: 145, 131
+  orig: 145, 131
+  offset: 0, 0
+  index: -1
+quest_log_toggle_button
+  rotate: false
+  xy: 610, 12
+  size: 145, 131
+  orig: 145, 131
+  offset: 0, 0
+  index: -1
+setting_button
+  rotate: false
+  xy: 757, 145
+  size: 145, 131
+  orig: 145, 131
+  offset: 0, 0
+  index: -1
+setting_toggle_button
+  rotate: false
+  xy: 757, 12
+  size: 145, 131
+  orig: 145, 131
   offset: 0, 0
   index: -1

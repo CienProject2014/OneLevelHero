@@ -7,6 +7,7 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.mygdx.assets.Assets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
@@ -26,43 +27,35 @@ public class OneLevelTest extends Game {
 		StaticAssets.loadAll();
 		// context = RoboSpring.getContext(); 안드로이드에서 실행시
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
 		gameLoad();
-		
+
 		goEncounterScreen();
+		// goVillageScreen();
 	}
 
 	public void gameLoad() {
+		context.getBean(Assets.class).initialize();
 		context.getBean(ScreenFactory.class).setGame(this);
-		// 가고자 하는 스크린의 메서드를 선택하자.
-		goDungeonEntranceScreen();
-	}
-
-	// 메뉴스크린은 게임을 로드할 필요가 없다.
-	private void goMenuScreen() {
-		context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
+		context.getBean(LoadManager.class).loadNewGame();
 	}
 
 	// 이하 게임에 곧장 진입하고자 하는 경우
 	private void goVillageScreen() {
-		context.getBean(LoadManager.class).loadNewGame();
 		context.getBean(ScreenFactory.class).show(ScreenEnum.VILLAGE);
 	}
 
 	private void goWorldMapScreen() {
-		context.getBean(LoadManager.class).loadNewGame();
 		context.getBean(ScreenFactory.class).show(ScreenEnum.WORLD_MAP);
 	}
 
 	private void goEncounterScreen() {
-		context.getBean(LoadManager.class).loadNewGame();
 		context.getBean(MonsterManager.class).createMonster();
 		context.getBean(ScreenFactory.class).show(ScreenEnum.ENCOUNTER);
 	}
 
 	private void goDungeonEntranceScreen() {
-		context.getBean(LoadManager.class).loadNewGame();
-		context.getBean(PositionInfo.class).setCurrentNode(
-				WorldNodeEnum.BLACKWOOD_FOREST.toString());
+		context.getBean(PositionInfo.class).setCurrentNode(WorldNodeEnum.BLACKWOOD_FOREST.toString());
 		context.getBean(ScreenFactory.class).show(ScreenEnum.DUNGEON_ENTRANCE);
 	}
 

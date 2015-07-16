@@ -22,6 +22,7 @@ public class MenuStage extends BaseOneLevelStage {
 	private ImageButton[] button;
 
 	public Stage makeStage() {
+		super.makeStage();
 		button = new ImageButton[4];
 		Image logo = new Image(atlasUiAssets.getAtlasUiFile("title"));
 		Texture texture = StaticAssets.backgroundTextureMap
@@ -114,9 +115,9 @@ public class MenuStage extends BaseOneLevelStage {
 				(int) (0.3f * StaticAssets.windowHeight));
 		background.setSize(StaticAssets.windowWidth, StaticAssets.windowHeight);
 
-		this.addActor(background);
-		this.addActor(logo);
-		this.addActor(table);
+		tableStack.addActor(background);
+		tableStack.addActor(logo);
+		tableStack.addActor(table);
 
 		return this;
 	}
