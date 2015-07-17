@@ -6,29 +6,25 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.mygdx.assets.Assets;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.currentState.MovingInfo;
-import com.mygdx.currentState.PartyInfo;
-import com.mygdx.currentState.TimeInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.CameraManager;
+import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.PartyManager;
+import com.mygdx.manager.TimeManager;
 
 public class BaseOneLevelStage extends Stage {
 	@Autowired
 	protected Assets assets;
-
+	@Autowired
+	protected MovingManager movingManager;
+	@Autowired
+	protected PartyManager partyManager;
 	@Autowired
 	protected ScreenFactory screenFactory;
-
 	@Autowired
 	protected CameraManager cameraManager;
-
 	@Autowired
-	protected PartyInfo partyInfo;
-	@Autowired
-	protected TimeInfo timeInfo;
-
-	@Autowired
-	protected MovingInfo movingInfo;
+	protected TimeManager timeManager;
 
 	protected Stack tableStack;
 

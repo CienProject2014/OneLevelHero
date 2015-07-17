@@ -1,28 +1,32 @@
 package com.mygdx.popup;
 
 import java.util.Iterator;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.currentState.PartyInfo;
+import com.mygdx.manager.PartyManager;
 import com.mygdx.model.Hero;
 
 public class StatusMessagePopup extends MessagePopup {
-	private PartyInfo partyInfo;
+	@Autowired
+	private PartyManager partyManager;
 
-	public StatusMessagePopup(String title, Skin skin, PartyInfo partyInfo) {
+	public StatusMessagePopup(String title, Skin skin,
+			List<Hero> battleMemberList) {
 		super(title, StaticAssets.skin);
-		this.partyInfo = partyInfo;
 		setPosition(400, 300);
 		defaults().space(8);
 		row().fill().expandX();
 
-		initialize();
+		initialize(battleMemberList);
 		setVisible(false);
 	}
 
-	private void initialize() {
+	private void initialize(List<Hero> battleMemberList) {
 		getButtonTable();
 		padTop(60); // set padding on top of the dialog title
 		getContentTable().defaults(); // set buttons height
@@ -31,7 +35,8 @@ public class StatusMessagePopup extends MessagePopup {
 		Table table = new Table();
 		text("파티원");
 		table.row();
-		Iterator<Hero> iterator = partyInfo.getBattleMemberList().iterator();
+
+		Iterator<Hero> iterator = battleMemberList.iterator();
 		while (iterator.hasNext()) {
 			Hero nextIterator = iterator.next();
 			text("이름 : " + nextIterator.getName());

@@ -43,7 +43,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	}
 
 	private void listInitialize() {
-		battleMemberList = partyInfo.getBattleMemberList();
+		battleMemberList = partyManager.getBattleMemberList();
 		battleMemberNumber = battleMemberList.size();
 
 		heroStatusList = new ArrayList<HeroStatus>(battleMemberNumber);

@@ -5,7 +5,6 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.currentState.RewardQueueInfo;
 import com.mygdx.enums.RewardStateEnum;
@@ -18,7 +17,7 @@ public class RewardManager {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
-	private PartyInfo partyInfo;
+	private PartyManager partyManager;
 
 	// (3) 퀘스트 달성 여부 큐
 	// 아직 미구현
@@ -54,7 +53,7 @@ public class RewardManager {
 				case NONE:
 					return;
 				case PARTY:
-					partyInfo.addHero(unitAssets.getHero(getRewardQueue()
+					partyManager.addHero(unitAssets.getHero(getRewardQueue()
 							.peek().getRewardTarget()));
 					return;
 				default:

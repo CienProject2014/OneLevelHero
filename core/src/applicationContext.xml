@@ -52,12 +52,15 @@
 	<bean id="movingInfoManager" class="com.mygdx.manager.MovingInfoManager"/>
 	<bean id="movingManager" class="com.mygdx.manager.MovingManager"/>
 	<bean id="musicManager" class="com.mygdx.manager.MusicManager"/>
+	<bean id="partyManager" class="com.mygdx.manager.PartyManager"/>
 	<bean id="placeManager" class="com.mygdx.manager.PlaceManager"/>
 	<bean id="platformResourceManager" class="com.mygdx.manager.PlatformResourceManager" />
+	<bean id="positionManager" class="com.mygdx.manager.PositionManager"/>
 	<bean id="rewardManager" class="com.mygdx.manager.RewardManager"/>
 	<bean id="saveManager" class="com.mygdx.manager.SaveManager" />
 	<bean id="scenarioManager" class="com.mygdx.manager.ScenarioManager" />
 	<bean id="storySectionManager" class="com.mygdx.manager.StorySectionManager"/>
+	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
 	<bean id="volumeManager" class="com.mygdx.manager.VolumeManager" />
 	<bean id="worldMapManager" class="com.mygdx.manager.WorldMapManager"/>
 

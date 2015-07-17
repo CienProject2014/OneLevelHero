@@ -68,7 +68,7 @@ public class LoadScreen extends BaseScreen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				currentState.setVersion(SaveVersion.NEW);
+				currentState.setSaveVersion(SaveVersion.NEW);
 				eventManager.setCurrentEventNpc(PROLOGUE);
 				loadManager.loadNewGame();
 			}

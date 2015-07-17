@@ -44,9 +44,9 @@ public class VillageStage extends BaseOverlapStage {
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
 		Gdx.app.debug("VillageStage",
-				String.valueOf(positionInfo.getCurrentNode()));
+				String.valueOf(positionManager.getCurrentNode()));
 		// 임시로 블랙우드 정보를 넣는다.
-		// villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
+		// villageInfo = assets.villageMap.get(positionManager.getCurrentNode());
 		villageInfo = worldNodeAssets.getVillage("Blackwood");
 		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
 		// sceneLoader.loadScene(villageInfo.getSceneName());
@@ -129,8 +129,8 @@ public class VillageStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-					positionInfo.setCurrentBuilding(building.getKey());
-					positionInfo.setCurrentPlace(PlaceEnum.BUILDING);
+					positionManager.setCurrentBuilding(building.getKey());
+					positionManager.setCurrentPlace(PlaceEnum.BUILDING);
 					screenFactory.show(ScreenEnum.BUILDING);
 				}
 			});

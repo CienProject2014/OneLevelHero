@@ -9,9 +9,6 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.MovingInfo;
-import com.mygdx.currentState.PartyInfo;
-import com.mygdx.currentState.PositionInfo;
-import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.model.Hero;
@@ -25,14 +22,15 @@ public class LoadManager {
 	@Autowired
 	private StorySectionManager storySectionManager;
 	@Autowired
-	private PositionInfo positionInfo;
-	@Autowired
 	private MovingInfo movingInfo;
 	@Autowired
-	private PartyInfo partyInfo;
+	private PartyManager partyManager;
 	@Autowired
-	private TimeInfo timeInfo;
-	private Hero hero;
+	private PositionManager positionManager;
+	@Autowired
+	private TimeManager timeManager;
+
+	private Hero hero; //FIXME : 이건 뭥미?
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
 	public void loadNewGame() {
@@ -41,7 +39,7 @@ public class LoadManager {
 		setPartyList();
 		setCurrentPosition();
 		setStorySection();
-		timeInfo.setTime(1, 8, 0);
+		timeManager.setTime(1, 8, 0);
 		storySectionManager.runStorySequence();
 	}
 
@@ -59,8 +57,8 @@ public class LoadManager {
 
 	private void setCurrentPosition() {
 		// Blackwood 마을에서부터 게임을 시작한다.
-		positionInfo.setCurrentNode(WorldNodeEnum.BLACKWOOD.toString());
-		positionInfo.setCurrentPlace(PlaceEnum.VILLAGE);
+		positionManager.setCurrentNode(WorldNodeEnum.BLACKWOOD.toString());
+		positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
 
 		// FIXME 초기 CurrentMoving 정보를 주입한다.
 		movingInfo.setStartNode("Blackwood");
@@ -81,7 +79,7 @@ public class LoadManager {
 
 	// 해당 Hero들을 Party구성원에 포함시킨다
 	private void setPartyList() {
-		partyInfo.addHero(hero);
+		partyManager.addHero(hero);
 	}
 
 	public Hero getHero() {

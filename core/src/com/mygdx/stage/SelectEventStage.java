@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
@@ -25,8 +24,6 @@ public class SelectEventStage extends BaseOneLevelStage {
 	private EventManager eventManager;
 	@Autowired
 	private PlaceManager placeManager;
-	@Autowired
-	protected EventInfo eventInfo;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 

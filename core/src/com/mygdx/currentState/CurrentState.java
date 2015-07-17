@@ -31,18 +31,12 @@ public class CurrentState implements Serializable {
 	private EventInfo eventInfo;
 	@Autowired
 	private RewardQueueInfo rewardQueueInfo;
+	@Autowired
+	private StorySectionInfo storySectionInfo;
 
 	// (6) 사운드 관리
 	@Autowired
 	private MusicInfo musicInfo;
-
-	public SaveVersion getVersion() {
-		return saveVersion;
-	}
-
-	public void setVersion(SaveVersion saveVersion) {
-		this.saveVersion = saveVersion;
-	}
 
 	public SaveVersion getSaveVersion() {
 		return saveVersion;
@@ -50,13 +44,5 @@ public class CurrentState implements Serializable {
 
 	public void setSaveVersion(SaveVersion saveVersion) {
 		this.saveVersion = saveVersion;
-	}
-
-	public InventoryInfo getInventory() {
-		return inventoryInfo;
-	}
-
-	public void setInventory(InventoryInfo inventory) {
-		this.inventoryInfo = inventory;
 	}
 }

@@ -70,8 +70,8 @@ public class BuildingStage extends BaseOverlapStage {
 
 	private void makeScene() {
 		buildingInfo = worldNodeAssets
-				.getVillage(positionInfo.getCurrentNode()).getBuilding()
-				.get(positionInfo.getCurrentBuilding());
+				.getVillage(positionManager.getCurrentNode()).getBuilding()
+				.get(positionManager.getCurrentBuilding());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());

@@ -48,6 +48,7 @@ public class SelectComponentStage extends BaseOneLevelStage {
 	}
 
 	public Stage makeStage() {
+		super.makeStage();
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
 		chatStyles = new ArrayList<TextButtonStyle>();
 		eventSize = eventManager.getCurrentEvent().getEventComponent().size();
