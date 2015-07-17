@@ -38,28 +38,4 @@ public class MonsterManager {
 		String selectedMonsterString = monsterStringList.get(0);
 		return selectedMonsterString;
 	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
-	}
-
-	public UnitAssets getUnitAssets() {
-		return unitAssets;
-	}
-
-	public void setUnitAssets(UnitAssets unitAssets) {
-		this.unitAssets = unitAssets;
-	}
 }

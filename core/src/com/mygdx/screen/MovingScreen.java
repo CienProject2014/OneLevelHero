@@ -85,23 +85,4 @@ public class MovingScreen extends BaseScreen {
 
 		musicManager.setMovingMusicAndPlay();
 	}
-
-	public static void setController() {
-	}
-
-	public MovingManager getMovingManager() {
-		return movingManager;
-	}
-
-	public void setMovingManager(MovingManager movingManager) {
-		this.movingManager = movingManager;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
-	}
 }

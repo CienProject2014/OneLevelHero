@@ -20,7 +20,8 @@ import com.mygdx.ui.StatusBarUi;
 public class CharacterUiStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("CharacterUiStage");
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("CharacterUiStage");
 
 	private Table statusTable;
 
@@ -42,7 +43,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	}
 
 	private void listInitialize() {
-		battleMemberList = partyInfo.getBattleMemberList();
+		battleMemberList = partyManager.getBattleMemberList();
 		battleMemberNumber = battleMemberList.size();
 
 		heroStatusList = new ArrayList<HeroStatus>(battleMemberNumber);
@@ -72,7 +73,8 @@ public class CharacterUiStage extends BaseOneLevelStage {
 			HeroStatus status = (HeroStatus) i.next();
 			Table heroTable = makeHeroTable(status);
 
-			table.add(heroTable).padBottom(uiConstantsMap.get("heroTablePadBottom"));
+			table.add(heroTable).padBottom(
+					uiConstantsMap.get("heroTablePadBottom"));
 			table.row();
 		}
 
@@ -82,22 +84,32 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private Table makeHeroTable(HeroStatus status) {
 		Table heroTable = new Table();
 
-		heroTable.add(new Image(status.getHero().getStatusTexture())).padRight(uiConstantsMap.get("heroTablePadLeft"))
-				.width(uiConstantsMap.get("heroImageWidth")).height(uiConstantsMap.get("heroImageHeight"));
+		heroTable.add(new Image(status.getHero().getStatusTexture()))
+				.padRight(uiConstantsMap.get("heroTablePadLeft"))
+				.width(uiConstantsMap.get("heroImageWidth"))
+				.height(uiConstantsMap.get("heroImageHeight"));
 
 		Table barTable = new Table();
 		HorizontalGroup buffGroup = new HorizontalGroup();
 		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_faint")));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_satan")));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_ice")));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap.get("802_fire")));
+		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
+				.get("802_faint")));
+		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
+				.get("802_satan")));
+		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
+				.get("802_ice")));
+		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
+				.get("802_fire")));
 
-		barTable.add(new Label(status.getHp() + "/" + status.getMaxHp(), uiComponentAssets.getSkin()))
+		barTable.add(
+				new Label(status.getHp() + "/" + status.getMaxHp(),
+						uiComponentAssets.getSkin()))
 				.padBottom(uiConstantsMap.get("heroBarSpace")).row();
-		barTable.add(status.getHpBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
+		barTable.add(status.getHpBar())
+				.padBottom(uiConstantsMap.get("heroBarSpace"))
 				.width(uiConstantsMap.get("barTableWidth")).row();
-		barTable.add(status.getGaugeBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
+		barTable.add(status.getGaugeBar())
+				.padBottom(uiConstantsMap.get("heroBarSpace"))
 				.width(uiConstantsMap.get("barTableWidth")).row();
 		barTable.add(buffGroup).width(uiConstantsMap.get("buffTableWidth"))
 				.height(uiConstantsMap.get("buffTableHeight"));
@@ -124,9 +136,11 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		public HeroStatus(Hero hero) {
 			this.hero = hero;
-			hpBar = new StatusBarUi("hp", 0, 100, 1, false, uiComponentAssets.getSkin());
+			hpBar = new StatusBarUi("hp", 0, 100, 1, false,
+					uiComponentAssets.getSkin());
 			hpBar.setValue(getHpPercent());
-			gaugeBar = new StatusBarUi("gauge", 0, 100, 1, false, uiComponentAssets.getSkin());
+			gaugeBar = new StatusBarUi("gauge", 0, 100, 1, false,
+					uiComponentAssets.getSkin());
 			gaugeBar.setValue(getGaugePercent());
 		}
 
@@ -144,7 +158,8 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		}
 
 		public int getHpPercent() {
-			float factor = (float) hero.getStatus().getHp() / hero.getStatus().getMaxHp();
+			float factor = (float) hero.getStatus().getHp()
+					/ hero.getStatus().getMaxHp();
 			return (int) (factor * 100);
 		}
 
@@ -177,14 +192,5 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		public void setGaugeBar(StatusBarUi gaugeBar) {
 			this.gaugeBar = gaugeBar;
 		}
-
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
 	}
 }

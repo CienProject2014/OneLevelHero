@@ -127,28 +127,4 @@ public class MusicManager {
 		Music music = musicAssets.getMovingMusicMap(movingInfo.getArrowName());
 		setMusicAndPlay(music);
 	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
-	}
-
-	public SoundInfo getSoundInfo() {
-		return soundInfo;
-	}
-
-	public void setSoundInfo(SoundInfo soundInfo) {
-		this.soundInfo = soundInfo;
-	}
-
-	public MusicAssets getMusicAssets() {
-		return musicAssets;
-	}
-
-	public void setMusicAssets(MusicAssets musicAssets) {
-		this.musicAssets = musicAssets;
-	}
 }

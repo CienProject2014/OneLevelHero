@@ -12,15 +12,15 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
+import com.mygdx.manager.EventManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
 public class GreetingScreen extends BaseScreen {
 	@Autowired
-	protected EventInfo eventInfo;
+	protected EventManager eventManager;
 
 	// Already libgdx using interface!
 	private Input input = Gdx.input;
@@ -42,10 +42,10 @@ public class GreetingScreen extends BaseScreen {
 
 	@Override
 	public void show() {
-		final NPC npc = eventInfo.getNpc();
+		final NPC npc = eventManager.getCurrentNpc();
 		greetingScenes = npc.getGreeting().getEventScenes();
 
-		selectButtonStage = stageFactory.makeStage(StageEnum.SELECT_BUTTON);
+		selectButtonStage = stageFactory.makeStage(StageEnum.SELECT_EVENT);
 		// for shuffle
 		List<EventScene> shuffleList = new ArrayList<EventScene>(greetingScenes);
 		Collections.shuffle(shuffleList);
@@ -92,13 +92,5 @@ public class GreetingScreen extends BaseScreen {
 						"positionInfo.getCurrentPlace() is not valid");
 				break;
 		}
-	}
-
-	public EventInfo getEventInfo() {
-		return eventInfo;
-	}
-
-	public void setEventInfo(EventInfo eventInfo) {
-		this.eventInfo = eventInfo;
 	}
 }

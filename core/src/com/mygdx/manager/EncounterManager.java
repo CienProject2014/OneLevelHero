@@ -25,20 +25,4 @@ public class EncounterManager {
 	public boolean isBattleOccured() {
 		return random.nextBoolean();
 	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public MonsterManager getMonsterManager() {
-		return monsterManager;
-	}
-
-	public void setMonsterManager(MonsterManager monsterManager) {
-		this.monsterManager = monsterManager;
-	}
 }

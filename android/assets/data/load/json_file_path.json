@@ -19,5 +19,8 @@
   },
   "monster_json":{
   	"filePath" : "data/unit/monster.json"
+  },
+  "story_json":{
+  	"filePath" : "data/event/story.json"
   }
 }

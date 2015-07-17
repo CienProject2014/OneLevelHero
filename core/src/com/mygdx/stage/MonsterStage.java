@@ -2,6 +2,8 @@ package com.mygdx.stage;
 
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,11 +13,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.manager.MovingManager;
 import com.mygdx.model.Monster;
 
 public class MonsterStage extends BaseOneLevelStage {
-	HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("MonsterStage");
-
+	@Autowired
+	private MovingManager movingManager;
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("MonsterStage");
 	private Monster monster;
 
 	// private Stack tableStack; // 전체 화면에 들어가는 테이블
@@ -26,7 +31,7 @@ public class MonsterStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 
-		monster = movingInfo.getSelectedMonster();
+		monster = movingManager.getSelectedMonster();
 
 		setMonsterTable();
 
@@ -56,8 +61,16 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
-		return new TextureRegionDrawable(
-				new TextureRegion(new Texture(Gdx.files.internal("texture/battle/forest.png"))));
+		return new TextureRegionDrawable(new TextureRegion(new Texture(
+				Gdx.files.internal("texture/battle/forest.png"))));
+	}
+
+	public HashMap<String, Float> getUiConstantsMap() {
+		return uiConstantsMap;
+	}
+
+	public void setUiConstantsMap(HashMap<String, Float> uiConstantsMap) {
+		this.uiConstantsMap = uiConstantsMap;
 	}
 
 }

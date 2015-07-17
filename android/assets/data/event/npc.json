@@ -2,48 +2,48 @@
   "prologue": {
     "events": [
       {
-        "eventState": "OPENED",
-        "eventType": "CHAT",
+        "eventState": "not_opened",
+        "eventType": "select_component",
         "eventScenes": [
           {
-            "script": "대륙의 중심, 블랙우드 마을에 마왕이 출현했다.",
+            "script": "프롤로그를 보시겠습니까?",
+            "characterPath":"nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ],
+        "eventComponent": [
+          "예",
+          "아니오"
+        ],
+      },
+     {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "카딜라 공작의 정벌 이후, 카딜라 지방으로 편입된 블랙우드 마을은 평화로운 일상을 보내고 있었다.",
             "characterPath": "rabbit1",
             "backgroundPath": "scene1"
           },
           {
-            "script": "마을의 촌장은 지나가던 용사에게 토벌을 부탁했고",
+            "script": "그러나 블랙우드 숲에 마왕이 강림하게 되고, 주민들은 불안에 떤다.",
             "characterPath": "rabbit2",
             "backgroundPath": "scene2"
           },
           {
-            "script": "이를 수락한 용사는 곧장 마왕성으로 돌격했으나 그것은 함정에 불과했다. ",
+            "script": "마침 근방을 지나가던 용사 일행은, 곧바로 마왕성에 쳐들어간다.",
             "characterPath": "rabbit3",
             "backgroundPath": "scene3"
           },
           {
-            "script": "용사는 결국 마왕의 간악한 꾀에 넘어가 레벨 다운의 저주에 걸리고 말았다...",
-            "characterPath": "rabbit3",
-            "backgroundPath": "scene4"
+          	"script" : "저게 마왕인가!",
+          	"characterPath" : "yongsa_204",
+          	"backgroundPath": "bg_devilcastle_01"
           },
           {
-            "script": "용사님.. 일어나세요..!",
-            "characterPath": "parath_202",
-            "backgroundPath": "scene1"
-          },
-          {
-            "script": "으으...",
-            "characterPath": "yongsa_206",
-            "backgroundPath": "scene2"
-          },
-          {
-            "script": "벌써 삼일째에요.. 이젠 기운을 차릴 때도 됐잖아요. 촌장님이 찾으셔요.",
-            "characterPath": "parath_203",
-            "backgroundPath": "scene3"
-          },
-          {
-            "script": "용사 : 정말, 귀찮은데..",
-            "characterPath": "yongsa_206",
-            "backgroundPath": "scene4"
+          	"script" : "이얍!",
+          	"characterPath" : "parath_203",
+          	"backgroundPath" : "bg_devilcastle_01"
           }
         ]
       }
@@ -53,12 +53,12 @@
     "name": "waiji",
     "events": [
       {
-        "eventState": "OPENED",
-        "eventType": "CHAT",
+        "eventState": "not_opened",
+        "eventType": "chat",
         "reward": {
           "rewardType": "PARTY",
           "rewardTarget": "parath",
-          "rewardState" : "NOT_CLEARED"
+          "rewardState": "NOT_CLEARED"
         },
         "eventScenes": [
           {
@@ -145,7 +145,7 @@
       }
     ],
     "greeting": {
-      "eventType": "SELECT",
+      "eventType": "greeting",
       "eventScenes": [
         {
           "script": "블랙우드 마을에 온 것을 환영하네",

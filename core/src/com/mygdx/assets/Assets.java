@@ -25,6 +25,8 @@ public class Assets {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
+	private EventAssets eventAssets;
+	@Autowired
 	private UnitAssets unitAssets;
 	@Autowired
 	private WorldMapAssets worldMapAssets;
@@ -35,6 +37,7 @@ public class Assets {
 		Map<String, JsonStringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
 
+		eventAssets.set(jsonStringMap);
 		musicAssets.set(filePathMap);
 		atlasUiAssets.set(filePathMap);
 		uiComponentAssets.set(filePathMap);

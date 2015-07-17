@@ -12,6 +12,7 @@ public class Event {
 	private EventStateEnum eventState;
 	private RewardInfo reward;
 	private List<EventScene> eventScenes;
+	private List<String> eventComponent;
 
 	public EventTypeEnum getEventType() {
 		return eventType;
@@ -47,5 +48,13 @@ public class Event {
 
 	public void setEventState(EventStateEnum eventState) {
 		this.eventState = eventState;
+	}
+
+	public List<String> getEventComponent() {
+		return eventComponent;
+	}
+
+	public void setEventComponent(List<String> eventComponent) {
+		this.eventComponent = eventComponent;
 	}
 }

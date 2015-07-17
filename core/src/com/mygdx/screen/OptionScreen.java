@@ -106,12 +106,4 @@ public class OptionScreen extends BaseScreen {
 
 		stage.addActor(table);
 	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
-	}
 }
