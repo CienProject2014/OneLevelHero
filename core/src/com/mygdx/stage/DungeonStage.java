@@ -2,17 +2,14 @@ package com.mygdx.stage;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.currentState.PositionInfo;
-import com.mygdx.dungeonMap.Connection;
-import com.mygdx.dungeonMap.Info;
-import com.mygdx.dungeonMap.Node;
+import com.mygdx.dungeon.MapInfo;
+import com.mygdx.dungeon.MapNode;
+import com.mygdx.dungeon.MapNodeConnection;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.CameraManager.CameraPosition;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -22,16 +19,15 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  *
  */
 public class DungeonStage extends BaseOverlapStage {
-	@Autowired
-	private PositionInfo positionInfo; // 나중에 쓸거임 지우지 마셈
+	// FIXME UI
 	private CompositeItem arrowTurn, arrowLeft, arrowCenter, arrowRight;
 
-	private Info mapInfo;
+	private MapInfo mapInfo;
 
 	private int currentPos;
 	private boolean currentHeading;
 
-	private ArrayList<Connection> selectableForward, selectableBackward;
+	private ArrayList<MapNodeConnection> selectableForward, selectableBackward;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
@@ -123,13 +119,15 @@ public class DungeonStage extends BaseOverlapStage {
 		selectableForward.clear();
 		selectableBackward.clear();
 
-		Node currentNode = mapInfo.nodes.get(currentPos);
-		for (Connection e : mapInfo.connections)
+		MapNode currentNode = mapInfo.nodes.get(currentPos);
+		currentNode.setAlpha(1);
+		for (MapNodeConnection e : mapInfo.connections)
 			if (e.isFrom(currentNode))
 				selectableForward.add(e);
 			else if (e.isTo(currentNode))
 				selectableBackward.add(e);
 
+		// FIXME UI
 		switch ((currentHeading ? selectableBackward : selectableForward)
 				.size()) {
 		case 0:
@@ -159,20 +157,19 @@ public class DungeonStage extends BaseOverlapStage {
 
 		update();
 
-		Node currentNode = mapInfo.nodes.get(currentPos);
-		if (currentNode.chkFlg(Node.FLG_ENTRANCE))
+		MapNode currentNode = mapInfo.nodes.get(currentPos);
+		if (currentNode.chkFlg(MapNode.FLG_ENTRANCE))
 			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
 
 	}
 
 	@Override
 	public void draw() {
-		/*
-		 * TODO
-		 * 
-		 * 미니맵 이미지와 각각의 노드, 경로별로 별도의 알파맵이 존재해 탐색에 따라 블랜드하여 처리하는 방식으로 단순화
-		 */
-
-		super.draw();
+		// FIXME
+		getBatch().begin();
+		for (MapNode e : mapInfo.nodes)
+			getBatch().draw(e.getMinimapTexture(), mapInfo.minimapPosX,
+					mapInfo.minimapPosY);
+		getBatch().end();
 	}
 }
