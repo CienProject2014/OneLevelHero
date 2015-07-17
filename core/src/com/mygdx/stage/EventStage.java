@@ -108,9 +108,9 @@ public class EventStage extends BaseOneLevelStage {
 		Table chatTable = new Table();
 		chatTable.left().bottom();
 
+		// FIXME talkerHeight가 이상하다.
 		chatTable.add(characterImage).width(uiConstantsMap.get("talkerWidth"))
-				.height(uiConstantsMap.get("talkerHeight"))
-				.padLeft(uiConstantsMap.get("talkerPadLeft"));
+				.height(600).padLeft(uiConstantsMap.get("talkerPadLeft"));
 
 		scriptContent.setFontScale(1.0f);
 		scriptContent.setWrap(true);

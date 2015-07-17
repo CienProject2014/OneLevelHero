@@ -178,36 +178,36 @@ public class BattleStage extends BaseOneLevelStage {
 
 	}
 
-	private boolean isInsideHitbox(int screenX, int screenY) {
-		return true;
-	}
-
 	private void updateOrder() {
 		Collections.sort(units);
 	}
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		Gdx.app.log("BattleStage", screenX + " " + screenY);
-		if (gridHitbox.isGridShow() && isInsideHitbox(screenX, screenY)) {
+		boolean result = super.touchDown(screenX, screenY, pointer, button);
+
+		if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 			gridHitbox.showTileWhereClicked(screenX, screenY);
 		}
-		return super.touchDown(screenX, screenY, pointer, button);
+		return result;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		boolean result = super.touchDragged(screenX, screenY, pointer);
+
+		Gdx.app.log("deb", touched.toString());
 		if (gridHitbox.isGridShow()) {
-			gridHitbox.showTileWhereMoved(screenX, screenY);
-			// TODO clickedTileRow와 Column을 이용해서, 시작점부터 끝점까지 지나는 타일들을 배열로
-			// 저장해야한다.
+			gridHitbox.showTileWhereMoved(touched.x, touched.y);
 		}
-		return super.touchDragged(screenX, screenY, pointer);
+		return result;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		if (gridHitbox.isGridShow() && isInsideHitbox(screenX, screenY)) {
+		boolean result = super.touchUp(screenX, screenY, pointer, button);
+
+		if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 			Gdx.app.log("BattleStage", "어택!");
 
 			Unit actor = getCurrentActor();
@@ -229,7 +229,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 		gridHitbox.hideAllTiles();
 
-		return super.touchUp(screenX, screenY, pointer, button);
+		return result;
 	}
 
 	public void addListener() {
@@ -238,8 +238,6 @@ public class BattleStage extends BaseOneLevelStage {
 		attackButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-
-				Gdx.app.log("BattleStage", "공격!");
 				if (!gridHitbox.isGridShow()) {
 					gridHitbox.showGrid();
 				} else {
@@ -253,7 +251,6 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "스킬!");
-				gridHitbox.hideGrid();
 			}
 		});
 

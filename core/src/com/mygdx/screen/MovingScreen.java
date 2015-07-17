@@ -25,16 +25,14 @@ public class MovingScreen extends BaseScreen {
 	private TextButton backButton;
 	private Label movingLabel;
 	private Table table;
-	private Texture texture = new Texture(
-			Gdx.files.internal("texture/justground.jpg"));
+	private Texture texture = new Texture(Gdx.files.internal("texture/justground.jpg"));
 	private Image background;
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 
-		movingLabel.setText(movingInfo.getDestinationNode() + "까지"
-				+ movingInfo.getLeftRoadLength());
+		movingLabel.setText(movingInfo.getDestinationNode() + "까지" + movingInfo.getLeftRoadLength());
 		stage.draw();
 	}
 
@@ -51,32 +49,28 @@ public class MovingScreen extends BaseScreen {
 		Gdx.input.setInputProcessor(stage);
 
 		background = new Image(texture);
-		background.setSize(StaticAssets.windowWidth, StaticAssets.windowHeight);
+		background.setSize(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
 
 		goButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				movingManager.goForward();
 			}
 		});
 
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				movingManager.goBackward();
 			}
 		});

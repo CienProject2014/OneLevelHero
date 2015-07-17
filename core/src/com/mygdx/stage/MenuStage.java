@@ -98,22 +98,23 @@ public class MenuStage extends BaseOneLevelStage {
 			}
 		});
 
-		logo.setHeight((int) (0.4f * StaticAssets.windowHeight));
-		logo.setWidth((int) (0.6f * StaticAssets.windowWidth));
-		table.setFillParent(true);
+		logo.setHeight((int) (0.4f * StaticAssets.BASE_WINDOW_HEIGHT));
+		logo.setWidth((int) (0.6f * StaticAssets.BASE_WINDOW_WIDTH));
 
-		table.add(button[3]).height(0.35f * StaticAssets.windowHeight)
-				.width(0.3f * StaticAssets.windowWidth).expand().top().left();
-		table.add(button[2]).height(0.35f * StaticAssets.windowHeight)
-				.width(0.3f * StaticAssets.windowWidth).top().right();
+		table.add(button[3]).height(0.35f * StaticAssets.BASE_WINDOW_HEIGHT)
+				.width(0.3f * StaticAssets.BASE_WINDOW_WIDTH).expand().top()
+				.left();
+		table.add(button[2]).height(0.35f * StaticAssets.BASE_WINDOW_HEIGHT)
+				.width(0.3f * StaticAssets.BASE_WINDOW_WIDTH).top().right();
 		table.row();
-		table.add(button[0]).height(0.35f * StaticAssets.windowHeight)
-				.width(0.3f * StaticAssets.windowWidth).bottom().left();
-		table.add(button[1]).height(0.35f * StaticAssets.windowHeight)
-				.width(0.3f * StaticAssets.windowWidth).bottom().right();
-		logo.setPosition((int) (0.2f * StaticAssets.windowWidth),
-				(int) (0.3f * StaticAssets.windowHeight));
-		background.setSize(StaticAssets.windowWidth, StaticAssets.windowHeight);
+		table.add(button[0]).height(0.35f * StaticAssets.BASE_WINDOW_HEIGHT)
+				.width(0.3f * StaticAssets.BASE_WINDOW_WIDTH).bottom().left();
+		table.add(button[1]).height(0.35f * StaticAssets.BASE_WINDOW_HEIGHT)
+				.width(0.3f * StaticAssets.BASE_WINDOW_WIDTH).bottom().right();
+		logo.setPosition((int) (0.2f * StaticAssets.BASE_WINDOW_WIDTH),
+				(int) (0.3f * StaticAssets.BASE_WINDOW_HEIGHT));
+		background.setSize(StaticAssets.BASE_WINDOW_WIDTH,
+				StaticAssets.BASE_WINDOW_HEIGHT);
 
 		tableStack.addActor(background);
 		tableStack.addActor(logo);

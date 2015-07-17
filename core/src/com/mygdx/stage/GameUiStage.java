@@ -91,7 +91,7 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	// 테이블 디자인
 	public void makeTable() {
-		topTable.setWidth(StaticAssets.BASE_WINDOW_WINDTH);
+		topTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
 		float width = uiConstantsMap.get("TButtonWidthSmall");
 		topTable.add(backButton).width(width)
 				.height(uiConstantsMap.get("TButtonHeightSmall"))
