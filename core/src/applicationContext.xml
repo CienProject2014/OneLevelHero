@@ -247,6 +247,7 @@
 		<property name="uiComponentAssets" ref="uiComponentAssets" />
 	</bean>
 	<bean id="statusStage" class="com.mygdx.stage.StatusStage" scope="prototype" />
+	<bean id="skillStage" class="com.mygdx.stage.SkillStage" scope="prototype"/>
 	<bean id="villageStage" class="com.mygdx.stage.VillageStage"
 		scope="prototype">
 		<property name="worldNodeAssets" ref="worldNodeAssets" />
