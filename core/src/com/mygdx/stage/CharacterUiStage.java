@@ -84,7 +84,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private Table makeHeroTable(HeroStatus status) {
 		Table heroTable = new Table();
 
-		heroTable.add(new Image(status.getHero().getStatusTexture()))
+		heroTable.add(new Image(status.getHero().getFaceTexture()))
 				.padRight(uiConstantsMap.get("heroTablePadLeft"))
 				.width(uiConstantsMap.get("heroImageWidth"))
 				.height(uiConstantsMap.get("heroImageHeight"));

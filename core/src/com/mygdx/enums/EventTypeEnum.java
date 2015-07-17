@@ -1,8 +1,9 @@
 package com.mygdx.enums;
 
 public enum EventTypeEnum {
-	GREETING("greeting"), CHAT("chat"), SELECT_EVENT("select_event"), CREDIT(
-			"credit"), SELECT_COMPONENT("select_component"), MOVE("move");
+	GREETING("greeting"), BATTLE("battle"), CHAT("chat"), SELECT_EVENT(
+			"select_event"), CREDIT("credit"), SELECT_COMPONENT(
+			"select_component"), MOVE("move"), BATTLE_CONTROL("battle_control");
 	private String code;
 
 	EventTypeEnum(String code) {
@@ -14,7 +15,7 @@ public enum EventTypeEnum {
 		return code;
 	}
 
-	public static EventTypeEnum findConditionTypeEnum(String code) {
+	public static EventTypeEnum findEventTypeEnum(String code) {
 		for (EventTypeEnum eventTypeEnum : EventTypeEnum.values())
 			if (eventTypeEnum.toString().equals(code))
 				return eventTypeEnum;

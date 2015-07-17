@@ -24,33 +24,36 @@
       {
         "eventNpc": "prologue",
         "eventNumber": "1"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "2"
       }
     ],
     "nextSections": [
       {
-        "nextSectionNumber": "201",
-        "eventType": "move",
-        "targetComponent": "redrose_castle"
+        "nextSectionNumber": "103",
+        "eventType": "battle_control",
+        "targetComponent": "normal_attack"
+      }
+    ]
+  },
+  "103": {
+    "sequencialEvents" : [
+      {
+        "eventNpc" : "prologue",
+        "eventNumber" : "3"
       },
       {
-        "nextSectionNumber": "301",
-        "eventType": "move",
-        "targetComponent": "middle_ridge"
-      },
+      	"eventNpc" : "prologue",
+      	"eventNumber" : "4"
+      }
+    ],
+    "nextSections": [
       {
-        "nextSectionNumber": "401",
-        "eventType": "move",
-        "targetComponent": "kadilla_castle"
-      },
-      {
-        "nextSectionNumber": "501",
-        "eventType": "move",
-        "targetComponent": "cobweb"
-      },
-      {
-        "nextSectionNumber": "601",
-        "eventType": "move",
-        "targetComponent": "winterfall"
+        "nextSectionNumber": "104",
+        "eventType": "battle_control",
+        "targetComponent": "skill_attack"
       }
     ]
   }

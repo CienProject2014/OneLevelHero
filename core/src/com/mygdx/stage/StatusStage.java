@@ -76,7 +76,7 @@ public class StatusStage extends BaseOverlapStage {
 		for (int i = 0; i < currentPartyList.size(); i++) {
 			final int index = i;
 			heroLargeImage[i] = new Image(currentPartyList.get(i)
-					.getStatusTexture());
+					.getFaceTexture());
 			partyListImage.get(i).setVisible(true);
 			partyListImage.get(i).setTouchable(Touchable.enabled);
 			partyListImage.get(i).addListener(new InputListener() {

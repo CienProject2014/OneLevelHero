@@ -17,6 +17,8 @@ public class RewardManager {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
+	private BattleManager battleManager;
+	@Autowired
 	private PartyManager partyManager;
 
 	// (3) 퀘스트 달성 여부 큐
@@ -43,7 +45,8 @@ public class RewardManager {
 
 	public void doReward() {
 		if (getRewardQueue().peek() != null) {
-			switch (getRewardQueue().peek().getRewardType()) {
+			RewardInfo peekedReward = getRewardQueue().peek();
+			switch (peekedReward.getRewardType()) {
 				case EXPERIENCE:
 					return;
 				case GOLD:
