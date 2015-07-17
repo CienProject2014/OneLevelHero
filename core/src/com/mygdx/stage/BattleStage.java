@@ -28,7 +28,8 @@ import com.mygdx.model.Monster;
 import com.mygdx.model.Unit;
 
 public class BattleStage extends BaseOneLevelStage {
-	HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
+	HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("BattleStage");
 
 	// Table
 	private Table orderTable; // 순서를 나타내는 테이블
@@ -134,6 +135,8 @@ public class BattleStage extends BaseOneLevelStage {
 		Table RMenuTable = makeRMenuTable();
 
 		uiTable.right().bottom();
+		uiTable.padRight(uiConstantsMap.get("RMenuTablePadRight")).padBottom(
+				uiConstantsMap.get("RMenuTablePadBottom"));
 		uiTable.add(RMenuTable);
 
 		return uiTable;
@@ -144,19 +147,25 @@ public class BattleStage extends BaseOneLevelStage {
 		makeRButton();
 
 		RMenuTable.add(attackButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight")).padTop(uiConstantsMap.get("RMenuTablePadTop"))
+				.height(uiConstantsMap.get("RButtonHeight"))
+				.padTop(uiConstantsMap.get("RMenuTablePadTop"))
 				.padBottom(uiConstantsMap.get("RButtonSpace")).expandX();
 		RMenuTable.row();
 		RMenuTable.add(skillButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight")).padBottom(uiConstantsMap.get("RButtonSpace"));
+				.height(uiConstantsMap.get("RButtonHeight"))
+				.padBottom(uiConstantsMap.get("RButtonSpace"));
 		RMenuTable.row();
-		RMenuTable.add(inventoryButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight")).padBottom(uiConstantsMap.get("RButtonSpace"));
+		RMenuTable.add(inventoryButton)
+				.width(uiConstantsMap.get("RButtonWidth"))
+				.height(uiConstantsMap.get("RButtonHeight"))
+				.padBottom(uiConstantsMap.get("RButtonSpace"));
 		RMenuTable.row();
 		RMenuTable.add(defenseButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight")).padBottom(uiConstantsMap.get("RButtonSpace"));
+				.height(uiConstantsMap.get("RButtonHeight"))
+				.padBottom(uiConstantsMap.get("RButtonSpace"));
 		RMenuTable.row();
-		RMenuTable.add(waitButton).width(uiConstantsMap.get("RButtonWidth")).height(uiConstantsMap.get("RButtonHeight"))
+		RMenuTable.add(waitButton).width(uiConstantsMap.get("RButtonWidth"))
+				.height(uiConstantsMap.get("RButtonHeight"))
 				.padBottom(uiConstantsMap.get("RButtonSpace"));
 		RMenuTable.row();
 		RMenuTable.add(escapeButton).width(uiConstantsMap.get("RButtonWidth"))
@@ -179,7 +188,8 @@ public class BattleStage extends BaseOneLevelStage {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		boolean result = super.touchDown(screenX, screenY, pointer, button);
 
-		if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+		if (gridHitbox.isGridShow()
+				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 			gridHitbox.showTileWhereClicked(screenX, screenY);
 		}
 		return result;
@@ -200,7 +210,8 @@ public class BattleStage extends BaseOneLevelStage {
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		boolean result = super.touchUp(screenX, screenY, pointer, button);
 
-		if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+		if (gridHitbox.isGridShow()
+				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 			Gdx.app.log("BattleStage", "어택!");
 
 			Unit actor = getCurrentActor();
@@ -279,12 +290,18 @@ public class BattleStage extends BaseOneLevelStage {
 	private void makeRButton() {
 
 		// 이미지 추가
-		attackButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/battle/RMenu_01.png"))));
-		skillButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/battle/RMenu_02.png"))));
-		inventoryButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/battle/RMenu_03.png"))));
-		defenseButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/battle/RMenu_04.png"))));
-		waitButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/battle/RMenu_05.png"))));
-		escapeButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/battle/RMenu_06.png"))));
+		attackButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/battle/RMenu_01.png"))));
+		skillButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/battle/RMenu_02.png"))));
+		inventoryButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/battle/RMenu_03.png"))));
+		defenseButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/battle/RMenu_04.png"))));
+		waitButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture(
+				"texture/battle/RMenu_05.png"))));
+		escapeButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/battle/RMenu_06.png"))));
 
 		addListener();
 

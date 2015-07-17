@@ -1,108 +1,117 @@
 package com.mygdx.stage;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 
 public class MenuStage extends BaseOneLevelStage {
+	HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("MenuStage");
+
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
-	private ImageButton[] button;
+	private Table buttonTable;
 
 	public Stage makeStage() {
 		super.makeStage();
-		button = new ImageButton[4];
+		buttonTable = new Table();
+
+		ImageButton startButton;
+		ImageButton settingButton;
+		ImageButton albumButton;
+		ImageButton creditButton;
+		Float buttonWidth = 630f;
+		Float buttonHeight = 195f;
 		Image logo = new Image(atlasUiAssets.getAtlasUiFile("title"));
-		Texture texture = StaticAssets.backgroundTextureMap.get("main_background");
+		Texture texture = StaticAssets.backgroundTextureMap
+				.get("main_background");
 		Image background = new Image(texture);
 
-		Table table = new Table(uiComponentAssets.getSkin());
+		// 이미지추가
+		startButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/title/title_start.png"))));
+		settingButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/title/title_setting.png"))));
+		albumButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/title/title_album.png"))));
+		creditButton = new ImageButton(new SpriteDrawable(new Sprite(
+				new Texture("texture/title/title_credit.png"))));
 
-		button[0] = new ImageButton(
-				// FIXME 버튼하나 없음
-				atlasUiAssets.getAtlasUiFile("button_start_after"), atlasUiAssets.getAtlasUiFile("button_start_after"));
-		button[1] = new ImageButton(atlasUiAssets.getAtlasUiFile("button_option_before"),
-				atlasUiAssets.getAtlasUiFile("button_option_after"));
-		button[2] = new ImageButton(atlasUiAssets.getAtlasUiFile("button_credit_before"),
-				atlasUiAssets.getAtlasUiFile("button_credit_after"));
-		button[3] = new ImageButton(atlasUiAssets.getAtlasUiFile("button_extra_before"),
-				atlasUiAssets.getAtlasUiFile("button_extra_after"));
+		// 클릭리스너추가
+		startButton.addListener(new ClickListener() {
 
-		button[0].addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void clicked(InputEvent event, float x, float y) {
 				screenFactory.show(ScreenEnum.LOAD);
 			}
 		});
-		button[1].addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+		settingButton.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
 				screenFactory.show(ScreenEnum.OPTION);
 			}
 		});
-		button[2].addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				screenFactory.show(ScreenEnum.CREDIT);
+		albumButton.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
+				screenFactory.show(ScreenEnum.COLLETION);
 			}
 		});
-		button[3].addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				screenFactory.show(ScreenEnum.COLLETION);
+		creditButton.addListener(new ClickListener() {
+
+			public void clicked(InputEvent event, float x, float y) {
+				screenFactory.show(ScreenEnum.CREDIT);
 			}
 		});
 
 		logo.setHeight((int) (0.4f * StaticAssets.BASE_WINDOW_HEIGHT));
 		logo.setWidth((int) (0.6f * StaticAssets.BASE_WINDOW_WIDTH));
 
-		table.add(button[3]).height(0.35f * StaticAssets.BASE_WINDOW_HEIGHT)
-				.width(0.3f * StaticAssets.BASE_WINDOW_WIDTH).expand().top().left();
-		table.add(button[2]).height(0.35f * StaticAssets.BASE_WINDOW_HEIGHT)
-				.width(0.3f * StaticAssets.BASE_WINDOW_WIDTH).top().right();
-		table.row();
-		table.add(button[0]).height(0.35f * StaticAssets.BASE_WINDOW_HEIGHT)
-				.width(0.3f * StaticAssets.BASE_WINDOW_WIDTH).bottom().left();
-		table.add(button[1]).height(0.35f * StaticAssets.BASE_WINDOW_HEIGHT)
-				.width(0.3f * StaticAssets.BASE_WINDOW_WIDTH).bottom().right();
-		logo.setPosition((int) (0.2f * StaticAssets.BASE_WINDOW_WIDTH), (int) (0.3f * StaticAssets.BASE_WINDOW_HEIGHT));
-		background.setSize(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
+		buttonTable.top().right();
+		buttonTable.padRight(uiConstantsMap.get("tTablePadRight"));
+		buttonTable.setFillParent(true);
+		buttonTable.add(startButton)
+				.height(uiConstantsMap.get("tButtonHeight"))
+				.width(uiConstantsMap.get("tButtonWidth"))
+				.padTop(uiConstantsMap.get("tTablePadTop"));
+		buttonTable.row();
+		buttonTable.add(settingButton)
+				.height(uiConstantsMap.get("tButtonHeight"))
+				.width(uiConstantsMap.get("tButtonWidth"))
+				.padTop(uiConstantsMap.get("tButtonSpace"));
+		buttonTable.row();
+		buttonTable.add(albumButton)
+				.height(uiConstantsMap.get("tButtonHeight"))
+				.width(uiConstantsMap.get("tButtonWidth"))
+				.padTop(uiConstantsMap.get("tButtonSpace"));
+		buttonTable.row();
+		buttonTable.add(creditButton).height(buttonHeight).width(buttonWidth)
+				.padTop(uiConstantsMap.get("tButtonSpace"));
+
+		logo.setPosition((int) (0.2f * StaticAssets.BASE_WINDOW_WIDTH),
+				(int) (0.3f * StaticAssets.BASE_WINDOW_HEIGHT));
+		background.setSize(StaticAssets.BASE_WINDOW_WIDTH,
+				StaticAssets.BASE_WINDOW_HEIGHT);
 
 		tableStack.addActor(background);
 		tableStack.addActor(logo);
-		tableStack.addActor(table);
+		tableStack.addActor(buttonTable);
 
 		return this;
 	}

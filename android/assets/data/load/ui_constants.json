@@ -1,4 +1,13 @@
 {
+"MenuStage" : {
+    "tButtonWidth": 630,
+    "tButtonHeight": 195,
+    "tButtonSpace": 43,
+    "tTablePadTop":85,
+    "tTablePadRight":15
+
+
+},
   "BattleStage": {
 	"RMenuTablePadTop": 161,
 	"RMenuTablePadBottom": 15,
