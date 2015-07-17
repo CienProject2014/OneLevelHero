@@ -109,6 +109,7 @@ public class BuildingStage extends BaseOverlapStage {
 		for(final String objectName: buildingInfo.getGameObject()){
 			final CompositeItem objectButton = sceneLoader.getRoot().getCompositeById(objectName);
 			objectButton.setVisible(true);
+			if(EventAssets.getGameObject(objectName).getObjectType == GameObjectType.NORMAL)
 			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.getCode(), false);
 			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.getCode(), true);
 			objectButton.setTouchable(Touchable.enabled);

@@ -1,15 +1,13 @@
 package com.mygdx.model;
 
+import com.mygdx.enums.GameObjectEnum;
+
 public class GameObject extends EventElement {
-	private String objectType;
+	private GameObjectEnum objectType;
 	private Event objectEvent;
-
-	public String getObjectType() {
-		return objectType;
-	}
-
-	public void setObjectType(String objectType) {
-		this.objectType = objectType;
+	
+	GameObject(){
+		objectType = GameObjectEnum.NORMAL;
 	}
 
 	public Event getObjectEvent() {
@@ -18,5 +16,13 @@ public class GameObject extends EventElement {
 
 	public void setObjectEvent(Event objectEvent) {
 		this.objectEvent = objectEvent;
+	}
+
+	public GameObjectEnum getObjectType() {
+		return objectType;
+	}
+
+	public void setObjectType(GameObjectEnum objectType) {
+		this.objectType = objectType;
 	}
 }

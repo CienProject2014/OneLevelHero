@@ -21,6 +21,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.enums.StageEnum;
+import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.model.GridHitbox;
 import com.mygdx.model.Hero;
@@ -45,6 +47,7 @@ public class BattleStage extends BaseOneLevelStage {
 	@Autowired
 	private BattleManager battleManager;
 	private Monster monster;
+	private StageFactory stageFactory;
 
 	// Unit array
 	private ArrayList<Unit> units;
@@ -244,9 +247,11 @@ public class BattleStage extends BaseOneLevelStage {
 		skillButton.addListener(new ClickListener() {
 
 			@Override
+			@Autowired
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "스킬!");
 				gridHitbox.hideGrid();
+				stageFactory.makeStage(StageEnum.SKILL);
 			}
 		});
 

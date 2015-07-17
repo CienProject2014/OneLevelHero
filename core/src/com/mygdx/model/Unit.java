@@ -6,6 +6,7 @@ import com.mygdx.manager.TextureManager;
 public class Unit implements Comparable<Unit> {
 	private String name;
 	private Status status;
+	private Skill skill;
 	private int gauge;
 	private Texture statusTexture;
 	private Texture battleTexture;
@@ -24,6 +25,14 @@ public class Unit implements Comparable<Unit> {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public Skill getSkill() {
+		return skill;
+	}
+
+	public void setSkill(Skill skill) {
+		this.skill = skill;
 	}
 
 	public int getGauge() {
