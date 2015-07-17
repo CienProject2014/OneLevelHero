@@ -24,7 +24,8 @@ public class EventStage extends BaseOneLevelStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private EventInfo eventInfo;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("EventStage");
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("EventStage");
 	private Label scriptTitle;
 	private Label scriptContent;
 	private Image characterImage;
@@ -40,7 +41,8 @@ public class EventStage extends BaseOneLevelStage {
 		super.makeStage();
 		backgroundImage = new Image(eventScene.getBackground());
 		scriptTitle = new Label("Title", uiComponentAssets.getSkin());
-		scriptContent = new Label(eventScene.getScript(), uiComponentAssets.getSkin());
+		scriptContent = new Label(eventScene.getScript(),
+				uiComponentAssets.getSkin());
 		characterImage = new Image(eventScene.getCharacter());
 
 		tableStack.add(backgroundImage);
@@ -54,18 +56,23 @@ public class EventStage extends BaseOneLevelStage {
 		chatTable.left().bottom();
 
 		// FIXME talkerHeight가 이상하다.
-		chatTable.add(characterImage).width(uiConstantsMap.get("talkerWidth")).height(600)
+		chatTable.add(characterImage).width(uiConstantsMap.get("talkerWidth"))
+				.height(uiConstantsMap.get("talkerHeight"))
 				.padLeft(uiConstantsMap.get("talkerPadLeft"));
 
 		scriptContent.setFontScale(1.0f);
 		scriptContent.setWrap(true);
-		scriptContent.setSize(uiConstantsMap.get("scriptWidth"), uiConstantsMap.get("scriptHeight"));
+		scriptContent.setSize(uiConstantsMap.get("scriptWidth"),
+				uiConstantsMap.get("scriptHeight"));
 
 		Table scriptTable = new Table();
-		scriptTable.add(scriptTitle).width(uiConstantsMap.get("scriptTitleWidth"))
-				.height(uiConstantsMap.get("scriptTitleHeight")).padBottom(uiConstantsMap.get("scriptTitlePadBottom"));
+		scriptTable.add(scriptTitle)
+				.width(uiConstantsMap.get("scriptTitleWidth"))
+				.height(uiConstantsMap.get("scriptTitleHeight"))
+				.padBottom(uiConstantsMap.get("scriptTitlePadBottom"));
 		scriptTable.row();
-		scriptTable.add(scriptContent).width(uiConstantsMap.get("scriptContentWidth"))
+		scriptTable.add(scriptContent)
+				.width(uiConstantsMap.get("scriptContentWidth"))
 				.height(uiConstantsMap.get("scriptContentHeight"));
 
 		chatTable.add(scriptTable).padLeft(uiConstantsMap.get("scriptPadLeft"))

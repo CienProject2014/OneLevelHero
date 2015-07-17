@@ -78,4 +78,5 @@ public class BattleScreen extends BaseScreen {
 	public void setAnimationManager(AnimationManager animationManager) {
 		this.animationManager = animationManager;
 	}
+
 }

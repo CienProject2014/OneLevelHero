@@ -80,13 +80,7 @@
 		<property name="movingInfo" ref="movingInfo" />
 		<property name="positionInfo" ref="positionInfo" />
 	</bean>
-	<bean id="movingManager" class="com.mygdx.manager.MovingManager">
-		<property name="worldMapAssets" ref="worldMapAssets" />
-		<property name="screenFactory" ref="screenFactory" />
-		<property name="positionInfo" ref="positionInfo" />
-		<property name="movingInfo" ref="movingInfo" />
-		<property name="encounterManager" ref="encounterManager" />
-	</bean>
+	<bean id="movingManager" class="com.mygdx.manager.MovingManager"/>
 	<bean id="musicManager" class="com.mygdx.manager.MusicManager">
 		<property name="musicInfo" ref="musicInfo" />
 		<property name="soundInfo" ref="soundInfo" />
@@ -170,10 +164,7 @@
 		<property name="soundInfo" ref="soundInfo" />
 	</bean>
 	<bean id="movingScreen" class="com.mygdx.screen.MovingScreen"
-		scope="prototype">
-		<property name="movingManager" ref="movingManager" />
-		<property name="uiComponentAssets" ref="uiComponentAssets"></property>
-	</bean>
+		scope="prototype"/>
 	<bean id="optionScreen" class="com.mygdx.screen.OptionScreen"
 		scope="prototype">
 		<property name="uiComponentAssets" ref="uiComponentAssets"></property>
@@ -238,6 +229,7 @@
 	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage"
 		scope="prototype" />
+	<bean id="movingStage" class="com.mygdx.stage.MovingStage"/>
 
 	<bean id="selectButtonStage" class="com.mygdx.stage.SelectButtonStage"
 		scope="prototype">

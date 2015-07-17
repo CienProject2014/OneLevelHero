@@ -8,18 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
@@ -33,7 +34,8 @@ public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
 
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameUiStage");
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("GameUiStage");
 
 	private Table uiTable;
 	private Table topTable;
@@ -63,16 +65,20 @@ public class GameUiStage extends BaseOneLevelStage {
 
 		alertMessage = new Stack<MessagePopup>();
 		// 보상 이벤트 처리
-		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue().iterator();
+		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
+				.iterator();
 		while (iterator.hasNext()) {
 			RewardInfo nextIterator = iterator.next();
 			if (nextIterator.getRewardState().equals(RewardStateEnum.ING))
-				alertMessage.add(new AlertMessagePopup("[ 보상 ]", uiComponentAssets.getSkin())
-						.text(rewardManager.getRewardMessage(nextIterator)));
-			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", " + nextIterator.getRewardType());
+				alertMessage.add(new AlertMessagePopup("[ 보상 ]",
+						uiComponentAssets.getSkin()).text(rewardManager
+						.getRewardMessage(nextIterator)));
+			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
+					+ nextIterator.getRewardType());
 		}
 		// 알림 메시지
-		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", uiComponentAssets.getSkin(), partyInfo);
+		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]",
+				uiComponentAssets.getSkin(), partyInfo);
 		Iterator<MessagePopup> alertMessageIterator = alertMessage.iterator();
 		while (alertMessageIterator.hasNext()) {
 			MessagePopup nextIterator = alertMessageIterator.next();
@@ -89,53 +95,68 @@ public class GameUiStage extends BaseOneLevelStage {
 	public void makeTable() {
 		topTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
 		float width = uiConstantsMap.get("TButtonWidthSmall");
-		topTable.add(backButton).width(width).height(uiConstantsMap.get("TButtonHeightSmall"))
+		topTable.add(backButton).width(width)
+				.height(uiConstantsMap.get("TButtonHeightSmall"))
 				.padRight(uiConstantsMap.get("buttonPadRight"));
-		topTable.add(placeInfoButton).width(uiConstantsMap.get("TButtonWidthLarge"))
-				.height(uiConstantsMap.get("TButtonHeightLarge")).padRight(uiConstantsMap.get("buttonPadRight"));
-		topTable.add(timeInfoButton).width(uiConstantsMap.get("TButtonWidthLarge"))
-				.height(uiConstantsMap.get("TButtonHeightLarge")).padRight(uiConstantsMap.get("buttonPadRight"));
-		topTable.add(questLogButton).width(uiConstantsMap.get("TButtonWidthSmall"))
-				.height(uiConstantsMap.get("TButtonHeightSmall")).padRight(uiConstantsMap.get("buttonPadRight"));
+		topTable.add(placeInfoButton)
+				.width(uiConstantsMap.get("TButtonWidthLarge"))
+				.height(uiConstantsMap.get("TButtonHeightLarge"))
+				.padRight(uiConstantsMap.get("buttonPadRight"));
+		topTable.add(timeInfoButton)
+				.width(uiConstantsMap.get("TButtonWidthLarge"))
+				.height(uiConstantsMap.get("TButtonHeightLarge"))
+				.padRight(uiConstantsMap.get("buttonPadRight"));
+		topTable.add(questLogButton)
+				.width(uiConstantsMap.get("TButtonWidthSmall"))
+				.height(uiConstantsMap.get("TButtonHeightSmall"))
+				.padRight(uiConstantsMap.get("buttonPadRight"));
 		topTable.add(helpButton).width(uiConstantsMap.get("TButtonWidthSmall"))
-				.height(uiConstantsMap.get("TButtonHeightSmall")).padRight(uiConstantsMap.get("buttonPadRight"));
-		topTable.add(settingButton).width(uiConstantsMap.get("TButtonWidthSmall"))
+				.height(uiConstantsMap.get("TButtonHeightSmall"))
+				.padRight(uiConstantsMap.get("buttonPadRight"));
+		topTable.add(settingButton)
+				.width(uiConstantsMap.get("TButtonWidthSmall"))
 				.height(uiConstantsMap.get("TButtonHeightSmall"));
 
 		uiTable.align(Align.top);
-		uiTable.add(topTable).padLeft(uiConstantsMap.get("padLeft")).padTop(uiConstantsMap.get("padTop"));
+		uiTable.add(topTable).padLeft(uiConstantsMap.get("padLeft"))
+				.padTop(uiConstantsMap.get("padTop"));
 	}
 
 	public void makeButton() {
-		TextButtonStyle style = new TextButtonStyle(atlasUiAssets.getAtlasUiFile("time_info_button"),
-				atlasUiAssets.getAtlasUiFile("time_info_button"), atlasUiAssets.getAtlasUiFile("time_info_button"),
+		TextButtonStyle style = new TextButtonStyle(
+				atlasUiAssets.getAtlasUiFile("time_info_button"),
+				atlasUiAssets.getAtlasUiFile("time_info_button"),
+				atlasUiAssets.getAtlasUiFile("time_info_button"),
 				uiComponentAssets.getFont());
 
 		placeInfoButton = new TextButton("장소", style);
-		timeInfoButton = new TextButton(timeInfo.getDay() + "d" + timeInfo.getHour() + "h" + timeInfo.getMinute() + "m",
-				style);
+		timeInfoButton = new TextButton(timeInfo.getDay() + "d"
+				+ timeInfo.getHour() + "h" + timeInfo.getMinute() + "m", style);
 
-		backButton = new ImageButton(atlasUiAssets.getAtlasUiFile("back_button"),
+		backButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("back_button"),
 				atlasUiAssets.getAtlasUiFile("back_toggle_button"));
-		questLogButton = new ImageButton(atlasUiAssets.getAtlasUiFile("quest_log_button"),
+		questLogButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("quest_log_button"),
 				atlasUiAssets.getAtlasUiFile("quest_log_toggle_button"));
-		helpButton = new ImageButton(atlasUiAssets.getAtlasUiFile("help_button"),
+		helpButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("help_button"),
 				atlasUiAssets.getAtlasUiFile("help_toggle_button"));
-		settingButton = new ImageButton(atlasUiAssets.getAtlasUiFile("setting_button"),
+		settingButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("setting_button"),
 				atlasUiAssets.getAtlasUiFile("setting_toggle_button"));
 	}
 
 	// 리스너 할당
 	public void addListener() {
-		helpButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
+		helpButton.addListener(new ClickListener() {
+
+			public void clicked(InputEvent event, float x, float y) {
+
+				screenFactory.show(ScreenEnum.WORLD_MAP);
+
 			}
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-			}
 		});
 	}
 
