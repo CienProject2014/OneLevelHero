@@ -21,12 +21,9 @@ public class EventCheckManager {
 		}
 	}
 
-	public boolean checkBattleEvent() {
-		if (eventManager.getCurrentEvent().getEventType() == EventTypeEnum.BATTLE) {
-			return true;
-		} else {
-			return false;
-		}
+	public boolean checkBattleEventType() {
+		return eventManager.getCurrentEvent().getEventType()
+				.equals(EventTypeEnum.BATTLE);
 	}
 
 	public boolean checkBattleControlEvent(

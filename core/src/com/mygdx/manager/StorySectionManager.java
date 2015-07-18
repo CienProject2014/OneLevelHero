@@ -71,13 +71,12 @@ public class StorySectionManager {
 			}
 
 		} else {
-			goPreviousPlace();
+			goCurrentPlace();
 		}
 	}
 
-	private void goPreviousPlace() {
-		screenFactory.show(ScreenEnum.findScreenEnum(positionManager
-				.getCurrentPlace().toString()));
+	private void goCurrentPlace() {
+		positionManager.goCurrentPlace();
 	}
 
 	public void setCurrentStorySection(StorySection storySection) {

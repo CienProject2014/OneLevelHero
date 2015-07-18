@@ -16,14 +16,14 @@ import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.PlaceManager;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.model.NPC;
 
 public class SelectEventStage extends BaseOneLevelStage {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
-	private PlaceManager placeManager;
+	private PositionManager positionManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 
@@ -111,7 +111,7 @@ public class SelectEventStage extends BaseOneLevelStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				placeManager.goPreviousPlace();
+				positionManager.goCurrentPlace();
 				event.getListenerActor().setVisible(false);
 			}
 		});

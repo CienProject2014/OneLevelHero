@@ -38,12 +38,11 @@ public class BattleManager {
 	}
 
 	public void runAway() {
-		goPreviousPlace();
+		goCurrentPlace();
 	}
 
-	private void goPreviousPlace() {
-		screenFactory.show(ScreenEnum.findScreenEnum(positionManager
-				.getCurrentPlace().toString()));
+	private void goCurrentPlace() {
+		positionManager.goCurrentPlace();
 	}
 
 	public void endBattle(Unit loseUnit) {
@@ -53,7 +52,7 @@ public class BattleManager {
 			battleInfo.setBattleState(BattleStateEnum.LOSE);
 		}
 		//FIXME : 게임 종료를 알리는 장치 필요
-		goPreviousPlace();
+		goCurrentPlace();
 	}
 
 	public void userAttack(Unit unit) {

@@ -235,7 +235,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 			gridHitbox.hideGrid();
 			//FIXME : 리스너를 만들 수 경우의 분기 체크
-			if (eventCheckManager.checkBattleEvent()) {
+			if (eventCheckManager.checkBattleEventType()) {
 				for (StorySectionPacket nextStorySectionPacket : storySectionManager
 						.getNextSections()) {
 					if (eventCheckManager.checkBattleControlEvent(

@@ -15,7 +15,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.PlaceManager;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.StorySectionPacket;
 
@@ -23,7 +23,7 @@ public class SelectComponentStage extends BaseOneLevelStage {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
-	private PlaceManager placeManager;
+	private PositionManager positionManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
@@ -98,7 +98,7 @@ public class SelectComponentStage extends BaseOneLevelStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				placeManager.goPreviousPlace();
+				positionManager.goCurrentPlace();
 				event.getListenerActor().setVisible(false);
 			}
 		});
