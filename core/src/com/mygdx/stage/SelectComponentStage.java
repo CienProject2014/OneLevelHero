@@ -65,21 +65,21 @@ public class SelectComponentStage extends BaseOneLevelStage {
 		return this;
 	}
 
-	// StaticAssets.windowHeight * 0.185f
+	// StaticAssets.BASE_WINDOW_HEIGHT * 0.185f
 	private void setButtonPosition() {
 		final float buttonPosition[][] = {
-				{ StaticAssets.windowWidth * 0.109375f,
-						StaticAssets.windowHeight * 0.74f },
-				{ StaticAssets.windowWidth * 0.109375f,
-						StaticAssets.windowHeight * 0.555f },
-				{ StaticAssets.windowWidth * 0.109375f,
-						StaticAssets.windowHeight * 0.37f },
-				{ StaticAssets.windowWidth * 0.68f,
-						StaticAssets.windowHeight * 0.74f },
-				{ StaticAssets.windowWidth * 0.68f,
-						StaticAssets.windowHeight * 0.555f },
-				{ StaticAssets.windowWidth * 0.68f,
-						StaticAssets.windowHeight * 0.37f } };
+				{ StaticAssets.BASE_WINDOW_WIDTH * 0.109375f,
+						StaticAssets.BASE_WINDOW_HEIGHT * 0.74f },
+				{ StaticAssets.BASE_WINDOW_WIDTH * 0.109375f,
+						StaticAssets.BASE_WINDOW_HEIGHT * 0.555f },
+				{ StaticAssets.BASE_WINDOW_WIDTH * 0.109375f,
+						StaticAssets.BASE_WINDOW_HEIGHT * 0.37f },
+				{ StaticAssets.BASE_WINDOW_WIDTH * 0.68f,
+						StaticAssets.BASE_WINDOW_HEIGHT * 0.74f },
+				{ StaticAssets.BASE_WINDOW_WIDTH * 0.68f,
+						StaticAssets.BASE_WINDOW_HEIGHT * 0.555f },
+				{ StaticAssets.BASE_WINDOW_WIDTH * 0.68f,
+						StaticAssets.BASE_WINDOW_HEIGHT * 0.37f } };
 		for (int i = 0; i < eventSize; i++)
 			chatButtons.get(i).setPosition(buttonPosition[i][0],
 					buttonPosition[i][1]);
@@ -107,8 +107,8 @@ public class SelectComponentStage extends BaseOneLevelStage {
 	}
 
 	private void setSize() {
-		final float buttonSize[] = { StaticAssets.windowWidth * 0.208f,
-				StaticAssets.windowHeight * 0.185f };
+		final float buttonSize[] = { StaticAssets.BASE_WINDOW_WIDTH * 0.208f,
+				StaticAssets.BASE_WINDOW_HEIGHT * 0.185f };
 		for (TextButton chatButton : chatButtons)
 			chatButton.setSize(buttonSize[0], buttonSize[1]);
 	}
@@ -136,6 +136,7 @@ public class SelectComponentStage extends BaseOneLevelStage {
 
 		@Override
 		public void clicked(InputEvent event, float x, float y) {
+
 			for (StorySectionPacket nextStorySectionPacket : storySectionManager
 					.getNextSections()) {
 				if (eventCheckManager.checkSelectComponentEvent(getIndex(),
