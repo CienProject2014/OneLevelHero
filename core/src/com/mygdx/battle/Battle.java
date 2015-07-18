@@ -38,7 +38,11 @@ public class Battle {
 		int attackDmg = attacker.getStatus().getAtk();
 		int defendDmg = defender.getStatus().getDef();
 		int defendHp = defender.getStatus().getHp();
-		defender.getStatus().setHp(defendHp + (defendDmg - attackDmg));
+		if (defendHp + (defendDmg - attackDmg) > 0) {
+			defender.getStatus().setHp(defendHp + (defendDmg - attackDmg));
+		} else {
+			defender.getStatus().setHp(0);
+		}
 		Gdx.app.log("Battle", attacker.getName() + "가 " + defender.getName()
 				+ "를 공격하였습니다!");
 	}

@@ -13,8 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.PlaceManager;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.StorySectionPacket;
 
@@ -22,9 +23,11 @@ public class SelectComponentStage extends BaseOneLevelStage {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
-	private PlaceManager placeManager;
+	private PositionManager positionManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private EventCheckManager eventCheckManager;
 	@Autowired
 	private StorySectionManager storySectionManager;
 
@@ -95,7 +98,7 @@ public class SelectComponentStage extends BaseOneLevelStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				placeManager.goPreviousPlace();
+				positionManager.goCurrentPlace();
 				event.getListenerActor().setVisible(false);
 			}
 		});
@@ -128,25 +131,20 @@ public class SelectComponentStage extends BaseOneLevelStage {
 		this.eventSize = eventSize;
 	}
 
-	class SelectComponentClickListener extends ClickListener {
+	public class SelectComponentClickListener extends ClickListener {
 		private int index;
 
 		@Override
 		public void clicked(InputEvent event, float x, float y) {
-			List<StorySectionPacket> nextStorySections = storySectionManager
-					.getNestSections();
 
-			// iterator 사용시 java.util.ConcurrentModificationException 에러 발생
-			for (int i = 0; i < nextStorySections.size(); i++) {
-				StorySectionPacket nextSectionPacket = nextStorySections.get(i);
-				if (eventManager.getCurrentEvent().getEventComponent()
-						.get(getIndex())
-						.equals(nextSectionPacket.getTargetComponent())) {
-					storySectionManager.setNewStorySection(nextSectionPacket
-							.getNextSectionNumber());
-					storySectionManager.insertStorySequence();
-					storySectionManager.runStorySequence();
-					return;
+			for (StorySectionPacket nextStorySectionPacket : storySectionManager
+					.getNextSections()) {
+				if (eventCheckManager.checkSelectComponentEvent(getIndex(),
+						nextStorySectionPacket)) {
+					storySectionManager
+							.setNewStorySectionAndPlay(nextStorySectionPacket
+									.getNextSectionNumber());
+					break;
 				}
 			}
 		}

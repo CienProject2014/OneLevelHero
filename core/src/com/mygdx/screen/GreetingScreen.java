@@ -12,15 +12,17 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
 public class GreetingScreen extends BaseScreen {
 	@Autowired
 	protected EventManager eventManager;
+	@Autowired
+	private PositionManager positionManager;
 
 	// Already libgdx using interface!
 	private Input input = Gdx.input;
@@ -65,32 +67,13 @@ public class GreetingScreen extends BaseScreen {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				goPreviousPlace();
+				goCurrentPlace();
 				return true;
 			}
 		});
 	}
 
-	private void goPreviousPlace() {
-		switch (positionInfo.getCurrentPlace()) {
-			case BUILDING:
-				screenFactory.show(ScreenEnum.BUILDING);
-				break;
-			case VILLAGE:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			case DUNGEON:
-				// screenFactory.show(ScreenEnum.DUNGEON);
-				screenFactory.show(ScreenEnum.VILLAGE); // FIXME
-				break;
-			case FORK:
-				// screenFactory.show(ScreenEnum.FORK);
-				screenFactory.show(ScreenEnum.VILLAGE); // FIXME
-				break;
-			default:
-				Gdx.app.log("EventScreen",
-						"positionInfo.getCurrentPlace() is not valid");
-				break;
-		}
+	private void goCurrentPlace() {
+		positionManager.goCurrentPlace();
 	}
 }

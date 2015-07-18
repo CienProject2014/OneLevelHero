@@ -4,13 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.PlaceEnum;
+import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 
 public class PositionManager {
 	@Autowired
 	private PositionInfo positionInfo;
+	@Autowired
+	private ScreenFactory screenFactory;
 
 	public String getCurrentNode() {
 		return positionInfo.getCurrentNode();
+	}
+
+	public void goCurrentPlace() {
+		screenFactory.show(ScreenEnum.findScreenEnum(getCurrentPlace()
+				.toString()));
 	}
 
 	public void setCurrentNode(String currentNode) {

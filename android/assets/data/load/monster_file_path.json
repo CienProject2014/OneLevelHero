@@ -1,5 +1,8 @@
 {
-	"assassin girl_351" :{
-		"filePath" : "texture/monster/assassin_girl_351.png"
-	}
+  "monster_assassin_girl_01": {
+    "filePath": "texture/monster/monster_assassin_girl_01.png"
+  },
+  "monster_mawang_01": {
+    "filePath": "texture/monster/monster_mawang_01.png"
+  }
 }

@@ -1,14 +1,13 @@
 package com.mygdx.manager;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.MovingInfo;
-import com.mygdx.enums.PlaceEnum;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.model.Monster;
+import com.mygdx.model.WorldNode;
 
 public class MovingManager {
 	@Autowired
@@ -22,12 +21,21 @@ public class MovingManager {
 	@Autowired
 	private EncounterManager encounterManager;
 
-	public Monster getSelectedMonster() {
-		return movingInfo.getSelectedMonster();
+	public List<String> getRoadMonsters() {
+		return movingInfo.getRoadMonsterList();
 	}
 
-	public void setSelectedMonster(Monster selectedMonster) {
-		movingInfo.setSelectedMonster(selectedMonster);
+	public void createMovingInfo(String destinationNode, WorldNode worldNodeInfo) {
+		movingInfo.setStartNode(positionManager.getCurrentNode());
+		movingInfo.setDestinationNode(destinationNode);
+		movingInfo.setRoadLength(worldNodeInfo.getConnection()
+				.get(destinationNode).getroadLength());
+		movingInfo.setLeftRoadLength(worldNodeInfo.getConnection()
+				.get(destinationNode).getroadLength());
+		movingInfo.setRoadMonsterList(worldNodeInfo.getConnection()
+				.get(destinationNode).getRoadMonster());
+		movingInfo.setArrowName(worldNodeInfo.getConnection()
+				.get(destinationNode).getArrowName());
 	}
 
 	public void goForward() {
@@ -67,23 +75,7 @@ public class MovingManager {
 	}
 
 	private void goIntoCurrentNode() {
-		String placeType = worldMapAssets.getWorldNodeInfo(
-				positionManager.getCurrentNode()).getType();
-		switch (PlaceEnum.findPlaceEnum(placeType)) {
-			case VILLAGE:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			case DUNGEON:
-				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-				break;
-			case FORK:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			default:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				Gdx.app.debug("MovingManager", "CurrentNode 타입 오류");
-				break;
-		}
+		positionManager.goCurrentPlace();
 	}
 
 	private boolean isRoadLeft() {

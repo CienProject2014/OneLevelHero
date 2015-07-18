@@ -13,12 +13,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.BattleManager;
 import com.mygdx.model.Monster;
 
 public class MonsterStage extends BaseOneLevelStage {
 	@Autowired
-	private MovingManager movingManager;
+	private BattleManager battleManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("MonsterStage");
 	private Monster monster;
@@ -31,7 +31,7 @@ public class MonsterStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 
-		monster = movingManager.getSelectedMonster();
+		monster = battleManager.getSelectedMonster();
 
 		setMonsterTable();
 
@@ -48,14 +48,16 @@ public class MonsterStage extends BaseOneLevelStage {
 
 		outerTable.setBackground(getBackgroundTRD(), false);
 		outerTable.align(Align.top); // table을 위로 정렬
-		outerTable.add(monsterTable).padTop(uiConstantsMap.get("monsterPadTop"))
-				.width(uiConstantsMap.get("monsterTableWidth")).height(uiConstantsMap.get("monsterTableHeight"));
+		outerTable.add(monsterTable)
+				.padTop(uiConstantsMap.get("monsterPadTop"))
+				.width(uiConstantsMap.get("monsterTableWidth"))
+				.height(uiConstantsMap.get("monsterTableHeight"));
 
 		tableStack.add(outerTable);
 	}
 
 	private Image getMonsterImage() {
-		Texture monsterTexture = monster.getBattleTexture();
+		Texture monsterTexture = monster.getBodyTexture();
 		return new Image(monsterTexture);
 	}
 

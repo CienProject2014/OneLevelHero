@@ -7,7 +7,7 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.currentState.PositionInfo;
+import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -23,14 +23,24 @@ public class StorySectionManager {
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
-	private PositionInfo positionInfo;
+	private PositionManager positionManager;
+	@Autowired
+	private BattleManager battleManager;
+	@Autowired
+	private UnitAssets unitAssets;
 	private Queue<EventPacket> eventSequenceQueue = new LinkedList<>();
+
+	public void setNewStorySectionAndPlay(int storyNumber) {
+		setNewStorySection(storyNumber);
+		insertStorySequence();
+		runStorySequence();
+	}
 
 	public void setNewStorySection(int storyNumber) {
 		storySectionInfo.setCurrentStorySection(storyNumber);
 	}
 
-	public List<StorySectionPacket> getNestSections() {
+	public List<StorySectionPacket> getNextSections() {
 		return storySectionInfo.getCurrentStorySection().getNextSections();
 	}
 
@@ -48,16 +58,25 @@ public class StorySectionManager {
 		if (!eventSequenceQueue.isEmpty()) {
 			EventPacket polledEventPacket = eventSequenceQueue.poll();
 			eventManager.setCurrentEventInfo(polledEventPacket);
-			screenFactory.show(ScreenEnum.EVENT);
+			switch (eventManager.getCurrentEvent().getEventType()) {
+				case BATTLE:
+					battleManager.startBattle(unitAssets
+							.getMonster(eventManager.getCurrentEvent()
+									.getEventComponent().get(0)));
+					screenFactory.show(ScreenEnum.BATTLE);
+					break;
+				default:
+					screenFactory.show(ScreenEnum.EVENT);
+					break;
+			}
 
 		} else {
-			goPreviousPlace();
+			goCurrentPlace();
 		}
 	}
 
-	private void goPreviousPlace() {
-		screenFactory.show(ScreenEnum.findScreenEnum(positionInfo
-				.getCurrentPlace().toString()));
+	private void goCurrentPlace() {
+		positionManager.goCurrentPlace();
 	}
 
 	public void setCurrentStorySection(StorySection storySection) {

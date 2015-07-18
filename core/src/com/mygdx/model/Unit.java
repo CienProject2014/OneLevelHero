@@ -7,8 +7,8 @@ public class Unit implements Comparable<Unit> {
 	private String name;
 	private Status status;
 	private int gauge;
-	private Texture statusTexture;
-	private Texture battleTexture;
+	private Texture bodyTexture;
+	private Texture faceTexture;
 
 	public String getName() {
 		return name;
@@ -51,28 +51,23 @@ public class Unit implements Comparable<Unit> {
 		}
 	}
 
-	public Texture getStatusTexture() {
-		if (statusTexture == null)
-			statusTexture = TextureManager.getStatusTexture(name);
-
-		return statusTexture;
-	}
-
-	public void setStatusTexture(Texture statusTexture) {
-		this.statusTexture = statusTexture;
-	}
-
-	public Texture getBattleTexture() {
-		if (battleTexture == null) {
+	public Texture getBodyTexture() {
+		if (bodyTexture == null) {
 			if (this instanceof Hero)
-				battleTexture = TextureManager.getCharacterBattleTexture(name);
+				bodyTexture = TextureManager.getCharacterBodyTexture(name);
 			else
-				battleTexture = TextureManager.getMonsterBattleTexture(name);
+				bodyTexture = TextureManager.getMonsterBodyTexture(name);
 		}
-		return battleTexture;
+		return bodyTexture;
 	}
 
-	public void setBattleTexture(Texture battleTexture) {
-		this.battleTexture = battleTexture;
+	public Texture getFaceTexture() {
+		if (faceTexture == null) {
+			if (this instanceof Hero)
+				faceTexture = TextureManager.getCharacterFaceTexture(name);
+			else
+				faceTexture = TextureManager.getMonsterFaceTexture(name);
+		}
+		return faceTexture;
 	}
 }

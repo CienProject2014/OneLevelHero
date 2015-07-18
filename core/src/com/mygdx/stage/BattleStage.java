@@ -20,16 +20,23 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.EventCheckManager;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.GridHitbox;
 import com.mygdx.model.Hero;
 import com.mygdx.model.Monster;
+import com.mygdx.model.StorySectionPacket;
 import com.mygdx.model.Unit;
 
 public class BattleStage extends BaseOneLevelStage {
 	@Autowired
 	private BattleManager battleManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
+	@Autowired
+	private EventCheckManager eventCheckManager;
+	private final String NORMAL_ATTACK = "normal_attack";
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("BattleStage");
@@ -45,7 +52,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private ImageButton waitButton;
 	private ImageButton escapeButton;
 
-	private Monster monster;
+	private Monster selectedMonster;
 
 	// Unit array
 	private ArrayList<Unit> units;
@@ -85,7 +92,7 @@ public class BattleStage extends BaseOneLevelStage {
 		super.makeStage();
 		Gdx.app.debug("BattleStage", "makeStage(Rm rm)");
 
-		monster = movingManager.getSelectedMonster();
+		selectedMonster = battleManager.getSelectedMonster();
 
 		makeFirstOrder();
 
@@ -117,7 +124,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private void makeFirstOrder() {
 		units = new ArrayList<Unit>(4);
 		units.addAll(partyManager.getPartyList());
-		units.add(monster);
+		units.add(selectedMonster);
 
 		// 행동게이지 초기화
 		for (Unit unit : units) {
@@ -186,7 +193,8 @@ public class BattleStage extends BaseOneLevelStage {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		boolean result = super.touchDown(screenX, screenY, pointer, button);
 
-		if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+		if (gridHitbox.isGridShow()
+				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 			gridHitbox.showTileWhereClicked(screenX, screenY);
 		}
 		return result;
@@ -207,7 +215,8 @@ public class BattleStage extends BaseOneLevelStage {
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		boolean result = super.touchUp(screenX, screenY, pointer, button);
 
-		if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+		if (gridHitbox.isGridShow()
+				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 			Gdx.app.log("BattleStage", "어택!");
 
 			Unit actor = getCurrentActor();
@@ -225,6 +234,19 @@ public class BattleStage extends BaseOneLevelStage {
 			}
 
 			gridHitbox.hideGrid();
+			//FIXME : 리스너를 만들 수 경우의 분기 체크
+			if (eventCheckManager.checkBattleEventType()) {
+				for (StorySectionPacket nextStorySectionPacket : storySectionManager
+						.getNextSections()) {
+					if (eventCheckManager.checkBattleControlEvent(
+							nextStorySectionPacket, NORMAL_ATTACK)) {
+						storySectionManager
+								.setNewStorySectionAndPlay(nextStorySectionPacket
+										.getNextSectionNumber());
+					}
+					break;
+				}
+			}
 		}
 
 		gridHitbox.hideAllTiles();
@@ -247,7 +269,6 @@ public class BattleStage extends BaseOneLevelStage {
 		});
 
 		skillButton.addListener(new ClickListener() {
-
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "스킬!");
@@ -278,13 +299,12 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "도망!");
-				screenFactory.show(ScreenEnum.MOVING);
+				battleManager.runAway();
 			}
 		});
 	}
 
 	private void makeRButton() {
-
 		// 이미지 추가
 		attackButton = new ImageButton(new SpriteDrawable(new Sprite(
 				new Texture("texture/battle/RMenu_01.png"))));

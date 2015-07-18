@@ -26,6 +26,7 @@
 
 	<bean id="currentState" class="com.mygdx.currentState.CurrentState"/>
 
+	<bean id="battleInfo" class="com.mygdx.currentState.BattleInfo"/>
 	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo" />
 	<bean id="inventoryInfo" class="com.mygdx.currentState.InventoryInfo" />
 	<bean id="movingInfo" class="com.mygdx.currentState.MovingInfo" />
@@ -47,13 +48,12 @@
 	<bean id="cameraManager" class="com.mygdx.manager.CameraManager"/>
 	<bean id="encounterManager" class="com.mygdx.manager.EncounterManager"/>
 	<bean id="eventManager" class="com.mygdx.manager.EventManager"/>
+	<bean id="eventCheckManager" class="com.mygdx.manager.EventCheckManager"/>
 	<bean id="loadManager" class="com.mygdx.manager.LoadManager"/>
 	<bean id="monsterManager" class="com.mygdx.manager.MonsterManager"/>
-	<bean id="movingInfoManager" class="com.mygdx.manager.MovingInfoManager"/>
 	<bean id="movingManager" class="com.mygdx.manager.MovingManager"/>
 	<bean id="musicManager" class="com.mygdx.manager.MusicManager"/>
 	<bean id="partyManager" class="com.mygdx.manager.PartyManager"/>
-	<bean id="placeManager" class="com.mygdx.manager.PlaceManager"/>
 	<bean id="platformResourceManager" class="com.mygdx.manager.PlatformResourceManager" />
 	<bean id="positionManager" class="com.mygdx.manager.PositionManager"/>
 	<bean id="rewardManager" class="com.mygdx.manager.RewardManager"/>
@@ -131,5 +131,5 @@
 		scope="prototype"/>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
-	
+		
 </beans>
