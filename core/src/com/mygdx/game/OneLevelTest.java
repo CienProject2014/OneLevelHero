@@ -14,7 +14,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.LoadManager;
-import com.mygdx.manager.MonsterManager;
+import com.mygdx.manager.MonsterPickManager;
 
 public class OneLevelTest extends Game {
 	private ApplicationContext context;
@@ -51,7 +51,7 @@ public class OneLevelTest extends Game {
 	}
 
 	private void goEncounterScreen() {
-		context.getBean(MonsterManager.class).createMonster();
+		context.getBean(MonsterPickManager.class).createMonster();
 		context.getBean(ScreenFactory.class).show(ScreenEnum.ENCOUNTER);
 	}
 

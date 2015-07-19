@@ -8,7 +8,7 @@ import com.mygdx.model.Monster;
 
 public class EncounterManager {
 	@Autowired
-	private MonsterManager monsterManager;
+	private MonsterPickManager monsterManager;
 	@Autowired
 	private BattleManager battleManager;
 

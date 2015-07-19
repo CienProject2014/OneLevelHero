@@ -1,17 +1,48 @@
 package com.mygdx.model;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.manager.TextureManager;
 
 public class Unit implements Comparable<Unit> {
 	private String name;
 	private Status status;
+	private Map<String, Skill> skills;
 	private int gauge;
 	private Texture bodyTexture;
 	private Texture faceTexture;
 
+	/* For Json Work */
+	private ArrayList<String> skillList;
+
 	public String getName() {
 		return name;
+	}
+
+	public Map<String, Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(Map<String, Skill> skills) {
+		this.skills = skills;
+	}
+
+	public ArrayList<String> getSkillList() {
+		return skillList;
+	}
+
+	public void setSkillList(ArrayList<String> skillList) {
+		this.skillList = skillList;
+	}
+
+	public void setBodyTexture(Texture bodyTexture) {
+		this.bodyTexture = bodyTexture;
+	}
+
+	public void setFaceTexture(Texture faceTexture) {
+		this.faceTexture = faceTexture;
 	}
 
 	public void setName(String name) {

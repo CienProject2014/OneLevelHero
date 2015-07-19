@@ -14,7 +14,7 @@ import com.mygdx.model.Monster;
  *
  */
 
-public class MonsterManager {
+public class MonsterPickManager {
 	@Autowired
 	private UnitAssets unitAssets;
 	@Autowired
@@ -23,9 +23,13 @@ public class MonsterManager {
 	private BattleManager battleManager;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private UnitManager unitManager;
 
 	public Monster createMonster() {
-		return unitAssets.getMonster(selectMonster());
+		Monster monster = unitAssets.getMonster(selectMonster());
+		unitManager.initiateMonster(monster);
+		return monster;
 	}
 
 	private String selectMonster() {
