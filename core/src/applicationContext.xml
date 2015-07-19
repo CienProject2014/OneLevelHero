@@ -18,8 +18,10 @@
 	<bean id="assets" class="com.mygdx.assets.Assets" />
 	<bean id="atlasUiAssets" class="com.mygdx.assets.AtlasUiAssets" />
 	<bean id="eventAssets" class="com.mygdx.assets.EventAssets"/>
+	<bean id="itemAssets" class="com.mygdx.assets.ItemAssets"/>
+	<bean id="skillAssets" class="com.mygdx.assets.SkillAssets"/>
 	<bean id="musicAssets" class="com.mygdx.assets.MusicAssets" />
-	<bean id="uiComponentAssets" class="com.mygdx.assets.UiComponentAssets" />
+	<bean id="uiComponwentAssets" class="com.mygdx.assets.UiComponentAssets" />
 	<bean id="unitAssets" class="com.mygdx.assets.UnitAssets" />
 	<bean id="worldMapAssets" class="com.mygdx.assets.WorldMapAssets" />
 	<bean id="worldNodeAssets" class="com.mygdx.assets.WorldNodeAssets" />
@@ -50,7 +52,7 @@
 	<bean id="eventManager" class="com.mygdx.manager.EventManager"/>
 	<bean id="eventCheckManager" class="com.mygdx.manager.EventCheckManager"/>
 	<bean id="loadManager" class="com.mygdx.manager.LoadManager"/>
-	<bean id="monsterManager" class="com.mygdx.manager.MonsterManager"/>
+	<bean id="monsterPickManager" class="com.mygdx.manager.MonsterPickManager"/>
 	<bean id="movingManager" class="com.mygdx.manager.MovingManager"/>
 	<bean id="musicManager" class="com.mygdx.manager.MusicManager"/>
 	<bean id="partyManager" class="com.mygdx.manager.PartyManager"/>
@@ -61,9 +63,10 @@
 	<bean id="scenarioManager" class="com.mygdx.manager.ScenarioManager" />
 	<bean id="storySectionManager" class="com.mygdx.manager.StorySectionManager"/>
 	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
+	<bean id="unitManager" class="com.mygdx.manager.UnitManager"/>
 	<bean id="volumeManager" class="com.mygdx.manager.VolumeManager" />
 	<bean id="worldMapManager" class="com.mygdx.manager.WorldMapManager"/>
-
+	
 	<bean id="baseScreen" class="com.mygdx.screen.BaseScreen" scope="prototype"/>
 	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen"/>
 	<bean id="bgmScreen" class="com.mygdx.screen.BGMScreen" scope="prototype" />
