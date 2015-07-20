@@ -25,6 +25,12 @@ public class Assets {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
+	private EventAssets eventAssets;
+	@Autowired
+	private ItemAssets itemAssets;
+	@Autowired
+	private SkillAssets skillAssets;
+	@Autowired
 	private UnitAssets unitAssets;
 	@Autowired
 	private WorldMapAssets worldMapAssets;
@@ -35,10 +41,13 @@ public class Assets {
 		Map<String, JsonStringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
 
+		eventAssets.set(jsonStringMap);
 		musicAssets.set(filePathMap);
 		atlasUiAssets.set(filePathMap);
 		uiComponentAssets.set(filePathMap);
-		unitAssets.set(jsonStringMap);
+		itemAssets.set(jsonStringMap);
+		skillAssets.set(jsonStringMap);
+		unitAssets.set(jsonStringMap); //아이템, 스킬보다 늦게 이루어져야한다.
 		musicAssets.set(filePathMap);
 		worldMapAssets.set(jsonStringMap);
 		worldNodeAssets.set(jsonStringMap);

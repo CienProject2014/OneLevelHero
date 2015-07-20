@@ -1,0 +1,60 @@
+{
+  "101": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "0"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "102",
+        "eventType": "select_component",
+        "targetComponent": "예"
+      },
+      {
+        "nextSectionNumber": "113",
+        "eventType": "select_component",
+        "targetComponent": "아니오"
+      }
+    ]
+  },
+  "102": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "1"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "103",
+        "eventType": "battle_control",
+        "targetComponent": "normal_attack"
+      }
+    ]
+  },
+  "103": {
+    "sequencialEvents" : [
+      {
+        "eventNpc" : "prologue",
+        "eventNumber" : "3"
+      },
+      {
+      	"eventNpc" : "prologue",
+      	"eventNumber" : "4"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "104",
+        "eventType": "battle_control",
+        "targetComponent": "skill_attack"
+      }
+    ]
+  }
+}

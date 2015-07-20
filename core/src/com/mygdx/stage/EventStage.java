@@ -1,16 +1,23 @@
 package com.mygdx.stage;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.currentState.EventInfo;
+import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.manager.EventManager;
+import com.mygdx.manager.RewardManager;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.EventScene;
 
 /**
@@ -23,7 +30,11 @@ public class EventStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
-	private EventInfo eventInfo;
+	private EventManager eventManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
+	@Autowired
+	private RewardManager rewardManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("EventStage");
 	private Label scriptTitle;
@@ -31,24 +42,66 @@ public class EventStage extends BaseOneLevelStage {
 	private Image characterImage;
 	private Image backgroundImage;
 
-	/**
-	 * EventManager로부터 eventScene정보를 받아 그래픽처리를 해준다.
-	 *
-	 * @param eventScene
-	 * @return
-	 */
+	public Stage makeStage(final Iterator<EventScene> eventSceneIterator) {
+		super.makeStage();
+		if (eventSceneIterator.hasNext()) {
+			setScene(eventSceneIterator.next());
+
+			this.addListener(new InputListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y,
+						int pointer, int button) {
+					if (eventSceneIterator.hasNext()) {
+						setScene(eventSceneIterator.next());
+					} else {
+						rewardManager.doReward(); // 보상이 있을경우 보상실행
+						eventManager.finishEvent();
+						storySectionManager.runStorySequence();
+					}
+					return true;
+				}
+			});
+		}
+
+		return this;
+	}
+
 	public Stage makeStage(EventScene eventScene) {
 		super.makeStage();
+		setScene(eventScene);
+		return this;
+	}
+
+	public void setScene(EventScene eventScene) {
 		backgroundImage = new Image(eventScene.getBackground());
 		scriptTitle = new Label("Title", uiComponentAssets.getSkin());
 		scriptContent = new Label(eventScene.getScript(),
 				uiComponentAssets.getSkin());
 		characterImage = new Image(eventScene.getCharacter());
-
 		tableStack.add(backgroundImage);
 		tableStack.add(makeChatTable());
+		// Greeting인지 아닌지 여부에 따라 처리
+		makeEventStage(eventManager.getCurrentEvent().getEventType());
 
-		return this;
+	}
+
+	private void makeEventStage(EventTypeEnum eventType) {
+		switch (eventType) {
+			case CHAT:
+				//makeChatStage();
+				break;
+			case SELECT_EVENT:
+			case GREETING:
+			case SELECT_COMPONENT:
+				//makeSelectEventStage();
+				break;
+			case CREDIT:
+				//makeCreditStage();
+				break;
+			default:
+				Gdx.app.log("error", " scene 주입 에러");
+				break;
+		}
 	}
 
 	private Table makeChatTable() {
@@ -59,7 +112,6 @@ public class EventStage extends BaseOneLevelStage {
 		chatTable.add(characterImage).width(uiConstantsMap.get("talkerWidth"))
 				.height(uiConstantsMap.get("talkerHeight"))
 				.padLeft(uiConstantsMap.get("talkerPadLeft"));
-
 		scriptContent.setFontScale(1.0f);
 		scriptContent.setWrap(true);
 		scriptContent.setSize(uiConstantsMap.get("scriptWidth"),
@@ -79,21 +131,5 @@ public class EventStage extends BaseOneLevelStage {
 				.padBottom(uiConstantsMap.get("scriptPadBottom"));
 
 		return chatTable;
-	}
-
-	public EventInfo getEventInfo() {
-		return eventInfo;
-	}
-
-	public void setEventInfo(EventInfo eventInfo) {
-		this.eventInfo = eventInfo;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
 	}
 }

@@ -7,6 +7,7 @@ public class RewardInfo {
 	private RewardTypeEnum rewardType;
 	private String rewardTarget;
 	private RewardStateEnum rewardState;
+	private String rewardTargetAttribute;
 
 	public String getRewardTarget() {
 		return rewardTarget;
@@ -30,5 +31,13 @@ public class RewardInfo {
 
 	public void setRewardType(RewardTypeEnum rewardType) {
 		this.rewardType = rewardType;
+	}
+
+	public String getRewardTargetAttribute() {
+		return rewardTargetAttribute;
+	}
+
+	public void setRewardTargetAttribute(String rewardTargetAttribute) {
+		this.rewardTargetAttribute = rewardTargetAttribute;
 	}
 }

@@ -19,13 +19,14 @@ import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 
 public class MenuStage extends BaseOneLevelStage {
-	HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
-			.get("MenuStage");
-
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("MenuStage");
+
 	private Table buttonTable;
 
 	public Stage makeStage() {
@@ -45,13 +46,13 @@ public class MenuStage extends BaseOneLevelStage {
 
 		// 이미지추가
 		startButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/title/title_start.png"))));
+				new Texture("texture/ui/title/title_start.png"))));
 		settingButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/title/title_setting.png"))));
+				new Texture("texture/ui/title/title_setting.png"))));
 		albumButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/title/title_album.png"))));
+				new Texture("texture/ui/title/title_album.png"))));
 		creditButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/title/title_credit.png"))));
+				new Texture("texture/ui/title/title_credit.png"))));
 
 		// 클릭리스너추가
 		startButton.addListener(new ClickListener() {
@@ -69,7 +70,7 @@ public class MenuStage extends BaseOneLevelStage {
 
 		albumButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
-				screenFactory.show(ScreenEnum.COLLETION);
+				screenFactory.show(ScreenEnum.COLLECTION);
 			}
 		});
 
@@ -103,7 +104,6 @@ public class MenuStage extends BaseOneLevelStage {
 		buttonTable.row();
 		buttonTable.add(creditButton).height(buttonHeight).width(buttonWidth)
 				.padTop(uiConstantsMap.get("tButtonSpace"));
-
 		logo.setPosition((int) (0.2f * StaticAssets.BASE_WINDOW_WIDTH),
 				(int) (0.3f * StaticAssets.BASE_WINDOW_HEIGHT));
 		background.setSize(StaticAssets.BASE_WINDOW_WIDTH,
@@ -114,21 +114,5 @@ public class MenuStage extends BaseOneLevelStage {
 		tableStack.addActor(buttonTable);
 
 		return this;
-	}
-
-	public AtlasUiAssets getAtlasUiAssets() {
-		return atlasUiAssets;
-	}
-
-	public void setAtlasUiAssets(AtlasUiAssets atlasUiAssets) {
-		this.atlasUiAssets = atlasUiAssets;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
 	}
 }

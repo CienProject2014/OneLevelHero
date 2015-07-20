@@ -1,14 +1,11 @@
 package com.mygdx.stage;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.CameraManager.CameraPosition;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -18,8 +15,6 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  *
  */
 public class DungeonStage extends BaseOverlapStage {
-	@Autowired
-	private PositionInfo positionInfo; // 나중에 쓸거임 지우지 마셈
 	private CompositeItem arrowUp, arrowDown, arrowLeft, arrowRight;
 
 	public Stage makeStage() {
@@ -104,13 +99,5 @@ public class DungeonStage extends BaseOverlapStage {
 				Gdx.app.debug("DungeonStage", "오른쪽으로 이동");
 			}
 		});
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
 	}
 }

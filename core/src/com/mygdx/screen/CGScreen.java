@@ -46,7 +46,7 @@ public class CGScreen extends BaseScreen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.COLLETION);
+				screenFactory.show(ScreenEnum.COLLECTION);
 			}
 		});
 
@@ -56,13 +56,4 @@ public class CGScreen extends BaseScreen {
 
 		stage.addActor(table);
 	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
-	}
-
 }

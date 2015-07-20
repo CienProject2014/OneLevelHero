@@ -1,6 +1,6 @@
 {
-  "Mawang": {
-	"name": "Mawang",
+  "mawang": {
+	"name": "mawang",
 	"sizeType": "medium",
 	"elementType": "fire",
 	"status": {

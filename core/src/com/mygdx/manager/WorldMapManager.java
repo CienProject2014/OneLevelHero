@@ -3,45 +3,20 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.WorldMapAssets;
-import com.mygdx.currentState.PositionInfo;
 import com.mygdx.model.WorldNode;
 
 public class WorldMapManager {
 	@Autowired
-	private MovingInfoManager movingInfoManager;
+	private MovingManager movingManager;
 	@Autowired
-	private PositionInfo positionInfo;
+	private PositionManager positionManager;
 	@Autowired
 	private WorldMapAssets worldMapAssets;
 
 	// 목적 노드 결정
 	public void selectDestinationNode(String destinationNode) {
-		WorldNode worldNodeInfo = worldMapAssets.getWorldNodeInfo(positionInfo
-				.getCurrentNode());
-		movingInfoManager.createMovingInfo(destinationNode, worldNodeInfo);
-	}
-
-	public MovingInfoManager getMovingInfoManager() {
-		return movingInfoManager;
-	}
-
-	public void setMovingInfoManager(MovingInfoManager movingInfoManager) {
-		this.movingInfoManager = movingInfoManager;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public WorldMapAssets getWorldMapAssets() {
-		return worldMapAssets;
-	}
-
-	public void setWorldMapAssets(WorldMapAssets worldMapAssets) {
-		this.worldMapAssets = worldMapAssets;
+		WorldNode worldNodeInfo = worldMapAssets
+				.getWorldNodeInfo(positionManager.getCurrentNode());
+		movingManager.createMovingInfo(destinationNode, worldNodeInfo);
 	}
 }

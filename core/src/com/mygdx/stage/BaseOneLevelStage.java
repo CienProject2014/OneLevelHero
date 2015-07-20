@@ -7,29 +7,25 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.mygdx.assets.Assets;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.currentState.MovingInfo;
-import com.mygdx.currentState.PartyInfo;
-import com.mygdx.currentState.TimeInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.CameraManager;
+import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.PartyManager;
+import com.mygdx.manager.TimeManager;
 
 public class BaseOneLevelStage extends Stage {
 	@Autowired
 	protected Assets assets;
-
+	@Autowired
+	protected MovingManager movingManager;
+	@Autowired
+	protected PartyManager partyManager;
 	@Autowired
 	protected ScreenFactory screenFactory;
-
 	@Autowired
 	protected CameraManager cameraManager;
-
 	@Autowired
-	protected PartyInfo partyInfo;
-	@Autowired
-	protected TimeInfo timeInfo;
-
-	@Autowired
-	protected MovingInfo movingInfo;
+	protected TimeManager timeManager;
 
 	protected Stack tableStack;
 
@@ -63,53 +59,4 @@ public class BaseOneLevelStage extends Stage {
 		touched = screenToStageCoordinates(new Vector2(screenX, screenY));
 		return super.touchUp(screenX, screenY, pointer, button);
 	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public CameraManager getCameraManager() {
-		return cameraManager;
-	}
-
-	public void setCameraManager(CameraManager cameraManager) {
-		this.cameraManager = cameraManager;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
-	}
-
-	public TimeInfo getTimeInfo() {
-		return timeInfo;
-	}
-
-	public void setTimeInfo(TimeInfo timeInfo) {
-		this.timeInfo = timeInfo;
-	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
-	}
-
 }

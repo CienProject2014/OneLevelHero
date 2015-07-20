@@ -18,37 +18,36 @@ public class TextureManager {
 		Gdx.app.debug("TextureManager", "Constructor() call (실행되어서는 안됨)");
 	}
 
-	public static Texture getCharacterBattleTexture(String name) {
-		return StaticAssets.characterTextureMap.get(name + "_"
-				+ TextureEnum.BATTLE_ALLY_NORMAL);
+	public static Texture getCharacterBodyTexture(String name) {
+		return StaticAssets.characterTextureMap.get(TextureEnum.NPC + "_"
+				+ name);
+	}
+
+	public static Texture getCharacterFaceTexture(String name) {
+		return StaticAssets.characterTextureMap.get(TextureEnum.FACE + "_"
+				+ name);
 	}
 
 	public static Texture getMonsterBattleTexture(String name) {
-		System.out.println((name + "_" + TextureEnum.BATTLE_ENEMY_NORMAL));
-		return StaticAssets.monsterTextureMap.get(name + "_"
-				+ TextureEnum.BATTLE_ENEMY_NORMAL);
+		return StaticAssets.monsterTextureMap.get(TextureEnum.MONSTER + "_"
+				+ name);
 	}
 
-	public static Texture getStatusTexture(String name) {
-		return StaticAssets.characterTextureMap.get(name + "_"
-				+ TextureEnum.STATUS_NORMAL);
+	public static Texture getMonsterFaceTexture(String name) {
+		return StaticAssets.monsterTextureMap
+				.get(TextureEnum.FACE + "_" + name);
 	}
 
-	public static Texture getStatusTexture(String name, TextureEnum textureEnum) {
-		return StaticAssets.characterTextureMap.get(name + "_" + textureEnum);
-	}
-
-	public static Texture getNpcTexture(String name) {
-		return StaticAssets.characterTextureMap.get(name + "_"
-				+ TextureEnum.NPC_NORMAL);
-	}
-
-	public static Texture getNpcTexture(String name, TextureEnum textureEnum) {
-		return StaticAssets.characterTextureMap.get(name + "_" + textureEnum);
+	public static Texture getMonsterBodyTexture(String name) {
+		System.out.println(TextureEnum.MONSTER + "_" + name + "_"
+				+ TextureEnum.NORMAL);
+		return StaticAssets.monsterTextureMap.get(TextureEnum.MONSTER + "_"
+				+ name + "_" + TextureEnum.NORMAL);
 	}
 
 	public static Texture getBackgroundTexture(String name,
 			TextureEnum textureEnum) {
-		return StaticAssets.backgroundTextureMap.get(name + "_" + textureEnum);
+		return StaticAssets.backgroundTextureMap.get(TextureEnum.BACKGROUND
+				+ "_" + name + "_" + textureEnum);
 	}
 }

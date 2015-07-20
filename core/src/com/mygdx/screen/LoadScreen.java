@@ -8,8 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.assets.UnitAssets;
 import com.mygdx.controller.SaveVersion;
 import com.mygdx.currentState.CurrentState;
 import com.mygdx.enums.ScreenEnum;
@@ -23,11 +23,12 @@ public class LoadScreen extends BaseScreen {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
-	private UnitAssets unitAssets;
+	private EventAssets eventAssets;
 
 	private Stage stage;
 	private TextButton newstartButton;
 	private TextButton backButton;
+	private final String PROLOGUE = "prologue";
 
 	@Override
 	public void render(float delta) {
@@ -67,12 +68,9 @@ public class LoadScreen extends BaseScreen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				currentState.setVersion(SaveVersion.NEW);
+				currentState.setSaveVersion(SaveVersion.NEW);
+				eventManager.setCurrentEventNpc(PROLOGUE);
 				loadManager.loadNewGame();
-				// 프롤로그 정보 주입
-				eventManager.setEventInfo(unitAssets.getNpc("prologue"), 0,
-						false);
-				screenFactory.show(ScreenEnum.EVENT);
 			}
 		});
 
@@ -82,37 +80,5 @@ public class LoadScreen extends BaseScreen {
 		table.add(backButton).bottom();
 		stage.addActor(table);
 		// stage.addActor(backButton);
-	}
-
-	public CurrentState getCurrentState() {
-		return currentState;
-	}
-
-	public void setCurrentState(CurrentState currentState) {
-		this.currentState = currentState;
-	}
-
-	public LoadManager getLoadManager() {
-		return loadManager;
-	}
-
-	public void setLoadManager(LoadManager loadManager) {
-		this.loadManager = loadManager;
-	}
-
-	public UnitAssets getUnitAssets() {
-		return unitAssets;
-	}
-
-	public void setUnitAssets(UnitAssets unitAssets) {
-		this.unitAssets = unitAssets;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
 	}
 }

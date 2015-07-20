@@ -1,0 +1,96 @@
+
+battle_right_menu.png
+size: 867,867
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+battle_right_menu/battleui_rb_attack
+  rotate: false
+  xy: 2, 580
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+battle_right_menu/battleui_rb_defense
+  rotate: false
+  xy: 2, 291
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+battle_right_menu/battleui_rb_escape
+  rotate: false
+  xy: 291, 580
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+battle_right_menu/battleui_rb_item
+  rotate: false
+  xy: 2, 2
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+battle_right_menu/battleui_rb_skill
+  rotate: false
+  xy: 291, 291
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+battle_right_menu/battleui_rb_wait
+  rotate: false
+  xy: 580, 580
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+battle_right_menu/battleui_rbac_attack
+  rotate: false
+  xy: 291, 2
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+battle_right_menu/battleui_rbac_defense
+  rotate: false
+  xy: 580, 291
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+battle_right_menu/battleui_rbac_escape
+  rotate: false
+  xy: 580, 2
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+
+battle_right_menu2.png
+size: 867,289
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+battle_right_menu/battleui_rbac_item
+  rotate: false
+  xy: 2, 2
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+battle_right_menu/battleui_rbac_skill
+  rotate: false
+  xy: 291, 2
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1
+battle_right_menu/battleui_rbac_wait
+  rotate: false
+  xy: 580, 2
+  size: 287, 287
+  orig: 287, 287
+  offset: 0, 0
+  index: -1

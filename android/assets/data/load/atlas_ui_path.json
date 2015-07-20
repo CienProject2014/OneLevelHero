@@ -1,5 +1,21 @@
 [
   {
+    "filePath" : "texture/ui/battle/battle_right_menu.atlas",
+    "element" :[
+      "battleui_rb_attack",
+      "battleui_rb_defense",
+      "battleui_rb_escape",
+      "battleui_rb_item",
+      "battleui_rb_skill",
+      "battleui_rb_wait",
+      "battleui_rbac_attack",
+      "battleui_rbac_defense",
+      "battleui_rbac_escape",
+      "battleui_rbac_skill",
+      "battleui_rbac_wait"
+      ] 
+  },
+  {
     "filePath": "skin/Logo.atlas",
     "element": [
       "title"
