@@ -76,11 +76,6 @@ public class StaticAssets {
 		Map<String, HashMap> stageMap = JsonParser.parseMap(HashMap.class,
 				filePathMap.get("ui_constants_file").loadFile());
 		for (Entry<String, HashMap> stageEntry : stageMap.entrySet()) {
-			// HashMap<String, Float> uiMap = stageEntry.getValue();
-			// for (Entry<String, Float> uiEntry : uiMap.entrySet()) {
-			// uiEntry.setValue(uiEntry.getValue() * resolutionFactor);
-			// }
-			// uiConstantsMap.put(stageEntry.getKey(), stageEntry.getValue());
 			uiConstantsMap.put(stageEntry.getKey(), stageEntry.getValue());
 		}
 
