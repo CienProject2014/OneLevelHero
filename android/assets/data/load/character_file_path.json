@@ -32,11 +32,8 @@
   "face_yongsa":{
   	"filePath" : "texture/character/face_yongsa.png"
   },
-  "bust_parath_02": {
-    "filePath": "texture/character/bust_parath_02.png"
-  },
-  "bust_parath_03": {
-    "filePath": "texture/character/bust_parath_03.png"
+  "bust_parath_01": {
+    "filePath": "texture/character/bust_parath_01.png"
   },
   "bust_waiji_02": {
     "filePath": "texture/character/bust_waiji_02.png"
