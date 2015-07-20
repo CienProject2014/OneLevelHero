@@ -11,10 +11,7 @@
       "battleui_rbac_attack",
       "battleui_rbac_defense",
       "battleui_rbac_escape",
-<<<<<<< HEAD
       "battleui_rbac_item",
-=======
->>>>>>> remote/#181_title+moving_UI
       "battleui_rbac_skill",
       "battleui_rbac_wait"
       ] 

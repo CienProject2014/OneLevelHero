@@ -22,10 +22,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private UiComponentAssets uiComponentAssets;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("CharacterUiStage");
-<<<<<<< HEAD
-=======
-
->>>>>>> remote/#181_title+moving_UI
 	private Table statusTable;
 	private int battleMemberNumber;
 	private List<Hero> battleMemberList;
@@ -98,7 +94,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		HorizontalGroup buffGroup = new HorizontalGroup();
 		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
 		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-<<<<<<< HEAD
 				.get(BUFF_DE_FAINT)));
 		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
 				.get(BUFF_DE_SATAN)));
@@ -106,15 +101,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 				.get(BUFF_DE_ICE)));
 		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
 				.get(BUFF_DE_FIRE)));
-=======
-				.get("802_faint")));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get("802_satan")));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get("802_ice")));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get("802_fire")));
->>>>>>> remote/#181_title+moving_UI
 
 		barTable.add(
 				new Label(status.getHp() + "/" + status.getMaxHp(),
