@@ -1,1 +1,472 @@
-{"composite":{"layers":[{"layerName":"Default","isVisible":true,"isLocked":false}],"sImages":[{"layerName":"Default","itemIdentifier":"blackwood_bg","imageName":"blackwood_bg","zIndex":8,"x":0.0,"y":0.0,"tint":[1.0,1.0,1.0,1.0]},{"layerName":"Default","itemIdentifier":"blackwood_weaponshop","imageName":"blackwood1","zIndex":9,"x":547.0,"y":529.0,"tint":[1.0,1.0,1.0,1.0]},{"layerName":"Default","itemIdentifier":"blackwood_log","imageName":"blackwood5","zIndex":10,"x":50.0,"y":255.0,"tint":[1.0,1.0,1.0,1.0]},{"layerName":"Default","itemIdentifier":"forest","imageName":"blackwood7","zIndex":12,"x":0.0,"y":0.0,"tint":[1.0,1.0,1.0,1.0]},{"layerName":"Default","itemIdentifier":"blackwood_statue","imageName":"blackwood6","zIndex":13,"x":1129.0,"y":876.0,"tint":[1.0,1.0,1.0,1.0]},{"layerName":"Default","itemIdentifier":"blackwood_worldmap","imageName":"blackwood2","zIndex":14,"x":267.0,"y":959.0,"tint":[1.0,1.0,1.0,1.0]}],"sComposites":[{"layerName":"Default","itemIdentifier":"blackwood_headhouse","zIndex":15,"composite":{"layers":[{"layerName":"Default","isVisible":true,"isLocked":false}],"sImages":[{"layerName":"Default","imageName":"blackwood4","tint":[1.0,1.0,1.0,1.0],"x":0,"y":0,"zIndex":0}]},"x":1463.0,"y":68.0,"tint":[1.0,1.0,1.0,1.0]},{"layerName":"Default","itemIdentifier":"blackwood_inn","zIndex":16,"composite":{"layers":[{"layerName":"Default","isVisible":true,"isLocked":false}],"sImages":[{"layerName":"Default","imageName":"blackwood3","tint":[1.0,1.0,1.0,1.0],"x":0,"y":0,"zIndex":0}]},"x":1273.0,"y":532.0,"tint":[1.0,1.0,1.0,1.0]}]},"ambientColor":[0.5,0.5,0.5,1.0],"physicsPropertiesVO":{},"sceneName":"blackwood_scene"}
+{
+  "sceneName": "blackwood_scene",
+  "composite": {
+    "sImages": [
+      {
+        "itemIdentifier": "background",
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "blackwoodbackground"
+      },
+      {
+        "itemIdentifier": "movetag_01",
+        "x": 271.00006,
+        "y": 1724,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "townuimovetagmiddle"
+      },
+      {
+        "itemIdentifier": "movetag_02",
+        "x": 1608,
+        "y": 1516,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "townuimovetagbalckwoodforest"
+      },
+      {
+        "itemIdentifier": "movetag_03",
+        "x": 327,
+        "y": 432.5,
+        "zIndex": 9,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "townuimovetagcopweb"
+      },
+      {
+        "itemIdentifier": "movetag_04",
+        "x": 799,
+        "y": 153.50002,
+        "zIndex": 11,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "townuimovetagmawang"
+      }
+    ],
+    "sComposites": [
+      {
+        "itemIdentifier": "arrow_01",
+        "x": 301.00003,
+        "y": 1568,
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "arrow",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuiarrowmiddle"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "sign_01",
+        "x": 1187,
+        "y": 1718,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "sign",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuibuildtaginn"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "arrow_02",
+        "x": 1655,
+        "y": 1354,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "arrow",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuiarrowblackwoodforest"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "sign_02",
+        "x": 466,
+        "y": 1289.5,
+        "zIndex": 6,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "sign",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuibuildtaggrocery"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "sign_03",
+        "x": 305.99997,
+        "y": 688.5,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "sign",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuibuildtagprivatehouse"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "sign_04",
+        "x": 1065,
+        "y": 595.5,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "sign",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuibuildtagvillagehead"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "arrow_03",
+        "x": 275,
+        "y": 294.5,
+        "zIndex": 10,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "arrow",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuiarrowcopweb"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "arrow_04",
+        "x": 949,
+        "y": 10.500015,
+        "zIndex": 12,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "arrow",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuiarrowmawang"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_up",
+        "x": 1672,
+        "y": 830,
+        "zIndex": 13,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "up",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuiup"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_down",
+        "x": 1672,
+        "y": 1850,
+        "zIndex": 14,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "down",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuidown"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ]
+  },
+  "physicsPropertiesVO": {}
+}
