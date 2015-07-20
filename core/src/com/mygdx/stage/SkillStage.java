@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.assets.StaticAssets;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
-import com.uwsoft.editor.renderer.actor.LabelItem;
 import com.uwsoft.editor.renderer.data.LabelVO;
 
 public class SkillStage extends BaseOverlapStage {
@@ -38,15 +37,17 @@ public class SkillStage extends BaseOverlapStage {
 	}
 
 	private void labelSet() {
-		labels = sceneLoader.getRoot().dataVO.composite.sLabels;
-		LabelItem labelItem = sceneLoader.getRoot().getLabelById(labels.get(0).itemIdentifier);
-		labelItem.setText(partyInfo.getBattleMemberList().get(partyInfo.getSelectedInedex()).getName());
+		// labels = sceneLoader.getRoot().dataVO.composite.sLabels;
+		// LabelItem labelItem =
+		// sceneLoader.getRoot().getLabelById(labels.get(0).itemIdentifier);
+		// labelItem.setText(partyInfo.getBattleMemberList().get(partyInfo.getSelectedInedex()).getName());
 
-		for (int i = 1; i < labels.size(); i++) {
-			labelItem = sceneLoader.getRoot().getLabelById(labels.get(i).itemIdentifier);
-			labelItem.setText(
-					partyInfo.getBattleMemberList().get(partyInfo.getSelectedInedex()).getStatus().getStatusList()[i]);
-		}
+		// for (int i = 1; i < labels.size(); i++) {
+		// labelItem =
+		// sceneLoader.getRoot().getLabelById(labels.get(i).itemIdentifier);
+		// labelItem.setText(
+		// partyInfo.getBattleMemberList().get(partyInfo.getSelectedInedex()).getStatus().getStatusList()[i]);
+		// }
 	}
 
 	private void setSkillType() {
@@ -67,13 +68,13 @@ public class SkillStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				skillTypeButton_01.setLayerVisibilty("pressed", true);
 				skillTypeButton_01.setLayerVisibilty("Default", false);
-				skillTypeButton_02.setLayerVisibilty("normal", true);
+				skillTypeButton_02.setLayerVisibilty("Default", true);
 				skillTypeButton_02.setLayerVisibilty("pressed", false);
 			}
 
 		});
 		// skillTypeButton.add(skillTypeButton_01);
-		skillTypeButton_02.setLayerVisibilty("normal", true);
+		skillTypeButton_02.setLayerVisibilty("Default", true);
 		skillTypeButton_02.setLayerVisibilty("pressed", false);
 		skillTypeButton_02.setTouchable(Touchable.enabled);
 		skillTypeButton_02.addListener(new InputListener() {
@@ -85,7 +86,7 @@ public class SkillStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				skillTypeButton_02.setLayerVisibilty("pressed", true);
-				skillTypeButton_02.setLayerVisibilty("normal", false);
+				skillTypeButton_02.setLayerVisibilty("Default", false);
 				skillTypeButton_01.setLayerVisibilty("Default", true);
 				skillTypeButton_01.setLayerVisibilty("pressed", false);
 			}
@@ -113,7 +114,8 @@ public class SkillStage extends BaseOverlapStage {
 		highlight_06.setLayerVisibilty("pressed", false);
 		highlight_07.setLayerVisibilty("pressed", false);
 
-		useButton.setLayerVisibilty("Default", true);
+		useButton.setLayerVisibilty("normal", true);
+		useButton.setLayerVisibilty("pressed", false);
 
 		highlight_01.setTouchable(Touchable.enabled);
 		highlight_02.setTouchable(Touchable.enabled);
@@ -262,11 +264,13 @@ public class SkillStage extends BaseOverlapStage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				useButton.setLayerVisibilty("Default", false);
+				useButton.setLayerVisibilty("pressed", true);
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				useButton.setLayerVisibilty("Default", true);
+				useButton.setLayerVisibilty("pressed", false);
 			}
 		});
 	}

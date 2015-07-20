@@ -1011,6 +1011,7 @@ arrow_right
   offset: 0, 0
   index: -1
  
+
 skill_pack.png
 size: 4096,2048
 format: RGBA8888
@@ -1044,35 +1045,14 @@ skilluiexplanation
   orig: 503, 633
   offset: 0, 0
   index: -1
-skilluihitbox33
-  rotate: false
-  xy: 1924, 903
-  size: 121, 121
-  orig: 121, 121
-  offset: 0, 0
-  index: -1
-skilluihitbox55
-  rotate: false
-  xy: 2771, 1686
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-skilluihitbox95
-  rotate: false
-  xy: 1924, 1026
-  size: 357, 200
-  orig: 357, 200
-  offset: 0, 0
-  index: -1
 skilluiline01
   rotate: false
-  xy: 2771, 1888
+  xy: 1924, 1228
   size: 845, 94
   orig: 845, 94
   offset: 0, 0
   index: -1
-skilluiline01 (2)
+skilluilinename
   rotate: false
   xy: 1924, 1228
   size: 845, 94
@@ -1088,33 +1068,40 @@ skilluiline02
   index: -1
 skilluimagicbutton
   rotate: false
-  xy: 2771, 1476
+  xy: 1924, 1018
   size: 89, 208
   orig: 89, 208
   offset: 0, 0
   index: -1
 skilluimagicbuttonnon
   rotate: false
-  xy: 2771, 1266
+  xy: 2771, 1673
   size: 89, 208
   orig: 89, 208
   offset: 0, 0
   index: -1
 skilluiskillbutton
   rotate: false
-  xy: 2862, 1476
+  xy: 2015, 1018
   size: 89, 208
   orig: 89, 208
   offset: 0, 0
   index: -1
 skilluiskillbuttonnon
   rotate: false
-  xy: 2862, 1266
+  xy: 2771, 1463
   size: 89, 208
   orig: 89, 208
   offset: 0, 0
   index: -1
 skilluiusebutton
+  rotate: false
+  xy: 2771, 1883
+  size: 503, 99
+  orig: 503, 99
+  offset: 0, 0
+  index: -1
+skilluiusebutton2
   rotate: false
   xy: 1416, 166
   size: 503, 99

@@ -259,6 +259,7 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "인벤토리!");
+				stageFactory.makeStage(StageEnum.ITEM);
 			}
 		});
 		defenseButton.addListener(new ClickListener() {
