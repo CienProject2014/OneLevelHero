@@ -111,7 +111,7 @@
         }
       },
       {
-        "itemIdentifier": "sign_01",
+        "itemIdentifier": "blackwood_inn",
         "x": 1187,
         "y": 1718,
         "zIndex": 4,
@@ -189,7 +189,7 @@
         }
       },
       {
-        "itemIdentifier": "sign_02",
+        "itemIdentifier": "blackwood_generalstore",
         "x": 466,
         "y": 1289.5,
         "zIndex": 6,
@@ -228,9 +228,9 @@
         }
       },
       {
-        "itemIdentifier": "sign_03",
-        "x": 305.99997,
-        "y": 688.5,
+        "itemIdentifier": "blackwood_peasanthouse",
+        "x": 300.99997,
+        "y": 687.5,
         "zIndex": 7,
         "layerName": "Default",
         "tint": [
@@ -267,9 +267,9 @@
         }
       },
       {
-        "itemIdentifier": "sign_04",
-        "x": 1065,
-        "y": 595.5,
+        "itemIdentifier": "blackwood_headhouse",
+        "x": 1063,
+        "y": 594.5,
         "zIndex": 8,
         "layerName": "Default",
         "tint": [
@@ -386,7 +386,7 @@
       {
         "itemIdentifier": "camera_up",
         "x": 1672,
-        "y": 830,
+        "y": 770,
         "zIndex": 13,
         "layerName": "Default",
         "tint": [
@@ -424,7 +424,7 @@
       },
       {
         "itemIdentifier": "camera_down",
-        "x": 1672,
+        "x": 1673,
         "y": 1850,
         "zIndex": 14,
         "layerName": "Default",
