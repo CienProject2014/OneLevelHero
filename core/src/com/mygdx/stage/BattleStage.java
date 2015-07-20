@@ -10,14 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
+import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.manager.BattleManager;
@@ -36,6 +34,8 @@ public class BattleStage extends BaseOneLevelStage {
 	private StorySectionManager storySectionManager;
 	@Autowired
 	private EventCheckManager eventCheckManager;
+	@Autowired
+	private AtlasUiAssets atlasUiAssets;
 	private final String NORMAL_ATTACK = "normal_attack";
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
@@ -142,41 +142,43 @@ public class BattleStage extends BaseOneLevelStage {
 		Table RMenuTable = makeRMenuTable();
 
 		uiTable.right().bottom();
+		uiTable.padRight(uiConstantsMap.get("RMenuTablePadRight")).padBottom(
+				uiConstantsMap.get("RMenuTablePadBottom"));
 		uiTable.add(RMenuTable);
 
 		return uiTable;
 	}
 
 	private Table makeRMenuTable() {
-		Table RMenuTable = new Table();
+		Table rMenuTable = new Table();
 		makeRButton();
 
-		RMenuTable.add(attackButton).width(uiConstantsMap.get("RButtonWidth"))
+		rMenuTable.add(attackButton).width(uiConstantsMap.get("RButtonWidth"))
 				.height(uiConstantsMap.get("RButtonHeight"))
 				.padTop(uiConstantsMap.get("RMenuTablePadTop"))
 				.padBottom(uiConstantsMap.get("RButtonSpace")).expandX();
-		RMenuTable.row();
-		RMenuTable.add(skillButton).width(uiConstantsMap.get("RButtonWidth"))
+		rMenuTable.row();
+		rMenuTable.add(skillButton).width(uiConstantsMap.get("RButtonWidth"))
 				.height(uiConstantsMap.get("RButtonHeight"))
 				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		RMenuTable.row();
-		RMenuTable.add(inventoryButton)
+		rMenuTable.row();
+		rMenuTable.add(inventoryButton)
 				.width(uiConstantsMap.get("RButtonWidth"))
 				.height(uiConstantsMap.get("RButtonHeight"))
 				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		RMenuTable.row();
-		RMenuTable.add(defenseButton).width(uiConstantsMap.get("RButtonWidth"))
+		rMenuTable.row();
+		rMenuTable.add(defenseButton).width(uiConstantsMap.get("RButtonWidth"))
 				.height(uiConstantsMap.get("RButtonHeight"))
 				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		RMenuTable.row();
-		RMenuTable.add(waitButton).width(uiConstantsMap.get("RButtonWidth"))
+		rMenuTable.row();
+		rMenuTable.add(waitButton).width(uiConstantsMap.get("RButtonWidth"))
 				.height(uiConstantsMap.get("RButtonHeight"))
 				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		RMenuTable.row();
-		RMenuTable.add(escapeButton).width(uiConstantsMap.get("RButtonWidth"))
+		rMenuTable.row();
+		rMenuTable.add(escapeButton).width(uiConstantsMap.get("RButtonWidth"))
 				.height(uiConstantsMap.get("RButtonHeight"));
 
-		return RMenuTable;
+		return rMenuTable;
 	}
 
 	private Table makeGridHitbox() {
@@ -306,29 +308,26 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void makeRButton() {
 		// 이미지 추가
-		attackButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/battle/RMenu_01.png"))));
-		skillButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/battle/RMenu_02.png"))));
-		inventoryButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/battle/RMenu_03.png"))));
-		defenseButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/battle/RMenu_04.png"))));
-		waitButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture(
-				"texture/battle/RMenu_05.png"))));
-		escapeButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/battle/RMenu_06.png"))));
+		attackButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_attack"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_attack"));
+		skillButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_skill"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_skill"));
+		inventoryButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_item"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_item"));
+		defenseButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_defense"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_defense"));
+		waitButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_wait"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_wait"));
+		escapeButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_escape"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_escape"));
 
 		addListener();
 
 	}
-
-	public BattleManager getBattleManager() {
-		return battleManager;
-	}
-
-	public void setBattleManager(BattleManager battleManager) {
-		this.battleManager = battleManager;
-	}
-
 }

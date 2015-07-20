@@ -64,7 +64,7 @@ public class MonsterStage extends BaseOneLevelStage {
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
 		return new TextureRegionDrawable(new TextureRegion(new Texture(
-				Gdx.files.internal("texture/battle/forest.png"))));
+				Gdx.files.internal("texture/background/forest.png"))));
 	}
 
 	public HashMap<String, Float> getUiConstantsMap() {

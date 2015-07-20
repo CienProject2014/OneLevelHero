@@ -19,6 +19,7 @@ import com.mygdx.stage.EventStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
+import com.mygdx.stage.MovingStage;
 import com.mygdx.stage.SelectComponentStage;
 import com.mygdx.stage.SelectEventStage;
 import com.mygdx.stage.StatusStage;
@@ -48,6 +49,8 @@ public class StageFactory {
 				return context.getBean(MenuStage.class).makeStage();
 			case MONSTER:
 				return context.getBean(MonsterStage.class).makeStage();
+			case MOVING:
+				return context.getBean(MovingStage.class).makeStage();
 			case SELECT_EVENT:
 				return context.getBean(SelectEventStage.class).makeStage();
 			case SELECT_COMPONENT:

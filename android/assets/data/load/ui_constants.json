@@ -1,4 +1,22 @@
 {
+"MenuStage" : {
+    "tButtonWidth": 630,
+    "tButtonHeight": 195,
+    "tButtonSpace": 43,
+    "tTablePadTop":85,
+    "tTablePadRight":15
+
+
+},
+"MovingStage" : {
+    "ButtonWidth": 335,
+    "ButtonHeight": 120,
+    "ButtonSpace": 55,
+    "TablePadBottom":365,
+    "TablePadRight":15
+
+
+},
   "BattleStage": {
 	"RMenuTablePadTop": 161,
 	"RMenuTablePadBottom": 15,
@@ -53,6 +71,6 @@
 	"scriptContentHeight": 189,
 	"talkerPadLeft": 15,
 	"talkerWidth": 567,
-	"talkerHeight": 933
+	"talkerHeight": 600
   }
 }

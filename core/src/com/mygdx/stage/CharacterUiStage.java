@@ -22,13 +22,14 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private UiComponentAssets uiComponentAssets;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("CharacterUiStage");
-
 	private Table statusTable;
-
 	private int battleMemberNumber;
 	private List<Hero> battleMemberList;
-
 	private List<HeroStatus> heroStatusList;
+	private final String BUFF_DE_FAINT = "buff_de_07";
+	private final String BUFF_DE_FIRE = "buff_de_02";
+	private final String BUFF_DE_ICE = "buff_de_04";
+	private final String BUFF_DE_SATAN = "buff_de_devil";
 
 	public Stage makeStage() {
 		super.makeStage();
@@ -93,13 +94,13 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		HorizontalGroup buffGroup = new HorizontalGroup();
 		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
 		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get("802_faint")));
+				.get(BUFF_DE_FAINT)));
 		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get("802_satan")));
+				.get(BUFF_DE_SATAN)));
 		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get("802_ice")));
+				.get(BUFF_DE_ICE)));
 		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get("802_fire")));
+				.get(BUFF_DE_FIRE)));
 
 		barTable.add(
 				new Label(status.getHp() + "/" + status.getMaxHp(),

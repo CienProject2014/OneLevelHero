@@ -77,6 +77,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		// 알림 메시지
 		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]",
 				uiComponentAssets.getSkin(), partyManager.getBattleMemberList());
+
 		Iterator<MessagePopup> alertMessageIterator = alertMessage.iterator();
 		while (alertMessageIterator.hasNext()) {
 			MessagePopup nextIterator = alertMessageIterator.next();
@@ -159,6 +160,7 @@ public class GameUiStage extends BaseOneLevelStage {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 			}
+
 		});
 	}
 
