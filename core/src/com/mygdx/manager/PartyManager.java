@@ -12,6 +12,8 @@ import com.mygdx.model.Hero;
 public class PartyManager {
 	@Autowired
 	private PartyInfo partyInfo;
+	@Autowired
+	private UnitManager unitManager;
 
 	private final static int BATTLE_MEMBER_SIZE = 3;
 
@@ -21,6 +23,7 @@ public class PartyManager {
 			Gdx.app.log("Error", hero.getName() + "가 이미 멤버에 있습니다.");
 			return;
 		}
+		unitManager.initiateHero(hero);
 		partyInfo.getPartyList().add(hero);
 		Gdx.app.log("Info", hero.getName() + "를 파티에 추가했습니다.");
 		if (partyInfo.getBattleMemberList().size() < BATTLE_MEMBER_SIZE) {

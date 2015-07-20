@@ -22,7 +22,9 @@
       "armor": "leather_armor",
       "boots": "leather_boots",
       "gloves": "leather_gloves"
-    }
+    },
+    "skillList": ["cut_01"],
+    "itemList" : ["sword_01"]
   },
   "parath": {
     "name": "parath",   

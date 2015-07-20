@@ -9,7 +9,6 @@ import com.mygdx.util.JsonParser;
 
 public class UnitAssets implements JsonAssetsInitializable {
 	private Map<String, Hero> heroMap;
-
 	private Map<String, Monster> monsterMap;
 
 	public void set(Map<String, String> jsonStringMap) {
