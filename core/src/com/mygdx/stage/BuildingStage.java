@@ -10,9 +10,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.assets.UnitAssets;
 import com.mygdx.assets.WorldNodeAssets;
 import com.mygdx.enums.GameObjectEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -29,7 +29,7 @@ public class BuildingStage extends BaseOverlapStage {
 	@Autowired
 	private WorldNodeAssets worldNodeAssets;
 	@Autowired
-	private UnitAssets unitAssets;
+	private EventAssets eventAssets;
 
 	private List<CompositeItem> npcButtonList;
 	private List<CompositeItem> gameObjectList;
@@ -46,8 +46,6 @@ public class BuildingStage extends BaseOverlapStage {
 
 		return this;
 	}
-	
-	
 
 	private void setExitButton() {
 		exitButton = new TextButton("나가기", uiComponentAssets.getSkin());
@@ -72,13 +70,12 @@ public class BuildingStage extends BaseOverlapStage {
 
 	private void makeScene() {
 		buildingInfo = worldNodeAssets
-				.getVillage(positionInfo.getCurrentNode()).getBuilding()
-				.get(positionInfo.getCurrentBuilding());
+				.getVillage(positionManager.getCurrentNode()).getBuilding()
+				.get(positionManager.getCurrentBuilding());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
 	}
-	
 
 	private void setNpcList() {
 		npcButtonList = new ArrayList<CompositeItem>();
@@ -96,23 +93,26 @@ public class BuildingStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-					eventManager.setEventInfo(unitAssets.getNpc(npcName), true);
+					eventManager.setCurrentEventNpc(npcName);
 					screenFactory.show(ScreenEnum.GREETING);
 				}
 			});
 			npcButtonList.add(npcButton);
 		}
 	}
-	
-	private void setItemList(){
+
+	private void setItemList() {
 		gameObjectList = new ArrayList<CompositeItem>();
-		for(final String objectName: buildingInfo.getGameObject()){
-			final CompositeItem objectButton = sceneLoader.getRoot().getCompositeById(objectName);
+		for (final String objectName : buildingInfo.getGameObject()) {
+			final CompositeItem objectButton = sceneLoader.getRoot()
+					.getCompositeById(objectName);
 			objectButton.setVisible(true);
-			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.getCode(), false);
-			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.getCode(), true);
+			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.getCode(),
+					false);
+			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.getCode(),
+					true);
 			objectButton.setTouchable(Touchable.enabled);
-			objectButton.addListener(new InputListener(){
+			objectButton.addListener(new InputListener() {
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y,
 						int pointer, int button) {
@@ -122,52 +122,15 @@ public class BuildingStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-					objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.getCode(), true);
-					objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.getCode(), false);
-					
+					objectButton.setLayerVisibilty(
+							GameObjectEnum.PRESSED.getCode(), true);
+					objectButton.setLayerVisibilty(
+							GameObjectEnum.NORMAL.getCode(), false);
+
 					/*screenFactory.show(ScreenEnum.GREETING);*/
 				}
-			}); 
+			});
 			gameObjectList.add(objectButton);
 		}
-	}
-	public EventManager getEventManager() {
-		return eventManager;
-	}
-
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
-	}
-
-	public WorldNodeAssets getWorldNodeAssets() {
-		return worldNodeAssets;
-	}
-
-	public void setWorldNodeAssets(WorldNodeAssets worldNodeAssets) {
-		this.worldNodeAssets = worldNodeAssets;
-	}
-
-	public UnitAssets getUnitAssets() {
-		return unitAssets;
-	}
-
-	public void setUnitAssets(UnitAssets unitAssets) {
-		this.unitAssets = unitAssets;
-	}
-
-	public Building getBuildingInfo() {
-		return buildingInfo;
-	}
-
-	public void setBuildingInfo(Building buildingInfo) {
-		this.buildingInfo = buildingInfo;
 	}
 }

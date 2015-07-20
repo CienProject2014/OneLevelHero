@@ -5,7 +5,6 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.currentState.RewardQueueInfo;
 import com.mygdx.enums.RewardStateEnum;
@@ -18,7 +17,9 @@ public class RewardManager {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
-	private PartyInfo partyInfo;
+	private BattleManager battleManager;
+	@Autowired
+	private PartyManager partyManager;
 
 	// (3) 퀘스트 달성 여부 큐
 	// 아직 미구현
@@ -44,7 +45,8 @@ public class RewardManager {
 
 	public void doReward() {
 		if (getRewardQueue().peek() != null) {
-			switch (getRewardQueue().peek().getRewardType()) {
+			RewardInfo peekedReward = getRewardQueue().peek();
+			switch (peekedReward.getRewardType()) {
 				case EXPERIENCE:
 					return;
 				case GOLD:
@@ -54,7 +56,7 @@ public class RewardManager {
 				case NONE:
 					return;
 				case PARTY:
-					partyInfo.addHero(unitAssets.getHero(getRewardQueue()
+					partyManager.addHero(unitAssets.getHero(getRewardQueue()
 							.peek().getRewardTarget()));
 					return;
 				default:
@@ -78,37 +80,5 @@ public class RewardManager {
 			default:
 				return "보상 없음";
 		}
-	}
-
-	public RewardQueueInfo getRewardQueueInfo() {
-		return rewardQueueInfo;
-	}
-
-	public void setRewardQueueInfo(RewardQueueInfo rewardQueueInfo) {
-		this.rewardQueueInfo = rewardQueueInfo;
-	}
-
-	public EventManager getEventManager() {
-		return eventManager;
-	}
-
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
-	}
-
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
-	}
-
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
-	}
-
-	public UnitAssets getUnitAssets() {
-		return unitAssets;
-	}
-
-	public void setUnitAssets(UnitAssets unitAssets) {
-		this.unitAssets = unitAssets;
 	}
 }

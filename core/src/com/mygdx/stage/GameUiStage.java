@@ -8,19 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
@@ -39,7 +38,6 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	private Table uiTable;
 	private Table topTable;
-
 	private StatusMessagePopup statusMessagePopup;
 	private Stack<MessagePopup> alertMessage;
 
@@ -78,7 +76,8 @@ public class GameUiStage extends BaseOneLevelStage {
 		}
 		// 알림 메시지
 		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]",
-				uiComponentAssets.getSkin(), partyInfo);
+				uiComponentAssets.getSkin(), partyManager.getBattleMemberList());
+
 		Iterator<MessagePopup> alertMessageIterator = alertMessage.iterator();
 		while (alertMessageIterator.hasNext()) {
 			MessagePopup nextIterator = alertMessageIterator.next();
@@ -130,8 +129,9 @@ public class GameUiStage extends BaseOneLevelStage {
 				uiComponentAssets.getFont());
 
 		placeInfoButton = new TextButton("장소", style);
-		timeInfoButton = new TextButton(timeInfo.getDay() + "d"
-				+ timeInfo.getHour() + "h" + timeInfo.getMinute() + "m", style);
+		timeInfoButton = new TextButton(timeManager.getDay() + "d"
+				+ timeManager.getHour() + "h" + timeManager.getMinute() + "m",
+				style);
 
 		backButton = new ImageButton(
 				atlasUiAssets.getAtlasUiFile("back_button"),
@@ -149,12 +149,16 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	// 리스너 할당
 	public void addListener() {
-		helpButton.addListener(new ClickListener() {
+		helpButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				return true;
+			}
 
-			public void clicked(InputEvent event, float x, float y) {
-
-				screenFactory.show(ScreenEnum.WORLD_MAP);
-
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 			}
 
 		});
@@ -163,29 +167,5 @@ public class GameUiStage extends BaseOneLevelStage {
 	@Override
 	public void dispose() {
 		super.dispose();
-	}
-
-	public RewardManager getRewardManager() {
-		return rewardManager;
-	}
-
-	public void setRewardManager(RewardManager rewardManager) {
-		this.rewardManager = rewardManager;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
-	}
-
-	public AtlasUiAssets getAtlasUiAssets() {
-		return atlasUiAssets;
-	}
-
-	public void setAtlasUiAssets(AtlasUiAssets atlasUiAssets) {
-		this.atlasUiAssets = atlasUiAssets;
 	}
 }

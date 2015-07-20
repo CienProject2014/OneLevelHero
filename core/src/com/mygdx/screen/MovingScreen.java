@@ -38,8 +38,4 @@ public class MovingScreen extends BaseScreen {
 		Gdx.input.setInputProcessor(multiplexer);
 		musicManager.setMovingMusicAndPlay();
 	}
-
-	public void hide() {
-	}
-
 }

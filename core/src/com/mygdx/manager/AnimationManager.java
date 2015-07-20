@@ -52,8 +52,9 @@ public class AnimationManager {
 	private TextureRegion[][] splitSheet(FrameSheet sheet) {
 		if (sheet.getTexture() == null)
 			sheet.loadTexture();
-		return TextureRegion.split(sheet.getTexture(), sheet.getTexture().getWidth() / sheet.getColumn(),
-				sheet.getTexture().getHeight() / sheet.getRow());
+		return TextureRegion.split(sheet.getTexture(), sheet.getTexture()
+				.getWidth() / sheet.getColumn(), sheet.getTexture().getHeight()
+				/ sheet.getRow());
 	}
 
 	/**
@@ -65,7 +66,8 @@ public class AnimationManager {
 	 *            행, 열 크기가 담긴 데이터
 	 * @return TextureRegion 타입의 1d array
 	 */
-	private TextureRegion[] matrixToArray(TextureRegion[][] matrix, FrameSheet sheet) {
+	private TextureRegion[] matrixToArray(TextureRegion[][] matrix,
+			FrameSheet sheet) {
 		TextureRegion[] frames = new TextureRegion[sheet.getFrameNumber()];
 		int index = 0;
 		for (int i = 0; i < sheet.getRow(); i++) {
@@ -91,14 +93,16 @@ public class AnimationManager {
 		stateTime += delta;
 
 		spriteBatch.begin();
-		for (Iterator<AnimationBit> iterator = animations.iterator(); iterator.hasNext();) {
+		for (Iterator<AnimationBit> iterator = animations.iterator(); iterator
+				.hasNext();) {
 
 			AnimationBit bit = (AnimationBit) iterator.next();
 
 			if (bit.getAnimation().isAnimationFinished(stateTime)) {
 				iterator.remove();
 			} else {
-				spriteBatch.draw(bit.getAnimation().getKeyFrame(stateTime), bit.getX(), bit.getY());
+				spriteBatch.draw(bit.getAnimation().getKeyFrame(stateTime),
+						bit.getX(), bit.getY());
 			}
 		}
 		spriteBatch.end();
