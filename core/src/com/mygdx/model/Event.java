@@ -8,6 +8,7 @@ import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 
 public class Event {
+	private String eventName;
 	private EventTypeEnum eventType;
 	private EventStateEnum eventState;
 	private RewardInfo reward;
@@ -56,5 +57,13 @@ public class Event {
 
 	public void setEventComponent(List<String> eventComponent) {
 		this.eventComponent = eventComponent;
+	}
+
+	public String getEventName() {
+		return eventName;
+	}
+
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
 	}
 }

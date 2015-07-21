@@ -35,6 +35,9 @@
   "bust_parath_01": {
     "filePath": "texture/character/bust_parath_01.png"
   },
+  "bust_mawang_01":{
+  	"filePath" : "texture/character/bust_mawang_01.png"
+  },
   "bust_waiji_02": {
     "filePath": "texture/character/bust_waiji_02.png"
   },

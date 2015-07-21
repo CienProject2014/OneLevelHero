@@ -77,6 +77,11 @@
             "script": "하압!",
             "characterPath": "bust_yongsa_04",
             "backgroundPath": "bg_devilcastle_01"
+          },
+          {
+            "script": "아이콘을 누르면 스킬 공격을 할 수 있습니다. 스킬버튼을 누르세요.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "bg_devilcastle_01"
           }
         ]
       },
@@ -86,6 +91,50 @@
         "eventComponent": [
           "mawang"
         ]
+      },
+      {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "......!!",
+            "characterPath": "bust_mawang_01",
+            "backgroundPath": "bg_devilcastle_01"
+          },
+          {
+            "script": "어...?",
+            "characterPath": "bust_yongsa_04",
+            "backgroundPath": "bg_devilcastle_01"
+          },
+          {
+            "script": "정신을 차려보니 마왕성의 입구였다. 문은 굳게 닫혀있어 다시 들어갈 수 없었다.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사는 무언가 힘이 빠지는 듯한 위화감을 느꼈지만, 우선 촌장에게 보고하기 위해 블랙우드로 돌아갔다.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      {
+        "eventState": "not_opened",
+        "eventType": "move",
+        "eventComponent": [
+          "blackwood"
+        ]
+      },
+      {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "촌장님은 집 안에 계실거에요.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_blackwood_01"
+          }
+        ]
       }
     ]
   },
@@ -93,6 +142,7 @@
     "name": "waiji",
     "events": [
       {
+        "eventName": "마왕퇴치실패",
         "eventState": "not_opened",
         "eventType": "chat",
         "reward": {

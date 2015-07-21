@@ -9,6 +9,6 @@ public class TexturePackingTool {
 		Settings settings = new Settings();
 
 		TexturePacker packer = new TexturePacker(settings);
-		packer.process("pack", "pack", "battle_right_menu");
+		packer.process("pack", "pack", "saint");
 	}
 }

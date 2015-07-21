@@ -21,6 +21,8 @@ public class StorySectionManager {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
+	private EventCheckManager eventCheckManager;
+	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
 	private PositionManager positionManager;
@@ -64,6 +66,13 @@ public class StorySectionManager {
 							.getMonster(eventManager.getCurrentEvent()
 									.getEventComponent().get(0)));
 					screenFactory.show(ScreenEnum.BATTLE);
+
+					break;
+				case MOVE:
+					positionManager.setCurrentNode(eventManager
+							.getCurrentEvent().getEventComponent().get(0));
+					screenFactory.show(ScreenEnum.VILLAGE);
+					runStorySequence();
 					break;
 				default:
 					screenFactory.show(ScreenEnum.EVENT);
@@ -93,5 +102,16 @@ public class StorySectionManager {
 
 	public void setSequenceQueue(Queue<EventPacket> sequenceQueue) {
 		this.eventSequenceQueue = sequenceQueue;
+	}
+
+	public void checkButtonEvent(String buttonType) {
+		for (StorySectionPacket nextStorySectionPacket : getNextSections()) {
+			if (eventCheckManager.checkBattleControlEvent(
+					nextStorySectionPacket, buttonType)) {
+				setNewStorySectionAndPlay(nextStorySectionPacket
+						.getNextSectionNumber());
+			}
+			break;
+		}
 	}
 }

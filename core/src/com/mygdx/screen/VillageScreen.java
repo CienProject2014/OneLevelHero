@@ -78,8 +78,6 @@ public class VillageScreen extends BaseScreen {
 
 	@Override
 	public void hide() {
-		gameUiStage.dispose();
-		villageStage.dispose();
 		dispose();
 	}
 
