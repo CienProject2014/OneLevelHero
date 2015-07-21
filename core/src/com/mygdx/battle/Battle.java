@@ -35,13 +35,14 @@ public class Battle {
 	}
 
 	public void attack(Unit attacker, Unit defender) {
-		int attackDmg = attacker.getStatus().getAtk();
-		int defendDmg = defender.getStatus().getDef();
-		int defendHp = defender.getStatus().getHp();
+		int attackDmg = attacker.getStatus().getAttack();
+		int defendDmg = defender.getStatus().getDefense();
+		int defendHp = defender.getStatus().getHealthPoint();
 		if (defendHp + (defendDmg - attackDmg) > 0) {
-			defender.getStatus().setHp(defendHp + (defendDmg - attackDmg));
+			defender.getStatus().setHealthPoint(
+					defendHp + (defendDmg - attackDmg));
 		} else {
-			defender.getStatus().setHp(0);
+			defender.getStatus().setHealthPoint(0);
 		}
 		Gdx.app.log("Battle", attacker.getName() + "가 " + defender.getName()
 				+ "를 공격하였습니다!");

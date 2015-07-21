@@ -35,8 +35,8 @@ public class EventScene {
 			if (StaticAssets.characterTextureMap.get(characterPath) != null) {
 				character = StaticAssets.characterTextureMap.get(characterPath);
 			} else {
-				Gdx.app.log("EventScene", "chracterTextureMap에" + characterPath
-						+ "에 해당하는 이미지가 존재하지 않습니다.");
+				Gdx.app.log("EventScene", "chracterTextureMap에 "
+						+ characterPath + " 에 해당하는 이미지가 존재하지 않습니다.");
 			}
 		}
 		return character;

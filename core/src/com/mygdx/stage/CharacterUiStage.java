@@ -151,16 +151,16 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		}
 
 		public int getHp() {
-			return hero.getStatus().getHp();
+			return hero.getStatus().getHealthPoint();
 		}
 
 		public int getMaxHp() {
-			return hero.getStatus().getMaxHp();
+			return hero.getStatus().getMaxHealthPoint();
 		}
 
 		public int getHpPercent() {
-			float factor = (float) hero.getStatus().getHp()
-					/ hero.getStatus().getMaxHp();
+			float factor = (float) hero.getStatus().getHealthPoint()
+					/ hero.getStatus().getMaxHealthPoint();
 			return (int) (factor * 100);
 		}
 
