@@ -68,9 +68,9 @@ public class Unit implements Comparable<Unit> {
 	@Override
 	public int compareTo(Unit obj) {
 		if (this.getGauge() == obj.getGauge()) {
-			if (this.getStatus().getSpd() == obj.getStatus().getSpd()) {
+			if (this.getStatus().getSpeed() == obj.getStatus().getSpeed()) {
 				return 0;
-			} else if (this.getStatus().getSpd() > obj.getStatus().getSpd()) {
+			} else if (this.getStatus().getSpeed() > obj.getStatus().getSpeed()) {
 				return 1;
 			} else {
 				return -1;

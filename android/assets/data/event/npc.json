@@ -108,7 +108,7 @@
           },
           {
             "script": "네. 면목이 없습니다. 죄송할 따름입니다.",
-            "characterPath": "bust_yongsa_07",
+            "characterPath": "bust_yongsa_06",
             "backgroundPath": "blackwood_center"
           },
           {
@@ -118,7 +118,7 @@
           },
           {
             "script": "…….........................",
-            "characterPath": "bust_yongsa_07",
+            "characterPath": "bust_yongsa_06",
             "backgroundPath": "blackwood_center"
           },
           {
@@ -133,7 +133,7 @@
           },
           {
             "script": "정말입니까? 제 저주를 해결할 방법이 있는 건가요?",
-            "characterPath": "bust_yongsa_07",
+            "characterPath": "bust_yongsa_06",
             "backgroundPath": "blackwood_center"
           },
           {

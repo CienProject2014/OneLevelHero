@@ -1,123 +1,123 @@
 package com.mygdx.model;
 
 public class Status {
-	private int atk;
-	private int matk;
-	private int def;
-	private int mdef;
-	private int hp; // 현재 체력
-	private int maxHp; // 최대 체력
-	private int spd; // speed
-	private int ftg; // fatigue(피로도)
-	private int exp; // 경험치
-	private int maxExp; // 최대 경험치(레벨업)
-	private float fr; // fire resistance
-	private float wr; // water
-	private float er; // earths
+	private int attack;
+	private int magicAttack;
+	private int defense;
+	private int magicDefense;
+	private int healthPoint; // 현재 체력
+	private int maxHealthPoint; // 최대 체력
+	private int speed; // speed
+	private int fatigue; // fatigue(피로도)
+	private int experience; // 경험치
+	private int maxExperience; // 최대 경험치(레벨업)
+	private float fireRegistance; // fire resistance
+	private float waterRegistance; // water
+	private float earthRegistance; // earths
 	private String job;
 
-	public int getAtk() {
-		return atk;
+	public int getAttack() {
+		return attack;
 	}
 
-	public void setAtk(int atk) {
-		this.atk = atk;
+	public void setAttack(int attack) {
+		this.attack = attack;
 	}
 
-	public int getMatk() {
-		return matk;
+	public int getMagicAttack() {
+		return magicAttack;
 	}
 
-	public void setMatk(int matk) {
-		this.matk = matk;
+	public void setMagicAttack(int magicAttack) {
+		this.magicAttack = magicAttack;
 	}
 
-	public int getDef() {
-		return def;
+	public int getDefense() {
+		return defense;
 	}
 
-	public void setDef(int def) {
-		this.def = def;
+	public void setDefense(int defense) {
+		this.defense = defense;
 	}
 
-	public int getMdef() {
-		return mdef;
+	public int getMagicDefense() {
+		return magicDefense;
 	}
 
-	public void setMdef(int mdef) {
-		this.mdef = mdef;
+	public void setMagicDefense(int magicDefense) {
+		this.magicDefense = magicDefense;
 	}
 
-	public int getHp() {
-		return hp;
+	public int getHealthPoint() {
+		return healthPoint;
 	}
 
-	public void setHp(int hp) {
-		this.hp = hp;
+	public void setHealthPoint(int healthPoint) {
+		this.healthPoint = healthPoint;
 	}
 
-	public int getMaxHp() {
-		return maxHp;
+	public int getMaxHealthPoint() {
+		return maxHealthPoint;
 	}
 
-	public void setMaxHp(int maxHp) {
-		this.maxHp = maxHp;
+	public void setMaxHealthPoint(int maxHealthPoint) {
+		this.maxHealthPoint = maxHealthPoint;
 	}
 
-	public int getSpd() {
-		return spd;
+	public int getSpeed() {
+		return speed;
 	}
 
-	public void setSpd(int spd) {
-		this.spd = spd;
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 
-	public int getFtg() {
-		return ftg;
+	public int getFatigue() {
+		return fatigue;
 	}
 
-	public void setFtg(int ftg) {
-		this.ftg = ftg;
+	public void setFatigue(int fatigue) {
+		this.fatigue = fatigue;
 	}
 
-	public int getExp() {
-		return exp;
+	public int getExperience() {
+		return experience;
 	}
 
-	public void setExp(int exp) {
-		this.exp = exp;
+	public void setExperience(int experience) {
+		this.experience = experience;
 	}
 
-	public int getMaxExp() {
-		return maxExp;
+	public int getMaxExperience() {
+		return maxExperience;
 	}
 
-	public void setMaxExp(int maxExp) {
-		this.maxExp = maxExp;
+	public void setMaxExperience(int maxExperience) {
+		this.maxExperience = maxExperience;
 	}
 
-	public float getFr() {
-		return fr;
+	public float getFireRegistance() {
+		return fireRegistance;
 	}
 
-	public void setFr(float fr) {
-		this.fr = fr;
+	public void setFireRegistance(float fireRegistance) {
+		this.fireRegistance = fireRegistance;
 	}
 
-	public float getWr() {
-		return wr;
+	public float getWaterRegistance() {
+		return waterRegistance;
 	}
 
-	public void setWr(float wr) {
-		this.wr = wr;
+	public void setWaterRegistance(float waterRegistance) {
+		this.waterRegistance = waterRegistance;
 	}
 
-	public float getEr() {
-		return er;
+	public float getEarthRegistance() {
+		return earthRegistance;
 	}
 
-	public void setEr(float er) {
-		this.er = er;
+	public void setEarthRegistance(float earthRegistance) {
+		this.earthRegistance = earthRegistance;
 	}
 
 	public String getJob() {
@@ -129,11 +129,13 @@ public class Status {
 	}
 
 	public String[] getStatusList() {
-		String[] array = { String.valueOf(atk), String.valueOf(ftg),
-				String.valueOf(exp), String.valueOf(atk), String.valueOf(matk),
-				String.valueOf(def), String.valueOf(mdef), String.valueOf(hp),
-				String.valueOf(spd), String.valueOf(fr), String.valueOf(wr),
-				String.valueOf(er), job };
+		String[] array = { String.valueOf(attack), String.valueOf(magicAttack),
+				String.valueOf(defense), String.valueOf(magicDefense),
+				String.valueOf(fatigue), String.valueOf(healthPoint),
+				String.valueOf(speed), String.valueOf(experience),
+				String.valueOf(fireRegistance),
+				String.valueOf(waterRegistance),
+				String.valueOf(earthRegistance), job };
 
 		return array;
 	}
