@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CameraManager.CameraPosition;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
@@ -29,7 +28,7 @@ public class DungeonStage extends BaseOverlapStage {
 	private void makeScene() {
 		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
 		sceneLoader.loadScene("blackwood_forest_dungeon_scene");
-		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
+		cameraManager.stretchToDevice(this);
 		addActor(sceneLoader.getRoot());
 	}
 
@@ -42,14 +41,12 @@ public class DungeonStage extends BaseOverlapStage {
 		arrowUp.setTouchable(Touchable.enabled);
 		arrowUp.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonStage", "앞으로 이동");
 			}
 		});
@@ -57,14 +54,12 @@ public class DungeonStage extends BaseOverlapStage {
 		arrowDown.setTouchable(Touchable.enabled);
 		arrowDown.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonStage", "뒤로 이동");
 				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
 			}
@@ -73,14 +68,12 @@ public class DungeonStage extends BaseOverlapStage {
 		arrowLeft.setTouchable(Touchable.enabled);
 		arrowLeft.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonStage", "왼쪽으로 이동");
 			}
 		});
@@ -88,14 +81,12 @@ public class DungeonStage extends BaseOverlapStage {
 		arrowRight.setTouchable(Touchable.enabled);
 		arrowRight.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.debug("DungeonStage", "오른쪽으로 이동");
 			}
 		});

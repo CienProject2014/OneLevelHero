@@ -49,6 +49,8 @@ public class VillageScreen extends BaseScreen {
 	public void render(float delta) {
 		super.render(delta);
 
+		villageStage.act();
+
 		villageStage.draw();
 		gameUiStage.draw();
 		characterUiStage.draw();
