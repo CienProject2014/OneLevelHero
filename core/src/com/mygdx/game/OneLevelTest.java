@@ -31,8 +31,8 @@ public class OneLevelTest extends Game {
 		gameLoad();
 
 		// goEncounterScreen();
-		// goVillageScreen();
-		goWorldMapScreen();
+		goVillageScreen();
+		// goWorldMapScreen();
 	}
 
 	public void gameLoad() {
