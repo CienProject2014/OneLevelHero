@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.model.Event;
 import com.mygdx.model.EventPacket;
+import com.mygdx.model.GameObject;
 import com.mygdx.model.NPC;
 
 /**
@@ -19,6 +20,15 @@ public class EventInfo {
 	private EventAssets eventAssets;
 
 	private EventPacket currentEventInfo;
+	private GameObject currentGameObject;
+
+	public GameObject getCurrentGameObject() {
+		return currentGameObject;
+	}
+
+	public void setCurrentGameObject(GameObject gameObject) {
+		this.currentGameObject = gameObject;
+	}
 
 	public NPC getCurrentNpc() {
 		String npcName = currentEventInfo.getEventNpc();

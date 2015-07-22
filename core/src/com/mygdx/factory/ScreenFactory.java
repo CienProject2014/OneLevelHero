@@ -20,6 +20,7 @@ import com.mygdx.screen.DungeonScreen;
 import com.mygdx.screen.EncounterScreen;
 import com.mygdx.screen.EndingScreen;
 import com.mygdx.screen.EventScreen;
+import com.mygdx.screen.GameObjectScreen;
 import com.mygdx.screen.GreetingScreen;
 import com.mygdx.screen.LoadScreen;
 import com.mygdx.screen.MenuScreen;
@@ -78,6 +79,8 @@ public class ScreenFactory {
 				return context.getBean(EndingScreen.class);
 			case EVENT:
 				return context.getBean(EventScreen.class);
+			case GAME_OBJECT:
+				return context.getBean(GameObjectScreen.class);
 			case GREETING:
 				return context.getBean(GreetingScreen.class);
 			case LOAD:

@@ -14,6 +14,7 @@ import com.mygdx.factory.StageFactory;
 import com.mygdx.model.Event;
 import com.mygdx.model.EventPacket;
 import com.mygdx.model.EventScene;
+import com.mygdx.model.GameObject;
 import com.mygdx.model.NPC;
 
 /**
@@ -58,6 +59,10 @@ public class EventManager {
 		}
 	}
 
+	public EventPacket getCurrentEventPacket() {
+		return eventInfo.getCurrentEventInfo();
+	}
+
 	public Iterator<EventScene> getEventSceneIterator() {
 		eventSceneIterator = eventInfo.getCurrentEvent()
 				.getEventSceneIterator();
@@ -78,6 +83,14 @@ public class EventManager {
 
 	public Event getCurrentEvent() {
 		return eventInfo.getCurrentEvent();
+	}
+
+	public void setCurrentGameObject(GameObject gameObject) {
+		eventInfo.setCurrentGameObject(gameObject);
+	}
+
+	public GameObject getCurrentGameObject() {
+		return eventInfo.getCurrentGameObject();
 	}
 
 	public void finishEvent() {

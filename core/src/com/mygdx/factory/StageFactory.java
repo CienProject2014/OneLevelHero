@@ -16,6 +16,7 @@ import com.mygdx.stage.DungeonEntranceStage;
 import com.mygdx.stage.DungeonStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.EventStage;
+import com.mygdx.stage.GameObjectStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
@@ -45,6 +46,8 @@ public class StageFactory {
 				return context.getBean(EncounterStage.class).makeStage();
 			case GAME_UI:
 				return context.getBean(GameUiStage.class).makeStage();
+			case GAME_OBJECT:
+				return context.getBean(GameObjectStage.class).makeStage();
 			case MENU:
 				return context.getBean(MenuStage.class).makeStage();
 			case MONSTER:
