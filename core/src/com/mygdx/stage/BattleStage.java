@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -70,6 +72,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 	@Override
 	public void act(float delta) {
+
 		if (gridHitbox.isGridShow()) {
 
 		} else if (monsterTrigger) {
@@ -79,6 +82,7 @@ public class BattleStage extends BaseOneLevelStage {
 				// 몬스터의 턴이 아니라면 monsterTrigger가 true여서는 안된다.
 				return;
 			}
+
 			battleManager.monsterAttack();
 			updateOrder();
 
@@ -226,20 +230,31 @@ public class BattleStage extends BaseOneLevelStage {
 			if (!(actor instanceof Hero)) {
 				// 일어날 수 없는 시나리오
 				// 만약 몬스터의 턴이라면 이 이벤트가 호출되지 않아야 한다.
+				Gdx.app.log("BattleStage", "마왕의 턴");
 			}
 
 			battleManager.userAttack(actor);
 			updateOrder();
 
-			if (whoIsNextActor() instanceof Monster) {
-				monsterTrigger = true;
-			}
+			Timer mTimer = new Timer();
+			TimerTask mTask = new TimerTask() {
+				// mTimer.schedule(mTask, 2000);
+				@Override
+				public void run() {
+					if (whoIsNextActor() instanceof Monster) {
+						monsterTrigger = true;
+					}
+				}
+
+			};
+			mTimer.schedule(mTask, 1000);
 
 			gridHitbox.hideGrid();
-			//FIXME : 리스너를 만들 수 경우의 분기 체크
+			// FIXME : 리스너를 만들 수 경우의 분기 체크
 			if (eventCheckManager.checkBattleEventType()) {
 				storySectionManager.checkButtonEvent(NORMAL_ATTACK);
 			}
+
 		}
 
 		gridHitbox.hideAllTiles();
