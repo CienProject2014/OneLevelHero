@@ -126,6 +126,7 @@
 		<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage"
 		scope="prototype" />
+	<bean id="movingStage" class="com.mygdx.stage.MovingStage" scope="prototype"/>
 	<bean id="selectComponentStage" class="com.mygdx.stage.SelectComponentStage"
 		scope="prototype"/>
 	<bean id="selectEventStage" class="com.mygdx.stage.SelectEventStage"

@@ -18,10 +18,11 @@
       "waterRegistance" : 0,
       "earthRegistance" : 0,
 	  "job": "monster"
-    }
+    },
+    "skillList" : ["cut_01"]
   },
-  "assassin girl": {
-    "name": "assassin girl",
+  "assassin_girl": {
+    "name": "assassin_girl",
 	"sizeType": "small",
 	"elementType": "fire",
     "status": {
@@ -39,7 +40,8 @@
       "waterRegistance" : 0,
       "earthRegistance" : 0,
 	  "job": "monster"
-    }
+    },
+    "skillList" : ["cut_01"]
   },
   "Monster2": {
     "name": "Monster2",
@@ -60,7 +62,9 @@
       "waterRegistance" : 0,
       "earthRegistance" : 0,
 	  "job": "warrior"
-    }
+    },
+    
+    "skillList": ["cut_01"]
   },
   "Monster3": {
     "name": "Monster3",
@@ -81,7 +85,9 @@
       "waterRegistance" : 0,
       "earthRegistance" : 0,
 	  "job": "warrior"
-    }
+    },
+    
+    "skillList": ["cut_01"]
   },
   "b2": {
     "name": "b2",
@@ -102,6 +108,8 @@
       "waterRegistance" : 0,
       "earthRegistance" : 0,
 	  "job": "warrior"
-    }
+    },
+    
+    "skillList": ["cut_01"]
   }
 }
