@@ -40,5 +40,8 @@
   },
   "bg_devilcastle_01":{
   	"filePath" : "texture/prologue/bg_devilcastle_01.png"
+  },
+  "bg_blackwood_01":{
+  	"filePath" : "texture/background/bg_blackwood_01.png"
   }
 }

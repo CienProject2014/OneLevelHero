@@ -24,7 +24,6 @@ import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.GridHitbox;
 import com.mygdx.model.Hero;
 import com.mygdx.model.Monster;
-import com.mygdx.model.StorySectionPacket;
 import com.mygdx.model.Unit;
 
 public class BattleStage extends BaseOneLevelStage {
@@ -37,6 +36,7 @@ public class BattleStage extends BaseOneLevelStage {
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
 	private final String NORMAL_ATTACK = "normal_attack";
+	private final String SKILL_ATTACK = "skill_attack";
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("BattleStage");
@@ -238,16 +238,7 @@ public class BattleStage extends BaseOneLevelStage {
 			gridHitbox.hideGrid();
 			//FIXME : 리스너를 만들 수 경우의 분기 체크
 			if (eventCheckManager.checkBattleEventType()) {
-				for (StorySectionPacket nextStorySectionPacket : storySectionManager
-						.getNextSections()) {
-					if (eventCheckManager.checkBattleControlEvent(
-							nextStorySectionPacket, NORMAL_ATTACK)) {
-						storySectionManager
-								.setNewStorySectionAndPlay(nextStorySectionPacket
-										.getNextSectionNumber());
-					}
-					break;
-				}
+				storySectionManager.checkButtonEvent(NORMAL_ATTACK);
 			}
 		}
 
@@ -273,6 +264,9 @@ public class BattleStage extends BaseOneLevelStage {
 		skillButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				if (eventCheckManager.checkBattleEventType()) {
+					storySectionManager.checkButtonEvent(SKILL_ATTACK);
+				}
 				Gdx.app.log("BattleStage", "스킬!");
 			}
 		});

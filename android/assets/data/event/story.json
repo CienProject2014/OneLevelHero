@@ -39,14 +39,14 @@
     ]
   },
   "103": {
-    "sequencialEvents" : [
+    "sequencialEvents": [
       {
-        "eventNpc" : "prologue",
-        "eventNumber" : "3"
+        "eventNpc": "prologue",
+        "eventNumber": "3"
       },
       {
-      	"eventNpc" : "prologue",
-      	"eventNumber" : "4"
+        "eventNpc": "prologue",
+        "eventNumber": "4"
       }
     ],
     "nextSections": [
@@ -55,6 +55,27 @@
         "eventType": "battle_control",
         "targetComponent": "skill_attack"
       }
+    ]
+  },
+  "104": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "5"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "6"
+      },
+       {
+        "eventNpc": "prologue",
+        "eventNumber": "7"
+      }
+    ]
+  },
+  "105": {
+    "sequencialEvents": [
+     
     ]
   }
 }
