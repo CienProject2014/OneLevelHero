@@ -30,8 +30,9 @@ public class SkillScreen extends BaseScreen {
 		skillStage = stageFactory.makeStage(StageEnum.SKILL);
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		multiplexer.addProcessor(0, skillStage);
+		multiplexer.addProcessor(1, monsterStage);
 		Gdx.input.setInputProcessor(multiplexer);
-		skillStage.addListener(new ClickListener() {
+		monsterStage.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				screenFactory.show(ScreenEnum.BATTLE);
