@@ -42,7 +42,7 @@ public class VillageScreen extends BaseScreen {
 
 	public VillageScreen() {
 		// 마을 이름을 받는 곳이 필요함
-		villageName = "Blackwood";
+		villageName = "blackwood";
 	}
 
 	@Override

@@ -18,22 +18,29 @@
       },
       {
         "eventState": "not_opened",
+        "eventType": "music",
+        "eventComponent": [
+          "seven_changer"
+        ]
+      },
+      {
+        "eventState": "not_opened",
         "eventType": "chat",
-        "eventScenes": [
+        "eventScenes": [        
           {
             "script": "카딜라 공작의 정벌 이후, 카딜라 지방으로 편입된 블랙우드 마을은 평화로운 일상을 보내고 있었다.",
-            "characterPath": "rabbit1",
-            "backgroundPath": "scene1"
+            "characterPath": "nothing_image",
+            "backgroundPath": "cg_prologue_01"
           },
           {
             "script": "그러나 블랙우드 숲에 마왕이 강림하게 되고, 주민들은 불안에 떤다.",
-            "characterPath": "rabbit2",
-            "backgroundPath": "scene2"
+            "characterPath": "nothing_image",
+            "backgroundPath": "cg_prologue_02"
           },
           {
             "script": "마침 근방을 지나가던 용사 일행은, 곧바로 마왕성에 쳐들어간다.",
-            "characterPath": "rabbit3",
-            "backgroundPath": "scene3"
+            "characterPath": "nothing_image",
+            "backgroundPath": "cg_prologue_03"
           },
           {
             "script": "저게 마왕인가!",
@@ -109,12 +116,12 @@
           {
             "script": "정신을 차려보니 마왕성의 입구였다. 문은 굳게 닫혀있어 다시 들어갈 수 없었다.",
             "characterPath": "nothing_image",
-            "backgroundPath": "black_background"
+            "backgroundPath": "cg_prologue_04"
           },
           {
             "script": "용사는 무언가 힘이 빠지는 듯한 위화감을 느꼈지만, 우선 촌장에게 보고하기 위해 블랙우드로 돌아갔다.",
             "characterPath": "nothing_image",
-            "backgroundPath": "black_background"
+            "backgroundPath": "cg_prologue_04"
           }
         ]
       },

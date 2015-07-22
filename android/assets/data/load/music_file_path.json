@@ -19,5 +19,8 @@
 	},
 	"mihok_forest":{
 		"filePath" : "sound/mihok_forest.mp3"
+	},
+	"seven_changer" : {
+		"filePath" : "sound/seven_changer.mp3"
 	}
 }

@@ -1,13 +1,4 @@
 {
-  "rabbit1": {
-    "filePath": "texture/prologue/rabbit1.png"
-  },
-  "rabbit2": {
-    "filePath": "texture/prologue/rabbit2.png"
-  },
-  "rabbit3": {
-    "filePath": "texture/prologue/rabbit3.png"
-  },
   "nothing_image": {
     "filePath": "texture/character/nothing_image.png"
   },
@@ -43,5 +34,8 @@
   },
   "bust_lilis_01":{
   	"filePath" : "texture/character/bust_lilis_01.png"
+  },
+  "chest":{
+  	"filePath" : "texture/game_object/chest.png"
   }
 }

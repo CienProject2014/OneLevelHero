@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -18,6 +19,7 @@ import com.mygdx.enums.GameObjectEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.model.Building;
+import com.mygdx.model.GameObject;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class BuildingStage extends BaseOverlapStage {
@@ -51,12 +53,14 @@ public class BuildingStage extends BaseOverlapStage {
 		exitButton.center();
 		exitButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				screenFactory.show(ScreenEnum.VILLAGE);
 				event.getListenerActor().setVisible(false);
 			}
@@ -66,7 +70,8 @@ public class BuildingStage extends BaseOverlapStage {
 	}
 
 	private void makeScene() {
-		buildingInfo = worldNodeAssets.getVillage(positionManager.getCurrentNode()).getBuilding()
+		buildingInfo = worldNodeAssets
+				.getVillage(positionManager.getCurrentNode()).getBuilding()
 				.get(positionManager.getCurrentBuilding());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		cameraManager.stretchToDevice(this);
@@ -76,16 +81,19 @@ public class BuildingStage extends BaseOverlapStage {
 	private void setNpcList() {
 		npcButtonList = new ArrayList<CompositeItem>();
 		for (final String npcName : buildingInfo.getBuildingNpc()) {
-			CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(npcName);
+			CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(
+					npcName);
 			npcButton.setTouchable(Touchable.enabled);
 			npcButton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y,
+						int pointer, int button) {
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y,
+						int pointer, int button) {
 					eventManager.setCurrentEventNpc(npcName);
 					screenFactory.show(ScreenEnum.GREETING);
 				}
@@ -97,26 +105,50 @@ public class BuildingStage extends BaseOverlapStage {
 	private void setItemList() {
 		gameObjectList = new ArrayList<CompositeItem>();
 		for (final String objectName : buildingInfo.getGameObject()) {
-			final CompositeItem objectButton = sceneLoader.getRoot().getCompositeById(objectName);
+			final GameObject gameObject = eventAssets.getGameObject(objectName);
+			final CompositeItem objectButton = sceneLoader.getRoot()
+					.getCompositeById(objectName);
 			objectButton.setVisible(true);
-			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.getCode(), false);
-			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.getCode(), true);
-			objectButton.setTouchable(Touchable.enabled);
+			setGameObjectVisibility(objectButton, gameObject.getObjectType());
 			objectButton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y,
+						int pointer, int button) {
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.getCode(), true);
-					objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.getCode(), false);
-
-					/* screenFactory.show(ScreenEnum.GREETING); */
+				public void touchUp(InputEvent event, float x, float y,
+						int pointer, int button) {
+					gameObject.setObjectType(GameObjectEnum.PRESSED);
+					eventManager.setCurrentGameObject(gameObject);
+					screenFactory.show(ScreenEnum.GAME_OBJECT);
 				}
 			});
 			gameObjectList.add(objectButton);
+		}
+	}
+
+	private void setGameObjectVisibility(CompositeItem objectButton,
+			GameObjectEnum gameObjectEnum) {
+		switch (gameObjectEnum) {
+			case NORMAL:
+				objectButton.setLayerVisibilty(
+						GameObjectEnum.PRESSED.toString(), false);
+				objectButton.setLayerVisibilty(
+						GameObjectEnum.NORMAL.toString(), true);
+				objectButton.setTouchable(Touchable.enabled);
+				break;
+			case PRESSED:
+				objectButton.setLayerVisibilty(
+						GameObjectEnum.PRESSED.toString(), true);
+				objectButton.setLayerVisibilty(
+						GameObjectEnum.NORMAL.toString(), false);
+				objectButton.setTouchable(Touchable.disabled);
+				break;
+			default:
+				Gdx.app.log("BuildingStage", "NULL GameObjectEnum Type");
+				break;
 		}
 	}
 }

@@ -61,8 +61,8 @@ public class LoadManager {
 		positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
 
 		// FIXME 초기 CurrentMoving 정보를 주입한다.
-		movingInfo.setStartNode("Blackwood");
-		movingInfo.setDestinationNode("Blackwood Forest");
+		movingInfo.setStartNode("blackwood");
+		movingInfo.setDestinationNode("blackwood_Forest");
 		movingInfo.setRoadLength(7);
 		movingInfo.setLeftRoadLength(7);
 		List<String> monsterList = new ArrayList<String>();

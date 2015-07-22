@@ -30,6 +30,8 @@ public class StorySectionManager {
 	private BattleManager battleManager;
 	@Autowired
 	private UnitAssets unitAssets;
+	@Autowired
+	private MusicManager musicManager;
 	private Queue<EventPacket> eventSequenceQueue = new LinkedList<>();
 
 	public void setNewStorySectionAndPlay(int storyNumber) {
@@ -72,6 +74,10 @@ public class StorySectionManager {
 					positionManager.setCurrentNode(eventManager
 							.getCurrentEvent().getEventComponent().get(0));
 					screenFactory.show(ScreenEnum.VILLAGE);
+					runStorySequence();
+					break;
+				case MUSIC:
+					musicManager.setEventMusicAndPlay();
 					runStorySequence();
 					break;
 				default:
