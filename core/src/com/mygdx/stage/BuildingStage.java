@@ -39,8 +39,13 @@ public class BuildingStage extends BaseOverlapStage {
 		initSceneLoader(StaticAssets.rm);
 
 		makeScene();
-		setNpcList();
-		setItemList();
+
+		if (buildingInfo.getBuildingNpc() != null) {
+			setNpcList();
+		}
+		if (buildingInfo.getGameObject() != null) {
+			setItemList();
+		}
 		setExitButton();
 
 		return this;
