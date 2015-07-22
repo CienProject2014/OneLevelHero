@@ -72,18 +72,24 @@ public class MusicManager {
 			MusicCondition musicCondition) {
 		switch (musicCondition) {
 			case WHENEVER:
-				if (musicInfo.getMusic() != null)
-					if (musicInfo.getMusic().isPlaying())
-						stopMusic();
 				int delayTime = 2000;
-				Timer.schedule(new Task() {
-					@Override
-					public void run() {
+				if (checkCurrentMusicIsNotNull()) {
+					if (checkCurrentMusicIsPlaying()) {
+						if (checkIsSameWithCurrentMusic(music)) {
+							//Nothing happened
+						} else {
+							stopMusic();
+							Timer.schedule(new Task() {
+								@Override
+								public void run() {
+								}
+							}, delayTime);
+							setMusic(music);
+							setVolume(volume);
+							playMusic();
+						}
 					}
-				}, delayTime);
-				setMusic(music);
-				setVolume(volume);
-				playMusic();
+				}
 				break;
 			case IF_IS_NOT_PLAYING:
 				if (musicInfo.getMusic() != null) {
@@ -98,6 +104,18 @@ public class MusicManager {
 			default:
 				Gdx.app.error("MusicManager", "incorrect musicCondition");
 		}
+	}
+
+	private boolean checkCurrentMusicIsNotNull() {
+		return musicInfo.getMusic() != null;
+	}
+
+	private boolean checkCurrentMusicIsPlaying() {
+		return musicInfo.getMusic().isPlaying();
+	}
+
+	private boolean checkIsSameWithCurrentMusic(Music music) {
+		return musicInfo.getMusic().equals(music);
 	}
 
 	public void setMusicAndPlay(Music music, MusicCondition musicCondition) {

@@ -63,7 +63,7 @@ public class BattleManager {
 		Actions.delay(2000);
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, x, y);
 		Actions.delay(2000);
-		if (battleInfo.getMonster().getStatus().getHealthPoint() <= 0) {
+		if (battleInfo.getMonster().getStatus().getHp() <= 0) {
 			endBattle(battleInfo.getMonster());
 			Gdx.app.log("BattleManager", "용사팀의 승리!");
 		}
@@ -86,7 +86,7 @@ public class BattleManager {
 		int y = (int) (StaticAssets.windowHeight / 2);
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING, x, y);
 		battle.attack(battleInfo.getMonster(), randomHero);
-		if (randomHero.getStatus().getHealthPoint() <= 0) {
+		if (randomHero.getStatus().getHp() <= 0) {
 			endBattle(battleInfo.getMonster());
 			Gdx.app.log("BattleManager", "용사팀의 패배..!");
 		}
