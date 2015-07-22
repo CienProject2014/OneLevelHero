@@ -22,6 +22,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.model.GridHitbox;
@@ -47,7 +48,10 @@ public class BattleStage extends BaseOneLevelStage {
 	@Autowired
 	private BattleManager battleManager;
 	private Monster monster;
+	@Autowired
 	private StageFactory stageFactory;
+	@Autowired
+	private ScreenFactory screenFactory;
 
 	// Unit array
 	private ArrayList<Unit> units;
@@ -251,7 +255,7 @@ public class BattleStage extends BaseOneLevelStage {
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "스킬!");
 				gridHitbox.hideGrid();
-				stageFactory.makeStage(StageEnum.SKILL);
+				screenFactory.show(ScreenEnum.SKILL);
 			}
 		});
 
@@ -298,13 +302,4 @@ public class BattleStage extends BaseOneLevelStage {
 		addListener();
 
 	}
-
-	public BattleManager getBattleManager() {
-		return battleManager;
-	}
-
-	public void setBattleManager(BattleManager battleManager) {
-		this.battleManager = battleManager;
-	}
-
 }

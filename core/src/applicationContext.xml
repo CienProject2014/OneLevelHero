@@ -179,6 +179,7 @@
 		<property name="uiComponentAssets" ref="uiComponentAssets"></property>
 	</bean>
 	<bean id="saveScreen" class="com.mygdx.screen.SaveScreen" scope="prototype" />
+	<bean id="skillScreen" class="com.mygdx.screen.SkillScreen" scope="prototype"/>
 	<bean id="statusScreen" class="com.mygdx.screen.StatusScreen"
 		scope="prototype" />
 	<bean id="villageScreen" class="com.mygdx.screen.VillageScreen"

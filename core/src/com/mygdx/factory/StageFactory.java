@@ -48,14 +48,15 @@ public class StageFactory {
 			return context.getBean(MonsterStage.class).makeStage();
 		case SELECT_BUTTON:
 			return context.getBean(SelectButtonStage.class).makeStage();
+		case SKILL:
+			return context.getBean(SkillStage.class).makeStage();
+
 		case STATUS:
 			return context.getBean(StatusStage.class).makeStage();
 		case VILLAGE:
 			return context.getBean(VillageStage.class).makeStage();
 		case WORLD_MAP:
 			return context.getBean(WorldMapStage.class).makeStage();
-		case SKILL:
-			return context.getBean(SkillStage.class).makeStage();
 		default:
 			Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
 			return context.getBean(VillageStage.class).makeStage(); // FIXME

@@ -11,7 +11,7 @@ import com.mygdx.manager.AnimationManager;
 public class BattleScreen extends BaseScreen {
 	@Autowired
 	private AnimationManager animationManager;
-	private Stage gameUiStage, characterUiStage, monsterStage, battleStage, skillStage, itemStage;
+	private Stage gameUiStage, characterUiStage, monsterStage, battleStage;
 
 	public BattleScreen() {
 	}
@@ -25,8 +25,6 @@ public class BattleScreen extends BaseScreen {
 		// FIXME GameUi와 CharacherUi의 분리가 필요
 		gameUiStage.draw();
 		battleStage.draw();
-		skillStage.draw();
-		itemStage.draw();
 
 		// Animation이 진행중일때는 사용자의 입력에 대한 행동을 수행하지 않음
 
@@ -37,9 +35,6 @@ public class BattleScreen extends BaseScreen {
 			characterUiStage.act(delta);
 			gameUiStage.act();
 			battleStage.act();
-			skillStage.act();
-			itemStage.act();
-
 		}
 	}
 
@@ -62,8 +57,6 @@ public class BattleScreen extends BaseScreen {
 		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
 		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
 		battleStage = stageFactory.makeBattleStage();
-		skillStage = stageFactory.makeStage(StageEnum.SKILL);
-		itemStage = stageFactory.makeStage(StageEnum.ITEM);
 
 		setInputProcessor();
 		// musicManager.setBattleMusicAndPlay();
@@ -75,8 +68,6 @@ public class BattleScreen extends BaseScreen {
 		multiplexer.addProcessor(1, characterUiStage);
 		multiplexer.addProcessor(2, monsterStage);
 		multiplexer.addProcessor(3, battleStage);
-		multiplexer.addProcessor(4, skillStage);
-		multiplexer.addProcessor(5, itemStage);
 
 		Gdx.input.setInputProcessor(multiplexer);
 	}
