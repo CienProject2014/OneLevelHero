@@ -110,6 +110,9 @@ public class BattleStage extends BaseOneLevelStage {
 	private Unit getCurrentActor() {
 		Unit unit = orderedUnits.poll();
 		orderedUnits.add(unit);
+		if (unit instanceof Hero) {
+			battleManager.setCurrentActor((Hero) unit);
+		}
 		return unit;
 	}
 

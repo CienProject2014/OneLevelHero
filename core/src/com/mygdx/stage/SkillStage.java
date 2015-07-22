@@ -1,7 +1,10 @@
 package com.mygdx.stage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -11,11 +14,17 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.manager.BattleManager;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
+import com.uwsoft.editor.renderer.actor.LabelItem;
 import com.uwsoft.editor.renderer.data.LabelVO;
 
 public class SkillStage extends BaseOverlapStage {
+	@Autowired
+	private BattleManager battleManager;
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("EventStage");
 	private Camera cam;
 	private ImageItem largeImage;
 	private List<LabelVO> labels;
@@ -23,6 +32,7 @@ public class SkillStage extends BaseOverlapStage {
 
 	private List<CompositeItem> highlightButton;
 	private List<CompositeItem> skillTypeButton;
+	private String CUT_01 = "cut_01"; //FIXME
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
@@ -31,41 +41,53 @@ public class SkillStage extends BaseOverlapStage {
 		setCamera();
 		setSkillType();
 		setHighlight();
-		labelSet();
+		setLabel();
 
 		return this;
 	}
 
-	private void labelSet() {
-		// labels = sceneLoader.getRoot().dataVO.composite.sLabels;
-		// LabelItem labelItem =
-		// sceneLoader.getRoot().getLabelById(labels.get(0).itemIdentifier);
-		// labelItem.setText(partyInfo.getBattleMemberList().get(partyInfo.getSelectedInedex()).getName());
+	private void setLabel() {
 
-		// for (int i = 1; i < labels.size(); i++) {
-		// labelItem =
-		// sceneLoader.getRoot().getLabelById(labels.get(i).itemIdentifier);
-		// labelItem.setText(
-		// partyInfo.getBattleMemberList().get(partyInfo.getSelectedInedex()).getStatus().getStatusList()[i]);
-		// }
+		labels = sceneLoader.getRoot().dataVO.composite.sLabels;
+		LabelItem labelItem = sceneLoader.getRoot().getLabelById(
+				labels.get(0).itemIdentifier);
+		labelItem.setText(battleManager.getCurrentActior().getSkills()
+				.get(CUT_01).getName());
+
+		labelItem.setFontScale(1.0f);
+		labelItem.setWrap(true);
+		labelItem.setSize(uiConstantsMap.get("scriptWidth"),
+				uiConstantsMap.get("scriptHeight"));
+
+		/*for (int i = 1; i < labels.size(); i++) {
+			labelItem = sceneLoader.getRoot().getLabelById(
+					labels.get(i).itemIdentifier);
+			labelItem.setText(partyInfo.getBattleMemberList()
+					.get(partyInfo.getSelectedInedex()).getStatus()
+					.getStatusList()[i]);
+		}*/
 	}
 
 	private void setSkillType() {
 		// skillTypeButton = new ArrayList<CompositeItem>();
-		final CompositeItem skillTypeButton_01 = sceneLoader.getRoot().getCompositeById("ability");
-		final CompositeItem skillTypeButton_02 = sceneLoader.getRoot().getCompositeById("magic");
+		final CompositeItem skillTypeButton_01 = sceneLoader.getRoot()
+				.getCompositeById("ability");
+		final CompositeItem skillTypeButton_02 = sceneLoader.getRoot()
+				.getCompositeById("magic");
 
 		skillTypeButton_01.setLayerVisibilty("Default", true);
 		skillTypeButton_01.setLayerVisibilty("pressed", false);
 		skillTypeButton_01.setTouchable(Touchable.enabled);
 		skillTypeButton_01.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				skillTypeButton_01.setLayerVisibilty("pressed", true);
 				skillTypeButton_01.setLayerVisibilty("Default", false);
 				skillTypeButton_02.setLayerVisibilty("Default", true);
@@ -79,12 +101,14 @@ public class SkillStage extends BaseOverlapStage {
 		skillTypeButton_02.setTouchable(Touchable.enabled);
 		skillTypeButton_02.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				skillTypeButton_02.setLayerVisibilty("pressed", true);
 				skillTypeButton_02.setLayerVisibilty("Default", false);
 				skillTypeButton_01.setLayerVisibilty("Default", true);
@@ -97,14 +121,22 @@ public class SkillStage extends BaseOverlapStage {
 
 	private void setHighlight() {
 		highlightButton = new ArrayList<CompositeItem>();
-		final CompositeItem highlight_01 = sceneLoader.getRoot().getCompositeById("highlight_01");
-		final CompositeItem highlight_02 = sceneLoader.getRoot().getCompositeById("highlight_02");
-		final CompositeItem highlight_03 = sceneLoader.getRoot().getCompositeById("highlight_03");
-		final CompositeItem highlight_04 = sceneLoader.getRoot().getCompositeById("highlight_04");
-		final CompositeItem highlight_05 = sceneLoader.getRoot().getCompositeById("highlight_05");
-		final CompositeItem highlight_06 = sceneLoader.getRoot().getCompositeById("highlight_06");
-		final CompositeItem highlight_07 = sceneLoader.getRoot().getCompositeById("highlight_07");
-		final CompositeItem useButton = sceneLoader.getRoot().getCompositeById("use");
+		final CompositeItem highlight_01 = sceneLoader.getRoot()
+				.getCompositeById("highlight_01");
+		final CompositeItem highlight_02 = sceneLoader.getRoot()
+				.getCompositeById("highlight_02");
+		final CompositeItem highlight_03 = sceneLoader.getRoot()
+				.getCompositeById("highlight_03");
+		final CompositeItem highlight_04 = sceneLoader.getRoot()
+				.getCompositeById("highlight_04");
+		final CompositeItem highlight_05 = sceneLoader.getRoot()
+				.getCompositeById("highlight_05");
+		final CompositeItem highlight_06 = sceneLoader.getRoot()
+				.getCompositeById("highlight_06");
+		final CompositeItem highlight_07 = sceneLoader.getRoot()
+				.getCompositeById("highlight_07");
+		final CompositeItem useButton = sceneLoader.getRoot().getCompositeById(
+				"use");
 
 		highlight_01.setLayerVisibilty("pressed", false);
 		highlight_02.setLayerVisibilty("pressed", false);
@@ -129,12 +161,14 @@ public class SkillStage extends BaseOverlapStage {
 
 		highlight_01.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -148,12 +182,14 @@ public class SkillStage extends BaseOverlapStage {
 		});
 		highlight_02.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -167,12 +203,14 @@ public class SkillStage extends BaseOverlapStage {
 		});
 		highlight_03.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -186,12 +224,14 @@ public class SkillStage extends BaseOverlapStage {
 		});
 		highlight_04.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -205,12 +245,14 @@ public class SkillStage extends BaseOverlapStage {
 		});
 		highlight_05.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -224,12 +266,14 @@ public class SkillStage extends BaseOverlapStage {
 		});
 		highlight_06.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -243,12 +287,14 @@ public class SkillStage extends BaseOverlapStage {
 		});
 		highlight_07.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -262,13 +308,15 @@ public class SkillStage extends BaseOverlapStage {
 		});
 		useButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				useButton.setLayerVisibilty("Default", false);
 				useButton.setLayerVisibilty("pressed", true);
 				return true;
 			}
 
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				useButton.setLayerVisibilty("Default", true);
 				useButton.setLayerVisibilty("pressed", false);
 			}

@@ -45,6 +45,14 @@ public class BattleManager {
 		positionManager.goCurrentPlace();
 	}
 
+	public void setCurrentActor(Hero hero) {
+		battleInfo.setCurrentActor(hero);
+	}
+
+	public Hero getCurrentActior() {
+		return battleInfo.getCurrentActor();
+	}
+
 	public void endBattle(Unit loseUnit) {
 		if (loseUnit instanceof Monster) {
 			battleInfo.setBattleState(BattleStateEnum.WIN);
