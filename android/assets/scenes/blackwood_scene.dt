@@ -72,7 +72,7 @@
     ],
     "sComposites": [
       {
-        "itemIdentifier": "arrow_01",
+        "itemIdentifier": "1to5",
         "x": 301.00003,
         "y": 1568,
         "zIndex": 1,
@@ -150,7 +150,7 @@
         }
       },
       {
-        "itemIdentifier": "arrow_02",
+        "itemIdentifier": "1to17",
         "x": 1655,
         "y": 1354,
         "zIndex": 5,
@@ -306,7 +306,7 @@
         }
       },
       {
-        "itemIdentifier": "arrow_03",
+        "itemIdentifier": "1to2",
         "x": 275,
         "y": 294.5,
         "zIndex": 10,
@@ -345,7 +345,7 @@
         }
       },
       {
-        "itemIdentifier": "arrow_04",
+        "itemIdentifier": "1to16",
         "x": 949,
         "y": 10.500015,
         "zIndex": 12,

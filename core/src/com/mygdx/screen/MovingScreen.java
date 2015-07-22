@@ -15,7 +15,7 @@ public class MovingScreen extends BaseScreen {
 		super.render(delta);
 
 		movingStage.draw();
-
+		movingStage.act();
 		gameUiStage.draw();
 		/*
 		 * movingLabel.setText(movingInfo.getDestinationNode() + "까지" +

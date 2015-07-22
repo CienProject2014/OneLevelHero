@@ -7,14 +7,14 @@
         "roadLength": "7",
         "arrowName": "10to3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "dogbenefit_camp": {
         "roadLength": "6",
         "arrowName" : "10to21",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -27,14 +27,14 @@
         "roadLength": "7",
         "arrowName" : "3to10",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "retreat_stone": {
         "roadLength": "2",
         "arrowName" : "3to20",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -47,7 +47,7 @@
       	"arrowName" : "8to13",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -60,28 +60,28 @@
       	"arrowName" : "2to13",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "middle_ridge": {
       	"arrowName": "2to5",
         "roadLength": "10",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "blackwood": {
       	"arrowName" : "2to1",
         "roadLength": "13",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "Redrose Castle": {
       	"arrowName" : "2to6",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -94,14 +94,14 @@
       	"arrowName" : "6to2",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "cemetery": {
       	"arrowName" : "7to22",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -114,14 +114,14 @@
         "arrowName" : "9to24",
         "roadLength": "6",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "statue_of_golden_beetle_statue": {
         "roadLength": "7",
         "arrowName" : "9to25",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -134,14 +134,14 @@
       	"arrowName" : "4to23",
         "roadLength": "11",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "statue_of_golden_beetle_statue": {
       	"arrowName" : "4to25",
         "roadLength": "7",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -154,28 +154,28 @@
       	"arrowName" : "1to2",
         "roadLength": "13",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "middle_ridge": {
       	"arrowName" : "1to5",
         "roadLength": "5",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "blackwood_forest": {
       	"arrowName" : "1to17",
         "roadLength": "4",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "devil_castle": {
       	"arrowName" : "1to16",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -188,14 +188,14 @@
       	"arrowName" : "6to5",
         "roadLength": "12",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "golden_lake": {
       	"arrowName" : "6to18",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -213,21 +213,21 @@
       	"arrowName" : "5to2",
         "roadLength": "10",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "vaical_castle": {
       	"arrowName" : "5to6",
         "roadLength": "12",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "blackwood": {
       	"arrowName" : "5to1",
         "roadLength": "5",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -240,7 +240,7 @@
       	"arrowName" : "12to20",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -253,14 +253,14 @@
       	"arrowName" : "13to8",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "cobweb": {
       	"arrowName" : "13to2",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -273,14 +273,14 @@
       	"arrowName" : "14to22",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "entrance_of_the_temple_of_moerae": {
         "arrowName" : "14to24",
         "roadLength": "5",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -293,7 +293,7 @@
         "arrowName" : "15to24",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -306,7 +306,7 @@
         "arrowName" : "15to19",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -319,7 +319,7 @@
       	"arrowName" : "15to16",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -332,14 +332,14 @@
       	"arrowName" : "17to1",
         "roadLength": "4",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "vaical_castle": {
       	"arrowName" : "17to6",
         "roadLength": "4",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -352,7 +352,7 @@
       	"arrowName" : "18to6",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -365,21 +365,21 @@
       	"arrowName" : "20to12",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "oberon": {
       	"arrowName" : "20to3",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "dogbenefit_camp": {
       	"arrowName" : "20to21",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -392,21 +392,21 @@
       	"arrowName" : "21to10",
         "roadLength": "6",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "retreat_stone": {
       	"arrowName" : "21to20",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "caravanserial_place": {
       	"arrowName" : "21to23",
         "roadLength": "17",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -419,21 +419,21 @@
       	"arrowName" : "22to7",
         "roadLength": "2",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "elven_forest": {
       	"arrowName" : "22to14",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "caravanserial_place": {
       	"arrowName" : "22to23",
         "roadLength": "4",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -446,21 +446,21 @@
       	"arrowName" : "23to21",
         "roadLength": "17",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "cemetery": {
       	"arrowName" : "23to22",
         "roadLength": "4",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "southcape": {
       	"arrowName" : "23to4",
         "roadLength": "11",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -473,21 +473,21 @@
       	"arrowName" : "24to14",
         "roadLength": "5",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "temple_of_moerae": {
       	"arrowName" : "24to15",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "mirage_port": {
       	"arrowName" : "24to9",
         "roadLength": "6",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }
@@ -500,21 +500,21 @@
       	"arrowName" : "25to9",
         "roadLength": "7",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "cape_of_tempest": {
       	"arrowName" : "25to19",
         "roadLength": "3",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       },
       "southcape": {
       	"arrowName" : "25to4",
         "roadLength": "7",
         "roadMonster": [
-          "assassin girl"
+          "assassin_girl"
         ]
       }
     }

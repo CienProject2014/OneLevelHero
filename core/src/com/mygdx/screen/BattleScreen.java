@@ -59,7 +59,7 @@ public class BattleScreen extends BaseScreen {
 		battleStage = stageFactory.makeBattleStage();
 
 		setInputProcessor();
-		// musicManager.setBattleMusicAndPlay();
+		//musicManager.setBattleMusicAndPlay();
 	}
 
 	private void setInputProcessor() {

@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
@@ -31,7 +32,7 @@ public class MovingStage extends BaseOneLevelStage {
 			.get("MovingStage");
 
 	private Stage stage;
-
+	private Label movingLabel;
 	private ImageButton goButton;
 	private ImageButton backButton;
 	private Texture texture = new Texture(
@@ -40,6 +41,8 @@ public class MovingStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
+		movingLabel = new Label("Point", uiComponentAssets.getSkin());
+		movingLabel.setColor(0, 0, 0, 1);
 
 		stage = new Stage();
 		// 초기화
@@ -53,8 +56,16 @@ public class MovingStage extends BaseOneLevelStage {
 		Gdx.input.setInputProcessor(stage);
 
 		tableStack.add(background);
+		tableStack.add(movingLabel);
 		tableStack.add(makeTable());
 		return this;
+	}
+
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+		movingLabel.setText(movingManager.getDestinationNode() + "까지"
+				+ movingManager.getLeftRoadLength());
 	}
 
 	// 테이블 디자인

@@ -20,6 +20,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
@@ -159,6 +160,7 @@ public class GameUiStage extends BaseOneLevelStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
+				screenFactory.show(ScreenEnum.WORLD_MAP);
 			}
 
 		});

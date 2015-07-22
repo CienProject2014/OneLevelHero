@@ -86,4 +86,13 @@ public class MovingManager {
 		return (movingInfo.getRoadLength() <= movingInfo.getLeftRoadLength()) ? true
 				: false;
 	}
+
+	public String getDestinationNode() {
+		return movingInfo.getDestinationNode();
+	}
+
+	public String getLeftRoadLength() {
+		return String.valueOf(movingInfo.getLeftRoadLength());
+	}
+
 }
