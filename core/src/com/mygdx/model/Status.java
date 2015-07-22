@@ -48,19 +48,19 @@ public class Status {
 		this.magicDefense = magicDefense;
 	}
 
-	public int getHealthPoint() {
+	public int getHp() {
 		return healthPoint;
 	}
 
-	public void setHealthPoint(int healthPoint) {
+	public void setHp(int healthPoint) {
 		this.healthPoint = healthPoint;
 	}
 
-	public int getMaxHealthPoint() {
+	public int getMaxHp() {
 		return maxHealthPoint;
 	}
 
-	public void setMaxHealthPoint(int maxHealthPoint) {
+	public void setMaxHp(int maxHealthPoint) {
 		this.maxHealthPoint = maxHealthPoint;
 	}
 
