@@ -87,6 +87,7 @@
 	<bean id="endingScreen" class="com.mygdx.screen.EndingScreen"
 		scope="prototype"/>
 	<bean id="eventScreen" class="com.mygdx.screen.EventScreen" scope="prototype"/>
+	<bean id="gameObjectScreen" class="com.mygdx.screen.GameObjectScreen" scope="prototype"/>
 	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen"
 		scope="prototype"/>
 	<bean id="loadScreen" class="com.mygdx.screen.LoadScreen" scope="prototype"/>
@@ -120,8 +121,9 @@
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage"
 		scope="prototype"/>
 	<bean id="eventStage" class="com.mygdx.stage.EventStage" scope="prototype"/>
+	<bean id="gameObjectStage" class="com.mygdx.stage.GameObjectStage" scope="prototype"/>
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype"/>
-	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
+		<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage"
 		scope="prototype" />
 	<bean id="selectComponentStage" class="com.mygdx.stage.SelectComponentStage"

@@ -28,5 +28,8 @@
   },
   "skill_json":{
   	"filePath" : "data/event/skill.json"
+  },
+  "game_object_json":{
+  	"filePath" : "data/event/game_object.json"
   }
 }

@@ -1,14 +1,16 @@
 package com.mygdx.model;
 
+import com.mygdx.enums.GameObjectEnum;
+
 public class GameObject extends EventElement {
-	private String objectType;
+	private GameObjectEnum objectType;
 	private Event objectEvent;
 
-	public String getObjectType() {
+	public GameObjectEnum getObjectType() {
 		return objectType;
 	}
 
-	public void setObjectType(String objectType) {
+	public void setObjectType(GameObjectEnum objectType) {
 		this.objectType = objectType;
 	}
 
