@@ -42,12 +42,14 @@ public class VillageScreen extends BaseScreen {
 
 	public VillageScreen() {
 		// 마을 이름을 받는 곳이 필요함
-		villageName = "Blackwood";
+		villageName = "blackwood";
 	}
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
+
+		villageStage.act();
 
 		villageStage.draw();
 		gameUiStage.draw();
@@ -76,8 +78,6 @@ public class VillageScreen extends BaseScreen {
 
 	@Override
 	public void hide() {
-		gameUiStage.dispose();
-		villageStage.dispose();
 		dispose();
 	}
 

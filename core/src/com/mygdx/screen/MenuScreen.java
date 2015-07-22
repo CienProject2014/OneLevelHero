@@ -35,21 +35,4 @@ public class MenuScreen extends BaseScreen {
 
 		Gdx.input.setInputProcessor(stage);
 	}
-
-	public MusicAssets getMusicAssets() {
-		return musicAssets;
-	}
-
-	public void setMusicAssets(MusicAssets musicAssets) {
-		this.musicAssets = musicAssets;
-	}
-
-	public SoundInfo getSoundInfo() {
-		return soundInfo;
-	}
-
-	public void setSoundInfo(SoundInfo soundInfo) {
-		this.soundInfo = soundInfo;
-	}
-
 }

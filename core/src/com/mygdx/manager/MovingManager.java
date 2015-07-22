@@ -1,14 +1,13 @@
 package com.mygdx.manager;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.MovingInfo;
-import com.mygdx.currentState.PositionInfo;
-import com.mygdx.enums.PlaceEnum;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.model.WorldNode;
 
 public class MovingManager {
 	@Autowired
@@ -16,11 +15,28 @@ public class MovingManager {
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
-	private PositionInfo positionInfo;
-	@Autowired
 	private MovingInfo movingInfo;
 	@Autowired
+	private PositionManager positionManager;
+	@Autowired
 	private EncounterManager encounterManager;
+
+	public List<String> getRoadMonsters() {
+		return movingInfo.getRoadMonsterList();
+	}
+
+	public void createMovingInfo(String destinationNode, WorldNode worldNodeInfo) {
+		movingInfo.setStartNode(positionManager.getCurrentNode());
+		movingInfo.setDestinationNode(destinationNode);
+		movingInfo.setRoadLength(worldNodeInfo.getConnection()
+				.get(destinationNode).getroadLength());
+		movingInfo.setLeftRoadLength(worldNodeInfo.getConnection()
+				.get(destinationNode).getroadLength());
+		movingInfo.setRoadMonsterList(worldNodeInfo.getConnection()
+				.get(destinationNode).getRoadMonster());
+		movingInfo.setArrowName(worldNodeInfo.getConnection()
+				.get(destinationNode).getArrowName());
+	}
 
 	public void goForward() {
 		if (isRoadLeft()) {
@@ -28,7 +44,7 @@ public class MovingManager {
 			movingRoad();
 		} else {
 			// 목적지 노드에 도착해서 현재 위치로 설정함
-			positionInfo.setCurrentNode(movingInfo.getDestinationNode());
+			positionManager.setCurrentNode(movingInfo.getDestinationNode());
 			goIntoCurrentNode();
 		}
 	}
@@ -39,7 +55,7 @@ public class MovingManager {
 			movingRoad();
 		} else {
 			// 원래 노드로 다시 돌아옴
-			positionInfo.setCurrentNode(movingInfo.getStartNode());
+			positionManager.setCurrentNode(movingInfo.getStartNode());
 			goIntoCurrentNode();
 		}
 	}
@@ -59,23 +75,7 @@ public class MovingManager {
 	}
 
 	private void goIntoCurrentNode() {
-		String placeType = worldMapAssets.getWorldNodeInfo(
-				positionInfo.getCurrentNode()).getType();
-		switch (PlaceEnum.findPlaceEnum(placeType)) {
-			case VILLAGE:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			case DUNGEON:
-				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-				break;
-			case FORK:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			default:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				Gdx.app.debug("MovingManager", "CurrentNode 타입 오류");
-				break;
-		}
+		positionManager.goCurrentPlace();
 	}
 
 	private boolean isRoadLeft() {
@@ -85,45 +85,5 @@ public class MovingManager {
 	private boolean isRoadFull() {
 		return (movingInfo.getRoadLength() <= movingInfo.getLeftRoadLength()) ? true
 				: false;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
-	}
-
-	public EncounterManager getEncounterManager() {
-		return encounterManager;
-	}
-
-	public void setEncounterManager(EncounterManager encounterManager) {
-		this.encounterManager = encounterManager;
-	}
-
-	public WorldMapAssets getWorldMapAssets() {
-		return worldMapAssets;
-	}
-
-	public void setWorldMapAssets(WorldMapAssets worldMapAssets) {
-		this.worldMapAssets = worldMapAssets;
 	}
 }

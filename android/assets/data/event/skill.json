@@ -1,0 +1,13 @@
+{
+  "cut_01": {
+    "name": "7단 연속 베기",
+    "skillType" : "tech",
+    "target": "monster",
+    "costCasting": "0",
+    "costGauge": "0",
+    "elementType": "none",
+    "hitboxSize": "3",
+    "damage": "100",
+    "skillEffect": {}
+  }
+}

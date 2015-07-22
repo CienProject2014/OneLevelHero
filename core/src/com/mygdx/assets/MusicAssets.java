@@ -16,6 +16,7 @@ public class MusicAssets implements FileAssetsInitializable {
 	private Map<String, Music> worldNodeMusicMap = new HashMap<>();
 	private Map<String, Music> battleMusicMap = new HashMap<>();
 	private Map<String, Music> movingMusicMap = new HashMap<>();
+	private Map<String, Music> eventMusicMap = new HashMap<>();
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -57,6 +58,16 @@ public class MusicAssets implements FileAssetsInitializable {
 		for (Entry<String, String> entry : movingMusicStringMap.entrySet()) {
 			movingMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
 		}
+
+		// Event MusicList
+		String eventMusicJsonString = filePathMap.get(
+				JsonEnum.EVENT_MUSIC_LIST.toString()).loadFile();
+		Map<String, String> eventMusicStringMap = new Json().fromJson(
+				HashMap.class, eventMusicJsonString);
+		for (Entry<String, String> entry : eventMusicStringMap.entrySet()) {
+			eventMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
+		}
+
 	}
 
 	public Music getMusic(String musicString) {
@@ -67,11 +78,15 @@ public class MusicAssets implements FileAssetsInitializable {
 		return worldNodeMusicMap.get(musicString);
 	}
 
-	public Music getBattleMusicMap(String musicString) {
+	public Music getBattleMusic(String musicString) {
 		return battleMusicMap.get(musicString);
 	}
 
-	public Music getMovingMusicMap(String musicString) {
+	public Music getMovingMusic(String musicString) {
 		return movingMusicMap.get(musicString);
+	}
+
+	public Music getEventMusic(String musicString) {
+		return eventMusicMap.get(musicString);
 	}
 }

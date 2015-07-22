@@ -71,12 +71,4 @@ public class BattleScreen extends BaseScreen {
 
 		Gdx.input.setInputProcessor(multiplexer);
 	}
-
-	public AnimationManager getAnimationManager() {
-		return animationManager;
-	}
-
-	public void setAnimationManager(AnimationManager animationManager) {
-		this.animationManager = animationManager;
-	}
 }

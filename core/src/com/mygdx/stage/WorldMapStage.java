@@ -44,13 +44,13 @@ public class WorldMapStage extends BaseOverlapStage {
 		 */
 		currentPosition = sceneLoader.getRoot().getCompositeById("current");
 		currentNode = sceneLoader.getRoot().getImageById(
-				positionInfo.getCurrentNode());// 카메라 위치를 현재노드로 잡기 위하여 가져옴
+				positionManager.getCurrentNode());// 카메라 위치를 현재노드로 잡기 위하여 가져옴
 		currentPosition.setX(currentNode.getX() - SET_POSITION);
 		currentPosition.setY(currentNode.getY() - SET_POSITION);
 		// arrow = sceneLoader.getRoot().getCompositeById("1to2");
 
 		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
-		String currentNode = positionInfo.getCurrentNode();
+		String currentNode = positionManager.getCurrentNode();
 		Map<String, Connection> connectionMap = worldMapAssets
 				.getWorldNodeInfo(currentNode).getConnection();
 		for (final Entry<String, Connection> connection : connectionMap
@@ -112,21 +112,4 @@ public class WorldMapStage extends BaseOverlapStage {
 
 		getCamera().translate(xvalue, yvalue, 0);
 	}
-
-	public WorldMapManager getWorldMapManager() {
-		return worldMapManager;
-	}
-
-	public void setWorldMapManager(WorldMapManager worldMapManager) {
-		this.worldMapManager = worldMapManager;
-	}
-
-	public WorldMapAssets getWorldMapAssets() {
-		return worldMapAssets;
-	}
-
-	public void setWorldMapAssets(WorldMapAssets worldMapAssets) {
-		this.worldMapAssets = worldMapAssets;
-	}
-
 }

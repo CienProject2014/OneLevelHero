@@ -1,9 +1,12 @@
 package com.mygdx.model;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 
 public class NPC extends EventElement {
 	private Event greeting;
+	private ArrayList<Event> events;
 
 	public Event getEvent(int eventNo) {
 		try {
@@ -13,6 +16,14 @@ public class NPC extends EventElement {
 					String.format("eventNo %d not exist", eventNo));
 			return null;
 		}
+	}
+
+	public ArrayList<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(ArrayList<Event> events) {
+		this.events = events;
 	}
 
 	public Event getGreeting() {

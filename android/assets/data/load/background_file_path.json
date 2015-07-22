@@ -1,16 +1,16 @@
 {
-  "scene1": {
-    "filePath": "texture/prologue/scene1.jpg"
+  "cg_prologue_01": {
+    "filePath": "texture/prologue/cg_prologue_01.png"
   },
-  "scene2": {
-    "filePath": "texture/prologue/scene2.jpg"
+  "cg_prologue_02": {
+    "filePath": "texture/prologue/cg_prologue_02.png"
   },
-  "scene3": {
-    "filePath": "texture/prologue/scene3.jpg"
-  },
-  "scene4": {
-    "filePath": "texture/prologue/scene4.jpg"
-  },
+  "cg_prologue_03": {
+    "filePath": "texture/prologue/cg_prologue_03.png"
+  },	
+  "cg_prologue_04": {
+    "filePath": "texture/prologue/cg_prologue_04.png"
+  },  
   "prog_team1": {
     "filePath": "texture/credit/prog_team1.png"
   },
@@ -26,13 +26,25 @@
   "main_background": {
     "filePath": "texture/MainMenu_Background.png"
   },
-  "waiji_background":{
-  	"filePath" : "texture/village/blackwood/waiji_background.png"
+  "waiji_background": {
+    "filePath": "texture/village/blackwood/waiji_background.png"
   },
-  "blackwood_bg_701":{
-  	"filePath" : "texture/village/blackwood/blackwood_bg_701.png"
+  "blackwood_bg_701": {
+    "filePath": "texture/village/blackwood/blackwood_bg_701.png"
   },
-   "blackwood_bg_702":{
-  	"filePath" : "texture/village/blackwood/blackwood_bg_702.png"
+  "blackwood_bg_702": {
+    "filePath": "texture/village/blackwood/blackwood_bg_702.png"
+  },
+  "black_background": {
+    "filePath": "texture/prologue/black_background.png"
+  },
+  "bg_devilcastle_01": {
+    "filePath": "texture/prologue/bg_devilcastle_01.png"
+  },
+  "bg_blackwood_01": {
+    "filePath": "texture/background/bg_blackwood_01.png"
+  },
+  "bg_blackwood_03": {
+    "filePath": "texture/background/bg_blackwood_03.png"
   }
 }

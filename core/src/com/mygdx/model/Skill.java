@@ -1,17 +1,17 @@
 package com.mygdx.model;
 
+import com.mygdx.enums.SkillTypeEnum;
+
 public class Skill {
-	private String name; // 스킬 이름
-	private int cost; // 행동력 소모량
-	private String definition; // 스킬 설명
-
-	public int getCost() {
-		return cost;
-	}
-
-	public void setCost(int cost) {
-		this.cost = cost;
-	}
+	private String name;
+	private String target;
+	private SkillTypeEnum skillType;
+	private int costCasting;
+	private int costGauge;
+	private String elementType;
+	private int hitboxSize;
+	private int damage;
+	private SkillEffect skillEffect;
 
 	public String getName() {
 		return name;
@@ -21,17 +21,67 @@ public class Skill {
 		this.name = name;
 	}
 
-	public String getDefinition() {
-		return definition;
+	public String getTarget() {
+		return target;
 	}
 
-	public void setDefinition(String definition) {
-		this.definition = definition;
+	public void setTarget(String target) {
+		this.target = target;
 	}
 
-	public String[] getSkillList() {
-		String[] array = { name, String.valueOf(cost), definition };
+	public SkillTypeEnum getSkillType() {
+		return skillType;
+	}
 
-		return array;
+	public void setSkillType(SkillTypeEnum skillType) {
+		this.skillType = skillType;
+	}
+
+	public int getCostCasting() {
+		return costCasting;
+	}
+
+	public void setCostCasting(int costCasting) {
+		this.costCasting = costCasting;
+	}
+
+	public int getCostGauge() {
+		return costGauge;
+	}
+
+	public void setCostGauge(int costGauge) {
+		this.costGauge = costGauge;
+	}
+
+	public String getElementType() {
+		return elementType;
+	}
+
+	public void setElementType(String elementType) {
+		this.elementType = elementType;
+	}
+
+	public int getHitboxSize() {
+		return hitboxSize;
+	}
+
+	public void setHitboxSize(int hitboxSize) {
+		this.hitboxSize = hitboxSize;
+	}
+
+	public int getDamage() {
+		return damage;
+	}
+
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+
+	public SkillEffect getSkillEffect() {
+		return skillEffect;
+	}
+
+	public void setSkillEffect(SkillEffect skillEffect) {
+		this.skillEffect = skillEffect;
 	}
 }

@@ -5,10 +5,6 @@ import com.mygdx.enums.GameObjectEnum;
 public class GameObject extends EventElement {
 	private GameObjectEnum objectType;
 	private Event objectEvent;
-	
-	GameObject(){
-		objectType = GameObjectEnum.NORMAL;
-	}
 
 	public Event getObjectEvent() {
 		return objectEvent;

@@ -1,56 +1,41 @@
 {
-  "rabbit1": {
-    "filePath": "texture/prologue/rabbit1.png"
-  },
-  "rabbit2": {
-    "filePath": "texture/prologue/rabbit2.png"
-  },
-  "rabbit3": {
-    "filePath": "texture/prologue/rabbit3.png"
-  },
   "nothing_image": {
     "filePath": "texture/character/nothing_image.png"
   },
-  "yongsa_202": {
-    "filePath": "texture/character/yongsa_202.png"
+  "npc_waiji" : {
+  	"filePath" : "texture/character/npc_waiji.png"
   },
-  "yongsa_204": {
-    "filePath": "texture/character/yongsa_204.png"
+  "bust_yongsa_01":{
+  	"filePath" : "texture/character/bust_yongsa_01.png"
   },
-  "yongsa_206": {
-    "filePath": "texture/character/yongsa_206.png"
+  "bust_yongsa_02": {
+    "filePath": "texture/character/bust_yongsa_02.png"
   },
-  "yongsa_207": {
-    "filePath": "texture/character/yongsa_207.png"
-  },  
-  "yongsa_301":{
-  	"filePath" : "texture/character/yongsa_301.png"
+  "bust_yongsa_04": {
+    "filePath": "texture/character/bust_yongsa_04.png"
   },
-  "yongsa_401":{
-  	"filePath" : "texture/character/yongsa_401.png"
+  "bust_yongsa_06": {
+    "filePath": "texture/character/bust_yongsa_06.png"
   },
-  "yongsa_501":{
-  	"filePath" : "texture/character/yongsa_501.png"
+  "face_parath":{
+  	"filePath" : "texture/character/face_parath.png"
   },
-  "parath_202": {
-    "filePath": "texture/character/parath_202.png"
+  "face_yongsa":{
+  	"filePath" : "texture/character/face_yongsa.png"
   },
-  "parath_203": {
-    "filePath": "texture/character/parath_203.png"
+  "bust_parath_01": {
+    "filePath": "texture/character/bust_parath_01.png"
   },
-  "parath_301":{
-  	"filePath" : "texture/character/parath_301.png"
+  "bust_mawang_01":{
+  	"filePath" : "texture/character/bust_mawang_01.png"
   },
-  "parath_401":{
-  	"filePath" : "texture/character/parath_401.png"
+  "bust_waiji_02": {
+    "filePath": "texture/character/bust_waiji_02.png"
   },
-  "parath_501":{
-  	"filePath":"texture/character/parath_501.png"
+  "bust_lilis_01":{
+  	"filePath" : "texture/character/bust_lilis_01.png"
   },
-  "waiji_202": {
-    "filePath": "texture/character/waiji_202.png"
-  },
-  "waiji_601": {
-    "filePath": "texture/character/waiji_601.png"
+  "chest":{
+  	"filePath" : "texture/game_object/chest.png"
   }
 }
