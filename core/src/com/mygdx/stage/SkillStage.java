@@ -15,6 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.EventCheckManager;
+import com.mygdx.manager.StorySectionManager;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
@@ -23,6 +25,10 @@ import com.uwsoft.editor.renderer.data.LabelVO;
 public class SkillStage extends BaseOverlapStage {
 	@Autowired
 	private BattleManager battleManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
+	@Autowired
+	private EventCheckManager eventCheckManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("EventStage");
 	private Camera cam;
@@ -51,13 +57,12 @@ public class SkillStage extends BaseOverlapStage {
 		labels = sceneLoader.getRoot().dataVO.composite.sLabels;
 		LabelItem labelItem = sceneLoader.getRoot().getLabelById(
 				labels.get(0).itemIdentifier);
-		labelItem.setText(battleManager.getCurrentActior().getSkills()
+		/*labelItem.setText(battleManager.getCurrentActior().getSkills()
 				.get(CUT_01).getName());
-
+		 */
+		labelItem.setText("7-Cutting"); //FIXME
 		labelItem.setFontScale(1.0f);
-		labelItem.setWrap(true);
-		labelItem.setSize(uiConstantsMap.get("scriptWidth"),
-				uiConstantsMap.get("scriptHeight"));
+		labelItem.setTouchable(Touchable.disabled);
 
 		/*for (int i = 1; i < labels.size(); i++) {
 			labelItem = sceneLoader.getRoot().getLabelById(
@@ -319,6 +324,9 @@ public class SkillStage extends BaseOverlapStage {
 					int pointer, int button) {
 				useButton.setLayerVisibilty("Default", true);
 				useButton.setLayerVisibilty("pressed", false);
+				if (eventCheckManager.checkBattleEventType()) {
+					storySectionManager.checkButtonEvent("skill_attack");
+				}
 			}
 		});
 	}

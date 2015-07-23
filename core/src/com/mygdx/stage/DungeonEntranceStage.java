@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -14,11 +13,11 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  *
  */
 public class DungeonEntranceStage extends BaseOverlapStage {
-	private CompositeItem entranceButton, saveButton, restButton,
-			worldMapButton;
+	private CompositeItem entranceButton, saveButton, restButton;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
+		cameraManager.stretchToDevice(this);
 
 		makeScene();
 		setButton();
@@ -28,22 +27,15 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 
 	private void makeScene() {
 		// 우선은 blackwood_forest_entrance_scene으로 통일하자
-		sceneLoader.loadScene("blackwood_forest_entrance_scene");
+		sceneLoader.loadScene("mawang_castle_scene");
 		// cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());
 	}
 
 	private void setButton() {
-		entranceButton = sceneLoader.getRoot().getCompositeById(
-				"entrance_button");
-		saveButton = sceneLoader.getRoot().getCompositeById("save_button");
-		restButton = sceneLoader.getRoot().getCompositeById("rest_button");
-		worldMapButton = sceneLoader.getRoot().getCompositeById(
-				"worldmap_button");
-
-		sceneLoader.getRoot().getLabelById("entrance_label")
-				.setTouchable(Touchable.disabled);
-
+		entranceButton = sceneLoader.getRoot().getCompositeById("enter");
+		saveButton = sceneLoader.getRoot().getCompositeById("save");
+		restButton = sceneLoader.getRoot().getCompositeById("rest");
 		entranceButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -87,18 +79,5 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 			}
 		});
 
-		worldMapButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				screenFactory.show(ScreenEnum.WORLD_MAP);
-			}
-		});
 	}
 }

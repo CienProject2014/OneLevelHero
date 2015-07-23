@@ -13,15 +13,16 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.WorldMapAssets;
+import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.WorldMapManager;
+import com.mygdx.manager.MovingManager;
 import com.mygdx.model.Connection;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
 public class WorldMapStage extends BaseOverlapStage {
 	@Autowired
-	private WorldMapManager worldMapManager;
+	private MovingManager movingManager;
 	@Autowired
 	private WorldMapAssets worldMapAssets;
 	private CompositeItem currentPosition;
@@ -69,7 +70,8 @@ public class WorldMapStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-					worldMapManager.selectDestinationNode(connection.getKey());
+					movingManager.selectDestinationNode(connection.getKey());
+					positionManager.setCurrentPlace(PlaceEnum.MOVING);
 					screenFactory.show(ScreenEnum.MOVING);
 				}
 			});

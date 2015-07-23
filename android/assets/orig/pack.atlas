@@ -1096,6 +1096,7 @@ arrow_right
   offset: 0, 0
   index: -1
  
+ 
 
 skill_pack.png
 size: 4096,2048
@@ -1191,5 +1192,218 @@ skilluiusebutton2
   xy: 1416, 166
   size: 503, 99
   orig: 503, 99
+  offset: 0, 0
+  index: -1
+
+  
+mawang_castle_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arrow
+  rotate: false
+  xy: 2, 106
+  size: 300, 138
+  orig: 300, 138
+  offset: 0, 0
+  index: -1
+label
+  rotate: false
+  xy: 2, 2
+  size: 300, 102
+  orig: 300, 102
+  offset: 0, 0
+  index: -1
+label2
+  rotate: false
+  xy: 304, 142
+  size: 300, 102
+  orig: 300, 102
+  offset: 0, 0
+  index: -1
+mawangcastle
+  rotate: false
+  xy: 2, 246
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+  
+  
+cobweb_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bpcobweb
+  rotate: false
+  xy: 2, 1418
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+townuiarrowblackwood
+  rotate: false
+  xy: 2, 498
+  size: 160, 170
+  orig: 160, 170
+  offset: 0, 0
+  index: -1
+townuiarrowmiddleridge
+  rotate: false
+  xy: 2, 326
+  size: 160, 170
+  orig: 160, 170
+  offset: 0, 0
+  index: -1
+townuiarrowredroads
+  rotate: false
+  xy: 2, 164
+  size: 170, 160
+  orig: 170, 160
+  offset: 0, 0
+  index: -1
+townuiarrowwinterpoll
+  rotate: false
+  xy: 2, 2
+  size: 170, 160
+  orig: 170, 160
+  offset: 0, 0
+  index: -1
+townuibuildtagchurch
+  rotate: false
+  xy: 2, 1316
+  size: 420, 100
+  orig: 420, 100
+  offset: 0, 0
+  index: -1
+townuibuildtaginn
+  rotate: false
+  xy: 2, 1214
+  size: 420, 100
+  orig: 420, 100
+  offset: 0, 0
+  index: -1
+townuibuildtagpotionstore
+  rotate: false
+  xy: 424, 1316
+  size: 420, 100
+  orig: 420, 100
+  offset: 0, 0
+  index: -1
+townuibuildtagstore01
+  rotate: false
+  xy: 2, 1112
+  size: 420, 100
+  orig: 420, 100
+  offset: 0, 0
+  index: -1
+townuibuildtagstore02
+  rotate: false
+  xy: 424, 1214
+  size: 420, 100
+  orig: 420, 100
+  offset: 0, 0
+  index: -1
+townuibuildtagvastlibrary
+  rotate: false
+  xy: 846, 1316
+  size: 420, 100
+  orig: 420, 100
+  offset: 0, 0
+  index: -1
+townuibuildtagvillagehall
+  rotate: false
+  xy: 2, 1010
+  size: 420, 100
+  orig: 420, 100
+  offset: 0, 0
+  index: -1
+townuibuildtagweaponsworksshop
+  rotate: false
+  xy: 424, 1112
+  size: 420, 100
+  orig: 420, 100
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 794
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuimovetagblackwood
+  rotate: false
+  xy: 846, 1224
+  size: 310, 90
+  orig: 310, 90
+  offset: 0, 0
+  index: -1
+townuimovetagmiddleridge
+  rotate: false
+  xy: 1268, 1326
+  size: 310, 90
+  orig: 310, 90
+  offset: 0, 0
+  index: -1
+townuimovetagredroads
+  rotate: false
+  xy: 2, 918
+  size: 310, 90
+  orig: 310, 90
+  offset: 0, 0
+  index: -1
+townuimovetagwinterpoll
+  rotate: false
+  xy: 424, 1020
+  size: 310, 90
+  orig: 310, 90
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 670
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+
+
+
+
+cobweb_library_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgcobweb12
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
+
+
+event_pack.png
+size: 2048,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+talkuiselect
+  rotate: false
+  xy: 2, 2
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+talkuiwindow
+  rotate: false
+  xy: 2, 94
+  size: 1920, 365
+  orig: 1920, 365
   offset: 0, 0
   index: -1

@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
@@ -35,38 +34,19 @@ public class BuildingStage extends BaseOverlapStage {
 	private List<CompositeItem> npcButtonList;
 	private List<CompositeItem> gameObjectList;
 	private Building buildingInfo;
-	private TextButton exitButton;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
 
 		makeScene();
-		setNpcList();
-		setItemList();
-		setExitButton();
+		if (buildingInfo.getBuildingNpc() != null) {
+			setNpcList();
+		}
+		if (buildingInfo.getGameObject() != null) {
+			setItemList();
+		}
 
 		return this;
-	}
-
-	private void setExitButton() {
-		exitButton = new TextButton("나가기", uiComponentAssets.getSkin());
-		exitButton.center();
-		exitButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				screenFactory.show(ScreenEnum.VILLAGE);
-				event.getListenerActor().setVisible(false);
-			}
-		});
-
-		addActor(exitButton);
 	}
 
 	private void makeScene() {
@@ -95,6 +75,7 @@ public class BuildingStage extends BaseOverlapStage {
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
 					eventManager.setCurrentEventNpc(npcName);
+					eventManager.setCurrentEventNumber(2);
 					screenFactory.show(ScreenEnum.GREETING);
 				}
 			});

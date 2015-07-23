@@ -2,6 +2,7 @@ package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -15,6 +16,10 @@ public class PositionManager {
 
 	public String getCurrentNode() {
 		return positionInfo.getCurrentNode();
+	}
+
+	public PlaceEnum getCurrentNodeType() {
+		return positionInfo.getCurrentNodeType();
 	}
 
 	public void goCurrentPlace() {
@@ -40,5 +45,6 @@ public class PositionManager {
 
 	public void setCurrentPlace(PlaceEnum currentPlace) {
 		positionInfo.setCurrentPlace(currentPlace);
+		Gdx.app.log("PositionManager", "현재위치 : " + currentPlace);
 	}
 }

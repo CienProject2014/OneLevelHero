@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.StorySectionInfo;
+import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.model.EventPacket;
@@ -36,6 +37,8 @@ public class StorySectionManager {
 
 	public void setNewStorySectionAndPlay(int storyNumber) {
 		setNewStorySection(storyNumber);
+		Gdx.app.log("StorySectionManager", "현재 분기번호 [" + storyNumber
+				+ "] 가동중...");
 		insertStorySequence();
 		runStorySequence();
 	}
@@ -70,9 +73,21 @@ public class StorySectionManager {
 					screenFactory.show(ScreenEnum.BATTLE);
 
 					break;
-				case MOVE:
+				case NEXT_SECTION:
+					setNewStorySectionAndPlay(Integer.valueOf(eventManager
+							.getCurrentEvent().getEventComponent().get(0)));
+					break;
+				case MOVE_VILLAGE:
 					positionManager.setCurrentNode(eventManager
 							.getCurrentEvent().getEventComponent().get(0));
+					positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
+					screenFactory.show(ScreenEnum.VILLAGE);
+					runStorySequence();
+					break;
+				case MOVE_BUILDING:
+					positionManager.setCurrentBuilding(eventManager
+							.getCurrentEvent().getEventComponent().get(0));
+					positionManager.setCurrentPlace(PlaceEnum.BUILDING);
 					screenFactory.show(ScreenEnum.VILLAGE);
 					runStorySequence();
 					break;

@@ -11,11 +11,17 @@
   "bust_yongsa_02": {
     "filePath": "texture/character/bust_yongsa_02.png"
   },
+  "bust_yongsa_03":{
+  	"filePath" : "texture/character/bust_yongsa_03.png"
+  },
   "bust_yongsa_04": {
     "filePath": "texture/character/bust_yongsa_04.png"
   },
   "bust_yongsa_06": {
     "filePath": "texture/character/bust_yongsa_06.png"
+  },
+  "bust_yongsa_05":{
+  "filePath": "texture/character/bust_yongsa_05.png"
   },
   "face_parath":{
   	"filePath" : "texture/character/face_parath.png"
@@ -23,17 +29,23 @@
   "face_yongsa":{
   	"filePath" : "texture/character/face_yongsa.png"
   },
+  "face_lilis":{
+  	"filePath" : "texture/character/face_lilis.png"
+  },
   "bust_parath_01": {
     "filePath": "texture/character/bust_parath_01.png"
   },
   "bust_mawang_01":{
   	"filePath" : "texture/character/bust_mawang_01.png"
   },
-  "bust_waiji_02": {
-    "filePath": "texture/character/bust_waiji_02.png"
+  "bust_waiji_01": {
+    "filePath": "texture/character/bust_waiji_01.png"
   },
   "bust_lilis_01":{
   	"filePath" : "texture/character/bust_lilis_01.png"
+  },
+  "bust_aimee_01":{
+  	"filePath" : "texture/character/bust_aimee_01.png"
   },
   "chest":{
   	"filePath" : "texture/game_object/chest.png"

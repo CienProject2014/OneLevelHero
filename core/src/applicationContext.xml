@@ -65,7 +65,6 @@
 	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
 	<bean id="unitManager" class="com.mygdx.manager.UnitManager"/>
 	<bean id="volumeManager" class="com.mygdx.manager.VolumeManager" />
-	<bean id="worldMapManager" class="com.mygdx.manager.WorldMapManager"/>
 	
 	<bean id="baseScreen" class="com.mygdx.screen.BaseScreen" scope="prototype"/>
 	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen"/>
@@ -127,6 +126,7 @@
 		<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage"
 		scope="prototype" />
+	<bean id="movingStage" class="com.mygdx.stage.MovingStage" scope="prototype"/>
 	<bean id="selectComponentStage" class="com.mygdx.stage.SelectComponentStage"
 		scope="prototype"/>
 	<bean id="selectEventStage" class="com.mygdx.stage.SelectEventStage"

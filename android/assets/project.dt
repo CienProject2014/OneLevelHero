@@ -30,6 +30,16 @@
       "physicsPropertiesVO": {},
       "sceneName": "worldmap_scene"
     },
+     {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "cobweb_library_scene"
+    },
     {
       "ambientColor": [
         0.5,
@@ -39,6 +49,26 @@
       ],
       "physicsPropertiesVO": {},
       "sceneName": "battle_ui_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "cobweb_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "event_scene"
     },
     {
       "ambientColor": [
@@ -69,6 +99,16 @@
       ],
       "physicsPropertiesVO": {},
       "sceneName": "status_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "mawang_castle_scene"
     },
     {
       "ambientColor": [

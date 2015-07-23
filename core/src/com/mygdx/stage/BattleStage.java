@@ -5,13 +5,17 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -52,6 +56,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private ImageButton defenseButton;
 	private ImageButton waitButton;
 	private ImageButton escapeButton;
+	private ArrayList<ImageButton> imageButtonList;
 	private Monster selectedMonster;
 
 	// Unit array
@@ -70,6 +75,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 	@Override
 	public void act(float delta) {
+
 		if (gridHitbox.isGridShow()) {
 
 		} else if (monsterTrigger) {
@@ -79,6 +85,7 @@ public class BattleStage extends BaseOneLevelStage {
 				// 몬스터의 턴이 아니라면 monsterTrigger가 true여서는 안된다.
 				return;
 			}
+
 			battleManager.monsterAttack();
 			updateOrder();
 
@@ -156,32 +163,56 @@ public class BattleStage extends BaseOneLevelStage {
 		Table rMenuTable = new Table();
 		makeRButton();
 
-		rMenuTable.add(attackButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"))
-				.padTop(uiConstantsMap.get("RMenuTablePadTop"))
-				.padBottom(uiConstantsMap.get("RButtonSpace")).expandX();
-		rMenuTable.row();
-		rMenuTable.add(skillButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"))
-				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(inventoryButton)
-				.width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"))
-				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(defenseButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"))
-				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(waitButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"))
-				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(escapeButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"));
+		imageButtonList = new ArrayList<>();
+		imageButtonList.add(attackButton);
+		imageButtonList.add(skillButton);
+		imageButtonList.add(inventoryButton);
+		imageButtonList.add(defenseButton);
+		imageButtonList.add(waitButton);
+		imageButtonList.add(escapeButton);
+
+		for (int i = 0; i < imageButtonList.size(); i++) {
+			if (i == 0) {
+				rMenuTable.add(imageButtonList.get(i))
+						.width(uiConstantsMap.get("RButtonWidth"))
+						.height(uiConstantsMap.get("RButtonHeight"))
+						.padTop(uiConstantsMap.get("RMenuTablePadTop"))
+						.padBottom(uiConstantsMap.get("RButtonSpace"))
+						.expandX();
+				rMenuTable.row();
+			} else {
+				rMenuTable.add(imageButtonList.get(i))
+						.width(uiConstantsMap.get("RButtonWidth"))
+						.height(uiConstantsMap.get("RButtonHeight"))
+						.padBottom(uiConstantsMap.get("RButtonSpace"));
+				rMenuTable.row();
+			}
+		}
+		if (eventCheckManager.checkBattleEventType()) {
+			switch (eventCheckManager.getBattleControlButton()) {
+				case NORMAL_ATTACK:
+					imageButtonList.remove(attackButton);
+					setDarkButton();
+					break;
+				case SKILL_ATTACK:
+					imageButtonList.remove(skillButton);
+					setDarkButton();
+					break;
+				default:
+					Gdx.app.log("BattleStage", "Rmenu ImageButton Target 에러");
+					break;
+			}
+		}
 
 		return rMenuTable;
+	}
+
+	private void setDarkButton() {
+		for (int i = 0; i < imageButtonList.size(); i++) {
+			ImageButton imageButton = imageButtonList.get(i);
+			imageButton.setColor(Color.DARK_GRAY);
+			imageButton.setTouchable(Touchable.disabled);
+		}
 	}
 
 	private Table makeGridHitbox() {
@@ -200,7 +231,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 		if (gridHitbox.isGridShow()
 				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
-			gridHitbox.showTileWhereClicked(screenX, screenY);
+			gridHitbox.showTileWhereClicked(touched.x, touched.y);
 		}
 		return result;
 	}
@@ -209,7 +240,6 @@ public class BattleStage extends BaseOneLevelStage {
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		boolean result = super.touchDragged(screenX, screenY, pointer);
 
-		Gdx.app.log("deb", touched.toString());
 		if (gridHitbox.isGridShow()) {
 			gridHitbox.showTileWhereMoved(touched.x, touched.y);
 		}
@@ -229,20 +259,31 @@ public class BattleStage extends BaseOneLevelStage {
 			if (!(actor instanceof Hero)) {
 				// 일어날 수 없는 시나리오
 				// 만약 몬스터의 턴이라면 이 이벤트가 호출되지 않아야 한다.
+				Gdx.app.log("BattleStage", "마왕의 턴");
 			}
 
 			battleManager.userAttack(actor);
 			updateOrder();
 
-			if (whoIsNextActor() instanceof Monster) {
-				monsterTrigger = true;
-			}
+			Timer mTimer = new Timer();
+			TimerTask mTask = new TimerTask() {
+				// mTimer.schedule(mTask, 2000);
+				@Override
+				public void run() {
+					if (whoIsNextActor() instanceof Monster) {
+						monsterTrigger = true;
+					}
+				}
+
+			};
+			mTimer.schedule(mTask, 1000);
 
 			gridHitbox.hideGrid();
-			//FIXME : 리스너를 만들 수 경우의 분기 체크
+			// FIXME : 리스너를 만들 수 경우의 분기 체크
 			if (eventCheckManager.checkBattleEventType()) {
 				storySectionManager.checkButtonEvent(NORMAL_ATTACK);
 			}
+
 		}
 
 		gridHitbox.hideAllTiles();
@@ -268,9 +309,7 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			@Autowired
 			public void clicked(InputEvent event, float x, float y) {
-				if (eventCheckManager.checkBattleEventType()) {
-					storySectionManager.checkButtonEvent(SKILL_ATTACK);
-				}
+
 				Gdx.app.log("BattleStage", "스킬!");
 				gridHitbox.hideGrid();
 				screenFactory.show(ScreenEnum.SKILL);

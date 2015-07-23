@@ -2,6 +2,7 @@ package com.mygdx.stage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,9 +16,13 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.StorySectionManager;
+import com.mygdx.model.Event;
 import com.mygdx.model.NPC;
+import com.mygdx.model.StorySectionPacket;
 
 public class SelectEventStage extends BaseOneLevelStage {
 	@Autowired
@@ -26,12 +31,16 @@ public class SelectEventStage extends BaseOneLevelStage {
 	private PositionManager positionManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private StorySectionManager storySectionManager;
+	@Autowired
+	private EventCheckManager eventCheckManager;
 
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
 	private final int MAX_EVENT_LENGTH = 6;
 	private TextButton exitButton;
-	private int eventSize;
+	private final int EVENT_SIZE = 2;
 	private NPC eventNpc;
 
 	private void addActors() {
@@ -40,12 +49,13 @@ public class SelectEventStage extends BaseOneLevelStage {
 	}
 
 	private void addListener() {
-		for (int i = 0; i < eventSize; i++) {
+		for (Entry<Integer, Event> entrySet : eventManager.getCurrentNpc()
+				.getEvents().entrySet()) {
 			// 이벤트가 달성되었는지 검사(현재는 리워드)
-			if (eventNpc.getEvent(i).getEventState() == EventStateEnum.CLEARED)
-				chatButtons.get(i).setColor(Color.DARK_GRAY);
+			if (entrySet.getValue().getEventState() == EventStateEnum.CLEARED)
+				chatButtons.get(0).setColor(Color.DARK_GRAY);
 			else {
-				chatButtons.get(i).addListener(new InputListener() {
+				chatButtons.get(0).addListener(new InputListener() {
 					@Override
 					public boolean touchDown(InputEvent event, float x,
 							float y, int pointer, int button) {
@@ -55,7 +65,17 @@ public class SelectEventStage extends BaseOneLevelStage {
 					@Override
 					public void touchUp(InputEvent event, float x, float y,
 							int pointer, int button) {
-						eventManager.setCurrentEventNumber(0);
+						for (StorySectionPacket nextStorySectionPacket : storySectionManager
+								.getNextSections()) {
+							if (eventCheckManager.checkSelectEvent(2,
+									nextStorySectionPacket)) {
+								storySectionManager
+										.setNewStorySectionAndPlay(nextStorySectionPacket
+												.getNextSectionNumber());
+								break;
+							}
+						}
+						eventManager.setCurrentEventNumber(2);
 						screenFactory.show(ScreenEnum.EVENT);
 					}
 				});
@@ -67,7 +87,6 @@ public class SelectEventStage extends BaseOneLevelStage {
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
 		chatStyles = new ArrayList<TextButtonStyle>();
 		eventNpc = eventManager.getCurrentNpc();
-		eventSize = eventNpc.getEvents().size();
 		showEventButton();
 		setSize();
 		setButtonPosition();
@@ -93,7 +112,7 @@ public class SelectEventStage extends BaseOneLevelStage {
 						StaticAssets.windowHeight * 0.555f },
 				{ StaticAssets.windowWidth * 0.68f,
 						StaticAssets.windowHeight * 0.37f } };
-		for (int i = 0; i < eventSize; i++)
+		for (int i = 0; i < EVENT_SIZE; i++)
 			chatButtons.get(i).setPosition(buttonPosition[i][0],
 					buttonPosition[i][1]);
 	}
@@ -127,20 +146,12 @@ public class SelectEventStage extends BaseOneLevelStage {
 	}
 
 	private void showEventButton() {
-		for (int i = 0; i < eventSize; i++) {
+		for (int i = 0; i < EVENT_SIZE; i++) {
 			chatStyles.add(new TextButtonStyle(uiComponentAssets
 					.getChatButton()[i], uiComponentAssets.getChatButton()[i],
 					uiComponentAssets.getChatButton()[i], uiComponentAssets
 							.getFont()));
 			chatButtons.add(new TextButton("", chatStyles.get(i)));
 		}
-	}
-
-	public int getEventSize() {
-		return eventSize;
-	}
-
-	public void setEventSize(int eventSize) {
-		this.eventSize = eventSize;
 	}
 }
