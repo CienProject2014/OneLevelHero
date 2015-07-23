@@ -11,9 +11,11 @@ import java.util.TimerTask;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -40,7 +42,8 @@ public class BattleStage extends BaseOneLevelStage {
 	private final String NORMAL_ATTACK = "normal_attack";
 	private final String SKILL_ATTACK = "skill_attack";
 
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("BattleStage");
 	// Table
 	private Table orderTable; // 순서를 나타내는 테이블
 	private GridHitbox gridHitbox; // grid hitbox 테이블
@@ -52,6 +55,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private ImageButton defenseButton;
 	private ImageButton waitButton;
 	private ImageButton escapeButton;
+	private ArrayList<ImageButton> imageButtonList;
 
 	private Monster selectedMonster;
 
@@ -145,7 +149,8 @@ public class BattleStage extends BaseOneLevelStage {
 		Table RMenuTable = makeRMenuTable();
 
 		uiTable.right().bottom();
-		uiTable.padRight(uiConstantsMap.get("RMenuTablePadRight")).padBottom(uiConstantsMap.get("RMenuTablePadBottom"));
+		uiTable.padRight(uiConstantsMap.get("RMenuTablePadRight")).padBottom(
+				uiConstantsMap.get("RMenuTablePadBottom"));
 		uiTable.add(RMenuTable);
 
 		return uiTable;
@@ -155,26 +160,56 @@ public class BattleStage extends BaseOneLevelStage {
 		Table rMenuTable = new Table();
 		makeRButton();
 
-		rMenuTable.add(attackButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight")).padTop(uiConstantsMap.get("RMenuTablePadTop"))
-				.padBottom(uiConstantsMap.get("RButtonSpace")).expandX();
-		rMenuTable.row();
-		rMenuTable.add(skillButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight")).padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(inventoryButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight")).padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(defenseButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight")).padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(waitButton).width(uiConstantsMap.get("RButtonWidth")).height(uiConstantsMap.get("RButtonHeight"))
-				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(escapeButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"));
+		imageButtonList = new ArrayList<>();
+		imageButtonList.add(attackButton);
+		imageButtonList.add(skillButton);
+		imageButtonList.add(inventoryButton);
+		imageButtonList.add(defenseButton);
+		imageButtonList.add(waitButton);
+		imageButtonList.add(escapeButton);
+
+		for (int i = 0; i < imageButtonList.size(); i++) {
+			if (i == 0) {
+				rMenuTable.add(imageButtonList.get(i))
+						.width(uiConstantsMap.get("RButtonWidth"))
+						.height(uiConstantsMap.get("RButtonHeight"))
+						.padTop(uiConstantsMap.get("RMenuTablePadTop"))
+						.padBottom(uiConstantsMap.get("RButtonSpace"))
+						.expandX();
+				rMenuTable.row();
+			} else {
+				rMenuTable.add(imageButtonList.get(i))
+						.width(uiConstantsMap.get("RButtonWidth"))
+						.height(uiConstantsMap.get("RButtonHeight"))
+						.padBottom(uiConstantsMap.get("RButtonSpace"));
+				rMenuTable.row();
+			}
+		}
+		if (eventCheckManager.checkBattleEventType()) {
+			switch (eventCheckManager.getBattleControlButton()) {
+				case NORMAL_ATTACK:
+					imageButtonList.remove(attackButton);
+					setDarkButton();
+					break;
+				case SKILL_ATTACK:
+					imageButtonList.remove(skillButton);
+					setDarkButton();
+					break;
+				default:
+					Gdx.app.log("BattleStage", "Rmenu ImageButton Target 에러");
+					break;
+			}
+		}
 
 		return rMenuTable;
+	}
+
+	private void setDarkButton() {
+		for (int i = 0; i < imageButtonList.size(); i++) {
+			ImageButton imageButton = imageButtonList.get(i);
+			imageButton.setColor(Color.DARK_GRAY);
+			imageButton.setTouchable(Touchable.disabled);
+		}
 	}
 
 	private Table makeGridHitbox() {
@@ -191,7 +226,8 @@ public class BattleStage extends BaseOneLevelStage {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		boolean result = super.touchDown(screenX, screenY, pointer, button);
 
-		if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+		if (gridHitbox.isGridShow()
+				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 			gridHitbox.showTileWhereClicked(touched.x, touched.y);
 		}
 		return result;
@@ -211,7 +247,8 @@ public class BattleStage extends BaseOneLevelStage {
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		boolean result = super.touchUp(screenX, screenY, pointer, button);
 
-		if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+		if (gridHitbox.isGridShow()
+				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 			Gdx.app.log("BattleStage", "어택!");
 
 			Unit actor = getCurrentActor();
@@ -306,17 +343,23 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void makeRButton() {
 		// 이미지 추가
-		attackButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_attack"),
+		attackButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_attack"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_attack"));
-		skillButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_skill"),
+		skillButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_skill"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_skill"));
-		inventoryButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_item"),
+		inventoryButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_item"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_item"));
-		defenseButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_defense"),
+		defenseButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_defense"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_defense"));
-		waitButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_wait"),
+		waitButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_wait"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_wait"));
-		escapeButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_escape"),
+		escapeButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_escape"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_escape"));
 
 		addListener();
