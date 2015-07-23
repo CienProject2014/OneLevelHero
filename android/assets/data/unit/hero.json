@@ -44,6 +44,33 @@
       "earthRegistance" : 0,
 	  "job": "warrior"
     },
+    "skillList": ["cut_01"],
+    "equipment": {
+      "weapon": "daggear",
+      "armor": "leather_armor",
+      "boots": "leather_boots",
+      "gloves": "leather_gloves"
+    }
+  },
+  "lilis": {
+    "name": "lilis",   
+    "status": {
+      "attack": 10,
+	  "magicAttack": 10,
+      "defense": 10,
+	  "magicDefense" : 10,
+      "healthPoint": 50,
+	  "maxHealthPoint": 50,
+      "speed": 40,
+	  "fatigue": 0,
+	  "experience": 0,
+	  "maxExperience": 1220,
+      "fireRegistance" : 0,
+      "waterRegistance" : 0,
+      "earthRegistance" : 0,
+	  "job": "warrior"
+    },
+    "skillList": ["cut_01"],
     "equipment": {
       "weapon": "daggear",
       "armor": "leather_armor",

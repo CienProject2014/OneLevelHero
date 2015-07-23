@@ -1,7 +1,7 @@
 {
   "prologue": {
-    "events": [
-      {
+    "events": {
+      "1": {
         "eventState": "not_opened",
         "eventType": "select_component",
         "eventScenes": [
@@ -16,17 +16,17 @@
           "아니오"
         ]
       },
-      {
+      "2": {
         "eventState": "not_opened",
         "eventType": "music",
         "eventComponent": [
           "seven_changer"
         ]
       },
-      {
+      "3": {
         "eventState": "not_opened",
         "eventType": "chat",
-        "eventScenes": [        
+        "eventScenes": [
           {
             "script": "카딜라 공작의 정벌 이후, 카딜라 지방으로 편입된 블랙우드 마을은 평화로운 일상을 보내고 있었다.",
             "characterPath": "nothing_image",
@@ -59,14 +59,14 @@
           }
         ]
       },
-      {
+      "4": {
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
           "mawang"
         ]
       },
-      {
+      "5": {
         "eventState": "not_opened",
         "eventType": "chat",
         "eventScenes": [
@@ -92,14 +92,14 @@
           }
         ]
       },
-      {
+      "6": {
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
           "mawang"
         ]
       },
-      {
+      "7": {
         "eventState": "not_opened",
         "eventType": "chat",
         "eventScenes": [
@@ -125,14 +125,14 @@
           }
         ]
       },
-      {
+      "8": {
         "eventState": "not_opened",
         "eventType": "move",
         "eventComponent": [
           "blackwood"
         ]
       },
-      {
+      "9": {
         "eventState": "not_opened",
         "eventType": "chat",
         "eventScenes": [
@@ -143,104 +143,69 @@
           }
         ]
       }
-    ]
+    }
   },
   "waiji": {
     "name": "waiji",
-    "events": [
-      {
+    "events": {
+      "2": {
         "eventName": "마왕퇴치실패",
         "eventState": "not_opened",
         "eventType": "chat",
-        "reward": {
-          "rewardType": "party",
-          "rewardTarget": "parath",
-          "rewardState": "NOT_CLEARED"
-        },
         "eventScenes": [
           {
-            "script": "그래, 기운은 차렸는가?",
-            "characterPath": "bust_waiji_02",
-            "backgroundPath": "blackwood_center"
+            "script": "용사 일행은 촌장에게 마왕 퇴치에 실패했음을 알렸다. 그리고 용사는 자신이 느낀 위화감에 대해 이야기했다.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "네. 면목이 없습니다. 죄송할 따름입니다.",
-            "characterPath": "bust_yongsa_06",
-            "backgroundPath": "blackwood_center"
+            "script": "일종의 저주 같은 게 아닐까요?",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "용사님은 최선을 다한거잖아요. 너무 상심하지 마세요.",
+            "script": "음… 우선 콥웨브의 대도서관에서 정보를 얻어 보는 것이 좋을 것 같으이.",
+            "characterPath": "bust_waiji_01",
+            "backgroundPath": "bg_blackwood_03"
+          },
+          {
+            "script": "알겠습니다.",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_blackwood_03"
+          },
+          {
+            "script": "파라스, 곧바로 출발하도록 하자.",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_blackwood_03"
+          },
+          {
+            "script": "힘든데… 조금 쉬었다가 가면 안될까요?",
             "characterPath": "bust_parath_01",
-            "backgroundPath": "blackwood_center"
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "…….........................",
-            "characterPath": "bust_yongsa_06",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": " 저주때문에 침울해 하는것 같구만..",
-            "characterPath": "bust_waiji_02",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "너무 걱정하지 말게나. 콥웨브의 바르워스님이 소식을 듣고 자네를 소환했다네.",
-            "characterPath": "bust_waiji_02",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "정말입니까? 제 저주를 해결할 방법이 있는 건가요?",
-            "characterPath": "bust_yongsa_06",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "아마도 그렇지 않을까? 괜히 부르지는 않을테니 말일세.",
-            "characterPath": "bust_waiji_02",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "감사합니다. 지금 바로 콥웨브로 떠나겠습니다.",
+            "script": "그럴까?",
             "characterPath": "bust_yongsa_02",
-            "backgroundPath": "blackwood_center"
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "저어… 용사님… 저도 여행에 데려가주세요!",
+            "script": "안돼요. 얼른 출발하도록 해요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_blackwood_03"
+          },
+          {
+            "script": "히잉…",
             "characterPath": "bust_parath_01",
-            "backgroundPath": "blackwood_center"
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "응? 하지만 넌 아직…",
-            "characterPath": "bust_yongsa_06",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "어머니의 허락은 받았어요. 절대 발목을 잡지는 않을게요! 그리고 저주에 걸린 용사님보다는 더 도움이 되지 않을까요?",
+            "script": "그러면 왼쪽 위의 나가기 버튼을 눌러서 마을로 돌아가도록 하죠.",
             "characterPath": "bust_parath_01",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "뭐임마? 이녀석이!",
-            "characterPath": "bust_yongsa_04",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "허허… 데려가는게 어떻겠나. 그아이도 이제 어엿한 청년이고 분명 쓸모가 있을걸세.",
-            "characterPath": "bust_waiji_02",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "하아, 알겠습니다. 파라스, 내 짐까지 챙겨 와라. 콥웨브로 떠난다.",
-            "characterPath": "bust_yongsa_06",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "야호! 꼭 기다리고 있으셔야돼요!",
-            "characterPath": "bust_parath_01",
-            "backgroundPath": "blackwood_center"
+            "backgroundPath": "bg_blackwood_03"
           }
         ]
       }
-    ],
+    },
     "greeting": {
       "eventType": "greeting",
       "eventScenes": [

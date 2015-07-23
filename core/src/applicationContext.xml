@@ -65,7 +65,6 @@
 	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
 	<bean id="unitManager" class="com.mygdx.manager.UnitManager"/>
 	<bean id="volumeManager" class="com.mygdx.manager.VolumeManager" />
-	<bean id="worldMapManager" class="com.mygdx.manager.WorldMapManager"/>
 	
 	<bean id="baseScreen" class="com.mygdx.screen.BaseScreen" scope="prototype"/>
 	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen"/>

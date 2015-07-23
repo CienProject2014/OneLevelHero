@@ -3,7 +3,7 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "0"
+        "eventNumber": "1"
       }
     ],
     "nextSections": [
@@ -23,15 +23,15 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "1"
-      },
-      {
-        "eventNpc": "prologue",
         "eventNumber": "2"
       },
       {
         "eventNpc": "prologue",
         "eventNumber": "3"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "4"
       }
     ],
     "nextSections": [
@@ -46,11 +46,11 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "4"
+        "eventNumber": "5"
       },
       {
         "eventNpc": "prologue",
-        "eventNumber": "5"
+        "eventNumber": "6"
       }
     ],
     "nextSections": [
@@ -65,15 +65,15 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "6"
+        "eventNumber": "7"
       },
       {
         "eventNpc": "prologue",
-        "eventNumber": "7"
+        "eventNumber": "8"
       },
        {
         "eventNpc": "prologue",
-        "eventNumber": "8"
+        "eventNumber": "9"
       }
     ]
   },
