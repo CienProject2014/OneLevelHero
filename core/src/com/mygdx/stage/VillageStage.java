@@ -44,9 +44,7 @@ public class VillageStage extends BaseOverlapStage {
 	private final int movingSpeed = 10;
 
 	public Stage makeStage() {
-
 		initSceneLoader(StaticAssets.rm);
-
 		cameraManager.stretchToDevice(this);
 		setVillage();
 
@@ -85,12 +83,22 @@ public class VillageStage extends BaseOverlapStage {
 		}
 	}
 
+	//FIXME
+	private void setVillageName() {
+		if (positionManager.getCurrentNode() == "cobweb") {
+			sceneLoader.loadScene("cobweb_scene");
+		} else {
+			villageInfo = worldNodeAssets.getVillage("blackwood");
+			sceneLoader.loadScene("blackwood_scene");
+		}
+
+	}
+
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
 		Gdx.app.debug("VillageStage",
 				String.valueOf(positionManager.getCurrentNode()));
-		villageInfo = worldNodeAssets.getVillage("blackwood");
-		sceneLoader.loadScene("blackwood_scene");
+		setVillageName();
 		setArrow();
 		setBuildingButton();
 		addActor(sceneLoader.getRoot());
