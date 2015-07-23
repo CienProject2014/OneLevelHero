@@ -564,6 +564,18 @@
   "waiji": {
     "name": "waiji",
     "events": {
+      "1" : {
+      	"eventName" : "대화하기",
+      	"eventState" : "not_opened",
+      	"eventType" : "chat",
+      	"eventScenes" : [
+      		{
+            "script": "Yo 나는 와이G, 이 마을의 촌장이G",
+            "characterPath": "bust_waiji_01",
+            "backgroundPath": "bg_blackwood_03"
+          }
+      	]
+      },
       "2": {
         "eventName": "마왕퇴치실패",
         "eventState": "not_opened",
@@ -628,22 +640,22 @@
         {
           "script": "블랙우드 마을에 온 것을 환영하네",
           "characterPath": "npc_waiji",
-          "backgroundPath": "waiji_background"
+          "backgroundPath": "bg_blackwood_03"
         },
         {
           "script": "뭔가 할 말이 있는가?",
           "characterPath": "npc_waiji",
-          "backgroundPath": "waiji_background"
+          "backgroundPath": "bg_blackwood_03"
         },
         {
           "script": "내 손녀 아레이치가 귀엽지? 나도 알고 있다네.",
           "characterPath": "npc_waiji",
-          "backgroundPath": "waiji_background"
+          "backgroundPath": "bg_blackwood_03"
         },
         {
           "script": "내가 블랙우드 촌장 와이지일세. 무슨일인가",
           "characterPath": "npc_waiji",
-          "backgroundPath": "waiji_background"
+          "backgroundPath": "bg_blackwood_03"
         }
       ]
     }

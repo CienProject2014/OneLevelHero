@@ -2,7 +2,6 @@ package com.mygdx.stage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,7 +19,6 @@ import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
-import com.mygdx.model.Event;
 import com.mygdx.model.NPC;
 import com.mygdx.model.StorySectionPacket;
 
@@ -49,13 +47,16 @@ public class SelectEventStage extends BaseOneLevelStage {
 	}
 
 	private void addListener() {
-		for (Entry<Integer, Event> entrySet : eventManager.getCurrentNpc()
-				.getEvents().entrySet()) {
+		for (int i = 0; i < EVENT_SIZE; i++) {
+			final int j = i;
 			// 이벤트가 달성되었는지 검사(현재는 리워드)
-			if (entrySet.getValue().getEventState() == EventStateEnum.CLEARED)
-				chatButtons.get(0).setColor(Color.DARK_GRAY);
-			else {
-				chatButtons.get(0).addListener(new InputListener() {
+
+			if (eventManager.getCurrentNpc().getEvent(i + 1).getEventState() == EventStateEnum.CLEARED) {
+				if (i != 0) {
+					chatButtons.get(i).setColor(Color.DARK_GRAY);
+				}
+			} else {
+				chatButtons.get(i).addListener(new InputListener() {
 					@Override
 					public boolean touchDown(InputEvent event, float x,
 							float y, int pointer, int button) {
@@ -67,7 +68,7 @@ public class SelectEventStage extends BaseOneLevelStage {
 							int pointer, int button) {
 						for (StorySectionPacket nextStorySectionPacket : storySectionManager
 								.getNextSections()) {
-							if (eventCheckManager.checkSelectEvent(2,
+							if (eventCheckManager.checkSelectEvent(j + 1,
 									nextStorySectionPacket)) {
 								storySectionManager
 										.setNewStorySectionAndPlay(nextStorySectionPacket
@@ -75,7 +76,7 @@ public class SelectEventStage extends BaseOneLevelStage {
 								break;
 							}
 						}
-						eventManager.setCurrentEventNumber(2);
+						eventManager.setCurrentEventNumber(j + 1);
 						screenFactory.show(ScreenEnum.EVENT);
 					}
 				});
@@ -148,10 +149,11 @@ public class SelectEventStage extends BaseOneLevelStage {
 	private void showEventButton() {
 		for (int i = 0; i < EVENT_SIZE; i++) {
 			chatStyles.add(new TextButtonStyle(uiComponentAssets
-					.getChatButton()[i], uiComponentAssets.getChatButton()[i],
-					uiComponentAssets.getChatButton()[i], uiComponentAssets
+					.getEventButton(), uiComponentAssets.getEventButton(),
+					uiComponentAssets.getEventButton(), uiComponentAssets
 							.getFont()));
-			chatButtons.add(new TextButton("", chatStyles.get(i)));
+			chatButtons.add(new TextButton(eventManager.getCurrentNpc()
+					.getEvent(i + 1).getEventName(), chatStyles.get(i)));
 		}
 	}
 }
