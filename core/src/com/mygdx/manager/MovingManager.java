@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.MovingInfo;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.model.StorySectionPacket;
 import com.mygdx.model.WorldNode;
 
 public class MovingManager {
@@ -20,6 +21,10 @@ public class MovingManager {
 	private PositionManager positionManager;
 	@Autowired
 	private EncounterManager encounterManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
+	@Autowired
+	private EventCheckManager eventCheckManager;
 
 	public List<String> getRoadMonsters() {
 		return movingInfo.getRoadMonsterList();
@@ -83,6 +88,15 @@ public class MovingManager {
 	private void goIntoCurrentNode() {
 		positionManager.setCurrentPlace(positionManager.getCurrentNodeType());
 		positionManager.goCurrentPlace();
+		for (StorySectionPacket nextStorySectionPacket : storySectionManager
+				.getNextSections()) {
+			if (eventCheckManager.checkMovedVillage(nextStorySectionPacket)) {
+				storySectionManager
+						.setNewStorySectionAndPlay(nextStorySectionPacket
+								.getNextSectionNumber());
+				break;
+			}
+		}
 	}
 
 	private boolean isRoadLeft() {

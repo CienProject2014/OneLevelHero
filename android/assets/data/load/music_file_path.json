@@ -22,5 +22,8 @@
 	},
 	"seven_changer" : {
 		"filePath" : "sound/seven_changer.mp3"
+	},
+	"tamsu03":{
+		"filePath" : "sound/tamsu03.mp3"
 	}
 }

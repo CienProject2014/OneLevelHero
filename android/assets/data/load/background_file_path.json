@@ -49,5 +49,14 @@
   },
   "bg_blackwood_03": {
     "filePath": "texture/background/bg_blackwood_03.png"
+  },
+  "bg_cobweb_01":{
+  	"filePath" : "texture/background/bg_cobweb_01.png"
+  },
+  "bg_cobweb_02":{
+  	"filePath" : "texture/background/bg_cobweb_02.png"
+  },
+  "bg_cobweb_12":{
+  	"filePath" : "texture/background/bg_cobweb_12.png"
   }
 }
