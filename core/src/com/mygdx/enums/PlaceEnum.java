@@ -1,8 +1,8 @@
 package com.mygdx.enums;
 
 public enum PlaceEnum {
-	BUILDING("building"), FORK("fork"), VILLAGE("village"), DUNGEON("dungeon"), DUNGEON_ENTRANCE(
-			"dungeon_entrance");
+	BUILDING("building"), FORK("fork"), VILLAGE("village"), MOVING("moving"), DUNGEON(
+			"dungeon"), DUNGEON_ENTRANCE("dungeon_entrance");
 	private String placeEnumString;
 
 	PlaceEnum(String placeEnumString) {

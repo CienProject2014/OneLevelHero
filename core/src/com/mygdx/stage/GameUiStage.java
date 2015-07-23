@@ -197,10 +197,10 @@ public class GameUiStage extends BaseOneLevelStage {
 						break;
 					case VILLAGE:
 					case DUNGEON_ENTRANCE:
-						positionManager.setCurrentPlace(PlaceEnum.FORK);
+						positionManager.setCurrentPlace(PlaceEnum.MOVING);
 						screenFactory.show(ScreenEnum.WORLD_MAP);
 						break;
-					case FORK:
+					case MOVING:
 						if (positionManager.getCurrentNodeType() == PlaceEnum.VILLAGE) {
 							positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
 							screenFactory.show(ScreenEnum.VILLAGE);

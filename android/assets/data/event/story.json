@@ -71,7 +71,7 @@
         "eventNpc": "prologue",
         "eventNumber": "8"
       },
-       {
+      {
         "eventNpc": "prologue",
         "eventNumber": "10"
       }
@@ -85,23 +85,36 @@
     ]
   },
   "105": {
-    "sequencialEvents": [
-     
-    ],
-     "nextSections": [
+    "sequencialEvents": [],
+    "nextSections": [
       {
         "nextSectionNumber": "106",
-        "eventType": "move",
+        "eventType": "move_village",
         "targetComponent": "blackwood"
       }
     ]
   },
-  "106" : {
-	  "sequencialEvents": [
-	       {
+  "106": {
+    "sequencialEvents": [
+      {
         "eventNpc": "prologue",
         "eventNumber": "13"
       }
-	    ],
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "107",
+        "eventType": "move_moving",
+        "targetComponent": "1to2"
+      }
+    ]
+  },
+  "107": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "14"
+      }
+    ]
   }
 }

@@ -72,7 +72,7 @@
       },
       "blackwood": {
       	"arrowName" : "2to1",
-        "roadLength": "13",
+        "roadLength": "4",
         "roadMonster": [
           "assassin_girl"
         ]
@@ -152,7 +152,7 @@
     "connection": {
       "cobweb": {
       	"arrowName" : "1to2",
-        "roadLength": "13",
+        "roadLength": "4",
         "roadMonster": [
           "assassin_girl"
         ]

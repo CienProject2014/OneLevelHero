@@ -71,7 +71,7 @@ public class WorldMapStage extends BaseOverlapStage {
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
 					movingManager.selectDestinationNode(connection.getKey());
-					positionManager.setCurrentPlace(PlaceEnum.FORK);
+					positionManager.setCurrentPlace(PlaceEnum.MOVING);
 					screenFactory.show(ScreenEnum.MOVING);
 				}
 			});

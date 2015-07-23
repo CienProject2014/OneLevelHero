@@ -127,7 +127,7 @@
       },
       "8": {
         "eventState": "not_opened",
-        "eventType": "move",
+        "eventType": "move_village",
         "eventComponent": [
           "blackwood"
         ]
@@ -143,7 +143,7 @@
           }
         ]
       },
-      "13" : {
+      "13": {
         "eventState": "not_opened",
         "eventType": "chat",
         "eventScenes": [
@@ -156,6 +156,17 @@
             "script": "콥웨브 방향으로 나가세요.",
             "characterPath": "bust_parath_01",
             "backgroundPath": "bg_blackwood_01"
+          }
+        ]
+      },
+      "14": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "앞으로를 누르면 다음 필드맵으로 이동합니다.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_justground"
           }
         ]
       }

@@ -63,6 +63,10 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
+		if (battleManager.getSelectedMonster().getName().equals("mawang")) {
+			return new TextureRegionDrawable(new TextureRegion(
+					StaticAssets.backgroundTextureMap.get("bg_devilcastle_01")));
+		}
 		return new TextureRegionDrawable(new TextureRegion(new Texture(
 				Gdx.files.internal("texture/background/forest.png"))));
 	}

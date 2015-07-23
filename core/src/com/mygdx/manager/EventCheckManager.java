@@ -23,24 +23,43 @@ public class EventCheckManager {
 		}
 	}
 
-	public boolean checkMovedVillage(StorySectionPacket nextSectionpacket) {
-		if (positionManager.getCurrentNode().equals(
-				nextSectionpacket.getTargetComponent())) {
-			return true;
-		} else {
-			return false;
+	public boolean checkMovedBuilding(StorySectionPacket nextSectionPacket) {
+		if (nextSectionPacket.getEventType()
+				.equals(EventTypeEnum.MOVE_BUILDING)) {
+			if (positionManager.getCurrentNode().equals(
+					nextSectionPacket.getTargetComponent())) {
+				return true;
+			} else {
+				return false;
+			}
 		}
+		return false;
+	}
+
+	public boolean checkMovedVillage(StorySectionPacket nextSectionPacket) {
+		if (nextSectionPacket.getEventType().equals(EventTypeEnum.MOVE_VILLAGE)) {
+			if (positionManager.getCurrentNode().equals(
+					nextSectionPacket.getTargetComponent())) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
 	}
 
 	public boolean checkSelectEvent(int index,
 			StorySectionPacket nextSectionPacket) {
-		if (String.valueOf(
-				eventManager.getCurrentEventPacket().getEventNumber()).equals(
-				nextSectionPacket.getTargetComponent())) {
-			return true;
-		} else {
-			return false;
+		if (nextSectionPacket.getEventType().equals(EventTypeEnum.SELECT_EVENT)) {
+			if (String.valueOf(
+					eventManager.getCurrentEventPacket().getEventNumber())
+					.equals(nextSectionPacket.getTargetComponent())) {
+				return true;
+			} else {
+				return false;
+			}
 		}
+		return false;
 	}
 
 	public boolean checkBattleEventType() {
@@ -55,5 +74,17 @@ public class EventCheckManager {
 		} else {
 			return false;
 		}
+	}
+
+	public boolean checkMovedMoving(String arrowName,
+			StorySectionPacket nextSectionPacket) {
+		if (nextSectionPacket.getEventType().equals(EventTypeEnum.MOVE_MOVING)) {
+			if (arrowName.equals(nextSectionPacket.getTargetComponent())) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
 	}
 }

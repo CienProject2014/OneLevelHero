@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
@@ -35,14 +34,17 @@ public class BuildingStage extends BaseOverlapStage {
 	private List<CompositeItem> npcButtonList;
 	private List<CompositeItem> gameObjectList;
 	private Building buildingInfo;
-	private TextButton exitButton;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
 
 		makeScene();
-		setNpcList();
-		setItemList();
+		if (buildingInfo.getBuildingNpc() != null) {
+			setNpcList();
+		}
+		if (buildingInfo.getGameObject() != null) {
+			setItemList();
+		}
 
 		return this;
 	}

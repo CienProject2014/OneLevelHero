@@ -1,23 +1,67 @@
 {
-  "blackwood" : {
-    "villageName" : "블랙우드",
-    "backgroundPath" : "blackwood_bg",
-    "sceneName" : "blackwood_scene",
-    "building" : 
-    {   
-      "blackwood_headhouse":{
-        "buildingName" : "촌장의 집",
-        "buildingType" : "house",
-        "buildingPath" : "blackwood_headhouse",
-        "sceneName" : "blackwood_headhouse_scene",
-        "buildingNpc" : 
-        [
+  "blackwood": {
+    "villageName": "블랙우드",
+    "backgroundPath": "blackwood_bg",
+    "sceneName": "blackwood_scene",
+    "building": {
+      "blackwood_headhouse": {
+        "buildingName": "촌장의 집",
+        "buildingType": "house",
+        "buildingPath": "blackwood_headhouse",
+        "sceneName": "blackwood_headhouse_scene",
+        "buildingNpc": [
           "waiji"
         ],
-        "gameObject" : 
-        [
-        "chest"
+        "gameObject": [
+          "chest"
         ]
+      }
+    }
+  },
+  "cobweb": {
+    "villageName": "콥웨브",
+    "sceneName": "cobweb_scene",
+    "building": {
+      "cobweb_library": {
+        "buildingName": "대도서관",
+        "buildingType": "house",
+        "buildingPath": "cobweb_library",
+        "sceneName": "cobweb_library_scene"
+      },
+      "cobweb_villagehall": {
+        "buildingName": "마을회관",
+        "buildingType": "house",
+        "buildingPath": "cobweb_villagehall"
+      },
+      "cobweb_drugstore": {
+        "buildingName": "물약상점",
+        "buildingType": "house",
+        "buildingPath": "cobweb_drugstore"
+      },
+      "cobweb_weaponsmith": {
+        "buildingName": "무기공방",
+        "buildingType": "house",
+        "buildingPath": "cobweb_weaponsmith"
+      },
+      "cobweb_cathedral": {
+        "buildingName": "대성당",
+        "buildingType": "house",
+        "buildingPath": "cobweb_cathedral"
+      },
+      "cobweb_inn": {
+        "buildingName": "여관",
+        "buildingType": "house",
+        "buildingPath": "cobweb_inn"
+      },
+      "cobweb_store1": {
+        "buildingName": "상점1",
+        "buildingType": "house",
+        "buildingPath": "cobweb_store1"
+      },
+      "cobweb_store2": {
+        "buildingName": "상점2",
+        "buildingType": "house",
+        "buildingPath": "cobweb_store2"
       }
     }
   }
