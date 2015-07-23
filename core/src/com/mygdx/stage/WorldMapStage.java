@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.WorldMapAssets;
+import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.model.Connection;
@@ -70,6 +71,7 @@ public class WorldMapStage extends BaseOverlapStage {
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
 					movingManager.selectDestinationNode(connection.getKey());
+					positionManager.setCurrentPlace(PlaceEnum.MOVING);
 					screenFactory.show(ScreenEnum.MOVING);
 				}
 			});

@@ -72,7 +72,7 @@ public class StorySectionManager {
 					screenFactory.show(ScreenEnum.BATTLE);
 
 					break;
-				case MOVE:
+				case MOVE_VILLAGE:
 					positionManager.setCurrentNode(eventManager
 							.getCurrentEvent().getEventComponent().get(0));
 					screenFactory.show(ScreenEnum.VILLAGE);

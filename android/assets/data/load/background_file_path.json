@@ -11,6 +11,9 @@
   "cg_prologue_04": {
     "filePath": "texture/prologue/cg_prologue_04.png"
   },  
+  "bg_justground" : {
+  	"filePath" : "texture/background/bg_justground.png"
+  },
   "prog_team1": {
     "filePath": "texture/credit/prog_team1.png"
   },

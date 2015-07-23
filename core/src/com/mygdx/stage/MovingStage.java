@@ -36,7 +36,7 @@ public class MovingStage extends BaseOneLevelStage {
 	private ImageButton goButton;
 	private ImageButton backButton;
 	private Texture texture = new Texture(
-			Gdx.files.internal("texture/justground.jpg"));
+			Gdx.files.internal("texture/background/bg_justground.png"));
 	private Image background;
 
 	public Stage makeStage() {

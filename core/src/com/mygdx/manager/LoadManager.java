@@ -54,7 +54,7 @@ public class LoadManager {
 	}
 
 	private void setCurrentPosition() {
-		// Blackwood 마을에서부터 게임을 시작한다.
+		// blackwood 마을에서부터 게임을 시작한다.
 		positionManager.setCurrentNode(WorldNodeEnum.BLACKWOOD.toString());
 		positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
 

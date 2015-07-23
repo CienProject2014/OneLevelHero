@@ -21,10 +21,12 @@ import com.mygdx.assets.WorldNodeAssets;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
+import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.Building;
 import com.mygdx.model.Connection;
+import com.mygdx.model.StorySectionPacket;
 import com.mygdx.model.Village;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
@@ -39,14 +41,14 @@ public class VillageStage extends BaseOverlapStage {
 	private WorldMapAssets worldMapAssets;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private EventCheckManager eventCheckManager;
 	private Village villageInfo;
 	public TextButton shiftButton;
 	private final int movingSpeed = 10;
 
 	public Stage makeStage() {
-
 		initSceneLoader(StaticAssets.rm);
-
 		cameraManager.stretchToDevice(this);
 		setVillage();
 
@@ -76,8 +78,19 @@ public class VillageStage extends BaseOverlapStage {
 					public void touchUp(InputEvent event, float x, float y,
 							int pointer, int button) {
 						movingManager.selectDestinationNode(connection.getKey());
-						positionManager.setCurrentPlace(PlaceEnum.FORK);
+						positionManager.setCurrentPlace(PlaceEnum.MOVING);
 						screenFactory.show(ScreenEnum.MOVING);
+						for (StorySectionPacket nextStorySectionPacket : storySectionManager
+								.getNextSections()) {
+							if (eventCheckManager.checkMovedMoving(connection
+									.getValue().getArrowName(),
+									nextStorySectionPacket)) {
+								storySectionManager
+										.setNewStorySectionAndPlay(nextStorySectionPacket
+												.getNextSectionNumber());
+								break;
+							}
+						}
 					}
 				});
 				arrowList.add(arrow);
@@ -85,12 +98,23 @@ public class VillageStage extends BaseOverlapStage {
 		}
 	}
 
+	//FIXME
+	private void setVillageScene() {
+		if (positionManager.getCurrentNode().equals("cobweb")) {
+			villageInfo = worldNodeAssets.getVillage("cobweb");
+			sceneLoader.loadScene("cobweb_scene");
+		} else {
+			villageInfo = worldNodeAssets.getVillage("blackwood");
+			sceneLoader.loadScene("blackwood_scene");
+		}
+
+	}
+
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		Gdx.app.debug("VillageStage",
+		Gdx.app.log("VillageStage",
 				String.valueOf(positionManager.getCurrentNode()));
-		villageInfo = worldNodeAssets.getVillage("blackwood");
-		sceneLoader.loadScene("blackwood_scene");
+		setVillageScene();
 		setArrow();
 		setBuildingButton();
 		addActor(sceneLoader.getRoot());
@@ -123,26 +147,39 @@ public class VillageStage extends BaseOverlapStage {
 	}
 
 	private void setBuildingButton() {
-		for (final Entry<String, Building> building : villageInfo.getBuilding()
-				.entrySet()) {
-			CompositeItem buildingButton = sceneLoader.getRoot()
-					.getCompositeById(building.getValue().getBuildingPath());
-			buildingButton.setTouchable(Touchable.enabled);
-			buildingButton.addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					return true;
-				}
+		if (villageInfo.getBuilding() != null) {
+			for (final Entry<String, Building> building : villageInfo
+					.getBuilding().entrySet()) {
+				CompositeItem buildingButton = sceneLoader
+						.getRoot()
+						.getCompositeById(building.getValue().getBuildingPath());
+				buildingButton.setTouchable(Touchable.enabled);
+				buildingButton.addListener(new InputListener() {
+					@Override
+					public boolean touchDown(InputEvent event, float x,
+							float y, int pointer, int button) {
+						return true;
+					}
 
-				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
-					positionManager.setCurrentBuilding(building.getKey());
-					positionManager.setCurrentPlace(PlaceEnum.BUILDING);
-					screenFactory.show(ScreenEnum.BUILDING);
-				}
-			});
+					@Override
+					public void touchUp(InputEvent event, float x, float y,
+							int pointer, int button) {
+						positionManager.setCurrentBuilding(building.getKey());
+						positionManager.setCurrentPlace(PlaceEnum.BUILDING);
+						screenFactory.show(ScreenEnum.BUILDING);
+						for (StorySectionPacket nextStorySectionPacket : storySectionManager
+								.getNextSections()) {
+							if (eventCheckManager
+									.checkMovedBuilding(nextStorySectionPacket)) {
+								storySectionManager
+										.setNewStorySectionAndPlay(nextStorySectionPacket
+												.getNextSectionNumber());
+								break;
+							}
+						}
+					}
+				});
+			}
 		}
 	}
 }

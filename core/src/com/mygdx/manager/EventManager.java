@@ -41,7 +41,7 @@ public class EventManager {
 			case SELECT_COMPONENT:
 			case SELECT_EVENT:
 				return getChatScene();
-			case MOVE:
+			case MOVE_VILLAGE:
 			default:
 				Gdx.app.error("EventManager", "EventTypeEnum 정보가 없습니다.");
 				throw new NullPointerException();
