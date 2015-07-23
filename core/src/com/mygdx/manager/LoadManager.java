@@ -30,13 +30,11 @@ public class LoadManager {
 	@Autowired
 	private TimeManager timeManager;
 
-	private Hero hero; //FIXME : 이건 뭥미?
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
 	public void loadNewGame() {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();
-		setPartyList();
 		setCurrentPosition();
 		setStorySection();
 		timeManager.setTime(1, 8, 0);
@@ -72,21 +70,13 @@ public class LoadManager {
 
 	// Hero클래스가 status정보를 갖도록 한다.
 	private void setHero() {
-		// 추후 JSON에서 불러오도록 바꿀 것
-		setHero(unitAssets.getHero("yongsa"));
-		this.hero.getStatus().setSpeed(8); // FIXME
-	}
+		//FIXME 추후 JSON에서 불러오도록 바꿀 것
+		Hero yongsa = unitAssets.getHero("yongsa");
+		Hero parath = unitAssets.getHero("parath");
+		Hero lilis = unitAssets.getHero("lilis");
+		partyManager.addHero(yongsa);
+		partyManager.addHero(parath);
+		partyManager.addHero(lilis);
 
-	// 해당 Hero들을 Party구성원에 포함시킨다
-	private void setPartyList() {
-		partyManager.addHero(hero);
-	}
-
-	public Hero getHero() {
-		return hero;
-	}
-
-	public void setHero(Hero hero) {
-		this.hero = hero;
 	}
 }

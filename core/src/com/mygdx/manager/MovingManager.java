@@ -25,6 +25,12 @@ public class MovingManager {
 		return movingInfo.getRoadMonsterList();
 	}
 
+	public void selectDestinationNode(String destinationNode) {
+		WorldNode worldNodeInfo = worldMapAssets
+				.getWorldNodeInfo(positionManager.getCurrentNode());
+		createMovingInfo(destinationNode, worldNodeInfo);
+	}
+
 	public void createMovingInfo(String destinationNode, WorldNode worldNodeInfo) {
 		movingInfo.setStartNode(positionManager.getCurrentNode());
 		movingInfo.setDestinationNode(destinationNode);

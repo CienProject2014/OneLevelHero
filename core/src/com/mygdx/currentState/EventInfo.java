@@ -43,7 +43,7 @@ public class EventInfo {
 	public void setCurrentEventNpc(String npcString) {
 		EventPacket eventPacket = new EventPacket();
 		eventPacket.setEventNpc(npcString);
-		eventPacket.setEventNumber(0);
+		eventPacket.setGreeting(true);
 		setCurrentEventInfo(eventPacket);
 	}
 

@@ -21,8 +21,8 @@ import com.mygdx.assets.WorldNodeAssets;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
+import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.StorySectionManager;
-import com.mygdx.manager.WorldMapManager;
 import com.mygdx.model.Building;
 import com.mygdx.model.Connection;
 import com.mygdx.model.Village;
@@ -38,7 +38,7 @@ public class VillageStage extends BaseOverlapStage {
 	@Autowired
 	private WorldMapAssets worldMapAssets;
 	@Autowired
-	private WorldMapManager worldMapManager;
+	private MovingManager movingManager;
 	private Village villageInfo;
 	public TextButton shiftButton;
 	private final int movingSpeed = 10;
@@ -75,8 +75,8 @@ public class VillageStage extends BaseOverlapStage {
 					@Override
 					public void touchUp(InputEvent event, float x, float y,
 							int pointer, int button) {
-						worldMapManager.selectDestinationNode(connection
-								.getKey());
+						movingManager.selectDestinationNode(connection.getKey());
+						positionManager.setCurrentPlace(PlaceEnum.FORK);
 						screenFactory.show(ScreenEnum.MOVING);
 					}
 				});

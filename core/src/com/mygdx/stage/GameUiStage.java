@@ -15,12 +15,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.RewardInfo;
+import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
@@ -33,6 +36,8 @@ public class GameUiStage extends BaseOneLevelStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
+	@Autowired
+	private PositionManager positionManager;
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("GameUiStage");
@@ -161,6 +166,33 @@ public class GameUiStage extends BaseOneLevelStage {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				screenFactory.show(ScreenEnum.WORLD_MAP);
+			}
+
+		});
+		backButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				switch (positionManager.getCurrentPlace()) {
+					case BUILDING:
+						positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
+						screenFactory.show(ScreenEnum.VILLAGE);
+						break;
+					case VILLAGE:
+					case DUNGEON_ENTRANCE:
+						positionManager.setCurrentPlace(PlaceEnum.FORK);
+						screenFactory.show(ScreenEnum.WORLD_MAP);
+						break;
+					case FORK:
+						if (positionManager.getCurrentNodeType() == PlaceEnum.VILLAGE) {
+							positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
+							screenFactory.show(ScreenEnum.VILLAGE);
+						} else if (positionManager.getCurrentNodeType() == PlaceEnum.DUNGEON) {
+							positionManager.setCurrentPlace(PlaceEnum.DUNGEON);
+							screenFactory.show(ScreenEnum.DUNGEON);
+						}
+					default:
+						Gdx.app.log("GameUiStage", "Error : 현재 PlaceEnum정보가 없음");
+				}
 			}
 
 		});
