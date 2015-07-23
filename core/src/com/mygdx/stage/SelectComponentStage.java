@@ -116,10 +116,11 @@ public class SelectComponentStage extends BaseOneLevelStage {
 	private void showEventButton() {
 		for (int i = 0; i < eventSize; i++) {
 			chatStyles.add(new TextButtonStyle(uiComponentAssets
-					.getChatButton()[i], uiComponentAssets.getChatButton()[i],
-					uiComponentAssets.getChatButton()[i], uiComponentAssets
+					.getEventButton(), uiComponentAssets.getEventButton(),
+					uiComponentAssets.getEventButton(), uiComponentAssets
 							.getFont()));
-			chatButtons.add(new TextButton("", chatStyles.get(i)));
+			chatButtons.add(new TextButton(eventManager.getCurrentEvent()
+					.getEventComponent().get(i), chatStyles.get(i)));
 		}
 	}
 
