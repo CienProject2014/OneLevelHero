@@ -43,30 +43,8 @@ public class BuildingStage extends BaseOverlapStage {
 		makeScene();
 		setNpcList();
 		setItemList();
-		setExitButton();
 
 		return this;
-	}
-
-	private void setExitButton() {
-		exitButton = new TextButton("나가기", uiComponentAssets.getSkin());
-		exitButton.center();
-		exitButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				screenFactory.show(ScreenEnum.VILLAGE);
-				event.getListenerActor().setVisible(false);
-			}
-		});
-
-		addActor(exitButton);
 	}
 
 	private void makeScene() {
@@ -95,6 +73,7 @@ public class BuildingStage extends BaseOverlapStage {
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
 					eventManager.setCurrentEventNpc(npcName);
+					eventManager.setCurrentEventNumber(2);
 					screenFactory.show(ScreenEnum.GREETING);
 				}
 			});

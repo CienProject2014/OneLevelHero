@@ -3,6 +3,7 @@ package com.mygdx.assets;
 import java.util.Map;
 
 import com.mygdx.enums.JsonEnum;
+import com.mygdx.enums.PlaceEnum;
 import com.mygdx.model.WorldNode;
 import com.mygdx.util.JsonParser;
 
@@ -16,5 +17,9 @@ public class WorldMapAssets implements JsonAssetsInitializable {
 
 	public WorldNode getWorldNodeInfo(String worldNodeString) {
 		return worldNodeInfoMap.get(worldNodeString);
+	}
+
+	public PlaceEnum getWorldNodeType(String worldNodeString) {
+		return worldNodeInfoMap.get(worldNodeString).getNodeType();
 	}
 }
