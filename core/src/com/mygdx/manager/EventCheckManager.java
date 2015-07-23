@@ -2,6 +2,7 @@ package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.model.StorySectionPacket;
 
@@ -26,8 +27,13 @@ public class EventCheckManager {
 	public boolean checkMovedBuilding(StorySectionPacket nextSectionPacket) {
 		if (nextSectionPacket.getEventType()
 				.equals(EventTypeEnum.MOVE_BUILDING)) {
-			if (positionManager.getCurrentNode().equals(
+			if (positionManager.getCurrentBuilding().equals(
 					nextSectionPacket.getTargetComponent())) {
+				Gdx.app.log(
+						"EventCheckManager",
+						"분기체크중 - " + positionManager.getCurrentBuilding()
+								+ " / "
+								+ nextSectionPacket.getTargetComponent());
 				return true;
 			} else {
 				return false;
@@ -40,6 +46,9 @@ public class EventCheckManager {
 		if (nextSectionPacket.getEventType().equals(EventTypeEnum.MOVE_VILLAGE)) {
 			if (positionManager.getCurrentNode().equals(
 					nextSectionPacket.getTargetComponent())) {
+				Gdx.app.log("EventCheckManager",
+						"분기체크중 - " + positionManager.getCurrentNode() + " / "
+								+ nextSectionPacket.getTargetComponent());
 				return true;
 			} else {
 				return false;
