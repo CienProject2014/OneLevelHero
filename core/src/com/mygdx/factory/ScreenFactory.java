@@ -27,6 +27,7 @@ import com.mygdx.screen.MenuScreen;
 import com.mygdx.screen.MovingScreen;
 import com.mygdx.screen.OptionScreen;
 import com.mygdx.screen.SaveScreen;
+import com.mygdx.screen.SkillScreen;
 import com.mygdx.screen.StatusScreen;
 import com.mygdx.screen.VillageScreen;
 import com.mygdx.screen.WorldMapScreen;
@@ -93,6 +94,8 @@ public class ScreenFactory {
 				return context.getBean(OptionScreen.class);
 			case SAVE:
 				return context.getBean(SaveScreen.class);
+			case SKILL:
+				return context.getBean(SkillScreen.class);
 			case STATUS:
 				return context.getBean(StatusScreen.class);
 			case VILLAGE:

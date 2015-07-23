@@ -1,0 +1,837 @@
+{
+  "sceneName": "skill_scene",
+  "composite": {
+    "sImages": [
+      {
+        "itemIdentifier": "background",
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "skilluibackground"
+      },
+      {
+        "itemIdentifier": "screen",
+        "x": 342,
+        "y": 131,
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "skilluibase"
+      },
+      {
+        "itemIdentifier": "description",
+        "x": 1228,
+        "y": 261,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "skilluiexplanation"
+      },
+      {
+        "itemIdentifier": "skill_line02",
+        "x": 364,
+        "y": 151,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "skilluiline02"
+      },
+      {
+        "itemIdentifier": "skill_line01",
+        "x": 364,
+        "y": 810,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "skilluiline01"
+      }
+    ],
+    "sLabels": [
+      {
+        "itemIdentifier": "skill_01",
+        "x": 375,
+        "y": 720.5,
+        "zIndex": 15,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 400,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "casting_01",
+        "x": 803,
+        "y": 720.5,
+        "zIndex": 16,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 180,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "gauge_01",
+        "x": 1007.9999,
+        "y": 719.5,
+        "zIndex": 17,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 190,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "skill_02",
+        "x": 374,
+        "y": 622.5,
+        "zIndex": 18,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 400,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "casting_02",
+        "x": 803,
+        "y": 624.5,
+        "zIndex": 19,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 180,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "gauge_02",
+        "x": 1008,
+        "y": 623.5,
+        "zIndex": 20,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 190,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "skill_03",
+        "x": 375,
+        "y": 531.5,
+        "zIndex": 21,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 400,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "casting_03",
+        "x": 804,
+        "y": 528.5,
+        "zIndex": 22,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 180,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "gauge_03",
+        "x": 1008,
+        "y": 530,
+        "zIndex": 23,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 190,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "skill_04",
+        "x": 374,
+        "y": 436.5,
+        "zIndex": 24,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 400,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "casting_04",
+        "x": 803.00006,
+        "y": 432.5,
+        "zIndex": 25,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 180,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "gauge_04",
+        "x": 1008,
+        "y": 432.5,
+        "zIndex": 26,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 190,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "skill_05",
+        "x": 374,
+        "y": 344.50003,
+        "zIndex": 27,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 400,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "casting_05",
+        "x": 802.99994,
+        "y": 340.5,
+        "zIndex": 28,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 180,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "gauge_05",
+        "x": 1007,
+        "y": 339.5,
+        "zIndex": 29,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 190,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "skill_06",
+        "x": 374,
+        "y": 248.50003,
+        "zIndex": 30,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 400,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "casting_06",
+        "x": 803,
+        "y": 245,
+        "zIndex": 31,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 180,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "gauge_06",
+        "x": 1008,
+        "y": 247.5,
+        "zIndex": 32,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 190,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "skill_07",
+        "x": 372.99994,
+        "y": 155.50002,
+        "zIndex": 33,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 400,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "casting_07",
+        "x": 803,
+        "y": 155,
+        "zIndex": 34,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 180,
+        "height": 80
+      },
+      {
+        "itemIdentifier": "gauge_07",
+        "x": 1007,
+        "y": 154.50002,
+        "zIndex": 35,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 60,
+        "width": 190,
+        "height": 80
+      }
+    ],
+    "sComposites": [
+      {
+        "itemIdentifier": "ability",
+        "x": 252,
+        "y": 685,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiskillbuttonnon"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiskillbutton"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "magic",
+        "x": 252,
+        "y": 468,
+        "zIndex": 6,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluimagicbuttonnon"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluimagicbutton"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "use",
+        "x": 1229,
+        "y": 151,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "highlight_01",
+        "x": 361.49994,
+        "y": 710.5,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiactivation"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "highlight_02",
+        "x": 359.5,
+        "y": 611.5,
+        "zIndex": 9,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiactivation"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "highlight_03",
+        "x": 359.49994,
+        "y": 519.5,
+        "zIndex": 10,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiactivation"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "highlight_04",
+        "x": 359.49994,
+        "y": 424.5,
+        "zIndex": 11,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiactivation"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "highlight_05",
+        "x": 359.5,
+        "y": 331.5,
+        "zIndex": 12,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiactivation"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "highlight_06",
+        "x": 359.5,
+        "y": 239.5,
+        "zIndex": 13,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiactivation"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "highlight_07",
+        "x": 359.49994,
+        "y": 146.50002,
+        "zIndex": 14,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiactivation"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ]
+  },
+  "physicsPropertiesVO": {}
+}

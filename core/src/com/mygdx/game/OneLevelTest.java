@@ -30,6 +30,8 @@ public class OneLevelTest extends Game {
 
 		gameLoad();
 
+		goWorldMapScreen();
+		// goVillageScreen();
 		// goEncounterScreen();
 		goVillageScreen();
 		// goWorldMapScreen();
@@ -42,6 +44,10 @@ public class OneLevelTest extends Game {
 	}
 
 	// 이하 게임에 곧장 진입하고자 하는 경우
+	private void goStatusScreen() {
+		context.getBean(ScreenFactory.class).show(ScreenEnum.STATUS);
+	}
+
 	private void goVillageScreen() {
 		context.getBean(ScreenFactory.class).show(ScreenEnum.VILLAGE);
 	}
@@ -56,7 +62,8 @@ public class OneLevelTest extends Game {
 	}
 
 	private void goDungeonEntranceScreen() {
-		context.getBean(PositionInfo.class).setCurrentNode(WorldNodeEnum.BLACKWOOD_FOREST.toString());
+		context.getBean(PositionInfo.class).setCurrentNode(
+				WorldNodeEnum.BLACKWOOD_FOREST.toString());
 		context.getBean(ScreenFactory.class).show(ScreenEnum.DUNGEON_ENTRANCE);
 	}
 

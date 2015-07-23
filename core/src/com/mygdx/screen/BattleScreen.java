@@ -68,6 +68,7 @@ public class BattleScreen extends BaseScreen {
 		multiplexer.addProcessor(1, characterUiStage);
 		multiplexer.addProcessor(2, monsterStage);
 		multiplexer.addProcessor(3, battleStage);
+
 		Gdx.input.setInputProcessor(multiplexer);
 	}
 }

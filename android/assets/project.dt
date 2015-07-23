@@ -10,7 +10,7 @@
       "physicsPropertiesVO": {},
       "sceneName": "blackwood_headhouse_scene"
     },
-     {
+    {
       "ambientColor": [
         0.5,
         0.5,
@@ -88,6 +88,16 @@
         1
       ],
       "physicsPropertiesVO": {},
+      "sceneName": "skill_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
       "sceneName": "status_scene"
     },
     {
@@ -117,4 +127,3 @@
     "name": "orig"
   }
 }
-

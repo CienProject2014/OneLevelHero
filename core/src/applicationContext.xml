@@ -96,6 +96,7 @@
 	<bean id="optionScreen" class="com.mygdx.screen.OptionScreen"
 		scope="prototype"/>
 	<bean id="saveScreen" class="com.mygdx.screen.SaveScreen" scope="prototype" />
+	<bean id="skillScreen" class="com.mygdx.screen.SkillScreen" scope="prototype"/>
 	<bean id="statusScreen" class="com.mygdx.screen.StatusScreen"
 		scope="prototype" />
 	<bean id="villageScreen" class="com.mygdx.screen.VillageScreen"
@@ -131,6 +132,7 @@
 	<bean id="selectEventStage" class="com.mygdx.stage.SelectEventStage"
 		scope="prototype"/>
 	<bean id="statusStage" class="com.mygdx.stage.StatusStage" scope="prototype" />
+	<bean id="skillStage" class="com.mygdx.stage.SkillStage" scope="prototype"/>
 	<bean id="villageStage" class="com.mygdx.stage.VillageStage"
 		scope="prototype"/>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"

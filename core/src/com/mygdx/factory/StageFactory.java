@@ -23,6 +23,7 @@ import com.mygdx.stage.MonsterStage;
 import com.mygdx.stage.MovingStage;
 import com.mygdx.stage.SelectComponentStage;
 import com.mygdx.stage.SelectEventStage;
+import com.mygdx.stage.SkillStage;
 import com.mygdx.stage.StatusStage;
 import com.mygdx.stage.VillageStage;
 import com.mygdx.stage.WorldMapStage;
@@ -58,6 +59,8 @@ public class StageFactory {
 				return context.getBean(SelectEventStage.class).makeStage();
 			case SELECT_COMPONENT:
 				return context.getBean(SelectComponentStage.class).makeStage();
+			case SKILL:
+				return context.getBean(SkillStage.class).makeStage();
 			case STATUS:
 				return context.getBean(StatusStage.class).makeStage();
 			case VILLAGE:

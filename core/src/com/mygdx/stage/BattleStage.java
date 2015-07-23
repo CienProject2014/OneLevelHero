@@ -22,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.StorySectionManager;
@@ -56,7 +57,6 @@ public class BattleStage extends BaseOneLevelStage {
 	private ImageButton waitButton;
 	private ImageButton escapeButton;
 	private ArrayList<ImageButton> imageButtonList;
-
 	private Monster selectedMonster;
 
 	// Unit array
@@ -117,6 +117,9 @@ public class BattleStage extends BaseOneLevelStage {
 	private Unit getCurrentActor() {
 		Unit unit = orderedUnits.poll();
 		orderedUnits.add(unit);
+		if (unit instanceof Hero) {
+			battleManager.setCurrentActor((Hero) unit);
+		}
 		return unit;
 	}
 
@@ -304,11 +307,12 @@ public class BattleStage extends BaseOneLevelStage {
 
 		skillButton.addListener(new ClickListener() {
 			@Override
+			@Autowired
 			public void clicked(InputEvent event, float x, float y) {
-				if (eventCheckManager.checkBattleEventType()) {
-					storySectionManager.checkButtonEvent(SKILL_ATTACK);
-				}
+
 				Gdx.app.log("BattleStage", "스킬!");
+				gridHitbox.hideGrid();
+				screenFactory.show(ScreenEnum.SKILL);
 			}
 		});
 
