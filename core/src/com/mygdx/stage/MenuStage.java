@@ -39,7 +39,8 @@ public class MenuStage extends BaseOneLevelStage {
 		ImageButton creditButton;
 		Float buttonWidth = 630f;
 		Float buttonHeight = 195f;
-		Image logo = new Image(atlasUiAssets.getAtlasUiFile("title"));
+		ImageButton logo;
+
 		Texture texture = StaticAssets.backgroundTextureMap
 				.get("main_background");
 		Image background = new Image(texture);
@@ -81,8 +82,12 @@ public class MenuStage extends BaseOneLevelStage {
 			}
 		});
 
-		logo.setHeight((int) (0.4f * StaticAssets.BASE_WINDOW_HEIGHT));
-		logo.setWidth((int) (0.6f * StaticAssets.BASE_WINDOW_WIDTH));
+		logo = new ImageButton(atlasUiAssets.getAtlasUiFile("title"));
+		logo.bottom().left();
+		logo.padLeft(0.113f * StaticAssets.BASE_WINDOW_WIDTH).padBottom(
+				0.278f * StaticAssets.BASE_WINDOW_HEIGHT);
+
+		// logo.
 
 		buttonTable.top().right();
 		buttonTable.padRight(uiConstantsMap.get("tTablePadRight"));
@@ -104,11 +109,8 @@ public class MenuStage extends BaseOneLevelStage {
 		buttonTable.row();
 		buttonTable.add(creditButton).height(buttonHeight).width(buttonWidth)
 				.padTop(uiConstantsMap.get("tButtonSpace"));
-		logo.setPosition((int) (0.2f * StaticAssets.BASE_WINDOW_WIDTH),
-				(int) (0.3f * StaticAssets.BASE_WINDOW_HEIGHT));
 		background.setSize(StaticAssets.BASE_WINDOW_WIDTH,
 				StaticAssets.BASE_WINDOW_HEIGHT);
-
 		tableStack.addActor(background);
 		tableStack.addActor(logo);
 		tableStack.addActor(buttonTable);
