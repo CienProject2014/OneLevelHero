@@ -81,6 +81,7 @@ public class MovingManager {
 	}
 
 	private void goIntoCurrentNode() {
+		positionManager.setCurrentPlace(positionManager.getCurrentNodeType());
 		positionManager.goCurrentPlace();
 	}
 

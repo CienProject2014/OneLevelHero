@@ -16,10 +16,13 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.Event;
 import com.mygdx.model.NPC;
+import com.mygdx.model.StorySectionPacket;
 
 public class SelectEventStage extends BaseOneLevelStage {
 	@Autowired
@@ -28,6 +31,10 @@ public class SelectEventStage extends BaseOneLevelStage {
 	private PositionManager positionManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private StorySectionManager storySectionManager;
+	@Autowired
+	private EventCheckManager eventCheckManager;
 
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
@@ -58,6 +65,16 @@ public class SelectEventStage extends BaseOneLevelStage {
 					@Override
 					public void touchUp(InputEvent event, float x, float y,
 							int pointer, int button) {
+						for (StorySectionPacket nextStorySectionPacket : storySectionManager
+								.getNextSections()) {
+							if (eventCheckManager.checkSelectEvent(2,
+									nextStorySectionPacket)) {
+								storySectionManager
+										.setNewStorySectionAndPlay(nextStorySectionPacket
+												.getNextSectionNumber());
+								break;
+							}
+						}
 						eventManager.setCurrentEventNumber(2);
 						screenFactory.show(ScreenEnum.EVENT);
 					}

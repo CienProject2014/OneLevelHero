@@ -73,13 +73,35 @@
       },
        {
         "eventNpc": "prologue",
-        "eventNumber": "9"
+        "eventNumber": "10"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "105",
+        "eventType": "select_event",
+        "targetComponent": "2"
       }
     ]
   },
   "105": {
     "sequencialEvents": [
      
+    ],
+     "nextSections": [
+      {
+        "nextSectionNumber": "106",
+        "eventType": "move",
+        "targetComponent": "blackwood"
+      }
     ]
+  },
+  "106" : {
+	  "sequencialEvents": [
+	       {
+        "eventNpc": "prologue",
+        "eventNumber": "13"
+      }
+	    ],
   }
 }

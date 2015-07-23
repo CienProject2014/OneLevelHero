@@ -132,12 +132,28 @@
           "blackwood"
         ]
       },
-      "9": {
+      "10": {
         "eventState": "not_opened",
         "eventType": "chat",
         "eventScenes": [
           {
             "script": "촌장님은 집 안에 계실거에요.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_blackwood_01"
+          }
+        ]
+      },
+      "13" : {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "마을에 있는 표지판을 누르면 월드맵으로 나갈 수 있어요.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_blackwood_01"
+          },
+          {
+            "script": "콥웨브 방향으로 나가세요.",
             "characterPath": "bust_parath_01",
             "backgroundPath": "bg_blackwood_01"
           }

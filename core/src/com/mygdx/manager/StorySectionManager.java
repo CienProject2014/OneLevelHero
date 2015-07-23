@@ -36,6 +36,8 @@ public class StorySectionManager {
 
 	public void setNewStorySectionAndPlay(int storyNumber) {
 		setNewStorySection(storyNumber);
+		Gdx.app.log("StorySectionManager", "현재 분기번호 [" + storyNumber
+				+ "] 가동중...");
 		insertStorySequence();
 		runStorySequence();
 	}

@@ -23,8 +23,7 @@ public class PositionManager {
 	}
 
 	public void goCurrentPlace() {
-		setCurrentPlace(getCurrentNodeType());
-		screenFactory.show(ScreenEnum.findScreenEnum(getCurrentNodeType()
+		screenFactory.show(ScreenEnum.findScreenEnum(getCurrentPlace()
 				.toString()));
 	}
 
