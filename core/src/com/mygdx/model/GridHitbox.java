@@ -104,8 +104,8 @@ public class GridHitbox extends Table {
 		}
 	}
 
-	public void showTileWhereClicked(int screenX, int screenY) {
-		Image tile = findTile(screenX, screenY);
+	public void showTileWhereClicked(float x, float y) {
+		Image tile = findTile(x, y);
 		if (tile != null) {
 			tile.setVisible(true);
 		}

@@ -228,7 +228,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 		if (gridHitbox.isGridShow()
 				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
-			gridHitbox.showTileWhereClicked(screenX, screenY);
+			gridHitbox.showTileWhereClicked(touched.x, touched.y);
 		}
 		return result;
 	}
@@ -237,7 +237,6 @@ public class BattleStage extends BaseOneLevelStage {
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		boolean result = super.touchDragged(screenX, screenY, pointer);
 
-		Gdx.app.log("deb", touched.toString());
 		if (gridHitbox.isGridShow()) {
 			gridHitbox.showTileWhereMoved(touched.x, touched.y);
 		}
