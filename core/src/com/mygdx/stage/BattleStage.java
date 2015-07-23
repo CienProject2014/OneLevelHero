@@ -11,9 +11,11 @@ import java.util.TimerTask;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -53,6 +55,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private ImageButton defenseButton;
 	private ImageButton waitButton;
 	private ImageButton escapeButton;
+	private ArrayList<ImageButton> imageButtonList;
 
 	private Monster selectedMonster;
 
@@ -157,32 +160,56 @@ public class BattleStage extends BaseOneLevelStage {
 		Table rMenuTable = new Table();
 		makeRButton();
 
-		rMenuTable.add(attackButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"))
-				.padTop(uiConstantsMap.get("RMenuTablePadTop"))
-				.padBottom(uiConstantsMap.get("RButtonSpace")).expandX();
-		rMenuTable.row();
-		rMenuTable.add(skillButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"))
-				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(inventoryButton)
-				.width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"))
-				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(defenseButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"))
-				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(waitButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"))
-				.padBottom(uiConstantsMap.get("RButtonSpace"));
-		rMenuTable.row();
-		rMenuTable.add(escapeButton).width(uiConstantsMap.get("RButtonWidth"))
-				.height(uiConstantsMap.get("RButtonHeight"));
+		imageButtonList = new ArrayList<>();
+		imageButtonList.add(attackButton);
+		imageButtonList.add(skillButton);
+		imageButtonList.add(inventoryButton);
+		imageButtonList.add(defenseButton);
+		imageButtonList.add(waitButton);
+		imageButtonList.add(escapeButton);
+
+		for (int i = 0; i < imageButtonList.size(); i++) {
+			if (i == 0) {
+				rMenuTable.add(imageButtonList.get(i))
+						.width(uiConstantsMap.get("RButtonWidth"))
+						.height(uiConstantsMap.get("RButtonHeight"))
+						.padTop(uiConstantsMap.get("RMenuTablePadTop"))
+						.padBottom(uiConstantsMap.get("RButtonSpace"))
+						.expandX();
+				rMenuTable.row();
+			} else {
+				rMenuTable.add(imageButtonList.get(i))
+						.width(uiConstantsMap.get("RButtonWidth"))
+						.height(uiConstantsMap.get("RButtonHeight"))
+						.padBottom(uiConstantsMap.get("RButtonSpace"));
+				rMenuTable.row();
+			}
+		}
+		if (eventCheckManager.checkBattleEventType()) {
+			switch (eventCheckManager.getBattleControlButton()) {
+				case NORMAL_ATTACK:
+					imageButtonList.remove(attackButton);
+					setDarkButton();
+					break;
+				case SKILL_ATTACK:
+					imageButtonList.remove(skillButton);
+					setDarkButton();
+					break;
+				default:
+					Gdx.app.log("BattleStage", "Rmenu ImageButton Target 에러");
+					break;
+			}
+		}
 
 		return rMenuTable;
+	}
+
+	private void setDarkButton() {
+		for (int i = 0; i < imageButtonList.size(); i++) {
+			ImageButton imageButton = imageButtonList.get(i);
+			imageButton.setColor(Color.DARK_GRAY);
+			imageButton.setTouchable(Touchable.disabled);
+		}
 	}
 
 	private Table makeGridHitbox() {

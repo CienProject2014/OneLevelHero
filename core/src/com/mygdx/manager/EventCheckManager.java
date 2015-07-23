@@ -76,6 +76,11 @@ public class EventCheckManager {
 				.equals(EventTypeEnum.BATTLE);
 	}
 
+	public String getBattleControlButton() {
+		return storySectionManager.getNextSections().get(0)
+				.getTargetComponent();
+	}
+
 	public boolean checkBattleControlEvent(
 			StorySectionPacket nextSectionPacket, String controlName) {
 		if (nextSectionPacket.getTargetComponent().equals(controlName)) {
