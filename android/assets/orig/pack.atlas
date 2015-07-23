@@ -1096,3 +1096,39 @@ arrow_right
   offset: 0, 0
   index: -1
  
+ 
+ 
+ 
+mawang_castle_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arrow
+  rotate: false
+  xy: 2, 106
+  size: 300, 138
+  orig: 300, 138
+  offset: 0, 0
+  index: -1
+label
+  rotate: false
+  xy: 2, 2
+  size: 300, 102
+  orig: 300, 102
+  offset: 0, 0
+  index: -1
+label2
+  rotate: false
+  xy: 304, 142
+  size: 300, 102
+  orig: 300, 102
+  offset: 0, 0
+  index: -1
+mawangcastle
+  rotate: false
+  xy: 2, 246
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
