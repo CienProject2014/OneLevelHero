@@ -13,7 +13,7 @@
         "targetComponent": "예"
       },
       {
-        "nextSectionNumber": "113",
+        "nextSectionNumber": "110",
         "eventType": "select_component",
         "targetComponent": "아니오"
       }
@@ -114,6 +114,141 @@
       {
         "eventNpc": "prologue",
         "eventNumber": "14"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "108",
+        "eventType": "move_village",
+        "targetComponent": "cobweb"
+      }
+    ]
+  },
+  "108": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "15"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "109",
+        "eventType": "move_building",
+        "targetComponent": "cobweb_library"
+      }
+    ]
+  },
+  "109": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "17"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "110",
+        "eventType": "move_village",
+        "targetComponent": "cobweb"
+      }
+    ]
+  },
+  "110": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "19"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "20"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "111",
+        "eventType": "next_section",
+        "targetComponent": "카딜라 성"
+      }
+    ]
+  },
+  "111": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "21"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "23"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "112",
+        "eventType": "select_component",
+        "targetComponent": "카딜라 성"
+      },
+      {
+        "nextSectionNumber": "113",
+        "eventType": "select_component",
+        "targetComponent": "바이칼 성"
+      },
+      {
+        "nextSectionNumber": "114",
+        "eventType": "select_component",
+        "targetComponent": "미라지 포트"
+      },
+      {
+        "nextSectionNumber": "115",
+        "eventType": "select_component",
+        "targetComponent": "레드로즈 성"
+      },
+      {
+        "nextSectionNumber": "116",
+        "eventType": "select_component",
+        "targetComponent": "수정 협곡"
+      }
+    ]
+  },
+  "112": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "24"
+      }
+    ]
+  },
+  "113": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "25"
+      }
+    ]
+  },
+  "114": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "26"
+      }
+    ]
+  },
+  "115": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "27"
+      }
+    ]
+  },
+  "116": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "28"
       }
     ]
   }
