@@ -23,8 +23,11 @@ import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
+import com.mygdx.manager.StorySectionManager;
+import com.mygdx.model.StorySectionPacket;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
@@ -38,6 +41,10 @@ public class GameUiStage extends BaseOneLevelStage {
 	private AtlasUiAssets atlasUiAssets;
 	@Autowired
 	private PositionManager positionManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
+	@Autowired
+	private EventCheckManager eventCheckManager;
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("GameUiStage");
@@ -172,10 +179,21 @@ public class GameUiStage extends BaseOneLevelStage {
 		backButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+
 				switch (positionManager.getCurrentPlace()) {
 					case BUILDING:
 						positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
 						screenFactory.show(ScreenEnum.VILLAGE);
+						for (StorySectionPacket nextStorySectionPacket : storySectionManager
+								.getNextSections()) {
+							if (eventCheckManager
+									.checkMovedVillage(nextStorySectionPacket)) {
+								storySectionManager
+										.setNewStorySectionAndPlay(nextStorySectionPacket
+												.getNextSectionNumber());
+								break;
+							}
+						}
 						break;
 					case VILLAGE:
 					case DUNGEON_ENTRANCE:

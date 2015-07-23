@@ -139,7 +139,7 @@ public class SelectComponentStage extends BaseOneLevelStage {
 
 			for (StorySectionPacket nextStorySectionPacket : storySectionManager
 					.getNextSections()) {
-				if (eventCheckManager.checkSelectComponentEvent(getIndex(),
+				if (eventCheckManager.checkSelectComponent(getIndex(),
 						nextStorySectionPacket)) {
 					storySectionManager
 							.setNewStorySectionAndPlay(nextStorySectionPacket

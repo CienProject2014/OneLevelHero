@@ -10,11 +10,33 @@ public class EventCheckManager {
 	private EventManager eventManager;
 	@Autowired
 	private StorySectionManager storySectionManager;
+	@Autowired
+	private PositionManager positionManager;
 
-	public boolean checkSelectComponentEvent(int index,
+	public boolean checkSelectComponent(int index,
 			StorySectionPacket nextSectionPacket) {
 		if (eventManager.getCurrentEvent().getEventComponent().get(index)
 				.equals(nextSectionPacket.getTargetComponent())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean checkMovedVillage(StorySectionPacket nextSectionpacket) {
+		if (positionManager.getCurrentNode().equals(
+				nextSectionpacket.getTargetComponent())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean checkSelectEvent(int index,
+			StorySectionPacket nextSectionPacket) {
+		if (String.valueOf(
+				eventManager.getCurrentEventPacket().getEventNumber()).equals(
+				nextSectionPacket.getTargetComponent())) {
 			return true;
 		} else {
 			return false;
