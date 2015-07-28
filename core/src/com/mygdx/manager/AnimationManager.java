@@ -158,4 +158,20 @@ public class AnimationManager {
 			this.y = y;
 		}
 	}
+
+	public SpriteBatch getSpriteBatch() {
+		return spriteBatch;
+	}
+
+	public void setSpriteBatch(SpriteBatch spriteBatch) {
+		this.spriteBatch = spriteBatch;
+	}
+
+	public Queue<AnimationBit> getAnimations() {
+		return animations;
+	}
+
+	public void setAnimations(Queue<AnimationBit> animations) {
+		this.animations = animations;
+	}
 }
