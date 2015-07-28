@@ -48,6 +48,7 @@ public class MusicManager {
 	}
 
 	public void playMusic() {
+		musicInfo.getMusic().setLooping(true);
 		musicInfo.getMusic().play();
 	}
 
