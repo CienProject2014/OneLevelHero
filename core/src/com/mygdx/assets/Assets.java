@@ -35,7 +35,7 @@ public class Assets {
 	@Autowired
 	private WorldMapAssets worldMapAssets;
 	@Autowired
-	private WorldNodeAssets worldNodeAssets;
+	private NodeAssets worldNodeAssets;
 
 	public void initialize() {
 		Map<String, JsonStringFile> filePathMap = loadFilePathMap();

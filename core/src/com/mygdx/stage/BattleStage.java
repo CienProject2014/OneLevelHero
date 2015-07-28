@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,31 +21,26 @@ import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.manager.EventCheckManager;
-import com.mygdx.manager.StorySectionManager;
-import com.mygdx.model.GridHitbox;
 import com.mygdx.model.Hero;
 import com.mygdx.model.Monster;
 import com.mygdx.model.Unit;
+import com.mygdx.table.GridHitbox;
 
 public class BattleStage extends BaseOneLevelStage {
 	@Autowired
 	private BattleManager battleManager;
 	@Autowired
-	private StorySectionManager storySectionManager;
-	@Autowired
-	private EventCheckManager eventCheckManager;
-	@Autowired
 	private AtlasUiAssets atlasUiAssets;
-	private final String NORMAL_ATTACK = "normal_attack";
-	private final String SKILL_ATTACK = "skill_attack";
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("BattleStage");
 	// Table
 	private Table orderTable; // 순서를 나타내는 테이블
 	private GridHitbox gridHitbox; // grid hitbox 테이블
+	@Autowired
+	private ListenerFactory listenerFactory;
 
 	// Button
 	private ImageButton attackButton;
@@ -85,8 +78,8 @@ public class BattleStage extends BaseOneLevelStage {
 				// 몬스터의 턴이 아니라면 monsterTrigger가 true여서는 안된다.
 				return;
 			}
-
 			battleManager.monsterAttack();
+
 			updateOrder();
 
 			monsterTrigger = false;
@@ -105,7 +98,9 @@ public class BattleStage extends BaseOneLevelStage {
 
 		// make table stack and add to stage
 		tableStack.add(makeBattleUiTable());
-		tableStack.add(makeGridHitbox());
+		gridHitbox = new GridHitbox();
+		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
+		tableStack.add(gridHitbox);
 
 		addListener();
 
@@ -188,6 +183,7 @@ public class BattleStage extends BaseOneLevelStage {
 				rMenuTable.row();
 			}
 		}
+		/* 다른버튼 막기 //FIXME
 		if (eventCheckManager.checkBattleEventType()) {
 			switch (eventCheckManager.getBattleControlButton()) {
 				case NORMAL_ATTACK:
@@ -203,6 +199,7 @@ public class BattleStage extends BaseOneLevelStage {
 					break;
 			}
 		}
+		*/
 
 		return rMenuTable;
 	}
@@ -213,12 +210,6 @@ public class BattleStage extends BaseOneLevelStage {
 			imageButton.setColor(Color.DARK_GRAY);
 			imageButton.setTouchable(Touchable.disabled);
 		}
-	}
-
-	private Table makeGridHitbox() {
-		gridHitbox = new GridHitbox(MonsterEnum.SizeType.MEDIUM);
-		return gridHitbox;
-
 	}
 
 	private void updateOrder() {
@@ -263,26 +254,14 @@ public class BattleStage extends BaseOneLevelStage {
 			}
 
 			battleManager.userAttack(actor);
+
 			updateOrder();
 
-			Timer mTimer = new Timer();
-			TimerTask mTask = new TimerTask() {
-				// mTimer.schedule(mTask, 2000);
-				@Override
-				public void run() {
-					if (whoIsNextActor() instanceof Monster) {
-						monsterTrigger = true;
-					}
-				}
-
-			};
-			mTimer.schedule(mTask, 1000);
+			if (whoIsNextActor() instanceof Monster) {
+				monsterTrigger = true;
+			}
 
 			gridHitbox.hideGrid();
-			// FIXME : 리스너를 만들 수 경우의 분기 체크
-			if (eventCheckManager.checkBattleEventType()) {
-				storySectionManager.checkButtonEvent(NORMAL_ATTACK);
-			}
 
 		}
 
@@ -307,7 +286,6 @@ public class BattleStage extends BaseOneLevelStage {
 
 		skillButton.addListener(new ClickListener() {
 			@Override
-			@Autowired
 			public void clicked(InputEvent event, float x, float y) {
 
 				Gdx.app.log("BattleStage", "스킬!");

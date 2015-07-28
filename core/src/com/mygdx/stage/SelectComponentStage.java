@@ -10,26 +10,28 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.SelectComponentListener;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.StorySectionManager;
-import com.mygdx.model.StorySectionPacket;
 
 public class SelectComponentStage extends BaseOneLevelStage {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
-	private PositionManager positionManager;
+	private MovingManager movingManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private EventCheckManager eventCheckManager;
 	@Autowired
 	private StorySectionManager storySectionManager;
+	@Autowired
+	private ListenerFactory listenerFactory;
 
 	private List<TextButton> chatButtons;
 	private List<TextButtonStyle> chatStyles;
@@ -44,9 +46,10 @@ public class SelectComponentStage extends BaseOneLevelStage {
 
 	private void addListener() {
 		for (int i = 0; i < eventSize; i++) {
-			SelectComponentClickListener selectListener = new SelectComponentClickListener();
-			selectListener.setIndex(i);
-			chatButtons.get(i).addListener(selectListener);
+			SelectComponentListener selectComponentListener = listenerFactory
+					.getSelectComponentListener();
+			selectComponentListener.setIndex(i);
+			chatButtons.get(i).addListener(selectComponentListener);
 		}
 	}
 
@@ -98,7 +101,7 @@ public class SelectComponentStage extends BaseOneLevelStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				positionManager.goCurrentPlace();
+				movingManager.goCurrentPosition();
 				event.getListenerActor().setVisible(false);
 			}
 		});
@@ -130,33 +133,5 @@ public class SelectComponentStage extends BaseOneLevelStage {
 
 	public void setEventSize(int eventSize) {
 		this.eventSize = eventSize;
-	}
-
-	public class SelectComponentClickListener extends ClickListener {
-		private int index;
-
-		@Override
-		public void clicked(InputEvent event, float x, float y) {
-
-			for (StorySectionPacket nextStorySectionPacket : storySectionManager
-					.getNextSections()) {
-				if (eventCheckManager.checkSelectComponent(getIndex(),
-						nextStorySectionPacket)) {
-					storySectionManager
-							.setNewStorySectionAndPlay(nextStorySectionPacket
-									.getNextSectionNumber());
-					break;
-				}
-			}
-		}
-
-		public int getIndex() {
-			return index;
-		}
-
-		public void setIndex(int index) {
-			this.index = index;
-		}
-
 	}
 }

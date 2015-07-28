@@ -11,9 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.EventAssets;
+import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.assets.WorldNodeAssets;
 import com.mygdx.enums.GameObjectEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
@@ -27,7 +27,7 @@ public class BuildingStage extends BaseOverlapStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
-	private WorldNodeAssets worldNodeAssets;
+	private NodeAssets worldNodeAssets;
 	@Autowired
 	private EventAssets eventAssets;
 
@@ -51,8 +51,8 @@ public class BuildingStage extends BaseOverlapStage {
 
 	private void makeScene() {
 		buildingInfo = worldNodeAssets
-				.getVillage(positionManager.getCurrentNode()).getBuilding()
-				.get(positionManager.getCurrentBuilding());
+				.getVillage(positionManager.getCurrentNodeName()).getBuilding()
+				.get(positionManager.getCurrentSubNodeName());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		cameraManager.stretchToDevice(this);
 		addActor(sceneLoader.getRoot());

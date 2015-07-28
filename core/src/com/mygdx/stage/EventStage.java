@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
@@ -33,6 +34,8 @@ public class EventStage extends BaseOneLevelStage {
 	private EventManager eventManager;
 	@Autowired
 	private StorySectionManager storySectionManager;
+	@Autowired
+	private EventCheckManager eventCheckManager;
 	@Autowired
 	private RewardManager rewardManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
@@ -54,9 +57,12 @@ public class EventStage extends BaseOneLevelStage {
 					if (eventSceneIterator.hasNext()) {
 						setScene(eventSceneIterator.next());
 					} else {
-						rewardManager.doReward(); // 보상이 있을경우 보상실행
-						eventManager.finishEvent();
-						storySectionManager.runStorySequence();
+						if (!eventCheckManager.isSelectEvent(eventManager
+								.getCurrentEvent())) {
+							rewardManager.doReward(); // 보상이 있을경우 보상실행
+							eventManager.finishEvent();
+							storySectionManager.runStorySequence();
+						}
 					}
 					return true;
 				}

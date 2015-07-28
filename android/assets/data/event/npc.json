@@ -127,7 +127,7 @@
       },
       "8": {
         "eventState": "not_opened",
-        "eventType": "move_village",
+        "eventType": "move_node",
         "eventComponent": [
           "blackwood"
         ]
@@ -145,7 +145,7 @@
       },
       "11": {
         "eventState": "not_opened",
-        "eventType": "move_building",
+        "eventType": "move_sub_node",
         "eventComponent": [
           "cobweb_library"
         ]
@@ -302,7 +302,7 @@
       },
       "19": {
         "eventState": "not_opened",
-        "eventType": "move_village",
+        "eventType": "move_node",
         "eventComponent": [
           "cobweb"
         ]

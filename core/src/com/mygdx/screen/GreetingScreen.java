@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.MovingManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
@@ -22,7 +22,7 @@ public class GreetingScreen extends BaseScreen {
 	@Autowired
 	protected EventManager eventManager;
 	@Autowired
-	private PositionManager positionManager;
+	private MovingManager movingManager;
 
 	// Already libgdx using interface!
 	private Input input = Gdx.input;
@@ -67,13 +67,10 @@ public class GreetingScreen extends BaseScreen {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				goCurrentPlace();
+				movingManager.goCurrentPosition();
 				return true;
 			}
 		});
 	}
 
-	private void goCurrentPlace() {
-		positionManager.goCurrentPlace();
-	}
 }

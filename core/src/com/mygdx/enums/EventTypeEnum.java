@@ -3,8 +3,8 @@ package com.mygdx.enums;
 public enum EventTypeEnum {
 	GREETING("greeting"), BATTLE("battle"), CHAT("chat"), SELECT_EVENT(
 			"select_event"), CREDIT("credit"), SELECT_COMPONENT(
-			"select_component"), MOVE_MOVING("move_moving"), MOVE_VILLAGE(
-			"move_village"), MOVE_BUILDING("move_building"), NEXT_SECTION(
+			"select_component"), MOVE_FIELD("move_field"), MOVE_NODE(
+			"move_node"), MOVE_SUB_NODE("move_sub_node"), NEXT_SECTION(
 			"next_section"), BATTLE_CONTROL("battle_control"), MUSIC("music");
 	private String code;
 

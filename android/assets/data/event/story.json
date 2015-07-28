@@ -89,7 +89,7 @@
     "nextSections": [
       {
         "nextSectionNumber": "106",
-        "eventType": "move_village",
+        "eventType": "move_node",
         "targetComponent": "blackwood"
       }
     ]
@@ -104,7 +104,7 @@
     "nextSections": [
       {
         "nextSectionNumber": "107",
-        "eventType": "move_moving",
+        "eventType": "move_field",
         "targetComponent": "1to2"
       }
     ]
@@ -119,7 +119,7 @@
     "nextSections": [
       {
         "nextSectionNumber": "108",
-        "eventType": "move_village",
+        "eventType": "move_node",
         "targetComponent": "cobweb"
       }
     ]
@@ -134,7 +134,7 @@
     "nextSections": [
       {
         "nextSectionNumber": "109",
-        "eventType": "move_building",
+        "eventType": "move_sub_node",
         "targetComponent": "cobweb_library"
       }
     ]
@@ -149,7 +149,7 @@
     "nextSections": [
       {
         "nextSectionNumber": "110",
-        "eventType": "move_village",
+        "eventType": "move_node",
         "targetComponent": "cobweb"
       }
     ]

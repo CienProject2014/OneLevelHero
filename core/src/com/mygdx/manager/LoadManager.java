@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.currentState.MovingInfo;
-import com.mygdx.enums.PlaceEnum;
+import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.model.Hero;
 import com.mygdx.model.StorySection;
@@ -22,7 +21,7 @@ public class LoadManager {
 	@Autowired
 	private StorySectionManager storySectionManager;
 	@Autowired
-	private MovingInfo movingInfo;
+	private FieldInfo movingInfo;
 	@Autowired
 	private PartyManager partyManager;
 	@Autowired
@@ -55,8 +54,7 @@ public class LoadManager {
 
 	private void setCurrentPosition() {
 		// blackwood 마을에서부터 게임을 시작한다.
-		positionManager.setCurrentNode(WorldNodeEnum.BLACKWOOD.toString());
-		positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
+		positionManager.setCurrentNodeName(WorldNodeEnum.BLACKWOOD.toString());
 
 		// FIXME 초기 CurrentMoving 정보를 주입한다.
 		movingInfo.setStartNode("blackwood");

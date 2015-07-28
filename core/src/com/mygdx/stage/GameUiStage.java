@@ -15,19 +15,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.RewardInfo;
-import com.mygdx.enums.PlaceEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.EventCheckManager;
+import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
-import com.mygdx.manager.StorySectionManager;
-import com.mygdx.model.StorySectionPacket;
 import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
@@ -42,9 +38,7 @@ public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
-	private StorySectionManager storySectionManager;
-	@Autowired
-	private EventCheckManager eventCheckManager;
+	private ListenerFactory listenerFactory;
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("GameUiStage");
@@ -176,44 +170,7 @@ public class GameUiStage extends BaseOneLevelStage {
 			}
 
 		});
-		backButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-
-				switch (positionManager.getCurrentPlace()) {
-					case BUILDING:
-						positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
-						screenFactory.show(ScreenEnum.VILLAGE);
-						for (StorySectionPacket nextStorySectionPacket : storySectionManager
-								.getNextSections()) {
-							if (eventCheckManager
-									.checkMovedVillage(nextStorySectionPacket)) {
-								storySectionManager
-										.setNewStorySectionAndPlay(nextStorySectionPacket
-												.getNextSectionNumber());
-								break;
-							}
-						}
-						break;
-					case VILLAGE:
-					case DUNGEON_ENTRANCE:
-						positionManager.setCurrentPlace(PlaceEnum.MOVING);
-						screenFactory.show(ScreenEnum.WORLD_MAP);
-						break;
-					case MOVING:
-						if (positionManager.getCurrentNodeType() == PlaceEnum.VILLAGE) {
-							positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
-							screenFactory.show(ScreenEnum.VILLAGE);
-						} else if (positionManager.getCurrentNodeType() == PlaceEnum.DUNGEON) {
-							positionManager.setCurrentPlace(PlaceEnum.DUNGEON);
-							screenFactory.show(ScreenEnum.DUNGEON);
-						}
-					default:
-						Gdx.app.log("GameUiStage", "Error : 현재 PlaceEnum정보가 없음");
-				}
-			}
-
-		});
+		backButton.addListener(listenerFactory.getBackButtonListener());
 	}
 
 	@Override

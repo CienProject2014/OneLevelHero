@@ -2,7 +2,7 @@ package com.mygdx.currentState;
 
 import java.util.List;
 
-public class MovingInfo {
+public class FieldInfo {
 	private String startNode; // 무빙 시작 노드
 	private String destinationNode; // 무빙 목표 노드
 	private int roadLength; // 총 길 개수

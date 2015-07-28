@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.MovingManager;
 import com.mygdx.model.EventScene;
 
 public class GameObjectStage extends BaseOneLevelStage {
@@ -22,7 +22,7 @@ public class GameObjectStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
-	private PositionManager positionManager;
+	private MovingManager movingManager;
 	private Label scriptTitle;
 	private Label scriptContent;
 	private Image characterImage;
@@ -39,7 +39,7 @@ public class GameObjectStage extends BaseOneLevelStage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				positionManager.goCurrentPlace();
+				movingManager.goCurrentPosition();
 				return true;
 			}
 		});

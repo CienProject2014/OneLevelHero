@@ -38,25 +38,29 @@ public class EncounterStage extends BaseOneLevelStage {
 	private void addListener() {
 		fightButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				// BattleScreen으로 넘어가는 것이 전투를 시작하는 것을 의미
 				screenFactory.show(ScreenEnum.BATTLE);
 			}
 		});
 		fleeButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				screenFactory.show(ScreenEnum.MOVING);
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				screenFactory.show(ScreenEnum.FIELD);
 			}
 		});
 	}

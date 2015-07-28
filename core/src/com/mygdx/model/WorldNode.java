@@ -3,11 +3,11 @@ package com.mygdx.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mygdx.enums.PlaceEnum;
+import com.mygdx.enums.WorldNodeEnum;
 
 public class WorldNode {
 	private String nodeName;
-	private PlaceEnum nodeType;
+	private WorldNodeEnum.NodeType nodeType;
 	private HashMap<String, Connection> connection;
 
 	public Map<String, Connection> getConnection() {
@@ -26,11 +26,11 @@ public class WorldNode {
 		this.nodeName = nodeName;
 	}
 
-	public PlaceEnum getNodeType() {
+	public WorldNodeEnum.NodeType getNodeType() {
 		return nodeType;
 	}
 
-	public void setNodeType(PlaceEnum nodeType) {
+	public void setNodeType(WorldNodeEnum.NodeType nodeType) {
 		this.nodeType = nodeType;
 	}
 }
