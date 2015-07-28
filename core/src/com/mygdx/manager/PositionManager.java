@@ -3,9 +3,10 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.PositionInfo;
-import com.mygdx.enums.PlaceEnum;
-import com.mygdx.enums.ScreenEnum;
+import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.factory.ScreenFactory;
 
 public class PositionManager {
@@ -13,38 +14,42 @@ public class PositionManager {
 	private PositionInfo positionInfo;
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private WorldMapAssets worldMapAssets;
 
-	public String getCurrentNode() {
-		return positionInfo.getCurrentNode();
+	public WorldNodeEnum.NodeType getCurrentNodeType() {
+		return worldMapAssets.getNodeType(positionInfo.getCurrentNodeName());
 	}
 
-	public PlaceEnum getCurrentNodeType() {
-		return positionInfo.getCurrentNodeType();
+	public WorldNodeEnum.NodeType getNodeType(String nodeName) {
+		return worldMapAssets.getNodeType(nodeName);
 	}
 
-	public void goCurrentPlace() {
-		screenFactory.show(ScreenEnum.findScreenEnum(getCurrentPlace()
-				.toString()));
+	public String getCurrentNodeName() {
+		return positionInfo.getCurrentNodeName();
 	}
 
-	public void setCurrentNode(String currentNode) {
-		positionInfo.setCurrentNode(currentNode);
+	public PositionEnum getCurrentPositionType() {
+		return positionInfo.getCurrentPositionType();
 	}
 
-	public String getCurrentBuilding() {
-		return positionInfo.getCurrentBuilding();
+	public void setCurrentNodeName(String currentNodeName) {
+		Gdx.app.log("PositionManager", "현재위치 : " + currentNodeName);
+		setCurrentPositionType(PositionEnum.NODE);
+		positionInfo.setCurrentNodeName(currentNodeName);
 	}
 
-	public void setCurrentBuilding(String currentBuilding) {
-		positionInfo.setCurrentBuilding(currentBuilding);
+	public void setCurrentPositionType(PositionEnum positionEnum) {
+		positionInfo.setCurrentPositionType(positionEnum);
 	}
 
-	public PlaceEnum getCurrentPlace() {
-		return positionInfo.getCurrentPlace();
+	public String getCurrentSubNodeName() {
+		return positionInfo.getCurrentSubNodeName();
 	}
 
-	public void setCurrentPlace(PlaceEnum currentPlace) {
-		positionInfo.setCurrentPlace(currentPlace);
-		Gdx.app.log("PositionManager", "현재위치 : " + currentPlace);
+	public void setCurrentSubNodeName(String subNodeName) {
+		Gdx.app.log("PositionManager", "현재위치 : " + subNodeName);
+		positionInfo.setCurrentPositionType(PositionEnum.SUB_NODE);
+		positionInfo.setCurrentSubNodeName(subNodeName);
 	}
 }

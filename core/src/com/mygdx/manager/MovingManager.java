@@ -1,119 +1,80 @@
 package com.mygdx.manager;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mygdx.assets.WorldMapAssets;
-import com.mygdx.currentState.MovingInfo;
+import com.badlogic.gdx.Gdx;
+import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.ScreenEnum;
+import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.model.StorySectionPacket;
-import com.mygdx.model.WorldNode;
 
 public class MovingManager {
 	@Autowired
-	private WorldMapAssets worldMapAssets;
-	@Autowired
 	private ScreenFactory screenFactory;
-	@Autowired
-	private MovingInfo movingInfo;
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
-	private EncounterManager encounterManager;
-	@Autowired
 	private StorySectionManager storySectionManager;
-	@Autowired
-	private EventCheckManager eventCheckManager;
 
-	public List<String> getRoadMonsters() {
-		return movingInfo.getRoadMonsterList();
-	}
-
-	public void selectDestinationNode(String destinationNode) {
-		WorldNode worldNodeInfo = worldMapAssets
-				.getWorldNodeInfo(positionManager.getCurrentNode());
-		createMovingInfo(destinationNode, worldNodeInfo);
-	}
-
-	public void createMovingInfo(String destinationNode, WorldNode worldNodeInfo) {
-		movingInfo.setStartNode(positionManager.getCurrentNode());
-		movingInfo.setDestinationNode(destinationNode);
-		movingInfo.setRoadLength(worldNodeInfo.getConnection()
-				.get(destinationNode).getroadLength());
-		movingInfo.setLeftRoadLength(worldNodeInfo.getConnection()
-				.get(destinationNode).getroadLength());
-		movingInfo.setRoadMonsterList(worldNodeInfo.getConnection()
-				.get(destinationNode).getRoadMonster());
-		movingInfo.setArrowName(worldNodeInfo.getConnection()
-				.get(destinationNode).getArrowName());
-	}
-
-	public void goForward() {
-		if (isRoadLeft()) {
-			minusLeftRoadLength();
-			movingRoad();
-		} else {
-			// 목적지 노드에 도착해서 현재 위치로 설정함
-			positionManager.setCurrentNode(movingInfo.getDestinationNode());
-			goIntoCurrentNode();
-		}
-	}
-
-	public void goBackward() {
-		if (!isRoadFull()) {
-			plusLeftRoadLength();
-			movingRoad();
-		} else {
-			// 원래 노드로 다시 돌아옴
-			positionManager.setCurrentNode(movingInfo.getStartNode());
-			goIntoCurrentNode();
-		}
-	}
-
-	private void plusLeftRoadLength() {
-		movingInfo.setLeftRoadLength(movingInfo.getLeftRoadLength() + 1);
-	}
-
-	public void minusLeftRoadLength() {
-		movingInfo.setLeftRoadLength(movingInfo.getLeftRoadLength() - 1);
-	}
-
-	private void movingRoad() {
-		if (encounterManager.isBattleOccured()) {
-			encounterManager.encountEnemy();
-		}
-	}
-
-	private void goIntoCurrentNode() {
-		positionManager.setCurrentPlace(positionManager.getCurrentNodeType());
-		positionManager.goCurrentPlace();
-		for (StorySectionPacket nextStorySectionPacket : storySectionManager
-				.getNextSections()) {
-			if (eventCheckManager.checkMovedVillage(nextStorySectionPacket)) {
-				storySectionManager
-						.setNewStorySectionAndPlay(nextStorySectionPacket
-								.getNextSectionNumber());
+	public void goPreviousPosition() {
+		switch (positionManager.getCurrentPositionType()) {
+			case SUB_NODE:
+				positionManager.setCurrentPositionType(PositionEnum.NODE);
+				screenFactory.show(ScreenEnum.findScreenEnum(positionManager
+						.getCurrentNodeType().toString()));
 				break;
-			}
+			case NODE:
+				positionManager.setCurrentPositionType(PositionEnum.FIELD);
+				screenFactory.show(ScreenEnum.FIELD);
+				break;
+			default:
+				Gdx.app.log("MovingManager", "PositionEnum정보 오류");
 		}
 	}
 
-	private boolean isRoadLeft() {
-		return (movingInfo.getLeftRoadLength() > 0) ? true : false;
+	private void goCurrentNode(WorldNodeEnum.NodeType nodeType) {
+		switch (nodeType) {
+			case VILLAGE:
+				screenFactory.show(ScreenEnum.VILLAGE);
+				break;
+			case DUNGEON_ENTRANCE:
+				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
+				break;
+			case FORK:
+				screenFactory.show(ScreenEnum.FIELD); //FIXME
+				break;
+		}
 	}
 
-	private boolean isRoadFull() {
-		return (movingInfo.getRoadLength() <= movingInfo.getLeftRoadLength()) ? true
-				: false;
+	private void goCurrentSubNode(WorldNodeEnum.NodeType nodeType) {
+		switch (nodeType) {
+			case VILLAGE:
+				screenFactory.show(ScreenEnum.BUILDING);
+				break;
+			case DUNGEON_ENTRANCE:
+				screenFactory.show(ScreenEnum.DUNGEON);
+				break;
+			case FORK:
+				screenFactory.show(ScreenEnum.FIELD); //FIXME
+				break;
+		}
 	}
 
-	public String getDestinationNode() {
-		return movingInfo.getDestinationNode();
+	public void goCurrentPosition() {
+		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
+		switch (positionManager.getCurrentPositionType()) {
+			case NODE:
+				goCurrentNode(nodeType);
+				break;
+			case SUB_NODE:
+				goCurrentSubNode(nodeType);
+				break;
+			case FIELD:
+				screenFactory.show(ScreenEnum.FIELD);
+				break;
+			default:
+				Gdx.app.log("MovingManager", "NodeType정보 오류");
+				break;
+		}
 	}
-
-	public String getLeftRoadLength() {
-		return String.valueOf(movingInfo.getLeftRoadLength());
-	}
-
 }

@@ -22,4 +22,18 @@ public enum WorldNodeEnum {
 
 		return null;
 	}
+
+	public enum NodeType {
+		DUNGEON_ENTRANCE("dungeon_entrance"), VILLAGE("village"), FORK("fork");
+		NodeType(String code) {
+			this.code = code;
+		}
+
+		private String code;
+
+		@Override
+		public String toString() {
+			return code;
+		}
+	}
 }

@@ -7,11 +7,8 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.StorySectionInfo;
-import com.mygdx.enums.PlaceEnum;
-import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.model.EventPacket;
 import com.mygdx.model.StorySection;
 import com.mygdx.model.StorySectionPacket;
@@ -24,15 +21,10 @@ public class StorySectionManager {
 	@Autowired
 	private EventCheckManager eventCheckManager;
 	@Autowired
-	private ScreenFactory screenFactory;
-	@Autowired
 	private PositionManager positionManager;
 	@Autowired
-	private BattleManager battleManager;
-	@Autowired
-	private UnitAssets unitAssets;
-	@Autowired
-	private MusicManager musicManager;
+	private MovingManager movingManager;
+
 	private Queue<EventPacket> eventSequenceQueue = new LinkedList<>();
 
 	public void setNewStorySectionAndPlay(int storyNumber) {
@@ -43,12 +35,18 @@ public class StorySectionManager {
 		runStorySequence();
 	}
 
-	public void setNewStorySection(int storyNumber) {
-		storySectionInfo.setCurrentStorySection(storyNumber);
-	}
-
-	public List<StorySectionPacket> getNextSections() {
-		return storySectionInfo.getCurrentStorySection().getNextSections();
+	public void triggerSectionEvent(EventTypeEnum eventType,
+			String componentString) {
+		for (StorySectionPacket nextStorySectionPacket : getNextSections()) {
+			if (eventType.equals(nextStorySectionPacket.getEventType())) {
+				if (eventCheckManager.checkSameWithComponent(eventType,
+						nextStorySectionPacket, componentString)) {
+					setNewStorySectionAndPlay(nextStorySectionPacket
+							.getNextSectionNumber());
+					break;
+				}
+			}
+		}
 	}
 
 	public void insertStorySequence() {
@@ -65,48 +63,23 @@ public class StorySectionManager {
 		if (!eventSequenceQueue.isEmpty()) {
 			EventPacket polledEventPacket = eventSequenceQueue.poll();
 			eventManager.setCurrentEventInfo(polledEventPacket);
-			switch (eventManager.getCurrentEvent().getEventType()) {
-				case BATTLE:
-					battleManager.startBattle(unitAssets
-							.getMonster(eventManager.getCurrentEvent()
-									.getEventComponent().get(0)));
-					screenFactory.show(ScreenEnum.BATTLE);
-
-					break;
-				case NEXT_SECTION:
-					setNewStorySectionAndPlay(Integer.valueOf(eventManager
-							.getCurrentEvent().getEventComponent().get(0)));
-					break;
-				case MOVE_VILLAGE:
-					positionManager.setCurrentNode(eventManager
-							.getCurrentEvent().getEventComponent().get(0));
-					positionManager.setCurrentPlace(PlaceEnum.VILLAGE);
-					screenFactory.show(ScreenEnum.VILLAGE);
-					runStorySequence();
-					break;
-				case MOVE_BUILDING:
-					positionManager.setCurrentBuilding(eventManager
-							.getCurrentEvent().getEventComponent().get(0));
-					positionManager.setCurrentPlace(PlaceEnum.BUILDING);
-					screenFactory.show(ScreenEnum.VILLAGE);
-					runStorySequence();
-					break;
-				case MUSIC:
-					musicManager.setEventMusicAndPlay();
-					runStorySequence();
-					break;
-				default:
-					screenFactory.show(ScreenEnum.EVENT);
-					break;
-			}
-
+			eventManager.doStoryEvent(eventManager.getCurrentEvent()
+					.getEventType());
 		} else {
-			goCurrentPlace();
+			goCurrentPosition();
 		}
 	}
 
-	private void goCurrentPlace() {
-		positionManager.goCurrentPlace();
+	public void setNewStorySection(int storyNumber) {
+		storySectionInfo.setCurrentStorySection(storyNumber);
+	}
+
+	public List<StorySectionPacket> getNextSections() {
+		return storySectionInfo.getCurrentStorySection().getNextSections();
+	}
+
+	private void goCurrentPosition() {
+		movingManager.goCurrentPosition();
 	}
 
 	public void setCurrentStorySection(StorySection storySection) {
@@ -123,16 +96,5 @@ public class StorySectionManager {
 
 	public void setSequenceQueue(Queue<EventPacket> sequenceQueue) {
 		this.eventSequenceQueue = sequenceQueue;
-	}
-
-	public void checkButtonEvent(String buttonType) {
-		for (StorySectionPacket nextStorySectionPacket : getNextSections()) {
-			if (eventCheckManager.checkBattleControlEvent(
-					nextStorySectionPacket, buttonType)) {
-				setNewStorySectionAndPlay(nextStorySectionPacket
-						.getNextSectionNumber());
-			}
-			break;
-		}
 	}
 }

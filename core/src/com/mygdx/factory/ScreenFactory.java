@@ -20,11 +20,11 @@ import com.mygdx.screen.DungeonScreen;
 import com.mygdx.screen.EncounterScreen;
 import com.mygdx.screen.EndingScreen;
 import com.mygdx.screen.EventScreen;
+import com.mygdx.screen.FieldScreen;
 import com.mygdx.screen.GameObjectScreen;
 import com.mygdx.screen.GreetingScreen;
 import com.mygdx.screen.LoadScreen;
 import com.mygdx.screen.MenuScreen;
-import com.mygdx.screen.MovingScreen;
 import com.mygdx.screen.OptionScreen;
 import com.mygdx.screen.SaveScreen;
 import com.mygdx.screen.SkillScreen;
@@ -88,8 +88,8 @@ public class ScreenFactory {
 				return context.getBean(LoadScreen.class);
 			case MENU:
 				return context.getBean(MenuScreen.class);
-			case MOVING:
-				return context.getBean(MovingScreen.class);
+			case FIELD:
+				return context.getBean(FieldScreen.class);
 			case OPTION:
 				return context.getBean(OptionScreen.class);
 			case SAVE:

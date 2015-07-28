@@ -6,7 +6,7 @@ import com.mygdx.enums.JsonEnum;
 import com.mygdx.model.Village;
 import com.mygdx.util.JsonParser;
 
-public class WorldNodeAssets implements JsonAssetsInitializable {
+public class NodeAssets implements JsonAssetsInitializable {
 	public Map<String, Village> villageMap;
 
 	public void set(Map<String, String> jsonStringMap) {

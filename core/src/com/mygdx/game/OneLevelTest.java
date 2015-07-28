@@ -62,7 +62,7 @@ public class OneLevelTest extends Game {
 	}
 
 	private void goDungeonEntranceScreen() {
-		context.getBean(PositionInfo.class).setCurrentNode(
+		context.getBean(PositionInfo.class).setCurrentNodeName(
 				WorldNodeEnum.BLACKWOOD_FOREST.toString());
 		context.getBean(ScreenFactory.class).show(ScreenEnum.DUNGEON_ENTRANCE);
 	}

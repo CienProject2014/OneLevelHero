@@ -7,7 +7,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.assets.MusicAssets;
-import com.mygdx.currentState.MovingInfo;
+import com.mygdx.currentState.FieldInfo;
 import com.mygdx.currentState.MusicInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.currentState.SoundInfo;
@@ -21,7 +21,7 @@ public class MusicManager {
 	@Autowired
 	private PositionInfo positionInfo; //FIXME
 	@Autowired
-	private MovingInfo movingInfo; //FIXME
+	private FieldInfo movingInfo; //FIXME
 	@Autowired
 	private MusicAssets musicAssets;
 	@Autowired
@@ -119,7 +119,7 @@ public class MusicManager {
 
 	public void setWorldNodeMusicAndPlay() {
 		Music music = musicAssets.getWorldNodeMusic(positionInfo
-				.getCurrentNode());
+				.getCurrentNodeName());
 		setMusicAndPlay(music);
 	}
 

@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.StorySectionManager;
@@ -324,9 +325,8 @@ public class SkillStage extends BaseOverlapStage {
 					int pointer, int button) {
 				useButton.setLayerVisibilty("Default", true);
 				useButton.setLayerVisibilty("pressed", false);
-				if (eventCheckManager.checkBattleEventType()) {
-					storySectionManager.checkButtonEvent("skill_attack");
-				}
+				storySectionManager.triggerSectionEvent(
+						EventTypeEnum.BATTLE_CONTROL, "skill_attack");
 			}
 		});
 	}

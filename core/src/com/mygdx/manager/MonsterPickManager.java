@@ -22,7 +22,7 @@ public class MonsterPickManager {
 	@Autowired
 	private BattleManager battleManager;
 	@Autowired
-	private MovingManager movingManager;
+	private FieldManager fieldManager;
 	@Autowired
 	private UnitManager unitManager;
 
@@ -35,7 +35,7 @@ public class MonsterPickManager {
 	private String selectMonster() {
 		// 랜덤하게 몬스터를 뽑아오는 로직
 		// FIXME 여기서는 인덱스0의 몬스터를 얻어오며 기획에 따라 수정하자
-		List<String> monsterStrings = movingManager.getRoadMonsters();
+		List<String> monsterStrings = fieldManager.getRoadMonsters();
 		String selectedMonsterString = monsterStrings.get(0);
 		return selectedMonsterString;
 	}

@@ -6,10 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.RewardStateEnum;
+import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.model.Event;
 import com.mygdx.model.EventPacket;
@@ -29,11 +33,59 @@ public class EventManager {
 	@Autowired
 	private RewardManager rewardManager;
 	@Autowired
+	private StorySectionManager storySectionManager;
+	@Autowired
 	private StageFactory stageFactory;
+	@Autowired
+	private BattleManager battleManager;
+	@Autowired
+	private PositionManager positionManager;
+	@Autowired
+	private MovingManager movingManager;
+	@Autowired
+	private UnitAssets unitAssets;
+	@Autowired
+	private ScreenFactory screenFactory;
+	@Autowired
+	private MusicManager musicManager;
 
 	private Iterator<EventScene> eventSceneIterator;
 
-	public Stage getEvent() {
+	public void doStoryEvent(EventTypeEnum eventType) {
+		switch (eventType) {
+			case BATTLE:
+				battleManager.startBattle(unitAssets
+						.getMonster(getCurrentEvent().getEventComponent()
+								.get(0)));
+				screenFactory.show(ScreenEnum.BATTLE);
+				break;
+			case NEXT_SECTION:
+				storySectionManager.setNewStorySectionAndPlay(Integer
+						.valueOf(getCurrentEvent().getEventComponent().get(0)));
+				break;
+			case MOVE_NODE:
+				positionManager.setCurrentNodeName(getCurrentEvent()
+						.getEventComponent().get(0));
+				movingManager.goCurrentPosition();
+				storySectionManager.runStorySequence();
+				break;
+			case MOVE_SUB_NODE:
+				positionManager.setCurrentSubNodeName(getCurrentEvent()
+						.getEventComponent().get(0));
+				movingManager.goCurrentPosition();
+				storySectionManager.runStorySequence();
+				break;
+			case MUSIC:
+				musicManager.setEventMusicAndPlay();
+				storySectionManager.runStorySequence();
+				break;
+			default:
+				screenFactory.show(ScreenEnum.EVENT);
+				break;
+		}
+	}
+
+	public Stage getSceneEvent() {
 		Event currentEvent = eventInfo.getCurrentEvent();
 		switch (currentEvent.getEventType()) {
 			case CHAT:
@@ -107,4 +159,5 @@ public class EventManager {
 	public void setCurrentEventNpc(String npcName) {
 		eventInfo.setCurrentEventNpc(npcName);
 	}
+
 }
