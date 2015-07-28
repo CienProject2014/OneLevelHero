@@ -9,7 +9,6 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.battle.Battle;
 import com.mygdx.currentState.BattleInfo;
 import com.mygdx.enums.BattleStateEnum;
-import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -43,6 +42,18 @@ public class BattleManager {
 		goCurrentPosition();
 	}
 
+	public void playMonsterHitAnimation() {
+		final int x = (int) (StaticAssets.windowWidth / 8);
+		final int y = (int) (StaticAssets.windowHeight / 2);
+		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING, x, y);
+	}
+
+	public void playPlayerHitAnimation() {
+		int x = (int) (StaticAssets.windowWidth / 2);
+		int y = (int) (StaticAssets.windowHeight / 2);
+		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, x, y);
+	}
+
 	private void goCurrentPosition() {
 		movingManager.goCurrentPosition();
 	}
@@ -68,16 +79,13 @@ public class BattleManager {
 	public void userAttack(Unit unit) {
 		// FIXME
 		battle.attack(unit, battleInfo.getMonster());
-		int x = (int) (StaticAssets.windowWidth / 2);
-		int y = (int) (StaticAssets.windowHeight / 2);
-		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, x, y);
+	}
+
+	public void checkUserWin() {
 		if (battleInfo.getMonster().getStatus().getHp() <= 0) {
 			endBattle(battleInfo.getMonster());
 			Gdx.app.log("BattleManager", "용사팀의 승리!");
 		}
-		storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_CONTROL,
-				"normal_attack");
-
 	}
 
 	public void userSkill(Unit unit, String skill) {
@@ -89,22 +97,11 @@ public class BattleManager {
 		// TODO
 	}
 
-	public void monsterAttack() {
-		// FIXME
-		Hero randomHero = partyManager.pickRandomHero();
-
-		final int x = (int) (StaticAssets.windowWidth / 8);
-		final int y = (int) (StaticAssets.windowHeight / 2);
-
-		Timer.schedule(new Task() {
-			@Override
-			public void run() {
-				animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING,
-						x, y);
-			}
-		}, 1000);
-
+	public void monsterAttack(Hero randomHero) {
 		battle.attack(battleInfo.getMonster(), randomHero);
+	}
+
+	public void checkMonsterWin(Hero randomHero) {
 		if (randomHero.getStatus().getHp() <= 0) {
 			endBattle(battleInfo.getMonster());
 			Gdx.app.log("BattleManager", "용사팀의 패배..!");

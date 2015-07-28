@@ -12,21 +12,21 @@ public class TimeManager {
 	private final static int HOURS_PER_DAY = 24;
 	private final static int MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
 
-	public void adjustTimeDay(int value) {
-		adjustTimeHour(HOURS_PER_DAY * value);
+	public void plusDay(int value) {
+		plusHour(HOURS_PER_DAY * value);
 	}
 
-	public void adjustTimeHour(int value) {
-		adjustTimeMinute(MINUTES_PER_HOUR * value);
+	public void plusHour(int value) {
+		plusMinute(MINUTES_PER_HOUR * value);
 	}
 
-	public void adjustTimeMinute(int value) {
+	public void plusMinute(int value) {
 		timeInfo.setTime(timeInfo.getTime() + value);
 	}
 
 	public void setTime(int day, int hour, int minute) {
-		timeInfo.setTime(MINUTES_PER_DAY * getDay() + MINUTES_PER_HOUR
-				* getHour() + getMinute());
+		timeInfo.setTime(MINUTES_PER_DAY * day + MINUTES_PER_HOUR * hour
+				+ minute);
 	}
 
 	public int getDay() {

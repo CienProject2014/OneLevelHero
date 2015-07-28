@@ -7,10 +7,13 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.AnimationManager;
+import com.mygdx.manager.StorySectionManager;
 
 public class BattleScreen extends BaseScreen {
 	@Autowired
 	private AnimationManager animationManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
 	private Stage gameUiStage, characterUiStage, monsterStage, battleStage;
 
 	public BattleScreen() {
@@ -27,15 +30,10 @@ public class BattleScreen extends BaseScreen {
 		battleStage.draw();
 
 		// Animation이 진행중일때는 사용자의 입력에 대한 행동을 수행하지 않음
-
-		if (animationManager.hasPlayable()) {
-			animationManager.nextFrame(delta);
-		} else {
-			monsterStage.act();
-			characterUiStage.act(delta);
-			gameUiStage.act();
-			battleStage.act();
-		}
+		monsterStage.act();
+		characterUiStage.act(delta);
+		gameUiStage.act();
+		battleStage.act();
 	}
 
 	@Override

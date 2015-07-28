@@ -17,6 +17,7 @@ public class FieldScreen extends BaseScreen {
 		fieldStage.draw();
 		fieldStage.act();
 		gameUiStage.draw();
+		gameUiStage.act();
 		/*
 		 * movingLabel.setText(movingInfo.getDestinationNode() + "까지" +
 		 * movingInfo.getLeftRoadLength());

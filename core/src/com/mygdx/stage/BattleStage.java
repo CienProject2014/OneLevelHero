@@ -19,10 +19,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.Hero;
 import com.mygdx.model.Monster;
 import com.mygdx.model.Unit;
@@ -40,7 +42,9 @@ public class BattleStage extends BaseOneLevelStage {
 	private Table orderTable; // 순서를 나타내는 테이블
 	private GridHitbox gridHitbox; // grid hitbox 테이블
 	@Autowired
-	private ListenerFactory listenerFactory;
+	private StorySectionManager storySectionManager;
+	@Autowired
+	private AnimationManager animationManager;
 
 	// Button
 	private ImageButton attackButton;
@@ -68,24 +72,27 @@ public class BattleStage extends BaseOneLevelStage {
 
 	@Override
 	public void act(float delta) {
-
+		super.act(delta);
 		if (gridHitbox.isGridShow()) {
-
 		} else if (monsterTrigger) {
 			Unit actor = getCurrentActor();
-			if (!(actor instanceof Monster)) {
-				// 일어날 수 없는 시나리오
-				// 몬스터의 턴이 아니라면 monsterTrigger가 true여서는 안된다.
-				return;
-			}
-			battleManager.monsterAttack();
-
+			Hero randomHero = partyManager.pickRandomHero();
+			battleManager.playMonsterHitAnimation();
+			battleManager.monsterAttack(randomHero);
+			battleManager.checkMonsterWin(randomHero);
 			updateOrder();
-
 			monsterTrigger = false;
 		}
 
-		super.act(delta);
+		if (animationManager.hasPlayable()) {
+			animationManager.nextFrame(delta);
+			if (animationManager.getAnimations().isEmpty()) {
+				storySectionManager.triggerSectionEvent(
+						EventTypeEnum.BATTLE_CONTROL, "normal_attack");
+			}
+		} else {
+
+		}
 	}
 
 	public Stage makeStage() {
@@ -254,18 +261,17 @@ public class BattleStage extends BaseOneLevelStage {
 			}
 
 			battleManager.userAttack(actor);
-
+			battleManager.playPlayerHitAnimation();
+			battleManager.checkUserWin();
 			updateOrder();
 
-			if (whoIsNextActor() instanceof Monster) {
-				monsterTrigger = true;
-			}
-
 			gridHitbox.hideGrid();
-
 		}
-
 		gridHitbox.hideAllTiles();
+
+		if (whoIsNextActor() instanceof Monster) {
+			monsterTrigger = true;
+		}
 
 		return result;
 	}
@@ -343,8 +349,6 @@ public class BattleStage extends BaseOneLevelStage {
 		escapeButton = new ImageButton(
 				atlasUiAssets.getAtlasUiFile("battleui_rb_escape"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_escape"));
-
 		addListener();
-
 	}
 }

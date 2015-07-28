@@ -56,6 +56,12 @@ public class GameUiStage extends BaseOneLevelStage {
 	private ImageButton helpButton;
 	private ImageButton settingButton;
 
+	@Override
+	public void act(float delta) {
+		timeInfoButton.setText(timeManager.getDay() + "일째 "
+				+ timeManager.getHour() + "시 " + timeManager.getMinute() + "분");
+	}
+
 	public Stage makeStage() {
 		super.makeStage();
 		// 초기화
@@ -134,11 +140,11 @@ public class GameUiStage extends BaseOneLevelStage {
 				atlasUiAssets.getAtlasUiFile("time_info_button"),
 				atlasUiAssets.getAtlasUiFile("time_info_button"),
 				uiComponentAssets.getFont());
+		timeInfoButton = new TextButton(timeManager.getDay() + "일째 "
+				+ timeManager.getHour() + "시 " + timeManager.getMinute() + "분",
+				style);
 
 		placeInfoButton = new TextButton("장소", style);
-		timeInfoButton = new TextButton(timeManager.getDay() + "d"
-				+ timeManager.getHour() + "h" + timeManager.getMinute() + "m",
-				style);
 
 		backButton = new ImageButton(
 				atlasUiAssets.getAtlasUiFile("back_button"),

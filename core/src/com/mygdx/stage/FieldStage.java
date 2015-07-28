@@ -7,18 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.GoBackwardFieldButtonListener;
 import com.mygdx.listener.GoForwardFieldButtonListener;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.PositionManager;
@@ -103,12 +102,10 @@ public class FieldStage extends BaseOneLevelStage {
 	public void addListener() {
 		GoForwardFieldButtonListener goForwardListener = listenerFactory
 				.getGoForwardFieldButtonListener();
+		GoBackwardFieldButtonListener goBackwardListener = listenerFactory
+				.getGoBackwardFieldButtonListener();
 		goForwardFieldButton.addListener(goForwardListener);
-		goBackwardFieldButton.addListener(new ClickListener() {
-			public void clicked(InputEvent event, float x, float y) {
-				fieldManager.goBackwardField();
-			}
-		});
+		goBackwardFieldButton.addListener(goBackwardListener);
 	}
 
 	@Override

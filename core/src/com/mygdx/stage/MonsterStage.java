@@ -34,7 +34,6 @@ public class MonsterStage extends BaseOneLevelStage {
 		monster = battleManager.getSelectedMonster();
 
 		setMonsterTable();
-
 		return this;
 	}
 
