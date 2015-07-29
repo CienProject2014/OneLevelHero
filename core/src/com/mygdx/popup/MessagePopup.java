@@ -11,17 +11,23 @@ import com.mygdx.inventory.HidingClickListener;
 public class MessagePopup extends Dialog {
 	public MessagePopup(String title, Skin skin) {
 		super(title, skin);
+		TextButton openButton = new TextButton("O", skin);
 		TextButton closeButton = new TextButton("X", skin);
+
+		openButton.addListener(new HidingClickListener(this));
 		closeButton.addListener(new HidingClickListener(this));
 		getButtonTable().add(closeButton).height(getPadTop());
+		getButtonTable().add(openButton).height(getPadTop());
+		getButtonTable().add(openButton).width(getPadLeft());
 		initialize();
 	}
 
 	private void initialize() {
 		padTop(70); // set padding on top of the dialog title
+		padLeft(100);
 		getButtonTable().defaults().height(50); // set buttons height
 		setPosition(600, 400);
-		setSize(600, 200);
+		setSize(1000, 200);
 		setModal(true);
 		setMovable(true);
 		setResizable(false);

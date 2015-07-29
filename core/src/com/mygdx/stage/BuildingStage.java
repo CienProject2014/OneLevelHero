@@ -45,6 +45,7 @@ public class BuildingStage extends BaseOverlapStage {
 		initSceneLoader(StaticAssets.rm);
 
 		makeScene();
+
 		if (buildingInfo.getBuildingNpc() != null) {
 			setNpcList();
 		}
@@ -87,6 +88,7 @@ public class BuildingStage extends BaseOverlapStage {
 
 	private void setItemList() {
 		gameObjectList = new ArrayList<CompositeItem>();
+		gameObjectMessage = new Stack<>();
 		for (final String objectName : buildingInfo.getGameObject()) {
 			final GameObject gameObject = eventAssets.getGameObject(objectName);
 			final CompositeItem objectButton = sceneLoader.getRoot().getCompositeById(objectName);
@@ -103,10 +105,12 @@ public class BuildingStage extends BaseOverlapStage {
 					gameObject.setObjectType(GameObjectEnum.PRESSED);
 					eventManager.setCurrentGameObject(gameObject);
 
-					gameObjectMessage.add(new AlertMessagePopup("[ 상자 ]", uiComponentAssets.getSkin())
-							.text(gameObject.getObjectEvent().getEventScenes().get(0).getScript()));
+					gameObjectMessage
+							.add(new AlertMessagePopup("[ 경 고 ]", uiComponentAssets.getSkin()).text(" 진짜 누를거임? ㄴㄷ"));
 
-					gameObjectMessage = new Stack<MessagePopup>();
+					gameObjectMessage.add(new AlertMessagePopup("[ 상 자 ]", uiComponentAssets.getSkin())
+							.text(String.valueOf(gameObject.getObjectEvent().getEventScenes().get(0).getScript())));
+
 					Iterator<MessagePopup> gameObjectIterator = gameObjectMessage.iterator();
 					MessagePopup nextIterator = gameObjectIterator.next();
 					addActor(nextIterator);

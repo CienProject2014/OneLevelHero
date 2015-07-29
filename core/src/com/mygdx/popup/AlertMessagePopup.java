@@ -6,4 +6,5 @@ public class AlertMessagePopup extends MessagePopup {
 	public AlertMessagePopup(String title, Skin skin) {
 		super(title, skin);
 	}
+
 }
