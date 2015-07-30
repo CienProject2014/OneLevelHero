@@ -568,13 +568,89 @@
         "eventType": "chat",
         "eventScenes": [
           {
-            "script": "그런건 없어요!",
+            "script": "파라스, 어떻게 하면 저주를 풀 수 있을까?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "내가 어케암!",
             "characterPath": "bust_parath_01",
             "backgroundPath": "black_background"
           },
           {
-            "script": "암울해졌다....",
+            "script": "아.. 암울해졌다....",
             "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사의 한숨이 5 증가했다....",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "2": {
+        "eventName": "시비걸기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "파라스.. 넌 너무 설명충같아!",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "헉........",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "전 그래도 용사님이 좋은걸요...",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "파라스의 용사에 대한 애정이 1증가했다...!",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "3": {
+        "eventName": "고백하기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "내 마음을 받아줘 파라스!",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "헉........",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사님 실망이에요...",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "파라스는 파티를 떠났다...!",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "4": {
+        "eventName": "지난 대화 되짚기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "지난 대화를 되짚어보는 공간을 만들 예정",
+            "characterPath": "nothing_image",
             "backgroundPath": "black_background"
           }
         ]
@@ -598,7 +674,8 @@
         ],
         "eventComponent": [
           "저주를 풀 열쇠",
-          "파라스에게 고백",
+          "시비걸기",
+          "고백하기",
           "지난 대화 되짚기"
         ]
       },

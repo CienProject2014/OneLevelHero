@@ -55,6 +55,7 @@ public class EventManager {
 	private EventAssets eventAssets;
 
 	private Iterator<EventScene> eventSceneIterator;
+	private final int eventPlusRule = 1;
 
 	public void doStoryEvent(EventTypeEnum eventType) {
 		switch (eventType) {
@@ -198,20 +199,16 @@ public class EventManager {
 		}
 	}
 
-	public void triggerComponentEvent() {
-		for (int i = 0; i < getCurrentEvent().getEventComponent().size(); i++) {
-			String eventComponent = getCurrentEvent().getEventComponent()
-					.get(i);
-			if (getCurrentEvent().getEventTarget() != null) {
-				NPC npc = eventAssets
-						.getNpc(getCurrentEvent().getEventTarget());
-				if (eventCheckManager.checkSameWithComponent(eventComponent,
-						npc.getEvent(i + 1).getEventName())) {
-					setCurrentEventNpc(getCurrentEvent().getEventTarget());
-					setCurrentEventNumber(i + 1); //모종의 알고리즘이필요함
-					screenFactory.show(ScreenEnum.EVENT);
-					break;
-				}
+	public void triggerComponentEvent(int index) {
+		String eventComponent = getCurrentEvent().getEventComponent()
+				.get(index);
+		if (getCurrentEvent().getEventTarget() != null) {
+			NPC npc = eventAssets.getNpc(getCurrentEvent().getEventTarget());
+			if (eventCheckManager.checkSameWithComponent(eventComponent, npc
+					.getEvent(index + eventPlusRule).getEventName())) {
+				setCurrentEventNpc(getCurrentEvent().getEventTarget());
+				setCurrentEventNumber(index + eventPlusRule); // 알고리즘이필요함
+				screenFactory.show(ScreenEnum.EVENT);
 			}
 		}
 	}

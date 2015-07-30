@@ -17,9 +17,9 @@ public class SelectComponentListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		eventManager.triggerComponentEvent();
+		eventManager.triggerComponentEvent(index);
 		storySectionManager.triggerSectionEvent(EventTypeEnum.SELECT_COMPONENT,
-				String.valueOf(getIndex()));
+				String.valueOf(index));
 	}
 
 	public int getIndex() {
