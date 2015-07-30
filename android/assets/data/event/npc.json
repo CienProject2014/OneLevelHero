@@ -198,7 +198,6 @@
           }
         ]
       },
-      
       "17": {
         "eventState": "not_opened",
         "eventType": "chat",
@@ -307,10 +306,10 @@
           "cobweb"
         ]
       },
-      "20" : {
-        "eventState" : "not_opened",
-        "eventType" : "next_section",
-        "eventComponent" : [
+      "20": {
+        "eventState": "not_opened",
+        "eventType": "next_section",
+        "eventComponent": [
           "111"
         ]
       },
@@ -324,8 +323,7 @@
             "backgroundPath": "bg_cobweb_01"
           },
           {
-            "script": "우선 용사님의 저주를 풀어야겠네요.
-",
+            "script": "우선 용사님의 저주를 풀어야겠네요.",
             "characterPath": "bust_lilis_01",
             "backgroundPath": "bg_cobweb_01"
           },
@@ -561,20 +559,84 @@
       }
     }
   },
+  "yongsa": {
+    "name": "yongsa",
+    "events": {
+      "1": {
+        "eventName": "파라스와의 대화",
+        "eventState": "always_open",
+        "eventType": "select_component",
+        "eventScenes": [
+          {
+            "script": "파라스군과 어떤 이야기를 해볼까?",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          }
+        ],
+        "eventComponent": [
+          "저주를 풀 열쇠",
+          "파라스에게 고백",
+          "지난 대화 되짚기"
+        ]
+      },
+      "2": {
+        "eventName": "리리스와의 대화",
+        "eventState": "always_open",
+        "eventType": "select_component",
+        "eventScenes": [
+          {
+            "script": "리리스찡과 어떤 이야기를 해볼까?",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "black_background"
+          }
+        ],
+        "eventComponent": [
+          "저주를 풀 열쇠",
+          "리리스에게 고백",
+          "지난 대화 되짚기"
+        ]
+      }
+    },
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "이야기나 해볼까",
+          "characterPath": "bust_yongsa_01",
+          "backgroundPath": "black_background"
+        },
+        {
+          "script": "심심해.. 대화를 해볼까나",
+          "characterPath": "bust_yongsa_02",
+          "backgroundPath": "black_background"
+        },
+        {
+          "script": "오늘은 무슨 이야기를하지?",
+          "characterPath": "bust_yongsa_03",
+          "backgroundPath": "black_background"
+        },
+        {
+          "script": "오늘은 누구에게 장난을 쳐볼까!",
+          "characterPath": "bust_yongsa_04",
+          "backgroundPath": "black_background"
+        }
+      ]
+    }
+  },
   "waiji": {
     "name": "waiji",
     "events": {
-      "1" : {
-      	"eventName" : "대화하기",
-      	"eventState" : "always_open",
-      	"eventType" : "chat",
-      	"eventScenes" : [
-      		{
+      "1": {
+        "eventName": "대화하기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
             "script": "Yo 나는 와이G, 이 마을의 촌장이G",
             "characterPath": "bust_waiji_01",
             "backgroundPath": "bg_blackwood_03"
           }
-      	]
+        ]
       },
       "2": {
         "eventName": "마왕퇴치실패",

@@ -75,7 +75,7 @@ public class BuildingStage extends BaseOverlapStage {
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
 					eventManager.setCurrentEventNpc(npcName);
-					eventManager.setCurrentEventNumber(2);
+					eventManager.setCurrentEventNumber(2); //FIXME
 					screenFactory.show(ScreenEnum.GREETING);
 				}
 			});

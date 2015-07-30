@@ -22,6 +22,7 @@ import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.popup.AlertMessagePopup;
@@ -39,6 +40,8 @@ public class GameUiStage extends BaseOneLevelStage {
 	private PositionManager positionManager;
 	@Autowired
 	private ListenerFactory listenerFactory;
+	@Autowired
+	private EventManager eventManager;
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("GameUiStage");
@@ -162,6 +165,22 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	// 리스너 할당
 	public void addListener() {
+		questLogButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				eventManager.setCurrentEventNpc("yongsa");
+				eventManager.setCurrentEventNumber(2); //FIXME
+				screenFactory.show(ScreenEnum.GREETING);
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				screenFactory.show(ScreenEnum.WORLD_MAP);
+			}
+		});
 		helpButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
