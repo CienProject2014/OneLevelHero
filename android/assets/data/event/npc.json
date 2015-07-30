@@ -559,6 +559,28 @@
       }
     }
   },
+  "parath": {
+    "name": "parath",
+    "events": {
+      "1": {
+        "eventName": "저주를 풀 열쇠",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "그런건 없어요!",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "암울해졌다....",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          }
+        ]
+      }
+    }
+  },
   "yongsa": {
     "name": "yongsa",
     "events": {
@@ -566,6 +588,7 @@
         "eventName": "파라스와의 대화",
         "eventState": "always_open",
         "eventType": "select_component",
+        "eventTarget": "parath",
         "eventScenes": [
           {
             "script": "파라스군과 어떤 이야기를 해볼까?",
