@@ -7,7 +7,9 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.EventAssets;
 import com.mygdx.currentState.StorySectionInfo;
+import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.model.EventPacket;
 import com.mygdx.model.StorySection;
@@ -24,6 +26,8 @@ public class StorySectionManager {
 	private PositionManager positionManager;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private EventAssets eventAssets;
 
 	private Queue<EventPacket> eventSequenceQueue = new LinkedList<>();
 
@@ -32,7 +36,19 @@ public class StorySectionManager {
 		Gdx.app.log("StorySectionManager", "현재 분기번호 [" + storyNumber
 				+ "] 가동중...");
 		insertStorySequence();
+		insertConditionalEvents();
 		runStorySequence();
+	}
+
+	private void insertConditionalEvents() {
+		List<EventPacket> conditionalEvent = storySectionInfo
+				.getCurrentStorySection().getConditionalEvents();
+		if (conditionalEvent != null) {
+			for (EventPacket eventPacket : conditionalEvent) {
+				eventAssets.getEvent(eventPacket).setEventState(
+						EventStateEnum.OPENED);
+			}
+		}
 	}
 
 	public void triggerSectionEvent(EventTypeEnum eventType,
@@ -63,6 +79,7 @@ public class StorySectionManager {
 		if (!eventSequenceQueue.isEmpty()) {
 			EventPacket polledEventPacket = eventSequenceQueue.poll();
 			eventManager.setCurrentEventInfo(polledEventPacket);
+			eventManager.setEventOpen(eventManager.getCurrentEvent());
 			eventManager.doStoryEvent(eventManager.getCurrentEvent()
 					.getEventType());
 		} else {

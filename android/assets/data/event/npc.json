@@ -566,7 +566,7 @@
     "events": {
       "1" : {
       	"eventName" : "대화하기",
-      	"eventState" : "not_opened",
+      	"eventState" : "always_open",
       	"eventType" : "chat",
       	"eventScenes" : [
       		{

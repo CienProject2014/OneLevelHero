@@ -145,7 +145,9 @@ public class EventManager {
 	}
 
 	public void finishEvent() {
-		eventInfo.getCurrentEvent().setEventState(EventStateEnum.CLEARED);
+		if (eventInfo.getCurrentEvent().getEventState() == EventStateEnum.OPENED) {
+			eventInfo.getCurrentEvent().setEventState(EventStateEnum.CLEARED);
+		}
 	}
 
 	public void setCurrentEventInfo(EventPacket eventPacket) {
@@ -160,4 +162,34 @@ public class EventManager {
 		eventInfo.setCurrentEventNpc(npcName);
 	}
 
+	public void setEventOpen(Event currentEvent) {
+		if (currentEvent.getEventState().equals(EventStateEnum.NOT_OPENED)) {
+			currentEvent.setEventState(EventStateEnum.OPENED);
+		}
+	}
+
+	public boolean isEventOpen(Event event) {
+		if (event.getEventState().equals(EventStateEnum.ALWAYS_OPEN)
+				|| event.getEventState().equals(EventStateEnum.OPENED)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isEventNotOpened(Event event) {
+		if (event.getEventState().equals(EventStateEnum.NOT_OPENED)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isEventCleared(Event event) {
+		if (event.getEventState().equals(EventStateEnum.CLEARED)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

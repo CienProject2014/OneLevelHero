@@ -76,6 +76,12 @@
         "eventNumber": "10"
       }
     ],
+    "conditionalEvents": [
+      {
+        "eventNpc": "waiji",
+        "eventNumber": "2"
+      }
+    ],
     "nextSections": [
       {
         "nextSectionNumber": "105",

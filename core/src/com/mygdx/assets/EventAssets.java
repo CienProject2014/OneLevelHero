@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.model.Event;
+import com.mygdx.model.EventPacket;
 import com.mygdx.model.GameObject;
 import com.mygdx.model.NPC;
 import com.mygdx.model.StorySection;
@@ -47,6 +48,11 @@ public class EventAssets implements JsonAssetsInitializable {
 
 	public Event getEvent(String npcString, int eventNumber) {
 		return getNpc(npcString).getEvent(eventNumber);
+	}
+
+	public Event getEvent(EventPacket eventPacket) {
+		return getNpc(eventPacket.getEventNpc()).getEvent(
+				eventPacket.getEventNumber());
 	}
 
 	public Map<Integer, StorySection> getStorySectionMap() {
