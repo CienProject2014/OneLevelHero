@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.RewardInfo;
@@ -48,8 +49,13 @@ public class EventManager {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private MusicManager musicManager;
+	@Autowired
+	private EventCheckManager eventCheckManager;
+	@Autowired
+	private EventAssets eventAssets;
 
 	private Iterator<EventScene> eventSceneIterator;
+	private final int eventPlusRule = 1;
 
 	public void doStoryEvent(EventTypeEnum eventType) {
 		switch (eventType) {
@@ -190,6 +196,20 @@ public class EventManager {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	public void triggerComponentEvent(int index) {
+		String eventComponent = getCurrentEvent().getEventComponent()
+				.get(index);
+		if (getCurrentEvent().getEventTarget() != null) {
+			NPC npc = eventAssets.getNpc(getCurrentEvent().getEventTarget());
+			if (eventCheckManager.checkSameWithComponent(eventComponent, npc
+					.getEvent(index + eventPlusRule).getEventName())) {
+				setCurrentEventNpc(getCurrentEvent().getEventTarget());
+				setCurrentEventNumber(index + eventPlusRule); // 알고리즘이필요함
+				screenFactory.show(ScreenEnum.EVENT);
+			}
 		}
 	}
 }

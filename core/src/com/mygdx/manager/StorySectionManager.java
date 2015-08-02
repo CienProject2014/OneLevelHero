@@ -53,13 +53,15 @@ public class StorySectionManager {
 
 	public void triggerSectionEvent(EventTypeEnum eventType,
 			String componentString) {
-		for (StorySectionPacket nextStorySectionPacket : getNextSections()) {
-			if (eventType.equals(nextStorySectionPacket.getEventType())) {
-				if (eventCheckManager.checkSameWithComponent(eventType,
-						nextStorySectionPacket, componentString)) {
-					setNewStorySectionAndPlay(nextStorySectionPacket
-							.getNextSectionNumber());
-					break;
+		if (getNextSections() != null) {
+			for (StorySectionPacket nextStorySectionPacket : getNextSections()) {
+				if (eventType.equals(nextStorySectionPacket.getEventType())) {
+					if (eventCheckManager.checkSameWithComponent(eventType,
+							nextStorySectionPacket, componentString)) {
+						setNewStorySectionAndPlay(nextStorySectionPacket
+								.getNextSectionNumber());
+						break;
+					}
 				}
 			}
 		}
