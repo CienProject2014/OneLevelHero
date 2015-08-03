@@ -7,8 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.dungeon.MapInfo;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.model.Dungeon;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
@@ -20,11 +20,11 @@ public class DungeonStage extends BaseOverlapStage {
 	private CompositeItem btnTurn;
 	private CompositeItem[] btnRoad = new CompositeItem[3];
 
-	private MapInfo mapInfo;
+	private Dungeon mapInfo;
 
 	private int currentPos;
 	private boolean currentHeading;
-	private ArrayList<MapInfo.Connection> selectableForward, selectableBackward;
+	private ArrayList<Dungeon.Connection> selectableForward, selectableBackward;
 	
 	private int minimapPosX, minimapPosY;
 
@@ -76,9 +76,9 @@ public class DungeonStage extends BaseOverlapStage {
 		selectableForward.clear();
 		selectableBackward.clear();
 
-		MapInfo.Node currentNode = mapInfo.nodes.get(currentPos);
+		Dungeon.Node currentNode = mapInfo.nodes.get(currentPos);
 		currentNode.setAlpha(1);
-		for (MapInfo.Connection e : mapInfo.connections)
+		for (Dungeon.Connection e : mapInfo.connections)
 			if (e.isFrom(currentNode))
 				selectableForward.add(e);
 			else if (e.isTo(currentNode))
@@ -104,8 +104,8 @@ public class DungeonStage extends BaseOverlapStage {
 
 		update();
 
-		MapInfo.Node currentNode = mapInfo.nodes.get(currentPos);
-		if (currentNode.chkFlg(MapInfo.Node.FLG_ENTRANCE))
+		Dungeon.Node currentNode = mapInfo.nodes.get(currentPos);
+		if (currentNode.chkFlg(Dungeon.Node.FLG_ENTRANCE))
 			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
 	}
 
@@ -113,7 +113,7 @@ public class DungeonStage extends BaseOverlapStage {
 	public void draw() {
 		// FIXME
 		getBatch().begin();
-		for (MapInfo.Node e : mapInfo.nodes)
+		for (Dungeon.Node e : mapInfo.nodes)
 			getBatch().draw(e.getMinimapTexture(), minimapPosX, minimapPosY);
 		getBatch().end();
 	}

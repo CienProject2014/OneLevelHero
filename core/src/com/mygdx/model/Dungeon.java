@@ -1,11 +1,11 @@
-package com.mygdx.dungeon;
+package com.mygdx.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class MapInfo {
+public class Dungeon {
 	public ArrayList<Node> nodes;
 	public ArrayList<Connection> connections;
 
