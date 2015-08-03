@@ -25,6 +25,7 @@ public class SelectEventListener extends ClickListener {
 		storySectionManager.triggerSectionEvent(EventTypeEnum.SELECT_EVENT,
 				String.valueOf(index + PLUS_ONE));
 		eventManager.setCurrentEventNumber(index + PLUS_ONE);
+		eventManager.setGreeting(false);
 		screenFactory.show(ScreenEnum.EVENT);
 	}
 

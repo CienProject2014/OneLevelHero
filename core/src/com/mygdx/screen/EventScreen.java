@@ -57,11 +57,6 @@ public class EventScreen extends BaseScreen {
 				multiplexer.addProcessor(0, selectStage);
 				multiplexer.addProcessor(1, eventStage);
 				break;
-			case SELECT_EVENT:
-				selectStage = stageFactory.makeStage(StageEnum.SELECT_EVENT);
-				multiplexer.addProcessor(0, selectStage);
-				multiplexer.addProcessor(1, eventStage);
-				break;
 			default:
 				multiplexer.addProcessor(0, eventStage);
 				break;

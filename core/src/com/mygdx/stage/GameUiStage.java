@@ -19,6 +19,7 @@ import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.RewardInfo;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
@@ -169,9 +170,10 @@ public class GameUiStage extends BaseOneLevelStage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				eventManager.setCurrentEventNpc("yongsa");
-				eventManager.setCurrentEventNumber(2); //FIXME
-				screenFactory.show(ScreenEnum.GREETING);
+				if (positionManager.getCurrentPositionType().equals(
+						PositionEnum.NODE)) {
+					screenFactory.show(ScreenEnum.LOG);
+				}
 				return true;
 			}
 

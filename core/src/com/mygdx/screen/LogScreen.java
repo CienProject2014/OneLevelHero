@@ -20,7 +20,7 @@ import com.mygdx.manager.PositionManager;
 import com.mygdx.model.EventScene;
 import com.mygdx.model.NPC;
 
-public class GreetingScreen extends BaseScreen {
+public class LogScreen extends BaseScreen {
 	@Autowired
 	protected EventManager eventManager;
 	@Autowired
@@ -30,13 +30,10 @@ public class GreetingScreen extends BaseScreen {
 
 	// Already libgdx using interface!
 	private Input input = Gdx.input;
-
+	private final String YONGSA_NAME = "yongsa";
 	private Stage eventStage;
 	private Stage selectEventStage;
-	private List<EventScene> greetingScenes;
-
-	public GreetingScreen() {
-	}
+	private List<EventScene> logScenes;
 
 	@Override
 	public void render(float delta) {
@@ -49,12 +46,13 @@ public class GreetingScreen extends BaseScreen {
 	@Override
 	public void show() {
 		eventManager.setGreeting(true);
-		setGreetingPosition(positionManager.getCurrentPositionType());
+		eventManager.setCurrentEventNpc(YONGSA_NAME);
+		positionManager.setCurrentPositionType(PositionEnum.LOG);
 		final NPC npc = eventManager.getCurrentNpc();
-		greetingScenes = npc.getGreeting().getEventScenes();
+		logScenes = npc.getGreeting().getEventScenes();
 		selectEventStage = stageFactory.makeStage(StageEnum.SELECT_EVENT);
 		// for shuffle
-		List<EventScene> shuffleList = new ArrayList<EventScene>(greetingScenes);
+		List<EventScene> shuffleList = new ArrayList<EventScene>(logScenes);
 		Collections.shuffle(shuffleList);
 		eventStage = stageFactory.makeEventStage(shuffleList.get(0));
 
@@ -76,38 +74,5 @@ public class GreetingScreen extends BaseScreen {
 				return true;
 			}
 		});
-	}
-
-	private void setGreetingPosition(PositionEnum currentPositionType) {
-		switch (currentPositionType) {
-			case NODE:
-				if (eventManager.getCurrentNpc().getName().equals("yongsa")) {
-					positionManager.setCurrentPositionType(PositionEnum.LOG);
-				} else {
-					positionManager
-							.setCurrentPositionType(PositionEnum.NODE_EVENT);
-				}
-				break;
-			case SUB_NODE:
-				positionManager
-						.setCurrentPositionType(PositionEnum.SUB_NODE_EVENT);
-				break;
-			case FIELD:
-				positionManager
-						.setCurrentPositionType(PositionEnum.FIELD_EVENT);
-				break;
-			case BATTLE:
-				positionManager
-						.setCurrentPositionType(PositionEnum.BATTLE_EVENT);
-				break;
-			case NODE_EVENT:
-			case BATTLE_EVENT:
-			case SUB_NODE_EVENT:
-			case FIELD_EVENT:
-				break;
-			default:
-				Gdx.app.log("GreetingScreen", "잘못된 CurrentPosition정보");
-				break;
-		}
 	}
 }
