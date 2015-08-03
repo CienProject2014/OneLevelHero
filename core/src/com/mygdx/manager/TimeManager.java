@@ -41,4 +41,7 @@ public class TimeManager {
 		return timeInfo.getTime() % MINUTES_PER_HOUR;
 	}
 
+	public String toString() {
+		return getDay() + "일째 " + getHour() + "시 " + getMinute() + "분";
+	}
 }
