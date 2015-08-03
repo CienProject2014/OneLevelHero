@@ -74,12 +74,14 @@ public class BattleStage extends BaseOneLevelStage {
 	public void act(float delta) {
 		super.act(delta);
 		if (gridHitbox.isGridShow()) {
+
 		} else if (monsterTrigger) {
 			Unit actor = getCurrentActor();
 			Hero randomHero = partyManager.pickRandomHero();
 			battleManager.playMonsterHitAnimation();
 			battleManager.monsterAttack(randomHero);
 			battleManager.checkMonsterWin(randomHero);
+
 			updateOrder();
 			monsterTrigger = false;
 		}
@@ -190,23 +192,14 @@ public class BattleStage extends BaseOneLevelStage {
 				rMenuTable.row();
 			}
 		}
-		/* 다른버튼 막기 //FIXME
-		if (eventCheckManager.checkBattleEventType()) {
-			switch (eventCheckManager.getBattleControlButton()) {
-				case NORMAL_ATTACK:
-					imageButtonList.remove(attackButton);
-					setDarkButton();
-					break;
-				case SKILL_ATTACK:
-					imageButtonList.remove(skillButton);
-					setDarkButton();
-					break;
-				default:
-					Gdx.app.log("BattleStage", "Rmenu ImageButton Target 에러");
-					break;
-			}
-		}
-		*/
+		/*
+		 * 다른버튼 막기 //FIXME if (eventCheckManager.checkBattleEventType()) {
+		 * switch (eventCheckManager.getBattleControlButton()) { case
+		 * NORMAL_ATTACK: imageButtonList.remove(attackButton); setDarkButton();
+		 * break; case SKILL_ATTACK: imageButtonList.remove(skillButton);
+		 * setDarkButton(); break; default: Gdx.app.log("BattleStage",
+		 * "Rmenu ImageButton Target 에러"); break; } }
+		 */
 
 		return rMenuTable;
 	}
@@ -271,6 +264,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 		if (whoIsNextActor() instanceof Monster) {
 			monsterTrigger = true;
+
 		}
 
 		return result;

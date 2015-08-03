@@ -23,6 +23,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("CharacterUiStage");
 	private Table statusTable;
+
 	private int battleMemberNumber;
 	private List<Hero> battleMemberList;
 	private List<HeroStatus> heroStatusList;
@@ -53,6 +54,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		}
 
 		statusTable = new Table();
+
 	}
 
 	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
@@ -127,6 +129,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		for (int i = 0; i < heroStatusList.size(); i++) {
 			heroStatusList.get(i).update();
+
 		}
 	}
 

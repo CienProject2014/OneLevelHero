@@ -3,8 +3,6 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.battle.Battle;
 import com.mygdx.currentState.BattleInfo;
@@ -62,7 +60,7 @@ public class BattleManager {
 		battleInfo.setCurrentActor(hero);
 	}
 
-	public Hero getCurrentActior() {
+	public Hero getCurrentActor() {
 		return battleInfo.getCurrentActor();
 	}
 
@@ -72,7 +70,7 @@ public class BattleManager {
 		} else {
 			battleInfo.setBattleState(BattleStateEnum.LOSE);
 		}
-		//FIXME : 게임 종료를 알리는 장치 필요
+		// FIXME : 게임 종료를 알리는 장치 필요
 		goCurrentPosition();
 	}
 
