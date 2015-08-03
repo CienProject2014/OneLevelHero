@@ -12,6 +12,7 @@ import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -63,6 +64,7 @@ public class EventManager {
 				battleManager.startBattle(unitAssets
 						.getMonster(getCurrentEvent().getEventComponent()
 								.get(0)));
+				positionManager.setCurrentPositionType(PositionEnum.BATTLE);
 				screenFactory.show(ScreenEnum.BATTLE);
 				break;
 			case NEXT_SECTION:
@@ -166,12 +168,21 @@ public class EventManager {
 
 	public void setCurrentEventNpc(String npcName) {
 		eventInfo.setCurrentEventNpc(npcName);
+		eventInfo.setCurrentEventNumber(1); //FIXME
 	}
 
 	public void setEventOpen(Event currentEvent) {
 		if (currentEvent.getEventState().equals(EventStateEnum.NOT_OPENED)) {
 			currentEvent.setEventState(EventStateEnum.OPENED);
 		}
+	}
+
+	public void setGreeting(boolean isGreeting) {
+		eventInfo.getCurrentEventInfo().setGreeting(isGreeting);
+	}
+
+	public boolean isGreeting() {
+		return eventInfo.getCurrentEventInfo().isGreeting();
 	}
 
 	public boolean isEventOpen(Event event) {
