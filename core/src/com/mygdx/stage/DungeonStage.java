@@ -11,7 +11,6 @@ import com.mygdx.dungeon.MapInfo;
 import com.mygdx.dungeon.MapNode;
 import com.mygdx.dungeon.MapNodeConnection;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CameraManager.CameraPosition;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
@@ -44,7 +43,7 @@ public class DungeonStage extends BaseOverlapStage {
 	private void makeScene(String sceneName) {
 		// FIXME UI
 		sceneLoader.loadScene(sceneName);
-		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
+		cameraManager.stretchToDevice(this);
 		addActor(sceneLoader.getRoot());
 	}
 
@@ -137,5 +136,4 @@ public class DungeonStage extends BaseOverlapStage {
 			actionMove(idx);
 		}
 	}
-
 }

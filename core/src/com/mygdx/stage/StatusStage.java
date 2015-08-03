@@ -40,14 +40,14 @@ public class StatusStage extends BaseOverlapStage {
 		labels = sceneLoader.getRoot().dataVO.composite.sLabels;
 		LabelItem labelItem = sceneLoader.getRoot().getLabelById(
 				labels.get(0).itemIdentifier);
-		labelItem.setText(partyInfo.getBattleMemberList()
-				.get(partyInfo.getSelectedInedex()).getName());
+		labelItem.setText(partyManager.getBattleMemberList()
+				.get(partyManager.getSelectedIndex()).getName());
 
 		for (int i = 1; i < labels.size(); i++) {
 			labelItem = sceneLoader.getRoot().getLabelById(
 					labels.get(i).itemIdentifier);
-			labelItem.setText(partyInfo.getBattleMemberList()
-					.get(partyInfo.getSelectedInedex()).getStatus()
+			labelItem.setText(partyManager.getBattleMemberList()
+					.get(partyManager.getSelectedIndex()).getStatus()
 					.getStatusList()[i]);
 		}
 	}
@@ -55,7 +55,7 @@ public class StatusStage extends BaseOverlapStage {
 	private void imageSet() {
 		largeImage = sceneLoader.getRoot().getImageById("large_image");
 		largeImage.setVisible(false);
-		List<Hero> currentPartyList = partyInfo.getPartyList();
+		List<Hero> currentPartyList = partyManager.getPartyList();
 		heroLargeImage = new Image[currentPartyList.size()];
 		List<CompositeItem> partyListImage = new ArrayList<CompositeItem>();
 
@@ -76,7 +76,7 @@ public class StatusStage extends BaseOverlapStage {
 		for (int i = 0; i < currentPartyList.size(); i++) {
 			final int index = i;
 			heroLargeImage[i] = new Image(currentPartyList.get(i)
-					.getStatusTexture());
+					.getFaceTexture());
 			partyListImage.get(i).setVisible(true);
 			partyListImage.get(i).setTouchable(Touchable.enabled);
 			partyListImage.get(i).addListener(new InputListener() {
@@ -89,17 +89,17 @@ public class StatusStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-					partyInfo.setSelectedInedex(index);
+					partyManager.setSelectedIndex(index);
 					screenFactory.show(ScreenEnum.STATUS);
 				}
 			});
 		}
 
-		heroLargeImage[partyInfo.getSelectedInedex()].setSize(
+		heroLargeImage[partyManager.getSelectedIndex()].setSize(
 				largeImage.getWidth(), largeImage.getHeight());
-		heroLargeImage[partyInfo.getSelectedInedex()].setPosition(
+		heroLargeImage[partyManager.getSelectedIndex()].setPosition(
 				largeImage.getX(), largeImage.getY());
-		addActor(heroLargeImage[partyInfo.getSelectedInedex()]);
+		addActor(heroLargeImage[partyManager.getSelectedIndex()]);
 		closeButton = sceneLoader.getRoot().getCompositeById("close");
 		closeButton.setTouchable(Touchable.enabled);
 		closeButton.addListener(new InputListener() {

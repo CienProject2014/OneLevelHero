@@ -1,0 +1,76 @@
+{
+"MenuStage" : {
+    "tButtonWidth": 630,
+    "tButtonHeight": 195,
+    "tButtonSpace": 43,
+    "tTablePadTop":85,
+    "tTablePadRight":15
+
+
+},
+"MovingStage" : {
+    "ButtonWidth": 335,
+    "ButtonHeight": 120,
+    "ButtonSpace": 55,
+    "TablePadBottom":365,
+    "TablePadRight":15
+
+
+},
+  "BattleStage": {
+	"RMenuTablePadTop": 161,
+	"RMenuTablePadBottom": 15,
+	"RMenuTablePadRight": 15,
+	"RButtonWidth": 138,
+	"RButtonHeight": 138,
+	"RButtonSpace": 15,
+	"gridPadTop": 228,
+	"gridTableWidthSmall": 640,
+	"gridTableHeightSmall": 640,
+	"gridTableWidthMedium": 640,
+	"gridTableHeightMedium": 640,
+	"gridTableWidthLarge": 640,
+	"gridTableHeightLarge": 640,
+	"gridTileWidth": 128,
+	"gridTileHeight": 128
+  },
+  "CharacterUiStage": {
+	"heroTablePadLeft": 13,
+	"heroTablePadBottom": 58,
+	"heroImageWidth": 158,
+	"heroImageHeight": 158,
+	"heroBarSpace": 4,
+	"heroBarHorizontalSpace": 6,
+	"barTableWidth": 144,
+	"buffTableWidth": 138,
+	"buffTableHeight": 30
+  },
+  "MonsterStage": {
+	"monsterPadTop": 228,
+	"monsterTableWidth": 1440,
+	"monsterTableHeight": 675
+  },
+  "GameUiStage": {
+	"padLeft": 15,
+	"padTop": 15,
+	"buttonPadRight": 14,
+	"TButtonWidthSmall": 145,
+	"TButtonHeightSmall": 131,
+	"TButtonWidthLarge": 620,
+	"TButtonHeightLarge": 131
+  },
+  "EventStage": {
+	"scriptWidth": 1920,
+	"scriptHeight": 365,
+	"scriptPadLeft": 8,
+	"scriptPadBottom": 58,
+	"scriptTitleWidth": 748,
+	"scriptTitleHeight": 57,
+	"scriptTitlePadBottom": 11,
+	"scriptContentWidth": 748,
+	"scriptContentHeight": 189,
+	"talkerPadLeft": 15,
+	"talkerWidth": 567,
+	"talkerHeight": 900
+  }
+}

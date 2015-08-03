@@ -1,33 +1,74 @@
 package com.mygdx.manager;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.uwsoft.editor.renderer.Overlap2DStage;
+import com.badlogic.gdx.math.Vector3;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.stage.BaseOneLevelStage;
+import com.mygdx.stage.BaseOverlapStage;
 
 public class CameraManager {
 	private OrthographicCamera cam;
+	static final float BASE_CAMERA_POSITION_X = StaticAssets.BASE_WINDOW_WIDTH / 2f;
+	static final float BASE_CAMERA_POSITION_Y = StaticAssets.BASE_WINDOW_HEIGHT / 2f;
+
+	public enum CameraStateEnum {
+		MOVE_LEFT, MOVE_RIGHT, MOVE_UP, MOVE_DOWN, STATIC;
+	}
 
 	public enum CameraPosition {
 		ABOVE_GAME_UI, BELOW_GAME_UI;
 	}
 
-	public void setCameraSize(Overlap2DStage stage,
-			CameraPosition cameraPosition) {
-		float width = stage.sceneLoader.getRoot().getWidth();
-		float height = stage.sceneLoader.getRoot().getHeight();
-		cam = new OrthographicCamera(width, height);
+	public CameraManager() {
+		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH,
+				StaticAssets.BASE_WINDOW_HEIGHT);
+		cam.position.set(BASE_CAMERA_POSITION_X, BASE_CAMERA_POSITION_Y, 0);
+	}
+
+	public void stretchToDevice(BaseOverlapStage stage) {
+		stage.getOrthographicCamera().position.set(
+				StaticAssets.BASE_WINDOW_WIDTH / 2f,
+				StaticAssets.BASE_WINDOW_HEIGHT / 2f, 0);
+		stage.getViewport().setCamera(stage.getOrthographicCamera());
+	}
+
+	public void stretchToDevice(BaseOneLevelStage stage) {
 		stage.getViewport().setCamera(cam);
-		switch (cameraPosition) {
-			case ABOVE_GAME_UI:
-				stage.getCamera().position.set(width / 2, height * 0.25f, 0);
+	}
+
+	private void restrictCameraDelta(Vector3 cameraPosition, int deltaX,
+			int deltaY) {
+		if (cameraPosition.x > BASE_CAMERA_POSITION_X + deltaX
+				- BaseOverlapStage.MOVING_SPEED) {
+			cameraPosition.x = BASE_CAMERA_POSITION_X + deltaX;
+		} else if (cameraPosition.x < BASE_CAMERA_POSITION_X
+				+ BaseOverlapStage.MOVING_SPEED) {
+			cameraPosition.x = BASE_CAMERA_POSITION_X;
+		}
+		if (cameraPosition.y > BASE_CAMERA_POSITION_Y + deltaY
+				- BaseOverlapStage.MOVING_SPEED) {
+			cameraPosition.y = BASE_CAMERA_POSITION_Y + deltaY;
+		} else if (cameraPosition.y < BASE_CAMERA_POSITION_Y
+				+ BaseOverlapStage.MOVING_SPEED) {
+			cameraPosition.y = BASE_CAMERA_POSITION_Y;
+		}
+
+	}
+
+	public void moveCamera(BaseOverlapStage stage) {
+		switch (stage.getCameraState()) {
+			case MOVE_UP:
+				Vector3 delta = new Vector3(0, BaseOverlapStage.MOVING_SPEED, 0);
+				stage.getCamera().translate(delta);
 				break;
-			case BELOW_GAME_UI:
-				stage.getCamera().position.set(width / 2, height * 0.5f, 0);
+			case MOVE_DOWN:
+				Vector3 delta1 = new Vector3(0, -BaseOverlapStage.MOVING_SPEED,
+						0);
+				stage.getCamera().translate(delta1);
 				break;
 			default:
-				Gdx.app.debug("CameraManager", "CameraPositionEnum is not set");
-				stage.getCamera().position.set(width / 2, height * 0.25f, 0);
 				break;
 		}
+		restrictCameraDelta(stage.getCamera().position, 1920, 1080);
 	}
 }

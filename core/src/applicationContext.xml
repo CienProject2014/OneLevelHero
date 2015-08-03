@@ -17,130 +17,66 @@
 
 	<bean id="assets" class="com.mygdx.assets.Assets" />
 	<bean id="atlasUiAssets" class="com.mygdx.assets.AtlasUiAssets" />
+	<bean id="eventAssets" class="com.mygdx.assets.EventAssets"/>
+	<bean id="itemAssets" class="com.mygdx.assets.ItemAssets"/>
+	<bean id="skillAssets" class="com.mygdx.assets.SkillAssets"/>
 	<bean id="musicAssets" class="com.mygdx.assets.MusicAssets" />
-	<bean id="uiComponentAssets" class="com.mygdx.assets.UiComponentAssets" />
+	<bean id="uiComponwentAssets" class="com.mygdx.assets.UiComponentAssets" />
 	<bean id="unitAssets" class="com.mygdx.assets.UnitAssets" />
 	<bean id="worldMapAssets" class="com.mygdx.assets.WorldMapAssets" />
-	<bean id="worldNodeAssets" class="com.mygdx.assets.WorldNodeAssets" />
+	<bean id="nodeAssets" class="com.mygdx.assets.NodeAssets" />
 
-	<bean id="currentState" class="com.mygdx.currentState.CurrentState">
-		<property name="partyInfo" ref="partyInfo" />
-		<property name="inventoryInfo" ref="inventoryInfo" />
-		<property name="positionInfo" ref="positionInfo" />
-		<property name="movingInfo" ref="movingInfo" />
-	</bean>
+	<bean id="currentState" class="com.mygdx.currentState.CurrentState"/>
 
-	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo" />
+	<bean id="battleInfo" class="com.mygdx.currentState.BattleInfo"/>
+	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo" />	
+	<bean id="fieldInfo" class="com.mygdx.currentState.FieldInfo" />
 	<bean id="inventoryInfo" class="com.mygdx.currentState.InventoryInfo" />
-	<bean id="movingInfo" class="com.mygdx.currentState.MovingInfo" />
 	<bean id="musicInfo" class="com.mygdx.currentState.MusicInfo" />
 	<bean id="partyInfo" class="com.mygdx.currentState.PartyInfo" />
 	<bean id="positionInfo" class="com.mygdx.currentState.PositionInfo" />
 	<bean id="rewardInfo" class="com.mygdx.currentState.RewardInfo" />
 	<bean id="rewardQueueInfo" class="com.mygdx.currentState.RewardQueueInfo" />
-	<bean id="roadInfo" class="com.mygdx.currentState.RoadInfo">
-		<property name="unitAssets" ref="unitAssets" />
-	</bean>
-	
+	<bean id="roadInfo" class="com.mygdx.currentState.RoadInfo"/>
 	<bean id="soundInfo" class="com.mygdx.currentState.SoundInfo" />
+	<bean id="storySectionInfo" class="com.mygdx.currentState.StorySectionInfo"/>
 	<bean id="timeInfo" class="com.mygdx.currentState.TimeInfo" />
 
+	<bean id="listenerFactory" class="com.mygdx.factory.ListenerFactory"/>
 	<bean id="screenFactory" class="com.mygdx.factory.ScreenFactory" />
 	<bean id="stageFactory" class="com.mygdx.factory.StageFactory" />
 
 	<bean id="animationManager" class="com.mygdx.manager.AnimationManager" />
-	<bean id="battleManager" class="com.mygdx.manager.BattleManager">
-		<property name="movingInfo" ref="movingInfo" />
-		<property name="partyInfo" ref="partyInfo" />
-		<property name="animationManager" ref="animationManager" />
-	</bean>
-	<bean id="cameraManager" class="com.mygdx.manager.CameraManager">
-	</bean>
-	<bean id="encounterManager" class="com.mygdx.manager.EncounterManager">
-		<property name="screenFactory" ref="screenFactory" />
-		<property name="monsterManager" ref="monsterManager" />
-	</bean>
-	<bean id="eventManager" class="com.mygdx.manager.EventManager">
-		<property name="eventInfo" ref="eventInfo" />
-		<property name="rewardManager" ref="rewardManager" />
-	</bean>
-	<bean id="loadManager" class="com.mygdx.manager.LoadManager">
-		<property name="unitAssets" ref="unitAssets" />
-		<property name="positionInfo" ref="positionInfo" />
-		<property name="movingInfo" ref="movingInfo" />
-		<property name="partyInfo" ref="partyInfo" />
-	</bean>
-	<bean id="monsterManager" class="com.mygdx.manager.MonsterManager">
-		<property name="unitAssets" ref="unitAssets" />
-		<property name="positionInfo" ref="positionInfo" />
-		<property name="movingInfo" ref="movingInfo" />
-	</bean>
-	<bean id="movingInfoManager" class="com.mygdx.manager.MovingInfoManager">
-		<property name="assets" ref="assets" />
-		<property name="movingInfo" ref="movingInfo" />
-		<property name="positionInfo" ref="positionInfo" />
-	</bean>
-	<bean id="movingManager" class="com.mygdx.manager.MovingManager">
-		<property name="worldMapAssets" ref="worldMapAssets" />
-		<property name="screenFactory" ref="screenFactory" />
-		<property name="positionInfo" ref="positionInfo" />
-		<property name="movingInfo" ref="movingInfo" />
-		<property name="encounterManager" ref="encounterManager" />
-	</bean>
-	<bean id="musicManager" class="com.mygdx.manager.MusicManager">
-		<property name="musicInfo" ref="musicInfo" />
-		<property name="soundInfo" ref="soundInfo" />
-		<property name="positionInfo" ref="positionInfo" />
-		<property name="movingInfo" ref="movingInfo" />
-		<property name="musicAssets" ref="musicAssets" />
-	</bean>
-	<bean id="npcManager" class="com.mygdx.manager.NpcManager">
-		<property name="unitAssets" ref="unitAssets" />
-	</bean>
-	<bean id="placeManager" class="com.mygdx.manager.PlaceManager">
-		<property name="positionInfo" ref="positionInfo" />
-		<property name="screenFactory" ref="screenFactory" />
-	</bean>
+	<bean id="battleManager" class="com.mygdx.manager.BattleManager"/>
+	<bean id="cameraManager" class="com.mygdx.manager.CameraManager"/>
+	<bean id="encounterManager" class="com.mygdx.manager.EncounterManager"/>
+	<bean id="eventManager" class="com.mygdx.manager.EventManager"/>
+	<bean id="eventCheckManager" class="com.mygdx.manager.EventCheckManager"/>
+	<bean id="fieldManager" class="com.mygdx.manager.FieldManager"/>
+	<bean id="loadManager" class="com.mygdx.manager.LoadManager"/>
+	<bean id="monsterPickManager" class="com.mygdx.manager.MonsterPickManager"/>
+	<bean id="movingManager" class="com.mygdx.manager.MovingManager"/>
+	<bean id="musicManager" class="com.mygdx.manager.MusicManager"/>
+	<bean id="partyManager" class="com.mygdx.manager.PartyManager"/>
 	<bean id="platformResourceManager" class="com.mygdx.manager.PlatformResourceManager" />
-	<bean id="rewardManager" class="com.mygdx.manager.RewardManager">
-		<property name="unitAssets" ref="unitAssets" />
-		<property name="rewardQueueInfo" ref="rewardQueueInfo" />
-		<property name="eventManager" ref="eventManager" />
-		<property name="partyInfo" ref="partyInfo" />
-	</bean>
+	<bean id="positionManager" class="com.mygdx.manager.PositionManager"/>
+	<bean id="rewardManager" class="com.mygdx.manager.RewardManager"/>
 	<bean id="saveManager" class="com.mygdx.manager.SaveManager" />
 	<bean id="scenarioManager" class="com.mygdx.manager.ScenarioManager" />
+	<bean id="storySectionManager" class="com.mygdx.manager.StorySectionManager"/>
+	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
+	<bean id="unitManager" class="com.mygdx.manager.UnitManager"/>
 	<bean id="volumeManager" class="com.mygdx.manager.VolumeManager" />
-	<bean id="worldMapManager" class="com.mygdx.manager.WorldMapManager">
-		<property name="movingInfoManager" ref="movingInfoManager" />
-		<property name="positionInfo" ref="positionInfo" />
-		<property name="worldMapAssets" ref="worldMapAssets" />
-	</bean>
-
-	<bean id="baseScreen" class="com.mygdx.screen.BaseScreen" scope="prototype">
-		<property name="screenFactory" ref="screenFactory" />
-		<property name="stageFactory" ref="stageFactory" />
-		<property name="musicManager" ref="musicManager" />
-		<property name="eventManager" ref="eventManager" />
-		<property name="positionInfo" ref="positionInfo" />
-		<property name="movingInfo" ref="movingInfo" />
-	</bean>
-	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen"
-		scope="prototype">
-		<property name="animationManager" ref="animationManager" />
-	</bean>
+	
+	<bean id="baseScreen" class="com.mygdx.screen.BaseScreen" scope="prototype"/>
+	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen"/>
 	<bean id="bgmScreen" class="com.mygdx.screen.BGMScreen" scope="prototype" />
 	<bean id="bonusPointScreen" class="com.mygdx.screen.BonusPointScreen"
 		scope="prototype" />
 	<bean id="buildingScreen" class="com.mygdx.screen.BuildingScreen"
 		scope="prototype" />
-	<bean id="cgScreen" class="com.mygdx.screen.CGScreen" scope="prototype">
-		<property name="uiComponentAssets" ref="uiComponentAssets"></property>
-	</bean>
-	<bean id="collectionScreen" class="com.mygdx.screen.CollectionScreen"
-		scope="prototype">
-		<property name="uiComponentAssets" ref="uiComponentAssets" />
-	</bean>
+	<bean id="cgScreen" class="com.mygdx.screen.CGScreen" scope="prototype"/>
+	<bean id="collectionScreen" class="com.mygdx.screen.CollectionScreen"/>
 	<bean id="creditScreen" class="com.mygdx.screen.CreditScreen"
 		scope="prototype" />
 	<bean id="dungeonScreen" class="com.mygdx.screen.DungeonScreen"
@@ -150,111 +86,66 @@
 	<bean id="encounterScreen" class="com.mygdx.screen.EncounterScreen"
 		scope="prototype" />
 	<bean id="endingScreen" class="com.mygdx.screen.EndingScreen"
-		scope="prototype">
-		<property name="uiComponentAssets" ref="uiComponentAssets" />
-	</bean>
-	<bean id="eventScreen" class="com.mygdx.screen.EventScreen" scope="prototype">
-		<property name="rewardManager" ref="rewardManager" />
-	</bean>
+		scope="prototype"/>
+	<bean id="eventScreen" class="com.mygdx.screen.EventScreen" scope="prototype"/>	
+	<bean id="fieldScreen" class="com.mygdx.screen.FieldScreen"
+		scope="prototype"/>
+	<bean id="gameObjectScreen" class="com.mygdx.screen.GameObjectScreen" scope="prototype"/>
 	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen"
-		scope="prototype">
-		<property name="eventInfo" ref="eventInfo" />
-	</bean>
-	<bean id="loadScreen" class="com.mygdx.screen.LoadScreen" scope="prototype">
-		<property name="currentState" ref="currentState" />
-		<property name="loadManager" ref="loadManager" />
-		<property name="uiComponentAssets" ref="uiComponentAssets" />
-	</bean>
-	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen" scope="prototype">
-		<property name="musicAssets" ref="musicAssets" />
-		<property name="soundInfo" ref="soundInfo" />
-	</bean>
-	<bean id="movingScreen" class="com.mygdx.screen.MovingScreen"
-		scope="prototype">
-		<property name="movingManager" ref="movingManager" />
-		<property name="uiComponentAssets" ref="uiComponentAssets"></property>
-	</bean>
+		scope="prototype"/>
+	<bean id="loadScreen" class="com.mygdx.screen.LoadScreen" scope="prototype"/>
+	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen" scope="prototype"/>
 	<bean id="optionScreen" class="com.mygdx.screen.OptionScreen"
-		scope="prototype">
-		<property name="uiComponentAssets" ref="uiComponentAssets"></property>
-	</bean>
+		scope="prototype"/>
 	<bean id="saveScreen" class="com.mygdx.screen.SaveScreen" scope="prototype" />
+	<bean id="skillScreen" class="com.mygdx.screen.SkillScreen" scope="prototype"/>
 	<bean id="statusScreen" class="com.mygdx.screen.StatusScreen"
 		scope="prototype" />
 	<bean id="villageScreen" class="com.mygdx.screen.VillageScreen"
 		scope="prototype" />
 	<bean id="worldMapScreen" class="com.mygdx.screen.WorldMapScreen"
 		scope="prototype" />
-
+		
 	<bean id="baseOneLevelStage" class="com.mygdx.stage.BaseOneLevelStage"
-		scope="prototype">
-		<property name="assets" ref="assets" />
-		<property name="screenFactory" ref="screenFactory" />
-		<property name="cameraManager" ref="cameraManager" />
-		<property name="partyInfo" ref="partyInfo" />
-		<property name="movingInfo" ref="movingInfo" />
-	</bean>
+		scope="prototype"/>
 	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage"
-		scope="prototype">
-		<property name="rm" ref="rm" />
-		<property name="assets" ref="assets" />
-		<property name="cameraManager" ref="cameraManager" />
-		<property name="movingInfo" ref="movingInfo" />
-		<property name="partyInfo" ref="partyInfo" />
-		<property name="positionInfo" ref="positionInfo" />
-		<property name="screenFactory" ref="screenFactory" />
-	</bean>
+		scope="prototype"/>
 	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype">
 	</bean>
 	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage"
-		scope="prototype">
-		<property name="eventManager" ref="eventManager" />
-		<property name="uiComponentAssets" ref="uiComponentAssets" />
-		<property name="worldNodeAssets" ref="worldNodeAssets" />
-		<property name="unitAssets" ref="unitAssets"></property>
-	</bean>
+		scope="prototype"/>
 	<bean id="characterUiStage" class="com.mygdx.stage.CharacterUiStage"
-		scope="prototype">
-		<property name="uiComponentAssets" ref="uiComponentAssets"/>
-	</bean>
+		scope="prototype"/>
 	<bean id="dungeonStage" class="com.mygdx.stage.DungeonStage"
-		scope="prototype">
-		<property name="positionInfo" ref="positionInfo" />
-	</bean>
+		scope="prototype"/>
 	<bean id="dungeonEntranceStage" class="com.mygdx.stage.DungeonEntranceStage"
 		scope="prototype" />
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage"
-		scope="prototype">
-		<property name="uiComponentAssets" ref="uiComponentAssets" />
-	</bean>
-	<bean id="eventStage" class="com.mygdx.stage.EventStage" scope="prototype">
-		<property name="eventInfo" ref="eventInfo" />
-		<property name="uiComponentAssets" ref="uiComponentAssets" />
-	</bean>
-	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype">
-		<property name="rewardManager" ref="rewardManager" />
-		<property name="uiComponentAssets" ref="uiComponentAssets" />
-	</bean>
-	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
+		scope="prototype"/>
+	<bean id="eventStage" class="com.mygdx.stage.EventStage" scope="prototype"/>	
+	<bean id="fieldStage" class="com.mygdx.stage.FieldStage" scope="prototype"/>
+	<bean id="gameObjectStage" class="com.mygdx.stage.GameObjectStage" scope="prototype"/>
+	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype"/>
+		<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage"
 		scope="prototype" />
-
-	<bean id="selectButtonStage" class="com.mygdx.stage.SelectButtonStage"
-		scope="prototype">
-		<property name="eventManager" ref="eventManager" />
-		<property name="eventInfo" ref="eventInfo" />
-		<property name="placeManager" ref="placeManager" />
-		<property name="uiComponentAssets" ref="uiComponentAssets" />
-	</bean>
+	<bean id="selectComponentStage" class="com.mygdx.stage.SelectComponentStage"
+		scope="prototype"/>
+	<bean id="selectEventStage" class="com.mygdx.stage.SelectEventStage"
+		scope="prototype"/>
 	<bean id="statusStage" class="com.mygdx.stage.StatusStage" scope="prototype" />
+	<bean id="skillStage" class="com.mygdx.stage.SkillStage" scope="prototype"/>
 	<bean id="villageStage" class="com.mygdx.stage.VillageStage"
-		scope="prototype">
-		<property name="worldNodeAssets" ref="worldNodeAssets" />
-		<property name="uiComponentAssets" ref="uiComponentAssets" />
-	</bean>
+		scope="prototype"/>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
-		scope="prototype">
-		<property name="worldMapManager" ref="worldMapManager" />
-		<property name="worldMapAssets" ref="worldMapAssets" />
-	</bean>
+		scope="prototype"/>
+		
+	<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
+	<bean id="attackButtonListener" class="com.mygdx.listener.AttackButtonListener" scope="prototype"/>
+	<bean id="backButtonListener" class="com.mygdx.listener.BackButtonListener" scope="prototype"/>
+	<bean id="buildingButtonListener" class="com.mygdx.listener.BuildingButtonListener" scope="prototype"/>
+	<bean id="goBackwardFieldButtonListener" class="com.mygdx.listener.GoBackwardFieldButtonListener" scope="prototype"/>
+	<bean id="goForwardFieldButtonListener" class="com.mygdx.listener.GoForwardFieldButtonListener" scope="prototype"/>
+	<bean id="selectComponentListener" class="com.mygdx.listener.SelectComponentListener" scope="prototype" />
+	<bean id="selectEventListener" class="com.mygdx.listener.SelectEventListener" scope="prototype"/>
 </beans>

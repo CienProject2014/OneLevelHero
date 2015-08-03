@@ -1,0 +1,261 @@
+{
+  "101": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "1"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "102",
+        "eventType": "select_component",
+        "targetComponent": "예"
+      },
+      {
+        "nextSectionNumber": "110",
+        "eventType": "select_component",
+        "targetComponent": "아니오"
+      }
+    ]
+  },
+  "102": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "2"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "3"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "4"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "103",
+        "eventType": "battle_control",
+        "targetComponent": "normal_attack"
+      }
+    ]
+  },
+  "103": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "5"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "6"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "104",
+        "eventType": "battle_control",
+        "targetComponent": "skill_attack"
+      }
+    ]
+  },
+  "104": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "7"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "8"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "10"
+      }
+    ],
+    "conditionalEvents": [
+      {
+        "eventNpc": "waiji",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "105",
+        "eventType": "select_event",
+        "targetComponent": "2"
+      }
+    ]
+  },
+  "105": {
+    "sequencialEvents": [],
+    "nextSections": [
+      {
+        "nextSectionNumber": "106",
+        "eventType": "move_node",
+        "targetComponent": "blackwood"
+      }
+    ]
+  },
+  "106": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "13"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "107",
+        "eventType": "move_field",
+        "targetComponent": "1to2"
+      }
+    ]
+  },
+  "107": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "14"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "108",
+        "eventType": "move_node",
+        "targetComponent": "cobweb"
+      }
+    ]
+  },
+  "108": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "15"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "109",
+        "eventType": "move_sub_node",
+        "targetComponent": "cobweb_library"
+      }
+    ]
+  },
+  "109": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "17"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "110",
+        "eventType": "move_node",
+        "targetComponent": "cobweb"
+      }
+    ]
+  },
+  "110": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "19"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "20"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "111",
+        "eventType": "next_section",
+        "targetComponent": "카딜라 성"
+      }
+    ]
+  },
+  "111": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "21"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "23"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "112",
+        "eventType": "select_component",
+        "targetComponent": "카딜라 성"
+      },
+      {
+        "nextSectionNumber": "113",
+        "eventType": "select_component",
+        "targetComponent": "바이칼 성"
+      },
+      {
+        "nextSectionNumber": "114",
+        "eventType": "select_component",
+        "targetComponent": "미라지 포트"
+      },
+      {
+        "nextSectionNumber": "115",
+        "eventType": "select_component",
+        "targetComponent": "레드로즈 성"
+      },
+      {
+        "nextSectionNumber": "116",
+        "eventType": "select_component",
+        "targetComponent": "수정 협곡"
+      }
+    ]
+  },
+  "112": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "24"
+      }
+    ]
+  },
+  "113": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "25"
+      }
+    ]
+  },
+  "114": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "26"
+      }
+    ]
+  },
+  "115": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "27"
+      }
+    ]
+  },
+  "116": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "28"
+      }
+    ]
+  }
+}

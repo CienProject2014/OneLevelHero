@@ -1,18 +1,29 @@
 package com.mygdx.model;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 
 public class NPC extends EventElement {
 	private Event greeting;
+	private HashMap<Integer, Event> events;
 
 	public Event getEvent(int eventNo) {
 		try {
-			return getEvents().get(eventNo);
+			return getEvents().get(String.valueOf(eventNo));
 		} catch (IndexOutOfBoundsException e) {
 			Gdx.app.error("error",
 					String.format("eventNo %d not exist", eventNo));
 			return null;
 		}
+	}
+
+	public HashMap<Integer, Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(HashMap<Integer, Event> events) {
+		this.events = events;
 	}
 
 	public Event getGreeting() {

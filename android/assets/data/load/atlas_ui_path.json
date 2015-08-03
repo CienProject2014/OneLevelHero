@@ -1,5 +1,22 @@
 [
   {
+    "filePath" : "texture/ui/battle/battle_right_menu.atlas",
+    "element" :[
+      "battleui_rb_attack",
+      "battleui_rb_defense",
+      "battleui_rb_escape",
+      "battleui_rb_item",
+      "battleui_rb_skill",
+      "battleui_rb_wait",
+      "battleui_rbac_attack",
+      "battleui_rbac_defense",
+      "battleui_rbac_escape",
+      "battleui_rbac_item",
+      "battleui_rbac_skill",
+      "battleui_rbac_wait"
+      ] 
+  },
+  {
     "filePath": "skin/Logo.atlas",
     "element": [
       "title"
@@ -20,12 +37,15 @@
   {
     "filePath": "skin/GameUiButton.pack",
     "element": [
-      "downArrowButton",
-      "bagButton",
-      "nameAndTime",
-      "helpButton",
-      "optionButton",
-      "upArrowButton"
+	  "back_button",
+	  "back_toggle_button",
+	  "time_info_button",
+	  "quest_log_button",
+	  "quest_log_toggle_button",
+	  "help_button",
+	  "help_toggle_button",
+	  "setting_button",
+	  "setting_toggle_button"
     ]
   }
 ]

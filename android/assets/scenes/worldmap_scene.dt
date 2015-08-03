@@ -1,1 +1,2957 @@
-{"composite":{"layers":[{"layerName":"Default"},{"isVisible":false,"isLocked":true,"layerName":"Arrow"},{"isLocked":true,"layerName":"CurrentPosition"},{"isLocked":true,"layerName":"Text"}],"sImages":[{"layerName":"Default","imageName":"worldmaplight01","y":844,"tint":[1,1,1,1]},{"layerName":"Default","imageName":"worldmaplight02","y":844,"x":1500,"zIndex":1,"tint":[1,1,1,1]},{"layerName":"Default","imageName":"worldmaplight03","zIndex":2,"tint":[1,1,1,1]},{"layerName":"Default","imageName":"worldmaplight04","x":1500,"zIndex":3,"tint":[1,1,1,1]},{"layerName":"Default","imageName":"worldmapbuttonr","y":1159.5,"x":375.49997,"zIndex":4,"tint":[1,1,1,1],"itemIdentifier":"Oberon"},{"layerName":"Default","imageName":"worldmapbuttonr","y":1284.5,"x":77.49994,"zIndex":5,"tint":[1,1,1,1],"itemIdentifier":"Kadilla Castle"},{"layerName":"Default","imageName":"worldmapbuttonr","y":971.5,"x":1178.5,"zIndex":6,"tint":[1,1,1,1],"itemIdentifier":"Redrose Castle"},{"layerName":"Default","imageName":"worldmapbuttonr","y":1223.5,"x":1241.5,"zIndex":7,"tint":[1,1,1,1],"itemIdentifier":"Cobweb"},{"layerName":"Default","imageName":"worldmapbuttonr","y":1567.5,"x":1273.5,"zIndex":8,"tint":[1,1,1,1],"itemIdentifier":"Winterfall"},{"layerName":"Default","imageName":"worldmapbuttonr","y":1427.5,"x":1855.5,"zIndex":9,"tint":[1,1,1,1],"itemIdentifier":"Middle Ridge"},{"layerName":"Default","imageName":"worldmapbuttonr","y":1487.5,"x":2605.5,"zIndex":10,"tint":[1,1,1,1],"itemIdentifier":"Vaical Castle"},{"layerName":"Default","imageName":"worldmapbuttonb","y":1378.5,"x":2787.5,"zIndex":11,"tint":[1,1,1,1],"itemIdentifier":"Golden Lake"},{"layerName":"Default","imageName":"worldmapbuttonr","y":480.50006,"x":1868.5,"zIndex":12,"tint":[1,1,1,1],"itemIdentifier":"Mirage Port"},{"layerName":"Default","imageName":"worldmapbuttonr","y":118.50003,"x":1262.5,"zIndex":13,"tint":[1,1,1,1],"itemIdentifier":"Southcape"},{"layerName":"Default","imageName":"worldmapbuttonp","y":495.00012,"x":1575,"zIndex":14,"tint":[1,1,1,1],"itemIdentifier":"Entrance of the Temple of Moerae"},{"layerName":"Default","imageName":"worldmapbuttonr","y":1078.5,"x":2021.5,"zIndex":15,"tint":[1,1,1,1],"itemIdentifier":"Blackwood"},{"layerName":"Default","imageName":"worldmapbuttonb","y":1063.5,"x":177.50006,"zIndex":16,"tint":[1,1,1,1],"itemIdentifier":"Mountain Titania"},{"layerName":"Text","imageName":"worldmaptextkadillacastle","y":1304.5,"x":115,"zIndex":84,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextoberon","y":1182.5,"x":413,"zIndex":85,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextmountaintitania","y":1125.5,"x":132.50003,"zIndex":86,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextretreatstone","y":1051,"x":393.5,"zIndex":87,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextdogbenefitcamp","y":901,"x":261.5,"zIndex":88,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextcemetery","y":590.5,"x":1084,"zIndex":89,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextcaravanserialplace","y":691,"x":1137.5,"zIndex":90,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextelvenforest","y":590.5,"x":1274,"zIndex":91,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextredrosecastle","y":997.5,"x":1212.5,"zIndex":92,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextcobweb","y":1247.5,"x":1184,"zIndex":93,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextcrystallizedvalley","y":1454.5,"x":1154,"zIndex":94,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextwinterfall","y":1594.5,"x":1308,"zIndex":95,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextmiddleridge","y":1447.5,"x":1892.5,"zIndex":96,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextvaicalcastle","y":1502.5,"x":2505,"zIndex":97,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmapbuttongoldenlake","y":1401.5,"x":2817,"zIndex":98,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextdevilcastle","y":971.5,"x":2206,"zIndex":99,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextblackwood","y":1070.5,"x":1914,"zIndex":100,"tint":[1,1,1,1]},{"layerName":"Default","imageName":"worldmapbuttonr","y":316.5,"x":2579.5,"zIndex":17,"tint":[1,1,1,1],"itemIdentifier":"Boniche"},{"layerName":"Text","imageName":"worldmaptextboniche","y":343.5,"x":2615.5,"zIndex":101,"tint":[1,1,1,1]},{"layerName":"Default","imageName":"worldmapbuttonb","y":27.5,"x":1772.5,"zIndex":18,"tint":[1,1,1,1],"itemIdentifier":"Cape of Tempest"},{"layerName":"Text","imageName":"worldmaptextstatueofgoldenbeetle","y":285,"x":1700,"zIndex":102,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextcapeoftempest","y":47.499985,"x":1803,"zIndex":103,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextmirageport","y":510.5,"x":1906,"zIndex":104,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextentranceofthetempleofmoerae","y":479.99997,"x":1490,"zIndex":105,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptexttempleofmoerae","y":684.5,"x":1601,"zIndex":106,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextsouthcape","y":139.5,"x":1081.5,"zIndex":107,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextkadillarode","y":639.5,"x":534,"zIndex":108,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextpineriverside","y":1310.5,"x":445.5,"zIndex":109,"tint":[1,1,1,1]},{"layerName":"Text","imageName":"worldmaptextblackwoodforest","y":1191,"x":2428,"zIndex":110,"tint":[1,1,1,1]},{"layerName":"Default","imageName":"worldmapbuttonb","y":1430,"x":1125.5,"zIndex":19,"tint":[1,1,1,1],"itemIdentifier":"Crystallized Valley"},{"layerName":"Default","imageName":"worldmapbuttonb","y":1180,"x":2402.5,"zIndex":20,"tint":[1,1,1,1],"itemIdentifier":"Blackwood Forest"},{"layerName":"Default","imageName":"worldmapbuttonb","y":946,"x":2164.5,"zIndex":21,"tint":[1,1,1,1],"itemIdentifier":"Devil Castle"},{"layerName":"Default","imageName":"worldmapbuttonb","y":659,"x":1564.5,"zIndex":22,"tint":[1,1,1,1],"itemIdentifier":"Temple of Moerae"},{"layerName":"Default","imageName":"worldmapbuttonp","y":264.5,"x":1664,"zIndex":23,"tint":[1,1,1,1],"itemIdentifier":"Statue of Golden Beetle Stone"},{"layerName":"Default","imageName":"worldmapbuttonb","y":559,"x":1246.5,"zIndex":24,"tint":[1,1,1,1],"itemIdentifier":"Elven Forest"},{"layerName":"Default","imageName":"worldmapbuttonp","y":664.5,"x":1117,"zIndex":25,"tint":[1,1,1,1],"itemIdentifier":"Cemetery"},{"layerName":"Default","imageName":"worldmapbuttonp","y":570.5,"x":1053,"zIndex":26,"tint":[1,1,1,1],"itemIdentifier":"Caravanserial Place"},{"layerName":"Default","imageName":"worldmapbuttonp","y":883.5,"x":234.99988,"zIndex":27,"tint":[1,1,1,1],"itemIdentifier":"Dogbenefit Camp"},{"layerName":"Default","imageName":"worldmapbuttonp","y":1033.5,"x":361,"zIndex":28,"tint":[1,1,1,1],"itemIdentifier":"Retreat Stone"}],"sComposites":[{"layerName":"Arrow","itemIdentifier":"1to20","zIndex":29,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0054oberon-node1","tint":[1,1,1,1]}]},"y":1095.5,"x":399,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"20to1","zIndex":30,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0053node1-oberon","tint":[1,1,1,1]}]},"y":1082.5,"x":397,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"1to10","zIndex":31,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0013oberon-kadilla","tint":[1,1,1,1]}]},"y":1234,"x":122.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"10to1","zIndex":32,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0012kadilla-oberon","tint":[1,1,1,1]}]},"y":1250.5,"x":115.49979,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"20to12","zIndex":33,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0015node1-titania","tint":[1,1,1,1]}]},"y":1058,"x":230,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"12to20","zIndex":34,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0014titania-node1","tint":[1,1,1,1]}]},"y":1074,"x":247.49988,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"10to21","zIndex":35,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0010kadilla-node2","tint":[1,1,1,1]}]},"y":923,"x":94,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"21to10","zIndex":36,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0011node2-kadilla","tint":[1,1,1,1]}]},"y":916.5,"x":78.50009,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"13to8","zIndex":37,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0033cristal-winterfall","tint":[1,1,1,1],"itemIdentifier":"13to08"}]},"y":1498,"x":1135,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"8to13","zIndex":38,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0032winterfall-cristal","tint":[1,1,1,1],"itemIdentifier":"08to13"}]},"y":1512.5,"x":1136,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"16to1","zIndex":39,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0023devil-blackwood","tint":[1,1,1,1],"itemIdentifier":"16to17"}]},"y":992.5,"x":2070.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"1to16","zIndex":40,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0022blackwood-devil","tint":[1,1,1,1]}]},"y":997,"x":2078.9998,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"1to17","zIndex":41,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0024blackwood-blackF","tint":[1,1,1,1]}]},"y":1112.9999,"x":2099.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"17to1","zIndex":42,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0025blackF-blackwood","tint":[1,1,1,1]}]},"y":1141,"x":2099.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"6to2","zIndex":43,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0036redrose-cobweb","tint":[1,1,1,1]}]},"y":1034,"x":1217.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"2to6","zIndex":44,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0037cobweb-redrose","tint":[1,1,1,1]}]},"y":1044,"x":1211,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"6to5","zIndex":45,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","rotation":-2,"imageName":"worldmaplight0020vical-middle","tint":[1,1,1,1]}]},"y":1508.5,"x":1924.4998,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"5to6","zIndex":46,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0021middle-vical","tint":[1,1,1,1]}]},"y":1493.5,"x":1937.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"1to5","zIndex":47,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0026black-middle","tint":[1,1,1,1]}]},"y":1146.5,"x":1886.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"5to1","zIndex":48,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0027middle-black","tint":[1,1,1,1]}]},"y":1156.5,"x":1907,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"13to2","zIndex":49,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0035cristal-cobweb","tint":[1,1,1,1]}]},"y":1312,"x":1167.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"2to13","zIndex":50,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0034cobweb-cristal","tint":[1,1,1,1],"itemIdentifier":"02to13"}]},"y":1276,"x":1188.9999,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"17to6","zIndex":51,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0019blackF-vical","tint":[1,1,1,1]}]},"y":1243,"x":2456,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"6to17","zIndex":52,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0018vical-blackF","tint":[1,1,1,1]}]},"y":1252,"x":2438,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"13to6","zIndex":53,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0017golden-vical","tint":[1,1,1,1]}]},"y":1435,"x":2688.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"6to13","zIndex":54,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0016vical-golden","tint":[1,1,1,1]}]},"y":1449.5,"x":2675.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"23to14","zIndex":55,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0008node4-elf","tint":[1,1,1,1]}]},"y":605.5,"x":1161.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"14to23","zIndex":56,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0017golden-vical","tint":[1,1,1,1]}]},"y":593,"x":1151.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"22to4","zIndex":57,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sComposites":[{"layerName":"Arrow","composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0047node3-south","tint":[1,1,1,1]}]},"tint":[1,1,1,1]}]},"y":192.49997,"x":1080.4999,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"4to22","zIndex":58,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0048south-node3","tint":[1,1,1,1]}]},"y":195.99997,"x":1096.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"22to23","zIndex":59,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplinenode4-node32","tint":[1,1,1,1]}]},"y":618,"x":1083.4998,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"23to22","zIndex":60,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplinenode4-node31","tint":[1,1,1,1],"itemIdentifier":"23to22"}]},"y":595.5,"x":1094.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"25to19","zIndex":61,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0038node5-capeofT","tint":[1,1,1,1]}]},"y":79.500015,"x":1685.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"19to25","zIndex":62,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0040capeofT-node5","tint":[1,1,1,1]}]},"y":81,"x":1669.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"9to25","zIndex":63,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0044mirage-node5","tint":[1,1,1,1]}]},"y":310,"x":1716.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"25to9","zIndex":64,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0043node5-mirage","tint":[1,1,1,1]}]},"y":316.00003,"x":1722,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"7to23","zIndex":65,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmapredrose-node4","tint":[1,1,1,1]}]},"y":735.5,"x":1146,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"23to7","zIndex":66,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmapnode4-redrose","tint":[1,1,1,1]}]},"y":738.5,"x":1147,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"15to24","zIndex":67,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0041moerae-node6","tint":[1,1,1,1],"itemIdentifier":"15to24"}]},"y":551.5,"x":1580.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"24to15","zIndex":68,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplight0042node6-moerae","tint":[1,1,1,1],"itemIdentifier":"24to15"}]},"y":551.0001,"x":1580,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"9to24","zIndex":69,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplinemirgol2","tint":[1,1,1,1],"itemIdentifier":"9to24"}]},"y":527.00006,"x":1640.0002,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"24to9","zIndex":70,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaplinemirgol","tint":[1,1,1,1]}]},"y":524.5,"x":1642.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"21to20","zIndex":71,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrownode2-node1","tint":[1,1,1,1]}]},"y":942.5,"x":260.49994,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"20to21","zIndex":72,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrownode1-node2","tint":[1,1,1,1]}]},"y":945.5,"x":245.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"21to22","zIndex":73,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrownode2-node3","tint":[1,1,1,1]}]},"y":611.5,"x":282.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"22to21","zIndex":74,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrownode3-node","tint":[1,1,1,1]}]},"y":609.5,"x":283.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"2to1","zIndex":75,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrowcobweb-black","tint":[1,1,1,1]}]},"y":1118.5,"x":1338.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"1to2","zIndex":76,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrowblack-cobweb","tint":[1,1,1,1],"itemIdentifier":"1to2"}]},"y":1104.5,"x":1321.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"2to5","zIndex":77,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sComposites":[{"layerName":"Arrow","composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sComposites":[{"layerName":"Arrow","itemIdentifier":"2to5","composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrowcobweb-middle","tint":[1,1,1,1],"itemIdentifier":"2to5"}]},"tint":[1,1,1,1]}]},"tint":[1,1,1,1]}]},"y":1244.5,"x":1304.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"5to2","zIndex":78,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrowmiddle-cobweb","tint":[1,1,1,1],"itemIdentifier":"5to2"}]},"y":1272.5,"x":1346.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"14to24","zIndex":79,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmapelf-node6","tint":[1,1,1,1]}]},"y":512.00006,"x":1317.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"24to14","zIndex":80,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrownode6-elf","tint":[1,1,1,1]}]},"y":519.9999,"x":1323.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"25to4","zIndex":81,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrownode5-south","tint":[1,1,1,1]}]},"y":111.000015,"x":1354.5,"tint":[1,1,1,1]},{"layerName":"Arrow","itemIdentifier":"4to25","zIndex":82,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"Arrow","imageName":"worldmaparrowsouth-node5","tint":[1,1,1,1]}]},"y":121.500015,"x":1343.5,"tint":[1,1,1,1]},{"layerName":"CurrentPosition","itemIdentifier":"current","zIndex":83,"composite":{"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}],"sImages":[{"layerName":"CurrentPosition","imageName":"crossline-big","tint":[1,1,1,1]}]},"y":1060,"x":2006.5,"tint":[1,1,1,1]}]},"ambientColor":[0.5,0.5,0.5,1],"physicsPropertiesVO":{},"sceneName":"worldmap_scene"}
+{
+  "composite": {
+    "layers": [
+      {
+        "layerName": "Default"
+      },
+      {
+        "isVisible": false,
+        "isLocked": true,
+        "layerName": "Arrow"
+      },
+      {
+        "isLocked": true,
+        "layerName": "CurrentPosition"
+      },
+      {
+        "isLocked": true,
+        "layerName": "Text"
+      }
+    ],
+    "sImages": [
+      {
+        "layerName": "Default",
+        "imageName": "worldmaplight01",
+        "y": 844,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmaplight02",
+        "y": 844,
+        "x": 1500,
+        "zIndex": 1,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmaplight03",
+        "zIndex": 2,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmaplight04",
+        "x": 1500,
+        "zIndex": 3,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 1159.5,
+        "x": 375.49997,
+        "zIndex": 4,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "oberon"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 1284.5,
+        "x": 77.49994,
+        "zIndex": 5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "Kadilla Castle"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 971.5,
+        "x": 1178.5,
+        "zIndex": 6,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "redrose_castle"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 1223.5,
+        "x": 1241.5,
+        "zIndex": 7,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "cobweb"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 1567.5,
+        "x": 1273.5,
+        "zIndex": 8,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "Winterfall"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 1427.5,
+        "x": 1855.5,
+        "zIndex": 9,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "middle_ridge"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 1487.5,
+        "x": 2605.5,
+        "zIndex": 10,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "vaical_castle"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonb",
+        "y": 1378.5,
+        "x": 2787.5,
+        "zIndex": 11,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "golden_lake"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 480.50006,
+        "x": 1868.5,
+        "zIndex": 12,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "Mirage Port"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 118.50003,
+        "x": 1262.5,
+        "zIndex": 13,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "southcape"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonp",
+        "y": 495.00012,
+        "x": 1575,
+        "zIndex": 14,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "Entrance of the temple_of_moerae"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 1078.5,
+        "x": 2021.5,
+        "zIndex": 15,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "blackwood"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonb",
+        "y": 1063.5,
+        "x": 177.50006,
+        "zIndex": 16,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "mountain_titania"
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextkadillacastle",
+        "y": 1304.5,
+        "x": 115,
+        "zIndex": 84,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextoberon",
+        "y": 1182.5,
+        "x": 413,
+        "zIndex": 85,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextmountaintitania",
+        "y": 1125.5,
+        "x": 132.50003,
+        "zIndex": 86,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextretreatstone",
+        "y": 1051,
+        "x": 393.5,
+        "zIndex": 87,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextdogbenefitcamp",
+        "y": 901,
+        "x": 261.5,
+        "zIndex": 88,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextcemetery",
+        "y": 590.5,
+        "x": 1084,
+        "zIndex": 89,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextcaravanserialplace",
+        "y": 691,
+        "x": 1137.5,
+        "zIndex": 90,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextelvenforest",
+        "y": 590.5,
+        "x": 1274,
+        "zIndex": 91,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextredrosecastle",
+        "y": 997.5,
+        "x": 1212.5,
+        "zIndex": 92,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextcobweb",
+        "y": 1247.5,
+        "x": 1184,
+        "zIndex": 93,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextcrystallizedvalley",
+        "y": 1454.5,
+        "x": 1154,
+        "zIndex": 94,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextwinterfall",
+        "y": 1594.5,
+        "x": 1308,
+        "zIndex": 95,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextmiddleridge",
+        "y": 1447.5,
+        "x": 1892.5,
+        "zIndex": 96,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextvaicalcastle",
+        "y": 1502.5,
+        "x": 2505,
+        "zIndex": 97,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmapbuttongoldenlake",
+        "y": 1401.5,
+        "x": 2817,
+        "zIndex": 98,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextdevilcastle",
+        "y": 971.5,
+        "x": 2206,
+        "zIndex": 99,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextblackwood",
+        "y": 1070.5,
+        "x": 1914,
+        "zIndex": 100,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonr",
+        "y": 316.5,
+        "x": 2579.5,
+        "zIndex": 17,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "boniche"
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextboniche",
+        "y": 343.5,
+        "x": 2615.5,
+        "zIndex": 101,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonb",
+        "y": 27.5,
+        "x": 1772.5,
+        "zIndex": 18,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "cape_of_tempest"
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextstatueofgoldenbeetle",
+        "y": 285,
+        "x": 1700,
+        "zIndex": 102,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextcapeoftempest",
+        "y": 47.499985,
+        "x": 1803,
+        "zIndex": 103,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextmirageport",
+        "y": 510.5,
+        "x": 1906,
+        "zIndex": 104,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextentranceofthetempleofmoerae",
+        "y": 479.99997,
+        "x": 1490,
+        "zIndex": 105,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptexttempleofmoerae",
+        "y": 684.5,
+        "x": 1601,
+        "zIndex": 106,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextsouthcape",
+        "y": 139.5,
+        "x": 1081.5,
+        "zIndex": 107,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextkadillarode",
+        "y": 639.5,
+        "x": 534,
+        "zIndex": 108,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextpineriverside",
+        "y": 1310.5,
+        "x": 445.5,
+        "zIndex": 109,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Text",
+        "imageName": "worldmaptextblackwoodforest",
+        "y": 1191,
+        "x": 2428,
+        "zIndex": 110,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonb",
+        "y": 1430,
+        "x": 1125.5,
+        "zIndex": 19,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "crystallized_valley"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonb",
+        "y": 1180,
+        "x": 2402.5,
+        "zIndex": 20,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "blackwood_forest"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonb",
+        "y": 946,
+        "x": 2164.5,
+        "zIndex": 21,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "devil_castle"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonb",
+        "y": 659,
+        "x": 1564.5,
+        "zIndex": 22,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "temple_of_moerae"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonp",
+        "y": 264.5,
+        "x": 1664,
+        "zIndex": 23,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "Statue of Golden Beetle Stone"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonb",
+        "y": 559,
+        "x": 1246.5,
+        "zIndex": 24,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "elven_forest"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonp",
+        "y": 664.5,
+        "x": 1117,
+        "zIndex": 25,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "cemetery"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonp",
+        "y": 570.5,
+        "x": 1053,
+        "zIndex": 26,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "caravanserial_place"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonp",
+        "y": 883.5,
+        "x": 234.99988,
+        "zIndex": 27,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "dogbenefit_camp"
+      },
+      {
+        "layerName": "Default",
+        "imageName": "worldmapbuttonp",
+        "y": 1033.5,
+        "x": 361,
+        "zIndex": 28,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "itemIdentifier": "retreat_stone"
+      }
+    ],
+    "sComposites": [
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "1to20",
+        "zIndex": 29,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0054oberon-node1",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1095.5,
+        "x": 399,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "20to1",
+        "zIndex": 30,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0053node1-oberon",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1082.5,
+        "x": 397,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "1to10",
+        "zIndex": 31,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0013oberon-kadilla",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1234,
+        "x": 122.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "10to1",
+        "zIndex": 32,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0012kadilla-oberon",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1250.5,
+        "x": 115.49979,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "20to12",
+        "zIndex": 33,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0015node1-titania",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1058,
+        "x": 230,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "12to20",
+        "zIndex": 34,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0014titania-node1",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1074,
+        "x": 247.49988,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "10to21",
+        "zIndex": 35,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0010kadilla-node2",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 923,
+        "x": 94,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "21to10",
+        "zIndex": 36,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0011node2-kadilla",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 916.5,
+        "x": 78.50009,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "13to8",
+        "zIndex": 37,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0033cristal-winterfall",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "itemIdentifier": "13to08"
+            }
+          ]
+        },
+        "y": 1498,
+        "x": 1135,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "8to13",
+        "zIndex": 38,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0032winterfall-cristal",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "itemIdentifier": "08to13"
+            }
+          ]
+        },
+        "y": 1512.5,
+        "x": 1136,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "16to1",
+        "zIndex": 39,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0023devil-blackwood",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "itemIdentifier": "16to1"
+            }
+          ]
+        },
+        "y": 992.5,
+        "x": 2070.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "1to16",
+        "zIndex": 40,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0022blackwood-devil",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 997,
+        "x": 2078.9998,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "1to17",
+        "zIndex": 41,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0024blackwood-blackF",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1112.9999,
+        "x": 2099.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "17to1",
+        "zIndex": 42,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0025blackF-blackwood",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1141,
+        "x": 2099.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "6to2",
+        "zIndex": 43,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0036redrose-cobweb",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1034,
+        "x": 1217.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "2to6",
+        "zIndex": 44,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0037cobweb-redrose",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1044,
+        "x": 1211,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "6to5",
+        "zIndex": 45,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "rotation": -2,
+              "imageName": "worldmaplight0020vical-middle",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1508.5,
+        "x": 1924.4998,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "5to6",
+        "zIndex": 46,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0021middle-vical",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1493.5,
+        "x": 1937.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "1to5",
+        "zIndex": 47,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0026black-middle",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1146.5,
+        "x": 1886.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "5to1",
+        "zIndex": 48,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0027middle-black",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1156.5,
+        "x": 1907,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "13to2",
+        "zIndex": 49,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0035cristal-cobweb",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1312,
+        "x": 1167.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "2to13",
+        "zIndex": 50,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0034cobweb-cristal",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "itemIdentifier": "02to13"
+            }
+          ]
+        },
+        "y": 1276,
+        "x": 1188.9999,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "17to6",
+        "zIndex": 51,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0019blackF-vical",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1243,
+        "x": 2456,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "6to17",
+        "zIndex": 52,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0018vical-blackF",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1252,
+        "x": 2438,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "13to6",
+        "zIndex": 53,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0017golden-vical",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1435,
+        "x": 2688.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "6to13",
+        "zIndex": 54,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0016vical-golden",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1449.5,
+        "x": 2675.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "23to14",
+        "zIndex": 55,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0008node4-elf",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 605.5,
+        "x": 1161.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "14to23",
+        "zIndex": 56,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0017golden-vical",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 593,
+        "x": 1151.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "22to4",
+        "zIndex": 57,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sComposites": [
+            {
+              "layerName": "Arrow",
+              "composite": {
+                "layers": [
+                  {
+                    "layerName": "Default"
+                  },
+                  {
+                    "layerName": "normal"
+                  },
+                  {
+                    "layerName": "pressed"
+                  }
+                ],
+                "sImages": [
+                  {
+                    "layerName": "Arrow",
+                    "imageName": "worldmaplight0047node3-south",
+                    "tint": [
+                      1,
+                      1,
+                      1,
+                      1
+                    ]
+                  }
+                ]
+              },
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 192.49997,
+        "x": 1080.4999,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "4to22",
+        "zIndex": 58,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0048south-node3",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 195.99997,
+        "x": 1096.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "22to23",
+        "zIndex": 59,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplinenode4-node32",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 618,
+        "x": 1083.4998,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "23to22",
+        "zIndex": 60,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplinenode4-node31",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "itemIdentifier": "23to22"
+            }
+          ]
+        },
+        "y": 595.5,
+        "x": 1094.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "25to19",
+        "zIndex": 61,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0038node5-capeofT",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 79.500015,
+        "x": 1685.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "19to25",
+        "zIndex": 62,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0040capeofT-node5",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 81,
+        "x": 1669.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "9to25",
+        "zIndex": 63,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0044mirage-node5",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 310,
+        "x": 1716.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "25to9",
+        "zIndex": 64,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0043node5-mirage",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 316.00003,
+        "x": 1722,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "7to23",
+        "zIndex": 65,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmapredrose-node4",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 735.5,
+        "x": 1146,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "23to7",
+        "zIndex": 66,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmapnode4-redrose",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 738.5,
+        "x": 1147,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "15to24",
+        "zIndex": 67,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0041moerae-node6",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "itemIdentifier": "15to24"
+            }
+          ]
+        },
+        "y": 551.5,
+        "x": 1580.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "24to15",
+        "zIndex": 68,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplight0042node6-moerae",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "itemIdentifier": "24to15"
+            }
+          ]
+        },
+        "y": 551.0001,
+        "x": 1580,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "9to24",
+        "zIndex": 69,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplinemirgol2",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "itemIdentifier": "9to24"
+            }
+          ]
+        },
+        "y": 527.00006,
+        "x": 1640.0002,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "24to9",
+        "zIndex": 70,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaplinemirgol",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 524.5,
+        "x": 1642.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "21to20",
+        "zIndex": 71,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaparrownode2-node1",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 942.5,
+        "x": 260.49994,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "20to21",
+        "zIndex": 72,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaparrownode1-node2",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 945.5,
+        "x": 245.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "21to22",
+        "zIndex": 73,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaparrownode2-node3",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 611.5,
+        "x": 282.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "22to21",
+        "zIndex": 74,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaparrownode3-node",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 609.5,
+        "x": 283.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "2to1",
+        "zIndex": 75,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaparrowcobweb-black",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1118.5,
+        "x": 1338.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "1to2",
+        "zIndex": 76,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaparrowblack-cobweb",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "itemIdentifier": "1to2"
+            }
+          ]
+        },
+        "y": 1104.5,
+        "x": 1321.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "2to5",
+        "zIndex": 77,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sComposites": [
+            {
+              "layerName": "Arrow",
+              "composite": {
+                "layers": [
+                  {
+                    "layerName": "Default"
+                  },
+                  {
+                    "layerName": "normal"
+                  },
+                  {
+                    "layerName": "pressed"
+                  }
+                ],
+                "sComposites": [
+                  {
+                    "layerName": "Arrow",
+                    "itemIdentifier": "2to5",
+                    "composite": {
+                      "layers": [
+                        {
+                          "layerName": "Default"
+                        },
+                        {
+                          "layerName": "normal"
+                        },
+                        {
+                          "layerName": "pressed"
+                        }
+                      ],
+                      "sImages": [
+                        {
+                          "layerName": "Arrow",
+                          "imageName": "worldmaparrowcobweb-middle",
+                          "tint": [
+                            1,
+                            1,
+                            1,
+                            1
+                          ],
+                          "itemIdentifier": "2to5"
+                        }
+                      ]
+                    },
+                    "tint": [
+                      1,
+                      1,
+                      1,
+                      1
+                    ]
+                  }
+                ]
+              },
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1244.5,
+        "x": 1304.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "5to2",
+        "zIndex": 78,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaparrowmiddle-cobweb",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "itemIdentifier": "5to2"
+            }
+          ]
+        },
+        "y": 1272.5,
+        "x": 1346.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "14to24",
+        "zIndex": 79,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmapelf-node6",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 512.00006,
+        "x": 1317.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "24to14",
+        "zIndex": 80,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaparrownode6-elf",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 519.9999,
+        "x": 1323.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "25to4",
+        "zIndex": 81,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaparrownode5-south",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 111.000015,
+        "x": 1354.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "Arrow",
+        "itemIdentifier": "4to25",
+        "zIndex": 82,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "Arrow",
+              "imageName": "worldmaparrowsouth-node5",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 121.500015,
+        "x": 1343.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "layerName": "CurrentPosition",
+        "itemIdentifier": "current",
+        "zIndex": 83,
+        "composite": {
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ],
+          "sImages": [
+            {
+              "layerName": "CurrentPosition",
+              "imageName": "crossline-big",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "y": 1060,
+        "x": 2006.5,
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "ambientColor": [
+    0.5,
+    0.5,
+    0.5,
+    1
+  ],
+  "physicsPropertiesVO": {},
+  "sceneName": "worldmap_scene"
+}

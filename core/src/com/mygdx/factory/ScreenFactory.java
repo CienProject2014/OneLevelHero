@@ -20,12 +20,14 @@ import com.mygdx.screen.DungeonScreen;
 import com.mygdx.screen.EncounterScreen;
 import com.mygdx.screen.EndingScreen;
 import com.mygdx.screen.EventScreen;
+import com.mygdx.screen.FieldScreen;
+import com.mygdx.screen.GameObjectScreen;
 import com.mygdx.screen.GreetingScreen;
 import com.mygdx.screen.LoadScreen;
 import com.mygdx.screen.MenuScreen;
-import com.mygdx.screen.MovingScreen;
 import com.mygdx.screen.OptionScreen;
 import com.mygdx.screen.SaveScreen;
+import com.mygdx.screen.SkillScreen;
 import com.mygdx.screen.StatusScreen;
 import com.mygdx.screen.VillageScreen;
 import com.mygdx.screen.WorldMapScreen;
@@ -64,7 +66,7 @@ public class ScreenFactory {
 				return context.getBean(BuildingScreen.class);
 			case CG:
 				return context.getBean(CGScreen.class);
-			case COLLETION:
+			case COLLECTION:
 				return context.getBean(CollectionScreen.class);
 			case CREDIT:
 				return context.getBean(CreditScreen.class);
@@ -78,18 +80,22 @@ public class ScreenFactory {
 				return context.getBean(EndingScreen.class);
 			case EVENT:
 				return context.getBean(EventScreen.class);
+			case GAME_OBJECT:
+				return context.getBean(GameObjectScreen.class);
 			case GREETING:
 				return context.getBean(GreetingScreen.class);
 			case LOAD:
 				return context.getBean(LoadScreen.class);
 			case MENU:
 				return context.getBean(MenuScreen.class);
-			case MOVING:
-				return context.getBean(MovingScreen.class);
+			case FIELD:
+				return context.getBean(FieldScreen.class);
 			case OPTION:
 				return context.getBean(OptionScreen.class);
 			case SAVE:
 				return context.getBean(SaveScreen.class);
+			case SKILL:
+				return context.getBean(SkillScreen.class);
 			case STATUS:
 				return context.getBean(StatusScreen.class);
 			case VILLAGE:

@@ -4,6 +4,8 @@ import java.util.ArrayDeque;
 import java.util.Iterator;
 import java.util.Queue;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -12,6 +14,8 @@ import com.mygdx.enums.TextureEnum;
 import com.mygdx.model.FrameSheet;
 
 public class AnimationManager {
+	@Autowired
+	private StorySectionManager storySectionManager;
 	private SpriteBatch spriteBatch;
 	private Queue<AnimationBit> animations;
 
@@ -50,6 +54,8 @@ public class AnimationManager {
 	 * @return TextureRegion 이차원 배열
 	 */
 	private TextureRegion[][] splitSheet(FrameSheet sheet) {
+		if (sheet.getTexture() == null)
+			sheet.loadTexture();
 		return TextureRegion.split(sheet.getTexture(), sheet.getTexture()
 				.getWidth() / sheet.getColumn(), sheet.getTexture().getHeight()
 				/ sheet.getRow());
@@ -91,19 +97,21 @@ public class AnimationManager {
 		stateTime += delta;
 
 		spriteBatch.begin();
-		for (Iterator<AnimationBit> iterator = animations.iterator(); iterator
+		for (final Iterator<AnimationBit> iterator = animations.iterator(); iterator
 				.hasNext();) {
 
 			AnimationBit bit = (AnimationBit) iterator.next();
 
 			if (bit.getAnimation().isAnimationFinished(stateTime)) {
 				iterator.remove();
+
 			} else {
 				spriteBatch.draw(bit.getAnimation().getKeyFrame(stateTime),
 						bit.getX(), bit.getY());
 			}
 		}
 		spriteBatch.end();
+
 	}
 
 	public boolean hasPlayable() {
@@ -149,5 +157,21 @@ public class AnimationManager {
 		public void setY(int y) {
 			this.y = y;
 		}
+	}
+
+	public SpriteBatch getSpriteBatch() {
+		return spriteBatch;
+	}
+
+	public void setSpriteBatch(SpriteBatch spriteBatch) {
+		this.spriteBatch = spriteBatch;
+	}
+
+	public Queue<AnimationBit> getAnimations() {
+		return animations;
+	}
+
+	public void setAnimations(Queue<AnimationBit> animations) {
+		this.animations = animations;
 	}
 }

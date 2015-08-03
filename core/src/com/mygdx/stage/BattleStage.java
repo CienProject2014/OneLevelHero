@@ -2,62 +2,49 @@ package com.mygdx.stage;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
+import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.enums.MonsterEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.Hero;
 import com.mygdx.model.Monster;
 import com.mygdx.model.Unit;
+import com.mygdx.table.GridHitbox;
 
 public class BattleStage extends BaseOneLevelStage {
+	@Autowired
+	private BattleManager battleManager;
+	@Autowired
+	private AtlasUiAssets atlasUiAssets;
+
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("BattleStage");
 	// Table
-	private Stack tableStack; // 전체 테이블을 포함하는 테이블 스택
-	private Table uiTable; // 화면 전체 테이블
 	private Table orderTable; // 순서를 나타내는 테이블
-	private Table gridTable; // grid 테이블
-	private Table tileTable;
-	private Table RMenuTable; // 오른쪽 테이블
-
-	// Grid Tabler관련
-	private boolean gridFlag;
-	private float topPadValue; // grid 테이블의 y위치
-	private float gridTableWidth; // grid 테이블의 가로 크기
-	private float gridTableHeight; // grid 테이블의 세로 크기
-
-	// Tiles
-	private Image[][] tileImages;
-	private int tileRows;
-	private int tileColumns;
-	private float tileWidth;
-	private float tileHeight;
-
-	// Mouse Event
-	private int clickedTileRow;
-	private int clickedTileColumn;
-
-	// Value
-	private float uiButtonWidth;
-	private float uiButtonHeight;
-	private float RButtonWidth;
-	private float RButtonHeight;
+	private GridHitbox gridHitbox; // grid hitbox 테이블
+	@Autowired
+	private StorySectionManager storySectionManager;
+	@Autowired
+	private AnimationManager animationManager;
 
 	// Button
 	private ImageButton attackButton;
@@ -66,10 +53,8 @@ public class BattleStage extends BaseOneLevelStage {
 	private ImageButton defenseButton;
 	private ImageButton waitButton;
 	private ImageButton escapeButton;
-
-	@Autowired
-	private BattleManager battleManager;
-	private Monster monster;
+	private ArrayList<ImageButton> imageButtonList;
+	private Monster selectedMonster;
 
 	// Unit array
 	private ArrayList<Unit> units;
@@ -81,194 +66,62 @@ public class BattleStage extends BaseOneLevelStage {
 	// Trigger
 	private boolean monsterTrigger;
 
+	public BattleStage() {
+		Gdx.app.debug("BattleStage", "Constructor() call");
+	}
+
 	@Override
 	public void act(float delta) {
-		if (gridFlag) {
-
+		super.act(delta);
+		if (gridHitbox.isGridShow()) {
 		} else if (monsterTrigger) {
 			Unit actor = getCurrentActor();
-			if (!(actor instanceof Monster)) {
-				// 일어날 수 없는 시나리오
-				// 몬스터의 턴이 아니라면 monsterTrigger가 true여서는 안된다.
-				return;
-			}
-			battleManager.monsterAttack();
-			updateOrderTable();
-
+			Hero randomHero = partyManager.pickRandomHero();
+			battleManager.playMonsterHitAnimation();
+			battleManager.monsterAttack(randomHero);
+			battleManager.checkMonsterWin(randomHero);
+			updateOrder();
 			monsterTrigger = false;
 		}
 
-		super.act(delta);
-	}
-
-	/**
-	 * 입력 좌표가 속한 타일의 인덱스를 배열로 넘긴다.
-	 * 
-	 * @param screenX
-	 *            클릭한 x좌표
-	 * @param screenY
-	 *            클릭한 y좌표
-	 * @return [0]: x인덱스(column), [1]: y인덱스(row)
-	 */
-	private int[] findTile(int screenX, int screenY) {
-		boolean found = false;
-		int[] position = new int[2];
-		for (int i = 0; i < tileRows && !found; i++) {
-			for (int j = 0; j < tileColumns && !found; j++) {
-				if (isInsideTile(i, j, screenX, screenY)) {
-					position[0] = j;
-					position[1] = i;
-					found = true;
-				}
+		if (animationManager.hasPlayable()) {
+			animationManager.nextFrame(delta);
+			if (animationManager.getAnimations().isEmpty()) {
+				storySectionManager.triggerSectionEvent(
+						EventTypeEnum.BATTLE_CONTROL, "normal_attack");
 			}
-		}
-		if (found) {
-			return position;
 		} else {
-			return null;
+
 		}
 	}
 
-	/**
-	 * 클릭한 영역의 타일을 보이게 한다.
-	 * 
-	 * @param screenX
-	 * @param screenY
-	 */
-	private void showTileWhereClicked(int screenX, int screenY) {
-		int[] position = findTile(screenX, screenY);
-		if (position != null) {
-			int i = position[1];
-			int j = position[0];
-			clickedTileRow = i;
-			clickedTileColumn = j;
-			tileImages[i][j].setVisible(true);
-		}
-	}
+	public Stage makeStage() {
+		super.makeStage();
+		Gdx.app.debug("BattleStage", "makeStage(Rm rm)");
 
-	private void showTileWhereMoved(int screenX, int screenY) {
-		int[] position = findTile(screenX, screenY);
-		if (position != null) {
-			int i = position[1];
-			int j = position[0];
-			tileImages[i][j].setVisible(true);
-		}
-	}
+		selectedMonster = battleManager.getSelectedMonster();
 
-	private void hideAllTiles() {
-		for (int i = 0; i < tileRows; i++) {
-			for (int j = 0; j < tileColumns; j++) {
-				tileImages[i][j].setVisible(false);
-			}
-		}
-	}
+		makeFirstOrder();
 
-	private boolean isInside(float centerX, float centerY, float width,
-			float height, int x, int y) {
-		int revertedY = (int) (StaticAssets.windowHeight - y);
+		// make table stack and add to stage
+		tableStack.add(makeBattleUiTable());
+		gridHitbox = new GridHitbox();
+		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
+		tableStack.add(gridHitbox);
 
-		if (x > (centerX - width / 2) && x < (centerX + width / 2)
-				&& revertedY < (centerY + height / 2)
-				&& revertedY > (centerY - height / 2)) {
-			return true;
-		}
+		addListener();
 
-		return false;
-	}
+		updateOrder();
 
-	/**
-	 * 좌표(x,y)가 (i,j)위치의 타일에 있는지
-	 * 
-	 * @param i
-	 *            타일 행 인덱스
-	 * @param j
-	 *            타일 열 인덱스
-	 * @param x
-	 *            x좌표
-	 * @param y
-	 *            y좌표
-	 * @return 타일안에 있으면 true, 아니면 false
-	 */
-	private boolean isInsideTile(int i, int j, int x, int y) {
-		float centerX = tileImages[i][j].getCenterX();
-		float centerY = tileImages[i][j].getCenterY();
-		float width = tileImages[i][j].getWidth();
-		float height = tileImages[i][j].getHeight();
-
-		return isInside(centerX, centerY, width, height, x, y);
-	}
-
-	/**
-	 * 좌표(x,y)가 Hitbox영역 안에 있는지
-	 * 
-	 * @param x
-	 *            x좌표
-	 * @param y
-	 *            y좌표
-	 * @return 있으면 true, 아니면 false
-	 */
-	private boolean isInsideHitbox(int x, int y) {
-		float centerX = gridTable.getCenterX();
-		float centerY = gridTable.getCenterY();
-		float width = gridTableWidth;
-		float height = gridTableHeight;
-
-		return isInside(centerX, centerY, width, height, x, y);
-	}
-
-	@Override
-	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		if (gridFlag && isInsideHitbox(screenX, screenY)) {
-			showTileWhereClicked(screenX, screenY);
-		}
-		return super.touchDown(screenX, screenY, pointer, button);
-	}
-
-	@Override
-	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		if (gridFlag) {
-			showTileWhereMoved(screenX, screenY);
-			// TODO clickedTileRow와 Column을 이용해서, 시작점부터 끝점까지 지나는 타일들을 배열로
-			// 저장해야한다.
-		}
-		return super.touchDragged(screenX, screenY, pointer);
-	}
-
-	@Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		if (gridFlag && isInsideHitbox(screenX, screenY)) {
-			Gdx.app.log("BattleStage", "어택!");
-
-			Unit actor = getCurrentActor();
-
-			if (!(actor instanceof Hero)) {
-				// 일어날 수 없는 시나리오
-				// 만약 몬스터의 턴이라면 이 이벤트가 호출되지 않아야 한다.
-			}
-
-			battleManager.userAttack(actor);
-			updateOrderTable();
-
-			if (whoIsNextActor() instanceof Monster) {
-				monsterTrigger = true;
-			}
-
-			hideGrid();
-			hideAllTiles();
-		} else {
-			hideAllTiles();
-		}
-
-		return super.touchUp(screenX, screenY, pointer, button);
-	}
-
-	public BattleStage() {
-		Gdx.app.debug("BattleStage", "Constructor() call");
+		return this;
 	}
 
 	private Unit getCurrentActor() {
 		Unit unit = orderedUnits.poll();
 		orderedUnits.add(unit);
+		if (unit instanceof Hero) {
+			battleManager.setCurrentActor((Hero) unit);
+		}
 		return unit;
 	}
 
@@ -277,58 +130,13 @@ public class BattleStage extends BaseOneLevelStage {
 		return unit;
 	}
 
-	private void resolutionWork() {
-		uiButtonWidth = StaticAssets.windowWidth * 0.0625f;
-		uiButtonHeight = StaticAssets.windowHeight * 0.125f;
-		RButtonHeight = StaticAssets.windowHeight * 0.1278f;
-		RButtonWidth = RButtonHeight;
-		topPadValue = StaticAssets.windowHeight * 0.125f;
-
-		// FIXME 상수 대신 monster 타입에 따라 다른 크기 사용해야 함
-		gridTableWidth = StaticAssets.windowWidth * 0.333333f;
-		gridTableHeight = gridTableWidth;
-	}
-
-	private void tileWork() {
-		gridFlag = false;
-
-		// FIXME 5: monster의 타입에 따라서 바뀌어야 함
-		tileRows = 5;
-		tileColumns = 5;
-		tileImages = new Image[tileRows][tileColumns];
-		for (int i = 0; i < tileRows; i++) {
-			for (int j = 0; j < tileColumns; j++) {
-				tileImages[i][j] = getTileImage();
-				tileImages[i][j].setVisible(false);
-			}
-		}
-	}
-
-	public Stage makeStage() {
-		Gdx.app.debug("BattleStage", "makeStage(Rm rm)");
-
-		resolutionWork();
-
-		monster = movingInfo.getSelectedMonster();
-
-		tileWork();
-
-		makeFirstOrder();
-
-		makeAllTable();
-
-		updateOrderTable();
-
-		return this;
-	}
-
 	/**
 	 * 전투 참여 유닛들의 순서를 결정
 	 */
 	private void makeFirstOrder() {
 		units = new ArrayList<Unit>(4);
-		units.addAll(partyInfo.getPartyList());
-		units.add(monster);
+		units.addAll(partyManager.getPartyList());
+		units.add(selectedMonster);
 
 		// 행동게이지 초기화
 		for (Unit unit : units) {
@@ -341,129 +149,131 @@ public class BattleStage extends BaseOneLevelStage {
 		orderedUnits = new LinkedList<Unit>(units);
 	}
 
-	private void makeOrder() {
+	public Table makeBattleUiTable() {
+		Table uiTable = new Table();
+		Table RMenuTable = makeRMenuTable();
+
+		uiTable.right().bottom();
+		uiTable.padRight(uiConstantsMap.get("RMenuTablePadRight")).padBottom(
+				uiConstantsMap.get("RMenuTablePadBottom"));
+		uiTable.add(RMenuTable);
+
+		return uiTable;
+	}
+
+	private Table makeRMenuTable() {
+		Table rMenuTable = new Table();
+		makeRButton();
+
+		imageButtonList = new ArrayList<>();
+		imageButtonList.add(attackButton);
+		imageButtonList.add(skillButton);
+		imageButtonList.add(inventoryButton);
+		imageButtonList.add(defenseButton);
+		imageButtonList.add(waitButton);
+		imageButtonList.add(escapeButton);
+
+		for (int i = 0; i < imageButtonList.size(); i++) {
+			if (i == 0) {
+				rMenuTable.add(imageButtonList.get(i))
+						.width(uiConstantsMap.get("RButtonWidth"))
+						.height(uiConstantsMap.get("RButtonHeight"))
+						.padTop(uiConstantsMap.get("RMenuTablePadTop"))
+						.padBottom(uiConstantsMap.get("RButtonSpace"))
+						.expandX();
+				rMenuTable.row();
+			} else {
+				rMenuTable.add(imageButtonList.get(i))
+						.width(uiConstantsMap.get("RButtonWidth"))
+						.height(uiConstantsMap.get("RButtonHeight"))
+						.padBottom(uiConstantsMap.get("RButtonSpace"));
+				rMenuTable.row();
+			}
+		}
+		/* 다른버튼 막기 //FIXME
+		if (eventCheckManager.checkBattleEventType()) {
+			switch (eventCheckManager.getBattleControlButton()) {
+				case NORMAL_ATTACK:
+					imageButtonList.remove(attackButton);
+					setDarkButton();
+					break;
+				case SKILL_ATTACK:
+					imageButtonList.remove(skillButton);
+					setDarkButton();
+					break;
+				default:
+					Gdx.app.log("BattleStage", "Rmenu ImageButton Target 에러");
+					break;
+			}
+		}
+		*/
+
+		return rMenuTable;
+	}
+
+	private void setDarkButton() {
+		for (int i = 0; i < imageButtonList.size(); i++) {
+			ImageButton imageButton = imageButtonList.get(i);
+			imageButton.setColor(Color.DARK_GRAY);
+			imageButton.setTouchable(Touchable.disabled);
+		}
+	}
+
+	private void updateOrder() {
 		Collections.sort(units);
 	}
 
-	private void makeGridTable() {
-		gridTable = new Table();
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		boolean result = super.touchDown(screenX, screenY, pointer, button);
 
-		gridTable.align(Align.top);
-		gridTable.add(getGridImage()) // gridTable에 gridImage 넣는다.
-				.padTop(topPadValue) // 상단바에 겹치지 않게 위쪽 Padding(1/8)
-				.width(gridTableWidth) // 최대 가로 크기
-				.height(gridTableHeight); // 최대 세로 크기
-		gridTable.setVisible(false); // 초기에는 보이지 않게 한다.
-
+		if (gridHitbox.isGridShow()
+				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+			gridHitbox.showTileWhereClicked(touched.x, touched.y);
+		}
+		return result;
 	}
 
-	private void makeTileTable() {
-		tileTable = new Table();
-		tileWidth = gridTableWidth / tileColumns;
-		tileHeight = gridTableHeight / tileRows;
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		boolean result = super.touchDragged(screenX, screenY, pointer);
 
-		tileTable.align(Align.top);
-		for (int i = 0; i < tileColumns; i++) {
-			tileTable.add(tileImages[0][i]).padTop(topPadValue)
-					.width(tileWidth).height(tileHeight);
+		if (gridHitbox.isGridShow()) {
+			gridHitbox.showTileWhereMoved(touched.x, touched.y);
 		}
-		for (int i = 1; i < tileRows; i++) {
-			tileTable.row();
-			for (int j = 0; j < tileColumns; j++) {
-				tileTable.add(tileImages[i][j]).width(tileWidth)
-						.height(tileHeight);
+		return result;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		boolean result = super.touchUp(screenX, screenY, pointer, button);
+
+		if (gridHitbox.isGridShow()
+				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+			Gdx.app.log("BattleStage", "어택!");
+
+			Unit actor = getCurrentActor();
+
+			if (!(actor instanceof Hero)) {
+				// 일어날 수 없는 시나리오
+				// 만약 몬스터의 턴이라면 이 이벤트가 호출되지 않아야 한다.
+				Gdx.app.log("BattleStage", "마왕의 턴");
 			}
+
+			battleManager.userAttack(actor);
+			battleManager.playPlayerHitAnimation();
+			battleManager.checkUserWin();
+			updateOrder();
+
+			gridHitbox.hideGrid();
 		}
-	}
+		gridHitbox.hideAllTiles();
 
-	private void makeUiTable() {
-		uiTable = new Table();
-		orderTable = new Table();
-
-		uiTable.setFillParent(true);
-
-		uiTable.align(Align.left);
-		uiTable.setWidth(uiButtonWidth);
-		uiTable.setY(uiButtonHeight);
-	}
-
-	private void makeRMenuTable() {
-		RMenuTable = new Table();
-
-		RMenuTable.right().bottom();
-		RMenuTable.padBottom(StaticAssets.windowHeight * 0.013f).padRight(
-				StaticAssets.windowWidth * 0.007f);
-		RMenuTable.setFillParent(true);
-		RMenuTable.add(attackButton).width(RButtonWidth).height(RButtonHeight);
-		RMenuTable.row();
-		RMenuTable.add().height(StaticAssets.windowHeight * 0.0138f);
-		RMenuTable.row();
-		RMenuTable.add(skillButton).width(RButtonWidth).height(RButtonHeight);
-		RMenuTable.row();
-		RMenuTable.add().height(StaticAssets.windowHeight * 0.0138f);
-		RMenuTable.row();
-		RMenuTable.add(inventoryButton).width(RButtonWidth)
-				.height(RButtonHeight);
-		RMenuTable.row();
-		RMenuTable.add().height(StaticAssets.windowHeight * 0.0138f);
-		RMenuTable.row();
-		RMenuTable.add(defenseButton).width(RButtonWidth).height(RButtonHeight);
-		RMenuTable.row();
-		RMenuTable.add().height(StaticAssets.windowHeight * 0.0138f);
-		RMenuTable.row();
-		RMenuTable.add(waitButton).width(RButtonWidth).height(RButtonHeight);
-		RMenuTable.row();
-		RMenuTable.add().height(StaticAssets.windowHeight * 0.0138f);
-		RMenuTable.row();
-		RMenuTable.add(escapeButton).width(RButtonWidth).height(RButtonHeight);
-
-	}
-
-	private void makeTableStack() {
-		tableStack = new Stack();
-		tableStack.setFillParent(true);
-		tableStack.add(uiTable);
-		tableStack.add(tileTable);
-		tableStack.add(gridTable);
-		tableStack.add(RMenuTable);
-	}
-
-	private void makeAllTable() {
-		makeRButton();
-		makeUiTable();
-		makeGridTable();
-		makeTileTable();
-		makeRMenuTable();
-		makeTableStack();
-
-		addListener();
-
-		this.addActor(tableStack);
-	}
-
-	private void updateOrderTable() {
-		uiTable.clear();
-		orderTable.clear();
-
-		makeOrder();
-
-		for (Unit unit : orderedUnits) {
-			orderTable.add(new Image(unit.getBattleTexture()))
-					.width(uiButtonWidth).height(uiButtonHeight);
-			orderTable.row();
+		if (whoIsNextActor() instanceof Monster) {
+			monsterTrigger = true;
 		}
 
-		uiTable.add(orderTable);
-	}
-
-	public void showGrid() {
-		gridTable.setVisible(true);
-		gridFlag = true;
-	}
-
-	public void hideGrid() {
-		gridTable.setVisible(false);
-		gridFlag = false;
+		return result;
 	}
 
 	public void addListener() {
@@ -472,10 +282,8 @@ public class BattleStage extends BaseOneLevelStage {
 		attackButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-
-				Gdx.app.log("BattleStage", "공격!");
-				if (!gridFlag) {
-					showGrid();
+				if (!gridHitbox.isGridShow()) {
+					gridHitbox.showGrid();
 				} else {
 
 				}
@@ -483,11 +291,12 @@ public class BattleStage extends BaseOneLevelStage {
 		});
 
 		skillButton.addListener(new ClickListener() {
-
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+
 				Gdx.app.log("BattleStage", "스킬!");
-				hideGrid();
+				gridHitbox.hideGrid();
+				screenFactory.show(ScreenEnum.SKILL);
 			}
 		});
 
@@ -515,48 +324,31 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("BattleStage", "도망!");
-				screenFactory.show(ScreenEnum.MOVING);
+				battleManager.runAway();
 			}
 		});
 	}
 
 	private void makeRButton() {
-
 		// 이미지 추가
-		attackButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/battle/RMenu_01.png"))));
-		skillButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/battle/RMenu_02.png"))));
-		inventoryButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/battle/RMenu_03.png"))));
-		defenseButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/battle/RMenu_04.png"))));
-		waitButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture(
-				"texture/battle/RMenu_05.png"))));
-		escapeButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/battle/RMenu_06.png"))));
-
+		attackButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_attack"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_attack"));
+		skillButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_skill"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_skill"));
+		inventoryButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_item"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_item"));
+		defenseButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_defense"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_defense"));
+		waitButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_wait"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_wait"));
+		escapeButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("battleui_rb_escape"),
+				atlasUiAssets.getAtlasUiFile("battleui_rbac_escape"));
 		addListener();
-
 	}
-
-	private Image getGridImage() {
-		// FIXME medium대신 monster.getType() 사용해야 함.
-		return new Image(new Texture(Gdx.files.internal("texture/battle/grid_"
-				+ "medium" + ".png")));
-	}
-
-	private Image getTileImage() {
-		return new Image(new Texture(
-				Gdx.files.internal("texture/battle/tile.png")));
-	}
-
-	public BattleManager getBattleManager() {
-		return battleManager;
-	}
-
-	public void setBattleManager(BattleManager battleManager) {
-		this.battleManager = battleManager;
-	}
-
 }

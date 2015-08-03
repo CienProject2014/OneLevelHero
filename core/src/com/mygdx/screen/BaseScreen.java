@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.mygdx.assets.Assets;
-import com.mygdx.currentState.MovingInfo;
+import com.mygdx.currentState.FieldInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
@@ -29,7 +29,7 @@ public abstract class BaseScreen implements Screen {
 	@Autowired
 	protected PositionInfo positionInfo;
 	@Autowired
-	protected MovingInfo movingInfo;
+	protected FieldInfo movingInfo;
 
 	@Override
 	public void render(float delta) {
@@ -58,53 +58,5 @@ public abstract class BaseScreen implements Screen {
 
 	@Override
 	public void dispose() {
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public StageFactory getStageFactory() {
-		return stageFactory;
-	}
-
-	public void setStageFactory(StageFactory stageFactory) {
-		this.stageFactory = stageFactory;
-	}
-
-	public MusicManager getMusicManager() {
-		return musicManager;
-	}
-
-	public void setMusicManager(MusicManager musicManager) {
-		this.musicManager = musicManager;
-	}
-
-	public EventManager getEventManager() {
-		return eventManager;
-	}
-
-	public void setEventManager(EventManager eventManager) {
-		this.eventManager = eventManager;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
 	}
 }

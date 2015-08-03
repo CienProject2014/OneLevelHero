@@ -1,163 +1,137 @@
 package com.mygdx.stage;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.assets.WorldNodeAssets;
-import com.mygdx.enums.PlaceEnum;
-import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.CameraManager.CameraPosition;
+import com.mygdx.assets.WorldMapAssets;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.ArrowButtonListener;
+import com.mygdx.listener.BuildingButtonListener;
+import com.mygdx.manager.CameraManager.CameraStateEnum;
+import com.mygdx.manager.MovingManager;
 import com.mygdx.model.Building;
+import com.mygdx.model.Connection;
 import com.mygdx.model.Village;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class VillageStage extends BaseOverlapStage {
 	@Autowired
-	private WorldNodeAssets worldNodeAssets;
+	private NodeAssets worldNodeAssets;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private WorldMapAssets worldMapAssets;
+	@Autowired
+	private MovingManager movingManager;
+	@Autowired
+	private ListenerFactory listenerFactory;
 	private Village villageInfo;
 	public TextButton shiftButton;
-	private BackgroundDirection backgroundDirection;
-
-	public enum BackgroundDirection {
-		UP, DOWN, MOVE_UP, MOVE_DOWN;
-	}
+	private final int movingSpeed = 10;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
-
+		cameraManager.stretchToDevice(this);
 		setVillage();
 
 		return this;
 	}
 
+	private void setArrow() {
+		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
+		String currentNode = positionManager.getCurrentNodeName();
+		Map<String, Connection> connectionMap = worldMapAssets
+				.getWorldNodeInfo(currentNode).getConnection();
+		for (final Entry<String, Connection> connection : connectionMap
+				.entrySet()) {
+			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(
+					connection.getValue().getArrowName());
+			if (arrow != null) {
+				arrow.setVisible(true);
+				arrow.setTouchable(Touchable.enabled);
+				ArrowButtonListener arrowButtonListener = listenerFactory
+						.getArrowButtonListener();
+				arrowButtonListener.setConnection(connection);
+				arrow.addListener(arrowButtonListener);
+				arrowList.add(arrow);
+			}
+		}
+	}
+
+	//FIXME
+	private void setVillageScene() {
+		if (positionManager.getCurrentNodeName().equals("cobweb")) {
+			villageInfo = worldNodeAssets.getVillage("cobweb");
+			sceneLoader.loadScene("cobweb_scene");
+		} else {
+			villageInfo = worldNodeAssets.getVillage("blackwood");
+			sceneLoader.loadScene("blackwood_scene");
+		}
+
+	}
+
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		Gdx.app.debug("VillageStage",
-				String.valueOf(positionInfo.getCurrentNode()));
-		// 임시로 블랙우드 정보를 넣는다.
-		// villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
-		villageInfo = worldNodeAssets.getVillage("Blackwood");
-		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
-		// sceneLoader.loadScene(villageInfo.getSceneName());
-		sceneLoader.loadScene("blackwood_scene");
-		cameraManager.setCameraSize(this, CameraPosition.ABOVE_GAME_UI);
-		backgroundDirection = BackgroundDirection.DOWN;
-		addActor(sceneLoader.getRoot());
+		Gdx.app.log("VillageStage",
+				String.valueOf(positionManager.getCurrentNodeName()));
+		setVillageScene();
+		setArrow();
 		setBuildingButton();
-		shiftButton = new TextButton("전환", uiComponentAssets.getSkin());
-		shiftButton.center();
-		shiftButton.addListener(new InputListener() {
+		addActor(sceneLoader.getRoot());
+		final CompositeItem shiftbutton_up = sceneLoader.getRoot()
+				.getCompositeById("camera_up");
+		final CompositeItem shiftbutton_down = sceneLoader.getRoot()
+				.getCompositeById("camera_down");
+		shiftbutton_up.setTouchable(Touchable.enabled);
+		shiftbutton_down.setTouchable(Touchable.enabled);
+		shiftbutton_up.addListener(new ClickListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				if (backgroundDirection.equals(BackgroundDirection.DOWN))
-					backgroundDirection = BackgroundDirection.MOVE_UP;
-				else if (backgroundDirection.equals(BackgroundDirection.UP))
-					backgroundDirection = BackgroundDirection.MOVE_DOWN;
-
-				event.getListenerActor().setVisible(false);
+			public void clicked(InputEvent event, float x, float y) {
+				setCameraState(CameraStateEnum.MOVE_UP);
 			}
 		});
-		addActor(shiftButton);
+
+		shiftbutton_down.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				setCameraState(CameraStateEnum.MOVE_DOWN);
+			}
+
+		});
+
 	}
 
 	@Override
-	public void draw() {
-		moveCam();
-		super.draw();
-	}
-
-	private void moveCam() {
-		int movingSpeed = 10;
-		checkCameraPosition();
-		if (backgroundDirection.equals(BackgroundDirection.MOVE_UP)) {
-			this.getCamera().translate(0, movingSpeed, 0);
-			shiftButton.moveBy(0, movingSpeed);
-		} else if (backgroundDirection.equals(BackgroundDirection.MOVE_DOWN)) {
-			this.getCamera().translate(0, -movingSpeed, 0);
-			shiftButton.moveBy(0, -movingSpeed);
-		}
-	}
-
-	private void checkCameraPosition() {
-		if (this.getCamera().position.y > sceneLoader.getRoot().getHeight()
-				- this.getCamera().viewportHeight / 2 * 0.90f) {
-			this.getCamera().position.y = sceneLoader.getRoot().getHeight()
-					- this.getCamera().viewportHeight / 2 * 0.90f;
-			backgroundDirection = BackgroundDirection.UP;
-
-			shiftButton.setVisible(true);
-		} else if (this.getCamera().position.y < sceneLoader.getRoot()
-				.getHeight() * 0.25f) {
-			this.getCamera().position.y = sceneLoader.getRoot().getHeight() * 0.25f;
-			backgroundDirection = BackgroundDirection.DOWN;
-
-			shiftButton.setVisible(true);
-		}
+	public void act() {
+		super.act();
 	}
 
 	private void setBuildingButton() {
-		for (final Entry<String, Building> building : villageInfo.getBuilding()
-				.entrySet()) {
-			CompositeItem buildingButton = sceneLoader.getRoot()
-					.getCompositeById(building.getValue().getBuildingPath());
-			buildingButton.setTouchable(Touchable.enabled);
-			buildingButton.addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					return true;
-				}
-
-				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
-					positionInfo.setCurrentBuilding(building.getKey());
-					positionInfo.setCurrentPlace(PlaceEnum.BUILDING);
-					screenFactory.show(ScreenEnum.BUILDING);
-				}
-			});
+		if (villageInfo.getBuilding() != null) {
+			for (final Entry<String, Building> building : villageInfo
+					.getBuilding().entrySet()) {
+				CompositeItem buildingButton = sceneLoader
+						.getRoot()
+						.getCompositeById(building.getValue().getBuildingPath());
+				buildingButton.setTouchable(Touchable.enabled);
+				BuildingButtonListener buildingButtonListener = listenerFactory
+						.getBuildingButtonListener();
+				buildingButtonListener.setBuildingName(building.getKey());
+				buildingButton.addListener(buildingButtonListener);
+			}
 		}
-	}
-
-	public WorldNodeAssets getWorldNodeAssets() {
-		return worldNodeAssets;
-	}
-
-	public void setWorldNodeAssets(WorldNodeAssets worldNodeAssets) {
-		this.worldNodeAssets = worldNodeAssets;
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
-	}
-
-	public Village getVillageInfo() {
-		return villageInfo;
-	}
-
-	public void setVillageInfo(Village villageInfo) {
-		this.villageInfo = villageInfo;
 	}
 }

@@ -1,7 +1,8 @@
 package com.mygdx.enums;
 
 public enum WorldNodeEnum {
-	BLACKWOOD("Blackwood"), BLACKWOOD_FOREST("Blackwood Forest");
+	BLACKWOOD("blackwood"), BLACKWOOD_FOREST("blackwood_forest"), COBWEB(
+			"cobweb");
 
 	private String nodeName;
 
@@ -20,5 +21,19 @@ public enum WorldNodeEnum {
 				return worldNodeEnum;
 
 		return null;
+	}
+
+	public enum NodeType {
+		DUNGEON_ENTRANCE("dungeon_entrance"), VILLAGE("village"), FORK("fork");
+		NodeType(String code) {
+			this.code = code;
+		}
+
+		private String code;
+
+		@Override
+		public String toString() {
+			return code;
+		}
 	}
 }

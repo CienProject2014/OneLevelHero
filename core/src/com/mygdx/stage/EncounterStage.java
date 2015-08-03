@@ -19,17 +19,16 @@ public class EncounterStage extends BaseOneLevelStage {
 	private Table selTable;
 
 	public Stage makeStage() {
+		super.makeStage();
 		fightButton = new TextButton("싸운다", uiComponentAssets.getSkin());
 		fleeButton = new TextButton("도망친다", uiComponentAssets.getSkin());
 
 		selTable = new Table(uiComponentAssets.getSkin());
-		selTable.setFillParent(true);
-		// selTable.row();
 		selTable.add(fightButton);
 		selTable.add(fleeButton);
 
 		selTable.bottom();
-		addActor(selTable); // show selTable
+		tableStack.add(selTable);
 
 		addListener(); // 리스너 할당
 
@@ -61,17 +60,9 @@ public class EncounterStage extends BaseOneLevelStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.MOVING);
+				screenFactory.show(ScreenEnum.FIELD);
 			}
 		});
-	}
-
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
-	}
-
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
 	}
 
 }

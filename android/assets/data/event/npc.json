@@ -1,171 +1,823 @@
 {
   "prologue": {
-    "events": [
-      {
-        "eventState": "OPENED",
-        "eventType": "CHAT",
+    "events": {
+      "1": {
+        "eventState": "not_opened",
+        "eventType": "select_component",
         "eventScenes": [
           {
-            "script": "대륙의 중심, 블랙우드 마을에 마왕이 출현했다.",
-            "characterPath": "rabbit1",
-            "backgroundPath": "scene1"
+            "script": "프롤로그를 보시겠습니까?",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ],
+        "eventComponent": [
+          "예",
+          "아니오"
+        ]
+      },
+      "2": {
+        "eventState": "not_opened",
+        "eventType": "music",
+        "eventComponent": [
+          "seven_changer"
+        ]
+      },
+      "3": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "카딜라 공작의 정벌 이후, 카딜라 지방으로 편입된 블랙우드 마을은 평화로운 일상을 보내고 있었다.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "cg_prologue_01"
           },
           {
-            "script": "마을의 촌장은 지나가던 용사에게 토벌을 부탁했고",
-            "characterPath": "rabbit2",
-            "backgroundPath": "scene2"
+            "script": "그러나 블랙우드 숲에 마왕이 강림하게 되고, 주민들은 불안에 떤다.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "cg_prologue_02"
           },
           {
-            "script": "이를 수락한 용사는 곧장 마왕성으로 돌격했으나 그것은 함정에 불과했다. ",
-            "characterPath": "rabbit3",
-            "backgroundPath": "scene3"
+            "script": "마침 근방을 지나가던 용사 일행은, 곧바로 마왕성에 쳐들어간다.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "cg_prologue_03"
           },
           {
-            "script": "용사는 결국 마왕의 간악한 꾀에 넘어가 레벨 다운의 저주에 걸리고 말았다...",
-            "characterPath": "rabbit3",
-            "backgroundPath": "scene4"
+            "script": "저게 마왕인가!",
+            "characterPath": "bust_yongsa_04",
+            "backgroundPath": "bg_devilcastle_01"
           },
           {
-            "script": "용사님.. 일어나세요..!",
-            "characterPath": "parath_202",
-            "backgroundPath": "scene1"
+            "script": "이얍!",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_devilcastle_01"
           },
           {
-            "script": "으으...",
-            "characterPath": "yongsa_206",
-            "backgroundPath": "scene2"
+            "script": "오른쪽 상단의 공격 아이콘을 누르면 기본 공격을 실행합니다.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "bg_devilcastle_01"
+          }
+        ]
+      },
+      "4": {
+        "eventState": "not_opened",
+        "eventType": "battle",
+        "eventComponent": [
+          "mawang"
+        ]
+      },
+      "5": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "별로 효과가 없네요",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_devilcastle_01"
           },
           {
-            "script": "벌써 삼일째에요.. 이젠 기운을 차릴 때도 됐잖아요. 촌장님이 찾으셔요.",
-            "characterPath": "parath_203",
-            "backgroundPath": "scene3"
+            "script": "내가 나서도록 하지.",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_devilcastle_01"
           },
           {
-            "script": "용사 : 정말, 귀찮은데..",
-            "characterPath": "yongsa_206",
-            "backgroundPath": "scene4"
+            "script": "하압!",
+            "characterPath": "bust_yongsa_04",
+            "backgroundPath": "bg_devilcastle_01"
+          },
+          {
+            "script": "아이콘을 누르면 스킬 공격을 할 수 있습니다. 스킬버튼을 누르세요.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "bg_devilcastle_01"
+          }
+        ]
+      },
+      "6": {
+        "eventState": "not_opened",
+        "eventType": "battle",
+        "eventComponent": [
+          "mawang"
+        ]
+      },
+      "7": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "......!!",
+            "characterPath": "bust_mawang_01",
+            "backgroundPath": "bg_devilcastle_01"
+          },
+          {
+            "script": "어...?",
+            "characterPath": "bust_yongsa_04",
+            "backgroundPath": "bg_devilcastle_01"
+          },
+          {
+            "script": "정신을 차려보니 마왕성의 입구였다. 문은 굳게 닫혀있어 다시 들어갈 수 없었다.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "cg_prologue_04"
+          },
+          {
+            "script": "용사는 무언가 힘이 빠지는 듯한 위화감을 느꼈지만, 우선 촌장에게 보고하기 위해 블랙우드로 돌아갔다.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "cg_prologue_04"
+          }
+        ]
+      },
+      "8": {
+        "eventState": "not_opened",
+        "eventType": "move_node",
+        "eventComponent": [
+          "blackwood"
+        ]
+      },
+      "10": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "촌장님은 집 안에 계실거에요.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_blackwood_01"
+          }
+        ]
+      },
+      "11": {
+        "eventState": "not_opened",
+        "eventType": "move_sub_node",
+        "eventComponent": [
+          "cobweb_library"
+        ]
+      },
+      "13": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "마을에 있는 표지판을 누르면 월드맵으로 나갈 수 있어요.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_blackwood_01"
+          },
+          {
+            "script": "콥웨브 방향으로 나가세요.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_blackwood_01"
+          }
+        ]
+      },
+      "14": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "앞으로를 누르면 다음 필드맵으로 이동합니다.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_justground"
+          }
+        ]
+      },
+      "15": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "콥웨브에 도착했으니 촌장님 말씀대로 대도서관으로 가보기로 해요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "마침 저기 있네요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "어서 건물을 터치해서 안으로 들어가봐요!",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          }
+        ]
+      },
+      "17": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "이렇게 넓어서야....",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "어디서부터 찾아야할 지 모르겠는걸…",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "혹시 찾으시는 책이 있으십니까?",
+            "characterPath": "bust_aimee_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "저주에 관련된 책이나 문서를 알아보고 싶은데요.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "저주에 관련한 문서는 이쪽입니다.",
+            "characterPath": "bust_aimee_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "...",
+            "characterPath": "nothing_image",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "... ...",
+            "characterPath": "nothing_image",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "... ... ...",
+            "characterPath": "nothing_image",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "조사해본 결과,",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "과거의 기록은 없지만, 아마도 탈력을 유도하는 저주인 것 같아요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "저주라니… 혹시 위험한 거에요?",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "위험하지는 않을 것 같지만… 점점 더 증상은 심각해 질 거에요. ",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "왜 용사님만 저주에 걸리게 되었는지는 잘 모르겠네요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "용사님",
+            "characterPath": "bust_aimee_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "응?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "각지에 마왕 토벌을 명령했으니, 준비가 완료될 때까지 휴식을 취하라는 콥웨브 시장님의 전언이 있었습니다.",
+            "characterPath": "bust_aimee_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "그리고 카딜라 성의 카시아 공작님께서 용사님을 뵙고 싶어한다는 전언도 있었습니다.",
+            "characterPath": "bust_aimee_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "고마워",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_12"
+          },
+          {
+            "script": "도서관 내에서 떠들 순 없으니 나가서 얘기하자.",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_12"
+          }
+        ]
+      },
+      "19": {
+        "eventState": "not_opened",
+        "eventType": "move_node",
+        "eventComponent": [
+          "cobweb"
+        ]
+      },
+      "20": {
+        "eventState": "not_opened",
+        "eventType": "next_section",
+        "eventComponent": [
+          "111"
+        ]
+      },
+      "21": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "흠… 쉬라고 해도 말이지…",
+            "characterPath": "bust_yongsa_05",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "우선 용사님의 저주를 풀어야겠네요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "리리스, 저주를 푸는 방법도 찾은 게 있어?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "제가 찾아본 바로는 카딜라 지방에서 저주를 풀 방법은 다섯 가지 정도가 있을 것 같아요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "수도인 카딜라 성의 학자들에게 도움을 요청하는 방법도 있고,",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "바이칼성에는 저주마법에 능통한 종족이 살고 있다고 하니 그 쪽으로 가볼 수도 있겠네요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "또한 미라지 포트 근처의 엘프들은 오랜 세월을 살아가는 종족으로, 그들의 지혜를 활용해도 좋을 것 같아요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "레드로즈 성에서 백작의 도움을 받는 것도 좋겠죠.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "윈터폴의 수정 협곡에는 정화의 눈물이라는 성물을 얻을 수 있다고 하네요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          }
+        ]
+      },
+      "23": {
+        "eventState": "not_opened",
+        "eventType": "select_component",
+        "eventScenes": [
+          {
+            "script": "어디로갈까요?",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          }
+        ],
+        "eventComponent": [
+          "카딜라 성",
+          "바이칼 성",
+          "미라지 포트",
+          "레드로즈 성",
+          "수정 협곡"
+        ]
+      },
+      "24": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "카딜라 성으로 가자.",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "용사님, 조금 쉬었다 가면 안될까요? 모처럼 콥웨브에 왔는데",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "아직 대낮이에요. 지금이라도 출발하면 카딜라 성에 도착할 수 있을 거에요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "히이잉....",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          }
+        ]
+      },
+      "25": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "나쁘지 않은 선택인 것 같네요.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "자, 지체할 필요 없이 출발이나 해볼까?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "……저기 용사님? 바이칼 성까지 가는 길은 아시는 거 맞죠?",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "당연하지!! 바이칼 성은 에…그러니깐…어디로 가면 되는 거냐면…...",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "그래! 이쪽이야!",
+            "characterPath": "bust_yongsa_03",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "하아…..따라오세요",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "후후, 역시 용사님이시네요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          }
+        ]
+      },
+      "26": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "미라지 포트로 가자.",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "용사님, 조금 쉬었다 가면 안될까요? 모처럼 콥웨브에 왔는데",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "아직 대낮이에요. 지금이라도 출발하면 미라지 포트에 도착할 수 있을 거에요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "히이잉….",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          }
+        ]
+      },
+      "27": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "나쁘지 않은 선택인 것 같네요.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "자, 지체할 필요 없이 출발이나 해볼까?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "……저기 용사님? 레드로즈 성까지 가는 길은 아시는 거 맞죠?",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "당연하지!! 레드로즈 성은 에…그러니깐…어디로 가면 되는 거냐면…...",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "그래! 이쪽이야!",
+            "characterPath": "bust_yongsa_03",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "하아…..따라오세요",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "후후, 역시 용사님이시네요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
+          }
+        ]
+      },
+      "28": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "나쁘지 않은 선택인 것 같네요.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "자, 지체할 필요 없이 출발이나 해볼까?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "……저기 용사님? 수정협곡까지 가는 길은 아시는 거 맞죠?",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "당연하지!! 수정협곡은 에…그러니깐…어디로 가면 되는 거냐면…...",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "그래! 이쪽이야!",
+            "characterPath": "bust_yongsa_03",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "하아…..따라오세요",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_cobweb_01"
+          },
+          {
+            "script": "후후, 역시 용사님이시네요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_cobweb_01"
           }
         ]
       }
-    ]
+    }
+  },
+  "parath": {
+    "name": "parath",
+    "events": {
+      "1": {
+        "eventName": "저주를 풀 열쇠",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "파라스, 어떻게 하면 저주를 풀 수 있을까?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "내가 어케암!",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "아.. 암울해졌다....",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사의 한숨이 5 증가했다....",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "2": {
+        "eventName": "시비걸기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "파라스.. 넌 너무 설명충같아!",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "헉........",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "전 그래도 용사님이 좋은걸요...",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "파라스의 용사에 대한 애정이 1증가했다...!",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "3": {
+        "eventName": "고백하기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "내 마음을 받아줘 파라스!",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "헉........",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사님 실망이에요...",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "파라스는 파티를 떠났다...!",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "4": {
+        "eventName": "지난 대화 되짚기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "지난 대화를 되짚어보는 공간을 만들 예정",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      }
+    }
+  },
+  "yongsa": {
+    "name": "yongsa",
+    "events": {
+      "1": {
+        "eventName": "파라스와의 대화",
+        "eventState": "always_open",
+        "eventType": "select_component",
+        "eventTarget": "parath",
+        "eventScenes": [
+          {
+            "script": "파라스군과 어떤 이야기를 해볼까?",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          }
+        ],
+        "eventComponent": [
+          "저주를 풀 열쇠",
+          "시비걸기",
+          "고백하기",
+          "지난 대화 되짚기"
+        ]
+      },
+      "2": {
+        "eventName": "리리스와의 대화",
+        "eventState": "always_open",
+        "eventType": "select_component",
+        "eventScenes": [
+          {
+            "script": "리리스찡과 어떤 이야기를 해볼까?",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "black_background"
+          }
+        ],
+        "eventComponent": [
+          "저주를 풀 열쇠",
+          "리리스에게 고백",
+          "지난 대화 되짚기"
+        ]
+      }
+    },
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "이야기나 해볼까",
+          "characterPath": "bust_yongsa_01",
+          "backgroundPath": "black_background"
+        },
+        {
+          "script": "심심해.. 대화를 해볼까나",
+          "characterPath": "bust_yongsa_02",
+          "backgroundPath": "black_background"
+        },
+        {
+          "script": "오늘은 무슨 이야기를하지?",
+          "characterPath": "bust_yongsa_03",
+          "backgroundPath": "black_background"
+        },
+        {
+          "script": "오늘은 누구에게 장난을 쳐볼까!",
+          "characterPath": "bust_yongsa_04",
+          "backgroundPath": "black_background"
+        }
+      ]
+    }
   },
   "waiji": {
     "name": "waiji",
-    "events": [
-      {
-        "eventState": "OPENED",
-        "eventType": "CHAT",
-        "reward": {
-          "rewardType": "PARTY",
-          "rewardTarget": "parath",
-          "rewardState" : "NOT_CLEARED"
-        },
+    "events": {
+      "1": {
+        "eventName": "대화하기",
+        "eventState": "always_open",
+        "eventType": "chat",
         "eventScenes": [
           {
-            "script": "그래, 기운은 차렸는가?",
-            "characterPath": "waiji_202",
-            "backgroundPath": "blackwood_center"
+            "script": "Yo 나는 와이G, 이 마을의 촌장이G",
+            "characterPath": "bust_waiji_01",
+            "backgroundPath": "bg_blackwood_03"
+          }
+        ]
+      },
+      "2": {
+        "eventName": "마왕퇴치실패",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "용사 일행은 촌장에게 마왕 퇴치에 실패했음을 알렸다. 그리고 용사는 자신이 느낀 위화감에 대해 이야기했다.",
+            "characterPath": "nothing_image",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "네. 면목이 없습니다. 죄송할 따름입니다.",
-            "characterPath": "yongsa_207",
-            "backgroundPath": "blackwood_center"
+            "script": "일종의 저주 같은 게 아닐까요?",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "용사님은 최선을 다한거잖아요. 너무 상심하지 마세요.",
-            "characterPath": "parath_202",
-            "backgroundPath": "blackwood_center"
+            "script": "음… 우선 콥웨브의 대도서관에서 정보를 얻어 보는 것이 좋을 것 같으이.",
+            "characterPath": "bust_waiji_01",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "…….........................",
-            "characterPath": "yongsa_207",
-            "backgroundPath": "blackwood_center"
+            "script": "알겠습니다.",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": " 저주때문에 침울해 하는것 같구만..",
-            "characterPath": "waiji_202",
-            "backgroundPath": "blackwood_center"
+            "script": "파라스, 곧바로 출발하도록 하자.",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "너무 걱정하지 말게나. 콥웨브의 바르워스님이 소식을 듣고 자네를 소환했다네.",
-            "characterPath": "waiji_202",
-            "backgroundPath": "blackwood_center"
+            "script": "힘든데… 조금 쉬었다가 가면 안될까요?",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "정말입니까? 제 저주를 해결할 방법이 있는 건가요?",
-            "characterPath": "yongsa_207",
-            "backgroundPath": "blackwood_center"
+            "script": "그럴까?",
+            "characterPath": "bust_yongsa_02",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "아마도 그렇지 않을까? 괜히 부르지는 않을테니 말일세.",
-            "characterPath": "waiji_202",
-            "backgroundPath": "blackwood_center"
+            "script": "안돼요. 얼른 출발하도록 해요.",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "감사합니다. 지금 바로 콥웨브로 떠나겠습니다.",
-            "characterPath": "yongsa_202",
-            "backgroundPath": "blackwood_center"
+            "script": "히잉…",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_blackwood_03"
           },
           {
-            "script": "저어… 용사님… 저도 여행에 데려가주세요!",
-            "characterPath": "parath_202",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "응? 하지만 넌 아직…",
-            "characterPath": "yongsa_206",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "어머니의 허락은 받았어요. 절대 발목을 잡지는 않을게요! 그리고 저주에 걸린 용사님보다는 더 도움이 되지 않을까요?",
-            "characterPath": "parath_202",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "뭐임마? 이녀석이!",
-            "characterPath": "yongsa_204",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "허허… 데려가는게 어떻겠나. 그아이도 이제 어엿한 청년이고 분명 쓸모가 있을걸세.",
-            "characterPath": "waiji_202",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "하아, 알겠습니다. 파라스, 내 짐까지 챙겨 와라. 콥웨브로 떠난다.",
-            "characterPath": "yongsa_206",
-            "backgroundPath": "blackwood_center"
-          },
-          {
-            "script": "야호! 꼭 기다리고 있으셔야돼요!",
-            "characterPath": "parath_202",
-            "backgroundPath": "blackwood_center"
+            "script": "그러면 왼쪽 위의 나가기 버튼을 눌러서 마을로 돌아가도록 하죠.",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "bg_blackwood_03"
           }
         ]
       }
-    ],
+    },
     "greeting": {
-      "eventType": "SELECT",
+      "eventType": "greeting",
       "eventScenes": [
         {
           "script": "블랙우드 마을에 온 것을 환영하네",
-          "characterPath": "waiji_601",
-          "backgroundPath": "waiji_background"
+          "characterPath": "npc_waiji",
+          "backgroundPath": "bg_blackwood_03"
         },
         {
           "script": "뭔가 할 말이 있는가?",
-          "characterPath": "waiji_601",
-          "backgroundPath": "waiji_background"
+          "characterPath": "npc_waiji",
+          "backgroundPath": "bg_blackwood_03"
         },
         {
           "script": "내 손녀 아레이치가 귀엽지? 나도 알고 있다네.",
-          "characterPath": "waiji_601",
-          "backgroundPath": "waiji_background"
+          "characterPath": "npc_waiji",
+          "backgroundPath": "bg_blackwood_03"
         },
         {
           "script": "내가 블랙우드 촌장 와이지일세. 무슨일인가",
-          "characterPath": "waiji_601",
-          "backgroundPath": "waiji_background"
+          "characterPath": "npc_waiji",
+          "backgroundPath": "bg_blackwood_03"
         }
       ]
     }

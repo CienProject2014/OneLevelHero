@@ -7,10 +7,11 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.assets.MusicAssets;
-import com.mygdx.currentState.MovingInfo;
+import com.mygdx.currentState.FieldInfo;
 import com.mygdx.currentState.MusicInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.currentState.SoundInfo;
+import com.mygdx.model.EventPacket;
 
 public class MusicManager {
 	@Autowired
@@ -18,30 +19,16 @@ public class MusicManager {
 	@Autowired
 	private SoundInfo soundInfo;
 	@Autowired
-	private PositionInfo positionInfo;
+	private PositionInfo positionInfo; //FIXME
 	@Autowired
-	private MovingInfo movingInfo;
+	private FieldInfo movingInfo; //FIXME
 	@Autowired
 	private MusicAssets musicAssets;
+	@Autowired
+	private EventManager eventManager;
 
 	public enum MusicCondition {
 		WHENEVER, IF_IS_NOT_PLAYING;
-	}
-
-	public MusicInfo getMusicInfo() {
-		return musicInfo;
-	}
-
-	public void setMusicInfo(MusicInfo musicInfo) {
-		this.musicInfo = musicInfo;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
 	}
 
 	public void playMusic(Music music) {
@@ -61,6 +48,7 @@ public class MusicManager {
 	}
 
 	public void playMusic() {
+		musicInfo.getMusic().setLooping(true);
 		musicInfo.getMusic().play();
 	}
 
@@ -72,18 +60,24 @@ public class MusicManager {
 			MusicCondition musicCondition) {
 		switch (musicCondition) {
 			case WHENEVER:
-				if (musicInfo.getMusic() != null)
-					if (musicInfo.getMusic().isPlaying())
-						stopMusic();
 				int delayTime = 2000;
-				Timer.schedule(new Task() {
-					@Override
-					public void run() {
+				if (checkCurrentMusicIsNotNull()) {
+					if (checkCurrentMusicIsPlaying()) {
+						if (checkIsSameWithCurrentMusic(music)) {
+							//Nothing happened
+						} else {
+							stopMusic();
+							Timer.schedule(new Task() {
+								@Override
+								public void run() {
+								}
+							}, delayTime);
+							setMusic(music);
+							setVolume(volume);
+							playMusic();
+						}
 					}
-				}, delayTime);
-				setMusic(music);
-				setVolume(volume);
-				playMusic();
+				}
 				break;
 			case IF_IS_NOT_PLAYING:
 				if (musicInfo.getMusic() != null) {
@@ -100,6 +94,18 @@ public class MusicManager {
 		}
 	}
 
+	private boolean checkCurrentMusicIsNotNull() {
+		return musicInfo.getMusic() != null;
+	}
+
+	private boolean checkCurrentMusicIsPlaying() {
+		return musicInfo.getMusic().isPlaying();
+	}
+
+	private boolean checkIsSameWithCurrentMusic(Music music) {
+		return musicInfo.getMusic().equals(music);
+	}
+
 	public void setMusicAndPlay(Music music, MusicCondition musicCondition) {
 		setMusicAndPlay(music, soundInfo.getMusicVolume(), musicCondition);
 	}
@@ -114,41 +120,25 @@ public class MusicManager {
 
 	public void setWorldNodeMusicAndPlay() {
 		Music music = musicAssets.getWorldNodeMusic(positionInfo
-				.getCurrentNode());
+				.getCurrentNodeName());
 		setMusicAndPlay(music);
 	}
 
 	public void setBattleMusicAndPlay() {
-		Music music = musicAssets.getBattleMusicMap(movingInfo.getArrowName());
+		Music music = musicAssets.getBattleMusic(movingInfo.getArrowName());
 		setMusicAndPlay(music);
 	}
 
 	public void setMovingMusicAndPlay() {
-		Music music = musicAssets.getMovingMusicMap(movingInfo.getArrowName());
+		Music music = musicAssets.getMovingMusic(movingInfo.getArrowName());
 		setMusicAndPlay(music);
 	}
 
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
-	}
-
-	public SoundInfo getSoundInfo() {
-		return soundInfo;
-	}
-
-	public void setSoundInfo(SoundInfo soundInfo) {
-		this.soundInfo = soundInfo;
-	}
-
-	public MusicAssets getMusicAssets() {
-		return musicAssets;
-	}
-
-	public void setMusicAssets(MusicAssets musicAssets) {
-		this.musicAssets = musicAssets;
+	public void setEventMusicAndPlay() {
+		EventPacket eventPacket = eventManager.getCurrentEventPacket();
+		String code = eventPacket.getEventNpc() + "_"
+				+ eventPacket.getEventNumber();
+		Music music = musicAssets.getEventMusic(code);
+		setMusicAndPlay(music);
 	}
 }
