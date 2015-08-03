@@ -20,7 +20,8 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  */
 public class DungeonStage extends BaseOverlapStage {
 	// FIXME UI
-	private CompositeItem arrowTurn, arrowLeft, arrowCenter, arrowRight;
+	private CompositeItem btnTurn;
+	private CompositeItem[] btnRoad = new CompositeItem[3];
 
 	private MapInfo mapInfo;
 
@@ -49,70 +50,28 @@ public class DungeonStage extends BaseOverlapStage {
 
 	private void setButton() {
 		// FIXME UI
-		arrowTurn = sceneLoader.getRoot().getCompositeById("arrow_down");
-		arrowLeft = sceneLoader.getRoot().getCompositeById("arrow_left");
-		arrowCenter = sceneLoader.getRoot().getCompositeById("arrow_up");
-		arrowRight = sceneLoader.getRoot().getCompositeById("arrow_right");
+		btnTurn = sceneLoader.getRoot().getCompositeById("arrow_down");
+		btnRoad[0] = sceneLoader.getRoot().getCompositeById("arrow_left");
+		btnRoad[1] = sceneLoader.getRoot().getCompositeById("arrow_up");
+		btnRoad[2] = sceneLoader.getRoot().getCompositeById("arrow_right");
 
-		arrowTurn.setTouchable(Touchable.enabled);
-		arrowTurn.addListener(new InputListener() {
+		btnTurn.setTouchable(Touchable.enabled);
+		btnTurn.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				actionTurn();
 			}
 		});
 
-		arrowLeft.setTouchable(Touchable.enabled);
-		arrowLeft.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
+		for (int i = 0; i < btnRoad.length; i++)
+			btnRoad[i].addListener(new TouchRoadListener(i));
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				actionMove(0);
-			}
-		});
-
-		arrowCenter.setTouchable(Touchable.enabled);
-		arrowCenter.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				actionMove(1);
-			}
-		});
-
-		arrowRight.setTouchable(Touchable.enabled);
-		arrowRight.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				actionMove(2);
-			}
-		});
+		update();
 	}
 
 	private void update() {
@@ -128,39 +87,28 @@ public class DungeonStage extends BaseOverlapStage {
 				selectableBackward.add(e);
 
 		// FIXME UI
-		switch ((currentHeading ? selectableBackward : selectableForward)
-				.size()) {
-		case 0:
-			arrowLeft.setTouchable(Touchable.disabled);
-		case 1:
-			arrowLeft.setTouchable(Touchable.enabled);
-			arrowCenter.setTouchable(Touchable.disabled);
-		case 2:
-			arrowCenter.setTouchable(Touchable.enabled);
-			arrowRight.setTouchable(Touchable.disabled);
-		case 3:
-			arrowRight.setTouchable(Touchable.enabled);
+		btnTurn.setTouchable(!currentHeading ? Touchable.enabled : Touchable.disabled);
+		btnTurn.setVisible(btnTurn.getTouchable() == Touchable.enabled);
+		for (int i = 0, n = (currentHeading ? selectableBackward : selectableForward).size(); i < btnRoad.length; i++) {
+			btnRoad[i].setTouchable(i < n ? Touchable.enabled : Touchable.disabled);
+			btnRoad[i].setVisible(btnRoad[1].getTouchable() == Touchable.enabled);
 		}
-		arrowTurn.setVisible(arrowTurn.getTouchable() == Touchable.enabled);
-		arrowCenter.setVisible(arrowCenter.getTouchable() == Touchable.enabled);
-		arrowLeft.setVisible(arrowLeft.getTouchable() == Touchable.enabled);
-		arrowRight.setVisible(arrowRight.getTouchable() == Touchable.enabled);
 	}
 
 	private void actionTurn() {
 		currentHeading = !currentHeading;
+
+		update();
 	}
 
 	private void actionMove(int index) {
-		currentPos = mapInfo.nodes.indexOf((currentHeading ? selectableBackward
-				: selectableForward).get(index));
+		currentPos = mapInfo.nodes.indexOf((currentHeading ? selectableBackward : selectableForward).get(index));
 
 		update();
 
 		MapNode currentNode = mapInfo.nodes.get(currentPos);
 		if (currentNode.chkFlg(MapNode.FLG_ENTRANCE))
 			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-
 	}
 
 	@Override
@@ -168,8 +116,26 @@ public class DungeonStage extends BaseOverlapStage {
 		// FIXME
 		getBatch().begin();
 		for (MapNode e : mapInfo.nodes)
-			getBatch().draw(e.getMinimapTexture(), mapInfo.minimapPosX,
-					mapInfo.minimapPosY);
+			getBatch().draw(e.getMinimapTexture(), mapInfo.minimapPosX, mapInfo.minimapPosY);
 		getBatch().end();
 	}
+
+	private class TouchRoadListener extends InputListener {
+		private int idx;
+
+		public TouchRoadListener(int idx) {
+			this.idx = idx;
+		}
+
+		@Override
+		public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			return true;
+		}
+
+		@Override
+		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			actionMove(idx);
+		}
+	}
+
 }
