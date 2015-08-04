@@ -7,19 +7,26 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.model.Hero;
 import com.mygdx.ui.StatusBarUi;
 
 public class CharacterUiStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private ScreenFactory screenFactory;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("CharacterUiStage");
 	private Table statusTable;
@@ -33,43 +40,33 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
-
 		listInitialize();
-
 		Table uiTable;
 		uiTable = makeUiTable();
 		tableStack.add(uiTable);
-
 		return this;
 	}
 
 	private void listInitialize() {
 		battleMemberList = partyManager.getBattleMemberList();
 		battleMemberNumber = battleMemberList.size();
-
 		heroStatusList = new ArrayList<HeroStatus>(battleMemberNumber);
 		for (int i = 0; i < battleMemberNumber; i++) {
 			heroStatusList.add(new HeroStatus(battleMemberList.get(i)));
 		}
-
 		statusTable = new Table();
 	}
 
 	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
 	private Table makeUiTable() {
 		Table table = new Table();
-
 		statusTable = makeStatusTable();
-
 		table.add(statusTable).expandX().left();
-
 		return table;
-
 	}
 
 	private Table makeStatusTable() {
 		Table table = new Table();
-
 		for (Iterator<HeroStatus> i = heroStatusList.iterator(); i.hasNext();) {
 			HeroStatus status = (HeroStatus) i.next();
 			Table heroTable = makeHeroTable(status);
@@ -78,14 +75,19 @@ public class CharacterUiStage extends BaseOneLevelStage {
 					uiConstantsMap.get("heroTablePadBottom"));
 			table.row();
 		}
-
 		return table;
 	}
 
 	private Table makeHeroTable(HeroStatus status) {
 		Table heroTable = new Table();
-
-		heroTable.add(new Image(status.getHero().getFaceTexture()))
+		Image heroImage = new Image(status.getHero().getFaceTexture());
+		heroImage.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				screenFactory.show(ScreenEnum.STATUS);
+			}
+		});
+		heroTable.add(heroImage)
 				.padRight(uiConstantsMap.get("heroTablePadLeft"))
 				.width(uiConstantsMap.get("heroImageWidth"))
 				.height(uiConstantsMap.get("heroImageHeight"));
@@ -124,7 +126,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-
 		for (int i = 0; i < heroStatusList.size(); i++) {
 			heroStatusList.get(i).update();
 		}

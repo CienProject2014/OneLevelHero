@@ -80,6 +80,7 @@ public class EventManager {
 			case MOVE_SUB_NODE:
 				positionManager.setCurrentSubNodeName(getCurrentEvent()
 						.getEventComponent().get(0));
+				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 				movingManager.goCurrentPosition();
 				storySectionManager.runStorySequence();
 				break;

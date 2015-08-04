@@ -26,8 +26,6 @@ public class MusicAssets implements FileAssetsInitializable {
 						filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString())
 								.loadFile());
 		for (Entry<String, MusicFile> entry : musicFileMap.entrySet()) {
-			System.out.println(entry.getKey());
-			System.out.println(entry.getValue());
 			musicMap.put(entry.getKey(), entry.getValue().loadFile());
 		}
 
