@@ -7,13 +7,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventCheckManager;
@@ -30,6 +33,8 @@ public class SkillStage extends BaseOverlapStage {
 	private StorySectionManager storySectionManager;
 	@Autowired
 	private EventCheckManager eventCheckManager;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("EventStage");
 	private Camera cam;
@@ -54,14 +59,14 @@ public class SkillStage extends BaseOverlapStage {
 	}
 
 	private void setLabel() {
-
 		labels = sceneLoader.getRoot().dataVO.composite.sLabels;
 		LabelItem labelItem = sceneLoader.getRoot().getLabelById(
 				labels.get(0).itemIdentifier);
-		/*labelItem.setText(battleManager.getCurrentActior().getSkills()
+		labelItem.setText(battleManager.getCurrentActior().getSkills()
 				.get(CUT_01).getName());
-		 */
-		labelItem.setText("7-Cutting"); //FIXME
+
+		labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+				Color.WHITE));
 		labelItem.setFontScale(1.0f);
 		labelItem.setTouchable(Touchable.disabled);
 
