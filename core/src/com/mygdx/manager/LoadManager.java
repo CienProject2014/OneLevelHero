@@ -9,6 +9,7 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.FieldInfo;
+import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.model.Hero;
 import com.mygdx.model.StorySection;
@@ -28,6 +29,8 @@ public class LoadManager {
 	private PositionManager positionManager;
 	@Autowired
 	private TimeManager timeManager;
+	@Autowired
+	private BattleManager battleManager;
 
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
@@ -36,8 +39,17 @@ public class LoadManager {
 		setHero();
 		setCurrentPosition();
 		setStorySection();
-		timeManager.setTime(1, 8, 0);
+		setTimeInfo();
+		setBattleInfo();
 		storySectionManager.runStorySequence();
+	}
+
+	private void setBattleInfo() {
+		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+	}
+
+	private void setTimeInfo() {
+		timeManager.setTime(1, 8, 0);
 	}
 
 	public LoadManager() {

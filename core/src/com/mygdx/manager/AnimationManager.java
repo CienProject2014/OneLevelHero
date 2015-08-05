@@ -114,7 +114,7 @@ public class AnimationManager {
 
 	}
 
-	public boolean hasPlayable() {
+	public boolean isPlayable() {
 		if (animations.isEmpty()) {
 			resetTime();
 			return false;

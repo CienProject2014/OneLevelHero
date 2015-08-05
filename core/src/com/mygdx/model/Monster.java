@@ -4,6 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.MonsterEnum;
 
 public class Monster extends Unit implements Fightable {
+	public Monster() {
+	}
+
+	Monster(Status status) {
+		this.status = status;
+	}
+
 	private MonsterEnum.SizeType sizeType;
 	private MonsterEnum.ElementType elementType;
 

@@ -29,28 +29,31 @@ public class BattleManager {
 	private StorySectionManager storySectionManager;
 
 	public void startBattle(Monster selectedMonster) {
+		if (battleInfo.getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
+			battleInfo.setBattleState(BattleStateEnum.ENCOUNTER);
+		}
 		battleInfo.setMonster(selectedMonster);
-		battleInfo.setBattleState(BattleStateEnum.ING);
 		screenFactory.show(ScreenEnum.ENCOUNTER);
 	}
 
 	public void runAway() {
+		battleInfo.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 		goCurrentPosition();
 	}
 
-	public void readyMonsterHitAnimation() {
+	public void readyForMonsterHittingAnimation() {
 		final int x = (int) (StaticAssets.windowWidth / 8);
 		final int y = (int) (StaticAssets.windowHeight / 2);
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING, x, y);
 	}
 
-	public void readyPlayerHitAnimation() {
+	public void readyForPlayerHittingAnimation() {
 		int x = (int) (StaticAssets.windowWidth / 2);
 		int y = (int) (StaticAssets.windowHeight / 2);
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, x, y);
 	}
 
-	private void goCurrentPosition() {
+	public void goCurrentPosition() {
 		movingManager.goCurrentPosition();
 	}
 
@@ -58,20 +61,17 @@ public class BattleManager {
 		battleInfo.setCurrentActor(hero);
 	}
 
-	public Hero getCurrentActior() {
+	public Hero getCurrentActor() {
 		return battleInfo.getCurrentActor();
 	}
 
 	public void endBattle(Unit loseUnit) {
 		if (loseUnit instanceof Monster) {
-			battleInfo.setBattleState(BattleStateEnum.WIN);
 			Gdx.app.log("BattleManager", "용사팀의 승리!");
 		} else {
-			battleInfo.setBattleState(BattleStateEnum.LOSE);
 			Gdx.app.log("BattleManager", "용사팀의 패배!");
 		}
-		//FIXME : 게임 종료를 알리는 장치 필요
-		goCurrentPosition();
+		setBattleState(BattleStateEnum.GAME_OVER);
 	}
 
 	public void attack(Unit attackUnit, Unit defendUnit) {
@@ -83,9 +83,9 @@ public class BattleManager {
 
 	public void readyHitAnimation(Unit attackUnit) {
 		if (attackUnit instanceof Hero) {
-			readyPlayerHitAnimation();
+			readyForPlayerHittingAnimation();
 		} else {
-			readyMonsterHitAnimation();
+			readyForMonsterHittingAnimation();
 		}
 	}
 
@@ -107,7 +107,6 @@ public class BattleManager {
 	public void checkMonsterWin(Hero randomHero) {
 		if (randomHero.getStatus().getHp() <= 0) {
 			endBattle(battleInfo.getMonster());
-			Gdx.app.log("BattleManager", "용사팀의 패배..!");
 		}
 	}
 
@@ -118,4 +117,13 @@ public class BattleManager {
 	public void setSelectedMonster(Monster selectedMonster) {
 		battleInfo.setMonster(selectedMonster);
 	}
+
+	public BattleStateEnum getBattleState() {
+		return battleInfo.getBattleState();
+	}
+
+	public void setBattleState(BattleStateEnum battleStateEnum) {
+		battleInfo.setBattleState(battleStateEnum);
+	}
+
 }

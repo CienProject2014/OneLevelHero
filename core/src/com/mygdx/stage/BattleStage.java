@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -75,7 +76,7 @@ public class BattleStage extends BaseOneLevelStage {
 		if (isMonsterTurn()) {
 			doMonsterTurn(delta);
 		}
-		if (animationManager.hasPlayable()) {
+		if (animationManager.isPlayable()) {
 			playAnimation(delta);
 		}
 	}
@@ -86,7 +87,9 @@ public class BattleStage extends BaseOneLevelStage {
 		units = new ArrayList<Unit>(4);
 		units.addAll(partyManager.getPartyList());
 		units.add(selectedMonster);
-		initializeGauge(units);
+		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			initializeBattle(units, selectedMonster);
+		}
 		updateOrder();
 		orderedUnits = new LinkedList<Unit>(units);
 
@@ -125,10 +128,14 @@ public class BattleStage extends BaseOneLevelStage {
 		return result;
 	}
 
-	private void initializeGauge(ArrayList<Unit> units2) {
+	private void initializeBattle(ArrayList<Unit> units, Monster selectedMonster) {
+		battleManager.setBattleState(BattleStateEnum.IN_GAME);
 		for (Unit unit : units) {
 			unit.setGauge(100);
 		}
+		selectedMonster.setGauge(100);
+		selectedMonster.getStatus().setHp(
+				selectedMonster.getStatus().getMaxHp());
 	}
 
 	private Unit getCurrentActor() {
@@ -181,6 +188,11 @@ public class BattleStage extends BaseOneLevelStage {
 			//FIXME
 			storySectionManager.triggerSectionEvent(
 					EventTypeEnum.BATTLE_CONTROL, "normal_attack");
+			if (battleManager.getBattleState()
+					.equals(BattleStateEnum.GAME_OVER)) {
+				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				battleManager.goCurrentPosition();
+			}
 		}
 	}
 
@@ -225,23 +237,14 @@ public class BattleStage extends BaseOneLevelStage {
 				rMenuTable.row();
 			}
 		}
-		/* 다른버튼 막기 //FIXME
-		if (eventCheckManager.checkBattleEventType()) {
-			switch (eventCheckManager.getBattleControlButton()) {
-				case NORMAL_ATTACK:
-					imageButtonList.remove(attackButton);
-					setDarkButton();
-					break;
-				case SKILL_ATTACK:
-					imageButtonList.remove(skillButton);
-					setDarkButton();
-					break;
-				default:
-					Gdx.app.log("BattleStage", "Rmenu ImageButton Target 에러");
-					break;
-			}
-		}
-		*/
+		/*
+		 * 다른버튼 막기 //FIXME if (eventCheckManager.checkBattleEventType()) {
+		 * switch (eventCheckManager.getBattleControlButton()) { case
+		 * NORMAL_ATTACK: imageButtonList.remove(attackButton); setDarkButton();
+		 * break; case SKILL_ATTACK: imageButtonList.remove(skillButton);
+		 * setDarkButton(); break; default: Gdx.app.log("BattleStage",
+		 * "Rmenu ImageButton Target 에러"); break; } }
+		 */
 
 		return rMenuTable;
 	}
