@@ -33,10 +33,14 @@ public class Monster extends Unit implements Fightable {
 	@Override
 	public void attack(Unit defender) {
 		int attackDmg = this.getStatus().getAttack();
-		int defendDmg = defender.getStatus().getDefense();
-		int defendHp = defender.getStatus().getHp();
-		if (defendHp + (defendDmg - attackDmg) > 0) {
-			defender.getStatus().setHp(defendHp + (defendDmg - attackDmg));
+		int defenseValue = defender.getStatus().getDefense();
+		int defenderHp = defender.getStatus().getHp();
+		int realDmg = attackDmg - defenseValue;
+		if (realDmg < 0) {
+			realDmg = 1;
+		}
+		if (defenderHp - realDmg > 0) {
+			defender.getStatus().setHp(defenderHp - realDmg);
 		} else {
 			defender.getStatus().setHp(0);
 		}
