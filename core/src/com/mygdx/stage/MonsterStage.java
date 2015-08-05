@@ -16,7 +16,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.model.Monster;
-import com.mygdx.ui.StatusBarUi;
+import com.mygdx.model.StatusBar;
 
 public class MonsterStage extends BaseOneLevelStage {
 	@Autowired
@@ -24,7 +24,6 @@ public class MonsterStage extends BaseOneLevelStage {
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("MonsterStage");
 	private Monster monster;
-	private MonsterStatus monsterHPStatus;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 
@@ -32,17 +31,22 @@ public class MonsterStage extends BaseOneLevelStage {
 	private Table outerTable; // 몬스터 테이블의 바깥 테이블
 	private Table monsterTable; // 몬스터가 들어가는 테이블
 	private Table uiTable;
+	private Table monsterHpTable;
 	private Label monsterHpLabel;
-	private MonsterStatus monsterStatus;
+	private StatusBar monsterStatusBar;
 
 	@Override
 	public Stage makeStage() {
 		super.makeStage();
-
 		monster = battleManager.getSelectedMonster();
-
+		monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin());
 		setMonsterTable();
 		return this;
+	}
+
+	private void hideHp() {
+		monsterHpTable.setVisible(false);
+		monsterHpLabel.setVisible(false);
 	}
 
 	// 불러온 몬스터의 이미지를 테이블에 넣는다.
@@ -59,8 +63,8 @@ public class MonsterStage extends BaseOneLevelStage {
 				.padTop(uiConstantsMap.get("monsterPadTop"))
 				.width(uiConstantsMap.get("monsterTableWidth"))
 				.height(uiConstantsMap.get("monsterTableHeight")).row();
-		MonsterStatus status = new MonsterStatus(monster);
-		Table hpTable = monsterHpTable(status);
+
+		Table hpTable = monsterHpTable(monsterStatusBar);
 		uiTable.bottom();
 		uiTable.add(hpTable).padBottom(uiConstantsMap.get("hpTablePadBottom"));
 		tableStack.add(outerTable);
@@ -70,22 +74,21 @@ public class MonsterStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		monsterHpLabel.setText(monsterStatus.getHp() + "/"
-				+ monsterStatus.getMaxHp());
-		monsterStatus.update();
+		monsterHpLabel.setText(monsterStatusBar.getHp() + "/"
+				+ monsterStatusBar.getMaxHp());
+		monsterStatusBar.update();
 	}
 
-	private Table monsterHpTable(MonsterStatus monsterStatus) {
-		Table hpTable = new Table();
-		this.monsterStatus = monsterStatus;
-		hpTable.add(monsterStatus.getHpBar())
+	private Table monsterHpTable(StatusBar monsterStatusBar) {
+		monsterHpTable = new Table();
+		monsterHpTable.add(monsterStatusBar.getHpBar())
 				.width(uiConstantsMap.get("hpTableWidth")).row();
 
-		monsterHpLabel = new Label(monsterStatus.getHp() + "/"
-				+ monsterStatus.getMaxHp(), uiComponentAssets.getSkin());
-		hpTable.add(monsterHpLabel);
+		monsterHpLabel = new Label(monsterStatusBar.getHp() + "/"
+				+ monsterStatusBar.getMaxHp(), uiComponentAssets.getSkin());
+		monsterHpTable.add(monsterHpLabel);
 
-		return hpTable;
+		return monsterHpTable;
 	}
 
 	private Image getMonsterImage() {
@@ -109,55 +112,6 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	public void setUiConstantsMap(HashMap<String, Float> uiConstantsMap) {
 		this.uiConstantsMap = uiConstantsMap;
-	}
-
-	class MonsterStatus {
-		private Monster monster;
-		private StatusBarUi hpBar;
-
-		public MonsterStatus(Monster monster) {
-			this.monster = monster;
-			hpBar = new StatusBarUi("hp", 0, 100, 1, false,
-					uiComponentAssets.getSkin());
-			hpBar.setValue(getHpPercent());
-
-		}
-
-		public void update() {
-			hpBar.setValue(getHpPercent());
-
-		}
-
-		public int getHp() {
-			return monster.getStatus().getHp();
-		}
-
-		public int getMaxHp() {
-			return monster.getStatus().getMaxHp();
-		}
-
-		public int getHpPercent() {
-			float factor = (float) monster.getStatus().getHp()
-					/ monster.getStatus().getMaxHp();
-			return (int) (factor * 100);
-		}
-
-		public Monster getmonster() {
-			return monster;
-		}
-
-		public void setMonster(Monster monster) {
-			this.monster = monster;
-		}
-
-		public StatusBarUi getHpBar() {
-			return hpBar;
-		}
-
-		public void setHpBar(StatusBarUi hpBar) {
-			this.hpBar = hpBar;
-		}
-
 	}
 
 }

@@ -12,7 +12,6 @@ import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -64,7 +63,6 @@ public class EventManager {
 				battleManager.startBattle(unitAssets
 						.getMonster(getCurrentEvent().getEventComponent()
 								.get(0)));
-				positionManager.setCurrentPositionType(PositionEnum.BATTLE);
 				screenFactory.show(ScreenEnum.BATTLE);
 				break;
 			case NEXT_SECTION:

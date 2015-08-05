@@ -96,10 +96,6 @@ public class GreetingScreen extends BaseScreen {
 				positionManager
 						.setCurrentPositionType(PositionEnum.FIELD_EVENT);
 				break;
-			case BATTLE:
-				positionManager
-						.setCurrentPositionType(PositionEnum.BATTLE_EVENT);
-				break;
 			case NODE_EVENT:
 			case BATTLE_EVENT:
 			case SUB_NODE_EVENT:

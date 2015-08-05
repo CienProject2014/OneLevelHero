@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.model.Hero;
-import com.mygdx.ui.StatusBarUi;
+import com.mygdx.model.StatusBar;
 
 public class CharacterUiStage extends BaseOneLevelStage {
 	@Autowired
@@ -24,11 +24,9 @@ public class CharacterUiStage extends BaseOneLevelStage {
 			.get("CharacterUiStage");
 	private Table statusTable;
 	private Table barTable;
-	private Label hpLabel;
-	private HeroStatus heroStatus;
-	private int battleMemberNumber;
 	private List<Hero> battleMemberList;
-	private List<HeroStatus> heroStatusList;
+	private List<StatusBar> heroStatusBarList;
+	private List<Label> hpLabelList;
 	private final String BUFF_DE_FAINT = "buff_de_07";
 	private final String BUFF_DE_FIRE = "buff_de_02";
 	private final String BUFF_DE_ICE = "buff_de_04";
@@ -37,11 +35,9 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 
-		listInitialize();
-
+		initializeList();
 		Table uiTable;
 		uiTable = makeUiTable();
-
 		tableStack.add(uiTable);
 		return this;
 	}
@@ -51,57 +47,51 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	public void act(float delta) {
 		super.act(delta);
 
-		for (int i = 0; i < heroStatusList.size(); i++) {
-			heroStatusList.get(i).update();
-
+		for (int i = 0; i < heroStatusBarList.size(); i++) {
+			heroStatusBarList.get(i).update();
+			hpLabelList.get(i).setText(
+					heroStatusBarList.get(i).getHp() + "/"
+							+ heroStatusBarList.get(i).getMaxHp());
 		}
-
 	}
 
-	private void listInitialize() {
+	private void initializeList() {
 		battleMemberList = partyManager.getBattleMemberList();
-		battleMemberNumber = battleMemberList.size();
-
-		heroStatusList = new ArrayList<HeroStatus>(battleMemberNumber);
-		for (int i = 0; i < battleMemberNumber; i++) {
-			heroStatusList.add(new HeroStatus(battleMemberList.get(i)));
-
+		hpLabelList = new ArrayList<Label>(battleMemberList.size());
+		heroStatusBarList = new ArrayList<StatusBar>(battleMemberList.size());
+		for (int i = 0; i < battleMemberList.size(); i++) {
+			heroStatusBarList.add(new StatusBar(battleMemberList.get(i),
+					uiComponentAssets.getSkin()));
 		}
-
 		statusTable = new Table();
-
 	}
 
 	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
 	private Table makeUiTable() {
 		Table table = new Table();
-
 		statusTable = makeStatusTable();
-
 		table.add(statusTable).expandX().left();
-
 		return table;
 
 	}
 
 	private Table makeStatusTable() {
 		Table table = new Table();
-
-		for (Iterator<HeroStatus> i = heroStatusList.iterator(); i.hasNext();) {
-			HeroStatus status = (HeroStatus) i.next();
-			Table heroTable = makeHeroTable(status);
+		Iterator<StatusBar> heroStatusBarIterator = heroStatusBarList
+				.iterator();
+		while (heroStatusBarIterator.hasNext()) {
+			Table heroTable = makeHeroTable(heroStatusBarIterator.next());
 			table.add(heroTable).padBottom(
 					uiConstantsMap.get("heroTablePadBottom"));
 			table.row();
 		}
-
 		return table;
 	}
 
-	private Table makeHeroTable(HeroStatus status) {
+	private Table makeHeroTable(StatusBar statusBar) {
 		Table heroTable = new Table();
 
-		heroTable.add(new Image(status.getHero().getFaceTexture()))
+		heroTable.add(new Image(statusBar.getUnit().getFaceTexture()))
 				.padRight(uiConstantsMap.get("heroTablePadLeft"))
 				.width(uiConstantsMap.get("heroImageWidth"))
 				.height(uiConstantsMap.get("heroImageHeight"));
@@ -117,90 +107,20 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
 				.get(BUFF_DE_FIRE)));
 		barTable = new Table();
-		hpLabel = new Label(status.getHp() + "/" + status.getMaxHp(),
-				uiComponentAssets.getSkin());
+		Label hpLabel = new Label(statusBar.getHp() + "/"
+				+ statusBar.getMaxHp(), uiComponentAssets.getSkin());
+		hpLabelList.add(hpLabel);
 		barTable.add(hpLabel).padBottom(uiConstantsMap.get("heroBarSpace"))
 				.row();
-		barTable.add(status.getHpBar())
+		barTable.add(statusBar.getHpBar())
 				.padBottom(uiConstantsMap.get("heroBarSpace"))
 				.width(uiConstantsMap.get("barTableWidth")).row();
-		barTable.add(status.getGaugeBar())
+		barTable.add(statusBar.getGaugeBar())
 				.padBottom(uiConstantsMap.get("heroBarSpace"))
 				.width(uiConstantsMap.get("barTableWidth")).row();
 		barTable.add(buffGroup).width(uiConstantsMap.get("buffTableWidth"))
 				.height(uiConstantsMap.get("buffTableHeight"));
-
 		heroTable.add(barTable);
-
 		return heroTable;
-	}
-
-	class HeroStatus {
-		private Hero hero;
-		private StatusBarUi hpBar;
-		private StatusBarUi gaugeBar;
-
-		public HeroStatus(Hero hero) {
-			this.hero = hero;
-			hpBar = new StatusBarUi("hp", 0, 100, 1, false,
-					uiComponentAssets.getSkin());
-			hpBar.setValue(getHpPercent());
-
-			gaugeBar = new StatusBarUi("gauge", 0, 100, 1, false,
-					uiComponentAssets.getSkin());
-			gaugeBar.setValue(getGaugePercent());
-		}
-
-		public void update() {
-			hpBar.setValue(getHpPercent());
-
-			gaugeBar.setValue(getGaugePercent());
-
-		}
-
-		public int getHp() {
-			return hero.getStatus().getHp();
-
-		}
-
-		public int getMaxHp() {
-			return hero.getStatus().getMaxHp();
-		}
-
-		public int getHpPercent() {
-			float factor = (float) hero.getStatus().getHp()
-					/ hero.getStatus().getMaxHp();
-			return (int) (factor * 100);
-		}
-
-		public int getGaugePercent() {
-			// float factor = (float) hero.getGauge() / 100;
-			// FIXME 게이지 구현이 안되었음
-			return 100;
-		}
-
-		public Hero getHero() {
-			return hero;
-		}
-
-		public void setHero(Hero hero) {
-			this.hero = hero;
-		}
-
-		public StatusBarUi getHpBar() {
-			return hpBar;
-		}
-
-		public void setHpBar(StatusBarUi hpBar) {
-			this.hpBar = hpBar;
-		}
-
-		public StatusBarUi getGaugeBar() {
-			return gaugeBar;
-		}
-
-		public void setGaugeBar(StatusBarUi gaugeBar) {
-			this.gaugeBar = gaugeBar;
-		}
 	}
 }
