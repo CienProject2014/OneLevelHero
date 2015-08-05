@@ -23,7 +23,9 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("CharacterUiStage");
 	private Table statusTable;
-
+	private Table barTable;
+	private Label hpLabel;
+	private HeroStatus heroStatus;
 	private int battleMemberNumber;
 	private List<Hero> battleMemberList;
 	private List<HeroStatus> heroStatusList;
@@ -39,9 +41,21 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		Table uiTable;
 		uiTable = makeUiTable();
-		tableStack.add(uiTable);
 
+		tableStack.add(uiTable);
 		return this;
+	}
+
+	// 정보 업데이트
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+
+		for (int i = 0; i < heroStatusList.size(); i++) {
+			heroStatusList.get(i).update();
+
+		}
+
 	}
 
 	private void listInitialize() {
@@ -51,6 +65,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		heroStatusList = new ArrayList<HeroStatus>(battleMemberNumber);
 		for (int i = 0; i < battleMemberNumber; i++) {
 			heroStatusList.add(new HeroStatus(battleMemberList.get(i)));
+
 		}
 
 		statusTable = new Table();
@@ -75,7 +90,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		for (Iterator<HeroStatus> i = heroStatusList.iterator(); i.hasNext();) {
 			HeroStatus status = (HeroStatus) i.next();
 			Table heroTable = makeHeroTable(status);
-
 			table.add(heroTable).padBottom(
 					uiConstantsMap.get("heroTablePadBottom"));
 			table.row();
@@ -92,7 +106,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 				.width(uiConstantsMap.get("heroImageWidth"))
 				.height(uiConstantsMap.get("heroImageHeight"));
 
-		Table barTable = new Table();
 		HorizontalGroup buffGroup = new HorizontalGroup();
 		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
 		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
@@ -103,11 +116,11 @@ public class CharacterUiStage extends BaseOneLevelStage {
 				.get(BUFF_DE_ICE)));
 		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
 				.get(BUFF_DE_FIRE)));
-
-		barTable.add(
-				new Label(status.getHp() + "/" + status.getMaxHp(),
-						uiComponentAssets.getSkin()))
-				.padBottom(uiConstantsMap.get("heroBarSpace")).row();
+		barTable = new Table();
+		hpLabel = new Label(status.getHp() + "/" + status.getMaxHp(),
+				uiComponentAssets.getSkin());
+		barTable.add(hpLabel).padBottom(uiConstantsMap.get("heroBarSpace"))
+				.row();
 		barTable.add(status.getHpBar())
 				.padBottom(uiConstantsMap.get("heroBarSpace"))
 				.width(uiConstantsMap.get("barTableWidth")).row();
@@ -122,17 +135,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		return heroTable;
 	}
 
-	// 정보 업데이트
-	@Override
-	public void act(float delta) {
-		super.act(delta);
-
-		for (int i = 0; i < heroStatusList.size(); i++) {
-			heroStatusList.get(i).update();
-
-		}
-	}
-
 	class HeroStatus {
 		private Hero hero;
 		private StatusBarUi hpBar;
@@ -143,6 +145,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 			hpBar = new StatusBarUi("hp", 0, 100, 1, false,
 					uiComponentAssets.getSkin());
 			hpBar.setValue(getHpPercent());
+
 			gaugeBar = new StatusBarUi("gauge", 0, 100, 1, false,
 					uiComponentAssets.getSkin());
 			gaugeBar.setValue(getGaugePercent());
@@ -150,11 +153,14 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		public void update() {
 			hpBar.setValue(getHpPercent());
+
 			gaugeBar.setValue(getGaugePercent());
+
 		}
 
 		public int getHp() {
 			return hero.getStatus().getHp();
+
 		}
 
 		public int getMaxHp() {

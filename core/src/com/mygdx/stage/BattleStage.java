@@ -73,6 +73,7 @@ public class BattleStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
+
 		if (gridHitbox.isGridShow()) {
 
 		} else if (monsterTrigger) {

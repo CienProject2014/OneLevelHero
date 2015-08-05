@@ -32,6 +32,8 @@ public class MonsterStage extends BaseOneLevelStage {
 	private Table outerTable; // 몬스터 테이블의 바깥 테이블
 	private Table monsterTable; // 몬스터가 들어가는 테이블
 	private Table uiTable;
+	private Label monsterHpLabel;
+	private MonsterStatus monsterStatus;
 
 	@Override
 	public Stage makeStage() {
@@ -65,13 +67,23 @@ public class MonsterStage extends BaseOneLevelStage {
 		tableStack.add(uiTable);
 	}
 
-	private Table monsterHpTable(MonsterStatus status) {
-		Table hpTable = new Table();
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+		monsterHpLabel.setText(monsterStatus.getHp() + "/"
+				+ monsterStatus.getMaxHp());
+		monsterStatus.update();
+	}
 
-		hpTable.add(status.getHpBar())
+	private Table monsterHpTable(MonsterStatus monsterStatus) {
+		Table hpTable = new Table();
+		this.monsterStatus = monsterStatus;
+		hpTable.add(monsterStatus.getHpBar())
 				.width(uiConstantsMap.get("hpTableWidth")).row();
-		hpTable.add(new Label(status.getHp() + "/" + status.getMaxHp(),
-				uiComponentAssets.getSkin()));
+
+		monsterHpLabel = new Label(monsterStatus.getHp() + "/"
+				+ monsterStatus.getMaxHp(), uiComponentAssets.getSkin());
+		hpTable.add(monsterHpLabel);
 
 		return hpTable;
 	}
