@@ -3,15 +3,13 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.battle.Battle;
 import com.mygdx.currentState.BattleInfo;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.model.Fightable;
 import com.mygdx.model.Hero;
 import com.mygdx.model.Monster;
 import com.mygdx.model.Unit;
@@ -30,8 +28,6 @@ public class BattleManager {
 	@Autowired
 	private StorySectionManager storySectionManager;
 
-	private Battle battle = new Battle();
-
 	public void startBattle(Monster selectedMonster) {
 		battleInfo.setMonster(selectedMonster);
 		battleInfo.setBattleState(BattleStateEnum.ING);
@@ -42,13 +38,13 @@ public class BattleManager {
 		goCurrentPosition();
 	}
 
-	public void playMonsterHitAnimation() {
+	public void readyMonsterHitAnimation() {
 		final int x = (int) (StaticAssets.windowWidth / 8);
 		final int y = (int) (StaticAssets.windowHeight / 2);
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING, x, y);
 	}
 
-	public void playPlayerHitAnimation() {
+	public void readyPlayerHitAnimation() {
 		int x = (int) (StaticAssets.windowWidth / 2);
 		int y = (int) (StaticAssets.windowHeight / 2);
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, x, y);
@@ -69,36 +65,43 @@ public class BattleManager {
 	public void endBattle(Unit loseUnit) {
 		if (loseUnit instanceof Monster) {
 			battleInfo.setBattleState(BattleStateEnum.WIN);
+			Gdx.app.log("BattleManager", "용사팀의 승리!");
 		} else {
 			battleInfo.setBattleState(BattleStateEnum.LOSE);
+			Gdx.app.log("BattleManager", "용사팀의 패배!");
 		}
 		//FIXME : 게임 종료를 알리는 장치 필요
 		goCurrentPosition();
 	}
 
-	public void userAttack(Unit unit) {
+	public void attack(Unit attackUnit, Unit defendUnit) {
 		// FIXME
-		battle.attack(unit, battleInfo.getMonster());
+		attackUnit.attack(defendUnit);
+		readyHitAnimation(attackUnit);
+		checkIsDead(defendUnit);
 	}
 
-	public void checkUserWin() {
-		if (battleInfo.getMonster().getStatus().getHp() <= 0) {
-			endBattle(battleInfo.getMonster());
-			Gdx.app.log("BattleManager", "용사팀의 승리!");
+	public void readyHitAnimation(Unit attackUnit) {
+		if (attackUnit instanceof Hero) {
+			readyPlayerHitAnimation();
+		} else {
+			readyMonsterHitAnimation();
 		}
 	}
 
-	public void userSkill(Unit unit, String skill) {
+	private void checkIsDead(Unit defendUnit) {
+		if (defendUnit.getStatus().getHp() <= 0) {
+			endBattle(defendUnit);
+		}
+	}
+
+	public void userSkill(Fightable attackUnit, String skill) {
 		// FIXME
-		battle.skillAttack(unit, skill);
+		attackUnit.skillAttack(battleInfo.getMonster(), skill);
 	}
 
 	public void useItem(String item) {
 		// TODO
-	}
-
-	public void monsterAttack(Hero randomHero) {
-		battle.attack(battleInfo.getMonster(), randomHero);
 	}
 
 	public void checkMonsterWin(Hero randomHero) {
@@ -106,10 +109,6 @@ public class BattleManager {
 			endBattle(battleInfo.getMonster());
 			Gdx.app.log("BattleManager", "용사팀의 패배..!");
 		}
-	}
-
-	public void nextTurn() {
-		// TODO
 	}
 
 	public Monster getSelectedMonster() {
