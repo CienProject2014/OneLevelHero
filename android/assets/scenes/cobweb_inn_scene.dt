@@ -33,7 +33,7 @@
         "height": 100
       },
       {
-        "itemIdentifier": "save_label",
+        "itemIdentifier": "rest_label",
         "x": 1270,
         "y": 269.5,
         "zIndex": 4,

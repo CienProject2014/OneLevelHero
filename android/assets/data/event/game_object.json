@@ -2,13 +2,41 @@
   "chest": {
     "objectType": "normal",
     "objectEvent": {
-      "eventState": "not_opened",
+      "eventState": "always_open",
       "eventType": "chat",
       "eventScenes": [
         {
           "script": "칙칙한 냄새가 나는 상자. 아무것도 들어있지 않다.",
           "characterPath": "chest",
           "backgroundPath": "bg_blackwood_03"
+        }
+      ]
+    }
+  },
+  "save": {
+    "objectType": "normal",
+    "objectEvent": {
+      "eventState": "always_open",
+      "eventType": "chat",
+      "eventScenes": [
+        {
+          "script": "저장되었습니다.",
+          "characterPath": "chest",
+          "backgroundPath": "bg_cobweb_02"
+        }
+      ]
+    }
+  },
+  "rest": {
+    "objectType": "normal",
+    "objectEvent": {
+      "eventState": "not_opened",
+      "eventType": "chat",
+      "eventScenes": [
+        {
+          "script": "회복되었습니다.",
+          "characterPath": "chest",
+          "backgroundPath": "bg_cobweb_02"
         }
       ]
     }
