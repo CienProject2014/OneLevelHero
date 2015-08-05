@@ -3,7 +3,9 @@ package com.mygdx.model;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Hero extends Unit {
+import com.badlogic.gdx.Gdx;
+
+public class Hero extends Unit implements Fightable {
 	private Equipment equipment;
 	private Map<String, Item> items;
 
@@ -32,5 +34,26 @@ public class Hero extends Unit {
 
 	public void setEquipment(Equipment equipment) {
 		this.equipment = equipment;
+	}
+
+	@Override
+	public void attack(Unit defender) {
+		int attackDmg = this.getStatus().getAttack();
+		int defendDmg = defender.getStatus().getDefense();
+		int defendHp = defender.getStatus().getHp();
+		if (defendHp + (defendDmg - attackDmg) > 0) {
+			defender.getStatus().setHp(defendHp + (defendDmg - attackDmg));
+		} else {
+			defender.getStatus().setHp(0);
+		}
+		Gdx.app.log("Hero", this.getName() + "가 " + defender.getName()
+				+ "를 공격하였습니다!");
+	}
+
+	@Override
+	public void skillAttack(Unit defender, String skillName) {
+		Gdx.app.log("Hero", this.getName() + "가 " + defender.getName() + "에게 "
+				+ skillName + "를 사용하였습니다!");
+
 	}
 }
