@@ -50,9 +50,6 @@ public class MovingManager {
 					screenFactory.show(ScreenEnum.GREETING);
 				}
 				break;
-			case BATTLE:
-				screenFactory.show(ScreenEnum.BATTLE);
-				break;
 			case BATTLE_EVENT:
 				if (eventManager.isGreeting()) {
 					eventManager.setGreeting(false);

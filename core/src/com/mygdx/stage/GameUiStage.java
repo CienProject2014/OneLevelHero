@@ -23,6 +23,7 @@ import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
@@ -33,6 +34,8 @@ import com.mygdx.popup.StatusMessagePopup;
 public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private RewardManager rewardManager;
+	@Autowired
+	private BattleManager battleManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
@@ -77,6 +80,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		makeTable();
 
 		tableStack.add(uiTable);
+		conditionalHidingBackButton();
 
 		alertMessage = new Stack<MessagePopup>();
 		// 보상 이벤트 처리
@@ -103,8 +107,14 @@ public class GameUiStage extends BaseOneLevelStage {
 			rewardManager.pollRewardQueue();
 		}
 		addActor(statusMessagePopup);
-
 		return this;
+	}
+
+	private void conditionalHidingBackButton() {
+		if (!positionManager.getCurrentPositionType().equals(
+				PositionEnum.SUB_NODE)) {
+			backButton.setVisible(false);
+		}
 	}
 
 	// 테이블 디자인
@@ -166,6 +176,14 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	// 리스너 할당
 	public void addListener() {
+		placeInfoButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				battleManager.healAllHero();
+				return true;
+			}
+		});
 		questLogButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,

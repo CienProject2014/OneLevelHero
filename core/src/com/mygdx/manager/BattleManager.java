@@ -6,7 +6,6 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.BattleInfo;
 import com.mygdx.enums.BattleStateEnum;
-import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -36,13 +35,20 @@ public class BattleManager {
 			battleInfo.setBattleState(BattleStateEnum.ENCOUNTER);
 		}
 		battleInfo.setMonster(selectedMonster);
-		positionManager.setCurrentPositionType(PositionEnum.BATTLE);
 		screenFactory.show(ScreenEnum.ENCOUNTER);
 	}
 
 	public void runAway() {
 		battleInfo.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 		goCurrentPosition();
+	}
+
+	public boolean isInBattle() {
+		if (getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	public void readyForMonsterHittingAnimation() {
@@ -130,4 +136,10 @@ public class BattleManager {
 		battleInfo.setBattleState(battleStateEnum);
 	}
 
+	public void healAllHero() {
+		for (Hero hero : partyManager.getBattleMemberList()) {
+			hero.getStatus().setHealthPoint(
+					hero.getStatus().getMaxHealthPoint());
+		}
+	}
 }
