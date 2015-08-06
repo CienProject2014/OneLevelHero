@@ -19,7 +19,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.TextureManager;
@@ -40,6 +42,8 @@ public class StatusStage extends BaseOverlapStage {
 	private ListenerFactory listenerFactory;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private BattleManager battleManager;
 	private Camera cam;
 	private CompositeItem closeButton;
 	private ImageItem largeImage;
@@ -69,7 +73,11 @@ public class StatusStage extends BaseOverlapStage {
 		backButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				movingManager.goCurrentPosition();
+				if (battleManager.isInBattle()) {
+					screenFactory.show(ScreenEnum.BATTLE);
+				} else {
+					movingManager.goCurrentPosition();
+				}
 			}
 		});
 	}

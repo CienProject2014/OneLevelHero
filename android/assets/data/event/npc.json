@@ -559,6 +559,87 @@
       }
     }
   },
+  "lilis": {
+    "name": "lilis",
+    "events": {
+      "1": {
+        "eventName": "저주를 풀 열쇠",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "리리스, 어떻게 하면 저주를 풀 수 있을까?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "저주를 풀기 위해서는 우선 저주의 근원을 파악해야 해요!",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "그건 나도 안다구...",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사의 한숨이 3000 증가했다....",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "2": {
+        "eventName": "삼투압현상에 대한 토론",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "리리스.. 삼투압 현상에 대해 어떻게 생각해?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "삼투압? 압력으로 인해 일어나는 현상 아닌가요?",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "나도 여태껏 그런거라 생각했어. 하지만 압력이 전부가 아닐지도 몰라. 온도나 농도에 따라서도 달라질 가능성이 제기된다구..",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "??? 그건 이미 널리 알려진 사실이잖아요",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "음.. 쟨 너무 똑똑하단 말이지..",
+            "characterPath": "bust_yongsa_05",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사의 진지함이 32 감소했다...!",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "3": {
+        "eventName": "지난 대화 되짚기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "지난 대화를 되짚어보는 공간을 만들 예정",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      }
+    }
+  },
   "parath": {
     "name": "parath",
     "events": {
@@ -683,6 +764,7 @@
         "eventName": "리리스와의 대화",
         "eventState": "always_open",
         "eventType": "select_component",
+        "eventTarget": "lilis",
         "eventScenes": [
           {
             "script": "리리스찡과 어떤 이야기를 해볼까?",

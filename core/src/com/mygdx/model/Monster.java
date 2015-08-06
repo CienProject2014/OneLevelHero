@@ -44,12 +44,13 @@ public class Monster extends Unit implements Fightable {
 		} else {
 			defender.getStatus().setHp(0);
 		}
-		Gdx.app.log("Monster", this.getName() + "가 " + defender.getName()
-				+ "를 공격하였습니다!");
+		Gdx.app.log("Monster", this.getName() + "이(가) " + defender.getName()
+				+ "을(를) 공격하였습니다!");
 	}
 
 	@Override
 	public void skillAttack(Unit defender, String skillName) {
-		Gdx.app.log("Monster", this.getName() + "가 " + skillName + "를 사용하였습니다!");
+		Gdx.app.log("Monster", this.getName() + "이(가) " + skillName
+				+ "을(를) 사용하였습니다!");
 	}
 }
