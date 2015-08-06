@@ -6,9 +6,9 @@ import java.util.Map;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.manager.TextureManager;
 
-public class Unit implements Comparable<Unit> {
+public abstract class Unit implements Comparable<Unit>, Fightable {
 	private String name;
-	private Status status;
+	protected Status status;
 	private Map<String, Skill> skills;
 	private int gauge;
 	private Texture bodyTexture;

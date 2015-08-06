@@ -51,7 +51,6 @@ public class MovingManager {
 			case BATTLE_EVENT:
 				if (eventManager.isGreeting()) {
 					eventManager.setGreeting(false);
-					positionManager.setCurrentPositionType(PositionEnum.BATTLE);
 					screenFactory.show(ScreenEnum.BATTLE);
 				} else {
 					screenFactory.show(ScreenEnum.GREETING);
@@ -65,9 +64,6 @@ public class MovingManager {
 				break;
 			case FIELD:
 				screenFactory.show(ScreenEnum.FIELD);
-				break;
-			case BATTLE:
-				screenFactory.show(ScreenEnum.BATTLE);
 				break;
 			default:
 				Gdx.app.log("MovingManager", "NodeType정보 오류");

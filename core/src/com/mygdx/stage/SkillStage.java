@@ -62,7 +62,7 @@ public class SkillStage extends BaseOverlapStage {
 		labels = sceneLoader.getRoot().dataVO.composite.sLabels;
 		LabelItem labelItem = sceneLoader.getRoot().getLabelById(
 				labels.get(0).itemIdentifier);
-		labelItem.setText(battleManager.getCurrentActior().getSkills()
+		labelItem.setText(battleManager.getCurrentActor().getSkills()
 				.get(CUT_01).getName());
 
 		labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(),

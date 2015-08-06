@@ -64,7 +64,6 @@ public class EventManager {
 				battleManager.startBattle(unitAssets
 						.getMonster(getCurrentEvent().getEventComponent()
 								.get(0)));
-				positionManager.setCurrentPositionType(PositionEnum.BATTLE);
 				screenFactory.show(ScreenEnum.BATTLE);
 				break;
 			case NEXT_SECTION:
