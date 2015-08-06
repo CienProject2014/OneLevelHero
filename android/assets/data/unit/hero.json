@@ -12,10 +12,9 @@
 	  "fatigue": 0,
 	  "experience": 0,
 	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "fireResistance" : 0,
+      "waterResistance" : 0,
+      "electricResistance" : 0
     },
     "equipment": {
       "weapon": "sword",
@@ -39,10 +38,9 @@
 	  "fatigue": 0,
 	  "experience": 0,
 	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "fireResistance" : 0,
+      "waterResistance" : 0,
+      "electricResistance" : 0
     },
     "skillList": ["cut_01"],
     "equipment": {
@@ -65,10 +63,9 @@
 	  "fatigue": 0,
 	  "experience": 0,
 	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "fireResistance" : 0,
+      "waterResistance" : 0,
+      "electricResistance" : 0
     },
     "skillList": ["cut_01"],
     "equipment": {

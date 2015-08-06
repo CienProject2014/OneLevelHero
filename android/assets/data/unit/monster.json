@@ -14,10 +14,9 @@
 	  "fatigue": 0,
 	  "experience": 0,
 	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "monster"
+      "fireResistance" : 0,
+      "waterResistance" : 0,
+      "electricResistance" : 0
     },
     "skillList" : ["cut_01"]
   },
@@ -36,10 +35,9 @@
 	  "fatigue": 0,
 	  "experience": 0,
 	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "monster"
+      "fireResistance" : 0,
+      "waterResistance" : 0,
+      "electricResistance" : 0
     },
     "skillList" : ["cut_01"]
   },
@@ -58,10 +56,9 @@
 	  "fatigue": 0,
 	  "experience": 0,
 	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "fireResistance" : 0,
+      "waterResistance" : 0,
+      "electricResistance" : 0
     },
     
     "skillList": ["cut_01"]
@@ -69,7 +66,7 @@
   "Monster3": {
     "name": "Monster3",
 	"sizeType": "medium",
-	"elementType": "earth",
+	"elementType": "electric",
     "status": {
       "attack": 10,
 	  "magicAttack": 10,
@@ -81,10 +78,9 @@
 	  "fatigue": 0,
 	  "experience": 0,
 	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "fireResistance" : 0,
+      "waterResistance" : 0,
+      "electricResistance" : 0
     },
     
     "skillList": ["cut_01"]
@@ -92,7 +88,7 @@
   "b2": {
     "name": "b2",
 	"sizeType": "large",
-	"elementType": "earth",
+	"elementType": "electric",
     "status": {
       "attack": 10,
 	  "magicAttack": 10,
@@ -104,10 +100,9 @@
 	  "fatigue": 0,
 	  "experience": 0,
 	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "fireResistance" : 0,
+      "waterResistance" : 0,
+      "electricResistance" : 0
     },
     
     "skillList": ["cut_01"]

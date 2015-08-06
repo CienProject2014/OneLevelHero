@@ -108,7 +108,7 @@
         "height": 50
       },
       {
-        "itemIdentifier": "health_point",
+        "itemIdentifier": "health_point_state",
         "x": 310,
         "y": 80.000015,
         "zIndex": 18,

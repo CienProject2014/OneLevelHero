@@ -1,0 +1,20 @@
+[
+  {
+    "listName": "status",
+    "constantsList": [
+      "attack",
+      "defense",
+      "electric_resistance",
+      "experience",
+      "fatigue",
+      "fire_resistance",
+      "health_point_state",
+      "level",
+      "magic_attack",
+      "magic_defense",
+      "name",
+      "speed",
+      "water_resistance"
+    ]
+  }
+]
