@@ -9,6 +9,7 @@ public class FieldInfo {
 	private int leftRoadLength; // 남은 길의 개수
 	private List<String> roadMonsterList; // 해당 길에 서식하는 몬스터 리스트
 	private String arrowName;
+	private boolean inRoad;
 
 	public String getArrowName() {
 		return arrowName;
@@ -56,5 +57,13 @@ public class FieldInfo {
 
 	public void setRoadMonsterList(List<String> roadMonsterList) {
 		this.roadMonsterList = roadMonsterList;
+	}
+
+	public boolean isInRoad() {
+		return inRoad;
+	}
+
+	public void setInRoad(boolean inRoad) {
+		this.inRoad = inRoad;
 	}
 }

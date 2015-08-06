@@ -64,7 +64,12 @@ public class PartyManager {
 		return partyInfo.getBattleMemberList().get(index);
 	}
 
-	public void setSelectedHero(String heroName) {
+	public void setCurrentSelectedHero(Hero hero) {
+		partyInfo.setCurrentSelectedHero(hero);
+	}
+
+	public Hero getCurrentSelectedHero() {
+		return partyInfo.getCurrentSelectedHero();
 	}
 
 	public List<Hero> getBattleMemberList() {

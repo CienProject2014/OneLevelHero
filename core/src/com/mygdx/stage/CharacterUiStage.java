@@ -93,12 +93,13 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		return table;
 	}
 
-	private Table makeHeroTable(StatusBar statusBar) {
+	private Table makeHeroTable(final StatusBar statusBar) {
 		Table heroTable = new Table();
 		Image heroImage = new Image(statusBar.getUnit().getFaceTexture());
 		heroImage.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				partyManager.setCurrentSelectedHero((Hero) statusBar.getUnit());
 				screenFactory.show(ScreenEnum.STATUS);
 			}
 		});

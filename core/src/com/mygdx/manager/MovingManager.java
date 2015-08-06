@@ -17,6 +17,8 @@ public class MovingManager {
 	private StorySectionManager storySectionManager;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private FieldManager fieldManager;
 
 	public void goCurrentPosition() {
 		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
@@ -47,6 +49,9 @@ public class MovingManager {
 				} else {
 					screenFactory.show(ScreenEnum.GREETING);
 				}
+				break;
+			case BATTLE:
+				screenFactory.show(ScreenEnum.BATTLE);
 				break;
 			case BATTLE_EVENT:
 				if (eventManager.isGreeting()) {

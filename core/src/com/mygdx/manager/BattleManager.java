@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.BattleInfo;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -27,12 +28,15 @@ public class BattleManager {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private StorySectionManager storySectionManager;
+	@Autowired
+	private PositionManager positionManager;
 
 	public void startBattle(Monster selectedMonster) {
 		if (battleInfo.getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
 			battleInfo.setBattleState(BattleStateEnum.ENCOUNTER);
 		}
 		battleInfo.setMonster(selectedMonster);
+		positionManager.setCurrentPositionType(PositionEnum.BATTLE);
 		screenFactory.show(ScreenEnum.ENCOUNTER);
 	}
 

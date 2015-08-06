@@ -20,6 +20,10 @@ public class Status {
 		return healthPoint + "/" + maxHealthPoint;
 	}
 
+	public String getExperiencePointState() {
+		return experience + "/" + maxExperience;
+	}
+
 	public int getAttack() {
 		return attack;
 	}
@@ -143,7 +147,7 @@ public class Status {
 	//alphabet order
 	public String[] getStatusList() {
 		String[] array = { String.valueOf(attack), String.valueOf(defense),
-				String.valueOf(electricResistance), String.valueOf(experience),
+				String.valueOf(electricResistance), getExperiencePointState(),
 				String.valueOf(fatigue), String.valueOf(fireResistance),
 				getHealthPointState(), String.valueOf(level),
 				String.valueOf(magicAttack), String.valueOf(magicDefense),

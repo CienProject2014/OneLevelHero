@@ -430,7 +430,8 @@
                 1,
                 1
               ],
-              "imageName": "statusuiparty"
+              "imageName": "statusuiparty",
+              "itemIdentifier": "character_image"
             }
           ],
           "layers": [

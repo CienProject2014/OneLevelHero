@@ -74,6 +74,8 @@
 	"scriptContentHeight": 189,
 	"talkerPadLeft": 15,
 	"talkerWidth": 567,
-	"talkerHeight": 900
+	"talkerHeight": 900,
+	"statusWidth" : 300,
+	"statusHeight" : 550
   }
 }

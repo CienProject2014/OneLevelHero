@@ -7,12 +7,21 @@ import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.manager.TextureManager;
 
 public abstract class Unit implements Comparable<Unit>, Fightable {
+	private String facePath;
 	private String name;
 	protected Status status;
 	private Map<String, Skill> skills;
 	private int gauge;
 	private Texture bodyTexture;
 	private Texture faceTexture;
+
+	public String getFacePath() {
+		return facePath;
+	}
+
+	public void setFacePath(String facePath) {
+		this.facePath = facePath;
+	}
 
 	/* For Json Work */
 	private ArrayList<String> skillList;
@@ -85,9 +94,9 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 	public Texture getBodyTexture() {
 		if (bodyTexture == null) {
 			if (this instanceof Hero)
-				bodyTexture = TextureManager.getCharacterBodyTexture(name);
+				bodyTexture = TextureManager.getCharacterBodyTexture(facePath);
 			else
-				bodyTexture = TextureManager.getMonsterBodyTexture(name);
+				bodyTexture = TextureManager.getMonsterBodyTexture(facePath);
 		}
 		return bodyTexture;
 	}
@@ -95,9 +104,9 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 	public Texture getFaceTexture() {
 		if (faceTexture == null) {
 			if (this instanceof Hero)
-				faceTexture = TextureManager.getCharacterFaceTexture(name);
+				faceTexture = TextureManager.getCharacterFaceTexture(facePath);
 			else
-				faceTexture = TextureManager.getMonsterFaceTexture(name);
+				faceTexture = TextureManager.getMonsterFaceTexture(facePath);
 		}
 		return faceTexture;
 	}

@@ -9,7 +9,7 @@ public enum TextureEnum {
 			"303"), STATUS_NORMAL("401"), STATUS_AWAKEN("402"), NPC_NORMAL(
 			"501"), NPC_AWAKEN("502"), BACKGROUND_UP("701"), BACKGROUND_DOWN(
 			"702"), ATTACK_CUTTING("attack_cutting"), ATTACK_CUTTING2(
-			"attack_cutting2");
+			"attack_cutting2"), STATUS("status");
 	// FIXME 애니메이션 시트를 여기에 같이 두는게 적절한가?
 
 	private String textureNumber;
