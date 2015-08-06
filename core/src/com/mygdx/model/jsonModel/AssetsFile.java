@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.model.jsonModel;
 
 public interface AssetsFile<T> {
 	public T loadFile();

@@ -7,8 +7,8 @@ import java.util.Map.Entry;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.JsonStringFile;
-import com.mygdx.model.MusicFile;
+import com.mygdx.model.jsonModel.StringFile;
+import com.mygdx.model.jsonModel.MusicFile;
 import com.mygdx.util.JsonParser;
 
 public class MusicAssets implements FileAssetsInitializable {
@@ -20,7 +20,7 @@ public class MusicAssets implements FileAssetsInitializable {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void set(Map<String, JsonStringFile> filePathMap) {
+	public void set(Map<String, StringFile> filePathMap) {
 		Map<String, MusicFile> musicFileMap = JsonParser
 				.parseMap(MusicFile.class,
 						filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString())

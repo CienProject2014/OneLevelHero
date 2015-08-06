@@ -64,12 +64,7 @@ public class PartyManager {
 		return partyInfo.getBattleMemberList().get(index);
 	}
 
-	public int getSelectedIndex() {
-		return partyInfo.getSelectedIndex();
-	}
-
-	public void setSelectedIndex(int indexNumber) {
-		partyInfo.setSelectedIndex(indexNumber);
+	public void setSelectedHero(String heroName) {
 	}
 
 	public List<Hero> getBattleMemberList() {

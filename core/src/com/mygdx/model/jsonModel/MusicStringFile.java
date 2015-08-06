@@ -1,4 +1,5 @@
-package com.mygdx.model;
+package com.mygdx.model.jsonModel;
+
 
 public class MusicStringFile implements AssetsFile<String> {
 	private String file;
