@@ -12,6 +12,7 @@ import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -78,6 +79,7 @@ public class EventManager {
 			case MOVE_SUB_NODE:
 				positionManager.setCurrentSubNodeName(getCurrentEvent()
 						.getEventComponent().get(0));
+				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 				movingManager.goCurrentPosition();
 				storySectionManager.runStorySequence();
 				break;

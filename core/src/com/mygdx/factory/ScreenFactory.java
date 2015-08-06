@@ -43,7 +43,7 @@ public class ScreenFactory {
 	}
 
 	public void setGame(Game game) {
-		Gdx.app.debug("ScreenFactory", "ScreenFactory.setGame(Game game)");
+		Gdx.app.debug("ScreenFactory", "screenFactory.setGame(game)");
 		this.game = game;
 	}
 
@@ -54,8 +54,7 @@ public class ScreenFactory {
 	}
 
 	private Screen getScreenInstance(ScreenEnum screenEnum) {
-		Gdx.app.log("ScreenFactory",
-				"getScreenInstance(" + screenEnum.toString() + ")");
+		Gdx.app.log("ScreenFactory", screenEnum.toString() + "Screen 호출");
 		switch (screenEnum) {
 			case BATTLE:
 				return context.getBean(BattleScreen.class);

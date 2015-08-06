@@ -7,19 +7,25 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
 import com.mygdx.model.Hero;
 import com.mygdx.model.StatusBar;
 
 public class CharacterUiStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private ScreenFactory screenFactory;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("CharacterUiStage");
 	private Table statusTable;
@@ -72,7 +78,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		statusTable = makeStatusTable();
 		table.add(statusTable).expandX().left();
 		return table;
-
 	}
 
 	private Table makeStatusTable() {
@@ -88,10 +93,17 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		return table;
 	}
 
-	private Table makeHeroTable(StatusBar statusBar) {
+	private Table makeHeroTable(final StatusBar statusBar) {
 		Table heroTable = new Table();
-
-		heroTable.add(new Image(statusBar.getUnit().getFaceTexture()))
+		Image heroImage = new Image(statusBar.getUnit().getFaceTexture());
+		heroImage.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				partyManager.setCurrentSelectedHero((Hero) statusBar.getUnit());
+				screenFactory.show(ScreenEnum.STATUS);
+			}
+		});
+		heroTable.add(heroImage)
 				.padRight(uiConstantsMap.get("heroTablePadLeft"))
 				.width(uiConstantsMap.get("heroImageWidth"))
 				.height(uiConstantsMap.get("heroImageHeight"));

@@ -1,21 +1,22 @@
 {
   "yongsa": {
-    "name": "yongsa",
+  	"facePath" : "yongsa",
+    "name": "용개",
     "status": {
       "attack": 208,
-	  "magicAttack": 208,
+      "magicAttack": 208,
+      "level": 100,
       "defense": 109,
-	  "magicDefense" : 10,
+      "magicDefense": 10,
       "healthPoint": 400,
-	  "maxHealthPoint": 400,
+      "maxHealthPoint": 400,
       "speed": 189,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "fatigue": 0,
+      "experience": 0,
+      "maxExperience": 3600,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
     },
     "equipment": {
       "weapon": "sword",
@@ -23,28 +24,35 @@
       "boots": "leather_boots",
       "gloves": "leather_gloves"
     },
-    "skillList": ["cut_01"],
-    "itemList" : ["sword_01"]
+    "skillList": [
+      "cut_01"
+    ],
+    "itemList": [
+      "sword_01"
+    ]
   },
   "parath": {
-    "name": "parath",   
+  	"facePath" : "parath",
+    "name": "파라섹트",
     "status": {
-      "attack": 115,
-	  "magicAttack": 10,
-      "defense": 40,
-	  "magicDefense" : 10,
+      "level": 35,
       "healthPoint": 245,
-	  "maxHealthPoint": 245,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "maxHealthPoint": 245,
+      "attack": 115,
+      "magicAttack": 0,
+      "defense": 40,
+      "magicDefense": 20,
+      "speed": 35,
+      "fatigue": 0,
+      "experience": 0,
+      "maxExperience": 3600,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
     },
-    "skillList": ["cut_01"],
+    "skillList": [
+      "cut_01"
+    ],
     "equipment": {
       "weapon": "daggear",
       "armor": "leather_armor",
@@ -53,24 +61,27 @@
     }
   },
   "lilis": {
-    "name": "lilis",   
+    "facePath" : "lilis",
+    "name": "미미",
     "status": {
+      "level": 35,
       "attack": 10,
-	  "magicAttack": 85,
+      "magicAttack": 85,
       "defense": 20,
-	  "magicDefense" : 45,
+      "magicDefense": 45,
       "healthPoint": 150,
-	  "maxHealthPoint": 150,
+      "maxHealthPoint": 150,
       "speed": 80,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "fatigue": 0,
+      "experience": 0,
+      "maxExperience": 3600,
+      "fireResistance": 10,
+      "waterResistance": 20,
+      "electricResistance": 10
     },
-    "skillList": ["cut_01"],
+    "skillList": [
+      "cut_01"
+    ],
     "equipment": {
       "weapon": "daggear",
       "armor": "leather_armor",

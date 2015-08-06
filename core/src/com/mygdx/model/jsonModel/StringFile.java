@@ -1,8 +1,8 @@
-package com.mygdx.model;
+package com.mygdx.model.jsonModel;
 
 import com.badlogic.gdx.Gdx;
 
-public class JsonStringFile implements AssetsFile<String> {
+public class StringFile implements AssetsFile<String> {
 	private String filePath;
 	private String file;
 

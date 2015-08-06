@@ -28,6 +28,11 @@ public class FieldManager {
 		WorldNode worldNodeInfo = worldMapAssets
 				.getWorldNodeInfo(positionManager.getCurrentNodeName());
 		createMovingInfo(destinationNode, worldNodeInfo);
+		fieldInfo.setInRoad(true);
+	}
+
+	public boolean isInRoad() {
+		return fieldInfo.isInRoad();
 	}
 
 	public void createMovingInfo(String destinationNode, WorldNode worldNodeInfo) {
@@ -50,6 +55,7 @@ public class FieldManager {
 		} else {
 			// 목적지 노드에 도착해서 현재 위치로 설정함
 			positionManager.setCurrentNodeName(fieldInfo.getDestinationNode());
+			fieldInfo.setInRoad(false);
 			movingManager.goCurrentPosition();
 		}
 	}
@@ -61,6 +67,7 @@ public class FieldManager {
 		} else {
 			// 원래 노드로 다시 돌아옴
 			positionManager.setCurrentNodeName(fieldInfo.getStartNode());
+			fieldInfo.setInRoad(false);
 			movingManager.goCurrentPosition();
 		}
 	}

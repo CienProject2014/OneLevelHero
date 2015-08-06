@@ -12,7 +12,8 @@ public enum JsonEnum {
 			"battle_music_list"), EVENT_MUSIC_LIST("event_music_list"), MOVING_MUSIC_LIST(
 			"moving_music_list"), ANIMATION_SHEET_FILE_PATH(
 			"animation_sheet_file_path"), SKILL_JSON("skill_json"), STORY_JSON(
-			"story_json"), BATTLE_UI_FILE_PATH("battle_ui_file_path");
+			"story_json"), BATTLE_UI_FILE_PATH("battle_ui_file_path"), UI_CONSTANTS(
+			"ui_constants"), LABEL_CONSTANTS_JSON("label_constants_json");
 
 	private String jsonName;
 

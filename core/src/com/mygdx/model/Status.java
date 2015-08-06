@@ -5,16 +5,24 @@ public class Status {
 	private int magicAttack;
 	private int defense;
 	private int magicDefense;
+	private int level;
 	private int healthPoint; // 현재 체력
 	private int maxHealthPoint; // 최대 체력
 	private int speed; // speed
 	private int fatigue; // fatigue(피로도)
 	private int experience; // 경험치
 	private int maxExperience; // 최대 경험치(레벨업)
-	private float fireRegistance; // fire resistance
-	private float waterRegistance; // water
-	private float earthRegistance; // earths
-	private String job;
+	private float fireResistance; // fire resistance
+	private float waterResistance; // water
+	private float electricResistance; // electric
+
+	public String getHealthPointState() {
+		return healthPoint + "/" + maxHealthPoint;
+	}
+
+	public String getExperiencePointState() {
+		return experience + "/" + maxExperience;
+	}
 
 	public int getAttack() {
 		return attack;
@@ -96,47 +104,54 @@ public class Status {
 		this.maxExperience = maxExperience;
 	}
 
-	public float getFireRegistance() {
-		return fireRegistance;
+	public int getHealthPoint() {
+		return healthPoint;
 	}
 
-	public void setFireRegistance(float fireRegistance) {
-		this.fireRegistance = fireRegistance;
+	public void setHealthPoint(int healthPoint) {
+		this.healthPoint = healthPoint;
 	}
 
-	public float getWaterRegistance() {
-		return waterRegistance;
+	public int getMaxHealthPoint() {
+		return maxHealthPoint;
 	}
 
-	public void setWaterRegistance(float waterRegistance) {
-		this.waterRegistance = waterRegistance;
+	public void setMaxHealthPoint(int maxHealthPoint) {
+		this.maxHealthPoint = maxHealthPoint;
 	}
 
-	public float getEarthRegistance() {
-		return earthRegistance;
+	public float getFireResistance() {
+		return fireResistance;
 	}
 
-	public void setEarthRegistance(float earthRegistance) {
-		this.earthRegistance = earthRegistance;
+	public void setFireResistance(float fireResistance) {
+		this.fireResistance = fireResistance;
 	}
 
-	public String getJob() {
-		return job;
+	public float getWaterResistance() {
+		return waterResistance;
 	}
 
-	public void setJob(String job) {
-		this.job = job;
+	public void setWaterResistance(float waterResistance) {
+		this.waterResistance = waterResistance;
 	}
 
+	public float getElectricResistance() {
+		return electricResistance;
+	}
+
+	public void setElectricResistance(float electricResistance) {
+		this.electricResistance = electricResistance;
+	}
+
+	//alphabet order
 	public String[] getStatusList() {
-		String[] array = { String.valueOf(attack), String.valueOf(magicAttack),
-				String.valueOf(defense), String.valueOf(magicDefense),
-				String.valueOf(fatigue), String.valueOf(healthPoint),
-				String.valueOf(speed), String.valueOf(experience),
-				String.valueOf(fireRegistance),
-				String.valueOf(waterRegistance),
-				String.valueOf(earthRegistance), job };
-
+		String[] array = { String.valueOf(attack), String.valueOf(defense),
+				String.valueOf(electricResistance), getExperiencePointState(),
+				String.valueOf(fatigue), String.valueOf(fireResistance),
+				getHealthPointState(), String.valueOf(level),
+				String.valueOf(magicAttack), String.valueOf(magicDefense),
+				String.valueOf(speed), String.valueOf(waterResistance) };
 		return array;
 	}
 }

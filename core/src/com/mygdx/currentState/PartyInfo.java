@@ -8,15 +8,7 @@ import com.mygdx.model.Hero;
 public class PartyInfo {
 	private List<Hero> partyList = new ArrayList<Hero>();
 	private List<Hero> battleMemberList = new ArrayList<Hero>();
-	private int selectedIndex = 0;
-
-	public int getSelectedIndex() {
-		return selectedIndex;
-	}
-
-	public void setSelectedIndex(int selectedIndex) {
-		this.selectedIndex = selectedIndex;
-	}
+	private Hero currentSelectedHero;
 
 	public List<Hero> getPartyList() {
 		return partyList;
@@ -32,5 +24,13 @@ public class PartyInfo {
 
 	public void setBattleMemberList(List<Hero> battleMemberList) {
 		this.battleMemberList = battleMemberList;
+	}
+
+	public Hero getCurrentSelectedHero() {
+		return currentSelectedHero;
+	}
+
+	public void setCurrentSelectedHero(Hero currentSelectedHero) {
+		this.currentSelectedHero = currentSelectedHero;
 	}
 }
