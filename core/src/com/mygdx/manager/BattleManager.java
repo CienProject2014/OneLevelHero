@@ -9,10 +9,10 @@ import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.model.Fightable;
-import com.mygdx.model.Hero;
-import com.mygdx.model.Monster;
-import com.mygdx.model.Unit;
+import com.mygdx.model.unit.Fightable;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.Monster;
+import com.mygdx.model.unit.Unit;
 
 public class BattleManager {
 	@Autowired

@@ -14,8 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.model.Monster;
-import com.mygdx.model.StatusBar;
+import com.mygdx.model.unit.Monster;
+import com.mygdx.model.unit.StatusBar;
 
 public class MonsterStage extends BaseOneLevelStage {
 	@Autowired

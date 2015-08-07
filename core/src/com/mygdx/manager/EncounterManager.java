@@ -4,7 +4,7 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mygdx.model.Monster;
+import com.mygdx.model.unit.Monster;
 
 public class EncounterManager {
 	@Autowired

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.FieldInfo;
-import com.mygdx.model.WorldNode;
+import com.mygdx.model.surroundings.WorldNode;
 
 public class FieldManager {
 	@Autowired
