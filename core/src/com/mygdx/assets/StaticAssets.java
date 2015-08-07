@@ -127,22 +127,29 @@ public class StaticAssets {
 		animationSheetMap = JsonParser.parseMap(FrameSheet.class, filePathMap
 				.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
 
+		DirectoryTextureMapper(characterTextureMap, "texture/character");
+		DirectoryTextureMapper(monsterTextureMap, "texture/monster");
+		DirectoryTextureMapper(backgroundTextureMap, "texture/background");
+		DirectoryTextureMapper(battleUiTextureMap, "texture/ui/battle");
+	}
+
+	public static void DirectoryTextureMapper(Map<String, Texture> map,
+			String path) {
 		FileHandle fh;
 
 		if (Gdx.app.getType() == ApplicationType.Android) {
-			fh = Gdx.files.internal("texture/ui/battle");
-		} else {
-			// ApplicationType.Desktop ..
-			fh = Gdx.files.internal("./bin/texture/ui/battle");
+			fh = Gdx.files.internal(path);
+		} else { // ApplicationType.Desktop ..
+			fh = Gdx.files.internal("./bin/" + path);
 		}
 
 		if (fh.isDirectory()) {
 			FileHandle[] fhs = fh.list();
 
 			for (FileHandle e : fhs) {
-				if (e.extension().matches("^(png|jpg)")) {
-					battleUiTextureMap.put(e.nameWithoutExtension(),
-							new Texture(e.path()));
+				if (!map.containsKey(e.nameWithoutExtension())
+						&& e.extension().matches("^(png|jpg)")) {
+					map.put(e.nameWithoutExtension(), new Texture(e.path()));
 				}
 			}
 		}
