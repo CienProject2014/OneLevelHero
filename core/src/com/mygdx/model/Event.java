@@ -14,6 +14,7 @@ public class Event {
 	private RewardInfo reward;
 	private List<EventScene> eventScenes;
 	private List<String> eventComponent;
+	private String eventTarget;
 
 	public EventTypeEnum getEventType() {
 		return eventType;
@@ -65,5 +66,13 @@ public class Event {
 
 	public void setEventName(String eventName) {
 		this.eventName = eventName;
+	}
+
+	public String getEventTarget() {
+		return eventTarget;
+	}
+
+	public void setEventTarget(String eventTarget) {
+		this.eventTarget = eventTarget;
 	}
 }

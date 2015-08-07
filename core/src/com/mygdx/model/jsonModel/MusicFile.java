@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.model.jsonModel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;

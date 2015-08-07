@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -13,11 +14,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.enums.EventStateEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SelectEventListener;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MovingManager;
+import com.mygdx.model.Event;
 import com.mygdx.model.NPC;
 
 public class SelectEventStage extends BaseOneLevelStage {
@@ -45,16 +46,20 @@ public class SelectEventStage extends BaseOneLevelStage {
 	private void addListener() {
 		for (int i = 0; i < EVENT_SIZE; i++) {
 			// 이벤트가 달성되었는지 검사(현재는 리워드)
-
-			if (eventManager.getCurrentNpc().getEvent(i + 1).getEventState() == EventStateEnum.CLEARED) {
-				if (i != 0) {
-					chatButtons.get(i).setColor(Color.DARK_GRAY);
-				}
-			} else {
+			Event selectedEvent = eventManager.getCurrentNpc().getEvent(i + 1);
+			if (eventManager.isEventOpen(selectedEvent)) {
 				SelectEventListener selectEventListener = listenerFactory
 						.getSelectEventListener();
 				selectEventListener.setIndex(i);
 				chatButtons.get(i).addListener(selectEventListener);
+			} else {
+				if (eventManager.isEventNotOpened(selectedEvent)) {
+					chatButtons.get(i).setVisible(false);
+				} else if (eventManager.isEventCleared(selectedEvent)) {
+					chatButtons.get(i).setColor(Color.DARK_GRAY);
+				} else {
+					Gdx.app.log("SelectEventStage", "EventState 정보 오류");
+				}
 			}
 		}
 	}

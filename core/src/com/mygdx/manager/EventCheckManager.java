@@ -15,6 +15,11 @@ public class EventCheckManager {
 	@Autowired
 	private PositionManager positionManager;
 
+	public boolean checkSameWithComponent(String eventComponent,
+			String componentString) {
+		return eventComponent.equals(componentString);
+	}
+
 	public boolean checkSameWithComponent(EventTypeEnum eventType,
 			StorySectionPacket nextStorySectionPacket, String componentString) {
 		switch (eventType) {

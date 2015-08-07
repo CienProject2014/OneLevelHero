@@ -1,115 +1,50 @@
 {
   "mawang": {
-	"name": "mawang",
-	"sizeType": "medium",
-	"elementType": "fire",
-	"status": {
-      "attack": 25,
-	  "magicAttack": 10,
-      "defense": 10,
-	  "magicDefense" : 10,
-      "healthPoint": 50,
-	  "maxHealthPoint": 50,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "monster"
+    "name": "전설의 대마왕",
+    "facePath": "mawang",
+    "sizeType": "medium",
+    "elementType": "fire",
+    "status": {
+      "attack": 300,
+      "magicAttack": 300,
+      "defense": 200,
+      "magicDefense": 200,
+      "healthPoint": 10000,
+      "maxHealthPoint": 10000,
+      "speed": 200,
+      "fatigue": 0,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
     },
-    "skillList" : ["cut_01"]
+    "skillList": [
+      "cut_01"
+    ]
   },
   "assassin_girl": {
-    "name": "assassin_girl",
-	"sizeType": "small",
-	"elementType": "fire",
+    "facePath": "assassin_girl",
+    "name": "단검을 든 소녀",
+    "sizeType": "small",
+    "elementType": "fire",
     "status": {
-      "attack": 25,
-	  "magicAttack": 10,
-      "defense": 10,
-	  "magicDefense" : 10,
-      "healthPoint": 50,
-	  "maxHealthPoint": 50,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "monster"
+      "attack": 100,
+      "magicAttack": 0,
+      "defense": 60,
+      "magicDefense": 0,
+      "healthPoint": 1000,
+      "maxHealthPoint": 1000,
+      "speed": 50,
+      "fatigue": 0,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
     },
-    "skillList" : ["cut_01"]
-  },
-  "Monster2": {
-    "name": "Monster2",
-	"sizeType": "small",
-	"elementType": "water",
-    "status": {
-      "attack": 10,
-	  "magicAttack": 10,
-      "defense": 10,
-	  "magicDefense" : 10,
-      "healthPoint": 50,
-	  "maxHealthPoint": 50,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
-    },
-    
-    "skillList": ["cut_01"]
-  },
-  "Monster3": {
-    "name": "Monster3",
-	"sizeType": "medium",
-	"elementType": "earth",
-    "status": {
-      "attack": 10,
-	  "magicAttack": 10,
-      "defense": 10,
-	  "magicDefense" : 10,
-      "healthPoint": 50,
-	  "maxHealthPoint": 50,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
-    },
-    
-    "skillList": ["cut_01"]
-  },
-  "b2": {
-    "name": "b2",
-	"sizeType": "large",
-	"elementType": "earth",
-    "status": {
-      "attack": 10,
-	  "magicAttack": 10,
-      "defense": 10,
-	  "magicDefense" : 10,
-      "healthPoint": 50,
-	  "maxHealthPoint": 50,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
-    },
-    
-    "skillList": ["cut_01"]
+    "skillList": [
+      "cut_01"
+    ]
   }
 }

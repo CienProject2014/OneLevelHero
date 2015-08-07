@@ -19,6 +19,11 @@ public class TextureManager {
 		Gdx.app.debug("TextureManager", "Constructor() call (실행되어서는 안됨)");
 	}
 
+	public static Texture getStatusTexture(String name) {
+		return StaticAssets.characterTextureMap.get(TextureEnum.STATUS + "_"
+				+ name);
+	}
+
 	public static Texture getCharacterBodyTexture(String name) {
 		return StaticAssets.characterTextureMap.get(TextureEnum.NPC + "_"
 				+ name);

@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.model.jsonModel;
 
 import java.util.List;
 

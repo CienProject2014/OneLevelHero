@@ -34,12 +34,13 @@ public class PositionManager {
 	}
 
 	public void setCurrentNodeName(String currentNodeName) {
-		Gdx.app.log("PositionManager", "현재위치 : " + currentNodeName);
+		Gdx.app.log("PositionManager", "현재노드 이름 - " + currentNodeName);
 		setCurrentPositionType(PositionEnum.NODE);
 		positionInfo.setCurrentNodeName(currentNodeName);
 	}
 
 	public void setCurrentPositionType(PositionEnum positionEnum) {
+		Gdx.app.log("PositionManager", "현재위치 - " + positionEnum.toString());
 		positionInfo.setCurrentPositionType(positionEnum);
 	}
 
@@ -48,7 +49,7 @@ public class PositionManager {
 	}
 
 	public void setCurrentSubNodeName(String subNodeName) {
-		Gdx.app.log("PositionManager", "현재위치 : " + subNodeName);
+		Gdx.app.log("PositionManager", "현재서브노드 이름 - " + subNodeName);
 		positionInfo.setCurrentPositionType(PositionEnum.SUB_NODE);
 		positionInfo.setCurrentSubNodeName(subNodeName);
 	}

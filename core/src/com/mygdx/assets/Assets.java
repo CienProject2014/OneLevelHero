@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.JsonStringFile;
+import com.mygdx.model.jsonModel.StringFile;
 import com.mygdx.util.JsonParser;
 
 /**
@@ -36,9 +36,11 @@ public class Assets {
 	private WorldMapAssets worldMapAssets;
 	@Autowired
 	private NodeAssets worldNodeAssets;
+	@Autowired
+	private ConstantsAssets constantsAssets;
 
 	public void initialize() {
-		Map<String, JsonStringFile> filePathMap = loadFilePathMap();
+		Map<String, StringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
 
 		eventAssets.set(jsonStringMap);
@@ -51,22 +53,23 @@ public class Assets {
 		musicAssets.set(filePathMap);
 		worldMapAssets.set(jsonStringMap);
 		worldNodeAssets.set(jsonStringMap);
+		constantsAssets.set(jsonStringMap);
 	}
 
-	private Map<String, JsonStringFile> loadFilePathMap() {
-		Map<String, JsonStringFile> filePathMap = JsonParser.parseMap(
-				JsonStringFile.class,
-				Gdx.files.internal("data/load/file_path.json").readString());
+	private Map<String, StringFile> loadFilePathMap() {
+		Map<String, StringFile> filePathMap = JsonParser.parseMap(
+				StringFile.class, Gdx.files
+						.internal("data/load/file_path.json").readString());
 		return filePathMap;
 	}
 
 	private Map<String, String> loadJsonStringMap(
-			Map<String, JsonStringFile> filePathMap) {
-		Map<String, JsonStringFile> jsonFileMap = JsonParser.parseMap(
-				JsonStringFile.class,
+			Map<String, StringFile> filePathMap) {
+		Map<String, StringFile> jsonFileMap = JsonParser.parseMap(
+				StringFile.class,
 				filePathMap.get(JsonEnum.JSON_FILE_PATH.toString()).loadFile());
 		Map<String, String> jsonStringMap = new HashMap<>();
-		for (Entry<String, JsonStringFile> entry : jsonFileMap.entrySet())
+		for (Entry<String, StringFile> entry : jsonFileMap.entrySet())
 			jsonStringMap.put(entry.getKey(), entry.getValue().loadFile());
 		return jsonStringMap;
 	}

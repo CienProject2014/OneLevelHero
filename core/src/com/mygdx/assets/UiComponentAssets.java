@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.mygdx.model.JsonStringFile;
+import com.mygdx.model.jsonModel.StringFile;
 
 public class UiComponentAssets implements FileAssetsInitializable {
 	private Skin skin;
@@ -21,7 +21,7 @@ public class UiComponentAssets implements FileAssetsInitializable {
 	private Image logo;
 	private BitmapFont font;
 
-	public void set(Map<String, JsonStringFile> filePathMap) {
+	public void set(Map<String, StringFile> filePathMap) {
 		font = new BitmapFont(Gdx.files.internal("skin/hangeul2.fnt"));
 		TextureAtlas textureAtlas = new TextureAtlas("skin/chatbutton.pack");
 		chatButton = new TextureRegionDrawable[6];

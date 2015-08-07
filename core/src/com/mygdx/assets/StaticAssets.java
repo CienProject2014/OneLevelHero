@@ -17,14 +17,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.model.FrameSheet;
-import com.mygdx.model.JsonStringFile;
-import com.mygdx.model.TextureFile;
+import com.mygdx.model.jsonModel.StringFile;
+import com.mygdx.model.jsonModel.TextureFile;
 import com.mygdx.util.JsonParser;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
 public class StaticAssets {
 	public static Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
-	public static Map<String, JsonStringFile> filePathMap;
+	public static Map<String, StringFile> filePathMap;
 	public static Map<String, Texture> characterTextureMap = new HashMap<String, Texture>();
 	public static Map<String, Texture> monsterTextureMap = new HashMap<String, Texture>();
 	public static Map<String, Texture> backgroundTextureMap = new HashMap<String, Texture>();
@@ -57,7 +57,7 @@ public class StaticAssets {
 	public static void loadAll() {
 		Gdx.app.debug("StaticAssets", "StaticAssets.loadAll() called");
 
-		filePathMap = JsonParser.parseMap(JsonStringFile.class, Gdx.files
+		filePathMap = JsonParser.parseMap(StringFile.class, Gdx.files
 				.internal("data/load/file_path.json").readString());
 
 		loadSize(new Stage());
@@ -74,7 +74,7 @@ public class StaticAssets {
 		resolutionFactor = windowWidth / BASE_WINDOW_WIDTH;
 
 		Map<String, HashMap> stageMap = JsonParser.parseMap(HashMap.class,
-				filePathMap.get("ui_constants_file").loadFile());
+				filePathMap.get(JsonEnum.UI_CONSTANTS.toString()).loadFile());
 		for (Entry<String, HashMap> stageEntry : stageMap.entrySet()) {
 			uiConstantsMap.put(stageEntry.getKey(), stageEntry.getValue());
 		}
@@ -125,7 +125,6 @@ public class StaticAssets {
 			fhs = fh.list();
 
 			for (FileHandle e : fhs) {
-				Gdx.app.log("StaticAssets", e.name());
 				if (e.extension().matches("^(png|jpg)")) {
 					battleUiTextureMap.put(e.nameWithoutExtension(),
 							new Texture(e.path()));

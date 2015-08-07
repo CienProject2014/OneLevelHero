@@ -17,6 +17,7 @@
 
 	<bean id="assets" class="com.mygdx.assets.Assets" />
 	<bean id="atlasUiAssets" class="com.mygdx.assets.AtlasUiAssets" />
+	<bean id="constantsAssets" class="com.mygdx.assets.ConstantsAssets"/>
 	<bean id="eventAssets" class="com.mygdx.assets.EventAssets"/>
 	<bean id="itemAssets" class="com.mygdx.assets.ItemAssets"/>
 	<bean id="skillAssets" class="com.mygdx.assets.SkillAssets"/>
@@ -94,6 +95,7 @@
 	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen"
 		scope="prototype"/>
 	<bean id="loadScreen" class="com.mygdx.screen.LoadScreen" scope="prototype"/>
+	<bean id="logScreen" class="com.mygdx.screen.LogScreen" scope="prototype"/>
 	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen" scope="prototype"/>
 	<bean id="optionScreen" class="com.mygdx.screen.OptionScreen"
 		scope="prototype"/>

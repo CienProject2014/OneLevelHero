@@ -5,8 +5,6 @@
     "tButtonSpace": 43,
     "tTablePadTop":85,
     "tTablePadRight":15
-
-
 },
 "MovingStage" : {
     "ButtonWidth": 335,
@@ -47,10 +45,15 @@
 	"buffTableWidth": 138,
 	"buffTableHeight": 30
   },
-  "MonsterStage": {
-	"monsterPadTop": 228,
-	"monsterTableWidth": 1440,
-	"monsterTableHeight": 675
+  "MonsterStage": {   
+    "monsterPadTop": 212,
+    "monsterTableWidth": 640,
+    "monsterTableHeight": 640,
+    "MonsterBarSpace" : 20,
+    "hpTableWidth" : 666,
+    "hpTablePadBottom" : 128
+    
+
   },
   "GameUiStage": {
 	"padLeft": 15,
@@ -73,6 +76,8 @@
 	"scriptContentHeight": 189,
 	"talkerPadLeft": 15,
 	"talkerWidth": 567,
-	"talkerHeight": 900
+	"talkerHeight": 900,
+	"statusWidth" : 300,
+	"statusHeight" : 550
   }
 }

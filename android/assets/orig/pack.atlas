@@ -943,114 +943,164 @@ button
   offset: 0, 0
   index: -1
   
+
 status_pack.png
-size: 4096,1024
+size: 2048,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-background
+statusuiacbuttonending
+  rotate: false
+  xy: 781, 694
+  size: 164, 100
+  orig: 164, 100
+  offset: 0, 0
+  index: -1
+statusuiacbuttonparty
+  rotate: false
+  xy: 520, 470
+  size: 164, 100
+  orig: 164, 100
+  offset: 0, 0
+  index: -1
+statusuiacbuttonworld
+  rotate: false
+  xy: 947, 694
+  size: 164, 100
+  orig: 164, 100
+  offset: 0, 0
+  index: -1
+statusuibase
+  rotate: false
+  xy: 2, 918
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+statusuibuttonending
+  rotate: false
+  xy: 520, 368
+  size: 164, 100
+  orig: 164, 100
+  offset: 0, 0
+  index: -1
+statusuibuttonparty
+  rotate: false
+  xy: 1113, 694
+  size: 164, 100
+  orig: 164, 100
+  offset: 0, 0
+  index: -1
+statusuibuttonworld
+  rotate: false
+  xy: 520, 572
+  size: 165, 100
+  orig: 165, 100
+  offset: 0, 0
+  index: -1
+statusuiexp
   rotate: false
   xy: 2, 2
-  size: 1690, 960
-  orig: 1690, 960
+  size: 38, 18
+  orig: 38, 18
   offset: 0, 0
   index: -1
-close
+statusuilevel
   rotate: false
-  xy: 3058, 540
-  size: 230, 240
-  orig: 230, 240
+  xy: 1924, 1754
+  size: 120, 120
+  orig: 120, 120
   offset: 0, 0
   index: -1
-endinglist
+statusuilevelbar
   rotate: false
-  xy: 1694, 100
-  size: 560, 140
-  orig: 560, 140
+  xy: 2, 876
+  size: 630, 40
+  orig: 630, 40
   offset: 0, 0
   index: -1
-eresist
+statusuiparty
   rotate: false
-  xy: 2256, 330
-  size: 800, 180
-  orig: 800, 180
+  xy: 1924, 1876
+  size: 122, 122
+  orig: 122, 122
   offset: 0, 0
   index: -1
-hero1
+statusuitbacback
   rotate: false
-  xy: 3860, 812
-  size: 150, 150
-  orig: 150, 150
+  xy: 1670, 796
+  size: 259, 120
+  orig: 259, 120
   offset: 0, 0
   index: -1
-hero2
+statusuitbacinventory
   rotate: false
-  xy: 3058, 388
-  size: 150, 150
-  orig: 150, 150
+  xy: 2, 754
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-hero3
+statusuitbacskill
   rotate: false
-  xy: 2488, 178
-  size: 150, 150
-  orig: 150, 150
+  xy: 2, 632
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-hero4
+statusuitbacstatus
   rotate: false
-  xy: 3210, 388
-  size: 150, 150
-  orig: 150, 150
+  xy: 2, 510
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-hero5
+statusuitbback
   rotate: false
-  xy: 2640, 178
-  size: 150, 150
-  orig: 150, 150
+  xy: 520, 674
+  size: 259, 120
+  orig: 259, 120
   offset: 0, 0
   index: -1
-inventory
+statusuitbinventory
   rotate: false
-  xy: 3290, 540
-  size: 230, 240
-  orig: 230, 240
+  xy: 2, 388
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-largehero
+statusuitbnoninventory
   rotate: false
-  xy: 1694, 242
-  size: 560, 720
-  orig: 560, 720
+  xy: 2, 266
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-level
+statusuitbnonskill
   rotate: false
-  xy: 2256, 512
-  size: 800, 450
-  orig: 800, 450
+  xy: 2, 144
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-name
+statusuitbnonstatus
   rotate: false
-  xy: 3058, 782
-  size: 800, 180
-  orig: 800, 180
+  xy: 2, 22
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-skill
+statusuitbskill
   rotate: false
-  xy: 3522, 540
-  size: 230, 240
-  orig: 230, 240
+  xy: 634, 796
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-status
+statusuitbstatus
   rotate: false
-  xy: 2256, 88
-  size: 230, 240
-  orig: 230, 240
+  xy: 1152, 796
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
 

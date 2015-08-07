@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -48,8 +50,13 @@ public class EventManager {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private MusicManager musicManager;
+	@Autowired
+	private EventCheckManager eventCheckManager;
+	@Autowired
+	private EventAssets eventAssets;
 
 	private Iterator<EventScene> eventSceneIterator;
+	private final int eventPlusRule = 1;
 
 	public void doStoryEvent(EventTypeEnum eventType) {
 		switch (eventType) {
@@ -72,6 +79,7 @@ public class EventManager {
 			case MOVE_SUB_NODE:
 				positionManager.setCurrentSubNodeName(getCurrentEvent()
 						.getEventComponent().get(0));
+				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 				movingManager.goCurrentPosition();
 				storySectionManager.runStorySequence();
 				break;
@@ -145,7 +153,9 @@ public class EventManager {
 	}
 
 	public void finishEvent() {
-		eventInfo.getCurrentEvent().setEventState(EventStateEnum.CLEARED);
+		if (eventInfo.getCurrentEvent().getEventState() == EventStateEnum.OPENED) {
+			eventInfo.getCurrentEvent().setEventState(EventStateEnum.CLEARED);
+		}
 	}
 
 	public void setCurrentEventInfo(EventPacket eventPacket) {
@@ -158,6 +168,59 @@ public class EventManager {
 
 	public void setCurrentEventNpc(String npcName) {
 		eventInfo.setCurrentEventNpc(npcName);
+		eventInfo.setCurrentEventNumber(1); //FIXME
 	}
 
+	public void setEventOpen(Event currentEvent) {
+		if (currentEvent.getEventState().equals(EventStateEnum.NOT_OPENED)) {
+			currentEvent.setEventState(EventStateEnum.OPENED);
+		}
+	}
+
+	public void setGreeting(boolean isGreeting) {
+		eventInfo.getCurrentEventInfo().setGreeting(isGreeting);
+	}
+
+	public boolean isGreeting() {
+		return eventInfo.getCurrentEventInfo().isGreeting();
+	}
+
+	public boolean isEventOpen(Event event) {
+		if (event.getEventState().equals(EventStateEnum.ALWAYS_OPEN)
+				|| event.getEventState().equals(EventStateEnum.OPENED)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isEventNotOpened(Event event) {
+		if (event.getEventState().equals(EventStateEnum.NOT_OPENED)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isEventCleared(Event event) {
+		if (event.getEventState().equals(EventStateEnum.CLEARED)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void triggerComponentEvent(int index) {
+		String eventComponent = getCurrentEvent().getEventComponent()
+				.get(index);
+		if (getCurrentEvent().getEventTarget() != null) {
+			NPC npc = eventAssets.getNpc(getCurrentEvent().getEventTarget());
+			if (eventCheckManager.checkSameWithComponent(eventComponent, npc
+					.getEvent(index + eventPlusRule).getEventName())) {
+				setCurrentEventNpc(getCurrentEvent().getEventTarget());
+				setCurrentEventNumber(index + eventPlusRule); // 알고리즘이필요함
+				screenFactory.show(ScreenEnum.EVENT);
+			}
+		}
+	}
 }

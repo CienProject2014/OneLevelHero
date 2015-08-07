@@ -33,7 +33,7 @@ public class StageFactory {
 	private ApplicationContext context;
 
 	public Stage makeStage(StageEnum stageEnum) {
-		Gdx.app.log("StageFactory", "makeStage(" + stageEnum.toString() + ")");
+		Gdx.app.log("StageFactory", "Make " + stageEnum.toString() + "Stage");
 		switch (stageEnum) {
 			case BUILDING:
 				return context.getBean(BuildingStage.class).makeStage();

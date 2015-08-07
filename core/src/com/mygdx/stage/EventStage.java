@@ -86,7 +86,6 @@ public class EventStage extends BaseOneLevelStage {
 		characterImage = new Image(eventScene.getCharacter());
 		tableStack.add(backgroundImage);
 		tableStack.add(makeChatTable());
-		// Greeting인지 아닌지 여부에 따라 처리
 		makeEventStage(eventManager.getCurrentEvent().getEventType());
 
 	}
@@ -96,7 +95,6 @@ public class EventStage extends BaseOneLevelStage {
 			case CHAT:
 				//makeChatStage();
 				break;
-			case SELECT_EVENT:
 			case GREETING:
 			case SELECT_COMPONENT:
 				//makeSelectEventStage();

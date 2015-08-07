@@ -2,6 +2,7 @@ package com.mygdx.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.model.jsonModel.AssetsFile;
 
 public class FrameSheet implements AssetsFile<Texture> {
 	private String filePath;
