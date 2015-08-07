@@ -161,8 +161,8 @@ public class GridHitbox extends Table {
 		}
 	}
 
-	private void findAndShow(float f, float g) {
-		Image tile = findTile(startX, startY);
+	private void findAndShow(float x, float y) {
+		Image tile = findTile(x, y);
 		if (tile != null) {
 			tile.setVisible(true);
 		}
