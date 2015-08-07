@@ -7,13 +7,14 @@ import java.util.Map.Entry;
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar.ProgressBarStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.model.FrameSheet;
@@ -32,17 +33,8 @@ public class StaticAssets {
 	public static Map<String, Texture> battleUiTextureMap = new HashMap<String, Texture>();
 	public static Map<String, HashMap<String, Float>> uiConstantsMap = new HashMap<String, HashMap<String, Float>>();
 
-	public static TextureRegionDrawable bartexture_bg = new TextureRegionDrawable(
-			new TextureRegion(new Texture(
-					Gdx.files.internal("texture/bgcolour.png")), 50, 22));
-	public static ProgressBarStyle barstyle_hp = new ProgressBarStyle(
-			bartexture_bg, new TextureRegionDrawable(new TextureRegion(
-					new Texture(Gdx.files.internal("texture/hpcolour.png")), 0,
-					22)));
-	public static ProgressBarStyle barstyle_turn = new ProgressBarStyle(
-			bartexture_bg, new TextureRegionDrawable(new TextureRegion(
-					new Texture(Gdx.files.internal("texture/turncolour.png")),
-					0, 22)));
+	public static ProgressBarStyle barstyle_hp;
+	public static ProgressBarStyle barstyle_turn;
 
 	public static TextureAtlas items = new TextureAtlas(
 			"texture/items/items.pack");
@@ -57,14 +49,38 @@ public class StaticAssets {
 	public static void loadAll() {
 		Gdx.app.debug("StaticAssets", "StaticAssets.loadAll() called");
 
-		filePathMap = JsonParser.parseMap(StringFile.class, Gdx.files
-				.internal("data/load/file_path.json").readString());
+		filePathMap = JsonParser.parseMap(StringFile.class,
+				Gdx.files.internal("data/load/file_path.json").readString());
 
 		loadSize(new Stage());
 		loadTexture();
 
 		// Loading all assets/resources into memory
 		rm.initAllResources();
+
+		{
+			Pixmap pixmap = new Pixmap(1, 22, Format.RGBA8888);
+			pixmap.setColor(Color.WHITE);
+			pixmap.fill();
+			skin.add("WHITE", new Texture(pixmap));
+		}
+		{
+			Pixmap pixmap = new Pixmap(1, 22, Format.RGBA8888);
+			pixmap.setColor(Color.RED);
+			pixmap.fill();
+			skin.add("RED", new Texture(pixmap));
+		}
+		{
+			Pixmap pixmap = new Pixmap(1, 22, Format.RGBA8888);
+			pixmap.setColor(Color.GREEN);
+			pixmap.fill();
+			skin.add("GREEN", new Texture(pixmap));
+		}
+
+		barstyle_hp = new ProgressBarStyle(skin.getDrawable("WHITE"),
+				skin.getDrawable("RED"));
+		barstyle_turn = new ProgressBarStyle(skin.getDrawable("WHITE"),
+				skin.getDrawable("GREEN"));
 	}
 
 	public static void loadSize(Stage stage) {
@@ -87,32 +103,31 @@ public class StaticAssets {
 				filePathMap.get(JsonEnum.CHARACTER_FILE_PATH.toString())
 						.loadFile());
 		for (Entry<String, TextureFile> entry : characterFileMap.entrySet()) {
-			characterTextureMap
-					.put(entry.getKey(), entry.getValue().loadFile());
+			characterTextureMap.put(entry.getKey(),
+					entry.getValue().loadFile());
 		}
 
-		Map<String, TextureFile> monsterFileMap = JsonParser.parseMap(
-				TextureFile.class,
-				filePathMap.get(JsonEnum.MONSTER_FILE_PATH.toString())
-						.loadFile());
+		Map<String, TextureFile> monsterFileMap = JsonParser
+				.parseMap(TextureFile.class, filePathMap
+						.get(JsonEnum.MONSTER_FILE_PATH.toString()).loadFile());
 		for (Entry<String, TextureFile> entry : monsterFileMap.entrySet()) {
 			monsterTextureMap.put(entry.getKey(), entry.getValue().loadFile());
 		}
 
-		Map<String, TextureFile> backgroundFileMap = JsonParser.parseMap(
-				TextureFile.class,
-				filePathMap.get(JsonEnum.BACKGROUND_FILE_PATH.toString())
-						.loadFile());
+		Map<String, TextureFile> backgroundFileMap = JsonParser
+				.parseMap(TextureFile.class,
+						filePathMap
+								.get(JsonEnum.BACKGROUND_FILE_PATH.toString())
+								.loadFile());
 		for (Entry<String, TextureFile> entry : backgroundFileMap.entrySet()) {
-			backgroundTextureMap.put(entry.getKey(), entry.getValue()
-					.loadFile());
+			backgroundTextureMap.put(entry.getKey(),
+					entry.getValue().loadFile());
 		}
 
 		animationSheetMap = JsonParser.parseMap(FrameSheet.class, filePathMap
 				.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
 
 		FileHandle fh;
-		FileHandle[] fhs;
 
 		if (Gdx.app.getType() == ApplicationType.Android) {
 			fh = Gdx.files.internal("texture/ui/battle");
@@ -122,7 +137,7 @@ public class StaticAssets {
 		}
 
 		if (fh.isDirectory()) {
-			fhs = fh.list();
+			FileHandle[] fhs = fh.list();
 
 			for (FileHandle e : fhs) {
 				if (e.extension().matches("^(png|jpg)")) {
@@ -130,8 +145,6 @@ public class StaticAssets {
 							new Texture(e.path()));
 				}
 			}
-		} else {
-			fhs = null;
 		}
 	}
 }
