@@ -3,7 +3,7 @@ package com.mygdx.currentState;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.model.Monster;
+import com.mygdx.model.unit.Monster;
 
 public class RoadInfo {
 	@Autowired

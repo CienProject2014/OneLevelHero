@@ -17,11 +17,11 @@ import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
-import com.mygdx.model.Event;
-import com.mygdx.model.EventPacket;
-import com.mygdx.model.EventScene;
-import com.mygdx.model.GameObject;
-import com.mygdx.model.NPC;
+import com.mygdx.model.event.Event;
+import com.mygdx.model.event.EventPacket;
+import com.mygdx.model.event.EventScene;
+import com.mygdx.model.event.GameObject;
+import com.mygdx.model.event.NPC;
 
 /**
  * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스 CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을 CHAT이벤트가 끝날때까지 리턴해준다.

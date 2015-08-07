@@ -19,7 +19,7 @@ import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
-import com.mygdx.model.EventScene;
+import com.mygdx.model.event.EventScene;
 
 /**
  * make and return stage(Event)

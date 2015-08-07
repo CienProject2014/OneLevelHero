@@ -4,5 +4,17 @@
   },
   "monster_mawang_01": {
     "filePath": "texture/monster/monster_mawang_01.png"
+  },
+  "battle_mawang_big":{
+	"filePath" : "texture/monster/battle_mawang_big.png"
+  },
+  "battle_mawang_small":{
+	"filePath" : "texture/monster/battle_mawang_small.png"
+  },
+  "battle_assassin_girl_small":{
+	"filePath" : "texture/monster/battle_assassin_girl_small.png"
+  }, 
+   "battle_assassin_girl_big":{
+	"filePath" : "texture/monster/battle_assassin_girl_big.png"
   }
 }

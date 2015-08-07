@@ -1,8 +1,8 @@
 package com.mygdx.currentState;
 
 import com.mygdx.enums.BattleStateEnum;
-import com.mygdx.model.Hero;
-import com.mygdx.model.Monster;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.Monster;
 
 public class BattleInfo {
 	private Monster monster;

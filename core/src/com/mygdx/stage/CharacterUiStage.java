@@ -18,8 +18,8 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.model.Hero;
-import com.mygdx.model.StatusBar;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.StatusBar;
 
 public class CharacterUiStage extends BaseOneLevelStage {
 	@Autowired

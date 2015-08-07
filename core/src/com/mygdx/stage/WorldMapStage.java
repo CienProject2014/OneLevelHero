@@ -16,7 +16,7 @@ import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.FieldManager;
-import com.mygdx.model.Connection;
+import com.mygdx.model.surroundings.Connection;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 

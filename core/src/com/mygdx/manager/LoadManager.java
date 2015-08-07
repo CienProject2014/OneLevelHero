@@ -11,8 +11,8 @@ import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.WorldNodeEnum;
-import com.mygdx.model.Hero;
-import com.mygdx.model.StorySection;
+import com.mygdx.model.event.StorySection;
+import com.mygdx.model.unit.Hero;
 
 public class LoadManager {
 	@Autowired

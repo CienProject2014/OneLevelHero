@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -25,10 +26,10 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.StorySectionManager;
-import com.mygdx.model.Hero;
-import com.mygdx.model.Monster;
-import com.mygdx.model.Unit;
-import com.mygdx.table.GridHitbox;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.Monster;
+import com.mygdx.model.unit.Unit;
+import com.mygdx.ui.GridHitbox;
 
 public class BattleStage extends BaseOneLevelStage {
 	@Autowired
@@ -39,7 +40,6 @@ public class BattleStage extends BaseOneLevelStage {
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("BattleStage");
 	// Table
-	private Table orderTable; // 순서를 나타내는 테이블
 	private GridHitbox gridHitbox; // grid hitbox 테이블
 	@Autowired
 	private StorySectionManager storySectionManager;
@@ -55,41 +55,52 @@ public class BattleStage extends BaseOneLevelStage {
 	// Unit array
 	private ArrayList<Unit> units;
 	private Queue<Unit> orderedUnits;
+	private Unit currentHero;
 
 	private boolean monsterTurn;
 	private float animationDelay;
 	private final float MONSTER_ATTACK_DELAY = 1.5f;
 
+	// Image
+	private Image currentAttackerBackground;
+	private Image turnTableBackground;
+	private HashMap<String, Image> turnBigImageMap = new HashMap<String, Image>();
+	private HashMap<String, Image> turnSmallImageMap = new HashMap<String, Image>();
+	private Table imageTable = new Table();
+
 	@Override
 	public void act(float delta) {
 		super.act(delta);
+
 		if (isMonsterTurn()) {
 			doMonsterTurn(delta);
 		}
 		if (animationManager.isPlayable()) {
 			playAnimation(delta);
 		}
+
 	}
 
 	public Stage makeStage() {
 		super.makeStage();
 		selectedMonster = battleManager.getSelectedMonster();
 		units = new ArrayList<Unit>(4);
-		units.addAll(partyManager.getPartyList());
+		units.addAll(partyManager.getBattleMemberList());
 		units.add(selectedMonster);
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 			initializeBattle(units, selectedMonster);
 		}
 		updateOrder();
 		orderedUnits = new LinkedList<Unit>(units);
-
+		currentHero = whoIsNextActor(); // 여기선 첫번째 턴
 		tableStack.add(makeBattleUiTable());
+		tableStack.add(makeTurnTable());
+		tableStack.add(makeImageTable());
 		gridHitbox = new GridHitbox(); // 평소에는 hidden
 		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
 		tableStack.add(gridHitbox);
 
 		addListener();
-
 		return this;
 	}
 
@@ -127,13 +138,13 @@ public class BattleStage extends BaseOneLevelStage {
 		animationDelay += delta;
 		hideRMenuButtons();
 		if (animationDelay > MONSTER_ATTACK_DELAY) {
-			Unit currentMonster = getCurrentActor();
+			Unit currentMonster = currentHero;
 			battleManager.attack(currentMonster, randomHero);
-			updateOrder();
 			setMonsterTurn(false);
 			showRMenuButtons();
 			animationDelay = 0;
 		}
+		updateImageTable();
 	}
 
 	private void hideRMenuButtons() {
@@ -154,12 +165,15 @@ public class BattleStage extends BaseOneLevelStage {
 			// FIXME
 			storySectionManager.triggerSectionEvent(
 					EventTypeEnum.BATTLE_CONTROL, "normal_attack");
+			currentHero = getCurrentActor();
+			updateImageTable();
 			if (battleManager.getBattleState()
 					.equals(BattleStateEnum.GAME_OVER)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 				battleManager.goCurrentPosition();
 			}
 		}
+
 	}
 
 	public Table makeBattleUiTable() {
@@ -174,10 +188,44 @@ public class BattleStage extends BaseOneLevelStage {
 		return uiTable;
 	}
 
+	private Table makeTurnTable() {
+		Table turnTable = new Table();
+		makeTurnBackgroundImage();
+		makeBattleTurnImage();
+		currentAttackerBackground.setWidth(137);
+		currentAttackerBackground.setHeight(137);
+		turnTable.add(currentAttackerBackground);
+		turnTable.add(turnTableBackground);
+		turnTable.left().bottom();
+		turnTable.padLeft(15).padBottom(15);
+		return turnTable;
+	}
+
+	private Table makeImageTable() {
+		turnBigImageMap.get(currentHero.getFacePath()).setWidth(117);
+		turnBigImageMap.get(currentHero.getFacePath()).setHeight(117);
+		imageTable.add(turnBigImageMap.get(currentHero.getFacePath()))
+				.padRight(15);
+
+		for (Unit unit : orderedUnits) {
+			turnSmallImageMap.get(unit.getFacePath()).setWidth(84);
+			turnSmallImageMap.get(unit.getFacePath()).setHeight(84);
+			imageTable.add(turnSmallImageMap.get(unit.getFacePath()));
+		}
+		imageTable.left().bottom();
+		imageTable.padLeft(17).padBottom(17);
+
+		return imageTable;
+	}
+
+	private void updateImageTable() {
+		imageTable.reset();
+		imageTable = makeImageTable();
+	}
+
 	private Table makeRMenuTable() {
 		Table rMenuTable = new Table();
 		makeRButton();
-
 		rMenuButtonList = new ArrayList<>();
 		rMenuButtonList.add(attackButton);
 		rMenuButtonList.add(skillButton);
@@ -211,7 +259,6 @@ public class BattleStage extends BaseOneLevelStage {
 		 * setDarkButton(); break; default: Gdx.app.log("BattleStage",
 		 * "Rmenu ImageButton Target 에러"); break; } }
 		 */
-
 		return rMenuTable;
 	}
 
@@ -298,19 +345,41 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer,
 					int button) {
-				gridHitbox.hideAllTiles();
-				if (whoIsNextActor() instanceof Monster) {
-					setMonsterTurn(true);
-				}
 				if (gridHitbox.isGridShow()
 						&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
-					Unit currentHero = getCurrentActor();
 					battleManager.attack(currentHero, selectedMonster);
 					gridHitbox.hideGrid();
 				}
 
+				gridHitbox.hideAllTiles();
+				if (whoIsNextActor() instanceof Monster) {
+					setMonsterTurn(true);
+				}
+
 			}
 		});
+	}
+
+	private void makeTurnBackgroundImage() {
+		currentAttackerBackground = new Image(
+				StaticAssets.battleUiTextureMap.get("battleui_turntable_01"));
+		turnTableBackground = new Image(
+				StaticAssets.battleUiTextureMap.get("battleui_turntable_02"));
+	}
+
+	private void makeBattleTurnImage() {
+		turnBigImageMap.put(selectedMonster.getFacePath(),
+				new Image(selectedMonster.getBigBattleTexture()));
+		for (Hero hero : partyManager.getBattleMemberList()) {
+			turnBigImageMap.put(hero.getFacePath(),
+					new Image(hero.getBigBattleTexture()));
+		}
+		turnSmallImageMap.put(selectedMonster.getFacePath(),
+				new Image(selectedMonster.getSmallBattleTexture()));
+		for (Hero hero : partyManager.getBattleMemberList()) {
+			turnSmallImageMap.put(hero.getFacePath(),
+					new Image(hero.getSmallBattleTexture()));
+		}
 	}
 
 	private void makeRButton() {

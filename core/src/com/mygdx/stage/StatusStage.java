@@ -25,7 +25,7 @@ import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.TextureManager;
-import com.mygdx.model.Hero;
+import com.mygdx.model.unit.Hero;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;

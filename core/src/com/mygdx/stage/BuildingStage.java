@@ -17,8 +17,8 @@ import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.GameObjectEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
-import com.mygdx.model.Building;
-import com.mygdx.model.GameObject;
+import com.mygdx.model.event.GameObject;
+import com.mygdx.model.surroundings.Building;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class BuildingStage extends BaseOverlapStage {

@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.manager.PartyManager;
-import com.mygdx.model.Hero;
+import com.mygdx.model.unit.Hero;
 
 public class StatusMessagePopup extends MessagePopup {
 	@Autowired
