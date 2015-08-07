@@ -25,14 +25,14 @@ public class BaseOverlapStage extends Overlap2DStage {
 	@Autowired
 	protected PositionManager positionManager;
 
-	protected OrthographicCamera orthographicCamera = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH,
-			StaticAssets.BASE_WINDOW_HEIGHT);
+	protected OrthographicCamera orthographicCamera = new OrthographicCamera(
+			StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
 
 	protected CameraStateEnum cameraState = CameraStateEnum.STATIC;
 
 	protected Vector3 cameraPosition = new Vector3();
 
-	public static final int MOVING_SPEED = 10;
+	public static final int MOVING_SPEED = 14;
 
 	@Override
 	public void act() {
