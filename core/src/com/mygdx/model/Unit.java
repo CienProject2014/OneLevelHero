@@ -13,6 +13,8 @@ public class Unit implements Comparable<Unit> {
 	private int gauge;
 	private Texture bodyTexture;
 	private Texture faceTexture;
+	private Texture bigBattleTexture;
+	private Texture smallBattleTexture;
 
 	/* For Json Work */
 	private ArrayList<String> skillList;
@@ -100,5 +102,29 @@ public class Unit implements Comparable<Unit> {
 				faceTexture = TextureManager.getMonsterFaceTexture(name);
 		}
 		return faceTexture;
+	}
+
+	public Texture getBigBattleTexture() {
+		if (bigBattleTexture == null) {
+			if (this instanceof Hero)
+				bigBattleTexture = TextureManager
+						.getCharacterBattleTurnBigTexture(name);
+			else
+				bigBattleTexture = TextureManager
+						.getMonsterBattleTurnBigTexture(name);
+		}
+		return bigBattleTexture;
+	}
+
+	public Texture getSmallBattleTexture() {
+		if (smallBattleTexture == null) {
+			if (this instanceof Hero)
+				smallBattleTexture = TextureManager
+						.getCharacterBattleTurnSmallTexture(name);
+			else
+				smallBattleTexture = TextureManager
+						.getMonsterBattleTurnSmallTexture(name);
+		}
+		return smallBattleTexture;
 	}
 }

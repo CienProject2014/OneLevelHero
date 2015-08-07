@@ -53,8 +53,6 @@ public class BattleStage extends BaseOneLevelStage {
 	private ImageButton defenseButton;
 	private ImageButton waitButton;
 	private ImageButton escapeButton;
-	private Image currentAttackerBackground;
-	private Image turnTableBackground;
 	private ArrayList<ImageButton> imageButtonList;
 	private Monster selectedMonster;
 
@@ -67,6 +65,11 @@ public class BattleStage extends BaseOneLevelStage {
 
 	// Trigger
 	private boolean monsterTrigger;
+
+	// Image
+	private Image currentAttackerBackground;
+	private Image turnTableBackground;
+	private ArrayList<Image> turnBigImage;
 
 	public BattleStage() {
 		Gdx.app.debug("BattleStage", "Constructor() call");
@@ -166,7 +169,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private Table makeTurnTable() {
 		Table turnTable = new Table();
-		makeTurnImage();
+		makeTurnBackgroundImage();
 		currentAttackerBackground.setWidth(137);
 		currentAttackerBackground.setHeight(137);
 		turnTable.add(currentAttackerBackground);
@@ -334,11 +337,18 @@ public class BattleStage extends BaseOneLevelStage {
 		});
 	}
 
-	private void makeTurnImage() {
+	private void makeTurnBackgroundImage() {
 		currentAttackerBackground = new Image(
 				StaticAssets.battleUiTextureMap.get("battleui_turntable_01"));
 		turnTableBackground = new Image(
 				StaticAssets.battleUiTextureMap.get("battleui_turntable_02"));
+	}
+
+	private void makeBattleTurnImage() {
+		turnBigImage = new ArrayList<Image>(partyManager.getBattleMemberList()
+				.size() + 1);
+		turnBigImage.add(new Image(battleManager.getSelectedMonster()
+				.getBigBattleTexture()));
 	}
 
 	private void makeRButton() {
