@@ -1,9 +1,11 @@
-package com.mygdx.model;
+package com.mygdx.model.unit;
 
 import java.util.ArrayList;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.model.item.Equipment;
+import com.mygdx.model.item.Item;
 
 public class Hero extends Unit implements Fightable {
 	private Equipment equipment;
@@ -50,14 +52,14 @@ public class Hero extends Unit implements Fightable {
 		} else {
 			defender.getStatus().setHp(0);
 		}
-		Gdx.app.log("Monster", this.getName() + "가 " + defender.getName()
-				+ "를 공격하였습니다!");
+		Gdx.app.log("Hero", this.getName() + "이(가) " + defender.getName()
+				+ "을(를) 공격하였습니다!");
 	}
 
 	@Override
 	public void skillAttack(Unit defender, String skillName) {
-		Gdx.app.log("Hero", this.getName() + "가 " + defender.getName() + "에게 "
-				+ skillName + "를 사용하였습니다!");
+		Gdx.app.log("Hero", this.getName() + "이(가) " + defender.getName()
+				+ "에게 " + skillName + "을(를) 사용하였습니다!");
 
 	}
 }

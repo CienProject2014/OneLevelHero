@@ -1,4 +1,4 @@
-package com.mygdx.table;
+package com.mygdx.ui;
 
 import java.util.HashMap;
 

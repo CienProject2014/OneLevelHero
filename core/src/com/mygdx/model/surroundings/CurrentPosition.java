@@ -1,6 +1,8 @@
-package com.mygdx.model;
+package com.mygdx.model.surroundings;
 
 import java.util.List;
+
+import com.mygdx.model.unit.Monster;
 
 public class CurrentPosition {
 	private String currentNode; // 현재 마을/던전/교차로 이름

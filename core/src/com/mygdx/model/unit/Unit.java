@@ -1,10 +1,11 @@
-package com.mygdx.model;
+package com.mygdx.model.unit;
 
 import java.util.ArrayList;
 import java.util.Map;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.manager.TextureManager;
+import com.mygdx.model.battle.Skill;
 
 public abstract class Unit implements Comparable<Unit>, Fightable {
 	private String facePath;

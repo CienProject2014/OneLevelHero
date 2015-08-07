@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.model.unit;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mygdx.ui.StatusBarUi;

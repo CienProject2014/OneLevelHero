@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.model.surroundings;
 
 import java.util.List;
 

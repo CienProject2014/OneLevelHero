@@ -25,10 +25,10 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.StorySectionManager;
-import com.mygdx.model.Hero;
-import com.mygdx.model.Monster;
-import com.mygdx.model.Unit;
-import com.mygdx.table.GridHitbox;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.Monster;
+import com.mygdx.model.unit.Unit;
+import com.mygdx.ui.GridHitbox;
 
 public class BattleStage extends BaseOneLevelStage {
 	@Autowired

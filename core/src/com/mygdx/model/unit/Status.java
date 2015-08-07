@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.model.unit;
 
 public class Status {
 	private int attack;

@@ -3,11 +3,11 @@ package com.mygdx.assets;
 import java.util.Map;
 
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.Event;
-import com.mygdx.model.EventPacket;
-import com.mygdx.model.GameObject;
-import com.mygdx.model.NPC;
-import com.mygdx.model.StorySection;
+import com.mygdx.model.event.Event;
+import com.mygdx.model.event.EventPacket;
+import com.mygdx.model.event.GameObject;
+import com.mygdx.model.event.NPC;
+import com.mygdx.model.event.StorySection;
 import com.mygdx.util.JsonParser;
 
 public class EventAssets implements JsonAssetsInitializable {

@@ -1,6 +1,7 @@
-package com.mygdx.model;
+package com.mygdx.model.event;
 
 import java.util.ArrayList;
+
 
 public class StorySection {
 	private ArrayList<EventPacket> sequencialEvents;

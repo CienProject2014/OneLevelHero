@@ -18,8 +18,8 @@ import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SelectEventListener;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MovingManager;
-import com.mygdx.model.Event;
-import com.mygdx.model.NPC;
+import com.mygdx.model.event.Event;
+import com.mygdx.model.event.NPC;
 
 public class SelectEventStage extends BaseOneLevelStage {
 	@Autowired

@@ -13,7 +13,7 @@ import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
-import com.mygdx.model.Connection;
+import com.mygdx.model.surroundings.Connection;
 
 public class ArrowButtonListener extends ClickListener {
 	@Autowired

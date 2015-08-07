@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.model.event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

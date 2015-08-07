@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.TextureEnum;
-import com.mygdx.model.FrameSheet;
+import com.mygdx.model.battle.FrameSheet;
 
 public class AnimationManager {
 	@Autowired

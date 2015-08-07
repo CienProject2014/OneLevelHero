@@ -8,7 +8,7 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.Assets;
-import com.mygdx.model.NPC;
+import com.mygdx.model.event.NPC;
 import com.mygdx.util.JsonParser;
 
 public class NPCJsonModelingTest {

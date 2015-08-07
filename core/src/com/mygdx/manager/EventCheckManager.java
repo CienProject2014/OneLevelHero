@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.model.Event;
-import com.mygdx.model.StorySectionPacket;
+import com.mygdx.model.event.Event;
+import com.mygdx.model.event.StorySectionPacket;
 
 public class EventCheckManager {
 	@Autowired

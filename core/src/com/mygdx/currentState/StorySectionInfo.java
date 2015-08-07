@@ -3,7 +3,7 @@ package com.mygdx.currentState;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.EventAssets;
-import com.mygdx.model.StorySection;
+import com.mygdx.model.event.StorySection;
 
 public class StorySectionInfo {
 	@Autowired

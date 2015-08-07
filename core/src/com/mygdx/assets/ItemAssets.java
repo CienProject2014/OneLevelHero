@@ -3,7 +3,7 @@ package com.mygdx.assets;
 import java.util.Map;
 
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.Item;
+import com.mygdx.model.item.Item;
 import com.mygdx.util.JsonParser;
 
 public class ItemAssets implements JsonAssetsInitializable {

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.PartyInfo;
-import com.mygdx.model.Hero;
+import com.mygdx.model.unit.Hero;
 
 public class PartyManager {
 	@Autowired

@@ -1,4 +1,5 @@
-package com.mygdx.model;
+package com.mygdx.model.unit;
+
 
 public interface Fightable {
 	public void attack(Unit defender);

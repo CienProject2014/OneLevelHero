@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.ItemAssets;
 import com.mygdx.assets.SkillAssets;
-import com.mygdx.model.Hero;
-import com.mygdx.model.Item;
-import com.mygdx.model.Monster;
-import com.mygdx.model.Skill;
-import com.mygdx.model.Unit;
+import com.mygdx.model.battle.Skill;
+import com.mygdx.model.item.Item;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.Monster;
+import com.mygdx.model.unit.Unit;
 
 public class UnitManager {
 	@Autowired

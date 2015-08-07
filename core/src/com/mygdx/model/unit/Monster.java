@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.model.unit;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.MonsterEnum;

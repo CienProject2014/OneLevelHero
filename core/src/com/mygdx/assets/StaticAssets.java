@@ -16,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.FrameSheet;
+import com.mygdx.model.battle.FrameSheet;
 import com.mygdx.model.jsonModel.StringFile;
 import com.mygdx.model.jsonModel.TextureFile;
 import com.mygdx.util.JsonParser;
