@@ -13,28 +13,32 @@ public class GridHitbox extends Table {
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("BattleStage");
 
+	private final int TILE_WIDTH = 128;
+
 	private Image[][] tiles;
 	private float tableWidth;
 	private float tableHeight;
 	private int rows;
 	private int columns;
 
+	private float startX, startY;
+
 	private boolean gridShow;
 
 	public void setSizeType(MonsterEnum.SizeType sizeType) {
 		switch (sizeType) {
-			case SMALL:
+			case SMALL :
 				// TODO 추후 구현
 				break;
-			case MEDIUM:
+			case MEDIUM :
 				setMediumSizeType();
 				break;
-			case LARGE:
+			case LARGE :
 				// TODO 추후 구현
 				break;
 		}
-		this.add(makeGridTable(sizeType)).padTop(
-				uiConstantsMap.get("gridPadTop"));
+		Stack stk = makeGridTable(sizeType);
+		this.add(stk).padTop(uiConstantsMap.get("gridPadTop"));
 	}
 
 	private void setMediumSizeType() {
@@ -66,9 +70,9 @@ public class GridHitbox extends Table {
 			}
 			tileTable.row();
 		}
+		hideAllTiles();
 
 		Table imageTable = new Table();
-
 		// FIXME Medium을 sizeType에 맞춴
 		imageTable.add(getGridImage(sizeType))
 				.width(uiConstantsMap.get("gridTableWidthMedium"))
@@ -78,6 +82,11 @@ public class GridHitbox extends Table {
 		setVisible(false);
 
 		return stack;
+	}
+
+	public void setStartPosition(float x, float y) {
+		startX = x;
+		startY = y;
 	}
 
 	public void showGrid() {
@@ -110,14 +119,50 @@ public class GridHitbox extends Table {
 	}
 
 	public void showTileWhereClicked(float x, float y) {
+		hideAllTiles();
+
+		float dx = x - startX;
+		float dy = y - startY;
+
+		if (dx == 0 || dy == 0) {
+			return;
+		}
+
+		if (Math.abs(dx) > Math.abs(dy)) {
+			int deltaX = (int) (TILE_WIDTH * (dx / Math.abs(dx)));
+			int deltaY = (int) (TILE_WIDTH * (dy / Math.abs(dx)));
+			if (dx > 0) {
+				for (int i = 0, j = 0; i < dx; i += deltaX, j += deltaY) {
+					findAndShow(startX + i, startY + j);
+				}
+			} else {
+				for (int i = 0, j = 0; i > dx; i += deltaX, j += deltaY) {
+					findAndShow(startX + i, startY + j);
+				}
+			}
+
+		} else {
+			int deltaX = (int) (TILE_WIDTH * (dx / Math.abs(dy)));
+			int deltaY = (int) (TILE_WIDTH * (dy / Math.abs(dy)));
+			if (dy > 0) {
+				for (int i = 0, j = 0; j < dy; i += deltaX, j += deltaY) {
+					findAndShow(startX + i, startY + j);
+				}
+			} else {
+				for (int i = 0, j = 0; j > dy; i += deltaX, j += deltaY) {
+					findAndShow(startX + i, startY + j);
+				}
+			}
+		}
+
 		Image tile = findTile(x, y);
 		if (tile != null) {
 			tile.setVisible(true);
 		}
 	}
 
-	public void showTileWhereMoved(float x, float y) {
-		Image tile = findTile(x, y);
+	private void findAndShow(float f, float g) {
+		Image tile = findTile(startX, startY);
 		if (tile != null) {
 			tile.setVisible(true);
 		}
