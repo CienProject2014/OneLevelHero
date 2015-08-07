@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -39,7 +40,6 @@ public class BattleStage extends BaseOneLevelStage {
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("BattleStage");
 	// Table
-	private Table orderTable; // 순서를 나타내는 테이블
 	private GridHitbox gridHitbox; // grid hitbox 테이블
 	@Autowired
 	private StorySectionManager storySectionManager;
@@ -53,6 +53,8 @@ public class BattleStage extends BaseOneLevelStage {
 	private ImageButton defenseButton;
 	private ImageButton waitButton;
 	private ImageButton escapeButton;
+	private Image currentAttackerBackground;
+	private Image turnTableBackground;
 	private ArrayList<ImageButton> imageButtonList;
 	private Monster selectedMonster;
 
@@ -105,6 +107,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 		// make table stack and add to stage
 		tableStack.add(makeBattleUiTable());
+		tableStack.add(makeTurnTable());
 		gridHitbox = new GridHitbox();
 		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
 		tableStack.add(gridHitbox);
@@ -161,6 +164,18 @@ public class BattleStage extends BaseOneLevelStage {
 		return uiTable;
 	}
 
+	private Table makeTurnTable() {
+		Table turnTable = new Table();
+		makeTurnImage();
+		currentAttackerBackground.setWidth(137);
+		currentAttackerBackground.setHeight(137);
+		turnTable.add(currentAttackerBackground);
+		turnTable.add(turnTableBackground);
+		turnTable.left().bottom();
+		turnTable.padLeft(15).padBottom(15);
+		return turnTable;
+	}
+
 	private Table makeRMenuTable() {
 		Table rMenuTable = new Table();
 		makeRButton();
@@ -190,24 +205,14 @@ public class BattleStage extends BaseOneLevelStage {
 				rMenuTable.row();
 			}
 		}
-		/* 다른버튼 막기 //FIXME
-		if (eventCheckManager.checkBattleEventType()) {
-			switch (eventCheckManager.getBattleControlButton()) {
-				case NORMAL_ATTACK:
-					imageButtonList.remove(attackButton);
-					setDarkButton();
-					break;
-				case SKILL_ATTACK:
-					imageButtonList.remove(skillButton);
-					setDarkButton();
-					break;
-				default:
-					Gdx.app.log("BattleStage", "Rmenu ImageButton Target 에러");
-					break;
-			}
-		}
-		*/
-
+		/*
+		 * 다른버튼 막기 //FIXME if (eventCheckManager.checkBattleEventType()) {
+		 * switch (eventCheckManager.getBattleControlButton()) { case
+		 * NORMAL_ATTACK: imageButtonList.remove(attackButton); setDarkButton();
+		 * break; case SKILL_ATTACK: imageButtonList.remove(skillButton);
+		 * setDarkButton(); break; default: Gdx.app.log("BattleStage",
+		 * "Rmenu ImageButton Target 에러"); break; } }
+		 */
 		return rMenuTable;
 	}
 
@@ -327,6 +332,13 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.runAway();
 			}
 		});
+	}
+
+	private void makeTurnImage() {
+		currentAttackerBackground = new Image(
+				StaticAssets.battleUiTextureMap.get("battleui_turntable_01"));
+		turnTableBackground = new Image(
+				StaticAssets.battleUiTextureMap.get("battleui_turntable_02"));
 	}
 
 	private void makeRButton() {
