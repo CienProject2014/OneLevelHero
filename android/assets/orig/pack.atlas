@@ -730,183 +730,84 @@ size: 2048,4096
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-blackwoodbackground
+bgblackwood
   rotate: false
-  xy: 2, 1373
+  xy: 2, 942
   size: 1920, 2160
   orig: 1920, 2160
   offset: 0, 0
   index: -1
-mainuitbplaceblackwood
+downbutton
   rotate: false
-  xy: 2, 1238
-  size: 620, 133
-  orig: 620, 133
+  xy: 288, 532
+  size: 234, 122
+  orig: 234, 122
   offset: 0, 0
   index: -1
-townuiarrowblackwoodforest
+townuiarrowblackblackwoodforest
   rotate: false
-  xy: 2, 164
-  size: 160, 150
-  orig: 160, 150
+  xy: 2, 656
+  size: 284, 284
+  orig: 284, 284
   offset: 0, 0
   index: -1
-townuiarrowcopweb
+townuiarrowblackcopweb
   rotate: false
-  xy: 424, 1086
-  size: 170, 150
-  orig: 170, 150
+  xy: 2, 370
+  size: 284, 284
+  orig: 284, 284
   offset: 0, 0
   index: -1
-townuiarrowmawang
+townuiarrowblackmawang
+  rotate: false
+  xy: 288, 656
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowblackmiddle
+  rotate: false
+  xy: 2, 84
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuibuildtagbuilding
   rotate: false
   xy: 2, 2
-  size: 150, 160
-  orig: 150, 160
-  offset: 0, 0
-  index: -1
-townuiarrowmiddle
-  rotate: false
-  xy: 424, 934
-  size: 160, 150
-  orig: 160, 150
-  offset: 0, 0
-  index: -1
-townuibuildtag
-  rotate: false
-  xy: 2, 1136
-  size: 420, 100
-  orig: 420, 100
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
 townuibuildtaggrocery
   rotate: false
-  xy: 624, 1271
-  size: 420, 100
-  orig: 420, 100
+  xy: 288, 450
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
 townuibuildtaginn
   rotate: false
-  xy: 2, 1034
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuibuildtagprivatehouse
-  rotate: false
-  xy: 1046, 1271
-  size: 420, 100
-  orig: 420, 100
+  xy: 574, 736
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
 townuibuildtagvillagehead
   rotate: false
-  xy: 2, 932
-  size: 420, 100
-  orig: 420, 100
+  xy: 810, 860
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
-townuidown
+upbutton
   rotate: false
-  xy: 2, 440
-  size: 234, 122
-  orig: 234, 122
-  offset: 0, 0
-  index: -1
-townuileft
-  rotate: false
-  xy: 1924, 3299
-  size: 122, 234
-  orig: 122, 234
-  offset: 0, 0
-  index: -1
-townuimovetag
-  rotate: false
-  xy: 1468, 1281
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuimovetagbalckwoodforest
-  rotate: false
-  xy: 2, 840
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuimovetagcopweb
-  rotate: false
-  xy: 2, 748
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuimovetagmawang
-  rotate: false
-  xy: 2, 656
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuimovetagmiddle
-  rotate: false
-  xy: 2, 564
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuiright
-  rotate: false
-  xy: 1924, 3063
-  size: 122, 234
-  orig: 122, 234
-  offset: 0, 0
-  index: -1
-townuiup
-  rotate: false
-  xy: 2, 316
+  xy: 574, 818
   size: 234, 122
   orig: 234, 122
   offset: 0, 0
   index: -1
 
-
-  
-
-blackwood_headhouse_pack.png
-size: 2048,2048
-format: RGBA8888
-filter: Linear,Linear
-repeat: none
-chestafteropen
-  rotate: false
-  xy: 2, 2
-  size: 225, 239
-  orig: 225, 239
-  offset: 0, 0
-  index: -1
-chestbeforeopen
-  rotate: false
-  xy: 304, 642
-  size: 225, 198
-  orig: 225, 198
-  offset: 0, 0
-  index: -1
-headhousebg
-  rotate: false
-  xy: 2, 842
-  size: 1920, 1080
-  orig: 1920, 1080
-  offset: 0, 0
-  index: -1
-waiji601
-  rotate: false
-  xy: 2, 243
-  size: 300, 597
-  orig: 300, 597
-  offset: 0, 0
-  index: -1
 
   
 blackwood_forest_entrance_pack.png
