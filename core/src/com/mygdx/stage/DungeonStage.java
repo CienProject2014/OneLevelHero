@@ -25,8 +25,6 @@ public class DungeonStage extends BaseOverlapStage {
 	private int currentPos;
 	private boolean currentHeading;
 	private ArrayList<Dungeon.Connection> selectableForward, selectableBackward;
-	
-	private int minimapPosX, minimapPosY;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
@@ -53,7 +51,6 @@ public class DungeonStage extends BaseOverlapStage {
 		btnRoad[1] = sceneLoader.getRoot().getCompositeById("arrow_up");
 		btnRoad[2] = sceneLoader.getRoot().getCompositeById("arrow_right");
 
-		btnTurn.setTouchable(Touchable.enabled);
 		btnTurn.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -77,12 +74,15 @@ public class DungeonStage extends BaseOverlapStage {
 		selectableBackward.clear();
 
 		Dungeon.Node currentNode = mapInfo.nodes.get(currentPos);
-		currentNode.setAlpha(1);
+		sceneLoader.getCompositeElementById(currentNode.getLabel()).setVisible(true);
 		for (Dungeon.Connection e : mapInfo.connections)
-			if (e.isFrom(currentNode))
+			if (e.isFrom(currentNode)) {
 				selectableForward.add(e);
-			else if (e.isTo(currentNode))
+				sceneLoader.getCompositeElementById(e.getLabel()).setVisible(true);
+			} else if (e.isTo(currentNode)) {
 				selectableBackward.add(e);
+				sceneLoader.getCompositeElementById(e.getLabel()).setVisible(true);
+			}
 
 		// FIXME UI
 		btnTurn.setTouchable(!currentHeading ? Touchable.enabled : Touchable.disabled);
@@ -105,17 +105,10 @@ public class DungeonStage extends BaseOverlapStage {
 		update();
 
 		Dungeon.Node currentNode = mapInfo.nodes.get(currentPos);
-		if (currentNode.chkFlg(Dungeon.Node.FLG_ENTRANCE))
+		if (currentNode.chkFlag(Dungeon.Node.FLG_ENTRANCE))
 			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-	}
-
-	@Override
-	public void draw() {
-		// FIXME
-		getBatch().begin();
-		for (Dungeon.Node e : mapInfo.nodes)
-			getBatch().draw(e.getMinimapTexture(), minimapPosX, minimapPosY);
-		getBatch().end();
+		else if (currentNode.chkFlag(Dungeon.Node.FLG_ENCOUNT))
+			screenFactory.show(ScreenEnum.ENCOUNTER);
 	}
 
 	private class TouchRoadListener extends InputListener {

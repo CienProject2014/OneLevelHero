@@ -3,8 +3,6 @@ package com.mygdx.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.badlogic.gdx.graphics.Texture;
-
 public class Dungeon {
 	public ArrayList<Node> nodes;
 	public ArrayList<Connection> connections;
@@ -17,67 +15,73 @@ public class Dungeon {
 		public final static int FLG_TRESURE = (1 << 3) | FLG_ROAD;
 		public final static int FLG_BOSS = (1 << 4) | FLG_ENCOUNT;
 
-		private final static String TAG_TEXTURE = "Texture";
-		private final static String TAG_ALPHA = "isVisible";
+		private final static String TAG_LABEL = "label";
+		private final static String TAG_FLAG = "flag";
 
-		private int flg;
-		// NOTE TEMP
 		public HashMap<String, Object> data;
 
-		public Node(int flg) {
-			this.flg = flg;
+		public boolean chkFlag(int flg) {
+			return (flg & (int) this.data.get(TAG_FLAG)) != FLG_NULL;
 		}
 
-		public boolean chkFlg(int flg) {
-			return (this.flg & flg) != FLG_NULL;
+		public void addjustFlag(int flg) {
+			this.data.put(TAG_FLAG, flg | (int) this.data.get(TAG_FLAG));
 		}
 
-		public void addjustFlg(int flg) {
-			this.flg |= flg;
+		public String getLabel() {
+			return (String) this.data.get(TAG_LABEL);
 		}
 
-		public Texture getMinimapTexture() {
-			if (!data.containsKey(TAG_TEXTURE))
-				throw new NullPointerException("Minimap Texture is NULL.");
-
-			return (Texture) data.get(TAG_TEXTURE);
+		public void setLabel(String label) {
+			this.data.put(TAG_LABEL, label);
 		}
 
-		public void setMinimapTexture(Texture tex) {
-			data.put(TAG_TEXTURE, tex);
+		public int getFlag() {
+			return (int) this.data.get(TAG_FLAG);
 		}
 
-		public float getAlpha() {
-			return (float) data.get(TAG_ALPHA);
-		}
-
-		public void setAlpha(float alpha) {
-			data.put(TAG_ALPHA, alpha);
+		public void setFlag(int flg) {
+			this.data.put(TAG_FLAG, flg);
 		}
 	}
 
 	public class Connection {
-		private Node from, to;
+		private final static String TAG_LABEL = "label";
+		private final static String TAG_FROM = "from";
+		private final static String TAG_TO = "to";
 
-		public Connection(Node from, Node to) {
-			this.from = from;
-			this.to = to;
-		}
+		public HashMap<String, Object> data;
 
 		public boolean isFrom(Node node) {
-			return node == from;
+			return node == getFrom();
 		}
 
 		public boolean isTo(Node node) {
-			return node == to;
+			return node == getTo();
+		}
+
+		public String getLabel() {
+			return (String) this.data.get(TAG_LABEL);
+		}
+
+		public void setLabel(String label) {
+			this.data.put(TAG_LABEL, label);
 		}
 
 		public Node getFrom() {
-			return from;
+			return (Node) this.data.get(TAG_FROM);
+		}
+
+		public void setFrom(Node from) {
+			this.data.put(TAG_FROM, from);
 		}
 
 		public Node getTo() {
-			return to;
+			return (Node) this.data.get(TAG_TO);
+		}
+
+		public void setTo(Node to) {
+			this.data.put(TAG_TO, to);
 		}
 	}
 }
