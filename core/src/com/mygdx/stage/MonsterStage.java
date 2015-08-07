@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -59,8 +58,7 @@ public class MonsterStage extends BaseOneLevelStage {
 
 		outerTable.setBackground(getBackgroundTRD(), false);
 		outerTable.top(); // table을 위로 정렬
-		outerTable.add(monsterTable)
-				.padTop(uiConstantsMap.get("monsterPadTop"))
+		outerTable.add(monsterTable).padTop(uiConstantsMap.get("monsterPadTop"))
 				.width(uiConstantsMap.get("monsterTableWidth"))
 				.height(uiConstantsMap.get("monsterTableHeight")).row();
 
@@ -74,8 +72,8 @@ public class MonsterStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		monsterHpLabel.setText(monsterStatusBar.getHp() + "/"
-				+ monsterStatusBar.getMaxHp());
+		monsterHpLabel.setText(
+				monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp());
 		monsterStatusBar.update();
 	}
 
@@ -84,8 +82,9 @@ public class MonsterStage extends BaseOneLevelStage {
 		monsterHpTable.add(monsterStatusBar.getHpBar())
 				.width(uiConstantsMap.get("hpTableWidth")).row();
 
-		monsterHpLabel = new Label(monsterStatusBar.getHp() + "/"
-				+ monsterStatusBar.getMaxHp(), uiComponentAssets.getSkin());
+		monsterHpLabel = new Label(
+				monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp(),
+				uiComponentAssets.getSkin());
 		monsterHpTable.add(monsterHpLabel);
 
 		return monsterHpTable;
@@ -99,11 +98,12 @@ public class MonsterStage extends BaseOneLevelStage {
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
 		if (battleManager.getSelectedMonster().getName().equals("mawang")) {
-			return new TextureRegionDrawable(new TextureRegion(
-					StaticAssets.backgroundTextureMap.get("bg_devilcastle_01")));
+			return new TextureRegionDrawable(
+					new TextureRegion(StaticAssets.backgroundTextureMap
+							.get("bg_devilcastle_01")));
 		}
-		return new TextureRegionDrawable(new TextureRegion(new Texture(
-				Gdx.files.internal("texture/background/forest.png"))));
+		return new TextureRegionDrawable(new TextureRegion(
+				StaticAssets.backgroundTextureMap.get("forest")));
 	}
 
 	public HashMap<String, Float> getUiConstantsMap() {
