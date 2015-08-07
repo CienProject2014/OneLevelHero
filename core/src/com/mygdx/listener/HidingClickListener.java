@@ -19,44 +19,26 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.mygdx.inventory;
+package com.mygdx.listener;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 /**
+ * Its only purpose is to hide a given actor on click.
+ *
  * @author Daniel Holderbaum
  */
-public class InventoryPopup extends Window {
-	public InventoryPopup(Inventory inventory, DragAndDrop dragAndDrop,
-			Skin skin) {
-		super("Inventory...", skin);
+public class HidingClickListener extends ClickListener {
+	private Actor actor;
 
-		TextButton closeButton = new TextButton("X", skin);
-		closeButton.addListener(new HidingClickListener(this));
-		getButtonTable().add(closeButton).height(getPadTop());
+	public HidingClickListener(Actor actor) {
+		this.actor = actor;
+	}
 
-		setPosition(400, 100);
-		defaults().space(8);
-		row().fill().expandX();
-
-		int i = 0;
-		for (Slot slot : inventory.getSlots()) {
-			SlotActor slotActor = new SlotActor(skin, slot);
-			dragAndDrop.addSource(new SlotSource(slotActor));
-			dragAndDrop.addTarget(new SlotTarget(slotActor));
-			add(slotActor);
-
-			i++;
-			if (i % 5 == 0)
-				row();
-		}
-
-		pack();
-
-		// it is hidden by default
-		setVisible(false);
+	@Override
+	public void clicked(InputEvent event, float x, float y) {
+		actor.setVisible(false);
 	}
 }

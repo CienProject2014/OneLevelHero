@@ -1,42 +1,14 @@
 package com.mygdx.model.unit;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.model.item.Equipment;
-import com.mygdx.model.item.Item;
 
 public class Hero extends Unit implements Fightable {
-	private Equipment equipment;
-	private Map<String, Item> items;
+	private Inventory inventory;
 
 	/* For Json Work */
-	private ArrayList<String> itemList;
-
-	public ArrayList<String> getItemList() {
-		return itemList;
-	}
-
-	public void setItemList(ArrayList<String> itemList) {
-		this.itemList = itemList;
-	}
-
-	public Map<String, Item> getItems() {
-		return items;
-	}
-
-	public void setItems(Map<String, Item> items) {
-		this.items = items;
-	}
-
-	public Equipment getEquipment() {
-		return equipment;
-	}
-
-	public void setEquipment(Equipment equipment) {
-		this.equipment = equipment;
-	}
+	private HashMap<String, String> initialInventoryList;
 
 	@Override
 	public void attack(Unit defender) {
@@ -62,4 +34,21 @@ public class Hero extends Unit implements Fightable {
 				+ "에게 " + skillName + "을(를) 사용하였습니다!");
 
 	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+
+	public HashMap<String, String> getInitialInventoryList() {
+		return initialInventoryList;
+	}
+
+	public void setInitialInventoryList(HashMap<String, String> initialInventoryList) {
+		this.initialInventoryList = initialInventoryList;
+	}
+
 }

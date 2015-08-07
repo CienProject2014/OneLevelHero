@@ -19,44 +19,38 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.mygdx.inventory;
-
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
-import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
-import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
+package com.mygdx.enums;
 
 /**
- * @author Daniel Holderbaum
+ * @author Horace Velmont
  */
-public class SlotTarget extends Target {
-	// private Slot targetSlot;
+public class WeaponEnum {
+	public enum WeaponType {
+		ONE_HANDED_SWORD("one_handed_sword"), TWO_HANDED_SWORD(
+				"two_handed_sword"), BOOK("book"), BOW("bow"), STAFF("staff");
+		private String weaponType;
 
-	public SlotTarget(SlotActor actor) {
-		super(actor);
-		// targetSlot = actor.getSlot();
-		getActor().setColor(Color.LIGHT_GRAY);
+		private WeaponType(String weaponType) {
+			this.weaponType = weaponType;
+		}
+
+		@Override
+		public String toString() {
+			return weaponType;
+		}
 	}
 
-	@Override
-	public boolean drag(Source source, Payload payload, float x, float y,
-			int pointer) {
-		// Slot payloadSlot = (Slot) payload.getObject();
-		// if (targetSlot.getItem() == payloadSlot.getItem() || targetSlot.getItem() == null) {
-		getActor().setColor(Color.WHITE);
-		return true;
-		// }
-		// getActor().setColor(Color.DARK_GRAY);
-		// return false;
-	}
+	public enum AttackType {
+		SLASH("slash"), STAB("stab"), SLASH_AND_STAB("slash_and_stab");
+		private String attackType;
 
-	@Override
-	public void drop(Source source, Payload payload, float x, float y,
-			int pointer) {
-	}
+		private AttackType(String attackType) {
+			this.attackType = attackType;
+		}
 
-	@Override
-	public void reset(Source source, Payload payload) {
-		getActor().setColor(Color.LIGHT_GRAY);
+		@Override
+		public String toString() {
+			return attackType;
+		}
 	}
 }
