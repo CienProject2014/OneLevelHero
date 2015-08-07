@@ -30,7 +30,7 @@ public class BattleScreen extends BaseScreen {
 		battleStage.draw();
 
 		// Animation이 진행중일때는 사용자의 입력에 대한 행동을 수행하지 않음
-		battleStage.act();
+		battleStage.act(delta);
 		monsterStage.act(delta);
 		characterUiStage.act(delta);
 		gameUiStage.act();

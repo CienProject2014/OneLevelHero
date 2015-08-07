@@ -55,6 +55,7 @@ public class BattleStage extends BaseOneLevelStage {
 	// Unit array
 	private ArrayList<Unit> units;
 	private Queue<Unit> orderedUnits;
+	private Unit currentHero;
 
 	private boolean monsterTurn;
 	private float animationDelay;
@@ -63,7 +64,44 @@ public class BattleStage extends BaseOneLevelStage {
 	// Image
 	private Image currentAttackerBackground;
 	private Image turnTableBackground;
-	private ArrayList<Image> turnBigImage;
+	private HashMap<String, Image> turnBigImageMap = new HashMap<String, Image>();
+	private HashMap<String, Image> turnSmallImageMap = new HashMap<String, Image>();
+	private Table imageTable = new Table();
+
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+
+		if (isMonsterTurn()) {
+			doMonsterTurn(delta);
+		}
+		if (animationManager.isPlayable()) {
+			playAnimation(delta);
+		}
+
+	}
+
+	public Stage makeStage() {
+		super.makeStage();
+		selectedMonster = battleManager.getSelectedMonster();
+		units = new ArrayList<Unit>(4);
+		units.addAll(partyManager.getBattleMemberList());
+		units.add(selectedMonster);
+		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			initializeBattle(units, selectedMonster);
+		}
+		updateOrder();
+		orderedUnits = new LinkedList<Unit>(units);
+		currentHero = whoIsNextActor(); // 여기선 첫번째 턴
+		tableStack.add(makeBattleUiTable());
+		tableStack.add(makeTurnTable());
+		tableStack.add(makeImageTable());
+		gridHitbox = new GridHitbox(); // 평소에는 hiddenx
+		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
+		tableStack.add(gridHitbox);
+		addListener();
+		return this;
+	}
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
@@ -73,39 +111,6 @@ public class BattleStage extends BaseOneLevelStage {
 			gridHitbox.showTileWhereClicked(touched.x, touched.y);
 		}
 		return result;
-	}
-
-	@Override
-	public void act(float delta) {
-		super.act(delta);
-		if (isMonsterTurn()) {
-			doMonsterTurn(delta);
-		}
-		if (animationManager.isPlayable()) {
-			playAnimation(delta);
-		}
-	}
-
-	public Stage makeStage() {
-		super.makeStage();
-		selectedMonster = battleManager.getSelectedMonster();
-		units = new ArrayList<Unit>(4);
-		units.addAll(partyManager.getPartyList());
-		units.add(selectedMonster);
-		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
-			initializeBattle(units, selectedMonster);
-		}
-		updateOrder();
-		orderedUnits = new LinkedList<Unit>(units);
-
-		tableStack.add(makeBattleUiTable());
-		tableStack.add(makeTurnTable());
-		gridHitbox = new GridHitbox(); //평소에는 hiddenx
-		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
-		tableStack.add(gridHitbox);
-		addListener();
-
-		return this;
 	}
 
 	@Override
@@ -122,9 +127,10 @@ public class BattleStage extends BaseOneLevelStage {
 		boolean result = super.touchUp(screenX, screenY, pointer, button);
 		if (gridHitbox.isGridShow()
 				&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
-			Unit currentHero = getCurrentActor();
-			battleManager.attack(currentHero, selectedMonster);
-			gridHitbox.hideGrid();
+			if (currentHero != selectedMonster) {
+				battleManager.attack(currentHero, selectedMonster);
+				gridHitbox.hideGrid();
+			}
 		}
 		gridHitbox.hideAllTiles();
 
@@ -167,13 +173,13 @@ public class BattleStage extends BaseOneLevelStage {
 		animationDelay += delta;
 		hideRMenuButtons();
 		if (animationDelay > MONSTER_ATTACK_DELAY) {
-			Unit currentMonster = getCurrentActor();
+			Unit currentMonster = currentHero;
 			battleManager.attack(currentMonster, randomHero);
-			updateOrder();
 			setMonsterTurn(false);
 			showRMenuButtons();
 			animationDelay = 0;
 		}
+		updateImageTable();
 	}
 
 	private void hideRMenuButtons() {
@@ -191,15 +197,18 @@ public class BattleStage extends BaseOneLevelStage {
 	private void playAnimation(float delta) {
 		animationManager.nextFrame(delta);
 		if (animationManager.getAnimations().isEmpty()) {
-			//FIXME
+			// FIXME
 			storySectionManager.triggerSectionEvent(
 					EventTypeEnum.BATTLE_CONTROL, "normal_attack");
+			currentHero = getCurrentActor();
+			updateImageTable();
 			if (battleManager.getBattleState()
 					.equals(BattleStateEnum.GAME_OVER)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 				battleManager.goCurrentPosition();
 			}
 		}
+
 	}
 
 	public Table makeBattleUiTable() {
@@ -217,6 +226,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private Table makeTurnTable() {
 		Table turnTable = new Table();
 		makeTurnBackgroundImage();
+		makeBattleTurnImage();
 		currentAttackerBackground.setWidth(137);
 		currentAttackerBackground.setHeight(137);
 		turnTable.add(currentAttackerBackground);
@@ -226,10 +236,31 @@ public class BattleStage extends BaseOneLevelStage {
 		return turnTable;
 	}
 
+	private Table makeImageTable() {
+		turnBigImageMap.get(currentHero.getFacePath()).setWidth(117);
+		turnBigImageMap.get(currentHero.getFacePath()).setHeight(117);
+		imageTable.add(turnBigImageMap.get(currentHero.getFacePath()))
+				.padRight(15);
+
+		for (Unit unit : orderedUnits) {
+			turnSmallImageMap.get(unit.getFacePath()).setWidth(84);
+			turnSmallImageMap.get(unit.getFacePath()).setHeight(84);
+			imageTable.add(turnSmallImageMap.get(unit.getFacePath()));
+		}
+		imageTable.left().bottom();
+		imageTable.padLeft(17).padBottom(17);
+
+		return imageTable;
+	}
+
+	private void updateImageTable() {
+		imageTable.reset();
+		imageTable = makeImageTable();
+	}
+
 	private Table makeRMenuTable() {
 		Table rMenuTable = new Table();
 		makeRButton();
-
 		rMenuButtonList = new ArrayList<>();
 		rMenuButtonList.add(attackButton);
 		rMenuButtonList.add(skillButton);
@@ -334,10 +365,18 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private void makeBattleTurnImage() {
-		turnBigImage = new ArrayList<Image>(partyManager.getBattleMemberList()
-				.size() + 1);
-		turnBigImage.add(new Image(battleManager.getSelectedMonster()
-				.getBigBattleTexture()));
+		turnBigImageMap.put(selectedMonster.getFacePath(), new Image(
+				selectedMonster.getBigBattleTexture()));
+		for (Hero hero : partyManager.getBattleMemberList()) {
+			turnBigImageMap.put(hero.getFacePath(),
+					new Image(hero.getBigBattleTexture()));
+		}
+		turnSmallImageMap.put(selectedMonster.getFacePath(), new Image(
+				selectedMonster.getSmallBattleTexture()));
+		for (Hero hero : partyManager.getBattleMemberList()) {
+			turnSmallImageMap.put(hero.getFacePath(),
+					new Image(hero.getSmallBattleTexture()));
+		}
 	}
 
 	private void makeRButton() {

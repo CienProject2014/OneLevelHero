@@ -56,6 +56,15 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 		this.faceTexture = faceTexture;
 	}
 
+	public void setBigBattleTexture(Texture bigBattleTexture) {
+		this.bigBattleTexture = bigBattleTexture;
+
+	}
+
+	public void setSmallBattleTexture(Texture smallBattleTexture) {
+		this.smallBattleTexture = smallBattleTexture;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -117,10 +126,10 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 		if (bigBattleTexture == null) {
 			if (this instanceof Hero)
 				bigBattleTexture = TextureManager
-						.getCharacterBattleTurnBigTexture(name);
+						.getCharacterBattleTurnBigTexture(facePath);
 			else
 				bigBattleTexture = TextureManager
-						.getMonsterBattleTurnBigTexture(name);
+						.getMonsterBattleTurnBigTexture(facePath);
 		}
 		return bigBattleTexture;
 	}
@@ -129,10 +138,10 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 		if (smallBattleTexture == null) {
 			if (this instanceof Hero)
 				smallBattleTexture = TextureManager
-						.getCharacterBattleTurnSmallTexture(name);
+						.getCharacterBattleTurnSmallTexture(facePath);
 			else
 				smallBattleTexture = TextureManager
-						.getMonsterBattleTurnSmallTexture(name);
+						.getMonsterBattleTurnSmallTexture(facePath);
 		}
 		return smallBattleTexture;
 	}
