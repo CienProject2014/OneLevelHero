@@ -14,7 +14,7 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private PartyInfo partyInfo;
 	@Autowired
-	private InventoryInfo inventoryInfo;
+	private BagInfo inventoryInfo;
 
 	// (3) 마을/무빙로드관리
 	@Autowired

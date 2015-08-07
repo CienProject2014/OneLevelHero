@@ -11,9 +11,9 @@ import com.mygdx.assets.EventAssets;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.model.EventPacket;
-import com.mygdx.model.StorySection;
-import com.mygdx.model.StorySectionPacket;
+import com.mygdx.model.event.EventPacket;
+import com.mygdx.model.event.StorySection;
+import com.mygdx.model.event.StorySectionPacket;
 
 public class StorySectionManager {
 	@Autowired

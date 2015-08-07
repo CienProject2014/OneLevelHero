@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.model.Monster;
+import com.mygdx.model.unit.Monster;
 
 /**
  * WorldMap에서 MovingInfoManager를 통해 설정된 MovingInfo를 받아와서 Monster를 만들어낸다.

@@ -3,7 +3,7 @@ package com.mygdx.currentState;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mygdx.model.Hero;
+import com.mygdx.model.unit.Hero;
 
 public class PartyInfo {
 	private List<Hero> partyList = new ArrayList<Hero>();

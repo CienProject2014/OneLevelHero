@@ -32,7 +32,7 @@
 	<bean id="battleInfo" class="com.mygdx.currentState.BattleInfo"/>
 	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo" />	
 	<bean id="fieldInfo" class="com.mygdx.currentState.FieldInfo" />
-	<bean id="inventoryInfo" class="com.mygdx.currentState.InventoryInfo" />
+	<bean id="bagInfo" class="com.mygdx.currentState.BagInfo" />
 	<bean id="musicInfo" class="com.mygdx.currentState.MusicInfo" />
 	<bean id="partyInfo" class="com.mygdx.currentState.PartyInfo" />
 	<bean id="positionInfo" class="com.mygdx.currentState.PositionInfo" />

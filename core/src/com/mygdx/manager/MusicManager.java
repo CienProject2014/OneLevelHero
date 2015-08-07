@@ -11,7 +11,7 @@ import com.mygdx.currentState.FieldInfo;
 import com.mygdx.currentState.MusicInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.currentState.SoundInfo;
-import com.mygdx.model.EventPacket;
+import com.mygdx.model.event.EventPacket;
 
 public class MusicManager {
 	@Autowired

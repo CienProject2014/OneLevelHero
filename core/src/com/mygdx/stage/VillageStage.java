@@ -22,9 +22,9 @@ import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
 import com.mygdx.manager.MovingManager;
-import com.mygdx.model.Building;
-import com.mygdx.model.Connection;
-import com.mygdx.model.Village;
+import com.mygdx.model.surroundings.Building;
+import com.mygdx.model.surroundings.Connection;
+import com.mygdx.model.surroundings.Village;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class VillageStage extends BaseOverlapStage {

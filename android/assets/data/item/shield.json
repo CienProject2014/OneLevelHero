@@ -1,0 +1,23 @@
+{
+  "round_shield": {
+    "name": "라운드 쉴드",
+    "itemPath" : "round_shield",
+    "category": "방패",
+    "grade": "일반",
+    "effectStatus": {
+      "defense": 20
+    },
+    "description": "나무로 만든, 동그랗고 작은 방패."
+  },
+  "buckler": {
+    "name": "버클러",
+    "itemPath" : "buckler",
+    "category": "방패",
+    "grade": "일반",
+    "effectStatus": {
+      "defense": 25,
+      "speed": -2
+    },
+    "description": "라운드 실드에 철을 덧대 방어력을 높인 방패."
+  }
+}
