@@ -43,11 +43,6 @@ public class MonsterStage extends BaseOneLevelStage {
 		return this;
 	}
 
-	private void hideHp() {
-		monsterHpTable.setVisible(false);
-		monsterHpLabel.setVisible(false);
-	}
-
 	// 불러온 몬스터의 이미지를 테이블에 넣는다.
 	private void setMonsterTable() {
 		outerTable = new Table();
@@ -58,7 +53,8 @@ public class MonsterStage extends BaseOneLevelStage {
 
 		outerTable.setBackground(getBackgroundTRD(), false);
 		outerTable.top(); // table을 위로 정렬
-		outerTable.add(monsterTable).padTop(uiConstantsMap.get("monsterPadTop"))
+		outerTable.add(monsterTable)
+				.padTop(uiConstantsMap.get("monsterPadTop"))
 				.width(uiConstantsMap.get("monsterTableWidth"))
 				.height(uiConstantsMap.get("monsterTableHeight")).row();
 
@@ -72,8 +68,8 @@ public class MonsterStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		monsterHpLabel.setText(
-				monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp());
+		monsterHpLabel.setText(monsterStatusBar.getHp() + "/"
+				+ monsterStatusBar.getMaxHp());
 		monsterStatusBar.update();
 	}
 
@@ -82,9 +78,8 @@ public class MonsterStage extends BaseOneLevelStage {
 		monsterHpTable.add(monsterStatusBar.getHpBar())
 				.width(uiConstantsMap.get("hpTableWidth")).row();
 
-		monsterHpLabel = new Label(
-				monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp(),
-				uiComponentAssets.getSkin());
+		monsterHpLabel = new Label(monsterStatusBar.getHp() + "/"
+				+ monsterStatusBar.getMaxHp(), uiComponentAssets.getSkin());
 		monsterHpTable.add(monsterHpLabel);
 
 		return monsterHpTable;
@@ -97,13 +92,14 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
-		if (battleManager.getSelectedMonster().getName().equals("mawang")) {
-			return new TextureRegionDrawable(
-					new TextureRegion(StaticAssets.backgroundTextureMap
-							.get("bg_devilcastle_01")));
+		if (battleManager.getSelectedMonster().getFacePath()
+				.equals("mawang_01")) {
+			return new TextureRegionDrawable(new TextureRegion(
+					StaticAssets.backgroundTextureMap.get("bg_devilcastle_01")));
+		} else {
+			return new TextureRegionDrawable(new TextureRegion(
+					StaticAssets.backgroundTextureMap.get("forest")));
 		}
-		return new TextureRegionDrawable(new TextureRegion(
-				StaticAssets.backgroundTextureMap.get("forest")));
 	}
 
 	public HashMap<String, Float> getUiConstantsMap() {

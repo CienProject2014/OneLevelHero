@@ -62,6 +62,7 @@ public class GameUiStage extends BaseOneLevelStage {
 	private ImageButton questLogButton;
 	private ImageButton helpButton;
 	private ImageButton settingButton;
+	private TextButtonStyle style;
 
 	@Override
 	public void act(float delta) {
@@ -149,7 +150,7 @@ public class GameUiStage extends BaseOneLevelStage {
 	}
 
 	public void makeButton() {
-		TextButtonStyle style = new TextButtonStyle(
+		style = new TextButtonStyle(
 				atlasUiAssets.getAtlasUiFile("time_info_button"),
 				atlasUiAssets.getAtlasUiFile("time_info_button"),
 				atlasUiAssets.getAtlasUiFile("time_info_button"),
@@ -158,7 +159,7 @@ public class GameUiStage extends BaseOneLevelStage {
 				+ timeManager.getHour() + "시 " + timeManager.getMinute() + "분",
 				style);
 
-		placeInfoButton = new TextButton("장소", style);
+		makePlaceInfoButton();
 
 		backButton = new ImageButton(
 				atlasUiAssets.getAtlasUiFile("back_button"),
@@ -172,6 +173,20 @@ public class GameUiStage extends BaseOneLevelStage {
 		settingButton = new ImageButton(
 				atlasUiAssets.getAtlasUiFile("setting_button"),
 				atlasUiAssets.getAtlasUiFile("setting_toggle_button"));
+	}
+
+	private void makePlaceInfoButton() {
+		if (positionManager.getCurrentPositionType().equals(PositionEnum.NODE)) {
+			placeInfoButton = new TextButton(
+					positionManager.getCurrentNodeHanguelName(), style);
+		} else if (positionManager.getCurrentPositionType().equals(
+				PositionEnum.SUB_NODE)) {
+			placeInfoButton = new TextButton(
+					positionManager.getCurrentSubNodeHanguelName(), style);
+		} else {
+			placeInfoButton = new TextButton(
+					positionManager.getCurrentNodeHanguelName(), style);
+		}
 	}
 
 	// 리스너 할당

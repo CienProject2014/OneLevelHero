@@ -1,7 +1,10 @@
 package com.mygdx.model.unit;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.MonsterEnum;
+import com.mygdx.model.item.Item;
 
 public class Monster extends Unit implements Fightable {
 	public Monster() {
@@ -11,8 +14,13 @@ public class Monster extends Unit implements Fightable {
 		this.status = status;
 	}
 
+	private String description;
+	private ArrayList<Item> dropItems;
 	private MonsterEnum.SizeType sizeType;
 	private MonsterEnum.ElementType elementType;
+
+	/* For Json Work */
+	private ArrayList<String> dropItemList;
 
 	public MonsterEnum.SizeType getSizeType() {
 		return sizeType;
@@ -52,5 +60,28 @@ public class Monster extends Unit implements Fightable {
 	public void skillAttack(Unit defender, String skillName) {
 		Gdx.app.log("Monster", this.getName() + "이(가) " + skillName
 				+ "을(를) 사용하였습니다!");
+	}
+	public ArrayList<String> getDropItemList() {
+		return dropItemList;
+	}
+
+	public void setDropItemList(ArrayList<String> dropItemList) {
+		this.dropItemList = dropItemList;
+	}
+
+	public ArrayList<Item> getDropItems() {
+		return dropItems;
+	}
+
+	public void setDropItems(ArrayList<Item> dropItems) {
+		this.dropItems = dropItems;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

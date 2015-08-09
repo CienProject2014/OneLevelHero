@@ -34,7 +34,7 @@ public class BattleManager {
 		if (battleInfo.getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
 			battleInfo.setBattleState(BattleStateEnum.ENCOUNTER);
 		}
-		battleInfo.setMonster(selectedMonster);
+		battleInfo.setCurrentMonster(selectedMonster);
 		screenFactory.show(ScreenEnum.ENCOUNTER);
 	}
 
@@ -107,7 +107,7 @@ public class BattleManager {
 
 	public void userSkill(Fightable attackUnit, String skill) {
 		// FIXME
-		attackUnit.skillAttack(battleInfo.getMonster(), skill);
+		attackUnit.skillAttack(battleInfo.getCurrentMonster(), skill);
 	}
 
 	public void useItem(String item) {
@@ -116,16 +116,16 @@ public class BattleManager {
 
 	public void checkMonsterWin(Hero randomHero) {
 		if (randomHero.getStatus().getHp() <= 0) {
-			endBattle(battleInfo.getMonster());
+			endBattle(battleInfo.getCurrentMonster());
 		}
 	}
 
 	public Monster getSelectedMonster() {
-		return battleInfo.getMonster();
+		return battleInfo.getCurrentMonster();
 	}
 
 	public void setSelectedMonster(Monster selectedMonster) {
-		battleInfo.setMonster(selectedMonster);
+		battleInfo.setCurrentMonster(selectedMonster);
 	}
 
 	public BattleStateEnum getBattleState() {

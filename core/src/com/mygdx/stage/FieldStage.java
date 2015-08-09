@@ -71,7 +71,7 @@ public class FieldStage extends BaseOneLevelStage {
 	public void act(float delta) {
 		super.act(delta);
 		movingLabel.setText(fieldManager.getDestinationNode() + "까지"
-				+ fieldManager.getLeftRoadLength());
+				+ fieldManager.getLeftFieldLength());
 	}
 
 	// 테이블 디자인
