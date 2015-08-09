@@ -63,7 +63,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "mawang"
+          "mawang_01"
         ]
       },
       "5": {
@@ -96,7 +96,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "mawang"
+          "mawang_01"
         ]
       },
       "7": {

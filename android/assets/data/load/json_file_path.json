@@ -49,5 +49,8 @@
   },
   "label_constants_json":{
   	"filePath" : "data/constants/label_constants.json"
+  },
+  "monster_field_json":{
+  	"filePath" : "data/map/monster_field.json"
   }
 }

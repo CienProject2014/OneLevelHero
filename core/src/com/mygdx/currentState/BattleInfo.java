@@ -5,7 +5,7 @@ import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 
 public class BattleInfo {
-	private Monster monster;
+	private Monster currentMonster;
 	private BattleStateEnum battleState;
 	private Hero currentActor;
 
@@ -25,11 +25,12 @@ public class BattleInfo {
 		this.battleState = battleState;
 	}
 
-	public Monster getMonster() {
-		return monster;
+	public Monster getCurrentMonster() {
+		return currentMonster;
 	}
 
-	public void setMonster(Monster monster) {
-		this.monster = monster;
+	public void setCurrentMonster(Monster currentMonster) {
+		this.currentMonster = currentMonster;
 	}
+
 }
