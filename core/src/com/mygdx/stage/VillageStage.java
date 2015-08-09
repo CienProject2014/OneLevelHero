@@ -23,7 +23,7 @@ import com.mygdx.listener.BuildingButtonListener;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.model.surroundings.Building;
-import com.mygdx.model.surroundings.Connection;
+import com.mygdx.model.surroundings.NodeConnection;
 import com.mygdx.model.surroundings.Village;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
@@ -53,9 +53,9 @@ public class VillageStage extends BaseOverlapStage {
 	private void setArrow() {
 		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
 		String currentNode = positionManager.getCurrentNodeName();
-		Map<String, Connection> connectionMap = worldMapAssets
-				.getWorldNodeInfo(currentNode).getConnection();
-		for (final Entry<String, Connection> connection : connectionMap
+		Map<String, NodeConnection> connectionMap = worldMapAssets
+				.getWorldNodeInfo(currentNode).getNodeConnection();
+		for (final Entry<String, NodeConnection> connection : connectionMap
 				.entrySet()) {
 			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(
 					connection.getValue().getArrowName());

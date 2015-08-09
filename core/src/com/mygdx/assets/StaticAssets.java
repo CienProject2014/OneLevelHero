@@ -19,7 +19,6 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.model.battle.FrameSheet;
 import com.mygdx.model.jsonModel.StringFile;
-import com.mygdx.model.jsonModel.TextureFile;
 import com.mygdx.util.JsonParser;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
 
@@ -98,32 +97,9 @@ public class StaticAssets {
 	}
 
 	public static void loadTexture() {
-		Map<String, TextureFile> characterFileMap = JsonParser.parseMap(
-				TextureFile.class,
-				filePathMap.get(JsonEnum.CHARACTER_FILE_PATH.toString())
-						.loadFile());
-		for (Entry<String, TextureFile> entry : characterFileMap.entrySet()) {
-			characterTextureMap.put(entry.getKey(),
-					entry.getValue().loadFile());
-		}
-
-		Map<String, TextureFile> monsterFileMap = JsonParser
-				.parseMap(TextureFile.class, filePathMap
-						.get(JsonEnum.MONSTER_FILE_PATH.toString()).loadFile());
-		for (Entry<String, TextureFile> entry : monsterFileMap.entrySet()) {
-			monsterTextureMap.put(entry.getKey(), entry.getValue().loadFile());
-		}
-
-		Map<String, TextureFile> backgroundFileMap = JsonParser
-				.parseMap(TextureFile.class,
-						filePathMap
-								.get(JsonEnum.BACKGROUND_FILE_PATH.toString())
-								.loadFile());
-		for (Entry<String, TextureFile> entry : backgroundFileMap.entrySet()) {
-			backgroundTextureMap.put(entry.getKey(),
-					entry.getValue().loadFile());
-		}
-
+		backgroundTextureMap = new HashMap<>();
+		monsterTextureMap = new HashMap<>();
+		characterTextureMap = new HashMap<>();
 		animationSheetMap = JsonParser.parseMap(FrameSheet.class, filePathMap
 				.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
 
@@ -132,7 +108,6 @@ public class StaticAssets {
 		DirectoryTextureMapper(backgroundTextureMap, "texture/background");
 		DirectoryTextureMapper(battleUiTextureMap, "texture/ui/battle");
 	}
-
 	public static void DirectoryTextureMapper(Map<String, Texture> map,
 			String path) {
 		FileHandle fh;

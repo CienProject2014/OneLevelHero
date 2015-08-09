@@ -3,10 +3,12 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.WorldNodeEnum;
+import com.mygdx.enums.WorldNodeEnum.NodeType;
 import com.mygdx.factory.ScreenFactory;
 
 public class PositionManager {
@@ -16,6 +18,8 @@ public class PositionManager {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private WorldMapAssets worldMapAssets;
+	@Autowired
+	private NodeAssets nodeAssets;
 
 	public WorldNodeEnum.NodeType getCurrentNodeType() {
 		return worldMapAssets.getNodeType(positionInfo.getCurrentNodeName());
@@ -39,6 +43,11 @@ public class PositionManager {
 		positionInfo.setCurrentNodeName(currentNodeName);
 	}
 
+	public String getCurrentNodeHanguelName() {
+		return worldMapAssets.getWorldNodeInfo(getCurrentNodeName())
+				.getNodeName();
+	}
+
 	public void setCurrentPositionType(PositionEnum positionEnum) {
 		Gdx.app.log("PositionManager", "현재위치 - " + positionEnum.toString());
 		positionInfo.setCurrentPositionType(positionEnum);
@@ -48,6 +57,15 @@ public class PositionManager {
 		return positionInfo.getCurrentSubNodeName();
 	}
 
+	public String getCurrentSubNodeHanguelName() {
+		if (getCurrentNodeType().equals(NodeType.VILLAGE)) {
+			return nodeAssets.getVillage(getCurrentNodeName()).getBuilding()
+					.get(getCurrentSubNodeName()).getBuildingName();
+		} else {
+			return "던젼"; // FIXME
+		}
+
+	}
 	public void setCurrentSubNodeName(String subNodeName) {
 		Gdx.app.log("PositionManager", "현재서브노드 이름 - " + subNodeName);
 		positionInfo.setCurrentPositionType(PositionEnum.SUB_NODE);
