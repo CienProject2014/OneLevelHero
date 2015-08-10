@@ -94,12 +94,16 @@ public class VillageStage extends BaseOverlapStage {
 				.getCompositeById("camera_up");
 		final CompositeItem shiftbutton_down = sceneLoader.getRoot()
 				.getCompositeById("camera_down");
+
 		shiftbutton_up.setTouchable(Touchable.enabled);
 		shiftbutton_down.setTouchable(Touchable.enabled);
+
 		shiftbutton_up.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				setCameraState(CameraStateEnum.MOVE_UP);
+				cameraManager.setMoveFlag(2);
+
 			}
 		});
 
@@ -107,15 +111,38 @@ public class VillageStage extends BaseOverlapStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				setCameraState(CameraStateEnum.MOVE_DOWN);
+				cameraManager.setMoveFlag(2);
 			}
 
 		});
 
 	}
 
+	private void buttonControl() {
+		if (cameraManager.getMoveFlag() == 0) {
+			sceneLoader.getRoot().getCompositeById("camera_down")
+					.setVisible(true);
+			sceneLoader.getRoot().getCompositeById("camera_up")
+					.setVisible(false);
+		} else if (cameraManager.getMoveFlag() == 1) {
+			sceneLoader.getRoot().getCompositeById("camera_down")
+					.setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_up")
+					.setVisible(true);
+
+		} else if (cameraManager.getMoveFlag() == 2) {
+			sceneLoader.getRoot().getCompositeById("camera_down")
+					.setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_up")
+					.setVisible(false);
+
+		}
+	}
+
 	@Override
 	public void act() {
 		super.act();
+		buttonControl();
 	}
 
 	private void setBuildingButton() {
