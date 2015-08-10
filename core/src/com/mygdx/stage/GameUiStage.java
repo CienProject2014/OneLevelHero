@@ -66,8 +66,7 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	@Override
 	public void act(float delta) {
-		timeInfoButton.setText(timeManager.getDay() + "일째 "
-				+ timeManager.getHour() + "시 " + timeManager.getMinute() + "분");
+		timeInfoButton.setText(timeManager.toString());
 	}
 
 	public Stage makeStage() {
