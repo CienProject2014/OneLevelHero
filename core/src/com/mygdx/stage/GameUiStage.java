@@ -213,6 +213,7 @@ public class GameUiStage extends BaseOneLevelStage {
 				screenFactory.show(ScreenEnum.WORLD_MAP);
 			}
 		});
+		timeInfoButton.addListener(listenerFactory.getJumpSectionListener());
 		helpButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,

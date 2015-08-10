@@ -148,6 +148,7 @@
 	<bean id="buildingButtonListener" class="com.mygdx.listener.BuildingButtonListener" scope="prototype"/>
 	<bean id="goBackwardFieldButtonListener" class="com.mygdx.listener.GoBackwardFieldButtonListener" scope="prototype"/>
 	<bean id="goForwardFieldButtonListener" class="com.mygdx.listener.GoForwardFieldButtonListener" scope="prototype"/>
+	<bean id="jumpSectionListener" class="com.mygdx.listener.JumpSectionListener" scope="prototype"/>
 	<bean id="selectComponentListener" class="com.mygdx.listener.SelectComponentListener" scope="prototype" />
 	<bean id="selectEventListener" class="com.mygdx.listener.SelectEventListener" scope="prototype"/>
 </beans>
