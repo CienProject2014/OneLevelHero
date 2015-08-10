@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -81,11 +82,11 @@ public class EventStage extends BaseOneLevelStage {
 		scriptTitle = new Label("Title", uiComponentAssets.getSkin());
 		scriptContent = new Label(eventScene.getScript(),
 				uiComponentAssets.getSkin());
-		characterImage = new Image(eventScene.getCharacter());
+		Texture selectedCharacter = eventScene.getCharacter();
+		characterImage = new Image(selectedCharacter);
 		tableStack.add(backgroundImage);
 		tableStack.add(makeChatTable());
 	}
-
 	private Table makeChatTable() {
 		Table chatTable = new Table();
 		chatTable.left().bottom();

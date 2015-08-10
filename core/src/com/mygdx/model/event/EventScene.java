@@ -1,39 +1,34 @@
 package com.mygdx.model.event;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.assets.Assets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.manager.TextureManager;
 
 public class EventScene {
-	@Autowired
-	private Assets assets;
 	private String script;
 	private String characterPath;
-	private int faceNumber;
+	private String faceNumber;
 	private String backgroundPath;
 	private String speakerPosition;
 	private Texture character;
 	private Texture background;
 
-	public EventScene() {
-		Gdx.app.debug("EventScene", "EventScene is constructed");
-	}
-
-	public int getFaceNumber() {
+	public String getFaceNumber() {
 		return faceNumber;
 	}
 
-	public void setFaceNumber(int faceNumber) {
+	public void setFaceNumber(String faceNumber) {
 		this.faceNumber = faceNumber;
 	}
 
 	public Texture getCharacter() {
 		if (character == null) {
-			if (StaticAssets.characterTextureMap.get(characterPath) != null) {
+			if (faceNumber == null) {
 				character = StaticAssets.characterTextureMap.get(characterPath);
+			} else if (TextureManager.getBustTexture(characterPath, faceNumber) != null) {
+				character = TextureManager.getBustTexture(characterPath,
+						faceNumber);
 			} else {
 				Gdx.app.log("EventScene", "chracterTextureMap에 "
 						+ characterPath + " 에 해당하는 이미지가 존재하지 않습니다.");
@@ -41,7 +36,6 @@ public class EventScene {
 		}
 		return character;
 	}
-
 	public void setCharacter(Texture character) {
 		this.character = character;
 	}

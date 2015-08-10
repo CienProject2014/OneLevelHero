@@ -7,6 +7,7 @@ import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
 
@@ -41,6 +42,7 @@ public class LoadManager {
 	}
 
 	private void setBattleInfo() {
+		battleManager.setBeforePosition(PositionEnum.SUB_NODE);
 		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 	}
 
