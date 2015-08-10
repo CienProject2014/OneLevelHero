@@ -1394,3 +1394,80 @@ talkuiwindow
   orig: 1920, 365
   offset: 0, 0
   index: -1
+  
+  
+oberon_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgoberon1
+  rotate: false
+  xy: 2, 780
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+downbutton
+  rotate: false
+  xy: 288, 656
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+smallHill
+  rotate: false
+  xy: 288, 574
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+square
+  rotate: false
+  xy: 524, 698
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+temple
+  rotate: false
+  xy: 2, 2
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+toRetreatStone
+  rotate: false
+  xy: 2, 208
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+tokadila
+  rotate: false
+  xy: 2, 494
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuibuildtagbuilding
+  rotate: false
+  xy: 288, 492
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+townuibuildtaginn
+  rotate: false
+  xy: 726, 698
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+upbutton
+  rotate: false
+  xy: 2, 84
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1

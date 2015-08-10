@@ -75,6 +75,9 @@ public class VillageStage extends BaseOverlapStage {
 		if (positionManager.getCurrentNodeName().equals("cobweb")) {
 			villageInfo = worldNodeAssets.getVillage("cobweb");
 			sceneLoader.loadScene("cobweb_scene");
+		} else if (positionManager.getCurrentNodeName().equals("oberon")) {
+			villageInfo = worldNodeAssets.getVillage("oberon");
+			sceneLoader.loadScene("oberon_scene");
 		} else {
 			villageInfo = worldNodeAssets.getVillage("blackwood");
 			sceneLoader.loadScene("blackwood_scene");
