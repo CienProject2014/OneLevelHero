@@ -29,5 +29,12 @@
         "sceneName": "cobweb_library_scene"
       }
     }
+  },
+  "oberon" : {
+  	"villageName":"오베론",
+  	"sceneName": "oberon_scene",
+  	"building": {
+  	}
+    
   }
 }
