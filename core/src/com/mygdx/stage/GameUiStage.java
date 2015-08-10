@@ -66,7 +66,7 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	@Override
 	public void act(float delta) {
-		timeInfoButton.setText(timeManager.toString());
+		timeInfoButton.setText(timeManager.getTimeInfo());
 	}
 
 	public Stage makeStage() {
@@ -154,9 +154,7 @@ public class GameUiStage extends BaseOneLevelStage {
 				atlasUiAssets.getAtlasUiFile("time_info_button"),
 				atlasUiAssets.getAtlasUiFile("time_info_button"),
 				uiComponentAssets.getFont());
-		timeInfoButton = new TextButton(timeManager.getDay() + "일째 "
-				+ timeManager.getHour() + "시 " + timeManager.getMinute() + "분",
-				style);
+		timeInfoButton = new TextButton(timeManager.getTimeInfo(), style);
 
 		makePlaceInfoButton();
 

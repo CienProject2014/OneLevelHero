@@ -40,7 +40,6 @@ public class VillageStage extends BaseOverlapStage {
 	private ListenerFactory listenerFactory;
 	private Village villageInfo;
 	public TextButton shiftButton;
-	private final int movingSpeed = 10;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
@@ -71,7 +70,7 @@ public class VillageStage extends BaseOverlapStage {
 		}
 	}
 
-	//FIXME
+	// FIXME
 	private void setVillageScene() {
 		if (positionManager.getCurrentNodeName().equals("cobweb")) {
 			villageInfo = worldNodeAssets.getVillage("cobweb");
