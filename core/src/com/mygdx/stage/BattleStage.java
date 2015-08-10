@@ -72,7 +72,7 @@ public class BattleStage extends BaseOneLevelStage {
 	public void act(float delta) {
 		super.act(delta);
 
-		if (isMonsterTurn()) {
+		if (monsterTurn) {
 			doMonsterTurn(delta);
 		}
 		if (animationManager.isPlayable()) {
@@ -92,7 +92,11 @@ public class BattleStage extends BaseOneLevelStage {
 		}
 		updateOrder();
 		orderedUnits = new LinkedList<Unit>(units);
-		currentHero = whoIsNextActor(); // 여기선 첫번째 턴
+		currentHero = getCurrentActor(); // 여기선 첫번째 턴
+
+		if (currentHero instanceof Monster) {
+			monsterTurn = true;
+		}
 		tableStack.add(makeBattleUiTable());
 		tableStack.add(makeTurnTable());
 		tableStack.add(makeImageTable());
@@ -109,8 +113,10 @@ public class BattleStage extends BaseOneLevelStage {
 		battleManager.setBattleState(BattleStateEnum.IN_GAME);
 		for (Unit unit : units) {
 			unit.setGauge(100);
+			unit.setSubvalue(0);
 		}
 		selectedMonster.setGauge(100);
+		selectedMonster.setSubvalue(0);
 		selectedMonster.getStatus()
 				.setHp(selectedMonster.getStatus().getMaxHp());
 	}
@@ -130,6 +136,7 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private void updateOrder() {
+		// Turn Logic
 		Collections.sort(units);
 	}
 
@@ -322,7 +329,6 @@ public class BattleStage extends BaseOneLevelStage {
 		});
 
 		gridHitbox.addListener(new ClickListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -402,10 +408,6 @@ public class BattleStage extends BaseOneLevelStage {
 		escapeButton = new ImageButton(
 				atlasUiAssets.getAtlasUiFile("battleui_rb_escape"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_escape"));
-	}
-
-	public boolean isMonsterTurn() {
-		return monsterTurn;
 	}
 
 	public void setMonsterTurn(boolean monsterTurn) {
