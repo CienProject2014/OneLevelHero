@@ -44,12 +44,13 @@ public class UnitManager {
 			if (inventoryMap.get("clothes") != null) {
 				equipClothes(hero, inventoryMap.get("clothes"));
 			}
-			if (inventoryMap.get("leftHandGrip") != null) {
-				equipLeftHandGrip(hero, inventoryMap.get("leftHandGrip"));
-			}
 			if (inventoryMap.get("rightHandGrip") != null) {
 				equipRightHandGrip(hero, inventoryMap.get("rightHandGrip"));
 			}
+			if (inventoryMap.get("leftHandGrip") != null) {
+				equipLeftHandGrip(hero, inventoryMap.get("leftHandGrip"));
+			}
+
 		}
 	}
 

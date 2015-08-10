@@ -101,7 +101,7 @@ public class FieldManager {
 	}
 
 	private boolean willBeArrived() {
-		return (getFieldNumber() == getFieldLength() - 1) ? true : false;
+		return (getFieldNumber() >= getFieldLength() - 1) ? true : false;
 	}
 
 	private boolean willComeBack() {
