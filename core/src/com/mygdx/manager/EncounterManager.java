@@ -23,8 +23,8 @@ public class EncounterManager {
 		if (fieldManager.getFieldType() != FieldTypeEnum.BRIDGE) {
 			Monster selectedMonster = monsterManager.createMonster();
 			battleManager.startBattle(selectedMonster);
-			battleManager.setBeforePosition(PositionEnum.FIELD);
 		}
+		battleManager.setBeforePosition(PositionEnum.FIELD);
 	}
 	// FIXME 전투 랜덤으로 발생, 기획에 맞게 바꿀 것
 	public boolean isBattleOccured() {

@@ -115,7 +115,8 @@ public class MovingManager {
 				screenFactory.show(ScreenEnum.FIELD);
 				break;
 			default :
-				Gdx.app.log("MovingManager", "NodeType정보 오류");
+				Gdx.app.log("MovingManager", "BeforeNodeType정보 오류("
+						+ battleManager.getBeforePosition() + ")");
 				break;
 		}
 	}
