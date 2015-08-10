@@ -26,7 +26,6 @@
 	<bean id="unitAssets" class="com.mygdx.assets.UnitAssets" />
 	<bean id="worldMapAssets" class="com.mygdx.assets.WorldMapAssets" />
 	<bean id="nodeAssets" class="com.mygdx.assets.NodeAssets" />
-
 	<bean id="currentState" class="com.mygdx.currentState.CurrentState"/>
 
 	<bean id="battleInfo" class="com.mygdx.currentState.BattleInfo"/>
@@ -107,7 +106,6 @@
 		scope="prototype" />
 	<bean id="worldMapScreen" class="com.mygdx.screen.WorldMapScreen"
 		scope="prototype" />
-		
 	<bean id="baseOneLevelStage" class="com.mygdx.stage.BaseOneLevelStage"
 		scope="prototype"/>
 	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage"

@@ -45,7 +45,7 @@ public class StaticAssets {
 
 	public static ResourceManager rm = new ResourceManager();
 
-	public static void loadAll() {
+	public synchronized static void loadAll() {
 		Gdx.app.debug("StaticAssets", "StaticAssets.loadAll() called");
 
 		filePathMap = JsonParser.parseMap(StringFile.class,
@@ -82,7 +82,7 @@ public class StaticAssets {
 				skin.getDrawable("GREEN"));
 	}
 
-	public static void loadSize(Stage stage) {
+	public synchronized static void loadSize(Stage stage) {
 		Viewport vp = stage.getViewport();
 		windowWidth = vp.getViewportWidth();
 		windowHeight = vp.getViewportHeight();
@@ -96,7 +96,7 @@ public class StaticAssets {
 
 	}
 
-	public static void loadTexture() {
+	public synchronized static void loadTexture() {
 		backgroundTextureMap = new HashMap<>();
 		monsterTextureMap = new HashMap<>();
 		characterTextureMap = new HashMap<>();
@@ -108,8 +108,9 @@ public class StaticAssets {
 		DirectoryTextureMapper(backgroundTextureMap, "texture/background");
 		DirectoryTextureMapper(battleUiTextureMap, "texture/ui/battle");
 	}
-	public static void DirectoryTextureMapper(Map<String, Texture> map,
-			String path) {
+
+	public synchronized static void DirectoryTextureMapper(
+			Map<String, Texture> map, String path) {
 		FileHandle fh;
 
 		if (Gdx.app.getType() == ApplicationType.Android) {
@@ -128,5 +129,10 @@ public class StaticAssets {
 				}
 			}
 		}
+	}
+
+	public synchronized static boolean update() {
+
+		return true;
 	}
 }

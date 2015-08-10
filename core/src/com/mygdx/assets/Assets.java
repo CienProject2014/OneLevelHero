@@ -39,7 +39,7 @@ public class Assets {
 	@Autowired
 	private ConstantsAssets constantsAssets;
 
-	public void initialize() {
+	public synchronized void initialize() {
 		Map<String, StringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
 
@@ -49,21 +49,21 @@ public class Assets {
 		uiComponentAssets.set(filePathMap);
 		itemAssets.set(jsonStringMap);
 		skillAssets.set(jsonStringMap);
-		unitAssets.set(jsonStringMap); //아이템, 스킬보다 늦게 이루어져야한다.
+		unitAssets.set(jsonStringMap); // 아이템, 스킬보다 늦게 이루어져야한다.
 		musicAssets.set(filePathMap);
 		worldMapAssets.set(jsonStringMap);
 		worldNodeAssets.set(jsonStringMap);
 		constantsAssets.set(jsonStringMap);
 	}
 
-	private Map<String, StringFile> loadFilePathMap() {
+	private synchronized Map<String, StringFile> loadFilePathMap() {
 		Map<String, StringFile> filePathMap = JsonParser.parseMap(
-				StringFile.class, Gdx.files
-						.internal("data/load/file_path.json").readString());
+				StringFile.class,
+				Gdx.files.internal("data/load/file_path.json").readString());
 		return filePathMap;
 	}
 
-	private Map<String, String> loadJsonStringMap(
+	private synchronized Map<String, String> loadJsonStringMap(
 			Map<String, StringFile> filePathMap) {
 		Map<String, StringFile> jsonFileMap = JsonParser.parseMap(
 				StringFile.class,
@@ -72,5 +72,9 @@ public class Assets {
 		for (Entry<String, StringFile> entry : jsonFileMap.entrySet())
 			jsonStringMap.put(entry.getKey(), entry.getValue().loadFile());
 		return jsonStringMap;
+	}
+
+	public synchronized static boolean update() {
+		return true;
 	}
 }

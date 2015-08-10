@@ -19,8 +19,8 @@ public class AtlasUiAssets implements FileAssetsInitializable {
 				filePathMap.get(JsonEnum.ATLAS_UI_PATH.toString()).loadFile());
 		for (AtlasUiFile atlasUiFile : atlasUiFileList)
 			for (String element : atlasUiFile.getElement())
-				atlasUiMap.put(element, new TextureRegionDrawable(atlasUiFile
-						.loadFile().findRegion(element)));
+				atlasUiMap.put(element, new TextureRegionDrawable(
+						atlasUiFile.loadFile().findRegion(element)));
 	}
 
 	public TextureRegionDrawable getAtlasUiFile(String atlasUiFileString) {

@@ -23,7 +23,6 @@ public class MenuScreen extends BaseScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
 		stage.draw();
 	}
 
