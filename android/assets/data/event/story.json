@@ -72,6 +72,10 @@
         "eventNumber": "8"
       },
       {
+        "eventNpc" : "prologue",
+        "eventNumber" : "29"
+      },
+      {
         "eventNpc": "prologue",
         "eventNumber": "10"
       }

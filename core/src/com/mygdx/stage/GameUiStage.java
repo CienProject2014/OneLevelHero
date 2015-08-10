@@ -200,10 +200,7 @@ public class GameUiStage extends BaseOneLevelStage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				if (positionManager.getCurrentPositionType().equals(
-						PositionEnum.NODE)) {
-					screenFactory.show(ScreenEnum.LOG);
-				}
+				screenFactory.show(ScreenEnum.LOG);
 				return true;
 			}
 

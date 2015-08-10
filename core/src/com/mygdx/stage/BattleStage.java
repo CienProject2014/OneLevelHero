@@ -169,7 +169,7 @@ public class BattleStage extends BaseOneLevelStage {
 			if (battleManager.getBattleState()
 					.equals(BattleStateEnum.GAME_OVER)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-				battleManager.goCurrentPosition();
+				movingManager.goPreviousPosition();
 			}
 		}
 

@@ -14,7 +14,6 @@ public class Monster extends Unit implements Fightable {
 		this.status = status;
 	}
 
-	private String description;
 	private ArrayList<Item> dropItems;
 	private MonsterEnum.SizeType sizeType;
 	private MonsterEnum.ElementType elementType;
@@ -75,13 +74,5 @@ public class Monster extends Unit implements Fightable {
 
 	public void setDropItems(ArrayList<Item> dropItems) {
 		this.dropItems = dropItems;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 }

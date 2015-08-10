@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -14,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
@@ -23,9 +21,9 @@ import com.mygdx.model.event.EventScene;
 
 /**
  * make and return stage(Event)
- *
+ * 
  * @author Velmont
- *
+ * 
  */
 public class EventStage extends BaseOneLevelStage {
 	@Autowired
@@ -86,26 +84,6 @@ public class EventStage extends BaseOneLevelStage {
 		characterImage = new Image(eventScene.getCharacter());
 		tableStack.add(backgroundImage);
 		tableStack.add(makeChatTable());
-		makeEventStage(eventManager.getCurrentEvent().getEventType());
-
-	}
-
-	private void makeEventStage(EventTypeEnum eventType) {
-		switch (eventType) {
-			case CHAT:
-				//makeChatStage();
-				break;
-			case GREETING:
-			case SELECT_COMPONENT:
-				//makeSelectEventStage();
-				break;
-			case CREDIT:
-				//makeCreditStage();
-				break;
-			default:
-				Gdx.app.log("error", " scene 주입 에러");
-				break;
-		}
 	}
 
 	private Table makeChatTable() {

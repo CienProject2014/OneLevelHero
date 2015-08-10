@@ -1,6 +1,7 @@
 package com.mygdx.currentState;
 
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 
@@ -8,6 +9,7 @@ public class BattleInfo {
 	private Monster currentMonster;
 	private BattleStateEnum battleState;
 	private Hero currentActor;
+	private PositionEnum beforePosition;
 
 	public Hero getCurrentActor() {
 		return currentActor;
@@ -31,6 +33,14 @@ public class BattleInfo {
 
 	public void setCurrentMonster(Monster currentMonster) {
 		this.currentMonster = currentMonster;
+	}
+
+	public PositionEnum getBeforePosition() {
+		return beforePosition;
+	}
+
+	public void setBeforePosition(PositionEnum beforePosition) {
+		this.beforePosition = beforePosition;
 	}
 
 }
