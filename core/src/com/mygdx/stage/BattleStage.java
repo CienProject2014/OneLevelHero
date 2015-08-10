@@ -103,7 +103,6 @@ public class BattleStage extends BaseOneLevelStage {
 		gridHitbox = new GridHitbox(); // 평소에는 hidden
 		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
 		tableStack.add(gridHitbox);
-
 		addListener();
 		return this;
 	}
@@ -114,9 +113,13 @@ public class BattleStage extends BaseOneLevelStage {
 		for (Unit unit : units) {
 			unit.setGauge(100);
 			unit.setSubvalue(0);
+			unit.setActingPower(
+					-24000 / (unit.getStatus().getSpeed() + 300) + 160);
 		}
 		selectedMonster.setGauge(100);
 		selectedMonster.setSubvalue(0);
+		selectedMonster.setActingPower(
+				-24000 / (selectedMonster.getStatus().getSpeed() + 300) + 160);
 		selectedMonster.getStatus()
 				.setHp(selectedMonster.getStatus().getMaxHp());
 	}

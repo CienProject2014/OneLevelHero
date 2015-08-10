@@ -14,6 +14,7 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 	private Map<String, Skill> skills;
 	private int gauge;
 	private int subvalue;
+	private int actingPower;
 	private Texture bodyTexture;
 	private Texture faceTexture;
 	private Texture bigBattleTexture;
@@ -95,13 +96,18 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 		this.subvalue = subvalue;
 	}
 
+	public int getActingPower() {
+		return actingPower;
+	}
+
+	public void setActingPower(int actingPower) {
+		this.actingPower = actingPower;
+	}
+
 	@Override
 	public int compareTo(Unit obj) {
-		// 0이면 같고 -1이면 더 작은거고 1이면 더 큰거고 (기존꺼 기준)
 		if (this.getGauge() == obj.getGauge()) {
-			// 행동 게이지가 같을 때
 			if (this.getSubvalue() == obj.getSubvalue()) {
-				// 행동 게이지가 같고 보정치도 같을 때
 				if (this.getStatus().getSpeed() == obj.getStatus().getSpeed()) {
 					if (obj instanceof Monster) {
 						// 몬스터는 꼴지!
@@ -116,11 +122,11 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 				} else
 					if (this.getStatus().getSpeed() > obj.getStatus()
 							.getSpeed()) {
-					// 스피드가 더 크면 1이면 순서가 뒤로감
-					return 1;
+					// 스피드가 더 크다
+					return -1;
 				} else {
 					// 스피드가 더 작다
-					return -1;
+					return 1;
 				}
 			} else if (this.getSubvalue() > obj.getSubvalue()) {
 				return 1;
@@ -132,7 +138,6 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 			return -1;
 		} else {
 			// 행동 게이지가 더 작을 때
-
 			return 1;
 		}
 
