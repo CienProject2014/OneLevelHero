@@ -1,8 +1,5 @@
 package com.mygdx.manager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
@@ -10,9 +7,9 @@ import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.BattleStateEnum;
-import com.mygdx.enums.WorldNodeEnum;
-import com.mygdx.model.Hero;
-import com.mygdx.model.StorySection;
+import com.mygdx.enums.PositionEnum;
+import com.mygdx.model.event.StorySection;
+import com.mygdx.model.unit.Hero;
 
 public class LoadManager {
 	@Autowired
@@ -45,6 +42,7 @@ public class LoadManager {
 	}
 
 	private void setBattleInfo() {
+		battleManager.setBeforePosition(PositionEnum.SUB_NODE);
 		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 	}
 
@@ -65,22 +63,13 @@ public class LoadManager {
 	}
 
 	private void setCurrentPosition() {
-		// blackwood 마을에서부터 게임을 시작한다.
-		positionManager.setCurrentNodeName(WorldNodeEnum.BLACKWOOD.toString());
-
-		// FIXME 초기 CurrentMoving 정보를 주입한다.
-		movingInfo.setStartNode("blackwood");
-		movingInfo.setDestinationNode("blackwood_Forest");
-		movingInfo.setRoadLength(7);
-		movingInfo.setLeftRoadLength(7);
-		List<String> monsterList = new ArrayList<String>();
-		monsterList.add("assassin girl");
-		movingInfo.setRoadMonsterList(monsterList);
+		// 마왕성에서부터 게임을 시작한다.
+		positionManager.setCurrentNodeName("devil_castle");
 	}
 
 	// Hero클래스가 status정보를 갖도록 한다.
 	private void setHero() {
-		//FIXME 추후 JSON에서 불러오도록 바꿀 것
+		// FIXME 추후 JSON에서 불러오도록 바꿀 것
 		Hero yongsa = unitAssets.getHero("yongsa");
 		Hero parath = unitAssets.getHero("parath");
 		Hero lilis = unitAssets.getHero("lilis");

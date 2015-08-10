@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -15,8 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.model.Monster;
-import com.mygdx.model.StatusBar;
+import com.mygdx.model.unit.Monster;
+import com.mygdx.model.unit.StatusBar;
 
 public class MonsterStage extends BaseOneLevelStage {
 	@Autowired
@@ -42,11 +41,6 @@ public class MonsterStage extends BaseOneLevelStage {
 		monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin());
 		setMonsterTable();
 		return this;
-	}
-
-	private void hideHp() {
-		monsterHpTable.setVisible(false);
-		monsterHpLabel.setVisible(false);
 	}
 
 	// 불러온 몬스터의 이미지를 테이블에 넣는다.
@@ -98,12 +92,14 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
-		if (battleManager.getSelectedMonster().getName().equals("mawang")) {
+		if (battleManager.getSelectedMonster().getFacePath()
+				.equals("mawang_01")) {
 			return new TextureRegionDrawable(new TextureRegion(
 					StaticAssets.backgroundTextureMap.get("bg_devilcastle_01")));
+		} else {
+			return new TextureRegionDrawable(new TextureRegion(
+					StaticAssets.backgroundTextureMap.get("forest")));
 		}
-		return new TextureRegionDrawable(new TextureRegion(new Texture(
-				Gdx.files.internal("texture/background/forest.png"))));
 	}
 
 	public HashMap<String, Float> getUiConstantsMap() {

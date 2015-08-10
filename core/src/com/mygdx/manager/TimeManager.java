@@ -41,4 +41,31 @@ public class TimeManager {
 		return timeInfo.getTime() % MINUTES_PER_HOUR;
 	}
 
+	public String getHourInfo() {
+		if (getHour() > 12) {
+			return "오후 " + (getHour() - 12) + "시 ";
+		} else if (getHour() == 12) {
+			return "오후 " + getHour() + "시 ";
+		} else if (getHour() > 0) {
+			return "오전 " + getHour() + "시 ";
+		} else {
+			return "오전 " + (getHour() + 12) + "시 ";
+		}
+	}
+
+	public String getMinuteInfo() {
+		if (getMinute() == 0) {
+			return "00분";
+		} else {
+			return getMinute() + "분";
+		}
+	}
+
+	public String getDayInfo() {
+		return getDay() + "일째 ";
+	}
+
+	public String getTimeInfo() {
+		return getDayInfo() + getHourInfo() + getMinuteInfo();
+	}
 }

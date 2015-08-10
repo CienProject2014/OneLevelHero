@@ -23,6 +23,7 @@ import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
@@ -33,6 +34,8 @@ import com.mygdx.popup.StatusMessagePopup;
 public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private RewardManager rewardManager;
+	@Autowired
+	private BattleManager battleManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
@@ -59,11 +62,11 @@ public class GameUiStage extends BaseOneLevelStage {
 	private ImageButton questLogButton;
 	private ImageButton helpButton;
 	private ImageButton settingButton;
+	private TextButtonStyle style;
 
 	@Override
 	public void act(float delta) {
-		timeInfoButton.setText(timeManager.getDay() + "일째 "
-				+ timeManager.getHour() + "시 " + timeManager.getMinute() + "분");
+		timeInfoButton.setText(timeManager.getTimeInfo());
 	}
 
 	public Stage makeStage() {
@@ -77,6 +80,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		makeTable();
 
 		tableStack.add(uiTable);
+		conditionalHidingBackButton();
 
 		alertMessage = new Stack<MessagePopup>();
 		// 보상 이벤트 처리
@@ -103,8 +107,14 @@ public class GameUiStage extends BaseOneLevelStage {
 			rewardManager.pollRewardQueue();
 		}
 		addActor(statusMessagePopup);
-
 		return this;
+	}
+
+	private void conditionalHidingBackButton() {
+		if (!positionManager.getCurrentPositionType().equals(
+				PositionEnum.SUB_NODE)) {
+			backButton.setVisible(false);
+		}
 	}
 
 	// 테이블 디자인
@@ -139,16 +149,14 @@ public class GameUiStage extends BaseOneLevelStage {
 	}
 
 	public void makeButton() {
-		TextButtonStyle style = new TextButtonStyle(
+		style = new TextButtonStyle(
 				atlasUiAssets.getAtlasUiFile("time_info_button"),
 				atlasUiAssets.getAtlasUiFile("time_info_button"),
 				atlasUiAssets.getAtlasUiFile("time_info_button"),
 				uiComponentAssets.getFont());
-		timeInfoButton = new TextButton(timeManager.getDay() + "일째 "
-				+ timeManager.getHour() + "시 " + timeManager.getMinute() + "분",
-				style);
+		timeInfoButton = new TextButton(timeManager.getTimeInfo(), style);
 
-		placeInfoButton = new TextButton("장소", style);
+		makePlaceInfoButton();
 
 		backButton = new ImageButton(
 				atlasUiAssets.getAtlasUiFile("back_button"),
@@ -164,16 +172,35 @@ public class GameUiStage extends BaseOneLevelStage {
 				atlasUiAssets.getAtlasUiFile("setting_toggle_button"));
 	}
 
+	private void makePlaceInfoButton() {
+		if (positionManager.getCurrentPositionType().equals(PositionEnum.NODE)) {
+			placeInfoButton = new TextButton(
+					positionManager.getCurrentNodeHanguelName(), style);
+		} else if (positionManager.getCurrentPositionType().equals(
+				PositionEnum.SUB_NODE)) {
+			placeInfoButton = new TextButton(
+					positionManager.getCurrentSubNodeHanguelName(), style);
+		} else {
+			placeInfoButton = new TextButton(
+					positionManager.getCurrentNodeHanguelName(), style);
+		}
+	}
+
 	// 리스너 할당
 	public void addListener() {
+		placeInfoButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				battleManager.healAllHero();
+				return true;
+			}
+		});
 		questLogButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				if (positionManager.getCurrentPositionType().equals(
-						PositionEnum.NODE)) {
-					screenFactory.show(ScreenEnum.LOG);
-				}
+				screenFactory.show(ScreenEnum.LOG);
 				return true;
 			}
 
@@ -183,6 +210,7 @@ public class GameUiStage extends BaseOneLevelStage {
 				screenFactory.show(ScreenEnum.WORLD_MAP);
 			}
 		});
+		timeInfoButton.addListener(listenerFactory.getJumpSectionListener());
 		helpButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,

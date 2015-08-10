@@ -18,17 +18,13 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "equipment": {
-      "weapon": "sword",
-      "armor": "leather_armor",
-      "boots": "leather_boots",
-      "gloves": "leather_gloves"
+    "initialInventoryList": {
+      "leftHandGrip" : "broad_sword",
+      "rightHandGrip" : "round_shield",
+      "clothes": "iron_armor"
     },
     "skillList": [
       "cut_01"
-    ],
-    "itemList": [
-      "sword_01"
     ]
   },
   "parath": {
@@ -52,13 +48,7 @@
     },
     "skillList": [
       "cut_01"
-    ],
-    "equipment": {
-      "weapon": "daggear",
-      "armor": "leather_armor",
-      "boots": "leather_boots",
-      "gloves": "leather_gloves"
-    }
+    ]
   },
   "lilis": {
     "facePath" : "lilis",
@@ -81,12 +71,6 @@
     },
     "skillList": [
       "cut_01"
-    ],
-    "equipment": {
-      "weapon": "daggear",
-      "armor": "leather_armor",
-      "boots": "leather_boots",
-      "gloves": "leather_gloves"
-    }
+    ]
   }
 }

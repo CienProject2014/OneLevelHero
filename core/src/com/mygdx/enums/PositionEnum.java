@@ -1,9 +1,10 @@
 package com.mygdx.enums;
 
 public enum PositionEnum {
-	BATTLE_EVENT("battle_event"), NODE("node"), SUB_NODE("sub_node"), FIELD(
-			"field"), NODE_EVENT("node_event"), SUB_NODE_EVENT("sub_node_event"), FIELD_EVENT(
-			"field_event"), LOG("log"), BATTLE("battle");
+	ANIMAL_BOOK("animal_book"), BATTLE_EVENT("battle_event"), NODE("node"), SUB_NODE(
+			"sub_node"), FIELD("field"), NODE_EVENT("node_event"), SUB_NODE_EVENT(
+			"sub_node_event"), FIELD_EVENT("field_event"), LOG("log"), BATTLE(
+			"battle");
 	private String positionEnumString;
 
 	PositionEnum(String positionEnumString) {

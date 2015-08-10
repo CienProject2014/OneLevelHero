@@ -1,0 +1,37 @@
+{
+  "broad_sword": {
+    "name": "브로드 소드",
+    "itemPath" : "broad_sword",
+    "category": "한손검",
+    "grade": "일반",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "slash",
+      "stab"
+    ],
+    "effectStatus": {
+      "attack": 35,
+      "speed": -5
+    },
+    "description": "칼날이 넓은 검."
+  },
+  "sabre": {
+    "name": "사브르",
+    "itemPath" : "sabre",
+    "category": "한손검",
+    "grade": "일반",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatus": {
+      "attack": 25,
+      "speed": 5
+    },
+    "description": "외날이며 완만하게 구부러져 있다."
+  }
+}

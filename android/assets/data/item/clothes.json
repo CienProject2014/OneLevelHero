@@ -1,0 +1,35 @@
+{
+  "cope": {
+    "name": "중앙 사제복",
+    "itemPath" : "cope",
+    "category": "로브",
+    "grade": "일반",
+    "effectStatus": {
+      "defense": 5,
+      "magicDefense": 25
+    },
+    "description": "중앙 사제들이 입는 복장이다."
+  },
+  "necromantic_dress": {
+    "name": "강령복",
+    "itemPath" : "necromantic_dress",
+    "category": "로브",
+    "grade": "일반",
+    "effectStatus": {
+      "defense": 5,
+      "magicDefense": 25
+    },
+    "description": "강령식에 어울리는 복장이다."
+  },
+  "iron_armor": {
+    "name": "철제 갑옷",
+    "itemPath" : "iron_armor",
+    "category": "갑옷",
+    "grade": "일반",
+    "effectStatus": {
+      "defense": 30,
+      "speed": -10
+    },
+    "description": "녹이 슬어 갑옷의 성능을 제대로 할 수 있을지 의문이다."
+  }
+}

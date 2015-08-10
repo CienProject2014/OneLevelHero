@@ -10,10 +10,10 @@ import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.model.Fightable;
-import com.mygdx.model.Hero;
-import com.mygdx.model.Monster;
-import com.mygdx.model.Unit;
+import com.mygdx.model.unit.Fightable;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.Monster;
+import com.mygdx.model.unit.Unit;
 
 public class BattleManager {
 	@Autowired
@@ -31,18 +31,34 @@ public class BattleManager {
 	@Autowired
 	private PositionManager positionManager;
 
+	public void setBeforePosition(PositionEnum positionEnum) {
+		battleInfo.setBeforePosition(positionEnum);
+	}
+
+	public PositionEnum getBeforePosition() {
+		return battleInfo.getBeforePosition();
+	}
+
 	public void startBattle(Monster selectedMonster) {
 		if (battleInfo.getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
+			positionManager.setCurrentPositionType(PositionEnum.BATTLE);
 			battleInfo.setBattleState(BattleStateEnum.ENCOUNTER);
 		}
-		battleInfo.setMonster(selectedMonster);
-		positionManager.setCurrentPositionType(PositionEnum.BATTLE);
+		battleInfo.setCurrentMonster(selectedMonster);
 		screenFactory.show(ScreenEnum.ENCOUNTER);
 	}
 
 	public void runAway() {
 		battleInfo.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-		goCurrentPosition();
+		movingManager.goPreviousPosition();
+	}
+
+	public boolean isInBattle() {
+		if (getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	public void readyForMonsterHittingAnimation() {
@@ -55,10 +71,6 @@ public class BattleManager {
 		int x = (int) (StaticAssets.windowWidth / 2);
 		int y = (int) (StaticAssets.windowHeight / 2);
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, x, y);
-	}
-
-	public void goCurrentPosition() {
-		movingManager.goCurrentPosition();
 	}
 
 	public void setCurrentActor(Hero hero) {
@@ -101,7 +113,7 @@ public class BattleManager {
 
 	public void userSkill(Fightable attackUnit, String skill) {
 		// FIXME
-		attackUnit.skillAttack(battleInfo.getMonster(), skill);
+		attackUnit.skillAttack(battleInfo.getCurrentMonster(), skill);
 	}
 
 	public void useItem(String item) {
@@ -110,16 +122,16 @@ public class BattleManager {
 
 	public void checkMonsterWin(Hero randomHero) {
 		if (randomHero.getStatus().getHp() <= 0) {
-			endBattle(battleInfo.getMonster());
+			endBattle(battleInfo.getCurrentMonster());
 		}
 	}
 
 	public Monster getSelectedMonster() {
-		return battleInfo.getMonster();
+		return battleInfo.getCurrentMonster();
 	}
 
 	public void setSelectedMonster(Monster selectedMonster) {
-		battleInfo.setMonster(selectedMonster);
+		battleInfo.setCurrentMonster(selectedMonster);
 	}
 
 	public BattleStateEnum getBattleState() {
@@ -130,4 +142,10 @@ public class BattleManager {
 		battleInfo.setBattleState(battleStateEnum);
 	}
 
+	public void healAllHero() {
+		for (Hero hero : partyManager.getBattleMemberList()) {
+			hero.getStatus().setHealthPoint(
+					hero.getStatus().getMaxHealthPoint());
+		}
+	}
 }

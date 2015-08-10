@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -18,7 +17,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.model.Monster;
+import com.mygdx.model.unit.Monster;
 
 public class EncounterStage extends BaseOneLevelStage {
 	@Autowired
@@ -40,6 +39,7 @@ public class EncounterStage extends BaseOneLevelStage {
 		super.makeStage();
 		monster = battleManager.getSelectedMonster();
 		setMonsterTable();
+
 		fightButton = new TextButton("싸운다", uiComponentAssets.getSkin());
 		fleeButton = new TextButton("도망친다", uiComponentAssets.getSkin());
 
@@ -49,6 +49,7 @@ public class EncounterStage extends BaseOneLevelStage {
 
 		selTable.bottom();
 		tableStack.add(selTable);
+
 		addListener(); // 리스너 할당
 
 		return this;
@@ -78,13 +79,9 @@ public class EncounterStage extends BaseOneLevelStage {
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
-		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
-		if (battleManager.getSelectedMonster().getName().equals("mawang")) {
-			return new TextureRegionDrawable(new TextureRegion(
-					StaticAssets.backgroundTextureMap.get("bg_devilcastle_01")));
-		}
-		return new TextureRegionDrawable(new TextureRegion(new Texture(
-				Gdx.files.internal("texture/background/forest.png"))));
+		return new TextureRegionDrawable(new TextureRegion(
+				StaticAssets.backgroundTextureMap.get("forest")));
+
 	}
 
 	private void addListener() {

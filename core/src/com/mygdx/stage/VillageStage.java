@@ -22,9 +22,9 @@ import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
 import com.mygdx.manager.MovingManager;
-import com.mygdx.model.Building;
-import com.mygdx.model.Connection;
-import com.mygdx.model.Village;
+import com.mygdx.model.surroundings.Building;
+import com.mygdx.model.surroundings.NodeConnection;
+import com.mygdx.model.surroundings.Village;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class VillageStage extends BaseOverlapStage {
@@ -41,8 +41,6 @@ public class VillageStage extends BaseOverlapStage {
 	private Village villageInfo;
 	public TextButton shiftButton;
 
-	private final int movingSpeed = 10;
-
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
 		cameraManager.stretchToDevice(this);
@@ -54,9 +52,9 @@ public class VillageStage extends BaseOverlapStage {
 	private void setArrow() {
 		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
 		String currentNode = positionManager.getCurrentNodeName();
-		Map<String, Connection> connectionMap = worldMapAssets
-				.getWorldNodeInfo(currentNode).getConnection();
-		for (final Entry<String, Connection> connection : connectionMap
+		Map<String, NodeConnection> connectionMap = worldMapAssets
+				.getWorldNodeInfo(currentNode).getNodeConnection();
+		for (final Entry<String, NodeConnection> connection : connectionMap
 				.entrySet()) {
 			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(
 					connection.getValue().getArrowName());
