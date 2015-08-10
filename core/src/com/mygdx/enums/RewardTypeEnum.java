@@ -2,7 +2,7 @@ package com.mygdx.enums;
 
 public enum RewardTypeEnum {
 	BATTLE("battle"), PARTY("party"), GOLD("gold"), EXPERIENCE("experience"), ITEM(
-			"item"), NONE("none");
+			"item"), NONE("none"), PASS_TIME("pass_time");
 	private String code;
 
 	RewardTypeEnum(String code) {

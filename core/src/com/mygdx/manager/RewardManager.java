@@ -4,6 +4,7 @@ import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.currentState.RewardQueueInfo;
@@ -20,6 +21,8 @@ public class RewardManager {
 	private BattleManager battleManager;
 	@Autowired
 	private PartyManager partyManager;
+	@Autowired
+	private TimeManager timeManager;
 
 	// (3) 퀘스트 달성 여부 큐
 	// 아직 미구현
@@ -47,37 +50,41 @@ public class RewardManager {
 		if (getRewardQueue().peek() != null) {
 			RewardInfo peekedReward = getRewardQueue().peek();
 			switch (peekedReward.getRewardType()) {
-				case EXPERIENCE:
+				case EXPERIENCE :
 					return;
-				case GOLD:
+				case GOLD :
 					return;
-				case ITEM:
+				case ITEM :
 					return;
-				case NONE:
+				case NONE :
 					return;
-				case PARTY:
+				case PASS_TIME :
+					Gdx.app.log("RewardManager", "PASS_TIME Reward CALL..");
+					timeManager.plusMinute(Integer.parseInt(getRewardQueue()
+							.peek().getRewardTargetAttribute()));
+					return;
+				case PARTY :
 					partyManager.addHero(unitAssets.getHero(getRewardQueue()
 							.peek().getRewardTarget()));
 					return;
-				default:
+				default :
 					return;
 			}
 		}
 	}
-
 	public String getRewardMessage(RewardInfo rewardInfo) {
 		switch (rewardInfo.getRewardType()) {
-			case EXPERIENCE:
+			case EXPERIENCE :
 				return rewardInfo.getRewardTarget() + "의 경험치를 획득했습니다.";
-			case GOLD:
+			case GOLD :
 				return rewardInfo.getRewardTarget() + "의 골드를 획득했습니다.";
-			case ITEM:
+			case ITEM :
 				return rewardInfo.getRewardTarget() + "아이템을 획득했습니다.";
-			case NONE:
+			case NONE :
 				return "보상 없음";
-			case PARTY:
+			case PARTY :
 				return rewardInfo.getRewardTarget() + "이 파티에 합류하였습니다.";
-			default:
+			default :
 				return "보상 없음";
 		}
 	}

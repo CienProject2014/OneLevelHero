@@ -132,6 +132,11 @@
           "blackwood"
         ]
       },
+      "9":{
+        "eventState" : "not_opened",
+        "eventType" : "pass_time",
+        "eventComponent" : [ "60" ]
+      },
       "10": {
         "eventState": "not_opened",
         "eventType": "chat",
@@ -143,12 +148,10 @@
           }
         ]
       },
-      "11": {
-        "eventState": "not_opened",
-        "eventType": "move_sub_node",
-        "eventComponent": [
-          "cobweb_library"
-        ]
+      "12": {
+        "eventState" : "not_opened",
+        "eventType" : "pass_time",
+        "eventComponent" : [ "5" ]
       },
       "13": {
         "eventState": "not_opened",
@@ -187,16 +190,21 @@
             "backgroundPath": "bg_cobweb_01"
           },
           {
-            "script": "마침 저기 있네요.",
+            "script": "북쪽으로 이동해야겠네요.",
             "characterPath": "bust_lilis_01",
             "backgroundPath": "bg_cobweb_01"
           },
           {
-            "script": "어서 건물을 터치해서 안으로 들어가봐요!",
+            "script": "우측 상단의 화살표를 눌러 마을 위쪽으로 이동한 후, 건물을 터치해서 안으로 들어가도록 해요.",
             "characterPath": "bust_parath_01",
             "backgroundPath": "bg_cobweb_01"
           }
         ]
+      },
+      "16":{
+        "eventState" : "not_opened",
+        "eventType" : "pass_time",
+        "eventComponent" : [ "5" ]
       },
       "17": {
         "eventState": "not_opened",
@@ -299,6 +307,11 @@
           }
         ]
       },
+      "18" : {
+        "eventState" : "not_opened",
+        "eventType" : "pass_time",
+        "eventComponent" : [ "10" ]
+      },
       "19": {
         "eventState": "not_opened",
         "eventType": "move_node",
@@ -363,6 +376,11 @@
             "backgroundPath": "bg_cobweb_01"
           }
         ]
+      },
+      "22": {
+        "eventState" : "not_opened",
+        "eventType" : "pass_time",
+        "eventComponent" : ["5"]
       },
       "23": {
         "eventState": "not_opened",
@@ -879,7 +897,12 @@
             "characterPath": "bust_parath_01",
             "backgroundPath": "bg_blackwood_03"
           }
-        ]
+        ],
+        "reward" : {
+          "rewardType" : "pass_time",
+          "rewardState" : "not_cleared",
+          "rewardTargetAttribute" : "5"
+        }
       }
     },
     "greeting": {

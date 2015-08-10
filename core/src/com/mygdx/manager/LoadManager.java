@@ -47,7 +47,7 @@ public class LoadManager {
 	}
 
 	private void setTimeInfo() {
-		timeManager.setTime(1, 8, 0);
+		timeManager.setTime(1, 7, 0);
 	}
 
 	public LoadManager() {

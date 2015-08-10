@@ -56,6 +56,8 @@ public class EventManager {
 	private EventCheckManager eventCheckManager;
 	@Autowired
 	private EventAssets eventAssets;
+	@Autowired
+	private TimeManager timeManager;
 
 	private Iterator<EventScene> eventSceneIterator;
 	private final int eventPlusRule = 1;
@@ -80,12 +82,18 @@ public class EventManager {
 				break;
 			case BATTLE_END :
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				storySectionManager.runStorySequence();
 				break;
 			case MOVE_SUB_NODE :
 				positionManager.setCurrentSubNodeName(getCurrentEvent()
 						.getEventComponent().get(0));
 				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 				movingManager.goCurrentPosition();
+				storySectionManager.runStorySequence();
+				break;
+			case PASS_TIME :
+				timeManager.plusMinute(Integer.parseInt(getCurrentEvent()
+						.getEventComponent().get(0)));
 				storySectionManager.runStorySequence();
 				break;
 			case MUSIC :
@@ -97,7 +105,6 @@ public class EventManager {
 				break;
 		}
 	}
-
 	public Stage getSceneEvent() {
 		Event currentEvent = eventInfo.getCurrentEvent();
 		switch (currentEvent.getEventType()) {
