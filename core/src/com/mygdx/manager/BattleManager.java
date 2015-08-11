@@ -41,7 +41,6 @@ public class BattleManager {
 
 	public void startBattle(Monster selectedMonster) {
 		if (battleInfo.getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
-			positionManager.setCurrentPositionType(PositionEnum.BATTLE);
 			battleInfo.setBattleState(BattleStateEnum.ENCOUNTER);
 		}
 		battleInfo.setCurrentMonster(selectedMonster);
@@ -50,7 +49,7 @@ public class BattleManager {
 
 	public void runAway() {
 		battleInfo.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-		movingManager.goPreviousPosition();
+		movingManager.goCurrentPosition();
 	}
 
 	public boolean isInBattle() {

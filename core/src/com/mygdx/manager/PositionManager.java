@@ -21,6 +21,14 @@ public class PositionManager {
 	@Autowired
 	private NodeAssets nodeAssets;
 
+	public PositionEnum getBeforePositionType() {
+		return positionInfo.getBeforePositionType();
+	}
+
+	public void setBeforePositionType(PositionEnum beforePositionType) {
+		positionInfo.setBeforePositionType(beforePositionType);
+	}
+
 	public WorldNodeEnum.NodeType getCurrentNodeType() {
 		return worldMapAssets.getNodeType(positionInfo.getCurrentNodeName());
 	}
