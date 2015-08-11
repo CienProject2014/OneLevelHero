@@ -48,6 +48,7 @@ public class LoadManager {
 
 	private void setTimeInfo() {
 		timeManager.setTime(1, 7, 0);
+		partyManager.setFatigue(0);
 	}
 
 	public LoadManager() {
@@ -76,6 +77,5 @@ public class LoadManager {
 		partyManager.addHero(yongsa);
 		partyManager.addHero(parath);
 		partyManager.addHero(lilis);
-
 	}
 }

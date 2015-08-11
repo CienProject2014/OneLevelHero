@@ -90,6 +90,12 @@ public class StatusStage extends BaseOverlapStage {
 				Color.WHITE));
 		nameLabel.setFontScale(1.0f);
 		nameLabel.setTouchable(Touchable.disabled);
+		LabelItem fatigueLabel = sceneLoader.getRoot().getLabelById("fatigue");
+		fatigueLabel.setText(String.valueOf(partyManager.getFatigue()));
+		fatigueLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+				Color.WHITE));
+		fatigueLabel.setFontScale(1.0f);
+		fatigueLabel.setTouchable(Touchable.disabled);
 		ArrayList<String> labelList = constantsAssets
 				.getLabels(STATUS_LABEL_NAME);
 		for (int i = 0; i < labelList.size(); i++) {
@@ -103,7 +109,6 @@ public class StatusStage extends BaseOverlapStage {
 			labelItem.setTouchable(Touchable.disabled);
 		}
 	}
-
 	private void setBustImage() {
 		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
 		CompositeItem compositeItem = sceneLoader.getRoot().getCompositeById(

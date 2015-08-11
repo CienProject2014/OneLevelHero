@@ -8,6 +8,8 @@ import com.mygdx.currentState.TimeInfo;
 public class TimeManager {
 	@Autowired
 	private TimeInfo timeInfo;
+	@Autowired
+	private PartyManager partyManager;
 
 	private final static int MINUTES_PER_HOUR = 60;
 	private final static int HOURS_PER_DAY = 24;
@@ -23,23 +25,36 @@ public class TimeManager {
 
 	public void plusMinute(int value) {
 		Gdx.app.log("TimeManager", "Plus Minute : " + value);
-		timeInfo.setTime(timeInfo.getTime() + value);
+		setTime(timeInfo.getTime() + value);
 	}
+
+	public void setTime(int time) {
+		int beforeTime = getTime();
+		timeInfo.setTime(time);
+		int leftHour = (getTime() / MINUTES_PER_HOUR)
+				- (beforeTime / MINUTES_PER_HOUR);
+		if (leftHour >= 1) {
+			partyManager.setFatigue(partyManager.getFatigue() + leftHour);
+		}
+	}
+	public int getTime() {
+		return timeInfo.getTime();
+	}
+
 	public void setTime(int day, int hour, int minute) {
-		timeInfo.setTime(MINUTES_PER_DAY * day + MINUTES_PER_HOUR * hour
-				+ minute);
+		setTime(MINUTES_PER_DAY * day + MINUTES_PER_HOUR * hour + minute);
 	}
 
 	public int getDay() {
-		return timeInfo.getTime() / MINUTES_PER_DAY;
+		return getTime() / MINUTES_PER_DAY;
 	}
 
 	public int getHour() {
-		return (timeInfo.getTime() % MINUTES_PER_DAY) / MINUTES_PER_HOUR;
+		return (getTime() % MINUTES_PER_DAY) / MINUTES_PER_HOUR;
 	}
 
 	public int getMinute() {
-		return timeInfo.getTime() % MINUTES_PER_HOUR;
+		return getTime() % MINUTES_PER_HOUR;
 	}
 
 	public String getHourInfo() {
