@@ -3,7 +3,6 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.WorldNodeEnum;
@@ -89,6 +88,7 @@ public class MovingManager {
 				break;
 		}
 	}
+
 	public void goPreviousPosition() {
 		switch (positionManager.getCurrentPositionType()) {
 			case SUB_NODE :
@@ -101,9 +101,6 @@ public class MovingManager {
 				screenFactory.show(ScreenEnum.FIELD);
 				break;
 			case FIELD :
-				if (battleManager.isInBattle()) {
-					battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-				}
 				goBeforeBattlePosition();
 				break;
 			default :

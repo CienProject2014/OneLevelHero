@@ -14,10 +14,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.FieldManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.StatusBar;
 
 public class MonsterStage extends BaseOneLevelStage {
+	@Autowired
+	private FieldManager fieldManager;
 	@Autowired
 	private BattleManager battleManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
@@ -33,6 +37,7 @@ public class MonsterStage extends BaseOneLevelStage {
 	private Table monsterHpTable;
 	private Label monsterHpLabel;
 	private StatusBar monsterStatusBar;
+	private Texture bgTexture;
 
 	@Override
 	public Stage makeStage() {
@@ -98,10 +103,10 @@ public class MonsterStage extends BaseOneLevelStage {
 					StaticAssets.backgroundTextureMap.get("bg_devilcastle_01")));
 		} else {
 			return new TextureRegionDrawable(new TextureRegion(
-					StaticAssets.backgroundTextureMap.get("forest")));
+					TextureManager.getBackgroundTexture(fieldManager
+							.getFieldType().toString())));
 		}
 	}
-
 	public HashMap<String, Float> getUiConstantsMap() {
 		return uiConstantsMap;
 	}

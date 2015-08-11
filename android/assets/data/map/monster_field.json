@@ -1,27 +1,45 @@
 [
   {
-    "fieldType": "초원",
+  	"fieldType" : "bridge",
+  	"fieldMonsterList" : []
+  },
+  {
+    "fieldType": "grassland",
     "fieldMonsterList": [
       "black_gnoll",
       "twinhead"
     ]
   },
   {
-    "fieldType": "숲",
+    "fieldType": "elven_forest",
     "fieldMonsterList": [
       "kentaurous_spear",
       "ent"
     ]
   },
   {
-    "fieldType": "해변",
+    "fieldType": "blackwood_forest",
+    "fieldMonsterList": [
+      "kentaurous_spear",
+      "ent"
+    ]
+  },
+  {
+    "fieldType": "beach",
     "fieldMonsterList": [
       "mercensary",
       "assassin_girl"
     ]
   },
   {
-    "fieldType": "산",
+    "fieldType": "kadilla_mountain",
+    "fieldMonsterList": [
+      "troll",
+      "aonin"
+    ]
+  },
+  {
+    "fieldType": "blackwood_mountain",
     "fieldMonsterList": [
       "troll",
       "aonin"
