@@ -5,12 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
  * @author Velmont
- *
+ * 
  */
 public class DungeonEntranceStage extends BaseOverlapStage {
 	private CompositeItem entranceButton, saveButton, restButton;
@@ -47,6 +48,7 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				Gdx.app.debug("DungeonEntranceStage", "던전으로 들어가자!");
+				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 				screenFactory.show(ScreenEnum.DUNGEON);
 			}
 		});
