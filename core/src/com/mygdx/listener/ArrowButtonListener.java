@@ -29,8 +29,12 @@ public class ArrowButtonListener extends ClickListener {
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		fieldManager.startMovingField(connection.getKey());
-		positionManager.setCurrentPositionType(PositionEnum.FIELD);
-		screenFactory.show(ScreenEnum.FIELD);
+		if (fieldManager.getFieldLength() == 0) {
+			fieldManager.goForwardField();
+		} else {
+			positionManager.setCurrentPositionType(PositionEnum.FIELD);
+			screenFactory.show(ScreenEnum.FIELD);
+		}
 		storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_FIELD,
 				connection.getValue().getArrowName());
 	}

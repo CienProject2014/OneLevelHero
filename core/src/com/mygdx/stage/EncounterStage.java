@@ -17,6 +17,8 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.FieldManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.model.unit.Monster;
 
 public class EncounterStage extends BaseOneLevelStage {
@@ -24,6 +26,8 @@ public class EncounterStage extends BaseOneLevelStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private BattleManager battleManager;
+	@Autowired
+	private FieldManager fieldManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("MonsterStage");
 	private Monster monster;
@@ -79,9 +83,16 @@ public class EncounterStage extends BaseOneLevelStage {
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
-		return new TextureRegionDrawable(new TextureRegion(
-				StaticAssets.backgroundTextureMap.get("forest")));
-
+		if (battleManager.getSelectedMonster().getFacePath()
+				.equals("mawang_01")) {
+			return new TextureRegionDrawable(new TextureRegion(
+					StaticAssets.backgroundTextureMap.get("bg_devilcastle_01")));
+		} else {
+			System.out.println(fieldManager.getFieldType());
+			return new TextureRegionDrawable(new TextureRegion(
+					TextureManager.getBackgroundTexture(fieldManager
+							.getFieldType().toString())));
+		}
 	}
 
 	private void addListener() {

@@ -12,7 +12,8 @@ public class JumpSectionListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		if (storySectionManager.getCurrentStorySection().getNextSections() != null) {
+		if (!storySectionManager.getCurrentStorySection().getNextSections()
+				.isEmpty()) {
 			storySectionManager.setNewStorySectionAndPlay(storySectionManager
 					.getCurrentStorySection().getNextSections().get(0)
 					.getNextSectionNumber());
