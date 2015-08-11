@@ -48,7 +48,6 @@ public class EventStage extends BaseOneLevelStage {
 		super.makeStage();
 		if (eventSceneIterator.hasNext()) {
 			setScene(eventSceneIterator.next());
-
 			this.addListener(new InputListener() {
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y,

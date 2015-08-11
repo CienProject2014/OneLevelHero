@@ -6,7 +6,6 @@ import java.util.Stack;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -18,16 +17,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.PositionEnum;
-import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
-import com.mygdx.popup.AlertMessagePopup;
 import com.mygdx.popup.MessagePopup;
 import com.mygdx.popup.StatusMessagePopup;
 
@@ -83,18 +79,6 @@ public class GameUiStage extends BaseOneLevelStage {
 		conditionalHidingBackButton();
 
 		alertMessage = new Stack<MessagePopup>();
-		// 보상 이벤트 처리
-		Iterator<RewardInfo> iterator = rewardManager.getRewardQueue()
-				.iterator();
-		while (iterator.hasNext()) {
-			RewardInfo nextIterator = iterator.next();
-			if (nextIterator.getRewardState().equals(RewardStateEnum.ING))
-				alertMessage.add(new AlertMessagePopup("[ 보상 ]",
-						uiComponentAssets.getSkin()).text(rewardManager
-						.getRewardMessage(nextIterator)));
-			Gdx.app.log("리워드정보", nextIterator.getRewardTarget() + ", "
-					+ nextIterator.getRewardType());
-		}
 		// 알림 메시지
 		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]",
 				uiComponentAssets.getSkin(), partyManager.getBattleMemberList());

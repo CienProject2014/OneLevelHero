@@ -30,7 +30,7 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private EventInfo eventInfo;
 	@Autowired
-	private RewardQueueInfo rewardQueueInfo;
+	private RewardInfo rewardQueueInfo;
 	@Autowired
 	private StorySectionInfo storySectionInfo;
 

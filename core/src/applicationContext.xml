@@ -37,7 +37,6 @@
 	<bean id="partyInfo" class="com.mygdx.currentState.PartyInfo" />
 	<bean id="positionInfo" class="com.mygdx.currentState.PositionInfo" />
 	<bean id="rewardInfo" class="com.mygdx.currentState.RewardInfo" />
-	<bean id="rewardQueueInfo" class="com.mygdx.currentState.RewardQueueInfo" />
 	<bean id="roadInfo" class="com.mygdx.currentState.RoadInfo"/>
 	<bean id="soundInfo" class="com.mygdx.currentState.SoundInfo" />
 	<bean id="storySectionInfo" class="com.mygdx.currentState.StorySectionInfo"/>
