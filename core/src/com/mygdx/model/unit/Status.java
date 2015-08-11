@@ -9,7 +9,6 @@ public class Status {
 	private int healthPoint; // 현재 체력
 	private int maxHealthPoint; // 최대 체력
 	private int speed; // speed
-	private int fatigue; // fatigue(피로도)
 	private int experience; // 경험치
 	private int maxExperience; // 최대 경험치(레벨업)
 	private float fireResistance; // fire resistance
@@ -80,14 +79,6 @@ public class Status {
 		this.speed = speed;
 	}
 
-	public int getFatigue() {
-		return fatigue;
-	}
-
-	public void setFatigue(int fatigue) {
-		this.fatigue = fatigue;
-	}
-
 	public int getExperience() {
 		return experience;
 	}
@@ -144,14 +135,14 @@ public class Status {
 		this.electricResistance = electricResistance;
 	}
 
-	//alphabet order
+	// alphabet order
 	public String[] getStatusList() {
-		String[] array = { String.valueOf(attack), String.valueOf(defense),
+		String[] array = {String.valueOf(attack), String.valueOf(defense),
 				String.valueOf(electricResistance), getExperiencePointState(),
-				String.valueOf(fatigue), String.valueOf(fireResistance),
-				getHealthPointState(), String.valueOf(level),
-				String.valueOf(magicAttack), String.valueOf(magicDefense),
-				String.valueOf(speed), String.valueOf(waterResistance) };
+				String.valueOf(fireResistance), getHealthPointState(),
+				String.valueOf(level), String.valueOf(magicAttack),
+				String.valueOf(magicDefense), String.valueOf(speed),
+				String.valueOf(waterResistance)};
 		return array;
 	}
 }
