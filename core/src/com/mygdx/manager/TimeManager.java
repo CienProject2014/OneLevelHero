@@ -2,6 +2,7 @@ package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.TimeInfo;
 
 public class TimeManager {
@@ -21,9 +22,9 @@ public class TimeManager {
 	}
 
 	public void plusMinute(int value) {
+		Gdx.app.log("TimeManager", "Plus Minute : " + value);
 		timeInfo.setTime(timeInfo.getTime() + value);
 	}
-
 	public void setTime(int day, int hour, int minute) {
 		timeInfo.setTime(MINUTES_PER_DAY * day + MINUTES_PER_HOUR * hour
 				+ minute);

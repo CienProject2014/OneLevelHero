@@ -1,6 +1,7 @@
 package com.mygdx.manager;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.EventInfo;
-import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
@@ -23,6 +23,7 @@ import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.EventScene;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.event.NPC;
+import com.mygdx.model.event.Reward;
 
 /**
  * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스 CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을
@@ -137,15 +138,18 @@ public class EventManager {
 	public Iterator<EventScene> getEventSceneIterator() {
 		eventSceneIterator = eventInfo.getCurrentEvent()
 				.getEventSceneIterator();
-		addEventRewardQueue(eventInfo.getCurrentEvent().getReward());
-
+		if (eventInfo.getCurrentEvent().getRewards() != null) {
+			addEventRewardQueue(eventInfo.getCurrentEvent().getRewards());
+		}
 		return eventSceneIterator;
 	}
 
-	private void addEventRewardQueue(RewardInfo rewardPacket) {
-		if (rewardPacket != null)
-			if (rewardPacket.getRewardState() == RewardStateEnum.NOT_CLEARED)
-				rewardManager.addEventReward(rewardPacket);
+	private void addEventRewardQueue(List<Reward> rewardList) {
+		for (Reward reward : rewardList) {
+			if (reward.getRewardState() == RewardStateEnum.NOT_CLEARED) {
+				rewardManager.addEventReward(reward);
+			}
+		}
 	}
 
 	public NPC getCurrentNpc() {

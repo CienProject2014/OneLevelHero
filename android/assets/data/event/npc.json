@@ -132,10 +132,12 @@
           "blackwood"
         ]
       },
-      "9":{
-        "eventState" : "not_opened",
-        "eventType" : "pass_time",
-        "eventComponent" : [ "60" ]
+      "9": {
+        "eventState": "not_opened",
+        "eventType": "pass_time",
+        "eventComponent": [
+          "60"
+        ]
       },
       "10": {
         "eventState": "not_opened",
@@ -149,9 +151,11 @@
         ]
       },
       "12": {
-        "eventState" : "not_opened",
-        "eventType" : "pass_time",
-        "eventComponent" : [ "5" ]
+        "eventState": "not_opened",
+        "eventType": "pass_time",
+        "eventComponent": [
+          "5"
+        ]
       },
       "13": {
         "eventState": "not_opened",
@@ -201,10 +205,12 @@
           }
         ]
       },
-      "16":{
-        "eventState" : "not_opened",
-        "eventType" : "pass_time",
-        "eventComponent" : [ "5" ]
+      "16": {
+        "eventState": "not_opened",
+        "eventType": "pass_time",
+        "eventComponent": [
+          "5"
+        ]
       },
       "17": {
         "eventState": "not_opened",
@@ -307,10 +313,12 @@
           }
         ]
       },
-      "18" : {
-        "eventState" : "not_opened",
-        "eventType" : "pass_time",
-        "eventComponent" : [ "10" ]
+      "18": {
+        "eventState": "not_opened",
+        "eventType": "pass_time",
+        "eventComponent": [
+          "10"
+        ]
       },
       "19": {
         "eventState": "not_opened",
@@ -378,9 +386,11 @@
         ]
       },
       "22": {
-        "eventState" : "not_opened",
-        "eventType" : "pass_time",
-        "eventComponent" : ["5"]
+        "eventState": "not_opened",
+        "eventType": "pass_time",
+        "eventComponent": [
+          "5"
+        ]
       },
       "23": {
         "eventState": "not_opened",
@@ -898,11 +908,18 @@
             "backgroundPath": "bg_blackwood_03"
           }
         ],
-        "reward" : {
-          "rewardType" : "pass_time",
-          "rewardState" : "not_cleared",
-          "rewardTargetAttribute" : "5"
-        }
+        "rewards": [
+          {
+            "rewardType": "next_section",
+            "rewardState": "not_cleared",
+            "rewardTargetAttribute": "105"
+          },
+          {
+            "rewardType" : "pass_time",
+            "rewardState" : "not_cleared",
+            "rewardTargetAttribute" : "5"
+          }
+        ]
       }
     },
     "greeting": {
