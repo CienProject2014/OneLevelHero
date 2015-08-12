@@ -73,23 +73,32 @@
       },
       {
         "eventNpc": "prologue",
+        "eventNumber": "29"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "9"
+      },
+      {
+        "eventNpc": "prologue",
         "eventNumber": "10"
       }
     ],
-    "nextSections": [
+    "conditionalEvents": [
       {
-        "nextSectionNumber": "105",
-        "eventType": "select_event",
-        "targetComponent": "2"
+        "eventNpc": "waiji",
+        "eventNumber": "2"
       }
-    ]
+    ],
+    "nextSections": []
   },
   "105": {
-    "sequencialEvents": [],
+    "sequencialEvents": [
+    ],
     "nextSections": [
       {
         "nextSectionNumber": "106",
-        "eventType": "move_village",
+        "eventType": "move_node",
         "targetComponent": "blackwood"
       }
     ]
@@ -104,7 +113,7 @@
     "nextSections": [
       {
         "nextSectionNumber": "107",
-        "eventType": "move_moving",
+        "eventType": "move_field",
         "targetComponent": "1to2"
       }
     ]
@@ -119,7 +128,7 @@
     "nextSections": [
       {
         "nextSectionNumber": "108",
-        "eventType": "move_village",
+        "eventType": "move_node",
         "targetComponent": "cobweb"
       }
     ]
@@ -129,12 +138,16 @@
       {
         "eventNpc": "prologue",
         "eventNumber": "15"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "16"
       }
     ],
     "nextSections": [
       {
         "nextSectionNumber": "109",
-        "eventType": "move_building",
+        "eventType": "move_sub_node",
         "targetComponent": "cobweb_library"
       }
     ]
@@ -144,12 +157,16 @@
       {
         "eventNpc": "prologue",
         "eventNumber": "17"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "18"
       }
     ],
     "nextSections": [
       {
         "nextSectionNumber": "110",
-        "eventType": "move_village",
+        "eventType": "move_node",
         "targetComponent": "cobweb"
       }
     ]
@@ -178,6 +195,10 @@
       {
         "eventNpc": "prologue",
         "eventNumber": "21"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "22"
       },
       {
         "eventNpc": "prologue",

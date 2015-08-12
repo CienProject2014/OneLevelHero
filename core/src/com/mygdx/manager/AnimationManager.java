@@ -4,14 +4,18 @@ import java.util.ArrayDeque;
 import java.util.Iterator;
 import java.util.Queue;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.TextureEnum;
-import com.mygdx.model.FrameSheet;
+import com.mygdx.model.battle.FrameSheet;
 
 public class AnimationManager {
+	@Autowired
+	private StorySectionManager storySectionManager;
 	private SpriteBatch spriteBatch;
 	private Queue<AnimationBit> animations;
 
@@ -93,22 +97,24 @@ public class AnimationManager {
 		stateTime += delta;
 
 		spriteBatch.begin();
-		for (Iterator<AnimationBit> iterator = animations.iterator(); iterator
+		for (final Iterator<AnimationBit> iterator = animations.iterator(); iterator
 				.hasNext();) {
 
 			AnimationBit bit = (AnimationBit) iterator.next();
 
 			if (bit.getAnimation().isAnimationFinished(stateTime)) {
 				iterator.remove();
+
 			} else {
 				spriteBatch.draw(bit.getAnimation().getKeyFrame(stateTime),
 						bit.getX(), bit.getY());
 			}
 		}
 		spriteBatch.end();
+
 	}
 
-	public boolean hasPlayable() {
+	public boolean isPlayable() {
 		if (animations.isEmpty()) {
 			resetTime();
 			return false;
@@ -151,5 +157,21 @@ public class AnimationManager {
 		public void setY(int y) {
 			this.y = y;
 		}
+	}
+
+	public SpriteBatch getSpriteBatch() {
+		return spriteBatch;
+	}
+
+	public void setSpriteBatch(SpriteBatch spriteBatch) {
+		this.spriteBatch = spriteBatch;
+	}
+
+	public Queue<AnimationBit> getAnimations() {
+		return animations;
+	}
+
+	public void setAnimations(Queue<AnimationBit> animations) {
+		this.animations = animations;
 	}
 }

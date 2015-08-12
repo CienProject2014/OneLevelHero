@@ -5,6 +5,15 @@
   "npc_waiji" : {
   	"filePath" : "texture/character/npc_waiji.png"
   },
+  "status_yongsa":{
+  	"filePath" : "texture/character/status_yongsa.png"
+  },
+  "status_parath":{
+  	"filePath" : "texture/character/status_parath.png"
+  },
+  "status_lilis":{
+  	"filePath" : "texture/character/status_lilis.png"
+  },
   "bust_yongsa_01":{
   	"filePath" : "texture/character/bust_yongsa_01.png"
   },
@@ -49,5 +58,23 @@
   },
   "chest":{
   	"filePath" : "texture/game_object/chest.png"
+  },
+  "battle_lilis_big":{
+    "filePath" : "texture/character/battle_lilis_big.png"
+  },
+  "battle_lilis_small":{
+    "filePath" : "texture/character/battle_lilis_small.png"
+  },
+  "battle_parath_big":{
+    "filePath" : "texture/character/battle_parath_big.png"
+  },
+  "battle_parath_small":{
+    "filePath" : "texture/character/battle_parath_small.png"
+  },
+  "battle_yongsa_big":{
+    "filePath" : "texture/character/battle_yongsa_big.png"
+  },
+  "battle_yongsa_small":{
+   "filePath" : "texture/character/battle_yongsa_small.png"
   }
 }

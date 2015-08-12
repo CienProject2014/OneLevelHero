@@ -63,7 +63,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "mawang"
+          "mawang_01"
         ]
       },
       "5": {
@@ -96,7 +96,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "mawang"
+          "mawang_01"
         ]
       },
       "7": {
@@ -127,9 +127,16 @@
       },
       "8": {
         "eventState": "not_opened",
-        "eventType": "move_village",
+        "eventType": "move_node",
         "eventComponent": [
           "blackwood"
+        ]
+      },
+      "9": {
+        "eventState": "not_opened",
+        "eventType": "pass_time",
+        "eventComponent": [
+          "60"
         ]
       },
       "10": {
@@ -143,11 +150,11 @@
           }
         ]
       },
-      "11": {
+      "12": {
         "eventState": "not_opened",
-        "eventType": "move_building",
+        "eventType": "pass_time",
         "eventComponent": [
-          "cobweb_library"
+          "5"
         ]
       },
       "13": {
@@ -187,18 +194,24 @@
             "backgroundPath": "bg_cobweb_01"
           },
           {
-            "script": "마침 저기 있네요.",
+            "script": "북쪽으로 이동해야겠네요.",
             "characterPath": "bust_lilis_01",
             "backgroundPath": "bg_cobweb_01"
           },
           {
-            "script": "어서 건물을 터치해서 안으로 들어가봐요!",
+            "script": "우측 상단의 화살표를 눌러 마을 위쪽으로 이동한 후, 건물을 터치해서 안으로 들어가도록 해요.",
             "characterPath": "bust_parath_01",
             "backgroundPath": "bg_cobweb_01"
           }
         ]
       },
-      
+      "16": {
+        "eventState": "not_opened",
+        "eventType": "pass_time",
+        "eventComponent": [
+          "5"
+        ]
+      },
       "17": {
         "eventState": "not_opened",
         "eventType": "chat",
@@ -300,17 +313,24 @@
           }
         ]
       },
+      "18": {
+        "eventState": "not_opened",
+        "eventType": "pass_time",
+        "eventComponent": [
+          "10"
+        ]
+      },
       "19": {
         "eventState": "not_opened",
-        "eventType": "move_village",
+        "eventType": "move_node",
         "eventComponent": [
           "cobweb"
         ]
       },
-      "20" : {
-        "eventState" : "not_opened",
-        "eventType" : "next_section",
-        "eventComponent" : [
+      "20": {
+        "eventState": "not_opened",
+        "eventType": "next_section",
+        "eventComponent": [
           "111"
         ]
       },
@@ -324,8 +344,7 @@
             "backgroundPath": "bg_cobweb_01"
           },
           {
-            "script": "우선 용사님의 저주를 풀어야겠네요.
-",
+            "script": "우선 용사님의 저주를 풀어야겠네요.",
             "characterPath": "bust_lilis_01",
             "backgroundPath": "bg_cobweb_01"
           },
@@ -364,6 +383,13 @@
             "characterPath": "bust_lilis_01",
             "backgroundPath": "bg_cobweb_01"
           }
+        ]
+      },
+      "22": {
+        "eventState": "not_opened",
+        "eventType": "pass_time",
+        "eventComponent": [
+          "5"
         ]
       },
       "23": {
@@ -558,23 +584,273 @@
             "backgroundPath": "bg_cobweb_01"
           }
         ]
+      },
+      "29": {
+        "eventState": "not_opened",
+        "eventType": "battle_end"
       }
+    }
+  },
+  "lilis": {
+    "name": "lilis",
+    "events": {
+      "1": {
+        "eventName": "저주를 풀 열쇠",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "리리스, 어떻게 하면 저주를 풀 수 있을까?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "저주를 풀기 위해서는 우선 저주의 근원을 파악해야 해요!",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "그건 나도 안다구...",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사의 한숨이 3000 증가했다....",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "2": {
+        "eventName": "삼투압현상에 대한 토론",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "리리스.. 삼투압 현상에 대해 어떻게 생각해?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "삼투압? 압력으로 인해 일어나는 현상 아닌가요?",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "나도 여태껏 그런거라 생각했어. 하지만 압력이 전부가 아닐지도 몰라. 온도나 농도에 따라서도 달라질 가능성이 제기된다구..",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "??? 그건 이미 널리 알려진 사실이잖아요",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "음.. 쟨 너무 똑똑하단 말이지..",
+            "characterPath": "bust_yongsa_05",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사의 진지함이 32 감소했다...!",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "3": {
+        "eventName": "지난 대화 되짚기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "지난 대화를 되짚어보는 공간을 만들 예정",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      }
+    }
+  },
+  "parath": {
+    "name": "parath",
+    "events": {
+      "1": {
+        "eventName": "저주를 풀 열쇠",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "파라스, 어떻게 하면 저주를 풀 수 있을까?",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "내가 어케암!",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "아.. 암울해졌다....",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사의 한숨이 5 증가했다....",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "2": {
+        "eventName": "시비걸기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "파라스.. 넌 너무 설명충같아!",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "헉........",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "전 그래도 용사님이 좋은걸요...",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "파라스의 용사에 대한 애정이 1증가했다...!",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "3": {
+        "eventName": "고백하기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "내 마음을 받아줘 파라스!",
+            "characterPath": "bust_yongsa_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "헉........",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "용사님 실망이에요...",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          },
+          {
+            "script": "파라스는 파티를 떠났다...!",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      },
+      "4": {
+        "eventName": "지난 대화 되짚기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
+            "script": "지난 대화를 되짚어보는 공간을 만들 예정",
+            "characterPath": "nothing_image",
+            "backgroundPath": "black_background"
+          }
+        ]
+      }
+    }
+  },
+  "yongsa": {
+    "name": "yongsa",
+    "events": {
+      "1": {
+        "eventName": "파라스와의 대화",
+        "eventState": "always_open",
+        "eventType": "select_component",
+        "eventTarget": "parath",
+        "eventScenes": [
+          {
+            "script": "파라스군과 어떤 이야기를 해볼까?",
+            "characterPath": "bust_parath_01",
+            "backgroundPath": "black_background"
+          }
+        ],
+        "eventComponent": [
+          "저주를 풀 열쇠",
+          "시비걸기",
+          "고백하기",
+          "지난 대화 되짚기"
+        ]
+      },
+      "2": {
+        "eventName": "리리스와의 대화",
+        "eventState": "always_open",
+        "eventType": "select_component",
+        "eventTarget": "lilis",
+        "eventScenes": [
+          {
+            "script": "리리스찡과 어떤 이야기를 해볼까?",
+            "characterPath": "bust_lilis_01",
+            "backgroundPath": "black_background"
+          }
+        ],
+        "eventComponent": [
+          "저주를 풀 열쇠",
+          "삼투압현상에 대한 토론",
+          "지난 대화 되짚기"
+        ]
+      }
+    },
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "이야기나 해볼까",
+          "characterPath": "bust_yongsa_01",
+          "backgroundPath": "black_background"
+        },
+        {
+          "script": "심심해.. 대화를 해볼까나",
+          "characterPath": "bust_yongsa_02",
+          "backgroundPath": "black_background"
+        },
+        {
+          "script": "오늘은 무슨 이야기를하지?",
+          "characterPath": "bust_yongsa_03",
+          "backgroundPath": "black_background"
+        },
+        {
+          "script": "오늘은 누구에게 장난을 쳐볼까!",
+          "characterPath": "bust_yongsa_04",
+          "backgroundPath": "black_background"
+        }
+      ]
     }
   },
   "waiji": {
     "name": "waiji",
     "events": {
-      "1" : {
-      	"eventName" : "대화하기",
-      	"eventState" : "not_opened",
-      	"eventType" : "chat",
-      	"eventScenes" : [
-      		{
+      "1": {
+        "eventName": "대화하기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventScenes": [
+          {
             "script": "Yo 나는 와이G, 이 마을의 촌장이G",
             "characterPath": "bust_waiji_01",
             "backgroundPath": "bg_blackwood_03"
           }
-      	]
+        ]
       },
       "2": {
         "eventName": "마왕퇴치실패",
@@ -631,6 +907,18 @@
             "characterPath": "bust_parath_01",
             "backgroundPath": "bg_blackwood_03"
           }
+        ],
+        "rewards": [
+          {
+            "rewardType": "next_section",
+            "rewardState": "not_cleared",
+            "rewardTargetAttribute": "105"
+          },
+          {
+            "rewardType" : "pass_time",
+            "rewardState" : "not_cleared",
+            "rewardTargetAttribute" : "5"
+          }
         ]
       }
     },
@@ -659,5 +947,114 @@
         }
       ]
     }
+  },
+  "twinhead": {
+    "name": "twinhead",
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "초원의 몬스터중 가장 저돌적이며 포악하다. 지능은 몹시 떨어진다.",
+          "characterPath": "bust_twinhead",
+          "backgroundPath": "black_background"
+        }
+      ]
+    }
+  },
+  "mercenary": {
+    "name": "mercenary",
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "다른 몬스터들에 비해 신체적으로 약한 면도 있지만, 그들이 지니고 있는 무기의 치명도와 몸의 날렵함을 생각해 본다면 그들이 어떻게 흉포한 몬스터들이 들끓는 티타니아 산에서 살아남게 되었는지 알 수 있다.",
+          "characterPath": "bust_mercenary",
+          "backgroundPath": "black_background"
+        }
+      ]
+    }
+  },
+  "mawang_01": {
+    "name": "mawang_01",
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "마왕 짱쎄다능",
+          "characterPath": "bust_mawang_01",
+          "backgroundPath": "black_background"
+        }
+      ]
+    }
+  },
+  "black_gnoll": {
+    "name": "black_gnoll",
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "암컷 리더를 위시하여 무리로 다닌다. 무리를 위해서 암컷리더의 명령이라면 몸을 사리지 않는다.",
+          "characterPath": "bust_black_gnoll",
+          "backgroundPath": "black_background"
+        }
+      ]
+    },
+    "events": {}
+  },
+  "troll": {
+    "name": "troll",
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "트로올은 난폭하고 잔인하다. 또한 일반적인 힘으로는 절대 상대할 수 없을 정도의 괴력 또한 보유하고 있다. 자신의 영역을 침범한 자는 그 누구도 용서치 않기에 예로부터 많은 모험가들이 두려워하는 대상이었다.",
+          "characterPath": "bust_troll",
+          "backgroundPath": "black_background"
+        }
+      ]
+    },
+    "events": {}
+  },
+  "aonin": {
+    "name": "aonin",
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "항상 침착하며 큰소리를 내는 법이 거의 없다. 엘프들간의 싸움이나 특별한 상황에 닥쳐도 연륜있게 잘 해결한다.",
+          "characterPath": "bust_aonin",
+          "backgroundPath": "black_background"
+        }
+      ]
+    },
+    "events": {}
+  },
+  "ent": {
+    "name": "ent",
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "수백년 되어 큰 나무가 기괴하게 사람형으로 변해있는 모습이다. 마왕의 저주를 받은 것 같다.",
+          "characterPath": "bust_ent",
+          "backgroundPath": "black_background"
+        }
+      ]
+    },
+    "events": {}
+  },
+  "kentaurous_spear": {
+    "name": "kentaurous_spear",
+    "greeting": {
+      "eventType": "greeting",
+      "eventScenes": [
+        {
+          "script": "빠른 기동성을 이용해서 치고 빠지는 게릴라 전술에 능하다. 남성 켄타우로스들은 창과 갑옷을 장비하고 적에게 돌격해 교란시키는 역할을 맡는다.",
+          "characterPath": "bust_kentaurous_spear",
+          "backgroundPath": "black_background"
+        }
+      ]
+    },
+    "events": {}
   }
 }

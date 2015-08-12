@@ -31,7 +31,7 @@ public class EventScreen extends BaseScreen {
 
 	@Override
 	public void show() {
-		eventStage = eventManager.getEvent();
+		eventStage = eventManager.getSceneEvent();
 		setMultiprocessor();
 	}
 
@@ -54,11 +54,6 @@ public class EventScreen extends BaseScreen {
 			case SELECT_COMPONENT:
 				selectStage = stageFactory
 						.makeStage(StageEnum.SELECT_COMPONENT);
-				multiplexer.addProcessor(0, selectStage);
-				multiplexer.addProcessor(1, eventStage);
-				break;
-			case SELECT_EVENT:
-				selectStage = stageFactory.makeStage(StageEnum.SELECT_EVENT);
 				multiplexer.addProcessor(0, selectStage);
 				multiplexer.addProcessor(1, eventStage);
 				break;

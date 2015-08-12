@@ -3,10 +3,10 @@ package com.mygdx.currentState;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.EventAssets;
-import com.mygdx.model.Event;
-import com.mygdx.model.EventPacket;
-import com.mygdx.model.GameObject;
-import com.mygdx.model.NPC;
+import com.mygdx.model.event.Event;
+import com.mygdx.model.event.EventPacket;
+import com.mygdx.model.event.GameObject;
+import com.mygdx.model.event.NPC;
 
 /**
  * npc정보, eventNumber, greeting여부 정보를 갖고있음
@@ -43,7 +43,6 @@ public class EventInfo {
 	public void setCurrentEventNpc(String npcString) {
 		EventPacket eventPacket = new EventPacket();
 		eventPacket.setEventNpc(npcString);
-		eventPacket.setGreeting(true);
 		setCurrentEventInfo(eventPacket);
 	}
 

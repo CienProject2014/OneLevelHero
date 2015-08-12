@@ -7,7 +7,6 @@ import com.mygdx.enums.StageEnum;
 
 public class EncounterScreen extends BaseScreen {
 	private Stage encountStage;
-	private Stage monsterStage;
 
 	public EncounterScreen() {
 	}
@@ -15,8 +14,6 @@ public class EncounterScreen extends BaseScreen {
 	@Override
 	public void show() {
 		encountStage = stageFactory.makeStage(StageEnum.ENCOUNTER);
-		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
-
 		setInputProcessor();
 	}
 
@@ -25,7 +22,6 @@ public class EncounterScreen extends BaseScreen {
 		super.render(delta);
 
 		// 나중에 부르는 걸 위에 그림.
-		monsterStage.draw();
 		encountStage.draw();
 	}
 

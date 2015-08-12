@@ -14,13 +14,13 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private PartyInfo partyInfo;
 	@Autowired
-	private InventoryInfo inventoryInfo;
+	private BagInfo inventoryInfo;
 
 	// (3) 마을/무빙로드관리
 	@Autowired
 	private PositionInfo positionInfo;
 	@Autowired
-	transient private MovingInfo movingInfo; // 가장 최근의 움직임 이력
+	transient private FieldInfo movingInfo; // 가장 최근의 움직임 이력
 
 	// (4) 시간 관리
 	@Autowired
@@ -30,7 +30,7 @@ public class CurrentState implements Serializable {
 	@Autowired
 	private EventInfo eventInfo;
 	@Autowired
-	private RewardQueueInfo rewardQueueInfo;
+	private RewardInfo rewardQueueInfo;
 	@Autowired
 	private StorySectionInfo storySectionInfo;
 

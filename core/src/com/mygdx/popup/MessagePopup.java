@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.inventory.HidingClickListener;
+import com.mygdx.listener.HidingClickListener;
 
 public class MessagePopup extends Dialog {
 	public MessagePopup(String title, Skin skin) {

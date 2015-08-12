@@ -6,14 +6,14 @@ import java.util.Map;
 
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.AtlasUiFile;
-import com.mygdx.model.JsonStringFile;
+import com.mygdx.model.jsonModel.AtlasUiFile;
+import com.mygdx.model.jsonModel.StringFile;
 import com.mygdx.util.JsonParser;
 
 public class AtlasUiAssets implements FileAssetsInitializable {
 	public Map<String, TextureRegionDrawable> atlasUiMap = new HashMap<String, TextureRegionDrawable>();
 
-	public void set(Map<String, JsonStringFile> filePathMap) {
+	public void set(Map<String, StringFile> filePathMap) {
 		List<AtlasUiFile> atlasUiFileList = JsonParser.parseList(
 				AtlasUiFile.class,
 				filePathMap.get(JsonEnum.ATLAS_UI_PATH.toString()).loadFile());

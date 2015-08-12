@@ -3,7 +3,7 @@ package com.mygdx.assets;
 import java.util.Map;
 
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.Skill;
+import com.mygdx.model.battle.Skill;
 import com.mygdx.util.JsonParser;
 
 public class SkillAssets implements JsonAssetsInitializable {

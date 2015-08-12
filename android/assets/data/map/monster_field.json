@@ -1,0 +1,30 @@
+[
+  {
+    "fieldType": "초원",
+    "fieldMonsterList": [
+      "black_gnoll",
+      "twinhead"
+    ]
+  },
+  {
+    "fieldType": "숲",
+    "fieldMonsterList": [
+      "kentaurous_spear",
+      "ent"
+    ]
+  },
+  {
+    "fieldType": "해변",
+    "fieldMonsterList": [
+      "mercensary",
+      "assassin_girl"
+    ]
+  },
+  {
+    "fieldType": "산",
+    "fieldMonsterList": [
+      "troll",
+      "aonin"
+    ]
+  }
+]

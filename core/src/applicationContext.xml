@@ -17,6 +17,7 @@
 
 	<bean id="assets" class="com.mygdx.assets.Assets" />
 	<bean id="atlasUiAssets" class="com.mygdx.assets.AtlasUiAssets" />
+	<bean id="constantsAssets" class="com.mygdx.assets.ConstantsAssets"/>
 	<bean id="eventAssets" class="com.mygdx.assets.EventAssets"/>
 	<bean id="itemAssets" class="com.mygdx.assets.ItemAssets"/>
 	<bean id="skillAssets" class="com.mygdx.assets.SkillAssets"/>
@@ -24,24 +25,24 @@
 	<bean id="uiComponwentAssets" class="com.mygdx.assets.UiComponentAssets" />
 	<bean id="unitAssets" class="com.mygdx.assets.UnitAssets" />
 	<bean id="worldMapAssets" class="com.mygdx.assets.WorldMapAssets" />
-	<bean id="worldNodeAssets" class="com.mygdx.assets.WorldNodeAssets" />
+	<bean id="nodeAssets" class="com.mygdx.assets.NodeAssets" />
 
 	<bean id="currentState" class="com.mygdx.currentState.CurrentState"/>
 
 	<bean id="battleInfo" class="com.mygdx.currentState.BattleInfo"/>
-	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo" />
-	<bean id="inventoryInfo" class="com.mygdx.currentState.InventoryInfo" />
-	<bean id="movingInfo" class="com.mygdx.currentState.MovingInfo" />
+	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo" />	
+	<bean id="fieldInfo" class="com.mygdx.currentState.FieldInfo" />
+	<bean id="bagInfo" class="com.mygdx.currentState.BagInfo" />
 	<bean id="musicInfo" class="com.mygdx.currentState.MusicInfo" />
 	<bean id="partyInfo" class="com.mygdx.currentState.PartyInfo" />
 	<bean id="positionInfo" class="com.mygdx.currentState.PositionInfo" />
 	<bean id="rewardInfo" class="com.mygdx.currentState.RewardInfo" />
-	<bean id="rewardQueueInfo" class="com.mygdx.currentState.RewardQueueInfo" />
 	<bean id="roadInfo" class="com.mygdx.currentState.RoadInfo"/>
 	<bean id="soundInfo" class="com.mygdx.currentState.SoundInfo" />
 	<bean id="storySectionInfo" class="com.mygdx.currentState.StorySectionInfo"/>
 	<bean id="timeInfo" class="com.mygdx.currentState.TimeInfo" />
 
+	<bean id="listenerFactory" class="com.mygdx.factory.ListenerFactory"/>
 	<bean id="screenFactory" class="com.mygdx.factory.ScreenFactory" />
 	<bean id="stageFactory" class="com.mygdx.factory.StageFactory" />
 
@@ -51,6 +52,7 @@
 	<bean id="encounterManager" class="com.mygdx.manager.EncounterManager"/>
 	<bean id="eventManager" class="com.mygdx.manager.EventManager"/>
 	<bean id="eventCheckManager" class="com.mygdx.manager.EventCheckManager"/>
+	<bean id="fieldManager" class="com.mygdx.manager.FieldManager"/>
 	<bean id="loadManager" class="com.mygdx.manager.LoadManager"/>
 	<bean id="monsterPickManager" class="com.mygdx.manager.MonsterPickManager"/>
 	<bean id="movingManager" class="com.mygdx.manager.MovingManager"/>
@@ -85,14 +87,15 @@
 		scope="prototype" />
 	<bean id="endingScreen" class="com.mygdx.screen.EndingScreen"
 		scope="prototype"/>
-	<bean id="eventScreen" class="com.mygdx.screen.EventScreen" scope="prototype"/>
+	<bean id="eventScreen" class="com.mygdx.screen.EventScreen" scope="prototype"/>	
+	<bean id="fieldScreen" class="com.mygdx.screen.FieldScreen"
+		scope="prototype"/>
 	<bean id="gameObjectScreen" class="com.mygdx.screen.GameObjectScreen" scope="prototype"/>
 	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen"
 		scope="prototype"/>
 	<bean id="loadScreen" class="com.mygdx.screen.LoadScreen" scope="prototype"/>
+	<bean id="logScreen" class="com.mygdx.screen.LogScreen" scope="prototype"/>
 	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen" scope="prototype"/>
-	<bean id="movingScreen" class="com.mygdx.screen.MovingScreen"
-		scope="prototype"/>
 	<bean id="optionScreen" class="com.mygdx.screen.OptionScreen"
 		scope="prototype"/>
 	<bean id="saveScreen" class="com.mygdx.screen.SaveScreen" scope="prototype" />
@@ -120,13 +123,13 @@
 		scope="prototype" />
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage"
 		scope="prototype"/>
-	<bean id="eventStage" class="com.mygdx.stage.EventStage" scope="prototype"/>
+	<bean id="eventStage" class="com.mygdx.stage.EventStage" scope="prototype"/>	
+	<bean id="fieldStage" class="com.mygdx.stage.FieldStage" scope="prototype"/>
 	<bean id="gameObjectStage" class="com.mygdx.stage.GameObjectStage" scope="prototype"/>
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype"/>
 		<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage"
 		scope="prototype" />
-	<bean id="movingStage" class="com.mygdx.stage.MovingStage" scope="prototype"/>
 	<bean id="selectComponentStage" class="com.mygdx.stage.SelectComponentStage"
 		scope="prototype"/>
 	<bean id="selectEventStage" class="com.mygdx.stage.SelectEventStage"
@@ -138,4 +141,13 @@
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
 		
+	<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
+	<bean id="attackButtonListener" class="com.mygdx.listener.AttackButtonListener" scope="prototype"/>
+	<bean id="backButtonListener" class="com.mygdx.listener.BackButtonListener" scope="prototype"/>
+	<bean id="buildingButtonListener" class="com.mygdx.listener.BuildingButtonListener" scope="prototype"/>
+	<bean id="goBackwardFieldButtonListener" class="com.mygdx.listener.GoBackwardFieldButtonListener" scope="prototype"/>
+	<bean id="goForwardFieldButtonListener" class="com.mygdx.listener.GoForwardFieldButtonListener" scope="prototype"/>
+	<bean id="jumpSectionListener" class="com.mygdx.listener.JumpSectionListener" scope="prototype"/>
+	<bean id="selectComponentListener" class="com.mygdx.listener.SelectComponentListener" scope="prototype" />
+	<bean id="selectEventListener" class="com.mygdx.listener.SelectEventListener" scope="prototype"/>
 </beans>

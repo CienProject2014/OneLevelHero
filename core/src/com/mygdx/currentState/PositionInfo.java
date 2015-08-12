@@ -1,45 +1,43 @@
 package com.mygdx.currentState;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.mygdx.assets.WorldMapAssets;
-import com.mygdx.enums.PlaceEnum;
+import com.mygdx.enums.PositionEnum;
 
 public class PositionInfo {
-	@Autowired
-	private WorldMapAssets worldMapAssets;
-	private PlaceEnum currentPlace; // 플레이어가 마을인지, 갈림길인지, 던전인지, 건물안인지
-	private String currentNode; // 최근 마을/던전/교차로 이름
-	private String currentBuilding;
+	private PositionEnum currentPositionType; // 플레이어의 위치가 마을인지, 갈림길인지, 던전인지,
+												// 건물안인지, 필드인지
+	private String currentNodeName; // 최근 마을/던전입구/교차로/필드 이름
+	private String currentSubNodeName; // 최근 건물/던전이름
+	private PositionEnum beforePositionType;
 
-	public PositionInfo() {
+	public String getCurrentSubNodeName() {
+		return currentSubNodeName;
 	}
 
-	public PlaceEnum getCurrentNodeType() {
-		return worldMapAssets.getWorldNodeType(currentNode);
+	public void setCurrentSubNodeName(String currentSubNodeName) {
+		this.currentSubNodeName = currentSubNodeName;
 	}
 
-	public String getCurrentNode() {
-		return currentNode;
+	public String getCurrentNodeName() {
+		return currentNodeName;
 	}
 
-	public void setCurrentNode(String currentNode) {
-		this.currentNode = currentNode;
+	public void setCurrentNodeName(String currentNodeName) {
+		this.currentNodeName = currentNodeName;
 	}
 
-	public String getCurrentBuilding() {
-		return currentBuilding;
+	public PositionEnum getCurrentPositionType() {
+		return currentPositionType;
 	}
 
-	public void setCurrentBuilding(String currentBuilding) {
-		this.currentBuilding = currentBuilding;
+	public void setCurrentPositionType(PositionEnum currentPositionType) {
+		this.currentPositionType = currentPositionType;
 	}
 
-	public PlaceEnum getCurrentPlace() {
-		return currentPlace;
+	public PositionEnum getBeforePositionType() {
+		return beforePositionType;
 	}
 
-	public void setCurrentPlace(PlaceEnum currentPlace) {
-		this.currentPlace = currentPlace;
+	public void setBeforePositionType(PositionEnum beforePositionType) {
+		this.beforePositionType = beforePositionType;
 	}
 }

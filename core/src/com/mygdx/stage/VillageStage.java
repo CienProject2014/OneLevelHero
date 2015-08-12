@@ -9,43 +9,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.WorldMapAssets;
-import com.mygdx.assets.WorldNodeAssets;
-import com.mygdx.enums.PlaceEnum;
-import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.ArrowButtonListener;
+import com.mygdx.listener.BuildingButtonListener;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
-import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.MovingManager;
-import com.mygdx.manager.StorySectionManager;
-import com.mygdx.model.Building;
-import com.mygdx.model.Connection;
-import com.mygdx.model.StorySectionPacket;
-import com.mygdx.model.Village;
+import com.mygdx.model.surroundings.Building;
+import com.mygdx.model.surroundings.NodeConnection;
+import com.mygdx.model.surroundings.Village;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class VillageStage extends BaseOverlapStage {
 	@Autowired
-	private WorldNodeAssets worldNodeAssets;
+	private NodeAssets worldNodeAssets;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
-	@Autowired
-	private StorySectionManager storySectionManager;
 	@Autowired
 	private WorldMapAssets worldMapAssets;
 	@Autowired
 	private MovingManager movingManager;
 	@Autowired
-	private EventCheckManager eventCheckManager;
+	private ListenerFactory listenerFactory;
 	private Village villageInfo;
 	public TextButton shiftButton;
-	private final int movingSpeed = 10;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
@@ -57,52 +51,33 @@ public class VillageStage extends BaseOverlapStage {
 
 	private void setArrow() {
 		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
-		String currentNode = positionManager.getCurrentNode();
-		Map<String, Connection> connectionMap = worldMapAssets
-				.getWorldNodeInfo(currentNode).getConnection();
-		for (final Entry<String, Connection> connection : connectionMap
+		String currentNode = positionManager.getCurrentNodeName();
+		Map<String, NodeConnection> connectionMap = worldMapAssets
+				.getWorldNodeInfo(currentNode).getNodeConnection();
+		for (final Entry<String, NodeConnection> connection : connectionMap
 				.entrySet()) {
 			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(
 					connection.getValue().getArrowName());
 			if (arrow != null) {
 				arrow.setVisible(true);
 				arrow.setTouchable(Touchable.enabled);
-				arrow.addListener(new InputListener() {
-					@Override
-					public boolean touchDown(InputEvent event, float x,
-							float y, int pointer, int button) {
-						return true;
-					}
-
-					@Override
-					public void touchUp(InputEvent event, float x, float y,
-							int pointer, int button) {
-						movingManager.selectDestinationNode(connection.getKey());
-						positionManager.setCurrentPlace(PlaceEnum.MOVING);
-						screenFactory.show(ScreenEnum.MOVING);
-						for (StorySectionPacket nextStorySectionPacket : storySectionManager
-								.getNextSections()) {
-							if (eventCheckManager.checkMovedMoving(connection
-									.getValue().getArrowName(),
-									nextStorySectionPacket)) {
-								storySectionManager
-										.setNewStorySectionAndPlay(nextStorySectionPacket
-												.getNextSectionNumber());
-								break;
-							}
-						}
-					}
-				});
+				ArrowButtonListener arrowButtonListener = listenerFactory
+						.getArrowButtonListener();
+				arrowButtonListener.setConnection(connection);
+				arrow.addListener(arrowButtonListener);
 				arrowList.add(arrow);
 			}
 		}
 	}
 
-	//FIXME
+	// FIXME
 	private void setVillageScene() {
-		if (positionManager.getCurrentNode().equals("cobweb")) {
+		if (positionManager.getCurrentNodeName().equals("cobweb")) {
 			villageInfo = worldNodeAssets.getVillage("cobweb");
 			sceneLoader.loadScene("cobweb_scene");
+		} else if (positionManager.getCurrentNodeName().equals("oberon")) {
+			villageInfo = worldNodeAssets.getVillage("oberon");
+			sceneLoader.loadScene("oberon_scene");
 		} else {
 			villageInfo = worldNodeAssets.getVillage("blackwood");
 			sceneLoader.loadScene("blackwood_scene");
@@ -113,7 +88,7 @@ public class VillageStage extends BaseOverlapStage {
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
 		Gdx.app.log("VillageStage",
-				String.valueOf(positionManager.getCurrentNode()));
+				String.valueOf(positionManager.getCurrentNodeName()));
 		setVillageScene();
 		setArrow();
 		setBuildingButton();
@@ -122,12 +97,16 @@ public class VillageStage extends BaseOverlapStage {
 				.getCompositeById("camera_up");
 		final CompositeItem shiftbutton_down = sceneLoader.getRoot()
 				.getCompositeById("camera_down");
+
 		shiftbutton_up.setTouchable(Touchable.enabled);
 		shiftbutton_down.setTouchable(Touchable.enabled);
+
 		shiftbutton_up.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				setCameraState(CameraStateEnum.MOVE_UP);
+				cameraManager.setMoveFlag(2);
+
 			}
 		});
 
@@ -135,15 +114,38 @@ public class VillageStage extends BaseOverlapStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				setCameraState(CameraStateEnum.MOVE_DOWN);
+				cameraManager.setMoveFlag(2);
 			}
 
 		});
 
 	}
 
+	private void buttonControl() {
+		if (cameraManager.getMoveFlag() == 0) {
+			sceneLoader.getRoot().getCompositeById("camera_down")
+					.setVisible(true);
+			sceneLoader.getRoot().getCompositeById("camera_up")
+					.setVisible(false);
+		} else if (cameraManager.getMoveFlag() == 1) {
+			sceneLoader.getRoot().getCompositeById("camera_down")
+					.setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_up")
+					.setVisible(true);
+
+		} else if (cameraManager.getMoveFlag() == 2) {
+			sceneLoader.getRoot().getCompositeById("camera_down")
+					.setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_up")
+					.setVisible(false);
+
+		}
+	}
+
 	@Override
 	public void act() {
 		super.act();
+		buttonControl();
 	}
 
 	private void setBuildingButton() {
@@ -154,31 +156,10 @@ public class VillageStage extends BaseOverlapStage {
 						.getRoot()
 						.getCompositeById(building.getValue().getBuildingPath());
 				buildingButton.setTouchable(Touchable.enabled);
-				buildingButton.addListener(new InputListener() {
-					@Override
-					public boolean touchDown(InputEvent event, float x,
-							float y, int pointer, int button) {
-						return true;
-					}
-
-					@Override
-					public void touchUp(InputEvent event, float x, float y,
-							int pointer, int button) {
-						positionManager.setCurrentBuilding(building.getKey());
-						positionManager.setCurrentPlace(PlaceEnum.BUILDING);
-						screenFactory.show(ScreenEnum.BUILDING);
-						for (StorySectionPacket nextStorySectionPacket : storySectionManager
-								.getNextSections()) {
-							if (eventCheckManager
-									.checkMovedBuilding(nextStorySectionPacket)) {
-								storySectionManager
-										.setNewStorySectionAndPlay(nextStorySectionPacket
-												.getNextSectionNumber());
-								break;
-							}
-						}
-					}
-				});
+				BuildingButtonListener buildingButtonListener = listenerFactory
+						.getBuildingButtonListener();
+				buildingButtonListener.setBuildingName(building.getKey());
+				buildingButton.addListener(buildingButtonListener);
 			}
 		}
 	}
