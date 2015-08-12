@@ -1395,7 +1395,33 @@ talkuiwindow
   offset: 0, 0
   index: -1
   
-  
+cobweb_inn_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+buttonui
+  rotate: false
+  xy: 2, 103
+  size: 630, 195
+  orig: 630, 195
+  offset: 0, 0
+  index: -1
+buttonui2
+  rotate: false
+  xy: 2, 2
+  size: 320, 99
+  orig: 320, 99
+  offset: 0, 0
+  index: -1
+cobwebinnscene
+  rotate: false
+  xy: 2, 300
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
 oberon_pack.png
 size: 2048,4096
 format: RGBA8888

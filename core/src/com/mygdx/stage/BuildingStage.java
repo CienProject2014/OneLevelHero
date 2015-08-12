@@ -6,10 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.EventAssets;
@@ -24,6 +26,7 @@ import com.mygdx.model.event.GameObject;
 import com.mygdx.model.surroundings.Building;
 import com.mygdx.popup.GameObjectPopup;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
+import com.uwsoft.editor.renderer.actor.LabelItem;
 
 public class BuildingStage extends BaseOverlapStage {
 	@Autowired
@@ -46,7 +49,6 @@ public class BuildingStage extends BaseOverlapStage {
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
-
 		makeScene();
 
 		if (buildingInfo.getBuildingNpc() != null) {
@@ -102,6 +104,7 @@ public class BuildingStage extends BaseOverlapStage {
 			gameObjectButton.setVisible(true);
 			setGameObjectVisibility(gameObjectButton,
 					gameObject.getObjectType());
+			setGameObjectFunction(gameObjectButton, objectName);
 			gameObjectButton.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
@@ -117,6 +120,28 @@ public class BuildingStage extends BaseOverlapStage {
 			gameObjectList.add(gameObjectButton);
 		}
 	}
+	private void setGameObjectFunction(CompositeItem gameObjectButton,
+			String objectName) {
+		if (objectName.equals("save")) {
+			LabelItem labelItem = sceneLoader.getRoot().getLabelById(
+					"save_label");
+			labelItem.setText("저장하기");
+			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+					Color.WHITE));
+			labelItem.setFontScale(1.0f);
+			labelItem.setTouchable(Touchable.disabled);
+		} else if (objectName.equals("rest")) {
+			LabelItem labelItem = sceneLoader.getRoot().getLabelById(
+					"rest_label");
+			labelItem.setText("휴식하기");
+			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+					Color.WHITE));
+			labelItem.setFontScale(1.0f);
+			labelItem.setTouchable(Touchable.disabled);
+		}
+
+	}
+
 	private void setGameObjectVisibility(CompositeItem objectButton,
 			GameObjectEnum gameObjectEnum) {
 		switch (gameObjectEnum) {
