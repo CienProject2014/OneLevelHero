@@ -49,8 +49,7 @@ public class GridHitbox extends Table {
 		tiles = new Image[rows][columns];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				tiles[i][j] = new Image(
-						StaticAssets.battleUiTextureMap.get("tile"));
+				tiles[i][j] = new Image(StaticAssets.TextureMap.get("tile"));
 			}
 		}
 	}
@@ -222,8 +221,7 @@ public class GridHitbox extends Table {
 	}
 
 	private Image getGridImage(MonsterEnum.SizeType sizeType) {
-		return new Image(
-				StaticAssets.battleUiTextureMap.get("grid_" + sizeType));
+		return new Image(StaticAssets.TextureMap.get("grid_" + sizeType));
 	}
 
 	public boolean isGridShow() {

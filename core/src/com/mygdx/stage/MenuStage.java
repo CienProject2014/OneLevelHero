@@ -41,19 +41,18 @@ public class MenuStage extends BaseOneLevelStage {
 		Float buttonHeight = 195f;
 		ImageButton logo;
 
-		Texture texture = StaticAssets.backgroundTextureMap
-				.get("main_background");
+		Texture texture = StaticAssets.TextureMap.get("main_background");
 		Image background = new Image(texture);
 
 		// 이미지추가
-		startButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/ui/title/title_start.png"))));
-		settingButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/ui/title/title_setting.png"))));
-		albumButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/ui/title/title_album.png"))));
-		creditButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/ui/title/title_credit.png"))));
+		startButton = new ImageButton(new SpriteDrawable(
+				new Sprite(new Texture("texture/ui/title/title_start.png"))));
+		settingButton = new ImageButton(new SpriteDrawable(
+				new Sprite(new Texture("texture/ui/title/title_setting.png"))));
+		albumButton = new ImageButton(new SpriteDrawable(
+				new Sprite(new Texture("texture/ui/title/title_album.png"))));
+		creditButton = new ImageButton(new SpriteDrawable(
+				new Sprite(new Texture("texture/ui/title/title_credit.png"))));
 
 		// 클릭리스너추가
 		startButton.addListener(new ClickListener() {
@@ -84,16 +83,15 @@ public class MenuStage extends BaseOneLevelStage {
 
 		logo = new ImageButton(atlasUiAssets.getAtlasUiFile("title"));
 		logo.bottom().left();
-		logo.padLeft(0.113f * StaticAssets.BASE_WINDOW_WIDTH).padBottom(
-				0.278f * StaticAssets.BASE_WINDOW_HEIGHT);
+		logo.padLeft(0.113f * StaticAssets.BASE_WINDOW_WIDTH)
+				.padBottom(0.278f * StaticAssets.BASE_WINDOW_HEIGHT);
 
 		// logo.
 
 		buttonTable.top().right();
 		buttonTable.padRight(uiConstantsMap.get("tTablePadRight"));
 		buttonTable.setFillParent(true);
-		buttonTable.add(startButton)
-				.height(uiConstantsMap.get("tButtonHeight"))
+		buttonTable.add(startButton).height(uiConstantsMap.get("tButtonHeight"))
 				.width(uiConstantsMap.get("tButtonWidth"))
 				.padTop(uiConstantsMap.get("tTablePadTop"));
 		buttonTable.row();
@@ -102,8 +100,7 @@ public class MenuStage extends BaseOneLevelStage {
 				.width(uiConstantsMap.get("tButtonWidth"))
 				.padTop(uiConstantsMap.get("tButtonSpace"));
 		buttonTable.row();
-		buttonTable.add(albumButton)
-				.height(uiConstantsMap.get("tButtonHeight"))
+		buttonTable.add(albumButton).height(uiConstantsMap.get("tButtonHeight"))
 				.width(uiConstantsMap.get("tButtonWidth"))
 				.padTop(uiConstantsMap.get("tButtonSpace"));
 		buttonTable.row();

@@ -86,42 +86,43 @@ public class StatusStage extends BaseOverlapStage {
 		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
 		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name");
 		nameLabel.setText(currentSelectedHero.getName());
-		nameLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(),
-				Color.WHITE));
+		nameLabel.setStyle(
+				new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		nameLabel.setFontScale(1.0f);
 		nameLabel.setTouchable(Touchable.disabled);
 		LabelItem fatigueLabel = sceneLoader.getRoot().getLabelById("fatigue");
 		fatigueLabel.setText(String.valueOf(partyManager.getFatigue()));
-		fatigueLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(),
-				Color.WHITE));
+		fatigueLabel.setStyle(
+				new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		fatigueLabel.setFontScale(1.0f);
 		fatigueLabel.setTouchable(Touchable.disabled);
 		ArrayList<String> labelList = constantsAssets
 				.getLabels(STATUS_LABEL_NAME);
 		for (int i = 0; i < labelList.size(); i++) {
-			LabelItem labelItem = sceneLoader.getRoot().getLabelById(
-					labelList.get(i));
-			labelItem
-					.setText(currentSelectedHero.getStatus().getStatusList()[i]);
-			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(),
-					Color.WHITE));
+			LabelItem labelItem = sceneLoader.getRoot()
+					.getLabelById(labelList.get(i));
+			labelItem.setText(
+					currentSelectedHero.getStatus().getStatusList()[i]);
+			labelItem.setStyle(
+					new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 			labelItem.setFontScale(1.0f);
 			labelItem.setTouchable(Touchable.disabled);
 		}
 	}
 	private void setBustImage() {
 		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
-		CompositeItem compositeItem = sceneLoader.getRoot().getCompositeById(
-				"change_01");
+		CompositeItem compositeItem = sceneLoader.getRoot()
+				.getCompositeById("change_01");
 		ImageItem bustImage = compositeItem.getImageById("character_image");
-		bustImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
-				TextureManager.getStatusTexture(currentSelectedHero
-						.getFacePath()))));
+		bustImage.setDrawable(
+				new TextureRegionDrawable(new TextureRegion(TextureManager
+						.getStatusTexture(currentSelectedHero.getFacePath()))));
 	}
 
 	private void setCamera() {
-		cam = new OrthographicCamera(1920f, 1080f);
-		cam.position.set(1920 / 2, 1080 / 2, 0);
+		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH,
+				StaticAssets.BASE_WINDOW_HEIGHT);
+		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		getViewport().setCamera(cam);
 	}
 }

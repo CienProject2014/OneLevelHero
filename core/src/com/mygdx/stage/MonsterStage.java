@@ -58,8 +58,7 @@ public class MonsterStage extends BaseOneLevelStage {
 
 		outerTable.setBackground(getBackgroundTRD(), false);
 		outerTable.top(); // table을 위로 정렬
-		outerTable.add(monsterTable)
-				.padTop(uiConstantsMap.get("monsterPadTop"))
+		outerTable.add(monsterTable).padTop(uiConstantsMap.get("monsterPadTop"))
 				.width(uiConstantsMap.get("monsterTableWidth"))
 				.height(uiConstantsMap.get("monsterTableHeight")).row();
 
@@ -73,8 +72,8 @@ public class MonsterStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		monsterHpLabel.setText(monsterStatusBar.getHp() + "/"
-				+ monsterStatusBar.getMaxHp());
+		monsterHpLabel.setText(
+				monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp());
 		monsterStatusBar.update();
 	}
 
@@ -83,8 +82,9 @@ public class MonsterStage extends BaseOneLevelStage {
 		monsterHpTable.add(monsterStatusBar.getHpBar())
 				.width(uiConstantsMap.get("hpTableWidth")).row();
 
-		monsterHpLabel = new Label(monsterStatusBar.getHp() + "/"
-				+ monsterStatusBar.getMaxHp(), uiComponentAssets.getSkin());
+		monsterHpLabel = new Label(
+				monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp(),
+				uiComponentAssets.getSkin());
 		monsterHpTable.add(monsterHpLabel);
 
 		return monsterHpTable;
@@ -100,11 +100,11 @@ public class MonsterStage extends BaseOneLevelStage {
 		if (battleManager.getSelectedMonster().getFacePath()
 				.equals("mawang_01")) {
 			return new TextureRegionDrawable(new TextureRegion(
-					StaticAssets.backgroundTextureMap.get("bg_devilcastle_01")));
+					StaticAssets.TextureMap.get("bg_devilcastle_01")));
 		} else {
-			return new TextureRegionDrawable(new TextureRegion(
-					TextureManager.getBackgroundTexture(fieldManager
-							.getFieldType().toString())));
+			return new TextureRegionDrawable(
+					new TextureRegion(TextureManager.getBackgroundTexture(
+							fieldManager.getFieldType().toString())));
 		}
 	}
 	public HashMap<String, Float> getUiConstantsMap() {

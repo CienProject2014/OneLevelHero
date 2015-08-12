@@ -43,14 +43,13 @@ public class Assets {
 		Map<String, StringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
 
-		eventAssets.set(jsonStringMap);
 		musicAssets.set(filePathMap);
 		atlasUiAssets.set(filePathMap);
 		uiComponentAssets.set(filePathMap);
+		eventAssets.set(jsonStringMap);
 		itemAssets.set(jsonStringMap);
 		skillAssets.set(jsonStringMap);
-		unitAssets.set(jsonStringMap); //아이템, 스킬보다 늦게 이루어져야한다.
-		musicAssets.set(filePathMap);
+		unitAssets.set(jsonStringMap); // 아이템, 스킬보다 늦게 이루어져야한다.
 		worldMapAssets.set(jsonStringMap);
 		worldNodeAssets.set(jsonStringMap);
 		constantsAssets.set(jsonStringMap);
@@ -58,8 +57,8 @@ public class Assets {
 
 	private Map<String, StringFile> loadFilePathMap() {
 		Map<String, StringFile> filePathMap = JsonParser.parseMap(
-				StringFile.class, Gdx.files
-						.internal("data/load/file_path.json").readString());
+				StringFile.class,
+				Gdx.files.internal("data/load/file_path.json").readString());
 		return filePathMap;
 	}
 

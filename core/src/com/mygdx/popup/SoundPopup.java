@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
@@ -54,13 +53,11 @@ public class SoundPopup extends Dialog {
 
 		text("배경음\n효과음");
 
-		Viewport vp = scenestage.getViewport();
+		setWidth((int) (width * StaticAssets.windowWidth)); // 가로 크기 세팅
+		setHeight((int) (height * StaticAssets.windowHeight)); // 세로 크기 세팅
 
-		setWidth((int) (width * vp.getViewportWidth())); // 가로 크기 세팅
-		setHeight((int) (height * vp.getViewportHeight())); // 세로 크기 세팅
-
-		setPosition((int) (centerx * vp.getViewportWidth()),
-				(int) (centery * vp.getViewportHeight()));
+		setPosition((int) (centerx * StaticAssets.windowWidth),
+				(int) (centery * StaticAssets.windowHeight));
 
 		setMovable(true); // 드래그로 이동가능
 
@@ -157,7 +154,8 @@ public class SoundPopup extends Dialog {
 	}
 
 	@Override
-	public Dialog button(String text, Object object, TextButtonStyle buttonStyle) {
+	public Dialog button(String text, Object object,
+			TextButtonStyle buttonStyle) {
 		return super.button(text, object, buttonStyle);
 	}
 
