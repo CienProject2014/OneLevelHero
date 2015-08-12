@@ -17,50 +17,50 @@ import com.mygdx.enums.TextureEnum;
 public class TextureManager {
 
 	public static Texture getBustTexture(String facePath, String faceNumber) {
-		return StaticAssets.TextureMap
+		return StaticAssets.textureMap
 				.get(TextureEnum.BUST + "_" + facePath + "_" + faceNumber);
 	}
 
 	public static Texture getStatusTexture(String facePath) {
-		return StaticAssets.TextureMap.get(TextureEnum.STATUS + "_" + facePath);
+		return StaticAssets.textureMap.get(TextureEnum.STATUS + "_" + facePath);
 	}
 
 	public static Texture getCharacterBodyTexture(String facePath) {
-		return StaticAssets.TextureMap.get(TextureEnum.NPC + "_" + facePath);
+		return StaticAssets.textureMap.get(TextureEnum.NPC + "_" + facePath);
 	}
 
 	public static Texture getFaceTexture(String facePath) {
-		return StaticAssets.TextureMap.get(TextureEnum.FACE + "_" + facePath);
+		return StaticAssets.textureMap.get(TextureEnum.FACE + "_" + facePath);
 	}
 
 	public static Texture getMonsterBattleTexture(String facePath) {
-		return StaticAssets.TextureMap
+		return StaticAssets.textureMap
 				.get(TextureEnum.MONSTER + "_" + facePath);
 	}
 
 	public static Texture getBattleTurnBigTexture(String facePath) {
-		return StaticAssets.TextureMap
+		return StaticAssets.textureMap
 				.get(TextureEnum.BATTLE_TURN + "_" + facePath + "_" + "big");
 	}
 
 	public static Texture getBattleTurnSmallTexture(String facePath) {
-		return StaticAssets.TextureMap
+		return StaticAssets.textureMap
 				.get(TextureEnum.BATTLE_TURN + "_" + facePath + "_" + "small");
 	}
 
 	public static Texture getMonsterBodyTexture(String facePath) {
 		System.out.println(TextureEnum.MONSTER + "_" + facePath);
-		return StaticAssets.TextureMap
+		return StaticAssets.textureMap
 				.get(TextureEnum.MONSTER + "_" + facePath);
 	}
 	public static Texture getBackgroundTexture(String nodeType) {
-		return StaticAssets.TextureMap
+		return StaticAssets.textureMap
 				.get(TextureEnum.BACKGROUND + "_" + nodeType);
 	}
 
 	public static Texture getBackgroundTexture(String facePath,
 			TextureEnum textureEnum) {
-		return StaticAssets.TextureMap.get(
+		return StaticAssets.textureMap.get(
 				TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum);
 	}
 }

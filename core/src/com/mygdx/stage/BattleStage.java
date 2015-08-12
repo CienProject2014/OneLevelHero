@@ -362,9 +362,9 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void makeTurnBackgroundImage() {
 		currentAttackerBackground = new Image(
-				StaticAssets.TextureMap.get("battleui_turntable_01"));
+				StaticAssets.textureMap.get("battleui_turntable_01"));
 		turnTableBackground = new Image(
-				StaticAssets.TextureMap.get("battleui_turntable_02"));
+				StaticAssets.textureMap.get("battleui_turntable_02"));
 	}
 
 	private void makeBattleTurnImage() {

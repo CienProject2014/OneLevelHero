@@ -41,7 +41,7 @@ public class MenuStage extends BaseOneLevelStage {
 		Float buttonHeight = 195f;
 		ImageButton logo;
 
-		Texture texture = StaticAssets.TextureMap.get("main_background");
+		Texture texture = StaticAssets.textureMap.get("main_background");
 		Image background = new Image(texture);
 
 		// 이미지추가

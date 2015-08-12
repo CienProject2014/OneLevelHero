@@ -85,7 +85,7 @@ public class EncounterStage extends BaseOneLevelStage {
 		if (battleManager.getSelectedMonster().getFacePath()
 				.equals("mawang_01")) {
 			return new TextureRegionDrawable(new TextureRegion(
-					StaticAssets.TextureMap.get("bg_devilcastle_01")));
+					StaticAssets.textureMap.get("bg_devilcastle_01")));
 		} else {
 			System.out.println(fieldManager.getFieldType());
 			return new TextureRegionDrawable(

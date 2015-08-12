@@ -25,7 +25,7 @@ public class EventScene {
 	public Texture getCharacter() {
 		if (character == null) {
 			if (faceNumber == null) {
-				character = StaticAssets.TextureMap.get(characterPath);
+				character = StaticAssets.textureMap.get(characterPath);
 			} else
 				if (TextureManager.getBustTexture(characterPath,
 						faceNumber) != null) {
@@ -44,7 +44,7 @@ public class EventScene {
 
 	public Texture getBackground() {
 		if (background == null)
-			background = StaticAssets.TextureMap.get(backgroundPath);
+			background = StaticAssets.textureMap.get(backgroundPath);
 
 		return background;
 	}

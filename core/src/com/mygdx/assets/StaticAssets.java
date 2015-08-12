@@ -25,7 +25,7 @@ import com.uwsoft.editor.renderer.resources.ResourceManager;
 public class StaticAssets {
 	public static Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 	public static Map<String, StringFile> filePathMap;
-	public static Map<String, Texture> TextureMap = new HashMap<>();
+	public static Map<String, Texture> textureMap = new HashMap<>();
 	public static Map<String, FrameSheet> animationSheetMap;
 	public static Map<String, HashMap<String, Float>> uiConstantsMap = new HashMap<>();
 
@@ -96,7 +96,7 @@ public class StaticAssets {
 		animationSheetMap = JsonParser.parseMap(FrameSheet.class, filePathMap
 				.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
 
-		DirectoryTextureMapper(TextureMap, "texture");
+		DirectoryTextureMapper(textureMap, "texture");
 	}
 	public static void DirectoryTextureMapper(Map<String, Texture> map,
 			String path) {
