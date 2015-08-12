@@ -23,6 +23,7 @@ import com.mygdx.screen.EventScreen;
 import com.mygdx.screen.FieldScreen;
 import com.mygdx.screen.GameObjectScreen;
 import com.mygdx.screen.GreetingScreen;
+import com.mygdx.screen.InventoryScreen;
 import com.mygdx.screen.LoadScreen;
 import com.mygdx.screen.LogScreen;
 import com.mygdx.screen.MenuScreen;
@@ -56,55 +57,57 @@ public class ScreenFactory {
 	private Screen getScreenInstance(ScreenEnum screenEnum) {
 		Gdx.app.log("ScreenFactory", screenEnum.toString() + "Screen 호출");
 		switch (screenEnum) {
-			case BATTLE:
+			case BATTLE :
 				return context.getBean(BattleScreen.class);
-			case BGM:
+			case BGM :
 				return context.getBean(BGMScreen.class);
-			case BONUS_POINT:
+			case BONUS_POINT :
 				return context.getBean(BonusPointScreen.class);
-			case BUILDING:
+			case BUILDING :
 				return context.getBean(BuildingScreen.class);
-			case CG:
+			case CG :
 				return context.getBean(CGScreen.class);
-			case COLLECTION:
+			case COLLECTION :
 				return context.getBean(CollectionScreen.class);
-			case CREDIT:
+			case CREDIT :
 				return context.getBean(CreditScreen.class);
-			case DUNGEON:
+			case DUNGEON :
 				return context.getBean(DungeonScreen.class);
-			case DUNGEON_ENTRANCE:
+			case DUNGEON_ENTRANCE :
 				return context.getBean(DungeonEntranceScreen.class);
-			case ENCOUNTER:
+			case ENCOUNTER :
 				return context.getBean(EncounterScreen.class);
-			case ENDING:
+			case ENDING :
 				return context.getBean(EndingScreen.class);
-			case EVENT:
+			case EVENT :
 				return context.getBean(EventScreen.class);
-			case GAME_OBJECT:
+			case GAME_OBJECT :
 				return context.getBean(GameObjectScreen.class);
-			case GREETING:
+			case GREETING :
 				return context.getBean(GreetingScreen.class);
-			case LOAD:
+			case INVENTORY :
+				return context.getBean(InventoryScreen.class);
+			case LOAD :
 				return context.getBean(LoadScreen.class);
-			case LOG:
+			case LOG :
 				return context.getBean(LogScreen.class);
-			case MENU:
+			case MENU :
 				return context.getBean(MenuScreen.class);
-			case FIELD:
+			case FIELD :
 				return context.getBean(FieldScreen.class);
-			case OPTION:
+			case OPTION :
 				return context.getBean(OptionScreen.class);
-			case SAVE:
+			case SAVE :
 				return context.getBean(SaveScreen.class);
-			case SKILL:
+			case SKILL :
 				return context.getBean(SkillScreen.class);
-			case STATUS:
+			case STATUS :
 				return context.getBean(StatusScreen.class);
-			case VILLAGE:
+			case VILLAGE :
 				return context.getBean(VillageScreen.class);
-			case WORLD_MAP:
+			case WORLD_MAP :
 				return context.getBean(WorldMapScreen.class);
-			default:
+			default :
 				return context.getBean(VillageScreen.class); // FIXME
 		}
 	}

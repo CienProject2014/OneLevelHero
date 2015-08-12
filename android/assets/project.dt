@@ -28,6 +28,16 @@
         1
       ],
       "physicsPropertiesVO": {},
+      "sceneName": "inventory_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
       
       "sceneName": "oberon_scene"
     },

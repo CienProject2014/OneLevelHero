@@ -60,13 +60,13 @@ public class SkillStage extends BaseOverlapStage {
 
 	private void setLabel() {
 		labels = sceneLoader.getRoot().dataVO.composite.sLabels;
-		LabelItem labelItem = sceneLoader.getRoot()
-				.getLabelById(labels.get(0).itemIdentifier);
+		LabelItem labelItem = sceneLoader.getRoot().getLabelById(
+				labels.get(0).itemIdentifier);
 		labelItem.setText(battleManager.getCurrentActor().getSkills()
 				.get(CUT_01).getName());
 
-		labelItem.setStyle(
-				new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
+		labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+				Color.WHITE));
 		labelItem.setFontScale(1.0f);
 		labelItem.setTouchable(Touchable.disabled);
 
@@ -97,8 +97,8 @@ public class SkillStage extends BaseOverlapStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				skillTypeButton_01.setLayerVisibilty("pressed", true);
 				skillTypeButton_01.setLayerVisibilty("Default", false);
 				skillTypeButton_02.setLayerVisibilty("Default", true);
@@ -118,8 +118,8 @@ public class SkillStage extends BaseOverlapStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				skillTypeButton_02.setLayerVisibilty("pressed", true);
 				skillTypeButton_02.setLayerVisibilty("Default", false);
 				skillTypeButton_01.setLayerVisibilty("Default", true);
@@ -146,8 +146,8 @@ public class SkillStage extends BaseOverlapStage {
 				.getCompositeById("highlight_06");
 		final CompositeItem highlight_07 = sceneLoader.getRoot()
 				.getCompositeById("highlight_07");
-		final CompositeItem useButton = sceneLoader.getRoot()
-				.getCompositeById("use");
+		final CompositeItem useButton = sceneLoader.getRoot().getCompositeById(
+				"use");
 
 		highlight_01.setLayerVisibilty("pressed", false);
 		highlight_02.setLayerVisibilty("pressed", false);
@@ -178,8 +178,8 @@ public class SkillStage extends BaseOverlapStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -199,8 +199,8 @@ public class SkillStage extends BaseOverlapStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -220,8 +220,8 @@ public class SkillStage extends BaseOverlapStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -241,8 +241,8 @@ public class SkillStage extends BaseOverlapStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -262,8 +262,8 @@ public class SkillStage extends BaseOverlapStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -283,8 +283,8 @@ public class SkillStage extends BaseOverlapStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -304,8 +304,8 @@ public class SkillStage extends BaseOverlapStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				highlight_01.setLayerVisibilty("pressed", false);
 				highlight_02.setLayerVisibilty("pressed", false);
 				highlight_03.setLayerVisibilty("pressed", false);
@@ -326,8 +326,8 @@ public class SkillStage extends BaseOverlapStage {
 				return true;
 			}
 
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				useButton.setLayerVisibilty("Default", true);
 				useButton.setLayerVisibilty("pressed", false);
 				storySectionManager.triggerSectionEvent(

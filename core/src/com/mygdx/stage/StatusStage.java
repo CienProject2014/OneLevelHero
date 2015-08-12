@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -49,6 +50,7 @@ public class StatusStage extends BaseOverlapStage {
 	private ImageItem largeImage;
 	private List<LabelVO> labels;
 	private Image[] heroLargeImage;
+	private CompositeItem inventoryButton;
 	private final String STATUS_LABEL_NAME = "status";
 	private CompositeItem backButton;
 
@@ -60,9 +62,28 @@ public class StatusStage extends BaseOverlapStage {
 		setLabel();
 		setButton();
 		setBustImage();
+		setTabButton();
 		addListener();
 
 		return this;
+	}
+
+	private void setTabButton() {
+		inventoryButton = sceneLoader.getRoot().getCompositeById("inventory");
+		inventoryButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				screenFactory.show(ScreenEnum.INVENTORY);
+			}
+
+		});
 	}
 
 	private void setButton() {
@@ -86,37 +107,37 @@ public class StatusStage extends BaseOverlapStage {
 		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
 		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name");
 		nameLabel.setText(currentSelectedHero.getName());
-		nameLabel.setStyle(
-				new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
+		nameLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+				Color.WHITE));
 		nameLabel.setFontScale(1.0f);
 		nameLabel.setTouchable(Touchable.disabled);
 		LabelItem fatigueLabel = sceneLoader.getRoot().getLabelById("fatigue");
 		fatigueLabel.setText(String.valueOf(partyManager.getFatigue()));
-		fatigueLabel.setStyle(
-				new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
+		fatigueLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+				Color.WHITE));
 		fatigueLabel.setFontScale(1.0f);
 		fatigueLabel.setTouchable(Touchable.disabled);
 		ArrayList<String> labelList = constantsAssets
 				.getLabels(STATUS_LABEL_NAME);
 		for (int i = 0; i < labelList.size(); i++) {
-			LabelItem labelItem = sceneLoader.getRoot()
-					.getLabelById(labelList.get(i));
-			labelItem.setText(
-					currentSelectedHero.getStatus().getStatusList()[i]);
-			labelItem.setStyle(
-					new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
+			LabelItem labelItem = sceneLoader.getRoot().getLabelById(
+					labelList.get(i));
+			labelItem
+					.setText(currentSelectedHero.getStatus().getStatusList()[i]);
+			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+					Color.WHITE));
 			labelItem.setFontScale(1.0f);
 			labelItem.setTouchable(Touchable.disabled);
 		}
 	}
 	private void setBustImage() {
 		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
-		CompositeItem compositeItem = sceneLoader.getRoot()
-				.getCompositeById("change_01");
+		CompositeItem compositeItem = sceneLoader.getRoot().getCompositeById(
+				"change_01");
 		ImageItem bustImage = compositeItem.getImageById("character_image");
-		bustImage.setDrawable(
-				new TextureRegionDrawable(new TextureRegion(TextureManager
-						.getStatusTexture(currentSelectedHero.getFacePath()))));
+		bustImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
+				TextureManager.getStatusTexture(currentSelectedHero
+						.getFacePath()))));
 	}
 
 	private void setCamera() {

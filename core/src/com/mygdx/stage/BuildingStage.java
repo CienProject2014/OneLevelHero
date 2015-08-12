@@ -139,7 +139,6 @@ public class BuildingStage extends BaseOverlapStage {
 			labelItem.setFontScale(1.0f);
 			labelItem.setTouchable(Touchable.disabled);
 		}
-
 	}
 
 	private void setGameObjectVisibility(CompositeItem objectButton,

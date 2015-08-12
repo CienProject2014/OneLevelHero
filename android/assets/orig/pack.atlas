@@ -1497,3 +1497,200 @@ upbutton
   orig: 234, 122
   offset: 0, 0
   index: -1
+  
+  
+  
+  
+  
+  
+  
+  
+  
+status_item_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+invenuiactivation01
+  rotate: false
+  xy: 1924, 1902
+  size: 900, 130
+  orig: 900, 130
+  offset: 0, 0
+  index: -1
+invenuiactivation02
+  rotate: false
+  xy: 2098, 1564
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
+invenuiarrowacleft
+  rotate: false
+  xy: 1771, 257
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuiarrowacright
+  rotate: false
+  xy: 2725, 1813
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuiarrowleft
+  rotate: false
+  xy: 1924, 1205
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuiarrowright
+  rotate: false
+  xy: 2011, 1407
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuibackground
+  rotate: false
+  xy: 2, 952
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+invenuibase
+  rotate: false
+  xy: 2, 34
+  size: 1767, 916
+  orig: 1767, 916
+  offset: 0, 0
+  index: -1
+invenuibuttonaccancel
+  rotate: false
+  xy: 1924, 1800
+  size: 625, 100
+  orig: 625, 100
+  offset: 0, 0
+  index: -1
+invenuibuttonacwear
+  rotate: false
+  xy: 2826, 1932
+  size: 625, 100
+  orig: 625, 100
+  offset: 0, 0
+  index: -1
+invenuibuttoncancel
+  rotate: false
+  xy: 1924, 1698
+  size: 625, 100
+  orig: 625, 100
+  offset: 0, 0
+  index: -1
+invenuibuttonwear
+  rotate: false
+  xy: 3453, 1932
+  size: 625, 100
+  orig: 625, 100
+  offset: 0, 0
+  index: -1
+invenuidown
+  rotate: false
+  xy: 2, 2
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+invenuiitemline
+  rotate: false
+  xy: 2356, 1594
+  size: 102, 102
+  orig: 102, 102
+  offset: 0, 0
+  index: -1
+invenuinon
+  rotate: false
+  xy: 1879, 920
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 2826, 1910
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuipage02
+  rotate: false
+  xy: 2460, 1676
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiparty
+  rotate: false
+  xy: 2232, 1574
+  size: 122, 122
+  orig: 122, 122
+  offset: 0, 0
+  index: -1
+invenuistate
+  rotate: false
+  xy: 1771, 548
+  size: 106, 402
+  orig: 106, 402
+  offset: 0, 0
+  index: -1
+invenuitagacequipment
+  rotate: false
+  xy: 2551, 1700
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuitagacetc
+  rotate: false
+  xy: 1924, 1496
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuitagacsupplies
+  rotate: false
+  xy: 1771, 346
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuitagequipment
+  rotate: false
+  xy: 2638, 1700
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuitagetc
+  rotate: false
+  xy: 1924, 1294
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuitagsupplies
+  rotate: false
+  xy: 2011, 1496
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 2098, 1532
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+
