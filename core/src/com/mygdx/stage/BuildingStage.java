@@ -50,8 +50,7 @@ public class BuildingStage extends BaseOverlapStage {
 	}
 
 	private void makeScene() {
-		buildingInfo = worldNodeAssets
-				.getVillage(positionManager.getCurrentNodeName()).getBuilding()
+		buildingInfo = worldNodeAssets.getVillage(positionManager.getCurrentNodeName()).getBuilding()
 				.get(positionManager.getCurrentSubNodeName());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		cameraManager.stretchToDevice(this);
@@ -61,21 +60,18 @@ public class BuildingStage extends BaseOverlapStage {
 	private void setNpcList() {
 		npcButtonList = new ArrayList<CompositeItem>();
 		for (final String npcName : buildingInfo.getBuildingNpc()) {
-			CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(
-					npcName);
+			CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(npcName);
 			npcButton.setTouchable(Touchable.enabled);
 			npcButton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					eventManager.setCurrentEventNpc(npcName);
-					eventManager.setCurrentEventNumber(2); //FIXME
+					eventManager.setCurrentEventNumber(2); // FIXME
 					screenFactory.show(ScreenEnum.GREETING);
 				}
 			});
@@ -87,20 +83,17 @@ public class BuildingStage extends BaseOverlapStage {
 		gameObjectList = new ArrayList<CompositeItem>();
 		for (final String objectName : buildingInfo.getGameObject()) {
 			final GameObject gameObject = eventAssets.getGameObject(objectName);
-			final CompositeItem objectButton = sceneLoader.getRoot()
-					.getCompositeById(objectName);
+			final CompositeItem objectButton = sceneLoader.getRoot().getCompositeById(objectName);
 			objectButton.setVisible(true);
 			setGameObjectVisibility(objectButton, gameObject.getObjectType());
 			objectButton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					gameObject.setObjectType(GameObjectEnum.PRESSED);
 					eventManager.setCurrentGameObject(gameObject);
 					screenFactory.show(ScreenEnum.GAME_OBJECT);
@@ -110,26 +103,21 @@ public class BuildingStage extends BaseOverlapStage {
 		}
 	}
 
-	private void setGameObjectVisibility(CompositeItem objectButton,
-			GameObjectEnum gameObjectEnum) {
+	private void setGameObjectVisibility(CompositeItem objectButton, GameObjectEnum gameObjectEnum) {
 		switch (gameObjectEnum) {
-			case NORMAL:
-				objectButton.setLayerVisibilty(
-						GameObjectEnum.PRESSED.toString(), false);
-				objectButton.setLayerVisibilty(
-						GameObjectEnum.NORMAL.toString(), true);
-				objectButton.setTouchable(Touchable.enabled);
-				break;
-			case PRESSED:
-				objectButton.setLayerVisibilty(
-						GameObjectEnum.PRESSED.toString(), true);
-				objectButton.setLayerVisibilty(
-						GameObjectEnum.NORMAL.toString(), false);
-				objectButton.setTouchable(Touchable.disabled);
-				break;
-			default:
-				Gdx.app.log("BuildingStage", "NULL GameObjectEnum Type");
-				break;
+		case NORMAL:
+			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), false);
+			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), true);
+			objectButton.setTouchable(Touchable.enabled);
+			break;
+		case PRESSED:
+			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), true);
+			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), false);
+			objectButton.setTouchable(Touchable.disabled);
+			break;
+		default:
+			Gdx.app.log("BuildingStage", "NULL GameObjectEnum Type");
+			break;
 		}
 	}
 }
