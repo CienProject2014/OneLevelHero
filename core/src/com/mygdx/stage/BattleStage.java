@@ -60,6 +60,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private boolean monsterTurn;
 	private float animationDelay;
 	private final float MONSTER_ATTACK_DELAY = 1.5f;
+	private final int NORMAL_ATTACK = 30;
 
 	// Image
 	private Image currentAttackerBackground;
@@ -67,6 +68,8 @@ public class BattleStage extends BaseOneLevelStage {
 	private HashMap<String, Image> turnBigImageMap = new HashMap<String, Image>();
 	private HashMap<String, Image> turnSmallImageMap = new HashMap<String, Image>();
 	private Table imageTable = new Table();
+	private Table bigImageTable = new Table();
+	private Table smallImageTable = new Table();
 
 	@Override
 	public void act(float delta) {
@@ -90,10 +93,9 @@ public class BattleStage extends BaseOneLevelStage {
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 			initializeBattle(units, selectedMonster);
 		}
-		updateOrder();
 		orderedUnits = new LinkedList<Unit>(units);
+		updateOrder();
 		currentHero = getCurrentActor(); // 여기선 첫번째 턴
-
 		if (currentHero instanceof Monster) {
 			monsterTurn = true;
 		}
@@ -126,7 +128,6 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private Unit getCurrentActor() {
 		Unit currentAttackUnit = orderedUnits.poll();
-		orderedUnits.add(currentAttackUnit);
 		if (currentAttackUnit instanceof Hero) {
 			battleManager.setCurrentActor((Hero) currentAttackUnit);
 		}
@@ -143,6 +144,10 @@ public class BattleStage extends BaseOneLevelStage {
 		Collections.sort(units);
 	}
 
+	private void addCurrentHero() {
+		orderedUnits.add(currentHero);
+	}
+
 	private void doMonsterTurn(float delta) {
 		Hero randomHero = partyManager.pickRandomHero();
 		animationDelay += delta;
@@ -154,7 +159,26 @@ public class BattleStage extends BaseOneLevelStage {
 			showRMenuButtons();
 			animationDelay = 0;
 		}
-		updateImageTable();
+		updateBigImageTable();
+		updateSmallImageTable();
+	}
+
+	private void playAnimation(float delta) {
+		animationManager.nextFrame(delta);
+		if (animationManager.getAnimations().isEmpty()) {
+			// FIXME
+			storySectionManager.triggerSectionEvent(
+					EventTypeEnum.BATTLE_CONTROL, "normal_attack");
+			currentHero = getCurrentActor();
+			updateBigImageTable();
+			updateSmallImageTable();
+			if (battleManager.getBattleState()
+					.equals(BattleStateEnum.GAME_OVER)) {
+				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				battleManager.goCurrentPosition();
+			}
+		}
+
 	}
 
 	private void hideRMenuButtons() {
@@ -167,23 +191,6 @@ public class BattleStage extends BaseOneLevelStage {
 		for (ImageButton rMenuButton : rMenuButtonList) {
 			rMenuButton.setVisible(true);
 		}
-	}
-
-	private void playAnimation(float delta) {
-		animationManager.nextFrame(delta);
-		if (animationManager.getAnimations().isEmpty()) {
-			// FIXME
-			storySectionManager.triggerSectionEvent(
-					EventTypeEnum.BATTLE_CONTROL, "normal_attack");
-			currentHero = getCurrentActor();
-			updateImageTable();
-			if (battleManager.getBattleState()
-					.equals(BattleStateEnum.GAME_OVER)) {
-				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-				battleManager.goCurrentPosition();
-			}
-		}
-
 	}
 
 	public Table makeBattleUiTable() {
@@ -212,25 +219,39 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private Table makeImageTable() {
-		turnBigImageMap.get(currentHero.getFacePath()).setWidth(117);
-		turnBigImageMap.get(currentHero.getFacePath()).setHeight(117);
-		imageTable.add(turnBigImageMap.get(currentHero.getFacePath()))
-				.padRight(15);
-
-		for (Unit unit : orderedUnits) {
-			turnSmallImageMap.get(unit.getFacePath()).setWidth(84);
-			turnSmallImageMap.get(unit.getFacePath()).setHeight(84);
-			imageTable.add(turnSmallImageMap.get(unit.getFacePath()));
-		}
+		imageTable.add(makeBigImageTable());
+		imageTable.add(makeSmallImageTable());
 		imageTable.left().bottom();
 		imageTable.padLeft(17).padBottom(17);
 
 		return imageTable;
 	}
 
-	private void updateImageTable() {
-		imageTable.reset();
-		imageTable = makeImageTable();
+	private Table makeBigImageTable() {
+		turnBigImageMap.get(currentHero.getFacePath()).setWidth(117);
+		turnBigImageMap.get(currentHero.getFacePath()).setHeight(117);
+		bigImageTable.add(turnBigImageMap.get(currentHero.getFacePath()))
+				.padRight(15);
+		return bigImageTable;
+	}
+
+	private Table makeSmallImageTable() {
+		for (Unit unit : orderedUnits) {
+			turnSmallImageMap.get(unit.getFacePath()).setWidth(84);
+			turnSmallImageMap.get(unit.getFacePath()).setHeight(84);
+			smallImageTable.add(turnSmallImageMap.get(unit.getFacePath()));
+		}
+		return smallImageTable;
+	}
+
+	private void updateBigImageTable() {
+		bigImageTable.reset();
+		bigImageTable = makeBigImageTable();
+	}
+
+	private void updateSmallImageTable() {
+		smallImageTable.reset();
+		smallImageTable = makeSmallImageTable();
 	}
 
 	private Table makeRMenuTable() {
@@ -280,12 +301,22 @@ public class BattleStage extends BaseOneLevelStage {
 		}
 	}
 
+	private void calCostGague(Unit unit, int typeOfAction) {
+		int costGague = (int) (((double) (150 - unit.getActingPower()) / 50)
+				* typeOfAction);
+		unit.setGauge(costGague);
+	}
+
 	public void addListener() {
 		// 클릭시 발동
 		attackButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				if (!gridHitbox.isGridShow()) {
+					calCostGague(currentHero, NORMAL_ATTACK);
+					addCurrentHero();
+					updateOrder();
+					updateSmallImageTable();
 					gridHitbox.showGrid();
 				} else {
 

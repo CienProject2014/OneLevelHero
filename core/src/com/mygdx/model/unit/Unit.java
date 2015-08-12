@@ -186,4 +186,5 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 		}
 		return smallBattleTexture;
 	}
+
 }
