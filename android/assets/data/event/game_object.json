@@ -1,6 +1,7 @@
 {
   "chest": {
     "objectType": "normal",
+    "objectName" : "상자",
     "objectEvent": {
       "eventState": "always_open",
       "eventType": "chat",
@@ -14,8 +15,10 @@
     }
   },
   "save": {
-    "objectType": "normal",
+    "objectType": "function",
+    "objectName" : "저장하기",
     "objectEvent": {
+      
       "eventState": "always_open",
       "eventType": "chat",
       "eventScenes": [
@@ -28,9 +31,10 @@
     }
   },
   "rest": {
-    "objectType": "normal",
-    "objectEvent": {
-      "eventState": "not_opened",
+    "objectType": "function",
+    "objectName" : "회복하기",
+    "objectEvent": {      
+      "eventState": "always_open",
       "eventType": "chat",
       "eventScenes": [
         {

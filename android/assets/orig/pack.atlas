@@ -730,142 +730,79 @@ size: 2048,4096
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-blackwoodbackground
+bgblackwood
   rotate: false
-  xy: 2, 1373
+  xy: 2, 942
   size: 1920, 2160
   orig: 1920, 2160
   offset: 0, 0
   index: -1
-mainuitbplaceblackwood
+downbutton
   rotate: false
-  xy: 2, 1238
-  size: 620, 133
-  orig: 620, 133
-  offset: 0, 0
-  index: -1
-townuiarrowblackwoodforest
-  rotate: false
-  xy: 2, 164
-  size: 160, 150
-  orig: 160, 150
-  offset: 0, 0
-  index: -1
-townuiarrowcopweb
-  rotate: false
-  xy: 424, 1086
-  size: 170, 150
-  orig: 170, 150
-  offset: 0, 0
-  index: -1
-townuiarrowmawang
-  rotate: false
-  xy: 2, 2
-  size: 150, 160
-  orig: 150, 160
-  offset: 0, 0
-  index: -1
-townuiarrowmiddle
-  rotate: false
-  xy: 424, 934
-  size: 160, 150
-  orig: 160, 150
-  offset: 0, 0
-  index: -1
-townuibuildtag
-  rotate: false
-  xy: 2, 1136
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuibuildtaggrocery
-  rotate: false
-  xy: 624, 1271
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuibuildtaginn
-  rotate: false
-  xy: 2, 1034
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuibuildtagprivatehouse
-  rotate: false
-  xy: 1046, 1271
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuibuildtagvillagehead
-  rotate: false
-  xy: 2, 932
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuidown
-  rotate: false
-  xy: 2, 440
+  xy: 288, 532
   size: 234, 122
   orig: 234, 122
   offset: 0, 0
   index: -1
-townuileft
-  rotate: false
-  xy: 1924, 3299
-  size: 122, 234
-  orig: 122, 234
-  offset: 0, 0
-  index: -1
-townuimovetag
-  rotate: false
-  xy: 1468, 1281
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuimovetagbalckwoodforest
-  rotate: false
-  xy: 2, 840
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuimovetagcopweb
-  rotate: false
-  xy: 2, 748
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuimovetagmawang
+townuiarrowblackblackwoodforest
   rotate: false
   xy: 2, 656
-  size: 310, 90
-  orig: 310, 90
+  size: 284, 284
+  orig: 284, 284
   offset: 0, 0
   index: -1
-townuimovetagmiddle
+townuiarrowblackcopweb
   rotate: false
-  xy: 2, 564
-  size: 310, 90
-  orig: 310, 90
+  xy: 2, 370
+  size: 284, 284
+  orig: 284, 284
   offset: 0, 0
   index: -1
-townuiright
+townuiarrowblackmawang
   rotate: false
-  xy: 1924, 3063
-  size: 122, 234
-  orig: 122, 234
+  xy: 288, 656
+  size: 284, 284
+  orig: 284, 284
   offset: 0, 0
   index: -1
-townuiup
+townuiarrowblackmiddle
   rotate: false
-  xy: 2, 316
+  xy: 2, 84
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuibuildtagbuilding
+  rotate: false
+  xy: 2, 2
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+townuibuildtaggrocery
+  rotate: false
+  xy: 288, 450
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+townuibuildtaginn
+  rotate: false
+  xy: 574, 736
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+townuibuildtagvillagehead
+  rotate: false
+  xy: 810, 860
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+upbutton
+  rotate: false
+  xy: 574, 818
   size: 234, 122
   orig: 234, 122
   offset: 0, 0
@@ -873,7 +810,6 @@ townuiup
 
 
   
-
 blackwood_headhouse_pack.png
 size: 2048,2048
 format: RGBA8888
@@ -909,6 +845,7 @@ waiji601
   index: -1
 
   
+  
 blackwood_forest_entrance_pack.png
 size: 2820,1080
 format: RGBA8888
@@ -943,114 +880,164 @@ button
   offset: 0, 0
   index: -1
   
+
 status_pack.png
-size: 4096,1024
+size: 2048,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-background
+statusuiacbuttonending
+  rotate: false
+  xy: 781, 694
+  size: 164, 100
+  orig: 164, 100
+  offset: 0, 0
+  index: -1
+statusuiacbuttonparty
+  rotate: false
+  xy: 520, 470
+  size: 164, 100
+  orig: 164, 100
+  offset: 0, 0
+  index: -1
+statusuiacbuttonworld
+  rotate: false
+  xy: 947, 694
+  size: 164, 100
+  orig: 164, 100
+  offset: 0, 0
+  index: -1
+statusuibase
+  rotate: false
+  xy: 2, 918
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+statusuibuttonending
+  rotate: false
+  xy: 520, 368
+  size: 164, 100
+  orig: 164, 100
+  offset: 0, 0
+  index: -1
+statusuibuttonparty
+  rotate: false
+  xy: 1113, 694
+  size: 164, 100
+  orig: 164, 100
+  offset: 0, 0
+  index: -1
+statusuibuttonworld
+  rotate: false
+  xy: 520, 572
+  size: 165, 100
+  orig: 165, 100
+  offset: 0, 0
+  index: -1
+statusuiexp
   rotate: false
   xy: 2, 2
-  size: 1690, 960
-  orig: 1690, 960
+  size: 38, 18
+  orig: 38, 18
   offset: 0, 0
   index: -1
-close
+statusuilevel
   rotate: false
-  xy: 3058, 540
-  size: 230, 240
-  orig: 230, 240
+  xy: 1924, 1754
+  size: 120, 120
+  orig: 120, 120
   offset: 0, 0
   index: -1
-endinglist
+statusuilevelbar
   rotate: false
-  xy: 1694, 100
-  size: 560, 140
-  orig: 560, 140
+  xy: 2, 876
+  size: 630, 40
+  orig: 630, 40
   offset: 0, 0
   index: -1
-eresist
+statusuiparty
   rotate: false
-  xy: 2256, 330
-  size: 800, 180
-  orig: 800, 180
+  xy: 1924, 1876
+  size: 122, 122
+  orig: 122, 122
   offset: 0, 0
   index: -1
-hero1
+statusuitbacback
   rotate: false
-  xy: 3860, 812
-  size: 150, 150
-  orig: 150, 150
+  xy: 1670, 796
+  size: 259, 120
+  orig: 259, 120
   offset: 0, 0
   index: -1
-hero2
+statusuitbacinventory
   rotate: false
-  xy: 3058, 388
-  size: 150, 150
-  orig: 150, 150
+  xy: 2, 754
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-hero3
+statusuitbacskill
   rotate: false
-  xy: 2488, 178
-  size: 150, 150
-  orig: 150, 150
+  xy: 2, 632
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-hero4
+statusuitbacstatus
   rotate: false
-  xy: 3210, 388
-  size: 150, 150
-  orig: 150, 150
+  xy: 2, 510
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-hero5
+statusuitbback
   rotate: false
-  xy: 2640, 178
-  size: 150, 150
-  orig: 150, 150
+  xy: 520, 674
+  size: 259, 120
+  orig: 259, 120
   offset: 0, 0
   index: -1
-inventory
+statusuitbinventory
   rotate: false
-  xy: 3290, 540
-  size: 230, 240
-  orig: 230, 240
+  xy: 2, 388
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-largehero
+statusuitbnoninventory
   rotate: false
-  xy: 1694, 242
-  size: 560, 720
-  orig: 560, 720
+  xy: 2, 266
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-level
+statusuitbnonskill
   rotate: false
-  xy: 2256, 512
-  size: 800, 450
-  orig: 800, 450
+  xy: 2, 144
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-name
+statusuitbnonstatus
   rotate: false
-  xy: 3058, 782
-  size: 800, 180
-  orig: 800, 180
+  xy: 2, 22
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-skill
+statusuitbskill
   rotate: false
-  xy: 3522, 540
-  size: 230, 240
-  orig: 230, 240
+  xy: 634, 796
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
-status
+statusuitbstatus
   rotate: false
-  xy: 2256, 88
-  size: 230, 240
-  orig: 230, 240
+  xy: 1152, 796
+  size: 516, 120
+  orig: 516, 120
   offset: 0, 0
   index: -1
 
@@ -1408,8 +1395,6 @@ talkuiwindow
   offset: 0, 0
   index: -1
   
-  
-  
 cobweb_inn_pack.png
 size: 2048,2048
 format: RGBA8888
@@ -1437,3 +1422,78 @@ cobwebinnscene
   offset: 0, 0
   index: -1
 
+oberon_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgoberon1
+  rotate: false
+  xy: 2, 780
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+downbutton
+  rotate: false
+  xy: 288, 656
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+smallHill
+  rotate: false
+  xy: 288, 574
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+square
+  rotate: false
+  xy: 524, 698
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+temple
+  rotate: false
+  xy: 2, 2
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+toRetreatStone
+  rotate: false
+  xy: 2, 208
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+tokadila
+  rotate: false
+  xy: 2, 494
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuibuildtagbuilding
+  rotate: false
+  xy: 288, 492
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+townuibuildtaginn
+  rotate: false
+  xy: 726, 698
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+upbutton
+  rotate: false
+  xy: 2, 84
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1

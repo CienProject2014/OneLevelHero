@@ -7,25 +7,32 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.model.Hero;
-import com.mygdx.ui.StatusBarUi;
+import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.StatusBar;
 
 public class CharacterUiStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private ScreenFactory screenFactory;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("CharacterUiStage");
 	private Table statusTable;
-	private int battleMemberNumber;
+	private Table barTable;
 	private List<Hero> battleMemberList;
-	private List<HeroStatus> heroStatusList;
+	private List<StatusBar> heroStatusBarList;
+	private List<Label> hpLabelList;
 	private final String BUFF_DE_FAINT = "buff_de_07";
 	private final String BUFF_DE_FIRE = "buff_de_02";
 	private final String BUFF_DE_ICE = "buff_de_04";
@@ -34,90 +41,11 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 
-		listInitialize();
-
+		initializeList();
 		Table uiTable;
 		uiTable = makeUiTable();
 		tableStack.add(uiTable);
-
 		return this;
-	}
-
-	private void listInitialize() {
-		battleMemberList = partyManager.getBattleMemberList();
-		battleMemberNumber = battleMemberList.size();
-
-		heroStatusList = new ArrayList<HeroStatus>(battleMemberNumber);
-		for (int i = 0; i < battleMemberNumber; i++) {
-			heroStatusList.add(new HeroStatus(battleMemberList.get(i)));
-		}
-
-		statusTable = new Table();
-	}
-
-	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
-	private Table makeUiTable() {
-		Table table = new Table();
-
-		statusTable = makeStatusTable();
-
-		table.add(statusTable).expandX().left();
-
-		return table;
-
-	}
-
-	private Table makeStatusTable() {
-		Table table = new Table();
-
-		for (Iterator<HeroStatus> i = heroStatusList.iterator(); i.hasNext();) {
-			HeroStatus status = (HeroStatus) i.next();
-			Table heroTable = makeHeroTable(status);
-
-			table.add(heroTable).padBottom(
-					uiConstantsMap.get("heroTablePadBottom"));
-			table.row();
-		}
-
-		return table;
-	}
-
-	private Table makeHeroTable(HeroStatus status) {
-		Table heroTable = new Table();
-
-		heroTable.add(new Image(status.getHero().getFaceTexture()))
-				.padRight(uiConstantsMap.get("heroTablePadLeft"))
-				.width(uiConstantsMap.get("heroImageWidth"))
-				.height(uiConstantsMap.get("heroImageHeight"));
-
-		Table barTable = new Table();
-		HorizontalGroup buffGroup = new HorizontalGroup();
-		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get(BUFF_DE_FAINT)));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get(BUFF_DE_SATAN)));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get(BUFF_DE_ICE)));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get(BUFF_DE_FIRE)));
-
-		barTable.add(
-				new Label(status.getHp() + "/" + status.getMaxHp(),
-						uiComponentAssets.getSkin()))
-				.padBottom(uiConstantsMap.get("heroBarSpace")).row();
-		barTable.add(status.getHpBar())
-				.padBottom(uiConstantsMap.get("heroBarSpace"))
-				.width(uiConstantsMap.get("barTableWidth")).row();
-		barTable.add(status.getGaugeBar())
-				.padBottom(uiConstantsMap.get("heroBarSpace"))
-				.width(uiConstantsMap.get("barTableWidth")).row();
-		barTable.add(buffGroup).width(uiConstantsMap.get("buffTableWidth"))
-				.height(uiConstantsMap.get("buffTableHeight"));
-
-		heroTable.add(barTable);
-
-		return heroTable;
 	}
 
 	// 정보 업데이트
@@ -125,73 +53,85 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	public void act(float delta) {
 		super.act(delta);
 
-		for (int i = 0; i < heroStatusList.size(); i++) {
-			heroStatusList.get(i).update();
+		for (int i = 0; i < heroStatusBarList.size(); i++) {
+			heroStatusBarList.get(i).update();
+			hpLabelList.get(i).setText(heroStatusBarList.get(i).getHp() + "/"
+					+ heroStatusBarList.get(i).getMaxHp());
 		}
 	}
 
-	class HeroStatus {
-		private Hero hero;
-		private StatusBarUi hpBar;
-		private StatusBarUi gaugeBar;
-
-		public HeroStatus(Hero hero) {
-			this.hero = hero;
-			hpBar = new StatusBarUi("hp", 0, 100, 1, false,
-					uiComponentAssets.getSkin());
-			hpBar.setValue(getHpPercent());
-			gaugeBar = new StatusBarUi("gauge", 0, 100, 1, false,
-					uiComponentAssets.getSkin());
-			gaugeBar.setValue(getGaugePercent());
+	private void initializeList() {
+		battleMemberList = partyManager.getBattleMemberList();
+		hpLabelList = new ArrayList<Label>(battleMemberList.size());
+		heroStatusBarList = new ArrayList<StatusBar>(battleMemberList.size());
+		for (int i = 0; i < battleMemberList.size(); i++) {
+			heroStatusBarList.add(new StatusBar(battleMemberList.get(i),
+					uiComponentAssets.getSkin()));
 		}
+		statusTable = new Table();
+	}
 
-		public void update() {
-			hpBar.setValue(getHpPercent());
-			gaugeBar.setValue(getGaugePercent());
-		}
+	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
+	private Table makeUiTable() {
+		Table table = new Table();
+		statusTable = makeStatusTable();
+		table.add(statusTable).expandX().left();
+		return table;
+	}
 
-		public int getHp() {
-			return hero.getStatus().getHp();
+	private Table makeStatusTable() {
+		Table table = new Table();
+		Iterator<StatusBar> heroStatusBarIterator = heroStatusBarList
+				.iterator();
+		while (heroStatusBarIterator.hasNext()) {
+			Table heroTable = makeHeroTable(heroStatusBarIterator.next());
+			table.add(heroTable)
+					.padBottom(uiConstantsMap.get("heroTablePadBottom"));
+			table.row();
 		}
+		return table;
+	}
 
-		public int getMaxHp() {
-			return hero.getStatus().getMaxHp();
-		}
+	private Table makeHeroTable(final StatusBar statusBar) {
+		Table heroTable = new Table();
+		Image heroImage = new Image(statusBar.getUnit().getFaceTexture());
+		heroImage.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				partyManager.setCurrentSelectedHero((Hero) statusBar.getUnit());
+				screenFactory.show(ScreenEnum.STATUS);
+			}
+		});
+		heroTable.add(heroImage)
+				.padRight(uiConstantsMap.get("heroTablePadLeft"))
+				.width(uiConstantsMap.get("heroImageWidth"))
+				.height(uiConstantsMap.get("heroImageHeight"));
 
-		public int getHpPercent() {
-			float factor = (float) hero.getStatus().getHp()
-					/ hero.getStatus().getMaxHp();
-			return (int) (factor * 100);
-		}
-
-		public int getGaugePercent() {
-			// float factor = (float) hero.getGauge() / 100;
-			// FIXME 게이지 구현이 안되었음
-			return 100;
-		}
-
-		public Hero getHero() {
-			return hero;
-		}
-
-		public void setHero(Hero hero) {
-			this.hero = hero;
-		}
-
-		public StatusBarUi getHpBar() {
-			return hpBar;
-		}
-
-		public void setHpBar(StatusBarUi hpBar) {
-			this.hpBar = hpBar;
-		}
-
-		public StatusBarUi getGaugeBar() {
-			return gaugeBar;
-		}
-
-		public void setGaugeBar(StatusBarUi gaugeBar) {
-			this.gaugeBar = gaugeBar;
-		}
+		HorizontalGroup buffGroup = new HorizontalGroup();
+		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
+		buffGroup.addActor(
+				new Image(StaticAssets.textureMap.get(BUFF_DE_FAINT)));
+		buffGroup.addActor(
+				new Image(StaticAssets.textureMap.get(BUFF_DE_SATAN)));
+		buffGroup.addActor(new Image(StaticAssets.textureMap.get(BUFF_DE_ICE)));
+		buffGroup
+				.addActor(new Image(StaticAssets.textureMap.get(BUFF_DE_FIRE)));
+		barTable = new Table();
+		Label hpLabel = new Label(
+				statusBar.getHp() + "/" + statusBar.getMaxHp(),
+				uiComponentAssets.getSkin());
+		hpLabelList.add(hpLabel);
+		barTable.add(hpLabel).padBottom(uiConstantsMap.get("heroBarSpace"))
+				.row();
+		barTable.add(statusBar.getHpBar())
+				.padBottom(uiConstantsMap.get("heroBarSpace"))
+				.width(uiConstantsMap.get("barTableWidth")).row();
+		barTable.add(statusBar.getGaugeBar())
+				.padBottom(uiConstantsMap.get("heroBarSpace"))
+				.width(uiConstantsMap.get("barTableWidth")).row();
+		barTable.add(buffGroup).width(uiConstantsMap.get("buffTableWidth"))
+				.height(uiConstantsMap.get("buffTableHeight"));
+		heroTable.add(barTable);
+		return heroTable;
 	}
 }

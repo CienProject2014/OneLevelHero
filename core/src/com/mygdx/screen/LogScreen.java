@@ -14,11 +14,12 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.StageEnum;
+import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
-import com.mygdx.model.EventScene;
-import com.mygdx.model.NPC;
+import com.mygdx.model.event.EventScene;
+import com.mygdx.model.event.NPC;
 
 public class LogScreen extends BaseScreen {
 	@Autowired
@@ -27,6 +28,8 @@ public class LogScreen extends BaseScreen {
 	private MovingManager movingManager;
 	@Autowired
 	private PositionManager positionManager;
+	@Autowired
+	private BattleManager battleManager;
 
 	// Already libgdx using interface!
 	private Input input = Gdx.input;
@@ -40,17 +43,26 @@ public class LogScreen extends BaseScreen {
 		super.render(delta);
 
 		eventStage.draw();
-		selectEventStage.draw();
+		if (!battleManager.isInBattle()) {
+			selectEventStage.draw();
+		}
 	}
 
 	@Override
 	public void show() {
 		eventManager.setGreeting(true);
-		eventManager.setCurrentEventNpc(YONGSA_NAME);
-		positionManager.setCurrentPositionType(PositionEnum.LOG);
+		if (battleManager.isInBattle()) {
+			positionManager.setCurrentPositionType(PositionEnum.ANIMAL_BOOK);
+			eventManager.setCurrentEventNpc(battleManager.getSelectedMonster()
+					.getFacePath());
+		} else {
+			positionManager.setCurrentPositionType(PositionEnum.LOG);
+			eventManager.setCurrentEventNpc(YONGSA_NAME);
+			selectEventStage = stageFactory.makeStage(StageEnum.SELECT_EVENT);
+		}
+
 		final NPC npc = eventManager.getCurrentNpc();
 		logScenes = npc.getGreeting().getEventScenes();
-		selectEventStage = stageFactory.makeStage(StageEnum.SELECT_EVENT);
 		// for shuffle
 		List<EventScene> shuffleList = new ArrayList<EventScene>(logScenes);
 		Collections.shuffle(shuffleList);
@@ -60,8 +72,12 @@ public class LogScreen extends BaseScreen {
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
 		// 우선권을 준다.
 
-		multiplexer.addProcessor(0, selectEventStage);
-		multiplexer.addProcessor(1, eventStage);
+		if (!battleManager.isInBattle()) {
+			multiplexer.addProcessor(0, selectEventStage);
+			multiplexer.addProcessor(1, eventStage);
+		} else {
+			multiplexer.addProcessor(0, eventStage);
+		}
 
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		input.setInputProcessor(multiplexer);

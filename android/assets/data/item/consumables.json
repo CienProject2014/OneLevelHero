@@ -1,0 +1,16 @@
+{
+  "small_healing": {
+    "name": "소형 회복약",
+    "itemPath" : "small_healing",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "체력을 조금 회복해준다."
+  },
+  "medium_healing": {
+    "name": "중형 회복약",
+    "itemPath" : "medium_healing",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "체력을 어느 정도 회복해준다."
+  }
+}

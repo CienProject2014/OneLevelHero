@@ -1,0 +1,172 @@
+
+atlas.png
+size: 862,946
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+popupui_acbutton_accept
+  rotate: false
+  xy: 2, 2
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_acbutton_cancel
+  rotate: false
+  xy: 354, 2
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_popup01
+  rotate: false
+  xy: 2, 94
+  size: 860, 370
+  orig: 860, 370
+  offset: 0, 0
+  index: -1
+popupui_popup02
+  rotate: false
+  xy: 2, 466
+  size: 860, 480
+  orig: 860, 480
+  offset: 0, 0
+  index: -1
+
+atlas2.png
+size: 754,1012
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+popupui_acbutton_closed
+  rotate: false
+  xy: 2, 338
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_acbutton_end
+  rotate: false
+  xy: 404, 922
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_acbutton_load
+  rotate: false
+  xy: 2, 246
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_acbutton_no
+  rotate: false
+  xy: 404, 830
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_acbutton_sound
+  rotate: false
+  xy: 2, 154
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_acbutton_title
+  rotate: false
+  xy: 404, 738
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_acbutton_yes
+  rotate: false
+  xy: 2, 62
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_button
+  rotate: false
+  xy: 404, 646
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_button_accept
+  rotate: false
+  xy: 404, 554
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_button_cancel
+  rotate: false
+  xy: 404, 462
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_button_closed
+  rotate: false
+  xy: 404, 370
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_button_end
+  rotate: false
+  xy: 354, 278
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_button_load
+  rotate: false
+  xy: 354, 186
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_button_no
+  rotate: false
+  xy: 354, 94
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_button_sound
+  rotate: false
+  xy: 354, 2
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_setmenu_base
+  rotate: false
+  xy: 2, 430
+  size: 400, 582
+  orig: 400, 582
+  offset: 0, 0
+  index: -1
+
+atlas3.png
+size: 704,92
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+popupui_button_title
+  rotate: false
+  xy: 2, 2
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_button_yes
+  rotate: false
+  xy: 354, 2
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1

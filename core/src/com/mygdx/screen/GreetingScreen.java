@@ -17,8 +17,8 @@ import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
-import com.mygdx.model.EventScene;
-import com.mygdx.model.NPC;
+import com.mygdx.model.event.EventScene;
+import com.mygdx.model.event.NPC;
 
 public class GreetingScreen extends BaseScreen {
 	@Autowired
@@ -95,10 +95,6 @@ public class GreetingScreen extends BaseScreen {
 			case FIELD:
 				positionManager
 						.setCurrentPositionType(PositionEnum.FIELD_EVENT);
-				break;
-			case BATTLE:
-				positionManager
-						.setCurrentPositionType(PositionEnum.BATTLE_EVENT);
 				break;
 			case NODE_EVENT:
 			case BATTLE_EVENT:

@@ -14,7 +14,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MovingManager;
-import com.mygdx.model.EventScene;
+import com.mygdx.model.event.EventScene;
 
 public class GameObjectStage extends BaseOneLevelStage {
 	@Autowired
@@ -43,7 +43,6 @@ public class GameObjectStage extends BaseOneLevelStage {
 				return true;
 			}
 		});
-
 		return this;
 	}
 

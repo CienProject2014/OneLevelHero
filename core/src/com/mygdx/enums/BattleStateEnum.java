@@ -1,5 +1,5 @@
 package com.mygdx.enums;
 
 public enum BattleStateEnum {
-	ING, WIN, LOSE, NOT_IN_BATTLE;
+	ENCOUNTER, IN_GAME, GAME_OVER, NOT_IN_BATTLE;
 }

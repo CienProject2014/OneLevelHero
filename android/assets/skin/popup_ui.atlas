@@ -1,0 +1,27 @@
+
+popup_ui.png
+size: 862,946
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+popup1
+  rotate: false
+  xy: 2, 2
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+popup2
+  rotate: false
+  xy: 2, 94
+  size: 860, 370
+  orig: 860, 370
+  offset: 0, 0
+  index: -1
+popup3
+  rotate: false
+  xy: 2, 466
+  size: 860, 480
+  orig: 860, 480
+  offset: 0, 0
+  index: -1

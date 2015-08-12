@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -14,18 +14,17 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
-import com.mygdx.model.EventScene;
+import com.mygdx.model.event.EventScene;
 
 /**
  * make and return stage(Event)
- *
+ * 
  * @author Velmont
- *
+ * 
  */
 public class EventStage extends BaseOneLevelStage {
 	@Autowired
@@ -49,7 +48,6 @@ public class EventStage extends BaseOneLevelStage {
 		super.makeStage();
 		if (eventSceneIterator.hasNext()) {
 			setScene(eventSceneIterator.next());
-
 			this.addListener(new InputListener() {
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y,
@@ -83,31 +81,11 @@ public class EventStage extends BaseOneLevelStage {
 		scriptTitle = new Label("Title", uiComponentAssets.getSkin());
 		scriptContent = new Label(eventScene.getScript(),
 				uiComponentAssets.getSkin());
-		characterImage = new Image(eventScene.getCharacter());
+		Texture selectedCharacter = eventScene.getCharacter();
+		characterImage = new Image(selectedCharacter);
 		tableStack.add(backgroundImage);
 		tableStack.add(makeChatTable());
-		makeEventStage(eventManager.getCurrentEvent().getEventType());
-
 	}
-
-	private void makeEventStage(EventTypeEnum eventType) {
-		switch (eventType) {
-			case CHAT:
-				//makeChatStage();
-				break;
-			case GREETING:
-			case SELECT_COMPONENT:
-				//makeSelectEventStage();
-				break;
-			case CREDIT:
-				//makeCreditStage();
-				break;
-			default:
-				Gdx.app.log("error", " scene 주입 에러");
-				break;
-		}
-	}
-
 	private Table makeChatTable() {
 		Table chatTable = new Table();
 		chatTable.left().bottom();

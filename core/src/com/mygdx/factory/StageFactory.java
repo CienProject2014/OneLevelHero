@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
-import com.mygdx.model.EventScene;
+import com.mygdx.model.event.EventScene;
 import com.mygdx.stage.BattleStage;
 import com.mygdx.stage.BuildingStage;
 import com.mygdx.stage.CharacterUiStage;
@@ -33,7 +33,7 @@ public class StageFactory {
 	private ApplicationContext context;
 
 	public Stage makeStage(StageEnum stageEnum) {
-		Gdx.app.log("StageFactory", "makeStage(" + stageEnum.toString() + ")");
+		Gdx.app.log("StageFactory", "Make " + stageEnum.toString() + "Stage");
 		switch (stageEnum) {
 			case BUILDING:
 				return context.getBean(BuildingStage.class).makeStage();
