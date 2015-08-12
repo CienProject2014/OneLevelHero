@@ -19,7 +19,9 @@ public class GameObjectButtonListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		pressedGameObject.setObjectType(GameObjectEnum.PRESSED);
+		if (pressedGameObject.getObjectType().equals(GameObjectEnum.NORMAL)) {
+			pressedGameObject.setObjectType(GameObjectEnum.PRESSED);
+		}
 		eventManager.setCurrentGameObject(pressedGameObject);
 		screenFactory.show(ScreenEnum.GAME_OBJECT);
 	}

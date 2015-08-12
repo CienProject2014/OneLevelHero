@@ -66,7 +66,6 @@ public class EventStage extends BaseOneLevelStage {
 				}
 			});
 		}
-
 		return this;
 	}
 
@@ -86,11 +85,11 @@ public class EventStage extends BaseOneLevelStage {
 		tableStack.add(backgroundImage);
 		tableStack.add(makeChatTable());
 	}
+
 	private Table makeChatTable() {
 		Table chatTable = new Table();
 		chatTable.left().bottom();
 
-		// FIXME talkerHeight가 이상하다.
 		chatTable.add(characterImage).width(uiConstantsMap.get("talkerWidth"))
 				.height(uiConstantsMap.get("talkerHeight"))
 				.padLeft(uiConstantsMap.get("talkerPadLeft"));
