@@ -15,6 +15,7 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 	private int gauge;
 	private int subvalue;
 	private int actingPower;
+	private int preGague;
 	private Texture bodyTexture;
 	private Texture faceTexture;
 	private Texture bigBattleTexture;
@@ -185,6 +186,14 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 						.getMonsterBattleTurnSmallTexture(facePath);
 		}
 		return smallBattleTexture;
+	}
+
+	public int getPreGague() {
+		return preGague;
+	}
+
+	public void setPreGague(int preGague) {
+		this.preGague = preGague;
 	}
 
 }

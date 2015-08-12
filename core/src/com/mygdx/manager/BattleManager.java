@@ -106,23 +106,6 @@ public class BattleManager {
 		}
 	}
 
-	public void checkCurrentState() {
-		switch (this.getCurrentClickStateEnum()) {
-			case NORMAL :
-				break;
-			case SKILL :
-				break;
-			case INVENTORY :
-				break;
-			case DEFENSE :
-				break;
-			case WAIT :
-				break;
-			default :
-				break;
-		}
-	}
-
 	public void userSkill(Fightable attackUnit, String skill) {
 		// FIXME
 		attackUnit.skillAttack(battleInfo.getMonster(), skill);
