@@ -106,7 +106,6 @@ public class VillageStage extends BaseOverlapStage {
 			public void clicked(InputEvent event, float x, float y) {
 				setCameraState(CameraStateEnum.MOVE_UP);
 				cameraManager.setMoveFlag(2);
-
 			}
 		});
 
@@ -116,9 +115,7 @@ public class VillageStage extends BaseOverlapStage {
 				setCameraState(CameraStateEnum.MOVE_DOWN);
 				cameraManager.setMoveFlag(2);
 			}
-
 		});
-
 	}
 
 	private void buttonControl() {
