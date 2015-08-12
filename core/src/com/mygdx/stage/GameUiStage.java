@@ -24,7 +24,7 @@ import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
-import com.mygdx.popup.MessagePopup;
+import com.mygdx.popup.GameObjectPopup;
 import com.mygdx.popup.StatusMessagePopup;
 
 public class GameUiStage extends BaseOneLevelStage {
@@ -49,7 +49,7 @@ public class GameUiStage extends BaseOneLevelStage {
 	private Table uiTable;
 	private Table topTable;
 	private StatusMessagePopup statusMessagePopup;
-	private Stack<MessagePopup> alertMessage;
+	private Stack<GameObjectPopup> alertMessage;
 
 	private TextButton placeInfoButton;
 	private TextButton timeInfoButton;
@@ -78,15 +78,15 @@ public class GameUiStage extends BaseOneLevelStage {
 		tableStack.add(uiTable);
 		conditionalHidingBackButton();
 
-		alertMessage = new Stack<MessagePopup>();
+		alertMessage = new Stack<GameObjectPopup>();
 
 		// 알림 메시지
 		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]",
 				uiComponentAssets.getSkin(), partyManager.getBattleMemberList());
 
-		Iterator<MessagePopup> alertMessageIterator = alertMessage.iterator();
+		Iterator<GameObjectPopup> alertMessageIterator = alertMessage.iterator();
 		while (alertMessageIterator.hasNext()) {
-			MessagePopup nextIterator = alertMessageIterator.next();
+			GameObjectPopup nextIterator = alertMessageIterator.next();
 			addActor(nextIterator);
 			nextIterator.setVisible(true);
 			rewardManager.pollRewardQueue();
@@ -192,10 +192,10 @@ public class GameUiStage extends BaseOneLevelStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				Iterator<MessagePopup> alertMessageIterator = alertMessage
+				Iterator<GameObjectPopup> alertMessageIterator = alertMessage
 						.iterator();
 
-				MessagePopup nextIterator = alertMessageIterator.next();
+				GameObjectPopup nextIterator = alertMessageIterator.next();
 				addActor(nextIterator);
 				nextIterator.setVisible(true);
 			}
