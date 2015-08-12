@@ -1,7 +1,7 @@
 package com.mygdx.enums;
 
 public enum GameObjectEnum {
-	PRESSED("pressed"), NORMAL("normal");
+	PRESSED("pressed"), NORMAL("normal"), FUNCTION("function");
 
 	private String code;
 

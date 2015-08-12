@@ -3,7 +3,6 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.WorldNodeEnum;
@@ -28,15 +27,25 @@ public class MovingManager {
 		switch (positionManager.getCurrentPositionType()) {
 			case LOG :
 				if (eventManager.getCurrentNpc().getName().equals("yongsa")) {
-					positionManager.setCurrentPositionType(PositionEnum.NODE);
-					goCurrentNode(nodeType);
+					if (positionManager.getBeforePositionType().equals(
+							PositionEnum.SUB_NODE)) {
+						positionManager
+								.setCurrentPositionType(PositionEnum.SUB_NODE);
+						goCurrentSubNode(nodeType);
+					} else if (positionManager.getBeforePositionType().equals(
+							PositionEnum.NODE)) {
+						positionManager
+								.setCurrentPositionType(PositionEnum.NODE);
+						goCurrentNode(nodeType);
+					} else {
+						screenFactory.show(ScreenEnum.FIELD);;
+					}
 				} else {
 					screenFactory.show(ScreenEnum.LOG);
 				}
 				break;
 			case ANIMAL_BOOK :
 				screenFactory.show(ScreenEnum.BATTLE);
-				positionManager.setCurrentPositionType(PositionEnum.BATTLE);
 				break;
 			case NODE_EVENT :
 				if (eventManager.isGreeting()) {
@@ -91,10 +100,7 @@ public class MovingManager {
 				positionManager.setCurrentPositionType(PositionEnum.FIELD);
 				screenFactory.show(ScreenEnum.FIELD);
 				break;
-			case BATTLE :
-				if (battleManager.isInBattle()) {
-					battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-				}
+			case FIELD :
 				goBeforeBattlePosition();
 				break;
 			default :

@@ -6,23 +6,23 @@
       "cobweb": {
         "arrowName": "1to2",
         "fieldList": [
-          "숲",
-          "다리",
-          "초원",
-          "초원"
+          "blackwood_forest",
+          "bridge",
+          "grassland",
+          "grassland"
         ]
       },
       "middle_ridge": {
         "arrowName": "1to5",
         "fieldList": [
-          "숲",
-          "산"
+          "blackwood_forest",
+          "blackwood_mountain"
         ]
       },
       "blackwood_forest": {
         "arrowName": "1to17",
         "fieldList": [
-          "숲"
+          "blackwood_forest"
         ]
       },
       "devil_castle": {
@@ -38,30 +38,30 @@
       "blackwood": {
         "arrowName": "2to1",
         "fieldList": [
-          "초원",
-          "초원",
-          "다리",
-          "숲"
+          "grassland",
+          "grassland",
+          "bridge",
+          "blackwood_forest"
         ]
       },
       "redrose_castle": {
         "arrowName": "2to7",
         "fieldList": [
-          "다리"
+          "bridge"
         ]
       },
       "crystallized_valley": {
         "arrowName": "2to13",
         "fieldList": [
-          "초원"
+          "grassland"
         ]
       },
       "middle_ridge": {
         "arrowName": "2to5",
         "fieldList": [
-          "초원",
-          "초원",
-          "다리"
+          "grassland",
+          "grassland",
+          "bridge"
         ]
       }
     }
@@ -76,7 +76,7 @@
       "kadilla_castle": {
         "arrowName": "3to10",
         "fieldList": [
-          "산"
+          "kadilla_mountain"
         ]
       }
     }
@@ -88,17 +88,17 @@
       "caravanserai": {
         "arrowName": "4to23",
         "fieldList": [
-          "초원",
-          "초원",
-          "초원"
+          "grassland",
+          "grassland",
+          "grassland"
         ]
       },
       "mirage_port": {
         "arrowName": "4to9",
         "fieldList": [
-          "해변",
-          "해변",
-          "해변"
+          "beach",
+          "beach",
+          "beach"
         ]
       }
     }
@@ -110,25 +110,25 @@
       "blackwood": {
         "arrowName": "5to1",
         "fieldList": [
-          "산",
-          "숲"
+          "blackwood_mountain",
+          "elven_forest"
         ]
       },
       "cobweb": {
         "arrowName": "5to2",
         "fieldList": [
-          "다리",
-          "초원",
-          "초원"
+          "bridge",
+          "grassland",
+          "grassland"
         ]
       },
       "vaical_castle": {
         "arrowName": "5to6",
         "fieldList": [
-          "산",
-          "산",
-          "산",
-          "산"
+          "blackwood_mountain",
+          "blackwood_mountain",
+          "blackwood_mountain",
+          "blackwood_mountain"
         ]
       }
     }
@@ -140,10 +140,10 @@
       "middle_ridge": {
         "arrowName": "6to5",
         "fieldList": [
-          "산",
-          "산",
-          "산",
-          "산"
+          "blackwood_mountain",
+          "blackwood_mountain",
+          "blackwood_mountain",
+          "blackwood_mountain"
         ]
       },
       "golden_lake": {
@@ -159,13 +159,13 @@
       "cobweb": {
         "arrowName": "7to2",
         "fieldList": [
-          "다리"
+          "bridge"
         ]
       },
       "caravanserai": {
         "arrowName": "7to22",
         "fieldList": [
-          "다리"
+          "bridge"
         ]
       }
     }
@@ -187,16 +187,16 @@
       "southcape": {
         "arrowName": "9to4",
         "fieldList": [
-          "해변",
-          "해변",
-          "해변"
+          "beach",
+          "beach",
+          "beach"
         ]
       },
       "entrance_of_the_temple_of_moerae": {
         "arrowName": "9to24",
         "fieldList": [
-          "숲",
-          "숲"
+          "elven_forest",
+          "elven_forest"
         ]
       }
     }
@@ -208,14 +208,14 @@
       "oberon": {
         "arrowName": "10to3",
         "fieldList": [
-          "산",
-          "산"
+          "kadilla_mountain",
+          "kadilla_mountain"
         ]
       },
       "dogbenefit_camp": {
         "arrowName": "10to21",
         "fieldList": [
-          "산"
+          "kadilla_mountain"
         ]
       }
     }
@@ -226,7 +226,7 @@
     "nodeConnection": {}
   },
   "mountain_titania": {
-    "nodeName": "티타니아 산",
+    "nodeName": "티타니아 blackwood_mountain",
     "nodeType": "dungeon_entrance",
     "nodeConnection": {
       "retreat_stone": {
@@ -246,13 +246,13 @@
       "cobweb": {
         "arrowName": "13to2",
         "fieldList": [
-          "초원"
+          "grassland"
         ]
       }
     }
   },
   "elven_forest": {
-    "nodeName": "엘프의 숲",
+    "nodeName": "엘프의 elven_forest",
     "nodeType": "dungeon_entrance",
     "nodeConnection": {
       "caravanserai": {
@@ -262,7 +262,7 @@
       "entrance_of_the_temple_of_moerae": {
         "arrowName": "14to24",
         "fieldList": [
-          "숲"
+          "elven_forest"
         ]
       }
     }
@@ -294,7 +294,7 @@
       "blackwood": {
         "arrowName": "17to1",
         "fieldList": [
-          "숲"
+          "elven_forest"
         ]
       }
     }
@@ -343,17 +343,17 @@
       "kadilla_castle": {
         "arrowName": "21to10",
         "fieldList": [
-          "산"
+          "kadilla_mountain"
         ]
       },
       "caravanserai": {
         "arrowName": "21to23",
         "fieldList": [
-          "산",
-          "산",
-          "산",
-          "산",
-          "숲"
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "elven_forest"
         ]
       }
     }
@@ -373,7 +373,7 @@
       "redrose_castle": {
         "arrowName": "22to7",
         "fieldList": [
-          "다리"
+          "bridge"
         ]
       }
     }
@@ -385,12 +385,12 @@
       "dogbenefit_camp": {
         "arrowName": "23to21",
         "fieldList": [
-          "숲",
-          "산",
-          "산",
-          "산",
-          "산",
-          "산"
+          "elven_forest",
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "kadilla_mountain"
         ]
       },
       "cemetery": {
@@ -400,9 +400,9 @@
       "southcape": {
         "arrowName": "23to4",
         "fieldList": [
-          "초원",
-          "초원",
-          "초원"
+          "grassland",
+          "grassland",
+          "grassland"
         ]
       }
     }
@@ -418,14 +418,14 @@
       "mirage_port": {
         "arrowName": "24to9",
         "fieldList": [
-          "숲",
-          "숲"
+          "elven_forest",
+          "elven_forest"
         ]
       },
       "elven_forest": {
         "arrowName": "24to14",
         "fieldList": [
-          "숲"
+          "elven_forest"
         ]
       }
     }

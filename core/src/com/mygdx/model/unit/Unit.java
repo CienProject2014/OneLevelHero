@@ -91,7 +91,8 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 		if (this.getGauge() == obj.getGauge()) {
 			if (this.getStatus().getSpeed() == obj.getStatus().getSpeed()) {
 				return 0;
-			} else if (this.getStatus().getSpeed() > obj.getStatus().getSpeed()) {
+			} else
+				if (this.getStatus().getSpeed() > obj.getStatus().getSpeed()) {
 				return 1;
 			} else {
 				return -1;
@@ -115,34 +116,22 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 
 	public Texture getFaceTexture() {
 		if (faceTexture == null) {
-			if (this instanceof Hero)
-				faceTexture = TextureManager.getCharacterFaceTexture(facePath);
-			else
-				faceTexture = TextureManager.getMonsterFaceTexture(facePath);
+			faceTexture = TextureManager.getFaceTexture(facePath);
 		}
 		return faceTexture;
 	}
 
 	public Texture getBigBattleTexture() {
 		if (bigBattleTexture == null) {
-			if (this instanceof Hero)
-				bigBattleTexture = TextureManager
-						.getCharacterBattleTurnBigTexture(facePath);
-			else
-				bigBattleTexture = TextureManager
-						.getMonsterBattleTurnBigTexture(facePath);
+			bigBattleTexture = TextureManager.getBattleTurnBigTexture(facePath);
 		}
 		return bigBattleTexture;
 	}
 
 	public Texture getSmallBattleTexture() {
 		if (smallBattleTexture == null) {
-			if (this instanceof Hero)
-				smallBattleTexture = TextureManager
-						.getCharacterBattleTurnSmallTexture(facePath);
-			else
-				smallBattleTexture = TextureManager
-						.getMonsterBattleTurnSmallTexture(facePath);
+			smallBattleTexture = TextureManager
+					.getBattleTurnSmallTexture(facePath);
 		}
 		return smallBattleTexture;
 	}

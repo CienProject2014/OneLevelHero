@@ -1,8 +1,10 @@
 package com.mygdx.enums;
 
 public enum FieldTypeEnum {
-	MOUNTAIN("산"), FOREST("숲"), BRIDGE("다리"), GRASSLAND("초원"), BEACH("해변"), SEA(
-			"바다");
+	BLACKWOOD_MOUNTAIN("blackwood_mountain"), KADILLA_MOUNTAIN(
+			"kadilla_mountain"), ELVEN_FOREST("elven_forest"), BLACKWOOD_FOREST(
+			"blackwood_forest"), BRIDGE("bridge"), GRASSLAND("grassland"), BEACH(
+			"beach"), SEA("sea");
 	private String fieldType;
 	private FieldTypeEnum(String fieldType) {
 		this.fieldType = fieldType;

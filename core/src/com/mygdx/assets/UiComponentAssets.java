@@ -25,14 +25,16 @@ public class UiComponentAssets implements FileAssetsInitializable {
 		font = new BitmapFont(Gdx.files.internal("skin/hangeul2.fnt"));
 		TextureAtlas textureAtlas = new TextureAtlas("skin/chatbutton.pack");
 		chatButton = new TextureRegionDrawable[6];
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 6; i++) {
 			chatButton[i] = new TextureRegionDrawable(
 					textureAtlas.findRegion("chatbutton" + (i + 1)));
+		}
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		setEventButton(new TextureRegionDrawable(new TextureRegion(new Texture(
 				Gdx.files.internal("texture/ui/chat/talk_select.png")))));
+
 	}
 
 	public Skin getSkin() {

@@ -57,4 +57,8 @@ public class FieldInfo {
 	public void setFieldList(List<FieldTypeEnum> fieldList) {
 		this.fieldList = fieldList;
 	}
+
+	public FieldTypeEnum getCurrentFieldType() {
+		return fieldList.get(fieldNumber);
+	}
 }

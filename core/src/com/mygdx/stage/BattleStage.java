@@ -104,14 +104,15 @@ public class BattleStage extends BaseOneLevelStage {
 		return this;
 	}
 
-	private void initializeBattle(ArrayList<Unit> units, Monster selectedMonster) {
+	private void initializeBattle(ArrayList<Unit> units,
+			Monster selectedMonster) {
 		battleManager.setBattleState(BattleStateEnum.IN_GAME);
 		for (Unit unit : units) {
 			unit.setGauge(100);
 		}
 		selectedMonster.setGauge(100);
-		selectedMonster.getStatus().setHp(
-				selectedMonster.getStatus().getMaxHp());
+		selectedMonster.getStatus()
+				.setHp(selectedMonster.getStatus().getMaxHp());
 	}
 
 	private Unit getCurrentActor() {
@@ -180,8 +181,8 @@ public class BattleStage extends BaseOneLevelStage {
 		Table RMenuTable = makeRMenuTable();
 
 		uiTable.right().bottom();
-		uiTable.padRight(uiConstantsMap.get("RMenuTablePadRight")).padBottom(
-				uiConstantsMap.get("RMenuTablePadBottom"));
+		uiTable.padRight(uiConstantsMap.get("RMenuTablePadRight"))
+				.padBottom(uiConstantsMap.get("RMenuTablePadBottom"));
 		uiTable.add(RMenuTable);
 
 		return uiTable;
@@ -342,8 +343,8 @@ public class BattleStage extends BaseOneLevelStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer,
+					int button) {
 				if (gridHitbox.isGridShow()
 						&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 					battleManager.attack(currentHero, selectedMonster);
@@ -361,20 +362,20 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void makeTurnBackgroundImage() {
 		currentAttackerBackground = new Image(
-				StaticAssets.battleUiTextureMap.get("battleui_turntable_01"));
+				StaticAssets.textureMap.get("battleui_turntable_01"));
 		turnTableBackground = new Image(
-				StaticAssets.battleUiTextureMap.get("battleui_turntable_02"));
+				StaticAssets.textureMap.get("battleui_turntable_02"));
 	}
 
 	private void makeBattleTurnImage() {
-		turnBigImageMap.put(selectedMonster.getFacePath(), new Image(
-				selectedMonster.getBigBattleTexture()));
+		turnBigImageMap.put(selectedMonster.getFacePath(),
+				new Image(selectedMonster.getBigBattleTexture()));
 		for (Hero hero : partyManager.getBattleMemberList()) {
 			turnBigImageMap.put(hero.getFacePath(),
 					new Image(hero.getBigBattleTexture()));
 		}
-		turnSmallImageMap.put(selectedMonster.getFacePath(), new Image(
-				selectedMonster.getSmallBattleTexture()));
+		turnSmallImageMap.put(selectedMonster.getFacePath(),
+				new Image(selectedMonster.getSmallBattleTexture()));
 		for (Hero hero : partyManager.getBattleMemberList()) {
 			turnSmallImageMap.put(hero.getFacePath(),
 					new Image(hero.getSmallBattleTexture()));

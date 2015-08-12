@@ -66,6 +66,7 @@ public class LoadManager {
 	private void setCurrentPosition() {
 		// 마왕성에서부터 게임을 시작한다.
 		positionManager.setCurrentNodeName("devil_castle");
+		positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 	}
 
 	// Hero클래스가 status정보를 갖도록 한다.

@@ -72,8 +72,13 @@ public class WorldMapStage extends BaseOverlapStage {
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
 					fieldManager.startMovingField(nodeConnection.getKey());
-					positionManager.setCurrentPositionType(PositionEnum.FIELD);
-					screenFactory.show(ScreenEnum.FIELD);
+					if (fieldManager.getFieldLength() == 0) {
+						fieldManager.goForwardField();
+					} else {
+						positionManager
+								.setCurrentPositionType(PositionEnum.FIELD);
+						screenFactory.show(ScreenEnum.FIELD);
+					}
 				}
 			});
 			arrowList.add(arrow);

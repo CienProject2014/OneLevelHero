@@ -12,8 +12,6 @@
     "ButtonSpace": 55,
     "TablePadBottom":365,
     "TablePadRight":15
-
-
 },
   "BattleStage": {
 	"RMenuTablePadTop": 161,
@@ -52,8 +50,6 @@
     "MonsterBarSpace" : 20,
     "hpTableWidth" : 666,
     "hpTablePadBottom" : 128
-    
-
   },
   "GameUiStage": {
 	"padLeft": 15,
