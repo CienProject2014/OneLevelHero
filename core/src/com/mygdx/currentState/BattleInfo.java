@@ -1,12 +1,14 @@
 package com.mygdx.currentState;
 
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 
 public class BattleInfo {
 	private Monster monster;
 	private BattleStateEnum battleState;
+	private CurrentClickStateEnum currentClickState;
 	private Hero currentActor;
 
 	public Hero getCurrentActor() {
@@ -23,6 +25,15 @@ public class BattleInfo {
 
 	public void setBattleState(BattleStateEnum battleState) {
 		this.battleState = battleState;
+	}
+
+	public CurrentClickStateEnum getcurrentClickStateEnum() {
+		return currentClickState;
+	}
+
+	public void setCurrentClickStateEnum(
+			CurrentClickStateEnum currentClickState) {
+		this.currentClickState = currentClickState;
 	}
 
 	public Monster getMonster() {

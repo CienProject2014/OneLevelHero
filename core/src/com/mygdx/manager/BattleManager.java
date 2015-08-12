@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.BattleInfo;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
@@ -105,6 +106,23 @@ public class BattleManager {
 		}
 	}
 
+	public void checkCurrentState() {
+		switch (this.getCurrentClickStateEnum()) {
+			case NORMAL :
+				break;
+			case SKILL :
+				break;
+			case INVENTORY :
+				break;
+			case DEFENSE :
+				break;
+			case WAIT :
+				break;
+			default :
+				break;
+		}
+	}
+
 	public void userSkill(Fightable attackUnit, String skill) {
 		// FIXME
 		attackUnit.skillAttack(battleInfo.getMonster(), skill);
@@ -136,10 +154,19 @@ public class BattleManager {
 		battleInfo.setBattleState(battleStateEnum);
 	}
 
+	public CurrentClickStateEnum getCurrentClickStateEnum() {
+		return battleInfo.getcurrentClickStateEnum();
+	}
+
+	public void setCurrentClickStateEnum(
+			CurrentClickStateEnum currentClickState) {
+		battleInfo.setCurrentClickStateEnum(currentClickState);
+	}
+
 	public void healAllHero() {
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			hero.getStatus().setHealthPoint(
-					hero.getStatus().getMaxHealthPoint());
+			hero.getStatus()
+					.setHealthPoint(hero.getStatus().getMaxHealthPoint());
 		}
 	}
 }

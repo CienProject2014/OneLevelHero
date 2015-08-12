@@ -9,7 +9,6 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -20,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -70,11 +70,10 @@ public class BattleStage extends BaseOneLevelStage {
 	private Table imageTable = new Table();
 	private Table bigImageTable = new Table();
 	private Table smallImageTable = new Table();
-
+	private Table rMenuTable = new Table();
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-
 		if (monsterTurn) {
 			doMonsterTurn(delta);
 		}
@@ -93,7 +92,6 @@ public class BattleStage extends BaseOneLevelStage {
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 			initializeBattle(units, selectedMonster);
 		}
-		orderedUnits = new LinkedList<Unit>(units);
 		updateOrder();
 		currentHero = getCurrentActor(); // 여기선 첫번째 턴
 		if (currentHero instanceof Monster) {
@@ -107,23 +105,6 @@ public class BattleStage extends BaseOneLevelStage {
 		tableStack.add(gridHitbox);
 		addListener();
 		return this;
-	}
-
-	private void initializeBattle(ArrayList<Unit> units,
-			Monster selectedMonster) {
-		battleManager.setBattleState(BattleStateEnum.IN_GAME);
-		for (Unit unit : units) {
-			unit.setGauge(100);
-			unit.setSubvalue(0);
-			unit.setActingPower(
-					-24000 / (unit.getStatus().getSpeed() + 300) + 160);
-		}
-		selectedMonster.setGauge(100);
-		selectedMonster.setSubvalue(0);
-		selectedMonster.setActingPower(
-				-24000 / (selectedMonster.getStatus().getSpeed() + 300) + 160);
-		selectedMonster.getStatus()
-				.setHp(selectedMonster.getStatus().getMaxHp());
 	}
 
 	private Unit getCurrentActor() {
@@ -142,25 +123,40 @@ public class BattleStage extends BaseOneLevelStage {
 	private void updateOrder() {
 		// Turn Logic
 		Collections.sort(units);
+		orderedUnits = new LinkedList<Unit>(units);
 	}
 
-	private void addCurrentHero() {
-		orderedUnits.add(currentHero);
+	private void initializeBattle(ArrayList<Unit> units,
+			Monster selectedMonster) {
+		battleManager.setBattleState(BattleStateEnum.IN_GAME);
+		for (Unit unit : units) {
+			unit.setGauge(100);
+			unit.setSubvalue(0);
+			unit.setActingPower(
+					-24000 / (unit.getStatus().getSpeed() + 300) + 160);
+		}
+		selectedMonster.getStatus()
+				.setHp(selectedMonster.getStatus().getMaxHp());
+		battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 	}
 
 	private void doMonsterTurn(float delta) {
 		Hero randomHero = partyManager.pickRandomHero();
+		battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.NORMAL);
+		calCostGague(currentHero, NORMAL_ATTACK);
 		animationDelay += delta;
 		hideRMenuButtons();
 		if (animationDelay > MONSTER_ATTACK_DELAY) {
 			Unit currentMonster = currentHero;
 			battleManager.attack(currentMonster, randomHero);
 			setMonsterTurn(false);
+			updateOrder();
 			showRMenuButtons();
 			animationDelay = 0;
 		}
 		updateBigImageTable();
 		updateSmallImageTable();
+		battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 	}
 
 	private void playAnimation(float delta) {
@@ -169,9 +165,11 @@ public class BattleStage extends BaseOneLevelStage {
 			// FIXME
 			storySectionManager.triggerSectionEvent(
 					EventTypeEnum.BATTLE_CONTROL, "normal_attack");
+			makeHiddenButton();
 			currentHero = getCurrentActor();
 			updateBigImageTable();
 			updateSmallImageTable();
+
 			if (battleManager.getBattleState()
 					.equals(BattleStateEnum.GAME_OVER)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
@@ -255,7 +253,6 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private Table makeRMenuTable() {
-		Table rMenuTable = new Table();
 		makeRButton();
 		rMenuButtonList = new ArrayList<>();
 		rMenuButtonList.add(attackButton);
@@ -282,29 +279,55 @@ public class BattleStage extends BaseOneLevelStage {
 				rMenuTable.row();
 			}
 		}
-		/*
-		 * 다른버튼 막기 //FIXME if (eventCheckManager.checkBattleEventType()) {
-		 * switch (eventCheckManager.getBattleControlButton()) { case
-		 * NORMAL_ATTACK: imageButtonList.remove(attackButton); setDarkButton();
-		 * break; case SKILL_ATTACK: imageButtonList.remove(skillButton);
-		 * setDarkButton(); break; default: Gdx.app.log("BattleStage",
-		 * "Rmenu ImageButton Target 에러"); break; } }
-		 */
+
 		return rMenuTable;
 	}
 
-	private void setDarkButton() {
-		for (int i = 0; i < rMenuButtonList.size(); i++) {
-			ImageButton imageButton = rMenuButtonList.get(i);
-			imageButton.setColor(Color.DARK_GRAY);
-			imageButton.setTouchable(Touchable.disabled);
+	private void makeHiddenButton() {
+		switch (battleManager.getCurrentClickStateEnum()) {
+			case NORMAL :
+				calCostGague(currentHero, NORMAL_ATTACK);
+				setDarkButton(attackButton);
+				break;
+			case SKILL :
+				setDarkButton(skillButton);
+				break;
+			case INVENTORY :
+				setDarkButton(inventoryButton);
+				break;
+			case DEFENSE :
+				setDarkButton(defenseButton);
+				break;
+			case WAIT :
+				setDarkButton(waitButton);
+				break;
+			case DEFAULT :
+				setFreeButton();
+				break;
+			default :
+				break;
 		}
+	}
+
+	private void setFreeButton() {
+		for (ImageButton buttons : rMenuButtonList) {
+			buttons.setVisible(true);
+			buttons.setTouchable(Touchable.enabled);
+		}
+	}
+	private void setDarkButton(ImageButton button) {
+		for (ImageButton buttons : rMenuButtonList) {
+			buttons.setVisible(true);
+			button.setTouchable(Touchable.enabled);
+		}
+		button.setVisible(false);
+		button.setTouchable(Touchable.disabled);
 	}
 
 	private void calCostGague(Unit unit, int typeOfAction) {
 		int costGague = (int) (((double) (150 - unit.getActingPower()) / 50)
 				* typeOfAction);
-		unit.setGauge(costGague);
+		unit.setGauge(unit.getGauge() - costGague);
 	}
 
 	public void addListener() {
@@ -312,9 +335,12 @@ public class BattleStage extends BaseOneLevelStage {
 		attackButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+
 				if (!gridHitbox.isGridShow()) {
-					calCostGague(currentHero, NORMAL_ATTACK);
-					addCurrentHero();
+					battleManager.checkCurrentState();
+					battleManager.setCurrentClickStateEnum(
+							CurrentClickStateEnum.NORMAL);
+					makeHiddenButton();
 					updateOrder();
 					updateSmallImageTable();
 					gridHitbox.showGrid();
@@ -327,7 +353,10 @@ public class BattleStage extends BaseOneLevelStage {
 		skillButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-
+				battleManager.checkCurrentState();
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL);
+				makeHiddenButton();
 				Gdx.app.log("BattleStage", "스킬!");
 				gridHitbox.hideGrid();
 				screenFactory.show(ScreenEnum.SKILL);
@@ -337,12 +366,20 @@ public class BattleStage extends BaseOneLevelStage {
 		inventoryButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				battleManager.checkCurrentState();
+				battleManager.setCurrentClickStateEnum(
+						CurrentClickStateEnum.INVENTORY);
+				makeHiddenButton();
 				Gdx.app.log("BattleStage", "인벤토리!");
 			}
 		});
 		defenseButton.addListener(new ClickListener() {
 
 			public void clicked(InputEvent event, float x, float y) {
+				battleManager.checkCurrentState();
+				battleManager.setCurrentClickStateEnum(
+						CurrentClickStateEnum.DEFENSE);
+				makeHiddenButton();
 				Gdx.app.log("BattleStage", "방어!");
 
 			}
@@ -350,6 +387,10 @@ public class BattleStage extends BaseOneLevelStage {
 		waitButton.addListener(new ClickListener() {
 
 			public void clicked(InputEvent event, float x, float y) {
+				battleManager.checkCurrentState();
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.WAIT);
+				makeHiddenButton();
 				Gdx.app.log("BattleStage", "기다립시다!");
 
 			}
@@ -357,6 +398,9 @@ public class BattleStage extends BaseOneLevelStage {
 		escapeButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				battleManager.checkCurrentState();
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.RUN);
 				Gdx.app.log("BattleStage", "도망!");
 				battleManager.runAway();
 			}
@@ -387,6 +431,8 @@ public class BattleStage extends BaseOneLevelStage {
 					int button) {
 				if (gridHitbox.isGridShow()
 						&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+					battleManager.setCurrentClickStateEnum(
+							CurrentClickStateEnum.DEFAULT);
 					battleManager.attack(currentHero, selectedMonster);
 					gridHitbox.hideGrid();
 				}
