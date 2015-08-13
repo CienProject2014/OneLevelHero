@@ -1694,3 +1694,90 @@ invenuiup
   offset: 0, 0
   index: -1
 
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+kadilla_castle_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+buttonui2
+  rotate: false
+  xy: 2, 250
+  size: 320, 99
+  orig: 320, 99
+  offset: 0, 0
+  index: -1
+kadillacastleex
+  rotate: false
+  xy: 2, 351
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+  
+  
+  
+
+
+
+winterfall_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgwinterfall1
+  rotate: false
+  xy: 2, 346
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+itemuiline01
+  rotate: false
+  xy: 2, 250
+  size: 845, 94
+  orig: 845, 94
+  offset: 0, 0
+  index: -1
+itemuipage01
+  rotate: false
+  xy: 1924, 2486
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
