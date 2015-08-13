@@ -11,6 +11,7 @@ import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.EventElementEnum;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.PositionEnum;
@@ -64,6 +65,7 @@ public class EventManager {
 	private final int eventPlusRule = 1;
 
 	public void doStoryEvent(EventTypeEnum eventType) {
+		setCurrentEventElementType(EventElementEnum.NPC);
 		switch (eventType) {
 			case BATTLE :
 				battleManager.startBattle(unitAssets
@@ -106,8 +108,17 @@ public class EventManager {
 				break;
 		}
 	}
+
+	public EventElementEnum getCurrentEventElementType() {
+		return eventInfo.getCurrentEventElementType();
+	}
+
+	public void setCurrentEventElementType(EventElementEnum eventElementType) {
+		eventInfo.setCurrentEventElementType(eventElementType);
+	}
+
 	public Stage getSceneEvent() {
-		Event currentEvent = eventInfo.getCurrentEvent();
+		Event currentEvent = eventInfo.getCurrentNpcEvent();
 		switch (currentEvent.getEventType()) {
 			case CHAT :
 			case CREDIT :
@@ -135,11 +146,21 @@ public class EventManager {
 		return eventInfo.getCurrentEventInfo();
 	}
 
+	public EventScene getGameObjectEventScene() {
+		EventScene eventScene = eventInfo.getCurrentGameObjectEvent()
+				.getEventScenes().get(0);
+		if (eventInfo.getCurrentGameObjectEvent().getRewards() != null) {
+			addEventRewardQueue(eventInfo.getCurrentGameObject()
+					.getObjectEvent().getRewards());
+		}
+		return eventScene;
+	}
+
 	public Iterator<EventScene> getEventSceneIterator() {
-		eventSceneIterator = eventInfo.getCurrentEvent()
+		eventSceneIterator = eventInfo.getCurrentNpcEvent()
 				.getEventSceneIterator();
-		if (eventInfo.getCurrentEvent().getRewards() != null) {
-			addEventRewardQueue(eventInfo.getCurrentEvent().getRewards());
+		if (eventInfo.getCurrentNpcEvent().getRewards() != null) {
+			addEventRewardQueue(eventInfo.getCurrentNpcEvent().getRewards());
 		}
 		return eventSceneIterator;
 	}
@@ -157,7 +178,7 @@ public class EventManager {
 	}
 
 	public Event getCurrentEvent() {
-		return eventInfo.getCurrentEvent();
+		return eventInfo.getCurrentNpcEvent();
 	}
 
 	public void setCurrentGameObject(GameObject gameObject) {
@@ -168,9 +189,17 @@ public class EventManager {
 		return eventInfo.getCurrentGameObject();
 	}
 
-	public void finishEvent() {
-		if (eventInfo.getCurrentEvent().getEventState() == EventStateEnum.OPENED) {
-			eventInfo.getCurrentEvent().setEventState(EventStateEnum.CLEARED);
+	public void finishNpcEvent() {
+		if (eventInfo.getCurrentNpcEvent().getEventState() == EventStateEnum.OPENED) {
+			eventInfo.getCurrentNpcEvent()
+					.setEventState(EventStateEnum.CLEARED);
+		}
+	}
+
+	public void finishGameObjectEvent() {
+		if (eventInfo.getCurrentGameObjectEvent().getEventState() == EventStateEnum.OPENED) {
+			eventInfo.getCurrentGameObjectEvent().setEventState(
+					EventStateEnum.CLEARED);
 		}
 	}
 

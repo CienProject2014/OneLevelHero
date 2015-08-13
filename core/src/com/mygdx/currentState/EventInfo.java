@@ -3,6 +3,7 @@ package com.mygdx.currentState;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.EventAssets;
+import com.mygdx.enums.EventElementEnum;
 import com.mygdx.model.event.Event;
 import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.GameObject;
@@ -10,15 +11,15 @@ import com.mygdx.model.event.NPC;
 
 /**
  * npc정보, eventNumber, greeting여부 정보를 갖고있음
- *
+ * 
  * @author Velmont
- *
+ * 
  */
 
 public class EventInfo {
 	@Autowired
 	private EventAssets eventAssets;
-
+	private EventElementEnum currentEventElementType;
 	private EventPacket currentEventInfo;
 	private GameObject currentGameObject;
 
@@ -26,8 +27,8 @@ public class EventInfo {
 		return currentGameObject;
 	}
 
-	public void setCurrentGameObject(GameObject gameObject) {
-		this.currentGameObject = gameObject;
+	public void setCurrentGameObject(GameObject currentGameObject) {
+		this.currentGameObject = currentGameObject;
 	}
 
 	public NPC getCurrentNpc() {
@@ -35,8 +36,12 @@ public class EventInfo {
 		return eventAssets.getNpc(npcName);
 	}
 
-	public Event getCurrentEvent() {
-		return eventAssets.getEvent(currentEventInfo.getEventNpc(),
+	public Event getCurrentGameObjectEvent() {
+		return currentGameObject.getObjectEvent();
+	}
+
+	public Event getCurrentNpcEvent() {
+		return eventAssets.getNpcEvent(currentEventInfo.getEventNpc(),
 				currentEventInfo.getEventNumber());
 	}
 
@@ -56,6 +61,15 @@ public class EventInfo {
 
 	public void setCurrentEventInfo(EventPacket currentEventInfo) {
 		this.currentEventInfo = currentEventInfo;
+	}
+
+	public EventElementEnum getCurrentEventElementType() {
+		return currentEventElementType;
+	}
+
+	public void setCurrentEventElementType(
+			EventElementEnum currentEventElementType) {
+		this.currentEventElementType = currentEventElementType;
 	}
 
 }

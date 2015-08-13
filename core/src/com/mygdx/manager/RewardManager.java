@@ -4,6 +4,7 @@ import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
@@ -59,6 +60,11 @@ public class RewardManager {
 					case ITEM :
 						break;
 					case NONE :
+						break;
+					case REST_IN_NODE :
+						Gdx.app.log("RewardManager", "Rest in Node");
+						partyManager.setFatigue(0);
+						partyManager.healAllHero();
 						break;
 					case PASS_TIME :
 						timeManager.plusMinute(Integer.parseInt(peekedReward

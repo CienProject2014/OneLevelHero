@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.EventElementEnum;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
@@ -58,7 +59,7 @@ public class EventStage extends BaseOneLevelStage {
 						if (!eventCheckManager.isSelectEvent(eventManager
 								.getCurrentEvent())) {
 							rewardManager.doReward(); // 보상이 있을경우 보상실행
-							eventManager.finishEvent();
+							eventManager.finishNpcEvent();
 							storySectionManager.runStorySequence();
 						}
 					}
@@ -71,6 +72,7 @@ public class EventStage extends BaseOneLevelStage {
 
 	public Stage makeStage(EventScene eventScene) {
 		super.makeStage();
+		eventManager.setCurrentEventElementType(EventElementEnum.NPC);
 		setScene(eventScene);
 		return this;
 	}
