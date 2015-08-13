@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -17,6 +18,8 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.FieldManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.model.unit.Monster;
 
 public class EncounterStage extends BaseOneLevelStage {
@@ -24,7 +27,10 @@ public class EncounterStage extends BaseOneLevelStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private BattleManager battleManager;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("MonsterStage");
+	@Autowired
+	private FieldManager fieldManager;
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("MonsterStage");
 	private Monster monster;
 	private TextButton fightButton;
 	private TextButton fleeButton;
@@ -38,6 +44,7 @@ public class EncounterStage extends BaseOneLevelStage {
 		super.makeStage();
 		monster = battleManager.getSelectedMonster();
 		setMonsterTable();
+
 		fightButton = new TextButton("싸운다", uiComponentAssets.getSkin());
 		fleeButton = new TextButton("도망친다", uiComponentAssets.getSkin());
 
@@ -47,6 +54,7 @@ public class EncounterStage extends BaseOneLevelStage {
 
 		selTable.bottom();
 		tableStack.add(selTable);
+
 		addListener(); // 리스너 할당
 
 		return this;
@@ -61,8 +69,10 @@ public class EncounterStage extends BaseOneLevelStage {
 
 		outerTable.setBackground(getBackgroundTRD(), false);
 		outerTable.top(); // table을 위로 정렬
-		outerTable.add(monsterTable).padTop(uiConstantsMap.get("monsterPadTop"))
-				.width(uiConstantsMap.get("monsterTableWidth")).height(uiConstantsMap.get("monsterTableHeight")).row();
+		outerTable.add(monsterTable)
+				.padTop(uiConstantsMap.get("monsterPadTop"))
+				.width(uiConstantsMap.get("monsterTableWidth"))
+				.height(uiConstantsMap.get("monsterTableHeight")).row();
 
 		tableStack.add(outerTable);
 		tableStack.add(uiTable);
@@ -74,35 +84,43 @@ public class EncounterStage extends BaseOneLevelStage {
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
-		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
-		if (battleManager.getSelectedMonster().getName().equals("mawang")) {
-			return new TextureRegionDrawable(
-					new TextureRegion(StaticAssets.backgroundTextureMap.get("bg_devilcastle_01")));
+		if (battleManager.getSelectedMonster().getFacePath()
+				.equals("mawang_01")) {
+			return new TextureRegionDrawable(new TextureRegion(
+					StaticAssets.textureMap.get("bg_devilcastle_01")));
+		} else {
+			Gdx.app.log("EncounterStage",
+					"fieldType - " + fieldManager.getFieldType());
+			return new TextureRegionDrawable(new TextureRegion(
+					TextureManager.getBackgroundTexture(fieldManager
+							.getFieldType().toString())));
 		}
-		return new TextureRegionDrawable(new TextureRegion(StaticAssets.backgroundTextureMap.get("forest")));
 	}
-
 	private void addListener() {
 		fightButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				// BattleScreen으로 넘어가는 것이 전투를 시작하는 것을 의미
 				screenFactory.show(ScreenEnum.BATTLE);
 			}
 		});
 		fleeButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				screenFactory.show(ScreenEnum.FIELD);
 			}
 		});

@@ -1,6 +1,7 @@
 package com.mygdx.manager;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.EventInfo;
-import com.mygdx.currentState.RewardInfo;
+import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.PositionEnum;
@@ -22,12 +23,14 @@ import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.EventScene;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.event.NPC;
+import com.mygdx.model.event.Reward;
 
 /**
- * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스 CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을 CHAT이벤트가 끝날때까지 리턴해준다.
- *
+ * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스 CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을
+ * CHAT이벤트가 끝날때까지 리턴해준다.
+ * 
  * @author Velmont
- *
+ * 
  */
 public class EventManager {
 	@Autowired
@@ -54,54 +57,64 @@ public class EventManager {
 	private EventCheckManager eventCheckManager;
 	@Autowired
 	private EventAssets eventAssets;
+	@Autowired
+	private TimeManager timeManager;
 
 	private Iterator<EventScene> eventSceneIterator;
 	private final int eventPlusRule = 1;
 
 	public void doStoryEvent(EventTypeEnum eventType) {
 		switch (eventType) {
-			case BATTLE:
+			case BATTLE :
 				battleManager.startBattle(unitAssets
 						.getMonster(getCurrentEvent().getEventComponent()
 								.get(0)));
 				screenFactory.show(ScreenEnum.BATTLE);
 				break;
-			case NEXT_SECTION:
+			case NEXT_SECTION :
 				storySectionManager.setNewStorySectionAndPlay(Integer
 						.valueOf(getCurrentEvent().getEventComponent().get(0)));
 				break;
-			case MOVE_NODE:
+			case MOVE_NODE :
 				positionManager.setCurrentNodeName(getCurrentEvent()
 						.getEventComponent().get(0));
 				movingManager.goCurrentPosition();
 				storySectionManager.runStorySequence();
 				break;
-			case MOVE_SUB_NODE:
+			case BATTLE_END :
+				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				storySectionManager.runStorySequence();
+				break;
+			case MOVE_SUB_NODE :
 				positionManager.setCurrentSubNodeName(getCurrentEvent()
 						.getEventComponent().get(0));
 				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 				movingManager.goCurrentPosition();
 				storySectionManager.runStorySequence();
 				break;
-			case MUSIC:
+			case PASS_TIME :
+				timeManager.plusMinute(Integer.parseInt(getCurrentEvent()
+						.getEventComponent().get(0)));
+				storySectionManager.runStorySequence();
+				break;
+			case MUSIC :
 				musicManager.setEventMusicAndPlay();
 				storySectionManager.runStorySequence();
 				break;
-			default:
+			default :
 				screenFactory.show(ScreenEnum.EVENT);
 				break;
 		}
 	}
-
 	public Stage getSceneEvent() {
 		Event currentEvent = eventInfo.getCurrentEvent();
 		switch (currentEvent.getEventType()) {
-			case CHAT:
-			case CREDIT:
-			case SELECT_COMPONENT:
-			case SELECT_EVENT:
+			case CHAT :
+			case CREDIT :
+			case SELECT_COMPONENT :
+			case SELECT_EVENT :
 				return getChatScene();
-			default:
+			default :
 				Gdx.app.error("EventManager", "EventTypeEnum 정보가 없습니다.");
 				throw new NullPointerException();
 		}
@@ -125,15 +138,18 @@ public class EventManager {
 	public Iterator<EventScene> getEventSceneIterator() {
 		eventSceneIterator = eventInfo.getCurrentEvent()
 				.getEventSceneIterator();
-		addEventRewardQueue(eventInfo.getCurrentEvent().getReward());
-
+		if (eventInfo.getCurrentEvent().getRewards() != null) {
+			addEventRewardQueue(eventInfo.getCurrentEvent().getRewards());
+		}
 		return eventSceneIterator;
 	}
 
-	private void addEventRewardQueue(RewardInfo rewardPacket) {
-		if (rewardPacket != null)
-			if (rewardPacket.getRewardState() == RewardStateEnum.NOT_CLEARED)
-				rewardManager.addEventReward(rewardPacket);
+	private void addEventRewardQueue(List<Reward> rewardList) {
+		for (Reward reward : rewardList) {
+			if (reward.getRewardState() == RewardStateEnum.NOT_CLEARED) {
+				rewardManager.addEventReward(reward);
+			}
+		}
 	}
 
 	public NPC getCurrentNpc() {
@@ -168,7 +184,7 @@ public class EventManager {
 
 	public void setCurrentEventNpc(String npcName) {
 		eventInfo.setCurrentEventNpc(npcName);
-		eventInfo.setCurrentEventNumber(1); //FIXME
+		eventInfo.setCurrentEventNumber(1); // FIXME
 	}
 
 	public void setEventOpen(Event currentEvent) {

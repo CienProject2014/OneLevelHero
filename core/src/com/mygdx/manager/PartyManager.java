@@ -37,6 +37,14 @@ public class PartyManager {
 		}
 	}
 
+	public void setFatigue(int fatigue) {
+		partyInfo.setFatigue(fatigue);
+	}
+
+	public int getFatigue() {
+		return partyInfo.getFatigue();
+	}
+
 	public void removeHero(Hero hero) {
 		if (partyInfo.getBattleMemberList().contains(hero))
 			partyInfo.getBattleMemberList().remove(hero);

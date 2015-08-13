@@ -1,5 +1,5 @@
 {
-  "sceneName": "blackwood_scene",
+  "sceneName": "MainScene",
   "composite": {
     "sImages": [
       {
@@ -11,70 +11,14 @@
           1,
           1
         ],
-        "imageName": "blackwoodbackground"
-      },
-      {
-        "itemIdentifier": "movetag_01",
-        "x": 271.00006,
-        "y": 1724,
-        "zIndex": 2,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "townuimovetagmiddle"
-      },
-      {
-        "itemIdentifier": "movetag_02",
-        "x": 1608,
-        "y": 1516,
-        "zIndex": 3,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "townuimovetagbalckwoodforest"
-      },
-      {
-        "itemIdentifier": "movetag_03",
-        "x": 327,
-        "y": 432.5,
-        "zIndex": 9,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "townuimovetagcopweb"
-      },
-      {
-        "itemIdentifier": "movetag_04",
-        "x": 799,
-        "y": 153.50002,
-        "zIndex": 11,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "townuimovetagmawang"
+        "imageName": "bgblackwood"
       }
     ],
     "sComposites": [
       {
-        "itemIdentifier": "1to5",
-        "x": 301.00003,
-        "y": 1568,
+        "itemIdentifier": "1to2",
+        "x": 155,
+        "y": 195,
         "zIndex": 1,
         "layerName": "Default",
         "tint": [
@@ -86,7 +30,6 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "arrow",
               "layerName": "Default",
               "tint": [
                 1,
@@ -94,7 +37,7 @@
                 1,
                 1
               ],
-              "imageName": "townuiarrowmiddle"
+              "imageName": "townuiarrowblackcopweb"
             }
           ],
           "layers": [
@@ -111,10 +54,10 @@
         }
       },
       {
-        "itemIdentifier": "blackwood_inn",
-        "x": 1187,
-        "y": 1718,
-        "zIndex": 4,
+        "itemIdentifier": "1to16",
+        "x": 910,
+        "y": 40,
+        "zIndex": 2,
         "layerName": "Default",
         "tint": [
           1,
@@ -125,7 +68,6 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "sign",
               "layerName": "Default",
               "tint": [
                 1,
@@ -133,7 +75,45 @@
                 1,
                 1
               ],
-              "imageName": "townuibuildtaginn"
+              "imageName": "townuiarrowblackmawang"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "1to5",
+        "x": 102,
+        "y": 1675,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuiarrowblackmiddle"
             }
           ],
           "layers": [
@@ -151,9 +131,9 @@
       },
       {
         "itemIdentifier": "1to17",
-        "x": 1655,
-        "y": 1354,
-        "zIndex": 5,
+        "x": 1595,
+        "y": 1396,
+        "zIndex": 4,
         "layerName": "Default",
         "tint": [
           1,
@@ -164,7 +144,7 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "arrow",
+              "itemIdentifier": "1to17",
               "layerName": "Default",
               "tint": [
                 1,
@@ -172,7 +152,7 @@
                 1,
                 1
               ],
-              "imageName": "townuiarrowblackwoodforest"
+              "imageName": "townuiarrowblackblackwoodforest"
             }
           ],
           "layers": [
@@ -189,9 +169,47 @@
         }
       },
       {
-        "itemIdentifier": "blackwood_generalstore",
-        "x": 466,
-        "y": 1289.5,
+        "itemIdentifier": "camera_down",
+        "x": 1672,
+        "y": 1858,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "downbutton"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_up",
+        "x": 1672,
+        "y": 778,
         "zIndex": 6,
         "layerName": "Default",
         "tint": [
@@ -203,7 +221,82 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "sign",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "upbutton"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "blackwood_peasanthouse",
+        "x": 340,
+        "y": 675,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuibuildtagbuilding"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "blackwood_grocery",
+        "x": 628,
+        "y": 1320,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
               "layerName": "Default",
               "tint": [
                 1,
@@ -228,10 +321,10 @@
         }
       },
       {
-        "itemIdentifier": "blackwood_peasanthouse",
-        "x": 300.99997,
-        "y": 687.5,
-        "zIndex": 7,
+        "itemIdentifier": "blackwood_inn",
+        "x": 810,
+        "y": 1722,
+        "zIndex": 9,
         "layerName": "Default",
         "tint": [
           1,
@@ -242,7 +335,6 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "sign",
               "layerName": "Default",
               "tint": [
                 1,
@@ -250,7 +342,7 @@
                 1,
                 1
               ],
-              "imageName": "townuibuildtagprivatehouse"
+              "imageName": "townuibuildtaginn"
             }
           ],
           "layers": [
@@ -268,47 +360,8 @@
       },
       {
         "itemIdentifier": "blackwood_headhouse",
-        "x": 1063,
-        "y": 594.5,
-        "zIndex": 8,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "sign",
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "townuibuildtagvillagehead"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "1to2",
-        "x": 275,
-        "y": 294.5,
+        "x": 1155,
+        "y": 665,
         "zIndex": 10,
         "layerName": "Default",
         "tint": [
@@ -320,7 +373,6 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "arrow",
               "layerName": "Default",
               "tint": [
                 1,
@@ -328,124 +380,7 @@
                 1,
                 1
               ],
-              "imageName": "townuiarrowcopweb"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "1to16",
-        "x": 949,
-        "y": 10.500015,
-        "zIndex": 12,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "arrow",
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "townuiarrowmawang"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "camera_up",
-        "x": 1672,
-        "y": 770,
-        "zIndex": 13,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "up",
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "townuiup"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "camera_down",
-        "x": 1673,
-        "y": 1850,
-        "zIndex": 14,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "down",
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "townuidown"
+              "imageName": "townuibuildtagvillagehead"
             }
           ],
           "layers": [

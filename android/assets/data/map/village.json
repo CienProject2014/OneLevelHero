@@ -27,7 +27,22 @@
         "buildingType": "house",
         "buildingPath": "cobweb_library",
         "sceneName": "cobweb_library_scene"
+      },
+      "cobweb_inn": {
+        "buildingName": "여관",
+        "buildingType": "house",
+        "buildingPath": "cobweb_inn",
+        "sceneName": "cobweb_inn_scene",
+        "gameObject": [
+          "save",
+          "rest"
+        ]
       }
     }
+  },
+  "oberon": {
+    "villageName": "오베론",
+    "sceneName": "oberon_scene",
+    "building": {}
   }
 }

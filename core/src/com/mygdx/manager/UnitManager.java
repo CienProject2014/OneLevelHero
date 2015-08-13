@@ -44,12 +44,13 @@ public class UnitManager {
 			if (inventoryMap.get("clothes") != null) {
 				equipClothes(hero, inventoryMap.get("clothes"));
 			}
-			if (inventoryMap.get("leftHandGrip") != null) {
-				equipLeftHandGrip(hero, inventoryMap.get("leftHandGrip"));
-			}
 			if (inventoryMap.get("rightHandGrip") != null) {
 				equipRightHandGrip(hero, inventoryMap.get("rightHandGrip"));
 			}
+			if (inventoryMap.get("leftHandGrip") != null) {
+				equipLeftHandGrip(hero, inventoryMap.get("leftHandGrip"));
+			}
+
 		}
 	}
 
@@ -65,7 +66,9 @@ public class UnitManager {
 	private void equipLeftHandGrip(Hero hero, String leftHandGripName) {
 		HandGrip leftHandGrip = itemAssets.getHandGrip(leftHandGripName);
 		hero.getInventory().setLeftHandGrip(leftHandGrip);
-		Gdx.app.log("UnitManager", hero.getName() + "은(는) " + "을(를) 장착하였다.");
+		Gdx.app.log("UnitManager",
+				hero.getName() + "은(는) " + leftHandGrip.getName()
+						+ "을(를) 장착하였다.");
 		addStatus(hero, leftHandGrip.getEffectStatus());
 	}
 

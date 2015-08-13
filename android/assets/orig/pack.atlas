@@ -730,142 +730,79 @@ size: 2048,4096
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-blackwoodbackground
+bgblackwood
   rotate: false
-  xy: 2, 1373
+  xy: 2, 942
   size: 1920, 2160
   orig: 1920, 2160
   offset: 0, 0
   index: -1
-mainuitbplaceblackwood
+downbutton
   rotate: false
-  xy: 2, 1238
-  size: 620, 133
-  orig: 620, 133
-  offset: 0, 0
-  index: -1
-townuiarrowblackwoodforest
-  rotate: false
-  xy: 2, 164
-  size: 160, 150
-  orig: 160, 150
-  offset: 0, 0
-  index: -1
-townuiarrowcopweb
-  rotate: false
-  xy: 424, 1086
-  size: 170, 150
-  orig: 170, 150
-  offset: 0, 0
-  index: -1
-townuiarrowmawang
-  rotate: false
-  xy: 2, 2
-  size: 150, 160
-  orig: 150, 160
-  offset: 0, 0
-  index: -1
-townuiarrowmiddle
-  rotate: false
-  xy: 424, 934
-  size: 160, 150
-  orig: 160, 150
-  offset: 0, 0
-  index: -1
-townuibuildtag
-  rotate: false
-  xy: 2, 1136
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuibuildtaggrocery
-  rotate: false
-  xy: 624, 1271
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuibuildtaginn
-  rotate: false
-  xy: 2, 1034
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuibuildtagprivatehouse
-  rotate: false
-  xy: 1046, 1271
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuibuildtagvillagehead
-  rotate: false
-  xy: 2, 932
-  size: 420, 100
-  orig: 420, 100
-  offset: 0, 0
-  index: -1
-townuidown
-  rotate: false
-  xy: 2, 440
+  xy: 288, 532
   size: 234, 122
   orig: 234, 122
   offset: 0, 0
   index: -1
-townuileft
-  rotate: false
-  xy: 1924, 3299
-  size: 122, 234
-  orig: 122, 234
-  offset: 0, 0
-  index: -1
-townuimovetag
-  rotate: false
-  xy: 1468, 1281
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuimovetagbalckwoodforest
-  rotate: false
-  xy: 2, 840
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuimovetagcopweb
-  rotate: false
-  xy: 2, 748
-  size: 310, 90
-  orig: 310, 90
-  offset: 0, 0
-  index: -1
-townuimovetagmawang
+townuiarrowblackblackwoodforest
   rotate: false
   xy: 2, 656
-  size: 310, 90
-  orig: 310, 90
+  size: 284, 284
+  orig: 284, 284
   offset: 0, 0
   index: -1
-townuimovetagmiddle
+townuiarrowblackcopweb
   rotate: false
-  xy: 2, 564
-  size: 310, 90
-  orig: 310, 90
+  xy: 2, 370
+  size: 284, 284
+  orig: 284, 284
   offset: 0, 0
   index: -1
-townuiright
+townuiarrowblackmawang
   rotate: false
-  xy: 1924, 3063
-  size: 122, 234
-  orig: 122, 234
+  xy: 288, 656
+  size: 284, 284
+  orig: 284, 284
   offset: 0, 0
   index: -1
-townuiup
+townuiarrowblackmiddle
   rotate: false
-  xy: 2, 316
+  xy: 2, 84
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuibuildtagbuilding
+  rotate: false
+  xy: 2, 2
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+townuibuildtaggrocery
+  rotate: false
+  xy: 288, 450
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+townuibuildtaginn
+  rotate: false
+  xy: 574, 736
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+townuibuildtagvillagehead
+  rotate: false
+  xy: 810, 860
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+upbutton
+  rotate: false
+  xy: 574, 818
   size: 234, 122
   orig: 234, 122
   offset: 0, 0
@@ -873,7 +810,6 @@ townuiup
 
 
   
-
 blackwood_headhouse_pack.png
 size: 2048,2048
 format: RGBA8888
@@ -908,6 +844,7 @@ waiji601
   offset: 0, 0
   index: -1
 
+  
   
 blackwood_forest_entrance_pack.png
 size: 2820,1080
@@ -1457,3 +1394,303 @@ talkuiwindow
   orig: 1920, 365
   offset: 0, 0
   index: -1
+  
+cobweb_inn_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+buttonui
+  rotate: false
+  xy: 2, 103
+  size: 630, 195
+  orig: 630, 195
+  offset: 0, 0
+  index: -1
+buttonui2
+  rotate: false
+  xy: 2, 2
+  size: 320, 99
+  orig: 320, 99
+  offset: 0, 0
+  index: -1
+cobwebinnscene
+  rotate: false
+  xy: 2, 300
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
+oberon_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgoberon1
+  rotate: false
+  xy: 2, 780
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+downbutton
+  rotate: false
+  xy: 288, 656
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+smallHill
+  rotate: false
+  xy: 288, 574
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+square
+  rotate: false
+  xy: 524, 698
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+temple
+  rotate: false
+  xy: 2, 2
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+toRetreatStone
+  rotate: false
+  xy: 2, 208
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+tokadila
+  rotate: false
+  xy: 2, 494
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuibuildtagbuilding
+  rotate: false
+  xy: 288, 492
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+townuibuildtaginn
+  rotate: false
+  xy: 726, 698
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+upbutton
+  rotate: false
+  xy: 2, 84
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+  
+  
+  
+  
+  
+  
+  
+  
+  
+status_item_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+invenuiactivation01
+  rotate: false
+  xy: 1924, 1902
+  size: 900, 130
+  orig: 900, 130
+  offset: 0, 0
+  index: -1
+invenuiactivation02
+  rotate: false
+  xy: 2098, 1564
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
+invenuiarrowacleft
+  rotate: false
+  xy: 1771, 257
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuiarrowacright
+  rotate: false
+  xy: 2725, 1813
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuiarrowleft
+  rotate: false
+  xy: 1924, 1205
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuiarrowright
+  rotate: false
+  xy: 2011, 1407
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuibackground
+  rotate: false
+  xy: 2, 952
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+invenuibase
+  rotate: false
+  xy: 2, 34
+  size: 1767, 916
+  orig: 1767, 916
+  offset: 0, 0
+  index: -1
+invenuibuttonaccancel
+  rotate: false
+  xy: 1924, 1800
+  size: 625, 100
+  orig: 625, 100
+  offset: 0, 0
+  index: -1
+invenuibuttonacwear
+  rotate: false
+  xy: 2826, 1932
+  size: 625, 100
+  orig: 625, 100
+  offset: 0, 0
+  index: -1
+invenuibuttoncancel
+  rotate: false
+  xy: 1924, 1698
+  size: 625, 100
+  orig: 625, 100
+  offset: 0, 0
+  index: -1
+invenuibuttonwear
+  rotate: false
+  xy: 3453, 1932
+  size: 625, 100
+  orig: 625, 100
+  offset: 0, 0
+  index: -1
+invenuidown
+  rotate: false
+  xy: 2, 2
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+invenuiitemline
+  rotate: false
+  xy: 2356, 1594
+  size: 102, 102
+  orig: 102, 102
+  offset: 0, 0
+  index: -1
+invenuinon
+  rotate: false
+  xy: 1879, 920
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 2826, 1910
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuipage02
+  rotate: false
+  xy: 2460, 1676
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiparty
+  rotate: false
+  xy: 2232, 1574
+  size: 122, 122
+  orig: 122, 122
+  offset: 0, 0
+  index: -1
+invenuistate
+  rotate: false
+  xy: 1771, 548
+  size: 106, 402
+  orig: 106, 402
+  offset: 0, 0
+  index: -1
+invenuitagacequipment
+  rotate: false
+  xy: 2551, 1700
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuitagacetc
+  rotate: false
+  xy: 1924, 1496
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuitagacsupplies
+  rotate: false
+  xy: 1771, 346
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuitagequipment
+  rotate: false
+  xy: 2638, 1700
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuitagetc
+  rotate: false
+  xy: 1924, 1294
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuitagsupplies
+  rotate: false
+  xy: 2011, 1496
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 2098, 1532
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+

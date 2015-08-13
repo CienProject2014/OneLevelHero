@@ -1,9 +1,9 @@
 package com.mygdx.model.event;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 
@@ -11,10 +11,18 @@ public class Event {
 	private String eventName;
 	private EventTypeEnum eventType;
 	private EventStateEnum eventState;
-	private RewardInfo reward;
-	private List<EventScene> eventScenes;
-	private List<String> eventComponent;
+	private ArrayList<Reward> rewards;
+	private ArrayList<EventScene> eventScenes;
+	private ArrayList<String> eventComponent;
 	private String eventTarget;
+
+	public void setEventScenes(ArrayList<EventScene> eventScenes) {
+		this.eventScenes = eventScenes;
+	}
+
+	public void setEventComponent(ArrayList<String> eventComponent) {
+		this.eventComponent = eventComponent;
+	}
 
 	public EventTypeEnum getEventType() {
 		return eventType;
@@ -24,20 +32,8 @@ public class Event {
 		this.eventType = eventType;
 	}
 
-	public RewardInfo getReward() {
-		return reward;
-	}
-
-	public void setReward(RewardInfo reward) {
-		this.reward = reward;
-	}
-
 	public List<EventScene> getEventScenes() {
 		return eventScenes;
-	}
-
-	public void setEventScenes(List<EventScene> eventScenes) {
-		this.eventScenes = eventScenes;
 	}
 
 	public Iterator<EventScene> getEventSceneIterator() {
@@ -56,10 +52,6 @@ public class Event {
 		return eventComponent;
 	}
 
-	public void setEventComponent(List<String> eventComponent) {
-		this.eventComponent = eventComponent;
-	}
-
 	public String getEventName() {
 		return eventName;
 	}
@@ -74,5 +66,13 @@ public class Event {
 
 	public void setEventTarget(String eventTarget) {
 		this.eventTarget = eventTarget;
+	}
+
+	public ArrayList<Reward> getRewards() {
+		return rewards;
+	}
+
+	public void setRewards(ArrayList<Reward> rewards) {
+		this.rewards = rewards;
 	}
 }

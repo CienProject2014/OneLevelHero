@@ -94,7 +94,7 @@ public class BattleStage extends BaseOneLevelStage {
 		currentHero = getCurrentActor(); // 여기선 첫번째 턴
 		tableStack.add(makeBattleUiTable());
 		tableStack.add(makeTurnTable());
-		tableStack.add(makeImageTable());
+		tableStack.add(makeTurnFaceTable());
 		gridHitbox = new GridHitbox(); // 평소에는 hidden
 		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
 		tableStack.add(gridHitbox);
@@ -116,17 +116,16 @@ public class BattleStage extends BaseOneLevelStage {
 		orderedUnits = new LinkedList<Unit>(units);
 	}
 
-	private void initializeBattle(ArrayList<Unit> units,
-			Monster selectedMonster) {
+	private void initializeBattle(ArrayList<Unit> units, Monster selectedMonster) {
 		battleManager.setBattleState(BattleStateEnum.IN_GAME);
 		for (Unit unit : units) {
 			unit.setGauge(100);
 			unit.setSubvalue(0);
-			unit.setActingPower(
-					-24000 / (unit.getStatus().getSpeed() + 300) + 160);
+			unit.setActingPower(-24000 / (unit.getStatus().getSpeed() + 300)
+					+ 160);
 		}
-		selectedMonster.getStatus()
-				.setHp(selectedMonster.getStatus().getMaxHp());
+		selectedMonster.getStatus().setHp(
+				selectedMonster.getStatus().getMaxHp());
 		battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 	}
 
@@ -156,7 +155,7 @@ public class BattleStage extends BaseOneLevelStage {
 			if (battleManager.getBattleState()
 					.equals(BattleStateEnum.GAME_OVER)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-				battleManager.goCurrentPosition();
+				movingManager.goPreviousPosition();
 			}
 		}
 
@@ -200,8 +199,8 @@ public class BattleStage extends BaseOneLevelStage {
 		Table RMenuTable = makeRMenuTable();
 
 		uiTable.right().bottom();
-		uiTable.padRight(uiConstantsMap.get("RMenuTablePadRight"))
-				.padBottom(uiConstantsMap.get("RMenuTablePadBottom"));
+		uiTable.padRight(uiConstantsMap.get("RMenuTablePadRight")).padBottom(
+				uiConstantsMap.get("RMenuTablePadBottom"));
 		uiTable.add(RMenuTable);
 
 		return uiTable;
@@ -220,7 +219,7 @@ public class BattleStage extends BaseOneLevelStage {
 		return turnTable;
 	}
 
-	private Table makeImageTable() {
+	private Table makeTurnFaceTable() {
 		imageTable.add(makeBigImageTable());
 		imageTable.add(makeSmallImageTable());
 		imageTable.left().bottom();
@@ -319,33 +318,33 @@ public class BattleStage extends BaseOneLevelStage {
 		switch (battleManager.getCurrentClickStateEnum()) {
 			case NORMAL :
 				gridHitbox.hideGrid();
-				battleManager.setCurrentClickStateEnum(
-						CurrentClickStateEnum.DEFAULT);
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 				// currentHero.setGauge(preGague);
 				break;
 			case SKILL :
-				battleManager.setCurrentClickStateEnum(
-						CurrentClickStateEnum.DEFAULT);
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 				// currentHero.setGauge(preGague);
 				break;
 			case INVENTORY :
-				battleManager.setCurrentClickStateEnum(
-						CurrentClickStateEnum.DEFAULT);
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 				// currentHero.setGauge(preGague);
 				break;
 			case DEFENSE :
-				battleManager.setCurrentClickStateEnum(
-						CurrentClickStateEnum.DEFAULT);
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 				// currentHero.setGauge(preGague);
 				break;
 			case WAIT :
-				battleManager.setCurrentClickStateEnum(
-						CurrentClickStateEnum.DEFAULT);
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 				// currentHero.setGauge(preGague);
 				break;
 			case RUN :
-				battleManager.setCurrentClickStateEnum(
-						CurrentClickStateEnum.DEFAULT);
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 				// currentHero.setGauge(preGague);
 				break;
 			default :
@@ -369,8 +368,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void calCostGague(Unit unit, int typeOfAction) {
 		unit.setPreGague(unit.getGauge());
-		int costGague = (int) (((double) (150 - unit.getActingPower()) / 50)
-				* typeOfAction);
+		int costGague = (int) (((double) (150 - unit.getActingPower()) / 50) * typeOfAction);
 		unit.setGauge(unit.getGauge() - costGague);
 		healGague();
 	}
@@ -383,8 +381,8 @@ public class BattleStage extends BaseOneLevelStage {
 
 				if (!gridHitbox.isGridShow()) {
 					checkCurrentState();
-					battleManager.setCurrentClickStateEnum(
-							CurrentClickStateEnum.NORMAL);
+					battleManager
+							.setCurrentClickStateEnum(CurrentClickStateEnum.NORMAL);
 					makeHiddenButton();
 					gridHitbox.showGrid();
 				} else {
@@ -410,8 +408,8 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				checkCurrentState();
-				battleManager.setCurrentClickStateEnum(
-						CurrentClickStateEnum.INVENTORY);
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.INVENTORY);
 				makeHiddenButton();
 				Gdx.app.log("BattleStage", "인벤토리!");
 			}
@@ -420,8 +418,8 @@ public class BattleStage extends BaseOneLevelStage {
 
 			public void clicked(InputEvent event, float x, float y) {
 				checkCurrentState();
-				battleManager.setCurrentClickStateEnum(
-						CurrentClickStateEnum.DEFENSE);
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFENSE);
 				makeHiddenButton();
 				Gdx.app.log("BattleStage", "방어!");
 
@@ -470,8 +468,8 @@ public class BattleStage extends BaseOneLevelStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				if (gridHitbox.isGridShow()
 						&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 					battleManager.attack(currentHero, selectedMonster);
@@ -484,20 +482,20 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void makeTurnBackgroundImage() {
 		currentAttackerBackground = new Image(
-				StaticAssets.battleUiTextureMap.get("battleui_turntable_01"));
+				StaticAssets.textureMap.get("battleui_turntable_01"));
 		turnTableBackground = new Image(
-				StaticAssets.battleUiTextureMap.get("battleui_turntable_02"));
+				StaticAssets.textureMap.get("battleui_turntable_02"));
 	}
 
 	private void makeBattleTurnImage() {
-		turnBigImageMap.put(selectedMonster.getFacePath(),
-				new Image(selectedMonster.getBigBattleTexture()));
+		turnBigImageMap.put(selectedMonster.getFacePath(), new Image(
+				selectedMonster.getBigBattleTexture()));
 		for (Hero hero : partyManager.getBattleMemberList()) {
 			turnBigImageMap.put(hero.getFacePath(),
 					new Image(hero.getBigBattleTexture()));
 		}
-		turnSmallImageMap.put(selectedMonster.getFacePath(),
-				new Image(selectedMonster.getSmallBattleTexture()));
+		turnSmallImageMap.put(selectedMonster.getFacePath(), new Image(
+				selectedMonster.getSmallBattleTexture()));
 		for (Hero hero : partyManager.getBattleMemberList()) {
 			turnSmallImageMap.put(hero.getFacePath(),
 					new Image(hero.getSmallBattleTexture()));

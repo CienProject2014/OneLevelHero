@@ -9,6 +9,7 @@ public class PartyInfo {
 	private List<Hero> partyList = new ArrayList<Hero>();
 	private List<Hero> battleMemberList = new ArrayList<Hero>();
 	private Hero currentSelectedHero;
+	private int Fatigue;
 
 	public List<Hero> getPartyList() {
 		return partyList;
@@ -32,5 +33,13 @@ public class PartyInfo {
 
 	public void setCurrentSelectedHero(Hero currentSelectedHero) {
 		this.currentSelectedHero = currentSelectedHero;
+	}
+
+	public int getFatigue() {
+		return Fatigue;
+	}
+
+	public void setFatigue(int fatigue) {
+		Fatigue = fatigue;
 	}
 }

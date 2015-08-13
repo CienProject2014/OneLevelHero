@@ -2,14 +2,18 @@ package com.mygdx.currentState;
 
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
+import com.mygdx.enums.FieldTypeEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 
 public class BattleInfo {
-	private Monster monster;
+	private Monster currentMonster;
 	private BattleStateEnum battleState;
 	private CurrentClickStateEnum currentClickState;
 	private Hero currentActor;
+	private PositionEnum beforePosition;
+	private FieldTypeEnum fieldType;
 
 	public Hero getCurrentActor() {
 		return currentActor;
@@ -31,16 +35,33 @@ public class BattleInfo {
 		return currentClickState;
 	}
 
-	public void setCurrentClickStateEnum(
-			CurrentClickStateEnum currentClickState) {
+	public void setCurrentClickStateEnum(CurrentClickStateEnum currentClickState) {
 		this.currentClickState = currentClickState;
 	}
 
-	public Monster getMonster() {
-		return monster;
+	public Monster getCurrentMonster() {
+		return currentMonster;
 	}
 
-	public void setMonster(Monster monster) {
-		this.monster = monster;
+	public void setCurrentMonster(Monster currentMonster) {
+		this.currentMonster = currentMonster;
 	}
+
+	public PositionEnum getBeforePosition() {
+		return beforePosition;
+	}
+
+	public void setBeforePosition(PositionEnum beforePosition) {
+		this.beforePosition = beforePosition;
+	}
+
+	public void setFieldType(FieldTypeEnum fieldType) {
+		this.fieldType = fieldType;
+
+	}
+
+	public FieldTypeEnum getFieldType() {
+		return fieldType;
+	}
+
 }

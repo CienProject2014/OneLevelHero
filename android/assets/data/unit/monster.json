@@ -1,7 +1,7 @@
 {
-  "mawang": {
+  "mawang_01": {
     "name": "전설의 대마왕",
-    "facePath": "mawang",
+    "facePath": "mawang_01",
     "sizeType": "medium",
     "elementType": "fire",
     "status": {
@@ -12,7 +12,6 @@
       "healthPoint": 10000,
       "maxHealthPoint": 10000,
       "speed": 10,
-      "fatigue": 0,
       "experience": 0,
       "maxExperience": 1220,
       "fireResistance": 0,
@@ -36,13 +35,194 @@
       "healthPoint": 1000,
       "maxHealthPoint": 1000,
       "speed": 50,
-      "fatigue": 0,
       "experience": 0,
       "maxExperience": 1220,
       "fireResistance": 0,
       "waterResistance": 0,
       "electricResistance": 0
     },
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "black_gnoll": {
+    "facePath": "black_gnoll",
+    "name": "검정 놀",
+    "sizeType": "medium",
+    "elementType": "none",
+    "status": {
+      "attack": 100,
+      "magicAttack": 0,
+      "defense": 60,
+      "magicDefense": 0,
+      "healthPoint": 1000,
+      "maxHealthPoint": 1000,
+      "speed": 50,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "twinhead": {
+    "facePath": "twinhead",
+    "name": "멍청한 트윈헤드",
+    "sizeType": "medium",
+    "elementType": "none",
+    "status": {
+      "attack": 160,
+      "magicAttack": 0,
+      "defense": 80,
+      "magicDefense": 0,
+      "healthPoint": 1500,
+      "maxHealthPoint": 1500,
+      "speed": 50,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "mercensary": {
+    "facePath": "mercensary",
+    "name": "질 나쁜 용병",
+    "sizeType": "medium",
+    "elementType": "none",
+    "status": {
+      "attack": 180,
+      "magicAttack": 0,
+      "defense": 150,
+      "magicDefense": 50,
+      "healthPoint": 3800,
+      "maxHealthPoint": 3800,
+      "speed": 60,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "troll": {
+    "facePath": "troll",
+    "name": "트로올",
+    "sizeType": "medium",
+    "elementType": "none",
+    "status": {
+      "attack": 230,
+      "magicAttack": 0,
+      "defense": 180,
+      "magicDefense": 50,
+      "healthPoint": 3700,
+      "maxHealthPoint": 3700,
+      "speed": 50,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "aonin": {
+    "facePath": "aonin",
+    "name": "아오닌",
+    "sizeType": "medium",
+    "elementType": "none",
+    "status": {
+      "attack": 20,
+      "magicAttack": 250,
+      "defense": 20,
+      "magicDefense": 160,
+      "healthPoint": 8000,
+      "maxHealthPoint": 8000,
+      "speed": 50,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "ent": {
+    "facePath": "ent",
+    "name": "엔트",
+    "sizeType": "medium",
+    "elementType": "none",
+    "status": {
+      "attack": 130,
+      "magicAttack": 190,
+      "defense": 50,
+      "magicDefense": 100,
+      "healthPoint": 3000,
+      "maxHealthPoint": 3000,
+      "speed": 60,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "kentaurous_spear": {
+    "facePath": "kentaurous_spear",
+    "name": "창을 든 켄타로우스",
+    "sizeType": "medium",
+    "elementType": "none",
+    "status": {
+      "attack": 125,
+      "magicAttack": 0,
+      "defense": 65,
+      "magicDefense": 0,
+      "healthPoint": 1500,
+      "maxHealthPoint": 1500,
+      "speed": 60,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
     "skillList": [
       "cut_01"
     ]

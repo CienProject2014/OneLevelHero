@@ -16,7 +16,7 @@ import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.FieldManager;
-import com.mygdx.model.surroundings.Connection;
+import com.mygdx.model.surroundings.NodeConnection;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
@@ -45,19 +45,20 @@ public class WorldMapStage extends BaseOverlapStage {
 		 */
 		currentPosition = sceneLoader.getRoot().getCompositeById("current");
 		currentNode = sceneLoader.getRoot().getImageById(
-				positionManager.getCurrentNodeName());// 카메라 위치를 현재노드로 잡기 위하여 가져옴
+				positionManager.getCurrentNodeName());// 카메라 위치를 현재노드로 잡기 위하여
+														// 가져옴
 		currentPosition.setX(currentNode.getX() - SET_POSITION);
 		currentPosition.setY(currentNode.getY() - SET_POSITION);
 		// arrow = sceneLoader.getRoot().getCompositeById("1to2");
 
 		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
 		String currentNode = positionManager.getCurrentNodeName();
-		Map<String, Connection> connectionMap = worldMapAssets
-				.getWorldNodeInfo(currentNode).getConnection();
-		for (final Entry<String, Connection> connection : connectionMap
+		Map<String, NodeConnection> nodeConnectionMap = worldMapAssets
+				.getWorldNodeInfo(currentNode).getNodeConnection();
+		for (final Entry<String, NodeConnection> nodeConnection : nodeConnectionMap
 				.entrySet()) {
 			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(
-					connection.getValue().getArrowName());
+					nodeConnection.getValue().getArrowName());
 			arrow.setVisible(true);
 			arrow.setTouchable(Touchable.enabled);
 			arrow.addListener(new InputListener() {
@@ -70,9 +71,14 @@ public class WorldMapStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y,
 						int pointer, int button) {
-					fieldManager.selectDestinationNode(connection.getKey());
-					positionManager.setCurrentPositionType(PositionEnum.FIELD);
-					screenFactory.show(ScreenEnum.FIELD);
+					fieldManager.startMovingField(nodeConnection.getKey());
+					if (fieldManager.getFieldLength() == 0) {
+						fieldManager.goForwardField();
+					} else {
+						positionManager
+								.setCurrentPositionType(PositionEnum.FIELD);
+						screenFactory.show(ScreenEnum.FIELD);
+					}
 				}
 			});
 			arrowList.add(arrow);

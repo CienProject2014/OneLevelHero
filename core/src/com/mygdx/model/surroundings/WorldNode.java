@@ -8,14 +8,14 @@ import com.mygdx.enums.WorldNodeEnum;
 public class WorldNode {
 	private String nodeName;
 	private WorldNodeEnum.NodeType nodeType;
-	private HashMap<String, Connection> connection;
+	private HashMap<String, NodeConnection> nodeConnection;
 
-	public Map<String, Connection> getConnection() {
-		return connection;
+	public Map<String, NodeConnection> getNodeConnection() {
+		return nodeConnection;
 	}
 
-	public void setConnection(HashMap<String, Connection> connection) {
-		this.connection = connection;
+	public void setConnection(HashMap<String, NodeConnection> nodeConnection) {
+		this.nodeConnection = nodeConnection;
 	}
 
 	public String getNodeName() {

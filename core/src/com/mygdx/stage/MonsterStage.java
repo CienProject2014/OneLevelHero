@@ -14,10 +14,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.FieldManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.StatusBar;
 
 public class MonsterStage extends BaseOneLevelStage {
+	@Autowired
+	private FieldManager fieldManager;
 	@Autowired
 	private BattleManager battleManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
@@ -33,6 +37,7 @@ public class MonsterStage extends BaseOneLevelStage {
 	private Table monsterHpTable;
 	private Label monsterHpLabel;
 	private StatusBar monsterStatusBar;
+	private Texture bgTexture;
 
 	@Override
 	public Stage makeStage() {
@@ -41,11 +46,6 @@ public class MonsterStage extends BaseOneLevelStage {
 		monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin());
 		setMonsterTable();
 		return this;
-	}
-
-	private void hideHp() {
-		monsterHpTable.setVisible(false);
-		monsterHpLabel.setVisible(false);
 	}
 
 	// 불러온 몬스터의 이미지를 테이블에 넣는다.
@@ -97,15 +97,16 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
-		if (battleManager.getSelectedMonster().getName().equals("mawang")) {
+		if (battleManager.getSelectedMonster().getFacePath()
+				.equals("mawang_01")) {
+			return new TextureRegionDrawable(new TextureRegion(
+					StaticAssets.textureMap.get("bg_devilcastle_01")));
+		} else {
 			return new TextureRegionDrawable(
-					new TextureRegion(StaticAssets.backgroundTextureMap
-							.get("bg_devilcastle_01")));
+					new TextureRegion(TextureManager.getBackgroundTexture(
+							fieldManager.getFieldType().toString())));
 		}
-		return new TextureRegionDrawable(new TextureRegion(
-				StaticAssets.backgroundTextureMap.get("forest")));
 	}
-
 	public HashMap<String, Float> getUiConstantsMap() {
 		return uiConstantsMap;
 	}

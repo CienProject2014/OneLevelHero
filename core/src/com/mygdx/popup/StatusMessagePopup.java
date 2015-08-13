@@ -11,7 +11,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.model.unit.Hero;
 
-public class StatusMessagePopup extends MessagePopup {
+public class StatusMessagePopup extends GameObjectPopup {
 	@Autowired
 	private PartyManager partyManager;
 
