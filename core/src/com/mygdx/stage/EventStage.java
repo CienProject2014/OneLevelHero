@@ -1,7 +1,9 @@
 package com.mygdx.stage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,14 +14,18 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.assets.UnitAssets;
 import com.mygdx.enums.EventElementEnum;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.event.EventScene;
+import com.mygdx.model.unit.Hero;
 
 /**
  * make and return stage(Event)
@@ -38,10 +44,13 @@ public class EventStage extends BaseOneLevelStage {
 	private EventCheckManager eventCheckManager;
 	@Autowired
 	private RewardManager rewardManager;
+	@Autowired
+	private UnitAssets unitAssets;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("EventStage");
 	private Label scriptTitle;
-	private Label scriptContent;
+	private TextButton scriptContent;
+	private List<TextButtonStyle> scriptContentStyle;
 	private Image characterImage;
 	private Image backgroundImage;
 
@@ -77,11 +86,34 @@ public class EventStage extends BaseOneLevelStage {
 		return this;
 	}
 
+	private void erazeAll() {
+		if (scriptTitle != null) {
+			scriptTitle.setText("");
+		}
+		if (scriptContent != null) {
+			scriptContent.setText("");
+		}
+	}
+
 	public void setScene(EventScene eventScene) {
+		erazeAll();
 		backgroundImage = new Image(eventScene.getBackground());
+
+		scriptContentStyle = new ArrayList<TextButtonStyle>();
+		/* scriptContent = new ArrayList<TextButton>(); */
+
 		scriptTitle = new Label("Title", uiComponentAssets.getSkin());
-		scriptContent = new Label(eventScene.getScript(),
-				uiComponentAssets.getSkin());
+		Hero hero = unitAssets.getHero(eventScene.getCharacterPath());
+		if (hero != null) {
+			scriptTitle.setText(hero.getName());
+		}
+		scriptContentStyle.add(new TextButtonStyle(uiComponentAssets
+				.getScriptButton(), uiComponentAssets.getScriptButton(),
+				uiComponentAssets.getScriptButton(), uiComponentAssets
+						.getFont()));
+		scriptContent = new TextButton(eventScene.getScript(),
+				scriptContentStyle.get(0));
+
 		Texture selectedCharacter = eventScene.getCharacter();
 		characterImage = new Image(selectedCharacter);
 		tableStack.add(backgroundImage);
@@ -89,29 +121,31 @@ public class EventStage extends BaseOneLevelStage {
 	}
 
 	private Table makeChatTable() {
+		final float buttonSize[] = {StaticAssets.BASE_WINDOW_WIDTH * 1.0f,
+				StaticAssets.BASE_WINDOW_HEIGHT * 0.338f};
+		/*
+		 * for (TextButton contentButton : scriptContent) {
+		 * contentButton.setSize(buttonSize[0], buttonSize[1]); }
+		 */
+
+		scriptContent.setSize(buttonSize[0], buttonSize[1]);
+		scriptContent.setPosition(0, 0);
+		scriptTitle.setSize(uiConstantsMap.get("scriptTitleWidth"),
+				uiConstantsMap.get("scriptTitleHeight"));
+		scriptTitle.setPosition(0, uiConstantsMap.get("scriptTitlePadBottom"));
+		addActor(scriptContent);
+		addActor(scriptTitle);
+		/*
+		 * for (TextButton contentButton : scriptContent) {
+		 * this.addActor(contentButton); }
+		 */
+
 		Table chatTable = new Table();
 		chatTable.left().bottom();
 
 		chatTable.add(characterImage).width(uiConstantsMap.get("talkerWidth"))
 				.height(uiConstantsMap.get("talkerHeight"))
 				.padLeft(uiConstantsMap.get("talkerPadLeft"));
-		scriptContent.setFontScale(1.0f);
-		scriptContent.setWrap(true);
-		scriptContent.setSize(uiConstantsMap.get("scriptWidth"),
-				uiConstantsMap.get("scriptHeight"));
-
-		Table scriptTable = new Table();
-		scriptTable.add(scriptTitle)
-				.width(uiConstantsMap.get("scriptTitleWidth"))
-				.height(uiConstantsMap.get("scriptTitleHeight"))
-				.padBottom(uiConstantsMap.get("scriptTitlePadBottom"));
-		scriptTable.row();
-		scriptTable.add(scriptContent)
-				.width(uiConstantsMap.get("scriptContentWidth"))
-				.height(uiConstantsMap.get("scriptContentHeight"));
-
-		chatTable.add(scriptTable).padLeft(uiConstantsMap.get("scriptPadLeft"))
-				.padBottom(uiConstantsMap.get("scriptPadBottom"));
 
 		return chatTable;
 	}
