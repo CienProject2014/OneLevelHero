@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -49,6 +50,7 @@ public class StatusStage extends BaseOverlapStage {
 	private ImageItem largeImage;
 	private List<LabelVO> labels;
 	private Image[] heroLargeImage;
+	private CompositeItem inventoryButton;
 	private final String STATUS_LABEL_NAME = "status";
 	private CompositeItem backButton;
 
@@ -60,9 +62,28 @@ public class StatusStage extends BaseOverlapStage {
 		setLabel();
 		setButton();
 		setBustImage();
+		setTabButton();
 		addListener();
 
 		return this;
+	}
+
+	private void setTabButton() {
+		inventoryButton = sceneLoader.getRoot().getCompositeById("inventory");
+		inventoryButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				screenFactory.show(ScreenEnum.INVENTORY);
+			}
+
+		});
 	}
 
 	private void setButton() {
@@ -120,8 +141,9 @@ public class StatusStage extends BaseOverlapStage {
 	}
 
 	private void setCamera() {
-		cam = new OrthographicCamera(1920f, 1080f);
-		cam.position.set(1920 / 2, 1080 / 2, 0);
+		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH,
+				StaticAssets.BASE_WINDOW_HEIGHT);
+		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		getViewport().setCamera(cam);
 	}
 }

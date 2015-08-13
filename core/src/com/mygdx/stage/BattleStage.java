@@ -9,7 +9,6 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -20,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -57,22 +57,22 @@ public class BattleStage extends BaseOneLevelStage {
 	private Queue<Unit> orderedUnits;
 	private Unit currentHero;
 
-	private boolean monsterTurn;
 	private float animationDelay;
 	private final float MONSTER_ATTACK_DELAY = 1.5f;
-
+	private final int NORMAL_ATTACK = 30;
 	// Image
 	private Image currentAttackerBackground;
 	private Image turnTableBackground;
 	private HashMap<String, Image> turnBigImageMap = new HashMap<String, Image>();
 	private HashMap<String, Image> turnSmallImageMap = new HashMap<String, Image>();
 	private Table imageTable = new Table();
-
+	private Table bigImageTable = new Table();
+	private Table smallImageTable = new Table();
+	private Table rMenuTable = new Table();
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-
-		if (isMonsterTurn()) {
+		if (currentHero instanceof Monster) {
 			doMonsterTurn(delta);
 		}
 		if (animationManager.isPlayable()) {
@@ -91,59 +91,95 @@ public class BattleStage extends BaseOneLevelStage {
 			initializeBattle(units, selectedMonster);
 		}
 		updateOrder();
-		orderedUnits = new LinkedList<Unit>(units);
-		currentHero = whoIsNextActor(); // 여기선 첫번째 턴
+		currentHero = getCurrentActor(); // 여기선 첫번째 턴
 		tableStack.add(makeBattleUiTable());
 		tableStack.add(makeTurnTable());
-		tableStack.add(makeTurnFaceImageTable());
+		tableStack.add(makeTurnFaceTable());
 		gridHitbox = new GridHitbox(); // 평소에는 hidden
 		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
 		tableStack.add(gridHitbox);
-
 		addListener();
 		return this;
 	}
 
-	private void initializeBattle(ArrayList<Unit> units, Monster selectedMonster) {
-		battleManager.setBattleState(BattleStateEnum.IN_GAME);
-		for (Unit unit : units) {
-			unit.setGauge(100);
-		}
-		selectedMonster.setGauge(100);
-		selectedMonster.getStatus().setHp(
-				selectedMonster.getStatus().getMaxHp());
-	}
-
 	private Unit getCurrentActor() {
 		Unit currentAttackUnit = orderedUnits.poll();
-		orderedUnits.add(currentAttackUnit);
 		if (currentAttackUnit instanceof Hero) {
 			battleManager.setCurrentActor((Hero) currentAttackUnit);
 		}
 		return currentAttackUnit;
 	}
 
-	private Unit whoIsNextActor() {
-		Unit unit = orderedUnits.peek();
-		return unit;
+	private void updateOrder() {
+		// Turn Logic
+		Collections.sort(units);
+		orderedUnits = new LinkedList<Unit>(units);
 	}
 
-	private void updateOrder() {
-		Collections.sort(units);
+	private void initializeBattle(ArrayList<Unit> units, Monster selectedMonster) {
+		battleManager.setBattleState(BattleStateEnum.IN_GAME);
+		for (Unit unit : units) {
+			unit.setGauge(100);
+			unit.setSubvalue(0);
+			unit.setActingPower(-24000 / (unit.getStatus().getSpeed() + 300)
+					+ 160);
+		}
+		selectedMonster.getStatus().setHp(
+				selectedMonster.getStatus().getMaxHp());
+		battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 	}
 
 	private void doMonsterTurn(float delta) {
-		Hero randomHero = partyManager.pickRandomHero();
+		if (animationDelay == 0) {
+			hideRMenuButtons();
+		}
 		animationDelay += delta;
-		hideRMenuButtons();
 		if (animationDelay > MONSTER_ATTACK_DELAY) {
-			Unit currentMonster = currentHero;
-			battleManager.attack(currentMonster, randomHero);
-			setMonsterTurn(false);
+			Hero randomHero = partyManager.pickRandomHero();
+			calCostGague(currentHero, NORMAL_ATTACK);// 랜덤으로 선택해야 한다
+			battleManager.attack(currentHero, randomHero);
+			endTurn();
 			showRMenuButtons();
 			animationDelay = 0;
 		}
-		updateImageTable();
+
+	}
+
+	private void playAnimation(float delta) {
+		animationManager.nextFrame(delta);
+		if (animationManager.getAnimations().isEmpty()) {
+			storySectionManager.triggerSectionEvent(
+					EventTypeEnum.BATTLE_CONTROL, "normal_attack");
+			endTurn();
+			makeHiddenButton();
+			if (battleManager.getBattleState()
+					.equals(BattleStateEnum.GAME_OVER)) {
+				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				movingManager.goPreviousPosition();
+			}
+		}
+
+	}
+
+	private void healGague() {
+		int maxGague = 0;
+		for (Unit unit : units) {
+			if (maxGague <= unit.getGauge()) {
+				maxGague = unit.getGauge();
+			}
+		}
+
+		for (Unit unit : units) {
+			unit.setGauge(unit.getGauge() + 100 - maxGague);
+		}
+	}
+
+	private void endTurn() {
+		updateOrder();
+		currentHero = getCurrentActor();
+		updateBigImageTable();
+		updateSmallImageTable();
+		battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 	}
 
 	private void hideRMenuButtons() {
@@ -156,23 +192,6 @@ public class BattleStage extends BaseOneLevelStage {
 		for (ImageButton rMenuButton : rMenuButtonList) {
 			rMenuButton.setVisible(true);
 		}
-	}
-
-	private void playAnimation(float delta) {
-		animationManager.nextFrame(delta);
-		if (animationManager.getAnimations().isEmpty()) {
-			// FIXME
-			storySectionManager.triggerSectionEvent(
-					EventTypeEnum.BATTLE_CONTROL, "normal_attack");
-			currentHero = getCurrentActor();
-			updateImageTable();
-			if (battleManager.getBattleState()
-					.equals(BattleStateEnum.GAME_OVER)) {
-				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-				movingManager.goPreviousPosition();
-			}
-		}
-
 	}
 
 	public Table makeBattleUiTable() {
@@ -200,30 +219,43 @@ public class BattleStage extends BaseOneLevelStage {
 		return turnTable;
 	}
 
-	private Table makeTurnFaceImageTable() {
-		turnBigImageMap.get(currentHero.getFacePath()).setWidth(117);
-		turnBigImageMap.get(currentHero.getFacePath()).setHeight(117);
-		imageTable.add(turnBigImageMap.get(currentHero.getFacePath()))
-				.padRight(15);
-
-		for (Unit unit : orderedUnits) {
-			turnSmallImageMap.get(unit.getFacePath()).setWidth(84);
-			turnSmallImageMap.get(unit.getFacePath()).setHeight(84);
-			imageTable.add(turnSmallImageMap.get(unit.getFacePath()));
-		}
+	private Table makeTurnFaceTable() {
+		imageTable.add(makeBigImageTable());
+		imageTable.add(makeSmallImageTable());
 		imageTable.left().bottom();
-		imageTable.padLeft(17).padBottom(25);
+		imageTable.padLeft(17).padBottom(17);
 
 		return imageTable;
 	}
 
-	private void updateImageTable() {
-		imageTable.reset();
-		imageTable = makeTurnFaceImageTable();
+	private Table makeBigImageTable() {
+		turnBigImageMap.get(currentHero.getFacePath()).setWidth(117);
+		turnBigImageMap.get(currentHero.getFacePath()).setHeight(117);
+		bigImageTable.add(turnBigImageMap.get(currentHero.getFacePath()))
+				.padRight(15);
+		return bigImageTable;
+	}
+
+	private Table makeSmallImageTable() {
+		for (Unit unit : orderedUnits) {
+			turnSmallImageMap.get(unit.getFacePath()).setWidth(84);
+			turnSmallImageMap.get(unit.getFacePath()).setHeight(84);
+			smallImageTable.add(turnSmallImageMap.get(unit.getFacePath()));
+		}
+		return smallImageTable;
+	}
+
+	private void updateBigImageTable() {
+		bigImageTable.reset();
+		bigImageTable = makeBigImageTable();
+	}
+
+	private void updateSmallImageTable() {
+		smallImageTable.reset();
+		smallImageTable = makeSmallImageTable();
 	}
 
 	private Table makeRMenuTable() {
-		Table rMenuTable = new Table();
 		makeRButton();
 		rMenuButtonList = new ArrayList<>();
 		rMenuButtonList.add(attackButton);
@@ -250,23 +282,95 @@ public class BattleStage extends BaseOneLevelStage {
 				rMenuTable.row();
 			}
 		}
-		/*
-		 * 다른버튼 막기 //FIXME if (eventCheckManager.checkBattleEventType()) {
-		 * switch (eventCheckManager.getBattleControlButton()) { case
-		 * NORMAL_ATTACK: imageButtonList.remove(attackButton); setDarkButton();
-		 * break; case SKILL_ATTACK: imageButtonList.remove(skillButton);
-		 * setDarkButton(); break; default: Gdx.app.log("BattleStage",
-		 * "Rmenu ImageButton Target 에러"); break; } }
-		 */
+
 		return rMenuTable;
 	}
 
-	private void setDarkButton() {
-		for (int i = 0; i < rMenuButtonList.size(); i++) {
-			ImageButton imageButton = rMenuButtonList.get(i);
-			imageButton.setColor(Color.DARK_GRAY);
-			imageButton.setTouchable(Touchable.disabled);
+	private void makeHiddenButton() {
+		switch (battleManager.getCurrentClickStateEnum()) {
+			case NORMAL :
+				calCostGague(currentHero, NORMAL_ATTACK);
+				updateOrder();
+				updateSmallImageTable();
+				setDarkButton(attackButton);
+				break;
+			case SKILL :
+				setDarkButton(skillButton);
+				break;
+			case INVENTORY :
+				setDarkButton(inventoryButton);
+				break;
+			case DEFENSE :
+				setDarkButton(defenseButton);
+				break;
+			case WAIT :
+				setDarkButton(waitButton);
+				break;
+			case DEFAULT :
+				setFreeButton();
+				break;
+			default :
+				break;
 		}
+	}
+
+	private void checkCurrentState() {
+		switch (battleManager.getCurrentClickStateEnum()) {
+			case NORMAL :
+				gridHitbox.hideGrid();
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case SKILL :
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case INVENTORY :
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case DEFENSE :
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case WAIT :
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case RUN :
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			default :
+				break;
+		}
+	}
+	private void setFreeButton() {
+		for (ImageButton buttons : rMenuButtonList) {
+			buttons.setVisible(true);
+			buttons.setTouchable(Touchable.enabled);
+		}
+	}
+	private void setDarkButton(ImageButton button) {
+		for (ImageButton buttons : rMenuButtonList) {
+			buttons.setVisible(true);
+			buttons.setTouchable(Touchable.enabled);
+		}
+		button.setVisible(false);
+		button.setTouchable(Touchable.disabled);
+	}
+
+	private void calCostGague(Unit unit, int typeOfAction) {
+		unit.setPreGague(unit.getGauge());
+		int costGague = (int) (((double) (150 - unit.getActingPower()) / 50) * typeOfAction);
+		unit.setGauge(unit.getGauge() - costGague);
+		healGague();
 	}
 
 	public void addListener() {
@@ -274,7 +378,12 @@ public class BattleStage extends BaseOneLevelStage {
 		attackButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+
 				if (!gridHitbox.isGridShow()) {
+					checkCurrentState();
+					battleManager
+							.setCurrentClickStateEnum(CurrentClickStateEnum.NORMAL);
+					makeHiddenButton();
 					gridHitbox.showGrid();
 				} else {
 
@@ -285,7 +394,10 @@ public class BattleStage extends BaseOneLevelStage {
 		skillButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-
+				checkCurrentState();
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL);
+				makeHiddenButton();
 				Gdx.app.log("BattleStage", "스킬!");
 				gridHitbox.hideGrid();
 				screenFactory.show(ScreenEnum.SKILL);
@@ -295,12 +407,20 @@ public class BattleStage extends BaseOneLevelStage {
 		inventoryButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				checkCurrentState();
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.INVENTORY);
+				makeHiddenButton();
 				Gdx.app.log("BattleStage", "인벤토리!");
 			}
 		});
 		defenseButton.addListener(new ClickListener() {
 
 			public void clicked(InputEvent event, float x, float y) {
+				checkCurrentState();
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.DEFENSE);
+				makeHiddenButton();
 				Gdx.app.log("BattleStage", "방어!");
 
 			}
@@ -308,6 +428,10 @@ public class BattleStage extends BaseOneLevelStage {
 		waitButton.addListener(new ClickListener() {
 
 			public void clicked(InputEvent event, float x, float y) {
+				checkCurrentState();
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.WAIT);
+				makeHiddenButton();
 				Gdx.app.log("BattleStage", "기다립시다!");
 
 			}
@@ -315,13 +439,15 @@ public class BattleStage extends BaseOneLevelStage {
 		escapeButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				checkCurrentState();
+				battleManager
+						.setCurrentClickStateEnum(CurrentClickStateEnum.RUN);
 				Gdx.app.log("BattleStage", "도망!");
 				battleManager.runAway();
 			}
 		});
 
 		gridHitbox.addListener(new ClickListener() {
-
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -349,21 +475,16 @@ public class BattleStage extends BaseOneLevelStage {
 					battleManager.attack(currentHero, selectedMonster);
 					gridHitbox.hideGrid();
 				}
-
 				gridHitbox.hideAllTiles();
-				if (whoIsNextActor() instanceof Monster) {
-					setMonsterTurn(true);
-				}
-
 			}
 		});
 	}
 
 	private void makeTurnBackgroundImage() {
 		currentAttackerBackground = new Image(
-				StaticAssets.battleUiTextureMap.get("battleui_turntable_01"));
+				StaticAssets.textureMap.get("battleui_turntable_01"));
 		turnTableBackground = new Image(
-				StaticAssets.battleUiTextureMap.get("battleui_turntable_02"));
+				StaticAssets.textureMap.get("battleui_turntable_02"));
 	}
 
 	private void makeBattleTurnImage() {
@@ -401,14 +522,6 @@ public class BattleStage extends BaseOneLevelStage {
 		escapeButton = new ImageButton(
 				atlasUiAssets.getAtlasUiFile("battleui_rb_escape"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_escape"));
-	}
-
-	public boolean isMonsterTurn() {
-		return monsterTurn;
-	}
-
-	public void setMonsterTurn(boolean monsterTurn) {
-		this.monsterTurn = monsterTurn;
 	}
 
 }

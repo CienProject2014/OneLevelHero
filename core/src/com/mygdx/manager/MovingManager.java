@@ -24,6 +24,10 @@ public class MovingManager {
 
 	public void goCurrentPosition() {
 		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
+		if (battleManager.isInBattle()) {
+			screenFactory.show(ScreenEnum.BATTLE);
+			return;
+		}
 		switch (positionManager.getCurrentPositionType()) {
 			case LOG :
 				if (eventManager.getCurrentNpc().getName().equals("yongsa")) {
@@ -43,9 +47,6 @@ public class MovingManager {
 				} else {
 					screenFactory.show(ScreenEnum.LOG);
 				}
-				break;
-			case ANIMAL_BOOK :
-				screenFactory.show(ScreenEnum.BATTLE);
 				break;
 			case NODE_EVENT :
 				if (eventManager.isGreeting()) {

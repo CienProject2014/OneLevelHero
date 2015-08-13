@@ -28,6 +28,16 @@
         1
       ],
       "physicsPropertiesVO": {},
+      "sceneName": "inventory_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
       
       "sceneName": "oberon_scene"
     },
@@ -111,7 +121,7 @@
       "physicsPropertiesVO": {},
       "sceneName": "status_scene"
     },
-    {
+     {
       "ambientColor": [
         0.5,
         0.5,
@@ -119,7 +129,7 @@
         1
       ],
       "physicsPropertiesVO": {},
-      "sceneName": "mawang_castle_scene"
+      "sceneName": "cobweb_inn_scene"
     },
     {
       "ambientColor": [

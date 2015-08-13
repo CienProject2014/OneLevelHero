@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.BattleInfo;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.TextureEnum;
@@ -139,6 +140,14 @@ public class BattleManager {
 
 	public void setBattleState(BattleStateEnum battleStateEnum) {
 		battleInfo.setBattleState(battleStateEnum);
+	}
+
+	public CurrentClickStateEnum getCurrentClickStateEnum() {
+		return battleInfo.getcurrentClickStateEnum();
+	}
+
+	public void setCurrentClickStateEnum(CurrentClickStateEnum currentClickState) {
+		battleInfo.setCurrentClickStateEnum(currentClickState);
 	}
 
 	public void healAllHero() {

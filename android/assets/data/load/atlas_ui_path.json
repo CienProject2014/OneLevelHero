@@ -1,7 +1,34 @@
 [
   {
-    "filePath" : "texture/ui/battle/battle_right_menu.atlas",
-    "element" :[
+    "filePath": "texture/ui/popup/popup_atlas.atlas",
+    "element": [
+      "popupui_acbutton_accept",
+      "popupui_acbutton_cancel",
+      "popupui_popup01",
+      "popupui_popup02",
+      "popupui_acbutton_closed",
+      "popupui_acbutton_end",
+      "popupui_acbutton_load",
+      "popupui_acbutton_no",
+      "popupui_acbutton_sound",
+      "popupui_acbutton_title",
+      "popupui_acbutton_yes",
+      "popupui_button",
+      "popupui_button_accept",
+      "popupui_button_cancel",
+      "popupui_button_closed",
+      "popupui_button_end",
+      "popupui_button_load",
+      "popupui_button_no",
+      "popupui_button_sound",
+      "popupui_setmenu_base",
+      "popupui_button_title",
+      "popupui_button_yes"
+    ]
+  },
+  {
+    "filePath": "texture/ui/battle/battle_right_menu.atlas",
+    "element": [
       "battleui_rb_attack",
       "battleui_rb_defense",
       "battleui_rb_escape",
@@ -14,7 +41,7 @@
       "battleui_rbac_item",
       "battleui_rbac_skill",
       "battleui_rbac_wait"
-      ] 
+    ]
   },
   {
     "filePath": "skin/Logo.atlas",
@@ -37,15 +64,15 @@
   {
     "filePath": "skin/GameUiButton.pack",
     "element": [
-	  "back_button",
-	  "back_toggle_button",
-	  "time_info_button",
-	  "quest_log_button",
-	  "quest_log_toggle_button",
-	  "help_button",
-	  "help_toggle_button",
-	  "setting_button",
-	  "setting_toggle_button"
+      "back_button",
+      "back_toggle_button",
+      "time_info_button",
+      "quest_log_button",
+      "quest_log_toggle_button",
+      "help_button",
+      "help_toggle_button",
+      "setting_button",
+      "setting_toggle_button"
     ]
   }
 ]

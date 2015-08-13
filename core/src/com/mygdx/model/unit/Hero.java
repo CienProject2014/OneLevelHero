@@ -32,7 +32,6 @@ public class Hero extends Unit implements Fightable {
 	public void skillAttack(Unit defender, String skillName) {
 		Gdx.app.log("Hero", this.getName() + "이(가) " + defender.getName()
 				+ "에게 " + skillName + "을(를) 사용하였습니다!");
-
 	}
 
 	public Inventory getInventory() {
@@ -47,7 +46,8 @@ public class Hero extends Unit implements Fightable {
 		return initialInventoryList;
 	}
 
-	public void setInitialInventoryList(HashMap<String, String> initialInventoryList) {
+	public void setInitialInventoryList(
+			HashMap<String, String> initialInventoryList) {
 		this.initialInventoryList = initialInventoryList;
 	}
 

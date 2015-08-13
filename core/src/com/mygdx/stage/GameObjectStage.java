@@ -43,7 +43,6 @@ public class GameObjectStage extends BaseOneLevelStage {
 				return true;
 			}
 		});
-
 		return this;
 	}
 
