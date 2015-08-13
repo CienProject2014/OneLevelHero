@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -68,7 +69,8 @@ public class EncounterStage extends BaseOneLevelStage {
 
 		outerTable.setBackground(getBackgroundTRD(), false);
 		outerTable.top(); // table을 위로 정렬
-		outerTable.add(monsterTable).padTop(uiConstantsMap.get("monsterPadTop"))
+		outerTable.add(monsterTable)
+				.padTop(uiConstantsMap.get("monsterPadTop"))
 				.width(uiConstantsMap.get("monsterTableWidth"))
 				.height(uiConstantsMap.get("monsterTableHeight")).row();
 
@@ -87,13 +89,13 @@ public class EncounterStage extends BaseOneLevelStage {
 			return new TextureRegionDrawable(new TextureRegion(
 					StaticAssets.textureMap.get("bg_devilcastle_01")));
 		} else {
-			System.out.println(fieldManager.getFieldType());
-			return new TextureRegionDrawable(
-					new TextureRegion(TextureManager.getBackgroundTexture(
-							fieldManager.getFieldType().toString())));
+			Gdx.app.log("EncounterStage",
+					"fieldType - " + fieldManager.getFieldType());
+			return new TextureRegionDrawable(new TextureRegion(
+					TextureManager.getBackgroundTexture(fieldManager
+							.getFieldType().toString())));
 		}
 	}
-
 	private void addListener() {
 		fightButton.addListener(new InputListener() {
 			@Override
@@ -103,8 +105,8 @@ public class EncounterStage extends BaseOneLevelStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				// BattleScreen으로 넘어가는 것이 전투를 시작하는 것을 의미
 				screenFactory.show(ScreenEnum.BATTLE);
 			}
@@ -117,8 +119,8 @@ public class EncounterStage extends BaseOneLevelStage {
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer,
-					int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				screenFactory.show(ScreenEnum.FIELD);
 			}
 		});

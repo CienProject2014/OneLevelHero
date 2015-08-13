@@ -52,7 +52,6 @@ public class LogScreen extends BaseScreen {
 	public void show() {
 		eventManager.setGreeting(true);
 		if (battleManager.isInBattle()) {
-			positionManager.setCurrentPositionType(PositionEnum.ANIMAL_BOOK);
 			eventManager.setCurrentEventNpc(battleManager.getSelectedMonster()
 					.getFacePath());
 		} else {
