@@ -1,12 +1,13 @@
 package com.mygdx.stage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.enums.PositionEnum;
-import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.PartyManager;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
@@ -15,6 +16,8 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  */
 public class DungeonEntranceStage extends BaseOverlapStage {
 	private CompositeItem entranceButton, saveButton, restButton;
+	@Autowired
+	private PartyManager partymanager;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
@@ -37,46 +40,26 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 		entranceButton = sceneLoader.getRoot().getCompositeById("enter");
 		saveButton = sceneLoader.getRoot().getCompositeById("save");
 		restButton = sceneLoader.getRoot().getCompositeById("rest");
-		entranceButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
 
+		entranceButton.addListener(new ClickListener() {
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.debug("DungeonEntranceStage", "던전으로 들어가자!");
-				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
-				screenFactory.show(ScreenEnum.DUNGEON);
+			public void clicked(InputEvent event, float x, float y) {
+
 			}
 		});
 
-		saveButton.addListener(new InputListener() {
+		saveButton.addListener(new ClickListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.debug("DungeonEntranceStage", "게임이 저장되었다...");
 			}
 		});
 
-		restButton.addListener(new InputListener() {
+		restButton.addListener(new ClickListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void clicked(InputEvent event, float x, float y) {
+				partymanager.setFatigue(0);
+				partymanager.healAllHero();
 				Gdx.app.debug("DungeonEntranceStage", "잘 쉬었도다...");
 			}
 		});

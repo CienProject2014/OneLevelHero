@@ -105,7 +105,7 @@
         "eventScenes": [
           {
             "script": "......!!",
-            "characterPath": "bust_mawang_01",
+            "characterPath": "monster_mawang_01",
             "backgroundPath": "bg_devilcastle_01"
           },
           {

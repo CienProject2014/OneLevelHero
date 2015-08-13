@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.Status;
 
 public class PartyManager {
 	@Autowired
 	private PartyInfo partyInfo;
 	@Autowired
 	private UnitManager unitManager;
+	private Status status;
 
 	private final static int BATTLE_MEMBER_SIZE = 3;
 
@@ -43,6 +45,13 @@ public class PartyManager {
 
 	public int getFatigue() {
 		return partyInfo.getFatigue();
+	}
+
+	public void healAllHero() {
+		for (Hero hero : getBattleMemberList()) {
+			hero.getStatus().setHealthPoint(
+					hero.getStatus().getMaxHealthPoint());
+		}
 	}
 
 	public void removeHero(Hero hero) {

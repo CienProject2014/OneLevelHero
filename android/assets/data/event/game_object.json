@@ -18,7 +18,6 @@
     "objectType": "function",
     "objectName" : "저장하기",
     "objectEvent": {
-      
       "eventState": "always_open",
       "eventType": "chat",
       "eventScenes": [
@@ -41,6 +40,12 @@
           "script": "회복되었습니다.",
           "characterPath": "chest",
           "backgroundPath": "bg_cobweb_02"
+        }
+      ],
+      "rewards" : [
+      	{
+            "rewardType": "rest_in_node",
+            "rewardState": "not_cleared"
         }
       ]
     }

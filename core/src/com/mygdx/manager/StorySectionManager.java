@@ -48,7 +48,7 @@ public class StorySectionManager {
 				.getCurrentStorySection().getConditionalEvents();
 		if (conditionalEvent != null) {
 			for (EventPacket eventPacket : conditionalEvent) {
-				eventAssets.getEvent(eventPacket).setEventState(
+				eventAssets.getNpcEvent(eventPacket).setEventState(
 						EventStateEnum.OPENED);
 			}
 		}
