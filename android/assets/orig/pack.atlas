@@ -1694,3 +1694,42 @@ invenuiup
   offset: 0, 0
   index: -1
 
+
+
+
+
+
+
+kadilla_castle_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+buttonui2
+  rotate: false
+  xy: 2, 250
+  size: 320, 99
+  orig: 320, 99
+  offset: 0, 0
+  index: -1
+kadillacastleex
+  rotate: false
+  xy: 2, 351
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
