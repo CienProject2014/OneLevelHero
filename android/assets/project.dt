@@ -121,6 +121,16 @@
       "physicsPropertiesVO": {},
       "sceneName": "status_scene"
     },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "southcape_scene"
+    },
      {
       "ambientColor": [
         0.5,
