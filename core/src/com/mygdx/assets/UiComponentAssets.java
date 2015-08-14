@@ -17,6 +17,7 @@ public class UiComponentAssets implements FileAssetsInitializable {
 	private TextureAtlas items;
 	private TextureRegionDrawable[] chatButton;
 	private TextureRegionDrawable eventButton;
+	private Image chatLineImage;
 	private Texture splash;
 	private Image logo;
 	private BitmapFont font;
@@ -34,9 +35,9 @@ public class UiComponentAssets implements FileAssetsInitializable {
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		setEventButton(new TextureRegionDrawable(new TextureRegion(new Texture(
 				Gdx.files.internal("texture/ui/chat/talk_select.png")))));
-
+		setScriptButton(new Image(new Texture(
+				Gdx.files.internal("texture/ui/chat/talkui_window.png"))));
 	}
-
 	public Skin getSkin() {
 		return skin;
 	}
@@ -91,5 +92,13 @@ public class UiComponentAssets implements FileAssetsInitializable {
 
 	public void setEventButton(TextureRegionDrawable eventButton) {
 		this.eventButton = eventButton;
+	}
+
+	public Image getChatLineImage() {
+		return chatLineImage;
+	}
+
+	public void setScriptButton(Image image) {
+		this.chatLineImage = image;
 	}
 }
