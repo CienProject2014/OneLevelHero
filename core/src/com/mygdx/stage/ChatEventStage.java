@@ -1,9 +1,7 @@
 package com.mygdx.stage;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,8 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.UnitAssets;
@@ -33,7 +30,7 @@ import com.mygdx.model.unit.Hero;
  * @author Velmont
  * 
  */
-public class EventStage extends BaseOneLevelStage {
+public class ChatEventStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
@@ -48,11 +45,13 @@ public class EventStage extends BaseOneLevelStage {
 	private UnitAssets unitAssets;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
 			.get("EventStage");
-	private Label scriptTitle;
-	private TextButton scriptContent;
-	private List<TextButtonStyle> scriptContentStyle;
+	private Label scriptTitle = new Label("", StaticAssets.skin);
+	private Label scriptContent = new Label("", StaticAssets.skin);
 	private Image characterImage;
 	private Image backgroundImage;
+	private Table chatLineImageTable = new Table();
+	private Table characterBustTable = new Table();
+	private Table scriptTable = new Table();
 
 	public Stage makeStage(final Iterator<EventScene> eventSceneIterator) {
 		super.makeStage();
@@ -86,67 +85,56 @@ public class EventStage extends BaseOneLevelStage {
 		return this;
 	}
 
-	private void erazeAll() {
-		if (scriptTitle != null) {
+	private void setScript(EventScene eventScene) {
+		Hero hero = unitAssets.getHero(eventScene.getCharacterPath());
+		if (hero != null) {
+			scriptTitle.setText("[" + hero.getName() + "]");
+		} else {
 			scriptTitle.setText("");
 		}
-		if (scriptContent != null) {
-			scriptContent.setText("");
-		}
+		scriptContent.setText(eventScene.getScript());
 	}
 
 	public void setScene(EventScene eventScene) {
-		erazeAll();
-		backgroundImage = new Image(eventScene.getBackground());
-
-		scriptContentStyle = new ArrayList<TextButtonStyle>();
-		/* scriptContent = new ArrayList<TextButton>(); */
-
-		scriptTitle = new Label("Title", uiComponentAssets.getSkin());
-		Hero hero = unitAssets.getHero(eventScene.getCharacterPath());
-		if (hero != null) {
-			scriptTitle.setText(hero.getName());
-		}
-		scriptContentStyle.add(new TextButtonStyle(uiComponentAssets
-				.getScriptButton(), uiComponentAssets.getScriptButton(),
-				uiComponentAssets.getScriptButton(), uiComponentAssets
-						.getFont()));
-		scriptContent = new TextButton(eventScene.getScript(),
-				scriptContentStyle.get(0));
-
-		Texture selectedCharacter = eventScene.getCharacter();
-		characterImage = new Image(selectedCharacter);
-		tableStack.add(backgroundImage);
-		tableStack.add(makeChatTable());
+		setScript(eventScene);
+		makeChatTable(eventScene);
 	}
 
-	private Table makeChatTable() {
-		final float buttonSize[] = {StaticAssets.BASE_WINDOW_WIDTH * 1.0f,
-				StaticAssets.BASE_WINDOW_HEIGHT * 0.338f};
-		/*
-		 * for (TextButton contentButton : scriptContent) {
-		 * contentButton.setSize(buttonSize[0], buttonSize[1]); }
-		 */
+	private void makeChatTable(EventScene eventScene) {
+		backgroundImage = new Image(eventScene.getBackground());
+		Texture selectedCharacter = eventScene.getCharacter();
+		characterImage = new Image(selectedCharacter);
 
-		scriptContent.setSize(buttonSize[0], buttonSize[1]);
-		scriptContent.setPosition(0, 0);
-		scriptTitle.setSize(uiConstantsMap.get("scriptTitleWidth"),
-				uiConstantsMap.get("scriptTitleHeight"));
-		scriptTitle.setPosition(0, uiConstantsMap.get("scriptTitlePadBottom"));
-		addActor(scriptContent);
-		addActor(scriptTitle);
-		/*
-		 * for (TextButton contentButton : scriptContent) {
-		 * this.addActor(contentButton); }
-		 */
+		Image chatImage = uiComponentAssets.getChatLineImage();
+		chatLineImageTable.clear();
+		chatLineImageTable.left().bottom();
+		chatLineImageTable.add(chatImage);
 
-		Table chatTable = new Table();
-		chatTable.left().bottom();
-
-		chatTable.add(characterImage).width(uiConstantsMap.get("talkerWidth"))
+		characterBustTable.clear();
+		characterBustTable.left().bottom();
+		characterBustTable.add(characterImage)
+				.width(uiConstantsMap.get("talkerWidth"))
 				.height(uiConstantsMap.get("talkerHeight"))
 				.padLeft(uiConstantsMap.get("talkerPadLeft"));
 
-		return chatTable;
+		scriptTable.clear();
+		scriptTable.left().bottom()
+				.padLeft(uiConstantsMap.get("scriptPadLeft"))
+				.padBottom(uiConstantsMap.get("scriptPadBottom"));
+		scriptTable.add(scriptTitle)
+				.width(uiConstantsMap.get("scriptTitleWidth"))
+				.height(uiConstantsMap.get("scriptTitleHeight"));
+		scriptTable.row();
+		scriptContent.setWrap(true);
+		scriptContent.setAlignment(Align.top);
+		scriptTable.add(scriptContent)
+				.width(uiConstantsMap.get("scriptContentWidth"))
+				.height(uiConstantsMap.get("scriptContentHeight"))
+				.padTop(uiConstantsMap.get("scriptContentPadTop"));
+
+		tableStack.add(backgroundImage);
+		tableStack.add(chatLineImageTable);
+		tableStack.add(characterBustTable);
+		tableStack.add(scriptTable);
 	}
 }

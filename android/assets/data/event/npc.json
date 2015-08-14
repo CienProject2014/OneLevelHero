@@ -190,7 +190,7 @@
             "script": "앞으로를 누르면 다음 필드맵으로 이동합니다.",
             "characterPath": "parath",
             "faceNumber" : "01",
-            "backgroundPath": "bg_justground"
+            "backgroundPath": "bg_blackwood_forest"
           }
         ]
       },

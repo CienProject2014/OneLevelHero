@@ -124,7 +124,7 @@
 		scope="prototype" />
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage"
 		scope="prototype"/>
-	<bean id="eventStage" class="com.mygdx.stage.EventStage" scope="prototype"/>	
+	<bean id="chatEventStage" class="com.mygdx.stage.ChatEventStage" scope="prototype"/>	
 	<bean id="fieldStage" class="com.mygdx.stage.FieldStage" scope="prototype"/>
 	<bean id="gameObjectStage" class="com.mygdx.stage.GameObjectStage" scope="prototype"/>
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype"/>
