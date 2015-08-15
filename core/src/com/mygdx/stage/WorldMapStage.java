@@ -1,30 +1,12 @@
 package com.mygdx.stage;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.assets.WorldMapAssets;
-import com.mygdx.enums.PositionEnum;
-import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.FieldManager;
-import com.mygdx.model.surroundings.NodeConnection;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
 public class WorldMapStage extends BaseOverlapStage {
-	@Autowired
-	private FieldManager fieldManager;
-	@Autowired
-	private WorldMapAssets worldMapAssets;
+
 	private CompositeItem currentPosition;
 	private ImageItem currentNode;
 	private final int SET_POSITION = 15;
@@ -43,46 +25,16 @@ public class WorldMapStage extends BaseOverlapStage {
 		 * getCompositeById로 하나하나 가져올수 있다. 현재 위치 버튼을 가져온다. getX로 Image의 위치를 가져올
 		 * 수 있다.
 		 */
-		currentPosition = sceneLoader.getRoot().getCompositeById("current");
-		currentNode = sceneLoader.getRoot().getImageById(
-				positionManager.getCurrentNodeName());// 카메라 위치를 현재노드로 잡기 위하여
-														// 가져옴
-		currentPosition.setX(currentNode.getX() - SET_POSITION);
-		currentPosition.setY(currentNode.getY() - SET_POSITION);
-		// arrow = sceneLoader.getRoot().getCompositeById("1to2");
+		currentPosition = sceneLoader.getRoot().getCompositeById("cross");
+		currentNode = sceneLoader.getRoot().getImageById(positionManager.getCurrentNodeName());// 카메라
+																								// 위치를
+																								// 현재노드로
+																								// 잡기
+																								// 위하여
+																								// 가져옴
+		currentPosition.setX(currentNode.getX() - SET_POSITION + 16);
+		currentPosition.setY(currentNode.getY() - SET_POSITION + 16);
 
-		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
-		String currentNode = positionManager.getCurrentNodeName();
-		Map<String, NodeConnection> nodeConnectionMap = worldMapAssets
-				.getWorldNodeInfo(currentNode).getNodeConnection();
-		for (final Entry<String, NodeConnection> nodeConnection : nodeConnectionMap
-				.entrySet()) {
-			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(
-					nodeConnection.getValue().getArrowName());
-			arrow.setVisible(true);
-			arrow.setTouchable(Touchable.enabled);
-			arrow.addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					return true;
-				}
-
-				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
-					fieldManager.startMovingField(nodeConnection.getKey());
-					if (fieldManager.getFieldLength() == 0) {
-						fieldManager.goForwardField();
-					} else {
-						positionManager
-								.setCurrentPositionType(PositionEnum.FIELD);
-						screenFactory.show(ScreenEnum.FIELD);
-					}
-				}
-			});
-			arrowList.add(arrow);
-		}
 		addActor(sceneLoader.getRoot());
 		setCamera();
 
@@ -103,8 +55,8 @@ public class WorldMapStage extends BaseOverlapStage {
 		int yBottomLimit = (int) (StaticAssets.windowHeight / 2);
 		int yTopLimit = (int) (1688 - (StaticAssets.windowHeight / 2));
 
-		float xvalue = this.getCurrent().getX() - StaticAssets.windowWidth / 2, yvalue = this
-				.getCurrent().getY() - StaticAssets.windowHeight / 2;
+		float xvalue = this.getCurrent().getX() - StaticAssets.windowWidth / 2,
+				yvalue = this.getCurrent().getY() - StaticAssets.windowHeight / 2;
 		// x값이 오른쪽으로 벗어날 경우
 		if (this.getCurrent().getX() > xRightLimit)
 			xvalue = 3000 - StaticAssets.windowWidth;
