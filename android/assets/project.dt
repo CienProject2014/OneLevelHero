@@ -141,6 +141,16 @@
       "physicsPropertiesVO": {},
       "sceneName": "mirage_port_scene"
     },
+     {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "middle_ridge_scene"
+    },
     {
       "ambientColor": [
         0.5,

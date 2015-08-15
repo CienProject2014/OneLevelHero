@@ -1739,3 +1739,48 @@ townuiup
   offset: 0, 0
   index: -1
 
+
+
+
+
+
+middle_ridge_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgmiddleridge1
+  rotate: false
+  xy: 2, 270
+  size: 3840, 1080
+  orig: 3840, 1080
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 126, 248
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 2, 2
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+townuileft
+  rotate: false
+  xy: 2, 34
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
+townuiright
+  rotate: false
+  xy: 3844, 1116
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
