@@ -1,25 +1,30 @@
 package com.mygdx.manager;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
+import com.mygdx.store.Loadable;
 
 public class LoadManager {
+	@Autowired
+	private ApplicationContext applicationContext;
 	@Autowired
 	private UnitAssets unitAssets;
 	@Autowired
 	private EventAssets eventAssets;
 	@Autowired
 	private StorySectionManager storySectionManager;
-	@Autowired
-	private FieldInfo movingInfo;
 	@Autowired
 	private PartyManager partyManager;
 	@Autowired
@@ -31,6 +36,20 @@ public class LoadManager {
 
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
+	@SuppressWarnings("unchecked")
+	public void load() {
+		// FIXME
+		Map<String, Object> loadedData = new HashMap<String, Object>();
+
+		// FIXME
+		// This logic have no type safety.
+		// I think, type map can be solution.
+		for (Entry<String, Object> data : loadedData.entrySet()) {
+			((Loadable<Object>) applicationContext.getBean(data.getKey()))
+					.setData(data);;
+		}
+
+	}
 	public void loadNewGame() {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();

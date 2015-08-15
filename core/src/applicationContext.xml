@@ -29,19 +29,7 @@
 
 	<bean id="currentState" class="com.mygdx.currentState.CurrentState"/>
 
-	<bean id="battleInfo" class="com.mygdx.currentState.BattleInfo"/>
-	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo" />	
-	<bean id="fieldInfo" class="com.mygdx.currentState.FieldInfo" />
-	<bean id="bagInfo" class="com.mygdx.currentState.BagInfo" />
-	<bean id="musicInfo" class="com.mygdx.currentState.MusicInfo" />
-	<bean id="partyInfo" class="com.mygdx.currentState.PartyInfo" />
-	<bean id="positionInfo" class="com.mygdx.currentState.PositionInfo" />
-	<bean id="rewardInfo" class="com.mygdx.currentState.RewardInfo" />
-	<bean id="roadInfo" class="com.mygdx.currentState.RoadInfo"/>
 	<bean id="soundInfo" class="com.mygdx.currentState.SoundInfo" />
-	<bean id="storySectionInfo" class="com.mygdx.currentState.StorySectionInfo"/>
-	<bean id="timeInfo" class="com.mygdx.currentState.TimeInfo" />
-
 	<bean id="listenerFactory" class="com.mygdx.factory.ListenerFactory"/>
 	<bean id="screenFactory" class="com.mygdx.factory.ScreenFactory" />
 	<bean id="stageFactory" class="com.mygdx.factory.StageFactory" />
@@ -62,7 +50,6 @@
 	<bean id="positionManager" class="com.mygdx.manager.PositionManager"/>
 	<bean id="rewardManager" class="com.mygdx.manager.RewardManager"/>
 	<bean id="saveManager" class="com.mygdx.manager.SaveManager" />
-	<bean id="scenarioManager" class="com.mygdx.manager.ScenarioManager" />
 	<bean id="storySectionManager" class="com.mygdx.manager.StorySectionManager"/>
 	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
 	<bean id="unitManager" class="com.mygdx.manager.UnitManager"/>

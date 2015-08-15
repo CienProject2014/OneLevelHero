@@ -20,8 +20,6 @@ public class BattleManager {
 	@Autowired
 	private MovingManager movingManager;
 	@Autowired
-	private BattleInfo battleInfo;
-	@Autowired
 	private PartyManager partyManager;
 	@Autowired
 	private AnimationManager animationManager;
@@ -31,6 +29,8 @@ public class BattleManager {
 	private StorySectionManager storySectionManager;
 	@Autowired
 	private PositionManager positionManager;
+
+	private BattleInfo battleInfo = new BattleInfo();
 
 	public void setBeforePosition(PositionEnum positionEnum) {
 		battleInfo.setBeforePosition(positionEnum);
