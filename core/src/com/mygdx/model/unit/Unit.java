@@ -6,8 +6,10 @@ import java.util.Map;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.unitStrategy.AttackStrategy;
 
-public abstract class Unit implements Comparable<Unit>, Fightable {
+public abstract class Unit implements Comparable<Unit> {
+	private AttackStrategy attackStrategy;
 	private String facePath;
 	private String name;
 	protected Status status;
@@ -117,7 +119,7 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 						// 용사는 일등!
 						return -1;
 					} else {
-						// 나머지는 첨 들어갈때 그대로 이써 그냥 어차피 리스트는순서대로 들어가니 적용댈듯
+						// 나머지는 첨 들어갈때 그대로 있어 그냥 어차피 리스트는 순서대로 들어가니 적용댈듯
 						return 0;
 					}
 				} else if (this.getStatus().getSpeed() > obj.getStatus()
@@ -182,4 +184,19 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 		this.preGague = preGague;
 	}
 
+	public void attack(Unit opponent) {
+		attackStrategy.attack(this, opponent);
+	}
+
+	public void skillAttack(Unit opponent, String skillName) {
+		attackStrategy.skillAttack(this, opponent, skillName);
+	}
+
+	public AttackStrategy getAttackStrategy() {
+		return attackStrategy;
+	}
+
+	public void setAttackStrategy(AttackStrategy attackStrategy) {
+		this.attackStrategy = attackStrategy;
+	}
 }

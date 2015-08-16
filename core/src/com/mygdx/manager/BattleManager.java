@@ -11,7 +11,6 @@ import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.model.unit.Fightable;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
@@ -31,6 +30,8 @@ public class BattleManager {
 	private StorySectionManager storySectionManager;
 	@Autowired
 	private PositionManager positionManager;
+	@Autowired
+	private UnitManager unitManager;
 
 	public void setBeforePosition(PositionEnum positionEnum) {
 		battleInfo.setBeforePosition(positionEnum);
@@ -44,6 +45,7 @@ public class BattleManager {
 		if (battleInfo.getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
 			battleInfo.setBattleState(BattleStateEnum.ENCOUNTER);
 		}
+		unitManager.initiateMonster(selectedMonster);
 		battleInfo.setCurrentMonster(selectedMonster);
 		screenFactory.show(ScreenEnum.ENCOUNTER);
 	}
@@ -91,7 +93,6 @@ public class BattleManager {
 	}
 
 	public void attack(Unit attackUnit, Unit defendUnit) {
-		// FIXME
 		attackUnit.attack(defendUnit);
 		readyHitAnimation(attackUnit);
 		checkIsDead(defendUnit);
@@ -111,8 +112,7 @@ public class BattleManager {
 		}
 	}
 
-	public void userSkill(Fightable attackUnit, String skill) {
-		// FIXME
+	public void userSkill(Unit attackUnit, String skill) {
 		attackUnit.skillAttack(battleInfo.getCurrentMonster(), skill);
 	}
 

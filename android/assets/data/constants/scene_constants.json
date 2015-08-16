@@ -1,0 +1,71 @@
+{
+  "status_scene": {
+    "status_label": [
+      "attack",
+      "defense",
+      "electric_resistance",
+      "experience",
+      "fire_resistance",
+      "health_point_state",
+      "level",
+      "magic_attack",
+      "magic_defense",
+      "speed",
+      "water_resistance"
+    ],
+    "character_status_image" : [
+    	"change_04",
+    	"change_03",
+    	"change_02",
+    	"change_01"
+    ]
+  },
+  "inventory_scene": {
+    "inventory_equip_item": [
+      "rightHandGrip",
+      "leftHandGrip",
+      "clothes",
+      "accessory"
+    ],
+    "inventory_item_image": [
+      "item_image01",
+      "item_image02",
+      "item_image03",
+      "item_image04",
+      "item_image05",
+      "item_image06"
+    ],
+    "inventory_item_label": [
+      "item_label01",
+      "item_label02",
+      "item_label03",
+      "item_label04",
+      "item_label05",
+      "item_label06"
+    ],
+    "inventory_light_button": [
+      "page_light01",
+      "page_light02",
+      "page_light03",
+      "page_light04"
+    ],
+    "inventory_activate_line": [
+      "select_box01",
+      "select_box02",
+      "select_box03",
+      "select_box04",
+      "select_box05",
+      "select_box06"
+    ],
+    "character_status_image" : [
+    	"character_window01",
+    	"character_window02",
+    	"character_window03",
+    	"character_window04"
+    ],
+    "background" : [
+    	"background",
+    	"background02"
+    ]
+  }
+}

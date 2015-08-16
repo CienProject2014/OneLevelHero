@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
@@ -19,8 +19,6 @@ public class LoadManager {
 	@Autowired
 	private StorySectionManager storySectionManager;
 	@Autowired
-	private FieldInfo movingInfo;
-	@Autowired
 	private PartyManager partyManager;
 	@Autowired
 	private PositionManager positionManager;
@@ -28,6 +26,8 @@ public class LoadManager {
 	private TimeManager timeManager;
 	@Autowired
 	private BattleManager battleManager;
+	@Autowired
+	private BagManager bagManager;
 
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
@@ -39,6 +39,10 @@ public class LoadManager {
 		setTimeInfo();
 		setBattleInfo();
 		storySectionManager.runStorySequence();
+		bagManager.possessItem(ItemEnum.WEAPON, "sabre");
+		bagManager.possessItem(ItemEnum.WEAPON, "velmont_mouse"); // FIXME for
+																	// Debug
+		bagManager.possessItem(ItemEnum.WEAPON, "velmont_mouse");
 	}
 
 	private void setBattleInfo() {

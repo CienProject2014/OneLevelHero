@@ -32,6 +32,11 @@ public class MonsterPickManager {
 
 	public Monster createMonster() {
 		Monster monster = unitAssets.getMonster(selectMonster());
+		return monster;
+	}
+
+	public Monster createMonster(String monsterName) {
+		Monster monster = unitAssets.getMonster(monsterName);
 		unitManager.initiateMonster(monster);
 		return monster;
 	}
