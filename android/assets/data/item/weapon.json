@@ -1,5 +1,13 @@
 {
+  "empty_item" : {
+  	"itemType" : "weapon",
+  	"name" : "미 장착",
+  	"itemPath" : "empty_item",
+  	"category" : "한손검",
+  	"isTwoHanded" : "false"
+  },
   "broad_sword": {
+    "itemType" : "weapon",
     "name": "브로드 소드",
     "itemPath" : "broad_sword",
     "category": "한손검",
@@ -18,6 +26,7 @@
     "description": "칼날이 넓은 검."
   },
   "sabre": {
+    "itemType" : "weapon",
     "name": "사브르",
     "itemPath" : "sabre",
     "category": "한손검",
@@ -33,5 +42,23 @@
       "speed": 5
     },
     "description": "외날이며 완만하게 구부러져 있다."
+  },
+  "velmont_mouse": {
+    "itemType" : "weapon",
+    "name": "벨몽의 마우스",
+    "itemPath" : "velmont_mouse",
+    "category": "삼성 마우스",
+    "grade": "일반",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatus": {
+      "attack": 1,
+      "speed": 5
+    },
+    "description": "벨몽이 쓰던 싸구려 마우스. 정 쓸 무기가 없을때 사용한다."
   }
 }

@@ -1,5 +1,6 @@
 {
   "small_healing": {
+     "itemType" : "consumables",
     "name": "소형 회복약",
     "itemPath" : "small_healing",
     "category": "소모품",
@@ -7,6 +8,7 @@
     "description": "체력을 조금 회복해준다."
   },
   "medium_healing": {
+     "itemType" : "consumables",
     "name": "중형 회복약",
     "itemPath" : "medium_healing",
     "category": "소모품",
