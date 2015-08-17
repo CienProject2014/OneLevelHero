@@ -1,5 +1,7 @@
 package com.mygdx.manager;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -8,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.enums.BattleStateEnum;
@@ -41,18 +46,24 @@ public class LoadManager {
 
 	@SuppressWarnings("unchecked")
 	public void load() {
-		// FIXME
-		Map<String, Object> loadedData = new HashMap<String, Object>();
+		Map<String, Loadable> loadedData = new HashMap<String, Loadable>();
+		Kryo kryo = new Kryo();
+		FileHandle handle = Gdx.files.internal("save/save_1.json");
+		Input input;
+		try {
+			input = new Input(new FileInputStream(handle.file()));
+			for (Entry<String, Loadable> data : applicationContext.getBeansOfType(Loadable.class).entrySet()) {
+				data.getValue().setData(kryo.readClassAndObject(input));
+			}
 
-		// FIXME
-		// This logic have no type safety.
-		// I think, type map can be solution.
-		for (Entry<String, Object> data : loadedData.entrySet()) {
-			((Loadable<Object>) applicationContext.getBean(data.getKey()))
-					.setData(data);;
+			input.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
+
 	public void loadNewGame() {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();
@@ -82,8 +93,7 @@ public class LoadManager {
 	}
 
 	private void setStorySection() {
-		StorySection prologueStorySection = eventAssets
-				.getStorySection(PROLOGUE_STORYSECTION_NUMBER);
+		StorySection prologueStorySection = eventAssets.getStorySection(PROLOGUE_STORYSECTION_NUMBER);
 
 		storySectionManager.setCurrentStorySection(prologueStorySection);
 		storySectionManager.insertStorySequence();

@@ -8,6 +8,7 @@ import com.mygdx.enums.GameObjectEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.SaveManager;
 import com.mygdx.model.event.GameObject;
 
 public class GameObjectButtonListener extends ClickListener {
@@ -15,6 +16,8 @@ public class GameObjectButtonListener extends ClickListener {
 	private EventManager eventManager;
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private SaveManager saveManager;
 	private GameObject pressedGameObject;
 
 	@Override
@@ -22,6 +25,7 @@ public class GameObjectButtonListener extends ClickListener {
 		if (pressedGameObject.getObjectType().equals(GameObjectEnum.NORMAL)) {
 			pressedGameObject.setObjectType(GameObjectEnum.PRESSED);
 		}
+		saveManager.save();
 		eventManager.setCurrentGameObject(pressedGameObject);
 		screenFactory.show(ScreenEnum.GAME_OBJECT);
 	}
