@@ -983,7 +983,7 @@ talkuiwindow
   orig: 1920, 365
   offset: 0, 0
   index: -1
-  
+
 cobweb_inn_pack.png
 size: 2048,2048
 format: RGBA8888
@@ -1012,76 +1012,76 @@ cobwebinnscene
   index: -1
 
 oberon_pack.png
-size: 2048,4096
+size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-bgoberon1
+house
   rotate: false
-  xy: 2, 780
-  size: 1920, 2160
-  orig: 1920, 2160
-  offset: 0, 0
-  index: -1
-downbutton
-  rotate: false
-  xy: 288, 656
-  size: 234, 122
-  orig: 234, 122
-  offset: 0, 0
-  index: -1
-smallHill
-  rotate: false
-  xy: 288, 574
+  xy: 2, 84
   size: 200, 80
   orig: 200, 80
   offset: 0, 0
   index: -1
-square
+oberen0007-------0
   rotate: false
-  xy: 524, 698
+  xy: 2, 392
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+oberen0012-------0
+  rotate: false
+  xy: 1924, 392
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+oberoninn
+  rotate: false
+  xy: 3846, 1268
   size: 200, 80
   orig: 200, 80
   offset: 0, 0
   index: -1
-temple
+oberonstore
+  rotate: false
+  xy: 746, 310
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+oldtemple
   rotate: false
   xy: 2, 2
   size: 200, 80
   orig: 200, 80
   offset: 0, 0
   index: -1
-toRetreatStone
+retreatroad
   rotate: false
-  xy: 2, 208
-  size: 284, 284
-  orig: 284, 284
+  xy: 2, 166
+  size: 231, 224
+  orig: 231, 224
   offset: 0, 0
   index: -1
-tokadila
+tokadillacastle
   rotate: false
-  xy: 2, 494
-  size: 284, 284
-  orig: 284, 284
+  xy: 235, 209
+  size: 273, 181
+  orig: 273, 181
   offset: 0, 0
   index: -1
-townuibuildtagbuilding
+townuidown
   rotate: false
-  xy: 288, 492
-  size: 200, 80
-  orig: 200, 80
+  xy: 3846, 1350
+  size: 234, 122
+  orig: 234, 122
   offset: 0, 0
   index: -1
-townuibuildtaginn
+townuiup
   rotate: false
-  xy: 726, 698
-  size: 200, 80
-  orig: 200, 80
-  offset: 0, 0
-  index: -1
-upbutton
-  rotate: false
-  xy: 2, 84
+  xy: 510, 268
   size: 234, 122
   orig: 234, 122
   offset: 0, 0
