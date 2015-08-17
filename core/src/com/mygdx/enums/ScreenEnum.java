@@ -8,7 +8,7 @@ public enum ScreenEnum {
 			"save"), SKILL("skill"), BONUS_POINT("bonus_point"), LOAD("load"), EVENT(
 			"event"), FIELD("field"), ENDING("ending"), CG("cg"), BGM("bgm"), COLLECTION(
 			"collection"), STATUS("status"), BATTLE("battle"), ENCOUNTER(
-			"encounter");
+			"encounter"), INVENTORY("inventory");
 
 	private String code;
 

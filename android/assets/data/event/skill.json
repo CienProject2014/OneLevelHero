@@ -4,7 +4,7 @@
     "skillType" : "tech",
     "target": "monster",
     "costCasting": "0",
-    "costGauge": "0",
+    "costGauge": "20",
     "elementType": "none",
     "hitboxSize": "3",
     "damage": "100",

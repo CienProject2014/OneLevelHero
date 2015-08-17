@@ -11,7 +11,7 @@
       "magicDefense": 200,
       "healthPoint": 10000,
       "maxHealthPoint": 10000,
-      "speed": 200,
+      "speed": 10,
       "experience": 0,
       "maxExperience": 1220,
       "fireResistance": 0,

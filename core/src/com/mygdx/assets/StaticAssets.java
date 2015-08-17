@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar.ProgressBarStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -25,18 +24,12 @@ import com.uwsoft.editor.renderer.resources.ResourceManager;
 public class StaticAssets {
 	public static Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 	public static Map<String, StringFile> filePathMap;
-	public static Map<String, Texture> characterTextureMap = new HashMap<String, Texture>();
-	public static Map<String, Texture> monsterTextureMap = new HashMap<String, Texture>();
-	public static Map<String, Texture> backgroundTextureMap = new HashMap<String, Texture>();
+	public static Map<String, Texture> textureMap = new HashMap<>();
 	public static Map<String, FrameSheet> animationSheetMap;
-	public static Map<String, Texture> battleUiTextureMap = new HashMap<String, Texture>();
-	public static Map<String, HashMap<String, Float>> uiConstantsMap = new HashMap<String, HashMap<String, Float>>();
+	public static Map<String, HashMap<String, Float>> uiConstantsMap = new HashMap<>();
 
 	public static ProgressBarStyle barstyle_hp;
 	public static ProgressBarStyle barstyle_turn;
-
-	public static TextureAtlas items = new TextureAtlas(
-			"texture/items/items.pack");
 	public static final float BASE_WINDOW_WIDTH = 1920;
 	public static final float BASE_WINDOW_HEIGHT = 1080;
 	public static float windowWidth;
@@ -84,8 +77,8 @@ public class StaticAssets {
 
 	public static void loadSize(Stage stage) {
 		Viewport vp = stage.getViewport();
-		windowWidth = vp.getViewportWidth();
-		windowHeight = vp.getViewportHeight();
+		windowWidth = vp.getWorldWidth();
+		windowHeight = vp.getWorldHeight();
 		resolutionFactor = windowWidth / BASE_WINDOW_WIDTH;
 
 		Map<String, HashMap> stageMap = JsonParser.parseMap(HashMap.class,
@@ -93,20 +86,13 @@ public class StaticAssets {
 		for (Entry<String, HashMap> stageEntry : stageMap.entrySet()) {
 			uiConstantsMap.put(stageEntry.getKey(), stageEntry.getValue());
 		}
-
 	}
 
 	public static void loadTexture() {
-		backgroundTextureMap = new HashMap<>();
-		monsterTextureMap = new HashMap<>();
-		characterTextureMap = new HashMap<>();
 		animationSheetMap = JsonParser.parseMap(FrameSheet.class, filePathMap
 				.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
 
-		DirectoryTextureMapper(characterTextureMap, "texture/character");
-		DirectoryTextureMapper(monsterTextureMap, "texture/monster");
-		DirectoryTextureMapper(backgroundTextureMap, "texture/background");
-		DirectoryTextureMapper(battleUiTextureMap, "texture/ui/battle");
+		DirectoryTextureMapper(textureMap, "texture");
 	}
 	public static void DirectoryTextureMapper(Map<String, Texture> map,
 			String path) {
@@ -118,15 +104,19 @@ public class StaticAssets {
 			fh = Gdx.files.internal("./bin/" + path);
 		}
 
+		DirectoryTextureMapperRecursive(map, fh);
+	}
+	public static void DirectoryTextureMapperRecursive(
+			Map<String, Texture> map, FileHandle fh) {
 		if (fh.isDirectory()) {
 			FileHandle[] fhs = fh.list();
 
 			for (FileHandle e : fhs) {
-				if (!map.containsKey(e.nameWithoutExtension())
-						&& e.extension().matches("^(png|jpg)")) {
-					map.put(e.nameWithoutExtension(), new Texture(e.path()));
-				}
+				DirectoryTextureMapperRecursive(map, e);
 			}
+		} else if (!map.containsKey(fh.nameWithoutExtension())
+				&& fh.extension().matches("^(png|jpg)")) {
+			map.put(fh.nameWithoutExtension(), new Texture(fh.path()));
 		}
 	}
 }

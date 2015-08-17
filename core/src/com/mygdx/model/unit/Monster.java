@@ -2,11 +2,10 @@ package com.mygdx.model.unit;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.model.item.Item;
 
-public class Monster extends Unit implements Fightable {
+public class Monster extends Unit {
 	public Monster() {
 	}
 
@@ -37,29 +36,6 @@ public class Monster extends Unit implements Fightable {
 		this.elementType = elementType;
 	}
 
-	@Override
-	public void attack(Unit defender) {
-		int attackDmg = this.getStatus().getAttack();
-		int defenseValue = defender.getStatus().getDefense();
-		int defenderHp = defender.getStatus().getHp();
-		int realDmg = attackDmg - defenseValue;
-		if (realDmg < 0) {
-			realDmg = 1;
-		}
-		if (defenderHp - realDmg > 0) {
-			defender.getStatus().setHp(defenderHp - realDmg);
-		} else {
-			defender.getStatus().setHp(0);
-		}
-		Gdx.app.log("Monster", this.getName() + "이(가) " + defender.getName()
-				+ "을(를) 공격하였습니다!");
-	}
-
-	@Override
-	public void skillAttack(Unit defender, String skillName) {
-		Gdx.app.log("Monster", this.getName() + "이(가) " + skillName
-				+ "을(를) 사용하였습니다!");
-	}
 	public ArrayList<String> getDropItemList() {
 		return dropItemList;
 	}

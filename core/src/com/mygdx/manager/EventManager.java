@@ -11,6 +11,7 @@ import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.EventElementEnum;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.PositionEnum;
@@ -24,6 +25,8 @@ import com.mygdx.model.event.EventScene;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.event.NPC;
 import com.mygdx.model.event.Reward;
+import com.mygdx.store.Loadable;
+import com.mygdx.store.Savable;
 
 /**
  * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스 CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을
@@ -32,9 +35,7 @@ import com.mygdx.model.event.Reward;
  * @author Velmont
  * 
  */
-public class EventManager {
-	@Autowired
-	private EventInfo eventInfo;
+public class EventManager implements Savable<EventInfo>, Loadable<EventInfo> {
 	@Autowired
 	private RewardManager rewardManager;
 	@Autowired
@@ -60,10 +61,13 @@ public class EventManager {
 	@Autowired
 	private TimeManager timeManager;
 
+	private EventInfo eventInfo = new EventInfo();
+
 	private Iterator<EventScene> eventSceneIterator;
 	private final int eventPlusRule = 1;
 
 	public void doStoryEvent(EventTypeEnum eventType) {
+		setCurrentEventElementType(EventElementEnum.NPC);
 		switch (eventType) {
 			case BATTLE :
 				battleManager.startBattle(unitAssets
@@ -106,8 +110,17 @@ public class EventManager {
 				break;
 		}
 	}
+
+	public EventElementEnum getCurrentEventElementType() {
+		return eventInfo.getCurrentEventElementType();
+	}
+
+	public void setCurrentEventElementType(EventElementEnum eventElementType) {
+		eventInfo.setCurrentEventElementType(eventElementType);
+	}
+
 	public Stage getSceneEvent() {
-		Event currentEvent = eventInfo.getCurrentEvent();
+		Event currentEvent = getCurrentNpcEvent();
 		switch (currentEvent.getEventType()) {
 			case CHAT :
 			case CREDIT :
@@ -135,11 +148,20 @@ public class EventManager {
 		return eventInfo.getCurrentEventInfo();
 	}
 
+	public EventScene getGameObjectEventScene() {
+		EventScene eventScene = eventInfo.getCurrentGameObjectEvent()
+				.getEventScenes().get(0);
+		if (eventInfo.getCurrentGameObjectEvent().getRewards() != null) {
+			addEventRewardQueue(eventInfo.getCurrentGameObject()
+					.getObjectEvent().getRewards());
+		}
+		return eventScene;
+	}
+
 	public Iterator<EventScene> getEventSceneIterator() {
-		eventSceneIterator = eventInfo.getCurrentEvent()
-				.getEventSceneIterator();
-		if (eventInfo.getCurrentEvent().getRewards() != null) {
-			addEventRewardQueue(eventInfo.getCurrentEvent().getRewards());
+		eventSceneIterator = getCurrentNpcEvent().getEventSceneIterator();
+		if (getCurrentNpcEvent().getRewards() != null) {
+			addEventRewardQueue(getCurrentNpcEvent().getRewards());
 		}
 		return eventSceneIterator;
 	}
@@ -153,13 +175,18 @@ public class EventManager {
 	}
 
 	public NPC getCurrentNpc() {
-		return eventInfo.getCurrentNpc();
+		return eventAssets.getNpc(eventInfo.getCurrentNpcName());
 	}
 
 	public Event getCurrentEvent() {
-		return eventInfo.getCurrentEvent();
+		return eventAssets.getNpcEvent(eventInfo.getEventPacket());
 	}
 
+	public Event getCurrentNpcEvent() {
+		EventPacket eventPacket = eventInfo.getEventPacket();
+		return eventAssets.getNpcEvent(eventPacket.getEventNpc(),
+				eventPacket.getEventNumber());
+	}
 	public void setCurrentGameObject(GameObject gameObject) {
 		eventInfo.setCurrentGameObject(gameObject);
 	}
@@ -168,9 +195,16 @@ public class EventManager {
 		return eventInfo.getCurrentGameObject();
 	}
 
-	public void finishEvent() {
-		if (eventInfo.getCurrentEvent().getEventState() == EventStateEnum.OPENED) {
-			eventInfo.getCurrentEvent().setEventState(EventStateEnum.CLEARED);
+	public void finishNpcEvent() {
+		if (getCurrentNpcEvent().getEventState() == EventStateEnum.OPENED) {
+			getCurrentNpcEvent().setEventState(EventStateEnum.CLEARED);
+		}
+	}
+
+	public void finishGameObjectEvent() {
+		if (eventInfo.getCurrentGameObjectEvent().getEventState() == EventStateEnum.OPENED) {
+			eventInfo.getCurrentGameObjectEvent().setEventState(
+					EventStateEnum.CLEARED);
 		}
 	}
 
@@ -238,5 +272,15 @@ public class EventManager {
 				screenFactory.show(ScreenEnum.EVENT);
 			}
 		}
+	}
+
+	@Override
+	public void setData(EventInfo eventInfo) {
+		this.eventInfo = eventInfo;
+	}
+
+	@Override
+	public EventInfo getData() {
+		return eventInfo;
 	}
 }

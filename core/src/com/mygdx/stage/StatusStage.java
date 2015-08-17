@@ -1,6 +1,6 @@
 package com.mygdx.stage;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +10,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Array;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
@@ -32,6 +34,9 @@ import com.uwsoft.editor.renderer.actor.LabelItem;
 import com.uwsoft.editor.renderer.data.LabelVO;
 
 public class StatusStage extends BaseOverlapStage {
+	public static final String SCENE_NAME = "status_scene";
+	public final String CHARACTER_STATUS_IMAGE = "character_status_image";
+	public final String CHARACTER_IMAGE = "character_image";
 	@Autowired
 	private ConstantsAssets constantsAssets;
 	@Autowired
@@ -49,20 +54,42 @@ public class StatusStage extends BaseOverlapStage {
 	private ImageItem largeImage;
 	private List<LabelVO> labels;
 	private Image[] heroLargeImage;
-	private final String STATUS_LABEL_NAME = "status";
+	private CompositeItem inventoryButton;
+	private final String STATUS_LABEL_NAME = "status_label";
 	private CompositeItem backButton;
 
 	public Stage makeStage() {
+		HashMap<String, Array<String>> sceneConstants = constantsAssets
+				.getSceneConstants(SCENE_NAME);
 		initSceneLoader(StaticAssets.rm);
-		sceneLoader.loadScene("status_scene");
+		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
 		setCamera();
-		setLabel();
+		setLabel(partyManager, sceneConstants);
 		setButton();
-		setBustImage();
+		setCharacterStatusImage(partyManager, sceneConstants);
+		setTabButton();
 		addListener();
 
 		return this;
+	}
+
+	private void setTabButton() {
+		inventoryButton = sceneLoader.getRoot().getCompositeById("inventory");
+		inventoryButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				screenFactory.show(ScreenEnum.INVENTORY);
+			}
+
+		});
 	}
 
 	private void setButton() {
@@ -82,7 +109,8 @@ public class StatusStage extends BaseOverlapStage {
 		});
 	}
 
-	private void setLabel() {
+	private void setLabel(PartyManager partyManager,
+			HashMap<String, Array<String>> sceneConstants) {
 		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
 		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name");
 		nameLabel.setText(currentSelectedHero.getName());
@@ -96,32 +124,38 @@ public class StatusStage extends BaseOverlapStage {
 				Color.WHITE));
 		fatigueLabel.setFontScale(1.0f);
 		fatigueLabel.setTouchable(Touchable.disabled);
-		ArrayList<String> labelList = constantsAssets
-				.getLabels(STATUS_LABEL_NAME);
-		for (int i = 0; i < labelList.size(); i++) {
+		Array<String> labelList = sceneConstants.get(STATUS_LABEL_NAME);
+		for (int i = 0; i < labelList.size; i++) {
 			LabelItem labelItem = sceneLoader.getRoot().getLabelById(
 					labelList.get(i));
-			labelItem
-					.setText(currentSelectedHero.getStatus().getStatusList()[i]);
+			labelItem.setText(currentSelectedHero.getStatus().getStatusList()
+					.get(i));
 			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(),
 					Color.WHITE));
 			labelItem.setFontScale(1.0f);
 			labelItem.setTouchable(Touchable.disabled);
 		}
 	}
-	private void setBustImage() {
+
+	private void setCharacterStatusImage(PartyManager partyManager,
+			HashMap<String, Array<String>> sceneConstants) {
 		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
-		CompositeItem compositeItem = sceneLoader.getRoot().getCompositeById(
-				"change_01");
-		ImageItem bustImage = compositeItem.getImageById("character_image");
-		bustImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
-				TextureManager.getStatusTexture(currentSelectedHero
-						.getFacePath()))));
+		Array<String> characterStatusList = sceneConstants
+				.get(CHARACTER_STATUS_IMAGE);
+		for (int i = 0; i < partyManager.getPartyList().size(); i++) {
+			CompositeItem compositeItem = sceneLoader.getRoot()
+					.getCompositeById(characterStatusList.get(i));
+			ImageItem characterStatusImage = compositeItem.getImageById(CHARACTER_IMAGE);
+			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
+					TextureManager.getStatusTexture(partyManager.getPartyList()
+							.get(i).getFacePath()))));
+		}
 	}
 
 	private void setCamera() {
-		cam = new OrthographicCamera(1920f, 1080f);
-		cam.position.set(1920 / 2, 1080 / 2, 0);
+		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH,
+				StaticAssets.BASE_WINDOW_HEIGHT);
+		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		getViewport().setCamera(cam);
 	}
 }

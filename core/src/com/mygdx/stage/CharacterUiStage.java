@@ -55,9 +55,8 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		for (int i = 0; i < heroStatusBarList.size(); i++) {
 			heroStatusBarList.get(i).update();
-			hpLabelList.get(i).setText(
-					heroStatusBarList.get(i).getHp() + "/"
-							+ heroStatusBarList.get(i).getMaxHp());
+			hpLabelList.get(i).setText(heroStatusBarList.get(i).getHp() + "/"
+					+ heroStatusBarList.get(i).getMaxHp());
 		}
 	}
 
@@ -86,8 +85,8 @@ public class CharacterUiStage extends BaseOneLevelStage {
 				.iterator();
 		while (heroStatusBarIterator.hasNext()) {
 			Table heroTable = makeHeroTable(heroStatusBarIterator.next());
-			table.add(heroTable).padBottom(
-					uiConstantsMap.get("heroTablePadBottom"));
+			table.add(heroTable)
+					.padBottom(uiConstantsMap.get("heroTablePadBottom"));
 			table.row();
 		}
 		return table;
@@ -110,17 +109,17 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		HorizontalGroup buffGroup = new HorizontalGroup();
 		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get(BUFF_DE_FAINT)));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get(BUFF_DE_SATAN)));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get(BUFF_DE_ICE)));
-		buffGroup.addActor(new Image(StaticAssets.battleUiTextureMap
-				.get(BUFF_DE_FIRE)));
+		buffGroup.addActor(
+				new Image(StaticAssets.textureMap.get(BUFF_DE_FAINT)));
+		buffGroup.addActor(
+				new Image(StaticAssets.textureMap.get(BUFF_DE_SATAN)));
+		buffGroup.addActor(new Image(StaticAssets.textureMap.get(BUFF_DE_ICE)));
+		buffGroup
+				.addActor(new Image(StaticAssets.textureMap.get(BUFF_DE_FIRE)));
 		barTable = new Table();
-		Label hpLabel = new Label(statusBar.getHp() + "/"
-				+ statusBar.getMaxHp(), uiComponentAssets.getSkin());
+		Label hpLabel = new Label(
+				statusBar.getHp() + "/" + statusBar.getMaxHp(),
+				uiComponentAssets.getSkin());
 		hpLabelList.add(hpLabel);
 		barTable.add(hpLabel).padBottom(uiConstantsMap.get("heroBarSpace"))
 				.row();

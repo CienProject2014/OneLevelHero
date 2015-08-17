@@ -6,13 +6,18 @@ import java.util.Map;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.unitStrategy.AttackStrategy;
 
-public abstract class Unit implements Comparable<Unit>, Fightable {
+public abstract class Unit implements Comparable<Unit> {
+	private AttackStrategy attackStrategy;
 	private String facePath;
 	private String name;
 	protected Status status;
 	private Map<String, Skill> skills;
 	private int gauge;
+	private int subvalue;
+	private int actingPower;
+	private int preGague;
 	private Texture bodyTexture;
 	private Texture faceTexture;
 	private Texture bigBattleTexture;
@@ -86,20 +91,56 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 		this.gauge = gauge;
 	}
 
+	public int getSubvalue() {
+		return subvalue;
+	}
+
+	public void setSubvalue(int subvalue) {
+		this.subvalue = subvalue;
+	}
+
+	public int getActingPower() {
+		return actingPower;
+	}
+
+	public void setActingPower(int actingPower) {
+		this.actingPower = actingPower;
+	}
+
 	@Override
 	public int compareTo(Unit obj) {
 		if (this.getGauge() == obj.getGauge()) {
-			if (this.getStatus().getSpeed() == obj.getStatus().getSpeed()) {
-				return 0;
-			} else if (this.getStatus().getSpeed() > obj.getStatus().getSpeed()) {
+			if (this.getSubvalue() == obj.getSubvalue()) {
+				if (this.getStatus().getSpeed() == obj.getStatus().getSpeed()) {
+					if (obj instanceof Monster) {
+						// 몬스터는 꼴지!
+						return 1;
+					} else if (obj.getFacePath() == "yongsa") {
+						// 용사는 일등!
+						return -1;
+					} else {
+						// 나머지는 첨 들어갈때 그대로 있어 그냥 어차피 리스트는 순서대로 들어가니 적용댈듯
+						return 0;
+					}
+				} else if (this.getStatus().getSpeed() > obj.getStatus()
+						.getSpeed()) {
+					// 스피드가 더 크다
+					return -1;
+				} else {
+					// 스피드가 더 작다
+					return 1;
+				}
+			} else if (this.getSubvalue() > obj.getSubvalue()) {
 				return 1;
 			} else {
 				return -1;
 			}
 		} else if (this.getGauge() > obj.getGauge()) {
-			return 1;
-		} else {
+			// 행동 게이지가 더 클 때
 			return -1;
+		} else {
+			// 행동 게이지가 더 작을 때
+			return 1;
 		}
 	}
 
@@ -115,35 +156,47 @@ public abstract class Unit implements Comparable<Unit>, Fightable {
 
 	public Texture getFaceTexture() {
 		if (faceTexture == null) {
-			if (this instanceof Hero)
-				faceTexture = TextureManager.getCharacterFaceTexture(facePath);
-			else
-				faceTexture = TextureManager.getMonsterFaceTexture(facePath);
+			faceTexture = TextureManager.getFaceTexture(facePath);
 		}
 		return faceTexture;
 	}
 
 	public Texture getBigBattleTexture() {
 		if (bigBattleTexture == null) {
-			if (this instanceof Hero)
-				bigBattleTexture = TextureManager
-						.getCharacterBattleTurnBigTexture(facePath);
-			else
-				bigBattleTexture = TextureManager
-						.getMonsterBattleTurnBigTexture(facePath);
+			bigBattleTexture = TextureManager.getBattleTurnBigTexture(facePath);
 		}
 		return bigBattleTexture;
 	}
 
 	public Texture getSmallBattleTexture() {
 		if (smallBattleTexture == null) {
-			if (this instanceof Hero)
-				smallBattleTexture = TextureManager
-						.getCharacterBattleTurnSmallTexture(facePath);
-			else
-				smallBattleTexture = TextureManager
-						.getMonsterBattleTurnSmallTexture(facePath);
+			smallBattleTexture = TextureManager
+					.getBattleTurnSmallTexture(facePath);
 		}
 		return smallBattleTexture;
+	}
+
+	public int getPreGague() {
+		return preGague;
+	}
+
+	public void setPreGague(int preGague) {
+		this.preGague = preGague;
+	}
+
+	public void attack(Unit opponent) {
+		attackStrategy.attack(this, opponent);
+	}
+
+	public void skillAttack(Unit opponent, String skillName) {
+		attackStrategy.skillAttack(this, opponent, skillName);
+	}
+
+	public AttackStrategy getAttackStrategy() {
+		return attackStrategy;
+	}
+
+	public void setAttackStrategy(AttackStrategy attackStrategy) {
+		this.attackStrategy = attackStrategy;
 	}
 }

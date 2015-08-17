@@ -1,29 +1,30 @@
 package com.mygdx.assets;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import com.badlogic.gdx.utils.Array;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.jsonModel.Constants;
 import com.mygdx.util.JsonParser;
 
 public class ConstantsAssets implements JsonAssetsInitializable {
-	@SuppressWarnings("rawtypes")
-	private Map<String, ArrayList<String>> labelConstantsMap = new HashMap<>();
+	private Map<String, HashMap<String, Array<String>>> sceneConstantsMap = new HashMap<>();
 
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	@Override
 	public void set(Map<String, String> jsonStringMap) {
-		ArrayList<Constants> constantsList = new ArrayList<>();
-		constantsList = JsonParser.parseList(Constants.class,
-				jsonStringMap.get(JsonEnum.LABEL_CONSTANTS_JSON.toString()));
-		for (Constants constants : constantsList) {
-			labelConstantsMap.put(constants.getListName(),
-					constants.getConstantsList());
+		Map<String, HashMap> jsonLabelConstantsMap = JsonParser.parseMap(
+				HashMap.class,
+				jsonStringMap.get(JsonEnum.SCENE_CONSTANTS_JSON.toString()));
+		for (Entry<String, HashMap> labelConstantsEntry : jsonLabelConstantsMap
+				.entrySet()) {
+			sceneConstantsMap.put(labelConstantsEntry.getKey(),
+					labelConstantsEntry.getValue());
 		}
 	}
 
-	public ArrayList<String> getLabels(String labelListName) {
-		return labelConstantsMap.get(labelListName);
+	public HashMap<String, Array<String>> getSceneConstants(String labelListName) {
+		return sceneConstantsMap.get(labelListName);
 	}
 }

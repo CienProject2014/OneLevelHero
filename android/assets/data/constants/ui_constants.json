@@ -12,8 +12,6 @@
     "ButtonSpace": 55,
     "TablePadBottom":365,
     "TablePadRight":15
-
-
 },
   "BattleStage": {
 	"RMenuTablePadTop": 161,
@@ -52,8 +50,6 @@
     "MonsterBarSpace" : 20,
     "hpTableWidth" : 666,
     "hpTablePadBottom" : 128
-    
-
   },
   "GameUiStage": {
 	"padLeft": 15,
@@ -64,19 +60,31 @@
 	"TButtonWidthLarge": 620,
 	"TButtonHeightLarge": 131
   },
+  "GameObjectPopup":{
+    "questionLabelX" : 55,
+    "questionLabelY" : 140,
+    "questionLabelWidth" : 750,
+    "questionLabelHeight" : 340,
+  	"popupWidth" : 860,
+  	"popupHeight" : 480,
+  	"buttonHeight" : 90,
+  	"buttonPadBottom" : 50,
+  	"closeButtonPadLeft" : 50
+  },
   "EventStage": {
 	"scriptWidth": 1920,
 	"scriptHeight": 365,
-	"scriptPadLeft": 8,
-	"scriptPadBottom": 58,
-	"scriptTitleWidth": 748,
-	"scriptTitleHeight": 57,
+	"scriptPadBottom": 45,
+	"scriptPadLeft" : 525,
+	"scriptTitleWidth": 870,
+	"scriptTitleHeight": 40,
 	"scriptTitlePadBottom": 11,
-	"scriptContentWidth": 748,
-	"scriptContentHeight": 189,
-	"talkerPadLeft": 15,
-	"talkerWidth": 567,
-	"talkerHeight": 900,
+	"scriptContentWidth": 870,
+	"scriptContentHeight": 230,	
+	"scriptContentPadTop": 30,
+	"talkerPadLeft": 0,
+	"talkerWidth": 525,
+	"talkerHeight": 914,
 	"statusWidth" : 300,
 	"statusHeight" : 550
   }

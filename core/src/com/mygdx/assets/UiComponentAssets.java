@@ -14,9 +14,9 @@ import com.mygdx.model.jsonModel.StringFile;
 
 public class UiComponentAssets implements FileAssetsInitializable {
 	private Skin skin;
-	private TextureAtlas items;
 	private TextureRegionDrawable[] chatButton;
 	private TextureRegionDrawable eventButton;
+	private Image chatLineImage;
 	private Texture splash;
 	private Image logo;
 	private BitmapFont font;
@@ -25,30 +25,23 @@ public class UiComponentAssets implements FileAssetsInitializable {
 		font = new BitmapFont(Gdx.files.internal("skin/hangeul2.fnt"));
 		TextureAtlas textureAtlas = new TextureAtlas("skin/chatbutton.pack");
 		chatButton = new TextureRegionDrawable[6];
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 6; i++) {
 			chatButton[i] = new TextureRegionDrawable(
 					textureAtlas.findRegion("chatbutton" + (i + 1)));
+		}
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
-		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		setEventButton(new TextureRegionDrawable(new TextureRegion(new Texture(
 				Gdx.files.internal("texture/ui/chat/talk_select.png")))));
+		setScriptButton(new Image(new Texture(
+				Gdx.files.internal("texture/ui/chat/talkui_window.png"))));
 	}
-
 	public Skin getSkin() {
 		return skin;
 	}
 
 	public void setSkin(Skin skin) {
 		this.skin = skin;
-	}
-
-	public TextureAtlas getItems() {
-		return items;
-	}
-
-	public void setItems(TextureAtlas items) {
-		this.items = items;
 	}
 
 	public TextureRegionDrawable[] getChatButton() {
@@ -89,5 +82,13 @@ public class UiComponentAssets implements FileAssetsInitializable {
 
 	public void setEventButton(TextureRegionDrawable eventButton) {
 		this.eventButton = eventButton;
+	}
+
+	public Image getChatLineImage() {
+		return chatLineImage;
+	}
+
+	public void setScriptButton(Image image) {
+		this.chatLineImage = image;
 	}
 }

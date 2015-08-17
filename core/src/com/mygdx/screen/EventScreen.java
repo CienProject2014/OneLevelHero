@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
@@ -26,6 +27,7 @@ public class EventScreen extends BaseScreen {
 	public void render(float delta) {
 		super.render(delta);
 		eventStage.draw();
+		Table.drawDebug(eventStage);
 		drawSelectStage();
 	}
 
@@ -37,13 +39,13 @@ public class EventScreen extends BaseScreen {
 
 	private void drawSelectStage() {
 		switch (eventManager.getCurrentEvent().getEventType()) {
-			case SELECT_COMPONENT:
+			case SELECT_COMPONENT :
 				selectStage.draw();
 				break;
-			case SELECT_EVENT:
+			case SELECT_EVENT :
 				selectStage.draw();
 				break;
-			default:
+			default :
 				break;
 		}
 	}
@@ -51,13 +53,13 @@ public class EventScreen extends BaseScreen {
 	private void setMultiprocessor() {
 		multiplexer = new InputMultiplexer();
 		switch (eventManager.getCurrentEvent().getEventType()) {
-			case SELECT_COMPONENT:
+			case SELECT_COMPONENT :
 				selectStage = stageFactory
 						.makeStage(StageEnum.SELECT_COMPONENT);
 				multiplexer.addProcessor(0, selectStage);
 				multiplexer.addProcessor(1, eventStage);
 				break;
-			default:
+			default :
 				multiplexer.addProcessor(0, eventStage);
 				break;
 		}

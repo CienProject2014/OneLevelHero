@@ -2,37 +2,53 @@ package com.mygdx.model.unit;
 
 import java.util.HashMap;
 
-import com.badlogic.gdx.Gdx;
+import com.mygdx.unitStrategy.InventoryStrategy;
 
-public class Hero extends Unit implements Fightable {
+public class Hero extends Unit {
 	private Inventory inventory;
+	private InventoryStrategy inventoryStrategy;
 
 	/* For Json Work */
 	private HashMap<String, String> initialInventoryList;
 
-	@Override
-	public void attack(Unit defender) {
-		int attackDmg = this.getStatus().getAttack();
-		int defenseValue = defender.getStatus().getDefense();
-		int defenderHp = defender.getStatus().getHp();
-		int realDmg = attackDmg - defenseValue;
-		if (realDmg < 0) {
-			realDmg = 1;
-		}
-		if (defenderHp - realDmg > 0) {
-			defender.getStatus().setHp(defenderHp - realDmg);
-		} else {
-			defender.getStatus().setHp(0);
-		}
-		Gdx.app.log("Hero", this.getName() + "이(가) " + defender.getName()
-				+ "을(를) 공격하였습니다!");
+	public InventoryStrategy getInventoryStrategy() {
+		return inventoryStrategy;
 	}
 
-	@Override
-	public void skillAttack(Unit defender, String skillName) {
-		Gdx.app.log("Hero", this.getName() + "이(가) " + defender.getName()
-				+ "에게 " + skillName + "을(를) 사용하였습니다!");
+	public void setInventoryStrategy(InventoryStrategy inventoryStrategy) {
+		this.inventoryStrategy = inventoryStrategy;
+	}
 
+	public void equipClothes(String clothesName) {
+		inventoryStrategy.equipClothes(this, clothesName);
+	}
+
+	public void unEquipClothes() {
+		inventoryStrategy.unEquipClothes(this);
+	}
+
+	public void equipRightHandGrip(String rightHandGripName) {
+		inventoryStrategy.equipRightHandGrip(this, rightHandGripName);
+	}
+
+	public void equipLeftHandGrip(String leftHandGripName) {
+		inventoryStrategy.equipLeftHandGrip(this, leftHandGripName);
+	}
+
+	public void unEquipRightHandGrip() {
+		inventoryStrategy.unEquipLeftHandGrip(this);
+	}
+
+	public void unEquipLeftHandGrip() {
+		inventoryStrategy.unEquipLeftHandGrip(this);
+	}
+
+	public void equipAccessory(String accessoryName) {
+		inventoryStrategy.equipAccessory(this, accessoryName);
+	}
+
+	public void unEquipAccessory() {
+		inventoryStrategy.unEquipAccessory(this);
 	}
 
 	public Inventory getInventory() {
@@ -47,8 +63,8 @@ public class Hero extends Unit implements Fightable {
 		return initialInventoryList;
 	}
 
-	public void setInitialInventoryList(HashMap<String, String> initialInventoryList) {
+	public void setInitialInventoryList(
+			HashMap<String, String> initialInventoryList) {
 		this.initialInventoryList = initialInventoryList;
 	}
-
 }

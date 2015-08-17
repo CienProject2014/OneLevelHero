@@ -6,8 +6,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.mygdx.assets.Assets;
-import com.mygdx.currentState.FieldInfo;
-import com.mygdx.currentState.PositionInfo;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.factory.StageFactory;
 import com.mygdx.manager.EventManager;
@@ -26,10 +24,6 @@ public abstract class BaseScreen implements Screen {
 	protected MusicManager musicManager;
 	@Autowired
 	protected EventManager eventManager;
-	@Autowired
-	protected PositionInfo positionInfo;
-	@Autowired
-	protected FieldInfo movingInfo;
 
 	@Override
 	public void render(float delta) {

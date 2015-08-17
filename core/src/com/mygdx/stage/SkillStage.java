@@ -44,7 +44,7 @@ public class SkillStage extends BaseOverlapStage {
 
 	private List<CompositeItem> highlightButton;
 	private List<CompositeItem> skillTypeButton;
-	private String CUT_01 = "cut_01"; //FIXME
+	private String CUT_01 = "cut_01"; // FIXME
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
@@ -70,13 +70,13 @@ public class SkillStage extends BaseOverlapStage {
 		labelItem.setFontScale(1.0f);
 		labelItem.setTouchable(Touchable.disabled);
 
-		/*for (int i = 1; i < labels.size(); i++) {
-			labelItem = sceneLoader.getRoot().getLabelById(
-					labels.get(i).itemIdentifier);
-			labelItem.setText(partyInfo.getBattleMemberList()
-					.get(partyInfo.getSelectedInedex()).getStatus()
-					.getStatusList()[i]);
-		}*/
+		/*
+		 * for (int i = 1; i < labels.size(); i++) { labelItem =
+		 * sceneLoader.getRoot().getLabelById( labels.get(i).itemIdentifier);
+		 * labelItem.setText(partyInfo.getBattleMemberList()
+		 * .get(partyInfo.getSelectedInedex()).getStatus() .getStatusList()[i]);
+		 * }
+		 */
 	}
 
 	private void setSkillType() {
@@ -337,8 +337,9 @@ public class SkillStage extends BaseOverlapStage {
 	}
 
 	private void setCamera() {
-		cam = new OrthographicCamera(1920f, 1080f);
-		cam.position.set(1920 / 2, 1080 / 2, 0);
+		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH,
+				StaticAssets.BASE_WINDOW_HEIGHT);
+		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		getViewport().setCamera(cam);
 	}
 }
