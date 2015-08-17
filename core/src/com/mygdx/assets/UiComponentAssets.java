@@ -14,7 +14,6 @@ import com.mygdx.model.jsonModel.StringFile;
 
 public class UiComponentAssets implements FileAssetsInitializable {
 	private Skin skin;
-	private TextureAtlas items;
 	private TextureRegionDrawable[] chatButton;
 	private TextureRegionDrawable eventButton;
 	private Image chatLineImage;
@@ -31,7 +30,6 @@ public class UiComponentAssets implements FileAssetsInitializable {
 					textureAtlas.findRegion("chatbutton" + (i + 1)));
 		}
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
-		items = new TextureAtlas("texture/items/items.pack");
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		setEventButton(new TextureRegionDrawable(new TextureRegion(new Texture(
 				Gdx.files.internal("texture/ui/chat/talk_select.png")))));
@@ -44,14 +42,6 @@ public class UiComponentAssets implements FileAssetsInitializable {
 
 	public void setSkin(Skin skin) {
 		this.skin = skin;
-	}
-
-	public TextureAtlas getItems() {
-		return items;
-	}
-
-	public void setItems(TextureAtlas items) {
-		this.items = items;
 	}
 
 	public TextureRegionDrawable[] getChatButton() {

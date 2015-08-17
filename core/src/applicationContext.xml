@@ -28,7 +28,6 @@
 	<bean id="nodeAssets" class="com.mygdx.assets.NodeAssets" />
 
 	<bean id="currentState" class="com.mygdx.currentState.CurrentState"/>
-
 	<bean id="soundInfo" class="com.mygdx.currentState.SoundInfo" />
 	<bean id="listenerFactory" class="com.mygdx.factory.ListenerFactory"/>
 	<bean id="screenFactory" class="com.mygdx.factory.ScreenFactory" />
@@ -36,6 +35,7 @@
 
 	<bean id="animationManager" class="com.mygdx.manager.AnimationManager" />
 	<bean id="battleManager" class="com.mygdx.manager.BattleManager"/>
+	<bean id="bagManager" class="com.mygdx.manager.BagManager"/>
 	<bean id="cameraManager" class="com.mygdx.manager.CameraManager"/>
 	<bean id="encounterManager" class="com.mygdx.manager.EncounterManager"/>
 	<bean id="eventManager" class="com.mygdx.manager.EventManager"/>
@@ -129,6 +129,10 @@
 		scope="prototype"/>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
+	
+	<bean id="heroAttackStrategy" class="com.mygdx.unitStrategy.HeroAttackStrategy"/>	
+	<bean id="inventoryStrategy" class="com.mygdx.unitStrategy.InventoryStrategy"/>
+	<bean id="monsterAttackStrategy" class="com.mygdx.unitStrategy.MonsterAttackStrategy"/>	
 		
 	<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
 	<bean id="attackButtonListener" class="com.mygdx.listener.AttackButtonListener" scope="prototype"/>

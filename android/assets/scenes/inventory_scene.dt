@@ -217,6 +217,7 @@
         "y": 190,
         "zIndex": 19,
         "layerName": "Default",
+	"align" : 8,
         "tint": [
           1,
           1,
@@ -230,6 +231,7 @@
       },
       {
         "itemIdentifier": "item_label05",
+	"align" : 8,
         "x": 280,
         "y": 310,
         "zIndex": 20,
@@ -247,6 +249,7 @@
       },
       {
         "itemIdentifier": "item_label04",
+	"align" : 8,
         "x": 280,
         "y": 430,
         "zIndex": 21,
@@ -264,6 +267,7 @@
       },
       {
         "itemIdentifier": "item_label03",
+	"align" : 8,
         "x": 280,
         "y": 550,
         "zIndex": 22,
@@ -281,6 +285,7 @@
       },
       {
         "itemIdentifier": "item_label02",
+	"align" : 8,
         "x": 280,
         "y": 670,
         "zIndex": 23,
@@ -298,6 +303,7 @@
       },
       {
         "itemIdentifier": "item_label01",
+	"align" : 8,
         "x": 280,
         "y": 790,
         "zIndex": 24,
@@ -970,7 +976,7 @@
         }
       },
       {
-        "itemIdentifier": "page_light03",
+        "itemIdentifier": "page_light04",
         "x": 625,
         "y": 82,
         "zIndex": 37,
