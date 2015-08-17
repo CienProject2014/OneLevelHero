@@ -72,13 +72,13 @@ public class VillageStage extends BaseOverlapStage {
 	// FIXME
 	private void setVillageScene() {
 		if (positionManager.getCurrentNodeName().equals("cobweb")) {
-			villageInfo = worldNodeAssets.getVillage("cobweb");
+			villageInfo = worldNodeAssets.getVillageByName("cobweb");
 			sceneLoader.loadScene("cobweb_scene");
 		} else if (positionManager.getCurrentNodeName().equals("oberon")) {
-			villageInfo = worldNodeAssets.getVillage("oberon");
+			villageInfo = worldNodeAssets.getVillageByName("oberon");
 			sceneLoader.loadScene("oberon_scene");
 		} else {
-			villageInfo = worldNodeAssets.getVillage("blackwood");
+			villageInfo = worldNodeAssets.getVillageByName("blackwood");
 			sceneLoader.loadScene("blackwood_scene");
 		}
 	}

@@ -28,11 +28,16 @@ public class NodeAssets implements JsonAssetsInitializable {
 					monsterField.getFieldMonsterList());
 		}
 	}
-	public Village getVillage(String villageString) {
+
+	public Map<String, Village> getVillageMap() {
+		return villageMap;
+	}
+
+	public Village getVillageByName(String villageString) {
 		return villageMap.get(villageString);
 	}
 
-	public List<String> getMonsterList(FieldTypeEnum fieldType) {
+	public List<String> getMonsterFieldListByFieldType(FieldTypeEnum fieldType) {
 		return monsterFieldMap.get(fieldType);
 	}
 }
