@@ -63,7 +63,7 @@ public class BuildingStage extends BaseOverlapStage {
 
 	private void makeScene() {
 		buildingInfo = worldNodeAssets
-				.getVillage(positionManager.getCurrentNodeName()).getBuilding()
+				.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
 				.get(positionManager.getCurrentSubNodeName());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		cameraManager.stretchToDevice(this);
@@ -108,6 +108,7 @@ public class BuildingStage extends BaseOverlapStage {
 			gameObjectButton.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
+					eventManager.setCurrentGameObject(gameObject);
 					gameObjectPopup = new GameObjectPopup();
 					gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
 					gameObjectPopup.setListenerFactory(listenerFactory);
@@ -157,6 +158,8 @@ public class BuildingStage extends BaseOverlapStage {
 				objectButton.setLayerVisibilty(
 						GameObjectEnum.NORMAL.toString(), false);
 				objectButton.setTouchable(Touchable.disabled);
+				break;
+			case FUNCTION :
 				break;
 			default :
 				Gdx.app.log("BuildingStage", "NULL GameObjectEnum Type");

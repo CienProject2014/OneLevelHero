@@ -45,7 +45,6 @@ public class VillageStage extends BaseOverlapStage {
 		initSceneLoader(StaticAssets.rm);
 		cameraManager.stretchToDevice(this);
 		setVillage();
-
 		return this;
 	}
 
@@ -73,16 +72,15 @@ public class VillageStage extends BaseOverlapStage {
 	// FIXME
 	private void setVillageScene() {
 		if (positionManager.getCurrentNodeName().equals("cobweb")) {
-			villageInfo = worldNodeAssets.getVillage("cobweb");
+			villageInfo = worldNodeAssets.getVillageByName("cobweb");
 			sceneLoader.loadScene("cobweb_scene");
 		} else if (positionManager.getCurrentNodeName().equals("oberon")) {
-			villageInfo = worldNodeAssets.getVillage("oberon");
+			villageInfo = worldNodeAssets.getVillageByName("oberon");
 			sceneLoader.loadScene("oberon_scene");
 		} else {
-			villageInfo = worldNodeAssets.getVillage("blackwood");
+			villageInfo = worldNodeAssets.getVillageByName("blackwood");
 			sceneLoader.loadScene("blackwood_scene");
 		}
-
 	}
 
 	// 마을 정보에 맞게 스테이지 형성
@@ -129,13 +127,11 @@ public class VillageStage extends BaseOverlapStage {
 					.setVisible(false);
 			sceneLoader.getRoot().getCompositeById("camera_up")
 					.setVisible(true);
-
 		} else if (cameraManager.getMoveFlag() == 2) {
 			sceneLoader.getRoot().getCompositeById("camera_down")
 					.setVisible(false);
 			sceneLoader.getRoot().getCompositeById("camera_up")
 					.setVisible(false);
-
 		}
 	}
 

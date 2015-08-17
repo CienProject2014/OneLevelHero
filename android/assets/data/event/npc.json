@@ -44,12 +44,14 @@
           },
           {
             "script": "저게 마왕인가!",
-            "characterPath": "bust_yongsa_04",
+            "characterPath": "yongsa",
+            "faceNumber" : "04",
             "backgroundPath": "bg_devilcastle_01"
           },
           {
             "script": "이얍!",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber" : "01",
             "backgroundPath": "bg_devilcastle_01"
           },
           {
@@ -72,17 +74,20 @@
         "eventScenes": [
           {
             "script": "별로 효과가 없네요",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "bg_devilcastle_01"
           },
           {
             "script": "내가 나서도록 하지.",
-            "characterPath": "bust_yongsa_01",
+            "characterPath": "yongsa",
+            "faceNumber" : "01",
             "backgroundPath": "bg_devilcastle_01"
           },
           {
             "script": "하압!",
-            "characterPath": "bust_yongsa_04",
+            "characterPath": "yongsa",
+            "faceNumber" : "04",
             "backgroundPath": "bg_devilcastle_01"
           },
           {
@@ -105,12 +110,13 @@
         "eventScenes": [
           {
             "script": "......!!",
-            "characterPath": "bust_mawang_01",
+            "characterPath": "monster_mawang_01",
             "backgroundPath": "bg_devilcastle_01"
           },
           {
             "script": "어...?",
-            "characterPath": "bust_yongsa_04",
+            "characterPath": "yongsa",
+            "faceNumber" : "04",
             "backgroundPath": "bg_devilcastle_01"
           },
           {
@@ -145,7 +151,8 @@
         "eventScenes": [
           {
             "script": "촌장님은 집 안에 계실거에요.",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber" : "01",
             "backgroundPath": "bg_blackwood_01"
           }
         ]
@@ -163,12 +170,14 @@
         "eventScenes": [
           {
             "script": "마을에 있는 표지판을 누르면 월드맵으로 나갈 수 있어요.",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber" : "01",
             "backgroundPath": "bg_blackwood_01"
           },
           {
             "script": "콥웨브 방향으로 나가세요.",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber" : "01",
             "backgroundPath": "bg_blackwood_01"
           }
         ]
@@ -179,8 +188,9 @@
         "eventScenes": [
           {
             "script": "앞으로를 누르면 다음 필드맵으로 이동합니다.",
-            "characterPath": "bust_parath_01",
-            "backgroundPath": "bg_justground"
+            "characterPath": "parath",
+            "faceNumber" : "01",
+            "backgroundPath": "bg_blackwood_forest"
           }
         ]
       },
@@ -190,17 +200,20 @@
         "eventScenes": [
           {
             "script": "콥웨브에 도착했으니 촌장님 말씀대로 대도서관으로 가보기로 해요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "bg_cobweb_01"
           },
           {
             "script": "북쪽으로 이동해야겠네요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "bg_cobweb_01"
           },
           {
             "script": "우측 상단의 화살표를 눌러 마을 위쪽으로 이동한 후, 건물을 터치해서 안으로 들어가도록 해요.",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber" : "01",
             "backgroundPath": "bg_cobweb_01"
           }
         ]

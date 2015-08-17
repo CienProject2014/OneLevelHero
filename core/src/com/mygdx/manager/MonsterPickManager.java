@@ -32,13 +32,18 @@ public class MonsterPickManager {
 
 	public Monster createMonster() {
 		Monster monster = unitAssets.getMonster(selectMonster());
+		return monster;
+	}
+
+	public Monster createMonster(String monsterName) {
+		Monster monster = unitAssets.getMonster(monsterName);
 		unitManager.initiateMonster(monster);
 		return monster;
 	}
 
 	private String selectMonster() {
 		FieldTypeEnum fieldType = fieldManager.getFieldType();
-		List<String> monsterStrings = nodeAssets.getMonsterList(fieldType);
+		List<String> monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
 		// FIXME : 랜덤로직
 		int randomInt = (int) (Math.random() * monsterStrings.size());
 		String selectedMonsterString = monsterStrings.get(randomInt);

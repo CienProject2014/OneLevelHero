@@ -26,6 +26,10 @@ public class EventAssets implements JsonAssetsInitializable {
 				jsonStringMap.get(JsonEnum.GAME_OBJECT_JSON.toString()));
 	}
 
+	public Event getGameObjectEvent(String gameObjectString) {
+		return gameObjectMap.get(gameObjectString).getObjectEvent();
+	}
+
 	public StorySection getStorySection(int storySectionNumber) {
 		return storySectionMap.get(String.valueOf(storySectionNumber));
 	}
@@ -46,11 +50,11 @@ public class EventAssets implements JsonAssetsInitializable {
 		this.npcMap = npcMap;
 	}
 
-	public Event getEvent(String npcString, int eventNumber) {
+	public Event getNpcEvent(String npcString, int eventNumber) {
 		return getNpc(npcString).getEvent(eventNumber);
 	}
 
-	public Event getEvent(EventPacket eventPacket) {
+	public Event getNpcEvent(EventPacket eventPacket) {
 		return getNpc(eventPacket.getEventNpc()).getEvent(
 				eventPacket.getEventNumber());
 	}

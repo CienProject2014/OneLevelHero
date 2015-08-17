@@ -3,7 +3,8 @@
   "composite": {
     "sImages": [
       {
-        "itemIdentifier": "background",
+        "itemIdentifier": "higher_background",
+        "y": 1080,
         "layerName": "Default",
         "tint": [
           1,
@@ -11,14 +12,10 @@
           1,
           1
         ],
-        "imageName": "bgoberon1"
-      }
-    ],
-    "sComposites": [
+        "imageName": "oberen0007-------0"
+      },
       {
-        "itemIdentifier": "oberon_peasanthouse_01",
-        "x": 361.00003,
-        "y": 125.999954,
+        "itemIdentifier": "lower_background",
         "zIndex": 1,
         "layerName": "Default",
         "tint": [
@@ -27,36 +24,14 @@
           1,
           1
         ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "townuibuildtagbuilding"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
+        "imageName": "oberen0012-------0"
+      }
+    ],
+    "sComposites": [
       {
-        "itemIdentifier": "oberon_peasanthouse_02",
-        "x": 147.00003,
-        "y": 417.99994,
+        "itemIdentifier": "oberon_temple",
+        "x": 1388,
+        "y": 1480,
         "zIndex": 2,
         "layerName": "Default",
         "tint": [
@@ -75,7 +50,7 @@
                 1,
                 1
               ],
-              "imageName": "townuibuildtagbuilding"
+              "imageName": "oldtemple"
             }
           ],
           "layers": [
@@ -92,9 +67,9 @@
         }
       },
       {
-        "itemIdentifier": "oberon_inn",
-        "x": 307,
-        "y": 677,
+        "itemIdentifier": "oberon_house01",
+        "x": 269.99997,
+        "y": 1234,
         "zIndex": 3,
         "layerName": "Default",
         "tint": [
@@ -113,7 +88,7 @@
                 1,
                 1
               ],
-              "imageName": "townuibuildtaginn"
+              "imageName": "house"
             }
           ],
           "layers": [
@@ -130,9 +105,9 @@
         }
       },
       {
-        "itemIdentifier": "oberon_square",
-        "x": 777,
-        "y": 408,
+        "itemIdentifier": "oberon_inn",
+        "x": 366,
+        "y": 733,
         "zIndex": 4,
         "layerName": "Default",
         "tint": [
@@ -151,7 +126,7 @@
                 1,
                 1
               ],
-              "imageName": "square"
+              "imageName": "oberoninn"
             }
           ],
           "layers": [
@@ -168,9 +143,9 @@
         }
       },
       {
-        "itemIdentifier": "oberon_temple",
-        "x": 1531,
-        "y": 1600,
+        "itemIdentifier": "oberon_house02",
+        "x": 268.99997,
+        "y": 290,
         "zIndex": 5,
         "layerName": "Default",
         "tint": [
@@ -189,7 +164,7 @@
                 1,
                 1
               ],
-              "imageName": "temple"
+              "imageName": "house"
             }
           ],
           "layers": [
@@ -206,9 +181,9 @@
         }
       },
       {
-        "itemIdentifier": "3to20",
-        "x": 1059,
-        "y": 59,
+        "itemIdentifier": "oberon_house03",
+        "x": 787,
+        "y": 127.999985,
         "zIndex": 6,
         "layerName": "Default",
         "tint": [
@@ -227,7 +202,7 @@
                 1,
                 1
               ],
-              "imageName": "toRetreatStone"
+              "imageName": "house"
             }
           ],
           "layers": [
@@ -244,9 +219,9 @@
         }
       },
       {
-        "itemIdentifier": "3to10",
-        "x": 825,
-        "y": 1493,
+        "itemIdentifier": "oberon_house04",
+        "x": 1332,
+        "y": 651,
         "zIndex": 7,
         "layerName": "Default",
         "tint": [
@@ -265,7 +240,7 @@
                 1,
                 1
               ],
-              "imageName": "tokadila"
+              "imageName": "house"
             }
           ],
           "layers": [
@@ -282,9 +257,9 @@
         }
       },
       {
-        "itemIdentifier": "oberon_hill",
-        "x": 255,
-        "y": 1110,
+        "itemIdentifier": "oberon_store",
+        "x": 1411,
+        "y": 381,
         "zIndex": 8,
         "layerName": "Default",
         "tint": [
@@ -296,6 +271,7 @@
         "composite": {
           "sImages": [
             {
+              "itemIdentifier": "oberon_store",
               "layerName": "Default",
               "tint": [
                 1,
@@ -303,7 +279,7 @@
                 1,
                 1
               ],
-              "imageName": "smallHill"
+              "imageName": "oberonstore"
             }
           ],
           "layers": [
@@ -320,9 +296,9 @@
         }
       },
       {
-        "itemIdentifier": "camera_down",
-        "x": 1672,
-        "y": 1858,
+        "itemIdentifier": "3to20",
+        "x": 515.5,
+        "y": 101.99989,
         "zIndex": 9,
         "layerName": "Default",
         "tint": [
@@ -334,6 +310,7 @@
         "composite": {
           "sImages": [
             {
+              "itemIdentifier": "3to20",
               "layerName": "Default",
               "tint": [
                 1,
@@ -341,7 +318,7 @@
                 1,
                 1
               ],
-              "imageName": "downbutton"
+              "imageName": "retreatroad"
             }
           ],
           "layers": [
@@ -358,9 +335,9 @@
         }
       },
       {
-        "itemIdentifier": "camera_up",
-        "x": 1672,
-        "y": 778,
+        "itemIdentifier": "3to10",
+        "x": 427.5,
+        "y": 1640.5,
         "zIndex": 10,
         "layerName": "Default",
         "tint": [
@@ -379,7 +356,83 @@
                 1,
                 1
               ],
-              "imageName": "upbutton"
+              "imageName": "tokadillacastle"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_down",
+        "x": 1631,
+        "y": 1810,
+        "zIndex": 11,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuidown"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_up",
+        "x": 1631,
+        "y": 730,
+        "zIndex": 12,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuiup"
             }
           ],
           "layers": [
