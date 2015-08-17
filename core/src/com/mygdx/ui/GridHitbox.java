@@ -24,6 +24,9 @@ public class GridHitbox extends Table {
 	private int showTileCount;
 	private int limitNum;
 
+	private int[] hitboxCenter;
+	private int[][] hitboxShape;
+
 	private float startX, startY;
 
 	private boolean gridShow;
@@ -99,25 +102,6 @@ public class GridHitbox extends Table {
 		setVisible(false);
 	}
 
-	private Image findTile(float x, float y) {
-		boolean found = false;
-		int row = 0, column = 0;
-		for (int i = 0; i < rows && !found; i++) {
-			for (int j = 0; j < columns && !found; j++) {
-				if (isInsideTile(i, j, x, y)) {
-					row = i;
-					column = j;
-					found = true;
-				}
-			}
-		}
-		if (found) {
-			return tiles[row][column];
-		} else {
-			return null;
-		}
-	}
-
 	public void showTileWhereClicked(float x, float y) {
 		hideAllTiles();
 
@@ -156,7 +140,31 @@ public class GridHitbox extends Table {
 		}
 	}
 
-	private void findAndShow(float x, float y) {
+	public void showFixedTilesAt(float x, float y) {
+		hideAllTiles();
+		int[] rc = findTileIndex(x, y);
+		if (rc != null) {
+
+			for (int i = -hitboxCenter[0]; i <= hitboxCenter[0]; i++) {
+				int row = rc[0] + i;
+				if (row < 0 || row >= rows) {
+					continue;
+				}
+				for (int j = -hitboxCenter[1]; j <= hitboxCenter[1]; j++) {
+					int col = rc[1] + j;
+					if (col < 0 || col >= columns) {
+						continue;
+					}
+
+					if (hitboxShape[i + hitboxCenter[0]][j + hitboxCenter[1]] == 1) {
+						tiles[row][col].setVisible(true);
+					}
+				}
+			}
+		}
+	}
+
+	private boolean findAndShow(float x, float y) {
 		Image tile = findTile(x, y);
 		if (tile != null) {
 			if (!tile.isVisible() && showTileCount < limitNum) {
@@ -164,6 +172,49 @@ public class GridHitbox extends Table {
 				showTileCount++;
 				tile.setVisible(true);
 			}
+			return true;
+		}
+		return false;
+	}
+
+	private int[] findTileIndex(float x, float y) {
+		int[] index = new int[2];
+
+		boolean found = false;
+		for (int i = 0; i < rows && !found; i++) {
+			for (int j = 0; j < columns && !found; j++) {
+				if (isInsideTile(i, j, x, y)) {
+					index[0] = i;
+					index[1] = j;
+					found = true;
+				}
+			}
+		}
+
+		if (found) {
+			return index;
+		} else {
+			return null;
+		}
+
+	}
+
+	private Image findTile(float x, float y) {
+		boolean found = false;
+		int row = 0, column = 0;
+		for (int i = 0; i < rows && !found; i++) {
+			for (int j = 0; j < columns && !found; j++) {
+				if (isInsideTile(i, j, x, y)) {
+					row = i;
+					column = j;
+					found = true;
+				}
+			}
+		}
+		if (found) {
+			return tiles[row][column];
+		} else {
+			return null;
 		}
 	}
 
@@ -234,5 +285,21 @@ public class GridHitbox extends Table {
 
 	public void setLimitNum(int limitNum) {
 		this.limitNum = limitNum;
+	}
+
+	public int[] getHitboxCenter() {
+		return hitboxCenter;
+	}
+
+	public void setHitboxCenter(int[] hitboxCenter) {
+		this.hitboxCenter = hitboxCenter;
+	}
+
+	public int[][] getHitboxShape() {
+		return hitboxShape;
+	}
+
+	public void setHitboxShape(int[][] hitboxShape) {
+		this.hitboxShape = hitboxShape;
 	}
 }

@@ -23,14 +23,15 @@ import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.MonsterEnum;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.model.battle.Skill;
 import com.mygdx.model.item.Weapon;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
+import com.mygdx.screen.BattleScreen;
 import com.mygdx.ui.GridHitbox;
 
 public class BattleStage extends BaseOneLevelStage {
@@ -69,6 +70,8 @@ public class BattleStage extends BaseOneLevelStage {
 	private Table bigImageTable = new Table();
 	private Table smallImageTable = new Table();
 	private Table rMenuTable = new Table();
+
+	private boolean isSkill = false;
 
 	@Override
 	public void act(float delta) {
@@ -383,8 +386,18 @@ public class BattleStage extends BaseOneLevelStage {
 				checkCurrentState();
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL);
 				makeHiddenButton();
-				Gdx.app.log("BattleStage", "스킬!");
-				screenFactory.show(ScreenEnum.SKILL);
+
+				Skill s = currentAttackUnit.getSkills().get("cut_01");
+				if (s.getHitboxSize() == 0) {
+					gridHitbox.setHitboxCenter(s.getHitboxCenter());
+					gridHitbox.setHitboxShape(s.getHitboxShape());
+					gridHitbox.showGrid();
+					Gdx.app.log("BattleStage", "gridHitbox를 표시합니다");
+				} else {
+					battleManager.userSkill(currentAttackUnit, "cut_01");
+				}
+				isSkill = true;
+				BattleScreen.showSkillStage = true;
 			}
 		});
 
@@ -440,14 +453,24 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void touchDragged(InputEvent event, float x, float y, int pointer) {
 				if (gridHitbox.isGridShow()) {
-					gridHitbox.showTileWhereClicked(touched.x, touched.y);
+					if (!isSkill) {
+						gridHitbox.showTileWhereClicked(touched.x, touched.y);
+					} else {
+						gridHitbox.showFixedTilesAt(touched.x, touched.y);
+					}
 				}
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
-					battleManager.attack(currentAttackUnit, selectedMonster);
+					if (!isSkill) {
+						battleManager.attack(currentAttackUnit, selectedMonster);
+					} else {
+						battleManager.userSkill(currentAttackUnit, "cut_01");
+						isSkill = false;
+					}
+
 					gridHitbox.hideGrid();
 				}
 				gridHitbox.hideAllTiles();

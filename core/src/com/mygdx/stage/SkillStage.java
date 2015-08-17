@@ -21,6 +21,7 @@ import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.screen.BattleScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
@@ -62,7 +63,7 @@ public class SkillStage extends BaseOverlapStage {
 		for (int i = 0; i < skillNum; i++) {
 			labels = sceneLoader.getRoot().dataVO.composite.sLabels;
 			LabelItem labelItem = sceneLoader.getRoot().getLabelById(labels.get(i).itemIdentifier);
-			labelItem.setText(battleManager.getCurrentActor().getSkills().get(i).getName());
+			labelItem.setText(battleManager.getCurrentActor().getSkills().get("cut_01").getName());
 
 			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 			labelItem.setFontScale(1.0f);
@@ -292,6 +293,8 @@ public class SkillStage extends BaseOverlapStage {
 				useButton.setLayerVisibilty("Default", true);
 				useButton.setLayerVisibilty("pressed", false);
 				storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_CONTROL, "skill_attack");
+				BattleScreen.showSkillStage = false;
+
 			}
 		});
 	}
