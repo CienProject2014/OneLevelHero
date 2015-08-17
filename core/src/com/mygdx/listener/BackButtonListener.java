@@ -22,7 +22,11 @@ public class BackButtonListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		movingManager.goPreviousPosition();
+		if (!positionManager.isInWorldMap()) {
+			movingManager.goPreviousPosition();
+		} else {
+			movingManager.goCurrentPosition();
+		}
 		storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_NODE,
 				positionManager.getCurrentNodeName());
 	}

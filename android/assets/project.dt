@@ -111,6 +111,26 @@
       "physicsPropertiesVO": {},
       "sceneName": "skill_scene"
     },
+     {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "winterfall_scene"
+    },
+     {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "kadilla_castle_scene"
+    },
     {
       "ambientColor": [
         0.5,
@@ -150,6 +170,16 @@
       ],
       "physicsPropertiesVO": {},
       "sceneName": "blackwood_forest_dungeon_scene"
+    },
+{
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "mawang_castle_scene"
     }
   ],
   "originalResolution": {

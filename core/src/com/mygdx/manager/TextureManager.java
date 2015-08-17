@@ -1,5 +1,6 @@
 package com.mygdx.manager;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.TextureEnum;
@@ -17,14 +18,19 @@ import com.mygdx.enums.TextureEnum;
 public class TextureManager {
 
 	public static Texture getBustTexture(String facePath, String faceNumber) {
-		return StaticAssets.textureMap
-				.get(TextureEnum.BUST + "_" + facePath + "_" + faceNumber);
+		return StaticAssets.textureMap.get(TextureEnum.BUST + "_" + facePath
+				+ "_" + faceNumber);
 	}
 
 	public static Texture getStatusTexture(String facePath) {
-		return StaticAssets.textureMap.get(TextureEnum.STATUS + "_" + facePath);
+		Texture statusTexture = StaticAssets.textureMap.get(TextureEnum.STATUS
+				+ "_" + facePath);
+		if (statusTexture == null) {
+			Gdx.app.log("TextureManager", "TextureEnum.STATUS" + "_" + facePath
+					+ "is null");
+		}
+		return statusTexture;
 	}
-
 	public static Texture getCharacterBodyTexture(String facePath) {
 		return StaticAssets.textureMap.get(TextureEnum.NPC + "_" + facePath);
 	}
@@ -39,13 +45,13 @@ public class TextureManager {
 	}
 
 	public static Texture getBattleTurnBigTexture(String facePath) {
-		return StaticAssets.textureMap
-				.get(TextureEnum.BATTLE_TURN + "_" + facePath + "_" + "big");
+		return StaticAssets.textureMap.get(TextureEnum.BATTLE_TURN + "_"
+				+ facePath + "_" + "big");
 	}
 
 	public static Texture getBattleTurnSmallTexture(String facePath) {
-		return StaticAssets.textureMap
-				.get(TextureEnum.BATTLE_TURN + "_" + facePath + "_" + "small");
+		return StaticAssets.textureMap.get(TextureEnum.BATTLE_TURN + "_"
+				+ facePath + "_" + "small");
 	}
 
 	public static Texture getMonsterBodyTexture(String facePath) {
@@ -53,14 +59,20 @@ public class TextureManager {
 		return StaticAssets.textureMap
 				.get(TextureEnum.MONSTER + "_" + facePath);
 	}
+
+	public static Texture getItemTexture(String itemPath) {
+		return StaticAssets.textureMap.get(TextureEnum.ITEM + "_"
+				+ "one_hand_sword");
+	}
+
 	public static Texture getBackgroundTexture(String nodeType) {
-		return StaticAssets.textureMap
-				.get(TextureEnum.BACKGROUND + "_" + nodeType);
+		return StaticAssets.textureMap.get(TextureEnum.BACKGROUND + "_"
+				+ nodeType);
 	}
 
 	public static Texture getBackgroundTexture(String facePath,
 			TextureEnum textureEnum) {
-		return StaticAssets.textureMap.get(
-				TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum);
+		return StaticAssets.textureMap.get(TextureEnum.BACKGROUND + "_"
+				+ facePath + "_" + textureEnum);
 	}
 }

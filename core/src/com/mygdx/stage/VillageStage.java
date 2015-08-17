@@ -45,7 +45,6 @@ public class VillageStage extends BaseOverlapStage {
 		initSceneLoader(StaticAssets.rm);
 		cameraManager.stretchToDevice(this);
 		setVillage();
-
 		return this;
 	}
 
@@ -56,8 +55,8 @@ public class VillageStage extends BaseOverlapStage {
 				.getWorldNodeInfo(currentNode).getNodeConnection();
 		for (final Entry<String, NodeConnection> connection : connectionMap
 				.entrySet()) {
-			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(
-					connection.getValue().getArrowName());
+			final CompositeItem arrow = sceneLoader.getRoot()
+					.getCompositeById(connection.getValue().getArrowName());
 			if (arrow != null) {
 				arrow.setVisible(true);
 				arrow.setTouchable(Touchable.enabled);
@@ -73,16 +72,26 @@ public class VillageStage extends BaseOverlapStage {
 	// FIXME
 	private void setVillageScene() {
 		if (positionManager.getCurrentNodeName().equals("cobweb")) {
-			villageInfo = worldNodeAssets.getVillage("cobweb");
+			villageInfo = worldNodeAssets.getVillageByName("cobweb");
 			sceneLoader.loadScene("cobweb_scene");
 		} else if (positionManager.getCurrentNodeName().equals("oberon")) {
-			villageInfo = worldNodeAssets.getVillage("oberon");
+			villageInfo = worldNodeAssets.getVillageByName("oberon");
 			sceneLoader.loadScene("oberon_scene");
+		} else
+			if (positionManager.getCurrentNodeName().equals("kadilla_castle")) {
+			villageInfo = worldNodeAssets.getVillageByName("kadilla_castle");
+			sceneLoader.loadScene("kadilla_castle_scene");
+		} else if (positionManager.getCurrentNodeName().equals("winterfall")) {
+			villageInfo = worldNodeAssets.getVillageByName("winterfall");
+			sceneLoader.loadScene("winterfall_scene");
+		} else
+			if (positionManager.getCurrentNodeName().equals("redrose_castle")) {
+			villageInfo = worldNodeAssets.getVillageByName("redrose_castle");
+			sceneLoader.loadScene("redrose_castle_scene");
 		} else {
-			villageInfo = worldNodeAssets.getVillage("blackwood");
+			villageInfo = worldNodeAssets.getVillageByName("blackwood");
 			sceneLoader.loadScene("blackwood_scene");
 		}
-
 	}
 
 	// 마을 정보에 맞게 스테이지 형성
@@ -97,28 +106,55 @@ public class VillageStage extends BaseOverlapStage {
 				.getCompositeById("camera_up");
 		final CompositeItem shiftbutton_down = sceneLoader.getRoot()
 				.getCompositeById("camera_down");
+		if (shiftbutton_up == null && shiftbutton_down == null) {
+			final CompositeItem shiftbutton_left = sceneLoader.getRoot()
+					.getCompositeById("camera_left");
+			final CompositeItem shiftbutton_right = sceneLoader.getRoot()
+					.getCompositeById("camera_right");
 
-		shiftbutton_up.setTouchable(Touchable.enabled);
-		shiftbutton_down.setTouchable(Touchable.enabled);
+			shiftbutton_left.setTouchable(Touchable.enabled);
+			shiftbutton_right.setTouchable(Touchable.enabled);
 
-		shiftbutton_up.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				setCameraState(CameraStateEnum.MOVE_UP);
-				cameraManager.setMoveFlag(2);
-			}
-		});
+			shiftbutton_left.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_LEFT);
+					cameraManager.setMoveFlag(5);
+				}
+			});
 
-		shiftbutton_down.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				setCameraState(CameraStateEnum.MOVE_DOWN);
-				cameraManager.setMoveFlag(2);
-			}
-		});
+			shiftbutton_right.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_RIGHT);
+					cameraManager.setMoveFlag(5);
+				}
+			});
+
+		} else {
+			shiftbutton_up.setTouchable(Touchable.enabled);
+			shiftbutton_down.setTouchable(Touchable.enabled);
+
+			shiftbutton_up.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_UP);
+					cameraManager.setMoveFlag(2);
+				}
+			});
+
+			shiftbutton_down.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_DOWN);
+					cameraManager.setMoveFlag(2);
+				}
+			});
+		}
 	}
 
 	private void buttonControl() {
+
 		if (cameraManager.getMoveFlag() == 0) {
 			sceneLoader.getRoot().getCompositeById("camera_down")
 					.setVisible(true);
@@ -129,13 +165,26 @@ public class VillageStage extends BaseOverlapStage {
 					.setVisible(false);
 			sceneLoader.getRoot().getCompositeById("camera_up")
 					.setVisible(true);
-
 		} else if (cameraManager.getMoveFlag() == 2) {
 			sceneLoader.getRoot().getCompositeById("camera_down")
 					.setVisible(false);
 			sceneLoader.getRoot().getCompositeById("camera_up")
 					.setVisible(false);
-
+		} else if (cameraManager.getMoveFlag() == 3) {
+			sceneLoader.getRoot().getCompositeById("camera_left")
+					.setVisible(true);
+			sceneLoader.getRoot().getCompositeById("camera_right")
+					.setVisible(false);
+		} else if (cameraManager.getMoveFlag() == 4) {
+			sceneLoader.getRoot().getCompositeById("camera_left")
+					.setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_right")
+					.setVisible(true);
+		} else if (cameraManager.getMoveFlag() == 5) {
+			sceneLoader.getRoot().getCompositeById("camera_left")
+					.setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_right")
+					.setVisible(false);
 		}
 	}
 
@@ -149,9 +198,9 @@ public class VillageStage extends BaseOverlapStage {
 		if (villageInfo.getBuilding() != null) {
 			for (final Entry<String, Building> building : villageInfo
 					.getBuilding().entrySet()) {
-				CompositeItem buildingButton = sceneLoader
-						.getRoot()
-						.getCompositeById(building.getValue().getBuildingPath());
+				CompositeItem buildingButton = sceneLoader.getRoot()
+						.getCompositeById(
+								building.getValue().getBuildingPath());
 				buildingButton.setTouchable(Touchable.enabled);
 				BuildingButtonListener buildingButtonListener = listenerFactory
 						.getBuildingButtonListener();

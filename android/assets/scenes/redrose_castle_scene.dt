@@ -437,7 +437,6 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "camera_left",
               "layerName": "Default",
               "tint": [
                 1,
