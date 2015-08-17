@@ -77,6 +77,10 @@ public class VillageStage extends BaseOverlapStage {
 		} else if (positionManager.getCurrentNodeName().equals("oberon")) {
 			villageInfo = worldNodeAssets.getVillageByName("oberon");
 			sceneLoader.loadScene("oberon_scene");
+		} else if (positionManager.getCurrentNodeName()
+				.equals("kadilla_castle")) {
+			villageInfo = worldNodeAssets.getVillageByName("kadilla_castle");
+			sceneLoader.loadScene("kadilla_castle_scene");
 		} else {
 			villageInfo = worldNodeAssets.getVillageByName("blackwood");
 			sceneLoader.loadScene("blackwood_scene");
