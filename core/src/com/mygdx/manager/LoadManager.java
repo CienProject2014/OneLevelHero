@@ -1,6 +1,11 @@
 package com.mygdx.manager;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
@@ -10,8 +15,11 @@ import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
+import com.mygdx.store.Loadable;
 
 public class LoadManager {
+	@Autowired
+	private ApplicationContext applicationContext;
 	@Autowired
 	private UnitAssets unitAssets;
 	@Autowired
@@ -31,6 +39,20 @@ public class LoadManager {
 
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
+	@SuppressWarnings("unchecked")
+	public void load() {
+		// FIXME
+		Map<String, Object> loadedData = new HashMap<String, Object>();
+
+		// FIXME
+		// This logic have no type safety.
+		// I think, type map can be solution.
+		for (Entry<String, Object> data : loadedData.entrySet()) {
+			((Loadable<Object>) applicationContext.getBean(data.getKey()))
+					.setData(data);;
+		}
+
+	}
 	public void loadNewGame() {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();

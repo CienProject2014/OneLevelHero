@@ -70,11 +70,11 @@ public class FieldStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		movingLabel.setText(fieldManager.getDestinationNode() + "까지"
-				+ fieldManager.getLeftFieldLength());
+		movingLabel.setText(String.format("%s까지%d",
+				fieldManager.getDestinationNode(),
+				fieldManager.getLeftFieldLength()));
 		outerTable.setBackground(getBackgroundTRD(), false);
 	}
-
 	private TextureRegionDrawable getBackgroundTRD() {
 		return new TextureRegionDrawable(new TextureRegion(
 				TextureManager.getBackgroundTexture(fieldManager.getFieldType()

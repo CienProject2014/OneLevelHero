@@ -25,6 +25,8 @@ import com.mygdx.model.event.EventScene;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.event.NPC;
 import com.mygdx.model.event.Reward;
+import com.mygdx.store.Loadable;
+import com.mygdx.store.Savable;
 
 /**
  * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스 CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을
@@ -33,9 +35,7 @@ import com.mygdx.model.event.Reward;
  * @author Velmont
  * 
  */
-public class EventManager {
-	@Autowired
-	private EventInfo eventInfo;
+public class EventManager implements Savable<EventInfo>, Loadable<EventInfo> {
 	@Autowired
 	private RewardManager rewardManager;
 	@Autowired
@@ -60,6 +60,8 @@ public class EventManager {
 	private EventAssets eventAssets;
 	@Autowired
 	private TimeManager timeManager;
+
+	private EventInfo eventInfo = new EventInfo();
 
 	private Iterator<EventScene> eventSceneIterator;
 	private final int eventPlusRule = 1;
@@ -118,7 +120,7 @@ public class EventManager {
 	}
 
 	public Stage getSceneEvent() {
-		Event currentEvent = eventInfo.getCurrentNpcEvent();
+		Event currentEvent = getCurrentNpcEvent();
 		switch (currentEvent.getEventType()) {
 			case CHAT :
 			case CREDIT :
@@ -157,10 +159,9 @@ public class EventManager {
 	}
 
 	public Iterator<EventScene> getEventSceneIterator() {
-		eventSceneIterator = eventInfo.getCurrentNpcEvent()
-				.getEventSceneIterator();
-		if (eventInfo.getCurrentNpcEvent().getRewards() != null) {
-			addEventRewardQueue(eventInfo.getCurrentNpcEvent().getRewards());
+		eventSceneIterator = getCurrentNpcEvent().getEventSceneIterator();
+		if (getCurrentNpcEvent().getRewards() != null) {
+			addEventRewardQueue(getCurrentNpcEvent().getRewards());
 		}
 		return eventSceneIterator;
 	}
@@ -174,13 +175,18 @@ public class EventManager {
 	}
 
 	public NPC getCurrentNpc() {
-		return eventInfo.getCurrentNpc();
+		return eventAssets.getNpc(eventInfo.getCurrentNpcName());
 	}
 
 	public Event getCurrentEvent() {
-		return eventInfo.getCurrentNpcEvent();
+		return eventAssets.getNpcEvent(eventInfo.getEventPacket());
 	}
 
+	public Event getCurrentNpcEvent() {
+		EventPacket eventPacket = eventInfo.getEventPacket();
+		return eventAssets.getNpcEvent(eventPacket.getEventNpc(),
+				eventPacket.getEventNumber());
+	}
 	public void setCurrentGameObject(GameObject gameObject) {
 		eventInfo.setCurrentGameObject(gameObject);
 	}
@@ -190,9 +196,8 @@ public class EventManager {
 	}
 
 	public void finishNpcEvent() {
-		if (eventInfo.getCurrentNpcEvent().getEventState() == EventStateEnum.OPENED) {
-			eventInfo.getCurrentNpcEvent()
-					.setEventState(EventStateEnum.CLEARED);
+		if (getCurrentNpcEvent().getEventState() == EventStateEnum.OPENED) {
+			getCurrentNpcEvent().setEventState(EventStateEnum.CLEARED);
 		}
 	}
 
@@ -267,5 +272,15 @@ public class EventManager {
 				screenFactory.show(ScreenEnum.EVENT);
 			}
 		}
+	}
+
+	@Override
+	public void setData(EventInfo eventInfo) {
+		this.eventInfo = eventInfo;
+	}
+
+	@Override
+	public EventInfo getData() {
+		return eventInfo;
 	}
 }

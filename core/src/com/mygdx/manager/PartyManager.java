@@ -9,12 +9,14 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Status;
+import com.mygdx.store.Loadable;
+import com.mygdx.store.Savable;
 
-public class PartyManager {
-	@Autowired
-	private PartyInfo partyInfo;
+public class PartyManager implements Savable<PartyInfo>, Loadable<PartyInfo> {
 	@Autowired
 	private UnitManager unitManager;
+
+	private PartyInfo partyInfo = new PartyInfo();
 	private Status status;
 
 	private final static int BATTLE_MEMBER_SIZE = 3;
@@ -103,5 +105,15 @@ public class PartyManager {
 
 	public void setPartyList(List<Hero> partyList) {
 		partyInfo.setPartyList(partyList);
+	}
+
+	@Override
+	public void setData(PartyInfo partyInfo) {
+		this.partyInfo = partyInfo;
+	}
+
+	@Override
+	public PartyInfo getData() {
+		return partyInfo;
 	}
 }

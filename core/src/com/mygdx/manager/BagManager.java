@@ -14,9 +14,8 @@ import com.mygdx.model.unit.Hero;
 
 public class BagManager {
 	@Autowired
-	private BagInfo bagInfo;
-	@Autowired
 	private ItemAssets itemAssets;
+	private BagInfo bagInfo = new BagInfo();
 
 	public void possessItem(ItemEnum itemType, String itemName) {
 		Item item;
