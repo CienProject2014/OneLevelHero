@@ -101,6 +101,8 @@ public class GameUiStage extends BaseOneLevelStage {
 			backButton.setVisible(false);
 		}
 		if (positionManager.isInWorldMap()) {
+			placeInfoButton.setVisible(false);
+			timeInfoButton.setVisible(false);
 			questLogButton.setVisible(false);
 			helpButton.setVisible(false);
 			settingButton.setVisible(false);
