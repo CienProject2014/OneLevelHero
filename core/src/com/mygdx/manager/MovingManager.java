@@ -22,6 +22,11 @@ public class MovingManager {
 	@Autowired
 	private BattleManager battleManager;
 
+	public void goToNode(String Node) {
+		positionManager.setCurrentNodeName(Node);
+		goCurrentPosition();
+	}
+
 	public void goCurrentPosition() {
 		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
 		if (battleManager.isInBattle()) {

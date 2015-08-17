@@ -5,87 +5,75 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.ItemAssets;
 import com.mygdx.assets.SkillAssets;
 import com.mygdx.model.battle.Skill;
-import com.mygdx.model.item.Accessory;
-import com.mygdx.model.item.Clothes;
-import com.mygdx.model.item.HandGrip;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Inventory;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Status;
 import com.mygdx.model.unit.Unit;
+import com.mygdx.unitStrategy.HeroAttackStrategy;
+import com.mygdx.unitStrategy.InventoryStrategy;
+import com.mygdx.unitStrategy.MonsterAttackStrategy;
 
 public class UnitManager {
+	private static final String EMPTY_ITEM = "empty_item";
 	@Autowired
 	private ItemAssets itemAssets;
 	@Autowired
 	private SkillAssets skillAssets;
+	@Autowired
+	private InventoryStrategy inventoryStrategy;
+	@Autowired
+	private HeroAttackStrategy heroAttackStrategy;
+	@Autowired
+	private MonsterAttackStrategy monsterAttackStrategy;
 
 	public void initiateHero(Hero hero) {
-		equipAllItems(hero);
+		intiallyEquipAllItems(hero);
 		setSkills(hero);
+		setAttackStrategy(hero);
+	}
+
+	public void setAttackStrategy(Unit unit) {
+		if (unit instanceof Hero) {
+			unit.setAttackStrategy(heroAttackStrategy);
+		} else {
+			unit.setAttackStrategy(monsterAttackStrategy);
+		}
 	}
 
 	public void initiateMonster(Monster monster) {
 		setSkills(monster);
+		setAttackStrategy(monster);
 	}
 
-	public void equipAllItems(Hero hero) {
-		if (hero.getInventory() == null
-				&& hero.getInitialInventoryList() != null) {
-			Map<String, String> inventoryMap = hero.getInitialInventoryList();
-			hero.setInventory(new Inventory());
-			if (inventoryMap.get("accessory") != null) {
-				equipAccessory(hero, inventoryMap.get("accessory"));
-			}
-			if (inventoryMap.get("clothes") != null) {
-				equipClothes(hero, inventoryMap.get("clothes"));
-			}
-			if (inventoryMap.get("rightHandGrip") != null) {
-				equipRightHandGrip(hero, inventoryMap.get("rightHandGrip"));
-			}
-			if (inventoryMap.get("leftHandGrip") != null) {
-				equipLeftHandGrip(hero, inventoryMap.get("leftHandGrip"));
-			}
+	public void intiallyEquipAllItems(Hero hero) {
+		hero.setInventory(new Inventory());
+		hero.setInventoryStrategy(inventoryStrategy);
+		Map<String, String> inventories = hero.getInitialInventoryList();
 
+		if (inventories.get("accessory") != null) {
+			hero.equipAccessory(inventories.get("accessory"));
+		} else {
+			hero.equipAccessory(EMPTY_ITEM);
 		}
-	}
-
-	private void equipRightHandGrip(Hero hero, String rightHandGripName) {
-		HandGrip rightHandGrip = itemAssets.getHandGrip(rightHandGripName);
-		hero.getInventory().setRightHandGrip(rightHandGrip);
-		Gdx.app.log("UnitManager",
-				hero.getName() + "은(는) " + rightHandGrip.getName()
-						+ "을(를) 장착하였다.");
-		addStatus(hero, rightHandGrip.getEffectStatus());
-	}
-
-	private void equipLeftHandGrip(Hero hero, String leftHandGripName) {
-		HandGrip leftHandGrip = itemAssets.getHandGrip(leftHandGripName);
-		hero.getInventory().setLeftHandGrip(leftHandGrip);
-		Gdx.app.log("UnitManager",
-				hero.getName() + "은(는) " + leftHandGrip.getName()
-						+ "을(를) 장착하였다.");
-		addStatus(hero, leftHandGrip.getEffectStatus());
-	}
-
-	private void equipClothes(Hero hero, String clothesName) {
-		Clothes clothes = itemAssets.getClothes(clothesName);
-		hero.getInventory().setClothes(clothes);
-		Gdx.app.log("UnitManager", hero.getName() + "은(는) " + clothes.getName()
-				+ "을(를) 입었다.");
-		addStatus(hero, clothes.getEffectStatus());
-	}
-
-	private void equipAccessory(Hero hero, String accessoryName) {
-		Accessory accessory = itemAssets.getAccessory(accessoryName);
-		hero.getInventory().setAccessory(accessory);
-		Gdx.app.log("UnitManager",
-				hero.getName() + "은(는) " + accessory.getName() + "을(를) 장착하였다.");
-		addStatus(hero, accessory.getEffectStatus());
+		if (inventories.get("clothes") != null) {
+			hero.equipClothes(inventories.get("clothes"));
+		} else {
+			hero.equipClothes(EMPTY_ITEM);
+		}
+		if (inventories.get("rightHandGrip") != null) {
+			hero.equipRightHandGrip(inventories.get("rightHandGrip"));
+		} else {
+			hero.equipRightHandGrip(EMPTY_ITEM);
+		}
+		if (inventories.get("leftHandGrip") != null) {
+			hero.equipLeftHandGrip(inventories.get("leftHandGrip"));
+		} else {
+			hero.equipLeftHandGrip(EMPTY_ITEM);
+		}
 	}
 
 	private void setSkills(Unit unit) {
@@ -100,19 +88,40 @@ public class UnitManager {
 
 	public void addStatus(Hero hero, Status plusStatus) {
 		Status heroStatus = hero.getStatus();
-		heroStatus.setAttack(heroStatus.getAttack() + plusStatus.getAttack());
-		heroStatus
-				.setDefense(heroStatus.getDefense() + plusStatus.getDefense());
+		if (plusStatus != null) {
+			heroStatus.setAttack(heroStatus.getAttack()
+					+ plusStatus.getAttack());
+			heroStatus.setDefense(heroStatus.getDefense()
+					+ plusStatus.getDefense());
+			heroStatus.setElectricResistance(heroStatus.getElectricResistance()
+					+ plusStatus.getElectricResistance());
+			heroStatus.setFireResistance(heroStatus.getFireResistance()
+					+ plusStatus.getFireResistance());
+			heroStatus.setHealthPoint(heroStatus.getHealthPoint()
+					+ plusStatus.getHealthPoint());
+			heroStatus.setMagicAttack(heroStatus.getMagicAttack()
+					+ plusStatus.getMagicAttack());
+			heroStatus.setMagicDefense(heroStatus.getMagicDefense()
+					+ plusStatus.getMagicDefense());
+			heroStatus.setSpeed(heroStatus.getSpeed() + plusStatus.getSpeed());
+		}
+	}
+
+	public void removeStatus(Hero hero, Status removeStatus) {
+		Status heroStatus = hero.getStatus();
+		heroStatus.setAttack(heroStatus.getAttack() - removeStatus.getAttack());
+		heroStatus.setDefense(heroStatus.getDefense()
+				- removeStatus.getDefense());
 		heroStatus.setElectricResistance(heroStatus.getElectricResistance()
-				+ plusStatus.getElectricResistance());
+				- removeStatus.getElectricResistance());
 		heroStatus.setFireResistance(heroStatus.getFireResistance()
-				+ plusStatus.getFireResistance());
+				- removeStatus.getFireResistance());
 		heroStatus.setHealthPoint(heroStatus.getHealthPoint()
-				+ plusStatus.getHealthPoint());
+				- removeStatus.getHealthPoint());
 		heroStatus.setMagicAttack(heroStatus.getMagicAttack()
-				+ plusStatus.getMagicAttack());
+				- removeStatus.getMagicAttack());
 		heroStatus.setMagicDefense(heroStatus.getMagicDefense()
-				+ plusStatus.getMagicDefense());
-		heroStatus.setSpeed(heroStatus.getSpeed() + plusStatus.getSpeed());
+				+ removeStatus.getMagicDefense());
+		heroStatus.setSpeed(heroStatus.getSpeed() - removeStatus.getSpeed());
 	}
 }
