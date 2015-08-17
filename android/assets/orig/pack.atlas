@@ -1282,7 +1282,54 @@ invenuiup
   orig: 30, 30
   offset: 0, 0
   index: -1
+
+
+mirage_port_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgmirageport1
+  rotate: false
+  xy: 2, 250
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 238, 228
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 1924, 2380
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+
+
   
+  
+
+
 kadilla_castle_pack.png
 size: 2048,4096
 format: RGBA8888
@@ -1314,6 +1361,51 @@ townuiup
   xy: 2, 2
   size: 234, 122
   orig: 234, 122
+  offset: 0, 0
+  index: -1
+
+
+
+
+
+middle_ridge_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgmiddleridge1
+  rotate: false
+  xy: 2, 270
+  size: 3840, 1080
+  orig: 3840, 1080
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 126, 248
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 2, 2
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+townuileft
+  rotate: false
+  xy: 2, 34
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
+townuiright
+  rotate: false
+  xy: 3844, 1116
+  size: 122, 234
+  orig: 122, 234
   offset: 0, 0
   index: -1
   
@@ -1357,3 +1449,4 @@ townuiup
   orig: 234, 122
   offset: 0, 0
   index: -1
+
