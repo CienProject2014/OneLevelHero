@@ -55,7 +55,7 @@ public class BattleStage extends BaseOneLevelStage {
 	// Unit array
 	private ArrayList<Unit> units;
 	private Queue<Unit> orderedUnits;
-	private Unit currentHero;
+	private Unit currentAttackUnit;
 
 	private float animationDelay;
 	private final float MONSTER_ATTACK_DELAY = 1.5f;
@@ -69,10 +69,11 @@ public class BattleStage extends BaseOneLevelStage {
 	private Table bigImageTable = new Table();
 	private Table smallImageTable = new Table();
 	private Table rMenuTable = new Table();
+
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		if (currentHero instanceof Monster) {
+		if (currentAttackUnit instanceof Monster) {
 			doMonsterTurn(delta);
 		}
 		if (animationManager.isPlayable()) {
@@ -91,7 +92,7 @@ public class BattleStage extends BaseOneLevelStage {
 			initializeBattle(units, selectedMonster);
 		}
 		updateOrder();
-		currentHero = getCurrentActor(); // 여기선 첫번째 턴
+		currentAttackUnit = getCurrentActor(); // 여기선 첫번째 턴
 		tableStack.add(makeBattleUiTable());
 		tableStack.add(makeTurnTable());
 		tableStack.add(makeTurnFaceTable());
@@ -136,13 +137,12 @@ public class BattleStage extends BaseOneLevelStage {
 		animationDelay += delta;
 		if (animationDelay > MONSTER_ATTACK_DELAY) {
 			Hero randomHero = partyManager.pickRandomHero();
-			calCostGague(currentHero, NORMAL_ATTACK);// 랜덤으로 선택해야 한다
-			battleManager.attack(currentHero, randomHero);
+			calCostGague(currentAttackUnit, NORMAL_ATTACK);// 랜덤으로 선택해야 한다
+			battleManager.attack(currentAttackUnit, randomHero);
 			endTurn();
 			showRMenuButtons();
 			animationDelay = 0;
 		}
-
 	}
 
 	private void playAnimation(float delta) {
@@ -158,7 +158,6 @@ public class BattleStage extends BaseOneLevelStage {
 				movingManager.goPreviousPosition();
 			}
 		}
-
 	}
 
 	private void healGague() {
@@ -176,7 +175,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void endTurn() {
 		updateOrder();
-		currentHero = getCurrentActor();
+		currentAttackUnit = getCurrentActor();
 		updateBigImageTable();
 		updateSmallImageTable();
 		battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
@@ -229,9 +228,9 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private Table makeBigImageTable() {
-		turnBigImageMap.get(currentHero.getFacePath()).setWidth(117);
-		turnBigImageMap.get(currentHero.getFacePath()).setHeight(117);
-		bigImageTable.add(turnBigImageMap.get(currentHero.getFacePath()))
+		turnBigImageMap.get(currentAttackUnit.getFacePath()).setWidth(117);
+		turnBigImageMap.get(currentAttackUnit.getFacePath()).setHeight(117);
+		bigImageTable.add(turnBigImageMap.get(currentAttackUnit.getFacePath()))
 				.padRight(15);
 		return bigImageTable;
 	}
@@ -289,7 +288,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private void makeHiddenButton() {
 		switch (battleManager.getCurrentClickStateEnum()) {
 			case NORMAL :
-				calCostGague(currentHero, NORMAL_ATTACK);
+				calCostGague(currentAttackUnit, NORMAL_ATTACK);
 				updateOrder();
 				updateSmallImageTable();
 				setDarkButton(attackButton);
@@ -472,7 +471,7 @@ public class BattleStage extends BaseOneLevelStage {
 					int pointer, int button) {
 				if (gridHitbox.isGridShow()
 						&& gridHitbox.isInsideHitbox(touched.x, touched.y)) {
-					battleManager.attack(currentHero, selectedMonster);
+					battleManager.attack(currentAttackUnit, selectedMonster);
 					gridHitbox.hideGrid();
 				}
 				gridHitbox.hideAllTiles();

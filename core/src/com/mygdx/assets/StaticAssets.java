@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar.ProgressBarStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -31,9 +30,6 @@ public class StaticAssets {
 
 	public static ProgressBarStyle barstyle_hp;
 	public static ProgressBarStyle barstyle_turn;
-
-	public static TextureAtlas items = new TextureAtlas(
-			"texture/items/items.pack");
 	public static final float BASE_WINDOW_WIDTH = 1920;
 	public static final float BASE_WINDOW_HEIGHT = 1080;
 	public static float windowWidth;
@@ -110,17 +106,16 @@ public class StaticAssets {
 
 		DirectoryTextureMapperRecursive(map, fh);
 	}
-	public static void DirectoryTextureMapperRecursive(Map<String, Texture> map,
-			FileHandle fh) {
+	public static void DirectoryTextureMapperRecursive(
+			Map<String, Texture> map, FileHandle fh) {
 		if (fh.isDirectory()) {
 			FileHandle[] fhs = fh.list();
 
 			for (FileHandle e : fhs) {
 				DirectoryTextureMapperRecursive(map, e);
 			}
-		} else
-			if (!map.containsKey(fh.nameWithoutExtension())
-					&& fh.extension().matches("^(png|jpg)")) {
+		} else if (!map.containsKey(fh.nameWithoutExtension())
+				&& fh.extension().matches("^(png|jpg)")) {
 			map.put(fh.nameWithoutExtension(), new Texture(fh.path()));
 		}
 	}

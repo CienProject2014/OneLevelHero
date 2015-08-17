@@ -84,7 +84,8 @@ public class GameUiStage extends BaseOneLevelStage {
 		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]",
 				uiComponentAssets.getSkin(), partyManager.getBattleMemberList());
 
-		Iterator<GameObjectPopup> alertMessageIterator = alertMessage.iterator();
+		Iterator<GameObjectPopup> alertMessageIterator = alertMessage
+				.iterator();
 		while (alertMessageIterator.hasNext()) {
 			GameObjectPopup nextIterator = alertMessageIterator.next();
 			addActor(nextIterator);
@@ -99,8 +100,15 @@ public class GameUiStage extends BaseOneLevelStage {
 				PositionEnum.SUB_NODE)) {
 			backButton.setVisible(false);
 		}
+		if (positionManager.isInWorldMap()) {
+			placeInfoButton.setVisible(false);
+			timeInfoButton.setVisible(false);
+			questLogButton.setVisible(false);
+			helpButton.setVisible(false);
+			settingButton.setVisible(false);
+			backButton.setVisible(true);
+		}
 	}
-
 	// 테이블 디자인
 	public void makeTable() {
 		topTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
