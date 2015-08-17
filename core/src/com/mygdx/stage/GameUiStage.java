@@ -22,17 +22,15 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.LoadManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
+import com.mygdx.manager.SaveManager;
 import com.mygdx.popup.GameObjectPopup;
 import com.mygdx.popup.StatusMessagePopup;
 
 public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private RewardManager rewardManager;
-	@Autowired
-	private LoadManager loadManager;
 	@Autowired
 	private BattleManager battleManager;
 	@Autowired
@@ -45,6 +43,8 @@ public class GameUiStage extends BaseOneLevelStage {
 	private ListenerFactory listenerFactory;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private SaveManager saveManager;
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameUiStage");
 
@@ -157,8 +157,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		placeInfoButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				battleManager.healAllHero();
-				loadManager.load();
+				saveManager.load();
 				return true;
 			}
 		});

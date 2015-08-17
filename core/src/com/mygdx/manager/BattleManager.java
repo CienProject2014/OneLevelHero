@@ -30,8 +30,8 @@ public class BattleManager {
 	private PositionManager positionManager;
 	@Autowired
 	private UnitManager unitManager;
-
-	private BattleInfo battleInfo = new BattleInfo();
+	@Autowired
+	private BattleInfo battleInfo;
 
 	public void setBeforePosition(PositionEnum positionEnum) {
 		battleInfo.setBeforePosition(positionEnum);
@@ -152,8 +152,7 @@ public class BattleManager {
 
 	public void healAllHero() {
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			hero.getStatus().setHealthPoint(
-					hero.getStatus().getMaxHealthPoint());
+			hero.getStatus().setHealthPoint(hero.getStatus().getMaxHealthPoint());
 		}
 	}
 }

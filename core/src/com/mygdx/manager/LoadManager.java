@@ -1,18 +1,9 @@
 package com.mygdx.manager;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.esotericsoftware.kryo.Kryo;
-import com.esotericsoftware.kryo.io.Input;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.enums.BattleStateEnum;
@@ -20,7 +11,6 @@ import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
-import com.mygdx.store.Loadable;
 
 public class LoadManager {
 	@Autowired
@@ -41,28 +31,12 @@ public class LoadManager {
 	private BattleManager battleManager;
 	@Autowired
 	private BagManager bagManager;
+	@Autowired
+	private MovingManager movingManager;
+	@Autowired
+	private SaveManager saveManager;
 
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
-
-	@SuppressWarnings("unchecked")
-	public void load() {
-		Map<String, Loadable> loadedData = new HashMap<String, Loadable>();
-		Kryo kryo = new Kryo();
-		FileHandle handle = Gdx.files.internal("save/save_1.json");
-		Input input;
-		try {
-			input = new Input(new FileInputStream(handle.file()));
-			for (Entry<String, Loadable> data : applicationContext.getBeansOfType(Loadable.class).entrySet()) {
-				data.getValue().setData(kryo.readClassAndObject(input));
-			}
-
-			input.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
 
 	public void loadNewGame() {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
@@ -76,6 +50,10 @@ public class LoadManager {
 		bagManager.possessItem(ItemEnum.WEAPON, "velmont_mouse"); // FIXME for
 																	// Debug
 		bagManager.possessItem(ItemEnum.WEAPON, "velmont_mouse");
+	}
+
+	public void loadSaveGame() {
+		movingManager.goCurrentPosition();
 	}
 
 	private void setBattleInfo() {

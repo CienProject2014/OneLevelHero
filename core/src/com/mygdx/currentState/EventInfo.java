@@ -13,6 +13,7 @@ import com.mygdx.model.event.GameObject;
  */
 
 public class EventInfo {
+
 	private EventElementEnum currentEventElementType;
 	private EventPacket currentEventInfo;
 	private GameObject currentGameObject;
@@ -59,8 +60,7 @@ public class EventInfo {
 		return currentEventElementType;
 	}
 
-	public void setCurrentEventElementType(
-			EventElementEnum currentEventElementType) {
+	public void setCurrentEventElementType(EventElementEnum currentEventElementType) {
 		this.currentEventElementType = currentEventElementType;
 	}
 

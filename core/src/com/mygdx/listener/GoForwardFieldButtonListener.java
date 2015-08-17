@@ -23,15 +23,16 @@ public class GoForwardFieldButtonListener extends ClickListener {
 	private TimeManager timeManager;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private FieldInfo fieldInfo;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		FieldInfo fieldInfo = fieldManager.goFowardAndGetFieldInfo();
+		fieldInfo = fieldManager.goFowardAndGetFieldInfo();
 		if (!fieldInfo.isInField()) {
 			String node = fieldInfo.getDestinationNode();
 			movingManager.goToNode(node);
-			storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_NODE,
-					node);
+			storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_NODE, node);
 		}
 
 		timeManager.plusMinute(30);

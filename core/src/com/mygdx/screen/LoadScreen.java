@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.controller.SaveVersion;
 import com.mygdx.currentState.CurrentState;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.LoadManager;
+import com.mygdx.manager.SaveManager;
 
 public class LoadScreen extends BaseScreen {
 	@Autowired
@@ -21,13 +21,14 @@ public class LoadScreen extends BaseScreen {
 	@Autowired
 	private LoadManager loadManager;
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
+	private SaveManager saveManager;
 	@Autowired
-	private EventAssets eventAssets;
+	private UiComponentAssets uiComponentAssets;
 
 	private Stage stage;
 	private TextButton newstartButton;
 	private TextButton backButton;
+	private TextButton loadButton;
 	private final String PROLOGUE = "prologue";
 
 	@Override
@@ -45,6 +46,7 @@ public class LoadScreen extends BaseScreen {
 		Table table = new Table(uiComponentAssets.getSkin());
 		backButton = new TextButton("Back", uiComponentAssets.getSkin());
 		newstartButton = new TextButton("NewStart", uiComponentAssets.getSkin());
+		loadButton = new TextButton("loadButton", uiComponentAssets.getSkin());
 		backButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -69,11 +71,26 @@ public class LoadScreen extends BaseScreen {
 				loadManager.loadNewGame();
 			}
 		});
+		loadButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				saveManager.load();
+				System.out.println(eventManager.getCurrentNpc().getName());
+				currentState.setSaveVersion(SaveVersion.SAVE1);
+
+			}
+		});
 
 		table.setFillParent(true);
 		table.add(newstartButton).expand();
 		table.row();
 		table.add(backButton).bottom();
+		table.add(loadButton);
 		stage.addActor(table);
 		// stage.addActor(backButton);
 	}

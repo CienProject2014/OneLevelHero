@@ -10,21 +10,16 @@ import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.enums.WorldNodeEnum.NodeType;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.store.Loadable;
-import com.mygdx.store.Savable;
 
-public class PositionManager
-		implements
-			Savable<PositionInfo>,
-			Loadable<PositionInfo> {
+public class PositionManager {
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
 	private WorldMapAssets worldMapAssets;
 	@Autowired
 	private NodeAssets nodeAssets;
-
-	private PositionInfo positionInfo = new PositionInfo();
+	@Autowired
+	private PositionInfo positionInfo;
 
 	public PositionEnum getBeforePositionType() {
 		return positionInfo.getBeforePositionType();
@@ -57,8 +52,7 @@ public class PositionManager
 	}
 
 	public String getCurrentNodeHanguelName() {
-		return worldMapAssets.getWorldNodeInfo(getCurrentNodeName())
-				.getNodeName();
+		return worldMapAssets.getWorldNodeInfo(getCurrentNodeName()).getNodeName();
 	}
 
 	public void setCurrentPositionType(PositionEnum positionEnum) {
@@ -72,26 +66,18 @@ public class PositionManager
 
 	public String getCurrentSubNodeHanguelName() {
 		if (getCurrentNodeType().equals(NodeType.VILLAGE)) {
-			return nodeAssets.getVillage(getCurrentNodeName()).getBuilding()
-					.get(getCurrentSubNodeName()).getBuildingName();
+			return nodeAssets.getVillage(getCurrentNodeName()).getBuilding().get(getCurrentSubNodeName())
+					.getBuildingName();
 		} else {
 			return "던젼"; // FIXME
 		}
 
 	}
+
 	public void setCurrentSubNodeName(String subNodeName) {
 		Gdx.app.log("PositionManager", "현재서브노드 이름 - " + subNodeName);
 		positionInfo.setCurrentPositionType(PositionEnum.SUB_NODE);
 		positionInfo.setCurrentSubNodeName(subNodeName);
 	}
 
-	@Override
-	public void setData(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	@Override
-	public PositionInfo getData() {
-		return positionInfo;
-	}
 }
