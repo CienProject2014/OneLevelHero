@@ -1,6 +1,6 @@
 {
   "yongsa": {
-  	"facePath" : "yongsa",
+    "facePath": "yongsa",
     "name": "용개",
     "status": {
       "attack": 208,
@@ -18,8 +18,8 @@
       "electricResistance": 0
     },
     "initialInventoryList": {
-      "leftHandGrip" : "broad_sword",
-      "rightHandGrip" : "round_shield",
+      "rightHandGrip": "round_shield",
+      "leftHandGrip": "broad_sword",
       "clothes": "iron_armor"
     },
     "skillList": [
@@ -27,7 +27,7 @@
     ]
   },
   "parath": {
-  	"facePath" : "parath",
+    "facePath": "parath",
     "name": "파라섹트",
     "status": {
       "level": 35,
@@ -44,12 +44,13 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
+     "initialInventoryList": {},
     "skillList": [
       "cut_01"
     ]
   },
   "lilis": {
-    "facePath" : "lilis",
+    "facePath": "lilis",
     "name": "미미",
     "status": {
       "level": 35,
@@ -66,6 +67,7 @@
       "waterResistance": 20,
       "electricResistance": 10
     },
+     "initialInventoryList": {},
     "skillList": [
       "cut_01"
     ]

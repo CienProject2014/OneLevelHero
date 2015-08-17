@@ -81,648 +81,237 @@ skillButton
   offset: 0, 0
   index: -1
 
-pack.png
-size: 4094,2046
+
+worldmap_pack.png
+size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-crossline-big
+bluebutton
   rotate: false
-  xy: 3705, 1621
-  size: 127, 125
-  orig: 127, 125
+  xy: 3004, 1214
+  size: 84, 85
+  orig: 84, 85
   offset: 0, 0
   index: -1
-crossline-small
+currentlocation
   rotate: false
-  xy: 3874, 535
-  size: 85, 87
-  orig: 85, 87
+  xy: 3004, 1127
+  size: 84, 85
+  orig: 84, 85
   offset: 0, 0
   index: -1
-worldmaparrowblack-cobweb
+dogbenefitcamp
   rotate: false
-  xy: 804, 208
-  size: 704, 146
-  orig: 704, 146
+  xy: 3004, 2001
+  size: 340, 44
+  orig: 340, 44
   offset: 0, 0
   index: -1
-worldmaparrowcobweb-black
+purplebutton
   rotate: false
-  xy: 804, 60
-  size: 672, 146
-  orig: 672, 146
+  xy: 3004, 1040
+  size: 84, 85
+  orig: 84, 85
   offset: 0, 0
   index: -1
-worldmaparrowcobweb-middle
+redbutton
   rotate: false
-  xy: 3006, 1424
-  size: 582, 194
-  orig: 582, 194
+  xy: 3004, 1301
+  size: 86, 86
+  orig: 86, 86
   offset: 0, 0
   index: -1
-worldmaparrowmiddle-cobweb
+worldmaplight
   rotate: false
-  xy: 3006, 1254
-  size: 528, 168
-  orig: 528, 168
+  xy: 2, 357
+  size: 3000, 1688
+  orig: 3000, 1688
   offset: 0, 0
   index: -1
-worldmaparrownode1-node2
+worldmaplight0000s0000
   rotate: false
-  xy: 3834, 1626
-  size: 160, 122
-  orig: 160, 122
+  xy: 244, 158
+  size: 198, 49
+  orig: 198, 49
   offset: 0, 0
   index: -1
-worldmaparrownode2-node1
+worldmaplight0000s0001
   rotate: false
-  xy: 3900, 953
-  size: 134, 122
-  orig: 134, 122
+  xy: 2, 209
+  size: 289, 49
+  orig: 289, 49
   offset: 0, 0
   index: -1
-worldmaparrownode2-node3
+worldmaplight0000s0002
   rotate: false
-  xy: 3006, 1748
-  size: 788, 298
-  orig: 788, 298
+  xy: 293, 209
+  size: 239, 49
+  orig: 239, 49
   offset: 0, 0
   index: -1
-worldmaparrownode3-node
+worldmaplight0000s0003
   rotate: false
-  xy: 2, 56
-  size: 800, 298
-  orig: 800, 298
+  xy: 3004, 1542
+  size: 137, 49
+  orig: 137, 49
   offset: 0, 0
   index: -1
-worldmaparrownode5-south
+worldmaplight0000s0004
   rotate: false
-  xy: 2169, 163
-  size: 340, 191
-  orig: 340, 191
+  xy: 3004, 1797
+  size: 198, 50
+  orig: 198, 50
   offset: 0, 0
   index: -1
-worldmaparrownode6-elf
+worldmaplight0000s0005
   rotate: false
-  xy: 3006, 368
-  size: 262, 81
-  orig: 262, 81
+  xy: 2, 2
+  size: 193, 49
+  orig: 193, 49
   offset: 0, 0
   index: -1
-worldmaparrowsouth-node5
+worldmaplight0000s0006
   rotate: false
-  xy: 2511, 188
-  size: 340, 166
-  orig: 340, 166
+  xy: 2, 53
+  size: 198, 49
+  orig: 198, 49
   offset: 0, 0
   index: -1
-worldmapbuttonb
+worldmaplight0000s0007
   rotate: false
-  xy: 3783, 602
-  size: 89, 89
-  orig: 89, 89
+  xy: 333, 260
+  size: 242, 49
+  orig: 242, 49
   offset: 0, 0
   index: -1
-worldmapbuttongoldenlake
+worldmaplight0000s0008
   rotate: false
-  xy: 1329, 15
-  size: 168, 43
-  orig: 168, 43
+  xy: 3004, 1695
+  size: 183, 49
+  orig: 183, 49
   offset: 0, 0
   index: -1
-worldmapbuttonp
+worldmaplight0000s0009
   rotate: false
-  xy: 4001, 1755
-  size: 78, 78
-  orig: 78, 78
+  xy: 3004, 1389
+  size: 131, 49
+  orig: 131, 49
   offset: 0, 0
   index: -1
-worldmapbuttonr
+worldmaplight0000s0010
   rotate: false
-  xy: 3783, 511
-  size: 89, 89
-  orig: 89, 89
+  xy: 3004, 1644
+  size: 182, 49
+  orig: 182, 49
   offset: 0, 0
   index: -1
-worldmapelf-node6
+worldmaplight0000s0011
   rotate: false
-  xy: 3536, 1300
-  size: 278, 97
-  orig: 278, 97
+  xy: 3004, 1593
+  size: 175, 49
+  orig: 175, 49
   offset: 0, 0
   index: -1
-worldmaplight0008node4-elf
+worldmaplight0000s0012
   rotate: false
-  xy: 1647, 75
-  size: 103, 94
-  orig: 103, 94
+  xy: 3004, 1491
+  size: 137, 49
+  orig: 137, 49
   offset: 0, 0
   index: -1
-worldmaplight0009elf-node4
+worldmaplight0000s0013
   rotate: false
-  xy: 3299, 152
-  size: 111, 87
-  orig: 111, 87
+  xy: 3004, 1849
+  size: 237, 49
+  orig: 237, 49
   offset: 0, 0
   index: -1
-worldmaplight0010kadilla-node2
+worldmaplight0000s0015
   rotate: false
-  xy: 3432, 875
-  size: 146, 377
-  orig: 146, 377
+  xy: 3346, 2001
+  size: 214, 44
+  orig: 214, 44
   offset: 0, 0
   index: -1
-worldmaplight0011node2-kadilla
+worldmaplight0000s0016
   rotate: false
-  xy: 3237, 880
-  size: 193, 372
-  orig: 193, 372
+  xy: 3318, 1955
+  size: 158, 44
+  orig: 158, 44
   offset: 0, 0
   index: -1
-worldmaplight0012kadilla-oberon
+worldmaplight0000s0017
   rotate: false
-  xy: 2853, 152
-  size: 301, 202
-  orig: 301, 202
+  xy: 2, 311
+  size: 346, 44
+  orig: 346, 44
   offset: 0, 0
   index: -1
-worldmaplight0013oberon-kadilla
+worldmaplight0000s0018
   rotate: false
-  xy: 3590, 1399
-  size: 299, 219
-  orig: 299, 219
+  xy: 350, 311
+  size: 252, 44
+  orig: 252, 44
   offset: 0, 0
   index: -1
-worldmaplight0014titania-node1
+worldmaplight0000s0019
   rotate: false
-  xy: 1499, 16
-  size: 143, 47
-  orig: 143, 47
+  xy: 3004, 1954
+  size: 312, 45
+  orig: 312, 45
   offset: 0, 0
   index: -1
-worldmaplight0015node1-titania
+worldmaplight0000s0020
   rotate: false
-  xy: 3299, 329
-  size: 162, 69
-  orig: 162, 69
+  xy: 2, 260
+  size: 329, 49
+  orig: 329, 49
   offset: 0, 0
   index: -1
-worldmaplight0016vical-golden
+worldmaplight0000s0021
   rotate: false
-  xy: 3299, 241
-  size: 133, 86
-  orig: 133, 86
+  xy: 215, 107
+  size: 198, 49
+  orig: 198, 49
   offset: 0, 0
   index: -1
-worldmaplight0017golden-vical
+worldmaplight0000s0022
   rotate: false
-  xy: 3900, 842
-  size: 121, 109
-  orig: 121, 109
+  xy: 2, 158
+  size: 240, 49
+  orig: 240, 49
   offset: 0, 0
   index: -1
-worldmaplight0018vical-blackF
+worldmaplight0000s0023
   rotate: false
-  xy: 3580, 804
-  size: 220, 235
-  orig: 220, 235
+  xy: 3004, 1440
+  size: 137, 49
+  orig: 137, 49
   offset: 0, 0
   index: -1
-worldmaplight0019blackF-vical
+worldmaplight0000s0024
   rotate: false
-  xy: 3580, 1041
-  size: 204, 257
-  orig: 204, 257
+  xy: 3004, 1900
+  size: 255, 52
+  orig: 255, 52
   offset: 0, 0
   index: -1
-worldmaplight0020vical-middle
+worldmaplight0000s0025
   rotate: false
-  xy: 3006, 1620
-  size: 697, 126
-  orig: 697, 126
+  xy: 2, 104
+  size: 211, 52
+  orig: 211, 52
   offset: 0, 0
   index: -1
-worldmaplight0021middle-vical
+worldmaplight0000s0026
   rotate: false
-  xy: 1510, 216
-  size: 657, 138
-  orig: 657, 138
+  xy: 3004, 1746
+  size: 195, 49
+  orig: 195, 49
   offset: 0, 0
   index: -1
-worldmaplight0022blackwood-devil
-  rotate: false
-  xy: 3770, 693
-  size: 110, 95
-  orig: 110, 95
-  offset: 0, 0
-  index: -1
-worldmaplight0023devil-blackwood
-  rotate: false
-  xy: 3217, 460
-  size: 125, 110
-  orig: 125, 110
-  offset: 0, 0
-  index: -1
-worldmaplight0024blackwood-blackF
-  rotate: false
-  xy: 2828, 17
-  size: 301, 133
-  orig: 301, 133
-  offset: 0, 0
-  index: -1
-worldmaplight0025blackF-blackwood
-  rotate: false
-  xy: 2511, 99
-  size: 315, 87
-  orig: 315, 87
-  offset: 0, 0
-  index: -1
-worldmaplight0026black-middle
-  rotate: false
-  xy: 3796, 1750
-  size: 203, 296
-  orig: 203, 296
-  offset: 0, 0
-  index: -1
-worldmaplight0027middle-black
-  rotate: false
-  xy: 3217, 572
-  size: 136, 274
-  orig: 136, 274
-  offset: 0, 0
-  index: -1
-worldmaplight0032winterfall-cristal
-  rotate: false
-  xy: 3547, 678
-  size: 170, 124
-  orig: 170, 124
-  offset: 0, 0
-  index: -1
-worldmaplight0033cristal-winterfall
-  rotate: false
-  xy: 3884, 1214
-  size: 144, 147
-  orig: 144, 147
-  offset: 0, 0
-  index: -1
-worldmaplight0034cobweb-cristal
-  rotate: false
-  xy: 3891, 1453
-  size: 104, 171
-  orig: 104, 171
-  offset: 0, 0
-  index: -1
-worldmaplight0035cristal-cobweb
-  rotate: false
-  xy: 3884, 1077
-  size: 125, 135
-  orig: 125, 135
-  offset: 0, 0
-  index: -1
-worldmaplight0036redrose-cobweb
-  rotate: false
-  xy: 4001, 1835
-  size: 61, 211
-  orig: 61, 211
-  offset: 0, 0
-  index: -1
-worldmaplight0037cobweb-redrose
-  rotate: false
-  xy: 3651, 481
-  size: 76, 195
-  orig: 76, 195
-  offset: 0, 0
-  index: -1
-worldmaplight0038node5-capeofT
-  rotate: false
-  xy: 3546, 444
-  size: 103, 232
-  orig: 103, 232
-  offset: 0, 0
-  index: -1
-worldmaplight0039node5-capeofT-copy
-  rotate: false
-  xy: 3546, 444
-  size: 103, 232
-  orig: 103, 232
-  offset: 0, 0
-  index: -1
-worldmaplight0040capeofT-node5
-  rotate: false
-  xy: 3156, 153
-  size: 141, 213
-  orig: 141, 213
-  offset: 0, 0
-  index: -1
-worldmaplight0041moerae-node6
-  rotate: false
-  xy: 3719, 682
-  size: 49, 120
-  orig: 49, 120
-  offset: 0, 0
-  index: -1
-worldmaplight0042node6-moerae
-  rotate: false
-  xy: 3729, 541
-  size: 52, 139
-  orig: 52, 139
-  offset: 0, 0
-  index: -1
-worldmaplight0043node5-mirage
-  rotate: false
-  xy: 3355, 678
-  size: 190, 195
-  orig: 190, 195
-  offset: 0, 0
-  index: -1
-worldmaplight0044mirage-node5
-  rotate: false
-  xy: 3355, 483
-  size: 189, 193
-  orig: 189, 193
-  offset: 0, 0
-  index: -1
-worldmaplight0047node3-south
-  rotate: false
-  xy: 3006, 848
-  size: 229, 404
-  orig: 229, 404
-  offset: 0, 0
-  index: -1
-worldmaplight0048south-node3
-  rotate: false
-  xy: 3006, 451
-  size: 209, 395
-  orig: 209, 395
-  offset: 0, 0
-  index: -1
-worldmaplight0053node1-oberon
-  rotate: false
-  xy: 3961, 522
-  size: 48, 100
-  orig: 48, 100
-  offset: 0, 0
-  index: -1
-worldmaplight0054oberon-node1
-  rotate: false
-  xy: 3816, 1321
-  size: 48, 76
-  orig: 48, 76
-  offset: 0, 0
-  index: -1
-worldmaplight01
-  rotate: false
-  xy: 2, 1202
-  size: 1500, 844
-  orig: 1500, 844
-  offset: 0, 0
-  index: -1
-worldmaplight02
-  rotate: false
-  xy: 2, 356
-  size: 1500, 844
-  orig: 1500, 844
-  offset: 0, 0
-  index: -1
-worldmaplight03
-  rotate: false
-  xy: 1504, 1202
-  size: 1500, 844
-  orig: 1500, 844
-  offset: 0, 0
-  index: -1
-worldmaplight04
-  rotate: false
-  xy: 1504, 356
-  size: 1500, 844
-  orig: 1500, 844
-  offset: 0, 0
-  index: -1
-worldmaplinemirgol
-  rotate: false
-  xy: 804, 2
-  size: 241, 56
-  orig: 241, 56
-  offset: 0, 0
-  index: -1
-worldmaplinemirgol2
-  rotate: false
-  xy: 1757, 165
-  size: 230, 49
-  orig: 230, 49
-  offset: 0, 0
-  index: -1
-worldmaplinenode4-node31
-  rotate: false
-  xy: 1478, 65
-  size: 167, 104
-  orig: 167, 104
-  offset: 0, 0
-  index: -1
-worldmaplinenode4-node32
-  rotate: false
-  xy: 4025, 576
-  size: 69, 91
-  orig: 69, 91
-  offset: 0, 0
-  index: -1
-worldmapnode4-redrose
-  rotate: false
-  xy: 3786, 1045
-  size: 96, 253
-  orig: 96, 253
-  offset: 0, 0
-  index: -1
-worldmapredrose-node4
-  rotate: false
-  xy: 3802, 790
-  size: 96, 253
-  orig: 96, 253
-  offset: 0, 0
-  index: -1
-worldmaptextblackwood
-  rotate: false
-  xy: 3900, 797
-  size: 154, 43
-  orig: 154, 43
-  offset: 0, 0
-  index: -1
-worldmaptextblackwoodforest
-  rotate: false
-  xy: 1752, 120
-  size: 206, 43
-  orig: 206, 43
-  offset: 0, 0
-  index: -1
-worldmaptextboniche
-  rotate: false
-  xy: 3900, 752
-  size: 155, 43
-  orig: 155, 43
-  offset: 0, 0
-  index: -1
-worldmaptextcapeoftempest
-  rotate: false
-  xy: 3891, 1363
-  size: 168, 43
-  orig: 168, 43
-  offset: 0, 0
-  index: -1
-worldmaptextcaravanserialplace
-  rotate: false
-  xy: 3344, 445
-  size: 191, 36
-  orig: 191, 36
-  offset: 0, 0
-  index: -1
-worldmaptextcemetery
-  rotate: false
-  xy: 3156, 116
-  size: 120, 35
-  orig: 120, 35
-  offset: 0, 0
-  index: -1
-worldmaptextcobweb
-  rotate: false
-  xy: 1853, 30
-  size: 116, 43
-  orig: 116, 43
-  offset: 0, 0
-  index: -1
-worldmaptextcrystallizedvalley
-  rotate: false
-  xy: 1989, 126
-  size: 168, 43
-  orig: 168, 43
-  offset: 0, 0
-  index: -1
-worldmaptextdevilcastle
-  rotate: false
-  xy: 3278, 107
-  size: 112, 43
-  orig: 112, 43
-  offset: 0, 0
-  index: -1
-worldmaptextdogbenefitcamp
-  rotate: false
-  xy: 298, 18
-  size: 261, 36
-  orig: 261, 36
-  offset: 0, 0
-  index: -1
-worldmaptextelvenforest
-  rotate: false
-  xy: 2159, 118
-  size: 168, 43
-  orig: 168, 43
-  offset: 0, 0
-  index: -1
-worldmaptextentranceofthetempleofmoerae
-  rotate: false
-  xy: 2, 18
-  size: 294, 36
-  orig: 294, 36
-  offset: 0, 0
-  index: -1
-worldmaptextkadillacastle
-  rotate: false
-  xy: 2329, 118
-  size: 166, 43
-  orig: 166, 43
-  offset: 0, 0
-  index: -1
-worldmaptextkadillarode
-  rotate: false
-  xy: 1647, 30
-  size: 204, 43
-  orig: 204, 43
-  offset: 0, 0
-  index: -1
-worldmaptextmiddleridge
-  rotate: false
-  xy: 3874, 624
-  size: 149, 43
-  orig: 149, 43
-  offset: 0, 0
-  index: -1
-worldmaptextmirageport
-  rotate: false
-  xy: 3270, 400
-  size: 204, 43
-  orig: 204, 43
-  offset: 0, 0
-  index: -1
-worldmaptextmountaintitania
-  rotate: false
-  xy: 1752, 75
-  size: 205, 43
-  orig: 205, 43
-  offset: 0, 0
-  index: -1
-worldmaptextoberon
-  rotate: false
-  xy: 3131, 71
-  size: 116, 43
-  orig: 116, 43
-  offset: 0, 0
-  index: -1
-worldmaptextpineriverside
-  rotate: false
-  xy: 1989, 171
-  size: 169, 43
-  orig: 169, 43
-  offset: 0, 0
-  index: -1
-worldmaptextredrosecastle
-  rotate: false
-  xy: 3891, 1408
-  size: 203, 43
-  orig: 203, 43
-  offset: 0, 0
-  index: -1
-worldmaptextretreatstone
-  rotate: false
-  xy: 3882, 669
-  size: 163, 36
-  orig: 163, 36
-  offset: 0, 0
-  index: -1
-worldmaptextsouthcape
-  rotate: false
-  xy: 1510, 171
-  size: 245, 43
-  orig: 245, 43
-  offset: 0, 0
-  index: -1
-worldmaptextstatueofgoldenbeetle
-  rotate: false
-  xy: 561, 18
-  size: 236, 36
-  orig: 236, 36
-  offset: 0, 0
-  index: -1
-worldmaptexttempleofmoerae
-  rotate: false
-  xy: 1047, 15
-  size: 280, 43
-  orig: 280, 43
-  offset: 0, 0
-  index: -1
-worldmaptextvaicalcastle
-  rotate: false
-  xy: 3882, 707
-  size: 164, 43
-  orig: 164, 43
-  offset: 0, 0
-  index: -1
-worldmaptextwinterfall
-  rotate: false
-  xy: 3131, 26
-  size: 116, 43
-  orig: 116, 43
-  offset: 0, 0
-  index: -1
+
 
 
 blackwood_pack.png
@@ -1394,7 +983,7 @@ talkuiwindow
   orig: 1920, 365
   offset: 0, 0
   index: -1
-  
+
 cobweb_inn_pack.png
 size: 2048,2048
 format: RGBA8888
@@ -1423,76 +1012,76 @@ cobwebinnscene
   index: -1
 
 oberon_pack.png
-size: 2048,4096
+size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-bgoberon1
+house
   rotate: false
-  xy: 2, 780
-  size: 1920, 2160
-  orig: 1920, 2160
-  offset: 0, 0
-  index: -1
-downbutton
-  rotate: false
-  xy: 288, 656
-  size: 234, 122
-  orig: 234, 122
-  offset: 0, 0
-  index: -1
-smallHill
-  rotate: false
-  xy: 288, 574
+  xy: 2, 84
   size: 200, 80
   orig: 200, 80
   offset: 0, 0
   index: -1
-square
+oberen0007-------0
   rotate: false
-  xy: 524, 698
+  xy: 2, 392
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+oberen0012-------0
+  rotate: false
+  xy: 1924, 392
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+oberoninn
+  rotate: false
+  xy: 3846, 1268
   size: 200, 80
   orig: 200, 80
   offset: 0, 0
   index: -1
-temple
+oberonstore
+  rotate: false
+  xy: 746, 310
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+oldtemple
   rotate: false
   xy: 2, 2
   size: 200, 80
   orig: 200, 80
   offset: 0, 0
   index: -1
-toRetreatStone
+retreatroad
   rotate: false
-  xy: 2, 208
-  size: 284, 284
-  orig: 284, 284
+  xy: 2, 166
+  size: 231, 224
+  orig: 231, 224
   offset: 0, 0
   index: -1
-tokadila
+tokadillacastle
   rotate: false
-  xy: 2, 494
-  size: 284, 284
-  orig: 284, 284
+  xy: 235, 209
+  size: 273, 181
+  orig: 273, 181
   offset: 0, 0
   index: -1
-townuibuildtagbuilding
+townuidown
   rotate: false
-  xy: 288, 492
-  size: 200, 80
-  orig: 200, 80
+  xy: 3846, 1350
+  size: 234, 122
+  orig: 234, 122
   offset: 0, 0
   index: -1
-townuibuildtaginn
+townuiup
   rotate: false
-  xy: 726, 698
-  size: 200, 80
-  orig: 200, 80
-  offset: 0, 0
-  index: -1
-upbutton
-  rotate: false
-  xy: 2, 84
+  xy: 510, 268
   size: 234, 122
   orig: 234, 122
   offset: 0, 0
@@ -1695,10 +1284,214 @@ invenuiup
   index: -1
 
 
+mirage_port_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgmirageport1
+  rotate: false
+  xy: 2, 250
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 238, 228
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 1924, 2380
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+
+
+  
+  
+
+
+kadilla_castle_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+buttonui2
+  rotate: false
+  xy: 2, 250
+  size: 320, 99
+  orig: 320, 99
+  offset: 0, 0
+  index: -1
+kadillacastleex
+  rotate: false
+  xy: 2, 351
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
 
 
 
 
+
+middle_ridge_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgmiddleridge1
+  rotate: false
+  xy: 2, 270
+  size: 3840, 1080
+  orig: 3840, 1080
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 126, 248
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 2, 2
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+townuileft
+  rotate: false
+  xy: 2, 34
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
+townuiright
+  rotate: false
+  xy: 3844, 1116
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
+  
+winterfall_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgwinterfall1
+  rotate: false
+  xy: 2, 346
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+itemuiline01
+  rotate: false
+  xy: 2, 250
+  size: 845, 94
+  orig: 845, 94
+  offset: 0, 0
+  index: -1
+itemuipage01
+  rotate: false
+  xy: 1924, 2486
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+
+vaical_castle_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgvaical1
+  rotate: false
+  xy: 2, 250
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 238, 228
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 1924, 2380
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+  
+  
 
 southcape_pack.png
 size: 4096,2048

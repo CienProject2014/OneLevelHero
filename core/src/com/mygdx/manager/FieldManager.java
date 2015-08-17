@@ -5,19 +5,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.FieldTypeEnum;
+import com.mygdx.model.surroundings.NodeConnection;
 import com.mygdx.model.surroundings.WorldNode;
+import com.mygdx.store.Loadable;
+import com.mygdx.store.Savable;
 
-public class FieldManager {
+public class FieldManager implements Savable<FieldInfo>, Loadable<FieldInfo> {
 	@Autowired
 	private WorldMapAssets worldMapAssets;
-	@Autowired
-	private FieldInfo fieldInfo;
 	@Autowired
 	private EncounterManager encounterManager;
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
 	private MovingManager movingManager;
+
+	private FieldInfo fieldInfo = new FieldInfo();
 
 	public FieldTypeEnum getFieldType() {
 		return fieldInfo.getFieldList().get(getFieldNumber());
@@ -27,8 +30,8 @@ public class FieldManager {
 		return fieldInfo.getDestinationNode();
 	}
 
-	public String getLeftFieldLength() {
-		return String.valueOf(getFieldLength() - getFieldNumber());
+	public int getLeftFieldLength() {
+		return getFieldLength() - getFieldNumber();
 	}
 
 	public int getFieldNumber() {
@@ -38,7 +41,12 @@ public class FieldManager {
 	public void startMovingField(String destinationNode) {
 		WorldNode worldNodeInfo = worldMapAssets
 				.getWorldNodeInfo(positionManager.getCurrentNodeName());
-		createFieldInfo(destinationNode, worldNodeInfo);
+
+		String startNode = positionManager.getCurrentNodeName();
+		NodeConnection conn = worldNodeInfo.getNodeConnection().get(
+				destinationNode);
+
+		fieldInfo = new FieldInfo(startNode, destinationNode, conn);
 	}
 
 	public boolean isInField() {
@@ -49,17 +57,25 @@ public class FieldManager {
 		return fieldInfo.getFieldList().size();
 	}
 
-	public void createFieldInfo(String destinationNode, WorldNode worldNodeInfo) {
-		fieldInfo.setStartNode(positionManager.getCurrentNodeName());
-		fieldInfo.setDestinationNode(destinationNode);
-		fieldInfo.setFieldNumber(0);
-		fieldInfo.setFieldList(worldNodeInfo.getNodeConnection()
-				.get(destinationNode).getFieldList());
-		fieldInfo.setArrowName(worldNodeInfo.getNodeConnection()
-				.get(destinationNode).getArrowName());
-		fieldInfo.setInField(true);
+	public FieldInfo goFowardAndGetFieldInfo() {
+		if (!fieldInfo.tryToGoForward()) {
+			encounterManager.act();
+		} else {
+			positionManager.setCurrentNodeName(fieldInfo.getDestinationNode());
+			movingManager.goCurrentPosition();
+		}
+		return fieldInfo;
 	}
 
+	public FieldInfo goBackwardAndGetFieldInfo() {
+		if (!fieldInfo.tryToGoBackword()) {
+			encounterManager.act();
+		} else {
+			positionManager.setCurrentNodeName(fieldInfo.getDestinationNode());
+			movingManager.goCurrentPosition();
+		}
+		return fieldInfo;
+	}
 	public void goForwardField() {
 		if (!willBeArrived()) {
 			increaseFieldNumber();
@@ -107,4 +123,19 @@ public class FieldManager {
 	private boolean willComeBack() {
 		return (getFieldNumber() == 0) ? true : false;
 	}
+
+	public String getArrowName() {
+		return fieldInfo.getArrowName();
+	}
+
+	@Override
+	public void setData(FieldInfo fieldInfo) {
+		this.fieldInfo = fieldInfo;
+	}
+
+	@Override
+	public FieldInfo getData() {
+		return fieldInfo;
+	}
+
 }

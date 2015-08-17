@@ -15,7 +15,7 @@ import com.mygdx.stage.CharacterUiStage;
 import com.mygdx.stage.DungeonEntranceStage;
 import com.mygdx.stage.DungeonStage;
 import com.mygdx.stage.EncounterStage;
-import com.mygdx.stage.EventStage;
+import com.mygdx.stage.ChatEventStage;
 import com.mygdx.stage.FieldStage;
 import com.mygdx.stage.GameObjectStage;
 import com.mygdx.stage.GameUiStage;
@@ -81,10 +81,10 @@ public class StageFactory {
 	}
 
 	public Stage makeEventStage(Iterator<EventScene> eventSceneIterator) {
-		return context.getBean(EventStage.class).makeStage(eventSceneIterator);
+		return context.getBean(ChatEventStage.class).makeStage(eventSceneIterator);
 	}
 
 	public Stage makeEventStage(EventScene eventScene) {
-		return context.getBean(EventStage.class).makeStage(eventScene);
+		return context.getBean(ChatEventStage.class).makeStage(eventScene);
 	}
 }

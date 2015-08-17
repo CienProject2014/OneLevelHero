@@ -22,6 +22,7 @@ import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
 import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.model.surroundings.Building;
 import com.mygdx.model.surroundings.NodeConnection;
 import com.mygdx.model.surroundings.Village;
@@ -29,7 +30,7 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class VillageStage extends BaseOverlapStage {
 	@Autowired
-	private NodeAssets worldNodeAssets;
+	private NodeAssets nodeAssets;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
@@ -45,7 +46,6 @@ public class VillageStage extends BaseOverlapStage {
 		initSceneLoader(StaticAssets.rm);
 		cameraManager.stretchToDevice(this);
 		setVillage();
-
 		return this;
 	}
 
@@ -71,25 +71,23 @@ public class VillageStage extends BaseOverlapStage {
 	}
 
 	// FIXME
-	private void setVillageScene() {
-		if (positionManager.getCurrentNodeName().equals("cobweb")) {
-			villageInfo = worldNodeAssets.getVillage("cobweb");
-			sceneLoader.loadScene("cobweb_scene");
-		} else if (positionManager.getCurrentNodeName().equals("oberon")) {
-			villageInfo = worldNodeAssets.getVillage("oberon");
-			sceneLoader.loadScene("oberon_scene");
+	private void setVillageScene(PositionManager positionManager,
+			NodeAssets nodeAssets) {
+		if (nodeAssets.getVillageByName(positionManager.getCurrentNodeName()) != null) {
+			villageInfo = nodeAssets.getVillageByName(positionManager
+					.getCurrentNodeName());
+			sceneLoader.loadScene(villageInfo.getSceneName());
 		} else {
-			villageInfo = worldNodeAssets.getVillage("blackwood");
-			sceneLoader.loadScene("blackwood_scene");
+			villageInfo = nodeAssets.getVillageByName("blackwood");
+			sceneLoader.loadScene(villageInfo.getSceneName());
 		}
-
 	}
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
 		Gdx.app.log("VillageStage",
 				String.valueOf(positionManager.getCurrentNodeName()));
-		setVillageScene();
+		setVillageScene(positionManager, nodeAssets);
 		setArrow();
 		setBuildingButton();
 		addActor(sceneLoader.getRoot());
@@ -118,7 +116,7 @@ public class VillageStage extends BaseOverlapStage {
 		});
 	}
 
-	private void buttonControl() {
+	private void controlButton() {
 		if (cameraManager.getMoveFlag() == 0) {
 			sceneLoader.getRoot().getCompositeById("camera_down")
 					.setVisible(true);
@@ -129,20 +127,18 @@ public class VillageStage extends BaseOverlapStage {
 					.setVisible(false);
 			sceneLoader.getRoot().getCompositeById("camera_up")
 					.setVisible(true);
-
 		} else if (cameraManager.getMoveFlag() == 2) {
 			sceneLoader.getRoot().getCompositeById("camera_down")
 					.setVisible(false);
 			sceneLoader.getRoot().getCompositeById("camera_up")
 					.setVisible(false);
-
 		}
 	}
 
 	@Override
 	public void act() {
 		super.act();
-		buttonControl();
+		controlButton();
 	}
 
 	private void setBuildingButton() {

@@ -1,7 +1,13 @@
 {
+  "empty_item" : {
+  	"itemType" : "shield",
+  	"name" : "미 장착",
+  	"itemPath" : "empty_item"
+  },
   "round_shield": {
+    "itemType": "shield",
     "name": "라운드 쉴드",
-    "itemPath" : "round_shield",
+    "itemPath": "round_shield",
     "category": "방패",
     "grade": "일반",
     "effectStatus": {
@@ -10,8 +16,9 @@
     "description": "나무로 만든, 동그랗고 작은 방패."
   },
   "buckler": {
+    "itemType": "shield",
     "name": "버클러",
-    "itemPath" : "buckler",
+    "itemPath": "buckler",
     "category": "방패",
     "grade": "일반",
     "effectStatus": {

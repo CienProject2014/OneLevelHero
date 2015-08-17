@@ -1,11 +1,14 @@
 package com.mygdx.popup;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.factory.ListenerFactory;
@@ -18,9 +21,12 @@ public class GameObjectPopup extends Dialog {
 	private ListenerFactory listenerFactory;
 	private GameObject gameObject;
 	private ImageButton okayButton, closeButton;
+	private Label questionLabel;
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
+			.get("GameObjectPopup");
 
 	public GameObjectPopup() {
-		this("오브젝트를 확인해 보시겠습니까?", StaticAssets.skin);
+		this("", StaticAssets.skin);
 	}
 	public AtlasUiAssets getAtlasUiAssets() {
 		return atlasUiAssets;
@@ -43,6 +49,13 @@ public class GameObjectPopup extends Dialog {
 	}
 
 	public void initialize() {
+		questionLabel = new Label("오브젝트를 확인해 보시겠습니까?", StaticAssets.skin);
+		questionLabel.setAlignment(Align.center);
+		questionLabel.setBounds(uiConstantsMap.get("questionLabelX"),
+				uiConstantsMap.get("questionLabelY"),
+				uiConstantsMap.get("questionLabelWidth"),
+				uiConstantsMap.get("questionLabelHeight"));
+		addActor(questionLabel);
 		okayButton = new ImageButton(
 				atlasUiAssets.getAtlasUiFile("popupui_button_yes"),
 				atlasUiAssets.getAtlasUiFile("popupui_acbutton_yes"));
@@ -55,14 +68,19 @@ public class GameObjectPopup extends Dialog {
 		gameObjectButtonListener.setGameObject(gameObject);
 		okayButton.addListener(gameObjectButtonListener);
 
-		getButtonTable().add(okayButton).height(100);
-		getButtonTable().add(closeButton).height(100);
+		getButtonTable().bottom();
+		getButtonTable().add(okayButton)
+				.height(uiConstantsMap.get("buttonHeight"))
+				.padBottom(uiConstantsMap.get("buttonPadBottom"));
+		getButtonTable().add(closeButton)
+				.padLeft(uiConstantsMap.get("closeButtonPadLeft")).height(90)
+				.padBottom(uiConstantsMap.get("buttonPadBottom"));
 		getButtonTable().setBackground(
 				atlasUiAssets.getAtlasUiFile("popupui_popup01"));
-		getButtonTable().defaults().height(370); // set buttons height
-		getButtonTable().defaults().width(860);
-		setPosition(960, 540);
-		setSize(860, 370);
+		setCenterPosition(StaticAssets.BASE_WINDOW_WIDTH / 2f,
+				StaticAssets.BASE_WINDOW_HEIGHT / 2f);
+		setSize(uiConstantsMap.get("popupWidth"),
+				uiConstantsMap.get("popupHeight"));
 		setModal(false);
 		setResizable(false);
 		setVisible(false);

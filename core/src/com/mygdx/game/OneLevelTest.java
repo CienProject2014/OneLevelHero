@@ -32,11 +32,12 @@ public class OneLevelTest extends Game {
 		gameLoad();
 
 		// goWorldMapScreen();
-		context.getBean(PositionManager.class).setCurrentNodeName("oberon");
-		goVillageScreen();
+		// context.getBean(PositionManager.class).setCurrentNodeName("oberon");
+		// goVillageScreen();
 		// goEncounterScreen();
 		// goVillageScreen();
 		// goWorldMapScreen();
+		goDungeonEntranceScreen();
 	}
 
 	public void gameLoad() {
