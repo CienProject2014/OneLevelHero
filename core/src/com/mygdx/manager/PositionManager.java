@@ -23,6 +23,7 @@ public class PositionManager
 	private WorldMapAssets worldMapAssets;
 	@Autowired
 	private NodeAssets nodeAssets;
+	private boolean inWorldMap;
 
 	private PositionInfo positionInfo = new PositionInfo();
 
@@ -72,7 +73,7 @@ public class PositionManager
 
 	public String getCurrentSubNodeHanguelName() {
 		if (getCurrentNodeType().equals(NodeType.VILLAGE)) {
-			return nodeAssets.getVillage(getCurrentNodeName()).getBuilding()
+			return nodeAssets.getVillageByName(getCurrentNodeName()).getBuilding()
 					.get(getCurrentSubNodeName()).getBuildingName();
 		} else {
 			return "던젼"; // FIXME
@@ -93,5 +94,13 @@ public class PositionManager
 	@Override
 	public PositionInfo getData() {
 		return positionInfo;
+	}
+
+	public boolean isInWorldMap() {
+		return inWorldMap;
+	}
+
+	public void setInWorldMap(boolean inWorldMap) {
+		this.inWorldMap = inWorldMap;
 	}
 }

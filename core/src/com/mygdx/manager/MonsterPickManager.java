@@ -43,7 +43,7 @@ public class MonsterPickManager {
 
 	private String selectMonster() {
 		FieldTypeEnum fieldType = fieldManager.getFieldType();
-		List<String> monsterStrings = nodeAssets.getMonsterList(fieldType);
+		List<String> monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
 		// FIXME : 랜덤로직
 		int randomInt = (int) (Math.random() * monsterStrings.size());
 		String selectedMonsterString = monsterStrings.get(randomInt);

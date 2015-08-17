@@ -63,7 +63,7 @@ public class BuildingStage extends BaseOverlapStage {
 
 	private void makeScene() {
 		buildingInfo = worldNodeAssets
-				.getVillage(positionManager.getCurrentNodeName()).getBuilding()
+				.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
 				.get(positionManager.getCurrentSubNodeName());
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		cameraManager.stretchToDevice(this);
