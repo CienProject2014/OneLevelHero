@@ -44,5 +44,15 @@
     "villageName": "오베론",
     "sceneName": "oberon_scene",
     "building": {}
+  },
+  "kadilla_castle": {
+    "villageName": "카딜라 성",
+    "sceneName": "kadilla_castle_scene",
+    "building": {}
+  },
+  "winterfall": {
+    "villageName": "윈터폴",
+    "sceneName": "winterfall",
+    "building": {}
   }
 }

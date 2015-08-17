@@ -12,8 +12,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.EventElementEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.RewardManager;
 import com.mygdx.model.event.EventScene;
 
 public class GameObjectStage extends BaseOneLevelStage {
@@ -23,6 +25,8 @@ public class GameObjectStage extends BaseOneLevelStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private RewardManager rewardManager;
 	private Label scriptTitle;
 	private Label scriptContent;
 	private Image characterImage;
@@ -32,20 +36,21 @@ public class GameObjectStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
-		EventScene eventScene = eventManager.getCurrentGameObject()
-				.getObjectEvent().getEventScenes().get(0);
+		eventManager.setCurrentEventElementType(EventElementEnum.GAME_OBJECT);
+		EventScene eventScene = eventManager.getGameObjectEventScene();
 		setScene(eventScene);
 		this.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
+				rewardManager.doReward(); // 보상이 있을경우 보상실행
+				eventManager.finishGameObjectEvent();
 				movingManager.goCurrentPosition();
 				return true;
 			}
 		});
 		return this;
 	}
-
 	public void setScene(EventScene eventScene) {
 		backgroundImage = new Image(eventScene.getBackground());
 		scriptTitle = new Label("Title", uiComponentAssets.getSkin());

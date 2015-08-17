@@ -30,4 +30,10 @@ public class EncounterManager {
 	public boolean isBattleOccured() {
 		return random.nextBoolean();
 	}
+
+	public void act() {
+		if (isBattleOccured()) {
+			encountEnemy();
+		}
+	}
 }

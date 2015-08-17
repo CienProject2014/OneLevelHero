@@ -469,7 +469,8 @@
                 1,
                 1
               ],
-              "imageName": "statusuiparty"
+              "imageName": "statusuiparty",
+		"itemIdentifier": "character_image"
             }
           ],
           "layers": [
@@ -507,7 +508,8 @@
                 1,
                 1
               ],
-              "imageName": "statusuiparty"
+              "imageName": "statusuiparty",
+	"itemIdentifier": "character_image"
             }
           ],
           "layers": [
@@ -545,7 +547,8 @@
                 1,
                 1
               ],
-              "imageName": "statusuiparty"
+              "imageName": "statusuiparty",
+		"itemIdentifier": "character_image"
             }
           ],
           "layers": [

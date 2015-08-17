@@ -4,16 +4,17 @@ import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.model.event.Reward;
+import com.mygdx.store.Loadable;
+import com.mygdx.store.Savable;
 
-public class RewardManager {
+public class RewardManager implements Savable<RewardInfo>, Loadable<RewardInfo> {
 	@Autowired
 	private UnitAssets unitAssets;
-	@Autowired
-	private RewardInfo rewardInfo;
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -24,6 +25,8 @@ public class RewardManager {
 	private TimeManager timeManager;
 	@Autowired
 	private StorySectionManager storySectionManager;
+
+	private RewardInfo rewardInfo = new RewardInfo();
 
 	// (3) 퀘스트 달성 여부 큐
 	// 아직 미구현
@@ -60,6 +63,11 @@ public class RewardManager {
 						break;
 					case NONE :
 						break;
+					case REST_IN_NODE :
+						Gdx.app.log("RewardManager", "Rest in Node");
+						partyManager.setFatigue(0);
+						partyManager.healAllHero();
+						break;
 					case PASS_TIME :
 						timeManager.plusMinute(Integer.parseInt(peekedReward
 								.getRewardTargetAttribute()));
@@ -95,5 +103,15 @@ public class RewardManager {
 			default :
 				return "보상 없음";
 		}
+	}
+
+	@Override
+	public void setData(RewardInfo rewardInfo) {
+		this.rewardInfo = rewardInfo;
+	}
+
+	@Override
+	public RewardInfo getData() {
+		return rewardInfo;
 	}
 }

@@ -1,7 +1,11 @@
 package com.mygdx.model.unit;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.Array;
+import com.mygdx.enums.ItemEnum;
 import com.mygdx.model.item.Accessory;
 import com.mygdx.model.item.Clothes;
+import com.mygdx.model.item.Equipment;
 import com.mygdx.model.item.HandGrip;
 
 public class Inventory {
@@ -43,7 +47,7 @@ public class Inventory {
 	}
 
 	public boolean isLeftHandGripUsable(HandGrip usingLeftHandGrip) {
-		if (rightHandGrip == null) {
+		if (rightHandGrip.isEmpty()) {
 			return true;
 		} else {
 			if (rightHandGrip.isTwoHanded()) {
@@ -55,6 +59,22 @@ public class Inventory {
 					return false;
 				}
 			}
+		}
+	}
+
+	public Equipment getEquipment(ItemEnum.EquipmentPart equipmentPart) {
+		switch (equipmentPart) {
+			case RIGHT_HAND_GRIP :
+				return getRightHandGrip();
+			case LEFT_HAND_GRIP :
+				return getLeftHandGrip();
+			case ACCESSORY :
+				return getAccessory();
+			case CLOTHES :
+				return getClothes();
+			default :
+				Gdx.app.log("Inventory", "잘못된 EquipmentPart정보");
+				return null;
 		}
 	}
 
@@ -74,4 +94,10 @@ public class Inventory {
 		}
 	}
 
+	public Array<String> getInventoryList() {
+		Array<String> inventoryList = new Array<>();
+		inventoryList.addAll("right_hand_grip", "left_hand_grip", "clothes",
+				"accessory");
+		return inventoryList;
+	}
 }

@@ -6,8 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 
 /**
- * DungeonEntranceStage와 GameUiStage를 addActor()해서 보여주는 Screen.
- * 던전입구의 경우 multiplexer를 이용하여 2개의 화면을 교차로 보여준다.
+ * DungeonEntranceStage와 GameUiStage를 addActor()해서 보여주는 Screen. 던전입구의 경우
+ * multiplexer를 이용하여 2개의 화면을 교차로 보여준다.
  *
  * @author Velmont
  *
@@ -15,14 +15,18 @@ import com.mygdx.enums.StageEnum;
 public class DungeonEntranceScreen extends BaseScreen {
 	private Stage dungeonEntranceStage;
 	private Stage gameUiStage;
+	private Stage characterUiStage;
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 
 		dungeonEntranceStage.draw();
+		characterUiStage.draw();
 		dungeonEntranceStage.getCamera().update();
 		gameUiStage.draw();
+		characterUiStage.act();
+		gameUiStage.act();
 		// 카메라를 지속적으로 업데이트 해준다.
 	}
 
@@ -31,6 +35,7 @@ public class DungeonEntranceScreen extends BaseScreen {
 		dungeonEntranceStage = stageFactory
 				.makeStage(StageEnum.DUNGEON_ENTRANCE);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
+		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
 
 		// 여러 스테이지에 인풋 프로세서를 동시에 할당한다
 		InputMultiplexer multiplexer = new InputMultiplexer();
@@ -39,6 +44,7 @@ public class DungeonEntranceScreen extends BaseScreen {
 
 		multiplexer.addProcessor(0, gameUiStage);
 		multiplexer.addProcessor(1, dungeonEntranceStage);
+		multiplexer.addProcessor(2, characterUiStage);
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);
 	}

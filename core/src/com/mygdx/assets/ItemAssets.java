@@ -8,7 +8,9 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.model.item.Accessory;
 import com.mygdx.model.item.Clothes;
+import com.mygdx.model.item.Consumables;
 import com.mygdx.model.item.HandGrip;
+import com.mygdx.model.item.Item;
 import com.mygdx.model.item.Shield;
 import com.mygdx.model.item.Weapon;
 import com.mygdx.util.JsonParser;
@@ -18,6 +20,8 @@ public class ItemAssets implements JsonAssetsInitializable {
 	private Map<String, Accessory> accessoryMap;
 	private Map<String, Clothes> clothesMap;
 	private Map<String, Shield> shieldMap;
+	private Map<String, Consumables> consumablesMap;
+	private Map<String, Item> etcItemMap;
 
 	@Override
 	public void set(Map<String, String> jsonStringMap) {
@@ -29,6 +33,18 @@ public class ItemAssets implements JsonAssetsInitializable {
 				jsonStringMap.get(JsonEnum.CLOTHES_JSON.toString()));
 		shieldMap = JsonParser.parseMap(Shield.class,
 				jsonStringMap.get(JsonEnum.SHIELD_JSON.toString()));
+		consumablesMap = JsonParser.parseMap(Consumables.class,
+				jsonStringMap.get(JsonEnum.CONSUMABLES_JSON.toString()));
+		etcItemMap = JsonParser.parseMap(Item.class,
+				jsonStringMap.get(JsonEnum.ETC_ITEM_JSON.toString()));
+	}
+
+	public Consumables getConsumables(String consumableName) {
+		return consumablesMap.get(consumableName);
+	}
+
+	public Item getEtcItem(String etcItemName) {
+		return etcItemMap.get(etcItemName);
 	}
 
 	public Weapon getWeapon(String weaponName) {

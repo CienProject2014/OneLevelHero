@@ -4,16 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.TimeInfo;
+import com.mygdx.store.Loadable;
+import com.mygdx.store.Savable;
 
-public class TimeManager {
-	@Autowired
-	private TimeInfo timeInfo;
-	@Autowired
-	private PartyManager partyManager;
-
+public class TimeManager implements Savable<TimeInfo>, Loadable<TimeInfo> {
 	private final static int MINUTES_PER_HOUR = 60;
 	private final static int HOURS_PER_DAY = 24;
 	private final static int MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
+
+	@Autowired
+	private PartyManager partyManager;
+
+	private TimeInfo timeInfo = new TimeInfo();
 
 	public void plusDay(int value) {
 		plusHour(HOURS_PER_DAY * value);
@@ -83,5 +85,15 @@ public class TimeManager {
 
 	public String getTimeInfo() {
 		return getDayInfo() + getHourInfo() + getMinuteInfo();
+	}
+
+	@Override
+	public void setData(TimeInfo timeInfo) {
+		this.timeInfo = timeInfo;
+	}
+
+	@Override
+	public TimeInfo getData() {
+		return timeInfo;
 	}
 }
