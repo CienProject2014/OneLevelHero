@@ -49,5 +49,10 @@
     "villageName": "카딜라 성",
     "sceneName": "kadilla_castle_scene",
     "building": {}
+  },
+  "winterfall": {
+    "villageName": "윈터폴",
+    "sceneName": "winterfall",
+    "building": {}
   }
 }

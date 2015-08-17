@@ -119,6 +119,16 @@
         1
       ],
       "physicsPropertiesVO": {},
+      "sceneName": "winterfall_scene"
+    },
+     {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
       "sceneName": "kadilla_castle_scene"
     },
     {
