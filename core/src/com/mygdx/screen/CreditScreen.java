@@ -1,4 +1,4 @@
-﻿package com.mygdx.screen;
+package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
