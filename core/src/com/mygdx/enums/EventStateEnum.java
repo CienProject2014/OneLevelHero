@@ -18,7 +18,6 @@ public enum EventStateEnum {
 		for (EventStateEnum eventStateEnum : EventStateEnum.values())
 			if (eventStateEnum.toString().equals(stringName))
 				return eventStateEnum;
-
 		return null;
 	}
 }

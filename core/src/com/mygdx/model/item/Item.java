@@ -1,11 +1,11 @@
 package com.mygdx.model.item;
 
-import com.mygdx.enums.WeaponEnum;
+import com.mygdx.enums.ItemEnum;
 
 public class Item {
+	private ItemEnum itemType;
 	private String name;
 	private String itemPath;
-	private WeaponEnum itemType;
 	private String grade;
 	private String category;
 	private String description;
@@ -25,14 +25,6 @@ public class Item {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public WeaponEnum getItemType() {
-		return itemType;
-	}
-
-	public void setItemType(WeaponEnum itemType) {
-		this.itemType = itemType;
 	}
 
 	public String getCategory() {
@@ -65,5 +57,12 @@ public class Item {
 
 	public void setItemPath(String itemPath) {
 		this.itemPath = itemPath;
+	}
+	public ItemEnum getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(ItemEnum itemType) {
+		this.itemType = itemType;
 	}
 }

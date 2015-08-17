@@ -1,5 +1,11 @@
 {
+  "empty_item" : {
+  	"itemType" : "clothes",
+  	"name" : "미 장착",
+  	"itemPath" : "empty_item"
+  },
   "cope": {
+    "itemType" : "clothes",
     "name": "중앙 사제복",
     "itemPath" : "cope",
     "category": "로브",
@@ -11,6 +17,7 @@
     "description": "중앙 사제들이 입는 복장이다."
   },
   "necromantic_dress": {
+     "itemType" : "clothes",
     "name": "강령복",
     "itemPath" : "necromantic_dress",
     "category": "로브",

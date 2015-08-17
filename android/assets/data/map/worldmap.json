@@ -192,7 +192,7 @@
           "beach"
         ]
       },
-      "entrance_of_the_temple_of_moerae": {
+      "statue_of_golden_beetle": {
         "arrowName": "9to24",
         "fieldList": [
           "elven_forest",
@@ -259,7 +259,7 @@
         "arrowName": "14to22",
         "fieldList": []
       },
-      "entrance_of_the_temple_of_moerae": {
+      "statue_of_golden_beetle": {
         "arrowName": "14to24",
         "fieldList": [
           "elven_forest"
@@ -271,7 +271,7 @@
     "nodeName": "모에라에의 신전",
     "nodeType": "dungeon_entrance",
     "nodeConnection": {
-      "entrance_of_the_temple_of_moerae": {
+      "statue_of_golden_beetle": {
         "arrowName": "15to24",
         "fieldList": []
       }
@@ -407,8 +407,8 @@
       }
     }
   },
-  "entrance_of_the_temple_of_moerae": {
-    "nodeName": "모에라에 신전 입구",
+  "statue_of_golden_beetle": {
+    "nodeName": "황금 풍뎅이 석상",
     "nodeType": "fork",
     "nodeConnection": {
       "temple_of_moerae": {

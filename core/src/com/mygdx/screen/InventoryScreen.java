@@ -22,6 +22,7 @@ public class InventoryScreen extends BaseScreen {
 		super.render(delta);
 		monsterStage.draw();
 		inventoryStage.draw();
+		inventoryStage.act(delta);
 	}
 
 	@Override

@@ -2,33 +2,26 @@ package com.mygdx.currentState;
 
 import java.util.ArrayList;
 
-import com.mygdx.model.item.Accessory;
-import com.mygdx.model.item.Clothes;
-import com.mygdx.model.item.HandGrip;
+import com.mygdx.model.item.Consumables;
+import com.mygdx.model.item.Equipment;
 import com.mygdx.model.item.Item;
 
 public class BagInfo {
-	private ArrayList<Clothes> clothesList;
-	private ArrayList<Accessory> necklaceList;
-	private ArrayList<HandGrip> handGripList;
-	private ArrayList<Item> etcItemList;
-	public ArrayList<Clothes> getClothesList() {
-		return clothesList;
+	private ArrayList<Equipment> equipmentList = new ArrayList<>();
+	private ArrayList<Consumables> consumablesList = new ArrayList<>();
+	private ArrayList<Item> etcItemList = new ArrayList<>();
+
+	public ArrayList<Equipment> getEquipmentList() {
+		return equipmentList;
 	}
-	public void setClothesList(ArrayList<Clothes> clothesList) {
-		this.clothesList = clothesList;
+	public void setEquipmentList(ArrayList<Equipment> equipmentList) {
+		this.equipmentList = equipmentList;
 	}
-	public ArrayList<Accessory> getNecklaceList() {
-		return necklaceList;
+	public ArrayList<Consumables> getConsumablesList() {
+		return consumablesList;
 	}
-	public void setNecklaceList(ArrayList<Accessory> necklaceList) {
-		this.necklaceList = necklaceList;
-	}
-	public ArrayList<HandGrip> getHandGripList() {
-		return handGripList;
-	}
-	public void setHandGripList(ArrayList<HandGrip> handGripList) {
-		this.handGripList = handGripList;
+	public void setConsumablesList(ArrayList<Consumables> consumablesList) {
+		this.consumablesList = consumablesList;
 	}
 	public ArrayList<Item> getEtcItemList() {
 		return etcItemList;

@@ -14,10 +14,13 @@ import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.event.StorySectionPacket;
+import com.mygdx.store.Loadable;
+import com.mygdx.store.Savable;
 
-public class StorySectionManager {
-	@Autowired
-	private StorySectionInfo storySectionInfo;
+public class StorySectionManager
+		implements
+			Savable<StorySectionInfo>,
+			Loadable<StorySectionInfo> {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -29,6 +32,7 @@ public class StorySectionManager {
 	@Autowired
 	private EventAssets eventAssets;
 
+	private StorySectionInfo storySectionInfo = new StorySectionInfo();
 	private Queue<EventPacket> eventSequenceQueue = new LinkedList<>();
 
 	public void setNewStorySectionAndPlay(int storyNumber) {
@@ -93,7 +97,8 @@ public class StorySectionManager {
 	}
 
 	public void setNewStorySection(int storyNumber) {
-		storySectionInfo.setCurrentStorySection(storyNumber);
+		storySectionInfo.setCurrentStorySection(eventAssets
+				.getStorySection(storyNumber));
 	}
 
 	public List<StorySectionPacket> getNextSections() {
@@ -118,5 +123,15 @@ public class StorySectionManager {
 
 	public void setSequenceQueue(Queue<EventPacket> sequenceQueue) {
 		this.eventSequenceQueue = sequenceQueue;
+	}
+
+	@Override
+	public void setData(StorySectionInfo storySectionInfo) {
+		this.storySectionInfo = storySectionInfo;
+	}
+
+	@Override
+	public StorySectionInfo getData() {
+		return storySectionInfo;
 	}
 }
