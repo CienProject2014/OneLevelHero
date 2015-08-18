@@ -21,7 +21,6 @@ import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.SaveManager;
@@ -41,8 +40,6 @@ public class GameUiStage extends BaseOneLevelStage {
 	private PositionManager positionManager;
 	@Autowired
 	private ListenerFactory listenerFactory;
-	@Autowired
-	private EventManager eventManager;
 	@Autowired
 	private SaveManager saveManager;
 
@@ -119,7 +116,6 @@ public class GameUiStage extends BaseOneLevelStage {
 				.height(uiConstantsMap.get("TButtonHeightSmall")).padRight(uiConstantsMap.get("buttonPadRight"));
 		topTable.add(settingButton).width(uiConstantsMap.get("TButtonWidthSmall"))
 				.height(uiConstantsMap.get("TButtonHeightSmall"));
-
 		uiTable.align(Align.top);
 		uiTable.add(topTable).padLeft(uiConstantsMap.get("padLeft")).padTop(uiConstantsMap.get("padTop"));
 	}
@@ -129,9 +125,7 @@ public class GameUiStage extends BaseOneLevelStage {
 				atlasUiAssets.getAtlasUiFile("time_info_button"), atlasUiAssets.getAtlasUiFile("time_info_button"),
 				uiComponentAssets.getFont());
 		timeInfoButton = new TextButton(timeManager.getTimeInfo(), style);
-
 		makePlaceInfoButton();
-
 		backButton = new ImageButton(atlasUiAssets.getAtlasUiFile("back_button"),
 				atlasUiAssets.getAtlasUiFile("back_toggle_button"));
 		questLogButton = new ImageButton(atlasUiAssets.getAtlasUiFile("quest_log_button"),

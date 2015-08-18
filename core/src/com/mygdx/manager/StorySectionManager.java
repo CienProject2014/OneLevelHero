@@ -21,8 +21,6 @@ public class StorySectionManager {
 	@Autowired
 	private EventCheckManager eventCheckManager;
 	@Autowired
-	private PositionManager positionManager;
-	@Autowired
 	private MovingManager movingManager;
 	@Autowired
 	private EventAssets eventAssets;

@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -31,6 +34,7 @@ public class StaticAssets {
 	public static AssetManager assetManager = new AssetManager();;
 	public static ProgressBarStyle barstyle_hp;
 	public static ProgressBarStyle barstyle_turn;
+	public static ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	public static final float BASE_WINDOW_WIDTH = 1920;
 	public static final float BASE_WINDOW_HEIGHT = 1080;
 	public static float windowWidth;

@@ -1,8 +1,5 @@
 package com.mygdx.screen;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -28,7 +25,6 @@ public class LoadingBarScreen extends BaseScreen {
 	private Image loadingBg;
 	private float startX, endX;
 	private float percent;
-	private ApplicationContext context;
 	private Actor loadingBar;
 
 	public LoadingBarScreen(OneLevelHero game) {
@@ -66,14 +62,13 @@ public class LoadingBarScreen extends BaseScreen {
 		stage.addActor(loadingFrame);
 		stage.addActor(logo);
 
-		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		StaticAssets.loadAll();
-		context.getBean(Assets.class).initialize();
+		StaticAssets.context.getBean(Assets.class).initialize();
 
 	}
 
 	public void gameLoad() {
-		context.getBean(ScreenFactory.class).setGame(game);
+		StaticAssets.context.getBean(ScreenFactory.class).setGame(game);
 	}
 
 	@Override
@@ -118,7 +113,7 @@ public class LoadingBarScreen extends BaseScreen {
 		if (StaticAssets.assetManager.update()) {
 			if (Gdx.input.isTouched()) {
 				gameLoad();
-				context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
+				StaticAssets.context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
 			}
 		}
 

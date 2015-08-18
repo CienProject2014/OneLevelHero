@@ -9,9 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.controller.SaveVersion;
-import com.mygdx.currentState.CurrentState;
+import com.mygdx.currentState.CurrentInfo;
+import com.mygdx.enums.SaveVersion;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.manager.LoadManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
@@ -19,7 +20,7 @@ import com.mygdx.manager.SaveManager;
 
 public class LoadScreen extends BaseScreen {
 	@Autowired
-	protected CurrentState currentState;
+	protected CurrentInfo currentInfo;
 	@Autowired
 	private LoadManager loadManager;
 	@Autowired
@@ -52,7 +53,7 @@ public class LoadScreen extends BaseScreen {
 		Table table = new Table(uiComponentAssets.getSkin());
 		backButton = new TextButton("Back", uiComponentAssets.getSkin());
 		newstartButton = new TextButton("NewStart", uiComponentAssets.getSkin());
-		loadButton = new TextButton("loadButton", uiComponentAssets.getSkin());
+		loadButton = new TextButton("loadOneButton", uiComponentAssets.getSkin());
 		backButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -72,7 +73,7 @@ public class LoadScreen extends BaseScreen {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				currentState.setSaveVersion(SaveVersion.NEW);
+				currentInfo.setSaveVersion(SaveVersion.NEW);
 				eventManager.setCurrentEventNpc(PROLOGUE);
 				loadManager.loadNewGame();
 			}
@@ -85,9 +86,10 @@ public class LoadScreen extends BaseScreen {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				currentInfo.setSaveVersion(SaveVersion.SAVE1);
 				saveManager.load();
-				currentState.setSaveVersion(SaveVersion.SAVE1);
-				movingManager.goCurrentPosition();
+				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
+				movingManager.goCurrentNode(nodeType);
 			}
 		});
 

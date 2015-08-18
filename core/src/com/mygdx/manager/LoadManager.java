@@ -1,7 +1,6 @@
 package com.mygdx.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
@@ -13,8 +12,6 @@ import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
 
 public class LoadManager {
-	@Autowired
-	private ApplicationContext applicationContext;
 	@Autowired
 	private UnitAssets unitAssets;
 	@Autowired

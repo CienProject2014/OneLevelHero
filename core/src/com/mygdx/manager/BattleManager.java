@@ -25,10 +25,6 @@ public class BattleManager {
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
-	private StorySectionManager storySectionManager;
-	@Autowired
-	private PositionManager positionManager;
-	@Autowired
 	private UnitManager unitManager;
 	@Autowired
 	private BattleInfo battleInfo;

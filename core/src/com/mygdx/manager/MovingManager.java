@@ -14,11 +14,7 @@ public class MovingManager {
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
-	private StorySectionManager storySectionManager;
-	@Autowired
 	private EventManager eventManager;
-	@Autowired
-	private FieldManager fieldManager;
 	@Autowired
 	private BattleManager battleManager;
 
@@ -44,7 +40,6 @@ public class MovingManager {
 					goCurrentNode(nodeType);
 				} else {
 					screenFactory.show(ScreenEnum.FIELD);
-					;
 				}
 			} else {
 				screenFactory.show(ScreenEnum.LOG);
@@ -128,7 +123,7 @@ public class MovingManager {
 		}
 	}
 
-	private void goCurrentNode(WorldNodeEnum.NodeType nodeType) {
+	public void goCurrentNode(WorldNodeEnum.NodeType nodeType) {
 		switch (nodeType) {
 		case VILLAGE:
 			screenFactory.show(ScreenEnum.VILLAGE);
