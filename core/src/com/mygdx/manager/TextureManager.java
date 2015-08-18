@@ -18,61 +18,62 @@ import com.mygdx.enums.TextureEnum;
 public class TextureManager {
 
 	public static Texture getBustTexture(String facePath, String faceNumber) {
-		return StaticAssets.textureMap.get(TextureEnum.BUST + "_" + facePath
-				+ "_" + faceNumber);
+		return StaticAssets.assetManager
+				.get(StaticAssets.textureMap.get(TextureEnum.BUST + "_" + facePath + "_" + faceNumber), Texture.class);
 	}
 
 	public static Texture getStatusTexture(String facePath) {
-		Texture statusTexture = StaticAssets.textureMap.get(TextureEnum.STATUS
-				+ "_" + facePath);
+		Texture statusTexture = StaticAssets.assetManager
+				.get(StaticAssets.textureMap.get(TextureEnum.STATUS + "_" + facePath), Texture.class);
 		if (statusTexture == null) {
-			Gdx.app.log("TextureManager", "TextureEnum.STATUS" + "_" + facePath
-					+ "is null");
+			Gdx.app.log("TextureManager", "TextureEnum.STATUS" + "_" + facePath + "is null");
 		}
 		return statusTexture;
 	}
+
 	public static Texture getCharacterBodyTexture(String facePath) {
-		return StaticAssets.textureMap.get(TextureEnum.NPC + "_" + facePath);
+		return StaticAssets.assetManager.get(StaticAssets.textureMap.get(TextureEnum.NPC + "_" + facePath),
+				Texture.class);
 	}
 
 	public static Texture getFaceTexture(String facePath) {
-		return StaticAssets.textureMap.get(TextureEnum.FACE + "_" + facePath);
+		return StaticAssets.assetManager.get(StaticAssets.textureMap.get(TextureEnum.FACE + "_" + facePath),
+				Texture.class);
 	}
 
 	public static Texture getMonsterBattleTexture(String facePath) {
-		return StaticAssets.textureMap
-				.get(TextureEnum.MONSTER + "_" + facePath);
+		return StaticAssets.assetManager.get(StaticAssets.textureMap.get(TextureEnum.MONSTER + "_" + facePath),
+				Texture.class);
 	}
 
 	public static Texture getBattleTurnBigTexture(String facePath) {
-		return StaticAssets.textureMap.get(TextureEnum.BATTLE_TURN + "_"
-				+ facePath + "_" + "big");
+		return StaticAssets.assetManager.get(
+				StaticAssets.textureMap.get(TextureEnum.BATTLE_TURN + "_" + facePath + "_" + "big"), Texture.class);
 	}
 
 	public static Texture getBattleTurnSmallTexture(String facePath) {
-		return StaticAssets.textureMap.get(TextureEnum.BATTLE_TURN + "_"
-				+ facePath + "_" + "small");
+		return StaticAssets.assetManager.get(
+				StaticAssets.textureMap.get(TextureEnum.BATTLE_TURN + "_" + facePath + "_" + "small"), Texture.class);
 	}
 
 	public static Texture getMonsterBodyTexture(String facePath) {
-		System.out.println(TextureEnum.MONSTER + "_" + facePath);
-		return StaticAssets.textureMap
-				.get(TextureEnum.MONSTER + "_" + facePath);
+		return StaticAssets.assetManager.get(StaticAssets.textureMap.get(TextureEnum.MONSTER + "_" + facePath),
+				Texture.class);
 	}
 
 	public static Texture getItemTexture(String itemPath) {
-		return StaticAssets.textureMap.get(TextureEnum.ITEM + "_"
-				+ "one_hand_sword");
+		return StaticAssets.assetManager.get(StaticAssets.textureMap.get(TextureEnum.ITEM + "_" + "one_hand_sword"),
+				Texture.class);
 	}
 
 	public static Texture getBackgroundTexture(String nodeType) {
-		return StaticAssets.textureMap.get(TextureEnum.BACKGROUND + "_"
-				+ nodeType);
+		return StaticAssets.assetManager.get(StaticAssets.textureMap.get(TextureEnum.BACKGROUND + "_" + nodeType),
+				Texture.class);
 	}
 
-	public static Texture getBackgroundTexture(String facePath,
-			TextureEnum textureEnum) {
-		return StaticAssets.textureMap.get(TextureEnum.BACKGROUND + "_"
-				+ facePath + "_" + textureEnum);
+	public static Texture getBackgroundTexture(String facePath, TextureEnum textureEnum) {
+		return StaticAssets.assetManager.get(
+				StaticAssets.textureMap.get(TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum),
+				Texture.class);
 	}
 }

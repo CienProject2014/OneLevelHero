@@ -2,6 +2,7 @@ package com.mygdx.ui;
 
 import java.util.HashMap;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -10,8 +11,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
 
 public class GridHitbox extends Table {
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
-			.get("BattleStage");
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
 
 	private final int TILE_WIDTH = 128;
 
@@ -27,15 +27,15 @@ public class GridHitbox extends Table {
 
 	public void setSizeType(MonsterEnum.SizeType sizeType) {
 		switch (sizeType) {
-			case SMALL :
-				// TODO 추후 구현
-				break;
-			case MEDIUM :
-				setMediumSizeType();
-				break;
-			case LARGE :
-				// TODO 추후 구현
-				break;
+		case SMALL:
+			// TODO 추후 구현
+			break;
+		case MEDIUM:
+			setMediumSizeType();
+			break;
+		case LARGE:
+			// TODO 추후 구현
+			break;
 		}
 		Stack stk = makeGridTable(sizeType);
 		this.add(stk).padTop(uiConstantsMap.get("gridPadTop"));
@@ -49,7 +49,8 @@ public class GridHitbox extends Table {
 		tiles = new Image[rows][columns];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				tiles[i][j] = new Image(StaticAssets.textureMap.get("tile"));
+				tiles[i][j] = new Image(
+						StaticAssets.assetManager.get(StaticAssets.textureMap.get("tile"), Texture.class));
 			}
 		}
 	}
@@ -63,8 +64,7 @@ public class GridHitbox extends Table {
 		align(Align.top);
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				tileTable.add(tiles[i][j])
-						.width(uiConstantsMap.get("gridTileWidth"))
+				tileTable.add(tiles[i][j]).width(uiConstantsMap.get("gridTileWidth"))
 						.height(uiConstantsMap.get("gridTileHeight"));
 			}
 			tileTable.row();
@@ -73,8 +73,7 @@ public class GridHitbox extends Table {
 
 		Table imageTable = new Table();
 		// FIXME Medium을 sizeType에 맞춴
-		imageTable.add(getGridImage(sizeType))
-				.width(uiConstantsMap.get("gridTableWidthMedium"))
+		imageTable.add(getGridImage(sizeType)).width(uiConstantsMap.get("gridTableWidthMedium"))
 				.height(uiConstantsMap.get("gridTableHeightMedium"));
 		stack.add(imageTable);
 		stack.add(tileTable);
@@ -175,10 +174,9 @@ public class GridHitbox extends Table {
 		}
 	}
 
-	private boolean isInside(float centerX, float centerY, float width,
-			float height, float x, float y) {
-		if (x > (centerX - width / 2) && x < (centerX + width / 2)
-				&& y < (centerY + height / 2) && y > (centerY - height / 2)) {
+	private boolean isInside(float centerX, float centerY, float width, float height, float x, float y) {
+		if (x > (centerX - width / 2) && x < (centerX + width / 2) && y < (centerY + height / 2)
+				&& y > (centerY - height / 2)) {
 			return true;
 		}
 
@@ -221,7 +219,7 @@ public class GridHitbox extends Table {
 	}
 
 	private Image getGridImage(MonsterEnum.SizeType sizeType) {
-		return new Image(StaticAssets.textureMap.get("grid_" + sizeType));
+		return new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get("grid_" + sizeType), Texture.class));
 	}
 
 	public boolean isGridShow() {

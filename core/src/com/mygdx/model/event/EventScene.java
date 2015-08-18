@@ -25,27 +25,23 @@ public class EventScene {
 	public Texture getCharacter() {
 		if (character == null) {
 			if (faceNumber == null) {
-				character = StaticAssets.textureMap.get(characterPath);
-			} else
-				if (TextureManager.getBustTexture(characterPath,
-						faceNumber) != null) {
-				character = TextureManager.getBustTexture(characterPath,
-						faceNumber);
+				character = StaticAssets.assetManager.get(characterPath, Texture.class);
+			} else if (TextureManager.getBustTexture(characterPath, faceNumber) != null) {
+				character = TextureManager.getBustTexture(characterPath, faceNumber);
 			} else {
-				Gdx.app.log("EventScene", "chracterTextureMap에 " + characterPath
-						+ " 에 해당하는 이미지가 존재하지 않습니다.");
+				Gdx.app.log("EventScene", "chracterTextureMap에 " + characterPath + " 에 해당하는 이미지가 존재하지 않습니다.");
 			}
 		}
 		return character;
 	}
+
 	public void setCharacter(Texture character) {
 		this.character = character;
 	}
 
 	public Texture getBackground() {
 		if (background == null)
-			background = StaticAssets.textureMap.get(backgroundPath);
-
+			background = StaticAssets.assetManager.get(backgroundPath, Texture.class);
 		return background;
 	}
 

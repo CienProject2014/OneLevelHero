@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -24,10 +25,10 @@ import com.uwsoft.editor.renderer.resources.ResourceManager;
 public class StaticAssets {
 	public static Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 	public static Map<String, StringFile> filePathMap;
-	public static Map<String, Texture> textureMap = new HashMap<>();
+	public static Map<String, String> textureMap = new HashMap<>();
 	public static Map<String, FrameSheet> animationSheetMap;
 	public static Map<String, HashMap<String, Float>> uiConstantsMap = new HashMap<>();
-
+	public static AssetManager assetManager;
 	public static ProgressBarStyle barstyle_hp;
 	public static ProgressBarStyle barstyle_turn;
 	public static final float BASE_WINDOW_WIDTH = 1920;
@@ -40,10 +41,9 @@ public class StaticAssets {
 
 	public static void loadAll() {
 		Gdx.app.debug("StaticAssets", "StaticAssets.loadAll() called");
-
+		assetManager = new AssetManager();
 		filePathMap = JsonParser.parseMap(StringFile.class,
 				Gdx.files.internal("data/load/file_path.json").readString());
-
 		loadSize(new Stage());
 		loadTexture();
 
@@ -69,10 +69,8 @@ public class StaticAssets {
 			skin.add("GREEN", new Texture(pixmap));
 		}
 
-		barstyle_hp = new ProgressBarStyle(skin.getDrawable("WHITE"),
-				skin.getDrawable("RED"));
-		barstyle_turn = new ProgressBarStyle(skin.getDrawable("WHITE"),
-				skin.getDrawable("GREEN"));
+		barstyle_hp = new ProgressBarStyle(skin.getDrawable("WHITE"), skin.getDrawable("RED"));
+		barstyle_turn = new ProgressBarStyle(skin.getDrawable("WHITE"), skin.getDrawable("GREEN"));
 	}
 
 	public static void loadSize(Stage stage) {
@@ -89,13 +87,13 @@ public class StaticAssets {
 	}
 
 	public static void loadTexture() {
-		animationSheetMap = JsonParser.parseMap(FrameSheet.class, filePathMap
-				.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
+		animationSheetMap = JsonParser.parseMap(FrameSheet.class,
+				filePathMap.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
 
 		DirectoryTextureMapper(textureMap, "texture");
 	}
-	public static void DirectoryTextureMapper(Map<String, Texture> map,
-			String path) {
+
+	public static void DirectoryTextureMapper(Map<String, String> map, String path) {
 		FileHandle fh;
 
 		if (Gdx.app.getType() == ApplicationType.Android) {
@@ -106,17 +104,17 @@ public class StaticAssets {
 
 		DirectoryTextureMapperRecursive(map, fh);
 	}
-	public static void DirectoryTextureMapperRecursive(
-			Map<String, Texture> map, FileHandle fh) {
+
+	public static void DirectoryTextureMapperRecursive(Map<String, String> map, FileHandle fh) {
 		if (fh.isDirectory()) {
 			FileHandle[] fhs = fh.list();
 
 			for (FileHandle e : fhs) {
 				DirectoryTextureMapperRecursive(map, e);
 			}
-		} else if (!map.containsKey(fh.nameWithoutExtension())
-				&& fh.extension().matches("^(png|jpg)")) {
-			map.put(fh.nameWithoutExtension(), new Texture(fh.path()));
+		} else if (!map.containsKey(fh.nameWithoutExtension()) && fh.extension().matches("^(png|jpg)")) {
+			map.put(fh.nameWithoutExtension(), fh.path());
+			assetManager.load(fh.path(), Texture.class);
 		}
 	}
 }

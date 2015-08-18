@@ -18,6 +18,7 @@ public class OneLevelHero extends Game {
 	public void create() {
 		Gdx.input.setCatchBackKey(true);
 		StaticAssets.loadAll();
+		StaticAssets.assetManager.finishLoading();
 		// context = RoboSpring.getContext(); 안드로이드에서 실행시
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		gameLoad();

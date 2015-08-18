@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -53,6 +55,7 @@ public class SaveManager {
 	@Autowired
 	private PositionManager positionManager;
 	private Kryo kryo;
+	private ApplicationContext context;
 
 	public SaveManager() {
 		kryo = new Kryo();
@@ -100,6 +103,7 @@ public class SaveManager {
 	public void load() {
 		FileHandle handle = Gdx.files.internal("save/save_1.json");
 		Input input;
+		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
 		try {
 			input = new Input(new FileInputStream(handle.file()));
@@ -110,7 +114,9 @@ public class SaveManager {
 			musicInfo = kryo.readObject(input, MusicInfo.class);
 			// partyInfo = kryo.readObject(input, PartyInfo.class);
 			// positionInfo = kryo.readObject(input, PositionInfo.class);
+			positionManager = context.getBean(PositionManager.class);
 			positionManager = kryo.readObject(input, PositionManager.class);
+			positionInfo = context.getBean(PositionInfo.class);
 			positionInfo = kryo.readObject(input, PositionInfo.class);
 			rewardInfo = kryo.readObject(input, RewardInfo.class);
 			soundInfo = kryo.readObject(input, SoundInfo.class);
