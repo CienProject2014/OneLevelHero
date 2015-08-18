@@ -41,7 +41,7 @@ public class EventScene {
 
 	public Texture getBackground() {
 		if (background == null)
-			background = StaticAssets.assetManager.get(backgroundPath, Texture.class);
+			background = StaticAssets.assetManager.get(StaticAssets.textureMap.get(backgroundPath), Texture.class);
 		return background;
 	}
 

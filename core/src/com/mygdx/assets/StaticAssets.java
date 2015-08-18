@@ -28,7 +28,7 @@ public class StaticAssets {
 	public static Map<String, String> textureMap = new HashMap<>();
 	public static Map<String, FrameSheet> animationSheetMap;
 	public static Map<String, HashMap<String, Float>> uiConstantsMap = new HashMap<>();
-	public static AssetManager assetManager;
+	public static AssetManager assetManager = new AssetManager();;
 	public static ProgressBarStyle barstyle_hp;
 	public static ProgressBarStyle barstyle_turn;
 	public static final float BASE_WINDOW_WIDTH = 1920;
@@ -41,9 +41,9 @@ public class StaticAssets {
 
 	public static void loadAll() {
 		Gdx.app.debug("StaticAssets", "StaticAssets.loadAll() called");
-		assetManager = new AssetManager();
 		filePathMap = JsonParser.parseMap(StringFile.class,
 				Gdx.files.internal("data/load/file_path.json").readString());
+
 		loadSize(new Stage());
 		loadTexture();
 
