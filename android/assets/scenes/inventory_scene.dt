@@ -14,20 +14,6 @@
         "imageName": "invenuibackground"
       },
       {
-        "itemIdentifier": "background",
-        "x": 119,
-        "y": 34,
-        "zIndex": 1,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "invenuibase"
-      },
-      {
         "itemIdentifier": "item_image06",
         "x": 140,
         "y": 159,
@@ -345,7 +331,7 @@
         "itemIdentifier": "equip_tag",
         "x": 34,
         "y": 720,
-        "zIndex": 2,
+        "zIndex": 1,
         "layerName": "Default",
         "tint": [
           1,
@@ -813,7 +799,7 @@
         }
       },
       {
-        "itemIdentifier": "page_light03",
+        "itemIdentifier": "page_light04",
         "x": 625,
         "y": 82,
         "zIndex": 30,
@@ -1663,6 +1649,39 @@
                 1
               ],
               "imageName": "statusuitbacinventory"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "background",
+        "x": 119,
+        "y": 34,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "background",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibase"
             }
           ],
           "layers": [
