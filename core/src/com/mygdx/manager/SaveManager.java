@@ -50,22 +50,25 @@ public class SaveManager {
 	private StorySectionInfo storySectionInfo;
 	@Autowired
 	private TimeInfo timeInfo;
+	@Autowired
+	private PositionManager positionManager;
 	private Kryo kryo;
 
 	public SaveManager() {
 		kryo = new Kryo();
-		kryo.register(CurrentState.class);
-		kryo.register(BagInfo.class);
-		kryo.register(EventInfo.class);
-		kryo.register(FieldInfo.class);
-		kryo.register(MusicInfo.class);
+		kryo.register(CurrentState.class, 0);
+		kryo.register(BagInfo.class, 1);
+		kryo.register(EventInfo.class, 2);
+		kryo.register(FieldInfo.class, 3);
+		kryo.register(MusicInfo.class, 4);
 		// kryo.register(BattleInfo.class);
 		// kryo.register(PartyInfo.class);
-		kryo.register(PositionInfo.class);
-		kryo.register(RewardInfo.class);
-		kryo.register(SoundInfo.class);
-		kryo.register(StorySectionInfo.class);
-		kryo.register(TimeInfo.class);
+		kryo.register(PositionInfo.class, 5);
+		kryo.register(RewardInfo.class, 6);
+		kryo.register(SoundInfo.class, 7);
+		kryo.register(StorySectionInfo.class, 8);
+		kryo.register(TimeInfo.class, 9);
+		kryo.register(PositionManager.class, 10);
 	}
 
 	public void save() {
@@ -79,13 +82,13 @@ public class SaveManager {
 			kryo.writeObject(output, fieldInfo);
 			kryo.writeObject(output, musicInfo);
 			// kryo.writeObject(output, partyInfo);
+			kryo.writeObject(output, positionManager);
 			kryo.writeObject(output, positionInfo);
 			kryo.writeObject(output, rewardInfo);
 			kryo.writeObject(output, soundInfo);
 			// kryo.writeObject(output, battleInfo);
 			kryo.writeObject(output, storySectionInfo);
 			kryo.writeObject(output, timeInfo);
-			System.out.println("Save 성공");
 			output.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -100,20 +103,21 @@ public class SaveManager {
 
 		try {
 			input = new Input(new FileInputStream(handle.file()));
-			kryo.readObject(input, CurrentState.class);
-			kryo.readObject(input, BagInfo.class);
-			kryo.readObject(input, EventInfo.class);
-			kryo.readObject(input, FieldInfo.class);
-			kryo.readObject(input, MusicInfo.class);
-			// kryo.readObject(input, PartyInfo.class);
-			kryo.readObject(input, PositionInfo.class);
-			kryo.readObject(input, RewardInfo.class);
-			kryo.readObject(input, SoundInfo.class);
-			kryo.readObject(input, StorySectionInfo.class);
-			kryo.readObject(input, TimeInfo.class);
-			// kryo.readObject(input, BattleInfo.class);
+			currentState = kryo.readObject(input, CurrentState.class);
+			bagInfo = kryo.readObject(input, BagInfo.class);
+			eventInfo = kryo.readObject(input, EventInfo.class);
+			fieldInfo = kryo.readObject(input, FieldInfo.class);
+			musicInfo = kryo.readObject(input, MusicInfo.class);
+			// partyInfo = kryo.readObject(input, PartyInfo.class);
+			// positionInfo = kryo.readObject(input, PositionInfo.class);
+			positionManager = kryo.readObject(input, PositionManager.class);
+			positionInfo = kryo.readObject(input, PositionInfo.class);
+			rewardInfo = kryo.readObject(input, RewardInfo.class);
+			soundInfo = kryo.readObject(input, SoundInfo.class);
+			storySectionInfo = kryo.readObject(input, StorySectionInfo.class);
+			timeInfo = kryo.readObject(input, TimeInfo.class);
+			// battleInfo = kryo.readObject(input, BattleInfo.class);
 			input.close();
-			System.out.println("Load 성공");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

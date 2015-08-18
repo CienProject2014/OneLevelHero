@@ -31,10 +31,6 @@ public class LoadManager {
 	private BattleManager battleManager;
 	@Autowired
 	private BagManager bagManager;
-	@Autowired
-	private MovingManager movingManager;
-	@Autowired
-	private SaveManager saveManager;
 
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
@@ -48,12 +44,13 @@ public class LoadManager {
 		storySectionManager.runStorySequence();
 		bagManager.possessItem(ItemEnum.WEAPON, "sabre");
 		bagManager.possessItem(ItemEnum.WEAPON, "velmont_mouse"); // FIXME for
-																	// Debug
 		bagManager.possessItem(ItemEnum.WEAPON, "velmont_mouse");
 	}
 
 	public void loadSaveGame() {
-		movingManager.goCurrentPosition();
+		setHero();
+		setBattleInfo();
+		storySectionManager.runStorySequence();
 	}
 
 	private void setBattleInfo() {

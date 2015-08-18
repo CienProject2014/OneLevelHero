@@ -13,6 +13,8 @@ import com.mygdx.controller.SaveVersion;
 import com.mygdx.currentState.CurrentState;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.LoadManager;
+import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.SaveManager;
 
 public class LoadScreen extends BaseScreen {
@@ -24,6 +26,10 @@ public class LoadScreen extends BaseScreen {
 	private SaveManager saveManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private PositionManager positionManager;
+	@Autowired
+	private MovingManager movingManager;
 
 	private Stage stage;
 	private TextButton newstartButton;
@@ -80,9 +86,8 @@ public class LoadScreen extends BaseScreen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				saveManager.load();
-				System.out.println(eventManager.getCurrentNpc().getName());
 				currentState.setSaveVersion(SaveVersion.SAVE1);
-
+				movingManager.goCurrentPosition();
 			}
 		});
 

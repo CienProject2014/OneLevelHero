@@ -9,11 +9,8 @@ import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.enums.WorldNodeEnum.NodeType;
-import com.mygdx.factory.ScreenFactory;
 
 public class PositionManager {
-	@Autowired
-	private ScreenFactory screenFactory;
 	@Autowired
 	private WorldMapAssets worldMapAssets;
 	@Autowired
