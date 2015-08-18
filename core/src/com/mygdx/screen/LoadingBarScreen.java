@@ -66,8 +66,8 @@ public class LoadingBarScreen extends BaseScreen {
 		stage.addActor(loadingFrame);
 		stage.addActor(logo);
 
-		StaticAssets.loadAll();
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		StaticAssets.loadAll();
 		context.getBean(Assets.class).initialize();
 
 	}

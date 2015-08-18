@@ -12,11 +12,11 @@ import com.mygdx.model.jsonModel.StringFile;
 import com.mygdx.util.JsonParser;
 
 public class MusicAssets implements FileAssetsInitializable {
-	private Map<String, Music> musicMap = new HashMap<>();
-	private Map<String, Music> worldNodeMusicMap = new HashMap<>();
-	private Map<String, Music> battleMusicMap = new HashMap<>();
-	private Map<String, Music> movingMusicMap = new HashMap<>();
-	private Map<String, Music> eventMusicMap = new HashMap<>();
+	private Map<String, String> musicMap = new HashMap<>();
+	private Map<String, String> worldNodeMusicMap = new HashMap<>();
+	private Map<String, String> battleMusicMap = new HashMap<>();
+	private Map<String, String> movingMusicMap = new HashMap<>();
+	private Map<String, String> eventMusicMap = new HashMap<>();
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -58,22 +58,22 @@ public class MusicAssets implements FileAssetsInitializable {
 	}
 
 	public Music getMusic(String musicString) {
-		return musicMap.get(musicString);
+		return StaticAssets.assetManager.get(musicMap.get(musicString), Music.class);
 	}
 
 	public Music getWorldNodeMusic(String musicString) {
-		return worldNodeMusicMap.get(musicString);
+		return StaticAssets.assetManager.get(worldNodeMusicMap.get(musicString), Music.class);
 	}
 
 	public Music getBattleMusic(String musicString) {
-		return battleMusicMap.get(musicString);
+		return StaticAssets.assetManager.get(battleMusicMap.get(musicString), Music.class);
 	}
 
 	public Music getMovingMusic(String musicString) {
-		return movingMusicMap.get(musicString);
+		return StaticAssets.assetManager.get(movingMusicMap.get(musicString), Music.class);
 	}
 
 	public Music getEventMusic(String musicString) {
-		return eventMusicMap.get(musicString);
+		return StaticAssets.assetManager.get(eventMusicMap.get(musicString), Music.class);
 	}
 }

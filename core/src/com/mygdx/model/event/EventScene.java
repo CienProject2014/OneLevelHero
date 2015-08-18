@@ -25,7 +25,7 @@ public class EventScene {
 	public Texture getCharacter() {
 		if (character == null) {
 			if (faceNumber == null) {
-				character = StaticAssets.assetManager.get(characterPath, Texture.class);
+				character = StaticAssets.assetManager.get(StaticAssets.textureMap.get(characterPath), Texture.class);
 			} else if (TextureManager.getBustTexture(characterPath, faceNumber) != null) {
 				character = TextureManager.getBustTexture(characterPath, faceNumber);
 			} else {

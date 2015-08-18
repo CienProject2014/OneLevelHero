@@ -42,9 +42,9 @@ public class Assets {
 	public void initialize() {
 		Map<String, StringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
+		uiComponentAssets.set(filePathMap);
 		musicAssets.set(filePathMap);
 		atlasUiAssets.set(filePathMap);
-		uiComponentAssets.set(filePathMap);
 		eventAssets.set(jsonStringMap);
 		itemAssets.set(jsonStringMap);
 		skillAssets.set(jsonStringMap);

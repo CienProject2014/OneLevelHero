@@ -1,22 +1,19 @@
 package com.mygdx.model.jsonModel;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.mygdx.assets.StaticAssets;
 
-public class MusicFile implements AssetsFile<Music> {
-	private Music file;
+public class MusicFile implements AssetsFile<String> {
 	private String filePath;
 
 	@Override
-	public Music loadFile() {
-		file = Gdx.audio.newMusic(Gdx.files.internal(filePath));
+	public String loadFile() {
 		StaticAssets.assetManager.load(filePath, Music.class);
-		return file;
+		return filePath;
 	}
 
 	@Override
-	public Music getTestFile() {
+	public String getTestFile() {
 		return null;
 	}
 }
