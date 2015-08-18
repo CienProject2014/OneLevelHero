@@ -17,6 +17,7 @@ public class Village {
 	private String villageName;
 	private String backgroundPath;
 	private String sceneName;
+	private String villageDirection;
 	private ArrayList<String> villageNpc;
 	private HashMap<String, Building> building;
 
@@ -26,6 +27,14 @@ public class Village {
 
 	public void setVillageName(String villageName) {
 		this.villageName = villageName;
+	}
+
+	public String getVillageDirection() {
+		return villageDirection;
+	}
+
+	public void setVillageDirection(String villageDirection) {
+		this.villageDirection = villageDirection;
 	}
 
 	public Texture getBackgroundUp() {

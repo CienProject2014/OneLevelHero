@@ -9,6 +9,7 @@ import com.mygdx.stage.BaseOverlapStage;
 public class CameraManager {
 	private OrthographicCamera cam;
 	private int moveFlag;
+	private int direction;
 	static final float BASE_CAMERA_POSITION_X = StaticAssets.BASE_WINDOW_WIDTH
 			/ 2f;
 	static final float BASE_CAMERA_POSITION_Y = StaticAssets.BASE_WINDOW_HEIGHT
@@ -41,8 +42,28 @@ public class CameraManager {
 
 	private void restrictCameraDelta(Vector3 cameraPosition, int deltaX,
 			int deltaY) {
+
+		if (cameraPosition.y > BASE_CAMERA_POSITION_Y + deltaY
+				- BaseOverlapStage.MOVING_SPEED && direction == 1) {
+			cameraPosition.y = BASE_CAMERA_POSITION_Y + deltaY;
+			if (cameraPosition.y == 1620) {
+				setMoveFlag(0);
+			}
+			// System.out.println(cameraPosition.y);
+			// 위쪽버튼
+			System.out.println(moveFlag);
+		} else
+			if (cameraPosition.y < BASE_CAMERA_POSITION_Y
+					+ BaseOverlapStage.MOVING_SPEED && direction == 1) {
+			cameraPosition.y = BASE_CAMERA_POSITION_Y;
+			if (cameraPosition.y == 540) {
+				setMoveFlag(1);
+			}
+			// System.out.println(moveFlag);// 아래쪽버튼
+		}
+
 		if (cameraPosition.x > BASE_CAMERA_POSITION_X + deltaX
-				- BaseOverlapStage.MOVING_SPEED) {
+				- BaseOverlapStage.MOVING_SPEED && direction == 2) {
 			cameraPosition.x = BASE_CAMERA_POSITION_X + deltaX;
 			if (cameraPosition.x == 2880) {
 				setMoveFlag(3);
@@ -50,32 +71,15 @@ public class CameraManager {
 			// 오른쪽에서 멈춤
 		} else
 			if (cameraPosition.x < BASE_CAMERA_POSITION_X
-					+ BaseOverlapStage.MOVING_SPEED) {
+					+ BaseOverlapStage.MOVING_SPEED && direction == 2) {
 			cameraPosition.x = BASE_CAMERA_POSITION_X;
 			if (cameraPosition.x == 960) {
 				setMoveFlag(4);
 			}
 			// 왼쪽에서 멈춤
 		}
-		if (cameraPosition.y > BASE_CAMERA_POSITION_Y + deltaY
-				- BaseOverlapStage.MOVING_SPEED) {
-			cameraPosition.y = BASE_CAMERA_POSITION_Y + deltaY;
-			if (cameraPosition.y == 1620) {
-				setMoveFlag(0);
-			}
-			// System.out.println(cameraPosition.y);
-			// 위쪽버튼
-		} else
-			if (cameraPosition.y < BASE_CAMERA_POSITION_Y
-					+ BaseOverlapStage.MOVING_SPEED) {
-			cameraPosition.y = BASE_CAMERA_POSITION_Y;
-			if (cameraPosition.y == 540) {
-				setMoveFlag(1);
-			}
-		}
-		// System.out.println(cameraPosition.y);
+		// System.out.println(cameraPosition.x);
 		// System.out.println(moveFlag);// 아래쪽버튼
-
 	}
 
 	public void moveCamera(BaseOverlapStage stage) {
@@ -104,6 +108,14 @@ public class CameraManager {
 				break;
 		}
 		restrictCameraDelta(stage.getCamera().position, 1920, 1080);
+	}
+
+	public int getDirection() {
+		return direction;
+	}
+
+	public void setDirection(int direction) {
+		this.direction = direction;
 	}
 
 	public int getMoveFlag() {

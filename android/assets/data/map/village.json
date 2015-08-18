@@ -1,6 +1,7 @@
 {
   "blackwood": {
     "villageName": "블랙우드",
+    "villageDirection": "up_down",
     "backgroundPath": "blackwood_bg",
     "sceneName": "blackwood_scene",
     "building": {
@@ -20,6 +21,7 @@
   },
   "cobweb": {
     "villageName": "콥웨브",
+    "villageDirection": "up_down",
     "sceneName": "cobweb_scene",
     "building": {
       "cobweb_library": {
@@ -42,21 +44,25 @@
   },
   "oberon": {
     "villageName": "오베론",
+    "villageDirection": "up_down",
     "sceneName": "oberon_scene",
     "building": {}
   },
   "kadilla_castle": {
     "villageName": "카딜라 성",
+    "villageDirection": "up_down",
     "sceneName": "kadilla_castle_scene",
     "building": {}
   },
   "winterfall": {
     "villageName": "윈터폴",
-    "sceneName": "winterfall",
+    "villageDirection": "up_down",
+    "sceneName": "winterfall_scene",
     "building": {}
   },
     "redrose_castle": {
-    "villageName": "윈터폴",
+    "villageName": "레드로즈 성",
+    "villageDirection": "left_right",
     "sceneName": "redrose_castle_scene",
     "building": {}
   }
