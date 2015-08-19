@@ -140,7 +140,7 @@ public class BattleStage extends BaseOneLevelStage {
 		if (animationDelay > MONSTER_ATTACK_DELAY) {
 			Hero randomHero = partyManager.pickRandomHero();
 			calCostGague(currentAttackUnit, NORMAL_ATTACK);// 랜덤으로 선택해야 한다
-			battleManager.attack(currentAttackUnit, randomHero);
+			battleManager.attack(currentAttackUnit, randomHero, null);
 			endTurn();
 			showRMenuButtons();
 			animationDelay = 0;
@@ -466,7 +466,7 @@ public class BattleStage extends BaseOneLevelStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 					if (!isSkill) {
-						battleManager.attack(currentAttackUnit, selectedMonster);
+						battleManager.attack(currentAttackUnit, selectedMonster, gridHitbox.getPreviousHitArea());
 					} else {
 						battleManager.userSkill(currentAttackUnit, "cut_01");
 						isSkill = false;

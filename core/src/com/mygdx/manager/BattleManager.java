@@ -88,13 +88,14 @@ public class BattleManager {
 		setBattleState(BattleStateEnum.GAME_OVER);
 	}
 
-	public void attack(Unit attackUnit, Unit defendUnit) {
-		attackUnit.attack(defendUnit);
+	public void attack(Unit attackUnit, Unit defendUnit, int[][] hitArea) {
+		attackUnit.attack(defendUnit, hitArea);
 		if (attackUnit instanceof Hero) {
 			// TODO empty animation
 			readyForPlayerAnimation("empty hit");
 		} else {
 			// TODO empty animation
+
 			readyForMonsterAnimation("empty hit");
 		}
 		checkIsDead(defendUnit);

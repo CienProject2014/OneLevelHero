@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.SkillAssets;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
 
 public class HeroAttackStrategy implements AttackStrategy {
@@ -12,19 +13,44 @@ public class HeroAttackStrategy implements AttackStrategy {
 	private SkillAssets sillAssets;
 
 	@Override
-	public void attack(Unit attackHero, Unit defender) {
+	public void attack(Unit attackHero, Unit defender, int[][] hitArea) {
+		Monster monster = (Monster) defender;
+
+		for (int i = 0; i < hitArea.length; i++) {
+			String str = "";
+			for (int j = 0; j < hitArea[i].length; j++) {
+				str += hitArea[i][j] + " ";
+			}
+			Gdx.app.log("HitArea", str);
+		}
+
+		float factor = 1.0f;
 		int attackDmg = attackHero.getStatus().getAttack();
 		int defenseValue = defender.getStatus().getDefense();
 		int defenderHp = defender.getStatus().getHp();
-		int realDmg = attackDmg - defenseValue;
-		if (realDmg < 0) {
-			realDmg = 1;
+
+		int realDmg = 0;
+
+		for (int i = 0; i < hitArea.length; i++) {
+			for (int j = 0; j < hitArea[i].length; j++) {
+				if (hitArea[i][j] == 1) {
+					int tmpDmg = (int) (attackDmg * factor - defenseValue);
+					if (tmpDmg < 1) {
+						realDmg += 1 * (monster.getHitArea()[i][j] / 100.0f);
+					} else {
+						realDmg += tmpDmg * (monster.getHitArea()[i][j] / 100.0f);
+					}
+				}
+				Gdx.app.log("HeroAttackStrategy", "damage: " + realDmg);
+			}
 		}
+
 		if (defenderHp - realDmg > 0) {
 			defender.getStatus().setHp(defenderHp - realDmg);
 		} else {
 			defender.getStatus().setHp(0);
 		}
+
 		Gdx.app.log("Hero", attackHero.getName() + "이(가) " + defender.getName() + "을(를) 공격하였습니다!");
 	}
 
