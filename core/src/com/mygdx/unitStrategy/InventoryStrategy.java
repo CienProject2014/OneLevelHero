@@ -21,7 +21,7 @@ public class InventoryStrategy {
 	private BagManager bagManager;
 	public final String EMPTY_ITEM = "empty_item";
 
-	public void equip(Hero hero, ItemEnum.EquipmentPart equipmentType, String equipmentName) {
+	public void equip(Hero hero, ItemEnum equipmentType, String equipmentName) {
 		switch (equipmentType) {
 			case RIGHT_HANDGRIP :
 				equipRightHandGrip(hero, equipmentName);

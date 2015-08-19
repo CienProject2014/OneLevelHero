@@ -1,13 +1,11 @@
 {
   "empty_item" : {
   	"itemType" : "clothes",
-  	"equipmentPart" : "clothes",
   	"name" : "미 장착",
   	"itemPath" : "empty_item"
   },
   "cope": {
     "itemType" : "clothes",
-    "equipmentPart" : "clothes",
     "name": "중앙 사제복",
     "itemPath" : "cope",
     "category": "로브",
@@ -21,7 +19,6 @@
   },
   "necromantic_dress": {
      "itemType" : "clothes",
-     "equipmentPart" : "clothes",
     "name": "강령복",
     "itemPath" : "necromantic_dress",
     "category": "로브",
@@ -35,8 +32,8 @@
   },
   "iron_armor": {
     "name": "철제 갑옷",
+	"itemType" : "clothes",
     "itemPath" : "iron_armor",
-    "equipmentPart" : "clothes",
     "category": "갑옷",
     "grade": "일반",
        "effectStatusList" : [ "defense", "speed"],

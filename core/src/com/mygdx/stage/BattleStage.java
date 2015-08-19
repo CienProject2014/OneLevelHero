@@ -416,7 +416,7 @@ public class BattleStage extends BaseOneLevelStage {
 					battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.NORMAL);
 					makeHiddenButton();
 					Hero forInv = (Hero) currentAttackUnit;
-					Weapon w = (Weapon) forInv.getInventory().getEquipment(ItemEnum.EquipmentPart.LEFT_HANDGRIP);
+					Weapon w = (Weapon) forInv.getInventory().getEquipment(ItemEnum.LEFT_HANDGRIP);
 					gridHitbox.setLimitNum(w.getHitboxSize());
 					gridHitbox.showGrid();
 				} else {
