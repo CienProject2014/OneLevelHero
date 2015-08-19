@@ -19,7 +19,7 @@ public class Hero extends Unit {
 	public void setInventoryStrategy(InventoryStrategy inventoryStrategy) {
 		this.inventoryStrategy = inventoryStrategy;
 	}
-	public void equip(ItemEnum.EquipmentPart equipmentType, String equipmentName) {
+	public void equip(ItemEnum equipmentType, String equipmentName) {
 		inventoryStrategy.equip(this, equipmentType, equipmentName);
 	}
 

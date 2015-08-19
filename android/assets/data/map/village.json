@@ -56,7 +56,7 @@
   },
   "winterfall": {
     "villageName": "윈터폴",
-    "villageDirection": "up_down",
+    "villageDirection": "center",
     "sceneName": "winterfall_scene",
     "building": {}
   },

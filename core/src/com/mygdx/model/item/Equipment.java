@@ -2,7 +2,6 @@ package com.mygdx.model.item;
 
 import java.util.ArrayList;
 
-import com.mygdx.enums.ItemEnum;
 import com.mygdx.model.unit.Status;
 
 public class Equipment extends Item {
@@ -11,7 +10,6 @@ public class Equipment extends Item {
 	private boolean using;
 	private Status effectStatus;
 	private String usingHand;
-	private ItemEnum.EquipmentPart equipmentPart;
 	private boolean isTwoHanded;
 
 	public String getUsingHand() {
@@ -60,13 +58,5 @@ public class Equipment extends Item {
 
 	public void setEffectStatusList(ArrayList<String> effectStatusList) {
 		this.effectStatusList = effectStatusList;
-	}
-
-	public ItemEnum.EquipmentPart getEquipmentPart() {
-		return equipmentPart;
-	}
-
-	public void setEquipmentPart(ItemEnum.EquipmentPart equipmentPart) {
-		this.equipmentPart = equipmentPart;
 	}
 }

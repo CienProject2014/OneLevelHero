@@ -17,6 +17,7 @@ import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.WorldMapAssets;
+import com.mygdx.enums.VillageDirectionEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
@@ -84,59 +85,66 @@ public class VillageStage extends BaseOverlapStage {
 		setArrow();
 		setBuildingButton();
 		addActor(sceneLoader.getRoot());
-		if (villageInfo.getVillageDirection().equals("up_down")) {
-			final CompositeItem shiftbutton_up = sceneLoader.getRoot().getCompositeById("camera_up");
-			final CompositeItem shiftbutton_down = sceneLoader.getRoot().getCompositeById("camera_down");
+		VillageDirectionEnum villageDirection = villageInfo.getVillageDirection();
+		switch (villageDirection) {
+			case UP_DOWN :
+				final CompositeItem shiftbutton_up = sceneLoader.getRoot().getCompositeById("camera_up");
+				final CompositeItem shiftbutton_down = sceneLoader.getRoot().getCompositeById("camera_down");
 
-			shiftbutton_up.setTouchable(Touchable.enabled);
-			shiftbutton_down.setTouchable(Touchable.enabled);
+				shiftbutton_up.setTouchable(Touchable.enabled);
+				shiftbutton_down.setTouchable(Touchable.enabled);
 
-			shiftbutton_up.addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					setCameraState(CameraStateEnum.MOVE_UP);
+				shiftbutton_up.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						setCameraState(CameraStateEnum.MOVE_UP);
 
-					cameraManager.setMoveFlag(2);
-				}
-			});
+						cameraManager.setMoveFlag(2);
+					}
+				});
 
-			shiftbutton_down.addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					setCameraState(CameraStateEnum.MOVE_DOWN);
+				shiftbutton_down.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						setCameraState(CameraStateEnum.MOVE_DOWN);
 
-					cameraManager.setMoveFlag(2);
-				}
-			});
-			cameraManager.setDirection(1);
+						cameraManager.setMoveFlag(2);
+					}
+				});
+				cameraManager.setDirection(1);
 
-		} else if (villageInfo.getVillageDirection().equals("left_right")) {
-			final CompositeItem shiftbutton_left = sceneLoader.getRoot().getCompositeById("camera_left");
-			final CompositeItem shiftbutton_right = sceneLoader.getRoot().getCompositeById("camera_right");
+				break;
+			case LEFT_RIGHT :
+				final CompositeItem shiftbutton_left = sceneLoader.getRoot().getCompositeById("camera_left");
+				final CompositeItem shiftbutton_right = sceneLoader.getRoot().getCompositeById("camera_right");
 
-			shiftbutton_left.setTouchable(Touchable.enabled);
-			shiftbutton_right.setTouchable(Touchable.enabled);
+				shiftbutton_left.setTouchable(Touchable.enabled);
+				shiftbutton_right.setTouchable(Touchable.enabled);
 
-			shiftbutton_left.addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					setCameraState(CameraStateEnum.MOVE_DOWN);
+				shiftbutton_left.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						setCameraState(CameraStateEnum.MOVE_DOWN);
 
-					cameraManager.setMoveFlag(5);
-				}
-			});
+						cameraManager.setMoveFlag(5);
+					}
+				});
 
-			shiftbutton_right.addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					setCameraState(CameraStateEnum.MOVE_RIGHT);
-					cameraManager.setMoveFlag(5);
-				}
-			});
-			cameraManager.setDirection(2);
+				shiftbutton_right.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						setCameraState(CameraStateEnum.MOVE_RIGHT);
+						cameraManager.setMoveFlag(5);
+					}
+				});
+				cameraManager.setDirection(2);
 
+				break;
+			case CENTER :
+				break;
+			default :
+				Gdx.app.log("VillageStage", "VillageDirectionEnum정보 오류");
 		}
-
 	}
 
 	private void controlButton() {
@@ -165,7 +173,9 @@ public class VillageStage extends BaseOverlapStage {
 	@Override
 	public void act() {
 		super.act();
-		controlButton();
+		if (villageInfo.getVillageDirection() != VillageDirectionEnum.CENTER) {
+			controlButton();
+		}
 	}
 
 	private void setBuildingButton() {

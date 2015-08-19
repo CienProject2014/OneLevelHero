@@ -513,17 +513,17 @@ public class InventoryStage extends BaseOverlapStage {
 				itemInfo.put(
 						index,
 						currentSelectedHero.getInventory().getEquipment(
-								ItemEnum.EquipmentPart.findEquipmentPart(inventoryList.get(index))));
+								ItemEnum.findItemByType(inventoryList.get(index))));
 				ImageItem imageItem = sceneLoader.getRoot().getImageById(inventoryItemImageList.get(index));
 				String itemPath = currentSelectedHero.getInventory()
-						.getEquipment(ItemEnum.EquipmentPart.findEquipmentPart(inventoryList.get(index))).getItemPath();
+						.getEquipment(ItemEnum.findItemByType(inventoryList.get(index))).getItemPath();
 				imageItem.setDrawable((new TextureRegionDrawable(new TextureRegion(TextureManager
 						.getItemTexture(itemPath)))));
 				imageItem.setVisible(true);
 				imageItem.setTouchable(Touchable.disabled);
 				LabelItem labelItem = sceneLoader.getRoot().getLabelById(inventoryLabelList.get(index));
 				labelItem.setText(currentSelectedHero.getInventory()
-						.getEquipment(ItemEnum.EquipmentPart.findEquipmentPart(inventoryList.get(index))).getName());
+						.getEquipment(ItemEnum.findItemByType(inventoryList.get(index))).getName());
 				labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 				labelItem.setFontScale(1.0f);
 				labelItem.setVisible(true);

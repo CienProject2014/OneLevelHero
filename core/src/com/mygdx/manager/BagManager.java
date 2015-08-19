@@ -21,30 +21,29 @@ public class BagManager {
 	public void possessItem(ItemEnum itemType, String itemName) {
 		Item item;
 		switch (itemType) {
-		case WEAPON:
-			item = itemAssets.getWeapon(itemName);
-			addEquipment((Equipment) item);
-			break;
-		case SHIELD:
-			item = itemAssets.getShield(itemName);
-			addEquipment((Equipment) item);
-			break;
-		case ACCESSORY:
-			item = itemAssets.getAccessory(itemName);
-			addEquipment((Equipment) item);
-			break;
-		case CLOTHES:
-			item = itemAssets.getClothes(itemName);
-			addEquipment((Equipment) item);
-			break;
-		case CONSUMABLES:
-			item = itemAssets.getConsumables(itemName);
-			addConsumables((Consumables) item);
-			break;
-		case ETC_ITEM:
-			item = itemAssets.getEtcItem(itemName);
-			addEtcItem(item);
-			break;
+			case HANDGRIP :
+				item = itemAssets.getHandGrip(itemName);
+				addEquipment((Equipment) item);
+				break;
+			case ACCESSORY :
+				item = itemAssets.getAccessory(itemName);
+				addEquipment((Equipment) item);
+				break;
+			case CLOTHES :
+				item = itemAssets.getClothes(itemName);
+				addEquipment((Equipment) item);
+				break;
+			case CONSUMABLES :
+				item = itemAssets.getConsumables(itemName);
+				addConsumables((Consumables) item);
+				break;
+			case ETC_ITEM :
+				item = itemAssets.getEtcItem(itemName);
+				addEtcItem(item);
+				break;
+			default :
+				Gdx.app.log("BagManager", "itemType 정보 오류");
+				break;
 		}
 	}
 

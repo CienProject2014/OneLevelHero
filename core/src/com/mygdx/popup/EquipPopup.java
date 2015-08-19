@@ -82,7 +82,7 @@ public class EquipPopup extends Dialog {
 	}
 
 	private void setButton(AtlasUiAssets atlasUiAssets, UiComponentAssets uiComponentAssets, final Equipment equipment) {
-		if (equipment.getEquipmentPart().equals(ItemEnum.EquipmentPart.HANDGRIP)) {
+		if (equipment.getItemType().equals(ItemEnum.HANDGRIP)) {
 			TextButtonStyle buttonStyle = new TextButtonStyle(atlasUiAssets.getAtlasUiFile("popupui_button2"),
 					atlasUiAssets.getAtlasUiFile("popupui_acbutton2"),
 					atlasUiAssets.getAtlasUiFile("popupui_acbutton2"), uiComponentAssets.getFont());
@@ -150,7 +150,7 @@ public class EquipPopup extends Dialog {
 	private void setQuestionLabel(Equipment equipment) {
 		Label questionLabel = new Label("", StaticAssets.skin);
 
-		switch (equipment.getEquipmentPart()) {
+		switch (equipment.getItemType()) {
 			case HANDGRIP :
 				questionLabel.setText("어느 손에 장착하시겠습니까?");
 				break;

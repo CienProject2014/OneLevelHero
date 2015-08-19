@@ -1,15 +1,14 @@
 {
   "empty_item" : {
-  	"itemType" : "weapon",
+  	"itemType" : "handgrip",
   	"name" : "미 장착",
   	"itemPath" : "empty_item",
   	"category" : "한손검",
   	"isTwoHanded" : "false",
-  	"equipmentPart" : "handgrip",
   	"hitboxSize" :1
   },
   "broad_sword": {
-    "itemType" : "weapon",
+    "itemType" : "handgrip",
     "name": "브로드 소드",
     "itemPath" : "broad_sword",
     "category": "한손검",
@@ -17,7 +16,6 @@
     "hitboxSize": 3,
     "elementType": "무",
     "isTwoHanded": "false",
-    "equipmentPart" : "handgrip",
     "attackTypeList": [
       "slash",
       "stab"
@@ -30,7 +28,7 @@
     "description": "칼날이 넓은 검."
   },
   "sabre": {
-    "itemType" : "weapon",
+    "itemType" :"handgrip",
     "name": "사브르",
     "itemPath" : "sabre",
     "category": "한손검",
@@ -38,7 +36,6 @@
     "hitboxSize": 3,
     "elementType": "무",
     "isTwoHanded": "false",
-    "equipmentPart" : "handgrip",
     "attackTypeList": [
       "slash"
     ],
@@ -50,7 +47,7 @@
     "description": "외날이며 완만하게 구부러져 있다."
   },
   "velmont_mouse": {
-    "itemType" : "weapon",
+    "itemType" :  "handgrip",
     "name": "벨몽의 마우스",
     "itemPath" : "velmont_mouse",
     "category": "삼성 마우스",
@@ -58,7 +55,6 @@
     "hitboxSize": 3,
     "elementType": "무",
     "isTwoHanded": "false",
-    "equipmentPart" : "handgrip",
     "attackTypeList": [
       "slash"
     ],

@@ -59,7 +59,7 @@ public class Inventory {
 		}
 	}
 
-	public Equipment getEquipment(ItemEnum.EquipmentPart equipmentPart) {
+	public Equipment getEquipment(ItemEnum equipmentPart) {
 		switch (equipmentPart) {
 			case RIGHT_HANDGRIP :
 				return getRightHandGrip();
