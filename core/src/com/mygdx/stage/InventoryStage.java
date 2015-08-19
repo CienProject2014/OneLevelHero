@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
@@ -231,10 +232,15 @@ public class InventoryStage extends BaseOverlapStage {
 
 			LabelItem descriptionLabel = sceneLoader.getRoot().getLabelById("description_label");
 			descriptionLabel.setText(itemInfo.get(index).getDescription());
+			descriptionLabel.setWrap(true);
 			setLabelStyle(descriptionLabel);
+
+			Table labelTable = new Table();
+			// FIXME
+			labelTable.add(descriptionLabel).width(600).left().bottom().padLeft(2750).padBottom(600);
+			addActor(labelTable);
 		}
 	}
-
 	private void setLabelStyle(LabelItem labelItem) {
 		labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		labelItem.setFontScale(1.0f);
