@@ -569,14 +569,17 @@ public class InventoryStage extends BaseOverlapStage {
 
 	private void setVoidItemImageAndLabel(Array<String> inventoryItemImageList, Array<String> inventoryLabelList,
 			int index) {
-		ImageItem inventoryItemImage = sceneLoader.getRoot().getImageById(
-				inventoryItemImageList.get(index % (pageNumber * ITEM_SLOT_SIZE)));
+		int dividedIndex;
+		if (isFirstPage()) {
+			dividedIndex = index;
+		} else {
+			dividedIndex = index % (pageNumber * ITEM_SLOT_SIZE);
+		}
+		ImageItem inventoryItemImage = sceneLoader.getRoot().getImageById(inventoryItemImageList.get(dividedIndex));
 		inventoryItemImage.setVisible(false);
-		LabelItem labelItem = sceneLoader.getRoot().getLabelById(
-				inventoryLabelList.get(index % (pageNumber * ITEM_SLOT_SIZE)));
+		LabelItem labelItem = sceneLoader.getRoot().getLabelById(inventoryLabelList.get(dividedIndex));
 		labelItem.setVisible(false);
 	}
-
 	private void setBagItemImageAndLabel(BagManager bagManager, Array<String> inventoryItemImageList,
 			Array<String> inventoryLabelList, int index) {
 		int dividedIndex;

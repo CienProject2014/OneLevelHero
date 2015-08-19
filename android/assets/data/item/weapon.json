@@ -5,7 +5,8 @@
   	"itemPath" : "empty_item",
   	"category" : "한손검",
   	"isTwoHanded" : "false",
-  	"equipmentPart" : "handgrip"
+  	"equipmentPart" : "handgrip",
+  	"hitboxSize" :1
   },
   "broad_sword": {
     "itemType" : "weapon",
