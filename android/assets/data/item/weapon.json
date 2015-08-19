@@ -5,7 +5,8 @@
   	"itemPath" : "empty_item",
   	"category" : "한손검",
   	"isTwoHanded" : "false",
-	"hitboxSize": 1
+  	"equipmentPart" : "handgrip",
+  	"hitboxSize" :1
   },
   "broad_sword": {
     "itemType" : "weapon",
@@ -16,10 +17,12 @@
     "hitboxSize": 3,
     "elementType": "무",
     "isTwoHanded": "false",
+    "equipmentPart" : "handgrip",
     "attackTypeList": [
       "slash",
       "stab"
     ],
+    "effectStatusList" : [ "attack", "speed" ],
     "effectStatus": {
       "attack": 35,
       "speed": -5
@@ -35,9 +38,11 @@
     "hitboxSize": 3,
     "elementType": "무",
     "isTwoHanded": "false",
+    "equipmentPart" : "handgrip",
     "attackTypeList": [
       "slash"
     ],
+    "effectStatusList" : [ "attack", "speed" ],
     "effectStatus": {
       "attack": 25,
       "speed": 5
@@ -53,9 +58,11 @@
     "hitboxSize": 3,
     "elementType": "무",
     "isTwoHanded": "false",
+    "equipmentPart" : "handgrip",
     "attackTypeList": [
       "slash"
     ],
+    "effectStatusList" : [ "attack", "speed" ],
     "effectStatus": {
       "attack": 1,
       "speed": 5

@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.factory.ScreenFactory;
 
@@ -33,12 +30,5 @@ public class InventoryScreen extends BaseScreen {
 		multiplexer.addProcessor(0, inventoryStage);
 		multiplexer.addProcessor(1, monsterStage);
 		Gdx.input.setInputProcessor(multiplexer);
-		monsterStage.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				screenFactory.show(ScreenEnum.BATTLE);
-			}
-		});
 	}
-
 }

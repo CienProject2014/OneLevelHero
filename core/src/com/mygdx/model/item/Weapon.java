@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.mygdx.enums.WeaponEnum;
 import com.mygdx.enums.WeaponEnum.AttackType;
 
-public class Weapon extends HandGrip {
+public class Weapon extends Equipment {
 	private WeaponEnum.WeaponType weaponType;
 	private String elementType;
 	private int hitboxSize;

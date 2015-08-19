@@ -324,61 +324,61 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void makeHiddenButton() {
 		switch (battleManager.getCurrentClickStateEnum()) {
-		case NORMAL:
-			calCostGague(currentAttackUnit, NORMAL_ATTACK);
-			updateOrder();
-			updateSmallImageTable();
-			setDarkButton(attackButton);
-			break;
-		case SKILL:
-			setDarkButton(skillButton);
-			break;
-		case INVENTORY:
-			setDarkButton(inventoryButton);
-			break;
-		case DEFENSE:
-			setDarkButton(defenseButton);
-			break;
-		case WAIT:
-			setDarkButton(waitButton);
-			break;
-		case DEFAULT:
-			setFreeButton();
-			break;
-		default:
-			break;
+			case NORMAL :
+				calCostGague(currentAttackUnit, NORMAL_ATTACK);
+				updateOrder();
+				updateSmallImageTable();
+				setDarkButton(attackButton);
+				break;
+			case SKILL :
+				setDarkButton(skillButton);
+				break;
+			case INVENTORY :
+				setDarkButton(inventoryButton);
+				break;
+			case DEFENSE :
+				setDarkButton(defenseButton);
+				break;
+			case WAIT :
+				setDarkButton(waitButton);
+				break;
+			case DEFAULT :
+				setFreeButton();
+				break;
+			default :
+				break;
 		}
 	}
 
 	private void checkCurrentState() {
 		switch (battleManager.getCurrentClickStateEnum()) {
-		case NORMAL:
-			gridHitbox.hideGrid();
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case SKILL:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case INVENTORY:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case DEFENSE:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case WAIT:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case RUN:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		default:
-			break;
+			case NORMAL :
+				gridHitbox.hideGrid();
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case SKILL :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case INVENTORY :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case DEFENSE :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case WAIT :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case RUN :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			default :
+				break;
 		}
 	}
 
@@ -416,7 +416,7 @@ public class BattleStage extends BaseOneLevelStage {
 					battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.NORMAL);
 					makeHiddenButton();
 					Hero forInv = (Hero) currentAttackUnit;
-					Weapon w = (Weapon) forInv.getInventory().getEquipment(ItemEnum.EquipmentPart.LEFT_HAND_GRIP);
+					Weapon w = (Weapon) forInv.getInventory().getEquipment(ItemEnum.EquipmentPart.LEFT_HANDGRIP);
 					gridHitbox.setLimitNum(w.getHitboxSize());
 					gridHitbox.showGrid();
 				} else {
@@ -523,10 +523,10 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private void makeTurnBackgroundImage() {
-		currentAttackerBackground = new Image(
-				StaticAssets.assetManager.get(StaticAssets.textureMap.get("battleui_turntable_01"), Texture.class));
-		turnTableBackground = new Image(
-				StaticAssets.assetManager.get(StaticAssets.textureMap.get("battleui_turntable_02"), Texture.class));
+		currentAttackerBackground = new Image(StaticAssets.assetManager.get(
+				StaticAssets.textureMap.get("battleui_turntable_01"), Texture.class));
+		turnTableBackground = new Image(StaticAssets.assetManager.get(
+				StaticAssets.textureMap.get("battleui_turntable_02"), Texture.class));
 	}
 
 	private void makeBattleTurnImage() {

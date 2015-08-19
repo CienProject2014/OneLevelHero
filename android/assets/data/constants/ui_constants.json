@@ -69,7 +69,8 @@
   	"popupHeight" : 480,
   	"buttonHeight" : 90,
   	"buttonPadBottom" : 50,
-  	"closeButtonPadLeft" : 50
+  	"closeButtonPadLeft" : 50,
+  	"equipButtonPadLeft" : 30
   },
   "EventStage": {
 	"scriptWidth": 1920,
