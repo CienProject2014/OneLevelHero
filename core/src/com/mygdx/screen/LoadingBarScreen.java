@@ -67,7 +67,7 @@ public class LoadingBarScreen extends BaseScreen {
 
 	}
 
-	public void gameLoad() {
+	public void loadGame() {
 		StaticAssets.context.getBean(ScreenFactory.class).setGame(game);
 	}
 
@@ -112,7 +112,7 @@ public class LoadingBarScreen extends BaseScreen {
 
 		if (StaticAssets.assetManager.update()) {
 			if (Gdx.input.isTouched()) {
-				gameLoad();
+				loadGame();
 				StaticAssets.context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
 			}
 		}
