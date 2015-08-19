@@ -17,7 +17,6 @@ public class DungeonStage extends BaseOverlapStage {
 	private CompositeItem arrowUp, arrowDown, arrowLeft, arrowRight;
 
 	public Stage makeStage() {
-		initSceneLoader(StaticAssets.rm);
 
 		makeScene();
 		setButton();
@@ -27,6 +26,11 @@ public class DungeonStage extends BaseOverlapStage {
 
 	private void makeScene() {
 		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
+
+		if (!StaticAssets.rm.searchSceneNames("blackwood_forest_dungeon_scene")) {
+			StaticAssets.rm.initScene("blackwood_forest_dungeon_scene");
+		}
+		initSceneLoader(StaticAssets.rm);
 		sceneLoader.loadScene("blackwood_forest_dungeon_scene");
 		cameraManager.stretchToDevice(this);
 		addActor(sceneLoader.getRoot());

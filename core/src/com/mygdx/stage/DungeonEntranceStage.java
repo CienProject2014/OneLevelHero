@@ -20,7 +20,6 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 	private PartyManager partymanager;
 
 	public Stage makeStage() {
-		initSceneLoader(StaticAssets.rm);
 		cameraManager.stretchToDevice(this);
 
 		makeScene();
@@ -31,6 +30,11 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 
 	private void makeScene() {
 		// 우선은 blackwood_forest_entrance_scene으로 통일하자
+
+		if (!StaticAssets.rm.searchSceneNames("mawang_castle_scene")) {
+			StaticAssets.rm.initScene("mawang_castle_scene");
+		}
+		initSceneLoader(StaticAssets.rm);
 		sceneLoader.loadScene("mawang_castle_scene");
 		// cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());

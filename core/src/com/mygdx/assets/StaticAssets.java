@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -31,29 +28,22 @@ public class StaticAssets {
 	public static Map<String, String> textureMap = new HashMap<>();
 	public static Map<String, FrameSheet> animationSheetMap;
 	public static Map<String, HashMap<String, Float>> uiConstantsMap = new HashMap<>();
-	public static AssetManager assetManager = new AssetManager();;
+	public static AssetManager assetManager = new AssetManager();
+	public static ResourceManager rm = new ResourceManager(); // Overlap2DManager
 	public static ProgressBarStyle barstyle_hp;
 	public static ProgressBarStyle barstyle_turn;
-	public static ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	public static final float BASE_WINDOW_WIDTH = 1920;
 	public static final float BASE_WINDOW_HEIGHT = 1080;
 	public static float windowWidth;
 	public static float windowHeight;
 	public static float resolutionFactor; // (기준해상도/현재해상도)
 
-	public static ResourceManager rm = new ResourceManager();
-
 	public static void loadAll() {
-		Gdx.app.debug("StaticAssets", "StaticAssets.loadAll() called");
 		filePathMap = JsonParser.parseMap(StringFile.class,
 				Gdx.files.internal("data/load/file_path.json").readString());
-
 		loadSize(new Stage());
+		rm.loadProjectVO();
 		loadTexture();
-
-		// Loading all assets/resources into memory
-		rm.initAllResources();
-
 		{
 			Pixmap pixmap = new Pixmap(1, 22, Format.RGBA8888);
 			pixmap.setColor(Color.WHITE);
@@ -72,9 +62,9 @@ public class StaticAssets {
 			pixmap.fill();
 			skin.add("GREEN", new Texture(pixmap));
 		}
-
 		barstyle_hp = new ProgressBarStyle(skin.getDrawable("WHITE"), skin.getDrawable("RED"));
 		barstyle_turn = new ProgressBarStyle(skin.getDrawable("WHITE"), skin.getDrawable("GREEN"));
+
 	}
 
 	public static void loadSize(Stage stage) {
@@ -110,6 +100,7 @@ public class StaticAssets {
 	}
 
 	public static void DirectoryTextureMapperRecursive(Map<String, String> map, FileHandle fh) {
+
 		if (fh.isDirectory()) {
 			FileHandle[] fhs = fh.list();
 
@@ -121,4 +112,5 @@ public class StaticAssets {
 			assetManager.load(fh.path(), Texture.class);
 		}
 	}
+
 }

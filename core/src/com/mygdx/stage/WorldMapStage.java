@@ -29,6 +29,9 @@ public class WorldMapStage extends BaseOverlapStage {
 	private final int SET_POSITION = 15;
 
 	public Stage makeStage() {
+		if (!StaticAssets.rm.searchSceneNames("worldmap_scene")) {
+			StaticAssets.rm.initScene("worldmap_scene");
+		}
 		initSceneLoader(StaticAssets.rm);
 		positionManager.setInWorldMap(true);
 		/*
@@ -43,8 +46,7 @@ public class WorldMapStage extends BaseOverlapStage {
 		 * 수 있다.
 		 */
 		currentPosition = sceneLoader.getRoot().getCompositeById("cross");
-		currentNode = sceneLoader.getRoot().getImageById(
-				positionManager.getCurrentNodeName());
+		currentNode = sceneLoader.getRoot().getImageById(positionManager.getCurrentNodeName());
 		// 카메라 위치를 현재노드로 잡기 위하여 가져옴
 		currentPosition.setX(currentNode.getX() - SET_POSITION + 16);
 		currentPosition.setY(currentNode.getY() - SET_POSITION + 16);
@@ -59,30 +61,27 @@ public class WorldMapStage extends BaseOverlapStage {
 		return currentNode;
 	}
 
-	public void setNodeButton(final PositionManager positionManager,
-			NodeAssets nodeAssets) {
+	public void setNodeButton(final PositionManager positionManager, NodeAssets nodeAssets) {
 		Map<String, Village> villageMap = nodeAssets.getVillageMap();
-		Iterator<Entry<String, Village>> villageMapIterator = villageMap
-				.entrySet().iterator();
+		Iterator<Entry<String, Village>> villageMapIterator = villageMap.entrySet().iterator();
 		while (villageMapIterator.hasNext()) {
 			final String nodeName = villageMapIterator.next().getKey();
 			ImageItem nodeButton = sceneLoader.getRoot().getImageById(nodeName);
 			nodeButton.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					return true;
 				}
 
 				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					positionManager.setInWorldMap(false);
 					movingManager.goToNode(nodeName);
 				}
 			});
 		}
 	}
+
 	public void setCurrent(ImageItem current) {
 		this.currentNode = current;
 	}
@@ -93,8 +92,8 @@ public class WorldMapStage extends BaseOverlapStage {
 		int yBottomLimit = (int) (StaticAssets.windowHeight / 2);
 		int yTopLimit = (int) (1688 - (StaticAssets.windowHeight / 2));
 
-		float xValue = this.getCurrent().getX() - StaticAssets.windowWidth / 2, yValue = this
-				.getCurrent().getY() - StaticAssets.windowHeight / 2;
+		float xValue = this.getCurrent().getX() - StaticAssets.windowWidth / 2,
+				yValue = this.getCurrent().getY() - StaticAssets.windowHeight / 2;
 		// x값이 오른쪽으로 벗어날 경우
 		if (this.getCurrent().getX() > xRightLimit)
 			xValue = 3000 - StaticAssets.windowWidth;

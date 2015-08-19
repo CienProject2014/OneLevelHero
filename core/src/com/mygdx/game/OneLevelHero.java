@@ -15,7 +15,7 @@ public class OneLevelHero extends Game {
 		if (keycode == Keys.BACK) {
 			// Do back button handling (show pause menu?)
 			// This will exit the app but you can add other
-			// options here as well
+			// options here as wellc
 		}
 		return false;
 	}

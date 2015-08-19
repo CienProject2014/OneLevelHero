@@ -59,8 +59,10 @@ public class StatusStage extends BaseOverlapStage {
 	private CompositeItem backButton;
 
 	public Stage makeStage() {
-		HashMap<String, Array<String>> sceneConstants = constantsAssets
-				.getSceneConstants(SCENE_NAME);
+		HashMap<String, Array<String>> sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
+		if (!StaticAssets.rm.searchSceneNames(SCENE_NAME)) {
+			StaticAssets.rm.initScene(SCENE_NAME);
+		}
 		initSceneLoader(StaticAssets.rm);
 		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
@@ -78,14 +80,12 @@ public class StatusStage extends BaseOverlapStage {
 		inventoryButton = sceneLoader.getRoot().getCompositeById("inventory");
 		inventoryButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.INVENTORY);
 			}
 
@@ -109,52 +109,41 @@ public class StatusStage extends BaseOverlapStage {
 		});
 	}
 
-	private void setLabel(PartyManager partyManager,
-			HashMap<String, Array<String>> sceneConstants) {
+	private void setLabel(PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
 		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
 		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name");
 		nameLabel.setText(currentSelectedHero.getName());
-		nameLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(),
-				Color.WHITE));
+		nameLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		nameLabel.setFontScale(1.0f);
 		nameLabel.setTouchable(Touchable.disabled);
 		LabelItem fatigueLabel = sceneLoader.getRoot().getLabelById("fatigue");
 		fatigueLabel.setText(String.valueOf(partyManager.getFatigue()));
-		fatigueLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(),
-				Color.WHITE));
+		fatigueLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		fatigueLabel.setFontScale(1.0f);
 		fatigueLabel.setTouchable(Touchable.disabled);
 		Array<String> labelList = sceneConstants.get(STATUS_LABEL_NAME);
 		for (int i = 0; i < labelList.size; i++) {
-			LabelItem labelItem = sceneLoader.getRoot().getLabelById(
-					labelList.get(i));
-			labelItem.setText(currentSelectedHero.getStatus().getStatusList()
-					.get(i));
-			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(),
-					Color.WHITE));
+			LabelItem labelItem = sceneLoader.getRoot().getLabelById(labelList.get(i));
+			labelItem.setText(currentSelectedHero.getStatus().getStatusList().get(i));
+			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 			labelItem.setFontScale(1.0f);
 			labelItem.setTouchable(Touchable.disabled);
 		}
 	}
 
-	private void setCharacterStatusImage(PartyManager partyManager,
-			HashMap<String, Array<String>> sceneConstants) {
+	private void setCharacterStatusImage(PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
 		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
-		Array<String> characterStatusList = sceneConstants
-				.get(CHARACTER_STATUS_IMAGE);
+		Array<String> characterStatusList = sceneConstants.get(CHARACTER_STATUS_IMAGE);
 		for (int i = 0; i < partyManager.getPartyList().size(); i++) {
-			CompositeItem compositeItem = sceneLoader.getRoot()
-					.getCompositeById(characterStatusList.get(i));
+			CompositeItem compositeItem = sceneLoader.getRoot().getCompositeById(characterStatusList.get(i));
 			ImageItem characterStatusImage = compositeItem.getImageById(CHARACTER_IMAGE);
 			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
-					TextureManager.getStatusTexture(partyManager.getPartyList()
-							.get(i).getFacePath()))));
+					TextureManager.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
 		}
 	}
 
 	private void setCamera() {
-		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH,
-				StaticAssets.BASE_WINDOW_HEIGHT);
+		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		getViewport().setCamera(cam);
 	}

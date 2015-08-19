@@ -47,6 +47,9 @@ public class SkillStage extends BaseOverlapStage {
 	private String CUT_01 = "cut_01"; // FIXME
 
 	public Stage makeStage() {
+		if (!StaticAssets.rm.searchSceneNames("skill_scene")) {
+			StaticAssets.rm.initScene("skill_scene");
+		}
 		initSceneLoader(StaticAssets.rm);
 		sceneLoader.loadScene("skill_scene");
 		addActor(sceneLoader.getRoot());
