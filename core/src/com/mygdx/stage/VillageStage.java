@@ -44,25 +44,22 @@ public class VillageStage extends BaseOverlapStage {
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
-		cameraManager.stretchToDevice(this);
 		setVillage();
+		cameraManager.stretchToDevice(this);
+		/* setVillage(); */
 		return this;
 	}
 
 	private void setArrow() {
 		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
 		String currentNode = positionManager.getCurrentNodeName();
-		Map<String, NodeConnection> connectionMap = worldMapAssets
-				.getWorldNodeInfo(currentNode).getNodeConnection();
-		for (final Entry<String, NodeConnection> connection : connectionMap
-				.entrySet()) {
-			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(
-					connection.getValue().getArrowName());
+		Map<String, NodeConnection> connectionMap = worldMapAssets.getWorldNodeInfo(currentNode).getNodeConnection();
+		for (final Entry<String, NodeConnection> connection : connectionMap.entrySet()) {
+			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(connection.getValue().getArrowName());
 			if (arrow != null) {
 				arrow.setVisible(true);
 				arrow.setTouchable(Touchable.enabled);
-				ArrowButtonListener arrowButtonListener = listenerFactory
-						.getArrowButtonListener();
+				ArrowButtonListener arrowButtonListener = listenerFactory.getArrowButtonListener();
 				arrowButtonListener.setConnection(connection);
 				arrow.addListener(arrowButtonListener);
 				arrowList.add(arrow);
@@ -70,12 +67,9 @@ public class VillageStage extends BaseOverlapStage {
 		}
 	}
 
-	// FIXME
-	private void setVillageScene(PositionManager positionManager,
-			NodeAssets nodeAssets) {
+	private void setVillageScene(PositionManager positionManager, NodeAssets nodeAssets) {
 		if (nodeAssets.getVillageByName(positionManager.getCurrentNodeName()) != null) {
-			villageInfo = nodeAssets.getVillageByName(positionManager
-					.getCurrentNodeName());
+			villageInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName());
 			sceneLoader.loadScene(villageInfo.getSceneName());
 		} else {
 			villageInfo = nodeAssets.getVillageByName("blackwood");
@@ -85,53 +79,86 @@ public class VillageStage extends BaseOverlapStage {
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		Gdx.app.log("VillageStage",
-				String.valueOf(positionManager.getCurrentNodeName()));
+		Gdx.app.log("VillageStage", String.valueOf(positionManager.getCurrentNodeName()));
 		setVillageScene(positionManager, nodeAssets);
 		setArrow();
 		setBuildingButton();
 		addActor(sceneLoader.getRoot());
-		final CompositeItem shiftbutton_up = sceneLoader.getRoot()
-				.getCompositeById("camera_up");
-		final CompositeItem shiftbutton_down = sceneLoader.getRoot()
-				.getCompositeById("camera_down");
+		if (villageInfo.getVillageDirection().equals("up_down")) {
+			final CompositeItem shiftbutton_up = sceneLoader.getRoot().getCompositeById("camera_up");
+			final CompositeItem shiftbutton_down = sceneLoader.getRoot().getCompositeById("camera_down");
 
-		shiftbutton_up.setTouchable(Touchable.enabled);
-		shiftbutton_down.setTouchable(Touchable.enabled);
+			shiftbutton_up.setTouchable(Touchable.enabled);
+			shiftbutton_down.setTouchable(Touchable.enabled);
 
-		shiftbutton_up.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				setCameraState(CameraStateEnum.MOVE_UP);
-				cameraManager.setMoveFlag(2);
-			}
-		});
+			shiftbutton_up.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_UP);
 
-		shiftbutton_down.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				setCameraState(CameraStateEnum.MOVE_DOWN);
-				cameraManager.setMoveFlag(2);
-			}
-		});
+					cameraManager.setMoveFlag(2);
+				}
+			});
+
+			shiftbutton_down.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_DOWN);
+
+					cameraManager.setMoveFlag(2);
+				}
+			});
+			cameraManager.setDirection(1);
+
+		} else if (villageInfo.getVillageDirection().equals("left_right")) {
+			final CompositeItem shiftbutton_left = sceneLoader.getRoot().getCompositeById("camera_left");
+			final CompositeItem shiftbutton_right = sceneLoader.getRoot().getCompositeById("camera_right");
+
+			shiftbutton_left.setTouchable(Touchable.enabled);
+			shiftbutton_right.setTouchable(Touchable.enabled);
+
+			shiftbutton_left.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_DOWN);
+
+					cameraManager.setMoveFlag(5);
+				}
+			});
+
+			shiftbutton_right.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_RIGHT);
+					cameraManager.setMoveFlag(5);
+				}
+			});
+			cameraManager.setDirection(2);
+
+		}
+
 	}
 
 	private void controlButton() {
 		if (cameraManager.getMoveFlag() == 0) {
-			sceneLoader.getRoot().getCompositeById("camera_down")
-					.setVisible(true);
-			sceneLoader.getRoot().getCompositeById("camera_up")
-					.setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_down").setVisible(true);
+			sceneLoader.getRoot().getCompositeById("camera_up").setVisible(false);
 		} else if (cameraManager.getMoveFlag() == 1) {
-			sceneLoader.getRoot().getCompositeById("camera_down")
-					.setVisible(false);
-			sceneLoader.getRoot().getCompositeById("camera_up")
-					.setVisible(true);
+			sceneLoader.getRoot().getCompositeById("camera_down").setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_up").setVisible(true);
 		} else if (cameraManager.getMoveFlag() == 2) {
-			sceneLoader.getRoot().getCompositeById("camera_down")
-					.setVisible(false);
-			sceneLoader.getRoot().getCompositeById("camera_up")
-					.setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_down").setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_up").setVisible(false);
+
+		} else if (cameraManager.getMoveFlag() == 3) {
+			sceneLoader.getRoot().getCompositeById("camera_left").setVisible(true);
+			sceneLoader.getRoot().getCompositeById("camera_right").setVisible(false);
+		} else if (cameraManager.getMoveFlag() == 4) {
+			sceneLoader.getRoot().getCompositeById("camera_left").setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_right").setVisible(true);
+		} else if (cameraManager.getMoveFlag() == 5) {
+			sceneLoader.getRoot().getCompositeById("camera_left").setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_right").setVisible(false);
 		}
 	}
 
@@ -143,14 +170,11 @@ public class VillageStage extends BaseOverlapStage {
 
 	private void setBuildingButton() {
 		if (villageInfo.getBuilding() != null) {
-			for (final Entry<String, Building> building : villageInfo
-					.getBuilding().entrySet()) {
-				CompositeItem buildingButton = sceneLoader
-						.getRoot()
-						.getCompositeById(building.getValue().getBuildingPath());
+			for (final Entry<String, Building> building : villageInfo.getBuilding().entrySet()) {
+				CompositeItem buildingButton = sceneLoader.getRoot().getCompositeById(
+						building.getValue().getBuildingPath());
 				buildingButton.setTouchable(Touchable.enabled);
-				BuildingButtonListener buildingButtonListener = listenerFactory
-						.getBuildingButtonListener();
+				BuildingButtonListener buildingButtonListener = listenerFactory.getBuildingButtonListener();
 				buildingButtonListener.setBuildingName(building.getKey());
 				buildingButton.addListener(buildingButtonListener);
 			}
