@@ -42,10 +42,9 @@ public class Assets {
 	public void initialize() {
 		Map<String, StringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
-
+		uiComponentAssets.set(filePathMap);
 		musicAssets.set(filePathMap);
 		atlasUiAssets.set(filePathMap);
-		uiComponentAssets.set(filePathMap);
 		eventAssets.set(jsonStringMap);
 		itemAssets.set(jsonStringMap);
 		skillAssets.set(jsonStringMap);
@@ -56,16 +55,13 @@ public class Assets {
 	}
 
 	private Map<String, StringFile> loadFilePathMap() {
-		Map<String, StringFile> filePathMap = JsonParser.parseMap(
-				StringFile.class,
+		Map<String, StringFile> filePathMap = JsonParser.parseMap(StringFile.class,
 				Gdx.files.internal("data/load/file_path.json").readString());
 		return filePathMap;
 	}
 
-	private Map<String, String> loadJsonStringMap(
-			Map<String, StringFile> filePathMap) {
-		Map<String, StringFile> jsonFileMap = JsonParser.parseMap(
-				StringFile.class,
+	private Map<String, String> loadJsonStringMap(Map<String, StringFile> filePathMap) {
+		Map<String, StringFile> jsonFileMap = JsonParser.parseMap(StringFile.class,
 				filePathMap.get(JsonEnum.JSON_FILE_PATH.toString()).loadFile());
 		Map<String, String> jsonStringMap = new HashMap<>();
 		for (Entry<String, StringFile> entry : jsonFileMap.entrySet())

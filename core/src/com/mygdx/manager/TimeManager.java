@@ -4,18 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.TimeInfo;
-import com.mygdx.store.Loadable;
-import com.mygdx.store.Savable;
 
-public class TimeManager implements Savable<TimeInfo>, Loadable<TimeInfo> {
+public class TimeManager {
 	private final static int MINUTES_PER_HOUR = 60;
 	private final static int HOURS_PER_DAY = 24;
 	private final static int MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
 
 	@Autowired
 	private PartyManager partyManager;
-
-	private TimeInfo timeInfo = new TimeInfo();
+	@Autowired
+	private TimeInfo timeInfo;
 
 	public void plusDay(int value) {
 		plusHour(HOURS_PER_DAY * value);
@@ -33,12 +31,12 @@ public class TimeManager implements Savable<TimeInfo>, Loadable<TimeInfo> {
 	public void setTime(int time) {
 		int beforeTime = getTime();
 		timeInfo.setTime(time);
-		int leftHour = (getTime() / MINUTES_PER_HOUR)
-				- (beforeTime / MINUTES_PER_HOUR);
+		int leftHour = (getTime() / MINUTES_PER_HOUR) - (beforeTime / MINUTES_PER_HOUR);
 		if (leftHour >= 1) {
 			partyManager.setFatigue(partyManager.getFatigue() + leftHour);
 		}
 	}
+
 	public int getTime() {
 		return timeInfo.getTime();
 	}
@@ -87,13 +85,4 @@ public class TimeManager implements Savable<TimeInfo>, Loadable<TimeInfo> {
 		return getDayInfo() + getHourInfo() + getMinuteInfo();
 	}
 
-	@Override
-	public void setData(TimeInfo timeInfo) {
-		this.timeInfo = timeInfo;
-	}
-
-	@Override
-	public TimeInfo getData() {
-		return timeInfo;
-	}
 }

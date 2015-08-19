@@ -14,18 +14,23 @@ public class BagInfo {
 	public ArrayList<Equipment> getEquipmentList() {
 		return equipmentList;
 	}
+
 	public void setEquipmentList(ArrayList<Equipment> equipmentList) {
 		this.equipmentList = equipmentList;
 	}
+
 	public ArrayList<Consumables> getConsumablesList() {
 		return consumablesList;
 	}
+
 	public void setConsumablesList(ArrayList<Consumables> consumablesList) {
 		this.consumablesList = consumablesList;
 	}
+
 	public ArrayList<Item> getEtcItemList() {
 		return etcItemList;
 	}
+
 	public void setEtcItemList(ArrayList<Item> etcItemList) {
 		this.etcItemList = etcItemList;
 	}

@@ -52,5 +52,8 @@
   },
   "monster_field_json":{
   	"filePath" : "data/map/monster_field.json"
+  },
+  "unusual_condition_json":{
+  	"filePath" : "data/event/unusual_condition.json"
   }
 }

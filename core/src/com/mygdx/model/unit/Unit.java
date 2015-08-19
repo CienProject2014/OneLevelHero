@@ -7,9 +7,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.unitStrategy.AttackStrategy;
+import com.mygdx.unitStrategy.UnusualConditionStrategy;
 
 public abstract class Unit implements Comparable<Unit> {
 	private AttackStrategy attackStrategy;
+	private UnusualConditionStrategy unusualConditionStrategy;
 	private String facePath;
 	private String name;
 	protected Status status;
@@ -107,6 +109,10 @@ public abstract class Unit implements Comparable<Unit> {
 		this.actingPower = actingPower;
 	}
 
+	public void beInUnusualCondition(String unusualConditionName) {
+		unusualConditionStrategy.beInUnusualCondition(this, unusualConditionName);
+	}
+
 	@Override
 	public int compareTo(Unit obj) {
 		if (this.getGauge() == obj.getGauge()) {
@@ -122,8 +128,7 @@ public abstract class Unit implements Comparable<Unit> {
 						// 나머지는 첨 들어갈때 그대로 있어 그냥 어차피 리스트는 순서대로 들어가니 적용댈듯
 						return 0;
 					}
-				} else if (this.getStatus().getSpeed() > obj.getStatus()
-						.getSpeed()) {
+				} else if (this.getStatus().getSpeed() > obj.getStatus().getSpeed()) {
 					// 스피드가 더 크다
 					return -1;
 				} else {
@@ -170,8 +175,7 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public Texture getSmallBattleTexture() {
 		if (smallBattleTexture == null) {
-			smallBattleTexture = TextureManager
-					.getBattleTurnSmallTexture(facePath);
+			smallBattleTexture = TextureManager.getBattleTurnSmallTexture(facePath);
 		}
 		return smallBattleTexture;
 	}
@@ -198,5 +202,13 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setAttackStrategy(AttackStrategy attackStrategy) {
 		this.attackStrategy = attackStrategy;
+	}
+
+	public UnusualConditionStrategy getUnusualConditionStrategy() {
+		return unusualConditionStrategy;
+	}
+
+	public void setUnusualConditionStrategy(UnusualConditionStrategy unusualConditionStrategy) {
+		this.unusualConditionStrategy = unusualConditionStrategy;
 	}
 }

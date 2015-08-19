@@ -25,13 +25,9 @@ public class BattleManager {
 	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
-	private StorySectionManager storySectionManager;
-	@Autowired
-	private PositionManager positionManager;
-	@Autowired
 	private UnitManager unitManager;
-
-	private BattleInfo battleInfo = new BattleInfo();
+	@Autowired
+	private BattleInfo battleInfo;
 
 	public void setBeforePosition(PositionEnum positionEnum) {
 		battleInfo.setBeforePosition(positionEnum);

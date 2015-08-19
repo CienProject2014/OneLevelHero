@@ -3,6 +3,7 @@ package com.mygdx.ui;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -55,7 +56,8 @@ public class GridHitbox extends Table {
 		tiles = new Image[rows][columns];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				tiles[i][j] = new Image(StaticAssets.textureMap.get("tile"));
+				tiles[i][j] = new Image(
+						StaticAssets.assetManager.get(StaticAssets.textureMap.get("tile"), Texture.class));
 			}
 		}
 	}
@@ -272,7 +274,7 @@ public class GridHitbox extends Table {
 	}
 
 	private Image getGridImage(MonsterEnum.SizeType sizeType) {
-		return new Image(StaticAssets.textureMap.get("grid_" + sizeType));
+		return new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get("grid_" + sizeType), Texture.class));
 	}
 
 	public boolean isGridShow() {

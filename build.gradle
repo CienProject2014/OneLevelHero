@@ -57,6 +57,7 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
 		
 		compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+
 		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
 		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
 		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
@@ -72,6 +73,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
 		compile project(":Overlap2dRuntime")
+	compile "com.esotericsoftware:kryo:3.0.0"
         compile fileTree(dir: 'libs', include: '*.jar')             
 		testCompile group: 'junit', name: 'junit', version: '4.+'
     }

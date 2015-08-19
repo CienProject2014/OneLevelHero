@@ -9,6 +9,7 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -470,7 +471,6 @@ public class BattleStage extends BaseOneLevelStage {
 						battleManager.userSkill(currentAttackUnit, "cut_01");
 						isSkill = false;
 					}
-
 					gridHitbox.hideGrid();
 				}
 				gridHitbox.hideAllTiles();
@@ -479,8 +479,10 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private void makeTurnBackgroundImage() {
-		currentAttackerBackground = new Image(StaticAssets.textureMap.get("battleui_turntable_01"));
-		turnTableBackground = new Image(StaticAssets.textureMap.get("battleui_turntable_02"));
+		currentAttackerBackground = new Image(
+				StaticAssets.assetManager.get(StaticAssets.textureMap.get("battleui_turntable_01"), Texture.class));
+		turnTableBackground = new Image(
+				StaticAssets.assetManager.get(StaticAssets.textureMap.get("battleui_turntable_02"), Texture.class));
 	}
 
 	private void makeBattleTurnImage() {
