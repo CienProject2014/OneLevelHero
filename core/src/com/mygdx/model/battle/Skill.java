@@ -1,10 +1,11 @@
 package com.mygdx.model.battle;
 
+import com.mygdx.enums.SkillEffectEnum;
+import com.mygdx.enums.SkillTargetEnum;
 import com.mygdx.enums.SkillTypeEnum;
 
 public class Skill {
 	private String name;
-	private String target;
 	private SkillTypeEnum skillType;
 	private int costCasting;
 	private int costGauge;
@@ -13,7 +14,8 @@ public class Skill {
 	private int[] hitboxCenter;
 	private int[][] hitboxShape;
 	private int damage;
-	private SkillEffect skillEffect;
+	private SkillTargetEnum skillTargetType;
+	private SkillEffectEnum skillEffectType;
 
 	public String getName() {
 		return name;
@@ -21,14 +23,6 @@ public class Skill {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getTarget() {
-		return target;
-	}
-
-	public void setTarget(String target) {
-		this.target = target;
 	}
 
 	public SkillTypeEnum getSkillType() {
@@ -95,11 +89,20 @@ public class Skill {
 		this.damage = damage;
 	}
 
-	public SkillEffect getSkillEffect() {
-		return skillEffect;
+	public SkillTargetEnum getSkillTargetType() {
+		return skillTargetType;
 	}
 
-	public void setSkillEffect(SkillEffect skillEffect) {
-		this.skillEffect = skillEffect;
+	public void setSkillTargetType(SkillTargetEnum skillTargetType) {
+		this.skillTargetType = skillTargetType;
 	}
+
+	public SkillEffectEnum getSkillEffectType() {
+		return skillEffectType;
+	}
+
+	public void setSkillEffectType(SkillEffectEnum skillEffectType) {
+		this.skillEffectType = skillEffectType;
+	}
+
 }
