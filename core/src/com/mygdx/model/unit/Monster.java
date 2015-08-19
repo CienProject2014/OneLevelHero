@@ -16,6 +16,7 @@ public class Monster extends Unit {
 	private ArrayList<Item> dropItems;
 	private MonsterEnum.SizeType sizeType;
 	private MonsterEnum.ElementType elementType;
+	private int[][] hitArea;
 
 	/* For Json Work */
 	private ArrayList<String> dropItemList;
@@ -51,4 +52,13 @@ public class Monster extends Unit {
 	public void setDropItems(ArrayList<Item> dropItems) {
 		this.dropItems = dropItems;
 	}
+
+	public int[][] getHitArea() {
+		return hitArea;
+	}
+
+	public void setHitArea(int[][] hitArea) {
+		this.hitArea = hitArea;
+	}
+
 }

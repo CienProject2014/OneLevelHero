@@ -2,6 +2,7 @@ package com.mygdx.ui;
 
 import java.util.HashMap;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
@@ -11,6 +12,8 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
 
 public class GridHitbox extends Table {
+	private final String TAG = "GridHitbox";
+
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
 
 	private final int TILE_WIDTH = 128;
@@ -20,6 +23,13 @@ public class GridHitbox extends Table {
 	private float tableHeight;
 	private int rows;
 	private int columns;
+
+	private int showTileCount;
+	private int limitNum;
+
+	private int[] hitboxCenter;
+	private int[][] hitboxShape;
+	private int[][] previousHitArea;
 
 	private float startX, startY;
 
@@ -53,6 +63,7 @@ public class GridHitbox extends Table {
 						StaticAssets.assetManager.get(StaticAssets.textureMap.get("tile"), Texture.class));
 			}
 		}
+		previousHitArea = new int[rows][columns];
 	}
 
 	public Stack makeGridTable(MonsterEnum.SizeType sizeType) {
@@ -97,26 +108,7 @@ public class GridHitbox extends Table {
 		setVisible(false);
 	}
 
-	private Image findTile(float x, float y) {
-		boolean found = false;
-		int row = 0, column = 0;
-		for (int i = 0; i < rows && !found; i++) {
-			for (int j = 0; j < columns && !found; j++) {
-				if (isInsideTile(i, j, x, y)) {
-					row = i;
-					column = j;
-					found = true;
-				}
-			}
-		}
-		if (found) {
-			return tiles[row][column];
-		} else {
-			return null;
-		}
-	}
-
-	public void showTileWhereClicked(float x, float y) {
+	public void showTileWhereMoved(float x, float y) {
 		hideAllTiles();
 
 		float dx = x - startX;
@@ -152,26 +144,80 @@ public class GridHitbox extends Table {
 				}
 			}
 		}
+	}
 
-		Image tile = findTile(x, y);
-		if (tile != null) {
-			tile.setVisible(true);
+	public void showFixedTilesAt(float x, float y) {
+		hideAllTiles();
+
+		int[] rc = findTileIndex(x, y);
+		if (rc != null) {
+
+			for (int i = -hitboxCenter[0]; i <= hitboxCenter[0]; i++) {
+				int row = rc[0] + i;
+				if (row < 0 || row >= rows) {
+					continue;
+				}
+				for (int j = -hitboxCenter[1]; j <= hitboxCenter[1]; j++) {
+					int col = rc[1] + j;
+					if (col < 0 || col >= columns) {
+						continue;
+					}
+
+					if (hitboxShape[i + hitboxCenter[0]][j + hitboxCenter[1]] == 1) {
+						tiles[row][col].setVisible(true);
+						previousHitArea[row][col] = 1;
+					}
+				}
+			}
 		}
 	}
 
-	private void findAndShow(float x, float y) {
-		Image tile = findTile(x, y);
-		if (tile != null) {
-			tile.setVisible(true);
+	private boolean findAndShow(float x, float y) {
+		int[] rc = findTileIndex(x, y);
+
+		if (rc != null && showTileCount < limitNum) {
+			int row = rc[0];
+			int col = rc[1];
+
+			showTileCount++;
+			tiles[row][col].setVisible(true);
+			previousHitArea[row][col] = 1;
+			return true;
 		}
+
+		return false;
+	}
+
+	private int[] findTileIndex(float x, float y) {
+		int[] index = new int[2];
+
+		boolean found = false;
+		for (int i = 0; i < rows && !found; i++) {
+			for (int j = 0; j < columns && !found; j++) {
+				if (isInsideTile(i, j, x, y)) {
+					index[0] = i;
+					index[1] = j;
+					found = true;
+				}
+			}
+		}
+
+		if (found) {
+			return index;
+		} else {
+			return null;
+		}
+
 	}
 
 	public void hideAllTiles() {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
 				tiles[i][j].setVisible(false);
+				previousHitArea[i][j] = 0;
 			}
 		}
+		showTileCount = 0;
 	}
 
 	private boolean isInside(float centerX, float centerY, float width, float height, float x, float y) {
@@ -224,5 +270,38 @@ public class GridHitbox extends Table {
 
 	public boolean isGridShow() {
 		return gridShow;
+	}
+
+	public int getLimitNum() {
+		return limitNum;
+	}
+
+	public void setLimitNum(int limitNum) {
+		Gdx.app.log("GridHitbox", "set limit: " + limitNum);
+		this.limitNum = limitNum;
+	}
+
+	public int[] getHitboxCenter() {
+		return hitboxCenter;
+	}
+
+	public void setHitboxCenter(int[] hitboxCenter) {
+		this.hitboxCenter = hitboxCenter;
+	}
+
+	public int[][] getHitboxShape() {
+		return hitboxShape;
+	}
+
+	public void setHitboxShape(int[][] hitboxShape) {
+		this.hitboxShape = hitboxShape;
+	}
+
+	public int[][] getPreviousHitArea() {
+		return previousHitArea;
+	}
+
+	public void setPreviousHitArea(int[][] previousHitArea) {
+		this.previousHitArea = previousHitArea;
 	}
 }
