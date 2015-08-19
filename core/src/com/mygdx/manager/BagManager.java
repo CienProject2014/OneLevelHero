@@ -15,35 +15,36 @@ import com.mygdx.model.item.Item;
 public class BagManager {
 	@Autowired
 	private ItemAssets itemAssets;
-	private BagInfo bagInfo = new BagInfo();
+	@Autowired
+	private BagInfo bagInfo;
 
 	public void possessItem(ItemEnum itemType, String itemName) {
 		Item item;
 		switch (itemType) {
-			case WEAPON :
-				item = itemAssets.getWeapon(itemName);
-				addEquipment((Equipment) item);
-				break;
-			case SHIELD :
-				item = itemAssets.getShield(itemName);
-				addEquipment((Equipment) item);
-				break;
-			case ACCESSORY :
-				item = itemAssets.getAccessory(itemName);
-				addEquipment((Equipment) item);
-				break;
-			case CLOTHES :
-				item = itemAssets.getClothes(itemName);
-				addEquipment((Equipment) item);
-				break;
-			case CONSUMABLES :
-				item = itemAssets.getConsumables(itemName);
-				addConsumables((Consumables) item);
-				break;
-			case ETC_ITEM :
-				item = itemAssets.getEtcItem(itemName);
-				addEtcItem(item);
-				break;
+		case WEAPON:
+			item = itemAssets.getWeapon(itemName);
+			addEquipment((Equipment) item);
+			break;
+		case SHIELD:
+			item = itemAssets.getShield(itemName);
+			addEquipment((Equipment) item);
+			break;
+		case ACCESSORY:
+			item = itemAssets.getAccessory(itemName);
+			addEquipment((Equipment) item);
+			break;
+		case CLOTHES:
+			item = itemAssets.getClothes(itemName);
+			addEquipment((Equipment) item);
+			break;
+		case CONSUMABLES:
+			item = itemAssets.getConsumables(itemName);
+			addConsumables((Consumables) item);
+			break;
+		case ETC_ITEM:
+			item = itemAssets.getEtcItem(itemName);
+			addEtcItem(item);
+			break;
 		}
 	}
 

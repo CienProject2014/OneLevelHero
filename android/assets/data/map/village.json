@@ -52,7 +52,17 @@
   },
   "winterfall": {
     "villageName": "윈터폴",
-    "sceneName": "winterfall",
+    "sceneName": "winterfall_scene",
     "building": {}
+  },
+   "mirage_port": {
+    "villageName": "미라지 포트",
+    "sceneName": "mirage_port_scene",
+    "building": {}
+  },
+  "vaical_castle":{
+  	"villageName" : "바이칼 성",
+  	"sceneName" : "vaical_castle_scene",
+  	"building":{}
   }
 }

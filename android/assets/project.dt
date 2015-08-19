@@ -109,6 +109,16 @@
         1
       ],
       "physicsPropertiesVO": {},
+      "sceneName": "vaical_castle_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
       "sceneName": "skill_scene"
     },
      {
@@ -141,6 +151,16 @@
       "physicsPropertiesVO": {},
       "sceneName": "status_scene"
     },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "southcape_scene"
+    },
      {
       "ambientColor": [
         0.5,
@@ -150,6 +170,26 @@
       ],
       "physicsPropertiesVO": {},
       "sceneName": "cobweb_inn_scene"
+    },
+     {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "mirage_port_scene"
+    },
+     {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "middle_ridge_scene"
     },
     {
       "ambientColor": [

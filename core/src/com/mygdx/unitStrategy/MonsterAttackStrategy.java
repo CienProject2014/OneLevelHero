@@ -5,7 +5,7 @@ import com.mygdx.model.unit.Unit;
 
 public class MonsterAttackStrategy implements AttackStrategy {
 	@Override
-	public void attack(Unit attackMonster, Unit defender) {
+	public void attack(Unit attackMonster, Unit defender, int[][] hitArea) {
 		int attackDmg = attackMonster.getStatus().getAttack();
 		int defenseValue = defender.getStatus().getDefense();
 		int defenderHp = defender.getStatus().getHp();
@@ -18,14 +18,11 @@ public class MonsterAttackStrategy implements AttackStrategy {
 		} else {
 			defender.getStatus().setHp(0);
 		}
-		Gdx.app.log("Monster",
-				attackMonster.getName() + "이(가) " + defender.getName()
-						+ "을(를) 공격하였습니다!");
+		Gdx.app.log("Monster", attackMonster.getName() + "이(가) " + defender.getName() + "을(를) 공격하였습니다!");
 	}
 
 	@Override
 	public void skillAttack(Unit attackMonster, Unit defender, String skillName) {
-		Gdx.app.log("Monster", attackMonster.getName() + "이(가) " + skillName
-				+ "을(를) 사용하였습니다!");
+		Gdx.app.log("Monster", attackMonster.getName() + "이(가) " + skillName + "을(를) 사용하였습니다!");
 	}
 }

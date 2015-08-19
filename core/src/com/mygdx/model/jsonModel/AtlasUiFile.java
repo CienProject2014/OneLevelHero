@@ -3,23 +3,17 @@ package com.mygdx.model.jsonModel;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.mygdx.assets.StaticAssets;
 
-public class AtlasUiFile implements AssetsFile<TextureAtlas> {
+public class AtlasUiFile implements AssetsFile<String> {
 	private List<String> element;
 	private String name;
-	private String filePath;;
-	private TextureAtlas file;
+	private String filePath;
 
 	@Override
-	public TextureAtlas loadFile() {
-		file = new TextureAtlas(filePath);
-		return file;
-	}
-
-	@Override
-	public TextureAtlas getTestFile() {
-		file = new TextureAtlas("../android/assets/" + filePath);
-		return file;
+	public String loadFile() {
+		StaticAssets.assetManager.load(filePath, TextureAtlas.class);
+		return filePath;
 	}
 
 	public List<String> getElement() {
@@ -44,5 +38,11 @@ public class AtlasUiFile implements AssetsFile<TextureAtlas> {
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+
+	@Override
+	public String getTestFile() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
