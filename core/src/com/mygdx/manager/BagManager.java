@@ -48,7 +48,7 @@ public class BagManager {
 	}
 
 	public void dropItem(Item item) {
-		Gdx.app.log("BagManager", item.getName() + " 아이템을 버렸다.");
+		Gdx.app.log("BagManager", item.getName() + "를 버렸다.");
 		if (item instanceof Equipment) {
 			removeEquipment((Equipment) item);
 		} else if (item instanceof Consumables) {

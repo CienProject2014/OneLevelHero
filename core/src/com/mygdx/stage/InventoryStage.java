@@ -409,6 +409,8 @@ public class InventoryStage extends BaseOverlapStage {
 					addActor(equipPopup);
 					equipPopup.setVisible(true);
 					setCompositeItemVisibilty(equipButtonList.get(index), DEFAULT_VISIBILTY);
+					setVoidEquipButton(sceneConstants);
+					setVoidItemImageAndLabel();
 				}
 			});
 			unEquipButtonList.get(i).addListener(new InputListener() {
@@ -430,6 +432,8 @@ public class InventoryStage extends BaseOverlapStage {
 					addActor(unEquipPopup);
 					unEquipPopup.setVisible(true);
 					setCompositeItemVisibilty(unEquipButtonList.get(index), DEFAULT_VISIBILTY);
+					setVoidEquipButton(sceneConstants);
+					setVoidItemImageAndLabel();
 				}
 			});
 
@@ -452,6 +456,8 @@ public class InventoryStage extends BaseOverlapStage {
 					addActor(dropPopup);
 					dropPopup.setVisible(true);
 					setCompositeItemVisibilty(dropButtonList.get(index), DEFAULT_VISIBILTY);
+					setVoidEquipButton(sceneConstants);
+					setVoidItemImageAndLabel();
 				}
 			});
 		}
@@ -522,8 +528,10 @@ public class InventoryStage extends BaseOverlapStage {
 				labelItem.setFontScale(1.0f);
 				labelItem.setVisible(true);
 				labelItem.setTouchable(Touchable.disabled);
+				equipPartsLabel.setVisible(true);
+			} else {
+				equipPartsLabel.setVisible(true);
 			}
-			equipPartsLabel.setVisible(true);
 		} else {
 			equipPartsLabel.setVisible(false);
 			itemInfo.put(index, null);
@@ -537,8 +545,7 @@ public class InventoryStage extends BaseOverlapStage {
 				if (bagManager.getEquipmentList().size() > index - NUMBER_OF_EQUIPMENT) {
 					setBagItemImageAndLabel(bagManager, inventoryItemImageList, inventoryLabelList, index);
 				} else {
-					LabelItem labelItem = sceneLoader.getRoot().getLabelById(inventoryLabelList.get(index));
-					labelItem.setVisible(false);
+					setVoidItemImageAndLabel(inventoryItemImageList, inventoryLabelList, index);
 					itemInfo.put(index, null);
 				}
 			}
@@ -549,6 +556,14 @@ public class InventoryStage extends BaseOverlapStage {
 				setVoidItemImageAndLabel(inventoryItemImageList, inventoryLabelList, index);
 				itemInfo.put(index, null);
 			}
+		}
+	}
+
+	private void setVoidItemImageAndLabel() {
+		Array<String> inventoryItemImageList = sceneConstants.get(INVENTORY_ITEM_IMAGE);
+		Array<String> inventoryLabelList = sceneConstants.get(INVENTORY_ITEM_LABEL);
+		for (int i = 0; i < ITEM_SLOT_SIZE; i++) {
+			setVoidItemImageAndLabel(inventoryItemImageList, inventoryLabelList, i);
 		}
 	}
 
