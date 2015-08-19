@@ -7,6 +7,7 @@ import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.AttackButtonListener;
 import com.mygdx.listener.BackButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
+import com.mygdx.listener.EquipButtonListener;
 import com.mygdx.listener.GameObjectButtonListener;
 import com.mygdx.listener.GoBackwardFieldButtonListener;
 import com.mygdx.listener.GoForwardFieldButtonListener;
@@ -32,6 +33,10 @@ public class ListenerFactory {
 
 	public BuildingButtonListener getBuildingButtonListener() {
 		return context.getBean(BuildingButtonListener.class);
+	}
+
+	public EquipButtonListener getEquipButtonListener() {
+		return context.getBean(EquipButtonListener.class);
 	}
 
 	public GoBackwardFieldButtonListener getGoBackwardFieldButtonListener() {

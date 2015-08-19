@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.ItemAssets;
 import com.mygdx.currentState.BagInfo;
 import com.mygdx.enums.ItemEnum;
 import com.mygdx.model.item.Consumables;
 import com.mygdx.model.item.Equipment;
 import com.mygdx.model.item.Item;
-import com.mygdx.model.unit.Hero;
 
 public class BagManager {
 	@Autowired
@@ -47,7 +47,8 @@ public class BagManager {
 		}
 	}
 
-	public void dropItem(Hero unit, Item item) {
+	public void dropItem(Item item) {
+		Gdx.app.log("BagManager", item.getName() + " 아이템을 버렸다.");
 		if (item instanceof Equipment) {
 			removeEquipment((Equipment) item);
 		} else if (item instanceof Consumables) {

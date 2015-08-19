@@ -2,7 +2,9 @@
   "empty_item" : {
   	"itemType" : "shield",
   	"name" : "미 장착",
-  	"itemPath" : "empty_item"
+  	"itemPath" : "empty_item",
+  	  "isTwoHanded": "false",
+  	"equipmentPart" : "handgrip"
   },
   "round_shield": {
     "itemType": "shield",
@@ -10,6 +12,9 @@
     "itemPath": "round_shield",
     "category": "방패",
     "grade": "일반",
+      "isTwoHanded": "false",
+   "equipmentPart" : "handgrip",
+      "effectStatusList" : [ "defense"],
     "effectStatus": {
       "defense": 20
     },
@@ -21,6 +26,9 @@
     "itemPath": "buckler",
     "category": "방패",
     "grade": "일반",
+      "isTwoHanded": "false",
+    "equipmentPart" : "handgrip",
+    "effectStatusList" : [ "defense", "speed"],
     "effectStatus": {
       "defense": 25,
       "speed": -2

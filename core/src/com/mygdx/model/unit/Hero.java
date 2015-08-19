@@ -2,6 +2,7 @@ package com.mygdx.model.unit;
 
 import java.util.HashMap;
 
+import com.mygdx.enums.ItemEnum;
 import com.mygdx.unitStrategy.InventoryStrategy;
 
 public class Hero extends Unit {
@@ -17,6 +18,9 @@ public class Hero extends Unit {
 
 	public void setInventoryStrategy(InventoryStrategy inventoryStrategy) {
 		this.inventoryStrategy = inventoryStrategy;
+	}
+	public void equip(ItemEnum.EquipmentPart equipmentType, String equipmentName) {
+		inventoryStrategy.equip(this, equipmentType, equipmentName);
 	}
 
 	public void equipClothes(String clothesName) {
@@ -36,7 +40,7 @@ public class Hero extends Unit {
 	}
 
 	public void unEquipRightHandGrip() {
-		inventoryStrategy.unEquipLeftHandGrip(this);
+		inventoryStrategy.unEquipRightHandGrip(this);
 	}
 
 	public void unEquipLeftHandGrip() {
@@ -63,8 +67,7 @@ public class Hero extends Unit {
 		return initialInventoryList;
 	}
 
-	public void setInitialInventoryList(
-			HashMap<String, String> initialInventoryList) {
+	public void setInitialInventoryList(HashMap<String, String> initialInventoryList) {
 		this.initialInventoryList = initialInventoryList;
 	}
 }
