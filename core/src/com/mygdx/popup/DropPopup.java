@@ -2,6 +2,7 @@ package com.mygdx.popup;
 
 import java.util.HashMap;
 
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -9,26 +10,46 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.enums.PopupTypeEnum;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.GameObjectButtonListener;
 import com.mygdx.listener.HidingClickListener;
+import com.mygdx.manager.BagManager;
 import com.mygdx.model.event.GameObject;
+import com.mygdx.model.item.Equipment;
 
-public class GameObjectPopup extends Dialog {
+public class DropPopup extends Dialog {
 	private AtlasUiAssets atlasUiAssets;
+	private UiComponentAssets uiComponentAssets;
 	private ListenerFactory listenerFactory;
 	private GameObject gameObject;
-	private ImageButton okayButton, closeButton;
-	private Label questionLabel;
-	private PopupTypeEnum popupType;
+	private Equipment equipment;
+	private BagManager bagManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameObjectPopup");
 
-	public GameObjectPopup() {
+	public Equipment getEquipment() {
+		return equipment;
+	}
+
+	public void setEquipment(Equipment equipment) {
+		this.equipment = equipment;
+	}
+
+	public UiComponentAssets getUiComponentAssets() {
+		return uiComponentAssets;
+	}
+
+	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
+		this.uiComponentAssets = uiComponentAssets;
+	}
+
+	public DropPopup() {
 		this("", StaticAssets.skin);
 	}
+
 	public AtlasUiAssets getAtlasUiAssets() {
 		return atlasUiAssets;
 	}
@@ -45,44 +66,56 @@ public class GameObjectPopup extends Dialog {
 		this.listenerFactory = listenerFactory;
 	}
 
-	public GameObjectPopup(String title, Skin skin) {
+	public DropPopup(String title, Skin skin) {
 		super(title, skin);
 	}
 
 	public void initialize() {
-		questionLabel = new Label("오브젝트를 확인해 보시겠습니까?", StaticAssets.skin);
-		questionLabel.setAlignment(Align.center);
-		questionLabel.setBounds(uiConstantsMap.get("questionLabelX"), uiConstantsMap.get("questionLabelY"),
-				uiConstantsMap.get("questionLabelWidth"), uiConstantsMap.get("questionLabelHeight"));
-		addActor(questionLabel);
-		okayButton = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_button_yes"),
-				atlasUiAssets.getAtlasUiFile("popupui_acbutton_yes"));
-		closeButton = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_button_no"),
-				atlasUiAssets.getAtlasUiFile("popupui_acbutton_no"));
-		closeButton.addListener(new HidingClickListener(this));
-		GameObjectButtonListener gameObjectButtonListener = listenerFactory.getGameObjectButtonListener();
-		gameObjectButtonListener.setGameObject(gameObject);
-		okayButton.addListener(gameObjectButtonListener);
+		setQuestionLabel();
+		setButton(atlasUiAssets, uiComponentAssets);
 
-		getButtonTable().bottom();
-		getButtonTable().add(okayButton).height(uiConstantsMap.get("buttonHeight"))
-				.padBottom(uiConstantsMap.get("buttonPadBottom"));
-		getButtonTable().add(closeButton).padLeft(uiConstantsMap.get("closeButtonPadLeft")).height(90)
-				.padBottom(uiConstantsMap.get("buttonPadBottom"));
-		getButtonTable().setBackground(atlasUiAssets.getAtlasUiFile("popupui_popup01"));
-		setCenterPosition(StaticAssets.BASE_WINDOW_WIDTH / 2f, StaticAssets.BASE_WINDOW_HEIGHT / 2f);
-		setSize(uiConstantsMap.get("popupWidth"), uiConstantsMap.get("popupHeight"));
 		setModal(false);
 		setResizable(false);
 		setVisible(false);
 	}
-	@Override
-	public GameObjectPopup text(String text) {
-		super.text(new Label(text, StaticAssets.skin));
-		return this;
+
+	private void setButton(AtlasUiAssets atlasUiAssets, UiComponentAssets uiComponentAssets) {
+		ImageButton okayButton = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_button_yes"),
+				atlasUiAssets.getAtlasUiFile("popupui_acbutton_yes"));
+		ImageButton cancelButton = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_button_no"),
+				atlasUiAssets.getAtlasUiFile("popupui_acbutton_no"));
+		cancelButton.addListener(new HidingClickListener(this));
+		GameObjectButtonListener gameObjectButtonListener = listenerFactory.getGameObjectButtonListener();
+		gameObjectButtonListener.setGameObject(gameObject);
+		final Dialog thisDialog = this;
+		okayButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				bagManager.dropItem(equipment);
+				thisDialog.setVisible(false);
+			}
+		});
+
+		getButtonTable().bottom();
+		getButtonTable().add(okayButton).height(uiConstantsMap.get("buttonHeight"))
+				.padBottom(uiConstantsMap.get("buttonPadBottom"));
+		getButtonTable().add(cancelButton).padLeft(uiConstantsMap.get("closeButtonPadLeft")).height(90)
+				.padBottom(uiConstantsMap.get("buttonPadBottom"));
+		getButtonTable().setBackground(atlasUiAssets.getAtlasUiFile("popupui_popup01"));
+		setCenterPosition(StaticAssets.BASE_WINDOW_WIDTH / 2f, StaticAssets.BASE_WINDOW_HEIGHT / 2f);
+		setSize(uiConstantsMap.get("popupWidth"), uiConstantsMap.get("popupHeight"));
+
+	}
+	private void setQuestionLabel() {
+		Label questionLabel = new Label("", StaticAssets.skin);
+		questionLabel.setText("장비를 버리시겠습니까?");
+		questionLabel.setAlignment(Align.center);
+		questionLabel.setBounds(uiConstantsMap.get("questionLabelX"), uiConstantsMap.get("questionLabelY"),
+				uiConstantsMap.get("questionLabelWidth"), uiConstantsMap.get("questionLabelHeight"));
+		addActor(questionLabel);
 	}
 
-	public GameObjectPopup button(String buttonText, InputListener listener) {
+	public DropPopup button(String buttonText, InputListener listener) {
 		TextButton button = new TextButton(buttonText, StaticAssets.skin);
 		button.addListener(listener);
 		button(button);
@@ -107,5 +140,13 @@ public class GameObjectPopup extends Dialog {
 
 	public void setGameObject(GameObject gameObject) {
 		this.gameObject = gameObject;
+	}
+
+	public BagManager getBagManager() {
+		return bagManager;
+	}
+
+	public void setBagManager(BagManager bagManager) {
+		this.bagManager = bagManager;
 	}
 }

@@ -6,7 +6,28 @@
     "costCasting": "0",
     "costGauge": "20",
     "elementType": "none",
-    "hitboxSize": "3",
+    "hitboxSize": "0",
+	"hitboxCenter" : [1, 1],
+	"hitboxShape" : [
+		[0, 1, 0],
+		[1, 1, 1],
+		[0, 1, 0]
+	],
+    "damage": "150",
+    "skillEffect": {}
+  },
+  "cut_02": {
+    "name": "7단 연속 베기2",
+    "skillType" : "tech",
+    "target": "monster",
+    "costCasting": "0",
+    "costGauge": "20",
+    "elementType": "none",
+    "hitboxSize": "0",
+	"hitboxCenter" : [0, 1],
+	"hitboxShape" : [
+		[1, 1, 1]
+	],
     "damage": "100",
     "skillEffect": {}
   }

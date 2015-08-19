@@ -3,6 +3,8 @@ package com.mygdx.model.unit;
 import java.util.Arrays;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
+
 public class Status {
 	private int attack;
 	private int magicAttack;
@@ -14,9 +16,9 @@ public class Status {
 	private int speed; // speed
 	private int experience; // 경험치
 	private int maxExperience; // 최대 경험치(레벨업)
-	private float fireResistance; // fire resistance
-	private float waterResistance; // water
-	private float electricResistance; // electric
+	private int fireResistance; // fire resistance
+	private int waterResistance; // water
+	private int electricResistance; // electric
 
 	public String getHealthPointState() {
 		return healthPoint + "/" + maxHealthPoint;
@@ -114,37 +116,95 @@ public class Status {
 		this.maxHealthPoint = maxHealthPoint;
 	}
 
-	public float getFireResistance() {
+	public int getFireResistance() {
 		return fireResistance;
 	}
 
-	public void setFireResistance(float fireResistance) {
-		this.fireResistance = fireResistance;
-	}
-
-	public float getWaterResistance() {
+	public int getWaterResistance() {
 		return waterResistance;
 	}
 
-	public void setWaterResistance(float waterResistance) {
-		this.waterResistance = waterResistance;
-	}
-
-	public float getElectricResistance() {
+	public int getElectricResistance() {
 		return electricResistance;
 	}
 
-	public void setElectricResistance(float electricResistance) {
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public void setFireResistance(int fireResistance) {
+		this.fireResistance = fireResistance;
+	}
+
+	public void setWaterResistance(int waterResistance) {
+		this.waterResistance = waterResistance;
+	}
+
+	public void setElectricResistance(int electricResistance) {
 		this.electricResistance = electricResistance;
 	}
 
 	// alphabet order
 	public List<String> getStatusList() {
-		return Arrays.asList(new String[]{String.valueOf(attack),
-				String.valueOf(defense), String.valueOf(electricResistance),
-				getExperiencePointState(), String.valueOf(fireResistance),
-				getHealthPointState(), String.valueOf(level),
-				String.valueOf(magicAttack), String.valueOf(magicDefense),
-				String.valueOf(speed), String.valueOf(waterResistance)});
+		return Arrays.asList(new String[]{String.valueOf(attack), String.valueOf(defense),
+				String.valueOf(electricResistance), getExperiencePointState(), String.valueOf(fireResistance),
+				getHealthPointState(), String.valueOf(level), String.valueOf(magicAttack),
+				String.valueOf(magicDefense), String.valueOf(speed), String.valueOf(waterResistance)});
+	}
+
+	public String getStatusMarkByName(String statusType) {
+		switch (statusType) {
+			case "attack" :
+				return "공격력";
+			case "defense" :
+				return "방어력";
+			case "electricResistance" :
+				return "전기 저항";
+			case "fireResistance" :
+				return "불 저항";
+			case "level" :
+				return "레벨";
+			case "magicAttack" :
+				return "주문력";
+			case "magicDefense" :
+				return "항마력";
+			case "speed" :
+				return "민첩성";
+			case "waterResistance" :
+				return "물 저항";
+			default :
+				Gdx.app.log("Status", "StatusType정보 오류");
+				return null;
+		}
+	}
+
+	public int getStatusByName(String statusType) {
+		switch (statusType) {
+			case "attack" :
+				return attack;
+			case "defense" :
+				return defense;
+			case "electricResistance" :
+				return electricResistance;
+			case "fireResistance" :
+				return fireResistance;
+			case "level" :
+				return level;
+			case "magicAttack" :
+				return magicAttack;
+			case "magicDefense" :
+				return magicDefense;
+			case "speed" :
+				return speed;
+			case "waterResistance" :
+				return waterResistance;
+			default :
+				Gdx.app.log("Status", "StatusType정보 오류");
+				return 0;
+		}
 	}
 }

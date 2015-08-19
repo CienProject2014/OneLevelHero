@@ -59,13 +59,13 @@ public class BattleManager {
 		}
 	}
 
-	public void readyForMonsterHittingAnimation() {
+	public void readyForMonsterAnimation(String animationName) {
 		final int x = (int) (StaticAssets.windowWidth / 8);
 		final int y = (int) (StaticAssets.windowHeight / 2);
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING, x, y);
 	}
 
-	public void readyForPlayerHittingAnimation() {
+	public void readyForPlayerAnimation(String animationName) {
 		int x = (int) (StaticAssets.windowWidth / 2);
 		int y = (int) (StaticAssets.windowHeight / 2);
 		animationManager.registerAnimation(TextureEnum.ATTACK_CUTTING2, x, y);
@@ -88,28 +88,35 @@ public class BattleManager {
 		setBattleState(BattleStateEnum.GAME_OVER);
 	}
 
-	public void attack(Unit attackUnit, Unit defendUnit) {
-		attackUnit.attack(defendUnit);
-		readyHitAnimation(attackUnit);
+	public void attack(Unit attackUnit, Unit defendUnit, int[][] hitArea) {
+		attackUnit.attack(defendUnit, hitArea);
+		if (attackUnit instanceof Hero) {
+			// TODO empty animation
+			readyForPlayerAnimation("empty hit");
+		} else {
+			// TODO empty animation
+
+			readyForMonsterAnimation("empty hit");
+		}
 		checkIsDead(defendUnit);
 	}
 
-	public void readyHitAnimation(Unit attackUnit) {
+	public void userSkill(Unit attackUnit, String skill) {
+		attackUnit.skillAttack(battleInfo.getCurrentMonster(), skill);
 		if (attackUnit instanceof Hero) {
-			readyForPlayerHittingAnimation();
+			// TODO empty animation
+			readyForPlayerAnimation("empty");
 		} else {
-			readyForMonsterHittingAnimation();
+			// TODO empty animation
+			readyForMonsterAnimation("empty");
 		}
+		checkIsDead(battleInfo.getCurrentMonster());
 	}
 
 	private void checkIsDead(Unit defendUnit) {
 		if (defendUnit.getStatus().getHp() <= 0) {
 			endBattle(defendUnit);
 		}
-	}
-
-	public void userSkill(Unit attackUnit, String skill) {
-		attackUnit.skillAttack(battleInfo.getCurrentMonster(), skill);
 	}
 
 	public void useItem(String item) {

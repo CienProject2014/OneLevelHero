@@ -188,8 +188,8 @@ public abstract class Unit implements Comparable<Unit> {
 		this.preGague = preGague;
 	}
 
-	public void attack(Unit opponent) {
-		attackStrategy.attack(this, opponent);
+	public void attack(Unit opponent, int[][] hitArea) {
+		attackStrategy.attack(this, opponent, hitArea);
 	}
 
 	public void skillAttack(Unit opponent, String skillName) {

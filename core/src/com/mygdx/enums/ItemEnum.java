@@ -1,8 +1,8 @@
 package com.mygdx.enums;
 
 public enum ItemEnum {
-	WEAPON("weapon"), SHIELD("shield"), CLOTHES("clothes"), ACCESSORY(
-			"accessory"), CONSUMABLES("consumables"), ETC_ITEM("etc_item");
+	WEAPON("weapon"), SHIELD("shield"), CLOTHES("clothes"), ACCESSORY("accessory"), CONSUMABLES("consumables"), ETC_ITEM(
+			"etc_item");
 	private String code;
 
 	ItemEnum(String code) {
@@ -19,8 +19,8 @@ public enum ItemEnum {
 	}
 
 	public enum EquipmentPart {
-		RIGHT_HAND_GRIP("right_hand_grip"), LEFT_HAND_GRIP("left_hand_grip"), CLOTHES(
-				"clothes"), ACCESSORY("accessory");
+		RIGHT_HANDGRIP("right_handgrip"), LEFT_HANDGRIP("left_handgrip"), HANDGRIP("handgrip"), CLOTHES("clothes"), ACCESSORY(
+				"accessory");
 		private String equipmentPartName;
 
 		EquipmentPart(String equipmentPartName) {

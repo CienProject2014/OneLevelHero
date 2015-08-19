@@ -10,6 +10,8 @@ public class Skill {
 	private int costGauge;
 	private String elementType;
 	private int hitboxSize;
+	private int[] hitboxCenter;
+	private int[][] hitboxShape;
 	private int damage;
 	private SkillEffect skillEffect;
 
@@ -67,6 +69,22 @@ public class Skill {
 
 	public void setHitboxSize(int hitboxSize) {
 		this.hitboxSize = hitboxSize;
+	}
+
+	public int[] getHitboxCenter() {
+		return hitboxCenter;
+	}
+
+	public void setHitboxCenter(int[] hitboxCenter) {
+		this.hitboxCenter = hitboxCenter;
+	}
+
+	public int[][] getHitboxShape() {
+		return hitboxShape;
+	}
+
+	public void setHitboxShape(int[][] hitboxShape) {
+		this.hitboxShape = hitboxShape;
 	}
 
 	public int getDamage() {

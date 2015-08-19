@@ -3,21 +3,9 @@
   "composite": {
     "sImages": [
       {
-        "itemIdentifier": "background",
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "skilluibackground"
-      },
-      {
         "itemIdentifier": "screen",
         "x": 342,
         "y": 131,
-        "zIndex": 1,
         "layerName": "Default",
         "tint": [
           1,
@@ -84,7 +72,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 400,
         "height": 80
       },
@@ -101,7 +89,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 180,
         "height": 80
       },
@@ -118,7 +106,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 190,
         "height": 80
       },
@@ -135,7 +123,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 400,
         "height": 80
       },
@@ -152,7 +140,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 180,
         "height": 80
       },
@@ -169,7 +157,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 190,
         "height": 80
       },
@@ -186,7 +174,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 400,
         "height": 80
       },
@@ -203,7 +191,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 180,
         "height": 80
       },
@@ -220,7 +208,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 190,
         "height": 80
       },
@@ -237,7 +225,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 400,
         "height": 80
       },
@@ -254,7 +242,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 180,
         "height": 80
       },
@@ -271,7 +259,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 190,
         "height": 80
       },
@@ -288,7 +276,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 400,
         "height": 80
       },
@@ -305,7 +293,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 180,
         "height": 80
       },
@@ -322,7 +310,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 190,
         "height": 80
       },
@@ -339,7 +327,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 400,
         "height": 80
       },
@@ -356,7 +344,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 180,
         "height": 80
       },
@@ -373,7 +361,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 190,
         "height": 80
       },
@@ -390,7 +378,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 400,
         "height": 80
       },
@@ -407,7 +395,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 180,
         "height": 80
       },
@@ -424,7 +412,7 @@
           1
         ],
         "style": "MaleMountain",
-        "size": 60,
+        "size": 12,
         "width": 190,
         "height": 80
       }
@@ -822,6 +810,37 @@
             },
             {
               "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "background",
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "background",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluibackground"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
             }
           ]
         }
