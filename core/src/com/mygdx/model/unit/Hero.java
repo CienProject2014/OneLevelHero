@@ -63,8 +63,7 @@ public class Hero extends Unit {
 		return initialInventoryList;
 	}
 
-	public void setInitialInventoryList(
-			HashMap<String, String> initialInventoryList) {
+	public void setInitialInventoryList(HashMap<String, String> initialInventoryList) {
 		this.initialInventoryList = initialInventoryList;
 	}
 }

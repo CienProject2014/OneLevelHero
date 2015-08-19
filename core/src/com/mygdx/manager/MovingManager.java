@@ -20,11 +20,15 @@ public class MovingManager {
 
 	public void goToNode(String Node) {
 		positionManager.setCurrentNodeName(Node);
-		goCurrentPosition();
+		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
+		goCurrentNode(nodeType);
 	}
 
 	public void goCurrentPosition() {
 		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
+		if (positionManager.isInWorldMap()) {
+			positionManager.setInWorldMap(false);
+		}
 		if (battleManager.isInBattle()) {
 			screenFactory.show(ScreenEnum.BATTLE);
 			return;
@@ -95,7 +99,7 @@ public class MovingManager {
 		case NODE:
 			positionManager.setCurrentPositionType(PositionEnum.FIELD);
 			screenFactory.show(ScreenEnum.FIELD);
-			break;
+			return;
 		case FIELD:
 			goBeforeBattlePosition();
 			break;
@@ -116,10 +120,10 @@ public class MovingManager {
 			break;
 		case FIELD:
 			screenFactory.show(ScreenEnum.FIELD);
-			break;
+			return;
 		default:
 			Gdx.app.log("MovingManager", "BeforeNodeType정보 오류(" + battleManager.getBeforePosition() + ")");
-			break;
+			return;
 		}
 	}
 
@@ -127,13 +131,13 @@ public class MovingManager {
 		switch (nodeType) {
 		case VILLAGE:
 			screenFactory.show(ScreenEnum.VILLAGE);
-			break;
+			return;
 		case DUNGEON_ENTRANCE:
 			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-			break;
+			return;
 		case FORK:
 			screenFactory.show(ScreenEnum.FIELD); // FIXME
-			break;
+			return;
 		}
 	}
 
@@ -141,13 +145,13 @@ public class MovingManager {
 		switch (nodeType) {
 		case VILLAGE:
 			screenFactory.show(ScreenEnum.BUILDING);
-			break;
+			return;
 		case DUNGEON_ENTRANCE:
 			screenFactory.show(ScreenEnum.DUNGEON);
-			break;
+			return;
 		case FORK:
 			screenFactory.show(ScreenEnum.FIELD); // FIXME
-			break;
+			return;
 		}
 	}
 }

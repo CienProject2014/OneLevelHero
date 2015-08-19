@@ -17,6 +17,7 @@ public class PositionManager {
 	private NodeAssets nodeAssets;
 	@Autowired
 	private PositionInfo positionInfo;
+	private boolean inWorldMap;
 
 	public PositionEnum getBeforePositionType() {
 		return positionInfo.getBeforePositionType();
@@ -63,7 +64,7 @@ public class PositionManager {
 
 	public String getCurrentSubNodeHanguelName() {
 		if (getCurrentNodeType().equals(NodeType.VILLAGE)) {
-			return nodeAssets.getVillage(getCurrentNodeName()).getBuilding().get(getCurrentSubNodeName())
+			return nodeAssets.getVillageByName(getCurrentNodeName()).getBuilding().get(getCurrentSubNodeName())
 					.getBuildingName();
 		} else {
 			return "던젼"; // FIXME
@@ -77,4 +78,11 @@ public class PositionManager {
 		positionInfo.setCurrentSubNodeName(subNodeName);
 	}
 
+	public boolean isInWorldMap() {
+		return inWorldMap;
+	}
+
+	public void setInWorldMap(boolean inWorldMap) {
+		this.inWorldMap = inWorldMap;
+	}
 }
