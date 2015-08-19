@@ -3,54 +3,51 @@ package com.mygdx.model.unit;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.enums.ItemEnum;
-import com.mygdx.model.item.Accessory;
-import com.mygdx.model.item.Clothes;
 import com.mygdx.model.item.Equipment;
-import com.mygdx.model.item.HandGrip;
 
 public class Inventory {
-	private Clothes clothes;
-	private Accessory accessory;
-	private HandGrip leftHandGrip;
-	private HandGrip rightHandGrip;
+	private Equipment clothes;
+	private Equipment accessory;
+	private Equipment leftHandGrip;
+	private Equipment rightHandGrip;
 
-	public Clothes getClothes() {
+	public Equipment getClothes() {
 		return clothes;
 	}
 
-	public void setClothes(Clothes clothes) {
+	public void setClothes(Equipment clothes) {
 		this.clothes = clothes;
 	}
 
-	public Accessory getAccessory() {
+	public Equipment getAccessory() {
 		return accessory;
 	}
 
-	public void setAccessory(Accessory accessory) {
+	public void setAccessory(Equipment accessory) {
 		this.accessory = accessory;
 	}
 
-	public HandGrip getLeftHandGrip() {
+	public Equipment getLeftHandGrip() {
 		return leftHandGrip;
 	}
 
-	public void setLeftHandGrip(HandGrip leftHandGrip) {
+	public void setLeftHandGrip(Equipment leftHandGrip) {
 		this.leftHandGrip = leftHandGrip;
 	}
 
-	public HandGrip getRightHandGrip() {
+	public Equipment getRightHandGrip() {
 		return rightHandGrip;
 	}
 
-	public void setRightHandGrip(HandGrip rightHandGrip) {
+	public void setRightHandGrip(Equipment rightHandGrip) {
 		this.rightHandGrip = rightHandGrip;
 	}
 
-	public boolean isLeftHandGripUsable(HandGrip usingLeftHandGrip) {
-		if (rightHandGrip.isEmpty()) {
+	public boolean isLeftHandGripUsable(Equipment usingLeftHandGrip) {
+		if (usingLeftHandGrip.isEmpty()) {
 			return true;
 		} else {
-			if (rightHandGrip.isTwoHanded()) {
+			if (usingLeftHandGrip.isTwoHanded()) {
 				return false;
 			} else {
 				if (!usingLeftHandGrip.isTwoHanded()) {
@@ -64,9 +61,9 @@ public class Inventory {
 
 	public Equipment getEquipment(ItemEnum.EquipmentPart equipmentPart) {
 		switch (equipmentPart) {
-			case RIGHT_HAND_GRIP :
+			case RIGHT_HANDGRIP :
 				return getRightHandGrip();
-			case LEFT_HAND_GRIP :
+			case LEFT_HANDGRIP :
 				return getLeftHandGrip();
 			case ACCESSORY :
 				return getAccessory();
@@ -78,8 +75,8 @@ public class Inventory {
 		}
 	}
 
-	public boolean isRightHandGripUsable(HandGrip usingLeftHandGrip) {
-		if (usingLeftHandGrip == null) {
+	public boolean isRightHandGripUsable(Equipment usingLeftHandGrip) {
+		if (usingLeftHandGrip.isEmpty()) {
 			return true;
 		} else {
 			if (usingLeftHandGrip.isTwoHanded()) {
@@ -96,8 +93,7 @@ public class Inventory {
 
 	public Array<String> getInventoryList() {
 		Array<String> inventoryList = new Array<>();
-		inventoryList.addAll("right_hand_grip", "left_hand_grip", "clothes",
-				"accessory");
+		inventoryList.addAll("right_handgrip", "left_handgrip", "clothes", "accessory");
 		return inventoryList;
 	}
 }

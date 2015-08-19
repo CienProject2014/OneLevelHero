@@ -24,8 +24,7 @@ public class MonsterStage extends BaseOneLevelStage {
 	private FieldManager fieldManager;
 	@Autowired
 	private BattleManager battleManager;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
-			.get("MonsterStage");
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("MonsterStage");
 	private Monster monster;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
@@ -59,8 +58,7 @@ public class MonsterStage extends BaseOneLevelStage {
 		outerTable.setBackground(getBackgroundTRD(), false);
 		outerTable.top(); // table을 위로 정렬
 		outerTable.add(monsterTable).padTop(uiConstantsMap.get("monsterPadTop"))
-				.width(uiConstantsMap.get("monsterTableWidth"))
-				.height(uiConstantsMap.get("monsterTableHeight")).row();
+				.width(uiConstantsMap.get("monsterTableWidth")).height(uiConstantsMap.get("monsterTableHeight")).row();
 
 		Table hpTable = monsterHpTable(monsterStatusBar);
 		uiTable.bottom();
@@ -72,18 +70,15 @@ public class MonsterStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		monsterHpLabel.setText(
-				monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp());
+		monsterHpLabel.setText(monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp());
 		monsterStatusBar.update();
 	}
 
 	private Table monsterHpTable(StatusBar monsterStatusBar) {
 		monsterHpTable = new Table();
-		monsterHpTable.add(monsterStatusBar.getHpBar())
-				.width(uiConstantsMap.get("hpTableWidth")).row();
+		monsterHpTable.add(monsterStatusBar.getHpBar()).width(uiConstantsMap.get("hpTableWidth")).row();
 
-		monsterHpLabel = new Label(
-				monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp(),
+		monsterHpLabel = new Label(monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp(),
 				uiComponentAssets.getSkin());
 		monsterHpTable.add(monsterHpLabel);
 
@@ -97,16 +92,15 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
-		if (battleManager.getSelectedMonster().getFacePath()
-				.equals("mawang_01")) {
+		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
 			return new TextureRegionDrawable(new TextureRegion(
-					StaticAssets.textureMap.get("bg_devilcastle_01")));
+					StaticAssets.assetManager.get(StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
 		} else {
 			return new TextureRegionDrawable(
-					new TextureRegion(TextureManager.getBackgroundTexture(
-							fieldManager.getFieldType().toString())));
+					new TextureRegion(TextureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
 		}
 	}
+
 	public HashMap<String, Float> getUiConstantsMap() {
 		return uiConstantsMap;
 	}

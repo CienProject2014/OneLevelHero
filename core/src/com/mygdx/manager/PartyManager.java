@@ -9,14 +9,12 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Status;
-import com.mygdx.store.Loadable;
-import com.mygdx.store.Savable;
 
-public class PartyManager implements Savable<PartyInfo>, Loadable<PartyInfo> {
+public class PartyManager {
 	@Autowired
 	private UnitManager unitManager;
-
-	private PartyInfo partyInfo = new PartyInfo();
+	@Autowired
+	private PartyInfo partyInfo;
 	private Status status;
 
 	private final static int BATTLE_MEMBER_SIZE = 3;
@@ -24,8 +22,7 @@ public class PartyManager implements Savable<PartyInfo>, Loadable<PartyInfo> {
 	public void addHero(Hero hero) {
 		// 이미 있는 파티멤버일 경우
 		if (partyInfo.getPartyList().contains(hero)) {
-			Gdx.app.log("PartyManager", "Error : " + hero.getName()
-					+ "가 이미 멤버에 있습니다.");
+			Gdx.app.log("PartyManager", "Error : " + hero.getName() + "가 이미 멤버에 있습니다.");
 			return;
 		}
 		unitManager.initiateHero(hero);
@@ -34,8 +31,7 @@ public class PartyManager implements Savable<PartyInfo>, Loadable<PartyInfo> {
 		if (partyInfo.getBattleMemberList().size() < BATTLE_MEMBER_SIZE) {
 			partyInfo.getBattleMemberList().add(hero);
 
-			Gdx.app.log("PartyManager", hero.getName()
-					+ "는 이제부터 전투의 일원이다. 훌륭한 장수로 키우자.");
+			Gdx.app.log("PartyManager", hero.getName() + "는 이제부터 전투의 일원이다. 훌륭한 장수로 키우자.");
 		} else {
 			// 배틀멤버리스트가 꽉찼다면 배틀멤버리스트에 추가할건지 물어본다. 추후 구현
 		}
@@ -51,8 +47,7 @@ public class PartyManager implements Savable<PartyInfo>, Loadable<PartyInfo> {
 
 	public void healAllHero() {
 		for (Hero hero : getBattleMemberList()) {
-			hero.getStatus().setHealthPoint(
-					hero.getStatus().getMaxHealthPoint());
+			hero.getStatus().setHealthPoint(hero.getStatus().getMaxHealthPoint());
 		}
 	}
 
@@ -107,13 +102,4 @@ public class PartyManager implements Savable<PartyInfo>, Loadable<PartyInfo> {
 		partyInfo.setPartyList(partyList);
 	}
 
-	@Override
-	public void setData(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
-	}
-
-	@Override
-	public PartyInfo getData() {
-		return partyInfo;
-	}
 }

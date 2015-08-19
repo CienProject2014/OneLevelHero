@@ -65,5 +65,23 @@
     "villageDirection": "left_right",
     "sceneName": "redrose_castle_scene",
     "building": {}
+  },
+   "mirage_port": {
+    "villageName": "미라지 포트",
+	"villageDirection": "up_down",
+    "sceneName": "mirage_port_scene",
+    "building": {}
+  },
+   "middle_ridge": {
+    "villageName": "미들 릿지",
+	 "villageDirection": "left_right",
+    "sceneName": "middle_ridge_scene",
+    "building": {}
+  },
+  "vaical_castle":{
+  	"villageName" : "바이칼 성",
+	"villageDirection": "up_down",
+  	"sceneName" : "vaical_castle_scene",
+  	"building":{}
   }
 }

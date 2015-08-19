@@ -8,26 +8,34 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.controller.SaveVersion;
-import com.mygdx.currentState.CurrentState;
+import com.mygdx.currentState.CurrentInfo;
+import com.mygdx.enums.SaveVersion;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.manager.LoadManager;
+import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.SaveManager;
 
 public class LoadScreen extends BaseScreen {
 	@Autowired
-	protected CurrentState currentState;
+	protected CurrentInfo currentInfo;
 	@Autowired
 	private LoadManager loadManager;
 	@Autowired
+	private SaveManager saveManager;
+	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
-	private EventAssets eventAssets;
+	private PositionManager positionManager;
+	@Autowired
+	private MovingManager movingManager;
 
 	private Stage stage;
 	private TextButton newstartButton;
 	private TextButton backButton;
+	private TextButton loadButton;
 	private final String PROLOGUE = "prologue";
 
 	@Override
@@ -45,32 +53,43 @@ public class LoadScreen extends BaseScreen {
 		Table table = new Table(uiComponentAssets.getSkin());
 		backButton = new TextButton("Back", uiComponentAssets.getSkin());
 		newstartButton = new TextButton("NewStart", uiComponentAssets.getSkin());
+		loadButton = new TextButton("loadOneButton", uiComponentAssets.getSkin());
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.MENU);
 			}
 		});
 		newstartButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				currentState.setSaveVersion(SaveVersion.NEW);
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				currentInfo.setSaveVersion(SaveVersion.NEW);
 				eventManager.setCurrentEventNpc(PROLOGUE);
 				loadManager.loadNewGame();
+			}
+		});
+		loadButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				currentInfo.setSaveVersion(SaveVersion.SAVE1);
+				saveManager.load();
+				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
+				movingManager.goCurrentNode(nodeType);
 			}
 		});
 
@@ -78,6 +97,7 @@ public class LoadScreen extends BaseScreen {
 		table.add(newstartButton).expand();
 		table.row();
 		table.add(backButton).bottom();
+		table.add(loadButton);
 		stage.addActor(table);
 		// stage.addActor(backButton);
 	}

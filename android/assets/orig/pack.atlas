@@ -1100,201 +1100,336 @@ size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+grayscreen
+  rotate: false
+  xy: 2, 950
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
 invenuiactivation01
   rotate: false
-  xy: 1924, 1902
+  xy: 1771, 818
   size: 900, 130
   orig: 900, 130
   offset: 0, 0
   index: -1
 invenuiactivation02
   rotate: false
-  xy: 2098, 1564
+  xy: 2165, 440
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 invenuiarrowacleft
   rotate: false
-  xy: 1771, 257
+  xy: 2596, 729
   size: 48, 87
   orig: 48, 87
   offset: 0, 0
   index: -1
 invenuiarrowacright
   rotate: false
-  xy: 2725, 1813
+  xy: 4041, 1943
   size: 48, 87
   orig: 48, 87
   offset: 0, 0
   index: -1
 invenuiarrowleft
   rotate: false
-  xy: 1924, 1205
+  xy: 3846, 1135
   size: 48, 87
   orig: 48, 87
   offset: 0, 0
   index: -1
 invenuiarrowright
   rotate: false
-  xy: 2011, 1407
+  xy: 3933, 1337
   size: 48, 87
   orig: 48, 87
   offset: 0, 0
   index: -1
 invenuibackground
   rotate: false
-  xy: 2, 952
+  xy: 1924, 950
   size: 1920, 1080
   orig: 1920, 1080
   offset: 0, 0
   index: -1
 invenuibase
   rotate: false
-  xy: 2, 34
+  xy: 2, 32
   size: 1767, 916
   orig: 1767, 916
   offset: 0, 0
   index: -1
 invenuibuttonaccancel
   rotate: false
-  xy: 1924, 1800
-  size: 625, 100
-  orig: 625, 100
+  xy: 2289, 716
+  size: 305, 100
+  orig: 305, 100
+  offset: 0, 0
+  index: -1
+invenuibuttonacremove
+  rotate: false
+  xy: 3191, 848
+  size: 305, 100
+  orig: 305, 100
   offset: 0, 0
   index: -1
 invenuibuttonacwear
   rotate: false
-  xy: 2826, 1932
-  size: 625, 100
-  orig: 625, 100
+  xy: 1771, 472
+  size: 305, 100
+  orig: 305, 100
   offset: 0, 0
   index: -1
 invenuibuttoncancel
   rotate: false
-  xy: 1924, 1698
-  size: 625, 100
-  orig: 625, 100
+  xy: 2289, 614
+  size: 305, 100
+  orig: 305, 100
+  offset: 0, 0
+  index: -1
+invenuibuttonremove
+  rotate: false
+  xy: 3498, 848
+  size: 305, 100
+  orig: 305, 100
   offset: 0, 0
   index: -1
 invenuibuttonwear
   rotate: false
-  xy: 3453, 1932
-  size: 625, 100
-  orig: 625, 100
+  xy: 1771, 370
+  size: 305, 100
+  orig: 305, 100
   offset: 0, 0
   index: -1
 invenuidown
   rotate: false
-  xy: 2, 2
+  xy: 3805, 918
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 invenuiitemline
   rotate: false
-  xy: 2356, 1594
+  xy: 1895, 22
   size: 102, 102
   orig: 102, 102
   offset: 0, 0
   index: -1
 invenuinon
   rotate: false
-  xy: 1879, 920
+  xy: 2032, 338
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 invenuipage01
   rotate: false
-  xy: 2826, 1910
+  xy: 2165, 418
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
   index: -1
 invenuipage02
   rotate: false
-  xy: 2460, 1676
+  xy: 2, 10
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
   index: -1
 invenuiparty
   rotate: false
-  xy: 2232, 1574
+  xy: 1771, 2
   size: 122, 122
   orig: 122, 122
   offset: 0, 0
   index: -1
 invenuistate
   rotate: false
-  xy: 1771, 548
+  xy: 3846, 1628
   size: 106, 402
   orig: 106, 402
   offset: 0, 0
   index: -1
 invenuitagacequipment
   rotate: false
-  xy: 2551, 1700
+  xy: 3846, 1426
   size: 85, 200
   orig: 85, 200
   offset: 0, 0
   index: -1
 invenuitagacetc
   rotate: false
-  xy: 1924, 1496
+  xy: 3954, 1830
   size: 85, 200
   orig: 85, 200
   offset: 0, 0
   index: -1
 invenuitagacsupplies
   rotate: false
-  xy: 1771, 346
+  xy: 2078, 372
   size: 85, 200
   orig: 85, 200
   offset: 0, 0
   index: -1
 invenuitagequipment
   rotate: false
-  xy: 2638, 1700
+  xy: 3846, 1224
   size: 85, 200
   orig: 85, 200
   offset: 0, 0
   index: -1
 invenuitagetc
   rotate: false
-  xy: 1924, 1294
+  xy: 3954, 1628
   size: 85, 200
   orig: 85, 200
   offset: 0, 0
   index: -1
 invenuitagsupplies
   rotate: false
-  xy: 2011, 1496
+  xy: 3933, 1426
   size: 85, 200
   orig: 85, 200
   offset: 0, 0
   index: -1
 invenuiup
   rotate: false
-  xy: 2098, 1532
+  xy: 2289, 582
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
+statusuitbacback
+  rotate: false
+  xy: 1771, 248
+  size: 259, 120
+  orig: 259, 120
+  offset: 0, 0
+  index: -1
+statusuitbacinventory
+  rotate: false
+  xy: 1771, 696
+  size: 516, 120
+  orig: 516, 120
+  offset: 0, 0
+  index: -1
+statusuitbback
+  rotate: false
+  xy: 1771, 126
+  size: 259, 120
+  orig: 259, 120
+  offset: 0, 0
+  index: -1
+statusuitbnonskill
+  rotate: false
+  xy: 2673, 828
+  size: 516, 120
+  orig: 516, 120
+  offset: 0, 0
+  index: -1
+statusuitbnonstatus
+  rotate: false
+  xy: 1771, 574
+  size: 516, 120
+  orig: 516, 120
+  offset: 0, 0
+  index: -1
+
+
+mirage_port_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgmirageport1
+  rotate: false
+  xy: 2, 250
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 238, 228
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 1924, 2380
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+
+
+  
   
 
 
+kadilla_castle_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+buttonui2
+  rotate: false
+  xy: 2, 250
+  size: 320, 99
+  orig: 320, 99
+  offset: 0, 0
+  index: -1
+kadillacastleex
+  rotate: false
+  xy: 2, 351
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
 
 
 
 
-redrose_castle_pack.png
+
+middle_ridge_pack.png
 size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-bgredrosecastle1
+bgmiddleridge1
   rotate: false
   xy: 2, 270
   size: 3840, 1080
@@ -1327,40 +1462,6 @@ townuiright
   xy: 3844, 1116
   size: 122, 234
   orig: 122, 234
-  offset: 0, 0
-  index: -1
-  
-kadilla_castle_pack.png
-size: 2048,4096
-format: RGBA8888
-filter: Linear,Linear
-repeat: none
-buttonui2
-  rotate: false
-  xy: 2, 250
-  size: 320, 99
-  orig: 320, 99
-  offset: 0, 0
-  index: -1
-kadillacastleex
-  rotate: false
-  xy: 2, 351
-  size: 1920, 2160
-  orig: 1920, 2160
-  offset: 0, 0
-  index: -1
-townuidown
-  rotate: false
-  xy: 2, 126
-  size: 234, 122
-  orig: 234, 122
-  offset: 0, 0
-  index: -1
-townuiup
-  rotate: false
-  xy: 2, 2
-  size: 234, 122
-  orig: 234, 122
   offset: 0, 0
   index: -1
   
@@ -1402,5 +1503,130 @@ townuiup
   xy: 2, 2
   size: 234, 122
   orig: 234, 122
+  offset: 0, 0
+  index: -1
+
+vaical_castle_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgvaical1
+  rotate: false
+  xy: 2, 250
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 238, 228
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 1924, 2380
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 2, 126
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 2
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+  
+  
+
+southcape_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgsouthcape1
+  rotate: false
+  xy: 2, 270
+  size: 3840, 1080
+  orig: 3840, 1080
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 126, 248
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 2, 2
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+townuileft
+  rotate: false
+  xy: 2, 34
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
+townuiright
+  rotate: false
+  xy: 3844, 1116
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
+  
+redrose_castle_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgredrosecastle1
+  rotate: false
+  xy: 2, 270
+  size: 3840, 1080
+  orig: 3840, 1080
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 126, 248
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuiup
+  rotate: false
+  xy: 2, 2
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+townuileft
+  rotate: false
+  xy: 2, 34
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
+townuiright
+  rotate: false
+  xy: 3844, 1116
+  size: 122, 234
+  orig: 122, 234
   offset: 0, 0
   index: -1

@@ -15,8 +15,7 @@ public class FieldInfo {
 
 	}
 
-	public FieldInfo(String startNode, String destinationNode,
-			NodeConnection conn) {
+	public FieldInfo(String startNode, String destinationNode, NodeConnection conn) {
 		this.startNode = startNode;
 		this.destinationNode = destinationNode;
 		this.fieldList = conn.getFieldList();
