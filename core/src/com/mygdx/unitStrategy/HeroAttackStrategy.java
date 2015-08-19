@@ -16,14 +16,6 @@ public class HeroAttackStrategy implements AttackStrategy {
 	public void attack(Unit attackHero, Unit defender, int[][] hitArea) {
 		Monster monster = (Monster) defender;
 
-		for (int i = 0; i < hitArea.length; i++) {
-			String str = "";
-			for (int j = 0; j < hitArea[i].length; j++) {
-				str += hitArea[i][j] + " ";
-			}
-			Gdx.app.log("HitArea", str);
-		}
-
 		float factor = 1.0f;
 		int attackDmg = attackHero.getStatus().getAttack();
 		int defenseValue = defender.getStatus().getDefense();
@@ -41,7 +33,6 @@ public class HeroAttackStrategy implements AttackStrategy {
 						realDmg += tmpDmg * (monster.getHitArea()[i][j] / 100.0f);
 					}
 				}
-				Gdx.app.log("HeroAttackStrategy", "damage: " + realDmg);
 			}
 		}
 

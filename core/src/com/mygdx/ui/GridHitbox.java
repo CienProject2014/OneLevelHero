@@ -2,6 +2,7 @@ package com.mygdx.ui;
 
 import java.util.HashMap;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
@@ -11,6 +12,8 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
 
 public class GridHitbox extends Table {
+	private final String TAG = "GridHitbox";
+
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
 
 	private final int TILE_WIDTH = 128;
@@ -105,7 +108,7 @@ public class GridHitbox extends Table {
 		setVisible(false);
 	}
 
-	public void showTileWhereClicked(float x, float y) {
+	public void showTileWhereMoved(float x, float y) {
 		hideAllTiles();
 
 		float dx = x - startX;
@@ -170,13 +173,13 @@ public class GridHitbox extends Table {
 	}
 
 	private boolean findAndShow(float x, float y) {
-		// Image tile = findTile(x, y);
 		int[] rc = findTileIndex(x, y);
 
-		if (rc != null) {
+		if (rc != null && showTileCount < limitNum) {
 			int row = rc[0];
 			int col = rc[1];
 
+			showTileCount++;
 			tiles[row][col].setVisible(true);
 			previousHitArea[row][col] = 1;
 			return true;
@@ -274,6 +277,7 @@ public class GridHitbox extends Table {
 	}
 
 	public void setLimitNum(int limitNum) {
+		Gdx.app.log("GridHitbox", "set limit: " + limitNum);
 		this.limitNum = limitNum;
 	}
 

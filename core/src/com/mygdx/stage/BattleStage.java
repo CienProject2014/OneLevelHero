@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -73,6 +76,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private Table rMenuTable = new Table();
 
 	private boolean isSkill = false;
+	private Vector2 start, end;
 
 	@Override
 	public void act(float delta) {
@@ -84,6 +88,46 @@ public class BattleStage extends BaseOneLevelStage {
 			playAnimation(delta);
 		}
 
+		if (start != null && end != null) {
+
+			Gdx.gl.glLineWidth(6.0f);
+			ShapeRenderer sr = new ShapeRenderer();
+
+			sr.setProjectionMatrix(getCamera().combined);
+
+			sr.begin(ShapeType.Line);
+			sr.setColor(com.badlogic.gdx.graphics.Color.RED);
+			sr.line(start, end);
+			sr.end();
+		}
+	}
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		super.touchDown(screenX, screenY, pointer, button);
+		if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+			start = (new Vector2(touched.x, touched.y));
+		}
+		return true;
+	}
+
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		super.touchDragged(screenX, screenY, pointer);
+		if (gridHitbox.isGridShow()) {
+			end = (new Vector2(touched.x, touched.y));
+
+		}
+		return true;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		super.touchUp(screenX, screenY, pointer, button);
+		start = null;
+		end = null;
+
+		return false;
 	}
 
 	public Stage makeStage() {
@@ -446,7 +490,7 @@ public class BattleStage extends BaseOneLevelStage {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
 					gridHitbox.setStartPosition(touched.x, touched.y);
-					gridHitbox.showTileWhereClicked(touched.x, touched.y);
+					gridHitbox.showTileWhereMoved(touched.x, touched.y);
 				}
 				return true;
 			}
@@ -455,7 +499,7 @@ public class BattleStage extends BaseOneLevelStage {
 			public void touchDragged(InputEvent event, float x, float y, int pointer) {
 				if (gridHitbox.isGridShow()) {
 					if (!isSkill) {
-						gridHitbox.showTileWhereClicked(touched.x, touched.y);
+						gridHitbox.showTileWhereMoved(touched.x, touched.y);
 					} else {
 						gridHitbox.showFixedTilesAt(touched.x, touched.y);
 					}
