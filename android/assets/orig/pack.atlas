@@ -1409,46 +1409,75 @@ townuiright
   offset: 0, 0
   index: -1
   
+
+
+
+
+
 winterfall_pack.png
-size: 2048,4096
+size: 2048,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-bgwinterfall1
+badhouse
   rotate: false
-  xy: 2, 346
-  size: 1920, 2160
-  orig: 1920, 2160
+  xy: 2, 84
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
-itemuiline01
+brokeninn
   rotate: false
-  xy: 2, 250
-  size: 845, 94
-  orig: 845, 94
+  xy: 288, 370
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
-itemuipage01
-  rotate: false
-  xy: 1924, 2486
-  size: 20, 20
-  orig: 20, 20
-  offset: 0, 0
-  index: -1
-townuidown
-  rotate: false
-  xy: 2, 126
-  size: 234, 122
-  orig: 234, 122
-  offset: 0, 0
-  index: -1
-townuiup
+crystaldom
   rotate: false
   xy: 2, 2
-  size: 234, 122
-  orig: 234, 122
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
+foodstore
+  rotate: false
+  xy: 288, 288
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+ruinedhouse
+  rotate: false
+  xy: 490, 370
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+tocobweb
+  rotate: false
+  xy: 2, 166
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+winterfall
+  rotate: false
+  xy: 2, 452
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
+
+
+
+
+
+
+
+
+
 
 vaical_castle_pack.png
 size: 2048,4096
