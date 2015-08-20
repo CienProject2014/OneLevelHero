@@ -156,6 +156,4 @@
 	<bean id="jumpSectionListener" class="com.mygdx.listener.JumpSectionListener" scope="prototype"/>
 	<bean id="selectComponentListener" class="com.mygdx.listener.SelectComponentListener" scope="prototype" />
 	<bean id="selectEventListener" class="com.mygdx.listener.SelectEventListener" scope="prototype"/>
-
-	<bean id="gameObjectPopup" class="com.mygdx.popup.GameObjectPopup" scope="prototype"/>
 </beans>

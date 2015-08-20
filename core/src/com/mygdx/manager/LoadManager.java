@@ -39,9 +39,9 @@ public class LoadManager {
 		setTimeInfo();
 		setBattleInfo();
 		storySectionManager.runStorySequence();
-		bagManager.possessItem(ItemEnum.WEAPON, "sabre");
-		bagManager.possessItem(ItemEnum.WEAPON, "velmont_mouse"); // FIXME for
-		bagManager.possessItem(ItemEnum.WEAPON, "velmont_mouse");
+		bagManager.possessItem(ItemEnum.HANDGRIP, "sabre");
+		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse"); // FIXME for
+		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse");
 	}
 
 	public void loadSaveGame() {

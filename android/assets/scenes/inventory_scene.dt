@@ -1,5 +1,5 @@
 {
-  "sceneName": "status_item_scene",
+  "sceneName": "inventory_scene",
   "composite": {
     "sImages": [
       {
@@ -14,24 +14,10 @@
         "imageName": "invenuibackground"
       },
       {
-        "itemIdentifier": "background",
-        "x": 119,
-        "y": 34,
-        "zIndex": 1,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "invenuibase"
-      },
-      {
         "itemIdentifier": "item_image06",
         "x": 140,
         "y": 159,
-        "zIndex": 6,
+        "zIndex": 5,
         "layerName": "Default",
         "tint": [
           1,
@@ -45,7 +31,7 @@
         "itemIdentifier": "item_image05",
         "x": 140,
         "y": 279,
-        "zIndex": 7,
+        "zIndex": 6,
         "layerName": "Default",
         "tint": [
           1,
@@ -59,7 +45,7 @@
         "itemIdentifier": "item_image04",
         "x": 140,
         "y": 399,
-        "zIndex": 8,
+        "zIndex": 7,
         "layerName": "Default",
         "tint": [
           1,
@@ -73,7 +59,7 @@
         "itemIdentifier": "item_image03",
         "x": 140,
         "y": 519,
-        "zIndex": 9,
+        "zIndex": 8,
         "layerName": "Default",
         "tint": [
           1,
@@ -87,7 +73,7 @@
         "itemIdentifier": "item_image02",
         "x": 140,
         "y": 639,
-        "zIndex": 10,
+        "zIndex": 9,
         "layerName": "Default",
         "tint": [
           1,
@@ -101,7 +87,7 @@
         "itemIdentifier": "item_image01",
         "x": 140,
         "y": 759,
-        "zIndex": 11,
+        "zIndex": 10,
         "layerName": "Default",
         "tint": [
           1,
@@ -115,7 +101,7 @@
         "itemIdentifier": "character_equip_parts",
         "x": 844,
         "y": 430,
-        "zIndex": 12,
+        "zIndex": 11,
         "layerName": "Default",
         "tint": [
           1,
@@ -124,11 +110,31 @@
           1
         ],
         "imageName": "invenuistate"
+      }
+    ],
+    "sLabels": [
+      {
+        "itemIdentifier": "item_label06",
+        "x": 300,
+        "y": 190,
+        "zIndex": 12,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 370,
+        "height": 40
       },
       {
-        "itemIdentifier": "select_box01",
-        "x": 118,
-        "y": 747,
+        "itemIdentifier": "item_label05",
+        "x": 300,
+        "y": 310,
         "zIndex": 13,
         "layerName": "Default",
         "tint": [
@@ -137,12 +143,16 @@
           1,
           1
         ],
-        "imageName": "invenuiactivation01"
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 370,
+        "height": 40
       },
       {
-        "itemIdentifier": "select_box02",
-        "x": 119,
-        "y": 627,
+        "itemIdentifier": "item_label04",
+        "x": 300,
+        "y": 430,
         "zIndex": 14,
         "layerName": "Default",
         "tint": [
@@ -151,12 +161,16 @@
           1,
           1
         ],
-        "imageName": "invenuiactivation01"
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 370,
+        "height": 40
       },
       {
-        "itemIdentifier": "select_box03",
-        "x": 119,
-        "y": 507,
+        "itemIdentifier": "item_label03",
+        "x": 300,
+        "y": 550,
         "zIndex": 15,
         "layerName": "Default",
         "tint": [
@@ -165,12 +179,16 @@
           1,
           1
         ],
-        "imageName": "invenuiactivation01"
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 370,
+        "height": 40
       },
       {
-        "itemIdentifier": "select_box04",
-        "x": 119,
-        "y": 387,
+        "itemIdentifier": "item_label02",
+        "x": 300,
+        "y": 670,
         "zIndex": 16,
         "layerName": "Default",
         "tint": [
@@ -179,12 +197,16 @@
           1,
           1
         ],
-        "imageName": "invenuiactivation01"
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 370,
+        "height": 40
       },
       {
-        "itemIdentifier": "select_box05",
-        "x": 119,
-        "y": 267,
+        "itemIdentifier": "item_label01",
+        "x": 300,
+        "y": 790,
         "zIndex": 17,
         "layerName": "Default",
         "tint": [
@@ -193,137 +215,17 @@
           1,
           1
         ],
-        "imageName": "invenuiactivation01"
-      },
-      {
-        "itemIdentifier": "select_box06",
-        "x": 119,
-        "y": 147,
-        "zIndex": 18,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "invenuiactivation01"
-      }
-    ],
-    "sLabels": [
-      {
-        "itemIdentifier": "item_label06",
-        "x": 280,
-        "y": 190,
-        "zIndex": 19,
-        "layerName": "Default",
-	"align" : 8,
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
         "style": "MaleMountain",
         "size": 12,
-        "width": 370,
-        "height": 40
-      },
-      {
-        "itemIdentifier": "item_label05",
-	"align" : 8,
-        "x": 280,
-        "y": 310,
-        "zIndex": 20,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "style": "MaleMountain",
-        "size": 12,
-        "width": 370,
-        "height": 40
-      },
-      {
-        "itemIdentifier": "item_label04",
-	"align" : 8,
-        "x": 280,
-        "y": 430,
-        "zIndex": 21,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "style": "MaleMountain",
-        "size": 12,
-        "width": 370,
-        "height": 40
-      },
-      {
-        "itemIdentifier": "item_label03",
-	"align" : 8,
-        "x": 280,
-        "y": 550,
-        "zIndex": 22,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "style": "MaleMountain",
-        "size": 12,
-        "width": 370,
-        "height": 40
-      },
-      {
-        "itemIdentifier": "item_label02",
-	"align" : 8,
-        "x": 280,
-        "y": 670,
-        "zIndex": 23,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "style": "MaleMountain",
-        "size": 12,
-        "width": 370,
-        "height": 40
-      },
-      {
-        "itemIdentifier": "item_label01",
-	"align" : 8,
-        "x": 280,
-        "y": 790,
-        "zIndex": 24,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "style": "MaleMountain",
-        "size": 12,
+        "align": 8,
         "width": 370,
         "height": 40
       },
       {
         "itemIdentifier": "name_label",
-        "x": 1090,
+        "x": 1250,
         "y": 863,
-        "zIndex": 25,
+        "zIndex": 18,
         "layerName": "Default",
         "tint": [
           1,
@@ -338,9 +240,9 @@
       },
       {
         "itemIdentifier": "property_label02",
-        "x": 1090,
+        "x": 1190,
         "y": 688,
-        "zIndex": 26,
+        "zIndex": 19,
         "layerName": "Default",
         "tint": [
           1,
@@ -355,9 +257,9 @@
       },
       {
         "itemIdentifier": "property_label01",
-        "x": 1090,
+        "x": 1190,
         "y": 748,
-        "zIndex": 27,
+        "zIndex": 20,
         "layerName": "Default",
         "tint": [
           1,
@@ -372,9 +274,9 @@
       },
       {
         "itemIdentifier": "stats_label01",
-        "x": 1280,
+        "x": 1380,
         "y": 748,
-        "zIndex": 28,
+        "zIndex": 21,
         "layerName": "Default",
         "tint": [
           1,
@@ -384,14 +286,15 @@
         ],
         "style": "MaleMountain",
         "size": 12,
+        "align": 8,
         "width": 80,
         "height": 40
       },
       {
         "itemIdentifier": "stats_label02",
-        "x": 1280,
+        "x": 1380,
         "y": 688,
-        "zIndex": 29,
+        "zIndex": 22,
         "layerName": "Default",
         "tint": [
           1,
@@ -401,14 +304,15 @@
         ],
         "style": "MaleMountain",
         "size": 12,
+        "align": 8,
         "width": 80,
         "height": 40
       },
       {
         "itemIdentifier": "description_label",
-        "x": 1090,
-        "y": 196,
-        "zIndex": 31,
+        "x": 0,
+        "y": 0,
+        "zIndex": 23,
         "layerName": "Default",
         "tint": [
           1,
@@ -418,8 +322,8 @@
         ],
         "style": "MaleMountain",
         "size": 12,
-        "width": 565,
-        "height": 375
+        "width": 600,
+        "height": 300
       }
     ],
     "sComposites": [
@@ -427,7 +331,7 @@
         "itemIdentifier": "equip_tag",
         "x": 34,
         "y": 720,
-        "zIndex": 2,
+        "zIndex": 1,
         "layerName": "Default",
         "tint": [
           1,
@@ -577,91 +481,10 @@
         }
       },
       {
-        "itemIdentifier": "equip_unequip",
-        "x": 1058,
-        "y": 49,
-        "zIndex": 5,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "pressed2",
-              "zIndex": 3,
-              "layerName": "pressed2",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuibuttonacwear"
-            },
-            {
-              "itemIdentifier": "normal2",
-              "zIndex": 2,
-              "layerName": "normal2",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuibuttonwear"
-            },
-            {
-              "itemIdentifier": "pressed",
-              "zIndex": 1,
-              "layerName": "pressed",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuibuttonaccancel"
-            },
-            {
-              "itemIdentifier": "normal",
-              "layerName": "normal",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuibuttoncancel"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            },
-            {
-              "layerName": "normal2"
-            },
-            {
-              "layerName": "pressed2"
-            }
-          ]
-        }
-      },
-      {
         "itemIdentifier": "up_down02",
-        "x": 1371,
-        "y": 688,
-        "zIndex": 30,
+        "x": 1300,
+        "y": 678,
+        "zIndex": 24,
         "layerName": "Default",
         "tint": [
           1,
@@ -724,7 +547,7 @@
         "itemIdentifier": "left_button",
         "x": 137,
         "y": 47,
-        "zIndex": 32,
+        "zIndex": 25,
         "layerName": "Default",
         "tint": [
           1,
@@ -775,7 +598,7 @@
         "itemIdentifier": "right_button",
         "x": 950,
         "y": 47,
-        "zIndex": 33,
+        "zIndex": 26,
         "layerName": "Default",
         "tint": [
           1,
@@ -826,7 +649,7 @@
         "itemIdentifier": "page_light01",
         "x": 493,
         "y": 82,
-        "zIndex": 34,
+        "zIndex": 27,
         "layerName": "Default",
         "tint": [
           1,
@@ -877,7 +700,7 @@
         "itemIdentifier": "page_light02",
         "x": 537,
         "y": 82,
-        "zIndex": 35,
+        "zIndex": 28,
         "layerName": "Default",
         "tint": [
           1,
@@ -928,7 +751,7 @@
         "itemIdentifier": "page_light03",
         "x": 581,
         "y": 82,
-        "zIndex": 36,
+        "zIndex": 29,
         "layerName": "Default",
         "tint": [
           1,
@@ -979,7 +802,7 @@
         "itemIdentifier": "page_light04",
         "x": 625,
         "y": 82,
-        "zIndex": 37,
+        "zIndex": 30,
         "layerName": "Default",
         "tint": [
           1,
@@ -1030,7 +853,7 @@
         "itemIdentifier": "character_window04",
         "x": 1743,
         "y": 211,
-        "zIndex": 38,
+        "zIndex": 31,
         "layerName": "Default",
         "tint": [
           1,
@@ -1083,7 +906,7 @@
         "itemIdentifier": "character_window03",
         "x": 1743,
         "y": 354,
-        "zIndex": 39,
+        "zIndex": 32,
         "layerName": "Default",
         "tint": [
           1,
@@ -1136,7 +959,7 @@
         "itemIdentifier": "character_window02",
         "x": 1743,
         "y": 496,
-        "zIndex": 40,
+        "zIndex": 33,
         "layerName": "Default",
         "tint": [
           1,
@@ -1189,7 +1012,7 @@
         "itemIdentifier": "character_window01",
         "x": 1743,
         "y": 639,
-        "zIndex": 41,
+        "zIndex": 34,
         "layerName": "Default",
         "tint": [
           1,
@@ -1240,9 +1063,9 @@
       },
       {
         "itemIdentifier": "up_down01",
-        "x": 1371,
-        "y": 748,
-        "zIndex": 42,
+        "x": 1300,
+        "y": 738,
+        "zIndex": 35,
         "layerName": "Default",
         "tint": [
           1,
@@ -1297,6 +1120,1338 @@
             },
             {
               "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "select_box01",
+        "x": 118,
+        "y": 747,
+        "zIndex": 36,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiactivation01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "select_box02",
+        "x": 118,
+        "y": 627,
+        "zIndex": 37,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiactivation01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "select_box03",
+        "x": 118,
+        "y": 506,
+        "zIndex": 38,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiactivation01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "select_box04",
+        "x": 118,
+        "y": 384.99997,
+        "zIndex": 39,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiactivation01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "select_box05",
+        "x": 118,
+        "y": 265,
+        "zIndex": 40,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiactivation01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "select_box06",
+        "x": 118,
+        "y": 144,
+        "zIndex": 41,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "pressed",
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiactivation01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "button_equip01",
+        "x": 1058,
+        "y": 49.999992,
+        "zIndex": 42,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonwear"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacwear"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+{
+        "itemIdentifier": "button_equip02",
+        "x": 1058,
+        "y": 49.999992,
+        "zIndex": 42,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonwear"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacwear"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+{
+        "itemIdentifier": "button_equip03",
+        "x": 1058,
+        "y": 49.999992,
+        "zIndex": 42,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonwear"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacwear"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+{
+        "itemIdentifier": "button_equip04",
+        "x": 1058,
+        "y": 49.999992,
+        "zIndex": 42,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonwear"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacwear"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+{
+        "itemIdentifier": "button_equip05",
+        "x": 1058,
+        "y": 49.999992,
+        "zIndex": 42,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonwear"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacwear"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+{
+        "itemIdentifier": "button_equip06",
+        "x": 1058,
+        "y": 49.999992,
+        "zIndex": 42,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonwear"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacwear"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "button_drop01",
+        "x": 1378,
+        "y": 50,
+        "zIndex": 43,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonremove"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacremove"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+ {
+        "itemIdentifier": "button_drop02",
+        "x": 1378,
+        "y": 50,
+        "zIndex": 43,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonremove"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacremove"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+ {
+        "itemIdentifier": "button_drop03",
+        "x": 1378,
+        "y": 50,
+        "zIndex": 43,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonremove"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacremove"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+ {
+        "itemIdentifier": "button_drop04",
+        "x": 1378,
+        "y": 50,
+        "zIndex": 43,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonremove"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacremove"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+ {
+        "itemIdentifier": "button_drop05",
+        "x": 1378,
+        "y": 50,
+        "zIndex": 43,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonremove"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacremove"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+ {
+        "itemIdentifier": "button_drop06",
+        "x": 1378,
+        "y": 50,
+        "zIndex": 43,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonremove"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonacremove"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "button_unequip01",
+        "x": 1058,
+        "y": 50,
+        "zIndex": 44,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttoncancel"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonaccancel"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "button_unequip02",
+        "x": 1058,
+        "y": 50,
+        "zIndex": 44,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttoncancel"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonaccancel"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "button_unequip03",
+        "x": 1058,
+        "y": 50,
+        "zIndex": 44,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttoncancel"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonaccancel"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "button_unequip04",
+        "x": 1058,
+        "y": 50,
+        "zIndex": 44,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttoncancel"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonaccancel"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "button_unequip05",
+        "x": 1058,
+        "y": 50,
+        "zIndex": 44,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttoncancel"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonaccancel"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "button_unequip06",
+        "x": 1058,
+        "y": 50,
+        "zIndex": 44,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttoncancel"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibuttonaccancel"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "back_tab",
+        "x": 34,
+        "y": 960,
+        "zIndex": 45,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuitbback"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuitbacback"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "status_tab",
+        "x": 308,
+        "y": 960,
+        "zIndex": 46,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuitbnonstatus"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "skill_tab",
+        "x": 1370,
+        "y": 960,
+        "zIndex": 47,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuitbnonskill"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "inventory_tab",
+        "x": 839,
+        "y": 960,
+        "zIndex": 48,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuitbacinventory"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "background",
+        "x": 119,
+        "y": 34,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "background",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuibase"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
             }
           ]
         }
