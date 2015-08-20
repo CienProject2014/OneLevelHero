@@ -30,6 +30,8 @@ public class RewardManager {
 	private PositionManager positionManager;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private SaveManager saveManager;
 
 	// (3) 퀘스트 달성 여부 큐
 	// 아직 미구현
@@ -87,6 +89,9 @@ public class RewardManager {
 					case NEXT_SECTION :
 						storySectionManager.setNewStorySectionAndPlay(Integer.valueOf(peekedReward
 								.getRewardTargetAttribute()));
+						break;
+					case SAVE :
+						saveManager.save();
 						break;
 					case PARTY :
 						partyManager.addHero(unitAssets.getHero(peekedReward.getRewardTarget()));

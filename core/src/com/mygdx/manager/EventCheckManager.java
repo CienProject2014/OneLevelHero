@@ -44,7 +44,7 @@ public class EventCheckManager {
 	}
 
 	private boolean checkSelectComponent(StorySectionPacket nextSectionPacket, String indexString) {
-		if (eventManager.getCurrentEvent().getEventComponent().get(Integer.valueOf(indexString))
+		if (eventManager.getCurrentNpcEvent().getEventComponent().get(Integer.valueOf(indexString))
 				.equals(nextSectionPacket.getTargetComponent())) {
 			return true;
 		} else {
