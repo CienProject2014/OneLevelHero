@@ -1,6 +1,5 @@
 package com.mygdx.screen;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
@@ -111,10 +110,8 @@ public class LoadingBarScreen extends BaseScreen {
 	public void render(float delta) {
 
 		if (StaticAssets.assetManager.update()) {
-			if (Gdx.input.isTouched()) {
-				loadGame();
-				StaticAssets.context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
-			}
+			loadGame();
+			StaticAssets.context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
 		}
 
 		// Interpolate the percentage to make it more smooth

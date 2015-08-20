@@ -19,6 +19,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.StatusBar;
 
@@ -90,7 +91,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 	private Table makeHeroTable(final StatusBar statusBar) {
 		Table heroTable = new Table();
-		Image heroImage = new Image(statusBar.getUnit().getFaceTexture());
+		Image heroImage = new Image(TextureManager.getFaceImage(statusBar.getUnit().getFacePath()));
 		heroImage.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -103,14 +104,14 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		HorizontalGroup buffGroup = new HorizontalGroup();
 		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
-		buffGroup.addActor(
-				new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_FAINT), Texture.class)));
-		buffGroup.addActor(
-				new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_SATAN), Texture.class)));
-		buffGroup.addActor(
-				new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_ICE), Texture.class)));
-		buffGroup.addActor(
-				new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_FIRE), Texture.class)));
+		buffGroup.addActor(new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_FAINT),
+				Texture.class)));
+		buffGroup.addActor(new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_SATAN),
+				Texture.class)));
+		buffGroup.addActor(new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_ICE),
+				Texture.class)));
+		buffGroup.addActor(new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_FIRE),
+				Texture.class)));
 		barTable = new Table();
 		Label hpLabel = new Label(statusBar.getHp() + "/" + statusBar.getMaxHp(), uiComponentAssets.getSkin());
 		hpLabelList.add(hpLabel);
