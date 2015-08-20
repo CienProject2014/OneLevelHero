@@ -94,48 +94,52 @@ public class BuildingStage extends BaseOverlapStage {
 
 	private void setSceneNpcList() {
 		npcButtonList = new ArrayList<CompositeItem>();
-		for (final String npcName : buildingInfo.getBuildingNpc()) {
-			CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(npcName);
-			npcButton.setTouchable(Touchable.enabled);
-			npcButton.addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					return true;
-				}
+		if (buildingInfo.getBuildingNpc() != null) {
+			for (final String npcName : buildingInfo.getBuildingNpc()) {
+				CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(npcName);
+				npcButton.setTouchable(Touchable.enabled);
+				npcButton.addListener(new InputListener() {
+					@Override
+					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+						return true;
+					}
 
-				@Override
-				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					eventManager.setCurrentEventNpc(npcName);
-					eventManager.setCurrentEventNumber(2); // FIXME
-					screenFactory.show(ScreenEnum.GREETING);
-				}
-			});
-			npcButtonList.add(npcButton);
+					@Override
+					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+						eventManager.setCurrentEventNpc(npcName);
+						eventManager.setCurrentEventNumber(2); // FIXME
+						screenFactory.show(ScreenEnum.GREETING);
+					}
+				});
+				npcButtonList.add(npcButton);
+			}
 		}
 	}
 
 	private void setSceneItemList() {
 		gameObjectList = new ArrayList<CompositeItem>();
-		for (final String objectName : buildingInfo.getGameObject()) {
-			final GameObject gameObject = eventAssets.getGameObject(objectName);
-			final CompositeItem gameObjectButton = sceneLoader.getRoot().getCompositeById(objectName);
-			gameObjectButton.setVisible(true);
-			setGameObjectVisibility(gameObjectButton, gameObject.getObjectType());
-			setGameObjectFunction(gameObjectButton, objectName);
-			gameObjectButton.addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					eventManager.setCurrentGameObject(gameObject);
-					gameObjectPopup = new GameObjectPopup();
-					gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
-					gameObjectPopup.setListenerFactory(listenerFactory);
-					gameObjectPopup.setGameObject(gameObject);
-					gameObjectPopup.initialize();
-					addActor(gameObjectPopup);
-					gameObjectPopup.setVisible(true);
-				}
-			});
-			gameObjectList.add(gameObjectButton);
+		if (buildingInfo.getGameObject() != null) {
+			for (final String objectName : buildingInfo.getGameObject()) {
+				final GameObject gameObject = eventAssets.getGameObject(objectName);
+				final CompositeItem gameObjectButton = sceneLoader.getRoot().getCompositeById(objectName);
+				gameObjectButton.setVisible(true);
+				setGameObjectVisibility(gameObjectButton, gameObject.getObjectType());
+				setGameObjectFunction(gameObjectButton, objectName);
+				gameObjectButton.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						eventManager.setCurrentGameObject(gameObject);
+						gameObjectPopup = new GameObjectPopup();
+						gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
+						gameObjectPopup.setListenerFactory(listenerFactory);
+						gameObjectPopup.setGameObject(gameObject);
+						gameObjectPopup.initialize();
+						addActor(gameObjectPopup);
+						gameObjectPopup.setVisible(true);
+					}
+				});
+				gameObjectList.add(gameObjectButton);
+			}
 		}
 	}
 	private void setGameObjectFunction(CompositeItem gameObjectButton, String objectName) {

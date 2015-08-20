@@ -135,7 +135,7 @@ public class MusicManager {
 	}
 
 	public void setEventMusicAndPlay() {
-		EventPacket eventPacket = eventManager.getCurrentEventPacket();
+		EventPacket eventPacket = eventManager.getCurrentNpcEventPacket();
 		String code = eventPacket.getEventNpc() + "_"
 				+ eventPacket.getEventNumber();
 		Music music = musicAssets.getEventMusic(code);

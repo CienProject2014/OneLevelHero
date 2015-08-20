@@ -71,15 +71,15 @@ public class EventManager {
 		setCurrentEventElementType(EventElementEnum.NPC);
 		switch (eventType) {
 			case BATTLE :
-				battleManager.startBattle(unitAssets.getMonster(getCurrentEvent().getEventComponent().get(0)));
+				battleManager.startBattle(unitAssets.getMonster(getCurrentNpcEvent().getEventComponent().get(0)));
 				screenFactory.show(ScreenEnum.BATTLE);
 				break;
 			case NEXT_SECTION :
-				storySectionManager.setNewStorySectionAndPlay(Integer.valueOf(getCurrentEvent().getEventComponent()
+				storySectionManager.setNewStorySectionAndPlay(Integer.valueOf(getCurrentNpcEvent().getEventComponent()
 						.get(0)));
 				break;
 			case MOVE_NODE :
-				positionManager.setCurrentNodeName(getCurrentEvent().getEventComponent().get(0));
+				positionManager.setCurrentNodeName(getCurrentNpcEvent().getEventComponent().get(0));
 				movingManager.goCurrentPosition();
 				storySectionManager.runStorySequence();
 				break;
@@ -88,13 +88,13 @@ public class EventManager {
 				storySectionManager.runStorySequence();
 				break;
 			case MOVE_SUB_NODE :
-				positionManager.setCurrentSubNodeName(getCurrentEvent().getEventComponent().get(0));
+				positionManager.setCurrentSubNodeName(getCurrentNpcEvent().getEventComponent().get(0));
 				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 				movingManager.goCurrentPosition();
 				storySectionManager.runStorySequence();
 				break;
 			case PASS_TIME :
-				timeManager.plusMinute(Integer.parseInt(getCurrentEvent().getEventComponent().get(0)));
+				timeManager.plusMinute(Integer.parseInt(getCurrentNpcEvent().getEventComponent().get(0)));
 				storySectionManager.runStorySequence();
 				break;
 			case MUSIC :
@@ -188,8 +188,8 @@ public class EventManager {
 		}
 	}
 
-	public EventPacket getCurrentEventPacket() {
-		return eventInfo.getCurrentEventInfo();
+	public EventPacket getCurrentNpcEventPacket() {
+		return eventInfo.getCurrentNpcEventInfo();
 	}
 
 	public EventScene getGameObjectEventScene() {
@@ -216,12 +216,8 @@ public class EventManager {
 		}
 	}
 
-	public Event getCurrentEvent() {
-		return eventInfo.getNpcEvent(eventInfo.getEventPacket());
-	}
-
 	public Event getCurrentNpcEvent() {
-		EventPacket eventPacket = eventInfo.getEventPacket();
+		EventPacket eventPacket = eventInfo.getCurrentNpcEventInfo();
 		return eventInfo.getNpcEvent(eventPacket.getEventNpc(), eventPacket.getEventNumber());
 	}
 
@@ -253,8 +249,8 @@ public class EventManager {
 		}
 	}
 
-	public void setCurrentEventInfo(EventPacket eventPacket) {
-		eventInfo.setCurrentEventInfo(eventPacket);
+	public void setCurrentNpcEventInfo(EventPacket eventPacket) {
+		eventInfo.setCurrentNpcEventInfo(eventPacket);
 	}
 
 	public void setCurrentEventNumber(int eventNumber) {
@@ -273,11 +269,11 @@ public class EventManager {
 	}
 
 	public void setGreeting(boolean isGreeting) {
-		eventInfo.getCurrentEventInfo().setGreeting(isGreeting);
+		eventInfo.getCurrentNpcEventInfo().setGreeting(isGreeting);
 	}
 
 	public boolean isGreeting() {
-		return eventInfo.getCurrentEventInfo().isGreeting();
+		return eventInfo.getCurrentNpcEventInfo().isGreeting();
 	}
 
 	public boolean isEventOpen(Event event) {
@@ -310,12 +306,12 @@ public class EventManager {
 	}
 
 	public void triggerComponentEvent(int index) {
-		String eventComponent = getCurrentEvent().getEventComponent().get(index);
-		if (getCurrentEvent().getEventTarget() != null) {
-			NPC npc = eventInfo.getNpc(getCurrentEvent().getEventTarget());
+		String eventComponent = getCurrentNpcEvent().getEventComponent().get(index);
+		if (getCurrentNpcEvent().getEventTarget() != null) {
+			NPC npc = eventInfo.getNpc(getCurrentNpcEvent().getEventTarget());
 			if (eventCheckManager.checkSameWithComponent(eventComponent, npc.getEvent(index + eventPlusRule)
 					.getEventName())) {
-				setCurrentEventNpc(getCurrentEvent().getEventTarget());
+				setCurrentEventNpc(getCurrentNpcEvent().getEventTarget());
 				setCurrentEventNumber(index + eventPlusRule); // 알고리즘이필요함
 				screenFactory.show(ScreenEnum.EVENT);
 			}
