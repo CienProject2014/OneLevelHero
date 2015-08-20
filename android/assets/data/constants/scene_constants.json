@@ -43,6 +43,14 @@
       "item_label05",
       "item_label06"
     ],
+    "property_label": [
+    	"property_label01",
+    	"property_label02",
+    	"stats_label01",
+    	"stats_label02",
+    	"up_down01",
+    	"up_down02"
+    ],
     "inventory_light_button": [
       "page_light01",
       "page_light02",
@@ -56,6 +64,30 @@
       "select_box04",
       "select_box05",
       "select_box06"
+    ],
+    "drop_button":[
+    	"button_drop01",
+    	"button_drop02",
+    	"button_drop03",
+    	"button_drop04",
+    	"button_drop05",
+    	"button_drop06"
+    ],
+    "unequip_button":[
+    	"button_unequip01",
+    	"button_unequip02",
+    	"button_unequip03",
+    	"button_unequip04",
+    	"button_unequip05",
+    	"button_unequip06"
+    ],
+    "equip_button":[
+    	"button_equip01",
+    	"button_equip02",
+    	"button_equip03",
+    	"button_equip04",
+    	"button_equip05",
+    	"button_equip06",
     ],
     "character_status_image" : [
     	"character_window01",

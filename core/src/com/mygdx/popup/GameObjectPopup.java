@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.enums.PopupTypeEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.GameObjectButtonListener;
 import com.mygdx.listener.HidingClickListener;
@@ -22,8 +23,8 @@ public class GameObjectPopup extends Dialog {
 	private GameObject gameObject;
 	private ImageButton okayButton, closeButton;
 	private Label questionLabel;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
-			.get("GameObjectPopup");
+	private PopupTypeEnum popupType;
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameObjectPopup");
 
 	public GameObjectPopup() {
 		this("", StaticAssets.skin);
@@ -51,36 +52,26 @@ public class GameObjectPopup extends Dialog {
 	public void initialize() {
 		questionLabel = new Label("오브젝트를 확인해 보시겠습니까?", StaticAssets.skin);
 		questionLabel.setAlignment(Align.center);
-		questionLabel.setBounds(uiConstantsMap.get("questionLabelX"),
-				uiConstantsMap.get("questionLabelY"),
-				uiConstantsMap.get("questionLabelWidth"),
-				uiConstantsMap.get("questionLabelHeight"));
+		questionLabel.setBounds(uiConstantsMap.get("questionLabelX"), uiConstantsMap.get("questionLabelY"),
+				uiConstantsMap.get("questionLabelWidth"), uiConstantsMap.get("questionLabelHeight"));
 		addActor(questionLabel);
-		okayButton = new ImageButton(
-				atlasUiAssets.getAtlasUiFile("popupui_button_yes"),
+		okayButton = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_button_yes"),
 				atlasUiAssets.getAtlasUiFile("popupui_acbutton_yes"));
-		closeButton = new ImageButton(
-				atlasUiAssets.getAtlasUiFile("popupui_button_no"),
+		closeButton = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_button_no"),
 				atlasUiAssets.getAtlasUiFile("popupui_acbutton_no"));
 		closeButton.addListener(new HidingClickListener(this));
-		GameObjectButtonListener gameObjectButtonListener = listenerFactory
-				.getGameObjectButtonListener();
+		GameObjectButtonListener gameObjectButtonListener = listenerFactory.getGameObjectButtonListener();
 		gameObjectButtonListener.setGameObject(gameObject);
 		okayButton.addListener(gameObjectButtonListener);
 
 		getButtonTable().bottom();
-		getButtonTable().add(okayButton)
-				.height(uiConstantsMap.get("buttonHeight"))
+		getButtonTable().add(okayButton).height(uiConstantsMap.get("buttonHeight"))
 				.padBottom(uiConstantsMap.get("buttonPadBottom"));
-		getButtonTable().add(closeButton)
-				.padLeft(uiConstantsMap.get("closeButtonPadLeft")).height(90)
+		getButtonTable().add(closeButton).padLeft(uiConstantsMap.get("closeButtonPadLeft")).height(90)
 				.padBottom(uiConstantsMap.get("buttonPadBottom"));
-		getButtonTable().setBackground(
-				atlasUiAssets.getAtlasUiFile("popupui_popup01"));
-		setCenterPosition(StaticAssets.BASE_WINDOW_WIDTH / 2f,
-				StaticAssets.BASE_WINDOW_HEIGHT / 2f);
-		setSize(uiConstantsMap.get("popupWidth"),
-				uiConstantsMap.get("popupHeight"));
+		getButtonTable().setBackground(atlasUiAssets.getAtlasUiFile("popupui_popup01"));
+		setCenterPosition(StaticAssets.BASE_WINDOW_WIDTH / 2f, StaticAssets.BASE_WINDOW_HEIGHT / 2f);
+		setSize(uiConstantsMap.get("popupWidth"), uiConstantsMap.get("popupHeight"));
 		setModal(false);
 		setResizable(false);
 		setVisible(false);

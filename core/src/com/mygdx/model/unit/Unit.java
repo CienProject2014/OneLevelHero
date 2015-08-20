@@ -3,13 +3,13 @@ package com.mygdx.model.unit;
 import java.util.ArrayList;
 import java.util.Map;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.manager.TextureManager;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.unitStrategy.AttackStrategy;
+import com.mygdx.unitStrategy.UnusualConditionStrategy;
 
 public abstract class Unit implements Comparable<Unit> {
 	private AttackStrategy attackStrategy;
+	private UnusualConditionStrategy unusualConditionStrategy;
 	private String facePath;
 	private String name;
 	protected Status status;
@@ -18,10 +18,6 @@ public abstract class Unit implements Comparable<Unit> {
 	private int subvalue;
 	private int actingPower;
 	private int preGague;
-	private Texture bodyTexture;
-	private Texture faceTexture;
-	private Texture bigBattleTexture;
-	private Texture smallBattleTexture;
 
 	public String getFacePath() {
 		return facePath;
@@ -52,23 +48,6 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setSkillList(ArrayList<String> skillList) {
 		this.skillList = skillList;
-	}
-
-	public void setBodyTexture(Texture bodyTexture) {
-		this.bodyTexture = bodyTexture;
-	}
-
-	public void setFaceTexture(Texture faceTexture) {
-		this.faceTexture = faceTexture;
-	}
-
-	public void setBigBattleTexture(Texture bigBattleTexture) {
-		this.bigBattleTexture = bigBattleTexture;
-
-	}
-
-	public void setSmallBattleTexture(Texture smallBattleTexture) {
-		this.smallBattleTexture = smallBattleTexture;
 	}
 
 	public void setName(String name) {
@@ -107,6 +86,10 @@ public abstract class Unit implements Comparable<Unit> {
 		this.actingPower = actingPower;
 	}
 
+	public void beInUnusualCondition(String unusualConditionName) {
+		unusualConditionStrategy.beInUnusualCondition(this, unusualConditionName);
+	}
+
 	@Override
 	public int compareTo(Unit obj) {
 		if (this.getGauge() == obj.getGauge()) {
@@ -122,8 +105,7 @@ public abstract class Unit implements Comparable<Unit> {
 						// 나머지는 첨 들어갈때 그대로 있어 그냥 어차피 리스트는 순서대로 들어가니 적용댈듯
 						return 0;
 					}
-				} else if (this.getStatus().getSpeed() > obj.getStatus()
-						.getSpeed()) {
+				} else if (this.getStatus().getSpeed() > obj.getStatus().getSpeed()) {
 					// 스피드가 더 크다
 					return -1;
 				} else {
@@ -144,38 +126,6 @@ public abstract class Unit implements Comparable<Unit> {
 		}
 	}
 
-	public Texture getBodyTexture() {
-		if (bodyTexture == null) {
-			if (this instanceof Hero)
-				bodyTexture = TextureManager.getCharacterBodyTexture(facePath);
-			else
-				bodyTexture = TextureManager.getMonsterBodyTexture(facePath);
-		}
-		return bodyTexture;
-	}
-
-	public Texture getFaceTexture() {
-		if (faceTexture == null) {
-			faceTexture = TextureManager.getFaceTexture(facePath);
-		}
-		return faceTexture;
-	}
-
-	public Texture getBigBattleTexture() {
-		if (bigBattleTexture == null) {
-			bigBattleTexture = TextureManager.getBattleTurnBigTexture(facePath);
-		}
-		return bigBattleTexture;
-	}
-
-	public Texture getSmallBattleTexture() {
-		if (smallBattleTexture == null) {
-			smallBattleTexture = TextureManager
-					.getBattleTurnSmallTexture(facePath);
-		}
-		return smallBattleTexture;
-	}
-
 	public int getPreGague() {
 		return preGague;
 	}
@@ -184,8 +134,8 @@ public abstract class Unit implements Comparable<Unit> {
 		this.preGague = preGague;
 	}
 
-	public void attack(Unit opponent) {
-		attackStrategy.attack(this, opponent);
+	public void attack(Unit opponent, int[][] hitArea) {
+		attackStrategy.attack(this, opponent, hitArea);
 	}
 
 	public void skillAttack(Unit opponent, String skillName) {
@@ -198,5 +148,13 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setAttackStrategy(AttackStrategy attackStrategy) {
 		this.attackStrategy = attackStrategy;
+	}
+
+	public UnusualConditionStrategy getUnusualConditionStrategy() {
+		return unusualConditionStrategy;
+	}
+
+	public void setUnusualConditionStrategy(UnusualConditionStrategy unusualConditionStrategy) {
+		this.unusualConditionStrategy = unusualConditionStrategy;
 	}
 }

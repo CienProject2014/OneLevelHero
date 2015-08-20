@@ -10,6 +10,7 @@
     "itemPath" : "cope",
     "category": "로브",
     "grade": "일반",
+     "effectStatusList" : [ "defense", "magicDefense"],
     "effectStatus": {
       "defense": 5,
       "magicDefense": 25
@@ -22,6 +23,7 @@
     "itemPath" : "necromantic_dress",
     "category": "로브",
     "grade": "일반",
+       "effectStatusList" : [ "defense", "magicDefense"],
     "effectStatus": {
       "defense": 5,
       "magicDefense": 25
@@ -30,9 +32,11 @@
   },
   "iron_armor": {
     "name": "철제 갑옷",
+	"itemType" : "clothes",
     "itemPath" : "iron_armor",
     "category": "갑옷",
     "grade": "일반",
+       "effectStatusList" : [ "defense", "speed"],
     "effectStatus": {
       "defense": 30,
       "speed": -10

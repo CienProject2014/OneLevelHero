@@ -1,5 +1,7 @@
 package com.mygdx.manager;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
@@ -10,39 +12,39 @@ import com.mygdx.model.event.StorySectionPacket;
 public class EventCheckManager {
 	@Autowired
 	private EventManager eventManager;
-	@Autowired
-	private StorySectionManager storySectionManager;
-	@Autowired
-	private PositionManager positionManager;
 
-	public boolean checkSameWithComponent(String eventComponent,
-			String componentString) {
+	public boolean checkSameWithComponent(String eventComponent, String componentString) {
 		return eventComponent.equals(componentString);
 	}
 
-	public boolean checkSameWithComponent(EventTypeEnum eventType,
-			StorySectionPacket nextStorySectionPacket, String componentString) {
+	public boolean checkSameWithComponentList(List<String> eventComponentList, String componentString) {
+		for (String eventComponent : eventComponentList) {
+			if (eventComponent.equals(componentString)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean checkSameWithComponent(EventTypeEnum eventType, StorySectionPacket nextStorySectionPacket,
+			String componentString) {
 		switch (eventType) {
-			case MOVE_FIELD:
-			case MOVE_SUB_NODE:
-			case MOVE_NODE:
-			case BATTLE_CONTROL:
-			case SELECT_EVENT:
-				return checkMatchWithString(nextStorySectionPacket,
-						componentString);
-			case SELECT_COMPONENT:
-				return checkSelectComponent(nextStorySectionPacket,
-						componentString);
-			default:
+			case MOVE_FIELD :
+			case MOVE_SUB_NODE :
+			case MOVE_NODE :
+			case BATTLE_CONTROL :
+			case SELECT_EVENT :
+				return checkMatchWithString(nextStorySectionPacket, componentString);
+			case SELECT_COMPONENT :
+				return checkSelectComponent(nextStorySectionPacket, componentString);
+			default :
 				Gdx.app.log("EventCheckManager", "잘못된 EventCheckInfo오류");
 				return false;
 		}
 	}
 
-	private boolean checkSelectComponent(StorySectionPacket nextSectionPacket,
-			String indexString) {
-		if (eventManager.getCurrentEvent().getEventComponent()
-				.get(Integer.valueOf(indexString))
+	private boolean checkSelectComponent(StorySectionPacket nextSectionPacket, String indexString) {
+		if (eventManager.getCurrentEvent().getEventComponent().get(Integer.valueOf(indexString))
 				.equals(nextSectionPacket.getTargetComponent())) {
 			return true;
 		} else {
@@ -59,8 +61,7 @@ public class EventCheckManager {
 		}
 	}
 
-	private boolean checkMatchWithString(StorySectionPacket nextSectionPacket,
-			String componentString) {
+	private boolean checkMatchWithString(StorySectionPacket nextSectionPacket, String componentString) {
 		if (componentString.equals(nextSectionPacket.getTargetComponent())) {
 			return true;
 		} else {

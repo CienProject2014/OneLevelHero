@@ -11,14 +11,14 @@
           1,
           1
         ],
-        "imageName": "bgwinterfall1"
+        "imageName": "winterfall"
       }
     ],
     "sComposites": [
       {
-        "itemIdentifier": "winterfall_inn",
-        "x": 1166,
-        "y": 624.5,
+        "itemIdentifier": "8to13",
+        "x": 1314,
+        "y": 0.49996948,
         "zIndex": 1,
         "layerName": "Default",
         "tint": [
@@ -30,8 +30,6 @@
         "composite": {
           "sImages": [
             {
-              "scaleX": 7.5,
-              "scaleY": 7.5,
               "layerName": "Default",
               "tint": [
                 1,
@@ -39,7 +37,7 @@
                 1,
                 1
               ],
-              "imageName": "itemuipage01"
+              "imageName": "tocobweb"
             }
           ],
           "layers": [
@@ -56,9 +54,9 @@
         }
       },
       {
-        "itemIdentifier": "winterfall_altar",
-        "x": 474.99988,
-        "y": 1303.5,
+        "itemIdentifier": "winterfall_dome",
+        "x": 263,
+        "y": 530.5,
         "zIndex": 2,
         "layerName": "Default",
         "tint": [
@@ -70,8 +68,6 @@
         "composite": {
           "sImages": [
             {
-              "scaleX": 7.5,
-              "scaleY": 7.5,
               "layerName": "Default",
               "tint": [
                 1,
@@ -79,7 +75,7 @@
                 1,
                 1
               ],
-              "imageName": "itemuipage01"
+              "imageName": "crystaldom"
             }
           ],
           "layers": [
@@ -96,9 +92,9 @@
         }
       },
       {
-        "itemIdentifier": "winterfall_villagehall",
-        "x": 1223,
-        "y": 1439.5,
+        "itemIdentifier": "winterfall_inn",
+        "x": 789,
+        "y": 712.49994,
         "zIndex": 3,
         "layerName": "Default",
         "tint": [
@@ -110,8 +106,6 @@
         "composite": {
           "sImages": [
             {
-              "scaleX": 7.5,
-              "scaleY": 7.5,
               "layerName": "Default",
               "tint": [
                 1,
@@ -119,7 +113,7 @@
                 1,
                 1
               ],
-              "imageName": "itemuipage01"
+              "imageName": "brokeninn"
             }
           ],
           "layers": [
@@ -136,9 +130,9 @@
         }
       },
       {
-        "itemIdentifier": "wintefall_grocery",
-        "x": 1708,
-        "y": 1002,
+        "itemIdentifier": "winterfall_peasanthouse01",
+        "x": 1136,
+        "y": 649.5,
         "zIndex": 4,
         "layerName": "Default",
         "tint": [
@@ -150,8 +144,6 @@
         "composite": {
           "sImages": [
             {
-              "scaleX": 7.5,
-              "scaleY": 7.5,
               "layerName": "Default",
               "tint": [
                 1,
@@ -159,7 +151,7 @@
                 1,
                 1
               ],
-              "imageName": "itemuipage01"
+              "imageName": "badhouse"
             }
           ],
           "layers": [
@@ -176,9 +168,9 @@
         }
       },
       {
-        "itemIdentifier": "8to13",
-        "x": 547.9999,
-        "y": 1741.5,
+        "itemIdentifier": "winterfall_peasanthouse02",
+        "x": 1399,
+        "y": 399.5,
         "zIndex": 5,
         "layerName": "Default",
         "tint": [
@@ -190,8 +182,6 @@
         "composite": {
           "sImages": [
             {
-              "scaleX": 7.5,
-              "scaleY": 7.5,
               "layerName": "Default",
               "tint": [
                 1,
@@ -199,7 +189,7 @@
                 1,
                 1
               ],
-              "imageName": "itemuipage01"
+              "imageName": "ruinedhouse"
             }
           ],
           "layers": [
@@ -216,9 +206,9 @@
         }
       },
       {
-        "itemIdentifier": "camera_up",
-        "x": 1655,
-        "y": 735.5001,
+        "itemIdentifier": "winterfall_grocery",
+        "x": 1082,
+        "y": 277.5,
         "zIndex": 6,
         "layerName": "Default",
         "tint": [
@@ -237,45 +227,7 @@
                 1,
                 1
               ],
-              "imageName": "townuiup"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "camera_down",
-        "x": 1656,
-        "y": 1815,
-        "zIndex": 7,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "townuidown"
+              "imageName": "foodstore"
             }
           ],
           "layers": [

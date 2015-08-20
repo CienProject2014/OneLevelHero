@@ -9,7 +9,7 @@ import com.mygdx.enums.JsonEnum;
 import com.mygdx.model.item.Accessory;
 import com.mygdx.model.item.Clothes;
 import com.mygdx.model.item.Consumables;
-import com.mygdx.model.item.HandGrip;
+import com.mygdx.model.item.Equipment;
 import com.mygdx.model.item.Item;
 import com.mygdx.model.item.Shield;
 import com.mygdx.model.item.Weapon;
@@ -25,18 +25,13 @@ public class ItemAssets implements JsonAssetsInitializable {
 
 	@Override
 	public void set(Map<String, String> jsonStringMap) {
-		weaponMap = JsonParser.parseMap(Weapon.class,
-				jsonStringMap.get(JsonEnum.WEAPON_JSON.toString()));
-		accessoryMap = JsonParser.parseMap(Accessory.class,
-				jsonStringMap.get(JsonEnum.ACCESSORY_JSON.toString()));
-		clothesMap = JsonParser.parseMap(Clothes.class,
-				jsonStringMap.get(JsonEnum.CLOTHES_JSON.toString()));
-		shieldMap = JsonParser.parseMap(Shield.class,
-				jsonStringMap.get(JsonEnum.SHIELD_JSON.toString()));
-		consumablesMap = JsonParser.parseMap(Consumables.class,
-				jsonStringMap.get(JsonEnum.CONSUMABLES_JSON.toString()));
-		etcItemMap = JsonParser.parseMap(Item.class,
-				jsonStringMap.get(JsonEnum.ETC_ITEM_JSON.toString()));
+		weaponMap = JsonParser.parseMap(Weapon.class, jsonStringMap.get(JsonEnum.WEAPON_JSON.toString()));
+		accessoryMap = JsonParser.parseMap(Accessory.class, jsonStringMap.get(JsonEnum.ACCESSORY_JSON.toString()));
+		clothesMap = JsonParser.parseMap(Clothes.class, jsonStringMap.get(JsonEnum.CLOTHES_JSON.toString()));
+		shieldMap = JsonParser.parseMap(Shield.class, jsonStringMap.get(JsonEnum.SHIELD_JSON.toString()));
+		consumablesMap = JsonParser
+				.parseMap(Consumables.class, jsonStringMap.get(JsonEnum.CONSUMABLES_JSON.toString()));
+		etcItemMap = JsonParser.parseMap(Item.class, jsonStringMap.get(JsonEnum.ETC_ITEM_JSON.toString()));
 	}
 
 	public Consumables getConsumables(String consumableName) {
@@ -55,11 +50,9 @@ public class ItemAssets implements JsonAssetsInitializable {
 		return accessoryMap.get(accessoryName);
 	}
 
-	public HandGrip getHandGrip(String handGripName) {
-		Iterator<Entry<String, Weapon>> weaponIterator = weaponMap.entrySet()
-				.iterator();
-		Iterator<Entry<String, Shield>> shieldIterator = shieldMap.entrySet()
-				.iterator();
+	public Equipment getHandGrip(String handGripName) {
+		Iterator<Entry<String, Weapon>> weaponIterator = weaponMap.entrySet().iterator();
+		Iterator<Entry<String, Shield>> shieldIterator = shieldMap.entrySet().iterator();
 		while (weaponIterator.hasNext()) {
 			Entry<String, Weapon> nextWeaponEntry = weaponIterator.next();
 			if (nextWeaponEntry.getKey().equals(handGripName)) {

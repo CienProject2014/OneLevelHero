@@ -8,6 +8,7 @@ import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
 
@@ -18,6 +19,8 @@ public class BuildingButtonListener extends ClickListener {
 	private PositionManager positionManager;
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private EventManager eventManager;
 	private String buildingName;
 
 	@Override
@@ -25,8 +28,8 @@ public class BuildingButtonListener extends ClickListener {
 		positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 		positionManager.setCurrentSubNodeName(buildingName);
 		screenFactory.show(ScreenEnum.BUILDING);
-		storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_SUB_NODE,
-				buildingName);
+		storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_SUB_NODE, buildingName);
+		eventManager.triggerSpecialEvent(EventTypeEnum.DONT_GO_BUILDING, buildingName);
 	}
 
 	public String getBuildingName() {
