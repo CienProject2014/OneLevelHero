@@ -3,8 +3,6 @@ package com.mygdx.model.unit;
 import java.util.ArrayList;
 import java.util.Map;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.manager.TextureManager;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.unitStrategy.AttackStrategy;
 import com.mygdx.unitStrategy.UnusualConditionStrategy;
@@ -20,10 +18,6 @@ public abstract class Unit implements Comparable<Unit> {
 	private int subvalue;
 	private int actingPower;
 	private int preGague;
-	private Texture bodyTexture;
-	private Texture faceTexture;
-	private Texture bigBattleTexture;
-	private Texture smallBattleTexture;
 
 	public String getFacePath() {
 		return facePath;
@@ -54,23 +48,6 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setSkillList(ArrayList<String> skillList) {
 		this.skillList = skillList;
-	}
-
-	public void setBodyTexture(Texture bodyTexture) {
-		this.bodyTexture = bodyTexture;
-	}
-
-	public void setFaceTexture(Texture faceTexture) {
-		this.faceTexture = faceTexture;
-	}
-
-	public void setBigBattleTexture(Texture bigBattleTexture) {
-		this.bigBattleTexture = bigBattleTexture;
-
-	}
-
-	public void setSmallBattleTexture(Texture smallBattleTexture) {
-		this.smallBattleTexture = smallBattleTexture;
 	}
 
 	public void setName(String name) {
@@ -147,37 +124,6 @@ public abstract class Unit implements Comparable<Unit> {
 			// 행동 게이지가 더 작을 때
 			return 1;
 		}
-	}
-
-	public Texture getBodyTexture() {
-		if (bodyTexture == null) {
-			if (this instanceof Hero)
-				bodyTexture = TextureManager.getCharacterBodyTexture(facePath);
-			else
-				bodyTexture = TextureManager.getMonsterBodyTexture(facePath);
-		}
-		return bodyTexture;
-	}
-
-	public Texture getFaceTexture() {
-		if (faceTexture == null) {
-			faceTexture = TextureManager.getFaceTexture(facePath);
-		}
-		return faceTexture;
-	}
-
-	public Texture getBigBattleTexture() {
-		if (bigBattleTexture == null) {
-			bigBattleTexture = TextureManager.getBattleTurnBigTexture(facePath);
-		}
-		return bigBattleTexture;
-	}
-
-	public Texture getSmallBattleTexture() {
-		if (smallBattleTexture == null) {
-			smallBattleTexture = TextureManager.getBattleTurnSmallTexture(facePath);
-		}
-		return smallBattleTexture;
 	}
 
 	public int getPreGague() {

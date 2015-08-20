@@ -6,9 +6,9 @@ import com.mygdx.enums.BuildingTypeEnum;
 
 /**
  * 마을 내부에 존재하는 건물
- *
+ * 
  * @author Velmont
- *
+ * 
  */
 public class Building {
 	private String buildingName;
@@ -16,7 +16,8 @@ public class Building {
 	private String buildingPath;
 	private List<String> buildingNpc;
 	private List<String> gameObject;
-	private String sceneName; 
+	private String sceneName;
+	private boolean isOverlapScene;
 
 	public String getBuildingName() {
 		return buildingName;
@@ -49,10 +50,10 @@ public class Building {
 	public void setBuildingNpc(List<String> buildingNpc) {
 		this.buildingNpc = buildingNpc;
 	}
-	public List<String> getGameObject(){
+	public List<String> getGameObject() {
 		return gameObject;
 	}
-	
+
 	public void setGameObject(List<String> gameObject) {
 		this.gameObject = gameObject;
 	}
@@ -63,5 +64,13 @@ public class Building {
 
 	public void setSceneName(String sceneName) {
 		this.sceneName = sceneName;
+	}
+
+	public boolean isOverlapScene() {
+		return isOverlapScene;
+	}
+
+	public void setOverlapScene(boolean isOverlapScene) {
+		this.isOverlapScene = isOverlapScene;
 	}
 }

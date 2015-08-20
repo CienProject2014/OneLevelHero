@@ -86,18 +86,17 @@ public class MonsterStage extends BaseOneLevelStage {
 	}
 
 	private Image getMonsterImage() {
-		Texture monsterTexture = monster.getBodyTexture();
-		return new Image(monsterTexture);
+		return new Image(TextureManager.getMonsterTexture(monster.getFacePath()));
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
 		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
-			return new TextureRegionDrawable(new TextureRegion(
-					StaticAssets.assetManager.get(StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
+			return new TextureRegionDrawable(new TextureRegion(StaticAssets.assetManager.get(
+					StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
 		} else {
-			return new TextureRegionDrawable(
-					new TextureRegion(TextureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+			return new TextureRegionDrawable(new TextureRegion(TextureManager.getBackgroundTexture(fieldManager
+					.getFieldType().toString())));
 		}
 	}
 

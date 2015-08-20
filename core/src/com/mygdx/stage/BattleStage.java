@@ -30,6 +30,7 @@ import com.mygdx.enums.MonsterEnum;
 import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.model.item.Weapon;
 import com.mygdx.model.unit.Hero;
@@ -530,16 +531,18 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private void makeBattleTurnImage() {
-		turnBigImageMap.put(selectedMonster.getFacePath(), new Image(selectedMonster.getBigBattleTexture()));
+		turnBigImageMap.put(selectedMonster.getFacePath(),
+				new Image(TextureManager.getBigBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			turnBigImageMap.put(hero.getFacePath(), new Image(hero.getBigBattleTexture()));
+			turnBigImageMap.put(hero.getFacePath(), new Image(TextureManager.getBigBattleImage(hero.getFacePath())));
 		}
-		turnSmallImageMap.put(selectedMonster.getFacePath(), new Image(selectedMonster.getSmallBattleTexture()));
+		turnSmallImageMap.put(selectedMonster.getFacePath(),
+				new Image(TextureManager.getSmallBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			turnSmallImageMap.put(hero.getFacePath(), new Image(hero.getSmallBattleTexture()));
+			turnSmallImageMap
+					.put(hero.getFacePath(), new Image(TextureManager.getSmallBattleImage(hero.getFacePath())));
 		}
 	}
-
 	private void makeRButton() {
 		// 이미지 추가
 		attackButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_attack"),
