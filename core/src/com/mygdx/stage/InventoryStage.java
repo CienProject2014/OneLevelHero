@@ -438,6 +438,9 @@ public class InventoryStage extends BaseOverlapStage {
 					setCompositeItemVisibilty(equipButtonList.get(index), DEFAULT_VISIBILTY);
 					showVoidEquipButton(sceneConstants);
 					setVoidItemImageAndLabel();
+					showEquipmentScene(sceneConstants, bagManager, pageNumber);
+					setActivateLine(sceneConstants);
+					addEquipButtonListener();
 				}
 			});
 			unEquipButtonList.get(i).addListener(new InputListener() {
@@ -461,6 +464,9 @@ public class InventoryStage extends BaseOverlapStage {
 					setCompositeItemVisibilty(unEquipButtonList.get(index), DEFAULT_VISIBILTY);
 					showVoidEquipButton(sceneConstants);
 					setVoidItemImageAndLabel();
+					showEquipmentScene(sceneConstants, bagManager, pageNumber);
+					setActivateLine(sceneConstants);
+					addEquipButtonListener();
 				}
 			});
 
@@ -485,6 +491,9 @@ public class InventoryStage extends BaseOverlapStage {
 					setCompositeItemVisibilty(dropButtonList.get(index), DEFAULT_VISIBILTY);
 					showVoidEquipButton(sceneConstants);
 					setVoidItemImageAndLabel();
+					showEquipmentScene(sceneConstants, bagManager, pageNumber);
+					setActivateLine(sceneConstants);
+					addEquipButtonListener();
 				}
 			});
 		}

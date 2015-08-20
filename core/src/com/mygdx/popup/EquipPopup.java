@@ -2,6 +2,7 @@ package com.mygdx.popup;
 
 import java.util.HashMap;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
@@ -17,9 +18,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ItemEnum;
 import com.mygdx.factory.ListenerFactory;
-import com.mygdx.listener.GameObjectButtonListener;
 import com.mygdx.listener.HidingClickListener;
-import com.mygdx.model.event.GameObject;
 import com.mygdx.model.item.Equipment;
 import com.mygdx.model.unit.Hero;
 
@@ -27,7 +26,6 @@ public class EquipPopup extends Dialog {
 	private AtlasUiAssets atlasUiAssets;
 	private UiComponentAssets uiComponentAssets;
 	private ListenerFactory listenerFactory;
-	private GameObject gameObject;
 	private Hero currentSelectedHero;
 	private Equipment equipment;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameObjectPopup");
@@ -82,21 +80,55 @@ public class EquipPopup extends Dialog {
 	}
 
 	private void setButton(AtlasUiAssets atlasUiAssets, UiComponentAssets uiComponentAssets, final Equipment equipment) {
+		final Dialog thisDialog = this;
 		if (equipment.getItemType().equals(ItemEnum.HANDGRIP)) {
 			TextButtonStyle buttonStyle = new TextButtonStyle(atlasUiAssets.getAtlasUiFile("popupui_button2"),
 					atlasUiAssets.getAtlasUiFile("popupui_acbutton2"),
 					atlasUiAssets.getAtlasUiFile("popupui_acbutton2"), uiComponentAssets.getFont());
 			TextButton leftHandButton = new TextButton("왼손", buttonStyle);
-			final Dialog thisDialog = this;
 			leftHandButton.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					if (currentSelectedHero.getInventory().isLeftHandGripUsable(equipment)) {
-						currentSelectedHero.equipLeftHandGrip(equipment.getItemPath());
-					} else {
-
+					ItemEnum.HandgripState leftHandgripState = currentSelectedHero.getInventory()
+							.checkLeftHandGripState();
+					switch (leftHandgripState) {
+						case TWO_ZERO :
+							currentSelectedHero.unEquipLeftHandGrip();
+							currentSelectedHero.equipLeftHandGrip(equipment.getItemPath());
+							break;
+						case ONE_ZERO :
+							currentSelectedHero.unEquipLeftHandGrip();
+							currentSelectedHero.equipLeftHandGrip(equipment.getItemPath());
+							break;
+						case ONE_ONE :
+							if (equipment.isTwoHanded()) {
+								currentSelectedHero.unEquipRightHandGrip();
+								currentSelectedHero.unEquipLeftHandGrip();
+								currentSelectedHero.equipLeftHandGrip(equipment.getItemPath());
+							} else {
+								currentSelectedHero.unEquipLeftHandGrip();
+								currentSelectedHero.equipLeftHandGrip(equipment.getItemPath());
+							}
+						case ZERO_ZERO :
+							currentSelectedHero.equipLeftHandGrip(equipment.getItemPath());
+							break;
+						case ZERO_ONE :
+							if (equipment.isTwoHanded()) {
+								currentSelectedHero.unEquipRightHandGrip();
+								currentSelectedHero.equipLeftHandGrip(equipment.getItemPath());
+							} else {
+								currentSelectedHero.equipLeftHandGrip(equipment.getItemPath());
+							}
+							break;
+						case ZERO_TWO :
+							currentSelectedHero.unEquipRightHandGrip();
+							currentSelectedHero.equipLeftHandGrip(equipment.getItemPath());
+							break;
+						default :
+							Gdx.app.log("EquipPopup", "rightHandgripState 정보 오류");
+							break;
 					}
-					thisDialog.remove();
+					thisDialog.setVisible(false);
 				}
 			});
 
@@ -104,10 +136,44 @@ public class EquipPopup extends Dialog {
 			rightHandButton.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					if (currentSelectedHero.getInventory().isRightHandGripUsable(equipment)) {
-						currentSelectedHero.equipRightHandGrip(equipment.getItemPath());
-					} else {
-
+					ItemEnum.HandgripState rightHandgripState = currentSelectedHero.getInventory()
+							.checkRightHandGripState();
+					switch (rightHandgripState) {
+						case TWO_ZERO :
+							currentSelectedHero.unEquipRightHandGrip();
+							currentSelectedHero.equipRightHandGrip(equipment.getItemPath());
+							break;
+						case ONE_ZERO :
+							currentSelectedHero.unEquipRightHandGrip();
+							currentSelectedHero.equipRightHandGrip(equipment.getItemPath());
+							break;
+						case ZERO_ZERO :
+							currentSelectedHero.equipRightHandGrip(equipment.getItemPath());
+							break;
+						case ONE_ONE :
+							if (equipment.isTwoHanded()) {
+								currentSelectedHero.unEquipRightHandGrip();
+								currentSelectedHero.unEquipLeftHandGrip();
+								currentSelectedHero.equipRightHandGrip(equipment.getItemPath());
+							} else {
+								currentSelectedHero.unEquipRightHandGrip();
+								currentSelectedHero.equipRightHandGrip(equipment.getItemPath());
+							}
+						case ZERO_ONE :
+							if (equipment.isTwoHanded()) {
+								currentSelectedHero.unEquipLeftHandGrip();
+								currentSelectedHero.equipRightHandGrip(equipment.getItemPath());
+							} else {
+								currentSelectedHero.equipRightHandGrip(equipment.getItemPath());
+							}
+							break;
+						case ZERO_TWO :
+							currentSelectedHero.unEquipLeftHandGrip();
+							currentSelectedHero.equipRightHandGrip(equipment.getItemPath());
+							break;
+						default :
+							Gdx.app.log("EquipPopup", "rightHandgripState 정보 오류");
+							break;
 					}
 					thisDialog.setVisible(false);
 				}
@@ -132,9 +198,26 @@ public class EquipPopup extends Dialog {
 			ImageButton cancelButton = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_button_no"),
 					atlasUiAssets.getAtlasUiFile("popupui_acbutton_no"));
 			cancelButton.addListener(new HidingClickListener(this));
-			GameObjectButtonListener gameObjectButtonListener = listenerFactory.getGameObjectButtonListener();
-			gameObjectButtonListener.setGameObject(gameObject);
-			okayButton.addListener(gameObjectButtonListener);
+			okayButton.addListener(new ClickListener() {
+				public void clicked(InputEvent event, float x, float y) {
+					if (equipment.getItemType().equals(ItemEnum.CLOTHES)) {
+						if (!currentSelectedHero.getInventory().getClothes().isEmpty()) {
+							currentSelectedHero.unEquipClothes();
+							currentSelectedHero.equipClothes(equipment.getItemPath());
+						} else {
+							currentSelectedHero.equipClothes(equipment.getItemPath());
+						}
+					} else {
+						if (!currentSelectedHero.getInventory().getAccessory().isEmpty()) {
+							currentSelectedHero.unEquipAccessory();
+							currentSelectedHero.equipAccessory(equipment.getItemPath());
+						} else {
+							currentSelectedHero.equipAccessory(equipment.getItemPath());
+						}
+					}
+					thisDialog.setVisible(false);
+				}
+			});
 
 			getButtonTable().bottom();
 			getButtonTable().add(okayButton).height(uiConstantsMap.get("buttonHeight"))
@@ -155,7 +238,7 @@ public class EquipPopup extends Dialog {
 				questionLabel.setText("어느 손에 장착하시겠습니까?");
 				break;
 			default :
-				questionLabel.setText("장비를 장착해제하시니까?");
+				questionLabel.setText("장비를 장착하시겠습니까?");
 				break;
 		}
 		questionLabel.setAlignment(Align.center);
@@ -181,14 +264,6 @@ public class EquipPopup extends Dialog {
 	public float getPrefHeight() {
 		// force dialog height
 		return 240f;
-	}
-
-	public GameObject getGameObject() {
-		return gameObject;
-	}
-
-	public void setGameObject(GameObject gameObject) {
-		this.gameObject = gameObject;
 	}
 
 	public Equipment getEquipment() {

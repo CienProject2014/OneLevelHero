@@ -25,4 +25,8 @@ public enum ItemEnum {
 	public enum Inventory {
 		EQUIPMENT, CONSUMABLES, ETC_ITEM;
 	}
+
+	public enum HandgripState {
+		ZERO_ZERO, ZERO_ONE, ONE_ZERO, ONE_ONE, TWO_ZERO, ZERO_TWO;
+	}
 }
