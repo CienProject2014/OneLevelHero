@@ -1,0 +1,22 @@
+{
+  "caravanserai": {
+    "forkName": "여행자의 쉼터",
+    "sceneName": "caravanserai_scene"
+  },
+  "retreat_stone": {
+    "forkName": "회군의 바위",
+    "sceneName": "cobweb_scene"
+  },
+  "dogbenefit_camp": {
+    "forkName": "도그베네핏 야영지",
+    "sceneName": "dogbenefit_camp_scene"
+  },
+  "cemetery": {
+    "forkName": "공동묘지",
+    "sceneName": "cemetery_scene"
+  },
+  "statue_of_golden_beetle": {
+    "forkName": "황금 풍뎅이 석상",
+    "sceneName": "statue_of_golden_beetle_scene"
+  }
+}
