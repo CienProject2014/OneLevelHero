@@ -4,6 +4,21 @@
     "sImages": [
       {
         "itemIdentifier": "background",
+        "x": -0.000034332275,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "statusuibackground"
+      },
+      {
+        "itemIdentifier": "base",
+        "x": 33.999966,
+        "y": 34,
+        "zIndex": 1,
         "layerName": "Default",
         "tint": [
           1,
@@ -15,9 +30,9 @@
       },
       {
         "itemIdentifier": "exp_gauge",
-        "x": 60,
+        "x": 59.99996,
         "y": 281,
-        "zIndex": 10,
+        "zIndex": 9,
         "layerName": "Default",
         "tint": [
           1,
@@ -29,9 +44,9 @@
       },
       {
         "itemIdentifier": "exp",
-        "x": 122,
+        "x": 121.99996,
         "y": 292,
-        "zIndex": 11,
+        "zIndex": 10,
         "layerName": "Default",
         "tint": [
           1,
@@ -42,9 +57,24 @@
         "imageName": "statusuiexp"
       },
       {
+        "itemIdentifier": "player_image",
+        "x": 36.499954,
+        "y": 321.49994,
+        "zIndex": 31,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "statusuililith"
+      },
+      {
         "itemIdentifier": "level",
+        "x": -0.000030517578,
         "y": 281,
-        "zIndex": 27,
+        "zIndex": 32,
         "layerName": "Default",
         "tint": [
           1,
@@ -57,10 +87,10 @@
     ],
     "sLabels": [
       {
-        "itemIdentifier": "fatigue",
-        "x": 70,
+        "itemIdentifier": "workaholic_number_label",
+        "x": 199.99997,
         "y": 890,
-        "zIndex": 1,
+        "zIndex": 2,
         "layerName": "Default",
         "tint": [
           1,
@@ -70,14 +100,15 @@
         ],
         "style": "MaleMountain",
         "size": 12,
+        "align": 8,
         "width": 210,
         "height": 40
       },
       {
-        "itemIdentifier": "experience",
-        "x": 185,
-        "y": 290,
-        "zIndex": 12,
+        "itemIdentifier": "exp_points_label",
+        "x": 250,
+        "y": 305,
+        "zIndex": 11,
         "layerName": "Default",
         "tint": [
           1,
@@ -91,9 +122,26 @@
         "height": 22
       },
       {
-        "itemIdentifier": "name",
-        "x": 310,
-        "y": 155,
+        "itemIdentifier": "name_label",
+        "x": 309.99997,
+        "y": 165,
+        "zIndex": 16,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 250,
+        "height": 50
+      },
+      {
+        "itemIdentifier": "hp_label",
+        "x": 309.99997,
+        "y": 90,
         "zIndex": 17,
         "layerName": "Default",
         "tint": [
@@ -108,27 +156,10 @@
         "height": 50
       },
       {
-        "itemIdentifier": "health_point_state",
-        "x": 310,
-        "y": 80.000015,
-        "zIndex": 18,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "style": "MaleMountain",
-        "size": 12,
-        "width": 250,
-        "height": 50
-      },
-      {
         "itemIdentifier": "fire_resistance",
-        "x": 945,
-        "y": 88.00001,
-        "zIndex": 19,
+        "x": 944.99994,
+        "y": 88,
+        "zIndex": 18,
         "layerName": "Default",
         "tint": [
           1,
@@ -144,8 +175,8 @@
       {
         "itemIdentifier": "water_resistance",
         "x": 1248,
-        "y": 88.00001,
-        "zIndex": 20,
+        "y": 88,
+        "zIndex": 19,
         "layerName": "Default",
         "tint": [
           1,
@@ -162,7 +193,7 @@
         "itemIdentifier": "electric_resistance",
         "x": 1551,
         "y": 88,
-        "zIndex": 21,
+        "zIndex": 20,
         "layerName": "Default",
         "tint": [
           1,
@@ -176,9 +207,26 @@
         "height": 50
       },
       {
-        "itemIdentifier": "attack",
+        "itemIdentifier": "atk",
         "x": 1265,
         "y": 842,
+        "zIndex": 21,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 160,
+        "height": 50
+      },
+      {
+        "itemIdentifier": "matk",
+        "x": 1265,
+        "y": 717,
         "zIndex": 22,
         "layerName": "Default",
         "tint": [
@@ -193,9 +241,9 @@
         "height": 50
       },
       {
-        "itemIdentifier": "magic_attack",
+        "itemIdentifier": "def",
         "x": 1265,
-        "y": 717,
+        "y": 592,
         "zIndex": 23,
         "layerName": "Default",
         "tint": [
@@ -210,9 +258,9 @@
         "height": 50
       },
       {
-        "itemIdentifier": "defense",
+        "itemIdentifier": "mdef",
         "x": 1265,
-        "y": 592,
+        "y": 467,
         "zIndex": 24,
         "layerName": "Default",
         "tint": [
@@ -227,9 +275,9 @@
         "height": 50
       },
       {
-        "itemIdentifier": "magic_defense",
+        "itemIdentifier": "spd",
         "x": 1265,
-        "y": 467,
+        "y": 342,
         "zIndex": 25,
         "layerName": "Default",
         "tint": [
@@ -244,9 +292,9 @@
         "height": 50
       },
       {
-        "itemIdentifier": "speed",
-        "x": 1265,
-        "y": 342,
+        "itemIdentifier": "workaholic_name_label",
+        "x": 50.999992,
+        "y": 888,
         "zIndex": 26,
         "layerName": "Default",
         "tint": [
@@ -257,14 +305,15 @@
         ],
         "style": "MaleMountain",
         "size": 12,
-        "width": 160,
-        "height": 50
+        "align": 8,
+        "width": 140,
+        "height": 40
       },
       {
-        "itemIdentifier": "level",
-        "x": 44,
+        "itemIdentifier": "level_label",
+        "x": 43.99997,
         "y": 330,
-        "zIndex": 28,
+        "zIndex": 33,
         "layerName": "Default",
         "tint": [
           1,
@@ -283,7 +332,7 @@
         "itemIdentifier": "worldmap_button",
         "x": 1720,
         "y": 34,
-        "zIndex": 2,
+        "zIndex": 3,
         "layerName": "Default",
         "tint": [
           1,
@@ -334,7 +383,7 @@
         "itemIdentifier": "ending_button",
         "x": 1722,
         "y": 157,
-        "zIndex": 3,
+        "zIndex": 4,
         "layerName": "Default",
         "tint": [
           1,
@@ -409,48 +458,9 @@
         }
       },
       {
-        "itemIdentifier": "change_01",
+        "itemIdentifier": "change04",
         "x": 1743,
         "y": 340,
-        "zIndex": 4,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "statusuiparty",
-              "itemIdentifier": "character_image"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "change_02",
-        "x": 1743,
-        "y": 483,
         "zIndex": 5,
         "layerName": "Default",
         "tint": [
@@ -469,8 +479,7 @@
                 1,
                 1
               ],
-              "imageName": "statusuiparty",
-		"itemIdentifier": "character_image"
+              "imageName": "statusuiparty"
             }
           ],
           "layers": [
@@ -487,9 +496,9 @@
         }
       },
       {
-        "itemIdentifier": "change_03",
+        "itemIdentifier": "change03",
         "x": 1743,
-        "y": 626,
+        "y": 483,
         "zIndex": 6,
         "layerName": "Default",
         "tint": [
@@ -508,8 +517,7 @@
                 1,
                 1
               ],
-              "imageName": "statusuiparty",
-	"itemIdentifier": "character_image"
+              "imageName": "statusuiparty"
             }
           ],
           "layers": [
@@ -526,9 +534,9 @@
         }
       },
       {
-        "itemIdentifier": "change_04",
+        "itemIdentifier": "change02",
         "x": 1743,
-        "y": 769,
+        "y": 626,
         "zIndex": 7,
         "layerName": "Default",
         "tint": [
@@ -547,8 +555,7 @@
                 1,
                 1
               ],
-              "imageName": "statusuiparty",
-		"itemIdentifier": "character_image"
+              "imageName": "statusuiparty"
             }
           ],
           "layers": [
@@ -565,10 +572,48 @@
         }
       },
       {
-        "itemIdentifier": "back_button",
-        "x": 34,
+        "itemIdentifier": "change01",
+        "x": 1743,
+        "y": 769,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuiparty"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "back_tab",
+        "x": 33.999966,
         "y": 960,
-        "zIndex": 13,
+        "zIndex": 12,
         "layerName": "Default",
         "tint": [
           1,
@@ -616,10 +661,10 @@
         }
       },
       {
-        "itemIdentifier": "attribute",
-        "x": 308,
+        "itemIdentifier": "status_tab",
+        "x": 307.99997,
         "y": 960,
-        "zIndex": 14,
+        "zIndex": 13,
         "layerName": "Default",
         "tint": [
           1,
@@ -667,10 +712,10 @@
         }
       },
       {
-        "itemIdentifier": "inventory",
-        "x": 839,
+        "itemIdentifier": "inventory_tab",
+        "x": 838.99994,
         "y": 960,
-        "zIndex": 15,
+        "zIndex": 14,
         "layerName": "Default",
         "tint": [
           1,
@@ -718,10 +763,10 @@
         }
       },
       {
-        "itemIdentifier": "skill",
+        "itemIdentifier": "skill_tab",
         "x": 1370,
         "y": 960,
-        "zIndex": 16,
+        "zIndex": 15,
         "layerName": "Default",
         "tint": [
           1,
@@ -764,6 +809,146 @@
             },
             {
               "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "change_image01",
+        "x": 1743,
+        "y": 769,
+        "zIndex": 27,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "image_01",
+              "scaleX": 10,
+              "scaleY": 10,
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "1x1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "change_image02",
+        "x": 1743,
+        "y": 626,
+        "zIndex": 28,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "image_01",
+              "scaleX": 10,
+              "scaleY": 10,
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "1x1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "change_image03",
+        "x": 1743,
+        "y": 483,
+        "zIndex": 29,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "image_01",
+              "scaleX": 10,
+              "scaleY": 10,
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "1x1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "change_image04",
+        "x": 1743,
+        "y": 340,
+        "zIndex": 30,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "image_01",
+              "scaleX": 10,
+              "scaleY": 10,
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "1x1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
             }
           ]
         }
