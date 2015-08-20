@@ -1,9 +1,12 @@
 package com.mygdx.unitStrategy;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
+import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Unit;
 
-public class MonsterAttackStrategy implements AttackStrategy {
+public class MonsterBattleStrategy implements BattleStrategy {
 	@Override
 	public void attack(Unit attackMonster, Unit defender, int[][] hitArea) {
 		int attackDmg = attackMonster.getStatus().getAttack();
@@ -22,7 +25,7 @@ public class MonsterAttackStrategy implements AttackStrategy {
 	}
 
 	@Override
-	public void skillAttack(Unit attackMonster, Unit defender, String skillName) {
-		Gdx.app.log("Monster", attackMonster.getName() + "이(가) " + skillName + "을(를) 사용하였습니다!");
+	public void skill(Unit attackMonster, ArrayList<Unit> targetList, Skill skill) {
+		Gdx.app.log("Monster", attackMonster.getName() + "이(가) " + skill.getName() + "을(를) 사용하였습니다!");
 	}
 }

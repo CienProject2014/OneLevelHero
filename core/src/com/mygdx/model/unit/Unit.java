@@ -6,11 +6,11 @@ import java.util.Map;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.battle.Skill;
-import com.mygdx.unitStrategy.AttackStrategy;
+import com.mygdx.unitStrategy.BattleStrategy;
 import com.mygdx.unitStrategy.UnusualConditionStrategy;
 
 public abstract class Unit implements Comparable<Unit> {
-	private AttackStrategy attackStrategy;
+	private BattleStrategy battleStrategy;
 	private UnusualConditionStrategy unusualConditionStrategy;
 	private String facePath;
 	private String name;
@@ -189,19 +189,19 @@ public abstract class Unit implements Comparable<Unit> {
 	}
 
 	public void attack(Unit opponent, int[][] hitArea) {
-		attackStrategy.attack(this, opponent, hitArea);
+		battleStrategy.attack(this, opponent, hitArea);
 	}
 
-	public void skillAttack(Unit opponent, String skillName) {
-		attackStrategy.skillAttack(this, opponent, skillName);
+	public void useSkill(ArrayList<Unit> targetList, Skill skill) {
+		battleStrategy.skill(this, targetList, skill);
 	}
 
-	public AttackStrategy getAttackStrategy() {
-		return attackStrategy;
+	public BattleStrategy getAttackStrategy() {
+		return battleStrategy;
 	}
 
-	public void setAttackStrategy(AttackStrategy attackStrategy) {
-		this.attackStrategy = attackStrategy;
+	public void setAttackStrategy(BattleStrategy attackStrategy) {
+		this.battleStrategy = attackStrategy;
 	}
 
 	public UnusualConditionStrategy getUnusualConditionStrategy() {

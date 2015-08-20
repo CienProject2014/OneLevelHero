@@ -11,7 +11,7 @@ public class Status {
 	private int defense;
 	private int magicDefense;
 	private int level;
-	private int healthPoint; // 현재 체력
+	private int hp; // 현재 체력
 	private int maxHealthPoint; // 최대 체력
 	private int speed; // speed
 	private int experience; // 경험치
@@ -20,8 +20,8 @@ public class Status {
 	private int waterResistance; // water
 	private int electricResistance; // electric
 
-	public String getHealthPointState() {
-		return healthPoint + "/" + maxHealthPoint;
+	public String getHpState() {
+		return hp + "/" + maxHealthPoint;
 	}
 
 	public String getExperiencePointState() {
@@ -61,11 +61,11 @@ public class Status {
 	}
 
 	public int getHp() {
-		return healthPoint;
+		return hp;
 	}
 
 	public void setHp(int healthPoint) {
-		this.healthPoint = healthPoint;
+		this.hp = healthPoint;
 	}
 
 	public int getMaxHp() {
@@ -98,22 +98,6 @@ public class Status {
 
 	public void setMaxExperience(int maxExperience) {
 		this.maxExperience = maxExperience;
-	}
-
-	public int getHealthPoint() {
-		return healthPoint;
-	}
-
-	public void setHealthPoint(int healthPoint) {
-		this.healthPoint = healthPoint;
-	}
-
-	public int getMaxHealthPoint() {
-		return maxHealthPoint;
-	}
-
-	public void setMaxHealthPoint(int maxHealthPoint) {
-		this.maxHealthPoint = maxHealthPoint;
 	}
 
 	public int getFireResistance() {
@@ -152,7 +136,7 @@ public class Status {
 	public List<String> getStatusList() {
 		return Arrays.asList(new String[] { String.valueOf(attack), String.valueOf(defense),
 				String.valueOf(electricResistance), getExperiencePointState(), String.valueOf(fireResistance),
-				getHealthPointState(), String.valueOf(level), String.valueOf(magicAttack), String.valueOf(magicDefense),
+				getHpState(), String.valueOf(level), String.valueOf(magicAttack), String.valueOf(magicDefense),
 				String.valueOf(speed), String.valueOf(waterResistance) });
 	}
 

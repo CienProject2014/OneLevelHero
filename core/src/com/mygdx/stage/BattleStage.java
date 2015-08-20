@@ -439,7 +439,7 @@ public class BattleStage extends BaseOneLevelStage {
 					gridHitbox.showGrid();
 					Gdx.app.log("BattleStage", "gridHitbox를 표시합니다");
 				} else {
-					battleManager.userSkill(currentAttackUnit, "cut_01");
+					battleManager.useSkill(currentAttackUnit, "cut_01");
 				}
 				isSkill = true;
 				BattleScreen.showSkillStage = true;
@@ -512,7 +512,7 @@ public class BattleStage extends BaseOneLevelStage {
 					if (!isSkill) {
 						battleManager.attack(currentAttackUnit, selectedMonster, gridHitbox.getPreviousHitArea());
 					} else {
-						battleManager.userSkill(currentAttackUnit, "cut_01");
+						battleManager.useSkill(currentAttackUnit, "cut_01");
 						isSkill = false;
 					}
 					gridHitbox.hideGrid();
