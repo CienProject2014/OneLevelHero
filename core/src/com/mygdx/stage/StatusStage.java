@@ -36,7 +36,7 @@ import com.uwsoft.editor.renderer.data.LabelVO;
 public class StatusStage extends BaseOverlapStage {
 	public static final String SCENE_NAME = "status_scene";
 	public final String CHARACTER_STATUS_IMAGE = "character_status_image";
-	public final String CHARACTER_IMAGE = "character_image";
+	public final String CHARACTER_IMAGE = "image_01";
 	@Autowired
 	private ConstantsAssets constantsAssets;
 	@Autowired
@@ -63,6 +63,7 @@ public class StatusStage extends BaseOverlapStage {
 		if (!StaticAssets.rm.searchSceneNames(SCENE_NAME)) {
 			StaticAssets.rm.initScene(SCENE_NAME);
 		}
+
 		initSceneLoader(StaticAssets.rm);
 		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
@@ -77,7 +78,7 @@ public class StatusStage extends BaseOverlapStage {
 	}
 
 	private void setTabButton() {
-		inventoryButton = sceneLoader.getRoot().getCompositeById("inventory");
+		inventoryButton = sceneLoader.getRoot().getCompositeById("inventory_tab");
 		inventoryButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -93,7 +94,7 @@ public class StatusStage extends BaseOverlapStage {
 	}
 
 	private void setButton() {
-		backButton = sceneLoader.getRoot().getCompositeById("back_button");
+		backButton = sceneLoader.getRoot().getCompositeById("back_tab");
 	}
 
 	private void addListener() {
@@ -111,12 +112,17 @@ public class StatusStage extends BaseOverlapStage {
 
 	private void setLabel(PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
 		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
-		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name");
+		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name_label");
 		nameLabel.setText(currentSelectedHero.getName());
 		nameLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		nameLabel.setFontScale(1.0f);
 		nameLabel.setTouchable(Touchable.disabled);
-		LabelItem fatigueLabel = sceneLoader.getRoot().getLabelById("fatigue");
+		LabelItem fatigue = sceneLoader.getRoot().getLabelById("workaholic_name_label");
+		fatigue.setText("피로도");
+		fatigue.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
+		fatigue.setFontScale(1.0f);
+
+		LabelItem fatigueLabel = sceneLoader.getRoot().getLabelById("workaholic_number_label");
 		fatigueLabel.setText(String.valueOf(partyManager.getFatigue()));
 		fatigueLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		fatigueLabel.setFontScale(1.0f);

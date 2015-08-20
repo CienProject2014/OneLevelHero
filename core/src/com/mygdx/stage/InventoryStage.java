@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
@@ -89,7 +90,6 @@ public class InventoryStage extends BaseOverlapStage {
 	private Camera cam;
 
 	public Stage makeStage() {
-		sceneConstants = constantsAssets.getSceneConstants("inventory_scene");
 
 		if (!StaticAssets.rm.searchSceneNames(SCENE_NAME)) {
 			StaticAssets.rm.initScene(SCENE_NAME);
@@ -97,30 +97,38 @@ public class InventoryStage extends BaseOverlapStage {
 		initSceneLoader(StaticAssets.rm);
 		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
+
+		sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
 		currentSelectedHero = partyManager.getCurrentSelectedHero();
-		setCamera();
+
 		setBackground(sceneConstants);
-		setVoidItemDescription(sceneConstants);
-		setEquipmentScene(sceneConstants, pageNumber);
-		setVoidEquipButton(sceneConstants);
+		showVoidEquipButton(sceneConstants);
+		showVoidItemDescription(sceneConstants);
+
+		showEquipmentScene(sceneConstants, bagManager, pageNumber);
 		setActivateLine(sceneConstants);
+		addEquipButtonListener();
+
 		setPageButton(sceneConstants);
 		setPageLight(sceneConstants, pageNumber);
+
 		setCharacterStatusImage(partyManager, sceneConstants);
+
 		setTabButton(screenFactory, movingManager);
 		setSubTabButton(ItemEnum.Inventory.EQUIPMENT);
-		addButtonListener();
+
+		setCamera();
 		return this;
 	}
 
 	public void act(float delta) {
-		setEquipmentScene(sceneConstants, pageNumber);
+		showEquipmentScene(sceneConstants, bagManager, pageNumber);
 		setSubTabButton(ItemEnum.Inventory.EQUIPMENT);
 		setPageLight(sceneConstants, pageNumber);
 		setCharacterStatusImage(partyManager, sceneConstants);
 	}
 
-	private void setVoidEquipButton(Map<String, Array<String>> sceneConstants) {
+	private void showVoidEquipButton(Map<String, Array<String>> sceneConstants) {
 		equipButtonList = new ArrayList<>(6);
 		unEquipButtonList = new ArrayList<>(6);
 		dropButtonList = new ArrayList<>(6);
@@ -139,42 +147,7 @@ public class InventoryStage extends BaseOverlapStage {
 		}
 	}
 
-	private void setEquipButton(final int index, final Map<Integer, Equipment> itemInfo,
-			final UiComponentAssets uiComponentAssets, final AtlasUiAssets atlasUiAssets,
-			final ListenerFactory listenerFactory) {
-		setCompositeItemVisibilty(equipButtonList.get(index), DEFAULT_VISIBILTY);
-		setCompositeItemVisibilty(unEquipButtonList.get(index), DEFAULT_VISIBILTY);
-		setCompositeItemVisibilty(dropButtonList.get(index), DEFAULT_VISIBILTY);
-
-		if (isFirstPage()) {
-			if (index < 4) {
-				if (itemInfo.get(index).getItemPath().equals("empty_item")) {
-					equipButtonList.get(index).setVisible(false);
-					equipButtonList.get(index).setTouchable(Touchable.disabled);
-					unEquipButtonList.get(index).setVisible(false);
-					unEquipButtonList.get(index).setTouchable(Touchable.disabled);
-					dropButtonList.get(index).setVisible(false);
-					dropButtonList.get(index).setTouchable(Touchable.disabled);
-				} else {
-					equipButtonList.get(index).setVisible(false);
-					equipButtonList.get(index).setTouchable(Touchable.disabled);
-					unEquipButtonList.get(index).setVisible(true);
-					unEquipButtonList.get(index).setTouchable(Touchable.enabled);
-					dropButtonList.get(index).setVisible(false);
-					dropButtonList.get(index).setTouchable(Touchable.disabled);
-				}
-			} else {
-				equipButtonList.get(index).setVisible(true);
-				equipButtonList.get(index).setTouchable(Touchable.enabled);
-				unEquipButtonList.get(index).setVisible(false);
-				unEquipButtonList.get(index).setTouchable(Touchable.disabled);
-				dropButtonList.get(index).setVisible(true);
-				dropButtonList.get(index).setTouchable(Touchable.enabled);
-			}
-		}
-	}
-
-	private void setVoidItemDescription(Map<String, Array<String>> sceneConstants) {
+	private void showVoidItemDescription(Map<String, Array<String>> sceneConstants) {
 		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name_label");
 		nameLabel.setText("");
 		LabelItem propertyLabel1 = sceneLoader.getRoot().getLabelById("property_label01");
@@ -196,14 +169,13 @@ public class InventoryStage extends BaseOverlapStage {
 		descriptionLabel.setText("");
 	}
 
-	private void setItemDescription(Map<Integer, Equipment> itemInfo, Map<String, Array<String>> sceneConstants,
-			int index) {
+	private void setItemDescription(Map<String, Array<String>> sceneConstants, int index) {
 		if (itemInfo.get(index) == null) {
-			setVoidItemDescription(sceneConstants);
+			showVoidItemDescription(sceneConstants);
 			return;
 		}
 		if (itemInfo.get(index).getItemPath().equals("empty_item")) {
-			setVoidItemDescription(sceneConstants);
+			showVoidItemDescription(sceneConstants);
 			return;
 		}
 		LabelItem labelItem = sceneLoader.getRoot().getLabelById("name_label");
@@ -236,7 +208,13 @@ public class InventoryStage extends BaseOverlapStage {
 
 			LabelItem descriptionLabel = sceneLoader.getRoot().getLabelById("description_label");
 			descriptionLabel.setText(itemInfo.get(index).getDescription());
+			descriptionLabel.setWrap(true);
 			setLabelStyle(descriptionLabel);
+
+			Table labelTable = new Table();
+			// FIXME
+			labelTable.add(descriptionLabel).width(600).left().bottom().padLeft(2750).padBottom(600);
+			addActor(labelTable);
 		}
 	}
 
@@ -278,10 +256,11 @@ public class InventoryStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (pageNumber > 0) {
 					setPageNumber(getPageNumber() - 1);
-					setVoidItemDescription(sceneConstants);
-					setVoidEquipButton(sceneConstants);
+					showVoidItemDescription(sceneConstants);
+					showVoidEquipButton(sceneConstants);
+					showEquipmentScene(sceneConstants, bagManager, pageNumber);
 					setActivateLine(sceneConstants);
-					addButtonListener();
+					addEquipButtonListener();
 				}
 				setCompositeItemVisibilty(leftButton, DEFAULT_VISIBILTY);
 			}
@@ -297,10 +276,11 @@ public class InventoryStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (pageNumber < 3) {
 					setPageNumber(getPageNumber() + 1);
-					setVoidItemDescription(sceneConstants);
-					setVoidEquipButton(sceneConstants);
+					showVoidItemDescription(sceneConstants);
+					showVoidEquipButton(sceneConstants);
+					showEquipmentScene(sceneConstants, bagManager, pageNumber);
 					setActivateLine(sceneConstants);
-					addButtonListener();
+					addEquipButtonListener();
 				}
 				setCompositeItemVisibilty(rightButton, DEFAULT_VISIBILTY);
 			}
@@ -319,13 +299,11 @@ public class InventoryStage extends BaseOverlapStage {
 		}
 	}
 
-	private void setEquipmentScene(Map<String, Array<String>> sceneConstants, int pageNumber) {
-		Array<String> inventoryItemImageList = sceneConstants.get(INVENTORY_ITEM_IMAGE);
-		Array<String> inventoryLabelList = sceneConstants.get(INVENTORY_ITEM_LABEL);
+	private void showEquipmentScene(Map<String, Array<String>> sceneConstant, BagManager bagManager, int pageNumber) {
 		itemInfo = new HashMap<>();
 		for (int i = pageNumber * ITEM_SLOT_SIZE; i < (pageNumber + 1) * ITEM_SLOT_SIZE; i++) {
-			setEquippedItemList(bagManager, inventoryItemImageList, inventoryLabelList, i);
-			setBagItemList(bagManager, inventoryItemImageList, inventoryLabelList, i);
+			setEquippedItemList(sceneConstants, bagManager, i);
+			setBagItemList(sceneConstants, bagManager, i);
 		}
 	}
 
@@ -370,17 +348,63 @@ public class InventoryStage extends BaseOverlapStage {
 									.getCompositeById(activateLineList.get(i));
 							if (i == focusIndex) {
 								activateLineItem.setLayerVisibilty(PRESSED_VISIBILTY, true);
-								setEquipButton(i, itemInfo, uiComponentAssets, atlasUiAssets, listenerFactory);
-								setItemDescription(itemInfo, sceneConstants, i);
+								setEquipButton(i, uiComponentAssets, atlasUiAssets, listenerFactory);
+								setItemDescription(sceneConstants, i);
 							} else {
 								activateLineItem.setLayerVisibilty(PRESSED_VISIBILTY, false);
 								setVoidEquipButton(i, itemInfo, uiComponentAssets, atlasUiAssets, listenerFactory);
 							}
+						} else {
+							final CompositeItem activateLineItem = sceneLoader.getRoot()
+									.getCompositeById(activateLineList.get(i));
+							activateLineItem.setLayerVisibilty(PRESSED_VISIBILTY, false);
+							setVoidEquipButton(i, itemInfo, uiComponentAssets, atlasUiAssets, listenerFactory);
 						}
 					}
 				}
 
 			});
+		}
+	}
+
+	private void setEquipButton(final int index, final UiComponentAssets uiComponentAssets,
+			final AtlasUiAssets atlasUiAssets, final ListenerFactory listenerFactory) {
+		setCompositeItemVisibilty(equipButtonList.get(index), DEFAULT_VISIBILTY);
+		setCompositeItemVisibilty(unEquipButtonList.get(index), DEFAULT_VISIBILTY);
+		setCompositeItemVisibilty(dropButtonList.get(index), DEFAULT_VISIBILTY);
+
+		if (isFirstPage()) {
+			if (index < 4) {
+				if (itemInfo.get(index).getItemPath().equals("empty_item")) {
+					equipButtonList.get(index).setVisible(false);
+					equipButtonList.get(index).setTouchable(Touchable.disabled);
+					unEquipButtonList.get(index).setVisible(false);
+					unEquipButtonList.get(index).setTouchable(Touchable.disabled);
+					dropButtonList.get(index).setVisible(false);
+					dropButtonList.get(index).setTouchable(Touchable.disabled);
+				} else {
+					equipButtonList.get(index).setVisible(false);
+					equipButtonList.get(index).setTouchable(Touchable.disabled);
+					unEquipButtonList.get(index).setVisible(true);
+					unEquipButtonList.get(index).setTouchable(Touchable.enabled);
+					dropButtonList.get(index).setVisible(false);
+					dropButtonList.get(index).setTouchable(Touchable.disabled);
+				}
+			} else {
+				equipButtonList.get(index).setVisible(true);
+				equipButtonList.get(index).setTouchable(Touchable.enabled);
+				unEquipButtonList.get(index).setVisible(false);
+				unEquipButtonList.get(index).setTouchable(Touchable.disabled);
+				dropButtonList.get(index).setVisible(true);
+				dropButtonList.get(index).setTouchable(Touchable.enabled);
+			}
+		} else {
+			equipButtonList.get(index).setVisible(true);
+			equipButtonList.get(index).setTouchable(Touchable.enabled);
+			unEquipButtonList.get(index).setVisible(false);
+			unEquipButtonList.get(index).setTouchable(Touchable.disabled);
+			dropButtonList.get(index).setVisible(true);
+			dropButtonList.get(index).setTouchable(Touchable.enabled);
 		}
 	}
 
@@ -394,9 +418,12 @@ public class InventoryStage extends BaseOverlapStage {
 		dropButtonList.get(index).setTouchable(Touchable.disabled);
 	}
 
-	private void addButtonListener() {
+	private void addEquipButtonListener() {
 		for (int i = 0; i < ITEM_SLOT_SIZE; i++) {
 			final int index = i;
+			equipButtonList.get(i).clearListeners();
+			unEquipButtonList.get(i).clearListeners();
+			dropButtonList.get(i).clearListeners();
 			equipButtonList.get(i).addListener(new InputListener() {
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -416,8 +443,11 @@ public class InventoryStage extends BaseOverlapStage {
 					addActor(equipPopup);
 					equipPopup.setVisible(true);
 					setCompositeItemVisibilty(equipButtonList.get(index), DEFAULT_VISIBILTY);
-					setVoidEquipButton(sceneConstants);
+					showVoidEquipButton(sceneConstants);
 					setVoidItemImageAndLabel();
+					showEquipmentScene(sceneConstants, bagManager, pageNumber);
+					setActivateLine(sceneConstants);
+					addEquipButtonListener();
 				}
 			});
 			unEquipButtonList.get(i).addListener(new InputListener() {
@@ -439,8 +469,11 @@ public class InventoryStage extends BaseOverlapStage {
 					addActor(unEquipPopup);
 					unEquipPopup.setVisible(true);
 					setCompositeItemVisibilty(unEquipButtonList.get(index), DEFAULT_VISIBILTY);
-					setVoidEquipButton(sceneConstants);
+					showVoidEquipButton(sceneConstants);
 					setVoidItemImageAndLabel();
+					showEquipmentScene(sceneConstants, bagManager, pageNumber);
+					setActivateLine(sceneConstants);
+					addEquipButtonListener();
 				}
 			});
 
@@ -463,8 +496,11 @@ public class InventoryStage extends BaseOverlapStage {
 					addActor(dropPopup);
 					dropPopup.setVisible(true);
 					setCompositeItemVisibilty(dropButtonList.get(index), DEFAULT_VISIBILTY);
-					setVoidEquipButton(sceneConstants);
+					showVoidEquipButton(sceneConstants);
 					setVoidItemImageAndLabel();
+					showEquipmentScene(sceneConstants, bagManager, pageNumber);
+					setActivateLine(sceneConstants);
+					addEquipButtonListener();
 				}
 			});
 		}
@@ -511,8 +547,9 @@ public class InventoryStage extends BaseOverlapStage {
 		}
 	}
 
-	private void setEquippedItemList(BagManager bagManager, Array<String> inventoryItemImageList,
-			Array<String> inventoryLabelList, int index) {
+	private void setEquippedItemList(Map<String, Array<String>> sceneConstants, BagManager bagManager, int index) {
+		Array<String> inventoryItemImageList = sceneConstants.get(INVENTORY_ITEM_IMAGE);
+		Array<String> inventoryLabelList = sceneConstants.get(INVENTORY_ITEM_LABEL);
 		Array<String> inventoryList = currentSelectedHero.getInventory().getInventoryList();
 		ImageItem equipPartsLabel = sceneLoader.getRoot().getImageById("character_equip_parts");
 		if (isFirstPage()) {
@@ -535,45 +572,43 @@ public class InventoryStage extends BaseOverlapStage {
 				labelItem.setTouchable(Touchable.disabled);
 				equipPartsLabel.setVisible(true);
 			} else {
-				equipPartsLabel.setVisible(true);
+				setVoidItemImageAndLabel(index);
 			}
 		} else {
 			equipPartsLabel.setVisible(false);
-			itemInfo.put(index, null);
+			setVoidItemImageAndLabel(index);
 		}
 	}
 
-	private void setBagItemList(BagManager bagManager, Array<String> inventoryItemImageList,
-			Array<String> inventoryLabelList, int index) {
+	private void setBagItemList(Map<String, Array<String>> sceneConstants, BagManager bagManager, int index) {
 		if (isFirstPage()) {
 			if (index == 4 || index == 5) {
 				if (bagManager.getEquipmentList().size() > index - NUMBER_OF_EQUIPMENT) {
-					setBagItemImageAndLabel(bagManager, inventoryItemImageList, inventoryLabelList, index);
+					setBagItemImageAndLabel(bagManager, index);
 				} else {
-					setVoidItemImageAndLabel(inventoryItemImageList, inventoryLabelList, index);
 					itemInfo.put(index, null);
+					setVoidItemImageAndLabel(index);
 				}
 			}
 		} else {
 			if (bagManager.getEquipmentList().size() > index - NUMBER_OF_EQUIPMENT) {
-				setBagItemImageAndLabel(bagManager, inventoryItemImageList, inventoryLabelList, index);
+				setBagItemImageAndLabel(bagManager, index);
 			} else {
-				setVoidItemImageAndLabel(inventoryItemImageList, inventoryLabelList, index);
 				itemInfo.put(index, null);
+				setVoidItemImageAndLabel(index);
 			}
 		}
 	}
 
 	private void setVoidItemImageAndLabel() {
-		Array<String> inventoryItemImageList = sceneConstants.get(INVENTORY_ITEM_IMAGE);
-		Array<String> inventoryLabelList = sceneConstants.get(INVENTORY_ITEM_LABEL);
 		for (int i = 0; i < ITEM_SLOT_SIZE; i++) {
-			setVoidItemImageAndLabel(inventoryItemImageList, inventoryLabelList, i);
+			setVoidItemImageAndLabel(i);
 		}
 	}
 
-	private void setVoidItemImageAndLabel(Array<String> inventoryItemImageList, Array<String> inventoryLabelList,
-			int index) {
+	private void setVoidItemImageAndLabel(int index) {
+		Array<String> inventoryItemImageList = sceneConstants.get(INVENTORY_ITEM_IMAGE);
+		Array<String> inventoryLabelList = sceneConstants.get(INVENTORY_ITEM_LABEL);
 		int dividedIndex;
 		if (isFirstPage()) {
 			dividedIndex = index;
@@ -586,8 +621,9 @@ public class InventoryStage extends BaseOverlapStage {
 		labelItem.setVisible(false);
 	}
 
-	private void setBagItemImageAndLabel(BagManager bagManager, Array<String> inventoryItemImageList,
-			Array<String> inventoryLabelList, int index) {
+	private void setBagItemImageAndLabel(BagManager bagManager, int index) {
+		Array<String> inventoryItemImageList = sceneConstants.get(INVENTORY_ITEM_IMAGE);
+		Array<String> inventoryLabelList = sceneConstants.get(INVENTORY_ITEM_LABEL);
 		int dividedIndex;
 		if (isFirstPage()) {
 			dividedIndex = index;

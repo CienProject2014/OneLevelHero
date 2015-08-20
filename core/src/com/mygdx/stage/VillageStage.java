@@ -129,8 +129,8 @@ public class VillageStage extends BaseOverlapStage {
 			shiftbutton_left.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					setCameraState(CameraStateEnum.MOVE_DOWN);
 
+					setCameraState(CameraStateEnum.MOVE_LEFT);
 					cameraManager.setMoveFlag(5);
 				}
 			});

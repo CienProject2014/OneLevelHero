@@ -223,7 +223,7 @@
       },
       {
         "itemIdentifier": "name_label",
-        "x": 1090,
+        "x": 1250,
         "y": 863,
         "zIndex": 18,
         "layerName": "Default",
@@ -240,7 +240,7 @@
       },
       {
         "itemIdentifier": "property_label02",
-        "x": 1090,
+        "x": 1190,
         "y": 688,
         "zIndex": 19,
         "layerName": "Default",
@@ -257,7 +257,7 @@
       },
       {
         "itemIdentifier": "property_label01",
-        "x": 1090,
+        "x": 1190,
         "y": 748,
         "zIndex": 20,
         "layerName": "Default",
@@ -274,7 +274,7 @@
       },
       {
         "itemIdentifier": "stats_label01",
-        "x": 1280,
+        "x": 1380,
         "y": 748,
         "zIndex": 21,
         "layerName": "Default",
@@ -292,7 +292,7 @@
       },
       {
         "itemIdentifier": "stats_label02",
-        "x": 1280,
+        "x": 1380,
         "y": 688,
         "zIndex": 22,
         "layerName": "Default",
@@ -310,8 +310,8 @@
       },
       {
         "itemIdentifier": "description_label",
-        "x": 1090,
-        "y": 196,
+        "x": 0,
+        "y": 0,
         "zIndex": 23,
         "layerName": "Default",
         "tint": [
@@ -322,8 +322,8 @@
         ],
         "style": "MaleMountain",
         "size": 12,
-        "width": 565,
-        "height": 375
+        "width": 600,
+        "height": 300
       }
     ],
     "sComposites": [
@@ -482,8 +482,8 @@
       },
       {
         "itemIdentifier": "up_down02",
-        "x": 1371,
-        "y": 688,
+        "x": 1300,
+        "y": 678,
         "zIndex": 24,
         "layerName": "Default",
         "tint": [
@@ -1063,8 +1063,8 @@
       },
       {
         "itemIdentifier": "up_down01",
-        "x": 1371,
-        "y": 748,
+        "x": 1300,
+        "y": 738,
         "zIndex": 35,
         "layerName": "Default",
         "tint": [

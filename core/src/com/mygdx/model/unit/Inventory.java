@@ -3,6 +3,7 @@ package com.mygdx.model.unit;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.enums.ItemEnum;
+import com.mygdx.enums.ItemEnum.HandgripState;
 import com.mygdx.model.item.Equipment;
 
 public class Inventory {
@@ -43,17 +44,49 @@ public class Inventory {
 		this.rightHandGrip = rightHandGrip;
 	}
 
-	public boolean isLeftHandGripUsable(Equipment usingLeftHandGrip) {
-		if (usingLeftHandGrip.isEmpty()) {
-			return true;
-		} else {
-			if (usingLeftHandGrip.isTwoHanded()) {
-				return false;
+	public ItemEnum.HandgripState checkLeftHandGripState() {
+		if (leftHandGrip.isEmpty()) {
+			if (rightHandGrip.isEmpty()) {
+				return HandgripState.ZERO_ZERO;
 			} else {
-				if (!usingLeftHandGrip.isTwoHanded()) {
-					return true;
+				if (rightHandGrip.isTwoHanded()) {
+					return HandgripState.ZERO_TWO;
 				} else {
-					return false;
+					return HandgripState.ZERO_ONE;
+				}
+			}
+		} else {
+			if (leftHandGrip.isTwoHanded()) {
+				return HandgripState.TWO_ZERO;
+			} else {
+				if (rightHandGrip.isEmpty()) {
+					return HandgripState.ONE_ZERO;
+				} else {
+					return HandgripState.ONE_ONE;
+				}
+			}
+		}
+	}
+
+	public ItemEnum.HandgripState checkRightHandGripState() {
+		if (leftHandGrip.isEmpty()) {
+			if (rightHandGrip.isEmpty()) {
+				return HandgripState.ZERO_ZERO;
+			} else {
+				if (rightHandGrip.isTwoHanded()) {
+					return HandgripState.TWO_ZERO;
+				} else {
+					return HandgripState.ONE_ZERO;
+				}
+			}
+		} else {
+			if (leftHandGrip.isTwoHanded()) {
+				return HandgripState.ZERO_TWO;
+			} else {
+				if (rightHandGrip.isEmpty()) {
+					return HandgripState.ZERO_ONE;
+				} else {
+					return HandgripState.ONE_ONE;
 				}
 			}
 		}
@@ -72,22 +105,6 @@ public class Inventory {
 			default :
 				Gdx.app.log("Inventory", "잘못된 EquipmentPart정보");
 				return null;
-		}
-	}
-
-	public boolean isRightHandGripUsable(Equipment usingLeftHandGrip) {
-		if (usingLeftHandGrip.isEmpty()) {
-			return true;
-		} else {
-			if (usingLeftHandGrip.isTwoHanded()) {
-				return false;
-			} else {
-				if (!usingLeftHandGrip.isTwoHanded()) {
-					return true;
-				} else {
-					return false;
-				}
-			}
 		}
 	}
 

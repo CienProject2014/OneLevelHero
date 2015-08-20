@@ -3,8 +3,6 @@ package com.mygdx.assets;
 import java.util.Map;
 
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.event.Event;
-import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.event.NPC;
 import com.mygdx.model.event.StorySection;
@@ -17,17 +15,10 @@ public class EventAssets implements JsonAssetsInitializable {
 
 	@Override
 	public void set(Map<String, String> jsonStringMap) {
-		npcMap = JsonParser.parseMap(NPC.class,
-				jsonStringMap.get(JsonEnum.NPC_JSON.toString()));
-		storySectionMap = JsonParser.parseMap(Integer.class,
-				StorySection.class,
+		npcMap = JsonParser.parseMap(NPC.class, jsonStringMap.get(JsonEnum.NPC_JSON.toString()));
+		storySectionMap = JsonParser.parseMap(Integer.class, StorySection.class,
 				jsonStringMap.get(JsonEnum.STORY_JSON.toString()));
-		gameObjectMap = JsonParser.parseMap(GameObject.class,
-				jsonStringMap.get(JsonEnum.GAME_OBJECT_JSON.toString()));
-	}
-
-	public Event getGameObjectEvent(String gameObjectString) {
-		return gameObjectMap.get(gameObjectString).getObjectEvent();
+		gameObjectMap = JsonParser.parseMap(GameObject.class, jsonStringMap.get(JsonEnum.GAME_OBJECT_JSON.toString()));
 	}
 
 	public StorySection getStorySection(int storySectionNumber) {
@@ -38,10 +29,6 @@ public class EventAssets implements JsonAssetsInitializable {
 		return gameObjectMap.get(gameObjectString);
 	}
 
-	public NPC getNpc(String npcString) {
-		return npcMap.get(npcString);
-	}
-
 	public Map<String, NPC> getNpcMap() {
 		return npcMap;
 	}
@@ -50,13 +37,8 @@ public class EventAssets implements JsonAssetsInitializable {
 		this.npcMap = npcMap;
 	}
 
-	public Event getNpcEvent(String npcString, int eventNumber) {
-		return getNpc(npcString).getEvent(eventNumber);
-	}
-
-	public Event getNpcEvent(EventPacket eventPacket) {
-		return getNpc(eventPacket.getEventNpc()).getEvent(
-				eventPacket.getEventNumber());
+	public Map<String, GameObject> getGameObjectMap() {
+		return gameObjectMap;
 	}
 
 	public Map<Integer, StorySection> getStorySectionMap() {

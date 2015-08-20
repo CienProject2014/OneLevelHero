@@ -2,7 +2,6 @@ package com.mygdx.screen;
 
 import org.springframework.context.ApplicationContext;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -152,9 +151,7 @@ public class LoadingBarScreen implements Screen {
 				check = 1;
 			}
 			if (StaticAssets.assetManager.update()) {
-				if (Gdx.input.isTouched()) {
-					context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
-				}
+				context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
 			}
 		}
 

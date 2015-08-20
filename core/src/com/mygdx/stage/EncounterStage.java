@@ -76,18 +76,17 @@ public class EncounterStage extends BaseOneLevelStage {
 	}
 
 	private Image getMonsterImage() {
-		Texture monsterTexture = monster.getBodyTexture();
-		return new Image(monsterTexture);
+		return new Image(TextureManager.getMonsterTexture(monster.getFacePath()));
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
-			return new TextureRegionDrawable(new TextureRegion(
-					StaticAssets.assetManager.get(StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
+			return new TextureRegionDrawable(new TextureRegion(StaticAssets.assetManager.get(
+					StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
 		} else {
 			Gdx.app.log("EncounterStage", "fieldType - " + fieldManager.getFieldType());
-			return new TextureRegionDrawable(
-					new TextureRegion(TextureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+			return new TextureRegionDrawable(new TextureRegion(TextureManager.getBackgroundTexture(fieldManager
+					.getFieldType().toString())));
 		}
 	}
 

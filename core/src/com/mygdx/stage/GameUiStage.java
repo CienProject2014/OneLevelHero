@@ -24,6 +24,7 @@ import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.SaveManager;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.popup.GameObjectPopup;
 import com.mygdx.popup.StatusMessagePopup;
 
@@ -42,6 +43,8 @@ public class GameUiStage extends BaseOneLevelStage {
 	private ListenerFactory listenerFactory;
 	@Autowired
 	private SaveManager saveManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameUiStage");
 
@@ -62,6 +65,11 @@ public class GameUiStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		timeInfoButton.setText(timeManager.getTimeInfo());
+		if (storySectionManager.getCurrentStorySection().getNextSections() != null
+				&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
+			timeInfoButton.setText(timeManager.getTimeInfo() + " / "
+					+ storySectionManager.getNextSections().get(0).getNextSectionNumber());
+		}
 	}
 
 	public Stage makeStage() {
@@ -83,8 +91,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", uiComponentAssets.getSkin(),
 				partyManager.getBattleMemberList());
 
-		Iterator<GameObjectPopup> alertMessageIterator = alertMessage
-				.iterator();
+		Iterator<GameObjectPopup> alertMessageIterator = alertMessage.iterator();
 		while (alertMessageIterator.hasNext()) {
 			GameObjectPopup nextIterator = alertMessageIterator.next();
 			addActor(nextIterator);
@@ -159,7 +166,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		placeInfoButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				saveManager.load();
+				partyManager.healAllHero();
 				return true;
 			}
 		});

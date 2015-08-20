@@ -16,16 +16,13 @@ import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.factory.ListenerFactory;
-import com.mygdx.listener.GameObjectButtonListener;
 import com.mygdx.listener.HidingClickListener;
-import com.mygdx.model.event.GameObject;
 import com.mygdx.model.unit.Hero;
 
 public class UnEquipPopup extends Dialog {
 	private AtlasUiAssets atlasUiAssets;
 	private UiComponentAssets uiComponentAssets;
 	private ListenerFactory listenerFactory;
-	private GameObject gameObject;
 	private Hero currentSelectedHero;
 	private int index;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameObjectPopup");
@@ -93,8 +90,6 @@ public class UnEquipPopup extends Dialog {
 		ImageButton cancelButton = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_button_no"),
 				atlasUiAssets.getAtlasUiFile("popupui_acbutton_no"));
 		cancelButton.addListener(new HidingClickListener(this));
-		GameObjectButtonListener gameObjectButtonListener = listenerFactory.getGameObjectButtonListener();
-		gameObjectButtonListener.setGameObject(gameObject);
 		final Dialog thisDialog = this;
 		okayButton.addListener(new ClickListener() {
 			@Override
@@ -156,13 +151,5 @@ public class UnEquipPopup extends Dialog {
 	public float getPrefHeight() {
 		// force dialog height
 		return 240f;
-	}
-
-	public GameObject getGameObject() {
-		return gameObject;
-	}
-
-	public void setGameObject(GameObject gameObject) {
-		this.gameObject = gameObject;
 	}
 }
