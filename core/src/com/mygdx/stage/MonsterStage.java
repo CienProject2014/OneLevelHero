@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -36,7 +37,6 @@ public class MonsterStage extends BaseOneLevelStage {
 	private Table monsterHpTable;
 	private Label monsterHpLabel;
 	private StatusBar monsterStatusBar;
-	private Texture bgTexture;
 
 	@Override
 	public Stage makeStage() {
@@ -54,7 +54,6 @@ public class MonsterStage extends BaseOneLevelStage {
 		uiTable = new Table();
 		// innerTable.setBackground(getBackgroundTRD()); // 몬스터 테이블의 배경
 		monsterTable.add(getMonsterImage());
-
 		outerTable.setBackground(getBackgroundTRD(), false);
 		outerTable.top(); // table을 위로 정렬
 		outerTable.add(monsterTable).padTop(uiConstantsMap.get("monsterPadTop"))
@@ -65,6 +64,7 @@ public class MonsterStage extends BaseOneLevelStage {
 		uiTable.add(hpTable).padBottom(uiConstantsMap.get("hpTablePadBottom"));
 		tableStack.add(outerTable);
 		tableStack.add(uiTable);
+		addAction();
 	}
 
 	@Override
@@ -72,6 +72,20 @@ public class MonsterStage extends BaseOneLevelStage {
 		super.act(delta);
 		monsterHpLabel.setText(monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp());
 		monsterStatusBar.update();
+	}
+
+	private void addAction() {
+		monsterTable.setVisible(false);
+		monsterTable.addAction(Actions.fadeOut(0));
+		monsterTable.setVisible(true);
+		monsterTable.addAction(Actions.fadeIn(1.3f));
+
+		monsterHpLabel.setVisible(false);
+		monsterHpLabel.addAction(Actions.fadeOut(0));
+		monsterHpLabel.addAction(Actions.moveTo(250, 0));
+		monsterHpLabel.setVisible(true);
+		monsterHpLabel.addAction(Actions.fadeIn(1));
+		monsterHpLabel.addAction(Actions.moveTo(250, 10, 1));
 	}
 
 	private Table monsterHpTable(StatusBar monsterStatusBar) {
@@ -86,17 +100,20 @@ public class MonsterStage extends BaseOneLevelStage {
 	}
 
 	private Image getMonsterImage() {
-		return new Image(TextureManager.getMonsterTexture(monster.getFacePath()));
+		Texture monsterTexture = TextureManager.getMonsterTexture(monster.getFacePath());
+		Image monsterImage = new Image(monsterTexture);
+		return monsterImage;
+
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
 		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
-			return new TextureRegionDrawable(new TextureRegion(StaticAssets.assetManager.get(
-					StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
+			return new TextureRegionDrawable(new TextureRegion(
+					StaticAssets.assetManager.get(StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
 		} else {
-			return new TextureRegionDrawable(new TextureRegion(TextureManager.getBackgroundTexture(fieldManager
-					.getFieldType().toString())));
+			return new TextureRegionDrawable(
+					new TextureRegion(TextureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
 		}
 	}
 
