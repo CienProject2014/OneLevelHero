@@ -13,7 +13,8 @@ public class Skill {
 	private int hitboxSize;
 	private int[] hitboxCenter;
 	private int[][] hitboxShape;
-	private int damage;
+	private int skillFactor;
+	private int magicFactor;
 	private SkillTargetEnum skillTargetType;
 	private SkillEffectEnum skillEffectType;
 
@@ -81,12 +82,20 @@ public class Skill {
 		this.hitboxShape = hitboxShape;
 	}
 
-	public int getDamage() {
-		return damage;
+	public int getSkillFactor() {
+		return skillFactor;
 	}
 
-	public void setDamage(int damage) {
-		this.damage = damage;
+	public void setSkillFactor(int skillFactor) {
+		this.skillFactor = skillFactor;
+	}
+
+	public int getMagicFactor() {
+		return magicFactor;
+	}
+
+	public void setMagicFactor(int magicFactor) {
+		this.magicFactor = magicFactor;
 	}
 
 	public SkillTargetEnum getSkillTargetType() {

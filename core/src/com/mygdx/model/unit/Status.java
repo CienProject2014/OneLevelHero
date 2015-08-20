@@ -140,11 +140,9 @@ public class Status {
 
 	// alphabet order
 	public List<String> getStatusList() {
-		return Arrays.asList(new String[]{String.valueOf(attack),
-				String.valueOf(defense), String.valueOf(electricResistance),
-				getExperiencePointState(), String.valueOf(fireResistance),
-				getHealthPointState(), String.valueOf(level),
-				String.valueOf(magicAttack), String.valueOf(magicDefense),
-				String.valueOf(speed), String.valueOf(waterResistance)});
+		return Arrays.asList(new String[] { String.valueOf(attack), String.valueOf(defense),
+				String.valueOf(electricResistance), getExperiencePointState(), String.valueOf(fireResistance),
+				getHealthPointState(), String.valueOf(level), String.valueOf(magicAttack), String.valueOf(magicDefense),
+				String.valueOf(speed), String.valueOf(waterResistance) });
 	}
 }
