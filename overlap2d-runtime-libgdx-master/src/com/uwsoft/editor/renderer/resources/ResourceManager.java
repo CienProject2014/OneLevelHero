@@ -198,7 +198,6 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 	 * particle effects, sprite animations, spine animations and fonts
 	 */
 	public void loadassets() {
-		loadAtlasPack();
 		loadParticleEffects();
 		loadSpineAnimations();
 		loadSpriteAnimations();
@@ -207,11 +206,7 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 
 	@Override
 	public void loadAtlasPack() {
-		FileHandle packFile = Gdx.files.internal(packResolutionName + File.separator + "pack.atlas");
-		if (!packFile.exists()) {
-			return;
-		}
-		mainPack = new TextureAtlas(packFile);
+
 	}
 
 	@Override
@@ -379,6 +374,14 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 	@Override
 	public ProjectInfoVO getProjectVO() {
 		return projectVO;
+	}
+
+	public TextureAtlas getMainPack() {
+		return mainPack;
+	}
+
+	public void setMainPack(TextureAtlas mainPack) {
+		this.mainPack = mainPack;
 	}
 
 	public void dispose() {

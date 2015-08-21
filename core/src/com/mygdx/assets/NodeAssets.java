@@ -16,16 +16,13 @@ public class NodeAssets implements JsonAssetsInitializable {
 	public Map<FieldTypeEnum, ArrayList<String>> monsterFieldMap;
 
 	public void set(Map<String, String> jsonStringMap) {
-		villageMap = JsonParser.parseMap(Village.class,
-				jsonStringMap.get(JsonEnum.VILLAGE_JSON.toString()));
+		villageMap = JsonParser.parseMap(Village.class, jsonStringMap.get(JsonEnum.VILLAGE_JSON.toString()));
 
-		ArrayList<MonsterField> monsterFieldList = JsonParser.parseList(
-				MonsterField.class,
+		ArrayList<MonsterField> monsterFieldList = JsonParser.parseList(MonsterField.class,
 				jsonStringMap.get(JsonEnum.MONSTER_FIELD_JSON.toString()));
 		monsterFieldMap = new HashMap<FieldTypeEnum, ArrayList<String>>();
 		for (MonsterField monsterField : monsterFieldList) {
-			monsterFieldMap.put(monsterField.getFieldType(),
-					monsterField.getFieldMonsterList());
+			monsterFieldMap.put(monsterField.getFieldType(), monsterField.getFieldMonsterList());
 		}
 	}
 

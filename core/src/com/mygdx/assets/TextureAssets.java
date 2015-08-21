@@ -11,7 +11,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.AssetsManager;
-import com.mygdx.model.battle.FrameSheet;
+import com.mygdx.model.jsonModel.FrameSheet;
 import com.mygdx.model.jsonModel.StringFile;
 import com.mygdx.util.JsonParser;
 
@@ -23,11 +23,11 @@ public class TextureAssets {
 	private Map<String, FrameSheet> animationSheetMap;
 
 	public void loadTexture() {
-		filePathMap = JsonParser
-				.parseMap(StringFile.class, Gdx.files.internal("data/load/file_path.json").readString());
+		filePathMap = JsonParser.parseMap(StringFile.class,
+				Gdx.files.internal("data/load/file_path.json").readString());
 
 		animationSheetMap = JsonParser.parseMap(FrameSheet.class,
-				filePathMap.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile(assetsManager));
+				filePathMap.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
 
 		directoryTextureMapper(textureMap, "texture");
 	}
@@ -53,6 +53,7 @@ public class TextureAssets {
 	}
 
 	public void directoryTextureMapperRecursive(Map<String, String> map, FileHandle fh) {
+		Gdx.app.log("Texture Text", " Texture If & for 돌기전");
 		if (fh.isDirectory()) {
 			FileHandle[] fhs = fh.list();
 
@@ -63,5 +64,6 @@ public class TextureAssets {
 			map.put(fh.nameWithoutExtension(), fh.path());
 			assetsManager.load(fh.path(), Texture.class);
 		}
+		Gdx.app.log("Texture Text", " Texture If & for 돈 후");
 	}
 }

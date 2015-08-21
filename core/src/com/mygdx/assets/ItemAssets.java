@@ -29,8 +29,8 @@ public class ItemAssets implements JsonAssetsInitializable {
 		accessoryMap = JsonParser.parseMap(Accessory.class, jsonStringMap.get(JsonEnum.ACCESSORY_JSON.toString()));
 		clothesMap = JsonParser.parseMap(Clothes.class, jsonStringMap.get(JsonEnum.CLOTHES_JSON.toString()));
 		shieldMap = JsonParser.parseMap(Shield.class, jsonStringMap.get(JsonEnum.SHIELD_JSON.toString()));
-		consumablesMap = JsonParser
-				.parseMap(Consumables.class, jsonStringMap.get(JsonEnum.CONSUMABLES_JSON.toString()));
+		consumablesMap = JsonParser.parseMap(Consumables.class,
+				jsonStringMap.get(JsonEnum.CONSUMABLES_JSON.toString()));
 		etcItemMap = JsonParser.parseMap(Item.class, jsonStringMap.get(JsonEnum.ETC_ITEM_JSON.toString()));
 	}
 
@@ -72,6 +72,7 @@ public class ItemAssets implements JsonAssetsInitializable {
 	public Shield getShield(String shieldName) {
 		return shieldMap.get(shieldName);
 	}
+
 	public Clothes getClothes(String clothesName) {
 		return clothesMap.get(clothesName);
 	}

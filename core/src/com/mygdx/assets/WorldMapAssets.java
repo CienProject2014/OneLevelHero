@@ -11,8 +11,7 @@ public class WorldMapAssets implements JsonAssetsInitializable {
 	private Map<String, WorldNode> worldNodeInfoMap;
 
 	public void set(Map<String, String> jsonStringMap) {
-		worldNodeInfoMap = JsonParser.parseMap(WorldNode.class,
-				jsonStringMap.get(JsonEnum.WORLDMAP_JSON.toString()));
+		worldNodeInfoMap = JsonParser.parseMap(WorldNode.class, jsonStringMap.get(JsonEnum.WORLDMAP_JSON.toString()));
 	}
 
 	public WorldNode getWorldNodeInfo(String worldNodeString) {
