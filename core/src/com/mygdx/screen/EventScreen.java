@@ -1,4 +1,4 @@
-﻿package com.mygdx.screen;
+package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
