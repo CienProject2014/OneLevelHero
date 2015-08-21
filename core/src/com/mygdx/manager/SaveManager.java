@@ -3,6 +3,7 @@ package com.mygdx.manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,12 +53,19 @@ public class SaveManager {
 	public void save() {
 		FileHandle handle;
 		if (currentState.getSaveVersion() == SaveVersion.NEW) {
-			handle = Gdx.files.internal("save/SAVE1.json");
+			handle = Gdx.files.local("save/SAVE1.json");
 		} else {
-			handle = Gdx.files.internal("save/" + currentState.getSaveVersion().toString() + ".json");
+			handle = Gdx.files.local("save/" + currentState.getSaveVersion().toString() + ".json");
 		}
 		Output output;
 		try {
+
+			Gdx.app.log("save", handle.file().getParentFile().getAbsolutePath());
+			if (!handle.file().getParentFile().exists()) {
+				handle.file().getParentFile().mkdirs();
+				handle.file().createNewFile();
+			}
+			Gdx.app.log("SaveManager", "저장작업완료" + handle.file().getAbsolutePath());
 			output = new Output(new FileOutputStream(handle.file()));
 			kryo.writeObject(output, partyInfo);
 			kryo.writeObject(output, positionInfo);
@@ -65,8 +73,12 @@ public class SaveManager {
 			kryo.writeObject(output, storySectionInfo);
 			kryo.writeObject(output, battleInfo);
 			kryo.writeObject(output, eventInfo);
+			output.flush();
 			output.close();
 		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -74,7 +86,7 @@ public class SaveManager {
 	}
 
 	public void load() {
-		FileHandle handle = Gdx.files.internal("save/" + currentState.getSaveVersion().toString() + ".json");
+		FileHandle handle = Gdx.files.local("save/" + currentState.getSaveVersion().toString() + ".json");
 		Input input;
 		try {
 			input = new Input(new FileInputStream(handle.file()));
