@@ -32,9 +32,6 @@ public class WorldMapStage extends BaseOverlapStage {
 	private final int SET_POSITION = 15;
 
 	public Stage makeStage() {
-		if (!assetsManager.rm.searchSceneNames("worldmap_scene")) {
-			assetsManager.rm.initScene("worldmap_scene");
-		}
 		initSceneLoader(assetsManager.rm);
 		positionManager.setInWorldMap(true);
 		/*
@@ -95,8 +92,8 @@ public class WorldMapStage extends BaseOverlapStage {
 		int yBottomLimit = (int) (StaticAssets.windowHeight / 2);
 		int yTopLimit = (int) (1688 - (StaticAssets.windowHeight / 2));
 
-		float xValue = this.getCurrent().getX() - StaticAssets.windowWidth / 2, yValue = this.getCurrent().getY()
-				- StaticAssets.windowHeight / 2;
+		float xValue = this.getCurrent().getX() - StaticAssets.windowWidth / 2,
+				yValue = this.getCurrent().getY() - StaticAssets.windowHeight / 2;
 		// x값이 오른쪽으로 벗어날 경우
 		if (this.getCurrent().getX() > xRightLimit)
 			xValue = 3000 - StaticAssets.windowWidth;

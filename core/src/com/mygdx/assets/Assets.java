@@ -58,7 +58,9 @@ public class Assets {
 		worldNodeAssets.set(jsonStringMap);
 		constantsAssets.set(jsonStringMap);
 		textureAssets.loadTexture();
+		assetsManager.loadOverlapResources();
 	}
+
 	private Map<String, StringFile> loadFilePathMap() {
 		Map<String, StringFile> filePathMap = JsonParser.parseMap(StringFile.class,
 				Gdx.files.internal("data/load/file_path.json").readString());

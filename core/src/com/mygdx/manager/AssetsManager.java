@@ -5,7 +5,8 @@ import com.uwsoft.editor.renderer.resources.ResourceManager;
 
 public class AssetsManager extends AssetManager {
 	public ResourceManager rm = new ResourceManager(); // Overlap2DManager
+
 	public void loadOverlapResources() {
-		rm.loadProjectVO();
+		rm.initAllResources();
 	}
 }

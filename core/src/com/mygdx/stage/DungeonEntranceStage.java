@@ -33,9 +33,6 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 	private void makeScene() {
 		// 우선은 blackwood_forest_entrance_scene으로 통일하자
 
-		if (!assetsManager.rm.searchSceneNames("mawang_castle_scene")) {
-			assetsManager.rm.initScene("mawang_castle_scene");
-		}
 		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene("mawang_castle_scene");
 		// cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
