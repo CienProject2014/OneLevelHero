@@ -1,9 +1,7 @@
-package com.mygdx.model.battle;
+package com.mygdx.model.jsonModel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.manager.AssetsManager;
-import com.mygdx.model.jsonModel.AssetsFile;
 
 public class FrameSheet implements AssetsFile<Texture> {
 	private String filePath;
@@ -13,10 +11,11 @@ public class FrameSheet implements AssetsFile<Texture> {
 	private Texture texture;
 
 	@Override
-	public Texture loadFile(AssetsManager assetsManager) {
+	public Texture loadFile() {
 		texture = new Texture(Gdx.files.internal(filePath));
 		return texture;
 	}
+
 	public void loadTexture() {
 		texture = new Texture(Gdx.files.internal(filePath));
 	}

@@ -14,7 +14,6 @@
            http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 	<context:annotation-config />
-
 	<bean id="assets" class="com.mygdx.assets.Assets" />
 	<bean id="atlasUiAssets" class="com.mygdx.assets.AtlasUiAssets" />
 	<bean id="constantsAssets" class="com.mygdx.assets.ConstantsAssets"/>
@@ -97,7 +96,6 @@
 	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen"
 		scope="prototype"/>
 	<bean id="inventoryScreen" class="com.mygdx.screen.InventoryScreen" scope="prototype"/>
-	<bean id="loadingBarScreen" class="com.mygdx.screen.LoadingBarScreen"/>
 	<bean id="loadScreen" class="com.mygdx.screen.LoadScreen" scope="prototype"/>
 	<bean id="logScreen" class="com.mygdx.screen.LogScreen" scope="prototype"/>
 	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen" scope="prototype"/>
@@ -111,6 +109,8 @@
 		scope="prototype" />
 	<bean id="worldMapScreen" class="com.mygdx.screen.WorldMapScreen"
 		scope="prototype" />
+	<bean id="LoadingBarScreen" class="com.mygdx.screen.LoadingBarScreen"
+		 scopt="prototype" />
 		
 	<bean id="baseOneLevelStage" class="com.mygdx.stage.BaseOneLevelStage"
 		scope="prototype"/>

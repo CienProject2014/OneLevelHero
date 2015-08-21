@@ -1,7 +1,5 @@
 package com.mygdx.model.jsonModel;
 
-import com.mygdx.manager.AssetsManager;
-
 public class MusicStringFile implements AssetsFile<String> {
 	private String file;
 	private String filePath;
@@ -12,7 +10,7 @@ public class MusicStringFile implements AssetsFile<String> {
 	}
 
 	@Override
-	public String loadFile(AssetsManager assetsManager) {
+	public String loadFile() {
 		file = filePath;
 		return file;
 	}

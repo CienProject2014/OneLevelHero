@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.model.jsonModel.StringFile;
@@ -44,7 +45,7 @@ public class Assets {
 	@Autowired
 	private AssetsManager assetsManager;
 
-	public void initialize() {
+	public synchronized void initialize() {
 		Map<String, StringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
 		uiComponentAssets.set(filePathMap);
@@ -59,20 +60,22 @@ public class Assets {
 		constantsAssets.set(jsonStringMap);
 		textureAssets.loadTexture();
 		assetsManager.loadOverlapResources();
+		assetsManager.load("orig/pack.atlas", TextureAtlas.class);
+
 	}
 
-	private Map<String, StringFile> loadFilePathMap() {
+	private synchronized Map<String, StringFile> loadFilePathMap() {
 		Map<String, StringFile> filePathMap = JsonParser.parseMap(StringFile.class,
 				Gdx.files.internal("data/load/file_path.json").readString());
 		return filePathMap;
 	}
 
-	private Map<String, String> loadJsonStringMap(Map<String, StringFile> filePathMap) {
+	private synchronized Map<String, String> loadJsonStringMap(Map<String, StringFile> filePathMap) {
 		Map<String, StringFile> jsonFileMap = JsonParser.parseMap(StringFile.class,
-				filePathMap.get(JsonEnum.JSON_FILE_PATH.toString()).loadFile(assetsManager));
+				filePathMap.get(JsonEnum.JSON_FILE_PATH.toString()).loadFile());
 		Map<String, String> jsonStringMap = new HashMap<>();
 		for (Entry<String, StringFile> entry : jsonFileMap.entrySet())
-			jsonStringMap.put(entry.getKey(), entry.getValue().loadFile(assetsManager));
+			jsonStringMap.put(entry.getKey(), entry.getValue().loadFile());
 		return jsonStringMap;
 	}
 }
