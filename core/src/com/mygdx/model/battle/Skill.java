@@ -1,12 +1,10 @@
 package com.mygdx.model.battle;
 
-import com.mygdx.enums.SkillEffectEnum;
-import com.mygdx.enums.SkillTargetEnum;
-
 public class Skill {
 	private String name;
-	private SkillEffectEnum skillEffectType;
-	private SkillTargetEnum skillTargetType;
+	private String skillType;
+	private String skillEffectType;
+	private String skillTargetType;
 	private int skillFactor;
 	private int magicFactor;
 	private int duplicateNumber;
@@ -28,19 +26,27 @@ public class Skill {
 		this.name = name;
 	}
 
-	public SkillEffectEnum getSkillEffectType() {
+	public String getSkillType() {
+		return skillType;
+	}
+
+	public void setSkillType(String skillType) {
+		this.skillType = skillType;
+	}
+
+	public String getSkillEffectType() {
 		return skillEffectType;
 	}
 
-	public void setSkillEffectType(SkillEffectEnum skillEffectType) {
+	public void setSkillEffectType(String skillEffectType) {
 		this.skillEffectType = skillEffectType;
 	}
 
-	public SkillTargetEnum getSkillTargetType() {
+	public String getSkillTargetType() {
 		return skillTargetType;
 	}
 
-	public void setSkillTargetType(SkillTargetEnum skillTargetType) {
+	public void setSkillTargetType(String skillTargetType) {
 		this.skillTargetType = skillTargetType;
 	}
 

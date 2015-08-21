@@ -9,7 +9,7 @@ import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
 
 public class HeroBattleStrategy implements BattleStrategy {
-	private final String TAG = "HeroAttackStrategy";
+	private final String TAG = "HeroBattleStrategy";
 
 	@Override
 	public void attack(Unit attackHero, Unit defender, int[][] hitArea) {
@@ -56,13 +56,13 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		// 각 타겟에 대해 SkillEffectType에 따라 사용
 		for (Unit target : targetList) {
-			if (skill.getSkillEffectType() == SkillEffectEnum.MULTI_EFFECT) {
+			if (skill.getSkillEffectType().equals(SkillEffectEnum.MULTI_EFFECT.toString())) {
 				String[] effectList = skill.getEffectNameList();
 
 				for (String effect : effectList) {
-					SkillEffectEnum effectEnum = SkillEffectEnum.valueOf(effect);
+					SkillEffectEnum effectEnum = SkillEffectEnum.findSkillEffectEnum(effect);
 					if (effectEnum != null) {
-						skill.setSkillEffectType(effectEnum);
+						skill.setSkillEffectType(effectEnum.toString());
 						applyEffect(skillUser, target, skill);
 					} else {
 						Gdx.app.log(TAG, "잘못된 스킬 타입: " + effect + " 타입이 존재하지 않습니다.");
@@ -75,7 +75,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 	}
 
 	private void applyEffect(Unit attackHero, Unit defender, Skill skill) {
-		switch (skill.getSkillEffectType()) {
+		switch (SkillEffectEnum.findSkillEffectEnum(skill.getSkillEffectType())) {
 		case ADD_CONDITIONAL_STATE:
 			break;
 		case ADD_STATE:

@@ -12,7 +12,7 @@ public class Status {
 	private int magicDefense;
 	private int level;
 	private int hp; // 현재 체력
-	private int maxHealthPoint; // 최대 체력
+	private int maxHp; // 최대 체력
 	private int speed; // speed
 	private int experience; // 경험치
 	private int maxExperience; // 최대 경험치(레벨업)
@@ -21,7 +21,7 @@ public class Status {
 	private int electricResistance; // electric
 
 	public String getHpState() {
-		return hp + "/" + maxHealthPoint;
+		return hp + "/" + maxHp;
 	}
 
 	public String getExperiencePointState() {
@@ -69,11 +69,11 @@ public class Status {
 	}
 
 	public int getMaxHp() {
-		return maxHealthPoint;
+		return maxHp;
 	}
 
 	public void setMaxHp(int maxHealthPoint) {
-		this.maxHealthPoint = maxHealthPoint;
+		this.maxHp = maxHealthPoint;
 	}
 
 	public int getSpeed() {

@@ -13,4 +13,11 @@ public enum SkillTargetEnum {
 	public String toString() {
 		return skillTargetType;
 	}
+
+	public static SkillTargetEnum findSkillTargetEnum(String stringName) {
+		for (SkillTargetEnum skillTargetEnum : SkillTargetEnum.values())
+			if (skillTargetEnum.toString().equals(stringName))
+				return skillTargetEnum;
+		return null;
+	}
 }

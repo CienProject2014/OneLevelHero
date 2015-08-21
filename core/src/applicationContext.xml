@@ -142,9 +142,9 @@
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
 	
-	<bean id="heroAttackStrategy" class="com.mygdx.unitStrategy.HeroAttackStrategy"/>	
+	<bean id="heroBattleStrategy" class="com.mygdx.unitStrategy.HeroBattleStrategy"/>	
 	<bean id="inventoryStrategy" class="com.mygdx.unitStrategy.InventoryStrategy"/>
-	<bean id="monsterAttackStrategy" class="com.mygdx.unitStrategy.MonsterAttackStrategy"/>	
+	<bean id="monsterBattleStrategy" class="com.mygdx.unitStrategy.MonsterBattleStrategy"/>	
 		
 	<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
 	<bean id="attackButtonListener" class="com.mygdx.listener.AttackButtonListener" scope="prototype"/>

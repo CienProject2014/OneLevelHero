@@ -26,9 +26,9 @@ public class UnitManager {
 	@Autowired
 	private InventoryStrategy inventoryStrategy;
 	@Autowired
-	private HeroBattleStrategy heroAttackStrategy;
+	private HeroBattleStrategy heroBattleStrategy;
 	@Autowired
-	private MonsterBattleStrategy monsterAttackStrategy;
+	private MonsterBattleStrategy monsterBattleStrategy;
 
 	public void initiateHero(Hero hero) {
 		intiallyEquipAllItems(hero);
@@ -38,9 +38,9 @@ public class UnitManager {
 
 	public void setAttackStrategy(Unit unit) {
 		if (unit instanceof Hero) {
-			unit.setAttackStrategy(heroAttackStrategy);
+			unit.setAttackStrategy(heroBattleStrategy);
 		} else {
-			unit.setAttackStrategy(monsterAttackStrategy);
+			unit.setAttackStrategy(monsterBattleStrategy);
 		}
 	}
 

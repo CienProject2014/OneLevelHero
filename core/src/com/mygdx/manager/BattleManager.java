@@ -72,22 +72,24 @@ public class BattleManager {
 
 		ArrayList<Unit> targetList = getTargetList(skill.getSkillTargetType(), attackUnit, targetUnit);
 
+		attackUnit.useSkill(targetList, skill);
+
 		// SkillTargetType에 따라 타겟 설정
 		if (attackUnit instanceof Hero) {
-			attackUnit.useSkill(targetList, skill);
 			// TODO empty animation
 			readyForPlayerAnimation("empty");
 		} else {
-			attackUnit.useSkill(targetList, skill);
 			// TODO empty animation
 			readyForMonsterAnimation("empty");
 		}
+
 		checkBattleEnd();
 	}
 
-	private ArrayList<Unit> getTargetList(SkillTargetEnum targetEnum, Unit skillUser, Unit selectedUnit) {
+	private ArrayList<Unit> getTargetList(String targetType, Unit skillUser, Unit selectedUnit) {
 		ArrayList<Unit> list = new ArrayList<Unit>();
-		switch (targetEnum) {
+		SkillTargetEnum enm = SkillTargetEnum.findSkillTargetEnum(targetType);
+		switch (enm) {
 		case ALL:
 			list.addAll(partyManager.getBattleMemberList());
 			break;
