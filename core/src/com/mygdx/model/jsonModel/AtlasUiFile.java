@@ -2,19 +2,17 @@ package com.mygdx.model.jsonModel;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.mygdx.assets.StaticAssets;
+import com.mygdx.manager.AssetsManager;
 
 public class AtlasUiFile implements AssetsFile<String> {
+	@Autowired
+	private AssetsManager assetsManager;
 	private List<String> element;
 	private String name;
 	private String filePath;
-
-	@Override
-	public String loadFile() {
-		StaticAssets.assetManager.load(filePath, TextureAtlas.class);
-		return filePath;
-	}
 
 	public List<String> getElement() {
 		return element;
@@ -44,5 +42,11 @@ public class AtlasUiFile implements AssetsFile<String> {
 	public String getTestFile() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String loadFile(AssetsManager assetsManager) {
+		assetsManager.load(filePath, TextureAtlas.class);
+		return filePath;
 	}
 }

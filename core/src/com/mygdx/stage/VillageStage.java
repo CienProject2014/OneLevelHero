@@ -14,13 +14,13 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.NodeAssets;
-import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.enums.VillageDirectionEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
@@ -40,11 +40,12 @@ public class VillageStage extends BaseOverlapStage {
 	private MovingManager movingManager;
 	@Autowired
 	private ListenerFactory listenerFactory;
+	@Autowired
+	private AssetsManager assetsManager;
 	private Village villageInfo;
 	public TextButton shiftButton;
 
 	public Stage makeStage() {
-		initSceneLoader(StaticAssets.rm);
 		setVillage();
 		cameraManager.stretchToDevice(this);
 		/* setVillage(); */
@@ -71,9 +72,11 @@ public class VillageStage extends BaseOverlapStage {
 	private void setVillageScene(PositionManager positionManager, NodeAssets nodeAssets) {
 		if (nodeAssets.getVillageByName(positionManager.getCurrentNodeName()) != null) {
 			villageInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName());
+			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(villageInfo.getSceneName());
 		} else {
 			villageInfo = nodeAssets.getVillageByName("blackwood");
+			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(villageInfo.getSceneName());
 		}
 	}
@@ -124,8 +127,8 @@ public class VillageStage extends BaseOverlapStage {
 			shiftbutton_left.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					setCameraState(CameraStateEnum.MOVE_LEFT);
 
+					setCameraState(CameraStateEnum.MOVE_LEFT);
 					cameraManager.setMoveFlag(5);
 				}
 			});

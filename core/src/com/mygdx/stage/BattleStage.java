@@ -9,7 +9,6 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
@@ -45,9 +44,11 @@ public class BattleStage extends BaseOneLevelStage {
 	private BattleManager battleManager;
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
-
+	@Autowired
+	private TextureManager textureManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
 	// Table
+	@Autowired
 	private GridHitbox gridHitbox; // grid hitbox 테이블
 	@Autowired
 	private StorySectionManager storySectionManager;
@@ -145,7 +146,6 @@ public class BattleStage extends BaseOneLevelStage {
 		tableStack.add(makeBattleUiTable()); // Rmenu
 		tableStack.add(makeTurnTable()); // TurnTable 배경 테이블
 		tableStack.add(makeTurnFaceTable()); // TurnTable위에 있는 영웅들 이미지 테이블
-		gridHitbox = new GridHitbox(); // 평소에는 hidden
 		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
 		tableStack.add(gridHitbox);
 		addAction();
@@ -334,61 +334,61 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void makeHiddenButton() {
 		switch (battleManager.getCurrentClickStateEnum()) {
-		case NORMAL:
-			calCostGague(currentAttackUnit, NORMAL_ATTACK);
-			updateOrder();
-			updateSmallImageTable();
-			setDarkButton(attackButton);
-			break;
-		case SKILL:
-			setDarkButton(skillButton);
-			break;
-		case INVENTORY:
-			setDarkButton(inventoryButton);
-			break;
-		case DEFENSE:
-			setDarkButton(defenseButton);
-			break;
-		case WAIT:
-			setDarkButton(waitButton);
-			break;
-		case DEFAULT:
-			setFreeButton();
-			break;
-		default:
-			break;
+			case NORMAL :
+				calCostGague(currentAttackUnit, NORMAL_ATTACK);
+				updateOrder();
+				updateSmallImageTable();
+				setDarkButton(attackButton);
+				break;
+			case SKILL :
+				setDarkButton(skillButton);
+				break;
+			case INVENTORY :
+				setDarkButton(inventoryButton);
+				break;
+			case DEFENSE :
+				setDarkButton(defenseButton);
+				break;
+			case WAIT :
+				setDarkButton(waitButton);
+				break;
+			case DEFAULT :
+				setFreeButton();
+				break;
+			default :
+				break;
 		}
 	}
 
 	private void checkCurrentState() {
 		switch (battleManager.getCurrentClickStateEnum()) {
-		case NORMAL:
-			gridHitbox.hideGrid();
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case SKILL:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case INVENTORY:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case DEFENSE:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case WAIT:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case RUN:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		default:
-			break;
+			case NORMAL :
+				gridHitbox.hideGrid();
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case SKILL :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case INVENTORY :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case DEFENSE :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case WAIT :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case RUN :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			default :
+				break;
 		}
 	}
 
@@ -533,23 +533,21 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private void makeTurnBackgroundImage() {
-		currentAttackerBackground = new Image(
-				StaticAssets.assetManager.get(StaticAssets.textureMap.get("battleui_turntable_01"), Texture.class));
-		turnTableBackground = new Image(
-				StaticAssets.assetManager.get(StaticAssets.textureMap.get("battleui_turntable_02"), Texture.class));
+		currentAttackerBackground = new Image(textureManager.getEtcTexture("battleui_turntable_01"));
+		turnTableBackground = new Image(textureManager.getEtcTexture("battleui_turntable_02"));
 	}
 
 	private void makeBattleTurnImage() {
 		turnBigImageMap.put(selectedMonster.getFacePath(),
-				new Image(TextureManager.getBigBattleImage(selectedMonster.getFacePath())));
+				new Image(textureManager.getBigBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			turnBigImageMap.put(hero.getFacePath(), new Image(TextureManager.getBigBattleImage(hero.getFacePath())));
+			turnBigImageMap.put(hero.getFacePath(), new Image(textureManager.getBigBattleImage(hero.getFacePath())));
 		}
 		turnSmallImageMap.put(selectedMonster.getFacePath(),
-				new Image(TextureManager.getSmallBattleImage(selectedMonster.getFacePath())));
+				new Image(textureManager.getSmallBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
 			turnSmallImageMap
-					.put(hero.getFacePath(), new Image(TextureManager.getSmallBattleImage(hero.getFacePath())));
+					.put(hero.getFacePath(), new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
 		}
 	}
 	private void makeRButton() {

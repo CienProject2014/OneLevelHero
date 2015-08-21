@@ -29,6 +29,8 @@ public class MonsterStage extends BaseOneLevelStage {
 	private Monster monster;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private TextureManager textureManager;
 
 	// private Stack tableStack; // 전체 화면에 들어가는 테이블
 	private Table outerTable; // 몬스터 테이블의 바깥 테이블
@@ -100,7 +102,7 @@ public class MonsterStage extends BaseOneLevelStage {
 	}
 
 	private Image getMonsterImage() {
-		Texture monsterTexture = TextureManager.getMonsterTexture(monster.getFacePath());
+		Texture monsterTexture = textureManager.getMonsterTexture(monster.getFacePath());
 		Image monsterImage = new Image(monsterTexture);
 		return monsterImage;
 
@@ -109,14 +111,12 @@ public class MonsterStage extends BaseOneLevelStage {
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
 		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
-			return new TextureRegionDrawable(new TextureRegion(
-					StaticAssets.assetManager.get(StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture("devilcastle_01")));
 		} else {
-			return new TextureRegionDrawable(
-					new TextureRegion(TextureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
+					.getFieldType().toString())));
 		}
 	}
-
 	public HashMap<String, Float> getUiConstantsMap() {
 		return uiConstantsMap;
 	}
