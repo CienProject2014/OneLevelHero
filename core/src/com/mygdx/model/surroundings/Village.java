@@ -3,10 +3,7 @@ package com.mygdx.model.surroundings;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.enums.TextureEnum;
 import com.mygdx.enums.VillageDirectionEnum;
-import com.mygdx.manager.TextureManager;
 
 /**
  * Village 모델 클래스
@@ -28,14 +25,6 @@ public class Village {
 
 	public void setVillageName(String villageName) {
 		this.villageName = villageName;
-	}
-
-	public Texture getBackgroundUp() {
-		return TextureManager.getBackgroundTexture(backgroundPath, TextureEnum.BACKGROUND_UP);
-	}
-
-	public Texture getBackgroundDown() {
-		return TextureManager.getBackgroundTexture(backgroundPath, TextureEnum.BACKGROUND_DOWN);
 	}
 
 	public ArrayList<String> getVillageNpc() {

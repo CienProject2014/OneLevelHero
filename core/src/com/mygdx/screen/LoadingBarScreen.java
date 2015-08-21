@@ -1,9 +1,8 @@
 package com.mygdx.screen;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
@@ -12,17 +11,20 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.assets.Assets;
-import com.mygdx.assets.ContextLoader;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.game.OneLevelHero;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.ui.LoadingBarUi;
 
 public class LoadingBarScreen implements Screen {
-
+	@Autowired
+	private AssetsManager assetsManager;
+	@Autowired
+	private Assets assets;
+	@Autowired
+	private ScreenFactory screenFactory;
 	private Stage stage;
-	private OneLevelHero game;
 	private Image logo;
 	private Image loadingFrame;
 	private Image loadingBarHidden;
@@ -35,30 +37,23 @@ public class LoadingBarScreen implements Screen {
 	private float startX, endX;
 	private float percent;
 	private Actor loadingBar;
-	private ApplicationContext context;
-
-	public LoadingBarScreen(OneLevelHero game) {
-		this.game = game;
-	}
 
 	@Override
 	public void show() {
-		StaticAssets.assetManager.load("texture/loading/loading.pack", TextureAtlas.class);
-		StaticAssets.assetManager.setLoader(ApplicationContext.class,
-				new ContextLoader(new InternalFileHandleResolver()));
-		StaticAssets.assetManager.finishLoading();
+		assetsManager.load("texture/loading/loading.pack", TextureAtlas.class);
+		assetsManager.finishLoading();
 		// context = RoboSpring.getContext(); 안드로이드에서 실행시
 		// Initialize the stage where we will place everything
 		stage = new Stage();
-		TextureAtlas atlas = StaticAssets.assetManager.get("texture/loading/loading.pack", TextureAtlas.class);
+		TextureAtlas atlas = assetsManager.get("texture/loading/loading.pack", TextureAtlas.class);
 		// Grab the regions from the atlas and create some images
 		logo = new Image(atlas.findRegion("libgdx-logo"));
 		loadingFrame = new Image(atlas.findRegion("loading-frame"));
 		loadingBarHidden = new Image(atlas.findRegion("loading-bar-hidden"));
 		screenBg = new Image(atlas.findRegion("screen-bg"));
 		loadingBg = new Image(atlas.findRegion("loading-frame-bg"));
-		textButton1 = new TextButton("게임에 필요한 이미지 로딩 중 ", StaticAssets.skin);
-		textButton2 = new TextButton("게임에 필요한 음악 로딩 중 ", StaticAssets.skin);
+		textButton1 = new TextButton("(1/2) 게임에 필요한 이미지를 로딩하는 중입니다.. ", StaticAssets.skin);
+		textButton2 = new TextButton("(2/2) 게임에 필요한 음악을 로딩하는 중입니다... ", StaticAssets.skin);
 		textButton3 = new TextButton("로딩 끝 화면을 클릭하세요 ", StaticAssets.skin);
 		// Add the loading bar animation
 		Animation anim = new Animation(0.05f, atlas.findRegions("loading-bar-anim"));
@@ -81,17 +76,14 @@ public class LoadingBarScreen implements Screen {
 		stage.addActor(textButton2);
 		stage.addActor(textButton3);
 
-		StaticAssets.assetManager.load("applicationContext.xml", ApplicationContext.class);
-		StaticAssets.loadAll();
 	}
 
 	public void gameLoad() {
 		textButton1.setVisible(false);
 		textButton2.setVisible(true);
 		textButton3.setVisible(false);
-		context = StaticAssets.assetManager.get("applicationContext.xml", ApplicationContext.class);
-		context.getBean(Assets.class).initialize();
-		context.getBean(ScreenFactory.class).setGame(game);
+		StaticAssets.loadAll();
+		assets.initialize();
 	}
 
 	@Override
@@ -144,19 +136,18 @@ public class LoadingBarScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-
-		if (StaticAssets.assetManager.update()) {
+		if (assetsManager.update()) {
 			if (check == 0) {
 				gameLoad();
 				check = 1;
 			}
-			if (StaticAssets.assetManager.update()) {
-				context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
+			if (assetsManager.update()) {
+				screenFactory.show(ScreenEnum.MENU);
 			}
 		}
 
 		// Interpolate the percentage to make it more smooth
-		percent = Interpolation.linear.apply(percent, StaticAssets.assetManager.getProgress(), 0.1f);
+		percent = Interpolation.linear.apply(percent, assetsManager.getProgress(), 0.1f);
 		// Update positions (and size) to match the percentage
 		loadingBarHidden.setX(startX + endX * percent);
 		loadingBg.setX(loadingBarHidden.getX() + 30);

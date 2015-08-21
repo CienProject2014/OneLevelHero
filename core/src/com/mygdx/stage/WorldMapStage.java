@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.model.surroundings.Village;
@@ -24,15 +25,17 @@ public class WorldMapStage extends BaseOverlapStage {
 	private NodeAssets nodeAssets;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private AssetsManager assetsManager;
 	private CompositeItem currentPosition;
 	private ImageItem currentNode;
 	private final int SET_POSITION = 15;
 
 	public Stage makeStage() {
-		if (!StaticAssets.rm.searchSceneNames("worldmap_scene")) {
-			StaticAssets.rm.initScene("worldmap_scene");
+		if (!assetsManager.rm.searchSceneNames("worldmap_scene")) {
+			assetsManager.rm.initScene("worldmap_scene");
 		}
-		initSceneLoader(StaticAssets.rm);
+		initSceneLoader(assetsManager.rm);
 		positionManager.setInWorldMap(true);
 		/*
 		 * MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다. SceneVO가 반환되는데,
@@ -92,8 +95,8 @@ public class WorldMapStage extends BaseOverlapStage {
 		int yBottomLimit = (int) (StaticAssets.windowHeight / 2);
 		int yTopLimit = (int) (1688 - (StaticAssets.windowHeight / 2));
 
-		float xValue = this.getCurrent().getX() - StaticAssets.windowWidth / 2,
-				yValue = this.getCurrent().getY() - StaticAssets.windowHeight / 2;
+		float xValue = this.getCurrent().getX() - StaticAssets.windowWidth / 2, yValue = this.getCurrent().getY()
+				- StaticAssets.windowHeight / 2;
 		// x값이 오른쪽으로 벗어날 경우
 		if (this.getCurrent().getX() > xRightLimit)
 			xValue = 3000 - StaticAssets.windowWidth;

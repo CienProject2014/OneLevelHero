@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,6 +20,7 @@ import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.model.event.EventScene;
 import com.mygdx.model.unit.Hero;
 
@@ -43,6 +43,8 @@ public class ChatEventStage extends BaseOneLevelStage {
 	private RewardManager rewardManager;
 	@Autowired
 	private UnitAssets unitAssets;
+	@Autowired
+	private TextureManager textureManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("EventStage");
 	private Label scriptTitle = new Label("", StaticAssets.skin);
 	private Label scriptContent = new Label("", StaticAssets.skin);
@@ -98,9 +100,9 @@ public class ChatEventStage extends BaseOneLevelStage {
 	}
 
 	private void makeChatTable(EventScene eventScene) {
-		backgroundImage = new Image(eventScene.getBackground());
-		Texture selectedCharacter = eventScene.getCharacter();
-		characterImage = new Image(selectedCharacter);
+		backgroundImage = new Image(textureManager.getBackgroundTexture(eventScene.getBackgroundPath()));
+		characterImage = new Image(textureManager.getBustTexture(eventScene.getCharacterPath(),
+				eventScene.getFaceNumber()));
 
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();

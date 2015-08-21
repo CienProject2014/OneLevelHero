@@ -23,6 +23,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PartyManager;
@@ -49,6 +50,10 @@ public class StatusStage extends BaseOverlapStage {
 	private MovingManager movingManager;
 	@Autowired
 	private BattleManager battleManager;
+	@Autowired
+	private AssetsManager assetsManager;
+	@Autowired
+	private TextureManager textureManager;
 	private Camera cam;
 	private CompositeItem closeButton;
 	private ImageItem largeImage;
@@ -60,11 +65,11 @@ public class StatusStage extends BaseOverlapStage {
 
 	public Stage makeStage() {
 		HashMap<String, Array<String>> sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
-		if (!StaticAssets.rm.searchSceneNames(SCENE_NAME)) {
-			StaticAssets.rm.initScene(SCENE_NAME);
+		if (!assetsManager.rm.searchSceneNames(SCENE_NAME)) {
+			assetsManager.rm.initScene(SCENE_NAME);
 		}
 
-		initSceneLoader(StaticAssets.rm);
+		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
 		setCamera();
@@ -143,8 +148,8 @@ public class StatusStage extends BaseOverlapStage {
 		for (int i = 0; i < partyManager.getPartyList().size(); i++) {
 			CompositeItem compositeItem = sceneLoader.getRoot().getCompositeById(characterStatusList.get(i));
 			ImageItem characterStatusImage = compositeItem.getImageById(CHARACTER_IMAGE);
-			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
-					TextureManager.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
+			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(textureManager
+					.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
 		}
 	}
 
