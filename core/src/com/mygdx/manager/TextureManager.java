@@ -45,7 +45,7 @@ public class TextureManager {
 			return assetsManager.get(
 					textureAssets.getTexturePath(TextureEnum.BUST + "_" + facePath + "_" + faceNumber), Texture.class);
 		} else {
-			Gdx.app.log("EventScene", "chracterTextureMap에 " + facePath + " 에 해당하는 이미지가 존재하지 않습니다.");
+			Gdx.app.log("TextureManager", "chracterTextureMap에 " + facePath + faceNumber + " 에 해당하는 이미지가 존재하지 않습니다.");
 			return getBustTexture("default", "01");
 		}
 	}

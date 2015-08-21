@@ -84,7 +84,9 @@ public class FieldManager {
 	}
 
 	private void moveField() {
-		encounterManager.encountEnemy();
+		if (encounterManager.isBattleOccured()) {
+			encounterManager.encountEnemy();
+		}
 	}
 
 	private boolean willBeArrived() {
