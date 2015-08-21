@@ -34,9 +34,9 @@ public class ArrowButtonListener extends ClickListener {
 		} else {
 			positionManager.setCurrentPositionType(PositionEnum.FIELD);
 			screenFactory.show(ScreenEnum.FIELD);
+			fieldManager.goInField();
 		}
-		storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_FIELD,
-				connection.getValue().getArrowName());
+		storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_FIELD, connection.getValue().getArrowName());
 	}
 
 	public Entry<String, NodeConnection> getConnection() {

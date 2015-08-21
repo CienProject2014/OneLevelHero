@@ -36,15 +36,6 @@ public class FieldManager {
 		return fieldInfo.getFieldNumber();
 	}
 
-	public void startMovingField(String destinationNode) {
-		WorldNode worldNodeInfo = worldMapAssets.getWorldNodeInfo(positionManager.getCurrentNodeName());
-
-		String startNode = positionManager.getCurrentNodeName();
-		NodeConnection conn = worldNodeInfo.getNodeConnection().get(destinationNode);
-
-		fieldInfo = new FieldInfo(startNode, destinationNode, conn);
-	}
-
 	public boolean isInField() {
 		return fieldInfo.isInField();
 	}
@@ -53,24 +44,11 @@ public class FieldManager {
 		return fieldInfo.getFieldList().size();
 	}
 
-	public FieldInfo goFowardAndGetFieldInfo() {
-		if (!fieldInfo.tryToGoForward()) {
-			encounterManager.act();
-		} else {
-			positionManager.setCurrentNodeName(fieldInfo.getDestinationNode());
-			movingManager.goCurrentPosition();
-		}
-		return fieldInfo;
-	}
-
-	public FieldInfo goBackwardAndGetFieldInfo() {
-		if (!fieldInfo.tryToGoBackword()) {
-			encounterManager.act();
-		} else {
-			positionManager.setCurrentNodeName(fieldInfo.getDestinationNode());
-			movingManager.goCurrentPosition();
-		}
-		return fieldInfo;
+	public void startMovingField(String destinationNode) {
+		WorldNode worldNodeInfo = worldMapAssets.getWorldNodeInfo(positionManager.getCurrentNodeName());
+		String startNode = positionManager.getCurrentNodeName();
+		NodeConnection conn = worldNodeInfo.getNodeConnection().get(destinationNode);
+		fieldInfo.setFieldInfo(startNode, destinationNode, conn);
 	}
 
 	public void goForwardField() {
@@ -80,7 +58,6 @@ public class FieldManager {
 		} else {
 			positionManager.setCurrentNodeName(fieldInfo.getDestinationNode());
 			fieldInfo.setInField(false);
-			movingManager.goCurrentPosition();
 		}
 	}
 
@@ -91,7 +68,6 @@ public class FieldManager {
 		} else {
 			positionManager.setCurrentNodeName(fieldInfo.getStartNode());
 			fieldInfo.setInField(false);
-			movingManager.goCurrentPosition();
 		}
 	}
 
@@ -108,9 +84,7 @@ public class FieldManager {
 	}
 
 	private void moveField() {
-		if (encounterManager.isBattleOccured()) {
-			encounterManager.encountEnemy();
-		}
+		encounterManager.encountEnemy();
 	}
 
 	private boolean willBeArrived() {
@@ -123,6 +97,10 @@ public class FieldManager {
 
 	public String getArrowName() {
 		return fieldInfo.getArrowName();
+	}
+
+	public void goInField() {
+		moveField();
 	}
 
 }
