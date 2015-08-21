@@ -37,7 +37,7 @@
     ],
     "specialEvents" : [
       	{
-      		"eventNpc" : "kadilla_castle",
+      		"eventNpc" : "kadilla_story",
       		"eventNumber" : "999"
       	}
       ],
@@ -218,33 +218,26 @@
         "targetComponent": "카딜라 성"
       },
       {
-        "nextSectionNumber": "113",
+        "nextSectionNumber": "301",
         "eventType": "select_component",
-        "targetComponent": "바이칼 성"
+        "targetComponent": "수정 협곡"
       },
       {
         "nextSectionNumber": "114",
         "eventType": "select_component",
-        "targetComponent": "미라지 포트"
+        "targetComponent": "바이칼 성"
       },
       {
         "nextSectionNumber": "115",
         "eventType": "select_component",
-        "targetComponent": "레드로즈 성"
+        "targetComponent": "미라지 포트"
       },
       {
         "nextSectionNumber": "116",
         "eventType": "select_component",
-        "targetComponent": "수정 협곡"
+        "targetComponent": "레드로즈 성"
       }
-    ]
-  },
-  "113": {
-    "sequencialEvents": [
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "25"
-      }
+      
     ]
   },
   "114": {
@@ -285,7 +278,8 @@
         "targetComponent": "kadilla_castle"
       }
     ]
-  },"202":{
+  },
+  "202":{
     "sequencialEvents": [
       {
         "eventNpc": "kadilla_castle",
@@ -294,6 +288,21 @@
       {
         "eventNpc" : "kadilla_castle",
         "eventNumber" : "4"
+      }
+    ]
+  },
+  "301": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "25"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "302",
+        "eventType": "move_arrow",
+        "targetComponent": "2to13"
       }
     ]
   }

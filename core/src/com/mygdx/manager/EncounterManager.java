@@ -20,12 +20,13 @@ public class EncounterManager {
 
 	public void encountEnemy() {
 		// FIXME
-		if (fieldManager.getFieldType() != FieldTypeEnum.BRIDGE) {
+		if (!fieldManager.getFieldType().equals(FieldTypeEnum.BRIDGE)) {
 			Monster selectedMonster = monsterManager.createMonster();
 			battleManager.startBattle(selectedMonster);
 		}
 		battleManager.setBeforePosition(PositionEnum.FIELD);
 	}
+
 	// FIXME 전투 랜덤으로 발생, 기획에 맞게 바꿀 것
 	public boolean isBattleOccured() {
 		return random.nextBoolean();
