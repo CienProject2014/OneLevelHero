@@ -106,8 +106,8 @@
       },
       {
         "itemIdentifier": "exp_points_label",
-        "x": 190,
-        "y": 305,
+        "x": 215,
+        "y": 303,
         "zIndex": 11,
         "layerName": "Default",
         "tint": [

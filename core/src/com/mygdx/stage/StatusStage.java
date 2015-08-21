@@ -76,16 +76,7 @@ public class StatusStage extends BaseOverlapStage {
 	public void act(float delta) {
 		setCharacterBustImage(partyManager, sceneConstants);
 		setLabel(partyManager, sceneConstants);
-		Array<String> characterChangeList = sceneConstants.get(CHARACTER_CHANGE);
-		for (int i = 0; i < 4; i++) {
-			CompositeItem compositeItem2 = sceneLoader.getRoot().getCompositeById(characterChangeList.get(i));
-			if (partyManager.getPartyList().get(i) == currentSelectedHero) {
-				setCompositeItemVisibility(compositeItem2, PRESSED_VISIBILITY);
-			} else {
-				setCompositeItemVisibility(compositeItem2, DEFAULT_VISIBILITY);
-			}
-
-		}
+		setCharacterStatusImage(partyManager, sceneConstants);
 
 	}
 
@@ -173,21 +164,31 @@ public class StatusStage extends BaseOverlapStage {
 
 		for (int i = 0; i < 4; i++) {
 			final CompositeItem compositeItem2 = sceneLoader.getRoot().getCompositeById(characterChangeList.get(i));
-			compositeItem2.setTouchable(Touchable.enabled);
 			setCompositeItemVisibility(compositeItem2, DEFAULT_VISIBILITY);
-			final int selectedIndex = i;
-			compositeItem2.addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					setCompositeItemVisibility(compositeItem2, PRESSED_VISIBILITY);
-					setCurrentSelectedHero(partyManager.getPartyList().get(selectedIndex));
-					return true;
-				}
+			compositeItem2.setTouchable(Touchable.enabled);
 
-				@Override
-				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			if (partyManager.getPartyList().size() > i) {
+				final Hero imageHero = partyManager.getPartyList().get(i);
+				compositeItem2.addListener(new InputListener() {
+					@Override
+					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+						setCurrentSelectedHero(imageHero);
+						return true;
+					}
+
+					@Override
+					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					}
+				});
+
+				if (imageHero == currentSelectedHero) {
+					setCompositeItemVisibility(compositeItem2, PRESSED_VISIBILITY);
+				} else {
+					setCompositeItemVisibility(compositeItem2, DEFAULT_VISIBILITY);
 				}
-			});
+			} else {
+				compositeItem2.setVisible(false);
+			}
 		}
 
 	}
