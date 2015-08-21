@@ -1,0 +1,92 @@
+{
+"MenuStage" : {
+    "tButtonWidth": 630,
+    "tButtonHeight": 195,
+    "tButtonSpace": 43,
+    "tTablePadTop":85,
+    "tTablePadRight":15
+},
+"MovingStage" : {
+    "ButtonWidth": 335,
+    "ButtonHeight": 120,
+    "ButtonSpace": 55,
+    "TablePadBottom":365,
+    "TablePadRight":15
+},
+  "BattleStage": {
+	"RMenuTablePadTop": 161,
+	"RMenuTablePadBottom": 15,
+	"RMenuTablePadRight": 15,
+	"RButtonWidth": 138,
+	"RButtonHeight": 138,
+	"RButtonSpace": 15,
+	"gridPadTop": 228,
+	"gridTableWidthSmall": 640,
+	"gridTableHeightSmall": 640,
+	"gridTableWidthMedium": 640,
+	"gridTableHeightMedium": 640,
+	"gridTableWidthLarge": 640,
+	"gridTableHeightLarge": 640,
+	"gridTileWidth": 128,
+	"gridTileHeight": 128,
+	"TurnTableWidth": 137,
+	"TurnTableHeight": 137
+  },
+  "CharacterUiStage": {
+	"heroTablePadLeft": 13,
+	"heroTablePadBottom": 58,
+	"heroImageWidth": 158,
+	"heroImageHeight": 158,
+	"heroBarSpace": 4,
+	"heroBarHorizontalSpace": 6,
+	"barTableWidth": 144,
+	"buffTableWidth": 138,
+	"buffTableHeight": 30
+  },
+  "MonsterStage": {   
+    "monsterPadTop": 212,
+    "monsterTableWidth": 640,
+    "monsterTableHeight": 640,
+    "MonsterBarSpace" : 20,
+    "hpTableWidth" : 666,
+    "hpTablePadBottom" : 128
+  },
+  "GameUiStage": {
+	"padLeft": 15,
+	"padTop": 15,
+	"buttonPadRight": 14,
+	"TButtonWidthSmall": 145,
+	"TButtonHeightSmall": 131,
+	"TButtonWidthLarge": 620,
+	"TButtonHeightLarge": 131
+  },
+  "GameObjectPopup":{
+    "questionLabelX" : 55,
+    "questionLabelY" : 140,
+    "questionLabelWidth" : 750,
+    "questionLabelHeight" : 340,
+  	"popupWidth" : 860,
+  	"popupHeight" : 480,
+  	"buttonHeight" : 90,
+  	"buttonPadBottom" : 50,
+  	"closeButtonPadLeft" : 50,
+  	"equipButtonPadLeft" : 30
+  },
+  "EventStage": {
+	"scriptWidth": 1920,
+	"scriptHeight": 365,
+	"scriptPadBottom": 45,
+	"scriptPadLeft" : 525,
+	"scriptTitleWidth": 870,
+	"scriptTitleHeight": 40,
+	"scriptTitlePadBottom": 11,
+	"scriptContentWidth": 870,
+	"scriptContentHeight": 230,	
+	"scriptContentPadTop": 30,
+	"talkerPadLeft": 0,
+	"talkerWidth": 525,
+	"talkerHeight": 914,
+	"statusWidth" : 300,
+	"statusHeight" : 550
+  }
+}

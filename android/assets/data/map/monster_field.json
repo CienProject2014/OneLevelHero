@@ -1,0 +1,48 @@
+[
+  {
+  	"fieldType" : "bridge",
+  	"fieldMonsterList" : []
+  },
+  {
+    "fieldType": "grassland",
+    "fieldMonsterList": [
+      "black_gnoll",
+      "twinhead"
+    ]
+  },
+  {
+    "fieldType": "elven_forest",
+    "fieldMonsterList": [
+      "kentaurous_spear",
+      "ent"
+    ]
+  },
+  {
+    "fieldType": "blackwood_forest",
+    "fieldMonsterList": [
+      "kentaurous_spear",
+      "ent"
+    ]
+  },
+  {
+    "fieldType": "beach",
+    "fieldMonsterList": [
+      "mercensary",
+      "assassin_girl"
+    ]
+  },
+  {
+    "fieldType": "kadilla_mountain",
+    "fieldMonsterList": [
+      "troll",
+      "aonin"
+    ]
+  },
+  {
+    "fieldType": "blackwood_mountain",
+    "fieldMonsterList": [
+      "troll",
+      "aonin"
+    ]
+  }
+]

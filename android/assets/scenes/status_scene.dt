@@ -4,8 +4,6 @@
     "sImages": [
       {
         "itemIdentifier": "background",
-        "x": 232.99988,
-        "y": 48.49997,
         "layerName": "Default",
         "tint": [
           1,
@@ -13,12 +11,55 @@
           1,
           1
         ],
-        "imageName": "background"
+        "imageName": "statusuibase"
       },
       {
-        "itemIdentifier": "large_image",
-        "x": 290.00006,
-        "y": 252.5,
+        "itemIdentifier": "exp_gauge",
+        "x": 60,
+        "y": 281,
+        "zIndex": 10,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "statusuilevelbar"
+      },
+      {
+        "itemIdentifier": "exp",
+        "x": 122,
+        "y": 292,
+        "zIndex": 11,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "statusuiexp"
+      },
+      {
+        "itemIdentifier": "level",
+        "y": 281,
+        "zIndex": 27,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "statusuilevel"
+      }
+    ],
+    "sLabels": [
+      {
+        "itemIdentifier": "fatigue",
+        "x": 70,
+        "y": 890,
         "zIndex": 1,
         "layerName": "Default",
         "tint": [
@@ -27,13 +68,16 @@
           1,
           1
         ],
-        "imageName": "largehero"
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 210,
+        "height": 40
       },
       {
-        "itemIdentifier": "background1",
-        "x": 867,
-        "y": 790.49994,
-        "zIndex": 2,
+        "itemIdentifier": "experience",
+        "x": 185,
+        "y": 290,
+        "zIndex": 12,
         "layerName": "Default",
         "tint": [
           1,
@@ -41,118 +85,15 @@
           1,
           1
         ],
-        "imageName": "name"
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 130,
+        "height": 22
       },
       {
-        "itemIdentifier": "background2",
-        "x": 868,
-        "y": 318.5001,
-        "zIndex": 3,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "level"
-      },
-      {
-        "itemIdentifier": "background3",
-        "x": 866,
-        "y": 115.500015,
-        "zIndex": 4,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "eresist"
-      }
-    ],
-    "sLabels": [
-      {
-        "itemIdentifier": "Name_Text",
-        "x": 1048,
-        "y": 887.5,
-        "zIndex": 13,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "Name_Text",
-        "style": "malgun",
-        "size": 42,
-        "align": 8,
-        "width": 500,
-        "height": 30
-      },
-      {
-        "itemIdentifier": "Fatigue_Text",
-        "x": 1101,
-        "y": 831.5,
-        "zIndex": 14,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "Fatigue_Text",
-        "style": "malgun",
-        "size": 42,
-        "align": 8,
-        "width": 500,
-        "height": 30
-      },
-      {
-        "itemIdentifier": "Hp_Text",
-        "x": 1051,
-        "y": 666.5,
-        "zIndex": 15,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "Hp_Text",
-        "style": "malgun",
-        "size": 42,
-        "align": 8,
-        "width": 500,
-        "height": 30
-      },
-      {
-        "itemIdentifier": "Exp_Text",
-        "x": 1213,
-        "y": 608.5,
-        "zIndex": 16,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "Exp_Text",
-        "style": "malgun",
-        "size": 42,
-        "align": 8,
-        "width": 500,
-        "height": 30
-      },
-      {
-        "itemIdentifier": "Atk_Text",
-        "x": 1213,
-        "y": 551.5,
+        "itemIdentifier": "name",
+        "x": 310,
+        "y": 155,
         "zIndex": 17,
         "layerName": "Default",
         "tint": [
@@ -161,17 +102,15 @@
           1,
           1
         ],
-        "text": "Atk_Text",
-        "style": "malgun",
-        "size": 42,
-        "align": 8,
-        "width": 500,
-        "height": 30
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 250,
+        "height": 50
       },
       {
-        "itemIdentifier": "M.Atk_Text",
-        "x": 1211,
-        "y": 496.5,
+        "itemIdentifier": "health_point_state",
+        "x": 310,
+        "y": 80.000015,
         "zIndex": 18,
         "layerName": "Default",
         "tint": [
@@ -180,17 +119,15 @@
           1,
           1
         ],
-        "text": "M.Atk_Text",
-        "style": "malgun",
-        "size": 42,
-        "align": 8,
-        "width": 500,
-        "height": 30
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 250,
+        "height": 50
       },
       {
-        "itemIdentifier": "Def_Text",
-        "x": 1213,
-        "y": 441.5,
+        "itemIdentifier": "fire_resistance",
+        "x": 945,
+        "y": 88.00001,
         "zIndex": 19,
         "layerName": "Default",
         "tint": [
@@ -199,17 +136,15 @@
           1,
           1
         ],
-        "text": "Def_Text",
-        "style": "malgun",
-        "size": 42,
-        "align": 8,
-        "width": 500,
-        "height": 30
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 50,
+        "height": 50
       },
       {
-        "itemIdentifier": "M.Def_Text",
-        "x": 1213,
-        "y": 388.5,
+        "itemIdentifier": "water_resistance",
+        "x": 1248,
+        "y": 88.00001,
         "zIndex": 20,
         "layerName": "Default",
         "tint": [
@@ -218,17 +153,15 @@
           1,
           1
         ],
-        "text": "M.Def_Text",
-        "style": "malgun",
-        "size": 42,
-        "align": 8,
-        "width": 500,
-        "height": 30
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 50,
+        "height": 50
       },
       {
-        "itemIdentifier": "Spd_Text",
-        "x": 1213,
-        "y": 330.5,
+        "itemIdentifier": "electric_resistance",
+        "x": 1551,
+        "y": 88,
         "zIndex": 21,
         "layerName": "Default",
         "tint": [
@@ -237,17 +170,15 @@
           1,
           1
         ],
-        "text": "Spd_Text",
-        "style": "malgun",
-        "size": 42,
-        "align": 8,
-        "width": 500,
-        "height": 30
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 50,
+        "height": 50
       },
       {
-        "itemIdentifier": "Fire_Text",
-        "x": 1025,
-        "y": 140.5,
+        "itemIdentifier": "attack",
+        "x": 1265,
+        "y": 842,
         "zIndex": 22,
         "layerName": "Default",
         "tint": [
@@ -256,17 +187,15 @@
           1,
           1
         ],
-        "text": "Fire_Text",
-        "style": "malgun",
-        "size": 36,
-        "align": 8,
-        "width": 150,
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 160,
         "height": 50
       },
       {
-        "itemIdentifier": "Water_Text",
-        "x": 1255,
-        "y": 135.5,
+        "itemIdentifier": "magic_attack",
+        "x": 1265,
+        "y": 717,
         "zIndex": 23,
         "layerName": "Default",
         "tint": [
@@ -275,17 +204,15 @@
           1,
           1
         ],
-        "text": "Water_Text",
-        "style": "malgun",
-        "size": 36,
-        "align": 8,
-        "width": 200,
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 160,
         "height": 50
       },
       {
-        "itemIdentifier": "Electronic_Text",
-        "x": 1574,
-        "y": 135.5,
+        "itemIdentifier": "defense",
+        "x": 1265,
+        "y": 592,
         "zIndex": 24,
         "layerName": "Default",
         "tint": [
@@ -294,19 +221,236 @@
           1,
           1
         ],
-        "text": "Electronic_Text",
-        "style": "malgun",
-        "size": 36,
-        "align": 8,
-        "width": 200,
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 160,
         "height": 50
+      },
+      {
+        "itemIdentifier": "magic_defense",
+        "x": 1265,
+        "y": 467,
+        "zIndex": 25,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 160,
+        "height": 50
+      },
+      {
+        "itemIdentifier": "speed",
+        "x": 1265,
+        "y": 342,
+        "zIndex": 26,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 160,
+        "height": 50
+      },
+      {
+        "itemIdentifier": "level",
+        "x": 44,
+        "y": 330,
+        "zIndex": 28,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 31,
+        "height": 9
       }
     ],
     "sComposites": [
       {
-        "itemIdentifier": "close",
-        "x": 8.999908,
-        "y": 49.500015,
+        "itemIdentifier": "worldmap_button",
+        "x": 1720,
+        "y": 34,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuibuttonworld"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuiacbuttonworld"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "ending_button",
+        "x": 1722,
+        "y": 157,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuibuttonending"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuiacbuttonending"
+            },
+            {
+              "itemIdentifier": "normal2",
+              "zIndex": 2,
+              "layerName": "normal2",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuibuttonparty"
+            },
+            {
+              "itemIdentifier": "pressed2",
+              "zIndex": 3,
+              "layerName": "pressed2",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuiacbuttonparty"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            },
+            {
+              "layerName": "normal2"
+            },
+            {
+              "layerName": "pressed2"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "change_01",
+        "x": 1743,
+        "y": 340,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuiparty",
+              "itemIdentifier": "character_image"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "change_02",
+        "x": 1743,
+        "y": 483,
         "zIndex": 5,
         "layerName": "Default",
         "tint": [
@@ -325,7 +469,8 @@
                 1,
                 1
               ],
-              "imageName": "close"
+              "imageName": "statusuiparty",
+		"itemIdentifier": "character_image"
             }
           ],
           "layers": [
@@ -342,9 +487,9 @@
         }
       },
       {
-        "itemIdentifier": "skill",
-        "x": 9.9999695,
-        "y": 288.49997,
+        "itemIdentifier": "change_03",
+        "x": 1743,
+        "y": 626,
         "zIndex": 6,
         "layerName": "Default",
         "tint": [
@@ -363,7 +508,8 @@
                 1,
                 1
               ],
-              "imageName": "skill"
+              "imageName": "statusuiparty",
+	"itemIdentifier": "character_image"
             }
           ],
           "layers": [
@@ -380,9 +526,9 @@
         }
       },
       {
-        "itemIdentifier": "ending_list",
-        "x": 287,
-        "y": 102.5,
+        "itemIdentifier": "change_04",
+        "x": 1743,
+        "y": 769,
         "zIndex": 7,
         "layerName": "Default",
         "tint": [
@@ -401,7 +547,8 @@
                 1,
                 1
               ],
-              "imageName": "endinglist"
+              "imageName": "statusuiparty",
+		"itemIdentifier": "character_image"
             }
           ],
           "layers": [
@@ -418,10 +565,10 @@
         }
       },
       {
-        "itemIdentifier": "image1",
-        "x": 1727,
-        "y": 808.5,
-        "zIndex": 8,
+        "itemIdentifier": "back_button",
+        "x": 34,
+        "y": 960,
+        "zIndex": 13,
         "layerName": "Default",
         "tint": [
           1,
@@ -432,7 +579,7 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "image1",
+              "itemIdentifier": "normal",
               "layerName": "Default",
               "tint": [
                 1,
@@ -440,7 +587,19 @@
                 1,
                 1
               ],
-              "imageName": "hero1"
+              "imageName": "statusuitbback"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuitbacback"
             }
           ],
           "layers": [
@@ -457,10 +616,10 @@
         }
       },
       {
-        "itemIdentifier": "image2",
-        "x": 1726,
-        "y": 645.5,
-        "zIndex": 9,
+        "itemIdentifier": "attribute",
+        "x": 308,
+        "y": 960,
+        "zIndex": 14,
         "layerName": "Default",
         "tint": [
           1,
@@ -471,7 +630,7 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "image2",
+              "itemIdentifier": "normal",
               "layerName": "Default",
               "tint": [
                 1,
@@ -479,121 +638,19 @@
                 1,
                 1
               ],
-              "imageName": "hero2"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
+              "imageName": "statusuitbnonstatus"
             },
             {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "image3",
-        "x": 1726,
-        "y": 465.5,
-        "zIndex": 10,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
               "tint": [
                 1,
                 1,
                 1,
                 1
               ],
-              "imageName": "hero3"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "image4",
-        "x": 1726,
-        "y": 285.5,
-        "zIndex": 11,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "hero4"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "image5",
-        "x": 1725,
-        "y": 111.499985,
-        "zIndex": 12,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "hero5"
+              "imageName": "statusuitbacstatus"
             }
           ],
           "layers": [
@@ -611,9 +668,9 @@
       },
       {
         "itemIdentifier": "inventory",
-        "x": 8.999939,
-        "y": 526.5,
-        "zIndex": 25,
+        "x": 839,
+        "y": 960,
+        "zIndex": 15,
         "layerName": "Default",
         "tint": [
           1,
@@ -624,7 +681,7 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "inventory",
+              "itemIdentifier": "normal",
               "layerName": "Default",
               "tint": [
                 1,
@@ -632,7 +689,19 @@
                 1,
                 1
               ],
-              "imageName": "inventory"
+              "imageName": "statusuitbnoninventory"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuitbacinventory"
             }
           ],
           "layers": [
@@ -649,10 +718,10 @@
         }
       },
       {
-        "itemIdentifier": "status",
-        "x": 5.999939,
-        "y": 767.5,
-        "zIndex": 26,
+        "itemIdentifier": "skill",
+        "x": 1370,
+        "y": 960,
+        "zIndex": 16,
         "layerName": "Default",
         "tint": [
           1,
@@ -663,9 +732,7 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "status",
-              "scaleX": 1.0086956,
-              "scaleY": 0.99999976,
+              "itemIdentifier": "normal",
               "layerName": "Default",
               "tint": [
                 1,
@@ -673,7 +740,19 @@
                 1,
                 1
               ],
-              "imageName": "status"
+              "imageName": "statusuitbnonskill"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "statusuitbacskill"
             }
           ],
           "layers": [
@@ -692,11 +771,7 @@
     ],
     "layers": [
       {
-        "layerName": "Default",
-        "isLocked": true
-      },
-      {
-        "layerName": "text_layer"
+        "layerName": "Default"
       }
     ]
   },

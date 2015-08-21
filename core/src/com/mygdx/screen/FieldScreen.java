@@ -1,13 +1,17 @@
 package com.mygdx.screen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
+import com.mygdx.manager.FieldManager;
 
 public class FieldScreen extends BaseScreen {
+	@Autowired
+	private FieldManager fieldManager;
 
-	//
 	private Stage gameUiStage, fieldStage;
 
 	@Override
@@ -26,10 +30,6 @@ public class FieldScreen extends BaseScreen {
 
 	@Override
 	public void show() {
-		/*
-		 * movingLabel = new Label("Point", uiComponentAssets.getSkin());
-		 * movingLabel.setColor(0, 0, 0, 1);
-		 */
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		fieldStage = stageFactory.makeStage(StageEnum.FIELD);

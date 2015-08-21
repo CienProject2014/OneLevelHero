@@ -1,0 +1,26 @@
+{
+  "empty_item" : {
+  	"itemType" : "accessory",
+  	"name" : "미 장착",
+  	"itemPath" : "empty_item"
+  },
+  "garnet_pendant": {
+    "itemType" : "accessory",
+    "name": "가넷 팬던트",
+    "itemPath" : "garnet_pendant",
+    "category": "장신구",
+    "grade": "일반",
+    "effectStatus": {},
+       "effectStatusList" : [],
+    "description": "활력을 줄 것 같은 붉은 가넷 팬던트이다."
+  },
+  "sapphire_pendant": {
+    "itemType" : "accessory",
+    "name": "사파이어 팬던트",
+    "category": "장신구",
+    "grade": "일반",
+    "effectStatusList" : [],
+    "effectStatus": {},
+    "description": "빛나는 사파이어가 중심에 박혀 있는 목걸이."
+  }
+}

@@ -28,7 +28,37 @@
         1
       ],
       "physicsPropertiesVO": {},
+      "sceneName": "inventory_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "oberon_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
       "sceneName": "worldmap_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "cobweb_library_scene"
     },
      {
       "ambientColor": [
@@ -38,7 +68,37 @@
         1
       ],
       "physicsPropertiesVO": {},
-      "sceneName": "cobweb_library_scene"
+      "sceneName": "dungeon_0door_scene"
+    },
+     {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "dungeon_1door_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "dungeon_2door_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "dungeon_3door_scene"
     },
     {
       "ambientColor": [
@@ -88,7 +148,37 @@
         1
       ],
       "physicsPropertiesVO": {},
+      "sceneName": "vaical_castle_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
       "sceneName": "skill_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "winterfall_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "kadilla_castle_scene"
     },
     {
       "ambientColor": [
@@ -108,7 +198,47 @@
         1
       ],
       "physicsPropertiesVO": {},
-      "sceneName": "mawang_castle_scene"
+      "sceneName": "southcape_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "cobweb_inn_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "redrose_castle_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "mirage_port_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "middle_ridge_scene"
     },
     {
       "ambientColor": [
@@ -119,6 +249,16 @@
       ],
       "physicsPropertiesVO": {},
       "sceneName": "blackwood_forest_dungeon_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "mawang_castle_scene"
     }
   ],
   "originalResolution": {

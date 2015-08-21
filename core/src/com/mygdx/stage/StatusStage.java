@@ -1,108 +1,82 @@
 package com.mygdx.stage;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Array;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.model.Hero;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.PartyManager;
+import com.mygdx.manager.TextureManager;
+import com.mygdx.model.unit.Hero;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 import com.uwsoft.editor.renderer.data.LabelVO;
 
 public class StatusStage extends BaseOverlapStage {
+	public static final String SCENE_NAME = "status_scene";
+	public final String CHARACTER_STATUS_IMAGE = "character_status_image";
+	public final String CHARACTER_IMAGE = "character_image";
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private PartyManager partyManager;
+	@Autowired
+	private ListenerFactory listenerFactory;
+	@Autowired
+	private MovingManager movingManager;
+	@Autowired
+	private BattleManager battleManager;
 	private Camera cam;
 	private CompositeItem closeButton;
 	private ImageItem largeImage;
 	private List<LabelVO> labels;
 	private Image[] heroLargeImage;
+	private CompositeItem inventoryButton;
+	private final String STATUS_LABEL_NAME = "status_label";
+	private CompositeItem backButton;
 
 	public Stage makeStage() {
+		HashMap<String, Array<String>> sceneConstants = constantsAssets
+				.getSceneConstants(SCENE_NAME);
 		initSceneLoader(StaticAssets.rm);
-		sceneLoader.loadScene("status_scene");
+		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
 		setCamera();
-		labelSet();
-		imageSet();
+		setLabel(partyManager, sceneConstants);
+		setButton();
+		setCharacterStatusImage(partyManager, sceneConstants);
+		setTabButton();
+		addListener();
 
 		return this;
 	}
 
-	private void labelSet() {
-		labels = sceneLoader.getRoot().dataVO.composite.sLabels;
-		LabelItem labelItem = sceneLoader.getRoot().getLabelById(
-				labels.get(0).itemIdentifier);
-		labelItem.setText(partyManager.getBattleMemberList()
-				.get(partyManager.getSelectedIndex()).getName());
-
-		for (int i = 1; i < labels.size(); i++) {
-			labelItem = sceneLoader.getRoot().getLabelById(
-					labels.get(i).itemIdentifier);
-			labelItem.setText(partyManager.getBattleMemberList()
-					.get(partyManager.getSelectedIndex()).getStatus()
-					.getStatusList()[i]);
-		}
-	}
-
-	private void imageSet() {
-		largeImage = sceneLoader.getRoot().getImageById("large_image");
-		largeImage.setVisible(false);
-		List<Hero> currentPartyList = partyManager.getPartyList();
-		heroLargeImage = new Image[currentPartyList.size()];
-		List<CompositeItem> partyListImage = new ArrayList<CompositeItem>();
-
-		for (int i = 0; i < 5; i++) {
-			int index = i + 1;
-			partyListImage.add(sceneLoader.getRoot().getCompositeById(
-					"image" + index));
-			partyListImage.get(i).setVisible(false);
-			/*
-			 * partyListImage.setTouchable(Touchable.disabled);
-			 * heroSmallImage[i].setSize(partyListImage.getWidth(),
-			 * partyListImage.getHeight());
-			 * heroSmallImage[i].setPosition(partyListImage.getX(),
-			 * partyListImage.getY()); addActor(heroSmallImage[i]);
-			 */
-		}
-
-		for (int i = 0; i < currentPartyList.size(); i++) {
-			final int index = i;
-			heroLargeImage[i] = new Image(currentPartyList.get(i)
-					.getFaceTexture());
-			partyListImage.get(i).setVisible(true);
-			partyListImage.get(i).setTouchable(Touchable.enabled);
-			partyListImage.get(i).addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					return true;
-				}
-
-				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
-					partyManager.setSelectedIndex(index);
-					screenFactory.show(ScreenEnum.STATUS);
-				}
-			});
-		}
-
-		heroLargeImage[partyManager.getSelectedIndex()].setSize(
-				largeImage.getWidth(), largeImage.getHeight());
-		heroLargeImage[partyManager.getSelectedIndex()].setPosition(
-				largeImage.getX(), largeImage.getY());
-		addActor(heroLargeImage[partyManager.getSelectedIndex()]);
-		closeButton = sceneLoader.getRoot().getCompositeById("close");
-		closeButton.setTouchable(Touchable.enabled);
-		closeButton.addListener(new InputListener() {
+	private void setTabButton() {
+		inventoryButton = sceneLoader.getRoot().getCompositeById("inventory");
+		inventoryButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -112,14 +86,76 @@ public class StatusStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.VILLAGE);
+				screenFactory.show(ScreenEnum.INVENTORY);
+			}
+
+		});
+	}
+
+	private void setButton() {
+		backButton = sceneLoader.getRoot().getCompositeById("back_button");
+	}
+
+	private void addListener() {
+		backButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				if (battleManager.isInBattle()) {
+					screenFactory.show(ScreenEnum.BATTLE);
+				} else {
+					movingManager.goCurrentPosition();
+				}
 			}
 		});
 	}
 
+	private void setLabel(PartyManager partyManager,
+			HashMap<String, Array<String>> sceneConstants) {
+		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
+		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name");
+		nameLabel.setText(currentSelectedHero.getName());
+		nameLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+				Color.WHITE));
+		nameLabel.setFontScale(1.0f);
+		nameLabel.setTouchable(Touchable.disabled);
+		LabelItem fatigueLabel = sceneLoader.getRoot().getLabelById("fatigue");
+		fatigueLabel.setText(String.valueOf(partyManager.getFatigue()));
+		fatigueLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+				Color.WHITE));
+		fatigueLabel.setFontScale(1.0f);
+		fatigueLabel.setTouchable(Touchable.disabled);
+		Array<String> labelList = sceneConstants.get(STATUS_LABEL_NAME);
+		for (int i = 0; i < labelList.size; i++) {
+			LabelItem labelItem = sceneLoader.getRoot().getLabelById(
+					labelList.get(i));
+			labelItem.setText(currentSelectedHero.getStatus().getStatusList()
+					.get(i));
+			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(),
+					Color.WHITE));
+			labelItem.setFontScale(1.0f);
+			labelItem.setTouchable(Touchable.disabled);
+		}
+	}
+
+	private void setCharacterStatusImage(PartyManager partyManager,
+			HashMap<String, Array<String>> sceneConstants) {
+		Hero currentSelectedHero = partyManager.getCurrentSelectedHero();
+		Array<String> characterStatusList = sceneConstants
+				.get(CHARACTER_STATUS_IMAGE);
+		for (int i = 0; i < partyManager.getPartyList().size(); i++) {
+			CompositeItem compositeItem = sceneLoader.getRoot()
+					.getCompositeById(characterStatusList.get(i));
+			ImageItem characterStatusImage = compositeItem.getImageById(CHARACTER_IMAGE);
+			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
+					TextureManager.getStatusTexture(partyManager.getPartyList()
+							.get(i).getFacePath()))));
+		}
+	}
+
 	private void setCamera() {
-		cam = new OrthographicCamera(1920f, 1080f);
-		cam.position.set(1920 / 2, 1080 / 2, 0);
+		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH,
+				StaticAssets.BASE_WINDOW_HEIGHT);
+		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		getViewport().setCamera(cam);
 	}
 }

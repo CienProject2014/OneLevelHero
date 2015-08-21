@@ -1,115 +1,279 @@
 {
-  "mawang": {
-	"name": "mawang",
-	"sizeType": "medium",
-	"elementType": "fire",
-	"status": {
-      "attack": 25,
-	  "magicAttack": 10,
-      "defense": 10,
-	  "magicDefense" : 10,
-      "healthPoint": 50,
-	  "maxHealthPoint": 50,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "monster"
+  "mawang_01": {
+    "name": "전설의 대마왕",
+    "facePath": "mawang_01",
+    "sizeType": "medium",
+    "elementType": "fire",
+	"hitArea" : [
+		[0, 200, 200, 200, 0],
+		[0, 80, 100, 80, 0],
+		[0, 0, 100, 0, 0],
+		[0, 5, 100, 5, 0],
+		[0, 5, 0, 5, 0]
+	],
+    "status": {
+      "attack": 300,
+      "magicAttack": 300,
+      "defense": 200,
+      "magicDefense": 200,
+      "healthPoint": 10000,
+      "maxHealthPoint": 10000,
+      "speed": 10,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
     },
-    "skillList" : ["cut_01"]
+    "skillList": [
+      "cut_01"
+    ]
   },
   "assassin_girl": {
-    "name": "assassin_girl",
-	"sizeType": "small",
-	"elementType": "fire",
+    "facePath": "assassin_girl",
+    "name": "단검을 든 소녀",
+    "sizeType": "small",
+    "elementType": "fire",
     "status": {
-      "attack": 25,
-	  "magicAttack": 10,
-      "defense": 10,
-	  "magicDefense" : 10,
-      "healthPoint": 50,
-	  "maxHealthPoint": 50,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "monster"
+      "attack": 100,
+      "magicAttack": 0,
+      "defense": 60,
+      "magicDefense": 0,
+      "healthPoint": 1000,
+      "maxHealthPoint": 1000,
+      "speed": 50,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
     },
-    "skillList" : ["cut_01"]
+    "skillList": [
+      "cut_01"
+    ]
   },
-  "Monster2": {
-    "name": "Monster2",
-	"sizeType": "small",
-	"elementType": "water",
+  "black_gnoll": {
+    "facePath": "black_gnoll",
+    "name": "검정 놀",
+    "sizeType": "medium",
+    "elementType": "none",
     "status": {
-      "attack": 10,
-	  "magicAttack": 10,
-      "defense": 10,
-	  "magicDefense" : 10,
-      "healthPoint": 50,
-	  "maxHealthPoint": 50,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "attack": 100,
+      "magicAttack": 0,
+      "defense": 60,
+      "magicDefense": 0,
+      "healthPoint": 1000,
+      "maxHealthPoint": 1000,
+      "speed": 50,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
     },
-    
-    "skillList": ["cut_01"]
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
   },
-  "Monster3": {
-    "name": "Monster3",
-	"sizeType": "medium",
-	"elementType": "earth",
+  "twinhead": {
+    "facePath": "twinhead",
+    "name": "멍청한 트윈헤드",
+    "sizeType": "medium",
+    "elementType": "none",
+	"hitArea" : [
+		[0, 230, 150, 200, 0],
+		[20, 100, 100, 100, 50],
+		[50, 50, 100, 100, 100],
+		[0, 10, 100, 100, 1000],
+		[0, 0, 120, 120, 0]
+	],
     "status": {
-      "attack": 10,
-	  "magicAttack": 10,
-      "defense": 10,
-	  "magicDefense" : 10,
-      "healthPoint": 50,
-	  "maxHealthPoint": 50,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "attack": 160,
+      "magicAttack": 0,
+      "defense": 80,
+      "magicDefense": 0,
+      "healthPoint": 1500,
+      "maxHealthPoint": 1500,
+      "speed": 50,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
     },
-    
-    "skillList": ["cut_01"]
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
   },
-  "b2": {
-    "name": "b2",
-	"sizeType": "large",
-	"elementType": "earth",
+  "mercensary": {
+    "facePath": "mercensary",
+    "name": "질 나쁜 용병",
+    "sizeType": "medium",
+    "elementType": "none",
+	"hitArea" : [
+		[0, 20, 200, 20, 0],
+		[0, 80, 80, 100, 0],
+		[0, 100, 80, 60, 0],
+		[0, 80, 100, 0, 0],
+		[0, 80, 20, 80, 0]
+	],
     "status": {
-      "attack": 10,
-	  "magicAttack": 10,
-      "defense": 10,
-	  "magicDefense" : 10,
-      "healthPoint": 50,
-	  "maxHealthPoint": 50,
-      "speed": 40,
-	  "fatigue": 0,
-	  "experience": 0,
-	  "maxExperience": 1220,
-      "fireRegistance" : 0,
-      "waterRegistance" : 0,
-      "earthRegistance" : 0,
-	  "job": "warrior"
+      "attack": 180,
+      "magicAttack": 0,
+      "defense": 150,
+      "magicDefense": 50,
+      "healthPoint": 3800,
+      "maxHealthPoint": 3800,
+      "speed": 60,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
     },
-    
-    "skillList": ["cut_01"]
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "troll": {
+    "facePath": "troll",
+    "name": "트로올",
+    "sizeType": "medium",
+    "elementType": "none",
+	"hitArea" : [
+		[0, 0, 120, 30, 0],
+		[0, 100, 100, 100, 0],
+		[0, 100, 150, 100, 0],
+		[0, 20, 150, 150, 0],
+		[0, 0, 80, 80, 0]
+	],
+    "status": {
+      "attack": 230,
+      "magicAttack": 0,
+      "defense": 180,
+      "magicDefense": 50,
+      "healthPoint": 3700,
+      "maxHealthPoint": 3700,
+      "speed": 50,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "aonin": {
+    "facePath": "aonin",
+    "name": "아오닌",
+    "sizeType": "medium",
+    "elementType": "none",
+	"hitArea" : [
+		[0, 0, 150, 0, 0],
+		[0, 0, 100, 0, 0],
+		[0, 0, 100, 0, 0],
+		[0, 0, 100, 0, 0],
+		[0, 0, 100, 0, 0]
+	],
+    "status": {
+      "attack": 20,
+      "magicAttack": 250,
+      "defense": 20,
+      "magicDefense": 160,
+      "healthPoint": 8000,
+      "maxHealthPoint": 8000,
+      "speed": 50,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "ent": {
+    "facePath": "ent",
+    "name": "엔트",
+    "sizeType": "medium",
+    "elementType": "none",
+	"hitArea" : [
+		[0, 20, 50, 50, 50],
+		[0, 0, 100, 100, 50],
+		[50, 100, 100, 100, 0],
+		[0, 200, 100, 100, 0],
+		[40, 100, 100, 100, 0]
+	],
+    "status": {
+      "attack": 130,
+      "magicAttack": 190,
+      "defense": 50,
+      "magicDefense": 100,
+      "healthPoint": 3000,
+      "maxHealthPoint": 3000,
+      "speed": 60,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
+  },
+  "kentaurous_spear": {
+    "facePath": "kentaurous_spear",
+    "name": "창을 든 켄타로우스",
+    "sizeType": "medium",
+    "elementType": "none",
+	"hitArea" : [
+		[0, 100, 120, 0, 0],
+		[100, 120, 180, 0, 0],
+		[0, 80, 100, 60, 0],
+		[0, 100, 80, 100, 0],
+		[0, 0, 0, 100, 0]
+	],
+    "status": {
+      "attack": 125,
+      "magicAttack": 0,
+      "defense": 65,
+      "magicDefense": 0,
+      "healthPoint": 1500,
+      "maxHealthPoint": 1500,
+      "speed": 60,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ]
   }
 }

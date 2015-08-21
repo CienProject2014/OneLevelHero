@@ -1,0 +1,18 @@
+{
+  "wool_of_yetie": {
+    "itemType": "etc_item",
+    "name": "예티의 털",
+    "itemPath": "wool_of_yetie",
+    "category": "기타",
+    "grade": "일반",
+    "description": "예티의 빳빳한 털가죽이다."
+  },
+  "tooth_of_dog": {
+    "itemType": "etc_item",
+    "name": "사냥개 이빨",
+    "itemPath": "tooth_of_dog",
+    "category": "기타",
+    "grade": "일반",
+    "description": "사냥개에게서 떨어진 날카로운 이빨이다."
+  }
+}

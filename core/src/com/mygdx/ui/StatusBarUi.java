@@ -14,22 +14,25 @@ public class StatusBarUi extends ProgressBar {
 				+ (vertical ? "vertical" : "horizontal"),
 				ProgressBarStyle.class));
 		Gdx.app.debug("StatusBarUi", "Called");
-
 		this.name = name;
-		ProgressBarStyle pbs = barsStyle(this.name);
-		pbs.knobBefore = pbs.knob;
+		ProgressBarStyle progressBarStyle = barsStyle(this.name);
+		progressBarStyle.knobBefore = progressBarStyle.knob;
 		setStyle(barsStyle(this.name));
+	}
 
+	public StatusBarUi(String name, Skin skin) {
+		this(name, 0, 100, 1, false, skin);
 	}
 
 	public ProgressBarStyle barsStyle(String barStyle) {
 		switch (barStyle) {
-		case "hp":
-			return StaticAssets.barstyle_hp;
-		case "gauge":
-			return StaticAssets.barstyle_turn;
-		default:
-			return StaticAssets.barstyle_hp;
+			case "hp":
+				return StaticAssets.barstyle_hp;
+			case "gauge":
+				return StaticAssets.barstyle_turn;
+			default:
+				Gdx.app.log("StatusBarUi", "barstyle type error");
+				return StaticAssets.barstyle_hp;
 		}
 	}
 }

@@ -23,13 +23,37 @@
   "story_json":{
   	"filePath" : "data/event/story.json"
   },
-  "item_json":{
-  	"filePath" : "data/event/item.json"
+  "weapon_json":{
+  	"filePath" : "data/item/weapon.json"
+  },
+  "shield_json":{
+  	"filePath" : "data/item/shield.json"
+  },
+  "accessory_json" : {
+  	"filePath" : "data/item/accessory.json"
+  },
+  "clothes_json" : {
+  	"filePath" : "data/item/clothes.json"
+  },
+  "consumables_json" : {
+  	"filePath" : "data/item/consumables.json"
+  },
+  "etc_item_json":{
+  	"filePath" : "data/item/etc_item.json"
   },
   "skill_json":{
   	"filePath" : "data/event/skill.json"
   },
   "game_object_json":{
   	"filePath" : "data/event/game_object.json"
+  },
+  "scene_constants_json":{
+  	"filePath" : "data/constants/scene_constants.json"
+  },
+  "monster_field_json":{
+  	"filePath" : "data/map/monster_field.json"
+  },
+  "unusual_condition_json":{
+  	"filePath" : "data/event/unusual_condition.json"
   }
 }

@@ -2,13 +2,28 @@ package com.mygdx.currentState;
 
 import java.util.List;
 
+import com.mygdx.enums.FieldTypeEnum;
+import com.mygdx.model.surroundings.NodeConnection;
+
 public class FieldInfo {
-	private String startNode; // 무빙 시작 노드
-	private String destinationNode; // 무빙 목표 노드
-	private int roadLength; // 총 길 개수
-	private int leftRoadLength; // 남은 길의 개수
-	private List<String> roadMonsterList; // 해당 길에 서식하는 몬스터 리스트
-	private String arrowName;
+	private int fieldNumber;
+	private String startNode, destinationNode, arrowName;
+	private List<FieldTypeEnum> fieldList;
+	private boolean inField;
+
+	public FieldInfo() {
+
+	}
+
+	public FieldInfo(String startNode, String destinationNode, NodeConnection conn) {
+		this.startNode = startNode;
+		this.destinationNode = destinationNode;
+		this.fieldList = conn.getFieldList();
+		this.arrowName = conn.getArrowName();
+
+		this.inField = true;
+		this.fieldNumber = 0;
+	}
 
 	public String getArrowName() {
 		return arrowName;
@@ -34,27 +49,70 @@ public class FieldInfo {
 		this.destinationNode = destinationNode;
 	}
 
-	public int getRoadLength() {
-		return roadLength;
+	public int getFieldNumber() {
+		return fieldNumber;
 	}
 
-	public void setRoadLength(int roadLength) {
-		this.roadLength = roadLength;
+	public void setFieldNumber(int fieldNumber) {
+		this.fieldNumber = fieldNumber;
 	}
 
-	public int getLeftRoadLength() {
-		return leftRoadLength;
+	public boolean isInField() {
+		return inField;
 	}
 
-	public void setLeftRoadLength(int leftRoadLength) {
-		this.leftRoadLength = leftRoadLength;
+	public void setInField(boolean inField) {
+		this.inField = inField;
 	}
 
-	public List<String> getRoadMonsterList() {
-		return roadMonsterList;
+	public List<FieldTypeEnum> getFieldList() {
+		return fieldList;
 	}
 
-	public void setRoadMonsterList(List<String> roadMonsterList) {
-		this.roadMonsterList = roadMonsterList;
+	public void setFieldList(List<FieldTypeEnum> fieldList) {
+		this.fieldList = fieldList;
+	}
+
+	public FieldTypeEnum getCurrentFieldType() {
+		return fieldList.get(fieldNumber);
+	}
+
+	// FIXME need to check index out of bound!
+	private void increaseFieldNumber() {
+		this.fieldNumber += 1;
+	}
+
+	private void decreaseFieldNumber() {
+		this.fieldNumber -= 1;
+	}
+
+	// syntax sugar
+
+	private boolean willBeReturn() {
+		return fieldNumber == 0 ? true : false;
+	}
+
+	private boolean willBeArrived() {
+		return fieldNumber >= fieldList.size() - 1 ? true : false;
+	}
+
+	public boolean tryToGoForward() {
+		boolean willBeArrvied = willBeArrived();
+		if (!willBeArrvied) {
+			increaseFieldNumber();
+		} else {
+			inField = false;
+		}
+		return willBeArrvied;
+	}
+
+	public boolean tryToGoBackword() {
+		boolean willbeReturn = willBeReturn();
+		if (!willbeReturn) {
+			decreaseFieldNumber();
+		} else {
+			inField = false;
+		}
+		return willbeReturn;
 	}
 }

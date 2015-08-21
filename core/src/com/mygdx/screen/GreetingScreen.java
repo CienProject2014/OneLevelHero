@@ -12,17 +12,21 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MovingManager;
-import com.mygdx.model.EventScene;
-import com.mygdx.model.NPC;
+import com.mygdx.manager.PositionManager;
+import com.mygdx.model.event.EventScene;
+import com.mygdx.model.event.NPC;
 
 public class GreetingScreen extends BaseScreen {
 	@Autowired
 	protected EventManager eventManager;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private PositionManager positionManager;
 
 	// Already libgdx using interface!
 	private Input input = Gdx.input;
@@ -44,9 +48,10 @@ public class GreetingScreen extends BaseScreen {
 
 	@Override
 	public void show() {
+		eventManager.setGreeting(true);
+		setGreetingPosition(positionManager.getCurrentPositionType());
 		final NPC npc = eventManager.getCurrentNpc();
 		greetingScenes = npc.getGreeting().getEventScenes();
-
 		selectEventStage = stageFactory.makeStage(StageEnum.SELECT_EVENT);
 		// for shuffle
 		List<EventScene> shuffleList = new ArrayList<EventScene>(greetingScenes);
@@ -73,4 +78,32 @@ public class GreetingScreen extends BaseScreen {
 		});
 	}
 
+	private void setGreetingPosition(PositionEnum currentPositionType) {
+		switch (currentPositionType) {
+			case NODE:
+				if (eventManager.getCurrentNpc().getName().equals("yongsa")) {
+					positionManager.setCurrentPositionType(PositionEnum.LOG);
+				} else {
+					positionManager
+							.setCurrentPositionType(PositionEnum.NODE_EVENT);
+				}
+				break;
+			case SUB_NODE:
+				positionManager
+						.setCurrentPositionType(PositionEnum.SUB_NODE_EVENT);
+				break;
+			case FIELD:
+				positionManager
+						.setCurrentPositionType(PositionEnum.FIELD_EVENT);
+				break;
+			case NODE_EVENT:
+			case BATTLE_EVENT:
+			case SUB_NODE_EVENT:
+			case FIELD_EVENT:
+				break;
+			default:
+				Gdx.app.log("GreetingScreen", "잘못된 CurrentPosition정보");
+				break;
+		}
+	}
 }

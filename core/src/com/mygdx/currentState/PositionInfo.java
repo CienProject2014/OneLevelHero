@@ -3,9 +3,11 @@ package com.mygdx.currentState;
 import com.mygdx.enums.PositionEnum;
 
 public class PositionInfo {
-	private PositionEnum currentPositionType; // 플레이어의 위치가 마을인지, 갈림길인지, 던전인지, 건물안인지, 필드인지
+	private PositionEnum currentPositionType; // 플레이어의 위치가 마을인지, 갈림길인지, 던전인지,
+												// 건물안인지, 필드인지
 	private String currentNodeName; // 최근 마을/던전입구/교차로/필드 이름
-	private String currentSubNodeName; //최근 건물/던전이름
+	private String currentSubNodeName; // 최근 건물/던전이름
+	private PositionEnum beforePositionType;
 
 	public String getCurrentSubNodeName() {
 		return currentSubNodeName;
@@ -29,5 +31,13 @@ public class PositionInfo {
 
 	public void setCurrentPositionType(PositionEnum currentPositionType) {
 		this.currentPositionType = currentPositionType;
+	}
+
+	public PositionEnum getBeforePositionType() {
+		return beforePositionType;
+	}
+
+	public void setBeforePositionType(PositionEnum beforePositionType) {
+		this.beforePositionType = beforePositionType;
 	}
 }

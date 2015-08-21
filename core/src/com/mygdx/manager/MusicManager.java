@@ -7,25 +7,23 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.assets.MusicAssets;
-import com.mygdx.currentState.FieldInfo;
 import com.mygdx.currentState.MusicInfo;
-import com.mygdx.currentState.PositionInfo;
 import com.mygdx.currentState.SoundInfo;
-import com.mygdx.model.EventPacket;
+import com.mygdx.model.event.EventPacket;
 
 public class MusicManager {
+
 	@Autowired
-	private MusicInfo musicInfo;
+	private PositionManager positionManager;
 	@Autowired
-	private SoundInfo soundInfo;
-	@Autowired
-	private PositionInfo positionInfo; //FIXME
-	@Autowired
-	private FieldInfo movingInfo; //FIXME
+	private FieldManager fieldManager;
 	@Autowired
 	private MusicAssets musicAssets;
 	@Autowired
 	private EventManager eventManager;
+
+	private MusicInfo musicInfo = new MusicInfo();
+	private SoundInfo soundInfo = new SoundInfo();
 
 	public enum MusicCondition {
 		WHENEVER, IF_IS_NOT_PLAYING;
@@ -59,12 +57,12 @@ public class MusicManager {
 	public void setMusicAndPlay(Music music, float volume,
 			MusicCondition musicCondition) {
 		switch (musicCondition) {
-			case WHENEVER:
+			case WHENEVER :
 				int delayTime = 2000;
 				if (checkCurrentMusicIsNotNull()) {
 					if (checkCurrentMusicIsPlaying()) {
 						if (checkIsSameWithCurrentMusic(music)) {
-							//Nothing happened
+							// Nothing happened
 						} else {
 							stopMusic();
 							Timer.schedule(new Task() {
@@ -79,7 +77,7 @@ public class MusicManager {
 					}
 				}
 				break;
-			case IF_IS_NOT_PLAYING:
+			case IF_IS_NOT_PLAYING :
 				if (musicInfo.getMusic() != null) {
 					if (musicInfo.getMusic().isPlaying())
 						return;
@@ -89,7 +87,7 @@ public class MusicManager {
 					playMusic();
 				}
 				break;
-			default:
+			default :
 				Gdx.app.error("MusicManager", "incorrect musicCondition");
 		}
 	}
@@ -119,18 +117,20 @@ public class MusicManager {
 	}
 
 	public void setWorldNodeMusicAndPlay() {
-		Music music = musicAssets.getWorldNodeMusic(positionInfo
-				.getCurrentNodeName());
+		String currentNode = positionManager.getCurrentNodeName();
+		Music music = musicAssets.getWorldNodeMusic(currentNode);
 		setMusicAndPlay(music);
 	}
 
 	public void setBattleMusicAndPlay() {
-		Music music = musicAssets.getBattleMusic(movingInfo.getArrowName());
+		String arrowName = fieldManager.getArrowName();
+		Music music = musicAssets.getBattleMusic(arrowName);
 		setMusicAndPlay(music);
 	}
 
 	public void setMovingMusicAndPlay() {
-		Music music = musicAssets.getMovingMusic(movingInfo.getArrowName());
+		String arrowName = fieldManager.getArrowName();
+		Music music = musicAssets.getMovingMusic(arrowName);
 		setMusicAndPlay(music);
 	}
 

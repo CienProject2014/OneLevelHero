@@ -1,0 +1,40 @@
+{
+  "empty_item": {
+    "itemType": "handgrip",
+    "name": "미 장착",
+    "itemPath": "empty_item",
+    "isTwoHanded": "false"
+  },
+  "round_shield": {
+    "itemType": "handgrip",
+    "name": "라운드 쉴드",
+    "itemPath": "round_shield",
+    "category": "방패",
+    "grade": "일반",
+    "isTwoHanded": "false",
+    "effectStatusList": [
+      "defense"
+    ],
+    "effectStatus": {
+      "defense": 20
+    },
+    "description": "나무로 만든, 동그랗고 작은 방패."
+  },
+  "buckler": {
+    "itemType": "handgrip",
+    "name": "버클러",
+    "itemPath": "buckler",
+    "category": "방패",
+    "grade": "일반",
+    "isTwoHanded": "false",
+    "effectStatusList": [
+      "defense",
+      "speed"
+    ],
+    "effectStatus": {
+      "defense": 25,
+      "speed": -2
+    },
+    "description": "라운드 실드에 철을 덧대 방어력을 높인 방패."
+  }
+}

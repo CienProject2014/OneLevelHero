@@ -1,99 +1,128 @@
 package com.mygdx.manager;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.FieldInfo;
-import com.mygdx.model.WorldNode;
+import com.mygdx.enums.FieldTypeEnum;
+import com.mygdx.model.surroundings.NodeConnection;
+import com.mygdx.model.surroundings.WorldNode;
 
 public class FieldManager {
 	@Autowired
 	private WorldMapAssets worldMapAssets;
-	@Autowired
-	private FieldInfo fieldInfo;
 	@Autowired
 	private EncounterManager encounterManager;
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private FieldInfo fieldInfo;
 
-	public List<String> getRoadMonsters() {
-		return fieldInfo.getRoadMonsterList();
-	}
-
-	public void selectDestinationNode(String destinationNode) {
-		WorldNode worldNodeInfo = worldMapAssets
-				.getWorldNodeInfo(positionManager.getCurrentNodeName());
-		createMovingInfo(destinationNode, worldNodeInfo);
-	}
-
-	public void createMovingInfo(String destinationNode, WorldNode worldNodeInfo) {
-		fieldInfo.setStartNode(positionManager.getCurrentNodeName());
-		fieldInfo.setDestinationNode(destinationNode);
-		fieldInfo.setRoadLength(worldNodeInfo.getConnection()
-				.get(destinationNode).getroadLength());
-		fieldInfo.setLeftRoadLength(worldNodeInfo.getConnection()
-				.get(destinationNode).getroadLength());
-		fieldInfo.setRoadMonsterList(worldNodeInfo.getConnection()
-				.get(destinationNode).getRoadMonster());
-		fieldInfo.setArrowName(worldNodeInfo.getConnection()
-				.get(destinationNode).getArrowName());
-	}
-
-	public void goForwardField() {
-		if (isRoadLeft()) {
-			minusLeftRoadLength();
-			movingRoad();
-		} else {
-			// 목적지 노드에 도착해서 현재 위치로 설정함
-			positionManager.setCurrentNodeName(fieldInfo.getDestinationNode());
-			movingManager.goCurrentPosition();
-		}
-	}
-
-	public void goBackwardField() {
-		if (!isRoadFull()) {
-			plusLeftRoadLength();
-			movingRoad();
-		} else {
-			// 원래 노드로 다시 돌아옴
-			positionManager.setCurrentNodeName(fieldInfo.getStartNode());
-			movingManager.goCurrentPosition();
-		}
-	}
-
-	private void plusLeftRoadLength() {
-		fieldInfo.setLeftRoadLength(fieldInfo.getLeftRoadLength() + 1);
-	}
-
-	public void minusLeftRoadLength() {
-		fieldInfo.setLeftRoadLength(fieldInfo.getLeftRoadLength() - 1);
-	}
-
-	private void movingRoad() {
-		if (encounterManager.isBattleOccured()) {
-			encounterManager.encountEnemy();
-		}
-	}
-
-	private boolean isRoadLeft() {
-		return (fieldInfo.getLeftRoadLength() > 0) ? true : false;
-	}
-
-	private boolean isRoadFull() {
-		return (fieldInfo.getRoadLength() <= fieldInfo.getLeftRoadLength()) ? true
-				: false;
+	public FieldTypeEnum getFieldType() {
+		return fieldInfo.getFieldList().get(getFieldNumber());
 	}
 
 	public String getDestinationNode() {
 		return fieldInfo.getDestinationNode();
 	}
 
-	public String getLeftRoadLength() {
-		return String.valueOf(fieldInfo.getLeftRoadLength());
+	public int getLeftFieldLength() {
+		return getFieldLength() - getFieldNumber();
+	}
+
+	public int getFieldNumber() {
+		return fieldInfo.getFieldNumber();
+	}
+
+	public void startMovingField(String destinationNode) {
+		WorldNode worldNodeInfo = worldMapAssets.getWorldNodeInfo(positionManager.getCurrentNodeName());
+
+		String startNode = positionManager.getCurrentNodeName();
+		NodeConnection conn = worldNodeInfo.getNodeConnection().get(destinationNode);
+
+		fieldInfo = new FieldInfo(startNode, destinationNode, conn);
+	}
+
+	public boolean isInField() {
+		return fieldInfo.isInField();
+	}
+
+	public int getFieldLength() {
+		return fieldInfo.getFieldList().size();
+	}
+
+	public FieldInfo goFowardAndGetFieldInfo() {
+		if (!fieldInfo.tryToGoForward()) {
+			encounterManager.act();
+		} else {
+			positionManager.setCurrentNodeName(fieldInfo.getDestinationNode());
+			movingManager.goCurrentPosition();
+		}
+		return fieldInfo;
+	}
+
+	public FieldInfo goBackwardAndGetFieldInfo() {
+		if (!fieldInfo.tryToGoBackword()) {
+			encounterManager.act();
+		} else {
+			positionManager.setCurrentNodeName(fieldInfo.getDestinationNode());
+			movingManager.goCurrentPosition();
+		}
+		return fieldInfo;
+	}
+
+	public void goForwardField() {
+		if (!willBeArrived()) {
+			increaseFieldNumber();
+			moveField();
+		} else {
+			positionManager.setCurrentNodeName(fieldInfo.getDestinationNode());
+			fieldInfo.setInField(false);
+			movingManager.goCurrentPosition();
+		}
+	}
+
+	public void goBackwardField() {
+		if (!willComeBack()) {
+			decreaseFieldNumber();
+			moveField();
+		} else {
+			positionManager.setCurrentNodeName(fieldInfo.getStartNode());
+			fieldInfo.setInField(false);
+			movingManager.goCurrentPosition();
+		}
+	}
+
+	private void setFieldNumber(int fieldNumber) {
+		fieldInfo.setFieldNumber(fieldNumber);
+	}
+
+	private void decreaseFieldNumber() {
+		setFieldNumber(getFieldNumber() - 1);
+	}
+
+	private void increaseFieldNumber() {
+		setFieldNumber(fieldInfo.getFieldNumber() + 1);
+	}
+
+	private void moveField() {
+		if (encounterManager.isBattleOccured()) {
+			encounterManager.encountEnemy();
+		}
+	}
+
+	private boolean willBeArrived() {
+		return (getFieldNumber() >= getFieldLength() - 1) ? true : false;
+	}
+
+	private boolean willComeBack() {
+		return (getFieldNumber() == 0) ? true : false;
+	}
+
+	public String getArrowName() {
+		return fieldInfo.getArrowName();
 	}
 
 }

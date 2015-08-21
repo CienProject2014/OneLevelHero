@@ -7,34 +7,72 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.ItemAssets;
 import com.mygdx.assets.SkillAssets;
-import com.mygdx.model.Hero;
-import com.mygdx.model.Item;
-import com.mygdx.model.Monster;
-import com.mygdx.model.Skill;
-import com.mygdx.model.Unit;
+import com.mygdx.model.battle.Skill;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.Inventory;
+import com.mygdx.model.unit.Monster;
+import com.mygdx.model.unit.Status;
+import com.mygdx.model.unit.Unit;
+import com.mygdx.unitStrategy.HeroAttackStrategy;
+import com.mygdx.unitStrategy.InventoryStrategy;
+import com.mygdx.unitStrategy.MonsterAttackStrategy;
 
 public class UnitManager {
+	private static final String EMPTY_ITEM = "empty_item";
 	@Autowired
 	private ItemAssets itemAssets;
 	@Autowired
 	private SkillAssets skillAssets;
+	@Autowired
+	private InventoryStrategy inventoryStrategy;
+	@Autowired
+	private HeroAttackStrategy heroAttackStrategy;
+	@Autowired
+	private MonsterAttackStrategy monsterAttackStrategy;
 
 	public void initiateHero(Hero hero) {
-		setItems(hero);
+		intiallyEquipAllItems(hero);
 		setSkills(hero);
+		setAttackStrategy(hero);
+	}
+
+	public void setAttackStrategy(Unit unit) {
+		if (unit instanceof Hero) {
+			unit.setAttackStrategy(heroAttackStrategy);
+		} else {
+			unit.setAttackStrategy(monsterAttackStrategy);
+		}
 	}
 
 	public void initiateMonster(Monster monster) {
 		setSkills(monster);
+		setAttackStrategy(monster);
 	}
 
-	private void setItems(Hero hero) {
-		if (hero.getItems() == null && hero.getItemList() != null) {
-			Map<String, Item> items = new HashMap<>();
-			for (String itemName : hero.getItemList()) {
-				items.put(itemName, itemAssets.getItem(itemName));
-			}
-			hero.setItems(items);
+	public void intiallyEquipAllItems(Hero hero) {
+		hero.setInventory(new Inventory());
+		hero.setInventoryStrategy(inventoryStrategy);
+		Map<String, String> inventories = hero.getInitialInventoryList();
+
+		if (inventories.get("accessory") != null) {
+			hero.equipAccessory(inventories.get("accessory"));
+		} else {
+			hero.equipAccessory(EMPTY_ITEM);
+		}
+		if (inventories.get("clothes") != null) {
+			hero.equipClothes(inventories.get("clothes"));
+		} else {
+			hero.equipClothes(EMPTY_ITEM);
+		}
+		if (inventories.get("rightHandGrip") != null) {
+			hero.equipRightHandGrip(inventories.get("rightHandGrip"));
+		} else {
+			hero.equipRightHandGrip(EMPTY_ITEM);
+		}
+		if (inventories.get("leftHandGrip") != null) {
+			hero.equipLeftHandGrip(inventories.get("leftHandGrip"));
+		} else {
+			hero.equipLeftHandGrip(EMPTY_ITEM);
 		}
 	}
 
@@ -46,6 +84,44 @@ public class UnitManager {
 			}
 			unit.setSkills(skills);
 		}
+	}
 
+	public void addStatus(Hero hero, Status plusStatus) {
+		Status heroStatus = hero.getStatus();
+		if (plusStatus != null) {
+			heroStatus.setAttack(heroStatus.getAttack()
+					+ plusStatus.getAttack());
+			heroStatus.setDefense(heroStatus.getDefense()
+					+ plusStatus.getDefense());
+			heroStatus.setElectricResistance(heroStatus.getElectricResistance()
+					+ plusStatus.getElectricResistance());
+			heroStatus.setFireResistance(heroStatus.getFireResistance()
+					+ plusStatus.getFireResistance());
+			heroStatus.setHealthPoint(heroStatus.getHealthPoint()
+					+ plusStatus.getHealthPoint());
+			heroStatus.setMagicAttack(heroStatus.getMagicAttack()
+					+ plusStatus.getMagicAttack());
+			heroStatus.setMagicDefense(heroStatus.getMagicDefense()
+					+ plusStatus.getMagicDefense());
+			heroStatus.setSpeed(heroStatus.getSpeed() + plusStatus.getSpeed());
+		}
+	}
+
+	public void removeStatus(Hero hero, Status removeStatus) {
+		Status heroStatus = hero.getStatus();
+		heroStatus.setAttack(heroStatus.getAttack() - removeStatus.getAttack());
+		heroStatus.setDefense(heroStatus.getDefense()
+				- removeStatus.getDefense());
+		heroStatus.setElectricResistance(heroStatus.getElectricResistance()
+				- removeStatus.getElectricResistance());
+		heroStatus.setFireResistance(heroStatus.getFireResistance()
+				- removeStatus.getFireResistance());
+		heroStatus.setHealthPoint(heroStatus.getHealthPoint()
+				- removeStatus.getHealthPoint());
+		heroStatus.setMagicAttack(heroStatus.getMagicAttack()
+				- removeStatus.getMagicAttack());
+		heroStatus.setMagicDefense(heroStatus.getMagicDefense()
+				+ removeStatus.getMagicDefense());
+		heroStatus.setSpeed(heroStatus.getSpeed() - removeStatus.getSpeed());
 	}
 }
