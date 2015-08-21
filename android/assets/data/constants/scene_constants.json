@@ -18,6 +18,12 @@
     	"change_image02",
     	"change_image03",
     	"change_image04"
+    ],
+    "character_change":[
+        "change01",
+        "change02",
+        "change03",
+        "change04"
     ]
   },
   "inventory_scene": {
@@ -87,7 +93,7 @@
     	"button_equip03",
     	"button_equip04",
     	"button_equip05",
-    	"button_equip06",
+    	"button_equip06"
     ],
     "character_status_image" : [
     	"character_window01",

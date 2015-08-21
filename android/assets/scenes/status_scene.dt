@@ -106,7 +106,7 @@
       },
       {
         "itemIdentifier": "exp_points_label",
-        "x": 250,
+        "x": 190,
         "y": 305,
         "zIndex": 11,
         "layerName": "Default",
@@ -124,7 +124,7 @@
       {
         "itemIdentifier": "name_label",
         "x": 309.99997,
-        "y": 165,
+        "y": 155,
         "zIndex": 16,
         "layerName": "Default",
         "tint": [
@@ -141,7 +141,7 @@
       {
         "itemIdentifier": "hp_label",
         "x": 309.99997,
-        "y": 90,
+        "y": 80,
         "zIndex": 17,
         "layerName": "Default",
         "tint": [
@@ -461,7 +461,7 @@
         "itemIdentifier": "change04",
         "x": 1743,
         "y": 340,
-        "zIndex": 5,
+        "zIndex": 30,
         "layerName": "Default",
         "tint": [
           1,
@@ -472,6 +472,7 @@
         "composite": {
           "sImages": [
             {
+              "itemIdentifier": "normal",
               "layerName": "Default",
               "tint": [
                 1,
@@ -480,6 +481,20 @@
                 1
               ],
               "imageName": "statusuiparty"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "x": -6,
+              "y": -6,
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiactivation02"
             }
           ],
           "layers": [
@@ -499,7 +514,7 @@
         "itemIdentifier": "change03",
         "x": 1743,
         "y": 483,
-        "zIndex": 6,
+        "zIndex": 30,
         "layerName": "Default",
         "tint": [
           1,
@@ -510,6 +525,7 @@
         "composite": {
           "sImages": [
             {
+              "itemIdentifier": "normal",
               "layerName": "Default",
               "tint": [
                 1,
@@ -518,6 +534,20 @@
                 1
               ],
               "imageName": "statusuiparty"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "x": -6,
+              "y": -6,
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiactivation02"
             }
           ],
           "layers": [
@@ -537,7 +567,7 @@
         "itemIdentifier": "change02",
         "x": 1743,
         "y": 626,
-        "zIndex": 7,
+        "zIndex": 30,
         "layerName": "Default",
         "tint": [
           1,
@@ -548,6 +578,7 @@
         "composite": {
           "sImages": [
             {
+              "itemIdentifier": "normal",
               "layerName": "Default",
               "tint": [
                 1,
@@ -556,6 +587,20 @@
                 1
               ],
               "imageName": "statusuiparty"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "x": -6,
+              "y": -6,
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiactivation02"
             }
           ],
           "layers": [
@@ -575,7 +620,7 @@
         "itemIdentifier": "change01",
         "x": 1743,
         "y": 769,
-        "zIndex": 8,
+        "zIndex": 30,
         "layerName": "Default",
         "tint": [
           1,
@@ -586,6 +631,7 @@
         "composite": {
           "sImages": [
             {
+              "itemIdentifier": "normal",
               "layerName": "Default",
               "tint": [
                 1,
@@ -594,6 +640,20 @@
                 1
               ],
               "imageName": "statusuiparty"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "x": -6,
+              "y": -6,
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiactivation02"
             }
           ],
           "layers": [
@@ -887,7 +947,7 @@
         "itemIdentifier": "change_image03",
         "x": 1743,
         "y": 483,
-        "zIndex": 29,
+        "zIndex": 27,
         "layerName": "Default",
         "tint": [
           1,
@@ -922,7 +982,7 @@
         "itemIdentifier": "change_image04",
         "x": 1743,
         "y": 340,
-        "zIndex": 30,
+        "zIndex": 27,
         "layerName": "Default",
         "tint": [
           1,
