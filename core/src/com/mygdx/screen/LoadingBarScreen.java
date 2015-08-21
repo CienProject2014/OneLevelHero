@@ -2,6 +2,7 @@ package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -42,6 +43,7 @@ public class LoadingBarScreen implements Screen {
 	public void show() {
 		assetsManager.load("texture/loading/loading.pack", TextureAtlas.class);
 		assetsManager.finishLoading();
+
 		stage = new Stage();
 		TextureAtlas atlas = assetsManager.get("texture/loading/loading.pack", TextureAtlas.class);
 		logo = new Image(atlas.findRegion("libgdx-logo"));
@@ -66,8 +68,12 @@ public class LoadingBarScreen implements Screen {
 		stage.addActor(textButton2);
 		stage.addActor(textButton3);
 
+		Gdx.app.log("debug", "StaticAssets Loading 전");
 		StaticAssets.loadAll();
+		Gdx.app.log("debug", "StaticAssets Loading 후");
+		Gdx.app.log("debug", "assets 로딩 전");
 		assets.initialize();
+		Gdx.app.log("debug", "assets 로딩 후");
 
 	}
 
@@ -118,7 +124,6 @@ public class LoadingBarScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		if (assetsManager.update()) {
-			assetsManager.rm.setMainPack(assetsManager.get("orig/pack.atlas", TextureAtlas.class));
 			screenFactory.show(ScreenEnum.MENU);
 		}
 

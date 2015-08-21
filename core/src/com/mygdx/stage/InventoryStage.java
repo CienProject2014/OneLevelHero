@@ -95,7 +95,7 @@ public class InventoryStage extends BaseOverlapStage {
 	private Camera cam;
 
 	public Stage makeStage() {
-
+		assetsManager.initScene(SCENE_NAME);
 		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());

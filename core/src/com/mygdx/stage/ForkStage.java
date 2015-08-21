@@ -40,8 +40,8 @@ public class ForkStage extends BaseOverlapStage {
 	@Autowired
 	private ListenerFactory listenerFactory;
 	private Fork forkInfo;
+
 	public Stage makeStage() {
-		initSceneLoader(assetsManager.rm);
 		cameraManager.stretchToDevice(this);
 
 		setButton();
@@ -53,9 +53,13 @@ public class ForkStage extends BaseOverlapStage {
 		Gdx.app.log("forkStage", String.valueOf(positionManager.getCurrentNodeName()));
 		if (nodeAssets.getForkByName(positionManager.getCurrentNodeName()) != null) {
 			forkInfo = nodeAssets.getForkByName(positionManager.getCurrentNodeName());
+			assetsManager.initScene(forkInfo.getSceneName());
+			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(forkInfo.getSceneName());
 		} else {
 			forkInfo = nodeAssets.getForkByName("blackwood");
+			assetsManager.initScene(forkInfo.getSceneName());
+			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(forkInfo.getSceneName());
 		}
 	}

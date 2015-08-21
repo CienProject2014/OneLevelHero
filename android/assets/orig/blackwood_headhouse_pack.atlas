@@ -1,0 +1,33 @@
+blackwood_headhouse_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+chestafteropen
+  rotate: false
+  xy: 2, 2
+  size: 225, 239
+  orig: 225, 239
+  offset: 0, 0
+  index: -1
+chestbeforeopen
+  rotate: false
+  xy: 304, 642
+  size: 225, 198
+  orig: 225, 198
+  offset: 0, 0
+  index: -1
+headhousebg
+  rotate: false
+  xy: 2, 842
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+waiji601
+  rotate: false
+  xy: 2, 243
+  size: 300, 597
+  orig: 300, 597
+  offset: 0, 0
+  index: -1

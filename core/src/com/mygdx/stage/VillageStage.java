@@ -72,10 +72,12 @@ public class VillageStage extends BaseOverlapStage {
 	private void setVillageScene(PositionManager positionManager, NodeAssets nodeAssets) {
 		if (nodeAssets.getVillageByName(positionManager.getCurrentNodeName()) != null) {
 			villageInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName());
+			assetsManager.initScene(villageInfo.getSceneName());
 			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(villageInfo.getSceneName());
 		} else {
 			villageInfo = nodeAssets.getVillageByName("blackwood");
+			assetsManager.initScene(villageInfo.getSceneName());
 			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(villageInfo.getSceneName());
 		}

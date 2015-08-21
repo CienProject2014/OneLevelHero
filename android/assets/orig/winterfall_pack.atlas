@@ -1,0 +1,54 @@
+winterfall_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+badhouse
+  rotate: false
+  xy: 2, 84
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+brokeninn
+  rotate: false
+  xy: 288, 370
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+crystaldom
+  rotate: false
+  xy: 2, 2
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+foodstore
+  rotate: false
+  xy: 288, 288
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+ruinedhouse
+  rotate: false
+  xy: 490, 370
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+tocobweb
+  rotate: false
+  xy: 2, 166
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+winterfall
+  rotate: false
+  xy: 2, 452
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1

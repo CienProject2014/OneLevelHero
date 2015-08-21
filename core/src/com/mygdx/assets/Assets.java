@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.model.jsonModel.StringFile;
@@ -60,7 +59,6 @@ public class Assets {
 		constantsAssets.set(jsonStringMap);
 		textureAssets.loadTexture();
 		assetsManager.loadOverlapResources();
-		assetsManager.load("orig/pack.atlas", TextureAtlas.class);
 
 	}
 

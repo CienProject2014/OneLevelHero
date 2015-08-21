@@ -66,7 +66,7 @@ public class StatusStage extends BaseOverlapStage {
 
 	public Stage makeStage() {
 		HashMap<String, Array<String>> sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
-
+		assetsManager.initScene(SCENE_NAME);
 		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
@@ -145,10 +145,11 @@ public class StatusStage extends BaseOverlapStage {
 		for (int i = 0; i < partyManager.getPartyList().size(); i++) {
 			CompositeItem compositeItem = sceneLoader.getRoot().getCompositeById(characterStatusList.get(i));
 			ImageItem characterStatusImage = compositeItem.getImageById(CHARACTER_IMAGE);
-			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(textureManager
-					.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
+			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
+					textureManager.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
 		}
 	}
+
 	private void setCamera() {
 		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);

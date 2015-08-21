@@ -78,6 +78,7 @@ public class BuildingStage extends BaseOverlapStage {
 		buildingInfo = worldNodeAssets.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
 				.get(positionManager.getCurrentSubNodeName());
 
+		assetsManager.initScene(buildingInfo.getSceneName());
 		initSceneLoader(assetsManager.rm);
 	}
 

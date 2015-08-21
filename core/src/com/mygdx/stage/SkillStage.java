@@ -39,6 +39,7 @@ public class SkillStage extends BaseOverlapStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private AssetsManager assetsManager;
+	public static final String SCENE_NAME = "skill_scene";
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("EventStage");
 	private Camera cam;
 	private ImageItem largeImage;
@@ -50,8 +51,10 @@ public class SkillStage extends BaseOverlapStage {
 	private String CUT_01 = "cut_01"; // FIXME
 
 	public Stage makeStage() {
+
+		assetsManager.initScene(SCENE_NAME);
 		initSceneLoader(assetsManager.rm);
-		sceneLoader.loadScene("skill_scene");
+		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
 		setCamera();
 		setSkillType();

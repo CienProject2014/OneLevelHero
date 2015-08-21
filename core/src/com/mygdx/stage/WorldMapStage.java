@@ -20,6 +20,7 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
 public class WorldMapStage extends BaseOverlapStage {
+	public static final String SCENE_NAME = "worldmap_scene";
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
@@ -33,6 +34,8 @@ public class WorldMapStage extends BaseOverlapStage {
 	private final int SET_POSITION = 15;
 
 	public Stage makeStage() {
+
+		assetsManager.initScene(SCENE_NAME);
 		initSceneLoader(assetsManager.rm);
 		positionManager.setInWorldMap(true);
 		/*
@@ -40,7 +43,7 @@ public class WorldMapStage extends BaseOverlapStage {
 		 * 이것은 CompositeVO를 가지고 있다. CompositeVO는 그 Scene이 가지고 있는 Label, Button등을
 		 * 다 가지고 있다.
 		 */
-		sceneLoader.loadScene("worldmap_scene");
+		sceneLoader.loadScene(SCENE_NAME);
 		/*
 		 * getRoot()할시, CompositeItem이 반환된다. CompositeItem은 Composite들의 집합이다.
 		 * getCompositeById로 하나하나 가져올수 있다. 현재 위치 버튼을 가져온다. getX로 Image의 위치를 가져올
@@ -105,6 +108,7 @@ public class WorldMapStage extends BaseOverlapStage {
 			});
 		}
 	}
+
 	public void setCurrent(ImageItem current) {
 		this.currentNode = current;
 	}
@@ -115,8 +119,8 @@ public class WorldMapStage extends BaseOverlapStage {
 		int yBottomLimit = (int) (StaticAssets.windowHeight / 2);
 		int yTopLimit = (int) (1688 - (StaticAssets.windowHeight / 2));
 
-		float xValue = this.getCurrent().getX() - StaticAssets.windowWidth / 2, yValue = this.getCurrent().getY()
-				- StaticAssets.windowHeight / 2;
+		float xValue = this.getCurrent().getX() - StaticAssets.windowWidth / 2,
+				yValue = this.getCurrent().getY() - StaticAssets.windowHeight / 2;
 		// x값이 오른쪽으로 벗어날 경우
 		if (this.getCurrent().getX() > xRightLimit)
 			xValue = 3000 - StaticAssets.windowWidth;

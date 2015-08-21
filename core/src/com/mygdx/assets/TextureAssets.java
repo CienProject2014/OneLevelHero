@@ -9,6 +9,7 @@ import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.model.jsonModel.FrameSheet;
@@ -23,13 +24,27 @@ public class TextureAssets {
 	private Map<String, FrameSheet> animationSheetMap;
 
 	public void loadTexture() {
+		FileHandle file = Gdx.files.local("textureMap.json");
+
+		Json json = new Json();
 		filePathMap = JsonParser.parseMap(StringFile.class,
 				Gdx.files.internal("data/load/file_path.json").readString());
 
 		animationSheetMap = JsonParser.parseMap(FrameSheet.class,
 				filePathMap.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
-
-		directoryTextureMapper(textureMap, "texture");
+		if (Gdx.app.getType() == ApplicationType.Android) {
+			textureMap = json.fromJson(HashMap.class, Gdx.files.internal("texture/textureMap.json"));
+			for (Map.Entry<String, String> entry : textureMap.entrySet()) {
+				assetsManager.load(entry.getValue(), Texture.class);
+			}
+		} else {
+			directoryTextureMapper(textureMap, "texture");
+			file.writeString(json.prettyPrint(textureMap), false);
+			textureMap = json.fromJson(HashMap.class, Gdx.files.internal("texture/textureMap.json"));
+			for (Map.Entry<String, String> entry : textureMap.entrySet()) {
+				assetsManager.load(entry.getValue(), Texture.class);
+			}
+		}
 	}
 
 	public String getTexturePath(String textureName) {
@@ -53,7 +68,6 @@ public class TextureAssets {
 	}
 
 	public void directoryTextureMapperRecursive(Map<String, String> map, FileHandle fh) {
-		Gdx.app.log("Texture Text", " Texture If & for 돌기전");
 		if (fh.isDirectory()) {
 			FileHandle[] fhs = fh.list();
 
@@ -61,9 +75,13 @@ public class TextureAssets {
 				directoryTextureMapperRecursive(map, e);
 			}
 		} else if (!map.containsKey(fh.nameWithoutExtension()) && fh.extension().matches("^(png|jpg)")) {
-			map.put(fh.nameWithoutExtension(), fh.path());
-			assetsManager.load(fh.path(), Texture.class);
+			String[] path = fh.path().toString().split("/");
+			String realPath = "";
+			for (int i = 0; i < path.length - 2; i++) {
+				realPath += path[i + 2];
+				realPath += "/";
+			}
+			map.put(fh.nameWithoutExtension(), realPath);
 		}
-		Gdx.app.log("Texture Text", " Texture If & for 돈 후");
 	}
 }

@@ -1,7 +1,6 @@
 package com.uwsoft.editor.renderer.resources;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -43,12 +42,10 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 	public String spriteAnimationsPath = "sprite_animations";
 	public String spineAnimationsPath = "spine_animations";
 	public String fontsPath = "freetypefonts";
-
 	private float resMultiplier;
+	public String preparedSceneNames;
 
 	private ProjectInfoVO projectVO;
-
-	private ArrayList<String> preparedSceneNames = new ArrayList<>();
 	private HashMap<String, SceneVO> loadedSceneVOs = new HashMap<>();
 
 	private HashSet<String> particleEffectNamesToLoad = new HashSet<>();
@@ -134,10 +131,9 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 	 */
 	public void scheduleScene(String name) {
 		if (loadedSceneVOs.containsKey(name)) {
-			preparedSceneNames.add(name);
+			preparedSceneNames = name;
 		} else {
-			// TODO: Throw exception that scene was not loaded to be prepared
-			// for asseting
+			preparedSceneNames = name;
 		}
 
 	}
@@ -148,19 +144,11 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 	 * @param name
 	 */
 	public void unScheduleScene(String name) {
-		preparedSceneNames.remove(name);
+		preparedSceneNames = "";
 	}
 
 	public boolean searchSceneNames(String name) {
 		return preparedSceneNames.contains(name);
-	}
-
-	public ArrayList<String> getPreparedSceneNames() {
-		return preparedSceneNames;
-	}
-
-	public void setPreparedSceneNames(ArrayList<String> preparedSceneNames) {
-		this.preparedSceneNames = preparedSceneNames;
 	}
 
 	/**
@@ -175,22 +163,16 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 		spriteAnimNamesToLoad.clear();
 		fontsToLoad.clear();
 
-		for (String preparedSceneName : preparedSceneNames) {
-			CompositeVO composite = loadedSceneVOs.get(preparedSceneName).composite;
-			if (composite == null) {
-				continue;
-			}
-			//
-			String[] particleEffects = composite.getRecursiveParticleEffectsList();
-			String[] spineAnimations = composite.getRecursiveSpineAnimationList();
-			String[] spriteAnimations = composite.getRecursiveSpriteAnimationList();
-			FontSizePair[] fonts = composite.getRecursiveFontList();
-			//
-			Collections.addAll(particleEffectNamesToLoad, particleEffects);
-			Collections.addAll(spineAnimNamesToLoad, spineAnimations);
-			Collections.addAll(spriteAnimNamesToLoad, spriteAnimations);
-			Collections.addAll(fontsToLoad, fonts);
-		}
+		CompositeVO composite = loadedSceneVOs.get(preparedSceneNames).composite;
+		String[] particleEffects = composite.getRecursiveParticleEffectsList();
+		String[] spineAnimations = composite.getRecursiveSpineAnimationList();
+		String[] spriteAnimations = composite.getRecursiveSpriteAnimationList();
+		FontSizePair[] fonts = composite.getRecursiveFontList();
+		Collections.addAll(particleEffectNamesToLoad, particleEffects);
+		Collections.addAll(spineAnimNamesToLoad, spineAnimations);
+		Collections.addAll(spriteAnimNamesToLoad, spriteAnimations);
+		Collections.addAll(fontsToLoad, fonts);
+
 	}
 
 	/**
@@ -302,6 +284,7 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 
 	@Override
 	public SceneVO loadSceneVO(String sceneName) {
+		loadedSceneVOs.clear();
 		FileHandle file = Gdx.files.internal(scenesPath + File.separator + sceneName + ".dt");
 		Json json = new Json();
 		SceneVO sceneVO = json.fromJson(SceneVO.class, file.readString());
