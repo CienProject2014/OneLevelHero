@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
@@ -47,6 +48,7 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				Gdx.app.debug("DungeonEntranceStage", "던전으로 들어가자!");
+				Gdx.app.log("현재 위치", String.valueOf(positionManager.getCurrentNodeName()));
 				screenFactory.show(ScreenEnum.DUNGEON);
 			}
 		});

@@ -9,6 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.model.Dungeon;
+import com.mygdx.model.DungeonConnection;
+import com.mygdx.model.DungeonNode;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
@@ -19,22 +21,38 @@ public class DungeonStage extends BaseOverlapStage {
 	// FIXME UI
 	private CompositeItem btnTurn;
 	private CompositeItem[] btnRoad = new CompositeItem[3];
-
+	
 	private Dungeon mapInfo;
 
 	private int currentPos;
 	private boolean currentHeading;
-	private ArrayList<Dungeon.Connection> selectableForward, selectableBackward;
+	private ArrayList<DungeonConnection> selectableForward, selectableBackward;
 
 	public Stage makeStage() {
 		initSceneLoader(StaticAssets.rm);
-
+		
 		// FIXME UI
 		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
+		setMap();
+		//mapInfo = worldNodeAssets.getDungeon("blackwood_forest_dungeon");
 		makeScene("blackwood_forest_dungeon_scene");
 		setButton();
+		
 
 		return this;
+	}
+	
+	private void setMap() {
+		mapInfo = new Dungeon();
+		
+		DungeonNode aNode = new DungeonNode();
+		aNode.setFlag(DungeonNode.FLG_ENCOUNT);
+		aNode.setLabel("arrow_left");
+		
+		mapInfo.nodes.add(aNode);
+		
+		selectableBackward = new ArrayList<>();
+		selectableForward = new ArrayList<>();
 	}
 
 	private void makeScene(String sceneName) {
@@ -72,10 +90,10 @@ public class DungeonStage extends BaseOverlapStage {
 	private void update() {
 		selectableForward.clear();
 		selectableBackward.clear();
-
-		Dungeon.Node currentNode = mapInfo.nodes.get(currentPos);
+		DungeonNode currentNode = mapInfo.nodes.get(currentPos);
+		//대체 노드의 라벨은 무엇을 의미하는 것인
 		sceneLoader.getCompositeElementById(currentNode.getLabel()).setVisible(true);
-		for (Dungeon.Connection e : mapInfo.connections)
+		for (DungeonConnection e : mapInfo.connections)
 			if (e.isFrom(currentNode)) {
 				selectableForward.add(e);
 				sceneLoader.getCompositeElementById(e.getLabel()).setVisible(true);
@@ -104,10 +122,10 @@ public class DungeonStage extends BaseOverlapStage {
 
 		update();
 
-		Dungeon.Node currentNode = mapInfo.nodes.get(currentPos);
-		if (currentNode.chkFlag(Dungeon.Node.FLG_ENTRANCE))
+		DungeonNode currentNode = mapInfo.nodes.get(currentPos);
+		if (currentNode.chkFlag(DungeonNode.FLG_ENTRANCE))
 			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-		else if (currentNode.chkFlag(Dungeon.Node.FLG_ENCOUNT))
+		else if (currentNode.chkFlag(DungeonNode.FLG_ENCOUNT))
 			screenFactory.show(ScreenEnum.ENCOUNTER);
 	}
 
