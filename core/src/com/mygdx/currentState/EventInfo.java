@@ -22,9 +22,17 @@ public class EventInfo {
 	private Map<String, GameObject> gameObjectMap;
 	private EventElementEnum currentEventElementType;
 	private EventPacket currentSpecialEventInfo;
-	private EventPacket currentEventInfo;
+	private EventPacket currentNpcEventInfo;
 	private GameObject currentGameObject;
 	private Queue<EventPacket> specialEventQueue = new LinkedList<>();
+
+	public EventPacket getCurrentNpcEventInfo() {
+		return currentNpcEventInfo;
+	}
+
+	public void setCurrentNpcEventInfo(EventPacket currentNpcEventInfo) {
+		this.currentNpcEventInfo = currentNpcEventInfo;
+	}
 
 	public Event getNpcEvent(EventPacket eventPacket) {
 		return getNpc(eventPacket.getEventNpc()).getEvent(eventPacket.getEventNumber());
@@ -47,7 +55,7 @@ public class EventInfo {
 	}
 
 	public String getCurrentNpcName() {
-		return currentEventInfo.getEventNpc();
+		return currentNpcEventInfo.getEventNpc();
 	}
 
 	public Event getCurrentGameObjectEvent() {
@@ -57,23 +65,11 @@ public class EventInfo {
 	public void setCurrentEventNpc(String npcString) {
 		EventPacket eventPacket = new EventPacket();
 		eventPacket.setEventNpc(npcString);
-		setCurrentEventInfo(eventPacket);
+		setCurrentNpcEventInfo(eventPacket);
 	}
 
 	public void setCurrentEventNumber(int eventNumber) {
-		currentEventInfo.setEventNumber(eventNumber);
-	}
-
-	public EventPacket getEventPacket() {
-		return currentEventInfo;
-	}
-
-	public EventPacket getCurrentEventInfo() {
-		return currentEventInfo;
-	}
-
-	public void setCurrentEventInfo(EventPacket currentEventInfo) {
-		this.currentEventInfo = currentEventInfo;
+		currentNpcEventInfo.setEventNumber(eventNumber);
 	}
 
 	public EventElementEnum getCurrentEventElementType() {
@@ -115,5 +111,4 @@ public class EventInfo {
 	public void setCurrentSpecialEventInfo(EventPacket currentSpecialEventInfo) {
 		this.currentSpecialEventInfo = currentSpecialEventInfo;
 	}
-
 }

@@ -11,6 +11,9 @@
   "village_json": {
     "filePath": "data/map/village.json"
   },
+  "fork_json": {
+    "filePath": "data/map/fork.json"
+  },
   "credit_list": {
     "filePath": "data/event/credit_list.json"
   },

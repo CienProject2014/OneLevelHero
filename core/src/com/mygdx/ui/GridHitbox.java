@@ -2,16 +2,20 @@ package com.mygdx.ui;
 
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.MonsterEnum;
+import com.mygdx.manager.TextureManager;
 
 public class GridHitbox extends Table {
+	@Autowired
+	private TextureManager textureManager;
 	private final String TAG = "GridHitbox";
 
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
@@ -37,15 +41,15 @@ public class GridHitbox extends Table {
 
 	public void setSizeType(MonsterEnum.SizeType sizeType) {
 		switch (sizeType) {
-		case SMALL:
-			// TODO 추후 구현
-			break;
-		case MEDIUM:
-			setMediumSizeType();
-			break;
-		case LARGE:
-			// TODO 추후 구현
-			break;
+			case SMALL :
+				// TODO 추후 구현
+				break;
+			case MEDIUM :
+				setMediumSizeType();
+				break;
+			case LARGE :
+				// TODO 추후 구현
+				break;
 		}
 		Stack stk = makeGridTable(sizeType);
 		this.add(stk).padTop(uiConstantsMap.get("gridPadTop"));
@@ -59,8 +63,7 @@ public class GridHitbox extends Table {
 		tiles = new Image[rows][columns];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				tiles[i][j] = new Image(
-						StaticAssets.assetManager.get(StaticAssets.textureMap.get("tile"), Texture.class));
+				tiles[i][j] = new Image(textureManager.getEtcTexture("tile"));
 			}
 		}
 		previousHitArea = new int[rows][columns];
@@ -265,7 +268,7 @@ public class GridHitbox extends Table {
 	}
 
 	private Image getGridImage(MonsterEnum.SizeType sizeType) {
-		return new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get("grid_" + sizeType), Texture.class));
+		return new Image(textureManager.getEtcTexture("grid_" + sizeType));
 	}
 
 	public boolean isGridShow() {

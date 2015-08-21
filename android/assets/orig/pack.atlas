@@ -1712,6 +1712,179 @@ townuiright
   offset: 0, 0
   index: -1
   
+  
+  
+  
+  
+  
+  
+  
+cemetery_and_beetle_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgforkroad2
+  rotate: false
+  xy: 2, 860
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+staybuttonrest
+  rotate: false
+  xy: 860, 768
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+staybuttonsave
+  rotate: false
+  xy: 860, 676
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+townuiarrow2elvenforest
+  rotate: false
+  xy: 2, 574
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowcaravanserai
+  rotate: false
+  xy: 2, 288
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowelvenforest
+  rotate: false
+  xy: 288, 574
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowmirageport
+  rotate: false
+  xy: 2, 2
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowmoerae
+  rotate: false
+  xy: 288, 288
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowredrosecastle
+  rotate: false
+  xy: 574, 574
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+
+
+
+
+
+
+caravan_dog_retreat_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgforkroad1
+  rotate: false
+  xy: 2, 952
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+dog1
+  rotate: false
+  xy: 2, 666
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+dog2
+  rotate: false
+  xy: 2, 380
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+dog3
+  rotate: false
+  xy: 288, 666
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+staybuttonrest
+  rotate: false
+  xy: 2, 2
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+staybuttonsave
+  rotate: false
+  xy: 1146, 860
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+stone1
+  rotate: false
+  xy: 2, 94
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+stone2
+  rotate: false
+  xy: 288, 380
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+stone3
+  rotate: false
+  xy: 574, 666
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowcaravanserai
+  rotate: false
+  xy: 288, 94
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowdogbenefit
+  rotate: false
+  xy: 574, 380
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowsouthcape
+  rotate: false
+  xy: 860, 666
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+
+
+
 redrose_castle_pack.png
 size: 4096,2048
 format: RGBA8888

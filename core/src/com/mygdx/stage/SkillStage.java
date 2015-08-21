@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.StorySectionManager;
@@ -36,6 +37,8 @@ public class SkillStage extends BaseOverlapStage {
 	private EventCheckManager eventCheckManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private AssetsManager assetsManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("EventStage");
 	private Camera cam;
 	private ImageItem largeImage;
@@ -47,7 +50,7 @@ public class SkillStage extends BaseOverlapStage {
 	private String CUT_01 = "cut_01"; // FIXME
 
 	public Stage makeStage() {
-		initSceneLoader(StaticAssets.rm);
+		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene("skill_scene");
 		addActor(sceneLoader.getRoot());
 		setCamera();

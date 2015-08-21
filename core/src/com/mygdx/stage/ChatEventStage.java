@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,6 +20,7 @@ import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.model.event.EventScene;
 import com.mygdx.model.unit.Hero;
 
@@ -43,8 +43,9 @@ public class ChatEventStage extends BaseOneLevelStage {
 	private RewardManager rewardManager;
 	@Autowired
 	private UnitAssets unitAssets;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
-			.get("EventStage");
+	@Autowired
+	private TextureManager textureManager;
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("EventStage");
 	private Label scriptTitle = new Label("", StaticAssets.skin);
 	private Label scriptContent = new Label("", StaticAssets.skin);
 	private Image characterImage;
@@ -59,13 +60,11 @@ public class ChatEventStage extends BaseOneLevelStage {
 			setScene(eventSceneIterator.next());
 			this.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					if (eventSceneIterator.hasNext()) {
 						setScene(eventSceneIterator.next());
 					} else {
-						if (!eventCheckManager.isSelectEvent(eventManager
-								.getCurrentEvent())) {
+						if (!eventCheckManager.isSelectEvent(eventManager.getCurrentNpcEvent())) {
 							rewardManager.doReward(); // 보상이 있을경우 보상실행
 							eventManager.finishNpcEvent();
 							storySectionManager.runStorySequence();
@@ -101,9 +100,9 @@ public class ChatEventStage extends BaseOneLevelStage {
 	}
 
 	private void makeChatTable(EventScene eventScene) {
-		backgroundImage = new Image(eventScene.getBackground());
-		Texture selectedCharacter = eventScene.getCharacter();
-		characterImage = new Image(selectedCharacter);
+		backgroundImage = new Image(textureManager.getBackgroundTexture(eventScene.getBackgroundPath()));
+		characterImage = new Image(textureManager.getBustTexture(eventScene.getCharacterPath(),
+				eventScene.getFaceNumber()));
 
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();
@@ -112,25 +111,19 @@ public class ChatEventStage extends BaseOneLevelStage {
 
 		characterBustTable.clear();
 		characterBustTable.left().bottom();
-		characterBustTable.add(characterImage)
-				.width(uiConstantsMap.get("talkerWidth"))
-				.height(uiConstantsMap.get("talkerHeight"))
-				.padLeft(uiConstantsMap.get("talkerPadLeft"));
+		characterBustTable.add(characterImage).width(uiConstantsMap.get("talkerWidth"))
+				.height(uiConstantsMap.get("talkerHeight")).padLeft(uiConstantsMap.get("talkerPadLeft"));
 
 		scriptTable.clear();
-		scriptTable.left().bottom()
-				.padLeft(uiConstantsMap.get("scriptPadLeft"))
+		scriptTable.left().bottom().padLeft(uiConstantsMap.get("scriptPadLeft"))
 				.padBottom(uiConstantsMap.get("scriptPadBottom"));
-		scriptTable.add(scriptTitle)
-				.width(uiConstantsMap.get("scriptTitleWidth"))
+		scriptTable.add(scriptTitle).width(uiConstantsMap.get("scriptTitleWidth"))
 				.height(uiConstantsMap.get("scriptTitleHeight"));
 		scriptTable.row();
 		scriptContent.setWrap(true);
 		scriptContent.setAlignment(Align.top);
-		scriptTable.add(scriptContent)
-				.width(uiConstantsMap.get("scriptContentWidth"))
-				.height(uiConstantsMap.get("scriptContentHeight"))
-				.padTop(uiConstantsMap.get("scriptContentPadTop"));
+		scriptTable.add(scriptContent).width(uiConstantsMap.get("scriptContentWidth"))
+				.height(uiConstantsMap.get("scriptContentHeight")).padTop(uiConstantsMap.get("scriptContentPadTop"));
 
 		tableStack.add(backgroundImage);
 		tableStack.add(chatLineImageTable);

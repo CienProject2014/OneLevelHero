@@ -1,16 +1,11 @@
 package com.mygdx.model.jsonModel;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.manager.AssetsManager;
 
 public class StringFile implements AssetsFile<String> {
 	private String filePath;
 	private String file;
-
-	@Override
-	public String loadFile() {
-		file = Gdx.files.internal(filePath).readString();
-		return file;
-	}
 
 	@Override
 	public String getTestFile() {
@@ -28,5 +23,11 @@ public class StringFile implements AssetsFile<String> {
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+
+	@Override
+	public String loadFile(AssetsManager assetsManager) {
+		file = Gdx.files.internal(filePath).readString();
+		return file;
 	}
 }

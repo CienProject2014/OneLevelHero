@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
@@ -28,6 +27,8 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private TextureManager textureManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("CharacterUiStage");
 	private Table statusTable;
 	private Table barTable;
@@ -91,7 +92,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 	private Table makeHeroTable(final StatusBar statusBar) {
 		Table heroTable = new Table();
-		Image heroImage = new Image(TextureManager.getFaceImage(statusBar.getUnit().getFacePath()));
+		Image heroImage = new Image(textureManager.getFaceImage(statusBar.getUnit().getFacePath()));
 		heroImage.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -104,14 +105,10 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		HorizontalGroup buffGroup = new HorizontalGroup();
 		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
-		buffGroup.addActor(new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_FAINT),
-				Texture.class)));
-		buffGroup.addActor(new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_SATAN),
-				Texture.class)));
-		buffGroup.addActor(new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_ICE),
-				Texture.class)));
-		buffGroup.addActor(new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get(BUFF_DE_FIRE),
-				Texture.class)));
+		buffGroup.addActor(new Image(textureManager.getEtcTexture(BUFF_DE_FAINT)));
+		buffGroup.addActor(new Image(textureManager.getEtcTexture(BUFF_DE_SATAN)));
+		buffGroup.addActor(new Image(textureManager.getEtcTexture(BUFF_DE_ICE)));
+		buffGroup.addActor(new Image(textureManager.getEtcTexture(BUFF_DE_FIRE)));
 		barTable = new Table();
 		Label hpLabel = new Label(statusBar.getHp() + "/" + statusBar.getMaxHp(), uiComponentAssets.getSkin());
 		hpLabelList.add(hpLabel);
