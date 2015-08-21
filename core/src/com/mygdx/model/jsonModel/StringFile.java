@@ -1,7 +1,6 @@
 package com.mygdx.model.jsonModel;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.manager.AssetsManager;
 
 public class StringFile implements AssetsFile<String> {
 	private String filePath;
@@ -26,7 +25,7 @@ public class StringFile implements AssetsFile<String> {
 	}
 
 	@Override
-	public String loadFile(AssetsManager assetsManager) {
+	public String loadFile() {
 		file = Gdx.files.internal(filePath).readString();
 		return file;
 	}

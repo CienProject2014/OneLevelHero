@@ -21,10 +21,13 @@ public class AtlasUiAssets implements FileAssetsInitializable {
 
 	public void set(Map<String, StringFile> filePathMap) {
 		List<AtlasUiFile> atlasUiFileList = JsonParser.parseList(AtlasUiFile.class,
-				filePathMap.get(JsonEnum.ATLAS_UI_PATH.toString()).loadFile(assetsManager));
-		for (AtlasUiFile atlasUiFile : atlasUiFileList)
-			for (String element : atlasUiFile.getElement())
-				atlasUiMap.put(element, atlasUiFile.loadFile(assetsManager));
+				filePathMap.get(JsonEnum.ATLAS_UI_PATH.toString()).loadFile());
+		for (AtlasUiFile atlasUiFile : atlasUiFileList) {
+			for (String element : atlasUiFile.getElement()) {
+				atlasUiMap.put(element, atlasUiFile.loadFile());
+				assetsManager.load(atlasUiMap.get(element), TextureAtlas.class);
+			}
+		}
 	}
 
 	public TextureAtlas getAtlasRegionFile(String atlasUiFileString) {

@@ -18,22 +18,22 @@ import com.mygdx.manager.AssetsManager;
 import com.mygdx.ui.LoadingBarUi;
 
 public class LoadingBarScreen implements Screen {
+
 	@Autowired
-	private AssetsManager assetsManager;
+	AssetsManager assetsManager;
 	@Autowired
 	private Assets assets;
 	@Autowired
 	private ScreenFactory screenFactory;
+
 	private Stage stage;
 	private Image logo;
 	private Image loadingFrame;
 	private Image loadingBarHidden;
 	private Image screenBg;
 	private Image loadingBg;
-	private TextButton textButton1;
 	private TextButton textButton2;
 	private TextButton textButton3;
-	private int check = 0;
 	private float startX, endX;
 	private float percent;
 	private Actor loadingBar;
@@ -42,48 +42,33 @@ public class LoadingBarScreen implements Screen {
 	public void show() {
 		assetsManager.load("texture/loading/loading.pack", TextureAtlas.class);
 		assetsManager.finishLoading();
-		// context = RoboSpring.getContext(); 안드로이드에서 실행시
-		// Initialize the stage where we will place everything
 		stage = new Stage();
 		TextureAtlas atlas = assetsManager.get("texture/loading/loading.pack", TextureAtlas.class);
-		// Grab the regions from the atlas and create some images
 		logo = new Image(atlas.findRegion("libgdx-logo"));
 		loadingFrame = new Image(atlas.findRegion("loading-frame"));
 		loadingBarHidden = new Image(atlas.findRegion("loading-bar-hidden"));
 		screenBg = new Image(atlas.findRegion("screen-bg"));
 		loadingBg = new Image(atlas.findRegion("loading-frame-bg"));
-		textButton1 = new TextButton("(1/2) 게임에 필요한 이미지를 로딩하는 중입니다.. ", StaticAssets.skin);
-		textButton2 = new TextButton("(2/2) 게임에 필요한 음악을 로딩하는 중입니다... ", StaticAssets.skin);
+		textButton2 = new TextButton("게임에 필요한 리소스를 로딩하는 중입니다... ", StaticAssets.skin);
 		textButton3 = new TextButton("로딩 끝 화면을 클릭하세요 ", StaticAssets.skin);
-		// Add the loading bar animation
 		Animation anim = new Animation(0.05f, atlas.findRegions("loading-bar-anim"));
 		anim.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
 		loadingBar = new LoadingBarUi(anim);
-		textButton1.setVisible(true);
-		textButton2.setVisible(false);
+		textButton2.setVisible(true);
 		textButton3.setVisible(false);
-		// Or if you only need a static bar, you can do
-		// loadingBar = new Image(atlas.findRegion("loading-bar1"));
 
-		// Add all the actors to the stage
 		stage.addActor(screenBg);
 		stage.addActor(loadingBar);
 		stage.addActor(loadingBg);
 		stage.addActor(loadingBarHidden);
 		stage.addActor(loadingFrame);
 		stage.addActor(logo);
-		stage.addActor(textButton1);
 		stage.addActor(textButton2);
 		stage.addActor(textButton3);
 
-	}
-
-	public void gameLoad() {
-		textButton1.setVisible(false);
-		textButton2.setVisible(true);
-		textButton3.setVisible(false);
 		StaticAssets.loadAll();
 		assets.initialize();
+
 	}
 
 	@Override
@@ -116,10 +101,6 @@ public class LoadingBarScreen implements Screen {
 		startX = loadingBarHidden.getX();
 		endX = 440;
 
-		textButton1.setSize(600, 150);
-		textButton1.setX(300);
-		textButton1.setY(100);
-
 		textButton2.setSize(600, 150);
 		textButton2.setX(300);
 		textButton2.setY(100);
@@ -137,13 +118,8 @@ public class LoadingBarScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		if (assetsManager.update()) {
-			if (check == 0) {
-				gameLoad();
-				check = 1;
-			}
-			if (assetsManager.update()) {
-				screenFactory.show(ScreenEnum.MENU);
-			}
+			assetsManager.rm.setMainPack(assetsManager.get("orig/pack.atlas", TextureAtlas.class));
+			screenFactory.show(ScreenEnum.MENU);
 		}
 
 		// Interpolate the percentage to make it more smooth
@@ -155,7 +131,6 @@ public class LoadingBarScreen implements Screen {
 		loadingBg.invalidate();
 		if (loadingBg.getWidth() < 1) {
 			loadingBg.setWidth(0);
-			textButton1.setVisible(false);
 			textButton2.setVisible(false);
 			textButton3.setVisible(true);
 		}
@@ -186,6 +161,6 @@ public class LoadingBarScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-
+		stage.dispose();
 	}
 }

@@ -301,8 +301,71 @@
     "nextSections": [
       {
         "nextSectionNumber": "302",
-        "eventType": "move_arrow",
+        "eventType": "click_arrow",
         "targetComponent": "2to13"
+      }
+    ]
+  },
+  "302":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "1"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "303",
+        "eventType": "move_sub_node",
+        "targetComponent": "cobweb_cathedral"
+      }
+    ]
+  },"303":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "304",
+        "eventType": "move_node",
+        "targetComponent": "cobweb"
+      }
+    ]
+  },
+  "304":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "3"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "305",
+        "eventType": "move_sub_node",
+        "targetComponent": "cobweb_inn"
+      }
+    ]
+  },
+  "305":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "4"
+      },
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "5"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "306",
+        "eventType": "battle_end",
+        "targetComponent": "nepel_01"
       }
     ]
   }

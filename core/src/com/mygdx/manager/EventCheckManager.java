@@ -34,6 +34,7 @@ public class EventCheckManager {
 			case MOVE_NODE :
 			case BATTLE_CONTROL :
 			case SELECT_EVENT :
+			case CLICK_ARROW :
 				return checkMatchWithString(nextStorySectionPacket, componentString);
 			case SELECT_COMPONENT :
 				return checkSelectComponent(nextStorySectionPacket, componentString);

@@ -1,4 +1,4 @@
-package com.mygdx.assets;
+﻿package com.mygdx.assets;
 
 import java.util.ArrayList;
 import java.util.HashMap;
