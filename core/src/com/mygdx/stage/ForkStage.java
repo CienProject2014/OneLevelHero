@@ -11,10 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.NodeAssets;
-import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.model.surroundings.Fork;
@@ -29,7 +29,8 @@ public class ForkStage extends BaseOverlapStage {
 
 	@Autowired
 	private NodeAssets nodeAssets;
-
+	@Autowired
+	private AssetsManager assetsManager;
 	@Autowired
 	private PartyManager partymanager;
 
@@ -40,7 +41,7 @@ public class ForkStage extends BaseOverlapStage {
 	private ListenerFactory listenerFactory;
 	private Fork forkInfo;
 	public Stage makeStage() {
-		initSceneLoader(StaticAssets.rm);
+		initSceneLoader(assetsManager.rm);
 		cameraManager.stretchToDevice(this);
 
 		setButton();

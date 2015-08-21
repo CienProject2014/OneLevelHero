@@ -26,6 +26,7 @@ import com.mygdx.screen.GameObjectScreen;
 import com.mygdx.screen.GreetingScreen;
 import com.mygdx.screen.InventoryScreen;
 import com.mygdx.screen.LoadScreen;
+import com.mygdx.screen.LoadingBarScreen;
 import com.mygdx.screen.LogScreen;
 import com.mygdx.screen.MenuScreen;
 import com.mygdx.screen.OptionScreen;
@@ -89,6 +90,8 @@ public class ScreenFactory {
 				return context.getBean(InventoryScreen.class);
 			case LOAD :
 				return context.getBean(LoadScreen.class);
+			case LOADING_BAR :
+				return context.getBean(LoadingBarScreen.class);
 			case LOG :
 				return context.getBean(LogScreen.class);
 			case MENU :

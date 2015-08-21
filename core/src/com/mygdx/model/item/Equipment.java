@@ -1,9 +1,12 @@
 package com.mygdx.model.item;
 
+import java.util.ArrayList;
+
 import com.mygdx.model.unit.Status;
 
 public class Equipment extends Item {
 	public final String EMPTY_ITEM = "empty_item";
+	private ArrayList<String> effectStatusList;
 	private boolean using;
 	private Status effectStatus;
 	private String usingHand;
@@ -47,5 +50,13 @@ public class Equipment extends Item {
 		} else {
 			return false;
 		}
+	}
+
+	public ArrayList<String> getEffectStatusList() {
+		return effectStatusList;
+	}
+
+	public void setEffectStatusList(ArrayList<String> effectStatusList) {
+		this.effectStatusList = effectStatusList;
 	}
 }

@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.ItemAssets;
 import com.mygdx.currentState.BagInfo;
 import com.mygdx.enums.ItemEnum;
 import com.mygdx.model.item.Consumables;
 import com.mygdx.model.item.Equipment;
 import com.mygdx.model.item.Item;
-import com.mygdx.model.unit.Hero;
 
 public class BagManager {
 	@Autowired
@@ -21,34 +21,34 @@ public class BagManager {
 	public void possessItem(ItemEnum itemType, String itemName) {
 		Item item;
 		switch (itemType) {
-		case WEAPON:
-			item = itemAssets.getWeapon(itemName);
-			addEquipment((Equipment) item);
-			break;
-		case SHIELD:
-			item = itemAssets.getShield(itemName);
-			addEquipment((Equipment) item);
-			break;
-		case ACCESSORY:
-			item = itemAssets.getAccessory(itemName);
-			addEquipment((Equipment) item);
-			break;
-		case CLOTHES:
-			item = itemAssets.getClothes(itemName);
-			addEquipment((Equipment) item);
-			break;
-		case CONSUMABLES:
-			item = itemAssets.getConsumables(itemName);
-			addConsumables((Consumables) item);
-			break;
-		case ETC_ITEM:
-			item = itemAssets.getEtcItem(itemName);
-			addEtcItem(item);
-			break;
+			case HANDGRIP :
+				item = itemAssets.getHandGrip(itemName);
+				addEquipment((Equipment) item);
+				break;
+			case ACCESSORY :
+				item = itemAssets.getAccessory(itemName);
+				addEquipment((Equipment) item);
+				break;
+			case CLOTHES :
+				item = itemAssets.getClothes(itemName);
+				addEquipment((Equipment) item);
+				break;
+			case CONSUMABLES :
+				item = itemAssets.getConsumables(itemName);
+				addConsumables((Consumables) item);
+				break;
+			case ETC_ITEM :
+				item = itemAssets.getEtcItem(itemName);
+				addEtcItem(item);
+				break;
+			default :
+				Gdx.app.log("BagManager", "itemType 정보 오류");
+				break;
 		}
 	}
 
-	public void dropItem(Hero unit, Item item) {
+	public void dropItem(Item item) {
+		Gdx.app.log("BagManager", item.getName() + "를 버렸다.");
 		if (item instanceof Equipment) {
 			removeEquipment((Equipment) item);
 		} else if (item instanceof Consumables) {

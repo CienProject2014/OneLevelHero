@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.StorySectionManager;
@@ -36,6 +37,8 @@ public class SkillStage extends BaseOverlapStage {
 	private EventCheckManager eventCheckManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private AssetsManager assetsManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("EventStage");
 	private Camera cam;
 	private ImageItem largeImage;
@@ -47,7 +50,7 @@ public class SkillStage extends BaseOverlapStage {
 	private String CUT_01 = "cut_01"; // FIXME
 
 	public Stage makeStage() {
-		initSceneLoader(StaticAssets.rm);
+		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene("skill_scene");
 		addActor(sceneLoader.getRoot());
 		setCamera();
@@ -126,6 +129,7 @@ public class SkillStage extends BaseOverlapStage {
 		final CompositeItem highlight_06 = sceneLoader.getRoot().getCompositeById("highlight_06");
 		final CompositeItem highlight_07 = sceneLoader.getRoot().getCompositeById("highlight_07");
 		final CompositeItem useButton = sceneLoader.getRoot().getCompositeById("use");
+		final CompositeItem background = sceneLoader.getRoot().getCompositeById("background");
 
 		highlight_01.setLayerVisibilty("pressed", false);
 		highlight_02.setLayerVisibilty("pressed", false);
@@ -145,7 +149,7 @@ public class SkillStage extends BaseOverlapStage {
 		highlight_05.setTouchable(Touchable.enabled);
 		highlight_06.setTouchable(Touchable.enabled);
 		highlight_07.setTouchable(Touchable.enabled);
-
+		background.setTouchable(Touchable.enabled);
 		useButton.setTouchable(Touchable.enabled);
 
 		highlight_01.addListener(new InputListener() {
@@ -295,6 +299,16 @@ public class SkillStage extends BaseOverlapStage {
 				storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_CONTROL, "skill_attack");
 				BattleScreen.showSkillStage = false;
 
+			}
+		});
+		background.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				BattleScreen.showSkillStage = false;
 			}
 		});
 	}
