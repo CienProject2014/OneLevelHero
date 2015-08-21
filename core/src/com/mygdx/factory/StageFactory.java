@@ -12,11 +12,12 @@ import com.mygdx.model.event.EventScene;
 import com.mygdx.stage.BattleStage;
 import com.mygdx.stage.BuildingStage;
 import com.mygdx.stage.CharacterUiStage;
+import com.mygdx.stage.ChatEventStage;
 import com.mygdx.stage.DungeonEntranceStage;
 import com.mygdx.stage.DungeonStage;
 import com.mygdx.stage.EncounterStage;
-import com.mygdx.stage.ChatEventStage;
 import com.mygdx.stage.FieldStage;
+import com.mygdx.stage.ForkStage;
 import com.mygdx.stage.GameObjectStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.InventoryStage;
@@ -46,6 +47,8 @@ public class StageFactory {
 				return context.getBean(DungeonEntranceStage.class).makeStage();
 			case ENCOUNTER :
 				return context.getBean(EncounterStage.class).makeStage();
+			case FORK :
+				return context.getBean(ForkStage.class).makeStage();
 			case GAME_UI :
 				return context.getBean(GameUiStage.class).makeStage();
 			case GAME_OBJECT :

@@ -21,6 +21,7 @@ import com.mygdx.screen.EncounterScreen;
 import com.mygdx.screen.EndingScreen;
 import com.mygdx.screen.EventScreen;
 import com.mygdx.screen.FieldScreen;
+import com.mygdx.screen.ForkScreen;
 import com.mygdx.screen.GameObjectScreen;
 import com.mygdx.screen.GreetingScreen;
 import com.mygdx.screen.InventoryScreen;
@@ -97,6 +98,8 @@ public class ScreenFactory {
 				return context.getBean(MenuScreen.class);
 			case FIELD :
 				return context.getBean(FieldScreen.class);
+			case FORK :
+				return context.getBean(ForkScreen.class);
 			case OPTION :
 				return context.getBean(OptionScreen.class);
 			case SAVE :
