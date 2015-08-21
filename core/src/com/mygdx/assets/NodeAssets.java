@@ -7,17 +7,22 @@ import java.util.Map;
 
 import com.mygdx.enums.FieldTypeEnum;
 import com.mygdx.enums.JsonEnum;
+import com.mygdx.model.Dungeon;
 import com.mygdx.model.surroundings.MonsterField;
 import com.mygdx.model.surroundings.Village;
 import com.mygdx.util.JsonParser;
 
 public class NodeAssets implements JsonAssetsInitializable {
 	public Map<String, Village> villageMap;
+	public Map<String, Dungeon> dungeonMap;
 	public Map<FieldTypeEnum, ArrayList<String>> monsterFieldMap;
 
 	public void set(Map<String, String> jsonStringMap) {
 		villageMap = JsonParser.parseMap(Village.class,
 				jsonStringMap.get(JsonEnum.VILLAGE_JSON.toString()));
+		
+		dungeonMap = JsonParser.parseMap(Dungeon.class,
+				jsonStringMap.get(JsonEnum.DUNGEON_JSON.toString()));
 
 		ArrayList<MonsterField> monsterFieldList = JsonParser.parseList(
 				MonsterField.class,

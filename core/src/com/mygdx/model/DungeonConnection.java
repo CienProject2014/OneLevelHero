@@ -8,6 +8,9 @@ public class DungeonConnection {
 	private final static String TAG_TO = "to";
 
 	public HashMap<String, Object> data;
+	
+	private int from;
+	private int to;
 
 	public boolean isFrom(DungeonNode node) {
 		return node == getFrom();

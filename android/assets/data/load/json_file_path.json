@@ -11,6 +11,9 @@
   "village_json": {
     "filePath": "data/map/village.json"
   },
+  "dungeon_json": {
+    "filePath": "data/map/dungeon.json"
+  },
   "credit_list": {
     "filePath": "data/event/credit_list.json"
   },

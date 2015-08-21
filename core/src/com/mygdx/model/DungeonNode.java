@@ -12,6 +12,9 @@ public class DungeonNode {
 
 	private final static String TAG_LABEL = "label";
 	private final static String TAG_FLAG = "flag";
+	
+	private String nodePos;
+	private String nodeFlag;
 
 	public HashMap<String, Object> data = new HashMap<>();
 

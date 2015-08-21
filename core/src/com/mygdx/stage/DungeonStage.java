@@ -35,9 +35,8 @@ public class DungeonStage extends BaseOverlapStage {
 		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
 		setMap();
 		//mapInfo = worldNodeAssets.getDungeon("blackwood_forest_dungeon");
-		makeScene("blackwood_forest_dungeon_scene");
+		makeScene("dungeon_3door_scene");
 		setButton();
-		
 
 		return this;
 	}
