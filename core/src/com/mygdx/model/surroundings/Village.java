@@ -5,18 +5,20 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.enums.TextureEnum;
+import com.mygdx.enums.VillageDirectionEnum;
 import com.mygdx.manager.TextureManager;
 
 /**
  * Village 모델 클래스
- *
+ * 
  * @author Velmont
- *
+ * 
  */
 public class Village {
 	private String villageName;
 	private String backgroundPath;
 	private String sceneName;
+	private VillageDirectionEnum villageDirection;
 	private ArrayList<String> villageNpc;
 	private HashMap<String, Building> building;
 
@@ -29,13 +31,11 @@ public class Village {
 	}
 
 	public Texture getBackgroundUp() {
-		return TextureManager.getBackgroundTexture(backgroundPath,
-				TextureEnum.BACKGROUND_UP);
+		return TextureManager.getBackgroundTexture(backgroundPath, TextureEnum.BACKGROUND_UP);
 	}
 
 	public Texture getBackgroundDown() {
-		return TextureManager.getBackgroundTexture(backgroundPath,
-				TextureEnum.BACKGROUND_DOWN);
+		return TextureManager.getBackgroundTexture(backgroundPath, TextureEnum.BACKGROUND_DOWN);
 	}
 
 	public ArrayList<String> getVillageNpc() {
@@ -68,5 +68,13 @@ public class Village {
 
 	public void setSceneName(String sceneName) {
 		this.sceneName = sceneName;
+	}
+
+	public VillageDirectionEnum getVillageDirection() {
+		return villageDirection;
+	}
+
+	public void setVillageDirection(VillageDirectionEnum villageDirection) {
+		this.villageDirection = villageDirection;
 	}
 }

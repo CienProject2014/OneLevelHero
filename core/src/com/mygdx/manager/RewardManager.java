@@ -1,5 +1,6 @@
 package com.mygdx.manager;
 
+import java.util.Iterator;
 import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,8 @@ import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.RewardInfo;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.model.event.Reward;
-import com.mygdx.store.Loadable;
-import com.mygdx.store.Savable;
 
-public class RewardManager implements Savable<RewardInfo>, Loadable<RewardInfo> {
+public class RewardManager {
 	@Autowired
 	private UnitAssets unitAssets;
 	@Autowired
@@ -25,8 +24,14 @@ public class RewardManager implements Savable<RewardInfo>, Loadable<RewardInfo> 
 	private TimeManager timeManager;
 	@Autowired
 	private StorySectionManager storySectionManager;
-
-	private RewardInfo rewardInfo = new RewardInfo();
+	@Autowired
+	private RewardInfo rewardInfo;
+	@Autowired
+	private PositionManager positionManager;
+	@Autowired
+	private MovingManager movingManager;
+	@Autowired
+	private SaveManager saveManager;
 
 	// (3) 퀘스트 달성 여부 큐
 	// 아직 미구현
@@ -40,20 +45,25 @@ public class RewardManager implements Savable<RewardInfo>, Loadable<RewardInfo> 
 	}
 
 	public void addEventReward(Reward rewardInfo) {
-		rewardInfo.setRewardState(RewardStateEnum.ING);
+		if (rewardInfo.getRewardState() != RewardStateEnum.ALWAYS_OPEN) {
+			rewardInfo.setRewardState(RewardStateEnum.ING);
+		}
 		getRewardQueue().add(rewardInfo);
 	}
 
 	// (1)에서 뺀후 (2)의 큐에 집어넣는다.
 	public void pollRewardQueue() {
-		getRewardQueue().peek().setRewardState(RewardStateEnum.CLEARED);
-		getAchievedRewardQueue().add(getRewardQueue().poll());
+		if (!getRewardQueue().peek().getRewardState().equals(RewardStateEnum.ALWAYS_OPEN)) {
+			getRewardQueue().peek().setRewardState(RewardStateEnum.CLEARED);
+			getAchievedRewardQueue().add(getRewardQueue().poll());
+		}
 	}
 
 	public void doReward() {
 		if (!getRewardQueue().isEmpty()) {
-			while (getRewardQueue().iterator().hasNext()) {
-				Reward peekedReward = getRewardQueue().poll();
+			Iterator<Reward> rewardIterator = getRewardQueue().iterator();
+			while (rewardIterator.hasNext()) {
+				Reward peekedReward = rewardIterator.next();
 				switch (peekedReward.getRewardType()) {
 					case EXPERIENCE :
 						break;
@@ -69,17 +79,22 @@ public class RewardManager implements Savable<RewardInfo>, Loadable<RewardInfo> 
 						partyManager.healAllHero();
 						break;
 					case PASS_TIME :
-						timeManager.plusMinute(Integer.parseInt(peekedReward
-								.getRewardTargetAttribute()));
+						timeManager.plusMinute(Integer.parseInt(peekedReward.getRewardTargetAttribute()));
+						break;
+					case MOVE_NODE :
+						Gdx.app.log("RewardManager", "Move node - " + peekedReward.getRewardTargetAttribute());
+						positionManager.setCurrentNodeName(peekedReward.getRewardTargetAttribute());
+						movingManager.goCurrentPosition();
 						break;
 					case NEXT_SECTION :
-						storySectionManager.setNewStorySectionAndPlay(Integer
-								.valueOf(peekedReward
-										.getRewardTargetAttribute()));
+						storySectionManager.setNewStorySectionAndPlay(Integer.valueOf(peekedReward
+								.getRewardTargetAttribute()));
+						break;
+					case SAVE :
+						saveManager.save();
 						break;
 					case PARTY :
-						partyManager.addHero(unitAssets.getHero(peekedReward
-								.getRewardTarget()));
+						partyManager.addHero(unitAssets.getHero(peekedReward.getRewardTarget()));
 						break;
 					default :
 						break;
@@ -105,13 +120,4 @@ public class RewardManager implements Savable<RewardInfo>, Loadable<RewardInfo> 
 		}
 	}
 
-	@Override
-	public void setData(RewardInfo rewardInfo) {
-		this.rewardInfo = rewardInfo;
-	}
-
-	@Override
-	public RewardInfo getData() {
-		return rewardInfo;
-	}
 }

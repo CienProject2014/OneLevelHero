@@ -11,6 +11,7 @@ public class StatusBar {
 	public StatusBar(Unit unit, Skin skin) {
 		this.unit = unit;
 		hpBar = new StatusBarUi("hp", skin);
+		hpBar.setAnimateDuration(1.5f);
 		hpBar.setValue(getHpPercent());
 	}
 
@@ -27,8 +28,7 @@ public class StatusBar {
 	}
 
 	public int getHpPercent() {
-		float factor = (float) unit.getStatus().getHp()
-				/ unit.getStatus().getMaxHp();
+		float factor = (float) unit.getStatus().getHp() / unit.getStatus().getMaxHp();
 		return (int) (factor * 100);
 	}
 

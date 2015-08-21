@@ -5,7 +5,8 @@
         "eventNpc": "prologue",
         "eventNumber": "1"
       }
-    ],
+    ],   
+
     "nextSections": [
       {
         "nextSectionNumber": "102",
@@ -34,6 +35,12 @@
         "eventNumber": "4"
       }
     ],
+    "specialEvents" : [
+      	{
+      		"eventNpc" : "kadilla_castle",
+      		"eventNumber" : "999"
+      	}
+      ],
     "nextSections": [
       {
         "nextSectionNumber": "103",
@@ -93,8 +100,7 @@
     "nextSections": []
   },
   "105": {
-    "sequencialEvents": [
-    ],
+    "sequencialEvents": [],
     "nextSections": [
       {
         "nextSectionNumber": "106",
@@ -207,7 +213,7 @@
     ],
     "nextSections": [
       {
-        "nextSectionNumber": "112",
+        "nextSectionNumber": "201",
         "eventType": "select_component",
         "targetComponent": "카딜라 성"
       },
@@ -230,14 +236,6 @@
         "nextSectionNumber": "116",
         "eventType": "select_component",
         "targetComponent": "수정 협곡"
-      }
-    ]
-  },
-  "112": {
-    "sequencialEvents": [
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "24"
       }
     ]
   },
@@ -270,6 +268,32 @@
       {
         "eventNpc": "prologue",
         "eventNumber": "28"
+      }
+    ]
+  },
+  "201": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "24"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "202",
+        "eventType": "move_node",
+        "targetComponent": "kadilla_castle"
+      }
+    ]
+  },"202":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_castle",
+        "eventNumber": "2"
+      },
+      {
+        "eventNpc" : "kadilla_castle",
+        "eventNumber" : "4"
       }
     ]
   }

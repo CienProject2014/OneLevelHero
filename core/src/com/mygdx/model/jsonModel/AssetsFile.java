@@ -1,7 +1,7 @@
 package com.mygdx.model.jsonModel;
 
-public interface AssetsFile<T> {
-	public T loadFile();
+public interface AssetsFile<String> {
+	public String loadFile();
 
-	public T getTestFile();
+	public String getTestFile();
 }

@@ -7,10 +7,8 @@ import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.FieldTypeEnum;
 import com.mygdx.model.surroundings.NodeConnection;
 import com.mygdx.model.surroundings.WorldNode;
-import com.mygdx.store.Loadable;
-import com.mygdx.store.Savable;
 
-public class FieldManager implements Savable<FieldInfo>, Loadable<FieldInfo> {
+public class FieldManager {
 	@Autowired
 	private WorldMapAssets worldMapAssets;
 	@Autowired
@@ -19,8 +17,8 @@ public class FieldManager implements Savable<FieldInfo>, Loadable<FieldInfo> {
 	private PositionManager positionManager;
 	@Autowired
 	private MovingManager movingManager;
-
-	private FieldInfo fieldInfo = new FieldInfo();
+	@Autowired
+	private FieldInfo fieldInfo;
 
 	public FieldTypeEnum getFieldType() {
 		return fieldInfo.getFieldList().get(getFieldNumber());
@@ -39,12 +37,10 @@ public class FieldManager implements Savable<FieldInfo>, Loadable<FieldInfo> {
 	}
 
 	public void startMovingField(String destinationNode) {
-		WorldNode worldNodeInfo = worldMapAssets
-				.getWorldNodeInfo(positionManager.getCurrentNodeName());
+		WorldNode worldNodeInfo = worldMapAssets.getWorldNodeInfo(positionManager.getCurrentNodeName());
 
 		String startNode = positionManager.getCurrentNodeName();
-		NodeConnection conn = worldNodeInfo.getNodeConnection().get(
-				destinationNode);
+		NodeConnection conn = worldNodeInfo.getNodeConnection().get(destinationNode);
 
 		fieldInfo = new FieldInfo(startNode, destinationNode, conn);
 	}
@@ -76,6 +72,7 @@ public class FieldManager implements Savable<FieldInfo>, Loadable<FieldInfo> {
 		}
 		return fieldInfo;
 	}
+
 	public void goForwardField() {
 		if (!willBeArrived()) {
 			increaseFieldNumber();
@@ -126,16 +123,6 @@ public class FieldManager implements Savable<FieldInfo>, Loadable<FieldInfo> {
 
 	public String getArrowName() {
 		return fieldInfo.getArrowName();
-	}
-
-	@Override
-	public void setData(FieldInfo fieldInfo) {
-		this.fieldInfo = fieldInfo;
-	}
-
-	@Override
-	public FieldInfo getData() {
-		return fieldInfo;
 	}
 
 }

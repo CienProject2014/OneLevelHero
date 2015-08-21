@@ -11,7 +11,8 @@ public class JsonParser {
 	private static final Json JSON = new Json();
 
 	@SuppressWarnings("unchecked")
-	public static <T> Map<String, T> parseMap(Class<T> clazz, String jsonString) {
+	public static <T> Map<String, T> parseMap(Class<T> clazz,
+			String jsonString) {
 		Map<String, JsonValue> parsedMap = JSON.fromJson(HashMap.class,
 				jsonString);
 
@@ -24,7 +25,8 @@ public class JsonParser {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T> ArrayList<T> parseList(Class<T> clazz, String jsonString) {
+	public static <T> ArrayList<T> parseList(Class<T> clazz,
+			String jsonString) {
 		ArrayList<JsonValue> parsedList = JSON.fromJson(ArrayList.class,
 				jsonString);
 		ArrayList<T> result = new ArrayList<T>();

@@ -1,11 +1,6 @@
 package com.mygdx.manager;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
@@ -15,11 +10,8 @@ import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
-import com.mygdx.store.Loadable;
 
 public class LoadManager {
-	@Autowired
-	private ApplicationContext applicationContext;
 	@Autowired
 	private UnitAssets unitAssets;
 	@Autowired
@@ -36,35 +28,34 @@ public class LoadManager {
 	private BattleManager battleManager;
 	@Autowired
 	private BagManager bagManager;
+	@Autowired
+	private EventManager eventManager;
 
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
-	@SuppressWarnings("unchecked")
-	public void load() {
-		// FIXME
-		Map<String, Object> loadedData = new HashMap<String, Object>();
-
-		// FIXME
-		// This logic have no type safety.
-		// I think, type map can be solution.
-		for (Entry<String, Object> data : loadedData.entrySet()) {
-			((Loadable<Object>) applicationContext.getBean(data.getKey()))
-					.setData(data);;
-		}
-
-	}
 	public void loadNewGame() {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();
 		setCurrentPosition();
+		setEventInfo(eventManager, eventAssets);
 		setStorySection();
 		setTimeInfo();
 		setBattleInfo();
 		storySectionManager.runStorySequence();
-		bagManager.possessItem(ItemEnum.WEAPON, "sabre");
-		bagManager.possessItem(ItemEnum.WEAPON, "velmont_mouse"); // FIXME for
-																	// Debug
-		bagManager.possessItem(ItemEnum.WEAPON, "velmont_mouse");
+		bagManager.possessItem(ItemEnum.HANDGRIP, "sabre");
+		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse"); // FIXME for
+		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse");
+	}
+
+	private void setEventInfo(EventManager eventManager, EventAssets eventAssets) {
+		eventManager.setNpcMap(eventAssets.getNpcMap());
+		eventManager.setGameObjectMap(eventAssets.getGameObjectMap());
+	}
+
+	public void loadSaveGame() {
+		setHero();
+		setBattleInfo();
+		storySectionManager.runStorySequence();
 	}
 
 	private void setBattleInfo() {
@@ -82,8 +73,7 @@ public class LoadManager {
 	}
 
 	private void setStorySection() {
-		StorySection prologueStorySection = eventAssets
-				.getStorySection(PROLOGUE_STORYSECTION_NUMBER);
+		StorySection prologueStorySection = eventAssets.getStorySection(PROLOGUE_STORYSECTION_NUMBER);
 
 		storySectionManager.setCurrentStorySection(prologueStorySection);
 		storySectionManager.insertStorySequence();

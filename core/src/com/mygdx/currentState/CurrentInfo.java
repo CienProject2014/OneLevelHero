@@ -1,10 +1,8 @@
 package com.mygdx.currentState;
 
-import java.io.Serializable;
+import com.mygdx.enums.SaveVersion;
 
-import com.mygdx.controller.SaveVersion;
-
-public class CurrentState implements Serializable {
+public class CurrentInfo {
 	// (1) 버전관리
 	private SaveVersion saveVersion;
 
