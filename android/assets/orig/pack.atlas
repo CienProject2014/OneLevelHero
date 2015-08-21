@@ -1459,46 +1459,104 @@ townuiup
 
 
 
+
 middle_ridge_pack.png
 size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-bgmiddleridge1
+bgmiddleridge
   rotate: false
-  xy: 2, 270
+  xy: 2, 438
   size: 3840, 1080
   orig: 3840, 1080
   offset: 0, 0
   index: -1
-invenuipage01
+middle ridge left (2)
   rotate: false
-  xy: 126, 248
-  size: 20, 20
-  orig: 20, 20
+  xy: 548, 356
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
-invenuiup
+middle ridge left (3)
   rotate: false
-  xy: 2, 2
-  size: 30, 30
-  orig: 30, 30
+  xy: 265, 309
+  size: 281, 127
+  orig: 281, 127
+  offset: 0, 0
+  index: -1
+middle ridge left (4)
+  rotate: false
+  xy: 3844, 1308
+  size: 250, 210
+  orig: 250, 210
+  offset: 0, 0
+  index: -1
+middle ridge left (5)
+  rotate: false
+  xy: 750, 356
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+middle ridge left (6)
+  rotate: false
+  xy: 952, 356
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+middle ridge left (7)
+  rotate: false
+  xy: 1154, 356
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+middle ridge right (1)
+  rotate: false
+  xy: 2, 238
+  size: 261, 198
+  orig: 261, 198
+  offset: 0, 0
+  index: -1
+middle ridge right (2)
+  rotate: false
+  xy: 1356, 356
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+middle ridge right (3)
+  rotate: false
+  xy: 1558, 356
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+middle ridge right (4)
+  rotate: false
+  xy: 1760, 356
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
 townuileft
   rotate: false
-  xy: 2, 34
+  xy: 3844, 1072
   size: 122, 234
   orig: 122, 234
   offset: 0, 0
   index: -1
 townuiright
   rotate: false
-  xy: 3844, 1116
+  xy: 2, 2
   size: 122, 234
   orig: 122, 234
   offset: 0, 0
   index: -1
+
   
 
 
