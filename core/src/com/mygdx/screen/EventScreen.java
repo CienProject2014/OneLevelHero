@@ -1,4 +1,4 @@
-﻿package com.mygdx.screen;
+package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -38,7 +38,7 @@ public class EventScreen extends BaseScreen {
 	}
 
 	private void drawSelectStage() {
-		switch (eventManager.getCurrentEvent().getEventType()) {
+		switch (eventManager.getCurrentNpcEvent().getEventType()) {
 			case SELECT_COMPONENT :
 				selectStage.draw();
 				break;
@@ -52,10 +52,9 @@ public class EventScreen extends BaseScreen {
 
 	private void setMultiprocessor() {
 		multiplexer = new InputMultiplexer();
-		switch (eventManager.getCurrentEvent().getEventType()) {
+		switch (eventManager.getCurrentNpcEvent().getEventType()) {
 			case SELECT_COMPONENT :
-				selectStage = stageFactory
-						.makeStage(StageEnum.SELECT_COMPONENT);
+				selectStage = stageFactory.makeStage(StageEnum.SELECT_COMPONENT);
 				multiplexer.addProcessor(0, selectStage);
 				multiplexer.addProcessor(1, eventStage);
 				break;

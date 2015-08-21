@@ -26,6 +26,11 @@
           "characterPath": "chest",
           "backgroundPath": "bg_cobweb_02"
         }
+       ], "rewards" : [
+      	{
+            "rewardType": "save",
+            "rewardState": "not_cleared"
+        }
       ]
     }
   },

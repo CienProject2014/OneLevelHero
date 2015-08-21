@@ -36,9 +36,10 @@ public class FieldStage extends BaseOneLevelStage {
 	private PositionManager positionManager;
 	@Autowired
 	private ListenerFactory listenerFactory;
+	@Autowired
+	private TextureManager textureManager;
 
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap
-			.get("MovingStage");
+	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("MovingStage");
 	private Stage stage;
 	private Table outerTable;
 	private Label movingLabel;
@@ -70,15 +71,13 @@ public class FieldStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		movingLabel.setText(String.format("%s까지%d",
-				fieldManager.getDestinationNode(),
+		movingLabel.setText(String.format("%s까지%d", fieldManager.getDestinationNode(),
 				fieldManager.getLeftFieldLength()));
 		outerTable.setBackground(getBackgroundTRD(), false);
 	}
 	private TextureRegionDrawable getBackgroundTRD() {
-		return new TextureRegionDrawable(new TextureRegion(
-				TextureManager.getBackgroundTexture(fieldManager.getFieldType()
-						.toString())));
+		return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
+				.getFieldType().toString())));
 	}
 
 	// 테이블 디자인
@@ -86,31 +85,27 @@ public class FieldStage extends BaseOneLevelStage {
 
 		Table moveTable = new Table();
 
-		moveTable.add(goForwardFieldButton)
-				.width(uiConstantsMap.get("ButtonWidth"))
+		moveTable.add(goForwardFieldButton).width(uiConstantsMap.get("ButtonWidth"))
 				.height(uiConstantsMap.get("ButtonHeight"));
 		moveTable.row();
-		moveTable.add(goBackwardFieldButton)
-				.width(uiConstantsMap.get("ButtonWidth"))
+		moveTable.add(goBackwardFieldButton).width(uiConstantsMap.get("ButtonWidth"))
 				.height(uiConstantsMap.get("ButtonWidth"));
 		moveTable.right().bottom();
 		return moveTable;
 	}
 
 	public void makeButton() {
-		goForwardFieldButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/worldmap/fieldui_front.png"))));
-		goBackwardFieldButton = new ImageButton(new SpriteDrawable(new Sprite(
-				new Texture("texture/worldmap/fieldui_back.png"))));
+		goForwardFieldButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture(
+				"texture/worldmap/fieldui_front.png"))));
+		goBackwardFieldButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture(
+				"texture/worldmap/fieldui_back.png"))));
 
 	}
 
 	// 리스너 할당
 	public void addListener() {
-		GoForwardFieldButtonListener goForwardListener = listenerFactory
-				.getGoForwardFieldButtonListener();
-		GoBackwardFieldButtonListener goBackwardListener = listenerFactory
-				.getGoBackwardFieldButtonListener();
+		GoForwardFieldButtonListener goForwardListener = listenerFactory.getGoForwardFieldButtonListener();
+		GoBackwardFieldButtonListener goBackwardListener = listenerFactory.getGoBackwardFieldButtonListener();
 		goForwardFieldButton.addListener(goForwardListener);
 		goBackwardFieldButton.addListener(goBackwardListener);
 	}

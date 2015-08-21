@@ -1,8 +1,7 @@
-package com.mygdx.model.battle;
+package com.mygdx.model.jsonModel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.model.jsonModel.AssetsFile;
 
 public class FrameSheet implements AssetsFile<Texture> {
 	private String filePath;
@@ -27,8 +26,7 @@ public class FrameSheet implements AssetsFile<Texture> {
 
 	@Override
 	public Texture getTestFile() {
-		texture = new Texture(Gdx.files.internal("../android/assets/"
-				+ filePath));
+		texture = new Texture(Gdx.files.internal("../android/assets/" + filePath));
 		return texture;
 	}
 

@@ -470,165 +470,200 @@ button
   index: -1
   
 
+
+
+
+
 status_pack.png
-size: 2048,2048
+size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+1x1
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
 statusuiacbuttonending
   rotate: false
-  xy: 781, 694
+  xy: 3614, 1823
   size: 164, 100
   orig: 164, 100
   offset: 0, 0
   index: -1
 statusuiacbuttonparty
   rotate: false
-  xy: 520, 470
+  xy: 3875, 1945
   size: 164, 100
   orig: 164, 100
   offset: 0, 0
   index: -1
 statusuiacbuttonworld
   rotate: false
-  xy: 947, 694
+  xy: 2839, 1579
   size: 164, 100
   orig: 164, 100
   offset: 0, 0
   index: -1
-statusuibase
+statusuibackground
   rotate: false
-  xy: 2, 918
+  xy: 2, 965
   size: 1920, 1080
   orig: 1920, 1080
   offset: 0, 0
   index: -1
+statusuibase
+  rotate: false
+  xy: 2, 47
+  size: 1852, 916
+  orig: 1852, 916
+  offset: 0, 0
+  index: -1
 statusuibuttonending
   rotate: false
-  xy: 520, 368
+  xy: 3263, 1701
   size: 164, 100
   orig: 164, 100
   offset: 0, 0
   index: -1
 statusuibuttonparty
   rotate: false
-  xy: 1113, 694
+  xy: 3429, 1701
   size: 164, 100
   orig: 164, 100
   offset: 0, 0
   index: -1
 statusuibuttonworld
   rotate: false
-  xy: 520, 572
+  xy: 3096, 1701
   size: 165, 100
   orig: 165, 100
   offset: 0, 0
   index: -1
 statusuiexp
   rotate: false
-  xy: 2, 2
+  xy: 1856, 945
   size: 38, 18
   orig: 38, 18
   offset: 0, 0
   index: -1
 statusuilevel
   rotate: false
-  xy: 1924, 1754
+  xy: 2442, 1245
   size: 120, 120
   orig: 120, 120
   offset: 0, 0
   index: -1
 statusuilevelbar
   rotate: false
-  xy: 2, 876
+  xy: 2, 5
   size: 630, 40
   orig: 630, 40
   offset: 0, 0
   index: -1
+statusuililith
+  rotate: false
+  xy: 1924, 1491
+  size: 652, 554
+  orig: 652, 554
+  offset: 0, 0
+  index: -1
 statusuiparty
   rotate: false
-  xy: 1924, 1876
+  xy: 2442, 1367
   size: 122, 122
   orig: 122, 122
   offset: 0, 0
   index: -1
 statusuitbacback
   rotate: false
-  xy: 1670, 796
+  xy: 3614, 1925
   size: 259, 120
   orig: 259, 120
   offset: 0, 0
   index: -1
 statusuitbacinventory
   rotate: false
-  xy: 2, 754
+  xy: 1924, 1369
   size: 516, 120
   orig: 516, 120
   offset: 0, 0
   index: -1
 statusuitbacskill
   rotate: false
-  xy: 2, 632
+  xy: 2578, 1925
   size: 516, 120
   orig: 516, 120
   offset: 0, 0
   index: -1
 statusuitbacstatus
   rotate: false
-  xy: 2, 510
+  xy: 1924, 1247
   size: 516, 120
   orig: 516, 120
   offset: 0, 0
   index: -1
 statusuitbback
   rotate: false
-  xy: 520, 674
+  xy: 2578, 1559
   size: 259, 120
   orig: 259, 120
   offset: 0, 0
   index: -1
 statusuitbinventory
   rotate: false
-  xy: 2, 388
+  xy: 2578, 1803
   size: 516, 120
   orig: 516, 120
   offset: 0, 0
   index: -1
 statusuitbnoninventory
   rotate: false
-  xy: 2, 266
+  xy: 3096, 1925
   size: 516, 120
   orig: 516, 120
   offset: 0, 0
   index: -1
 statusuitbnonskill
   rotate: false
-  xy: 2, 144
+  xy: 1924, 1125
   size: 516, 120
   orig: 516, 120
   offset: 0, 0
   index: -1
 statusuitbnonstatus
   rotate: false
-  xy: 2, 22
+  xy: 2578, 1681
   size: 516, 120
   orig: 516, 120
   offset: 0, 0
   index: -1
 statusuitbskill
   rotate: false
-  xy: 634, 796
+  xy: 3096, 1803
   size: 516, 120
   orig: 516, 120
   offset: 0, 0
   index: -1
 statusuitbstatus
   rotate: false
-  xy: 1152, 796
+  xy: 1924, 1003
   size: 516, 120
   orig: 516, 120
   offset: 0, 0
   index: -1
+
+
+
+
+
+
+
+
+
+
 
   
 blackwood_forest_dungeon_pack.png
@@ -1424,46 +1459,104 @@ townuiup
 
 
 
+
 middle_ridge_pack.png
 size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-bgmiddleridge1
+bgmiddleridge
   rotate: false
-  xy: 2, 270
+  xy: 2, 438
   size: 3840, 1080
   orig: 3840, 1080
   offset: 0, 0
   index: -1
-invenuipage01
+middle ridge left (2)
   rotate: false
-  xy: 126, 248
-  size: 20, 20
-  orig: 20, 20
+  xy: 548, 356
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
-invenuiup
+middle ridge left (3)
   rotate: false
-  xy: 2, 2
-  size: 30, 30
-  orig: 30, 30
+  xy: 265, 309
+  size: 281, 127
+  orig: 281, 127
+  offset: 0, 0
+  index: -1
+middle ridge left (4)
+  rotate: false
+  xy: 3844, 1308
+  size: 250, 210
+  orig: 250, 210
+  offset: 0, 0
+  index: -1
+middle ridge left (5)
+  rotate: false
+  xy: 750, 356
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+middle ridge left (6)
+  rotate: false
+  xy: 952, 356
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+middle ridge left (7)
+  rotate: false
+  xy: 1154, 356
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+middle ridge right (1)
+  rotate: false
+  xy: 2, 238
+  size: 261, 198
+  orig: 261, 198
+  offset: 0, 0
+  index: -1
+middle ridge right (2)
+  rotate: false
+  xy: 1356, 356
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+middle ridge right (3)
+  rotate: false
+  xy: 1558, 356
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+middle ridge right (4)
+  rotate: false
+  xy: 1760, 356
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
 townuileft
   rotate: false
-  xy: 2, 34
+  xy: 3844, 1072
   size: 122, 234
   orig: 122, 234
   offset: 0, 0
   index: -1
 townuiright
   rotate: false
-  xy: 3844, 1116
+  xy: 2, 2
   size: 122, 234
   orig: 122, 234
   offset: 0, 0
   index: -1
+
   
 
 
@@ -1619,6 +1712,179 @@ townuiright
   offset: 0, 0
   index: -1
   
+  
+  
+  
+  
+  
+  
+  
+cemetery_and_beetle_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgforkroad2
+  rotate: false
+  xy: 2, 860
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+staybuttonrest
+  rotate: false
+  xy: 860, 768
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+staybuttonsave
+  rotate: false
+  xy: 860, 676
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+townuiarrow2elvenforest
+  rotate: false
+  xy: 2, 574
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowcaravanserai
+  rotate: false
+  xy: 2, 288
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowelvenforest
+  rotate: false
+  xy: 288, 574
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowmirageport
+  rotate: false
+  xy: 2, 2
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowmoerae
+  rotate: false
+  xy: 288, 288
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowredrosecastle
+  rotate: false
+  xy: 574, 574
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+
+
+
+
+
+
+caravan_dog_retreat_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgforkroad1
+  rotate: false
+  xy: 2, 952
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+dog1
+  rotate: false
+  xy: 2, 666
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+dog2
+  rotate: false
+  xy: 2, 380
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+dog3
+  rotate: false
+  xy: 288, 666
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+staybuttonrest
+  rotate: false
+  xy: 2, 2
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+staybuttonsave
+  rotate: false
+  xy: 1146, 860
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+stone1
+  rotate: false
+  xy: 2, 94
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+stone2
+  rotate: false
+  xy: 288, 380
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+stone3
+  rotate: false
+  xy: 574, 666
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowcaravanserai
+  rotate: false
+  xy: 288, 94
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowdogbenefit
+  rotate: false
+  xy: 574, 380
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowsouthcape
+  rotate: false
+  xy: 860, 666
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+
+
+
 redrose_castle_pack.png
 size: 4096,2048
 format: RGBA8888

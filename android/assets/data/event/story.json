@@ -5,7 +5,8 @@
         "eventNpc": "prologue",
         "eventNumber": "1"
       }
-    ],
+    ],   
+
     "nextSections": [
       {
         "nextSectionNumber": "102",
@@ -34,6 +35,12 @@
         "eventNumber": "4"
       }
     ],
+    "specialEvents" : [
+      	{
+      		"eventNpc" : "kadilla_story",
+      		"eventNumber" : "999"
+      	}
+      ],
     "nextSections": [
       {
         "nextSectionNumber": "103",
@@ -93,8 +100,7 @@
     "nextSections": []
   },
   "105": {
-    "sequencialEvents": [
-    ],
+    "sequencialEvents": [],
     "nextSections": [
       {
         "nextSectionNumber": "106",
@@ -207,46 +213,31 @@
     ],
     "nextSections": [
       {
-        "nextSectionNumber": "112",
+        "nextSectionNumber": "201",
         "eventType": "select_component",
         "targetComponent": "카딜라 성"
       },
       {
-        "nextSectionNumber": "113",
+        "nextSectionNumber": "301",
         "eventType": "select_component",
-        "targetComponent": "바이칼 성"
+        "targetComponent": "수정 협곡"
       },
       {
         "nextSectionNumber": "114",
         "eventType": "select_component",
-        "targetComponent": "미라지 포트"
+        "targetComponent": "바이칼 성"
       },
       {
         "nextSectionNumber": "115",
         "eventType": "select_component",
-        "targetComponent": "레드로즈 성"
+        "targetComponent": "미라지 포트"
       },
       {
         "nextSectionNumber": "116",
         "eventType": "select_component",
-        "targetComponent": "수정 협곡"
+        "targetComponent": "레드로즈 성"
       }
-    ]
-  },
-  "112": {
-    "sequencialEvents": [
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "24"
-      }
-    ]
-  },
-  "113": {
-    "sequencialEvents": [
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "25"
-      }
+      
     ]
   },
   "114": {
@@ -270,6 +261,111 @@
       {
         "eventNpc": "prologue",
         "eventNumber": "28"
+      }
+    ]
+  },
+  "201": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "24"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "202",
+        "eventType": "move_node",
+        "targetComponent": "kadilla_castle"
+      }
+    ]
+  },
+  "202":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_castle",
+        "eventNumber": "2"
+      },
+      {
+        "eventNpc" : "kadilla_castle",
+        "eventNumber" : "4"
+      }
+    ]
+  },
+  "301": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "25"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "302",
+        "eventType": "click_arrow",
+        "targetComponent": "2to13"
+      }
+    ]
+  },
+  "302":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "1"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "303",
+        "eventType": "move_sub_node",
+        "targetComponent": "cobweb_cathedral"
+      }
+    ]
+  },"303":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "304",
+        "eventType": "move_node",
+        "targetComponent": "cobweb"
+      }
+    ]
+  },
+  "304":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "3"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "305",
+        "eventType": "move_sub_node",
+        "targetComponent": "cobweb_inn"
+      }
+    ]
+  },
+  "305":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "4"
+      },
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "5"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "306",
+        "eventType": "battle_end",
+        "targetComponent": "nepel_01"
       }
     ]
   }

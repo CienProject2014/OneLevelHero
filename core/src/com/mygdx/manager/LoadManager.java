@@ -28,6 +28,8 @@ public class LoadManager {
 	private BattleManager battleManager;
 	@Autowired
 	private BagManager bagManager;
+	@Autowired
+	private EventManager eventManager;
 
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
@@ -35,6 +37,7 @@ public class LoadManager {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();
 		setCurrentPosition();
+		setEventInfo(eventManager, eventAssets);
 		setStorySection();
 		setTimeInfo();
 		setBattleInfo();
@@ -42,6 +45,11 @@ public class LoadManager {
 		bagManager.possessItem(ItemEnum.HANDGRIP, "sabre");
 		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse"); // FIXME for
 		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse");
+	}
+
+	private void setEventInfo(EventManager eventManager, EventAssets eventAssets) {
+		eventManager.setNpcMap(eventAssets.getNpcMap());
+		eventManager.setGameObjectMap(eventAssets.getGameObjectMap());
 	}
 
 	public void loadSaveGame() {

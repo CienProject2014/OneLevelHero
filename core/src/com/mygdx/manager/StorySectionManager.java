@@ -11,6 +11,7 @@ import com.mygdx.assets.EventAssets;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.model.event.Event;
 import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.event.StorySectionPacket;
@@ -30,18 +31,46 @@ public class StorySectionManager {
 
 	public void setNewStorySectionAndPlay(int storyNumber) {
 		setNewStorySection(storyNumber);
+		setNewStorySectionNumber(storyNumber);
 		Gdx.app.log("StorySectionManager", "현재 분기번호 [" + storyNumber
 				+ "] 가동중-------------------------------------------------------------------------------");
 		insertStorySequence();
 		insertConditionalEvents();
+		insertSpecialEvents();
 		runStorySequence();
 	}
 
+	private void setNewStorySectionNumber(int storyNumber) {
+		storySectionInfo.setCurrentSectionNumber(storyNumber);
+	}
+
+	public int getCurrentStorySectionNumber() {
+		return storySectionInfo.getCurrentSectionNumber();
+	}
+
+	private void insertSpecialEvents() {
+		if (storySectionInfo.getCurrentStorySection() == null) {
+			return;
+		}
+		List<EventPacket> specialEventList = storySectionInfo.getCurrentStorySection().getSpecialEvents();
+		if (specialEventList != null) {
+			for (EventPacket eventPacket : specialEventList) {
+				Event specialEvent = eventManager.getNpcEvent(eventPacket);
+				if (!specialEvent.getEventState().equals(EventStateEnum.ALWAYS_OPEN)) {
+					specialEvent.setEventState(EventStateEnum.OPENED);
+				}
+				eventManager.getSpecialEventQueue().add(eventPacket);
+			}
+		}
+	}
 	private void insertConditionalEvents() {
+		if (storySectionInfo.getCurrentStorySection() == null) {
+			return;
+		}
 		List<EventPacket> conditionalEvent = storySectionInfo.getCurrentStorySection().getConditionalEvents();
 		if (conditionalEvent != null) {
 			for (EventPacket eventPacket : conditionalEvent) {
-				eventAssets.getNpcEvent(eventPacket).setEventState(EventStateEnum.OPENED);
+				eventManager.getNpcEvent(eventPacket).setEventState(EventStateEnum.OPENED);
 			}
 		}
 	}
@@ -61,6 +90,10 @@ public class StorySectionManager {
 
 	public void insertStorySequence() {
 		Gdx.app.log("StorySectionManager", "insertStorySequence");
+		if (storySectionInfo.getCurrentStorySection() == null) {
+			Gdx.app.log("StorySectionManager", "해당 분기의 sequencialEvents가 없습니다");
+			return;
+		}
 		List<EventPacket> sequencialEvent = storySectionInfo.getCurrentStorySection().getSequencialEvents();
 		for (EventPacket eventPacket : sequencialEvent) {
 			eventSequenceQueue.add(eventPacket);
@@ -71,9 +104,9 @@ public class StorySectionManager {
 		Gdx.app.log("StorySectionManager", "runStorySequence");
 		if (!eventSequenceQueue.isEmpty()) {
 			EventPacket polledEventPacket = eventSequenceQueue.poll();
-			eventManager.setCurrentEventInfo(polledEventPacket);
-			eventManager.setEventOpen(eventManager.getCurrentEvent());
-			eventManager.doStoryEvent(eventManager.getCurrentEvent().getEventType());
+			eventManager.setCurrentNpcEventInfo(polledEventPacket);
+			eventManager.setEventOpen(eventManager.getCurrentNpcEvent());
+			eventManager.doStoryEvent(eventManager.getCurrentNpcEvent().getEventType());
 		} else {
 			goCurrentPosition();
 		}

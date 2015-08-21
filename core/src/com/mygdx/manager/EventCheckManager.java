@@ -1,5 +1,7 @@
 package com.mygdx.manager;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
@@ -15,25 +17,35 @@ public class EventCheckManager {
 		return eventComponent.equals(componentString);
 	}
 
+	public boolean checkSameWithComponentList(List<String> eventComponentList, String componentString) {
+		for (String eventComponent : eventComponentList) {
+			if (eventComponent.equals(componentString)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public boolean checkSameWithComponent(EventTypeEnum eventType, StorySectionPacket nextStorySectionPacket,
 			String componentString) {
 		switch (eventType) {
-		case MOVE_FIELD:
-		case MOVE_SUB_NODE:
-		case MOVE_NODE:
-		case BATTLE_CONTROL:
-		case SELECT_EVENT:
-			return checkMatchWithString(nextStorySectionPacket, componentString);
-		case SELECT_COMPONENT:
-			return checkSelectComponent(nextStorySectionPacket, componentString);
-		default:
-			Gdx.app.log("EventCheckManager", "잘못된 EventCheckInfo오류");
-			return false;
+			case MOVE_FIELD :
+			case MOVE_SUB_NODE :
+			case MOVE_NODE :
+			case BATTLE_CONTROL :
+			case SELECT_EVENT :
+			case CLICK_ARROW :
+				return checkMatchWithString(nextStorySectionPacket, componentString);
+			case SELECT_COMPONENT :
+				return checkSelectComponent(nextStorySectionPacket, componentString);
+			default :
+				Gdx.app.log("EventCheckManager", "잘못된 EventCheckInfo오류");
+				return false;
 		}
 	}
 
 	private boolean checkSelectComponent(StorySectionPacket nextSectionPacket, String indexString) {
-		if (eventManager.getCurrentEvent().getEventComponent().get(Integer.valueOf(indexString))
+		if (eventManager.getCurrentNpcEvent().getEventComponent().get(Integer.valueOf(indexString))
 				.equals(nextSectionPacket.getTargetComponent())) {
 			return true;
 		} else {

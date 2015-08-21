@@ -1,23 +1,23 @@
 {
   "status_scene": {
     "status_label": [
-      "attack",
-      "defense",
+      "atk",
+      "def",
       "electric_resistance",
-      "experience",
+      "exp_points_label",
       "fire_resistance",
-      "health_point_state",
-      "level",
-      "magic_attack",
-      "magic_defense",
-      "speed",
+      "hp_label",
+      "level_label",
+      "matk",
+      "mdef",
+      "spd",
       "water_resistance"
     ],
     "character_status_image" : [
-    	"change_04",
-    	"change_03",
-    	"change_02",
-    	"change_01"
+    	"change_image01",
+    	"change_image02",
+    	"change_image03",
+    	"change_image04"
     ]
   },
   "inventory_scene": {

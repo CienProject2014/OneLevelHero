@@ -11,11 +11,7 @@ public class FieldInfo {
 	private List<FieldTypeEnum> fieldList;
 	private boolean inField;
 
-	public FieldInfo() {
-
-	}
-
-	public FieldInfo(String startNode, String destinationNode, NodeConnection conn) {
+	public void setFieldInfo(String startNode, String destinationNode, NodeConnection conn) {
 		this.startNode = startNode;
 		this.destinationNode = destinationNode;
 		this.fieldList = conn.getFieldList();

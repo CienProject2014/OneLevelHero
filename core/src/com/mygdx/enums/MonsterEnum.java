@@ -14,7 +14,7 @@ public enum MonsterEnum {
 		return monsterName;
 	}
 
-	public static MonsterEnum findMonsterEnum(String jsonName) {
+	public MonsterEnum findMonsterEnum(String jsonName) {
 		for (MonsterEnum monsterEnum : MonsterEnum.values())
 			if (monsterEnum.toString().equals(jsonName))
 				return monsterEnum;

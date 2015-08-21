@@ -7,15 +7,17 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.mygdx.enums.JsonEnum;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.model.jsonModel.StringFile;
 import com.mygdx.util.JsonParser;
 
 /**
  * 각종 리소스들을 관리해주는 assets 클래스, Stage및 Screen에 필요한 요소들을 전달해준다.
- *
+ * 
  * @author Velmont
- *
+ * 
  */
 public class Assets {
 	@Autowired
@@ -38,8 +40,12 @@ public class Assets {
 	private NodeAssets worldNodeAssets;
 	@Autowired
 	private ConstantsAssets constantsAssets;
+	@Autowired
+	private TextureAssets textureAssets;
+	@Autowired
+	private AssetsManager assetsManager;
 
-	public void initialize() {
+	public synchronized void initialize() {
 		Map<String, StringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
 		uiComponentAssets.set(filePathMap);
@@ -52,15 +58,19 @@ public class Assets {
 		worldMapAssets.set(jsonStringMap);
 		worldNodeAssets.set(jsonStringMap);
 		constantsAssets.set(jsonStringMap);
+		textureAssets.loadTexture();
+		assetsManager.loadOverlapResources();
+		assetsManager.load("orig/pack.atlas", TextureAtlas.class);
+
 	}
 
-	private Map<String, StringFile> loadFilePathMap() {
+	private synchronized Map<String, StringFile> loadFilePathMap() {
 		Map<String, StringFile> filePathMap = JsonParser.parseMap(StringFile.class,
 				Gdx.files.internal("data/load/file_path.json").readString());
 		return filePathMap;
 	}
 
-	private Map<String, String> loadJsonStringMap(Map<String, StringFile> filePathMap) {
+	private synchronized Map<String, String> loadJsonStringMap(Map<String, StringFile> filePathMap) {
 		Map<String, StringFile> jsonFileMap = JsonParser.parseMap(StringFile.class,
 				filePathMap.get(JsonEnum.JSON_FILE_PATH.toString()).loadFile());
 		Map<String, String> jsonStringMap = new HashMap<>();

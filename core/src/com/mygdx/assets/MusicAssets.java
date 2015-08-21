@@ -4,14 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.JsonEnum;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.model.jsonModel.MusicFile;
 import com.mygdx.model.jsonModel.StringFile;
 import com.mygdx.util.JsonParser;
 
 public class MusicAssets implements FileAssetsInitializable {
+	@Autowired
+	private AssetsManager assetsManager;
 	private Map<String, String> musicMap = new HashMap<>();
 	private Map<String, String> worldNodeMusicMap = new HashMap<>();
 	private Map<String, String> battleMusicMap = new HashMap<>();
@@ -25,6 +30,7 @@ public class MusicAssets implements FileAssetsInitializable {
 				filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString()).loadFile());
 		for (Entry<String, MusicFile> entry : musicFileMap.entrySet()) {
 			musicMap.put(entry.getKey(), entry.getValue().loadFile());
+			assetsManager.load(musicMap.get(entry.getKey()), Music.class);
 		}
 
 		// WorldNode MusicList
@@ -58,22 +64,22 @@ public class MusicAssets implements FileAssetsInitializable {
 	}
 
 	public Music getMusic(String musicString) {
-		return StaticAssets.assetManager.get(musicMap.get(musicString), Music.class);
+		return assetsManager.get(musicMap.get(musicString), Music.class);
 	}
 
 	public Music getWorldNodeMusic(String musicString) {
-		return StaticAssets.assetManager.get(worldNodeMusicMap.get(musicString), Music.class);
+		return assetsManager.get(worldNodeMusicMap.get(musicString), Music.class);
 	}
 
 	public Music getBattleMusic(String musicString) {
-		return StaticAssets.assetManager.get(battleMusicMap.get(musicString), Music.class);
+		return assetsManager.get(battleMusicMap.get(musicString), Music.class);
 	}
 
 	public Music getMovingMusic(String musicString) {
-		return StaticAssets.assetManager.get(movingMusicMap.get(musicString), Music.class);
+		return assetsManager.get(movingMusicMap.get(musicString), Music.class);
 	}
 
 	public Music getEventMusic(String musicString) {
-		return StaticAssets.assetManager.get(eventMusicMap.get(musicString), Music.class);
+		return assetsManager.get(eventMusicMap.get(musicString), Music.class);
 	}
 }

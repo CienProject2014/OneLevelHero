@@ -2,10 +2,10 @@ package com.mygdx.model.event;
 
 import java.util.ArrayList;
 
-
 public class StorySection {
 	private ArrayList<EventPacket> sequencialEvents;
 	private ArrayList<EventPacket> conditionalEvents;
+	private ArrayList<EventPacket> specialEvents;
 	private ArrayList<StorySectionPacket> nextSections;
 
 	public ArrayList<EventPacket> getSequencialEvents() {
@@ -30,6 +30,14 @@ public class StorySection {
 
 	public void setNextSections(ArrayList<StorySectionPacket> nextSections) {
 		this.nextSections = nextSections;
+	}
+
+	public ArrayList<EventPacket> getSpecialEvents() {
+		return specialEvents;
+	}
+
+	public void setSpecialEvents(ArrayList<EventPacket> specialEvents) {
+		this.specialEvents = specialEvents;
 	}
 
 }

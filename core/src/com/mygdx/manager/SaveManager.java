@@ -70,7 +70,7 @@ public class SaveManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		Gdx.app.log("SaveManager", "저장작업완료");
 	}
 
 	public void load() {
