@@ -1668,6 +1668,7 @@ townuiright
   
   
   
+
 dungeon1_pack.png
 size: 4096,2048
 format: RGBA8888
@@ -1675,25 +1676,33 @@ filter: Linear,Linear
 repeat: none
 bgdungeonsample01
   rotate: false
-  xy: 2, 129
+  xy: 2, 94
   size: 1920, 1080
   orig: 1920, 1080
   offset: 0, 0
   index: -1
 bgdungeonsample02
   rotate: false
-  xy: 1924, 129
+  xy: 1924, 94
   size: 1920, 1080
   orig: 1920, 1080
   offset: 0, 0
   index: -1
-staybuttongo
+out
   rotate: false
   xy: 2, 2
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+staybuttongo
+  rotate: false
+  xy: 3846, 1049
   size: 200, 125
   orig: 200, 125
   offset: 0, 0
   index: -1
+
 
 
 
