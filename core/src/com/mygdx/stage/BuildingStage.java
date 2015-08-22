@@ -29,7 +29,6 @@ import com.mygdx.manager.TextureManager;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.surroundings.Building;
 import com.mygdx.popup.GameObjectPopup;
-import com.mygdx.screen.BuildingScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 
@@ -142,7 +141,8 @@ public class BuildingStage extends BaseOverlapStage {
 				gameObjectButton.setVisible(true);
 				setGameObjectVisibility(gameObjectButton, gameObject.getObjectType());
 				setGameObjectFunction(gameObjectButton, objectName);
-				if (objectName == "save") {
+				System.out.println(objectName);
+				if (objectName.equals("save")) {
 					gameObjectButton.addListener(new InputListener() {
 						@Override
 						public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -150,12 +150,31 @@ public class BuildingStage extends BaseOverlapStage {
 						}
 
 						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-							BuildingScreen.isTouched = true;
+							SaveStage.isTouched = true;
+						}
+					});
+				} else {
+					gameObjectButton.addListener(new InputListener() {
+						@Override
+						public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+							return true;
+						}
+
+						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+							eventManager.setCurrentGameObject(gameObject);
+							gameObjectPopup = new GameObjectPopup();
+							gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
+							gameObjectPopup.setListenerFactory(listenerFactory);
+							gameObjectPopup.setGameObject(gameObject);
+							gameObjectPopup.initialize(objectName);
+							addActor(gameObjectPopup);
+							gameObjectPopup.setVisible(true);
 						}
 					});
 				}
 			}
 		}
+
 	}
 
 	private void setGameObjectFunction(CompositeItem gameObjectButton, String objectName) {

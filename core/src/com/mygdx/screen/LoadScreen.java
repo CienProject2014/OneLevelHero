@@ -13,6 +13,7 @@ import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
+import com.mygdx.stage.LoadStage;
 
 public class LoadScreen extends BaseScreen {
 	@Autowired
@@ -22,14 +23,13 @@ public class LoadScreen extends BaseScreen {
 	private Stage stage, loadStage;
 	private TextButton startButton;
 	private TextButton backButton;
-	public static boolean isTouched = false;
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		setInputProcessor();
 		stage.draw();
-		if (isTouched) {
+		if (LoadStage.isTouched) {
 			loadStage.draw();
 		}
 	}
@@ -64,7 +64,7 @@ public class LoadScreen extends BaseScreen {
 				 * eventManager.setCurrentEventNpc(PROLOGUE);
 				 * loadManager.loadNewGame();
 				 */
-				isTouched = true;
+				LoadStage.isTouched = true;
 			}
 		});
 
@@ -80,7 +80,7 @@ public class LoadScreen extends BaseScreen {
 
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
-		if (isTouched) {
+		if (LoadStage.isTouched) {
 			multiplexer.addProcessor(0, loadStage);
 			multiplexer.addProcessor(1, stage);
 		} else {
