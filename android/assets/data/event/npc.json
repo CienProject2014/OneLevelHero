@@ -242,111 +242,111 @@
             "script": "이렇게 넓어서야....",
             "characterPath": "yongsa",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "어디서부터 찾아야할 지 모르겠는걸…",
             "characterPath": "yongsa",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "혹시 찾으시는 책이 있으십니까?",
             "characterPath": "aimee",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "저주에 관련된 책이나 문서를 알아보고 싶은데요.",
             "characterPath": "parath",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "저주에 관련한 문서는 이쪽입니다.",
             "characterPath": "aimee",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "...",
             "characterPath": "nothing_image",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "... ...",
             "characterPath": "nothing_image",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "... ... ...",
             "characterPath": "nothing_image",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "조사해본 결과,",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "과거의 기록은 없지만, 아마도 탈력을 유도하는 저주인 것 같아요.",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "저주라니… 혹시 위험한 거에요?",
             "characterPath": "parath",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "위험하지는 않을 것 같지만… 점점 더 증상은 심각해 질 거에요. ",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "왜 용사님만 저주에 걸리게 되었는지는 잘 모르겠네요.",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "용사님",
             "characterPath": "aimee",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "응?",
             "characterPath": "yongsa",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "각지에 마왕 토벌을 명령했으니, 준비가 완료될 때까지 휴식을 취하라는 콥웨브 시장님의 전언이 있었습니다.",
             "characterPath": "aimee",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "그리고 카딜라 성의 카시아 공작님께서 용사님을 뵙고 싶어한다는 전언도 있었습니다.",
             "characterPath": "aimee",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "고마워",
             "characterPath": "yongsa",
             "faceNumber": "01",
-            "backgroundPath": "cobweb_12"
+            "backgroundPath": "cobweb_library"
           },
           {
             "script": "도서관 내에서 떠들 순 없으니 나가서 얘기하자.",
             "characterPath": "yongsa",
-            "backgroundPath": "cobweb_12",
+            "backgroundPath": "cobweb_library",
             "faceNumber": "01"
           }
         ]
@@ -726,7 +726,7 @@
         "rewards":[ {
             "rewardType": "move_node",
             "rewardState": "always_open",
-            "rewardTargetAttribute": "kadilla_castle"
+            "rewardComponent": ["kadilla_castle"]
           }]
       }
     }
@@ -4810,12 +4810,12 @@
           {
             "rewardType": "next_section",
             "rewardState": "not_cleared",
-            "rewardTargetAttribute": "105"
+            "rewardComponent": ["105"]
           },
           {
             "rewardType": "pass_time",
             "rewardState": "not_cleared",
-            "rewardTargetAttribute": "5"
+            "rewardComponent": ["5"]
           }
         ]
       }

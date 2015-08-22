@@ -91,6 +91,10 @@ public class MovingManager {
 	}
 
 	public void goPreviousPosition() {
+		if (battleManager.isEventBattle()) {
+			battleManager.setEventBattle(false);
+			return;
+		}
 		switch (positionManager.getCurrentPositionType()) {
 			case SUB_NODE :
 				positionManager.setCurrentPositionType(PositionEnum.NODE);

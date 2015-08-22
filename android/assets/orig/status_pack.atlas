@@ -10,6 +10,13 @@ repeat: none
   orig: 1, 1
   offset: 0, 0
   index: -1
+invenuiactivation02
+  rotate: false
+  xy: 2442, 1357
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
 statusuiacbuttonending
   rotate: false
   xy: 3614, 1823
@@ -75,7 +82,7 @@ statusuiexp
   index: -1
 statusuilevel
   rotate: false
-  xy: 2442, 1245
+  xy: 2442, 1111
   size: 120, 120
   orig: 120, 120
   offset: 0, 0
@@ -96,7 +103,7 @@ statusuililith
   index: -1
 statusuiparty
   rotate: false
-  xy: 2442, 1367
+  xy: 2442, 1233
   size: 122, 122
   orig: 122, 122
   offset: 0, 0

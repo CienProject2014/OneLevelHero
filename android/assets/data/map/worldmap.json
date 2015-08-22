@@ -6,8 +6,8 @@
       "cobweb": {
         "arrowName": "1to2",
         "fieldList": [
-          "blackwood_forest",
           "bridge",
+          "blackwood_forest", 
           "grassland",
           "grassland"
         ]

@@ -41,6 +41,14 @@ public class BattleManager {
 	@Autowired
 	private FieldManager fieldManager;
 
+	public boolean isEventBattle() {
+		return battleInfo.isEventBattle();
+	}
+
+	public void setEventBattle(boolean isEventBattle) {
+		battleInfo.setEventBattle(isEventBattle);
+	}
+
 	public void startBattle(Monster selectedMonster) {
 		if (battleInfo.getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
 			battleInfo.setBattleState(BattleStateEnum.ENCOUNTER);
@@ -51,6 +59,7 @@ public class BattleManager {
 			screenFactory.show(ScreenEnum.ENCOUNTER);
 		}
 	}
+
 	public void runAway() {
 		battleInfo.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 		movingManager.goCurrentPosition();

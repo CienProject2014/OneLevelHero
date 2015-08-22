@@ -114,7 +114,7 @@ public class InventoryStage extends BaseOverlapStage {
 		setPageButton(sceneConstants);
 		setPageLight(sceneConstants, pageNumber);
 
-		setCharacterStatusImage(partyManager, sceneConstants);
+		setCharacterSubImage(partyManager, sceneConstants);
 
 		setTabButton(screenFactory, movingManager);
 		setSubTabButton(ItemEnum.Inventory.EQUIPMENT);
@@ -127,7 +127,7 @@ public class InventoryStage extends BaseOverlapStage {
 		showEquipmentScene(sceneConstants, bagManager, pageNumber);
 		setSubTabButton(ItemEnum.Inventory.EQUIPMENT);
 		setPageLight(sceneConstants, pageNumber);
-		setCharacterStatusImage(partyManager, sceneConstants);
+		setCharacterSubImage(partyManager, sceneConstants);
 	}
 
 	private void showVoidEquipButton(Map<String, Array<String>> sceneConstants) {
@@ -516,7 +516,7 @@ public class InventoryStage extends BaseOverlapStage {
 		}
 	}
 
-	private void setCharacterStatusImage(PartyManager partyManager, Map<String, Array<String>> sceneConstants) {
+	private void setCharacterSubImage(PartyManager partyManager, Map<String, Array<String>> sceneConstants) {
 		Array<String> characterStatusList = sceneConstants.get(CHARACTER_STATUS_IMAGE);
 		for (int i = 0; i < CHACRACTER_STATUS_SIZE; i++) {
 			CompositeItem compositeItem = sceneLoader.getRoot().getCompositeById(characterStatusList.get(i));
