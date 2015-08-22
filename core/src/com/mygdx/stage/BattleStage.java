@@ -205,6 +205,7 @@ public class BattleStage extends BaseOneLevelStage {
 			if (battleManager.getBattleState().equals(BattleStateEnum.PLAYER_WIN)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 				movingManager.goPreviousPosition();
+				storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_END, selectedMonster.getFacePath());
 			} else if (battleManager.getBattleState().equals(BattleStateEnum.GAME_OVER)) {
 				screenFactory.show(ScreenEnum.GAME_OVER);
 			}
@@ -286,17 +287,17 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private Table makeBigImageTable() {
-		turnBigImageMap.get(currentAttackUnit.getFacePath()).setWidth(117);
-		turnBigImageMap.get(currentAttackUnit.getFacePath()).setHeight(117);
-		bigImageTable.add(turnBigImageMap.get(currentAttackUnit.getFacePath())).padRight(15);
+		turnBigImageMap.get(currentAttackUnit.getFacePath()).setWidth(108);
+		turnBigImageMap.get(currentAttackUnit.getFacePath()).setHeight(108);
+		bigImageTable.add(turnBigImageMap.get(currentAttackUnit.getFacePath())).padRight(5);
 		return bigImageTable;
 	}
 
 	private Table makeSmallImageTable() {
 		for (Unit unit : orderedUnits) {
-			turnSmallImageMap.get(unit.getFacePath()).setWidth(84);
-			turnSmallImageMap.get(unit.getFacePath()).setHeight(84);
-			smallImageTable.add(turnSmallImageMap.get(unit.getFacePath()));
+			turnSmallImageMap.get(unit.getFacePath()).setWidth(80);
+			turnSmallImageMap.get(unit.getFacePath()).setHeight(80);
+			smallImageTable.add(turnSmallImageMap.get(unit.getFacePath())).padLeft(12).padBottom(0);
 		}
 		return smallImageTable;
 	}

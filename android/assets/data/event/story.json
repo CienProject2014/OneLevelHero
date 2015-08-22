@@ -73,14 +73,14 @@
       {
         "eventNpc": "prologue",
         "eventNumber": "7"
+      },      
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "29"
       },
       {
         "eventNpc": "prologue",
         "eventNumber": "8"
-      },
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "29"
       },
       {
         "eventNpc": "prologue",
@@ -191,8 +191,7 @@
     "nextSections": [
       {
         "nextSectionNumber": "111",
-        "eventType": "next_section",
-        "targetComponent": "카딜라 성"
+        "eventType": "next_section"
       }
     ]
   },
@@ -366,6 +365,42 @@
         "nextSectionNumber": "306",
         "eventType": "battle_end",
         "targetComponent": "nepel_01"
+      }
+    ]
+  },
+  "306":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "6"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "307",
+        "eventType": "move_node",
+        "targetComponent": "crystallized_valley"
+      }
+    ]
+  }, "307":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "7"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "308",
+        "eventType": "move_sube_node_by_time",
+        "targetComponent" : "crystallized_valley_room_01",
+        "eventComponent" : ["6","18"]
+      },
+      {
+        "nextSectionNumber": "309",
+        "eventType": "move_sub_node_by_time",
+        "targetComponent" : "crystallized_valley_room_01",
+        "eventComponent" : ["18","6"]
       }
     ]
   }
