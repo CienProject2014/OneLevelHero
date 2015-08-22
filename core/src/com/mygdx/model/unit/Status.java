@@ -11,8 +11,8 @@ public class Status {
 	private int defense;
 	private int magicDefense;
 	private int level;
-	private int healthPoint; // 현재 체력
-	private int maxHealthPoint; // 최대 체력
+	private int hp; // 현재 체력
+	private int maxHp; // 최대 체력
 	private int speed; // speed
 	private int experience; // 경험치
 	private int maxExperience; // 최대 경험치(레벨업)
@@ -20,8 +20,8 @@ public class Status {
 	private int waterResistance; // water
 	private int electricResistance; // electric
 
-	public String getHealthPointState() {
-		return healthPoint + "/" + maxHealthPoint;
+	public String getHpState() {
+		return hp + "/" + maxHp;
 	}
 
 	public String getExperiencePointState() {
@@ -61,19 +61,19 @@ public class Status {
 	}
 
 	public int getHp() {
-		return healthPoint;
+		return hp;
 	}
 
 	public void setHp(int healthPoint) {
-		this.healthPoint = healthPoint;
+		this.hp = healthPoint;
 	}
 
 	public int getMaxHp() {
-		return maxHealthPoint;
+		return maxHp;
 	}
 
 	public void setMaxHp(int maxHealthPoint) {
-		this.maxHealthPoint = maxHealthPoint;
+		this.maxHp = maxHealthPoint;
 	}
 
 	public int getSpeed() {
@@ -98,22 +98,6 @@ public class Status {
 
 	public void setMaxExperience(int maxExperience) {
 		this.maxExperience = maxExperience;
-	}
-
-	public int getHealthPoint() {
-		return healthPoint;
-	}
-
-	public void setHealthPoint(int healthPoint) {
-		this.healthPoint = healthPoint;
-	}
-
-	public int getMaxHealthPoint() {
-		return maxHealthPoint;
-	}
-
-	public void setMaxHealthPoint(int maxHealthPoint) {
-		this.maxHealthPoint = maxHealthPoint;
 	}
 
 	public int getFireResistance() {
@@ -150,61 +134,61 @@ public class Status {
 
 	// alphabet order
 	public List<String> getStatusList() {
-		return Arrays.asList(new String[]{String.valueOf(attack), String.valueOf(defense),
+		return Arrays.asList(new String[] { String.valueOf(attack), String.valueOf(defense),
 				String.valueOf(electricResistance), getExperiencePointState(), String.valueOf(fireResistance),
-				getHealthPointState(), String.valueOf(level), String.valueOf(magicAttack),
-				String.valueOf(magicDefense), String.valueOf(speed), String.valueOf(waterResistance)});
+				getHpState(), String.valueOf(level), String.valueOf(magicAttack), String.valueOf(magicDefense),
+				String.valueOf(speed), String.valueOf(waterResistance) });
 	}
 
 	public String getStatusMarkByName(String statusType) {
 		switch (statusType) {
-			case "attack" :
-				return "공격력";
-			case "defense" :
-				return "방어력";
-			case "electricResistance" :
-				return "전기 저항";
-			case "fireResistance" :
-				return "불 저항";
-			case "level" :
-				return "레벨";
-			case "magicAttack" :
-				return "주문력";
-			case "magicDefense" :
-				return "항마력";
-			case "speed" :
-				return "민첩성";
-			case "waterResistance" :
-				return "물 저항";
-			default :
-				Gdx.app.log("Status", "StatusType정보 오류");
-				return null;
+		case "attack":
+			return "공격력";
+		case "defense":
+			return "방어력";
+		case "electricResistance":
+			return "전기 저항";
+		case "fireResistance":
+			return "불 저항";
+		case "level":
+			return "레벨";
+		case "magicAttack":
+			return "주문력";
+		case "magicDefense":
+			return "항마력";
+		case "speed":
+			return "민첩성";
+		case "waterResistance":
+			return "물 저항";
+		default:
+			Gdx.app.log("Status", "StatusType정보 오류");
+			return null;
 		}
 	}
 
 	public int getStatusByName(String statusType) {
 		switch (statusType) {
-			case "attack" :
-				return attack;
-			case "defense" :
-				return defense;
-			case "electricResistance" :
-				return electricResistance;
-			case "fireResistance" :
-				return fireResistance;
-			case "level" :
-				return level;
-			case "magicAttack" :
-				return magicAttack;
-			case "magicDefense" :
-				return magicDefense;
-			case "speed" :
-				return speed;
-			case "waterResistance" :
-				return waterResistance;
-			default :
-				Gdx.app.log("Status", "StatusType정보 오류");
-				return 0;
+		case "attack":
+			return attack;
+		case "defense":
+			return defense;
+		case "electricResistance":
+			return electricResistance;
+		case "fireResistance":
+			return fireResistance;
+		case "level":
+			return level;
+		case "magicAttack":
+			return magicAttack;
+		case "magicDefense":
+			return magicDefense;
+		case "speed":
+			return speed;
+		case "waterResistance":
+			return waterResistance;
+		default:
+			Gdx.app.log("Status", "StatusType정보 오류");
+			return 0;
 		}
 	}
 }

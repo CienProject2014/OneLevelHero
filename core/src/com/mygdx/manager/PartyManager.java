@@ -47,7 +47,7 @@ public class PartyManager {
 
 	public void healAllHero() {
 		for (Hero hero : getBattleMemberList()) {
-			hero.getStatus().setHealthPoint(hero.getStatus().getMaxHealthPoint());
+			hero.getStatus().setHp(hero.getStatus().getMaxHp());
 		}
 	}
 
