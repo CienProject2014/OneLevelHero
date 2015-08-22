@@ -14,7 +14,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.EventManager;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.unit.Monster;
@@ -31,6 +34,8 @@ public class MonsterStage extends BaseOneLevelStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private TextureManager textureManager;
+	@Autowired
+	private EventManager eventManager;
 
 	// private Stack tableStack; // 전체 화면에 들어가는 테이블
 	private Table outerTable; // 몬스터 테이블의 바깥 테이블
@@ -44,7 +49,11 @@ public class MonsterStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		monster = battleManager.getSelectedMonster();
-		monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin());
+		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin(), true);
+		} else {
+			monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin(), false);
+		}
 		setMonsterTable();
 		return this;
 	}
@@ -66,7 +75,9 @@ public class MonsterStage extends BaseOneLevelStage {
 		uiTable.add(hpTable).padBottom(uiConstantsMap.get("hpTablePadBottom"));
 		tableStack.add(outerTable);
 		tableStack.add(uiTable);
-		addAction();
+		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			showBattleAnimation();
+		}
 	}
 
 	@Override
@@ -76,7 +87,7 @@ public class MonsterStage extends BaseOneLevelStage {
 		monsterStatusBar.update();
 	}
 
-	private void addAction() {
+	private void showBattleAnimation() {
 		monsterTable.setVisible(false);
 		monsterTable.addAction(Actions.fadeOut(0));
 		monsterTable.setVisible(true);
@@ -109,9 +120,9 @@ public class MonsterStage extends BaseOneLevelStage {
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
-		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
-		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture("devilcastle_01")));
+		if (eventManager.getCurrentElementEvent().getEventType().equals(EventTypeEnum.BATTLE)) {
+			String backgroundPath = eventManager.getCurrentElementEvent().getEventComponent().get(1);
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
 		} else {
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
 					.getFieldType().toString())));

@@ -8,10 +8,12 @@ public class StatusBar {
 	private StatusBarUi hpBar;
 	private StatusBarUi gaugeBar;
 
-	public StatusBar(Unit unit, Skin skin) {
+	public StatusBar(Unit unit, Skin skin, boolean isStartBattle) {
 		this.unit = unit;
 		hpBar = new StatusBarUi("hp", skin);
-		hpBar.setAnimateDuration(1.5f);
+		if (isStartBattle) {
+			hpBar.setAnimateDuration(1.5f);
+		}
 		hpBar.setValue(getHpPercent());
 	}
 

@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
@@ -97,6 +98,27 @@ public class ChatEventStage extends BaseOneLevelStage {
 	public void setScene(EventScene eventScene) {
 		setScript(eventScene);
 		makeChatTable(eventScene);
+		makeSkipButton();
+	}
+
+	private void makeSkipButton() {
+		TextButton skipButton = new TextButton("스킵", uiComponentAssets.getSkin());
+		skipButton.center();
+		skipButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				rewardManager.doReward(); // 보상이 있을경우 보상실행
+				eventManager.finishNpcEvent();
+				storySectionManager.runStorySequence();
+			}
+		});
+
+		addActor(skipButton);
 	}
 
 	private void makeChatTable(EventScene eventScene) {

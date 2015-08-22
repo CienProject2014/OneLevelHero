@@ -68,7 +68,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		if (storySectionManager.getCurrentStorySection().getNextSections() != null
 				&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
 			timeInfoButton.setText(timeManager.getTimeInfo() + " / "
-					+ storySectionManager.getNextSections().get(0).getNextSectionNumber());
+					+ storySectionManager.getCurrentStorySectionNumber());
 		}
 	}
 

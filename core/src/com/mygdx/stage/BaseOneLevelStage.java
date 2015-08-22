@@ -27,6 +27,14 @@ public class BaseOneLevelStage extends Stage {
 	@Autowired
 	protected TimeManager timeManager;
 
+	public Stack getTableStack() {
+		return tableStack;
+	}
+
+	public void setTableStack(Stack tableStack) {
+		this.tableStack = tableStack;
+	}
+
 	protected Stack tableStack;
 
 	// touch 이벤트에서 사용될 터치 위치

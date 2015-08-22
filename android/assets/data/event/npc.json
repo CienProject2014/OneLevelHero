@@ -70,7 +70,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "mawang_01"
+         "mawang_01", "devilcastle_01"
         ]
       },
       "5": {
@@ -97,7 +97,8 @@
           },
           {
             "script": "아이콘을 누르면 스킬 공격을 할 수 있습니다. 스킬버튼을 누르세요.",
-            "characterPath": "nothing_image",
+            "characterPath": "nothing",
+            "faceNumber" : "01",
             "backgroundPath": "devilcastle_01"
           }
         ]
@@ -106,7 +107,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "mawang_01"
+          "mawang_01", "devilcastle_01"
         ]
       },
       "7": {
@@ -115,7 +116,8 @@
         "eventScenes": [
           {
             "script": "......!!",
-            "characterPath": "monster_mawang_01",
+            "characterPath": "monster_mawang",
+            "faceNumber" : "01",
             "backgroundPath": "devilcastle_01"
           },
           {
@@ -126,12 +128,14 @@
           },
           {
             "script": "정신을 차려보니 마왕성의 입구였다. 문은 굳게 닫혀있어 다시 들어갈 수 없었다.",
-            "characterPath": "nothing_image",
+           "characterPath": "nothing",
+            "faceNumber" : "01",
             "backgroundPath": "prologue_04"
           },
           {
             "script": "용사는 무언가 힘이 빠지는 듯한 위화감을 느꼈지만, 우선 촌장에게 보고하기 위해 블랙우드로 돌아갔다.",
-            "characterPath": "nothing_image",
+            "characterPath": "nothing",
+            "faceNumber" : "01",
             "backgroundPath": "prologue_04"
           }
         ]
@@ -404,12 +408,14 @@
           },
           {
             "script": "바이칼성에는 저주마법에 능통한 종족이 살고 있다고 하니 그 쪽으로 가볼 수도 있겠네요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "또한 미라지 포트 근처의 엘프들은 오랜 세월을 살아가는 종족으로, 그들의 지혜를 활용해도 좋을 것 같아요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           },
           {
@@ -419,7 +425,8 @@
           },
           {
             "script": "윈터폴의 수정 협곡에는 정화의 눈물이라는 성물을 얻을 수 있다고 하네요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           }
         ]
@@ -437,7 +444,8 @@
         "eventScenes": [
           {
             "script": "어디로갈까요?",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           }
         ],
@@ -455,17 +463,20 @@
         "eventScenes": [
           {
             "script": "카딜라 성으로 가자.",
-            "characterPath": "bust_yongsa_01",
+            "characterPath": "yongsa",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "용사님, 조금 쉬었다 가면 안될까요? 모처럼 콥웨브에 왔는데",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "아직 대낮이에요. 지금이라도 출발하면 카딜라 성에 도착할 수 있을 거에요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           },
           {
@@ -1338,7 +1349,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "nepel_01"
+          "nepel_01","cobweb_story_01"
         ]
       },
       "6": {
@@ -1480,119 +1491,119 @@
             "characterPath": "yongsa",
             "faceNumber": "09",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "잠깐, 리리스! 뭔가 있어!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "네? 무슨 일이요, 용사님?"
           },
           {
             "characterPath": "nothing",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "그르르…"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "10",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "엄청난 녀석이군. 확실히 교단이 애를 먹을 만한 녀석 같아."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "10",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "저 빙룡은 보통 몬스터가 아니에요!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "무슨 소리야?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "녀석은 마계의 소환수 안킬라스에요."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "안킬라스?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "네, 안킬라스는 워낙 강력하고 포악한 존재라 보통의 힘으로는 다룰 수 없고, 소환조차 불가능해요."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "06",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "그런 대단한 녀석이 왜 여기에 잠들어있는 거지?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "글쎄요… 대주교님께서 말씀하시길 낮에는 활동을 한다고 했죠?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "보아하니 이건 서큐버스의 마법으로 보이는데, 왜 다루지도 못할 존재를 소환해 밤에 재워놓은 걸까요?"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "08",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "흠… 이런 놈을 재워버릴 정도라면 대단한 녀석일까?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "아니에요. 서큐버스의 수면 마법은 힘이랑 상관이 없어요, 용사님."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "상대가 누구든지 간에 금방 재워버릴 수 있죠."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "호오… 그거 쓸만하군."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "06",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "혹시 모르니 어서 지나가자고."
           }
         ]
@@ -1605,70 +1616,70 @@
             "characterPath": "yongsa",
             "faceNumber": "09",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "하아… 오늘은 절벽이 끊이질 않는군…"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "네?"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "아냐. 그런데 왜 이렇게 눈보라가 거세졌지?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "10",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "앗, 용사님 조심하세요!"
           },
           {
             "characterPath": "nothing",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "크아아아!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "10",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "저 녀석은 뭐야!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "10",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "주교님이 말씀하셨던 그 빙룡 같아요!"
           },
           {
             "characterPath": "nothing",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "쿠아아아아아아아아아!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "젠장! 몸이 얼어붙었어!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "10",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "용사님!!!"
           }
         ]
@@ -1685,84 +1696,84 @@
             "characterPath": "yongsa",
             "faceNumber": "03",
             "speakerPosition": "right",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "호오… 여기가 윈터폴인가?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "03",
             "speakerPosition": "left",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "사방이 눈이네요."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "응? 저것들은 뭐지?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "네?"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "아니 곳곳에 수정장식들이 보여서 말이야"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "아… 윈터폴은 본래 수정을 섬기는 마을이었어요."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "수정을?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "네. 예로부터 수정세공으로 생계를 유지해온 덕에 윈터폴은 수정에 대한 믿음이 자리잡았죠."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "수정협곡이 재해를 막아준다고 여겨 이런 풍속이 생겨났답니다."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "흠… 수정이 값나가는 물건이긴 하지."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "06",
             "speakerPosition": "right",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "그치만 지금은 사람이 없으니 왠지 으스스한걸?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "bg_winterfall_2",
+            "backgroundPath": "bg_winterfall_02",
             "script": "그렇긴 하네요. 그럼 이제 수정 돔으로 가죠."
           }
         ]
@@ -2247,259 +2258,259 @@
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "흑흑…"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "엄마… 흑흑…"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "저기…"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "!!"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "안녕?"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "…"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "난 켈렌이라고 해. 네 이름은 뭐니?"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "…"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "음…"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "난 콥웨브에서 왔어! 협곡 호수를 그리려고 매일 여기를 찾아오고 있어!"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "아직 실력은 부족해도, 난 나중에 훌륭한 화가가 되는 게 꿈이야!"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "내가 그린 그림 보여줄까?"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "(끄덕)"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "그래도 너무 기대는 하지마. 아직 미완성이야. 헤헤"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "…"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "호수엔 자주 찾아오니?"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "… 가끔."
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "그럼 앞으로 여기서 내 말동무가 되어주지 않을래?"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "… 리리스…"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "… 리리스야…"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "정말 예쁜 이름이네!"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "쿡쿡"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "드디어 웃었다! 아하하하!"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "(며칠 뒤)"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "이제 거의 완성이네.."
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "… 신기해… 이런 작은 종이 안에 모든 걸 담을 수 있다는 게…"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "아냐, 아직 아곳에서 가장 아름다운 걸 못 담았어."
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "…?"
           },
           {
             "characterPath": "nepel_young",
             "faceNumber": "05",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "…"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "(며칠 뒤)"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "리리스, 네게 줄 선물이 있어!"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "?"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "열어봐! 내 첫 관객에게 주는 자그마한 선물이야,"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "… 이건…"
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "이 그림에 빠져 있던 가장 아름다운 존재는 바로 너야. 리리스."
           },
           {
             "characterPath": "kelen",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "넌 내게 다가온 가장 큰 축복이야!"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "켈렌…"
           },
           {
@@ -2660,14 +2671,14 @@
             "characterPath": "nepel_young",
             "faceNumber": "04",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_3",
+            "backgroundPath": "cave_of_succubus_03",
             "script": "어서 잡아! 절대 나가지 못하게 해!"
           },
           {
             "characterPath": "lilis_young",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_3",
+            "backgroundPath": "cave_of_succubus_03",
             "script": "(슈웅!)"
           },
           {
@@ -2799,182 +2810,182 @@
             "characterPath": "lilis",
             "faceNumber": "10",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "앗, 파라스님!"
           },
           {
             "characterPath": "younsa",
             "faceNumber": "10",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "파라스!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "어이, 꼬맹이! 눈좀 떠봐!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "오호호호!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "일족의 배신자에게 철퇴를 내리는 이 순간을 항상 기다려왔다!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "04",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "파라스한테 대체 무슨 짓을 한 거야!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "04",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "하아아앗!"
           },
           {
             "characterPath": "nothing",
             "faceNumber": "06",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "(퍼억!)"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "윽…"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "용사님!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "05",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "지난번처럼 잘 풀릴 꺼라 생각하면 큰 오산이야."
           },
           {
             "characterPath": "nepel",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "나는 네가 남긴 상처를 치유하기 위해 불멸의 수정을 찾아내었다."
           },
           {
             "characterPath": "nepel",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "그러나 찾아보니 불멸의 수정은 알고 있던 것보다 더 강력한 물건이었지."
           },
           {
             "characterPath": "nepel",
             "faceNumber": "05",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "그래서 수정을 지키기 위해 수정의 힘으로 안킬라스를 소환했고, 수정을 완전하게 이용하기 위한 방법에 대해 연구했다. "
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "그 결과 인간과 혼혈인 서큐버스의 심장이 필요하더군. 마침 너의 심장말이야!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "난 리리스, 너를 죽이고 수정과 융합하여 태양빛을 두려워하지 않는 궁극의 서큐버스로 다시 태어날 것이다!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "그렇게 이 세상의 모든 것을 내 밑에 두고 다시는 나를 거역하는 자가 없도록 할거야!!!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "그러니 죽어라!!!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "난 신의 사도가 된 이후 지난 세월 동안 인간의 몸으로 신의 가르침을 따라왔어."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "신의 가르침은 항상 사랑과 믿음, 그리고 용서가 뒤따르지."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "난 오늘 처음으로 신의 뜻을 거역하겠어."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "예전의 내 모습으로 돌아가 전력을 다해서 너를 막아보겠어!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "(대주교님 저를 용서해주세요…)"
           },
           {
             "characterPath": "lilis_succubus",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "…"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "그 모습을 보니 오랜 상처가 쑤시는 군."
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "이제 그만 사라져라!!!"
           }
         ]
@@ -2994,56 +3005,56 @@
             "characterPath": "lilis",
             "faceNumber": "10",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "앗, 파라스님!"
           },
           {
             "characterPath": "younsa",
             "faceNumber": "10",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "파라스!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "어이, 꼬맹이! 눈좀 떠봐!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "오호호호!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "일족의 배신자에게 철퇴를 내리는 이 순간을 항상 기다려왔다!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "04",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "파라스한테 대체 무슨 짓을 한 거야!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "이제 그 껍데기만 남은 시체엔 관심이 없어. 필요하다면 돌려주지!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "04",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "아… 안돼… 파라스!!"
           }
         ]
@@ -3060,49 +3071,49 @@
             "characterPath": "nepel",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "큭."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "헷, 용사와 성녀님의 힘을 무시하면 안되지!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "05",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "후후후, 좋아 제법이군."
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "그럼 이제 불멸의 수정이 내게 준 궁극에 가까운 힘을 보여주겠어."
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "비록 완전한 힘은 아니지만, 너희같이 하찮은 것들을 없애버리기엔 충분하지!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "자, 들려주마!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "최후의 레퀴엠을 말이야!"
           }
         ]
@@ -3122,161 +3133,161 @@
             "characterPath": "nepel",
             "faceNumber": "06",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "크윽…"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "06",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "어.. 어떻게 내가… 곧 세상의 주인이 될 내가…! 큭!"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "06",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "하찮은 잡종 따위에게…"
           },
           {
             "characterPath": "lilis_succubus",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "네펠.."
           },
           {
             "characterPath": "nepel",
             "faceNumber": "06",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "그딴 싸구려 가식 따윈 집어치좌시지…"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "06",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "너와 난 영원한 원수지간이야…!"
           },
           {
             "characterPath": "lilis_succubus",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "처음부터 싫었던 게 아니야, 네펠…"
           },
           {
             "characterPath": "lilis_succubus",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "어느 순간부터 난 네가 무서워졌고, 더 이상 네게 다가갈 수 없었어…"
           },
           {
             "characterPath": "lilis_succubus",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "대체 어디서부터 잘못된걸까, 네펠…"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "06",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "흥…! 신파극은… 그만하시지… 큭…"
           },
           {
             "characterPath": "lilis_succubus",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "네펠…"
           },
           {
             "characterPath": "nepel",
             "faceNumber": "06",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "난… 너의… 그런 점이… 항상 싫었어…"
           },
           {
             "characterPath": "nothing",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "(털썩)"
           },
           {
             "characterPath": "lilis_succubus",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "네펠…"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "응?"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "리리스!!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "10",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "동굴이 무너지고 있어! 대체 무슨 일이야!"
           },
           {
             "characterPath": "lilis_succubus",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "이곳을 유지하는 우두머리의 마법이 깨어진 거에요, 용사님!"
           },
           {
             "characterPath": "youngsa",
             "faceNumber": "05",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "칫, 절벽가슴 녀석! 갈 때도 화려하게 가시는군!"
           },
           {
             "characterPath": "lilis_succubus",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "여기서 나가야 해요, 용사님!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "좋아! 꼬맹이를 데리고 이곳에서 탈출이다!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "저 포탈을 이용하자!"
           },
           {
             "characterPath": "lilis_succubus",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cave_of_succubus_2",
+            "backgroundPath": "cave_of_succubus_02",
             "script": "어서 가요! 저 포탈도 좀 있으면 소멸할 거에요!"
           }
         ]
@@ -3863,42 +3874,42 @@
             "characterPath": "lilis",
             "faceNumber": "10",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_2",
+            "backgroundPath": "crystallized_valley_02",
             "script": "앗, 여기는?"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_2",
+            "backgroundPath": "crystallized_valley_02",
             "script": "하, 반가운 풍경이군!"
           },
           {
             "characterPath": "nothing",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_2",
+            "backgroundPath": "crystallized_valley_02",
             "script": "크아아아!"
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_2",
+            "backgroundPath": "crystallized_valley_02",
             "script": "용사님! 저 놈이 오고 있어요!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_2",
+            "backgroundPath": "crystallized_valley_02",
             "script": "다들 콥웨브쪽으로 달리자! 여기는 길이 좁아서 우리가 불리해!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_2",
+            "backgroundPath": "crystallized_valley_02",
             "script": "네! 용사님!"
           }
         ]
@@ -3911,70 +3922,70 @@
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "다들 괜찮아?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "네!"
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "저도 괜찮아요, 용사님!"
           },
           {
             "characterPath": "nothing",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "크아아아!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "좋았어! 그럼 다시 부활한 용사님의 위력을 보여주지!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "최강의 소환수 안킬라스와 싸워 이기게 됐네요!"
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "이 놈이 그 빙룡이군요!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "놈이 온다! 모두 준비해!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "네!"
           },
           {
             "characterPath": "parath",
             "faceNumber": "04",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "붙어보자! 겨울 도마뱀!!"
           }
         ]
@@ -3994,175 +4005,175 @@
             "characterPath": "parath",
             "faceNumber": "06",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "하아하아… 정말 엄청난 녀석이었군요…"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "06",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "마계 최강의 소환수였으니깐요."
           },
           {
             "characterPath": "parath",
             "faceNumber": "06",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "소환수? 마계?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "06",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "얘기하자면 좀 길어요, 파라스님."
           },
           {
             "characterPath": "parath",
             "faceNumber": "10",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "엇, 얼음이 녹아버렸어요!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "호오… 추위도 가셨군!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "안킬라스의 기운이 사라진 거로군요!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "03",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "이대로 콥웨브까지 진격이다!"
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "용사님, 아직 동굴 안에 불멸의 수정 조각이 남아 있을지도 몰라요!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "아 그거, 필요없어."
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "네?"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "파라스, 불멸의 수정은 말이야. 세상에 존재해선 안되는 물건이야."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "불멸의 수정은 힘을 증폭시켜주는 위험한 존재에요, 파라스님."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "그것이 사람들의 손에 들어간다면 누군가는 악용할 수 있고, 그렇게되면 더 큰 참사를 불러 일으킬 꺼에요."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "02",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "뭐든지 적당한 게 최고란 소리야, 이 꼬맹아!"
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "대주교님께는 뭐라고 보고드릴 건데요?"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "뭐, 도중에 연기처럼 사라졌다고 하면 되겠지! 하하!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "03",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "저도 수정에 대한 진실은 비밀로 하는 게 낫다고 생각해요, 파라스님."
           },
           {
             "characterPath": "parath",
             "faceNumber": "09",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "하아… 그래도 왠지 아쉽네요."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "03",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "쓸데없는 소리말고 얼른 앞장 서라, 꼬맹이!"
           },
           {
             "characterPath": "parath",
             "faceNumber": "09",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "예에… 갑니다, 가요."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "(그럼 잘 있어…)"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "(엄마…)"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "(켈렌…)"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_3",
+            "backgroundPath": "crystallized_valley_03",
             "script": "(… 그리고 네펠…)"
           }
         ]
@@ -4175,35 +4186,35 @@
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cobweb_2",
+            "backgroundPath": "cobweb_02",
             "script": "일단 대주교님께 보고드리죠."
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_2",
+            "backgroundPath": "cobweb_02",
             "script": "대성당으로 가요!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "09",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_2",
+            "backgroundPath": "cobweb_02",
             "script": "하아… 여기까지 힘들게 왔는데 좀 쉬었다 하자…"
           },
           {
             "characterPath": "parath",
             "faceNumber": "09",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_2",
+            "backgroundPath": "cobweb_02",
             "script": "용사님, 엄살 그만 부리고 어서 행차하시죠."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "03",
             "speakerPosition": "right",
-            "backgroundPath": "cobweb_2",
+            "backgroundPath": "cobweb_02",
             "script": "후후, 힘내세요, 용사님."
           }
         ]
@@ -4355,112 +4366,112 @@
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "일단… 끝났군요."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "넌 대체 무슨 심경의 변화인 거냐?"
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "뭐가요?"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "수정이 아쉬워서 주우러 가자고 했던 녀석이 말이야."
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "아… 그거 말이죠."
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "생각을 해봤는데, 두 분 말씀이 옳았어요."
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "두 분 말씀대로 악인의 손에 넘어가게 되면 그건 그것 나름대로 골치 아파지겠죠."
           },
           {
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "차라리 수정의 존재를 지워버리는게 모두에게 이로운 선택이라고 생각했어요."
           },
           {
             "characterPath": "parath",
             "faceNumber": "03",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "용사님 말씀이 맞아요. 뭐든지 적당한 게 좋죠, 뭐."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "07",
             "speakerPosition": "right",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "오오… 드디어 파라스가 내 편을 들어주는구나!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "02",
             "speakerPosition": "right",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "꼬맹이 녀석, 마침내 나의 위대함을 인정하는군!"
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "좋아! 파라스, 마왕을 향해 앞장 서라! 일단 시원하게 목을 축이고…!"
           },
           {
             "characterPath": "parath",
             "faceNumber": "09",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "그럴 줄 알았죠."
           },
           {
             "characterPath": "lilis",
             "faceNumber": "03",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "후후, 그게 용사님의 매력이죠."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "03",
             "speakerPosition": "right",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "출발이다!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "03",
             "speakerPosition": "left",
-            "backgroundPath": "cobweb_3",
+            "backgroundPath": "cobweb_03",
             "script": "네, 용사님!"
           }
         ]

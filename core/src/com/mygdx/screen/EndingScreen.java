@@ -23,8 +23,6 @@ public class EndingScreen extends BaseScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
-		Gdx.app.log("Ending", "Ending");
 		stage.draw();
 	}
 
@@ -38,14 +36,12 @@ public class EndingScreen extends BaseScreen {
 
 		backButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.COLLECTION);
 			}
 		});

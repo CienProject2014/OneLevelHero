@@ -28,7 +28,13 @@ public class TextureManager {
 	}
 
 	public Texture getMonsterTexture(String monsterName) {
-		return assetsManager.get(textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + monsterName));
+		if (textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + monsterName) != null) {
+			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + monsterName));
+		} else {
+			Gdx.app.log("TextureManager", "chracterTextureMap에 " + TextureEnum.MONSTER + "_" + monsterName
+					+ " 에 해당하는 이미지가 존재하지 않습니다.");
+			return getBustTexture("default", "01");
+		}
 	}
 
 	public Texture getBustTexture(String facePath) {
@@ -106,8 +112,14 @@ public class TextureManager {
 	}
 
 	public Texture getBigBattleImage(String facePath) {
-		return assetsManager.get(
-				textureAssets.getTexturePath(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE),
-				Texture.class);
+		if (textureAssets.getTexturePath(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE) != null) {
+			return assetsManager.get(
+					textureAssets.getTexturePath(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE),
+					Texture.class);
+		} else {
+			Gdx.app.log("TextureManager", TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE
+					+ "에 해당하는 이미지가 없습니다");
+			return getBigBattleImage("default");
+		}
 	}
 }

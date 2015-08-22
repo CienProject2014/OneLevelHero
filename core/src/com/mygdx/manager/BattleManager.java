@@ -1,21 +1,31 @@
 package com.mygdx.manager;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.SkillAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.BattleInfo;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.enums.SkillTargetEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
 
 public class BattleManager {
+	private final String TAG = "BattleManager";
+
+	@Autowired
+	private SkillAssets skillAssets;
 	@Autowired
 	private MovingManager movingManager;
 	@Autowired
@@ -28,14 +38,8 @@ public class BattleManager {
 	private UnitManager unitManager;
 	@Autowired
 	private BattleInfo battleInfo;
-
-	public void setBeforePosition(PositionEnum positionEnum) {
-		battleInfo.setBeforePosition(positionEnum);
-	}
-
-	public PositionEnum getBeforePosition() {
-		return battleInfo.getBeforePosition();
-	}
+	@Autowired
+	private FieldManager fieldManager;
 
 	public void startBattle(Monster selectedMonster) {
 		if (battleInfo.getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
@@ -43,12 +47,76 @@ public class BattleManager {
 		}
 		unitManager.initiateMonster(selectedMonster);
 		battleInfo.setCurrentMonster(selectedMonster);
-		screenFactory.show(ScreenEnum.ENCOUNTER);
+		if (fieldManager.isInField()) {
+			screenFactory.show(ScreenEnum.ENCOUNTER);
+		}
 	}
-
 	public void runAway() {
 		battleInfo.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 		movingManager.goCurrentPosition();
+	}
+
+	public void attack(Unit attackUnit, Unit defendUnit, int[][] hitArea) {
+		attackUnit.attack(defendUnit, hitArea);
+		if (attackUnit instanceof Hero) {
+			// TODO empty animation
+			readyForPlayerAnimation("empty hit");
+		} else {
+			// TODO empty animation
+
+			readyForMonsterAnimation("empty hit");
+		}
+		checkIsBattleEnd();
+	}
+
+	public void useSkill(Unit attackUnit, Unit targetUnit, String skillName) {
+
+		Skill skill = skillAssets.getSkill(skillName);
+
+		ArrayList<Unit> targetList = getTargetList(skill.getSkillTargetType(), attackUnit, targetUnit);
+
+		attackUnit.useSkill(targetList, skill);
+
+		// SkillTargetType에 따라 타겟 설정
+		if (attackUnit instanceof Hero) {
+			// TODO empty animation
+			readyForPlayerAnimation("empty");
+		} else {
+			// TODO empty animation
+			readyForMonsterAnimation("empty");
+		}
+
+		checkIsBattleEnd();
+	}
+
+	private ArrayList<Unit> getTargetList(String targetType, Unit skillUser, Unit selectedUnit) {
+		ArrayList<Unit> list = new ArrayList<Unit>();
+		SkillTargetEnum enm = SkillTargetEnum.findSkillTargetEnum(targetType);
+		switch (enm) {
+			case ALL :
+				list.addAll(partyManager.getBattleMemberList());
+				break;
+			case MONSTER :
+				list.add(battleInfo.getCurrentMonster());
+				break;
+			case ONE :
+				list.add(selectedUnit);
+				break;
+			case RANDOM :
+				Hero pick = getRandomHero();
+				if (pick != null) {
+					list.add(pick);
+				}
+				break;
+			case SELF :
+				list.add(skillUser);
+				break;
+			default :
+				break;
+
+		}
+
+		return list;
 	}
 
 	public boolean isInBattle() {
@@ -79,54 +147,61 @@ public class BattleManager {
 		return battleInfo.getCurrentActor();
 	}
 
-	public void endBattle(Unit loseUnit) {
-		if (loseUnit instanceof Monster) {
-			Gdx.app.log("BattleManager", "용사팀의 승리!");
-		} else {
-			Gdx.app.log("BattleManager", "용사팀의 패배!");
+	private Hero getRandomHero() {
+		Hero pick = null;
+		ArrayList<Hero> aliveList = new ArrayList<Hero>();
+		for (Hero hero : partyManager.getBattleMemberList()) {
+			if (!isDead(hero)) {
+				aliveList.add(hero);
+			}
 		}
-		setBattleState(BattleStateEnum.GAME_OVER);
+
+		Random random = new Random();
+
+		if (aliveList.size() == 0) {
+			Gdx.app.log(TAG, "영웅 랜덤 선택 실패: 살아있는 영웅이 없음");
+		} else {
+			int randomIndex = random.nextInt(aliveList.size());
+			pick = partyManager.getBattleMemberList().get(randomIndex);
+		}
+
+		return pick;
 	}
 
-	public void attack(Unit attackUnit, Unit defendUnit, int[][] hitArea) {
-		attackUnit.attack(defendUnit, hitArea);
-		if (attackUnit instanceof Hero) {
-			// TODO empty animation
-			readyForPlayerAnimation("empty hit");
-		} else {
-			// TODO empty animation
-
-			readyForMonsterAnimation("empty hit");
+	private void checkIsBattleEnd() {
+		boolean monsterState = isMonsterDead();
+		boolean partyState = isHeroDead();
+		if (monsterState && !partyState) {
+			Gdx.app.log(TAG, "용사팀의 승리!");
+			setBattleState(BattleStateEnum.PLAYER_WIN);
+		} else if (partyState && !monsterState) {
+			Gdx.app.log(TAG, "용사팀의 패배!");
+			setBattleState(BattleStateEnum.GAME_OVER);
+		} else if (partyState && monsterState) {
+			Gdx.app.log(TAG, "잘못된 배틀 : 동시에 죽었다.");
+			setBattleState(BattleStateEnum.GAME_OVER);
 		}
-		checkIsDead(defendUnit);
 	}
 
-	public void userSkill(Unit attackUnit, String skill) {
-		attackUnit.skillAttack(battleInfo.getCurrentMonster(), skill);
-		if (attackUnit instanceof Hero) {
-			// TODO empty animation
-			readyForPlayerAnimation("empty");
-		} else {
-			// TODO empty animation
-			readyForMonsterAnimation("empty");
-		}
-		checkIsDead(battleInfo.getCurrentMonster());
+	private boolean isDead(Unit defendUnit) {
+		return defendUnit.getStatus().getHp() <= 0;
 	}
 
-	private void checkIsDead(Unit defendUnit) {
-		if (defendUnit.getStatus().getHp() <= 0) {
-			endBattle(defendUnit);
+	private boolean isHeroDead() {
+		for (Hero hero : partyManager.getBattleMemberList()) {
+			if (isDead(hero)) {
+				return true;
+			}
 		}
+		return false;
+	}
+
+	private boolean isMonsterDead() {
+		return isDead(battleInfo.getCurrentMonster());
 	}
 
 	public void useItem(String item) {
 		// TODO
-	}
-
-	public void checkMonsterWin(Hero randomHero) {
-		if (randomHero.getStatus().getHp() <= 0) {
-			endBattle(battleInfo.getCurrentMonster());
-		}
 	}
 
 	public Monster getSelectedMonster() {
@@ -153,9 +228,12 @@ public class BattleManager {
 		battleInfo.setCurrentClickStateEnum(currentClickState);
 	}
 
-	public void healAllHero() {
-		for (Hero hero : partyManager.getBattleMemberList()) {
-			hero.getStatus().setHealthPoint(hero.getStatus().getMaxHealthPoint());
-		}
+	public void setBeforePosition(PositionEnum positionEnum) {
+		battleInfo.setBeforePosition(positionEnum);
 	}
+
+	public PositionEnum getBeforePosition() {
+		return battleInfo.getBeforePosition();
+	}
+
 }

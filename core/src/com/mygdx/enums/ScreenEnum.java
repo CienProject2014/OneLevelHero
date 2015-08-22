@@ -5,7 +5,7 @@ public enum ScreenEnum {
 			"greeting"), LOG("log"), LOADING_BAR("loading_bar"), MENU("menu"), OPTION("option"), VILLAGE("village"), WORLD_MAP(
 			"world_map"), CREDIT("credit"), EXTRA("extra"), SAVE("save"), BONUS_POINT("bonus_point"), LOAD("load"), EVENT(
 			"event"), FIELD("field"), ENDING("ending"), CG("cg"), BGM("bgm"), COLLECTION("collection"), STATUS("status"), BATTLE(
-			"battle"), ENCOUNTER("encounter"), INVENTORY("inventory"), FORK("fork");
+			"battle"), ENCOUNTER("encounter"), INVENTORY("inventory"), FORK("fork"), GAME_OVER("game_over");
 
 	private String code;
 
