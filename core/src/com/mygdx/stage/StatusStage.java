@@ -63,11 +63,14 @@ public class StatusStage extends BaseOverlapStage {
 	private Hero currentSelectedHero;
 
 	public Stage makeStage() {
-		setCurrentSelectedHero(partyManager.getCurrentSelectedHero());
-		HashMap<String, Array<String>> sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
 		assetsManager.initScene(SCENE_NAME);
 		initSceneLoader(assetsManager.rm);
+		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
+
+		setCurrentSelectedHero(partyManager.getCurrentSelectedHero());
+		sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
+
 		setCamera();
 		setLabel(partyManager, sceneConstants);
 		setButton();
