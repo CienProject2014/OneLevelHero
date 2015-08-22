@@ -40,6 +40,8 @@ import com.mygdx.screen.BattleScreen;
 import com.mygdx.ui.GridHitbox;
 
 public class BattleStage extends BaseOneLevelStage {
+	private final String TAG = "BattleStage";
+
 	@Autowired
 	private BattleManager battleManager;
 	@Autowired
@@ -334,61 +336,61 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void makeHiddenButton() {
 		switch (battleManager.getCurrentClickStateEnum()) {
-			case NORMAL :
-				calCostGague(currentAttackUnit, NORMAL_ATTACK);
-				updateOrder();
-				updateSmallImageTable();
-				setDarkButton(attackButton);
-				break;
-			case SKILL :
-				setDarkButton(skillButton);
-				break;
-			case INVENTORY :
-				setDarkButton(inventoryButton);
-				break;
-			case DEFENSE :
-				setDarkButton(defenseButton);
-				break;
-			case WAIT :
-				setDarkButton(waitButton);
-				break;
-			case DEFAULT :
-				setFreeButton();
-				break;
-			default :
-				break;
+		case NORMAL:
+			calCostGague(currentAttackUnit, NORMAL_ATTACK);
+			updateOrder();
+			updateSmallImageTable();
+			setDarkButton(attackButton);
+			break;
+		case SKILL:
+			setDarkButton(skillButton);
+			break;
+		case INVENTORY:
+			setDarkButton(inventoryButton);
+			break;
+		case DEFENSE:
+			setDarkButton(defenseButton);
+			break;
+		case WAIT:
+			setDarkButton(waitButton);
+			break;
+		case DEFAULT:
+			setFreeButton();
+			break;
+		default:
+			break;
 		}
 	}
 
 	private void checkCurrentState() {
 		switch (battleManager.getCurrentClickStateEnum()) {
-			case NORMAL :
-				gridHitbox.hideGrid();
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-				// currentHero.setGauge(preGague);
-				break;
-			case SKILL :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-				// currentHero.setGauge(preGague);
-				break;
-			case INVENTORY :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-				// currentHero.setGauge(preGague);
-				break;
-			case DEFENSE :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-				// currentHero.setGauge(preGague);
-				break;
-			case WAIT :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-				// currentHero.setGauge(preGague);
-				break;
-			case RUN :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-				// currentHero.setGauge(preGague);
-				break;
-			default :
-				break;
+		case NORMAL:
+			gridHitbox.hideGrid();
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+			// currentHero.setGauge(preGague);
+			break;
+		case SKILL:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+			// currentHero.setGauge(preGague);
+			break;
+		case INVENTORY:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+			// currentHero.setGauge(preGague);
+			break;
+		case DEFENSE:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+			// currentHero.setGauge(preGague);
+			break;
+		case WAIT:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+			// currentHero.setGauge(preGague);
+			break;
+		case RUN:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+			// currentHero.setGauge(preGague);
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -442,14 +444,22 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL);
 				makeHiddenButton();
 
-				Skill s = currentAttackUnit.getSkills().get("cut_01");
-				if (s.getHitboxSize() == 0) {
+				// TODO: 유저가 선택한 스킬의 이름을 받아와야 함
+				Skill s = currentAttackUnit.getSkills().get("cut_" + "01");
+
+				if (s.getHitboxSize() == 0) { // grid가 고정된 형태인 경우
 					gridHitbox.setHitboxCenter(s.getHitboxCenter());
 					gridHitbox.setHitboxShape(s.getHitboxShape());
 					gridHitbox.showGrid();
-					Gdx.app.log("BattleStage", "gridHitbox를 표시합니다");
+					Gdx.app.log(TAG, "gridHitbox를 표시합니다");
 				} else {
-					battleManager.userSkill(currentAttackUnit, "cut_01");
+					gridHitbox.setLimitNum(s.getHitboxSize());
+					if (s.getHitboxCenter() == null) { // grid를 선택하는 경우
+						gridHitbox.showGrid();
+					} else { // grid 선택 없는 경우
+						Gdx.app.log(TAG, "스킬 즉시 사용");
+						battleManager.useSkill(currentAttackUnit, selectedMonster, "cut_01");
+					}
 				}
 				isSkill = true;
 				BattleScreen.showSkillStage = true;
@@ -462,7 +472,7 @@ public class BattleStage extends BaseOneLevelStage {
 				checkCurrentState();
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.INVENTORY);
 				makeHiddenButton();
-				Gdx.app.log("BattleStage", "인벤토리!");
+				Gdx.app.log(TAG, "인벤토리!");
 			}
 		});
 		defenseButton.addListener(new ClickListener() {
@@ -471,7 +481,7 @@ public class BattleStage extends BaseOneLevelStage {
 				checkCurrentState();
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFENSE);
 				makeHiddenButton();
-				Gdx.app.log("BattleStage", "방어!");
+				Gdx.app.log(TAG, "방어!");
 
 			}
 		});
@@ -481,7 +491,7 @@ public class BattleStage extends BaseOneLevelStage {
 				checkCurrentState();
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.WAIT);
 				makeHiddenButton();
-				Gdx.app.log("BattleStage", "기다립시다!");
+				Gdx.app.log(TAG, "기다립시다!");
 
 			}
 		});
@@ -490,7 +500,7 @@ public class BattleStage extends BaseOneLevelStage {
 			public void clicked(InputEvent event, float x, float y) {
 				checkCurrentState();
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.RUN);
-				Gdx.app.log("BattleStage", "도망!");
+				Gdx.app.log(TAG, "도망!");
 				battleManager.runAway();
 			}
 		});
@@ -507,11 +517,19 @@ public class BattleStage extends BaseOneLevelStage {
 
 			@Override
 			public void touchDragged(InputEvent event, float x, float y, int pointer) {
+
+				// TODO: 유저가 선택한 스킬의 이름을 받아와야 함
+				Skill s = currentAttackUnit.getSkills().get("cut_" + "01");
 				if (gridHitbox.isGridShow()) {
 					if (!isSkill) {
 						gridHitbox.showTileWhereMoved(touched.x, touched.y);
 					} else {
-						gridHitbox.showFixedTilesAt(touched.x, touched.y);
+						if (s.getHitboxCenter() == null) {
+							gridHitbox.showTileWhereMoved(touched.x, touched.y);
+						} else {
+							gridHitbox.showFixedTilesAt(touched.x, touched.y);
+						}
+
 					}
 				}
 			}
@@ -522,7 +540,7 @@ public class BattleStage extends BaseOneLevelStage {
 					if (!isSkill) {
 						battleManager.attack(currentAttackUnit, selectedMonster, gridHitbox.getPreviousHitArea());
 					} else {
-						battleManager.userSkill(currentAttackUnit, "cut_01");
+						battleManager.useSkill(currentAttackUnit, selectedMonster, "cut_01");
 						isSkill = false;
 					}
 					gridHitbox.hideGrid();
@@ -546,10 +564,11 @@ public class BattleStage extends BaseOneLevelStage {
 		turnSmallImageMap.put(selectedMonster.getFacePath(),
 				new Image(textureManager.getSmallBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			turnSmallImageMap
-					.put(hero.getFacePath(), new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
+			turnSmallImageMap.put(hero.getFacePath(),
+					new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
 		}
 	}
+
 	private void makeRButton() {
 		// 이미지 추가
 		attackButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_attack"),
