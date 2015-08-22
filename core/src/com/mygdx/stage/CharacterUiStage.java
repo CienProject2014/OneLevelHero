@@ -16,8 +16,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.StatusBar;
@@ -29,6 +31,8 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private TextureManager textureManager;
+	@Autowired
+	private BattleManager battleManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("CharacterUiStage");
 	private Table statusTable;
 	private Table barTable;
@@ -54,7 +58,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-
 		for (int i = 0; i < heroStatusBarList.size(); i++) {
 			heroStatusBarList.get(i).update();
 			hpLabelList.get(i).setText(heroStatusBarList.get(i).getHp() + "/" + heroStatusBarList.get(i).getMaxHp());
@@ -66,7 +69,11 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		hpLabelList = new ArrayList<Label>(battleMemberList.size());
 		heroStatusBarList = new ArrayList<StatusBar>(battleMemberList.size());
 		for (int i = 0; i < battleMemberList.size(); i++) {
-			heroStatusBarList.add(new StatusBar(battleMemberList.get(i), uiComponentAssets.getSkin()));
+			if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+				heroStatusBarList.add(new StatusBar(battleMemberList.get(i), uiComponentAssets.getSkin(), true));
+			} else {
+				heroStatusBarList.add(new StatusBar(battleMemberList.get(i), uiComponentAssets.getSkin(), false));
+			}
 		}
 		statusTable = new Table();
 	}

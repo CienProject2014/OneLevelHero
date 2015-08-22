@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.TextureManager;
@@ -44,7 +45,11 @@ public class MonsterStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		monster = battleManager.getSelectedMonster();
-		monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin());
+		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin(), true);
+		} else {
+			monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin(), false);
+		}
 		setMonsterTable();
 		return this;
 	}
@@ -66,7 +71,9 @@ public class MonsterStage extends BaseOneLevelStage {
 		uiTable.add(hpTable).padBottom(uiConstantsMap.get("hpTablePadBottom"));
 		tableStack.add(outerTable);
 		tableStack.add(uiTable);
-		addAction();
+		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			showBattleAnimation();
+		}
 	}
 
 	@Override
@@ -76,7 +83,7 @@ public class MonsterStage extends BaseOneLevelStage {
 		monsterStatusBar.update();
 	}
 
-	private void addAction() {
+	private void showBattleAnimation() {
 		monsterTable.setVisible(false);
 		monsterTable.addAction(Actions.fadeOut(0));
 		monsterTable.setVisible(true);

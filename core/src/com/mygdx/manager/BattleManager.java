@@ -28,6 +28,8 @@ public class BattleManager {
 	private UnitManager unitManager;
 	@Autowired
 	private BattleInfo battleInfo;
+	@Autowired
+	private FieldManager fieldManager;
 
 	public void setBeforePosition(PositionEnum positionEnum) {
 		battleInfo.setBeforePosition(positionEnum);
@@ -43,9 +45,10 @@ public class BattleManager {
 		}
 		unitManager.initiateMonster(selectedMonster);
 		battleInfo.setCurrentMonster(selectedMonster);
-		screenFactory.show(ScreenEnum.ENCOUNTER);
+		if (fieldManager.isInField()) {
+			screenFactory.show(ScreenEnum.ENCOUNTER);
+		}
 	}
-
 	public void runAway() {
 		battleInfo.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 		movingManager.goCurrentPosition();

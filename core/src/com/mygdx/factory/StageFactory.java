@@ -37,6 +37,8 @@ public class StageFactory {
 	public Stage makeStage(StageEnum stageEnum) {
 		Gdx.app.log("StageFactory", "Make " + stageEnum.toString() + "Stage");
 		switch (stageEnum) {
+			case BATTLE :
+				return context.getBean(BattleStage.class).makeStage();
 			case BUILDING :
 				return context.getBean(BuildingStage.class).makeStage();
 			case CHARACTER_UI :
@@ -77,10 +79,6 @@ public class StageFactory {
 				Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
 				return context.getBean(VillageStage.class).makeStage(); // FIXME
 		}
-	}
-
-	public Stage makeBattleStage() {
-		return context.getBean(BattleStage.class).makeStage();
 	}
 
 	public Stage makeEventStage(Iterator<EventScene> eventSceneIterator) {
