@@ -1,5 +1,6 @@
 package com.mygdx.assets;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,7 @@ public class AtlasUiAssets implements FileAssetsInitializable {
 				assetsManager.load(atlasUiMap.get(element), TextureAtlas.class);
 			}
 		}
+		assetsManager.load("orig" + File.separator + "skill_" + "pack.atlas", TextureAtlas.class);
 	}
 
 	public TextureAtlas getAtlasRegionFile(String atlasUiFileString) {

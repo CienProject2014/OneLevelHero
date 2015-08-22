@@ -15,13 +15,19 @@ public class AssetsManager extends AssetManager {
 
 	public void initScene(String name) {
 		String path = splitString(name);
-		if (rm.preparedSceneNames != null && name != rm.preparedSceneNames
-				&& isLoaded("orig" + File.separator + splitString(rm.preparedSceneNames) + "pack.atlas")) {
+		if (name != rm.preparedSceneNames
+				&& isLoaded("orig" + File.separator + splitString(rm.preparedSceneNames) + "pack.atlas")
+				&& name != "skill_scene") {
+			System.out.println("test");
 			unload("orig" + File.separator + splitString(rm.preparedSceneNames) + "pack.atlas");
 			finishLoading();
 		}
-		load("orig" + File.separator + path + "pack.atlas", TextureAtlas.class);
-		finishLoading();
+		if (name == rm.preparedSceneNames) {
+		} else {
+			load("orig" + File.separator + path + "pack.atlas", TextureAtlas.class);
+			finishLoading();
+		}
+
 		TextureAtlas atlas = get("orig/" + path + "pack.atlas", TextureAtlas.class);
 		rm.setMainPack(atlas);
 		rm.initScene(name);

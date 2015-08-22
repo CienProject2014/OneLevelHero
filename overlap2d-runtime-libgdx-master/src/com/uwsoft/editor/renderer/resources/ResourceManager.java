@@ -43,7 +43,7 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 	public String spineAnimationsPath = "spine_animations";
 	public String fontsPath = "freetypefonts";
 	private float resMultiplier;
-	public String preparedSceneNames;
+	public String preparedSceneNames = "";
 
 	private ProjectInfoVO projectVO;
 	private HashMap<String, SceneVO> loadedSceneVOs = new HashMap<>();
@@ -104,9 +104,11 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 	 */
 	public void initScene(String sceneName) {
 		loadSceneVO(sceneName);
-		scheduleScene(sceneName);
-		prepareassetsToLoad();
-		loadassets();
+		if (sceneName != preparedSceneNames) {
+			scheduleScene(sceneName);
+			prepareassetsToLoad();
+			loadassets();
+		}
 	}
 
 	/**
@@ -130,6 +132,7 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 	 *            - scene file name without ".dt" extension
 	 */
 	public void scheduleScene(String name) {
+
 		if (loadedSceneVOs.containsKey(name)) {
 			preparedSceneNames = name;
 		} else {
@@ -284,14 +287,16 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 
 	@Override
 	public SceneVO loadSceneVO(String sceneName) {
-		loadedSceneVOs.clear();
-		FileHandle file = Gdx.files.internal(scenesPath + File.separator + sceneName + ".dt");
-		Json json = new Json();
-		SceneVO sceneVO = json.fromJson(SceneVO.class, file.readString());
-
-		loadedSceneVOs.put(sceneName, sceneVO);
-
-		return sceneVO;
+		if (preparedSceneNames == sceneName) {
+			return null;
+		} else {
+			loadedSceneVOs.clear();
+			FileHandle file = Gdx.files.internal(scenesPath + File.separator + sceneName + ".dt");
+			Json json = new Json();
+			SceneVO sceneVO = json.fromJson(SceneVO.class, file.readString());
+			loadedSceneVOs.put(sceneName, sceneVO);
+			return sceneVO;
+		}
 	}
 
 	public void unLoadSceneVO(String sceneName) {

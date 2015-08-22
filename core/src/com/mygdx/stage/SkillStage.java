@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -52,7 +53,8 @@ public class SkillStage extends BaseOverlapStage {
 
 	public Stage makeStage() {
 
-		assetsManager.initScene(SCENE_NAME);
+		assetsManager.rm.setMainPack(assetsManager.get("orig/skill_pack.atlas", TextureAtlas.class));
+		assetsManager.rm.initScene(SCENE_NAME);
 		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
@@ -70,7 +72,6 @@ public class SkillStage extends BaseOverlapStage {
 			labels = sceneLoader.getRoot().dataVO.composite.sLabels;
 			LabelItem labelItem = sceneLoader.getRoot().getLabelById(labels.get(i).itemIdentifier);
 			labelItem.setText(battleManager.getCurrentActor().getSkills().get("cut_01").getName());
-
 			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 			labelItem.setFontScale(1.0f);
 			labelItem.setTouchable(Touchable.disabled);
