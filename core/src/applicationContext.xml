@@ -117,6 +117,7 @@
 		scope="prototype"/>
 	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage"
 		scope="prototype"/>
+	<bean id="loadStage" class="com.mygdx.stage.LoadStage"	scope="prototype"/>
 	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype">
 	</bean>
 	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage"
@@ -145,11 +146,11 @@
 		scope="prototype"/>
 	<bean id="statusStage" class="com.mygdx.stage.StatusStage" scope="prototype" />
 	<bean id="skillStage" class="com.mygdx.stage.SkillStage" scope="prototype"/>
+	<bean id="saveStage" class="com.mygdx.stage.SaveStage" scope="prototype"/>
 	<bean id="villageStage" class="com.mygdx.stage.VillageStage"
 		scope="prototype"/>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
-	
 	<bean id="heroBattleStrategy" class="com.mygdx.unitStrategy.HeroBattleStrategy"/>	
 	<bean id="inventoryStrategy" class="com.mygdx.unitStrategy.InventoryStrategy"/>
 	<bean id="monsterBattleStrategy" class="com.mygdx.unitStrategy.MonsterBattleStrategy"/>	
