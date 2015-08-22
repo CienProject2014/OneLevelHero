@@ -392,15 +392,14 @@
     "nextSections": [
       {
         "nextSectionNumber": "308",
-        "eventType": "move_sube_node_by_time",
+        "eventType": "move_sub_node_by_time",
         "targetComponent" : "crystallized_valley_room_01",
-        "eventComponent" : ["6","18"]
+        "targetTime" : "6-18"
       },
       {
         "nextSectionNumber": "309",
         "eventType": "move_sub_node_by_time",
-        "targetComponent" : "crystallized_valley_room_01",
-        "eventComponent" : ["18","6"]
+        "targetComponent" : "crystallized_valley_room_01"
       }
     ]
   }
