@@ -14,7 +14,6 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.NodeAssets;
-import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.enums.VillageDirectionEnum;
 import com.mygdx.factory.ListenerFactory;
@@ -22,7 +21,6 @@ import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
-import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.model.surroundings.Building;
 import com.mygdx.model.surroundings.NodeConnection;
@@ -33,11 +31,7 @@ public class VillageStage extends BaseOverlapStage {
 	@Autowired
 	private NodeAssets nodeAssets;
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
-	@Autowired
 	private WorldMapAssets worldMapAssets;
-	@Autowired
-	private MovingManager movingManager;
 	@Autowired
 	private ListenerFactory listenerFactory;
 	@Autowired
