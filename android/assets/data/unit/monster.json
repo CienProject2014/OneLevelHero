@@ -296,5 +296,38 @@
     "skillList": [
       "cut_01"
     ]
+  },
+  "nepel_01": {
+    "facePath": "nepel_01",
+    "name": "네펠",
+    "sizeType": "medium",
+    "elementType": "none",
+    "status": {
+      "attack": 100,
+      "magicAttack": 0,
+      "defense": 60,
+      "magicDefense": 0,
+      "healthPoint": 1000,
+      "maxHealthPoint": 1000,
+      "speed": 50,
+      "experience": 0,
+      "maxExperience": 1220,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "skin_of_wolf"
+    ],
+    "skillList": [
+      "cut_01"
+    ],
+    "hitArea" : [
+		[0, 200, 200, 200, 0],
+		[0, 80, 100, 80, 0],
+		[0, 0, 100, 0, 0],
+		[0, 5, 100, 5, 0],
+		[0, 5, 0, 5, 0]
+	]
   }
 }

@@ -107,6 +107,19 @@ public class EventManager {
 		}
 	}
 
+	public Event getCurrentElementEvent() {
+		switch (getCurrentEventElementType()) {
+			case NPC :
+				return getCurrentNpcEvent();
+			case GAME_OBJECT :
+				return getCurrentGameObject().getObjectEvent();
+			case SPECIAL :
+				return getCurrentSpecialEvent();
+			default :
+				Gdx.app.log("EventManager", "EventElementType 정보 오류");
+				return getCurrentNpcEvent();
+		}
+	}
 	public void doSpecialEvent(Event event) {
 		switch (event.getEventType()) {
 			case DONT_GO_BUILDING :
