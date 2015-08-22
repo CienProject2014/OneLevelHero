@@ -29,6 +29,7 @@ public class GameObjectPopup extends Dialog {
 	public GameObjectPopup() {
 		this("", StaticAssets.skin);
 	}
+
 	public AtlasUiAssets getAtlasUiAssets() {
 		return atlasUiAssets;
 	}
@@ -49,8 +50,8 @@ public class GameObjectPopup extends Dialog {
 		super(title, skin);
 	}
 
-	public void initialize() {
-		questionLabel = new Label("오브젝트를 확인해 보시겠습니까?", StaticAssets.skin);
+	public void initialize(String name) {
+		questionLabel = new Label(name + "를 확인해 보시겠습니까?", StaticAssets.skin);
 		questionLabel.setAlignment(Align.center);
 		questionLabel.setBounds(uiConstantsMap.get("questionLabelX"), uiConstantsMap.get("questionLabelY"),
 				uiConstantsMap.get("questionLabelWidth"), uiConstantsMap.get("questionLabelHeight"));
@@ -76,6 +77,7 @@ public class GameObjectPopup extends Dialog {
 		setResizable(false);
 		setVisible(false);
 	}
+
 	@Override
 	public GameObjectPopup text(String text) {
 		super.text(new Label(text, StaticAssets.skin));

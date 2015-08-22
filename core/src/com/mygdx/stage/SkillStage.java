@@ -1,7 +1,5 @@
 package com.mygdx.stage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +11,15 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.screen.BattleScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
-import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 import com.uwsoft.editor.renderer.data.LabelVO;
 
@@ -34,24 +29,14 @@ public class SkillStage extends BaseOverlapStage {
 	@Autowired
 	private StorySectionManager storySectionManager;
 	@Autowired
-	private EventCheckManager eventCheckManager;
-	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private AssetsManager assetsManager;
 	public static final String SCENE_NAME = "skill_scene";
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("EventStage");
 	private Camera cam;
-	private ImageItem largeImage;
 	private List<LabelVO> labels;
-	private Image[] heroLargeImage;
-
-	private List<CompositeItem> highlightButton;
-	private List<CompositeItem> skillTypeButton;
-	private String CUT_01 = "cut_01"; // FIXME
 
 	public Stage makeStage() {
-
 		assetsManager.initScene(SCENE_NAME);
 		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene(SCENE_NAME);
@@ -60,7 +45,6 @@ public class SkillStage extends BaseOverlapStage {
 		setSkillType();
 		setHighlight();
 		setLabel();
-
 		return this;
 	}
 
@@ -70,7 +54,6 @@ public class SkillStage extends BaseOverlapStage {
 			labels = sceneLoader.getRoot().dataVO.composite.sLabels;
 			LabelItem labelItem = sceneLoader.getRoot().getLabelById(labels.get(i).itemIdentifier);
 			labelItem.setText(battleManager.getCurrentActor().getSkills().get("cut_01").getName());
-
 			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 			labelItem.setFontScale(1.0f);
 			labelItem.setTouchable(Touchable.disabled);
@@ -123,7 +106,6 @@ public class SkillStage extends BaseOverlapStage {
 	}
 
 	private void setHighlight() {
-		highlightButton = new ArrayList<CompositeItem>();
 		final CompositeItem highlight_01 = sceneLoader.getRoot().getCompositeById("highlight_01");
 		final CompositeItem highlight_02 = sceneLoader.getRoot().getCompositeById("highlight_02");
 		final CompositeItem highlight_03 = sceneLoader.getRoot().getCompositeById("highlight_03");

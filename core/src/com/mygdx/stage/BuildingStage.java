@@ -14,7 +14,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.EventAssets;
@@ -138,26 +137,44 @@ public class BuildingStage extends BaseOverlapStage {
 		{
 			for (final String objectName : buildingInfo.getGameObject()) {
 				final GameObject gameObject = eventAssets.getGameObject(objectName);
-				final CompositeItem gameObjectButton = sceneLoader.getRoot().getCompositeById(objectName);
+				CompositeItem gameObjectButton = sceneLoader.getRoot().getCompositeById(objectName);
 				gameObjectButton.setVisible(true);
 				setGameObjectVisibility(gameObjectButton, gameObject.getObjectType());
 				setGameObjectFunction(gameObjectButton, objectName);
-				gameObjectButton.addListener(new ClickListener() {
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						eventManager.setCurrentGameObject(gameObject);
-						gameObjectPopup = new GameObjectPopup();
-						gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
-						gameObjectPopup.setListenerFactory(listenerFactory);
-						gameObjectPopup.setGameObject(gameObject);
-						gameObjectPopup.initialize();
-						addActor(gameObjectPopup);
-						gameObjectPopup.setVisible(true);
-					}
-				});
-				gameObjectList.add(gameObjectButton);
+				System.out.println(objectName);
+				if (objectName.equals("save")) {
+					gameObjectButton.addListener(new InputListener() {
+						@Override
+						public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+							return true;
+						}
+
+						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+							SaveStage.isTouched = true;
+						}
+					});
+				} else {
+					gameObjectButton.addListener(new InputListener() {
+						@Override
+						public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+							return true;
+						}
+
+						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+							eventManager.setCurrentGameObject(gameObject);
+							gameObjectPopup = new GameObjectPopup();
+							gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
+							gameObjectPopup.setListenerFactory(listenerFactory);
+							gameObjectPopup.setGameObject(gameObject);
+							gameObjectPopup.initialize(objectName);
+							addActor(gameObjectPopup);
+							gameObjectPopup.setVisible(true);
+						}
+					});
+				}
 			}
 		}
+
 	}
 
 	private void setGameObjectFunction(CompositeItem gameObjectButton, String objectName) {
