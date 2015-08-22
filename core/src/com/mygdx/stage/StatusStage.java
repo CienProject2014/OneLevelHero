@@ -69,7 +69,6 @@ public class StatusStage extends BaseOverlapStage {
 		setCharacterStatusImage(partyManager, sceneConstants);
 		setTabButton();
 		addListener();
-
 		return this;
 	}
 
@@ -77,7 +76,6 @@ public class StatusStage extends BaseOverlapStage {
 		setCharacterBustImage(partyManager, sceneConstants);
 		setLabel(partyManager, sceneConstants);
 		setCharacterStatusImage(partyManager, sceneConstants);
-
 	}
 
 	private void setTabButton() {
@@ -145,31 +143,31 @@ public class StatusStage extends BaseOverlapStage {
 
 	private void setCharacterBustImage(PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
 		ImageItem playerImage = sceneLoader.getRoot().getImageById("player_image");
-		playerImage.setDrawable(new TextureRegionDrawable(
-				new TextureRegion(TextureManager.getStatusTexture(currentSelectedHero.getFacePath()))));
+		playerImage.setDrawable(new TextureRegionDrawable(new TextureRegion(TextureManager
+				.getStatusTexture(currentSelectedHero.getFacePath()))));
 		playerImage.setTouchable(Touchable.enabled);
 	}
 
-	private void setCharacterStatusImage(final PartyManager partyManager,
-			HashMap<String, Array<String>> sceneConstants) {
+	private void setCharacterStatusImage(final PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
 		Array<String> characterStatusList = sceneConstants.get(CHARACTER_STATUS_IMAGE);
 		Array<String> characterChangeList = sceneConstants.get(CHARACTER_CHANGE);
 		for (int i = 0; i < partyManager.getPartyList().size(); i++) {
-			CompositeItem compositeItem = sceneLoader.getRoot().getCompositeById(characterStatusList.get(i));
-			ImageItem characterStatusImage = compositeItem.getImageById(CHARACTER_IMAGE);
-			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
-					TextureManager.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
-			compositeItem.setTouchable(Touchable.disabled);
+			CompositeItem imageCompositeItem = sceneLoader.getRoot().getCompositeById(characterStatusList.get(i));
+			ImageItem characterStatusImage = imageCompositeItem.getImageById(CHARACTER_IMAGE);
+			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(TextureManager
+					.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
+			imageCompositeItem.setTouchable(Touchable.disabled);
 		}
 
 		for (int i = 0; i < 4; i++) {
-			final CompositeItem compositeItem2 = sceneLoader.getRoot().getCompositeById(characterChangeList.get(i));
-			setCompositeItemVisibility(compositeItem2, DEFAULT_VISIBILITY);
-			compositeItem2.setTouchable(Touchable.enabled);
+			final CompositeItem touchableCompositeItem = sceneLoader.getRoot().getCompositeById(
+					characterChangeList.get(i));
+			setCompositeItemVisibility(touchableCompositeItem, DEFAULT_VISIBILITY);
+			touchableCompositeItem.setTouchable(Touchable.enabled);
 
 			if (partyManager.getPartyList().size() > i) {
 				final Hero imageHero = partyManager.getPartyList().get(i);
-				compositeItem2.addListener(new InputListener() {
+				touchableCompositeItem.addListener(new InputListener() {
 					@Override
 					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 						setCurrentSelectedHero(imageHero);
@@ -182,15 +180,14 @@ public class StatusStage extends BaseOverlapStage {
 				});
 
 				if (imageHero == currentSelectedHero) {
-					setCompositeItemVisibility(compositeItem2, PRESSED_VISIBILITY);
+					setCompositeItemVisibility(touchableCompositeItem, PRESSED_VISIBILITY);
 				} else {
-					setCompositeItemVisibility(compositeItem2, DEFAULT_VISIBILITY);
+					setCompositeItemVisibility(touchableCompositeItem, DEFAULT_VISIBILITY);
 				}
 			} else {
-				compositeItem2.setVisible(false);
+				touchableCompositeItem.setVisible(false);
 			}
 		}
-
 	}
 
 	public void setCompositeItemVisibility(CompositeItem compositeItem, String visibility) {
