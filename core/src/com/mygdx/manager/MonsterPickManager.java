@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.enums.FieldTypeEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.unit.Monster;
 
 /**
@@ -42,8 +44,18 @@ public class MonsterPickManager {
 	}
 
 	private String selectMonster() {
-		FieldTypeEnum fieldType = fieldManager.getFieldType();
-		List<String> monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
+
+		List<String> monsterStrings = null;
+
+		Gdx.app.log("inDungeon?", String.valueOf(battleManager.getBeforePosition()));
+		if (battleManager.getBeforePosition() == PositionEnum.FIELD) {
+			FieldTypeEnum fieldType = fieldManager.getFieldType();
+			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
+		} else if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
+			// FIXME : 던전 매니저
+
+			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(FieldTypeEnum.DUNGEON);
+		}
 		// FIXME : 랜덤로직
 		int randomInt = (int) (Math.random() * monsterStrings.size());
 		String selectedMonsterString = monsterStrings.get(randomInt);

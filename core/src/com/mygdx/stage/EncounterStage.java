@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.FieldManager;
@@ -84,6 +85,9 @@ public class EncounterStage extends BaseOneLevelStage {
 		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
 			return new TextureRegionDrawable(new TextureRegion(
 					StaticAssets.assetManager.get(StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
+		} else if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
+			return new TextureRegionDrawable(new TextureRegion(
+					StaticAssets.assetManager.get(StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
 		} else {
 			Gdx.app.log("EncounterStage", "fieldType - " + fieldManager.getFieldType());
 			return new TextureRegionDrawable(
@@ -112,7 +116,12 @@ public class EncounterStage extends BaseOneLevelStage {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				screenFactory.show(ScreenEnum.FIELD);
+				if (battleManager.getBeforePosition() == PositionEnum.FIELD)
+					screenFactory.show(ScreenEnum.FIELD);
+				else if (battleManager.getBeforePosition() == PositionEnum.DUNGEON)
+					screenFactory.show(ScreenEnum.DUNGEON);
+				else
+					screenFactory.show(ScreenEnum.FIELD);
 			}
 		});
 	}

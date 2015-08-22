@@ -12,13 +12,17 @@ public class DungeonNode {
 
 	private final static String TAG_LABEL = "label";
 	private final static String TAG_FLAG = "flag";
-	
+
 	private String nodePos;
 	private String nodeFlag;
 
 	public HashMap<String, Object> data = new HashMap<>();
 
 	public boolean chkFlag(int flg) {
+		if (nodeFlag.equals("ENTRANCE"))
+			setFlag(FLG_ENTRANCE);
+		else if (nodeFlag.equals("ROOM"))
+			setFlag(FLG_ENCOUNT);
 		return (flg & (int) this.data.get(TAG_FLAG)) != FLG_NULL;
 	}
 

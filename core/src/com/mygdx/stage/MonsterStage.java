@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.TextureManager;
@@ -93,6 +94,9 @@ public class MonsterStage extends BaseOneLevelStage {
 	private TextureRegionDrawable getBackgroundTRD() {
 		// FIXME 현재 그냥 로딩하는걸로 되어 있음.
 		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
+			return new TextureRegionDrawable(new TextureRegion(
+					StaticAssets.assetManager.get(StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
+		} else if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
 			return new TextureRegionDrawable(new TextureRegion(
 					StaticAssets.assetManager.get(StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
 		} else {

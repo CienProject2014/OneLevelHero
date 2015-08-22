@@ -44,5 +44,12 @@
       "troll",
       "aonin"
     ]
+  },
+  {
+    "fieldType": "dungeon",
+    "fieldMonsterList": [
+      "troll",
+      "aonin"
+    ]
   }
 ]

@@ -8,36 +8,37 @@ public class DungeonConnection {
 	private final static String TAG_TO = "to";
 
 	public HashMap<String, Object> data;
-	
+
 	private int from;
 	private int to;
+	private String label;
 
-	public boolean isFrom(DungeonNode node) {
-		return node == getFrom();
+	public boolean isFrom(int Pos) {
+		return Pos == from;
 	}
 
-	public boolean isTo(DungeonNode node) {
-		return node == getTo();
+	public boolean isTo(int Pos) {
+		return Pos == to;
 	}
 
 	public String getLabel() {
-		return (String) this.data.get(TAG_LABEL);
+		return label;
 	}
 
 	public void setLabel(String label) {
 		this.data.put(TAG_LABEL, label);
 	}
 
-	public DungeonNode getFrom() {
-		return (DungeonNode) this.data.get(TAG_FROM);
+	public int getFrom() {
+		return from;
 	}
 
 	public void setFrom(DungeonNode from) {
 		this.data.put(TAG_FROM, from);
 	}
 
-	public DungeonNode getTo() {
-		return (DungeonNode) this.data.get(TAG_TO);
+	public int getTo() {
+		return to;
 	}
 
 	public void setTo(DungeonNode to) {

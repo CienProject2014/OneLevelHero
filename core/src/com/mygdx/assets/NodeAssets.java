@@ -33,6 +33,8 @@ public class NodeAssets implements JsonAssetsInitializable {
 					monsterField.getFieldMonsterList());
 		}
 	}
+	
+	
 
 	public Map<String, Village> getVillageMap() {
 		return villageMap;
@@ -40,6 +42,10 @@ public class NodeAssets implements JsonAssetsInitializable {
 
 	public Village getVillageByName(String villageString) {
 		return villageMap.get(villageString);
+	}
+	
+	public Dungeon getDungeonByName(String dungeonString) {
+		return dungeonMap.get(dungeonString);
 	}
 
 	public List<String> getMonsterFieldListByFieldType(FieldTypeEnum fieldType) {
