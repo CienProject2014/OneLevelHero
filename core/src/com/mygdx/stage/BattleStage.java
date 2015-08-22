@@ -140,6 +140,7 @@ public class BattleStage extends BaseOneLevelStage {
 		units.add(selectedMonster);
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 			initializeBattle(units, selectedMonster);
+			showMenuBarAnimation();
 		}
 		updateOrder();
 		currentAttackUnit = getCurrentActor(); // 여기선 첫번째 턴
@@ -148,11 +149,10 @@ public class BattleStage extends BaseOneLevelStage {
 		tableStack.add(makeTurnFaceTable()); // TurnTable위에 있는 영웅들 이미지 테이블
 		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
 		tableStack.add(gridHitbox);
-		addAction();
+
 		addListener();
 		return this;
 	}
-
 	private Unit getCurrentActor() {
 		Unit currentAttackUnit = orderedUnits.poll();
 		if (currentAttackUnit instanceof Hero) {
@@ -168,7 +168,6 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private void initializeBattle(ArrayList<Unit> units, Monster selectedMonster) {
-		battleManager.setBattleState(BattleStateEnum.IN_GAME);
 		for (Unit unit : units) {
 			unit.setGauge(100);
 			unit.setSubvalue(0);
@@ -176,6 +175,7 @@ public class BattleStage extends BaseOneLevelStage {
 		}
 		selectedMonster.getStatus().setHp(selectedMonster.getStatus().getMaxHp());
 		battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+		battleManager.setBattleState(BattleStateEnum.IN_GAME);
 	}
 
 	private void doMonsterTurn(float delta) {
@@ -247,7 +247,7 @@ public class BattleStage extends BaseOneLevelStage {
 		return uiTable;
 	}
 
-	private void addAction() {
+	private void showMenuBarAnimation() {
 		// 일단 밖으로 빼고 다시 원래대로~ (왼쪽에서 오른쪽으로)
 		rMenuTable.addAction(Actions.moveTo(1920, 15));
 		rMenuTable.addAction(Actions.moveTo(1720, 15, 1));
