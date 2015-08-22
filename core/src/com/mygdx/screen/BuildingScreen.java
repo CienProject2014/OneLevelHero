@@ -24,9 +24,9 @@ public class BuildingScreen extends BaseScreen {
 
 	@Override
 	public void show() {
+		saveStage = stageFactory.makeStage(StageEnum.SAVE);
 		buildingStage = stageFactory.makeStage(StageEnum.BUILDING);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
-		saveStage = stageFactory.makeStage(StageEnum.SAVE);
 		setInputProcessor();
 	}
 

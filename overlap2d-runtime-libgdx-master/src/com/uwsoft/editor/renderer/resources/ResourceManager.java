@@ -1,6 +1,7 @@
 package com.uwsoft.editor.renderer.resources;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -44,6 +45,7 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 	public String fontsPath = "freetypefonts";
 	private float resMultiplier;
 	public String preparedSceneNames = "";
+	public ArrayList<String> myScene = new ArrayList<String>();
 
 	private ProjectInfoVO projectVO;
 	private HashMap<String, SceneVO> loadedSceneVOs = new HashMap<>();
@@ -139,6 +141,10 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 			preparedSceneNames = name;
 		}
 
+	}
+
+	public void settingScene(String name) {
+		myScene.add(name);
 	}
 
 	/**
