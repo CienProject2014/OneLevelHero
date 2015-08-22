@@ -23,6 +23,7 @@ import com.mygdx.screen.EventScreen;
 import com.mygdx.screen.FieldScreen;
 import com.mygdx.screen.ForkScreen;
 import com.mygdx.screen.GameObjectScreen;
+import com.mygdx.screen.GameOverScreen;
 import com.mygdx.screen.GreetingScreen;
 import com.mygdx.screen.InventoryScreen;
 import com.mygdx.screen.LoadScreen;
@@ -84,6 +85,8 @@ public class ScreenFactory {
 				return context.getBean(EventScreen.class);
 			case GAME_OBJECT :
 				return context.getBean(GameObjectScreen.class);
+			case GAME_OVER :
+				return context.getBean(GameOverScreen.class);
 			case GREETING :
 				return context.getBean(GreetingScreen.class);
 			case INVENTORY :

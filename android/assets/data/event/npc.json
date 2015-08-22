@@ -70,7 +70,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "mawang_01"
+         "mawang_01", "devilcastle_01"
         ]
       },
       "5": {
@@ -107,7 +107,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "mawang_01", "devil_castle_01"
+          "mawang_01", "devilcastle_01"
         ]
       },
       "7": {

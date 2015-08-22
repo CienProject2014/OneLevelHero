@@ -19,6 +19,7 @@ import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.FieldStage;
 import com.mygdx.stage.ForkStage;
 import com.mygdx.stage.GameObjectStage;
+import com.mygdx.stage.GameOverStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.InventoryStage;
 import com.mygdx.stage.MenuStage;
@@ -55,6 +56,8 @@ public class StageFactory {
 				return context.getBean(GameUiStage.class).makeStage();
 			case GAME_OBJECT :
 				return context.getBean(GameObjectStage.class).makeStage();
+			case GAME_OVER :
+				return context.getBean(GameOverStage.class).makeStage();
 			case MENU :
 				return context.getBean(MenuStage.class).makeStage();
 			case MONSTER :
