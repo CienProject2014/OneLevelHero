@@ -7,10 +7,6 @@ monster_aonin: {
 	class: java.lang.String,
 	value: texture/monster/monster_aonin.png/
 },
-arrow: {
-	class: java.lang.String,
-	value: texture/worldmap/arrow.png/
-},
 battle_right_menu: {
 	class: java.lang.String,
 	value: texture/ui/battle/battle_right_menu.png/
@@ -18,6 +14,10 @@ battle_right_menu: {
 bg_kadilla_castle_duke_castle: {
 	class: java.lang.String,
 	value: texture/background/bg_kadilla_castle_duke_castle.png/
+},
+battle_default_big: {
+	class: java.lang.String,
+	value: texture/monster/battle_default_big.png/
 },
 battle_mawang_01_big: {
 	class: java.lang.String,
@@ -50,6 +50,10 @@ bust_keinwhisternyoung_01: {
 atlas2: {
 	class: java.lang.String,
 	value: texture/ui/popup/atlas2.png/
+},
+battle_default_small: {
+	class: java.lang.String,
+	value: texture/monster/battle_default_small.png/
 },
 bg_main_background: {
 	class: java.lang.String,
@@ -218,10 +222,6 @@ bust_lilis_12: {
 battle_assassin_girl_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_assassin_girl_small.png/
-},
-villagecircle: {
-	class: java.lang.String,
-	value: texture/worldmap/villagecircle.png/
 },
 bust_yongsa_10: {
 	class: java.lang.String,
@@ -493,15 +493,11 @@ battle_yongsa_big: {
 },
 WorldMap: {
 	class: java.lang.String,
-	value: texture/worldmap/WorldMap.jpg/
+	value: texture/WorldMap.jpg/
 },
 bust_daimeast_01: {
 	class: java.lang.String,
 	value: texture/character/bust_daimeast_01.png/
-},
-dungeoncircle: {
-	class: java.lang.String,
-	value: texture/worldmap/dungeoncircle.png/
 },
 grid_small: {
 	class: java.lang.String,
@@ -726,10 +722,6 @@ talk_select: {
 bust_aimee_01: {
 	class: java.lang.String,
 	value: texture/character/bust_aimee_01.png/
-},
-turningpoint: {
-	class: java.lang.String,
-	value: texture/worldmap/turningpoint.png/
 },
 bust_default_01: {
 	class: java.lang.String,

@@ -1,21 +1,14 @@
 package com.mygdx.model.event;
 
+import java.util.List;
+
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.enums.RewardTypeEnum;
 
 public class Reward {
 	private RewardTypeEnum rewardType;
-	private String rewardTarget;
 	private RewardStateEnum rewardState;
-	private String rewardTargetAttribute;
-
-	public String getRewardTarget() {
-		return rewardTarget;
-	}
-
-	public void setRewardTarget(String rewardTarget) {
-		this.rewardTarget = rewardTarget;
-	}
+	private List<String> rewardComponent;
 
 	public RewardStateEnum getRewardState() {
 		return rewardState;
@@ -33,11 +26,11 @@ public class Reward {
 		this.rewardType = rewardType;
 	}
 
-	public String getRewardTargetAttribute() {
-		return rewardTargetAttribute;
+	public List<String> getRewardComponent() {
+		return rewardComponent;
 	}
 
-	public void setRewardTargetAttribute(String rewardTargetAttribute) {
-		this.rewardTargetAttribute = rewardTargetAttribute;
+	public void setRewardComponent(List<String> rewardComponent) {
+		this.rewardComponent = rewardComponent;
 	}
 }

@@ -7,10 +7,6 @@ monster_aonin: {
 	class: java.lang.String,
 	value: texture/monster/monster_aonin.png/
 },
-arrow: {
-	class: java.lang.String,
-	value: texture/worldmap/arrow.png/
-},
 battle_right_menu: {
 	class: java.lang.String,
 	value: texture/ui/battle/battle_right_menu.png/
@@ -226,10 +222,6 @@ bust_lilis_12: {
 battle_assassin_girl_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_assassin_girl_small.png/
-},
-villagecircle: {
-	class: java.lang.String,
-	value: texture/worldmap/villagecircle.png/
 },
 bust_yongsa_10: {
 	class: java.lang.String,
@@ -501,15 +493,11 @@ battle_yongsa_big: {
 },
 WorldMap: {
 	class: java.lang.String,
-	value: texture/worldmap/WorldMap.jpg/
+	value: texture/WorldMap.jpg/
 },
 bust_daimeast_01: {
 	class: java.lang.String,
 	value: texture/character/bust_daimeast_01.png/
-},
-dungeoncircle: {
-	class: java.lang.String,
-	value: texture/worldmap/dungeoncircle.png/
 },
 grid_small: {
 	class: java.lang.String,
@@ -734,10 +722,6 @@ talk_select: {
 bust_aimee_01: {
 	class: java.lang.String,
 	value: texture/character/bust_aimee_01.png/
-},
-turningpoint: {
-	class: java.lang.String,
-	value: texture/worldmap/turningpoint.png/
 },
 bust_default_01: {
 	class: java.lang.String,
