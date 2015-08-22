@@ -66,7 +66,7 @@ public class BattleManager {
 
 			readyForMonsterAnimation("empty hit");
 		}
-		checkBattleEnd();
+		checkIsBattleEnd();
 	}
 
 	public void useSkill(Unit attackUnit, Unit targetUnit, String skillName) {
@@ -86,33 +86,33 @@ public class BattleManager {
 			readyForMonsterAnimation("empty");
 		}
 
-		checkBattleEnd();
+		checkIsBattleEnd();
 	}
 
 	private ArrayList<Unit> getTargetList(String targetType, Unit skillUser, Unit selectedUnit) {
 		ArrayList<Unit> list = new ArrayList<Unit>();
 		SkillTargetEnum enm = SkillTargetEnum.findSkillTargetEnum(targetType);
 		switch (enm) {
-		case ALL:
-			list.addAll(partyManager.getBattleMemberList());
-			break;
-		case MONSTER:
-			list.add(battleInfo.getCurrentMonster());
-			break;
-		case ONE:
-			list.add(selectedUnit);
-			break;
-		case RANDOM:
-			Hero pick = getRandomHero();
-			if (pick != null) {
-				list.add(pick);
-			}
-			break;
-		case SELF:
-			list.add(skillUser);
-			break;
-		default:
-			break;
+			case ALL :
+				list.addAll(partyManager.getBattleMemberList());
+				break;
+			case MONSTER :
+				list.add(battleInfo.getCurrentMonster());
+				break;
+			case ONE :
+				list.add(selectedUnit);
+				break;
+			case RANDOM :
+				Hero pick = getRandomHero();
+				if (pick != null) {
+					list.add(pick);
+				}
+				break;
+			case SELF :
+				list.add(skillUser);
+				break;
+			default :
+				break;
 
 		}
 
@@ -168,34 +168,32 @@ public class BattleManager {
 		return pick;
 	}
 
-	private void checkBattleEnd() {
+	private void checkIsBattleEnd() {
 		boolean monsterState = isMonsterDead();
-		boolean partyState = isAllHeroDead();
+		boolean partyState = isHeroDead();
 		if (monsterState && !partyState) {
 			Gdx.app.log(TAG, "용사팀의 승리!");
+			setBattleState(BattleStateEnum.PLAYER_WIN);
 		} else if (partyState && !monsterState) {
 			Gdx.app.log(TAG, "용사팀의 패배!");
+			setBattleState(BattleStateEnum.GAME_OVER);
 		} else if (partyState && monsterState) {
 			Gdx.app.log(TAG, "잘못된 배틀 : 동시에 죽었다.");
+			setBattleState(BattleStateEnum.GAME_OVER);
 		}
-		setBattleState(BattleStateEnum.GAME_OVER);
 	}
 
 	private boolean isDead(Unit defendUnit) {
 		return defendUnit.getStatus().getHp() <= 0;
 	}
 
-	private boolean isAllHeroDead() {
-		boolean result = true;
-
+	private boolean isHeroDead() {
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			if (!isDead(hero)) {
-				result = false;
-				break;
+			if (isDead(hero)) {
+				return true;
 			}
 		}
-
-		return result;
+		return false;
 	}
 
 	private boolean isMonsterDead() {

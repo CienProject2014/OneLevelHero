@@ -70,7 +70,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "mawang_01"
+         "mawang_01", "devilcastle_01"
         ]
       },
       "5": {
@@ -107,7 +107,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "mawang_01"
+          "mawang_01", "devilcastle_01"
         ]
       },
       "7": {
@@ -408,12 +408,14 @@
           },
           {
             "script": "바이칼성에는 저주마법에 능통한 종족이 살고 있다고 하니 그 쪽으로 가볼 수도 있겠네요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "또한 미라지 포트 근처의 엘프들은 오랜 세월을 살아가는 종족으로, 그들의 지혜를 활용해도 좋을 것 같아요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           },
           {
@@ -423,7 +425,8 @@
           },
           {
             "script": "윈터폴의 수정 협곡에는 정화의 눈물이라는 성물을 얻을 수 있다고 하네요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           }
         ]
@@ -441,7 +444,8 @@
         "eventScenes": [
           {
             "script": "어디로갈까요?",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           }
         ],
@@ -459,17 +463,20 @@
         "eventScenes": [
           {
             "script": "카딜라 성으로 가자.",
-            "characterPath": "bust_yongsa_01",
+            "characterPath": "yongsa",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "용사님, 조금 쉬었다 가면 안될까요? 모처럼 콥웨브에 왔는데",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "아직 대낮이에요. 지금이라도 출발하면 카딜라 성에 도착할 수 있을 거에요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
             "backgroundPath": "cobweb_02"
           },
           {
@@ -1342,7 +1349,7 @@
         "eventState": "not_opened",
         "eventType": "battle",
         "eventComponent": [
-          "nepel_01"
+          "nepel_01","cobweb_story_01"
         ]
       },
       "6": {

@@ -27,6 +27,7 @@ import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.MonsterEnum;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.StorySectionManager;
@@ -201,9 +202,11 @@ public class BattleStage extends BaseOneLevelStage {
 			storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_CONTROL, "normal_attack");
 			endTurn();
 			makeHiddenButton();
-			if (battleManager.getBattleState().equals(BattleStateEnum.GAME_OVER)) {
+			if (battleManager.getBattleState().equals(BattleStateEnum.PLAYER_WIN)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 				movingManager.goPreviousPosition();
+			} else if (battleManager.getBattleState().equals(BattleStateEnum.GAME_OVER)) {
+				screenFactory.show(ScreenEnum.GAME_OVER);
 			}
 		}
 	}
@@ -336,61 +339,61 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void makeHiddenButton() {
 		switch (battleManager.getCurrentClickStateEnum()) {
-		case NORMAL:
-			calCostGague(currentAttackUnit, NORMAL_ATTACK);
-			updateOrder();
-			updateSmallImageTable();
-			setDarkButton(attackButton);
-			break;
-		case SKILL:
-			setDarkButton(skillButton);
-			break;
-		case INVENTORY:
-			setDarkButton(inventoryButton);
-			break;
-		case DEFENSE:
-			setDarkButton(defenseButton);
-			break;
-		case WAIT:
-			setDarkButton(waitButton);
-			break;
-		case DEFAULT:
-			setFreeButton();
-			break;
-		default:
-			break;
+			case NORMAL :
+				calCostGague(currentAttackUnit, NORMAL_ATTACK);
+				updateOrder();
+				updateSmallImageTable();
+				setDarkButton(attackButton);
+				break;
+			case SKILL :
+				setDarkButton(skillButton);
+				break;
+			case INVENTORY :
+				setDarkButton(inventoryButton);
+				break;
+			case DEFENSE :
+				setDarkButton(defenseButton);
+				break;
+			case WAIT :
+				setDarkButton(waitButton);
+				break;
+			case DEFAULT :
+				setFreeButton();
+				break;
+			default :
+				break;
 		}
 	}
 
 	private void checkCurrentState() {
 		switch (battleManager.getCurrentClickStateEnum()) {
-		case NORMAL:
-			gridHitbox.hideGrid();
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case SKILL:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case INVENTORY:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case DEFENSE:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case WAIT:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		case RUN:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-			// currentHero.setGauge(preGague);
-			break;
-		default:
-			break;
+			case NORMAL :
+				gridHitbox.hideGrid();
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case SKILL :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case INVENTORY :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case DEFENSE :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case WAIT :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			case RUN :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				// currentHero.setGauge(preGague);
+				break;
+			default :
+				break;
 		}
 	}
 
@@ -564,8 +567,8 @@ public class BattleStage extends BaseOneLevelStage {
 		turnSmallImageMap.put(selectedMonster.getFacePath(),
 				new Image(textureManager.getSmallBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			turnSmallImageMap.put(hero.getFacePath(),
-					new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
+			turnSmallImageMap
+					.put(hero.getFacePath(), new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
 		}
 	}
 

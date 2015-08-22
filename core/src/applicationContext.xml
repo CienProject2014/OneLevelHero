@@ -93,6 +93,7 @@
 		scope="prototype"/>
 	<bean id="forkScreen" class="com.mygdx.screen.ForkScreen" scope="prototype"/>
 	<bean id="gameObjectScreen" class="com.mygdx.screen.GameObjectScreen" scope="prototype"/>
+	<bean id="gameOverScreen" class="com.mygdx.screen.GameOverScreen" scope="prototype"/>
 	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen"
 		scope="prototype"/>
 	<bean id="inventoryScreen" class="com.mygdx.screen.InventoryScreen" scope="prototype"/>
@@ -132,6 +133,7 @@
 	<bean id="fieldStage" class="com.mygdx.stage.FieldStage" scope="prototype"/>
 	<bean id="forkStage" class="com.mygdx.stage.ForkStage" scope="prototype"/>
 	<bean id="gameObjectStage" class="com.mygdx.stage.GameObjectStage" scope="prototype"/>
+	<bean id="gameOverStage" class="com.mygdx.stage.GameOverStage"/>
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype"/>
 	<bean id="inventoryStage" class="com.mygdx.stage.InventoryStage" scope="prototype"/>
 	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />

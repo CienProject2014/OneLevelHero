@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
@@ -42,11 +43,12 @@ public class LoadingBarScreen implements Screen {
 	@Override
 	public void show() {
 		assetsManager.load("texture/loading/loading.pack", TextureAtlas.class);
+		assetsManager.load("texture/loading/cien_logo2.png", Texture.class);
 		assetsManager.finishLoading();
 
 		stage = new Stage();
 		TextureAtlas atlas = assetsManager.get("texture/loading/loading.pack", TextureAtlas.class);
-		logo = new Image(atlas.findRegion("libgdx-logo"));
+		logo = new Image(assetsManager.get("texture/loading/cien_logo2.png", Texture.class));
 		loadingFrame = new Image(atlas.findRegion("loading-frame"));
 		loadingBarHidden = new Image(atlas.findRegion("loading-bar-hidden"));
 		screenBg = new Image(atlas.findRegion("screen-bg"));
@@ -76,7 +78,6 @@ public class LoadingBarScreen implements Screen {
 		Gdx.app.log("debug", "assets 로딩 후");
 
 	}
-
 	@Override
 	public void resize(int width, int height) {
 		// Set our screen to always be XXX x 480 in size
