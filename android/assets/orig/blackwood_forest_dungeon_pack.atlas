@@ -1,0 +1,40 @@
+blackwood_forest_dungeon_pack.png
+size: 2436,1080
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dungeon_bg
+  rotate: false
+  xy: 0, 0
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+arrow_up
+  rotate: false
+  xy: 1920, 0
+  size: 129, 77
+  orig: 129, 77
+  offset: 0, 0
+  index: -1
+arrow_down
+  rotate: false
+  xy: 2049, 0
+  size: 129, 77
+  orig: 129, 77
+  offset: 0, 0
+  index: -1
+arrow_left
+  rotate: false
+  xy: 2178, 0
+  size: 129, 66
+  orig: 129, 66
+  offset: 0, 0
+  index: -1
+arrow_right
+  rotate: false
+  xy: 2307, 0
+  size: 129, 66
+  orig: 129, 66
+  offset: 0, 0
+  index: -1

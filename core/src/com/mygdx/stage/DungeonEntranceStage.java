@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mygdx.assets.StaticAssets;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.PartyManager;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
@@ -18,9 +18,10 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 	private CompositeItem entranceButton, saveButton, restButton;
 	@Autowired
 	private PartyManager partymanager;
+	@Autowired
+	private AssetsManager assetsManager;
 
 	public Stage makeStage() {
-		initSceneLoader(StaticAssets.rm);
 		cameraManager.stretchToDevice(this);
 
 		makeScene();
@@ -31,6 +32,8 @@ public class DungeonEntranceStage extends BaseOverlapStage {
 
 	private void makeScene() {
 		// 우선은 blackwood_forest_entrance_scene으로 통일하자
+		assetsManager.initScene("mawang_castle_scene");
+		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene("mawang_castle_scene");
 		// cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
 		addActor(sceneLoader.getRoot());

@@ -14,6 +14,7 @@ public class BattleInfo {
 	private Hero currentActor;
 	private PositionEnum beforePosition;
 	private FieldTypeEnum fieldType;
+	private boolean isEventBattle;
 
 	public Hero getCurrentActor() {
 		return currentActor;
@@ -62,6 +63,14 @@ public class BattleInfo {
 
 	public FieldTypeEnum getFieldType() {
 		return fieldType;
+	}
+
+	public boolean isEventBattle() {
+		return isEventBattle;
+	}
+
+	public void setEventBattle(boolean isEventBattle) {
+		this.isEventBattle = isEventBattle;
 	}
 
 }

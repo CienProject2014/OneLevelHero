@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -16,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.FieldManager;
@@ -29,6 +29,8 @@ public class EncounterStage extends BaseOneLevelStage {
 	private BattleManager battleManager;
 	@Autowired
 	private FieldManager fieldManager;
+	@Autowired
+	private TextureManager textureManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("MonsterStage");
 	private Monster monster;
 	private TextButton fightButton;
@@ -76,20 +78,18 @@ public class EncounterStage extends BaseOneLevelStage {
 	}
 
 	private Image getMonsterImage() {
-		return new Image(TextureManager.getMonsterTexture(monster.getFacePath()));
+		return new Image(textureManager.getMonsterTexture(monster.getFacePath()));
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
-			return new TextureRegionDrawable(new TextureRegion(StaticAssets.assetManager.get(
-					StaticAssets.textureMap.get("bg_devilcastle_01"), Texture.class)));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devilcastle_01")));
 		} else {
 			Gdx.app.log("EncounterStage", "fieldType - " + fieldManager.getFieldType());
-			return new TextureRegionDrawable(new TextureRegion(TextureManager.getBackgroundTexture(fieldManager
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
 					.getFieldType().toString())));
 		}
 	}
-
 	private void addListener() {
 		fightButton.addListener(new InputListener() {
 			@Override
@@ -111,6 +111,7 @@ public class EncounterStage extends BaseOneLevelStage {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 				screenFactory.show(ScreenEnum.FIELD);
 			}
 		});

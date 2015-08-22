@@ -12,12 +12,14 @@ import com.mygdx.model.event.EventScene;
 import com.mygdx.stage.BattleStage;
 import com.mygdx.stage.BuildingStage;
 import com.mygdx.stage.CharacterUiStage;
+import com.mygdx.stage.ChatEventStage;
 import com.mygdx.stage.DungeonEntranceStage;
 import com.mygdx.stage.DungeonStage;
 import com.mygdx.stage.EncounterStage;
-import com.mygdx.stage.ChatEventStage;
 import com.mygdx.stage.FieldStage;
+import com.mygdx.stage.ForkStage;
 import com.mygdx.stage.GameObjectStage;
+import com.mygdx.stage.GameOverStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.InventoryStage;
 import com.mygdx.stage.MenuStage;
@@ -36,6 +38,8 @@ public class StageFactory {
 	public Stage makeStage(StageEnum stageEnum) {
 		Gdx.app.log("StageFactory", "Make " + stageEnum.toString() + "Stage");
 		switch (stageEnum) {
+			case BATTLE :
+				return context.getBean(BattleStage.class).makeStage();
 			case BUILDING :
 				return context.getBean(BuildingStage.class).makeStage();
 			case CHARACTER_UI :
@@ -46,10 +50,14 @@ public class StageFactory {
 				return context.getBean(DungeonEntranceStage.class).makeStage();
 			case ENCOUNTER :
 				return context.getBean(EncounterStage.class).makeStage();
+			case FORK :
+				return context.getBean(ForkStage.class).makeStage();
 			case GAME_UI :
 				return context.getBean(GameUiStage.class).makeStage();
 			case GAME_OBJECT :
 				return context.getBean(GameObjectStage.class).makeStage();
+			case GAME_OVER :
+				return context.getBean(GameOverStage.class).makeStage();
 			case MENU :
 				return context.getBean(MenuStage.class).makeStage();
 			case MONSTER :
@@ -74,10 +82,6 @@ public class StageFactory {
 				Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
 				return context.getBean(VillageStage.class).makeStage(); // FIXME
 		}
-	}
-
-	public Stage makeBattleStage() {
-		return context.getBean(BattleStage.class).makeStage();
 	}
 
 	public Stage makeEventStage(Iterator<EventScene> eventSceneIterator) {

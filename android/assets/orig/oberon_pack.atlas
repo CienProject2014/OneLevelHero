@@ -1,0 +1,75 @@
+oberon_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+house
+  rotate: false
+  xy: 2, 84
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+oberen0007-------0
+  rotate: false
+  xy: 2, 392
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+oberen0012-------0
+  rotate: false
+  xy: 1924, 392
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+oberoninn
+  rotate: false
+  xy: 3846, 1268
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+oberonstore
+  rotate: false
+  xy: 746, 310
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+oldtemple
+  rotate: false
+  xy: 2, 2
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+retreatroad
+  rotate: false
+  xy: 2, 166
+  size: 231, 224
+  orig: 231, 224
+  offset: 0, 0
+  index: -1
+tokadillacastle
+  rotate: false
+  xy: 235, 209
+  size: 273, 181
+  orig: 273, 181
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 3846, 1350
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 510, 268
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1

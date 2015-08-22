@@ -1,0 +1,19 @@
+event_pack.png
+size: 2048,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+talkuiselect
+  rotate: false
+  xy: 2, 2
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+talkuiwindow
+  rotate: false
+  xy: 2, 94
+  size: 1920, 365
+  orig: 1920, 365
+  offset: 0, 0
+  index: -1

@@ -68,7 +68,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		if (storySectionManager.getCurrentStorySection().getNextSections() != null
 				&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
 			timeInfoButton.setText(timeManager.getTimeInfo() + " / "
-					+ storySectionManager.getNextSections().get(0).getNextSectionNumber());
+					+ storySectionManager.getCurrentStorySectionNumber());
 		}
 	}
 
@@ -85,20 +85,6 @@ public class GameUiStage extends BaseOneLevelStage {
 		tableStack.add(uiTable);
 		conditionalHidingBackButton();
 
-		alertMessage = new Stack<GameObjectPopup>();
-
-		// 알림 메시지
-		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", uiComponentAssets.getSkin(),
-				partyManager.getBattleMemberList());
-
-		Iterator<GameObjectPopup> alertMessageIterator = alertMessage.iterator();
-		while (alertMessageIterator.hasNext()) {
-			GameObjectPopup nextIterator = alertMessageIterator.next();
-			addActor(nextIterator);
-			nextIterator.setVisible(true);
-			rewardManager.pollRewardQueue();
-		}
-		addActor(statusMessagePopup);
 		return this;
 	}
 

@@ -21,6 +21,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PartyManager;
@@ -47,7 +48,12 @@ public class StatusStage extends BaseOverlapStage {
 	private MovingManager movingManager;
 	@Autowired
 	private BattleManager battleManager;
+	@Autowired
+	private AssetsManager assetsManager;
+	@Autowired
+	private TextureManager textureManager;
 	private Camera cam;
+
 	private CompositeItem inventoryButton;
 	private final String STATUS_LABEL_NAME = "status_label";
 	private final String PRESSED_VISIBILITY = "pressed";
@@ -58,9 +64,9 @@ public class StatusStage extends BaseOverlapStage {
 
 	public Stage makeStage() {
 		setCurrentSelectedHero(partyManager.getCurrentSelectedHero());
-		sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
-		initSceneLoader(StaticAssets.rm);
-		sceneLoader.loadScene(SCENE_NAME);
+		HashMap<String, Array<String>> sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
+		assetsManager.initScene(SCENE_NAME);
+		initSceneLoader(assetsManager.rm);
 		addActor(sceneLoader.getRoot());
 		setCamera();
 		setLabel(partyManager, sceneConstants);
@@ -125,7 +131,6 @@ public class StatusStage extends BaseOverlapStage {
 		fatigue.setText("피로도");
 		fatigue.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		fatigue.setFontScale(1.0f);
-
 		LabelItem fatigueLabel = sceneLoader.getRoot().getLabelById("workaholic_number_label");
 		fatigueLabel.setText(String.valueOf(partyManager.getFatigue()));
 		fatigueLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
@@ -143,7 +148,7 @@ public class StatusStage extends BaseOverlapStage {
 
 	private void setCharacterBustImage(PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
 		ImageItem playerImage = sceneLoader.getRoot().getImageById("player_image");
-		playerImage.setDrawable(new TextureRegionDrawable(new TextureRegion(TextureManager
+		playerImage.setDrawable(new TextureRegionDrawable(new TextureRegion(textureManager
 				.getStatusTexture(currentSelectedHero.getFacePath()))));
 		playerImage.setTouchable(Touchable.enabled);
 	}
@@ -154,7 +159,7 @@ public class StatusStage extends BaseOverlapStage {
 		for (int i = 0; i < partyManager.getPartyList().size(); i++) {
 			CompositeItem imageCompositeItem = sceneLoader.getRoot().getCompositeById(characterStatusList.get(i));
 			ImageItem characterStatusImage = imageCompositeItem.getImageById(CHARACTER_IMAGE);
-			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(TextureManager
+			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(textureManager
 					.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
 			imageCompositeItem.setTouchable(Touchable.disabled);
 		}
@@ -189,7 +194,6 @@ public class StatusStage extends BaseOverlapStage {
 			}
 		}
 	}
-
 	public void setCompositeItemVisibility(CompositeItem compositeItem, String visibility) {
 		if (visibility == DEFAULT_VISIBILITY) {
 			compositeItem.setLayerVisibilty(DEFAULT_VISIBILITY, true);
@@ -199,7 +203,6 @@ public class StatusStage extends BaseOverlapStage {
 			compositeItem.setLayerVisibilty(PRESSED_VISIBILITY, true);
 		}
 	}
-
 	private void setCamera() {
 		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);

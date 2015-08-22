@@ -72,6 +72,7 @@ public class EventManager {
 		switch (eventType) {
 			case BATTLE :
 				battleManager.startBattle(unitAssets.getMonster(getCurrentNpcEvent().getEventComponent().get(0)));
+				battleManager.setEventBattle(true);
 				screenFactory.show(ScreenEnum.BATTLE);
 				break;
 			case NEXT_SECTION :
@@ -85,6 +86,7 @@ public class EventManager {
 				break;
 			case BATTLE_END :
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				battleManager.setEventBattle(false);
 				storySectionManager.runStorySequence();
 				break;
 			case MOVE_SUB_NODE :
@@ -107,6 +109,19 @@ public class EventManager {
 		}
 	}
 
+	public Event getCurrentElementEvent() {
+		switch (getCurrentEventElementType()) {
+			case NPC :
+				return getCurrentNpcEvent();
+			case GAME_OBJECT :
+				return getCurrentGameObject().getObjectEvent();
+			case SPECIAL :
+				return getCurrentSpecialEvent();
+			default :
+				Gdx.app.log("EventManager", "EventElementType 정보 오류");
+				return getCurrentNpcEvent();
+		}
+	}
 	public void doSpecialEvent(Event event) {
 		switch (event.getEventType()) {
 			case DONT_GO_BUILDING :

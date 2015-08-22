@@ -5,13 +5,13 @@ import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
@@ -21,6 +21,7 @@ import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.model.event.EventScene;
 import com.mygdx.model.unit.Hero;
 
@@ -43,6 +44,8 @@ public class ChatEventStage extends BaseOneLevelStage {
 	private RewardManager rewardManager;
 	@Autowired
 	private UnitAssets unitAssets;
+	@Autowired
+	private TextureManager textureManager;
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("EventStage");
 	private Label scriptTitle = new Label("", StaticAssets.skin);
 	private Label scriptContent = new Label("", StaticAssets.skin);
@@ -95,12 +98,33 @@ public class ChatEventStage extends BaseOneLevelStage {
 	public void setScene(EventScene eventScene) {
 		setScript(eventScene);
 		makeChatTable(eventScene);
+		makeSkipButton();
+	}
+
+	private void makeSkipButton() {
+		TextButton skipButton = new TextButton("스킵", uiComponentAssets.getSkin());
+		skipButton.center();
+		skipButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				rewardManager.doReward(); // 보상이 있을경우 보상실행
+				eventManager.finishNpcEvent();
+				storySectionManager.runStorySequence();
+			}
+		});
+
+		addActor(skipButton);
 	}
 
 	private void makeChatTable(EventScene eventScene) {
-		backgroundImage = new Image(eventScene.getBackground());
-		Texture selectedCharacter = eventScene.getCharacter();
-		characterImage = new Image(selectedCharacter);
+		backgroundImage = new Image(textureManager.getBackgroundTexture(eventScene.getBackgroundPath()));
+		characterImage = new Image(textureManager.getBustTexture(eventScene.getCharacterPath(),
+				eventScene.getFaceNumber()));
 
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();

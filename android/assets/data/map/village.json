@@ -32,6 +32,11 @@
         "isOverlapScene" : true,
         "sceneName": "cobweb_library_scene"
       },
+      "cobweb_cathedral" : {
+      	"buildingName" : "대성당",
+      	"buildingType" : "house",
+      	"buildingPath" : "cobweb_cathedral"
+      },
       "cobweb_inn": {
         "buildingName": "여관",
         "buildingType": "house",

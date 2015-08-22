@@ -9,13 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.TextureAssets;
 import com.mygdx.enums.TextureEnum;
-import com.mygdx.model.battle.FrameSheet;
+import com.mygdx.model.jsonModel.FrameSheet;
 
 public class AnimationManager {
 	@Autowired
 	private StorySectionManager storySectionManager;
+	@Autowired
+	private TextureAssets textureAssets;
 	private SpriteBatch spriteBatch;
 	private Queue<AnimationBit> animations;
 
@@ -37,7 +39,7 @@ public class AnimationManager {
 	 *            재생하고자 하는 y위치
 	 */
 	public void registerAnimation(TextureEnum name, int x, int y) {
-		FrameSheet sheet = StaticAssets.animationSheetMap.get(name.toString());
+		FrameSheet sheet = textureAssets.getAnimationSheet(name.toString());
 
 		TextureRegion[][] splitted = splitSheet(sheet);
 
@@ -56,9 +58,8 @@ public class AnimationManager {
 	private TextureRegion[][] splitSheet(FrameSheet sheet) {
 		if (sheet.getTexture() == null)
 			sheet.loadTexture();
-		return TextureRegion.split(sheet.getTexture(), sheet.getTexture()
-				.getWidth() / sheet.getColumn(), sheet.getTexture().getHeight()
-				/ sheet.getRow());
+		return TextureRegion.split(sheet.getTexture(), sheet.getTexture().getWidth() / sheet.getColumn(), sheet
+				.getTexture().getHeight() / sheet.getRow());
 	}
 
 	/**
@@ -70,8 +71,7 @@ public class AnimationManager {
 	 *            행, 열 크기가 담긴 데이터
 	 * @return TextureRegion 타입의 1d array
 	 */
-	private TextureRegion[] matrixToArray(TextureRegion[][] matrix,
-			FrameSheet sheet) {
+	private TextureRegion[] matrixToArray(TextureRegion[][] matrix, FrameSheet sheet) {
 		TextureRegion[] frames = new TextureRegion[sheet.getFrameNumber()];
 		int index = 0;
 		for (int i = 0; i < sheet.getRow(); i++) {
@@ -97,8 +97,7 @@ public class AnimationManager {
 		stateTime += delta;
 
 		spriteBatch.begin();
-		for (final Iterator<AnimationBit> iterator = animations.iterator(); iterator
-				.hasNext();) {
+		for (final Iterator<AnimationBit> iterator = animations.iterator(); iterator.hasNext();) {
 
 			AnimationBit bit = (AnimationBit) iterator.next();
 
@@ -106,8 +105,7 @@ public class AnimationManager {
 				iterator.remove();
 
 			} else {
-				spriteBatch.draw(bit.getAnimation().getKeyFrame(stateTime),
-						bit.getX(), bit.getY());
+				spriteBatch.draw(bit.getAnimation().getKeyFrame(stateTime), bit.getX(), bit.getY());
 			}
 		}
 		spriteBatch.end();

@@ -11,16 +11,13 @@ import com.mygdx.util.JsonParser;
 public class ConstantsAssets implements JsonAssetsInitializable {
 	private Map<String, HashMap<String, Array<String>>> sceneConstantsMap = new HashMap<>();
 
-	@SuppressWarnings({"rawtypes", "unchecked"})
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void set(Map<String, String> jsonStringMap) {
-		Map<String, HashMap> jsonLabelConstantsMap = JsonParser.parseMap(
-				HashMap.class,
+		Map<String, HashMap> jsonLabelConstantsMap = JsonParser.parseMap(HashMap.class,
 				jsonStringMap.get(JsonEnum.SCENE_CONSTANTS_JSON.toString()));
-		for (Entry<String, HashMap> labelConstantsEntry : jsonLabelConstantsMap
-				.entrySet()) {
-			sceneConstantsMap.put(labelConstantsEntry.getKey(),
-					labelConstantsEntry.getValue());
+		for (Entry<String, HashMap> labelConstantsEntry : jsonLabelConstantsMap.entrySet()) {
+			sceneConstantsMap.put(labelConstantsEntry.getKey(), labelConstantsEntry.getValue());
 		}
 	}
 

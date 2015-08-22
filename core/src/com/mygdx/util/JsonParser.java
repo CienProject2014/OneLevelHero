@@ -11,10 +11,8 @@ public class JsonParser {
 	private static final Json JSON = new Json();
 
 	@SuppressWarnings("unchecked")
-	public static <T> Map<String, T> parseMap(Class<T> clazz,
-			String jsonString) {
-		Map<String, JsonValue> parsedMap = JSON.fromJson(HashMap.class,
-				jsonString);
+	public static <T> Map<String, T> parseMap(Class<T> clazz, String jsonString) {
+		Map<String, JsonValue> parsedMap = JSON.fromJson(HashMap.class, jsonString);
 
 		Map<String, T> result = new HashMap<String, T>();
 
@@ -25,10 +23,8 @@ public class JsonParser {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T> ArrayList<T> parseList(Class<T> clazz,
-			String jsonString) {
-		ArrayList<JsonValue> parsedList = JSON.fromJson(ArrayList.class,
-				jsonString);
+	public static <T> ArrayList<T> parseList(Class<T> clazz, String jsonString) {
+		ArrayList<JsonValue> parsedList = JSON.fromJson(ArrayList.class, jsonString);
 		ArrayList<T> result = new ArrayList<T>();
 
 		for (JsonValue jsonValue : parsedList)
@@ -38,8 +34,7 @@ public class JsonParser {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T, K> Map<T, K> parseMap(Class<T> clazz1, Class<K> clazz2,
-			String jsonString) {
+	public static <T, K> Map<T, K> parseMap(Class<T> clazz1, Class<K> clazz2, String jsonString) {
 		Map<T, JsonValue> parseMap = JSON.fromJson(HashMap.class, jsonString);
 		Map<T, K> result = new HashMap<T, K>();
 		for (T key : parseMap.keySet())

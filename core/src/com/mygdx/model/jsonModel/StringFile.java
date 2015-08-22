@@ -7,12 +7,6 @@ public class StringFile implements AssetsFile<String> {
 	private String file;
 
 	@Override
-	public String loadFile() {
-		file = Gdx.files.internal(filePath).readString();
-		return file;
-	}
-
-	@Override
 	public String getTestFile() {
 		file = Gdx.files.internal("../android/assets/" + filePath).readString();
 		return file;
@@ -28,5 +22,11 @@ public class StringFile implements AssetsFile<String> {
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+
+	@Override
+	public String loadFile() {
+		file = Gdx.files.internal(filePath).readString();
+		return file;
 	}
 }

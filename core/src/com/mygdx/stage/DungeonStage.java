@@ -1,23 +1,26 @@
 package com.mygdx.stage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.AssetsManager;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
  * @author Velmont
- *
+ * 
  */
 public class DungeonStage extends BaseOverlapStage {
+	@Autowired
+	private AssetsManager assetsManager;
 	private CompositeItem arrowUp, arrowDown, arrowLeft, arrowRight;
 
 	public Stage makeStage() {
-		initSceneLoader(StaticAssets.rm);
 
 		makeScene();
 		setButton();
@@ -27,6 +30,8 @@ public class DungeonStage extends BaseOverlapStage {
 
 	private void makeScene() {
 		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
+		assetsManager.initScene("blackwood_forest_dungeon_scene");
+		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene("blackwood_forest_dungeon_scene");
 		cameraManager.stretchToDevice(this);
 		addActor(sceneLoader.getRoot());

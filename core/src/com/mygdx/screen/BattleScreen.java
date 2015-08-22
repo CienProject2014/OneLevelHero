@@ -19,19 +19,19 @@ public class BattleScreen extends BaseScreen {
 		setInputProcessor();
 		monsterStage.draw();
 		characterUiStage.draw();
+		battleStage.draw();
 		// FIXME GameUi와 CharacherUi의 분리가 필요
 		gameUiStage.draw();
-		battleStage.draw();
 
 		if (showSkillStage) {
 			skillStage.draw();
 			skillStage.act();
 		}
 		// Animation이 진행중일때는 사용자의 입력에 대한 행동을 수행하지 않음
-		battleStage.act(delta);
 		monsterStage.act(delta);
 		characterUiStage.act(delta);
 		gameUiStage.act();
+		battleStage.act(delta);
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class BattleScreen extends BaseScreen {
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
 		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
-		battleStage = stageFactory.makeBattleStage();
+		battleStage = stageFactory.makeStage(StageEnum.BATTLE);
 		skillStage = stageFactory.makeStage(StageEnum.SKILL);
 		setInputProcessor();
 		// musicManager.setBattleMusicAndPlay();

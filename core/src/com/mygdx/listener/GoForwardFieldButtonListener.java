@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.MovingManager;
@@ -23,18 +22,15 @@ public class GoForwardFieldButtonListener extends ClickListener {
 	private TimeManager timeManager;
 	@Autowired
 	private MovingManager movingManager;
-	@Autowired
-	private FieldInfo fieldInfo;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		fieldInfo = fieldManager.goFowardAndGetFieldInfo();
-		if (!fieldInfo.isInField()) {
-			String node = fieldInfo.getDestinationNode();
+		fieldManager.goForwardField();
+		timeManager.plusMinute(30);
+		if (!fieldManager.isInField()) {
+			String node = fieldManager.getDestinationNode();
 			movingManager.goToNode(node);
 			storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_NODE, node);
 		}
-
-		timeManager.plusMinute(30);
 	}
 }

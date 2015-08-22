@@ -28,15 +28,21 @@ public class ArrowButtonListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		int beforeSectionNumber = storySectionManager.getCurrentStorySectionNumber();
+		storySectionManager.triggerSectionEvent(EventTypeEnum.CLICK_ARROW, connection.getValue().getArrowName());
+		int currentSectionNumber = storySectionManager.getCurrentStorySectionNumber();
+		if (beforeSectionNumber != currentSectionNumber) {
+			return;
+		}
 		fieldManager.startMovingField(connection.getKey());
 		if (fieldManager.getFieldLength() == 0) {
 			fieldManager.goForwardField();
 		} else {
 			positionManager.setCurrentPositionType(PositionEnum.FIELD);
 			screenFactory.show(ScreenEnum.FIELD);
+			fieldManager.goInField();
+			storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_FIELD, connection.getValue().getArrowName());
 		}
-		storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_FIELD,
-				connection.getValue().getArrowName());
 	}
 
 	public Entry<String, NodeConnection> getConnection() {

@@ -14,13 +14,13 @@
            http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 	<context:annotation-config />
-
 	<bean id="assets" class="com.mygdx.assets.Assets" />
 	<bean id="atlasUiAssets" class="com.mygdx.assets.AtlasUiAssets" />
 	<bean id="constantsAssets" class="com.mygdx.assets.ConstantsAssets"/>
 	<bean id="eventAssets" class="com.mygdx.assets.EventAssets"/>
 	<bean id="itemAssets" class="com.mygdx.assets.ItemAssets"/>
 	<bean id="skillAssets" class="com.mygdx.assets.SkillAssets"/>
+	<bean id="textureAssets" class="com.mygdx.assets.TextureAssets"/>
 	<bean id="musicAssets" class="com.mygdx.assets.MusicAssets" />
 	<bean id="uiComponwentAssets" class="com.mygdx.assets.UiComponentAssets" />
 	<bean id="unitAssets" class="com.mygdx.assets.UnitAssets" />
@@ -30,8 +30,8 @@
 	<bean id="currentInfo" class="com.mygdx.currentState.CurrentInfo" />
 	<bean id="BagInfo" class="com.mygdx.currentState.BagInfo "	    />
 	<bean id="BattleInfo" class="com.mygdx.currentState.BattleInfo  "	     />
+	<bean id="FieldInfo" class="com.mygdx.currentState.FieldInfo"/>
 	<bean id="EventInfo" class="com.mygdx.currentState.EventInfo " 	     />
-	<bean id="FieldInfo" class="com.mygdx.currentState.FieldInfo "	     />
 	<bean id="MusicInfo" class="com.mygdx.currentState.MusicInfo "	    />
 	<bean id="PartyInfo" class="com.mygdx.currentState.PartyInfo "	     />
 	<bean id="PositionInfo" class="com.mygdx.currentState.PositionInfo"    />
@@ -46,6 +46,7 @@
 	<bean id="stageFactory" class="com.mygdx.factory.StageFactory" />
 
 	<bean id="animationManager" class="com.mygdx.manager.AnimationManager" />
+	<bean id="assetsManager" class="com.mygdx.manager.AssetsManager"/>
 	<bean id="battleManager" class="com.mygdx.manager.BattleManager"/>
 	<bean id="bagManager" class="com.mygdx.manager.BagManager"/>
 	<bean id="cameraManager" class="com.mygdx.manager.CameraManager"/>
@@ -63,6 +64,7 @@
 	<bean id="rewardManager" class="com.mygdx.manager.RewardManager"/>
 	<bean id="saveManager" class="com.mygdx.manager.SaveManager" />
 	<bean id="storySectionManager" class="com.mygdx.manager.StorySectionManager"/>
+	<bean id="textureManager" class="com.mygdx.manager.TextureManager"/>
 	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
 	<bean id="unitManager" class="com.mygdx.manager.UnitManager"/>
 	<bean id="volumeManager" class="com.mygdx.manager.VolumeManager" />
@@ -89,7 +91,9 @@
 	<bean id="eventScreen" class="com.mygdx.screen.EventScreen" scope="prototype"/>	
 	<bean id="fieldScreen" class="com.mygdx.screen.FieldScreen"
 		scope="prototype"/>
+	<bean id="forkScreen" class="com.mygdx.screen.ForkScreen" scope="prototype"/>
 	<bean id="gameObjectScreen" class="com.mygdx.screen.GameObjectScreen" scope="prototype"/>
+	<bean id="gameOverScreen" class="com.mygdx.screen.GameOverScreen" scope="prototype"/>
 	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen"
 		scope="prototype"/>
 	<bean id="inventoryScreen" class="com.mygdx.screen.InventoryScreen" scope="prototype"/>
@@ -106,6 +110,8 @@
 		scope="prototype" />
 	<bean id="worldMapScreen" class="com.mygdx.screen.WorldMapScreen"
 		scope="prototype" />
+	<bean id="LoadingBarScreen" class="com.mygdx.screen.LoadingBarScreen"
+		 scopt="prototype" />
 		
 	<bean id="baseOneLevelStage" class="com.mygdx.stage.BaseOneLevelStage"
 		scope="prototype"/>
@@ -125,7 +131,9 @@
 		scope="prototype"/>
 	<bean id="chatEventStage" class="com.mygdx.stage.ChatEventStage" scope="prototype"/>	
 	<bean id="fieldStage" class="com.mygdx.stage.FieldStage" scope="prototype"/>
+	<bean id="forkStage" class="com.mygdx.stage.ForkStage" scope="prototype"/>
 	<bean id="gameObjectStage" class="com.mygdx.stage.GameObjectStage" scope="prototype"/>
+	<bean id="gameOverStage" class="com.mygdx.stage.GameOverStage"/>
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype"/>
 	<bean id="inventoryStage" class="com.mygdx.stage.InventoryStage" scope="prototype"/>
 	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
@@ -142,9 +150,9 @@
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
 	
-	<bean id="heroAttackStrategy" class="com.mygdx.unitStrategy.HeroAttackStrategy"/>	
+	<bean id="heroBattleStrategy" class="com.mygdx.unitStrategy.HeroBattleStrategy"/>	
 	<bean id="inventoryStrategy" class="com.mygdx.unitStrategy.InventoryStrategy"/>
-	<bean id="monsterAttackStrategy" class="com.mygdx.unitStrategy.MonsterAttackStrategy"/>	
+	<bean id="monsterBattleStrategy" class="com.mygdx.unitStrategy.MonsterBattleStrategy"/>	
 		
 	<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
 	<bean id="attackButtonListener" class="com.mygdx.listener.AttackButtonListener" scope="prototype"/>
@@ -156,4 +164,9 @@
 	<bean id="jumpSectionListener" class="com.mygdx.listener.JumpSectionListener" scope="prototype"/>
 	<bean id="selectComponentListener" class="com.mygdx.listener.SelectComponentListener" scope="prototype" />
 	<bean id="selectEventListener" class="com.mygdx.listener.SelectEventListener" scope="prototype"/>
+	
+	<bean id="gridHitBox" class="com.mygdx.ui.GridHitbox" scope="prototype"/>
+	
+	<bean id="atlasUiFile" class="com.mygdx.model.jsonModel.AtlasUiFile"/>
+	<bean id="musicFile" class="com.mygdx.model.jsonModel.MusicFile"/>
 </beans>
