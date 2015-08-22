@@ -13,6 +13,7 @@ public class StatusScreen extends BaseScreen {
 		super.render(delta);
 
 		statusStage.draw();
+		statusStage.act(delta);
 	}
 
 	@Override
