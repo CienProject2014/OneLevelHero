@@ -17,6 +17,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.AssetsManager;
+import com.mygdx.manager.SaveManager;
 import com.mygdx.ui.LoadingBarUi;
 
 public class LoadingBarScreen implements Screen {
@@ -27,6 +28,8 @@ public class LoadingBarScreen implements Screen {
 	private Assets assets;
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private SaveManager saveManager;
 
 	private Stage stage;
 	private Image logo;
@@ -78,6 +81,7 @@ public class LoadingBarScreen implements Screen {
 		Gdx.app.log("debug", "assets 로딩 후");
 
 	}
+
 	@Override
 	public void resize(int width, int height) {
 		// Set our screen to always be XXX x 480 in size
@@ -125,6 +129,7 @@ public class LoadingBarScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		if (assetsManager.update()) {
+			saveManager.firstInfoSave();
 			screenFactory.show(ScreenEnum.MENU);
 		}
 

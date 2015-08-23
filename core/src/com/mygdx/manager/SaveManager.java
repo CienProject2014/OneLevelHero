@@ -22,7 +22,7 @@ import com.mygdx.currentState.TimeInfo;
 
 public class SaveManager {
 	@Autowired
-	CurrentInfo currentState;
+	CurrentInfo currentInfo;
 	@Autowired
 	PartyInfo partyInfo;
 	@Autowired
@@ -45,9 +45,57 @@ public class SaveManager {
 		kryo.register(EventInfo.class);
 	}
 
+	public void firstInfoSave() {
+		FileHandle handle;
+		handle = Gdx.files.local("save/first");
+		Output output;
+		try {
+
+			Gdx.app.log("save", handle.file().getParentFile().getAbsolutePath());
+			if (!handle.file().getParentFile().exists()) {
+				handle.file().getParentFile().mkdirs();
+				handle.file().createNewFile();
+			}
+			Gdx.app.log("SaveManager", "저장작업완료" + handle.file().getAbsolutePath());
+			output = new Output(new FileOutputStream(handle.file()));
+			kryo.writeObject(output, partyInfo);
+			kryo.writeObject(output, positionInfo);
+			kryo.writeObject(output, timeInfo);
+			kryo.writeObject(output, storySectionInfo);
+			kryo.writeObject(output, eventInfo);
+			output.flush();
+			output.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Gdx.app.log("SaveManager", "저장작업완료");
+	}
+
+	public void firstInfoLoad() {
+		FileHandle handle = Gdx.files.local("save/first");
+		Input input;
+		try {
+			input = new Input(new FileInputStream(handle.file()));
+			BeanUtils.copyProperties(kryo.readObject(input, PartyInfo.class), partyInfo);
+			BeanUtils.copyProperties(kryo.readObject(input, PositionInfo.class), positionInfo);
+			BeanUtils.copyProperties(kryo.readObject(input, TimeInfo.class), timeInfo);
+			BeanUtils.copyProperties(kryo.readObject(input, StorySectionInfo.class), storySectionInfo);
+			BeanUtils.copyProperties(kryo.readObject(input, EventInfo.class), eventInfo);
+			input.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 	public void save() {
 		FileHandle handle;
-		handle = Gdx.files.local("save/" + currentState.getSaveVersion().toString() + ".json");
+		handle = Gdx.files.local("save/" + currentInfo.getSaveVersion().toString() + ".json");
 		Output output;
 		try {
 
@@ -76,7 +124,7 @@ public class SaveManager {
 	}
 
 	public void load() {
-		FileHandle handle = Gdx.files.local("save/" + currentState.getSaveVersion().toString() + ".json");
+		FileHandle handle = Gdx.files.local("save/" + currentInfo.getSaveVersion().toString() + ".json");
 		Input input;
 		try {
 			input = new Input(new FileInputStream(handle.file()));

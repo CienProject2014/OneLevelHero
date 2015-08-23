@@ -310,13 +310,23 @@ public class BattleManager {
 		boolean partyState = isHeroDead();
 		if (monsterState && !partyState) {
 			Gdx.app.log(TAG, "용사팀의 승리!");
+			initBattle();
 			setBattleState(BattleStateEnum.PLAYER_WIN);
 		} else if (partyState && !monsterState) {
 			Gdx.app.log(TAG, "용사팀의 패배!");
+			initBattle();
 			setBattleState(BattleStateEnum.GAME_OVER);
 		} else if (partyState && monsterState) {
 			Gdx.app.log(TAG, "잘못된 배틀 : 동시에 죽었다.");
+			initBattle();
 			setBattleState(BattleStateEnum.GAME_OVER);
+		}
+	}
+
+	private void initBattle() {
+		for (Unit unit : battleInfo.getUnits()) {
+			unit.setGauge(100);
+			unit.setSubvalue(0);
 		}
 	}
 

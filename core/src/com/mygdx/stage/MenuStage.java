@@ -15,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.TextureManager;
 
@@ -23,10 +22,7 @@ public class MenuStage extends BaseOneLevelStage {
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
-	@Autowired
 	private TextureManager textureManager;
-
 	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("MenuStage");
 
 	private Table buttonTable;
@@ -47,10 +43,11 @@ public class MenuStage extends BaseOneLevelStage {
 
 		// 이미지추가
 		startButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_start.png"))));
-		settingButton = new ImageButton(new SpriteDrawable(
-				new Sprite(new Texture("texture/ui/title/title_setting.png"))));
+		settingButton = new ImageButton(
+				new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_setting.png"))));
 		albumButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_album.png"))));
-		creditButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_credit.png"))));
+		creditButton = new ImageButton(
+				new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_credit.png"))));
 
 		// 클릭리스너추가
 		startButton.addListener(new ClickListener() {
@@ -103,7 +100,6 @@ public class MenuStage extends BaseOneLevelStage {
 		tableStack.addActor(background);
 		tableStack.addActor(logo);
 		tableStack.addActor(buttonTable);
-
 		return this;
 	}
 }

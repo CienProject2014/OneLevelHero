@@ -9,6 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.CurrentInfo;
+import com.mygdx.currentState.EventInfo;
+import com.mygdx.currentState.PartyInfo;
+import com.mygdx.currentState.PositionInfo;
+import com.mygdx.currentState.StorySectionInfo;
+import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.SaveVersion;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.EventManager;
@@ -27,6 +32,16 @@ public class SaveStage extends BaseOverlapStage {
 	private LoadManager loadManager;
 	@Autowired
 	private CurrentInfo currentInfo;
+	@Autowired
+	PartyInfo partyInfo;
+	@Autowired
+	PositionInfo positionInfo;
+	@Autowired
+	TimeInfo timeInfo;
+	@Autowired
+	StorySectionInfo storySectionInfo;
+	@Autowired
+	EventInfo eventInfo;
 
 	private static final String SCENE_NAME = "save_scene";
 	public static boolean isTouched = false;
@@ -124,10 +139,15 @@ public class SaveStage extends BaseOverlapStage {
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				isTouched = false;
+				initInfo();
 				eventManager.setCurrentEventNpc("prologue");
 				loadManager.loadNewGame();
 			}
 		});
+	}
+
+	private void initInfo() {
+		saveManager.firstInfoLoad();
 	}
 
 	private void setCamera() {

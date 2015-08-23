@@ -162,7 +162,7 @@ public class BattleStage extends BaseOneLevelStage {
 			initializeBattle(battleManager.getUnits(), selectedMonster);
 			showMenuBarAnimation();
 		}
-		battleManager.gameObjectPopup = new SkillRunPopup();
+		makePopup();
 		battleManager.setSkill(false);
 		battleManager.updateOrder();
 		currentAttackUnit = battleManager.getCurrentActors(); // 여기선 첫번째 턴
@@ -175,6 +175,14 @@ public class BattleStage extends BaseOneLevelStage {
 
 		addListener();
 		return this;
+	}
+
+	private void makePopup() {
+
+		battleManager.gameObjectPopup = new SkillRunPopup();
+		battleManager.gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
+		battleManager.gameObjectPopup.setListenerFactory(listenerFactory);
+
 	}
 
 	private void initializeBattle(ArrayList<Unit> units, Monster selectedMonster) {
@@ -394,8 +402,6 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.RUN);
 				setDarkButton(escapeButton);
 				battleManager.afterClick(RUN);
-				battleManager.gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
-				battleManager.gameObjectPopup.setListenerFactory(listenerFactory);
 				checkRunAway();
 				battleManager.gameObjectPopup
 						.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent() + "%입니다");
