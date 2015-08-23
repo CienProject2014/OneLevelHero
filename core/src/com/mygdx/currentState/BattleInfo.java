@@ -4,6 +4,7 @@ import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.FieldTypeEnum;
 import com.mygdx.enums.PositionEnum;
+import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 
@@ -11,6 +12,7 @@ public class BattleInfo {
 	private Monster currentMonster;
 	private BattleStateEnum battleState;
 	private CurrentClickStateEnum currentClickState;
+	private Skill currentSelectedSkill;
 	private Hero currentActor;
 	private PositionEnum beforePosition;
 	private FieldTypeEnum fieldType;
@@ -71,6 +73,14 @@ public class BattleInfo {
 
 	public void setEventBattle(boolean isEventBattle) {
 		this.isEventBattle = isEventBattle;
+	}
+
+	public Skill getCurrentSelectedSkill() {
+		return currentSelectedSkill;
+	}
+
+	public void setCurrentSelectedSkill(Skill currentSelectedSkill) {
+		this.currentSelectedSkill = currentSelectedSkill;
 	}
 
 }

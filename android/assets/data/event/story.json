@@ -394,7 +394,7 @@
         "nextSectionNumber": "308",
         "eventType": "move_sub_node_by_time",
         "targetComponent" : "crystallized_valley_room_01",
-        "targetTime" : "6-18"
+        "targetTime" : "6to18"
       },
       {
         "nextSectionNumber": "309",

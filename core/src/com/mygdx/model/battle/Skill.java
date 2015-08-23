@@ -1,6 +1,7 @@
 package com.mygdx.model.battle;
 
 public class Skill {
+	private String skillPath;
 	private String name;
 	private String skillType;
 	private String skillEffectType;
@@ -136,6 +137,14 @@ public class Skill {
 
 	public void setHitboxShape(int[][] hitboxShape) {
 		this.hitboxShape = hitboxShape;
+	}
+
+	public String getSkillPath() {
+		return skillPath;
+	}
+
+	public void setSkillPath(String skillPath) {
+		this.skillPath = skillPath;
 	}
 
 }
