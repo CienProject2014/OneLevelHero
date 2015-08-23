@@ -27,6 +27,7 @@ import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.unit.Hero;
+import com.mygdx.screen.StatusScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
@@ -57,7 +58,7 @@ public class StatusStage extends BaseOverlapStage {
 	private CompositeItem inventoryButton;
 	private final String STATUS_LABEL_NAME = "status_label";
 	private final String PRESSED_VISIBILITY = "pressed";
-	private final String DEFAULT_VISIBILITY = "default";
+	private final String DEFAULT_VISIBILITY = "Default";
 	private CompositeItem backButton, skillButton;
 	private HashMap<String, Array<String>> sceneConstants;
 	private Hero currentSelectedHero;
@@ -109,8 +110,23 @@ public class StatusStage extends BaseOverlapStage {
 
 	private void setButton() {
 		backButton = sceneLoader.getRoot().getCompositeById("back_tab");
-	}
+		final CompositeItem worldMapButton = sceneLoader.getRoot().getCompositeById("worldmap_button");
+		setCompositeItemVisibility(worldMapButton, DEFAULT_VISIBILITY);
+		worldMapButton.addListener(new InputListener() {
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				setCompositeItemVisibility(worldMapButton, DEFAULT_VISIBILITY);
+				StatusScreen.setClickedWorldMap(true);
+				screenFactory.show(ScreenEnum.WORLD_MAP);
+			}
 
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				setCompositeItemVisibility(worldMapButton, PRESSED_VISIBILITY);
+				return true;
+			}
+		});
+	}
 	private void addListener() {
 		backButton.addListener(new ClickListener() {
 			@Override
@@ -198,7 +214,7 @@ public class StatusStage extends BaseOverlapStage {
 		}
 	}
 	public void setCompositeItemVisibility(CompositeItem compositeItem, String visibility) {
-		if (visibility == DEFAULT_VISIBILITY) {
+		if (visibility.equals(DEFAULT_VISIBILITY)) {
 			compositeItem.setLayerVisibilty(DEFAULT_VISIBILITY, true);
 			compositeItem.setLayerVisibilty(PRESSED_VISIBILITY, false);
 		} else {

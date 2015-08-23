@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.screen.StatusScreen;
 
 public class BackButtonListener extends ClickListener {
 	@Autowired
@@ -24,10 +26,15 @@ public class BackButtonListener extends ClickListener {
 	public void clicked(InputEvent event, float x, float y) {
 		if (!positionManager.isInWorldMap()) {
 			movingManager.goPreviousPosition();
+			storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_NODE, positionManager.getCurrentNodeName());
 		} else {
-			movingManager.goCurrentPosition();
+			if (StatusScreen.isClickedWorldMap()) {
+				StatusScreen.setClickedWorldMap(false);
+				positionManager.setInWorldMap(false);
+				screenFactory.show(ScreenEnum.STATUS);
+			} else {
+				movingManager.goCurrentPosition();
+			}
 		}
-		storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_NODE,
-				positionManager.getCurrentNodeName());
 	}
 }

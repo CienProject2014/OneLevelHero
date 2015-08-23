@@ -16,6 +16,16 @@ public class AssetsManager extends AssetManager {
 		rm.settingScene("save_scene");
 	}
 
+	public void initMultiScene(String name) {
+		String path = splitString(name);
+		Gdx.app.log("load", "orig" + File.separator + path + "pack.atlas");
+		load("orig" + File.separator + path + "pack.atlas", TextureAtlas.class);
+		finishLoading();
+		TextureAtlas atlas = get("orig/" + path + "pack.atlas", TextureAtlas.class);
+		rm.setMainPack(atlas);
+		rm.initScene(name);
+	}
+
 	public void initScene(String name) {
 		String path = splitString(name);
 		// 1. 방금 전에 불린 Scene과 같지 않을 경우 unload한다.

@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.manager.AssetsManager;
+import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.model.surroundings.DungeonEntrance;
@@ -31,16 +32,17 @@ public class WorldMapStage extends BaseOverlapStage {
 	private MovingManager movingManager;
 	@Autowired
 	private AssetsManager assetsManager;
+	@Autowired
+	private BattleManager battleManager;
 	private String nodePath;
 	private CompositeItem currentPosition;
 	private ImageItem currentNode;
 	private final int SET_POSITION = 15;
 
 	public Stage makeStage() {
-
 		assetsManager.initScene(SCENE_NAME);
-		initSceneLoader(assetsManager.rm);
 		positionManager.setInWorldMap(true);
+		initSceneLoader(assetsManager.rm);
 		/*
 		 * MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다. SceneVO가 반환되는데,
 		 * 이것은 CompositeVO를 가지고 있다. CompositeVO는 그 Scene이 가지고 있는 Label, Button등을
