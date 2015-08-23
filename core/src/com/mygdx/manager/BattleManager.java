@@ -245,4 +245,12 @@ public class BattleManager {
 		return battleInfo.getBeforePosition();
 	}
 
+	public void setCurrentSelectedSkill(Skill skill) {
+		battleInfo.setCurrentSelectedSkill(skill);
+	}
+
+	public Skill getCurrentSelectedSkill() {
+		return battleInfo.getCurrentSelectedSkill();
+	}
+
 }

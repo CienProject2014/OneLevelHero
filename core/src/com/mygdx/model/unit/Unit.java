@@ -1,7 +1,7 @@
 package com.mygdx.model.unit;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 import com.mygdx.model.battle.Skill;
 import com.mygdx.unitStrategy.BattleStrategy;
@@ -13,7 +13,7 @@ public abstract class Unit implements Comparable<Unit> {
 	private String facePath;
 	private String name;
 	protected Status status;
-	private Map<String, Skill> skills;
+	private List<Skill> skills;
 	private int gauge;
 	private int subvalue;
 	private int actingPower;
@@ -33,15 +33,6 @@ public abstract class Unit implements Comparable<Unit> {
 	public String getName() {
 		return name;
 	}
-
-	public Map<String, Skill> getSkills() {
-		return skills;
-	}
-
-	public void setSkills(Map<String, Skill> skills) {
-		this.skills = skills;
-	}
-
 	public ArrayList<String> getSkillList() {
 		return skillList;
 	}
@@ -156,5 +147,13 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setUnusualConditionStrategy(UnusualConditionStrategy unusualConditionStrategy) {
 		this.unusualConditionStrategy = unusualConditionStrategy;
+	}
+
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
 	}
 }
