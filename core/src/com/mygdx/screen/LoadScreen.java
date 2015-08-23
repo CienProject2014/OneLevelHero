@@ -13,6 +13,7 @@ import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.StageEnum;
+import com.mygdx.manager.LoadManager;
 import com.mygdx.stage.LoadStage;
 
 public class LoadScreen extends BaseScreen {
@@ -20,8 +21,11 @@ public class LoadScreen extends BaseScreen {
 	protected CurrentInfo currentInfo;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private LoadManager loadManager;
 	private Stage stage, loadStage;
-	private TextButton startButton;
+	private TextButton loadButton;
+	private TextButton newStartButton;
 	private TextButton backButton;
 
 	@Override
@@ -39,7 +43,8 @@ public class LoadScreen extends BaseScreen {
 		stage = new Stage();
 		Table table = new Table(uiComponentAssets.getSkin());
 		backButton = new TextButton("Back", uiComponentAssets.getSkin());
-		startButton = new TextButton("Start", uiComponentAssets.getSkin());
+		loadButton = new TextButton("Load", uiComponentAssets.getSkin());
+		newStartButton = new TextButton("NewStart", uiComponentAssets.getSkin());
 		backButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -51,7 +56,7 @@ public class LoadScreen extends BaseScreen {
 				screenFactory.show(ScreenEnum.MENU);
 			}
 		});
-		startButton.addListener(new InputListener() {
+		loadButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -59,17 +64,27 @@ public class LoadScreen extends BaseScreen {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				/*
-				 * currentInfo.setSaveVersion(SaveVersion.NEW);
-				 * eventManager.setCurrentEventNpc(PROLOGUE);
-				 * loadManager.loadNewGame();
-				 */
+
 				LoadStage.isTouched = true;
+			}
+		});
+		newStartButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				eventManager.setCurrentEventNpc("prologue");
+				loadManager.loadNewGame();
 			}
 		});
 
 		table.setFillParent(true);
-		table.add(startButton).expand();
+		table.add(loadButton).expand();
+		table.row();
+		table.add(newStartButton).expand();
 		table.row();
 		table.add(backButton).bottom();
 		stage.addActor(table);

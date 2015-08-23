@@ -280,6 +280,16 @@
       ],
       "physicsPropertiesVO": {},
       "sceneName": "save_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "load_scene"
     }
   ],
   "originalResolution": {

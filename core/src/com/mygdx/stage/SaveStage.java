@@ -15,7 +15,6 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.LoadManager;
 import com.mygdx.manager.SaveManager;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
-import com.uwsoft.editor.renderer.actor.ImageItem;
 
 public class SaveStage extends BaseOverlapStage {
 	@Autowired
@@ -32,10 +31,12 @@ public class SaveStage extends BaseOverlapStage {
 	private static final String SCENE_NAME = "save_scene";
 	public static boolean isTouched = false;
 	private Camera cam;
-	private ImageItem background;
-	private ImageItem save;
-	private CompositeItem newload;
 	private CompositeItem closeButton;
+	private CompositeItem background;
+	private CompositeItem save01;
+	private CompositeItem save02;
+	private CompositeItem save03;
+	private CompositeItem newbutton;
 
 	public Stage makeStage() {
 		assetsManager.initScene(SCENE_NAME);
@@ -49,10 +50,12 @@ public class SaveStage extends BaseOverlapStage {
 	}
 
 	private void setCompositeItem() {
-		background = sceneLoader.getRoot().getImageById("background");
-		save = sceneLoader.getRoot().getImageById("save");
-		newload = sceneLoader.getRoot().getCompositeById("new_button");
+		background = sceneLoader.getRoot().getCompositeById("background");
+		save01 = sceneLoader.getRoot().getCompositeById("save01");
+		save02 = sceneLoader.getRoot().getCompositeById("save02");
+		save03 = sceneLoader.getRoot().getCompositeById("save03");
 		closeButton = sceneLoader.getRoot().getCompositeById("close_button");
+		newbutton = sceneLoader.getRoot().getCompositeById("new_button");
 	}
 
 	private void setAddListener() {
@@ -66,7 +69,7 @@ public class SaveStage extends BaseOverlapStage {
 				isTouched = false;
 			}
 		});
-		save.addListener(new InputListener() {
+		save01.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -78,15 +81,28 @@ public class SaveStage extends BaseOverlapStage {
 				isTouched = false;
 			}
 		});
-		newload.addListener(new InputListener() {
+		save02.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				eventManager.setCurrentEventNpc("prologue");
-				loadManager.loadNewGame();
+				currentInfo.setSaveVersion(SaveVersion.SAVE2);
+				saveManager.save();
+				isTouched = false;
+			}
+		});
+		save03.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				currentInfo.setSaveVersion(SaveVersion.SAVE3);
+				saveManager.save();
+				isTouched = false;
 			}
 		});
 		closeButton.addListener(new InputListener() {
@@ -97,6 +113,19 @@ public class SaveStage extends BaseOverlapStage {
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				isTouched = false;
+			}
+		});
+
+		newbutton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				isTouched = false;
+				eventManager.setCurrentEventNpc("prologue");
+				loadManager.loadNewGame();
 			}
 		});
 	}

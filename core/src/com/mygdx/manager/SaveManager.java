@@ -20,7 +20,6 @@ import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.currentState.TimeInfo;
-import com.mygdx.enums.SaveVersion;
 
 public class SaveManager {
 	@Autowired
@@ -52,11 +51,7 @@ public class SaveManager {
 
 	public void save() {
 		FileHandle handle;
-		if (currentState.getSaveVersion() == SaveVersion.NEW) {
-			handle = Gdx.files.local("save/SAVE1.json");
-		} else {
-			handle = Gdx.files.local("save/" + currentState.getSaveVersion().toString() + ".json");
-		}
+		handle = Gdx.files.local("save/" + currentState.getSaveVersion().toString() + ".json");
 		Output output;
 		try {
 
