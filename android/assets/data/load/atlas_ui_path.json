@@ -26,7 +26,7 @@
       "popupui_button_accept",
       "popupui_button_cancel",
       "popupui_button_closed",
-      "popupui_popup01",      
+      "popupui_popup01",
       "popupui_button_end",
       "popupui_button_load",
       "popupui_button_no",
@@ -69,6 +69,16 @@
       "button_option_before",
       "button_option_after",
       "button_start_after"
+    ]
+  },
+  {
+    "filePath": "texture/ui/dungeon/dungeon_atlas.atlas",
+    "element": [
+      "stay_button_field",
+      "stay_button_go",
+      "stay_button_memoraizing",
+      "stay_button_rest",
+      "stay_button_save"
     ]
   },
   {

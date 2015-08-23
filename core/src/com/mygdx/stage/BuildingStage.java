@@ -38,7 +38,7 @@ public class BuildingStage extends BaseOverlapStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
-	private NodeAssets worldNodeAssets;
+	private NodeAssets nodeAssets;
 	@Autowired
 	private EventAssets eventAssets;
 	@Autowired
@@ -57,7 +57,7 @@ public class BuildingStage extends BaseOverlapStage {
 
 	public Stage makeStage() {
 
-		buildingInfo = worldNodeAssets.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
+		buildingInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
 				.get(positionManager.getCurrentSubNodeName());
 		if (buildingInfo.isOverlapScene()) {
 			makeScene();
@@ -74,7 +74,7 @@ public class BuildingStage extends BaseOverlapStage {
 	}
 
 	private void makeScene() {
-		buildingInfo = worldNodeAssets.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
+		buildingInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
 				.get(positionManager.getCurrentSubNodeName());
 
 		assetsManager.initScene(buildingInfo.getSceneName());

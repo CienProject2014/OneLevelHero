@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.mygdx.enums.FieldTypeEnum;
 import com.mygdx.enums.JsonEnum;
+import com.mygdx.model.surroundings.DungeonEntrance;
 import com.mygdx.model.surroundings.Fork;
 import com.mygdx.model.surroundings.MonsterField;
 import com.mygdx.model.surroundings.Village;
@@ -16,10 +17,12 @@ public class NodeAssets implements JsonAssetsInitializable {
 	public Map<String, Village> villageMap;
 	public Map<FieldTypeEnum, ArrayList<String>> monsterFieldMap;
 	public Map<String, Fork> forkMap;
+	public Map<String, DungeonEntrance> dungeonEntranceMap;
 
 	public void set(Map<String, String> jsonStringMap) {
 		villageMap = JsonParser.parseMap(Village.class, jsonStringMap.get(JsonEnum.VILLAGE_JSON.toString()));
-
+		dungeonEntranceMap = JsonParser.parseMap(DungeonEntrance.class,
+				jsonStringMap.get(JsonEnum.DUNGEON_ENTRANCE_JSON.toString()));
 		forkMap = JsonParser.parseMap(Fork.class, jsonStringMap.get(JsonEnum.FORK_JSON.toString()));
 
 		ArrayList<MonsterField> monsterFieldList = JsonParser.parseList(MonsterField.class,
@@ -28,6 +31,14 @@ public class NodeAssets implements JsonAssetsInitializable {
 		for (MonsterField monsterField : monsterFieldList) {
 			monsterFieldMap.put(monsterField.getFieldType(), monsterField.getFieldMonsterList());
 		}
+	}
+
+	public Map<String, DungeonEntrance> getDungeonEntranceMap() {
+		return dungeonEntranceMap;
+	}
+
+	public DungeonEntrance getDungeonEntranceByName(String dungeonEntranceName) {
+		return dungeonEntranceMap.get(dungeonEntranceName);
 	}
 
 	public Map<String, Village> getVillageMap() {
