@@ -94,7 +94,7 @@ public class RewardManager {
 					case SAVE :
 						saveManager.save();
 						break;
-					case PARTY :
+					case JOIN_PARTY :
 						partyManager.addHero(unitAssets.getHero(peekedReward.getRewardComponent().get(0)));
 						break;
 					default :
@@ -114,7 +114,7 @@ public class RewardManager {
 				return rewardInfo.getRewardComponent().get(0) + "아이템을 획득했습니다.";
 			case NONE :
 				return "보상 없음";
-			case PARTY :
+			case JOIN_PARTY :
 				return rewardInfo.getRewardComponent().get(0) + "이 파티에 합류하였습니다.";
 			default :
 				return "보상 없음";
