@@ -13,7 +13,6 @@ import com.badlogic.gdx.files.FileHandle;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.mygdx.currentState.BattleInfo;
 import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.PartyInfo;
@@ -33,8 +32,6 @@ public class SaveManager {
 	@Autowired
 	StorySectionInfo storySectionInfo;
 	@Autowired
-	BattleInfo battleInfo;
-	@Autowired
 	EventInfo eventInfo;
 
 	private Kryo kryo;
@@ -45,7 +42,6 @@ public class SaveManager {
 		kryo.register(PositionInfo.class);
 		kryo.register(TimeInfo.class);
 		kryo.register(StorySectionInfo.class);
-		kryo.register(BattleInfo.class);
 		kryo.register(EventInfo.class);
 	}
 
@@ -66,7 +62,6 @@ public class SaveManager {
 			kryo.writeObject(output, positionInfo);
 			kryo.writeObject(output, timeInfo);
 			kryo.writeObject(output, storySectionInfo);
-			kryo.writeObject(output, battleInfo);
 			kryo.writeObject(output, eventInfo);
 			output.flush();
 			output.close();
@@ -89,7 +84,6 @@ public class SaveManager {
 			BeanUtils.copyProperties(kryo.readObject(input, PositionInfo.class), positionInfo);
 			BeanUtils.copyProperties(kryo.readObject(input, TimeInfo.class), timeInfo);
 			BeanUtils.copyProperties(kryo.readObject(input, StorySectionInfo.class), storySectionInfo);
-			BeanUtils.copyProperties(kryo.readObject(input, BattleInfo.class), battleInfo);
 			BeanUtils.copyProperties(kryo.readObject(input, EventInfo.class), eventInfo);
 			input.close();
 		} catch (FileNotFoundException e) {

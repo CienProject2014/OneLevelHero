@@ -11,14 +11,17 @@ public class StatusBar {
 	public StatusBar(Unit unit, Skin skin, boolean isStartBattle) {
 		this.unit = unit;
 		hpBar = new StatusBarUi("hp", skin);
+		gaugeBar = new StatusBarUi("gauge", skin);
 		if (isStartBattle) {
 			hpBar.setAnimateDuration(1.5f);
 		}
 		hpBar.setValue(getHpPercent());
+		gaugeBar.setValue(getGaugePercent());
 	}
 
 	public void update() {
 		hpBar.setValue(getHpPercent());
+		gaugeBar.setValue(getGaugePercent());
 	}
 
 	public int getHp() {
@@ -31,6 +34,11 @@ public class StatusBar {
 
 	public int getHpPercent() {
 		float factor = (float) unit.getStatus().getHp() / unit.getStatus().getMaxHp();
+		return (int) (factor * 100);
+	}
+
+	public int getGaugePercent() {
+		float factor = (float) unit.getGauge() / 100;
 		return (int) (factor * 100);
 	}
 

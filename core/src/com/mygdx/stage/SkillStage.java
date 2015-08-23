@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -26,13 +27,14 @@ import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.screen.BattleScreen;
+import com.mygdx.ui.GridHitbox;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 
 public class SkillStage extends BaseOverlapStage {
+	private final String TAG = "BattleStage";
 	private final String DEFAULT_VISIBILTY = "Default";
 	private final String PRESSED_VISIBILTY = "pressed";
-	private final String NORMAL_VISIBILTY = "normal";
 	private final int SKILL_TAB_SIZE = 7;
 	@Autowired
 	private BattleManager battleManager;
@@ -46,13 +48,16 @@ public class SkillStage extends BaseOverlapStage {
 	private ConstantsAssets constantsAssets;
 	@Autowired
 	private ListenerFactory listenerFactory;
+	@Autowired
+	private GridHitbox gridHitbox;
 	private Map<String, Array<String>> sceneConstants;
 	public final String SCENE_NAME = "skill_scene";
 	private Camera cam;
 	private Map<Integer, Skill> skillInfo;
 	private List<CompositeItem> useButtonList;
 
-	public void act(float delta) {
+	@Override
+	public void act() {
 		setLabel(sceneConstants);
 	}
 
@@ -85,11 +90,31 @@ public class SkillStage extends BaseOverlapStage {
 					setCompositeItemVisibilty(useButtonList.get(index), PRESSED_VISIBILTY);
 					return true;
 				}
+
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					setCompositeItemVisibilty(useButtonList.get(index), DEFAULT_VISIBILTY);
 					battleManager.setCurrentSelectedSkill(skillInfo.get(index));
 					storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_CONTROL, "skill_attack");
+					Skill currentSelectedSkill = battleManager.getCurrentSelectedSkill();
+					if (currentSelectedSkill.getHitboxSize() == 0) {
+						gridHitbox.setHitboxCenter(currentSelectedSkill.getHitboxCenter());
+						gridHitbox.setHitboxShape(currentSelectedSkill.getHitboxShape());
+						battleManager.afterClick(currentSelectedSkill.getCostGauge());
+						battleManager.setShowGrid(true);
+						Gdx.app.log(TAG, "gridHitbox를 표시합니다");
+					} else {
+						gridHitbox.setLimitNum(currentSelectedSkill.getHitboxSize());
+						if (currentSelectedSkill.getHitboxCenter() == null) {
+							battleManager.afterClick(currentSelectedSkill.getCostGauge());
+							battleManager.setShowGrid(true);
+						} else {
+							Gdx.app.log(TAG, "스킬 즉시 사용");
+							battleManager.afterClick(currentSelectedSkill.getCostGauge());
+							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
+									battleManager.getSelectedMonster(), currentSelectedSkill.getName());
+						}
+					}
 					BattleScreen.showSkillStage = false;
 				}
 			});
@@ -108,6 +133,7 @@ public class SkillStage extends BaseOverlapStage {
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				BattleScreen.showSkillStage = false;
+				battleManager.showRMenuButtons();
 			}
 		});
 	}
@@ -134,7 +160,7 @@ public class SkillStage extends BaseOverlapStage {
 	}
 
 	private void setLabel(Map<String, Array<String>> sceneConstants) {
-		int playerSkillSize = battleManager.getCurrentActor().getSkills().size();
+		int playerSkillSize = battleManager.getCurrentAttackUnit().getSkills().size();
 		Array<String> skillNameLabelList = sceneConstants.get("skill_name_label");
 		Array<String> castingLabelList = sceneConstants.get("casting_label");
 		Array<String> gaugeLabelList = sceneConstants.get("gauge_label");
@@ -144,9 +170,11 @@ public class SkillStage extends BaseOverlapStage {
 			LabelItem castingLabel = sceneLoader.getRoot().getLabelById(castingLabelList.get(i));
 			LabelItem gaugeLabel = sceneLoader.getRoot().getLabelById(gaugeLabelList.get(i));
 			if (playerSkillSize > i) {
-				skillInfo.put(i, battleManager.getCurrentActor().getSkills().get(i));
-				skillNameLabel.setText(battleManager.getCurrentActor().getSkills().get(i).getName());
-				gaugeLabel.setText(String.valueOf(battleManager.getCurrentActor().getSkills().get(i).getCostGauge()));
+				skillInfo.put(i, battleManager.getCurrentAttackUnit().getSkills().get(i));
+				skillNameLabel.setText(battleManager.getCurrentAttackUnit().getSkills().get(i).getName());
+				castingLabel.setText("");
+				gaugeLabel.setText(
+						String.valueOf(battleManager.getCurrentAttackUnit().getSkills().get(i).getCostGauge()));
 				setLabelStyle(skillNameLabel);
 				setLabelStyle(castingLabel);
 				setLabelStyle(gaugeLabel);
@@ -157,6 +185,7 @@ public class SkillStage extends BaseOverlapStage {
 			}
 		}
 	}
+
 	private void setLabelStyle(LabelItem labelItem) {
 		labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		labelItem.setFontScale(1.0f);
@@ -207,6 +236,7 @@ public class SkillStage extends BaseOverlapStage {
 		});
 		// skillTypeButton.add(skillTypeButton_02);
 	}
+
 	private void setCompositeItemVisibilty(CompositeItem compositeItem, String visibilty) {
 		if (visibilty == PRESSED_VISIBILTY) {
 			compositeItem.setLayerVisibilty(PRESSED_VISIBILTY, true);
@@ -235,8 +265,8 @@ public class SkillStage extends BaseOverlapStage {
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					for (int j = 0; j < SKILL_TAB_SIZE; j++) {
 						if (skillInfo.get(j) != null) {
-							final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
-									highLightFrameList.get(j));
+							final CompositeItem highLightFrame = sceneLoader.getRoot()
+									.getCompositeById(highLightFrameList.get(j));
 							if (j == focusedIndex) {
 								highLightFrame.setLayerVisibilty(PRESSED_VISIBILTY, true);
 								setUseButton(j);
@@ -245,8 +275,8 @@ public class SkillStage extends BaseOverlapStage {
 								setVoidUseButton(j);
 							}
 						} else {
-							final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
-									highLightFrameList.get(j));
+							final CompositeItem highLightFrame = sceneLoader.getRoot()
+									.getCompositeById(highLightFrameList.get(j));
 
 							highLightFrame.setLayerVisibilty(PRESSED_VISIBILTY, false);
 							setVoidUseButton(j);

@@ -41,15 +41,15 @@ public class GridHitbox extends Table {
 
 	public void setSizeType(MonsterEnum.SizeType sizeType) {
 		switch (sizeType) {
-			case SMALL :
-				// TODO 추후 구현
-				break;
-			case MEDIUM :
-				setMediumSizeType();
-				break;
-			case LARGE :
-				// TODO 추후 구현
-				break;
+		case SMALL:
+			// TODO 추후 구현
+			break;
+		case MEDIUM:
+			setMediumSizeType();
+			break;
+		case LARGE:
+			// TODO 추후 구현
+			break;
 		}
 		Stack stk = makeGridTable(sizeType);
 		this.add(stk).padTop(uiConstantsMap.get("gridPadTop"));
