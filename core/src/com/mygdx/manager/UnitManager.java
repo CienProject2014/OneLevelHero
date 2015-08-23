@@ -1,6 +1,7 @@
 package com.mygdx.manager;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,9 +79,11 @@ public class UnitManager {
 
 	private void setSkills(Unit unit) {
 		if (unit.getSkills() == null && unit.getSkillList() != null) {
-			Map<String, Skill> skills = new HashMap<>();
+			List<Skill> skills = new ArrayList<>();
 			for (String skillName : unit.getSkillList()) {
-				skills.put(skillName, skillAssets.getSkill(skillName));
+				Skill skill = skillAssets.getSkill(skillName);
+				skill.setSkillPath(skillName);
+				skills.add(skill);
 			}
 			unit.setSkills(skills);
 		}

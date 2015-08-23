@@ -432,8 +432,8 @@ public class BattleStage extends BaseOneLevelStage {
 					battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.NORMAL);
 					makeHiddenButton();
 					Hero forInv = (Hero) currentAttackUnit;
-					Weapon w = (Weapon) forInv.getInventory().getEquipment(ItemEnum.LEFT_HANDGRIP);
-					gridHitbox.setLimitNum(w.getHitboxSize());
+					Weapon weapon = (Weapon) forInv.getInventory().getEquipment(ItemEnum.LEFT_HANDGRIP);
+					gridHitbox.setLimitNum(weapon.getHitboxSize());
 					gridHitbox.showGrid();
 				} else {
 
@@ -449,16 +449,22 @@ public class BattleStage extends BaseOneLevelStage {
 				makeHiddenButton();
 
 				// TODO: 유저가 선택한 스킬의 이름을 받아와야 함
-				Skill s = currentAttackUnit.getSkills().get("cut_" + "01");
+				// null이면 skill버튼을 보이게하고 히든박스 지우면될듯?
+				// Skill currentSelectedSkill =
+				// battleManager.getCurrentSelectedSkill();
+				Skill currentSelectedSkill = currentAttackUnit.getSkills().get(0);
 
-				if (s.getHitboxSize() == 0) { // grid가 고정된 형태인 경우
-					gridHitbox.setHitboxCenter(s.getHitboxCenter());
-					gridHitbox.setHitboxShape(s.getHitboxShape());
+				if (currentSelectedSkill.getHitboxSize() == 0) { // grid가 고정된
+																	// 형태인 경우
+					gridHitbox.setHitboxCenter(currentSelectedSkill.getHitboxCenter());
+					gridHitbox.setHitboxShape(currentSelectedSkill.getHitboxShape());
 					gridHitbox.showGrid();
 					Gdx.app.log(TAG, "gridHitbox를 표시합니다");
 				} else {
-					gridHitbox.setLimitNum(s.getHitboxSize());
-					if (s.getHitboxCenter() == null) { // grid를 선택하는 경우
+					gridHitbox.setLimitNum(currentSelectedSkill.getHitboxSize());
+					if (currentSelectedSkill.getHitboxCenter() == null) { // grid를
+																			// 선택하는
+																			// 경우
 						gridHitbox.showGrid();
 					} else { // grid 선택 없는 경우
 						Gdx.app.log(TAG, "스킬 즉시 사용");
@@ -523,7 +529,7 @@ public class BattleStage extends BaseOneLevelStage {
 			public void touchDragged(InputEvent event, float x, float y, int pointer) {
 
 				// TODO: 유저가 선택한 스킬의 이름을 받아와야 함
-				Skill s = currentAttackUnit.getSkills().get("cut_" + "01");
+				Skill s = currentAttackUnit.getSkills().get(0);
 				if (gridHitbox.isGridShow()) {
 					if (!isSkill) {
 						gridHitbox.showTileWhereMoved(touched.x, touched.y);
