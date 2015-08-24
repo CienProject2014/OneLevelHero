@@ -207,12 +207,12 @@ public class BattleStage extends BaseOneLevelStage {
 	private void playAnimation(float delta) {
 		animationManager.nextFrame(delta);
 		if (animationManager.getAnimations().isEmpty()) {
-			storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_CONTROL, "normal_attack");
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_CONTROL, "normal_attack");
 			battleManager.endTurn();
 			if (battleManager.getBattleState().equals(BattleStateEnum.PLAYER_WIN)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 				movingManager.goPreviousPosition();
-				storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_END, selectedMonster.getFacePath());
+				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_END, selectedMonster.getFacePath());
 			} else if (battleManager.getBattleState().equals(BattleStateEnum.GAME_OVER)) {
 				screenFactory.show(ScreenEnum.GAME_OVER);
 			}

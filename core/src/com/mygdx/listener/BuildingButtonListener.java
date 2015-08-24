@@ -28,7 +28,8 @@ public class BuildingButtonListener extends ClickListener {
 		positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 		positionManager.setCurrentSubNodeName(buildingName);
 		screenFactory.show(ScreenEnum.BUILDING);
-		storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_SUB_NODE, buildingName);
+		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE, buildingName);
+		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BY_TIME, buildingName);
 		eventManager.triggerSpecialEvent(EventTypeEnum.DONT_GO_BUILDING, buildingName);
 	}
 

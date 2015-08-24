@@ -31,6 +31,7 @@ public class EventCheckManager {
 		switch (eventType) {
 			case MOVE_FIELD :
 			case MOVE_SUB_NODE :
+			case MOVE_SUB_NODE_BY_TIME :
 			case MOVE_NODE :
 			case BATTLE_CONTROL :
 			case SELECT_EVENT :
@@ -41,7 +42,7 @@ public class EventCheckManager {
 				return checkSelectComponent(nextStorySectionPacket, componentString);
 			default :
 				Gdx.app.log("EventCheckManager", "잘못된 EventCheckInfo오류");
-				return false;
+				return checkMatchWithString(nextStorySectionPacket, componentString);
 		}
 	}
 

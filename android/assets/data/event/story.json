@@ -5,8 +5,7 @@
         "eventNpc": "prologue",
         "eventNumber": "1"
       }
-    ],   
-
+    ],
     "nextSections": [
       {
         "nextSectionNumber": "102",
@@ -35,12 +34,12 @@
         "eventNumber": "4"
       }
     ],
-    "specialEvents" : [
-      	{
-      		"eventNpc" : "kadilla_story",
-      		"eventNumber" : "999"
-      	}
-      ],
+    "specialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "999"
+      }
+    ],
     "nextSections": [
       {
         "nextSectionNumber": "103",
@@ -73,7 +72,7 @@
       {
         "eventNpc": "prologue",
         "eventNumber": "7"
-      },      
+      },
       {
         "eventNpc": "prologue",
         "eventNumber": "29"
@@ -236,7 +235,6 @@
         "eventType": "select_component",
         "targetComponent": "레드로즈 성"
       }
-      
     ]
   },
   "114": {
@@ -278,15 +276,15 @@
       }
     ]
   },
-  "202":{
+  "202": {
     "sequencialEvents": [
       {
         "eventNpc": "kadilla_castle",
         "eventNumber": "2"
       },
       {
-        "eventNpc" : "kadilla_castle",
-        "eventNumber" : "4"
+        "eventNpc": "kadilla_castle",
+        "eventNumber": "4"
       }
     ]
   },
@@ -305,7 +303,7 @@
       }
     ]
   },
-  "302":{
+  "302": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -319,7 +317,8 @@
         "targetComponent": "cobweb_cathedral"
       }
     ]
-  },"303":{
+  },
+  "303": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -334,7 +333,7 @@
       }
     ]
   },
-  "304":{
+  "304": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -349,7 +348,7 @@
       }
     ]
   },
-  "305":{
+  "305": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -368,7 +367,7 @@
       }
     ]
   },
-  "306":{
+  "306": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -379,10 +378,11 @@
       {
         "nextSectionNumber": "307",
         "eventType": "move_node",
-        "targetComponent": "crystallized_valley"
+        "targetComponent": "crystallized_valley_south"
       }
     ]
-  }, "307":{
+  },
+  "307": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -393,13 +393,20 @@
       {
         "nextSectionNumber": "308",
         "eventType": "move_sub_node_by_time",
-        "targetComponent" : "crystallized_valley_room_01",
-        "targetTime" : "6to18"
+        "targetComponent": "crystallized_valley_room_01",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 18
+        }
       },
       {
         "nextSectionNumber": "309",
         "eventType": "move_sub_node_by_time",
-        "targetComponent" : "crystallized_valley_room_01"
+        "targetComponent": "crystallized_valley_room_01",
+        "targetTime": {
+          "startTime": 18,
+          "endTime": 6
+        }
       }
     ]
   }

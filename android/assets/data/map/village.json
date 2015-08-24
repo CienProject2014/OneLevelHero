@@ -102,5 +102,11 @@
     "villageDirection": "up_down",
     "sceneName": "vaical_castle_scene",
     "building": {}
+  },
+  "southcape":{
+  	"villageName" : "사우스케이프",
+  	"villageDirection" : "left_right",
+  	"sceneName" : "southcape_scene",
+  	"building": {}
   }
 }

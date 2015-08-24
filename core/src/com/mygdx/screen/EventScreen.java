@@ -33,7 +33,7 @@ public class EventScreen extends BaseScreen {
 
 	@Override
 	public void show() {
-		eventStage = eventManager.getSceneEvent();
+		eventStage = eventManager.getNpcEvent();
 		setMultiprocessor();
 	}
 

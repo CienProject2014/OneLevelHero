@@ -6,7 +6,7 @@ public class StorySectionPacket {
 	private int nextSectionNumber;
 	private EventTypeEnum eventType;
 	private String targetComponent;
-	private String targetTime;
+	private TargetTime targetTime;
 
 	public int getNextSectionNumber() {
 		return nextSectionNumber;
@@ -24,20 +24,20 @@ public class StorySectionPacket {
 		this.targetComponent = targetComponent;
 	}
 
-	public String getTargetTime() {
-		return targetTime;
-	}
-
-	public void setTargetTime(String targetTime) {
-		this.targetTime = targetTime;
-	}
-
 	public EventTypeEnum getEventType() {
 		return eventType;
 	}
 
 	public void setEventType(EventTypeEnum eventType) {
 		this.eventType = eventType;
+	}
+
+	public TargetTime getTargetTime() {
+		return targetTime;
+	}
+
+	public void setTargetTime(TargetTime targetTime) {
+		this.targetTime = targetTime;
 	}
 
 }
