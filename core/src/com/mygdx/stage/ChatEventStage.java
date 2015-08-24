@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.UnitAssets;
@@ -46,7 +47,9 @@ public class ChatEventStage extends BaseOneLevelStage {
 	private UnitAssets unitAssets;
 	@Autowired
 	private TextureManager textureManager;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("EventStage");
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
 	private Label scriptTitle = new Label("", StaticAssets.skin);
 	private Label scriptContent = new Label("", StaticAssets.skin);
 	private Image characterImage;
@@ -57,6 +60,7 @@ public class ChatEventStage extends BaseOneLevelStage {
 
 	public Stage makeStage(final Iterator<EventScene> eventSceneIterator) {
 		super.makeStage();
+		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
 		if (eventSceneIterator.hasNext()) {
 			setScene(eventSceneIterator.next());
 			this.addListener(new InputListener() {
@@ -123,8 +127,8 @@ public class ChatEventStage extends BaseOneLevelStage {
 
 	private void makeChatTable(EventScene eventScene) {
 		backgroundImage = new Image(textureManager.getBackgroundTexture(eventScene.getBackgroundPath()));
-		characterImage = new Image(textureManager.getBustTexture(eventScene.getCharacterPath(),
-				eventScene.getFaceNumber()));
+		characterImage = new Image(
+				textureManager.getBustTexture(eventScene.getCharacterPath(), eventScene.getFaceNumber()));
 
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();

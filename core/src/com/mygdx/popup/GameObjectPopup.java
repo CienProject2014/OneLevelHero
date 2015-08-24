@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.PopupTypeEnum;
 import com.mygdx.factory.ListenerFactory;
@@ -24,7 +25,12 @@ public class GameObjectPopup extends Dialog {
 	private ImageButton okayButton, closeButton;
 	private Label questionLabel;
 	private PopupTypeEnum popupType;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameObjectPopup");
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
+
+	public void setConstantsAssets(ConstantsAssets constantsAssets) {
+		this.constantsAssets = constantsAssets;
+	}
 
 	public GameObjectPopup() {
 		this("", StaticAssets.skin);
@@ -51,6 +57,7 @@ public class GameObjectPopup extends Dialog {
 	}
 
 	public void initialize(String labelText) {
+		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
 		questionLabel = new Label(labelText, StaticAssets.skin);
 		questionLabel.setAlignment(Align.center);
 		questionLabel.setBounds(uiConstantsMap.get("questionLabelX"), uiConstantsMap.get("questionLabelY"),

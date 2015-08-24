@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.factory.ListenerFactory;
@@ -25,7 +26,12 @@ public class UnEquipPopup extends Dialog {
 	private ListenerFactory listenerFactory;
 	private Hero currentSelectedHero;
 	private int index;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameObjectPopup");
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
+
+	public void setConstantsAssets(ConstantsAssets constantsAssets) {
+		this.constantsAssets = constantsAssets;
+	}
 
 	public int getIndex() {
 		return index;
@@ -76,6 +82,7 @@ public class UnEquipPopup extends Dialog {
 	}
 
 	public void initialize() {
+		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
 		setQuestionLabel();
 		setButton(atlasUiAssets, uiComponentAssets, index);
 
@@ -95,21 +102,21 @@ public class UnEquipPopup extends Dialog {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				switch (index) {
-					case 0 :
-						currentSelectedHero.unEquipRightHandGrip();
-						break;
-					case 1 :
-						currentSelectedHero.unEquipLeftHandGrip();
-						break;
-					case 2 :
-						currentSelectedHero.unEquipClothes();
-						break;
-					case 3 :
-						currentSelectedHero.unEquipAccessory();
-						break;
-					default :
-						Gdx.app.log("UnEquipPopup", "인덱스 정보 에러");
-						break;
+				case 0:
+					currentSelectedHero.unEquipRightHandGrip();
+					break;
+				case 1:
+					currentSelectedHero.unEquipLeftHandGrip();
+					break;
+				case 2:
+					currentSelectedHero.unEquipClothes();
+					break;
+				case 3:
+					currentSelectedHero.unEquipAccessory();
+					break;
+				default:
+					Gdx.app.log("UnEquipPopup", "인덱스 정보 에러");
+					break;
 				}
 				thisDialog.setVisible(false);
 			}
@@ -125,6 +132,7 @@ public class UnEquipPopup extends Dialog {
 		setSize(uiConstantsMap.get("popupWidth"), uiConstantsMap.get("popupHeight"));
 
 	}
+
 	private void setQuestionLabel() {
 		Label questionLabel = new Label("", StaticAssets.skin);
 		questionLabel.setText("장비를 장착해제 하시겠습니까?");

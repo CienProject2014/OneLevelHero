@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -31,7 +31,9 @@ public class EncounterStage extends BaseOneLevelStage {
 	private FieldManager fieldManager;
 	@Autowired
 	private TextureManager textureManager;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("MonsterStage");
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
 	private Monster monster;
 	private TextButton fightButton;
 	private TextButton fleeButton;
@@ -43,6 +45,7 @@ public class EncounterStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
+		uiConstantsMap = constantsAssets.getUiConstants("MonsterStage");
 		monster = battleManager.getSelectedMonster();
 		setMonsterTable();
 
@@ -86,10 +89,11 @@ public class EncounterStage extends BaseOneLevelStage {
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devilcastle_01")));
 		} else {
 			Gdx.app.log("EncounterStage", "fieldType - " + fieldManager.getFieldType());
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
-					.getFieldType().toString())));
+			return new TextureRegionDrawable(
+					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
 		}
 	}
+
 	private void addListener() {
 		fightButton.addListener(new InputListener() {
 			@Override

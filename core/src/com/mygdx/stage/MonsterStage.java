@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.EventTypeEnum;
@@ -28,7 +28,9 @@ public class MonsterStage extends BaseOneLevelStage {
 	private FieldManager fieldManager;
 	@Autowired
 	private BattleManager battleManager;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("MonsterStage");
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
 	private Monster monster;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
@@ -48,6 +50,7 @@ public class MonsterStage extends BaseOneLevelStage {
 	@Override
 	public Stage makeStage() {
 		super.makeStage();
+		uiConstantsMap = constantsAssets.getUiConstants("MonsterStage");
 		monster = battleManager.getSelectedMonster();
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 			monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin(), true);
@@ -124,10 +127,11 @@ public class MonsterStage extends BaseOneLevelStage {
 			String backgroundPath = eventManager.getCurrentElementEvent().getEventComponent().get(1);
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
 		} else {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
-					.getFieldType().toString())));
+			return new TextureRegionDrawable(
+					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
 		}
 	}
+
 	public HashMap<String, Float> getUiConstantsMap() {
 		return uiConstantsMap;
 	}

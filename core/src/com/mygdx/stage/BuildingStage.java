@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
@@ -49,6 +50,8 @@ public class BuildingStage extends BaseOverlapStage {
 	private AssetsManager assetsManager;
 	@Autowired
 	private TextureManager textureManager;
+	@Autowired
+	private ConstantsAssets constantsAssets;
 
 	private List<CompositeItem> npcButtonList;
 	private List<CompositeItem> gameObjectList;
@@ -167,6 +170,7 @@ public class BuildingStage extends BaseOverlapStage {
 							gameObjectPopup.setListenerFactory(listenerFactory);
 							gameObjectPopup.setGameObject(gameObject);
 							gameObjectPopup.initialize(objectName);
+							gameObjectPopup.setConstantsAssets(constantsAssets);
 							addActor(gameObjectPopup);
 							gameObjectPopup.setVisible(true);
 						}

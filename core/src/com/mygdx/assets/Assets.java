@@ -75,5 +75,6 @@ public class Assets {
 		for (Entry<String, StringFile> entry : jsonFileMap.entrySet())
 			jsonStringMap.put(entry.getKey(), entry.getValue().loadFile());
 		return jsonStringMap;
+
 	}
 }

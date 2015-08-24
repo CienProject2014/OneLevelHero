@@ -31,8 +31,5 @@
   },
   "event_music_list": {
     "filePath": "data/sound/event_music_list.json"
-  },
-  "ui_constants": {
-    "filePath": "data/constants/ui_constants.json"
   }
 }

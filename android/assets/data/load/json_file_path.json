@@ -61,5 +61,8 @@
   },
   "unusual_condition_json":{
   	"filePath" : "data/event/unusual_condition.json"
+  },
+  "ui_constants": {
+    "filePath": "data/constants/ui_constants.json"
   }
 }

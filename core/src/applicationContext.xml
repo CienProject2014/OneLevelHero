@@ -168,8 +168,6 @@
 	<bean id="runAwayListener" class="com.mygdx.listener.RunAwayListener" scope="prototype"/>
 	<bean id="closeButtonListener" class="com.mygdx.listener.CloseButtonListener" scope="prototype"/>
 	
-	<bean id="gridHitBox" class="com.mygdx.ui.GridHitbox" scope="prototype"/>
-	
 	<bean id="atlasUiFile" class="com.mygdx.model.jsonModel.AtlasUiFile"/>
 	<bean id="musicFile" class="com.mygdx.model.jsonModel.MusicFile"/>
 </beans>
