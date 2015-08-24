@@ -323,6 +323,10 @@ bust_lilis_succubus_01: {
 	class: java.lang.String,
 	value: texture/character/bust_lilis_succubus_01.png/
 },
+bg_prog_team_01: {
+	class: java.lang.String,
+	value: texture/background/bg_prog_team_01.png/
+},
 monster_troll: {
 	class: java.lang.String,
 	value: texture/monster/monster_troll.png/
@@ -642,10 +646,6 @@ bust_yongsa_02: {
 battle_kentaurous_spear_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_kentaurous_spear_big.png/
-},
-prog_team1: {
-	class: java.lang.String,
-	value: texture/background/prog_team1.png/
 },
 bg_blackwood_03: {
 	class: java.lang.String,

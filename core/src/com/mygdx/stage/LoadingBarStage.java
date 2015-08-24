@@ -2,7 +2,6 @@ package com.mygdx.stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -82,12 +81,8 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		tableStack.add(frameTable);
 		tableStack.add(logoAndTextTable);
 
-		Gdx.app.log("debug", "StaticAssets Loading 전");
 		StaticAssets.loadAll();
-		Gdx.app.log("debug", "StaticAssets Loading 후");
-		Gdx.app.log("debug", "assets 로딩 전");
 		assets.initialize();
-		Gdx.app.log("debug", "assets 로딩 후");
 
 		return this;
 	}
