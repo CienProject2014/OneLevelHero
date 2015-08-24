@@ -36,6 +36,8 @@ public class DungeonStage extends BaseOverlapStage {
 	private CompositeItem btnTurn;
 	private CompositeItem[] btnRoad = new CompositeItem[3];
 
+	private DungeonMinimapStage dungeonMinimap;
+
 	// private Dungeon mapInfo;
 
 	// private int currentPos;
@@ -43,18 +45,18 @@ public class DungeonStage extends BaseOverlapStage {
 	private ArrayList<DungeonConnection> selectableForward, selectableBackward;
 
 	public void makeScene(String sceneName) {
-		assetsManager.initScene(dungeonManager.getMapInfo().getSceneName());
+		assetsManager.initScene(sceneName);
 		initSceneLoader(assetsManager.rm);
-		sceneLoader.loadScene(dungeonManager.getMapInfo().getSceneName());
+		sceneLoader.loadScene(sceneName);
 
 		cameraManager.stretchToDevice(this);
 		addActor(sceneLoader.getRoot());
 	}
 
 	public Stage makeStage() {
+
 		setMap();
 		makeScene(dungeonManager.getMapInfo().getSceneName());
-
 		// FIXME UI
 		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
 
@@ -89,16 +91,27 @@ public class DungeonStage extends BaseOverlapStage {
 
 			btnRoad[0].addListener(new TouchRoadListener(0));
 		} else if (doorNum == 2) {
-			btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_left");
-			btnRoad[1] = sceneLoader.getRoot().getCompositeById("go_right");
+			if (!dungeonManager.getCurrentHeading()) {
+				btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_left");
+				btnRoad[1] = sceneLoader.getRoot().getCompositeById("go_right");
+			} else {
+				btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_right");
+				btnRoad[1] = sceneLoader.getRoot().getCompositeById("go_left");
+			}
 
 			btnRoad[0].addListener(new TouchRoadListener(0));
 			btnRoad[1].addListener(new TouchRoadListener(1));
 
 		} else if (doorNum == 3) {
-			btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_left");
-			btnRoad[1] = sceneLoader.getRoot().getCompositeById("go_mid");
-			btnRoad[2] = sceneLoader.getRoot().getCompositeById("go_right");
+			if (!dungeonManager.getCurrentHeading()) {
+				btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_left");
+				btnRoad[1] = sceneLoader.getRoot().getCompositeById("go_mid");
+				btnRoad[2] = sceneLoader.getRoot().getCompositeById("go_right");
+			} else {
+				btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_right");
+				btnRoad[1] = sceneLoader.getRoot().getCompositeById("go_mid");
+				btnRoad[2] = sceneLoader.getRoot().getCompositeById("go_left");
+			}
 
 			btnRoad[0].addListener(new TouchRoadListener(0));
 			btnRoad[1].addListener(new TouchRoadListener(1));
@@ -120,6 +133,7 @@ public class DungeonStage extends BaseOverlapStage {
 	}
 
 	private void update() {
+
 		selectableForward.clear();
 		selectableBackward.clear();
 
@@ -134,7 +148,8 @@ public class DungeonStage extends BaseOverlapStage {
 			}
 		}
 		// FIXME UI
-		for (int i = 0, n = (dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size(); i < n; i++) {
+		for (int i = 0, n = (dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward)
+				.size(); i < n; i++) {
 			Gdx.app.log("문 개수", String.valueOf(n));
 			btnRoad[i].setTouchable(i < n ? Touchable.enabled : Touchable.disabled);
 			btnRoad[i].setVisible(btnRoad[i].getTouchable() == Touchable.enabled);
@@ -162,13 +177,19 @@ public class DungeonStage extends BaseOverlapStage {
 	private void actionTurn() {
 		dungeonManager.changeCurrentHeading();
 
+		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
+
+		if (currentNode.chkFlag(DungeonNode.FLG_ENTRANCE)) {
+			dungeonManager.changeCurrentHeading();
+			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
+		}
+
 		update();
 	}
 
 	private void actionMove(int index) {
-		dungeonManager.setCurrentPos(dungeonManager.getMapInfo().nodes.indexOf((dungeonManager.getCurrentHeading()
-				? selectableBackward
-				: selectableForward).get(index)));
+		dungeonManager.setCurrentPos(dungeonManager.getMapInfo().nodes
+				.indexOf((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).get(index)));
 
 		if (!dungeonManager.getCurrentHeading())
 			dungeonManager.setCurrentPos(selectableForward.get(index).getTo());
@@ -181,9 +202,10 @@ public class DungeonStage extends BaseOverlapStage {
 
 		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
 
-		if (currentNode.chkFlag(DungeonNode.FLG_ENTRANCE))
+		if (currentNode.chkFlag(DungeonNode.FLG_ENTRANCE)) {
+			dungeonManager.changeCurrentHeading();
 			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-		else if (currentNode.chkFlag(DungeonNode.FLG_ENCOUNT)) {
+		} else if (currentNode.chkFlag(DungeonNode.FLG_ENCOUNT)) {
 			// screenFactory.show(ScreenEnum.ENCOUNTER);
 			dungeonEncounterManager.act();
 		}
