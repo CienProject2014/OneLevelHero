@@ -38,7 +38,6 @@ public class LoadingBarStage extends BaseOneLevelStage {
 	private final int loadingBarFinishOffset = 54;
 
 	private final String LOADING_MESSAGE = "게임에 필요한 리소스를 로딩하는 중입니다... ";
-	private final String FINISH_MESSAGE = "로딩 끝 화면을 클릭하세요 ";
 
 	public Stage makeStage() {
 		super.makeStage();
@@ -104,7 +103,6 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		loadingBg.invalidate();
 		if (loadingBg.getWidth() > loadingBarMaxWidth - loadingBarFinishOffset) {
 			loadingBg.setWidth(loadingBarMaxWidth);
-			textButton.setText(FINISH_MESSAGE);
 		}
 	}
 
