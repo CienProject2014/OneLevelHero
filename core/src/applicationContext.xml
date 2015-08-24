@@ -150,7 +150,7 @@
 		scope="prototype"/>
 	<bean id="statusStage" class="com.mygdx.stage.StatusStage" scope="prototype" />
 	<bean id="skillStage" class="com.mygdx.stage.SkillStage" scope="prototype"/>
-	<bean id="saveStage" class="com.mygdx.stage.SaveStage" scope="prototype"/>
+	<bean id="savePopupStage" class="com.mygdx.stage.SavePopupStage" scope="prototype"/>
 	<bean id="villageStage" class="com.mygdx.stage.VillageStage"
 		scope="prototype"/>
 	<bean id="dungeonMinimapStage" class="com.mygdx.stage.DungeonMinimapStage"

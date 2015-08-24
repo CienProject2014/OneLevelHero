@@ -28,7 +28,7 @@ import com.mygdx.stage.LoadStage;
 import com.mygdx.stage.LoadingBarStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
-import com.mygdx.stage.SaveStage;
+import com.mygdx.stage.SavePopupStage;
 import com.mygdx.stage.SelectComponentStage;
 import com.mygdx.stage.SelectEventStage;
 import com.mygdx.stage.SkillStage;
@@ -78,7 +78,7 @@ public class StageFactory {
 			case INVENTORY :
 				return context.getBean(InventoryStage.class).makeStage();
 			case SAVE :
-				return context.getBean(SaveStage.class).makeStage();
+				return context.getBean(SavePopupStage.class).makeStage();
 			case SELECT_EVENT :
 				return context.getBean(SelectEventStage.class).makeStage();
 			case SELECT_COMPONENT :

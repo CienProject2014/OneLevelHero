@@ -14,18 +14,17 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.mygdx.assets.Assets;
-import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.PositionInfo;
+import com.mygdx.currentState.SaveInfo;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.SaveVersion;
 
 public class SaveManager {
-	@Autowired
-	private CurrentInfo currentInfo;
 	@Autowired
 	private PartyInfo partyInfo;
 	@Autowired
@@ -44,11 +43,18 @@ public class SaveManager {
 	private BattleManager battleManager;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private SaveInfo saveInfo;
+	@Autowired
+	private TimeManager timeManager;
+	@Autowired
+	private PositionManager positionManager;
 
 	private Kryo kryo;
 
 	public SaveManager() {
 		kryo = new Kryo();
+		kryo.register(SaveInfo.class);
 		kryo.register(PartyInfo.class);
 		kryo.register(PositionInfo.class);
 		kryo.register(TimeInfo.class);
@@ -56,19 +62,40 @@ public class SaveManager {
 		kryo.register(EventInfo.class);
 	}
 
+	public void setSaveInfo() {
+		saveInfo.setGameTime(timeManager.getTimeInfo());
+		if (positionManager.getCurrentPositionType().equals(PositionEnum.NODE)) {
+			saveInfo.setSavePlace(positionManager.getCurrentNodeName());
+		} else {
+			saveInfo.setSavePlace(positionManager.getCurrentSubNodeName());
+		}
+		int storyNumber = storySectionInfo.getCurrentSectionNumber();
+		if (storyNumber > 100 && storyNumber < 200) {
+			saveInfo.setStoryName("프롤로그");
+		} else if (storyNumber > 200 && storyNumber < 300) {
+			saveInfo.setStoryName("카딜라 스토리");
+		} else if (storyNumber > 300 && storyNumber < 400) {
+			saveInfo.setStoryName("수정협곡 스토리");
+		} else if (storyNumber > 400 && storyNumber < 500) {
+			saveInfo.setStoryName("레드로즈 스토리");
+		} else if (storyNumber > 500 && storyNumber < 600) {
+			saveInfo.setStoryName("미라지포트 스토리");
+		}
+	}
+
 	public void setNewGame() {
-		loadFirstInfo();
+		loadNewGameInfo();
 		assets.initializeUnitInfo();
 		loadManager.loadNewGame();
 	}
 
-	public void saveFirstInfo() {
+	public void saveNewGameInfo() {
 		FileHandle handle;
-		handle = Gdx.files.local("save/first");
+		handle = Gdx.files.local("save/" + SaveVersion.NEW_GAME.toString() + ".json");
 		Output output;
 		try {
 
-			Gdx.app.log("save", handle.file().getParentFile().getAbsolutePath());
+			Gdx.app.log("SaveManager", "save - " + handle.file().getParentFile().getAbsolutePath());
 			if (!handle.file().getParentFile().exists()) {
 				handle.file().getParentFile().mkdirs();
 				handle.file().createNewFile();
@@ -92,8 +119,8 @@ public class SaveManager {
 		Gdx.app.log("SaveManager", "저장작업완료");
 	}
 
-	public void loadFirstInfo() {
-		FileHandle handle = Gdx.files.local("save/first");
+	public void loadNewGameInfo() {
+		FileHandle handle = Gdx.files.local("save/" + SaveVersion.NEW_GAME.toString() + ".json");
 		Input input;
 		try {
 			input = new Input(new FileInputStream(handle.file()));
@@ -111,18 +138,20 @@ public class SaveManager {
 	}
 
 	public void save() {
+		setSaveInfo();
 		FileHandle handle;
-		handle = Gdx.files.local("save/" + currentInfo.getSaveVersion().toString() + ".json");
+		handle = Gdx.files.local("save/" + saveInfo.getSaveVersion().toString() + ".json");
 		Output output;
 		try {
 
-			Gdx.app.log("save", handle.file().getParentFile().getAbsolutePath());
+			Gdx.app.log("SaveManager", "save - " + handle.file().getParentFile().getAbsolutePath());
 			if (!handle.file().getParentFile().exists()) {
 				handle.file().getParentFile().mkdirs();
 				handle.file().createNewFile();
 			}
 			Gdx.app.log("SaveManager", "저장작업완료" + handle.file().getAbsolutePath());
 			output = new Output(new FileOutputStream(handle.file()));
+			kryo.writeObject(output, saveInfo);
 			kryo.writeObject(output, partyInfo);
 			kryo.writeObject(output, positionInfo);
 			kryo.writeObject(output, timeInfo);
@@ -139,13 +168,22 @@ public class SaveManager {
 		}
 		Gdx.app.log("SaveManager", "저장작업완료");
 	}
+	public boolean isLoadable(SaveVersion saveVersion) {
+		FileHandle handle = Gdx.files.local("save/" + saveVersion.toString() + ".json");
+		if (handle.exists()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-	public void load() {
+	public void loadSaveVersion(SaveVersion saveVersion) {
 		assets.initializeUnitInfo();
-		FileHandle handle = Gdx.files.local("save/" + currentInfo.getSaveVersion().toString() + ".json");
+		FileHandle handle = Gdx.files.local("save/" + saveVersion.toString() + ".json");
 		Input input;
 		try {
 			input = new Input(new FileInputStream(handle.file()));
+			BeanUtils.copyProperties(kryo.readObject(input, SaveInfo.class), saveInfo);
 			BeanUtils.copyProperties(kryo.readObject(input, PartyInfo.class), partyInfo);
 			BeanUtils.copyProperties(kryo.readObject(input, PositionInfo.class), positionInfo);
 			BeanUtils.copyProperties(kryo.readObject(input, TimeInfo.class), timeInfo);
