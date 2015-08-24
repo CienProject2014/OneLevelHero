@@ -30,7 +30,7 @@ public class GoForwardFieldButtonListener extends ClickListener {
 		if (!fieldManager.isInField()) {
 			String node = fieldManager.getDestinationNode();
 			movingManager.goToNode(node);
-			storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_NODE, node);
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, node);
 		}
 	}
 }

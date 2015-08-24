@@ -122,6 +122,7 @@ public class EventManager {
 				return getCurrentNpcEvent();
 		}
 	}
+
 	public void doSpecialEvent(Event event) {
 		switch (event.getEventType()) {
 			case DONT_GO_BUILDING :
@@ -150,6 +151,7 @@ public class EventManager {
 			}
 		}
 	}
+
 	private void setCurrentSpecialEventInfo(EventPacket eventPacket) {
 		eventInfo.setCurrentSpecialEventInfo(eventPacket);
 	}
@@ -166,7 +168,7 @@ public class EventManager {
 		return eventInfo.getNpc(eventInfo.getCurrentNpcName());
 	}
 
-	public Stage getSceneEvent() {
+	public Stage getNpcEvent() {
 		Event currentEvent;
 		if (eventInfo.getCurrentEventElementType().equals(EventElementEnum.NPC)) {
 			currentEvent = getCurrentNpcEvent();

@@ -26,7 +26,7 @@ public class BackButtonListener extends ClickListener {
 	public void clicked(InputEvent event, float x, float y) {
 		if (!positionManager.isInWorldMap()) {
 			movingManager.goPreviousPosition();
-			storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_NODE, positionManager.getCurrentNodeName());
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, positionManager.getCurrentNodeName());
 		} else {
 			if (StatusScreen.isClickedWorldMap()) {
 				StatusScreen.setClickedWorldMap(false);
