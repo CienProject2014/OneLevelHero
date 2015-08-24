@@ -1443,42 +1443,42 @@
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_1",
+            "backgroundPath": "crystallized_valley_01",
             "script": "용사님, 여긴 길이 험하니 조심하세요."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "06",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_1",
+            "backgroundPath": "crystallized_valley_01",
             "script": "칠흑 같은 어둠이라고 들었지만, 이건 너무 심하잖아!"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_1",
+            "backgroundPath": "crystallized_valley_01",
             "script": "능선을 따라가면 밝은 곳이 나올 꺼에요."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_1",
+            "backgroundPath": "crystallized_valley_01",
             "script": "어떻게 그런 것들을 알고 있는 거야?"
           },
           {
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition": "left",
-            "backgroundPath": "crystallized_valley_1",
+            "backgroundPath": "crystallized_valley_01",
             "script": "예전에 와본 적이 있거든요."
           },
           {
             "characterPath": "yongsa",
             "faceNumber": "08",
             "speakerPosition": "right",
-            "backgroundPath": "crystallized_valley_1",
+            "backgroundPath": "crystallized_valley_01",
             "script": "흠…"
           }
         ]
