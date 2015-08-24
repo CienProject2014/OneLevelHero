@@ -19,11 +19,6 @@ public class SkillRunPopup extends Dialog {
 	private ListenerFactory listenerFactory;
 	private ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
-
-	public void setConstantsAssets(ConstantsAssets constantsAssets) {
-		this.constantsAssets = constantsAssets;
-	}
-
 	private Label questionLabel;
 	private ImageButton okayButton, closeButton;
 
@@ -76,5 +71,9 @@ public class SkillRunPopup extends Dialog {
 
 	public void setListenerFactory(ListenerFactory listenerFactory) {
 		this.listenerFactory = listenerFactory;
+	}
+
+	public void setConstantsAssets(ConstantsAssets constantsAssets) {
+		this.constantsAssets = constantsAssets;
 	}
 }

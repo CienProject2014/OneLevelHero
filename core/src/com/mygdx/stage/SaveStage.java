@@ -9,15 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.CurrentInfo;
-import com.mygdx.currentState.EventInfo;
-import com.mygdx.currentState.PartyInfo;
-import com.mygdx.currentState.PositionInfo;
-import com.mygdx.currentState.StorySectionInfo;
-import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.SaveVersion;
 import com.mygdx.manager.AssetsManager;
-import com.mygdx.manager.EventManager;
-import com.mygdx.manager.LoadNewManager;
 import com.mygdx.manager.SaveManager;
 import com.mygdx.screen.BuildingScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -28,21 +21,7 @@ public class SaveStage extends BaseOverlapStage {
 	@Autowired
 	private SaveManager saveManager;
 	@Autowired
-	private EventManager eventManager;
-	@Autowired
-	private LoadNewManager loadManager;
-	@Autowired
 	private CurrentInfo currentInfo;
-	@Autowired
-	private PartyInfo partyInfo;
-	@Autowired
-	private PositionInfo positionInfo;
-	@Autowired
-	private TimeInfo timeInfo;
-	@Autowired
-	private StorySectionInfo storySectionInfo;
-	@Autowired
-	private EventInfo eventInfo;
 
 	private static final String SCENE_NAME = "save_scene";
 	private Camera cam;

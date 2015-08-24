@@ -21,9 +21,10 @@ public class MusicManager {
 	private MusicAssets musicAssets;
 	@Autowired
 	private EventManager eventManager;
-
-	private MusicInfo musicInfo = new MusicInfo();
-	private SoundInfo soundInfo = new SoundInfo();
+	@Autowired
+	private MusicInfo musicInfo;
+	@Autowired
+	private SoundInfo soundInfo;
 
 	public enum MusicCondition {
 		WHENEVER, IF_IS_NOT_PLAYING;
@@ -54,41 +55,40 @@ public class MusicManager {
 		musicInfo.getMusic().stop();
 	}
 
-	public void setMusicAndPlay(Music music, float volume,
-			MusicCondition musicCondition) {
+	public void setMusicAndPlay(Music music, float volume, MusicCondition musicCondition) {
 		switch (musicCondition) {
-			case WHENEVER :
-				int delayTime = 2000;
-				if (checkCurrentMusicIsNotNull()) {
-					if (checkCurrentMusicIsPlaying()) {
-						if (checkIsSameWithCurrentMusic(music)) {
-							// Nothing happened
-						} else {
-							stopMusic();
-							Timer.schedule(new Task() {
-								@Override
-								public void run() {
-								}
-							}, delayTime);
-							setMusic(music);
-							setVolume(volume);
-							playMusic();
-						}
+		case WHENEVER:
+			int delayTime = 2000;
+			if (checkCurrentMusicIsNotNull()) {
+				if (checkCurrentMusicIsPlaying()) {
+					if (checkIsSameWithCurrentMusic(music)) {
+						// Nothing happened
+					} else {
+						stopMusic();
+						Timer.schedule(new Task() {
+							@Override
+							public void run() {
+							}
+						}, delayTime);
+						setMusic(music);
+						setVolume(volume);
+						playMusic();
 					}
 				}
-				break;
-			case IF_IS_NOT_PLAYING :
-				if (musicInfo.getMusic() != null) {
-					if (musicInfo.getMusic().isPlaying())
-						return;
-				} else {
-					setMusic(music);
-					setVolume(volume);
-					playMusic();
-				}
-				break;
-			default :
-				Gdx.app.error("MusicManager", "incorrect musicCondition");
+			}
+			break;
+		case IF_IS_NOT_PLAYING:
+			if (musicInfo.getMusic() != null) {
+				if (musicInfo.getMusic().isPlaying())
+					return;
+			} else {
+				setMusic(music);
+				setVolume(volume);
+				playMusic();
+			}
+			break;
+		default:
+			Gdx.app.error("MusicManager", "incorrect musicCondition");
 		}
 	}
 
@@ -136,8 +136,7 @@ public class MusicManager {
 
 	public void setEventMusicAndPlay() {
 		EventPacket eventPacket = eventManager.getCurrentNpcEventPacket();
-		String code = eventPacket.getEventNpc() + "_"
-				+ eventPacket.getEventNumber();
+		String code = eventPacket.getEventNpc() + "_" + eventPacket.getEventNumber();
 		Music music = musicAssets.getEventMusic(code);
 		setMusicAndPlay(music);
 	}

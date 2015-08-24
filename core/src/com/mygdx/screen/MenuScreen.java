@@ -8,12 +8,15 @@ import com.mygdx.assets.MusicAssets;
 import com.mygdx.currentState.SoundInfo;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.MusicManager.MusicCondition;
+import com.mygdx.manager.SaveManager;
 
 public class MenuScreen extends BaseScreen {
 	@Autowired
 	private MusicAssets musicAssets;
 	@Autowired
 	private SoundInfo soundInfo;
+	@Autowired
+	private SaveManager saveManager;
 	private Stage stage;
 
 	public MenuScreen() {
@@ -31,6 +34,7 @@ public class MenuScreen extends BaseScreen {
 		musicManager.setMusicAndPlay(musicAssets.getMusic("opening"), soundInfo.getMusicVolume(),
 				MusicCondition.IF_IS_NOT_PLAYING);
 		stage = stageFactory.makeStage(StageEnum.MENU);
+		saveManager.saveFirstInfo();
 		Gdx.input.setInputProcessor(stage);
 	}
 }

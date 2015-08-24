@@ -16,29 +16,33 @@ import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.TextureManager;
+import com.mygdx.popup.SoundPopup;
 
 public class MenuStage extends BaseOneLevelStage {
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
-	@Autowired
 	private TextureManager textureManager;
+	@Autowired
+	private ListenerFactory listenerFactory;
+	@Autowired
+	private MusicManager musicManager;
 
 	@Autowired
 	private ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
-
+	private SoundPopup soundPopup;
 	private Table buttonTable;
 
 	public Stage makeStage() {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("MenuStage");
 		buttonTable = new Table();
-
+		soundPopup = new SoundPopup();
 		ImageButton startButton;
 		ImageButton settingButton;
 		ImageButton albumButton;
@@ -67,7 +71,13 @@ public class MenuStage extends BaseOneLevelStage {
 
 		settingButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
-				screenFactory.show(ScreenEnum.OPTION);
+				soundPopup.setAtlasUiAssets(atlasUiAssets);
+				soundPopup.setListenerFactory(listenerFactory);
+				soundPopup.setConstantsAssets(constantsAssets);
+				soundPopup.setMusicManager(musicManager);
+				soundPopup.initialize();
+				addActor(soundPopup);
+				soundPopup.setVisible(true);
 			}
 		});
 

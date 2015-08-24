@@ -15,7 +15,6 @@ public class BattleScreen extends BaseScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
 		setInputProcessor();
 		monsterStage.draw();
 		characterUiStage.draw();
@@ -45,6 +44,7 @@ public class BattleScreen extends BaseScreen {
 		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
 		battleStage = stageFactory.makeStage(StageEnum.BATTLE);
 		skillStage = stageFactory.makeStage(StageEnum.SKILL);
+		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		setInputProcessor();
 		// musicManager.setBattleMusicAndPlay();
 	}
@@ -60,6 +60,9 @@ public class BattleScreen extends BaseScreen {
 			multiplexer.addProcessor(2, monsterStage);
 			multiplexer.addProcessor(3, battleStage);
 			multiplexer.addProcessor(4, skillStage);
+		}
+		if (showLoadStage) {
+			multiplexer.addProcessor(0, loadPopupStage);
 		}
 		Gdx.input.setInputProcessor(multiplexer);
 	}

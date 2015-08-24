@@ -42,8 +42,6 @@ public class SaveManager {
 	private Assets assets;
 	@Autowired
 	private BattleManager battleManager;
-	@Autowired
-	private MovingManager movingManager;
 
 	private Kryo kryo;
 

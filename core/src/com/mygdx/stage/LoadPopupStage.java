@@ -14,7 +14,7 @@ import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.SaveManager;
-import com.mygdx.screen.LoadScreen;
+import com.mygdx.screen.BaseScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
@@ -65,7 +65,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				LoadScreen.isPopupTouched = false;
+				BaseScreen.showLoadStage = false;
 			}
 		});
 		save01.addListener(new InputListener() {
@@ -77,7 +77,6 @@ public class LoadPopupStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE1);
 				saveManager.load();
-				LoadScreen.isPopupTouched = false;
 				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
 				movingManager.goCurrentNode(nodeType);
 			}
@@ -91,7 +90,6 @@ public class LoadPopupStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE2);
 				saveManager.load();
-				LoadScreen.isPopupTouched = false;
 				movingManager.goCurrentPosition();
 			}
 		});
@@ -104,7 +102,6 @@ public class LoadPopupStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE3);
 				saveManager.load();
-				LoadScreen.isPopupTouched = false;
 				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
 				movingManager.goCurrentNode(nodeType);
 			}
@@ -116,7 +113,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				LoadScreen.isPopupTouched = false;
+				BaseScreen.showLoadStage = false;
 			}
 		});
 	}

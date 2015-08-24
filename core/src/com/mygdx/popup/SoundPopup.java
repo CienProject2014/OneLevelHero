@@ -1,219 +1,127 @@
 package com.mygdx.popup;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.HashMap;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider.SliderStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.currentState.SoundInfo;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.HidingClickListener;
 import com.mygdx.manager.MusicManager;
-import com.mygdx.manager.VolumeManager;
 
 public class SoundPopup extends Dialog {
-	@Autowired
-	private AtlasUiAssets atlasUiAssets;
-	@Autowired
-	private UiComponentAssets uiComponentAssets;
-	@Autowired
-	private MusicManager musicManager;
-	@Autowired
-	private SoundInfo soundInfo;
-	private Stage scenestage;
 
-	public SoundPopup(String title, Stage stage) {
-		super(title, StaticAssets.skin);
-		scenestage = stage;
+	private Drawable background;
+	private Drawable button;
+	private HashMap<String, Float> uiConstantsMap;
+	private ConstantsAssets constantsAssets;
+	private ListenerFactory listenerFactory;
+	private AtlasUiAssets atlasUiAssets;
+	private ImageButton okayButton, closeButton;
+	private ImageButton soundOn, bgmOn;
+	private MusicManager musicManager;
+	private Sound sound;
+
+	public SoundPopup(String title, Skin skin) {
+		super(title, skin);
 	}
 
-	private void initialize() {
-		float width = 0.6f;
-		float height = 0.5f;
-		float centerx = 0.5f - width / 2;
-		float centery = 0.5f - height / 2;
-		getButtonTable();
-		padTop(60); // set padding on top of the dialog title
-		getContentTable().defaults(); // set buttons height
-		setResizable(false);
+	public SoundPopup() {
+		this("", StaticAssets.skin);
+	}
 
-		TextButtonStyle style = new TextButtonStyle(
-				atlasUiAssets.getAtlasUiFile("menu_button_up"),
-				atlasUiAssets.getAtlasUiFile("menu_button_down"),
-				atlasUiAssets.getAtlasUiFile("menu_button_toggle"),
-				uiComponentAssets.getFont());
-
-		text("배경음\n효과음");
-
-		setWidth((int) (width * StaticAssets.windowWidth)); // 가로 크기 세팅
-		setHeight((int) (height * StaticAssets.windowHeight)); // 세로 크기 세팅
-
-		setPosition((int) (centerx * StaticAssets.windowWidth),
-				(int) (centery * StaticAssets.windowHeight));
-
-		setMovable(true); // 드래그로 이동가능
-
-		// button("HelloWorld", new InputListener());
-		// 다이얼로그 구현
-		// 다이얼로그조절
-
-		final Slider volume = new Slider(0f, 100f, 1f, false,
-				uiComponentAssets.getSkin());
-		volume.setValue(soundInfo.getMusicVolume() * 100);
-		String volumeLabel = String.valueOf(soundInfo.getMusicVolume() * 100);
-		final Label volumeValue = new Label(volumeLabel,
-				uiComponentAssets.getSkin());
-		Table table = new Table();
-		final Slider pan = new Slider(-1f, 1f, 0.1f, false,
-				uiComponentAssets.getSkin());
-		pan.setValue(0);
-		final Label panValue = new Label("0.0", uiComponentAssets.getSkin());
-
-		table.add(volume);
-		table.add(volumeValue);
-		table.row();
-
-		table.add(pan);
-		table.add(panValue);
-
-		// table.setFillParent(true);
-		table.top();
+	public void initialize() {
+		getContentTable().clear();
+		getButtonTable().clear();
+		makeButton();
+		SliderStyle sliderStyle = new SliderStyle(background, button);
+		final Slider volume = new Slider(0f, 100f, 1f, false, sliderStyle);
+		volume.setValue(musicManager.getMusic().getVolume() * 100);
+		final Slider bgm = new Slider(0f, 100f, 1f, false, sliderStyle);
+		bgm.setValue(50);
 
 		volume.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				// sound.setVolume(soundId, volume.getValue());
-				VolumeManager.musicVolume = volume.getValue() / 100;
-				volumeValue.setText("" + soundInfo.getMusicVolume() * 100);
-				musicManager.getMusic().setVolume(soundInfo.getMusicVolume());
+				musicManager.getMusic().setVolume(volume.getValue() / 100);
 			}
 		});
-		pan.addListener(new ChangeListener() {
+		bgm.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				panValue.setText("" + pan.getValue());
+				// VolumeManager.bgmVolume = bgm.getValue() / 100;
+				// sound.setVolume(soundId, VolumeManager.bgmVolume);
 			}
 		});
 
-		getContentTable().add(table);
-		button("완료", "remove", style);
+		closeButton.addListener(new HidingClickListener(this));
+		okayButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				musicManager.setVolume(volume.getValue() / 100);
+			}
+		});
+		getContentTable().top();
+		getContentTable().align(Align.center);
+		getContentTable().add(volume).width(460).height(6).padLeft(190);
+		getContentTable().add(soundOn).padLeft(25);
+		getContentTable().row();
+		getContentTable().add(bgm).width(460).height(6).padLeft(190);
+		getContentTable().add(bgmOn).padLeft(25);
+		getButtonTable().bottom();
+		getButtonTable().add(okayButton).height(uiConstantsMap.get("buttonHeight"))
+				.padBottom(uiConstantsMap.get("buttonPadBottom"));
+		getButtonTable().add(closeButton).padLeft(uiConstantsMap.get("closeButtonPadLeft")).height(90)
+				.padBottom(uiConstantsMap.get("buttonPadBottom"));
+		setBackground(atlasUiAssets.getAtlasUiFile("popupui_sound_base"));
+		setCenterPosition(StaticAssets.BASE_WINDOW_WIDTH / 2f, StaticAssets.BASE_WINDOW_HEIGHT / 2f);
+		setSize(860, 480);
+		setModal(false);
+		setResizable(false);
+		setVisible(false);
 	}
 
-	@Override
-	public float getPrefWidth() {
-		return 480f;
-	}
-
-	@Override
-	public float getPrefHeight() {
-		return 240f;
-	}
-
-	@Override
-	public Table getContentTable() {
-		return super.getContentTable();
-	}
-
-	@Override
-	public Table getButtonTable() {
-		return super.getButtonTable();
-	}
-
-	@Override
-	public Dialog text(String text) {
-		super.text(new Label(text, uiComponentAssets.getSkin()));
-		return this;
-	}
-
-	@Override
-	public Dialog text(String text, LabelStyle labelStyle) {
-		return super.text(text, labelStyle);
-	}
-
-	@Override
-	public Dialog text(Label label) {
-		return super.text(label);
-	}
-
-	@Override
-	public Dialog button(String text) {
-		return super.button(text);
-	}
-
-	@Override
-	public Dialog button(String text, Object object) {
-		return super.button(text, object);
-	}
-
-	@Override
-	public Dialog button(String text, Object object,
-			TextButtonStyle buttonStyle) {
-		return super.button(text, object, buttonStyle);
-	}
-
-	@Override
-	public Dialog button(Button button) {
-		return super.button(button);
-	}
-
-	@Override
-	public Dialog button(Button button, Object object) {
-		return super.button(button, object);
-	}
-
-	@Override
-	public Dialog show(Stage stage) {
-		return super.show(stage);
-	}
-
-	@Override
-	public void hide() {
-		remove();
-	}
-
-	@Override
-	public void setObject(Actor actor, Object object) {
-		super.setObject(actor, object);
-	}
-
-	@Override
-	public Dialog key(int keycode, Object object) {
-		return super.key(keycode, object);
-	}
-
-	@Override
-	protected void result(Object object) {
-		if (object.equals("remove"))
-			remove();
-	}
-
-	@Override
-	public void cancel() {
-		super.cancel();
-	}
-
-	public AtlasUiAssets getAtlasUiAssets() {
-		return atlasUiAssets;
+	private void makeButton() {
+		uiConstantsMap = constantsAssets.getUiConstants("GameObjectPopup");
+		background = (Drawable) new TextureRegionDrawable(atlasUiAssets.getAtlasUiFile("popupui_sound_bar"));
+		button = (Drawable) new TextureRegionDrawable(atlasUiAssets.getAtlasUiFile("popupui_sound_button"));
+		okayButton = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_button_accept"),
+				atlasUiAssets.getAtlasUiFile("popupui_acbutton_accept"));
+		closeButton = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_button_cancel"),
+				atlasUiAssets.getAtlasUiFile("popupui_acbutton_cancel"));
+		soundOn = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_sound_on"),
+				atlasUiAssets.getAtlasUiFile("popupui_sound_off"));
+		bgmOn = new ImageButton(atlasUiAssets.getAtlasUiFile("popupui_sound_acon"),
+				atlasUiAssets.getAtlasUiFile("popupui_sound_acoff"));
 	}
 
 	public void setAtlasUiAssets(AtlasUiAssets atlasUiAssets) {
 		this.atlasUiAssets = atlasUiAssets;
 	}
 
-	public UiComponentAssets getUiComponentAssets() {
-		return uiComponentAssets;
+	public ListenerFactory getListenerFactory() {
+		return listenerFactory;
 	}
 
-	public void setUiComponentAssets(UiComponentAssets uiComponentAssets) {
-		this.uiComponentAssets = uiComponentAssets;
+	public void setListenerFactory(ListenerFactory listenerFactory) {
+		this.listenerFactory = listenerFactory;
+	}
+
+	public void setConstantsAssets(ConstantsAssets constantsAssets) {
+		this.constantsAssets = constantsAssets;
 	}
 
 	public MusicManager getMusicManager() {
@@ -224,11 +132,4 @@ public class SoundPopup extends Dialog {
 		this.musicManager = musicManager;
 	}
 
-	public SoundInfo getSoundInfo() {
-		return soundInfo;
-	}
-
-	public void setSoundInfo(SoundInfo soundInfo) {
-		this.soundInfo = soundInfo;
-	}
 }

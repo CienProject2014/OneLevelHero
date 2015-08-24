@@ -7,14 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.manager.EventManager;
-import com.mygdx.manager.LoadNewManager;
-import com.mygdx.manager.TextureManager;
-import com.mygdx.screen.LoadScreen;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.SaveManager;
 
 public class LoadStage extends BaseOneLevelStage {
 	@Autowired
@@ -22,16 +19,12 @@ public class LoadStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
-	private LoadNewManager loadManager;
+	private SaveManager saveManager;
+	@Autowired
+	private ListenerFactory listenerFactory;
 	private TextButton loadButton;
 	private TextButton newStartButton;
 	private TextButton backButton;
-	@Autowired
-	private EventManager eventManager;
-	@Autowired
-	private AtlasUiAssets atlasUiAssets;
-	@Autowired
-	private TextureManager textureManager;
 
 	public Stage makeStage() {
 		super.makeStage();
@@ -50,18 +43,7 @@ public class LoadStage extends BaseOneLevelStage {
 				screenFactory.show(ScreenEnum.MENU);
 			}
 		});
-		loadButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-
-				LoadScreen.isPopupTouched = true;
-			}
-		});
+		loadButton.addListener(listenerFactory.getLoadListener());
 		newStartButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -70,8 +52,7 @@ public class LoadStage extends BaseOneLevelStage {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				eventManager.setCurrentEventNpc("prologue");
-				loadManager.loadNewGame();
+				saveManager.setNewGame();
 			}
 		});
 
