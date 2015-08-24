@@ -13,7 +13,7 @@ public class AttackButtonListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_CONTROL,
+		storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_CONTROL,
 				"normal_attack");
 	}
 }

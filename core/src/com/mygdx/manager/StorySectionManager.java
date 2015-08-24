@@ -75,7 +75,7 @@ public class StorySectionManager {
 		}
 	}
 
-	public void triggerSectionEvent(EventTypeEnum eventType, String componentString) {
+	public void triggerNextSectionEvent(EventTypeEnum eventType, String componentString) {
 		if (getNextSections() != null) {
 			for (StorySectionPacket nextStorySectionPacket : getNextSections()) {
 				if (eventType.equals(nextStorySectionPacket.getEventType())) {

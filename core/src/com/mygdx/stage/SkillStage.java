@@ -95,7 +95,7 @@ public class SkillStage extends BaseOverlapStage {
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					setCompositeItemVisibilty(useButtonList.get(index), DEFAULT_VISIBILTY);
 					battleManager.setCurrentSelectedSkill(skillInfo.get(index));
-					storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_CONTROL, "skill_attack");
+					storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_CONTROL, "skill_attack");
 					Skill currentSelectedSkill = battleManager.getCurrentSelectedSkill();
 					if (currentSelectedSkill.getHitboxSize() == 0) {
 						gridHitbox.setHitboxCenter(currentSelectedSkill.getHitboxCenter());

@@ -71,7 +71,8 @@
     "nodeType": "village",
     "nodeConnection": {
       "retreat_stone": {
-        "arrowName": "3to20"
+        "arrowName": "3to20",
+        "fieldList" : []
       },
       "kadilla_castle": {
         "arrowName": "3to10",
