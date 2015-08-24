@@ -75,11 +75,11 @@ public class Building {
 		this.isOverlapScene = isOverlapScene;
 	}
 
-	public TargetTime getOpenTime() {
+	public TargetTime getTargetTime() {
 		return targetTime;
 	}
 
-	public void setOpenTime(TargetTime openTime) {
-		this.targetTime = openTime;
+	public void setTargetTime(TargetTime targetTime) {
+		this.targetTime = targetTime;
 	}
 }

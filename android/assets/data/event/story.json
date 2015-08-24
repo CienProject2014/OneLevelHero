@@ -34,12 +34,6 @@
         "eventNumber": "4"
       }
     ],
-    "specialEvents": [
-      {
-        "eventNpc": "kadilla_story",
-        "eventNumber": "999"
-      }
-    ],
     "nextSections": [
       {
         "nextSectionNumber": "103",
@@ -410,7 +404,7 @@
       }
     ]
   },
-  "308":{
+  "308": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -425,7 +419,7 @@
       }
     ]
   },
-  "309":{
+  "309": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -437,7 +431,7 @@
       }
     ]
   },
-  "310":{
+  "310": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -452,7 +446,7 @@
       }
     ]
   },
-  "311":{
+  "311": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -475,7 +469,7 @@
       }
     ]
   },
-  "312":{
+  "312": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",
@@ -494,7 +488,7 @@
       }
     ]
   },
-  "313":{
+  "313": {
     "sequencialEvents": [
       {
         "eventNpc": "cobweb_story",

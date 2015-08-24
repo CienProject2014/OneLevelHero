@@ -12,6 +12,7 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TimeManager;
+import com.mygdx.model.surroundings.Building;
 
 public class BuildingButtonListener extends ClickListener {
 	@Autowired
@@ -25,6 +26,7 @@ public class BuildingButtonListener extends ClickListener {
 	@Autowired
 	private TimeManager timeManager;
 	private String buildingName;
+	private Building buildingInfo;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
@@ -35,7 +37,14 @@ public class BuildingButtonListener extends ClickListener {
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE, buildingName);
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BY_TIME, buildingName);
 		eventManager.triggerSpecialEvent(EventTypeEnum.DONT_GO_BUILDING, buildingName);
+		eventManager.triggerBuildingStopEvent(buildingInfo.getTargetTime(), buildingName);
+	}
+	public Building getBuildingInfo() {
+		return buildingInfo;
+	}
 
+	public void setBuildingInfo(Building buildingInfo) {
+		this.buildingInfo = buildingInfo;
 	}
 
 	public String getBuildingName() {

@@ -89,67 +89,67 @@ public class VillageStage extends BaseOverlapStage {
 		addActor(sceneLoader.getRoot());
 		VillageDirectionEnum villageDirection = villageInfo.getVillageDirection();
 		switch (villageDirection) {
-		case UP_DOWN:
-			final CompositeItem shiftbutton_up = sceneLoader.getRoot().getCompositeById("camera_up");
-			final CompositeItem shiftbutton_down = sceneLoader.getRoot().getCompositeById("camera_down");
+			case UP_DOWN :
+				final CompositeItem shiftbutton_up = sceneLoader.getRoot().getCompositeById("camera_up");
+				final CompositeItem shiftbutton_down = sceneLoader.getRoot().getCompositeById("camera_down");
 
-			shiftbutton_up.setTouchable(Touchable.enabled);
-			shiftbutton_down.setTouchable(Touchable.enabled);
+				shiftbutton_up.setTouchable(Touchable.enabled);
+				shiftbutton_down.setTouchable(Touchable.enabled);
 
-			shiftbutton_up.addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					setCameraState(CameraStateEnum.MOVE_UP);
-					timeManager.plusMinute(15);
-					cameraManager.setMoveFlag(2);
-				}
-			});
+				shiftbutton_up.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						setCameraState(CameraStateEnum.MOVE_UP);
+						timeManager.plusMinute(15);
+						cameraManager.setMoveFlag(2);
+					}
+				});
 
-			shiftbutton_down.addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					setCameraState(CameraStateEnum.MOVE_DOWN);
-					timeManager.plusMinute(15);
-					cameraManager.setMoveFlag(2);
-				}
-			});
-			cameraManager.setDirection(1);
+				shiftbutton_down.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						setCameraState(CameraStateEnum.MOVE_DOWN);
+						timeManager.plusMinute(15);
+						cameraManager.setMoveFlag(2);
+					}
+				});
+				cameraManager.setDirection(1);
 
-			break;
-		case LEFT_RIGHT:
-			final CompositeItem shiftbutton_left = sceneLoader.getRoot().getCompositeById("camera_left");
-			final CompositeItem shiftbutton_right = sceneLoader.getRoot().getCompositeById("camera_right");
+				break;
+			case LEFT_RIGHT :
+				final CompositeItem shiftbutton_left = sceneLoader.getRoot().getCompositeById("camera_left");
+				final CompositeItem shiftbutton_right = sceneLoader.getRoot().getCompositeById("camera_right");
 
-			shiftbutton_left.setTouchable(Touchable.enabled);
-			shiftbutton_right.setTouchable(Touchable.enabled);
+				shiftbutton_left.setTouchable(Touchable.enabled);
+				shiftbutton_right.setTouchable(Touchable.enabled);
 
-			shiftbutton_left.addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
+				shiftbutton_left.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
 
-					setCameraState(CameraStateEnum.MOVE_LEFT);
-					cameraManager.setMoveFlag(5);
-					timeManager.plusMinute(15);
+						setCameraState(CameraStateEnum.MOVE_LEFT);
+						cameraManager.setMoveFlag(5);
+						timeManager.plusMinute(15);
 
-				}
-			});
+					}
+				});
 
-			shiftbutton_right.addListener(new ClickListener() {
-				@Override
-				public void clicked(InputEvent event, float x, float y) {
-					setCameraState(CameraStateEnum.MOVE_RIGHT);
-					cameraManager.setMoveFlag(5);
-					timeManager.plusMinute(15);
+				shiftbutton_right.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						setCameraState(CameraStateEnum.MOVE_RIGHT);
+						cameraManager.setMoveFlag(5);
+						timeManager.plusMinute(15);
 
-				}
-			});
-			cameraManager.setDirection(2);
+					}
+				});
+				cameraManager.setDirection(2);
 
-			break;
-		case CENTER:
-			break;
-		default:
-			Gdx.app.log("VillageStage", "VillageDirectionEnum정보 오류");
+				break;
+			case CENTER :
+				break;
+			default :
+				Gdx.app.log("VillageStage", "VillageDirectionEnum정보 오류");
 		}
 	}
 
@@ -192,6 +192,7 @@ public class VillageStage extends BaseOverlapStage {
 				buildingButton.setTouchable(Touchable.enabled);
 				BuildingButtonListener buildingButtonListener = listenerFactory.getBuildingButtonListener();
 				buildingButtonListener.setBuildingName(building.getKey());
+				buildingButtonListener.setBuildingInfo(building.getValue());
 				buildingButton.addListener(buildingButtonListener);
 			}
 		}

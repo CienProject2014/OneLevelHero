@@ -50,25 +50,28 @@ public class EventCheckManager {
 		}
 	}
 
-	private boolean checkMatchWithStringAndTime(StorySectionPacket nextSectionPacket, String componentString) {
-		if (componentString.equals(nextSectionPacket.getTargetComponent())) {
-			TargetTime timeInfo = nextSectionPacket.getTargetTime();
-			int startMinute = timeInfo.getStartTime() * TimeManager.MINUTES_PER_HOUR;
-			int endMinute = timeInfo.getEndTime() * TimeManager.MINUTES_PER_HOUR;
-			int dayMinute = timeManager.getDayMinute();
-			if (startMinute < endMinute) {
-				if (dayMinute >= startMinute && dayMinute <= endMinute) {
-					return true;
-				} else {
-					return false;
-				}
+	public boolean checkMatchWithTime(TargetTime timeInfo) {
+		int startMinute = timeInfo.getStartTime() * TimeManager.MINUTES_PER_HOUR;
+		int endMinute = timeInfo.getEndTime() * TimeManager.MINUTES_PER_HOUR;
+		int dayMinute = timeManager.getDayMinute();
+		if (startMinute < endMinute) {
+			if (dayMinute >= startMinute && dayMinute <= endMinute) {
+				return false;
 			} else {
-				if (dayMinute <= startMinute && dayMinute <= endMinute) {
-					return true;
-				} else {
-					return false;
-				}
+				return true;
 			}
+		} else {
+			if (dayMinute <= startMinute && dayMinute <= endMinute) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+	}
+
+	public boolean checkMatchWithStringAndTime(StorySectionPacket nextSectionPacket, String componentString) {
+		if (componentString.equals(nextSectionPacket.getTargetComponent())) {
+			return checkMatchWithTime(nextSectionPacket.getTargetTime());
 		} else {
 			return false;
 		}
