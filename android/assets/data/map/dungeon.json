@@ -1,0 +1,63 @@
+{
+  "devil_castle_dungeon": {
+    "dungeonName": "마왕성",
+    "sceneName": "dungeon_3door_scene",
+    "mapSize": "(8,7)",
+    "nodes": [
+      {
+        "nodePos": "(1,4)",
+        "nodeFlag": "ENTRANCE"
+      },
+      {
+        "nodePos": "(2,3)",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePos": "(2,4)",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePos": "(2,5)",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePos": "(3,3)",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePos": "(3,4)",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePos": "(3,5)",
+        "nodeFlag": "ROOM"
+      }
+    ],
+    "connections": [
+      {
+        "from":"0",
+        "to":"1"
+      },
+      {
+        "from":"0",
+        "to":"2"
+      },
+      {
+        "from":"0",
+        "to":"3"
+      },
+      {
+        "from":"1",
+        "to":"4"
+      },
+      {
+        "from":"1",
+        "to":"5"
+      },
+      {
+        "from":"3",
+        "to":"6"
+      }
+    ]
+  }
+}
