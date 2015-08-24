@@ -1,1 +1,674 @@
-{"sceneName":"save_scene","composite":{"sImages":[{"itemIdentifier":"screen","x":350,"zIndex":1,"layerName":"Default","tint":[1,1,1,1],"imageName":"saveuibase01"},{"itemIdentifier":"save","x":400,"y":999,"zIndex":2,"layerName":"Default","tint":[1,1,1,1],"imageName":"saveuisave"},{"itemIdentifier":"save01_image01","x":903,"y":745,"zIndex":10,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save01_image02","x":1053,"y":745,"zIndex":11,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save01_image03","x":1203,"y":745,"zIndex":12,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save01_image04","x":1353,"y":745,"zIndex":13,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save02_image01","x":903,"y":460,"zIndex":18,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save02_image02","x":1053,"y":460,"zIndex":19,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save02_image03","x":1203,"y":460,"zIndex":20,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save02_image04","x":1353,"y":460,"zIndex":21,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save03_image01","x":903,"y":175,"zIndex":26,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save03_image02","x":1053,"y":175,"zIndex":27,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save03_image03","x":1203,"y":175,"zIndex":28,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"},{"itemIdentifier":"save03_image04","x":1353,"y":175,"zIndex":29,"layerName":"Default","tint":[1,1,1,1],"imageName":"battleuiturn01parath"}],"sLabels":[{"itemIdentifier":"save01_label","x":600,"y":910,"zIndex":6,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":480,"height":40},{"itemIdentifier":"save01_real_time_label","x":440,"y":750,"zIndex":7,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":350,"height":25},{"itemIdentifier":"save01_place_label","x":440,"y":787,"zIndex":8,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":350,"height":40},{"itemIdentifier":"save01_time_label","x":440,"y":839,"zIndex":9,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":350,"height":40},{"itemIdentifier":"save02_label","x":600,"y":625,"zIndex":14,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":480,"height":40},{"itemIdentifier":"save02_time_label","x":440,"y":554,"zIndex":15,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":350,"height":40},{"itemIdentifier":"save02_place_label","x":440,"y":502,"zIndex":16,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":350,"height":40},{"itemIdentifier":"save02_real_time_label","x":440,"y":465,"zIndex":17,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":350,"height":25},{"itemIdentifier":"save03_label","x":600,"y":340,"zIndex":22,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":480,"height":40},{"itemIdentifier":"save03_real_time_label","x":440,"y":180,"zIndex":23,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":350,"height":25},{"itemIdentifier":"save03_place_label","x":440,"y":217,"zIndex":24,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":350,"height":40},{"itemIdentifier":"save03_time_label","x":440,"y":269,"zIndex":25,"layerName":"Default","tint":[1,1,1,1],"style":"arial","size":12,"align":8,"width":350,"height":40}],"sComposites":[{"itemIdentifier":"background","layerName":"Default","tint":[1,1,1,1],"composite":{"sImages":[{"itemIdentifier":"background","layerName":"Default","tint":[1,1,1,1],"imageName":"saveuibackground"}],"layers":[{"layerName":"Default"}]}},{"itemIdentifier":"save03","x":400,"y":150,"zIndex":3,"layerName":"Default","tint":[1,1,1,1],"composite":{"sImages":[{"layerName":"Default","tint":[1,1,1,1],"imageName":"saveuisave03"}],"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}]}},{"itemIdentifier":"save02","x":400,"y":435,"zIndex":4,"layerName":"Default","tint":[1,1,1,1],"composite":{"sImages":[{"layerName":"Default","tint":[1,1,1,1],"imageName":"saveuisave02"}],"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}]}},{"itemIdentifier":"save01","x":400,"y":720,"zIndex":5,"layerName":"Default","tint":[1,1,1,1],"composite":{"sImages":[{"layerName":"Default","tint":[1,1,1,1],"imageName":"saveuisave01"}],"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}]}},{"itemIdentifier":"new_button","x":585,"y":33,"zIndex":30,"layerName":"Default","tint":[1,1,1,1],"composite":{"sImages":[{"itemIdentifier":"normal","layerName":"Default","tint":[1,1,1,1],"imageName":"saveuibuttonnew"},{"itemIdentifier":"pressed","zIndex":1,"layerName":"pressed","tint":[1,1,1,1],"imageName":"saveuiacbuttonnew"}],"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}]}},{"itemIdentifier":"close_button","x":985,"y":33,"zIndex":31,"layerName":"Default","tint":[1,1,1,1],"composite":{"sImages":[{"itemIdentifier":"normal","layerName":"Default","tint":[1,1,1,1],"imageName":"saveuibuttonclosed"},{"itemIdentifier":"pressed","zIndex":1,"layerName":"pressed","tint":[1,1,1,1],"imageName":"saveuiacbuttonclosed"}],"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}]}}],"layers":[{"layerName":"Default"}]},"physicsPropertiesVO":{}}
+{
+  "sceneName": "save_scene",
+  "composite": {
+    "sImages": [
+      {
+        "itemIdentifier": "screen",
+        "x": 350,
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "saveuibase01"
+      },
+      {
+        "itemIdentifier": "save",
+        "x": 400,
+        "y": 999,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "saveuisave"
+      },
+      {
+        "itemIdentifier": "save01_image01",
+        "x": 903,
+        "y": 745,
+        "zIndex": 10,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save01_image02",
+        "x": 1053,
+        "y": 745,
+        "zIndex": 11,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save01_image03",
+        "x": 1203,
+        "y": 745,
+        "zIndex": 12,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save01_image04",
+        "x": 1353,
+        "y": 745,
+        "zIndex": 13,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save02_image01",
+        "x": 903,
+        "y": 460,
+        "zIndex": 18,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save02_image02",
+        "x": 1053,
+        "y": 460,
+        "zIndex": 19,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save02_image03",
+        "x": 1203,
+        "y": 460,
+        "zIndex": 20,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save02_image04",
+        "x": 1353,
+        "y": 460,
+        "zIndex": 21,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save03_image01",
+        "x": 903,
+        "y": 175,
+        "zIndex": 26,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save03_image02",
+        "x": 1053,
+        "y": 175,
+        "zIndex": 27,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save03_image03",
+        "x": 1203,
+        "y": 175,
+        "zIndex": 28,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "save03_image04",
+        "x": 1353,
+        "y": 175,
+        "zIndex": 29,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "battleuiturn01parath"
+      }
+    ],
+    "sLabels": [
+      {
+        "itemIdentifier": "save01_label",
+        "x": 600,
+        "y": 910,
+        "zIndex": 6,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 480,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "save01_real_time_label",
+        "x": 440,
+        "y": 750,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 350,
+        "height": 25
+      },
+      {
+        "itemIdentifier": "save01_place_label",
+        "x": 440,
+        "y": 787,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 350,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "save01_time_label",
+        "x": 440,
+        "y": 839,
+        "zIndex": 9,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 350,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "save02_label",
+        "x": 600,
+        "y": 625,
+        "zIndex": 14,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 480,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "save02_time_label",
+        "x": 440,
+        "y": 554,
+        "zIndex": 15,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 350,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "save02_place_label",
+        "x": 440,
+        "y": 502,
+        "zIndex": 16,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 350,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "save02_real_time_label",
+        "x": 440,
+        "y": 465,
+        "zIndex": 17,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 350,
+        "height": 25
+      },
+      {
+        "itemIdentifier": "save03_label",
+        "x": 600,
+        "y": 340,
+        "zIndex": 22,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 480,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "save03_real_time_label",
+        "x": 440,
+        "y": 180,
+        "zIndex": 23,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 350,
+        "height": 25
+      },
+      {
+        "itemIdentifier": "save03_place_label",
+        "x": 440,
+        "y": 217,
+        "zIndex": 24,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 350,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "save03_time_label",
+        "x": 440,
+        "y": 269,
+        "zIndex": 25,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 350,
+        "height": 40
+      }
+    ],
+    "sComposites": [
+      {
+        "itemIdentifier": "background",
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "background",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "saveuibackground"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "save03",
+        "x": 400,
+        "y": 150,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "saveuisave03"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "save02",
+        "x": 400,
+        "y": 435,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "saveuisave02"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "save01",
+        "x": 400,
+        "y": 720,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "saveuisave01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "new_button",
+        "x": 585,
+        "y": 33,
+        "zIndex": 30,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "saveuibuttonnew"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "saveuiacbuttonnew"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "close_button",
+        "x": 985,
+        "y": 33,
+        "zIndex": 31,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "saveuibuttonclosed"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "saveuiacbuttonclosed"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ]
+  },
+  "physicsPropertiesVO": {}
+}
