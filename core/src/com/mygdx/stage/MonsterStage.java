@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
@@ -124,12 +124,12 @@ public class MonsterStage extends BaseOneLevelStage {
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
-		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
+		if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devilcastle_01")));
-		} else if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devilcastle_01")));
+		} else if (eventManager.getCurrentElementEvent().getEventType().equals(EventTypeEnum.BATTLE)) {
+			String backgroundPath = eventManager.getCurrentElementEvent().getEventComponent().get(1);
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
 		} else {
-			Gdx.app.log("EncounterStage", "fieldType - " + fieldManager.getFieldType());
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
 					.getFieldType().toString())));
 		}

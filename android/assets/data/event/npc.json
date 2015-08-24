@@ -742,32 +742,6 @@
             "backgroundPath": "kadilla_castle_03"
           }
         ]
-      },
-      "999": {
-        "eventState": "always_open",
-        "eventType": "dont_go_building",
-        "eventScenes": [
-          {
-            "script": "문이 굳게 닫혀있다 ",
-            "speakerPosition": "left",
-            "characterPath": "nothing",
-            "faceNumber": "01",
-            "backgroundPath": "kadilla_castle_03"
-          }
-        ],
-        "eventComponent": [
-          "kadilla_castle_school",
-          "kadilla_castle_duke_castle"
-        ],
-        "rewards": [
-          {
-            "rewardType": "move_node",
-            "rewardState": "always_open",
-            "rewardComponent": [
-              "kadilla_castle"
-            ]
-          }
-        ]
       }
     }
   },
@@ -1876,9 +1850,9 @@
       },
       "13": {
         "eventState": "not_opened",
-        "eventType": "move_node",
+        "eventType": "move_sub_node",
         "eventComponent": [
-          "cave_of_succubus_room_start_01"
+          "cave_of_succubus"
         ]
       },
       "14": {
@@ -4999,5 +4973,57 @@
       ]
     },
     "events": {}
+  },
+  "kadilla_castle_school": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "kadilla_castle_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "kadilla_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "kadilla_castle_duke_castle": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "kadilla_castle_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "kadilla_castle"
+            ]
+          }
+        ]
+      }
+    }
   }
 }

@@ -9,7 +9,6 @@ public class DungeonManager {
 
 	@Autowired
 	private NodeAssets nodeAssets;
-
 	private Dungeon mapInfo;
 	private boolean currentHeading;
 	private int currentPos;
@@ -45,8 +44,15 @@ public class DungeonManager {
 	}
 	public void setMapInfo(String dungeonName) {
 		mapInfo = nodeAssets.getDungeonByName("devil_castle_dungeon");
-		mapInfo.setInDungeon();
+		mapInfo.setInDungeon(true);
 	}
+
+	public void setInDungeon(boolean isInDungeon) {
+		if (mapInfo != null) {
+			mapInfo.setInDungeon(isInDungeon);
+		}
+	}
+
 	public boolean isInDungeon() {
 		// TODO Auto-generated method stub
 		if (mapInfo != null)

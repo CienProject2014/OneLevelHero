@@ -32,6 +32,7 @@ import com.mygdx.ui.GridHitbox;
 
 public class BattleManager {
 	private final String TAG = "BattleManager";
+	private final int TIME_FLOW_RATE = 1;
 
 	@Autowired
 	private SkillAssets skillAssets;
@@ -55,7 +56,8 @@ public class BattleManager {
 	private FieldManager fieldManager;
 	@Autowired
 	private DungeonManager dungeonManager;
-
+	@Autowired
+	private TimeManager timeManager;
 	private GridHitbox gridHitbox; // grid hitbox 테이블
 
 	public SkillRunPopup gameObjectPopup;
@@ -187,6 +189,14 @@ public class BattleManager {
 		unit.setPreGague(unit.getGauge());
 		int costGague = (int) (((double) (150 - unit.getActingPower()) / 50) * typeOfAction);
 		unit.setGauge(unit.getGauge() - costGague);
+		timeManager.plusSecond(costGague * TIME_FLOW_RATE);
+		healGague();
+	}
+
+	public void FuckingCostGague(Unit unit, int typeOfAction) {
+		unit.setPreGague(unit.getGauge());
+		unit.setGauge(unit.getGauge() - typeOfAction);
+		timeManager.plusSecond(typeOfAction * TIME_FLOW_RATE);
 		healGague();
 	}
 
@@ -194,13 +204,22 @@ public class BattleManager {
 		int maxGague = 0;
 		int maxSubValue = 0;
 		for (Unit unit : partyManager.getBattleMemberList()) {
-			if (maxGague <= unit.getGauge()) {
-				maxGague = unit.getGauge();
+			if (battleInfo.getCurrentAttackUnit() == unit) {
+			} else {
+				if (maxGague <= unit.getGauge()) {
+					maxGague = unit.getGauge();
+				}
 			}
 		}
-		battleInfo.getCurrentAttackUnit().setGauge(maxGague);
 
-		battleInfo.getCurrentAttackUnit().setSubvalue(battleInfo.getCurrentAttackUnit().getSubvalue() + 1);
+		if ((100 - maxGague) == 0) {
+			battleInfo.getCurrentAttackUnit().setSubvalue(battleInfo.getCurrentAttackUnit().getSubvalue() + 1);
+		} else {
+			battleInfo.getCurrentAttackUnit().setSubvalue(1);
+		}
+
+		FuckingCostGague(battleInfo.getCurrentAttackUnit(), 100 - maxGague);
+
 		for (Unit unit : partyManager.getBattleMemberList()) {
 			if (battleInfo.getCurrentAttackUnit() == unit) {
 			} else {
@@ -209,10 +228,11 @@ public class BattleManager {
 				}
 			}
 		}
-		if (maxSubValue > battleInfo.getCurrentAttackUnit().getSubvalue()) {
-			battleInfo.getCurrentAttackUnit().setSubvalue(maxSubValue + 1);
+		battleInfo.getCurrentAttackUnit().setSubvalue(maxSubValue + 1);
+		if (battleInfo.getCurrentAttackUnit().getSubvalue() == 3) {
+			FuckingCostGague(battleInfo.getCurrentAttackUnit(), 1);
+			battleInfo.getCurrentAttackUnit().setSubvalue(0);
 		}
-		System.out.println("현재 캐릭터의 보정치" + battleInfo.getCurrentAttackUnit().getSubvalue());
 	}
 
 	private void healGague() {
@@ -327,13 +347,23 @@ public class BattleManager {
 		boolean partyState = isHeroDead();
 		if (monsterState && !partyState) {
 			Gdx.app.log(TAG, "용사팀의 승리!");
+			initBattle();
 			setBattleState(BattleStateEnum.PLAYER_WIN);
 		} else if (partyState && !monsterState) {
 			Gdx.app.log(TAG, "용사팀의 패배!");
+			initBattle();
 			setBattleState(BattleStateEnum.GAME_OVER);
 		} else if (partyState && monsterState) {
 			Gdx.app.log(TAG, "잘못된 배틀 : 동시에 죽었다.");
+			initBattle();
 			setBattleState(BattleStateEnum.GAME_OVER);
+		}
+	}
+
+	private void initBattle() {
+		for (Unit unit : battleInfo.getUnits()) {
+			unit.setGauge(100);
+			unit.setSubvalue(0);
 		}
 	}
 
@@ -355,7 +385,6 @@ public class BattleManager {
 	}
 
 	public void useItem(String item) {
-		// TODO
 	}
 
 	public Monster getSelectedMonster() {

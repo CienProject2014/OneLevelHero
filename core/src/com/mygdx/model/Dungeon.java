@@ -23,8 +23,8 @@ public class Dungeon {
 	public int getMapHeight() {
 		return mapHeight;
 	}
-	public void setInDungeon() {
-		inDungeon = true;
+	public void setInDungeon(boolean isInDungeon) {
+		inDungeon = isInDungeon;
 	}
 	public boolean isInDungeon() {
 		// TODO Auto-generated method stub

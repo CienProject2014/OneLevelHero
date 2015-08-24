@@ -91,7 +91,7 @@ public class TextureManager {
 					Texture.class);
 		} else {
 			Gdx.app.log("TextureManager", backgroundName + "에 해당하는 이미지가 없습니다");
-			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + "black"),
+			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + "prog_team_01"),
 					Texture.class);
 		}
 	}

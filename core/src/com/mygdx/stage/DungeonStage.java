@@ -57,6 +57,7 @@ public class DungeonStage extends BaseOverlapStage {
 
 		setMap();
 		makeScene(dungeonManager.getMapInfo().getSceneName());
+		dungeonManager.setInDungeon(true);
 		// FIXME UI
 		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
 
@@ -148,8 +149,7 @@ public class DungeonStage extends BaseOverlapStage {
 			}
 		}
 		// FIXME UI
-		for (int i = 0, n = (dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward)
-				.size(); i < n; i++) {
+		for (int i = 0, n = (dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size(); i < n; i++) {
 			Gdx.app.log("문 개수", String.valueOf(n));
 			btnRoad[i].setTouchable(i < n ? Touchable.enabled : Touchable.disabled);
 			btnRoad[i].setVisible(btnRoad[i].getTouchable() == Touchable.enabled);
@@ -188,8 +188,9 @@ public class DungeonStage extends BaseOverlapStage {
 	}
 
 	private void actionMove(int index) {
-		dungeonManager.setCurrentPos(dungeonManager.getMapInfo().nodes
-				.indexOf((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).get(index)));
+		dungeonManager.setCurrentPos(dungeonManager.getMapInfo().nodes.indexOf((dungeonManager.getCurrentHeading()
+				? selectableBackward
+				: selectableForward).get(index)));
 
 		if (!dungeonManager.getCurrentHeading())
 			dungeonManager.setCurrentPos(selectableForward.get(index).getTo());

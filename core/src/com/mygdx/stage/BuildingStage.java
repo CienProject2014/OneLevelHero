@@ -27,9 +27,11 @@ import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.TextureManager;
+import com.mygdx.manager.TimeManager;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.surroundings.Building;
 import com.mygdx.popup.GameObjectPopup;
+import com.mygdx.screen.BuildingScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 
@@ -52,6 +54,8 @@ public class BuildingStage extends BaseOverlapStage {
 	private TextureManager textureManager;
 	@Autowired
 	private ConstantsAssets constantsAssets;
+	@Autowired
+	private TimeManager timeManager;
 
 	private List<CompositeItem> npcButtonList;
 	private List<CompositeItem> gameObjectList;
@@ -88,8 +92,8 @@ public class BuildingStage extends BaseOverlapStage {
 		Table backgroundTable = new Table();
 		backgroundTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
 		backgroundTable.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
-		TextureRegionDrawable backgroundImage = new TextureRegionDrawable(
-				new TextureRegion(textureManager.getBackgroundTexture(buildingInfo.getBuildingPath())));
+		TextureRegionDrawable backgroundImage = new TextureRegionDrawable(new TextureRegion(
+				textureManager.getBackgroundTexture(buildingInfo.getBuildingPath())));
 		backgroundTable.setBackground(backgroundImage);
 		addActor(backgroundTable);
 	}
@@ -122,6 +126,7 @@ public class BuildingStage extends BaseOverlapStage {
 
 					@Override
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+						timeManager.plusMinute(5);
 						eventManager.setCurrentEventNpc(npcName);
 						eventManager.setCurrentEventNumber(2); // FIXME
 						screenFactory.show(ScreenEnum.GREETING);
@@ -135,9 +140,7 @@ public class BuildingStage extends BaseOverlapStage {
 	private void setSceneItemList() {
 		gameObjectList = new ArrayList<CompositeItem>();
 
-		if (buildingInfo.getGameObject() != null)
-
-		{
+		if (buildingInfo.getGameObject() != null) {
 			for (final String objectName : buildingInfo.getGameObject()) {
 				final GameObject gameObject = eventAssets.getGameObject(objectName);
 				CompositeItem gameObjectButton = sceneLoader.getRoot().getCompositeById(objectName);
@@ -153,7 +156,7 @@ public class BuildingStage extends BaseOverlapStage {
 						}
 
 						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-							SaveStage.isTouched = true;
+							BuildingScreen.isInSave = true;
 						}
 					});
 				} else {
@@ -164,13 +167,14 @@ public class BuildingStage extends BaseOverlapStage {
 						}
 
 						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+							timeManager.plusMinute(5);
 							eventManager.setCurrentGameObject(gameObject);
 							gameObjectPopup = new GameObjectPopup();
 							gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
 							gameObjectPopup.setListenerFactory(listenerFactory);
 							gameObjectPopup.setGameObject(gameObject);
-							gameObjectPopup.initialize(objectName);
 							gameObjectPopup.setConstantsAssets(constantsAssets);
+							gameObjectPopup.initialize(objectName);
 							addActor(gameObjectPopup);
 							gameObjectPopup.setVisible(true);
 						}
@@ -200,21 +204,21 @@ public class BuildingStage extends BaseOverlapStage {
 	private void setGameObjectVisibility(CompositeItem objectButton, GameObjectEnum gameObjectEnum) {
 		switch (gameObjectEnum) {
 
-		case NORMAL:
-			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), false);
-			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), true);
-			objectButton.setTouchable(Touchable.enabled);
-			break;
-		case PRESSED:
-			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), true);
-			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), false);
-			objectButton.setTouchable(Touchable.disabled);
-			break;
-		case FUNCTION:
-			break;
-		default:
-			Gdx.app.log("BuildingStage", "NULL GameObjectEnum Type");
-			break;
+			case NORMAL :
+				objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), false);
+				objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), true);
+				objectButton.setTouchable(Touchable.enabled);
+				break;
+			case PRESSED :
+				objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), true);
+				objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), false);
+				objectButton.setTouchable(Touchable.disabled);
+				break;
+			case FUNCTION :
+				break;
+			default :
+				Gdx.app.log("BuildingStage", "NULL GameObjectEnum Type");
+				break;
 		}
 	}
 }

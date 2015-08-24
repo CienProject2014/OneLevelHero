@@ -54,7 +54,7 @@
 	<bean id="eventManager" class="com.mygdx.manager.EventManager"/>
 	<bean id="eventCheckManager" class="com.mygdx.manager.EventCheckManager"/>
 	<bean id="fieldManager" class="com.mygdx.manager.FieldManager"/>
-	<bean id="loadManager" class="com.mygdx.manager.LoadManager"/>
+	<bean id="loadNewManager" class="com.mygdx.manager.LoadNewManager"/>
 	<bean id="monsterPickManager" class="com.mygdx.manager.MonsterPickManager"/>
 	<bean id="movingManager" class="com.mygdx.manager.MovingManager"/>
 	<bean id="musicManager" class="com.mygdx.manager.MusicManager"/>
@@ -119,7 +119,6 @@
 		scope="prototype"/>
 	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage"
 		scope="prototype"/>
-	<bean id="loadStage" class="com.mygdx.stage.LoadStage"	scope="prototype"/>
 	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype">
 	</bean>
 	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage"
@@ -139,6 +138,9 @@
 	<bean id="gameOverStage" class="com.mygdx.stage.GameOverStage"/>
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype"/>
 	<bean id="inventoryStage" class="com.mygdx.stage.InventoryStage" scope="prototype"/>
+	<bean id="loadingBarStage" class="com.mygdx.stage.LoadingBarStage" scope="prototype"/>
+	<bean id="loadPopupStage" class="com.mygdx.stage.LoadPopupStage" scope="prototype"/>
+	<bean id="loadStage" class="com.mygdx.stage.LoadStage" scope="prototype"/>
 	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage"
 		scope="prototype" />
@@ -155,9 +157,10 @@
 		scope="prototype"/>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
-	<bean id="heroBattleStrategy" class="com.mygdx.unitStrategy.HeroBattleStrategy"/>	
+ 	
+ 	<bean id="heroBattleStrategy" class="com.mygdx.unitStrategy.HeroBattleStrategy"/>	
 	<bean id="inventoryStrategy" class="com.mygdx.unitStrategy.InventoryStrategy"/>
-	<bean id="monsterBattleStrategy" class="com.mygdx.unitStrategy.MonsterBattleStrategy"/>	
+	<bean id="monsterBattleStrategy" class="com.mygdx.unitStrategy.MonsterBattleStrategy"/>
 		
 	<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
 	<bean id="attackButtonListener" class="com.mygdx.listener.AttackButtonListener" scope="prototype"/>
