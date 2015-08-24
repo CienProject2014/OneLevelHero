@@ -483,9 +483,9 @@ monster_mercensary: {
 	class: java.lang.String,
 	value: texture/monster/monster_mercensary.png/
 },
-prog_team1: {
+bg_prog_team_01: {
 	class: java.lang.String,
-	value: texture/background/prog_team1.png/
+	value: texture/background/bg_prog_team_01.png/
 },
 battle_yongsa_big: {
 	class: java.lang.String,
@@ -753,7 +753,7 @@ bust_areich_06: {
 },
 atlas: {
 	class: java.lang.String,
-	value: texture/ui/popup/atlas.png/
+	value: texture/ui/dungeon/atlas.png/
 },
 battle_yongsa_small: {
 	class: java.lang.String,

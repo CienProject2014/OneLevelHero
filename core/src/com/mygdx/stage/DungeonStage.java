@@ -54,7 +54,7 @@ public class DungeonStage extends BaseOverlapStage {
 	public Stage makeStage() {
 		setMap();
 		makeScene(dungeonManager.getMapInfo().getSceneName());
-
+		dungeonManager.setInDungeon(true);
 		// FIXME UI
 		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
 

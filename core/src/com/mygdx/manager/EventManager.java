@@ -103,6 +103,9 @@ public class EventManager {
 				musicManager.setEventMusicAndPlay();
 				storySectionManager.runStorySequence();
 				break;
+			case GAME_OVER :
+				screenFactory.show(ScreenEnum.GAME_OVER);
+				break;
 			default :
 				screenFactory.show(ScreenEnum.EVENT);
 				break;
