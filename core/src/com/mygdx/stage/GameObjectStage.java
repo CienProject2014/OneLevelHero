@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventElementEnum;
 import com.mygdx.manager.EventManager;
@@ -34,10 +34,13 @@ public class GameObjectStage extends BaseOneLevelStage {
 	private Label scriptContent;
 	private Image characterImage;
 	private Image backgroundImage;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("EventStage");
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
 
 	public Stage makeStage() {
 		super.makeStage();
+		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
 		eventManager.setCurrentEventElementType(EventElementEnum.GAME_OBJECT);
 		EventScene eventScene = eventManager.getGameObjectEventScene();
 		setScene(eventScene);
@@ -52,6 +55,7 @@ public class GameObjectStage extends BaseOneLevelStage {
 		});
 		return this;
 	}
+
 	public void setScene(EventScene eventScene) {
 		backgroundImage = new Image(textureManager.getBackgroundTexture(eventScene.getBackgroundPath()));
 		scriptTitle = new Label("Title", uiComponentAssets.getSkin());
@@ -60,6 +64,7 @@ public class GameObjectStage extends BaseOneLevelStage {
 		tableStack.add(backgroundImage);
 		tableStack.add(makeChatTable());
 	}
+
 	private Table makeChatTable() {
 		Table chatTable = new Table();
 		chatTable.left().bottom();

@@ -11,11 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.SkillAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.BattleInfo;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
+import com.mygdx.enums.MonsterEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.SkillTargetEnum;
@@ -26,6 +28,7 @@ import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
 import com.mygdx.popup.SkillRunPopup;
+import com.mygdx.ui.GridHitbox;
 
 public class BattleManager {
 	private final String TAG = "BattleManager";
@@ -45,9 +48,18 @@ public class BattleManager {
 	@Autowired
 	private BattleInfo battleInfo;
 	@Autowired
+	private TextureManager textureManager;
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	@Autowired
 	private FieldManager fieldManager;
+	private GridHitbox gridHitbox; // grid hitbox 테이블
 
 	public SkillRunPopup gameObjectPopup;
+
+	BattleManager() {
+		gridHitbox = new GridHitbox();
+	}
 
 	public boolean isEventBattle() {
 		return battleInfo.isEventBattle();
@@ -78,33 +90,33 @@ public class BattleManager {
 
 	public void checkCurrentState() {
 		switch (getCurrentClickStateEnum()) {
-		case NORMAL:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		case SKILL:
-			battleInfo.setSkill(false);
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		case INVENTORY:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		case DEFENSE:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		case WAIT:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		case RUN:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		default:
-			break;
+			case NORMAL :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			case SKILL :
+				battleInfo.setSkill(false);
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			case INVENTORY :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			case DEFENSE :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			case WAIT :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			case RUN :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			default :
+				break;
 		}
 	}
 
@@ -230,26 +242,26 @@ public class BattleManager {
 		ArrayList<Unit> list = new ArrayList<Unit>();
 		SkillTargetEnum enm = SkillTargetEnum.findSkillTargetEnum(targetType);
 		switch (enm) {
-		case ALL:
-			list.addAll(partyManager.getBattleMemberList());
-			break;
-		case MONSTER:
-			list.add(battleInfo.getCurrentMonster());
-			break;
-		case ONE:
-			list.add(selectedUnit);
-			break;
-		case RANDOM:
-			Hero pick = getRandomHero();
-			if (pick != null) {
-				list.add(pick);
-			}
-			break;
-		case SELF:
-			list.add(skillUser);
-			break;
-		default:
-			break;
+			case ALL :
+				list.addAll(partyManager.getBattleMemberList());
+				break;
+			case MONSTER :
+				list.add(battleInfo.getCurrentMonster());
+				break;
+			case ONE :
+				list.add(selectedUnit);
+				break;
+			case RANDOM :
+				Hero pick = getRandomHero();
+				if (pick != null) {
+					list.add(pick);
+				}
+				break;
+			case SELF :
+				list.add(skillUser);
+				break;
+			default :
+				break;
 
 		}
 
@@ -396,6 +408,12 @@ public class BattleManager {
 	}
 
 	public void setShowGrid(boolean showGrid) {
+		if (showGrid) {
+			gridHitbox.showGrid();
+		} else {
+			gridHitbox.hideGrid();
+		}
+
 		battleInfo.setShowGrid(showGrid);
 	}
 
@@ -461,6 +479,28 @@ public class BattleManager {
 
 	public void setSkill(boolean isSkill) {
 		battleInfo.setSkill(isSkill);
+	}
+
+	public GridHitbox getGridHitbox() {
+		return gridHitbox;
+	}
+
+	public void setGridHitbox(GridHitbox gridHitbox) {
+		this.gridHitbox = gridHitbox;
+	}
+
+	public void setMonsterSize(MonsterEnum.SizeType type) {
+		gridHitbox.setTextureManager(textureManager);
+		gridHitbox.setUiConstantsMap(constantsAssets);
+		gridHitbox.setSizeType(type);
+	}
+
+	public int getGridLimitNum() {
+		return gridHitbox.getLimitNum();
+	}
+
+	public void setGridLimitNum(int num) {
+		gridHitbox.setLimitNum(num);
 	}
 
 }

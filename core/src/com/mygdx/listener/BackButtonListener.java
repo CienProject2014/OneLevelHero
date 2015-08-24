@@ -10,6 +10,7 @@ import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.manager.TimeManager;
 import com.mygdx.screen.StatusScreen;
 
 public class BackButtonListener extends ClickListener {
@@ -21,12 +22,15 @@ public class BackButtonListener extends ClickListener {
 	private MovingManager movingManager;
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private TimeManager timeManager;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		timeManager.plusMinute(15);
 		if (!positionManager.isInWorldMap()) {
 			movingManager.goPreviousPosition();
-			storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_NODE, positionManager.getCurrentNodeName());
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, positionManager.getCurrentNodeName());
 		} else {
 			if (StatusScreen.isClickedWorldMap()) {
 				StatusScreen.setClickedWorldMap(false);

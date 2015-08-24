@@ -15,9 +15,9 @@ import com.mygdx.manager.SaveManager;
 
 public class GameOverStage extends Stage {
 	@Autowired
-	ScreenFactory screenFactory;
+	private ScreenFactory screenFactory;
 	@Autowired
-	SaveManager saveManager;
+	private SaveManager saveManager;
 
 	public Stage makeStage() {
 		Label label = new Label("GAME OVER ... ", StaticAssets.skin);
@@ -41,6 +41,6 @@ public class GameOverStage extends Stage {
 	}
 
 	private void initInfo() {
-		saveManager.firstInfoLoad();
+		saveManager.setNewGame();
 	}
 }

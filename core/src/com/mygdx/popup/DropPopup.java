@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.factory.ListenerFactory;
@@ -28,7 +29,12 @@ public class DropPopup extends Dialog {
 	private GameObject gameObject;
 	private Equipment equipment;
 	private BagManager bagManager;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameObjectPopup");
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
+
+	public void setConstantsAssets(ConstantsAssets constantsAssets) {
+		this.constantsAssets = constantsAssets;
+	}
 
 	public Equipment getEquipment() {
 		return equipment;
@@ -71,6 +77,7 @@ public class DropPopup extends Dialog {
 	}
 
 	public void initialize() {
+		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
 		setQuestionLabel();
 		setButton(atlasUiAssets, uiComponentAssets);
 
@@ -106,6 +113,7 @@ public class DropPopup extends Dialog {
 		setSize(uiConstantsMap.get("popupWidth"), uiConstantsMap.get("popupHeight"));
 
 	}
+
 	private void setQuestionLabel() {
 		Label questionLabel = new Label("", StaticAssets.skin);
 		questionLabel.setText("장비를 버리시겠습니까?");

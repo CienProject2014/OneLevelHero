@@ -12,8 +12,9 @@ import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.LoadManager;
+import com.mygdx.manager.LoadNewManager;
 import com.mygdx.manager.TextureManager;
+import com.mygdx.screen.LoadScreen;
 
 public class LoadStage extends BaseOneLevelStage {
 	@Autowired
@@ -21,7 +22,7 @@ public class LoadStage extends BaseOneLevelStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
-	private LoadManager loadManager;
+	private LoadNewManager loadManager;
 	private TextButton loadButton;
 	private TextButton newStartButton;
 	private TextButton backButton;
@@ -58,7 +59,7 @@ public class LoadStage extends BaseOneLevelStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
-				LoadPopupStage.isTouched = true;
+				LoadScreen.isPopupTouched = true;
 			}
 		});
 		newStartButton.addListener(new InputListener() {

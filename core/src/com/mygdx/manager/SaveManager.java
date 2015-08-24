@@ -13,26 +13,37 @@ import com.badlogic.gdx.files.FileHandle;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import com.mygdx.assets.Assets;
 import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.currentState.TimeInfo;
+import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.PositionEnum;
 
 public class SaveManager {
 	@Autowired
-	CurrentInfo currentInfo;
+	private CurrentInfo currentInfo;
 	@Autowired
-	PartyInfo partyInfo;
+	private PartyInfo partyInfo;
 	@Autowired
-	PositionInfo positionInfo;
+	private PositionInfo positionInfo;
 	@Autowired
-	TimeInfo timeInfo;
+	private TimeInfo timeInfo;
 	@Autowired
-	StorySectionInfo storySectionInfo;
+	private StorySectionInfo storySectionInfo;
 	@Autowired
-	EventInfo eventInfo;
+	private EventInfo eventInfo;
+	@Autowired
+	private LoadNewManager loadManager;
+	@Autowired
+	private Assets assets;
+	@Autowired
+	private BattleManager battleManager;
+	@Autowired
+	private MovingManager movingManager;
 
 	private Kryo kryo;
 
@@ -45,7 +56,13 @@ public class SaveManager {
 		kryo.register(EventInfo.class);
 	}
 
-	public void firstInfoSave() {
+	public void setNewGame() {
+		loadFirstInfo();
+		assets.initializeUnitInfo();
+		loadManager.loadNewGame();
+	}
+
+	public void saveFirstInfo() {
 		FileHandle handle;
 		handle = Gdx.files.local("save/first");
 		Output output;
@@ -75,7 +92,7 @@ public class SaveManager {
 		Gdx.app.log("SaveManager", "저장작업완료");
 	}
 
-	public void firstInfoLoad() {
+	public void loadFirstInfo() {
 		FileHandle handle = Gdx.files.local("save/first");
 		Input input;
 		try {
@@ -124,6 +141,7 @@ public class SaveManager {
 	}
 
 	public void load() {
+		assets.initializeUnitInfo();
 		FileHandle handle = Gdx.files.local("save/" + currentInfo.getSaveVersion().toString() + ".json");
 		Input input;
 		try {
@@ -138,7 +156,7 @@ public class SaveManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		battleManager.setBeforePosition(PositionEnum.SUB_NODE);
+		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 	}
-
 }

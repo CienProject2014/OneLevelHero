@@ -26,6 +26,7 @@ import com.mygdx.model.event.EventScene;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.event.NPC;
 import com.mygdx.model.event.Reward;
+import com.mygdx.model.surroundings.TargetTime;
 
 /**
  * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스 CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을
@@ -103,6 +104,9 @@ public class EventManager {
 				musicManager.setEventMusicAndPlay();
 				storySectionManager.runStorySequence();
 				break;
+			case GAME_OVER :
+				screenFactory.show(ScreenEnum.GAME_OVER);
+				break;
 			default :
 				screenFactory.show(ScreenEnum.EVENT);
 				break;
@@ -122,6 +126,7 @@ public class EventManager {
 				return getCurrentNpcEvent();
 		}
 	}
+
 	public void doSpecialEvent(Event event) {
 		switch (event.getEventType()) {
 			case DONT_GO_BUILDING :
@@ -150,6 +155,7 @@ public class EventManager {
 			}
 		}
 	}
+
 	private void setCurrentSpecialEventInfo(EventPacket eventPacket) {
 		eventInfo.setCurrentSpecialEventInfo(eventPacket);
 	}
@@ -166,7 +172,7 @@ public class EventManager {
 		return eventInfo.getNpc(eventInfo.getCurrentNpcName());
 	}
 
-	public Stage getSceneEvent() {
+	public Stage getNpcEvent() {
 		Event currentEvent;
 		if (eventInfo.getCurrentEventElementType().equals(EventElementEnum.NPC)) {
 			currentEvent = getCurrentNpcEvent();
@@ -333,4 +339,11 @@ public class EventManager {
 		}
 	}
 
+	public void triggerBuildingStopEvent(TargetTime targetTime, String buildingName) {
+		if (eventCheckManager.checkMatchWithTime(targetTime)) {
+			setCurrentEventNpc(buildingName);
+			setCurrentEventNumber(1);
+			screenFactory.show(ScreenEnum.EVENT);
+		}
+	}
 }

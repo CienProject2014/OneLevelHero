@@ -84,6 +84,8 @@ public class MovingManager {
 			case FIELD :
 				screenFactory.show(ScreenEnum.FIELD);
 				break;
+			case DUNGEON :
+				screenFactory.show(ScreenEnum.DUNGEON);
 			default :
 				Gdx.app.log("MovingManager", "NodeType정보 오류");
 				break;
@@ -111,7 +113,6 @@ public class MovingManager {
 				Gdx.app.log("MovingManager", "PositionEnum정보 오류");
 		}
 	}
-
 	private void goBeforeBattlePosition() {
 		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
 
@@ -144,7 +145,6 @@ public class MovingManager {
 				return;
 		}
 	}
-
 	private void goCurrentSubNode(WorldNodeEnum.NodeType nodeType) {
 		switch (nodeType) {
 			case VILLAGE :

@@ -23,6 +23,8 @@ import com.mygdx.stage.GameOverStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.InventoryStage;
 import com.mygdx.stage.LoadPopupStage;
+import com.mygdx.stage.LoadStage;
+import com.mygdx.stage.LoadingBarStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
 import com.mygdx.stage.SaveStage;
@@ -60,6 +62,12 @@ public class StageFactory {
 				return context.getBean(GameObjectStage.class).makeStage();
 			case GAME_OVER :
 				return context.getBean(GameOverStage.class).makeStage();
+			case LOAD :
+				return context.getBean(LoadStage.class).makeStage();
+			case LOADING_BAR :
+				return context.getBean(LoadingBarStage.class).makeStage();
+			case LOAD_POPUP :
+				return context.getBean(LoadPopupStage.class).makeStage();
 			case MENU :
 				return context.getBean(MenuStage.class).makeStage();
 			case MONSTER :
@@ -68,6 +76,8 @@ public class StageFactory {
 				return context.getBean(FieldStage.class).makeStage();
 			case INVENTORY :
 				return context.getBean(InventoryStage.class).makeStage();
+			case SAVE :
+				return context.getBean(SaveStage.class).makeStage();
 			case SELECT_EVENT :
 				return context.getBean(SelectEventStage.class).makeStage();
 			case SELECT_COMPONENT :
@@ -80,18 +90,11 @@ public class StageFactory {
 				return context.getBean(VillageStage.class).makeStage();
 			case WORLD_MAP :
 				return context.getBean(WorldMapStage.class).makeStage();
-			case LOAD :
-				return context.getBean(LoadPopupStage.class).makeStage();
-			case LOAD_POPUP :
-				return context.getBean(LoadPopupStage.class).makeStage();
-			case SAVE :
-				return context.getBean(SaveStage.class).makeStage();
 			default :
 				Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
 				return context.getBean(VillageStage.class).makeStage(); // FIXME
 		}
 	}
-
 	public Stage makeEventStage(Iterator<EventScene> eventSceneIterator) {
 		return context.getBean(ChatEventStage.class).makeStage(eventSceneIterator);
 	}

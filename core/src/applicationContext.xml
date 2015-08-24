@@ -54,7 +54,7 @@
 	<bean id="eventManager" class="com.mygdx.manager.EventManager"/>
 	<bean id="eventCheckManager" class="com.mygdx.manager.EventCheckManager"/>
 	<bean id="fieldManager" class="com.mygdx.manager.FieldManager"/>
-	<bean id="loadManager" class="com.mygdx.manager.LoadManager"/>
+	<bean id="loadNewManager" class="com.mygdx.manager.LoadNewManager"/>
 	<bean id="monsterPickManager" class="com.mygdx.manager.MonsterPickManager"/>
 	<bean id="movingManager" class="com.mygdx.manager.MovingManager"/>
 	<bean id="musicManager" class="com.mygdx.manager.MusicManager"/>
@@ -68,6 +68,8 @@
 	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
 	<bean id="unitManager" class="com.mygdx.manager.UnitManager"/>
 	<bean id="volumeManager" class="com.mygdx.manager.VolumeManager" />
+	<bean id="dungeonEncounterManager" class="com.mygdx.manager.DungeonEncounterManager"/>
+	<bean id="dungeonManager" class="com.mygdx.manager.DungeonManager"/>
 	
 	<bean id="baseScreen" class="com.mygdx.screen.BaseScreen" scope="prototype"/>
 	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen"/>
@@ -117,7 +119,6 @@
 		scope="prototype"/>
 	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage"
 		scope="prototype"/>
-	<bean id="loadStage" class="com.mygdx.stage.LoadStage"	scope="prototype"/>
 	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype">
 	</bean>
 	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage"
@@ -137,6 +138,9 @@
 	<bean id="gameOverStage" class="com.mygdx.stage.GameOverStage"/>
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype"/>
 	<bean id="inventoryStage" class="com.mygdx.stage.InventoryStage" scope="prototype"/>
+	<bean id="loadingBarStage" class="com.mygdx.stage.LoadingBarStage" scope="prototype"/>
+	<bean id="loadPopupStage" class="com.mygdx.stage.LoadPopupStage" scope="prototype"/>
+	<bean id="loadStage" class="com.mygdx.stage.LoadStage" scope="prototype"/>
 	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage"
 		scope="prototype" />
@@ -151,14 +155,16 @@
 		scope="prototype"/>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
-	<bean id="heroBattleStrategy" class="com.mygdx.unitStrategy.HeroBattleStrategy"/>	
+ 	
+ 	<bean id="heroBattleStrategy" class="com.mygdx.unitStrategy.HeroBattleStrategy"/>	
 	<bean id="inventoryStrategy" class="com.mygdx.unitStrategy.InventoryStrategy"/>
-	<bean id="monsterBattleStrategy" class="com.mygdx.unitStrategy.MonsterBattleStrategy"/>	
+	<bean id="monsterBattleStrategy" class="com.mygdx.unitStrategy.MonsterBattleStrategy"/>
 		
 	<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
 	<bean id="attackButtonListener" class="com.mygdx.listener.AttackButtonListener" scope="prototype"/>
 	<bean id="backButtonListener" class="com.mygdx.listener.BackButtonListener" scope="prototype"/>
 	<bean id="buildingButtonListener" class="com.mygdx.listener.BuildingButtonListener" scope="prototype"/>
+	<bean id="dungeonEntranceButtonListener" class="com.mygdx.listener.DungeonEntranceButtonListener" scope="prototype"/>
 	<bean id="gameObjectButtonListener" class="com.mygdx.listener.GameObjectButtonListener" scope="prototype"/>
 	<bean id="goBackwardFieldButtonListener" class="com.mygdx.listener.GoBackwardFieldButtonListener" scope="prototype"/>
 	<bean id="goForwardFieldButtonListener" class="com.mygdx.listener.GoForwardFieldButtonListener" scope="prototype"/>
@@ -167,8 +173,6 @@
 	<bean id="selectEventListener" class="com.mygdx.listener.SelectEventListener" scope="prototype"/>
 	<bean id="runAwayListener" class="com.mygdx.listener.RunAwayListener" scope="prototype"/>
 	<bean id="closeButtonListener" class="com.mygdx.listener.CloseButtonListener" scope="prototype"/>
-	
-	<bean id="gridHitBox" class="com.mygdx.ui.GridHitbox" scope="prototype"/>
 	
 	<bean id="atlasUiFile" class="com.mygdx.model.jsonModel.AtlasUiFile"/>
 	<bean id="musicFile" class="com.mygdx.model.jsonModel.MusicFile"/>

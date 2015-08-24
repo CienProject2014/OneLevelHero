@@ -17,8 +17,9 @@ import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.SaveVersion;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.EventManager;
-import com.mygdx.manager.LoadManager;
+import com.mygdx.manager.LoadNewManager;
 import com.mygdx.manager.SaveManager;
+import com.mygdx.screen.BuildingScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class SaveStage extends BaseOverlapStage {
@@ -29,22 +30,21 @@ public class SaveStage extends BaseOverlapStage {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
-	private LoadManager loadManager;
+	private LoadNewManager loadManager;
 	@Autowired
 	private CurrentInfo currentInfo;
 	@Autowired
-	PartyInfo partyInfo;
+	private PartyInfo partyInfo;
 	@Autowired
-	PositionInfo positionInfo;
+	private PositionInfo positionInfo;
 	@Autowired
-	TimeInfo timeInfo;
+	private TimeInfo timeInfo;
 	@Autowired
-	StorySectionInfo storySectionInfo;
+	private StorySectionInfo storySectionInfo;
 	@Autowired
-	EventInfo eventInfo;
+	private EventInfo eventInfo;
 
 	private static final String SCENE_NAME = "save_scene";
-	public static boolean isTouched = false;
 	private Camera cam;
 	private CompositeItem closeButton;
 	private CompositeItem background;
@@ -81,7 +81,7 @@ public class SaveStage extends BaseOverlapStage {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				isTouched = false;
+				BuildingScreen.isInSave = false;
 			}
 		});
 		save01.addListener(new InputListener() {
@@ -93,7 +93,7 @@ public class SaveStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE1);
 				saveManager.save();
-				isTouched = false;
+				BuildingScreen.isInSave = false;
 			}
 		});
 		save02.addListener(new InputListener() {
@@ -105,7 +105,7 @@ public class SaveStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE2);
 				saveManager.save();
-				isTouched = false;
+				BuildingScreen.isInSave = false;
 			}
 		});
 		save03.addListener(new InputListener() {
@@ -117,7 +117,7 @@ public class SaveStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE3);
 				saveManager.save();
-				isTouched = false;
+				BuildingScreen.isInSave = false;
 			}
 		});
 		closeButton.addListener(new InputListener() {
@@ -127,7 +127,7 @@ public class SaveStage extends BaseOverlapStage {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				isTouched = false;
+				BuildingScreen.isInSave = false;
 			}
 		});
 
@@ -138,16 +138,10 @@ public class SaveStage extends BaseOverlapStage {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				isTouched = false;
-				initInfo();
-				eventManager.setCurrentEventNpc("prologue");
-				loadManager.loadNewGame();
+				BuildingScreen.isInSave = false;
+				saveManager.setNewGame();
 			}
 		});
-	}
-
-	private void initInfo() {
-		saveManager.firstInfoLoad();
 	}
 
 	private void setCamera() {

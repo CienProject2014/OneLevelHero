@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.CloseButtonListener;
@@ -16,7 +17,13 @@ import com.mygdx.listener.RunAwayListener;
 public class SkillRunPopup extends Dialog {
 	private AtlasUiAssets atlasUiAssets;
 	private ListenerFactory listenerFactory;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameObjectPopup");
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
+
+	public void setConstantsAssets(ConstantsAssets constantsAssets) {
+		this.constantsAssets = constantsAssets;
+	}
+
 	private Label questionLabel;
 	private ImageButton okayButton, closeButton;
 
@@ -29,6 +36,8 @@ public class SkillRunPopup extends Dialog {
 	}
 
 	public void initialize(String labelText) {
+		getButtonTable().clear();
+		uiConstantsMap = constantsAssets.getUiConstants("GameObjectPopup");
 		questionLabel = new Label(labelText, StaticAssets.skin);
 		questionLabel.setAlignment(Align.center);
 		questionLabel.setBounds(uiConstantsMap.get("questionLabelX"), uiConstantsMap.get("questionLabelY"),

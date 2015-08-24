@@ -14,6 +14,7 @@ import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.SaveManager;
+import com.mygdx.screen.LoadScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 
@@ -26,7 +27,6 @@ public class LoadPopupStage extends BaseOverlapStage {
 	private CurrentInfo currentInfo;
 	@Autowired
 	private MovingManager movingManager;
-	public static boolean isTouched = false;
 	private static final String SCENE_NAME = "load_scene";
 	private Camera cam;
 	private ImageItem save;
@@ -65,7 +65,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				isTouched = false;
+				LoadScreen.isPopupTouched = false;
 			}
 		});
 		save01.addListener(new InputListener() {
@@ -77,7 +77,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE1);
 				saveManager.load();
-				isTouched = false;
+				LoadScreen.isPopupTouched = false;
 				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
 				movingManager.goCurrentNode(nodeType);
 			}
@@ -91,9 +91,8 @@ public class LoadPopupStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE2);
 				saveManager.load();
-				isTouched = false;
-				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
-				movingManager.goCurrentNode(nodeType);
+				LoadScreen.isPopupTouched = false;
+				movingManager.goCurrentPosition();
 			}
 		});
 		save03.addListener(new InputListener() {
@@ -105,7 +104,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE3);
 				saveManager.load();
-				isTouched = false;
+				LoadScreen.isPopupTouched = false;
 				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
 				movingManager.goCurrentNode(nodeType);
 			}
@@ -117,7 +116,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				isTouched = false;
+				LoadScreen.isPopupTouched = false;
 			}
 		});
 	}

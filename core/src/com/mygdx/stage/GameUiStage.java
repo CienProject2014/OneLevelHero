@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.PositionEnum;
@@ -36,7 +37,9 @@ public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private StorySectionManager storySectionManager;
 
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameUiStage");
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
 
 	private Table uiTable;
 	private Table topTable;
@@ -64,6 +67,7 @@ public class GameUiStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		// 초기화
+		uiConstantsMap = constantsAssets.getUiConstants("GameUiStage");
 		uiTable = new Table();
 		topTable = new Table(uiComponentAssets.getSkin());
 

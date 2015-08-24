@@ -27,7 +27,6 @@ import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.screen.BattleScreen;
-import com.mygdx.ui.GridHitbox;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 
@@ -48,8 +47,8 @@ public class SkillStage extends BaseOverlapStage {
 	private ConstantsAssets constantsAssets;
 	@Autowired
 	private ListenerFactory listenerFactory;
-	@Autowired
-	private GridHitbox gridHitbox;
+	// @Autowired
+	// private GridHitbox gridHitbox;
 	private Map<String, Array<String>> sceneConstants;
 	public final String SCENE_NAME = "skill_scene";
 	private Camera cam;
@@ -95,16 +94,16 @@ public class SkillStage extends BaseOverlapStage {
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					setCompositeItemVisibilty(useButtonList.get(index), DEFAULT_VISIBILTY);
 					battleManager.setCurrentSelectedSkill(skillInfo.get(index));
-					storySectionManager.triggerSectionEvent(EventTypeEnum.BATTLE_CONTROL, "skill_attack");
+					storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_CONTROL, "skill_attack");
 					Skill currentSelectedSkill = battleManager.getCurrentSelectedSkill();
 					if (currentSelectedSkill.getHitboxSize() == 0) {
-						gridHitbox.setHitboxCenter(currentSelectedSkill.getHitboxCenter());
-						gridHitbox.setHitboxShape(currentSelectedSkill.getHitboxShape());
+						// gridHitbox.setHitboxCenter(currentSelectedSkill.getHitboxCenter());
+						// gridHitbox.setHitboxShape(currentSelectedSkill.getHitboxShape());
 						battleManager.afterClick(currentSelectedSkill.getCostGauge());
 						battleManager.setShowGrid(true);
 						Gdx.app.log(TAG, "gridHitbox를 표시합니다");
 					} else {
-						gridHitbox.setLimitNum(currentSelectedSkill.getHitboxSize());
+						battleManager.setGridLimitNum(currentSelectedSkill.getHitboxSize());
 						if (currentSelectedSkill.getHitboxCenter() == null) {
 							battleManager.afterClick(currentSelectedSkill.getCostGauge());
 							battleManager.setShowGrid(true);
