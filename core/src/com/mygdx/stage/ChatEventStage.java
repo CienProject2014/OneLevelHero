@@ -87,6 +87,7 @@ public class ChatEventStage extends BaseOneLevelStage {
 
 	public Stage makeStage(EventScene eventScene) {
 		super.makeStage();
+		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
 		eventManager.setCurrentEventElementType(EventElementEnum.NPC);
 		setScene(eventScene);
 		return this;
