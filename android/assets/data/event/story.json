@@ -393,7 +393,7 @@
       {
         "nextSectionNumber": "308",
         "eventType": "move_sub_node_by_time",
-        "targetComponent": "crystallized_valley_room_01",
+        "targetComponent": "crystallized_valley",
         "targetTime": {
           "startTime": 6,
           "endTime": 18
@@ -402,11 +402,114 @@
       {
         "nextSectionNumber": "309",
         "eventType": "move_sub_node_by_time",
-        "targetComponent": "crystallized_valley_room_01",
+        "targetComponent": "crystallized_valley",
         "targetTime": {
           "startTime": 18,
           "endTime": 6
         }
+      }
+    ]
+  },
+  "308":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "8"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "310",
+        "eventType": "move_node",
+        "targetComponent": "winterfall"
+      }
+    ]
+  },
+  "309":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "9"
+      },
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "10"
+      }
+    ]
+  },
+  "310":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "11"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "311",
+        "eventType": "move_sub_node",
+        "targetComponent": "winterfall_altar"
+      }
+    ]
+  },
+  "311":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "12"
+      },
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "13"
+      },
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "14"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "312",
+        "eventType": "move_sub_node",
+        "targetComponent": "cave_of_succubus_room_1"
+      }
+    ]
+  },
+  "312":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "15"
+      },
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "16"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "313",
+        "eventType": "battle_end",
+        "targetComponent": "succubus_junior"
+      }
+    ]
+  },
+  "313":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "17"
+      },
+      {
+        "eventNpc": "cobweb_story",
+        "eventNumber": "16"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "314",
+        "eventType": "battle_end",
+        "targetComponent": "succubus_junior"
       }
     ]
   }

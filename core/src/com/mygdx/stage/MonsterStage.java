@@ -16,6 +16,7 @@ import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.FieldManager;
@@ -123,12 +124,14 @@ public class MonsterStage extends BaseOneLevelStage {
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
-		if (eventManager.getCurrentElementEvent().getEventType().equals(EventTypeEnum.BATTLE)) {
+		if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devilcastle_01")));
+		} else if (eventManager.getCurrentElementEvent().getEventType().equals(EventTypeEnum.BATTLE)) {
 			String backgroundPath = eventManager.getCurrentElementEvent().getEventComponent().get(1);
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
 		} else {
-			return new TextureRegionDrawable(
-					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
+					.getFieldType().toString())));
 		}
 	}
 

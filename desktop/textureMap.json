@@ -171,6 +171,10 @@ fieldui_back: {
 	class: java.lang.String,
 	value: texture/worldmap/fieldui_back.png/
 },
+bg_prog_team_01: {
+	class: java.lang.String,
+	value: texture/background/bg_prog_team_01.png/
+},
 bg_kadilla_castle_square: {
 	class: java.lang.String,
 	value: texture/background/bg_kadilla_castle_square.png/
@@ -482,10 +486,6 @@ hpcolour: {
 monster_mercensary: {
 	class: java.lang.String,
 	value: texture/monster/monster_mercensary.png/
-},
-bg_prog_team_01: {
-	class: java.lang.String,
-	value: texture/background/bg_prog_team_01.png/
 },
 battle_yongsa_big: {
 	class: java.lang.String,

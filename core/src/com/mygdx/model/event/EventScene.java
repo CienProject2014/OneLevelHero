@@ -1,9 +1,8 @@
 package com.mygdx.model.event;
 
-
 public class EventScene {
-	private final String SPEAKER_LEFT = "left";
-	private final String SPEAKER_RIGHT = "right";
+	public final static String SPEAKER_LEFT = "left";
+	public final static String SPEAKER_RIGHT = "right";
 	private String script;
 	private String characterPath;
 	private String faceNumber;

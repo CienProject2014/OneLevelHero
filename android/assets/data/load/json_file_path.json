@@ -11,8 +11,11 @@
   "village_json": {
     "filePath": "data/map/village.json"
   },
-  "dungeon_entrance_json":{
-  	"filePath" : "data/map/dungeon_entrance.json"
+  "dungeon_json": {
+    "filePath": "data/map/dungeon.json"
+  },
+  "dungeon_entrance_json": {
+    "filePath": "data/map/dungeon_entrance.json"
   },
   "fork_json": {
     "filePath": "data/map/fork.json"
@@ -23,44 +26,44 @@
   "skin": {
     "filePath": "skin/uiskin.json"
   },
-  "monster_json":{
-  	"filePath" : "data/unit/monster.json"
+  "monster_json": {
+    "filePath": "data/unit/monster.json"
   },
-  "story_json":{
-  	"filePath" : "data/event/story.json"
+  "story_json": {
+    "filePath": "data/event/story.json"
   },
-  "weapon_json":{
-  	"filePath" : "data/item/weapon.json"
+  "weapon_json": {
+    "filePath": "data/item/weapon.json"
   },
-  "shield_json":{
-  	"filePath" : "data/item/shield.json"
+  "shield_json": {
+    "filePath": "data/item/shield.json"
   },
-  "accessory_json" : {
-  	"filePath" : "data/item/accessory.json"
+  "accessory_json": {
+    "filePath": "data/item/accessory.json"
   },
-  "clothes_json" : {
-  	"filePath" : "data/item/clothes.json"
+  "clothes_json": {
+    "filePath": "data/item/clothes.json"
   },
-  "consumables_json" : {
-  	"filePath" : "data/item/consumables.json"
+  "consumables_json": {
+    "filePath": "data/item/consumables.json"
   },
-  "etc_item_json":{
-  	"filePath" : "data/item/etc_item.json"
+  "etc_item_json": {
+    "filePath": "data/item/etc_item.json"
   },
-  "skill_json":{
-  	"filePath" : "data/event/skill.json"
+  "skill_json": {
+    "filePath": "data/event/skill.json"
   },
-  "game_object_json":{
-  	"filePath" : "data/event/game_object.json"
+  "game_object_json": {
+    "filePath": "data/event/game_object.json"
   },
-  "scene_constants_json":{
-  	"filePath" : "data/constants/scene_constants.json"
+  "scene_constants_json": {
+    "filePath": "data/constants/scene_constants.json"
   },
-  "monster_field_json":{
-  	"filePath" : "data/map/monster_field.json"
+  "monster_field_json": {
+    "filePath": "data/map/monster_field.json"
   },
-  "unusual_condition_json":{
-  	"filePath" : "data/event/unusual_condition.json"
+  "unusual_condition_json": {
+    "filePath": "data/event/unusual_condition.json"
   },
   "ui_constants": {
     "filePath": "data/constants/ui_constants.json"

@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -16,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.FieldManager;
@@ -84,13 +84,13 @@ public class EncounterStage extends BaseOneLevelStage {
 		return new Image(textureManager.getMonsterTexture(monster.getFacePath()));
 	}
 
+	// FIXME
 	private TextureRegionDrawable getBackgroundTRD() {
-		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
+		if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devilcastle_01")));
 		} else {
-			Gdx.app.log("EncounterStage", "fieldType - " + fieldManager.getFieldType());
-			return new TextureRegionDrawable(
-					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
+					.getFieldType().toString())));
 		}
 	}
 
@@ -115,10 +115,19 @@ public class EncounterStage extends BaseOneLevelStage {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-				screenFactory.show(ScreenEnum.FIELD);
+
+				if (battleManager.getBeforePosition() == PositionEnum.FIELD) {
+					battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+					screenFactory.show(ScreenEnum.FIELD);
+				} else if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
+					screenFactory.show(ScreenEnum.DUNGEON);
+				} else {
+					screenFactory.show(ScreenEnum.FIELD);
+
+					battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+					screenFactory.show(ScreenEnum.FIELD);
+				}
 			}
 		});
 	}
-
 }

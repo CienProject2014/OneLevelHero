@@ -22,6 +22,7 @@ import com.mygdx.listener.BuildingButtonListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.TimeManager;
 import com.mygdx.model.surroundings.Building;
 import com.mygdx.model.surroundings.NodeConnection;
 import com.mygdx.model.surroundings.Village;
@@ -36,6 +37,8 @@ public class VillageStage extends BaseOverlapStage {
 	private ListenerFactory listenerFactory;
 	@Autowired
 	private AssetsManager assetsManager;
+	@Autowired
+	private TimeManager timeManager;
 	private Village villageInfo;
 	public TextButton shiftButton;
 
@@ -97,7 +100,7 @@ public class VillageStage extends BaseOverlapStage {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
 					setCameraState(CameraStateEnum.MOVE_UP);
-
+					timeManager.plusMinute(15);
 					cameraManager.setMoveFlag(2);
 				}
 			});
@@ -106,7 +109,7 @@ public class VillageStage extends BaseOverlapStage {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
 					setCameraState(CameraStateEnum.MOVE_DOWN);
-
+					timeManager.plusMinute(15);
 					cameraManager.setMoveFlag(2);
 				}
 			});
@@ -126,6 +129,8 @@ public class VillageStage extends BaseOverlapStage {
 
 					setCameraState(CameraStateEnum.MOVE_LEFT);
 					cameraManager.setMoveFlag(5);
+					timeManager.plusMinute(15);
+
 				}
 			});
 
@@ -134,6 +139,8 @@ public class VillageStage extends BaseOverlapStage {
 				public void clicked(InputEvent event, float x, float y) {
 					setCameraState(CameraStateEnum.MOVE_RIGHT);
 					cameraManager.setMoveFlag(5);
+					timeManager.plusMinute(15);
+
 				}
 			});
 			cameraManager.setDirection(2);
@@ -180,8 +187,8 @@ public class VillageStage extends BaseOverlapStage {
 	private void setBuildingButton() {
 		if (villageInfo.getBuilding() != null) {
 			for (final Entry<String, Building> building : villageInfo.getBuilding().entrySet()) {
-				CompositeItem buildingButton = sceneLoader.getRoot()
-						.getCompositeById(building.getValue().getBuildingPath());
+				CompositeItem buildingButton = sceneLoader.getRoot().getCompositeById(
+						building.getValue().getBuildingPath());
 				buildingButton.setTouchable(Touchable.enabled);
 				BuildingButtonListener buildingButtonListener = listenerFactory.getBuildingButtonListener();
 				buildingButtonListener.setBuildingName(building.getKey());

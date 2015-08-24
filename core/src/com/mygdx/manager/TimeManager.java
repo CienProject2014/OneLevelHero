@@ -6,9 +6,9 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.TimeInfo;
 
 public class TimeManager {
-	private final static int MINUTES_PER_HOUR = 60;
-	private final static int HOURS_PER_DAY = 24;
-	private final static int MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
+	public final static int MINUTES_PER_HOUR = 60;
+	public final static int HOURS_PER_DAY = 24;
+	public final static int MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
 
 	@Autowired
 	private PartyManager partyManager;
@@ -55,6 +55,10 @@ public class TimeManager {
 
 	public int getMinute() {
 		return getTime() % MINUTES_PER_HOUR;
+	}
+
+	public int getDayMinute() {
+		return getTime() % MINUTES_PER_DAY;
 	}
 
 	public String getHourInfo() {
