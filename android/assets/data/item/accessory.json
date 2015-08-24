@@ -15,6 +15,7 @@
     "description": "활력을 줄 것 같은 붉은 가넷 팬던트이다."
   },
   "sapphire_pendant": {
+    "itemPath" : "sapphire_pendant",
     "itemType" : "accessory",
     "name": "사파이어 팬던트",
     "category": "장신구",

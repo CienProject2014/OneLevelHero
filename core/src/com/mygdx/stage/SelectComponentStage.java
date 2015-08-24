@@ -46,8 +46,7 @@ public class SelectComponentStage extends BaseOneLevelStage {
 
 	private void addListener() {
 		for (int i = 0; i < eventSize; i++) {
-			SelectComponentListener selectComponentListener = listenerFactory
-					.getSelectComponentListener();
+			SelectComponentListener selectComponentListener = listenerFactory.getSelectComponentListener();
 			selectComponentListener.setIndex(i);
 			chatButtons.get(i).addListener(selectComponentListener);
 		}
@@ -57,7 +56,7 @@ public class SelectComponentStage extends BaseOneLevelStage {
 		super.makeStage();
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
 		chatStyles = new ArrayList<TextButtonStyle>();
-		eventSize = eventManager.getCurrentEvent().getEventComponent().size();
+		eventSize = eventManager.getCurrentNpcEvent().getEventComponent().size();
 		showEventButton();
 		setSize();
 		setButtonPosition();
@@ -71,21 +70,14 @@ public class SelectComponentStage extends BaseOneLevelStage {
 	// StaticAssets.BASE_WINDOW_HEIGHT * 0.185f
 	private void setButtonPosition() {
 		final float buttonPosition[][] = {
-				{ StaticAssets.BASE_WINDOW_WIDTH * 0.109375f,
-						StaticAssets.BASE_WINDOW_HEIGHT * 0.74f },
-				{ StaticAssets.BASE_WINDOW_WIDTH * 0.109375f,
-						StaticAssets.BASE_WINDOW_HEIGHT * 0.555f },
-				{ StaticAssets.BASE_WINDOW_WIDTH * 0.109375f,
-						StaticAssets.BASE_WINDOW_HEIGHT * 0.37f },
-				{ StaticAssets.BASE_WINDOW_WIDTH * 0.68f,
-						StaticAssets.BASE_WINDOW_HEIGHT * 0.74f },
-				{ StaticAssets.BASE_WINDOW_WIDTH * 0.68f,
-						StaticAssets.BASE_WINDOW_HEIGHT * 0.555f },
-				{ StaticAssets.BASE_WINDOW_WIDTH * 0.68f,
-						StaticAssets.BASE_WINDOW_HEIGHT * 0.37f } };
+				{StaticAssets.BASE_WINDOW_WIDTH * 0.109375f, StaticAssets.BASE_WINDOW_HEIGHT * 0.74f},
+				{StaticAssets.BASE_WINDOW_WIDTH * 0.109375f, StaticAssets.BASE_WINDOW_HEIGHT * 0.555f},
+				{StaticAssets.BASE_WINDOW_WIDTH * 0.109375f, StaticAssets.BASE_WINDOW_HEIGHT * 0.37f},
+				{StaticAssets.BASE_WINDOW_WIDTH * 0.68f, StaticAssets.BASE_WINDOW_HEIGHT * 0.74f},
+				{StaticAssets.BASE_WINDOW_WIDTH * 0.68f, StaticAssets.BASE_WINDOW_HEIGHT * 0.555f},
+				{StaticAssets.BASE_WINDOW_WIDTH * 0.68f, StaticAssets.BASE_WINDOW_HEIGHT * 0.37f}};
 		for (int i = 0; i < eventSize; i++)
-			chatButtons.get(i).setPosition(buttonPosition[i][0],
-					buttonPosition[i][1]);
+			chatButtons.get(i).setPosition(buttonPosition[i][0], buttonPosition[i][1]);
 	}
 
 	private void setexitButton() {
@@ -93,14 +85,12 @@ public class SelectComponentStage extends BaseOneLevelStage {
 		exitButton.center();
 		exitButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				movingManager.goCurrentPosition();
 				event.getListenerActor().setVisible(false);
 			}
@@ -110,20 +100,17 @@ public class SelectComponentStage extends BaseOneLevelStage {
 	}
 
 	private void setSize() {
-		final float buttonSize[] = { StaticAssets.BASE_WINDOW_WIDTH * 0.208f,
-				StaticAssets.BASE_WINDOW_HEIGHT * 0.185f };
+		final float buttonSize[] = {StaticAssets.BASE_WINDOW_WIDTH * 0.208f, StaticAssets.BASE_WINDOW_HEIGHT * 0.185f};
 		for (TextButton chatButton : chatButtons)
 			chatButton.setSize(buttonSize[0], buttonSize[1]);
 	}
 
 	private void showEventButton() {
 		for (int i = 0; i < eventSize; i++) {
-			chatStyles.add(new TextButtonStyle(uiComponentAssets
-					.getEventButton(), uiComponentAssets.getEventButton(),
-					uiComponentAssets.getEventButton(), uiComponentAssets
-							.getFont()));
-			chatButtons.add(new TextButton(eventManager.getCurrentEvent()
-					.getEventComponent().get(i), chatStyles.get(i)));
+			chatStyles.add(new TextButtonStyle(uiComponentAssets.getEventButton(), uiComponentAssets.getEventButton(),
+					uiComponentAssets.getEventButton(), uiComponentAssets.getFont()));
+			chatButtons.add(new TextButton(eventManager.getCurrentNpcEvent().getEventComponent().get(i), chatStyles
+					.get(i)));
 		}
 	}
 

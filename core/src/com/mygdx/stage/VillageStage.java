@@ -14,15 +14,13 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.NodeAssets;
-import com.mygdx.assets.StaticAssets;
-import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.enums.VillageDirectionEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
-import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.model.surroundings.Building;
 import com.mygdx.model.surroundings.NodeConnection;
@@ -33,18 +31,15 @@ public class VillageStage extends BaseOverlapStage {
 	@Autowired
 	private NodeAssets nodeAssets;
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
-	@Autowired
 	private WorldMapAssets worldMapAssets;
 	@Autowired
-	private MovingManager movingManager;
-	@Autowired
 	private ListenerFactory listenerFactory;
+	@Autowired
+	private AssetsManager assetsManager;
 	private Village villageInfo;
 	public TextButton shiftButton;
 
 	public Stage makeStage() {
-		initSceneLoader(StaticAssets.rm);
 		setVillage();
 		cameraManager.stretchToDevice(this);
 		/* setVillage(); */
@@ -71,9 +66,13 @@ public class VillageStage extends BaseOverlapStage {
 	private void setVillageScene(PositionManager positionManager, NodeAssets nodeAssets) {
 		if (nodeAssets.getVillageByName(positionManager.getCurrentNodeName()) != null) {
 			villageInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName());
+			assetsManager.initScene(villageInfo.getSceneName());
+			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(villageInfo.getSceneName());
 		} else {
 			villageInfo = nodeAssets.getVillageByName("blackwood");
+			assetsManager.initScene(villageInfo.getSceneName());
+			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(villageInfo.getSceneName());
 		}
 	}
@@ -87,63 +86,63 @@ public class VillageStage extends BaseOverlapStage {
 		addActor(sceneLoader.getRoot());
 		VillageDirectionEnum villageDirection = villageInfo.getVillageDirection();
 		switch (villageDirection) {
-			case UP_DOWN :
-				final CompositeItem shiftbutton_up = sceneLoader.getRoot().getCompositeById("camera_up");
-				final CompositeItem shiftbutton_down = sceneLoader.getRoot().getCompositeById("camera_down");
+		case UP_DOWN:
+			final CompositeItem shiftbutton_up = sceneLoader.getRoot().getCompositeById("camera_up");
+			final CompositeItem shiftbutton_down = sceneLoader.getRoot().getCompositeById("camera_down");
 
-				shiftbutton_up.setTouchable(Touchable.enabled);
-				shiftbutton_down.setTouchable(Touchable.enabled);
+			shiftbutton_up.setTouchable(Touchable.enabled);
+			shiftbutton_down.setTouchable(Touchable.enabled);
 
-				shiftbutton_up.addListener(new ClickListener() {
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						setCameraState(CameraStateEnum.MOVE_UP);
+			shiftbutton_up.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_UP);
 
-						cameraManager.setMoveFlag(2);
-					}
-				});
+					cameraManager.setMoveFlag(2);
+				}
+			});
 
-				shiftbutton_down.addListener(new ClickListener() {
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						setCameraState(CameraStateEnum.MOVE_DOWN);
+			shiftbutton_down.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_DOWN);
 
-						cameraManager.setMoveFlag(2);
-					}
-				});
-				cameraManager.setDirection(1);
+					cameraManager.setMoveFlag(2);
+				}
+			});
+			cameraManager.setDirection(1);
 
-				break;
-			case LEFT_RIGHT :
-				final CompositeItem shiftbutton_left = sceneLoader.getRoot().getCompositeById("camera_left");
-				final CompositeItem shiftbutton_right = sceneLoader.getRoot().getCompositeById("camera_right");
+			break;
+		case LEFT_RIGHT:
+			final CompositeItem shiftbutton_left = sceneLoader.getRoot().getCompositeById("camera_left");
+			final CompositeItem shiftbutton_right = sceneLoader.getRoot().getCompositeById("camera_right");
 
-				shiftbutton_left.setTouchable(Touchable.enabled);
-				shiftbutton_right.setTouchable(Touchable.enabled);
+			shiftbutton_left.setTouchable(Touchable.enabled);
+			shiftbutton_right.setTouchable(Touchable.enabled);
 
-				shiftbutton_left.addListener(new ClickListener() {
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						setCameraState(CameraStateEnum.MOVE_DOWN);
+			shiftbutton_left.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
 
-						cameraManager.setMoveFlag(5);
-					}
-				});
+					setCameraState(CameraStateEnum.MOVE_LEFT);
+					cameraManager.setMoveFlag(5);
+				}
+			});
 
-				shiftbutton_right.addListener(new ClickListener() {
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						setCameraState(CameraStateEnum.MOVE_RIGHT);
-						cameraManager.setMoveFlag(5);
-					}
-				});
-				cameraManager.setDirection(2);
+			shiftbutton_right.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					setCameraState(CameraStateEnum.MOVE_RIGHT);
+					cameraManager.setMoveFlag(5);
+				}
+			});
+			cameraManager.setDirection(2);
 
-				break;
-			case CENTER :
-				break;
-			default :
-				Gdx.app.log("VillageStage", "VillageDirectionEnum정보 오류");
+			break;
+		case CENTER:
+			break;
+		default:
+			Gdx.app.log("VillageStage", "VillageDirectionEnum정보 오류");
 		}
 	}
 
@@ -181,8 +180,8 @@ public class VillageStage extends BaseOverlapStage {
 	private void setBuildingButton() {
 		if (villageInfo.getBuilding() != null) {
 			for (final Entry<String, Building> building : villageInfo.getBuilding().entrySet()) {
-				CompositeItem buildingButton = sceneLoader.getRoot().getCompositeById(
-						building.getValue().getBuildingPath());
+				CompositeItem buildingButton = sceneLoader.getRoot()
+						.getCompositeById(building.getValue().getBuildingPath());
 				buildingButton.setTouchable(Touchable.enabled);
 				BuildingButtonListener buildingButtonListener = listenerFactory.getBuildingButtonListener();
 				buildingButtonListener.setBuildingName(building.getKey());

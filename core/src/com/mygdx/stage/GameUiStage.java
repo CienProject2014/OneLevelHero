@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.PositionEnum;
@@ -24,6 +25,7 @@ import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.SaveManager;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.popup.GameObjectPopup;
 import com.mygdx.popup.StatusMessagePopup;
 
@@ -42,8 +44,12 @@ public class GameUiStage extends BaseOneLevelStage {
 	private ListenerFactory listenerFactory;
 	@Autowired
 	private SaveManager saveManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
 
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("GameUiStage");
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
 
 	private Table uiTable;
 	private Table topTable;
@@ -62,11 +68,17 @@ public class GameUiStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		timeInfoButton.setText(timeManager.getTimeInfo());
+		if (storySectionManager.getCurrentStorySection().getNextSections() != null
+				&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
+			timeInfoButton
+					.setText(timeManager.getTimeInfo() + " / " + storySectionManager.getCurrentStorySectionNumber());
+		}
 	}
 
 	public Stage makeStage() {
 		super.makeStage();
 		// 초기화
+		uiConstantsMap = constantsAssets.getUiConstants("GameUiStage");
 		uiTable = new Table();
 		topTable = new Table(uiComponentAssets.getSkin());
 
@@ -77,21 +89,6 @@ public class GameUiStage extends BaseOneLevelStage {
 		tableStack.add(uiTable);
 		conditionalHidingBackButton();
 
-		alertMessage = new Stack<GameObjectPopup>();
-
-		// 알림 메시지
-		statusMessagePopup = new StatusMessagePopup("[ 스테이터스  ]", uiComponentAssets.getSkin(),
-				partyManager.getBattleMemberList());
-
-		Iterator<GameObjectPopup> alertMessageIterator = alertMessage
-				.iterator();
-		while (alertMessageIterator.hasNext()) {
-			GameObjectPopup nextIterator = alertMessageIterator.next();
-			addActor(nextIterator);
-			nextIterator.setVisible(true);
-			rewardManager.pollRewardQueue();
-		}
-		addActor(statusMessagePopup);
 		return this;
 	}
 
@@ -108,6 +105,7 @@ public class GameUiStage extends BaseOneLevelStage {
 			backButton.setVisible(true);
 		}
 	}
+
 	// 테이블 디자인
 	public void makeTable() {
 		topTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
@@ -159,7 +157,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		placeInfoButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				saveManager.load();
+				partyManager.healAllHero();
 				return true;
 			}
 		});

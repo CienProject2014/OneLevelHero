@@ -1,23 +1,29 @@
 {
   "status_scene": {
     "status_label": [
-      "attack",
-      "defense",
+      "atk",
+      "def",
       "electric_resistance",
-      "experience",
+      "exp_points_label",
       "fire_resistance",
-      "health_point_state",
-      "level",
-      "magic_attack",
-      "magic_defense",
-      "speed",
+      "hp_label",
+      "level_label",
+      "matk",
+      "mdef",
+      "spd",
       "water_resistance"
     ],
     "character_status_image" : [
-    	"change_04",
-    	"change_03",
-    	"change_02",
-    	"change_01"
+    	"change_image01",
+    	"change_image02",
+    	"change_image03",
+    	"change_image04"
+    ],
+    "character_change":[
+        "change01",
+        "change02",
+        "change03",
+        "change04"
     ]
   },
   "inventory_scene": {
@@ -87,7 +93,7 @@
     	"button_equip03",
     	"button_equip04",
     	"button_equip05",
-    	"button_equip06",
+    	"button_equip06"
     ],
     "character_status_image" : [
     	"character_window01",
@@ -99,5 +105,52 @@
     	"background",
     	"background02"
     ]
+  },
+  "skill_scene" : {
+    "use_button" : [
+    	"use_01",
+    	"use_02",
+    	"use_03",
+    	"use_04",
+    	"use_05",
+    	"use_06",
+    	"use_07"
+    ],
+    "highlight_frame" :[
+    	"highlight_01",
+    	"highlight_02",
+    	"highlight_03",
+    	"highlight_04",
+    	"highlight_05",
+    	"highlight_06",
+    	"highlight_07"
+    ],
+  	"skill_name_label" : [
+  		"skill_01",
+  		"skill_02",
+  		"skill_03",
+  		"skill_04",
+  		"skill_05",
+  		"skill_06",
+  		"skill_07"
+  	],
+  	"casting_label":[
+  		"casting_01",
+  		"casting_02",
+  		"casting_03",
+  		"casting_04",
+  		"casting_05",
+  		"casting_06",
+  		"casting_07"
+  	],
+  	"gauge_label":[
+  		"gauge_01",
+  		"gauge_02",
+  		"gauge_03",
+  		"gauge_04",
+  		"gauge_05",
+  		"gauge_06",
+  		"gauge_07"
+  	]
   }
 }

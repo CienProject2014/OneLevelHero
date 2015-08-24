@@ -14,22 +14,29 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.TextureManager;
 
 public class MenuStage extends BaseOneLevelStage {
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private TextureManager textureManager;
 
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("MenuStage");
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
 
 	private Table buttonTable;
 
 	public Stage makeStage() {
 		super.makeStage();
+		uiConstantsMap = constantsAssets.getUiConstants("MenuStage");
 		buttonTable = new Table();
 
 		ImageButton startButton;
@@ -40,8 +47,7 @@ public class MenuStage extends BaseOneLevelStage {
 		Float buttonHeight = 195f;
 		ImageButton logo;
 
-		Image background = new Image(
-				StaticAssets.assetManager.get(StaticAssets.textureMap.get("main_background"), Texture.class));
+		Image background = new Image(textureManager.getBackgroundTexture("main_background"));
 
 		// 이미지추가
 		startButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_start.png"))));

@@ -10,8 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.NodeAssets;
-import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.DungeonEncounterManager;
 import com.mygdx.manager.DungeonManager;
 import com.mygdx.model.DungeonConnection;
@@ -20,11 +20,12 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
  * @author Velmont
- *
+ * 
  */
 public class DungeonStage extends BaseOverlapStage {
 	// FIXME UI
-
+	@Autowired
+	private AssetsManager assetsManager;
 	@Autowired
 	private NodeAssets nodeAssets;
 	@Autowired
@@ -41,20 +42,28 @@ public class DungeonStage extends BaseOverlapStage {
 	// private boolean currentHeading;
 	private ArrayList<DungeonConnection> selectableForward, selectableBackward;
 
+	public void makeScene(String sceneName) {
+		assetsManager.initScene(dungeonManager.getMapInfo().getSceneName());
+		initSceneLoader(assetsManager.rm);
+		sceneLoader.loadScene(dungeonManager.getMapInfo().getSceneName());
+
+		cameraManager.stretchToDevice(this);
+		addActor(sceneLoader.getRoot());
+	}
+
 	public Stage makeStage() {
-		initSceneLoader(StaticAssets.rm);
+		setMap();
+		makeScene(dungeonManager.getMapInfo().getSceneName());
 
 		// FIXME UI
 		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
-		setMap();
+
 		// mapInfo = worldNodeAssets.getDungeon("blackwood_forest_dungeon");
-		makeScene(dungeonManager.getMapInfo().getSceneName());
 		setButton(3);
 		update();
 
 		return this;
 	}
-
 	private void setMap() {
 		/*
 		 * mapInfo = new Dungeon();
@@ -71,14 +80,6 @@ public class DungeonStage extends BaseOverlapStage {
 		selectableBackward = new ArrayList<>();
 		selectableForward = new ArrayList<>();
 	}
-
-	private void makeScene(String sceneName) {
-		// FIXME UI
-		sceneLoader.loadScene(sceneName);
-		cameraManager.stretchToDevice(this);
-		addActor(sceneLoader.getRoot());
-	}
-
 	private void setButton(int doorNum) {
 		// FIXME UI
 
@@ -133,8 +134,7 @@ public class DungeonStage extends BaseOverlapStage {
 			}
 		}
 		// FIXME UI
-		for (int i = 0, n = (dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward)
-				.size(); i < n; i++) {
+		for (int i = 0, n = (dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size(); i < n; i++) {
 			Gdx.app.log("문 개수", String.valueOf(n));
 			btnRoad[i].setTouchable(i < n ? Touchable.enabled : Touchable.disabled);
 			btnRoad[i].setVisible(btnRoad[i].getTouchable() == Touchable.enabled);
@@ -166,8 +166,9 @@ public class DungeonStage extends BaseOverlapStage {
 	}
 
 	private void actionMove(int index) {
-		dungeonManager.setCurrentPos(dungeonManager.getMapInfo().nodes
-				.indexOf((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).get(index)));
+		dungeonManager.setCurrentPos(dungeonManager.getMapInfo().nodes.indexOf((dungeonManager.getCurrentHeading()
+				? selectableBackward
+				: selectableForward).get(index)));
 
 		if (!dungeonManager.getCurrentHeading())
 			dungeonManager.setCurrentPos(selectableForward.get(index).getTo());

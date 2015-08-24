@@ -3,18 +3,20 @@ package com.mygdx.ui;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.enums.MonsterEnum;
+import com.mygdx.manager.TextureManager;
 
 public class GridHitbox extends Table {
+	private TextureManager textureManager;
 	private final String TAG = "GridHitbox";
 
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
 
 	private final int TILE_WIDTH = 128;
 
@@ -35,7 +37,24 @@ public class GridHitbox extends Table {
 
 	private boolean gridShow;
 
+	public TextureManager getTextureManager() {
+		return textureManager;
+	}
+
+	public void setTextureManager(TextureManager textureManager) {
+		this.textureManager = textureManager;
+	}
+
+	public ConstantsAssets getConstantsAssets() {
+		return constantsAssets;
+	}
+
+	public void setConstantsAssets(ConstantsAssets constantsAssets) {
+		this.constantsAssets = constantsAssets;
+	}
+
 	public void setSizeType(MonsterEnum.SizeType sizeType) {
+
 		switch (sizeType) {
 		case SMALL:
 			// TODO 추후 구현
@@ -59,14 +78,14 @@ public class GridHitbox extends Table {
 		tiles = new Image[rows][columns];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				tiles[i][j] = new Image(
-						StaticAssets.assetManager.get(StaticAssets.textureMap.get("tile"), Texture.class));
+				tiles[i][j] = new Image(textureManager.getEtcTexture("tile"));
 			}
 		}
 		previousHitArea = new int[rows][columns];
 	}
 
 	public Stack makeGridTable(MonsterEnum.SizeType sizeType) {
+
 		Stack stack = new Stack();
 		Table tileTable = new Table();
 
@@ -265,7 +284,7 @@ public class GridHitbox extends Table {
 	}
 
 	private Image getGridImage(MonsterEnum.SizeType sizeType) {
-		return new Image(StaticAssets.assetManager.get(StaticAssets.textureMap.get("grid_" + sizeType), Texture.class));
+		return new Image(textureManager.getEtcTexture("grid_" + sizeType));
 	}
 
 	public boolean isGridShow() {
@@ -303,5 +322,9 @@ public class GridHitbox extends Table {
 
 	public void setPreviousHitArea(int[][] previousHitArea) {
 		this.previousHitArea = previousHitArea;
+	}
+
+	public void setUiConstantsMap(ConstantsAssets constantsAssets) {
+		uiConstantsMap = constantsAssets.getUiConstants("BattleStage");
 	}
 }

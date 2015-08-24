@@ -61,8 +61,8 @@
     "sLabels": [
       {
         "itemIdentifier": "skill_01",
-        "x": 375,
-        "y": 720.5,
+        "x": 555,
+        "y": 760.5,
         "zIndex": 15,
         "layerName": "Default",
         "tint": [
@@ -78,8 +78,8 @@
       },
       {
         "itemIdentifier": "casting_01",
-        "x": 803,
-        "y": 720.5,
+        "x": 888,
+        "y": 760.5,
         "zIndex": 16,
         "layerName": "Default",
         "tint": [
@@ -95,8 +95,8 @@
       },
       {
         "itemIdentifier": "gauge_01",
-        "x": 1007.9999,
-        "y": 719.5,
+        "x": 1088,
+        "y": 759.5,
         "zIndex": 17,
         "layerName": "Default",
         "tint": [
@@ -112,8 +112,8 @@
       },
       {
         "itemIdentifier": "skill_02",
-        "x": 374,
-        "y": 622.5,
+        "x": 555,
+        "y": 662.5,
         "zIndex": 18,
         "layerName": "Default",
         "tint": [
@@ -129,8 +129,8 @@
       },
       {
         "itemIdentifier": "casting_02",
-        "x": 803,
-        "y": 624.5,
+        "x": 888,
+        "y": 664.5,
         "zIndex": 19,
         "layerName": "Default",
         "tint": [
@@ -146,8 +146,8 @@
       },
       {
         "itemIdentifier": "gauge_02",
-        "x": 1008,
-        "y": 623.5,
+        "x": 1088,
+        "y": 663.5,
         "zIndex": 20,
         "layerName": "Default",
         "tint": [
@@ -163,8 +163,8 @@
       },
       {
         "itemIdentifier": "skill_03",
-        "x": 375,
-        "y": 531.5,
+        "x": 555,
+        "y": 571.5,
         "zIndex": 21,
         "layerName": "Default",
         "tint": [
@@ -180,8 +180,8 @@
       },
       {
         "itemIdentifier": "casting_03",
-        "x": 804,
-        "y": 528.5,
+        "x": 888,
+        "y": 568.5,
         "zIndex": 22,
         "layerName": "Default",
         "tint": [
@@ -197,8 +197,8 @@
       },
       {
         "itemIdentifier": "gauge_03",
-        "x": 1008,
-        "y": 530,
+        "x": 1088,
+        "y": 570,
         "zIndex": 23,
         "layerName": "Default",
         "tint": [
@@ -214,8 +214,8 @@
       },
       {
         "itemIdentifier": "skill_04",
-        "x": 374,
-        "y": 436.5,
+        "x": 555,
+        "y": 476.5,
         "zIndex": 24,
         "layerName": "Default",
         "tint": [
@@ -231,8 +231,8 @@
       },
       {
         "itemIdentifier": "casting_04",
-        "x": 803.00006,
-        "y": 432.5,
+        "x": 888,
+        "y": 472.5,
         "zIndex": 25,
         "layerName": "Default",
         "tint": [
@@ -248,8 +248,8 @@
       },
       {
         "itemIdentifier": "gauge_04",
-        "x": 1008,
-        "y": 432.5,
+        "x": 1088,
+        "y": 472.5,
         "zIndex": 26,
         "layerName": "Default",
         "tint": [
@@ -265,8 +265,8 @@
       },
       {
         "itemIdentifier": "skill_05",
-        "x": 374,
-        "y": 344.50003,
+        "x": 555,
+        "y": 384.50003,
         "zIndex": 27,
         "layerName": "Default",
         "tint": [
@@ -282,8 +282,8 @@
       },
       {
         "itemIdentifier": "casting_05",
-        "x": 802.99994,
-        "y": 340.5,
+        "x": 888,
+        "y": 380.5,
         "zIndex": 28,
         "layerName": "Default",
         "tint": [
@@ -299,8 +299,8 @@
       },
       {
         "itemIdentifier": "gauge_05",
-        "x": 1007,
-        "y": 339.5,
+        "x": 1088,
+        "y": 379.5,
         "zIndex": 29,
         "layerName": "Default",
         "tint": [
@@ -316,8 +316,8 @@
       },
       {
         "itemIdentifier": "skill_06",
-        "x": 374,
-        "y": 248.50003,
+        "x": 555,
+        "y": 288.50003,
         "zIndex": 30,
         "layerName": "Default",
         "tint": [
@@ -333,8 +333,8 @@
       },
       {
         "itemIdentifier": "casting_06",
-        "x": 803,
-        "y": 245,
+        "x": 888,
+        "y": 285,
         "zIndex": 31,
         "layerName": "Default",
         "tint": [
@@ -350,8 +350,8 @@
       },
       {
         "itemIdentifier": "gauge_06",
-        "x": 1008,
-        "y": 247.5,
+        "x": 1088,
+        "y": 277.5,
         "zIndex": 32,
         "layerName": "Default",
         "tint": [
@@ -367,8 +367,8 @@
       },
       {
         "itemIdentifier": "skill_07",
-        "x": 372.99994,
-        "y": 155.50002,
+        "x": 555,
+        "y": 195.50002,
         "zIndex": 33,
         "layerName": "Default",
         "tint": [
@@ -384,8 +384,8 @@
       },
       {
         "itemIdentifier": "casting_07",
-        "x": 803,
-        "y": 155,
+        "x": 888,
+        "y": 195,
         "zIndex": 34,
         "layerName": "Default",
         "tint": [
@@ -401,8 +401,8 @@
       },
       {
         "itemIdentifier": "gauge_07",
-        "x": 1007,
-        "y": 154.50002,
+        "x": 1088,
+        "y": 194.50002,
         "zIndex": 35,
         "layerName": "Default",
         "tint": [
@@ -515,7 +515,289 @@
         }
       },
       {
-        "itemIdentifier": "use",
+        "itemIdentifier": "use_01",
+        "x": 1229,
+        "y": 151,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },{
+        "itemIdentifier": "use_02",
+        "x": 1229,
+        "y": 151,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },{
+        "itemIdentifier": "use_03",
+        "x": 1229,
+        "y": 151,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },{
+        "itemIdentifier": "use_04",
+        "x": 1229,
+        "y": 151,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },{
+        "itemIdentifier": "use_05",
+        "x": 1229,
+        "y": 151,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },{
+        "itemIdentifier": "use_06",
+        "x": 1229,
+        "y": 151,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "skilluiusebutton2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },{
+        "itemIdentifier": "use_07",
         "x": 1229,
         "y": 151,
         "zIndex": 7,

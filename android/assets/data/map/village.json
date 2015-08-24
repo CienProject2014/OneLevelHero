@@ -9,6 +9,7 @@
         "buildingName": "촌장의 집",
         "buildingType": "house",
         "buildingPath": "blackwood_headhouse",
+        "isOverlapScene" : true,
         "sceneName": "blackwood_headhouse_scene",
         "buildingNpc": [
           "waiji"
@@ -28,12 +29,19 @@
         "buildingName": "대도서관",
         "buildingType": "house",
         "buildingPath": "cobweb_library",
+        "isOverlapScene" : true,
         "sceneName": "cobweb_library_scene"
+      },
+      "cobweb_cathedral" : {
+      	"buildingName" : "대성당",
+      	"buildingType" : "house",
+      	"buildingPath" : "cobweb_cathedral"
       },
       "cobweb_inn": {
         "buildingName": "여관",
         "buildingType": "house",
         "buildingPath": "cobweb_inn",
+        "isOverlapScene" : true,
         "sceneName": "cobweb_inn_scene",
         "gameObject": [
           "save",
@@ -52,7 +60,18 @@
     "villageName": "카딜라 성",
     "villageDirection": "up_down",
     "sceneName": "kadilla_castle_scene",
-    "building": {}
+    "building": {
+      "kadilla_castle_school": {
+        "buildingName": "마법 대학",
+        "buildingType": "house",
+        "buildingPath": "kadilla_castle_school"
+      },
+      "kadilla_castle_duke_castle": {
+        "buildingName": "공작의 성",
+        "buildingType": "house",
+        "buildingPath": "kadilla_castle_duke_castle"
+      }
+    }
   },
   "winterfall": {
     "villageName": "윈터폴",
@@ -60,28 +79,34 @@
     "sceneName": "winterfall_scene",
     "building": {}
   },
-    "redrose_castle": {
+  "redrose_castle": {
     "villageName": "레드로즈 성",
     "villageDirection": "left_right",
     "sceneName": "redrose_castle_scene",
     "building": {}
   },
-   "mirage_port": {
+  "mirage_port": {
     "villageName": "미라지 포트",
-	"villageDirection": "up_down",
+    "villageDirection": "up_down",
     "sceneName": "mirage_port_scene",
     "building": {}
   },
-   "middle_ridge": {
+  "middle_ridge": {
     "villageName": "미들 릿지",
-	 "villageDirection": "left_right",
+    "villageDirection": "left_right",
     "sceneName": "middle_ridge_scene",
     "building": {}
   },
-  "vaical_castle":{
-  	"villageName" : "바이칼 성",
-	"villageDirection": "up_down",
-  	"sceneName" : "vaical_castle_scene",
-  	"building":{}
+  "vaical_castle": {
+    "villageName": "바이칼 성",
+    "villageDirection": "up_down",
+    "sceneName": "vaical_castle_scene",
+    "building": {}
+  },
+  "southcape":{
+  	"villageName" : "사우스케이프",
+  	"villageDirection" : "left_right",
+  	"sceneName" : "southcape_scene",
+  	"building": {}
   }
 }

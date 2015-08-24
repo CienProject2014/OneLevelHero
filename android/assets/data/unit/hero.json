@@ -8,8 +8,8 @@
       "level": 100,
       "defense": 109,
       "magicDefense": 10,
-      "healthPoint": 400,
-      "maxHealthPoint": 400,
+      "hp": 400,
+      "maxHp": 400,
       "speed": 189,
       "experience": 0,
       "maxExperience": 3600,
@@ -23,7 +23,7 @@
       "clothes": "iron_armor"
     },
     "skillList": [
-      "cut_01"
+      "cut_01", "gale", "back_of_sword", "breeze", "flying", "snipe", "last_judge"
     ]
   },
   "parath": {
@@ -31,8 +31,8 @@
     "name": "파라섹트",
     "status": {
       "level": 35,
-      "healthPoint": 245,
-      "maxHealthPoint": 245,
+      "hp": 245,
+      "maxHp": 245,
       "attack": 115,
       "magicAttack": 0,
       "defense": 40,
@@ -58,8 +58,8 @@
       "magicAttack": 85,
       "defense": 20,
       "magicDefense": 45,
-      "healthPoint": 150,
-      "maxHealthPoint": 150,
+      "hp": 150,
+      "maxHp": 150,
       "speed": 80,
       "experience": 0,
       "maxExperience": 3600,

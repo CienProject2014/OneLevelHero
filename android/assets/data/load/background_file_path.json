@@ -29,9 +29,6 @@
   "main_background": {
     "filePath": "texture/MainMenu_Background.png"
   },
-  "waiji_background": {
-    "filePath": "texture/village/blackwood/waiji_background.png"
-  },
   "blackwood_bg_701": {
     "filePath": "texture/village/blackwood/blackwood_bg_701.png"
   },

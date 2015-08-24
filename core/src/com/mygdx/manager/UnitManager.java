@@ -1,6 +1,7 @@
 package com.mygdx.manager;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,9 @@ import com.mygdx.model.unit.Inventory;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Status;
 import com.mygdx.model.unit.Unit;
-import com.mygdx.unitStrategy.HeroAttackStrategy;
+import com.mygdx.unitStrategy.HeroBattleStrategy;
 import com.mygdx.unitStrategy.InventoryStrategy;
-import com.mygdx.unitStrategy.MonsterAttackStrategy;
+import com.mygdx.unitStrategy.MonsterBattleStrategy;
 
 public class UnitManager {
 	private static final String EMPTY_ITEM = "empty_item";
@@ -26,9 +27,9 @@ public class UnitManager {
 	@Autowired
 	private InventoryStrategy inventoryStrategy;
 	@Autowired
-	private HeroAttackStrategy heroAttackStrategy;
+	private HeroBattleStrategy heroBattleStrategy;
 	@Autowired
-	private MonsterAttackStrategy monsterAttackStrategy;
+	private MonsterBattleStrategy monsterBattleStrategy;
 
 	public void initiateHero(Hero hero) {
 		intiallyEquipAllItems(hero);
@@ -38,9 +39,9 @@ public class UnitManager {
 
 	public void setAttackStrategy(Unit unit) {
 		if (unit instanceof Hero) {
-			unit.setAttackStrategy(heroAttackStrategy);
+			unit.setAttackStrategy(heroBattleStrategy);
 		} else {
-			unit.setAttackStrategy(monsterAttackStrategy);
+			unit.setAttackStrategy(monsterBattleStrategy);
 		}
 	}
 
@@ -78,9 +79,11 @@ public class UnitManager {
 
 	private void setSkills(Unit unit) {
 		if (unit.getSkills() == null && unit.getSkillList() != null) {
-			Map<String, Skill> skills = new HashMap<>();
+			List<Skill> skills = new ArrayList<>();
 			for (String skillName : unit.getSkillList()) {
-				skills.put(skillName, skillAssets.getSkill(skillName));
+				Skill skill = skillAssets.getSkill(skillName);
+				skill.setSkillPath(skillName);
+				skills.add(skill);
 			}
 			unit.setSkills(skills);
 		}
@@ -89,20 +92,13 @@ public class UnitManager {
 	public void addStatus(Hero hero, Status plusStatus) {
 		Status heroStatus = hero.getStatus();
 		if (plusStatus != null) {
-			heroStatus.setAttack(heroStatus.getAttack()
-					+ plusStatus.getAttack());
-			heroStatus.setDefense(heroStatus.getDefense()
-					+ plusStatus.getDefense());
-			heroStatus.setElectricResistance(heroStatus.getElectricResistance()
-					+ plusStatus.getElectricResistance());
-			heroStatus.setFireResistance(heroStatus.getFireResistance()
-					+ plusStatus.getFireResistance());
-			heroStatus.setHealthPoint(heroStatus.getHealthPoint()
-					+ plusStatus.getHealthPoint());
-			heroStatus.setMagicAttack(heroStatus.getMagicAttack()
-					+ plusStatus.getMagicAttack());
-			heroStatus.setMagicDefense(heroStatus.getMagicDefense()
-					+ plusStatus.getMagicDefense());
+			heroStatus.setAttack(heroStatus.getAttack() + plusStatus.getAttack());
+			heroStatus.setDefense(heroStatus.getDefense() + plusStatus.getDefense());
+			heroStatus.setElectricResistance(heroStatus.getElectricResistance() + plusStatus.getElectricResistance());
+			heroStatus.setFireResistance(heroStatus.getFireResistance() + plusStatus.getFireResistance());
+			heroStatus.setHp(heroStatus.getHp() + plusStatus.getHp());
+			heroStatus.setMagicAttack(heroStatus.getMagicAttack() + plusStatus.getMagicAttack());
+			heroStatus.setMagicDefense(heroStatus.getMagicDefense() + plusStatus.getMagicDefense());
 			heroStatus.setSpeed(heroStatus.getSpeed() + plusStatus.getSpeed());
 		}
 	}
@@ -110,18 +106,12 @@ public class UnitManager {
 	public void removeStatus(Hero hero, Status removeStatus) {
 		Status heroStatus = hero.getStatus();
 		heroStatus.setAttack(heroStatus.getAttack() - removeStatus.getAttack());
-		heroStatus.setDefense(heroStatus.getDefense()
-				- removeStatus.getDefense());
-		heroStatus.setElectricResistance(heroStatus.getElectricResistance()
-				- removeStatus.getElectricResistance());
-		heroStatus.setFireResistance(heroStatus.getFireResistance()
-				- removeStatus.getFireResistance());
-		heroStatus.setHealthPoint(heroStatus.getHealthPoint()
-				- removeStatus.getHealthPoint());
-		heroStatus.setMagicAttack(heroStatus.getMagicAttack()
-				- removeStatus.getMagicAttack());
-		heroStatus.setMagicDefense(heroStatus.getMagicDefense()
-				+ removeStatus.getMagicDefense());
+		heroStatus.setDefense(heroStatus.getDefense() - removeStatus.getDefense());
+		heroStatus.setElectricResistance(heroStatus.getElectricResistance() - removeStatus.getElectricResistance());
+		heroStatus.setFireResistance(heroStatus.getFireResistance() - removeStatus.getFireResistance());
+		heroStatus.setHp(heroStatus.getHp() - removeStatus.getHp());
+		heroStatus.setMagicAttack(heroStatus.getMagicAttack() - removeStatus.getMagicAttack());
+		heroStatus.setMagicDefense(heroStatus.getMagicDefense() + removeStatus.getMagicDefense());
 		heroStatus.setSpeed(heroStatus.getSpeed() - removeStatus.getSpeed());
 	}
 }

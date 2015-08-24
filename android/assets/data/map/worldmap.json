@@ -6,8 +6,8 @@
       "cobweb": {
         "arrowName": "1to2",
         "fieldList": [
-          "blackwood_forest",
           "bridge",
+          "blackwood_forest",
           "grassland",
           "grassland"
         ]
@@ -50,7 +50,7 @@
           "bridge"
         ]
       },
-      "crystallized_valley": {
+      "crystallized_valley_south": {
         "arrowName": "2to13",
         "fieldList": [
           "grassland"
@@ -71,7 +71,8 @@
     "nodeType": "village",
     "nodeConnection": {
       "retreat_stone": {
-        "arrowName": "3to20"
+        "arrowName": "3to20",
+        "fieldList" : []
       },
       "kadilla_castle": {
         "arrowName": "3to10",
@@ -174,7 +175,7 @@
     "nodeName": "윈터폴",
     "nodeType": "village",
     "nodeConnection": {
-      "crystallized_valley": {
+      "crystallized_valley_north": {
         "arrowName": "8to13",
         "fieldList": []
       }
@@ -226,7 +227,7 @@
     "nodeConnection": {}
   },
   "mountain_titania": {
-    "nodeName": "티타니아 blackwood_mountain",
+    "nodeName": "티타니아 산",
     "nodeType": "dungeon_entrance",
     "nodeConnection": {
       "retreat_stone": {
@@ -235,14 +236,10 @@
       }
     }
   },
-  "crystallized_valley": {
-    "nodeName": "수정 협곡",
+  "crystallized_valley_south": {
+    "nodeName": "수정 협곡 남쪽 입구",
     "nodeType": "dungeon_entrance",
     "nodeConnection": {
-      "winterfall": {
-        "arrowName": "13to8",
-        "fieldList": []
-      },
       "cobweb": {
         "arrowName": "13to2",
         "fieldList": [
@@ -251,19 +248,35 @@
       }
     }
   },
-  "elven_forest": {
-    "nodeName": "엘프의 elven_forest",
+  "crystallized_valley_north": {
+    "nodeName": "수정 협곡 북쪽 입구",
     "nodeType": "dungeon_entrance",
     "nodeConnection": {
-      "caravanserai": {
-        "arrowName": "14to22",
+      "winterfall": {
+        "arrowName": "13to8",
         "fieldList": []
-      },
+      }
+    }
+  },
+  "elven_forest_east": {
+    "nodeName": "엘프의 숲 동쪽 입구",
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
       "statue_of_golden_beetle": {
         "arrowName": "14to24",
         "fieldList": [
           "elven_forest"
         ]
+      }
+    }
+  },
+  "elven_forest_west": {
+    "nodeName": "엘프의 숲 서쪽 입구",
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
+      "caravanserai": {
+        "arrowName": "14to22",
+        "fieldList": []
       }
     }
   },
@@ -366,7 +379,7 @@
         "arrowName": "22to23",
         "fieldList": []
       },
-      "elven_forest": {
+      "elven_forest_west": {
         "arrowName": "22to14",
         "fieldList": []
       },
@@ -422,7 +435,7 @@
           "elven_forest"
         ]
       },
-      "elven_forest": {
+      "elven_forest_east": {
         "arrowName": "24to14",
         "fieldList": [
           "elven_forest"

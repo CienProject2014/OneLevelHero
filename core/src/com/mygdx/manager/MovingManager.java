@@ -93,6 +93,10 @@ public class MovingManager {
 	}
 
 	public void goPreviousPosition() {
+		if (battleManager.isEventBattle()) {
+			battleManager.setEventBattle(false);
+			return;
+		}
 		switch (positionManager.getCurrentPositionType()) {
 			case SUB_NODE :
 				positionManager.setCurrentPositionType(PositionEnum.NODE);
@@ -109,7 +113,6 @@ public class MovingManager {
 				Gdx.app.log("MovingManager", "PositionEnum정보 오류");
 		}
 	}
-
 	private void goBeforeBattlePosition() {
 		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
 
@@ -138,11 +141,10 @@ public class MovingManager {
 				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
 				return;
 			case FORK :
-				screenFactory.show(ScreenEnum.FIELD); // FIXME
+				screenFactory.show(ScreenEnum.FORK);
 				return;
 		}
 	}
-
 	private void goCurrentSubNode(WorldNodeEnum.NodeType nodeType) {
 		switch (nodeType) {
 			case VILLAGE :

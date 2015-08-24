@@ -1,19 +1,23 @@
 package com.mygdx.model.battle;
 
-import com.mygdx.enums.SkillTypeEnum;
-
 public class Skill {
+	private String skillPath;
 	private String name;
-	private String target;
-	private SkillTypeEnum skillType;
+	private String skillType;
+	private String skillEffectType;
+	private String skillTargetType;
+	private int skillFactor;
+	private int magicFactor;
+	private int duplicateNumber;
+	private String[] effectNameList;
+	private String oneRegex;
+
 	private int costCasting;
 	private int costGauge;
 	private String elementType;
 	private int hitboxSize;
 	private int[] hitboxCenter;
 	private int[][] hitboxShape;
-	private int damage;
-	private SkillEffect skillEffect;
 
 	public String getName() {
 		return name;
@@ -23,20 +27,68 @@ public class Skill {
 		this.name = name;
 	}
 
-	public String getTarget() {
-		return target;
-	}
-
-	public void setTarget(String target) {
-		this.target = target;
-	}
-
-	public SkillTypeEnum getSkillType() {
+	public String getSkillType() {
 		return skillType;
 	}
 
-	public void setSkillType(SkillTypeEnum skillType) {
+	public void setSkillType(String skillType) {
 		this.skillType = skillType;
+	}
+
+	public String getSkillEffectType() {
+		return skillEffectType;
+	}
+
+	public void setSkillEffectType(String skillEffectType) {
+		this.skillEffectType = skillEffectType;
+	}
+
+	public String getSkillTargetType() {
+		return skillTargetType;
+	}
+
+	public void setSkillTargetType(String skillTargetType) {
+		this.skillTargetType = skillTargetType;
+	}
+
+	public int getSkillFactor() {
+		return skillFactor;
+	}
+
+	public void setSkillFactor(int skillFactor) {
+		this.skillFactor = skillFactor;
+	}
+
+	public int getMagicFactor() {
+		return magicFactor;
+	}
+
+	public void setMagicFactor(int magicFactor) {
+		this.magicFactor = magicFactor;
+	}
+
+	public int getDuplicateNumber() {
+		return duplicateNumber;
+	}
+
+	public void setDuplicateNumber(int duplicateNumber) {
+		this.duplicateNumber = duplicateNumber;
+	}
+
+	public String[] getEffectNameList() {
+		return effectNameList;
+	}
+
+	public void setEffectNameList(String[] effectNameList) {
+		this.effectNameList = effectNameList;
+	}
+
+	public String getOneRegex() {
+		return oneRegex;
+	}
+
+	public void setOneRegex(String oneRegex) {
+		this.oneRegex = oneRegex;
 	}
 
 	public int getCostCasting() {
@@ -87,19 +139,12 @@ public class Skill {
 		this.hitboxShape = hitboxShape;
 	}
 
-	public int getDamage() {
-		return damage;
+	public String getSkillPath() {
+		return skillPath;
 	}
 
-	public void setDamage(int damage) {
-		this.damage = damage;
+	public void setSkillPath(String skillPath) {
+		this.skillPath = skillPath;
 	}
 
-	public SkillEffect getSkillEffect() {
-		return skillEffect;
-	}
-
-	public void setSkillEffect(SkillEffect skillEffect) {
-		this.skillEffect = skillEffect;
-	}
 }

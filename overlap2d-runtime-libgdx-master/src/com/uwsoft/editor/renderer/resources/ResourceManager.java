@@ -8,7 +8,6 @@ import java.util.HashSet;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -22,344 +21,364 @@ import com.uwsoft.editor.renderer.data.SceneVO;
 import com.uwsoft.editor.renderer.utils.MySkin;
 
 /**
- * Default ResourceManager that you can reuse or extend
- * Generally is good to load all the assets that are exported from editor
- * using default settings (The paths and file structure should be exact)
- * If changed by you manually, please override this class methods in order to keep it working.
+ * Default ResourceManager that you can reuse or extend Generally is good to
+ * load all the assets that are exported from editor using default settings (The
+ * paths and file structure should be exact) If changed by you manually, please
+ * override this class methods in order to keep it working.
  *
- * The main logic is to prepare list of resources that needs to be load for specified scenes, and then loaded.
+ * The main logic is to prepare list of resources that needs to be load for
+ * specified scenes, and then loaded.
  *
  * Created by azakhary on 9/9/2014.
  */
 public class ResourceManager implements IResourceLoader, IResourceRetriever {
 
-    /**
-     *  Paths (please change if different) this is the default structure exported from editor
-     */
-    public String packResolutionName = "orig";
-    public String scenesPath = "scenes";
-    public String particleEffectsPath = "particles";
-    public String spriteAnimationsPath = "sprite_animations";
-    public String spineAnimationsPath = "spine_animations";
-    public String fontsPath = "freetypefonts";
+	/**
+	 * Paths (please change if different) this is the default structure exported
+	 * from editor
+	 */
+	public String packResolutionName = "orig";
+	public String scenesPath = "scenes";
+	public String particleEffectsPath = "particles";
+	public String spriteAnimationsPath = "sprite_animations";
+	public String spineAnimationsPath = "spine_animations";
+	public String fontsPath = "freetypefonts";
+	private float resMultiplier;
+	public String preparedSceneNames = "";
+	public ArrayList<String> myScene = new ArrayList<String>();
 
-    private float resMultiplier;
+	private ProjectInfoVO projectVO;
+	private HashMap<String, SceneVO> loadedSceneVOs = new HashMap<>();
 
-    private ProjectInfoVO projectVO;
+	private HashSet<String> particleEffectNamesToLoad = new HashSet<>();
+	private HashSet<String> spineAnimNamesToLoad = new HashSet<>();
+	private HashSet<String> spriteAnimNamesToLoad = new HashSet<>();
+	private HashSet<FontSizePair> fontsToLoad = new HashSet<>();
 
-    private ArrayList<String> preparedSceneNames = new ArrayList<>();
-    private HashMap<String, SceneVO> loadedSceneVOs = new HashMap<>();
+	private TextureAtlas mainPack;
+	private HashMap<String, ParticleEffect> particleEffects = new HashMap<String, ParticleEffect>();
 
-    private HashSet<String> particleEffectNamesToLoad = new HashSet<>();
-    private HashSet<String> spineAnimNamesToLoad = new HashSet<>();
-    private HashSet<String> spriteAnimNamesToLoad = new HashSet<>();
-    private HashSet<FontSizePair> fontsToLoad = new HashSet<>();
+	private HashMap<String, TextureAtlas> skeletonAtlases = new HashMap<String, TextureAtlas>();
+	private HashMap<String, FileHandle> skeletonJSON = new HashMap<String, FileHandle>();
 
-    private TextureAtlas mainPack;
-    private HashMap<String, ParticleEffect> particleEffects = new HashMap<String, ParticleEffect>();
+	private HashMap<String, TextureAtlas> spriteAnimations = new HashMap<String, TextureAtlas>();
+	private HashMap<FontSizePair, BitmapFont> bitmapFonts = new HashMap<FontSizePair, BitmapFont>();
 
-    private HashMap<String, TextureAtlas> skeletonAtlases = new HashMap<String, TextureAtlas>();
-    private HashMap<String, FileHandle> skeletonJSON = new HashMap<String, FileHandle>();
+	/**
+	 * Constructor does nothing
+	 */
+	public ResourceManager() {
 
-    private HashMap<String, TextureAtlas> spriteAnimations = new HashMap<String, TextureAtlas>();
-    private HashMap<FontSizePair, BitmapFont> bitmapFonts = new HashMap<FontSizePair, BitmapFont>();
+	}
 
-    /**
-     * Constructor does nothing
-     */
-    public ResourceManager() {
+	/**
+	 * Sets working resolution, please set before doing any loading
+	 * 
+	 * @param resolution
+	 *            String resolution name, default is "orig" later use resolution
+	 *            names created in editor
+	 */
+	public void setWorkingResolution(String resolution) {
+		packResolutionName = resolution;
+	}
 
-    }
+	/**
+	 * Easy use loader Iterates through all scenes and schedules all for loading
+	 * Prepares all the assets to be loaded that are used in scheduled scenes
+	 * finally loads all the prepared assets
+	 */
+	public void initAllResources() {
+		loadProjectVO();
+		for (int i = 0; i < projectVO.scenes.size(); i++) {
+			loadSceneVO(projectVO.scenes.get(i).sceneName);
+			scheduleScene(projectVO.scenes.get(i).sceneName);
+		}
+		prepareassetsToLoad();
+		loadassets();
+	}
 
-    /**
-     * Sets working resolution, please set before doing any loading
-     * @param resolution String resolution name, default is "orig" later use resolution names created in editor
-     */
-    public void setWorkingResolution(String resolution) {
-    	packResolutionName = resolution;
-    }
+	/**
+	 * Initializes scene by loading it's VO data object and loading all the
+	 * assets needed for this particular scene only
+	 * 
+	 * @param sceneName
+	 *            - scene file name without ".dt" extension
+	 */
+	public void initScene(String sceneName) {
+		loadSceneVO(sceneName);
+		if (sceneName != preparedSceneNames) {
+			scheduleScene(sceneName);
+			prepareassetsToLoad();
+			loadassets();
+		}
+	}
 
-    /**
-     * Easy use loader
-     * Iterates through all scenes and schedules all for loading
-     * Prepares all the assets to be loaded that are used in scheduled scenes
-     * finally loads all the prepared assets
-     */
-    public void initAllResources() {
-        loadProjectVO();
-        for (int i = 0; i < projectVO.scenes.size(); i++) {
-            loadSceneVO(projectVO.scenes.get(i).sceneName);
-            scheduleScene(projectVO.scenes.get(i).sceneName);
-        }
-        prepareassetsToLoad();
-        loadassets();
-    }
+	/**
+	 * Anloads scene from the memory, and clears all the freed assets
+	 *
+	 * @param sceneName
+	 *            - scene file name without ".dt" extension
+	 */
+	public void unLoadScene(String sceneName) {
+		unScheduleScene(sceneName);
+		loadedSceneVOs.remove(sceneName);
+		loadassets();
+	}
 
-    /**
-     * Initializes scene by loading it's VO data object and loading all the assets needed for this particular scene only
-     * @param sceneName - scene file name without ".dt" extension
-     */
-    public void initScene(String sceneName) {
-        loadSceneVO(sceneName);
-        scheduleScene(sceneName);
-        prepareassetsToLoad();
-        loadassets();
-    }
+	/**
+	 * Schedules scene for later loading if later prepareassetsToLoad function
+	 * will be called it will only prepare assets that are used in scheduled
+	 * scene
+	 *
+	 * @param name
+	 *            - scene file name without ".dt" extension
+	 */
+	public void scheduleScene(String name) {
 
-    /**
-     * Anloads scene from the memory, and clears all the freed assets
-     *
-     * @param sceneName - scene file name without ".dt" extension
-     */
-    public void unLoadScene(String sceneName) {
-        unScheduleScene(sceneName);
-        loadedSceneVOs.remove(sceneName);
-        loadassets();
-    }
+		if (loadedSceneVOs.containsKey(name)) {
+			preparedSceneNames = name;
+		} else {
+			preparedSceneNames = name;
+		}
 
-    /**
-     * Schedules scene for later loading
-     * if later prepareassetsToLoad function will be called it will only prepare assets that are used in scheduled scene
-     *
-     * @param name - scene file name without ".dt" extension
-     */
-    public void scheduleScene(String name) {
-        if (loadedSceneVOs.containsKey(name)) {
-            preparedSceneNames.add(name);
-        } else {
-            //TODO: Throw exception that scene was not loaded to be prepared for asseting
-        }
+	}
 
-    }
+	public void settingScene(String name) {
+		myScene.add(name);
+	}
 
+	/**
+	 * Unschedule scene from later loading
+	 *
+	 * @param name
+	 */
+	public void unScheduleScene(String name) {
+		preparedSceneNames = "";
+	}
 
-    /**
-     * Unschedule scene from later loading
-     *
-     * @param name
-     */
-    public void unScheduleScene(String name) {
-        preparedSceneNames.remove(name);
-    }
+	public boolean searchSceneNames(String name) {
+		return preparedSceneNames.contains(name);
+	}
 
+	/**
+	 * Creates the list of uniqe assets used in all of the scheduled scenes,
+	 * removes all the duplicates, and makes list of assets that are only
+	 * needed.
+	 *
+	 */
+	public void prepareassetsToLoad() {
+		particleEffectNamesToLoad.clear();
+		spineAnimNamesToLoad.clear();
+		spriteAnimNamesToLoad.clear();
+		fontsToLoad.clear();
 
-    /**
-     * Creates the list of uniqe assets used in all of the scheduled scenes,
-     * removes all the duplicates, and makes list of assets that are only needed.
-     *
-     */
-    public void prepareassetsToLoad() {
-        particleEffectNamesToLoad.clear();
-        spineAnimNamesToLoad.clear();
-        spriteAnimNamesToLoad.clear();
-        fontsToLoad.clear();
+		CompositeVO composite = loadedSceneVOs.get(preparedSceneNames).composite;
+		String[] particleEffects = composite.getRecursiveParticleEffectsList();
+		String[] spineAnimations = composite.getRecursiveSpineAnimationList();
+		String[] spriteAnimations = composite.getRecursiveSpriteAnimationList();
+		FontSizePair[] fonts = composite.getRecursiveFontList();
+		Collections.addAll(particleEffectNamesToLoad, particleEffects);
+		Collections.addAll(spineAnimNamesToLoad, spineAnimations);
+		Collections.addAll(spriteAnimNamesToLoad, spriteAnimations);
+		Collections.addAll(fontsToLoad, fonts);
 
-        for (String preparedSceneName : preparedSceneNames) {
-            CompositeVO composite = loadedSceneVOs.get(preparedSceneName).composite;
-            if (composite == null) {
-                continue;
-            }
-            //
-            String[] particleEffects = composite.getRecursiveParticleEffectsList();
-            String[] spineAnimations = composite.getRecursiveSpineAnimationList();
-            String[] spriteAnimations = composite.getRecursiveSpriteAnimationList();
-            FontSizePair[] fonts = composite.getRecursiveFontList();
-            //
-            Collections.addAll(particleEffectNamesToLoad, particleEffects);
-            Collections.addAll(spineAnimNamesToLoad, spineAnimations);
-            Collections.addAll(spriteAnimNamesToLoad, spriteAnimations);
-            Collections.addAll(fontsToLoad, fonts);
-        }
-    }
+	}
 
-    /**
-     * Loads all the scheduled assets into memory including
-     * main atlas pack, particle effects, sprite animations, spine animations and fonts
-     */
-    public void loadassets() {
-        loadAtlasPack();
-        loadParticleEffects();
-        loadSpineAnimations();
-        loadSpriteAnimations();
-        loadFonts();
-    }
+	/**
+	 * Loads all the scheduled assets into memory including main atlas pack,
+	 * particle effects, sprite animations, spine animations and fonts
+	 */
+	public void loadassets() {
+		loadParticleEffects();
+		loadSpineAnimations();
+		loadSpriteAnimations();
+		loadFonts();
+	}
 
-    @Override
-    public void loadAtlasPack() {
-        FileHandle packFile = Gdx.files.internal(packResolutionName + File.separator + "pack.atlas");
-        if (!packFile.exists()) {
-            return;
-        }
-        mainPack = new TextureAtlas(packFile);
-    }
+	@Override
+	public void loadAtlasPack() {
 
-    @Override
-    public void loadParticleEffects() {
-        // empty existing ones that are not scheduled to load
-        for (String key : particleEffects.keySet()) {
-            if (!particleEffectNamesToLoad.contains(key)) {
-                particleEffects.remove(key);
-            }
-        }
+	}
 
-        // load scheduled
-        for (String name : particleEffectNamesToLoad) {
-            ParticleEffect effect = new ParticleEffect();
-            effect.load(Gdx.files.internal(particleEffectsPath + File.separator + name), mainPack, "");
-            particleEffects.put(name, effect);
-        }
-    }
+	@Override
+	public void loadParticleEffects() {
+		// empty existing ones that are not scheduled to load
+		for (String key : particleEffects.keySet()) {
+			if (!particleEffectNamesToLoad.contains(key)) {
+				particleEffects.remove(key);
+			}
+		}
 
-    @Override
-    public void loadSpriteAnimations() {
-        // empty existing ones that are not scheduled to load
-        for (String key : spriteAnimations.keySet()) {
-            if (!spriteAnimNamesToLoad.contains(key)) {
-                spriteAnimations.remove(key);
-            }
-        }
+		// load scheduled
+		for (String name : particleEffectNamesToLoad) {
+			ParticleEffect effect = new ParticleEffect();
+			effect.load(Gdx.files.internal(particleEffectsPath + File.separator + name), mainPack, "");
+			particleEffects.put(name, effect);
+		}
+	}
 
-        for (String name : spriteAnimNamesToLoad) {
-            TextureAtlas animAtlas = new TextureAtlas(Gdx.files.internal(packResolutionName + File.separator + spriteAnimationsPath + File.separator + name + File.separator + name + ".atlas"));
-            spriteAnimations.put(name, animAtlas);
-        }
-    }
-    
-    public void loadSpineAnimation(String name) {
-        TextureAtlas animAtlas = new TextureAtlas(Gdx.files.internal(packResolutionName + File.separator + spineAnimationsPath + File.separator + name + File.separator + name + ".atlas"));
-        skeletonAtlases.put(name, animAtlas);
-        skeletonJSON.put(name, Gdx.files.internal("orig"+ File.separator + spineAnimationsPath + File.separator + name + File.separator + name + ".json"));
-    }
+	@Override
+	public void loadSpriteAnimations() {
+		// empty existing ones that are not scheduled to load
+		for (String key : spriteAnimations.keySet()) {
+			if (!spriteAnimNamesToLoad.contains(key)) {
+				spriteAnimations.remove(key);
+			}
+		}
 
-    @Override
-    public void loadSpineAnimations() {
-        // empty existing ones that are not scheduled to load
-        for (String key : skeletonAtlases.keySet()) {
-            if (!spriteAnimNamesToLoad.contains(key)) {
-                skeletonAtlases.remove(key);
-                skeletonJSON.remove(key);
-            }
-        }
+		for (String name : spriteAnimNamesToLoad) {
+			TextureAtlas animAtlas = new TextureAtlas(Gdx.files.internal(packResolutionName + File.separator
+					+ spriteAnimationsPath + File.separator + name + File.separator + name + ".atlas"));
+			spriteAnimations.put(name, animAtlas);
+		}
+	}
 
-        for (String name : spineAnimNamesToLoad) {
-        	loadSpineAnimation(name);
-        }
-    }
+	public void loadSpineAnimation(String name) {
+		TextureAtlas animAtlas = new TextureAtlas(Gdx.files.internal(packResolutionName + File.separator
+				+ spineAnimationsPath + File.separator + name + File.separator + name + ".atlas"));
+		skeletonAtlases.put(name, animAtlas);
+		skeletonJSON.put(name, Gdx.files.internal("orig" + File.separator + spineAnimationsPath + File.separator + name
+				+ File.separator + name + ".json"));
+	}
 
-    @Override
-    public void loadFonts() {
-    	//resolution related stuff
-    	ResolutionEntryVO curResolution = getProjectVO().getResolution(packResolutionName);
-        resMultiplier = 1;
-    	if(!packResolutionName.equals("orig")) {
-    		if(curResolution.base == 0) {
-                resMultiplier = (float) curResolution.width / (float) getProjectVO().originalResolution.width;
-    		} else{
-                resMultiplier = (float) curResolution.height / (float) getProjectVO().originalResolution.height;
-    		}
-    	}
-    	
-        // empty existing ones that are not scheduled to load
-        for (FontSizePair pair : bitmapFonts.keySet()) {
-            if (!fontsToLoad.contains(pair)) {
-                bitmapFonts.remove(pair);
-            }
-        }
+	@Override
+	public void loadSpineAnimations() {
+		// empty existing ones that are not scheduled to load
+		for (String key : skeletonAtlases.keySet()) {
+			if (!spriteAnimNamesToLoad.contains(key)) {
+				skeletonAtlases.remove(key);
+				skeletonJSON.remove(key);
+			}
+		}
 
-        for (FontSizePair pair : fontsToLoad) {
-            loadFont(pair);
-        }
-    }
+		for (String name : spineAnimNamesToLoad) {
+			loadSpineAnimation(name);
+		}
+	}
 
-    public void loadFont(FontSizePair pair) {
-        FileHandle fontFile;
-        fontFile = Gdx.files.internal(fontsPath + File.separator + pair.fontName + ".ttf");
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(fontFile);
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = Math.round(pair.fontSize * resMultiplier);
-        BitmapFont font = generator.generateFont(parameter);
-        bitmapFonts.put(pair, font);
-    }
+	@Override
+	public void loadFonts() {
+		// resolution related stuff
+		ResolutionEntryVO curResolution = getProjectVO().getResolution(packResolutionName);
+		resMultiplier = 1;
+		if (!packResolutionName.equals("orig")) {
+			if (curResolution.base == 0) {
+				resMultiplier = (float) curResolution.width / (float) getProjectVO().originalResolution.width;
+			} else {
+				resMultiplier = (float) curResolution.height / (float) getProjectVO().originalResolution.height;
+			}
+		}
 
-    @Override
-    public SceneVO loadSceneVO(String sceneName) {
-        FileHandle file = Gdx.files.internal(scenesPath + File.separator + sceneName + ".dt");
-        Json json = new Json();
-        SceneVO sceneVO = json.fromJson(SceneVO.class, file.readString());
+		// empty existing ones that are not scheduled to load
+		for (FontSizePair pair : bitmapFonts.keySet()) {
+			if (!fontsToLoad.contains(pair)) {
+				bitmapFonts.remove(pair);
+			}
+		}
 
-        loadedSceneVOs.put(sceneName, sceneVO);
+		for (FontSizePair pair : fontsToLoad) {
+			loadFont(pair);
+		}
+	}
 
-        return sceneVO;
-    }
+	public void loadFont(FontSizePair pair) {
+		FileHandle fontFile;
+		fontFile = Gdx.files.internal(fontsPath + File.separator + pair.fontName + ".ttf");
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(fontFile);
+		FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+		parameter.size = Math.round(pair.fontSize * resMultiplier);
+		BitmapFont font = generator.generateFont(parameter);
+		bitmapFonts.put(pair, font);
+	}
 
-    public void unLoadSceneVO(String sceneName) {
-        loadedSceneVOs.remove(sceneName);
-    }
+	@Override
+	public SceneVO loadSceneVO(String sceneName) {
+		if (preparedSceneNames == sceneName) {
+			return null;
+		} else {
+			loadedSceneVOs.clear();
+			FileHandle file = Gdx.files.internal(scenesPath + File.separator + sceneName + ".dt");
+			Json json = new Json();
+			SceneVO sceneVO = json.fromJson(SceneVO.class, file.readString());
+			loadedSceneVOs.put(sceneName, sceneVO);
+			return sceneVO;
+		}
+	}
 
-    @Override
-    public ProjectInfoVO loadProjectVO() {
+	public void unLoadSceneVO(String sceneName) {
+		loadedSceneVOs.remove(sceneName);
+	}
 
-        FileHandle file = Gdx.files.internal("project.dt");
-        Json json = new Json();
-        projectVO = json.fromJson(ProjectInfoVO.class, file.readString());
+	@Override
+	public ProjectInfoVO loadProjectVO() {
 
-        return projectVO;
-    }
+		FileHandle file = Gdx.files.internal("project.dt");
+		Json json = new Json();
+		projectVO = json.fromJson(ProjectInfoVO.class, file.readString());
 
-    /**
-     * Following methods are for retriever interface, which is intended for runtime internal use
-     * to retrieve any already loaded into memory asset for rendering
-     */
+		return projectVO;
+	}
 
+	/**
+	 * Following methods are for retriever interface, which is intended for
+	 * runtime internal use to retrieve any already loaded into memory asset for
+	 * rendering
+	 */
 
+	@Override
+	public TextureRegion getTextureRegion(String name) {
+		return mainPack.findRegion(name);
+	}
 
+	@Override
+	public ParticleEffect getParticleEffect(String name) {
+		return new ParticleEffect(particleEffects.get(name));
+	}
 
-    @Override
-    public TextureRegion getTextureRegion(String name) {
-        return mainPack.findRegion(name);
-    }
+	@Override
+	public TextureAtlas getSkeletonAtlas(String name) {
+		return skeletonAtlases.get(name);
+	}
 
-    @Override
-    public ParticleEffect getParticleEffect(String name) {
-        return new ParticleEffect(particleEffects.get(name));
-    }
+	@Override
+	public FileHandle getSkeletonJSON(String name) {
+		return skeletonJSON.get(name);
+	}
 
-    @Override
-    public TextureAtlas getSkeletonAtlas(String name) {
-        return skeletonAtlases.get(name);
-    }
+	@Override
+	public TextureAtlas getSpriteAnimation(String name) {
+		return spriteAnimations.get(name);
+	}
 
-    @Override
-    public FileHandle getSkeletonJSON(String name) {
-        return skeletonJSON.get(name);
-    }
+	@Override
+	public BitmapFont getBitmapFont(String name, int size) {
+		return bitmapFonts.get(new FontSizePair(name, size));
+	}
 
-    @Override
-    public TextureAtlas getSpriteAnimation(String name) {
-        return spriteAnimations.get(name);
-    }
+	@Override
+	public MySkin getSkin() {
+		return null;
+	}
 
-    @Override
-    public BitmapFont getBitmapFont(String name, int size) {
-        return bitmapFonts.get(new FontSizePair(name, size));
-    }
+	@Override
+	public SceneVO getSceneVO(String sceneName) {
+		return loadedSceneVOs.get(sceneName);
+	}
 
-    @Override
-    public MySkin getSkin() {
-        return null;
-    }
+	@Override
+	public ProjectInfoVO getProjectVO() {
+		return projectVO;
+	}
 
-    @Override
-    public SceneVO getSceneVO(String sceneName) {
-        return loadedSceneVOs.get(sceneName);
-    }
+	public TextureAtlas getMainPack() {
+		return mainPack;
+	}
 
-    @Override
-    public ProjectInfoVO getProjectVO() {
-        return projectVO;
-    }
+	public void setMainPack(TextureAtlas mainPack) {
+		this.mainPack = mainPack;
+	}
 
-    public void dispose() {
-        mainPack.dispose();
-    }
+	public void dispose() {
+		mainPack.dispose();
+	}
 }

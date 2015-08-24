@@ -2,12 +2,13 @@ package com.mygdx.manager;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.enums.BattleStateEnum;
@@ -55,8 +56,6 @@ public class EventManager {
 	@Autowired
 	private EventCheckManager eventCheckManager;
 	@Autowired
-	private EventAssets eventAssets;
-	@Autowired
 	private TimeManager timeManager;
 	@Autowired
 	private EventInfo eventInfo;
@@ -64,44 +63,97 @@ public class EventManager {
 	private Iterator<EventScene> eventSceneIterator;
 	private final int eventPlusRule = 1;
 
+	public Queue<EventPacket> getSpecialEventQueue() {
+		return eventInfo.getSpecialEventQueue();
+	}
+
 	public void doStoryEvent(EventTypeEnum eventType) {
 		setCurrentEventElementType(EventElementEnum.NPC);
 		switch (eventType) {
-		case BATTLE:
-			battleManager.startBattle(unitAssets.getMonster(getCurrentEvent().getEventComponent().get(0)));
-			screenFactory.show(ScreenEnum.BATTLE);
-			break;
-		case NEXT_SECTION:
-			storySectionManager
-					.setNewStorySectionAndPlay(Integer.valueOf(getCurrentEvent().getEventComponent().get(0)));
-			break;
-		case MOVE_NODE:
-			positionManager.setCurrentNodeName(getCurrentEvent().getEventComponent().get(0));
-			movingManager.goCurrentPosition();
-			storySectionManager.runStorySequence();
-			break;
-		case BATTLE_END:
-			battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-			storySectionManager.runStorySequence();
-			break;
-		case MOVE_SUB_NODE:
-			positionManager.setCurrentSubNodeName(getCurrentEvent().getEventComponent().get(0));
-			positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
-			movingManager.goCurrentPosition();
-			storySectionManager.runStorySequence();
-			break;
-		case PASS_TIME:
-			timeManager.plusMinute(Integer.parseInt(getCurrentEvent().getEventComponent().get(0)));
-			storySectionManager.runStorySequence();
-			break;
-		case MUSIC:
-			musicManager.setEventMusicAndPlay();
-			storySectionManager.runStorySequence();
-			break;
-		default:
-			screenFactory.show(ScreenEnum.EVENT);
-			break;
+			case BATTLE :
+				battleManager.startBattle(unitAssets.getMonster(getCurrentNpcEvent().getEventComponent().get(0)));
+				battleManager.setEventBattle(true);
+				screenFactory.show(ScreenEnum.BATTLE);
+				break;
+			case NEXT_SECTION :
+				storySectionManager.setNewStorySectionAndPlay(Integer.valueOf(getCurrentNpcEvent().getEventComponent()
+						.get(0)));
+				break;
+			case MOVE_NODE :
+				positionManager.setCurrentNodeName(getCurrentNpcEvent().getEventComponent().get(0));
+				movingManager.goCurrentPosition();
+				storySectionManager.runStorySequence();
+				break;
+			case BATTLE_END :
+				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				battleManager.setEventBattle(false);
+				storySectionManager.runStorySequence();
+				break;
+			case MOVE_SUB_NODE :
+				positionManager.setCurrentSubNodeName(getCurrentNpcEvent().getEventComponent().get(0));
+				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
+				movingManager.goCurrentPosition();
+				storySectionManager.runStorySequence();
+				break;
+			case PASS_TIME :
+				timeManager.plusMinute(Integer.parseInt(getCurrentNpcEvent().getEventComponent().get(0)));
+				storySectionManager.runStorySequence();
+				break;
+			case MUSIC :
+				musicManager.setEventMusicAndPlay();
+				storySectionManager.runStorySequence();
+				break;
+			default :
+				screenFactory.show(ScreenEnum.EVENT);
+				break;
 		}
+	}
+
+	public Event getCurrentElementEvent() {
+		switch (getCurrentEventElementType()) {
+			case NPC :
+				return getCurrentNpcEvent();
+			case GAME_OBJECT :
+				return getCurrentGameObject().getObjectEvent();
+			case SPECIAL :
+				return getCurrentSpecialEvent();
+			default :
+				Gdx.app.log("EventManager", "EventElementType 정보 오류");
+				return getCurrentNpcEvent();
+		}
+	}
+
+	public void doSpecialEvent(Event event) {
+		switch (event.getEventType()) {
+			case DONT_GO_BUILDING :
+				setCurrentEventElementType(EventElementEnum.SPECIAL);
+				screenFactory.show(ScreenEnum.EVENT);
+				break;
+			default :
+				Gdx.app.log("EventManager", "SpecialEvent EventType정보 오류");
+				break;
+		}
+	}
+
+	public void triggerSpecialEvent(EventTypeEnum eventType, String componentString) {
+		Gdx.app.log("EventManager", "trigSpecialEvent");
+		if (!eventInfo.getSpecialEventQueue().isEmpty()) {
+			Iterator<EventPacket> specialEventQueueIterator = eventInfo.getSpecialEventQueue().iterator();
+			while (specialEventQueueIterator.hasNext()) {
+				EventPacket eventPacket = specialEventQueueIterator.next();
+				Event specialEvent = getNpcEvent(eventPacket);
+				if (specialEvent.getEventType().equals(eventType)) {
+					if (eventCheckManager.checkSameWithComponentList(specialEvent.getEventComponent(), componentString)) {
+						setCurrentSpecialEventInfo(eventPacket);
+						doSpecialEvent(specialEvent);
+					}
+				}
+			}
+		}
+	}
+
+	private void setCurrentSpecialEventInfo(EventPacket eventPacket) {
+		eventInfo.setCurrentSpecialEventInfo(eventPacket);
 	}
 
 	public EventElementEnum getCurrentEventElementType() {
@@ -112,22 +164,38 @@ public class EventManager {
 		eventInfo.setCurrentEventElementType(eventElementType);
 	}
 
-	public Stage getSceneEvent() {
-		Event currentEvent = getCurrentNpcEvent();
+	public NPC getCurrentNpc() {
+		return eventInfo.getNpc(eventInfo.getCurrentNpcName());
+	}
+
+	public Stage getNpcEvent() {
+		Event currentEvent;
+		if (eventInfo.getCurrentEventElementType().equals(EventElementEnum.NPC)) {
+			currentEvent = getCurrentNpcEvent();
+		} else if (eventInfo.getCurrentEventElementType().equals(EventElementEnum.GAME_OBJECT)) {
+			currentEvent = getCurrentGameObject().getObjectEvent();
+		} else {
+			currentEvent = getCurrentSpecialEvent();
+		}
 		switch (currentEvent.getEventType()) {
-		case CHAT:
-		case CREDIT:
-		case SELECT_COMPONENT:
-		case SELECT_EVENT:
-			return getChatScene();
-		default:
-			Gdx.app.error("EventManager", "EventTypeEnum 정보가 없습니다.");
-			throw new NullPointerException();
+			case CHAT :
+			case CREDIT :
+			case SELECT_COMPONENT :
+			case SELECT_EVENT :
+			case DONT_GO_BUILDING :
+				return getChatScene(currentEvent);
+			default :
+				Gdx.app.error("EventManager", "EventTypeEnum 정보가 없습니다.");
+				throw new NullPointerException();
 		}
 	}
 
-	private Stage getChatScene() {
-		Iterator<EventScene> eventSceneIterator = getEventSceneIterator();
+	private Event getCurrentSpecialEvent() {
+		return getNpcEvent(eventInfo.getCurrentSpecialEventInfo());
+	}
+
+	private Stage getChatScene(Event currentEvent) {
+		Iterator<EventScene> eventSceneIterator = getEventSceneIterator(currentEvent);
 		if (eventSceneIterator.hasNext()) {
 			Stage eventStage = stageFactory.makeEventStage(eventSceneIterator);
 			return eventStage;
@@ -137,8 +205,8 @@ public class EventManager {
 		}
 	}
 
-	public EventPacket getCurrentEventPacket() {
-		return eventInfo.getCurrentEventInfo();
+	public EventPacket getCurrentNpcEventPacket() {
+		return eventInfo.getCurrentNpcEventInfo();
 	}
 
 	public EventScene getGameObjectEventScene() {
@@ -149,33 +217,25 @@ public class EventManager {
 		return eventScene;
 	}
 
-	public Iterator<EventScene> getEventSceneIterator() {
-		eventSceneIterator = getCurrentNpcEvent().getEventSceneIterator();
-		if (getCurrentNpcEvent().getRewards() != null) {
-			addEventRewardQueue(getCurrentNpcEvent().getRewards());
+	public Iterator<EventScene> getEventSceneIterator(Event currentEvent) {
+		eventSceneIterator = currentEvent.getEventSceneIterator();
+		if (currentEvent.getRewards() != null) {
+			addEventRewardQueue(currentEvent.getRewards());
 		}
 		return eventSceneIterator;
 	}
 
 	private void addEventRewardQueue(List<Reward> rewardList) {
 		for (Reward reward : rewardList) {
-			if (reward.getRewardState() == RewardStateEnum.NOT_CLEARED) {
+			if (reward.getRewardState() != RewardStateEnum.CLEARED) {
 				rewardManager.addEventReward(reward);
 			}
 		}
 	}
 
-	public NPC getCurrentNpc() {
-		return eventAssets.getNpc(eventInfo.getCurrentNpcName());
-	}
-
-	public Event getCurrentEvent() {
-		return eventAssets.getNpcEvent(eventInfo.getEventPacket());
-	}
-
 	public Event getCurrentNpcEvent() {
-		EventPacket eventPacket = eventInfo.getEventPacket();
-		return eventAssets.getNpcEvent(eventPacket.getEventNpc(), eventPacket.getEventNumber());
+		EventPacket eventPacket = eventInfo.getCurrentNpcEventInfo();
+		return eventInfo.getNpcEvent(eventPacket.getEventNpc(), eventPacket.getEventNumber());
 	}
 
 	public void setCurrentGameObject(GameObject gameObject) {
@@ -184,6 +244,14 @@ public class EventManager {
 
 	public GameObject getCurrentGameObject() {
 		return eventInfo.getCurrentGameObject();
+	}
+
+	public void setNpcMap(Map<String, NPC> npcMap) {
+		eventInfo.setNpcMap(npcMap);
+	}
+
+	public void setGameObjectMap(Map<String, GameObject> gameObjectMap) {
+		eventInfo.setGameObjectMap(gameObjectMap);
 	}
 
 	public void finishNpcEvent() {
@@ -198,8 +266,8 @@ public class EventManager {
 		}
 	}
 
-	public void setCurrentEventInfo(EventPacket eventPacket) {
-		eventInfo.setCurrentEventInfo(eventPacket);
+	public void setCurrentNpcEventInfo(EventPacket eventPacket) {
+		eventInfo.setCurrentNpcEventInfo(eventPacket);
 	}
 
 	public void setCurrentEventNumber(int eventNumber) {
@@ -218,11 +286,11 @@ public class EventManager {
 	}
 
 	public void setGreeting(boolean isGreeting) {
-		eventInfo.getCurrentEventInfo().setGreeting(isGreeting);
+		eventInfo.getCurrentNpcEventInfo().setGreeting(isGreeting);
 	}
 
 	public boolean isGreeting() {
-		return eventInfo.getCurrentEventInfo().isGreeting();
+		return eventInfo.getCurrentNpcEventInfo().isGreeting();
 	}
 
 	public boolean isEventOpen(Event event) {
@@ -250,13 +318,17 @@ public class EventManager {
 		}
 	}
 
+	public Event getNpcEvent(EventPacket eventPacket) {
+		return eventInfo.getNpcEvent(eventPacket);
+	}
+
 	public void triggerComponentEvent(int index) {
-		String eventComponent = getCurrentEvent().getEventComponent().get(index);
-		if (getCurrentEvent().getEventTarget() != null) {
-			NPC npc = eventAssets.getNpc(getCurrentEvent().getEventTarget());
-			if (eventCheckManager.checkSameWithComponent(eventComponent,
-					npc.getEvent(index + eventPlusRule).getEventName())) {
-				setCurrentEventNpc(getCurrentEvent().getEventTarget());
+		String eventComponent = getCurrentNpcEvent().getEventComponent().get(index);
+		if (getCurrentNpcEvent().getEventTarget() != null) {
+			NPC npc = eventInfo.getNpc(getCurrentNpcEvent().getEventTarget());
+			if (eventCheckManager.checkSameWithComponent(eventComponent, npc.getEvent(index + eventPlusRule)
+					.getEventName())) {
+				setCurrentEventNpc(getCurrentNpcEvent().getEventTarget());
 				setCurrentEventNumber(index + eventPlusRule); // 알고리즘이필요함
 				screenFactory.show(ScreenEnum.EVENT);
 			}

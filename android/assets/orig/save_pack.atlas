@@ -1,0 +1,90 @@
+
+save_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+battleuiturn01parath
+  rotate: false
+  xy: 2, 2
+  size: 117, 117
+  orig: 117, 117
+  offset: 0, 0
+  index: -1
+saveuiacbuttonclosed
+  rotate: false
+  xy: 3146, 1707
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+saveuiacbuttonnew
+  rotate: false
+  xy: 2, 121
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+saveuibackground
+  rotate: false
+  xy: 2, 717
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+saveuibase01
+  rotate: false
+  xy: 1924, 717
+  size: 1220, 1080
+  orig: 1220, 1080
+  offset: 0, 0
+  index: -1
+saveuibuttonclosed
+  rotate: false
+  xy: 1124, 373
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+saveuibuttonnew
+  rotate: false
+  xy: 2246, 625
+  size: 350, 90
+  orig: 350, 90
+  offset: 0, 0
+  index: -1
+saveuiload
+  rotate: false
+  xy: 3146, 1652
+  size: 186, 53
+  orig: 186, 53
+  offset: 0, 0
+  index: -1
+saveuisave
+  rotate: false
+  xy: 3498, 1744
+  size: 186, 53
+  orig: 186, 53
+  offset: 0, 0
+  index: -1
+saveuisave01
+  rotate: false
+  xy: 2, 465
+  size: 1120, 250
+  orig: 1120, 250
+  offset: 0, 0
+  index: -1
+saveuisave02
+  rotate: false
+  xy: 2, 213
+  size: 1120, 250
+  orig: 1120, 250
+  offset: 0, 0
+  index: -1
+saveuisave03
+  rotate: false
+  xy: 1124, 465
+  size: 1120, 250
+  orig: 1120, 250
+  offset: 0, 0
+  index: -1

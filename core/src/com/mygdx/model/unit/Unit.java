@@ -1,29 +1,23 @@
 package com.mygdx.model.unit;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.manager.TextureManager;
 import com.mygdx.model.battle.Skill;
-import com.mygdx.unitStrategy.AttackStrategy;
+import com.mygdx.unitStrategy.BattleStrategy;
 import com.mygdx.unitStrategy.UnusualConditionStrategy;
 
 public abstract class Unit implements Comparable<Unit> {
-	private AttackStrategy attackStrategy;
+	private BattleStrategy battleStrategy;
 	private UnusualConditionStrategy unusualConditionStrategy;
 	private String facePath;
 	private String name;
 	protected Status status;
-	private Map<String, Skill> skills;
+	private List<Skill> skills;
 	private int gauge;
 	private int subvalue;
 	private int actingPower;
 	private int preGague;
-	private Texture bodyTexture;
-	private Texture faceTexture;
-	private Texture bigBattleTexture;
-	private Texture smallBattleTexture;
 
 	public String getFacePath() {
 		return facePath;
@@ -39,38 +33,12 @@ public abstract class Unit implements Comparable<Unit> {
 	public String getName() {
 		return name;
 	}
-
-	public Map<String, Skill> getSkills() {
-		return skills;
-	}
-
-	public void setSkills(Map<String, Skill> skills) {
-		this.skills = skills;
-	}
-
 	public ArrayList<String> getSkillList() {
 		return skillList;
 	}
 
 	public void setSkillList(ArrayList<String> skillList) {
 		this.skillList = skillList;
-	}
-
-	public void setBodyTexture(Texture bodyTexture) {
-		this.bodyTexture = bodyTexture;
-	}
-
-	public void setFaceTexture(Texture faceTexture) {
-		this.faceTexture = faceTexture;
-	}
-
-	public void setBigBattleTexture(Texture bigBattleTexture) {
-		this.bigBattleTexture = bigBattleTexture;
-
-	}
-
-	public void setSmallBattleTexture(Texture smallBattleTexture) {
-		this.smallBattleTexture = smallBattleTexture;
 	}
 
 	public void setName(String name) {
@@ -149,37 +117,6 @@ public abstract class Unit implements Comparable<Unit> {
 		}
 	}
 
-	public Texture getBodyTexture() {
-		if (bodyTexture == null) {
-			if (this instanceof Hero)
-				bodyTexture = TextureManager.getCharacterBodyTexture(facePath);
-			else
-				bodyTexture = TextureManager.getMonsterBodyTexture(facePath);
-		}
-		return bodyTexture;
-	}
-
-	public Texture getFaceTexture() {
-		if (faceTexture == null) {
-			faceTexture = TextureManager.getFaceTexture(facePath);
-		}
-		return faceTexture;
-	}
-
-	public Texture getBigBattleTexture() {
-		if (bigBattleTexture == null) {
-			bigBattleTexture = TextureManager.getBattleTurnBigTexture(facePath);
-		}
-		return bigBattleTexture;
-	}
-
-	public Texture getSmallBattleTexture() {
-		if (smallBattleTexture == null) {
-			smallBattleTexture = TextureManager.getBattleTurnSmallTexture(facePath);
-		}
-		return smallBattleTexture;
-	}
-
 	public int getPreGague() {
 		return preGague;
 	}
@@ -189,19 +126,19 @@ public abstract class Unit implements Comparable<Unit> {
 	}
 
 	public void attack(Unit opponent, int[][] hitArea) {
-		attackStrategy.attack(this, opponent, hitArea);
+		battleStrategy.attack(this, opponent, hitArea);
 	}
 
-	public void skillAttack(Unit opponent, String skillName) {
-		attackStrategy.skillAttack(this, opponent, skillName);
+	public void useSkill(ArrayList<Unit> targetList, Skill skill) {
+		battleStrategy.skill(this, targetList, skill);
 	}
 
-	public AttackStrategy getAttackStrategy() {
-		return attackStrategy;
+	public BattleStrategy getAttackStrategy() {
+		return battleStrategy;
 	}
 
-	public void setAttackStrategy(AttackStrategy attackStrategy) {
-		this.attackStrategy = attackStrategy;
+	public void setAttackStrategy(BattleStrategy attackStrategy) {
+		this.battleStrategy = attackStrategy;
 	}
 
 	public UnusualConditionStrategy getUnusualConditionStrategy() {
@@ -210,5 +147,13 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setUnusualConditionStrategy(UnusualConditionStrategy unusualConditionStrategy) {
 		this.unusualConditionStrategy = unusualConditionStrategy;
+	}
+
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
 	}
 }

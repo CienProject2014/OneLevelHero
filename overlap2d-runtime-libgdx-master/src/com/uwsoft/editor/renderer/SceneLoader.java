@@ -17,10 +17,10 @@ import com.uwsoft.editor.renderer.resources.ResourceManager;
 import com.uwsoft.editor.renderer.script.IScript;
 
 /**
- * SceneLoader is importatn part of runtime that
- * utilizes provided IResourceRetriever (or creates default one shipped with runtime)
- * in order to load entire scene data into viewable actors
- * provides the functionality to get root actor of scene and load scenes.
+ * SceneLoader is importatn part of runtime that utilizes provided
+ * IResourceRetriever (or creates default one shipped with runtime) in order to
+ * load entire scene data into viewable actors provides the functionality to get
+ * root actor of scene and load scenes.
  *
  * Created by azakhary on 9/9/2014.
  */
@@ -34,9 +34,9 @@ public class SceneLoader {
 	public Essentials essentials;
 
 	/**
-	 * Empty constructor is intended for easy use,
-	 * it will create default ResourceManager, and load
-	 * all possible resources into memory that have been exported with editor
+	 * Empty constructor is intended for easy use, it will create default
+	 * ResourceManager, and load all possible resources into memory that have
+	 * been exported with editor
 	 */
 	public SceneLoader() {
 		ResourceManager rm = new ResourceManager();
@@ -47,10 +47,12 @@ public class SceneLoader {
 	}
 
 	/**
-	 * intended for easy use,
-	 * it will create default ResourceManager, and load
+	 * intended for easy use, it will create default ResourceManager, and load
 	 * all possible resources into memory that have been exported with editor
-	 * @param resolution - String resolution name to load everything for 9default is "orig"
+	 * 
+	 * @param resolution
+	 *            - String resolution name to load everything for 9default is
+	 *            "orig"
 	 */
 	public SceneLoader(String resolution) {
 		ResourceManager rm = new ResourceManager();
@@ -63,9 +65,11 @@ public class SceneLoader {
 	}
 
 	/**
-	 * Sets your implementation of IResourceRetriever, and does not load anything
+	 * Sets your implementation of IResourceRetriever, and does not load
+	 * anything
 	 *
-	 * @param rm - Implementation of IResourceRetriever
+	 * @param rm
+	 *            - Implementation of IResourceRetriever
 	 */
 	public SceneLoader(IResourceRetriever rm) {
 		Essentials emptyEssentuials = new Essentials();
@@ -74,17 +78,23 @@ public class SceneLoader {
 	}
 
 	/**
-	 * Sets essentials container with or without content for later use
-	 * This the most dummy contructor
-	 * @param e - Essentials container
+	 * Sets essentials container with or without content for later use This the
+	 * most dummy contructor
+	 * 
+	 * @param e
+	 *            - Essentials container
 	 */
 	public SceneLoader(Essentials e) {
 		this.essentials = e;
 	}
 
 	/**
-	 * Sets resolution of the screen, and applies it to existing actors if already loaded
-	 * @param resolutionName - String resolution name to load everything for 9default is "orig"
+	 * Sets resolution of the screen, and applies it to existing actors if
+	 * already loaded
+	 * 
+	 * @param resolutionName
+	 *            - String resolution name to load everything for 9default is
+	 *            "orig"
 	 */
 	public void setResolution(String resolutionName) {
 		curResolution = resolutionName;
@@ -102,30 +112,30 @@ public class SceneLoader {
 	}
 
 	/**
-	 * Asks IResourceRetriever for sceneVO data, checks scene for errors
-	 * Applies resolution set previously with setResolution method or uses "orig" default resolution
-	 * Sets default ambient light using scene data
+	 * Asks IResourceRetriever for sceneVO data, checks scene for errors Applies
+	 * resolution set previously with setResolution method or uses "orig"
+	 * default resolution Sets default ambient light using scene data
 	 *
-	 * @param sceneName - String scene name without ".dt" extension
-	 * @param createActors - if true the root composite with entire actor list will be created
-	 * @return SceneVO data file of loaded scene (you don't really need it at this point though...)
+	 * @param sceneName
+	 *            - String scene name without ".dt" extension
+	 * @param createActors
+	 *            - if true the root composite with entire actor list will be
+	 *            created
+	 * @return SceneVO data file of loaded scene (you don't really need it at
+	 *         this point though...)
 	 */
-	public SceneVO loadScene(String sceneName, boolean createActors) {
+	public void loadScene(String sceneName, boolean createActors) {
 		sceneVO = essentials.rm.getSceneVO(sceneName);
 
 		// init physics world
 		PhysicsPropertiesVO physicsProperties = sceneVO.physicsPropertiesVO;
-		//if(sceneVO.physicsPropertiesVO != null && sceneVO.physicsPropertiesVO.enabled == true)
+		// if(sceneVO.physicsPropertiesVO != null &&
+		// sceneVO.physicsPropertiesVO.enabled == true)
 
-		if (sceneVO.physicsPropertiesVO != null
-				&& sceneVO.physicsPropertiesVO.enabled == true) {
-			essentials.world = new World(new Vector2(
-					physicsProperties.gravityX, physicsProperties.gravityY),
-					true);
+		if (sceneVO.physicsPropertiesVO != null && sceneVO.physicsPropertiesVO.enabled == true) {
+			essentials.world = new World(new Vector2(physicsProperties.gravityX, physicsProperties.gravityY), true);
 			essentials.rayHandler.setWorld(essentials.world);
 		}
-
-		invalidateSceneVO(sceneVO);
 
 		if (createActors) {
 			sceneActor = getSceneAsActor();
@@ -134,36 +144,41 @@ public class SceneLoader {
 		}
 
 		setAmbienceInfo(sceneVO);
-		return sceneVO;
 	}
 
 	/**
-	 * Asks IResourceRetriever for sceneVO data, checks scene for errors
-	 * and Recreates a big Actor tree that you can later add to your stage for rendering
-	 * Applies resolution set previously with setResolution method or uses "orig" default resolution
-	 * Sets default ambient light using scene data
+	 * Asks IResourceRetriever for sceneVO data, checks scene for errors and
+	 * Recreates a big Actor tree that you can later add to your stage for
+	 * rendering Applies resolution set previously with setResolution method or
+	 * uses "orig" default resolution Sets default ambient light using scene
+	 * data
 	 *
-	 * @param sceneName - String scene name without ".dt" extension
-	 * @return SceneVO data file of loaded scene (you don't really need it at this point though...)
+	 * @param sceneName
+	 *            - String scene name without ".dt" extension
+	 * @return SceneVO data file of loaded scene (you don't really need it at
+	 *         this point though...)
 	 */
-	public SceneVO loadScene(String sceneName) {
-		return loadScene(sceneName, true);
+	public void loadScene(String sceneName) {
+		loadScene(sceneName, true);
 	}
 
 	/**
 	 * Checks scene for continuity errors
 	 *
-	 * @param vo - Scene data file to invalidate
+	 * @param vo
+	 *            - Scene data file to invalidate
 	 */
 	public void invalidateSceneVO(SceneVO vo) {
 		removeMissingImages(vo.composite);
 	}
 
 	/**
-	 * Checks if composite data contains any scene items with images not provided by resource retriever, and removes them from composite
-	 * to at least show what is not missing
+	 * Checks if composite data contains any scene items with images not
+	 * provided by resource retriever, and removes them from composite to at
+	 * least show what is not missing
 	 *
-	 * @param vo - Scene data file to invalidate
+	 * @param vo
+	 *            - Scene data file to invalidate
 	 */
 	public void removeMissingImages(CompositeVO vo) {
 		if (vo == null)
@@ -174,6 +189,7 @@ public class SceneLoader {
 			}
 		}
 		for (CompositeItemVO cmp : vo.sComposites) {
+
 			removeMissingImages(cmp.composite);
 		}
 	}
@@ -181,38 +197,37 @@ public class SceneLoader {
 	/**
 	 * Sets ambient light to the one specified in scene from editor
 	 *
-	 * @param vo - Scene data file to invalidate
+	 * @param vo
+	 *            - Scene data file to invalidate
 	 */
 	public void setAmbienceInfo(SceneVO vo) {
 		if (essentials.rayHandler != null && vo.ambientColor != null) {
-			Color clr = new Color(vo.ambientColor[0], vo.ambientColor[1],
-					vo.ambientColor[2], vo.ambientColor[3]);
+			Color clr = new Color(vo.ambientColor[0], vo.ambientColor[1], vo.ambientColor[2], vo.ambientColor[3]);
 			essentials.rayHandler.setAmbientLight(clr);
 		}
 	}
 
 	/**
-	 * Creates CompositeItem from sceneVo
-	 *      *
+	 * Creates CompositeItem from sceneVo *
+	 * 
 	 * @return CompositeItem
 	 */
 	public CompositeItem getSceneAsActor() {
-		CompositeItemVO vo = new CompositeItemVO(sceneVO.composite);
 
-		if (vo.composite == null)
-			vo.composite = new CompositeVO();
-		CompositeItem cnt = new CompositeItem(vo, essentials);
+		CompositeItem cnt = new CompositeItem(new CompositeItemVO(sceneVO.composite), essentials);
 
 		return cnt;
 	}
 
 	/**
-	 * Loads CompositeItem from Library by using it's library name
-	 * So you can get item that is not on the scene, but is stored in library for later use
+	 * Loads CompositeItem from Library by using it's library name So you can
+	 * get item that is not on the scene, but is stored in library for later use
 	 * Works great for dialogs and thigns like that
 	 *
 	 * TODO: this should be also renamed as name is confusing
-	 * @param name String - library item name
+	 * 
+	 * @param name
+	 *            String - library item name
 	 * @return CompositeItem Actor
 	 */
 	public CompositeItem getLibraryAsActor(String name) {
@@ -228,15 +243,15 @@ public class SceneLoader {
 	}
 
 	/**
-	 * Returns CompositeItem that is inside rootScene identified by unique id set in Editor
-	 * does not perform deep search inside other composites
+	 * Returns CompositeItem that is inside rootScene identified by unique id
+	 * set in Editor does not perform deep search inside other composites
 	 *
-	 * @param id - String uniqe identifier
+	 * @param id
+	 *            - String uniqe identifier
 	 * @return - CompositeItem
 	 */
 	public CompositeItem getCompositeElementById(String id) {
-		CompositeItem cnt = getCompositeElement(sceneActor.getCompositeById(id)
-				.getDataVO());
+		CompositeItem cnt = getCompositeElement(sceneActor.getCompositeById(id).getDataVO());
 
 		return cnt;
 	}
@@ -244,7 +259,8 @@ public class SceneLoader {
 	/**
 	 * Creates CompositeItem by provided CompositeItemVO data class
 	 *
-	 * @param vo CompositeItemVO data class
+	 * @param vo
+	 *            CompositeItemVO data class
 	 * @return CompositeItem
 	 */
 	public CompositeItem getCompositeElement(CompositeItemVO vo) {
@@ -262,7 +278,8 @@ public class SceneLoader {
 
 	/**
 	 *
-	 * @return IResourceRetriever instance to load any resources already in memory
+	 * @return IResourceRetriever instance to load any resources already in
+	 *         memory
 	 */
 	public IResourceRetriever getRm() {
 		return essentials.rm;

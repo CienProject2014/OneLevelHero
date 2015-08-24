@@ -22,7 +22,7 @@ public class SelectEventListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		storySectionManager.triggerSectionEvent(EventTypeEnum.SELECT_EVENT,
+		storySectionManager.triggerNextSectionEvent(EventTypeEnum.SELECT_EVENT,
 				String.valueOf(index + PLUS_ONE));
 		eventManager.setCurrentEventNumber(index + PLUS_ONE);
 		eventManager.setGreeting(false);

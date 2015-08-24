@@ -11,6 +11,7 @@ import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.FieldManager;
+import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.surroundings.NodeConnection;
@@ -24,19 +25,32 @@ public class ArrowButtonListener extends ClickListener {
 	private FieldManager fieldManager;
 	@Autowired
 	private PositionManager positionManager;
+	@Autowired
+	private MovingManager movingManager;
 	private Entry<String, NodeConnection> connection;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		int beforeSectionNumber = storySectionManager.getCurrentStorySectionNumber();
+		storySectionManager.triggerNextSectionEvent(EventTypeEnum.CLICK_ARROW, connection.getValue().getArrowName());
+		int currentSectionNumber = storySectionManager.getCurrentStorySectionNumber();
+		if (beforeSectionNumber != currentSectionNumber) {
+			return;
+		}
 		fieldManager.startMovingField(connection.getKey());
 		if (fieldManager.getFieldLength() == 0) {
 			fieldManager.goForwardField();
 		} else {
 			positionManager.setCurrentPositionType(PositionEnum.FIELD);
 			screenFactory.show(ScreenEnum.FIELD);
+			fieldManager.goInField();
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_FIELD, connection.getValue().getArrowName());
 		}
-		storySectionManager.triggerSectionEvent(EventTypeEnum.MOVE_FIELD,
-				connection.getValue().getArrowName());
+		if (!fieldManager.isInField()) {
+			String node = fieldManager.getDestinationNode();
+			movingManager.goToNode(node);
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, node);
+		}
 	}
 
 	public Entry<String, NodeConnection> getConnection() {

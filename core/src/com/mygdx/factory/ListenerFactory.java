@@ -7,10 +7,13 @@ import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.AttackButtonListener;
 import com.mygdx.listener.BackButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
+import com.mygdx.listener.CloseButtonListener;
+import com.mygdx.listener.DungeonEntranceButtonListener;
 import com.mygdx.listener.GameObjectButtonListener;
 import com.mygdx.listener.GoBackwardFieldButtonListener;
 import com.mygdx.listener.GoForwardFieldButtonListener;
 import com.mygdx.listener.JumpSectionListener;
+import com.mygdx.listener.RunAwayListener;
 import com.mygdx.listener.SelectComponentListener;
 import com.mygdx.listener.SelectEventListener;
 
@@ -26,12 +29,24 @@ public class ListenerFactory {
 		return context.getBean(AttackButtonListener.class);
 	}
 
+	public RunAwayListener getRunAwayListener() {
+		return context.getBean(RunAwayListener.class);
+	}
+
+	public CloseButtonListener getCloseButtonListener() {
+		return context.getBean(CloseButtonListener.class);
+	}
+
 	public BackButtonListener getBackButtonListener() {
 		return context.getBean(BackButtonListener.class);
 	}
 
 	public BuildingButtonListener getBuildingButtonListener() {
 		return context.getBean(BuildingButtonListener.class);
+	}
+
+	public DungeonEntranceButtonListener getDungeonEntranceButtonListener() {
+		return context.getBean(DungeonEntranceButtonListener.class);
 	}
 
 	public GoBackwardFieldButtonListener getGoBackwardFieldButtonListener() {

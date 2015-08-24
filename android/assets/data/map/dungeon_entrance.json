@@ -1,0 +1,38 @@
+{
+  "devil_castle": {
+    "nodeName": "마왕성",
+    "nodePath": "devil_castle"
+  },
+  "crystallized_valley_north": {
+    "nodeName": "수정 협곡 북쪽 입구",
+    "nodePath": "crystallized_valley"
+  },
+  "crystallized_valley_south": {
+    "nodeName": "수정 협곡 남쪽 입구",
+    "nodePath": "crystallized_valley"
+  },
+  "elven_forest_east": {
+    "nodeName": "엘프의 숲 동쪽 입구",
+    "nodePath": "elven_forest"
+  },
+  "elven_forest_west": {
+    "nodeName": "엘프의 숲 서쪽 입구",
+    "nodePath": "elven_forest"
+  },
+  "mountain_titania": {
+    "nodeName": "티타니아 산",
+    "nodePath": "mountain_titania"
+  },
+  "blackwood_forest": {
+    "nodeName": "블랙우드 숲",
+    "nodePath": "blackwood_forest"
+  },
+  "golden_lake": {
+    "nodeName": "금빛 호수",
+    "nodePath": "golden_lake"
+  },
+  "temple_of_moerae": {
+    "nodeName": "모에라에의 신전",
+    "nodePath": "temple_of_moerae"
+  }
+}

@@ -1,0 +1,68 @@
+cemetery_and_beetle_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgforkroad2
+  rotate: false
+  xy: 2, 860
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+staybuttonrest
+  rotate: false
+  xy: 860, 768
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+staybuttonsave
+  rotate: false
+  xy: 860, 676
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+townuiarrow2elvenforest
+  rotate: false
+  xy: 2, 574
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowcaravanserai
+  rotate: false
+  xy: 2, 288
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowelvenforest
+  rotate: false
+  xy: 288, 574
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowmirageport
+  rotate: false
+  xy: 2, 2
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowmoerae
+  rotate: false
+  xy: 288, 288
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
+townuiarrowredrosecastle
+  rotate: false
+  xy: 574, 574
+  size: 284, 284
+  orig: 284, 284
+  offset: 0, 0
+  index: -1
