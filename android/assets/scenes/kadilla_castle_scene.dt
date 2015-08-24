@@ -1,5 +1,6 @@
 {
-  "sceneName": "kadilla_castle_scene", 
+  "sceneName": "kadilla_castle_scene",
+  "composite": {
     "sImages": [
       {
         "itemIdentifier": "background",
@@ -11,6 +12,11 @@
           1
         ],
         "imageName": "bgkadillacastle"
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
       }
     ],
     "sComposites": [
@@ -469,11 +475,6 @@
             }
           ]
         }
-      }
-    ],
-    "layers": [
-      {
-        "layerName": "Default"
       }
     ]
   },
