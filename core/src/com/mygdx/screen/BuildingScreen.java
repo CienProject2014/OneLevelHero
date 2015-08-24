@@ -4,9 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
-import com.mygdx.stage.SaveStage;
 
 public class BuildingScreen extends BaseScreen {
+	public static boolean isInSave;
 	private Stage buildingStage;
 	private Stage gameUiStage;
 	private Stage saveStage;
@@ -17,22 +17,22 @@ public class BuildingScreen extends BaseScreen {
 		setInputProcessor();
 		buildingStage.draw();
 		gameUiStage.draw();
-		if (SaveStage.isTouched) {
+		if (isInSave) {
 			saveStage.draw();
 		}
 	}
 
 	@Override
 	public void show() {
-		saveStage = stageFactory.makeStage(StageEnum.SAVE);
 		buildingStage = stageFactory.makeStage(StageEnum.BUILDING);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
+		saveStage = stageFactory.makeStage(StageEnum.SAVE);
 		setInputProcessor();
 	}
 
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
-		if (SaveStage.isTouched) {
+		if (isInSave) {
 			multiplexer.addProcessor(0, saveStage);
 			multiplexer.addProcessor(1, gameUiStage);
 			multiplexer.addProcessor(2, buildingStage);

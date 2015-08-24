@@ -93,33 +93,33 @@ public class BattleManager {
 
 	public void checkCurrentState() {
 		switch (getCurrentClickStateEnum()) {
-		case NORMAL:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		case SKILL:
-			battleInfo.setSkill(false);
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		case INVENTORY:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		case DEFENSE:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		case WAIT:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		case RUN:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			break;
-		default:
-			break;
+			case NORMAL :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			case SKILL :
+				battleInfo.setSkill(false);
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			case INVENTORY :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			case DEFENSE :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			case WAIT :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			case RUN :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				break;
+			default :
+				break;
 		}
 	}
 
@@ -263,26 +263,26 @@ public class BattleManager {
 		ArrayList<Unit> list = new ArrayList<Unit>();
 		SkillTargetEnum enm = SkillTargetEnum.findSkillTargetEnum(targetType);
 		switch (enm) {
-		case ALL:
-			list.addAll(partyManager.getBattleMemberList());
-			break;
-		case MONSTER:
-			list.add(battleInfo.getCurrentMonster());
-			break;
-		case ONE:
-			list.add(selectedUnit);
-			break;
-		case RANDOM:
-			Hero pick = getRandomHero();
-			if (pick != null) {
-				list.add(pick);
-			}
-			break;
-		case SELF:
-			list.add(skillUser);
-			break;
-		default:
-			break;
+			case ALL :
+				list.addAll(partyManager.getBattleMemberList());
+				break;
+			case MONSTER :
+				list.add(battleInfo.getCurrentMonster());
+				break;
+			case ONE :
+				list.add(selectedUnit);
+				break;
+			case RANDOM :
+				Hero pick = getRandomHero();
+				if (pick != null) {
+					list.add(pick);
+				}
+				break;
+			case SELF :
+				list.add(skillUser);
+				break;
+			default :
+				break;
 
 		}
 
@@ -343,13 +343,23 @@ public class BattleManager {
 		boolean partyState = isHeroDead();
 		if (monsterState && !partyState) {
 			Gdx.app.log(TAG, "용사팀의 승리!");
+			initBattle();
 			setBattleState(BattleStateEnum.PLAYER_WIN);
 		} else if (partyState && !monsterState) {
 			Gdx.app.log(TAG, "용사팀의 패배!");
+			initBattle();
 			setBattleState(BattleStateEnum.GAME_OVER);
 		} else if (partyState && monsterState) {
 			Gdx.app.log(TAG, "잘못된 배틀 : 동시에 죽었다.");
+			initBattle();
 			setBattleState(BattleStateEnum.GAME_OVER);
+		}
+	}
+
+	private void initBattle() {
+		for (Unit unit : battleInfo.getUnits()) {
+			unit.setGauge(100);
+			unit.setSubvalue(0);
 		}
 	}
 

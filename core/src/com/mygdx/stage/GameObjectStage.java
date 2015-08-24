@@ -40,7 +40,7 @@ public class GameObjectStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
-		uiConstantsMap = constantsAssets.getUiConstants("GameObjectStage");
+		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
 		eventManager.setCurrentEventElementType(EventElementEnum.GAME_OBJECT);
 		EventScene eventScene = eventManager.getGameObjectEventScene();
 		setScene(eventScene);

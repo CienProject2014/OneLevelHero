@@ -11,197 +11,19 @@
           1,
           1
         ],
-        "imageName": "kadillacastleex"
+        "imageName": "bgkadillacastle"
       }
     ],
-    "sLabels": [
+    "layers": [
       {
-        "itemIdentifier": "inn_label",
-        "x": 1271,
-        "y": 1167.4999,
-        "zIndex": 3,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "INNNNNNN",
-        "style": "MaleMountain",
-        "size": 32,
-        "width": 300,
-        "height": 80
-      },
-      {
-        "itemIdentifier": "duke_castle_label",
-        "x": 471,
-        "y": 1551.4999,
-        "zIndex": 4,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "DOOK KASSLE",
-        "style": "MaleMountain",
-        "size": 32,
-        "width": 300,
-        "height": 80
-      },
-      {
-        "itemIdentifier": "road_label",
-        "x": 972,
-        "y": 1812.4999,
-        "zIndex": 6,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "5BARON",
-        "style": "MaleMountain",
-        "size": 32,
-        "width": 300,
-        "height": 80
-      },
-      {
-        "itemIdentifier": "square_label",
-        "x": 504,
-        "y": 974.4999,
-        "zIndex": 8,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "HOT PLACE",
-        "style": "MaleMountain",
-        "size": 32,
-        "width": 300,
-        "height": 80
-      },
-      {
-        "itemIdentifier": "school_label",
-        "x": 1002,
-        "y": 589.4999,
-        "rotation": -2,
-        "zIndex": 10,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "MAZIK SKOOL",
-        "style": "MaleMountain",
-        "size": 32,
-        "width": 300,
-        "height": 80
-      },
-      {
-        "itemIdentifier": "road2_label",
-        "x": 861.00006,
-        "y": 233.49988,
-        "zIndex": 12,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "DOG BENEFIT",
-        "style": "MaleMountain",
-        "size": 32,
-        "width": 300,
-        "height": 80
-      },
-      {
-        "itemIdentifier": "smith_label",
-        "x": 1275,
-        "y": 1510.4999,
-        "zIndex": 16,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "KIRI",
-        "style": "MaleMountain",
-        "size": 32,
-        "width": 300,
-        "height": 80
-      },
-      {
-        "itemIdentifier": "house_label",
-        "x": 1545,
-        "y": 1626.4999,
-        "zIndex": 17,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "house",
-        "style": "MaleMountain",
-        "size": 32,
-        "width": 300,
-        "height": 80
-      },
-      {
-        "itemIdentifier": "clothingstore_label",
-        "x": 1166,
-        "y": 1654.4999,
-        "zIndex": 19,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "FASHION",
-        "style": "MaleMountain",
-        "size": 32,
-        "width": 300,
-        "height": 80
-      },
-      {
-        "itemIdentifier": "library_label",
-        "x": 1426,
-        "y": 589.4999,
-        "zIndex": 20,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "text": "LoveLibrary",
-        "style": "MaleMountain",
-        "size": 32,
-        "width": 300,
-        "height": 80
+        "layerName": "Default"
       }
     ],
     "sComposites": [
       {
-        "itemIdentifier": "kadilla_castle_duke_castle",
-        "x": 452,
-        "y": 1547,
+        "itemIdentifier": "10to3",
+        "x": 760.5,
+        "y": 1240,
         "zIndex": 1,
         "layerName": "Default",
         "tint": [
@@ -220,7 +42,7 @@
                 1,
                 1
               ],
-              "imageName": "buttonui2"
+              "imageName": "cadilla5"
             }
           ],
           "layers": [
@@ -237,9 +59,9 @@
         }
       },
       {
-        "itemIdentifier": "kadilla_castle_inn",
-        "x": 1260,
-        "y": 1161,
+        "itemIdentifier": "10to21",
+        "x": 774.5,
+        "y": 54.49994,
         "zIndex": 2,
         "layerName": "Default",
         "tint": [
@@ -258,7 +80,7 @@
                 1,
                 1
               ],
-              "imageName": "buttonui2"
+              "imageName": "cadilla0000-------5"
             }
           ],
           "layers": [
@@ -275,9 +97,85 @@
         }
       },
       {
-        "itemIdentifier": "10to3",
-        "x": 962,
-        "y": 1807,
+        "itemIdentifier": "kadilla_castle_school",
+        "x": 1551,
+        "y": 235.99997,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "cadilla0001-------4"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "kadilla_castle_square",
+        "x": 580,
+        "y": 729,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "cadilla0004-------1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "kadilla_castle_inn",
+        "x": 372,
+        "y": 203.99994,
         "zIndex": 5,
         "layerName": "Default",
         "tint": [
@@ -296,7 +194,7 @@
                 1,
                 1
               ],
-              "imageName": "buttonui2"
+              "imageName": "cadilla0003-------2"
             }
           ],
           "layers": [
@@ -313,9 +211,47 @@
         }
       },
       {
-        "itemIdentifier": "kadilla_castle_square",
-        "x": 497,
-        "y": 967,
+        "itemIdentifier": "kadilla_castle_clothing_store",
+        "x": 1362,
+        "y": 730,
+        "zIndex": 6,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "cadilla0002-------3"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "kadilla_castle_smithy",
+        "x": 1375,
+        "y": 1417,
         "zIndex": 7,
         "layerName": "Default",
         "tint": [
@@ -334,7 +270,7 @@
                 1,
                 1
               ],
-              "imageName": "buttonui2"
+              "imageName": "cadilla1-------4"
             }
           ],
           "layers": [
@@ -351,9 +287,47 @@
         }
       },
       {
-        "itemIdentifier": "kadilla_castle_school",
-        "x": 985,
-        "y": 578,
+        "itemIdentifier": "kadilla_castle_guard_office",
+        "x": 898,
+        "y": 1675,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "cadilla3-------2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "kadilla_castle_duke_castle",
+        "x": 456.00003,
+        "y": 1649,
         "zIndex": 9,
         "layerName": "Default",
         "tint": [
@@ -372,7 +346,7 @@
                 1,
                 1
               ],
-              "imageName": "buttonui2"
+              "imageName": "cadilla4-------1"
             }
           ],
           "layers": [
@@ -389,9 +363,47 @@
         }
       },
       {
-        "itemIdentifier": "10to21",
-        "x": 862,
-        "y": 227.00006,
+        "itemIdentifier": "kadilla_castle_grocery",
+        "x": 1114,
+        "y": 1497,
+        "zIndex": 10,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "cadilla-------3"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_down",
+        "x": 1680,
+        "y": 1860,
         "zIndex": 11,
         "layerName": "Default",
         "tint": [
@@ -410,159 +422,7 @@
                 1,
                 1
               ],
-              "imageName": "buttonui2"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "kadilla_castle_library",
-        "x": 1419,
-        "y": 584,
-        "zIndex": 13,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "buttonui2"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "kadilla_castle_smith",
-        "x": 1262,
-        "y": 1502.5,
-        "zIndex": 14,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "buttonui2"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "kadilla_castle_house",
-        "x": 1535,
-        "y": 1620.5,
-        "zIndex": 15,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "buttonui2"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "kadilla_castle_clothingstore",
-        "x": 1158,
-        "y": 1647.5,
-        "zIndex": 18,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "buttonui2"
+              "imageName": "townuidown"
             }
           ],
           "layers": [
@@ -580,9 +440,9 @@
       },
       {
         "itemIdentifier": "camera_up",
-        "x": 1599,
-        "y": 711.5,
-        "zIndex": 21,
+        "x": 1680,
+        "y": 780,
+        "zIndex": 12,
         "layerName": "Default",
         "tint": [
           1,
@@ -615,50 +475,6 @@
             }
           ]
         }
-      },
-      {
-        "itemIdentifier": "camera_down",
-        "x": 1601,
-        "y": 1840.5,
-        "zIndex": 22,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "camera",
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "townuidown"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      }
-    ],
-    "layers": [
-      {
-        "layerName": "Default"
       }
     ]
   },

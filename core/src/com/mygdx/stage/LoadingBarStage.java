@@ -37,7 +37,6 @@ public class LoadingBarStage extends BaseOneLevelStage {
 	private final int loadingBarFinishOffset = 54;
 
 	private final String LOADING_MESSAGE = "게임에 필요한 리소스를 로딩하는 중입니다... ";
-	private final String FINISH_MESSAGE = "로딩 끝 화면을 클릭하세요 ";
 
 	public Stage makeStage() {
 		super.makeStage();
@@ -56,11 +55,12 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		anim.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
 		textButton.setVisible(true);
 
-		Table logoAndTextTable = new Table();
-		logoAndTextTable.align(Align.center).align(Align.top);
-		logoAndTextTable.add(logo);
-		logoAndTextTable.row();
-		logoAndTextTable.add(textButton);
+		Table logoTable = new Table();
+		logoTable.align(Align.center).align(Align.top).padTop(200);
+		logoTable.add(logo);
+		Table textTable = new Table();
+		textTable.align(Align.center).align(Align.bottom).padBottom(300);
+		textTable.add(textButton);
 
 		Table backgroundTable = new Table();
 		backgroundTable.setBackground(screenBg.getDrawable());
@@ -79,7 +79,8 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		tableStack.add(backgroundTable);
 		tableStack.add(loadingBarTable);
 		tableStack.add(frameTable);
-		tableStack.add(logoAndTextTable);
+		tableStack.add(logoTable);
+		tableStack.add(textTable);
 
 		StaticAssets.loadAll();
 		assets.initialize();
@@ -99,7 +100,6 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		loadingBg.invalidate();
 		if (loadingBg.getWidth() > loadingBarMaxWidth - loadingBarFinishOffset) {
 			loadingBg.setWidth(loadingBarMaxWidth);
-			textButton.setText(FINISH_MESSAGE);
 		}
 	}
 

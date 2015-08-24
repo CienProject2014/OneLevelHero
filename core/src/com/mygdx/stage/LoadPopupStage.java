@@ -9,49 +9,32 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.CurrentInfo;
-import com.mygdx.currentState.EventInfo;
-import com.mygdx.currentState.PartyInfo;
-import com.mygdx.currentState.PositionInfo;
-import com.mygdx.currentState.StorySectionInfo;
-import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.SaveVersion;
+import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.manager.AssetsManager;
-import com.mygdx.manager.EventManager;
-import com.mygdx.manager.LoadNewManager;
+import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.SaveManager;
-import com.mygdx.screen.BuildingScreen;
+import com.mygdx.screen.LoadScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
+import com.uwsoft.editor.renderer.actor.ImageItem;
 
-public class SaveStage extends BaseOverlapStage {
+public class LoadPopupStage extends BaseOverlapStage {
 	@Autowired
 	private AssetsManager assetsManager;
 	@Autowired
 	private SaveManager saveManager;
 	@Autowired
-	private EventManager eventManager;
-	@Autowired
-	private LoadNewManager loadManager;
-	@Autowired
 	private CurrentInfo currentInfo;
 	@Autowired
-	private PartyInfo partyInfo;
-	@Autowired
-	private PositionInfo positionInfo;
-	@Autowired
-	private TimeInfo timeInfo;
-	@Autowired
-	private StorySectionInfo storySectionInfo;
-	@Autowired
-	private EventInfo eventInfo;
-
-	private static final String SCENE_NAME = "save_scene";
+	private MovingManager movingManager;
+	private static final String SCENE_NAME = "load_scene";
 	private Camera cam;
+	private ImageItem save;
 	private CompositeItem closeButton;
 	private CompositeItem background;
 	private CompositeItem save01;
 	private CompositeItem save02;
 	private CompositeItem save03;
-	private CompositeItem newbutton;
 
 	public Stage makeStage() {
 		assetsManager.initScene(SCENE_NAME);
@@ -69,11 +52,12 @@ public class SaveStage extends BaseOverlapStage {
 		save01 = sceneLoader.getRoot().getCompositeById("save01");
 		save02 = sceneLoader.getRoot().getCompositeById("save02");
 		save03 = sceneLoader.getRoot().getCompositeById("save03");
+		save = sceneLoader.getRoot().getImageById("save");
 		closeButton = sceneLoader.getRoot().getCompositeById("close_button");
-		newbutton = sceneLoader.getRoot().getCompositeById("new_button");
 	}
 
 	private void setAddListener() {
+		save.setVisible(false);
 		background.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -81,7 +65,7 @@ public class SaveStage extends BaseOverlapStage {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				BuildingScreen.isInSave = false;
+				LoadScreen.isPopupTouched = false;
 			}
 		});
 		save01.addListener(new InputListener() {
@@ -92,8 +76,10 @@ public class SaveStage extends BaseOverlapStage {
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE1);
-				saveManager.save();
-				BuildingScreen.isInSave = false;
+				saveManager.load();
+				LoadScreen.isPopupTouched = false;
+				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
+				movingManager.goCurrentNode(nodeType);
 			}
 		});
 		save02.addListener(new InputListener() {
@@ -104,8 +90,9 @@ public class SaveStage extends BaseOverlapStage {
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE2);
-				saveManager.save();
-				BuildingScreen.isInSave = false;
+				saveManager.load();
+				LoadScreen.isPopupTouched = false;
+				movingManager.goCurrentPosition();
 			}
 		});
 		save03.addListener(new InputListener() {
@@ -116,8 +103,10 @@ public class SaveStage extends BaseOverlapStage {
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				currentInfo.setSaveVersion(SaveVersion.SAVE3);
-				saveManager.save();
-				BuildingScreen.isInSave = false;
+				saveManager.load();
+				LoadScreen.isPopupTouched = false;
+				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
+				movingManager.goCurrentNode(nodeType);
 			}
 		});
 		closeButton.addListener(new InputListener() {
@@ -127,19 +116,7 @@ public class SaveStage extends BaseOverlapStage {
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				BuildingScreen.isInSave = false;
-			}
-		});
-
-		newbutton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				BuildingScreen.isInSave = false;
-				saveManager.setNewGame();
+				LoadScreen.isPopupTouched = false;
 			}
 		});
 	}
