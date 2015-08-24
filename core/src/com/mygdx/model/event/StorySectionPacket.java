@@ -1,6 +1,7 @@
 package com.mygdx.model.event;
 
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.model.surroundings.TargetTime;
 
 public class StorySectionPacket {
 	private int nextSectionNumber;

@@ -9,7 +9,7 @@ public class DungeonManager {
 
 	@Autowired
 	private NodeAssets nodeAssets;
-
+	private boolean isInDungeon;
 	private Dungeon mapInfo;
 	private boolean currentHeading;
 	private int currentPos;
@@ -31,5 +31,11 @@ public class DungeonManager {
 	}
 	public void setMapInfo(String dungeonName) {
 		mapInfo = nodeAssets.getDungeonByName("devil_castle_dungeon");
+	}
+	public boolean isInDungeon() {
+		return isInDungeon;
+	}
+	public void setInDungeon(boolean isInDungeon) {
+		this.isInDungeon = isInDungeon;
 	}
 }

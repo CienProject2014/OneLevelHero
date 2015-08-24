@@ -1,4 +1,4 @@
-package com.mygdx.stage;
+﻿package com.mygdx.stage;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -87,6 +87,7 @@ public class ChatEventStage extends BaseOneLevelStage {
 
 	public Stage makeStage(EventScene eventScene) {
 		super.makeStage();
+		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
 		eventManager.setCurrentEventElementType(EventElementEnum.NPC);
 		setScene(eventScene);
 		return this;
@@ -132,11 +133,9 @@ public class ChatEventStage extends BaseOneLevelStage {
 	}
 
 	private void makeChatTable(EventScene eventScene) {
-		backgroundImage = new Image(
-				textureManager.getBackgroundTexture(eventScene
-						.getBackgroundPath()));
-		characterImage = new Image(textureManager.getBustTexture(
-				eventScene.getCharacterPath(), eventScene.getFaceNumber()));
+		backgroundImage = new Image(textureManager.getBackgroundTexture(eventScene.getBackgroundPath()));
+		characterImage = new Image(textureManager.getBustTexture(eventScene.getCharacterPath(),
+				eventScene.getFaceNumber()));
 
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();

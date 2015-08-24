@@ -8,7 +8,6 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.enums.FieldTypeEnum;
-import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.unit.Monster;
 
 /**
@@ -31,6 +30,8 @@ public class MonsterPickManager {
 	private FieldManager fieldManager;
 	@Autowired
 	private UnitManager unitManager;
+	@Autowired
+	private DungeonManager dungeonManager;
 
 	public Monster createMonster() {
 		Monster monster = unitAssets.getMonster(selectMonster());
@@ -47,11 +48,11 @@ public class MonsterPickManager {
 
 		List<String> monsterStrings = null;
 
-		Gdx.app.log("inDungeon?", String.valueOf(battleManager.getBeforePosition()));
-		if (battleManager.getBeforePosition() == PositionEnum.FIELD) {
+		Gdx.app.log("MonsterPickManager", "beforePosition - " + String.valueOf(battleManager.getBeforePosition()));
+		if (fieldManager.isInField()) {
 			FieldTypeEnum fieldType = fieldManager.getFieldType();
 			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
-		} else if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
+		} else if (dungeonManager.isInDungeon()) {
 			// FIXME : 던전 매니저
 
 			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(FieldTypeEnum.DUNGEON);

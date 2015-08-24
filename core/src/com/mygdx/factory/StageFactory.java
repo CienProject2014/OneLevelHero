@@ -23,6 +23,7 @@ import com.mygdx.stage.GameOverStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.InventoryStage;
 import com.mygdx.stage.LoadStage;
+import com.mygdx.stage.LoadingBarStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
 import com.mygdx.stage.SaveStage;
@@ -84,6 +85,8 @@ public class StageFactory {
 			return context.getBean(LoadStage.class).makeStage();
 		case SAVE:
 			return context.getBean(SaveStage.class).makeStage();
+		case LOADING_BAR:
+			return context.getBean(LoadingBarStage.class).makeStage();
 		default:
 			Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
 			return context.getBean(VillageStage.class).makeStage(); // FIXME
