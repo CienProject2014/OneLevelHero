@@ -1,10 +1,11 @@
-package com.mygdx.stage;
+﻿package com.mygdx.stage;
 
 import java.util.HashMap;
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -65,11 +66,13 @@ public class ChatEventStage extends BaseOneLevelStage {
 			setScene(eventSceneIterator.next());
 			this.addListener(new InputListener() {
 				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				public boolean touchDown(InputEvent event, float x, float y,
+						int pointer, int button) {
 					if (eventSceneIterator.hasNext()) {
 						setScene(eventSceneIterator.next());
 					} else {
-						if (!eventCheckManager.isSelectEvent(eventManager.getCurrentNpcEvent())) {
+						if (!eventCheckManager.isSelectEvent(eventManager
+								.getCurrentNpcEvent())) {
 							rewardManager.doReward(); // 보상이 있을경우 보상실행
 							eventManager.finishNpcEvent();
 							storySectionManager.runStorySequence();
@@ -107,16 +110,19 @@ public class ChatEventStage extends BaseOneLevelStage {
 	}
 
 	private void makeSkipButton() {
-		TextButton skipButton = new TextButton("스킵", uiComponentAssets.getSkin());
+		TextButton skipButton = new TextButton("스킵",
+				uiComponentAssets.getSkin());
 		skipButton.center();
 		skipButton.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
 				return true;
 			}
 
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
 				rewardManager.doReward(); // 보상이 있을경우 보상실행
 				eventManager.finishNpcEvent();
 				storySectionManager.runStorySequence();
@@ -137,20 +143,40 @@ public class ChatEventStage extends BaseOneLevelStage {
 		chatLineImageTable.add(chatImage);
 
 		characterBustTable.clear();
-		characterBustTable.left().bottom();
-		characterBustTable.add(characterImage).width(uiConstantsMap.get("talkerWidth"))
-				.height(uiConstantsMap.get("talkerHeight")).padLeft(uiConstantsMap.get("talkerPadLeft"));
+
+		Gdx.app.log("PositionManager", eventScene.getSpeakerPosition());
+
+		if (eventScene.getSpeakerPosition() == null) {
+			characterBustTable.left().bottom();
+			// System.out.println("if");
+		} else if (eventScene.getSpeakerPosition().equals(
+				EventScene.SPEAKER_RIGHT)) {
+			characterBustTable.right().bottom();
+			// System.out.println("else if");
+		} else { // left일 경우
+			characterBustTable.left().bottom();
+			// System.out.println("else");
+		}
+
+		characterBustTable.add(characterImage)
+				.width(uiConstantsMap.get("talkerWidth"))
+				.height(uiConstantsMap.get("talkerHeight"))
+				.padLeft(uiConstantsMap.get("talkerPadLeft"));
 
 		scriptTable.clear();
-		scriptTable.left().bottom().padLeft(uiConstantsMap.get("scriptPadLeft"))
+		scriptTable.left().bottom()
+				.padLeft(uiConstantsMap.get("scriptPadLeft"))
 				.padBottom(uiConstantsMap.get("scriptPadBottom"));
-		scriptTable.add(scriptTitle).width(uiConstantsMap.get("scriptTitleWidth"))
+		scriptTable.add(scriptTitle)
+				.width(uiConstantsMap.get("scriptTitleWidth"))
 				.height(uiConstantsMap.get("scriptTitleHeight"));
 		scriptTable.row();
 		scriptContent.setWrap(true);
 		scriptContent.setAlignment(Align.top);
-		scriptTable.add(scriptContent).width(uiConstantsMap.get("scriptContentWidth"))
-				.height(uiConstantsMap.get("scriptContentHeight")).padTop(uiConstantsMap.get("scriptContentPadTop"));
+		scriptTable.add(scriptContent)
+				.width(uiConstantsMap.get("scriptContentWidth"))
+				.height(uiConstantsMap.get("scriptContentHeight"))
+				.padTop(uiConstantsMap.get("scriptContentPadTop"));
 
 		tableStack.add(backgroundImage);
 		tableStack.add(chatLineImageTable);
