@@ -36,7 +36,7 @@ public class SkillRunPopup extends Dialog {
 	}
 
 	public void initialize(String labelText) {
-		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
+		uiConstantsMap = constantsAssets.getUiConstants("GameObjectPopup");
 		questionLabel = new Label(labelText, StaticAssets.skin);
 		questionLabel.setAlignment(Align.center);
 		questionLabel.setBounds(uiConstantsMap.get("questionLabelX"), uiConstantsMap.get("questionLabelY"),
