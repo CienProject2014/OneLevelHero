@@ -1876,9 +1876,9 @@
       },
       "13": {
         "eventState": "not_opened",
-        "eventType": "move_node",
+        "eventType": "move_sub_node",
         "eventComponent": [
-          "cave_of_succubus_room_start_01"
+          "cave_of_succubus"
         ]
       },
       "14": {

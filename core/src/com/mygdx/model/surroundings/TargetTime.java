@@ -1,4 +1,4 @@
-package com.mygdx.model.event;
+package com.mygdx.model.surroundings;
 
 
 public class TargetTime {

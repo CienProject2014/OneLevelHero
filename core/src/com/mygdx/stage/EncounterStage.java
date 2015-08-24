@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -87,16 +86,14 @@ public class EncounterStage extends BaseOneLevelStage {
 
 	// FIXME
 	private TextureRegionDrawable getBackgroundTRD() {
-		if (battleManager.getSelectedMonster().getFacePath().equals("mawang_01")) {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devilcastle_01")));
-		} else if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
+		if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devilcastle_01")));
 		} else {
-			Gdx.app.log("EncounterStage", "fieldType - " + fieldManager.getFieldType());
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
 					.getFieldType().toString())));
 		}
 	}
+
 	private void addListener() {
 		fightButton.addListener(new InputListener() {
 			@Override

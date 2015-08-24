@@ -19,6 +19,7 @@ import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.DungeonEntranceButtonListener;
+import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
@@ -44,11 +45,14 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 	@Autowired
 	private ListenerFactory listenerFactory;
 	@Autowired
+	private DungeonManager dungeonManager;
+	@Autowired
 	private PositionManager positionManager;
 	private DungeonEntrance dungeonEntranceInfo;
 
 	public Stage makeStage() {
 		super.makeStage();
+		dungeonManager.setInDungeon(false);
 		dungeonEntranceInfo = nodeAssets.getDungeonEntranceByName(positionManager.getCurrentNodeName());
 		makeScene(dungeonEntranceInfo);
 		setButton();
