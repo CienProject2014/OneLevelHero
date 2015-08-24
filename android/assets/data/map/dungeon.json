@@ -2,61 +2,309 @@
   "devil_castle_dungeon": {
     "dungeonName": "마왕성",
     "sceneName": "dungeon_3door_scene",
-    "mapSize": "(8,7)",
+    "mapWidth": "8",
+    "mapHeight": "7",
     "nodes": [
       {
-        "nodePos": "(1,4)",
+        "nodePosX": "0",
+        "nodePosY": "3",
         "nodeFlag": "ENTRANCE"
       },
       {
-        "nodePos": "(2,3)",
+        "nodePosX": "1",
+        "nodePosY": "2",
         "nodeFlag": "ROOM"
       },
       {
-        "nodePos": "(2,4)",
+        "nodePosX": "1",
+        "nodePosY": "3",
         "nodeFlag": "ROOM"
       },
       {
-        "nodePos": "(2,5)",
+        "nodePosX": "1",
+        "nodePosY": "4",
         "nodeFlag": "ROOM"
       },
       {
-        "nodePos": "(3,3)",
+        "nodePosX": "2",
+        "nodePosY": "1",
         "nodeFlag": "ROOM"
       },
       {
-        "nodePos": "(3,4)",
+        "nodePosX": "2",
+        "nodePosY": "2",
         "nodeFlag": "ROOM"
       },
       {
-        "nodePos": "(3,5)",
+        "nodePosX": "2",
+        "nodePosY": "3",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "2",
+        "nodePosY": "4",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "2",
+        "nodePosY": "5",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "2",
+        "nodePosY": "6",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "1",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "2",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "3",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "4",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "5",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "6",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "0",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "1",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "2",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "3",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "4",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "5",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "6",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "0",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "1",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "2",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "3",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "4",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "5",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "6",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "0",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "1",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "2",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "3",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "4",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "5",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "6",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "1",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "2",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "3",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "4",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "5",
+        "nodeFlag": "ROOM"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "6",
         "nodeFlag": "ROOM"
       }
     ],
     "connections": [
       {
-        "from":"0",
-        "to":"1"
+        "from": "0",
+        "to": "1"
       },
       {
-        "from":"0",
-        "to":"2"
+        "from": "0",
+        "to": "2"
       },
       {
-        "from":"0",
-        "to":"3"
+        "from": "0",
+        "to": "3"
       },
       {
-        "from":"1",
-        "to":"4"
+        "from": "1",
+        "to": "5"
       },
       {
-        "from":"1",
-        "to":"5"
+        "from": "1",
+        "to": "6"
       },
       {
-        "from":"3",
-        "to":"6"
+        "from": "3",
+        "to": "7"
+      },
+      {
+        "from": "5",
+        "to": "4"
+      },
+      {
+        "from": "5",
+        "to": "10"
+      },
+      {
+        "from": "5",
+        "to": "11"
+      },
+      {
+        "from": "6",
+        "to": "11"
+      },
+      {
+        "from": "6",
+        "to": "13"
+      },
+      {
+        "from": "7",
+        "to": "8"
+      },
+      {
+        "from": "8",
+        "to": "9"
+      },
+      {
+        "from": "9",
+        "to": "15"
+      },
+      {
+        "from": "10",
+        "to": "16"
+      },
+      {
+        "from": "10",
+        "to": "17"
+      },
+      {
+        "from": "10",
+        "to": "18"
+      },
+      {
+        "from": "11",
+        "to": "17"
+      },
+      {
+        "from": "13",
+        "to": "19"
+      },
+      {
+        "from": "13",
+        "to": "14"
+      },
+      {
+        "from": "14",
+        "to": "22"
       }
     ]
   }

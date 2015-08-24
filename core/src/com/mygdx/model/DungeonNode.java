@@ -13,7 +13,8 @@ public class DungeonNode {
 	private final static String TAG_LABEL = "label";
 	private final static String TAG_FLAG = "flag";
 
-	private String nodePos;
+	private int nodePosX;
+	private int nodePosY;
 	private String nodeFlag;
 
 	public HashMap<String, Object> data = new HashMap<>();
@@ -44,5 +45,13 @@ public class DungeonNode {
 
 	public void setFlag(int flg) {
 		this.data.put(TAG_FLAG, flg);
+	}
+
+	public int getNodePosX() {
+		return nodePosX;
+	}
+
+	public int getNodePosY() {
+		return nodePosY;
 	}
 }

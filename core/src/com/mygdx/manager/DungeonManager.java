@@ -9,10 +9,23 @@ public class DungeonManager {
 
 	@Autowired
 	private NodeAssets nodeAssets;
-	private boolean isInDungeon;
 	private Dungeon mapInfo;
 	private boolean currentHeading;
 	private int currentPos;
+	private boolean[][] isOn;
+
+	public void setIsOn() {
+		isOn = new boolean[mapInfo.getMapWidth()][mapInfo.getMapHeight()];
+	}
+	public void turnIsOn(int x, int y) {
+
+		if (isOn == null)
+			setIsOn();
+		isOn[x][y] = true;
+	}
+	public boolean checkIsOn(int x, int y) {
+		return isOn[x][y];
+	}
 
 	public int getCurrentPos() {
 		return currentPos;
@@ -31,11 +44,20 @@ public class DungeonManager {
 	}
 	public void setMapInfo(String dungeonName) {
 		mapInfo = nodeAssets.getDungeonByName("devil_castle_dungeon");
+		mapInfo.setInDungeon(true);
 	}
-	public boolean isInDungeon() {
-		return isInDungeon;
-	}
+
 	public void setInDungeon(boolean isInDungeon) {
-		this.isInDungeon = isInDungeon;
+		if (mapInfo != null) {
+			mapInfo.setInDungeon(isInDungeon);
+		}
+	}
+
+	public boolean isInDungeon() {
+		// TODO Auto-generated method stub
+		if (mapInfo != null)
+			return mapInfo.isInDungeon();
+		else
+			return false;
 	}
 }

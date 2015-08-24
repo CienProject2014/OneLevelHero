@@ -14,6 +14,7 @@ import com.mygdx.stage.BuildingStage;
 import com.mygdx.stage.CharacterUiStage;
 import com.mygdx.stage.ChatEventStage;
 import com.mygdx.stage.DungeonEntranceStage;
+import com.mygdx.stage.DungeonMinimapStage;
 import com.mygdx.stage.DungeonStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.FieldStage;
@@ -90,6 +91,8 @@ public class StageFactory {
 				return context.getBean(VillageStage.class).makeStage();
 			case WORLD_MAP :
 				return context.getBean(WorldMapStage.class).makeStage();
+			case MINIMAP :
+				return context.getBean(DungeonMinimapStage.class).makeStage();
 			default :
 				Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
 				return context.getBean(VillageStage.class).makeStage(); // FIXME

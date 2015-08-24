@@ -6,8 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 
 /**
- * DungeonEntranceStage와 GameUiStage를 addActor()해서 보여주는 Screen.
- * 던전입구의 경우 multiplexer를 이용하여 2개의 화면을 교차로 보여준다.
+ * DungeonEntranceStage와 GameUiStage를 addActor()해서 보여주는 Screen. 던전입구의 경우
+ * multiplexer를 이용하여 2개의 화면을 교차로 보여준다.
  *
  * @author Velmont
  *
@@ -15,6 +15,7 @@ import com.mygdx.enums.StageEnum;
 public class DungeonScreen extends BaseScreen {
 	private Stage dungeonStage;
 	private Stage gameUiStage;
+	private Stage dungeonMinimapStage;
 
 	@Override
 	public void render(float delta) {
@@ -23,6 +24,8 @@ public class DungeonScreen extends BaseScreen {
 		dungeonStage.draw();
 		dungeonStage.getCamera().update();
 		gameUiStage.draw();
+		dungeonMinimapStage.draw();
+		dungeonMinimapStage.act(delta);
 		// 카메라를 지속적으로 업데이트 해준다.
 	}
 
@@ -30,6 +33,7 @@ public class DungeonScreen extends BaseScreen {
 	public void show() {
 		dungeonStage = stageFactory.makeStage(StageEnum.DUNGEON);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
+		dungeonMinimapStage = stageFactory.makeStage(StageEnum.MINIMAP);
 
 		// 여러 스테이지에 인풋 프로세서를 동시에 할당한다
 		InputMultiplexer multiplexer = new InputMultiplexer();
@@ -47,5 +51,6 @@ public class DungeonScreen extends BaseScreen {
 	public void hide() {
 		gameUiStage.dispose();
 		dungeonStage.dispose();
+		dungeonMinimapStage.dispose();
 	}
 }

@@ -55,6 +55,8 @@ public class BattleManager {
 	@Autowired
 	private FieldManager fieldManager;
 	@Autowired
+	private DungeonManager dungeonManager;
+	@Autowired
 	private TimeManager timeManager;
 	private GridHitbox gridHitbox; // grid hitbox 테이블
 
@@ -79,6 +81,8 @@ public class BattleManager {
 		unitManager.initiateMonster(selectedMonster);
 		battleInfo.setCurrentMonster(selectedMonster);
 		if (fieldManager.isInField()) {
+			screenFactory.show(ScreenEnum.ENCOUNTER);
+		} else if (dungeonManager.isInDungeon()) {
 			screenFactory.show(ScreenEnum.ENCOUNTER);
 		}
 	}
