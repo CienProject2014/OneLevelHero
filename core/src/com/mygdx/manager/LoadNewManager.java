@@ -11,7 +11,7 @@ import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
 
-public class LoadManager {
+public class LoadNewManager {
 	@Autowired
 	private UnitAssets unitAssets;
 	@Autowired
@@ -52,12 +52,6 @@ public class LoadManager {
 		eventManager.setGameObjectMap(eventAssets.getGameObjectMap());
 	}
 
-	public void loadSaveGame() {
-		setHero();
-		setBattleInfo();
-		storySectionManager.runStorySequence();
-	}
-
 	private void setBattleInfo() {
 		battleManager.setBeforePosition(PositionEnum.SUB_NODE);
 		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
@@ -68,7 +62,7 @@ public class LoadManager {
 		partyManager.setFatigue(0);
 	}
 
-	public LoadManager() {
+	public LoadNewManager() {
 		Gdx.app.debug("LoadManager", "Constructor() call");
 	}
 

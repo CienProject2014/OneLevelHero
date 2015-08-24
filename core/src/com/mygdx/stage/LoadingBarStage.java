@@ -56,11 +56,12 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		anim.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
 		textButton.setVisible(true);
 
-		Table logoAndTextTable = new Table();
-		logoAndTextTable.align(Align.center).align(Align.top);
-		logoAndTextTable.add(logo);
-		logoAndTextTable.row();
-		logoAndTextTable.add(textButton);
+		Table logoTable = new Table();
+		logoTable.align(Align.center).align(Align.top).padTop(200);
+		logoTable.add(logo);
+		Table textTable = new Table();
+		textTable.align(Align.center).align(Align.bottom).padBottom(300);
+		textTable.add(textButton);
 
 		Table backgroundTable = new Table();
 		backgroundTable.setBackground(screenBg.getDrawable());
@@ -79,7 +80,8 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		tableStack.add(backgroundTable);
 		tableStack.add(loadingBarTable);
 		tableStack.add(frameTable);
-		tableStack.add(logoAndTextTable);
+		tableStack.add(logoTable);
+		tableStack.add(textTable);
 
 		Gdx.app.log("debug", "StaticAssets Loading 전");
 		StaticAssets.loadAll();

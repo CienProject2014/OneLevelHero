@@ -44,6 +44,12 @@ public class Assets {
 	@Autowired
 	private AssetsManager assetsManager;
 
+	public void initializeUnitInfo() {
+		Map<String, StringFile> filePathMap = loadFilePathMap();
+		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
+		unitAssets.set(jsonStringMap);
+	}
+
 	public synchronized void initialize() {
 		Map<String, StringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);

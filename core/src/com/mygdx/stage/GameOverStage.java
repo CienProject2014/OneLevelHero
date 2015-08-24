@@ -11,16 +11,21 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.manager.SaveManager;
 
 public class GameOverStage extends Stage {
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private SaveManager saveManager;
+
 	public Stage makeStage() {
 		Label label = new Label("GAME OVER ... ", StaticAssets.skin);
 		TextButton goToMenuButton = new TextButton("처음 화면으로...", StaticAssets.skin);
 		goToMenuButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				initInfo();
 				screenFactory.show(ScreenEnum.MENU);
 			}
 		});
@@ -33,5 +38,9 @@ public class GameOverStage extends Stage {
 		table.add(goToMenuButton);
 		addActor(table);
 		return this;
+	}
+
+	private void initInfo() {
+		saveManager.setNewGame();
 	}
 }

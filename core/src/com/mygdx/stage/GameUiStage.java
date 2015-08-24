@@ -21,19 +21,11 @@ import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
-import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.PositionManager;
-import com.mygdx.manager.RewardManager;
-import com.mygdx.manager.SaveManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.popup.GameObjectPopup;
-import com.mygdx.popup.StatusMessagePopup;
 
 public class GameUiStage extends BaseOneLevelStage {
-	@Autowired
-	private RewardManager rewardManager;
-	@Autowired
-	private BattleManager battleManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
@@ -43,8 +35,6 @@ public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
 	private ListenerFactory listenerFactory;
 	@Autowired
-	private SaveManager saveManager;
-	@Autowired
 	private StorySectionManager storySectionManager;
 
 	@Autowired
@@ -53,7 +43,6 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	private Table uiTable;
 	private Table topTable;
-	private StatusMessagePopup statusMessagePopup;
 	private Stack<GameObjectPopup> alertMessage;
 
 	private TextButton placeInfoButton;

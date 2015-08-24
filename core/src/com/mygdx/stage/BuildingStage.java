@@ -31,6 +31,7 @@ import com.mygdx.manager.TimeManager;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.surroundings.Building;
 import com.mygdx.popup.GameObjectPopup;
+import com.mygdx.screen.BuildingScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 
@@ -139,9 +140,7 @@ public class BuildingStage extends BaseOverlapStage {
 	private void setSceneItemList() {
 		gameObjectList = new ArrayList<CompositeItem>();
 
-		if (buildingInfo.getGameObject() != null)
-
-		{
+		if (buildingInfo.getGameObject() != null) {
 			for (final String objectName : buildingInfo.getGameObject()) {
 				final GameObject gameObject = eventAssets.getGameObject(objectName);
 				CompositeItem gameObjectButton = sceneLoader.getRoot().getCompositeById(objectName);
@@ -157,7 +156,7 @@ public class BuildingStage extends BaseOverlapStage {
 						}
 
 						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-							SaveStage.isTouched = true;
+							BuildingScreen.isInSave = true;
 						}
 					});
 				} else {

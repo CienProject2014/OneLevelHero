@@ -37,7 +37,9 @@ public class BuildingButtonListener extends ClickListener {
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE, buildingName);
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BY_TIME, buildingName);
 		eventManager.triggerSpecialEvent(EventTypeEnum.DONT_GO_BUILDING, buildingName);
-		eventManager.triggerBuildingStopEvent(buildingInfo.getTargetTime(), buildingName);
+		if (buildingInfo.getTargetTime() != null) {
+			eventManager.triggerBuildingStopEvent(buildingInfo.getTargetTime(), buildingName);
+		}
 	}
 	public Building getBuildingInfo() {
 		return buildingInfo;

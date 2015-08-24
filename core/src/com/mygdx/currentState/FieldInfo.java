@@ -72,43 +72,4 @@ public class FieldInfo {
 	public FieldTypeEnum getCurrentFieldType() {
 		return fieldList.get(fieldNumber);
 	}
-
-	// FIXME need to check index out of bound!
-	private void increaseFieldNumber() {
-		this.fieldNumber += 1;
-	}
-
-	private void decreaseFieldNumber() {
-		this.fieldNumber -= 1;
-	}
-
-	// syntax sugar
-
-	private boolean willBeReturn() {
-		return fieldNumber == 0 ? true : false;
-	}
-
-	private boolean willBeArrived() {
-		return fieldNumber >= fieldList.size() - 1 ? true : false;
-	}
-
-	public boolean tryToGoForward() {
-		boolean willBeArrvied = willBeArrived();
-		if (!willBeArrvied) {
-			increaseFieldNumber();
-		} else {
-			inField = false;
-		}
-		return willBeArrvied;
-	}
-
-	public boolean tryToGoBackword() {
-		boolean willbeReturn = willBeReturn();
-		if (!willbeReturn) {
-			decreaseFieldNumber();
-		} else {
-			inField = false;
-		}
-		return willbeReturn;
-	}
 }
