@@ -13,6 +13,7 @@ import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.surroundings.NodeConnection;
@@ -28,13 +29,15 @@ public class ArrowButtonListener extends ClickListener {
 	private PositionManager positionManager;
 	@Autowired
 	private TimeManager timeManager;
-
+	@Autowired
+	private SoundManager soundManager;
 	@Autowired
 	private MovingManager movingManager;
 	private Entry<String, NodeConnection> connection;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		soundManager.setSoundByUseAndPlay("move_arrow");
 		timeManager.plusMinute(30); // 마을에서 길로 나가는데 30분
 		int beforeSectionNumber = storySectionManager.getCurrentStorySectionNumber();
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.CLICK_ARROW, connection.getValue().getArrowName());
@@ -57,7 +60,6 @@ public class ArrowButtonListener extends ClickListener {
 			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, node);
 		}
 	}
-
 	public Entry<String, NodeConnection> getConnection() {
 		return connection;
 	}
