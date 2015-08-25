@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.mygdx.enums.FieldTypeEnum;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.Dungeon;
+import com.mygdx.model.surroundings.Dungeon;
 import com.mygdx.model.surroundings.DungeonEntrance;
 import com.mygdx.model.surroundings.Fork;
 import com.mygdx.model.surroundings.MonsterField;

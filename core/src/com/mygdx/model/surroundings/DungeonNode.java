@@ -1,6 +1,8 @@
-package com.mygdx.model;
+package com.mygdx.model.surroundings;
 
 import java.util.HashMap;
+
+import com.mygdx.enums.DungeonNodeEnum;
 
 public class DungeonNode {
 	public final static int FLG_NULL = 0;
@@ -15,14 +17,14 @@ public class DungeonNode {
 
 	private int nodePosX;
 	private int nodePosY;
-	private String nodeFlag;
+	private DungeonNodeEnum dungeonNodeType;
 
 	public HashMap<String, Object> data = new HashMap<>();
 
 	public boolean chkFlag(int flg) {
-		if (nodeFlag.equals("ENTRANCE"))
+		if (dungeonNodeType.equals(DungeonNodeEnum.ENTRANCE))
 			setFlag(FLG_ENTRANCE);
-		else if (nodeFlag.equals("ROOM"))
+		else if (dungeonNodeType.equals(DungeonNodeEnum.NORMAL))
 			setFlag(FLG_ENCOUNT);
 		return (flg & (int) this.data.get(TAG_FLAG)) != FLG_NULL;
 	}
@@ -53,5 +55,13 @@ public class DungeonNode {
 
 	public int getNodePosY() {
 		return nodePosY;
+	}
+
+	public DungeonNodeEnum getDungeonNodeType() {
+		return dungeonNodeType;
+	}
+
+	public void setDungeonNodeType(DungeonNodeEnum dungeonNodeType) {
+		this.dungeonNodeType = dungeonNodeType;
 	}
 }

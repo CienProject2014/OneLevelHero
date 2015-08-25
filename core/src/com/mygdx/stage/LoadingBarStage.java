@@ -34,7 +34,7 @@ public class LoadingBarStage extends BaseOneLevelStage {
 	private float percent;
 	private int loadingBarMaxWidth;
 	private int loadingBarHeight;
-	private final int loadingBarFinishOffset = 54;
+	private final int loadingBarFinishOffset = 10;
 
 	private final String LOADING_MESSAGE = "게임에 필요한 리소스를 로딩하는 중입니다... ";
 
@@ -73,7 +73,7 @@ public class LoadingBarStage extends BaseOneLevelStage {
 
 		Table loadingBarTable = new Table();
 		loadingBarTable.align(Align.center);
-		loadingBarTable.add(loadingBg).padRight(loadingFrame.getWidth() - 10)
+		loadingBarTable.add(loadingBg).padRight(loadingFrame.getWidth() - 5)
 				.padTop(loadingFrame.getHeight() - loadingBg.getHeight());
 
 		tableStack.add(backgroundTable);

@@ -34,7 +34,7 @@ public class MenuScreen extends BaseScreen {
 		musicManager.setMusicAndPlay(musicAssets.getMusic("opening"), soundInfo.getMusicVolume(),
 				MusicCondition.IF_IS_NOT_PLAYING);
 		stage = stageFactory.makeStage(StageEnum.MENU);
-		saveManager.saveFirstInfo();
+		saveManager.saveNewGameInfo();
 		Gdx.input.setInputProcessor(stage);
 	}
 }

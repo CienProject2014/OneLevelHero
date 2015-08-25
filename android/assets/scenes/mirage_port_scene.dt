@@ -3,7 +3,7 @@
   "composite": {
     "sImages": [
       {
-        "itemIdentifier": "background",
+        "itemIdentifier": "background01",
         "layerName": "Default",
         "tint": [
           1,
@@ -11,14 +11,11 @@
           1,
           1
         ],
-        "imageName": "bgmirageport1"
-      }
-    ],
-    "sComposites": [
+        "imageName": "mirageport-bot0003-------0"
+      },
       {
-        "itemIdentifier": "mirage_port_inn",
-        "x": 1088,
-        "y": 1688,
+        "itemIdentifier": "background02",
+        "y": 1080,
         "zIndex": 1,
         "layerName": "Default",
         "tint": [
@@ -27,39 +24,14 @@
           1,
           1
         ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "mirage_port_inn",
-              "scaleX": 5,
-              "scaleY": 5,
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuipage01"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
+        "imageName": "mirageport-top0004-------0"
+      }
+    ],
+    "sComposites": [
       {
         "itemIdentifier": "mirage_port_dock",
-        "x": 1641,
-        "y": 1545,
+        "x": 1193,
+        "y": 695.4999,
         "zIndex": 2,
         "layerName": "Default",
         "tint": [
@@ -71,9 +43,6 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "mirage_port_inn",
-              "scaleX": 5,
-              "scaleY": 5,
               "layerName": "Default",
               "tint": [
                 1,
@@ -81,7 +50,7 @@
                 1,
                 1
               ],
-              "imageName": "invenuipage01"
+              "imageName": "mirageport-bot0000-------3"
             }
           ],
           "layers": [
@@ -98,9 +67,9 @@
         }
       },
       {
-        "itemIdentifier": "mirage_port_hermesguild",
-        "x": 781.00006,
-        "y": 1210,
+        "itemIdentifier": "mirage_port_kaido",
+        "x": 484,
+        "y": 657.5,
         "zIndex": 3,
         "layerName": "Default",
         "tint": [
@@ -112,9 +81,6 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "mirage_port_inn",
-              "scaleX": 5,
-              "scaleY": 5,
               "layerName": "Default",
               "tint": [
                 1,
@@ -122,170 +88,7 @@
                 1,
                 1
               ],
-              "imageName": "invenuipage01"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "mirage_port_grocery",
-        "x": 1214,
-        "y": 379,
-        "zIndex": 4,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "mirage_port_inn",
-              "scaleX": 5,
-              "scaleY": 5,
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuipage01"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "mirage_port_kaidoguild",
-        "x": 469.00006,
-        "y": 560,
-        "zIndex": 5,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "mirage_port_inn",
-              "scaleX": 5,
-              "scaleY": 5,
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuipage01"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "mirage_port_peasanthouse",
-        "x": 752,
-        "y": 1738,
-        "zIndex": 6,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "mirage_port_inn",
-              "scaleX": 5,
-              "scaleY": 5,
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuipage01"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "9to24",
-        "x": 271.99994,
-        "y": 1745,
-        "zIndex": 7,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "scaleX": 3.3333333,
-              "scaleY": 3.3333333,
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuiup"
+              "imageName": "mirageport-bot0001-------2"
             }
           ],
           "layers": [
@@ -303,9 +106,9 @@
       },
       {
         "itemIdentifier": "9to4",
-        "x": 658.99994,
-        "y": 120,
-        "zIndex": 8,
+        "x": 408.99988,
+        "y": 181,
+        "zIndex": 4,
         "layerName": "Default",
         "tint": [
           1,
@@ -316,8 +119,6 @@
         "composite": {
           "sImages": [
             {
-              "scaleX": 3.3333333,
-              "scaleY": 3.3333333,
               "layerName": "Default",
               "tint": [
                 1,
@@ -325,7 +126,7 @@
                 1,
                 1
               ],
-              "imageName": "invenuiup"
+              "imageName": "mirageport-bot0002-------1"
             }
           ],
           "layers": [
@@ -342,9 +143,161 @@
         }
       },
       {
-        "itemIdentifier": "camera_up",
-        "x": 1657,
-        "y": 750,
+        "itemIdentifier": "mirage_port_square",
+        "x": 1514.9999,
+        "y": 1454.5,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "mirageport-top0002-------2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "mirage_port_hermes",
+        "x": 662.9999,
+        "y": 1623.5,
+        "zIndex": 6,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "mirageport-top0001-------3"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "mirage_port_inn",
+        "x": 1407,
+        "y": 1736.5,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "mirageport-top0003-------1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "9to24",
+        "x": 1061.5,
+        "y": 1763.5,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "mirageport-top0000-------4"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_down",
+        "x": 1675,
+        "y": 1830,
         "zIndex": 9,
         "layerName": "Default",
         "tint": [
@@ -363,7 +316,7 @@
                 1,
                 1
               ],
-              "imageName": "townuiup"
+              "imageName": "townuidown"
             }
           ],
           "layers": [
@@ -380,9 +333,9 @@
         }
       },
       {
-        "itemIdentifier": "camera_down",
-        "x": 1652,
-        "y": 1810,
+        "itemIdentifier": "camera_up",
+        "x": 1675,
+        "y": 750,
         "zIndex": 10,
         "layerName": "Default",
         "tint": [
@@ -394,7 +347,6 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "camera_down",
               "layerName": "Default",
               "tint": [
                 1,
@@ -402,7 +354,7 @@
                 1,
                 1
               ],
-              "imageName": "townuidown"
+              "imageName": "townuiup"
             }
           ],
           "layers": [

@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.TextureManager;
-import com.mygdx.model.DungeonNode;
+import com.mygdx.model.surroundings.DungeonNode;
 
 public class DungeonMinimapStage extends BaseOneLevelStage {
 
