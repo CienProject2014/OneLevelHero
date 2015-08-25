@@ -26,6 +26,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.SaveInfo;
 import com.mygdx.enums.SaveVersion;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.SaveManager;
 import com.mygdx.screen.BuildingScreen;
@@ -130,72 +131,37 @@ public class SavePopupStage extends BaseOverlapStage {
 	}
 
 	private void setAddListener() {
-		background.addListener(new InputListener() {
+		background.addListener(new TouchListener());
+		save01.addListener(new TouchListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				BuildingScreen.isInSave = false;
-			}
-		});
-		save01.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_01);
 				saveManager.save();
-				BuildingScreen.isInSave = false;
+				super.touchUp(event, x, y, pointer, button);
 			}
 		});
 		save02.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_02);
 				saveManager.save();
-				BuildingScreen.isInSave = false;
+				super.touchUp(event, x, y, pointer, button);
 			}
 		});
-		save03.addListener(new InputListener() {
+		save03.addListener(new TouchListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_03);
 				saveManager.save();
-				BuildingScreen.isInSave = false;
+				super.touchUp(event, x, y, pointer, button);
 			}
 		});
-		closeButton.addListener(new InputListener() {
+		closeButton.addListener(new TouchListener());
+		newbutton.addListener(new TouchListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				BuildingScreen.isInSave = false;
-			}
-		});
-
-		newbutton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				BuildingScreen.isInSave = false;
 				saveManager.setNewGame();
+				super.touchUp(event, x, y, pointer, button);
 			}
 		});
 	}
@@ -204,5 +170,12 @@ public class SavePopupStage extends BaseOverlapStage {
 		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		getViewport().setCamera(cam);
+	}
+	
+	private class TouchListener extends SimpleTouchListener {
+		@Override
+		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			BuildingScreen.isInSave = false;
+		}
 	}
 }
