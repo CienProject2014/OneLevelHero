@@ -697,6 +697,7 @@ public class InventoryStage extends BaseOverlapStage {
 	public void setCurrentSelectedHero(Hero currentSelectedHero) {
 		this.currentSelectedHero = currentSelectedHero;
 		partyManager.setCurrentSelectedHero(currentSelectedHero);
+		setPageNumber(0);
 	}
 
 	public Hero getCurrentSelectedHero() {

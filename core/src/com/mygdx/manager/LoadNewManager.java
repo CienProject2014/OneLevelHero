@@ -46,7 +46,6 @@ public class LoadNewManager {
 		storySectionManager.runStorySequence();
 		bagManager.possessItem(ItemEnum.HANDGRIP, "sabre");
 		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse"); // FIXME for
-		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse");
 	}
 
 	private void setEventInfo(EventManager eventManager, EventAssets eventAssets) {
