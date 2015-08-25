@@ -2,6 +2,7 @@ package com.mygdx.stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -16,6 +17,8 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.AssetsManager;
+import com.mygdx.manager.MusicManager;
+import com.mygdx.manager.SoundManager;
 
 public class LoadingBarStage extends BaseOneLevelStage {
 
@@ -25,6 +28,10 @@ public class LoadingBarStage extends BaseOneLevelStage {
 	private Assets assets;
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private MusicManager musicManager;
+	@Autowired
+	private SoundManager soundManager;
 
 	private Image logo;
 	private Image loadingFrame;
@@ -85,6 +92,12 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		StaticAssets.loadAll();
 		assets.initialize();
 
+		musicManager.setMusicVolume(Gdx.app.getPreferences("MusicVolume").getFloat("musicVolume"));
+		soundManager.setSoundVolume(Gdx.app.getPreferences("SoundVolume").getFloat("soundVolume"));
+		String musicVolume = String.valueOf(musicManager.getMusicVolume());
+		String soundVolume = String.valueOf(soundManager.getSoundVolume());
+		Gdx.app.log("musicVolume", musicVolume);
+		Gdx.app.log("soundVolume", soundVolume);
 		return this;
 	}
 

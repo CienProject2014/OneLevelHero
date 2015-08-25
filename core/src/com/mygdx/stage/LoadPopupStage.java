@@ -28,6 +28,7 @@ import com.mygdx.enums.SaveVersion;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.SaveManager;
 import com.mygdx.screen.BaseScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -54,6 +55,8 @@ public class LoadPopupStage extends BaseOverlapStage {
 	private ConstantsAssets constantsAssets;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private MusicManager musicManager;
 	private Camera cam;
 	private ImageItem save;
 	private CompositeItem closeButton;
@@ -92,7 +95,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 
 		Kryo kryo = new Kryo();
 		kryo.register(SaveInfo.class);
-		
+
 		for (int i = 0; i < SAVE_SIZE; i++) {
 			LabelItem subjectLabel = sceneLoader.getRoot().getLabelById(subjectLabels.get(i));
 			LabelItem gameTimeLabel = sceneLoader.getRoot().getLabelById(gameTimeLabels.get(i));
@@ -109,7 +112,8 @@ public class LoadPopupStage extends BaseOverlapStage {
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
-				saveTimeLabel.setText(new SimpleDateFormat("yyyy년 MM월dd일 HH:mm에 저장").format(new Date(handle.lastModified())));
+				saveTimeLabel.setText(
+						new SimpleDateFormat("yyyy년 MM월dd일 HH:mm에 저장").format(new Date(handle.lastModified())));
 				setLabelStyle(subjectLabel);
 				setLabelStyle(gameTimeLabel);
 				setLabelStyle(saveTimeLabel);
@@ -140,7 +144,10 @@ public class LoadPopupStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_01);
 				if (saveManager.isLoadable(SaveVersion.SAVE_01)) {
+					musicManager.stopMusic();
+					System.out.println("저장 전 볼륨" + musicManager.getMusicVolume());
 					saveManager.loadSaveVersion(SaveVersion.SAVE_01);
+					System.out.println("저장 후 볼륨" + musicManager.getMusicVolume());
 					movingManager.goCurrentPosition();
 					super.touchUp(event, x, y, pointer, button);
 				}
@@ -151,6 +158,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_02);
 				if (saveManager.isLoadable(SaveVersion.SAVE_02)) {
+					musicManager.stopMusic();
 					saveManager.loadSaveVersion(SaveVersion.SAVE_02);
 					movingManager.goCurrentPosition();
 					super.touchUp(event, x, y, pointer, button);
@@ -162,6 +170,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_03);
 				if (saveManager.isLoadable(SaveVersion.SAVE_03)) {
+					musicManager.stopMusic();
 					saveManager.loadSaveVersion(SaveVersion.SAVE_03);
 					movingManager.goCurrentPosition();
 					super.touchUp(event, x, y, pointer, button);
@@ -176,7 +185,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		getViewport().setCamera(cam);
 	}
-	
+
 	private class TouchListener extends SimpleTouchListener {
 		@Override
 		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {

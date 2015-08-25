@@ -3,7 +3,7 @@ package com.mygdx.currentState;
 import com.badlogic.gdx.audio.Sound;
 
 public class SoundInfo {
-	public Sound sound;
+	public transient Sound sound;
 	public float soundVolume = 0.5f;
 
 	public Sound getSound() {

@@ -1,0 +1,132 @@
+
+ending_list_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background
+  rotate: false
+  xy: 2, 931
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+endlistuibase
+  rotate: false
+  xy: 2, 91
+  size: 900, 838
+  orig: 900, 838
+  offset: 0, 0
+  index: -1
+endlistuitagacall
+  rotate: false
+  xy: 904, 729
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+endlistuitagaccomplete
+  rotate: false
+  xy: 1924, 1608
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+endlistuitagacincomplete
+  rotate: false
+  xy: 904, 527
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+endlistuitagall
+  rotate: false
+  xy: 991, 729
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+endlistuitagcomplete
+  rotate: false
+  xy: 1924, 1406
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+endlistuitagincomplete
+  rotate: false
+  xy: 904, 325
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+endlistuitagnonall
+  rotate: false
+  xy: 991, 527
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+endlistuitagnoncomplete
+  rotate: false
+  xy: 1078, 729
+  size: 85, 200
+  orig: 85, 200
+  offset: 0, 0
+  index: -1
+endlistuitagnonincomplete
+  rotate: false
+  xy: 1924, 1810
+  size: 85, 201
+  orig: 85, 201
+  offset: 0, 0
+  index: -1
+invenuiarrowacleft
+  rotate: false
+  xy: 2, 2
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuiarrowacright
+  rotate: false
+  xy: 1924, 1317
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuiarrowleft
+  rotate: false
+  xy: 904, 236
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuiarrowright
+  rotate: false
+  xy: 991, 438
+  size: 48, 87
+  orig: 48, 87
+  offset: 0, 0
+  index: -1
+invenuipage01
+  rotate: false
+  xy: 2011, 1991
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+invenuipage02
+  rotate: false
+  xy: 1165, 909
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+pchangeuiclosed
+  rotate: false
+  xy: 1078, 687
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1

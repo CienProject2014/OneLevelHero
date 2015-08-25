@@ -20,7 +20,6 @@ import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
@@ -44,8 +43,6 @@ public class StatusStage extends BaseOverlapStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private PartyManager partyManager;
-	@Autowired
-	private ListenerFactory listenerFactory;
 	@Autowired
 	private MovingManager movingManager;
 	@Autowired
@@ -135,17 +132,18 @@ public class StatusStage extends BaseOverlapStage {
 			partyEndButton.setLayerVisibilty("pressed", false);
 			partyEndButton.setLayerVisibilty("normal2", true);
 			partyEndButton.setLayerVisibilty("pressed2", false);
+			partyEndButton.clearListeners();
 			partyEndButton.addListener(new InputListener() {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					/* StatusScreen.setClickedWorldMap(true); */
 					partyEndButton.setLayerVisibilty("pressed2", false);
-					screenFactory.show(ScreenEnum.CHARACTER_CHANGE);
 				}
 
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					partyEndButton.setLayerVisibilty("pressed2", true);
+					screenFactory.show(ScreenEnum.CHARACTER_CHANGE);
 					return true;
 				}
 			});
