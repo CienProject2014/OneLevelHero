@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.manager.TextureManager;
-
+ 
 public class GridHitbox extends Table {
 	private TextureManager textureManager;
 	private final String TAG = "GridHitbox";
