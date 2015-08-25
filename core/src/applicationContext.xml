@@ -36,9 +36,9 @@
 	<bean id="PartyInfo" class="com.mygdx.currentState.PartyInfo "	     />
 	<bean id="PositionInfo" class="com.mygdx.currentState.PositionInfo"    />
 	<bean id="RewardInfo" class="com.mygdx.currentState.RewardInfo" 	   />
-	<bean id="SoundInfo" class="com.mygdx.currentState.SoundInfo"    />
 	<bean id="StorySectionInfo" class="com.mygdx.currentState.StorySectionInfo" />
 	<bean id="SaveInfo" class="com.mygdx.currentState.SaveInfo"/>
+	<bean id="SoundInfo" class="com.mygdx.currentState.SoundInfo"/>
 	<bean id="TimeInfo" class="com.mygdx.currentState.TimeInfo "/>
 	
 	
@@ -64,6 +64,7 @@
 	<bean id="positionManager" class="com.mygdx.manager.PositionManager"/>
 	<bean id="rewardManager" class="com.mygdx.manager.RewardManager"/>
 	<bean id="saveManager" class="com.mygdx.manager.SaveManager" />
+	<bean id="soundManager" class="com.mygdx.manager.SoundManager"/>
 	<bean id="storySectionManager" class="com.mygdx.manager.StorySectionManager"/>
 	<bean id="textureManager" class="com.mygdx.manager.TextureManager"/>
 	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>

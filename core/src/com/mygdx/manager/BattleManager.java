@@ -58,6 +58,8 @@ public class BattleManager {
 	private DungeonManager dungeonManager;
 	@Autowired
 	private TimeManager timeManager;
+	@Autowired
+	private MusicManager musicManager;
 	private GridHitbox gridHitbox; // grid hitbox 테이블
 
 	public SkillRunPopup gameObjectPopup;
@@ -86,7 +88,6 @@ public class BattleManager {
 			screenFactory.show(ScreenEnum.ENCOUNTER);
 		}
 	}
-
 	public Unit getCurrentActors() {
 		Unit currentAttackUnit = getOrderedUnits().poll();
 		if (currentAttackUnit instanceof Hero) {
@@ -401,8 +402,13 @@ public class BattleManager {
 
 	public void setBattleState(BattleStateEnum battleStateEnum) {
 		battleInfo.setBattleState(battleStateEnum);
+		if (battleStateEnum.equals(BattleStateEnum.IN_GAME)) {
+			musicManager.setMusicAndPlay("fights");
+		} else if (battleStateEnum.equals(BattleStateEnum.GAME_OVER)
+				|| battleStateEnum.equals(BattleStateEnum.NOT_IN_BATTLE)) {
+			musicManager.stopMusic();
+		}
 	}
-
 	public CurrentClickStateEnum getCurrentClickStateEnum() {
 		return battleInfo.getcurrentClickStateEnum();
 	}
