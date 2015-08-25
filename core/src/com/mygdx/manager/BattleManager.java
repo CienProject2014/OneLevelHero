@@ -24,6 +24,7 @@ import com.mygdx.enums.SkillTargetEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.model.item.Item;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
@@ -88,6 +89,7 @@ public class BattleManager {
 			screenFactory.show(ScreenEnum.ENCOUNTER);
 		}
 	}
+
 	public Unit getCurrentActors() {
 		Unit currentAttackUnit = getOrderedUnits().poll();
 		if (currentAttackUnit instanceof Hero) {
@@ -98,33 +100,33 @@ public class BattleManager {
 
 	public void checkCurrentState() {
 		switch (getCurrentClickStateEnum()) {
-			case NORMAL :
-				setShowGrid(false);
-				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-				break;
-			case SKILL :
-				battleInfo.setSkill(false);
-				setShowGrid(false);
-				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-				break;
-			case INVENTORY :
-				setShowGrid(false);
-				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-				break;
-			case DEFENSE :
-				setShowGrid(false);
-				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-				break;
-			case WAIT :
-				setShowGrid(false);
-				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-				break;
-			case RUN :
-				setShowGrid(false);
-				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-				break;
-			default :
-				break;
+		case NORMAL:
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			break;
+		case SKILL:
+			battleInfo.setSkill(false);
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			break;
+		case INVENTORY:
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			break;
+		case DEFENSE:
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			break;
+		case WAIT:
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			break;
+		case RUN:
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -268,26 +270,26 @@ public class BattleManager {
 		ArrayList<Unit> list = new ArrayList<Unit>();
 		SkillTargetEnum enm = SkillTargetEnum.findSkillTargetEnum(targetType);
 		switch (enm) {
-			case ALL :
-				list.addAll(partyManager.getBattleMemberList());
-				break;
-			case MONSTER :
-				list.add(battleInfo.getCurrentMonster());
-				break;
-			case ONE :
-				list.add(selectedUnit);
-				break;
-			case RANDOM :
-				Hero pick = getRandomHero();
-				if (pick != null) {
-					list.add(pick);
-				}
-				break;
-			case SELF :
-				list.add(skillUser);
-				break;
-			default :
-				break;
+		case ALL:
+			list.addAll(partyManager.getBattleMemberList());
+			break;
+		case MONSTER:
+			list.add(battleInfo.getCurrentMonster());
+			break;
+		case ONE:
+			list.add(selectedUnit);
+			break;
+		case RANDOM:
+			Hero pick = getRandomHero();
+			if (pick != null) {
+				list.add(pick);
+			}
+			break;
+		case SELF:
+			list.add(skillUser);
+			break;
+		default:
+			break;
 
 		}
 
@@ -409,6 +411,7 @@ public class BattleManager {
 			musicManager.stopMusic();
 		}
 	}
+
 	public CurrentClickStateEnum getCurrentClickStateEnum() {
 		return battleInfo.getcurrentClickStateEnum();
 	}
@@ -531,6 +534,14 @@ public class BattleManager {
 
 	public void setGridLimitNum(int num) {
 		gridHitbox.setLimitNum(num);
+	}
+
+	public Item getCurrentSelectedItem() {
+		return battleInfo.getCurrentSelectedItem();
+	}
+
+	public void setCurrentSelectedItem(Item currentSelectedItem) {
+		battleInfo.setCurrentSelectedItem(currentSelectedItem);
 	}
 
 }

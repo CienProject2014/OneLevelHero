@@ -1,6 +1,8 @@
 package com.mygdx.stage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,6 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BagManager;
@@ -25,11 +26,9 @@ import com.mygdx.manager.BattleManager;
 import com.mygdx.model.item.Item;
 import com.mygdx.screen.BattleScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
-import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 
 public class ItemStage extends BaseOverlapStage {
-	private final String TAG = "BattleStage";
 	private final String DEFAULT_VISIBILTY = "Default";
 	private final String PRESSED_VISIBILTY = "pressed";
 	private final int ITEM_TAB_SIZE = 7;
@@ -42,16 +41,14 @@ public class ItemStage extends BaseOverlapStage {
 	@Autowired
 	private ConstantsAssets constantsAssets;
 	@Autowired
-	private ListenerFactory listenerFactory;
-	@Autowired
 	private BagManager bagManager;
 	// @Autowired
 	// private GridHitbox gridHitbox;
 	private Map<String, Array<String>> sceneConstants;
-	public final String SCENE_NAME = "item_scene";
+	public final String SCENE_NAME = "skill_scene";
 	private Camera cam;
 	private Map<Integer, Item> itemInfo;
-	private CompositeItem useButton;
+	private List<CompositeItem> useButtonList;
 
 	@Override
 	public void act() {
@@ -67,35 +64,57 @@ public class ItemStage extends BaseOverlapStage {
 
 		setCamera();
 		setBackground();
-
 		setLabel();
-		setAllVoidUseButton(sceneConstants, listenerFactory);
-		setHighlight(sceneConstants);
+		setAllVoidUseButton(sceneConstants);
+		setSkillType();
+		setHighlight();
 		addUseButtonListener();
-
 		return this;
 	}
 
-	private void addUseButtonListener() {
-		useButton.clearListeners();
-		useButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				setCompositeItemVisibilty(useButton, PRESSED_VISIBILTY);
-				return true;
-			}
+	private void showItemDescription(int index) {
+		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name_label");
+		nameLabel.setText(itemInfo.get(index).getName());
+		LabelItem descriptionLabel = sceneLoader.getRoot().getLabelById("description_label");
+		descriptionLabel.setText(itemInfo.get(index).getDescription());
+		setLabelStyle(nameLabel);
+		setLabelStyle(descriptionLabel);
+	}
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				setCompositeItemVisibilty(useButton, DEFAULT_VISIBILTY);
-				BattleScreen.showLoadStage = false;
-			}
-		});
+	private void setVoidDescription() {
+		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name_label");
+		nameLabel.setText("설명충");
+		LabelItem descriptionLabel = sceneLoader.getRoot().getLabelById("description_label");
+		descriptionLabel.setText("나는 설명충이다");
+		setLabelStyle(nameLabel);
+		setLabelStyle(descriptionLabel);
+
+	}
+
+	private void addUseButtonListener() {
+		for (int i = 0; i < ITEM_TAB_SIZE; i++) {
+			final int index = i;
+			useButtonList.get(i).clearListeners();
+			useButtonList.get(i).addListener(new InputListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					setCompositeItemVisibilty(useButtonList.get(index), PRESSED_VISIBILTY);
+					return true;
+				}
+
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					setCompositeItemVisibilty(useButtonList.get(index), DEFAULT_VISIBILTY);
+					battleManager.setCurrentSelectedItem(itemInfo.get(index));
+					BattleScreen.showItemStage = false;
+				}
+			});
+		}
 
 	}
 
 	private void setBackground() {
-		final ImageItem background = sceneLoader.getRoot().getImageById("background");
+		final CompositeItem background = sceneLoader.getRoot().getCompositeById("background");
 		background.setTouchable(Touchable.enabled);
 		background.addListener(new SimpleTouchListener() {
 			@Override
@@ -106,28 +125,35 @@ public class ItemStage extends BaseOverlapStage {
 		});
 	}
 
-	private void setAllVoidUseButton(Map<String, Array<String>> sceneConstants, ListenerFactory listenerFactory) {
-		useButton = sceneLoader.getRoot().getCompositeById("use_button");
-		useButton.setVisible(false);
+	private void setAllVoidUseButton(Map<String, Array<String>> sceneConstants) {
+		Array<String> useButtonNames = sceneConstants.get("use_button");
+		useButtonList = new ArrayList<>(ITEM_TAB_SIZE);
+		for (int i = 0; i < ITEM_TAB_SIZE; i++) {
+			CompositeItem useButton = sceneLoader.getRoot().getCompositeById(useButtonNames.get(i));
+			useButton.setVisible(false);
+			useButtonList.add(useButton);
+		}
 	}
 
-	private void setVoidUseButton() {
-		useButton.setVisible(false);
-		useButton.setTouchable(Touchable.disabled);
+	private void setVoidUseButton(final int index) {
+		useButtonList.get(index).setVisible(false);
+		useButtonList.get(index).setTouchable(Touchable.disabled);
 	}
 
-	private void setUseButton() {
-		useButton.setVisible(true);
-		setCompositeItemVisibilty(useButton, DEFAULT_VISIBILTY);
-		useButton.setTouchable(Touchable.enabled);
+	private void setUseButton(final int index) {
+		useButtonList.get(index).setVisible(true);
+		setCompositeItemVisibilty(useButtonList.get(index), DEFAULT_VISIBILTY);
+		useButtonList.get(index).setTouchable(Touchable.enabled);
 	}
 
 	private void setLabel() {
 		int playerConsumableSize = bagManager.getConsumablesList().size();
+		Array<String> itemNameLabelList = sceneConstants.get("skill_name_label");
+		Array<String> itemAmountLabelList = sceneConstants.get("casting_label");
 		itemInfo = new HashMap<>(ITEM_TAB_SIZE);
 		for (int i = 0; i < ITEM_TAB_SIZE; i++) {
-			LabelItem itemNameLabel = sceneLoader.getRoot().getLabelById("item_name_label0" + (i + 1));
-			LabelItem itemAmountLabel = sceneLoader.getRoot().getLabelById("item_amount_label0" + (i + 1));
+			LabelItem itemNameLabel = sceneLoader.getRoot().getLabelById(itemNameLabelList.get(i));
+			LabelItem itemAmountLabel = sceneLoader.getRoot().getLabelById(itemAmountLabelList.get(i));
 			if (playerConsumableSize > i) {
 				itemInfo.put(i, bagManager.getConsumablesList().get(i));
 				itemNameLabel.setText(bagManager.getConsumablesList().get(i).getName());
@@ -147,6 +173,15 @@ public class ItemStage extends BaseOverlapStage {
 		labelItem.setTouchable(Touchable.disabled);
 	}
 
+	private void setSkillType() {
+		// skillTypeButton = new ArrayList<CompositeItem>();
+		final CompositeItem skillTypeButton_01 = sceneLoader.getRoot().getCompositeById("ability");
+		final CompositeItem skillTypeButton_02 = sceneLoader.getRoot().getCompositeById("magic");
+
+		skillTypeButton_01.setVisible(false);
+		skillTypeButton_02.setVisible(false);
+	}
+
 	private void setCompositeItemVisibilty(CompositeItem compositeItem, String visibilty) {
 		if (visibilty == PRESSED_VISIBILTY) {
 			compositeItem.setLayerVisibilty(PRESSED_VISIBILTY, true);
@@ -157,10 +192,10 @@ public class ItemStage extends BaseOverlapStage {
 		}
 	}
 
-	private void setHighlight(final Map<String, Array<String>> sceneConstants) {
+	private void setHighlight() {
 		final Array<String> highLightFrameList = sceneConstants.get("highlight_frame");
 		for (int i = 0; i < ITEM_TAB_SIZE; i++) {
-			final int focusedIndex = i;
+			final int index = i;
 			final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(highLightFrameList.get(i));
 			setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 			highLightFrame.setTouchable(Touchable.enabled);
@@ -168,26 +203,30 @@ public class ItemStage extends BaseOverlapStage {
 			highLightFrame.addListener(new SimpleTouchListener() {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					for (int j = 0; j < ITEM_TAB_SIZE; j++) {
-						if (itemInfo.get(j) != null) {
-							final CompositeItem highLightFrame = sceneLoader.getRoot()
-									.getCompositeById(highLightFrameList.get(j));
-							if (j == focusedIndex) {
-								highLightFrame.setLayerVisibilty(PRESSED_VISIBILTY, true);
-								setUseButton();
-							} else {
-								highLightFrame.setLayerVisibilty(PRESSED_VISIBILTY, false);
-								setVoidUseButton();
+					if (itemInfo.get(index) != null) {
+						setCompositeItemVisibilty(highLightFrame, PRESSED_VISIBILTY);
+						setUseButton(index);
+						for (int j = 0; j < ITEM_TAB_SIZE; j++) {
+							if (j != index) {
+								final CompositeItem highLightFrame = sceneLoader.getRoot()
+										.getCompositeById(highLightFrameList.get(j));
+								setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
+								setVoidUseButton(j);
 							}
-						} else {
-							final CompositeItem highLightFrame = sceneLoader.getRoot()
+						}
+						showItemDescription(index);
+					} else {
+						setVoidDescription();
+						setAllVoidUseButton(sceneConstants);
+						for (int j = 0; j < ITEM_TAB_SIZE; j++) {
+							CompositeItem highLightFrame = sceneLoader.getRoot()
 									.getCompositeById(highLightFrameList.get(j));
-							highLightFrame.setLayerVisibilty(PRESSED_VISIBILTY, false);
-							setVoidUseButton();
+							setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 						}
 					}
 
 				}
+
 			});
 		}
 	}

@@ -1,16 +1,24 @@
 package com.mygdx.manager;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
 import com.mygdx.assets.ItemAssets;
 import com.mygdx.currentState.BagInfo;
 import com.mygdx.enums.ItemEnum;
 import com.mygdx.model.item.Consumables;
 import com.mygdx.model.item.Equipment;
 import com.mygdx.model.item.Item;
+import com.mygdx.model.item.Weapon;
 
 public class BagManager {
 	@Autowired
@@ -19,18 +27,21 @@ public class BagManager {
 	private BagInfo bagInfo;
 
 	public void possessItem(ItemEnum itemType, String itemName) {
-		Item item;
+		Item item = new Item();
 		switch (itemType) {
 		case HANDGRIP:
 			item = itemAssets.getHandGrip(itemName);
+			item = (Weapon) deepClone(itemAssets.getHandGrip(itemName));
 			addEquipment((Equipment) item);
 			break;
 		case ACCESSORY:
 			item = itemAssets.getAccessory(itemName);
+			item = (Weapon) deepClone(itemAssets.getHandGrip(itemName));
 			addEquipment((Equipment) item);
 			break;
 		case CLOTHES:
 			item = itemAssets.getClothes(itemName);
+			item = (Weapon) deepClone(itemAssets.getHandGrip(itemName));
 			addEquipment((Equipment) item);
 			break;
 		case CONSUMABLES:
@@ -39,6 +50,7 @@ public class BagManager {
 			break;
 		case ETC_ITEM:
 			item = itemAssets.getEtcItem(itemName);
+			item = (Weapon) deepClone(itemAssets.getHandGrip(itemName));
 			addEtcItem(item);
 			break;
 		default:
@@ -78,6 +90,7 @@ public class BagManager {
 
 	public void removeEquipment(Equipment equipment) {
 		getEquipmentList().remove(equipment);
+		System.out.println(getEquipmentList().equals(equipment));
 	}
 
 	public List<Equipment> getEquipmentList() {
@@ -106,5 +119,25 @@ public class BagManager {
 
 	public void addEtcItem(Item item) {
 		getEtcItemList().add(item);
+	}
+
+	public Object deepClone(Object object) {
+		Kryo kryo = new Kryo();
+		kryo.register(Weapon.class);
+		try {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(baos);
+			Output output = new Output(oos);
+			kryo.writeObject(output, object);
+			output.close();
+			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			Input input = new Input(new ObjectInputStream(bais));
+			object = kryo.readObject(input, Weapon.class);
+			input.close();
+			return object;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
