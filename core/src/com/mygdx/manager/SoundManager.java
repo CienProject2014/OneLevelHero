@@ -9,11 +9,8 @@ import com.mygdx.currentState.SoundInfo;
 public class SoundManager {
 	@Autowired
 	private MusicAssets musicAssets;
+	@Autowired
 	private SoundInfo soundInfo;
-
-	public SoundManager() {
-		soundInfo = new SoundInfo();
-	}
 
 	public void setSoundByUseAndPlay(String soundPath) {
 		setSoundByUse(soundPath);
@@ -25,6 +22,14 @@ public class SoundManager {
 	public void setSoundbyPathAndPlay(String soundPath) {
 		setSoundByPath(soundPath);
 		playSound(getSoundVolume());
+	}
+
+	public Sound getSound() {
+		return soundInfo.getSound();
+	}
+
+	public void setSound(Sound sound) {
+		soundInfo.setSound(sound);
 	}
 
 	public float getSoundVolume() {

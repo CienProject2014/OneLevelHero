@@ -16,6 +16,7 @@ import com.mygdx.listener.GoTitleListener;
 import com.mygdx.listener.HidingClickListener;
 import com.mygdx.listener.LoadListener;
 import com.mygdx.manager.MusicManager;
+import com.mygdx.manager.SoundManager;
 
 public class SettingPopup extends Dialog {
 	private ImageButton loadButton, soundButton, titleButton, endButton, closeButton;
@@ -24,6 +25,7 @@ public class SettingPopup extends Dialog {
 	private ListenerFactory listenerFactory;
 	private AtlasUiAssets atlasUiAssets;
 	private MusicManager musicManager;
+	private SoundManager soundManager;
 	private SoundPopup soundPopup;
 
 	public SettingPopup(String title, Skin skin) {
@@ -57,6 +59,7 @@ public class SettingPopup extends Dialog {
 				soundPopup.setListenerFactory(listenerFactory);
 				soundPopup.setConstantsAssets(constantsAssets);
 				soundPopup.setMusicManager(musicManager);
+				soundPopup.setSoundManager(soundManager);
 				soundPopup.initialize();
 				getParent().addActor(soundPopup);
 				soundPopup.setVisible(true);
@@ -119,11 +122,11 @@ public class SettingPopup extends Dialog {
 		this.musicManager = musicManager;
 	}
 
-	public SoundPopup getSoundPopup() {
-		return soundPopup;
+	public SoundManager getSoundManager() {
+		return soundManager;
 	}
 
-	public void setSoundPopup(SoundPopup soundPopup) {
-		this.soundPopup = soundPopup;
+	public void setSoundManager(SoundManager soundManager) {
+		this.soundManager = soundManager;
 	}
 }
