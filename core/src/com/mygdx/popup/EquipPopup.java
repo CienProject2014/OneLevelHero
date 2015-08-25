@@ -81,7 +81,6 @@ public class EquipPopup extends Dialog {
 		setQuestionLabel(equipment);
 		setButton(atlasUiAssets, uiComponentAssets, equipment);
 
-		setModal(false);
 		setResizable(false);
 		setVisible(false);
 	}
