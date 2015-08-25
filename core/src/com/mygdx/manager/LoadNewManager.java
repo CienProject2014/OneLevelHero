@@ -42,6 +42,7 @@ public class LoadNewManager {
 		setTimeInfo();
 		setBattleInfo();
 		storySectionManager.runStorySequence();
+		bagManager.possessItem(ItemEnum.CONSUMABLES, "small_healing", 3);
 		bagManager.possessItem(ItemEnum.HANDGRIP, "sabre");
 		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse"); // FIXME for
 		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse");

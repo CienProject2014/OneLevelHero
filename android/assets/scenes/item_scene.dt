@@ -413,7 +413,7 @@
         }
       },
       {
-        "itemIdentifier": "highlight01",
+        "itemIdentifier": "highlight_01",
         "x": 361.5,
         "y": 712,
         "zIndex": 22,
@@ -451,7 +451,7 @@
         }
       },
       {
-        "itemIdentifier": "highlight02",
+        "itemIdentifier": "highlight_02",
         "x": 361.5,
         "y": 618,
         "zIndex": 23,
@@ -489,7 +489,7 @@
         }
       },
       {
-        "itemIdentifier": "highlight03",
+        "itemIdentifier": "highlight_03",
         "x": 360.49994,
         "y": 524,
         "zIndex": 24,
@@ -527,7 +527,7 @@
         }
       },
       {
-        "itemIdentifier": "highlight04",
+        "itemIdentifier": "highlight_04",
         "x": 360.49994,
         "y": 430,
         "zIndex": 25,
@@ -565,7 +565,7 @@
         }
       },
       {
-        "itemIdentifier": "highlight05",
+        "itemIdentifier": "highlight_05",
         "x": 360.49994,
         "y": 336,
         "zIndex": 26,
@@ -603,7 +603,7 @@
         }
       },
       {
-        "itemIdentifier": "highlight06",
+        "itemIdentifier": "highlight_06",
         "x": 360.49994,
         "y": 242,
         "zIndex": 27,
@@ -641,7 +641,7 @@
         }
       },
       {
-        "itemIdentifier": "highlight07",
+        "itemIdentifier": "highlight_07",
         "x": 360.49994,
         "y": 148,
         "zIndex": 28,

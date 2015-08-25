@@ -59,7 +59,6 @@ public class SettingPopup extends Dialog {
 				soundPopup.setMusicManager(musicManager);
 				soundPopup.initialize();
 				getParent().addActor(soundPopup);
-
 				soundPopup.setVisible(true);
 			}
 		});
