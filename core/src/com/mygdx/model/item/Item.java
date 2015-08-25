@@ -58,11 +58,14 @@ public class Item {
 	public void setItemPath(String itemPath) {
 		this.itemPath = itemPath;
 	}
+
 	public ItemEnum getItemType() {
 		return itemType;
 	}
 
-	public void setItemType(ItemEnum itemType) {
-		this.itemType = itemType;
+	@Override
+	public boolean equals(Object obj) {
+		Item item = (Item) obj;
+		return this.getItemPath().equals(item.getItemPath());
 	}
 }
