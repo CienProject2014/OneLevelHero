@@ -3,6 +3,7 @@ package com.mygdx.model.unit;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.unitStrategy.BattleStrategy;
 import com.mygdx.unitStrategy.UnusualConditionStrategy;
@@ -18,6 +19,7 @@ public abstract class Unit implements Comparable<Unit> {
 	private int subvalue;
 	private int actingPower;
 	private int preGague;
+	private List<Buff> buffList;
 
 	public Unit() {
 		gauge = 100;
@@ -161,4 +163,13 @@ public abstract class Unit implements Comparable<Unit> {
 	public void setSkills(List<Skill> skills) {
 		this.skills = skills;
 	}
+
+	public List<Buff> getBuffList() {
+		return buffList;
+	}
+
+	public void setBuffList(List<Buff> buffList) {
+		this.buffList = buffList;
+	}
+
 }

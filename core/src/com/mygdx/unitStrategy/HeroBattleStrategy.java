@@ -3,7 +3,9 @@ package com.mygdx.unitStrategy;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.enums.BuffEffectEnum;
 import com.mygdx.enums.SkillEffectEnum;
+import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
@@ -63,18 +65,18 @@ public class HeroBattleStrategy implements BattleStrategy {
 					SkillEffectEnum effectEnum = SkillEffectEnum.findSkillEffectEnum(effect);
 					if (effectEnum != null) {
 						skill.setSkillEffectType(effectEnum.toString());
-						applyEffect(skillUser, target, skill);
+						applySkillEffect(skillUser, target, skill);
 					} else {
 						Gdx.app.log(TAG, "잘못된 스킬 타입: " + effect + " 타입이 존재하지 않습니다.");
 					}
 				}
 			} else {
-				applyEffect(skillUser, target, skill);
+				applySkillEffect(skillUser, target, skill);
 			}
 		}
 	}
 
-	private void applyEffect(Unit attackHero, Unit defender, Skill skill) {
+	private void applySkillEffect(Unit attackHero, Unit defender, Skill skill) {
 		switch (SkillEffectEnum.findSkillEffectEnum(skill.getSkillEffectType())) {
 		case ADD_CONDITIONAL_STATE:
 			break;
@@ -186,4 +188,17 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
+	private void applyBuffEffect(Buff buff) {
+		switch (BuffEffectEnum.findBuffEffectEnum(buff.getBuffEffectEnum())) {
+		case BLOCK_ACTION:
+			break;
+		case DECREASE_ATTACK:
+			break;
+		case DECREASE_MAGIC_ATTACK:
+			break;
+		default:
+			break;
+
+		}
+	}
 }
