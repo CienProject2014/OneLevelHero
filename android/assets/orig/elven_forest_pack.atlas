@@ -1,0 +1,48 @@
+
+elven_forest_pack.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back
+  rotate: false
+  xy: 1924, 2044
+  size: 330, 120
+  orig: 330, 120
+  offset: 0, 0
+  index: -1
+bgelvenforest02
+  rotate: false
+  xy: 2, 2166
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+bgelvenforest03
+  rotate: false
+  xy: 2, 1084
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+bgelvenforest04
+  rotate: false
+  xy: 1924, 2166
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+bgelvenforest05
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+go
+  rotate: false
+  xy: 3846, 3121
+  size: 200, 125
+  orig: 200, 125
+  offset: 0, 0
+  index: -1
