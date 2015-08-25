@@ -1,0 +1,62 @@
+
+item_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+itemuiactivation
+  rotate: false
+  xy: 2, 2
+  size: 855, 104
+  orig: 855, 104
+  offset: 0, 0
+  index: -1
+itemuibackground
+  rotate: false
+  xy: 2, 902
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+itemuibase
+  rotate: false
+  xy: 2, 108
+  size: 1412, 792
+  orig: 1412, 792
+  offset: 0, 0
+  index: -1
+itemuiexplanation
+  rotate: false
+  xy: 1416, 267
+  size: 503, 633
+  orig: 503, 633
+  offset: 0, 0
+  index: -1
+itemuiline01
+  rotate: false
+  xy: 1924, 1228
+  size: 845, 94
+  orig: 845, 94
+  offset: 0, 0
+  index: -1
+itemuiline02
+  rotate: false
+  xy: 1924, 1324
+  size: 845, 658
+  orig: 845, 658
+  offset: 0, 0
+  index: -1
+itemuiuseacbutton
+  rotate: false
+  xy: 2771, 1883
+  size: 503, 99
+  orig: 503, 99
+  offset: 0, 0
+  index: -1
+itemuiusebutton
+  rotate: false
+  xy: 1416, 166
+  size: 503, 99
+  orig: 503, 99
+  offset: 0, 0
+  index: -1

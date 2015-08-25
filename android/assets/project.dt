@@ -38,6 +38,16 @@
         1
       ],
       "physicsPropertiesVO": {},
+      "sceneName": "item_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
       "sceneName": "cemetery_scene"
     },
     {
