@@ -42,8 +42,6 @@ public class SaveManager {
 	@Autowired
 	private BattleManager battleManager;
 	@Autowired
-	private MovingManager movingManager;
-	@Autowired
 	private SaveInfo saveInfo;
 	@Autowired
 	private TimeManager timeManager;
@@ -69,17 +67,22 @@ public class SaveManager {
 		} else {
 			saveInfo.setSavePlace(positionManager.getCurrentSubNodeName());
 		}
-		int storyNumber = storySectionInfo.getCurrentSectionNumber();
-		if (storyNumber > 100 && storyNumber < 200) {
+		switch (storySectionInfo.getCurrentSectionNumber()) {
+		case 1:
 			saveInfo.setStoryName("프롤로그");
-		} else if (storyNumber > 200 && storyNumber < 300) {
+			break;
+		case 2:
 			saveInfo.setStoryName("카딜라 스토리");
-		} else if (storyNumber > 300 && storyNumber < 400) {
+			break;
+		case 3:
 			saveInfo.setStoryName("수정협곡 스토리");
-		} else if (storyNumber > 400 && storyNumber < 500) {
+			break;
+		case 4:
 			saveInfo.setStoryName("레드로즈 스토리");
-		} else if (storyNumber > 500 && storyNumber < 600) {
+			break;
+		case 5:
 			saveInfo.setStoryName("미라지포트 스토리");
+			break;
 		}
 	}
 
@@ -94,7 +97,6 @@ public class SaveManager {
 		handle = Gdx.files.local("save/" + SaveVersion.NEW_GAME.toString() + ".json");
 		Output output;
 		try {
-
 			Gdx.app.log("SaveManager", "save - " + handle.file().getParentFile().getAbsolutePath());
 			if (!handle.file().getParentFile().exists()) {
 				handle.file().getParentFile().mkdirs();
@@ -110,10 +112,8 @@ public class SaveManager {
 			output.flush();
 			output.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Gdx.app.log("SaveManager", "저장작업완료");
@@ -131,10 +131,8 @@ public class SaveManager {
 			BeanUtils.copyProperties(kryo.readObject(input, EventInfo.class), eventInfo);
 			input.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	public void save() {
@@ -143,7 +141,6 @@ public class SaveManager {
 		handle = Gdx.files.local("save/" + saveInfo.getSaveVersion().toString() + ".json");
 		Output output;
 		try {
-
 			Gdx.app.log("SaveManager", "save - " + handle.file().getParentFile().getAbsolutePath());
 			if (!handle.file().getParentFile().exists()) {
 				handle.file().getParentFile().mkdirs();
@@ -160,21 +157,14 @@ public class SaveManager {
 			output.flush();
 			output.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Gdx.app.log("SaveManager", "저장작업완료");
 	}
 	public boolean isLoadable(SaveVersion saveVersion) {
-		FileHandle handle = Gdx.files.local("save/" + saveVersion.toString() + ".json");
-		if (handle.exists()) {
-			return true;
-		} else {
-			return false;
-		}
+		return Gdx.files.local("save/" + saveVersion.toString() + ".json").exists();
 	}
 
 	public void loadSaveVersion(SaveVersion saveVersion) {
@@ -191,7 +181,6 @@ public class SaveManager {
 			BeanUtils.copyProperties(kryo.readObject(input, EventInfo.class), eventInfo);
 			input.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		battleManager.setBeforePosition(PositionEnum.SUB_NODE);
