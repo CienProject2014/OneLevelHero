@@ -28,6 +28,7 @@ import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BagManager;
 import com.mygdx.manager.BattleManager;
@@ -651,12 +652,7 @@ public class InventoryStage extends BaseOverlapStage {
 
 	private void setTabButton(final ScreenFactory screenFactory, final MovingManager movingManager) {
 		CompositeItem inventoryButton = sceneLoader.getRoot().getCompositeById("inventory_tab");
-		inventoryButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		inventoryButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.INVENTORY);

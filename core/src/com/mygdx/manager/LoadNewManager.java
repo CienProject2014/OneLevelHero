@@ -48,6 +48,7 @@ public class LoadNewManager {
 	}
 
 	private void setEventInfo(EventManager eventManager, EventAssets eventAssets) {
+		eventManager.setCurrentEventNpc("prologue");
 		eventManager.setNpcMap(eventAssets.getNpcMap());
 		eventManager.setGameObjectMap(eventAssets.getGameObjectMap());
 	}

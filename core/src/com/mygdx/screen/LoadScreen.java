@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 
 public class LoadScreen extends BaseScreen {
-	public static boolean isPopupTouched;;
 	private Stage loadStage, loadPopupStage;
 
 	@Override
@@ -14,7 +13,7 @@ public class LoadScreen extends BaseScreen {
 		super.render(delta);
 		setInputProcessor();
 		loadStage.draw();
-		if (isPopupTouched) {
+		if (showLoadStage) {
 			loadPopupStage.draw();
 		}
 	}
@@ -28,7 +27,7 @@ public class LoadScreen extends BaseScreen {
 
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
-		if (isPopupTouched) {
+		if (showLoadStage) {
 			multiplexer.addProcessor(0, loadPopupStage);
 			multiplexer.addProcessor(1, loadStage);
 		} else {

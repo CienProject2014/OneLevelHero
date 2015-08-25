@@ -20,7 +20,7 @@ public class EncounterScreen extends BaseScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
+		setInputProcessor();
 		// 나중에 부르는 걸 위에 그림.
 		encountStage.draw();
 	}

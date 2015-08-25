@@ -27,10 +27,6 @@ public class MusicManager {
 		WHENEVER, IF_IS_NOT_PLAYING;
 	}
 
-	public void setMusicVolume(float musicVolume) {
-		musicInfo.setMusicVolume(musicVolume);
-	}
-
 	public float getMusicVolume() {
 		return musicInfo.getMusicVolume();
 	}
@@ -48,7 +44,7 @@ public class MusicManager {
 		return musicInfo.getMusic();
 	}
 
-	public void setVolume(float volume) {
+	public void setMusicVolume(float volume) {
 		musicInfo.getMusic().setVolume(volume);
 	}
 
@@ -85,7 +81,7 @@ public class MusicManager {
 				break;
 			case IF_IS_NOT_PLAYING :
 				if (checkCurrentMusicIsNotNull()) {
-					if (musicInfo.getMusic().isPlaying())
+					if (checkCurrentMusicIsPlaying())
 						return;
 				} else {
 					setMusic(music);

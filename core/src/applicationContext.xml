@@ -69,7 +69,6 @@
 	<bean id="textureManager" class="com.mygdx.manager.TextureManager"/>
 	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
 	<bean id="unitManager" class="com.mygdx.manager.UnitManager"/>
-	<bean id="volumeManager" class="com.mygdx.manager.VolumeManager" />
 	<bean id="dungeonEncounterManager" class="com.mygdx.manager.DungeonEncounterManager"/>
 	<bean id="dungeonManager" class="com.mygdx.manager.DungeonManager"/>
 	
@@ -104,8 +103,6 @@
 	<bean id="loadScreen" class="com.mygdx.screen.LoadScreen" scope="prototype"/>
 	<bean id="logScreen" class="com.mygdx.screen.LogScreen" scope="prototype"/>
 	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen" scope="prototype"/>
-	<bean id="optionScreen" class="com.mygdx.screen.OptionScreen"
-		scope="prototype"/>
 	<bean id="saveScreen" class="com.mygdx.screen.SaveScreen" scope="prototype" />
 	<bean id="skillScreen" class="com.mygdx.screen.SkillScreen" scope="prototype"/>
 	<bean id="statusScreen" class="com.mygdx.screen.StatusScreen"
@@ -164,15 +161,18 @@
 	<bean id="inventoryStrategy" class="com.mygdx.unitStrategy.InventoryStrategy"/>
 	<bean id="monsterBattleStrategy" class="com.mygdx.unitStrategy.MonsterBattleStrategy"/>
 		
-	<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
+		<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
 	<bean id="attackButtonListener" class="com.mygdx.listener.AttackButtonListener" scope="prototype"/>
 	<bean id="backButtonListener" class="com.mygdx.listener.BackButtonListener" scope="prototype"/>
 	<bean id="buildingButtonListener" class="com.mygdx.listener.BuildingButtonListener" scope="prototype"/>
 	<bean id="dungeonEntranceButtonListener" class="com.mygdx.listener.DungeonEntranceButtonListener" scope="prototype"/>
 	<bean id="gameObjectButtonListener" class="com.mygdx.listener.GameObjectButtonListener" scope="prototype"/>
+	<bean id="GameEndListener" class="com.mygdx.listener.GameEndListener" scope="prototype"/>
 	<bean id="goBackwardFieldButtonListener" class="com.mygdx.listener.GoBackwardFieldButtonListener" scope="prototype"/>
 	<bean id="goForwardFieldButtonListener" class="com.mygdx.listener.GoForwardFieldButtonListener" scope="prototype"/>
+	<bean id="goTitleListener" class="com.mygdx.listener.GoTitleListener" scope="prototype"/>
 	<bean id="jumpSectionListener" class="com.mygdx.listener.JumpSectionListener" scope="prototype"/>
+	<bean id="LoadListener" class="com.mygdx.listener.LoadListener" scope="prototype"/>
 	<bean id="selectComponentListener" class="com.mygdx.listener.SelectComponentListener" scope="prototype" />
 	<bean id="selectEventListener" class="com.mygdx.listener.SelectEventListener" scope="prototype"/>
 	<bean id="runAwayListener" class="com.mygdx.listener.RunAwayListener" scope="prototype"/>
@@ -180,4 +180,5 @@
 	
 	<bean id="atlasUiFile" class="com.mygdx.model.jsonModel.AtlasUiFile"/>
 	<bean id="musicFile" class="com.mygdx.model.jsonModel.MusicFile"/>
+	
 </beans>

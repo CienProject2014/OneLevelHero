@@ -22,6 +22,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.StorySectionManager;
@@ -124,12 +125,8 @@ public class SkillStage extends BaseOverlapStage {
 	private void setBackground() {
 		final CompositeItem background = sceneLoader.getRoot().getCompositeById("background");
 		background.setTouchable(Touchable.enabled);
-		background.addListener(new InputListener() {
+		background.addListener(new SimpleTouchListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				BattleScreen.showSkillStage = false;
 				battleManager.showRMenuButtons();
@@ -199,12 +196,7 @@ public class SkillStage extends BaseOverlapStage {
 		skillTypeButton_01.setLayerVisibilty("Default", true);
 		skillTypeButton_01.setLayerVisibilty("pressed", false);
 		skillTypeButton_01.setTouchable(Touchable.enabled);
-		skillTypeButton_01.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		skillTypeButton_01.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				skillTypeButton_01.setLayerVisibilty("pressed", true);
@@ -218,12 +210,7 @@ public class SkillStage extends BaseOverlapStage {
 		skillTypeButton_02.setLayerVisibilty("Default", true);
 		skillTypeButton_02.setLayerVisibilty("pressed", false);
 		skillTypeButton_02.setTouchable(Touchable.enabled);
-		skillTypeButton_02.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		skillTypeButton_02.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				skillTypeButton_02.setLayerVisibilty("pressed", true);
@@ -254,12 +241,7 @@ public class SkillStage extends BaseOverlapStage {
 			setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 			highLightFrame.setTouchable(Touchable.enabled);
 
-			highLightFrame.addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					return true;
-				}
-
+			highLightFrame.addListener(new SimpleTouchListener() {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					for (int j = 0; j < SKILL_TAB_SIZE; j++) {
