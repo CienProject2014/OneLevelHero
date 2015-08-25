@@ -1,0 +1,83 @@
+
+character_change_pack.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background
+  rotate: false
+  xy: 2, 831
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+pchangeuiacbuttonapply
+  rotate: false
+  xy: 249, 253
+  size: 260, 66
+  orig: 260, 66
+  offset: 0, 0
+  index: -1
+pchangeuiacbuttoncancel
+  rotate: false
+  xy: 1096, 763
+  size: 260, 66
+  orig: 260, 66
+  offset: 0, 0
+  index: -1
+pchangeuibase
+  rotate: false
+  xy: 2, 321
+  size: 845, 508
+  orig: 845, 508
+  offset: 0, 0
+  index: -1
+pchangeuibuttonapply
+  rotate: false
+  xy: 249, 185
+  size: 260, 66
+  orig: 260, 66
+  offset: 0, 0
+  index: -1
+pchangeuibuttoncancel
+  rotate: false
+  xy: 511, 253
+  size: 260, 66
+  orig: 260, 66
+  offset: 0, 0
+  index: -1
+pchangeuiclosed
+  rotate: false
+  xy: 2, 2
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+pchangeuiframe
+  rotate: false
+  xy: 2, 44
+  size: 245, 275
+  orig: 245, 275
+  offset: 0, 0
+  index: -1
+pchangeuiframeac
+  rotate: false
+  xy: 849, 554
+  size: 245, 275
+  orig: 245, 275
+  offset: 0, 0
+  index: -1
+pchangeuiparty
+  rotate: false
+  xy: 1924, 1789
+  size: 122, 122
+  orig: 122, 122
+  offset: 0, 0
+  index: -1
+pchangeuitxtlevel
+  rotate: false
+  xy: 849, 522
+  size: 46, 30
+  orig: 46, 30
+  offset: 0, 0
+  index: -1
