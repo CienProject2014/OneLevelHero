@@ -20,6 +20,16 @@
       "physicsPropertiesVO": {},
       "sceneName": "blackwood_scene"
     },
+     {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "character_change_scene"
+    },
     {
       "ambientColor": [
         0.5,

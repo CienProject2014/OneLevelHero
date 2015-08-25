@@ -19,6 +19,7 @@ public class Hero extends Unit {
 	public void setInventoryStrategy(InventoryStrategy inventoryStrategy) {
 		this.inventoryStrategy = inventoryStrategy;
 	}
+
 	public void equip(ItemEnum equipmentType, String equipmentName) {
 		inventoryStrategy.equip(this, equipmentType, equipmentName);
 	}
@@ -69,5 +70,11 @@ public class Hero extends Unit {
 
 	public void setInitialInventoryList(HashMap<String, String> initialInventoryList) {
 		this.initialInventoryList = initialInventoryList;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Hero hero = (Hero) obj;
+		return this.getName().equals(hero.getName());
 	}
 }
