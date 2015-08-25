@@ -81,7 +81,6 @@ public class DropPopup extends Dialog {
 		setQuestionLabel();
 		setButton(atlasUiAssets, uiComponentAssets);
 
-		setModal(false);
 		setResizable(false);
 		setVisible(false);
 	}
