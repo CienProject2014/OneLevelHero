@@ -444,7 +444,6 @@ public class BattleStage extends BaseOneLevelStage {
 					}
 					battleManager.setShowGrid(false);
 				}
-				battleManager.setShowGrid(false);
 				battleManager.getGridHitbox().hideAllTiles();
 			}
 		});
