@@ -451,7 +451,9 @@ public class BattleManager {
 			musicManager.setMusicAndPlay("fights");
 		} else if (battleStateEnum.equals(BattleStateEnum.GAME_OVER)
 				|| battleStateEnum.equals(BattleStateEnum.NOT_IN_BATTLE)) {
-			musicManager.stopMusic();
+			if (musicManager.getMusic() != null) {
+				musicManager.stopMusic();
+			}
 		}
 	}
 

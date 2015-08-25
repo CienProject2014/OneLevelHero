@@ -24,10 +24,10 @@ import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.popup.GameObjectPopup;
 import com.mygdx.popup.SettingPopup;
-import com.mygdx.popup.SoundPopup;
 
 public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
@@ -42,12 +42,12 @@ public class GameUiStage extends BaseOneLevelStage {
 	private StorySectionManager storySectionManager;
 	@Autowired
 	private MusicManager musicManager;
-
+	@Autowired
+	private SoundManager soundManager;
 	@Autowired
 	private ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
 
-	private SoundPopup soundPopup;
 	private SettingPopup settingPopup;
 	private Table uiTable;
 	private Table topTable;
@@ -78,7 +78,6 @@ public class GameUiStage extends BaseOneLevelStage {
 		uiConstantsMap = constantsAssets.getUiConstants("GameUiStage");
 		uiTable = new Table();
 		topTable = new Table(uiComponentAssets.getSkin());
-		soundPopup = new SoundPopup();
 		settingPopup = new SettingPopup();
 		makeButton();
 		addListener();
@@ -187,22 +186,14 @@ public class GameUiStage extends BaseOneLevelStage {
 		settingButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				soundPopup.setAtlasUiAssets(atlasUiAssets);
-				soundPopup.setListenerFactory(listenerFactory);
-				soundPopup.setConstantsAssets(constantsAssets);
-				soundPopup.setMusicManager(musicManager);
-				soundPopup.initialize();
 				settingPopup.setAtlasUiAssets(atlasUiAssets);
 				settingPopup.setListenerFactory(listenerFactory);
 				settingPopup.setConstantsAssets(constantsAssets);
 				settingPopup.setMusicManager(musicManager);
-				settingPopup.setSoundPopup(soundPopup);
+				settingPopup.setSoundManager(soundManager);
 				settingPopup.initialize();
 				addActor(settingPopup);
-				addActor(soundPopup);
 				settingPopup.setVisible(true);
-				soundPopup.setZIndex(0);
-				settingPopup.setZIndex(190);
 			}
 
 		});

@@ -1,0 +1,729 @@
+{
+  "sceneName": "ending_list_scene",
+  "composite": {
+    "sLabels": [
+      {
+        "itemIdentifier": "ending_label06",
+        "x": 760,
+        "y": 281,
+        "zIndex": 12,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 400,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "ending_label05",
+        "x": 760,
+        "y": 401,
+        "zIndex": 13,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 400,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "ending_label04",
+        "x": 760,
+        "y": 521,
+        "zIndex": 14,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 400,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "ending_label03",
+        "x": 760,
+        "y": 641,
+        "zIndex": 15,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 400,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "ending_label02",
+        "x": 760,
+        "y": 761,
+        "zIndex": 16,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 400,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "ending_label01",
+        "x": 760,
+        "y": 881,
+        "zIndex": 17,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 400,
+        "height": 40
+      }
+    ],
+    "sComposites": [
+      {
+        "itemIdentifier": "background",
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "background"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "screen",
+        "x": 510,
+        "y": 120,
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "endlistuibase"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "all_ending_tab",
+        "x": 424,
+        "y": 758,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "default",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "endlistuitagnonall"
+            },
+            {
+              "itemIdentifier": "normal",
+              "zIndex": 1,
+              "layerName": "normal",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "endlistuitagall"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 2,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "endlistuitagacall"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "complete_ending_tab",
+        "x": 424,
+        "y": 543,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "default",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "endlistuitagnoncomplete"
+            },
+            {
+              "itemIdentifier": "normal",
+              "zIndex": 1,
+              "layerName": "normal",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "endlistuitagcomplete"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 2,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "endlistuitagaccomplete"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "not_complete_ending_tab",
+        "x": 424,
+        "y": 328,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "default",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "endlistuitagnonincomplete"
+            },
+            {
+              "itemIdentifier": "normal",
+              "zIndex": 1,
+              "layerName": "normal",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "endlistuitagincomplete"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 2,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "endlistuitagacincomplete"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "close_button",
+        "x": 1346,
+        "y": 892,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "pchangeuiclosed"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "page_left",
+        "x": 531,
+        "y": 136,
+        "zIndex": 6,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiarrowleft"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiarrowacleft"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "page_right",
+        "x": 1344,
+        "y": 136,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiarrowright"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuiarrowacright"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "page01",
+        "x": 884,
+        "y": 168,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuipage02"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuipage01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "page02",
+        "x": 928,
+        "y": 168,
+        "zIndex": 9,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuipage02"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuipage01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "page03",
+        "x": 972,
+        "y": 168,
+        "zIndex": 10,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuipage02"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuipage01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "page04",
+        "x": 1016,
+        "y": 168,
+        "zIndex": 11,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuipage02"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "invenuipage01"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ]
+  },
+  "physicsPropertiesVO": {}
+}

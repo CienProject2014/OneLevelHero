@@ -30,6 +30,7 @@ public class BuildingScreen extends BaseScreen {
 		saveStage = stageFactory.makeStage(StageEnum.SAVE);
 		loadStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		setInputProcessor();
+		musicManager.setWorldNodeMusicAndPlay();
 	}
 
 	private void setInputProcessor() {
