@@ -1,8 +1,6 @@
 package com.mygdx.stage;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +24,7 @@ import com.mygdx.manager.BattleManager;
 import com.mygdx.model.item.Item;
 import com.mygdx.screen.BattleScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
+import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 
 public class ItemStage extends BaseOverlapStage {
@@ -45,10 +44,10 @@ public class ItemStage extends BaseOverlapStage {
 	// @Autowired
 	// private GridHitbox gridHitbox;
 	private Map<String, Array<String>> sceneConstants;
-	public final String SCENE_NAME = "skill_scene";
+	public final String SCENE_NAME = "item_scene";
 	private Camera cam;
 	private Map<Integer, Item> itemInfo;
-	private List<CompositeItem> useButtonList;
+	private CompositeItem useButton;
 
 	@Override
 	public void act() {
@@ -56,7 +55,7 @@ public class ItemStage extends BaseOverlapStage {
 	}
 
 	public Stage makeStage() {
-		sceneConstants = constantsAssets.getSceneConstants("skill_scene");
+		sceneConstants = constantsAssets.getSceneConstants("save_scene");
 		assetsManager.initScene(SCENE_NAME);
 		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene(SCENE_NAME);
@@ -65,10 +64,8 @@ public class ItemStage extends BaseOverlapStage {
 		setCamera();
 		setBackground();
 		setLabel();
-		setAllVoidUseButton(sceneConstants);
-		setSkillType();
+		setFirstUseButton();
 		setHighlight();
-		addUseButtonListener();
 		return this;
 	}
 
@@ -91,30 +88,27 @@ public class ItemStage extends BaseOverlapStage {
 
 	}
 
-	private void addUseButtonListener() {
-		for (int i = 0; i < ITEM_TAB_SIZE; i++) {
-			final int index = i;
-			useButtonList.get(i).clearListeners();
-			useButtonList.get(i).addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					setCompositeItemVisibilty(useButtonList.get(index), PRESSED_VISIBILTY);
-					return true;
-				}
+	private void addUseButtonListener(final int index) {
+		useButton.clearListeners();
+		useButton.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				setCompositeItemVisibilty(useButton, DEFAULT_VISIBILTY);
+				return true;
+			}
 
-				@Override
-				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					setCompositeItemVisibilty(useButtonList.get(index), DEFAULT_VISIBILTY);
-					battleManager.setCurrentSelectedItem(itemInfo.get(index));
-					BattleScreen.showItemStage = false;
-				}
-			});
-		}
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				setCompositeItemVisibilty(useButton, PRESSED_VISIBILTY);
+				battleManager.setCurrentSelectedItem(itemInfo.get(index));
+				BattleScreen.showItemStage = false;
+			}
+		});
 
 	}
 
 	private void setBackground() {
-		final CompositeItem background = sceneLoader.getRoot().getCompositeById("background");
+		final ImageItem background = sceneLoader.getRoot().getImageById("background");
 		background.setTouchable(Touchable.enabled);
 		background.addListener(new SimpleTouchListener() {
 			@Override
@@ -125,35 +119,23 @@ public class ItemStage extends BaseOverlapStage {
 		});
 	}
 
-	private void setAllVoidUseButton(Map<String, Array<String>> sceneConstants) {
-		Array<String> useButtonNames = sceneConstants.get("use_button");
-		useButtonList = new ArrayList<>(ITEM_TAB_SIZE);
-		for (int i = 0; i < ITEM_TAB_SIZE; i++) {
-			CompositeItem useButton = sceneLoader.getRoot().getCompositeById(useButtonNames.get(i));
-			useButton.setVisible(false);
-			useButtonList.add(useButton);
-		}
+	private void setFirstUseButton() {
+		useButton = sceneLoader.getRoot().getCompositeById("use_button");
+		useButton.setVisible(false);
 	}
 
-	private void setVoidUseButton(final int index) {
-		useButtonList.get(index).setVisible(false);
-		useButtonList.get(index).setTouchable(Touchable.disabled);
-	}
-
-	private void setUseButton(final int index) {
-		useButtonList.get(index).setVisible(true);
-		setCompositeItemVisibilty(useButtonList.get(index), DEFAULT_VISIBILTY);
-		useButtonList.get(index).setTouchable(Touchable.enabled);
+	private void setUseButton() {
+		useButton.setVisible(true);
+		setCompositeItemVisibilty(useButton, PRESSED_VISIBILTY);
+		useButton.setTouchable(Touchable.enabled);
 	}
 
 	private void setLabel() {
 		int playerConsumableSize = bagManager.getConsumablesList().size();
-		Array<String> itemNameLabelList = sceneConstants.get("skill_name_label");
-		Array<String> itemAmountLabelList = sceneConstants.get("casting_label");
 		itemInfo = new HashMap<>(ITEM_TAB_SIZE);
 		for (int i = 0; i < ITEM_TAB_SIZE; i++) {
-			LabelItem itemNameLabel = sceneLoader.getRoot().getLabelById(itemNameLabelList.get(i));
-			LabelItem itemAmountLabel = sceneLoader.getRoot().getLabelById(itemAmountLabelList.get(i));
+			LabelItem itemNameLabel = sceneLoader.getRoot().getLabelById("item_name_label0" + (i + 1));
+			LabelItem itemAmountLabel = sceneLoader.getRoot().getLabelById("item_amount_label0" + (i + 1));
 			if (playerConsumableSize > i) {
 				itemInfo.put(i, bagManager.getConsumablesList().get(i));
 				itemNameLabel.setText(bagManager.getConsumablesList().get(i).getName());
@@ -173,54 +155,43 @@ public class ItemStage extends BaseOverlapStage {
 		labelItem.setTouchable(Touchable.disabled);
 	}
 
-	private void setSkillType() {
-		// skillTypeButton = new ArrayList<CompositeItem>();
-		final CompositeItem skillTypeButton_01 = sceneLoader.getRoot().getCompositeById("ability");
-		final CompositeItem skillTypeButton_02 = sceneLoader.getRoot().getCompositeById("magic");
-
-		skillTypeButton_01.setVisible(false);
-		skillTypeButton_02.setVisible(false);
-	}
-
 	private void setCompositeItemVisibilty(CompositeItem compositeItem, String visibilty) {
 		if (visibilty == PRESSED_VISIBILTY) {
-			compositeItem.setLayerVisibilty(PRESSED_VISIBILTY, true);
-			compositeItem.setLayerVisibilty(DEFAULT_VISIBILTY, false);
-		} else {
 			compositeItem.setLayerVisibilty(PRESSED_VISIBILTY, false);
 			compositeItem.setLayerVisibilty(DEFAULT_VISIBILTY, true);
+		} else {
+			compositeItem.setLayerVisibilty(PRESSED_VISIBILTY, true);
+			compositeItem.setLayerVisibilty(DEFAULT_VISIBILTY, false);
 		}
 	}
 
 	private void setHighlight() {
-		final Array<String> highLightFrameList = sceneConstants.get("highlight_frame");
 		for (int i = 0; i < ITEM_TAB_SIZE; i++) {
 			final int index = i;
-			final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(highLightFrameList.get(i));
+			final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById("highlight_0" + (i + 1));
 			setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 			highLightFrame.setTouchable(Touchable.enabled);
-
 			highLightFrame.addListener(new SimpleTouchListener() {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					if (itemInfo.get(index) != null) {
 						setCompositeItemVisibilty(highLightFrame, PRESSED_VISIBILTY);
-						setUseButton(index);
+						setUseButton();
+						addUseButtonListener(index);
 						for (int j = 0; j < ITEM_TAB_SIZE; j++) {
 							if (j != index) {
 								final CompositeItem highLightFrame = sceneLoader.getRoot()
-										.getCompositeById(highLightFrameList.get(j));
+										.getCompositeById("highlight_0" + (j + 1));
 								setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
-								setVoidUseButton(j);
 							}
 						}
 						showItemDescription(index);
 					} else {
 						setVoidDescription();
-						setAllVoidUseButton(sceneConstants);
+						setFirstUseButton();
 						for (int j = 0; j < ITEM_TAB_SIZE; j++) {
 							CompositeItem highLightFrame = sceneLoader.getRoot()
-									.getCompositeById(highLightFrameList.get(j));
+									.getCompositeById("highlight_0" + (j + 1));
 							setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 						}
 					}
