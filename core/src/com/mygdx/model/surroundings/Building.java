@@ -18,7 +18,7 @@ public class Building {
 	private List<String> gameObject;
 	private String sceneName;
 	private boolean isOverlapScene;
-	private OpenTime openTime;
+	private TargetTime targetTime;
 
 	public String getBuildingName() {
 		return buildingName;
@@ -75,11 +75,11 @@ public class Building {
 		this.isOverlapScene = isOverlapScene;
 	}
 
-	public OpenTime getOpenTime() {
-		return openTime;
+	public TargetTime getTargetTime() {
+		return targetTime;
 	}
 
-	public void setOpenTime(OpenTime openTime) {
-		this.openTime = openTime;
+	public void setTargetTime(TargetTime targetTime) {
+		this.targetTime = targetTime;
 	}
 }

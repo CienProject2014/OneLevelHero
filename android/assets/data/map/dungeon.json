@@ -1,0 +1,312 @@
+{
+  "devil_castle": {
+    "dungeonPath" : "devil_castle",
+    "name": "마왕성",
+    "sceneName": "dungeon_3door_scene",
+    "mapWidth": "8",
+    "mapHeight": "7",
+    "nodes": [
+      {
+        "nodePosX": "0",
+        "nodePosY": "3",
+        "dungeonNodeType": "entrance"
+      },
+      {
+        "nodePosX": "1",
+        "nodePosY": "2",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "1",
+        "nodePosY": "3",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "1",
+        "nodePosY": "4",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "2",
+        "nodePosY": "1",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "2",
+        "nodePosY": "2",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "2",
+        "nodePosY": "3",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "2",
+        "nodePosY": "4",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "2",
+        "nodePosY": "5",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "2",
+        "nodePosY": "6",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "1",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "2",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "3",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "4",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "5",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "3",
+        "nodePosY": "6",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "0",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "1",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "2",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "3",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "4",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "5",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "4",
+        "nodePosY": "6",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "0",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "1",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "2",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "3",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "4",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "5",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "5",
+        "nodePosY": "6",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "0",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "1",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "2",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "3",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "4",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "5",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "6",
+        "nodePosY": "6",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "1",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "2",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "3",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "4",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "5",
+        "dungeonNodeType": "normal"
+      },
+      {
+        "nodePosX": "7",
+        "nodePosY": "6",
+        "dungeonNodeType": "normal"
+      }
+    ],
+    "connections": [
+      {
+        "from": "0",
+        "to": "1"
+      },
+      {
+        "from": "0",
+        "to": "2"
+      },
+      {
+        "from": "0",
+        "to": "3"
+      },
+      {
+        "from": "1",
+        "to": "5"
+      },
+      {
+        "from": "1",
+        "to": "6"
+      },
+      {
+        "from": "3",
+        "to": "7"
+      },
+      {
+        "from": "5",
+        "to": "4"
+      },
+      {
+        "from": "5",
+        "to": "10"
+      },
+      {
+        "from": "5",
+        "to": "11"
+      },
+      {
+        "from": "6",
+        "to": "11"
+      },
+      {
+        "from": "6",
+        "to": "13"
+      },
+      {
+        "from": "7",
+        "to": "8"
+      },
+      {
+        "from": "8",
+        "to": "9"
+      },
+      {
+        "from": "9",
+        "to": "15"
+      },
+      {
+        "from": "10",
+        "to": "16"
+      },
+      {
+        "from": "10",
+        "to": "17"
+      },
+      {
+        "from": "10",
+        "to": "18"
+      },
+      {
+        "from": "11",
+        "to": "17"
+      },
+      {
+        "from": "13",
+        "to": "19"
+      },
+      {
+        "from": "13",
+        "to": "14"
+      },
+      {
+        "from": "14",
+        "to": "22"
+      }
+    ]
+  }
+}

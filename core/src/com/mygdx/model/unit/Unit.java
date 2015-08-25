@@ -19,6 +19,10 @@ public abstract class Unit implements Comparable<Unit> {
 	private int actingPower;
 	private int preGague;
 
+	public Unit() {
+		gauge = 100;
+	}
+
 	public String getFacePath() {
 		return facePath;
 	}
@@ -33,6 +37,7 @@ public abstract class Unit implements Comparable<Unit> {
 	public String getName() {
 		return name;
 	}
+
 	public ArrayList<String> getSkillList() {
 		return skillList;
 	}

@@ -2,23 +2,21 @@ package com.mygdx.ui;
 
 import java.util.HashMap;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.manager.TextureManager;
 
 public class GridHitbox extends Table {
-	@Autowired
 	private TextureManager textureManager;
 	private final String TAG = "GridHitbox";
 
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
 
 	private final int TILE_WIDTH = 128;
 
@@ -39,7 +37,24 @@ public class GridHitbox extends Table {
 
 	private boolean gridShow;
 
+	public TextureManager getTextureManager() {
+		return textureManager;
+	}
+
+	public void setTextureManager(TextureManager textureManager) {
+		this.textureManager = textureManager;
+	}
+
+	public ConstantsAssets getConstantsAssets() {
+		return constantsAssets;
+	}
+
+	public void setConstantsAssets(ConstantsAssets constantsAssets) {
+		this.constantsAssets = constantsAssets;
+	}
+
 	public void setSizeType(MonsterEnum.SizeType sizeType) {
+
 		switch (sizeType) {
 		case SMALL:
 			// TODO 추후 구현
@@ -70,6 +85,7 @@ public class GridHitbox extends Table {
 	}
 
 	public Stack makeGridTable(MonsterEnum.SizeType sizeType) {
+
 		Stack stack = new Stack();
 		Table tileTable = new Table();
 
@@ -306,5 +322,9 @@ public class GridHitbox extends Table {
 
 	public void setPreviousHitArea(int[][] previousHitArea) {
 		this.previousHitArea = previousHitArea;
+	}
+
+	public void setUiConstantsMap(ConstantsAssets constantsAssets) {
+		uiConstantsMap = constantsAssets.getUiConstants("BattleStage");
 	}
 }

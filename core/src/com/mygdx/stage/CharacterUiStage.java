@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.ScreenEnum;
@@ -33,7 +33,9 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private TextureManager textureManager;
 	@Autowired
 	private BattleManager battleManager;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("CharacterUiStage");
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
 	private Table statusTable;
 	private Table barTable;
 	private List<Hero> battleMemberList;
@@ -46,7 +48,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
-
+		uiConstantsMap = constantsAssets.getUiConstants("CharacterUiStage");
 		initializeList();
 		Table uiTable;
 		uiTable = makeUiTable();

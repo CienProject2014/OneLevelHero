@@ -16,9 +16,10 @@ import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.WorldMapAssets;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
+import com.mygdx.listener.DungeonEntranceButtonListener;
+import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
@@ -44,11 +45,14 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 	@Autowired
 	private ListenerFactory listenerFactory;
 	@Autowired
+	private DungeonManager dungeonManager;
+	@Autowired
 	private PositionManager positionManager;
 	private DungeonEntrance dungeonEntranceInfo;
 
 	public Stage makeStage() {
 		super.makeStage();
+		dungeonManager.setInDungeon(false);
 		dungeonEntranceInfo = nodeAssets.getDungeonEntranceByName(positionManager.getCurrentNodeName());
 		makeScene(dungeonEntranceInfo);
 		setButton();
@@ -71,12 +75,10 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 		restButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_rest"));
 		backButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_field"));
 
-		entranceButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				screenFactory.show(ScreenEnum.DUNGEON);
-			}
-		});
+		DungeonEntranceButtonListener dungeonEntranceButtonListener = listenerFactory
+				.getDungeonEntranceButtonListener();
+		dungeonEntranceButtonListener.setDungeonPath(dungeonEntranceInfo.getNodePath());
+		entranceButton.addListener(dungeonEntranceButtonListener);
 
 		saveButton.addListener(new ClickListener() {
 			@Override

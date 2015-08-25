@@ -19,7 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
-import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.EventTypeEnum;
@@ -37,7 +37,6 @@ import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
 import com.mygdx.popup.SkillRunPopup;
 import com.mygdx.screen.BattleScreen;
-import com.mygdx.ui.GridHitbox;
 
 public class BattleStage extends BaseOneLevelStage {
 	private final String TAG = "BattleStage";
@@ -53,10 +52,10 @@ public class BattleStage extends BaseOneLevelStage {
 	private TextureManager textureManager;
 	@Autowired
 	private ListenerFactory listenerFactory;
-	private HashMap<String, Float> uiConstantsMap = StaticAssets.uiConstantsMap.get("BattleStage");
-	// Table
 	@Autowired
-	private GridHitbox gridHitbox; // grid hitbox 테이블
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
+	// Table
 	@Autowired
 	private StorySectionManager storySectionManager;
 	@Autowired
@@ -108,9 +107,9 @@ public class BattleStage extends BaseOneLevelStage {
 		}
 
 		if (battleManager.isShowGrid()) {
-			gridHitbox.showGrid();
+			battleManager.setShowGrid(true);
 		} else {
-			gridHitbox.hideGrid();
+			battleManager.setShowGrid(false);
 		}
 		if (battleManager.isSmallUpdate()) {
 			updateSmallImageTable();
@@ -125,7 +124,7 @@ public class BattleStage extends BaseOneLevelStage {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		super.touchDown(screenX, screenY, pointer, button);
-		if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+		if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 			start = (new Vector2(touched.x, touched.y));
 		}
 		return true;
@@ -134,7 +133,7 @@ public class BattleStage extends BaseOneLevelStage {
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		super.touchDragged(screenX, screenY, pointer);
-		if (gridHitbox.isGridShow()) {
+		if (battleManager.isShowGrid()) {
 			end = (new Vector2(touched.x, touched.y));
 
 		}
@@ -152,6 +151,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
+		uiConstantsMap = constantsAssets.getUiConstants("BattleStage");
 		battleManager.setShowGrid(false);
 		selectedMonster = battleManager.getSelectedMonster();
 		ArrayList<Unit> units = new ArrayList<Unit>(4);
@@ -170,8 +170,8 @@ public class BattleStage extends BaseOneLevelStage {
 		tableStack.add(makeBattleUiTable()); // Rmenu
 		tableStack.add(makeTurnTable()); // TurnTable 배경 테이블
 		tableStack.add(makeTurnFaceTable()); // TurnTable위에 있는 영웅들 이미지 테이블
-		gridHitbox.setSizeType(MonsterEnum.SizeType.MEDIUM);
-		tableStack.add(gridHitbox);
+		battleManager.setMonsterSize(MonsterEnum.SizeType.MEDIUM);
+		tableStack.add(battleManager.getGridHitbox());
 
 		addListener();
 		return this;
@@ -196,8 +196,6 @@ public class BattleStage extends BaseOneLevelStage {
 		if (animationDelay > MONSTER_ATTACK_DELAY) {
 			Hero randomHero = partyManager.pickRandomHero();
 			battleManager.calCostGague(battleManager.getCurrentAttackUnit(), NORMAL_ATTACK);
-			System.out.println(
-					battleManager.getCurrentAttackUnit().getName() + battleManager.getCurrentAttackUnit().getGauge());
 			battleManager.attack(battleManager.getCurrentAttackUnit(), randomHero, null);
 			battleManager.endTurn();
 			animationDelay = 0;
@@ -337,7 +335,8 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.NORMAL);
 				setDarkButton(attackButton);
 				battleManager.afterClick(NORMAL_ATTACK);
-				gridHitbox.setLimitNum(getWeaponHitboxSize());
+
+				battleManager.setGridLimitNum(getWeaponHitboxSize());
 				battleManager.setShowGrid(true);
 			}
 		});
@@ -376,7 +375,6 @@ public class BattleStage extends BaseOneLevelStage {
 		});
 
 		waitButton.addListener(new ClickListener() {
-
 			public void clicked(InputEvent event, float x, float y) {
 				battleManager.checkCurrentState();
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.WAIT);
@@ -387,6 +385,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 			}
 		});
+
 		escapeButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -396,6 +395,7 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.afterClick(RUN);
 				battleManager.gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
 				battleManager.gameObjectPopup.setListenerFactory(listenerFactory);
+				battleManager.gameObjectPopup.setConstantsAssets(constantsAssets);
 				checkRunAway();
 				battleManager.gameObjectPopup
 						.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent() + "%입니다");
@@ -404,26 +404,27 @@ public class BattleStage extends BaseOneLevelStage {
 			}
 		});
 
-		gridHitbox.addListener(new ClickListener() {
+		battleManager.getGridHitbox().addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
-					gridHitbox.setStartPosition(touched.x, touched.y);
-					gridHitbox.showTileWhereMoved(touched.x, touched.y);
+				if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
+					battleManager.getGridHitbox().setStartPosition(touched.x, touched.y);
+					battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
 				}
 				return true;
 			}
 
 			@Override
 			public void touchDragged(InputEvent event, float x, float y, int pointer) {
-				if (gridHitbox.isGridShow()) {
+				if (battleManager.isShowGrid()) {
 					if (!battleManager.isSkill()) {
-						gridHitbox.showTileWhereMoved(touched.x, touched.y);
+						battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
 					} else {
-						if (gridHitbox.getHitboxCenter() == null) {
-							gridHitbox.showTileWhereMoved(touched.x, touched.y);
+						if (battleManager.getGridHitbox().getHitboxCenter() == null) {
+							Gdx.app.log(TAG, "skill limit num: " + battleManager.getGridLimitNum());
+							battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
 						} else {
-							gridHitbox.showFixedTilesAt(touched.x, touched.y);
+							battleManager.getGridHitbox().showFixedTilesAt(touched.x, touched.y);
 						}
 
 					}
@@ -432,10 +433,10 @@ public class BattleStage extends BaseOneLevelStage {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				if (gridHitbox.isGridShow() && gridHitbox.isInsideHitbox(touched.x, touched.y)) {
+				if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 					if (!battleManager.isSkill()) {
 						battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster,
-								gridHitbox.getPreviousHitArea());
+								battleManager.getGridHitbox().getPreviousHitArea());
 					} else {
 						battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster,
 								battleManager.getCurrentSelectedSkill().getSkillPath());
@@ -443,8 +444,8 @@ public class BattleStage extends BaseOneLevelStage {
 					}
 					battleManager.setShowGrid(false);
 				}
-				gridHitbox.hideGrid();
-				gridHitbox.hideAllTiles();
+				battleManager.setShowGrid(false);
+				battleManager.getGridHitbox().hideAllTiles();
 			}
 		});
 	}

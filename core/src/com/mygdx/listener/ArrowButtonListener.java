@@ -14,6 +14,7 @@ import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.manager.TimeManager;
 import com.mygdx.model.surroundings.NodeConnection;
 
 public class ArrowButtonListener extends ClickListener {
@@ -26,11 +27,15 @@ public class ArrowButtonListener extends ClickListener {
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
+	private TimeManager timeManager;
+
+	@Autowired
 	private MovingManager movingManager;
 	private Entry<String, NodeConnection> connection;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		timeManager.plusMinute(30); // 마을에서 길로 나가는데 30분
 		int beforeSectionNumber = storySectionManager.getCurrentStorySectionNumber();
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.CLICK_ARROW, connection.getValue().getArrowName());
 		int currentSectionNumber = storySectionManager.getCurrentStorySectionNumber();

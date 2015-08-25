@@ -12,7 +12,7 @@ import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.manager.LoadManager;
+import com.mygdx.manager.LoadNewManager;
 import com.mygdx.manager.MonsterPickManager;
 
 public class OneLevelTest extends Game {
@@ -40,7 +40,7 @@ public class OneLevelTest extends Game {
 
 	public void gameLoad() {
 		context.getBean(ScreenFactory.class).setGame(this);
-		context.getBean(LoadManager.class).loadNewGame();
+		context.getBean(LoadNewManager.class).loadNewGame();
 	}
 
 	// 이하 게임에 곧장 진입하고자 하는 경우
