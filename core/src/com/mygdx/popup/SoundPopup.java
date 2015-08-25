@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider.SliderStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -76,13 +77,20 @@ public class SoundPopup extends Dialog {
 				musicManager.setMusicVolume(volume.getValue() / 100);
 			}
 		});
-		getContentTable().top();
-		getContentTable().align(Align.center);
-		getContentTable().add(volume).width(460).height(6).padLeft(190);
-		getContentTable().add(soundOn).padLeft(25);
+
+		getContentTable().align(Align.top);
+
+		Table soundTable = new Table();
+		soundTable.add(volume).width(460).height(6);
+		soundTable.add(soundOn).padLeft(25);
+		getContentTable().add(soundTable).padTop(66).padLeft(181);
 		getContentTable().row();
-		getContentTable().add(bgm).width(460).height(6).padLeft(190);
-		getContentTable().add(bgmOn).padLeft(25);
+
+		Table bgmTable = new Table();
+		bgmTable.add(bgm).width(460).height(6);
+		bgmTable.add(bgmOn).padLeft(25);
+		getContentTable().add(bgmTable).padTop(34).padLeft(181);
+
 		getButtonTable().bottom();
 		getButtonTable().add(okayButton).height(uiConstantsMap.get("buttonHeight"))
 				.padBottom(uiConstantsMap.get("buttonPadBottom"));
@@ -91,7 +99,6 @@ public class SoundPopup extends Dialog {
 		setBackground(atlasUiAssets.getAtlasUiFile("popupui_sound_base"));
 		setCenterPosition(StaticAssets.BASE_WINDOW_WIDTH / 2f, StaticAssets.BASE_WINDOW_HEIGHT / 2f);
 		setSize(860, 480);
-		setModal(false);
 		setResizable(false);
 		setVisible(false);
 	}

@@ -86,7 +86,6 @@ public class UnEquipPopup extends Dialog {
 		setQuestionLabel();
 		setButton(atlasUiAssets, uiComponentAssets, index);
 
-		setModal(false);
 		setResizable(false);
 		setVisible(false);
 	}
