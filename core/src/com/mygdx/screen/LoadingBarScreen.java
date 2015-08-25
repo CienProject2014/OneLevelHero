@@ -20,7 +20,6 @@ public class LoadingBarScreen extends BaseScreen {
 	public void render(float delta) {
 		loadingBarStage.act();
 		loadingBarStage.draw();
-
 	}
 
 	@Override

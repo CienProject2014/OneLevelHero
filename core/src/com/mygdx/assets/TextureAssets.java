@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.AssetsManager;
@@ -32,19 +31,21 @@ public class TextureAssets {
 
 		animationSheetMap = JsonParser.parseMap(FrameSheet.class,
 				filePathMap.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
+		textureMap = json.fromJson(HashMap.class, Gdx.files.internal("texture/textureMap.json"));
 		if (Gdx.app.getType() == ApplicationType.Android) {
 			textureMap = json.fromJson(HashMap.class, Gdx.files.internal("texture/textureMap.json"));
 			for (Map.Entry<String, String> entry : textureMap.entrySet()) {
-				assetsManager.load(entry.getValue(), Texture.class);
+				// assetsManager.load(entry.getValue(), Texture.class);
 			}
 		} else {
 			directoryTextureMapper(textureMap, "texture");
 			file.writeString(json.prettyPrint(textureMap), false);
 			textureMap = json.fromJson(HashMap.class, Gdx.files.internal("texture/textureMap.json"));
 			for (Map.Entry<String, String> entry : textureMap.entrySet()) {
-				assetsManager.load(entry.getValue(), Texture.class);
+				// assetsManager.load(entry.getValue(), Texture.class);
 			}
 		}
+
 	}
 
 	public String getTexturePath(String textureName) {
