@@ -15,8 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.currentState.SoundInfo;
 import com.mygdx.manager.MusicManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.VolumeManager;
 
 public class SoundPopup extends Dialog {
@@ -27,7 +27,7 @@ public class SoundPopup extends Dialog {
 	@Autowired
 	private MusicManager musicManager;
 	@Autowired
-	private SoundInfo soundInfo;
+	private SoundManager soundManager;
 	private Stage scenestage;
 
 	public SoundPopup(String title, Stage stage) {
@@ -45,10 +45,8 @@ public class SoundPopup extends Dialog {
 		getContentTable().defaults(); // set buttons height
 		setResizable(false);
 
-		TextButtonStyle style = new TextButtonStyle(
-				atlasUiAssets.getAtlasUiFile("menu_button_up"),
-				atlasUiAssets.getAtlasUiFile("menu_button_down"),
-				atlasUiAssets.getAtlasUiFile("menu_button_toggle"),
+		TextButtonStyle style = new TextButtonStyle(atlasUiAssets.getAtlasUiFile("menu_button_up"),
+				atlasUiAssets.getAtlasUiFile("menu_button_down"), atlasUiAssets.getAtlasUiFile("menu_button_toggle"),
 				uiComponentAssets.getFont());
 
 		text("배경음\n효과음");
@@ -56,8 +54,7 @@ public class SoundPopup extends Dialog {
 		setWidth((int) (width * StaticAssets.windowWidth)); // 가로 크기 세팅
 		setHeight((int) (height * StaticAssets.windowHeight)); // 세로 크기 세팅
 
-		setPosition((int) (centerx * StaticAssets.windowWidth),
-				(int) (centery * StaticAssets.windowHeight));
+		setPosition((int) (centerx * StaticAssets.windowWidth), (int) (centery * StaticAssets.windowHeight));
 
 		setMovable(true); // 드래그로 이동가능
 
@@ -65,15 +62,12 @@ public class SoundPopup extends Dialog {
 		// 다이얼로그 구현
 		// 다이얼로그조절
 
-		final Slider volume = new Slider(0f, 100f, 1f, false,
-				uiComponentAssets.getSkin());
-		volume.setValue(soundInfo.getMusicVolume() * 100);
-		String volumeLabel = String.valueOf(soundInfo.getMusicVolume() * 100);
-		final Label volumeValue = new Label(volumeLabel,
-				uiComponentAssets.getSkin());
+		final Slider volume = new Slider(0f, 100f, 1f, false, uiComponentAssets.getSkin());
+		volume.setValue(musicManager.getMusicVolume() * 100);
+		String volumeLabel = String.valueOf(musicManager.getMusicVolume() * 100);
+		final Label volumeValue = new Label(volumeLabel, uiComponentAssets.getSkin());
 		Table table = new Table();
-		final Slider pan = new Slider(-1f, 1f, 0.1f, false,
-				uiComponentAssets.getSkin());
+		final Slider pan = new Slider(-1f, 1f, 0.1f, false, uiComponentAssets.getSkin());
 		pan.setValue(0);
 		final Label panValue = new Label("0.0", uiComponentAssets.getSkin());
 
@@ -92,8 +86,8 @@ public class SoundPopup extends Dialog {
 			public void changed(ChangeEvent event, Actor actor) {
 				// sound.setVolume(soundId, volume.getValue());
 				VolumeManager.musicVolume = volume.getValue() / 100;
-				volumeValue.setText("" + soundInfo.getMusicVolume() * 100);
-				musicManager.getMusic().setVolume(soundInfo.getMusicVolume());
+				volumeValue.setText("" + musicManager.getMusicVolume() * 100);
+				musicManager.getMusic().setVolume(musicManager.getMusicVolume());
 			}
 		});
 		pan.addListener(new ChangeListener() {
@@ -154,8 +148,7 @@ public class SoundPopup extends Dialog {
 	}
 
 	@Override
-	public Dialog button(String text, Object object,
-			TextButtonStyle buttonStyle) {
+	public Dialog button(String text, Object object, TextButtonStyle buttonStyle) {
 		return super.button(text, object, buttonStyle);
 	}
 
@@ -224,11 +217,4 @@ public class SoundPopup extends Dialog {
 		this.musicManager = musicManager;
 	}
 
-	public SoundInfo getSoundInfo() {
-		return soundInfo;
-	}
-
-	public void setSoundInfo(SoundInfo soundInfo) {
-		this.soundInfo = soundInfo;
-	}
 }
