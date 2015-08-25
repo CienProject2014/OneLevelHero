@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.DungeonEncounterManager;
 import com.mygdx.manager.DungeonManager;
@@ -100,12 +100,7 @@ public class DungeonStage extends BaseOverlapStage {
 			btnRoad[2].addListener(new TouchRoadListener(2));
 		}
 
-		btnTurn.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		btnTurn.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				actionTurn();
@@ -193,16 +188,11 @@ public class DungeonStage extends BaseOverlapStage {
 		}
 	}
 
-	private class TouchRoadListener extends InputListener {
+	private class TouchRoadListener extends SimpleTouchListener {
 		private int idx;
 
 		public TouchRoadListener(int idx) {
 			this.idx = idx;
-		}
-
-		@Override
-		public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-			return true;
 		}
 
 		@Override

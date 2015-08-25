@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.listener.SimpleTouchListener;
 
 public class CollectionScreen extends BaseScreen {
 	@Autowired
@@ -41,52 +41,28 @@ public class CollectionScreen extends BaseScreen {
 		bgmButton = new TextButton("BGM", uiComponentAssets.getSkin());
 		backButton = new TextButton("Back", uiComponentAssets.getSkin());
 
-		endingButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
+		endingButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				screenFactory.show(ScreenEnum.ENDING);
 			}
 		});
-		cgButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
+		cgButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				screenFactory.show(ScreenEnum.CG);
 			}
 		});
-		bgmButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
+		bgmButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				screenFactory.show(ScreenEnum.BGM);
 			}
 		});
-		backButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
+		backButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {

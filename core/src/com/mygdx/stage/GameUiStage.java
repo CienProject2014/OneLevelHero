@@ -21,6 +21,7 @@ import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
@@ -176,24 +177,14 @@ public class GameUiStage extends BaseOneLevelStage {
 			}
 		});
 		timeInfoButton.addListener(listenerFactory.getJumpSectionListener());
-		helpButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		helpButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.WORLD_MAP);
 			}
 
 		});
-		settingButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		settingButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				soundPopup.setAtlasUiAssets(atlasUiAssets);

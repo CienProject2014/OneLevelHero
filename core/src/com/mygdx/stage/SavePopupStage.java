@@ -14,7 +14,6 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -140,7 +139,7 @@ public class SavePopupStage extends BaseOverlapStage {
 				super.touchUp(event, x, y, pointer, button);
 			}
 		});
-		save02.addListener(new InputListener() {
+		save02.addListener(new TouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_02);

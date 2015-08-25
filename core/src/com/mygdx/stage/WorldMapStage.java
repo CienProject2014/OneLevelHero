@@ -8,10 +8,10 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.MovingManager;
@@ -85,12 +85,7 @@ public class WorldMapStage extends BaseOverlapStage {
 			if (nodePath.equals("elven_forest_east") || nodePath.equals("elven_forest_west")) {
 
 				ImageItem nodeButton = sceneLoader.getRoot().getImageById("elven_forest");
-				nodeButton.addListener(new InputListener() {
-					@Override
-					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-						return true;
-					}
-
+				nodeButton.addListener(new SimpleTouchListener() {
 					@Override
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 						positionManager.setInWorldMap(false);
@@ -105,12 +100,7 @@ public class WorldMapStage extends BaseOverlapStage {
 				});
 			} else if ((nodePath.equals("crystallized_valley_south") || nodePath.equals("crystallized_valley_north"))) {
 				ImageItem nodeButton = sceneLoader.getRoot().getImageById("crystallized_valley");
-				nodeButton.addListener(new InputListener() {
-					@Override
-					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-						return true;
-					}
-
+				nodeButton.addListener(new SimpleTouchListener() {
 					@Override
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 						positionManager.setInWorldMap(false);
@@ -125,12 +115,7 @@ public class WorldMapStage extends BaseOverlapStage {
 				});
 			} else {
 				ImageItem nodeButton = sceneLoader.getRoot().getImageById(nodePath);
-				nodeButton.addListener(new InputListener() {
-					@Override
-					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-						return true;
-					}
-
+				nodeButton.addListener(new SimpleTouchListener() {
 					@Override
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 						positionManager.setInWorldMap(false);
@@ -151,12 +136,7 @@ public class WorldMapStage extends BaseOverlapStage {
 		while (villageMapIterator.hasNext()) {
 			final String nodeName = villageMapIterator.next().getKey();
 			ImageItem nodeButton = sceneLoader.getRoot().getImageById(nodeName);
-			nodeButton.addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					return true;
-				}
-
+			nodeButton.addListener(new SimpleTouchListener() {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					positionManager.setInWorldMap(false);
@@ -172,12 +152,7 @@ public class WorldMapStage extends BaseOverlapStage {
 		while (forkMapIterator.hasNext()) {
 			final String nodeName = forkMapIterator.next().getKey();
 			ImageItem nodeButton = sceneLoader.getRoot().getImageById(nodeName);
-			nodeButton.addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					return true;
-				}
-
+			nodeButton.addListener(new SimpleTouchListener() {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					positionManager.setInWorldMap(false);

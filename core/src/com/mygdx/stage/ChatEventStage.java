@@ -18,6 +18,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.enums.EventElementEnum;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
@@ -109,12 +110,7 @@ public class ChatEventStage extends BaseOneLevelStage {
 	private void makeSkipButton() {
 		TextButton skipButton = new TextButton("스킵", uiComponentAssets.getSkin());
 		skipButton.center();
-		skipButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		skipButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				rewardManager.doReward(); // 보상이 있을경우 보상실행
