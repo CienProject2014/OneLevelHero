@@ -20,6 +20,8 @@ public class Skill {
 	private int[][] hitboxShape;
 	private String description;
 
+	private String description;
+
 	public String getName() {
 		return name;
 	}
