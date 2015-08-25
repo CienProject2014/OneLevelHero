@@ -1,6 +1,7 @@
 {
-  "devil_castle_dungeon": {
-    "dungeonName": "마왕성",
+  "devil_castle": {
+    "dungeonPath" : "devil_castle",
+    "name": "마왕성",
     "sceneName": "dungeon_3door_scene",
     "mapWidth": "8",
     "mapHeight": "7",
