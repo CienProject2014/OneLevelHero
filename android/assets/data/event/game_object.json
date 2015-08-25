@@ -29,7 +29,7 @@
        ], "rewards" : [
       	{
             "rewardType": "save",
-            "rewardState": "not_cleared"
+            "rewardState": "not_opened"
         }
       ]
     }
@@ -50,7 +50,7 @@
       "rewards" : [
       	{
             "rewardType": "rest_in_node",
-            "rewardState": "not_cleared"
+            "rewardState": "not_opened"
         }
       ]
     }

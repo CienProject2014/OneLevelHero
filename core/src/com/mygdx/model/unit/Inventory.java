@@ -94,17 +94,17 @@ public class Inventory {
 
 	public Equipment getEquipment(ItemEnum equipmentPart) {
 		switch (equipmentPart) {
-			case RIGHT_HANDGRIP :
-				return getRightHandGrip();
-			case LEFT_HANDGRIP :
-				return getLeftHandGrip();
-			case ACCESSORY :
-				return getAccessory();
-			case CLOTHES :
-				return getClothes();
-			default :
-				Gdx.app.log("Inventory", "잘못된 EquipmentPart정보");
-				return null;
+		case RIGHT_HANDGRIP:
+			return getRightHandGrip();
+		case LEFT_HANDGRIP:
+			return getLeftHandGrip();
+		case ACCESSORY:
+			return getAccessory();
+		case CLOTHES:
+			return getClothes();
+		default:
+			Gdx.app.log("Inventory", "잘못된 EquipmentPart정보");
+			return null;
 		}
 	}
 

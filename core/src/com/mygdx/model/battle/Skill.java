@@ -18,6 +18,7 @@ public class Skill {
 	private int hitboxSize;
 	private int[] hitboxCenter;
 	private int[][] hitboxShape;
+	private String description;
 
 	private String description;
 

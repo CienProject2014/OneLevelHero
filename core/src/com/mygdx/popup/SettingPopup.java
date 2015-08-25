@@ -40,7 +40,6 @@ public class SettingPopup extends Dialog {
 		makeButtonTable();
 		setCenterPosition(StaticAssets.BASE_WINDOW_WIDTH / 2f, StaticAssets.BASE_WINDOW_HEIGHT / 2f);
 		setSize(430, 700);
-		setModal(false);
 		setResizable(false);
 		setVisible(false);
 	}
@@ -53,6 +52,13 @@ public class SettingPopup extends Dialog {
 		soundButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				soundPopup = new SoundPopup();
+				soundPopup.setAtlasUiAssets(atlasUiAssets);
+				soundPopup.setListenerFactory(listenerFactory);
+				soundPopup.setConstantsAssets(constantsAssets);
+				soundPopup.setMusicManager(musicManager);
+				soundPopup.initialize();
+				getParent().addActor(soundPopup);
 				soundPopup.setVisible(true);
 			}
 		});

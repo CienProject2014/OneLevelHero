@@ -1,12 +1,18 @@
 package com.mygdx.manager;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.enums.VillageDirectionEnum;
 import com.mygdx.stage.BaseOneLevelStage;
 import com.mygdx.stage.BaseOverlapStage;
 
 public class CameraManager {
+	@Autowired
+	private PositionManager positionManager;
 	private OrthographicCamera cam;
 	private int moveFlag;
 	private int direction;
@@ -34,6 +40,34 @@ public class CameraManager {
 
 	public void stretchToDevice(BaseOneLevelStage stage) {
 		stage.getViewport().setCamera(cam);
+	}
+
+	public void stretchToDevice(BaseOverlapStage stage, VillageDirectionEnum villageDirectionEnum) {
+		switch (villageDirectionEnum) {
+			case LEFT :
+				stage.getOrthographicCamera().position.set(StaticAssets.BASE_WINDOW_WIDTH / 2f,
+						StaticAssets.BASE_WINDOW_HEIGHT / 2f, 0);
+				stage.getViewport().setCamera(stage.getOrthographicCamera());
+				break;
+			case RIGHT :
+				stage.getOrthographicCamera().position.set(StaticAssets.BASE_WINDOW_WIDTH * 3f / 2f,
+						StaticAssets.BASE_WINDOW_HEIGHT / 2f, 0);
+				stage.getViewport().setCamera(stage.getOrthographicCamera());
+				break;
+			case UP :
+				stage.getOrthographicCamera().position.set(StaticAssets.BASE_WINDOW_WIDTH / 2f,
+						StaticAssets.BASE_WINDOW_HEIGHT * 3f / 2f, 0);
+				stage.getViewport().setCamera(stage.getOrthographicCamera());
+				break;
+			case DOWN :
+				stage.getOrthographicCamera().position.set(StaticAssets.BASE_WINDOW_WIDTH / 2f,
+						StaticAssets.BASE_WINDOW_HEIGHT / 2f, 0);
+				stage.getViewport().setCamera(stage.getOrthographicCamera());
+				break;
+			default :
+				Gdx.app.log("CameraManager", "VillageDirection 정보 오류");
+				break;
+		}
 	}
 
 	private void restrictCameraDelta(Vector3 cameraPosition, int deltaX, int deltaY) {

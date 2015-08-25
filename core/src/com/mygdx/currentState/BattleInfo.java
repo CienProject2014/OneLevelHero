@@ -9,6 +9,7 @@ import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.FieldTypeEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.model.item.Item;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
@@ -18,6 +19,7 @@ public class BattleInfo {
 	private BattleStateEnum battleState;
 	private CurrentClickStateEnum currentClickState;
 	private Skill currentSelectedSkill;
+	private Item currentSelectedItem;
 	private Hero currentActor;
 	private PositionEnum beforePosition;
 	private FieldTypeEnum fieldType;
@@ -167,6 +169,14 @@ public class BattleInfo {
 
 	public void setSkill(boolean isSkill) {
 		this.isSkill = isSkill;
+	}
+
+	public Item getCurrentSelectedItem() {
+		return currentSelectedItem;
+	}
+
+	public void setCurrentSelectedItem(Item currentSelectedItem) {
+		this.currentSelectedItem = currentSelectedItem;
 	}
 
 }
