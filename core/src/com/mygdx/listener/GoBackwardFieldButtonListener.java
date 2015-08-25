@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
@@ -31,6 +32,7 @@ public class GoBackwardFieldButtonListener extends ClickListener {
 		timeManager.plusMinute(30);
 		if (!fieldManager.isInField()) {
 			soundManager.setSoundByUseAndPlay("move_arrow");
+			positionManager.setBeforePositionType(PositionEnum.FIELD);
 			String node = positionManager.getCurrentNodeName();
 			movingManager.goToNode(node);
 		}

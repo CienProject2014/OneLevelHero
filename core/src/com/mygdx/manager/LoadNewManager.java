@@ -30,6 +30,8 @@ public class LoadNewManager {
 	private BagManager bagManager;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private FieldManager fieldManager;
 
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
@@ -78,6 +80,8 @@ public class LoadNewManager {
 		// 마왕성에서부터 게임을 시작한다.
 		positionManager.setCurrentNodeName("devil_castle");
 		positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
+		fieldManager.setArrowName("16to1");
+		positionManager.setBeforePositionType(PositionEnum.FIELD);
 	}
 
 	// Hero클래스가 status정보를 갖도록 한다.
