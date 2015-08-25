@@ -21,6 +21,7 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public Unit() {
 		gauge = 100;
+		preGague = 100;
 	}
 
 	public String getFacePath() {

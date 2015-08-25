@@ -29,7 +29,6 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.item.Weapon;
@@ -40,12 +39,11 @@ import com.mygdx.popup.SkillRunPopup;
 import com.mygdx.screen.BattleScreen;
 
 public class BattleStage extends BaseOneLevelStage {
-	@Autowired
-	private MusicManager musicManager;
 	private final String TAG = "BattleStage";
 	private final int NORMAL_ATTACK = 30;
 	private final int DEFENSE = 20;
 	private final int RUN = 30;
+	private final int ITEM = 30;
 
 	@Autowired
 	private BattleManager battleManager;
@@ -320,7 +318,6 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				battleManager.checkCurrentState();
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL);
 				setDarkButton(skillButton);
 				battleManager.setSkill(true);
 				BattleScreen.showSkillStage = true;
@@ -333,7 +330,8 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.checkCurrentState();
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.INVENTORY);
 				setDarkButton(inventoryButton);
-				Gdx.app.log(TAG, "인벤토리!");
+				battleManager.afterClick(ITEM);
+				BattleScreen.showItemStage = true;
 			}
 		});
 
@@ -344,8 +342,6 @@ public class BattleStage extends BaseOneLevelStage {
 				setDarkButton(defenseButton);
 				battleManager.afterClick(DEFENSE);
 				battleManager.endTurn();
-				Gdx.app.log(TAG, "방어!");
-
 			}
 		});
 
@@ -356,8 +352,6 @@ public class BattleStage extends BaseOneLevelStage {
 				setDarkButton(waitButton);
 				battleManager.waitButton();
 				battleManager.endTurn();
-				Gdx.app.log(TAG, "기다립시다!");
-
 			}
 		});
 

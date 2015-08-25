@@ -15,7 +15,6 @@ public class WorldMapScreen extends BaseScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		setInputProcessor();
 		worldMapStage.draw();
 		gameUiStage.draw();
 	}

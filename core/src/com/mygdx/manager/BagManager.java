@@ -30,15 +30,18 @@ public class BagManager {
 		Item item = new Item();
 		switch (itemType) {
 		case HANDGRIP:
+			item = itemAssets.getHandGrip(itemName);
 			item = (Weapon) deepClone(itemAssets.getHandGrip(itemName));
 			addEquipment((Equipment) item);
 			break;
 		case ACCESSORY:
 			item = itemAssets.getAccessory(itemName);
+			item = (Weapon) deepClone(itemAssets.getHandGrip(itemName));
 			addEquipment((Equipment) item);
 			break;
 		case CLOTHES:
 			item = itemAssets.getClothes(itemName);
+			item = (Weapon) deepClone(itemAssets.getHandGrip(itemName));
 			addEquipment((Equipment) item);
 			break;
 		case CONSUMABLES:
@@ -47,10 +50,25 @@ public class BagManager {
 			break;
 		case ETC_ITEM:
 			item = itemAssets.getEtcItem(itemName);
+			item = (Weapon) deepClone(itemAssets.getHandGrip(itemName));
 			addEtcItem(item);
 			break;
 		default:
 			Gdx.app.log("BagManager", "itemType 정보 오류");
+			break;
+		}
+	}
+
+	public void possessItem(ItemEnum itemType, String itemName, int amount) {
+		Consumables item;
+		switch (itemType) {
+		case CONSUMABLES:
+			item = itemAssets.getConsumables(itemName);
+			item.setAmount(item.getAmount() + amount);
+			possessItem(itemType, itemName);
+			break;
+		default:
+			possessItem(itemType, itemName);
 			break;
 		}
 	}
@@ -88,7 +106,9 @@ public class BagManager {
 	}
 
 	public void addConsumables(Consumables consumables) {
-		getConsumablesList().add(consumables);
+		if (!getConsumablesList().contains(consumables)) {
+			getConsumablesList().add(consumables);
+		}
 	}
 
 	public List<Item> getEtcItemList() {
