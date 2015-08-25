@@ -9,7 +9,7 @@
         "buildingName": "촌장의 집",
         "buildingType": "house",
         "buildingPath": "blackwood_headhouse",
-        "isOverlapScene" : true,
+        "isOverlapScene": true,
         "sceneName": "blackwood_headhouse_scene",
         "buildingNpc": [
           "waiji"
@@ -17,6 +17,34 @@
         "gameObject": [
           "chest"
         ]
+      },
+      "blackwood_grocery": {
+        "buildingName": "잡화점",
+        "buildingType": "house",
+        "buildingPath": "blackwood_grocery",
+        "targetTime": {
+          "startTime": 9,
+          "endTime": 21
+        }
+      },
+      "blackwood_inn": {
+        "buildingName": "여관",
+        "buildingType": "inn",
+        "buildingPath": "blackwood_inn",
+        "isOverlapScene": true,
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "blackwood_peasanthouse": {
+        "buildingName": "민가",
+        "buildingType": "house",
+        "buildingPath": "blackwood_peasanthouse",
+        "targetTime": {
+          "startTime": 8,
+          "endTime": 22
+        }
       }
     }
   },
@@ -29,24 +57,69 @@
         "buildingName": "대도서관",
         "buildingType": "house",
         "buildingPath": "cobweb_library",
-        "isOverlapScene" : true,
+        "isOverlapScene": true,
         "sceneName": "cobweb_library_scene"
       },
-      "cobweb_cathedral" : {
-      	"buildingName" : "대성당",
-      	"buildingType" : "house",
-      	"buildingPath" : "cobweb_cathedral"
+      "cobweb_villagehall": {
+        "buildingName": "마을회관",
+        "buildingType": "house",
+        "buildingPath": "cobweb_villagehall",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 22
+        }
+      },
+      "cobweb_store_03": {
+        "buildingName": "물약상점",
+        "buildingType": "house",
+        "buildingPath": "cobweb_drugstore",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 22
+        }
+      },
+      "cobweb_store1": {
+        "buildingName": "상점1",
+        "buildingType": "house",
+        "buildingPath": "cobweb_store1",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 22
+        }
+      },
+      "cobweb_store2": {
+        "buildingName": "상점2",
+        "buildingType": "house",
+        "buildingPath": "cobweb_store2",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 22
+        }
       },
       "cobweb_inn": {
         "buildingName": "여관",
         "buildingType": "house",
         "buildingPath": "cobweb_inn",
-        "isOverlapScene" : true,
+        "isOverlapScene": true,
         "sceneName": "cobweb_inn_scene",
         "gameObject": [
           "save",
           "rest"
         ]
+      },
+      "cobweb_cathedral": {
+        "buildingName": "대성당",
+        "buildingType": "house",
+        "buildingPath": "cobweb_cathedral"
+      },
+      "cobweb_weaponsmith": {
+        "buildingName": "무기공방",
+        "buildingType": "house",
+        "buildingPath": "cobweb_weaponsmith",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 22
+        }
       }
     }
   },
@@ -54,7 +127,44 @@
     "villageName": "오베론",
     "villageDirection": "up_down",
     "sceneName": "oberon_scene",
-    "building": {}
+    "building": {
+      "oberon_house01": {
+        "buildingName": "오베론 민가",
+        "buildingType": "house",
+        "buildingPath": "oberon_house01",
+        "targetTime": {
+          "startTime": 7,
+          "endTime": 24
+        }
+      },
+      "oberon_house_02": {
+        "buildingName": "오베론 민가",
+        "buildingType": "house",
+        "buildingPath": "oberon_house02",
+        "targetTime": {
+          "startTime": 7,
+          "endTime": 24
+        }
+      },
+      "oberon_inn": {
+        "buildingName": "오베론 여관",
+        "buildingType": "inn",
+        "buildingPath": "oberon_inn",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "oberon_temple": {
+        "buildingName": "오래된 신전",
+        "buildingType": "house",
+        "buildingPath": "oberon_temple",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      }
+    }
   },
   "kadilla_castle": {
     "villageName": "카딜라 성",
@@ -65,18 +175,72 @@
         "buildingName": "마법 대학",
         "buildingType": "house",
         "buildingPath": "kadilla_castle_school",
-        "targetTime" : {
-        	"startTime" : 9,
-        	"endTime" : 21
+        "targetTime": {
+          "startTime": 9,
+          "endTime": 21
         }
       },
       "kadilla_castle_duke_castle": {
         "buildingName": "공작의 성",
         "buildingType": "house",
         "buildingPath": "kadilla_castle_duke_castle",
-        "targetTime" : {
-        	"startTime" : 9,
-        	"endTime" : 21
+        "targetTime": {
+          "startTime": 9,
+          "endTime": 21
+        }
+      },
+      "kadilla_castle_inn": {
+        "buildingName": "여관",
+        "buildingType": "inn",
+        "buildingPath": "kadilla_castle_inn",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "kadilla_castle_grocery": {
+        "buildingName": "잡화점",
+        "buildingType": "house",
+        "buildingPath": "kadilla_castle_grocery",
+        "targetTime": {
+          "startTime": 8,
+          "endTime": 22
+        }
+      },
+      "kadilla_castle_smithy": {
+        "buildingName": "대장간",
+        "buildingType": "house",
+        "buildingPath": "kadilla_castle_smithy",
+        "targetTime": {
+          "startTime": 8,
+          "endTime": 22
+        }
+      },
+      "kadilla_castle_clothing_store": {
+        "buildingName": "옷가게",
+        "buildingType": "house",
+        "buildingPath": "kadilla_castle_clothing_store",
+        "targetTime": {
+          "startTime": 8,
+          "endTime": 22
+        }
+      },
+      "kadilla_castle_square": {
+        "buildingName": "광장",
+        "buildingType": "house",
+        "buildingPath": "kadilla_castle_square",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "kadilla_castle_guard_office": {
+        "buildingName": "경비실",
+        "buildingType": "house",
+        "buildingPath": "kadilla_castle_guard_office",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
         }
       }
     }
@@ -86,41 +250,401 @@
     "villageDirection": "center",
     "sceneName": "winterfall_scene",
     "building": {
-    	"winterfall_altar" :{
-    		"buildingName" : "수정의 제단",
-    		"buildingType" : "house",
-    		"buildingPath" : "winterfall_altar"
-    	}
+      "winterfall_dome": {
+        "buildingName": "수정의 제단",
+        "buildingType": "house",
+        "buildingPath": "winterfall_dome",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "winterfall_inn": {
+        "buildingName": "부서진 여관",
+        "buildingType": "inn",
+        "buildingPath": "winterfall_inn",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "winterfall_grocery": {
+        "buildingName": "식료품점",
+        "buildingType": "house",
+        "buildingPath": "winterfall_grocery",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "winterfall_peasanthouse_01": {
+        "buildingName": "허름한 민가",
+        "buildingType": "house",
+        "buildingPath": "winterfall_peasanthouse_01",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "winterfall_peasanthouse_02": {
+        "buildingName": "폐허가 된 민가",
+        "buildingType": "house",
+        "buildingPath": "winterfall_peasanthouse_02",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      }
     }
   },
   "redrose_castle": {
     "villageName": "레드로즈 성",
     "villageDirection": "left_right",
     "sceneName": "redrose_castle_scene",
-    "building": {}
+    "building": {
+      "redrose_castle_peasanthouse_01": {
+        "buildingName": "레드로즈 민가",
+        "buildingType": "house",
+        "buildingPath": "redrose_castle_peasanthouse_01 ",
+        "targetTime": {
+          "startTime": 7,
+          "endTime": 22
+        }
+      },
+      "redrose_castle_peasanthouse_02": {
+        "buildingName": "레드로즈 민가",
+        "buildingType": "house",
+        "buildingPath": "redrose_castle_peasanthouse02",
+        "targetTime": {
+          "startTime": 7,
+          "endTime": 22
+        }
+      },
+      "redrose_castle_castle": {
+        "buildingName": "레드로즈 민가",
+        "buildingType": "house",
+        "buildingPath": "redrose_castle_peasanthouse03",
+        "targetTime": {
+          "startTime": 7,
+          "endTime": 22
+        }
+      },
+      "redrose_inn": {
+        "buildingName": "레드로즈 여관",
+        "buildingType": "inn",
+        "buildingPath": "redrose_inn",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "redrose_castle_square": {
+        "buildingName": "레드로즈 광장",
+        "buildingType": "house",
+        "buildingPath": "redrose_castle_square",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "redrose_castle_gate": {
+        "buildingName": "레드로즈 성문",
+        "buildingType": "house",
+        "buildingPath": "redrose_castle_gate",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 23
+        }
+      },
+      "redrose_castle_grocery": {
+        "buildingName": "레드로즈 잡화점",
+        "buildingType": "house",
+        "buildingPath": "redrose_grocery",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "redrose_cathedral": {
+        "buildingName": "레드로즈 대성당",
+        "buildingType": "house",
+        "buildingPath": "redrose_cathedral",
+        "targetTime": {
+          "startTime": 5,
+          "endTime": 21
+        }
+      }
+    }
   },
   "mirage_port": {
     "villageName": "미라지 포트",
     "villageDirection": "up_down",
     "sceneName": "mirage_port_scene",
-    "building": {}
+    "building": {
+      "mirage_port_inn": {
+        "buildingName": "여관",
+        "buildingType": "inn",
+        "buildingPath": "mirage_port_inn",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "mirage_port_hermes": {
+        "buildingName": "헤르메스 상회",
+        "buildingType": "house",
+        "buildingPath": "mirage_port_hermes",
+        "targetTime": {
+          "startTime": 9,
+          "endTime": 18
+        }
+      },
+      "mirage_port_kaido": {
+        "buildingName": "카이도 상회",
+        "buildingType": "house",
+        "buildingPath": "mirage_port_kaido",
+        "targetTime": {
+          "startTime": 9,
+          "endTime": 18
+        }
+      },
+      "mirage_port_square": {
+        "buildingName": "광장",
+        "buildingType": "house",
+        "buildingPath": "mirage_port_square",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "mirage_port_dock": {
+        "buildingName": "선착장",
+        "buildingType": "house",
+        "buildingPath": "mirage_port_dock",
+        "targetTime": {
+          "startTime": 5,
+          "endTime": 24
+        }
+      }
+    }
   },
   "middle_ridge": {
     "villageName": "미들 릿지",
     "villageDirection": "left_right",
     "sceneName": "middle_ridge_scene",
-    "building": {}
+    "building": {
+      "middle_ridge_temple": {
+        "buildingName": "파괴된 신전",
+        "buildingType": "house",
+        "buildingPath": "middle_ridge_temple",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "middle_ridge_evergnailhouse": {
+        "buildingName": "에버네그일가",
+        "buildingType": "house",
+        "buildingPath": "middle_ridge_evergnailhouse",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 24
+        }
+      },
+      "middle_ridge_willas": {
+        "buildingName": "윌라스가",
+        "buildingType": "house",
+        "buildingPath": "middle_ridge_willas",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 24
+        }
+      },
+      "middle_ridge_inn": {
+        "buildingName": "여관",
+        "buildingType": "inn",
+        "buildingPath": "middle_ridge_inn",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "middle_ridge_whisternhouse": {
+        "buildingName": "휘스턴가",
+        "buildingType": "house",
+        "buildingPath": "middle_ridge_whisternhouse",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "middle_ridge_training_area": {
+        "buildingName": "수련장소",
+        "buildingType": "house",
+        "buildingPath": "middle_ridge_training_area",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "middle_ridge_farm": {
+        "buildingName": "논밭",
+        "buildingType": "house",
+        "buildingPath": "middle_ridge_farm",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      }
+    }
   },
   "vaical_castle": {
     "villageName": "바이칼 성",
     "villageDirection": "up_down",
     "sceneName": "vaical_castle_scene",
-    "building": {}
+    "building": {
+      "vaical_castle_lab": {
+        "buildingName": "저주연구소",
+        "buildingType": "house",
+        "buildingPath": "vaical_castle_lab",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "vaical_headhouse ": {
+        "buildingName": "장로의 집",
+        "buildingType": "house",
+        "buildingPath": "vaical_castle_headhouse",
+        "targetTime": {
+          "startTime": 7,
+          "endTime": 24
+        }
+      },
+      "vaical_colosseum": {
+        "buildingName": "콜로세움",
+        "buildingType": "house",
+        "buildingPath": "vaical_colosseum",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      }
+    }
   },
-  "southcape":{
-  	"villageName" : "사우스케이프",
-  	"villageDirection" : "left_right",
-  	"sceneName" : "southcape_scene",
-  	"building": {}
+  "southcape": {
+    "villageName": "사우스케이프",
+    "villageDirection": "left_right",
+    "sceneName": "southcape_scene",
+    "building": {
+      "southcape_headhouse": {
+        "buildingName": "촌장집",
+        "buildingType": "house",
+        "buildingPath": "southcape_headhouse",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 24
+        }
+      },
+      "southcape_bar": {
+        "buildingName": "주점",
+        "buildingType": "house",
+        "buildingPath": "southcape_bar",
+        "targetTime": {
+          "startTime": 16,
+          "endTime": 5
+        }
+      },
+      "southcape_inn": {
+        "buildingName": "여관",
+        "buildingType": "inn",
+        "buildingPath": "southcape_inn",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      },
+      "southcape_grocery": {
+        "buildingName": "잡화점",
+        "buildingType": "house",
+        "buildingPath": "southcape_grocery",
+        "targetTime": {
+          "startTime": 10,
+          "endTime": 22
+        }
+      },
+      "southcape_smithy": {
+        "buildingName": "대장간",
+        "buildingType": "house",
+        "buildingPath": "southcape_smithy",
+        "targetTime": {
+          "startTime": 10,
+          "endTime": 22
+        }
+      },
+      "southcape_peasanthouse_01": {
+        "buildingName": "민가1",
+        "buildingType": "house",
+        "buildingPath": "southcape_peasanthouse_01",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 24
+        }
+      },
+      "southcape_peasanthouse_02": {
+        "buildingName": "민가2",
+        "buildingType": "house",
+        "buildingPath": "southcape_peasanthouse_02",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 24
+        }
+      },
+      "southcape_peasanthouse_03": {
+        "buildingName": "민가3",
+        "buildingType": "house",
+        "buildingPath": "southcape_peasanthouse_03",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 24
+        }
+      },
+      "southcape_peasanthouse_04": {
+        "buildingName": "민가4",
+        "buildingType": "house",
+        "buildingPath": "southcape_peasanthouse_04",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 24
+        }
+      },
+      "southcape_peasanthouse_05": {
+        "buildingName": "민가5",
+        "buildingType": "house",
+        "buildingPath": "southcape_peasanthouse_05",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 24
+        }
+      },
+      "southcape_peasanthouse_06": {
+        "buildingName": "민가6",
+        "buildingType": "house",
+        "buildingPath": "southcape_peasanthouse_06",
+        "targetTime": {
+          "startTime": 6,
+          "endTime": 24
+        }
+      },
+      "southcape_port": {
+        "buildingName": "항구",
+        "buildingType": "house",
+        "buildingPath": "southcape_port",
+        "targetTime": {
+          "startTime": 0,
+          "endTime": 24
+        }
+      }
+    }
   }
 }

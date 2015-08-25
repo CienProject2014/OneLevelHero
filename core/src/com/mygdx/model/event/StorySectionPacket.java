@@ -17,14 +17,6 @@ public class StorySectionPacket {
 		this.nextSectionNumber = nextSectionNumber;
 	}
 
-	public String getTargetComponent() {
-		return targetComponent;
-	}
-
-	public void setTargetComponent(String targetComponent) {
-		this.targetComponent = targetComponent;
-	}
-
 	public EventTypeEnum getEventType() {
 		return eventType;
 	}
@@ -39,6 +31,14 @@ public class StorySectionPacket {
 
 	public void setTargetTime(TargetTime targetTime) {
 		this.targetTime = targetTime;
+	}
+
+	public String getTargetComponent() {
+		return targetComponent;
+	}
+
+	public void setTargetComponent(String targetComponent) {
+		this.targetComponent = targetComponent;
 	}
 
 }
