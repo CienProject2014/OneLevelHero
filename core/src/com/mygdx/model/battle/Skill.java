@@ -19,6 +19,8 @@ public class Skill {
 	private int[] hitboxCenter;
 	private int[][] hitboxShape;
 
+	private String description;
+
 	public String getName() {
 		return name;
 	}
@@ -145,6 +147,14 @@ public class Skill {
 
 	public void setSkillPath(String skillPath) {
 		this.skillPath = skillPath;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

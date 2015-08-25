@@ -1,757 +1,513 @@
 {
   "cut_01": {
     "name": "7단 연속 베기",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "attack",
+    "skillType" : "tech",
+    "skillTargetType" : "monster",
+    "skillEffectType" : "attack",
     "costGauge": "20",
     "elementType": "none",
     "skillFactor": "150",
-    "hitboxSize": "3"
+    "hitboxSize": "3",
+    "description": "어떠한 적도 갈라버리는 용사 전용 최강의 공격기"
   },
   "provoke": {
     "name": "도발",
-    "skillType": "tech",
-    "skillTargetType": "self",
-    "skillEffectType": "add_state",
-    "costGauge": "20"
+    "skillType" : "tech",
+    "skillTargetType" : "self",
+    "skillEffectType" : "add_state",
+    "costGauge": "20",
+    "description": "적을 도발한다."
   },
   "powerblade": {
     "name": "파워 블레이드",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
+    "skillType" : "tech",
+    "skillTargetType" : "monster",
+    "skillEffectType" : "multi_effect",
     "costGauge": "40",
     "elementType": "none",
     "skillFactor": "130",
-    "hitboxSize": "4"
+    "hitboxSize": "4",
+    "description": "거대한 검신에 강력한 힘을 실어 공격한다."
   },
   "saint_guardian": {
     "name": "세인트 가디언",
-    "skillType": "tech",
-    "skillTargetType": "self",
-    "skillEffectType": "add_state",
+    "skillType" : "tech",
+    "skillTargetType" : "self",
+    "skillEffectType" : "add_state",
     "costGauge": "20",
     "costCasting": "0",
-    "elementType": "none"
+    "elementType": "none",
+    "description": "자신의 신체를 극한으로 끌어올려 방어력을 증가시킨다."
   },
   "counter_attack": {
     "name": "회심의 반격",
-    "skillType": "tech",
-    "skillTargetType": "self",
-    "skillEffectType": "add_state",
-    "costGauge": "40"
+    "skillType" : "tech",
+    "skillTargetType" : "self",
+    "skillEffectType" : "add_state",
+    "costGauge": "40",
+    "description": "상대의 공격을 받았을 때, 그 힘을 역이용하여 반격을 가한다."
   },
   "last_judge": {
     "name": "마지막 심판",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
+    "skillType" : "tech",
+    "skillTargetType" : "monster",
+    "skillEffectType" : "multi_effect",
     "costGauge": "80",
     "elementType": "none",
     "skillFactor": "150",
-    "hitboxSize": "4"
+    "hitboxSize": "4",
+    "description": "자신의 방어력을 공격력으로 전환하여 적에게 강한 데미지를 준다."
   },
-  "pierce_arrow": {
+  "piercearrow": {
     "name": "꿰뚫는 화살",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "duplicated_attack",
+    "skillType" : "tech",
+    "skillTargetType" : "monster",
+    "skillEffectType" : "duplicated_attack",
     "costGauge": "45",
     "elementType": "none",
     "skillFactor": "110",
-    "duplicateNumber": 2,
-    "hitboxSize": "1"
+    "hitboxSize": "1",
+    "description": "한계까지 끌어올린 근력으로 화살을 2발 발사한다."
   },
   "snipe": {
     "name": "저격",
     "skillType": "tech",
     "skillTargetType": "self",
     "skillEffectType": "add_state",
-    "costGauge": "50"
-  },
+    "costGauge": "50",
+    "description": "전투현장에서 떨어져 몸을 숨긴다."
+    },
   "return": {
     "name": "복귀",
-    "skillType": "tech",
-    "skillTargetType": "self",
-    "skillEffectType": "remove_state",
-    "costGauge": "50"
-  },
-  "detailedshoot": {
-    "name": "정밀한 사격",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "conditaional_attack",
-    "costGauge": "80",
-    "elementType": "none",
-    "skillFactor": "100"
-  },
-  "mulitishoot": {
-    "name": "다중 사격",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "attack",
-    "costGauge": "120",
-    "costCasting": "0",
-    "elementType": "none",
-    "skillFactor": "50",
-    "hitboxSize": "0",
-    "hitboxCenter": [
-      1,
-      1
-    ],
-    "hitboxShape": [
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ]
-    ]
-  },
-  "gale": {
-    "name": "질풍",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "duplicated_attack",
-    "costGauge": "45",
-    "elementType": "none",
-    "duplicateNumber": 2,
-    "skillFactor": "100",
-    "hitboxSize": "3"
-  },
-  "breeze": {
-    "name": "연풍",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "45",
-    "elementType": "none",
-    "skillFactor": "150",
-    "hitboxSize": "3"
-  },
-  "strong_breeze": {
-    "name": "웅풍",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "40",
-    "elementType": "none",
-    "skillFactor": "450",
-    "hitboxSize": "1"
-  },
-  "back_of_sword": {
-    "name": "칼등치기",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "75",
-    "elementType": "none",
-    "skillFactor": "50",
-    "hitboxSize": "2"
-  },
-  "whirlwind": {
-    "name": "돌개바람",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "100",
-    "elementType": "none",
-    "skillFactor": "120",
-    "hitboxSize": "3"
-  },
-  "surprise_attack": {
-    "name": "배후 습격",
-    "skillType": "tech",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "45",
-    "elementType": "none",
-    "skillFactor": "400",
-    "hitboxSize": "1"
-  },
-  "flying": {
-    "name": "비행",
-    "skillType": "tech",
-    "skillTargetType": "self",
-    "skillEffectType": "add_state",
-    "costGauge": "45"
-  },
-  "landing": {
-    "name": "착지",
-    "skillType": "tech",
-    "skillTargetType": "self",
-    "skillEffectType": "remove_state",
-    "costGauge": "30"
-  },
-  "casting": {
-    "name": "캐스팅",
-    "skillType": "magic",
-    "skillTargetType": "self",
-    "skillEffectType": "add_state",
-    "costGauge": "30",
-    "costCasting": "0"
-  },
-  "cross": {
-    "name": "성스러운 십자가",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "attack",
-    "costGauge": "30",
-    "costCasting": "1",
-    "elementType": "none",
-    "magicFactor": "100",
-    "hitboxCenter": [
-      1,
-      1
-    ],
-    "hitboxShape": [
-      [
-        0,
-        1,
-        0
-      ],
-      [
-        1,
-        1,
-        1
-      ],
-      [
-        0,
-        1,
-        0
-      ]
-    ]
-  },
-  "heal": {
-    "name": "치유의 주문",
-    "skillType": "magic",
-    "skillTargetType": "one",
-    "skillEffectType": "heal",
-    "costGauge": "30",
-    "costCasting": "1",
-    "magicFactor": "20"
-  },
-  "smile": {
-    "name": "천국의 미소",
-    "skillType": "magic",
-    "skillTargetType": "one",
-    "skillEffectType": "add_state",
-    "costGauge": "40",
-    "costCasting": "2"
-  },
-  "handling": {
-    "name": "신의 손길",
-    "skillType": "magic",
-    "skillTargetType": "one",
-    "skillEffectType": "add_state",
-    "costGauge": "40",
-    "costCasting": "2"
-  },
-  "lighting": {
-    "name": "치유의 빛",
-    "skillType": "magic",
-    "skillTargetType": "all",
-    "skillEffectType": "multi_effect",
-    "costGauge": "60",
-    "costCasting": "3",
-    "magicFactor": "100"
-  },
-  "spiritbullet": {
-    "name": "정령탄",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "conditional_attack",
-    "costGauge": "30",
-    "elementType": "none",
-    "magicFactor": "100",
-    "hitboxCenter": [
-      0,
-      0
-    ],
-    "hitboxShape": [
-      [
-        1
-      ]
-    ]
-  },
-  "restriction": {
-    "name": "대지의 속박",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "mulit_effect",
-    "costGauge": "30",
-    "costCasting": "1",
-    "elementType": "none",
-    "magicFactor": "50",
-    "hitboxCenter": [
-      0,
-      1
-    ],
-    "hitboxShape": [
-      [
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0
-      ],
-      [
-        1,
-        1,
-        1
-      ]
-    ]
-  },
-  "electric_shock": {
-    "name": "전기 충격",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "30",
-    "costCasting": "1",
-    "elementType": "electric",
-    "magicFactor": "15",
-    "hitboxCenter": [
-      1,
-      1
-    ],
-    "hitboxShape": [
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ]
-    ]
-  },
-  "freez": {
-    "name": "수분 빙화",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "30",
-    "costCasting": "1",
-    "elementType": "water",
-    "magicFactor": "10",
-    "hitboxCenter": [
-      1,
-      1
-    ],
-    "hitboxShape": [
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ]
-    ]
-  },
-  "soul_cover": {
-    "name": "사령씌우기",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "add_state",
-    "costGauge": "40",
-    "costCasting": "1",
-    "elementType": "none",
-    "magicFactor": "15"
-  },
-  "hand_of_death": {
-    "name": "저승길 손아귀",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "40",
-    "costCasting": "1",
-    "elementType": "none",
-    "magicFactor": "80",
-    "hitboxCenter": [
-      0,
-      1
-    ],
-    "hitboxShape": [
-      [
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0
-      ],
-      [
-        1,
-        1,
-        1
-      ]
-    ]
-  },
-  "whisper_of_death": {
-    "name": "망자의 속삭임",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "add_effect",
+    "skillType" : "tech",
+    "skillTargetType" : "self",
+    "skillEffectType" : "remove_state",
     "costGauge": "50",
-    "costCasting": "2"
+    "description": "다시 전장으로 복귀한다."
   },
-  "call_soul": {
-    "name": "강령의식-呪",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "80",
-    "costCasting": "3",
-    "elementType": "none",
-    "magicFactor": "50",
-    "duplicateNumber": 2,
-    "hitboxCenter": [
-      1,
-      1
-    ],
-    "hitboxShape": [
-      [
-        1,
-        0,
-        1
-      ],
-      [
-        0,
-        1,
-        0
-      ],
-      [
-        1,
-        0,
-        1
-      ]
-    ]
-  },
-  "amplified_casting": {
-    "name": "캐스팅 증폭",
-    "skillType": "magic",
-    "skillTargetType": "self",
-    "skillEffectType": "add_state",
-    "costGauge": "100",
-    "costCasting": "1",
-    "elementType": "none"
-  },
-  "meteor": {
-    "name": "메테오",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "100",
-    "costCasting": "5",
-    "elementType": "fire",
-    "magicFactor": "100",
-    "hitboxCenter": [
-      1,
-      1
-    ],
-    "hitboxShape": [
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ]
-    ]
-  },
-  "blizzard": {
-    "name": "블리자드",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "100",
-    "costCasting": "5",
-    "elementType": "water",
-    "magicFactor": "80",
-    "hitboxCenter": [
-      1,
-      1
-    ],
-    "hitboxShape": [
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ]
-    ]
-  },
-  "thunder_storm": {
-    "name": "썬더 스톰",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "100",
-    "costCasting": "5",
-    "elementType": "electric",
-    "magicFactor": "80",
-    "hitboxCenter": [
-      1,
-      1
-    ],
-    "hitboxShape": [
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1,
-        1,
-        1
-      ]
-    ]
-  },
-  "sleep": {
-    "name": "잠의 유혹",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "add_state",
-    "costGauge": "40",
-    "costCasting": "2"
-  },
-  "charm": {
-    "name": "매력 발산",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "add_state",
-    "costGauge": "40",
-    "costCasting": "1"
-  },
-  "icearrow": {
-    "name": "얼음 화살",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "attack",
-    "costGauge": "30",
-    "costCasting": "1",
-    "elementType": "water",
-    "magicFactor": "300",
-    "hitboxCenter": [
-      0,
-      0
-    ],
-    "hitboxShape": [
-      [
-        1
-      ]
-    ]
-  },
-  "icestorm": {
-    "name": "얼음 폭풍",
-    "skillType": "magic",
-    "skillTargetType": "monster",
-    "skillEffectType": "multi_effect",
-    "costGauge": "80",
-    "costCasting": "2",
-    "elementType": "water",
-    "magicFactor": "80",
-    "hitboxCenter": [
-      1,
-      1
-    ],
-    "hitboxShape": [
-      [
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1
-      ],
-      [
-        1,
-        1,
-        1
-      ]
-    ]
-  },
-  "absolute_defence": {
-    "name": "절대 방어",
-    "skillType": "magic",
-    "skillTargetType": "all",
-    "skillEffectType": "add_state",
-    "costGauge": "60",
-    "costCasting": "0"
-  }
+    "detailedshoot": {
+        "name": "정밀한 사격",
+        "skillType": "tech",
+        "skillTargetType": "monster",
+        "skillEffectType": "conditaional_attack",
+        "costGauge": "80",
+        "elementType": "none",
+        "skillFactor": "100",
+        "description": "수인의 육감을 최대한 끌어올려 강력한 화살을 발사한다."
+    },
+    "mulitishoot": {
+        "name": "다중 사격",
+        "skillType": "tech",
+        "skillTargetType": "monster",
+        "skillEffectType": "attack",
+        "costGauge": "120",
+        "costCasting": "0",
+        "elementType": "none",
+        "skillFactor": "50",
+        "hitboxSize": "0",
+        "hitboxCenter": [ 1, 1 ],
+        "hitboxShape": [
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ]
+        ],
+        "description": "적의 모든 부위에 화살을 발사한다."
+    },
+    "gale": {
+        "name": "질풍",
+        "skillType": "tech",
+        "skillTargetType": "monster",
+        "skillEffectType": "duplicated_attack",
+        "costGauge": "45",
+        "elementType": "none",
+        "skillFactor": "100",
+        "hitboxSize": "3",
+        "description": "쌍수를 이용해 연속으로 공격한다."
+    },
+    "breeze": {
+        "name": "연풍",
+        "skillType": "tech",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "45",
+        "elementType": "none",
+        "skillFactor": "150",
+        "hitboxSize": "3",
+        "description": "빠르게 적을 내쳐친다."
+    },
+    "strong_breeze": {
+        "name": "웅풍",
+        "skillType": "tech",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "40",
+        "elementType": "none",
+        "skillFactor": "450",
+        "hitboxSize": "1",
+        "description": "적의 상처에 공격을 하여 적에게 충격을 준다."
+    },
+    "back_of_sword": {
+        "name": "칼등치기",
+        "skillType": "tech",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "75",
+        "elementType": "none",
+        "skillFactor": "50",
+        "hitboxSize": "2",
+        "description": "칼등으로 밀쳐내어 행동에 지연을 준다."
+    },
+    "whirlwind": {
+        "name": "돌개바람",
+        "skillType": "tech",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "100",
+        "elementType": "none",
+        "skillFactor": "120",
+        "hitboxSize": "3",
+        "description": "쌍수를 사용하는 이점으로 예측 불가능한 공격을 한다."
+    },
+    "surprise_attack": {
+        "name": "배후 습격",
+        "skillType": "tech",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "45",
+        "elementType": "none",
+        "skillFactor": "400",
+        "hitboxSize": "1",
+        "description": "서큐버스의 특성을 이용해 적 뒤에서 갑자기 나타나 손톱으로 찌른다."
+    },
+    "flying": {
+        "name": "비행",
+        "skillType": "tech",
+        "skillTargetType": "self",
+        "skillEffectType": "add_state",
+        "costGauge": "45",
+        "description": "날개를 이용해 하늘을 난다."
+    },
+    "landing": {
+        "name": "착지",
+        "skillType": "tech",
+        "skillTargetType": "self",
+        "skillEffectType": "remove_state",
+        "costGauge": "30",
+        "description": "땅에 착지한다."
+    },
+    "casting": {
+        "name": "캐스팅",
+        "skillType": "magic",
+        "skillTargetType": "self",
+        "skillEffectType": "add_state",
+        "costGauge": "30",
+        "costCasting": "0",
+        "description": "마법 영창을 왼다."
+    },
+    "cross": {
+        "name": "성스러운 십자가",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "attack",
+        "costGauge": "30",
+        "costCasting": "1",
+        "elementType": "none",
+        "magicFactor": "100",
+        "hitboxCenter": [ 1, 1 ],
+        "hitboxShape": [
+            [ 0, 1, 0 ],
+            [ 1, 1, 1 ],
+            [ 0, 1, 0 ]
+        ],
+        "description": "성스러운 십자가 모양의 빛으로 적을 공격한다."
+    },
+    "heal": {
+        "name": "치유의 주문",
+        "skillType": "magic",
+        "skillTargetType": "one",
+        "skillEffectType": "heal",
+        "costGauge": "30",
+        "costCasting": "1",
+        "magicFactor": "20",
+        "description": "아군을 치유한다."
+    },
+    "smile": {
+        "name": "천국의 미소",
+        "skillType": "magic",
+        "skillTargetType": "one",
+        "skillEffectType": "add_state",
+        "costGauge": "40",
+        "costCasting": "2",
+        "description": "천국에서 온 듯한 자애로운 기운으로 아군을 감싼다."
+    },
+    "handling": {
+        "name": "신의 손길",
+        "skillType": "magic",
+        "skillTargetType": "one",
+        "skillEffectType": "add_state",
+        "costGauge": "40",
+        "costCasting": "2",
+        "description": "신의 권능으로 아군을 보호한다."
+    },
+    "lighting": {
+        "name": "치유의 빛",
+        "skillType": "magic",
+        "skillTargetType": "all",
+        "skillEffectType": "multi_effect",
+        "costGauge": "60",
+        "costCasting": "3",
+        "magicFactor": "100",
+        "description": "아군 전체를 치유한다."
+    },
+    "spiritbullet": {
+        "name": "정령탄",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "conditional_attack",
+        "costGauge": "30",
+        "elementType": "none",
+        "magicFactor": "100",
+        "hitboxCenter": [ 0, 0 ],
+        "hitboxShape": [
+            [ 1 ]
+        ],
+        "description": "정령의 에너지를 쏘아낸다."
+    },
+    "restriction": {
+        "name": "대지의 속박",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "mulit_effect",
+        "costGauge": "30",
+        "costCasting": "1",
+        "elementType": "none",
+        "magicFactor": "50",
+        "hitboxCenter": [ 0, 1 ],
+        "hitboxShape": [
+            [ 0, 0, 0 ],
+            [ 0, 0, 0 ],
+            [ 1, 1, 1 ]
+        ],
+        "description": "대지의 힘을 빌려 적의 발을 묶는다."
+    },
+    "electric_shock": {
+        "name": "전기 충격",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "30",
+        "costCasting": "1",
+        "elementType": "electric",
+        "magicFactor": "15",
+        "hitboxCenter": [ 1, 1 ],
+        "hitboxShape": [
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ]
+        ],
+        "description": "전기의 힘을 빌려 적을 감전시킨다."
+    },
+    "freez": {
+        "name": "수분 빙화",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "30",
+        "costCasting": "1",
+        "elementType": "water",
+        "magicFactor": "10",
+        "hitboxCenter": [ 1, 1 ],
+        "hitboxShape": [
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ]
+        ],
+        "description": "물의 힘을 빌려 적의 신체를 얼린다."
+    },
+    "soul_cover": {
+        "name": "사령씌우기",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "add_state",
+        "costGauge": "40",
+        "costCasting": "1",
+        "elementType": "none",
+        "magicFactor": "15",
+        "description": "사령을 적에게 강제로 씌워 저주를 건다."
+    },
+    "hand_of_death": {
+        "name": "저승길 손아귀",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "40",
+        "costCasting": "1",
+        "elementType": "none",
+        "magicFactor": "80",
+        "hitboxCenter": [ 0, 1 ],
+        "hitboxShape": [
+            [ 0, 0, 0 ],
+            [ 0, 0, 0 ],
+            [ 1, 1, 1 ]
+        ],
+        "description": "바닥에서부터 사령들이 솟아나와 적에게 달라붙는다."
+    },
+    "whisper_of_death": {
+        "name": "망자의 속삭임",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "add_effect",
+        "costGauge": "50",
+        "costCasting": "2",
+        "description": "사령들이 원망이 가득한 속삭임으로 대상을 저주한다."
+    },
+    "call_soul": {
+        "name": "강령의식-呪",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "80",
+        "costCasting": "3",
+        "elementType": "none",
+        "magicFactor": "50",
+        "hitboxCenter": [ 1, 1 ],
+        "hitboxShape": [
+            [ 1, 0, 1 ],
+            [ 0, 1, 0 ],
+            [ 1, 0, 1 ]
+        ],
+        "description": "수많은 사령들이 대상에게 저주를 퍼붓는다."
+    },
+    "amplified_casting": {
+        "name": "캐스팅 증폭",
+        "skillType": "magic",
+        "skillTargetType": "self",
+        "skillEffectType": "add_state",
+        "costGauge": "100",
+        "costCasting": "1",
+        "elementType": "none",
+        "description": "쌓인 마력을 증폭시킨다."
+    },
+    "meteor": {
+        "name": "메테오",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "100",
+        "costCasting": "5",
+        "elementType": "fire",
+        "magicFactor": "100",
+        "hitboxCenter": [ 1, 1 ],
+        "hitboxShape": [
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ]
+        ],
+        "description": "운석을 낙하시킨다."
+    },
+    "blizzard": {
+        "name": "블리자드",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "100",
+        "costCasting": "5",
+        "elementType": "water",
+        "magicFactor": "80",
+        "hitboxCenter": [ 1, 1 ],
+        "hitboxShape": [
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ]
+        ],
+        "description": "눈보라를 일으킨다."
+    },
+    "thunder_storm": {
+        "name": "썬더 스톰",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "100",
+        "costCasting": "5",
+        "elementType": "electric",
+        "magicFactor": "80",
+        "hitboxCenter": [ 1, 1 ],
+        "hitboxShape": [
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ],
+            [ 1, 1, 1, 1, 1 ]
+        ],
+        "description": "번개를 낙하시킨다."
+    },
+    "sleep": {
+        "name": "잠의 유혹",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "add_state",
+        "costGauge": "40",
+        "costCasting": "2",
+        "description": "적을 잠재운다."
+    },
+    "charm": {
+        "name": "매력 발산",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "add_state",
+        "costGauge": "40",
+        "costCasting": "1",
+        "description": "적을 매혹시켜 자신을 공격하지 못하게 한다."
+    },
+    "icearrow": {
+        "name": "얼음 화살",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "attack",
+        "costGauge": "30",
+        "costCasting": "1",
+        "elementType": "water",
+        "magicFactor": "300",
+        "hitboxCenter": [ 0, 0 ],
+        "hitboxShape": [
+            [ 1 ]
+        ],
+        "description": "공기 중의 수분을 화살모양으로 얼려 발사한다."
+    },
+    "icestorm": {
+        "name": "얼음 폭풍",
+        "skillType": "magic",
+        "skillTargetType": "monster",
+        "skillEffectType": "multi_effect",
+        "costGauge": "80",
+        "costCasting": "2",
+        "elementType": "water",
+        "magicFactor": "80",
+        "hitboxCenter": [ 1, 1 ],
+        "hitboxShape": [
+            [ 1, 1, 1 ],
+            [ 1, 1, 1 ],
+            [ 1, 1, 1 ]
+        ],
+        "description": "얼음이 휘날리는 폭풍을 적에게 날린다."
+    },
+    "absolute_defence": {
+        "name": "절대 방어",
+        "skillType": "magic",
+        "skillTargetType": "all",
+        "skillEffectType": "add_state",
+        "costGauge": "60",
+        "costCasting": "0",
+        "description": "아군 전체를 보호한다."
+    }
 }
