@@ -82,7 +82,7 @@ public class UnEquipPopup extends Dialog {
 	}
 
 	public void initialize() {
-		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
+		uiConstantsMap = constantsAssets.getUiConstants("GameObjectPopup");
 		setQuestionLabel();
 		setButton(atlasUiAssets, uiComponentAssets, index);
 

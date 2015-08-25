@@ -84,6 +84,14 @@ public class TimeManager {
 		}
 	}
 
+	public int getPreTime() {
+		return timeInfo.getPreTime();
+	}
+
+	public void setPreTime(int preTime) {
+		timeInfo.setPreTime(preTime);
+	}
+
 	public String getMinuteInfo() {
 		if (getMinute() == 0) {
 			return "00분";

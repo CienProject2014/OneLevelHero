@@ -15,6 +15,7 @@ public class Village {
 	private String villageName;
 	private String backgroundPath;
 	private String sceneName;
+	private HashMap<String, VillageDirectionEnum> arrowDirection;
 	private VillageDirectionEnum villageDirection;
 	private ArrayList<String> villageNpc;
 	private HashMap<String, Building> building;
@@ -65,5 +66,13 @@ public class Village {
 
 	public void setVillageDirection(VillageDirectionEnum villageDirection) {
 		this.villageDirection = villageDirection;
+	}
+
+	public HashMap<String, VillageDirectionEnum> getArrowDirection() {
+		return arrowDirection;
+	}
+
+	public void setArrowDirection(HashMap<String, VillageDirectionEnum> arrowDirection) {
+		this.arrowDirection = arrowDirection;
 	}
 }

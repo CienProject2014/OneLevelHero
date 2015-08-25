@@ -415,6 +415,41 @@
         "size": 12,
         "width": 190,
         "height": 80
+      },{
+        "itemIdentifier": "name_label",
+        "x": 1253,
+        "y": 844,
+        "zIndex": 20,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 455,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "description_label",
+        "x": 1253,
+        "y": 299,
+        "zIndex": 21,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 455,
+        "height": 515
       }
     ],
     "sComposites": [

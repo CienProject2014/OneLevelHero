@@ -100,10 +100,12 @@ public class MovingManager {
 		switch (positionManager.getCurrentPositionType()) {
 			case SUB_NODE :
 				positionManager.setCurrentPositionType(PositionEnum.NODE);
+				positionManager.setBeforePositionType(PositionEnum.SUB_NODE);
 				screenFactory.show(ScreenEnum.findScreenEnum(positionManager.getCurrentNodeType().toString()));
 				break;
 			case NODE :
 				positionManager.setCurrentPositionType(PositionEnum.FIELD);
+				positionManager.setBeforePositionType(PositionEnum.NODE);
 				screenFactory.show(ScreenEnum.FIELD);
 				return;
 			case FIELD :

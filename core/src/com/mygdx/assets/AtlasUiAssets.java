@@ -32,6 +32,7 @@ public class AtlasUiAssets implements FileAssetsInitializable {
 		assetsManager.load("orig" + File.separator + "skill_" + "pack.atlas", TextureAtlas.class);
 		assetsManager.load("orig" + File.separator + "save_" + "pack.atlas", TextureAtlas.class);
 		assetsManager.load("orig" + File.separator + "load_" + "pack.atlas", TextureAtlas.class);
+		assetsManager.load("orig" + File.separator + "item_" + "pack.atlas", TextureAtlas.class);
 	}
 
 	public TextureAtlas getAtlasRegionFile(String atlasUiFileString) {

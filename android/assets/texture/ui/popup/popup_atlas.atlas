@@ -62,7 +62,7 @@ popupui_sound_on
   index: -1
 
 atlas2.png
-size: 862,1016
+size: 936,1016
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -71,6 +71,13 @@ popupui_acbutton
   xy: 2, 554
   size: 350, 90
   orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_acbutton2
+  rotate: false
+  xy: 706, 554
+  size: 230, 90
+  orig: 230, 90
   offset: 0, 0
   index: -1
 popupui_acbutton_accept
@@ -141,6 +148,13 @@ popupui_button
   xy: 354, 186
   size: 350, 90
   orig: 350, 90
+  offset: 0, 0
+  index: -1
+popupui_button2
+  rotate: false
+  xy: 706, 462
+  size: 230, 90
+  orig: 230, 90
   offset: 0, 0
   index: -1
 popupui_button_accept
