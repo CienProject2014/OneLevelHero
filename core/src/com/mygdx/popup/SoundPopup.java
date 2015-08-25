@@ -22,6 +22,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.HidingClickListener;
 import com.mygdx.manager.MusicManager;
+import com.mygdx.manager.SoundManager;
 
 public class SoundPopup extends Dialog {
 
@@ -34,6 +35,7 @@ public class SoundPopup extends Dialog {
 	private ImageButton okayButton, closeButton;
 	private ImageButton soundOn, bgmOn;
 	private MusicManager musicManager;
+	private SoundManager soundManager;
 	private Sound sound;
 
 	public SoundPopup(String title, Skin skin) {
@@ -57,14 +59,14 @@ public class SoundPopup extends Dialog {
 		volume.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				musicManager.setMusicVolume(volume.getValue() / 100);
 				musicManager.getMusic().setVolume(volume.getValue() / 100);
 			}
 		});
 		bgm.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				// VolumeManager.bgmVolume = bgm.getValue() / 100;
-				// sound.setVolume(soundId, VolumeManager.bgmVolume);
+				soundManager.setSoundVolume(bgm.getValue() / 100);
 			}
 		});
 
@@ -72,7 +74,7 @@ public class SoundPopup extends Dialog {
 		okayButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				musicManager.setVolume(volume.getValue() / 100);
+				musicManager.setMusicVolume(volume.getValue() / 100);
 			}
 		});
 
@@ -137,6 +139,14 @@ public class SoundPopup extends Dialog {
 
 	public void setMusicManager(MusicManager musicManager) {
 		this.musicManager = musicManager;
+	}
+
+	public SoundManager getSoundManager() {
+		return soundManager;
+	}
+
+	public void setSoundManager(SoundManager soundManager) {
+		this.soundManager = soundManager;
 	}
 
 }

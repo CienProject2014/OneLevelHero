@@ -12,7 +12,8 @@ public enum JsonEnum {
 			"animation_sheet_file_path"), SKILL_JSON("skill_json"), STORY_JSON("story_json"), BATTLE_UI_FILE_PATH(
 			"battle_ui_file_path"), UI_CONSTANTS("ui_constants"), SCENE_CONSTANTS_JSON("scene_constants_json"), MONSTER_FIELD_JSON(
 			"monster_field_json"), UNUSUAL_CONDITION_JSON("unusual_condition_json"), DUNGEON_ENTRANCE_JSON(
-			"dungeon_entrance_json");
+			"dungeon_entrance_json"), SOUND_EFFECT_FILE_PATH("sound_effect_file_path"), SOUND_EFECT_LIST(
+			"sound_effect_list");
 
 	private String jsonName;
 

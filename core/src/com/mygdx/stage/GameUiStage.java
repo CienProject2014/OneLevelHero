@@ -14,7 +14,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
@@ -22,11 +21,13 @@ import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.popup.GameObjectPopup;
 import com.mygdx.popup.SettingPopup;
+import com.mygdx.popup.SoundPopup;
 
 public class GameUiStage extends BaseOneLevelStage {
 	@Autowired
@@ -46,6 +47,7 @@ public class GameUiStage extends BaseOneLevelStage {
 	private ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
 
+	private SoundPopup soundPopup;
 	private SettingPopup settingPopup;
 	private Table uiTable;
 	private Table topTable;
@@ -76,16 +78,8 @@ public class GameUiStage extends BaseOneLevelStage {
 		uiConstantsMap = constantsAssets.getUiConstants("GameUiStage");
 		uiTable = new Table();
 		topTable = new Table(uiComponentAssets.getSkin());
+		soundPopup = new SoundPopup();
 		settingPopup = new SettingPopup();
-
-		settingPopup.setAtlasUiAssets(atlasUiAssets);
-		settingPopup.setListenerFactory(listenerFactory);
-		settingPopup.setConstantsAssets(constantsAssets);
-		settingPopup.setMusicManager(musicManager);
-		settingPopup.initialize();
-
-		addActor(settingPopup);
-
 		makeButton();
 		addListener();
 		makeTable();
@@ -183,22 +177,32 @@ public class GameUiStage extends BaseOneLevelStage {
 			}
 		});
 		timeInfoButton.addListener(listenerFactory.getJumpSectionListener());
-		helpButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		helpButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.WORLD_MAP);
 			}
 
 		});
-		settingButton.addListener(new ClickListener() {
+		settingButton.addListener(new SimpleTouchListener() {
 			@Override
-			public void clicked(InputEvent event, float x, float y) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				soundPopup.setAtlasUiAssets(atlasUiAssets);
+				soundPopup.setListenerFactory(listenerFactory);
+				soundPopup.setConstantsAssets(constantsAssets);
+				soundPopup.setMusicManager(musicManager);
+				soundPopup.initialize();
+				settingPopup.setAtlasUiAssets(atlasUiAssets);
+				settingPopup.setListenerFactory(listenerFactory);
+				settingPopup.setConstantsAssets(constantsAssets);
+				settingPopup.setMusicManager(musicManager);
+				settingPopup.setSoundPopup(soundPopup);
+				settingPopup.initialize();
+				addActor(settingPopup);
+				addActor(soundPopup);
 				settingPopup.setVisible(true);
+				soundPopup.setZIndex(0);
+				settingPopup.setZIndex(190);
 			}
 
 		});

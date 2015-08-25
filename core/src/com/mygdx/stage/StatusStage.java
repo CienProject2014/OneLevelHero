@@ -21,6 +21,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.MovingManager;
@@ -94,12 +95,7 @@ public class StatusStage extends BaseOverlapStage {
 
 		inventoryButton = sceneLoader.getRoot().getCompositeById("inventory_tab");
 		inventoryButton.setLayerVisibilty("pressed", false);
-		inventoryButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		inventoryButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.INVENTORY);
@@ -127,6 +123,7 @@ public class StatusStage extends BaseOverlapStage {
 			}
 		});
 	}
+
 	private void addListener() {
 		backButton.addListener(new ClickListener() {
 			@Override
@@ -167,25 +164,26 @@ public class StatusStage extends BaseOverlapStage {
 
 	private void setCharacterBustImage(PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
 		ImageItem playerImage = sceneLoader.getRoot().getImageById("player_image");
-		playerImage.setDrawable(new TextureRegionDrawable(new TextureRegion(textureManager
-				.getStatusTexture(currentSelectedHero.getFacePath()))));
+		playerImage.setDrawable(new TextureRegionDrawable(
+				new TextureRegion(textureManager.getStatusTexture(currentSelectedHero.getFacePath()))));
 		playerImage.setTouchable(Touchable.enabled);
 	}
 
-	private void setCharacterStatusImage(final PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
+	private void setCharacterStatusImage(final PartyManager partyManager,
+			HashMap<String, Array<String>> sceneConstants) {
 		Array<String> characterStatusList = sceneConstants.get(CHARACTER_STATUS_IMAGE);
 		Array<String> characterChangeList = sceneConstants.get(CHARACTER_CHANGE);
 		for (int i = 0; i < partyManager.getPartyList().size(); i++) {
 			CompositeItem imageCompositeItem = sceneLoader.getRoot().getCompositeById(characterStatusList.get(i));
 			ImageItem characterStatusImage = imageCompositeItem.getImageById(CHARACTER_IMAGE);
-			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(textureManager
-					.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
+			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
+					textureManager.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
 			imageCompositeItem.setTouchable(Touchable.disabled);
 		}
 
 		for (int i = 0; i < 4; i++) {
-			final CompositeItem touchableCompositeItem = sceneLoader.getRoot().getCompositeById(
-					characterChangeList.get(i));
+			final CompositeItem touchableCompositeItem = sceneLoader.getRoot()
+					.getCompositeById(characterChangeList.get(i));
 			setCompositeItemVisibility(touchableCompositeItem, DEFAULT_VISIBILITY);
 			touchableCompositeItem.setTouchable(Touchable.enabled);
 
@@ -213,6 +211,7 @@ public class StatusStage extends BaseOverlapStage {
 			}
 		}
 	}
+
 	public void setCompositeItemVisibility(CompositeItem compositeItem, String visibility) {
 		if (visibility.equals(DEFAULT_VISIBILITY)) {
 			compositeItem.setLayerVisibilty(DEFAULT_VISIBILITY, true);
@@ -222,6 +221,7 @@ public class StatusStage extends BaseOverlapStage {
 			compositeItem.setLayerVisibilty(PRESSED_VISIBILITY, true);
 		}
 	}
+
 	private void setCamera() {
 		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
@@ -234,5 +234,6 @@ public class StatusStage extends BaseOverlapStage {
 
 	public void setCurrentSelectedHero(Hero currentSelectedHero) {
 		this.currentSelectedHero = currentSelectedHero;
+		partyManager.setCurrentSelectedHero(currentSelectedHero);
 	}
 }

@@ -3,7 +3,6 @@ package com.mygdx.stage;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -11,6 +10,7 @@ import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.SaveManager;
 
 public class LoadStage extends BaseOneLevelStage {
@@ -32,24 +32,14 @@ public class LoadStage extends BaseOneLevelStage {
 		backButton = new TextButton("Back", uiComponentAssets.getSkin());
 		loadButton = new TextButton("Load", uiComponentAssets.getSkin());
 		newStartButton = new TextButton("NewStart", uiComponentAssets.getSkin());
-		backButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		backButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				screenFactory.show(ScreenEnum.MENU);
 			}
 		});
 		loadButton.addListener(listenerFactory.getLoadListener());
-		newStartButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
+		newStartButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				saveManager.setNewGame();
