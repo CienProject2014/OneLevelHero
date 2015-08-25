@@ -79,6 +79,7 @@
 	<bean id="buildingScreen" class="com.mygdx.screen.BuildingScreen"
 		scope="prototype" />
 	<bean id="cgScreen" class="com.mygdx.screen.CGScreen" scope="prototype"/>
+	<bean id="characterChangeScreen" class="com.mygdx.screen.CharacterChangeScreen" scope="prototype"/>
 	<bean id="collectionScreen" class="com.mygdx.screen.CollectionScreen"/>
 	<bean id="creditScreen" class="com.mygdx.screen.CreditScreen"
 		scope="prototype" />
@@ -131,6 +132,7 @@
 		scope="prototype" />
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage"
 		scope="prototype"/>
+	<bean id="characterChangeStage" class="com.mygdx.stage.CharacterChangeStage" scope="prototype"/>
 	<bean id="chatEventStage" class="com.mygdx.stage.ChatEventStage" scope="prototype"/>	
 	<bean id="fieldStage" class="com.mygdx.stage.FieldStage" scope="prototype"/>
 	<bean id="forkStage" class="com.mygdx.stage.ForkStage" scope="prototype"/>

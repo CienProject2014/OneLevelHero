@@ -77,6 +77,7 @@ public class StatusStage extends BaseOverlapStage {
 		setButton();
 		setCharacterBustImage(partyManager, sceneConstants);
 		setCharacterStatusImage(partyManager, sceneConstants);
+		setPartyEndButton();
 		setTabButton();
 		addListener();
 		return this;
@@ -86,6 +87,7 @@ public class StatusStage extends BaseOverlapStage {
 		setCharacterBustImage(partyManager, sceneConstants);
 		setLabel(partyManager, sceneConstants);
 		setCharacterStatusImage(partyManager, sceneConstants);
+		setPartyEndButton();
 	}
 
 	private void setTabButton() {
@@ -108,6 +110,53 @@ public class StatusStage extends BaseOverlapStage {
 		});
 	}
 
+	private void setPartyEndButton() {
+
+		final CompositeItem partyEndButton = sceneLoader.getRoot().getCompositeById("ending_button");
+		/* setCompositeItemVisibility(partyEndButton, DEFAULT_VISIBILITY); */
+		if (currentSelectedHero.getFacePath().equals("yongsa")) {
+			partyEndButton.setLayerVisibilty("Default", true);
+			partyEndButton.setLayerVisibilty("pressed", false);
+			partyEndButton.setLayerVisibilty("pressed2", false);
+			partyEndButton.setLayerVisibilty("normal2", false);
+
+			partyEndButton.addListener(new InputListener() {
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					/* StatusScreen.setClickedWorldMap(true); */
+					partyEndButton.setLayerVisibilty("pressed", false);
+					screenFactory.show(ScreenEnum.ENDING);
+				}
+
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					partyEndButton.setLayerVisibilty("pressed", true);
+					return true;
+				}
+			});
+		} else {
+			partyEndButton.setLayerVisibilty("Default", false);
+			partyEndButton.setLayerVisibilty("pressed", false);
+			partyEndButton.setLayerVisibilty("normal2", true);
+			partyEndButton.setLayerVisibilty("pressed2", false);
+			partyEndButton.addListener(new InputListener() {
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					/* StatusScreen.setClickedWorldMap(true); */
+					partyEndButton.setLayerVisibilty("pressed2", false);
+					screenFactory.show(ScreenEnum.CHARACTER_CHANGE);
+				}
+
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					partyEndButton.setLayerVisibilty("pressed2", true);
+					return true;
+				}
+			});
+		}
+
+	}
+
 	private void setButton() {
 		backButton = sceneLoader.getRoot().getCompositeById("back_tab");
 		final CompositeItem worldMapButton = sceneLoader.getRoot().getCompositeById("worldmap_button");
@@ -127,6 +176,7 @@ public class StatusStage extends BaseOverlapStage {
 			}
 		});
 	}
+
 	private void addListener() {
 		backButton.addListener(new ClickListener() {
 			@Override
@@ -167,25 +217,26 @@ public class StatusStage extends BaseOverlapStage {
 
 	private void setCharacterBustImage(PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
 		ImageItem playerImage = sceneLoader.getRoot().getImageById("player_image");
-		playerImage.setDrawable(new TextureRegionDrawable(new TextureRegion(textureManager
-				.getStatusTexture(currentSelectedHero.getFacePath()))));
+		playerImage.setDrawable(new TextureRegionDrawable(
+				new TextureRegion(textureManager.getStatusTexture(currentSelectedHero.getFacePath()))));
 		playerImage.setTouchable(Touchable.enabled);
 	}
 
-	private void setCharacterStatusImage(final PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
+	private void setCharacterStatusImage(final PartyManager partyManager,
+			HashMap<String, Array<String>> sceneConstants) {
 		Array<String> characterStatusList = sceneConstants.get(CHARACTER_STATUS_IMAGE);
 		Array<String> characterChangeList = sceneConstants.get(CHARACTER_CHANGE);
 		for (int i = 0; i < partyManager.getPartyList().size(); i++) {
 			CompositeItem imageCompositeItem = sceneLoader.getRoot().getCompositeById(characterStatusList.get(i));
 			ImageItem characterStatusImage = imageCompositeItem.getImageById(CHARACTER_IMAGE);
-			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(textureManager
-					.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
+			characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
+					textureManager.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
 			imageCompositeItem.setTouchable(Touchable.disabled);
 		}
 
 		for (int i = 0; i < 4; i++) {
-			final CompositeItem touchableCompositeItem = sceneLoader.getRoot().getCompositeById(
-					characterChangeList.get(i));
+			final CompositeItem touchableCompositeItem = sceneLoader.getRoot()
+					.getCompositeById(characterChangeList.get(i));
 			setCompositeItemVisibility(touchableCompositeItem, DEFAULT_VISIBILITY);
 			touchableCompositeItem.setTouchable(Touchable.enabled);
 
@@ -213,6 +264,7 @@ public class StatusStage extends BaseOverlapStage {
 			}
 		}
 	}
+
 	public void setCompositeItemVisibility(CompositeItem compositeItem, String visibility) {
 		if (visibility.equals(DEFAULT_VISIBILITY)) {
 			compositeItem.setLayerVisibilty(DEFAULT_VISIBILITY, true);
@@ -222,6 +274,7 @@ public class StatusStage extends BaseOverlapStage {
 			compositeItem.setLayerVisibilty(PRESSED_VISIBILITY, true);
 		}
 	}
+
 	private void setCamera() {
 		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
