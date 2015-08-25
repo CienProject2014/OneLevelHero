@@ -4,6 +4,15 @@ import com.badlogic.gdx.audio.Music;
 
 public class MusicInfo {
 	private Music music;
+	public float musicVolume = 0.5f;
+
+	public float getMusicVolume() {
+		return musicVolume;
+	}
+
+	public void setMusicVolume(float musicVolume) {
+		this.musicVolume = musicVolume;
+	}
 
 	public Music getMusic() {
 		return music;

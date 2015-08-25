@@ -77,11 +77,10 @@ public class DropPopup extends Dialog {
 	}
 
 	public void initialize() {
-		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
+		uiConstantsMap = constantsAssets.getUiConstants("GameObjectPopup");
 		setQuestionLabel();
 		setButton(atlasUiAssets, uiComponentAssets);
 
-		setModal(false);
 		setResizable(false);
 		setVisible(false);
 	}

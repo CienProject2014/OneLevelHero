@@ -8,11 +8,11 @@ import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.assets.MusicAssets;
 import com.mygdx.currentState.MusicInfo;
-import com.mygdx.currentState.SoundInfo;
 import com.mygdx.model.event.EventPacket;
 
 public class MusicManager {
-
+	@Autowired
+	private SoundManager soundManager;
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
@@ -21,12 +21,14 @@ public class MusicManager {
 	private MusicAssets musicAssets;
 	@Autowired
 	private EventManager eventManager;
-
 	private MusicInfo musicInfo = new MusicInfo();
-	private SoundInfo soundInfo = new SoundInfo();
 
 	public enum MusicCondition {
 		WHENEVER, IF_IS_NOT_PLAYING;
+	}
+
+	public float getMusicVolume() {
+		return musicInfo.getMusicVolume();
 	}
 
 	public void playMusic(Music music) {
@@ -34,6 +36,7 @@ public class MusicManager {
 	}
 
 	public void setMusic(Music music) {
+		music.setVolume(getMusicVolume());
 		musicInfo.setMusic(music);
 	}
 
@@ -41,7 +44,7 @@ public class MusicManager {
 		return musicInfo.getMusic();
 	}
 
-	public void setVolume(float volume) {
+	public void setMusicVolume(float volume) {
 		musicInfo.getMusic().setVolume(volume);
 	}
 
@@ -54,36 +57,34 @@ public class MusicManager {
 		musicInfo.getMusic().stop();
 	}
 
-	public void setMusicAndPlay(Music music, float volume,
-			MusicCondition musicCondition) {
+	public void setMusicAndPlay(Music music, float volume, MusicCondition musicCondition) {
 		switch (musicCondition) {
 			case WHENEVER :
 				int delayTime = 2000;
 				if (checkCurrentMusicIsNotNull()) {
-					if (checkCurrentMusicIsPlaying()) {
-						if (checkIsSameWithCurrentMusic(music)) {
-							// Nothing happened
-						} else {
-							stopMusic();
-							Timer.schedule(new Task() {
-								@Override
-								public void run() {
-								}
-							}, delayTime);
-							setMusic(music);
-							setVolume(volume);
-							playMusic();
-						}
+					if (checkIsSameWithCurrentMusic(music)) {
+						// Nothing happened
+					} else {
+						stopMusic();
+						Timer.schedule(new Task() {
+							@Override
+							public void run() {
+							}
+						}, delayTime);
+						setMusic(music);
+						playMusic();
 					}
+				} else {
+					setMusic(music);
+					playMusic();
 				}
 				break;
 			case IF_IS_NOT_PLAYING :
-				if (musicInfo.getMusic() != null) {
-					if (musicInfo.getMusic().isPlaying())
+				if (checkCurrentMusicIsNotNull()) {
+					if (checkCurrentMusicIsPlaying())
 						return;
 				} else {
 					setMusic(music);
-					setVolume(volume);
 					playMusic();
 				}
 				break;
@@ -104,8 +105,12 @@ public class MusicManager {
 		return musicInfo.getMusic().equals(music);
 	}
 
+	public void setMusicAndPlay(String musicName) {
+		setMusicAndPlay(musicAssets.getMusic(musicName));
+	}
+
 	public void setMusicAndPlay(Music music, MusicCondition musicCondition) {
-		setMusicAndPlay(music, soundInfo.getMusicVolume(), musicCondition);
+		setMusicAndPlay(music, musicInfo.getMusicVolume(), musicCondition);
 	}
 
 	public void setMusicAndPlay(Music music, float volume) {
@@ -113,7 +118,7 @@ public class MusicManager {
 	}
 
 	public void setMusicAndPlay(Music music) {
-		setMusicAndPlay(music, soundInfo.getMusicVolume());
+		setMusicAndPlay(music, musicInfo.getMusicVolume());
 	}
 
 	public void setWorldNodeMusicAndPlay() {
@@ -136,8 +141,7 @@ public class MusicManager {
 
 	public void setEventMusicAndPlay() {
 		EventPacket eventPacket = eventManager.getCurrentNpcEventPacket();
-		String code = eventPacket.getEventNpc() + "_"
-				+ eventPacket.getEventNumber();
+		String code = eventPacket.getEventNpc() + "_" + eventPacket.getEventNumber();
 		Music music = musicAssets.getEventMusic(code);
 		setMusicAndPlay(music);
 	}

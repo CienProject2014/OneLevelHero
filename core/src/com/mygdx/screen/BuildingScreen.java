@@ -10,6 +10,7 @@ public class BuildingScreen extends BaseScreen {
 	private Stage buildingStage;
 	private Stage gameUiStage;
 	private Stage saveStage;
+	private Stage loadStage;
 
 	@Override
 	public void render(float delta) {
@@ -27,6 +28,7 @@ public class BuildingScreen extends BaseScreen {
 		buildingStage = stageFactory.makeStage(StageEnum.BUILDING);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		saveStage = stageFactory.makeStage(StageEnum.SAVE);
+		loadStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		setInputProcessor();
 	}
 
@@ -40,6 +42,9 @@ public class BuildingScreen extends BaseScreen {
 			multiplexer.addProcessor(0, gameUiStage);
 			multiplexer.addProcessor(1, buildingStage);
 			multiplexer.addProcessor(2, saveStage);
+		}
+		if (showLoadStage) {
+			multiplexer.addProcessor(0, loadStage);
 		}
 		Gdx.input.setInputProcessor(multiplexer);
 

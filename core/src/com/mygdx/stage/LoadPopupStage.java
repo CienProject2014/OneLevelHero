@@ -1,33 +1,59 @@
 package com.mygdx.stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.utils.Array;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
-import com.mygdx.currentState.CurrentInfo;
+import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.currentState.SaveInfo;
 import com.mygdx.enums.SaveVersion;
-import com.mygdx.enums.WorldNodeEnum;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.SaveManager;
-import com.mygdx.screen.LoadScreen;
+import com.mygdx.screen.BaseScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
+import com.uwsoft.editor.renderer.actor.LabelItem;
 
 public class LoadPopupStage extends BaseOverlapStage {
+	private static final String SCENE_NAME = "load_scene";
+	private final String SUBJECT_LABEL = "subject_label";
+	private final String GAME_TIME_LABEL = "game_time_label";
+	private final String SAVE_TIME_LABEL = "save_time_label";
+	private final String PLACE_LABEL = "place_label";
+	private final String SAVE_VERSION = "save_version";
+	private final int SAVE_SIZE = 3;
 	@Autowired
 	private AssetsManager assetsManager;
 	@Autowired
 	private SaveManager saveManager;
 	@Autowired
-	private CurrentInfo currentInfo;
+	private SaveInfo saveInfo;
 	@Autowired
 	private MovingManager movingManager;
-	private static final String SCENE_NAME = "load_scene";
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	private Camera cam;
 	private ImageItem save;
 	private CompositeItem closeButton;
@@ -35,16 +61,66 @@ public class LoadPopupStage extends BaseOverlapStage {
 	private CompositeItem save01;
 	private CompositeItem save02;
 	private CompositeItem save03;
+	private Map<String, Array<String>> sceneConstants;
 
 	public Stage makeStage() {
 		assetsManager.initScene(SCENE_NAME);
 		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
+		sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
 		setCamera();
 		setCompositeItem();
+		setLabels(sceneConstants);
 		setAddListener();
 		return this;
+	}
+
+	private void setLabelStyle(LabelItem labelItem) {
+		labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
+		labelItem.setFontScale(1.0f);
+		labelItem.setVisible(true);
+		labelItem.setTouchable(Touchable.disabled);
+	}
+
+	private void setLabels(Map<String, Array<String>> sceneConstants) {
+		Array<String> subjectLabels = sceneConstants.get(SUBJECT_LABEL);
+		Array<String> gameTimeLabels = sceneConstants.get(GAME_TIME_LABEL);
+		Array<String> saveTimeLabels = sceneConstants.get(SAVE_TIME_LABEL);
+		Array<String> placeLabels = sceneConstants.get(PLACE_LABEL);
+		Array<String> saveVerions = sceneConstants.get(SAVE_VERSION);
+
+		Kryo kryo = new Kryo();
+		kryo.register(SaveInfo.class);
+		
+		for (int i = 0; i < SAVE_SIZE; i++) {
+			LabelItem subjectLabel = sceneLoader.getRoot().getLabelById(subjectLabels.get(i));
+			LabelItem gameTimeLabel = sceneLoader.getRoot().getLabelById(gameTimeLabels.get(i));
+			LabelItem saveTimeLabel = sceneLoader.getRoot().getLabelById(saveTimeLabels.get(i));
+			LabelItem placeLabel = sceneLoader.getRoot().getLabelById(placeLabels.get(i));
+			if (saveManager.isLoadable(SaveVersion.findSaveByName(saveVerions.get(i)))) {
+				FileHandle handle = Gdx.files.local("save/" + SaveVersion.findSaveByName(saveVerions.get(i)) + ".json");
+				try {
+					Input input = new Input(new FileInputStream(handle.file()));
+					SaveInfo svInfo = kryo.readObject(input, SaveInfo.class);
+					subjectLabel.setText(svInfo.getStoryName());
+					gameTimeLabel.setText(svInfo.getGameTime());
+					placeLabel.setText(svInfo.getSavePlace());
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+				saveTimeLabel.setText(new SimpleDateFormat("yyyy년 MM월dd일 HH:mm에 저장").format(new Date(handle.lastModified())));
+				setLabelStyle(subjectLabel);
+				setLabelStyle(gameTimeLabel);
+				setLabelStyle(saveTimeLabel);
+				setLabelStyle(placeLabel);
+			} else {
+				subjectLabel.setVisible(false);
+				gameTimeLabel.setVisible(false);
+				saveTimeLabel.setVisible(false);
+				placeLabel.setVisible(false);
+			}
+		}
 	}
 
 	private void setCompositeItem() {
@@ -58,72 +134,53 @@ public class LoadPopupStage extends BaseOverlapStage {
 
 	private void setAddListener() {
 		save.setVisible(false);
-		background.addListener(new InputListener() {
+		background.addListener(new TouchListener());
+		save01.addListener(new TouchListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				LoadScreen.isPopupTouched = false;
+				saveInfo.setSaveVersion(SaveVersion.SAVE_01);
+				if (saveManager.isLoadable(SaveVersion.SAVE_01)) {
+					saveManager.loadSaveVersion(SaveVersion.SAVE_01);
+					movingManager.goCurrentPosition();
+					super.touchUp(event, x, y, pointer, button);
+				}
 			}
 		});
-		save01.addListener(new InputListener() {
+		save02.addListener(new TouchListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				currentInfo.setSaveVersion(SaveVersion.SAVE1);
-				saveManager.load();
-				LoadScreen.isPopupTouched = false;
-				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
-				movingManager.goCurrentNode(nodeType);
+				saveInfo.setSaveVersion(SaveVersion.SAVE_02);
+				if (saveManager.isLoadable(SaveVersion.SAVE_02)) {
+					saveManager.loadSaveVersion(SaveVersion.SAVE_02);
+					movingManager.goCurrentPosition();
+					super.touchUp(event, x, y, pointer, button);
+				}
 			}
 		});
-		save02.addListener(new InputListener() {
+		save03.addListener(new TouchListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				currentInfo.setSaveVersion(SaveVersion.SAVE2);
-				saveManager.load();
-				LoadScreen.isPopupTouched = false;
-				movingManager.goCurrentPosition();
+				saveInfo.setSaveVersion(SaveVersion.SAVE_03);
+				if (saveManager.isLoadable(SaveVersion.SAVE_03)) {
+					saveManager.loadSaveVersion(SaveVersion.SAVE_03);
+					movingManager.goCurrentPosition();
+					super.touchUp(event, x, y, pointer, button);
+				}
 			}
 		});
-		save03.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				currentInfo.setSaveVersion(SaveVersion.SAVE3);
-				saveManager.load();
-				LoadScreen.isPopupTouched = false;
-				WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
-				movingManager.goCurrentNode(nodeType);
-			}
-		});
-		closeButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				LoadScreen.isPopupTouched = false;
-			}
-		});
+		closeButton.addListener(new TouchListener());
 	}
 
 	private void setCamera() {
 		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		getViewport().setCamera(cam);
+	}
+	
+	private class TouchListener extends SimpleTouchListener {
+		@Override
+		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+			BaseScreen.showLoadStage = false;
+		}
 	}
 }

@@ -152,5 +152,59 @@
   		"gauge_06",
   		"gauge_07"
   	]
+  },
+  "save_scene" : {
+  	"save_version":[
+  		"save_01",
+  		"save_02",
+  		"save_03"
+  	],
+  	"subject_label":[
+  		"save01_label",
+  		"save02_label",
+  		"save03_label"
+  	],
+  	"game_time_label":[
+  		"save01_time_label",
+  		"save02_time_label",
+  		"save03_time_label"
+  	],
+  	"save_time_label":[
+  		"save01_real_time_label",
+  		"save02_real_time_label",
+  		"save03_real_time_label"
+  	],
+  	"place_label":[
+  		"save01_place_label",
+  		"save02_place_label",
+  		"save03_place_label"
+  	]
+  },
+  "load_scene" : {
+  	"save_version":[
+  		"save_01",
+  		"save_02",
+  		"save_03"
+  	],
+  	"subject_label":[
+  		"save01_label",
+  		"save02_label",
+  		"save03_label"
+  	],
+  	"game_time_label":[
+  		"save01_time_label",
+  		"save02_time_label",
+  		"save03_time_label"
+  	],
+  	"save_time_label":[
+  		"save01_real_time_label",
+  		"save02_real_time_label",
+  		"save03_real_time_label"
+  	],
+  	"place_label":[
+  		"save01_place_label",
+  		"save02_place_label",
+  		"save03_place_label"
+  	]
   }
 }

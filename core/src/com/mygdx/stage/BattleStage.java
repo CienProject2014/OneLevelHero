@@ -43,6 +43,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private final int NORMAL_ATTACK = 30;
 	private final int DEFENSE = 20;
 	private final int RUN = 30;
+	private final int ITEM = 30;
 
 	@Autowired
 	private BattleManager battleManager;
@@ -119,34 +120,6 @@ public class BattleStage extends BaseOneLevelStage {
 			updateBigImageTable();
 			battleManager.setBigUpdate(false);
 		}
-	}
-
-	@Override
-	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		super.touchDown(screenX, screenY, pointer, button);
-		if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
-			start = (new Vector2(touched.x, touched.y));
-		}
-		return true;
-	}
-
-	@Override
-	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		super.touchDragged(screenX, screenY, pointer);
-		if (battleManager.isShowGrid()) {
-			end = (new Vector2(touched.x, touched.y));
-
-		}
-		return true;
-	}
-
-	@Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		super.touchUp(screenX, screenY, pointer, button);
-		start = null;
-		end = null;
-
-		return false;
 	}
 
 	public Stage makeStage() {
@@ -345,7 +318,6 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				battleManager.checkCurrentState();
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL);
 				setDarkButton(skillButton);
 				battleManager.setSkill(true);
 				BattleScreen.showSkillStage = true;
@@ -358,7 +330,8 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.checkCurrentState();
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.INVENTORY);
 				setDarkButton(inventoryButton);
-				Gdx.app.log(TAG, "인벤토리!");
+				battleManager.afterClick(ITEM);
+				BattleScreen.showItemStage = true;
 			}
 		});
 
@@ -369,8 +342,6 @@ public class BattleStage extends BaseOneLevelStage {
 				setDarkButton(defenseButton);
 				battleManager.afterClick(DEFENSE);
 				battleManager.endTurn();
-				Gdx.app.log(TAG, "방어!");
-
 			}
 		});
 
@@ -381,8 +352,6 @@ public class BattleStage extends BaseOneLevelStage {
 				setDarkButton(waitButton);
 				battleManager.waitButton();
 				battleManager.endTurn();
-				Gdx.app.log(TAG, "기다립시다!");
-
 			}
 		});
 
@@ -407,9 +376,19 @@ public class BattleStage extends BaseOneLevelStage {
 		battleManager.getGridHitbox().addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
-					battleManager.getGridHitbox().setStartPosition(touched.x, touched.y);
-					battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
+				if (battleManager.isShowGrid()) {
+					end = (new Vector2(touched.x, touched.y));
+					if (battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
+						start = (new Vector2(touched.x, touched.y));
+						battleManager.getGridHitbox().setStartPosition(touched.x, touched.y);
+						battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
+
+						if (battleManager.getGridHitbox().isInsideEdge(touched.x, touched.y)) {
+							battleManager.setGridLimitNum(getWeaponHitboxSize());
+						} else {
+							battleManager.setGridLimitNum(1);
+						}
+					}
 				}
 				return true;
 			}
@@ -417,6 +396,7 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void touchDragged(InputEvent event, float x, float y, int pointer) {
 				if (battleManager.isShowGrid()) {
+					end = (new Vector2(touched.x, touched.y));
 					if (!battleManager.isSkill()) {
 						battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
 					} else {
@@ -426,7 +406,6 @@ public class BattleStage extends BaseOneLevelStage {
 						} else {
 							battleManager.getGridHitbox().showFixedTilesAt(touched.x, touched.y);
 						}
-
 					}
 				}
 			}
@@ -444,10 +423,15 @@ public class BattleStage extends BaseOneLevelStage {
 					}
 					battleManager.setShowGrid(false);
 				}
-				battleManager.setShowGrid(false);
-				battleManager.getGridHitbox().hideAllTiles();
+				resetHitboxState();
 			}
 		});
+	}
+
+	private void resetHitboxState() {
+		start = null;
+		end = null;
+		battleManager.getGridHitbox().hideAllTiles();
 	}
 
 	private void checkRunAway() {

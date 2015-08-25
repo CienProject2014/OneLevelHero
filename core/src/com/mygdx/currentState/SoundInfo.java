@@ -1,26 +1,17 @@
 package com.mygdx.currentState;
 
-import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 
 public class SoundInfo {
-	public Music music, mainMusic;
+	public Sound sound;
 	public float soundVolume = 0.5f;
-	public float musicVolume = 0.5f;
 
-	public Music getMusic() {
-		return music;
+	public Sound getSound() {
+		return sound;
 	}
 
-	public void setMusic(Music music) {
-		this.music = music;
-	}
-
-	public Music getMainMusic() {
-		return mainMusic;
-	}
-
-	public void setMainMusic(Music mainMusic) {
-		this.mainMusic = mainMusic;
+	public void setSound(Sound sound) {
+		this.sound = sound;
 	}
 
 	public float getSoundVolume() {
@@ -29,13 +20,5 @@ public class SoundInfo {
 
 	public void setSoundVolume(float soundVolume) {
 		this.soundVolume = soundVolume;
-	}
-
-	public float getMusicVolume() {
-		return musicVolume;
-	}
-
-	public void setMusicVolume(float musicVolume) {
-		this.musicVolume = musicVolume;
 	}
 }

@@ -9,7 +9,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -22,8 +21,10 @@ import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.GameObjectEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.TextureManager;
@@ -63,7 +64,7 @@ public class BuildingStage extends BaseOverlapStage {
 	private GameObjectPopup gameObjectPopup;
 
 	public Stage makeStage() {
-
+		positionManager.setBeforePositionType(PositionEnum.SUB_NODE);
 		buildingInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
 				.get(positionManager.getCurrentSubNodeName());
 		if (buildingInfo.isOverlapScene()) {
@@ -109,7 +110,6 @@ public class BuildingStage extends BaseOverlapStage {
 	private void makeBuildingSceneByOverlap() {
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		addActor(sceneLoader.getRoot());
-
 	}
 
 	private void setSceneNpcList() {
@@ -118,12 +118,7 @@ public class BuildingStage extends BaseOverlapStage {
 			for (final String npcName : buildingInfo.getBuildingNpc()) {
 				CompositeItem npcButton = sceneLoader.getRoot().getCompositeById(npcName);
 				npcButton.setTouchable(Touchable.enabled);
-				npcButton.addListener(new InputListener() {
-					@Override
-					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-						return true;
-					}
-
+				npcButton.addListener(new SimpleTouchListener() {
 					@Override
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 						timeManager.plusMinute(5);
@@ -149,23 +144,14 @@ public class BuildingStage extends BaseOverlapStage {
 				setGameObjectFunction(gameObjectButton, objectName);
 				System.out.println(objectName);
 				if (objectName.equals("save")) {
-					gameObjectButton.addListener(new InputListener() {
-						@Override
-						public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-							return true;
-						}
-
+					gameObjectButton.addListener(new SimpleTouchListener() {
 						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 							BuildingScreen.isInSave = true;
 						}
 					});
 				} else {
-					gameObjectButton.addListener(new InputListener() {
+					gameObjectButton.addListener(new SimpleTouchListener() {
 						@Override
-						public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-							return true;
-						}
-
 						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 							timeManager.plusMinute(5);
 							eventManager.setCurrentGameObject(gameObject);
@@ -203,7 +189,6 @@ public class BuildingStage extends BaseOverlapStage {
 
 	private void setGameObjectVisibility(CompositeItem objectButton, GameObjectEnum gameObjectEnum) {
 		switch (gameObjectEnum) {
-
 			case NORMAL :
 				objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), false);
 				objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), true);

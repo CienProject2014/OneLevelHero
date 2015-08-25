@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.AssetsManager;
@@ -22,10 +23,19 @@ public class MusicAssets implements FileAssetsInitializable {
 	private Map<String, String> battleMusicMap = new HashMap<>();
 	private Map<String, String> movingMusicMap = new HashMap<>();
 	private Map<String, String> eventMusicMap = new HashMap<>();
+	private Map<String, String> soundEffectMap = new HashMap<>();
+	private Map<String, String> soundEffectInUseMap = new HashMap<>();
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void set(Map<String, StringFile> filePathMap) {
+		Map<String, MusicFile> soundEffectFileMap = JsonParser.parseMap(MusicFile.class,
+				filePathMap.get(JsonEnum.SOUND_EFFECT_FILE_PATH.toString()).loadFile());
+		for (Entry<String, MusicFile> entry : soundEffectFileMap.entrySet()) {
+			soundEffectMap.put(entry.getKey(), entry.getValue().loadFile());
+			assetsManager.load(soundEffectMap.get(entry.getKey()), Sound.class);
+		}
+
 		Map<String, MusicFile> musicFileMap = JsonParser.parseMap(MusicFile.class,
 				filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString()).loadFile());
 		for (Entry<String, MusicFile> entry : musicFileMap.entrySet()) {
@@ -54,13 +64,23 @@ public class MusicAssets implements FileAssetsInitializable {
 			movingMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
 		}
 
+		// SoundEffect List
+		String soundEffectJsonString = filePathMap.get(JsonEnum.SOUND_EFECT_LIST.toString()).loadFile();
+		Map<String, String> effectMusicStringMap = new Json().fromJson(HashMap.class, soundEffectJsonString);
+		for (Entry<String, String> entry : effectMusicStringMap.entrySet()) {
+			soundEffectInUseMap.put(entry.getKey(), soundEffectMap.get(entry.getValue()));
+		}
+
 		// Event MusicList
 		String eventMusicJsonString = filePathMap.get(JsonEnum.EVENT_MUSIC_LIST.toString()).loadFile();
 		Map<String, String> eventMusicStringMap = new Json().fromJson(HashMap.class, eventMusicJsonString);
 		for (Entry<String, String> entry : eventMusicStringMap.entrySet()) {
 			eventMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
 		}
+	}
 
+	public Sound getSound(String soundString) {
+		return assetsManager.get(soundEffectMap.get(soundString), Sound.class);
 	}
 
 	public Music getMusic(String musicString) {
@@ -69,6 +89,10 @@ public class MusicAssets implements FileAssetsInitializable {
 
 	public Music getWorldNodeMusic(String musicString) {
 		return assetsManager.get(worldNodeMusicMap.get(musicString), Music.class);
+	}
+
+	public Sound getSoundEffectByType(String soundType) {
+		return assetsManager.get(soundEffectInUseMap.get(soundType), Sound.class);
 	}
 
 	public Music getBattleMusic(String musicString) {

@@ -6,8 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 
 public class BattleScreen extends BaseScreen {
-	private Stage gameUiStage, characterUiStage, monsterStage, battleStage, skillStage;
+	private Stage gameUiStage, characterUiStage, monsterStage, battleStage, skillStage, itemStage;
 	public static boolean showSkillStage = false;
+	public static boolean showItemStage = false;
 
 	public BattleScreen() {
 	}
@@ -15,7 +16,6 @@ public class BattleScreen extends BaseScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
 		setInputProcessor();
 		monsterStage.draw();
 		characterUiStage.draw();
@@ -25,6 +25,10 @@ public class BattleScreen extends BaseScreen {
 
 		if (showSkillStage) {
 			skillStage.draw();
+		}
+
+		if (showItemStage) {
+			itemStage.draw();
 		}
 		// Animation이 진행중일때는 사용자의 입력에 대한 행동을 수행하지 않음
 		monsterStage.act(delta);
@@ -45,6 +49,8 @@ public class BattleScreen extends BaseScreen {
 		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
 		battleStage = stageFactory.makeStage(StageEnum.BATTLE);
 		skillStage = stageFactory.makeStage(StageEnum.SKILL);
+		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
+		itemStage = stageFactory.makeStage(StageEnum.ITEM);
 		setInputProcessor();
 		// musicManager.setBattleMusicAndPlay();
 	}
@@ -54,12 +60,20 @@ public class BattleScreen extends BaseScreen {
 		if (showSkillStage) {
 			multiplexer.addProcessor(0, skillStage);
 
+		} else if (showItemStage) {
+
+			multiplexer.addProcessor(0, itemStage);
 		} else {
 			multiplexer.addProcessor(0, gameUiStage);
 			multiplexer.addProcessor(1, characterUiStage);
 			multiplexer.addProcessor(2, monsterStage);
 			multiplexer.addProcessor(3, battleStage);
 			multiplexer.addProcessor(4, skillStage);
+		}
+		if (showLoadStage)
+
+		{
+			multiplexer.addProcessor(0, loadPopupStage);
 		}
 		Gdx.input.setInputProcessor(multiplexer);
 	}

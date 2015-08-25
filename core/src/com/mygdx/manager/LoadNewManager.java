@@ -30,6 +30,8 @@ public class LoadNewManager {
 	private BagManager bagManager;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private FieldManager fieldManager;
 
 	private final int PROLOGUE_STORYSECTION_NUMBER = 101;
 
@@ -42,12 +44,15 @@ public class LoadNewManager {
 		setTimeInfo();
 		setBattleInfo();
 		storySectionManager.runStorySequence();
+		bagManager.possessItem(ItemEnum.CONSUMABLES, "small_healing", 1);
+		bagManager.possessItem(ItemEnum.CONSUMABLES, "small_healing", 1);
 		bagManager.possessItem(ItemEnum.HANDGRIP, "sabre");
-		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse"); // FIXME for
+		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse");
 		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse");
 	}
 
 	private void setEventInfo(EventManager eventManager, EventAssets eventAssets) {
+		eventManager.setCurrentEventNpc("prologue");
 		eventManager.setNpcMap(eventAssets.getNpcMap());
 		eventManager.setGameObjectMap(eventAssets.getGameObjectMap());
 	}
@@ -77,6 +82,8 @@ public class LoadNewManager {
 		// 마왕성에서부터 게임을 시작한다.
 		positionManager.setCurrentNodeName("devil_castle");
 		positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
+		fieldManager.setArrowName("16to1");
+		positionManager.setBeforePositionType(PositionEnum.FIELD);
 	}
 
 	// Hero클래스가 status정보를 갖도록 한다.
