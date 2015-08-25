@@ -1,9 +1,10 @@
-package com.mygdx.model;
+package com.mygdx.model.surroundings;
 
 import java.util.ArrayList;
 
 public class Dungeon {
-	private String dungeonName;
+	private String name;
+	private String dungeonPath;
 	private String sceneName;
 	private int mapWidth;
 	private int mapHeight;
@@ -29,5 +30,17 @@ public class Dungeon {
 	public boolean isInDungeon() {
 		// TODO Auto-generated method stub
 		return inDungeon;
+	}
+	public String getDungeonName() {
+		return dungeonPath;
+	}
+	public void setDungeonName(String dungeonName) {
+		this.dungeonPath = dungeonName;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

@@ -14,8 +14,8 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.DungeonEncounterManager;
 import com.mygdx.manager.DungeonManager;
-import com.mygdx.model.DungeonConnection;
-import com.mygdx.model.DungeonNode;
+import com.mygdx.model.surroundings.DungeonConnection;
+import com.mygdx.model.surroundings.DungeonNode;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
@@ -35,14 +35,25 @@ public class DungeonStage extends BaseOverlapStage {
 
 	private CompositeItem btnTurn;
 	private CompositeItem[] btnRoad = new CompositeItem[3];
-
+	private ArrayList<DungeonConnection> selectableForward, selectableBackward;
 	private DungeonMinimapStage dungeonMinimap;
 
-	// private Dungeon mapInfo;
+	public Stage makeStage() {
+		setMapInfo(dungeonManager);
+		makeScene(dungeonManager.getMapInfo().getSceneName());
+		dungeonManager.setInDungeon(true);
 
-	// private int currentPos;
-	// private boolean currentHeading;
-	private ArrayList<DungeonConnection> selectableForward, selectableBackward;
+		setButton(3);
+		update();
+
+		return this;
+	}
+
+	private void setMapInfo(DungeonManager dungeonManager) {
+		dungeonManager.setMapInfo("devil_castle"); // FIXME
+		selectableBackward = new ArrayList<>();
+		selectableForward = new ArrayList<>();
+	}
 
 	public void makeScene(String sceneName) {
 		assetsManager.initScene(sceneName);
@@ -53,36 +64,6 @@ public class DungeonStage extends BaseOverlapStage {
 		addActor(sceneLoader.getRoot());
 	}
 
-	public Stage makeStage() {
-
-		setMap();
-		makeScene(dungeonManager.getMapInfo().getSceneName());
-		dungeonManager.setInDungeon(true);
-		// FIXME UI
-		// 우선은 blackwood_forest_dungeon_scene으로 통일하자
-
-		// mapInfo = worldNodeAssets.getDungeon("blackwood_forest_dungeon");
-		setButton(3);
-		update();
-
-		return this;
-	}
-	private void setMap() {
-		/*
-		 * mapInfo = new Dungeon();
-		 * 
-		 * DungeonNode aNode = new DungeonNode();
-		 * aNode.setFlag(DungeonNode.FLG_ENCOUNT); aNode.setLabel("arrow_left");
-		 * 
-		 * mapInfo.nodes.add(aNode);
-		 */
-		// mapInfo = nodeAssets.getDungeonByName("devil_castle_dungeon");
-
-		dungeonManager.setMapInfo("devil_castle_dungeon");
-
-		selectableBackward = new ArrayList<>();
-		selectableForward = new ArrayList<>();
-	}
 	private void setButton(int doorNum) {
 		// FIXME UI
 

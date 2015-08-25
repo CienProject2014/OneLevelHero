@@ -3,10 +3,9 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.NodeAssets;
-import com.mygdx.model.Dungeon;
+import com.mygdx.model.surroundings.Dungeon;
 
 public class DungeonManager {
-
 	@Autowired
 	private NodeAssets nodeAssets;
 	private Dungeon mapInfo;
@@ -42,8 +41,8 @@ public class DungeonManager {
 	public Dungeon getMapInfo() {
 		return mapInfo;
 	}
-	public void setMapInfo(String dungeonName) {
-		mapInfo = nodeAssets.getDungeonByName("devil_castle_dungeon");
+	public void setMapInfo(String dungeonPath) {
+		mapInfo = nodeAssets.getDungeonByName(dungeonPath);
 		mapInfo.setInDungeon(true);
 	}
 
