@@ -9,217 +9,217 @@
       {
         "nodePosX": "0",
         "nodePosY": "3",
-        "nodeFlag": "ENTRANCE"
+        "dungeonNodeType": "entrance"
       },
       {
         "nodePosX": "1",
         "nodePosY": "2",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "1",
         "nodePosY": "3",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "1",
         "nodePosY": "4",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "2",
         "nodePosY": "1",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "2",
         "nodePosY": "2",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "2",
         "nodePosY": "3",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "2",
         "nodePosY": "4",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "2",
         "nodePosY": "5",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "2",
         "nodePosY": "6",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "3",
         "nodePosY": "1",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "3",
         "nodePosY": "2",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "3",
         "nodePosY": "3",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "3",
         "nodePosY": "4",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "3",
         "nodePosY": "5",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "3",
         "nodePosY": "6",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "4",
         "nodePosY": "0",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "4",
         "nodePosY": "1",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "4",
         "nodePosY": "2",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "4",
         "nodePosY": "3",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "4",
         "nodePosY": "4",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "4",
         "nodePosY": "5",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "4",
         "nodePosY": "6",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "5",
         "nodePosY": "0",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "5",
         "nodePosY": "1",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "5",
         "nodePosY": "2",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "5",
         "nodePosY": "3",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "5",
         "nodePosY": "4",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "5",
         "nodePosY": "5",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "5",
         "nodePosY": "6",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "6",
         "nodePosY": "0",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "6",
         "nodePosY": "1",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "6",
         "nodePosY": "2",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "6",
         "nodePosY": "3",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "6",
         "nodePosY": "4",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "6",
         "nodePosY": "5",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "6",
         "nodePosY": "6",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "7",
         "nodePosY": "1",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "7",
         "nodePosY": "2",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "7",
         "nodePosY": "3",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "7",
         "nodePosY": "4",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "7",
         "nodePosY": "5",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       },
       {
         "nodePosX": "7",
         "nodePosY": "6",
-        "nodeFlag": "ROOM"
+        "dungeonNodeType": "normal"
       }
     ],
     "connections": [
