@@ -239,15 +239,6 @@ public class GridHitbox extends Table {
 		showTileCount = 0;
 	}
 
-	private boolean isInside(float centerX, float centerY, float width, float height, float x, float y) {
-		if (x > (centerX - width / 2) && x < (centerX + width / 2) && y < (centerY + height / 2)
-				&& y > (centerY - height / 2)) {
-			return true;
-		}
-
-		return false;
-	}
-
 	public boolean isInsideTile(int i, int j, float x, float y) {
 		// FIXME 좌표계 변환을 하지 못해서 우선 상수로 처리.
 		float centerX = tiles[i][j].getCenterX() + 640;
@@ -265,6 +256,22 @@ public class GridHitbox extends Table {
 		float height = uiConstantsMap.get("gridTableHeightSmall");
 
 		return isInside(centerX, centerY, width, height, x, y);
+	}
+
+	public boolean isInsideEdge(float x, float y) {
+		int[] index = findTileIndex(x, y);
+
+		if (index != null) {
+			return ((index[0] == 0 || index[0] == rows - 1) || (index[1] == 0 || index[1] == columns - 1));
+		} else {
+			return false;
+		}
+
+	}
+
+	private boolean isInside(float centerX, float centerY, float width, float height, float x, float y) {
+		return (x > (centerX - width / 2) && x < (centerX + width / 2) && y < (centerY + height / 2)
+				&& y > (centerY - height / 2));
 	}
 
 	public float getTableWidth() {

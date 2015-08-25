@@ -5,7 +5,8 @@
         "eventNpc": "prologue",
         "eventNumber": "1"
       }
-    ],
+    ],   
+
     "nextSections": [
       {
         "nextSectionNumber": "102",
@@ -13,7 +14,7 @@
         "targetComponent": "예"
       },
       {
-        "nextSectionNumber": "110",
+        "nextSectionNumber": "112",
         "eventType": "select_component",
         "targetComponent": "아니오"
       }
@@ -23,17 +24,18 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "2"
-      },
-      {
-        "eventNpc": "prologue",
         "eventNumber": "3"
       },
       {
         "eventNpc": "prologue",
         "eventNumber": "4"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "5"
       }
     ],
+    
     "nextSections": [
       {
         "nextSectionNumber": "103",
@@ -46,11 +48,11 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "5"
+        "eventNumber": "7"
       },
       {
         "eventNpc": "prologue",
-        "eventNumber": "6"
+        "eventNumber": "8"
       }
     ],
     "nextSections": [
@@ -65,23 +67,61 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "7"
-      },
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "29"
-      },
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "8"
-      },
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "9"
-      },
-      {
-        "eventNpc": "prologue",
         "eventNumber": "10"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "11"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "105",
+        "eventType": "battle_control",
+        "targetComponent": "skill_attack"
+      }
+    ]
+  },
+  "105": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "13"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "14"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "106",
+        "eventType": "battle_control",
+        "targetComponent": "skill_attack"
+      }
+    ]
+  },
+  "106": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "16"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "17"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "18"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "19"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "20"
       }
     ],
     "conditionalEvents": [
@@ -92,43 +132,13 @@
     ],
     "nextSections": []
   },
-  "105": {
-    "sequencialEvents": [],
-    "nextSections": [
-      {
-        "nextSectionNumber": "106",
-        "eventType": "move_node",
-        "targetComponent": "blackwood"
-      }
-    ]
-  },
-  "106": {
-    "sequencialEvents": [
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "13"
-      }
-    ],
-    "nextSections": [
-      {
-        "nextSectionNumber": "107",
-        "eventType": "move_field",
-        "targetComponent": "1to2"
-      }
-    ]
-  },
   "107": {
-    "sequencialEvents": [
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "14"
-      }
-    ],
+    "sequencialEvents": [],
     "nextSections": [
       {
         "nextSectionNumber": "108",
         "eventType": "move_node",
-        "targetComponent": "cobweb"
+        "targetComponent": "blackwood"
       }
     ]
   },
@@ -136,18 +146,14 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "15"
-      },
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "16"
+        "eventNumber": "22"
       }
     ],
     "nextSections": [
       {
         "nextSectionNumber": "109",
-        "eventType": "move_sub_node",
-        "targetComponent": "cobweb_library"
+        "eventType": "move_field",
+        "targetComponent": "1to2"
       }
     ]
   },
@@ -155,11 +161,7 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "17"
-      },
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "18"
+        "eventNumber": "24"
       }
     ],
     "nextSections": [
@@ -174,17 +176,18 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "19"
+        "eventNumber": "26"
       },
       {
         "eventNpc": "prologue",
-        "eventNumber": "20"
+        "eventNumber": "27"
       }
     ],
     "nextSections": [
       {
         "nextSectionNumber": "111",
-        "eventType": "next_section"
+        "eventType": "move_sub_node",
+        "targetComponent": "cobweb_library"
       }
     ]
   },
@@ -192,15 +195,34 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "21"
+        "eventNumber": "29"
       },
       {
         "eventNpc": "prologue",
-        "eventNumber": "22"
+        "eventNumber": "30"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "112",
+        "eventType": "move_node",
+        "targetComponent": "cobweb"
+      }
+    ]
+  },
+  "112": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "32"
       },
       {
         "eventNpc": "prologue",
-        "eventNumber": "23"
+        "eventNumber": "33"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "34"
       }
     ],
     "nextSections": [
@@ -215,43 +237,23 @@
         "targetComponent": "수정 협곡"
       },
       {
-        "nextSectionNumber": "114",
+        "nextSectionNumber": "401",
         "eventType": "select_component",
         "targetComponent": "바이칼 성"
       },
       {
-        "nextSectionNumber": "115",
-        "eventType": "select_component",
-        "targetComponent": "미라지 포트"
-      },
-      {
-        "nextSectionNumber": "116",
+        "nextSectionNumber": "114",
         "eventType": "select_component",
         "targetComponent": "레드로즈 성"
       }
+      
     ]
   },
   "114": {
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "26"
-      }
-    ]
-  },
-  "115": {
-    "sequencialEvents": [
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "27"
-      }
-    ]
-  },
-  "116": {
-    "sequencialEvents": [
-      {
-        "eventNpc": "prologue",
-        "eventNumber": "28"
+        "eventNumber": "39"
       }
     ]
   },
@@ -273,12 +275,96 @@
   "202": {
     "sequencialEvents": [
       {
-        "eventNpc": "kadilla_castle",
-        "eventNumber": "2"
+        "eventNpc": "kadilla_story",
+        "eventNumber": "1"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "203",
+        "eventType": "move_sub_node",
+        "targetComponent": "kadilla_castle_school"
       },
       {
-        "eventNpc": "kadilla_castle",
+        "nextSectionNumber": "205",
+        "eventType": "move_sub_node",
+        "targetComponent": "kadilla_castle_duke_castle"
+      }
+    ]
+  },
+  "203":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "3"
+      },
+      {
+        "eventNpc": "kadilla_story",
         "eventNumber": "4"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "204",
+        "eventType": "move_sub_node",
+        "targetComponent": "kadilla_castle_duke_castle"
+      }
+    ]
+  },
+  "204":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "6"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "7"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "208",
+        "eventType": "move_sub_node",
+        "targetComponent": "kadilla_castle_square"
+      }
+    ]
+  },
+  "205":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "9"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "10"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "206",
+        "eventType": "move_sub_node",
+        "targetComponent": "kadilla_castle_school"
+      }
+    ]
+  },
+   "206":{
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "3"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "4"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "207",
+        "eventType": "move_sub_node",
+        "targetComponent": "kadilla_castle_duke_castle"
       }
     ]
   },
@@ -286,7 +372,7 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "25"
+        "eventNumber": "37"
       }
     ],
     "nextSections": [

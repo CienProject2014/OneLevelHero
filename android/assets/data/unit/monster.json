@@ -12,7 +12,7 @@
 		[0, 5, 0, 5, 0]
 	],
     "status": {
-      "attack": 300,
+      "attack": 150,
       "magicAttack": 300,
       "defense": 200,
       "magicDefense": 200,

@@ -15,12 +15,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.WorldMapAssets;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.VillageDirectionEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.CameraManager.CameraStateEnum;
+import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.surroundings.Building;
@@ -39,12 +41,16 @@ public class VillageStage extends BaseOverlapStage {
 	private AssetsManager assetsManager;
 	@Autowired
 	private TimeManager timeManager;
+	@Autowired
+	private FieldManager fieldManager;
+	@Autowired
+	private PositionManager positionManager;
 	private Village villageInfo;
 	public TextButton shiftButton;
 
 	public Stage makeStage() {
 		setVillage();
-		cameraManager.stretchToDevice(this);
+		cameraManager.stretchToDevice(this, positionManager.getVillageDirection());
 		/* setVillage(); */
 		return this;
 	}
@@ -85,6 +91,9 @@ public class VillageStage extends BaseOverlapStage {
 		Gdx.app.log("VillageStage", String.valueOf(positionManager.getCurrentNodeName()));
 		setVillageScene(positionManager, nodeAssets);
 		setArrow();
+		if (positionManager.getBeforePositionType().equals(PositionEnum.FIELD)) {
+			setArrowDirection();
+		}
 		setBuildingButton();
 		addActor(sceneLoader.getRoot());
 		VillageDirectionEnum villageDirection = villageInfo.getVillageDirection();
@@ -99,6 +108,7 @@ public class VillageStage extends BaseOverlapStage {
 				shiftbutton_up.addListener(new ClickListener() {
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
+						positionManager.setVillageDirection(VillageDirectionEnum.UP);
 						setCameraState(CameraStateEnum.MOVE_UP);
 						timeManager.plusMinute(15);
 						cameraManager.setMoveFlag(2);
@@ -108,6 +118,7 @@ public class VillageStage extends BaseOverlapStage {
 				shiftbutton_down.addListener(new ClickListener() {
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
+						positionManager.setVillageDirection(VillageDirectionEnum.DOWN);
 						setCameraState(CameraStateEnum.MOVE_DOWN);
 						timeManager.plusMinute(15);
 						cameraManager.setMoveFlag(2);
@@ -126,7 +137,7 @@ public class VillageStage extends BaseOverlapStage {
 				shiftbutton_left.addListener(new ClickListener() {
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
-
+						positionManager.setVillageDirection(VillageDirectionEnum.LEFT);
 						setCameraState(CameraStateEnum.MOVE_LEFT);
 						cameraManager.setMoveFlag(5);
 						timeManager.plusMinute(15);
@@ -137,6 +148,7 @@ public class VillageStage extends BaseOverlapStage {
 				shiftbutton_right.addListener(new ClickListener() {
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
+						positionManager.setVillageDirection(VillageDirectionEnum.RIGHT);
 						setCameraState(CameraStateEnum.MOVE_RIGHT);
 						cameraManager.setMoveFlag(5);
 						timeManager.plusMinute(15);
@@ -150,6 +162,26 @@ public class VillageStage extends BaseOverlapStage {
 				break;
 			default :
 				Gdx.app.log("VillageStage", "VillageDirectionEnum정보 오류");
+		}
+		setNullCase(villageInfo);
+	}
+	private void setNullCase(Village villageInfo) {
+		if (positionManager.getVillageDirection() == null) {
+			if (villageInfo.getVillageDirection().equals(VillageDirectionEnum.UP_DOWN)) {
+				positionManager.setVillageDirection(VillageDirectionEnum.DOWN);
+			} else if (villageInfo.getVillageDirection().equals(VillageDirectionEnum.LEFT_RIGHT)) {
+				positionManager.setVillageDirection(VillageDirectionEnum.LEFT);
+			} else {
+				positionManager.setVillageDirection(VillageDirectionEnum.CENTER);
+			}
+		}
+	}
+
+	private void setArrowDirection() {
+		for (Entry<String, VillageDirectionEnum> arrowInfo : villageInfo.getArrowDirection().entrySet()) {
+			if (arrowInfo.getKey().equals(fieldManager.getArrowName())) {
+				positionManager.setVillageDirection(arrowInfo.getValue());
+			}
 		}
 	}
 

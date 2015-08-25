@@ -122,34 +122,6 @@ public class BattleStage extends BaseOneLevelStage {
 		}
 	}
 
-	@Override
-	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		super.touchDown(screenX, screenY, pointer, button);
-		if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
-			start = (new Vector2(touched.x, touched.y));
-		}
-		return true;
-	}
-
-	@Override
-	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		super.touchDragged(screenX, screenY, pointer);
-		if (battleManager.isShowGrid()) {
-			end = (new Vector2(touched.x, touched.y));
-
-		}
-		return true;
-	}
-
-	@Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		super.touchUp(screenX, screenY, pointer, button);
-		start = null;
-		end = null;
-
-		return false;
-	}
-
 	public Stage makeStage() {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("BattleStage");
@@ -404,9 +376,19 @@ public class BattleStage extends BaseOneLevelStage {
 		battleManager.getGridHitbox().addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
-					battleManager.getGridHitbox().setStartPosition(touched.x, touched.y);
-					battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
+				if (battleManager.isShowGrid()) {
+					end = (new Vector2(touched.x, touched.y));
+					if (battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
+						start = (new Vector2(touched.x, touched.y));
+						battleManager.getGridHitbox().setStartPosition(touched.x, touched.y);
+						battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
+
+						if (battleManager.getGridHitbox().isInsideEdge(touched.x, touched.y)) {
+							battleManager.setGridLimitNum(getWeaponHitboxSize());
+						} else {
+							battleManager.setGridLimitNum(1);
+						}
+					}
 				}
 				return true;
 			}
@@ -414,6 +396,7 @@ public class BattleStage extends BaseOneLevelStage {
 			@Override
 			public void touchDragged(InputEvent event, float x, float y, int pointer) {
 				if (battleManager.isShowGrid()) {
+					end = (new Vector2(touched.x, touched.y));
 					if (!battleManager.isSkill()) {
 						battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
 					} else {
@@ -423,7 +406,6 @@ public class BattleStage extends BaseOneLevelStage {
 						} else {
 							battleManager.getGridHitbox().showFixedTilesAt(touched.x, touched.y);
 						}
-
 					}
 				}
 			}
@@ -441,9 +423,15 @@ public class BattleStage extends BaseOneLevelStage {
 					}
 					battleManager.setShowGrid(false);
 				}
-				battleManager.getGridHitbox().hideAllTiles();
+				resetHitboxState();
 			}
 		});
+	}
+
+	private void resetHitboxState() {
+		start = null;
+		end = null;
+		battleManager.getGridHitbox().hideAllTiles();
 	}
 
 	private void checkRunAway() {

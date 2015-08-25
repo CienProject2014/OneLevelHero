@@ -7,6 +7,7 @@ import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.VillageDirectionEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.enums.WorldNodeEnum.NodeType;
 
@@ -18,6 +19,14 @@ public class PositionManager {
 	@Autowired
 	private PositionInfo positionInfo;
 	private boolean inWorldMap;
+
+	public VillageDirectionEnum getVillageDirection() {
+		return positionInfo.getVillageDirection();
+	}
+
+	public void setVillageDirection(VillageDirectionEnum villageDirection) {
+		positionInfo.setVillageDirection(villageDirection);
+	}
 
 	public PositionEnum getBeforePositionType() {
 		return positionInfo.getBeforePositionType();
