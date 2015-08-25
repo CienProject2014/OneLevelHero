@@ -5,7 +5,8 @@ public enum EventTypeEnum {
 			"select_component"), MOVE_FIELD("move_field"), MOVE_NODE("move_node"), MOVE_SUB_NODE("move_sub_node"), NEXT_SECTION(
 			"next_section"), BATTLE_CONTROL("battle_control"), MUSIC("music"), BATTLE_END("battle_end"), PASS_TIME(
 			"pass_time"), MOVE_SUB_NODE_BY_TIME("move_sub_node_by_time"), DONT_GO_BUILDING("dont_go_building"), GAME_OVER(
-			"game_over"), CLICK_ARROW("click_arrow");
+			"game_over"), LEAVE_PARTY("leave_party"), SET_TIME("set_time"), JOIN_PARTY("join_party"), CLICK_ARROW(
+			"click_arrow"), GET_EXP("get_exp"), GET_ITEM("get_item"), SELECT_CHAT("select_chat");
 	private String code;
 
 	EventTypeEnum(String code) {

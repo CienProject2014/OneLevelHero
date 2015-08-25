@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.GoBackwardFieldButtonListener;
 import com.mygdx.listener.GoForwardFieldButtonListener;
@@ -49,6 +50,7 @@ public class FieldStage extends BaseOneLevelStage {
 	private ImageButton goBackwardFieldButton;
 
 	public Stage makeStage() {
+		positionManager.setBeforePositionType(PositionEnum.FIELD);
 		Gdx.app.log("FieldStage", "FieldType - " + fieldManager.getFieldType());
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("MovingStage");
@@ -75,14 +77,14 @@ public class FieldStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		movingLabel
-				.setText(String.format("%s까지%d", fieldManager.getDestinationNode(), fieldManager.getLeftFieldLength()));
+		movingLabel.setText(String.format("%s까지%d", fieldManager.getDestinationNode(),
+				fieldManager.getLeftFieldLength()));
 		outerTable.setBackground(getBackgroundTRD(), false);
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
-		return new TextureRegionDrawable(
-				new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+		return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
+				.getFieldType().toString())));
 	}
 
 	// 테이블 디자인
@@ -100,10 +102,10 @@ public class FieldStage extends BaseOneLevelStage {
 	}
 
 	public void makeButton() {
-		goForwardFieldButton = new ImageButton(
-				new SpriteDrawable(new Sprite(new Texture("texture/worldmap/fieldui_front.png"))));
-		goBackwardFieldButton = new ImageButton(
-				new SpriteDrawable(new Sprite(new Texture("texture/worldmap/fieldui_back.png"))));
+		goForwardFieldButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture(
+				"texture/worldmap/fieldui_front.png"))));
+		goBackwardFieldButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture(
+				"texture/worldmap/fieldui_back.png"))));
 
 	}
 

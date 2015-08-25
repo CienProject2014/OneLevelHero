@@ -24,21 +24,15 @@ public class WorldMapScreen extends BaseScreen {
 	public void show() {
 		worldMapStage = stageFactory.makeStage(StageEnum.WORLD_MAP);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
-		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		setInputProcessor();
 	}
 
 	private void setInputProcessor() {
 		InputProcessor MapInputProcessor = new MapInputProcessor(worldMapStage);
 		multiplexer = new InputMultiplexer();
-		if (showLoadStage) {
-			multiplexer.addProcessor(0, loadPopupStage);
-
-		} else {
-			multiplexer.addProcessor(0, gameUiStage);
-			multiplexer.addProcessor(1, worldMapStage);
-			multiplexer.addProcessor(2, MapInputProcessor);
-		}
+		multiplexer.addProcessor(0, gameUiStage);
+		multiplexer.addProcessor(1, worldMapStage);
+		multiplexer.addProcessor(2, MapInputProcessor);
 		Gdx.input.setInputProcessor(multiplexer);
 	}
 }
