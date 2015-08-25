@@ -103,27 +103,69 @@ public class BattleManager {
 		case NORMAL:
 			setShowGrid(false);
 			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
 			break;
-		case SKILL:
+		case SKILL1:
 			battleInfo.setSkill(false);
 			setShowGrid(false);
 			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
+			break;
+		case SKILL2:
+			battleInfo.setSkill(false);
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
+			break;
+		case SKILL3:
+			battleInfo.setSkill(false);
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
+			break;
+		case SKILL4:
+			battleInfo.setSkill(false);
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
+			break;
+		case SKILL5:
+			battleInfo.setSkill(false);
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
+			break;
+		case SKILL6:
+			battleInfo.setSkill(false);
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
+			break;
+		case SKILL7:
+			battleInfo.setSkill(false);
+			setShowGrid(false);
+			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
 			break;
 		case INVENTORY:
 			setShowGrid(false);
 			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
 			break;
 		case DEFENSE:
 			setShowGrid(false);
 			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
 			break;
 		case WAIT:
 			setShowGrid(false);
 			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
 			break;
 		case RUN:
 			setShowGrid(false);
 			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+			timeManager.plusSecond(-timeManager.getPreTime());
 			break;
 		default:
 			break;
@@ -192,6 +234,7 @@ public class BattleManager {
 		unit.setPreGague(unit.getGauge());
 		int costGague = (int) (((double) (150 - unit.getActingPower()) / 50) * typeOfAction);
 		unit.setGauge(unit.getGauge() - costGague);
+		timeManager.setPreTime(costGague * TIME_FLOW_RATE);
 		timeManager.plusSecond(costGague * TIME_FLOW_RATE);
 		healGague();
 	}

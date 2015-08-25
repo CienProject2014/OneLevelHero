@@ -106,7 +106,9 @@ public class BagManager {
 	}
 
 	public void addConsumables(Consumables consumables) {
-		getConsumablesList().add(consumables);
+		if (!getConsumablesList().contains(consumables)) {
+			getConsumablesList().add(consumables);
+		}
 	}
 
 	public List<Item> getEtcItemList() {

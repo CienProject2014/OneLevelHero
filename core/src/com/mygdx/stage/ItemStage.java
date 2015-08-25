@@ -13,8 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.utils.Array;
-import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.listener.SimpleTouchListener;
@@ -38,12 +36,7 @@ public class ItemStage extends BaseOverlapStage {
 	@Autowired
 	private AssetsManager assetsManager;
 	@Autowired
-	private ConstantsAssets constantsAssets;
-	@Autowired
 	private BagManager bagManager;
-	// @Autowired
-	// private GridHitbox gridHitbox;
-	private Map<String, Array<String>> sceneConstants;
 	public final String SCENE_NAME = "item_scene";
 	private Camera cam;
 	private Map<Integer, Item> itemInfo;
@@ -55,7 +48,6 @@ public class ItemStage extends BaseOverlapStage {
 	}
 
 	public Stage makeStage() {
-		sceneConstants = constantsAssets.getSceneConstants("save_scene");
 		assetsManager.initScene(SCENE_NAME);
 		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene(SCENE_NAME);
@@ -100,7 +92,6 @@ public class ItemStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				setCompositeItemVisibilty(useButton, PRESSED_VISIBILTY);
-				battleManager.setCurrentSelectedItem(itemInfo.get(index));
 				BattleScreen.showItemStage = false;
 			}
 		});
@@ -114,6 +105,7 @@ public class ItemStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				BattleScreen.showItemStage = false;
+				battleManager.checkCurrentState();
 				battleManager.showRMenuButtons();
 			}
 		});
@@ -186,6 +178,8 @@ public class ItemStage extends BaseOverlapStage {
 							}
 						}
 						showItemDescription(index);
+						battleManager.setCurrentSelectedItem(itemInfo.get(index));
+
 					} else {
 						setVoidDescription();
 						setFirstUseButton();
