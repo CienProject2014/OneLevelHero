@@ -21,6 +21,7 @@ import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.GameObjectEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SimpleTouchListener;
@@ -63,7 +64,7 @@ public class BuildingStage extends BaseOverlapStage {
 	private GameObjectPopup gameObjectPopup;
 
 	public Stage makeStage() {
-
+		positionManager.setBeforePositionType(PositionEnum.SUB_NODE);
 		buildingInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
 				.get(positionManager.getCurrentSubNodeName());
 		if (buildingInfo.isOverlapScene()) {
