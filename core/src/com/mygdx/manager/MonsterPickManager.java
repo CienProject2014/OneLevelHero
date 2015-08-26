@@ -37,6 +37,11 @@ public class MonsterPickManager {
 		return monster;
 	}
 
+	public Monster createSpecificMoster(String Montername) {
+		Monster monster = unitAssets.getMonster(Montername);
+		return monster;
+	}
+
 	public Monster createMonster(String monsterName) {
 		Monster monster = unitAssets.getMonster(monsterName);
 		unitManager.initiateMonster(monster);
@@ -44,7 +49,6 @@ public class MonsterPickManager {
 	}
 
 	private String selectMonster() {
-
 		List<String> monsterStrings = null;
 
 		if (fieldManager.isInField()) {

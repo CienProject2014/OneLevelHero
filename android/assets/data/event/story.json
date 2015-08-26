@@ -23,11 +23,12 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "3"
+        "eventNumber": "4"
       },
+      
       {
         "eventNpc": "prologue",
-        "eventNumber": "4"
+        "eventNumber": "3"
       },
       {
         "eventNpc": "prologue",

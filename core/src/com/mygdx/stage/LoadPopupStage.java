@@ -57,6 +57,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 	private CompositeItem save02;
 	private CompositeItem save03;
 	private Map<String, Array<String>> sceneConstants;
+	private CompositeItem newbutton;
 
 	public Stage makeStage() {
 		assetsManager.initScene(SCENE_NAME);
@@ -116,6 +117,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 		save02 = sceneLoader.getRoot().getCompositeById("save02");
 		save03 = sceneLoader.getRoot().getCompositeById("save03");
 		save = sceneLoader.getRoot().getImageById("save");
+		newbutton = sceneLoader.getRoot().getCompositeById("new_button");
 		closeButton = sceneLoader.getRoot().getCompositeById("close_button");
 	}
 
@@ -158,7 +160,21 @@ public class LoadPopupStage extends BaseOverlapStage {
 				}
 			}
 		});
-		closeButton.addListener(new TouchListener());
+		newbutton.addListener(new TouchListener() {
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				saveManager.setNewGame();
+				super.touchUp(event, x, y, pointer, button);
+			}
+		});
+
+		closeButton.addListener(new TouchListener() {
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				BaseScreen.showLoadStage = false;
+				super.touchUp(event, x, y, pointer, button);
+			}
+		});
 	}
 
 	private void setCamera() {
