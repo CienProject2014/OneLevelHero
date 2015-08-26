@@ -32,23 +32,21 @@
       "powerblade",
       "saint_guardian",
       "counter_attack",
-      "lastjudge",
+      "last_judge",
       "piercearrow",
       "snipe",
       "return",
       "detailedshoot",
-      "multishoot",
       "casting",
       "cross",
       "heal",
       "smile",
-      "handing",
+      "handling",
       "lighting",
       "soul_cover",
       "hand_of_death",
       "whisper_of_death",
-      "call_soul",
-      "equipment_mastery"
+      "call_soul"
     ]
   },
   "parath": {
@@ -69,16 +67,13 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-     "initialInventoryList": {},
+    "initialInventoryList": {},
     "skillList": [
       "provoke",
       "powerblade",
       "saint_guardian",
       "counter_attack",
-      "lastjudge",
-      "twohandsword_mastery",
-      "armor_mastery",
-      "will"
+      "last_judge"
     ]
   },
   "lilis": {
@@ -99,17 +94,14 @@
       "waterResistance": 20,
       "electricResistance": 10
     },
-     "initialInventoryList": {},
+    "initialInventoryList": {},
     "skillList": [
       "casting",
       "cross",
       "heal",
       "smile",
-      "handing",
-      "lighting",
-      "book_mastery",
-      "lob_mastery",
-      "sunshine"
+      "handling",
+      "lighting"
     ]
   },
   "lilis_succubus": {
@@ -130,7 +122,7 @@
       "waterResistance": 20,
       "electricResistance": 10
     },
-     "initialInventoryList": {},
+    "initialInventoryList": {},
     "skillList": [
       "surpise_attack",
       "flying",
@@ -161,7 +153,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-     "initialInventoryList": {},
+    "initialInventoryList": {},
     "skillList": [
       "piercearrow",
       "snipe",
@@ -191,7 +183,7 @@
       "waterResistance": 10,
       "electricResistance": 10
     },
-     "initialInventoryList": {},
+    "initialInventoryList": {},
     "skillList": [
       "gale",
       "breeze",
@@ -227,7 +219,7 @@
       "waterResistance": 10,
       "electricResistance": 10
     },
-     "initialInventoryList": {},
+    "initialInventoryList": {},
     "skillList": [
       "casting",
       "soul_cover",
@@ -257,7 +249,7 @@
       "waterResistance": 30,
       "electricResistance": 30
     },
-     "initialInventoryList": {},
+    "initialInventoryList": {},
     "skillList": [
       "casting",
       "amplified_casting",
@@ -287,7 +279,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-     "initialInventoryList": {},
+    "initialInventoryList": {},
     "skillList": [
       "breeze",
       "strong_breeze",
