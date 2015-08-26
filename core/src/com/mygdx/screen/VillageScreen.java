@@ -47,7 +47,7 @@ public class VillageScreen extends BaseScreen {
 		super.render(delta);
 		setInputProcessor();
 		villageStage.act();
-		characterUiStage.act();
+		characterUiStage.act(delta);
 		gameUiStage.act();
 
 		villageStage.draw();

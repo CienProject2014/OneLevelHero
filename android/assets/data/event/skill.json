@@ -118,6 +118,7 @@
     "gale": {
         "name": "질풍",
         "skillType": "tech",
+        "skillPath" : "gale",
         "skillTargetType": "monster",
         "skillEffectType": "duplicated_attack",
         "costGauge": "45",

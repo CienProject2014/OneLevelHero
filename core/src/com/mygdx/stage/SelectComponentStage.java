@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -13,7 +12,6 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SelectComponentListener;
-import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MovingManager;
@@ -81,17 +79,6 @@ public class SelectComponentStage extends BaseOneLevelStage {
 	}
 
 	private void setexitButton() {
-		exitButton = new TextButton("나가기", uiComponentAssets.getSkin());
-		exitButton.center();
-		exitButton.addListener(new SimpleTouchListener() {
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				movingManager.goCurrentPosition();
-				event.getListenerActor().setVisible(false);
-			}
-		});
-
-		addActor(exitButton);
 	}
 
 	private void setSize() {
