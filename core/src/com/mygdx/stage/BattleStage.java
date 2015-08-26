@@ -320,8 +320,6 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.NORMAL);
 				setDarkButton(attackButton);
 				battleManager.afterClick(NORMAL_ATTACK);
-
-				battleManager.setGridLimitNum(getWeaponHitboxSize());
 				battleManager.setShowGrid(true);
 			}
 		});
@@ -396,7 +394,6 @@ public class BattleStage extends BaseOneLevelStage {
 				start = (new Vector2(touched.x, touched.y));
 				battleManager.getGridHitbox().setStartPosition(touched.x, touched.y);
 				battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
-
 				if (battleManager.getGridHitbox().isInsideEdge(touched.x, touched.y)) {
 					battleManager.setGridLimitNum(getWeaponHitboxSize());
 				} else {

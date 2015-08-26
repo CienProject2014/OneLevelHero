@@ -67,7 +67,10 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "initialInventoryList": {},
+    "initialInventoryList": {
+        "rightHandGrip": "round_shield",
+      "leftHandGrip": "broad_sword",
+      "clothes": "iron_armor"},
     "skillList": [
       "provoke",
       "powerblade",
@@ -94,7 +97,10 @@
       "waterResistance": 20,
       "electricResistance": 10
     },
-    "initialInventoryList": {},
+    "initialInventoryList": {
+        "rightHandGrip": "round_shield",
+      "leftHandGrip": "broad_sword",
+      "clothes": "iron_armor"},
     "skillList": [
       "cross",
       "heal",
@@ -121,7 +127,10 @@
       "waterResistance": 20,
       "electricResistance": 10
     },
-    "initialInventoryList": {},
+    "initialInventoryList": {
+        "rightHandGrip": "round_shield",
+      "leftHandGrip": "broad_sword",
+      "clothes": "iron_armor"},
     "skillList": [
       "surpise_attack",
       "flying",
@@ -152,7 +161,10 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "initialInventoryList": {},
+    "initialInventoryList": {
+        "rightHandGrip": "round_shield",
+      "leftHandGrip": "broad_sword",
+      "clothes": "iron_armor"},
     "skillList": [
       "piercearrow",
       "snipe",
@@ -179,7 +191,10 @@
       "waterResistance": 10,
       "electricResistance": 10
     },
-    "initialInventoryList": {},
+    "initialInventoryList": {
+        "rightHandGrip": "round_shield",
+      "leftHandGrip": "broad_sword",
+      "clothes": "iron_armor"},
     "skillList": [
       "gale",
       "breeze",
@@ -215,7 +230,10 @@
       "waterResistance": 10,
       "electricResistance": 10
     },
-    "initialInventoryList": {},
+    "initialInventoryList": {
+        "rightHandGrip": "round_shield",
+      "leftHandGrip": "broad_sword",
+      "clothes": "iron_armor"},
     "skillList": [
       "casting",
       "soul_cover",
@@ -245,7 +263,10 @@
       "waterResistance": 30,
       "electricResistance": 30
     },
-    "initialInventoryList": {},
+    "initialInventoryList": {
+        "rightHandGrip": "round_shield",
+      "leftHandGrip": "broad_sword",
+      "clothes": "iron_armor"},
     "skillList": [
       "casting",
       "amplified_casting",
@@ -275,7 +296,10 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "initialInventoryList": {},
+    "initialInventoryList": {
+        "rightHandGrip": "round_shield",
+      "leftHandGrip": "broad_sword",
+      "clothes": "iron_armor"},
     "skillList": [
       "breeze",
       "strong_breeze",

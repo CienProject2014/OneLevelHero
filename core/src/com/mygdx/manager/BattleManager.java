@@ -64,13 +64,9 @@ public class BattleManager {
 	private MusicManager musicManager;
 	@Autowired
 	private SoundManager soundManager;
-	private GridHitbox gridHitbox; // grid hitbox 테이블
+	private GridHitbox gridHitbox = new GridHitbox(); // grid hitbox 테이블
 
 	public SkillRunPopup gameObjectPopup;
-
-	BattleManager() {
-		gridHitbox = new GridHitbox();
-	}
 
 	public boolean isEventBattle() {
 		return battleInfo.isEventBattle();
