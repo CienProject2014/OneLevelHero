@@ -52,14 +52,21 @@
     "fieldMonsterList": [
       "troll",
       "griffon",
-      "ogre",
+      "cyclops"
+    ]
+  },
+  {
+    "fieldType": "mountain_titania_dungeon",
+    "fieldMonsterList": [
       "soul_deprave"
     ]
   },
   {
-    "fieldType": "blackwood_forest",
+    "fieldType": "blackwood_forest_dungeon",
     "fieldMonsterList": [
-      "piranha"
+      "kentaurous_spear",
+      "kentaurous_bow",
+      "chimera"
     ]
   },
   {
@@ -125,6 +132,14 @@
     "fieldType": "devil_castle_3f",
     "fieldMonsterList": [
       "raijuu"
+    ]
+  },
+  {
+    "fieldType": "devil_castle_4f",
+    "fieldMonsterList": [
+      "elemental_fire",
+      "elemental_water",
+      "elemental_electric"
     ]
   }
 ]

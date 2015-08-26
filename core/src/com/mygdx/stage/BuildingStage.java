@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -104,7 +105,23 @@ public class BuildingStage extends BaseOverlapStage {
 	}
 
 	private void setNpcList() {
-		// TODO Auto-generated method stub
+		if (buildingInfo.getBuildingNpc() != null) {
+			for (final String npcName : buildingInfo.getBuildingNpc()) {
+				ImageButton npcButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+						textureManager.getBustTexture(npcName, "01"))));
+				npcButton.setTouchable(Touchable.enabled);
+				npcButton.addListener(new SimpleTouchListener() {
+					@Override
+					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+						timeManager.plusMinute(5);
+						eventManager.setCurrentEventNpc(npcName);
+						eventManager.setCurrentEventNumber(2); // FIXME
+						screenFactory.show(ScreenEnum.GREETING);
+					}
+				});
+				addActor(npcButton);
+			}
+		}
 	}
 
 	private void makeBuildingSceneByOverlap() {

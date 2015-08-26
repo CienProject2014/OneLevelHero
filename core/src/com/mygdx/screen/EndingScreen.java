@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.listener.SimpleTouchListener;
 
 public class EndingScreen extends BaseScreen {
@@ -37,7 +36,7 @@ public class EndingScreen extends BaseScreen {
 		backButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				screenFactory.show(ScreenEnum.COLLECTION);
+				screenFactory.pop();
 			}
 		});
 

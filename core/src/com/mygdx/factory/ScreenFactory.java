@@ -1,5 +1,7 @@
 package com.mygdx.factory;
 
+import java.util.Stack;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -51,9 +53,11 @@ public class ScreenFactory {
 	}
 
 	private IntMap<Screen> screens;
+	private Stack<Screen> screenstack;
 
 	public ScreenFactory() {
 		screens = new IntMap<Screen>();
+		screenstack = new Stack<Screen>();
 	}
 
 	private Screen getScreenInstance(ScreenEnum screenEnum) {
@@ -139,5 +143,25 @@ public class ScreenFactory {
 		for (com.badlogic.gdx.Screen screen : screens.values())
 			screen.dispose();
 		screens.clear();
+	}
+
+	public void push(ScreenEnum screenEnum) {
+		game.setScreen(screenstack.push(getScreenInstance(screenEnum)));
+	}
+
+	public void pop() {
+		screenstack.pop().dispose();;
+		game.setScreen(screenstack.peek());
+	}
+
+	public void popAndPush(ScreenEnum screenEnum) {
+		screenstack.pop().dispose();;
+		game.setScreen(screenstack.push(getScreenInstance(screenEnum)));
+	}
+
+	public void popAllAndPush(ScreenEnum screenEnum) {
+		while (!screenstack.isEmpty())
+			screenstack.pop().dispose();;
+		game.setScreen(screenstack.push(getScreenInstance(screenEnum)));
 	}
 }
