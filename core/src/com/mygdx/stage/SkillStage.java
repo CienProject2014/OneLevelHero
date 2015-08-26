@@ -27,6 +27,7 @@ import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.model.unit.Hero;
 import com.mygdx.screen.BattleScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
@@ -169,32 +170,33 @@ public class SkillStage extends BaseOverlapStage {
 	}
 
 	private void setLabel(Map<String, Array<String>> sceneConstants) {
-		int playerSkillSize = battleManager.getCurrentAttackUnit().getSkills().size();
-		Array<String> skillNameLabelList = sceneConstants.get("skill_name_label");
-		Array<String> castingLabelList = sceneConstants.get("casting_label");
-		Array<String> gaugeLabelList = sceneConstants.get("gauge_label");
-		skillInfo = new HashMap<>(SKILL_TAB_SIZE);
-		for (int i = 0; i < SKILL_TAB_SIZE; i++) {
-			LabelItem skillNameLabel = sceneLoader.getRoot().getLabelById(skillNameLabelList.get(i));
-			LabelItem castingLabel = sceneLoader.getRoot().getLabelById(castingLabelList.get(i));
-			LabelItem gaugeLabel = sceneLoader.getRoot().getLabelById(gaugeLabelList.get(i));
-			if (playerSkillSize > i) {
-				skillInfo.put(i, battleManager.getCurrentAttackUnit().getSkills().get(i));
-				skillNameLabel.setText(battleManager.getCurrentAttackUnit().getSkills().get(i).getName());
-				castingLabel.setText("");
-				gaugeLabel.setText(
-						String.valueOf(battleManager.getCurrentAttackUnit().getSkills().get(i).getCostGauge()));
-				setLabelStyle(skillNameLabel);
-				setLabelStyle(castingLabel);
-				setLabelStyle(gaugeLabel);
-			} else {
-				skillNameLabel.setText("");
-				castingLabel.setText("");
-				gaugeLabel.setText("");
+		if (battleManager.getCurrentAttackUnit() instanceof Hero) {
+			int playerSkillSize = battleManager.getCurrentAttackUnit().getSkills().size();
+			Array<String> skillNameLabelList = sceneConstants.get("skill_name_label");
+			Array<String> castingLabelList = sceneConstants.get("casting_label");
+			Array<String> gaugeLabelList = sceneConstants.get("gauge_label");
+			skillInfo = new HashMap<>(SKILL_TAB_SIZE);
+			for (int i = 0; i < SKILL_TAB_SIZE; i++) {
+				LabelItem skillNameLabel = sceneLoader.getRoot().getLabelById(skillNameLabelList.get(i));
+				LabelItem castingLabel = sceneLoader.getRoot().getLabelById(castingLabelList.get(i));
+				LabelItem gaugeLabel = sceneLoader.getRoot().getLabelById(gaugeLabelList.get(i));
+				if (playerSkillSize > i) {
+					skillInfo.put(i, battleManager.getCurrentAttackUnit().getSkills().get(i));
+					skillNameLabel.setText(battleManager.getCurrentAttackUnit().getSkills().get(i).getName());
+					castingLabel.setText("");
+					gaugeLabel.setText(String.valueOf(battleManager.getCurrentAttackUnit().getSkills().get(i)
+							.getCostGauge()));
+					setLabelStyle(skillNameLabel);
+					setLabelStyle(castingLabel);
+					setLabelStyle(gaugeLabel);
+				} else {
+					skillNameLabel.setText("");
+					castingLabel.setText("");
+					gaugeLabel.setText("");
+				}
 			}
 		}
 	}
-
 	private void setLabelStyle(LabelItem labelItem) {
 		labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		labelItem.setFontScale(1.0f);
@@ -263,8 +265,8 @@ public class SkillStage extends BaseOverlapStage {
 						setUseButton(index);
 						for (int j = 0; j < SKILL_TAB_SIZE; j++) {
 							if (j != index) {
-								final CompositeItem highLightFrame = sceneLoader.getRoot()
-										.getCompositeById(highLightFrameList.get(j));
+								final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
+										highLightFrameList.get(j));
 								setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 								setVoidUseButton(j);
 							}
@@ -278,8 +280,8 @@ public class SkillStage extends BaseOverlapStage {
 						setVoidDescription();
 						setAllVoidUseButton(sceneConstants);
 						for (int j = 0; j < SKILL_TAB_SIZE; j++) {
-							CompositeItem highLightFrame = sceneLoader.getRoot()
-									.getCompositeById(highLightFrameList.get(j));
+							CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
+									highLightFrameList.get(j));
 							setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 						}
 					}
@@ -293,27 +295,27 @@ public class SkillStage extends BaseOverlapStage {
 
 	private void setEnum(int index) {
 		switch (index) {
-		case 0:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL1);
-			break;
-		case 1:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL2);
-			break;
-		case 2:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL3);
-			break;
-		case 3:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL4);
-			break;
-		case 4:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL5);
-			break;
-		case 5:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL6);
-			break;
-		case 6:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL7);
-			break;
+			case 0 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL1);
+				break;
+			case 1 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL2);
+				break;
+			case 2 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL3);
+				break;
+			case 3 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL4);
+				break;
+			case 4 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL5);
+				break;
+			case 5 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL6);
+				break;
+			case 6 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL7);
+				break;
 		}
 
 	}

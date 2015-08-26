@@ -275,6 +275,10 @@ battle_mercenary_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_mercenary_big.png/
 },
+battle_auroral_unicorn_smal: {
+	class: java.lang.String,
+	value: texture/monster/battle_auroral_unicorn_smal.png/
+},
 object_box: {
 	class: java.lang.String,
 	value: texture/object/object_box.png/
@@ -1887,6 +1891,10 @@ elemental_none: {
 	class: java.lang.String,
 	value: texture/icon/elemental_none.png/
 },
+monster_auroral_unicorn: {
+	class: java.lang.String,
+	value: texture/monster/monster_auroral_unicorn.png/
+},
 bust_yurath_01: {
 	class: java.lang.String,
 	value: texture/character/bust_yurath_01.png/
@@ -2222,6 +2230,10 @@ bust_keinyoung_01: {
 battle_bortise_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_bortise_big.png/
+},
+battle_auroral_unicorn_big: {
+	class: java.lang.String,
+	value: texture/monster/battle_auroral_unicorn_big.png/
 },
 battle_rabbit_big: {
 	class: java.lang.String,

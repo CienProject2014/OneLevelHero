@@ -6,9 +6,11 @@ import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.AssetsManager;
@@ -30,19 +32,22 @@ public class MusicAssets implements FileAssetsInitializable {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void set(Map<String, StringFile> filePathMap) {
+		FileHandle file = Gdx.files.local("musicMap.json");
+		Json json = new Json();
+		if (Gdx.app.getType() == ApplicationType.Android) {
+			musicMap = json.fromJson(HashMap.class, Gdx.files.internal("music/musicMap.json"));
+		} else {
+			directoryMusicMapper(musicMap, "music");
+			file.writeString(json.prettyPrint(musicMap), false);
+			musicMap = json.fromJson(HashMap.class, Gdx.files.internal("music/musicMap.json"));
+		}
+
 		Map<String, MusicFile> soundEffectFileMap = JsonParser.parseMap(MusicFile.class,
 				filePathMap.get(JsonEnum.SOUND_EFFECT_FILE_PATH.toString()).loadFile());
 		for (Entry<String, MusicFile> entry : soundEffectFileMap.entrySet()) {
 			soundEffectMap.put(entry.getKey(), entry.getValue().loadFile());
 			// assetsManager.load(soundEffectMap.get(entry.getKey()),
 			// Sound.class);
-		}
-
-		Map<String, MusicFile> musicFileMap = JsonParser.parseMap(MusicFile.class,
-				filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString()).loadFile());
-		for (Entry<String, MusicFile> entry : musicFileMap.entrySet()) {
-			musicMap.put(entry.getKey(), entry.getValue().loadFile());
-			// / assetsManager.load(musicMap.get(entry.getKey()), Music.class);
 		}
 
 		// WorldNode MusicList
@@ -78,6 +83,36 @@ public class MusicAssets implements FileAssetsInitializable {
 		Map<String, String> eventMusicStringMap = new Json().fromJson(HashMap.class, eventMusicJsonString);
 		for (Entry<String, String> entry : eventMusicStringMap.entrySet()) {
 			eventMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
+		}
+	}
+
+	public void directoryMusicMapper(Map<String, String> map, String path) {
+		FileHandle fh;
+
+		if (Gdx.app.getType() == ApplicationType.Android) {
+			fh = Gdx.files.internal(path);
+		} else { // ApplicationType.Desktop ..
+			fh = Gdx.files.internal("./bin/" + path);
+		}
+
+		directoryMusicMapperRecursive(map, fh);
+	}
+
+	public void directoryMusicMapperRecursive(Map<String, String> map, FileHandle fh) {
+		if (fh.isDirectory()) {
+			FileHandle[] fhs = fh.list();
+
+			for (FileHandle e : fhs) {
+				directoryMusicMapperRecursive(map, e);
+			}
+		} else if (!map.containsKey(fh.nameWithoutExtension()) && fh.extension().matches("^(mp3)")) {
+			String[] path = fh.path().toString().split("/");
+			String realPath = "";
+			for (int i = 0; i < path.length - 2; i++) {
+				realPath += path[i + 2];
+				realPath += "/";
+			}
+			map.put(fh.nameWithoutExtension(), realPath);
 		}
 	}
 
