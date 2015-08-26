@@ -10,7 +10,9 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.manager.TimeManager;
 
 public class DungeonEntranceButtonListener extends ClickListener {
 	@Autowired
@@ -21,13 +23,21 @@ public class DungeonEntranceButtonListener extends ClickListener {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+
+	private TimeManager timeManager;
+	private SoundManager soundManager;
 	private String dungeonPath;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		timeManager.plusMinute(15);
+		soundManager.setSoundByUseAndPlay("move_arrow");
+
 		positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 		positionManager.setCurrentSubNodeName(dungeonPath);
 		screenFactory.show(ScreenEnum.DUNGEON);
+		soundManager.setSoundByPathAndPlay("move_to_dungeon");
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE, dungeonPath);
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BY_TIME, dungeonPath);
 		eventManager.triggerSpecialEvent(EventTypeEnum.DONT_GO_BUILDING, dungeonPath);

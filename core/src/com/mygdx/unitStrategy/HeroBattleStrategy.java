@@ -192,6 +192,9 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void addState(Unit attacker, Unit defender, Skill skill) {
 		Buff buff = skillAssets.getBuff(skill.getBuffName());
+		if (buff == null) {
+			return;
+		}
 		buff.setAttacker(attacker);
 
 		if (defender.getBuffList().contains(buff)) {

@@ -23,6 +23,7 @@ public class DungeonScreen extends BaseScreen {
 		dungeonStage.draw();
 		dungeonStage.act(delta);
 		dungeonStage.getCamera().update();
+		gameUiStage.act(delta);
 		gameUiStage.draw();
 		// 카메라를 지속적으로 업데이트 해준다.
 	}
