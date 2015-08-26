@@ -64,7 +64,7 @@ public class MovingManager {
 					eventManager.setGreeting(false);
 					goCurrentSubNode(nodeType);
 				} else {
-					screenFactory.show(ScreenEnum.GREETING);
+					goCurrentNode(nodeType);
 				}
 				break;
 			case BATTLE_EVENT :

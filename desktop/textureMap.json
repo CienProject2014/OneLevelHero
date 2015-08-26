@@ -2227,6 +2227,10 @@ bg_oberen_03: {
 	class: java.lang.String,
 	value: texture/background/bg_oberen_03.png/
 },
+back_of_sword: {
+	class: java.lang.String,
+	value: texture/animation_sheet/back_of_sword.png/
+},
 bg_oberen_02: {
 	class: java.lang.String,
 	value: texture/background/bg_oberen_02.png/

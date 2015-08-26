@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.currentState.RewardInfo;
+import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.RewardStateEnum;
 import com.mygdx.model.event.Reward;
 
@@ -17,6 +18,8 @@ public class RewardManager {
 	private EventManager eventManager;
 	@Autowired
 	private BattleManager battleManager;
+	@Autowired
+	private BagManager bagManager;
 	@Autowired
 	private PartyManager partyManager;
 	@Autowired
@@ -70,7 +73,8 @@ public class RewardManager {
 						break;
 					case GOLD :
 						break;
-					case ITEM :
+					case ITEM_HANDGRIP :
+						bagManager.possessItem(ItemEnum.HANDGRIP, peekedReward.getRewardComponent().get(0));
 						break;
 					case NONE :
 						break;

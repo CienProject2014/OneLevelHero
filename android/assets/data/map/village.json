@@ -211,6 +211,9 @@
         "buildingName": "여관",
         "buildingType": "inn",
         "buildingPath": "blackwood_inn",
+         "buildingNpc": [
+          "mea"
+        ],
         "targetTime": {
           "startTime": 0,
           "endTime": 24
