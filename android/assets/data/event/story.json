@@ -211,6 +211,10 @@
   "112": {
     "sequencialEvents": [
       {
+      		"eventNpc": "prologue",
+        "eventNumber": "31"
+      },
+      {
         "eventNpc": "prologue",
         "eventNumber": "35"
       },
