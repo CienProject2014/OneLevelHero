@@ -1,9 +1,13 @@
 package com.mygdx.currentState;
 
+import java.util.List;
+
 import com.mygdx.enums.SaveVersion;
+import com.mygdx.model.unit.Hero;
 
 public class SaveInfo {
 	private SaveVersion saveVersion;
+	private List<Hero> partyList;
 	private String storyName;
 	private String gameTime;
 	private String saveTime;
@@ -47,5 +51,13 @@ public class SaveInfo {
 
 	public void setSaveVersion(SaveVersion saveVersion) {
 		this.saveVersion = saveVersion;
+	}
+
+	public List<Hero> getPartyList() {
+		return partyList;
+	}
+
+	public void setPartyList(List<Hero> list) {
+		this.partyList = list;
 	}
 }
