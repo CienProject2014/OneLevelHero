@@ -150,12 +150,12 @@ public class ScreenFactory {
 	}
 
 	public void pop() {
-		screenstack.pop().dispose();;
+		screenstack.pop().dispose();
 		game.setScreen(screenstack.peek());
 	}
 
 	public void popAndPush(ScreenEnum screenEnum) {
-		screenstack.pop().dispose();;
+		screenstack.pop().dispose();
 		game.setScreen(screenstack.push(getScreenInstance(screenEnum)));
 	}
 
