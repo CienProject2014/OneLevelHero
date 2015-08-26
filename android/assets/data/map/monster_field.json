@@ -6,8 +6,8 @@
   {
     "fieldType": "grassland",
     "fieldMonsterList": [
-      "black_gnoll",
-      "twinhead"
+      "twinhead",
+      "wyvern"
     ]
   },
   {

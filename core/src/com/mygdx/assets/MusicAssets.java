@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.utils.Json;
@@ -41,7 +42,7 @@ public class MusicAssets implements FileAssetsInitializable {
 				filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString()).loadFile());
 		for (Entry<String, MusicFile> entry : musicFileMap.entrySet()) {
 			musicMap.put(entry.getKey(), entry.getValue().loadFile());
-			/// assetsManager.load(musicMap.get(entry.getKey()), Music.class);
+			// / assetsManager.load(musicMap.get(entry.getKey()), Music.class);
 		}
 
 		// WorldNode MusicList
@@ -87,9 +88,15 @@ public class MusicAssets implements FileAssetsInitializable {
 	}
 
 	public Music getMusic(String musicString) {
-		assetsManager.load(musicMap.get(musicString), Music.class);
-		assetsManager.finishLoading();
-		return assetsManager.get(musicMap.get(musicString), Music.class);
+		if (musicMap.get(musicString) != null) {
+			assetsManager.load(musicMap.get(musicString), Music.class);
+			assetsManager.finishLoading();
+			return assetsManager.get(musicMap.get(musicString), Music.class);
+
+		} else {
+			Gdx.app.log("Musicmanager", musicString + " is null");
+			return assetsManager.get(musicMap.get("bgm_title"), Music.class);
+		}
 	}
 
 	public Music getWorldNodeMusic(String musicString) {

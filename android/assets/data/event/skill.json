@@ -95,7 +95,7 @@
         "skillFactor": "100",
         "description": "수인의 육감을 최대한 끌어올려 강력한 화살을 발사한다."
     },
-    "mulitishoot": {
+    "multishoot": {
         "name": "다중 사격",
         "skillType": "tech",
         "skillTargetType": "monster",
@@ -311,7 +311,7 @@
         ],
         "description": "전기의 힘을 빌려 적을 감전시킨다."
     },
-    "freez": {
+    "freeze": {
         "name": "수분 빙화",
         "skillType": "magic",
         "skillTargetType": "monster",
