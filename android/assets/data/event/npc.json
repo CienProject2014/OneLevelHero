@@ -51,14 +51,14 @@
             "characterPath": "yongsa",
             "faceNumber": "04",
             "speakerPosition" : "left",
-            "backgroundPath": "devil_castle_01"
+            "backgroundPath": "devil_castle_06"
           },
           {
             "script": "이얍!",
             "characterPath": "parath",
-            "faceNumber": "01",
+            "faceNumber": "04",
             "speakerPosition" : "right",
-            "backgroundPath": "devil_castle_01"
+            "backgroundPath": "devil_castle_06"
           },
           {
             "script": "기본 공격을 하세요.",
@@ -79,7 +79,7 @@
         "eventType": "battle",
         "eventComponent": [
           "mawang_01",
-          "devil_castle_01"
+          "devil_castle_06"
         ]
       },
       "7": {
@@ -91,21 +91,21 @@
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition" : "left",
-            "backgroundPath": "devil_castle_01"
+            "backgroundPath": "devil_castle_06"
           },
           {
             "script": "내가 나서도록 하지.",
             "characterPath": "yongsa",
             "faceNumber": "01",
             "speakerPosition" : "left",
-            "backgroundPath": "devilcastle_01"
+            "backgroundPath": "devil_castle_06"
           },
           {
             "script": "하압!",
             "characterPath": "yongsa",
             "faceNumber": "04",
             "speakerPosition" : "left",
-            "backgroundPath": "devilcastle_01"
+            "backgroundPath": "devil_castle_06"
           },
           {
             "script": "기술로 공격하세요.",
@@ -120,7 +120,7 @@
         "eventType": "battle",
         "eventComponent": [
           "mawang_01",
-          "devilcastle_01"
+          "devil_castle_06"
         ]
       },
       "10": {
@@ -132,7 +132,7 @@
             "characterPath": "lilis",
             "faceNumber": "01",
             "speakerPosition" : "left",
-            "backgroundPath": "devilcastle_01"
+            "backgroundPath": "devil_castle_06"
           },
           {
             "script": "마법으로 공격하세요.",
@@ -153,7 +153,7 @@
         "eventType": "battle",
         "eventComponent": [
           "mawang_01",
-          "devil_castle_01"
+          "devil_castle_06"
         ]
       },
       "13": {
@@ -165,7 +165,7 @@
             "characterPath": "parath",
             "faceNumber": "01",
             "speakerPosition" : "left",
-            "backgroundPath": "devilcastle_01"
+            "backgroundPath": "devil_castle_06"
           },
           {
             "script": "아이템을 사용하세요.",
@@ -186,7 +186,7 @@
         "eventType": "battle",
         "eventComponent": [
           "mawang_01",
-          "devil_castle_01"
+          "devil_castle_06"
         ]
       },
       "16": {
@@ -211,17 +211,17 @@
           },
           {
             "script": "……!!",
-            "characterPath": "monster_mawang",
+            "characterPath": "mawang",
             "faceNumber": "01",
             "speakerPosition" : "left",
-            "backgroundPath": "devil_castle_01"
+            "backgroundPath": "devil_castle_06"
           },
           {
             "script": "어…?",
             "characterPath": "yongsa",
             "faceNumber": "04",
             "speakerPosition" : "left",
-            "backgroundPath": "devil_castle_01"
+            "backgroundPath": "devil_castle_06"
           },
           {
             "script": "정신을 차려보니 마왕성의 입구였다. 문은 굳게 닫혀있어 다시 들어갈 수 없었다.",
@@ -654,37 +654,51 @@
         "eventScenes": [
           {
             "script": "나쁘지 않은 선택인 것 같네요.",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber" : "01",
+             "speakerPosition" : "left",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "자, 지체할 필요 없이 출발이나 해볼까?",
-            "characterPath": "bust_yongsa_01",
+            "characterPath": "yongsa",
+              "faceNumber" : "01",
+             "speakerPosition" : "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "……저기 용사님? 바이칼 성까지 가는 길은 아시는 거 맞죠?",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+              "faceNumber" : "01",
+                "speakerPosition" : "left",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "당연하지!! 바이칼 성은 에…그러니깐…어디로 가면 되는 거냐면…...",
-            "characterPath": "bust_yongsa_01",
+            "characterPath": "yongsa",
+             "faceNumber" : "01",
+             "speakerPosition" : "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "그래! 이쪽이야!",
-            "characterPath": "bust_yongsa_03",
+            "characterPath": "yongsa",
+              "faceNumber" : "03",
+             "speakerPosition" : "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "하아…..따라오세요",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "speakerPosition" : "left",
+            "faceNumber": "09",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "후후, 역시 용사님이시네요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+             "speakerPosition" : "right",
+            "faceNumber": "03",
             "backgroundPath": "cobweb_02"
           }
         ]
@@ -695,7 +709,9 @@
         "eventScenes": [
           {
             "script": "나쁘지 않은 선택인 것 같네요.",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber" : "01",
+             "speakerPosition" : "left",
             "backgroundPath": "cobweb_02"
           },
           {
@@ -705,27 +721,37 @@
           },
           {
             "script": "……저기 용사님? 레드로즈 성까지 가는 길은 아시는 거 맞죠?",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+              "faceNumber" : "01",
+                "speakerPosition" : "left",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "당연하지!! 레드로즈 성은 에…그러니깐…어디로 가면 되는 거냐면…...",
-            "characterPath": "bust_yongsa_01",
+             "characterPath": "yongsa",
+             "faceNumber" : "01",
+             "speakerPosition" : "right",
             "backgroundPath": "cobweb_02"
           },
-          {
+           {
             "script": "그래! 이쪽이야!",
-            "characterPath": "bust_yongsa_03",
+            "characterPath": "yongsa",
+              "faceNumber" : "03",
+             "speakerPosition" : "right",
             "backgroundPath": "cobweb_02"
           },
-          {
+         {
             "script": "하아…..따라오세요",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "speakerPosition" : "left",
+            "faceNumber": "09",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "후후, 역시 용사님이시네요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+             "speakerPosition" : "right",
+            "faceNumber": "03",
             "backgroundPath": "cobweb_02"
           }
         ]
