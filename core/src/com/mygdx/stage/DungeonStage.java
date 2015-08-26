@@ -359,7 +359,7 @@ public class DungeonStage extends BaseOverlapStage {
 			dungeonManager.setRecentDungeon(positionManager.getCurrentSubNodeName());
 			dungeonEncounterManager.act();
 		} else if (currentNode.chkFlag(DungeonNode.FLG_ENCOUNT)) {
-			dungeonEncounterManager.eliteAct(dungeonManager.getMapInfo().getEliteMonster());
+			dungeonEncounterManager.eliteAct(currentNode.getEliteMonster());
 
 		}
 	}
