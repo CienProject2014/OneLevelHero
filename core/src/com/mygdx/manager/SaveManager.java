@@ -53,7 +53,7 @@ public class SaveManager {
 	private MusicManager musicManager;
 	@Autowired
 	private SoundManager soundManager;
-	
+
 	private final static String SAVEPATH = "save/";
 
 	private Kryo kryo;
@@ -71,9 +71,9 @@ public class SaveManager {
 	public void setSaveInfo() {
 		saveInfo.setGameTime(timeManager.getTimeInfo());
 		if (positionManager.getCurrentPositionType().equals(PositionEnum.NODE)) {
-			saveInfo.setSavePlace(positionManager.getCurrentNodeName());
+			saveInfo.setSavePlace(positionManager.getCurrentNodeHanguelName());
 		} else {
-			saveInfo.setSavePlace(positionManager.getCurrentSubNodeName());
+			saveInfo.setSavePlace(positionManager.getCurrentSubNodeHanguelName());
 		}
 		switch (storySectionInfo.getCurrentSectionNumber()) {
 		case 1:
@@ -194,16 +194,18 @@ public class SaveManager {
 		battleManager.setBeforePosition(PositionEnum.SUB_NODE);
 		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 	}
-	
+
 	public SaveInfo readSaveInfo(SaveVersion saveVersion) {
 		SaveInfo svInfo = null;
-		
+
 		try {
-			svInfo = kryo.readObject(new Input(new FileInputStream(Gdx.files.local(SAVEPATH + saveVersion.toString()).file())), SaveInfo.class);
+			svInfo = kryo.readObject(
+					new Input(new FileInputStream(Gdx.files.local(SAVEPATH + saveVersion.toString()).file())),
+					SaveInfo.class);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		return svInfo;
 	}
 }

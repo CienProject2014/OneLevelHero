@@ -5,31 +5,24 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 
-public class FieldScreen extends BaseScreen {
-
-	private Stage gameUiStage, fieldStage;
+public class LoadScreen extends BaseScreen {
+	private Stage loadStage, loadPopupStage;
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		setInputProcessor();
-		fieldStage.draw();
-		fieldStage.act();
-		gameUiStage.draw();
-		gameUiStage.act();
-		/*
-		 * movingLabel.setText(movingInfo.getDestinationNode() + "까지" +
-		 * movingInfo.getLeftRoadLength());
-		 */
+		loadStage.draw();
+		if (showLoadStage) {
+			loadPopupStage.draw();
+		}
 	}
 
 	@Override
 	public void show() {
-		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
-		fieldStage = stageFactory.makeStage(StageEnum.FIELD);
+		loadStage = stageFactory.makeStage(StageEnum.LOAD);
 		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		setInputProcessor();
-		musicManager.setMovingMusicAndPlay();
 	}
 
 	private void setInputProcessor() {
@@ -37,9 +30,10 @@ public class FieldScreen extends BaseScreen {
 		int i = 0;
 		if (showLoadStage) {
 			multiplexer.addProcessor(i++, loadPopupStage);
+			multiplexer.addProcessor(i++, loadStage);
 		} else {
-			multiplexer.addProcessor(i++, fieldStage);
-			multiplexer.addProcessor(i++, gameUiStage);
+			multiplexer.addProcessor(i++, loadStage);
+			multiplexer.addProcessor(i++, loadPopupStage);
 		}
 		Gdx.input.setInputProcessor(multiplexer);
 	}

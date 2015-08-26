@@ -19,7 +19,6 @@ public class MenuScreen extends BaseScreen {
 
 	public MenuScreen() {
 		Gdx.app.debug("MenuScreen", "Constructor() call");
-
 	}
 
 	@Override
@@ -43,12 +42,12 @@ public class MenuScreen extends BaseScreen {
 
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
+		int i = 0;
 		if (showLoadStage) {
-			multiplexer.addProcessor(0, loadPopupStage);
+			multiplexer.addProcessor(i++, loadPopupStage);
 		} else {
-			multiplexer.addProcessor(0, stage);
+			multiplexer.addProcessor(i++, stage);
 		}
 		Gdx.input.setInputProcessor(multiplexer);
 	}
-
 }

@@ -1,5 +1,5 @@
 
-vonichea_pack.png
+bonichea_pack.png
 size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
@@ -32,42 +32,42 @@ townuiup
   orig: 234, 122
   offset: 0, 0
   index: -1
-vonichea-left0000-------2
+bonichea-left0000-------2
   rotate: false
   xy: 126, 156
   size: 200, 80
   orig: 200, 80
   offset: 0, 0
   index: -1
-vonichea-left0001-------1
+bonichea-left0001-------1
   rotate: false
   xy: 474, 280
   size: 200, 80
   orig: 200, 80
   offset: 0, 0
   index: -1
-vonichea-left0002-------0
+bonichea-left0002-------0
   rotate: false
   xy: 2, 362
   size: 1920, 1080
   orig: 1920, 1080
   offset: 0, 0
   index: -1
-vonichea-right0000-------2
+bonichea-right0000-------2
   rotate: false
   xy: 126, 74
   size: 200, 80
   orig: 200, 80
   offset: 0, 0
   index: -1
-vonichea-right0001-------1
+bonichea-right0001-------1
   rotate: false
   xy: 676, 280
   size: 200, 80
   orig: 200, 80
   offset: 0, 0
   index: -1
-vonichea-right0002-------0
+bonichea-right0002-------0
   rotate: false
   xy: 1924, 362
   size: 1920, 1080

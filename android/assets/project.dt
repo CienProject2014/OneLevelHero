@@ -48,6 +48,16 @@
         1
       ],
       "physicsPropertiesVO": {},
+      "sceneName": "credit_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
       "sceneName": "blackwood_forest_2door_scene"
     },
     {

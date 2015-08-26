@@ -15,8 +15,6 @@ import com.mygdx.model.jsonModel.FrameSheet;
 
 public class AnimationManager {
 	@Autowired
-	private StorySectionManager storySectionManager;
-	@Autowired
 	private TextureAssets textureAssets;
 	private SpriteBatch spriteBatch;
 	private Queue<AnimationBit> animations;

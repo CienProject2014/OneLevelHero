@@ -46,41 +46,41 @@ public class MusicAssets implements FileAssetsInitializable {
 		if (Gdx.app.getType() == ApplicationType.Android) {
 			soundEffectMap = json.fromJson(HashMap.class, Gdx.files.internal("sound/soundMap.json"));
 		} else {
-			directoryMusicMapper(soundEffectMap, "music");
+			directoryMusicMapper(soundEffectMap, "sound");
 			soundfile.writeString(json.prettyPrint(soundEffectMap), false);
 			soundEffectMap = json.fromJson(HashMap.class, Gdx.files.internal("sound/soundMap.json"));
 		}
 
 		// WorldNode MusicList
-		String worldNodeMusicJsonString = filePathMap.get(JsonEnum.WORLD_NODE_MUSIC_LIST.toString()).loadFile();
+		String worldNodeMusicJsonString = filePathMap.get(String.valueOf(JsonEnum.WORLD_NODE_MUSIC_LIST)).loadFile();
 		Map<String, String> worldNodeMusicStringMap = new Json().fromJson(HashMap.class, worldNodeMusicJsonString);
 		for (Entry<String, String> entry : worldNodeMusicStringMap.entrySet()) {
 			worldNodeMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
 		}
 
 		// Battle MusicList
-		String battleMusicJsonString = filePathMap.get(JsonEnum.BATTLE_MUSIC_LIST.toString()).loadFile();
+		String battleMusicJsonString = filePathMap.get(String.valueOf(JsonEnum.BATTLE_MUSIC_LIST)).loadFile();
 		Map<String, String> battleMusicStringMap = new Json().fromJson(HashMap.class, battleMusicJsonString);
 		for (Entry<String, String> entry : battleMusicStringMap.entrySet()) {
 			battleMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
 		}
 
 		// Moving MusicList
-		String movingMusicJsonString = filePathMap.get(JsonEnum.MOVING_MUSIC_LIST.toString()).loadFile();
+		String movingMusicJsonString = filePathMap.get(String.valueOf(JsonEnum.MOVING_MUSIC_LIST)).loadFile();
 		Map<String, String> movingMusicStringMap = new Json().fromJson(HashMap.class, movingMusicJsonString);
 		for (Entry<String, String> entry : movingMusicStringMap.entrySet()) {
 			movingMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));
 		}
 
 		// SoundEffect List
-		String soundEffectJsonString = filePathMap.get(JsonEnum.SOUND_EFECT_LIST.toString()).loadFile();
+		String soundEffectJsonString = filePathMap.get(String.valueOf(JsonEnum.SOUND_EFECT_LIST)).loadFile();
 		Map<String, String> effectMusicStringMap = new Json().fromJson(HashMap.class, soundEffectJsonString);
 		for (Entry<String, String> entry : effectMusicStringMap.entrySet()) {
 			soundEffectInUseMap.put(entry.getKey(), soundEffectMap.get(entry.getValue()));
 		}
 
 		// Event MusicList
-		String eventMusicJsonString = filePathMap.get(JsonEnum.EVENT_MUSIC_LIST.toString()).loadFile();
+		String eventMusicJsonString = filePathMap.get(String.valueOf(JsonEnum.EVENT_MUSIC_LIST)).loadFile();
 		Map<String, String> eventMusicStringMap = new Json().fromJson(HashMap.class, eventMusicJsonString);
 		for (Entry<String, String> entry : eventMusicStringMap.entrySet()) {
 			eventMusicMap.put(entry.getKey(), musicMap.get(entry.getValue()));

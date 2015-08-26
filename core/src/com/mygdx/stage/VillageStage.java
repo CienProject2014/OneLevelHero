@@ -166,7 +166,7 @@ public class VillageStage extends BaseOverlapStage {
 		setNullCase(villageInfo);
 	}
 	private void setNullCase(Village villageInfo) {
-		if (positionManager.getVillageDirection() == null) {
+		if (villageInfo.getArrowDirection() == null || positionManager.getVillageDirection() == null) {
 			if (villageInfo.getVillageDirection().equals(VillageDirectionEnum.UP_DOWN)) {
 				positionManager.setVillageDirection(VillageDirectionEnum.DOWN);
 			} else if (villageInfo.getVillageDirection().equals(VillageDirectionEnum.LEFT_RIGHT)) {
@@ -178,9 +178,11 @@ public class VillageStage extends BaseOverlapStage {
 	}
 
 	private void setArrowDirection() {
-		for (Entry<String, VillageDirectionEnum> arrowInfo : villageInfo.getArrowDirection().entrySet()) {
-			if (arrowInfo.getKey().equals(fieldManager.getArrowName())) {
-				positionManager.setVillageDirection(arrowInfo.getValue());
+		if (villageInfo.getArrowDirection() != null) {
+			for (Entry<String, VillageDirectionEnum> arrowInfo : villageInfo.getArrowDirection().entrySet()) {
+				if (arrowInfo.getKey().equals(fieldManager.getArrowName())) {
+					positionManager.setVillageDirection(arrowInfo.getValue());
+				}
 			}
 		}
 	}

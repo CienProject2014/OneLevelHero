@@ -1,25 +1,9 @@
 {
-  "sceneName": "vaical_castle_scene",
+  "sceneName": "credit_scene",
   "composite": {
-    "sImages": [
+    "sComposites": [
       {
         "itemIdentifier": "background",
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "bgvaicalcastle"
-      }
-    ],
-    "sComposites": [
-	{
-        "itemIdentifier": "vaical_castle_headhouse",
-        "x": 788,
-        "y": 1510,
-        "zIndex": 3,
         "layerName": "Default",
         "tint": [
           1,
@@ -30,6 +14,7 @@
         "composite": {
           "sImages": [
             {
+              "itemIdentifier": "1",
               "layerName": "Default",
               "tint": [
                 1,
@@ -37,7 +22,43 @@
                 1,
                 1
               ],
-              "imageName": "vaical-top0002-------1"
+              "imageName": "bgcredit01"
+            },
+            {
+              "itemIdentifier": "2",
+              "zIndex": 1,
+              "layerName": "normal",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "bgcredit02"
+            },
+            {
+              "itemIdentifier": "3",
+              "zIndex": 2,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "bgcredit03"
+            },
+            {
+              "itemIdentifier": "4",
+              "zIndex": 3,
+              "layerName": "pressed2",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "bgcredit04"
             }
           ],
           "layers": [
@@ -49,14 +70,17 @@
             },
             {
               "layerName": "pressed"
+            },
+            {
+              "layerName": "pressed2"
             }
           ]
         }
       },
       {
-        "itemIdentifier": "vaical_castle_colosseum",
-        "x": 1220.0001,
-        "y": 689,
+        "itemIdentifier": "page_up",
+        "x": 68,
+        "y": 963,
         "zIndex": 1,
         "layerName": "Default",
         "tint": [
@@ -75,7 +99,7 @@
                 1,
                 1
               ],
-              "imageName": "vaical-bot0000-------2"
+              "imageName": "credituiarrowdown"
             }
           ],
           "layers": [
@@ -92,9 +116,9 @@
         }
       },
       {
-        "itemIdentifier": "vaical_castle_lab",
-        "x": 395,
-        "y": 1395,
+        "itemIdentifier": "page_down",
+        "x": 68,
+        "y": 58,
         "zIndex": 2,
         "layerName": "Default",
         "tint": [
@@ -113,7 +137,7 @@
                 1,
                 1
               ],
-              "imageName": "vaical-top0001-------2"
+              "imageName": "credituiarrowup"
             }
           ],
           "layers": [
@@ -129,12 +153,11 @@
           ]
         }
       },
-      
       {
-        "itemIdentifier": "6to18",
-        "x": 1438,
-        "y": 1536.5,
-        "zIndex": 4,
+        "itemIdentifier": "close_button",
+        "x": 1763,
+        "y": 987,
+        "zIndex": 3,
         "layerName": "Default",
         "tint": [
           1,
@@ -152,121 +175,7 @@
                 1,
                 1
               ],
-              "imageName": "vaical-top0000-------3"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "6to5",
-        "x": 619.5,
-        "y": 372.5,
-        "zIndex": 5,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "vaical-bot0001-------1"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "camera_down",
-        "x": 1670,
-        "y": 1830,
-        "zIndex": 6,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "townuidown"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "camera_up",
-        "x": 1670,
-        "y": 750,
-        "zIndex": 7,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "townuiup"
+              "imageName": "credituiback"
             }
           ],
           "layers": [

@@ -113,10 +113,9 @@ public class BuildingStage extends BaseOverlapStage {
 					});
 				} else if (objectName.equals("rest")) {
 					ImageButton restButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
-							textureManager.getEtcTexture("stay_button_stay"))));
+							uiComponentAssets.getStayButton())));
 					buttonTable.add(restButton);
 					buttonTable.row();
-
 					restButton.addListener(new SimpleTouchListener() {
 						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
@@ -156,7 +155,6 @@ public class BuildingStage extends BaseOverlapStage {
 		}
 
 	}
-
 	private void makeScene() {
 		buildingInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
 				.get(positionManager.getCurrentSubNodeName());

@@ -87,7 +87,7 @@ public class EncounterStage extends BaseOneLevelStage {
 	// FIXME
 	private TextureRegionDrawable getBackgroundTRD() {
 		if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devil_castle_06")));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getTexture("bg_devil_castle_06")));
 		} else {
 			return new TextureRegionDrawable(
 					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));

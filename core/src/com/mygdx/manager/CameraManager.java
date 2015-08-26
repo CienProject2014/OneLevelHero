@@ -11,8 +11,6 @@ import com.mygdx.stage.BaseOneLevelStage;
 import com.mygdx.stage.BaseOverlapStage;
 
 public class CameraManager {
-	@Autowired
-	private PositionManager positionManager;
 	private OrthographicCamera cam;
 	private int moveFlag;
 	private int direction;

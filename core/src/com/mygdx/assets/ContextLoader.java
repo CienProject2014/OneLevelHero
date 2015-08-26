@@ -27,6 +27,7 @@ public class ContextLoader
 		return context;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file,
 			AssetLoaderParameters<ApplicationContext> parameter) {

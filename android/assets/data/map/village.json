@@ -84,7 +84,7 @@
           "endTime": 22
         }
       },
-      "cobweb_store_03": {
+      "cobweb_drugstore": {
         "buildingName": "물약상점",
         "buildingType": "house",
         "buildingPath": "cobweb_drugstore",
@@ -126,15 +126,6 @@
         "buildingName": "대성당",
         "buildingType": "house",
         "buildingPath": "cobweb_cathedral"
-      },
-      "cobweb_weaponsmith": {
-        "buildingName": "무기공방",
-        "buildingType": "house",
-        "buildingPath": "cobweb_weaponsmith",
-        "targetTime": {
-          "startTime": 6,
-          "endTime": 22
-        }
       }
     }
   },
@@ -156,7 +147,7 @@
           "endTime": 24
         }
       },
-      "oberon_house_02": {
+      "oberon_house02": {
         "buildingName": "오베론 민가",
         "buildingType": "house",
         "buildingPath": "oberon_house02",
@@ -551,7 +542,7 @@
           "endTime": 24
         }
       },
-      "vaical_castle_headhouse ": {
+      "vaical_castle_headhouse": {
         "buildingName": "장로의 집",
         "buildingType": "house",
         "buildingPath": "vaical_castle_headhouse",
@@ -568,11 +559,6 @@
           "startTime": 0,
           "endTime": 24
         }
-      },
-      "vaical_castle_smithy":{
-      	"buildingName" : "대장간",
-      	"buildingType" : "house",
-      	"buildingPath" : "vaical_castle_smithy"
       }
     }
   },
