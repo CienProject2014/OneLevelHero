@@ -65,9 +65,14 @@ public class DungeonStage extends BaseOverlapStage {
 
 	public void initMinimap() {
 
+		String minimapPath = "texture/dungeon_minimap/" + dungeonManager.getMapInfo().getDungeonName() + "_minimap.png";
+
 		blacktile = new Texture(Gdx.files.internal("texture/dungeon_minimap/black_tile.png"));
 
-		map = new Texture(Gdx.files.internal("texture/dungeon_minimap/devil_castle_minimap.png"));
+		map = new Texture(Gdx.files.internal(minimapPath));
+		if (map == null) {
+			map = new Texture(Gdx.files.internal("texture/dungeon_minimap/devil_castle_minimap.png"));
+		}
 
 		maptile = TextureRegion.split(map, map.getWidth() / dungeonManager.getMapInfo().getMapWidth(),
 				map.getHeight() / dungeonManager.getMapInfo().getMapHeight());
@@ -241,6 +246,35 @@ public class DungeonStage extends BaseOverlapStage {
 		resetArrow();
 	}
 
+	public void setEntranceScene() {
+		tableStack.remove();
+		minimapBackground.remove();
+		sceneLoader.getRoot().remove();
+		makeScene(dungeonManager.getMapInfo().getSceneName(1));
+		btnTurn = sceneLoader.getRoot().getCompositeById("back");
+		btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_mid");
+
+		btnRoad[0].addListener(new SimpleTouchListener() {
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				dungeonManager.changeCurrentHeading();
+				dungeonManager.setRecentDungeon(positionManager.getCurrentSubNodeName());
+				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
+			}
+		});
+
+		btnTurn.addListener(new SimpleTouchListener() {
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				actionTurn();
+			}
+		});
+
+		this.addActor(minimapBackground);
+		this.addActor(tableStack);
+		resetArrow();
+	}
+
 	private void setButton(int doorNum) {
 		// FIXME UI
 
@@ -325,12 +359,13 @@ public class DungeonStage extends BaseOverlapStage {
 
 		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
 
-		if (currentNode.chkFlag(DungeonNode.FLG_ENTRANCE)) {
-			dungeonManager.changeCurrentHeading();
-			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
+		if (currentNode.chkFlag(DungeonNode.FLG_ENTRANCE) && dungeonManager.getCurrentHeading() == true) {
+			setEntranceScene();
 		}
 
-		update();
+		else {
+			update();
+		}
 	}
 
 	private void actionMove(int index) {
@@ -351,9 +386,7 @@ public class DungeonStage extends BaseOverlapStage {
 		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
 
 		if (currentNode.chkFlag(DungeonNode.FLG_ENTRANCE)) {
-			dungeonManager.changeCurrentHeading();
-			dungeonManager.setRecentDungeon(positionManager.getCurrentSubNodeName());
-			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
+			setEntranceScene();
 		} else if (currentNode.chkFlag(DungeonNode.FLG_ROAD)) {
 			// screenFactory.show(ScreenEnum.ENCOUNTER);
 			dungeonManager.setRecentDungeon(positionManager.getCurrentSubNodeName());

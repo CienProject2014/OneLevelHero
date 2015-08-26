@@ -24,7 +24,7 @@
         {
           "script": "저장되었습니다.",
           "characterPath": "chest",
-          "backgroundPath": "bg_cobweb_02"
+          "backgroundPath": "black"
         }
        ], "rewards" : [
       	{
@@ -43,14 +43,14 @@
       "eventScenes": [
         {
           "script": "회복되었습니다.",
-          "characterPath": "chest",
-          "backgroundPath": "bg_cobweb_02"
+          "characterPath": "nothing",
+          "backgroundPath": "01"
         }
       ],
       "rewards" : [
       	{
             "rewardType": "rest_in_node",
-            "rewardState": "not_opened"
+            "rewardState": "always_open"
         }
       ]
     }

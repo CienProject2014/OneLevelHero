@@ -3,49 +3,35 @@ package com.mygdx.assets;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.manager.AssetsManager;
 import com.mygdx.model.jsonModel.FrameSheet;
 import com.mygdx.model.jsonModel.StringFile;
 import com.mygdx.util.JsonParser;
 
 public class TextureAssets {
-	@Autowired
-	private AssetsManager assetsManager;
 	private Map<String, StringFile> filePathMap;
 	private Map<String, String> textureMap = new HashMap<>();
 	private Map<String, FrameSheet> animationSheetMap;
 
+	@SuppressWarnings("unchecked")
 	public void loadTexture() {
 		FileHandle file = Gdx.files.local("textureMap.json");
 
 		Json json = new Json();
-		filePathMap = JsonParser.parseMap(StringFile.class,
-				Gdx.files.internal("data/load/file_path.json").readString());
+		filePathMap = JsonParser
+				.parseMap(StringFile.class, Gdx.files.internal("data/load/file_path.json").readString());
 
 		animationSheetMap = JsonParser.parseMap(FrameSheet.class,
 				filePathMap.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
 		textureMap = json.fromJson(HashMap.class, Gdx.files.internal("texture/textureMap.json"));
-		if (Gdx.app.getType() == ApplicationType.Android) {
-			textureMap = json.fromJson(HashMap.class, Gdx.files.internal("texture/textureMap.json"));
-			for (Map.Entry<String, String> entry : textureMap.entrySet()) {
-				// assetsManager.load(entry.getValue(), Texture.class);
-			}
-		} else {
-			directoryTextureMapper(textureMap, "texture");
+		if (Gdx.app.getType() != ApplicationType.Android) {
+			directoryTextureMapperRecursive(textureMap, Gdx.files.internal("./bin/texture"));
 			file.writeString(json.prettyPrint(textureMap), false);
-			textureMap = json.fromJson(HashMap.class, Gdx.files.internal("texture/textureMap.json"));
-			for (Map.Entry<String, String> entry : textureMap.entrySet()) {
-				// assetsManager.load(entry.getValue(), Texture.class);
-			}
 		}
-
 	}
 
 	public String getTexturePath(String textureName) {
@@ -53,19 +39,11 @@ public class TextureAssets {
 	}
 
 	public FrameSheet getAnimationSheet(String sheetName) {
-		return animationSheetMap.get(sheetName);
-	}
-
-	public void directoryTextureMapper(Map<String, String> map, String path) {
-		FileHandle fh;
-
-		if (Gdx.app.getType() == ApplicationType.Android) {
-			fh = Gdx.files.internal(path);
-		} else { // ApplicationType.Desktop ..
-			fh = Gdx.files.internal("./bin/" + path);
+		if (animationSheetMap.containsKey(sheetName)) {
+			return animationSheetMap.get(sheetName);
+		} else {
+			return animationSheetMap.get("attack_swing");
 		}
-
-		directoryTextureMapperRecursive(map, fh);
 	}
 
 	public void directoryTextureMapperRecursive(Map<String, String> map, FileHandle fh) {
