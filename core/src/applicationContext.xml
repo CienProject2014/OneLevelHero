@@ -124,6 +124,8 @@
 		scope="prototype"/>
 	<bean id="characterUiStage" class="com.mygdx.stage.CharacterUiStage"
 		scope="prototype"/>
+	<bean id="creditStage" class="com.mygdx.stage.CreditStage"
+		scope="prototype"/>
 	<bean id="dungeonStage" class="com.mygdx.stage.DungeonStage"
 		scope="prototype"/>
 	<bean id="dungeonEntranceStage" class="com.mygdx.stage.DungeonEntranceStage"
