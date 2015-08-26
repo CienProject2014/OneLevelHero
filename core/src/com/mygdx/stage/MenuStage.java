@@ -19,6 +19,7 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.MusicManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.popup.SoundPopup;
 
@@ -31,6 +32,8 @@ public class MenuStage extends BaseOneLevelStage {
 	private ListenerFactory listenerFactory;
 	@Autowired
 	private MusicManager musicManager;
+	@Autowired
+	private SoundManager soundManager;
 
 	@Autowired
 	private ConstantsAssets constantsAssets;
@@ -75,6 +78,7 @@ public class MenuStage extends BaseOneLevelStage {
 				soundPopup.setListenerFactory(listenerFactory);
 				soundPopup.setConstantsAssets(constantsAssets);
 				soundPopup.setMusicManager(musicManager);
+				soundPopup.setSoundManager(soundManager);
 				soundPopup.initialize();
 				addActor(soundPopup);
 				soundPopup.setVisible(true);
