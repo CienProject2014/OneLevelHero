@@ -14,9 +14,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
 import com.mygdx.enums.JsonEnum;
 import com.mygdx.manager.AssetsManager;
-import com.mygdx.model.jsonModel.MusicFile;
 import com.mygdx.model.jsonModel.StringFile;
-import com.mygdx.util.JsonParser;
 
 public class MusicAssets implements FileAssetsInitializable {
 	@Autowired
@@ -34,22 +32,23 @@ public class MusicAssets implements FileAssetsInitializable {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void set(Map<String, StringFile> filePathMap) {
-		FileHandle file = Gdx.files.local("musicMap.json");
+		FileHandle musicfile = Gdx.files.local("musicMap.json");
 		Json json = new Json();
 		if (Gdx.app.getType() == ApplicationType.Android) {
 			musicMap = json.fromJson(HashMap.class, Gdx.files.internal("music/musicMap.json"));
 		} else {
 			directoryMusicMapper(musicMap, "music");
-			file.writeString(json.prettyPrint(musicMap), false);
+			musicfile.writeString(json.prettyPrint(musicMap), false);
 			musicMap = json.fromJson(HashMap.class, Gdx.files.internal("music/musicMap.json"));
 		}
 
-		Map<String, MusicFile> soundEffectFileMap = JsonParser.parseMap(MusicFile.class,
-				filePathMap.get(JsonEnum.SOUND_EFFECT_FILE_PATH.toString()).loadFile());
-		for (Entry<String, MusicFile> entry : soundEffectFileMap.entrySet()) {
-			soundEffectMap.put(entry.getKey(), entry.getValue().loadFile());
-			// assetsManager.load(soundEffectMap.get(entry.getKey()),
-			// Sound.class);
+		FileHandle soundfile = Gdx.files.local("soundMap.json");
+		if (Gdx.app.getType() == ApplicationType.Android) {
+			soundEffectMap = json.fromJson(HashMap.class, Gdx.files.internal("sound/soundMap.json"));
+		} else {
+			directoryMusicMapper(soundEffectMap, "music");
+			soundfile.writeString(json.prettyPrint(soundEffectMap), false);
+			soundEffectMap = json.fromJson(HashMap.class, Gdx.files.internal("sound/soundMap.json"));
 		}
 
 		// WorldNode MusicList

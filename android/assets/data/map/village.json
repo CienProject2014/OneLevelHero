@@ -349,15 +349,6 @@
           "endTime": 22
         }
       },
-      "redrose_castle_peasanthouse03": {
-        "buildingName": "레드로즈 민가",
-        "buildingType": "house",
-        "buildingPath": "redrose_castle_peasanthouse03",
-        "targetTime": {
-          "startTime": 7,
-          "endTime": 22
-        }
-      },
       "redrose_castle_inn": {
         "buildingName": "레드로즈 여관",
         "buildingType": "inn",
@@ -367,41 +358,19 @@
           "endTime": 24
         }
       },
-      "redrose_castle_square": {
-        "buildingName": "레드로즈 광장",
-        "buildingType": "house",
-        "buildingPath": "redrose_castle_square",
-        "targetTime": {
-          "startTime": 0,
-          "endTime": 24
-        }
+      "redrose_castle_cathedral" : {
+      	"buildingName" : "레드로즈 대성당",
+      	"buildingType" : "house",
+      	"buildingPath" : "redrose_castle_cathedral",
+      	"targetTime" : {
+      		"startTime" : 5,
+      		"endTime" : 21
+      	}
       },
-      "redrose_castle_castle_gate": {
-        "buildingName": "레드로즈 성문",
+      "redrose_castle_castle": {
+        "buildingName": "레드로즈 성",
         "buildingType": "house",
-        "buildingPath": "redrose_castle_castle_gate",
-        "targetTime": {
-          "startTime": 6,
-          "endTime": 23
-        }
-      },
-      "redrose_castle_grocery": {
-        "buildingName": "레드로즈 잡화점",
-        "buildingType": "house",
-        "buildingPath": "redrose_castle_grocery",
-        "targetTime": {
-          "startTime": 0,
-          "endTime": 24
-        }
-      },
-      "redrose_castle_cathedral": {
-        "buildingName": "레드로즈 대성당",
-        "buildingType": "house",
-        "buildingPath": "redrose_castle_castle",
-        "targetTime": {
-          "startTime": 5,
-          "endTime": 21
-        }
+        "buildingPath": "redrose_castle_castle"
       }
     }
   },
@@ -554,7 +523,7 @@
           "endTime": 24
         }
       },
-      "vaical_headhouse ": {
+      "vaical_castle_headhouse ": {
         "buildingName": "장로의 집",
         "buildingType": "house",
         "buildingPath": "vaical_castle_headhouse",
@@ -563,14 +532,19 @@
           "endTime": 24
         }
       },
-      "vaical_colosseum": {
+      "vaical_castle_colosseum": {
         "buildingName": "콜로세움",
         "buildingType": "house",
-        "buildingPath": "vaical_colosseum",
+        "buildingPath": "vaical_castle_colosseum",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
         }
+      },
+      "vaical_castle_smithy":{
+      	"buildingName" : "대장간",
+      	"buildingType" : "house",
+      	"buildingPath" : "vaical_castle_smithy"
       }
     }
   },
@@ -628,64 +602,64 @@
           "endTime": 22
         }
       },
-      "southcape_peasanthouse_01": {
+      "southcape_peasanthouse01": {
         "buildingName": "민가1",
         "buildingType": "house",
-        "buildingPath": "southcape_peasanthouse_01",
+        "buildingPath": "southcape_peasanthouse01",
         "targetTime": {
           "startTime": 6,
           "endTime": 24
         }
       },
-      "southcape_peasanthouse_02": {
+      "southcape_peasanthouse02": {
         "buildingName": "민가2",
         "buildingType": "house",
-        "buildingPath": "southcape_peasanthouse_02",
+        "buildingPath": "southcape_peasanthouse02",
         "targetTime": {
           "startTime": 6,
           "endTime": 24
         }
       },
-      "southcape_peasanthouse_03": {
+      "southcape_peasanthouse03": {
         "buildingName": "민가3",
         "buildingType": "house",
-        "buildingPath": "southcape_peasanthouse_03",
+        "buildingPath": "southcape_peasanthouse03",
         "targetTime": {
           "startTime": 6,
           "endTime": 24
         }
       },
-      "southcape_peasanthouse_04": {
+      "southcape_peasanthouse04": {
         "buildingName": "민가4",
         "buildingType": "house",
-        "buildingPath": "southcape_peasanthouse_04",
+        "buildingPath": "southcape_peasanthouse04",
         "targetTime": {
           "startTime": 6,
           "endTime": 24
         }
       },
-      "southcape_peasanthouse_05": {
+      "southcape_peasanthouse05": {
         "buildingName": "민가5",
         "buildingType": "house",
-        "buildingPath": "southcape_peasanthouse_05",
+        "buildingPath": "southcape_peasanthouse05",
         "targetTime": {
           "startTime": 6,
           "endTime": 24
         }
       },
-      "southcape_peasanthouse_06": {
+      "southcape_peasanthouse06": {
         "buildingName": "민가6",
         "buildingType": "house",
-        "buildingPath": "southcape_peasanthouse_06",
+        "buildingPath": "southcape_peasanthouse06",
         "targetTime": {
           "startTime": 6,
           "endTime": 24
         }
       },
-      "southcape_port": {
+      "southcape_dock": {
         "buildingName": "항구",
         "buildingType": "house",
-        "buildingPath": "southcape_port",
+        "buildingPath": "southcape_dock",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
