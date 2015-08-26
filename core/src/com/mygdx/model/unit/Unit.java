@@ -5,11 +5,9 @@ import java.util.List;
 
 import com.mygdx.model.battle.Skill;
 import com.mygdx.unitStrategy.BattleStrategy;
-import com.mygdx.unitStrategy.UnusualConditionStrategy;
 
 public abstract class Unit implements Comparable<Unit> {
 	private BattleStrategy battleStrategy;
-	private UnusualConditionStrategy unusualConditionStrategy;
 	private String facePath;
 	private String name;
 	protected Status status;
@@ -83,10 +81,6 @@ public abstract class Unit implements Comparable<Unit> {
 		this.actingPower = actingPower;
 	}
 
-	public void beInUnusualCondition(String unusualConditionName) {
-		unusualConditionStrategy.beInUnusualCondition(this, unusualConditionName);
-	}
-
 	@Override
 	public int compareTo(Unit obj) {
 		if (this.getGauge() == obj.getGauge()) {
@@ -145,14 +139,6 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setAttackStrategy(BattleStrategy attackStrategy) {
 		this.battleStrategy = attackStrategy;
-	}
-
-	public UnusualConditionStrategy getUnusualConditionStrategy() {
-		return unusualConditionStrategy;
-	}
-
-	public void setUnusualConditionStrategy(UnusualConditionStrategy unusualConditionStrategy) {
-		this.unusualConditionStrategy = unusualConditionStrategy;
 	}
 
 	public List<Skill> getSkills() {
