@@ -39,6 +39,10 @@ bust_resident_05: {
 	class: java.lang.String,
 	value: texture/character/bust_resident_05.png/
 },
+battle_kentaurous_bow_big: {
+	class: java.lang.String,
+	value: texture/monster/battle_kentaurous_bow_big.png/
+},
 bust_keinwhistern_01: {
 	class: java.lang.String,
 	value: texture/character/bust_keinwhistern_01.png/
@@ -54,6 +58,10 @@ monster_bear: {
 battle_mawang_03_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_mawang_03_small.png/
+},
+battle_kentaurous_bow_small: {
+	class: java.lang.String,
+	value: texture/monster/battle_kentaurous_bow_small.png/
 },
 monster_chilly_ghoul: {
 	class: java.lang.String,
@@ -2142,6 +2150,10 @@ monster_troll: {
 battle_rabbit_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_rabbit_small.png/
+},
+monster_kentaurous_bow: {
+	class: java.lang.String,
+	value: texture/monster/monster_kentaurous_bow.png/
 },
 monster_clam: {
 	class: java.lang.String,

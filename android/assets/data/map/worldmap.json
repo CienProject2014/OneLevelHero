@@ -16,7 +16,7 @@
         "arrowName": "1to5",
         "fieldList": [
           "blackwood_forest",
-          "blackwood_mountain"
+          "blackwood_forest"
         ]
       },
       "blackwood_forest_dungeon": {
@@ -111,7 +111,7 @@
       "blackwood": {
         "arrowName": "5to1",
         "fieldList": [
-          "blackwood_mountain",
+          "blackwood_forest",
           "elven_forest"
         ]
       },
@@ -126,10 +126,10 @@
       "vaical_castle": {
         "arrowName": "5to6",
         "fieldList": [
-          "blackwood_mountain",
-          "blackwood_mountain",
-          "blackwood_mountain",
-          "blackwood_mountain"
+          "blackwood_forest",
+          "blackwood_forest",
+          "blackwood_forest",
+          "blackwood_forest"
         ]
       }
     }
@@ -141,10 +141,10 @@
       "middle_ridge": {
         "arrowName": "6to5",
         "fieldList": [
-          "blackwood_mountain",
-          "blackwood_mountain",
-          "blackwood_mountain",
-          "blackwood_mountain"
+          "blackwood_forest",
+          "blackwood_forest",
+          "blackwood_forest",
+          "blackwood_forest"
         ]
       },
       "golden_lake": {
