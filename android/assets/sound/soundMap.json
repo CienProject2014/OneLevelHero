@@ -15,6 +15,10 @@ sleep: {
 	class: java.lang.String,
 	value: sound/sleep.mp3/
 },
+attack_cutting: {
+	class: java.lang.String,
+	value: sound/attack_cutting.mp3/
+},
 notice_level_up: {
 	class: java.lang.String,
 	value: sound/notice_level_up.mp3/
@@ -58,10 +62,6 @@ heal: {
 lock: {
 	class: java.lang.String,
 	value: sound/lock.mp3/
-},
-smash: {
-	class: java.lang.String,
-	value: sound/smash.mp3/
 },
 pierearrow: {
 	class: java.lang.String,

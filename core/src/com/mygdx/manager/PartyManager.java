@@ -76,18 +76,21 @@ public class PartyManager {
 
 	public void calLevel() {
 		for (Hero hero : getPartyList()) {
-			if (hero.getStatus().getExperience() < 0) {
-				int exp = hero.getStatus().getExperience();
-				hero.getStatus().setLevel(hero.getStatus().getLevel() - 1);
-				levelDown(hero);
-				hero.getStatus().setExperience(hero.getStatus().getMaxExperience() - exp);
-			} else if (hero.getStatus().getExperience() >= hero.getStatus().getMaxExperience()) {
-				int exp = hero.getStatus().getExperience() - hero.getStatus().getMaxExperience();
-				hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
-				levelUp();
-				hero.getStatus().setExperience(exp);
+			if (hero.getStatus().getLevel() == 1) {
 			} else {
+				if (hero.getStatus().getExperience() < 0) {
+					int exp = hero.getStatus().getExperience();
+					hero.getStatus().setLevel(hero.getStatus().getLevel() - 1);
+					levelDown(hero);
+					hero.getStatus().setExperience(hero.getStatus().getMaxExperience() - exp);
+				} else if (hero.getStatus().getExperience() >= hero.getStatus().getMaxExperience()) {
+					int exp = hero.getStatus().getExperience() - hero.getStatus().getMaxExperience();
+					hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
+					levelUp();
+					hero.getStatus().setExperience(exp);
+				} else {
 
+				}
 			}
 		}
 	}
