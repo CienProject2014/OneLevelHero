@@ -3,17 +3,12 @@
         "name": "성스러운 십자가",
         "skillType": "magic",
         "skillTargetType": "monster",
-        "skillEffectType": "attack",
+        "skillEffectType": "add_state",
+		"buffName" : "burn",
         "costGauge": "30",
         "costCasting": "1",
         "elementType": "none",
         "magicFactor": "100",
-        "hitboxCenter": [ 1, 1 ],
-        "hitboxShape": [
-            [ 0, 1, 0 ],
-            [ 1, 1, 1 ],
-            [ 0, 1, 0 ]
-        ],
         "description": "성스러운 십자가 모양의 빛으로 적을 공격한다."
   },
   "provoke": {

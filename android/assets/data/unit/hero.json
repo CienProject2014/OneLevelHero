@@ -23,7 +23,6 @@
       "clothes": "iron_armor"
     },
     "skillList": [
-	  "cut_01",
       "gale",
       "breeze",
       "strong_breeze",
@@ -159,10 +158,7 @@
       "snipe",
       "return",
       "detailedshoot",
-      "multishoot",
-      "bow_mastery",
-      "armor_mastery",
-      "cateyes"
+      "multishoot"
     ]
   },
   "yalluisroy": {
