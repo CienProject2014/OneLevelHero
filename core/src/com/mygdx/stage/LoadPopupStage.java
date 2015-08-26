@@ -145,9 +145,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_01);
 				if (saveManager.isLoadable(SaveVersion.SAVE_01)) {
 					musicManager.stopMusic();
-					System.out.println("저장 전 볼륨" + musicManager.getMusicVolume());
 					saveManager.loadSaveVersion(SaveVersion.SAVE_01);
-					System.out.println("저장 후 볼륨" + musicManager.getMusicVolume());
 					movingManager.goCurrentPosition();
 					super.touchUp(event, x, y, pointer, button);
 				}

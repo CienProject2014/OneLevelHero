@@ -93,8 +93,8 @@ public class BuildingStage extends BaseOverlapStage {
 		Table backgroundTable = new Table();
 		backgroundTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
 		backgroundTable.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
-		TextureRegionDrawable backgroundImage = new TextureRegionDrawable(new TextureRegion(
-				textureManager.getBackgroundTexture(buildingInfo.getBuildingPath())));
+		TextureRegionDrawable backgroundImage = new TextureRegionDrawable(
+				new TextureRegion(textureManager.getBackgroundTexture(buildingInfo.getBuildingPath())));
 		backgroundTable.setBackground(backgroundImage);
 		addActor(backgroundTable);
 	}
@@ -142,7 +142,6 @@ public class BuildingStage extends BaseOverlapStage {
 				gameObjectButton.setVisible(true);
 				setGameObjectVisibility(gameObjectButton, gameObject.getObjectType());
 				setGameObjectFunction(gameObjectButton, objectName);
-				System.out.println(objectName);
 				if (objectName.equals("save")) {
 					gameObjectButton.addListener(new SimpleTouchListener() {
 						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
@@ -189,21 +188,21 @@ public class BuildingStage extends BaseOverlapStage {
 
 	private void setGameObjectVisibility(CompositeItem objectButton, GameObjectEnum gameObjectEnum) {
 		switch (gameObjectEnum) {
-			case NORMAL :
-				objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), false);
-				objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), true);
-				objectButton.setTouchable(Touchable.enabled);
-				break;
-			case PRESSED :
-				objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), true);
-				objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), false);
-				objectButton.setTouchable(Touchable.disabled);
-				break;
-			case FUNCTION :
-				break;
-			default :
-				Gdx.app.log("BuildingStage", "NULL GameObjectEnum Type");
-				break;
+		case NORMAL:
+			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), false);
+			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), true);
+			objectButton.setTouchable(Touchable.enabled);
+			break;
+		case PRESSED:
+			objectButton.setLayerVisibilty(GameObjectEnum.PRESSED.toString(), true);
+			objectButton.setLayerVisibilty(GameObjectEnum.NORMAL.toString(), false);
+			objectButton.setTouchable(Touchable.disabled);
+			break;
+		case FUNCTION:
+			break;
+		default:
+			Gdx.app.log("BuildingStage", "NULL GameObjectEnum Type");
+			break;
 		}
 	}
 }
