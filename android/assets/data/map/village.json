@@ -386,7 +386,7 @@
       "mirage_port_inn": {
         "buildingName": "미라지 포트 여관",
         "buildingType": "inn",
-        "buildingPath": "mirage_port_inn",
+        "buildingPath": "blackwood_inn",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
@@ -540,13 +540,13 @@
           "startTime": 0,
           "endTime": 24
         }
-      },
-      "vaical_castle_smithy":{
-      	"buildingName" : "대장간",
-      	"buildingType" : "house",
-      	"buildingPath" : "vaical_castle_smithy"
       }
     }
+  },
+  "bonichea" : {
+  	"villageName" : "보니체아",
+  	"villageDirection" : "left_right",
+  	"sceneName" : "bonichea_scene"
   },
   "southcape": {
     "villageName": "사우스케이프",

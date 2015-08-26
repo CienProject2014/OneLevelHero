@@ -11,14 +11,14 @@
           1,
           1
         ],
-        "imageName": "bgvaical1"
+        "imageName": "bgvaicalcastle"
       }
     ],
     "sComposites": [
       {
-        "itemIdentifier": "vaical_castle_lab",
-        "x": 318,
-        "y": 1464.5,
+        "itemIdentifier": "vaical_castle_colosseum",
+        "x": 1220.0001,
+        "y": 689,
         "zIndex": 1,
         "layerName": "Default",
         "tint": [
@@ -30,8 +30,6 @@
         "composite": {
           "sImages": [
             {
-              "scaleX": 5,
-              "scaleY": 5,
               "layerName": "Default",
               "tint": [
                 1,
@@ -39,7 +37,45 @@
                 1,
                 1
               ],
-              "imageName": "invenuipage01"
+              "imageName": "vaical-bot0000-------2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "vaical_castle_lab",
+        "x": 395,
+        "y": 1395,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "vaical-top0001-------2"
             }
           ],
           "layers": [
@@ -57,48 +93,8 @@
       },
       {
         "itemIdentifier": "vaical_castle_headhouse",
-        "x": 831,
-        "y": 1722.5,
-        "zIndex": 2,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "scaleX": 5,
-              "scaleY": 5,
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuipage01"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "vaical_castle_colosseum",
-        "x": 1409,
-        "y": 1544.5,
+        "x": 788,
+        "y": 1510,
         "zIndex": 3,
         "layerName": "Default",
         "tint": [
@@ -110,8 +106,6 @@
         "composite": {
           "sImages": [
             {
-              "scaleX": 5,
-              "scaleY": 5,
               "layerName": "Default",
               "tint": [
                 1,
@@ -119,128 +113,7 @@
                 1,
                 1
               ],
-              "imageName": "invenuipage01"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "vaical_castle_smithy",
-        "x": 926.99994,
-        "y": 1005.49994,
-        "zIndex": 4,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "scaleX": 5,
-              "scaleY": 5,
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuipage01"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "vaical_castle_peasanthouse",
-        "x": 887,
-        "y": 1458.5,
-        "zIndex": 5,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "scaleX": 5,
-              "scaleY": 5,
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuipage01"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "6to5",
-        "x": 607,
-        "y": 378.5,
-        "zIndex": 7,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "6to5",
-              "scaleX": 3.3333333,
-              "scaleY": 3.3333333,
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuiup"
+              "imageName": "vaical-top0002-------1"
             }
           ],
           "layers": [
@@ -258,9 +131,9 @@
       },
       {
         "itemIdentifier": "6to18",
-        "x": 1523,
-        "y": 1791.5,
-        "zIndex": 8,
+        "x": 1438,
+        "y": 1536.5,
+        "zIndex": 4,
         "layerName": "Default",
         "tint": [
           1,
@@ -271,9 +144,6 @@
         "composite": {
           "sImages": [
             {
-              "itemIdentifier": "6to5",
-              "scaleX": 3.3333333,
-              "scaleY": 3.3333333,
               "layerName": "Default",
               "tint": [
                 1,
@@ -281,7 +151,45 @@
                 1,
                 1
               ],
-              "imageName": "invenuiup"
+              "imageName": "vaical-top0000-------3"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "6to5",
+        "x": 619.5,
+        "y": 372.5,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "vaical-bot0001-------1"
             }
           ],
           "layers": [
@@ -299,9 +207,9 @@
       },
       {
         "itemIdentifier": "camera_down",
-        "x": 1650,
-        "y": 1810,
-        "zIndex": 9,
+        "x": 1670,
+        "y": 1830,
+        "zIndex": 6,
         "layerName": "Default",
         "tint": [
           1,
@@ -337,9 +245,9 @@
       },
       {
         "itemIdentifier": "camera_up",
-        "x": 1650,
-        "y": 730,
-        "zIndex": 10,
+        "x": 1670,
+        "y": 750,
+        "zIndex": 7,
         "layerName": "Default",
         "tint": [
           1,
