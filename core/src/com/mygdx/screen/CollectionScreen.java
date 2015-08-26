@@ -45,28 +45,28 @@ public class CollectionScreen extends BaseScreen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.ENDING);
+				screenFactory.push(ScreenEnum.ENDING);
 			}
 		});
 		cgButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.CG);
+				screenFactory.push(ScreenEnum.CG);
 			}
 		});
 		bgmButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.BGM);
+				screenFactory.push(ScreenEnum.BGM);
 			}
 		});
 		backButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.MENU);
+				screenFactory.pop();
 			}
 		});
 
