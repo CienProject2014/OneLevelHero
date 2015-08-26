@@ -29,6 +29,12 @@
         "row": 2,
         "column": 6
     },
+	"back_of_sword" : {
+		"filePath"  :"texture/animation_sheet/back_of_sword.png",
+		"frameNumber" : 10,
+		"row" : 2,
+		"column" : 5
+	},
     "meteor": {
         "filePath": "texture/animation_sheet/meteor.png",
         "frameNumber": 16,
@@ -47,10 +53,4 @@
         "row": 3,
         "column": 5
     },
-    "thunder_storm": {
-        "filePath": "texture/animation_sheet/thunder_storm.png",
-        "frameNumber": 15,
-        "row": 3,
-        "column": 5
-    }
 }

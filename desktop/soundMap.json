@@ -91,13 +91,13 @@ stap: {
 	class: java.lang.String,
 	value: sound/stap.mp3/
 },
-smash: {
-	class: java.lang.String,
-	value: sound/smash.mp3/
-},
 eat_snack: {
 	class: java.lang.String,
 	value: sound/eat_snack.mp3/
+},
+attack_cutting: {
+	class: java.lang.String,
+	value: sound/attack_cutting.mp3/
 },
 open_box: {
 	class: java.lang.String,

@@ -10452,7 +10452,9 @@
         "eventScenes": [
           {
             "script": "(우리를 쳐다보고 있다.)",
-            "characterPath": "bust_plecha_01",
+            "characterPath": "plecha",
+            "faceNumber" : "01",
+            "speakerPosition" : "right",
             "backgroundPath": "kadilla_castle_square"
           }
         ]
@@ -10465,92 +10467,92 @@
           {
             "script": "혹시, 그쪽이 플레챠씨인가요?",
             "characterPath": "yongsa",
-            "faceNumber" : "01",
-            "speakerPosition" : "left",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "(끄덕 끄덕)",
             "characterPath": "plecha",
-            "faceNumber" : "01",
-            "speakerPosition" : "right",
+            "faceNumber": "01",
+            "speakerPosition": "right",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "아, 맞군요. 안녕하세요. 용사입니다.",
             "characterPath": "yongsa",
-            "faceNumber" : "01",
-            "speakerPosition" : "left",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "전 파라스입니다.",
             "characterPath": "parath",
-            "faceNumber" : "01",
-            "speakerPosition" : "left",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "리리스에요.",
             "characterPath": "lilis",
-            "faceNumber" : "01",
-            "speakerPosition" : "left",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "…일행은 이게 다인가?",
             "characterPath": "plecha",
-            "faceNumber" : "01",
-            "speakerPosition" : "right",
+            "faceNumber": "01",
+            "speakerPosition": "right",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "예, 세 명뿐이에요.",
             "characterPath": "lilis",
-            "faceNumber" : "01",
-            "speakerPosition" : "left",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "그럼 출발하도록 하지.",
             "characterPath": "plecha",
-            "faceNumber" : "01",
-            "speakerPosition" : "right",
+            "faceNumber": "01",
+            "speakerPosition": "right",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "어… 가버렸다.",
             "characterPath": "yongsa",
-            "faceNumber" : "10",
-            "speakerPosition" : "left",
+            "faceNumber": "10",
+            "speakerPosition": "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "엄청 쿨 한 성격이네…",
             "characterPath": "parath",
-            "faceNumber" : "10",
-            "speakerPosition" : "left",
+            "faceNumber": "10",
+            "speakerPosition": "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "저기, 두 분은 못 보셨나요?",
             "characterPath": "lilis",
-            "faceNumber" : "08",
-            "speakerPosition" : "left",
+            "faceNumber": "08",
+            "speakerPosition": "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "엥? 뭘?",
             "characterPath": "yongsa",
-            "faceNumber" : "10",
-            "speakerPosition" : "left",
+            "faceNumber": "10",
+            "speakerPosition": "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "저 분, 수인종이에요.",
             "characterPath": "lilis",
-            "faceNumber" : "08",
-            "speakerPosition" : "left",
+            "faceNumber": "08",
+            "speakerPosition": "left",
             "backgroundPath": "kadilla_castle_square"
           }
         ],
@@ -10578,25 +10580,29 @@
         {
           "script": "…",
           "characterPath": "plecha",
-          "faceNumber" : "01",
+          "faceNumber": "01",
+          "speakerPosition" : "right",
           "backgroundPath": "kadilla_castle_square"
         },
         {
           "script": "……",
           "characterPath": "plecha",
-           "faceNumber" : "01",
+          "faceNumber": "01",
+          "speakerPosition" : "right",
           "backgroundPath": "kadilla_castle_square"
         },
         {
           "script": "………",
           "characterPath": "plecha",
-           "faceNumber" : "01",
+          "faceNumber": "01",
+          "speakerPosition" : "right",
           "backgroundPath": "kadilla_castle_square"
         },
         {
           "script": "………?",
           "characterPath": "plecha",
-           "faceNumber" : "01",
+          "faceNumber": "01",
+          "speakerPosition" : "right",
           "backgroundPath": "kadilla_castle_square"
         }
       ]
@@ -10629,7 +10635,7 @@
       ]
     }
   },
-  "kadilla_castle_smith": {
+  "kadilla_castle_smithy_orner": {
     "name": "대장장이",
     "events": {
       "1": {
@@ -10680,7 +10686,7 @@
       ]
     }
   },
-  "kadilla_castle_grocery": {
+  "kadilla_castle_grocery_orner": {
     "name": "잡화점 주인",
     "events": {
       "1": {
@@ -10707,7 +10713,7 @@
       ]
     }
   },
-  "kadilla_castle_clothing": {
+  "kadilla_castle_clothing_store_orner": {
     "name": "옷가게 주인",
     "events": {
       "1": {
@@ -10746,11 +10752,7 @@
       ]
     }
   },
-  "kadilla_castle_guardian": {
-    "name": "카딜라 성 경비병",
-    "events": {}
-  },
-  "kadilla_castle_inn": {
+  "kadilla_castle_inn_orner": {
     "name": "여관주인",
     "events": {
       "1": {
@@ -10777,6 +10779,10 @@
       ]
     }
   },
+  "kadilla_castle_guardian": {
+    "name": "카딜라 성 경비병",
+    "events": {}
+  },
   "officer": {
     "name": "행정관"
   },
@@ -10792,7 +10798,7 @@
   "barmanager": {
     "name": "점장"
   },
-  "southcape_smith": {
+  "southcape_smithy_orner": {
     "name": "대장장이",
     "events": {
       "1": {
@@ -10942,7 +10948,7 @@
       ]
     }
   },
-  "southcape_inn": {
+  "southcape_inn_orner": {
     "name": "여관주인",
     "events": {
       "1": {
@@ -10979,7 +10985,9 @@
         "eventScenes": [
           {
             "script": "어서오세요. 저는 여관과 잡화점에서 일하고 있답니다.",
-            "characterPath": "bust_mea_01",
+            "characterPath": "mea",
+            "faceNumber" : "01",
+            "speakerPosition" : "right",
             "backgroundPath": "southcape_inn"
           }
         ]
@@ -10990,43 +10998,50 @@
         "eventType": "chat",
         "eventScenes": [
           {
-            "characterPath": "bust_mea_01",
-            "speakerPosition": "left",
+             "characterPath": "mea",
+            "faceNumber" : "01",
+            "speakerPosition" : "right",
             "backgroundPath": "southcape_inn",
             "script": "플레챠 언니, 저번에 카딜라로 돌아갈 때 실수로 옷을 놓고 갔더라고."
           },
           {
-            "characterPath": "bust_mea_01",
-            "speakerPosition": "left",
+             "characterPath": "mea",
+            "faceNumber" : "01",
+            "speakerPosition" : "right",
             "backgroundPath": "southcape_inn",
             "script": "내가 챙겨놨으니 망정이지 이 좋은 옷을 잃어버릴 뻔 했잖아."
           },
           {
-            "characterPath": "bust_mea_01",
-            "speakerPosition": "left",
+             "characterPath": "mea",
+            "faceNumber" : "01",
+            "speakerPosition" : "right",
             "backgroundPath": "southcape_inn",
             "script": "지금 가져올게."
           },
           {
-            "characterPath": "bust_mea_01",
+             "characterPath": "nothing",
+            "faceNumber" : "01",
             "speakerPosition": "left",
             "backgroundPath": "southcape_inn",
             "script": "..."
           },
           {
-            "characterPath": "bust_mea_01",
+             "characterPath": "nothing",
+            "faceNumber" : "01",
             "speakerPosition": "left",
             "backgroundPath": "southcape_inn",
             "script": "......"
           },
           {
-            "characterPath": "bust_mea_01",
-            "speakerPosition": "left",
+             "characterPath": "mea",
+            "faceNumber" : "01",
+            "speakerPosition" : "right",
             "backgroundPath": "southcape_inn",
             "script": "자, 여기. 이번에야 말로 잊지말고 챙겨가도록 해."
           },
           {
             "characterPath": "nothing",
+            "faceNumber" : "01",
             "speakerPosition": "left",
             "backgroundPath": "southcape_inn",
             "script": "저격 복장을 받았다."
@@ -11034,13 +11049,10 @@
         ],
         "rewards": [
           {
-            "rewardType": "item",
+            "rewardType": "item_handgrip",
             "rewardState": "not_opened",
             "rewardComponent": [
-              {
-                "name": "sniper_armor",
-                "value": "1"
-              }
+               "sniper_armor"
             ]
           }
         ]
@@ -11392,7 +11404,9 @@
       "eventScenes": [
         {
           "script": "어서오세요!",
-          "characterPath": "npc_mea",
+          "characterPath": "mea",
+          "speakerPosition" : "right",
+          "faceNumber" : "01",
           "backgroundPath": "southcape_inn"
         }
       ]
@@ -12039,7 +12053,7 @@
       ]
     }
   },
-  "cobweb_grocery": {
+  "cobweb_grocery_orner": {
     "name": "잡화점 주인",
     "events": {
       "1": {
@@ -12267,7 +12281,7 @@
       ]
     }
   },
-  "cobweb_smith": {
+  "cobweb_smithy_orner": {
     "name": "대장장이",
     "events": {
       "1": {
@@ -12593,7 +12607,7 @@
       ]
     }
   },
-  "cobweb_inn": {
+  "cobweb_inn_orner": {
     "name": "여관주인 ",
     "events": {
       "1": {
@@ -13054,7 +13068,7 @@
       ]
     }
   },
-  "oberon_inn": {
+  "oberon_inn_orner": {
     "name": "여관주인",
     "events": {
       "1": {
@@ -13514,7 +13528,7 @@
       ]
     }
   },
-  "middleridge_inn": {
+  "middleridge_inn_orner": {
     "name": "여관주인",
     "events": {
       "1": {
@@ -14322,7 +14336,7 @@
       ]
     }
   },
-  "bonichea_inn": {
+  "bonichea_inn_orner": {
     "name": "여관주인",
     "events": {
       "1": {
@@ -14675,7 +14689,7 @@
       ]
     }
   },
-  "blackwood_grocery": {
+  "blackwood_grocery_orner": {
     "name": "잡화점 주인",
     "facePath": "blackwood_grocery",
     "events": {
@@ -15075,7 +15089,7 @@
       ]
     }
   },
-  "blackwood_inn": {
+  "blackwood_inn_orner": {
     "name": "여관주인",
     "events": {
       "1": {
@@ -15197,6 +15211,84 @@
     },
     "events": {}
   },
+  "kadilla_castle_duke_castle": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "kadilla_castle_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "kadilla_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "kadilla_castle_grocery": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "kadilla_castle_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "kadilla_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "kadilla_castle_smithy": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "kadilla_castle_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "kadilla_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
   "kadilla_castle_school": {
     "events": {
       "1": {
@@ -15223,7 +15315,7 @@
       }
     }
   },
-  "kadilla_castle_duke_castle": {
+  "kadilla_castle_clothing_store": {
     "events": {
       "1": {
         "eventState": "always_open",
@@ -15234,7 +15326,7 @@
             "speakerPosition": "left",
             "characterPath": "nothing",
             "faceNumber": "01",
-            "backgroundPath": "kadilla_castle_02"
+            "backgroundPath": "kadilla_castle_03"
           }
         ],
         "rewards": [
@@ -15243,6 +15335,942 @@
             "rewardState": "always_open",
             "rewardComponent": [
               "kadilla_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "oberon_peasanthouse01": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "oberon_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "oberon"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "oberon_peasanthouse02": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "oberon_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "oberon"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "oberon_peasanthouse03": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "oberon_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "oberon"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "oberon_peasanthouse04": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "oberon_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "oberon"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "oberon_grocery": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "oberon_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "oberon"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "southcape_peasanthouse01": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "southcape_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "southcape"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "southcape_peasanthouse02": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "southcape_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "southcape"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "southcape_grocery": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "southcape_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "southcape"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "southcape_headhouse": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "southcape_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "southcape"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "southcape_peasanthouse03": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "southcape_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "southcape"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "southcape_peasanthouse04": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "southcape_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "southcape"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "southcape_peasanthouse05": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "southcape_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "southcape"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "southcape_peasanthouse06": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "southcape_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "southcape"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "southcape_bar": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "southcape_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "southcape"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "southcape_smithy": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "southcape_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "southcape"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "mirage_port_hermes": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "mirage_port_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "mirage_port"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "mirage_port_kaido": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "mirage_port_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "mirage_port"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "mirage_port_dock": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "mirage_port_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "mirage_port"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cobweb_library": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "cobweb_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "cobweb"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cobweb_villagehall": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "cobweb_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "cobweb"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cobweb_cathedral": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "cobweb_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "cobweb"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cobweb_store1": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "cobweb_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "cobweb"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cobweb_store2": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "cobweb_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "cobweb"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "blackwood_grocery": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "blackwood_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "blackwood"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "blackwood_headhouse": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "blackwood_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "blackwood"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "blackwood_peasanthouse": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "blackwood_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "blackwood"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "vaical_castle_lab": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "vaical_castle_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "vaical_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "vaical_castle_headhouse": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "vaical_castle_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "vaical_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "vaical_castle_colosseum": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "vaical_castle_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "vaical_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "middle_ridge_evergnailhouse": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "middle_ridge_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "middle_ridge"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "middle_ridge_willas": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "middle_ridge_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "middle_ridge"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "middle_ridge_whisternhouse": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "middle_ridge_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "middle_ridge"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "redrose_castle_peasanthouse01": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "redrose_castle_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "redrose_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "redrose_castle_peasanthouse02": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "redrose_castle_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "redrose_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "redrose_castle_cathedral": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "redrose_castle_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "redrose_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "redrose_castle_castle": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "redrose_castle_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "redrose_castle"
             ]
           }
         ]
