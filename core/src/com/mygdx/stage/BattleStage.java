@@ -456,8 +456,8 @@ public class BattleStage extends BaseOneLevelStage {
 			}
 		}
 		check = 50 + battleManager.getSelectedMonster().getStatus().getSpeed() - minSpeed;
-		if (check < 15) {
-			check = 15;
+		if (check < 5) {
+			check = 5;
 		}
 		battleManager.setRunPercent(check);
 	}
