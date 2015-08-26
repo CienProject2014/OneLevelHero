@@ -26,8 +26,8 @@ package com.mygdx.enums;
  */
 public class WeaponEnum {
 	public enum WeaponType {
-		ONE_HANDED_SWORD("one_handed_sword"), TWO_HANDED_SWORD(
-				"two_handed_sword"), BOOK("book"), BOW("bow"), STAFF("staff");
+		ONE_HANDED_SWORD("one_handed_sword"), TWO_HANDED_SWORD("two_handed_sword"), BOOK("book"), BOW("bow"), STAFF(
+				"staff");
 		private String weaponType;
 
 		private WeaponType(String weaponType) {
@@ -41,7 +41,7 @@ public class WeaponEnum {
 	}
 
 	public enum AttackType {
-		SLASH("slash"), STAB("stab"), SLASH_AND_STAB("slash_and_stab");
+		SMASH("smash"), ARROW("arrow"), SLASH("slash"), STAB("stab"), SLASH_AND_STAB("slash_and_stab");
 		private String attackType;
 
 		private AttackType(String attackType) {

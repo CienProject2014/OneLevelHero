@@ -73,6 +73,8 @@ public class RewardManager {
 						break;
 					case GOLD :
 						break;
+					case ITEM_CLOTHES :
+						bagManager.possessItem(ItemEnum.CLOTHES, peekedReward.getRewardComponent().get(0));
 					case ITEM_HANDGRIP :
 						bagManager.possessItem(ItemEnum.HANDGRIP, peekedReward.getRewardComponent().get(0));
 						break;

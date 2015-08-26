@@ -15,7 +15,7 @@
       "defense": 5,
       "magicDefense": 25
     },
-    "description": "중앙 사제들이 입는 복장이다."
+    "description": "회복 마법의 회복량을 3% 증가시킨다. 중앙 사제들이 입는 복장이다."
   },
   "necromantic_dress": {
      "itemType" : "clothes",
@@ -30,6 +30,112 @@
     },
     "description": "강령식에 어울리는 복장이다."
   },
+  "magician_dress": {
+     "itemType" : "clothes",
+    "name": "마술사의 옷",
+    "itemPath" : "magician_dress",
+    "category": "로브",
+    "grade": "일반",
+       "effectStatusList" : [ "magicAttack","defense", "magicDefense"],
+    "effectStatus": {
+      "magicAttack":5,
+      "defense": 5,
+      "magicDefense": 20
+    },
+    "description": "마력을 살짝 증가시켜 주는 로브"
+  },
+  "rune_words_lob": {
+     "itemType" : "clothes",
+    "name": "룬 문자 로브",
+    "itemPath" : "rune_words_lob",
+    "category": "로브",
+    "grade": "레어",
+       "effectStatusList" : [ "defense", "magicDefense"],
+    "effectStatus": {
+      "defense": 20,
+      "magicDefense": 50
+    },
+    "description": "모든 속성 저항력 5% 증가. 알 수 없는 룬 문자가 로브를 덮고 있다."
+  },
+  "grudge_lob": {
+     "itemType" : "clothes",
+    "name": "원한이 서린 로브",
+    "itemPath" : "grudge_lob",
+    "category": "로브",
+    "grade": "레어",
+       "effectStatusList" : [ "magicAttack", "defense", "magicDefense"],
+    "effectStatus": {
+      "magicAttack": 30,
+      "defense": 20,
+      "magicDefense": 50
+    },
+    "description": "마법 사용 시(캐스팅 제외) 5% 확률로 '기절' 상태가 된다. 죽은 자들의 원한이 깃들어 있는 로브. 입은 사람은 어딘가에서 구슬픈 울음소리를 듣는다고 한다."
+  },
+  "magic_lob": {
+     "itemType" : "clothes",
+    "name": "마력 로브",
+    "itemPath" : "magic_lob",
+    "category": "로브",
+    "grade": "레어",
+       "effectStatusList" : ["magicDefense"],
+    "effectStatus": {
+      "magicDefense": 100
+    },
+    "description": "모든 속성 저항력 15% 증가. 마법갑옷을 연구하던 대장장이가 만들어낸 역작. 마법을 막아내는 데 특화되어 있다."
+  },
+  "spirit_lob": {
+     "itemType" : "clothes",
+    "name": "정령 로브",
+    "itemPath" : "spirit_lob",
+    "category": "로브",
+    "grade": "유니크",
+       "effectStatusList" : ["defense", "magicDefense"],
+    "effectStatus": {
+      "defense" :20,
+      "magicDefense": 55
+    },
+    "description": "회복 마법의 회복량을 15% 증가시킨다. 강력한 정령의 힘이 깃든 로브"
+  },
+  "unicorn_lob": {
+     "itemType" : "clothes",
+    "name": "유니콘 로브",
+    "itemPath" : "unicorn_lob",
+    "category": "로브",
+    "grade": "유니크",
+       "effectStatusList" : ["magicAttack", "defense", "magicDefense"],
+    "effectStatus": {
+      "magicAttack": 20,
+      "defense" :20,
+      "magicDefense": 60
+    },
+    "description": "마법 사용 시(캐스팅 제외) 10% 확률로 캐스팅 스택이 소모되지 않는다. 유니콘의 강력한 마법이 걸려있다."
+  },
+  "succubus_dress": {
+     "itemType" : "clothes",
+    "name": "서큐버스의 옷",
+    "itemPath" : "succubus_dress",
+    "category": "로브" ,
+    "grade": "유니크" , 
+       "effectStatusList" : ["defense", "magicDefense"],
+    "effectStatus": {
+      "defense" :40,
+      "magicDefense": 120
+    },
+    "description": "여성 캐릭터만 장비 가능, 남자 또는 수컷과 전투 시 어그로 수치가 절반이 된다. 특정 부위가 큰 사람은 답답해서 착용하기 힘들 것이다."
+  },
+  "wizard_dress": {
+     "itemType" : "clothes",
+    "name": "절대 마법사의 옷",
+    "itemPath" : "wizard_dress",
+    "category": "로브" ,
+    "grade": "레전드" , 
+       "effectStatusList" : ["magicAttack", "defense"],
+    "effectStatus": {
+      "magicAttack" :100,
+      "defense": 1
+    },
+    "description": "마법 공격에 의한 피해를 입지 않는다. 고대 마법사가 입었던 옷. 강력한 보호 마법이 걸려있다."
+  },
   "iron_armor": {
     "name": "철제 갑옷",
 	"itemType" : "clothes",
@@ -38,9 +144,127 @@
     "grade": "일반",
        "effectStatusList" : [ "defense", "speed"],
     "effectStatus": {
-      "defense": 30,
-      "speed": -10
+      "defense": 15,
+      "speed": -5
     },
     "description": "녹이 슬어 갑옷의 성능을 제대로 할 수 있을지 의문이다."
+  },
+  "leather_armor": {
+    "name": "가죽 갑옷",
+	"itemType" : "clothes",
+    "itemPath" : "leather_armor",
+    "category": "갑옷",
+    "grade": "일반",
+       "effectStatusList" : [ "defense", "speed"],
+    "effectStatus": {
+      "defense": 10,
+      "speed": 5
+    },
+    "description": "단단한 가죽을 무두질해 만듯 갑옷."
+  },
+  "yettie_leather_armor": {
+    "name": "예티 가죽털 경갑",
+	"itemType" : "clothes",
+    "itemPath" : "yettie_leather_armor",
+    "category": "갑옷",
+    "grade": "일반",
+       "effectStatusList" : [ "defense", "magicDefense"],
+    "effectStatus": {
+      "defense": 10,
+      "magicDefense": 5
+    },
+    "description": "'빙결' 디버프의 지속시간을 50% 감소시킨다. 예티의 가죽털로 만들어졌다. 몸이 간지러울 수 있다."
+  },
+  "mithril_armor": {
+    "name": "미스릴 갑옷",
+	"itemType" : "clothes",
+    "itemPath" : "mithril_armor",
+    "category": "갑옷",
+    "grade": "레어",
+       "effectStatusList" : [ "defense", "magicDefense","speed"],
+    "effectStatus": {
+      "defense": 20,
+      "magicDefense": 17,
+      "speed": 2
+    },
+    "description": "디버프를 10% 확률로 면역한다. 모든 속성 저항력 10% 증가. 미스릴로 이루어져 가볍고 내구성 또한 뛰어난 갑옷"
+  },
+  "sniper_armor": {
+    "name": "저격 복장",
+	"itemType" : "clothes",
+    "itemPath" : "sniper_armor",
+    "category": "갑옷",
+    "grade": "레어",
+       "effectStatusList" : [ "defense","speed"],
+    "effectStatus": {
+      "defense": 15,
+      "speed": 5
+    },
+    "description": "'저격' 상태시 공격력이 20% 증가한다. 저격수에게 알맞게 설계된 갑옷이다."
+  },
+  "double_chain_armor": {
+    "name": "이중 쇠사슬 갑옷",
+	"itemType" : "clothes",
+    "itemPath" : "double_chain_armor",
+    "category": "갑옷",
+    "grade": "레어",
+       "effectStatusList" : [ "defense"],
+    "effectStatus": {
+      "defense": 25
+    },
+    "description": "방어력 25% 증가. 쇠사슬이 이중으로 되어 있어 매우 방어력이 높다."
+  },
+  "berserker_armor": {
+    "name": "광전사 갑옷",
+	"itemType" : "clothes",
+    "itemPath" : "berserker_armor",
+    "category": "갑옷",
+    "grade": "유니크",
+       "effectStatusList" : [ "attack","defense","speed"],
+    "effectStatus": {
+      "attack":25,
+      "defense": 15,
+      "speed":5
+    },
+    "description": "공격 시 체력이 10 감소한다. 착용자에게 힘을 주는 대신 생명을 뺏어가는 갑옷."
+  },
+  "guarder_armor": {
+    "name": "수호자 갑옷",
+	"itemType" : "clothes",
+    "itemPath" : "guarder_armor",
+    "category": "갑옷",
+    "grade": "유니크",
+       "effectStatusList" : [ "defense","magicDefense"],
+    "effectStatus": {
+      "defense": 50,
+      "magicDefense":15
+    },
+    "description": "방어태세 시 받는 데미지 50% 절감. 마족들로부터 대륙을 수호하던 기사의 힘이 깃든 갑옷"
+  },
+  "winter_ruler": {
+    "name": "겨울의 지배자",
+	"itemType" : "clothes",
+    "itemPath" : "winter_ruler",
+    "category": "갑옷",
+    "grade": "유니크",
+       "effectStatusList" : [ "defense","magicDefense"],
+    "effectStatus": {
+      "defense": 30,
+      "magicDefense":40
+    },
+    "description": "공격 받을 때 5%확률로 적에게 '빙결'을 건다. 날카로운 한기가 갑옷을 가득 메우고 있다."
+  },
+  "hand_of_basstete": {
+    "name": "바스테트의 손길",
+	"itemType" : "clothes",
+    "itemPath" : "hand_of_basstete",
+    "category": "갑옷",
+    "grade": "레전드",
+       "effectStatusList" : [ "defense","magicDefense"],
+    "effectStatus": {
+      "defense": 40,
+      "magicDefense":40
+    },
+    "description": "마법공격 피해를 50% 감소. 고양이신께서 직접 마법을 걸어주신 갑옷이다."
   }
 }

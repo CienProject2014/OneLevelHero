@@ -104,9 +104,9 @@ public class StorySectionManager {
 		Gdx.app.log("StorySectionManager", "runStorySequence");
 		if (!eventSequenceQueue.isEmpty()) {
 			EventPacket polledEventPacket = eventSequenceQueue.poll();
-			eventManager.setCurrentNpcEventInfo(polledEventPacket);
-			eventManager.setEventOpen(eventManager.getCurrentNpcEvent());
-			eventManager.doStoryEvent(eventManager.getCurrentNpcEvent().getEventType());
+			eventManager.setCurrentStoryEventInfo(polledEventPacket);
+			eventManager.setEventOpen(eventManager.getCurrentStoryEvent());
+			eventManager.doStoryEvent(eventManager.getCurrentStoryEvent().getEventType());
 		} else {
 			goCurrentPosition();
 		}

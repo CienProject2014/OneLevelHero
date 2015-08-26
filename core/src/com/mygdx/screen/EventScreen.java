@@ -33,12 +33,12 @@ public class EventScreen extends BaseScreen {
 
 	@Override
 	public void show() {
-		eventStage = eventManager.getNpcEvent();
+		eventStage = eventManager.getElementEvent();
 		setMultiprocessor();
 	}
 
 	private void drawSelectStage() {
-		switch (eventManager.getCurrentNpcEvent().getEventType()) {
+		switch (eventManager.getCurrentElementEvent().getEventType()) {
 			case SELECT_COMPONENT :
 				selectStage.draw();
 				break;
@@ -53,7 +53,7 @@ public class EventScreen extends BaseScreen {
 	private void setMultiprocessor() {
 		multiplexer = new InputMultiplexer();
 		int i = 0;
-		switch (eventManager.getCurrentNpcEvent().getEventType()) {
+		switch (eventManager.getCurrentElementEvent().getEventType()) {
 			case SELECT_COMPONENT :
 				selectStage = stageFactory.makeStage(StageEnum.SELECT_COMPONENT);
 				multiplexer.addProcessor(i++, selectStage);

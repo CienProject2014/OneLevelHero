@@ -44,7 +44,9 @@ public class InventoryStrategy {
 	public void equipRightHandGrip(Hero hero, String rightHandGripName) {
 		Equipment rightHandGrip = itemAssets.getHandGrip(rightHandGripName);
 		hero.getInventory().setRightHandGrip(rightHandGrip);
-		bagManager.removeEquipment(rightHandGrip);
+		if (!rightHandGrip.isEmpty()) {
+			bagManager.removeEquipment(rightHandGrip);
+		}
 		Gdx.app.log("UnitManager", hero.getName() + "은(는) " + rightHandGrip.getName() + "을(를) 장착하였다.");
 		unitManager.addStatus(hero, rightHandGrip.getEffectStatus());
 	}
@@ -60,7 +62,9 @@ public class InventoryStrategy {
 
 	public void equipLeftHandGrip(Hero hero, String leftHandGripName) {
 		Equipment leftHandGrip = itemAssets.getHandGrip(leftHandGripName);
-		bagManager.removeEquipment(leftHandGrip);
+		if (!leftHandGrip.isEmpty()) {
+			bagManager.removeEquipment(leftHandGrip);
+		}
 		hero.getInventory().setLeftHandGrip(leftHandGrip);
 		Gdx.app.log("UnitManager", hero.getName() + "은(는) " + leftHandGrip.getName() + "을(를) 장착하였다.");
 		unitManager.addStatus(hero, leftHandGrip.getEffectStatus());
@@ -77,7 +81,9 @@ public class InventoryStrategy {
 
 	public void equipClothes(Hero hero, String clothesName) {
 		Clothes clothes = itemAssets.getClothes(clothesName);
-		bagManager.removeEquipment(clothes);
+		if (!clothes.isEmpty()) {
+			bagManager.removeEquipment(clothes);
+		}
 		hero.getInventory().setClothes(clothes);
 		Gdx.app.log("UnitManager", hero.getName() + "은(는) " + clothes.getName() + "을(를) 입었다.");
 		unitManager.addStatus(hero, clothes.getEffectStatus());
@@ -93,7 +99,9 @@ public class InventoryStrategy {
 
 	public void equipAccessory(Hero hero, String accessoryName) {
 		Accessory accessory = itemAssets.getAccessory(accessoryName);
-		bagManager.removeEquipment(accessory);
+		if (!accessory.isEmpty()) {
+			bagManager.removeEquipment(accessory);
+		}
 		hero.getInventory().setAccessory(accessory);
 		Gdx.app.log("UnitManager", hero.getName() + "은(는) " + accessory.getName() + "을(를) 장착하였다.");
 		unitManager.addStatus(hero, accessory.getEffectStatus());

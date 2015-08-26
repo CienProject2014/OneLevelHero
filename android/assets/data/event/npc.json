@@ -11056,7 +11056,7 @@
         ],
         "rewards": [
           {
-            "rewardType": "item_handgrip",
+            "rewardType": "item_clothes",
             "rewardState": "not_opened",
             "rewardComponent": [
                "sniper_armor"
