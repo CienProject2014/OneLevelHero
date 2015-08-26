@@ -46,7 +46,6 @@ public class UnitManager {
 	}
 
 	public void initiateMonster(Monster monster) {
-		setSkills(monster);
 		setAttackStrategy(monster);
 	}
 
