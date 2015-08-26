@@ -19,7 +19,7 @@
           "blackwood_forest"
         ]
       },
-      "blackwood_forest_dungeon": {
+      "blackwood_forest": {
         "arrowName": "1to17",
         "fieldList": [
           "blackwood_forest"
@@ -300,7 +300,7 @@
       }
     }
   },
-  "blackwood_forest_dungeon": {
+  "blackwood_forest": {
     "nodeName": "블랙우드 숲",
     "nodeType": "dungeon_entrance",
     "nodeConnection": {
