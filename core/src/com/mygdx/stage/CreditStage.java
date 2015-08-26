@@ -28,7 +28,7 @@ public class CreditStage extends BaseOverlapStage {
 	// private GridHitbox gridHitbox;
 	public final String SCENE_NAME = "credit_scene";
 	private Camera cam;
-	public int page = 1;
+	public int page = 1000;
 
 	public Stage makeStage() {
 
@@ -43,31 +43,33 @@ public class CreditStage extends BaseOverlapStage {
 
 		PageUpDownButton();
 
+		setPage(0);
 		return this;
 	}
 
-	private void setPage(CompositeItem pageDown, CompositeItem pageUp, int page) {
+	private void setPage(int page) {
 		final CompositeItem background = sceneLoader.getRoot().getCompositeById("background");
-		switch (Math.abs(page) % 4) {
-		case 1:
+
+		switch (page % 4) {
+		case 0:
 			background.setLayerVisibilty("Default", true);
 			background.setLayerVisibilty("normal", false);
 			background.setLayerVisibilty("pressed", false);
 			background.setLayerVisibilty("pressed2", false);
 			break;
-		case 2:
+		case 1:
 			background.setLayerVisibilty("Default", false);
 			background.setLayerVisibilty("normal", true);
 			background.setLayerVisibilty("pressed", false);
 			background.setLayerVisibilty("pressed2", false);
 			break;
-		case 3:
+		case 2:
 			background.setLayerVisibilty("Default", false);
 			background.setLayerVisibilty("normal", false);
 			background.setLayerVisibilty("pressed", true);
 			background.setLayerVisibilty("pressed2", false);
 			break;
-		case 0:
+		case 3:
 			background.setLayerVisibilty("Default", false);
 			background.setLayerVisibilty("normal", false);
 			background.setLayerVisibilty("pressed", false);
@@ -87,28 +89,29 @@ public class CreditStage extends BaseOverlapStage {
 		pageDown.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				setCompositeItemVisibility(pageDown, DEFAULT_VISIBILITY);
-				setPage(pageDown, pageUp, page);
+				setCompositeItemVisibility(pageDown, PRESSED_VISIBILITY);
 				page++;
+				setPage(page);
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-
+				setCompositeItemVisibility(pageDown, DEFAULT_VISIBILITY);
 			}
 		});
 
 		pageUp.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				setCompositeItemVisibility(pageUp, DEFAULT_VISIBILITY);
-				setPage(pageDown, pageUp, page);
+				setCompositeItemVisibility(pageUp, PRESSED_VISIBILITY);
 				page--;
+				setPage(page);
 				return true;
 			}
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
+				setCompositeItemVisibility(pageUp, DEFAULT_VISIBILITY);
 			}
 		});
 
