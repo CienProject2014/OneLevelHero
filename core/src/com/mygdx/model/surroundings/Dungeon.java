@@ -15,6 +15,7 @@ public class Dungeon {
 	private int mapWidth;
 	private int mapHeight;
 	private boolean inDungeon;
+	private String eliteMonster;
 
 	public ArrayList<DungeonNode> nodes = new ArrayList<>();
 	public ArrayList<DungeonConnection> connections = new ArrayList<>();
@@ -58,5 +59,11 @@ public class Dungeon {
 	}
 	public void setFieldType(FieldTypeEnum fieldType) {
 		this.fieldType = fieldType;
+	}
+	public String getEliteMonster() {
+		return eliteMonster;
+	}
+	public void setEliteMonster(String eliteMonster) {
+		this.eliteMonster = eliteMonster;
 	}
 }

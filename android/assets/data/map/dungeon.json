@@ -7,6 +7,7 @@
     "sceneNameDoor2": "dungeon_2door_scene",
     "sceneNameDoor1": "dungeon_1door_scene",
     "sceneNameDoor0": "dungeon_0door_scene",
+    "eliteMonster": "cerberus",
     "mapWidth": "8",
     "mapHeight": "7",
     "nodes": [
