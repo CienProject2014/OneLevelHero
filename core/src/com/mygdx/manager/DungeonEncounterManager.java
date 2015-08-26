@@ -29,6 +29,11 @@ public class DungeonEncounterManager {
 		return random.nextBoolean();
 	}
 
+	public void eliteAct(String eliteMonster) {
+		Monster selectedMonster = monsterManager.createSpecificMoster(eliteMonster);
+		battleManager.startBattle(selectedMonster);
+	}
+
 	public void act() {
 		if (isBattleOccured()) {
 			encountEnemy();
