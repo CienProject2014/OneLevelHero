@@ -1,7 +1,6 @@
 package com.mygdx.manager;
 
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,8 @@ public class PartyManager {
 	@Autowired
 	private PartyInfo partyInfo;
 	private Status status;
+
+	public boolean[] isBattleMember = new boolean[3];
 
 	private final static int BATTLE_MEMBER_SIZE = 3;
 
@@ -73,7 +74,8 @@ public class PartyManager {
 	}
 
 	public Hero pickRandomHero() {
-		return partyInfo.getBattleMemberList().get(ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
+		return partyInfo.getBattleMemberList()
+				.get(ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
 	}
 
 	public void setCurrentSelectedHero(Hero hero) {
