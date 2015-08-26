@@ -106,6 +106,35 @@
     	"background02"
     ]
   },
+  "item_scene" : {
+	  "highlight_frame" :[
+	    	"highlight_01",
+	    	"highlight_02",
+	    	"highlight_03",
+	    	"highlight_04",
+	    	"highlight_05",
+	    	"highlight_06",
+	    	"highlight_07"
+	    ],
+	    "item_name_label" : [
+	    "item_name_label01",
+	    "item_name_label02",
+	    "item_name_label03",
+	    "item_name_label04",
+	    "item_name_label05",
+	    "item_name_label06",
+	    "item_name_label07"
+	    ],
+	    "item_amount_label" : [
+	    "item_amount_label01",
+	    "item_amount_label02",
+	    "item_amount_label03",
+	    "item_amount_label04",
+	    "item_amount_label05",
+	    "item_amount_label06",
+	    "item_amount_label07"
+	    ]
+  },
   "skill_scene" : {
     "use_button" : [
     	"use_01",

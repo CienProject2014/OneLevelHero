@@ -16,6 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
@@ -55,6 +57,9 @@ public class SkillStage extends BaseOverlapStage {
 	@Override
 	public void act() {
 		setLabel(sceneConstants);
+		if (!BattleScreen.showSkillStage) {
+			clearHighLightAndLabel();
+		}
 	}
 
 	public Stage makeStage() {
@@ -63,7 +68,7 @@ public class SkillStage extends BaseOverlapStage {
 		initSceneLoader(assetsManager.rm);
 		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
-
+		clearHighLightAndLabel();
 		setCamera();
 		setSkillType();
 		setBackground();
@@ -85,14 +90,43 @@ public class SkillStage extends BaseOverlapStage {
 		setLabelStyle(descriptionLabel);
 	}
 
+	private void clearHighLightAndLabel() {
+		final Array<String> highLightFrameList = sceneConstants.get("highlight_frame");
+		for (int i = 0; i < SKILL_TAB_SIZE; i++) {
+			final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(highLightFrameList.get(i));
+			setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
+		}
+		Array<String> skillNameLabelList = sceneConstants.get("skill_name_label");
+		Array<String> castingLabelList = sceneConstants.get("casting_label");
+		Array<String> gaugeLabelList = sceneConstants.get("gauge_label");
+		skillInfo = new HashMap<>(SKILL_TAB_SIZE);
+		for (int i = 0; i < SKILL_TAB_SIZE; i++) {
+			LabelItem skillNameLabel = sceneLoader.getRoot().getLabelById(skillNameLabelList.get(i));
+			LabelItem castingLabel = sceneLoader.getRoot().getLabelById(castingLabelList.get(i));
+			LabelItem gaugeLabel = sceneLoader.getRoot().getLabelById(gaugeLabelList.get(i));
+			skillNameLabel.setText("");
+			castingLabel.setText("");
+			gaugeLabel.setText("");
+			LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name_label");
+			nameLabel.setText("");
+			LabelItem descriptionLabel = sceneLoader.getRoot().getLabelById("description_label");
+			descriptionLabel.setText("");
+			descriptionLabel.setWrap(true);
+			setLabelStyle(descriptionLabel);
+			Table labelTable = new Table();
+			// FIXME
+			labelTable.add(descriptionLabel).width(450).left().bottom().padLeft(2980).padBottom(900);
+			addActor(labelTable);
+		}
+	}
 	private void setVoidDescription() {
 		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name_label");
-		nameLabel.setText("설명충");
+		nameLabel.setText("");
 		LabelItem descriptionLabel = sceneLoader.getRoot().getLabelById("description_label");
-		descriptionLabel.setText("나는 설명충이다");
+		descriptionLabel.setText("");
+		descriptionLabel.setAlign(Align.left);
 		setLabelStyle(nameLabel);
 		setLabelStyle(descriptionLabel);
-
 	}
 
 	private void addUseButtonListener() {
@@ -183,8 +217,8 @@ public class SkillStage extends BaseOverlapStage {
 					skillInfo.put(i, battleManager.getCurrentAttackUnit().getSkills().get(i));
 					skillNameLabel.setText(battleManager.getCurrentAttackUnit().getSkills().get(i).getName());
 					castingLabel.setText("");
-					gaugeLabel.setText(
-							String.valueOf(battleManager.getCurrentAttackUnit().getSkills().get(i).getCostGauge()));
+					gaugeLabel.setText(String.valueOf(battleManager.getCurrentAttackUnit().getSkills().get(i)
+							.getCostGauge()));
 					setLabelStyle(skillNameLabel);
 					setLabelStyle(castingLabel);
 					setLabelStyle(gaugeLabel);
@@ -265,8 +299,8 @@ public class SkillStage extends BaseOverlapStage {
 						setUseButton(index);
 						for (int j = 0; j < SKILL_TAB_SIZE; j++) {
 							if (j != index) {
-								final CompositeItem highLightFrame = sceneLoader.getRoot()
-										.getCompositeById(highLightFrameList.get(j));
+								final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
+										highLightFrameList.get(j));
 								setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 								setVoidUseButton(j);
 							}
@@ -280,42 +314,39 @@ public class SkillStage extends BaseOverlapStage {
 						setVoidDescription();
 						setAllVoidUseButton(sceneConstants);
 						for (int j = 0; j < SKILL_TAB_SIZE; j++) {
-							CompositeItem highLightFrame = sceneLoader.getRoot()
-									.getCompositeById(highLightFrameList.get(j));
+							CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
+									highLightFrameList.get(j));
 							setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 						}
 					}
-
 				}
-
 			});
-
 		}
 	}
 
 	private void setEnum(int index) {
 		switch (index) {
-		case 0:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL1);
-			break;
-		case 1:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL2);
-			break;
-		case 2:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL3);
-			break;
-		case 3:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL4);
-			break;
-		case 4:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL5);
-			break;
-		case 5:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL6);
-			break;
-		case 6:
-			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL7);
-			break;
+			case 0 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL1);
+				break;
+			case 1 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL2);
+				break;
+			case 2 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL3);
+				break;
+			case 3 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL4);
+				break;
+			case 4 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL5);
+				break;
+			case 5 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL6);
+				break;
+			case 6 :
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL7);
+				break;
 		}
 
 	}

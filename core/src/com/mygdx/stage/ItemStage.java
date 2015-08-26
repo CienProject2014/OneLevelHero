@@ -57,6 +57,7 @@ public class ItemStage extends BaseOverlapStage {
 		sceneLoader.loadScene(SCENE_NAME);
 		addActor(sceneLoader.getRoot());
 
+		setVoidDescription();
 		setCamera();
 		setBackground();
 		setLabel();
@@ -64,7 +65,6 @@ public class ItemStage extends BaseOverlapStage {
 		setHighlight();
 		return this;
 	}
-
 	private void showItemDescription(int index) {
 		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name_label");
 		nameLabel.setText(itemInfo.get(index).getName());
@@ -76,9 +76,9 @@ public class ItemStage extends BaseOverlapStage {
 
 	private void setVoidDescription() {
 		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name_label");
-		nameLabel.setText("설명충");
+		nameLabel.setText("");
 		LabelItem descriptionLabel = sceneLoader.getRoot().getLabelById("description_label");
-		descriptionLabel.setText("나는 설명충이다");
+		descriptionLabel.setText("");
 		setLabelStyle(nameLabel);
 		setLabelStyle(descriptionLabel);
 
@@ -179,8 +179,8 @@ public class ItemStage extends BaseOverlapStage {
 						addUseButtonListener(index);
 						for (int j = 0; j < ITEM_TAB_SIZE; j++) {
 							if (j != index) {
-								final CompositeItem highLightFrame = sceneLoader.getRoot()
-										.getCompositeById("highlight_0" + (j + 1));
+								final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
+										"highlight_0" + (j + 1));
 								setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 							}
 						}
@@ -191,8 +191,8 @@ public class ItemStage extends BaseOverlapStage {
 						setVoidDescription();
 						setFirstUseButton();
 						for (int j = 0; j < ITEM_TAB_SIZE; j++) {
-							CompositeItem highLightFrame = sceneLoader.getRoot()
-									.getCompositeById("highlight_0" + (j + 1));
+							CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
+									"highlight_0" + (j + 1));
 							setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 						}
 					}

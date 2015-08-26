@@ -1,162 +1,162 @@
 {
-arrow: {
+eletric_shock: {
 	class: java.lang.String,
-	value: sound/arrow.mp3/
-},
-thunder: {
-	class: java.lang.String,
-	value: sound/thunder.mp3/
-},
-smile: {
-	class: java.lang.String,
-	value: sound/smile.mp3/
-},
-sleep: {
-	class: java.lang.String,
-	value: sound/sleep.mp3/
-},
-attack_cutting: {
-	class: java.lang.String,
-	value: sound/attack_cutting.mp3/
-},
-notice_level_up: {
-	class: java.lang.String,
-	value: sound/notice_level_up.mp3/
-},
-freeze: {
-	class: java.lang.String,
-	value: sound/freeze.mp3/
-},
-hand_of_death: {
-	class: java.lang.String,
-	value: sound/hand_of_death.mp3/
-},
-soul_cover: {
-	class: java.lang.String,
-	value: sound/soul_cover.mp3/
-},
-icearrow: {
-	class: java.lang.String,
-	value: sound/icearrow.mp3/
-},
-whisper_of_death: {
-	class: java.lang.String,
-	value: sound/whisper_of_death.mp3/
-},
-multishoot: {
-	class: java.lang.String,
-	value: sound/multishoot.mp3/
-},
-escape_success: {
-	class: java.lang.String,
-	value: sound/escape_success.mp3/
-},
-handing: {
-	class: java.lang.String,
-	value: sound/handing.mp3/
-},
-heal: {
-	class: java.lang.String,
-	value: sound/heal.mp3/
-},
-lock: {
-	class: java.lang.String,
-	value: sound/lock.mp3/
-},
-pierearrow: {
-	class: java.lang.String,
-	value: sound/pierearrow.mp3/
-},
-rummage: {
-	class: java.lang.String,
-	value: sound/rummage.mp3/
+	value: sound/eletric_shock.mp3/
 },
 lastjudge: {
 	class: java.lang.String,
 	value: sound/lastjudge.mp3/
 },
-meeting: {
-	class: java.lang.String,
-	value: sound/meeting.mp3/
-},
-powerblade: {
-	class: java.lang.String,
-	value: sound/powerblade.mp3/
-},
-unlock: {
-	class: java.lang.String,
-	value: sound/unlock.mp3/
-},
-blizzard: {
-	class: java.lang.String,
-	value: sound/blizzard.mp3/
-},
-open_box: {
-	class: java.lang.String,
-	value: sound/open_box.mp3/
-},
-stap: {
-	class: java.lang.String,
-	value: sound/stap.mp3/
-},
 switch_lever: {
 	class: java.lang.String,
 	value: sound/switch_lever.mp3/
 },
-cross: {
+escape_success: {
 	class: java.lang.String,
-	value: sound/cross.mp3/
-},
-notice_collegue_turn: {
-	class: java.lang.String,
-	value: sound/notice_collegue_turn.mp3/
-},
-game_over: {
-	class: java.lang.String,
-	value: sound/game_over.mp3/
-},
-snipe: {
-	class: java.lang.String,
-	value: sound/snipe.mp3/
-},
-eat_snack: {
-	class: java.lang.String,
-	value: sound/eat_snack.mp3/
+	value: sound/escape_success.mp3/
 },
 notice_enemy_turn: {
 	class: java.lang.String,
 	value: sound/notice_enemy_turn.mp3/
 },
-landing: {
+arrow: {
 	class: java.lang.String,
-	value: sound/landing.mp3/
+	value: sound/arrow.mp3/
 },
 spiritbullet: {
 	class: java.lang.String,
 	value: sound/spiritbullet.mp3/
 },
+game_over: {
+	class: java.lang.String,
+	value: sound/game_over.mp3/
+},
 flying: {
 	class: java.lang.String,
 	value: sound/flying.mp3/
 },
-monster_magic_11: {
+heal: {
 	class: java.lang.String,
-	value: sound/monster_magic_11.mp3/
+	value: sound/heal.mp3/
 },
-rundirt: {
+landing: {
 	class: java.lang.String,
-	value: sound/rundirt.mp3/
+	value: sound/landing.mp3/
+},
+notice_collegue_turn: {
+	class: java.lang.String,
+	value: sound/notice_collegue_turn.mp3/
+},
+smile: {
+	class: java.lang.String,
+	value: sound/smile.mp3/
+},
+notice_victory: {
+	class: java.lang.String,
+	value: sound/notice_victory.mp3/
+},
+thunder: {
+	class: java.lang.String,
+	value: sound/thunder.mp3/
+},
+unlock: {
+	class: java.lang.String,
+	value: sound/unlock.mp3/
+},
+multishoot: {
+	class: java.lang.String,
+	value: sound/multishoot.mp3/
 },
 slash: {
 	class: java.lang.String,
 	value: sound/slash.mp3/
 },
-eletric_shock: {
+pierearrow: {
 	class: java.lang.String,
-	value: sound/eletric_shock.mp3/
+	value: sound/pierearrow.mp3/
 },
-notice_victory: {
+powerblade: {
 	class: java.lang.String,
-	value: sound/notice_victory.mp3/
+	value: sound/powerblade.mp3/
+},
+snipe: {
+	class: java.lang.String,
+	value: sound/snipe.mp3/
+},
+lock: {
+	class: java.lang.String,
+	value: sound/lock.mp3/
+},
+notice_level_up: {
+	class: java.lang.String,
+	value: sound/notice_level_up.mp3/
+},
+stap: {
+	class: java.lang.String,
+	value: sound/stap.mp3/
+},
+open_box: {
+	class: java.lang.String,
+	value: sound/open_box.mp3/
+},
+eat_snack: {
+	class: java.lang.String,
+	value: sound/eat_snack.mp3/
+},
+attack_cutting: {
+	class: java.lang.String,
+	value: sound/attack_cutting.mp3/
+},
+whisper_of_death: {
+	class: java.lang.String,
+	value: sound/whisper_of_death.mp3/
+},
+sleep: {
+	class: java.lang.String,
+	value: sound/sleep.mp3/
+},
+soul_cover: {
+	class: java.lang.String,
+	value: sound/soul_cover.mp3/
+},
+rundirt: {
+	class: java.lang.String,
+	value: sound/rundirt.mp3/
+},
+hand_of_death: {
+	class: java.lang.String,
+	value: sound/hand_of_death.mp3/
+},
+handing: {
+	class: java.lang.String,
+	value: sound/handing.mp3/
+},
+freeze: {
+	class: java.lang.String,
+	value: sound/freeze.mp3/
+},
+meeting: {
+	class: java.lang.String,
+	value: sound/meeting.mp3/
+},
+monster_magic_11: {
+	class: java.lang.String,
+	value: sound/monster_magic_11.mp3/
+},
+blizzard: {
+	class: java.lang.String,
+	value: sound/blizzard.mp3/
+},
+rummage: {
+	class: java.lang.String,
+	value: sound/rummage.mp3/
+},
+icearrow: {
+	class: java.lang.String,
+	value: sound/icearrow.mp3/
+},
+cross: {
+	class: java.lang.String,
+	value: sound/cross.mp3/
 }
 }
