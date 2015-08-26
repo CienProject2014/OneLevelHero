@@ -65,7 +65,7 @@ public class BattleManager {
 	private MusicManager musicManager;
 	@Autowired
 	private SoundManager soundManager;
-	private GridHitbox gridHitbox = new GridHitbox(); // grid hitbox 테이블
+	private GridHitbox gridHitbox; // grid hitbox 테이블
 
 	public SkillRunPopup gameObjectPopup;
 
@@ -607,6 +607,10 @@ public class BattleManager {
 	}
 
 	public GridHitbox getGridHitbox() {
+		return gridHitbox = new GridHitbox();
+	}
+
+	public GridHitbox getNowGridHitbox() {
 		return gridHitbox;
 	}
 

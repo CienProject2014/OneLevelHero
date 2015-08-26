@@ -129,8 +129,8 @@ public class BattleStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("BattleStage");
-		battleManager.setShowGrid(false);
 		selectedMonster = battleManager.getSelectedMonster();
+		battleManager.setGridHitbox(battleManager.getGridHitbox());
 		ArrayList<Unit> units = new ArrayList<Unit>(4);
 		units.addAll(partyManager.getBattleMemberList());
 		units.add(selectedMonster);
@@ -148,7 +148,8 @@ public class BattleStage extends BaseOneLevelStage {
 		tableStack.add(makeTurnTable()); // TurnTable 배경 테이블
 		tableStack.add(makeTurnFaceTable()); // TurnTable위에 있는 영웅들 이미지 테이블
 		battleManager.setMonsterSize(MonsterEnum.SizeType.MEDIUM);
-		tableStack.add(battleManager.getGridHitbox());
+		tableStack.add(battleManager.getNowGridHitbox());
+		battleManager.setShowGrid(false);
 
 		addListener();
 		return this;
@@ -250,7 +251,6 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private Table makeSmallImageTable() {
 
-		System.out.println(battleManager.getOrderedUnits().size());
 		orderedUnits = battleManager.getOrderedUnits();
 		for (Unit unit : orderedUnits) {
 			turnSmallImageMap.get(unit.getFacePath()).setWidth(80);
@@ -390,11 +390,11 @@ public class BattleStage extends BaseOneLevelStage {
 		super.touchDown(screenX, screenY, pointer, button);
 		if (battleManager.isShowGrid()) {
 			end = (new Vector2(touched.x, touched.y));
-			if (battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
+			if (battleManager.getNowGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 				start = (new Vector2(touched.x, touched.y));
-				battleManager.getGridHitbox().setStartPosition(touched.x, touched.y);
-				battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
-				if (battleManager.getGridHitbox().isInsideEdge(touched.x, touched.y)) {
+				battleManager.getNowGridHitbox().setStartPosition(touched.x, touched.y);
+				battleManager.getNowGridHitbox().showTileWhereMoved(touched.x, touched.y);
+				if (battleManager.getNowGridHitbox().isInsideEdge(touched.x, touched.y)) {
 					battleManager.setGridLimitNum(getWeaponHitboxSize());
 				} else {
 					battleManager.setGridLimitNum(1);
@@ -410,13 +410,13 @@ public class BattleStage extends BaseOneLevelStage {
 		if (battleManager.isShowGrid()) {
 			end = (new Vector2(touched.x, touched.y));
 			if (!battleManager.isSkill()) {
-				battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
+				battleManager.getNowGridHitbox().showTileWhereMoved(touched.x, touched.y);
 			} else {
-				if (battleManager.getGridHitbox().getHitboxCenter() == null) {
+				if (battleManager.getNowGridHitbox().getHitboxCenter() == null) {
 					Gdx.app.log(TAG, "skill limit num: " + battleManager.getGridLimitNum());
-					battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
+					battleManager.getNowGridHitbox().showTileWhereMoved(touched.x, touched.y);
 				} else {
-					battleManager.getGridHitbox().showFixedTilesAt(touched.x, touched.y);
+					battleManager.getNowGridHitbox().showFixedTilesAt(touched.x, touched.y);
 				}
 			}
 		}
@@ -426,10 +426,10 @@ public class BattleStage extends BaseOneLevelStage {
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		super.touchUp(screenX, screenY, pointer, button);
-		if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
+		if (battleManager.isShowGrid() && battleManager.getNowGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 			if (!battleManager.isSkill()) {
 				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster,
-						battleManager.getGridHitbox().getPreviousHitArea());
+						battleManager.getNowGridHitbox().getPreviousHitArea());
 			} else {
 				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster,
 						battleManager.getCurrentSelectedSkill().getSkillPath());
@@ -445,7 +445,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private void resetHitboxState() {
 		start = null;
 		end = null;
-		battleManager.getGridHitbox().hideAllTiles();
+		battleManager.getNowGridHitbox().hideAllTiles();
 	}
 
 	private void checkRunAway() {
