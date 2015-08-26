@@ -34,7 +34,7 @@
         }
       },
       "blackwood_inn": {
-        "buildingName": "여관",
+        "buildingName": "블랙우드 여관",
         "buildingType": "inn",
         "buildingPath": "blackwood_inn",
         "targetTime": {
@@ -43,7 +43,7 @@
         }
       },
       "blackwood_peasanthouse": {
-        "buildingName": "민가",
+        "buildingName": "블랙우드 민가",
         "buildingType": "house",
         "buildingPath": "blackwood_peasanthouse",
         "targetTime": {
@@ -108,7 +108,7 @@
         }
       },
       "cobweb_inn": {
-        "buildingName": "여관",
+        "buildingName": "콥웨브 여관",
         "buildingType": "house",
         "buildingPath": "cobweb_inn",
         "isOverlapScene": true,
@@ -209,7 +209,7 @@
         }
       },
       "kadilla_castle_inn": {
-        "buildingName": "여관",
+        "buildingName": "카딜라 여관",
         "buildingType": "inn",
         "buildingPath": "kadilla_castle_inn",
         "targetTime": {
@@ -285,7 +285,7 @@
         }
       },
       "winterfall_inn": {
-        "buildingName": "부서진 여관",
+        "buildingName": "윈터폴 부서진 여관",
         "buildingType": "inn",
         "buildingPath": "winterfall_inn",
         "targetTime": {
@@ -384,7 +384,7 @@
     },
     "building": {
       "mirage_port_inn": {
-        "buildingName": "여관",
+        "buildingName": "미라지 포트 여관",
         "buildingType": "inn",
         "buildingPath": "mirage_port_inn",
         "targetTime": {
@@ -468,7 +468,7 @@
         }
       },
       "middle_ridge_inn": {
-        "buildingName": "여관",
+        "buildingName": "미들릿지 여관",
         "buildingType": "inn",
         "buildingPath": "middle_ridge_inn",
         "targetTime": {
@@ -576,7 +576,7 @@
         }
       },
       "southcape_inn": {
-        "buildingName": "여관",
+        "buildingName": "사우스케이프 여관",
         "buildingType": "inn",
         "buildingPath": "southcape_inn",
         "targetTime": {
@@ -603,7 +603,7 @@
         }
       },
       "southcape_peasanthouse01": {
-        "buildingName": "민가1",
+        "buildingName": "사우스케이프 민가",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse01",
         "targetTime": {
@@ -612,7 +612,7 @@
         }
       },
       "southcape_peasanthouse02": {
-        "buildingName": "민가2",
+        "buildingName": "사우스케이프 민가",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse02",
         "targetTime": {
@@ -621,7 +621,7 @@
         }
       },
       "southcape_peasanthouse03": {
-        "buildingName": "민가3",
+        "buildingName": "사우스케이프 민가",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse03",
         "targetTime": {
@@ -630,7 +630,7 @@
         }
       },
       "southcape_peasanthouse04": {
-        "buildingName": "민가4",
+        "buildingName": "사우스케이프 민가",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse04",
         "targetTime": {
@@ -639,7 +639,7 @@
         }
       },
       "southcape_peasanthouse05": {
-        "buildingName": "민가5",
+        "buildingName": "사우스케이프 민가",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse05",
         "targetTime": {
@@ -648,7 +648,7 @@
         }
       },
       "southcape_peasanthouse06": {
-        "buildingName": "민가6",
+        "buildingName": "사우스케이프 민가",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse06",
         "targetTime": {
