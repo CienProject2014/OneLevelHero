@@ -19,6 +19,7 @@ public class DungeonNode {
 	private int nodePosX;
 	private int nodePosY;
 	private String directionType;
+	private String eliteMonster;
 
 	private DungeonNodeEnum dungeonNodeType;
 
@@ -74,5 +75,13 @@ public class DungeonNode {
 
 	public void setDungeonNodeType(DungeonNodeEnum dungeonNodeType) {
 		this.dungeonNodeType = dungeonNodeType;
+	}
+
+	public String getEliteMonster() {
+		return eliteMonster;
+	}
+
+	public void setEliteMonster(String eliteMonster) {
+		this.eliteMonster = eliteMonster;
 	}
 }
