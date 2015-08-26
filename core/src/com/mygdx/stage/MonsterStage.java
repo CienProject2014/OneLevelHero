@@ -125,13 +125,13 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devilcastle_01")));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getEtcTexture("bg_devil_castle_06")));
 		} else if (eventManager.getCurrentElementEvent().getEventType().equals(EventTypeEnum.BATTLE)) {
 			String backgroundPath = eventManager.getCurrentElementEvent().getEventComponent().get(1);
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
 		} else {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
-					.getFieldType().toString())));
+			return new TextureRegionDrawable(
+					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
 		}
 	}
 
