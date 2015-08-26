@@ -58,8 +58,9 @@ public class RewardManager {
 
 	public void doRewards() {
 		if (!getRewards().isEmpty()) {
-			for (int i = 0; i < getRewards().size(); i++) {
-				Reward peekedReward = getRewards().get(i);
+			Iterator<Reward> rewardIterator = getRewards().iterator();
+			for (; rewardIterator.hasNext();) {
+				Reward peekedReward = rewardIterator.next();
 				switch (peekedReward.getRewardType()) {
 					case EXPERIENCE :
 						break;
@@ -99,6 +100,11 @@ public class RewardManager {
 					default :
 						break;
 				}
+				if (!peekedReward.getRewardState().equals(RewardStateEnum.ALWAYS_OPEN)) {
+					peekedReward.setRewardState(RewardStateEnum.CLEARED);
+					rewardIterator.remove();
+					getAchievedRewards().add(peekedReward);
+				}
 			}
 		}
 	}
@@ -116,20 +122,6 @@ public class RewardManager {
 				return rewardInfo.getRewardComponent().get(0) + "이 파티에 합류하였습니다.";
 			default :
 				return "보상 없음";
-		}
-	}
-
-	public void clearRewards() {
-		if (!getRewards().isEmpty()) {
-			Iterator<Reward> iterator = getRewards().iterator();
-			while (iterator.hasNext()) {
-				Reward reward = iterator.next();
-				if (!reward.getRewardState().equals(RewardStateEnum.ALWAYS_OPEN)) {
-					reward.setRewardState(RewardStateEnum.CLEARED);
-					getRewards().remove(reward);
-					getAchievedRewards().add(reward);
-				}
-			}
 		}
 	}
 

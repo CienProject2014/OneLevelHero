@@ -72,7 +72,7 @@ public class ChatEventStage extends BaseOneLevelStage {
 					} else {
 						if (!eventCheckManager.isSelectEvent(eventManager.getCurrentElementEvent())) {
 							rewardManager.doRewards(); // 보상이 있을경우 보상실행
-							rewardManager.clearRewards();
+
 							eventManager.finishNpcEvent();
 							storySectionManager.runStorySequence();
 						}

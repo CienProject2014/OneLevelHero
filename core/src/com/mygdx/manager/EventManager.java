@@ -81,77 +81,77 @@ public class EventManager {
 	public void doStoryEvent(EventTypeEnum eventType) {
 		setCurrentEventElementType(EventElementEnum.STORY);
 		switch (eventType) {
-		case BATTLE:
-			battleManager.startBattle(unitAssets.getMonster(getCurrentElementEvent().getEventComponent().get(0)));
-			battleManager.setEventBattle(true);
-			screenFactory.show(ScreenEnum.BATTLE);
-			break;
-		case NEXT_SECTION:
-			storySectionManager
-					.setNewStorySectionAndPlay(Integer.valueOf(getCurrentStoryEvent().getEventComponent().get(0)));
-			break;
-		case JOIN_PARTY:
-			partyManager.addHero(unitAssets.getHero(getCurrentNpcEvent().getEventComponent().get(0)));
-			storySectionManager.runStorySequence();
-			break;
-		case MOVE_NODE:
-			positionManager.setCurrentNodeName(getCurrentStoryEvent().getEventComponent().get(0));
-			movingManager.goCurrentPosition();
-			storySectionManager.runStorySequence();
-			break;
-		case BATTLE_END:
-			battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-			battleManager.setEventBattle(false);
-			storySectionManager.runStorySequence();
-			break;
-		case MOVE_SUB_NODE:
-			positionManager.setCurrentSubNodeName(getCurrentStoryEvent().getEventComponent().get(0));
-			positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
-			movingManager.goCurrentPosition();
-			storySectionManager.runStorySequence();
-			break;
-		case PASS_TIME:
-			timeManager.setTime(Integer.parseInt(getCurrentStoryEvent().getEventComponent().get(0)) * 60);
-			storySectionManager.runStorySequence();
-			break;
-		case MUSIC:
-			musicManager.setEventMusicAndPlay();
-			storySectionManager.runStorySequence();
-			break;
-		case GAME_OVER:
-			screenFactory.show(ScreenEnum.GAME_OVER);
-			break;
-		default:
-			screenFactory.show(ScreenEnum.EVENT);
-			break;
+			case BATTLE :
+				battleManager.startBattle(unitAssets.getMonster(getCurrentStoryEvent().getEventComponent().get(0)));
+				battleManager.setEventBattle(true);
+				screenFactory.show(ScreenEnum.BATTLE);
+				break;
+			case NEXT_SECTION :
+				storySectionManager.setNewStorySectionAndPlay(Integer.valueOf(getCurrentStoryEvent()
+						.getEventComponent().get(0)));
+				break;
+			case JOIN_PARTY :
+				partyManager.addHero(unitAssets.getHero(getCurrentStoryEvent().getEventComponent().get(0)));
+				storySectionManager.runStorySequence();
+				break;
+			case MOVE_NODE :
+				positionManager.setCurrentNodeName(getCurrentStoryEvent().getEventComponent().get(0));
+				movingManager.goCurrentPosition();
+				storySectionManager.runStorySequence();
+				break;
+			case BATTLE_END :
+				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				battleManager.setEventBattle(false);
+				storySectionManager.runStorySequence();
+				break;
+			case MOVE_SUB_NODE :
+				positionManager.setCurrentSubNodeName(getCurrentStoryEvent().getEventComponent().get(0));
+				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
+				movingManager.goCurrentPosition();
+				storySectionManager.runStorySequence();
+				break;
+			case PASS_TIME :
+				timeManager.setTime(Integer.parseInt(getCurrentStoryEvent().getEventComponent().get(0)) * 60);
+				storySectionManager.runStorySequence();
+				break;
+			case MUSIC :
+				musicManager.setEventMusicAndPlay();
+				storySectionManager.runStorySequence();
+				break;
+			case GAME_OVER :
+				screenFactory.show(ScreenEnum.GAME_OVER);
+				break;
+			default :
+				screenFactory.show(ScreenEnum.EVENT);
+				break;
 		}
 	}
 
 	public Event getCurrentElementEvent() {
 		switch (getCurrentEventElementType()) {
-		case NPC:
-			return getCurrentNpcEvent();
-		case GAME_OBJECT:
-			return getCurrentGameObject().getObjectEvent();
-		case SPECIAL:
-			return getCurrentSpecialEvent();
-		case STORY:
-			return getCurrentStoryEvent();
-		default:
-			Gdx.app.log("EventManager", "EventElementType 정보 오류");
-			return getCurrentNpcEvent();
+			case NPC :
+				return getCurrentNpcEvent();
+			case GAME_OBJECT :
+				return getCurrentGameObject().getObjectEvent();
+			case SPECIAL :
+				return getCurrentSpecialEvent();
+			case STORY :
+				return getCurrentStoryEvent();
+			default :
+				Gdx.app.log("EventManager", "EventElementType 정보 오류");
+				return getCurrentNpcEvent();
 		}
 	}
 
 	public void doSpecialEvent(Event event) {
 		switch (event.getEventType()) {
-		case DONT_GO_BUILDING:
-			setCurrentEventElementType(EventElementEnum.SPECIAL);
-			screenFactory.show(ScreenEnum.EVENT);
-			break;
-		default:
-			Gdx.app.log("EventManager", "SpecialEvent EventType정보 오류");
-			break;
+			case DONT_GO_BUILDING :
+				setCurrentEventElementType(EventElementEnum.SPECIAL);
+				screenFactory.show(ScreenEnum.EVENT);
+				break;
+			default :
+				Gdx.app.log("EventManager", "SpecialEvent EventType정보 오류");
+				break;
 		}
 	}
 
@@ -163,8 +163,7 @@ public class EventManager {
 				EventPacket eventPacket = specialEventQueueIterator.next();
 				Event specialEvent = getNpcEvent(eventPacket);
 				if (specialEvent.getEventType().equals(eventType)) {
-					if (eventCheckManager.checkSameWithComponentList(specialEvent.getEventComponent(),
-							componentString)) {
+					if (eventCheckManager.checkSameWithComponentList(specialEvent.getEventComponent(), componentString)) {
 						setCurrentSpecialEventInfo(eventPacket);
 						doSpecialEvent(specialEvent);
 					}
@@ -201,15 +200,15 @@ public class EventManager {
 			currentEvent = getCurrentSpecialEvent();
 		}
 		switch (currentEvent.getEventType()) {
-		case CHAT:
-		case CREDIT:
-		case SELECT_COMPONENT:
-		case SELECT_EVENT:
-		case DONT_GO_BUILDING:
-			return getChatScene(currentEvent);
-		default:
-			Gdx.app.error("EventManager", "EventTypeEnum 정보가 없습니다.");
-			throw new NullPointerException();
+			case CHAT :
+			case CREDIT :
+			case SELECT_COMPONENT :
+			case SELECT_EVENT :
+			case DONT_GO_BUILDING :
+				return getChatScene(currentEvent);
+			default :
+				Gdx.app.error("EventManager", "EventTypeEnum 정보가 없습니다.");
+				throw new NullPointerException();
 		}
 	}
 
@@ -354,8 +353,8 @@ public class EventManager {
 		String eventComponent = getCurrentElementEvent().getEventComponent().get(index);
 		if (getCurrentElementEvent().getEventTarget() != null) {
 			NPC npc = eventInfo.getNpc(getCurrentElementEvent().getEventTarget());
-			if (eventCheckManager.checkSameWithComponent(eventComponent,
-					npc.getEvent(index + eventPlusRule).getEventName())) {
+			if (eventCheckManager.checkSameWithComponent(eventComponent, npc.getEvent(index + eventPlusRule)
+					.getEventName())) {
 				setCurrentEventNpc(getCurrentElementEvent().getEventTarget());
 				setCurrentEventNumber(index + eventPlusRule); // 알고리즘이필요함
 				screenFactory.show(ScreenEnum.EVENT);
@@ -373,13 +372,13 @@ public class EventManager {
 
 	public EventPacket getCurrentElementEventPacket() {
 		switch (getCurrentEventElementType()) {
-		case NPC:
-			return getCurrentNpcEventPacket();
-		case STORY:
-			return getCurrentStoryEventPacket();
-		default:
-			Gdx.app.log("EventManager", "event element type 정보 오류");
-			return null;
+			case NPC :
+				return getCurrentNpcEventPacket();
+			case STORY :
+				return getCurrentStoryEventPacket();
+			default :
+				Gdx.app.log("EventManager", "event element type 정보 오류");
+				return null;
 		}
 	}
 }

@@ -18,7 +18,6 @@ import com.mygdx.enums.ItemEnum;
 import com.mygdx.model.item.Consumables;
 import com.mygdx.model.item.Equipment;
 import com.mygdx.model.item.Item;
-import com.mygdx.model.item.Weapon;
 
 public class BagManager {
 	@Autowired
@@ -31,17 +30,20 @@ public class BagManager {
 		switch (itemType) {
 			case HANDGRIP :
 				item = itemAssets.getHandGrip(itemName);
-				item = (Equipment) deepClone(itemAssets.getHandGrip(itemName));
+				// item = (Equipment)
+				// deepClone(itemAssets.getHandGrip(itemName));
 				addEquipment((Equipment) item);
 				break;
 			case ACCESSORY :
 				item = itemAssets.getAccessory(itemName);
-				item = (Equipment) deepClone(itemAssets.getHandGrip(itemName));
+				// item = (Equipment)
+				// deepClone(itemAssets.getHandGrip(itemName));
 				addEquipment((Equipment) item);
 				break;
 			case CLOTHES :
 				item = itemAssets.getClothes(itemName);
-				item = (Equipment) deepClone(itemAssets.getClothes(itemName));
+				// item = (Equipment)
+				// deepClone(itemAssets.getClothes(itemName));
 				addEquipment((Equipment) item);
 				break;
 			case CONSUMABLES :
@@ -50,7 +52,7 @@ public class BagManager {
 				break;
 			case ETC_ITEM :
 				item = itemAssets.getEtcItem(itemName);
-				item = (Weapon) deepClone(itemAssets.getEtcItem(itemName));
+				// item = (Item) deepClone(itemAssets.getEtcItem(itemName));
 				addEtcItem(item);
 				break;
 			default :
@@ -123,7 +125,7 @@ public class BagManager {
 
 	public Object deepClone(Object object) {
 		Kryo kryo = new Kryo();
-		kryo.register(Weapon.class);
+		kryo.register(Item.class);
 		try {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -132,7 +134,7 @@ public class BagManager {
 			output.close();
 			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 			Input input = new Input(new ObjectInputStream(bais));
-			object = kryo.readObject(input, Weapon.class);
+			object = kryo.readObject(input, Item.class);
 			input.close();
 			return object;
 		} catch (Exception e) {
