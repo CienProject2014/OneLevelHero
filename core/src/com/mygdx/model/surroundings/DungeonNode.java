@@ -15,16 +15,27 @@ public class DungeonNode {
 	private final static String TAG_LABEL = "label";
 	private final static String TAG_FLAG = "flag";
 
+	private String nodeLabel;
 	private int nodePosX;
 	private int nodePosY;
+	private String directionType;
+
 	private DungeonNodeEnum dungeonNodeType;
 
 	public HashMap<String, Object> data = new HashMap<>();
+
+	public String getDirectionType() {
+		return directionType;
+	}
 
 	public boolean chkFlag(int flg) {
 		if (dungeonNodeType.equals(DungeonNodeEnum.ENTRANCE))
 			setFlag(FLG_ENTRANCE);
 		else if (dungeonNodeType.equals(DungeonNodeEnum.NORMAL))
+			setFlag(FLG_ROAD);
+		else if (dungeonNodeType.equals(DungeonNodeEnum.OBJECT))
+			setFlag(FLG_TRESURE);
+		else if (dungeonNodeType.equals(DungeonNodeEnum.ELITE))
 			setFlag(FLG_ENCOUNT);
 		return (flg & (int) this.data.get(TAG_FLAG)) != FLG_NULL;
 	}

@@ -15,27 +15,24 @@ import com.mygdx.enums.StageEnum;
 public class DungeonScreen extends BaseScreen {
 	private Stage dungeonStage;
 	private Stage gameUiStage;
-	private Stage dungeonMinimapStage;
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		setInputProcessor();
 		dungeonStage.draw();
+		dungeonStage.act(delta);
 		dungeonStage.getCamera().update();
 		gameUiStage.draw();
-		dungeonMinimapStage.draw();
-		dungeonMinimapStage.act(delta);
 		// 카메라를 지속적으로 업데이트 해준다.
 	}
 
 	@Override
 	public void show() {
-		dungeonStage = stageFactory.makeStage(StageEnum.DUNGEON);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
-		dungeonMinimapStage = stageFactory.makeStage(StageEnum.MINIMAP);
 		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		setInputProcessor();
+		dungeonStage = stageFactory.makeStage(StageEnum.DUNGEON);
 		musicManager.setWorldNodeMusicAndPlay();
 	}
 
@@ -58,6 +55,5 @@ public class DungeonScreen extends BaseScreen {
 	public void hide() {
 		gameUiStage.dispose();
 		dungeonStage.dispose();
-		dungeonMinimapStage.dispose();
 	}
 }

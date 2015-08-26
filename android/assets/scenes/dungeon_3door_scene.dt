@@ -1,1 +1,178 @@
-{"sceneName":"dungeon_3door_scene","composite":{"sImages":[{"itemIdentifier":"background","layerName":"Default","tint":[1,1,1,1],"imageName":"bgdungeonsample04"}],"sComposites":[{"itemIdentifier":"go_left","x":147,"y":273,"zIndex":1,"layerName":"Default","tint":[1,1,1,1],"composite":{"sImages":[{"layerName":"Default","tint":[1,1,1,1],"imageName":"staybuttongo"}],"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}]}},{"itemIdentifier":"go_mid","x":860,"y":374.99994,"zIndex":2,"layerName":"Default","tint":[1,1,1,1],"composite":{"sImages":[{"layerName":"Default","tint":[1,1,1,1],"imageName":"staybuttongo"}],"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}]}},{"itemIdentifier":"go_right","x":1634,"y":251,"zIndex":3,"layerName":"Default","tint":[1,1,1,1],"composite":{"sImages":[{"layerName":"Default","tint":[1,1,1,1],"imageName":"staybuttongo"}],"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}]}},{"itemIdentifier":"back","x":795,"y":80,"zIndex":4,"layerName":"Default","tint":[1,1,1,1],"composite":{"sImages":[{"layerName":"Default","tint":[1,1,1,1],"imageName":"out"}],"layers":[{"layerName":"Default"},{"layerName":"normal"},{"layerName":"pressed"}]}}],"layers":[{"layerName":"Default"}]},"physicsPropertiesVO":{}}
+{
+  "sceneName": "dungeon_3door_scene",
+  "composite": {
+    "sImages": [
+      {
+        "itemIdentifier": "background",
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "bgdungeonsample04"
+      }
+    ],
+    "sComposites": [
+      {
+        "itemIdentifier": "go_left",
+        "x": 147,
+        "y": 273,
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "staybuttongo"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "go_mid",
+        "x": 860,
+        "y": 374.99994,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "staybuttongo"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "go_right",
+        "x": 1634,
+        "y": 251,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "staybuttongo"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "back",
+        "x": 795,
+        "y": 80,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "out"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ]
+  },
+  "physicsPropertiesVO": {}
+}
