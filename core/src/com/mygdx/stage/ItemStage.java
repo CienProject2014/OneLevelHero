@@ -15,10 +15,12 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BagManager;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.item.Item;
 import com.mygdx.screen.BattleScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -35,6 +37,8 @@ public class ItemStage extends BaseOverlapStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private AssetsManager assetsManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
 	@Autowired
 	private BagManager bagManager;
 	public final String SCENE_NAME = "item_scene";
@@ -92,6 +96,7 @@ public class ItemStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				setCompositeItemVisibilty(useButton, PRESSED_VISIBILTY);
+				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_CONTROL, "item");
 				BattleScreen.showItemStage = false;
 			}
 		});
@@ -172,8 +177,8 @@ public class ItemStage extends BaseOverlapStage {
 						addUseButtonListener(index);
 						for (int j = 0; j < ITEM_TAB_SIZE; j++) {
 							if (j != index) {
-								final CompositeItem highLightFrame = sceneLoader.getRoot()
-										.getCompositeById("highlight_0" + (j + 1));
+								final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
+										"highlight_0" + (j + 1));
 								setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 							}
 						}
@@ -184,8 +189,8 @@ public class ItemStage extends BaseOverlapStage {
 						setVoidDescription();
 						setFirstUseButton();
 						for (int j = 0; j < ITEM_TAB_SIZE; j++) {
-							CompositeItem highLightFrame = sceneLoader.getRoot()
-									.getCompositeById("highlight_0" + (j + 1));
+							CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
+									"highlight_0" + (j + 1));
 							setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 						}
 					}

@@ -63,7 +63,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private AnimationManager animationManager;
 
 	// RMenuButton
-	private ImageButton attackButton, skillButton, inventoryButton, defenseButton, waitButton, escapeButton;
+	private ImageButton attackButton, skillButton, itemButton, defenseButton, waitButton, escapeButton;
 	private ArrayList<ImageButton> rMenuButtonList;
 	private Monster selectedMonster;
 
@@ -263,7 +263,7 @@ public class BattleStage extends BaseOneLevelStage {
 		rMenuButtonList = new ArrayList<>();
 		rMenuButtonList.add(attackButton);
 		rMenuButtonList.add(skillButton);
-		rMenuButtonList.add(inventoryButton);
+		rMenuButtonList.add(itemButton);
 		rMenuButtonList.add(defenseButton);
 		rMenuButtonList.add(waitButton);
 		rMenuButtonList.add(escapeButton);
@@ -324,12 +324,12 @@ public class BattleStage extends BaseOneLevelStage {
 			}
 		});
 
-		inventoryButton.addListener(new ClickListener() {
+		itemButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				battleManager.checkCurrentState();
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.INVENTORY);
-				setDarkButton(inventoryButton);
+				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.ITEM);
+				setDarkButton(itemButton);
 				battleManager.afterClick(ITEM);
 				BattleScreen.showItemStage = true;
 			}
@@ -470,7 +470,7 @@ public class BattleStage extends BaseOneLevelStage {
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_attack"));
 		skillButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_skill"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_skill"));
-		inventoryButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_item"),
+		itemButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_item"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_item"));
 		defenseButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_defense"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_defense"));
