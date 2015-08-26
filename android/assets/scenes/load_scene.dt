@@ -88,7 +88,7 @@
       {
         "itemIdentifier": "save02_image01",
         "x": 903,
-        "y": 458,
+        "y": 460,
         "zIndex": 18,
         "layerName": "Default",
         "tint": [
@@ -102,7 +102,7 @@
       {
         "itemIdentifier": "save02_image02",
         "x": 1053,
-        "y": 458,
+        "y": 460,
         "zIndex": 19,
         "layerName": "Default",
         "tint": [
@@ -116,7 +116,7 @@
       {
         "itemIdentifier": "save02_image03",
         "x": 1203,
-        "y": 458,
+        "y": 460,
         "zIndex": 20,
         "layerName": "Default",
         "tint": [
@@ -130,7 +130,7 @@
       {
         "itemIdentifier": "save02_image04",
         "x": 1353,
-        "y": 458,
+        "y": 460,
         "zIndex": 21,
         "layerName": "Default",
         "tint": [
@@ -144,7 +144,7 @@
       {
         "itemIdentifier": "save03_image01",
         "x": 903,
-        "y": 173,
+        "y": 175,
         "zIndex": 26,
         "layerName": "Default",
         "tint": [
@@ -158,7 +158,7 @@
       {
         "itemIdentifier": "save03_image02",
         "x": 1053,
-        "y": 173,
+        "y": 175,
         "zIndex": 27,
         "layerName": "Default",
         "tint": [
@@ -172,7 +172,7 @@
       {
         "itemIdentifier": "save03_image03",
         "x": 1203,
-        "y": 173,
+        "y": 175,
         "zIndex": 28,
         "layerName": "Default",
         "tint": [
@@ -186,7 +186,7 @@
       {
         "itemIdentifier": "save03_image04",
         "x": 1353,
-        "y": 173,
+        "y": 175,
         "zIndex": 29,
         "layerName": "Default",
         "tint": [
@@ -288,7 +288,7 @@
       {
         "itemIdentifier": "save02_label",
         "x": 600,
-        "y": 623,
+        "y": 625,
         "zIndex": 14,
         "layerName": "Default",
         "tint": [
@@ -306,7 +306,7 @@
       {
         "itemIdentifier": "save02_time_label",
         "x": 440,
-        "y": 552,
+        "y": 554,
         "zIndex": 15,
         "layerName": "Default",
         "tint": [
@@ -324,7 +324,7 @@
       {
         "itemIdentifier": "save02_place_label",
         "x": 440,
-        "y": 500,
+        "y": 502,
         "zIndex": 16,
         "layerName": "Default",
         "tint": [
@@ -342,7 +342,7 @@
       {
         "itemIdentifier": "save02_real_time_label",
         "x": 440,
-        "y": 463,
+        "y": 465,
         "zIndex": 17,
         "layerName": "Default",
         "tint": [
@@ -360,7 +360,7 @@
       {
         "itemIdentifier": "save03_label",
         "x": 600,
-        "y": 338,
+        "y": 340,
         "zIndex": 22,
         "layerName": "Default",
         "tint": [
@@ -378,7 +378,7 @@
       {
         "itemIdentifier": "save03_real_time_label",
         "x": 440,
-        "y": 178,
+        "y": 180,
         "zIndex": 23,
         "layerName": "Default",
         "tint": [
@@ -396,7 +396,7 @@
       {
         "itemIdentifier": "save03_place_label",
         "x": 440,
-        "y": 215,
+        "y": 217,
         "zIndex": 24,
         "layerName": "Default",
         "tint": [
@@ -414,7 +414,7 @@
       {
         "itemIdentifier": "save03_time_label",
         "x": 440,
-        "y": 267,
+        "y": 269,
         "zIndex": 25,
         "layerName": "Default",
         "tint": [
@@ -576,10 +576,61 @@
         }
       },
       {
-        "itemIdentifier": "close_button",
-        "x": 785,
+        "itemIdentifier": "new_button",
+        "x": 585,
         "y": 33,
         "zIndex": 30,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "saveuibuttonnew"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "saveuiacbuttonnew"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "close_button",
+        "x": 985,
+        "y": 33,
+        "zIndex": 31,
         "layerName": "Default",
         "tint": [
           1,

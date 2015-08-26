@@ -65,12 +65,7 @@ public class MenuStage extends BaseOneLevelStage {
 				new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_credit.png"))));
 
 		// 클릭리스너추가
-		startButton.addListener(new ClickListener() {
-
-			public void clicked(InputEvent event, float x, float y) {
-				screenFactory.push(ScreenEnum.LOAD);
-			}
-		});
+		startButton.addListener(listenerFactory.getLoadListener());
 
 		settingButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
