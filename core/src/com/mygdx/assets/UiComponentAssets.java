@@ -17,7 +17,7 @@ public class UiComponentAssets implements FileAssetsInitializable {
 	private TextureRegionDrawable[] chatButton;
 	private TextureRegionDrawable eventButton;
 	private Image chatLineImage;
-	private Texture splash;
+	private Texture splash, stayButton;
 	private Image logo;
 	private BitmapFont font;
 
@@ -28,13 +28,13 @@ public class UiComponentAssets implements FileAssetsInitializable {
 		for (int i = 0; i < 6; i++) {
 			chatButton[i] = new TextureRegionDrawable(textureAtlas.findRegion("chatbutton" + (i + 1)));
 		}
+		setStayButton(new Texture(Gdx.files.internal("texture/ui/dungeon/stay_button_stay.png")));
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
-		setEventButton(new TextureRegionDrawable(
-				new TextureRegion(new Texture(Gdx.files.internal("texture/ui/chat/talk_select.png")))));
+		setEventButton(new TextureRegionDrawable(new TextureRegion(new Texture(
+				Gdx.files.internal("texture/ui/chat/talk_select.png")))));
 		setScriptButton(new Image(new Texture(Gdx.files.internal("texture/ui/chat/talkui_window.png"))));
 	}
-
 	public Skin getSkin() {
 		return skin;
 	}
@@ -89,5 +89,11 @@ public class UiComponentAssets implements FileAssetsInitializable {
 
 	public void setScriptButton(Image image) {
 		this.chatLineImage = image;
+	}
+	public Texture getStayButton() {
+		return stayButton;
+	}
+	public void setStayButton(Texture stayButton) {
+		this.stayButton = stayButton;
 	}
 }

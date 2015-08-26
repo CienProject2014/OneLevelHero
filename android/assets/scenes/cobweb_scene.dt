@@ -501,45 +501,6 @@
         }
       },
       {
-        "itemIdentifier": "cobweb_weaponsmith",
-        "x": 13.0000305,
-        "y": 740,
-        "zIndex": 16,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "sign",
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "townuibuildtagweaponsworksshop"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
         "itemIdentifier": "camera_down",
         "x": 1673,
         "y": 1850,

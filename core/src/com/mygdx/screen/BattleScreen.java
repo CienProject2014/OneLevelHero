@@ -57,22 +57,19 @@ public class BattleScreen extends BaseScreen {
 
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
+		int i = 0;
 		if (showSkillStage) {
-			multiplexer.addProcessor(0, skillStage);
-
+			multiplexer.addProcessor(i++, skillStage);
 		} else if (showItemStage) {
-
-			multiplexer.addProcessor(0, itemStage);
+			multiplexer.addProcessor(i++, itemStage);
 		} else {
-			multiplexer.addProcessor(0, gameUiStage);
-			multiplexer.addProcessor(1, characterUiStage);
-			multiplexer.addProcessor(2, monsterStage);
-			multiplexer.addProcessor(3, battleStage);
-			multiplexer.addProcessor(4, skillStage);
+			multiplexer.addProcessor(i++, gameUiStage);
+			multiplexer.addProcessor(i++, characterUiStage);
+			multiplexer.addProcessor(i++, monsterStage);
+			multiplexer.addProcessor(i++, battleStage);
+			multiplexer.addProcessor(i++, skillStage);
 		}
-		if (showLoadStage)
-
-		{
+		if (showLoadStage) {
 			multiplexer.addProcessor(0, loadPopupStage);
 		}
 		Gdx.input.setInputProcessor(multiplexer);

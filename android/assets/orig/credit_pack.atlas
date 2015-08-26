@@ -1,0 +1,55 @@
+
+credit_pack.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgcredit01
+  rotate: false
+  xy: 2, 2204
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+bgcredit02
+  rotate: false
+  xy: 2, 1122
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+bgcredit03
+  rotate: false
+  xy: 1924, 2204
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+bgcredit04
+  rotate: false
+  xy: 2, 40
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+credituiarrowdown
+  rotate: false
+  xy: 1924, 2140
+  size: 113, 62
+  orig: 113, 62
+  offset: 0, 0
+  index: -1
+credituiarrowup
+  rotate: false
+  xy: 3846, 3222
+  size: 113, 62
+  orig: 113, 62
+  offset: 0, 0
+  index: -1
+credituiback
+  rotate: false
+  xy: 2, 2
+  size: 100, 36
+  orig: 100, 36
+  offset: 0, 0
+  index: -1

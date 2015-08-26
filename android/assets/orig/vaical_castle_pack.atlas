@@ -1,40 +1,62 @@
+
 vaical_castle_pack.png
 size: 2048,4096
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-bgvaical1
+bgvaicalcastle
   rotate: false
-  xy: 2, 250
+  xy: 2, 495
   size: 1920, 2160
   orig: 1920, 2160
   offset: 0, 0
   index: -1
-invenuipage01
-  rotate: false
-  xy: 238, 228
-  size: 20, 20
-  orig: 20, 20
-  offset: 0, 0
-  index: -1
-invenuiup
-  rotate: false
-  xy: 1924, 2380
-  size: 30, 30
-  orig: 30, 30
-  offset: 0, 0
-  index: -1
 townuidown
   rotate: false
-  xy: 2, 126
+  xy: 2, 166
   size: 234, 122
   orig: 234, 122
   offset: 0, 0
   index: -1
 townuiup
   rotate: false
-  xy: 2, 2
+  xy: 525, 371
   size: 234, 122
   orig: 234, 122
+  offset: 0, 0
+  index: -1
+vaical-bot0000-------2
+  rotate: false
+  xy: 2, 84
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+vaical-bot0001-------1
+  rotate: false
+  xy: 2, 290
+  size: 259, 203
+  orig: 259, 203
+  offset: 0, 0
+  index: -1
+vaical-top0000-------3
+  rotate: false
+  xy: 263, 292
+  size: 260, 201
+  orig: 260, 201
+  offset: 0, 0
+  index: -1
+vaical-top0001-------2
+  rotate: false
+  xy: 761, 413
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+vaical-top0002-------1
+  rotate: false
+  xy: 2, 2
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1

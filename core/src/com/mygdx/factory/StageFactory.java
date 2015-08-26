@@ -14,6 +14,7 @@ import com.mygdx.stage.BuildingStage;
 import com.mygdx.stage.CharacterChangeStage;
 import com.mygdx.stage.CharacterUiStage;
 import com.mygdx.stage.ChatEventStage;
+import com.mygdx.stage.CreditStage;
 import com.mygdx.stage.DungeonEntranceStage;
 import com.mygdx.stage.DungeonMinimapStage;
 import com.mygdx.stage.DungeonStage;
@@ -42,7 +43,7 @@ public class StageFactory {
 	private ApplicationContext context;
 
 	public Stage makeStage(StageEnum stageEnum) {
-		Gdx.app.log("StageFactory", "Make " + stageEnum.toString() + "Stage");
+		Gdx.app.log("StageFactory", "Make " + String.valueOf(stageEnum) + "Stage");
 		switch (stageEnum) {
 		case BATTLE:
 			return context.getBean(BattleStage.class).makeStage();
@@ -52,6 +53,8 @@ public class StageFactory {
 			return context.getBean(CharacterChangeStage.class).makeStage();
 		case CHARACTER_UI:
 			return context.getBean(CharacterUiStage.class).makeStage();
+		case CREDIT:
+			return context.getBean(CreditStage.class).makeStage();
 		case DUNGEON:
 			return context.getBean(DungeonStage.class).makeStage();
 		case DUNGEON_ENTRANCE:

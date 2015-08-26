@@ -48,7 +48,7 @@
     ]
   },
   {
-    "fieldType": "mountain_titania",
+    "fieldType": "kadilla_mountain",
     "fieldMonsterList": [
       "troll",
       "griffon",

@@ -69,7 +69,6 @@ public class DungeonManager {
 	}
 
 	public boolean isInDungeon() {
-		// TODO Auto-generated method stub
 		if (mapInfo != null)
 			return mapInfo.isInDungeon();
 		else

@@ -86,11 +86,12 @@ public class SavePopupStage extends BaseOverlapStage {
 			LabelItem placeLabel = sceneLoader.getRoot().getLabelById(placeLabels.get(i));
 			if (saveManager.isLoadable(SaveVersion.findSaveByName(saveVerions.get(i)))) {
 				SaveInfo svInfo = saveManager.readSaveInfo(SaveVersion.findSaveByName(saveVerions.get(i)));
+				LabelStyle labelStyle = new LabelStyle(uiComponentAssets.getFont(), Color.WHITE);
+				placeLabel.setStyle(labelStyle);
 				subjectLabel.setText(svInfo.getStoryName());
 				gameTimeLabel.setText(svInfo.getGameTime());
 				placeLabel.setText(svInfo.getSavePlace());
 				saveTimeLabel.setText(svInfo.getSaveTime());
-
 				setLabelStyle(subjectLabel);
 				setLabelStyle(gameTimeLabel);
 				setLabelStyle(saveTimeLabel);
@@ -103,7 +104,6 @@ public class SavePopupStage extends BaseOverlapStage {
 			}
 		}
 	}
-
 	private void setCompositeItem() {
 		background = sceneLoader.getRoot().getCompositeById("background");
 		save01 = sceneLoader.getRoot().getCompositeById("save01");

@@ -1,5 +1,5 @@
 {
-  "sceneName": "vonichea_scene",
+  "sceneName": "bonichea_scene",
   "composite": {
     "sImages": [
       {
@@ -11,7 +11,7 @@
           1,
           1
         ],
-        "imageName": "vonichea-left0002-------0"
+        "imageName": "bonichea-left0002-------0"
       },
       {
         "itemIdentifier": "background02",
@@ -24,12 +24,12 @@
           1,
           1
         ],
-        "imageName": "vonichea-right0002-------0"
+        "imageName": "bonichea-right0002-------0"
       }
     ],
     "sComposites": [
       {
-        "itemIdentifier": "vonichea_inn",
+        "itemIdentifier": "bonichea_inn",
         "x": 3028,
         "y": 624,
         "zIndex": 2,
@@ -50,7 +50,7 @@
                 1,
                 1
               ],
-              "imageName": "vonichea-right0001-------1"
+              "imageName": "bonichea-right0001-------1"
             }
           ],
           "layers": [
@@ -67,7 +67,7 @@
         }
       },
       {
-        "itemIdentifier": "vonichea_square",
+        "itemIdentifier": "bonichea_square",
         "x": 2723,
         "y": 332,
         "zIndex": 3,
@@ -88,7 +88,7 @@
                 1,
                 1
               ],
-              "imageName": "vonichea-right0000-------2"
+              "imageName": "bonichea-right0000-------2"
             }
           ],
           "layers": [
@@ -105,7 +105,7 @@
         }
       },
       {
-        "itemIdentifier": "vonichea_dock",
+        "itemIdentifier": "bonichea_dock",
         "x": 785,
         "y": 663,
         "zIndex": 4,
@@ -126,7 +126,7 @@
                 1,
                 1
               ],
-              "imageName": "vonichea-left0001-------1"
+              "imageName": "bonichea-left0001-------1"
             }
           ],
           "layers": [
@@ -143,7 +143,7 @@
         }
       },
       {
-        "itemIdentifier": "vonichea_grocery",
+        "itemIdentifier": "bonichea_grocery",
         "x": 1217,
         "y": 295,
         "zIndex": 5,
@@ -164,7 +164,7 @@
                 1,
                 1
               ],
-              "imageName": "vonichea-left0000-------2"
+              "imageName": "bonichea-left0000-------2"
             }
           ],
           "layers": [

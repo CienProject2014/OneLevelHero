@@ -1,7 +1,6 @@
 package com.mygdx.stage;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Stack;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,8 +66,8 @@ public class GameUiStage extends BaseOneLevelStage {
 		timeInfoButton.setText(timeManager.getTimeInfo());
 		if (storySectionManager.getCurrentStorySection().getNextSections() != null
 				&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
-			timeInfoButton
-					.setText(timeManager.getTimeInfo() + " / " + storySectionManager.getCurrentStorySectionNumber());
+			timeInfoButton.setText(timeManager.getTimeInfo() + " / "
+					+ storySectionManager.getCurrentStorySectionNumber());
 		}
 	}
 
@@ -161,18 +160,12 @@ public class GameUiStage extends BaseOneLevelStage {
 		questLogButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				positionManager.setBeforePositionType(positionManager.getCurrentPositionType());
-				screenFactory.show(ScreenEnum.LOG);
+
 				return true;
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Iterator<GameObjectPopup> alertMessageIterator = alertMessage.iterator();
-
-				GameObjectPopup nextIterator = alertMessageIterator.next();
-				addActor(nextIterator);
-				nextIterator.setVisible(true);
 			}
 		});
 		timeInfoButton.addListener(listenerFactory.getJumpSectionListener());

@@ -12,20 +12,6 @@
           1
         ],
         "imageName": "bgredrosecastle"
-      },
-      {
-        "itemIdentifier": "redrose_castle_peasanthouse02",
-        "x": 1502,
-        "y": 645,
-        "zIndex": 4,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "redrose-right0000-------3"
       }
     ],
     "sComposites": [
@@ -110,6 +96,44 @@
         "x": 3313,
         "y": 182,
         "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "redrose-right0000-------3"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+{
+        "itemIdentifier": "redrose_castle_peasanthouse02",
+        "x": 1502,
+        "y": 645,
+        "zIndex": 4,
         "layerName": "Default",
         "tint": [
           1,
@@ -296,7 +320,7 @@
         }
       },
       {
-        "itemIdentifier": "camera_right",
+        "itemIdentifier": "camera_left",
         "x": 3700,
         "y": 650,
         "zIndex": 9,
