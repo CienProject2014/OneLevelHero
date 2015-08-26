@@ -19,7 +19,7 @@ public class SoundManager {
 		}
 	}
 
-	public void setSoundbyPathAndPlay(String soundPath) {
+	public void setSoundByPathAndPlay(String soundPath) {
 		setSoundByPath(soundPath);
 		playSound(getSoundVolume());
 	}

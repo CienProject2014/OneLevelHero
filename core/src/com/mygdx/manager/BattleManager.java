@@ -60,6 +60,8 @@ public class BattleManager {
 	private TimeManager timeManager;
 	@Autowired
 	private MusicManager musicManager;
+	@Autowired
+	private SoundManager soundManager;
 	private GridHitbox gridHitbox; // grid hitbox 테이블
 
 	public SkillRunPopup gameObjectPopup;
@@ -174,6 +176,9 @@ public class BattleManager {
 	public void endTurn() {
 		updateOrder();
 		battleInfo.setCurrentAttackUnit(getCurrentActors());
+		if (getCurrentActors() instanceof Hero) {
+
+		}
 		setBigUpdate(true);
 		setSmallUpdate(true);
 		showRMenuButtons();
@@ -371,6 +376,7 @@ public class BattleManager {
 
 		animationManager.registerAnimation("attack_cutting", x, y);
 	}
+
 	public int getPlayerOrder(Hero defendHero) {
 		for (int i = 0; i < partyManager.getBattleMemberList().size(); i++) {
 			if (partyManager.getBattleMemberList().get(i).equals(defendHero)) {
