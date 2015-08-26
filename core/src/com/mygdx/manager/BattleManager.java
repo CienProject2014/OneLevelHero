@@ -147,7 +147,7 @@ public class BattleManager {
 			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
 			timeManager.plusSecond(-timeManager.getPreTime());
 			break;
-		case INVENTORY:
+		case ITEM:
 			setShowGrid(false);
 			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
 			timeManager.plusSecond(-timeManager.getPreTime());

@@ -59,7 +59,7 @@
       {
         "nextSectionNumber": "104",
         "eventType": "battle_control",
-        "targetComponent": "skill_attack"
+        "targetComponent": "item"
       }
     ]
   },
