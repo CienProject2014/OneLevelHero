@@ -19,7 +19,8 @@ public class InventoryScreen extends BaseScreen {
 	public void show() {
 		inventoryStage = stageFactory.makeStage(StageEnum.INVENTORY);
 		InputMultiplexer multiplexer = new InputMultiplexer();
-		multiplexer.addProcessor(0, inventoryStage);
+		int i = 0;
+		multiplexer.addProcessor(i++, inventoryStage);
 		Gdx.input.setInputProcessor(multiplexer);
 	}
 }

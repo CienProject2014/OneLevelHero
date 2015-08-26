@@ -1,6 +1,10 @@
 package com.mygdx.manager;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,10 +26,6 @@ public class MonsterPickManager {
 	@Autowired
 	private NodeAssets nodeAssets;
 	@Autowired
-	private PositionManager positionManager;
-	@Autowired
-	private BattleManager battleManager;
-	@Autowired
 	private FieldManager fieldManager;
 	@Autowired
 	private UnitManager unitManager;
@@ -37,6 +37,11 @@ public class MonsterPickManager {
 		return monster;
 	}
 
+	public Monster createSpecificMoster(String Montername) {
+		Monster monster = unitAssets.getMonster(Montername);
+		return monster;
+	}
+
 	public Monster createMonster(String monsterName) {
 		Monster monster = unitAssets.getMonster(monsterName);
 		unitManager.initiateMonster(monster);
@@ -44,7 +49,6 @@ public class MonsterPickManager {
 	}
 
 	private String selectMonster() {
-
 		List<String> monsterStrings = null;
 
 		if (fieldManager.isInField()) {
@@ -54,9 +58,7 @@ public class MonsterPickManager {
 			FieldTypeEnum fieldType = dungeonManager.getMapInfo().getFieldType();
 			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
 		}
-		// FIXME : 랜덤로직
-		int randomInt = (int) (Math.random() * monsterStrings.size());
-		String selectedMonsterString = monsterStrings.get(randomInt);
-		return selectedMonsterString;
+
+		return monsterStrings.get(ThreadLocalRandom.current().nextInt(monsterStrings.size()));
 	}
 }

@@ -59,11 +59,12 @@ public class GreetingScreen extends BaseScreen {
 		eventStage = stageFactory.makeEventStage(shuffleList.get(0));
 
 		InputMultiplexer multiplexer = new InputMultiplexer();
+		int i = 0;
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에
 		// 우선권을 준다.
 
-		multiplexer.addProcessor(0, selectEventStage);
-		multiplexer.addProcessor(1, eventStage);
+		multiplexer.addProcessor(i++, selectEventStage);
+		multiplexer.addProcessor(i++, eventStage);
 
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		input.setInputProcessor(multiplexer);

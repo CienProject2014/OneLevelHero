@@ -114,10 +114,10 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 		HorizontalGroup buffGroup = new HorizontalGroup();
 		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
-		buffGroup.addActor(new Image(textureManager.getEtcTexture(BUFF_DE_FAINT)));
-		buffGroup.addActor(new Image(textureManager.getEtcTexture(BUFF_DE_SATAN)));
-		buffGroup.addActor(new Image(textureManager.getEtcTexture(BUFF_DE_ICE)));
-		buffGroup.addActor(new Image(textureManager.getEtcTexture(BUFF_DE_FIRE)));
+		buffGroup.addActor(new Image(textureManager.getTexture(BUFF_DE_FAINT)));
+		buffGroup.addActor(new Image(textureManager.getTexture(BUFF_DE_SATAN)));
+		buffGroup.addActor(new Image(textureManager.getTexture(BUFF_DE_ICE)));
+		buffGroup.addActor(new Image(textureManager.getTexture(BUFF_DE_FIRE)));
 		barTable = new Table();
 		Label hpLabel = new Label(statusBar.getHp() + "/" + statusBar.getMaxHp(), uiComponentAssets.getSkin());
 		hpLabelList.add(hpLabel);

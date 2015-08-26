@@ -1,9 +1,9 @@
 {
-  "sceneName": "vaical_castle_scene",
+  "sceneName": "bonichea_scene",
   "composite": {
     "sImages": [
       {
-        "itemIdentifier": "background",
+        "itemIdentifier": "background01",
         "layerName": "Default",
         "tint": [
           1,
@@ -11,14 +11,11 @@
           1,
           1
         ],
-        "imageName": "bgvaicalcastle"
-      }
-    ],
-    "sComposites": [
+        "imageName": "bonichea-left0002-------0"
+      },
       {
-        "itemIdentifier": "vaical_castle_colosseum",
-        "x": 1220.0001,
-        "y": 689,
+        "itemIdentifier": "background02",
+        "x": 1920,
         "zIndex": 1,
         "layerName": "Default",
         "tint": [
@@ -27,36 +24,14 @@
           1,
           1
         ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "vaical-bot0000-------2"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
+        "imageName": "bonichea-right0002-------0"
+      }
+    ],
+    "sComposites": [
       {
-        "itemIdentifier": "vaical_castle_lab",
-        "x": 395,
-        "y": 1395,
+        "itemIdentifier": "bonichea_inn",
+        "x": 3028,
+        "y": 624,
         "zIndex": 2,
         "layerName": "Default",
         "tint": [
@@ -75,7 +50,7 @@
                 1,
                 1
               ],
-              "imageName": "vaical-top0001-------2"
+              "imageName": "bonichea-right0001-------1"
             }
           ],
           "layers": [
@@ -92,9 +67,9 @@
         }
       },
       {
-        "itemIdentifier": "vaical_castle_headhouse",
-        "x": 788,
-        "y": 1510,
+        "itemIdentifier": "bonichea_square",
+        "x": 2723,
+        "y": 332,
         "zIndex": 3,
         "layerName": "Default",
         "tint": [
@@ -113,7 +88,7 @@
                 1,
                 1
               ],
-              "imageName": "vaical-top0002-------1"
+              "imageName": "bonichea-right0000-------2"
             }
           ],
           "layers": [
@@ -130,9 +105,9 @@
         }
       },
       {
-        "itemIdentifier": "6to18",
-        "x": 1438,
-        "y": 1536.5,
+        "itemIdentifier": "bonichea_dock",
+        "x": 785,
+        "y": 663,
         "zIndex": 4,
         "layerName": "Default",
         "tint": [
@@ -151,7 +126,7 @@
                 1,
                 1
               ],
-              "imageName": "vaical-top0000-------3"
+              "imageName": "bonichea-left0001-------1"
             }
           ],
           "layers": [
@@ -168,9 +143,9 @@
         }
       },
       {
-        "itemIdentifier": "6to5",
-        "x": 619.5,
-        "y": 372.5,
+        "itemIdentifier": "bonichea_grocery",
+        "x": 1217,
+        "y": 295,
         "zIndex": 5,
         "layerName": "Default",
         "tint": [
@@ -189,7 +164,7 @@
                 1,
                 1
               ],
-              "imageName": "vaical-bot0001-------1"
+              "imageName": "bonichea-left0000-------2"
             }
           ],
           "layers": [
@@ -206,9 +181,9 @@
         }
       },
       {
-        "itemIdentifier": "camera_down",
-        "x": 1670,
-        "y": 1830,
+        "itemIdentifier": "camera_right",
+        "x": 1780,
+        "y": 650,
         "zIndex": 6,
         "layerName": "Default",
         "tint": [
@@ -227,7 +202,7 @@
                 1,
                 1
               ],
-              "imageName": "townuidown"
+              "imageName": "townuiright"
             }
           ],
           "layers": [
@@ -244,9 +219,9 @@
         }
       },
       {
-        "itemIdentifier": "camera_up",
-        "x": 1670,
-        "y": 750,
+        "itemIdentifier": "camera_left",
+        "x": 3700,
+        "y": 650,
         "zIndex": 7,
         "layerName": "Default",
         "tint": [
@@ -265,7 +240,7 @@
                 1,
                 1
               ],
-              "imageName": "townuiup"
+              "imageName": "townuileft"
             }
           ],
           "layers": [

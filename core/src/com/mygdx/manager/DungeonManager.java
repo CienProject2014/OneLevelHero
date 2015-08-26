@@ -12,6 +12,18 @@ public class DungeonManager {
 	private boolean currentHeading;
 	private int currentPos;
 	private boolean[][] isOn;
+	private String recentDungeon;
+
+	public void setRecentDungeon(String currentDungeon) {
+		recentDungeon = currentDungeon;
+	}
+
+	public boolean isThisNewDungeon(String newDungeon) {
+		if (recentDungeon != null)
+			return recentDungeon.equals(newDungeon);
+		else
+			return true;
+	}
 
 	public void setIsOn() {
 		isOn = new boolean[mapInfo.getMapWidth()][mapInfo.getMapHeight()];
@@ -43,6 +55,10 @@ public class DungeonManager {
 	}
 	public void setMapInfo(String dungeonPath) {
 		mapInfo = nodeAssets.getDungeonByName(dungeonPath);
+
+		if (mapInfo == null)
+			setMapInfo("devil_castle");
+
 		mapInfo.setInDungeon(true);
 	}
 
@@ -53,7 +69,6 @@ public class DungeonManager {
 	}
 
 	public boolean isInDungeon() {
-		// TODO Auto-generated method stub
 		if (mapInfo != null)
 			return mapInfo.isInDungeon();
 		else

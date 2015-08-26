@@ -22,16 +22,15 @@ public class NodeAssets implements JsonAssetsInitializable {
 	public Map<String, DungeonEntrance> dungeonEntranceMap;
 
 	public void set(Map<String, String> jsonStringMap) {
+		villageMap = JsonParser.parseMap(Village.class, jsonStringMap.get(String.valueOf(JsonEnum.VILLAGE_JSON)));
 
-		villageMap = JsonParser.parseMap(Village.class, jsonStringMap.get(JsonEnum.VILLAGE_JSON.toString()));
-
-		dungeonMap = JsonParser.parseMap(Dungeon.class, jsonStringMap.get(JsonEnum.DUNGEON_JSON.toString()));
+		dungeonMap = JsonParser.parseMap(Dungeon.class, jsonStringMap.get(String.valueOf(JsonEnum.DUNGEON_JSON)));
 		dungeonEntranceMap = JsonParser.parseMap(DungeonEntrance.class,
-				jsonStringMap.get(JsonEnum.DUNGEON_ENTRANCE_JSON.toString()));
-		forkMap = JsonParser.parseMap(Fork.class, jsonStringMap.get(JsonEnum.FORK_JSON.toString()));
+				jsonStringMap.get(String.valueOf(JsonEnum.DUNGEON_ENTRANCE_JSON)));
+		forkMap = JsonParser.parseMap(Fork.class, jsonStringMap.get(String.valueOf(JsonEnum.FORK_JSON)));
 
 		ArrayList<MonsterField> monsterFieldList = JsonParser.parseList(MonsterField.class,
-				jsonStringMap.get(JsonEnum.MONSTER_FIELD_JSON.toString()));
+				jsonStringMap.get(String.valueOf(JsonEnum.MONSTER_FIELD_JSON)));
 		monsterFieldMap = new HashMap<FieldTypeEnum, ArrayList<String>>();
 		for (MonsterField monsterField : monsterFieldList) {
 			monsterFieldMap.put(monsterField.getFieldType(), monsterField.getFieldMonsterList());

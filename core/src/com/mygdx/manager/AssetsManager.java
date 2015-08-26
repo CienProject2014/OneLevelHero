@@ -47,8 +47,7 @@ public class AssetsManager extends AssetManager {
 		}
 
 		if (rm.myScene.contains(name)) {
-		} else if (name.equals(rm.preparedSceneNames)) {
-		} else {
+		} else if (!rm.preparedSceneNames.equals(name)) {
 			Gdx.app.log("load", "orig" + File.separator + path + "pack.atlas");
 			load("orig" + File.separator + path + "pack.atlas", TextureAtlas.class);
 			finishLoading();

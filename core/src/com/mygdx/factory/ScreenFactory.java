@@ -60,7 +60,7 @@ public class ScreenFactory {
 	}
 
 	private Screen getScreenInstance(ScreenEnum screenEnum) {
-		Gdx.app.log("ScreenFactory", screenEnum.toString() + "Screen 호출");
+		Gdx.app.log("ScreenFactory", String.valueOf(screenEnum) + "Screen 호출");
 		switch (screenEnum) {
 		case BATTLE:
 			return context.getBean(BattleScreen.class);
@@ -120,7 +120,7 @@ public class ScreenFactory {
 	}
 
 	public void show(ScreenEnum screenEnum) {
-		Gdx.app.debug("ScreenFactory", "show(" + screenEnum.toString() + ")");
+		Gdx.app.debug("ScreenFactory", "show(" + String.valueOf(screenEnum) + ")");
 		if (game == null) {
 			Gdx.app.debug("ScreenFactory", "game is null");
 			return;

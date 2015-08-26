@@ -29,8 +29,9 @@ public class SkillScreen extends BaseScreen {
 		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
 		skillStage = stageFactory.makeStage(StageEnum.SKILL);
 		InputMultiplexer multiplexer = new InputMultiplexer();
-		multiplexer.addProcessor(0, skillStage);
-		multiplexer.addProcessor(1, monsterStage);
+		int i = 0;
+		multiplexer.addProcessor(i++, skillStage);
+		multiplexer.addProcessor(i++, monsterStage);
 		Gdx.input.setInputProcessor(multiplexer);
 		monsterStage.addListener(new ClickListener() {
 			@Override

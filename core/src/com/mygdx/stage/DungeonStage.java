@@ -179,7 +179,14 @@ public class DungeonStage extends BaseOverlapStage {
 	}
 
 	private void setMapInfo(DungeonManager dungeonManager) {
-		dungeonManager.setMapInfo("devil_castle"); // FIXME
+		if (positionManager.getCurrentSubNodeName() != null) {
+			dungeonManager.setMapInfo(positionManager.getCurrentSubNodeName()); // FIXME
+		} else
+			dungeonManager.setMapInfo("devil_castle");
+
+		if (!dungeonManager.isThisNewDungeon(positionManager.getCurrentSubNodeName()))
+			dungeonManager.setIsOn();
+
 		selectableBackward = new ArrayList<>();
 		selectableForward = new ArrayList<>();
 	}
@@ -345,11 +352,14 @@ public class DungeonStage extends BaseOverlapStage {
 
 		if (currentNode.chkFlag(DungeonNode.FLG_ENTRANCE)) {
 			dungeonManager.changeCurrentHeading();
+			dungeonManager.setRecentDungeon(positionManager.getCurrentSubNodeName());
 			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
 		} else if (currentNode.chkFlag(DungeonNode.FLG_ROAD)) {
 			// screenFactory.show(ScreenEnum.ENCOUNTER);
+			dungeonManager.setRecentDungeon(positionManager.getCurrentSubNodeName());
 			dungeonEncounterManager.act();
 		} else if (currentNode.chkFlag(DungeonNode.FLG_ENCOUNT)) {
+			dungeonEncounterManager.eliteAct(currentNode.getEliteMonster());
 
 		}
 	}

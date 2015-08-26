@@ -52,14 +52,15 @@ public class EventScreen extends BaseScreen {
 
 	private void setMultiprocessor() {
 		multiplexer = new InputMultiplexer();
+		int i = 0;
 		switch (eventManager.getCurrentNpcEvent().getEventType()) {
 			case SELECT_COMPONENT :
 				selectStage = stageFactory.makeStage(StageEnum.SELECT_COMPONENT);
-				multiplexer.addProcessor(0, selectStage);
-				multiplexer.addProcessor(1, eventStage);
+				multiplexer.addProcessor(i++, selectStage);
+				multiplexer.addProcessor(i++, eventStage);
 				break;
 			default :
-				multiplexer.addProcessor(0, eventStage);
+				multiplexer.addProcessor(i++, eventStage);
 				break;
 		}
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.

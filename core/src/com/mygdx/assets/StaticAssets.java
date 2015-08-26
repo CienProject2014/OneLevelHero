@@ -45,7 +45,6 @@ public class StaticAssets {
 			pixmap.fill();
 			skin.add("GREEN", new Texture(pixmap));
 		}
-
 	}
 
 	public static void loadSize(Stage stage) {

@@ -21,7 +21,7 @@ public class ConstantsAssets implements JsonAssetsInitializable {
 			sceneConstantsMap.put(labelConstantsEntry.getKey(), labelConstantsEntry.getValue());
 		}
 		Map<String, HashMap> stageMap = JsonParser.parseMap(HashMap.class,
-				jsonStringMap.get(JsonEnum.UI_CONSTANTS.toString()).toString());
+				jsonStringMap.get(String.valueOf(JsonEnum.UI_CONSTANTS)).toString());
 		for (Entry<String, HashMap> stageEntry : stageMap.entrySet()) {
 			uiConstantsMap.put(stageEntry.getKey(), stageEntry.getValue());
 		}
