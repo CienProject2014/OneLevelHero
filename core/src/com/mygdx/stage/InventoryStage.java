@@ -637,7 +637,7 @@ public class InventoryStage extends BaseOverlapStage {
 		} else {
 			dividedIndex = index % (pageNumber * ITEM_SLOT_SIZE);
 		}
-		if (bagManager.getEquipmentList().size() > index) {
+		if (bagManager.getEquipmentList().size() > index - NUMBER_OF_EQUIPMENT) {
 			itemInfo.put(dividedIndex, bagManager.getEquipmentList().get(index - NUMBER_OF_EQUIPMENT));
 			ImageItem inventoryItemImage = sceneLoader.getRoot().getImageById(inventoryItemImageList.get(dividedIndex));
 			String itemPath = bagManager.getEquipmentList().get(index - NUMBER_OF_EQUIPMENT).getItemPath();

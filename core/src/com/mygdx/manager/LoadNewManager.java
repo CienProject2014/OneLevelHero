@@ -47,8 +47,6 @@ public class LoadNewManager {
 		bagManager.possessItem(ItemEnum.CONSUMABLES, "small_healing", 1);
 		bagManager.possessItem(ItemEnum.CONSUMABLES, "small_healing", 1);
 		bagManager.possessItem(ItemEnum.HANDGRIP, "sabre");
-		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse");
-		bagManager.possessItem(ItemEnum.HANDGRIP, "velmont_mouse");
 	}
 
 	private void setEventInfo(EventManager eventManager, EventAssets eventAssets) {
