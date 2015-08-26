@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -41,10 +40,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private List<Hero> battleMemberList;
 	private List<StatusBar> heroStatusBarList;
 	private List<Label> hpLabelList;
-	private final String BUFF_DE_FAINT = "buff_de_07";
-	private final String BUFF_DE_FIRE = "buff_de_02";
-	private final String BUFF_DE_ICE = "buff_de_04";
-	private final String BUFF_DE_SATAN = "buff_de_devil";
 
 	public Stage makeStage() {
 		super.makeStage();
@@ -112,12 +107,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		heroTable.add(heroImage).padRight(uiConstantsMap.get("heroTablePadLeft"))
 				.width(uiConstantsMap.get("heroImageWidth")).height(uiConstantsMap.get("heroImageHeight"));
 
-		HorizontalGroup buffGroup = new HorizontalGroup();
-		buffGroup.space(uiConstantsMap.get("heroBarHorizontalSpace"));
-		buffGroup.addActor(new Image(textureManager.getTexture(BUFF_DE_FAINT)));
-		buffGroup.addActor(new Image(textureManager.getTexture(BUFF_DE_SATAN)));
-		buffGroup.addActor(new Image(textureManager.getTexture(BUFF_DE_ICE)));
-		buffGroup.addActor(new Image(textureManager.getTexture(BUFF_DE_FIRE)));
 		barTable = new Table();
 		Label hpLabel = new Label(statusBar.getHp() + "/" + statusBar.getMaxHp(), uiComponentAssets.getSkin());
 		hpLabelList.add(hpLabel);
@@ -126,8 +115,6 @@ public class CharacterUiStage extends BaseOneLevelStage {
 				.width(uiConstantsMap.get("barTableWidth")).row();
 		barTable.add(statusBar.getGaugeBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
 				.width(uiConstantsMap.get("barTableWidth")).row();
-		barTable.add(buffGroup).width(uiConstantsMap.get("buffTableWidth"))
-				.height(uiConstantsMap.get("buffTableHeight"));
 		heroTable.add(barTable);
 		return heroTable;
 	}

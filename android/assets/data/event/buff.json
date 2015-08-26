@@ -1,0 +1,26 @@
+{
+	"burn" : {
+		"name" : "화상",
+		"buffPath" : "buff_de_burn",
+		"duration" : 120,
+		"stackScope" : 1,
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"decrease_hp_iterative", "decrease_attack"
+		],
+		"decreaseAttackPercent" : "30",
+		"decreaseHpPeriod" : "30",
+		"decreaseHpMagicPercent" : "10",
+		"decreaseHpOffset" : "20"
+	},
+	"cold" : {
+		"name" : "빙결",
+		"buffPath" : "buff_de_frozen",
+		"duration" : "60",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	}
+}
