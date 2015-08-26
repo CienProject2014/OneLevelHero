@@ -24,8 +24,8 @@ public class DungeonEntranceButtonListener extends ClickListener {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
-
 	private TimeManager timeManager;
+	@Autowired
 	private SoundManager soundManager;
 	private String dungeonPath;
 
@@ -37,7 +37,6 @@ public class DungeonEntranceButtonListener extends ClickListener {
 		positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 		positionManager.setCurrentSubNodeName(dungeonPath);
 		screenFactory.show(ScreenEnum.DUNGEON);
-		soundManager.setSoundByPathAndPlay("move_to_dungeon");
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE, dungeonPath);
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BY_TIME, dungeonPath);
 		eventManager.triggerSpecialEvent(EventTypeEnum.DONT_GO_BUILDING, dungeonPath);
