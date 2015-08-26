@@ -86,7 +86,7 @@ public class BattleManager {
 		if (fieldManager.isInField()) {
 			screenFactory.show(ScreenEnum.BATTLE);
 		} else if (dungeonManager.isInDungeon()) {
-			screenFactory.show(ScreenEnum.ENCOUNTER);
+			screenFactory.show(ScreenEnum.BATTLE);
 		}
 	}
 
