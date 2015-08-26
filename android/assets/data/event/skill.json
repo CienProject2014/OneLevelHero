@@ -311,7 +311,7 @@
         ],
         "description": "전기의 힘을 빌려 적을 감전시킨다."
     },
-    "freez": {
+    "freeze": {
         "name": "수분 빙화",
         "skillType": "magic",
         "skillTargetType": "monster",
