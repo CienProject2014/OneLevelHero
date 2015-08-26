@@ -34,16 +34,20 @@
         }
       },
       "blackwood_inn": {
-        "buildingName": "블랙우드 여관",
+        "buildingName": "여관",
         "buildingType": "inn",
         "buildingPath": "blackwood_inn",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
-        }
+        },
+        "gameObject": [
+          "save",
+          "rest"
+        ]
       },
       "blackwood_peasanthouse": {
-        "buildingName": "블랙우드 민가",
+        "buildingName": "민가",
         "buildingType": "house",
         "buildingPath": "blackwood_peasanthouse",
         "targetTime": {
@@ -80,7 +84,7 @@
           "endTime": 22
         }
       },
-      "cobweb_store_03": {
+      "cobweb_drugstore": {
         "buildingName": "물약상점",
         "buildingType": "house",
         "buildingPath": "cobweb_drugstore",
@@ -108,8 +112,8 @@
         }
       },
       "cobweb_inn": {
-        "buildingName": "콥웨브 여관",
-        "buildingType": "house",
+        "buildingName": "여관",
+        "buildingType": "inn",
         "buildingPath": "cobweb_inn",
         "isOverlapScene": true,
         "sceneName": "cobweb_inn_scene",
@@ -122,15 +126,6 @@
         "buildingName": "대성당",
         "buildingType": "house",
         "buildingPath": "cobweb_cathedral"
-      },
-      "cobweb_weaponsmith": {
-        "buildingName": "무기공방",
-        "buildingType": "house",
-        "buildingPath": "cobweb_weaponsmith",
-        "targetTime": {
-          "startTime": 6,
-          "endTime": 22
-        }
       }
     }
   },
@@ -152,7 +147,7 @@
           "endTime": 24
         }
       },
-      "oberon_house_02": {
+      "oberon_house02": {
         "buildingName": "오베론 민가",
         "buildingType": "house",
         "buildingPath": "oberon_house02",
@@ -164,11 +159,15 @@
       "oberon_inn": {
         "buildingName": "오베론 여관",
         "buildingType": "inn",
-        "buildingPath": "oberon_inn",
+        "buildingPath": "blackwood_inn",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
-        }
+        },
+        "gameObject": [
+          "save",
+          "rest"
+        ]
       },
       "oberon_temple": {
         "buildingName": "오래된 신전",
@@ -209,13 +208,17 @@
         }
       },
       "kadilla_castle_inn": {
-        "buildingName": "카딜라 여관",
+        "buildingName": "여관",
         "buildingType": "inn",
-        "buildingPath": "kadilla_castle_inn",
+        "buildingPath": "blackwood_inn",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
-        }
+        },
+        "gameObject": [
+          "save",
+          "rest"
+        ]
       },
       "kadilla_castle_grocery": {
         "buildingName": "잡화점",
@@ -229,7 +232,7 @@
       "kadilla_castle_smithy": {
         "buildingName": "대장간",
         "buildingType": "house",
-        "buildingPath": "kadilla_castle_smithy",
+        "buildingPath": "cobweb_smithy",
         "targetTime": {
           "startTime": 8,
           "endTime": 22
@@ -238,7 +241,7 @@
       "kadilla_castle_clothing_store": {
         "buildingName": "옷가게",
         "buildingType": "house",
-        "buildingPath": "kadilla_castle_clothing_store",
+        "buildingPath": "cobweb_clothingstore",
         "targetTime": {
           "startTime": 8,
           "endTime": 22
@@ -285,18 +288,22 @@
         }
       },
       "winterfall_inn": {
-        "buildingName": "윈터폴 부서진 여관",
+        "buildingName": "부서진 여관",
         "buildingType": "inn",
-        "buildingPath": "winterfall_inn",
+        "buildingPath": "blackwood_inn",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
-        }
+        },
+        "gameObject": [
+          "save",
+          "rest"
+        ]
       },
       "winterfall_grocery": {
         "buildingName": "식료품점",
         "buildingType": "house",
-        "buildingPath": "winterfall_grocery",
+        "buildingPath": "blackwood_grocery",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
@@ -305,7 +312,7 @@
       "winterfall_peasanthouse01": {
         "buildingName": "허름한 민가",
         "buildingType": "house",
-        "buildingPath": "winterfall_peasanthouse01",
+        "buildingPath": "blackwood_peasanthouse",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
@@ -314,7 +321,7 @@
       "winterfall_peasanthouse02": {
         "buildingName": "폐허가 된 민가",
         "buildingType": "house",
-        "buildingPath": "winterfall_peasanthouse02",
+        "buildingPath": "blackwood_peasanthouse",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
@@ -352,11 +359,15 @@
       "redrose_castle_inn": {
         "buildingName": "레드로즈 여관",
         "buildingType": "inn",
-        "buildingPath": "redrose_castle_inn",
+        "buildingPath": "blackwood_inn",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
-        }
+        },
+        "gameObject": [
+          "save",
+          "rest"
+        ]
       },
       "redrose_castle_cathedral" : {
       	"buildingName" : "레드로즈 대성당",
@@ -384,18 +395,22 @@
     },
     "building": {
       "mirage_port_inn": {
-        "buildingName": "미라지 포트 여관",
+        "buildingName": "여관",
         "buildingType": "inn",
         "buildingPath": "blackwood_inn",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
-        }
+        },
+        "gameObject": [
+          "save",
+          "rest"
+        ]
       },
       "mirage_port_hermes": {
         "buildingName": "헤르메스 상회",
         "buildingType": "house",
-        "buildingPath": "mirage_port_hermes",
+        "buildingPath": "mirage_port_hermesguild",
         "targetTime": {
           "startTime": 9,
           "endTime": 18
@@ -404,7 +419,7 @@
       "mirage_port_kaido": {
         "buildingName": "카이도 상회",
         "buildingType": "house",
-        "buildingPath": "mirage_port_kaido",
+        "buildingPath": "mirage_port_kaidoguild",
         "targetTime": {
           "startTime": 9,
           "endTime": 18
@@ -422,7 +437,7 @@
       "mirage_port_dock": {
         "buildingName": "선착장",
         "buildingType": "house",
-        "buildingPath": "mirage_port_dock",
+        "buildingPath": "bonichea_dock",
         "targetTime": {
           "startTime": 5,
           "endTime": 24
@@ -452,7 +467,7 @@
       "middle_ridge_evergnailhouse": {
         "buildingName": "에버네그일가",
         "buildingType": "house",
-        "buildingPath": "middle_ridge_evergnailhouse",
+        "buildingPath": "blackwood_peasanthouse",
         "targetTime": {
           "startTime": 6,
           "endTime": 24
@@ -461,25 +476,29 @@
       "middle_ridge_willas": {
         "buildingName": "윌라스가",
         "buildingType": "house",
-        "buildingPath": "middle_ridge_willas",
+        "buildingPath": "blackwood_peasanthouse",
         "targetTime": {
           "startTime": 6,
           "endTime": 24
         }
       },
       "middle_ridge_inn": {
-        "buildingName": "미들릿지 여관",
+        "buildingName": "여관",
         "buildingType": "inn",
-        "buildingPath": "middle_ridge_inn",
+        "buildingPath": "blackwood_inn",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
-        }
+        },
+        "gameObject": [
+          "save",
+          "rest"
+        ]
       },
       "middle_ridge_whisternhouse": {
         "buildingName": "휘스턴가",
         "buildingType": "house",
-        "buildingPath": "middle_ridge_whisternhouse",
+        "buildingPath": "blackwood_peasanthouse",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
@@ -523,7 +542,7 @@
           "endTime": 24
         }
       },
-      "vaical_castle_headhouse ": {
+      "vaical_castle_headhouse": {
         "buildingName": "장로의 집",
         "buildingType": "house",
         "buildingPath": "vaical_castle_headhouse",
@@ -542,11 +561,6 @@
         }
       }
     }
-  },
-  "bonichea" : {
-  	"villageName" : "보니체아",
-  	"villageDirection" : "left_right",
-  	"sceneName" : "bonichea_scene"
   },
   "southcape": {
     "villageName": "사우스케이프",
@@ -576,18 +590,22 @@
         }
       },
       "southcape_inn": {
-        "buildingName": "사우스케이프 여관",
+        "buildingName": "여관",
         "buildingType": "inn",
-        "buildingPath": "southcape_inn",
+        "buildingPath": "blackwood_inn",
         "targetTime": {
           "startTime": 0,
           "endTime": 24
-        }
+        },
+        "gameObject": [
+          "save",
+          "rest"
+        ]
       },
       "southcape_grocery": {
         "buildingName": "잡화점",
         "buildingType": "house",
-        "buildingPath": "southcape_grocery",
+        "buildingPath": "blackwood_grocery",
         "targetTime": {
           "startTime": 10,
           "endTime": 22
@@ -596,14 +614,14 @@
       "southcape_smithy": {
         "buildingName": "대장간",
         "buildingType": "house",
-        "buildingPath": "southcape_smithy",
+        "buildingPath": "cobweb_smithy",
         "targetTime": {
           "startTime": 10,
           "endTime": 22
         }
       },
       "southcape_peasanthouse01": {
-        "buildingName": "사우스케이프 민가",
+        "buildingName": "민가1",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse01",
         "targetTime": {
@@ -612,7 +630,7 @@
         }
       },
       "southcape_peasanthouse02": {
-        "buildingName": "사우스케이프 민가",
+        "buildingName": "민가2",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse02",
         "targetTime": {
@@ -621,7 +639,7 @@
         }
       },
       "southcape_peasanthouse03": {
-        "buildingName": "사우스케이프 민가",
+        "buildingName": "민가3",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse03",
         "targetTime": {
@@ -630,7 +648,7 @@
         }
       },
       "southcape_peasanthouse04": {
-        "buildingName": "사우스케이프 민가",
+        "buildingName": "민가4",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse04",
         "targetTime": {
@@ -639,7 +657,7 @@
         }
       },
       "southcape_peasanthouse05": {
-        "buildingName": "사우스케이프 민가",
+        "buildingName": "민가5",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse05",
         "targetTime": {
@@ -648,7 +666,7 @@
         }
       },
       "southcape_peasanthouse06": {
-        "buildingName": "사우스케이프 민가",
+        "buildingName": "민가6",
         "buildingType": "house",
         "buildingPath": "southcape_peasanthouse06",
         "targetTime": {

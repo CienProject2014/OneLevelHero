@@ -15,6 +15,44 @@
       }
     ],
     "sComposites": [
+	{
+        "itemIdentifier": "vaical_castle_headhouse",
+        "x": 788,
+        "y": 1510,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "vaical-top0002-------1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
       {
         "itemIdentifier": "vaical_castle_colosseum",
         "x": 1220.0001,
@@ -91,44 +129,7 @@
           ]
         }
       },
-      {
-        "itemIdentifier": "vaical_castle_headhouse",
-        "x": 788,
-        "y": 1510,
-        "zIndex": 3,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "vaical-top0002-------1"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
+      
       {
         "itemIdentifier": "6to18",
         "x": 1438,
