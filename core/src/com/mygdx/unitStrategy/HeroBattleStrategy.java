@@ -16,8 +16,8 @@ public class HeroBattleStrategy implements BattleStrategy {
 		Monster monster = (Monster) defender;
 
 		float factor = 1.0f;
-		int attackDmg = attackHero.getStatus().getAttack();
-		int defenseValue = defender.getStatus().getDefense();
+		int attackDmg = (int) attackHero.getStatus().getAttack();
+		int defenseValue = (int) defender.getStatus().getDefense();
 		int defenderHp = defender.getStatus().getHp();
 
 		int realDmg = 0;
@@ -107,15 +107,15 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void basicAttack(Unit attackHero, Unit defender, float skillFactor, float magicFactor) {
 		int defenderHp = defender.getStatus().getHp();
-		int skillDamage = attackHero.getStatus().getAttack();
-		int skillDefense = defender.getStatus().getDefense();
+		int skillDamage = (int) attackHero.getStatus().getAttack();
+		int skillDefense = (int) defender.getStatus().getDefense();
 		float realSkillDamage = (int) (skillDamage - skillDefense) * skillFactor / 100f;
 		if (realSkillDamage <= 1) {
 			realSkillDamage = 1;
 		}
 
-		int magicDamage = attackHero.getStatus().getMagicAttack();
-		int magicDefense = defender.getStatus().getMagicDefense();
+		int magicDamage = (int) attackHero.getStatus().getMagicAttack();
+		int magicDefense = (int) defender.getStatus().getMagicDefense();
 		float realMagicDamage = (magicDamage - magicDefense) * magicFactor / 100f;
 		if (realMagicDamage <= 1) {
 			realMagicDamage = 1;

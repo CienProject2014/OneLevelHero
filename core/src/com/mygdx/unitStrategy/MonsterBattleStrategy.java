@@ -9,8 +9,8 @@ import com.mygdx.model.unit.Unit;
 public class MonsterBattleStrategy implements BattleStrategy {
 	@Override
 	public void attack(Unit attackMonster, Unit defender, int[][] hitArea) {
-		int attackDmg = attackMonster.getStatus().getAttack();
-		int defenseValue = defender.getStatus().getDefense();
+		int attackDmg = (int) attackMonster.getStatus().getAttack();
+		int defenseValue = (int) defender.getStatus().getDefense();
 		int defenderHp = defender.getStatus().getHp();
 		int realDmg = attackDmg - defenseValue;
 		if (realDmg < 0) {

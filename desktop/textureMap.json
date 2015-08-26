@@ -211,6 +211,10 @@ battle_kentaurous_spear_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_kentaurous_spear_small.png/
 },
+attack_swing: {
+	class: java.lang.String,
+	value: texture/animation_sheet/attack_swing.png/
+},
 battle_elementalwater_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_elementalwater_big.png/
@@ -810,6 +814,10 @@ buff_de_overload_5: {
 monster_lamia_soldier: {
 	class: java.lang.String,
 	value: texture/monster/monster_lamia_soldier.png/
+},
+attack_cutting: {
+	class: java.lang.String,
+	value: texture/animation_sheet/attack_cutting.png/
 },
 buff_en_fly: {
 	class: java.lang.String,
@@ -2494,6 +2502,10 @@ title_credit: {
 object_brazier: {
 	class: java.lang.String,
 	value: texture/object/object_brazier.png/
+},
+gale: {
+	class: java.lang.String,
+	value: texture/animation_sheet/gale.png/
 },
 dungeonui_map_02: {
 	class: java.lang.String,
