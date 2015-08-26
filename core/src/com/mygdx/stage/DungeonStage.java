@@ -349,6 +349,8 @@ public class DungeonStage extends BaseOverlapStage {
 		} else if (currentNode.chkFlag(DungeonNode.FLG_ROAD)) {
 			// screenFactory.show(ScreenEnum.ENCOUNTER);
 			dungeonEncounterManager.act();
+		} else if (currentNode.chkFlag(DungeonNode.FLG_ENCOUNT)) {
+
 		}
 	}
 

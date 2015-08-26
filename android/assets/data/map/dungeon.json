@@ -2,6 +2,7 @@
   "devil_castle": {
     "dungeonPath": "devil_castle",
     "name": "마왕성",
+    "fieldType" : "devil_castle_1f",
     "sceneNameDoor3": "dungeon_3door_scene",
     "sceneNameDoor2": "dungeon_2door_scene",
     "sceneNameDoor1": "dungeon_1door_scene",

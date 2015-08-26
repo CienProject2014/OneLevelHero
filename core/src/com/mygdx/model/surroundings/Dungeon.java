@@ -2,7 +2,10 @@ package com.mygdx.model.surroundings;
 
 import java.util.ArrayList;
 
+import com.mygdx.enums.FieldTypeEnum;
+
 public class Dungeon {
+	private FieldTypeEnum fieldType;
 	private String name;
 	private String dungeonPath;
 	private String sceneNameDoor3;
@@ -49,5 +52,11 @@ public class Dungeon {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public FieldTypeEnum getFieldType() {
+		return fieldType;
+	}
+	public void setFieldType(FieldTypeEnum fieldType) {
+		this.fieldType = fieldType;
 	}
 }
