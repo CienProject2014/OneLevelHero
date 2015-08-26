@@ -34,11 +34,12 @@ public class FieldScreen extends BaseScreen {
 
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
+		int i = 0;
 		if (showLoadStage) {
-			multiplexer.addProcessor(0, loadPopupStage);
+			multiplexer.addProcessor(i++, loadPopupStage);
 		} else {
-			multiplexer.addProcessor(0, fieldStage);
-			multiplexer.addProcessor(1, gameUiStage);
+			multiplexer.addProcessor(i++, fieldStage);
+			multiplexer.addProcessor(i++, gameUiStage);
 		}
 		Gdx.input.setInputProcessor(multiplexer);
 	}

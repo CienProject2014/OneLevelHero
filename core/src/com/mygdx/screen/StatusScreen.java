@@ -21,7 +21,8 @@ public class StatusScreen extends BaseScreen {
 	public void show() {
 		statusStage = stageFactory.makeStage(StageEnum.STATUS);
 		InputMultiplexer multiplexer = new InputMultiplexer();
-		multiplexer.addProcessor(0, statusStage);
+		int i = 0;
+		multiplexer.addProcessor(i++, statusStage);
 		Gdx.input.setInputProcessor(multiplexer);
 	}
 

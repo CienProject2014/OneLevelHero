@@ -29,9 +29,10 @@ public class WorldMapScreen extends BaseScreen {
 	private void setInputProcessor() {
 		InputProcessor MapInputProcessor = new MapInputProcessor(worldMapStage);
 		multiplexer = new InputMultiplexer();
-		multiplexer.addProcessor(0, gameUiStage);
-		multiplexer.addProcessor(1, worldMapStage);
-		multiplexer.addProcessor(2, MapInputProcessor);
+		int i = 0;
+		multiplexer.addProcessor(i++, gameUiStage);
+		multiplexer.addProcessor(i++, worldMapStage);
+		multiplexer.addProcessor(i++, MapInputProcessor);
 		Gdx.input.setInputProcessor(multiplexer);
 	}
 }

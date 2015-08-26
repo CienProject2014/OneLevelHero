@@ -27,12 +27,13 @@ public class LoadScreen extends BaseScreen {
 
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
+		int i = 0;
 		if (showLoadStage) {
-			multiplexer.addProcessor(0, loadPopupStage);
-			multiplexer.addProcessor(1, loadStage);
+			multiplexer.addProcessor(i++, loadPopupStage);
+			multiplexer.addProcessor(i++, loadStage);
 		} else {
-			multiplexer.addProcessor(0, loadStage);
-			multiplexer.addProcessor(1, loadPopupStage);
+			multiplexer.addProcessor(i++, loadStage);
+			multiplexer.addProcessor(i++, loadPopupStage);
 		}
 		Gdx.input.setInputProcessor(multiplexer);
 	}

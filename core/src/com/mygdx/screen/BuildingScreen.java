@@ -35,14 +35,15 @@ public class BuildingScreen extends BaseScreen {
 
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
+		int i = 0;
 		if (isInSave) {
-			multiplexer.addProcessor(0, saveStage);
-			multiplexer.addProcessor(1, gameUiStage);
-			multiplexer.addProcessor(2, buildingStage);
+			multiplexer.addProcessor(i++, saveStage);
+			multiplexer.addProcessor(i++, gameUiStage);
+			multiplexer.addProcessor(i++, buildingStage);
 		} else {
-			multiplexer.addProcessor(0, gameUiStage);
-			multiplexer.addProcessor(1, buildingStage);
-			multiplexer.addProcessor(2, saveStage);
+			multiplexer.addProcessor(i++, gameUiStage);
+			multiplexer.addProcessor(i++, buildingStage);
+			multiplexer.addProcessor(i++, saveStage);
 		}
 		if (showLoadStage) {
 			multiplexer.addProcessor(0, loadStage);
