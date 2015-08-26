@@ -183,12 +183,17 @@ public class BattleStage extends BaseOneLevelStage {
 		animationManager.nextFrame(delta);
 		if (animationManager.getAnimations().isEmpty()) {
 			storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_CONTROL, "normal_attack");
+			if (battleManager.getCurrentSelectedSkill() != null) {
+				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_CONTROL, "skill_attack");
+			}
 			battleManager.endTurn();
+			battleManager.setCurrentSelectedSkill(null);
 			if (battleManager.getBattleState().equals(BattleStateEnum.PLAYER_WIN)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 				movingManager.goPreviousPosition();
 				soundManager.setSoundByPathAndPlay("notice_victory");
 				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_END, selectedMonster.getFacePath());
+
 			} else if (battleManager.getBattleState().equals(BattleStateEnum.GAME_OVER)) {
 				screenFactory.show(ScreenEnum.GAME_OVER);
 			}
@@ -434,6 +439,7 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.setSkill(false);
 			}
 			battleManager.setShowGrid(false);
+
 		}
 		resetHitboxState();
 		return false;

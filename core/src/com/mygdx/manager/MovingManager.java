@@ -34,61 +34,61 @@ public class MovingManager {
 			return;
 		}
 		switch (positionManager.getCurrentPositionType()) {
-			case LOG :
-				if (eventManager.getCurrentNpc().getName().equals("yongsa")) {
-					if (positionManager.getBeforePositionType().equals(PositionEnum.SUB_NODE)) {
-						positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
-						goCurrentSubNode(nodeType);
-					} else if (positionManager.getBeforePositionType().equals(PositionEnum.NODE)) {
-						positionManager.setCurrentPositionType(PositionEnum.NODE);
-						goCurrentNode(nodeType);
-					} else {
-						screenFactory.show(ScreenEnum.FIELD);
-					}
-				} else {
-					screenFactory.show(ScreenEnum.LOG);
-				}
-				break;
-			case NODE_EVENT :
-				if (eventManager.isGreeting()) {
-					positionManager.setCurrentPositionType(PositionEnum.NODE);
-					eventManager.setGreeting(false);
-					goCurrentNode(nodeType);
-				} else {
-					screenFactory.show(ScreenEnum.GREETING);
-				}
-				break;
-			case SUB_NODE_EVENT :
-				if (eventManager.isGreeting()) {
+		case LOG:
+			if (eventManager.getCurrentNpc().getName().equals("yongsa")) {
+				if (positionManager.getBeforePositionType().equals(PositionEnum.SUB_NODE)) {
 					positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
-					eventManager.setGreeting(false);
 					goCurrentSubNode(nodeType);
-				} else {
+				} else if (positionManager.getBeforePositionType().equals(PositionEnum.NODE)) {
+					positionManager.setCurrentPositionType(PositionEnum.NODE);
 					goCurrentNode(nodeType);
-				}
-				break;
-			case BATTLE_EVENT :
-				if (eventManager.isGreeting()) {
-					eventManager.setGreeting(false);
-					screenFactory.show(ScreenEnum.BATTLE);
 				} else {
-					screenFactory.show(ScreenEnum.GREETING);
+					screenFactory.show(ScreenEnum.FIELD);
 				}
-				break;
-			case NODE :
+			} else {
+				screenFactory.show(ScreenEnum.LOG);
+			}
+			break;
+		case NODE_EVENT:
+			if (eventManager.isGreeting()) {
+				positionManager.setCurrentPositionType(PositionEnum.NODE);
+				eventManager.setGreeting(false);
 				goCurrentNode(nodeType);
-				break;
-			case SUB_NODE :
+			} else {
+				screenFactory.show(ScreenEnum.GREETING);
+			}
+			break;
+		case SUB_NODE_EVENT:
+			if (eventManager.isGreeting()) {
+				positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
+				eventManager.setGreeting(false);
 				goCurrentSubNode(nodeType);
-				break;
-			case FIELD :
-				screenFactory.show(ScreenEnum.FIELD);
-				break;
-			case DUNGEON :
-				screenFactory.show(ScreenEnum.DUNGEON);
-			default :
-				Gdx.app.log("MovingManager", "NodeType정보 오류");
-				break;
+			} else {
+				screenFactory.show(ScreenEnum.GREETING);
+			}
+			break;
+		case BATTLE_EVENT:
+			if (eventManager.isGreeting()) {
+				eventManager.setGreeting(false);
+				screenFactory.show(ScreenEnum.BATTLE);
+			} else {
+				screenFactory.show(ScreenEnum.GREETING);
+			}
+			break;
+		case NODE:
+			goCurrentNode(nodeType);
+			break;
+		case SUB_NODE:
+			goCurrentSubNode(nodeType);
+			break;
+		case FIELD:
+			screenFactory.show(ScreenEnum.FIELD);
+			break;
+		case DUNGEON:
+			screenFactory.show(ScreenEnum.DUNGEON);
+		default:
+			Gdx.app.log("MovingManager", "NodeType정보 오류");
+			break;
 		}
 	}
 
@@ -98,66 +98,68 @@ public class MovingManager {
 			return;
 		}
 		switch (positionManager.getCurrentPositionType()) {
-			case SUB_NODE :
-				positionManager.setCurrentPositionType(PositionEnum.NODE);
-				positionManager.setBeforePositionType(PositionEnum.SUB_NODE);
-				screenFactory.show(ScreenEnum.findScreenEnum(positionManager.getCurrentNodeType().toString()));
-				break;
-			case NODE :
-				positionManager.setCurrentPositionType(PositionEnum.FIELD);
-				positionManager.setBeforePositionType(PositionEnum.NODE);
-				screenFactory.show(ScreenEnum.FIELD);
-				return;
-			case FIELD :
-				goBeforeBattlePosition();
-				break;
-			default :
-				Gdx.app.log("MovingManager", "PositionEnum정보 오류");
+		case SUB_NODE:
+			positionManager.setCurrentPositionType(PositionEnum.NODE);
+			positionManager.setBeforePositionType(PositionEnum.SUB_NODE);
+			screenFactory.show(ScreenEnum.findScreenEnum(positionManager.getCurrentNodeType().toString()));
+			break;
+		case NODE:
+			positionManager.setCurrentPositionType(PositionEnum.FIELD);
+			positionManager.setBeforePositionType(PositionEnum.NODE);
+			screenFactory.show(ScreenEnum.FIELD);
+			return;
+		case FIELD:
+			goBeforeBattlePosition();
+			break;
+		default:
+			Gdx.app.log("MovingManager", "PositionEnum정보 오류");
 		}
 	}
+
 	private void goBeforeBattlePosition() {
 		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
 
 		switch (battleManager.getBeforePosition()) {
-			case NODE :
-				goCurrentNode(nodeType);
-				break;
-			case SUB_NODE :
-				goCurrentSubNode(nodeType);
-				break;
-			case FIELD :
-				screenFactory.show(ScreenEnum.FIELD);
-				return;
-			default :
-				Gdx.app.log("MovingManager", "BeforeNodeType정보 오류(" + battleManager.getBeforePosition() + ")");
-				return;
+		case NODE:
+			goCurrentNode(nodeType);
+			break;
+		case SUB_NODE:
+			goCurrentSubNode(nodeType);
+			break;
+		case FIELD:
+			screenFactory.show(ScreenEnum.FIELD);
+			return;
+		default:
+			Gdx.app.log("MovingManager", "BeforeNodeType정보 오류(" + battleManager.getBeforePosition() + ")");
+			return;
 		}
 	}
 
 	public void goCurrentNode(WorldNodeEnum.NodeType nodeType) {
 		switch (nodeType) {
-			case VILLAGE :
-				screenFactory.show(ScreenEnum.VILLAGE);
-				return;
-			case DUNGEON_ENTRANCE :
-				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-				return;
-			case FORK :
-				screenFactory.show(ScreenEnum.FORK);
-				return;
+		case VILLAGE:
+			screenFactory.show(ScreenEnum.VILLAGE);
+			return;
+		case DUNGEON_ENTRANCE:
+			screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
+			return;
+		case FORK:
+			screenFactory.show(ScreenEnum.FORK);
+			return;
 		}
 	}
+
 	private void goCurrentSubNode(WorldNodeEnum.NodeType nodeType) {
 		switch (nodeType) {
-			case VILLAGE :
-				screenFactory.show(ScreenEnum.BUILDING);
-				return;
-			case DUNGEON_ENTRANCE :
-				screenFactory.show(ScreenEnum.DUNGEON);
-				return;
-			case FORK :
-				screenFactory.show(ScreenEnum.FIELD); // FIXME
-				return;
+		case VILLAGE:
+			screenFactory.show(ScreenEnum.BUILDING);
+			return;
+		case DUNGEON_ENTRANCE:
+			screenFactory.show(ScreenEnum.DUNGEON);
+			return;
+		case FORK:
+			screenFactory.show(ScreenEnum.FIELD); // FIXME
+			return;
 		}
 	}
 }

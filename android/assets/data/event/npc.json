@@ -471,6 +471,13 @@
           "10"
         ]
       },
+      "31" : {
+      	"eventState": "not_opened",
+        "eventType": "pass_time",
+        "eventComponent": [
+          "360"
+        ]
+      },
       "32": {
         "eventState": "not_opened",
         "eventType": "chat",

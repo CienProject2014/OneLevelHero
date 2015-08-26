@@ -21,7 +21,6 @@ import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.CurrentClickStateEnum;
-import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
@@ -110,7 +109,7 @@ public class SkillStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					setCompositeItemVisibilty(useButtonList.get(index), DEFAULT_VISIBILTY);
-					storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_CONTROL, "skill_attack");
+
 					Skill currentSelectedSkill = battleManager.getCurrentSelectedSkill();
 					if (currentSelectedSkill.getHitboxSize() == 0) {
 						if (currentSelectedSkill.getHitboxCenter() == null) {
