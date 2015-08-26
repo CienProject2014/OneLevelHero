@@ -54,7 +54,7 @@
         }
       },
       {
-        "itemIdentifier": "middle_ridge_abergnalehouse",
+        "itemIdentifier": "middle_ridge_evergnailhouse",
         "x": 755,
         "y": 683.5,
         "zIndex": 2,
@@ -320,7 +320,7 @@
         }
       },
       {
-        "itemIdentifier": "middle_ridge_whistonhouse",
+        "itemIdentifier": "middle_ridge_whisternhouse",
         "x": 2990,
         "y": 758.5,
         "zIndex": 9,

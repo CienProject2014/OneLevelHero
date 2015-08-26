@@ -10,6 +10,7 @@ public class PartyInfo {
 	private List<Hero> battleMemberList = new ArrayList<Hero>();
 	private Hero currentSelectedHero;
 	private int Fatigue;
+	private int Level;
 
 	public List<Hero> getPartyList() {
 		return partyList;
@@ -42,4 +43,9 @@ public class PartyInfo {
 	public void setFatigue(int fatigue) {
 		Fatigue = fatigue;
 	}
+
+	public int getLevel() {
+		return Level;
+	}
+
 }

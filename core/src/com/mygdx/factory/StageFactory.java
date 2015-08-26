@@ -11,6 +11,7 @@ import com.mygdx.enums.StageEnum;
 import com.mygdx.model.event.EventScene;
 import com.mygdx.stage.BattleStage;
 import com.mygdx.stage.BuildingStage;
+import com.mygdx.stage.CharacterChangeStage;
 import com.mygdx.stage.CharacterUiStage;
 import com.mygdx.stage.ChatEventStage;
 import com.mygdx.stage.DungeonEntranceStage;
@@ -23,6 +24,7 @@ import com.mygdx.stage.GameObjectStage;
 import com.mygdx.stage.GameOverStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.InventoryStage;
+import com.mygdx.stage.ItemStage;
 import com.mygdx.stage.LoadPopupStage;
 import com.mygdx.stage.LoadStage;
 import com.mygdx.stage.LoadingBarStage;
@@ -47,6 +49,8 @@ public class StageFactory {
 				return context.getBean(BattleStage.class).makeStage();
 			case BUILDING :
 				return context.getBean(BuildingStage.class).makeStage();
+			case CHARACTER_CHANGE :
+				return context.getBean(CharacterChangeStage.class).makeStage();
 			case CHARACTER_UI :
 				return context.getBean(CharacterUiStage.class).makeStage();
 			case DUNGEON :
@@ -93,11 +97,14 @@ public class StageFactory {
 				return context.getBean(WorldMapStage.class).makeStage();
 			case MINIMAP :
 				return context.getBean(DungeonMinimapStage.class).makeStage();
+			case ITEM :
+				return context.getBean(ItemStage.class).makeStage();
 			default :
 				Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
 				return context.getBean(VillageStage.class).makeStage(); // FIXME
 		}
 	}
+
 	public Stage makeEventStage(Iterator<EventScene> eventSceneIterator) {
 		return context.getBean(ChatEventStage.class).makeStage(eventSceneIterator);
 	}

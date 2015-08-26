@@ -15,6 +15,7 @@ public class AssetsManager extends AssetManager {
 		rm.settingScene("skill_scene");
 		rm.settingScene("save_scene");
 		rm.settingScene("load_scene");
+		rm.settingScene("item_scene");
 	}
 
 	public void initMultiScene(String name) {

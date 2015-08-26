@@ -80,7 +80,6 @@ public class GameObjectPopup extends Dialog {
 		getButtonTable().setBackground(atlasUiAssets.getAtlasUiFile("popupui_popup01"));
 		setCenterPosition(StaticAssets.BASE_WINDOW_WIDTH / 2f, StaticAssets.BASE_WINDOW_HEIGHT / 2f);
 		setSize(uiConstantsMap.get("popupWidth"), uiConstantsMap.get("popupHeight"));
-		setModal(false);
 		setResizable(false);
 		setVisible(false);
 	}

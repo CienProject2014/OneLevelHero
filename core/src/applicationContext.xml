@@ -80,6 +80,7 @@
 	<bean id="buildingScreen" class="com.mygdx.screen.BuildingScreen"
 		scope="prototype" />
 	<bean id="cgScreen" class="com.mygdx.screen.CGScreen" scope="prototype"/>
+	<bean id="characterChangeScreen" class="com.mygdx.screen.CharacterChangeScreen" scope="prototype"/>
 	<bean id="collectionScreen" class="com.mygdx.screen.CollectionScreen"/>
 	<bean id="creditScreen" class="com.mygdx.screen.CreditScreen"
 		scope="prototype" />
@@ -130,6 +131,7 @@
 		scope="prototype" />
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage"
 		scope="prototype"/>
+	<bean id="characterChangeStage" class="com.mygdx.stage.CharacterChangeStage" scope="prototype"/>
 	<bean id="chatEventStage" class="com.mygdx.stage.ChatEventStage" scope="prototype"/>	
 	<bean id="fieldStage" class="com.mygdx.stage.FieldStage" scope="prototype"/>
 	<bean id="forkStage" class="com.mygdx.stage.ForkStage" scope="prototype"/>
@@ -137,6 +139,7 @@
 	<bean id="gameOverStage" class="com.mygdx.stage.GameOverStage"/>
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype"/>
 	<bean id="inventoryStage" class="com.mygdx.stage.InventoryStage" scope="prototype"/>
+	<bean id="itemStage" class="com.mygdx.stage.ItemStage" scope="prototype"/>
 	<bean id="loadingBarStage" class="com.mygdx.stage.LoadingBarStage" scope="prototype"/>
 	<bean id="loadPopupStage" class="com.mygdx.stage.LoadPopupStage" scope="prototype"/>
 	<bean id="loadStage" class="com.mygdx.stage.LoadStage" scope="prototype"/>
@@ -161,7 +164,7 @@
 	<bean id="inventoryStrategy" class="com.mygdx.unitStrategy.InventoryStrategy"/>
 	<bean id="monsterBattleStrategy" class="com.mygdx.unitStrategy.MonsterBattleStrategy"/>
 		
-		<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
+	<bean id="arrowButtonListener" class="com.mygdx.listener.ArrowButtonListener" scope="prototype"/>
 	<bean id="attackButtonListener" class="com.mygdx.listener.AttackButtonListener" scope="prototype"/>
 	<bean id="backButtonListener" class="com.mygdx.listener.BackButtonListener" scope="prototype"/>
 	<bean id="buildingButtonListener" class="com.mygdx.listener.BuildingButtonListener" scope="prototype"/>

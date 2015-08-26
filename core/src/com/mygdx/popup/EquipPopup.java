@@ -77,11 +77,10 @@ public class EquipPopup extends Dialog {
 	}
 
 	public void initialize() {
-		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
+		uiConstantsMap = constantsAssets.getUiConstants("GameObjectPopup");
 		setQuestionLabel(equipment);
 		setButton(atlasUiAssets, uiComponentAssets, equipment);
 
-		setModal(false);
 		setResizable(false);
 		setVisible(false);
 	}

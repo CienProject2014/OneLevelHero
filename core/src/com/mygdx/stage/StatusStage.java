@@ -20,7 +20,6 @@ import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
@@ -44,8 +43,6 @@ public class StatusStage extends BaseOverlapStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private PartyManager partyManager;
-	@Autowired
-	private ListenerFactory listenerFactory;
 	@Autowired
 	private MovingManager movingManager;
 	@Autowired
@@ -78,6 +75,7 @@ public class StatusStage extends BaseOverlapStage {
 		setButton();
 		setCharacterBustImage(partyManager, sceneConstants);
 		setCharacterStatusImage(partyManager, sceneConstants);
+		setPartyEndButton();
 		setTabButton();
 		addListener();
 		return this;
@@ -87,6 +85,7 @@ public class StatusStage extends BaseOverlapStage {
 		setCharacterBustImage(partyManager, sceneConstants);
 		setLabel(partyManager, sceneConstants);
 		setCharacterStatusImage(partyManager, sceneConstants);
+		setPartyEndButton();
 	}
 
 	private void setTabButton() {
@@ -102,6 +101,54 @@ public class StatusStage extends BaseOverlapStage {
 			}
 
 		});
+	}
+
+	private void setPartyEndButton() {
+
+		final CompositeItem partyEndButton = sceneLoader.getRoot().getCompositeById("ending_button");
+		/* setCompositeItemVisibility(partyEndButton, DEFAULT_VISIBILITY); */
+		if (currentSelectedHero.getFacePath().equals("yongsa")) {
+			partyEndButton.setLayerVisibilty("Default", true);
+			partyEndButton.setLayerVisibilty("pressed", false);
+			partyEndButton.setLayerVisibilty("pressed2", false);
+			partyEndButton.setLayerVisibilty("normal2", false);
+
+			partyEndButton.addListener(new InputListener() {
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					/* StatusScreen.setClickedWorldMap(true); */
+					partyEndButton.setLayerVisibilty("pressed", false);
+					screenFactory.show(ScreenEnum.ENDING);
+				}
+
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					partyEndButton.setLayerVisibilty("pressed", true);
+					return true;
+				}
+			});
+		} else {
+			partyEndButton.setLayerVisibilty("Default", false);
+			partyEndButton.setLayerVisibilty("pressed", false);
+			partyEndButton.setLayerVisibilty("normal2", true);
+			partyEndButton.setLayerVisibilty("pressed2", false);
+			partyEndButton.clearListeners();
+			partyEndButton.addListener(new InputListener() {
+				@Override
+				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+					/* StatusScreen.setClickedWorldMap(true); */
+					partyEndButton.setLayerVisibilty("pressed2", false);
+				}
+
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					partyEndButton.setLayerVisibilty("pressed2", true);
+					screenFactory.show(ScreenEnum.CHARACTER_CHANGE);
+					return true;
+				}
+			});
+		}
+
 	}
 
 	private void setButton() {

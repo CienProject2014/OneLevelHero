@@ -33,14 +33,15 @@ public class MusicAssets implements FileAssetsInitializable {
 				filePathMap.get(JsonEnum.SOUND_EFFECT_FILE_PATH.toString()).loadFile());
 		for (Entry<String, MusicFile> entry : soundEffectFileMap.entrySet()) {
 			soundEffectMap.put(entry.getKey(), entry.getValue().loadFile());
-			assetsManager.load(soundEffectMap.get(entry.getKey()), Sound.class);
+			// assetsManager.load(soundEffectMap.get(entry.getKey()),
+			// Sound.class);
 		}
 
 		Map<String, MusicFile> musicFileMap = JsonParser.parseMap(MusicFile.class,
 				filePathMap.get(JsonEnum.MUSIC_FILE_PATH.toString()).loadFile());
 		for (Entry<String, MusicFile> entry : musicFileMap.entrySet()) {
 			musicMap.put(entry.getKey(), entry.getValue().loadFile());
-			assetsManager.load(musicMap.get(entry.getKey()), Music.class);
+			/// assetsManager.load(musicMap.get(entry.getKey()), Music.class);
 		}
 
 		// WorldNode MusicList
@@ -80,30 +81,44 @@ public class MusicAssets implements FileAssetsInitializable {
 	}
 
 	public Sound getSound(String soundString) {
+		assetsManager.load(soundEffectMap.get(soundString), Sound.class);
+		assetsManager.finishLoading();
 		return assetsManager.get(soundEffectMap.get(soundString), Sound.class);
 	}
 
 	public Music getMusic(String musicString) {
+		assetsManager.load(musicMap.get(musicString), Music.class);
+		assetsManager.finishLoading();
 		return assetsManager.get(musicMap.get(musicString), Music.class);
 	}
 
 	public Music getWorldNodeMusic(String musicString) {
+		assetsManager.load(worldNodeMusicMap.get(musicString), Music.class);
+		assetsManager.finishLoading();
 		return assetsManager.get(worldNodeMusicMap.get(musicString), Music.class);
 	}
 
 	public Sound getSoundEffectByType(String soundType) {
+		assetsManager.load(soundEffectInUseMap.get(soundType), Sound.class);
+		assetsManager.finishLoading();
 		return assetsManager.get(soundEffectInUseMap.get(soundType), Sound.class);
 	}
 
 	public Music getBattleMusic(String musicString) {
+		assetsManager.load(battleMusicMap.get(musicString), Music.class);
+		assetsManager.finishLoading();
 		return assetsManager.get(battleMusicMap.get(musicString), Music.class);
 	}
 
 	public Music getMovingMusic(String musicString) {
+		assetsManager.load(movingMusicMap.get(musicString), Music.class);
+		assetsManager.finishLoading();
 		return assetsManager.get(movingMusicMap.get(musicString), Music.class);
 	}
 
 	public Music getEventMusic(String musicString) {
+		assetsManager.load(eventMusicMap.get(musicString), Music.class);
+		assetsManager.finishLoading();
 		return assetsManager.get(eventMusicMap.get(musicString), Music.class);
 	}
 }

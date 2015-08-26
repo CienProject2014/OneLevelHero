@@ -12,8 +12,6 @@ import com.mygdx.model.event.EventPacket;
 
 public class MusicManager {
 	@Autowired
-	private SoundManager soundManager;
-	@Autowired
 	private PositionManager positionManager;
 	@Autowired
 	private FieldManager fieldManager;
@@ -21,7 +19,8 @@ public class MusicManager {
 	private MusicAssets musicAssets;
 	@Autowired
 	private EventManager eventManager;
-	private MusicInfo musicInfo = new MusicInfo();
+	@Autowired
+	private MusicInfo musicInfo;
 
 	public enum MusicCondition {
 		WHENEVER, IF_IS_NOT_PLAYING;
@@ -45,7 +44,7 @@ public class MusicManager {
 	}
 
 	public void setMusicVolume(float volume) {
-		musicInfo.getMusic().setVolume(volume);
+		musicInfo.setMusicVolume(volume);
 	}
 
 	public void playMusic() {
@@ -59,37 +58,37 @@ public class MusicManager {
 
 	public void setMusicAndPlay(Music music, float volume, MusicCondition musicCondition) {
 		switch (musicCondition) {
-			case WHENEVER :
-				int delayTime = 2000;
-				if (checkCurrentMusicIsNotNull()) {
-					if (checkIsSameWithCurrentMusic(music)) {
-						// Nothing happened
-					} else {
-						stopMusic();
-						Timer.schedule(new Task() {
-							@Override
-							public void run() {
-							}
-						}, delayTime);
-						setMusic(music);
-						playMusic();
-					}
+		case WHENEVER:
+			int delayTime = 2000;
+			if (checkCurrentMusicIsNotNull()) {
+				if (checkIsSameWithCurrentMusic(music)) {
+					// Nothing happened
 				} else {
+					stopMusic();
+					Timer.schedule(new Task() {
+						@Override
+						public void run() {
+						}
+					}, delayTime);
 					setMusic(music);
 					playMusic();
 				}
-				break;
-			case IF_IS_NOT_PLAYING :
-				if (checkCurrentMusicIsNotNull()) {
-					if (checkCurrentMusicIsPlaying())
-						return;
-				} else {
-					setMusic(music);
-					playMusic();
-				}
-				break;
-			default :
-				Gdx.app.error("MusicManager", "incorrect musicCondition");
+			} else {
+				setMusic(music);
+				playMusic();
+			}
+			break;
+		case IF_IS_NOT_PLAYING:
+			if (checkCurrentMusicIsNotNull()) {
+				if (checkCurrentMusicIsPlaying())
+					return;
+			} else {
+				setMusic(music);
+				playMusic();
+			}
+			break;
+		default:
+			Gdx.app.error("MusicManager", "incorrect musicCondition");
 		}
 	}
 

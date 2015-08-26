@@ -47,6 +47,10 @@ public class SaveManager {
 	private TimeManager timeManager;
 	@Autowired
 	private PositionManager positionManager;
+	@Autowired
+	private MusicManager musicManager;
+	@Autowired
+	private SoundManager soundManager;
 
 	private Kryo kryo;
 
@@ -163,6 +167,7 @@ public class SaveManager {
 		}
 		Gdx.app.log("SaveManager", "저장작업완료");
 	}
+
 	public boolean isLoadable(SaveVersion saveVersion) {
 		return Gdx.files.local("save/" + saveVersion.toString() + ".json").exists();
 	}

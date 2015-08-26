@@ -344,47 +344,6 @@
         }
       },
       {
-        "itemIdentifier": "redrose_castle_library",
-        "x": 2929,
-        "y": 872.5,
-        "zIndex": 9,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "redrose_castle_peasanthouse",
-              "scaleX": 5,
-              "scaleY": 5,
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "invenuipage01"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
         "itemIdentifier": "camera_right",
         "x": 1750,
         "y": 590,
