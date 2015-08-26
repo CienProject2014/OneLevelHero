@@ -59,7 +59,7 @@
       {
         "nextSectionNumber": "104",
         "eventType": "battle_control",
-        "targetComponent": "item"
+        "targetComponent": "skill_attack"
       }
     ]
   },
@@ -97,7 +97,7 @@
       {
         "nextSectionNumber": "106",
         "eventType": "battle_control",
-        "targetComponent": "skill_attack"
+        "targetComponent": "item"
       }
     ]
   },
@@ -261,7 +261,7 @@
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
-        "eventNumber": "24"
+        "eventNumber": "36"
       }
     ],
     "nextSections": [
@@ -591,6 +591,16 @@
         "eventType": "battle_end",
         "targetComponent": "succubus_junior"
       }
+    ]
+  },
+  "401": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "38"
+      }
+    ],
+    "nextSections": [
     ]
   }
 }

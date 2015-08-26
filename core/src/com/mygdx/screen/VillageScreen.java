@@ -70,6 +70,7 @@ public class VillageScreen extends BaseScreen {
 
 	@Override
 	public void show() {
+		musicManager.setWorldNodeMusicAndPlay();
 		assetsManager.clear();
 		assetsManager.load("orig" + File.separator + "skill_" + "pack.atlas", TextureAtlas.class);
 		assetsManager.load("orig" + File.separator + "save_" + "pack.atlas", TextureAtlas.class);
@@ -81,7 +82,7 @@ public class VillageScreen extends BaseScreen {
 		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		// 여러 스테이지에 인풋 프로세서를 동시에 할 당한다
 		setInputProcessor();
-		musicManager.setWorldNodeMusicAndPlay();
+
 	}
 
 	private void setInputProcessor() {
