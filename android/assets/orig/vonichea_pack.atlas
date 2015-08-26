@@ -1,0 +1,76 @@
+
+vonichea_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+townuidown
+  rotate: false
+  xy: 2, 238
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuileft
+  rotate: false
+  xy: 3846, 1208
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
+townuiright
+  rotate: false
+  xy: 2, 2
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 238, 238
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+vonichea-left0000-------2
+  rotate: false
+  xy: 126, 156
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+vonichea-left0001-------1
+  rotate: false
+  xy: 474, 280
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+vonichea-left0002-------0
+  rotate: false
+  xy: 2, 362
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+vonichea-right0000-------2
+  rotate: false
+  xy: 126, 74
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+vonichea-right0001-------1
+  rotate: false
+  xy: 676, 280
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+vonichea-right0002-------0
+  rotate: false
+  xy: 1924, 362
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1

@@ -49,7 +49,7 @@ public class SavePopupStage extends BaseOverlapStage {
 	private CompositeItem save01;
 	private CompositeItem save02;
 	private CompositeItem save03;
-	private CompositeItem newbutton;
+
 	private Map<String, Array<String>> sceneConstants;
 
 	public Stage makeStage() {
@@ -78,7 +78,7 @@ public class SavePopupStage extends BaseOverlapStage {
 		Array<String> saveTimeLabels = sceneConstants.get(SAVE_TIME_LABEL);
 		Array<String> placeLabels = sceneConstants.get(PLACE_LABEL);
 		Array<String> saveVerions = sceneConstants.get(SAVE_VERSION);
-		
+
 		for (int i = 0; i < SAVE_SIZE; i++) {
 			LabelItem subjectLabel = sceneLoader.getRoot().getLabelById(subjectLabels.get(i));
 			LabelItem gameTimeLabel = sceneLoader.getRoot().getLabelById(gameTimeLabels.get(i));
@@ -90,7 +90,7 @@ public class SavePopupStage extends BaseOverlapStage {
 				gameTimeLabel.setText(svInfo.getGameTime());
 				placeLabel.setText(svInfo.getSavePlace());
 				saveTimeLabel.setText(svInfo.getSaveTime());
-				
+
 				setLabelStyle(subjectLabel);
 				setLabelStyle(gameTimeLabel);
 				setLabelStyle(saveTimeLabel);
@@ -110,7 +110,6 @@ public class SavePopupStage extends BaseOverlapStage {
 		save02 = sceneLoader.getRoot().getCompositeById("save02");
 		save03 = sceneLoader.getRoot().getCompositeById("save03");
 		closeButton = sceneLoader.getRoot().getCompositeById("close_button");
-		newbutton = sceneLoader.getRoot().getCompositeById("new_button");
 	}
 
 	private void setAddListener() {
@@ -140,13 +139,7 @@ public class SavePopupStage extends BaseOverlapStage {
 			}
 		});
 		closeButton.addListener(new TouchListener());
-		newbutton.addListener(new TouchListener() {
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				saveManager.setNewGame();
-				super.touchUp(event, x, y, pointer, button);
-			}
-		});
+
 	}
 
 	private void setCamera() {
@@ -154,7 +147,7 @@ public class SavePopupStage extends BaseOverlapStage {
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		getViewport().setCamera(cam);
 	}
-	
+
 	private class TouchListener extends SimpleTouchListener {
 		@Override
 		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {

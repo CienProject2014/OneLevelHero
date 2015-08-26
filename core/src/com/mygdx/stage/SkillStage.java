@@ -197,7 +197,6 @@ public class SkillStage extends BaseOverlapStage {
 			}
 		}
 	}
-
 	private void setLabelStyle(LabelItem labelItem) {
 		labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		labelItem.setFontScale(1.0f);

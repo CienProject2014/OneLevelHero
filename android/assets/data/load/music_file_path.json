@@ -2,20 +2,17 @@
 	"opening":{
 		"filePath" : "music/opening.mp3"
 	},
-	"kingkai's_planet":{
-		"filePath" : "music/kingkai's_planet.mp3"
+	"bgm_title" : {
+		"filePath" : "music/bgm_title.mp3"
 	},
-	"bigup":{
-		"filePath" : "music/bigup.mp3"
+	"bgm_cobweb" : {
+		"filePath" : "music/bgm_cobweb.mp3"
 	},
 	"fights":{
 		"filePath" : "music/fights.mp3"
 	},
 	"fight_or_flight":{
 		"filePath" : "music/fight_or_flight.mp3"
-	},
-	"grandpapa_eleven":{
-		"filePath" : "music/grandpapa_eleven.mp3"
 	},
 	"mihok_forest":{
 		"filePath" : "music/mihok_forest.mp3"
