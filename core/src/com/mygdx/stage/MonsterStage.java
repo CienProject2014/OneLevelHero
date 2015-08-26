@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -21,6 +22,7 @@ import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.TextureManager;
+import com.mygdx.model.battle.Buff;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.StatusBar;
 
@@ -44,6 +46,7 @@ public class MonsterStage extends BaseOneLevelStage {
 	private Table outerTable; // 몬스터 테이블의 바깥 테이블
 	private Table monsterTable; // 몬스터가 들어가는 테이블
 	private Table uiTable;
+	HorizontalGroup buffGroup;
 	private Table monsterHpTable;
 	private Label monsterHpLabel;
 	private StatusBar monsterStatusBar;
@@ -77,6 +80,10 @@ public class MonsterStage extends BaseOneLevelStage {
 		Table hpTable = monsterHpTable(monsterStatusBar);
 		uiTable.bottom();
 		uiTable.add(hpTable).padBottom(uiConstantsMap.get("hpTablePadBottom"));
+		uiTable.row();
+		buffGroup = new HorizontalGroup();
+		uiTable.add(buffGroup);
+
 		tableStack.add(outerTable);
 		tableStack.add(uiTable);
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
@@ -87,6 +94,11 @@ public class MonsterStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
+		buffGroup.clear();
+		for (Buff buff : battleManager.getMonsterBuffList()) {
+			buffGroup.addActor(new Image(textureManager.getTexture(buff.getBuffPath())));
+
+		}
 		monsterHpLabel.setText(monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp());
 		monsterStatusBar.update();
 	}

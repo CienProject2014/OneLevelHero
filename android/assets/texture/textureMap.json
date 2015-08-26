@@ -19,6 +19,10 @@ bg_gameover: {
 	class: java.lang.String,
 	value: texture/background/bg_gameover.png/
 },
+attack_swing: {
+	class: java.lang.String,
+	value: texture/animation_sheet/attack_swing.png/
+},
 buff_de_overload_4: {
 	class: java.lang.String,
 	value: texture/icon/buff_de_overload_4.png/
@@ -510,6 +514,10 @@ bg_blackwood_02: {
 monster_elementalelectric: {
 	class: java.lang.String,
 	value: texture/monster/monster_elementalelectric.png/
+},
+gale: {
+	class: java.lang.String,
+	value: texture/animation_sheet/gale.png/
 },
 battle_succubus_junior_small: {
 	class: java.lang.String,
@@ -1483,6 +1491,10 @@ bg_southcape_bar: {
 	class: java.lang.String,
 	value: texture/background/bg_southcape_bar.png/
 },
+attack_cutting: {
+	class: java.lang.String,
+	value: texture/animation_sheet/attack_cutting.png/
+},
 monster_golem_forest: {
 	class: java.lang.String,
 	value: texture/monster/monster_golem_forest.png/
@@ -1523,13 +1535,13 @@ bust_nepel_04: {
 	class: java.lang.String,
 	value: texture/character/bust_nepel_04.png/
 },
-bust_nepel_05: {
-	class: java.lang.String,
-	value: texture/character/bust_nepel_05.png/
-},
 monster_wyvern: {
 	class: java.lang.String,
 	value: texture/monster/monster_wyvern.png/
+},
+bust_nepel_05: {
+	class: java.lang.String,
+	value: texture/character/bust_nepel_05.png/
 },
 battle_kentaurous_spear_small: {
 	class: java.lang.String,

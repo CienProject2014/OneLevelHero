@@ -11,13 +11,16 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.GoBackwardFieldButtonListener;
@@ -45,16 +48,21 @@ public class FieldStage extends BaseOneLevelStage {
 	private HashMap<String, Float> uiConstantsMap;
 	private Stage stage;
 	private Table outerTable;
-	private Label movingLabel;
+	private TextButton movingLabel;
 	private ImageButton goForwardFieldButton;
 	private ImageButton goBackwardFieldButton;
+	@Autowired
+	private WorldMapAssets worldMapAssets;
 
 	public Stage makeStage() {
 		positionManager.setBeforePositionType(PositionEnum.FIELD);
 		Gdx.app.log("FieldStage", "FieldType - " + fieldManager.getFieldType());
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("MovingStage");
-		movingLabel = new Label("Point", uiComponentAssets.getSkin());
+		TextureRegionDrawable fieldLine = new TextureRegionDrawable(new TextureRegion(
+				textureManager.getTexture("field_line")));
+		TextButtonStyle buttonStyle = new TextButtonStyle(fieldLine, fieldLine, fieldLine, uiComponentAssets.getFont());
+		movingLabel = new TextButton("", buttonStyle);
 		movingLabel.setColor(Color.WHITE);
 
 		stage = new Stage();
@@ -64,20 +72,22 @@ public class FieldStage extends BaseOneLevelStage {
 		outerTable.setBackground(getBackgroundTRD(), false);
 		outerTable.top(); // table을 위로 정렬
 
+		Table labelTable = new Table();
+		labelTable.add(movingLabel).align(Align.center).padBottom(600);
 		makeButton();
 		addListener();
 		Gdx.input.setInputProcessor(stage);
 
 		tableStack.add(outerTable);
-		tableStack.add(movingLabel);
+		tableStack.add(labelTable);
 		tableStack.add(makeTable());
 		return this;
 	}
-
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		movingLabel.setText(String.format("%s까지%d", fieldManager.getDestinationNode(),
+		movingLabel.setText(String.format("[ %s 까지 %d필드 남았습니다. ]",
+				worldMapAssets.getWorldNodeInfo(fieldManager.getDestinationNode()).getNodeName(),
 				fieldManager.getLeftFieldLength()));
 		outerTable.setBackground(getBackgroundTRD(), false);
 	}
