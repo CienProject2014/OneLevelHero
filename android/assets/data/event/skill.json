@@ -6,7 +6,7 @@
         "skillEffectType": "add_state",
 		"buffName" : "burn",
         "costGauge": "30",
-        "costCasting": "1",
+        "costCasting": "0",
         "elementType": "none",
         "magicFactor": "100",
         "description": "성스러운 십자가 모양의 빛으로 적을 공격한다."

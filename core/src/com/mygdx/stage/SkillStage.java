@@ -117,8 +117,8 @@ public class SkillStage extends BaseOverlapStage {
 							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
 									battleManager.getSelectedMonster(), currentSelectedSkill.getSkillPath());
 						} else {
-							battleManager.getGridHitbox().setHitboxCenter(currentSelectedSkill.getHitboxCenter());
-							battleManager.getGridHitbox().setHitboxShape(currentSelectedSkill.getHitboxShape());
+							battleManager.getNowGridHitbox().setHitboxCenter(currentSelectedSkill.getHitboxCenter());
+							battleManager.getNowGridHitbox().setHitboxShape(currentSelectedSkill.getHitboxShape());
 							battleManager.setShowGrid(true);
 						}
 						Gdx.app.log(TAG, "gridHitbox를 표시합니다");

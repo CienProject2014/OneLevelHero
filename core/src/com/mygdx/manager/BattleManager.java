@@ -464,7 +464,7 @@ public class BattleManager {
 	}
 
 	private boolean isDead(Unit defendUnit) {
-		return defendUnit.getStatus().getHp() <= 0;
+		return defendUnit.getStatus().getHp() <= 1;
 	}
 
 	private boolean isHeroDead() {
