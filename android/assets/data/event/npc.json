@@ -1,5 +1,5 @@
 {
-  "prologue": {  
+  "prologue": {
     "events": {
       "1": {
         "eventState": "not_opened",
@@ -50,14 +50,14 @@
             "script": "저게 마왕인가!",
             "characterPath": "yongsa",
             "faceNumber": "04",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "devil_castle_06"
           },
           {
             "script": "이얍!",
             "characterPath": "parath",
             "faceNumber": "04",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "devil_castle_06"
           },
           {
@@ -90,21 +90,21 @@
             "script": "별로 효과가 없네요",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "devil_castle_06"
           },
           {
             "script": "내가 나서도록 하지.",
             "characterPath": "yongsa",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "devil_castle_06"
           },
           {
             "script": "하압!",
             "characterPath": "yongsa",
             "faceNumber": "04",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "devil_castle_06"
           },
           {
@@ -131,7 +131,7 @@
             "script": "이번엔 제가 나설게요!",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "devil_castle_06"
           },
           {
@@ -164,7 +164,7 @@
             "script": "용사님! 제가 물약을 사용해드릴게요!",
             "characterPath": "parath",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "devil_castle_06"
           },
           {
@@ -213,14 +213,14 @@
             "script": "……!!",
             "characterPath": "mawang",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "devil_castle_06"
           },
           {
             "script": "어…?",
             "characterPath": "yongsa",
             "faceNumber": "04",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "devil_castle_06"
           },
           {
@@ -259,7 +259,7 @@
             "script": "촌장님은 집 안에 계실거에요.",
             "characterPath": "parath",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_03"
           }
         ]
@@ -272,14 +272,14 @@
             "script": "마을에 있는 화살표를 누르면 필드맵으로 나갈 수 있어요.",
             "characterPath": "parath",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_03"
           },
           {
             "script": "콥웨브 방향으로 나가세요.",
             "characterPath": "parath",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_03"
           }
         ]
@@ -292,7 +292,7 @@
             "script": "앞으로를 누르면 다음 필드맵으로 이동합니다.",
             "characterPath": "parath",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "bridge"
           }
         ]
@@ -305,21 +305,21 @@
             "script": "콥웨브에 도착했으니 촌장님 말씀대로 대도서관으로 가보기로 해요.",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_03"
           },
           {
             "script": "북쪽으로 이동해야겠네요.",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_03"
           },
           {
             "script": "우측 상단의 화살표를 눌러 마을 위쪽으로 이동한 후, 건물을 터치해서 안으로 들어가도록 해요.",
             "characterPath": "parath",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_03"
           }
         ]
@@ -339,35 +339,35 @@
             "script": "이렇게 넓어서야....",
             "characterPath": "yongsa",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "어디서부터 찾아야할 지 모르겠는걸…",
             "characterPath": "yongsa",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "혹시 찾으시는 책이 있으십니까?",
             "characterPath": "aimee",
             "faceNumber": "01",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "저주에 관련된 책이나 문서를 알아보고 싶은데요.",
             "characterPath": "parath",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "저주에 관련한 문서는 이쪽입니다.",
             "characterPath": "aimee",
             "faceNumber": "01",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_library"
           },
           {
@@ -389,77 +389,77 @@
             "script": "조사해본 결과,",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "과거의 기록은 없지만, 아마도 탈력을 유도하는 저주인 것 같아요.",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "저주라니… 혹시 위험한 거에요?",
             "characterPath": "parath",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "위험하지는 않을 것 같지만… 점점 더 증상은 심각해 질 거에요. ",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "왜 용사님만 저주에 걸리게 되었는지는 잘 모르겠네요.",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "용사님",
             "characterPath": "aimee",
             "faceNumber": "01",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "응?",
             "characterPath": "yongsa",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "각지에 마왕 토벌을 명령했으니, 준비가 완료될 때까지 휴식을 취하라는 콥웨브 시장님의 전언이 있었습니다.",
             "characterPath": "aimee",
             "faceNumber": "01",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "그리고 카딜라 성의 카시아 공작님께서 용사님을 뵙고 싶어한다는 전언도 있었습니다.",
             "characterPath": "aimee",
             "faceNumber": "01",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "고마워",
             "characterPath": "yongsa",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_library"
           },
           {
             "script": "도서관 내에서 떠들 순 없으니 나가서 얘기하자.",
             "characterPath": "yongsa",
             "backgroundPath": "cobweb_library",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "faceNumber": "01"
           }
         ]
@@ -479,56 +479,56 @@
             "script": "흠… 쉬라고 해도 말이지…",
             "characterPath": "yongsa",
             "faceNumber": "05",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "우선 용사님의 저주를 풀어야겠네요.",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "리리스, 저주를 푸는 방법 찾은 게 있어?",
             "characterPath": "yongsa",
             "faceNumber": "01",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "제가 찾아본 바로는 카딜라 지방에서 저주를 풀 방법은 네 가지 정도가 있을 것 같아요.",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "수도인 카딜라 성의 학자들에게 도움을 요청하는 방법도 있고,",
             "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "바이칼성에는 저주마법에 능통한 종족이 살고 있다고 하니 그 쪽으로 가볼 수도 있겠네요.",
-             "characterPath": "lilis",
+            "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "레드로즈 성에서 백작의 도움을 받는 것도 좋겠죠.",
-             "characterPath": "lilis",
+            "characterPath": "lilis",
             "faceNumber": "01",
-            "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "윈터폴의 수정 협곡에는 정화의 눈물이라는 성물을 얻을 수 있다고 하네요.",
-             "characterPath": "lilis",
+            "characterPath": "lilis",
             "faceNumber": "01",
-             "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           }
         ]
@@ -546,9 +546,9 @@
         "eventScenes": [
           {
             "script": "어디로갈까요?",
-             "characterPath": "lilis",
+            "characterPath": "lilis",
             "faceNumber": "01",
-             "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           }
         ],
@@ -559,6 +559,13 @@
           "레드로즈 성"
         ]
       },
+      "35": {
+        "eventState": "not_opened",
+        "eventType": "move_node",
+        "eventComponent": [
+          "cobweb"
+        ]
+      },
       "36": {
         "eventState": "not_opened",
         "eventType": "chat",
@@ -567,28 +574,28 @@
             "script": "카딜라 성으로 가자.",
             "characterPath": "yongsa",
             "faceNumber": "01",
-             "speakerPosition" : "left",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "용사님, 조금 쉬었다 가면 안될까요? 모처럼 콥웨브에 왔는데",
             "characterPath": "parath",
             "faceNumber": "01",
-             "speakerPosition" : "right",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "아직 대낮이에요. 지금이라도 출발하면 카딜라 성에 도착할 수 있을 거에요.",
             "characterPath": "lilis",
-              "faceNumber": "01",
-             "speakerPosition" : "left",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "히이잉....",
             "characterPath": "parath",
-              "faceNumber": "07",
-              "speakerPosition" : "right",
+            "faceNumber": "07",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           }
         ]
@@ -600,49 +607,49 @@
           {
             "script": "나쁘지 않은 선택인 것 같네요.",
             "characterPath": "parath",
-             "speakerPosition" : "left",
+            "speakerPosition": "left",
             "faceNumber": "01",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "자, 지체할 필요 없이 출발이나 해볼까?",
             "characterPath": "yongsa",
-             "speakerPosition" : "right",
+            "speakerPosition": "right",
             "faceNumber": "01",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "……저기 용사님? 수정협곡까지 가는 길은 아시는 거 맞죠?",
             "characterPath": "parath",
-             "speakerPosition" : "left",
+            "speakerPosition": "left",
             "faceNumber": "01",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "당연하지!! 수정협곡은 에…그러니깐…어디로 가면 되는 거냐면…...",
             "characterPath": "yongsa",
-             "speakerPosition" : "right",
+            "speakerPosition": "right",
             "faceNumber": "01",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "그래! 이쪽이야!",
             "characterPath": "yongsa",
-             "speakerPosition" : "right",
+            "speakerPosition": "right",
             "faceNumber": "03",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "하아…..따라오세요",
             "characterPath": "parath",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "faceNumber": "09",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "후후, 역시 용사님이시네요.",
             "characterPath": "lilis",
-             "speakerPosition" : "right",
+            "speakerPosition": "right",
             "faceNumber": "03",
             "backgroundPath": "cobweb_02"
           }
@@ -655,49 +662,49 @@
           {
             "script": "나쁘지 않은 선택인 것 같네요.",
             "characterPath": "parath",
-            "faceNumber" : "01",
-             "speakerPosition" : "left",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "자, 지체할 필요 없이 출발이나 해볼까?",
             "characterPath": "yongsa",
-              "faceNumber" : "01",
-             "speakerPosition" : "right",
+            "faceNumber": "01",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "……저기 용사님? 바이칼 성까지 가는 길은 아시는 거 맞죠?",
             "characterPath": "parath",
-              "faceNumber" : "01",
-                "speakerPosition" : "left",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "당연하지!! 바이칼 성은 에…그러니깐…어디로 가면 되는 거냐면…...",
             "characterPath": "yongsa",
-             "faceNumber" : "01",
-             "speakerPosition" : "right",
+            "faceNumber": "01",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "그래! 이쪽이야!",
             "characterPath": "yongsa",
-              "faceNumber" : "03",
-             "speakerPosition" : "right",
+            "faceNumber": "03",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "하아…..따라오세요",
             "characterPath": "parath",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "faceNumber": "09",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "후후, 역시 용사님이시네요.",
             "characterPath": "lilis",
-             "speakerPosition" : "right",
+            "speakerPosition": "right",
             "faceNumber": "03",
             "backgroundPath": "cobweb_02"
           }
@@ -710,8 +717,8 @@
           {
             "script": "나쁘지 않은 선택인 것 같네요.",
             "characterPath": "parath",
-            "faceNumber" : "01",
-             "speakerPosition" : "left",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_02"
           },
           {
@@ -722,35 +729,35 @@
           {
             "script": "……저기 용사님? 레드로즈 성까지 가는 길은 아시는 거 맞죠?",
             "characterPath": "parath",
-              "faceNumber" : "01",
-                "speakerPosition" : "left",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "당연하지!! 레드로즈 성은 에…그러니깐…어디로 가면 되는 거냐면…...",
-             "characterPath": "yongsa",
-             "faceNumber" : "01",
-             "speakerPosition" : "right",
+            "characterPath": "yongsa",
+            "faceNumber": "01",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
-           {
+          {
             "script": "그래! 이쪽이야!",
             "characterPath": "yongsa",
-              "faceNumber" : "03",
-             "speakerPosition" : "right",
+            "faceNumber": "03",
+            "speakerPosition": "right",
             "backgroundPath": "cobweb_02"
           },
-         {
+          {
             "script": "하아…..따라오세요",
             "characterPath": "parath",
-            "speakerPosition" : "left",
+            "speakerPosition": "left",
             "faceNumber": "09",
             "backgroundPath": "cobweb_02"
           },
           {
             "script": "후후, 역시 용사님이시네요.",
             "characterPath": "lilis",
-             "speakerPosition" : "right",
+            "speakerPosition": "right",
             "faceNumber": "03",
             "backgroundPath": "cobweb_02"
           }
@@ -10457,67 +10464,93 @@
         "eventScenes": [
           {
             "script": "혹시, 그쪽이 플레챠씨인가요?",
-            "characterPath": "bust_yongsa_01",
+            "characterPath": "yongsa",
+            "faceNumber" : "01",
+            "speakerPosition" : "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "(끄덕 끄덕)",
-            "characterPath": "bust_plecha_01",
+            "characterPath": "plecha",
+            "faceNumber" : "01",
+            "speakerPosition" : "right",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "아, 맞군요. 안녕하세요. 용사입니다.",
-            "characterPath": "bust_yongsa",
+            "characterPath": "yongsa",
+            "faceNumber" : "01",
+            "speakerPosition" : "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "전 파라스입니다.",
-            "characterPath": "bust_parath",
+            "characterPath": "parath",
+            "faceNumber" : "01",
+            "speakerPosition" : "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "리리스에요.",
-            "characterPath": "bust_lilis",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
+            "speakerPosition" : "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "…일행은 이게 다인가?",
-            "characterPath": "bust_plecha_01",
+            "characterPath": "plecha",
+            "faceNumber" : "01",
+            "speakerPosition" : "right",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "예, 세 명뿐이에요.",
-            "characterPath": "bust_lilis",
+            "characterPath": "lilis",
+            "faceNumber" : "01",
+            "speakerPosition" : "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "그럼 출발하도록 하지.",
-            "characterPath": "bust_plecha_01",
+            "characterPath": "plecha",
+            "faceNumber" : "01",
+            "speakerPosition" : "right",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "어… 가버렸다.",
-            "characterPath": "bust_yongsa",
+            "characterPath": "yongsa",
+            "faceNumber" : "10",
+            "speakerPosition" : "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "엄청 쿨 한 성격이네…",
-            "characterPath": "bust_parath",
+            "characterPath": "parath",
+            "faceNumber" : "10",
+            "speakerPosition" : "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "저기, 두 분은 못 보셨나요?",
-            "characterPath": "bust_lilis",
+            "characterPath": "lilis",
+            "faceNumber" : "08",
+            "speakerPosition" : "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "엥? 뭘?",
-            "characterPath": "bust_yongsa",
+            "characterPath": "yongsa",
+            "faceNumber" : "10",
+            "speakerPosition" : "left",
             "backgroundPath": "kadilla_castle_square"
           },
           {
             "script": "저 분, 수인종이에요.",
-            "characterPath": "bust_lilis",
+            "characterPath": "lilis",
+            "faceNumber" : "08",
+            "speakerPosition" : "left",
             "backgroundPath": "kadilla_castle_square"
           }
         ],
@@ -10544,22 +10577,26 @@
       "eventScenes": [
         {
           "script": "…",
-          "characterPath": "npc_plecha",
+          "characterPath": "plecha",
+          "faceNumber" : "01",
           "backgroundPath": "kadilla_castle_square"
         },
         {
           "script": "……",
-          "characterPath": "npc_plecha",
+          "characterPath": "plecha",
+           "faceNumber" : "01",
           "backgroundPath": "kadilla_castle_square"
         },
         {
           "script": "………",
-          "characterPath": "npc_plecha",
+          "characterPath": "plecha",
+           "faceNumber" : "01",
           "backgroundPath": "kadilla_castle_square"
         },
         {
           "script": "………?",
-          "characterPath": "npc_plecha",
+          "characterPath": "plecha",
+           "faceNumber" : "01",
           "backgroundPath": "kadilla_castle_square"
         }
       ]
@@ -11441,7 +11478,9 @@
           {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
-            "rewardComponent": ["5"]
+            "rewardComponent": [
+              "5"
+            ]
           }
         ]
       }
@@ -11494,7 +11533,9 @@
           {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
-            "rewardComponent": ["5"]
+            "rewardComponent": [
+              "5"
+            ]
           }
         ]
       }
@@ -11553,7 +11594,9 @@
           {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
-            "rewardComponent": ["5"]
+            "rewardComponent": [
+              "5"
+            ]
           }
         ]
       }
@@ -11612,7 +11655,9 @@
           {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
-            "rewardComponent": ["5"]
+            "rewardComponent": [
+              "5"
+            ]
           }
         ]
       }
@@ -11671,7 +11716,9 @@
           {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
-            "rewardComponent": ["5"]
+            "rewardComponent": [
+              "5"
+            ]
           }
         ]
       }
@@ -11730,7 +11777,9 @@
           {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
-            "rewardComponent": ["5"]
+            "rewardComponent": [
+              "5"
+            ]
           }
         ]
       }
@@ -11789,7 +11838,9 @@
           {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
-            "rewardComponent": ["5"]
+            "rewardComponent": [
+              "5"
+            ]
           }
         ]
       }
@@ -11848,7 +11899,9 @@
           {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
-            "rewardComponent": ["5"]
+            "rewardComponent": [
+              "5"
+            ]
           }
         ]
       }
@@ -11895,12 +11948,16 @@
           {
             "rewardType": "next_section",
             "rewardState": "not_opened",
-            "rewardComponent": ["235"]
+            "rewardComponent": [
+              "235"
+            ]
           },
           {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
-            "rewardComponent": ["5"]
+            "rewardComponent": [
+              "5"
+            ]
           }
         ]
       }
@@ -14395,7 +14452,9 @@
         "eventScenes": [
           {
             "script": "나는 블랙우드 마을의 촌장 와이지라네.",
-            "characterPath": "bust_waiji_01",
+            "characterPath": "waiji",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_peasanthouse"
           }
         ]
@@ -14412,47 +14471,65 @@
           },
           {
             "script": "일종의 저주 같은 게 아닐까요?",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_peasanthouse"
           },
           {
             "script": "음… 우선 콥웨브의 대도서관에서 정보를 얻어 보는 것이 좋을 것 같으이.",
-            "characterPath": "bust_waiji_01",
+            "characterPath": "waiji",
+            "faceNumber": "01",
+            "speakerPosition": "right",
             "backgroundPath": "blackwood_peasanthouse"
           },
           {
             "script": "알겠습니다.",
-            "characterPath": "bust_yongsa_01",
+            "characterPath": "yongsa",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_peasanthouse"
           },
           {
             "script": "파라스, 곧바로 출발하도록 하자.",
-            "characterPath": "bust_yongsa_01",
+            "characterPath": "yongsa",
+            "faceNumber": "01",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_peasanthouse"
           },
           {
             "script": "힘든데… 조금 쉬었다가 가면 안될까요?",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber": "06",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_peasanthouse"
           },
           {
             "script": "그럴까?",
-            "characterPath": "bust_yongsa_02",
+            "characterPath": "yongsa",
+            "faceNumber": "02",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_peasanthouse"
           },
           {
             "script": "안돼요. 얼른 출발하도록 해요.",
-            "characterPath": "bust_lilis_01",
+            "characterPath": "lilis",
+            "faceNumber": "05",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_peasanthouse"
           },
           {
             "script": "히잉…",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber": "09",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_peasanthouse"
           },
           {
             "script": "그러면 왼쪽 위의 나가기 버튼을 눌러서 마을로 돌아가도록 하죠.",
-            "characterPath": "bust_parath_01",
+            "characterPath": "parath",
+            "faceNumber": "09",
+            "speakerPosition": "left",
             "backgroundPath": "blackwood_peasanthouse"
           }
         ],
@@ -15119,5 +15196,57 @@
       ]
     },
     "events": {}
+  },
+  "kadilla_castle_school": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "kadilla_castle_03"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "kadilla_castle"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "kadilla_castle_duke_castle": {
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "dont_go_building",
+        "eventScenes": [
+          {
+            "script": "문이 굳게 닫혀있다 ",
+            "speakerPosition": "left",
+            "characterPath": "nothing",
+            "faceNumber": "01",
+            "backgroundPath": "kadilla_castle_02"
+          }
+        ],
+        "rewards": [
+          {
+            "rewardType": "move_node",
+            "rewardState": "always_open",
+            "rewardComponent": [
+              "kadilla_castle"
+            ]
+          }
+        ]
+      }
+    }
   }
 }

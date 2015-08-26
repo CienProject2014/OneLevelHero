@@ -47,7 +47,7 @@ public enum MonsterEnum {
 	}
 
 	public enum ElementType {
-		FIRE("fire"), WATER("water"), ELECTRIC("electric"), NONE("none");
+		ALL("all"), FIRE("fire"), WATER("water"), ELECTRIC("electric"), NONE("none");
 
 		private String name;
 

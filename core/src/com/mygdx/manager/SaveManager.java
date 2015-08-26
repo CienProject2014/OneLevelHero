@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,8 @@ public class SaveManager {
 	private MusicManager musicManager;
 	@Autowired
 	private SoundManager soundManager;
+	
+	private final static String SAVEPATH = "save/";
 
 	private Kryo kryo;
 
@@ -88,6 +92,7 @@ public class SaveManager {
 			saveInfo.setStoryName("미라지포트 스토리");
 			break;
 		}
+		saveInfo.setSaveTime(new SimpleDateFormat("yyyy년 MM월dd일 HH:mm에 저장").format(new Date()));
 	}
 
 	public void setNewGame() {
@@ -98,7 +103,7 @@ public class SaveManager {
 
 	public void saveNewGameInfo() {
 		FileHandle handle;
-		handle = Gdx.files.local("save/" + SaveVersion.NEW_GAME.toString() + ".json");
+		handle = Gdx.files.local(SAVEPATH + SaveVersion.NEW_GAME.toString());
 		Output output;
 		try {
 			Gdx.app.log("SaveManager", "save - " + handle.file().getParentFile().getAbsolutePath());
@@ -124,7 +129,7 @@ public class SaveManager {
 	}
 
 	public void loadNewGameInfo() {
-		FileHandle handle = Gdx.files.local("save/" + SaveVersion.NEW_GAME.toString() + ".json");
+		FileHandle handle = Gdx.files.local(SAVEPATH + SaveVersion.NEW_GAME.toString());
 		Input input;
 		try {
 			input = new Input(new FileInputStream(handle.file()));
@@ -141,9 +146,7 @@ public class SaveManager {
 
 	public void save() {
 		setSaveInfo();
-		FileHandle handle;
-		handle = Gdx.files.local("save/" + saveInfo.getSaveVersion().toString() + ".json");
-		Output output;
+		FileHandle handle = Gdx.files.local(SAVEPATH + saveInfo.getSaveVersion().toString());
 		try {
 			Gdx.app.log("SaveManager", "save - " + handle.file().getParentFile().getAbsolutePath());
 			if (!handle.file().getParentFile().exists()) {
@@ -151,7 +154,7 @@ public class SaveManager {
 				handle.file().createNewFile();
 			}
 			Gdx.app.log("SaveManager", "저장작업완료" + handle.file().getAbsolutePath());
-			output = new Output(new FileOutputStream(handle.file()));
+			Output output = new Output(new FileOutputStream(handle.file()));
 			kryo.writeObject(output, saveInfo);
 			kryo.writeObject(output, partyInfo);
 			kryo.writeObject(output, positionInfo);
@@ -169,12 +172,12 @@ public class SaveManager {
 	}
 
 	public boolean isLoadable(SaveVersion saveVersion) {
-		return Gdx.files.local("save/" + saveVersion.toString() + ".json").exists();
+		return Gdx.files.local("save/" + saveVersion.toString()).exists();
 	}
 
 	public void loadSaveVersion(SaveVersion saveVersion) {
 		assets.initializeUnitInfo();
-		FileHandle handle = Gdx.files.local("save/" + saveVersion.toString() + ".json");
+		FileHandle handle = Gdx.files.local(SAVEPATH + saveVersion.toString());
 		Input input;
 		try {
 			input = new Input(new FileInputStream(handle.file()));
@@ -190,5 +193,17 @@ public class SaveManager {
 		}
 		battleManager.setBeforePosition(PositionEnum.SUB_NODE);
 		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+	}
+	
+	public SaveInfo readSaveInfo(SaveVersion saveVersion) {
+		SaveInfo svInfo = null;
+		
+		try {
+			svInfo = kryo.readObject(new Input(new FileInputStream(Gdx.files.local(SAVEPATH + saveVersion.toString()).file())), SaveInfo.class);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return svInfo;
 	}
 }

@@ -251,7 +251,10 @@
         "targetTime": {
           "startTime": 0,
           "endTime": 24
-        }
+        },
+        "buildingNpc": [
+          "plecha"
+        ],
       },
       "kadilla_castle_guard_office": {
         "buildingName": "경비실",

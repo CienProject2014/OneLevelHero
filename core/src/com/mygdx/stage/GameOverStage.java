@@ -26,7 +26,7 @@ public class GameOverStage extends Stage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				initInfo();
-				screenFactory.show(ScreenEnum.MENU);
+				screenFactory.popAllAndPush(ScreenEnum.MENU);
 			}
 		});
 		Table table = new Table();

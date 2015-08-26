@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.enums.ScreenEnum;
 
 /**
  * 기여자 목록을 뿌려주는 Screen 클래스
@@ -58,7 +57,7 @@ public class CreditScreen extends BaseScreen {
 				// that invoke this event screen
 
 				// NOT JUST VILLAGESCREEN BUT PREVIOUS SCREEN
-				screenFactory.show(ScreenEnum.MENU);
+				screenFactory.pop();
 
 				return true;
 			}
