@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -13,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.EventElementEnum;
+import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.RewardManager;
@@ -44,13 +44,12 @@ public class GameObjectStage extends BaseOneLevelStage {
 		eventManager.setCurrentEventElementType(EventElementEnum.GAME_OBJECT);
 		EventScene eventScene = eventManager.getGameObjectEventScene();
 		setScene(eventScene);
-		this.addListener(new InputListener() {
+		this.addListener(new SimpleTouchListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				rewardManager.doReward(); // 보상이 있을경우 보상실행
-				eventManager.finishGameObjectEvent();
+				eventManager.finishNpcEvent();
 				movingManager.goCurrentPosition();
-				return true;
 			}
 		});
 		return this;

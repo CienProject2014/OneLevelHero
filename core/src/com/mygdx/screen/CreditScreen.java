@@ -9,24 +9,24 @@ import com.mygdx.factory.StageFactory;
 
 /**
  * 기여자 목록을 뿌려주는 Screen 클래스
- *
+ * 
  * @author Velmont
- *
+ * 
  */
 public class CreditScreen extends BaseScreen {
-	private Stage gameOverStage;
+	private Stage creditStage;
 	@Autowired
 	private StageFactory stageFactory;
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		gameOverStage.draw();
+		creditStage.draw();
 	}
 
 	@Override
 	public void show() {
-		gameOverStage = stageFactory.makeStage(StageEnum.GAME_OVER);
-		Gdx.input.setInputProcessor(gameOverStage);
+		creditStage = stageFactory.makeStage(StageEnum.CREDIT);
+		Gdx.input.setInputProcessor(creditStage);
 	}
 }
