@@ -373,59 +373,63 @@ public class BattleStage extends BaseOneLevelStage {
 			}
 		});
 
-		battleManager.getGridHitbox().addListener(new ClickListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if (battleManager.isShowGrid()) {
-					end = (new Vector2(touched.x, touched.y));
-					if (battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
-						start = (new Vector2(touched.x, touched.y));
-						battleManager.getGridHitbox().setStartPosition(touched.x, touched.y);
-						battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
+	}
 
-						if (battleManager.getGridHitbox().isInsideEdge(touched.x, touched.y)) {
-							battleManager.setGridLimitNum(getWeaponHitboxSize());
-						} else {
-							battleManager.setGridLimitNum(1);
-						}
-					}
-				}
-				return true;
-			}
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		super.touchDown(screenX, screenY, pointer, button);
+		if (battleManager.isShowGrid()) {
+			end = (new Vector2(touched.x, touched.y));
+			if (battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
+				start = (new Vector2(touched.x, touched.y));
+				battleManager.getGridHitbox().setStartPosition(touched.x, touched.y);
+				battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
 
-			@Override
-			public void touchDragged(InputEvent event, float x, float y, int pointer) {
-				if (battleManager.isShowGrid()) {
-					end = (new Vector2(touched.x, touched.y));
-					if (!battleManager.isSkill()) {
-						battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
-					} else {
-						if (battleManager.getGridHitbox().getHitboxCenter() == null) {
-							Gdx.app.log(TAG, "skill limit num: " + battleManager.getGridLimitNum());
-							battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
-						} else {
-							battleManager.getGridHitbox().showFixedTilesAt(touched.x, touched.y);
-						}
-					}
+				if (battleManager.getGridHitbox().isInsideEdge(touched.x, touched.y)) {
+					battleManager.setGridLimitNum(getWeaponHitboxSize());
+				} else {
+					battleManager.setGridLimitNum(1);
 				}
 			}
+		}
+		return true;
+	}
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
-					if (!battleManager.isSkill()) {
-						battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster,
-								battleManager.getGridHitbox().getPreviousHitArea());
-					} else {
-						battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster,
-								battleManager.getCurrentSelectedSkill().getSkillPath());
-						battleManager.setSkill(false);
-					}
-					battleManager.setShowGrid(false);
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		super.touchDragged(screenX, screenY, pointer);
+		if (battleManager.isShowGrid()) {
+			end = (new Vector2(touched.x, touched.y));
+			if (!battleManager.isSkill()) {
+				battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
+			} else {
+				if (battleManager.getGridHitbox().getHitboxCenter() == null) {
+					Gdx.app.log(TAG, "skill limit num: " + battleManager.getGridLimitNum());
+					battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
+				} else {
+					battleManager.getGridHitbox().showFixedTilesAt(touched.x, touched.y);
 				}
-				resetHitboxState();
 			}
-		});
+		}
+		return true;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		super.touchUp(screenX, screenY, pointer, button);
+		if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
+			if (!battleManager.isSkill()) {
+				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster,
+						battleManager.getGridHitbox().getPreviousHitArea());
+			} else {
+				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster,
+						battleManager.getCurrentSelectedSkill().getSkillPath());
+				battleManager.setSkill(false);
+			}
+			battleManager.setShowGrid(false);
+		}
+		resetHitboxState();
+		return false;
 	}
 
 	private void resetHitboxState() {
