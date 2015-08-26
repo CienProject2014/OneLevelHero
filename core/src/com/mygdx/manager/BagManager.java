@@ -90,7 +90,6 @@ public class BagManager {
 
 	public void removeEquipment(Equipment equipment) {
 		getEquipmentList().remove(equipment);
-		System.out.println(getEquipmentList().equals(equipment));
 	}
 
 	public List<Equipment> getEquipmentList() {

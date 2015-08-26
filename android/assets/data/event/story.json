@@ -5,8 +5,7 @@
         "eventNpc": "prologue",
         "eventNumber": "1"
       }
-    ],   
-
+    ],
     "nextSections": [
       {
         "nextSectionNumber": "102",
@@ -35,7 +34,6 @@
         "eventNumber": "5"
       }
     ],
-    
     "nextSections": [
       {
         "nextSectionNumber": "103",
@@ -204,13 +202,55 @@
     ],
     "nextSections": [
       {
-        "nextSectionNumber": "112",
+        "nextSectionNumber": "113",
         "eventType": "move_node",
         "targetComponent": "cobweb"
       }
     ]
   },
   "112": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "35"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "32"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "33"
+      },
+      {
+        "eventNpc": "prologue",
+        "eventNumber": "34"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "201",
+        "eventType": "select_component",
+        "targetComponent": "카딜라 성"
+      },
+      {
+        "nextSectionNumber": "301",
+        "eventType": "select_component",
+        "targetComponent": "수정 협곡"
+      },
+      {
+        "nextSectionNumber": "401",
+        "eventType": "select_component",
+        "targetComponent": "바이칼 성"
+      },
+      {
+        "nextSectionNumber": "114",
+        "eventType": "select_component",
+        "targetComponent": "레드로즈 성"
+      }
+    ]
+  },
+  "113": {
     "sequencialEvents": [
       {
         "eventNpc": "prologue",
@@ -246,7 +286,6 @@
         "eventType": "select_component",
         "targetComponent": "레드로즈 성"
       }
-      
     ]
   },
   "114": {
@@ -292,7 +331,7 @@
       }
     ]
   },
-  "203":{
+  "203": {
     "sequencialEvents": [
       {
         "eventNpc": "kadilla_story",
@@ -311,7 +350,7 @@
       }
     ]
   },
-  "204":{
+  "204": {
     "sequencialEvents": [
       {
         "eventNpc": "kadilla_story",
@@ -330,7 +369,7 @@
       }
     ]
   },
-  "205":{
+  "205": {
     "sequencialEvents": [
       {
         "eventNpc": "kadilla_story",
@@ -349,7 +388,7 @@
       }
     ]
   },
-   "206":{
+  "206": {
     "sequencialEvents": [
       {
         "eventNpc": "kadilla_story",
@@ -367,6 +406,988 @@
         "targetComponent": "kadilla_castle_duke_castle"
       }
     ]
+  },
+  "207": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "12"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "13"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "208",
+        "eventType": "move_sub_node",
+        "targetComponent": "kadilla_castle_square"
+      }
+    ]
+  },
+  "208": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "15"
+      }
+    ],
+    "conditionalEvents": [
+      {
+        "eventNpc": "plecha",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": []
+  },
+  "209": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "16"
+      }
+    ],
+    "conditionalEvents": [
+      {
+        "eventNpc": "mea",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "210",
+        "eventType": "move_node_by_time",
+        "targetComponent": "caravanserai",
+        "targetTime": {
+          "startTime": "18",
+          "endTime": "22"
+        }
+      },
+      {
+        "nextSectionNumber": "211",
+        "eventType": "move_node",
+        "targetComponent": "southcape"
+      }
+    ]
+  },
+  "210": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "17"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "18"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "211",
+        "eventType": "move_node",
+        "targetComponent": "southcape"
+      }
+    ]
+  },
+  "211": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "20"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "21"
+      }
+    ],
+    "conditionalEvents": [
+      {
+        "eventNpc": "mea",
+        "eventNumber": "3"
+      }
+    ],
+    "nextSections": []
+  },
+  "212": {
+    "sequencialEvents": [],
+    "nextSections": [
+      {
+        "nextSectionNumber": "213",
+        "eventType": "move_sub_node",
+        "targetComponent": "southcape_bar"
+      }
+    ]
+  },
+  "213": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "23"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "24"
+      }
+    ],
+    "conditionalEvents": [
+      {
+        "eventNpc": "sailor_01",
+        "eventNumber": "2"
+      },
+      {
+        "eventNpc": "sailor_02",
+        "eventNumber": "2"
+      },
+      {
+        "eventNpc": "sailor_03",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "214",
+        "eventType": "collect_event",
+        "targetComponent": "sailor"
+      }
+    ]
+  },
+  "214": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "26"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "27"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "215",
+        "eventType": "move_node",
+        "targetComponent": "southcape"
+      }
+    ]
+  },
+  "215": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "29"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "27"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "216",
+        "eventType": "move_sub_node",
+        "targetComponent": "southcape_dock"
+      }
+    ]
+  },
+  "216": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "31"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "32"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "33"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "34"
+      }
+    ],
+    "conditionalEvents": [
+      {
+        "eventNpc": "resident_southcape_01",
+        "eventNumber": "2"
+      },
+      {
+        "eventNpc": "resident_southcape_02",
+        "eventNumber": "2"
+      },
+      {
+        "eventNpc": "resident_southcape_03",
+        "eventNumber": "2"
+      },
+      {
+        "eventNpc": "resident_southcape_04",
+        "eventNumber": "2"
+      },
+      {
+        "eventNpc": "resident_southcape_05",
+        "eventNumber": "2"
+      },
+      {
+        "eventNpc": "resident_southcape_06",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "217",
+        "eventType": "collect_event",
+        "targetComponent": "resident_southcape"
+      },
+      {
+        "nextSectionNumber": "217",
+        "eventType": "move_node_by_time",
+        "targetComponent": "southcape",
+        "targetTime": {
+          "startTime": "18",
+          "endTime": "4"
+        }
+      }
+    ]
+  },
+  "217": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "36"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "37"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "218",
+        "eventType": "move_sub_node",
+        "targetComponent": "southcape_inn"
+      }
+    ]
+  },
+  "218": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "38"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "39"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "40"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "41"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "219",
+        "eventType": "move_sub_node_by_time_nextday",
+        "targetComponent": "southcape_dock",
+        "targetTime": {
+          "startTime": "0",
+          "endTime": "5"
+        }
+      },
+      {
+        "nextSectionNumber": "220",
+        "eventType": "move_sub_node_by_time_nextday",
+        "targetComponent": "southcape_dock",
+        "targetTime": {
+          "startTime": "5",
+          "endTime": "11"
+        }
+      },
+      {
+        "nextSectionNumber": "221",
+        "eventType": "move_sub_node_by_time_nextday",
+        "targetComponent": "southcape_dock",
+        "targetTime": {
+          "startTime": "11",
+          "endTime": "16"
+        }
+      },
+      {
+        "nextSectionNumber": "222",
+        "eventType": "move_sub_node_by_time_nextday",
+        "targetComponent": "southcape_dock",
+        "targetTime": {
+          "startTime": "16",
+          "endTime": "24"
+        }
+      },
+      {
+        "nextSectionNumber": "222",
+        "eventType": "move_sub_node_after_day_from",
+        "targetComponent": "southcape_dock"
+      }
+    ]
+  },
+  "219": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "43"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "27"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "220",
+        "eventType": "move_sub_node_by_time_nextday",
+        "targetComponent": "southcape_dock",
+        "targetTime": {
+          "startTime": 5,
+          "endTime": 11
+        }
+      },
+      {
+        "nextSectionNumber": "221",
+        "eventType": "move_sub_node_by_time_nextday",
+        "targetComponent": "southcape_dock",
+        "targetTime": {
+          "startTime": 11,
+          "endTime": 16
+        }
+      },
+      {
+        "nextSectionNumber": "222",
+        "eventType": "move_sub_node_by_time_nextday",
+        "targetComponent": "southcape_dock",
+        "targetTime": {
+          "startTime": 16,
+          "endTime": 24
+        }
+      },
+      {
+        "nextSectionNumber": "222",
+        "eventType": "move_sub_node_after_day_from",
+        "targetComponent": "southcape_dock"
+      }
+    ]
+  },
+  "220": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "45"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "46"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "47"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "48"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "223",
+        "eventType": "battle_end",
+        "targetComponent": "fledermause"
+      },
+      {
+        "nextSectionNumber": "232",
+        "eventType": "move_sub_node",
+        "targetComponent": "cave_of_cape_of_tempest_room_01"
+      }
+    ]
+  },
+  "221": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "50"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "46"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "47"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "223",
+        "eventType": "battle_end",
+        "targetComponent": "fledermause"
+      },
+      {
+        "nextSectionNumber": "232",
+        "eventType": "move_sub_node",
+        "targetComponent": "cave_of_cape_of_tempest_room_01"
+      }
+    ]
+  },
+  "222": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "55"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "56"
+      }
+    ],
+    "nextSections": []
+  },
+  "223": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "58"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "224",
+        "eventType": "select_component",
+        "targetComponent": "살려준다."
+      },
+      {
+        "nextSectionNumber": "225",
+        "eventType": "select_component",
+        "targetComponent": "죽인다."
+      }
+    ]
+  },
+  "224": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "60"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "61"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "226",
+        "eventType": "battle_end",
+        "targetComponent": "fledermause"
+      },
+      {
+        "nextSectionNumber": "232",
+        "eventType": "move_sub_node",
+        "targetComponent": "cave_of_cape_of_tempest_room_01"
+      }
+    ]
+  },
+  "225": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "63"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "64"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "223",
+        "eventType": "battle_end",
+        "targetComponent": "fledermause"
+      },
+      {
+        "nextSectionNumber": "232",
+        "eventType": "move_sub_node",
+        "targetComponent": "cave_of_cape_of_tempest_room_01"
+      }
+    ]
+  },
+  "226": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "58"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "227",
+        "eventType": "select_component",
+        "targetComponent": "살려준다."
+      },
+      {
+        "nextSectionNumber": "228",
+        "eventType": "select_component",
+        "targetComponent": "죽인다."
+      }
+    ]
+  },
+  "227": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "65"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "61"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "229",
+        "eventType": "battle_end",
+        "targetComponent": "fledermause"
+      },
+      {
+        "nextSectionNumber": "232",
+        "eventType": "move_sub_node",
+        "targetComponent": "cave_of_cape_of_tempest_room_01"
+      }
+    ]
+  },
+  "228": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "63"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "64"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "226",
+        "eventType": "battle_end",
+        "targetComponent": "fledermause"
+      },
+      {
+        "nextSectionNumber": "232",
+        "eventType": "move_sub_node",
+        "targetComponent": "cave_of_cape_of_tempest_room_01"
+      }
+    ]
+  },
+  "229": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "58"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "230",
+        "eventType": "select_component",
+        "targetComponent": "살려준다."
+      },
+      {
+        "nextSectionNumber": "231",
+        "eventType": "select_component",
+        "targetComponent": "죽인다."
+      }
+    ]
+  },
+  "230": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "68"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "61"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "229",
+        "eventType": "battle_end",
+        "targetComponent": "fledermause"
+      },
+      {
+        "nextSectionNumber": "232",
+        "eventType": "move_sub_node",
+        "targetComponent": "cave_of_cape_of_tempest_room_01"
+      }
+    ]
+  },
+  "231": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "63"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "64"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "229",
+        "eventType": "battle_end",
+        "targetComponent": "fledermause"
+      },
+      {
+        "nextSectionNumber": "232",
+        "eventType": "move_sub_node",
+        "targetComponent": "cave_of_cape_of_tempest_room_01"
+      }
+    ]
+  },
+  "232": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "71"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "72"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "73"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "233",
+        "eventType": "battle_end",
+        "targetComponent": "bortise"
+      }
+    ]
+  },
+  "233": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "74"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "75"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "76"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "234",
+        "eventType": "move_node",
+        "targetComponent": "cape_of_tempest"
+      }
+    ]
+  },
+  "234": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "77"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "78"
+      }
+    ],
+    "conditionalEvents": [
+      {
+        "eventNpc": "captain_jack",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": []
+  },
+  "235": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "79"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "80"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "81"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "201"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "236",
+        "eventType": "move_sub_node",
+        "targetComponent": "kadilla_castle_duke_castle"
+      }
+    ]
+  },
+  "236": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "82"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "83"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "84"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "237",
+        "eventType": "select_component",
+        "targetComponent": "편지를 건낸다."
+      },
+      {
+        "nextSectionNumber": "245",
+        "eventType": "select_component",
+        "targetComponent": "편지를 건내지 않는다."
+      }
+    ]
+  },
+  "237": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "86"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "87"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "88"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "238",
+        "eventType": "move_sub_node_by_time_from",
+        "targetComponent": "kadilla_castle_square"
+      },
+      {
+        "nextSectionNumber": "246",
+        "eventType": "move_sub_node_by_time_from",
+        "targetComponent": "kadilla_castle_square"
+      }
+    ]
+  },
+  "238": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "91"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "92"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "93"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "239",
+        "eventType": "battle_end",
+        "targetComponent": "kadilla_guardian"
+      }
+    ]
+  },
+  "239": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "95"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "96"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "97"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "240",
+        "eventType": "battle_end",
+        "targetComponent": "animal_human"
+      }
+    ]
+  },
+  "240": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "99"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "96"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "93"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "241",
+        "eventType": "battle_end",
+        "targetComponent": "kadilla_guardian"
+      }
+    ]
+  },
+  "241": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "96"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "97"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "242",
+        "eventType": "battle_end",
+        "targetComponent": "animal_human"
+      }
+    ]
+  },
+  "242": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "101"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "102"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "103"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "104"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "243",
+        "eventType": "select_component",
+        "targetComponent": "로어"
+      },
+      {
+        "nextSectionNumber": "244",
+        "eventType": "select_component",
+        "targetComponent": "플레챠"
+      }
+    ]
+  },
+  "243": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "106"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "107"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "108"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "109"
+      }
+    ],
+    "nextSections": []
+  },
+  "244": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "111"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "112"
+      }
+    ],
+    "nextSections": []
+  },
+  "245": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "114"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "115"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "109"
+      }
+    ],
+    "nextSections": []
+  },
+  "246": {
+    "sequencialEvents": [
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "117"
+      },
+      {
+        "eventNpc": "kadilla_story",
+        "eventNumber": "118"
+      }
+    ],
+    "nextSections": []
   },
   "301": {
     "sequencialEvents": [
@@ -600,7 +1621,6 @@
         "eventNumber": "38"
       }
     ],
-    "nextSections": [
-    ]
+    "nextSections": []
   }
 }

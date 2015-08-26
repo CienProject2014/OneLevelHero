@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.CurrentInfo;
-import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.SaveManager;
@@ -35,7 +34,7 @@ public class LoadStage extends BaseOneLevelStage {
 		backButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				screenFactory.show(ScreenEnum.MENU);
+				screenFactory.pop();
 			}
 		});
 		loadButton.addListener(listenerFactory.getLoadListener());

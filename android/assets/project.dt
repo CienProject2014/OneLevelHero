@@ -20,6 +20,46 @@
       "physicsPropertiesVO": {},
       "sceneName": "blackwood_scene"
     },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "blackwood_forest_0door_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "blackwood_forest_1door_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "blackwood_forest_2door_scene"
+    },
+    {
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "blackwood_forest_3door_scene"
+    },
 	 {
 
       "ambientColor": [
