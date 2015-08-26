@@ -22,8 +22,8 @@ public class TextureAssets {
 		FileHandle file = Gdx.files.local("textureMap.json");
 
 		Json json = new Json();
-		filePathMap = JsonParser.parseMap(StringFile.class,
-				Gdx.files.internal("data/load/file_path.json").readString());
+		filePathMap = JsonParser
+				.parseMap(StringFile.class, Gdx.files.internal("data/load/file_path.json").readString());
 
 		animationSheetMap = JsonParser.parseMap(FrameSheet.class,
 				filePathMap.get(JsonEnum.ANIMATION_SHEET_FILE_PATH.toString()).loadFile());
@@ -39,7 +39,11 @@ public class TextureAssets {
 	}
 
 	public FrameSheet getAnimationSheet(String sheetName) {
-		return animationSheetMap.get(sheetName);
+		if (animationSheetMap.containsKey(sheetName)) {
+			return animationSheetMap.get(sheetName);
+		} else {
+			return animationSheetMap.get("attack_swing");
+		}
 	}
 
 	public void directoryTextureMapperRecursive(Map<String, String> map, FileHandle fh) {
