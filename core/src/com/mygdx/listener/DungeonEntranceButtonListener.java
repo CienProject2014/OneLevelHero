@@ -11,6 +11,7 @@ import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.manager.TimeManager;
 
 public class DungeonEntranceButtonListener extends ClickListener {
 	@Autowired
@@ -21,10 +22,13 @@ public class DungeonEntranceButtonListener extends ClickListener {
 	private ScreenFactory screenFactory;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private TimeManager timeManager;
 	private String dungeonPath;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		timeManager.plusMinute(15);
 		positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 		positionManager.setCurrentSubNodeName(dungeonPath);
 		screenFactory.show(ScreenEnum.DUNGEON);
