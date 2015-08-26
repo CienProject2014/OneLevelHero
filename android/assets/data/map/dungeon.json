@@ -432,19 +432,12 @@
       {
         "nodeLabel" : "room",
         "nodePosX": "1",
-        "nodePosY": "3",
-        "dungeonNodeType": "normal",
-        "directionType": "left"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "1",
         "nodePosY": "4",
         "dungeonNodeType": "normal",
         "directionType": "left"
       },
       {
-        "nodeLabel" : "devil_castle_object1",
+        "nodeLabel" : "blackwood_forest_object1",
         "nodePosX": "2",
         "nodePosY": "1",
         "dungeonNodeType": "object",
@@ -469,21 +462,7 @@
         "nodePosX": "2",
         "nodePosY": "4",
         "dungeonNodeType": "normal",
-        "directionType": "crossup"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "2",
-        "nodePosY": "5",
-        "dungeonNodeType": "normal",
-        "directionType": "up"
-      },
-      {
-        "nodeLabel" : "devil_castle_elite1",
-        "nodePosX": "2",
-        "nodePosY": "6",
-        "dungeonNodeType": "elite",
-        "directionType": "crossup"
+        "directionType": "left"
       },
       {
         "nodeLabel" : "room",
@@ -500,7 +479,7 @@
         "directionType": "crossdown"
       },
       {
-        "nodeLabel" : "devil_castle_elite4",
+        "nodeLabel" : "blackwood_forest_elite1",
         "nodePosX": "3",
         "nodePosY": "3",
         "dungeonNodeType": "elite",
@@ -512,209 +491,56 @@
         "nodePosX": "3",
         "nodePosY": "4",
         "dungeonNodeType": "normal",
-        "directionType": "crossup"
+        "directionType": "crossdown"
       },
       {
-        "nodeLabel" : "room",
-        "nodePosX": "3",
-        "nodePosY": "5",
-        "dungeonNodeType": "normal",
-        "directionType": "crossup"
-      },
-      {
-        "nodeLabel" : "devil_castle_object1",
-        "nodePosX": "3",
-        "nodePosY": "6",
-        "dungeonNodeType": "object",
-        "directionType": "left"
-      },
-      {
-        "nodeLabel" : "devil_castle_elite2",
+        "nodeLabel" : "blackwood_forest_elite2",
         "nodePosX": "4",
         "nodePosY": "0",
-        "dungeonNodeType": "normal",
-        "directionType": "left"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "4",
-        "nodePosY": "1",
-        "dungeonNodeType": "normal",
-        "directionType": "left"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "4",
-        "nodePosY": "2",
-        "dungeonNodeType": "normal",
-        "directionType": "up"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "4",
-        "nodePosY": "3",
-        "dungeonNodeType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "4",
-        "nodePosY": "4",
-        "dungeonNodeType": "normal",
-        "directionType": "crossup"
-      },
-      {
-        "nodeLabel" : "devil_castel_object2",
-        "nodePosX": "4",
-        "nodePosY": "5",
-        "dungeonNodeType": "object",
-        "directionType": "up"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "4",
-        "nodePosY": "6",
-        "dungeonNodeType": "normal",
-        "directionType": "left"
-      },
-      {
-        "nodeLabel" : "devil_castle_up1",
-        "nodePosX": "5",
-        "nodePosY": "0",
-        "dungeonNodeType": "up",
-        "directionType": "right"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "5",
-        "nodePosY": "1",
-        "dungeonNodeType": "normal",
-        "directionType": "crossup"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "5",
-        "nodePosY": "2",
-        "dungeonNodeType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "5",
-        "nodePosY": "3",
-        "dungeonNodeType": "normal",
-        "directionType": "left"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "5",
-        "nodePosY": "4",
-        "dungeonNodeType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "5",
-        "nodePosY": "5",
-        "dungeonNodeType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "nodeLabel" : "devil_castle_elite3",
-        "nodePosX": "5",
-        "nodePosY": "6",
         "dungeonNodeType": "elite",
-        "directionType": "left"
+        "directionType": "crossdown", 
+        "eliteMonster": "nepel_02"
       },
       {
         "nodeLabel" : "room",
-        "nodePosX": "6",
-        "nodePosY": "0",
-        "dungeonNodeType": "normal",
-        "directionType": "right"
-      },
-      {
-        "nodeLabel" : "devil_castle_up3",
-        "nodePosX": "6",
-        "nodePosY": "1",
-        "dungeonNodeType": "up",
-        "directionType": "up"
-      },
-      {
-        "nodeLabel" : "devil_castle_up4",
-        "nodePosX": "6",
-        "nodePosY": "2",
-        "dungeonNodeType": "up",
-        "directionType": "up"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "6",
-        "nodePosY": "3",
-        "dungeonNodeType": "normal",
-        "directionType": "left"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "6",
-        "nodePosY": "4",
-        "dungeonNodeType": "normal",
-        "directionType": "up"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "6",
-        "nodePosY": "5",
-        "dungeonNodeType": "normal",
-        "directionType": "crossup"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "6",
-        "nodePosY": "6",
-        "dungeonNodeType": "normal",
-        "directionType": "left"
-      },
-      {
-        "nodeLabel" : "room",
-        "nodePosX": "7",
+        "nodePosX": "4",
         "nodePosY": "1",
         "dungeonNodeType": "normal",
-        "directionType": "down"
+        "directionType": "left"
       },
       {
         "nodeLabel" : "room",
-        "nodePosX": "7",
+        "nodePosX": "4",
         "nodePosY": "2",
         "dungeonNodeType": "normal",
         "directionType": "down"
       },
       {
         "nodeLabel" : "room",
-        "nodePosX": "7",
+        "nodePosX": "4",
         "nodePosY": "3",
         "dungeonNodeType": "normal",
-        "directionType": "crossup"
+        "directionType": "crossdown"
       },
       {
         "nodeLabel" : "room",
-        "nodePosX": "7",
+        "nodePosX": "4",
         "nodePosY": "4",
         "dungeonNodeType": "normal",
-        "directionType": "up"
+        "directionType": "down"
       },
       {
-        "nodeLabel" : "devil_castle_object3",
-        "nodePosX": "7",
-        "nodePosY": "5",
-        "dungeonNodeType": "object",
+        "nodeLabel" : "room",
+        "nodePosX": "5",
+        "nodePosY": "1",
+        "dungeonNodeType": "normal",
         "directionType": "left"
       },
       {
-        "nodeLabel" : "devil_castle_up2",
-        "nodePosX": "7",
-        "nodePosY": "6",
-        "dungeonNodeType": "up",
+        "nodeLabel" : "room",
+        "nodePosX": "5",
+        "nodePosY": "3",
+        "dungeonNodeType": "normal",
         "directionType": "left"
       }
     ],
@@ -728,84 +554,72 @@
         "to": "2"
       },
       {
-        "from": "0",
-        "to": "3"
+        "from": "1",
+        "to": "4"
       },
       {
         "from": "1",
         "to": "5"
       },
       {
-        "from": "1",
+        "from": "2",
         "to": "6"
       },
       {
-        "from": "3",
+        "from": "4",
+        "to": "3"
+      },
+      {
+        "from": "4",
         "to": "7"
       },
       {
+        "from": "4",
+        "to": "8"
+      },
+      {
         "from": "5",
-        "to": "4"
+        "to": "8"
       },
       {
         "from": "5",
         "to": "10"
       },
       {
-        "from": "5",
+        "from": "7",
         "to": "11"
-      },
-      {
-        "from": "6",
-        "to": "11"
-      },
-      {
-        "from": "6",
-        "to": "13"
       },
       {
         "from": "7",
-        "to": "8"
+        "to": "12"
       },
       {
         "from": "8",
-        "to": "9"
+        "to": "12"
       },
       {
         "from": "9",
-        "to": "15"
-      },
-      {
-        "from": "10",
-        "to": "16"
-      },
-      {
-        "from": "10",
-        "to": "17"
-      },
-      {
-        "from": "10",
-        "to": "18"
-      },
-      {
-        "from": "11",
-        "to": "17"
-      },
-      {
-        "from": "12",
-        "to": "19"
-      },
-      {
-        "from": "13",
-        "to": "19"
-      },
-      {
-        "from": "13",
         "to": "14"
       },
       {
+        "from": "10",
+        "to": "14"
+      },
+      {
+        "from": "15",
+        "to": "14"
+      },
+      {
+        "from": "12",
+        "to": "16"
+      },
+      {
         "from": "14",
-        "to": "22"
+        "to": "13"
+      },
+      {
+        "from": "14",
+        "to": "17"
       }
     ]
   }

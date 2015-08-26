@@ -26,7 +26,7 @@ public class DungeonManager {
 	}
 
 	public void setIsOn() {
-		isOn = new boolean[mapInfo.getMapWidth()][mapInfo.getMapHeight()];
+		isOn = new boolean[mapInfo.getMapHeight()][mapInfo.getMapWidth()];
 	}
 	public void turnIsOn(int x, int y) {
 

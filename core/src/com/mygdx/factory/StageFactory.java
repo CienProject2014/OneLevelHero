@@ -102,6 +102,7 @@ public class StageFactory {
 			default :
 				Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
 				return context.getBean(VillageStage.class).makeStage(); // FIXME
+
 		}
 	}
 
