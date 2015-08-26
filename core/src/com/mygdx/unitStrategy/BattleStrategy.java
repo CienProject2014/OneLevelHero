@@ -9,4 +9,6 @@ public interface BattleStrategy {
 	public void attack(Unit attacker, Unit defender, int[][] hitArea);
 
 	public void skill(Unit attacker, ArrayList<Unit> targetList, Skill skill);
+
+	public void runBuffEffect(Unit defender);
 }

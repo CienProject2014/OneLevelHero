@@ -3,6 +3,7 @@ package com.mygdx.manager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Random;
 
@@ -23,6 +24,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.SkillTargetEnum;
 import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ScreenFactory;
+import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.model.item.Item;
 import com.mygdx.model.unit.Hero;
@@ -236,7 +238,12 @@ public class BattleManager {
 		unit.setGauge(unit.getGauge() - costGague);
 		timeManager.setPreTime(costGague * TIME_FLOW_RATE);
 		timeManager.plusSecond(costGague * TIME_FLOW_RATE);
+
 		healGague();
+
+		for (Unit buffUnit : getUnits()) {
+			buffUnit.getBattleStrategy().runBuffEffect(buffUnit);
+		}
 	}
 
 	public void FuckingCostGague(Unit unit, int typeOfAction) {
@@ -587,6 +594,10 @@ public class BattleManager {
 
 	public void setCurrentSelectedItem(Item currentSelectedItem) {
 		battleInfo.setCurrentSelectedItem(currentSelectedItem);
+	}
+
+	public List<Buff> getMonsterBuffList() {
+		return getSelectedMonster().getBuffList();
 	}
 
 }
