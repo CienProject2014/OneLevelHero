@@ -7,7 +7,9 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.enums.JsonEnum;
+import com.mygdx.enums.TextureEnum;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.model.jsonModel.StringFile;
 import com.mygdx.util.JsonParser;
@@ -64,6 +66,8 @@ public class Assets {
 		worldNodeAssets.set(jsonStringMap);
 		constantsAssets.set(jsonStringMap);
 		textureAssets.loadTexture();
+		assetsManager.load(textureAssets.getTexturePath(TextureEnum.BUST + "_" + "default" + "_" + "01"),
+				Texture.class);
 		assetsManager.loadOverlapResources();
 
 	}

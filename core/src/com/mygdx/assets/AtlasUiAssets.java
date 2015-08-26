@@ -26,9 +26,11 @@ public class AtlasUiAssets implements FileAssetsInitializable {
 		for (AtlasUiFile atlasUiFile : atlasUiFileList) {
 			for (String element : atlasUiFile.getElement()) {
 				atlasUiMap.put(element, atlasUiFile.loadFile());
-				assetsManager.load(atlasUiMap.get(element), TextureAtlas.class);
+				// assetsManager.load(atlasUiMap.get(element),
+				// TextureAtlas.class);
 			}
 		}
+
 		assetsManager.load("orig" + File.separator + "skill_" + "pack.atlas", TextureAtlas.class);
 		assetsManager.load("orig" + File.separator + "save_" + "pack.atlas", TextureAtlas.class);
 		assetsManager.load("orig" + File.separator + "load_" + "pack.atlas", TextureAtlas.class);
@@ -36,6 +38,8 @@ public class AtlasUiAssets implements FileAssetsInitializable {
 	}
 
 	public TextureAtlas getAtlasRegionFile(String atlasUiFileString) {
+		assetsManager.load(atlasUiMap.get(atlasUiFileString), TextureAtlas.class);
+		assetsManager.finishLoading();
 		return assetsManager.get(atlasUiMap.get(atlasUiFileString), TextureAtlas.class);
 
 	}
