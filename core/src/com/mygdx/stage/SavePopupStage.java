@@ -87,26 +87,18 @@ public class SavePopupStage extends BaseOverlapStage {
 		Array<String> placeLabels = sceneConstants.get(PLACE_LABEL);
 		Array<String> saveVerions = sceneConstants.get(SAVE_VERSION);
 		
-		Kryo kryo = new Kryo();
-		kryo.register(SaveInfo.class);
-
 		for (int i = 0; i < SAVE_SIZE; i++) {
 			LabelItem subjectLabel = sceneLoader.getRoot().getLabelById(subjectLabels.get(i));
 			LabelItem gameTimeLabel = sceneLoader.getRoot().getLabelById(gameTimeLabels.get(i));
 			LabelItem saveTimeLabel = sceneLoader.getRoot().getLabelById(saveTimeLabels.get(i));
 			LabelItem placeLabel = sceneLoader.getRoot().getLabelById(placeLabels.get(i));
 			if (saveManager.isLoadable(SaveVersion.findSaveByName(saveVerions.get(i)))) {
-				FileHandle handle = Gdx.files.local("save/" + SaveVersion.findSaveByName(saveVerions.get(i)) + ".json");
-				try {
-					Input input = new Input(new FileInputStream(handle.file()));
-					SaveInfo svInfo = kryo.readObject(input, SaveInfo.class);
-					subjectLabel.setText(svInfo.getStoryName());
-					gameTimeLabel.setText(svInfo.getGameTime());
-					placeLabel.setText(svInfo.getSavePlace());
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				}
-				saveTimeLabel.setText(new SimpleDateFormat("yyyy년 MM월dd일 HH:mm에 저장").format(new Date(handle.lastModified())));
+				SaveInfo svInfo = saveManager.readSaveInfo(SaveVersion.findSaveByName(saveVerions.get(i)));
+				subjectLabel.setText(svInfo.getStoryName());
+				gameTimeLabel.setText(svInfo.getGameTime());
+				placeLabel.setText(svInfo.getSavePlace());
+				saveTimeLabel.setText(svInfo.getSaveTime());
+				
 				setLabelStyle(subjectLabel);
 				setLabelStyle(gameTimeLabel);
 				setLabelStyle(saveTimeLabel);
