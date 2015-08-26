@@ -70,8 +70,9 @@ public class ChatEventStage extends BaseOneLevelStage {
 					if (eventSceneIterator.hasNext()) {
 						setScene(eventSceneIterator.next());
 					} else {
-						if (!eventCheckManager.isSelectEvent(eventManager.getCurrentNpcEvent())) {
-							rewardManager.doReward(); // 보상이 있을경우 보상실행
+						if (!eventCheckManager.isSelectEvent(eventManager.getCurrentElementEvent())) {
+							rewardManager.doRewards(); // 보상이 있을경우 보상실행
+							rewardManager.clearRewards();
 							eventManager.finishNpcEvent();
 							storySectionManager.runStorySequence();
 						}
@@ -82,7 +83,6 @@ public class ChatEventStage extends BaseOneLevelStage {
 		}
 		return this;
 	}
-
 	public Stage makeStage(EventScene eventScene) {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
@@ -113,7 +113,7 @@ public class ChatEventStage extends BaseOneLevelStage {
 		skipButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				rewardManager.doReward(); // 보상이 있을경우 보상실행
+				rewardManager.doRewards(); // 보상이 있을경우 보상실행
 				eventManager.finishNpcEvent();
 				storySectionManager.runStorySequence();
 			}
@@ -124,8 +124,8 @@ public class ChatEventStage extends BaseOneLevelStage {
 
 	private void makeChatTable(EventScene eventScene) {
 		backgroundImage = new Image(textureManager.getBackgroundTexture(eventScene.getBackgroundPath()));
-		characterImage = new Image(
-				textureManager.getBustTexture(eventScene.getCharacterPath(), eventScene.getFaceNumber()));
+		characterImage = new Image(textureManager.getBustTexture(eventScene.getCharacterPath(),
+				eventScene.getFaceNumber()));
 
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();

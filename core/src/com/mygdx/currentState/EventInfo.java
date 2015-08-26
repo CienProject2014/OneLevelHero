@@ -21,6 +21,7 @@ public class EventInfo {
 	private Map<String, NPC> npcMap;
 	private Map<String, GameObject> gameObjectMap;
 	private EventElementEnum currentEventElementType;
+	private EventPacket currentStoryEventInfo;
 	private EventPacket currentSpecialEventInfo;
 	private EventPacket currentNpcEventInfo;
 	private GameObject currentGameObject;
@@ -40,6 +41,10 @@ public class EventInfo {
 
 	public NPC getNpc(String npcString) {
 		return npcMap.get(npcString);
+	}
+
+	public Event getStoryEvent(String npcString, int eventNumber) {
+		return getNpc(npcString).getEvent(eventNumber);
 	}
 
 	public Event getNpcEvent(String npcString, int eventNumber) {
@@ -110,5 +115,13 @@ public class EventInfo {
 
 	public void setCurrentSpecialEventInfo(EventPacket currentSpecialEventInfo) {
 		this.currentSpecialEventInfo = currentSpecialEventInfo;
+	}
+
+	public EventPacket getCurrentStoryEventInfo() {
+		return currentStoryEventInfo;
+	}
+
+	public void setCurrentStoryEventInfo(EventPacket currentStoryEventInfo) {
+		this.currentStoryEventInfo = currentStoryEventInfo;
 	}
 }

@@ -1,5 +1,6 @@
 package com.mygdx.manager;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,16 +56,7 @@ public class RewardManager {
 		getRewards().add(rewardInfo);
 	}
 
-	// (1)에서 뺀후 (2)의 큐에 집어넣는다.
-	public void clearReward(Reward reward) {
-		if (!reward.getRewardState().equals(RewardStateEnum.ALWAYS_OPEN)) {
-			reward.setRewardState(RewardStateEnum.CLEARED);
-			getRewards().remove(reward);
-			getAchievedRewards().add(reward);
-		}
-	}
-
-	public void doReward() {
+	public void doRewards() {
 		if (!getRewards().isEmpty()) {
 			for (int i = 0; i < getRewards().size(); i++) {
 				Reward peekedReward = getRewards().get(i);
@@ -72,6 +64,9 @@ public class RewardManager {
 					case EXPERIENCE :
 						break;
 					case GOLD :
+						break;
+					case ITEM_CLOTHES :
+						bagManager.possessItem(ItemEnum.CLOTHES, peekedReward.getRewardComponent().get(0));
 						break;
 					case ITEM_HANDGRIP :
 						bagManager.possessItem(ItemEnum.HANDGRIP, peekedReward.getRewardComponent().get(0));
@@ -104,7 +99,6 @@ public class RewardManager {
 					default :
 						break;
 				}
-				clearReward(peekedReward);
 			}
 		}
 	}
@@ -122,6 +116,20 @@ public class RewardManager {
 				return rewardInfo.getRewardComponent().get(0) + "이 파티에 합류하였습니다.";
 			default :
 				return "보상 없음";
+		}
+	}
+
+	public void clearRewards() {
+		if (!getRewards().isEmpty()) {
+			Iterator<Reward> iterator = getRewards().iterator();
+			while (iterator.hasNext()) {
+				Reward reward = iterator.next();
+				if (!reward.getRewardState().equals(RewardStateEnum.ALWAYS_OPEN)) {
+					reward.setRewardState(RewardStateEnum.CLEARED);
+					getRewards().remove(reward);
+					getAchievedRewards().add(reward);
+				}
+			}
 		}
 	}
 

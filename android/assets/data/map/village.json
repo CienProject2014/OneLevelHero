@@ -34,7 +34,7 @@
         }
       },
       "blackwood_inn": {
-        "buildingName": "여관",
+        "buildingName": "블랙우드 여관",
         "buildingType": "inn",
         "buildingPath": "blackwood_inn",
         "targetTime": {
@@ -112,7 +112,7 @@
         }
       },
       "cobweb_inn": {
-        "buildingName": "여관",
+        "buildingName": "콥웨브 여관",
         "buildingType": "inn",
         "buildingPath": "cobweb_inn",
         "isOverlapScene": true,
@@ -208,7 +208,7 @@
         }
       },
       "kadilla_castle_inn": {
-        "buildingName": "여관",
+        "buildingName": "카딜라 여관",
         "buildingType": "inn",
         "buildingPath": "blackwood_inn",
          "buildingNpc": [
@@ -398,7 +398,7 @@
     },
     "building": {
       "mirage_port_inn": {
-        "buildingName": "여관",
+        "buildingName": "미라지 포트 여관",
         "buildingType": "inn",
         "buildingPath": "blackwood_inn",
         "targetTime": {
@@ -486,7 +486,7 @@
         }
       },
       "middle_ridge_inn": {
-        "buildingName": "여관",
+        "buildingName": "미들릿지 여관",
         "buildingType": "inn",
         "buildingPath": "blackwood_inn",
         "targetTime": {
@@ -593,7 +593,7 @@
         }
       },
       "southcape_inn": {
-        "buildingName": "여관",
+        "buildingName": "사우스케이프 여관",
         "buildingType": "inn",
         "buildingPath": "blackwood_inn",
         "targetTime": {

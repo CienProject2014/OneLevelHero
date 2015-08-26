@@ -11,17 +11,110 @@
     "category": "장신구",
     "grade": "일반",
     "effectStatus": {},
-       "effectStatusList" : [],
-    "description": "활력을 줄 것 같은 붉은 가넷 팬던트이다."
+    "effectStatusList" : [],
+    "description": "전투 시 1분 당 체력 1 회., 활력을 줄 것 같은 붉은 가넷 팬던트이다."
   },
   "sapphire_pendant": {
-    "itemPath" : "sapphire_pendant",
     "itemType" : "accessory",
     "name": "사파이어 팬던트",
+    "itemPath" : "sapphire_pendantt",
     "category": "장신구",
     "grade": "일반",
     "effectStatusList" : [],
     "effectStatus": {},
-    "description": "빛나는 사파이어가 중심에 박혀 있는 목걸이."
+    "description": "마법 사용 시(캐스팅 제외) 10% 확률로 체력이 10 회복된다. 빛나는 사파이어가 중심에 박혀 있는 목걸이."
+  },
+  "exp_pendant": {
+    "itemType" : "accessory",
+    "name": "경험의 팬던트",
+    "itemPath" : "exp_pendant",
+    "category": "장신구",
+    "grade": "일반",
+    "effectStatusList" : [],
+    "effectStatus": {},
+    "description": "전투 경험치 획득량 10% 증가. 경험은 값진 보물이다."
+  },
+  "speedy_pendant": {
+    "itemType" : "accessory",
+    "name": "신속의 팬던트",
+    "itemPath" : "speedy_pendant",
+    "category": "장신구",
+    "grade": "레어",
+    "effectStatusList" : ["speed"],
+    "effectStatus": {
+      "speed":20
+    },
+    "description": "필드맵 이동 시간 5분 단축. 이동 속도를 올려준다."
+  },
+  "silver_pentant": {
+    "itemType" : "accessory",
+    "name": "은 목걸이",
+    "itemPath" : "silver_pentant",
+    "category": "장신구",
+    "grade": "레어",
+    "effectStatusList" : ["magicDefense"],
+    "effectStatus": {
+      "magicDefense":10
+    },
+    "description": "일반 몬스터 조우 확률 10% 하락. 은의 신성한 힘으로 몬스터들이 접근하지 못하게 한다."
+  },
+  "teeth_of_dog_bundle": {
+    "itemType" : "accessory",
+    "name": "사냥개 이빨묶음",
+    "itemPath" : "teeth_of_dog_bundle",
+    "category": "장신구",
+    "grade": "레어",
+    "effectStatusList" : ["attack"],
+    "effectStatus": {
+      "attack":10
+    },
+    "description": "기본 공격 데미지를 10% 증가시킨다. 개들의 영혼이 나를 둘러싸는 느낌이다."
+  },
+  "chrysoberyl_pendant": {
+    "itemType" : "accessory",
+    "name": "금록석 팬던트",
+    "itemPath" : "chrysoberyl_pendant",
+    "category": "장신구",
+    "grade": "유니크",
+    "effectStatusList" : ["magicDefense"],
+    "effectStatus": {
+      "magicDefense":10
+    },
+    "description": "자신에게 걸리는 디버프의 지속시간을 50% 감소시킨다. 금록석은 첫번째 고양이계 수인의 눈이라는 전설이 있다."
+  },
+  "necklace_of_nepel": {
+    "itemType" : "accessory",
+    "name": "네펠의 목걸이",
+    "itemPath" : "necklace_of_nepel",
+    "category": "장신구",
+    "grade": "유니크",
+    "effectStatusList" : ["magicAttack"],
+    "effectStatus": {
+      "magicAttack":20
+    },
+    "description": "주문력을 20% 증가시킨다. 네펠이 매고 있던 목걸이다."
+  },
+  "black_diamond": {
+    "itemType" : "accessory",
+    "name": "블랙 다이아몬드 장식",
+    "itemPath" : "black_diamond",
+    "category": "장신구",
+    "grade": "유니크",
+    "effectStatusList" : ["attack"],
+    "effectStatus": {
+      "attack":10
+    },
+    "description": "공격 시 10% 확률로 적의 방어력을 무시한다. 빨려들어갈 듯한 반짝임을 지닌 검은 다이아 반지."
+  },
+  "keep_pendant": {
+    "itemType" : "accessory",
+    "name": "유지의 팬던트",
+    "itemPath" : "keep_pendant",
+    "category": "장신구",
+    "grade": "레전드",
+    "effectStatusList" : [],
+    "effectStatus": {
+    },
+    "description": "경험치가 증가/감소하지 않는다. 상태이상에 걸리지 않는다. 카딜라가 티타니아 반도를 정복할 때 착용했던 팬던트. 신성한 기운을 내뿜고 있다."
   }
 }

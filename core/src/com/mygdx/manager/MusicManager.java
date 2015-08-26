@@ -58,35 +58,35 @@ public class MusicManager {
 
 	public void setMusicAndPlay(Music music, float volume, MusicCondition musicCondition) {
 		switch (musicCondition) {
-		case WHENEVER:
-			int delayTime = 2000;
-			if (checkCurrentMusicIsNotNull()) {
-				if (!checkIsSameWithCurrentMusic(music)) {
-					stopMusic();
-					Timer.schedule(new Task() {
-						@Override
-						public void run() {
-						}
-					}, delayTime);
+			case WHENEVER :
+				int delayTime = 2000;
+				if (checkCurrentMusicIsNotNull()) {
+					if (!checkIsSameWithCurrentMusic(music)) {
+						stopMusic();
+						Timer.schedule(new Task() {
+							@Override
+							public void run() {
+							}
+						}, delayTime);
+						setMusic(music);
+						playMusic();
+					}
+				} else {
 					setMusic(music);
 					playMusic();
 				}
-			} else {
-				setMusic(music);
-				playMusic();
-			}
-			break;
-		case IF_IS_NOT_PLAYING:
-			if (checkCurrentMusicIsNotNull()) {
-				if (checkCurrentMusicIsPlaying())
-					return;
-			} else {
-				setMusic(music);
-				playMusic();
-			}
-			break;
-		default:
-			Gdx.app.error("MusicManager", "incorrect musicCondition");
+				break;
+			case IF_IS_NOT_PLAYING :
+				if (checkCurrentMusicIsNotNull()) {
+					if (checkCurrentMusicIsPlaying())
+						return;
+				} else {
+					setMusic(music);
+					playMusic();
+				}
+				break;
+			default :
+				Gdx.app.error("MusicManager", "incorrect musicCondition");
 		}
 	}
 
@@ -137,7 +137,7 @@ public class MusicManager {
 	}
 
 	public void setEventMusicAndPlay() {
-		EventPacket eventPacket = eventManager.getCurrentNpcEventPacket();
+		EventPacket eventPacket = eventManager.getCurrentElementEventPacket();
 		String code = eventPacket.getEventNpc() + "_" + eventPacket.getEventNumber();
 		Music music = musicAssets.getEventMusic(code);
 		setMusicAndPlay(music);

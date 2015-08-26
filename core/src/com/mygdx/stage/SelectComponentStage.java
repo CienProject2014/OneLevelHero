@@ -54,13 +54,12 @@ public class SelectComponentStage extends BaseOneLevelStage {
 		super.makeStage();
 		chatButtons = new ArrayList<TextButton>(MAX_EVENT_LENGTH);
 		chatStyles = new ArrayList<TextButtonStyle>();
-		eventSize = eventManager.getCurrentNpcEvent().getEventComponent().size();
+		eventSize = eventManager.getCurrentElementEvent().getEventComponent().size();
 		showEventButton();
 		setSize();
 		setButtonPosition();
 		addActors();
 		addListener();
-		setexitButton();
 
 		return this;
 	}
@@ -77,10 +76,6 @@ public class SelectComponentStage extends BaseOneLevelStage {
 		for (int i = 0; i < eventSize; i++)
 			chatButtons.get(i).setPosition(buttonPosition[i][0], buttonPosition[i][1]);
 	}
-
-	private void setexitButton() {
-	}
-
 	private void setSize() {
 		final float buttonSize[] = {StaticAssets.BASE_WINDOW_WIDTH * 0.208f, StaticAssets.BASE_WINDOW_HEIGHT * 0.185f};
 		for (TextButton chatButton : chatButtons)
@@ -91,7 +86,7 @@ public class SelectComponentStage extends BaseOneLevelStage {
 		for (int i = 0; i < eventSize; i++) {
 			chatStyles.add(new TextButtonStyle(uiComponentAssets.getEventButton(), uiComponentAssets.getEventButton(),
 					uiComponentAssets.getEventButton(), uiComponentAssets.getFont()));
-			chatButtons.add(new TextButton(eventManager.getCurrentNpcEvent().getEventComponent().get(i), chatStyles
+			chatButtons.add(new TextButton(eventManager.getCurrentElementEvent().getEventComponent().get(i), chatStyles
 					.get(i)));
 		}
 	}

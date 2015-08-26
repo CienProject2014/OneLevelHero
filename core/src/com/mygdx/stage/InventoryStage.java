@@ -136,12 +136,12 @@ public class InventoryStage extends BaseOverlapStage {
 		unEquipButtonList = new ArrayList<>(6);
 		dropButtonList = new ArrayList<>(6);
 		for (int i = 0; i < ITEM_SLOT_SIZE; i++) {
-			CompositeItem equipButton = sceneLoader.getRoot()
-					.getCompositeById(sceneConstants.get("equip_button").get(i));
+			CompositeItem equipButton = sceneLoader.getRoot().getCompositeById(
+					sceneConstants.get("equip_button").get(i));
 			equipButton.setVisible(false);
 			equipButtonList.add(equipButton);
-			CompositeItem unEquipButton = sceneLoader.getRoot()
-					.getCompositeById(sceneConstants.get("unequip_button").get(i));
+			CompositeItem unEquipButton = sceneLoader.getRoot().getCompositeById(
+					sceneConstants.get("unequip_button").get(i));
 			unEquipButton.setVisible(false);
 			unEquipButtonList.add(unEquipButton);
 			CompositeItem dropButton = sceneLoader.getRoot().getCompositeById(sceneConstants.get("drop_button").get(i));
@@ -315,21 +315,21 @@ public class InventoryStage extends BaseOverlapStage {
 		CompositeItem consumablesTag = sceneLoader.getRoot().getCompositeById("use_tag");
 		CompositeItem etcItemTag = sceneLoader.getRoot().getCompositeById("etc_tag");
 		switch (inventoryState) {
-		case EQUIPMENT:
-			setCompositeItemVisibilty(equipTag, PRESSED_VISIBILTY);
-			setCompositeItemVisibilty(consumablesTag, DEFAULT_VISIBILTY);
-			setCompositeItemVisibilty(etcItemTag, DEFAULT_VISIBILTY);
-			break;
-		case CONSUMABLES:
-			setCompositeItemVisibilty(equipTag, DEFAULT_VISIBILTY);
-			setCompositeItemVisibilty(consumablesTag, PRESSED_VISIBILTY);
-			setCompositeItemVisibilty(etcItemTag, DEFAULT_VISIBILTY);
-			break;
-		case ETC_ITEM:
-			setCompositeItemVisibilty(equipTag, DEFAULT_VISIBILTY);
-			setCompositeItemVisibilty(consumablesTag, DEFAULT_VISIBILTY);
-			setCompositeItemVisibilty(etcItemTag, PRESSED_VISIBILTY);
-			break;
+			case EQUIPMENT :
+				setCompositeItemVisibilty(equipTag, PRESSED_VISIBILTY);
+				setCompositeItemVisibilty(consumablesTag, DEFAULT_VISIBILTY);
+				setCompositeItemVisibilty(etcItemTag, DEFAULT_VISIBILTY);
+				break;
+			case CONSUMABLES :
+				setCompositeItemVisibilty(equipTag, DEFAULT_VISIBILTY);
+				setCompositeItemVisibilty(consumablesTag, PRESSED_VISIBILTY);
+				setCompositeItemVisibilty(etcItemTag, DEFAULT_VISIBILTY);
+				break;
+			case ETC_ITEM :
+				setCompositeItemVisibilty(equipTag, DEFAULT_VISIBILTY);
+				setCompositeItemVisibilty(consumablesTag, DEFAULT_VISIBILTY);
+				setCompositeItemVisibilty(etcItemTag, PRESSED_VISIBILTY);
+				break;
 		}
 	}
 
@@ -340,15 +340,14 @@ public class InventoryStage extends BaseOverlapStage {
 			final CompositeItem activateLineItem = sceneLoader.getRoot().getCompositeById(activateLineList.get(i));
 			activateLineItem.setLayerVisibilty(PRESSED_VISIBILTY, false);
 			activateLineItem.setLayerVisibilty(DEFAULT_VISIBILTY, true);
-			activateLineItem.setTouchable(Touchable.enabled);
-			;
+			activateLineItem.setTouchable(Touchable.enabled);;
 			activateLineItem.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
 					for (int i = 0; i < ITEM_SLOT_SIZE; i++) {
 						if (itemInfo.get(i) != null) {
-							final CompositeItem activateLineItem = sceneLoader.getRoot()
-									.getCompositeById(activateLineList.get(i));
+							final CompositeItem activateLineItem = sceneLoader.getRoot().getCompositeById(
+									activateLineList.get(i));
 							if (i == focusIndex) {
 								activateLineItem.setLayerVisibilty(PRESSED_VISIBILTY, true);
 								setEquipButton(i, uiComponentAssets, atlasUiAssets, listenerFactory);
@@ -358,8 +357,8 @@ public class InventoryStage extends BaseOverlapStage {
 								setVoidEquipButton(i, itemInfo, uiComponentAssets, atlasUiAssets, listenerFactory);
 							}
 						} else {
-							final CompositeItem activateLineItem = sceneLoader.getRoot()
-									.getCompositeById(activateLineList.get(i));
+							final CompositeItem activateLineItem = sceneLoader.getRoot().getCompositeById(
+									activateLineList.get(i));
 							activateLineItem.setLayerVisibilty(PRESSED_VISIBILTY, false);
 							setVoidEquipButton(i, itemInfo, uiComponentAssets, atlasUiAssets, listenerFactory);
 						}
@@ -527,8 +526,8 @@ public class InventoryStage extends BaseOverlapStage {
 			ImageItem characterStatusImage = compositeItem.getImageById(CHARACTER_IMAGE);
 			if (partyManager.getPartyList().size() > i) {
 				final Hero imageHero = partyManager.getPartyList().get(i);
-				characterStatusImage.setDrawable(new TextureRegionDrawable(
-						new TextureRegion(textureManager.getStatusTexture(imageHero.getFacePath()))));
+				characterStatusImage.setDrawable(new TextureRegionDrawable(new TextureRegion(textureManager
+						.getStatusTexture(imageHero.getFacePath()))));
 				characterStatusImage.setTouchable(Touchable.enabled);
 				characterStatusImage.addListener(new InputListener() {
 					@Override
@@ -560,13 +559,15 @@ public class InventoryStage extends BaseOverlapStage {
 		ImageItem equipPartsLabel = sceneLoader.getRoot().getImageById("character_equip_parts");
 		if (isFirstPage()) {
 			if (index != 4 && index != 5) {
-				itemInfo.put(index, currentSelectedHero.getInventory()
-						.getEquipment(ItemEnum.findItemByType(inventoryList.get(index))));
+				itemInfo.put(
+						index,
+						currentSelectedHero.getInventory().getEquipment(
+								ItemEnum.findItemByType(inventoryList.get(index))));
 				ImageItem imageItem = sceneLoader.getRoot().getImageById(inventoryItemImageList.get(index));
 				String itemPath = currentSelectedHero.getInventory()
 						.getEquipment(ItemEnum.findItemByType(inventoryList.get(index))).getItemPath();
-				imageItem.setDrawable(
-						(new TextureRegionDrawable(new TextureRegion(textureManager.getItemTexture(itemPath)))));
+				imageItem.setDrawable((new TextureRegionDrawable(new TextureRegion(textureManager
+						.getItemTexture(itemPath)))));
 				imageItem.setVisible(true);
 				imageItem.setTouchable(Touchable.disabled);
 				LabelItem labelItem = sceneLoader.getRoot().getLabelById(inventoryLabelList.get(index));
@@ -636,18 +637,22 @@ public class InventoryStage extends BaseOverlapStage {
 		} else {
 			dividedIndex = index % (pageNumber * ITEM_SLOT_SIZE);
 		}
-		itemInfo.put(dividedIndex, bagManager.getEquipmentList().get(index - NUMBER_OF_EQUIPMENT));
-		ImageItem inventoryItemImage = sceneLoader.getRoot().getImageById(inventoryItemImageList.get(dividedIndex));
-		String itemPath = bagManager.getEquipmentList().get(index - NUMBER_OF_EQUIPMENT).getItemPath();
-		inventoryItemImage
-				.setDrawable((new TextureRegionDrawable(new TextureRegion(textureManager.getItemTexture(itemPath)))));
-		inventoryItemImage.setVisible(true);
-		LabelItem labelItem = sceneLoader.getRoot().getLabelById(inventoryLabelList.get(dividedIndex));
-		labelItem.setText(bagManager.getEquipmentList().get(index - NUMBER_OF_EQUIPMENT).getName());
-		labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
-		labelItem.setFontScale(1.0f);
-		labelItem.setVisible(true);
-		labelItem.setTouchable(Touchable.disabled);
+		if (bagManager.getEquipmentList().size() > index - NUMBER_OF_EQUIPMENT) {
+			itemInfo.put(dividedIndex, bagManager.getEquipmentList().get(index - NUMBER_OF_EQUIPMENT));
+			ImageItem inventoryItemImage = sceneLoader.getRoot().getImageById(inventoryItemImageList.get(dividedIndex));
+			String itemPath = bagManager.getEquipmentList().get(index - NUMBER_OF_EQUIPMENT).getItemPath();
+			inventoryItemImage.setDrawable((new TextureRegionDrawable(new TextureRegion(textureManager
+					.getItemTexture(itemPath)))));
+			inventoryItemImage.setVisible(true);
+			LabelItem labelItem = sceneLoader.getRoot().getLabelById(inventoryLabelList.get(dividedIndex));
+			labelItem.setText(bagManager.getEquipmentList().get(index - NUMBER_OF_EQUIPMENT).getName());
+			labelItem.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
+			labelItem.setFontScale(1.0f);
+			labelItem.setVisible(true);
+			labelItem.setTouchable(Touchable.disabled);
+		} else {
+			setVoidItemImageAndLabel(dividedIndex);
+		}
 	}
 
 	private void setTabButton(final ScreenFactory screenFactory, final MovingManager movingManager) {
