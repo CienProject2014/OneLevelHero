@@ -61,9 +61,7 @@ public class MusicManager {
 		case WHENEVER:
 			int delayTime = 2000;
 			if (checkCurrentMusicIsNotNull()) {
-				if (checkIsSameWithCurrentMusic(music)) {
-					// Nothing happened
-				} else {
+				if (!checkIsSameWithCurrentMusic(music)) {
 					stopMusic();
 					Timer.schedule(new Task() {
 						@Override
