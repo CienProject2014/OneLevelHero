@@ -92,8 +92,15 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		StaticAssets.loadAll();
 		assets.initialize();
 
-		musicManager.setMusicVolume(Gdx.app.getPreferences("MusicVolume").getFloat("musicVolume"));
-		soundManager.setSoundVolume(Gdx.app.getPreferences("SoundVolume").getFloat("soundVolume"));
+		if (Gdx.app.getPreferences("MusicVolume").getFloat("musicVolume") == 0.0) {
+			Gdx.app.log("첫 번째", "게임을 처음 깔았습니다");
+			musicManager.setMusicVolume(0.5f);
+			soundManager.setSoundVolume(0.5f);
+		} else {
+			Gdx.app.log("첫 번째", "이미 데이터가 있습니다");
+			musicManager.setMusicVolume(Gdx.app.getPreferences("MusicVolume").getFloat("musicVolume"));
+			soundManager.setSoundVolume(Gdx.app.getPreferences("SoundVolume").getFloat("soundVolume"));
+		}
 		String musicVolume = String.valueOf(musicManager.getMusicVolume());
 		String soundVolume = String.valueOf(soundManager.getSoundVolume());
 		Gdx.app.log("musicVolume", musicVolume);
