@@ -39,6 +39,10 @@ bust_resident_05: {
 	class: java.lang.String,
 	value: texture/character/bust_resident_05.png/
 },
+battle_kentaurous_bow_big: {
+	class: java.lang.String,
+	value: texture/monster/battle_kentaurous_bow_big.png/
+},
 bust_keinwhistern_01: {
 	class: java.lang.String,
 	value: texture/character/bust_keinwhistern_01.png/
@@ -54,6 +58,10 @@ monster_bear: {
 battle_mawang_03_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_mawang_03_small.png/
+},
+battle_kentaurous_bow_small: {
+	class: java.lang.String,
+	value: texture/monster/battle_kentaurous_bow_small.png/
 },
 monster_chilly_ghoul: {
 	class: java.lang.String,
@@ -523,6 +531,10 @@ battle_succubus_junior_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_succubus_junior_big.png/
 },
+monster_cyclops: {
+	class: java.lang.String,
+	value: texture/monster/monster_cyclops.png/
+},
 monster_golem_forest: {
 	class: java.lang.String,
 	value: texture/monster/monster_golem_forest.png/
@@ -799,6 +811,10 @@ buff_en_fly: {
 	class: java.lang.String,
 	value: texture/icon/buff_en_fly.png/
 },
+battle_cyclops_big: {
+	class: java.lang.String,
+	value: texture/monster/battle_cyclops_big.png/
+},
 item_twohandedsword: {
 	class: java.lang.String,
 	value: texture/icon/item_twohandedsword.png/
@@ -926,10 +942,6 @@ bust_farmer_01: {
 battle_chromat_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_chromat_big.png/
-},
-battle_cyclops-_big: {
-	class: java.lang.String,
-	value: texture/monster/battle_cyclops-_big.png/
 },
 cien_logo: {
 	class: java.lang.String,
@@ -1307,10 +1319,6 @@ bg_kadilla_castle_school: {
 	class: java.lang.String,
 	value: texture/background/bg_kadilla_castle_school.png/
 },
-battle_cyclops-_small: {
-	class: java.lang.String,
-	value: texture/monster/battle_cyclops-_small.png/
-},
 monster_bandit: {
 	class: java.lang.String,
 	value: texture/monster/monster_bandit.png/
@@ -1415,10 +1423,6 @@ bg_mountain_titania_04: {
 	class: java.lang.String,
 	value: texture/background/bg_mountain_titania_04.png/
 },
-"monster_cyclops ": {
-	class: java.lang.String,
-	value: "texture/monster/monster_cyclops .png/"
-},
 battle_rabbit_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_rabbit_big.png/
@@ -1430,10 +1434,6 @@ bg_prog_team_01: {
 monster_yurath: {
 	class: java.lang.String,
 	value: texture/monster/monster_yurath.png/
-},
-monster_cyclops-: {
-	class: java.lang.String,
-	value: texture/monster/monster_cyclops-.png/
 },
 bg_mountain_titania_05: {
 	class: java.lang.String,
@@ -2015,6 +2015,10 @@ bg_tutorial_10: {
 	class: java.lang.String,
 	value: texture/background/bg_tutorial_10.png/
 },
+battle_cyclops_small: {
+	class: java.lang.String,
+	value: texture/monster/battle_cyclops_small.png/
+},
 bg_middle_ridge_farm: {
 	class: java.lang.String,
 	value: texture/background/bg_middle_ridge_farm.png/
@@ -2142,6 +2146,10 @@ monster_troll: {
 battle_rabbit_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_rabbit_small.png/
+},
+monster_kentaurous_bow: {
+	class: java.lang.String,
+	value: texture/monster/monster_kentaurous_bow.png/
 },
 monster_clam: {
 	class: java.lang.String,

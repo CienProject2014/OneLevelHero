@@ -23,6 +23,7 @@ public class FieldManager {
 	public FieldTypeEnum getFieldType() {
 		return fieldInfo.getFieldList().get(getFieldNumber());
 	}
+
 	public void setArrowName(String arrowName) {
 		fieldInfo.setArrowName(arrowName);
 	}
