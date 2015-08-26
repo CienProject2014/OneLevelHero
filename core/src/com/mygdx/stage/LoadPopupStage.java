@@ -1,5 +1,7 @@
 package com.mygdx.stage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
@@ -22,6 +26,7 @@ import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.SaveManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.screen.BaseScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
@@ -37,6 +42,8 @@ public class LoadPopupStage extends BaseOverlapStage {
 	private final int SAVE_SIZE = 3;
 	@Autowired
 	private AssetsManager assetsManager;
+	@Autowired
+	private TextureManager textureManager;
 	@Autowired
 	private SaveManager saveManager;
 	@Autowired
@@ -56,6 +63,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 	private CompositeItem save01;
 	private CompositeItem save02;
 	private CompositeItem save03;
+	private List<ImageItem> characterImage;
 	private Map<String, Array<String>> sceneConstants;
 	private CompositeItem newbutton;
 
@@ -67,6 +75,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 		sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
 		setCamera();
 		setCompositeItem();
+		setFace();
 		setLabels(sceneConstants);
 		setAddListener();
 		return this;
@@ -119,6 +128,41 @@ public class LoadPopupStage extends BaseOverlapStage {
 		save = sceneLoader.getRoot().getImageById("save");
 		newbutton = sceneLoader.getRoot().getCompositeById("new_button");
 		closeButton = sceneLoader.getRoot().getCompositeById("close_button");
+		characterImage = new ArrayList<>();
+		for (int i = 1; i < 4; i++) {
+			for (int j = 1; j < 5; j++) {
+				ImageItem charImage = sceneLoader.getRoot().getImageById("save0" + i + "_" + "image0" + j);
+				characterImage.add(charImage);
+			}
+		}
+	}
+
+	private void setFace() {
+		if (saveManager.isLoadable(SaveVersion.SAVE_01)) {
+			for (int i = 0; i < 4; i++)
+				characterImage.get(i).setDrawable(new TextureRegionDrawable(
+						new TextureRegion(textureManager.getFaceTexture(saveManager.readPartyInfo(i)))));
+		} else {
+			for (int i = 0; i < 4; i++)
+				characterImage.get(i).setVisible(false);
+		}
+
+		if (saveManager.isLoadable(SaveVersion.SAVE_02)) {
+			for (int i = 4; i < 8; i++)
+				characterImage.get(i).setDrawable(new TextureRegionDrawable(
+						new TextureRegion(textureManager.getFaceTexture(saveManager.readPartyInfo(i - 4)))));
+		} else {
+			for (int i = 4; i < 8; i++)
+				characterImage.get(i).setVisible(false);
+		}
+		if (saveManager.isLoadable(SaveVersion.SAVE_03)) {
+			for (int i = 8; i < 12; i++)
+				characterImage.get(i).setDrawable(new TextureRegionDrawable(
+						new TextureRegion(textureManager.getFaceTexture(saveManager.readPartyInfo(i - 8)))));
+		} else {
+			for (int i = 8; i < 12; i++)
+				characterImage.get(i).setVisible(false);
+		}
 	}
 
 	private void setAddListener() {
@@ -160,17 +204,33 @@ public class LoadPopupStage extends BaseOverlapStage {
 				}
 			}
 		});
+		newbutton.setLayerVisibilty("pressed", false);
 		newbutton.addListener(new TouchListener() {
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				saveManager.setNewGame();
-				super.touchUp(event, x, y, pointer, button);
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				newbutton.setLayerVisibilty("pressed", true);
+				return true;
 			}
-		});
 
-		closeButton.addListener(new TouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				newbutton.setLayerVisibilty("pressed", false);
+				saveManager.setNewGame();
+				super.touchUp(event, x, y, pointer, button);
+
+			}
+		});
+		closeButton.setLayerVisibilty("pressed", false);
+		closeButton.addListener(new TouchListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				closeButton.setLayerVisibilty("pressed", true);
+				return true;
+			}
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				closeButton.setLayerVisibilty("pressed", false);
 				BaseScreen.showLoadStage = false;
 				super.touchUp(event, x, y, pointer, button);
 			}

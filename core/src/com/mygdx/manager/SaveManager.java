@@ -69,7 +69,9 @@ public class SaveManager {
 	}
 
 	public void setSaveInfo() {
+
 		saveInfo.setGameTime(timeManager.getTimeInfo());
+		saveInfo.setPartyList(partyInfo.getPartyList());
 		if (positionManager.getCurrentPositionType().equals(PositionEnum.NODE)) {
 			saveInfo.setSavePlace(positionManager.getCurrentNodeHanguelName());
 		} else {
@@ -208,4 +210,12 @@ public class SaveManager {
 
 		return svInfo;
 	}
+
+	public String readPartyInfo(int i) {
+		if (i >= partyInfo.getPartyList().size())
+			return "blank_face";
+		else
+			return partyInfo.getPartyList().get(i).getFacePath();
+	}
+
 }

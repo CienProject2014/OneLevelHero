@@ -104,6 +104,7 @@ public class SavePopupStage extends BaseOverlapStage {
 			}
 		}
 	}
+
 	private void setCompositeItem() {
 		background = sceneLoader.getRoot().getCompositeById("background");
 		save01 = sceneLoader.getRoot().getCompositeById("save01");
@@ -155,4 +156,5 @@ public class SavePopupStage extends BaseOverlapStage {
 			BuildingScreen.isInSave = false;
 		}
 	}
+
 }
