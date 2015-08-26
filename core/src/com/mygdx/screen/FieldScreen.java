@@ -7,7 +7,7 @@ import com.mygdx.enums.StageEnum;
 
 public class FieldScreen extends BaseScreen {
 
-	private Stage gameUiStage, fieldStage;
+	private Stage gameUiStage, fieldStage, characterUiStage;
 
 	@Override
 	public void render(float delta) {
@@ -15,16 +15,15 @@ public class FieldScreen extends BaseScreen {
 		setInputProcessor();
 		fieldStage.draw();
 		fieldStage.act();
+		characterUiStage.draw();
+		characterUiStage.act(delta);
 		gameUiStage.draw();
 		gameUiStage.act();
-		/*
-		 * movingLabel.setText(movingInfo.getDestinationNode() + "까지" +
-		 * movingInfo.getLeftRoadLength());
-		 */
 	}
 
 	@Override
 	public void show() {
+		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		fieldStage = stageFactory.makeStage(StageEnum.FIELD);
 		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);

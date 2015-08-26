@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.assets.TextureAssets;
-import com.mygdx.enums.TextureEnum;
 import com.mygdx.model.jsonModel.FrameSheet;
 
 public class AnimationManager {
@@ -36,8 +35,8 @@ public class AnimationManager {
 	 * @param y
 	 *            재생하고자 하는 y위치
 	 */
-	public void registerAnimation(TextureEnum name, int x, int y) {
-		FrameSheet sheet = textureAssets.getAnimationSheet(name.toString());
+	public void registerAnimation(String name, int x, int y) {
+		FrameSheet sheet = textureAssets.getAnimationSheet(name);
 
 		TextureRegion[][] splitted = splitSheet(sheet);
 
