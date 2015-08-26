@@ -78,7 +78,8 @@
         "nodePosX": "2",
         "nodePosY": "6",
         "dungeonNodeType": "elite",
-        "directionType": "crossup"
+        "directionType": "crossup", 
+        "eliteMonster": "cerberus"
       },
       {
         "nodeLabel" : "room",
@@ -127,8 +128,9 @@
         "nodeLabel" : "devil_castle_elite2",
         "nodePosX": "4",
         "nodePosY": "0",
-        "dungeonNodeType": "normal",
-        "directionType": "left"
+        "dungeonNodeType": "elite",
+        "directionType": "left", 
+        "eliteMonster": "cerberus"
       },
       {
         "nodeLabel" : "room",
@@ -219,7 +221,8 @@
         "nodePosX": "5",
         "nodePosY": "6",
         "dungeonNodeType": "elite",
-        "directionType": "left"
+        "directionType": "left", 
+        "eliteMonster": "cerberus"
       },
       {
         "nodeLabel" : "room",
@@ -483,7 +486,8 @@
         "nodePosX": "2",
         "nodePosY": "6",
         "dungeonNodeType": "elite",
-        "directionType": "crossup"
+        "directionType": "crossup", 
+        "eliteMonster": "cerberus"
       },
       {
         "nodeLabel" : "room",
@@ -532,8 +536,10 @@
         "nodeLabel" : "devil_castle_elite2",
         "nodePosX": "4",
         "nodePosY": "0",
-        "dungeonNodeType": "normal",
-        "directionType": "left"
+        "dungeonNodeType": "elite",
+        "directionType": "left", 
+        "eliteMonster": "nepel_01"
+        
       },
       {
         "nodeLabel" : "room",
@@ -624,7 +630,8 @@
         "nodePosX": "5",
         "nodePosY": "6",
         "dungeonNodeType": "elite",
-        "directionType": "left"
+        "directionType": "left", 
+        "eliteMonster": "nepel_01"
       },
       {
         "nodeLabel" : "room",
