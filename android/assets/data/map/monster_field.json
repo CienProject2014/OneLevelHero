@@ -1,7 +1,7 @@
 [
   {
-  	"fieldType" : "bridge",
-  	"fieldMonsterList" : []
+    "fieldType": "bridge",
+    "fieldMonsterList": []
   },
   {
     "fieldType": "grassland",
@@ -11,45 +11,120 @@
     ]
   },
   {
-    "fieldType": "elven_forest",
+    "fieldType": "crystallized_valley",
     "fieldMonsterList": [
-      "kentaurous_spear",
-      "ent"
+      "yetie",
+      "golem_crystal"
     ]
   },
   {
     "fieldType": "blackwood_forest",
     "fieldMonsterList": [
       "kentaurous_spear",
-      "ent"
+      "kentaurous_bow",
+      "chimera"
+    ]
+  },
+  {
+    "fieldType": "elven_forest",
+    "fieldMonsterList": [
+      "elf",
+      "ent",
+      "rafflesia"
     ]
   },
   {
     "fieldType": "beach",
     "fieldMonsterList": [
-      "mercensary",
-      "assassin_girl"
+      "clam",
+      "mercensary"
     ]
   },
   {
-    "fieldType": "kadilla_mountain",
+    "fieldType": "range_of_a_mountain_titania",
     "fieldMonsterList": [
-      "troll",
-      "aonin"
+      "bandit",
+      "brown_bear"
     ]
   },
   {
-    "fieldType": "blackwood_mountain",
+    "fieldType": "mountain_titania",
     "fieldMonsterList": [
       "troll",
-      "aonin"
+      "griffon",
+      "ogre",
+      "soul_deprave"
     ]
   },
   {
-    "fieldType": "dungeon",
+    "fieldType": "blackwood_forest",
     "fieldMonsterList": [
-      "troll",
-      "aonin"
+      "piranha"
+    ]
+  },
+  {
+    "fieldType": "cave_of_succubus",
+    "fieldMonsterList": [
+      "succubus_junior",
+      "hunting_dog"
+    ]
+  },
+  {
+    "fieldType": "golden_lake",
+    "fieldMonsterList": [
+      "elemental_fire",
+      "elemental_water",
+      "elemental_electric"
+    ]
+  },
+  {
+    "fieldType": "cave_of_cape_of_tempest",
+    "fieldMonsterList": [
+      "bat",
+      "lamia"
+    ]
+  },
+  {
+    "fieldType": "ancient_library_b1",
+    "fieldMonsterList": [
+      "candlestick"
+    ]
+  },
+  {
+    "fieldType": "ancient_library_b2",
+    "fieldMonsterList": [
+      "soul_ancient"
+    ]
+  },
+  {
+    "fieldType": "ancient_library_b3",
+    "fieldMonsterList": [
+      "girl"
+    ]
+  },
+  {
+    "fieldType": "temple_of_moerae_b12",
+    "fieldMonsterList": [
+      "cleric_deprave",
+      "rabbit"
+    ]
+  },
+  {
+    "fieldType": "devil_castle_1f",
+    "fieldMonsterList": [
+      "chilly_ghoul"
+    ]
+  },
+  {
+    "fieldType": "devil_castle_2f",
+    "fieldMonsterList": [
+      "blooder"
+    ]
+  },
+  {
+    "fieldType": "devil_castle_3f",
+    "fieldMonsterList": [
+      "raijuu"
     ]
   }
 ]

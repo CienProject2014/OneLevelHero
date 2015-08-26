@@ -8,8 +8,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.AssetsManager;
+import com.mygdx.manager.PositionManager;
 
 /**
  * VillageStage와 GameUiStage를 addActor()해서 보여주는 Screen 마을의 경우 multiplexer를 이용하여
@@ -21,6 +23,8 @@ import com.mygdx.manager.AssetsManager;
 public class VillageScreen extends BaseScreen {
 	@Autowired
 	private AssetsManager assetsManager;
+	@Autowired
+	private PositionManager positionManager;
 	private String villageName;
 	private Stage villageStage;
 	private Stage gameUiStage;
@@ -70,12 +74,14 @@ public class VillageScreen extends BaseScreen {
 
 	@Override
 	public void show() {
+		if (positionManager.getBeforePositionType().equals(PositionEnum.FIELD)) {
+			assetsManager.clear();
+			assetsManager.load("orig" + File.separator + "skill_" + "pack.atlas", TextureAtlas.class);
+			assetsManager.load("orig" + File.separator + "save_" + "pack.atlas", TextureAtlas.class);
+			assetsManager.load("orig" + File.separator + "load_" + "pack.atlas", TextureAtlas.class);
+			assetsManager.load("orig" + File.separator + "item_" + "pack.atlas", TextureAtlas.class);
+		}
 		musicManager.setWorldNodeMusicAndPlay();
-		assetsManager.clear();
-		assetsManager.load("orig" + File.separator + "skill_" + "pack.atlas", TextureAtlas.class);
-		assetsManager.load("orig" + File.separator + "save_" + "pack.atlas", TextureAtlas.class);
-		assetsManager.load("orig" + File.separator + "load_" + "pack.atlas", TextureAtlas.class);
-		assetsManager.load("orig" + File.separator + "item_" + "pack.atlas", TextureAtlas.class);
 		villageStage = stageFactory.makeStage(StageEnum.VILLAGE);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
@@ -84,7 +90,6 @@ public class VillageScreen extends BaseScreen {
 		setInputProcessor();
 
 	}
-
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		// 만약 버튼이 겹칠 경우 인덱스가 먼저인 쪽(숫자가 작은 쪽)에 우선권이 간다 무조건 유아이가 위에 있어야 하므로 유아이에

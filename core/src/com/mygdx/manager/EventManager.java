@@ -60,6 +60,8 @@ public class EventManager {
 	private TimeManager timeManager;
 	@Autowired
 	private EventInfo eventInfo;
+	@Autowired
+	private PartyManager partyManager;
 
 	private Iterator<EventScene> eventSceneIterator;
 	private final int eventPlusRule = 1;
@@ -79,6 +81,10 @@ public class EventManager {
 			case NEXT_SECTION :
 				storySectionManager.setNewStorySectionAndPlay(Integer.valueOf(getCurrentNpcEvent().getEventComponent()
 						.get(0)));
+				break;
+			case JOIN_PARTY :
+				partyManager.addHero(unitAssets.getHero(getCurrentNpcEvent().getEventComponent().get(0)));
+				storySectionManager.runStorySequence();
 				break;
 			case MOVE_NODE :
 				positionManager.setCurrentNodeName(getCurrentNpcEvent().getEventComponent().get(0));
@@ -112,7 +118,6 @@ public class EventManager {
 				break;
 		}
 	}
-
 	public Event getCurrentElementEvent() {
 		switch (getCurrentEventElementType()) {
 			case NPC :
