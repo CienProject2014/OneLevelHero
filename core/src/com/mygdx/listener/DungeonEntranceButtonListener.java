@@ -12,6 +12,7 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
+import com.mygdx.manager.TimeManager;
 
 public class DungeonEntranceButtonListener extends ClickListener {
 	@Autowired
@@ -23,12 +24,16 @@ public class DungeonEntranceButtonListener extends ClickListener {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
+
+	private TimeManager timeManager;
 	private SoundManager soundManager;
 	private String dungeonPath;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		timeManager.plusMinute(15);
 		soundManager.setSoundByUseAndPlay("move_arrow");
+
 		positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
 		positionManager.setCurrentSubNodeName(dungeonPath);
 		screenFactory.show(ScreenEnum.DUNGEON);

@@ -21,6 +21,7 @@ import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.DungeonEncounterManager;
 import com.mygdx.manager.DungeonManager;
+import com.mygdx.manager.TimeManager;
 import com.mygdx.model.surroundings.DungeonConnection;
 import com.mygdx.model.surroundings.DungeonNode;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -39,6 +40,8 @@ public class DungeonStage extends BaseOverlapStage {
 	private DungeonEncounterManager dungeonEncounterManager;
 	@Autowired
 	private DungeonManager dungeonManager;
+	@Autowired
+	private TimeManager timeManager;
 
 	private CompositeItem btnTurn;
 	private CompositeItem[] btnRoad = new CompositeItem[3];
@@ -355,6 +358,8 @@ public class DungeonStage extends BaseOverlapStage {
 	}
 
 	private void actionTurn() {
+		timeManager.plusMinute(10);
+
 		dungeonManager.changeCurrentHeading();
 
 		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
@@ -369,6 +374,7 @@ public class DungeonStage extends BaseOverlapStage {
 	}
 
 	private void actionMove(int index) {
+		timeManager.plusMinute(10);
 		dungeonManager.setCurrentPos(dungeonManager.getMapInfo().nodes
 				.indexOf((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).get(index)));
 

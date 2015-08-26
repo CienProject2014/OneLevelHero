@@ -35,6 +35,8 @@ public class TimeManager {
 
 	public void plusSecond(int value) {
 		Gdx.app.log("TimeManager", "Plus Second : " + value);
+		partyManager.getBattleMemberList().get(0).getStatus()
+				.setExperience(partyManager.getBattleMemberList().get(0).getStatus().getExperience() - value);
 		setTime(value);
 	}
 
@@ -46,6 +48,7 @@ public class TimeManager {
 		if (leftHour >= 1) {
 			partyManager.setFatigue(partyManager.getFatigue() + leftHour);
 		}
+		partyManager.calLevel();
 	}
 
 	public int getTime() {

@@ -186,6 +186,7 @@ public class StatusStage extends BaseOverlapStage {
 
 	private void setLabel(PartyManager partyManager, HashMap<String, Array<String>> sceneConstants) {
 		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name_label");
+
 		nameLabel.setText(currentSelectedHero.getName());
 		nameLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 		nameLabel.setFontScale(1.0f);

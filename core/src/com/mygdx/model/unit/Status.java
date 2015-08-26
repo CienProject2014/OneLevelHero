@@ -6,10 +6,10 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 
 public class Status {
-	private int attack;
-	private int magicAttack;
-	private int defense;
-	private int magicDefense;
+	private float attack;
+	private float magicAttack;
+	private float defense;
+	private float magicDefense;
 	private int level;
 	private int hp; // 현재 체력
 	private int maxHp; // 최대 체력
@@ -28,35 +28,35 @@ public class Status {
 		return experience + "/" + maxExperience;
 	}
 
-	public int getAttack() {
+	public float getAttack() {
 		return attack;
 	}
 
-	public void setAttack(int attack) {
+	public void setAttack(float attack) {
 		this.attack = attack;
 	}
 
-	public int getMagicAttack() {
+	public float getMagicAttack() {
 		return magicAttack;
 	}
 
-	public void setMagicAttack(int magicAttack) {
+	public void setMagicAttack(float magicAttack) {
 		this.magicAttack = magicAttack;
 	}
 
-	public int getDefense() {
+	public float getDefense() {
 		return defense;
 	}
 
-	public void setDefense(int defense) {
+	public void setDefense(float defense) {
 		this.defense = defense;
 	}
 
-	public int getMagicDefense() {
+	public float getMagicDefense() {
 		return magicDefense;
 	}
 
-	public void setMagicDefense(int magicDefense) {
+	public void setMagicDefense(float magicDefense) {
 		this.magicDefense = magicDefense;
 	}
 
@@ -134,10 +134,11 @@ public class Status {
 
 	// alphabet order
 	public List<String> getStatusList() {
-		return Arrays.asList(new String[] { String.valueOf(attack), String.valueOf(defense),
-				String.valueOf(electricResistance), getExperiencePointState(), String.valueOf(fireResistance),
-				getHpState(), String.valueOf(level), String.valueOf(magicAttack), String.valueOf(magicDefense),
-				String.valueOf(speed), String.valueOf(waterResistance) });
+		return Arrays.asList(new String[] { String.valueOf((int) attack), String.valueOf((int) defense),
+				String.valueOf((int) electricResistance), getExperiencePointState(),
+				String.valueOf((int) fireResistance), getHpState(), String.valueOf((int) level),
+				String.valueOf((int) magicAttack), String.valueOf((int) magicDefense), String.valueOf((int) speed),
+				String.valueOf((int) waterResistance) });
 	}
 
 	public String getStatusMarkByName(String statusType) {
@@ -169,9 +170,9 @@ public class Status {
 	public int getStatusByName(String statusType) {
 		switch (statusType) {
 		case "attack":
-			return attack;
+			return (int) attack;
 		case "defense":
-			return defense;
+			return (int) defense;
 		case "electricResistance":
 			return electricResistance;
 		case "fireResistance":
@@ -179,9 +180,9 @@ public class Status {
 		case "level":
 			return level;
 		case "magicAttack":
-			return magicAttack;
+			return (int) magicAttack;
 		case "magicDefense":
-			return magicDefense;
+			return (int) magicDefense;
 		case "speed":
 			return speed;
 		case "waterResistance":
