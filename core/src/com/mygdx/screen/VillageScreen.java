@@ -1,12 +1,9 @@
 package com.mygdx.screen;
 
-import java.io.File;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.AssetsManager;
@@ -70,11 +67,6 @@ public class VillageScreen extends BaseScreen {
 
 	@Override
 	public void show() {
-		assetsManager.clear();
-		assetsManager.load("orig" + File.separator + "skill_" + "pack.atlas", TextureAtlas.class);
-		assetsManager.load("orig" + File.separator + "save_" + "pack.atlas", TextureAtlas.class);
-		assetsManager.load("orig" + File.separator + "load_" + "pack.atlas", TextureAtlas.class);
-		assetsManager.load("orig" + File.separator + "item_" + "pack.atlas", TextureAtlas.class);
 		villageStage = stageFactory.makeStage(StageEnum.VILLAGE);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
