@@ -2,6 +2,7 @@ package com.mygdx.manager;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -72,10 +73,7 @@ public class PartyManager {
 	}
 
 	public Hero pickRandomHero() {
-		Random random = new Random();
-		int index = random.nextInt(partyInfo.getBattleMemberList().size());
-
-		return partyInfo.getBattleMemberList().get(index);
+		return partyInfo.getBattleMemberList().get(ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
 	}
 
 	public void setCurrentSelectedHero(Hero hero) {
@@ -101,5 +99,4 @@ public class PartyManager {
 	public void setPartyList(List<Hero> partyList) {
 		partyInfo.setPartyList(partyList);
 	}
-
 }

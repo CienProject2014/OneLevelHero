@@ -15,10 +15,10 @@ public class EventAssets implements JsonAssetsInitializable {
 
 	@Override
 	public void set(Map<String, String> jsonStringMap) {
-		npcMap = JsonParser.parseMap(NPC.class, jsonStringMap.get(JsonEnum.NPC_JSON.toString()));
+		npcMap = JsonParser.parseMap(NPC.class, jsonStringMap.get(String.valueOf(JsonEnum.NPC_JSON)));
 		storySectionMap = JsonParser.parseMap(Integer.class, StorySection.class,
-				jsonStringMap.get(JsonEnum.STORY_JSON.toString()));
-		gameObjectMap = JsonParser.parseMap(GameObject.class, jsonStringMap.get(JsonEnum.GAME_OBJECT_JSON.toString()));
+				jsonStringMap.get(String.valueOf(JsonEnum.STORY_JSON)));
+		gameObjectMap = JsonParser.parseMap(GameObject.class, jsonStringMap.get(String.valueOf(JsonEnum.GAME_OBJECT_JSON)));
 	}
 
 	public StorySection getStorySection(int storySectionNumber) {

@@ -16,8 +16,6 @@ public class FieldManager {
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
-	private MovingManager movingManager;
-	@Autowired
 	private FieldInfo fieldInfo;
 
 	public FieldTypeEnum getFieldType() {
@@ -108,5 +106,4 @@ public class FieldManager {
 	public void goInField() {
 		moveField();
 	}
-
 }
