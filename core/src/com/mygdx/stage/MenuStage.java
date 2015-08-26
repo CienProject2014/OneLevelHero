@@ -68,7 +68,7 @@ public class MenuStage extends BaseOneLevelStage {
 		startButton.addListener(new ClickListener() {
 
 			public void clicked(InputEvent event, float x, float y) {
-				screenFactory.show(ScreenEnum.LOAD);
+				screenFactory.push(ScreenEnum.LOAD);
 			}
 		});
 
@@ -87,14 +87,14 @@ public class MenuStage extends BaseOneLevelStage {
 
 		albumButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
-				screenFactory.show(ScreenEnum.COLLECTION);
+				screenFactory.push(ScreenEnum.COLLECTION);
 			}
 		});
 
 		creditButton.addListener(new ClickListener() {
 
 			public void clicked(InputEvent event, float x, float y) {
-				screenFactory.show(ScreenEnum.CREDIT);
+				screenFactory.push(ScreenEnum.CREDIT);
 			}
 		});
 

@@ -104,7 +104,7 @@ public class LoadingBarStage extends BaseOneLevelStage {
 	@Override
 	public void act() {
 		if (assetsManager.update()) {
-			screenFactory.show(ScreenEnum.MENU);
+			screenFactory.popAllAndPush(ScreenEnum.MENU);
 		}
 
 		// Interpolate the percentage to make it more smooth
