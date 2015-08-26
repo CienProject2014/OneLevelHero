@@ -19,7 +19,7 @@
           "blackwood_mountain"
         ]
       },
-      "blackwood_forest": {
+      "blackwood_forest_dungeon": {
         "arrowName": "1to17",
         "fieldList": [
           "blackwood_forest"
@@ -300,14 +300,14 @@
       }
     }
   },
-  "blackwood_forest": {
+  "blackwood_forest_dungeon": {
     "nodeName": "블랙우드 숲",
     "nodeType": "dungeon_entrance",
     "nodeConnection": {
       "blackwood": {
         "arrowName": "17to1",
         "fieldList": [
-          "elven_forest"
+          "blackwood_forest"
         ]
       }
     }
