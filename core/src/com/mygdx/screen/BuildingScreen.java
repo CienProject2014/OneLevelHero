@@ -21,6 +21,9 @@ public class BuildingScreen extends BaseScreen {
 		if (isInSave) {
 			saveStage.draw();
 		}
+		if (showLoadStage) {
+			loadStage.draw();
+		}
 	}
 
 	@Override

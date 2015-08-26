@@ -25,6 +25,7 @@ import com.mygdx.enums.SkillTargetEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.model.item.Consumables;
 import com.mygdx.model.item.Item;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
@@ -251,6 +252,18 @@ public class BattleManager {
 		timeManager.setPreTime(typeOfAction * TIME_FLOW_RATE);
 		timeManager.plusSecond(typeOfAction * TIME_FLOW_RATE);
 		healGague();
+	}
+
+	public void useItem() {
+		if (getCurrentSelectedItem() instanceof Consumables) {
+			Consumables potion = (Consumables) getCurrentSelectedItem();
+			Unit unit = battleInfo.getCurrentAttackUnit();
+			if ((unit.getStatus().getHp() + potion.getHeal() < unit.getStatus().getMaxHp())) {
+				unit.getStatus().setHp(unit.getStatus().getHp() + potion.getHeal());
+			} else {
+				unit.getStatus().setHp(unit.getStatus().getMaxHp());
+			}
+		}
 	}
 
 	public void waitButton() {

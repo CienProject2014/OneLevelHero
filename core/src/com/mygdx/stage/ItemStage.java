@@ -97,6 +97,8 @@ public class ItemStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				setCompositeItemVisibilty(useButton, PRESSED_VISIBILTY);
 				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_CONTROL, "item");
+				battleManager.useItem();
+				battleManager.endTurn();
 				BattleScreen.showItemStage = false;
 			}
 		});
@@ -177,8 +179,8 @@ public class ItemStage extends BaseOverlapStage {
 						addUseButtonListener(index);
 						for (int j = 0; j < ITEM_TAB_SIZE; j++) {
 							if (j != index) {
-								final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
-										"highlight_0" + (j + 1));
+								final CompositeItem highLightFrame = sceneLoader.getRoot()
+										.getCompositeById("highlight_0" + (j + 1));
 								setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 							}
 						}
@@ -189,8 +191,8 @@ public class ItemStage extends BaseOverlapStage {
 						setVoidDescription();
 						setFirstUseButton();
 						for (int j = 0; j < ITEM_TAB_SIZE; j++) {
-							CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
-									"highlight_0" + (j + 1));
+							CompositeItem highLightFrame = sceneLoader.getRoot()
+									.getCompositeById("highlight_0" + (j + 1));
 							setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 						}
 					}

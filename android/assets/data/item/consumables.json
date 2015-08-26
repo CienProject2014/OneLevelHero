@@ -5,6 +5,7 @@
     "itemPath" : "small_healing",
     "category": "소모품",
     "grade": "일반",
+      "heal" : "30",
     "description": "체력을 30 회복해준다."
   },
   "medium_healing": {
@@ -13,6 +14,7 @@
     "itemPath" : "medium_healing",
     "category": "소모품",
     "grade": "일반",
+      "heal" : "60",
     "description": "체력을 60 회복해준다."
   },
   "big_healing": {
@@ -21,6 +23,7 @@
     "itemPath" : "big_healing",
     "category": "소모품",
     "grade": "일반",
+    "heal" : "120",
     "description": "체력을 120 회복해준다."
   },
   "elixir": {
@@ -29,6 +32,7 @@
     "itemPath" : "elixir",
     "category": "소모품",
     "grade": "일반",
+       "heal" : "-1",     
     "description": "체력 전체 회복, 죽은 사람도 살린다는 소문이 있지만, 살아나지 않으니 주의."
   },
   "pick_me_up": {
