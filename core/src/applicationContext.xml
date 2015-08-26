@@ -101,7 +101,6 @@
 	<bean id="greetingScreen" class="com.mygdx.screen.GreetingScreen"
 		scope="prototype"/>
 	<bean id="inventoryScreen" class="com.mygdx.screen.InventoryScreen" scope="prototype"/>
-	<bean id="loadScreen" class="com.mygdx.screen.LoadScreen" scope="prototype"/>
 	<bean id="logScreen" class="com.mygdx.screen.LogScreen" scope="prototype"/>
 	<bean id="menuScreen" class="com.mygdx.screen.MenuScreen" scope="prototype"/>
 	<bean id="saveScreen" class="com.mygdx.screen.SaveScreen" scope="prototype" />
@@ -142,7 +141,6 @@
 	<bean id="itemStage" class="com.mygdx.stage.ItemStage" scope="prototype"/>
 	<bean id="loadingBarStage" class="com.mygdx.stage.LoadingBarStage" scope="prototype"/>
 	<bean id="loadPopupStage" class="com.mygdx.stage.LoadPopupStage" scope="prototype"/>
-	<bean id="loadStage" class="com.mygdx.stage.LoadStage" scope="prototype"/>
 	<bean id="menuStage" class="com.mygdx.stage.MenuStage" scope="prototype" />
 	<bean id="monsterStage" class="com.mygdx.stage.MonsterStage"
 		scope="prototype" />

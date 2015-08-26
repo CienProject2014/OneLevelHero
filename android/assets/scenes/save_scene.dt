@@ -15,20 +15,7 @@
         ],
         "imageName": "saveuibase01"
       },
-      {
-        "itemIdentifier": "save",
-        "x": 400,
-        "y": 999,
-        "zIndex": 2,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "saveuisave"
-      },
+     
       {
         "itemIdentifier": "save01_image01",
         "x": 903,
@@ -88,7 +75,7 @@
       {
         "itemIdentifier": "save02_image01",
         "x": 903,
-        "y": 460,
+        "y": 458,
         "zIndex": 18,
         "layerName": "Default",
         "tint": [
@@ -102,7 +89,7 @@
       {
         "itemIdentifier": "save02_image02",
         "x": 1053,
-        "y": 460,
+        "y": 458,
         "zIndex": 19,
         "layerName": "Default",
         "tint": [
@@ -116,7 +103,7 @@
       {
         "itemIdentifier": "save02_image03",
         "x": 1203,
-        "y": 460,
+        "y": 458,
         "zIndex": 20,
         "layerName": "Default",
         "tint": [
@@ -130,7 +117,7 @@
       {
         "itemIdentifier": "save02_image04",
         "x": 1353,
-        "y": 460,
+        "y": 458,
         "zIndex": 21,
         "layerName": "Default",
         "tint": [
@@ -144,7 +131,7 @@
       {
         "itemIdentifier": "save03_image01",
         "x": 903,
-        "y": 175,
+        "y": 173,
         "zIndex": 26,
         "layerName": "Default",
         "tint": [
@@ -158,7 +145,7 @@
       {
         "itemIdentifier": "save03_image02",
         "x": 1053,
-        "y": 175,
+        "y": 173,
         "zIndex": 27,
         "layerName": "Default",
         "tint": [
@@ -172,7 +159,7 @@
       {
         "itemIdentifier": "save03_image03",
         "x": 1203,
-        "y": 175,
+        "y": 173,
         "zIndex": 28,
         "layerName": "Default",
         "tint": [
@@ -186,7 +173,7 @@
       {
         "itemIdentifier": "save03_image04",
         "x": 1353,
-        "y": 175,
+        "y": 173,
         "zIndex": 29,
         "layerName": "Default",
         "tint": [
@@ -196,6 +183,20 @@
           1
         ],
         "imageName": "battleuiturn01parath"
+      },
+      {
+        "itemIdentifier": "load",
+        "x": 400,
+        "y": 999,
+        "zIndex": 31,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "saveuiload"
       }
     ],
     "sLabels": [
@@ -211,7 +212,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 480,
@@ -229,7 +230,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 350,
@@ -247,7 +248,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 350,
@@ -265,7 +266,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 350,
@@ -274,7 +275,7 @@
       {
         "itemIdentifier": "save02_label",
         "x": 600,
-        "y": 625,
+        "y": 623,
         "zIndex": 14,
         "layerName": "Default",
         "tint": [
@@ -283,7 +284,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 480,
@@ -292,7 +293,7 @@
       {
         "itemIdentifier": "save02_time_label",
         "x": 440,
-        "y": 554,
+        "y": 552,
         "zIndex": 15,
         "layerName": "Default",
         "tint": [
@@ -301,7 +302,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 350,
@@ -310,7 +311,7 @@
       {
         "itemIdentifier": "save02_place_label",
         "x": 440,
-        "y": 502,
+        "y": 500,
         "zIndex": 16,
         "layerName": "Default",
         "tint": [
@@ -319,7 +320,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 350,
@@ -328,7 +329,7 @@
       {
         "itemIdentifier": "save02_real_time_label",
         "x": 440,
-        "y": 465,
+        "y": 463,
         "zIndex": 17,
         "layerName": "Default",
         "tint": [
@@ -337,7 +338,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 350,
@@ -346,7 +347,7 @@
       {
         "itemIdentifier": "save03_label",
         "x": 600,
-        "y": 340,
+        "y": 338,
         "zIndex": 22,
         "layerName": "Default",
         "tint": [
@@ -355,7 +356,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 480,
@@ -364,7 +365,7 @@
       {
         "itemIdentifier": "save03_real_time_label",
         "x": 440,
-        "y": 180,
+        "y": 178,
         "zIndex": 23,
         "layerName": "Default",
         "tint": [
@@ -373,7 +374,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 350,
@@ -382,7 +383,7 @@
       {
         "itemIdentifier": "save03_place_label",
         "x": 440,
-        "y": 217,
+        "y": 215,
         "zIndex": 24,
         "layerName": "Default",
         "tint": [
@@ -391,7 +392,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 350,
@@ -400,7 +401,7 @@
       {
         "itemIdentifier": "save03_time_label",
         "x": 440,
-        "y": 269,
+        "y": 267,
         "zIndex": 25,
         "layerName": "Default",
         "tint": [
@@ -409,7 +410,7 @@
           1,
           1
         ],
-        "style": "MaleMountain",
+        "style": "arial",
         "size": 12,
         "align": 8,
         "width": 350,
@@ -562,61 +563,10 @@
         }
       },
       {
-        "itemIdentifier": "new_button",
-        "x": 585,
+        "itemIdentifier": "close_button",
+        "x": 785,
         "y": 33,
         "zIndex": 30,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "normal",
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "saveuibuttonnew"
-            },
-            {
-              "itemIdentifier": "pressed",
-              "zIndex": 1,
-              "layerName": "pressed",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "saveuiacbuttonnew"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "close_button",
-        "x": 985,
-        "y": 33,
-        "zIndex": 31,
         "layerName": "Default",
         "tint": [
           1,
