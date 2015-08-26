@@ -8,6 +8,22 @@ import com.mygdx.model.unit.Monster;
 import com.mygdx.util.JsonParser;
 
 public class UnitAssets implements JsonAssetsInitializable {
+	public Map<String, Hero> getHeroMap() {
+		return heroMap;
+	}
+
+	public void setHeroMap(Map<String, Hero> heroMap) {
+		this.heroMap = heroMap;
+	}
+
+	public Map<String, Monster> getMonsterMap() {
+		return monsterMap;
+	}
+
+	public void setMonsterMap(Map<String, Monster> monsterMap) {
+		this.monsterMap = monsterMap;
+	}
+
 	private Map<String, Hero> heroMap;
 	private Map<String, Monster> monsterMap;
 

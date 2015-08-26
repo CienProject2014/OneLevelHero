@@ -1,5 +1,7 @@
 package com.mygdx.stage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.SaveManager;
 import com.mygdx.screen.BuildingScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
+import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
 
 public class SavePopupStage extends BaseOverlapStage {
@@ -49,6 +52,7 @@ public class SavePopupStage extends BaseOverlapStage {
 	private CompositeItem save01;
 	private CompositeItem save02;
 	private CompositeItem save03;
+	private List<ImageItem> characterImage;
 
 	private Map<String, Array<String>> sceneConstants;
 
@@ -111,6 +115,14 @@ public class SavePopupStage extends BaseOverlapStage {
 		save02 = sceneLoader.getRoot().getCompositeById("save02");
 		save03 = sceneLoader.getRoot().getCompositeById("save03");
 		closeButton = sceneLoader.getRoot().getCompositeById("close_button");
+		characterImage = new ArrayList<>();
+		for (int i = 1; i < 4; i++) {
+			for (int j = 1; j < 5; j++) {
+				ImageItem charImage = sceneLoader.getRoot().getImageById("save0" + i + "_" + "image0" + j);
+				characterImage.add(charImage);
+				charImage.setVisible(false);
+			}
+		}
 	}
 
 	private void setAddListener() {

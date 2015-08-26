@@ -17,6 +17,9 @@ public class FieldScreen extends BaseScreen {
 		fieldStage.act();
 		characterUiStage.draw();
 		characterUiStage.act(delta);
+		if (showLoadStage) {
+			loadPopupStage.draw();
+		}
 		gameUiStage.draw();
 		gameUiStage.act();
 	}
@@ -33,12 +36,12 @@ public class FieldScreen extends BaseScreen {
 
 	private void setInputProcessor() {
 		InputMultiplexer multiplexer = new InputMultiplexer();
-		int i = 0;
 		if (showLoadStage) {
-			multiplexer.addProcessor(i++, loadPopupStage);
+			multiplexer.addProcessor(0, loadPopupStage);
 		} else {
-			multiplexer.addProcessor(i++, fieldStage);
-			multiplexer.addProcessor(i++, gameUiStage);
+			multiplexer.addProcessor(0, gameUiStage);
+			multiplexer.addProcessor(1, characterUiStage);
+			multiplexer.addProcessor(2, fieldStage);
 		}
 		Gdx.input.setInputProcessor(multiplexer);
 	}

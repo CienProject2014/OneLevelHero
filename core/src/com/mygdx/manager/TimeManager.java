@@ -56,7 +56,7 @@ public class TimeManager {
 	}
 
 	public void setTime(int day, int hour, int minute) {
-		setTime((MINUTES_PER_DAY * day + MINUTES_PER_HOUR * hour + minute) * SECOND_PER_MINUTES);
+		timeInfo.setTime((MINUTES_PER_DAY * day + MINUTES_PER_HOUR * hour + minute) * SECOND_PER_MINUTES);
 	}
 
 	public int getSecondTime() {

@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
@@ -26,7 +24,7 @@ import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.SaveManager;
-import com.mygdx.manager.TextureManager;
+import com.mygdx.manager.TimeManager;
 import com.mygdx.screen.BaseScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
@@ -43,8 +41,6 @@ public class LoadPopupStage extends BaseOverlapStage {
 	@Autowired
 	private AssetsManager assetsManager;
 	@Autowired
-	private TextureManager textureManager;
-	@Autowired
 	private SaveManager saveManager;
 	@Autowired
 	private SaveInfo saveInfo;
@@ -56,6 +52,8 @@ public class LoadPopupStage extends BaseOverlapStage {
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
 	private MusicManager musicManager;
+	@Autowired
+	private TimeManager timeManager;
 	private Camera cam;
 	private ImageItem save;
 	private CompositeItem closeButton;
@@ -75,7 +73,6 @@ public class LoadPopupStage extends BaseOverlapStage {
 		sceneConstants = constantsAssets.getSceneConstants(SCENE_NAME);
 		setCamera();
 		setCompositeItem();
-		setFace();
 		setLabels(sceneConstants);
 		setAddListener();
 		return this;
@@ -133,35 +130,8 @@ public class LoadPopupStage extends BaseOverlapStage {
 			for (int j = 1; j < 5; j++) {
 				ImageItem charImage = sceneLoader.getRoot().getImageById("save0" + i + "_" + "image0" + j);
 				characterImage.add(charImage);
+				charImage.setVisible(false);
 			}
-		}
-	}
-
-	private void setFace() {
-		if (saveManager.isLoadable(SaveVersion.SAVE_01)) {
-			for (int i = 0; i < 4; i++)
-				characterImage.get(i).setDrawable(new TextureRegionDrawable(
-						new TextureRegion(textureManager.getFaceTexture(saveManager.readPartyInfo(i)))));
-		} else {
-			for (int i = 0; i < 4; i++)
-				characterImage.get(i).setVisible(false);
-		}
-
-		if (saveManager.isLoadable(SaveVersion.SAVE_02)) {
-			for (int i = 4; i < 8; i++)
-				characterImage.get(i).setDrawable(new TextureRegionDrawable(
-						new TextureRegion(textureManager.getFaceTexture(saveManager.readPartyInfo(i - 4)))));
-		} else {
-			for (int i = 4; i < 8; i++)
-				characterImage.get(i).setVisible(false);
-		}
-		if (saveManager.isLoadable(SaveVersion.SAVE_03)) {
-			for (int i = 8; i < 12; i++)
-				characterImage.get(i).setDrawable(new TextureRegionDrawable(
-						new TextureRegion(textureManager.getFaceTexture(saveManager.readPartyInfo(i - 8)))));
-		} else {
-			for (int i = 8; i < 12; i++)
-				characterImage.get(i).setVisible(false);
 		}
 	}
 
@@ -174,7 +144,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_01);
 				if (saveManager.isLoadable(SaveVersion.SAVE_01)) {
 					musicManager.stopMusic();
-					saveManager.loadSaveVersion(SaveVersion.SAVE_01);
+					saveManager.load(SaveVersion.SAVE_01);
 					movingManager.goCurrentPosition();
 					super.touchUp(event, x, y, pointer, button);
 				}
@@ -186,7 +156,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_02);
 				if (saveManager.isLoadable(SaveVersion.SAVE_02)) {
 					musicManager.stopMusic();
-					saveManager.loadSaveVersion(SaveVersion.SAVE_02);
+					saveManager.load(SaveVersion.SAVE_02);
 					movingManager.goCurrentPosition();
 					super.touchUp(event, x, y, pointer, button);
 				}
@@ -198,7 +168,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 				saveInfo.setSaveVersion(SaveVersion.SAVE_03);
 				if (saveManager.isLoadable(SaveVersion.SAVE_03)) {
 					musicManager.stopMusic();
-					saveManager.loadSaveVersion(SaveVersion.SAVE_03);
+					saveManager.load(SaveVersion.SAVE_03);
 					movingManager.goCurrentPosition();
 					super.touchUp(event, x, y, pointer, button);
 				}

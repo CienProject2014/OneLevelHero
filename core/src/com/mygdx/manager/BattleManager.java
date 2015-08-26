@@ -252,6 +252,7 @@ public class BattleManager {
 	public void FuckingCostGague(Unit unit, int typeOfAction) {
 		unit.setPreGague(unit.getGauge());
 		unit.setGauge(unit.getGauge() - typeOfAction);
+		timeManager.setPreTime(typeOfAction * TIME_FLOW_RATE);
 		timeManager.plusSecond(typeOfAction * TIME_FLOW_RATE);
 		healGague();
 	}

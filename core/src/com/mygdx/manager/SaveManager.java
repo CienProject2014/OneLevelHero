@@ -11,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.files.FileHandle;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
@@ -49,10 +50,6 @@ public class SaveManager {
 	private TimeManager timeManager;
 	@Autowired
 	private PositionManager positionManager;
-	@Autowired
-	private MusicManager musicManager;
-	@Autowired
-	private SoundManager soundManager;
 
 	private final static String SAVEPATH = "save/";
 
@@ -149,6 +146,9 @@ public class SaveManager {
 	public void save() {
 		setSaveInfo();
 		FileHandle handle = Gdx.files.local(SAVEPATH + saveInfo.getSaveVersion().toString());
+		Preferences timePrefs = Gdx.app.getPreferences("Time");
+		timePrefs.putInteger("Time", timeInfo.getSecondTime());
+		timePrefs.flush();
 		try {
 			Gdx.app.log("SaveManager", "save - " + handle.file().getParentFile().getAbsolutePath());
 			if (!handle.file().getParentFile().exists()) {
@@ -170,14 +170,14 @@ public class SaveManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Gdx.app.log("SaveManager", "저장작업완료");
+
 	}
 
 	public boolean isLoadable(SaveVersion saveVersion) {
 		return Gdx.files.local("save/" + saveVersion.toString()).exists();
 	}
 
-	public void loadSaveVersion(SaveVersion saveVersion) {
+	public void load(SaveVersion saveVersion) {
 		assets.initializeUnitInfo();
 		FileHandle handle = Gdx.files.local(SAVEPATH + saveVersion.toString());
 		Input input;
@@ -193,6 +193,7 @@ public class SaveManager {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		timeInfo.setTime(Gdx.app.getPreferences("Time").getInteger("Time"));
 		battleManager.setBeforePosition(PositionEnum.SUB_NODE);
 		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 	}

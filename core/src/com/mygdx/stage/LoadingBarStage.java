@@ -18,6 +18,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.MusicManager;
+import com.mygdx.manager.SaveManager;
 import com.mygdx.manager.SoundManager;
 
 public class LoadingBarStage extends BaseOneLevelStage {
@@ -32,6 +33,8 @@ public class LoadingBarStage extends BaseOneLevelStage {
 	private MusicManager musicManager;
 	@Autowired
 	private SoundManager soundManager;
+	@Autowired
+	private SaveManager saveManager;
 
 	private Image logo;
 	private Image loadingFrame;
@@ -60,8 +63,6 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		textButton = new TextButton(LOADING_MESSAGE, StaticAssets.skin);
 		Animation anim = new Animation(0.05f, atlas.findRegions("loading-bar-anim"));
 		anim.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
-		textButton.setVisible(true);
-
 		Table logoTable = new Table();
 		logoTable.align(Align.center).align(Align.top).padTop(200);
 		logoTable.add(logo);
@@ -89,6 +90,7 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		tableStack.add(logoTable);
 		tableStack.add(textTable);
 
+		saveManager.saveNewGameInfo();
 		StaticAssets.loadAll();
 		assets.initialize();
 
@@ -111,6 +113,8 @@ public class LoadingBarStage extends BaseOneLevelStage {
 	@Override
 	public void act() {
 		if (assetsManager.update()) {
+			assetsManager.unload("texture/loading/loading.pack");
+			assetsManager.unload("texture/loading/cien_logo2.png");
 			screenFactory.popAllAndPush(ScreenEnum.MENU);
 		}
 

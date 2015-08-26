@@ -47,6 +47,8 @@ public class Assets {
 	private AssetsManager assetsManager;
 
 	public void initializeUnitInfo() {
+		unitAssets.getHeroMap().clear();
+		unitAssets.getMonsterMap().clear();
 		Map<String, StringFile> filePathMap = loadFilePathMap();
 		Map<String, String> jsonStringMap = loadJsonStringMap(filePathMap);
 		unitAssets.set(jsonStringMap);
