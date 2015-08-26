@@ -2515,6 +2515,10 @@ bg_oberon_hill: {
 	class: java.lang.String,
 	value: texture/background/bg_oberon_hill.png/
 },
+blackwood_forest_minimap: {
+	class: java.lang.String,
+	value: texture/dungeon_minimap/blackwood_forest_minimap.png/
+},
 fieldui_front: {
 	class: java.lang.String,
 	value: texture/worldmap/fieldui_front.png/

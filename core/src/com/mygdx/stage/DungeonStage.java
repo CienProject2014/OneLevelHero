@@ -65,10 +65,15 @@ public class DungeonStage extends BaseOverlapStage {
 
 	public void initMinimap() {
 
+		String minimapPath = "texture/dungeon_minimap/" + dungeonManager.getMapInfo().getDungeonName() + "_minimap.png";
+
 		blacktile = new Texture(Gdx.files.internal("texture/dungeon_minimap/black_tile.png"));
 
+		map = new Texture(Gdx.files.internal(minimapPath));
+		if(map == null){
 		map = new Texture(Gdx.files.internal("texture/dungeon_minimap/devil_castle_minimap.png"));
-
+		}
+		
 		maptile = TextureRegion.split(map, map.getWidth() / dungeonManager.getMapInfo().getMapWidth(),
 				map.getHeight() / dungeonManager.getMapInfo().getMapHeight());
 
