@@ -28,6 +28,8 @@ public class MusicAssets implements FileAssetsInitializable {
 	private Map<String, String> eventMusicMap = new HashMap<>();
 	private Map<String, String> soundEffectMap = new HashMap<>();
 	private Map<String, String> soundEffectInUseMap = new HashMap<>();
+	private String preMusic = "";
+	private boolean check;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -122,45 +124,84 @@ public class MusicAssets implements FileAssetsInitializable {
 		return assetsManager.get(soundEffectMap.get(soundString), Sound.class);
 	}
 
-	public Music getMusic(String musicString) {
-		if (musicMap.get(musicString) != null) {
-			assetsManager.load(musicMap.get(musicString), Music.class);
-			assetsManager.finishLoading();
-			return assetsManager.get(musicMap.get(musicString), Music.class);
-
-		} else {
-			Gdx.app.log("Musicmanager", musicString + " is null");
-			return assetsManager.get(musicMap.get("bgm_title"), Music.class);
-		}
-	}
-
-	public Music getWorldNodeMusic(String musicString) {
-		assetsManager.load(worldNodeMusicMap.get(musicString), Music.class);
-		assetsManager.finishLoading();
-		return assetsManager.get(worldNodeMusicMap.get(musicString), Music.class);
-	}
-
 	public Sound getSoundEffectByType(String soundType) {
 		assetsManager.load(soundEffectInUseMap.get(soundType), Sound.class);
 		assetsManager.finishLoading();
 		return assetsManager.get(soundEffectInUseMap.get(soundType), Sound.class);
 	}
 
+	public Music getMusic(String musicString) {
+		if (preMusic != "") {
+			check = true;
+		}
+		if (check == true) {
+			if (assetsManager.isLoaded(musicMap.get(preMusic))) {
+				assetsManager.unload(musicMap.get(preMusic));
+			}
+		}
+		assetsManager.load(musicMap.get(musicString), Music.class);
+		assetsManager.finishLoading();
+		preMusic = musicString;
+		return assetsManager.get(musicMap.get(musicString), Music.class);
+	}
+
+	public Music getWorldNodeMusic(String musicString) {
+		if (preMusic != "") {
+			check = true;
+		}
+		if (check == true) {
+			if (assetsManager.isLoaded(musicMap.get(preMusic))) {
+				assetsManager.unload(musicMap.get(preMusic));
+			}
+		}
+		assetsManager.load(worldNodeMusicMap.get(musicString), Music.class);
+		assetsManager.finishLoading();
+		preMusic = musicString;
+		return assetsManager.get(worldNodeMusicMap.get(musicString), Music.class);
+	}
+
 	public Music getBattleMusic(String musicString) {
+		if (preMusic != "") {
+			check = true;
+		}
+		if (check == true) {
+			if (assetsManager.isLoaded(musicMap.get(preMusic))) {
+				assetsManager.unload(musicMap.get(preMusic));
+			}
+		}
 		assetsManager.load(battleMusicMap.get(musicString), Music.class);
 		assetsManager.finishLoading();
+		preMusic = musicString;
 		return assetsManager.get(battleMusicMap.get(musicString), Music.class);
 	}
 
 	public Music getMovingMusic(String musicString) {
+		if (preMusic != "") {
+			check = true;
+		}
+		if (check == true) {
+			if (assetsManager.isLoaded(musicMap.get(preMusic))) {
+				assetsManager.unload(musicMap.get(preMusic));
+			}
+		}
 		assetsManager.load(movingMusicMap.get(musicString), Music.class);
 		assetsManager.finishLoading();
+		preMusic = musicString;
 		return assetsManager.get(movingMusicMap.get(musicString), Music.class);
 	}
 
 	public Music getEventMusic(String musicString) {
+		if (preMusic != "") {
+			check = true;
+		}
+		if (check == true) {
+			if (assetsManager.isLoaded(musicMap.get(preMusic))) {
+				assetsManager.unload(musicMap.get(preMusic));
+			}
+		}
 		assetsManager.load(eventMusicMap.get(musicString), Music.class);
 		assetsManager.finishLoading();
+		preMusic = musicString;
 		return assetsManager.get(eventMusicMap.get(musicString), Music.class);
 	}
 }

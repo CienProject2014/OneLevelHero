@@ -8,12 +8,11 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 
 public class GoTitleListener extends ClickListener {
-
 	@Autowired
 	private ScreenFactory screenFactory;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		screenFactory.show(ScreenEnum.MENU);
+		screenFactory.popAllAndPush(ScreenEnum.MENU);
 	}
 }

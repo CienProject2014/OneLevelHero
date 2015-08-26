@@ -1,12 +1,9 @@
 package com.mygdx.screen;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
-import com.mygdx.manager.AssetsManager;
 
 /**
  * VillageStage와 GameUiStage를 addActor()해서 보여주는 Screen 마을의 경우 multiplexer를 이용하여
@@ -16,8 +13,6 @@ import com.mygdx.manager.AssetsManager;
  * 
  */
 public class VillageScreen extends BaseScreen {
-	@Autowired
-	private AssetsManager assetsManager;
 	private String villageName;
 	private Stage villageStage;
 	private Stage gameUiStage;

@@ -136,13 +136,10 @@ public class ChatEventStage extends BaseOneLevelStage {
 
 		if (eventScene.getSpeakerPosition() == null) {
 			characterBustTable.left().bottom();
-			// System.out.println("if");
 		} else if (eventScene.getSpeakerPosition().equals(EventScene.SPEAKER_RIGHT)) {
 			characterBustTable.right().bottom();
-			// System.out.println("else if");
 		} else { // left일 경우
 			characterBustTable.left().bottom();
-			// System.out.println("else");
 		}
 
 		characterBustTable.add(characterImage).width(uiConstantsMap.get("talkerWidth"))
