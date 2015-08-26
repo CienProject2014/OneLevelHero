@@ -951,6 +951,10 @@ battleui_turntable_01: {
 	class: java.lang.String,
 	value: texture/ui/battle/battleui_turntable_01.png/
 },
+bust_mawang_01: {
+	class: java.lang.String,
+	value: texture/character/bust_mawang_01.png/
+},
 bg_mirage_port_03: {
 	class: java.lang.String,
 	value: texture/background/bg_mirage_port_03.png/
@@ -978,6 +982,10 @@ buff_de_burn: {
 battle_rafflesia_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_rafflesia_small.png/
+},
+minimap_background: {
+	class: java.lang.String,
+	value: texture/dungeon_minimap/minimap_background.png/
 },
 buff_de_overload_1: {
 	class: java.lang.String,
@@ -1818,6 +1826,10 @@ buff_de_sturn: {
 bg_black: {
 	class: java.lang.String,
 	value: texture/background/bg_black.png/
+},
+minimap_arrow: {
+	class: java.lang.String,
+	value: texture/dungeon_minimap/minimap_arrow.png/
 },
 bg_tutorial_09: {
 	class: java.lang.String,

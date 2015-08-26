@@ -74,6 +74,7 @@ public class VillageScreen extends BaseScreen {
 		// 여러 스테이지에 인풋 프로세서를 동시에 할 당한다
 		setInputProcessor();
 		musicManager.setWorldNodeMusicAndPlay();
+
 	}
 
 	private void setInputProcessor() {

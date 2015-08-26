@@ -106,6 +106,9 @@ public class ResourceManager implements IResourceLoader, IResourceRetriever {
 	 */
 	public void initScene(String sceneName) {
 		loadSceneVO(sceneName);
+		Gdx.app.log("sceneName", sceneName);
+		Gdx.app.log("pre", preparedSceneNames);
+
 		if (sceneName != preparedSceneNames) {
 			scheduleScene(sceneName);
 			prepareassetsToLoad();
