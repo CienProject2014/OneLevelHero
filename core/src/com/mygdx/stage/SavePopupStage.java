@@ -86,11 +86,12 @@ public class SavePopupStage extends BaseOverlapStage {
 			LabelItem placeLabel = sceneLoader.getRoot().getLabelById(placeLabels.get(i));
 			if (saveManager.isLoadable(SaveVersion.findSaveByName(saveVerions.get(i)))) {
 				SaveInfo svInfo = saveManager.readSaveInfo(SaveVersion.findSaveByName(saveVerions.get(i)));
+				placeLabel.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
 				subjectLabel.setText(svInfo.getStoryName());
 				gameTimeLabel.setText(svInfo.getGameTime());
 				placeLabel.setText(svInfo.getSavePlace());
 				saveTimeLabel.setText(svInfo.getSaveTime());
-
+				saveTimeLabel.setSize(350, 25);
 				setLabelStyle(subjectLabel);
 				setLabelStyle(gameTimeLabel);
 				setLabelStyle(saveTimeLabel);
