@@ -446,8 +446,8 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private void makeTurnBackgroundImage() {
-		currentAttackerBackground = new Image(textureManager.getEtcTexture("battleui_turntable_01"));
-		turnTableBackground = new Image(textureManager.getEtcTexture("battleui_turntable_02"));
+		currentAttackerBackground = new Image(textureManager.getTexture("battleui_turntable_01"));
+		turnTableBackground = new Image(textureManager.getTexture("battleui_turntable_02"));
 	}
 
 	private void makeBattleTurnImage() {

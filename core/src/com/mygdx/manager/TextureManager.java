@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.assets.TextureAssets;
 import com.mygdx.enums.TextureEnum;
+import com.sun.istack.internal.NotNull;
 
 /**
  * 각각의 유닛에 Texture를 할당해서 쓸 수 있도록 하는 로직 StaticAssets을 다루기 때문에 싱글턴 클래스가 아니다. 위키의
@@ -37,201 +38,131 @@ public class TextureManager {
 				if (assetsManager.isLoaded(textureAssets.getTexturePath(preName))) {
 					assetsManager.unload(textureAssets.getTexturePath(preName));
 					assetsManager.finishLoading();
-				} else {
 				}
 			}
 		}
 		return check;
 	}
 
-	public Texture getEtcTexture(String textureName) {
-		assetsManager.load(textureAssets.getTexturePath(textureName), Texture.class);
-		assetsManager.finishLoading();
-		return assetsManager.get(textureAssets.getTexturePath(textureName), Texture.class);
+	@NotNull
+	public Texture getTexture(String texturePath, String defaultPath) {
+		if (textureAssets.getTexturePath(texturePath) != null) {
+			assetsManager.load(textureAssets.getTexturePath(texturePath), Texture.class);
+			assetsManager.finishLoading();
+			return assetsManager.get(textureAssets.getTexturePath(texturePath));
+		} else {
+			Gdx.app.log("TextureManager", texturePath + " is Null.");
+			return getTexture(defaultPath);
+		}
+	}
 
+	public Texture getTexture(String texturePath) {
+		return getTexture(texturePath, TextureEnum.BUST + "_default_01");
 	}
 
 	public Texture getMonsterTexture(String monsterName) {
-		if (textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + monsterName) != null) {
-			assetsManager.load(textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + monsterName), Texture.class);
-			assetsManager.finishLoading();
-			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + monsterName));
-		} else {
-			Gdx.app.log("TextureManager",
-					"chracterTextureMap에 " + TextureEnum.MONSTER + "_" + monsterName + " 에 해당하는 이미지가 존재하지 않습니다.");
-			return getBustTexture("default", "01");
-		}
+		return getTexture(TextureEnum.MONSTER + "_" + monsterName);
 	}
 
 	public Texture getBustTexture(String facePath) {
-		if (textureAssets.getTexturePath(facePath) != null) {
-			assetsManager.load(textureAssets.getTexturePath(facePath), Texture.class);
-			assetsManager.finishLoading();
-			return assetsManager.get(textureAssets.getTexturePath(facePath), Texture.class);
-		} else {
-			Gdx.app.log("EventScene", "chracterTextureMap에 " + facePath + " 에 해당하는 이미지가 존재하지 않습니다.");
-			return getBustTexture("default", "01");
-		}
+		return getTexture(facePath);
 	}
 
 	public Texture getBustTexture(String facePath, String faceNumber) {
-		if (textureAssets.getTexturePath(TextureEnum.BUST + "_" + facePath + "_" + faceNumber) != null) {
-			assetsManager.load(textureAssets.getTexturePath(TextureEnum.BUST + "_" + facePath + "_" + faceNumber),
-					Texture.class);
-			assetsManager.finishLoading();
-			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.BUST + "_" + facePath + "_" + faceNumber),
-					Texture.class);
-		} else {
-			Gdx.app.log("TextureManager", "chracterTextureMap에 " + facePath + faceNumber + " 에 해당하는 이미지가 존재하지 않습니다.");
-			return getBustTexture("default", "01");
-		}
+		return getTexture(TextureEnum.BUST + "_" + facePath + "_" + faceNumber);
 	}
 
 	public Texture getStatusTexture(String facePath) {
-		if (textureAssets.getTexturePath(TextureEnum.STATUS + "_" + facePath) != null) {
-			assetsManager.load(textureAssets.getTexturePath(TextureEnum.STATUS + "_" + facePath), Texture.class);
-			assetsManager.finishLoading();
-			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.STATUS + "_" + facePath), Texture.class);
-		} else {
-			Gdx.app.log("TextureManager", "TextureEnum.STATUS" + "_" + facePath + "is null");
-			// FIX
-			return getBustTexture("default", "01");
-		}
+		return getTexture(TextureEnum.STATUS + "_" + facePath);
 	}
 
 	public Texture getCharacterBodyTexture(String facePath) {
-		if (checkPreName(TextureEnum.NPC + "_" + facePath, preName[5])) {
-			preName[5] = TextureEnum.NPC + "_" + facePath;
-			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.NPC + "_" + facePath), Texture.class);
-		} else {
-			assetsManager.load(textureAssets.getTexturePath(TextureEnum.NPC + "_" + facePath), Texture.class);
-			assetsManager.finishLoading();
-			preName[5] = TextureEnum.NPC + "_" + facePath;
-			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.NPC + "_" + facePath), Texture.class);
-		}
+		if (textureAssets.getTexturePath(TextureEnum.NPC + "_" + facePath) != null) {
+			if (!checkPreName(TextureEnum.NPC + "_" + facePath, preName[5])) {
+				preName[5] = TextureEnum.NPC + "_" + facePath;
+				assetsManager.load(textureAssets.getTexturePath(preName[5]), Texture.class);
+				assetsManager.finishLoading();
+			} else {
+				preName[5] = TextureEnum.NPC + "_" + facePath;
+			}
+			return assetsManager.get(textureAssets.getTexturePath(preName[5]), Texture.class);
+		} else
+			return getTexture(preName[5]);
 	}
 
 	public Texture getFaceTexture(String facePath) {
-		assetsManager.load(textureAssets.getTexturePath(TextureEnum.FACE + "_" + facePath), Texture.class);
-		assetsManager.finishLoading();
-		return assetsManager.get(textureAssets.getTexturePath(TextureEnum.FACE + "_" + facePath), Texture.class);
-
+		return getTexture(TextureEnum.FACE + "_" + facePath);
 	}
 
 	public Texture getMonsterBattleTexture(String facePath) {
-		if (checkPreName(TextureEnum.MONSTER + "_" + facePath, preName[7])) {
-			preName[7] = TextureEnum.MONSTER + "_" + facePath;
-			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + facePath), Texture.class);
-		} else {
-			assetsManager.load(textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + facePath), Texture.class);
-			assetsManager.finishLoading();
-			preName[7] = TextureEnum.MONSTER + "_" + facePath;
-			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + facePath), Texture.class);
-		}
+		if (textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + facePath) != null) {
+			if (!checkPreName(TextureEnum.MONSTER + "_" + facePath, preName[7])) {
+				preName[7] = TextureEnum.MONSTER + "_" + facePath;
+				assetsManager.load(textureAssets.getTexturePath(preName[7]), Texture.class);
+				assetsManager.finishLoading();
+			} else {
+				preName[7] = TextureEnum.MONSTER + "_" + facePath;
+			}
+			return assetsManager.get(textureAssets.getTexturePath(preName[7]), Texture.class);
+		} else
+			return getTexture(preName[7]);
 	}
 
 	public Texture getMonsterBodyTexture(String facePath) {
-		if (checkPreName(TextureEnum.MONSTER + "_" + facePath, preName[8])) {
-			preName[8] = TextureEnum.MONSTER + "_" + facePath;
-			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + facePath), Texture.class);
-		} else {
-			assetsManager.load(textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + facePath), Texture.class);
-			assetsManager.finishLoading();
-			preName[8] = TextureEnum.MONSTER + "_" + facePath;
-			return assetsManager.get(textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + facePath), Texture.class);
-		}
+		if (textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + facePath) != null) {
+			if (!checkPreName(TextureEnum.MONSTER + "_" + facePath, preName[8])) {
+				preName[8] = TextureEnum.MONSTER + "_" + facePath;
+				assetsManager.load(textureAssets.getTexturePath(preName[8]), Texture.class);
+				assetsManager.finishLoading();
+			} else {
+				preName[8] = TextureEnum.MONSTER + "_" + facePath;
+			}
+			return assetsManager.get(textureAssets.getTexturePath(preName[8]), Texture.class);
+		} else
+			return getTexture(preName[8]);
 	}
 
 	public Texture getItemTexture(String itemPath) {
-		assetsManager.load(textureAssets.getTexturePath(TextureEnum.ITEM + "_" + "one_hand_sword"), Texture.class);
-		assetsManager.finishLoading();
-		return assetsManager.get(textureAssets.getTexturePath(TextureEnum.ITEM + "_" + "one_hand_sword"),
-				Texture.class);
+		return getTexture(TextureEnum.ITEM + "_" + "one_hand_sword");
 	}
 
 	public Texture getBackgroundTexture(String backgroundName) {
 		if (textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + backgroundName) != null) {
-			if (checkPreName(TextureEnum.BACKGROUND + "_" + backgroundName, preName[10])) {
+			if (!checkPreName(TextureEnum.BACKGROUND + "_" + backgroundName, preName[10])) {
 				preName[10] = TextureEnum.BACKGROUND + "_" + backgroundName;
-				return assetsManager.get(textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + backgroundName),
-						Texture.class);
-			} else {
-				assetsManager.load(textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + backgroundName),
-						Texture.class);
+				assetsManager.load(textureAssets.getTexturePath(preName[10]), Texture.class);
 				assetsManager.finishLoading();
+			} else {
 				preName[10] = TextureEnum.BACKGROUND + "_" + backgroundName;
-				return assetsManager.get(textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + backgroundName),
-						Texture.class);
 			}
-
-		} else {
-			Gdx.app.log("TextureManager", backgroundName + "에 해당하는 이미지가 없습니다");
-			if (checkPreName(TextureEnum.BACKGROUND + "_" + backgroundName, preName[11])) {
-				preName[11] = TextureEnum.BACKGROUND + "_" + backgroundName;
-				return assetsManager.get(textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + "prog_team_01"),
-						Texture.class);
-			} else {
-				assetsManager.load(textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + "prog_team_01"),
-						Texture.class);
-				assetsManager.finishLoading();
-				preName[11] = TextureEnum.BACKGROUND + "_" + backgroundName;
-				return assetsManager.get(textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + "prog_team_01"),
-						Texture.class);
-			}
-
-		}
+			return assetsManager.get(textureAssets.getTexturePath(preName[10]), Texture.class);
+		} else
+			return getTexture(preName[10], TextureEnum.BACKGROUND + "_" + "prog_team_01");
 	}
 
 	public Texture getBackgroundTexture(String facePath, TextureEnum textureEnum) {
-		if (checkPreName(TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum, preName[12])) {
-			preName[12] = TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum;
-			return assetsManager.get(
-					textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum),
-					Texture.class);
-		} else {
-			assetsManager.load(
-					textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum),
-					Texture.class);
-			assetsManager.finishLoading();
-			preName[12] = TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum;
-			return assetsManager.get(
-					textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum),
-					Texture.class);
-		}
-
+		if (textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum) != null) {
+			if (!checkPreName(TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum, preName[12])) {
+				preName[12] = TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum;
+				assetsManager.load(textureAssets.getTexturePath(preName[12]), Texture.class);
+				assetsManager.finishLoading();
+			} else {
+				preName[12] = TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum;
+			}
+			return assetsManager.get(textureAssets.getTexturePath(preName[12]), Texture.class);
+		} else
+			return getTexture(preName[12]);
 	}
 
 	public Texture getFaceImage(String facePath) {
-		assetsManager.load(textureAssets.getTexturePath((TextureEnum.FACE + "_" + facePath)), Texture.class);
-		assetsManager.finishLoading();
-		return assetsManager.get(textureAssets.getTexturePath(TextureEnum.FACE + "_" + facePath));
-
+		return getTexture(TextureEnum.FACE + "_" + facePath);
 	}
 
 	public Texture getSmallBattleImage(String facePath) {
-		assetsManager.load(
-				textureAssets.getTexturePath(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.SMALL_IMAGE),
-				Texture.class);
-		assetsManager.finishLoading();
-		return assetsManager
-				.get(textureAssets.getTexturePath(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.SMALL_IMAGE));
+		return getTexture(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.SMALL_IMAGE);
 	}
 
 	public Texture getBigBattleImage(String facePath) {
-		if (textureAssets.getTexturePath(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE) != null) {
-			assetsManager.load(
-					textureAssets.getTexturePath(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE),
-					Texture.class);
-			assetsManager.finishLoading();
-			return assetsManager.get(
-					textureAssets.getTexturePath(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE),
-					Texture.class);
-
-		} else {
-			Gdx.app.log("TextureManager",
-					TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE + "에 해당하는 이미지가 없습니다");
-			return getBigBattleImage("default");
-		}
+		return getTexture(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE, TextureEnum.BATTLE + "_default_" + TextureEnum.BIG_IMAGE);
 	}
-
 }
