@@ -1,7 +1,6 @@
 package com.mygdx.manager;
 
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.model.unit.Hero;
-import com.mygdx.model.unit.Status;
 
 public class PartyManager {
 	@Autowired
 	private UnitManager unitManager;
 	@Autowired
 	private PartyInfo partyInfo;
-	private Status status;
 
 	private final static int BATTLE_MEMBER_SIZE = 3;
 
@@ -73,7 +70,45 @@ public class PartyManager {
 	}
 
 	public Hero pickRandomHero() {
-		return partyInfo.getBattleMemberList().get(ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
+		return partyInfo.getBattleMemberList()
+				.get(ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
+	}
+
+	public void calLevel() {
+		for (Hero hero : getPartyList()) {
+			if (hero.getStatus().getExperience() < 0) {
+				int exp = hero.getStatus().getExperience();
+				hero.getStatus().setLevel(hero.getStatus().getLevel() - 1);
+				levelDown(hero);
+				hero.getStatus().setExperience(hero.getStatus().getMaxExperience() - exp);
+			} else if (hero.getStatus().getExperience() >= hero.getStatus().getMaxExperience()) {
+				int exp = hero.getStatus().getExperience() - hero.getStatus().getMaxExperience();
+				hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
+				levelUp();
+				hero.getStatus().setExperience(exp);
+			} else {
+
+			}
+		}
+	}
+
+	private void levelUp() {
+
+	}
+
+	private void levelDown(Hero hero) {
+		// 체력+1 공격력+1/4 주문력+1/4 방어력+1/4 항마력+1/4 민첩성+1
+		if (hero.getFacePath().equals("yongsa")) {
+			if (hero.getStatus().getHp() == hero.getStatus().getMaxHp()) {
+				hero.getStatus().setHp(hero.getStatus().getHp() - 1);
+			}
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() - 1);
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack() - 0.25));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() - 0.25));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() - 0.25));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() - 0.25));
+			hero.getStatus().setSpeed(hero.getStatus().getSpeed() - 1);
+		}
 	}
 
 	public void setCurrentSelectedHero(Hero hero) {

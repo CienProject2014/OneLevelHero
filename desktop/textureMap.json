@@ -215,7 +215,15 @@ battle_manarose_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_manarose_small.png/
 },
+<<<<<<< HEAD
+attack_swing: {
+	class: java.lang.String,
+	value: texture/animation_sheet/attack_swing.png/
+},
+battle_elementalwater_big: {
+=======
 bg_winterfall_02: {
+>>>>>>> origin/HEAD
 	class: java.lang.String,
 	value: texture/background/bg_winterfall_02.png/
 },
@@ -839,7 +847,15 @@ bust_the_01: {
 	class: java.lang.String,
 	value: texture/character/bust_the_01.png/
 },
+<<<<<<< HEAD
+attack_cutting: {
+	class: java.lang.String,
+	value: texture/animation_sheet/attack_cutting.png/
+},
+buff_en_fly: {
+=======
 bg_redrose_castle_castle: {
+>>>>>>> origin/HEAD
 	class: java.lang.String,
 	value: texture/background/bg_redrose_castle_castle.png/
 },
@@ -2531,7 +2547,15 @@ battle_moeraphim_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_moeraphim_small.png/
 },
+<<<<<<< HEAD
+gale: {
+	class: java.lang.String,
+	value: texture/animation_sheet/gale.png/
+},
+dungeonui_map_02: {
+=======
 buff_de_defenseless: {
+>>>>>>> origin/HEAD
 	class: java.lang.String,
 	value: texture/icon/buff_de_defenseless.png/
 },
