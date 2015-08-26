@@ -29,6 +29,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.item.Weapon;
@@ -61,6 +62,8 @@ public class BattleStage extends BaseOneLevelStage {
 	private StorySectionManager storySectionManager;
 	@Autowired
 	private AnimationManager animationManager;
+	@Autowired
+	private SoundManager soundManager;
 
 	// RMenuButton
 	private ImageButton attackButton, skillButton, itemButton, defenseButton, waitButton, escapeButton;
@@ -93,6 +96,7 @@ public class BattleStage extends BaseOneLevelStage {
 		if (battleManager.getCurrentAttackUnit() instanceof Monster) {
 			doMonsterTurn(delta);
 		}
+
 		if (animationManager.isPlayable()) {
 			playAnimation(delta);
 		}
@@ -183,6 +187,7 @@ public class BattleStage extends BaseOneLevelStage {
 			if (battleManager.getBattleState().equals(BattleStateEnum.PLAYER_WIN)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 				movingManager.goPreviousPosition();
+				soundManager.setSoundByPathAndPlay("notice_victory");
 				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_END, selectedMonster.getFacePath());
 			} else if (battleManager.getBattleState().equals(BattleStateEnum.GAME_OVER)) {
 				screenFactory.show(ScreenEnum.GAME_OVER);
@@ -366,8 +371,8 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.gameObjectPopup.setListenerFactory(listenerFactory);
 				battleManager.gameObjectPopup.setConstantsAssets(constantsAssets);
 				checkRunAway();
-				battleManager.gameObjectPopup
-						.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent() + "%입니다");
+				battleManager.gameObjectPopup.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent()
+						+ "%입니다");
 				addActor(battleManager.gameObjectPopup);
 				battleManager.gameObjectPopup.setVisible(true);
 			}
@@ -419,11 +424,11 @@ public class BattleStage extends BaseOneLevelStage {
 		super.touchUp(screenX, screenY, pointer, button);
 		if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 			if (!battleManager.isSkill()) {
-				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster,
-						battleManager.getGridHitbox().getPreviousHitArea());
+				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
+						.getGridHitbox().getPreviousHitArea());
 			} else {
-				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster,
-						battleManager.getCurrentSelectedSkill().getSkillPath());
+				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
+						.getCurrentSelectedSkill().getSkillPath());
 				battleManager.setSkill(false);
 			}
 			battleManager.setShowGrid(false);
@@ -463,8 +468,8 @@ public class BattleStage extends BaseOneLevelStage {
 		turnSmallImageMap.put(selectedMonster.getFacePath(),
 				new Image(textureManager.getSmallBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			turnSmallImageMap.put(hero.getFacePath(),
-					new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
+			turnSmallImageMap
+					.put(hero.getFacePath(), new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
 		}
 	}
 

@@ -13,12 +13,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
-import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.enums.PositionEnum;
@@ -59,7 +59,10 @@ public class FieldStage extends BaseOneLevelStage {
 		Gdx.app.log("FieldStage", "FieldType - " + fieldManager.getFieldType());
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("MovingStage");
-		movingLabel = new TextButton("", StaticAssets.skin);
+		TextureRegionDrawable fieldLine = new TextureRegionDrawable(new TextureRegion(
+				textureManager.getTexture("field_line")));
+		TextButtonStyle buttonStyle = new TextButtonStyle(fieldLine, fieldLine, fieldLine, uiComponentAssets.getFont());
+		movingLabel = new TextButton("", buttonStyle);
 		movingLabel.setColor(Color.WHITE);
 
 		stage = new Stage();

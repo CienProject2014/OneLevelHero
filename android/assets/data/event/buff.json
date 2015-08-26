@@ -1,0 +1,48 @@
+{
+	"burn" : {
+		"name" : "화상",
+		"buffPath" : "buff_de_burn",
+		"duration" : 120,
+		"stackScope" : 1,
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"decrease_hp_iterative", "decrease_attack"
+		],
+		"decreaseAttackPercent" : "30",
+		"decreaseHpPeriod" : "30",
+		"decreaseHpMagicPercent" : "10",
+		"decreaseHpOffset" : "20"
+	},
+	"cold" : {
+		"name" : "빙결",
+		"buffPath" : "buff_de_frozen",
+		"duration" : "60",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"bleeding" : {
+		"name" : "출혈",
+		"buffPath" : "buff_de_bleeding",
+		"duration" : 120,
+		"stackScope" : 1,
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"decrease_hp_iterative"
+		],
+		"decreaseHpPeriod" : "30",
+		"decreaseHpAttackPercent" : "20"
+	},
+	"sturn" : {
+		"name" : "기절",
+		"buffPath" : "buff_de_sturn",
+		"duration" : "60",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+}

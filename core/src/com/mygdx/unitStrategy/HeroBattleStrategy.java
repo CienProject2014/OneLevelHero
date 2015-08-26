@@ -2,8 +2,14 @@ package com.mygdx.unitStrategy;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.SkillAssets;
+import com.mygdx.enums.BuffEffectEnum;
 import com.mygdx.enums.SkillEffectEnum;
+import com.mygdx.manager.TimeManager;
+import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
@@ -11,13 +17,18 @@ import com.mygdx.model.unit.Unit;
 public class HeroBattleStrategy implements BattleStrategy {
 	private final String TAG = "HeroBattleStrategy";
 
+	@Autowired
+	SkillAssets skillAssets;
+	@Autowired
+	TimeManager timeManager;
+
 	@Override
-	public void attack(Unit attackHero, Unit defender, int[][] hitArea) {
+	public void attack(Unit attacker, Unit defender, int[][] hitArea) {
 		Monster monster = (Monster) defender;
 
 		float factor = 1.0f;
-		int attackDmg = (int) attackHero.getStatus().getAttack();
-		int defenseValue = (int) defender.getStatus().getDefense();
+		int attackDmg = attacker.getStatus().getAttack();
+		int defenseValue = defender.getStatus().getDefense();
 		int defenderHp = defender.getStatus().getHp();
 
 		int realDmg = 0;
@@ -35,13 +46,17 @@ public class HeroBattleStrategy implements BattleStrategy {
 			}
 		}
 
+		if (realDmg < 1) {
+			realDmg = 1;
+		}
+
 		if (defenderHp - realDmg > 0) {
 			defender.getStatus().setHp(defenderHp - realDmg);
 		} else {
 			defender.getStatus().setHp(0);
 		}
 
-		Gdx.app.log(TAG, attackHero.getName() + "이(가) " + defender.getName() + "을(를) 공격하였습니다!");
+		Gdx.app.log(TAG, attacker.getName() + "이(가) " + defender.getName() + "을(를) 공격하였습니다!");
 	}
 
 	@Override
@@ -74,30 +89,31 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
-	private void applyEffect(Unit attackHero, Unit defender, Skill skill) {
+	private void applyEffect(Unit attacker, Unit defender, Skill skill) {
 		switch (SkillEffectEnum.findSkillEffectEnum(skill.getSkillEffectType())) {
 		case ADD_CONDITIONAL_STATE:
 			break;
 		case ADD_STATE:
+			addState(attacker, defender, skill);
 			break;
 		case ATTACK:
-			basicAttack(attackHero, defender, skill.getSkillFactor(), skill.getMagicFactor());
+			basicAttack(attacker, defender, skill.getSkillFactor(), skill.getMagicFactor());
 			break;
 		case CHANGE_GAUGE:
-			changeGauge(attackHero, defender, skill.getMagicFactor());
+			changeGauge(attacker, defender, skill.getMagicFactor());
 			break;
 		case CONDITIONAL_ATTACK:
-			conditionalAttack(attackHero, defender, skill.getOneRegex(), skill.getSkillFactor(),
-					skill.getMagicFactor());
+			conditionalAttack(attacker, defender, skill.getOneRegex(), skill.getSkillFactor(), skill.getMagicFactor());
 			break;
 		case DUPLICATED_ATTACK:
-			duplicatedAttack(attackHero, defender, skill.getDuplicateNumber(), skill.getSkillFactor(),
+			duplicatedAttack(attacker, defender, skill.getDuplicateNumber(), skill.getSkillFactor(),
 					skill.getMagicFactor());
 			break;
 		case HEAL:
-			heal(attackHero, defender, skill.getMagicFactor());
+			heal(attacker, defender, skill.getMagicFactor());
 			break;
 		case REMOVE_STATE:
+			removeState(attacker, defender, skill);
 			break;
 		default:
 			break;
@@ -105,19 +121,19 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
-	private void basicAttack(Unit attackHero, Unit defender, float skillFactor, float magicFactor) {
+	private void basicAttack(Unit attacker, Unit defender, float skillFactor, float magicFactor) {
 		int defenderHp = defender.getStatus().getHp();
-		int skillDamage = (int) attackHero.getStatus().getAttack();
-		int skillDefense = (int) defender.getStatus().getDefense();
+		int skillDamage = attacker.getStatus().getAttack();
+		int skillDefense = defender.getStatus().getDefense();
 		float realSkillDamage = (int) (skillDamage - skillDefense) * skillFactor / 100f;
-		if (realSkillDamage <= 1) {
+		if (realSkillDamage < 1) {
 			realSkillDamage = 1;
 		}
 
-		int magicDamage = (int) attackHero.getStatus().getMagicAttack();
-		int magicDefense = (int) defender.getStatus().getMagicDefense();
+		int magicDamage = attacker.getStatus().getMagicAttack();
+		int magicDefense = defender.getStatus().getMagicDefense();
 		float realMagicDamage = (magicDamage - magicDefense) * magicFactor / 100f;
-		if (realMagicDamage <= 1) {
+		if (realMagicDamage < 1) {
 			realMagicDamage = 1;
 		}
 
@@ -130,41 +146,29 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
-	private void duplicatedAttack(Unit attackHero, Unit defender, int duplicateNumber, float skillFactor,
+	private void duplicatedAttack(Unit attacker, Unit defender, int duplicateNumber, float skillFactor,
 			float magicFactor) {
 		if (duplicateNumber <= 1) {
 			Gdx.app.log(TAG, "잘못된 스킬 설계: duplicatedAttack의 횟수가 0 또는 1 입니다.");
 		}
 
 		for (int i = 0; i < duplicateNumber; i++) {
-			basicAttack(attackHero, defender, skillFactor, magicFactor);
+			basicAttack(attacker, defender, skillFactor, magicFactor);
 		}
 	}
 
-	private void conditionalAttack(Unit attackHero, Unit defender, String oneRegex, float skillFactor,
+	private void conditionalAttack(Unit attacker, Unit defender, String oneRegex, float skillFactor,
 			float magicFactor) {
 		boolean condition = true;
 
 		// TODO: oneRegex를 분석해서 조건을 충족시키는지 확인하는 로직 필요
 
 		if (condition) {
-			basicAttack(attackHero, defender, skillFactor, magicFactor);
+			basicAttack(attacker, defender, skillFactor, magicFactor);
 		}
 	}
 
-	private void addState(Unit attackHero, Unit defender, Skill skill) {
-
-	}
-
-	private void removeState(Unit attackHero, Unit defender, Skill skill) {
-
-	}
-
-	private void addConditionalState(Unit attackHero, Unit defender, Skill skill) {
-
-	}
-
-	private void changeGauge(Unit attackHero, Unit defender, float magicFactor) {
+	private void changeGauge(Unit attacker, Unit defender, float magicFactor) {
 		// TODO: 현재는 magicFactor만큼 깎도록 구현
 		int gauge = defender.getGauge();
 		float gaugeDecrement = gauge * (magicFactor / 100f);
@@ -174,7 +178,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
-	private void heal(Unit attackHero, Unit defender, float magicFactor) {
+	private void heal(Unit attacker, Unit defender, float magicFactor) {
 		int healAmount = (int) (defender.getStatus().getMaxHp() * (magicFactor / 100f));
 		int hp = defender.getStatus().getHp();
 		int maxHp = defender.getStatus().getMaxHp();
@@ -184,6 +188,104 @@ public class HeroBattleStrategy implements BattleStrategy {
 		} else {
 			defender.getStatus().setHp(hp + healAmount);
 		}
+	}
+
+	private void addState(Unit attacker, Unit defender, Skill skill) {
+		Buff buff = skillAssets.getBuff(skill.getBuffName());
+		if (buff == null) {
+			return;
+		}
+		buff.setAttacker(attacker);
+
+		if (defender.getBuffList().contains(buff)) {
+			defender.getBuffList().remove(buff);
+		}
+
+		defender.getBuffList().add(buff);
+
+		applyBuff(defender);
+	}
+
+	private void removeState(Unit attacker, Unit defender, Skill skill) {
+		if (skill.getBuffName().equals("all")) {
+			defender.getBuffList().clear();
+		} else {
+
+		}
+	}
+
+	private void addConditionalState(Unit attacker, Unit defender, Skill skill) {
+
+	}
+
+	private void applyBuff(Unit defender) {
+
+		ArrayList<Buff> cancelList = new ArrayList<Buff>();
+
+		int deltaTime = timeManager.getPreTime();
+
+		for (Buff buff : defender.getBuffList()) {
+			if (buff.getFlyingTime() >= buff.getDuration()) {
+				cancelList.add(buff);
+				continue;
+			}
+
+			buff.setPreFlyingTime(buff.getFlyingTime());
+
+			if (buff.getFlyingTime() + deltaTime > buff.getDuration()) {
+				float overVal = (buff.getFlyingTime() + deltaTime) - buff.getDuration();
+				buff.addFlyingTime((int) (deltaTime - overVal));
+			} else {
+				buff.addFlyingTime(deltaTime);
+			}
+
+			applyAllBuffEffect(defender, buff);
+
+		}
+
+		for (Buff removableBuff : cancelList) {
+			removableBuff.setFlyingTime(0);
+			defender.getBuffList().remove(removableBuff);
+		}
+
+	}
+
+	private void applyAllBuffEffect(Unit defender, Buff buff) {
+		for (String buffEffect : buff.getBuffEffectList()) {
+			switch (BuffEffectEnum.findBuffEffectEnum(buffEffect)) {
+			case BLOCK_ACTION:
+				blockAction(defender);
+				break;
+			case DECREASE_ATTACK:
+				break;
+			case DECREASE_HP_ITERATIVE:
+				decreaseHpIterative(defender, buff);
+				break;
+			case DECREASE_MAGIC_ATTACK:
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	private void blockAction(Unit defender) {
+		defender.setGauge(0);
+	}
+
+	private void decreaseHpIterative(Unit defender, Buff buff) {
+		float factor = ((float) buff.getFlyingTime() - buff.getPreFlyingTime()) / buff.getDecreaseHpPeriod();
+		float attackerMagicDamage = buff.getAttacker().getStatus().getMagicAttack()
+				* (buff.getDecreaseHpMagicPercent() / 100.0f);
+		float attackerAttackDamage = buff.getAttacker().getStatus().getAttack()
+				* (buff.getDecreaseHpAttackPercent() / 100.0f);
+		float delta = factor * (attackerMagicDamage + attackerAttackDamage) + buff.getDecreaseHpOffset();
+		defender.getStatus().setHp((int) (defender.getStatus().getHp() - delta));
+	}
+
+	@Override
+	public void runBuffEffect(Unit defender) {
+		applyBuff(defender);
 	}
 
 }

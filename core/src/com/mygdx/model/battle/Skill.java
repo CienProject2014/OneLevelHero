@@ -10,6 +10,7 @@ public class Skill {
 	private int magicFactor;
 	private int duplicateNumber;
 	private String[] effectNameList;
+	private String buffName;
 	private String oneRegex;
 
 	private int costCasting;
@@ -154,6 +155,14 @@ public class Skill {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getBuffName() {
+		return buffName;
+	}
+
+	public void setBuffName(String buffName) {
+		this.buffName = buffName;
 	}
 
 }
