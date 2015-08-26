@@ -30,7 +30,30 @@
       ],
       "physicsPropertiesVO": {},
       "sceneName": "character_change_scene"
-    }, {
+    },
+    {
+
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "redrose_castle_scene"
+    },
+    {
+
+      "ambientColor": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "physicsPropertiesVO": {},
+      "sceneName": "vonichea_scene"
+    },
+    {
       "ambientColor": [
         0.5,
         0.5,
@@ -59,6 +82,7 @@
       
      
     {
+    
       "ambientColor": [
         0.5,
         0.5,
@@ -308,16 +332,6 @@
       ],
       "physicsPropertiesVO": {},
       "sceneName": "cobweb_inn_scene"
-    },
-    {
-      "ambientColor": [
-        0.5,
-        0.5,
-        0.5,
-        1
-      ],
-      "physicsPropertiesVO": {},
-      "sceneName": "redrose_castle_scene"
     },
     {
       "ambientColor": [

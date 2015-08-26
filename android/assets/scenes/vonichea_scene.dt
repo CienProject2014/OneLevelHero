@@ -1,9 +1,9 @@
 {
-  "sceneName": "redrose_castle_scene",
+  "sceneName": "vonichea_scene",
   "composite": {
     "sImages": [
       {
-        "itemIdentifier": "background",
+        "itemIdentifier": "background01",
         "layerName": "Default",
         "tint": [
           1,
@@ -11,28 +11,11 @@
           1,
           1
         ],
-        "imageName": "bgredrosecastle"
+        "imageName": "vonichea-left0002-------0"
       },
       {
-        "itemIdentifier": "redrose_castle_peasanthouse02",
-        "x": 1502,
-        "y": 645,
-        "zIndex": 4,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "imageName": "redrose-right0000-------3"
-      }
-    ],
-    "sComposites": [
-      {
-        "itemIdentifier": "redrose_castle_castle",
-        "x": 2844,
-        "y": 577.00006,
+        "itemIdentifier": "background02",
+        "x": 1920,
         "zIndex": 1,
         "layerName": "Default",
         "tint": [
@@ -41,36 +24,14 @@
           1,
           1
         ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "redrose-right0001-------2"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
+        "imageName": "vonichea-right0002-------0"
+      }
+    ],
+    "sComposites": [
       {
-        "itemIdentifier": "redrose_castle_cathedral",
-        "x": 2298,
-        "y": 564.00006,
+        "itemIdentifier": "vonichea_inn",
+        "x": 3028,
+        "y": 624,
         "zIndex": 2,
         "layerName": "Default",
         "tint": [
@@ -89,7 +50,7 @@
                 1,
                 1
               ],
-              "imageName": "redrose-right0002-------1"
+              "imageName": "vonichea-right0001-------1"
             }
           ],
           "layers": [
@@ -106,9 +67,9 @@
         }
       },
       {
-        "itemIdentifier": "redrose_castle_peasanthouse01",
-        "x": 3313,
-        "y": 182,
+        "itemIdentifier": "vonichea_square",
+        "x": 2723,
+        "y": 332,
         "zIndex": 3,
         "layerName": "Default",
         "tint": [
@@ -127,7 +88,7 @@
                 1,
                 1
               ],
-              "imageName": "redrose-right0000-------3"
+              "imageName": "vonichea-right0000-------2"
             }
           ],
           "layers": [
@@ -144,9 +105,47 @@
         }
       },
       {
-        "itemIdentifier": "redrose_castle_inn",
-        "x": 896,
-        "y": 740,
+        "itemIdentifier": "vonichea_dock",
+        "x": 785,
+        "y": 663,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "vonichea-left0001-------1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "vonichea_grocery",
+        "x": 1217,
+        "y": 295,
         "zIndex": 5,
         "layerName": "Default",
         "tint": [
@@ -165,83 +164,7 @@
                 1,
                 1
               ],
-              "imageName": "redrose-left0003-------1"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "7to2",
-        "x": 610.00006,
-        "y": 724,
-        "zIndex": 6,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "redrose-left0001-------3"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "7to22",
-        "x": 328.99997,
-        "y": 559.00006,
-        "zIndex": 7,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "redrose-left0000-------4"
+              "imageName": "vonichea-left0000-------2"
             }
           ],
           "layers": [
@@ -261,7 +184,7 @@
         "itemIdentifier": "camera_right",
         "x": 1780,
         "y": 650,
-        "zIndex": 8,
+        "zIndex": 6,
         "layerName": "Default",
         "tint": [
           1,
@@ -296,10 +219,10 @@
         }
       },
       {
-        "itemIdentifier": "camera_right",
+        "itemIdentifier": "camera_left",
         "x": 3700,
         "y": 650,
-        "zIndex": 9,
+        "zIndex": 7,
         "layerName": "Default",
         "tint": [
           1,

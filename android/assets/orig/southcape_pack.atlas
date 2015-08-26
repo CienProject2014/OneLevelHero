@@ -1,39 +1,89 @@
+
 southcape_pack.png
 size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-bgsouthcape1
+bgsouthcape
   rotate: false
-  xy: 2, 270
+  xy: 2, 505
   size: 3840, 1080
   orig: 3840, 1080
   offset: 0, 0
   index: -1
-invenuipage01
+southcape-left0000-------6
   rotate: false
-  xy: 126, 248
-  size: 20, 20
-  orig: 20, 20
+  xy: 2, 376
+  size: 281, 127
+  orig: 281, 127
   offset: 0, 0
   index: -1
-invenuiup
+southcape-left0003-------3
+  rotate: false
+  xy: 2, 166
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+southcape-left0004-------2
+  rotate: false
+  xy: 409, 423
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+southcape-left0005-------1
+  rotate: false
+  xy: 2, 84
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+southcape-right0000-------8
+  rotate: false
+  xy: 2, 248
+  size: 281, 126
+  orig: 281, 126
+  offset: 0, 0
+  index: -1
+southcape-right0001-------7
+  rotate: false
+  xy: 409, 341
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+southcape-right0002-------6
+  rotate: false
+  xy: 611, 423
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+southcape-right0006-------2
   rotate: false
   xy: 2, 2
-  size: 30, 30
-  orig: 30, 30
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+southcape-right0007-------1
+  rotate: false
+  xy: 611, 341
+  size: 200, 80
+  orig: 200, 80
   offset: 0, 0
   index: -1
 townuileft
   rotate: false
-  xy: 2, 34
+  xy: 3844, 1351
   size: 122, 234
   orig: 122, 234
   offset: 0, 0
   index: -1
 townuiright
   rotate: false
-  xy: 3844, 1116
+  xy: 285, 269
   size: 122, 234
   orig: 122, 234
   offset: 0, 0
