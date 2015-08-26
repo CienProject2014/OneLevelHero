@@ -1,146 +1,158 @@
 {
-bgm_blackwood_forest_dungeon: {
+arrow: {
 	class: java.lang.String,
-	value: music/bgm_blackwood_forest_dungeon.mp3/
+	value: sound/arrow.mp3/
 },
-bgm_temple_of_moerae: {
+thunder: {
 	class: java.lang.String,
-	value: music/bgm_temple_of_moerae.mp3/
+	value: sound/thunder.mp3/
 },
-bgm_elven_forest: {
+smile: {
 	class: java.lang.String,
-	value: music/bgm_elven_forest.mp3/
+	value: sound/smile.mp3/
 },
-bgm_field_03: {
+sleep: {
 	class: java.lang.String,
-	value: music/bgm_field_03.mp3/
+	value: sound/sleep.mp3/
 },
-bgm_field_02: {
+notice_level_up: {
 	class: java.lang.String,
-	value: music/bgm_field_02.mp3/
+	value: sound/notice_level_up.mp3/
 },
-tamsu03: {
+freeze: {
 	class: java.lang.String,
-	value: music/tamsu03.mp3/
+	value: sound/freeze.mp3/
 },
-bgm_boniche: {
+hand_of_death: {
 	class: java.lang.String,
-	value: music/bgm_boniche.mp3/
+	value: sound/hand_of_death.mp3/
 },
-bgm_field_01: {
+soul_cover: {
 	class: java.lang.String,
-	value: music/bgm_field_01.mp3/
+	value: sound/soul_cover.mp3/
 },
-bgm_winterfall: {
+icearrow: {
 	class: java.lang.String,
-	value: music/bgm_winterfall.mp3/
+	value: sound/icearrow.mp3/
 },
-bgm_redrose_castle: {
+whisper_of_death: {
 	class: java.lang.String,
-	value: music/bgm_redrose_castle.mp3/
+	value: sound/whisper_of_death.mp3/
 },
-bgm_mirage_port: {
+multishoot: {
 	class: java.lang.String,
-	value: music/bgm_mirage_port.mp3/
+	value: sound/multishoot.mp3/
 },
-bgm_blackwood: {
+escape_success: {
 	class: java.lang.String,
-	value: music/bgm_blackwood.mp3/
+	value: sound/escape_success.mp3/
 },
-bgm_cave_of_cape_of_tempest: {
+handing: {
 	class: java.lang.String,
-	value: music/bgm_cave_of_cape_of_tempest.mp3/
+	value: sound/handing.mp3/
 },
-bgm_cobweb: {
+heal: {
 	class: java.lang.String,
-	value: music/bgm_cobweb.mp3/
+	value: sound/heal.mp3/
 },
-bgm_southcape: {
+lock: {
 	class: java.lang.String,
-	value: music/bgm_southcape.mp3/
+	value: sound/lock.mp3/
 },
-bgm_credit: {
+smash: {
 	class: java.lang.String,
-	value: music/bgm_credit.mp3/
+	value: sound/smash.mp3/
 },
-bgm_vaical_castle: {
+pierearrow: {
 	class: java.lang.String,
-	value: music/bgm_vaical_castle.mp3/
+	value: sound/pierearrow.mp3/
 },
-bgm_golden_lake: {
+rummage: {
 	class: java.lang.String,
-	value: music/bgm_golden_lake.mp3/
+	value: sound/rummage.mp3/
 },
-bgm_kadilla_castle: {
+lastjudge: {
 	class: java.lang.String,
-	value: music/bgm_kadilla_castle.mp3/
+	value: sound/lastjudge.mp3/
 },
-bgm_cape_of_tempest: {
+meeting: {
 	class: java.lang.String,
-	value: music/bgm_cape_of_tempest.mp3/
+	value: sound/meeting.mp3/
 },
-bgm_bossbattle: {
+powerblade: {
 	class: java.lang.String,
-	value: music/bgm_bossbattle.mp3/
+	value: sound/powerblade.mp3/
 },
-bgm_battle: {
+unlock: {
 	class: java.lang.String,
-	value: music/bgm_battle.mp3/
+	value: sound/unlock.mp3/
 },
-bgm_field_05: {
+blizzard: {
 	class: java.lang.String,
-	value: music/bgm_field_05.mp3/
+	value: sound/blizzard.mp3/
 },
-bgm_field_04: {
+open_box: {
 	class: java.lang.String,
-	value: music/bgm_field_04.mp3/
+	value: sound/open_box.mp3/
 },
-bgm_middle_ridge: {
+stap: {
 	class: java.lang.String,
-	value: music/bgm_middle_ridge.mp3/
+	value: sound/stap.mp3/
 },
-bgm_mountain_titania_dungeon: {
+switch_lever: {
 	class: java.lang.String,
-	value: music/bgm_mountain_titania_dungeon.mp3/
+	value: sound/switch_lever.mp3/
 },
-fights: {
+cross: {
 	class: java.lang.String,
-	value: music/fights.mp3/
+	value: sound/cross.mp3/
 },
-mihok_forest: {
+notice_collegue_turn: {
 	class: java.lang.String,
-	value: music/mihok_forest.mp3/
+	value: sound/notice_collegue_turn.mp3/
 },
-bgm_devil_castle: {
+snipe: {
 	class: java.lang.String,
-	value: music/bgm_devil_castle.mp3/
+	value: sound/snipe.mp3/
 },
-seven_changer: {
+eat_snack: {
 	class: java.lang.String,
-	value: music/seven_changer.mp3/
+	value: sound/eat_snack.mp3/
 },
-bgm_cave_of_succubus: {
+notice_enemy_turn: {
 	class: java.lang.String,
-	value: music/bgm_cave_of_succubus.mp3/
+	value: sound/notice_enemy_turn.mp3/
 },
-bgm_oberon: {
+landing: {
 	class: java.lang.String,
-	value: music/bgm_oberon.mp3/
+	value: sound/landing.mp3/
 },
-bgm_prologue: {
+spiritbullet: {
 	class: java.lang.String,
-	value: music/bgm_prologue.mp3/
+	value: sound/spiritbullet.mp3/
 },
-bgm_crystallized_valley: {
+flying: {
 	class: java.lang.String,
-	value: music/bgm_crystallized_valley.mp3/
+	value: sound/flying.mp3/
 },
-bgm_ancient_library: {
+monster_magic_11: {
 	class: java.lang.String,
-	value: music/bgm_ancient_library.mp3/
+	value: sound/monster_magic_11.mp3/
 },
-bgm_title: {
+rundirt: {
 	class: java.lang.String,
-	value: music/bgm_title.mp3/
+	value: sound/rundirt.mp3/
+},
+slash: {
+	class: java.lang.String,
+	value: sound/slash.mp3/
+},
+eletric_shock: {
+	class: java.lang.String,
+	value: sound/eletric_shock.mp3/
+},
+notice_victory: {
+	class: java.lang.String,
+	value: sound/notice_victory.mp3/
 }
 }

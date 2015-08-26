@@ -46,7 +46,7 @@ public class MusicAssets implements FileAssetsInitializable {
 		if (Gdx.app.getType() == ApplicationType.Android) {
 			soundEffectMap = json.fromJson(HashMap.class, Gdx.files.internal("sound/soundMap.json"));
 		} else {
-			directoryMusicMapper(soundEffectMap, "music");
+			directoryMusicMapper(soundEffectMap, "sound");
 			soundfile.writeString(json.prettyPrint(soundEffectMap), false);
 			soundEffectMap = json.fromJson(HashMap.class, Gdx.files.internal("sound/soundMap.json"));
 		}
