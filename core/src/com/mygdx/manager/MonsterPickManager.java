@@ -49,7 +49,6 @@ public class MonsterPickManager {
 	}
 
 	private String selectMonster() {
-
 		List<String> monsterStrings = null;
 
 		if (fieldManager.isInField()) {
