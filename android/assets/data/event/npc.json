@@ -2493,8 +2493,7 @@
         "eventState": "not_opened",
         "eventType": "set_time",
         "eventComponent": [
-          "5",
-          "다음날"
+          "5"
         ]
       },
       "20": {
