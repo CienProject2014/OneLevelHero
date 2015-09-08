@@ -15,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.WorldMapAssets;
-import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.VillageDirectionEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
@@ -25,9 +24,9 @@ import com.mygdx.manager.CameraManager.CameraStateEnum;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TimeManager;
-import com.mygdx.model.surroundings.Building;
-import com.mygdx.model.surroundings.NodeConnection;
-import com.mygdx.model.surroundings.Village;
+import com.mygdx.model.location.Building;
+import com.mygdx.model.location.NodeConnection;
+import com.mygdx.model.location.Village;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 public class VillageStage extends BaseOverlapStage {
@@ -91,9 +90,8 @@ public class VillageStage extends BaseOverlapStage {
 		Gdx.app.log("VillageStage", String.valueOf(positionManager.getCurrentNodeName()));
 		setVillageScene(positionManager, nodeAssets);
 		setArrow();
-		if (positionManager.getBeforePositionType().equals(PositionEnum.FIELD)) {
-			setArrowDirection();
-		}
+		setArrowDirection();
+
 		setBuildingButton();
 		addActor(sceneLoader.getRoot());
 		VillageDirectionEnum villageDirection = villageInfo.getVillageDirection();

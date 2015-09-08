@@ -1,25 +1,49 @@
 package com.mygdx.enums;
 
-public enum PositionEnum {
-	BATTLE_EVENT("battle_event"), NODE("node"), SUB_NODE("sub_node"), FIELD("field"), NODE_EVENT(
-			"node_event"), SUB_NODE_EVENT("sub_node_event"), FIELD_EVENT("field_event"), LOG("log"), WORLD_MAP(
-					"world_map"), DUNGEON("dungeon");
-	private String positionEnumString;
+public class PositionEnum {
+	public enum EventPosition {
+		NONE("none"), BATTLE("battle"), WORLD_MAP("world_map"), LOG("log"), GREETING("greeting");
 
-	PositionEnum(String positionEnumString) {
-		this.positionEnumString = positionEnumString;
-	}
+		private String eventPositionString;
 
-	@Override
-	public String toString() {
-		return positionEnumString;
-	}
-
-	public static PositionEnum findPlaceEnum(String positionEnumString) {
-		for (PositionEnum positionEnum : PositionEnum.values()) {
-			if (positionEnum.toString().equals(positionEnumString))
-				return positionEnum;
+		EventPosition(String eventPositionString) {
+			this.eventPositionString = eventPositionString;
 		}
-		return null;
+
+		@Override
+		public String toString() {
+			return eventPositionString;
+		}
+		public static EventPosition findPlaceEnum(String positionEnumString) {
+			for (EventPosition eventPositionType : EventPosition.values()) {
+				if (eventPositionType.toString().equals(positionEnumString))
+					return eventPositionType;
+			}
+			return null;
+		}
+
+	}
+
+	public enum LocatePosition {
+		NODE("node"), SUB_NODE("sub_node"), FIELD("field"), DUNGEON("dungeon");
+
+		private String positionEnumString;
+
+		LocatePosition(String positionEnumString) {
+			this.positionEnumString = positionEnumString;
+		}
+
+		@Override
+		public String toString() {
+			return positionEnumString;
+		}
+
+		public static LocatePosition findPlaceEnum(String positionEnumString) {
+			for (LocatePosition positionType : LocatePosition.values()) {
+				if (positionType.toString().equals(positionEnumString))
+					return positionType;
+			}
+			return null;
+		}
 	}
 }

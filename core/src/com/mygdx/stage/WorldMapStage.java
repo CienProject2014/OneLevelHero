@@ -16,9 +16,9 @@ import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
-import com.mygdx.model.surroundings.DungeonEntrance;
-import com.mygdx.model.surroundings.Fork;
-import com.mygdx.model.surroundings.Village;
+import com.mygdx.model.location.DungeonEntrance;
+import com.mygdx.model.location.Fork;
+import com.mygdx.model.location.Village;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 

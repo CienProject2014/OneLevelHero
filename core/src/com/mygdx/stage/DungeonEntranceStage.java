@@ -23,8 +23,8 @@ import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
-import com.mygdx.model.surroundings.DungeonEntrance;
-import com.mygdx.model.surroundings.NodeConnection;
+import com.mygdx.model.location.DungeonEntrance;
+import com.mygdx.model.location.NodeConnection;
 
 /**
  * @author Velmont

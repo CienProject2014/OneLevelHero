@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.enums.PositionEnum;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
@@ -34,7 +33,6 @@ public class GoForwardFieldButtonListener extends ClickListener {
 		if (!fieldManager.isInField()) {
 			String node = fieldManager.getDestinationNode();
 			soundManager.setSoundByUseAndPlay("move_arrow");
-			positionManager.setBeforePositionType(PositionEnum.FIELD);
 			movingManager.goToNode(node);
 			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, node);
 		}

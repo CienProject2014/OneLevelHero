@@ -5,13 +5,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.FieldTypeEnum;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.surroundings.Dungeon;
-import com.mygdx.model.surroundings.DungeonEntrance;
-import com.mygdx.model.surroundings.Fork;
-import com.mygdx.model.surroundings.MonsterField;
-import com.mygdx.model.surroundings.Village;
+import com.mygdx.enums.WorldNodeEnum;
+import com.mygdx.model.location.Building;
+import com.mygdx.model.location.Dungeon;
+import com.mygdx.model.location.DungeonEntrance;
+import com.mygdx.model.location.Fork;
+import com.mygdx.model.location.MonsterField;
+import com.mygdx.model.location.SubNode;
+import com.mygdx.model.location.Village;
 import com.mygdx.util.JsonParser;
 
 public class NodeAssets implements JsonAssetsInitializable {
@@ -35,6 +39,22 @@ public class NodeAssets implements JsonAssetsInitializable {
 		for (MonsterField monsterField : monsterFieldList) {
 			monsterFieldMap.put(monsterField.getFieldType(), monsterField.getFieldMonsterList());
 		}
+	}
+
+	public SubNode getSubNodeInfo(WorldNodeEnum.NodeType nodeType, String nodeName, String subNodeName) {
+		switch (nodeType) {
+			case VILLAGE :
+				return getBuildingByName(nodeName, subNodeName);
+			case DUNGEON_ENTRANCE :
+				return getDungeonByName(subNodeName);
+			default :
+				Gdx.app.log("NodeAssets", "nodeType정보 오류 ");
+				return null;
+		}
+	}
+
+	public Building getBuildingByName(String nodeName, String buildingName) {
+		return villageMap.get(nodeName).getBuilding().get(buildingName);
 	}
 
 	public Map<String, DungeonEntrance> getDungeonEntranceMap() {

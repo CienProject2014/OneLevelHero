@@ -17,6 +17,7 @@ import com.mygdx.model.unit.Unit;
 public class BattleInfo {
 	private Monster currentMonster;
 	private BattleStateEnum battleState;
+	private String backgroundPath;
 	private CurrentClickStateEnum currentClickState;
 	private Skill currentSelectedSkill;
 	private Item currentSelectedItem;
@@ -177,6 +178,14 @@ public class BattleInfo {
 
 	public void setCurrentSelectedItem(Item currentSelectedItem) {
 		this.currentSelectedItem = currentSelectedItem;
+	}
+
+	public String getBackgroundPath() {
+		return backgroundPath;
+	}
+
+	public void setBackgroundPath(String backgroundPath) {
+		this.backgroundPath = backgroundPath;
 	}
 
 }

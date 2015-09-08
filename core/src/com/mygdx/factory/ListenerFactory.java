@@ -7,6 +7,8 @@ import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.AttackButtonListener;
 import com.mygdx.listener.BackButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
+import com.mygdx.listener.ChoiceNpcEventListener;
+import com.mygdx.listener.ChoiceOptionListener;
 import com.mygdx.listener.CloseButtonListener;
 import com.mygdx.listener.DungeonEntranceButtonListener;
 import com.mygdx.listener.GameEndListener;
@@ -17,8 +19,6 @@ import com.mygdx.listener.GoTitleListener;
 import com.mygdx.listener.JumpSectionListener;
 import com.mygdx.listener.LoadListener;
 import com.mygdx.listener.RunAwayListener;
-import com.mygdx.listener.SelectComponentListener;
-import com.mygdx.listener.SelectEventListener;
 
 public class ListenerFactory {
 	@Autowired
@@ -36,6 +36,9 @@ public class ListenerFactory {
 		return context.getBean(RunAwayListener.class);
 	}
 
+	public ChoiceNpcEventListener getChoiceNpcEventListener() {
+		return context.getBean(ChoiceNpcEventListener.class);
+	}
 	public CloseButtonListener getCloseButtonListener() {
 		return context.getBean(CloseButtonListener.class);
 	}
@@ -56,12 +59,8 @@ public class ListenerFactory {
 		return context.getBean(GoBackwardFieldButtonListener.class);
 	}
 
-	public SelectComponentListener getSelectComponentListener() {
-		return context.getBean(SelectComponentListener.class);
-	}
-
-	public SelectEventListener getSelectEventListener() {
-		return context.getBean(SelectEventListener.class);
+	public ChoiceOptionListener getChoiceOptionListener() {
+		return context.getBean(ChoiceOptionListener.class);
 	}
 
 	public GoForwardFieldButtonListener getGoForwardFieldButtonListener() {
@@ -87,4 +86,5 @@ public class ListenerFactory {
 	public LoadListener getLoadListener() {
 		return context.getBean(LoadListener.class);
 	}
+
 }

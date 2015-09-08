@@ -17,8 +17,8 @@ import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.PositionManager;
-import com.mygdx.model.surroundings.Fork;
-import com.mygdx.model.surroundings.NodeConnection;
+import com.mygdx.model.location.Fork;
+import com.mygdx.model.location.NodeConnection;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**

@@ -1,56 +1,64 @@
 {
   "chest": {
     "objectType": "normal",
-    "objectName" : "상자",
+    "objectName": "상자",
     "objectEvent": {
       "eventState": "always_open",
       "eventType": "chat",
-      "eventScenes": [
-        {
-          "script": "칙칙한 냄새가 나는 상자. 아무것도 들어있지 않다.",
-          "characterPath": "chest",
-          "backgroundPath": "bg_blackwood_03"
-        }
-      ]
+      "eventParameter": {
+        "eventScenes": [
+          {
+            "script": "칙칙한 냄새가 나는 상자. 아무것도 들어있지 않다.",
+            "characterPath": "chest",
+            "backgroundPath": "bg_blackwood_03"
+          }
+        ]
+      }
     }
   },
   "save": {
     "objectType": "function",
-    "objectName" : "저장하기",
+    "objectName": "저장하기",
     "objectEvent": {
       "eventState": "always_open",
       "eventType": "chat",
-      "eventScenes": [
-        {
-          "script": "저장되었습니다.",
-          "characterPath": "chest",
-          "backgroundPath": "black"
-        }
-       ], "rewards" : [
-      	{
+      "eventParameter": {
+        "eventScenes": [
+          {
+            "script": "저장되었습니다.",
+            "characterPath": "chest",
+            "backgroundPath": "black"
+          }
+        ]
+        
+      },
+      "rewards": [
+          {
             "rewardType": "save",
             "rewardState": "not_opened"
-        }
-      ]
+          }
+        ]
     }
   },
   "rest": {
     "objectType": "function",
-    "objectName" : "회복하기",
-    "objectEvent": {      
+    "objectName": "회복하기",
+    "objectEvent": {
       "eventState": "always_open",
       "eventType": "chat",
-      "eventScenes": [
+      "eventParameter": {
+        "eventScenes": [
+          {
+            "script": "회복되었습니다.",
+            "characterPath": "nothing",
+            "backgroundPath": "01"
+          }
+        ]
+      },
+      "rewards": [
         {
-          "script": "회복되었습니다.",
-          "characterPath": "nothing",
-          "backgroundPath": "01"
-        }
-      ],
-      "rewards" : [
-      	{
-            "rewardType": "rest_in_node",
-            "rewardState": "always_open"
+          "rewardType": "rest_in_node",
+          "rewardState": "always_open"
         }
       ]
     }

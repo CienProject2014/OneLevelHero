@@ -1,7 +1,7 @@
 {
   "devil_castle": {
-    "dungeonPath": "devil_castle",
-    "name": "마왕성",
+    "subNodePath": "devil_castle",
+    "subNodeName": "마왕성",
     "fieldType" : "devil_castle_1f",
     "sceneNameDoor3": "dungeon_3door_scene",
     "sceneNameDoor2": "dungeon_2door_scene",
@@ -11,10 +11,10 @@
     "mapHeight": "7",
     "nodes": [
       {
-        "nodeLabel" : "entrance",
+        "nodeLabel" : "gate",
         "nodePosX": "0",
         "nodePosY": "3",
-        "dungeonNodeType": "entrance",
+        "dungeonNodeType": "gate",
         "directionType": "left"
       },
       {
@@ -64,21 +64,21 @@
         "nodePosX": "2",
         "nodePosY": "4",
         "dungeonNodeType": "normal",
-        "directionType": "crossup"
+        "directionType": "crossup_stair"
       },
       {
         "nodeLabel" : "room",
         "nodePosX": "2",
         "nodePosY": "5",
         "dungeonNodeType": "normal",
-        "directionType": "up"
+        "directionType": "up_stair"
       },
       {
         "nodeLabel" : "devil_castle_elite1",
         "nodePosX": "2",
         "nodePosY": "6",
         "dungeonNodeType": "elite",
-        "directionType": "crossup"
+        "directionType": "crossup_stair"
       },
       {
         "nodeLabel" : "room",
@@ -107,14 +107,14 @@
         "nodePosX": "3",
         "nodePosY": "4",
         "dungeonNodeType": "normal",
-        "directionType": "crossup"
+        "directionType": "crossup_stair"
       },
       {
         "nodeLabel" : "room",
         "nodePosX": "3",
         "nodePosY": "5",
         "dungeonNodeType": "normal",
-        "directionType": "crossup"
+        "directionType": "crossup_stair"
       },
       {
         "nodeLabel" : "devil_castle_object1",
@@ -142,7 +142,7 @@
         "nodePosX": "4",
         "nodePosY": "2",
         "dungeonNodeType": "normal",
-        "directionType": "up"
+        "directionType": "up_stair"
       },
       {
         "nodeLabel" : "room",
@@ -156,14 +156,14 @@
         "nodePosX": "4",
         "nodePosY": "4",
         "dungeonNodeType": "normal",
-        "directionType": "crossup"
+        "directionType": "crossup_stair"
       },
       {
         "nodeLabel" : "devil_castel_object2",
         "nodePosX": "4",
         "nodePosY": "5",
         "dungeonNodeType": "object",
-        "directionType": "up"
+        "directionType": "up_stair"
       },
       {
         "nodeLabel" : "room",
@@ -173,10 +173,10 @@
         "directionType": "left"
       },
       {
-        "nodeLabel" : "devil_castle_up1",
+        "nodeLabel" : "devil_castle_up_stair1",
         "nodePosX": "5",
         "nodePosY": "0",
-        "dungeonNodeType": "up",
+        "dungeonNodeType": "up_stair",
         "directionType": "right"
       },
       {
@@ -184,7 +184,7 @@
         "nodePosX": "5",
         "nodePosY": "1",
         "dungeonNodeType": "normal",
-        "directionType": "crossup"
+        "directionType": "crossup_stair"
       },
       {
         "nodeLabel" : "room",
@@ -229,18 +229,18 @@
         "directionType": "right"
       },
       {
-        "nodeLabel" : "devil_castle_up3",
+        "nodeLabel" : "devil_castle_up_stair3",
         "nodePosX": "6",
         "nodePosY": "1",
-        "dungeonNodeType": "up",
-        "directionType": "up"
+        "dungeonNodeType": "up_stair",
+        "directionType": "up_stair"
       },
       {
-        "nodeLabel" : "devil_castle_up4",
+        "nodeLabel" : "devil_castle_up_stair4",
         "nodePosX": "6",
         "nodePosY": "2",
-        "dungeonNodeType": "up",
-        "directionType": "up"
+        "dungeonNodeType": "up_stair",
+        "directionType": "up_stair"
       },
       {
         "nodeLabel" : "room",
@@ -254,14 +254,14 @@
         "nodePosX": "6",
         "nodePosY": "4",
         "dungeonNodeType": "normal",
-        "directionType": "up"
+        "directionType": "up_stair"
       },
       {
         "nodeLabel" : "room",
         "nodePosX": "6",
         "nodePosY": "5",
         "dungeonNodeType": "normal",
-        "directionType": "crossup"
+        "directionType": "crossup_stair"
       },
       {
         "nodeLabel" : "room",
@@ -289,14 +289,14 @@
         "nodePosX": "7",
         "nodePosY": "3",
         "dungeonNodeType": "normal",
-        "directionType": "crossup"
+        "directionType": "crossup_stair"
       },
       {
         "nodeLabel" : "room",
         "nodePosX": "7",
         "nodePosY": "4",
         "dungeonNodeType": "normal",
-        "directionType": "up"
+        "directionType": "up_stair"
       },
       {
         "nodeLabel" : "devil_castle_object3",
@@ -306,10 +306,10 @@
         "directionType": "left"
       },
       {
-        "nodeLabel" : "devil_castle_up2",
+        "nodeLabel" : "devil_castle_up_stair2",
         "nodePosX": "7",
         "nodePosY": "6",
-        "dungeonNodeType": "up",
+        "dungeonNodeType": "up_stair",
         "directionType": "left"
       }
     ],
@@ -405,8 +405,8 @@
     ]
   },
   "blackwood_forest": {
-    "dungeonPath": "blackwood_forest",
-    "name": "블랙우드숲",
+    "subNodePath": "blackwood_forest",
+    "subNodeName": "블랙우드숲",
     "fieldType" : "blackwood_forest",
     "sceneNameDoor3": "blackwood_forest_3door_scene",
     "sceneNameDoor2": "blackwood_forest_2door_scene",
@@ -416,10 +416,10 @@
     "mapHeight": "7",
     "nodes": [
       {
-        "nodeLabel" : "entrance",
+        "nodeLabel" : "gate",
         "nodePosX": "0",
         "nodePosY": "3",
-        "dungeonNodeType": "entrance",
+        "dungeonNodeType": "gate",
         "directionType": "left"
       },
       {

@@ -178,7 +178,7 @@ public class StatusStage extends BaseOverlapStage {
 				if (battleManager.isInBattle()) {
 					screenFactory.show(ScreenEnum.BATTLE);
 				} else {
-					movingManager.goCurrentPosition();
+					movingManager.goCurrentLocatePosition();
 				}
 			}
 		});

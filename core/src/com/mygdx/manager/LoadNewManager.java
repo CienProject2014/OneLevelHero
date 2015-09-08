@@ -6,8 +6,10 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.EventElementEnum;
 import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.PositionEnum;
+import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
 
@@ -38,25 +40,25 @@ public class LoadNewManager {
 	public void loadNewGame() {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();
-		setCurrentPosition();
+		setCurrentLocatePosition();
 		setEventInfo(eventManager, eventAssets);
 		setStorySection();
 		setTimeInfo();
 		setBattleInfo();
-		storySectionManager.runStorySequence();
+		storySectionManager.runStorySequence(); // 프롤로그 시작!
 		bagManager.possessItem(ItemEnum.CONSUMABLES, "small_healing", 1);
 		bagManager.possessItem(ItemEnum.CONSUMABLES, "small_healing", 1);
 		bagManager.possessItem(ItemEnum.HANDGRIP, "sabre");
 	}
 
 	private void setEventInfo(EventManager eventManager, EventAssets eventAssets) {
-		eventManager.setCurrentEventNpc("prologue");
+		eventManager.setMainStoryMap(eventAssets.getMainStoryMap());
 		eventManager.setNpcMap(eventAssets.getNpcMap());
 		eventManager.setGameObjectMap(eventAssets.getGameObjectMap());
+		eventManager.setCurrentEvent(EventElementEnum.STORY, new EventPacket("prologue", 1));
 	}
 
 	private void setBattleInfo() {
-		battleManager.setBeforePosition(PositionEnum.SUB_NODE);
 		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 	}
 
@@ -76,12 +78,11 @@ public class LoadNewManager {
 		storySectionManager.insertStorySequence();
 	}
 
-	private void setCurrentPosition() {
+	private void setCurrentLocatePosition() {
 		// 마왕성에서부터 게임을 시작한다.
 		positionManager.setCurrentNodeName("devil_castle");
-		positionManager.setCurrentPositionType(PositionEnum.SUB_NODE);
+		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
 		fieldManager.setArrowName("16to1");
-		positionManager.setBeforePositionType(PositionEnum.FIELD);
 	}
 
 	// Hero클래스가 status정보를 갖도록 한다.

@@ -9,24 +9,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.currentState.StorySectionInfo;
+import com.mygdx.enums.EventElementEnum;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.model.event.Event;
+import com.mygdx.factory.NextSectionCheckerFactory;
 import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.event.StorySectionPacket;
+import com.mygdx.nextSectionChecker.NextSectionChecker;
 
 public class StorySectionManager {
 	@Autowired
 	private EventManager eventManager;
-	@Autowired
-	private EventCheckManager eventCheckManager;
 	@Autowired
 	private MovingManager movingManager;
 	@Autowired
 	private EventAssets eventAssets;
 	@Autowired
 	private StorySectionInfo storySectionInfo;
+	@Autowired
+	private NextSectionCheckerFactory nextSectionCheckerFactory;
+
 	private Queue<EventPacket> eventSequenceQueue = new LinkedList<>();
 
 	public void setNewStorySectionAndPlay(int storyNumber) {
@@ -36,7 +39,6 @@ public class StorySectionManager {
 				+ "] 가동중-------------------------------------------------------------------------------");
 		insertStorySequence();
 		insertConditionalEvents();
-		insertSpecialEvents();
 		runStorySequence();
 	}
 
@@ -48,21 +50,6 @@ public class StorySectionManager {
 		return storySectionInfo.getCurrentSectionNumber();
 	}
 
-	private void insertSpecialEvents() {
-		if (storySectionInfo.getCurrentStorySection() == null) {
-			return;
-		}
-		List<EventPacket> specialEventList = storySectionInfo.getCurrentStorySection().getSpecialEvents();
-		if (specialEventList != null) {
-			for (EventPacket eventPacket : specialEventList) {
-				Event specialEvent = eventManager.getNpcEvent(eventPacket);
-				if (!specialEvent.getEventState().equals(EventStateEnum.ALWAYS_OPEN)) {
-					specialEvent.setEventState(EventStateEnum.OPENED);
-				}
-				eventManager.getSpecialEventQueue().add(eventPacket);
-			}
-		}
-	}
 	private void insertConditionalEvents() {
 		if (storySectionInfo.getCurrentStorySection() == null) {
 			return;
@@ -75,11 +62,12 @@ public class StorySectionManager {
 		}
 	}
 
-	public void triggerNextSectionEvent(EventTypeEnum eventType, String componentString) {
+	public void triggerNextSectionEvent(EventTypeEnum eventType, String... args) {
 		if (getNextSections() != null) {
 			for (StorySectionPacket nextStorySectionPacket : getNextSections()) {
 				if (eventType.equals(nextStorySectionPacket.getEventType())) {
-					if (eventCheckManager.checkSameWithComponent(eventType, nextStorySectionPacket, componentString)) {
+					NextSectionChecker nextSectionChecker = nextSectionCheckerFactory.getNextSectionChecker(eventType);
+					if (nextSectionChecker.checkNextEvent(nextStorySectionPacket.getEventParameter(), args)) {
 						setNewStorySectionAndPlay(nextStorySectionPacket.getNextSectionNumber());
 						break;
 					}
@@ -104,9 +92,7 @@ public class StorySectionManager {
 		Gdx.app.log("StorySectionManager", "runStorySequence");
 		if (!eventSequenceQueue.isEmpty()) {
 			EventPacket polledEventPacket = eventSequenceQueue.poll();
-			eventManager.setCurrentStoryEventInfo(polledEventPacket);
-			eventManager.setEventOpen(eventManager.getCurrentStoryEvent());
-			eventManager.doStoryEvent(eventManager.getCurrentStoryEvent().getEventType());
+			eventManager.triggerEvent(EventElementEnum.STORY, polledEventPacket);
 		} else {
 			goCurrentPosition();
 		}
@@ -121,7 +107,7 @@ public class StorySectionManager {
 	}
 
 	private void goCurrentPosition() {
-		movingManager.goCurrentPosition();
+		movingManager.goCurrentLocatePosition();
 	}
 
 	public void setCurrentStorySection(StorySection storySection) {

@@ -48,7 +48,7 @@ public class TimeManager {
 		if (leftHour >= 1) {
 			partyManager.setFatigue(partyManager.getFatigue() + leftHour);
 		}
-		partyManager.calLevel();
+		partyManager.calculateLevel();
 	}
 
 	public int getTime() {

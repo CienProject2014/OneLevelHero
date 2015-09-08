@@ -74,7 +74,7 @@ public class PartyManager {
 				.get(ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
 	}
 
-	public void calLevel() {
+	public void calculateLevel() {
 		for (Hero hero : getPartyList()) {
 			if (hero.getStatus().getLevel() == 1) {
 			} else {

@@ -27,15 +27,6 @@ public class PositionManager {
 	public void setVillageDirection(VillageDirectionEnum villageDirection) {
 		positionInfo.setVillageDirection(villageDirection);
 	}
-
-	public PositionEnum getBeforePositionType() {
-		return positionInfo.getBeforePositionType();
-	}
-
-	public void setBeforePositionType(PositionEnum beforePositionType) {
-		positionInfo.setBeforePositionType(beforePositionType);
-	}
-
 	public WorldNodeEnum.NodeType getCurrentNodeType() {
 		return worldMapAssets.getNodeType(positionInfo.getCurrentNodeName());
 	}
@@ -48,13 +39,13 @@ public class PositionManager {
 		return positionInfo.getCurrentNodeName();
 	}
 
-	public PositionEnum getCurrentPositionType() {
-		return positionInfo.getCurrentPositionType();
+	public PositionEnum.LocatePosition getCurrentLocatePositionType() {
+		return positionInfo.getCurrentLocatePositionType();
 	}
 
 	public void setCurrentNodeName(String currentNodeName) {
 		Gdx.app.log("PositionManager", "현재노드 이름 - " + currentNodeName);
-		setCurrentPositionType(PositionEnum.NODE);
+		setCurrentLocatePositionType(PositionEnum.LocatePosition.NODE);
 		positionInfo.setCurrentNodeName(currentNodeName);
 	}
 
@@ -62,9 +53,17 @@ public class PositionManager {
 		return worldMapAssets.getWorldNodeInfo(getCurrentNodeName()).getNodeName();
 	}
 
-	public void setCurrentPositionType(PositionEnum positionEnum) {
+	public void setCurrentLocatePositionType(PositionEnum.LocatePosition positionEnum) {
 		Gdx.app.log("PositionManager", "현재위치 - " + positionEnum.toString());
-		positionInfo.setCurrentPositionType(positionEnum);
+		positionInfo.setCurrentLocatePositionType(positionEnum);
+	}
+
+	public void setCurrentEventPositionType(PositionEnum.EventPosition eventPosition) {
+		positionInfo.setCurrentEventPositionType(eventPosition);
+	}
+
+	public PositionEnum.EventPosition getCurrentEventPositionType() {
+		return positionInfo.getCurrentEventPositionType();
 	}
 
 	public String getCurrentSubNodeName() {
@@ -74,16 +73,15 @@ public class PositionManager {
 	public String getCurrentSubNodeHanguelName() {
 		if (getCurrentNodeType().equals(NodeType.VILLAGE)) {
 			return nodeAssets.getVillageByName(getCurrentNodeName()).getBuilding().get(getCurrentSubNodeName())
-					.getBuildingName();
+					.getSubNodeName();
 		} else {
 			return "던젼"; // FIXME
 		}
 
 	}
-
 	public void setCurrentSubNodeName(String subNodeName) {
 		Gdx.app.log("PositionManager", "현재서브노드 이름 - " + subNodeName);
-		positionInfo.setCurrentPositionType(PositionEnum.SUB_NODE);
+		positionInfo.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
 		positionInfo.setCurrentSubNodeName(subNodeName);
 	}
 

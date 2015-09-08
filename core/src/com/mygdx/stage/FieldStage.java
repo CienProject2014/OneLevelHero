@@ -21,7 +21,6 @@ import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.WorldMapAssets;
-import com.mygdx.enums.PositionEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.GoBackwardFieldButtonListener;
 import com.mygdx.listener.GoForwardFieldButtonListener;
@@ -55,7 +54,6 @@ public class FieldStage extends BaseOneLevelStage {
 	private WorldMapAssets worldMapAssets;
 
 	public Stage makeStage() {
-		positionManager.setBeforePositionType(PositionEnum.FIELD);
 		Gdx.app.log("FieldStage", "FieldType - " + fieldManager.getFieldType());
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("MovingStage");

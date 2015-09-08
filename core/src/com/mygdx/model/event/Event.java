@@ -1,28 +1,16 @@
 package com.mygdx.model.event;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 
 public class Event {
-	private String eventName;
 	private EventTypeEnum eventType;
 	private EventStateEnum eventState;
+	private EventParameters eventParameter;
+	private String eventTitle;
 	private ArrayList<Reward> rewards;
-	private ArrayList<EventScene> eventScenes;
-	private ArrayList<String> eventComponent;
-	private String eventTarget;
-
-	public void setEventScenes(ArrayList<EventScene> eventScenes) {
-		this.eventScenes = eventScenes;
-	}
-
-	public void setEventComponent(ArrayList<String> eventComponent) {
-		this.eventComponent = eventComponent;
-	}
 
 	public EventTypeEnum getEventType() {
 		return eventType;
@@ -30,14 +18,6 @@ public class Event {
 
 	public void setEventType(EventTypeEnum eventType) {
 		this.eventType = eventType;
-	}
-
-	public List<EventScene> getEventScenes() {
-		return eventScenes;
-	}
-
-	public Iterator<EventScene> getEventSceneIterator() {
-		return eventScenes.iterator();
 	}
 
 	public EventStateEnum getEventState() {
@@ -48,24 +28,20 @@ public class Event {
 		this.eventState = eventState;
 	}
 
-	public List<String> getEventComponent() {
-		return eventComponent;
+	public EventParameters getEventParameter() {
+		return eventParameter;
 	}
 
-	public String getEventName() {
-		return eventName;
+	public void setEventParameter(EventParameters eventParameter) {
+		this.eventParameter = eventParameter;
 	}
 
-	public void setEventName(String eventName) {
-		this.eventName = eventName;
+	public String getEventTitle() {
+		return eventTitle;
 	}
 
-	public String getEventTarget() {
-		return eventTarget;
-	}
-
-	public void setEventTarget(String eventTarget) {
-		this.eventTarget = eventTarget;
+	public void setEventTitle(String eventTitle) {
+		this.eventTitle = eventTitle;
 	}
 
 	public ArrayList<Reward> getRewards() {
@@ -75,4 +51,5 @@ public class Event {
 	public void setRewards(ArrayList<Reward> rewards) {
 		this.rewards = rewards;
 	}
+
 }

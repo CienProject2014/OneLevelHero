@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.FieldTypeEnum;
-import com.mygdx.model.surroundings.NodeConnection;
-import com.mygdx.model.surroundings.WorldNode;
+import com.mygdx.model.location.NodeConnection;
+import com.mygdx.model.location.WorldNode;
 
 public class FieldManager {
 	@Autowired

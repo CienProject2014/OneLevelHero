@@ -21,6 +21,7 @@ import com.mygdx.currentState.SaveInfo;
 import com.mygdx.enums.SaveVersion;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
+import com.mygdx.manager.LoadNewManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.SaveManager;
@@ -51,6 +52,8 @@ public class LoadPopupStage extends BaseOverlapStage {
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired
+	private LoadNewManager loadNewManager;
+	@Autowired
 	private MusicManager musicManager;
 	@Autowired
 	private TimeManager timeManager;
@@ -63,7 +66,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 	private CompositeItem save03;
 	private List<ImageItem> characterImage;
 	private Map<String, Array<String>> sceneConstants;
-	private CompositeItem newbutton;
+	private CompositeItem newButton;
 
 	public Stage makeStage() {
 		assetsManager.initScene(SCENE_NAME);
@@ -123,7 +126,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 		save02 = sceneLoader.getRoot().getCompositeById("save02");
 		save03 = sceneLoader.getRoot().getCompositeById("save03");
 		save = sceneLoader.getRoot().getImageById("save");
-		newbutton = sceneLoader.getRoot().getCompositeById("new_button");
+		newButton = sceneLoader.getRoot().getCompositeById("new_button");
 		closeButton = sceneLoader.getRoot().getCompositeById("close_button");
 		characterImage = new ArrayList<>();
 		for (int i = 1; i < 4; i++) {
@@ -145,7 +148,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 				if (saveManager.isLoadable(SaveVersion.SAVE_01)) {
 					musicManager.stopMusic();
 					saveManager.load(SaveVersion.SAVE_01);
-					movingManager.goCurrentPosition();
+					movingManager.goCurrentLocatePosition();
 					super.touchUp(event, x, y, pointer, button);
 				}
 			}
@@ -157,7 +160,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 				if (saveManager.isLoadable(SaveVersion.SAVE_02)) {
 					musicManager.stopMusic();
 					saveManager.load(SaveVersion.SAVE_02);
-					movingManager.goCurrentPosition();
+					movingManager.goCurrentLocatePosition();
 					super.touchUp(event, x, y, pointer, button);
 				}
 			}
@@ -169,23 +172,24 @@ public class LoadPopupStage extends BaseOverlapStage {
 				if (saveManager.isLoadable(SaveVersion.SAVE_03)) {
 					musicManager.stopMusic();
 					saveManager.load(SaveVersion.SAVE_03);
-					movingManager.goCurrentPosition();
+					movingManager.goCurrentLocatePosition();
 					super.touchUp(event, x, y, pointer, button);
 				}
 			}
 		});
-		newbutton.setLayerVisibilty("pressed", false);
-		newbutton.addListener(new TouchListener() {
+		newButton.setLayerVisibilty("pressed", false);
+		newButton.addListener(new TouchListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				newbutton.setLayerVisibilty("pressed", true);
+				newButton.setLayerVisibilty("pressed", true);
 				return true;
 			}
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				newbutton.setLayerVisibilty("pressed", false);
+				newButton.setLayerVisibilty("pressed", false);
 				saveManager.setNewGame();
+				loadNewManager.loadNewGame();
 				super.touchUp(event, x, y, pointer, button);
 
 			}

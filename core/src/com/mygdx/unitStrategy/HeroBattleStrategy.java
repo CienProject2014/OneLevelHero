@@ -80,6 +80,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 						skill.setSkillEffectType(effectEnum.toString());
 						applyEffect(skillUser, target, skill);
 					} else {
+						basicAttack(skillUser, target, skill.getSkillFactor(), skill.getMagicFactor());
 						Gdx.app.log(TAG, "잘못된 스킬 타입: " + effect + " 타입이 존재하지 않습니다.");
 					}
 				}
@@ -91,32 +92,33 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void applyEffect(Unit attacker, Unit defender, Skill skill) {
 		switch (SkillEffectEnum.findSkillEffectEnum(skill.getSkillEffectType())) {
-		case ADD_CONDITIONAL_STATE:
-			break;
-		case ADD_STATE:
-			addState(attacker, defender, skill);
-			break;
-		case ATTACK:
-			basicAttack(attacker, defender, skill.getSkillFactor(), skill.getMagicFactor());
-			break;
-		case CHANGE_GAUGE:
-			changeGauge(attacker, defender, skill.getMagicFactor());
-			break;
-		case CONDITIONAL_ATTACK:
-			conditionalAttack(attacker, defender, skill.getOneRegex(), skill.getSkillFactor(), skill.getMagicFactor());
-			break;
-		case DUPLICATED_ATTACK:
-			duplicatedAttack(attacker, defender, skill.getDuplicateNumber(), skill.getSkillFactor(),
-					skill.getMagicFactor());
-			break;
-		case HEAL:
-			heal(attacker, defender, skill.getMagicFactor());
-			break;
-		case REMOVE_STATE:
-			removeState(attacker, defender, skill);
-			break;
-		default:
-			break;
+			case ADD_CONDITIONAL_STATE :
+				break;
+			case ADD_STATE :
+				addState(attacker, defender, skill);
+				break;
+			case ATTACK :
+				basicAttack(attacker, defender, skill.getSkillFactor(), skill.getMagicFactor());
+				break;
+			case CHANGE_GAUGE :
+				changeGauge(attacker, defender, skill.getMagicFactor());
+				break;
+			case CONDITIONAL_ATTACK :
+				conditionalAttack(attacker, defender, skill.getOneRegex(), skill.getSkillFactor(),
+						skill.getMagicFactor());
+				break;
+			case DUPLICATED_ATTACK :
+				duplicatedAttack(attacker, defender, skill.getDuplicateNumber(), skill.getSkillFactor(),
+						skill.getMagicFactor());
+				break;
+			case HEAL :
+				heal(attacker, defender, skill.getMagicFactor());
+				break;
+			case REMOVE_STATE :
+				removeState(attacker, defender, skill);
+				break;
+			default :
+				break;
 
 		}
 	}
@@ -150,6 +152,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 			float magicFactor) {
 		if (duplicateNumber <= 1) {
 			Gdx.app.log(TAG, "잘못된 스킬 설계: duplicatedAttack의 횟수가 0 또는 1 입니다.");
+			duplicateNumber = 2;
 		}
 
 		for (int i = 0; i < duplicateNumber; i++) {
@@ -157,8 +160,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
-	private void conditionalAttack(Unit attacker, Unit defender, String oneRegex, float skillFactor,
-			float magicFactor) {
+	private void conditionalAttack(Unit attacker, Unit defender, String oneRegex, float skillFactor, float magicFactor) {
 		boolean condition = true;
 
 		// TODO: oneRegex를 분석해서 조건을 충족시키는지 확인하는 로직 필요
@@ -253,18 +255,18 @@ public class HeroBattleStrategy implements BattleStrategy {
 	private void applyAllBuffEffect(Unit defender, Buff buff) {
 		for (String buffEffect : buff.getBuffEffectList()) {
 			switch (BuffEffectEnum.findBuffEffectEnum(buffEffect)) {
-			case BLOCK_ACTION:
-				blockAction(defender);
-				break;
-			case DECREASE_ATTACK:
-				break;
-			case DECREASE_HP_ITERATIVE:
-				decreaseHpIterative(defender, buff);
-				break;
-			case DECREASE_MAGIC_ATTACK:
-				break;
-			default:
-				break;
+				case BLOCK_ACTION :
+					blockAction(defender);
+					break;
+				case DECREASE_ATTACK :
+					break;
+				case DECREASE_HP_ITERATIVE :
+					decreaseHpIterative(defender, buff);
+					break;
+				case DECREASE_MAGIC_ATTACK :
+					break;
+				default :
+					break;
 			}
 		}
 	}
