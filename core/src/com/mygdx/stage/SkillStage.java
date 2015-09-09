@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -144,24 +143,34 @@ public class SkillStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					setCompositeItemVisibilty(useButtonList.get(index), DEFAULT_VISIBILTY);
-
 					Skill currentSelectedSkill = battleManager.getCurrentSelectedSkill();
-					if (currentSelectedSkill.getHitboxSize() == 0) {
-						if (currentSelectedSkill.getHitboxCenter() == null) {
-							Gdx.app.log(TAG, "스킬 즉시 사용");
+					if (currentSelectedSkill.getSkillTargetType().equals("monster")) {
+						// 몬스터면 Hitbox가 보인다.
+						if (currentSelectedSkill.getSkillType().equals("magic")) {
+							// 마법일 경우에는 정해진 모양대로 나와야 한다.
+							battleManager.getNowGridHitbox().setHitboxCenter(currentSelectedSkill.getHitboxCenter());
+							battleManager.getNowGridHitbox().setHitboxShape(currentSelectedSkill.getHitboxShape());
+							battleManager.setShowGrid(true);
+						} else {
+							// 기술일 경우에는 히트박스 제한이 있다.
+							battleManager.setGridLimitNum(currentSelectedSkill.getHitboxSize());
+							battleManager.setShowGrid(true);
+						}
+					} else if (currentSelectedSkill.getSkillTargetType().equals("all_monster")) {
+						// 몬스터 즉시 공격일 경우 바로 스킬을 사용한다.
+						battleManager.useSkill(battleManager.getCurrentAttackUnit(), battleManager.getSelectedMonster(),
+								currentSelectedSkill.getSkillPath());
+						battleManager.setSkill(false);
+					} else {
+						if (currentSelectedSkill.getSkillTargetType().equals("self")) {
+							// 자기 자신에게 쓰는 경우
 							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
 									battleManager.getSelectedMonster(), currentSelectedSkill.getSkillPath());
 							battleManager.setSkill(false);
 						} else {
-							battleManager.getNowGridHitbox().setHitboxCenter(currentSelectedSkill.getHitboxCenter());
-							battleManager.getNowGridHitbox().setHitboxShape(currentSelectedSkill.getHitboxShape());
-							battleManager.setShowGrid(true);
+							// 팀원 중 한 명을 선택해야 하는 경우에는 먼저 선택창이 뜬다
+							partyManager.setCurrentSelectedHero(null);
 						}
-						Gdx.app.log(TAG, "gridHitbox를 표시합니다");
-					} else {
-						Gdx.app.log(TAG, "gridHitbox를 표시합니다12");
-						battleManager.setGridLimitNum(currentSelectedSkill.getHitboxSize());
-						battleManager.setShowGrid(true);
 					}
 					BattleScreen.showSkillStage = false;
 				}

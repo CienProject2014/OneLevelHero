@@ -2,7 +2,6 @@ package com.mygdx.stage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,7 @@ import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.StatusBar;
+import com.mygdx.model.unit.Unit;
 
 public class CharacterUiStage extends BaseOneLevelStage {
 	@Autowired
@@ -40,6 +40,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private List<Hero> battleMemberList;
 	private List<StatusBar> heroStatusBarList;
 	private List<Label> hpLabelList;
+	private Image heroImage;
 
 	public Stage makeStage() {
 		super.makeStage();
@@ -67,6 +68,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		heroStatusBarList = new ArrayList<StatusBar>(battleMemberList.size());
 		for (int i = 0; i < battleMemberList.size(); i++) {
 			if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+				partyManager.setCurrentSelectedHero(null);
 				heroStatusBarList.add(new StatusBar(battleMemberList.get(i), uiComponentAssets.getSkin(), true));
 			} else {
 				heroStatusBarList.add(new StatusBar(battleMemberList.get(i), uiComponentAssets.getSkin(), false));
@@ -85,37 +87,59 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 	private Table makeStatusTable() {
 		Table table = new Table();
-		Iterator<StatusBar> heroStatusBarIterator = heroStatusBarList.iterator();
-		while (heroStatusBarIterator.hasNext()) {
-			Table heroTable = makeHeroTable(heroStatusBarIterator.next());
+		for (int i = 0; i < battleMemberList.size(); i++) {
+			Table heroTable = makeHeroTable(battleMemberList.get(i), i);
 			table.add(heroTable).padBottom(uiConstantsMap.get("heroTablePadBottom"));
 			table.row();
 		}
 		return table;
 	}
 
-	private Table makeHeroTable(final StatusBar statusBar) {
+	private Table makeHeroTable(final Unit unit, int index) {
 		Table heroTable = new Table();
-		Image heroImage = new Image(textureManager.getFaceImage(statusBar.getUnit().getFacePath()));
-		heroImage.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				partyManager.setCurrentSelectedHero((Hero) statusBar.getUnit());
-				screenFactory.show(ScreenEnum.STATUS);
-			}
-		});
+		heroImage = new Image(textureManager.getFaceImage(unit.getFacePath()));
+
 		heroTable.add(heroImage).padRight(uiConstantsMap.get("heroTablePadLeft"))
 				.width(uiConstantsMap.get("heroImageWidth")).height(uiConstantsMap.get("heroImageHeight"));
 
 		barTable = new Table();
-		Label hpLabel = new Label(statusBar.getHp() + "/" + statusBar.getMaxHp(), uiComponentAssets.getSkin());
+		Label hpLabel = new Label(unit.getStatus().getHp() + "/" + unit.getStatus().getMaxHp(),
+				uiComponentAssets.getSkin());
 		hpLabelList.add(hpLabel);
 		barTable.add(hpLabel).padBottom(uiConstantsMap.get("heroBarSpace")).row();
-		barTable.add(statusBar.getHpBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
+		barTable.add(heroStatusBarList.get(index).getHpBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
 				.width(uiConstantsMap.get("barTableWidth")).row();
-		barTable.add(statusBar.getGaugeBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
+		barTable.add(heroStatusBarList.get(index).getGaugeBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
 				.width(uiConstantsMap.get("barTableWidth")).row();
 		heroTable.add(barTable);
+		makeAddListener(index);
 		return heroTable;
+	}
+
+	private void makeAddListener(final int index) {
+		heroImage.clearListeners();
+		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			heroImage.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					if (battleManager.isSkill() == true) {
+						partyManager.setCurrentSelectedHero(battleMemberList.get(index));
+						battleManager.useSkill(battleManager.getCurrentAttackUnit(),
+								partyManager.getCurrentSelectedHero(),
+								battleManager.getCurrentSelectedSkill().getSkillPath());
+						battleManager.setSkill(false);
+						partyManager.setCurrentSelectedHero(null);
+					}
+				}
+			});
+		} else {
+			heroImage.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					partyManager.setCurrentSelectedHero(battleMemberList.get(index));
+					screenFactory.show(ScreenEnum.STATUS);
+				}
+			});
+		}
 	}
 }

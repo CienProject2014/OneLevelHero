@@ -101,21 +101,12 @@
     "multishoot": {
         "name": "다중 사격",
         "skillType": "tech",
-        "skillTargetType": "monster",
+        "skillTargetType": "all_monster",
         "skillEffectType": "attack",
         "costGauge": "120",
         "costCasting": "0",
         "elementType": "none",
         "skillFactor": "50",
-        "hitboxSize": "0",
-        "hitboxCenter": [ 1, 1 ],
-        "hitboxShape": [
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ]
-        ],
         "description": "적의 모든 부위에 화살을 발사한다."
     },
     "gale": {
@@ -306,27 +297,19 @@
     "electric_shock": {
         "name": "전기 충격",
         "skillType": "magic",
-        "skillTargetType": "monster",
+        "skillTargetType": "all_monster",
         "skillEffectType": "multi_effect",
 		"effectNameList" : [""],
         "costGauge": "30",
         "costCasting": "1",
         "elementType": "electric",
         "magicFactor": "15",
-        "hitboxCenter": [ 1, 1 ],
-        "hitboxShape": [
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ]
-        ],
         "description": "전기의 힘을 빌려 적을 감전시킨다."
     },
     "freeze": {
         "name": "수분 빙화",
         "skillType": "magic",
-        "skillTargetType": "monster",
+        "skillTargetType": "all_monster",
         "skillEffectType": "multi_effect",
         "effectNameList": [ "add_state", "attack" ],
         "buffName": "frozen",
@@ -334,14 +317,6 @@
         "costCasting": "1",
         "elementType": "water",
         "magicFactor": "10",
-        "hitboxCenter": [ 1, 1 ],
-        "hitboxShape": [
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ]
-        ],
         "description": "물의 힘을 빌려 적의 신체를 얼린다."
     },
     "soul_cover": {
@@ -413,63 +388,39 @@
     "meteor": {
         "name": "메테오",
         "skillType": "magic",
-        "skillTargetType": "monster",
+        "skillTargetType": "all_monster",
         "skillEffectType": "multi_effect",
         "effectNameList": [ "add_state", "attack" ],
         "buffName": "burn",
         "costGauge": "100",
         "costCasting": "5",
         "elementType": "fire",
-        "magicFactor": "100",
-        "hitboxCenter": [ 1, 1 ],
-        "hitboxShape": [
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ]
-        ],
+        "magicFactor": "100",            
         "description": "운석을 낙하시킨다."
     },
     "blizzard": {
         "name": "블리자드",
         "skillType": "magic",
-        "skillTargetType": "monster",
+        "skillTargetType": "all_monster",
         "skillEffectType": "multi_effect",
         "effectNameList": [ "add_state", "attack" ],
         "buffName": "frozen",
         "costGauge": "100",
         "costCasting": "5",
         "elementType": "water",
-        "magicFactor": "80",
-        "hitboxCenter": [ 1, 1 ],
-        "hitboxShape": [
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ]
-        ],
+        "magicFactor": "80",        
         "description": "눈보라를 일으킨다."
     },
     "thunder_storm": {
         "name": "썬더 스톰",
         "skillType": "magic",
-        "skillTargetType": "monster",
+        "skillTargetType": "all_monster",
         "skillEffectType": "multi_effect",
 		"effectNameList" : [""],
         "costGauge": "100",
         "costCasting": "5",
         "elementType": "electric",
-        "magicFactor": "80",
-        "hitboxCenter": [ 1, 1 ],
-        "hitboxShape": [
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ],
-            [ 1, 1, 1, 1, 1 ]
-        ],
+        "magicFactor": "80",       
         "description": "번개를 낙하시킨다."
     },
     "sleep": {
