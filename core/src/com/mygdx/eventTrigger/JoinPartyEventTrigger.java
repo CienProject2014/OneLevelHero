@@ -17,7 +17,7 @@ public class JoinPartyEventTrigger implements EventTrigger {
 
 	@Override
 	public void triggerEvent(EventParameters eventParameter) {
-		partyManager.addHero(unitAssets.getHero(eventParameter.getHeroName()));
+		partyManager.addHero(unitAssets.getHero(eventParameter.getUnit().getHeroName()));
 		storySectionManager.runStorySequence();
 	}
 }

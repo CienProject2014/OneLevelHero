@@ -23,7 +23,9 @@
         "eventState": "not_opened",
         "eventType": "play_music",
         "eventParameter": {
-          "musicName": "fights"
+        	"music" : {
+        		"musicName": "fights"
+        	}
         }
       },
       "4": {
@@ -80,7 +82,7 @@
       },
       "5": {
         "eventState": "not_opened",
-        "eventType": "battle",
+        "eventType": "start_battle",
         "eventParameter": {
           "battle": {
             "targetMonster": "mawang_01",
@@ -125,7 +127,7 @@
       },
       "8": {
         "eventState": "not_opened",
-        "eventType": "battle",
+        "eventType": "start_battle",
         "eventParameter": {
           "battle": {
             "targetMonster": "mawang_01",
@@ -162,7 +164,7 @@
       },
       "11": {
         "eventState": "not_opened",
-        "eventType": "battle",
+        "eventType": "start_battle",
         "eventParameter": {
           "battle": {
             "targetMonster": "mawang_01",
@@ -199,7 +201,7 @@
       },
       "14": {
         "eventState": "not_opened",
-        "eventType": "battle",
+        "eventType": "start_battle",
         "eventParameter": {
           "battle": {
             "targetMonster": "mawang_01",

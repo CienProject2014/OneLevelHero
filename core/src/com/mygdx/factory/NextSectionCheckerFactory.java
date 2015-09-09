@@ -10,6 +10,7 @@ import com.mygdx.nextSectionChecker.BattleEndSectionChecker;
 import com.mygdx.nextSectionChecker.ChoiceOptionSectionChecker;
 import com.mygdx.nextSectionChecker.MoveFieldSectionChecker;
 import com.mygdx.nextSectionChecker.MoveNodeSectionChecker;
+import com.mygdx.nextSectionChecker.MoveSubNodeSectionChecker;
 import com.mygdx.nextSectionChecker.NextSectionChecker;
 
 public class NextSectionCheckerFactory {
@@ -26,6 +27,8 @@ public class NextSectionCheckerFactory {
 				return context.getBean(ChoiceOptionSectionChecker.class);
 			case MOVE_NODE :
 				return context.getBean(MoveNodeSectionChecker.class);
+			case MOVE_SUB_NODE :
+				return context.getBean(MoveSubNodeSectionChecker.class);
 			case MOVE_FIELD :
 				return context.getBean(MoveFieldSectionChecker.class);
 			default :

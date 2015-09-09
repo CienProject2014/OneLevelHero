@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import com.mygdx.model.eventParameter.BattleParameter;
 import com.mygdx.model.eventParameter.ItemParameter;
 import com.mygdx.model.eventParameter.LocationParameter;
+import com.mygdx.model.eventParameter.MusicParameter;
 import com.mygdx.model.eventParameter.TargetTimeParameter;
 import com.mygdx.model.eventParameter.TimeParameter;
+import com.mygdx.model.eventParameter.UnitParameter;
 
 public class EventParameters {
 	private TimeParameter time;
@@ -16,10 +18,10 @@ public class EventParameters {
 	private BattleParameter battle;
 	private ArrayList<Event> events;
 	private ArrayList<String> options;
+	private UnitParameter unit;
 	private String targetComponent;
 	private int nextSectionNumber;
-	private String heroName;
-	private String musicName;
+	private MusicParameter music;
 	private ItemParameter item;
 	private EventPacket eventPacket;
 
@@ -65,18 +67,6 @@ public class EventParameters {
 	public void setNextSectionNumber(int nextSectionNumber) {
 		this.nextSectionNumber = nextSectionNumber;
 	}
-	public String getHeroName() {
-		return heroName;
-	}
-	public void setHeroName(String heroName) {
-		this.heroName = heroName;
-	}
-	public String getMusicName() {
-		return musicName;
-	}
-	public void setMusicName(String musicName) {
-		this.musicName = musicName;
-	}
 	public TargetTimeParameter getTargetTime() {
 		return targetTime;
 	}
@@ -100,5 +90,17 @@ public class EventParameters {
 	}
 	public void setTargetComponent(String targetComponent) {
 		this.targetComponent = targetComponent;
+	}
+	public MusicParameter getMusic() {
+		return music;
+	}
+	public void setMusic(MusicParameter music) {
+		this.music = music;
+	}
+	public UnitParameter getUnit() {
+		return unit;
+	}
+	public void setUnit(UnitParameter unit) {
+		this.unit = unit;
 	}
 }

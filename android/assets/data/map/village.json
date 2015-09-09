@@ -2,7 +2,7 @@
   "blackwood": {
     "nodeName": "블랙우드",
     "villageDirection": "up_down",
-    "nodePath": "blackwood_bg",
+    "nodePath": "blackwood",
     "sceneName": "blackwood_scene",
     "arrowDirection" : {
     	"2to1" : "up",
@@ -59,6 +59,7 @@
   },
   "cobweb": {
     "nodeName": "콥웨브",
+    "nodePath" : "cobweb",
     "villageDirection": "up_down",
     "sceneName": "cobweb_scene",
     "arrowDirection" : {
@@ -130,6 +131,7 @@
     }
   },
   "oberon": {
+  	"nodePath" : "oberon",
     "nodeName": "오베론",
     "villageDirection": "up_down",
     "sceneName": "oberon_scene",
@@ -181,6 +183,7 @@
     }
   },
   "kadilla_castle": {
+  	"nodePath" : "kadilla_castle",
     "nodeName": "카딜라 성",
     "villageDirection": "up_down",
     "sceneName": "kadilla_castle_scene",
@@ -274,6 +277,7 @@
     }
   },
   "winterfall": {
+    "nodePath" : "winterfall",
     "nodeName": "윈터폴",
     "villageDirection": "center",
     "sceneName": "winterfall_scene",
@@ -333,6 +337,7 @@
     }
   },
   "redrose_castle": {
+  	"nodePath" : "redrose_castle",
     "nodeName": "레드로즈 성",
     "villageDirection": "left_right",
     "sceneName": "redrose_castle_scene",
@@ -389,6 +394,7 @@
     }
   },
   "mirage_port": {
+  	"nodePath" : "mirage_port",
     "nodeName": "미라지 포트",
     "villageDirection": "up_down",
     "sceneName": "mirage_port_scene",
@@ -449,6 +455,7 @@
     }
   },
   "middle_ridge": {
+  	"nodePath" : "middle_ridge",
     "nodeName": "미들 릿지",
     "villageDirection": "left_right",
     "sceneName": "middle_ridge_scene",
@@ -528,6 +535,7 @@
     }
   },
   "vaical_castle": {
+  	"nodePath" : "vaical_castle",
     "nodeName": "바이칼 성",
     "villageDirection": "up_down",
     "sceneName": "vaical_castle_scene",
@@ -566,6 +574,7 @@
     }
   },
   "southcape": {
+  	"nodePath" : "southcape",
     "nodeName": "사우스케이프",
     "villageDirection": "left_right",
     "sceneName": "southcape_scene",

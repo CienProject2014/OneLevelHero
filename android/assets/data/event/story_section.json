@@ -43,8 +43,8 @@
         "nextSectionNumber": "103",
         "eventType": "battle_command",
         "eventParameter": {
-          "battle" : {
-          	"battleCommand": "normal_attack"
+          "battle": {
+            "battleCommand": "normal_attack"
           }
         }
       }
@@ -66,10 +66,9 @@
         "nextSectionNumber": "104",
         "eventType": "battle_command",
         "eventParameter": {
-          "battle" : {
-          	 "battleCommand": "skill_attack"
+          "battle": {
+            "battleCommand": "skill_attack"
           }
-         
         }
       }
     ]
@@ -90,10 +89,9 @@
         "nextSectionNumber": "105",
         "eventType": "battle_command",
         "eventParameter": {
-          "battle" : {
-          	 "battleCommand": "skill_attack"
+          "battle": {
+            "battleCommand": "skill_attack"
           }
-         
         }
       }
     ]
@@ -114,9 +112,9 @@
         "nextSectionNumber": "106",
         "eventType": "battle_command",
         "eventParameter": {
-          "battle" : {
-          	"battleCommand": "use_item"
-          }          
+          "battle": {
+            "battleCommand": "use_item"
+          }
         }
       }
     ]
@@ -356,6 +354,30 @@
       {
         "eventElement": "prologue",
         "eventNumber": "39"
+      }
+    ]
+  },
+  "201": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "36"
+      }
+    ]
+  },
+  "301": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "37"
+      }
+    ]
+  },
+  "401": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "38"
       }
     ]
   }

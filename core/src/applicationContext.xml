@@ -204,4 +204,5 @@
 	<bean id="choiceOptionSectionChecker" class="com.mygdx.nextSectionChecker.ChoiceOptionSectionChecker"/>
 	<bean id="moveNodeSectionChecker" class="com.mygdx.nextSectionChecker.MoveNodeSectionChecker"/>
 	<bean id="moveFieldSectionChecker" class="com.mygdx.nextSectionChecker.MoveFieldSectionChecker"/>
+	<bean id="moveSubNodeSectionChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeSectionChecker"/>
 </beans>

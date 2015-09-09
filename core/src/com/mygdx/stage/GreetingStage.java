@@ -57,7 +57,7 @@ public class GreetingStage extends BaseOneLevelStage {
 	}
 
 	public void setScene() {
-		List<String> greetingMessageList = eventManager.getCurrentEventElement().getGreetingMessages();
+		List<String> greetingMessageList = eventManager.getCurrentNpc().getGreetingMessages();
 		WorldNodeEnum.NodeType nodeType = worldMapAssets.getNodeType(positionManager.getCurrentNodeName());
 		SubNode subNodeInfo = nodeAssets.getSubNodeInfo(nodeType, positionManager.getCurrentNodeName(),
 				positionManager.getCurrentSubNodeName());

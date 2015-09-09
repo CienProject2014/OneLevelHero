@@ -27,7 +27,7 @@ public class EventTriggerFactory {
 		switch (eventType) {
 			case BATTLE_END :
 				return context.getBean(BattleEndEventTrigger.class);
-			case BATTLE :
+			case START_BATTLE :
 				return context.getBean(BattleEventTrigger.class);
 			case CHAT :
 				return context.getBean(ChatEventTrigger.class);

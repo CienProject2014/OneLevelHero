@@ -9,6 +9,7 @@ import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.EventElementEnum;
 import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
@@ -82,6 +83,7 @@ public class LoadNewManager {
 		// 마왕성에서부터 게임을 시작한다.
 		positionManager.setCurrentNodeName("devil_castle");
 		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
+		positionManager.setCurrentEventPositionType(EventPosition.NONE);
 		fieldManager.setArrowName("16to1");
 	}
 
