@@ -119,6 +119,7 @@ public class SkillStage extends BaseOverlapStage {
 			addActor(labelTable);
 		}
 	}
+
 	private void setVoidDescription() {
 		LabelItem nameLabel = sceneLoader.getRoot().getLabelById("name_label");
 		nameLabel.setText("");
@@ -150,6 +151,7 @@ public class SkillStage extends BaseOverlapStage {
 							Gdx.app.log(TAG, "스킬 즉시 사용");
 							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
 									battleManager.getSelectedMonster(), currentSelectedSkill.getSkillPath());
+							battleManager.setSkill(false);
 						} else {
 							battleManager.getNowGridHitbox().setHitboxCenter(currentSelectedSkill.getHitboxCenter());
 							battleManager.getNowGridHitbox().setHitboxShape(currentSelectedSkill.getHitboxShape());
@@ -157,6 +159,7 @@ public class SkillStage extends BaseOverlapStage {
 						}
 						Gdx.app.log(TAG, "gridHitbox를 표시합니다");
 					} else {
+						Gdx.app.log(TAG, "gridHitbox를 표시합니다12");
 						battleManager.setGridLimitNum(currentSelectedSkill.getHitboxSize());
 						battleManager.setShowGrid(true);
 					}
@@ -217,8 +220,8 @@ public class SkillStage extends BaseOverlapStage {
 					skillInfo.put(i, battleManager.getCurrentAttackUnit().getSkills().get(i));
 					skillNameLabel.setText(battleManager.getCurrentAttackUnit().getSkills().get(i).getName());
 					castingLabel.setText("");
-					gaugeLabel.setText(String.valueOf(battleManager.getCurrentAttackUnit().getSkills().get(i)
-							.getCostGauge()));
+					gaugeLabel.setText(
+							String.valueOf(battleManager.getCurrentAttackUnit().getSkills().get(i).getCostGauge()));
 					setLabelStyle(skillNameLabel);
 					setLabelStyle(castingLabel);
 					setLabelStyle(gaugeLabel);
@@ -299,8 +302,8 @@ public class SkillStage extends BaseOverlapStage {
 						setUseButton(index);
 						for (int j = 0; j < SKILL_TAB_SIZE; j++) {
 							if (j != index) {
-								final CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
-										highLightFrameList.get(j));
+								final CompositeItem highLightFrame = sceneLoader.getRoot()
+										.getCompositeById(highLightFrameList.get(j));
 								setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 								setVoidUseButton(j);
 							}
@@ -314,8 +317,8 @@ public class SkillStage extends BaseOverlapStage {
 						setVoidDescription();
 						setAllVoidUseButton(sceneConstants);
 						for (int j = 0; j < SKILL_TAB_SIZE; j++) {
-							CompositeItem highLightFrame = sceneLoader.getRoot().getCompositeById(
-									highLightFrameList.get(j));
+							CompositeItem highLightFrame = sceneLoader.getRoot()
+									.getCompositeById(highLightFrameList.get(j));
 							setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
 						}
 					}
@@ -326,27 +329,27 @@ public class SkillStage extends BaseOverlapStage {
 
 	private void setEnum(int index) {
 		switch (index) {
-			case 0 :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL1);
-				break;
-			case 1 :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL2);
-				break;
-			case 2 :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL3);
-				break;
-			case 3 :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL4);
-				break;
-			case 4 :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL5);
-				break;
-			case 5 :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL6);
-				break;
-			case 6 :
-				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL7);
-				break;
+		case 0:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL1);
+			break;
+		case 1:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL2);
+			break;
+		case 2:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL3);
+			break;
+		case 3:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL4);
+			break;
+		case 4:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL5);
+			break;
+		case 5:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL6);
+			break;
+		case 6:
+			battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.SKILL7);
+			break;
 		}
 
 	}

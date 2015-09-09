@@ -44,6 +44,28 @@ public class AnimationManager {
 
 		animations.add(new AnimationBit(new Animation(0.025f, frames), x, y));
 	}
+	
+	/**
+	 * Animation 시퀀스에 재생하고자 하는 애니메이션을 등록
+	 * 
+	 * @param name
+	 *            재생하고자 하는 애니메이션의 TextureEnum
+	 * @param x
+	 *            재생하고자 하는 x위치
+	 * @param y
+	 *            재생하고자 하는 y위치
+	 * @param width 애니메이션의 폭
+	 * @param height 애니메이션의 높이
+	 */
+	public void registerAnimation(String name, int x, int y, int width, int height) {
+		FrameSheet sheet = textureAssets.getAnimationSheet(name);
+
+		TextureRegion[][] splitted = splitSheet(sheet);
+
+		TextureRegion[] frames = matrixToArray(splitted, sheet);
+
+		animations.add(new AnimationBit(new Animation(0.025f, frames), x, y, width, height));
+	}
 
 	/**
 	 * 하나의 sheet에 포함된 프레임들을 TextureRegion 타입의 이차원 배열로 분리한다.
@@ -90,6 +112,11 @@ public class AnimationManager {
 		stateTime = 0f;
 	}
 
+	/**
+	 * nextFrame 다음 프레임으로 넘김. 지정된 점의 중점
+	 * 
+	 * @param delta
+	 */
 	public void nextFrame(float delta) {
 		stateTime += delta;
 
@@ -102,7 +129,7 @@ public class AnimationManager {
 				iterator.remove();
 
 			} else {
-				spriteBatch.draw(bit.getAnimation().getKeyFrame(stateTime), bit.getX(), bit.getY());
+				spriteBatch.draw(bit.getAnimation().getKeyFrame(stateTime), bit.getX() - bit.getWidth()/2, bit.getY() - bit.getHeight()/2, bit.getWidth(), bit.getHeight());
 			}
 		}
 		spriteBatch.end();
@@ -122,11 +149,21 @@ public class AnimationManager {
 		private Animation animation;
 		private int x;
 		private int y;
+		private int width;
+		private int height;
 
 		public AnimationBit(Animation animation, int x, int y) {
 			this.animation = animation;
 			this.x = x;
 			this.y = y;
+		}
+		
+		public AnimationBit(Animation animation, int x, int y, int width, int height) {
+			this.animation = animation;
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
 		}
 
 		public Animation getAnimation() {
@@ -151,6 +188,22 @@ public class AnimationManager {
 
 		public void setY(int y) {
 			this.y = y;
+		}
+		
+		public void setWidth(int width){
+			this.width = width;
+		}
+		
+		public void setHeight(int height){
+			this.height = height;
+		}
+		
+		public int getWidth(){
+			return width;
+		}
+		
+		public int getHeight(){
+			return height;
 		}
 	}
 
