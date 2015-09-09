@@ -14,11 +14,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BattleStateEnum;
-import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.FieldManager;
+import com.mygdx.manager.MovingManager;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.unit.Monster;
 
@@ -30,9 +32,13 @@ public class EncounterStage extends BaseOneLevelStage {
 	@Autowired
 	private FieldManager fieldManager;
 	@Autowired
+	private MovingManager movingManager;
+	@Autowired
 	private TextureManager textureManager;
 	@Autowired
 	private ConstantsAssets constantsAssets;
+	@Autowired
+	private PositionManager positionManager;
 	private HashMap<String, Float> uiConstantsMap;
 	private Monster monster;
 	private TextButton fightButton;
@@ -86,14 +92,13 @@ public class EncounterStage extends BaseOneLevelStage {
 
 	// FIXME
 	private TextureRegionDrawable getBackgroundTRD() {
-		if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
+		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getTexture("bg_devil_castle_06")));
 		} else {
-			return new TextureRegionDrawable(
-					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
+					.getFieldType().toString())));
 		}
 	}
-
 	private void addListener() {
 		fightButton.addListener(new SimpleTouchListener() {
 			@Override
@@ -105,18 +110,8 @@ public class EncounterStage extends BaseOneLevelStage {
 		fleeButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-
-				if (battleManager.getBeforePosition() == PositionEnum.FIELD) {
-					battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-					screenFactory.show(ScreenEnum.FIELD);
-				} else if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
-					screenFactory.show(ScreenEnum.DUNGEON);
-				} else {
-					screenFactory.show(ScreenEnum.FIELD);
-
-					battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-					screenFactory.show(ScreenEnum.FIELD);
-				}
+				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				movingManager.goCurrentLocatePosition();
 			}
 		});
 	}

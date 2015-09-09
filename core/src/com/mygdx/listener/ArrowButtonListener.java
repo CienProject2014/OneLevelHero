@@ -16,7 +16,7 @@ import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TimeManager;
-import com.mygdx.model.surroundings.NodeConnection;
+import com.mygdx.model.location.NodeConnection;
 
 public class ArrowButtonListener extends ClickListener {
 	@Autowired
@@ -49,7 +49,7 @@ public class ArrowButtonListener extends ClickListener {
 		if (fieldManager.getFieldLength() == 0) {
 			fieldManager.goForwardField();
 		} else {
-			positionManager.setCurrentPositionType(PositionEnum.FIELD);
+			positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.FIELD);
 			screenFactory.show(ScreenEnum.FIELD);
 			fieldManager.goInField();
 			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_FIELD, connection.getValue().getArrowName());

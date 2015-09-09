@@ -12,7 +12,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
@@ -50,22 +50,19 @@ public class LogScreen extends BaseScreen {
 
 	@Override
 	public void show() {
-		eventManager.setGreeting(true);
 		if (battleManager.isInBattle()) {
-			eventManager.setCurrentEventNpc(battleManager.getSelectedMonster()
-					.getFacePath());
+			eventManager.setCurrentNpc(battleManager.getSelectedMonster().getFacePath());
 		} else {
-			positionManager.setCurrentPositionType(PositionEnum.LOG);
-			eventManager.setCurrentEventNpc(YONGSA_NAME);
-			selectEventStage = stageFactory.makeStage(StageEnum.SELECT_EVENT);
+			positionManager.setCurrentEventPositionType(EventPosition.LOG);
+			eventManager.setCurrentNpc(YONGSA_NAME);
+			selectEventStage = stageFactory.makeStage(StageEnum.CHOICE_NPCE_EVENT);
 		}
 
 		final NPC npc = eventManager.getCurrentNpc();
-		logScenes = npc.getGreeting().getEventScenes();
 		// for shuffle
 		List<EventScene> shuffleList = new ArrayList<EventScene>(logScenes);
 		Collections.shuffle(shuffleList);
-		eventStage = stageFactory.makeEventStage(shuffleList.get(0));
+		eventStage = stageFactory.makeStage(StageEnum.CHAT_EVENT);
 
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		int i = 0;
@@ -84,9 +81,8 @@ public class LogScreen extends BaseScreen {
 
 		eventStage.addListener(new InputListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				movingManager.goCurrentPosition();
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				movingManager.goCurrentLocatePosition();
 				return true;
 			}
 		});

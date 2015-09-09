@@ -1,7 +1,8 @@
 package com.mygdx.enums;
 
 public enum DungeonNodeEnum {
-	ENTRANCE("entrance"), ELITE("elite"), OBJECT("object"), BOSS("boss"), UP("up"), DOWN("down"), NORMAL("normal");
+	GATE("gate"), ELITE("elite"), OBJECT("object"), BOSS("boss"), UP_STAIR("up_stair"), DOWN("down_stair"), NORMAL(
+			"normal");
 	private String code;
 
 	private DungeonNodeEnum(String code) {

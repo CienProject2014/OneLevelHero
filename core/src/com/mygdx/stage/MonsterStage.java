@@ -16,10 +16,11 @@ import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.FieldManager;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.battle.Buff;
 import com.mygdx.model.unit.Monster;
@@ -40,6 +41,8 @@ public class MonsterStage extends BaseOneLevelStage {
 	private TextureManager textureManager;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private PositionManager positionManager;
 
 	// private Stack tableStack; // 전체 화면에 들어가는 테이블
 	private Table outerTable; // 몬스터 테이블의 바깥 테이블
@@ -135,14 +138,14 @@ public class MonsterStage extends BaseOneLevelStage {
 	}
 
 	private TextureRegionDrawable getBackgroundTRD() {
-		if (battleManager.getBeforePosition() == PositionEnum.DUNGEON) {
+		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getTexture("bg_devil_castle_06")));
-		} else if (eventManager.getCurrentElementEvent().getEventType().equals(EventTypeEnum.BATTLE)) {
-			String backgroundPath = eventManager.getCurrentElementEvent().getEventComponent().get(1);
+		} else if (eventManager.getCurrentEvent().getEventType().equals(EventTypeEnum.START_BATTLE)) {
+			String backgroundPath = battleManager.getBackgroundPath();
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
 		} else {
-			return new TextureRegionDrawable(
-					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
+					.getFieldType().toString())));
 		}
 	}
 

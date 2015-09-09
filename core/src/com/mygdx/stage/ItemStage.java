@@ -96,7 +96,7 @@ public class ItemStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				setCompositeItemVisibilty(useButton, PRESSED_VISIBILTY);
-				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_CONTROL, "item");
+				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_COMMAND, "use_item");
 				battleManager.useItem();
 				battleManager.endTurn();
 				BattleScreen.showItemStage = false;

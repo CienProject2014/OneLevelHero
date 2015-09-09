@@ -1,36 +1,36 @@
 package com.mygdx.model.event;
 
-import java.util.List;
-
-import com.mygdx.enums.RewardStateEnum;
-import com.mygdx.enums.RewardTypeEnum;
+import com.mygdx.enums.EventStateEnum;
+import com.mygdx.enums.EventTypeEnum;
 
 public class Reward {
-	private RewardTypeEnum rewardType;
-	private RewardStateEnum rewardState;
-	private List<String> rewardComponent;
-
-	public RewardStateEnum getRewardState() {
-		return rewardState;
-	}
-
-	public void setRewardState(RewardStateEnum rewardState) {
-		this.rewardState = rewardState;
-	}
-
-	public RewardTypeEnum getRewardType() {
+	private EventTypeEnum rewardType;
+	private EventStateEnum rewardState;
+	private EventParameters rewardParameter;
+	private String rewardTitle;
+	public EventTypeEnum getRewardType() {
 		return rewardType;
 	}
-
-	public void setRewardType(RewardTypeEnum rewardType) {
+	public void setRewardType(EventTypeEnum rewardType) {
 		this.rewardType = rewardType;
 	}
-
-	public List<String> getRewardComponent() {
-		return rewardComponent;
+	public EventStateEnum getRewardState() {
+		return rewardState;
+	}
+	public void setRewardState(EventStateEnum rewardState) {
+		this.rewardState = rewardState;
+	}
+	public EventParameters getRewardParameter() {
+		return rewardParameter;
+	}
+	public void setRewardParameter(EventParameters rewardParameter) {
+		this.rewardParameter = rewardParameter;
+	}
+	public String getRewardTitle() {
+		return rewardTitle;
+	}
+	public void setRewardTitle(String rewardTitle) {
+		this.rewardTitle = rewardTitle;
 	}
 
-	public void setRewardComponent(List<String> rewardComponent) {
-		this.rewardComponent = rewardComponent;
-	}
 }

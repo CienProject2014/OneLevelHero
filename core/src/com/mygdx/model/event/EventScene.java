@@ -1,5 +1,7 @@
 package com.mygdx.model.event;
 
+import java.util.ArrayList;
+
 public class EventScene {
 	public final static String SPEAKER_LEFT = "left";
 	public final static String SPEAKER_RIGHT = "right";
@@ -8,6 +10,7 @@ public class EventScene {
 	private String faceNumber;
 	private String backgroundPath;
 	private String speakerPosition;
+	private ArrayList<Reward> rewards;
 
 	public String getCharacterPath() {
 		return characterPath;
@@ -47,5 +50,13 @@ public class EventScene {
 
 	public void setSpeakerPosition(String speakerPosition) {
 		this.speakerPosition = speakerPosition;
+	}
+
+	public ArrayList<Reward> getRewards() {
+		return rewards;
+	}
+
+	public void setRewards(ArrayList<Reward> rewards) {
+		this.rewards = rewards;
 	}
 }

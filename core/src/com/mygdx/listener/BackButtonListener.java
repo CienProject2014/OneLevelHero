@@ -37,7 +37,7 @@ public class BackButtonListener extends ClickListener {
 				positionManager.setInWorldMap(false);
 				screenFactory.show(ScreenEnum.STATUS);
 			} else {
-				movingManager.goCurrentPosition();
+				movingManager.goCurrentLocatePosition();
 			}
 		}
 	}

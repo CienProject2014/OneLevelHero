@@ -1,0 +1,384 @@
+{
+  "101": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "1"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "102",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "예"
+        }
+      },
+      {
+        "nextSectionNumber": "112",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "아니오"
+        }
+      }
+    ]
+  },
+  "102": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "4"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "3"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "5"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "103",
+        "eventType": "battle_command",
+        "eventParameter": {
+          "battle": {
+            "battleCommand": "normal_attack"
+          }
+        }
+      }
+    ]
+  },
+  "103": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "7"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "8"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "104",
+        "eventType": "battle_command",
+        "eventParameter": {
+          "battle": {
+            "battleCommand": "skill_attack"
+          }
+        }
+      }
+    ]
+  },
+  "104": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "10"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "11"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "105",
+        "eventType": "battle_command",
+        "eventParameter": {
+          "battle": {
+            "battleCommand": "skill_attack"
+          }
+        }
+      }
+    ]
+  },
+  "105": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "13"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "14"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "106",
+        "eventType": "battle_command",
+        "eventParameter": {
+          "battle": {
+            "battleCommand": "use_item"
+          }
+        }
+      }
+    ]
+  },
+  "106": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "16"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "17"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "18"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "19"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "20"
+      }
+    ],
+    "conditionalEvents": [
+      {
+        "eventElement": "waiji",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": []
+  },
+  "107": {
+    "sequencialEvents": [],
+    "nextSections": [
+      {
+        "nextSectionNumber": "108",
+        "eventType": "move_node",
+        "eventParameter": {
+          "location": {
+            "nodeName": "blackwood"
+          }
+        }
+      }
+    ]
+  },
+  "108": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "22"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "109",
+        "eventType": "move_field",
+        "eventParameter": {
+          "location": {
+            "arrowName": "1to2"
+          }
+        }
+      }
+    ]
+  },
+  "109": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "24"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "110",
+        "eventType": "move_node",
+        "eventParameter": {
+          "location": {
+            "nodeName": "cobweb"
+          }
+        }
+      }
+    ]
+  },
+  "110": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "26"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "27"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "111",
+        "eventType": "move_sub_node",
+        "eventParameter": {
+          "location": {
+            "nodeName": "cobweb",
+            "subNodeName": "cobweb_library"
+          }
+        }
+      }
+    ]
+  },
+  "111": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "29"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "30"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "113",
+        "eventType": "move_node",
+        "eventParameter": {
+          "location": {
+            "nodeName": "cobweb"
+          }
+        }
+      }
+    ]
+  },
+  "112": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "31"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "35"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "32"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "33"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "34"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "201",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "카딜라 성"
+        }
+      },
+      {
+        "nextSectionNumber": "301",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "수정 협곡"
+        }
+      },
+      {
+        "nextSectionNumber": "401",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "바이칼 성"
+        }
+      },
+      {
+        "nextSectionNumber": "114",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "레드로즈 성"
+        }
+      }
+    ]
+  },
+  "113": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "32"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "33"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "34"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "201",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "카딜라 성"
+        }
+      },
+      {
+        "nextSectionNumber": "301",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "수정 협곡"
+        }
+      },
+      {
+        "nextSectionNumber": "401",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "바이칼 성"
+        }
+      },
+      {
+        "nextSectionNumber": "114",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "레드로즈 성"
+        }
+      }
+    ]
+  },
+  "114": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "39"
+      }
+    ]
+  },
+  "201": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "36"
+      }
+    ]
+  },
+  "301": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "37"
+      }
+    ]
+  },
+  "401": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "38"
+      }
+    ]
+  }
+}

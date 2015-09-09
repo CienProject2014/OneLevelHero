@@ -22,8 +22,8 @@ import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.DungeonEncounterManager;
 import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.TimeManager;
-import com.mygdx.model.surroundings.DungeonConnection;
-import com.mygdx.model.surroundings.DungeonNode;
+import com.mygdx.model.location.DungeonConnection;
+import com.mygdx.model.location.DungeonNode;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
@@ -68,7 +68,7 @@ public class DungeonStage extends BaseOverlapStage {
 
 	public void initMinimap() {
 
-		String minimapPath = "texture/dungeon_minimap/" + dungeonManager.getMapInfo().getDungeonName() + "_minimap.png";
+		String minimapPath = "texture/dungeon_minimap/" + dungeonManager.getMapInfo().getSubNodePath() + "_minimap.png";
 
 		blacktile = new Texture(Gdx.files.internal("texture/dungeon_minimap/black_tile.png"));
 
@@ -77,8 +77,8 @@ public class DungeonStage extends BaseOverlapStage {
 			map = new Texture(Gdx.files.internal("texture/dungeon_minimap/devil_castle_minimap.png"));
 		}
 
-		maptile = TextureRegion.split(map, map.getWidth() / dungeonManager.getMapInfo().getMapWidth(),
-				map.getHeight() / dungeonManager.getMapInfo().getMapHeight());
+		maptile = TextureRegion.split(map, map.getWidth() / dungeonManager.getMapInfo().getMapWidth(), map.getHeight()
+				/ dungeonManager.getMapInfo().getMapHeight());
 
 		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
 		dungeonManager.turnIsOn(currentNode.getNodePosY(), currentNode.getNodePosX());
@@ -125,7 +125,6 @@ public class DungeonStage extends BaseOverlapStage {
 
 		tableStack.add(minimaptable);
 	}
-
 	public void refreshMinimap() {
 
 		minimaptable.clear();
@@ -162,8 +161,7 @@ public class DungeonStage extends BaseOverlapStage {
 
 		makeScene(dungeonManager.getMapInfo().getSceneName(3));
 
-		minimapBackground = new Image(
-				new Texture(Gdx.files.internal("texture/dungeon_minimap/minimap_background.png")));
+		minimapBackground = new Image(new Texture(Gdx.files.internal("texture/dungeon_minimap/minimap_background.png")));
 		minimapBackground.setPosition(1400, 605);
 		this.addActor(minimapBackground);
 
@@ -349,8 +347,7 @@ public class DungeonStage extends BaseOverlapStage {
 		}
 
 		// FIXME UI
-		for (int i = 0, n = (dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward)
-				.size(); i < n; i++) {
+		for (int i = 0, n = (dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size(); i < n; i++) {
 			Gdx.app.log("문 개수", String.valueOf(n));
 			btnRoad[i].setTouchable(i < n ? Touchable.enabled : Touchable.disabled);
 			btnRoad[i].setVisible(btnRoad[i].getTouchable() == Touchable.enabled);
@@ -375,8 +372,9 @@ public class DungeonStage extends BaseOverlapStage {
 
 	private void actionMove(int index) {
 		timeManager.plusMinute(10);
-		dungeonManager.setCurrentPos(dungeonManager.getMapInfo().nodes
-				.indexOf((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).get(index)));
+		dungeonManager.setCurrentPos(dungeonManager.getMapInfo().nodes.indexOf((dungeonManager.getCurrentHeading()
+				? selectableBackward
+				: selectableForward).get(index)));
 
 		if (!dungeonManager.getCurrentHeading())
 			dungeonManager.setCurrentPos(selectableForward.get(index).getTo());

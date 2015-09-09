@@ -24,7 +24,7 @@ import com.mygdx.currentState.SaveInfo;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.BattleStateEnum;
-import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.enums.SaveVersion;
 
 public class SaveManager {
@@ -69,27 +69,27 @@ public class SaveManager {
 
 		saveInfo.setGameTime(timeManager.getTimeInfo());
 		saveInfo.setPartyList(partyInfo.getPartyList());
-		if (positionManager.getCurrentPositionType().equals(PositionEnum.NODE)) {
+		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.NODE)) {
 			saveInfo.setSavePlace(positionManager.getCurrentNodeHanguelName());
 		} else {
 			saveInfo.setSavePlace(positionManager.getCurrentSubNodeHanguelName());
 		}
 		switch (storySectionInfo.getCurrentSectionNumber()) {
-		case 1:
-			saveInfo.setStoryName("프롤로그");
-			break;
-		case 2:
-			saveInfo.setStoryName("카딜라 스토리");
-			break;
-		case 3:
-			saveInfo.setStoryName("수정협곡 스토리");
-			break;
-		case 4:
-			saveInfo.setStoryName("레드로즈 스토리");
-			break;
-		case 5:
-			saveInfo.setStoryName("미라지포트 스토리");
-			break;
+			case 1 :
+				saveInfo.setStoryName("프롤로그");
+				break;
+			case 2 :
+				saveInfo.setStoryName("카딜라 스토리");
+				break;
+			case 3 :
+				saveInfo.setStoryName("수정협곡 스토리");
+				break;
+			case 4 :
+				saveInfo.setStoryName("레드로즈 스토리");
+				break;
+			case 5 :
+				saveInfo.setStoryName("미라지포트 스토리");
+				break;
 		}
 		saveInfo.setSaveTime(new SimpleDateFormat("yyyy년 MM월dd일 HH:mm에 저장").format(new Date()));
 	}
@@ -97,7 +97,6 @@ public class SaveManager {
 	public void setNewGame() {
 		loadNewGameInfo();
 		assets.initializeUnitInfo();
-		loadManager.loadNewGame();
 	}
 
 	public void saveNewGameInfo() {
@@ -194,7 +193,6 @@ public class SaveManager {
 			e.printStackTrace();
 		}
 		timeInfo.setTime(Gdx.app.getPreferences("Time").getInteger("Time"));
-		battleManager.setBeforePosition(PositionEnum.SUB_NODE);
 		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 	}
 
@@ -202,9 +200,8 @@ public class SaveManager {
 		SaveInfo svInfo = null;
 
 		try {
-			svInfo = kryo.readObject(
-					new Input(new FileInputStream(Gdx.files.local(SAVEPATH + saveVersion.toString()).file())),
-					SaveInfo.class);
+			svInfo = kryo.readObject(new Input(new FileInputStream(Gdx.files.local(SAVEPATH + saveVersion.toString())
+					.file())), SaveInfo.class);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

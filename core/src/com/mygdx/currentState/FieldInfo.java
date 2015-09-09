@@ -3,7 +3,7 @@ package com.mygdx.currentState;
 import java.util.List;
 
 import com.mygdx.enums.FieldTypeEnum;
-import com.mygdx.model.surroundings.NodeConnection;
+import com.mygdx.model.location.NodeConnection;
 
 public class FieldInfo {
 	private int fieldNumber;

@@ -1,19 +1,18 @@
 package com.mygdx.factory;
 
-import java.util.Iterator;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
-import com.mygdx.model.event.EventScene;
 import com.mygdx.stage.BattleStage;
 import com.mygdx.stage.BuildingStage;
 import com.mygdx.stage.CharacterChangeStage;
 import com.mygdx.stage.CharacterUiStage;
 import com.mygdx.stage.ChatEventStage;
+import com.mygdx.stage.ChoiceNpcEventStage;
+import com.mygdx.stage.ChoiceOptionStage;
 import com.mygdx.stage.CreditStage;
 import com.mygdx.stage.DungeonEntranceStage;
 import com.mygdx.stage.DungeonMinimapStage;
@@ -21,9 +20,9 @@ import com.mygdx.stage.DungeonStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.FieldStage;
 import com.mygdx.stage.ForkStage;
-import com.mygdx.stage.GameObjectStage;
 import com.mygdx.stage.GameOverStage;
 import com.mygdx.stage.GameUiStage;
+import com.mygdx.stage.GreetingStage;
 import com.mygdx.stage.InventoryStage;
 import com.mygdx.stage.ItemStage;
 import com.mygdx.stage.LoadPopupStage;
@@ -31,8 +30,6 @@ import com.mygdx.stage.LoadingBarStage;
 import com.mygdx.stage.MenuStage;
 import com.mygdx.stage.MonsterStage;
 import com.mygdx.stage.SavePopupStage;
-import com.mygdx.stage.SelectComponentStage;
-import com.mygdx.stage.SelectEventStage;
 import com.mygdx.stage.SkillStage;
 import com.mygdx.stage.StatusStage;
 import com.mygdx.stage.VillageStage;
@@ -43,7 +40,6 @@ public class StageFactory {
 	private ApplicationContext context;
 
 	public Stage makeStage(StageEnum stageEnum) {
-		Gdx.app.log("StageFactory", "Make " + String.valueOf(stageEnum) + "Stage");
 		switch (stageEnum) {
 			case BATTLE :
 				return context.getBean(BattleStage.class).makeStage();
@@ -53,6 +49,8 @@ public class StageFactory {
 				return context.getBean(CharacterChangeStage.class).makeStage();
 			case CHARACTER_UI :
 				return context.getBean(CharacterUiStage.class).makeStage();
+			case CHAT_EVENT :
+				return context.getBean(ChatEventStage.class).makeStage();
 			case CREDIT :
 				return context.getBean(CreditStage.class).makeStage();
 			case DUNGEON :
@@ -65,10 +63,10 @@ public class StageFactory {
 				return context.getBean(ForkStage.class).makeStage();
 			case GAME_UI :
 				return context.getBean(GameUiStage.class).makeStage();
-			case GAME_OBJECT :
-				return context.getBean(GameObjectStage.class).makeStage();
 			case GAME_OVER :
 				return context.getBean(GameOverStage.class).makeStage();
+			case GREETING :
+				return context.getBean(GreetingStage.class).makeStage();
 			case LOADING_BAR :
 				return context.getBean(LoadingBarStage.class).makeStage();
 			case LOAD_POPUP :
@@ -83,10 +81,10 @@ public class StageFactory {
 				return context.getBean(InventoryStage.class).makeStage();
 			case SAVE :
 				return context.getBean(SavePopupStage.class).makeStage();
-			case SELECT_EVENT :
-				return context.getBean(SelectEventStage.class).makeStage();
-			case SELECT_COMPONENT :
-				return context.getBean(SelectComponentStage.class).makeStage();
+			case CHOICE_NPCE_EVENT :
+				return context.getBean(ChoiceNpcEventStage.class).makeStage();
+			case CHOICE_OPTION :
+				return context.getBean(ChoiceOptionStage.class).makeStage();
 			case SKILL :
 				return context.getBean(SkillStage.class).makeStage();
 			case STATUS :
@@ -102,15 +100,6 @@ public class StageFactory {
 			default :
 				Gdx.app.debug("StageFactory", "StageEnum 주입 에러");
 				return context.getBean(VillageStage.class).makeStage(); // FIXME
-
 		}
-	}
-
-	public Stage makeEventStage(Iterator<EventScene> eventSceneIterator) {
-		return context.getBean(ChatEventStage.class).makeStage(eventSceneIterator);
-	}
-
-	public Stage makeEventStage(EventScene eventScene) {
-		return context.getBean(ChatEventStage.class).makeStage(eventScene);
 	}
 }

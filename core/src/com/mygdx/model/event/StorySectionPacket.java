@@ -1,13 +1,11 @@
 package com.mygdx.model.event;
 
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.model.surroundings.TargetTime;
 
 public class StorySectionPacket {
 	private int nextSectionNumber;
 	private EventTypeEnum eventType;
-	private String targetComponent;
-	private TargetTime targetTime;
+	private EventParameters eventParameter;
 
 	public int getNextSectionNumber() {
 		return nextSectionNumber;
@@ -25,20 +23,12 @@ public class StorySectionPacket {
 		this.eventType = eventType;
 	}
 
-	public TargetTime getTargetTime() {
-		return targetTime;
+	public EventParameters getEventParameter() {
+		return eventParameter;
 	}
 
-	public void setTargetTime(TargetTime targetTime) {
-		this.targetTime = targetTime;
-	}
-
-	public String getTargetComponent() {
-		return targetComponent;
-	}
-
-	public void setTargetComponent(String targetComponent) {
-		this.targetComponent = targetComponent;
+	public void setEventParameter(EventParameters eventParameter) {
+		this.eventParameter = eventParameter;
 	}
 
 }

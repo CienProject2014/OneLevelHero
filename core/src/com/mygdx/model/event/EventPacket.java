@@ -2,8 +2,16 @@ package com.mygdx.model.event;
 
 public class EventPacket {
 	private int eventNumber;
-	private String eventNpc;
-	private boolean greeting;
+	private String eventElement;
+
+	public EventPacket() {
+
+	}
+
+	public EventPacket(String eventElement, int eventNumber) {
+		this.eventElement = eventElement;
+		this.eventNumber = eventNumber;
+	}
 
 	public int getEventNumber() {
 		return eventNumber;
@@ -13,24 +21,15 @@ public class EventPacket {
 		this.eventNumber = eventNumber;
 	}
 
-	public String getEventNpc() {
-		return eventNpc;
-	}
-
 	public void setEventNumber(int eventNumber) {
 		this.eventNumber = eventNumber;
 	}
-
-	public void setEventNpc(String eventNpc) {
-		this.eventNpc = eventNpc;
+	public String getEventElement() {
+		return eventElement;
 	}
 
-	public boolean isGreeting() {
-		return greeting;
-	}
-
-	public void setGreeting(boolean greeting) {
-		this.greeting = greeting;
+	public void setEventElement(String eventElement) {
+		this.eventElement = eventElement;
 	}
 
 }

@@ -3,7 +3,7 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.NodeAssets;
-import com.mygdx.model.surroundings.Dungeon;
+import com.mygdx.model.location.Dungeon;
 
 public class DungeonManager {
 	@Autowired

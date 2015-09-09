@@ -5,7 +5,6 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.unit.Monster;
 
 public class DungeonEncounterManager {
@@ -19,7 +18,6 @@ public class DungeonEncounterManager {
 	public void encountEnemy() {
 		// FIXME
 		Gdx.app.log("ectEnemy", "chk");
-		battleManager.setBeforePosition(PositionEnum.DUNGEON);
 		Monster selectedMonster = monsterManager.createMonster();
 		battleManager.startBattle(selectedMonster);
 

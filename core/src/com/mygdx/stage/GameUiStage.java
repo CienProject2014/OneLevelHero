@@ -17,7 +17,7 @@ import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SimpleTouchListener;
@@ -66,8 +66,8 @@ public class GameUiStage extends BaseOneLevelStage {
 		timeInfoButton.setText(timeManager.getTimeInfo());
 		if (storySectionManager.getCurrentStorySection().getNextSections() != null
 				&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
-			timeInfoButton
-					.setText(timeManager.getTimeInfo() + " / " + storySectionManager.getCurrentStorySectionNumber());
+			timeInfoButton.setText(timeManager.getTimeInfo() + " / "
+					+ storySectionManager.getCurrentStorySectionNumber());
 		}
 	}
 
@@ -89,7 +89,7 @@ public class GameUiStage extends BaseOneLevelStage {
 	}
 
 	private void conditionalHidingBackButton() {
-		if (!positionManager.getCurrentPositionType().equals(PositionEnum.SUB_NODE)) {
+		if (!positionManager.getCurrentLocatePositionType().equals(LocatePosition.SUB_NODE)) {
 			backButton.setVisible(false);
 		}
 		if (positionManager.isInWorldMap()) {
@@ -139,9 +139,9 @@ public class GameUiStage extends BaseOneLevelStage {
 	}
 
 	private void makePlaceInfoButton() {
-		if (positionManager.getCurrentPositionType().equals(PositionEnum.NODE)) {
+		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.NODE)) {
 			placeInfoButton = new TextButton(positionManager.getCurrentNodeHanguelName(), style);
-		} else if (positionManager.getCurrentPositionType().equals(PositionEnum.SUB_NODE)) {
+		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.SUB_NODE)) {
 			placeInfoButton = new TextButton(positionManager.getCurrentSubNodeHanguelName(), style);
 		} else {
 			placeInfoButton = new TextButton(positionManager.getCurrentNodeHanguelName(), style);

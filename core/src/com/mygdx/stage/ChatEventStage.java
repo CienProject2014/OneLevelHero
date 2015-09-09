@@ -17,9 +17,7 @@ import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.enums.EventElementEnum;
 import com.mygdx.listener.SimpleTouchListener;
-import com.mygdx.manager.EventCheckManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
@@ -41,8 +39,6 @@ public class ChatEventStage extends BaseOneLevelStage {
 	@Autowired
 	private StorySectionManager storySectionManager;
 	@Autowired
-	private EventCheckManager eventCheckManager;
-	@Autowired
 	private RewardManager rewardManager;
 	@Autowired
 	private UnitAssets unitAssets;
@@ -59,35 +55,34 @@ public class ChatEventStage extends BaseOneLevelStage {
 	private Table characterBustTable = new Table();
 	private Table scriptTable = new Table();
 
-	public Stage makeStage(final Iterator<EventScene> eventSceneIterator) {
+	public Stage makeStage() {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
+		final Iterator<EventScene> eventSceneIterator = eventManager.getCurrentEvent().getEventParameter()
+				.getEventScenes().iterator();
+
 		if (eventSceneIterator.hasNext()) {
-			setScene(eventSceneIterator.next());
+			final EventScene eventScene = eventSceneIterator.next();
+			setChatScene(eventScene);
+			rewardManager.addEventRewards(eventManager.getCurrentEvent().getRewards());
 			this.addListener(new InputListener() {
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					if (eventSceneIterator.hasNext()) {
-						setScene(eventSceneIterator.next());
+						final EventScene nextEventScene = eventSceneIterator.next();
+						rewardManager.doSceneRewards();
+						setChatScene(nextEventScene);
+						rewardManager.addSceneRewards(nextEventScene.getRewards());
 					} else {
-						if (!eventCheckManager.isSelectEvent(eventManager.getCurrentElementEvent())) {
-							rewardManager.doRewards(); // 보상이 있을경우 보상실행
-
-							eventManager.finishNpcEvent();
-							storySectionManager.runStorySequence();
-						}
+						rewardManager.doSceneRewards();
+						rewardManager.doEventRewards();
+						eventManager.finishEvent();
+						storySectionManager.runStorySequence();
 					}
 					return true;
 				}
 			});
 		}
-		return this;
-	}
-	public Stage makeStage(EventScene eventScene) {
-		super.makeStage();
-		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
-		eventManager.setCurrentEventElementType(EventElementEnum.NPC);
-		setScene(eventScene);
 		return this;
 	}
 
@@ -101,7 +96,7 @@ public class ChatEventStage extends BaseOneLevelStage {
 		scriptContent.setText(eventScene.getScript());
 	}
 
-	public void setScene(EventScene eventScene) {
+	public void setChatScene(EventScene eventScene) {
 		setScript(eventScene);
 		makeChatTable(eventScene);
 		makeSkipButton();
@@ -113,8 +108,8 @@ public class ChatEventStage extends BaseOneLevelStage {
 		skipButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				rewardManager.doRewards(); // 보상이 있을경우 보상실행
-				eventManager.finishNpcEvent();
+				rewardManager.doEventRewards(); // 보상이 있을경우 보상실행
+				eventManager.finishEvent();
 				storySectionManager.runStorySequence();
 			}
 		});

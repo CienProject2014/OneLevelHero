@@ -8,7 +8,6 @@ import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.assets.MusicAssets;
 import com.mygdx.currentState.MusicInfo;
-import com.mygdx.model.event.EventPacket;
 
 public class MusicManager {
 	@Autowired
@@ -133,13 +132,6 @@ public class MusicManager {
 	public void setMovingMusicAndPlay() {
 		String arrowName = fieldManager.getArrowName();
 		Music music = musicAssets.getMovingMusic(arrowName);
-		setMusicAndPlay(music);
-	}
-
-	public void setEventMusicAndPlay() {
-		EventPacket eventPacket = eventManager.getCurrentElementEventPacket();
-		String code = eventPacket.getEventNpc() + "_" + eventPacket.getEventNumber();
-		Music music = musicAssets.getEventMusic(code);
 		setMusicAndPlay(music);
 	}
 }

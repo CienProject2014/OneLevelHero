@@ -2,6 +2,9 @@
   "hero_json": {
     "filePath": "data/unit/hero.json"
   },
+  "main_story_json": { 
+  	"filePath" : "data/event/main_story.json"
+  },
   "npc_json": {
     "filePath": "data/event/npc.json"
   },
@@ -29,8 +32,8 @@
   "monster_json": {
     "filePath": "data/unit/monster.json"
   },
-  "story_json": {
-    "filePath": "data/event/story.json"
+  "story_section_json": {
+    "filePath": "data/event/story_section.json"
   },
   "weapon_json": {
     "filePath": "data/item/weapon.json"

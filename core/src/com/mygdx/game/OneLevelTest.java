@@ -27,7 +27,7 @@ public class OneLevelTest extends Game {
 		// context = RoboSpring.getContext(); 안드로이드에서 실행시
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-		gameLoad();
+		loadGame();
 
 		// goWorldMapScreen();
 		// context.getBean(PositionManager.class).setCurrentNodeName("oberon");
@@ -38,7 +38,7 @@ public class OneLevelTest extends Game {
 		goDungeonEntranceScreen();
 	}
 
-	public void gameLoad() {
+	public void loadGame() {
 		context.getBean(ScreenFactory.class).setGame(this);
 		context.getBean(LoadNewManager.class).loadNewGame();
 	}
