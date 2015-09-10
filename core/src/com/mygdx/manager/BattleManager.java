@@ -91,11 +91,7 @@ public class BattleManager {
 		}
 		unitManager.initiateMonster(selectedMonster);
 		battleInfo.setCurrentMonster(selectedMonster);
-		if (fieldManager.isInField()) {
-			screenFactory.show(ScreenEnum.BATTLE);
-		} else if (dungeonManager.isInDungeon()) {
-			screenFactory.show(ScreenEnum.BATTLE);
-		}
+		screenFactory.show(ScreenEnum.BATTLE);
 	}
 
 	public Unit getCurrentActors() {

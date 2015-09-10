@@ -20,7 +20,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
-import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.EventTypeEnum;
@@ -180,12 +179,15 @@ public class BattleStage extends BaseOneLevelStage {
 			animationDelay = 0;
 		}
 	}
-	
+
 	/***
 	 * playAnimation 애니메이션을 재생한다.
+	 * 
 	 * @param delta
-	 * @param width 애니메이션 그림의 폭
-	 * @param height 애니메이션 그림의 높이
+	 * @param width
+	 *            애니메이션 그림의 폭
+	 * @param height
+	 *            애니메이션 그림의 높이
 	 */
 	private void playAnimation(float delta) {
 		animationManager.nextFrame(delta);
@@ -198,10 +200,9 @@ public class BattleStage extends BaseOneLevelStage {
 			battleManager.setCurrentSelectedSkill(null);
 			if (battleManager.getBattleState().equals(BattleStateEnum.PLAYER_WIN)) {
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
-				movingManager.goPreviousPosition();
 				soundManager.setSoundByPathAndPlay("notice_victory");
-				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_END, selectedMonster.getFacePath());
-
+				movingManager.goCurrentLocatePosition();
+				storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE, selectedMonster.getFacePath());
 			} else if (battleManager.getBattleState().equals(BattleStateEnum.GAME_OVER)) {
 				screenFactory.show(ScreenEnum.GAME_OVER);
 			}

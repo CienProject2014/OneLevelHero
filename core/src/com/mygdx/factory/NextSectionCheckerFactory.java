@@ -21,7 +21,7 @@ public class NextSectionCheckerFactory {
 		switch (eventType) {
 			case BATTLE_COMMAND :
 				return context.getBean(BattleCommandChecker.class);
-			case BATTLE_END :
+			case END_BATTLE :
 				return context.getBean(BattleEndSectionChecker.class);
 			case CHOICE_OPTION :
 				return context.getBean(ChoiceOptionSectionChecker.class);

@@ -5,8 +5,8 @@ import org.springframework.context.ApplicationContext;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.eventTrigger.BattleEndEventTrigger;
-import com.mygdx.eventTrigger.BattleEventTrigger;
+import com.mygdx.eventTrigger.EndBattleEventTrigger;
+import com.mygdx.eventTrigger.StartBattleEventTrigger;
 import com.mygdx.eventTrigger.ChatEventTrigger;
 import com.mygdx.eventTrigger.ChoiceOptionEventTrigger;
 import com.mygdx.eventTrigger.EventTrigger;
@@ -25,10 +25,10 @@ public class EventTriggerFactory {
 
 	public EventTrigger getEventTrigger(EventTypeEnum eventType) {
 		switch (eventType) {
-			case BATTLE_END :
-				return context.getBean(BattleEndEventTrigger.class);
+			case END_BATTLE :
+				return context.getBean(EndBattleEventTrigger.class);
 			case START_BATTLE :
-				return context.getBean(BattleEventTrigger.class);
+				return context.getBean(StartBattleEventTrigger.class);
 			case CHAT :
 				return context.getBean(ChatEventTrigger.class);
 			case CHOICE_OPTION :

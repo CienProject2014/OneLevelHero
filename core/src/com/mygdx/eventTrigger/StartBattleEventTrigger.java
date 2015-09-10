@@ -7,7 +7,7 @@ import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.model.event.EventParameters;
 
-public class BattleEventTrigger implements EventTrigger {
+public class StartBattleEventTrigger implements EventTrigger {
 	@Autowired
 	private BattleManager battleManager;
 	@Autowired
