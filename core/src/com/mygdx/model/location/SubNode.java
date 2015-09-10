@@ -3,6 +3,8 @@ package com.mygdx.model.location;
 public class SubNode {
 	private String subNodeName;
 	private String subNodePath;
+	private TargetTime targetTime;
+
 	public String getSubNodePath() {
 		return subNodePath;
 	}
@@ -14,5 +16,11 @@ public class SubNode {
 	}
 	public void setSubNodeName(String subNodeName) {
 		this.subNodeName = subNodeName;
+	}
+	public TargetTime getTargetTime() {
+		return targetTime;
+	}
+	public void setTargetTime(TargetTime targetTime) {
+		this.targetTime = targetTime;
 	}
 }

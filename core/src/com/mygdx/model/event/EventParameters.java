@@ -6,24 +6,22 @@ import com.mygdx.model.eventParameter.BattleParameter;
 import com.mygdx.model.eventParameter.ItemParameter;
 import com.mygdx.model.eventParameter.LocationParameter;
 import com.mygdx.model.eventParameter.MusicParameter;
-import com.mygdx.model.eventParameter.TargetTimeParameter;
 import com.mygdx.model.eventParameter.TimeParameter;
 import com.mygdx.model.eventParameter.UnitParameter;
 
 public class EventParameters {
 	private TimeParameter time;
-	private TargetTimeParameter targetTime;
 	private ArrayList<EventScene> eventScenes;
 	private LocationParameter location;
 	private BattleParameter battle;
-	private ArrayList<Event> events;
+	private ArrayList<EventPacket> events;
+	private EventPacket eventPacket;
 	private ArrayList<String> options;
 	private UnitParameter unit;
 	private String targetComponent;
 	private int nextSectionNumber;
 	private MusicParameter music;
 	private ItemParameter item;
-	private EventPacket eventPacket;
 
 	public TimeParameter getTime() {
 		return time;
@@ -49,10 +47,10 @@ public class EventParameters {
 	public void setBattle(BattleParameter battle) {
 		this.battle = battle;
 	}
-	public ArrayList<Event> getEvents() {
+	public ArrayList<EventPacket> getEvents() {
 		return events;
 	}
-	public void setEvents(ArrayList<Event> events) {
+	public void setEvents(ArrayList<EventPacket> events) {
 		this.events = events;
 	}
 	public ArrayList<String> getOptions() {
@@ -66,12 +64,6 @@ public class EventParameters {
 	}
 	public void setNextSectionNumber(int nextSectionNumber) {
 		this.nextSectionNumber = nextSectionNumber;
-	}
-	public TargetTimeParameter getTargetTime() {
-		return targetTime;
-	}
-	public void setTargetTime(TargetTimeParameter targetTime) {
-		this.targetTime = targetTime;
 	}
 	public ItemParameter getItem() {
 		return item;

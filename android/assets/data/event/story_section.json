@@ -10,16 +10,17 @@
       {
         "nextSectionNumber": "102",
         "eventType": "choice_option",
-        "eventParameter": {
-          "targetComponent": "예"
-        }
+        "eventParameter" : {
+        	"targetComponent": "예"
+        }        
       },
       {
         "nextSectionNumber": "112",
         "eventType": "choice_option",
-        "eventParameter": {
-          "targetComponent": "아니오"
+        "eventParameter" : {
+       		"targetComponent": "아니오"
         }
+       
       }
     ]
   },
@@ -27,11 +28,15 @@
     "sequencialEvents": [
       {
         "eventElement": "prologue",
-        "eventNumber": "4"
+        "eventNumber": "2"
       },
       {
         "eventElement": "prologue",
         "eventNumber": "3"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "4"
       },
       {
         "eventElement": "prologue",
@@ -42,10 +47,10 @@
       {
         "nextSectionNumber": "103",
         "eventType": "battle_command",
-        "eventParameter": {
-          "battle": {
-            "battleCommand": "normal_attack"
-          }
+        "eventParameter" : {
+        	"battle" : {
+        		"battleCommand" : "normal_attack"
+        	}        	
         }
       }
     ]
@@ -65,10 +70,10 @@
       {
         "nextSectionNumber": "104",
         "eventType": "battle_command",
-        "eventParameter": {
-          "battle": {
-            "battleCommand": "skill_attack"
-          }
+         "eventParameter" : {
+         	"battle" : {
+         		"battleCommand" : "skill_attack"
+         	}        	
         }
       }
     ]
@@ -88,10 +93,10 @@
       {
         "nextSectionNumber": "105",
         "eventType": "battle_command",
-        "eventParameter": {
-          "battle": {
-            "battleCommand": "skill_attack"
-          }
+         "eventParameter" : {
+        	"battle" : {
+        		"battleCommand" : "skill_attack"
+        	}        	
         }
       }
     ]
@@ -111,10 +116,10 @@
       {
         "nextSectionNumber": "106",
         "eventType": "battle_command",
-        "eventParameter": {
-          "battle": {
-            "battleCommand": "use_item"
-          }
+         "eventParameter" : {
+         	"battle" : {
+         		"battleCommand" : "use_item"
+         	}        	
         }
       }
     ]
@@ -156,10 +161,10 @@
       {
         "nextSectionNumber": "108",
         "eventType": "move_node",
-        "eventParameter": {
-          "location": {
-            "nodeName": "blackwood"
-          }
+        "eventParameter" : {
+        	"location" : {
+        		"nodeName" : "blackwood"
+        	}
         }
       }
     ]
@@ -175,10 +180,10 @@
       {
         "nextSectionNumber": "109",
         "eventType": "move_field",
-        "eventParameter": {
-          "location": {
-            "arrowName": "1to2"
-          }
+        "eventParameter" : {
+        	"location" : {
+        		"arrowName" : "1to2"
+        	}
         }
       }
     ]
@@ -194,10 +199,10 @@
       {
         "nextSectionNumber": "110",
         "eventType": "move_node",
-        "eventParameter": {
-          "location": {
-            "nodeName": "cobweb"
-          }
+        "eventParameter" : {
+        	"location" : {
+        		"nodeName" : "cobweb"
+        	}
         }
       }
     ]
@@ -217,11 +222,11 @@
       {
         "nextSectionNumber": "111",
         "eventType": "move_sub_node",
-        "eventParameter": {
-          "location": {
-            "nodeName": "cobweb",
-            "subNodeName": "cobweb_library"
-          }
+        "eventParameter" : {
+        	"location" : {
+        		"nodeName" : "cobweb",
+        		"subNodeName" : "cobweb_library"
+        	}
         }
       }
     ]
@@ -241,10 +246,10 @@
       {
         "nextSectionNumber": "113",
         "eventType": "move_node",
-        "eventParameter": {
-          "location": {
-            "nodeName": "cobweb"
-          }
+        "eventParameter" :{
+        	"location" : {
+        		"nodeName" : "cobweb"
+        	}
         }
       }
     ]
@@ -252,7 +257,7 @@
   "112": {
     "sequencialEvents": [
       {
-        "eventElement": "prologue",
+      	"eventElement": "prologue",
         "eventNumber": "31"
       },
       {
@@ -276,29 +281,29 @@
       {
         "nextSectionNumber": "201",
         "eventType": "choice_option",
-        "eventParameter": {
-          "targetComponent": "카딜라 성"
-        }
+        "eventParameter" : {
+        	"targetComponent": "카딜라 성"
+        }        
       },
       {
         "nextSectionNumber": "301",
         "eventType": "choice_option",
-        "eventParameter": {
-          "targetComponent": "수정 협곡"
+        "eventParameter" : {
+        	"targetComponent": "수정 협곡"
         }
       },
       {
         "nextSectionNumber": "401",
         "eventType": "choice_option",
-        "eventParameter": {
-          "targetComponent": "바이칼 성"
+         "eventParameter" : {
+        	"targetComponent": "바이칼 성"
         }
       },
       {
-        "nextSectionNumber": "114",
+        "nextSectionNumber": "501",
         "eventType": "choice_option",
-        "eventParameter": {
-          "targetComponent": "레드로즈 성"
+         "eventParameter" : {
+        	"targetComponent": "레드로즈 성"
         }
       }
     ]
@@ -319,41 +324,33 @@
       }
     ],
     "nextSections": [
-      {
+     {
         "nextSectionNumber": "201",
         "eventType": "choice_option",
-        "eventParameter": {
-          "targetComponent": "카딜라 성"
-        }
+        "eventParameter" : {
+        	"targetComponent": "카딜라 성"
+        }        
       },
       {
         "nextSectionNumber": "301",
         "eventType": "choice_option",
-        "eventParameter": {
-          "targetComponent": "수정 협곡"
+        "eventParameter" : {
+        	"targetComponent": "수정 협곡"
         }
       },
       {
         "nextSectionNumber": "401",
         "eventType": "choice_option",
-        "eventParameter": {
-          "targetComponent": "바이칼 성"
+         "eventParameter" : {
+        	"targetComponent": "바이칼 성"
         }
       },
       {
-        "nextSectionNumber": "114",
+        "nextSectionNumber": "501",
         "eventType": "choice_option",
-        "eventParameter": {
-          "targetComponent": "레드로즈 성"
+         "eventParameter" : {
+        	"targetComponent": "레드로즈 성"
         }
-      }
-    ]
-  },
-  "114": {
-    "sequencialEvents": [
-      {
-        "eventElement": "prologue",
-        "eventNumber": "39"
       }
     ]
   },
@@ -363,6 +360,17 @@
         "eventElement": "prologue",
         "eventNumber": "36"
       }
+    ],
+    "nextSections": [
+     {
+        "nextSectionNumber": "202",
+        "eventType": "move_node",
+        "eventParameter" : {
+        	"location" : {
+        		"nodeName" : "kadilla_castle"
+        	}
+        }        
+      }
     ]
   },
   "301": {
@@ -371,13 +379,719 @@
         "eventElement": "prologue",
         "eventNumber": "37"
       }
+    ],
+    "nextSections": [
+     {
+        "nextSectionNumber": "302",
+        "eventType": "move_field",
+        "eventParameter" : {
+        	"location" : {
+        		"arrowName" : "2to13"
+        	}
+        }        
+      }
     ]
+  },
+  "302": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "1"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "2"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "3"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "304",
+        "eventType": "move_sub_node",
+        "eventParameter" : {
+        	"location" : {
+        	  "nodeName":"cobweb",
+        		"subNodeName" : "cobweb_cathedral"
+        	}
+        }
+      },
+      {
+        "nextSectionNumber": "303",
+        "eventType": "move_field",
+        "eventParameter" : {
+        	"location" : {
+        		"arrowName" : "2to13"
+        	}
+        }        
+      }
+    ]
+  },
+  "303": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "1"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "2"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "3"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "304",
+        "eventType": "move_sub_node",
+        "eventParameter" : {
+        	"location" : {
+        	  "nodeName":"cobweb",
+        		"subNodeName" : "cobweb_cathedral"
+        	}
+        }
+      },
+      {
+        "nextSectionNumber": "302",
+        "eventType": "move_field",
+        "eventParameter" : {
+        	"location" : {
+        		"arrowName" : "2to13"
+        	}
+        }        
+      }
+    ]
+  },
+  "304": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "4"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "5"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "305",
+        "eventType": "move_node",
+        "eventParameter" : {
+        	"location" : {
+        		"nodeName" : "cobweb"
+        	}
+        }
+      }
+    ]
+  },
+  "305": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "7"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "8"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "306",
+        "eventType": "move_sub_node",
+        "eventParameter" : {
+        	"location" : {
+        	  "nodeName":"cobweb",
+        		"subNodeName" : "cobweb_inn"
+        	}
+        }
+      }
+    ]
+  },
+  "306": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "10"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "11"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "12"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "307",
+        "eventType": "end_battle",
+        "eventParameter" : {
+        	"battle" : {
+        		"targetMonster" : "nepel_01"
+        	}
+        }
+      }
+    ]
+  },
+  "307": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "14"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "15"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "308",
+        "eventType": "move_node",
+        "eventParameter" : {
+        	"location" : {
+        		"nodeName" : "crystallized_valley"
+        	}
+        }
+      }
+    ]
+  },
+  "308": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "17"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "18"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "310",
+        "eventType": "move_sub_node",
+        "eventParameter" : {
+        	"location" : {
+        		"subNodeName" : "crystallized_valley",
+        		"dungeonRoomName" : "normal_4_4"
+        	},
+        	"time":{
+        	  "startHour" :6,
+        	  "endHour":18
+        	}
+        }
+      },
+      {
+        "nextSectionNumber": "309",
+        "eventType": "move_sub_node",
+        "eventParameter" : {
+        	"location" : {
+        		"subNodeName" : "crystallized_valley",
+        		"dungeonRoomName" : "normal_4_4"
+        	},
+        	"time":{
+        	  "startHour" :18,
+        	  "endHour":6
+        	}
+        }
+      }
+    ]
+  },
+  "309": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "20"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "21"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "311",
+        "eventType": "move_node",
+        "eventParameter" : {
+        	"location" : {
+        		"nodeName" : "winterfall"
+        	}
+        }
+      }
+    ]
+  },
+  "310": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "23"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "24"
+      }
+    ],
+    "nextSections": []
+  },
+  "311": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "26"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "27"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "312",
+        "eventType": "move_sub_node",
+        "eventParameter" : {
+        	"location" : {
+        	  "nodeName":"winterfall",
+        		"subNodeName" : "winterfall_altar"
+        	}
+        }
+      }
+    ]
+  },
+  "312": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "29"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "30"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "31"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "32"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "313",
+        "eventType": "move_sub_node",
+        "eventParameter" : {
+        	"location" : {
+        		"subNodeName" : "cave_of_succubus",
+        		"dungeonRoomName" : "normal_3_4"
+        	}
+        }
+      }
+    ]
+  },
+  "313": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "34"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "35"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "36"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "314",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "succubus_junior"
+          }
+        }
+      }
+    ]
+  },
+  "314": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "37"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "36"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "314",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "succubus_junior"
+          }
+        }
+      }
+    ]
+  },
+  "315": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "38"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "39"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "316",
+        "eventType": "move_sub_node_before_absolute_time",
+        "eventParameter" : {
+        	"location" : {
+        		"subNodeName" : "cave_of_succubus",
+        		"dungeonRoomName" : "normal_3_7"
+        	},
+        	"time" : {
+            "day" : 4,
+            "hour" : 18
+          }
+        }
+      },
+      {
+        "nextSectionNumber": "317",
+        "eventType": "move_sub_node_after_absolute_time",
+        "eventParameter" : {
+        	"location" : {
+        		"subNodeName" : "cave_of_succubus",
+        		"dungeonRoomName" : "normal_3_7"
+        	},
+        	"time" : {
+            "day" : 4,
+            "hour" : 18
+          }
+        }
+      }
+    ]
+  },
+  "316": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "41"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "42"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "43"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "318",
+        "eventType": "end_battle",
+        "eventParameter" : {
+        	"battle" : {
+            "targetMonster": "nepel_02"
+        	}
+        }
+      }
+    ]
+  },
+  "317": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "44"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "45"
+      }
+    ],
+    "nextSections": [ ]
+  },
+  "318": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "47"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "48"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "49"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "319",
+        "eventType": "end_battle",
+        "eventParameter" : {
+        	"battle" : {
+            "targetMonster": "nepel_03"
+        	}
+        }
+      }
+    ]
+  },
+  "319": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "51"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "52"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "320",
+        "eventType": "move_dungeon_room",
+        "eventParameter" : {
+        	"location" : {
+            "subNodeName": "crystallized_valley",
+            "dungeonRoomName" : "normal_4_4"
+        	}
+        }
+      }
+    ]
+  },
+  "320": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "54"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "55"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "321",
+        "eventType": "move_dungeon_room",
+        "eventParameter" : {
+        	"location" : {
+            "subNodeName": "crystallized_valley",
+            "dungeonRoomName" : "normal_2_6"
+        	}
+        }
+      },
+      {
+        "nextSectionNumber": "326",
+        "eventType": "move_dungeon_room",
+        "eventParameter" : {
+        	"location" : {
+            "subNodeName": "crystallized_valley",
+            "dungeonRoomName" : "normal_4_3"
+        	}
+        }
+      },
+      {
+        "nextSectionNumber": "326",
+        "eventType": "move_dungeon_room",
+        "eventParameter" : {
+        	"location" : {
+            "subNodeName": "crystallized_valley",
+            "dungeonRoomName" : "normal_5_3"
+        	}
+        }
+      },
+      {
+        "nextSectionNumber": "326",
+        "eventType": "move_dungeon_room",
+        "eventParameter" : {
+        	"location" : {
+            "subNodeName": "crystallized_valley",
+            "dungeonRoomName" : "normal_5_6"
+        	}
+        }
+      }
+    ]
+  },
+  "321": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "57"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "58"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "59"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "322",
+        "eventType": "end_battle",
+        "eventParameter" : {
+        	"battle": {
+            "targetMonster": "ankillas"
+        }
+        }
+      }
+    ]
+  },
+  "322": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "61"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "62"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "323",
+        "eventType": "move_node",
+        "eventParameter" : {
+        	"location": {
+            "nodeName": "cobweb"
+          }
+        }
+      }
+    ]
+  },
+  "323": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "64"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "65"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "324",
+        "eventType": "move_sub_node",
+        "eventParameter" : {
+        	"location": {
+            "nodeName": "cobweb",
+            "subNodeName": "cobweb_cathedral"
+          }
+        }
+      }
+    ]
+  },
+  "324": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "67"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "68"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "325",
+        "eventType": "move_node",
+        "eventParameter" : {
+        	"location": {
+            "nodeName": "cobweb"
+          }
+        }
+      }
+    ]
+  },
+  "325": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "70"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "71"
+      }
+    ],
+    "nextSections": []
+  },
+  "326": {
+    "sequencialEvents": [
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "73"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "74"
+      }
+    ],
+    "nextSections": []
   },
   "401": {
     "sequencialEvents": [
       {
         "eventElement": "prologue",
         "eventNumber": "38"
+      }
+    ],
+    "nextSections": [
+     {
+        "nextSectionNumber": "402",
+        "eventType": "move_node",
+        "eventParameter" : {
+        	"location" : {
+        		"nodeName" : "middle_ridge"
+        	}
+        }        
+      }
+    ]
+  },
+  "501": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "39"
+      }
+    ],
+    "nextSections": [
+     {
+        "nextSectionNumber": "502",
+        "eventType": "move_node",
+        "eventParameter" : {
+        	"location" : {
+        		"nodeName" : "redrose_castle"
+        	}
+        }        
       }
     ]
   }

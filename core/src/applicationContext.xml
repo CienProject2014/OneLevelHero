@@ -186,10 +186,9 @@
 	<bean id="atlasUiFile" class="com.mygdx.model.jsonModel.AtlasUiFile"/>
 	<bean id="musicFile" class="com.mygdx.model.jsonModel.MusicFile"/>
 	
-	<bean id="battleEndEventTrigger" class="com.mygdx.eventTrigger.BattleEndEventTrigger"/>
-	<bean id="battleEventTrigger" class="com.mygdx.eventTrigger.BattleEventTrigger"/>
 	<bean id="chatEventTrigger" class="com.mygdx.eventTrigger.ChatEventTrigger"/>
 	<bean id="choiceOptionEventTrigger" class="com.mygdx.eventTrigger.ChoiceOptionEventTrigger"/>
+	<bean id="endBattleEventTrigger" class="com.mygdx.eventTrigger.EndBattleEventTrigger"/>
 	<bean id="gameOverEventTrigger" class="com.mygdx.eventTrigger.GameOverEventTrigger"/>
 	<bean id="goSubNodeEventTrigger" class="com.mygdx.eventTrigger.GoSubNodeEventTrigger"/>
 	<bean id="joinPartyEventTrigger" class="com.mygdx.eventTrigger.JoinPartyEventTrigger"/>
@@ -198,6 +197,9 @@
 	<bean id="nextSectionEventTrigger" class="com.mygdx.eventTrigger.NextSectionEventTrigger"/>
 	<bean id="passTimeEventTrigger" class="com.mygdx.eventTrigger.PassTimeEventTrigger"/>
 	<bean id="playMusicEventTrigger" class="com.mygdx.eventTrigger.PlayMusicEventTrigger"/>
+	<bean id="playSoundEventTrigger" class="com.mygdx.eventTrigger.PlaySoundEventTrigger"/>
+	<bean id="setSubNodeTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetSubNodeTargetTimeEventTrigger"/>
+	<bean id="startBattleEventTrigger" class="com.mygdx.eventTrigger.StartBattleEventTrigger"/>
 	
 	<bean id="battleCommandChecker" class="com.mygdx.nextSectionChecker.BattleCommandChecker"/>
 	<bean id="battleEndSectionChecker" class="com.mygdx.nextSectionChecker.BattleEndSectionChecker"/>

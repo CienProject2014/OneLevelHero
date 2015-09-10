@@ -16,7 +16,6 @@ public class Building extends SubNode {
 	private List<String> gameObject;
 	private String sceneName;
 	private boolean isOverlapScene;
-	private TargetTime targetTime;
 
 	public BuildingTypeEnum getBuildingType() {
 		return buildingType;
@@ -55,13 +54,5 @@ public class Building extends SubNode {
 
 	public void setOverlapScene(boolean isOverlapScene) {
 		this.isOverlapScene = isOverlapScene;
-	}
-
-	public TargetTime getTargetTime() {
-		return targetTime;
-	}
-
-	public void setTargetTime(TargetTime targetTime) {
-		this.targetTime = targetTime;
 	}
 }

@@ -17,8 +17,8 @@ public class MoveNodeSectionChecker implements NextSectionChecker {
 				return ArgumentChecker.checkIsSame(location, args[0]);
 			} else if (args.length == 3) {
 				String location = eventParameter.getLocation().getNodeName();
-				int startHour = eventParameter.getTargetTime().getStartHour();
-				int endHour = eventParameter.getTargetTime().getEndHour();
+				int startHour = eventParameter.getTime().getStartHour();
+				int endHour = eventParameter.getTime().getEndHour();
 				int currentMinute = timeManager.getDayMinute();
 				return ArgumentChecker.checkIsSameLocationInTargetTime(location, startHour, endHour, currentMinute,
 						args);
