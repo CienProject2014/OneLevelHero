@@ -153,6 +153,8 @@ public class SkillStage extends BaseOverlapStage {
 							battleManager.setShowGrid(true);
 						} else {
 							// 기술일 경우에는 히트박스 제한이 있다.
+							battleManager.getNowGridHitbox().setHitboxCenter(null);
+							battleManager.getNowGridHitbox().setHitboxShape(null);
 							battleManager.setGridLimitNum(currentSelectedSkill.getHitboxSize());
 							battleManager.setShowGrid(true);
 						}
@@ -167,9 +169,14 @@ public class SkillStage extends BaseOverlapStage {
 							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
 									battleManager.getSelectedMonster(), currentSelectedSkill.getSkillPath());
 							battleManager.setSkill(false);
-						} else {
+						} else if (currentSelectedSkill.getSkillTargetType().equals("one")) {
 							// 팀원 중 한 명을 선택해야 하는 경우에는 먼저 선택창이 뜬다
 							partyManager.setCurrentSelectedHero(null);
+						} else {
+							// 팀원 전체일 경우
+							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
+									battleManager.getSelectedMonster(), currentSelectedSkill.getSkillPath());
+							battleManager.setSkill(false);
 						}
 					}
 					BattleScreen.showSkillStage = false;

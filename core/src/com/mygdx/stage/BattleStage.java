@@ -20,7 +20,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
-import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.EventTypeEnum;
@@ -180,12 +179,15 @@ public class BattleStage extends BaseOneLevelStage {
 			animationDelay = 0;
 		}
 	}
-	
+
 	/***
 	 * playAnimation 애니메이션을 재생한다.
+	 * 
 	 * @param delta
-	 * @param width 애니메이션 그림의 폭
-	 * @param height 애니메이션 그림의 높이
+	 * @param width
+	 *            애니메이션 그림의 폭
+	 * @param height
+	 *            애니메이션 그림의 높이
 	 */
 	private void playAnimation(float delta) {
 		animationManager.nextFrame(delta);
@@ -383,8 +385,8 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.gameObjectPopup.setListenerFactory(listenerFactory);
 				battleManager.gameObjectPopup.setConstantsAssets(constantsAssets);
 				checkRunAway();
-				battleManager.gameObjectPopup.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent()
-						+ "%입니다");
+				battleManager.gameObjectPopup
+						.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent() + "%입니다");
 				addActor(battleManager.gameObjectPopup);
 				battleManager.gameObjectPopup.setVisible(true);
 			}
@@ -401,10 +403,14 @@ public class BattleStage extends BaseOneLevelStage {
 				start = (new Vector2(touched.x, touched.y));
 				battleManager.getNowGridHitbox().setStartPosition(touched.x, touched.y);
 				battleManager.getNowGridHitbox().showTileWhereMoved(touched.x, touched.y);
-				if (battleManager.getNowGridHitbox().isInsideEdge(touched.x, touched.y)) {
-					battleManager.setGridLimitNum(getWeaponHitboxSize());
+				if (battleManager.isSkill()) {
+
 				} else {
-					battleManager.setGridLimitNum(1);
+					if (battleManager.getNowGridHitbox().isInsideEdge(touched.x, touched.y)) {
+						battleManager.setGridLimitNum(getWeaponHitboxSize());
+					} else {
+						battleManager.setGridLimitNum(1);
+					}
 				}
 			}
 		}
@@ -435,11 +441,11 @@ public class BattleStage extends BaseOneLevelStage {
 		super.touchUp(screenX, screenY, pointer, button);
 		if (battleManager.isShowGrid() && battleManager.getNowGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 			if (!battleManager.isSkill()) {
-				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
-						.getNowGridHitbox().getPreviousHitArea());
+				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster,
+						battleManager.getNowGridHitbox().getPreviousHitArea());
 			} else {
-				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
-						.getCurrentSelectedSkill().getSkillPath());
+				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster,
+						battleManager.getCurrentSelectedSkill().getSkillPath());
 				battleManager.setSkill(false);
 			}
 			battleManager.setShowGrid(false);
@@ -483,8 +489,8 @@ public class BattleStage extends BaseOneLevelStage {
 		turnSmallImageMap.put(selectedMonster.getFacePath(),
 				new Image(textureManager.getSmallBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			turnSmallImageMap
-					.put(hero.getFacePath(), new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
+			turnSmallImageMap.put(hero.getFacePath(),
+					new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
 		}
 	}
 
