@@ -55,7 +55,7 @@ public class MonsterPickManager {
 			FieldTypeEnum fieldType = fieldManager.getFieldType();
 			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
 		} else if (dungeonManager.isInDungeon()) {
-			FieldTypeEnum fieldType = dungeonManager.getMapInfo().getFieldType();
+			FieldTypeEnum fieldType = dungeonManager.getDungeonInfo().getFieldType();
 			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
 		}
 

@@ -2,6 +2,7 @@ package com.mygdx.model.location;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.FieldTypeEnum;
 
 public class Dungeon extends SubNode {
@@ -14,18 +15,24 @@ public class Dungeon extends SubNode {
 	private int mapHeight;
 	private boolean inDungeon;
 
-	public ArrayList<DungeonNode> nodes = new ArrayList<>();
+	public ArrayList<DungeonRoom> dungeonRooms = new ArrayList<>();
 	public ArrayList<DungeonConnection> connections = new ArrayList<>();
 	public String getSceneName(int doorNum) {
-		if (doorNum == 0)
-			return sceneNameDoor0;
-		else if (doorNum == 1)
-			return sceneNameDoor1;
-		else if (doorNum == 2)
-			return sceneNameDoor2;
-		else
-			return sceneNameDoor3;
+		switch (doorNum) {
+			case 0 :
+				return sceneNameDoor0;
+			case 1 :
+				return sceneNameDoor1;
+			case 2 :
+				return sceneNameDoor2;
+			case 3 :
+				return sceneNameDoor3;
+			default :
+				Gdx.app.log("Dungeon", "doorNum정보 오류 -" + doorNum);
+				return null;
+		}
 	}
+
 	public int getMapWidth() {
 		return mapWidth;
 	}
@@ -35,13 +42,15 @@ public class Dungeon extends SubNode {
 	public void setInDungeon(boolean isInDungeon) {
 		inDungeon = isInDungeon;
 	}
+
 	public boolean isInDungeon() {
-		// TODO Auto-generated method stub
 		return inDungeon;
 	}
+
 	public FieldTypeEnum getFieldType() {
 		return fieldType;
 	}
+
 	public void setFieldType(FieldTypeEnum fieldType) {
 		this.fieldType = fieldType;
 	}

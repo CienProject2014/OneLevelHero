@@ -8,7 +8,7 @@ import com.mygdx.model.location.Dungeon;
 public class DungeonManager {
 	@Autowired
 	private NodeAssets nodeAssets;
-	private Dungeon mapInfo;
+	private Dungeon dungeonInfo;
 	private boolean currentHeading;
 	private int currentPos;
 	private boolean[][] isOn;
@@ -26,7 +26,7 @@ public class DungeonManager {
 	}
 
 	public void setIsOn() {
-		isOn = new boolean[mapInfo.getMapHeight()][mapInfo.getMapWidth()];
+		isOn = new boolean[dungeonInfo.getMapHeight()][dungeonInfo.getMapWidth()];
 	}
 	public void turnIsOn(int x, int y) {
 
@@ -50,27 +50,25 @@ public class DungeonManager {
 	public void changeCurrentHeading() {
 		this.currentHeading = !currentHeading;
 	}
-	public Dungeon getMapInfo() {
-		return mapInfo;
+	public Dungeon getDungeonInfo() {
+		return dungeonInfo;
 	}
-	public void setMapInfo(String dungeonPath) {
-		mapInfo = nodeAssets.getDungeonByName(dungeonPath);
-
-		if (mapInfo == null)
-			setMapInfo("devil_castle");
-
-		mapInfo.setInDungeon(true);
+	public void setDungeonInfo(String dungeonPath) {
+		dungeonInfo = nodeAssets.getDungeonByName(dungeonPath);
+		if (dungeonInfo == null)
+			setDungeonInfo("devil_castle");
+		dungeonInfo.setInDungeon(true);
 	}
 
 	public void setInDungeon(boolean isInDungeon) {
-		if (mapInfo != null) {
-			mapInfo.setInDungeon(isInDungeon);
+		if (dungeonInfo != null) {
+			dungeonInfo.setInDungeon(isInDungeon);
 		}
 	}
 
 	public boolean isInDungeon() {
-		if (mapInfo != null)
-			return mapInfo.isInDungeon();
+		if (dungeonInfo != null)
+			return dungeonInfo.isInDungeon();
 		else
 			return false;
 	}

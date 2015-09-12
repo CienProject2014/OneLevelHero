@@ -33,7 +33,7 @@ public class DungeonConnection {
 		return from;
 	}
 
-	public void setFrom(DungeonNode from) {
+	public void setFrom(DungeonRoom from) {
 		this.data.put(TAG_FROM, from);
 	}
 
@@ -41,7 +41,7 @@ public class DungeonConnection {
 		return to;
 	}
 
-	public void setTo(DungeonNode to) {
+	public void setTo(DungeonRoom to) {
 		this.data.put(TAG_TO, to);
 	}
 }

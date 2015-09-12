@@ -23,7 +23,7 @@ import com.mygdx.manager.DungeonEncounterManager;
 import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.location.DungeonConnection;
-import com.mygdx.model.location.DungeonNode;
+import com.mygdx.model.location.DungeonRoom;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
@@ -31,7 +31,6 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  * 
  */
 public class DungeonStage extends BaseOverlapStage {
-	// FIXME UI
 	@Autowired
 	private AssetsManager assetsManager;
 	@Autowired
@@ -57,18 +56,14 @@ public class DungeonStage extends BaseOverlapStage {
 	protected Stack tableStack;
 
 	@Override
-	public void act() {
-		super.act();
-	}
-	@Override
 	public void act(float delta) {
 		super.act(delta);
 		minimaptable.act(delta);
 	}
 
 	public void initMinimap() {
-
-		String minimapPath = "texture/dungeon_minimap/" + dungeonManager.getMapInfo().getSubNodePath() + "_minimap.png";
+		String minimapPath = "texture/dungeon_minimap/" + dungeonManager.getDungeonInfo().getSubNodePath()
+				+ "_minimap.png";
 
 		blacktile = new Texture(Gdx.files.internal("texture/dungeon_minimap/black_tile.png"));
 
@@ -77,11 +72,11 @@ public class DungeonStage extends BaseOverlapStage {
 			map = new Texture(Gdx.files.internal("texture/dungeon_minimap/devil_castle_minimap.png"));
 		}
 
-		maptile = TextureRegion.split(map, map.getWidth() / dungeonManager.getMapInfo().getMapWidth(), map.getHeight()
-				/ dungeonManager.getMapInfo().getMapHeight());
+		maptile = TextureRegion.split(map, map.getWidth() / dungeonManager.getDungeonInfo().getMapWidth(),
+				map.getHeight() / dungeonManager.getDungeonInfo().getMapHeight());
 
-		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
-		dungeonManager.turnIsOn(currentNode.getNodePosY(), currentNode.getNodePosX());
+		DungeonRoom currentRoom = dungeonManager.getDungeonInfo().dungeonRooms.get(dungeonManager.getCurrentPos());
+		dungeonManager.turnIsOn(currentRoom.getRoomPosY(), currentRoom.getRoomPosX());
 
 		// setisOn();
 
@@ -106,8 +101,8 @@ public class DungeonStage extends BaseOverlapStage {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 5; j++) { //
 
-				int indexX = currentNode.getNodePosX() - 2 + j;
-				int indexY = currentNode.getNodePosY() - 1 + i;
+				int indexX = currentRoom.getRoomPosX() - 2 + j;
+				int indexY = currentRoom.getRoomPosY() - 1 + i;
 
 				if (indexX < 0 || indexY < 0) {
 					minimaptable.add(new Image(blacktile));
@@ -132,14 +127,14 @@ public class DungeonStage extends BaseOverlapStage {
 		// minimaptable.setBackground(new
 		// TextureRegionDrawable(minimapBackground));
 
-		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
-		dungeonManager.turnIsOn(currentNode.getNodePosY(), currentNode.getNodePosX());
+		DungeonRoom currentRoom = dungeonManager.getDungeonInfo().dungeonRooms.get(dungeonManager.getCurrentPos());
+		dungeonManager.turnIsOn(currentRoom.getRoomPosY(), currentRoom.getRoomPosX());
 
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 5; j++) {
 				// outofbound
-				int indexX = currentNode.getNodePosX() - 2 + j;
-				int indexY = currentNode.getNodePosY() - 1 + i;
+				int indexX = currentRoom.getRoomPosX() - 2 + j;
+				int indexY = currentRoom.getRoomPosY() - 1 + i;
 
 				if (indexX < 0 || indexY < 0) {
 					minimaptable.add(new Image(blacktile));
@@ -159,7 +154,7 @@ public class DungeonStage extends BaseOverlapStage {
 		setMapInfo(dungeonManager);
 		dungeonManager.setInDungeon(true);
 
-		makeScene(dungeonManager.getMapInfo().getSceneName(3));
+		makeScene(dungeonManager.getDungeonInfo().getSceneName(3));
 
 		minimapBackground = new Image(new Texture(Gdx.files.internal("texture/dungeon_minimap/minimap_background.png")));
 		minimapBackground.setPosition(1400, 605);
@@ -186,9 +181,9 @@ public class DungeonStage extends BaseOverlapStage {
 
 	private void setMapInfo(DungeonManager dungeonManager) {
 		if (positionManager.getCurrentSubNodeName() != null) {
-			dungeonManager.setMapInfo(positionManager.getCurrentSubNodeName()); // FIXME
+			dungeonManager.setDungeonInfo(positionManager.getCurrentSubNodeName()); // FIXME
 		} else
-			dungeonManager.setMapInfo("devil_castle");
+			dungeonManager.setDungeonInfo("devil_castle");
 
 		if (!dungeonManager.isThisNewDungeon(positionManager.getCurrentSubNodeName()))
 			dungeonManager.setIsOn();
@@ -210,21 +205,21 @@ public class DungeonStage extends BaseOverlapStage {
 	public void resetArrow() {
 		directionArrow.remove();
 
-		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
+		DungeonRoom currentRoom = dungeonManager.getDungeonInfo().dungeonRooms.get(dungeonManager.getCurrentPos());
 
 		int rotationDegree = 0;
 
-		if (currentNode.getDirectionType().equals("left")) {
+		if (currentRoom.getDirectionType().equals("left")) {
 			rotationDegree = 0;
-		} else if (currentNode.getDirectionType().equals("right")) {
+		} else if (currentRoom.getDirectionType().equals("right")) {
 			rotationDegree = 180;
-		} else if (currentNode.getDirectionType().equals("crossup")) {
+		} else if (currentRoom.getDirectionType().equals("crossup")) {
 			rotationDegree = -45;
-		} else if (currentNode.getDirectionType().equals("crossdown")) {
+		} else if (currentRoom.getDirectionType().equals("crossdown")) {
 			rotationDegree = 45;
-		} else if (currentNode.getDirectionType().equals("up")) {
+		} else if (currentRoom.getDirectionType().equals("up")) {
 			rotationDegree = -90;
-		} else if (currentNode.getDirectionType().equals("down")) {
+		} else if (currentRoom.getDirectionType().equals("down")) {
 			rotationDegree = 90;
 		}
 
@@ -251,7 +246,7 @@ public class DungeonStage extends BaseOverlapStage {
 		tableStack.remove();
 		minimapBackground.remove();
 		sceneLoader.getRoot().remove();
-		makeScene(dungeonManager.getMapInfo().getSceneName(1));
+		makeScene(dungeonManager.getDungeonInfo().getSceneName(1));
 		btnTurn = sceneLoader.getRoot().getCompositeById("back");
 		btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_mid");
 
@@ -327,8 +322,8 @@ public class DungeonStage extends BaseOverlapStage {
 		selectableBackward.clear();
 
 		// 대체 노드의 라벨은 무엇을 의미하는 것인
-		// sceneLoader.getCompositeElementById(currentNode.getLabel()).setVisible(true);
-		for (DungeonConnection e : dungeonManager.getMapInfo().connections) {
+		// sceneLoader.getCompositeElementById(currentRoom.getLabel()).setVisible(true);
+		for (DungeonConnection e : dungeonManager.getDungeonInfo().connections) {
 			if (e.isFrom(dungeonManager.getCurrentPos())) {
 				selectableForward.add(e);
 			} else if (e.isTo(dungeonManager.getCurrentPos())) {
@@ -337,13 +332,13 @@ public class DungeonStage extends BaseOverlapStage {
 		}
 
 		if ((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size() == 0) {
-			resetScene(dungeonManager.getMapInfo().getSceneName(0), 0);
+			resetScene(dungeonManager.getDungeonInfo().getSceneName(0), 0);
 		} else if ((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size() == 1) {
-			resetScene(dungeonManager.getMapInfo().getSceneName(1), 1);
+			resetScene(dungeonManager.getDungeonInfo().getSceneName(1), 1);
 		} else if ((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size() == 2) {
-			resetScene(dungeonManager.getMapInfo().getSceneName(2), 2);
+			resetScene(dungeonManager.getDungeonInfo().getSceneName(2), 2);
 		} else if ((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size() == 3) {
-			resetScene(dungeonManager.getMapInfo().getSceneName(3), 3);
+			resetScene(dungeonManager.getDungeonInfo().getSceneName(3), 3);
 		}
 
 		// FIXME UI
@@ -359,9 +354,9 @@ public class DungeonStage extends BaseOverlapStage {
 
 		dungeonManager.changeCurrentHeading();
 
-		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
+		DungeonRoom currentRoom = dungeonManager.getDungeonInfo().dungeonRooms.get(dungeonManager.getCurrentPos());
 
-		if (currentNode.chkFlag(DungeonNode.FLG_ENTRANCE) && dungeonManager.getCurrentHeading() == true) {
+		if (currentRoom.chkFlag(DungeonRoom.FLG_ENTRANCE) && dungeonManager.getCurrentHeading() == true) {
 			setEntranceScene();
 		}
 
@@ -372,9 +367,8 @@ public class DungeonStage extends BaseOverlapStage {
 
 	private void actionMove(int index) {
 		timeManager.plusMinute(10);
-		dungeonManager.setCurrentPos(dungeonManager.getMapInfo().nodes.indexOf((dungeonManager.getCurrentHeading()
-				? selectableBackward
-				: selectableForward).get(index)));
+		dungeonManager.setCurrentPos(dungeonManager.getDungeonInfo().dungeonRooms.indexOf((dungeonManager
+				.getCurrentHeading() ? selectableBackward : selectableForward).get(index)));
 
 		if (!dungeonManager.getCurrentHeading())
 			dungeonManager.setCurrentPos(selectableForward.get(index).getTo());
@@ -387,16 +381,16 @@ public class DungeonStage extends BaseOverlapStage {
 
 		refreshMinimap();
 
-		DungeonNode currentNode = dungeonManager.getMapInfo().nodes.get(dungeonManager.getCurrentPos());
+		DungeonRoom currentRoom = dungeonManager.getDungeonInfo().dungeonRooms.get(dungeonManager.getCurrentPos());
 
-		if (currentNode.chkFlag(DungeonNode.FLG_ENTRANCE)) {
+		if (currentRoom.chkFlag(DungeonRoom.FLG_ENTRANCE)) {
 			setEntranceScene();
-		} else if (currentNode.chkFlag(DungeonNode.FLG_ROAD)) {
+		} else if (currentRoom.chkFlag(DungeonRoom.FLG_ROAD)) {
 			// screenFactory.show(ScreenEnum.ENCOUNTER);
 			dungeonManager.setRecentDungeon(positionManager.getCurrentSubNodeName());
 			dungeonEncounterManager.act();
-		} else if (currentNode.chkFlag(DungeonNode.FLG_ENCOUNT)) {
-			dungeonEncounterManager.eliteAct(currentNode.getEliteMonster());
+		} else if (currentRoom.chkFlag(DungeonRoom.FLG_ENCOUNT)) {
+			dungeonEncounterManager.eliteAct(currentRoom.getEliteMonster());
 
 		}
 	}
