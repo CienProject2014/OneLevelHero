@@ -164,6 +164,7 @@ public class SkillStage extends BaseOverlapStage {
 								currentSelectedSkill.getSkillPath());
 						battleManager.setSkill(false);
 					} else {
+						// 일단 타겟이 몬스터가 아니다.
 						if (currentSelectedSkill.getSkillTargetType().equals("self")) {
 							// 자기 자신에게 쓰는 경우
 							battleManager.useSkill(battleManager.getCurrentAttackUnit(),

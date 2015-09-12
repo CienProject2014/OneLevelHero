@@ -1,9 +1,29 @@
 {
+    "overload" : {
+		"name" : "과부하",
+		"buffPath" : "buff_de_overload",
+		"duration" : "-1",
+		"stackScope" : "5",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+    "overwork" : {
+		"name" : "과로",
+		"buffPath" : "buff_de_overwork",
+		"duration" : "-1",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
 	"burn" : {
 		"name" : "화상",
 		"buffPath" : "buff_de_burn",
-		"duration" : 120,
-		"stackScope" : 1,
+		"duration" : "120",
+		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
 			"decrease_hp_iterative", "decrease_attack"
@@ -13,6 +33,47 @@
 		"decreaseHpMagicPercent" : "10",
 		"decreaseHpOffset" : "20"
 	},
+    "poison" : {
+		"name" : "중독",
+		"buffPath" : "buff_de_poison",
+		"duration" : "120",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"decrease_hp_iterative", "decrease_attack"
+		],
+		"decreaseAttackPercent" : "30",
+		"decreaseHpPeriod" : "30",
+		"decreaseHpMagicPercent" : "10",
+		"decreaseHpOffset" : "20"
+	},
+      "chilblain" : {
+		"name" : "동상",
+		"buffPath" : "buff_de_chilblain",
+		"duration" : "300",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"decrease_hp_iterative", "decrease_attack"
+		],
+		"decreaseAttackPercent" : "30",
+		"decreaseHpPeriod" : "30",
+		"decreaseHpMagicPercent" : "10",
+		"decreaseHpOffset" : "20"
+	},
+	"bleeding" : {
+		"name" : "출혈",
+		"buffPath" : "buff_de_bleeding",
+		"duration" : "120",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"decrease_hp_iterative"
+		],
+		"decreaseHpPeriod" : "30",
+		"decreaseHpAttackPercent" : "20"
+	},
+      
 	"cold" : {
 		"name" : "빙결",
 		"buffPath" : "buff_de_frozen",
@@ -22,18 +83,6 @@
 		"buffEffectList" : [
 			"block_action"
 		]
-	},
-	"bleeding" : {
-		"name" : "출혈",
-		"buffPath" : "buff_de_bleeding",
-		"duration" : 120,
-		"stackScope" : 1,
-		"buffType" : "debuff",
-		"buffEffectList" : [
-			"decrease_hp_iterative"
-		],
-		"decreaseHpPeriod" : "30",
-		"decreaseHpAttackPercent" : "20"
 	},
 	"sturn" : {
 		"name" : "기절",
@@ -45,4 +94,315 @@
 			"block_action"
 		]
 	},
+	"sleep" : {
+		"name" : "수면",
+		"buffPath" : "buff_de_sleep",
+		"duration" : "60",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"shock" : {
+		"name" : "감전",
+		"buffPath" : "buff_de_shock",
+		"duration" : "120",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"restriction" : {
+		"name" : "속박",
+		"buffPath" : "buff_de_restriction",
+		"duration" : "120",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"silence" : {
+		"name" : "침묵",
+		"buffPath" : "buff_de_silence",
+		"duration" : "120",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"weaken" : {
+		"name" : "약화",
+		"buffPath" : "buff_de_weaken",
+		"duration" : "300",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"decline" : {
+		"name" : "쇠화",
+		"buffPath" : "buff_de_decline",
+		"duration" : "300",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"slow" : {
+		"name" : "둔화",
+		"buffPath" : "buff_de_slow",
+		"duration" : "300",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"defenseless" : {
+		"name" : "무방비",
+		"buffPath" : "buff_de_defenseless",
+		"duration" : "-1",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"stink" : {
+		"name" : "악취",
+		"buffPath" : "buff_de_stink",
+		"duration" : "300",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"confusion" : {
+		"name" : "혼란",
+		"buffPath" : "buff_de_confusion",
+		"duration" : "300",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"oil" : {
+		"name" : "기름",
+		"buffPath" : "buff_de_oil",
+		"duration" : "-1",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"charm" : {
+		"name" : "매혹",
+		"buffPath" : "buff_de_charm",
+		"duration" : "300",
+		"stackScope" : "1",
+		"buffType" : "debuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+    "ironwill" : {
+		"name" : "불굴",
+		"buffPath" : "buff_en_ironwill",
+		"duration" : "120",
+		"stackScope" : "5",
+		"buffType" : "enbuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+	"casting" : {
+		"name" : "캐스팅",
+		"buffPath" : "buff_en_casting",
+		"duration" : "-1",
+		"stackScope" : "5",
+		"buffType" : "enbuff",
+		"buffEffectList" : [
+			"block_action"
+		]
+	},
+    "fireshield" : {
+	"name" : "화염방패",
+	"buffPath" : "buff_en_fireshield",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "iceshield" : {
+	"name" : "얼음방패",
+	"buffPath" : "buff_en_iceshield",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "electricshield" : {
+	"name" : "전격방패",
+	"buffPath" : "buff_en_electricshield",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "bless" : {
+	"name" : "축복",
+	"buffPath" : "buff_en_bless",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "quick" : {
+	"name" : "신속",
+	"buffPath" : "buff_en_quick",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "snipe" : {
+	"name" : "저격",
+	"buffPath" : "buff_en_snipe",
+	"duration" : "-1",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "solid" : {
+	"name" : "견고화",
+	"buffPath" : "buff_en_solid",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "counter" : {
+	"name" : "반격",
+	"buffPath" : "buff_en_counter",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "provoke" : {
+	"name" : "도발",
+	"buffPath" : "buff_en_provoke",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "protect" : {
+	"name" : "수호",
+	"buffPath" : "buff_en_protect",
+	"duration" : "-1",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "fly" : {
+	"name" : "비행",
+	"buffPath" : "buff_en_fly",
+	"duration" : "-1",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "flaudrise" : {
+	"name" : "사기상승",
+	"buffPath" : "buff_en_flaudrise",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "ironskin" : {
+	"name" : "강철피부",
+	"buffPath" : "buff_en_ironskin",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "berserker" : {
+	"name" : "광전사",
+	"buffPath" : "buff_en_berserker",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "cry" : {
+	"name" : "싸이클롭스의 표호",
+	"buffPath" : "buff_en_cry",
+	"duration" : "300",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "hide" : {
+	"name" : "은닉",
+	"buffPath" : "buff_en_hide",
+	"duration" : "60",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    },
+    "reinforce" : {
+	"name" : "전격강화",
+	"buffPath" : "buff_en_reinforce",
+	"duration" : "180",
+	"stackScope" : "1",
+	"buffType" : "enbuff",
+	"buffEffectList" : [
+		"block_action"
+	   ]
+    }
+    
 }

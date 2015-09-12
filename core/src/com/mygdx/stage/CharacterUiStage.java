@@ -123,12 +123,15 @@ public class CharacterUiStage extends BaseOneLevelStage {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
 					if (battleManager.isSkill() == true) {
-						partyManager.setCurrentSelectedHero(battleMemberList.get(index));
-						battleManager.useSkill(battleManager.getCurrentAttackUnit(),
-								partyManager.getCurrentSelectedHero(),
-								battleManager.getCurrentSelectedSkill().getSkillPath());
-						battleManager.setSkill(false);
-						partyManager.setCurrentSelectedHero(null);
+						if (battleManager.isShowGrid()) {
+							partyManager.setCurrentSelectedHero(null);
+						} else {
+							partyManager.setCurrentSelectedHero(battleMemberList.get(index));
+							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
+									partyManager.getCurrentSelectedHero(),
+									battleManager.getCurrentSelectedSkill().getSkillPath());
+							battleManager.setSkill(false);
+						}
 					}
 				}
 			});

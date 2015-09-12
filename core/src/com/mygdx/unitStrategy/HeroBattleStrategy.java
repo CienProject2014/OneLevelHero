@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.SkillAssets;
 import com.mygdx.enums.BuffEffectEnum;
 import com.mygdx.enums.SkillEffectEnum;
+import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
@@ -21,6 +22,8 @@ public class HeroBattleStrategy implements BattleStrategy {
 	SkillAssets skillAssets;
 	@Autowired
 	TimeManager timeManager;
+	@Autowired
+	PartyManager partyManager;
 
 	@Override
 	public void attack(Unit attacker, Unit defender, int[][] hitArea) {
@@ -92,35 +95,52 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void applyEffect(Unit attacker, Unit defender, Skill skill) {
 		switch (SkillEffectEnum.findSkillEffectEnum(skill.getSkillEffectType())) {
-			case ADD_CONDITIONAL_STATE :
-				break;
-			case ADD_STATE :
-				addState(attacker, defender, skill);
-				break;
-			case ATTACK :
-				basicAttack(attacker, defender, skill.getSkillFactor(), skill.getMagicFactor());
-				break;
-			case CHANGE_GAUGE :
-				changeGauge(attacker, defender, skill.getMagicFactor());
-				break;
-			case CONDITIONAL_ATTACK :
-				conditionalAttack(attacker, defender, skill.getOneRegex(), skill.getSkillFactor(),
-						skill.getMagicFactor());
-				break;
-			case DUPLICATED_ATTACK :
-				duplicatedAttack(attacker, defender, skill.getDuplicateNumber(), skill.getSkillFactor(),
-						skill.getMagicFactor());
-				break;
-			case HEAL :
-				heal(attacker, defender, skill.getMagicFactor());
-				break;
-			case REMOVE_STATE :
-				removeState(attacker, defender, skill);
-				break;
-			default :
-				break;
+		case ADD_CONDITIONAL_STATE:
+			break;
+		case ADD_STATE:
+			addState(attacker, defender, skill);
+			break;
+		case ATTACK:
+			basicAttack(attacker, defender, skill.getSkillFactor(), skill.getMagicFactor());
+			break;
+		case CHANGE_GAUGE:
+			changeGauge(attacker, defender, skill.getMagicFactor());
+			break;
+		case CONDITIONAL_ATTACK:
+			conditionalAttack(attacker, defender, skill.getOneRegex(), skill.getSkillFactor(), skill.getMagicFactor());
+			break;
+		case DUPLICATED_ATTACK:
+			duplicatedAttack(attacker, defender, skill.getDuplicateNumber(), skill.getSkillFactor(),
+					skill.getMagicFactor());
+			break;
+		case HEAL:
+			heal(attacker, defender, skill.getMagicFactor());
+			break;
+		case ALL_HEAL:
+			allHeal(attacker, skill.getMagicFactor());
+			break;
+		case REMOVE_STATE:
+			removeState(attacker, defender, skill);
+			break;
+		default:
+			break;
 
 		}
+	}
+
+	private void allHeal(Unit attacker, float magicFactor) {
+		for (int i = 0; i < partyManager.getBattleMemberList().size(); i++) {
+			Unit defender = partyManager.getBattleMemberList().get(i);
+			int healAmount = (int) (defender.getStatus().getMaxHp() * (magicFactor / 100f));
+			int hp = defender.getStatus().getHp();
+			int maxHp = defender.getStatus().getMaxHp();
+			if (hp + healAmount >= maxHp) {
+				defender.getStatus().setHp(maxHp);
+			} else {
+				defender.getStatus().setHp(hp + healAmount);
+			}
+		}
+
 	}
 
 	private void basicAttack(Unit attacker, Unit defender, float skillFactor, float magicFactor) {
@@ -160,7 +180,8 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
-	private void conditionalAttack(Unit attacker, Unit defender, String oneRegex, float skillFactor, float magicFactor) {
+	private void conditionalAttack(Unit attacker, Unit defender, String oneRegex, float skillFactor,
+			float magicFactor) {
 		boolean condition = true;
 
 		// TODO: oneRegex를 분석해서 조건을 충족시키는지 확인하는 로직 필요
@@ -255,18 +276,18 @@ public class HeroBattleStrategy implements BattleStrategy {
 	private void applyAllBuffEffect(Unit defender, Buff buff) {
 		for (String buffEffect : buff.getBuffEffectList()) {
 			switch (BuffEffectEnum.findBuffEffectEnum(buffEffect)) {
-				case BLOCK_ACTION :
-					blockAction(defender);
-					break;
-				case DECREASE_ATTACK :
-					break;
-				case DECREASE_HP_ITERATIVE :
-					decreaseHpIterative(defender, buff);
-					break;
-				case DECREASE_MAGIC_ATTACK :
-					break;
-				default :
-					break;
+			case BLOCK_ACTION:
+				blockAction(defender);
+				break;
+			case DECREASE_ATTACK:
+				break;
+			case DECREASE_HP_ITERATIVE:
+				decreaseHpIterative(defender, buff);
+				break;
+			case DECREASE_MAGIC_ATTACK:
+				break;
+			default:
+				break;
 			}
 		}
 	}
