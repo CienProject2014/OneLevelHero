@@ -577,7 +577,7 @@
     "nextSections": [
       {
         "nextSectionNumber": "310",
-        "eventType": "move_sub_node",
+        "eventType": "move_dungeon_room",
         "eventParameter" : {
         	"location" : {
         		"subNodeName" : "crystallized_valley",

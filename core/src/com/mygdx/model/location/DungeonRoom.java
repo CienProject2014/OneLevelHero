@@ -2,9 +2,9 @@ package com.mygdx.model.location;
 
 import java.util.HashMap;
 
-import com.mygdx.enums.DungeonNodeEnum;
+import com.mygdx.enums.DungeonRoomEnum;
 
-public class DungeonNode {
+public class DungeonRoom {
 	public final static int FLG_NULL = 0;
 	public final static int FLG_ENTRANCE = (1 << 0);
 	public final static int FLG_ROAD = (1 << 1);
@@ -15,13 +15,13 @@ public class DungeonNode {
 	private final static String TAG_LABEL = "label";
 	private final static String TAG_FLAG = "flag";
 
-	private String nodeLabel;
-	private int nodePosX;
-	private int nodePosY;
+	private String roomLabel;
+	private int roomPosX;
+	private int roomPosY;
 	private String directionType;
 	private String eliteMonster;
 
-	private DungeonNodeEnum dungeonNodeType;
+	private DungeonRoomEnum dungeonRoomType;
 
 	public HashMap<String, Object> data = new HashMap<>();
 
@@ -30,13 +30,13 @@ public class DungeonNode {
 	}
 
 	public boolean chkFlag(int flg) {
-		if (dungeonNodeType.equals(DungeonNodeEnum.GATE))
+		if (dungeonRoomType.equals(DungeonRoomEnum.GATE))
 			setFlag(FLG_ENTRANCE);
-		else if (dungeonNodeType.equals(DungeonNodeEnum.NORMAL))
+		else if (dungeonRoomType.equals(DungeonRoomEnum.NORMAL))
 			setFlag(FLG_ROAD);
-		else if (dungeonNodeType.equals(DungeonNodeEnum.OBJECT))
+		else if (dungeonRoomType.equals(DungeonRoomEnum.OBJECT))
 			setFlag(FLG_TRESURE);
-		else if (dungeonNodeType.equals(DungeonNodeEnum.ELITE))
+		else if (dungeonRoomType.equals(DungeonRoomEnum.ELITE))
 			setFlag(FLG_ENCOUNT);
 		return (flg & (int) this.data.get(TAG_FLAG)) != FLG_NULL;
 	}
@@ -61,20 +61,20 @@ public class DungeonNode {
 		this.data.put(TAG_FLAG, flg);
 	}
 
-	public int getNodePosX() {
-		return nodePosX;
+	public int getRoomPosX() {
+		return roomPosX;
 	}
 
-	public int getNodePosY() {
-		return nodePosY;
+	public int getRoomPosY() {
+		return roomPosY;
 	}
 
-	public DungeonNodeEnum getDungeonNodeType() {
-		return dungeonNodeType;
+	public DungeonRoomEnum getDungeonRoomType() {
+		return dungeonRoomType;
 	}
 
-	public void setDungeonNodeType(DungeonNodeEnum dungeonNodeType) {
-		this.dungeonNodeType = dungeonNodeType;
+	public void setDungeonRoomType(DungeonRoomEnum dungeonRoomType) {
+		this.dungeonRoomType = dungeonRoomType;
 	}
 
 	public String getEliteMonster() {
@@ -85,11 +85,11 @@ public class DungeonNode {
 		this.eliteMonster = eliteMonster;
 	}
 
-	public String getNodeLabel() {
-		return nodeLabel;
+	public String getRoomLabel() {
+		return roomLabel;
 	}
 
-	public void setNodeLabel(String nodeLabel) {
-		this.nodeLabel = nodeLabel;
+	public void setRoomLabel(String roomLabel) {
+		this.roomLabel = roomLabel;
 	}
 }
