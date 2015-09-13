@@ -1,7 +1,8 @@
 {
   "devil_castle": {
     "nodeName": "마왕성",
-    "nodePath": "devil_castle"
+    "nodePath": "devil_castle",
+    "startDungeonRoomIndex" : 0
   },
   "crystallized_valley_north": {
     "nodeName": "수정 협곡 북쪽 입구",

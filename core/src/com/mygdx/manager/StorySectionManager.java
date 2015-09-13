@@ -29,12 +29,14 @@ public class StorySectionManager {
 	private StorySectionInfo storySectionInfo;
 	@Autowired
 	private NextSectionCheckerFactory nextSectionCheckerFactory;
-
+	@Autowired
+	private TimeManager timeManager;
 	private Queue<EventPacket> eventSequenceQueue = new LinkedList<>();
 
 	public void setNewStorySectionAndPlay(int storyNumber) {
 		setNewStorySection(storyNumber);
 		setNewStorySectionNumber(storyNumber);
+		storySectionInfo.setStoryStartTime(timeManager);
 		Gdx.app.log("StorySectionManager", "현재 분기번호 [" + storyNumber
 				+ "] 가동중-------------------------------------------------------------------------------");
 		insertStorySequence();

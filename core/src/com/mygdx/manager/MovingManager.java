@@ -21,7 +21,7 @@ public class MovingManager {
 	private BattleManager battleManager;
 
 	public void goToNode(String Node) {
-		positionManager.setCurrentNodeName(Node);
+		positionManager.setCurrentNodePath(Node);
 		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
 		goCurrentNode(nodeType);
 	}

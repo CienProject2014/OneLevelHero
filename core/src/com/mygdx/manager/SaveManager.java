@@ -70,9 +70,9 @@ public class SaveManager {
 		saveInfo.setGameTime(timeManager.getTimeInfo());
 		saveInfo.setPartyList(partyInfo.getPartyList());
 		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.NODE)) {
-			saveInfo.setSavePlace(positionManager.getCurrentNodeHanguelName());
+			saveInfo.setSavePlace(positionManager.getCurrentNodeName());
 		} else {
-			saveInfo.setSavePlace(positionManager.getCurrentSubNodeHanguelName());
+			saveInfo.setSavePlace(positionManager.getCurrentSubNodeName());
 		}
 		switch (storySectionInfo.getCurrentSectionNumber()) {
 			case 1 :

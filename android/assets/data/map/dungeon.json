@@ -2,624 +2,315 @@
   "devil_castle": {
     "subNodePath": "devil_castle",
     "subNodeName": "마왕성",
-    "fieldType" : "devil_castle_1f",
-    "sceneNameDoor3": "dungeon_3door_scene",
-    "sceneNameDoor2": "dungeon_2door_scene",
-    "sceneNameDoor1": "dungeon_1door_scene",
-    "sceneNameDoor0": "dungeon_0door_scene",
-    "mapWidth": "8",
-    "mapHeight": "7",
-    "dungeonRooms": [
-      {
-        "roomLabel" : "gate",
-        "roomPosX": "0",
-        "roomPosY": "3",
-        "dungeonRoomType": "gate",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "1",
-        "roomPosY": "2",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "1",
-        "roomPosY": "3",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "1",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "devil_castle_object1",
-        "roomPosX": "2",
-        "roomPosY": "1",
-        "dungeonRoomType": "object",
-        "directionType": "down"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "2",
-        "roomPosY": "2",
-        "dungeonRoomType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "2",
-        "roomPosY": "3",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "2",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "crossup_stair"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "2",
-        "roomPosY": "5",
-        "dungeonRoomType": "normal",
-        "directionType": "up_stair"
-      },
-      {
-        "roomLabel" : "devil_castle_elite1",
-        "roomPosX": "2",
-        "roomPosY": "6",
-        "dungeonRoomType": "elite",
-        "directionType": "crossup_stair"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "3",
-        "roomPosY": "1",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "3",
-        "roomPosY": "2",
-        "dungeonRoomType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "roomLabel" : "devil_castle_elite4",
-        "roomPosX": "3",
-        "roomPosY": "3",
-        "dungeonRoomType": "elite",
-        "directionType": "left", 
-        "eliteMonster": "cerberus"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "3",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "crossup_stair"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "3",
-        "roomPosY": "5",
-        "dungeonRoomType": "normal",
-        "directionType": "crossup_stair"
-      },
-      {
-        "roomLabel" : "devil_castle_object1",
-        "roomPosX": "3",
-        "roomPosY": "6",
-        "dungeonRoomType": "object",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "devil_castle_elite2",
-        "roomPosX": "4",
-        "roomPosY": "0",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "4",
-        "roomPosY": "1",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "4",
-        "roomPosY": "2",
-        "dungeonRoomType": "normal",
-        "directionType": "up_stair"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "4",
-        "roomPosY": "3",
-        "dungeonRoomType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "4",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "crossup_stair"
-      },
-      {
-        "roomLabel" : "devil_castel_object2",
-        "roomPosX": "4",
-        "roomPosY": "5",
-        "dungeonRoomType": "object",
-        "directionType": "up_stair"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "4",
-        "roomPosY": "6",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "devil_castle_up_stair1",
-        "roomPosX": "5",
-        "roomPosY": "0",
-        "dungeonRoomType": "up_stair",
-        "directionType": "right"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "5",
-        "roomPosY": "1",
-        "dungeonRoomType": "normal",
-        "directionType": "crossup_stair"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "5",
-        "roomPosY": "2",
-        "dungeonRoomType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "5",
-        "roomPosY": "3",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "5",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "5",
-        "roomPosY": "5",
-        "dungeonRoomType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "roomLabel" : "devil_castle_elite3",
-        "roomPosX": "5",
-        "roomPosY": "6",
-        "dungeonRoomType": "elite",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "6",
-        "roomPosY": "0",
-        "dungeonRoomType": "normal",
-        "directionType": "right"
-      },
-      {
-        "roomLabel" : "devil_castle_up_stair3",
-        "roomPosX": "6",
-        "roomPosY": "1",
-        "dungeonRoomType": "up_stair",
-        "directionType": "up_stair"
-      },
-      {
-        "roomLabel" : "devil_castle_up_stair4",
-        "roomPosX": "6",
-        "roomPosY": "2",
-        "dungeonRoomType": "up_stair",
-        "directionType": "up_stair"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "6",
-        "roomPosY": "3",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "6",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "up_stair"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "6",
-        "roomPosY": "5",
-        "dungeonRoomType": "normal",
-        "directionType": "crossup_stair"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "6",
-        "roomPosY": "6",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "7",
-        "roomPosY": "1",
-        "dungeonRoomType": "normal",
-        "directionType": "down"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "7",
-        "roomPosY": "2",
-        "dungeonRoomType": "normal",
-        "directionType": "down"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "7",
-        "roomPosY": "3",
-        "dungeonRoomType": "normal",
-        "directionType": "crossup_stair"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "7",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "up_stair"
-      },
-      {
-        "roomLabel" : "devil_castle_object3",
-        "roomPosX": "7",
-        "roomPosY": "5",
-        "dungeonRoomType": "object",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "devil_castle_up_stair2",
-        "roomPosX": "7",
-        "roomPosY": "6",
-        "dungeonRoomType": "up_stair",
-        "directionType": "left"
-      }
-    ],
-    "connections": [
-      {
-        "from": "0",
-        "to": "1"
-      },
-      {
-        "from": "0",
-        "to": "2"
-      },
-      {
-        "from": "0",
-        "to": "3"
-      },
-      {
-        "from": "1",
-        "to": "5"
-      },
-      {
-        "from": "1",
-        "to": "6"
-      },
-      {
-        "from": "3",
-        "to": "7"
-      },
-      {
-        "from": "5",
-        "to": "4"
-      },
-      {
-        "from": "5",
-        "to": "10"
-      },
-      {
-        "from": "5",
-        "to": "11"
-      },
-      {
-        "from": "6",
-        "to": "11"
-      },
-      {
-        "from": "6",
-        "to": "13"
-      },
-      {
-        "from": "7",
-        "to": "8"
-      },
-      {
-        "from": "8",
-        "to": "9"
-      },
-      {
-        "from": "9",
-        "to": "15"
-      },
-      {
-        "from": "10",
-        "to": "16"
-      },
-      {
-        "from": "10",
-        "to": "17"
-      },
-      {
-        "from": "10",
-        "to": "18"
-      },
-      {
-        "from": "11",
-        "to": "17"
-      },
-      {
-        "from": "12",
-        "to": "19"
-      },
-      {
-        "from": "13",
-        "to": "19"
-      },
-      {
-        "from": "13",
-        "to": "14"
-      },
-      {
-        "from": "14",
-        "to": "22"
-      }
-    ]
-  },
-  "blackwood_forest": {
-    "subNodePath": "blackwood_forest",
-    "subNodeName": "블랙우드숲",
-    "fieldType" : "blackwood_forest",
-    "sceneNameDoor3": "blackwood_forest_3door_scene",
-    "sceneNameDoor2": "blackwood_forest_2door_scene",
-    "sceneNameDoor1": "blackwood_forest_1door_scene",
-    "sceneNameDoor0": "blackwood_forest_0door_scene",
-    "mapWidth": "8",
-    "mapHeight": "7",
-    "dungeonRooms": [
-      {
-        "roomLabel" : "gate",
-        "roomPosX": "0",
-        "roomPosY": "3",
-        "dungeonRoomType": "gate",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "1",
-        "roomPosY": "2",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "1",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "blackwood_forest_object1",
-        "roomPosX": "2",
-        "roomPosY": "1",
-        "dungeonRoomType": "object",
-        "directionType": "down"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "2",
-        "roomPosY": "2",
-        "dungeonRoomType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "2",
-        "roomPosY": "3",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "2",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "3",
-        "roomPosY": "1",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "3",
-        "roomPosY": "2",
-        "dungeonRoomType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "roomLabel" : "blackwood_forest_elite1",
-        "roomPosX": "3",
-        "roomPosY": "3",
-        "dungeonRoomType": "elite",
-        "directionType": "left", 
-        "eliteMonster": "nepel_01"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "3",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "roomLabel" : "blackwood_forest_elite2",
-        "roomPosX": "4",
-        "roomPosY": "0",
-        "dungeonRoomType": "elite",
-        "directionType": "crossdown", 
-        "eliteMonster": "nepel_02"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "4",
-        "roomPosY": "1",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "4",
-        "roomPosY": "2",
-        "dungeonRoomType": "normal",
-        "directionType": "down"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "4",
-        "roomPosY": "3",
-        "dungeonRoomType": "normal",
-        "directionType": "crossdown"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "4",
-        "roomPosY": "4",
-        "dungeonRoomType": "normal",
-        "directionType": "down"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "5",
-        "roomPosY": "1",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      },
-      {
-        "roomLabel" : "room",
-        "roomPosX": "5",
-        "roomPosY": "3",
-        "dungeonRoomType": "normal",
-        "directionType": "left"
-      }
-    ],
-    "connections": [
-      {
-        "from": "0",
-        "to": "1"
-      },
-      {
-        "from": "0",
-        "to": "2"
-      },
-      {
-        "from": "1",
-        "to": "4"
-      },
-      {
-        "from": "1",
-        "to": "5"
-      },
-      {
-        "from": "2",
-        "to": "6"
-      },
-      {
-        "from": "4",
-        "to": "3"
-      },
-      {
-        "from": "4",
-        "to": "7"
-      },
-      {
-        "from": "4",
-        "to": "8"
-      },
-      {
-        "from": "5",
-        "to": "8"
-      },
-      {
-        "from": "5",
-        "to": "10"
-      },
-      {
-        "from": "7",
-        "to": "11"
-      },
-      {
-        "from": "7",
-        "to": "12"
-      },
-      {
-        "from": "8",
-        "to": "12"
-      },
-      {
-        "from": "9",
-        "to": "14"
-      },
-      {
-        "from": "10",
-        "to": "14"
-      },
-      {
-        "from": "15",
-        "to": "14"
-      },
-      {
-        "from": "12",
-        "to": "16"
-      },
-      {
-        "from": "14",
-        "to": "13"
-      },
-      {
-        "from": "14",
-        "to": "17"
+    "dungeonFloors": [
+      {
+        "floorPath": "devil_castle_1f",
+        "floorMonsterList": [
+	      "chilly_ghoul"
+	    ],
+        "floorName": "마왕성 1층",
+        "mapHeight": 3,
+        "mapWidth": 7,
+        "dungeonRooms": [
+          {
+            "roomLabel": "room_1_2",
+            "roomPosX": "1",
+            "roomPosY": "2",
+            "roomType": "gate",
+            "forwardAngle": "right",
+            "forwardConnections": {
+              "room_2_1": {
+                "directionType": "forward"
+              },
+              "room_2_2": {
+                "directionType": "forward"
+              },
+              "room_2_3": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {}
+          },
+          {
+            "roomLabel": "room_2_1",
+            "roomPosX": "2",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": {
+              "room_3_1": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {
+              "room_1_2": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_2_2",
+            "roomPosX": "2",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": {
+              "room_3_3": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {
+              "room_1_2": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_2_3",
+            "roomPosX": "2",
+            "roomPosY": "3",
+            "roomType": "object",
+            "forwardAngle": "right",
+            "link": "treasureBox",
+            "forwardConnections": {},
+            "backwardConnections": {
+              "room_1_2": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_3_1",
+            "roomPosX": "3",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": {
+              "room_4_2": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {
+              "room_2_1": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_3_2",
+            "roomPosX": "3",
+            "roomPosY": "2",
+            "roomType": "up_stair",
+            "link": "room_2_3",
+            "forwardAngle": "right",
+            "forwardConnections": {
+              "elite_4_2": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {}
+          },
+          {
+            "roomLabel": "room_3_3",
+            "roomPosX": "3",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": {
+              "room_4_3": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {
+              "room_2_2": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_4_1",
+            "roomPosX": "4",
+            "roomPosY": "1",
+            "roomType": "object",
+            "link": "treasure_box",
+            "forwardAngle": "bottom",
+            "forwardConnections": {
+              "room_4_2": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {}
+          },
+          {
+            "roomLabel": "room_4_2",
+            "roomPosX": "4",
+            "roomPosY": "2",
+            "roomType": "elite",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": {
+              "room_4_3": {
+                "directionType": "backward"
+              },
+              "room_5_3": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {
+              "room_3_1": {
+                "directionType": "backward"
+              },
+              "room_3_2": {
+                "directionType": "backward"
+              },
+              "room_4_1": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_4_3",
+            "roomPosX": "4",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": {
+              "room_4_2": {
+                "directionType": "backward"
+              }
+            },
+            "backwardConnections": {
+              "room_3_3": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_5_1",
+            "roomPosX": "5",
+            "roomPosY": "1",
+            "roomType": "up_stair",
+            "forwardAngle": "bottom",
+            "link": "room_4_2",
+            "forwardConnections": {
+              "room_5_2": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {}
+          },
+          {
+            "roomLabel": "room_5_2",
+            "roomPosX": "5",
+            "roomPosY": "2",
+            "roomType": "up_stair",
+            "link": "room_4_3",
+            "forwardAngle": "bottom",
+            "forwardConnections": {},
+            "backwardConnections": {
+              "room_5_1": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_5_3",
+            "roomPosX": "5",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": {
+              "room_6_2": {
+                "directionType": "forward"
+              },
+              "room_6_3": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {
+              "room_4_2": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_6_1",
+            "roomPosX": "6",
+            "roomPosY": "1",
+            "roomType": "object",
+            "link": "switch",
+            "forwardAngle": "bottom",
+            "forwardConnections": {
+              "room_6_2": {
+                "directionType": "backward"
+              }
+            },
+            "backwardConnections": {}
+          },
+          {
+            "roomLabel": "room_6_2",
+            "roomPosX": "6",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": {
+              "room_6_1": {
+                "directionType": "backward"
+              },
+              "room_7_2": {
+                "directionType": "forward"
+              }
+            },
+            "backwardConnections": {
+              "room_5_3": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_6_3",
+            "roomPosX": "6",
+            "roomPosY": "3",
+            "roomType": "up_stair",
+            "link": "room_5_4",
+            "forwardAngle": "right",
+            "forwardConnections": {},
+            "backwardConnections": {
+              "room_5_3": {
+                "directionType": "backward"
+              }
+            }
+          },
+          {
+            "roomLabel": "room_7_2",
+            "roomPosX": "7",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardConnections": {},
+            "backwardConnections": {
+              "room_6_2": {
+                "directionType": "backward"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "floorName": "devil_castle_2f",
+        "dungeonRooms": [
+          {
+            "roomLabel": "room_4_2",
+            "roomPosX": "4",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "link": "room_5_1",
+            "forwardAngle": "right",
+            "forwardConnections": {
+              "room_4_1": {
+                "directionType": "forward"
+              }
+            }
+          }
+        ]
       }
     ]
   }

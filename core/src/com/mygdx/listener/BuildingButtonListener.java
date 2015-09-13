@@ -44,7 +44,7 @@ public class BuildingButtonListener extends ClickListener {
 				eventManager.triggerEvent(EventElementEnum.NPC, eventPacket);
 			} else {
 				positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
-				positionManager.setCurrentSubNodeName(buildingInfo.getSubNodePath());
+				positionManager.setCurrentSubNodePath(buildingInfo.getSubNodePath());
 				screenFactory.show(ScreenEnum.BUILDING);
 			}
 		} else {
@@ -56,7 +56,7 @@ public class BuildingButtonListener extends ClickListener {
 				eventManager.triggerEvent(EventElementEnum.NPC, eventPacket);
 			} else {
 				positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
-				positionManager.setCurrentSubNodeName(buildingInfo.getSubNodePath());
+				positionManager.setCurrentSubNodePath(buildingInfo.getSubNodePath());
 				screenFactory.show(ScreenEnum.BUILDING);
 			}
 		}

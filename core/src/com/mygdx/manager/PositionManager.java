@@ -28,29 +28,29 @@ public class PositionManager {
 		positionInfo.setVillageDirection(villageDirection);
 	}
 	public WorldNodeEnum.NodeType getCurrentNodeType() {
-		return worldMapAssets.getNodeType(positionInfo.getCurrentNodeName());
+		return worldMapAssets.getNodeType(positionInfo.getCurrentNodePath());
 	}
 
-	public WorldNodeEnum.NodeType getNodeType(String nodeName) {
-		return worldMapAssets.getNodeType(nodeName);
+	public WorldNodeEnum.NodeType getNodeType(String nodePath) {
+		return worldMapAssets.getNodeType(nodePath);
 	}
 
-	public String getCurrentNodeName() {
-		return positionInfo.getCurrentNodeName();
+	public String getCurrentNodePath() {
+		return positionInfo.getCurrentNodePath();
 	}
 
 	public PositionEnum.LocatePosition getCurrentLocatePositionType() {
 		return positionInfo.getCurrentLocatePositionType();
 	}
 
-	public void setCurrentNodeName(String currentNodeName) {
-		Gdx.app.log("PositionManager", "현재노드 이름 - " + currentNodeName);
+	public void setCurrentNodePath(String currentNodePath) {
+		Gdx.app.log("PositionManager", "현재노드 경로 - " + currentNodePath);
 		setCurrentLocatePositionType(PositionEnum.LocatePosition.NODE);
-		positionInfo.setCurrentNodeName(currentNodeName);
+		positionInfo.setCurrentNodePath(currentNodePath);
 	}
 
-	public String getCurrentNodeHanguelName() {
-		return worldMapAssets.getWorldNodeInfo(getCurrentNodeName()).getNodeName();
+	public String getCurrentNodeName() {
+		return worldMapAssets.getWorldNodeInfo(getCurrentNodePath()).getNodeName();
 	}
 
 	public void setCurrentLocatePositionType(PositionEnum.LocatePosition positionEnum) {
@@ -66,23 +66,23 @@ public class PositionManager {
 		return positionInfo.getCurrentEventPositionType();
 	}
 
-	public String getCurrentSubNodeName() {
-		return positionInfo.getCurrentSubNodeName();
+	public String getCurrentSubNodePath() {
+		return positionInfo.getCurrentSubNodePath();
 	}
 
-	public String getCurrentSubNodeHanguelName() {
+	public String getCurrentSubNodeName() {
 		if (getCurrentNodeType().equals(NodeType.VILLAGE)) {
-			return nodeAssets.getVillageByName(getCurrentNodeName()).getBuilding().get(getCurrentSubNodeName())
+			return nodeAssets.getVillageByPath(getCurrentNodePath()).getBuilding().get(getCurrentSubNodePath())
 					.getSubNodeName();
 		} else {
 			return "던젼"; // FIXME
 		}
 
 	}
-	public void setCurrentSubNodeName(String subNodeName) {
-		Gdx.app.log("PositionManager", "현재서브노드 이름 - " + subNodeName);
+	public void setCurrentSubNodePath(String subNodePath) {
+		Gdx.app.log("PositionManager", "현재서브노드 경로 - " + subNodePath);
 		positionInfo.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
-		positionInfo.setCurrentSubNodeName(subNodeName);
+		positionInfo.setCurrentSubNodePath(subNodePath);
 	}
 
 	public boolean isInWorldMap() {

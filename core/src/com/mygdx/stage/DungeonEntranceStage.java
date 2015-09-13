@@ -52,8 +52,7 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
-		dungeonManager.setInDungeon(false);
-		dungeonEntranceInfo = nodeAssets.getDungeonEntranceByName(positionManager.getCurrentNodeName());
+		dungeonEntranceInfo = nodeAssets.getDungeonEntranceByPath(positionManager.getCurrentNodePath());
 		makeScene(dungeonEntranceInfo);
 		setButton();
 		return this;
@@ -75,6 +74,7 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 		restButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_rest"));
 		backButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_field"));
 
+		dungeonManager.getDungeonInfo().setStartDungeonRoomIndex(dungeonEntranceInfo.getStartDungeonRoomIndex());
 		DungeonEntranceButtonListener dungeonEntranceButtonListener = listenerFactory
 				.getDungeonEntranceButtonListener();
 		dungeonEntranceButtonListener.setDungeonPath(dungeonEntranceInfo.getNodePath());
@@ -96,7 +96,7 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 			}
 		});
 
-		String currentNode = positionManager.getCurrentNodeName();
+		String currentNode = positionManager.getCurrentNodePath();
 		Entry<String, NodeConnection> nodeConnection = worldMapAssets.getWorldNodeInfo(currentNode).getNodeConnection()
 				.entrySet().iterator().next();
 		ArrowButtonListener arrowButtonListener = listenerFactory.getArrowButtonListener();

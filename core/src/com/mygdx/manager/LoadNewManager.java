@@ -81,7 +81,7 @@ public class LoadNewManager {
 
 	private void setCurrentLocatePosition() {
 		// 마왕성에서부터 게임을 시작한다.
-		positionManager.setCurrentNodeName("devil_castle");
+		positionManager.setCurrentNodePath("devil_castle");
 		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
 		positionManager.setCurrentEventPositionType(EventPosition.NONE);
 		fieldManager.setArrowName("16to1");

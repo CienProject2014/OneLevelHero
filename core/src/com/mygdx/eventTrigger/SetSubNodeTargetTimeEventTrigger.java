@@ -17,7 +17,7 @@ public class SetSubNodeTargetTimeEventTrigger implements EventTrigger {
 	@Override
 	public void triggerEvent(EventParameters eventParameter) {
 		if (eventParameter.getTime() != null && eventParameter.getLocation() != null) {
-			Building building = nodeAssets.getBuildingByName(eventParameter.getLocation().getNodeName(), eventParameter
+			Building building = nodeAssets.getBuildingByPath(eventParameter.getLocation().getNodeName(), eventParameter
 					.getLocation().getSubNodeName());
 			TargetTime targetTime = new TargetTime(eventParameter.getTime().getStartHour(), eventParameter.getTime()
 					.getEndHour());
