@@ -468,7 +468,7 @@
       },
       {
         "itemIdentifier": "apply",
-        "x": 685,
+        "x": 830,
         "y": 316,
         "zIndex": 21,
         "layerName": "Default",
@@ -502,57 +502,6 @@
                 1
               ],
               "imageName": "pchangeuiacbuttonapply"
-            }
-          ],
-          "layers": [
-            {
-              "layerName": "Default"
-            },
-            {
-              "layerName": "normal"
-            },
-            {
-              "layerName": "pressed"
-            }
-          ]
-        }
-      },
-      {
-        "itemIdentifier": "cancel",
-        "x": 975,
-        "y": 316,
-        "zIndex": 22,
-        "layerName": "Default",
-        "tint": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "composite": {
-          "sImages": [
-            {
-              "itemIdentifier": "normal",
-              "layerName": "Default",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "pchangeuibuttoncancel"
-            },
-            {
-              "itemIdentifier": "pressed",
-              "zIndex": 1,
-              "layerName": "pressed",
-              "tint": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "imageName": "pchangeuiacbuttoncancel"
             }
           ],
           "layers": [
