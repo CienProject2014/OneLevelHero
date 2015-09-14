@@ -21,6 +21,7 @@ import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.currentState.PartyInfo;
+import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
@@ -63,6 +64,7 @@ public class CharacterChangeStage extends BaseOverlapStage {
 	@Override
 	public void act() {
 		setLabel(sceneConstants);
+
 	}
 
 	public Stage makeStage() {
@@ -77,8 +79,66 @@ public class CharacterChangeStage extends BaseOverlapStage {
 
 		setLabel(sceneConstants);
 		addCharacterButton();
+		addApplyCloseButton();
 
 		return this;
+	}
+
+	private void addApplyCloseButton() {
+		final CompositeItem apply = sceneLoader.getRoot().getCompositeById("apply");
+		/*
+		 * final CompositeItem close =
+		 * sceneLoader.getRoot().getCompositeById("cancel");
+		 */
+
+		apply.setTouchable(Touchable.enabled);
+		/* close.setTouchable(Touchable.enabled); */
+
+		setCompositeItemVisibilty(apply, DEFAULT_VISIBILTY);
+		/* setCompositeItemVisibilty(close, DEFAULT_VISIBILTY); */
+
+		apply.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				setCompositeItemVisibilty(apply, PRESSED_VISIBILTY);
+				// 이걸 실행하고 넘어가야 되는데 바로 show 로 넘어간는 것처럼 보임.
+
+				
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				setCompositeItemVisibilty(apply, DEFAULT_VISIBILTY);
+				screenFactory.show(ScreenEnum.STATUS);
+			}
+		});
+
+		/*
+		 * close.addListener(new InputListener() {
+		 * 
+		 * @Override public boolean touchDown(InputEvent event, float x, float
+		 * y, int pointer, int button) { setCompositeItemVisibilty(close,
+		 * PRESSED_VISIBILTY); // 이걸 실행하고 넘어가야 되는데 바로 show 로 넘어간는 것처럼 보임.
+		 * 
+		 * screenFactory.show(ScreenEnum.STATUS); return true; }
+		 * 
+		 * public void touchUp(InputEvent event, float x, float y, int pointer,
+		 * int button) { setCompositeItemVisibilty(close, DEFAULT_VISIBILTY); }
+		 * });
+		 */
+
+	}
+
+	private void selectMember(int i) {
+		if (partyManager.isBattleMember[i] == false) {
+			setCompositeItemVisibilty(characterButtonList.get(i), DEFAULT_VISIBILTY);
+			partyManager.removeBattleMember(partyManager.getPartyList().get(i + 1));
+			partyManager.isBattleMember[i] = true;
+		} else {
+			setCompositeItemVisibilty(characterButtonList.get(i), PRESSED_VISIBILTY);
+			partyManager.addBattleMember(partyManager.getPartyList().get(i + 1));
+			partyManager.isBattleMember[i] = false;
+		}
 	}
 
 	private void addCharacterButton() {
@@ -87,26 +147,59 @@ public class CharacterChangeStage extends BaseOverlapStage {
 		for (int i = 1; i < partyManager.getPartyList().size(); i++) {
 			final int index = i - 1;
 			characterButtonList.add(sceneLoader.getRoot().getCompositeById("character0" + i));
-			if (partyManager.getBattleMemberList().contains(partyManager.getPartyList().get(i))) {
+			if (partyManager.isBattleMember[i - 1] == false) {
 				setCompositeItemVisibilty(characterButtonList.get(i - 1), PRESSED_VISIBILTY);
+			} else {
+				setCompositeItemVisibilty(characterButtonList.get(i - 1), DEFAULT_VISIBILTY);
 			}
 			characterButtonList.get(i - 1).clearListeners();
 			characterButtonList.get(i - 1).addListener(new InputListener() {
 				@Override
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					setCompositeItemVisibilty(characterButtonList.get(index), PRESSED_VISIBILTY);
+					selectMember(index);
 					return true;
 				}
 
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					setCompositeItemVisibilty(characterButtonList.get(index), DEFAULT_VISIBILTY);
+					/*
+					 * setCompositeItemVisibilty(characterButtonList.get(index),
+					 * DEFAULT_VISIBILTY);
+					 */
 				}
 			});
 
 			ImageItem characterImage = sceneLoader.getRoot().getImageById("character_image0" + i);
 			characterImage.setDrawable(new TextureRegionDrawable(new TextureRegion(
 					textureManager.getStatusTexture(partyManager.getPartyList().get(i).getFacePath()))));
+			characterImage.setWidth(122);
+			characterImage.setHeight(122);
+
+		}
+
+		if (partyManager.getPartyList().size() <= CHARACTER_TAB_SIZE) {
+			for (int i = partyManager.getPartyList().size(); i <= CHARACTER_TAB_SIZE; i++) {
+				ImageItem garbageImage = sceneLoader.getRoot().getImageById("character_image0" + i);
+				garbageImage.setVisible(false);
+
+				garbageImage = sceneLoader.getRoot().getImageById("level0" + i);
+
+				garbageImage.setVisible(false);
+
+				garbageImage = sceneLoader.getRoot().getImageById("character_image_box0" + i);
+
+				garbageImage.setVisible(false);
+
+				LabelItem garbageLabel = sceneLoader.getRoot().getLabelById("character_name_label0" + i);
+				garbageLabel.setVisible(false);
+
+				garbageLabel = sceneLoader.getRoot().getLabelById("level_label0" + i);
+				garbageLabel.setVisible(false);
+
+				CompositeItem garbageComposite = sceneLoader.getRoot().getCompositeById("character0" + i);
+				garbageComposite.setVisible(false);
+
+			}
 		}
 
 	}
