@@ -221,12 +221,20 @@ public class HeroBattleStrategy implements BattleStrategy {
 		buff.setAttacker(attacker);
 
 		if (defender.getBuffList().contains(buff)) {
-			defender.getBuffList().remove(buff);
+			for (String buffEffect : buff.getBuffEffectList()) {
+				if (BuffEffectEnum.findBuffEffectEnum(buffEffect) == BuffEffectEnum.BLOCK_ACTION) {
+					Gdx.app.log("HeroBattleStrategy", "스턴은 갱신되지 않습니다.");
+				} else {
+					defender.getBuffList().remove(buff);
+					defender.getBuffList().add(buff);
+					applyBuff(defender);
+				}
+			}
+		} else {
+			defender.getBuffList().add(buff);
+			applyBuff(defender);
 		}
 
-		defender.getBuffList().add(buff);
-
-		applyBuff(defender);
 	}
 
 	private void removeState(Unit attacker, Unit defender, Skill skill) {
@@ -235,10 +243,6 @@ public class HeroBattleStrategy implements BattleStrategy {
 		} else {
 
 		}
-	}
-
-	private void addConditionalState(Unit attacker, Unit defender, Skill skill) {
-
 	}
 
 	private void applyBuff(Unit defender) {
@@ -286,14 +290,21 @@ public class HeroBattleStrategy implements BattleStrategy {
 				break;
 			case DECREASE_MAGIC_ATTACK:
 				break;
+			case INCREASE_DEFENSE:
+				increaseDefense(defender, buff);
+				break;
 			default:
 				break;
 			}
 		}
 	}
 
+	private void increaseDefense(Unit defender, Buff buff) {
+		defender.getStatus()
+				.setDefense(defender.getStatus().getDefense() / 100 * (buff.getIncreaseDefensePercent() + 100));
+	}
+
 	private void blockAction(Unit defender) {
-		defender.setGauge(0);
 	}
 
 	private void decreaseHpIterative(Unit defender, Buff buff) {

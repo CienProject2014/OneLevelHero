@@ -150,7 +150,6 @@ public class BattleStage extends BaseOneLevelStage {
 		battleManager.setMonsterSize(MonsterEnum.SizeType.MEDIUM);
 		tableStack.add(battleManager.getNowGridHitbox());
 		battleManager.setShowGrid(false);
-
 		addListener();
 		return this;
 	}
@@ -259,7 +258,7 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private Table makeSmallImageTable() {
-
+		battleManager.updateSubOrder();
 		orderedUnits = battleManager.getOrderedUnits();
 		for (Unit unit : orderedUnits) {
 			turnSmallImageMap.get(unit.getFacePath()).setWidth(80);

@@ -66,7 +66,7 @@ public class BattleManager {
 	@Autowired
 	private SoundManager soundManager;
 	private GridHitbox gridHitbox; // grid hitbox 테이블
-
+	private Unit currentAttackUnit;
 	public SkillRunPopup gameObjectPopup;
 
 	public boolean isEventBattle() {
@@ -99,7 +99,16 @@ public class BattleManager {
 	}
 
 	public Unit getCurrentActors() {
-		Unit currentAttackUnit = getOrderedUnits().poll();
+		currentAttackUnit = getOrderedUnits().poll();
+		for (Buff buff : currentAttackUnit.getBuffList()) {
+			String buffPath = buff.getBuffPath();
+			if (buffPath.equals("buff_de_sturn") || buffPath.equals("buff_de_frozen")
+					|| buffPath.equals("buff_de_sleep")) {
+				getOrderedUnits().add(currentAttackUnit);
+				currentAttackUnit = getOrderedUnits().poll();
+				updateSubOrder();
+			}
+		}
 		if (currentAttackUnit instanceof Hero) {
 			setCurrentActor((Hero) currentAttackUnit);
 		}
@@ -230,6 +239,14 @@ public class BattleManager {
 		// Turn Logic
 		Collections.sort(getUnits());
 		setOrderedUnits(new LinkedList<Unit>(getUnits()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public void updateSubOrder() {
+		List<Unit> units = new ArrayList<Unit>(getOrderedUnits());
+		Collections.sort(units);
+		getOrderedUnits().clear();
+		getOrderedUnits().addAll(units);
 	}
 
 	public void useSkill(Unit attackUnit, Unit targetUnit, String skillName) {

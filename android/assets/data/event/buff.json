@@ -74,7 +74,7 @@
 		"decreaseHpAttackPercent" : "20"
 	},
       
-	"cold" : {
+	"frozen" : {
 		"name" : "빙결",
 		"buffPath" : "buff_de_frozen",
 		"duration" : "60",
@@ -301,8 +301,9 @@
 	"stackScope" : "1",
 	"buffType" : "enbuff",
 	"buffEffectList" : [
-		"block_action"
-	   ]
+		"increase_defense"
+	   ],
+    "increaseDefensePercent" : "25"
     },
     "counter" : {
 	"name" : "반격",

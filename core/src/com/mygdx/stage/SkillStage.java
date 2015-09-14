@@ -330,6 +330,7 @@ public class SkillStage extends BaseOverlapStage {
 						setEnum(index);
 						showSkillDescription(index);
 					} else {
+						battleManager.checkCurrentState();
 						battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
 						setVoidDescription();
 						setAllVoidUseButton(sceneConstants);

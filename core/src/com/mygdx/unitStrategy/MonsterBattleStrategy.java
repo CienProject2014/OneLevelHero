@@ -94,7 +94,6 @@ public class MonsterBattleStrategy implements BattleStrategy {
 	}
 
 	private void blockAction(Unit defender) {
-		defender.setGauge(0);
 	}
 
 	private void decreaseHpIterative(Unit defender, Buff buff) {
