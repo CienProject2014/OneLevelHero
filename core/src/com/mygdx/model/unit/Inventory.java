@@ -12,6 +12,12 @@ public class Inventory {
 	private Equipment leftHandGrip;
 	private Equipment rightHandGrip;
 
+	public Float getAllDefense() {
+		float allDefense;
+		allDefense = clothes.getEffectStatus().getDefense() + 
+		return clothes.getEffectStatus().getDefense();
+	}
+
 	public Equipment getClothes() {
 		return clothes;
 	}

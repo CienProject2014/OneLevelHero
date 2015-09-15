@@ -96,6 +96,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 	private void applyEffect(Unit attacker, Unit defender, Skill skill) {
 		switch (SkillEffectEnum.findSkillEffectEnum(skill.getSkillEffectType())) {
 		case ADD_CONDITIONAL_STATE:
+			addStateAttack(attacker, skill);
 			break;
 		case ADD_STATE:
 			addState(attacker, defender, skill);
@@ -125,6 +126,29 @@ public class HeroBattleStrategy implements BattleStrategy {
 		default:
 			break;
 
+		}
+	}
+
+	private void addStateAttack(Unit attacker, Skill skill) {
+		Buff buff = skillAssets.getBuff(skill.getBuffName());
+		if (buff == null) {
+			return;
+		}
+		buff.setAttacker(attacker);
+
+		if (attacker.getBuffList().contains(buff)) {
+			for (String buffEffect : buff.getBuffEffectList()) {
+				if (BuffEffectEnum.findBuffEffectEnum(buffEffect) == BuffEffectEnum.BLOCK_ACTION) {
+					Gdx.app.log("HeroBattleStrategy", "스턴은 갱신되지 않습니다.");
+				} else {
+					attacker.getBuffList().remove(buff);
+					attacker.getBuffList().add(buff);
+					applyBuff(attacker);
+				}
+			}
+		} else {
+			attacker.getBuffList().add(buff);
+			applyBuff(attacker);
 		}
 	}
 
@@ -293,10 +317,18 @@ public class HeroBattleStrategy implements BattleStrategy {
 			case INCREASE_DEFENSE:
 				increaseDefense(defender, buff);
 				break;
+			case DECREASE_DEFENSE:
+				decreaseDefense(defender, buff);
+				break;
 			default:
 				break;
 			}
 		}
+	}
+
+	private void decreaseDefense(Unit defender, Buff buff) {
+		defender.getStatus()
+				.setDefense(defender.getStatus().getDefense() / 100 * (buff.getIncreaseDefensePercent() + 100));
 	}
 
 	private void increaseDefense(Unit defender, Buff buff) {
