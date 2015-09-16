@@ -1,75 +1,113 @@
 package com.mygdx.manager;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.NodeAssets;
+import com.mygdx.currentState.DungeonInfo;
+import com.mygdx.enums.DungeonEnum;
+import com.mygdx.enums.DungeonEnum.Direction;
 import com.mygdx.model.location.Dungeon;
+import com.mygdx.model.location.DungeonConnection;
+import com.mygdx.model.location.DungeonRoom;
 
 public class DungeonManager {
 	@Autowired
 	private NodeAssets nodeAssets;
-	private Dungeon dungeonInfo;
-	private boolean currentHeading;
-	private int currentPos;
-	private boolean[][] isOn;
-	private String recentDungeon;
+	@Autowired
+	private MovingManager movingManager;
+	private DungeonInfo dungeonInfo = new DungeonInfo();
 
-	public void setRecentDungeon(String currentDungeon) {
-		recentDungeon = currentDungeon;
-	}
-
-	public boolean isThisNewDungeon(String newDungeon) {
-		if (recentDungeon != null)
-			return recentDungeon.equals(newDungeon);
-		else
-			return true;
-	}
-
-	public void setIsOn() {
-		isOn = new boolean[dungeonInfo.getMapHeight()][dungeonInfo.getMapWidth()];
-	}
-	public void turnIsOn(int x, int y) {
-
-		if (isOn == null)
-			setIsOn();
-		isOn[x][y] = true;
-	}
-	public boolean checkIsOn(int x, int y) {
-		return isOn[x][y];
-	}
-
-	public int getCurrentPos() {
-		return currentPos;
-	}
-	public void setCurrentPos(int currentPos) {
-		this.currentPos = currentPos;
-	}
-	public boolean getCurrentHeading() {
-		return currentHeading;
-	}
-	public void changeCurrentHeading() {
-		this.currentHeading = !currentHeading;
-	}
-	public Dungeon getDungeonInfo() {
+	public DungeonInfo getDungeonInfo() {
 		return dungeonInfo;
 	}
-	public void setDungeonInfo(String dungeonPath) {
-		dungeonInfo = nodeAssets.getDungeonByName(dungeonPath);
-		if (dungeonInfo == null)
-			setDungeonInfo("devil_castle");
-		dungeonInfo.setInDungeon(true);
+
+	public void setInitialDungeonInfo(String dungeonPath) {
+		Dungeon currentDungeon = nodeAssets.getDungeonByPath(dungeonPath);
+		dungeonInfo.setCurrentDungeon(currentDungeon);
+		dungeonInfo.setCurrentFloor(currentDungeon.getDungeonFloors().get(0));
+		setInitialCurrentRoomInfo(dungeonInfo.getStartDungeonRoomIndex());
+		setFloorMinimap(dungeonInfo);
+		setCurrentRoomVisibilityOn();
 	}
 
-	public void setInDungeon(boolean isInDungeon) {
-		if (dungeonInfo != null) {
-			dungeonInfo.setInDungeon(isInDungeon);
+	private void setFloorMinimap(DungeonInfo dungeonInfo) {
+		if (dungeonInfo.getCurrentFloor().getMiniMap() == null) {
+			boolean[][] minimapInfo = new boolean[dungeonInfo.getCurrentFloor().getMapHeight()][dungeonInfo
+					.getCurrentFloor().getMapWidth()];
+			dungeonInfo.getCurrentFloor().setMiniMap(minimapInfo);
 		}
 	}
 
-	public boolean isInDungeon() {
-		if (dungeonInfo != null)
-			return dungeonInfo.isInDungeon();
-		else
-			return false;
+	private void setInitialCurrentRoomInfo(int startDungeonRoomIndex) {
+		dungeonInfo.setCurrentRoom(dungeonInfo.getCurrentFloor().getDungeonRooms().get(startDungeonRoomIndex));
+		dungeonInfo.setCurrentDirection(Direction.FORWARD);
+		dungeonInfo.setCurrentForwardAngle(dungeonInfo.getCurrentRoom().getForwardAngle());
+		setCurrentDoorSize(dungeonInfo);
+	}
+
+	public int getCurrentDoorSize() {
+		return dungeonInfo.getCurrentDoorSize();
+	}
+
+	public void setCurrentDoorSize(DungeonInfo dungeonInfo) {
+		int doorSize;
+		if (dungeonInfo.getCurrentDirection().equals(DungeonEnum.Direction.FORWARD)) {
+			doorSize = dungeonInfo.getCurrentRoom().getForwardConnections().size();
+		} else if (dungeonInfo.getCurrentDirection().equals(DungeonEnum.Direction.BACKWARD)) {
+			doorSize = dungeonInfo.getCurrentRoom().getBackwardConnections().size();
+		} else {
+			Gdx.app.log("DungeonManager", "Direction정보 오류");
+			doorSize = 0;
+		}
+		dungeonInfo.setCurrentDoorSize(doorSize);
+	}
+
+	public void setCurrentRoomVisibilityOn() {
+		dungeonInfo.getCurrentFloor().setMiniMapAttribute(dungeonInfo.getCurrentRoom().getRoomPosY(),
+				dungeonInfo.getCurrentRoom().getRoomPosX());
+	}
+
+	public void moveRoom(int index) {
+		DungeonRoom originalRoom = dungeonInfo.getCurrentRoom();
+		DungeonConnection dungeonConnection;
+		if (dungeonInfo.getCurrentDirection().equals(Direction.FORWARD)) {
+			dungeonConnection = originalRoom.getForwardConnections().get(index);
+		} else {
+			dungeonConnection = originalRoom.getBackwardConnections().get(index);
+		}
+		DungeonRoom targetRoom = findDungeonRoomByLabel(dungeonConnection.getRoomLabel());
+		dungeonInfo.setCurrentRoom(targetRoom);
+		dungeonInfo.setCurrentDirection(dungeonConnection.getDirectionType());
+		dungeonInfo.getCurrentFloor().setMiniMapAttribute(targetRoom.getRoomPosY(), targetRoom.getRoomPosX());
+		setCurrentDoorSize(dungeonInfo);
+	}
+
+	private DungeonRoom findDungeonRoomByLabel(String roomLabel) {
+		Iterator<DungeonRoom> roomIterator = dungeonInfo.getCurrentFloor().getDungeonRooms().iterator();
+		while (roomIterator.hasNext()) {
+			DungeonRoom dungeonRoom = roomIterator.next();
+			if (dungeonRoom.getRoomLabel().equals(roomLabel)) {
+				return dungeonRoom;
+			}
+		}
+		Gdx.app.log("DungeonManager", "roomLabel 정보 오류 - " + roomLabel);
+		return null;
+	}
+
+	public void changeDirection() {
+		if (dungeonInfo.getCurrentDirection().equals(Direction.FORWARD)) {
+			dungeonInfo.setCurrentDirection(Direction.BACKWARD);
+		} else {
+			dungeonInfo.setCurrentDirection(Direction.FORWARD);
+		}
+		setCurrentDoorSize(dungeonInfo);
+	}
+
+	public void leaveDungeon() {
+		String nodeName = dungeonInfo.getCurrentRoom().getLink();
+		movingManager.goToNode(nodeName);
 	}
 }

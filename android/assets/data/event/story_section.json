@@ -19,8 +19,7 @@
         "eventType": "choice_option",
         "eventParameter" : {
        		"targetComponent": "아니오"
-        }
-       
+        }       
       }
     ]
   },

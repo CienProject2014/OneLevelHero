@@ -13,5 +13,4 @@ public class MoveFieldSectionChecker implements NextSectionChecker {
 			return false;
 		}
 	}
-
 }

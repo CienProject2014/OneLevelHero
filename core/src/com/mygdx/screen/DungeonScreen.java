@@ -8,11 +8,12 @@ import com.mygdx.enums.StageEnum;
 /**
  * DungeonEntranceStage와 GameUiStage를 addActor()해서 보여주는 Screen. 던전입구의 경우
  * multiplexer를 이용하여 2개의 화면을 교차로 보여준다.
- *
+ * 
  * @author Velmont
- *
+ * 
  */
 public class DungeonScreen extends BaseScreen {
+	private Stage minimapStage;
 	private Stage dungeonStage;
 	private Stage gameUiStage;
 
@@ -21,11 +22,12 @@ public class DungeonScreen extends BaseScreen {
 		super.render(delta);
 		setInputProcessor();
 		dungeonStage.draw();
+		minimapStage.draw();
 		dungeonStage.act(delta);
-		dungeonStage.getCamera().update();
+		minimapStage.act(delta);
+
 		gameUiStage.act(delta);
 		gameUiStage.draw();
-		// 카메라를 지속적으로 업데이트 해준다.
 	}
 
 	@Override
@@ -34,6 +36,7 @@ public class DungeonScreen extends BaseScreen {
 		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		setInputProcessor();
 		dungeonStage = stageFactory.makeStage(StageEnum.DUNGEON);
+		minimapStage = stageFactory.makeStage(StageEnum.DUNGEON_MINIMAP);
 		musicManager.setWorldNodeMusicAndPlay();
 	}
 

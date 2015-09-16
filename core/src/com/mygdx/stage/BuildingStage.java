@@ -66,8 +66,8 @@ public class BuildingStage extends BaseOverlapStage {
 	private GameObjectPopup gameObjectPopup;
 
 	public Stage makeStage() {
-		buildingInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
-				.get(positionManager.getCurrentSubNodeName());
+		buildingInfo = nodeAssets.getVillageByPath(positionManager.getCurrentNodePath()).getBuilding()
+				.get(positionManager.getCurrentSubNodePath());
 		if (buildingInfo.isOverlapScene()) {
 			makeScene();
 			makeBuildingSceneByOverlap();
@@ -155,8 +155,8 @@ public class BuildingStage extends BaseOverlapStage {
 
 	}
 	private void makeScene() {
-		buildingInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName()).getBuilding()
-				.get(positionManager.getCurrentSubNodeName());
+		buildingInfo = nodeAssets.getVillageByPath(positionManager.getCurrentNodePath()).getBuilding()
+				.get(positionManager.getCurrentSubNodePath());
 
 		assetsManager.initScene(buildingInfo.getSceneName());
 		initSceneLoader(assetsManager.rm);

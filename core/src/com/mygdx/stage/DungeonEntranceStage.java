@@ -16,6 +16,7 @@ import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.WorldMapAssets;
+import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.DungeonEntranceButtonListener;
@@ -52,8 +53,7 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
-		dungeonManager.setInDungeon(false);
-		dungeonEntranceInfo = nodeAssets.getDungeonEntranceByName(positionManager.getCurrentNodeName());
+		dungeonEntranceInfo = nodeAssets.getDungeonEntranceByPath(positionManager.getCurrentNodePath());
 		makeScene(dungeonEntranceInfo);
 		setButton();
 		return this;
@@ -64,7 +64,7 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 		backgroundTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
 		backgroundTable.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
 		TextureRegionDrawable backgroundImage = new TextureRegionDrawable(new TextureRegion(
-				textureManager.getBackgroundTexture(dungeonEntranceInfo.getNodePath())));
+				textureManager.getBackgroundTexture(dungeonEntranceInfo.getNodePath(), TextureEnum.NORMAL)));
 		backgroundTable.setBackground(backgroundImage);
 		tableStack.addActor(backgroundTable);
 	}
@@ -75,6 +75,7 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 		restButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_rest"));
 		backButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_field"));
 
+		dungeonManager.getDungeonInfo().setStartDungeonRoomIndex(dungeonEntranceInfo.getStartDungeonRoomIndex());
 		DungeonEntranceButtonListener dungeonEntranceButtonListener = listenerFactory
 				.getDungeonEntranceButtonListener();
 		dungeonEntranceButtonListener.setDungeonPath(dungeonEntranceInfo.getNodePath());
@@ -96,7 +97,7 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 			}
 		});
 
-		String currentNode = positionManager.getCurrentNodeName();
+		String currentNode = positionManager.getCurrentNodePath();
 		Entry<String, NodeConnection> nodeConnection = worldMapAssets.getWorldNodeInfo(currentNode).getNodeConnection()
 				.entrySet().iterator().next();
 		ArrowButtonListener arrowButtonListener = listenerFactory.getArrowButtonListener();

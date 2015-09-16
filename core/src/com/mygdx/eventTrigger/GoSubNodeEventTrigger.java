@@ -28,7 +28,7 @@ public class GoSubNodeEventTrigger implements EventTrigger {
 		int currentMinute = timeManager.getDayMinute();
 		if (ArgumentChecker.checkIsInTargetTime(buildingInfo.getTargetTime(), currentMinute)) {
 			positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
-			positionManager.setCurrentSubNodeName(buildingInfo.getSubNodePath());
+			positionManager.setCurrentSubNodePath(buildingInfo.getSubNodePath());
 			screenFactory.show(ScreenEnum.BUILDING);
 		} else {
 			screenFactory.show(ScreenEnum.CHAT_EVENT);

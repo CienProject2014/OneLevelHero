@@ -55,13 +55,13 @@ public class WorldMapStage extends BaseOverlapStage {
 		 * 수 있다.
 		 */
 		currentPosition = sceneLoader.getRoot().getCompositeById("cross");
-		currentNode = sceneLoader.getRoot().getImageById(positionManager.getCurrentNodeName());
+		currentNode = sceneLoader.getRoot().getImageById(positionManager.getCurrentNodePath());
 		// FIXME 예외적 상황
-		if (positionManager.getCurrentNodeName().equals("elven_forest_east")
-				|| positionManager.getCurrentNodeName().equals("elven_forest_west")) {
+		if (positionManager.getCurrentNodePath().equals("elven_forest_east")
+				|| positionManager.getCurrentNodePath().equals("elven_forest_west")) {
 			currentNode = sceneLoader.getRoot().getImageById("elven_forest");
-		} else if (positionManager.getCurrentNodeName().equals("crystallized_valley_south")
-				|| positionManager.getCurrentNodeName().equals("crystallized_valley_north")) {
+		} else if (positionManager.getCurrentNodePath().equals("crystallized_valley_south")
+				|| positionManager.getCurrentNodePath().equals("crystallized_valley_north")) {
 			currentNode = sceneLoader.getRoot().getImageById("crystallized_valley");
 		}
 

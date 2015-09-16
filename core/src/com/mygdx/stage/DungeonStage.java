@@ -1,38 +1,52 @@
 package com.mygdx.stage;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Stack;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.NodeAssets;
-import com.mygdx.assets.StaticAssets;
-import com.mygdx.enums.ScreenEnum;
-import com.mygdx.listener.SimpleTouchListener;
+import com.mygdx.enums.DungeonEnum.Direction;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.DungeonDoorButtonListener;
+import com.mygdx.listener.LeaveDungeonButtonListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.DungeonEncounterManager;
 import com.mygdx.manager.DungeonManager;
+import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.manager.TimeManager;
-import com.mygdx.model.location.DungeonConnection;
-import com.mygdx.model.location.DungeonRoom;
-import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
  * @author Velmont
  * 
  */
-public class DungeonStage extends BaseOverlapStage {
+
+public class DungeonStage extends BaseOneLevelStage {
+	private static final String BG_DOOR[] = {"devil_castle_02", "devil_castle_03", "devil_castle_04", "devil_castle_05"};
+	private static final String BG_DOOR_GATE = "devil_castle_gate";
+	private static final String BG_DOOR_UP_STAIR = "devil_castle_up";
+	private static final String BG_DOOR_DOWN_STAIR = "devil_castle_down";
+	private static final int DOOR_POSITION[][] = {{80, 440}, {898, 440}, {1688, 440}};
+	private static final int TOTAL_DOOR_SIZE = 3;
+	private static final int INDEX_OF_LEFT = 0;
+	private static final int INDEX_OF_MID = 1;
+	private static final int INDEX_OF_RIGHT = 2;
+	private String currentRoomLabel = new String();
+	private Direction currentDirection;
+
 	@Autowired
 	private AssetsManager assetsManager;
+	@Autowired
+	private AtlasUiAssets atlasUiAssets;
 	@Autowired
 	private NodeAssets nodeAssets;
 	@Autowired
@@ -41,370 +55,237 @@ public class DungeonStage extends BaseOverlapStage {
 	private DungeonManager dungeonManager;
 	@Autowired
 	private TimeManager timeManager;
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	@Autowired
+	private PositionManager positionManager;
+	@Autowired
+	private TextureManager textureManager;
+	@Autowired
+	private ListenerFactory listenerFactory;
+	private ImageButton[] goDoorButton = new ImageButton[3];
+	private Table doorTable[] = new Table[3];
+	private Table outerTable = new Table();
+	private Table otherButtonTable = new Table();
 
-	private CompositeItem btnTurn;
-	private CompositeItem[] btnRoad = new CompositeItem[3];
-	private ArrayList<DungeonConnection> selectableForward, selectableBackward;
-
-	private Texture map;
-	private TextureRegion[][] maptile;
-	private Table minimaptable;
-	private Texture blacktile;
-	private Image minimapBackground;
-	private Image directionArrow;
-
-	protected Stack tableStack;
+	public Stage makeStage() {
+		super.makeStage();
+		setInitialDungeonInfo(dungeonManager);
+		showBackground(dungeonManager);
+		setChangeDirectionButton(dungeonManager);
+		setDoorButton(dungeonManager);
+		showDoorButton(dungeonManager);
+		setOtherButtons(dungeonManager);
+		return this;
+	}
 
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		minimaptable.act(delta);
+		showBackground(dungeonManager);
+		showDoorButton(dungeonManager);
+		setOtherButtons(dungeonManager);
+	}
+	private void setInitialDungeonInfo(DungeonManager dungeonManager) {
+		if (positionManager.getCurrentSubNodePath() != null) {
+			dungeonManager.setInitialDungeonInfo(positionManager.getCurrentSubNodePath());
+		} else {
+			dungeonManager.setInitialDungeonInfo("devil_castle");
+		}
 	}
 
-	public void initMinimap() {
-		String minimapPath = "texture/dungeon_minimap/" + dungeonManager.getDungeonInfo().getSubNodePath()
-				+ "_minimap.png";
-
-		blacktile = new Texture(Gdx.files.internal("texture/dungeon_minimap/black_tile.png"));
-
-		map = new Texture(Gdx.files.internal(minimapPath));
-		if (map == null) {
-			map = new Texture(Gdx.files.internal("texture/dungeon_minimap/devil_castle_minimap.png"));
+	private void showBackground(DungeonManager dungeonManager) {
+		String backgroundPath;
+		switch (dungeonManager.getCurrentDoorSize()) {
+			case 0 :
+				backgroundPath = getBackgroundPathByType(dungeonManager);
+				break;
+			case 1 :
+				backgroundPath = BG_DOOR[1];
+				break;
+			case 2 :
+				backgroundPath = BG_DOOR[2];
+				break;
+			case 3 :
+				backgroundPath = BG_DOOR[3];
+				break;
+			default :
+				Gdx.app.log("DungeonStage", "DoorSize 정보 오류");
+				backgroundPath = null;
+				break;
 		}
+		outerTable.remove();
+		outerTable.setBackground(new TextureRegionDrawable(new TextureRegion(textureManager
+				.getBackgroundTexture(backgroundPath))));
+		tableStack.add(outerTable);
+	}
 
-		maptile = TextureRegion.split(map, map.getWidth() / dungeonManager.getDungeonInfo().getMapWidth(),
-				map.getHeight() / dungeonManager.getDungeonInfo().getMapHeight());
-
-		DungeonRoom currentRoom = dungeonManager.getDungeonInfo().dungeonRooms.get(dungeonManager.getCurrentPos());
-		dungeonManager.turnIsOn(currentRoom.getRoomPosY(), currentRoom.getRoomPosX());
-
-		// setisOn();
-
-		float tileHeight = maptile[0][0].getRegionHeight();
-		float tileWidth = maptile[0][0].getRegionWidth();
-
-		// blacktile.setSize(tileHeight, tileWidth);
-		// blacktile.set
-
-		minimaptable = new Table();
-
-		// minimaptable.setSize(500, 300);
-
-		// minimaptable.setPosition(1000, 800);
-
-		minimaptable.top();
-		minimaptable.right();
-
-		minimaptable.addAction(Actions.moveTo(-10, -170));
-		// 세로 가로
-
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 5; j++) { //
-
-				int indexX = currentRoom.getRoomPosX() - 2 + j;
-				int indexY = currentRoom.getRoomPosY() - 1 + i;
-
-				if (indexX < 0 || indexY < 0) {
-					minimaptable.add(new Image(blacktile));
-				} else {
-					if (dungeonManager.checkIsOn(indexY, indexX))
-						minimaptable.add(new Image(maptile[indexY][indexX]));
-					else
-						minimaptable.add(new Image(blacktile));
-				}
+	private String getBackgroundPathByType(DungeonManager dungeonManager) {
+		if (dungeonManager.getDungeonInfo().getCurrentDirection().equals(Direction.BACKWARD)) {
+			switch (dungeonManager.getDungeonInfo().getCurrentRoom().getRoomType()) {
+				case GATE :
+					return BG_DOOR_GATE;
+				case DOWN_STAIR :
+					return BG_DOOR_DOWN_STAIR;
+				case UP_STAIR :
+					return BG_DOOR_UP_STAIR;
+				default :
+					return BG_DOOR[0];
 			}
-			minimaptable.row();
+		} else {
+			return BG_DOOR[0];
 		}
-		// minimaptable.setBackground(new TextureRegionDrawable(new
-		// TextureRegion(map)));
-
-		tableStack.add(minimaptable);
 	}
-	public void refreshMinimap() {
 
-		minimaptable.clear();
-
-		// minimaptable.setBackground(new
-		// TextureRegionDrawable(minimapBackground));
-
-		DungeonRoom currentRoom = dungeonManager.getDungeonInfo().dungeonRooms.get(dungeonManager.getCurrentPos());
-		dungeonManager.turnIsOn(currentRoom.getRoomPosY(), currentRoom.getRoomPosX());
-
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 5; j++) {
-				// outofbound
-				int indexX = currentRoom.getRoomPosX() - 2 + j;
-				int indexY = currentRoom.getRoomPosY() - 1 + i;
-
-				if (indexX < 0 || indexY < 0) {
-					minimaptable.add(new Image(blacktile));
-				} else {
-					if (dungeonManager.checkIsOn(indexY, indexX))
-						minimaptable.add(new Image(maptile[indexY][indexX]));
-					else
-						minimaptable.add(new Image(blacktile));
-				}
-			}
-			minimaptable.row();
+	private void showDoorButton(DungeonManager dungeonManager) {
+		int currentDoorSize = dungeonManager.getCurrentDoorSize();
+		switch (currentDoorSize) {
+			case 0 :
+				removeDoorListener(INDEX_OF_LEFT);
+				removeDoorListener(INDEX_OF_MID);
+				removeDoorListener(INDEX_OF_RIGHT);
+				break;
+			case 1 :
+				addDoorListener(INDEX_OF_MID, 0);
+				removeDoorListener(INDEX_OF_LEFT);
+				removeDoorListener(INDEX_OF_RIGHT);
+				break;
+			case 2 :
+				addDoorListener(INDEX_OF_LEFT, 0);
+				removeDoorListener(INDEX_OF_MID);
+				addDoorListener(INDEX_OF_RIGHT, 1);
+				break;
+			case 3 :
+				addDoorListener(INDEX_OF_LEFT, 0);
+				addDoorListener(INDEX_OF_MID, 1);
+				addDoorListener(INDEX_OF_RIGHT, 2);
+				break;
+			default :
+				break;
 		}
-		minimaptable.addAction(Actions.moveTo(-10, -170));
 	}
 
-	public Stage makeStage() {
-		setMapInfo(dungeonManager);
-		dungeonManager.setInDungeon(true);
-
-		makeScene(dungeonManager.getDungeonInfo().getSceneName(3));
-
-		minimapBackground = new Image(new Texture(Gdx.files.internal("texture/dungeon_minimap/minimap_background.png")));
-		minimapBackground.setPosition(1400, 605);
-		this.addActor(minimapBackground);
-
-		tableStack = new Stack();
-		tableStack.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
-		tableStack.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
-		this.addActor(tableStack);
-
-		directionArrow = new Image(new Texture(Gdx.files.internal("texture/dungeon_minimap/minimap_arrow.png")));
-		directionArrow.setPosition(1395 + 255, 585 + 155);
-		directionArrow.setOrigin(directionArrow.getWidth() / 2, directionArrow.getHeight() / 2);
-		this.addActor(directionArrow);
-
-		update();
-
-		initMinimap();
-
-		// this.addActor(minimaptable);
-
-		return this;
+	private void addDoorListener(int doorIndex, int listenerIndex) {
+		setDoorTable(doorIndex);
+		DungeonDoorButtonListener doorButtonListener = listenerFactory.getDungeonDoorButtonListener();
+		doorButtonListener.setIndex(listenerIndex);
+		doorTable[doorIndex].addListener(doorButtonListener);
 	}
 
-	private void setMapInfo(DungeonManager dungeonManager) {
-		if (positionManager.getCurrentSubNodeName() != null) {
-			dungeonManager.setDungeonInfo(positionManager.getCurrentSubNodeName()); // FIXME
-		} else
-			dungeonManager.setDungeonInfo("devil_castle");
-
-		if (!dungeonManager.isThisNewDungeon(positionManager.getCurrentSubNodeName()))
-			dungeonManager.setIsOn();
-
-		selectableBackward = new ArrayList<>();
-		selectableForward = new ArrayList<>();
+	private void removeDoorListener(int index) {
+		doorTable[index].remove();
 	}
 
-	public void makeScene(String sceneName) {
-
-		assetsManager.initScene(sceneName);
-		initSceneLoader(assetsManager.rm);
-		sceneLoader.loadScene(sceneName);
-
-		cameraManager.stretchToDevice(this);
-		addActor(sceneLoader.getRoot());
+	private void setDoorTable(int index) {
+		doorTable[index].clear();
+		doorTable[index].add(goDoorButton[index]);
+		doorTable[index].bottom().left();
+		doorTable[index].addAction(Actions.moveTo(DOOR_POSITION[index][0], DOOR_POSITION[index][1]));
+		addActor(doorTable[index]);
 	}
 
-	public void resetArrow() {
-		directionArrow.remove();
-
-		DungeonRoom currentRoom = dungeonManager.getDungeonInfo().dungeonRooms.get(dungeonManager.getCurrentPos());
-
-		int rotationDegree = 0;
-
-		if (currentRoom.getDirectionType().equals("left")) {
-			rotationDegree = 0;
-		} else if (currentRoom.getDirectionType().equals("right")) {
-			rotationDegree = 180;
-		} else if (currentRoom.getDirectionType().equals("crossup")) {
-			rotationDegree = -45;
-		} else if (currentRoom.getDirectionType().equals("crossdown")) {
-			rotationDegree = 45;
-		} else if (currentRoom.getDirectionType().equals("up")) {
-			rotationDegree = -90;
-		} else if (currentRoom.getDirectionType().equals("down")) {
-			rotationDegree = 90;
+	private void setDoorButton(DungeonManager dungeonManager) {
+		for (int i = 0; i < TOTAL_DOOR_SIZE; i++) {
+			goDoorButton[i] = new ImageButton(atlasUiAssets.getAtlasUiFile("dungeonui_button_go"));
+			doorTable[i] = new Table();
+			setDoorTable(i);
 		}
-
-		if (dungeonManager.getCurrentHeading())
-			rotationDegree += 180;
-
-		directionArrow.setRotation(rotationDegree);
-
-		this.addActor(directionArrow);
 	}
 
-	public void resetScene(String sceneName, int doorNum) {
-		tableStack.remove();
-		minimapBackground.remove();
-		sceneLoader.getRoot().remove();
-		makeScene(sceneName);
-		setButton(doorNum);
-		this.addActor(minimapBackground);
-		this.addActor(tableStack);
-		resetArrow();
-	}
-
-	public void setEntranceScene() {
-		tableStack.remove();
-		minimapBackground.remove();
-		sceneLoader.getRoot().remove();
-		makeScene(dungeonManager.getDungeonInfo().getSceneName(1));
-		btnTurn = sceneLoader.getRoot().getCompositeById("back");
-		btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_mid");
-
-		btnRoad[0].addListener(new SimpleTouchListener() {
+	private void setChangeDirectionButton(final DungeonManager dungeonManager) {
+		ImageButton changeDirectionButton = new ImageButton(
+				atlasUiAssets.getAtlasUiFile("dungeonui_button_change_direction"));
+		Table changeDirectionbuttonTable = new Table();
+		changeDirectionbuttonTable.bottom().left();
+		changeDirectionbuttonTable.add(changeDirectionButton);
+		changeDirectionbuttonTable.addAction(Actions.moveTo(808, 80));
+		changeDirectionbuttonTable.addListener(new ClickListener() {
 			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				dungeonManager.changeCurrentHeading();
-				dungeonManager.setRecentDungeon(positionManager.getCurrentSubNodeName());
-				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
+			public void clicked(InputEvent event, float x, float y) {
+				dungeonManager.changeDirection();
 			}
 		});
-
-		btnTurn.addListener(new SimpleTouchListener() {
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				actionTurn();
-			}
-		});
-
-		this.addActor(minimapBackground);
-		this.addActor(tableStack);
-		resetArrow();
+		addActor(changeDirectionbuttonTable);
 	}
 
-	private void setButton(int doorNum) {
-		// FIXME UI
-
-		btnTurn = sceneLoader.getRoot().getCompositeById("back");
-		if (doorNum == 1) {
-			btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_mid");
-
-			btnRoad[0].addListener(new TouchRoadListener(0));
-		} else if (doorNum == 2) {
-			if (!dungeonManager.getCurrentHeading()) {
-				btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_left");
-				btnRoad[1] = sceneLoader.getRoot().getCompositeById("go_right");
-			} else {
-				btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_right");
-				btnRoad[1] = sceneLoader.getRoot().getCompositeById("go_left");
+	private void setOtherButtons(DungeonManager dungeonManager) {
+		if (!currentRoomLabel.equals(dungeonManager.getDungeonInfo().getCurrentRoom().getRoomLabel())
+				|| !currentDirection.equals(dungeonManager.getDungeonInfo().getCurrentDirection())) {
+			setCurrentRoomLabel(dungeonManager.getDungeonInfo().getCurrentRoom().getRoomLabel());
+			setCurrentDirection(dungeonManager.getDungeonInfo().getCurrentDirection());
+			otherButtonTable.clear();
+			switch (dungeonManager.getDungeonInfo().getCurrentRoom().getRoomType()) {
+				case BOSS :
+					break;
+				case DOWN_STAIR :
+					makeDownStairRoomButton();
+					break;
+				case ELITE :
+					break;
+				case GATE :
+					makeGateRoomButton();
+					break;
+				case NORMAL :
+					break;
+				case OBJECT :
+					// makeObjectRoomButton();
+					break;
+				case UP_STAIR :
+					makeUpStairRoomButton();
+					break;
+				default :
+					Gdx.app.log("DungeonStage", "RoomType정보 오류");
+					break;
 			}
-
-			btnRoad[0].addListener(new TouchRoadListener(0));
-			btnRoad[1].addListener(new TouchRoadListener(1));
-
-		} else if (doorNum == 3) {
-			if (!dungeonManager.getCurrentHeading()) {
-				btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_left");
-				btnRoad[1] = sceneLoader.getRoot().getCompositeById("go_mid");
-				btnRoad[2] = sceneLoader.getRoot().getCompositeById("go_right");
-			} else {
-				btnRoad[0] = sceneLoader.getRoot().getCompositeById("go_right");
-				btnRoad[1] = sceneLoader.getRoot().getCompositeById("go_mid");
-				btnRoad[2] = sceneLoader.getRoot().getCompositeById("go_left");
-			}
-
-			btnRoad[0].addListener(new TouchRoadListener(0));
-			btnRoad[1].addListener(new TouchRoadListener(1));
-			btnRoad[2].addListener(new TouchRoadListener(2));
 		}
-
-		btnTurn.addListener(new SimpleTouchListener() {
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				actionTurn();
-			}
-		});
-
+	}
+	public Direction getCurrentDirection() {
+		return currentDirection;
 	}
 
-	private void update() {
+	public void setCurrentDirection(Direction currentDirection) {
+		this.currentDirection = currentDirection;
+	}
 
-		selectableForward.clear();
-		selectableBackward.clear();
-
-		// 대체 노드의 라벨은 무엇을 의미하는 것인
-		// sceneLoader.getCompositeElementById(currentRoom.getLabel()).setVisible(true);
-		for (DungeonConnection e : dungeonManager.getDungeonInfo().connections) {
-			if (e.isFrom(dungeonManager.getCurrentPos())) {
-				selectableForward.add(e);
-			} else if (e.isTo(dungeonManager.getCurrentPos())) {
-				selectableBackward.add(e);
-			}
-		}
-
-		if ((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size() == 0) {
-			resetScene(dungeonManager.getDungeonInfo().getSceneName(0), 0);
-		} else if ((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size() == 1) {
-			resetScene(dungeonManager.getDungeonInfo().getSceneName(1), 1);
-		} else if ((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size() == 2) {
-			resetScene(dungeonManager.getDungeonInfo().getSceneName(2), 2);
-		} else if ((dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size() == 3) {
-			resetScene(dungeonManager.getDungeonInfo().getSceneName(3), 3);
-		}
-
-		// FIXME UI
-		for (int i = 0, n = (dungeonManager.getCurrentHeading() ? selectableBackward : selectableForward).size(); i < n; i++) {
-			Gdx.app.log("문 개수", String.valueOf(n));
-			btnRoad[i].setTouchable(i < n ? Touchable.enabled : Touchable.disabled);
-			btnRoad[i].setVisible(btnRoad[i].getTouchable() == Touchable.enabled);
+	private void makeUpStairRoomButton() {
+		otherButtonTable.clear();
+		if (dungeonManager.getDungeonInfo().getCurrentDirection().equals(Direction.BACKWARD)) {
+			ImageButton upButton = new ImageButton(atlasUiAssets.getAtlasUiFile("dungeonui_button_up"));
+			otherButtonTable.left().bottom();
+			otherButtonTable.padLeft(808).padBottom(412);
+			otherButtonTable.add(upButton);
+			addActor(otherButtonTable);
 		}
 	}
 
-	private void actionTurn() {
-		timeManager.plusMinute(10);
-
-		dungeonManager.changeCurrentHeading();
-
-		DungeonRoom currentRoom = dungeonManager.getDungeonInfo().dungeonRooms.get(dungeonManager.getCurrentPos());
-
-		if (currentRoom.chkFlag(DungeonRoom.FLG_ENTRANCE) && dungeonManager.getCurrentHeading() == true) {
-			setEntranceScene();
-		}
-
-		else {
-			update();
+	private void makeGateRoomButton() {
+		if (dungeonManager.getDungeonInfo().getCurrentDirection().equals(Direction.BACKWARD)) {
+			ImageButton exitButton = new ImageButton(atlasUiAssets.getAtlasUiFile("dungeonui_button_exit"));
+			otherButtonTable.left().bottom();
+			otherButtonTable.padLeft(808).padBottom(521);
+			otherButtonTable.add(exitButton);
+			LeaveDungeonButtonListener leaveDungeonButtonListener = listenerFactory.getLeaveDungeonButtonListener();
+			otherButtonTable.addListener(leaveDungeonButtonListener);
+			addActor(otherButtonTable);
 		}
 	}
 
-	private void actionMove(int index) {
-		timeManager.plusMinute(10);
-		dungeonManager.setCurrentPos(dungeonManager.getDungeonInfo().dungeonRooms.indexOf((dungeonManager
-				.getCurrentHeading() ? selectableBackward : selectableForward).get(index)));
-
-		if (!dungeonManager.getCurrentHeading())
-			dungeonManager.setCurrentPos(selectableForward.get(index).getTo());
-		else if (dungeonManager.getCurrentHeading())
-			dungeonManager.setCurrentPos(selectableBackward.get(index).getFrom());
-
-		Gdx.app.log("currentPos", String.valueOf(dungeonManager.getCurrentPos()));
-
-		update();
-
-		refreshMinimap();
-
-		DungeonRoom currentRoom = dungeonManager.getDungeonInfo().dungeonRooms.get(dungeonManager.getCurrentPos());
-
-		if (currentRoom.chkFlag(DungeonRoom.FLG_ENTRANCE)) {
-			setEntranceScene();
-		} else if (currentRoom.chkFlag(DungeonRoom.FLG_ROAD)) {
-			// screenFactory.show(ScreenEnum.ENCOUNTER);
-			dungeonManager.setRecentDungeon(positionManager.getCurrentSubNodeName());
-			dungeonEncounterManager.act();
-		} else if (currentRoom.chkFlag(DungeonRoom.FLG_ENCOUNT)) {
-			dungeonEncounterManager.eliteAct(currentRoom.getEliteMonster());
-
+	private void makeDownStairRoomButton() {
+		otherButtonTable.clear();
+		if (dungeonManager.getDungeonInfo().getCurrentDirection().equals(Direction.BACKWARD)) {
+			ImageButton downButton = new ImageButton(atlasUiAssets.getAtlasUiFile("dungeonui_button_down"));
+			otherButtonTable.left().bottom();
+			otherButtonTable.padLeft(808).padBottom(412);
+			otherButtonTable.add(downButton);
+			addActor(otherButtonTable);
 		}
 	}
 
-	private class TouchRoadListener extends SimpleTouchListener {
-		private int idx;
+	public String getCurrentRoomLabel() {
+		return currentRoomLabel;
+	}
 
-		public TouchRoadListener(int idx) {
-			this.idx = idx;
-		}
-
-		@Override
-		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-			actionMove(idx);
-		}
+	public void setCurrentRoomLabel(String currentRoomLabel) {
+		this.currentRoomLabel = currentRoomLabel;
 	}
 }

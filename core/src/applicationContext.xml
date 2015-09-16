@@ -132,6 +132,7 @@
 		scope="prototype"/>
 	<bean id="dungeonEntranceStage" class="com.mygdx.stage.DungeonEntranceStage"
 		scope="prototype" />
+	<bean id="dungeonMinimapStage" class="com.mygdx.stage.DungeonMinimapStage" scope="prototype"/>
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage"
 		scope="prototype"/>
 	<bean id="characterChangeStage" class="com.mygdx.stage.CharacterChangeStage" scope="prototype"/>
@@ -157,8 +158,6 @@
 	<bean id="savePopupStage" class="com.mygdx.stage.SavePopupStage" scope="prototype"/>
 	<bean id="villageStage" class="com.mygdx.stage.VillageStage"
 		scope="prototype"/>
-	<bean id="dungeonMinimapStage" class="com.mygdx.stage.DungeonMinimapStage"
-		scope="prototype"/>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
  	
@@ -173,13 +172,15 @@
 	<bean id="choiceNpcEventListener" class="com.mygdx.listener.ChoiceNpcEventListener" scope="prototype"/>
 	<bean id="choiceOptionListener" class="com.mygdx.listener.ChoiceOptionListener" scope="prototype"/>
 	<bean id="closeButtonListener" class="com.mygdx.listener.CloseButtonListener" scope="prototype"/>
+	<bean id="dungeonDoorButtonListener" class="com.mygdx.listener.DungeonDoorButtonListener" scope="prototype"/>
 	<bean id="dungeonEntranceButtonListener" class="com.mygdx.listener.DungeonEntranceButtonListener" scope="prototype"/>
 	<bean id="gameObjectButtonListener" class="com.mygdx.listener.GameObjectButtonListener" scope="prototype"/>
-	<bean id="GameEndListener" class="com.mygdx.listener.GameEndListener" scope="prototype"/>
+	<bean id="gameEndListener" class="com.mygdx.listener.GameEndListener" scope="prototype"/>
 	<bean id="goBackwardFieldButtonListener" class="com.mygdx.listener.GoBackwardFieldButtonListener" scope="prototype"/>
 	<bean id="goForwardFieldButtonListener" class="com.mygdx.listener.GoForwardFieldButtonListener" scope="prototype"/>
 	<bean id="goTitleListener" class="com.mygdx.listener.GoTitleListener" scope="prototype"/>
 	<bean id="jumpSectionListener" class="com.mygdx.listener.JumpSectionListener" scope="prototype"/>
+	<bean id="leaveDungeonButtonListener" class="com.mygdx.listener.LeaveDungeonButtonListener" scope="prototype"/>
 	<bean id="loadListener" class="com.mygdx.listener.LoadListener" scope="prototype"/>
 	<bean id="runAwayListener" class="com.mygdx.listener.RunAwayListener" scope="prototype"/>
 		
