@@ -67,4 +67,8 @@ public class BaseOneLevelStage extends Stage {
 		touched = screenToStageCoordinates(new Vector2(screenX, screenY));
 		return super.touchUp(screenX, screenY, pointer, button);
 	}
+	
+	public CameraManager getCameraManager(){
+		return cameraManager;
+	}
 }

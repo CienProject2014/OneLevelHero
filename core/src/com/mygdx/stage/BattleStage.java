@@ -124,8 +124,10 @@ public class BattleStage extends BaseOneLevelStage {
 			updateBigImageTable();
 			battleManager.setBigUpdate(false);
 		}
+		cameraManager.act(delta);
 	}
 
+	
 	public Stage makeStage() {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("BattleStage");
@@ -148,8 +150,10 @@ public class BattleStage extends BaseOneLevelStage {
 		tableStack.add(makeTurnTable()); // TurnTable 배경 테이블
 		tableStack.add(makeTurnFaceTable()); // TurnTable위에 있는 영웅들 이미지 테이블
 		battleManager.setMonsterSize(MonsterEnum.SizeType.MEDIUM);
+		
 		tableStack.add(battleManager.getNowGridHitbox());
 		battleManager.setShowGrid(false);
+		battleManager.setBattleStage(this);
 
 		addListener();
 		return this;
@@ -191,7 +195,7 @@ public class BattleStage extends BaseOneLevelStage {
 	 */
 	private void playAnimation(float delta) {
 		animationManager.nextFrame(delta);
-		if (animationManager.getAnimations().isEmpty()) {
+		if (animationManager.isEmptyAnimation()) {
 			storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_COMMAND, "normal_attack");
 			if (battleManager.getCurrentSelectedSkill() != null) {
 				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_COMMAND, "skill_attack");

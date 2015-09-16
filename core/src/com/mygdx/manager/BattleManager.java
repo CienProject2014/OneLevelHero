@@ -31,6 +31,7 @@ import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
 import com.mygdx.popup.SkillRunPopup;
+import com.mygdx.stage.BattleStage;
 import com.mygdx.ui.GridHitbox;
 
 public class BattleManager {
@@ -66,11 +67,16 @@ public class BattleManager {
 	@Autowired
 	private SoundManager soundManager;
 	private GridHitbox gridHitbox; // grid hitbox 테이블
+	private BattleStage battleStage;
 
 	public SkillRunPopup gameObjectPopup;
 
 	public boolean isEventBattle() {
 		return battleInfo.isEventBattle();
+	}
+	
+	public void setBattleStage(BattleStage stage){
+		battleStage = stage;
 	}
 
 	public void setEventBattle(boolean isEventBattle) {
@@ -446,6 +452,7 @@ public class BattleManager {
 		int localy = (int) (StaticAssets.windowHeight * 0.5f)
 				+ (int) (StaticAssets.windowHeight * (-0.24f + 0.12f * y));
 		animationManager.registerAnimation(animationName, localx, localy, width, height);
+		battleStage.getCameraManager().shaking();
 	}
 
 	/**
