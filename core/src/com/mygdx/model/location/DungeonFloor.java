@@ -7,7 +7,7 @@ public class DungeonFloor {
 	private String floorName;
 	private int mapHeight;
 	private int mapWidth;
-	private boolean miniMap[][] = new boolean[mapHeight][mapWidth];
+	private boolean miniMap[][];
 	private ArrayList<DungeonRoom> dungeonRooms = new ArrayList<>();
 	private ArrayList<String> floorMonsterList;
 
@@ -37,6 +37,9 @@ public class DungeonFloor {
 	}
 	public boolean[][] getMiniMap() {
 		return miniMap;
+	}
+	public void setMiniMapAttribute(int posY, int posX) {
+		miniMap[posY - 1][posX - 1] = true;
 	}
 	public void setMiniMap(boolean miniMap[][]) {
 		this.miniMap = miniMap;

@@ -16,6 +16,7 @@ import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.WorldMapAssets;
+import com.mygdx.enums.TextureEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.DungeonEntranceButtonListener;
@@ -63,7 +64,7 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 		backgroundTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
 		backgroundTable.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
 		TextureRegionDrawable backgroundImage = new TextureRegionDrawable(new TextureRegion(
-				textureManager.getBackgroundTexture(dungeonEntranceInfo.getNodePath())));
+				textureManager.getBackgroundTexture(dungeonEntranceInfo.getNodePath(), TextureEnum.NORMAL)));
 		backgroundTable.setBackground(backgroundImage);
 		tableStack.addActor(backgroundTable);
 	}

@@ -1,40 +1,40 @@
 
 atlas.png
-size: 810,214
+size: 866,184
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-dungeonui_button_change_direction
+stay_button_field
   rotate: false
-  xy: 2, 94
-  size: 330, 120
-  orig: 330, 120
+  xy: 334, 4
+  size: 317, 88
+  orig: 317, 88
   offset: 0, 0
   index: -1
-dungeonui_button_down
+stay_button_go
+  rotate: false
+  xy: 666, 59
+  size: 200, 125
+  orig: 200, 125
+  offset: 0, 0
+  index: -1
+stay_button_memoraizing
+  rotate: false
+  xy: 2, 94
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+stay_button_rest
   rotate: false
   xy: 2, 2
   size: 330, 90
   orig: 330, 90
   offset: 0, 0
   index: -1
-dungeonui_button_exit
+stay_button_save
   rotate: false
-  xy: 334, 124
-  size: 330, 90
-  orig: 330, 90
-  offset: 0, 0
-  index: -1
-dungeonui_button_go
-  rotate: false
-  xy: 666, 124
-  size: 144, 90
-  orig: 144, 90
-  offset: 0, 0
-  index: -1
-dungeonui_button_up
-  rotate: false
-  xy: 334, 32
+  xy: 334, 94
   size: 330, 90
   orig: 330, 90
   offset: 0, 0

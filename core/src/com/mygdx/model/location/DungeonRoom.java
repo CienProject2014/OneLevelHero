@@ -1,12 +1,12 @@
 package com.mygdx.model.location;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 import com.mygdx.enums.DungeonEnum;
 
 public class DungeonRoom {
-	private HashMap<String, DungeonConnection> forwardConnections;
-	private HashMap<String, DungeonConnection> backwardConnections;
+	private ArrayList<DungeonConnection> forwardConnections;
+	private ArrayList<DungeonConnection> backwardConnections;
 	private DungeonEnum.Type roomType;
 	private DungeonEnum.ForwardAngle forwardAngle;
 	private String roomLabel;
@@ -62,19 +62,19 @@ public class DungeonRoom {
 		this.forwardAngle = forwardAngle;
 	}
 
-	public HashMap<String, DungeonConnection> getForwardConnections() {
+	public ArrayList<DungeonConnection> getForwardConnections() {
 		return forwardConnections;
 	}
 
-	public void setForwardConnections(HashMap<String, DungeonConnection> forwardConnections) {
+	public void setForwardConnections(ArrayList<DungeonConnection> forwardConnections) {
 		this.forwardConnections = forwardConnections;
 	}
 
-	public HashMap<String, DungeonConnection> getBackwardConnections() {
+	public ArrayList<DungeonConnection> getBackwardConnections() {
 		return backwardConnections;
 	}
 
-	public void setBackwardConnections(HashMap<String, DungeonConnection> backwardConnections) {
+	public void setBackwardConnections(ArrayList<DungeonConnection> backwardConnections) {
 		this.backwardConnections = backwardConnections;
 	}
 }

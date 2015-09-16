@@ -10,6 +10,7 @@ import com.mygdx.listener.BuildingButtonListener;
 import com.mygdx.listener.ChoiceNpcEventListener;
 import com.mygdx.listener.ChoiceOptionListener;
 import com.mygdx.listener.CloseButtonListener;
+import com.mygdx.listener.DungeonDoorButtonListener;
 import com.mygdx.listener.DungeonEntranceButtonListener;
 import com.mygdx.listener.GameEndListener;
 import com.mygdx.listener.GameObjectButtonListener;
@@ -17,6 +18,7 @@ import com.mygdx.listener.GoBackwardFieldButtonListener;
 import com.mygdx.listener.GoForwardFieldButtonListener;
 import com.mygdx.listener.GoTitleListener;
 import com.mygdx.listener.JumpSectionListener;
+import com.mygdx.listener.LeaveDungeonButtonListener;
 import com.mygdx.listener.LoadListener;
 import com.mygdx.listener.RunAwayListener;
 
@@ -87,4 +89,11 @@ public class ListenerFactory {
 		return context.getBean(LoadListener.class);
 	}
 
+	public DungeonDoorButtonListener getDungeonDoorButtonListener() {
+		return context.getBean(DungeonDoorButtonListener.class);
+	}
+
+	public LeaveDungeonButtonListener getLeaveDungeonButtonListener() {
+		return context.getBean(LeaveDungeonButtonListener.class);
+	}
 }

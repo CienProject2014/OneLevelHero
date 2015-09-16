@@ -1,5 +1,6 @@
 package com.mygdx.currentState;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.DungeonEnum;
 import com.mygdx.model.location.Dungeon;
 import com.mygdx.model.location.DungeonFloor;
@@ -12,7 +13,6 @@ public class DungeonInfo {
 	private DungeonEnum.ForwardAngle currentForwardAngle;
 	private DungeonEnum.Direction currentDirection;
 	private int currentDoorSize;
-	private boolean currentMinimapInfo[][];
 	private int startDungeonRoomIndex;
 
 	public DungeonEnum.Direction getCurrentDirection() {
@@ -20,12 +20,6 @@ public class DungeonInfo {
 	}
 	public void setCurrentDirection(DungeonEnum.Direction currentDirection) {
 		this.currentDirection = currentDirection;
-	}
-	public boolean[][] getCurrentMinimapInfo() {
-		return currentMinimapInfo;
-	}
-	public void setCurrentMinimapInfo(boolean currentMinimapInfo[][]) {
-		this.currentMinimapInfo = currentMinimapInfo;
 	}
 	public Dungeon getCurrentDungeon() {
 		return currentDungeon;
@@ -43,6 +37,7 @@ public class DungeonInfo {
 		return currentRoom;
 	}
 	public void setCurrentRoom(DungeonRoom currentRoom) {
+		Gdx.app.log("DungeonInfo", "CurrentDungeonRoomInfo - " + currentRoom.getRoomLabel());
 		this.currentRoom = currentRoom;
 	}
 	public int getStartDungeonRoomIndex() {

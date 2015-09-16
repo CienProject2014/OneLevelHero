@@ -1311,6 +1311,10 @@ monster_griffon: {
 	class: java.lang.String,
 	value: texture/monster/monster_griffon.png/
 },
+bg_devil_castle_up: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_up.png/
+},
 battle_clam_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_clam_small.png/
@@ -2271,6 +2275,10 @@ battle_elementalfire_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_elementalfire_small.png/
 },
+bg_devil_castle_down: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_down.png/
+},
 bust_lilis_succubus_01: {
 	class: java.lang.String,
 	value: texture/character/bust_lilis_succubus_01.png/
@@ -2398,6 +2406,10 @@ battleui_turntable_02: {
 bust_nepel_young_01: {
 	class: java.lang.String,
 	value: texture/character/bust_nepel_young_01.png/
+},
+bg_devil_castle_gate: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_gate.png/
 },
 bust_nepel_young_02: {
 	class: java.lang.String,

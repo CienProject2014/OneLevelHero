@@ -1311,6 +1311,10 @@ monster_griffon: {
 	class: java.lang.String,
 	value: texture/monster/monster_griffon.png/
 },
+bg_devil_castle_up: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_up.png/
+},
 battle_clam_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_clam_small.png/
@@ -2191,6 +2195,10 @@ bg_devil_castle_02: {
 	class: java.lang.String,
 	value: texture/background/bg_devil_castle_02.png/
 },
+bg_devil_castle_01: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_01.png/
+},
 monster_lamia_soldier: {
 	class: java.lang.String,
 	value: texture/monster/monster_lamia_soldier.png/
@@ -2270,6 +2278,10 @@ status_parath: {
 battle_elementalfire_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_elementalfire_small.png/
+},
+bg_devil_castle_down: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_down.png/
 },
 bust_lilis_succubus_01: {
 	class: java.lang.String,
@@ -2406,6 +2418,10 @@ battle_rafflesia_big: {
 bust_nepel_young_02: {
 	class: java.lang.String,
 	value: texture/character/bust_nepel_young_02.png/
+},
+bg_devil_castle_gate: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_gate.png/
 },
 bust_daimeast_06: {
 	class: java.lang.String,
