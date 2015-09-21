@@ -4,11 +4,11 @@
     "villageDirection": "up_down",
     "nodePath": "blackwood",
     "sceneName": "blackwood_scene",
-    "arrowDirection" : {
-    	"2to1" : "up",
-    	"5to1" : "up",
-    	"17to1" : "down",
-    	"16to1" : "down"
+    "arrowDirection": {
+      "2to1": "up",
+      "5to1": "up",
+      "17to1": "down",
+      "16to1": "down"
     },
     "building": {
       "blackwood_headhouse": {
@@ -16,7 +16,12 @@
         "buildingType": "house",
         "subNodePath": "blackwood_headhouse",
         "isOverlapScene": true,
+        "outerPath": "blackwood_03",
         "sceneName": "blackwood_headhouse_scene",
+        "targetTime": {
+          "startHour": 6,
+          "endHour": 22
+        },
         "buildingNpc": [
           "waiji"
         ],
@@ -25,9 +30,13 @@
         ]
       },
       "blackwood_grocery": {
-        "subNodeName": "잡화점",
+        "subNodeName": "블랙우드 잡화점",
         "buildingType": "house",
+        "outerPath": "blackwood_02",
         "subNodePath": "blackwood_grocery",
+        "buildingNpc": [
+          "blackwood_grocery_owner"
+        ],
         "targetTime": {
           "startHour": 9,
           "endHour": 21
@@ -44,41 +53,62 @@
         "gameObject": [
           "save",
           "rest"
-        ]
+        ],
+        "buildingNpc": [
+          "blackwood_inn_orner"
+        ],
       },
-      "blackwood_peasanthouse": {
-        "subNodeName": "민가",
+      "blackwood_house": {
+        "subNodeName": "블랙우드 민가",
         "buildingType": "house",
-        "subNodePath": "blackwood_peasanthouse",
+        "outerPath": "blackwood_03",
+        "subNodePath": "blackwood_house",
         "targetTime": {
           "startHour": 8,
           "endHour": 22
-        }
+        },
+        "buildingNpc": [
+          "blackwood_resident"
+        ],
+        "gameObject": [
+          "blackwood_jar"
+        ]
       }
     }
   },
   "cobweb": {
     "nodeName": "콥웨브",
-    "nodePath" : "cobweb",
+    "nodePath": "cobweb",
     "villageDirection": "up_down",
     "sceneName": "cobweb_scene",
-    "arrowDirection" : {
-    	"1to2" : "down",
-    	"7to2" : "down",
-    	"13to2" : "up",
-    	"5to2" : "up"
+    "arrowDirection": {
+      "1to2": "down",
+      "7to2": "down",
+      "13to2": "up",
+      "5to2": "up"
     },
     "building": {
       "cobweb_library": {
-        "subNodeName": "대도서관",
+        "subNodeName": "콥웨브 대도서관",
         "buildingType": "house",
+        "outerPath": "cobweb_02",
         "subNodePath": "cobweb_library",
         "isOverlapScene": true,
-        "sceneName": "cobweb_library_scene"
+        "sceneName": "cobweb_library_scene",
+        "targetTime": {
+          "startHour": 6,
+          "endHour": 22
+        },
+        "buildingNpc": [
+          "aimee"
+        ],
+        "gameObject": [
+        ]
       },
       "cobweb_villagehall": {
-        "subNodeName": "마을회관",
+        "subNodeName": "콥웨브 마을회관",
         "buildingType": "house",
+        "outerPath": "cobweb_02",
         "subNodePath": "cobweb_villagehall",
         "targetTime": {
           "startHour": 6,
@@ -97,6 +127,7 @@
       "cobweb_store1": {
         "subNodeName": "상점1",
         "buildingType": "house",
+        "outerPath": "cobweb_03",
         "subNodePath": "cobweb_store1",
         "targetTime": {
           "startHour": 6,
@@ -106,6 +137,7 @@
       "cobweb_store2": {
         "subNodeName": "상점2",
         "buildingType": "house",
+        "outerPath": "cobweb_03",
         "subNodePath": "cobweb_store2",
         "targetTime": {
           "startHour": 6,
@@ -126,23 +158,25 @@
       "cobweb_cathedral": {
         "subNodeName": "대성당",
         "buildingType": "house",
+        "outerPath": "cobweb_03",
         "subNodePath": "cobweb_cathedral"
       }
     }
   },
   "oberon": {
-  	"nodePath" : "oberon",
+    "nodePath": "oberon",
     "nodeName": "오베론",
     "villageDirection": "up_down",
     "sceneName": "oberon_scene",
-    "arrowDirection" : {
-    	"20to3" : "down",
-    	"10to3" : "up"
+    "arrowDirection": {
+      "20to3": "down",
+      "10to3": "up"
     },
     "building": {
       "oberon_house01": {
         "subNodeName": "오베론 민가",
         "buildingType": "house",
+        "outerPath": "oberon_02",
         "subNodePath": "oberon_house01",
         "targetTime": {
           "startHour": 7,
@@ -152,6 +186,7 @@
       "oberon_house02": {
         "subNodeName": "오베론 민가",
         "buildingType": "house",
+        "outerPath": "oberon_03",
         "subNodePath": "oberon_house02",
         "targetTime": {
           "startHour": 7,
@@ -161,7 +196,8 @@
       "oberon_inn": {
         "subNodeName": "오베론 여관",
         "buildingType": "inn",
-        "subNodePath": "blackwood_inn",
+        "subNodePath" : "oberon_inn",
+        "backgroundPath": "blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -183,18 +219,19 @@
     }
   },
   "kadilla_castle": {
-  	"nodePath" : "kadilla_castle",
+    "nodePath": "kadilla_castle",
     "nodeName": "카딜라 성",
     "villageDirection": "up_down",
     "sceneName": "kadilla_castle_scene",
-    "arrowDirection" : {
-    	"3to10" : "up",
-    	"21to10" : "down"
+    "arrowDirection": {
+      "3to10": "up",
+      "21to10": "down"
     },
     "building": {
       "kadilla_castle_school": {
         "subNodeName": "마법 대학",
         "buildingType": "house",
+        "outerPath": "kadilla_castle_03",
         "subNodePath": "kadilla_castle_school",
         "targetTime": {
           "startHour": 9,
@@ -205,6 +242,7 @@
         "subNodeName": "공작의 성",
         "buildingType": "house",
         "subNodePath": "kadilla_castle_duke_castle",
+        "outerPath": "kadilla_castle_02",
         "targetTime": {
           "startHour": 9,
           "endHour": 21
@@ -213,8 +251,10 @@
       "kadilla_castle_inn": {
         "subNodeName": "카딜라 여관",
         "buildingType": "inn",
-        "subNodePath": "blackwood_inn",
-         "buildingNpc": [
+        "subNodePath": "kadilla_castle_inn",
+        "backgroundPath" : "blackwood_inn",
+        "outerPath": "kadilla_castle_02",
+        "buildingNpc": [
           "mea"
         ],
         "targetTime": {
@@ -229,6 +269,7 @@
       "kadilla_castle_grocery": {
         "subNodeName": "잡화점",
         "buildingType": "house",
+        "outerPath": "kadilla_castle_02",
         "subNodePath": "kadilla_castle_grocery",
         "targetTime": {
           "startHour": 8,
@@ -238,6 +279,7 @@
       "kadilla_castle_smithy": {
         "subNodeName": "대장간",
         "buildingType": "house",
+        "outerPath": "kadilla_castle_02",
         "subNodePath": "cobweb_smithy",
         "targetTime": {
           "startHour": 8,
@@ -247,7 +289,9 @@
       "kadilla_castle_clothing_store": {
         "subNodeName": "옷가게",
         "buildingType": "house",
-        "subNodePath": "cobweb_clothingstore",
+        "outerPath": "kadilla_castle_03",
+        "backgroundPath" : "cobweb_clothingstore",
+        "subNodePath": "kadilla_castle_clothing_store",
         "targetTime": {
           "startHour": 8,
           "endHour": 22
@@ -263,7 +307,7 @@
         },
         "buildingNpc": [
           "plecha"
-        ],
+        ]
       },
       "kadilla_castle_guard_office": {
         "subNodeName": "경비실",
@@ -277,12 +321,12 @@
     }
   },
   "winterfall": {
-    "nodePath" : "winterfall",
+    "nodePath": "winterfall",
     "nodeName": "윈터폴",
     "villageDirection": "center",
     "sceneName": "winterfall_scene",
-    "arrowDirection" : {
-    	"13to8" : "center"
+    "arrowDirection": {
+      "13to8": "center"
     },
     "building": {
       "winterfall_dome": {
@@ -297,7 +341,8 @@
       "winterfall_inn": {
         "subNodeName": "부서진 여관",
         "buildingType": "inn",
-        "subNodePath": "blackwood_inn",
+        "backgroundPath" : "blackwood_inn",
+        "subNodePath": "winterfall_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -310,7 +355,8 @@
       "winterfall_grocery": {
         "subNodeName": "식료품점",
         "buildingType": "house",
-        "subNodePath": "blackwood_grocery",
+        "backgroundPath" : "blackwood_grocery",
+        "subNodePath": "winterfall_grocery",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -319,7 +365,8 @@
       "winterfall_peasanthouse01": {
         "subNodeName": "허름한 민가",
         "buildingType": "house",
-        "subNodePath": "blackwood_peasanthouse",
+        "backgroundPath" : "blackwood_peasanthouse",
+        "subNodePath": "winterfall_peasanthouse01",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -328,7 +375,8 @@
       "winterfall_peasanthouse02": {
         "subNodeName": "폐허가 된 민가",
         "buildingType": "house",
-        "subNodePath": "blackwood_peasanthouse",
+        "subNodePath": "winterfall_peasanthouse02",
+        "backgroundPath" : "blackwood_peasanthouse",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -337,18 +385,19 @@
     }
   },
   "redrose_castle": {
-  	"nodePath" : "redrose_castle",
+    "nodePath": "redrose_castle",
     "nodeName": "레드로즈 성",
     "villageDirection": "left_right",
     "sceneName": "redrose_castle_scene",
-    "arrowDirection" : {
-    	"2to7" : "left",
-    	"22to7" : "left"
+    "arrowDirection": {
+      "2to7": "left",
+      "22to7": "left"
     },
     "building": {
       "redrose_castle_peasanthouse01": {
         "subNodeName": "레드로즈 민가",
         "buildingType": "house",
+        "outerPath": "redrose_castle_02",
         "subNodePath": "redrose_castle_peasanthouse01",
         "targetTime": {
           "startHour": 7,
@@ -358,6 +407,7 @@
       "redrose_castle_peasanthouse02": {
         "subNodeName": "레드로즈 민가",
         "buildingType": "house",
+        "outerPath": "redrose_castle_03",
         "subNodePath": "redrose_castle_peasanthouse02",
         "targetTime": {
           "startHour": 7,
@@ -367,7 +417,8 @@
       "redrose_castle_inn": {
         "subNodeName": "레드로즈 여관",
         "buildingType": "inn",
-        "subNodePath": "blackwood_inn",
+        "backgroundPath" : "blackwood_inn",
+        "subNodePath": "redrose_castle_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -377,36 +428,39 @@
           "rest"
         ]
       },
-      "redrose_castle_cathedral" : {
-      	"subNodeName" : "레드로즈 대성당",
-      	"buildingType" : "house",
-      	"subNodePath" : "redrose_castle_cathedral",
-      	"targetTime" : {
-      		"startHour" : 5,
-      		"endHour" : 21
-      	}
+      "redrose_castle_cathedral": {
+        "subNodeName": "레드로즈 대성당",
+        "buildingType": "house",
+        "outerPath": "redrose_castle_03",
+        "subNodePath": "redrose_castle_cathedral",
+        "targetTime": {
+          "startHour": 5,
+          "endHour": 21
+        }
       },
       "redrose_castle_castle": {
         "subNodeName": "레드로즈 성",
         "buildingType": "house",
+        "outerPath": "redrose_castle_03",
         "subNodePath": "redrose_castle_castle"
       }
     }
   },
   "mirage_port": {
-  	"nodePath" : "mirage_port",
+    "nodePath": "mirage_port",
     "nodeName": "미라지 포트",
     "villageDirection": "up_down",
     "sceneName": "mirage_port_scene",
-    "arrowDirection" : {
-    	"4to9" : "down",
-    	"24to9" : "up"
+    "arrowDirection": {
+      "4to9": "down",
+      "24to9": "up"
     },
     "building": {
       "mirage_port_inn": {
         "subNodeName": "미라지 포트 여관",
         "buildingType": "inn",
-        "subNodePath": "blackwood_inn",
+        "backgroundPath" : "blackwood_inn",
+        "subNodePath": "mirage_port_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -419,6 +473,7 @@
       "mirage_port_hermes": {
         "subNodeName": "헤르메스 상회",
         "buildingType": "house",
+        "outerPath": "mirage_port_02",
         "subNodePath": "mirage_port_hermesguild",
         "targetTime": {
           "startHour": 9,
@@ -428,6 +483,7 @@
       "mirage_port_kaido": {
         "subNodeName": "카이도 상회",
         "buildingType": "house",
+        "outerPath": "mirage_port_03",
         "subNodePath": "mirage_port_kaidoguild",
         "targetTime": {
           "startHour": 9,
@@ -446,7 +502,9 @@
       "mirage_port_dock": {
         "subNodeName": "선착장",
         "buildingType": "house",
-        "subNodePath": "bonichea_dock",
+        "outerPath": "mirage_port_03",
+        "backgroundPath" : "bonichea_dock",
+        "subNodePath": "mirage_port_dock",
         "targetTime": {
           "startHour": 5,
           "endHour": 24
@@ -455,14 +513,14 @@
     }
   },
   "middle_ridge": {
-  	"nodePath" : "middle_ridge",
+    "nodePath": "middle_ridge",
     "nodeName": "미들 릿지",
     "villageDirection": "left_right",
     "sceneName": "middle_ridge_scene",
-    "arrowDirection" : {
-    	"1to5" : "left",
-    	"2to5" : "left",
-    	"6to5" : "right"
+    "arrowDirection": {
+      "1to5": "left",
+      "2to5": "left",
+      "6to5": "right"
     },
     "building": {
       "middle_ridge_temple": {
@@ -477,7 +535,9 @@
       "middle_ridge_evergnailhouse": {
         "subNodeName": "에버네그일가",
         "buildingType": "house",
-        "subNodePath": "blackwood_peasanthouse",
+        "outerPath": "middle_ridge_02",
+        "backgroundPath" : "blackwood_peasanthouse",
+        "subNodePath" : "middle_ridge_evergnailhouse",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
@@ -486,7 +546,9 @@
       "middle_ridge_willas": {
         "subNodeName": "윌라스가",
         "buildingType": "house",
-        "subNodePath": "blackwood_peasanthouse",
+        "outerPath": "middle_ridge_02",
+        "backgroundPath" : "blackwood_peasanthouse",
+        "subNodePath": "middle_ridge_willas",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
@@ -495,7 +557,8 @@
       "middle_ridge_inn": {
         "subNodeName": "미들릿지 여관",
         "buildingType": "inn",
-        "subNodePath": "blackwood_inn",
+        "backgroundPath" : "blackwood_inn",
+        "subNodePath": "middle_ridge_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -508,11 +571,15 @@
       "middle_ridge_whisternhouse": {
         "subNodeName": "휘스턴가",
         "buildingType": "house",
-        "subNodePath": "blackwood_peasanthouse",
+        "outerPath": "middle_ridge_03",
+        "subNodePath": "middle_ridge_whisternhouse",
         "targetTime": {
-          "startHour": 0,
-          "endHour": 24
-        }
+          "startHour": 6,
+          "endHour": 22
+        },
+        "buildingNpc": [
+          "kein"
+        ],
       },
       "middle_ridge_training_area": {
         "subNodeName": "수련장소",
@@ -535,18 +602,19 @@
     }
   },
   "vaical_castle": {
-  	"nodePath" : "vaical_castle",
+    "nodePath": "vaical_castle",
     "nodeName": "바이칼 성",
     "villageDirection": "up_down",
     "sceneName": "vaical_castle_scene",
-    "arrowDirection" : {
-    	"18to6" : "up",
-    	"5to6" : "down"
+    "arrowDirection": {
+      "18to6": "up",
+      "5to6": "down"
     },
     "building": {
       "vaical_castle_lab": {
         "subNodeName": "저주연구소",
         "buildingType": "house",
+        "outerPath": "vaical_castle_02",
         "subNodePath": "vaical_castle_lab",
         "targetTime": {
           "startHour": 0,
@@ -556,6 +624,7 @@
       "vaical_castle_headhouse": {
         "subNodeName": "장로의 집",
         "buildingType": "house",
+        "outerPath": "vaical_castle_02",
         "subNodePath": "vaical_castle_headhouse",
         "targetTime": {
           "startHour": 7,
@@ -565,6 +634,7 @@
       "vaical_castle_colosseum": {
         "subNodeName": "콜로세움",
         "buildingType": "house",
+        "outerPath": "vaical_castle_03",
         "subNodePath": "vaical_castle_colosseum",
         "targetTime": {
           "startHour": 0,
@@ -574,18 +644,19 @@
     }
   },
   "southcape": {
-  	"nodePath" : "southcape",
+    "nodePath": "southcape",
     "nodeName": "사우스케이프",
     "villageDirection": "left_right",
     "sceneName": "southcape_scene",
-     "arrowDirection" : {
-    	"23to4" : "left",
-    	"9to4" : "right"
+    "arrowDirection": {
+      "23to4": "left",
+      "9to4": "right"
     },
     "building": {
       "southcape_headhouse": {
         "subNodeName": "촌장집",
         "buildingType": "house",
+        "outerPath": "southcape_02",
         "subNodePath": "southcape_headhouse",
         "targetTime": {
           "startHour": 6,
@@ -595,6 +666,7 @@
       "southcape_bar": {
         "subNodeName": "주점",
         "buildingType": "house",
+        "outerPath": "southcape_03",
         "subNodePath": "southcape_bar",
         "targetTime": {
           "startHour": 16,
@@ -604,7 +676,8 @@
       "southcape_inn": {
         "subNodeName": "사우스케이프 여관",
         "buildingType": "inn",
-        "subNodePath": "blackwood_inn",
+        "backgroundPath" : "blackwood_inn",
+        "subNodePath": "southcape_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -617,7 +690,9 @@
       "southcape_grocery": {
         "subNodeName": "잡화점",
         "buildingType": "house",
-        "subNodePath": "blackwood_grocery",
+        "outerPath": "southcape_02",
+        "backgroundPath" : "blackwood_grocery",
+        "subNodePath": "southcape_grocery",
         "targetTime": {
           "startHour": 10,
           "endHour": 22
@@ -626,7 +701,9 @@
       "southcape_smithy": {
         "subNodeName": "대장간",
         "buildingType": "house",
-        "subNodePath": "cobweb_smithy",
+        "outerPath": "southcape_03",
+        "backgroundPath" : "cobweb_smithy",
+        "subNodePath": "southcape_smithy",
         "targetTime": {
           "startHour": 10,
           "endHour": 22
@@ -635,6 +712,7 @@
       "southcape_peasanthouse01": {
         "subNodeName": "민가1",
         "buildingType": "house",
+        "outerPath": "southcape_02",
         "subNodePath": "southcape_peasanthouse01",
         "targetTime": {
           "startHour": 6,
@@ -644,6 +722,7 @@
       "southcape_peasanthouse02": {
         "subNodeName": "민가2",
         "buildingType": "house",
+        "outerPath": "southcape_02",
         "subNodePath": "southcape_peasanthouse02",
         "targetTime": {
           "startHour": 6,
@@ -653,6 +732,7 @@
       "southcape_peasanthouse03": {
         "subNodeName": "민가3",
         "buildingType": "house",
+        "outerPath": "southcape_03",
         "subNodePath": "southcape_peasanthouse03",
         "targetTime": {
           "startHour": 6,
@@ -662,6 +742,7 @@
       "southcape_peasanthouse04": {
         "subNodeName": "민가4",
         "buildingType": "house",
+        "outerPath": "southcape_03",
         "subNodePath": "southcape_peasanthouse04",
         "targetTime": {
           "startHour": 6,
@@ -671,6 +752,7 @@
       "southcape_peasanthouse05": {
         "subNodeName": "민가5",
         "buildingType": "house",
+        "outerPath": "southcape_03",
         "subNodePath": "southcape_peasanthouse05",
         "targetTime": {
           "startHour": 6,
@@ -680,6 +762,7 @@
       "southcape_peasanthouse06": {
         "subNodeName": "민가6",
         "buildingType": "house",
+        "outerPath": "southcape_03",
         "subNodePath": "southcape_peasanthouse06",
         "targetTime": {
           "startHour": 6,

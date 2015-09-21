@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.event.EventParameters;
 
-public class MoveNodeSectionChecker implements NextSectionChecker {
+public class MoveNodeChecker implements NextSectionChecker {
 	@Autowired
 	private TimeManager timeManager;
 

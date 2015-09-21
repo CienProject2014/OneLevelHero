@@ -11,11 +11,13 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.location.DungeonEntrance;
 import com.mygdx.model.location.Fork;
 import com.mygdx.model.location.Village;
@@ -26,6 +28,8 @@ public class WorldMapStage extends BaseOverlapStage {
 	public static final String SCENE_NAME = "worldmap_scene";
 	@Autowired
 	private PositionManager positionManager;
+	@Autowired
+	private StorySectionManager storySectionManager;
 	@Autowired
 	private NodeAssets nodeAssets;
 	@Autowired
@@ -93,8 +97,10 @@ public class WorldMapStage extends BaseOverlapStage {
 						boolean randomBoolean = random.nextBoolean();
 						if (randomBoolean) {
 							movingManager.goToNode("elven_forest_east");
+							storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, "elven_forest_east");
 						} else {
 							movingManager.goToNode("elven_forest_west");
+							storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, "elven_forest_west");
 						}
 					}
 				});
@@ -108,8 +114,12 @@ public class WorldMapStage extends BaseOverlapStage {
 						boolean randomBoolean = random.nextBoolean();
 						if (randomBoolean) {
 							movingManager.goToNode("crystallized_valley_south");
+							storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE,
+									"crystallized_valley_south");
 						} else {
 							movingManager.goToNode("crystallized_valley_north");
+							storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE,
+									"crystallized_valley_north");
 						}
 					}
 				});
@@ -120,6 +130,7 @@ public class WorldMapStage extends BaseOverlapStage {
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 						positionManager.setInWorldMap(false);
 						movingManager.goToNode(nodePath);
+						storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, nodePath);
 					}
 				});
 			}
@@ -134,13 +145,14 @@ public class WorldMapStage extends BaseOverlapStage {
 		Map<String, Village> villageMap = nodeAssets.getVillageMap();
 		Iterator<Entry<String, Village>> villageMapIterator = villageMap.entrySet().iterator();
 		while (villageMapIterator.hasNext()) {
-			final String nodeName = villageMapIterator.next().getKey();
-			ImageItem nodeButton = sceneLoader.getRoot().getImageById(nodeName);
+			final String nodePath = villageMapIterator.next().getKey();
+			ImageItem nodeButton = sceneLoader.getRoot().getImageById(nodePath);
 			nodeButton.addListener(new SimpleTouchListener() {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					positionManager.setInWorldMap(false);
-					movingManager.goToNode(nodeName);
+					movingManager.goToNode(nodePath);
+					storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, nodePath);
 				}
 			});
 		}
@@ -150,13 +162,14 @@ public class WorldMapStage extends BaseOverlapStage {
 		Map<String, Fork> forkMap = nodeAssets.getForkMap();
 		Iterator<Entry<String, Fork>> forkMapIterator = forkMap.entrySet().iterator();
 		while (forkMapIterator.hasNext()) {
-			final String nodeName = forkMapIterator.next().getKey();
-			ImageItem nodeButton = sceneLoader.getRoot().getImageById(nodeName);
+			final String nodePath = forkMapIterator.next().getKey();
+			ImageItem nodeButton = sceneLoader.getRoot().getImageById(nodePath);
 			nodeButton.addListener(new SimpleTouchListener() {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					positionManager.setInWorldMap(false);
-					movingManager.goToNode(nodeName);
+					movingManager.goToNode(nodePath);
+					storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, nodePath);
 				}
 			});
 		}

@@ -88,9 +88,9 @@ public class DungeonStage extends BaseOneLevelStage {
 	}
 	private void setInitialDungeonInfo(DungeonManager dungeonManager) {
 		if (positionManager.getCurrentSubNodePath() != null) {
-			dungeonManager.setInitialDungeonInfo(positionManager.getCurrentSubNodePath());
+			dungeonManager.setDungeonInfo(positionManager.getCurrentSubNodePath());
 		} else {
-			dungeonManager.setInitialDungeonInfo("devil_castle");
+			dungeonManager.setDungeonInfo("devil_castle");
 		}
 	}
 

@@ -7,7 +7,7 @@ import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.event.EventParameters;
 
-public class JoinPartyEventTrigger implements EventTrigger {
+public class QuitPartyEventTrigger implements EventTrigger {
 	@Autowired
 	private PartyManager partyManager;
 	@Autowired
@@ -17,7 +17,6 @@ public class JoinPartyEventTrigger implements EventTrigger {
 
 	@Override
 	public void triggerEvent(EventParameters eventParameter) {
-		partyManager.addHero(eventManager.getHeroMap().get(eventParameter.getUnit().getHeroName()));
-		storySectionManager.runStorySequence();
+		partyManager.removeHero(eventManager.getHeroMap().get(eventParameter.getUnit().getHeroName()));
 	}
 }

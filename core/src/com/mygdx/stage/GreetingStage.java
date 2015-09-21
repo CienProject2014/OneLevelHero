@@ -51,7 +51,6 @@ public class GreetingStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		setUiConstantsMap(constantsAssets.getUiConstants("EventStage"));
-
 		setScene();
 		return this;
 	}
@@ -61,7 +60,7 @@ public class GreetingStage extends BaseOneLevelStage {
 		WorldNodeEnum.NodeType nodeType = worldMapAssets.getNodeType(positionManager.getCurrentNodePath());
 		SubNode subNodeInfo = nodeAssets.getSubNodeInfo(nodeType, positionManager.getCurrentNodePath(),
 				positionManager.getCurrentSubNodePath());
-		EventElement eventElement = eventManager.getCurrentEventElement();
+		EventElement eventElement = eventManager.getCurrentNpc();
 		setScript(eventElement, greetingMessageList);
 		makeChatTable(eventElement, subNodeInfo);
 	}

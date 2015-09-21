@@ -199,13 +199,17 @@
 	<bean id="passTimeEventTrigger" class="com.mygdx.eventTrigger.PassTimeEventTrigger"/>
 	<bean id="playMusicEventTrigger" class="com.mygdx.eventTrigger.PlayMusicEventTrigger"/>
 	<bean id="playSoundEventTrigger" class="com.mygdx.eventTrigger.PlaySoundEventTrigger"/>
+	<bean id="quitPartyEventTrigger" class="com.mygdx.eventTrigger.QuitPartyEventTrigger"/>
 	<bean id="setSubNodeTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetSubNodeTargetTimeEventTrigger"/>
 	<bean id="startBattleEventTrigger" class="com.mygdx.eventTrigger.StartBattleEventTrigger"/>
 	
 	<bean id="battleCommandChecker" class="com.mygdx.nextSectionChecker.BattleCommandChecker"/>
-	<bean id="battleEndSectionChecker" class="com.mygdx.nextSectionChecker.BattleEndSectionChecker"/>
-	<bean id="choiceOptionSectionChecker" class="com.mygdx.nextSectionChecker.ChoiceOptionSectionChecker"/>
-	<bean id="moveNodeSectionChecker" class="com.mygdx.nextSectionChecker.MoveNodeSectionChecker"/>
-	<bean id="moveFieldSectionChecker" class="com.mygdx.nextSectionChecker.MoveFieldSectionChecker"/>
-	<bean id="moveSubNodeSectionChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeSectionChecker"/>
+	<bean id="battleEndChecker" class="com.mygdx.nextSectionChecker.BattleEndChecker"/>
+	<bean id="choiceOptionChecker" class="com.mygdx.nextSectionChecker.ChoiceOptionChecker"/>
+	<bean id="moveDungeonRoomInTargetTimeChecker" class="com.mygdx.nextSectionChecker.MoveDungeonRoomInTargetTimeChecker"/>
+	<bean id="moveNodeChecker" class="com.mygdx.nextSectionChecker.MoveNodeChecker"/>
+	<bean id="moveFieldChecker" class="com.mygdx.nextSectionChecker.MoveFieldChecker"/>
+	<bean id="moveSubNodeAfterAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeAfterAbsoluteTimeChecker"/>
+	<bean id="moveSubNodeBeforeAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeBeforeAbsoluteTimeChecker"/>
+	<bean id="moveSubNodeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeChecker"/>
 </beans>

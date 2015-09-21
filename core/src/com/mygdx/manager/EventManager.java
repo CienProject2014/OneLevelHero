@@ -1,5 +1,6 @@
 package com.mygdx.manager;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,11 @@ import com.mygdx.factory.StageFactory;
 import com.mygdx.model.event.Event;
 import com.mygdx.model.event.EventElement;
 import com.mygdx.model.event.EventPacket;
+import com.mygdx.model.event.EventScene;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.event.NPC;
 import com.mygdx.model.location.Building;
+import com.mygdx.model.unit.Hero;
 
 /**
  * CHAT, SELECT 등의 이벤트정보를 세팅해주는 클래스 CHAT 이벤트의 경우 Iterator를 돌려서 EventScene을
@@ -101,6 +104,7 @@ public class EventManager {
 
 	public void setCurrentNpc(String npcName) {
 		NPC npc = eventInfo.getNpcMap().get(npcName);
+		eventInfo.setCurrentEventElementType(EventElementEnum.NPC);
 		eventInfo.setCurrentNpc(npc);
 	}
 
@@ -109,6 +113,7 @@ public class EventManager {
 	}
 
 	public void setCurrentGameObject(GameObject gameObject) {
+		eventInfo.setCurrentEventElementType(EventElementEnum.GAME_OBJECT);
 		eventInfo.setCurrentGameObject(gameObject);
 	}
 
@@ -195,5 +200,21 @@ public class EventManager {
 
 	public void setMainStoryMap(Map<String, NPC> mainStoryMap) {
 		eventInfo.setMainStoryMap(mainStoryMap);
+	}
+
+	public void setCurrentChatScenes(ArrayList<EventScene> eventScenes) {
+		eventInfo.setCurrentEventScenes(eventScenes);
+	}
+
+	public ArrayList<EventScene> getCurrentChatScenes() {
+		return eventInfo.getCurrentEventScenes();
+	}
+
+	public void setHeroMap(Map<String, Hero> heroMap) {
+		eventInfo.setHeroMap(heroMap);
+	}
+
+	public Map<String, Hero> getHeroMap() {
+		return eventInfo.getHeroMap();
 	}
 }

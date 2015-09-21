@@ -1,5 +1,7 @@
 package com.mygdx.model.eventParameter;
 
+import com.mygdx.manager.TimeManager;
+
 public class TimeParameter extends Parameter {
 	private int day;
 	private int hour;
@@ -10,6 +12,9 @@ public class TimeParameter extends Parameter {
 
 	}
 
+	public int getTimeConvertedByMinute() {
+		return (day * TimeManager.MINUTES_PER_DAY) + (hour * TimeManager.MINUTES_PER_HOUR) + minute;
+	}
 	public TimeParameter(int day, int hour, int minute) {
 		this.day = day;
 		this.hour = hour;

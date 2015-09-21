@@ -2,16 +2,13 @@ package com.mygdx.nextSectionChecker;
 
 import com.mygdx.model.event.EventParameters;
 
-public class ChoiceOptionSectionChecker implements NextSectionChecker {
+public class MoveFieldChecker implements NextSectionChecker {
 
 	@Override
 	public boolean checkNextEvent(EventParameters eventParameter, String... args) {
 		if (args.length > 0) {
-			String targetOption = eventParameter.getTargetComponent();
-			if (ArgumentChecker.checkIsSame(targetOption, args[0])) {
-				return true;
-			}
-			return false;
+			String arrowName = eventParameter.getLocation().getArrowName();
+			return ArgumentChecker.checkIsSame(arrowName, args[0]);
 		} else {
 			return false;
 		}

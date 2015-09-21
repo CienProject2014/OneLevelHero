@@ -31,6 +31,7 @@ public class GoSubNodeEventTrigger implements EventTrigger {
 			positionManager.setCurrentSubNodePath(buildingInfo.getSubNodePath());
 			screenFactory.show(ScreenEnum.BUILDING);
 		} else {
+			eventManager.setCurrentChatScenes(eventParameter.getEventScenes());
 			screenFactory.show(ScreenEnum.CHAT_EVENT);
 		}
 	}

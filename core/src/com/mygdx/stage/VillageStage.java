@@ -222,8 +222,8 @@ public class VillageStage extends BaseOverlapStage {
 				CompositeItem buildingButton = sceneLoader.getRoot().getCompositeById(building.getKey());
 				buildingButton.setTouchable(Touchable.enabled);
 				BuildingButtonListener buildingButtonListener = listenerFactory.getBuildingButtonListener();
-				buildingButtonListener.setNodeName(villageInfo.getNodePath());
-				buildingButtonListener.setBuildingName(building.getKey());
+				buildingButtonListener.setNodePath(villageInfo.getNodePath());
+				buildingButtonListener.setBuildingPath(building.getKey());
 				buildingButtonListener.setBuildingInfo(building.getValue());
 				buildingButton.addListener(buildingButtonListener);
 			}

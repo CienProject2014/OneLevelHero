@@ -2,7 +2,7 @@ package com.mygdx.nextSectionChecker;
 
 import com.mygdx.model.event.EventParameters;
 
-public class MoveSubNodeSectionChecker implements NextSectionChecker {
+public class MoveSubNodeChecker implements NextSectionChecker {
 
 	@Override
 	public boolean checkNextEvent(EventParameters eventParameter, String... args) {

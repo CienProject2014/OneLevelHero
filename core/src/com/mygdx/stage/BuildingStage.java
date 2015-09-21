@@ -166,8 +166,14 @@ public class BuildingStage extends BaseOverlapStage {
 		Table backgroundTable = new Table();
 		backgroundTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
 		backgroundTable.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
-		TextureRegionDrawable backgroundImage = new TextureRegionDrawable(new TextureRegion(
-				textureManager.getBackgroundTexture(buildingInfo.getSubNodePath())));
+		TextureRegionDrawable backgroundImage;
+		if (buildingInfo.getBackgroundPath() != null) {
+			backgroundImage = new TextureRegionDrawable(new TextureRegion(
+					textureManager.getBackgroundTexture(buildingInfo.getBackgroundPath())));
+		} else {
+			backgroundImage = new TextureRegionDrawable(new TextureRegion(
+					textureManager.getBackgroundTexture(buildingInfo.getSubNodePath())));
+		}
 		backgroundTable.setBackground(backgroundImage);
 		addActor(backgroundTable);
 	}

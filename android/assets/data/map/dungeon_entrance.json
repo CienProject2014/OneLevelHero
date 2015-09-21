@@ -6,11 +6,13 @@
   },
   "crystallized_valley_north": {
     "nodeName": "수정 협곡 북쪽 입구",
-    "nodePath": "crystallized_valley"
+    "nodePath": "crystallized_valley",
+    "startDungeonRoomIndex" : 17
   },
   "crystallized_valley_south": {
     "nodeName": "수정 협곡 남쪽 입구",
-    "nodePath": "crystallized_valley"
+    "nodePath": "crystallized_valley",
+    "startDungeonRoomIndex" : 0
   },
   "elven_forest_east": {
     "nodeName": "엘프의 숲 동쪽 입구",

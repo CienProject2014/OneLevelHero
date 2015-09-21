@@ -1,14 +1,17 @@
 package com.mygdx.currentState;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.mygdx.enums.EventElementEnum;
 import com.mygdx.model.event.Event;
 import com.mygdx.model.event.EventPacket;
+import com.mygdx.model.event.EventScene;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.event.NPC;
 import com.mygdx.model.event.Quest;
 import com.mygdx.model.location.Building;
+import com.mygdx.model.unit.Hero;
 
 /**
  * npc정보, eventNumber, greeting여부 정보를 갖고있음
@@ -19,10 +22,12 @@ import com.mygdx.model.location.Building;
 
 public class EventInfo {
 	private Map<String, NPC> npcMap;
+	private Map<String, Hero> heroMap;
 	private Map<String, GameObject> gameObjectMap;
 	private Map<String, Quest> questMap;
 	private Map<String, NPC> mainStoryMap;
 	private EventElementEnum currentEventElementType;
+	private ArrayList<EventScene> currentEventScenes;
 	private Event currentStoryEvent;
 	private Event currentNpcEvent;
 	private GameObject currentGameObject;
@@ -108,5 +113,17 @@ public class EventInfo {
 	}
 	public void setCurrentBuildingInfo(Building currentBuildingInfo) {
 		this.currentBuildingInfo = currentBuildingInfo;
+	}
+	public ArrayList<EventScene> getCurrentEventScenes() {
+		return currentEventScenes;
+	}
+	public void setCurrentEventScenes(ArrayList<EventScene> currentEventScenes) {
+		this.currentEventScenes = currentEventScenes;
+	}
+	public Map<String, Hero> getHeroMap() {
+		return heroMap;
+	}
+	public void setHeroMap(Map<String, Hero> heroMap) {
+		this.heroMap = heroMap;
 	}
 }

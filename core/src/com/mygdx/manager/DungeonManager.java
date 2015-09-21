@@ -24,12 +24,15 @@ public class DungeonManager {
 		return dungeonInfo;
 	}
 
-	public void setInitialDungeonInfo(String dungeonPath) {
-		Dungeon currentDungeon = nodeAssets.getDungeonByPath(dungeonPath);
-		dungeonInfo.setCurrentDungeon(currentDungeon);
-		dungeonInfo.setCurrentFloor(currentDungeon.getDungeonFloors().get(0));
-		setInitialCurrentRoomInfo(dungeonInfo.getStartDungeonRoomIndex());
-		setFloorMinimap(dungeonInfo);
+	public void setDungeonInfo(String dungeonPath) {
+		if (!dungeonInfo.isInDungeon()) {
+			dungeonInfo.setInDungeon(true);
+			Dungeon currentDungeon = nodeAssets.getDungeonByPath(dungeonPath);
+			dungeonInfo.setCurrentDungeon(currentDungeon);
+			dungeonInfo.setCurrentFloor(currentDungeon.getDungeonFloors().get(0));
+			setInitialCurrentRoomInfo(dungeonInfo.getStartDungeonRoomIndex());
+			setFloorMinimap(dungeonInfo);
+		}
 		setCurrentRoomVisibilityOn();
 	}
 
@@ -72,6 +75,7 @@ public class DungeonManager {
 
 	public void moveRoom(int index) {
 		DungeonRoom originalRoom = dungeonInfo.getCurrentRoom();
+		dungeonInfo.setBeforeRoom(originalRoom);
 		DungeonConnection dungeonConnection;
 		if (dungeonInfo.getCurrentDirection().equals(Direction.FORWARD)) {
 			dungeonConnection = originalRoom.getForwardConnections().get(index);
@@ -109,5 +113,6 @@ public class DungeonManager {
 	public void leaveDungeon() {
 		String nodeName = dungeonInfo.getCurrentRoom().getLink();
 		movingManager.goToNode(nodeName);
+		dungeonInfo.setInDungeon(false);
 	}
 }
