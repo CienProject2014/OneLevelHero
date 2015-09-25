@@ -10,7 +10,6 @@ import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.event.EventParameters;
 import com.mygdx.model.location.Building;
-import com.mygdx.nextSectionChecker.ArgumentChecker;
 
 public class GoSubNodeEventTrigger implements EventTrigger {
 	@Autowired
@@ -26,11 +25,12 @@ public class GoSubNodeEventTrigger implements EventTrigger {
 	public void triggerEvent(EventParameters eventParameter) {
 		Building buildingInfo = eventManager.getTargetBuildingInfo();
 		int currentMinute = timeManager.getDayMinute();
-		if (ArgumentChecker.checkIsInTargetTime(buildingInfo.getTargetTime(), currentMinute)) {
+		if (buildingInfo.canGoBuilding(currentMinute)) {
 			positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
 			positionManager.setCurrentSubNodePath(buildingInfo.getSubNodePath());
 			screenFactory.show(ScreenEnum.BUILDING);
 		} else {
+			eventManager.setCurrentChatScenes(eventParameter.getEventScenes());
 			screenFactory.show(ScreenEnum.CHAT_EVENT);
 		}
 	}

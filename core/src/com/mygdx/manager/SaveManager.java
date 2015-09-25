@@ -26,6 +26,7 @@ import com.mygdx.currentState.TimeInfo;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.enums.SaveVersion;
+import com.mygdx.model.event.EventPacket;
 
 public class SaveManager {
 	@Autowired
@@ -50,6 +51,8 @@ public class SaveManager {
 	private TimeManager timeManager;
 	@Autowired
 	private PositionManager positionManager;
+	@Autowired
+	private EventManager eventManager;
 
 	private final static String SAVEPATH = "save/";
 
@@ -194,8 +197,11 @@ public class SaveManager {
 		}
 		timeInfo.setTime(Gdx.app.getPreferences("Time").getInteger("Time"));
 		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+		if (eventManager.getCurrentEvent() == null) {
+			eventManager.setCurrentNpcEvent(new EventPacket("waiji", 1));
+			eventManager.setCurrentStoryEvent(new EventPacket("prologue", 1));
+		}
 	}
-
 	public SaveInfo readSaveInfo(SaveVersion saveVersion) {
 		SaveInfo svInfo = null;
 

@@ -17,7 +17,7 @@
             "roomPosX": "1",
             "roomPosY": "2",
             "roomType": "gate",
-            "link": "devil_castle",
+            "link" : "devil_castle",
             "forwardAngle": "right",
             "forwardConnections": [
               {
@@ -62,8 +62,8 @@
             "forwardAngle": "right",
             "forwardConnections": [
               {
-                "roomLabel": "room_3_1",
-                "directionType": "forward"
+              	"roomLabel" : "room_3_1",
+              	"directionType" : "forward"
               },
               {
                 "roomLabel": "room_3_3",
@@ -84,7 +84,7 @@
             "roomType": "object",
             "forwardAngle": "right",
             "link": "treasureBox",
-            "forwardConnections": [],
+            "forwardConnections": {},
             "backwardConnections": [
               {
                 "roomLabel": "room_1_2",
@@ -220,7 +220,7 @@
             "forwardConnections": [
               {
                 "roomLabel": "room_5_2",
-                "directionType": "backward"
+                "directionType": "forward"
               }
             ],
             "backwardConnections": []
@@ -231,7 +231,7 @@
             "roomPosY": "2",
             "roomType": "up_stair",
             "link": "room_4_3",
-            "forwardAngle": "top",
+            "forwardAngle": "bottom",
             "forwardConnections": [],
             "backwardConnections": [
               {
@@ -253,7 +253,7 @@
               },
               {
                 "roomLabel": "room_6_3",
-                "directionType": "backward"
+                "directionType": "forward"
               }
             ],
             "backwardConnections": [
@@ -307,14 +307,14 @@
             "roomPosY": "3",
             "roomType": "up_stair",
             "link": "room_5_4",
-            "forwardAngle": "left",
-            "forwardConnections": [
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
               {
                 "roomLabel": "room_5_3",
                 "directionType": "backward"
               }
-            ],
-            "backwardConnections": []
+            ]
           },
           {
             "roomLabel": "room_7_2",
@@ -346,6 +346,4821 @@
               {
                 "roomLabel": "room_4_1",
                 "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          }
+        ]
+      }
+    ]
+  },
+  "crystallized_valley": {
+    "subNodePath": "crystallized_valley",
+    "subNodeName": "수정협곡",
+    "dungeonFloors": [
+      {
+        "floorPath": "crystallized_valley",
+        "floorMonsterList": [
+          "golem_crystal",
+          "yetie"
+        ],
+        "floorName": "수정협곡",
+        "mapHeight": 8,
+        "mapWidth": 6,
+        "dungeonRooms": [
+          {
+            "roomLabel": "room_1_8",
+            "roomPosX": "1",
+            "roomPosY": "8",
+            "roomType": "gate",
+            "link" : "crystallized_valley",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_8",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_2_8",
+            "roomPosX": "2",
+            "roomPosY": "8",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_8",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_7",
+            "roomPosX": "3",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+              	"roomLabel" : "room_4_6",
+              	"directionType" : "forward"
+              },
+              {
+                "roomLabel": "room_4_8",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_8",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_6",
+            "roomPosX": "4",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_6",
+            "roomPosX": "5",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_6",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_7",
+            "roomPosX": "6",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_8",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_8",
+            "roomPosX": "5",
+            "roomPosY": "8",
+            "roomType": "object",
+            "forwardAngle": "left",
+            "link": "treasureBox_13_01",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_8",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_8",
+            "roomPosX": "4",
+            "roomPosY": "8",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_8",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_5",
+            "roomPosX": "5",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_4",
+            "roomPosX": "5",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_4",
+            "roomPosX": "6",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_3",
+            "roomPosX": "6",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_3",
+            "roomPosX": "5",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_3",
+            "roomPosX": "4",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_3",
+            "roomPosX": "3",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_4_2",
+            "roomPosX": "4",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_2",
+            "roomPosX": "5",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "top_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_5_1",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_1",
+            "roomPosX": "5",
+            "roomPosY": "1",
+            "roomType": "gate",
+            "forwardAngle": "bottom",
+            "link" : "winterfall",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": []
+          }
+        ]
+      }
+    ]
+  },
+  "cave_of_succubus": {
+    "subNodePath": "cave_of_succubus",
+    "subNodeName": "서큐버스 동굴",
+    "dungeonFloors": [
+      {
+        "floorPath": "cave_of_succubus",
+        "floorMonsterList": [
+          "golem_crystal",
+          "yetie",
+          "succubus_junior",
+          "hunting_dog"
+        ],
+        "floorName": "서큐버스 동굴",
+        "mapHeight": 8,
+        "mapWidth": 9,
+        "dungeonRooms": [
+          {
+            "roomLabel": "room_1_1",
+            "roomPosX": "1",
+            "roomPosY": "1",
+            "roomType": "object",
+            "link" : "portal_25_02",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_1",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_2_1",
+            "roomPosX": "2",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_1",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_2",
+            "roomPosX": "2",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_1_2",
+            "roomPosX": "1",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+                          ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_3",
+            "roomPosX": "2",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_1_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_1_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_3",
+            "roomPosX": "3",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_1_3",
+            "roomPosX": "1",
+            "roomPosY": "3",
+            "roomType": "elite",
+            "forwardAngle": "left",
+            "link": "succubus_seniority1",
+            "forwardConnections": [
+              ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_1",
+            "roomPosX": "3",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+              	"roomLabel" : "room_4_1",
+              	"directionType" : "forward"
+              },
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_1",
+            "roomPosX": "4",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_2",
+            "roomPosX": "4",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_1",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_4_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_3",
+            "roomPosX": "4",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_2",
+            "roomPosX": "5",
+            "roomPosY": "2",
+            "roomType": "elite",
+            "forwardAngle": "right",
+            "link": "succubus_seniority3",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_2",
+            "roomPosX": "6",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_4",
+            "roomPosX": "4",
+            "roomPosY": "4",
+            "roomType": "object",
+            "forwardAngle": "top",
+            "link": "tresureBox_25_01",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              
+            ]
+          },
+          {
+            "roomLabel": "room_3_4",
+            "roomPosX": "3",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_4",
+            "roomPosX": "2",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_1_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_1_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_1_5",
+            "roomPosX": "1",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_1_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_1_6",
+            "roomPosX": "1",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_1_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_5",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_1_7",
+            "roomPosX": "1",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_7",
+            "roomPosX": "2",
+            "roomPosY": "7",
+            "roomType": "elite",
+            "link": "succubus_seniority2",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_6",
+            "roomPosX": "2",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_2_5",
+            "roomPosX": "2",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_6",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_1_6",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_1_5",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_5",
+            "roomPosX": "3",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_5",
+            "roomPosX": "4",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_5_5",
+            "roomPosX": "5",
+            "roomPosY": "5",
+            "roomType": "elite",
+            "forwardAngle": "top_right",
+            "link" : "succubus_seniority3",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_4",
+            "roomPosX": "5",
+            "roomPosY": "4",
+            "roomType": "elite",
+            "forwardAngle": "top_right",
+            "link" : "succubus_seniority3",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_4_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_3",
+            "roomPosX": "5",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_4",
+            "roomPosX": "6",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_4",
+            "roomPosX": "7",
+            "roomPosY": "4",
+            "roomType": "elite",
+            "forwardAngle": "bottom_right",
+            "link" : "cerberus",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_5",
+            "roomPosX": "7",
+            "roomPosY": "5",
+            "roomType": "elite",
+            "forwardAngle": "bottom",
+            "link" : "succubus_seniority",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_6",
+            "roomPosX": "7",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_6",
+            "roomPosX": "8",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_9_6",
+            "roomPosX": "9",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_7",
+            "roomPosX": "7",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_8",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_6_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_8",
+            "roomPosX": "7",
+            "roomPosY": "8",
+            "roomType": "object",
+            "forwardAngle": "top_right",
+            "link" : "tresureBox_25_02",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_8_7",
+            "roomPosX": "8",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_8",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_7",
+            "roomPosX": "6",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_7",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_7",
+            "roomPosX": "5",
+            "roomPosY": "7",
+            "roomType": "object",
+            "forwardAngle": "right",
+            "link":"portal_25_02",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_7",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": []
+          }
+        ]
+      }
+    ]
+  },
+  "golden_lake": {
+    "subNodePath": "golden_lake",
+    "subNodeName": "금빛 호수",
+    "dungeonFloors": [
+      {
+        "floorPath": "golden_lake",
+        "floorMonsterList": [
+          "elemental_fire",
+          "elemental_water",
+          "elemental_electric",
+          "chimera"
+        ],
+        "floorName": "금빛 호수",
+        "mapHeight": 7,
+        "mapWidth": 8,
+        "dungeonRooms": [
+          {
+            "roomLabel": "room_1_4",
+            "roomPosX": "1",
+            "roomPosY": "4",
+            "roomType": "gate",
+            "link" : "golden_lake",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_2_3",
+            "roomPosX": "2",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_2",
+            "roomPosX": "3",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_3",
+            "roomPosX": "4",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_3",
+            "roomPosX": "3",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_2",
+            "roomPosX": "4",
+            "roomPosY": "2",
+            "roomType": "elite",
+            "link":"unicorn",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_2",
+            "roomPosX": "5",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_1",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_3",
+            "roomPosX": "5",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_6_5",
+            "roomPosX": "6",
+            "roomPosY": "5",
+            "roomType": "object",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_6_1",
+            "roomPosX": "6",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_1",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_1",
+            "roomPosX": "7",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_2",
+            "roomPosX": "8",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_3",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_7_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_3",
+            "roomPosX": "8",
+            "roomPosY": "3",
+            "roomType": "object",
+            "forwardAngle": "top",
+            "link": "tresureBox_18_01",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_2",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_6_2",
+            "roomPosX": "6",
+            "roomPosY": "2",
+            "roomType": "elite",
+            "forwardAngle": "bottom_right",
+            "link":"unicorn",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_3",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_2",
+            "roomPosX": "7",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_3",
+            "roomPosX": "6",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_3",
+            "roomPosX": "7",
+            "roomPosY": "3",
+            "roomType": "object",
+            "link":"tresureBox_18_02",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_5_4",
+            "roomPosX": "5",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+            ]
+          },
+          {
+            "roomLabel": "room_6_4",
+            "roomPosX": "6",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_4",
+            "roomPosX": "7",
+            "roomPosY": "4",
+            "roomType": "boss",
+            "link":"auroral_unicorn",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_4",
+            "roomPosX": "3",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_4",
+            "roomPosX": "4",
+            "roomPosY": "4",
+            "roomType": "elite",
+            "link": "albino_chimera",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_5",
+            "roomPosX": "2",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_1_6",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_1_6",
+            "roomPosX": "1",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_2_6",
+            "roomPosX": "2",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_6",
+            "roomPosX": "3",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_7",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_2_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_7",
+            "roomPosX": "3",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_4_5",
+            "roomPosX": "4",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_5",
+            "roomPosX": "5",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_5",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_6",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_4_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_6",
+            "roomPosX": "5",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_6",
+            "roomPosX": "4",
+            "roomPosY": "6",
+            "roomType": "elite",
+            "forwardAngle": "top",
+            "link" : "unicorn",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_7",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_7",
+            "roomPosX": "5",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_6",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_6",
+            "roomPosX": "6",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_5",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_7_6",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_5",
+            "roomPosX": "7",
+            "roomPosY": "5",
+            "roomType": "object",
+            "link":"tresureBox_18_03",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_6",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_7_6",
+            "roomPosX": "7",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_7",
+            "roomPosX": "7",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_7",
+            "roomPosX": "8",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_6",
+            "roomPosX": "8",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_5",
+            "roomPosX": "8",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "backward"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "blackwood_forest": {
+    "subNodePath": "blackwood_forest",
+    "subNodeName": "블랙우드 숲",
+    "dungeonFloors": [
+      {
+        "floorPath": "blackwood_forest",
+        "floorMonsterList": [
+          "kentaurous_spear",
+          "kentaurous_bow",
+          "chimera"
+        ],
+        "floorName": "블랙우드 숲",
+        "mapHeight": 9,
+        "mapWidth": 9,
+        "dungeonRooms": [
+          {
+            "roomLabel": "room_1_5",
+            "roomPosX": "1",
+            "roomPosY": "5",
+            "roomType": "gate",
+            "link" : "blackwood_forest",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_2_5",
+            "roomPosX": "2",
+            "roomPosY": "5",
+            "roomType": "object",
+            "link":"tresureBox_17_01",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_1_5",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_3_5",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_4",
+            "roomPosX": "2",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_3",
+            "roomPosX": "3",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_3",
+            "roomPosX": "2",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_4_3",
+            "roomPosX": "4",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_4",
+            "roomPosX": "4",
+            "roomPosY": "4",
+            "roomType": "elite",
+            "link":"kentaurous_elder",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_4",
+            "roomPosX": "3",
+            "roomPosY": "4",
+            "roomType": "object",
+            "link":"treasureBox_17_02",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_4",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_5",
+            "roomPosX": "3",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_2",
+            "roomPosX": "3",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_1",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_1",
+            "roomPosX": "4",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_1",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_1",
+            "roomPosX": "5",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_4_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_2",
+            "roomPosX": "4",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_1",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_2",
+            "roomPosX": "5",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_3",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_4_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_2",
+            "roomPosX": "6",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_5_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_2",
+            "roomPosX": "7",
+            "roomPosY": "2",
+            "roomType": "elite",
+            "link":"kentaurous_elder",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_3",
+            "roomPosX": "5",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_4",
+            "roomPosX": "5",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_5",
+            "roomPosX": "5",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_5",
+            "roomPosX": "4",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_3",
+            "roomPosX": "6",
+            "roomPosY": "3",
+            "roomType": "object",
+            "link": "treasureBox_17_03",
+            "forwardAngle": "top_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_5",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_4",
+            "roomPosX": "6",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_6_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_5",
+            "roomPosX": "6",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_3",
+            "roomPosX": "7",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_3",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_4",
+            "roomPosX": "3",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_8_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_8_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_3",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_3",
+            "roomPosX": "8",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_4",
+            "roomPosX": "8",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_5",
+            "roomPosX": "8",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_9_4",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_9_4",
+            "roomPosX": "9",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_8_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_6",
+            "roomPosX": "8",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_6",
+            "roomPosX": "7",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_7_7",
+            "roomPosX": "7",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_8",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_6",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_7",
+            "roomPosX": "8",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_8",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_8",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_8",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_6",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_8",
+            "roomPosX": "7",
+            "roomPosY": "8",
+            "roomType": "elite",
+            "link":"kentaurous_elder",
+            "forwardAngle": "left",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_8",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_8",
+            "roomPosX": "8",
+            "roomPosY": "8",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_8",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_9",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_8",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_9_8",
+            "roomPosX": "9",
+            "roomPosY": "8",
+            "roomType": "object",
+            "link":"treasureBox_17_04",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_8",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_8_9",
+            "roomPosX": "8",
+            "roomPosY": "9",
+            "roomType": "normal",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_9",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_8",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_9",
+            "roomPosX": "7",
+            "roomPosY": "9",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_9",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_9",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_9",
+            "roomPosX": "6",
+            "roomPosY": "9",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_9",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_8",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_9",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_9",
+            "roomPosX": "5",
+            "roomPosY": "9",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_8",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_9",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_8",
+            "roomPosX": "5",
+            "roomPosY": "8",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_8",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_9",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_8",
+            "roomPosX": "4",
+            "roomPosY": "8",
+            "roomType": "normal",
+            "forwardAngle": "top_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_8",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_7",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_4_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_8",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_5_9",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_8",
+            "roomPosX": "3",
+            "roomPosY": "8",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_8",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_7",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_4_8",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_8",
+            "roomPosX": "2",
+            "roomPosY": "8",
+            "roomType": "normal",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_7",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_3_7",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_8",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_7",
+            "roomPosX": "4",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_8",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_3_8",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_7",
+            "roomPosX": "3",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_8",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_8",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_7",
+            "roomPosX": "2",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_8",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_2_8",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_6",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_6",
+            "roomPosX": "4",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_7",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_3_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_6",
+            "roomPosX": "3",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_7",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_6",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_6",
+            "roomPosX": "2",
+            "roomPosY": "6",
+            "roomType": "boss",
+            "link":"white_tiger",
+            "forwardAngle": "top_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_6",
+                "directionType": "forward"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cape_of_tempest": {
+    "subNodePath": "cape_of_tempest",
+    "subNodeName": "폭풍의 곶",
+    "dungeonFloors": [
+      {
+        "floorPath": "cape_of_tempest",
+        "floorMonsterList": [
+          "clam",
+          "rafflesia",
+          "piranha"
+        ],
+        "floorName": "폭풍의 곶",
+        "mapHeight": 7,
+        "mapWidth": 10,
+        "dungeonRooms": [
+          {
+            "roomLabel": "room_1_7",
+            "roomPosX": "1",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_6",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_2_6",
+            "roomPosX": "2",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_5",
+            "roomPosX": "2",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_1_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_1_4",
+            "roomPosX": "1",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_3",
+            "roomPosX": "2",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_1_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_4",
+            "roomPosX": "2",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_2_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_3",
+            "roomPosX": "3",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_2",
+            "roomPosX": "4",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_1",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_1",
+            "roomPosX": "4",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_2",
+            "roomPosX": "5",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_2",
+            "roomPosX": "6",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_1",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_1",
+            "roomPosX": "7",
+            "roomPosY": "1",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_2",
+            "roomPosX": "7",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_8_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_2",
+            "roomPosX": "8",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_3",
+            "roomPosX": "8",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_3",
+            "roomPosX": "7",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_2",
+            "roomPosX": "8",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_9_2",
+            "roomPosX": "9",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_10_1",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_10_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_10_1",
+            "roomPosX": "10",
+            "roomPosY": "1",
+            "forwardAngle": "top_right",
+            "roomType": "normal",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_9_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_10_3",
+            "roomPosX": "10",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_9_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_9_4",
+            "roomPosX": "9",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_8_4",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_10_3",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_10_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_10_4",
+            "roomPosX": "10",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_9_5",
+            "roomPosX": "9",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_6",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_9_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_9_6",
+            "roomPosX": "9",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_5",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_7",
+            "roomPosX": "8",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_7",
+            "roomPosX": "7",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_7",
+            "roomPosX": "6",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_7",
+                "directionType": "forward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_7",
+            "roomPosX": "5",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_6",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_7",
+            "roomPosX": "4",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_6",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_6",
+            "roomPosX": "5",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_7",
+            "roomPosX": "3",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_6",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_4_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_7",
+            "roomPosX": "2",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_6",
+            "roomPosX": "4",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_5",
+            "roomPosX": "5",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_6",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_5",
+            "roomPosX": "6",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_4",
+            "roomPosX": "6",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_4",
+            "roomPosX": "7",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_4",
+            "roomPosX": "8",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_4",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_5",
+            "roomPosX": "7",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_6",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_6",
+            "roomPosX": "7",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_5",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_5",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_5",
+            "roomPosX": "8",
+            "roomPosY": "5",
+            "roomType": "gate",
+            "link":"cave_of_cape_of_tempest",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_6",
+                "directionType": "backward"
+              }
+            ],
+            "backwardConnections": [
+            ]
+          },
+          {
+            "roomLabel": "room_8_6",
+            "roomPosX": "8",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_6",
+            "roomPosX": "6",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_7",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_5",
+            "roomPosX": "3",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_4",
+            "roomPosX": "3",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_4",
+            "roomPosX": "4",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_5",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_4",
+            "roomPosX": "5",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "top_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_3",
+            "roomPosX": "5",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "top",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "backward"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cave_of_cape_of_tempest": {
+    "subNodePath": "cave_of_cape_of_tempest",
+    "subNodeName": "폭풍의 곶 동굴",
+    "dungeonFloors": [
+      {
+        "floorPath": "cave_of_cape_of_tempest",
+        "floorMonsterList": [
+          "bat",
+          "lamia"
+        ],
+        "floorName": "폭풍의 곶 동굴",
+        "mapHeight": 7,
+        "mapWidth": 9,
+        "dungeonRooms": [
+          {
+            "roomLabel": "room_4_1",
+            "roomPosX": "4",
+            "roomPosY": "1",
+            "roomType": "gate",
+            "link":"cave_of_cape_of_tempest",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": []
+          },
+          {
+            "roomLabel": "room_3_2",
+            "roomPosX": "3",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_2",
+            "roomPosX": "2",
+            "roomPosY": "2",
+            "roomType": "elite",
+            "link":"fledermaus",
+            "forwardAngle": "left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_1_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_1_3",
+            "roomPosX": "1",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_1_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_2_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_1_4",
+            "roomPosX": "1",
+            "roomPosY": "4",
+            "roomType": "elite",
+            "link":"fledermaus",
+            "forwardAngle": "bottom",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_1_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_3",
+            "roomPosX": "3",
+            "roomPosY": "3",
+            "roomType": "elite",
+            "link":"lamia_soldier",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_2_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_2",
+                "directionType": "backward"
+              },
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_2_4",
+            "roomPosX": "2",
+            "roomPosY": "4",
+            "roomType": "elite",
+            "link":"fledermaus",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_4",
+            "roomPosX": "3",
+            "roomPosY": "4",
+            "roomType": "elite",
+            "link":"lamia_soldier",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_5",
+            "roomPosX": "3",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_3_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_3_6",
+            "roomPosX": "3",
+            "roomPosY": "6",
+            "roomType": "elite",
+            "link":"fledermaus",
+            "forwardAngle": "bottom",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_3_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_2",
+            "roomPosX": "4",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_1",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_3",
+            "roomPosX": "4",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom_left",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_3_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_4",
+            "roomPosX": "4",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_4_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_5",
+            "roomPosX": "5",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_6",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_6",
+            "roomPosX": "6",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_7",
+            "roomPosX": "6",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_6",
+            "roomPosX": "5",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_5",
+            "roomPosX": "4",
+            "roomPosY": "5",
+            "roomType": "elite",
+            "link":"fledermaus",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_6",
+            "roomPosX": "4",
+            "roomPosY": "6",
+            "forwardAngle": "bottom",
+            "roomType": "normal",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_4_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_4_7",
+            "roomPosX": "4",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_2",
+            "roomPosX": "5",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_6_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_4_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_2",
+            "roomPosX": "6",
+            "roomPosY": "2",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_2",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_2",
+            "roomPosX": "7",
+            "roomPosY": "2",
+            "roomType": "elite",
+            "link":"fledermaus",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_3",
+            "roomPosX": "6",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_3",
+            "roomPosX": "7",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_3",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_8_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_3",
+            "roomPosX": "8",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_3",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_9_3",
+            "roomPosX": "9",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_4",
+            "roomPosX": "8",
+            "roomPosY": "4",
+            "roomType": "elite",
+            "link":"fledermaus",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_3",
+            "roomPosX": "5",
+            "roomPosY": "3",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_5_4",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_2",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_5_4",
+            "roomPosX": "5",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_6_4",
+            "roomPosX": "6",
+            "roomPosY": "4",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_7_5",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_5_3",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_5",
+            "roomPosX": "7",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "bottom_right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_5",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "forward"
+              },
+              {
+                "roomLabel": "room_7_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_6_4",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_7_6",
+            "roomPosX": "7",
+            "roomPosY": "6",
+            "roomType": "elite",
+            "link":"fledermaus",
+            "forwardAngle": "bottom",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_6",
+            "roomPosX": "8",
+            "roomPosY": "6",
+            "roomType": "normal",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_8_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_7",
+            "roomPosX": "8",
+            "roomPosY": "7",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_6",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_8_5",
+            "roomPosX": "8",
+            "roomPosY": "5",
+            "roomType": "normal",
+            "forwardAngle": "right",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_6",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_7_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_9_6",
+            "roomPosX": "9",
+            "roomPosY": "6",
+            "roomType": "elite",
+            "link":"lamia_soldier",
+            "forwardAngle": "bottom",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_7",
+                "directionType": "forward"
+              }
+            ],
+            "backwardConnections": [
+              {
+                "roomLabel": "room_8_5",
+                "directionType": "backward"
+              }
+            ]
+          },
+          {
+            "roomLabel": "room_9_7",
+            "roomPosX": "9",
+            "roomPosY": "7",
+            "roomType": "object",
+            "link":"treasureBox_27_01",
+            "forwardAngle": "top",
+            "forwardConnections": [
+              {
+                "roomLabel": "room_9_6",
+                "directionType": "backward"
               }
             ],
             "backwardConnections": []

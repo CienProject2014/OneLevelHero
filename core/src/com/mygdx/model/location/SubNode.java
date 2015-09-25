@@ -1,16 +1,16 @@
 package com.mygdx.model.location;
 
+import com.mygdx.nextSectionChecker.ArgumentChecker;
+
 public class SubNode {
 	private String subNodeName;
 	private String subNodePath;
 	private TargetTime targetTime;
 
-	public String getSubNodePath() {
-		return subNodePath;
+	public boolean canGoBuilding(int currentMinute) {
+		return ArgumentChecker.checkIsInTargetTime(targetTime, currentMinute);
 	}
-	public void setSubNodePath(String subNodePath) {
-		this.subNodePath = subNodePath;
-	}
+
 	public String getSubNodeName() {
 		return subNodeName;
 	}
@@ -22,5 +22,13 @@ public class SubNode {
 	}
 	public void setTargetTime(TargetTime targetTime) {
 		this.targetTime = targetTime;
+	}
+
+	public String getSubNodePath() {
+		return subNodePath;
+	}
+
+	public void setSubNodePath(String subNodePath) {
+		this.subNodePath = subNodePath;
 	}
 }

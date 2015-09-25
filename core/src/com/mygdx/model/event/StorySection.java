@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class StorySection {
 	private ArrayList<EventPacket> sequencialEvents;
-	private ArrayList<EventPacket> conditionalEvents;
+	private ArrayList<EventPacket> conditionalNpcEvents;
+	private ArrayList<EventPacket> conditionalGameObjectEvents;
 	private ArrayList<EventPacket> specialEvents;
 	private ArrayList<StorySectionPacket> nextSections;
 
@@ -16,12 +17,12 @@ public class StorySection {
 		this.sequencialEvents = sequencialEvents;
 	}
 
-	public ArrayList<EventPacket> getConditionalEvents() {
-		return conditionalEvents;
+	public ArrayList<EventPacket> getConditionalNpcEvents() {
+		return conditionalNpcEvents;
 	}
 
-	public void setConditionalEvents(ArrayList<EventPacket> conditionalEvents) {
-		this.conditionalEvents = conditionalEvents;
+	public void setConditionalNpcEvents(ArrayList<EventPacket> conditionalNpcEvents) {
+		this.conditionalNpcEvents = conditionalNpcEvents;
 	}
 
 	public ArrayList<StorySectionPacket> getNextSections() {
@@ -38,6 +39,14 @@ public class StorySection {
 
 	public void setSpecialEvents(ArrayList<EventPacket> specialEvents) {
 		this.specialEvents = specialEvents;
+	}
+
+	public ArrayList<EventPacket> getConditionalGameObjectEvents() {
+		return conditionalGameObjectEvents;
+	}
+
+	public void setConditionalGameObjectEvents(ArrayList<EventPacket> conditionalGameObjectEvent) {
+		this.conditionalGameObjectEvents = conditionalGameObjectEvent;
 	}
 
 }

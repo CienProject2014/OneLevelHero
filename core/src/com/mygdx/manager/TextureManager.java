@@ -172,4 +172,16 @@ public class TextureManager {
 		return getTexture(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE, TextureEnum.BATTLE
 				+ "_default_" + TextureEnum.BIG_IMAGE);
 	}
+
+	public Texture getGameObjectTexture(String objectPath) {
+		if (textureAssets.getTexturePath(TextureEnum.GAME_OBJECT + "_" + objectPath) != null) {
+			preName[11] = TextureEnum.GAME_OBJECT + "_" + objectPath;
+			assetsManager.load(textureAssets.getTexturePath(preName[11]), Texture.class);
+			assetsManager.finishLoading();
+			return assetsManager.get(textureAssets.getTexturePath(preName[11]), Texture.class);
+		} else {
+			Gdx.app.log("TextureManager", "object_" + objectPath + " is null");
+			return getTexture(objectPath, TextureEnum.BUST + "_default_01");
+		}
+	}
 }

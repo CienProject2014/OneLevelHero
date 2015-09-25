@@ -7,9 +7,11 @@ import com.mygdx.model.location.DungeonFloor;
 import com.mygdx.model.location.DungeonRoom;
 
 public class DungeonInfo {
+	private boolean isInDungeon;
 	private Dungeon currentDungeon;
 	private DungeonFloor currentFloor;
 	private DungeonRoom currentRoom;
+	private DungeonRoom beforeRoom;
 	private DungeonEnum.ForwardAngle currentForwardAngle;
 	private DungeonEnum.Direction currentDirection;
 	private int currentDoorSize;
@@ -57,5 +59,17 @@ public class DungeonInfo {
 	}
 	public void setCurrentDoorSize(int currentDoorSize) {
 		this.currentDoorSize = currentDoorSize;
+	}
+	public DungeonRoom getBeforeRoom() {
+		return beforeRoom;
+	}
+	public void setBeforeRoom(DungeonRoom beforeRoom) {
+		this.beforeRoom = beforeRoom;
+	}
+	public boolean isInDungeon() {
+		return isInDungeon;
+	}
+	public void setInDungeon(boolean isInDungeon) {
+		this.isInDungeon = isInDungeon;
 	}
 }

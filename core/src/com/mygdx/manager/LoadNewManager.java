@@ -42,7 +42,7 @@ public class LoadNewManager {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();
 		setCurrentLocatePosition();
-		setEventInfo(eventManager, eventAssets);
+		setEventInfo(eventManager, eventAssets, unitAssets);
 		setStorySection();
 		setTimeInfo();
 		setBattleInfo();
@@ -52,9 +52,10 @@ public class LoadNewManager {
 		bagManager.possessItem(ItemEnum.HANDGRIP, "sabre");
 	}
 
-	private void setEventInfo(EventManager eventManager, EventAssets eventAssets) {
+	private void setEventInfo(EventManager eventManager, EventAssets eventAssets, UnitAssets unitAssets) {
 		eventManager.setMainStoryMap(eventAssets.getMainStoryMap());
 		eventManager.setNpcMap(eventAssets.getNpcMap());
+		eventManager.setHeroMap(unitAssets.getHeroMap());
 		eventManager.setGameObjectMap(eventAssets.getGameObjectMap());
 		eventManager.setCurrentEvent(EventElementEnum.STORY, new EventPacket("prologue", 1));
 	}

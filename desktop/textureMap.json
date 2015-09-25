@@ -459,6 +459,10 @@ bg_redrose_castle_peasanthouse: {
 	class: java.lang.String,
 	value: texture/background/bg_redrose_castle_peasanthouse.png/
 },
+bust_nothing_image_01: {
+	class: java.lang.String,
+	value: texture/character/bust_nothing_image_01.png/
+},
 bust_servant-_01: {
 	class: java.lang.String,
 	value: texture/character/bust_servant-_01.png/
@@ -707,6 +711,10 @@ bust_kein_young_01: {
 	class: java.lang.String,
 	value: texture/character/bust_kein_young_01.png/
 },
+golden_lake_minimap: {
+	class: java.lang.String,
+	value: texture/dungeon_minimap/golden_lake_minimap.png/
+},
 bg_mountain_titania_02: {
 	class: java.lang.String,
 	value: texture/background/bg_mountain_titania_02.png/
@@ -906,6 +914,10 @@ bust_lilis_09: {
 bust_lilis_03: {
 	class: java.lang.String,
 	value: texture/character/bust_lilis_03.png/
+},
+bg_winterfall_dome: {
+	class: java.lang.String,
+	value: texture/background/bg_winterfall_dome.png/
 },
 bust_lilis_04: {
 	class: java.lang.String,
@@ -1227,10 +1239,6 @@ battle_maria_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_maria_small.png/
 },
-object_drawer: {
-	class: java.lang.String,
-	value: texture/object/object_drawer.png/
-},
 bg_kadilla_castle_duke_castle: {
 	class: java.lang.String,
 	value: texture/background/bg_kadilla_castle_duke_castle.png/
@@ -1298,6 +1306,10 @@ battle_kein_02_big: {
 bust_parath_10: {
 	class: java.lang.String,
 	value: texture/character/bust_parath_10.png/
+},
+crystallized_valley_minimap: {
+	class: java.lang.String,
+	value: texture/dungeon_minimap/crystallized_valley_minimap.png/
 },
 battle_kadillaguardian_small: {
 	class: java.lang.String,
@@ -1967,6 +1979,10 @@ bust_religious_fanatic: {
 	class: java.lang.String,
 	value: texture/character/bust_religious_fanatic.png/
 },
+bg_blackwood_house: {
+	class: java.lang.String,
+	value: texture/background/bg_blackwood_house.png/
+},
 buff_en_protect: {
 	class: java.lang.String,
 	value: texture/icon/buff_en_protect.png/
@@ -2242,6 +2258,10 @@ bust_yongsa_07: {
 bust_yongsa_08: {
 	class: java.lang.String,
 	value: texture/character/bust_yongsa_08.png/
+},
+object_middle_ridge_drawer: {
+	class: java.lang.String,
+	value: texture/object/object_middle_ridge_drawer.png/
 },
 battle_elementalelectric_big: {
 	class: java.lang.String,

@@ -2,6 +2,7 @@ package com.mygdx.eventTrigger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.event.EventParameters;
@@ -23,6 +24,8 @@ public class SetSubNodeTargetTimeEventTrigger implements EventTrigger {
 					.getEndHour());
 			building.setTargetTime(targetTime);
 			storySectionManager.runStorySequence();
+		} else {
+			Gdx.app.log("SetNpcTargetTimeEventTrigger", "eventParameter is null");
 		}
 	}
 }
