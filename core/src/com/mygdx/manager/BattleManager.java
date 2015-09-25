@@ -31,6 +31,7 @@ import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
 import com.mygdx.popup.SkillRunPopup;
+import com.mygdx.stage.BattleStage;
 import com.mygdx.ui.GridHitbox;
 
 public class BattleManager {
@@ -66,11 +67,16 @@ public class BattleManager {
 	@Autowired
 	private SoundManager soundManager;
 	private GridHitbox gridHitbox; // grid hitbox 테이블
+	private BattleStage battleStage;
 	private Unit currentAttackUnit;
 	public SkillRunPopup gameObjectPopup;
 
 	public boolean isEventBattle() {
 		return battleInfo.isEventBattle();
+	}
+
+	public void setBattleStage(BattleStage stage) {
+		battleStage = stage;
 	}
 
 	public void setEventBattle(boolean isEventBattle) {
@@ -113,75 +119,75 @@ public class BattleManager {
 
 	public void checkCurrentState() {
 		switch (getCurrentClickStateEnum()) {
-		case NORMAL:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case SKILL1:
-			battleInfo.setSkill(false);
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case SKILL2:
-			battleInfo.setSkill(false);
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case SKILL3:
-			battleInfo.setSkill(false);
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case SKILL4:
-			battleInfo.setSkill(false);
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case SKILL5:
-			battleInfo.setSkill(false);
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case SKILL6:
-			battleInfo.setSkill(false);
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case SKILL7:
-			battleInfo.setSkill(false);
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case ITEM:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case DEFENSE:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case WAIT:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		case RUN:
-			setShowGrid(false);
-			battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
-			timeManager.plusSecond(-timeManager.getPreTime());
-			break;
-		default:
-			break;
+			case NORMAL :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case SKILL1 :
+				battleInfo.setSkill(false);
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case SKILL2 :
+				battleInfo.setSkill(false);
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case SKILL3 :
+				battleInfo.setSkill(false);
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case SKILL4 :
+				battleInfo.setSkill(false);
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case SKILL5 :
+				battleInfo.setSkill(false);
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case SKILL6 :
+				battleInfo.setSkill(false);
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case SKILL7 :
+				battleInfo.setSkill(false);
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case ITEM :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case DEFENSE :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case WAIT :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			case RUN :
+				setShowGrid(false);
+				battleInfo.getCurrentActor().setGauge(battleInfo.getCurrentActor().getPreGague());
+				timeManager.plusSecond(-timeManager.getPreTime());
+				break;
+			default :
+				break;
 		}
 	}
 
@@ -361,26 +367,26 @@ public class BattleManager {
 		ArrayList<Unit> list = new ArrayList<Unit>();
 		SkillTargetEnum enm = SkillTargetEnum.findSkillTargetEnum(targetType);
 		switch (enm) {
-		case ALL:
-			list.addAll(partyManager.getBattleMemberList());
-			break;
-		case MONSTER:
-			list.add(battleInfo.getCurrentMonster());
-			break;
-		case ONE:
-			list.add(selectedUnit);
-			break;
-		case RANDOM:
-			Hero pick = getRandomHero();
-			if (pick != null) {
-				list.add(pick);
-			}
-			break;
-		case SELF:
-			list.add(skillUser);
-			break;
-		default:
-			break;
+			case ALL :
+				list.addAll(partyManager.getBattleMemberList());
+				break;
+			case MONSTER :
+				list.add(battleInfo.getCurrentMonster());
+				break;
+			case ONE :
+				list.add(selectedUnit);
+				break;
+			case RANDOM :
+				Hero pick = getRandomHero();
+				if (pick != null) {
+					list.add(pick);
+				}
+				break;
+			case SELF :
+				list.add(skillUser);
+				break;
+			default :
+				break;
 
 		}
 
@@ -400,22 +406,22 @@ public class BattleManager {
 		final int x;
 		final int y;
 		switch (playerOrder) {
-		case 0:
-			x = (int) (StaticAssets.windowWidth * 0.1f);
-			y = (int) (StaticAssets.windowHeight * 0.6f);
-			break;
-		case 1:
-			x = (int) (StaticAssets.windowWidth * 0.1f);
-			y = (int) (StaticAssets.windowHeight * 0.5f);
-			break;
-		case 2:
-			x = (int) (StaticAssets.windowWidth * 0.1f);
-			y = (int) (StaticAssets.windowHeight * 0.4f);
-			break;
-		default:
-			x = (int) (StaticAssets.windowWidth * 0.1f);
-			y = (int) (StaticAssets.windowHeight * 0.6f);
-			break;
+			case 0 :
+				x = (int) (StaticAssets.windowWidth * 0.1f);
+				y = (int) (StaticAssets.windowHeight * 0.6f);
+				break;
+			case 1 :
+				x = (int) (StaticAssets.windowWidth * 0.1f);
+				y = (int) (StaticAssets.windowHeight * 0.5f);
+				break;
+			case 2 :
+				x = (int) (StaticAssets.windowWidth * 0.1f);
+				y = (int) (StaticAssets.windowHeight * 0.4f);
+				break;
+			default :
+				x = (int) (StaticAssets.windowWidth * 0.1f);
+				y = (int) (StaticAssets.windowHeight * 0.6f);
+				break;
 		}
 
 		// animationManager.registerAnimation("attack_cutting", x, y);
@@ -450,22 +456,22 @@ public class BattleManager {
 			int x1;
 			int y1;
 			switch (playerOrder) {
-			case 0:
-				x1 = (int) (StaticAssets.windowWidth * 0.1f);
-				y1 = (int) (StaticAssets.windowHeight * 0.6f);
-				break;
-			case 1:
-				x1 = (int) (StaticAssets.windowWidth * 0.1f);
-				y1 = (int) (StaticAssets.windowHeight * 0.5f);
-				break;
-			case 2:
-				x1 = (int) (StaticAssets.windowWidth * 0.1f);
-				y1 = (int) (StaticAssets.windowHeight * 0.4f);
-				break;
-			default:
-				x1 = (int) (StaticAssets.windowWidth * 0.1f);
-				y1 = (int) (StaticAssets.windowHeight * 0.6f);
-				break;
+				case 0 :
+					x1 = (int) (StaticAssets.windowWidth * 0.1f);
+					y1 = (int) (StaticAssets.windowHeight * 0.6f);
+					break;
+				case 1 :
+					x1 = (int) (StaticAssets.windowWidth * 0.1f);
+					y1 = (int) (StaticAssets.windowHeight * 0.5f);
+					break;
+				case 2 :
+					x1 = (int) (StaticAssets.windowWidth * 0.1f);
+					y1 = (int) (StaticAssets.windowHeight * 0.4f);
+					break;
+				default :
+					x1 = (int) (StaticAssets.windowWidth * 0.1f);
+					y1 = (int) (StaticAssets.windowHeight * 0.6f);
+					break;
 			}
 			// animationManager.registerAnimation("attack_cutting", x, y);
 			animationManager.registerAnimation("attack_cutting", x1, y1, width, height);
@@ -492,6 +498,7 @@ public class BattleManager {
 		int localy = (int) (StaticAssets.windowHeight * 0.5f)
 				+ (int) (StaticAssets.windowHeight * (-0.24f + 0.12f * y));
 		animationManager.registerAnimation(animationName, localx, localy, width, height);
+		battleStage.getCameraManager().shaking();
 	}
 
 	/**

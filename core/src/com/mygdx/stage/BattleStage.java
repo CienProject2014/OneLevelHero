@@ -124,6 +124,7 @@ public class BattleStage extends BaseOneLevelStage {
 			updateBigImageTable();
 			battleManager.setBigUpdate(false);
 		}
+		cameraManager.act(delta);
 	}
 
 	public Stage makeStage() {
@@ -148,8 +149,10 @@ public class BattleStage extends BaseOneLevelStage {
 		tableStack.add(makeTurnTable()); // TurnTable 배경 테이블
 		tableStack.add(makeTurnFaceTable()); // TurnTable위에 있는 영웅들 이미지 테이블
 		battleManager.setMonsterSize(MonsterEnum.SizeType.MEDIUM);
+
 		tableStack.add(battleManager.getNowGridHitbox());
 		battleManager.setShowGrid(false);
+		battleManager.setBattleStage(this);
 		addListener();
 		return this;
 	}
@@ -190,7 +193,7 @@ public class BattleStage extends BaseOneLevelStage {
 	 */
 	private void playAnimation(float delta) {
 		animationManager.nextFrame(delta);
-		if (animationManager.getAnimations().isEmpty()) {
+		if (animationManager.isEmptyAnimation()) {
 			storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_COMMAND, "normal_attack");
 			if (battleManager.getCurrentSelectedSkill() != null) {
 				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_COMMAND, "skill_attack");
@@ -383,8 +386,8 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.gameObjectPopup.setListenerFactory(listenerFactory);
 				battleManager.gameObjectPopup.setConstantsAssets(constantsAssets);
 				checkRunAway();
-				battleManager.gameObjectPopup
-						.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent() + "%입니다");
+				battleManager.gameObjectPopup.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent()
+						+ "%입니다");
 				addActor(battleManager.gameObjectPopup);
 				battleManager.gameObjectPopup.setVisible(true);
 			}
@@ -439,11 +442,11 @@ public class BattleStage extends BaseOneLevelStage {
 		super.touchUp(screenX, screenY, pointer, button);
 		if (battleManager.isShowGrid() && battleManager.getNowGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 			if (!battleManager.isSkill()) {
-				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster,
-						battleManager.getNowGridHitbox().getPreviousHitArea());
+				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
+						.getNowGridHitbox().getPreviousHitArea());
 			} else {
-				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster,
-						battleManager.getCurrentSelectedSkill().getSkillPath());
+				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
+						.getCurrentSelectedSkill().getSkillPath());
 				battleManager.setSkill(false);
 			}
 			battleManager.setShowGrid(false);
@@ -487,8 +490,8 @@ public class BattleStage extends BaseOneLevelStage {
 		turnSmallImageMap.put(selectedMonster.getFacePath(),
 				new Image(textureManager.getSmallBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			turnSmallImageMap.put(hero.getFacePath(),
-					new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
+			turnSmallImageMap
+					.put(hero.getFacePath(), new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
 		}
 	}
 
