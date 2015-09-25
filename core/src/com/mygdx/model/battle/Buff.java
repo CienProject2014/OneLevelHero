@@ -20,7 +20,18 @@ public class Buff {
 	private int decreaseHpPeriod;
 	private int decreaseHpMagicPercent;
 	private int decreaseHpAttackPercent;
+
 	private int decreaseHpOffset;
+
+	private int increaseDefensePercent;
+
+	public int getIncreaseDefensePercent() {
+		return increaseDefensePercent;
+	}
+
+	public void setIncreaseDefensePercent(int increaseDefensePercent) {
+		this.increaseDefensePercent = increaseDefensePercent;
+	}
 
 	public String getBuffPath() {
 		return buffPath;

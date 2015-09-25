@@ -14,6 +14,8 @@ public class PartyManager {
 	private UnitManager unitManager;
 	@Autowired
 	private PartyInfo partyInfo;
+	
+	public boolean[] isBattleMember = new boolean[3];
 
 	private final static int BATTLE_MEMBER_SIZE = 3;
 
