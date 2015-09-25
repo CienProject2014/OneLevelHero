@@ -8,7 +8,7 @@ import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.EventParameters;
 
-public class AlwaysOpenNpcEventTrigger implements EventTrigger {
+public class AlwaysOpenGameObjectEventTrigger implements EventTrigger {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -17,7 +17,7 @@ public class AlwaysOpenNpcEventTrigger implements EventTrigger {
 	@Override
 	public void triggerEvent(EventParameters eventParameter) {
 		EventPacket eventPacket = eventParameter.getEventPacket();
-		eventManager.setNpcEventState(eventPacket, EventStateEnum.ALWAYS_OPEN);
+		eventManager.setGameObjectEventState(eventPacket, EventStateEnum.ALWAYS_OPEN);
 		storySectionManager.runStorySequence();
 	}
 }

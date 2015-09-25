@@ -243,10 +243,10 @@
         },
         "rewards": [
           {
-            "rewardType": "always_open_npc_event",
+            "rewardType": "always_open_game_object_event",
             "rewardParameter": {
               "eventPacket": {
-                "eventElement": "drawer",
+                "eventElement": "middle_ridge_drawer",
                 "eventNumber": 4
               }
             }

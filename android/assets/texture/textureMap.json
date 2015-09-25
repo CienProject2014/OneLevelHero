@@ -1239,10 +1239,6 @@ battle_maria_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_maria_small.png/
 },
-object_drawer: {
-	class: java.lang.String,
-	value: texture/object/object_drawer.png/
-},
 bg_kadilla_castle_duke_castle: {
 	class: java.lang.String,
 	value: texture/background/bg_kadilla_castle_duke_castle.png/
@@ -1983,6 +1979,10 @@ bust_religious_fanatic: {
 	class: java.lang.String,
 	value: texture/character/bust_religious_fanatic.png/
 },
+bg_blackwood_house: {
+	class: java.lang.String,
+	value: texture/background/bg_blackwood_house.png/
+},
 elemental_none: {
 	class: java.lang.String,
 	value: texture/icon/elemental_none.png/
@@ -2262,6 +2262,10 @@ bust_yongsa_08: {
 battle_elementalelectric_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_elementalelectric_big.png/
+},
+object_middle_ridge_drawer: {
+	class: java.lang.String,
+	value: texture/object/object_middle_ridge_drawer.png/
 },
 monster_blooder: {
 	class: java.lang.String,

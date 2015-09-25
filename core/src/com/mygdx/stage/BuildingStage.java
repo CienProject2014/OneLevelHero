@@ -71,6 +71,9 @@ public class BuildingStage extends BaseOverlapStage {
 
 	public Stage makeStage() {
 		cameraManager.stretchToDevice(this);
+		tableStack = new Stack();
+		tableStack.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
+		tableStack.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
 		buildingInfo = nodeAssets.getVillageByPath(positionManager.getCurrentNodePath()).getBuilding()
 				.get(positionManager.getCurrentSubNodePath());
 		if (buildingInfo.isOverlapScene()) {
@@ -83,18 +86,12 @@ public class BuildingStage extends BaseOverlapStage {
 			setNpcList();
 			setGameObject();
 		}
-		tableStack = new Stack();
-		tableStack.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
-		tableStack.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
+
 		this.addActor(tableStack);
 		return this;
 	}
 
 	private void setGameObject() {
-		Stack tableStack = new Stack();
-		tableStack.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
-		tableStack.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
-		this.addActor(tableStack);
 		cameraManager.stretchToDevice(this);
 		Table buttonTable = new Table();
 		buttonTable.setFillParent(true);
@@ -208,10 +205,15 @@ public class BuildingStage extends BaseOverlapStage {
 				NPC npc = eventManager.getEventInfo().getNpcMap().get(npcName);
 				if (npc != null) {
 					if (ArgumentChecker.checkIsInTargetTime(npc.getTargetTime(), timeManager.getDayMinute())) {
-						ImageButton npcButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+						ImageButton npcImage = new ImageButton(new TextureRegionDrawable(new TextureRegion(
 								textureManager.getBustTexture(npcName, "01"))));
-						npcButton.setTouchable(Touchable.enabled);
-						npcButton.addListener(new SimpleTouchListener() {
+						npcImage.setTouchable(Touchable.enabled);
+						Table npcTable = new Table();
+						npcTable.left().bottom();
+						npcTable.padLeft(GAME_OBJECT_POSITION[npc.getPositionIndex()][0]).padBottom(
+								GAME_OBJECT_POSITION[npc.getPositionIndex()][1]);
+						npcTable.add(npcImage);
+						npcTable.addListener(new SimpleTouchListener() {
 							@Override
 							public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 								timeManager.plusMinute(5);
@@ -220,7 +222,7 @@ public class BuildingStage extends BaseOverlapStage {
 								screenFactory.show(ScreenEnum.GREETING);
 							}
 						});
-						addActor(npcButton);
+						tableStack.add(npcTable);
 					}
 				}
 			}

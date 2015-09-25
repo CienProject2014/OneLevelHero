@@ -183,12 +183,14 @@
 	<bean id="goTitleListener" class="com.mygdx.listener.GoTitleListener" scope="prototype"/>
 	<bean id="jumpSectionListener" class="com.mygdx.listener.JumpSectionListener" scope="prototype"/>
 	<bean id="leaveDungeonButtonListener" class="com.mygdx.listener.LeaveDungeonButtonListener" scope="prototype"/>
+	<bean id="leaveEventElementListener" class="com.mygdx.listener.LeaveEventElementListener" scope="prototype"/>
 	<bean id="loadListener" class="com.mygdx.listener.LoadListener" scope="prototype"/>
 	<bean id="runAwayListener" class="com.mygdx.listener.RunAwayListener" scope="prototype"/>
 		
 	<bean id="atlasUiFile" class="com.mygdx.model.jsonModel.AtlasUiFile"/>
 	<bean id="musicFile" class="com.mygdx.model.jsonModel.MusicFile"/>
 	
+	<bean id="alwaysOpenGameObjectEventTrigger" class="com.mygdx.eventTrigger.AlwaysOpenGameObjectEventTrigger"/>
 	<bean id="alwaysOpenNpcEventTrigger" class="com.mygdx.eventTrigger.AlwaysOpenNpcEventTrigger"/>
 	<bean id="chatEventTrigger" class="com.mygdx.eventTrigger.ChatEventTrigger"/>
 	<bean id="choiceOptionEventTrigger" class="com.mygdx.eventTrigger.ChoiceOptionEventTrigger"/>

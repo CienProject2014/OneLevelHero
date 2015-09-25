@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.eventTrigger.AlwaysOpenGameObjectEventTrigger;
 import com.mygdx.eventTrigger.AlwaysOpenNpcEventTrigger;
 import com.mygdx.eventTrigger.ChatEventTrigger;
 import com.mygdx.eventTrigger.ChoiceOptionEventTrigger;
@@ -31,6 +32,8 @@ public class EventTriggerFactory {
 
 	public EventTrigger getEventTrigger(EventTypeEnum eventType) {
 		switch (eventType) {
+			case ALWAYS_OPEN_GAME_OBJECT_EVENT :
+				return context.getBean(AlwaysOpenGameObjectEventTrigger.class);
 			case ALWAYS_OPEN_NPC_EVENT :
 				return context.getBean(AlwaysOpenNpcEventTrigger.class);
 			case END_BATTLE :
