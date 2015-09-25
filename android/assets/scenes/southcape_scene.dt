@@ -92,7 +92,7 @@
         }
       },
       {
-        "itemIdentifier": "southcape_peasanthouse01",
+        "itemIdentifier": "southcape_house_01",
         "x": 2407,
         "y": 767,
         "zIndex": 3,
@@ -130,7 +130,7 @@
         }
       },
       {
-        "itemIdentifier": "southcape_peasanthouse02",
+        "itemIdentifier": "southcape_house_02",
         "x": 2078,
         "y": 274,
         "zIndex": 4,
@@ -168,7 +168,7 @@
         }
       },
       {
-        "itemIdentifier": "southcape_peasanthouse03",
+        "itemIdentifier": "southcape_house_03",
         "x": 2383,
         "y": 275,
         "zIndex": 5,
@@ -206,7 +206,7 @@
         }
       },
       {
-        "itemIdentifier": "southcape_peasanthouse04",
+        "itemIdentifier": "southcape_house_04",
         "x": 2709,
         "y": 345.00003,
         "zIndex": 6,
@@ -397,7 +397,7 @@
         }
       },
       {
-        "itemIdentifier": "southcape_peasanthouse05",
+        "itemIdentifier": "southcape_house_05",
         "x": 927,
         "y": 736,
         "zIndex": 11,
@@ -435,7 +435,7 @@
         }
       },
       {
-        "itemIdentifier": "southcape_peasanthouse06",
+        "itemIdentifier": "southcape_house_06",
         "x": 1225,
         "y": 737,
         "zIndex": 12,

@@ -118,7 +118,7 @@ public class MusicManager {
 	}
 
 	public void setWorldNodeMusicAndPlay() {
-		String currentNode = positionManager.getCurrentNodeName();
+		String currentNode = positionManager.getCurrentNodePath();
 		Music music = musicAssets.getWorldNodeMusic(currentNode);
 		setMusicAndPlay(music);
 	}

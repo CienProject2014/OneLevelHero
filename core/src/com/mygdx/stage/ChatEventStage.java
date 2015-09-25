@@ -58,8 +58,7 @@ public class ChatEventStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
-		final Iterator<EventScene> eventSceneIterator = eventManager.getCurrentEvent().getEventParameter()
-				.getEventScenes().iterator();
+		final Iterator<EventScene> eventSceneIterator = eventManager.getCurrentChatScenes().iterator();
 
 		if (eventSceneIterator.hasNext()) {
 			final EventScene eventScene = eventSceneIterator.next();

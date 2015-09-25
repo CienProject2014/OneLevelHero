@@ -56,7 +56,7 @@ public class VillageStage extends BaseOverlapStage {
 
 	private void setArrow() {
 		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
-		String currentNode = positionManager.getCurrentNodeName();
+		String currentNode = positionManager.getCurrentNodePath();
 		Map<String, NodeConnection> connectionMap = worldMapAssets.getWorldNodeInfo(currentNode).getNodeConnection();
 		for (final Entry<String, NodeConnection> connection : connectionMap.entrySet()) {
 			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(connection.getValue().getArrowName());
@@ -72,13 +72,13 @@ public class VillageStage extends BaseOverlapStage {
 	}
 
 	private void setVillageScene(PositionManager positionManager, NodeAssets nodeAssets) {
-		if (nodeAssets.getVillageByName(positionManager.getCurrentNodeName()) != null) {
-			villageInfo = nodeAssets.getVillageByName(positionManager.getCurrentNodeName());
+		if (nodeAssets.getVillageByPath(positionManager.getCurrentNodePath()) != null) {
+			villageInfo = nodeAssets.getVillageByPath(positionManager.getCurrentNodePath());
 			assetsManager.initScene(villageInfo.getSceneName());
 			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(villageInfo.getSceneName());
 		} else {
-			villageInfo = nodeAssets.getVillageByName("blackwood");
+			villageInfo = nodeAssets.getVillageByPath("blackwood");
 			assetsManager.initScene(villageInfo.getSceneName());
 			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(villageInfo.getSceneName());
@@ -87,7 +87,7 @@ public class VillageStage extends BaseOverlapStage {
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		Gdx.app.log("VillageStage", String.valueOf(positionManager.getCurrentNodeName()));
+		Gdx.app.log("VillageStage", String.valueOf(positionManager.getCurrentNodePath()));
 		setVillageScene(positionManager, nodeAssets);
 		setArrow();
 		setArrowDirection();
@@ -222,8 +222,8 @@ public class VillageStage extends BaseOverlapStage {
 				CompositeItem buildingButton = sceneLoader.getRoot().getCompositeById(building.getKey());
 				buildingButton.setTouchable(Touchable.enabled);
 				BuildingButtonListener buildingButtonListener = listenerFactory.getBuildingButtonListener();
-				buildingButtonListener.setNodeName(villageInfo.getNodePath());
-				buildingButtonListener.setBuildingName(building.getKey());
+				buildingButtonListener.setNodePath(villageInfo.getNodePath());
+				buildingButtonListener.setBuildingPath(building.getKey());
 				buildingButtonListener.setBuildingInfo(building.getValue());
 				buildingButton.addListener(buildingButtonListener);
 			}

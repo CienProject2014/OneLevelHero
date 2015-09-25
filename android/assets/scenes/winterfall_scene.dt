@@ -130,7 +130,7 @@
         }
       },
       {
-        "itemIdentifier": "winterfall_peasanthouse01",
+        "itemIdentifier": "winterfall_house_01",
         "x": 1136,
         "y": 649.5,
         "zIndex": 4,
@@ -168,7 +168,7 @@
         }
       },
       {
-        "itemIdentifier": "winterfall_peasanthouse02",
+        "itemIdentifier": "winterfall_house_02",
         "x": 1399,
         "y": 399.5,
         "zIndex": 5,

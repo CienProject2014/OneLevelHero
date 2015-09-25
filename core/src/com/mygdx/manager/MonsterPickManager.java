@@ -1,9 +1,6 @@
 package com.mygdx.manager;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.UnitAssets;
 import com.mygdx.enums.FieldTypeEnum;
+import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.unit.Monster;
 
 /**
@@ -26,9 +24,11 @@ public class MonsterPickManager {
 	@Autowired
 	private NodeAssets nodeAssets;
 	@Autowired
-	private FieldManager fieldManager;
+	private PositionManager positionManager;
 	@Autowired
 	private UnitManager unitManager;
+	@Autowired
+	private FieldManager fieldManager;
 	@Autowired
 	private DungeonManager dungeonManager;
 
@@ -51,12 +51,11 @@ public class MonsterPickManager {
 	private String selectMonster() {
 		List<String> monsterStrings = null;
 
-		if (fieldManager.isInField()) {
+		if (positionManager.getCurrentLocatePositionType().equals(PositionEnum.LocatePosition.FIELD)) {
 			FieldTypeEnum fieldType = fieldManager.getFieldType();
 			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
-		} else if (dungeonManager.isInDungeon()) {
-			FieldTypeEnum fieldType = dungeonManager.getDungeonInfo().getFieldType();
-			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
+		} else {
+			monsterStrings = dungeonManager.getDungeonInfo().getCurrentFloor().getFloorMonsterList();
 		}
 
 		return monsterStrings.get(ThreadLocalRandom.current().nextInt(monsterStrings.size()));

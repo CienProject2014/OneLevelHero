@@ -561,7 +561,7 @@
             }
           },
           {
-            "rewardType": "open_event",
+            "rewardType": "open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -1084,783 +1084,1001 @@
       "어서오세요!"
     ]
   },
-  "kadilla_castle_duke_castle": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "kadilla_castle_02"
-            }
-          ]
-        }
-      }
-    }
+  "kein_coworker": {
+    "name": "케인의 동료",
+    "facePath": "kein_coworker"
   },
-  "kadilla_castle_grocery": {
+  "kein": {
+    "name": "케인",
+    "facePath": "kein",
     "events": {
       "1": {
+        "eventTitle": "대화하기",
         "eventState": "always_open",
-        "eventType": "go_sub_node",
+        "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
+              "script": "....",
+              "characterPath": "kein",
               "faceNumber": "01",
-              "backgroundPath": "kadilla_castle_02"
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse"
             }
           ]
         }
+      },
+      "2": {
+        "eventTitle": "저주를 푸는 방법",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "저희 가문 기록에서 금빛 호수의 수호자에 대한 흥미로운 기록을 발견했습니다."
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "금빛 호수의 수호자요?"
+            },
+            {
+              "characterPath": "lilis",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "혹시 디아르 칸이라고 불리는 그 수호자가 맞나요?"
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "역시 성녀님이시군요."
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "아, 디아르 칸이라면 들어봤어요. 어릴 적 동요로도 불렀던 것 같은데요."
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "우는 아이는 디아르 칸이 다리 하나 물어간다."
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "떼쓰는 아이는 디아르 칸이 심장을 먹고 간다."
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "뭐, 이런 동요들을 종종 들었어요."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "맞습니다. 바로 그 디아르 칸입니다."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "제가 기록에서 발견한 것은 디아르 칸에 대한 내용이었습니다."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "디아르 칸은 본래 금빛 수사자입니다."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "그런데 오랜 세월을 살아오면서 수호자의 자리에 올랐다고 하는군요."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "그런 수사자가 어떻게 그렇게 오래 살 수 있었을까요?"
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "엇, 정말 아이들을 잡아먹어서 그런 건가요?"
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "뭐, 틀린 말은 아닐지도 모르겠군요."
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "히엑!"
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "기록에 따르면 디아르 칸은 죽기 전에 육체를 새롭게 재구성하는 리바이벌이라는 것을 한다고 합니다."
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "08",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "리바……이벌?"
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "그렇습니다. 몸을 아예 새롭게 만들어 내는 거라고 하더군요."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "생명을 바탕으로 한다는 점이 조금 껄끄럽기는 합니다마는……"
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "기록을 보면 디아르 칸이 제물로 활용하는 것은 동물들도 있는가 봅니다."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "물론 강한 힘을 가진 제물일수록 강한 육체를 갖게 되겠죠."
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "05",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "그럼, 몸을 아예 새롭게 바꾸라는 이야기인가?"
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "죽음의 그림자마저도 피해 간 리바이벌입니다."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "리바이벌로 몸이 바뀌면 저주가 풀릴 지도 모릅니다."
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "05",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "……"
+            },
+            {
+              "characterPath": "lilis",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "용사님, 일단 금빛 호수에 가봐야 할 것 같은데요?"
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "그래, 일단 빨리 떠나……"
+            },
+            {
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "몬스터다!"
+            },
+            {
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "몬스터들이 떼로 나타났어!"
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "아무래도 블랙우드 숲의 몬스터들이 성벽으로 몰려오고 있나 봅니다."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "마왕이 등장한 탓인지, 요새 몬스터들의 침략이 잦아지고 있습니다."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "문제는 웨스트릿지 사람들이 몬스터 막는 것을 도와주지 않는다는 것입니다."
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "몬스터들의 침략을 막고 떠나는 게 좋을 것 같네요."
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "05",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "싫어."
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "예?"
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "05",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "몬스터를 막을 시간이 없어. 빨리 마왕의 저주를 풀어야 한단 말이야."
+            },
+            {
+              "characterPath": "lilis",
+              "faceNumber": "08",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "하지만 용사님, 우리가 이대로 떠나면……"
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "04",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "어쩔 수 없잖아! 마왕을 제거하지 않으면 지금보다 훨씬 더 많은 사람들이 죽고 다치게 될 거야."
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "04",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "지금은 빨리 떠나서 내 힘을 되찾아야 한다고!"
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "08",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "그렇지만……"
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "04",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "제길, 난 용사란 말이야!"
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "04",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "너희는 나를 지키고 보좌해야 하잖아?"
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "너희들마저 내가 힘을 잃었으면 하는 거야?"
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "08",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "예? 용사님, 그게 무슨……"
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "04",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "너희들도 굽신거리는 게 싫어서, 내가 힘을 잃기를 바라는 거냐고!"
+            },
+            {
+              "characterPath": "lilis",
+              "faceNumber": "08",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "그렇지 않아요, 저희는 단지……"
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "04",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "하찮은 놈들 주제에……"
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "04",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "……용사님!"
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "그렇다면 이렇게 하시죠."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "어차피 저는 이스트릿지의 촌장을 맡고 있다 보니 웨스트릿지 사람들을 규합할 수는 없습니다."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "용사님과 제가 먼저 금빛호수에서 디아르 칸을 만나겠습니다."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "대신 두 분께서는 잠깐이나마 마을에 힘을 빌려주시지 않겠습니까?"
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "이번에도 마을이 약탈당한다면, 더는 마을 사람들이 견디지 못하고 내란을 일으킬 것입니다."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "부디, 부탁드립니다, 용사님."
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "(털석)"
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "05",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "제길, 왜 무릎까지 꿇고 난리야."
+            },
+            {
+              "characterPath": "yongsa",
+              "faceNumber": "05",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "알았어. 그렇게 하면 되잖아, 하면!"
+            },
+            {
+              "characterPath": "lilis",
+              "faceNumber": "09",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "후우, 용사님 나가셨네요."
+            },
+            {
+              "characterPath": "parath",
+              "faceNumber": "08",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "그러게요, 왜 저러시는 거지……"
+            },
+            {
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_whisternhouse",
+              "script": "다 제가 모자란 탓입니다."
+            },
+            {
+              "script": "그런데, 두 분 만으로 금빛호수까지 괜찮으시겠어요?",
+              "speakerPosition": "right",
+              "characterPath": "parath",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "용사님을 가르친 적도 있는 만큼, 실력에는 나름대로 자신이 있습니다.",
+              "speakerPosition": "left",
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "게다가 제 동료도 데려갈 테니 문제없습니다.",
+              "speakerPosition": "left",
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "처음 뵙겠습니다. 걱정하지 않으시도록 용사님을 보필하겠습니다.",
+              "speakerPosition": "left",
+              "characterPath": "kein_coworker",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "우와, 그렇다면 용사님의 스승님이 되시는 거군요!",
+              "speakerPosition": "right",
+              "characterPath": "parath",
+              "faceNumber": "10",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "……따지고 보면 그렇지만, 용사님께는 사실 스승 같은 건 필요없지요.",
+              "speakerPosition": "left",
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "물론 그 정도로 강하시기는 해요.",
+              "speakerPosition": "right",
+              "characterPath": "lilis",
+              "faceNumber": "11",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "원래 저런 분이 아니신 데 왜 그러시는 건지……",
+              "speakerPosition": "right",
+              "characterPath": "parath",
+              "faceNumber": "08",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "저희는 빨리 몬스터를 처치한 다음 합류하면 될 것 같아요. ",
+              "speakerPosition": "right",
+              "characterPath": "lilis",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "그렇게 하죠! 먼저 나가보겠습니다.",
+              "speakerPosition": "right",
+              "characterPath": "parath",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "다들 나갔군.",
+              "speakerPosition": "right",
+              "characterPath": "kein_coworker",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "케인, 준비는 단단히 해두었겠지?",
+              "speakerPosition": "right",
+              "characterPath": "kein_coworker",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            },
+            {
+              "script": "……물론이지.",
+              "speakerPosition": "left",
+              "characterPath": "kein",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_whisternhouse"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "next_section",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "nextSectionNumber": 405
+            }
+          },
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 50
+              }
+            }
+          }
+        ]
       }
-    }
+    },
+    "greetingMessages": [
+      "휘스턴가의 가주 케인입니다."
+    ]
   },
-  "kadilla_castle_smithy": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "kadilla_castle_02"
-            }
-          ]
-        }
-      }
-    }
+  "yongsa_young": {
+    "name": "어린용사"
   },
-  "kadilla_castle_school": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "kadilla_castle_03"
-            }
-          ]
-        }
-      }
-    }
+  "kein_father": {
+    "name": "케인의 아버지"
   },
-  "kadilla_castle_clothing_store": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "kadilla_castle_03"
-            }
-          ]
-        }
-      }
-    }
+  "diarkan": {
+    "name": "디아르칸",
+    "facePath": "diarkan"
   },
-  "oberon_peasanthouse01": {
+  "holland": {
+    "name": "홀랜드",
+    "facePath": "holland",
     "events": {
       "1": {
+        "eventTitle": "대화하기",
         "eventState": "always_open",
-        "eventType": "go_sub_node",
+        "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
+              "script": "어서오게나, 성당에는 무슨 일이지?",
+              "characterPath": "holland",
               "faceNumber": "01",
-              "backgroundPath": "oberon_02"
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
             }
           ]
         }
+      },
+      "2": {
+        "eventTitle": "미들릿지의 비극",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "용사 대주교님을 뵙습니다.",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "다름이 아니라, 용사를 보필하는 가문의 자리를 두고",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "다른 가문들이 휘스턴 가 사람들을 살해하는 일이 일어났습니다.",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "증거로 이 편지를 제출합니다.",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "아…아니…! 이런 일이 있었다니……!",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "내 이 일을 시장에게 부탁해 명명백백하게 밝혀내겠다고 약속하네!",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "그런데 신의 섭리란 신기하군……",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "그렇지 않아도 두 가문이 수상했던 차였네. 이제야 조사할만한 명분이 생겼군.",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "군자 물품을 몰래 빼돌리는 것 같다는 소문이 있었다네.",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "군자 물품이요?",
+              "characterPath": "parath",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "지금 이 편지를 보니, 동맹을 배신하고 전쟁을 일으킬 계획이었던 것 같군.",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "이 얼마나 끔찍하고 무시무시한 생각인가?",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "자네들이 이 편지를 보여주지만 않았더라도 정말 큰 피해가 생길 뻔했네.",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "역시 악행으로 맺어진 연대는 반드시 무너지는군요.",
+              "characterPath": "lilis",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "용사 자네도 상심이 크겠군.",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "그렇습니다. 저 하나 때문에……",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "용사여. 인간의 욕심은 끝이 없고, 같은 실수를 반복한다네.",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "용사 또한 신의 대리자이기 전에 인간이기에, 실수를 저지를 수밖에 없겠지.",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "하지만…… 용사로서 살아간다는 건, 인간으로서 살아간다는 건",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "실수의 반복과 싸워나가는 과정 아니겠는가?",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "반백 년 간 살아온 사람으로서, 적어도 이것만은 확신할 수 있네.",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "가슴을 찢을 듯한 고통을 참아내며 선택한",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "용사 그대의 마지막 행보가 결코 틀리지 않았다는 것 말일세.",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "그러한 길을 인도하고 함께해준 동료들이 있다는 게 참 부럽군.",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "좋은 말씀 감사합니다, 대주교님.",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "제가 이번 사건을 통하여 깨달은 게 있습니다.",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "제 힘의 근원은 저와 제 동료들에 있으며, 또한 그래야 한다는 사실입니다.",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "그렇지 않다면, 신이 주신 힘은 억압이며 용사는 꼭두각시일 뿐이라는 걸 알게 되었습니다.",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "그러니…… 새로이 탄생한 용사의 행보를 기대해주셨으면 좋겠습니다.",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_catherdal"
+            },
+            {
+              "script": "오오, 이들에게 신의 축복이 있기를!",
+              "characterPath": "holland",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_catherdal"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 20
+              }
+            }
+          },
+          {
+            "rewardType": "next_section",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "nextSectionNumber": 423
+            }
+          }
+        ]
       }
-    }
+    },
+    "greetingMessages": [
+      "어서오게나"
+    ]
   },
-  "oberon_peasanthouse02": {
+  "servant_01": {
+    "name": "하인1",
+    "positionIndex" : 1,
+    "facePath": "servant_01",
     "events": {
       "1": {
+        "eventTitle": "대화하기",
         "eventState": "always_open",
-        "eventType": "go_sub_node",
+        "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
+              "script": "저는 에버그네일님의 하인 1호입니다.",
+              "characterPath": "servant_01",
               "faceNumber": "01",
-              "backgroundPath": "oberon_03"
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_evergnailhouse"
             }
           ]
         }
+      },
+      "2": {
+        "eventTitle": "때린다.",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "아악! 요, 용사님, 왜 그러시는 겁니까?",
+              "characterPath": "servant_01",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_evergnailhouse"
+            },
+            {
+              "script": "밝히라고! 너희 무슨 짓을 저지른 거야, 무얼 아는 거야!",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_evergnailhouse"
+            },
+            {
+              "script": "저희는 아무 잘못도 없습니다! 그저 시키는 대로 했을 뿐입니다.",
+              "characterPath": "servant_01",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_evergnailhouse"
+            },
+            {
+              "script": "아악!",
+              "characterPath": "servant_01",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_evergnailhouse"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardParameter": {
+              "time": {
+                "minute": 10
+              }
+            }
+          }
+        ]
       }
-    }
+    },
+    "greetingMessages": [
+      "무슨 일이신가요?"
+    ]
   },
-  "oberon_peasanthouse03": {
+  "servant_02": {
+    "name": "하인2",
+    "positionIndex" : 2,
+    "facePath": "servant_02",
     "events": {
       "1": {
+        "eventTitle": "대화하기",
         "eventState": "always_open",
-        "eventType": "go_sub_node",
+        "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
+              "script": "저는 에버그네일님의 하인 2호입니다.",
+              "characterPath": "servant_01",
               "faceNumber": "01",
-              "backgroundPath": "oberon_03"
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_evergnailhouse"
             }
           ]
         }
+      },
+      "2": {
+        "eventTitle": "때린다.",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "크윽, 큭. 용사님 제발 그만 때리십시오. 제발요!",
+              "characterPath": "servant_02",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_evergnailhouse"
+            },
+            {
+              "script": "말이 안 나오는 녀석들은 때려야 제맛이지!",
+              "characterPath": "yongsa",
+              "faceNumber": "01",
+              "speakerPosition": "right",
+              "backgroundPath": "middle_ridge_evergnailhouse"
+            },
+            {
+              "script": "으헉!!",
+              "characterPath": "servant_02",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "middle_ridge_evergnailhouse"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardParameter": {
+              "time": {
+                "minute": 10
+              }
+            }
+          }
+        ]
       }
-    }
+    },
+    "greetingMessages": [
+      "무슨 일이신가요?"
+    ]
   },
-  "oberon_peasanthouse04": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "oberon_03"
-            }
-          ]
-        }
-      }
-    }
+  "evergnail": {
+    "name": "앨버트 에버그네일",
+    "facePath": "evergnail"
   },
-  "oberon_grocery": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "oberon_03"
-            }
-          ]
-        }
-      }
-    }
+  "wallace": {
+    "name": "월라스",
+    "facePath": "wallace"
   },
-  "southcape_peasanthouse01": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "southcape_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "southcape_peasanthouse02": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "southcape_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "southcape_grocery": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "southcape_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "southcape_headhouse": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "southcape_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "southcape_peasanthouse03": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "southcape_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "southcape_peasanthouse04": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "southcape_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "southcape_peasanthouse05": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "southcape_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "southcape_peasanthouse06": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "southcape_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "southcape_bar": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "southcape_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "southcape_smithy": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "southcape_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "mirage_port_hermes": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "mirage_port_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "mirage_port_kaido": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "mirage_port_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "mirage_port_dock": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "mirage_port_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "cobweb_library": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "cobweb_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "cobweb_villagehall": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "cobweb_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "cobweb_cathedral": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "cobweb_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "cobweb_store1": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "cobweb_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "cobweb_store2": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "cobweb_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "blackwood_grocery": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "blackwood_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "blackwood_headhouse": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "blackwood_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "blackwood_peasanthouse": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "blackwood_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "vaical_castle_lab": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "vaical_castle_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "vaical_castle_headhouse": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "vaical_castle_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "vaical_castle_colosseum": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "vaical_castle_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "middle_ridge_evergnailhouse": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "middle_ridge_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "middle_ridge_willas": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "middle_ridge_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "middle_ridge_whisternhouse": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "middle_ridge_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "redrose_castle_peasanthouse01": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "redrose_castle_02"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "redrose_castle_peasanthouse02": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "redrose_castle_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "redrose_castle_cathedral": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "redrose_castle_03"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "redrose_castle_castle": {
-    "events": {
-      "1": {
-        "eventState": "always_open",
-        "eventType": "go_sub_node",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "문이 굳게 닫혀있다 ",
-              "speakerPosition": "left",
-              "characterPath": "nothing",
-              "faceNumber": "01",
-              "backgroundPath": "redrose_castle_03"
-            }
-          ]
-        }
-      }
-    }
+  "mawang": {
+    "name": "마왕",
+    "facePath": "mawang"
   }
 }

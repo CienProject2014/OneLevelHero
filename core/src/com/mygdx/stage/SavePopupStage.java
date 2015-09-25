@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -21,8 +22,10 @@ import com.mygdx.currentState.SaveInfo;
 import com.mygdx.enums.SaveVersion;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.SaveManager;
 import com.mygdx.screen.BuildingScreen;
+import com.mygdx.screen.DungeonEntranceScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
@@ -38,6 +41,8 @@ public class SavePopupStage extends BaseOverlapStage {
 	private ConstantsAssets constantsAssets;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private PositionManager positionManager;
 
 	private static final String SCENE_NAME = "save_scene";
 	private final String SUBJECT_LABEL = "subject_label";
@@ -165,7 +170,18 @@ public class SavePopupStage extends BaseOverlapStage {
 		@Override
 		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 			setLabels(sceneConstants);
-			BuildingScreen.isInSave = false;
+			switch (positionManager.getCurrentLocatePositionType()) {
+				case SUB_NODE :
+					BuildingScreen.isInSave = false;
+					break;
+				case NODE :
+					DungeonEntranceScreen.isInSave = false;
+					break;
+				default :
+					Gdx.app.log("SavePopupStage",
+							"LocatePosition정보 오류" + positionManager.getCurrentLocatePositionType());
+					break;
+			}
 		}
 	}
 

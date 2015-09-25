@@ -92,7 +92,7 @@
         }
       },
       {
-        "itemIdentifier": "redrose_castle_peasanthouse01",
+        "itemIdentifier": "redrose_castle_house_01",
         "x": 3313,
         "y": 182,
         "zIndex": 3,
@@ -130,7 +130,7 @@
         }
       },
 {
-        "itemIdentifier": "redrose_castle_peasanthouse02",
+        "itemIdentifier": "redrose_castle_house_02",
         "x": 1502,
         "y": 645,
         "zIndex": 4,

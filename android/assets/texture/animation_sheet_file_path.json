@@ -1,0 +1,20 @@
+{
+  "attack_cutting": {
+    "filePath": "texture/animation_sheet/attack_cutting.png",
+	"frameNumber": 6,
+	"row": 2,
+	"column": 5
+  },
+  "attack_swing": {
+	"filePath": "texture/animation_sheet/attack_swing.png",
+	"frameNumber": 24,
+	"row": 5,
+	"column": 5
+  },
+  "gale":{
+  	"filePath" : "texture/animation_sheet/gale.png",
+  	"frameNumber" : 20,
+  	"row" : 2,
+  	"column" : 10
+  }
+}

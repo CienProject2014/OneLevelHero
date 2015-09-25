@@ -132,16 +132,18 @@
 		scope="prototype"/>
 	<bean id="dungeonEntranceStage" class="com.mygdx.stage.DungeonEntranceStage"
 		scope="prototype" />
+	<bean id="dungeonMinimapStage" class="com.mygdx.stage.DungeonMinimapStage" scope="prototype"/>
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage"
 		scope="prototype"/>
 	<bean id="characterChangeStage" class="com.mygdx.stage.CharacterChangeStage" scope="prototype"/>
 	<bean id="chatEventStage" class="com.mygdx.stage.ChatEventStage" scope="prototype"/>	
-	<bean id="choiceNpcEventStage" class="com.mygdx.stage.ChoiceNpcEventStage"
+	<bean id="choiceEventStage" class="com.mygdx.stage.ChoiceEventStage"
 		scope="prototype"/>
 	<bean id="choiceOptionStage" class="com.mygdx.stage.ChoiceOptionStage"
 		scope="prototype"/>
 	<bean id="fieldStage" class="com.mygdx.stage.FieldStage" scope="prototype"/>
 	<bean id="forkStage" class="com.mygdx.stage.ForkStage" scope="prototype"/>
+	<bean id="gameObjectStage" class="com.mygdx.stage.GameObjectStage" scope="prototype"/>
 	<bean id="gameOverStage" class="com.mygdx.stage.GameOverStage"/>
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype"/>
 	<bean id="greetingStage" class="com.mygdx.stage.GreetingStage" scope="prototype"/>
@@ -157,8 +159,6 @@
 	<bean id="savePopupStage" class="com.mygdx.stage.SavePopupStage" scope="prototype"/>
 	<bean id="villageStage" class="com.mygdx.stage.VillageStage"
 		scope="prototype"/>
-	<bean id="dungeonMinimapStage" class="com.mygdx.stage.DungeonMinimapStage"
-		scope="prototype"/>
 	<bean id="worldMapStage" class="com.mygdx.stage.WorldMapStage"
 		scope="prototype"/>
  	
@@ -170,41 +170,58 @@
 	<bean id="attackButtonListener" class="com.mygdx.listener.AttackButtonListener" scope="prototype"/>
 	<bean id="backButtonListener" class="com.mygdx.listener.BackButtonListener" scope="prototype"/>
 	<bean id="buildingButtonListener" class="com.mygdx.listener.BuildingButtonListener" scope="prototype"/>
+	<bean id="choiceGameObjectEventListener" class="com.mygdx.listener.ChoiceGameObjectEventListener" scope="prototype"/>
 	<bean id="choiceNpcEventListener" class="com.mygdx.listener.ChoiceNpcEventListener" scope="prototype"/>
 	<bean id="choiceOptionListener" class="com.mygdx.listener.ChoiceOptionListener" scope="prototype"/>
 	<bean id="closeButtonListener" class="com.mygdx.listener.CloseButtonListener" scope="prototype"/>
+	<bean id="dungeonDoorButtonListener" class="com.mygdx.listener.DungeonDoorButtonListener" scope="prototype"/>
 	<bean id="dungeonEntranceButtonListener" class="com.mygdx.listener.DungeonEntranceButtonListener" scope="prototype"/>
 	<bean id="gameObjectButtonListener" class="com.mygdx.listener.GameObjectButtonListener" scope="prototype"/>
-	<bean id="GameEndListener" class="com.mygdx.listener.GameEndListener" scope="prototype"/>
+	<bean id="gameEndListener" class="com.mygdx.listener.GameEndListener" scope="prototype"/>
 	<bean id="goBackwardFieldButtonListener" class="com.mygdx.listener.GoBackwardFieldButtonListener" scope="prototype"/>
 	<bean id="goForwardFieldButtonListener" class="com.mygdx.listener.GoForwardFieldButtonListener" scope="prototype"/>
 	<bean id="goTitleListener" class="com.mygdx.listener.GoTitleListener" scope="prototype"/>
 	<bean id="jumpSectionListener" class="com.mygdx.listener.JumpSectionListener" scope="prototype"/>
+	<bean id="leaveDungeonButtonListener" class="com.mygdx.listener.LeaveDungeonButtonListener" scope="prototype"/>
+	<bean id="leaveEventElementListener" class="com.mygdx.listener.LeaveEventElementListener" scope="prototype"/>
 	<bean id="loadListener" class="com.mygdx.listener.LoadListener" scope="prototype"/>
 	<bean id="runAwayListener" class="com.mygdx.listener.RunAwayListener" scope="prototype"/>
 		
 	<bean id="atlasUiFile" class="com.mygdx.model.jsonModel.AtlasUiFile"/>
 	<bean id="musicFile" class="com.mygdx.model.jsonModel.MusicFile"/>
 	
+	<bean id="alwaysOpenGameObjectEventTrigger" class="com.mygdx.eventTrigger.AlwaysOpenGameObjectEventTrigger"/>
+	<bean id="alwaysOpenNpcEventTrigger" class="com.mygdx.eventTrigger.AlwaysOpenNpcEventTrigger"/>
 	<bean id="chatEventTrigger" class="com.mygdx.eventTrigger.ChatEventTrigger"/>
 	<bean id="choiceOptionEventTrigger" class="com.mygdx.eventTrigger.ChoiceOptionEventTrigger"/>
+	<bean id="closeGameObjectEventTrigger" class="com.mygdx.eventTrigger.CloseGameObjectEventTrigger"/>
 	<bean id="endBattleEventTrigger" class="com.mygdx.eventTrigger.EndBattleEventTrigger"/>
+	<bean id="getBuffEventTrigger" class="com.mygdx.eventTrigger.GetBuffEventTrigger"/>
 	<bean id="gameOverEventTrigger" class="com.mygdx.eventTrigger.GameOverEventTrigger"/>
 	<bean id="goSubNodeEventTrigger" class="com.mygdx.eventTrigger.GoSubNodeEventTrigger"/>
 	<bean id="joinPartyEventTrigger" class="com.mygdx.eventTrigger.JoinPartyEventTrigger"/>
 	<bean id="moveNodeEventTrigger" class="com.mygdx.eventTrigger.MoveNodeEventTrigger"/>
 	<bean id="moveSubNodeEventTrigger" class="com.mygdx.eventTrigger.MoveSubNodeEventTrigger"/>
 	<bean id="nextSectionEventTrigger" class="com.mygdx.eventTrigger.NextSectionEventTrigger"/>
+	<bean id="openNpcEventTrigger" class="com.mygdx.eventTrigger.OpenNpcEventTrigger"/>
 	<bean id="passTimeEventTrigger" class="com.mygdx.eventTrigger.PassTimeEventTrigger"/>
 	<bean id="playMusicEventTrigger" class="com.mygdx.eventTrigger.PlayMusicEventTrigger"/>
 	<bean id="playSoundEventTrigger" class="com.mygdx.eventTrigger.PlaySoundEventTrigger"/>
+	<bean id="quitPartyEventTrigger" class="com.mygdx.eventTrigger.QuitPartyEventTrigger"/>
 	<bean id="setSubNodeTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetSubNodeTargetTimeEventTrigger"/>
+	<bean id="setNpcTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetNpcTargetTimeEventTrigger"/>
 	<bean id="startBattleEventTrigger" class="com.mygdx.eventTrigger.StartBattleEventTrigger"/>
 	
 	<bean id="battleCommandChecker" class="com.mygdx.nextSectionChecker.BattleCommandChecker"/>
-	<bean id="battleEndSectionChecker" class="com.mygdx.nextSectionChecker.BattleEndSectionChecker"/>
-	<bean id="choiceOptionSectionChecker" class="com.mygdx.nextSectionChecker.ChoiceOptionSectionChecker"/>
-	<bean id="moveNodeSectionChecker" class="com.mygdx.nextSectionChecker.MoveNodeSectionChecker"/>
-	<bean id="moveFieldSectionChecker" class="com.mygdx.nextSectionChecker.MoveFieldSectionChecker"/>
-	<bean id="moveSubNodeSectionChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeSectionChecker"/>
+	<bean id="battleEndChecker" class="com.mygdx.nextSectionChecker.BattleEndChecker"/>
+	<bean id="choiceOptionChecker" class="com.mygdx.nextSectionChecker.ChoiceOptionChecker"/>
+	<bean id="collectEventChecker" class="com.mygdx.nextSectionChecker.CollectEventChecker"/>
+	<bean id="moveDungeonRoomAfterAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveDungeonRoomAfterAbsoluteTimeChecker"/>
+	<bean id="moveDungeonRoomBeforeAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveDungeonRoomBeforeAbsoluteTimeChecker"/>
+	<bean id="moveDungeonRoomInTargetTimeChecker" class="com.mygdx.nextSectionChecker.MoveDungeonRoomInTargetTimeChecker"/>
+	<bean id="moveNodeChecker" class="com.mygdx.nextSectionChecker.MoveNodeChecker"/>
+	<bean id="moveFieldChecker" class="com.mygdx.nextSectionChecker.MoveFieldChecker"/>
+	<bean id="moveSubNodeAfterAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeAfterAbsoluteTimeChecker"/>
+	<bean id="moveSubNodeBeforeAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeBeforeAbsoluteTimeChecker"/>
+	<bean id="moveSubNodeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeChecker"/>
 </beans>

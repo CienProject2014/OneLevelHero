@@ -51,7 +51,6 @@ public class TextureManager {
 			assetsManager.finishLoading();
 			return assetsManager.get(textureAssets.getTexturePath(texturePath));
 		} else {
-			Gdx.app.log("TextureManager", texturePath + " is Null.");
 			return getTexture(defaultPath);
 		}
 	}
@@ -145,19 +144,20 @@ public class TextureManager {
 		}
 	}
 
-	public Texture getBackgroundTexture(String facePath, TextureEnum textureEnum) {
-		if (textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum) != null) {
-			if (!checkPreName(TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum, preName[12])) {
-				preName[12] = TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum;
+	public Texture getBackgroundTexture(String backgroundPath, TextureEnum textureEnum) {
+		if (textureAssets.getTexturePath(TextureEnum.BACKGROUND + "_" + backgroundPath + "_" + textureEnum) != null) {
+			if (!checkPreName(TextureEnum.BACKGROUND + "_" + backgroundPath + "_" + textureEnum, preName[12])) {
+				preName[12] = TextureEnum.BACKGROUND + "_" + backgroundPath + "_" + textureEnum;
 				assetsManager.load(textureAssets.getTexturePath(preName[12]), Texture.class);
 				assetsManager.finishLoading();
 			} else {
-				Gdx.app.log("TextureManager", "background_" + facePath + "_" + textureEnum + "is null");
-				preName[12] = TextureEnum.BACKGROUND + "_" + facePath + "_" + textureEnum;
+				preName[12] = TextureEnum.BACKGROUND + "_" + backgroundPath + "_" + textureEnum;
 			}
 			return assetsManager.get(textureAssets.getTexturePath(preName[12]), Texture.class);
-		} else
+		} else {
+			Gdx.app.log("TextureManager", "background_" + backgroundPath + "_" + textureEnum.toString() + "is null");
 			return getTexture(preName[12]);
+		}
 	}
 
 	public Texture getFaceImage(String facePath) {
@@ -171,5 +171,17 @@ public class TextureManager {
 	public Texture getBigBattleImage(String facePath) {
 		return getTexture(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE, TextureEnum.BATTLE
 				+ "_default_" + TextureEnum.BIG_IMAGE);
+	}
+
+	public Texture getGameObjectTexture(String objectPath) {
+		if (textureAssets.getTexturePath(TextureEnum.GAME_OBJECT + "_" + objectPath) != null) {
+			preName[11] = TextureEnum.GAME_OBJECT + "_" + objectPath;
+			assetsManager.load(textureAssets.getTexturePath(preName[11]), Texture.class);
+			assetsManager.finishLoading();
+			return assetsManager.get(textureAssets.getTexturePath(preName[11]), Texture.class);
+		} else {
+			Gdx.app.log("TextureManager", "object_" + objectPath + " is null");
+			return getTexture(objectPath, TextureEnum.BUST + "_default_01");
+		}
 	}
 }

@@ -455,6 +455,10 @@ monster_kadillaguardian: {
 	class: java.lang.String,
 	value: texture/monster/monster_kadillaguardian.png/
 },
+bust_nothing_image_01: {
+	class: java.lang.String,
+	value: texture/character/bust_nothing_image_01.png/
+},
 bg_redrose_castle_peasanthouse: {
 	class: java.lang.String,
 	value: texture/background/bg_redrose_castle_peasanthouse.png/
@@ -699,6 +703,10 @@ battle_default_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_default_small.png/
 },
+golden_lake_minimap: {
+	class: java.lang.String,
+	value: texture/dungeon_minimap/golden_lake_minimap.png/
+},
 bust_kein_young_01: {
 	class: java.lang.String,
 	value: texture/character/bust_kein_young_01.png/
@@ -906,6 +914,10 @@ bust_lilis_09: {
 bust_lilis_03: {
 	class: java.lang.String,
 	value: texture/character/bust_lilis_03.png/
+},
+bg_winterfall_dome: {
+	class: java.lang.String,
+	value: texture/background/bg_winterfall_dome.png/
 },
 bust_lilis_04: {
 	class: java.lang.String,
@@ -1227,10 +1239,6 @@ battle_maria_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_maria_small.png/
 },
-object_drawer: {
-	class: java.lang.String,
-	value: texture/object/object_drawer.png/
-},
 bg_kadilla_castle_duke_castle: {
 	class: java.lang.String,
 	value: texture/background/bg_kadilla_castle_duke_castle.png/
@@ -1299,6 +1307,10 @@ bust_parath_10: {
 	class: java.lang.String,
 	value: texture/character/bust_parath_10.png/
 },
+crystallized_valley_minimap: {
+	class: java.lang.String,
+	value: texture/dungeon_minimap/crystallized_valley_minimap.png/
+},
 battle_kadillaguardian_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_kadillaguardian_small.png/
@@ -1310,6 +1322,10 @@ minimap_arrow: {
 monster_griffon: {
 	class: java.lang.String,
 	value: texture/monster/monster_griffon.png/
+},
+bg_devil_castle_up: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_up.png/
 },
 battle_clam_small: {
 	class: java.lang.String,
@@ -1963,6 +1979,10 @@ bust_religious_fanatic: {
 	class: java.lang.String,
 	value: texture/character/bust_religious_fanatic.png/
 },
+bg_blackwood_house: {
+	class: java.lang.String,
+	value: texture/background/bg_blackwood_house.png/
+},
 elemental_none: {
 	class: java.lang.String,
 	value: texture/icon/elemental_none.png/
@@ -2191,6 +2211,10 @@ bg_devil_castle_02: {
 	class: java.lang.String,
 	value: texture/background/bg_devil_castle_02.png/
 },
+bg_devil_castle_01: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_01.png/
+},
 bust_yongsa_01: {
 	class: java.lang.String,
 	value: texture/character/bust_yongsa_01.png/
@@ -2239,6 +2263,10 @@ battle_elementalelectric_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_elementalelectric_big.png/
 },
+object_middle_ridge_drawer: {
+	class: java.lang.String,
+	value: texture/object/object_middle_ridge_drawer.png/
+},
 monster_blooder: {
 	class: java.lang.String,
 	value: texture/monster/monster_blooder.png/
@@ -2270,6 +2298,10 @@ status_parath: {
 battle_elementalfire_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_elementalfire_small.png/
+},
+bg_devil_castle_down: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_down.png/
 },
 bust_lilis_succubus_01: {
 	class: java.lang.String,
@@ -2398,6 +2430,10 @@ battleui_turntable_02: {
 bust_nepel_young_01: {
 	class: java.lang.String,
 	value: texture/character/bust_nepel_young_01.png/
+},
+bg_devil_castle_gate: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_gate.png/
 },
 bust_nepel_young_02: {
 	class: java.lang.String,

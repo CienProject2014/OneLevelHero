@@ -1,7 +1,8 @@
 package com.mygdx.enums;
 
 public enum EventStateEnum {
-	NOT_OPENED("not_opened"), OPENED("opened"), ING("ing"), CLEARED("cleared"), ALWAYS_OPEN("always_open");
+	NOT_OPENED("not_opened"), OPENED("opened"), CLOSED("closed"), CLEARED("cleared"), ALWAYS_OPEN("always_open"), ING(
+			"ing");
 	private String eventStateString;
 
 	EventStateEnum(String eventStateString) {

@@ -28,7 +28,7 @@ public class UiComponentAssets implements FileAssetsInitializable {
 		for (int i = 0; i < 6; i++) {
 			chatButton[i] = new TextureRegionDrawable(textureAtlas.findRegion("chatbutton" + (i + 1)));
 		}
-		setStayButton(new Texture(Gdx.files.internal("texture/ui/dungeon/stay_button_stay.png")));
+		setStayButton(new Texture(Gdx.files.internal("texture/ui/dungeon_entrance/stay_button_stay.png")));
 		skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 		splash = new Texture(Gdx.files.internal("texture/splash.png"));
 		setEventButton(new TextureRegionDrawable(new TextureRegion(new Texture(
