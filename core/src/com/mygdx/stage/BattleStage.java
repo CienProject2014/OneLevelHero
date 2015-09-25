@@ -127,7 +127,6 @@ public class BattleStage extends BaseOneLevelStage {
 		cameraManager.act(delta);
 	}
 
-	
 	public Stage makeStage() {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("BattleStage");
@@ -150,11 +149,10 @@ public class BattleStage extends BaseOneLevelStage {
 		tableStack.add(makeTurnTable()); // TurnTable 배경 테이블
 		tableStack.add(makeTurnFaceTable()); // TurnTable위에 있는 영웅들 이미지 테이블
 		battleManager.setMonsterSize(MonsterEnum.SizeType.MEDIUM);
-		
+
 		tableStack.add(battleManager.getNowGridHitbox());
 		battleManager.setShowGrid(false);
 		battleManager.setBattleStage(this);
-
 		addListener();
 		return this;
 	}
@@ -262,7 +260,7 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private Table makeSmallImageTable() {
-
+		battleManager.updateSubOrder();
 		orderedUnits = battleManager.getOrderedUnits();
 		for (Unit unit : orderedUnits) {
 			turnSmallImageMap.get(unit.getFacePath()).setWidth(80);
@@ -406,10 +404,14 @@ public class BattleStage extends BaseOneLevelStage {
 				start = (new Vector2(touched.x, touched.y));
 				battleManager.getNowGridHitbox().setStartPosition(touched.x, touched.y);
 				battleManager.getNowGridHitbox().showTileWhereMoved(touched.x, touched.y);
-				if (battleManager.getNowGridHitbox().isInsideEdge(touched.x, touched.y)) {
-					battleManager.setGridLimitNum(getWeaponHitboxSize());
+				if (battleManager.isSkill()) {
+
 				} else {
-					battleManager.setGridLimitNum(1);
+					if (battleManager.getNowGridHitbox().isInsideEdge(touched.x, touched.y)) {
+						battleManager.setGridLimitNum(getWeaponHitboxSize());
+					} else {
+						battleManager.setGridLimitNum(1);
+					}
 				}
 			}
 		}

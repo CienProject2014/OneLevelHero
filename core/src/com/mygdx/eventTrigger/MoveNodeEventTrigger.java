@@ -17,7 +17,7 @@ public class MoveNodeEventTrigger implements EventTrigger {
 
 	@Override
 	public void triggerEvent(EventParameters eventParameter) {
-		positionManager.setCurrentNodeName(eventParameter.getLocation().getNodeName());
+		positionManager.setCurrentNodePath(eventParameter.getLocation().getNodeName());
 		movingManager.goCurrentLocatePosition();
 		storySectionManager.runStorySequence();
 	}

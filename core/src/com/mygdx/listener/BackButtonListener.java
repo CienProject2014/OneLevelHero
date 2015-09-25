@@ -30,7 +30,7 @@ public class BackButtonListener extends ClickListener {
 		timeManager.plusMinute(15);
 		if (!positionManager.isInWorldMap()) {
 			movingManager.goPreviousPosition();
-			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, positionManager.getCurrentNodeName());
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, positionManager.getCurrentNodePath());
 		} else {
 			if (StatusScreen.isClickedWorldMap()) {
 				StatusScreen.setClickedWorldMap(false);

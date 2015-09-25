@@ -68,14 +68,14 @@ public class BattleManager {
 	private SoundManager soundManager;
 	private GridHitbox gridHitbox; // grid hitbox 테이블
 	private BattleStage battleStage;
-
+	private Unit currentAttackUnit;
 	public SkillRunPopup gameObjectPopup;
 
 	public boolean isEventBattle() {
 		return battleInfo.isEventBattle();
 	}
-	
-	public void setBattleStage(BattleStage stage){
+
+	public void setBattleStage(BattleStage stage) {
 		battleStage = stage;
 	}
 
@@ -101,7 +101,16 @@ public class BattleManager {
 	}
 
 	public Unit getCurrentActors() {
-		Unit currentAttackUnit = getOrderedUnits().poll();
+		currentAttackUnit = getOrderedUnits().poll();
+		for (Buff buff : currentAttackUnit.getBuffList()) {
+			String buffPath = buff.getBuffPath();
+			if (buffPath.equals("buff_de_sturn") || buffPath.equals("buff_de_frozen")
+					|| buffPath.equals("buff_de_sleep")) {
+				getOrderedUnits().add(currentAttackUnit);
+				currentAttackUnit = getOrderedUnits().poll();
+				updateSubOrder();
+			}
+		}
 		if (currentAttackUnit instanceof Hero) {
 			setCurrentActor((Hero) currentAttackUnit);
 		}
@@ -232,6 +241,14 @@ public class BattleManager {
 		// Turn Logic
 		Collections.sort(getUnits());
 		setOrderedUnits(new LinkedList<Unit>(getUnits()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public void updateSubOrder() {
+		List<Unit> units = new ArrayList<Unit>(getOrderedUnits());
+		Collections.sort(units);
+		getOrderedUnits().clear();
+		getOrderedUnits().addAll(units);
 	}
 
 	public void useSkill(Unit attackUnit, Unit targetUnit, String skillName) {
@@ -428,9 +445,38 @@ public class BattleManager {
 	 *            등록할 애니메이션의 이름
 	 */
 	public void readyForPlayerAnimation(String animationName, int width, int height) {
-		int x = (int) (StaticAssets.windowWidth / 2);
-		int y = (int) (StaticAssets.windowHeight / 2);
-		animationManager.registerAnimation(animationName, x, y, width, height);
+
+		if (partyManager.getCurrentSelectedHero() == null) {
+			// 팀원을 누르는 경우가 아닐때는 받아온 경로로 실행시킨다.
+			int x = (int) (StaticAssets.windowWidth / 2);
+			int y = (int) (StaticAssets.windowHeight / 2);
+			animationManager.registerAnimation(animationName, x, y, width, height);
+		} else {
+			int playerOrder = getPlayerOrder(partyManager.getCurrentSelectedHero());
+			int x1;
+			int y1;
+			switch (playerOrder) {
+				case 0 :
+					x1 = (int) (StaticAssets.windowWidth * 0.1f);
+					y1 = (int) (StaticAssets.windowHeight * 0.6f);
+					break;
+				case 1 :
+					x1 = (int) (StaticAssets.windowWidth * 0.1f);
+					y1 = (int) (StaticAssets.windowHeight * 0.5f);
+					break;
+				case 2 :
+					x1 = (int) (StaticAssets.windowWidth * 0.1f);
+					y1 = (int) (StaticAssets.windowHeight * 0.4f);
+					break;
+				default :
+					x1 = (int) (StaticAssets.windowWidth * 0.1f);
+					y1 = (int) (StaticAssets.windowHeight * 0.6f);
+					break;
+			}
+			// animationManager.registerAnimation("attack_cutting", x, y);
+			animationManager.registerAnimation("attack_cutting", x1, y1, width, height);
+		}
+
 	}
 
 	/***

@@ -37,8 +37,6 @@ public class ArrowButtonListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		soundManager.setSoundByUseAndPlay("move_arrow");
-		timeManager.plusMinute(30); // 마을에서 길로 나가는데 30분
 		int beforeSectionNumber = storySectionManager.getCurrentStorySectionNumber();
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.CLICK_ARROW, connection.getValue().getArrowName());
 		int currentSectionNumber = storySectionManager.getCurrentStorySectionNumber();
@@ -59,6 +57,8 @@ public class ArrowButtonListener extends ClickListener {
 			movingManager.goToNode(node);
 			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, node);
 		}
+		soundManager.setSoundByUseAndPlay("move_arrow");
+		timeManager.plusMinute(30); // 마을에서 길로 나가는데 30분
 	}
 	public Entry<String, NodeConnection> getConnection() {
 		return connection;

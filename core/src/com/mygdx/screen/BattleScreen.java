@@ -20,17 +20,14 @@ public class BattleScreen extends BaseScreen {
 		monsterStage.draw();
 		characterUiStage.draw();
 		battleStage.draw();
-		// FIXME GameUi와 CharacherUi의 분리가 필요
 		gameUiStage.draw();
 
 		if (showSkillStage) {
 			skillStage.draw();
 		}
-
 		if (showItemStage) {
 			itemStage.draw();
 		}
-		// Animation이 진행중일때는 사용자의 입력에 대한 행동을 수행하지 않음
 		monsterStage.act(delta);
 		characterUiStage.act(delta);
 		gameUiStage.act();

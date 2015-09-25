@@ -12,6 +12,17 @@ public class EventScene {
 	private String speakerPosition;
 	private ArrayList<Reward> rewards;
 
+	public EventScene() {
+
+	}
+
+	public EventScene(String backgroundPath, String characterPath, String script, String faceNumber) {
+		this.backgroundPath = backgroundPath;
+		this.characterPath = characterPath;
+		this.script = script;
+		this.faceNumber = faceNumber;
+	}
+
 	public String getCharacterPath() {
 		return characterPath;
 	}

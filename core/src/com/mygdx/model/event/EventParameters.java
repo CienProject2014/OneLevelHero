@@ -3,6 +3,7 @@ package com.mygdx.model.event;
 import java.util.ArrayList;
 
 import com.mygdx.model.eventParameter.BattleParameter;
+import com.mygdx.model.eventParameter.BuffParameter;
 import com.mygdx.model.eventParameter.ItemParameter;
 import com.mygdx.model.eventParameter.LocationParameter;
 import com.mygdx.model.eventParameter.MusicParameter;
@@ -22,6 +23,7 @@ public class EventParameters {
 	private int nextSectionNumber;
 	private MusicParameter music;
 	private ItemParameter item;
+	private BuffParameter buff;
 
 	public TimeParameter getTime() {
 		return time;
@@ -94,5 +96,11 @@ public class EventParameters {
 	}
 	public void setUnit(UnitParameter unit) {
 		this.unit = unit;
+	}
+	public BuffParameter getBuff() {
+		return buff;
+	}
+	public void setBuff(BuffParameter buff) {
+		this.buff = buff;
 	}
 }

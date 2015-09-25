@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.MovingManager;
@@ -42,7 +39,7 @@ public class GreetingScreen extends BaseScreen {
 	@Override
 	public void show() {
 		greetingStage = stageFactory.makeStage(StageEnum.GREETING);
-		choiceEventStage = stageFactory.makeStage(StageEnum.CHOICE_NPCE_EVENT);
+		choiceEventStage = stageFactory.makeStage(StageEnum.CHOICE_EVENT);
 		// for shuffle
 
 		InputMultiplexer multiplexer = new InputMultiplexer();
@@ -56,13 +53,5 @@ public class GreetingScreen extends BaseScreen {
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		input.setInputProcessor(multiplexer);
 
-		greetingStage.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				positionManager.setCurrentEventPositionType(EventPosition.NONE);
-				movingManager.goCurrentLocatePosition();
-				return true;
-			}
-		});
 	}
 }

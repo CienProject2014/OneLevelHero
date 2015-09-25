@@ -18,6 +18,8 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.enums.WorldNodeEnum;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.LeaveEventElementListener;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
@@ -39,6 +41,8 @@ public class GreetingStage extends BaseOneLevelStage {
 	private TextureManager textureManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private ListenerFactory listenerFactory;
 	private Label scriptTitle = new Label("", StaticAssets.skin);
 	private Label scriptContent = new Label("", StaticAssets.skin);
 	private Image characterImage;
@@ -51,17 +55,22 @@ public class GreetingStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		setUiConstantsMap(constantsAssets.getUiConstants("EventStage"));
-
 		setScene();
+		addLeaveListener();
 		return this;
+	}
+
+	private void addLeaveListener() {
+		LeaveEventElementListener leaveEventElementListener = listenerFactory.getLeaveEventElementListener();
+		this.addListener(leaveEventElementListener);
 	}
 
 	public void setScene() {
 		List<String> greetingMessageList = eventManager.getCurrentNpc().getGreetingMessages();
-		WorldNodeEnum.NodeType nodeType = worldMapAssets.getNodeType(positionManager.getCurrentNodeName());
-		SubNode subNodeInfo = nodeAssets.getSubNodeInfo(nodeType, positionManager.getCurrentNodeName(),
-				positionManager.getCurrentSubNodeName());
-		EventElement eventElement = eventManager.getCurrentEventElement();
+		WorldNodeEnum.NodeType nodeType = worldMapAssets.getNodeType(positionManager.getCurrentNodePath());
+		SubNode subNodeInfo = nodeAssets.getSubNodeInfo(nodeType, positionManager.getCurrentNodePath(),
+				positionManager.getCurrentSubNodePath());
+		EventElement eventElement = eventManager.getCurrentNpc();
 		setScript(eventElement, greetingMessageList);
 		makeChatTable(eventElement, subNodeInfo);
 	}
