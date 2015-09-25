@@ -2134,8 +2134,8 @@
     ],
     "skillList": []
   },
-  "kain_01": {
-    "facePath": "kain_01",
+  "kein_01": {
+    "facePath": "kein_01",
     "name": "케인 휘스턴",
     "sizeType": "medium",
     "elementType": "none",
@@ -2220,8 +2220,8 @@
     ],
     "skillList": []
   },
-  "kain_02": {
-    "facePath": "kain_02",
+  "kein_02": {
+    "facePath": "kein_02",
     "name": "각성한 케인",
     "sizeType": "medium",
     "elementType": "none",

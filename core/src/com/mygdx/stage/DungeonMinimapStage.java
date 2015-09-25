@@ -74,6 +74,9 @@ public class DungeonMinimapStage extends BaseOneLevelStage {
 			case BOTTOM :
 				rotationDegree = -90;
 				break;
+			case BOTTOM_LEFT :
+				rotationDegree = -135;
+				break;
 			case LEFT :
 				rotationDegree = 180;
 				break;

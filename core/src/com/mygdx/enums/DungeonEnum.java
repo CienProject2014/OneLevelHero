@@ -31,8 +31,8 @@ public class DungeonEnum {
 	}
 
 	public enum ForwardAngle {
-		LEFT("left"), RIGHT("right"), TOP_LEFT("top_left"), TOP_RIGHT("top_right"), BOTTOM("bottom"), TOP("top"), BOTTOM_RIGHT(
-				"bottom_right");
+		LEFT("left"), RIGHT("right"), TOP_LEFT("top_left"), BOTTOM_LEFT("bottom_left"), TOP_RIGHT("top_right"), BOTTOM(
+				"bottom"), TOP("top"), BOTTOM_RIGHT("bottom_right");
 		private String code;
 
 		private ForwardAngle(String code) {

@@ -30,6 +30,7 @@ public class EventInfo {
 	private ArrayList<EventScene> currentEventScenes;
 	private Event currentStoryEvent;
 	private Event currentNpcEvent;
+	private Event currentGameObjectEvent;
 	private GameObject currentGameObject;
 	private NPC currentNpc;
 	private Building currentBuildingInfo;
@@ -71,10 +72,6 @@ public class EventInfo {
 
 	private NPC getMainStory(String mainStory) {
 		return mainStoryMap.get(mainStory);
-	}
-
-	public Event getCurrentGameObjectEvent() {
-		return currentGameObject.getObjectEvent();
 	}
 
 	public Map<String, Quest> getQuestMap() {
@@ -125,5 +122,12 @@ public class EventInfo {
 	}
 	public void setHeroMap(Map<String, Hero> heroMap) {
 		this.heroMap = heroMap;
+	}
+	public Event getCurrentGameObjectEvent() {
+		return currentGameObjectEvent;
+	}
+	public void setCurrentGameObjectEvent(EventPacket eventPacket) {
+		this.currentGameObjectEvent = getGameObjectMap().get(eventPacket.getEventElement()).getEvent(
+				eventPacket.getEventNumber());
 	}
 }

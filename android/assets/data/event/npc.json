@@ -561,7 +561,7 @@
             }
           },
           {
-            "rewardType": "open_event",
+            "rewardType": "open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -1930,9 +1930,10 @@
       "어서오게나"
     ]
   },
-  "servernt1": {
+  "servant_01": {
     "name": "하인1",
-    "facePath": "servernt1",
+    "positionIndex" : 1,
+    "facePath": "servant_01",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -1942,7 +1943,7 @@
           "eventScenes": [
             {
               "script": "저는 에버그네일님의 하인 1호입니다.",
-              "characterPath": "servernt1",
+              "characterPath": "servant_01",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "middle_ridge_evergnailhouse"
@@ -1958,7 +1959,7 @@
           "eventScenes": [
             {
               "script": "아악! 요, 용사님, 왜 그러시는 겁니까?",
-              "characterPath": "servernt1",
+              "characterPath": "servant_01",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "middle_ridge_evergnailhouse"
@@ -1972,14 +1973,14 @@
             },
             {
               "script": "저희는 아무 잘못도 없습니다! 그저 시키는 대로 했을 뿐입니다.",
-              "characterPath": "servernt1",
+              "characterPath": "servant_01",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "middle_ridge_evergnailhouse"
             },
             {
               "script": "아악!",
-              "characterPath": "servernt1",
+              "characterPath": "servant_01",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "middle_ridge_evergnailhouse"
@@ -2002,9 +2003,10 @@
       "무슨 일이신가요?"
     ]
   },
-  "servernt2": {
+  "servant_02": {
     "name": "하인2",
-    "facePath": "servernt2",
+    "positionIndex" : 2,
+    "facePath": "servant_02",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -2014,7 +2016,7 @@
           "eventScenes": [
             {
               "script": "저는 에버그네일님의 하인 2호입니다.",
-              "characterPath": "servernt1",
+              "characterPath": "servant_01",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "middle_ridge_evergnailhouse"
@@ -2030,7 +2032,7 @@
           "eventScenes": [
             {
               "script": "크윽, 큭. 용사님 제발 그만 때리십시오. 제발요!",
-              "characterPath": "servernt2",
+              "characterPath": "servant_02",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "middle_ridge_evergnailhouse"
@@ -2044,7 +2046,7 @@
             },
             {
               "script": "으헉!!",
-              "characterPath": "servernt2",
+              "characterPath": "servant_02",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "middle_ridge_evergnailhouse"
@@ -2074,264 +2076,6 @@
   "wallace": {
     "name": "월라스",
     "facePath": "wallace"
-  },
-  "drawer": {
-    "name": "서랍장",
-    "facePath": "drawer",
-    "events": {
-      "1": {
-        "eventTitle": "첫 번째 서랍",
-        "eventState": "always_open",
-        "eventType": "chat",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "비어있다.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            }
-          ]
-        },
-        "rewards": [
-          {
-            "rewardType": "pass_time",
-            "rewardState": "not_opened",
-            "rewardParameter": {
-              "time": {
-                "minute": 5
-              }
-            }
-          }
-        ]
-      },
-      "2": {
-        "eventTitle": "두 번째 서랍",
-        "eventState": "always_open",
-        "eventType": "chat",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "편지더미가 있는데 건들진 말아야겠다.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            }
-          ]
-        },
-        "rewards": [
-          {
-            "rewardType": "pass_time",
-            "rewardState": "not_opened",
-            "rewardParameter": {
-              "time": {
-                "minute": 5
-              }
-            }
-          }
-        ]
-      },
-      "3": {
-        "eventTitle": "두 번째 서랍",
-        "eventState": "not_opened",
-        "eventType": "chat",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "상자에서 편지더미가 발견되었다.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "친애하는 월라스 경께",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "저번에 보내주신 하인 덕분에 일은 잘 처리했습니다.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "그렇지만 죽은 줄만 알았던 케인 녀석이 쥐새끼같이 살아남아 휘스턴가의 수장을 차지할 줄은 누가 알았겠습니까?",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "그 녀석도 바로 죽이긴 사람들 눈치가 보이고……",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "그래서 제가 묘안을 생각해보았습니다.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "용사에게 어떤 사정이 생겨 미들릿지로 오고 있다고 합니다.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "용사는 휘스턴가에서 자랐으니 분명히 케인을 만날 것입니다.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "용사와 케인의 사이는 무척 나쁘니, 둘을 이간질해 케인이 용사를 죽이려다 되려 개죽음을 당하는 건 어떻겠습니까?",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "월라스 경의 의견을 듣고 싶습니다. 이만 줄이겠습니다.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "에버그네일 경 올림",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "이런 파렴치한……!",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "어떻게 이런 일을 저지를 수 있죠?",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "아니야. 그럴 수 없어. 믿을 수 없어.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            },
-            {
-              "script": "아까 만난 사람들한테 직접 들을 거야.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            }
-          ]
-        },
-        "rewards": [
-          {
-            "rewardType": "always_open_npc_event",
-            "rewardParameter": {
-              "eventPacket": {
-                "eventElement": "drawer",
-                "eventNumber": 4
-              }
-            }
-          },
-          {
-            "rewardType": "next_section",
-            "rewardState": "not_opened",
-            "rewardParameter": {
-              "nextSectionNumber": 416
-            }
-          },
-          {
-            "rewardType": "pass_time",
-            "rewardState": "not_opened",
-            "rewardParameter": {
-              "time": {
-                "minute": 10
-              }
-            }
-          }
-        ]
-      },
-      "4": {
-        "eventTitle": "두 번째 서랍",
-        "eventState": "not_opened",
-        "eventType": "chat",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "이미 편지를 꺼냈다.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            }
-          ]
-        },
-        "rewards": [
-          {
-            "rewardType": "pass_time",
-            "rewardState": "not_opened",
-            "rewardParameter": {
-              "time": {
-                "minute": 5
-              }
-            }
-          }
-        ]
-      },
-      "5": {
-        "eventTitle": "세 번째 서랍",
-        "eventState": "always_open",
-        "eventType": "chat",
-        "eventParameter": {
-          "eventScenes": [
-            {
-              "script": "비어있다.",
-              "characterPath": "nothing_image",
-              "faceNumber": "01",
-              "speakerPosition": "left",
-              "backgroundPath": "middle_ridge_house"
-            }
-          ]
-        },
-        "rewards": [
-          {
-            "rewardType": "pass_time",
-            "rewardState": "not_opened",
-            "rewardParameter": {
-              "time": {
-                "minute": 5
-              }
-            }
-          }
-        ]
-      }
-    },
-    "greetingMessages": [
-      "서랍이다."
-    ]
   },
   "mawang": {
     "name": "마왕",

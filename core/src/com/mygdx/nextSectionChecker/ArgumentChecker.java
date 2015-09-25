@@ -11,6 +11,9 @@ public class ArgumentChecker {
 	}
 
 	public static boolean checkIsInTargetTime(TargetTime timeInfo, int currentMinute) {
+		if (timeInfo == null) {
+			return true;
+		}
 		int startMinute = timeInfo.getStartHour() * TimeManager.MINUTES_PER_HOUR;
 		int endMinute = timeInfo.getEndHour() * TimeManager.MINUTES_PER_HOUR;
 		if (startMinute < endMinute) {
@@ -20,7 +23,7 @@ public class ArgumentChecker {
 				return false;
 			}
 		} else {
-			if (currentMinute <= startMinute && currentMinute <= endMinute) {
+			if (currentMinute <= startMinute && currentMinute >= endMinute) {
 				return true;
 			} else {
 				return false;

@@ -7,6 +7,7 @@ import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.AttackButtonListener;
 import com.mygdx.listener.BackButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
+import com.mygdx.listener.ChoiceGameObjectEventListener;
 import com.mygdx.listener.ChoiceNpcEventListener;
 import com.mygdx.listener.ChoiceOptionListener;
 import com.mygdx.listener.CloseButtonListener;
@@ -36,6 +37,10 @@ public class ListenerFactory {
 
 	public RunAwayListener getRunAwayListener() {
 		return context.getBean(RunAwayListener.class);
+	}
+
+	public ChoiceGameObjectEventListener getChoiceGameObjectEventListener() {
+		return context.getBean(ChoiceGameObjectEventListener.class);
 	}
 
 	public ChoiceNpcEventListener getChoiceNpcEventListener() {

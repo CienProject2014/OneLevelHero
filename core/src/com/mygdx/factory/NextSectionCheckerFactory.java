@@ -8,6 +8,9 @@ import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.nextSectionChecker.BattleCommandChecker;
 import com.mygdx.nextSectionChecker.BattleEndChecker;
 import com.mygdx.nextSectionChecker.ChoiceOptionChecker;
+import com.mygdx.nextSectionChecker.CollectEventChecker;
+import com.mygdx.nextSectionChecker.MoveDungeonRoomAfterAbsoluteTimeChecker;
+import com.mygdx.nextSectionChecker.MoveDungeonRoomBeforeAbsoluteTimeChecker;
 import com.mygdx.nextSectionChecker.MoveDungeonRoomInTargetTimeChecker;
 import com.mygdx.nextSectionChecker.MoveFieldChecker;
 import com.mygdx.nextSectionChecker.MoveNodeChecker;
@@ -28,6 +31,12 @@ public class NextSectionCheckerFactory {
 				return context.getBean(BattleEndChecker.class);
 			case CHOICE_OPTION :
 				return context.getBean(ChoiceOptionChecker.class);
+			case COLLECT_EVENT :
+				return context.getBean(CollectEventChecker.class);
+			case MOVE_DUNGEON_ROOM_AFTER_ABSOLUTE_TIME :
+				return context.getBean(MoveDungeonRoomAfterAbsoluteTimeChecker.class);
+			case MOVE_DUNGEON_ROOM_BEFORE_ABSOLUTE_TIME :
+				return context.getBean(MoveDungeonRoomBeforeAbsoluteTimeChecker.class);
 			case MOVE_DUNGEON_ROOM_IN_TARGET_TIME :
 				return context.getBean(MoveDungeonRoomInTargetTimeChecker.class);
 			case MOVE_FIELD :
@@ -41,7 +50,7 @@ public class NextSectionCheckerFactory {
 			case MOVE_SUB_NODE_BEFORE_ABSOLUTE_TIME :
 				return context.getBean(MoveSubNodeBeforeAbsoluteTimeChecker.class);
 			default :
-				Gdx.app.log("NextSectionCheckerFactory", "eventType 정보 오류");
+				Gdx.app.log("NextSectionCheckerFactory", "eventType 정보 오류" + eventType);
 				return null;
 		}
 	}

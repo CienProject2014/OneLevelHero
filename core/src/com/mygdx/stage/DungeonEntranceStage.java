@@ -26,6 +26,7 @@ import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.location.DungeonEntrance;
 import com.mygdx.model.location.NodeConnection;
+import com.mygdx.screen.DungeonEntranceScreen;
 
 /**
  * @author Velmont
@@ -84,7 +85,7 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 		saveButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				Gdx.app.debug("DungeonEntranceStage", "게임이 저장되었다...");
+				DungeonEntranceScreen.isInSave = true;
 			}
 		});
 

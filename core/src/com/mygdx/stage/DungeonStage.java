@@ -203,6 +203,7 @@ public class DungeonStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				dungeonManager.changeDirection();
+				timeManager.plusMinute(5);
 			}
 		});
 		addActor(changeDirectionbuttonTable);

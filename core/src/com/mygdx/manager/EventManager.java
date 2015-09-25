@@ -64,6 +64,10 @@ public class EventManager {
 		triggerCurrentEvent();
 	}
 
+	public EventInfo getEventInfo() {
+		return eventInfo;
+	}
+
 	public void triggerCurrentEvent() {
 		EventTypeEnum eventType = getCurrentEvent().getEventType();
 		EventTrigger eventTrigger = eventTriggerFactory.getEventTrigger(eventType);
@@ -92,6 +96,9 @@ public class EventManager {
 			case STORY :
 				eventInfo.setCurrentStoryEvent(eventPacket);
 				break;
+			case GAME_OBJECT :
+				eventInfo.setCurrentGameObjectEvent(eventPacket);
+				break;
 			default :
 				Gdx.app.log("EventManager", "eventElementType정보 오류 - " + eventElementType);
 				break;
@@ -117,6 +124,26 @@ public class EventManager {
 		eventInfo.setCurrentGameObject(gameObject);
 	}
 
+	public static boolean isEventVisible(Event event) {
+		switch (event.getEventState()) {
+			case ALWAYS_OPEN :
+				return true;
+			case CLEARED :
+				return true;
+			case CLOSED :
+				return false;
+			case ING :
+				return true;
+			case NOT_OPENED :
+				return false;
+			case OPENED :
+				return true;
+			default :
+				Gdx.app.log("EventManager", "EventState정보 오류" + event.getEventState());
+				return false;
+		}
+	}
+
 	public void setTargetBuildingInfo(Building buildingInfo) {
 		eventInfo.setCurrentBuildingInfo(buildingInfo);
 	}
@@ -125,12 +152,26 @@ public class EventManager {
 		return eventInfo.getCurrentBuildingInfo();
 	}
 
+	public EventElement getCurrentEventElement(EventElementEnum eventElementType) {
+		switch (eventElementType) {
+			case NPC :
+				return eventInfo.getCurrentNpc();
+			case GAME_OBJECT :
+				return eventInfo.getCurrentGameObject();
+			default :
+				Gdx.app.log("EventManager", "eventElement정보 오류" + eventInfo.getCurrentEventElementType());
+				return null;
+		}
+	}
+
 	public Event getCurrentEvent() {
 		switch (eventInfo.getCurrentEventElementType()) {
 			case NPC :
 				return eventInfo.getCurrentNpcEvent();
 			case STORY :
 				return eventInfo.getCurrentStoryEvent();
+			case GAME_OBJECT :
+				return eventInfo.getCurrentGameObjectEvent();
 			default :
 				Gdx.app.log("EventManager", "eventElement정보 오류" + eventInfo.getCurrentEventElementType());
 				return null;
@@ -153,9 +194,17 @@ public class EventManager {
 		eventInfo.setGameObjectMap(gameObjectMap);
 	}
 
+	public void setNpcEventState(EventPacket eventPacket, EventStateEnum eventState) {
+		getNpcEvent(eventPacket).setEventState(eventState);
+	}
+
+	public void setGameObjectEventState(EventPacket eventPacket, EventStateEnum eventState) {
+		getGameObjectEvent(eventPacket).setEventState(eventState);
+	}
+
 	public void finishEvent() {
 		if (getCurrentEvent().getEventState() == EventStateEnum.OPENED) {
-			getCurrentEvent().setEventState(EventStateEnum.CLEARED);
+			getCurrentEvent().setEventState(EventStateEnum.CLOSED);
 		}
 	}
 
@@ -216,5 +265,9 @@ public class EventManager {
 
 	public Map<String, Hero> getHeroMap() {
 		return eventInfo.getHeroMap();
+	}
+
+	public Event getGameObjectEvent(EventPacket eventPacket) {
+		return eventInfo.getGameObjectMap().get(eventPacket.getEventElement()).getEvent(eventPacket.getEventNumber());
 	}
 }

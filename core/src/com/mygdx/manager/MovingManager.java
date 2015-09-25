@@ -34,6 +34,7 @@ public class MovingManager {
 		if (positionManager.getCurrentEventPositionType() != PositionEnum.EventPosition.NONE) {
 			goBeforeEventPosition();
 		} else {
+			Gdx.app.log("MovingManager", "go" + positionManager.getCurrentLocatePositionType());
 			switch (positionManager.getCurrentLocatePositionType()) {
 				case NODE :
 					goCurrentNode(nodeType);
@@ -52,14 +53,16 @@ public class MovingManager {
 			}
 		}
 	}
-
 	private void goBeforeEventPosition() {
 		switch (positionManager.getCurrentEventPositionType()) {
+			case GAME_OBJECT :
+				screenFactory.show(ScreenEnum.GAME_OBJECT);
+				break;
 			case BATTLE :
 				positionManager.setCurrentEventPositionType(PositionEnum.EventPosition.NONE);
 				goCurrentLocatePosition();
 				break;
-			case GREETING :
+			case NPC :
 				screenFactory.show(ScreenEnum.GREETING);
 				break;
 			case WORLD_MAP :

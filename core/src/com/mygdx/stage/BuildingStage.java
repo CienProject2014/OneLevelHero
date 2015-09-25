@@ -32,7 +32,9 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.event.GameObject;
+import com.mygdx.model.event.NPC;
 import com.mygdx.model.location.Building;
+import com.mygdx.nextSectionChecker.ArgumentChecker;
 import com.mygdx.popup.GameObjectPopup;
 import com.mygdx.screen.BuildingScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -60,12 +62,15 @@ public class BuildingStage extends BaseOverlapStage {
 	@Autowired
 	private TimeManager timeManager;
 
+	private static final int GAME_OBJECT_POSITION[][] = {{80, 45}, {450, 45}, {820, 45}, {1210, 45}, {1570, 45}};
 	private List<CompositeItem> npcButtonList;
 	private List<CompositeItem> gameObjectList;
 	private Building buildingInfo;
 	private GameObjectPopup gameObjectPopup;
+	protected Stack tableStack;
 
 	public Stage makeStage() {
+		cameraManager.stretchToDevice(this);
 		buildingInfo = nodeAssets.getVillageByPath(positionManager.getCurrentNodePath()).getBuilding()
 				.get(positionManager.getCurrentSubNodePath());
 		if (buildingInfo.isOverlapScene()) {
@@ -76,10 +81,12 @@ public class BuildingStage extends BaseOverlapStage {
 		} else {
 			makeBuildingScene();
 			setNpcList();
-			setItemList();
 			setGameObject();
 		}
-		cameraManager.stretchToDevice(this);
+		tableStack = new Stack();
+		tableStack.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
+		tableStack.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
+		this.addActor(tableStack);
 		return this;
 	}
 
@@ -97,10 +104,9 @@ public class BuildingStage extends BaseOverlapStage {
 		tableStack.addActor(buttonTable);
 		if (buildingInfo.getGameObject() != null) {
 			for (final String objectName : buildingInfo.getGameObject()) {
-				final GameObject gameObject = eventAssets.getGameObject(objectName);
+				final GameObject gameObject = eventManager.getEventInfo().getGameObjectMap().get(objectName);
 				if (objectName.equals("save")) {
 					ImageButton saveButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_save"));
-
 					buttonTable.add(saveButton);
 					buttonTable.row();
 					buttonTable.row();
@@ -117,7 +123,6 @@ public class BuildingStage extends BaseOverlapStage {
 					buttonTable.row();
 					restButton.addListener(new SimpleTouchListener() {
 						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-
 							timeManager.plusMinute(5);
 							eventManager.setCurrentGameObject(gameObject);
 							gameObjectPopup = new GameObjectPopup();
@@ -130,7 +135,7 @@ public class BuildingStage extends BaseOverlapStage {
 							gameObjectPopup.setVisible(true);
 						}
 					});
-				} else {
+				} else if (objectName.equals("stay")) {
 					ImageButton restsButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_go"));
 					addActor(restsButton);
 					restsButton.addListener(new SimpleTouchListener() {
@@ -148,12 +153,31 @@ public class BuildingStage extends BaseOverlapStage {
 							gameObjectPopup.setVisible(true);
 						}
 					});
+				} else {
+					if (gameObject != null) {
+						ImageButton gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+								textureManager.getGameObjectTexture(gameObject.getFacePath()))));
+						Table gameObjectTable = new Table();
+						gameObjectTable.add(gameObjectButton);
+						gameObjectTable.left().bottom();
+						gameObjectTable.padLeft(GAME_OBJECT_POSITION[gameObject.getPositionIndex()][0]).padBottom(
+								GAME_OBJECT_POSITION[gameObject.getPositionIndex()][1]);
+						gameObjectTable.addListener(new SimpleTouchListener() {
+							@Override
+							public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+								timeManager.plusMinute(5);
+								eventManager.setCurrentGameObject(gameObject);
+								positionManager.setCurrentEventPositionType(EventPosition.GAME_OBJECT);
+								screenFactory.show(ScreenEnum.GAME_OBJECT);
+							}
+						});
+						tableStack.add(gameObjectTable);
+					}
 				}
 			}
-
 		}
-
 	}
+
 	private void makeScene() {
 		buildingInfo = nodeAssets.getVillageByPath(positionManager.getCurrentNodePath()).getBuilding()
 				.get(positionManager.getCurrentSubNodePath());
@@ -177,30 +201,31 @@ public class BuildingStage extends BaseOverlapStage {
 		backgroundTable.setBackground(backgroundImage);
 		addActor(backgroundTable);
 	}
-	private void setItemList() {
-		// TODO Auto-generated method stub
-	}
 
 	private void setNpcList() {
 		if (buildingInfo.getBuildingNpc() != null) {
 			for (final String npcName : buildingInfo.getBuildingNpc()) {
-				ImageButton npcButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
-						textureManager.getBustTexture(npcName, "01"))));
-				npcButton.setTouchable(Touchable.enabled);
-				npcButton.addListener(new SimpleTouchListener() {
-					@Override
-					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-						timeManager.plusMinute(5);
-						eventManager.setCurrentNpc(npcName);
-						positionManager.setCurrentEventPositionType(EventPosition.GREETING);
-						screenFactory.show(ScreenEnum.GREETING);
+				NPC npc = eventManager.getEventInfo().getNpcMap().get(npcName);
+				if (npc != null) {
+					if (ArgumentChecker.checkIsInTargetTime(npc.getTargetTime(), timeManager.getDayMinute())) {
+						ImageButton npcButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+								textureManager.getBustTexture(npcName, "01"))));
+						npcButton.setTouchable(Touchable.enabled);
+						npcButton.addListener(new SimpleTouchListener() {
+							@Override
+							public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+								timeManager.plusMinute(5);
+								eventManager.setCurrentNpc(npcName);
+								positionManager.setCurrentEventPositionType(EventPosition.NPC);
+								screenFactory.show(ScreenEnum.GREETING);
+							}
+						});
+						addActor(npcButton);
 					}
-				});
-				addActor(npcButton);
+				}
 			}
 		}
 	}
-
 	private void makeBuildingSceneByOverlap() {
 		sceneLoader.loadScene(buildingInfo.getSceneName());
 		addActor(sceneLoader.getRoot());
@@ -217,7 +242,7 @@ public class BuildingStage extends BaseOverlapStage {
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 						timeManager.plusMinute(5);
 						eventManager.setCurrentNpc(npcName);
-						positionManager.setCurrentEventPositionType(EventPosition.GREETING);
+						positionManager.setCurrentEventPositionType(EventPosition.NPC);
 						screenFactory.show(ScreenEnum.GREETING);
 					}
 				});

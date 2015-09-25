@@ -7723,13 +7723,11 @@
         "eventType": "set_npc_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "middle_ridge",
-            "subNodeName" : "middle_ridge_evergnailhouse",
-            "npcName" : "evergnail"
+          	 "npcName" : "evergnail"
           },
           "time" : {
-            "startHour" : 0,
-            "endHour" : 0
+            "startHour" : 24,
+            "endHour" : 24
           }
         }
       },
@@ -7738,22 +7736,20 @@
         "eventType": "set_npc_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "middle_ridge",
-            "subNodeName" : "middle_ridge_willashouse",
-            "npcName" : "willas"
+          	 "npcName" : "wallace"
           },
           "time" : {
-            "startHour" : 0,
-            "endHour" : 0
+            "startHour" : 24,
+            "endHour" : 24
           }
         }
       },
       "44": {
         "eventState": "not_opened",
-        "eventType": "close_npc_event",
+        "eventType": "close_game_object_event",
         "eventParameter": {
           "eventPacket" : {
-            "eventElement" : "drawer",
+            "eventElement" : "middle_ridge_drawer",
             "eventNumber" : 2
           }
         }

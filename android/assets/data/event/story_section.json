@@ -146,7 +146,7 @@
         "eventNumber": "20"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
         "eventElement": "waiji",
         "eventNumber": "2"
@@ -529,7 +529,7 @@
         "eventNumber": "15"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
         "eventElement": "plecha",
         "eventNumber": "2"
@@ -544,7 +544,7 @@
         "eventNumber": "16"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
         "eventElement": "mea",
         "eventNumber": "2"
@@ -600,7 +600,7 @@
         "eventNumber": "21"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
         "eventElement": "mea",
         "eventNumber": "3"
@@ -634,7 +634,7 @@
         "eventNumber": "24"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
         "eventElement": "sailor1",
         "eventNumber": "2"
@@ -737,7 +737,7 @@
         "eventNumber": "34"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
         "eventElement": "resident_southcape1",
         "eventNumber": "2"
@@ -1389,7 +1389,7 @@
         "eventNumber": "76"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
         "eventElement": "captain_jack",
         "eventNumber": "2"
@@ -2397,8 +2397,8 @@
     ],
     "nextSections": [
       {
-        "nextSectionNumber": "403",
-        "eventType": "move_sub_node_after_absolute_time",
+        "nextSectionNumber": "404",
+        "eventType": "move_sub_node_before_absolute_time",
         "eventParameter": {
           "location": {
             "nodeName": "middle_ridge",
@@ -2411,8 +2411,8 @@
         }
       },
       {
-        "nextSectionNumber": "404",
-        "eventType": "move_sub_node_before_absolute_time",
+        "nextSectionNumber": "403",
+        "eventType": "move_sub_node_after_absolute_time",
         "eventParameter": {
           "location": {
             "nodeName": "middle_ridge",
@@ -2450,7 +2450,7 @@
         "eventNumber": "8"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
         "eventElement": "kein",
         "eventNumber": "2"
@@ -2620,12 +2620,14 @@
       }
     ],
     "nextSections": [
+      
       {
-        "nextSectionNumber": "410",
-        "eventType": "move_dungeon_room_before_absolute_time",
+        "nextSectionNumber": "411",
+        "eventType": "move_dungeon_room_after_absolute_time",
         "eventParameter": {
           "location": {
             "subNodeName": "golden_lake",
+            "floorName": "golden_lake",
             "roomLabel": "room_8_5"
           },
           "time": {
@@ -2635,11 +2637,12 @@
         }
       },
       {
-        "nextSectionNumber": "411",
-        "eventType": "move_dungeon_room_after_absolute_time",
+        "nextSectionNumber": "410",
+        "eventType": "move_dungeon_room_before_absolute_time",
         "eventParameter": {
           "location": {
             "subNodeName": "golden_lake",
+            "floorName": "golden_lake",
             "roomLabel": "room_8_5"
           },
           "time": {
@@ -2782,7 +2785,7 @@
         "eventParameter": {
           "location": {
             "nodeName": "middle_ridge",
-            "subNodeName": "middle_ridge_wallacehouse"
+            "subNodeName": "middle_ridge_wallace"
           }
         }
       }
@@ -2803,9 +2806,10 @@
         "eventNumber": "46"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [],
+    "conditionalGameObjectEvents": [
       {
-        "eventElement": "drawer",
+        "eventElement": "middle_ridge_drawer",
         "eventNumber": "3"
       }
     ],
@@ -2813,13 +2817,13 @@
   },
   "416": {
     "sequencialEvents": [],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
-        "eventElement": "servernt1",
+        "eventElement": "servant_01",
         "eventNumber": "2"
       },
       {
-        "eventElement": "servernt2",
+        "eventElement": "servant_02",
         "eventNumber": "2"
       }
     ],
@@ -2830,11 +2834,11 @@
         "eventParameter": {
           "events": [
             {
-              "eventElement": "servernt1",
+              "eventElement": "servant_01",
               "eventNumber": 2
             },
             {
-              "eventElement": "servernt2",
+              "eventElement": "servant_02",
               "eventNumber": 2
             }
           ]
@@ -2892,7 +2896,7 @@
         "eventNumber": "53"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
         "eventElement": "holland",
         "eventNumber": "2"
@@ -3026,7 +3030,7 @@
         "eventNumber": "2"
       }
     ],
-    "conditionalEvents": [
+    "conditionalNpcEvents": [
       {
         "eventElement": "redrose_guardian",
         "eventNumber": "2"

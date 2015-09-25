@@ -703,6 +703,10 @@ battle_default_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_default_small.png/
 },
+golden_lake_minimap: {
+	class: java.lang.String,
+	value: texture/dungeon_minimap/golden_lake_minimap.png/
+},
 bust_kein_young_01: {
 	class: java.lang.String,
 	value: texture/character/bust_kein_young_01.png/

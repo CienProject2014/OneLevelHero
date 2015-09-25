@@ -48,11 +48,13 @@ public class BuildingButtonListener extends ClickListener {
 		eventManager.setTargetBuildingInfo(buildingInfo);
 		EventTrigger eventTrigger = eventTriggerFactory.getEventTrigger(EventTypeEnum.GO_SUB_NODE);
 		eventTrigger.triggerEvent(getGoSubNodeEventParameter(buildingInfo));
+		if (buildingInfo.canGoBuilding(timeManager.getDayMinute())) {
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE, nodePath, buildingPath);
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BY_TIME, buildingPath);
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BEFORE_ABSOLUTE_TIME, buildingPath);
+			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_AFTER_ABSOLUTE_TIME, buildingPath);
+		}
 		timeManager.plusMinute(15); // 건물에 들어가는데 15분
-		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE, nodePath, buildingPath);
-		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BY_TIME, buildingPath);
-		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BEFORE_ABSOLUTE_TIME, buildingPath);
-		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_AFTER_ABSOLUTE_TIME, buildingPath);
 	}
 
 	private EventParameters getGoSubNodeEventParameter(Building buildingInfo) {

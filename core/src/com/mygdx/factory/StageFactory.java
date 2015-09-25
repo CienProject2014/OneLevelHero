@@ -11,7 +11,7 @@ import com.mygdx.stage.BuildingStage;
 import com.mygdx.stage.CharacterChangeStage;
 import com.mygdx.stage.CharacterUiStage;
 import com.mygdx.stage.ChatEventStage;
-import com.mygdx.stage.ChoiceNpcEventStage;
+import com.mygdx.stage.ChoiceEventStage;
 import com.mygdx.stage.ChoiceOptionStage;
 import com.mygdx.stage.CreditStage;
 import com.mygdx.stage.DungeonEntranceStage;
@@ -20,6 +20,7 @@ import com.mygdx.stage.DungeonStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.FieldStage;
 import com.mygdx.stage.ForkStage;
+import com.mygdx.stage.GameObjectStage;
 import com.mygdx.stage.GameOverStage;
 import com.mygdx.stage.GameUiStage;
 import com.mygdx.stage.GreetingStage;
@@ -51,8 +52,8 @@ public class StageFactory {
 				return context.getBean(CharacterUiStage.class).makeStage();
 			case CHAT_EVENT :
 				return context.getBean(ChatEventStage.class).makeStage();
-			case CHOICE_NPC_EVENT :
-				return context.getBean(ChoiceNpcEventStage.class).makeStage();
+			case CHOICE_EVENT :
+				return context.getBean(ChoiceEventStage.class).makeStage();
 			case CHOICE_OPTION :
 				return context.getBean(ChoiceOptionStage.class).makeStage();
 			case CREDIT :
@@ -71,6 +72,8 @@ public class StageFactory {
 				return context.getBean(GameUiStage.class).makeStage();
 			case GAME_OVER :
 				return context.getBean(GameOverStage.class).makeStage();
+			case GAME_OBJECT :
+				return context.getBean(GameObjectStage.class).makeStage();
 			case GREETING :
 				return context.getBean(GreetingStage.class).makeStage();
 			case LOADING_BAR :
