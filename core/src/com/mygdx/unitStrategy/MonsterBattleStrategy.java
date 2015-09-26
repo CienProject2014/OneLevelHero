@@ -102,9 +102,7 @@ public class MonsterBattleStrategy implements BattleStrategy {
 
 	private void decreaseDefense(Unit defender, Buff buff) {
 		Hero hero = (Hero) defender;
-		System.out.println(defender.getStatus().getDefense());
 		defender.getStatus().setDefense(hero.getInventory().getAllDefense());
-		System.out.println(defender.getStatus().getDefense());
 	}
 
 	private void increaseDefense(Unit defender, Buff buff) {

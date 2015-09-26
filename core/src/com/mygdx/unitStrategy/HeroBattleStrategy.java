@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.SkillAssets;
 import com.mygdx.enums.BuffEffectEnum;
 import com.mygdx.enums.SkillEffectEnum;
+import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.battle.Buff;
@@ -25,6 +26,8 @@ public class HeroBattleStrategy implements BattleStrategy {
 	TimeManager timeManager;
 	@Autowired
 	PartyManager partyManager;
+	@Autowired
+	BattleManager battleManager;
 
 	@Override
 	public void attack(Unit attacker, Unit defender, int[][] hitArea) {
@@ -172,6 +175,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		int defenderHp = defender.getStatus().getHp();
 		int skillDamage = (int) attacker.getStatus().getAttack();
 		int skillDefense = (int) defender.getStatus().getDefense();
+		float totalDamage;
 		float realSkillDamage = (int) (skillDamage - skillDefense) * skillFactor / 100f;
 		if (realSkillDamage < 1) {
 			realSkillDamage = 1;
@@ -184,7 +188,11 @@ public class HeroBattleStrategy implements BattleStrategy {
 			realMagicDamage = 1;
 		}
 
-		float totalDamage = realSkillDamage + realMagicDamage;
+		if (battleManager.getCurrentSelectedSkill().getBuffName().equals("solid")) {
+			totalDamage = realSkillDamage + realMagicDamage + attacker.getStatus().getDefense();
+		} else {
+			totalDamage = realSkillDamage + realMagicDamage;
+		}
 
 		if (defenderHp - totalDamage > 0) {
 			defender.getStatus().setHp((int) (defenderHp - totalDamage));
@@ -240,6 +248,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void addState(Unit attacker, Unit defender, Skill skill) {
 		Buff buff = skillAssets.getBuff(skill.getBuffName());
+		Buff bleeding = skillAssets.getBuff("bleeding");
 		if (buff == null) {
 			return;
 		}
@@ -256,8 +265,16 @@ public class HeroBattleStrategy implements BattleStrategy {
 				}
 			}
 		} else {
-			defender.getBuffList().add(buff);
-			applyBuff(defender);
+			if (skill.getSkillPath().equals("strong_breeze")) {
+				// strong_breeze일때는 출혈에 걸린 상태에만 스턴을 건다.
+				if (defender.getBuffList().contains(bleeding)) {
+					defender.getBuffList().add(buff);
+					applyBuff(defender);
+				}
+			} else {
+				defender.getBuffList().add(buff);
+				applyBuff(defender);
+			}
 		}
 
 	}
