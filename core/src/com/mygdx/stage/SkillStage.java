@@ -60,6 +60,7 @@ public class SkillStage extends BaseOverlapStage {
 			setLabel(sceneConstants);
 		}
 		if (typeChange) {
+			setHighlight(sceneConstants);
 			clearHighLightAndLabel();
 			setLabel(sceneConstants);
 			typeChange = false;
@@ -148,6 +149,7 @@ public class SkillStage extends BaseOverlapStage {
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					setCompositeItemVisibilty(useButtonList.get(index), DEFAULT_VISIBILTY);
 					Skill currentSelectedSkill = battleManager.getCurrentSelectedSkill();
+					battleManager.setSkill(true);
 					if (currentSelectedSkill.getSkillTargetType().equals("monster")) {
 						// 몬스터면 Hitbox가 보인다.
 						if (currentSelectedSkill.getSkillType().equals("magic")) {
@@ -289,7 +291,7 @@ public class SkillStage extends BaseOverlapStage {
 							if (magic.getSkillType().equals("magic")) {
 								skillInfo.put(magicIndex, magic);
 								skillNameLabel.setText(magic.getName());
-								castingLabel.setText("");
+								castingLabel.setText(String.valueOf(magic.getCostCasting()));
 								gaugeLabel.setText(String.valueOf(magic.getCostGauge()));
 								setLabelStyle(skillNameLabel);
 								setLabelStyle(castingLabel);
@@ -375,36 +377,83 @@ public class SkillStage extends BaseOverlapStage {
 			highLightFrame.addListener(new SimpleTouchListener() {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					if (skillInfo.get(index) != null) {
-						battleManager.checkCurrentState();
-						setCompositeItemVisibilty(highLightFrame, PRESSED_VISIBILTY);
-						setUseButton(index);
-						for (int j = 0; j < SKILL_TAB_SIZE; j++) {
-							if (j != index) {
-								final CompositeItem highLightFrame = sceneLoader.getRoot()
+					if (tech) {
+						if (skillInfo.get(index) != null) {
+							battleManager.checkCurrentState();
+							setCompositeItemVisibilty(highLightFrame, PRESSED_VISIBILTY);
+							setUseButton(index);
+							for (int j = 0; j < SKILL_TAB_SIZE; j++) {
+								if (j != index) {
+									final CompositeItem highLightFrame = sceneLoader.getRoot()
+											.getCompositeById(highLightFrameList.get(j));
+									setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
+									setVoidUseButton(j);
+								}
+							}
+							battleManager.setCurrentSelectedSkill(skillInfo.get(index));
+							battleManager.afterClick(battleManager.getCurrentSelectedSkill().getCostGauge());
+							setEnum(index);
+							showSkillDescription(index);
+
+						} else {
+							battleManager.checkCurrentState();
+							battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+							setVoidDescription();
+							setAllVoidUseButton(sceneConstants);
+							for (int j = 0; j < SKILL_TAB_SIZE; j++) {
+								CompositeItem highLightFrame = sceneLoader.getRoot()
 										.getCompositeById(highLightFrameList.get(j));
 								setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
-								setVoidUseButton(j);
 							}
 						}
-						battleManager.setCurrentSelectedSkill(skillInfo.get(index));
-						battleManager.afterClick(battleManager.getCurrentSelectedSkill().getCostGauge());
-						setEnum(index);
-						showSkillDescription(index);
 					} else {
-						battleManager.checkCurrentState();
-						battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
-						setVoidDescription();
-						setAllVoidUseButton(sceneConstants);
-						for (int j = 0; j < SKILL_TAB_SIZE; j++) {
-							CompositeItem highLightFrame = sceneLoader.getRoot()
-									.getCompositeById(highLightFrameList.get(j));
-							setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
+						if (skillInfo.get(index) != null) {
+							if (skillInfo.get(index).getCostCasting() <= battleManager.getCurrentAttackUnit()
+									.getStatus().getCasting()) {
+								battleManager.checkCurrentState();
+								setCompositeItemVisibilty(highLightFrame, PRESSED_VISIBILTY);
+								setUseButton(index);
+								for (int j = 0; j < SKILL_TAB_SIZE; j++) {
+									if (j != index) {
+										final CompositeItem highLightFrame = sceneLoader.getRoot()
+												.getCompositeById(highLightFrameList.get(j));
+										setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
+										setVoidUseButton(j);
+									}
+								}
+								battleManager.setCurrentSelectedSkill(skillInfo.get(index));
+								battleManager.afterClick(battleManager.getCurrentSelectedSkill().getCostGauge());
+								setEnum(index);
+								showSkillDescription(index);
+							} else {
+								battleManager.checkCurrentState();
+								battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+								setVoidDescription();
+								setAllVoidUseButton(sceneConstants);
+								for (int j = 0; j < SKILL_TAB_SIZE; j++) {
+									CompositeItem highLightFrame = sceneLoader.getRoot()
+											.getCompositeById(highLightFrameList.get(j));
+									setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
+								}
+							}
+						} else {
+							battleManager.checkCurrentState();
+							battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+							setVoidDescription();
+							setAllVoidUseButton(sceneConstants);
+							for (int j = 0; j < SKILL_TAB_SIZE; j++) {
+								CompositeItem highLightFrame = sceneLoader.getRoot()
+										.getCompositeById(highLightFrameList.get(j));
+								setCompositeItemVisibilty(highLightFrame, DEFAULT_VISIBILTY);
+							}
 						}
 					}
 				}
+
 			});
+
 		}
+
 	}
 
 	private void setEnum(int index) {

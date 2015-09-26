@@ -255,6 +255,7 @@ public class BattleManager {
 	public void useSkill(Unit attackUnit, Unit targetUnit, String skillName) {
 		Skill skill = skillAssets.getSkill(skillName);
 		ArrayList<Unit> targetList = getTargetList(skill.getSkillTargetType(), attackUnit, targetUnit);
+		attackUnit.getStatus().setCasting(attackUnit.getStatus().getCasting() - skill.getCostCasting());
 		attackUnit.useSkill(targetList, skill);
 		if (attackUnit instanceof Hero) {
 			readyForPlayerAnimation(skillName, (int) (StaticAssets.windowHeight * 0.8f),

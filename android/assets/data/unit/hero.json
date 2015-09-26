@@ -15,7 +15,8 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0
+      "electricResistance": 0,
+      "casting":0
     },
     "initialInventoryList": {
       "rightHandGrip": "round_shield",
@@ -65,7 +66,8 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0
+      "electricResistance": 0,
+      "casting":0
     },
     "initialInventoryList": {
         "rightHandGrip": "round_shield",
@@ -95,13 +97,15 @@
       "maxExperience": 3600,
       "fireResistance": 10,
       "waterResistance": 20,
-      "electricResistance": 10
+      "electricResistance": 10,
+      "casting":0
     },
     "initialInventoryList": {
         "rightHandGrip": "round_shield",
       "leftHandGrip": "broad_sword",
       "clothes": "iron_armor"},
     "skillList": [
+      "casting",
       "cross",
       "heal",
       "smile",
@@ -125,7 +129,8 @@
       "maxExperience": 3600,
       "fireResistance": 10,
       "waterResistance": 20,
-      "electricResistance": 10
+      "electricResistance": 10,
+      "casting":0
     },
     "initialInventoryList": {
         "rightHandGrip": "round_shield",
@@ -159,7 +164,8 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0
+      "electricResistance": 0,
+      "casting":0
     },
     "initialInventoryList": {
         "rightHandGrip": "round_shield",
@@ -228,7 +234,8 @@
       "maxExperience": 3600,
       "fireResistance": 10,
       "waterResistance": 10,
-      "electricResistance": 10
+      "electricResistance": 10,
+      "casting":0
     },
     "initialInventoryList": {
         "rightHandGrip": "round_shield",
@@ -261,7 +268,8 @@
       "maxExperience": 3600,
       "fireResistance": 30,
       "waterResistance": 30,
-      "electricResistance": 30
+      "electricResistance": 30,
+      "casting":0
     },
     "initialInventoryList": {
         "rightHandGrip": "round_shield",
@@ -294,7 +302,8 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0
+      "electricResistance": 0,
+      "casting":0
     },
     "initialInventoryList": {
         "rightHandGrip": "round_shield",

@@ -18,6 +18,7 @@ public abstract class Unit implements Comparable<Unit> {
 	private int actingPower;
 	private int preGague;
 	private int aggro;
+	private int casting;
 	private float percent;
 
 	private List<Buff> buffList = new ArrayList<Buff>();
@@ -184,5 +185,13 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setPercent(float percent) {
 		this.percent = percent;
+	}
+
+	public int getCasting() {
+		return casting;
+	}
+
+	public void setCasting(int casting) {
+		this.casting = casting;
 	}
 }

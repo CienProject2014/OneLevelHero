@@ -231,7 +231,7 @@
 		"stackScope" : "5",
 		"buffType" : "enbuff",
 		"buffEffectList" : [
-			"block_action"
+			""
 		]
 	},
     "fireshield" : {

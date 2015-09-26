@@ -75,7 +75,6 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		Gdx.app.log("Hero", skillUser.getName() + "이(가) " + targetList.get(0).getName() + "에게 " + skill.getName()
 				+ "을(를) 사용하였습니다!");
-
 		// 각 타겟에 대해 SkillEffectType에 따라 사용
 		for (Unit target : targetList) {
 			if (skill.getSkillEffectType().equals(SkillEffectEnum.MULTI_EFFECT.toString())) {
@@ -127,9 +126,19 @@ public class HeroBattleStrategy implements BattleStrategy {
 		case REMOVE_STATE:
 			removeState(attacker, defender, skill);
 			break;
+		case CASTING:
+			cast(attacker, skill);
+			break;
 		default:
 			break;
 
+		}
+	}
+
+	private void cast(Unit attacker, Skill skill) {
+		attacker.getStatus().setCasting(attacker.getStatus().getCasting() + 1);
+		if (attacker.getStatus().getCasting() > 5) {
+			attacker.getStatus().setCasting(5);
 		}
 	}
 
@@ -202,6 +211,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		} else {
 			defender.getStatus().setHp(0);
 		}
+
 	}
 
 	private void duplicatedAttack(Unit attacker, Unit defender, int duplicateNumber, float skillFactor,
@@ -299,6 +309,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		for (Buff buff : defender.getBuffList()) {
 			if (buff.getDuration() == -1) {
+				continue;
 			} else {
 				if (buff.getFlyingTime() >= buff.getDuration()) {
 					cancelList.add(buff);
