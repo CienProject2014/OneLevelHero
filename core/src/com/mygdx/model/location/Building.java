@@ -15,8 +15,6 @@ public class Building extends SubNode {
 	private String backgroundPath;
 	private List<String> buildingNpc;
 	private List<String> gameObject;
-	private String sceneName;
-	private boolean isOverlapScene;
 	private String outerPath;
 
 	public BuildingTypeEnum getBuildingType() {
@@ -40,22 +38,6 @@ public class Building extends SubNode {
 
 	public void setGameObject(List<String> gameObject) {
 		this.gameObject = gameObject;
-	}
-
-	public String getSceneName() {
-		return sceneName;
-	}
-
-	public void setSceneName(String sceneName) {
-		this.sceneName = sceneName;
-	}
-
-	public boolean isOverlapScene() {
-		return isOverlapScene;
-	}
-
-	public void setOverlapScene(boolean isOverlapScene) {
-		this.isOverlapScene = isOverlapScene;
 	}
 
 	public String getOuterPath() {

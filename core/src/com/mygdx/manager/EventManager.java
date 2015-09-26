@@ -164,6 +164,20 @@ public class EventManager {
 		}
 	}
 
+	public Event getCurrentEvent(EventElementEnum eventElementType) {
+		switch (eventElementType) {
+			case NPC :
+				return eventInfo.getCurrentNpcEvent();
+			case STORY :
+				return eventInfo.getCurrentStoryEvent();
+			case GAME_OBJECT :
+				return eventInfo.getCurrentGameObjectEvent();
+			default :
+				Gdx.app.log("EventManager", "eventElement정보 오류" + eventInfo.getCurrentEventElementType());
+				return null;
+		}
+	}
+
 	public Event getCurrentEvent() {
 		switch (eventInfo.getCurrentEventElementType()) {
 			case NPC :
@@ -203,8 +217,27 @@ public class EventManager {
 	}
 
 	public void finishEvent() {
-		if (getCurrentEvent().getEventState() == EventStateEnum.OPENED) {
-			getCurrentEvent().setEventState(EventStateEnum.CLOSED);
+		EventElementEnum eventElementType = getEventTypeByPosition();
+		Event currentEvent;
+		if (eventElementType == null) {
+			currentEvent = getCurrentEvent();
+		} else {
+			currentEvent = getCurrentEvent(eventElementType);
+		}
+		if (currentEvent.getEventState() == EventStateEnum.OPENED) {
+			currentEvent.setEventState(EventStateEnum.CLOSED);
+		}
+	}
+
+	public EventElementEnum getEventTypeByPosition() {
+		switch (positionManager.getCurrentEventPositionType()) {
+			case NPC :
+				return EventElementEnum.NPC;
+			case GAME_OBJECT :
+				return EventElementEnum.GAME_OBJECT;
+			default :
+				Gdx.app.log("EventManager", "CurrentEventPositionType정보 오류");
+				return null;
 		}
 	}
 

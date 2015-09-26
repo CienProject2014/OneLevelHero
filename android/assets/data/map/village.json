@@ -15,18 +15,13 @@
         "subNodeName": "촌장의 집",
         "buildingType": "house",
         "subNodePath": "blackwood_headhouse",
-        "isOverlapScene": true,
         "outerPath": "blackwood_03",
-        "sceneName": "blackwood_headhouse_scene",
         "targetTime": {
           "startHour": 6,
           "endHour": 22
         },
         "buildingNpc": [
           "waiji"
-        ],
-        "gameObject": [
-          "chest"
         ]
       },
       "blackwood_grocery": {
@@ -93,8 +88,6 @@
         "buildingType": "house",
         "outerPath": "cobweb_02",
         "subNodePath": "cobweb_library",
-        "isOverlapScene": true,
-        "sceneName": "cobweb_library_scene",
         "targetTime": {
           "startHour": 6,
           "endHour": 22
@@ -147,8 +140,6 @@
         "subNodeName": "콥웨브 여관",
         "buildingType": "inn",
         "subNodePath": "cobweb_inn",
-        "isOverlapScene": true,
-        "sceneName": "cobweb_inn_scene",
         "buildingNpc": [
           "cobweb_inn_owner"
         ],
