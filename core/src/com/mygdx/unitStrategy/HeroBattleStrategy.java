@@ -310,6 +310,9 @@ public class HeroBattleStrategy implements BattleStrategy {
 			case BLOCK_ACTION:
 				blockAction(defender);
 				break;
+			case INCREASE_AGGRO:
+				increaseAggro(defender);
+				break;
 			case DECREASE_ATTACK:
 				break;
 			case DECREASE_HP_ITERATIVE:
@@ -329,11 +332,13 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
+	private void increaseAggro(Unit defender) {
+		defender.setAggro(defender.getAggro() + 900);
+	}
+
 	private void decreaseDefense(Unit defender, Buff buff) {
 		Hero hero = (Hero) defender;
-		System.out.println("변경 전 " + defender.getStatus().getDefense());
 		defender.getStatus().setDefense(hero.getInventory().getAllDefense());
-		System.out.println("변경 후 " + defender.getStatus().getDefense());
 	}
 
 	private void increaseDefense(Unit defender, Buff buff) {

@@ -74,19 +74,18 @@ public class PartyManager {
 	public Hero pickRandomHero() {
 		// 몬스터 공격할때 영웅 뽑는 기준 : 어그로
 		int sumAggro = 0;
-		int percent = 0;
+		float percent = 0;
 		int nGetVal = (int) Math.round(Math.random() * 100);
 
 		for (Hero hero : partyInfo.getBattleMemberList()) {
 			sumAggro += hero.getAggro();
 		}
 		for (Hero hero : partyInfo.getBattleMemberList()) {
-			hero.setPercent((hero.getAggro() * 100 / sumAggro) + percent);
-			percent += (int) hero.getPercent();
+			hero.setPercent((hero.getAggro() * 100 / sumAggro));
 		}
 		for (Hero hero : partyInfo.getBattleMemberList()) {
-			if (hero.getPercent() <= nGetVal) {
-				Gdx.app.log("PartyManger", "Agro 수치 계산 후 랜덤 픽");
+			percent += hero.getPercent();
+			if ((int) percent >= nGetVal) {
 				return hero;
 			}
 		}

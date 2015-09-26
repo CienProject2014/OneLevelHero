@@ -15,7 +15,7 @@
     "name": "도발",
     "skillType" : "tech",
     "skillTargetType" : "self",
-    "skillEffectType" : "add_state",
+    "skillEffectType" : "add_self_state",
     "buffName" : "provoke",
     "costGauge": "20",
     "description": "적을 도발한다."
