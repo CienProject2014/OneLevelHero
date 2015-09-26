@@ -190,6 +190,9 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		if (battleManager.getCurrentSelectedSkill().getBuffName().equals("solid")) {
 			totalDamage = realSkillDamage + realMagicDamage + attacker.getStatus().getDefense();
+		} else if (battleManager.getCurrentSelectedSkill().getSkillPath().equals("whirlwind")) {
+			totalDamage = realSkillDamage + realMagicDamage
+					+ attacker.getStatus().getAttack() * defender.getBuffList().size();
 		} else {
 			totalDamage = realSkillDamage + realMagicDamage;
 		}
