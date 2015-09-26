@@ -1504,7 +1504,7 @@
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "middle_ridge_whisternhouse",
-              "script": "(털석)"
+              "script": "(털썩)"
             },
             {
               "characterPath": "yongsa",
@@ -1608,27 +1608,6 @@
               "script": "그렇게 하죠! 먼저 나가보겠습니다.",
               "speakerPosition": "right",
               "characterPath": "parath",
-              "faceNumber": "01",
-              "backgroundPath": "middle_ridge_whisternhouse"
-            },
-            {
-              "script": "다들 나갔군.",
-              "speakerPosition": "right",
-              "characterPath": "kein_coworker",
-              "faceNumber": "01",
-              "backgroundPath": "middle_ridge_whisternhouse"
-            },
-            {
-              "script": "케인, 준비는 단단히 해두었겠지?",
-              "speakerPosition": "right",
-              "characterPath": "kein_coworker",
-              "faceNumber": "01",
-              "backgroundPath": "middle_ridge_whisternhouse"
-            },
-            {
-              "script": "……물론이지.",
-              "speakerPosition": "left",
-              "characterPath": "kein",
               "faceNumber": "01",
               "backgroundPath": "middle_ridge_whisternhouse"
             }
