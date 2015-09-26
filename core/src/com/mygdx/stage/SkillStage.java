@@ -25,7 +25,6 @@ import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.screen.BattleScreen;
@@ -39,8 +38,6 @@ public class SkillStage extends BaseOverlapStage {
 	private final int SKILL_TAB_SIZE = 7;
 	@Autowired
 	private BattleManager battleManager;
-	@Autowired
-	private StorySectionManager storySectionManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired

@@ -12,6 +12,7 @@ import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
 
@@ -95,8 +96,8 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void applyEffect(Unit attacker, Unit defender, Skill skill) {
 		switch (SkillEffectEnum.findSkillEffectEnum(skill.getSkillEffectType())) {
-		case ADD_CONDITIONAL_STATE:
-			addStateAttack(attacker, skill);
+		case ADD_SELF_STATE:
+			addSelfState(attacker, skill);
 			break;
 		case ADD_STATE:
 			addState(attacker, defender, skill);
@@ -129,7 +130,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
-	private void addStateAttack(Unit attacker, Skill skill) {
+	private void addSelfState(Unit attacker, Skill skill) {
 		Buff buff = skillAssets.getBuff(skill.getBuffName());
 		if (buff == null) {
 			return;
@@ -276,20 +277,22 @@ public class HeroBattleStrategy implements BattleStrategy {
 		int deltaTime = timeManager.getPreTime();
 
 		for (Buff buff : defender.getBuffList()) {
-			if (buff.getFlyingTime() >= buff.getDuration()) {
-				cancelList.add(buff);
-				continue;
-			}
-
-			buff.setPreFlyingTime(buff.getFlyingTime());
-
-			if (buff.getFlyingTime() + deltaTime > buff.getDuration()) {
-				float overVal = (buff.getFlyingTime() + deltaTime) - buff.getDuration();
-				buff.addFlyingTime((int) (deltaTime - overVal));
+			if (buff.getDuration() == -1) {
 			} else {
-				buff.addFlyingTime(deltaTime);
-			}
+				if (buff.getFlyingTime() >= buff.getDuration()) {
+					cancelList.add(buff);
+					continue;
+				}
 
+				buff.setPreFlyingTime(buff.getFlyingTime());
+
+				if (buff.getFlyingTime() + deltaTime > buff.getDuration()) {
+					float overVal = (buff.getFlyingTime() + deltaTime) - buff.getDuration();
+					buff.addFlyingTime((int) (deltaTime - overVal));
+				} else {
+					buff.addFlyingTime(deltaTime);
+				}
+			}
 			applyAllBuffEffect(defender, buff);
 
 		}
@@ -327,8 +330,10 @@ public class HeroBattleStrategy implements BattleStrategy {
 	}
 
 	private void decreaseDefense(Unit defender, Buff buff) {
-		defender.getStatus()
-				.setDefense(defender.getStatus().getDefense() / 100 * (buff.getIncreaseDefensePercent() + 100));
+		Hero hero = (Hero) defender;
+		System.out.println("변경 전 " + defender.getStatus().getDefense());
+		defender.getStatus().setDefense(hero.getInventory().getAllDefense());
+		System.out.println("변경 후 " + defender.getStatus().getDefense());
 	}
 
 	private void increaseDefense(Unit defender, Buff buff) {

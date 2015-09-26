@@ -58,7 +58,7 @@
     "skillType" : "tech",
     "skillTargetType" : "monster",
     "skillEffectType" : "multi_effect",
-    "effectNameList": [ "add_conditional_state", "attack" ],
+    "effectNameList": [ "add_self_state", "attack" ],
     "buffName" : "defenseless",
     "costGauge": "80",
     "elementType": "none",

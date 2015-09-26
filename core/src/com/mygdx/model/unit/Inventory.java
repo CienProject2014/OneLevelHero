@@ -14,9 +14,20 @@ public class Inventory {
 
 	public Float getAllDefense() {
 		float allDefense;
-		allDefense = clothes.getEffectStatus().getDefense() + accessory.getEffectStatus().getDefense()
-				+ getLeftHandGrip().getEffectStatus().getDefense() + getRightHandGrip().getEffectStatus().getDefense();
-		return allDefense;
+		if (checkHasEquip(leftHandGrip) && checkHasEquip(rightHandGrip) && checkHasEquip(clothes)) {
+			allDefense = clothes.getEffectStatus().getDefense() + getLeftHandGrip().getEffectStatus().getDefense()
+					+ getRightHandGrip().getEffectStatus().getDefense();
+			return allDefense;
+		}
+		return 0f;
+
+	}
+
+	private boolean checkHasEquip(Equipment equipment) {
+		if (equipment == null)
+			return false;
+		return true;
+
 	}
 
 	public Equipment getClothes() {
@@ -101,17 +112,17 @@ public class Inventory {
 
 	public Equipment getEquipment(ItemEnum equipmentPart) {
 		switch (equipmentPart) {
-			case RIGHT_HANDGRIP :
-				return getRightHandGrip();
-			case LEFT_HANDGRIP :
-				return getLeftHandGrip();
-			case ACCESSORY :
-				return getAccessory();
-			case CLOTHES :
-				return getClothes();
-			default :
-				Gdx.app.log("Inventory", "잘못된 EquipmentPart정보");
-				return null;
+		case RIGHT_HANDGRIP:
+			return getRightHandGrip();
+		case LEFT_HANDGRIP:
+			return getLeftHandGrip();
+		case ACCESSORY:
+			return getAccessory();
+		case CLOTHES:
+			return getClothes();
+		default:
+			Gdx.app.log("Inventory", "잘못된 EquipmentPart정보");
+			return null;
 		}
 	}
 
