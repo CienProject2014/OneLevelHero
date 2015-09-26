@@ -160,6 +160,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private void initializeBattle(ArrayList<Unit> units, Monster selectedMonster) {
 		for (Unit unit : units) {
 			unit.setGauge(100);
+			unit.setAggro(100);
 			unit.setSubvalue(0);
 			unit.setActingPower(-24000 / (unit.getStatus().getSpeed() + 300) + 160);
 		}
@@ -386,8 +387,8 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.gameObjectPopup.setListenerFactory(listenerFactory);
 				battleManager.gameObjectPopup.setConstantsAssets(constantsAssets);
 				checkRunAway();
-				battleManager.gameObjectPopup.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent()
-						+ "%입니다");
+				battleManager.gameObjectPopup
+						.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent() + "%입니다");
 				addActor(battleManager.gameObjectPopup);
 				battleManager.gameObjectPopup.setVisible(true);
 			}
@@ -442,11 +443,11 @@ public class BattleStage extends BaseOneLevelStage {
 		super.touchUp(screenX, screenY, pointer, button);
 		if (battleManager.isShowGrid() && battleManager.getNowGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 			if (!battleManager.isSkill()) {
-				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
-						.getNowGridHitbox().getPreviousHitArea());
+				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster,
+						battleManager.getNowGridHitbox().getPreviousHitArea());
 			} else {
-				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
-						.getCurrentSelectedSkill().getSkillPath());
+				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster,
+						battleManager.getCurrentSelectedSkill().getSkillPath());
 				battleManager.setSkill(false);
 			}
 			battleManager.setShowGrid(false);
@@ -490,8 +491,8 @@ public class BattleStage extends BaseOneLevelStage {
 		turnSmallImageMap.put(selectedMonster.getFacePath(),
 				new Image(textureManager.getSmallBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			turnSmallImageMap
-					.put(hero.getFacePath(), new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
+			turnSmallImageMap.put(hero.getFacePath(),
+					new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
 		}
 	}
 

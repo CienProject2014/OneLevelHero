@@ -109,7 +109,7 @@
       "slash",
       "stab"
     ],
-    "effectStatusList" : [ "attack", ,   "defense", "speed" ],
+    "effectStatusList" : [ "attack",   "defense", "speed" ],
     "effectStatus": {
       "attack": 17,
         "defense" : 0,

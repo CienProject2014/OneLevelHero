@@ -14,7 +14,7 @@ public class PartyManager {
 	private UnitManager unitManager;
 	@Autowired
 	private PartyInfo partyInfo;
-	
+
 	public boolean[] isBattleMember = new boolean[3];
 
 	private final static int BATTLE_MEMBER_SIZE = 3;
@@ -72,6 +72,25 @@ public class PartyManager {
 	}
 
 	public Hero pickRandomHero() {
+		// 몬스터 공격할때 영웅 뽑는 기준 : 어그로
+		int sumAggro = 0;
+		int percent = 0;
+		int nGetVal = (int) Math.round(Math.random() * 100);
+
+		for (Hero hero : partyInfo.getBattleMemberList()) {
+			sumAggro += hero.getAggro();
+		}
+		for (Hero hero : partyInfo.getBattleMemberList()) {
+			hero.setPercent((hero.getAggro() * 100 / sumAggro) + percent);
+			percent += (int) hero.getPercent();
+		}
+		for (Hero hero : partyInfo.getBattleMemberList()) {
+			if (hero.getPercent() <= nGetVal) {
+				Gdx.app.log("PartyManger", "Agro 수치 계산 후 랜덤 픽");
+				return hero;
+			}
+		}
+		// 혹시 버그가있다면..
 		return partyInfo.getBattleMemberList()
 				.get(ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
 	}
