@@ -451,7 +451,6 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.setSkill(false);
 			}
 			battleManager.setShowGrid(false);
-
 		}
 		resetHitboxState();
 		return false;

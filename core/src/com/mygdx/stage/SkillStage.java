@@ -177,6 +177,7 @@ public class SkillStage extends BaseOverlapStage {
 							battleManager.setSkill(false);
 						}
 					}
+					setAllVoidUseButton(sceneConstants);
 					BattleScreen.showSkillStage = false;
 				}
 			});
@@ -192,8 +193,10 @@ public class SkillStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				battleManager.checkCurrentState();
 				battleManager.setCurrentClickStateEnum(CurrentClickStateEnum.DEFAULT);
+				battleManager.setSkill(false);
 				BattleScreen.showSkillStage = false;
 				battleManager.showRMenuButtons();
+				setAllVoidUseButton(sceneConstants);
 			}
 		});
 	}
