@@ -194,6 +194,13 @@ public class HeroBattleStrategy implements BattleStrategy {
 			totalDamage = realSkillDamage + realMagicDamage;
 		}
 
+		if (battleManager.getCurrentSelectedSkill().getSkillPath().equals("back_of_sword")) {
+			defender.setGauge(defender.getGauge() - 25);
+			if (defender.getGauge() < 0) {
+				defender.setGauge(0);
+			}
+		}
+
 		if (defenderHp - totalDamage > 0) {
 			defender.getStatus().setHp((int) (defenderHp - totalDamage));
 		} else {
