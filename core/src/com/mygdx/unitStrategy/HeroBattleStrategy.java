@@ -331,8 +331,13 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		for (Buff removableBuff : cancelList) {
 			removableBuff.setFlyingTime(0);
+			reset();
 			defender.getBuffList().remove(removableBuff);
 		}
+
+	}
+
+	private void reset() {
 
 	}
 
@@ -384,12 +389,12 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void decreaseDefense(Unit defender, Buff buff) {
 		Hero hero = (Hero) defender;
-		defender.getStatus().setDefense(hero.getInventory().getAllDefense());
+		defender.getStatus().setDefense(defender.getStatus().getDefense() - hero.getInventory().getAllDefense());
 	}
 
 	private void increaseDefense(Unit defender, Buff buff) {
-		defender.getStatus()
-				.setDefense(defender.getStatus().getDefense() / 100 * (buff.getIncreaseDefensePercent() + 100));
+		float defense = defender.getStatus().getDefense() / 100 * (buff.getIncreaseDefensePercent() + 100);
+		defender.getStatus().setDefense(defense);
 	}
 
 	private void blockAction(Unit defender) {
