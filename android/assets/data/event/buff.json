@@ -161,7 +161,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"decrease_speed"
 		]
 	},
 	"defenseless" : {
@@ -342,7 +342,7 @@
 	"stackScope" : "1",
 	"buffType" : "enbuff",
 	"buffEffectList" : [
-		"block_action"
+		"fly_action"
 	   ]
     },
     "flaudrise" : {

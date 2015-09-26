@@ -112,7 +112,7 @@
     "effectStatusList" : [ "attack",   "defense", "speed" ],
     "effectStatus": {
       "attack": 17,
-        "defense" : 0,
+       "defense" : 0,
       "speed": -5
     },
     "description": "칼날이 넓은 검."

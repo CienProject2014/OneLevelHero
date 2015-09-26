@@ -197,13 +197,6 @@ public class HeroBattleStrategy implements BattleStrategy {
 			totalDamage = realSkillDamage + realMagicDamage;
 		}
 
-		if (battleManager.getCurrentSelectedSkill().getSkillPath().equals("back_of_sword")) {
-			defender.setGauge(defender.getGauge() - 25);
-			if (defender.getGauge() < 0) {
-				defender.setGauge(0);
-			}
-		}
-
 		if (defenderHp - totalDamage > 0) {
 			defender.getStatus().setHp((int) (defenderHp - totalDamage));
 		} else {
@@ -290,10 +283,11 @@ public class HeroBattleStrategy implements BattleStrategy {
 	}
 
 	private void removeState(Unit attacker, Unit defender, Skill skill) {
+		Buff fly = skillAssets.getBuff("fly");
 		if (skill.getBuffName().equals("all")) {
 			defender.getBuffList().clear();
-		} else {
-
+		} else if (skill.getBuffName().equals("fly")) {
+			defender.getBuffList().remove(fly);
 		}
 	}
 
@@ -353,10 +347,24 @@ public class HeroBattleStrategy implements BattleStrategy {
 			case DECREASE_DEFENSE:
 				decreaseDefense(defender, buff);
 				break;
+			case DECREASE_SPEED:
+				decreaseSpeed(defender, buff);
+				break;
+			case FLY_ACTION:
+				flyAction(defender);
+				break;
 			default:
 				break;
 			}
 		}
+	}
+
+	private void flyAction(Unit defender) {
+		defender.setAggro(0);
+	}
+
+	private void decreaseSpeed(Unit defender, Buff buff) {
+		defender.getStatus().setSpeed(defender.getStatus().getSpeed() - 50);
 	}
 
 	private void increaseAggro(Unit defender) {

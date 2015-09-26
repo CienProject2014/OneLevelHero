@@ -270,6 +270,14 @@ public class BattleManager {
 	public void calCostGague(Unit unit, int typeOfAction) {
 		unit.setPreGague(unit.getGauge());
 		int costGague = (int) (((double) (150 - unit.getActingPower()) / 50) * typeOfAction);
+		if (this.isSkill()) {
+			if (this.getCurrentSelectedSkill().getSkillPath().equals("flying")) {
+				costGague += 15;
+			}
+			if (this.getCurrentSelectedSkill().getSkillPath().equals("back_of_sword")) {
+				costGague += 25;
+			}
+		}
 		unit.setGauge(unit.getGauge() - costGague);
 		timeManager.setPreTime(costGague * TIME_FLOW_RATE);
 		timeManager.plusSecond(costGague * TIME_FLOW_RATE);
