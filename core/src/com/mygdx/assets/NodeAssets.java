@@ -2,7 +2,6 @@
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -77,7 +76,7 @@ public class NodeAssets implements JsonAssetsInitializable {
 		return dungeonMap.get(dungeonString);
 	}
 
-	public List<String> getMonsterFieldListByFieldType(FieldTypeEnum fieldType) {
+	public ArrayList<String> getMonsterFieldListByFieldType(FieldTypeEnum fieldType) {
 		return monsterFieldMap.get(fieldType);
 	}
 

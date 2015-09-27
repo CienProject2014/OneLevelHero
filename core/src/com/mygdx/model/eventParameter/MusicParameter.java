@@ -1,18 +1,18 @@
 package com.mygdx.model.eventParameter;
 
 public class MusicParameter {
-	private String musicName;
-	private String soundName;
-	public String getMusicName() {
-		return musicName;
+	private String musicPath;
+	private String soundPath;
+	public String getMusicPath() {
+		return musicPath;
 	}
-	public void setMusicName(String musicName) {
-		this.musicName = musicName;
+	public void setMusicPath(String musicPath) {
+		this.musicPath = musicPath;
 	}
-	public String getSoundName() {
-		return soundName;
+	public String getSoundPath() {
+		return soundPath;
 	}
-	public void setSoundName(String soundName) {
-		this.soundName = soundName;
+	public void setSoundPath(String soundPath) {
+		this.soundPath = soundPath;
 	}
 }

@@ -20,6 +20,7 @@ import com.mygdx.stage.DungeonStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.FieldStage;
 import com.mygdx.stage.ForkStage;
+import com.mygdx.stage.GameClearStage;
 import com.mygdx.stage.GameObjectStage;
 import com.mygdx.stage.GameOverStage;
 import com.mygdx.stage.GameUiStage;
@@ -68,6 +69,8 @@ public class StageFactory {
 				return context.getBean(EncounterStage.class).makeStage();
 			case FORK :
 				return context.getBean(ForkStage.class).makeStage();
+			case GAME_CLEAR :
+				return context.getBean(GameClearStage.class).makeStage();
 			case GAME_UI :
 				return context.getBean(GameUiStage.class).makeStage();
 			case GAME_OVER :

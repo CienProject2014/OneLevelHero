@@ -1,7 +1,10 @@
 package com.mygdx.manager;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.currentState.FieldInfo;
 import com.mygdx.enums.FieldTypeEnum;
@@ -17,6 +20,8 @@ public class FieldManager {
 	private PositionManager positionManager;
 	@Autowired
 	private FieldInfo fieldInfo;
+	@Autowired
+	private NodeAssets nodeAssets;
 
 	public FieldTypeEnum getFieldType() {
 		return fieldInfo.getFieldList().get(getFieldNumber());
@@ -87,8 +92,12 @@ public class FieldManager {
 
 	private void moveField() {
 		if (encounterManager.isBattleOccured()) {
-			encounterManager.encountEnemy();
+			encounterManager.encountEnemy(getFieldMonsterList());
 		}
+	}
+
+	private ArrayList<String> getFieldMonsterList() {
+		return nodeAssets.getMonsterFieldListByFieldType(getFieldType());
 	}
 
 	private boolean willBeArrived() {

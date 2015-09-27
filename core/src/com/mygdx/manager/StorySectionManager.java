@@ -12,6 +12,7 @@ import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.enums.EventElementEnum;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.factory.NextSectionCheckerFactory;
 import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.StorySection;
@@ -27,6 +28,8 @@ public class StorySectionManager {
 	private EventAssets eventAssets;
 	@Autowired
 	private StorySectionInfo storySectionInfo;
+	@Autowired
+	private PositionManager positionManager;
 	@Autowired
 	private NextSectionCheckerFactory nextSectionCheckerFactory;
 	@Autowired
@@ -109,6 +112,7 @@ public class StorySectionManager {
 		Gdx.app.log("StorySectionManager", "runStorySequence");
 		if (!eventSequenceQueue.isEmpty()) {
 			EventPacket polledEventPacket = eventSequenceQueue.poll();
+			positionManager.setCurrentEventPositionType(EventPosition.STORY);
 			eventManager.triggerEvent(EventElementEnum.STORY, polledEventPacket);
 		} else {
 			goCurrentPosition();

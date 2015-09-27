@@ -9,7 +9,6 @@ import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.VillageDirectionEnum;
 import com.mygdx.enums.WorldNodeEnum;
-import com.mygdx.enums.WorldNodeEnum.NodeType;
 
 public class PositionManager {
 	@Autowired
@@ -71,14 +70,10 @@ public class PositionManager {
 	}
 
 	public String getCurrentSubNodeName() {
-		if (getCurrentNodeType().equals(NodeType.VILLAGE)) {
-			return nodeAssets.getVillageByPath(getCurrentNodePath()).getBuilding().get(getCurrentSubNodePath())
-					.getSubNodeName();
-		} else {
-			return "던젼"; // FIXME
-		}
-
+		return nodeAssets.getVillageByPath(getCurrentNodePath()).getBuilding().get(getCurrentSubNodePath())
+				.getSubNodeName();
 	}
+
 	public void setCurrentSubNodePath(String subNodePath) {
 		Gdx.app.log("PositionManager", "현재서브노드 경로 - " + subNodePath);
 		positionInfo.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);

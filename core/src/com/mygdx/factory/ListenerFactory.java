@@ -13,6 +13,7 @@ import com.mygdx.listener.ChoiceOptionListener;
 import com.mygdx.listener.CloseButtonListener;
 import com.mygdx.listener.DungeonDoorButtonListener;
 import com.mygdx.listener.DungeonEntranceButtonListener;
+import com.mygdx.listener.DungeonStairButtonListener;
 import com.mygdx.listener.GameEndListener;
 import com.mygdx.listener.GameObjectButtonListener;
 import com.mygdx.listener.GoBackwardFieldButtonListener;
@@ -61,6 +62,10 @@ public class ListenerFactory {
 
 	public DungeonEntranceButtonListener getDungeonEntranceButtonListener() {
 		return context.getBean(DungeonEntranceButtonListener.class);
+	}
+
+	public DungeonStairButtonListener getDungeonStairButtonListener() {
+		return context.getBean(DungeonStairButtonListener.class);
 	}
 
 	public GoBackwardFieldButtonListener getGoBackwardFieldButtonListener() {

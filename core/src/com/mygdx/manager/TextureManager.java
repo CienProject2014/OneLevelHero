@@ -23,7 +23,7 @@ public class TextureManager {
 	private AssetsManager assetsManager;
 	@Autowired
 	private TextureAssets textureAssets;
-	private String[] preName = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+	private String[] preName = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 	// 1. 똑같은걸 불러왔을 때
 	// 2. 전투 (미리 로드)
 	// 3. 목표마을(미리 로드)
@@ -182,6 +182,18 @@ public class TextureManager {
 		} else {
 			Gdx.app.log("TextureManager", "object_" + objectPath + " is null");
 			return getTexture(objectPath, TextureEnum.BUST + "_default_01");
+		}
+	}
+
+	public Texture getMinimapTexture(String floorPath) {
+		if (textureAssets.getTexturePath(floorPath + "_" + TextureEnum.MINIMAP) != null) {
+			preName[13] = floorPath + "_" + TextureEnum.MINIMAP;
+			assetsManager.load(textureAssets.getTexturePath(preName[13]), Texture.class);
+			assetsManager.finishLoading();
+			return assetsManager.get(textureAssets.getTexturePath(preName[13]), Texture.class);
+		} else {
+			Gdx.app.log("TextureManager", floorPath + "_" + TextureEnum.MINIMAP + " is null");
+			return getTexture(floorPath, TextureEnum.BUST + "_default_01");
 		}
 	}
 }

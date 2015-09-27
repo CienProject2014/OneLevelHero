@@ -67,7 +67,7 @@
         }
       },
       {
-        "itemIdentifier": "mirage_port_kaido",
+        "itemIdentifier": "mirage_port_kaidoguild",
         "x": 484,
         "y": 657.5,
         "zIndex": 3,
@@ -181,7 +181,7 @@
         }
       },
       {
-        "itemIdentifier": "mirage_port_hermes",
+        "itemIdentifier": "mirage_port_hermesguild",
         "x": 662.9999,
         "y": 1623.5,
         "zIndex": 6,

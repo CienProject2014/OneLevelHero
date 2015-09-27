@@ -20,7 +20,7 @@ public class SetNpcTargetTimeEventTrigger implements EventTrigger {
 	@Override
 	public void triggerEvent(EventParameters eventParameter) {
 		if (eventParameter.getTime() != null && eventParameter.getLocation() != null) {
-			NPC npc = eventManager.getEventInfo().getNpcMap().get(eventParameter.getLocation().getNpcName());
+			NPC npc = eventManager.getEventInfo().getNpcMap().get(eventParameter.getLocation().getNpcPath());
 			TargetTime targetTime = new TargetTime(eventParameter.getTime().getStartHour(), eventParameter.getTime()
 					.getEndHour());
 			npc.setTargetTime(targetTime);
