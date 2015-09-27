@@ -151,6 +151,7 @@
         "subNodeName": "콥웨브 여관",
         "buildingType": "inn",
         "subNodePath": "cobweb_inn",
+        "backgroundPath":"blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -317,6 +318,7 @@
         "subNodeName": "카딜라 잡화점",
         "buildingType": "house",
         "outerPath": "kadilla_castle_02",
+        "backgroundPath" : "cobweb_grocery",
         "subNodePath": "kadilla_castle_grocery",
         "targetTime": {
           "startHour": 8,
@@ -348,14 +350,14 @@
         "subNodeName": "카딜라 옷가게",
         "buildingType": "house",
         "outerPath": "kadilla_castle_03",
-        "backgroundPath" :"cobweb_clothingstore", 
+        "backgroundPath" :"cobweb_clothing_store", 
         "subNodePath": "kadilla_castle_clothing_store",
         "targetTime": {
           "startHour": 8,
           "endHour": 22
         },
         "buildingNpc": [
-          "kadilla_castle_clothingstore_owner"
+          "kadilla_castle_clothing_store_owner"
         ],
         "gameObject": [
         ]
@@ -418,7 +420,8 @@
       "winterfall_inn": {
         "subNodeName": "부서진 여관",
         "buildingType": "inn",
-        "subNodePath": "blackwood_inn",
+        "subNodePath": "winterfall_inn",
+        "backgroundPath" : "blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -434,7 +437,8 @@
       "winterfall_grocery": {
         "subNodeName": "식료품점",
         "buildingType": "house",
-        "subNodePath": "blackwood_grocery",
+        "subNodePath": "winterfall_grocery",
+        "backgroundPath" : "blackwood_grocery",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -491,7 +495,7 @@
         "subNodeName": "레드로즈 민가",
         "buildingType": "house",
         "outerPath": "redrose_castle_02",
-        "backgroundPath" : "redrose_castle_hose",
+        "backgroundPath" : "redrose_castle_house",
         "subNodePath": "redrose_castle_house_01",
         "targetTime": {
           "startHour": 7,
@@ -524,7 +528,8 @@
       "redrose_castle_inn": {
         "subNodeName": "레드로즈 여관",
         "buildingType": "inn",
-        "subNodePath": "blackwood_inn",
+        "subNodePath": "redrose_caslte_inn",
+        "backgroundPath" : "blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -628,12 +633,13 @@
         "subNodeName": "미라지 포트 광장",
         "buildingType": "house",
         "subNodePath": "mirage_port_square",
+        "backgroundPath" : "redrose_castle_square",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
         },
         "buildingNpc": [
-          "mirage_port_resident_01"
+          "mirage_port_resident"
         ],
         "gameObject": [
         ]
@@ -769,7 +775,6 @@
           "farmer"
         ],
         "gameObject": [
-          "middle_ridge_holl"
         ]
       }
     }
@@ -790,8 +795,8 @@
         "outerPath": "vaical_castle_02",
         "subNodePath": "vaical_castle_lab",
         "targetTime": {
-          "startHour": 0,
-          "endHour": 24
+          "startHour": 7,
+          "endHour": 22
         },
         "buildingNpc": [
           "fist"
@@ -806,7 +811,7 @@
         "subNodePath": "vaical_castle_headhouse",
         "targetTime": {
           "startHour": 7,
-          "endHour": 24
+          "endHour": 22
         },
         "buildingNpc": [
           "vical_villigehead"
@@ -820,8 +825,8 @@
         "outerPath": "vaical_castle_03",
         "subNodePath": "vaical_castle_colosseum",
         "targetTime": {
-          "startHour": 0,
-          "endHour": 24
+          "startHour": 7,
+          "endHour": 22
         },
         "buildingNpc": [
           "aren"
@@ -846,6 +851,7 @@
         "buildingType": "house",
         "outerPath": "southcape_02",
         "subNodePath": "southcape_headhouse",
+        "backgroundPath" : "southcape_house",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
@@ -874,7 +880,8 @@
       "southcape_inn": {
         "subNodeName": "사우스케이프 여관",
         "buildingType": "inn",
-        "subNodePath": "blackwood_inn",
+        "subNodePath": "southcape_inn",
+        "backgroundPath" : "blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -926,6 +933,7 @@
         "buildingType": "house",
         "outerPath": "southcape_02",
         "subNodePath": "southcape_house_01",
+        "backgroundPath" : "southcape_house",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
@@ -941,6 +949,7 @@
         "buildingType": "house",
         "outerPath": "southcape_02",
         "subNodePath": "southcape_house_02",
+        "backgroundPath" : "southcape_house",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
@@ -956,6 +965,7 @@
         "buildingType": "house",
         "outerPath": "southcape_03",
         "subNodePath": "southcape_house_03",
+        "backgroundPath" : "southcape_house",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
@@ -971,6 +981,7 @@
         "buildingType": "house",
         "outerPath": "southcape_03",
         "subNodePath": "southcape_house_04",
+        "backgroundPath" : "southcape_house",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
@@ -986,6 +997,7 @@
         "buildingType": "house",
         "outerPath": "southcape_03",
         "subNodePath": "southcape_house_05",
+        "backgroundPath" : "southcape_house",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
@@ -1001,6 +1013,7 @@
         "buildingType": "house",
         "outerPath": "southcape_03",
         "subNodePath": "southcape_house_06",
+        "backgroundPath" : "southcape_house",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
@@ -1021,6 +1034,78 @@
         },
         "buildingNpc": [
           "captain_jack"
+        ],
+        "gameObject": [
+        ]
+      }
+    }
+  },
+  "bonichea": {
+    "nodePath": "bonichea",
+    "nodeName": "보니체아",
+    "villageDirection": "left_right",
+    "scenePath": "bonichea_scene",
+    "arrowDirection": {},
+    "building": {
+      "bonicea_dock": {
+        "subNodeName": "보니체아 선착장",
+        "buildingType": "house",
+        "outerPath": "bonichea_02",
+        "subNodePath": "bonicea_dock",
+        "targetTime": {
+          "startHour": 0,
+          "endHour": 24
+        },
+        "buildingNpc": [
+          "bonicea_pirate"
+        ],
+        "gameObject": [
+        ]
+      },
+      "bonichea_grocery": {
+        "subNodeName": "보니체아 잡화상점",
+        "buildingType": "house",
+        "outerPath": "bonichea_02",
+        "subNodePath": "bonichea_grocery",
+        "targetTime": {
+          "startHour": 6,
+          "endHour": 22
+        },
+        "buildingNpc": [
+          "bonichea_grocery_owner"
+        ],
+        "gameObject": [
+        ]
+      },
+      "bonichea_inn": {
+        "subNodeName": "보니체아 여관",
+        "buildingType": "inn",
+        "outerPath": "bonichea_03",
+        "subNodePath": "bonichea_inn",
+        "backgroundPath": "blackwood_inn",
+        "targetTime": {
+          "startHour": 0,
+          "endHour": 24
+        },
+        "buildingNpc": [
+          "bonichea_inn_owner"
+        ],
+        "gameObject": [
+          "save",
+          "rest"
+        ]
+      },
+      "bonichea_square": {
+        "subNodeName": "해적왕의 광장",
+        "buildingType": "house",
+        "outerPath": "bonichea_03",
+        "subNodePath": "bonichea_square",
+        "targetTime": {
+          "startHour": 0,
+          "endHour": 24
+        },
+        "buildingNpc": [
+          "diomirhone"
         ],
         "gameObject": [
         ]
