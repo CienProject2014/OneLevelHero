@@ -47,7 +47,9 @@
         "nextSectionNumber": "103",
         "eventType": "battle_command",
         "eventParameter": {
-          "battleCommand": "normal_attack"
+          "battle": {
+            "battleCommand": "normal_attack"
+          }
         }
       }
     ]
@@ -68,7 +70,9 @@
         "nextSectionNumber": "104",
         "eventType": "battle_command",
         "eventParameter": {
-          "battleCommand": "skill_attack"
+          "battle": {
+            "battleCommand": "skill_attack"
+          }
         }
       }
     ]
@@ -89,7 +93,9 @@
         "nextSectionNumber": "105",
         "eventType": "battle_command",
         "eventParameter": {
-          "battleCommand": "skill_attack"
+          "battle": {
+            "battleCommand": "skill_attack"
+          }
         }
       }
     ]
@@ -110,7 +116,9 @@
         "nextSectionNumber": "106",
         "eventType": "battle_command",
         "eventParameter": {
-          "battleCommand": "use_item"
+          "battle": {
+            "battleCommand": "use_item"
+          }
         }
       }
     ]
@@ -412,7 +420,7 @@
         "eventParameter": {
           "location": {
             "nodePath": "kadilla_castle",
-            "subNodePath": "kadilla_castle_duke_castle"
+            "subNodePath": "kadilla_castle_duke_mansion"
           }
         }
       }
@@ -484,7 +492,7 @@
         "eventParameter": {
           "location": {
             "nodePath": "kadilla_castle",
-            "subNodePath": "kadilla_castle_duke_castle"
+            "subNodePath": "kadilla_castle_duke_mansion"
           }
         }
       }
@@ -538,11 +546,7 @@
     ],
     "conditionalNpcEvents": [
       {
-        "eventElement": "mea_01",
-        "eventNumber": "2"
-      },
-      {
-        "eventElement": "mea_02",
+        "eventElement": "mea",
         "eventNumber": "2"
       }
     ],
@@ -598,11 +602,7 @@
     ],
     "conditionalNpcEvents": [
       {
-        "eventElement": "mea_01",
-        "eventNumber": "3"
-      },
-      {
-        "eventElement": "mea_02",
+        "eventElement": "mea",
         "eventNumber": "3"
       }
     ],
@@ -636,15 +636,15 @@
     ],
     "conditionalNpcEvents": [
       {
-        "eventElement": "sailor_01",
+        "eventElement": "sailor1",
         "eventNumber": "2"
       },
       {
-        "eventElement": "sailor_02",
+        "eventElement": "sailor2",
         "eventNumber": "2"
       },
       {
-        "eventElement": "sailor_03",
+        "eventElement": "sailor3",
         "eventNumber": "2"
       }
     ],
@@ -655,15 +655,15 @@
         "eventParameter": {
           "events": [
             {
-              "eventElement": "sailor_01",
+              "eventElement": "sailor1",
               "eventNumber": 2
             },
             {
-              "eventElement": "sailor_02",
+              "eventElement": "sailor2",
               "eventNumber": 2
             },
             {
-              "eventElement": "sailor_03",
+              "eventElement": "sailor3",
               "eventNumber": 2
             }
           ]
@@ -739,27 +739,27 @@
     ],
     "conditionalNpcEvents": [
       {
-        "eventElement": "resident_southcape_01",
+        "eventElement": "resident_southcape1",
         "eventNumber": "2"
       },
       {
-        "eventElement": "resident_southcape_02",
+        "eventElement": "resident_southcape2",
         "eventNumber": "2"
       },
       {
-        "eventElement": "resident_southcape_03",
+        "eventElement": "resident_southcape3",
         "eventNumber": "2"
       },
       {
-        "eventElement": "resident_southcape_04",
+        "eventElement": "resident_southcape4",
         "eventNumber": "2"
       },
       {
-        "eventElement": "resident_southcape_05",
+        "eventElement": "resident_southcape5",
         "eventNumber": "2"
       },
       {
-        "eventElement": "resident_southcape_06",
+        "eventElement": "resident_southcape6",
         "eventNumber": "2"
       }
     ],
@@ -770,27 +770,27 @@
         "eventParameter": {
           "events": [
             {
-              "eventElement": "resident_southcape_01",
+              "eventElement": "resident_southcape1",
               "eventNumber": 2
             },
             {
-              "eventElement": "resident_southcape_02",
+              "eventElement": "resident_southcape2",
               "eventNumber": 2
             },
             {
-              "eventElement": "resident_southcape_03",
+              "eventElement": "resident_southcape3",
               "eventNumber": 2
             },
             {
-              "eventElement": "resident_southcape_04",
+              "eventElement": "resident_southcape4",
               "eventNumber": 2
             },
             {
-              "eventElement": "resident_southcape_05",
+              "eventElement": "resident_southcape5",
               "eventNumber": 2
             },
             {
-              "eventElement": "resident_southcape_06",
+              "eventElement": "resident_southcape6",
               "eventNumber": 2
             }
           ]
@@ -1031,7 +1031,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_cape_of_tempest",
-            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1102,7 +1101,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_cape_of_tempest",
-            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1136,7 +1134,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_cape_of_tempest",
-            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1194,7 +1191,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_cape_of_tempest",
-            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1228,7 +1224,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_cape_of_tempest",
-            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1286,7 +1281,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_cape_of_tempest",
-            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1320,7 +1314,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_cape_of_tempest",
-            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1430,7 +1423,7 @@
         "eventParameter": {
           "location": {
             "nodePath": "kadilla_castle",
-            "subNodePath": "kadilla_castle_duke_castle"
+            "subNodePath": "kadilla_castle_duke_mansion"
           }
         }
       }
@@ -1981,7 +1974,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "crystallized_valley",
-            "floorPath": "crystallized_valley",
             "roomLabel": "room_5_5"
           },
           "time": {
@@ -2060,7 +2052,7 @@
         "eventParameter": {
           "location": {
             "nodePath": "winterfall",
-            "subNodePath": "winterfall_dome"
+            "subNodePath": "winterfall_altar"
           }
         }
       }
@@ -2092,7 +2084,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_succubus",
-            "floorPath": "cave_of_succubus",
             "roomLabel": "room_4_5"
           }
         }
@@ -2167,7 +2158,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_succubus",
-            "floorPath": "cave_of_succubus",
             "roomLabel": "room_4_8"
           },
           "time": {
@@ -2277,7 +2267,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "crystallized_valley",
-            "floorPath": "crystallized_valley",
             "roomLabel": "room_5_5"
           }
         }
@@ -2306,7 +2295,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "crystallized_valley",
-            "floorPath": "crystallized_valley",
             "roomLabel": "room_3_7"
           }
         }
@@ -2317,7 +2305,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "crystallized_valley",
-            "floorPath": "crystallized_valley",
             "roomLabel": "room_5_4"
           }
         }
@@ -2328,7 +2315,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "crystallized_valley",
-            "floorPath": "crystallized_valley",
             "roomLabel": "room_6_4"
           }
         }
@@ -2339,7 +2325,6 @@
         "eventParameter": {
           "location": {
             "subNodePath": "crystallized_valley",
-            "floorPath": "crystallized_valley",
             "roomLabel": "room_6_7"
           }
         }
@@ -2557,10 +2542,9 @@
       }
     ],
     "nextSections": [
-     
       {
-        "nextSectionNumber": "404",
-        "eventType": "move_sub_node_before_absolute_time",
+        "nextSectionNumber": "403",
+        "eventType": "move_sub_node_after_absolute_time",
         "eventParameter": {
           "location": {
             "nodePath": "middle_ridge",
@@ -2572,9 +2556,9 @@
           }
         }
       },
-       {
-        "nextSectionNumber": "403",
-        "eventType": "move_sub_node_after_absolute_time",
+      {
+        "nextSectionNumber": "404",
+        "eventType": "move_sub_node_before_absolute_time",
         "eventParameter": {
           "location": {
             "nodePath": "middle_ridge",
@@ -2782,10 +2766,9 @@
       }
     ],
     "nextSections": [
-     
       {
-        "nextSectionNumber": "411",
-        "eventType": "move_dungeon_room_after_absolute_time",
+        "nextSectionNumber": "410",
+        "eventType": "move_dungeon_room_before_absolute_time",
         "eventParameter": {
           "location": {
             "subNodePath": "golden_lake",
@@ -2798,9 +2781,9 @@
           }
         }
       },
-       {
-        "nextSectionNumber": "410",
-        "eventType": "move_dungeon_room_before_absolute_time",
+      {
+        "nextSectionNumber": "411",
+        "eventType": "move_dungeon_room_after_absolute_time",
         "eventParameter": {
           "location": {
             "subNodePath": "golden_lake",
@@ -2970,7 +2953,7 @@
     ],
     "conditionalGameObjectEvents": [
       {
-        "eventElement": "middle_ridge_drawer",
+        "eventElement": "drawer",
         "eventNumber": "3"
       }
     ],
@@ -2980,11 +2963,11 @@
     "sequencialEvents": [],
     "conditionalNpcEvents": [
       {
-        "eventElement": "servant_01",
+        "eventElement": "servernt_01",
         "eventNumber": "2"
       },
       {
-        "eventElement": "servant_02",
+        "eventElement": "servernt_02",
         "eventNumber": "2"
       }
     ],
@@ -2995,11 +2978,11 @@
         "eventParameter": {
           "events": [
             {
-              "eventElement": "servant_01",
+              "eventElement": "servernt1",
               "eventNumber": 2
             },
             {
-              "eventElement": "servant_02",
+              "eventElement": "servernt2",
               "eventNumber": 2
             }
           ]

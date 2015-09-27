@@ -8,10 +8,12 @@ import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.SkillAssets;
 import com.mygdx.enums.BuffEffectEnum;
 import com.mygdx.enums.SkillEffectEnum;
+import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
 
@@ -24,6 +26,8 @@ public class HeroBattleStrategy implements BattleStrategy {
 	TimeManager timeManager;
 	@Autowired
 	PartyManager partyManager;
+	@Autowired
+	BattleManager battleManager;
 
 	@Override
 	public void attack(Unit attacker, Unit defender, int[][] hitArea) {
@@ -71,7 +75,6 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		Gdx.app.log("Hero", skillUser.getName() + "이(가) " + targetList.get(0).getName() + "에게 " + skill.getName()
 				+ "을(를) 사용하였습니다!");
-
 		// 각 타겟에 대해 SkillEffectType에 따라 사용
 		for (Unit target : targetList) {
 			if (skill.getSkillEffectType().equals(SkillEffectEnum.MULTI_EFFECT.toString())) {
@@ -95,8 +98,8 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void applyEffect(Unit attacker, Unit defender, Skill skill) {
 		switch (SkillEffectEnum.findSkillEffectEnum(skill.getSkillEffectType())) {
-		case ADD_CONDITIONAL_STATE:
-			addStateAttack(attacker, skill);
+		case ADD_SELF_STATE:
+			addSelfState(attacker, skill);
 			break;
 		case ADD_STATE:
 			addState(attacker, defender, skill);
@@ -123,13 +126,23 @@ public class HeroBattleStrategy implements BattleStrategy {
 		case REMOVE_STATE:
 			removeState(attacker, defender, skill);
 			break;
+		case CASTING:
+			cast(attacker, skill);
+			break;
 		default:
 			break;
 
 		}
 	}
 
-	private void addStateAttack(Unit attacker, Skill skill) {
+	private void cast(Unit attacker, Skill skill) {
+		attacker.getStatus().setCasting(attacker.getStatus().getCasting() + 1);
+		if (attacker.getStatus().getCasting() > 5) {
+			attacker.getStatus().setCasting(5);
+		}
+	}
+
+	private void addSelfState(Unit attacker, Skill skill) {
 		Buff buff = skillAssets.getBuff(skill.getBuffName());
 		if (buff == null) {
 			return;
@@ -171,6 +184,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		int defenderHp = defender.getStatus().getHp();
 		int skillDamage = (int) attacker.getStatus().getAttack();
 		int skillDefense = (int) defender.getStatus().getDefense();
+		float totalDamage;
 		float realSkillDamage = (int) (skillDamage - skillDefense) * skillFactor / 100f;
 		if (realSkillDamage < 1) {
 			realSkillDamage = 1;
@@ -183,13 +197,21 @@ public class HeroBattleStrategy implements BattleStrategy {
 			realMagicDamage = 1;
 		}
 
-		float totalDamage = realSkillDamage + realMagicDamage;
+		if (battleManager.getCurrentSelectedSkill().getBuffName().equals("solid")) {
+			totalDamage = realSkillDamage + realMagicDamage + attacker.getStatus().getDefense();
+		} else if (battleManager.getCurrentSelectedSkill().getSkillPath().equals("whirlwind")) {
+			totalDamage = realSkillDamage + realMagicDamage
+					+ attacker.getStatus().getAttack() * defender.getBuffList().size();
+		} else {
+			totalDamage = realSkillDamage + realMagicDamage;
+		}
 
 		if (defenderHp - totalDamage > 0) {
 			defender.getStatus().setHp((int) (defenderHp - totalDamage));
 		} else {
 			defender.getStatus().setHp(0);
 		}
+
 	}
 
 	private void duplicatedAttack(Unit attacker, Unit defender, int duplicateNumber, float skillFactor,
@@ -239,6 +261,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void addState(Unit attacker, Unit defender, Skill skill) {
 		Buff buff = skillAssets.getBuff(skill.getBuffName());
+		Buff bleeding = skillAssets.getBuff("bleeding");
 		if (buff == null) {
 			return;
 		}
@@ -255,17 +278,26 @@ public class HeroBattleStrategy implements BattleStrategy {
 				}
 			}
 		} else {
-			defender.getBuffList().add(buff);
-			applyBuff(defender);
+			if (skill.getSkillPath().equals("strong_breeze")) {
+				// strong_breeze일때는 출혈에 걸린 상태에만 스턴을 건다.
+				if (defender.getBuffList().contains(bleeding)) {
+					defender.getBuffList().add(buff);
+					applyBuff(defender);
+				}
+			} else {
+				defender.getBuffList().add(buff);
+				applyBuff(defender);
+			}
 		}
 
 	}
 
 	private void removeState(Unit attacker, Unit defender, Skill skill) {
+		Buff fly = skillAssets.getBuff("fly");
 		if (skill.getBuffName().equals("all")) {
 			defender.getBuffList().clear();
-		} else {
-
+		} else if (skill.getBuffName().equals("fly")) {
+			defender.getBuffList().remove(fly);
 		}
 	}
 
@@ -276,20 +308,23 @@ public class HeroBattleStrategy implements BattleStrategy {
 		int deltaTime = timeManager.getPreTime();
 
 		for (Buff buff : defender.getBuffList()) {
-			if (buff.getFlyingTime() >= buff.getDuration()) {
-				cancelList.add(buff);
+			if (buff.getDuration() == -1) {
 				continue;
-			}
-
-			buff.setPreFlyingTime(buff.getFlyingTime());
-
-			if (buff.getFlyingTime() + deltaTime > buff.getDuration()) {
-				float overVal = (buff.getFlyingTime() + deltaTime) - buff.getDuration();
-				buff.addFlyingTime((int) (deltaTime - overVal));
 			} else {
-				buff.addFlyingTime(deltaTime);
-			}
+				if (buff.getFlyingTime() >= buff.getDuration()) {
+					cancelList.add(buff);
+					continue;
+				}
 
+				buff.setPreFlyingTime(buff.getFlyingTime());
+
+				if (buff.getFlyingTime() + deltaTime > buff.getDuration()) {
+					float overVal = (buff.getFlyingTime() + deltaTime) - buff.getDuration();
+					buff.addFlyingTime((int) (deltaTime - overVal));
+				} else {
+					buff.addFlyingTime(deltaTime);
+				}
+			}
 			applyAllBuffEffect(defender, buff);
 
 		}
@@ -307,6 +342,9 @@ public class HeroBattleStrategy implements BattleStrategy {
 			case BLOCK_ACTION:
 				blockAction(defender);
 				break;
+			case INCREASE_AGGRO:
+				increaseAggro(defender);
+				break;
 			case DECREASE_ATTACK:
 				break;
 			case DECREASE_HP_ITERATIVE:
@@ -320,15 +358,33 @@ public class HeroBattleStrategy implements BattleStrategy {
 			case DECREASE_DEFENSE:
 				decreaseDefense(defender, buff);
 				break;
+			case DECREASE_SPEED:
+				decreaseSpeed(defender, buff);
+				break;
+			case FLY_ACTION:
+				flyAction(defender);
+				break;
 			default:
 				break;
 			}
 		}
 	}
 
+	private void flyAction(Unit defender) {
+		defender.setAggro(0);
+	}
+
+	private void decreaseSpeed(Unit defender, Buff buff) {
+		defender.getStatus().setSpeed(defender.getStatus().getSpeed() - 50);
+	}
+
+	private void increaseAggro(Unit defender) {
+		defender.setAggro(defender.getAggro() + 900);
+	}
+
 	private void decreaseDefense(Unit defender, Buff buff) {
-		defender.getStatus()
-				.setDefense(defender.getStatus().getDefense() / 100 * (buff.getIncreaseDefensePercent() + 100));
+		Hero hero = (Hero) defender;
+		defender.getStatus().setDefense(hero.getInventory().getAllDefense());
 	}
 
 	private void increaseDefense(Unit defender, Buff buff) {

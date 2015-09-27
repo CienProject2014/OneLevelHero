@@ -119,10 +119,12 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private void makeAddListener(final int index) {
 		heroImage.clearListeners();
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			// 전투 중엔 다른 식으로 작동한다.
 			heroImage.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
 					if (battleManager.isSkill() == true) {
+						// 스킬 사용시
 						if (battleManager.isShowGrid()) {
 							partyManager.setCurrentSelectedHero(null);
 						} else {
@@ -136,6 +138,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 				}
 			});
 		} else {
+			// 일상에서는 스테이터스 창이 보인다.
 			heroImage.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {

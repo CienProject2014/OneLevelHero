@@ -109,9 +109,10 @@
       "slash",
       "stab"
     ],
-    "effectStatusList" : [ "attack", "speed" ],
+    "effectStatusList" : [ "attack",   "defense", "speed" ],
     "effectStatus": {
       "attack": 17,
+       "defense" : 0,
       "speed": -5
     },
     "description": "칼날이 넓은 검."
@@ -128,9 +129,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack", "speed" ],
+    "effectStatusList" : [ "attack",   "defense", "speed" ],
     "effectStatus": {
       "attack": 12,
+        "defense":0,
       "speed": 5
     },
     "description": "외날이며 완만하게 구부러져 있다."
@@ -147,9 +149,10 @@
     "attackTypeList": [
       "stab"
     ],
-    "effectStatusList" : [ "attack" ],
+    "effectStatusList" : [ "attack",   "defense" ],
     "effectStatus": {
-      "attack": 42
+      "attack": 42,
+      "defense" : 0
     },
     "description": "찌르기에 특화된 검."
   },
@@ -166,9 +169,10 @@
       "slash",
       "stab"
     ],
-    "effectStatusList" : [ "attack", "magicAttack" ],
+    "effectStatusList" : [ "attack",   "defense", "magicAttack" ],
     "effectStatus": {
       "attack": 15,
+      "defense":0,
       "magicAttack":10
       },
     "description": "기본 공격 시 캐스팅 스택이 1개 쌓인다. 서큐버스가 사용하던 한손검. 수정으로 만들어져 있다."
@@ -185,10 +189,11 @@
     "attackTypeList": [
       "stab"
     ],
-    "effectStatusList" : [ "attack", "speed" ],
+    "effectStatusList" : [ "attack",   "defense", "speed" ],
     "effectStatus": {
       "attack": 46,
-      "magicAttack":5
+      "defense":0,
+      "speed":5
       },
     "description": "암살자들이 사용하던 비수."
   },
@@ -204,9 +209,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack"],
+    "effectStatusList" : [ "attack",   "defense"],
     "effectStatus": {
-      "attack": 27
+      "attack": 27,
+        "defense":0
       },
     "description": "선상전투를 위해 고안된 검. 길이가 짧고 베기에 특화된 단단한 날을 지님."
   },
@@ -222,9 +228,10 @@
     "attackTypeList": [
       "stab"
     ],
-    "effectStatusList" : [ "attack" ],
+    "effectStatusList" : [ "attack" ,  "defense"],
     "effectStatus": {
-      "attack": 72
+      "attack": 72,
+      "defense" : 0
       },
     "description": "찌르는 것에 특화된 검. 제작 기술의 어려움으로 고위직 장교들에게만 지급된다."
   },
@@ -240,9 +247,10 @@
     "attackTypeList": [
       "slash" , "stab"
     ],
-    "effectStatusList" : [ "attack" , "magicAttack"],
+    "effectStatusList" : [ "attack" ,  "defense", "magicAttack"],
     "effectStatus": {
       "attack": 35,
+          "defense":0,
       "magicAttack": 5
       },
     "description": "기본 공격 시 적에게 지속시간 10초의 '빙결'을 건다. 안킬라스의 코어를 녹여 만든 검신으로 제작하였다. 가만히 들고 있기만 해도 냉기가 내려앉는다."
@@ -259,9 +267,10 @@
     "attackTypeList": [
       "slash" 
     ],
-    "effectStatusList" : [ "attack" , "magicAttack"],
+    "effectStatusList" : [ "attack" ,  "defense", "magicAttack"],
     "effectStatus": {
       "attack": 50,
+          "defense":0,
       "magicAttack": 50
       },
     "description": "착용 시간이 10시간을 넘으면 사망한다. 드래곤의 보물 중 하나로 전설의 도둑이 훔쳐냈다. 오래 착용하면 드래곤에 의해 죽을지도…"
@@ -307,9 +316,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack" ],
+    "effectStatusList" : [ "attack" ,  "defense"],
     "effectStatus": {
-      "attack": 15
+      "attack": 15,
+        "defense" :0
       },
     "description": "검신이 매우 크고 넓어 둔기처럼 생겼다."
   },
@@ -325,9 +335,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatusList" : [ "attack" ,  "defense", "speed"],
     "effectStatus": {
       "attack": 17,
+          "defense":0,
       "speed": 5 
       },
     "description": "왕국군에 보급되던 양손검."
@@ -344,9 +355,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack" ],
+    "effectStatusList" : [ "attack" ,  "defense"],
     "effectStatus": {
-      "attack": 20
+      "attack": 20,
+          "defense":0
       },
     "description": "등에 매고 다니는 대검."
   },
@@ -362,9 +374,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack" ,"defense"],
+    "effectStatusList" : [ "attack"  , "defense","defense"],
     "effectStatus": {
       "attack": 20,
+          "defense":0,
       "defense": 30
       },
     "description": "어그로 수치 20 증가. 수호의 힘을 지닌 정령의 혼이 깃들어 있다고 일컬어지는 대검."
@@ -381,9 +394,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatusList" : [ "attack",  "defense" ,"speed"],
     "effectStatus": {
       "attack": 40,
+          "defense":0,
       "speed": -3
       },
     "description": "정제된 마력을 이용해 천상의 빛을 깃들게 한 검."
@@ -400,9 +414,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack" ],
+    "effectStatusList" : [ "attack" ,  "defense"],
     "effectStatus": {
-      "attack": 37
+      "attack": 37,
+          "defense":0
       },
     "description": "공격 시 자신에게 '출혈'을 건다. 수많은 원혼의 기운으로 가득 찬 대검."
   },
@@ -418,9 +433,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack" ],
+    "effectStatusList" : [ "attack" ,  "defense"],
     "effectStatus": {
-      "attack": 45
+      "attack": 45,
+          "defense":0
       },
     "description": "대형 몬스터에게 공격 시 데미지 20% 증가. 전설에 등장하는 거인의 대검. 그 위력은 천지를 두동강 내 버릴 정도라고 한다."
   },
@@ -436,9 +452,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack" ],
+    "effectStatusList" : [ "attack" ,  "defense"],
     "effectStatus": {
-      "attack": 50
+      "attack": 50,
+          "defense":0
       },
     "description": "공격력 50% 증가. 착용자 외 다른 동료가 최후의 일격을 날린 경우 착용자의 체력이 30% 감소한다. 주인에게 강력한 힘을 가져다 주지만 결국에는 파멸로 이끈다는 마검."
   },
@@ -473,9 +490,10 @@
     "attackTypeList": [
       "slash"
     ],
-    "effectStatusList" : [ "attack"  ],
+    "effectStatusList" : [ "attack",  "defense"  ],
     "effectStatus": {
-      "attack": 50
+      "attack": 50,
+          "defense":0
       },
     "description": "공격 시 40% 확률로 적의 방어력을 무시한다. 전설적인 대장장이가 마나 폭풍의 기운을 응축하여 벼려낸 검. 칼날이 닿고 지나간 자리에는 날카로운 한기만이 맴돈다."
   },
@@ -499,9 +517,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack" ],
+    "effectStatusList" : [ "attack" ,"magicAttack" ,  "defense"],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack":5 
       },
     "description": "회복 마법의 회복량 3% 증가. 신성한 말씀이 담겨져 있는 책"
@@ -518,9 +537,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack" ],
+    "effectStatusList" : [ "attack" ,  "defense","magicAttack" ],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack":10
       },
     "description": "마법으로 공격 시 데미지 10 추가. 마법사용에 대한 기초가 담겨져 있는 책"
@@ -537,9 +557,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack"  ],
+    "effectStatusList" : [ "attack" ,  "defense" ],
     "effectStatus": {
-      "attack": 2
+      "attack": 2,
+          "defense":0
       },
     "description": "리리스가 착용한 경우 체력이 낮아져도 변신하지 않는다. 리리스가 들고 있기엔 부끄러운 책."
   },
@@ -555,9 +576,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack" ],
+    "effectStatusList" : [ "attack",  "defense" ,"magicAttack" ],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack":25
       },
     "description": "레벨이 70이상일 경우 주문력 + 50. 상위 1%만 제대로 능력을 발휘시킬 수 있는 책"
@@ -574,9 +596,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack" ],
+    "effectStatusList" : [ "attack" ,  "defense","magicAttack" ],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack":25
       },
     "description": "리리스가 착용한 경우 1분당 경험치가 10 증가한다. 베르수스가 마법에 대해 쓴 일기장."
@@ -593,9 +616,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ],
+    "effectStatusList" : [ "attack",  "defense" ],
     "effectStatus": {
-      "attack": 30
+      "attack": 30,
+          "defense":0
       },
     "description": "매우 두꺼워서 모서리에 찍히면 매우 아프다."
   },
@@ -633,9 +657,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatusList" : [ "attack",  "defense" ,"magicAttack"],
     "effectStatus": {
       "attack": 5,
+          "defense":0,
       "magicAttack": 40
       },
     "description": "착용자는 항상 '축복'상태가 된다. 금박으로 장식한 성서다."
@@ -652,9 +677,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatusList" : [ "attack",  "defense" ,"magicAttack"],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack": 40
       },
     "description": "착용자는 항상 '불굴'상태가 된다. 엘프들의 고대 마법에 대한 지식이 담겨져 있는 책"
@@ -698,10 +724,11 @@
     "attackTypeList": [
       "arrow"
     ],
-    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatusList" : [ "attack" ,  "defense","speed"],
     "effectStatus": {
       "attack": 20,
-      "speed": -10
+      "speed": -10,
+          "defense":0
       },
     "description": "길고 강력한 활."
   },
@@ -717,10 +744,11 @@
     "attackTypeList": [
       "arrow"
     ],
-    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatusList" : [ "attack" ,  "defense","speed"],
     "effectStatus": {
       "attack": 14,
-      "speed": 20
+      "speed": 20,
+          "defense":0
       },
     "description": "작은 활. 빠르게 발사가 가능하나 위력이 떨어진다."
   },
@@ -736,9 +764,10 @@
     "attackTypeList": [
       "arrow"
     ],
-    "effectStatusList" : [ "attack" ],
+    "effectStatusList" : [ "attack",  "defense" ],
     "effectStatus": {
-      "attack": 17
+      "attack": 17,
+          "defense":0
       },
     "description": "손잡이에 붉은 천이 말려있는 일반적인 장궁."
   },
@@ -754,10 +783,11 @@
     "attackTypeList": [
       "arrow"
     ],
-    "effectStatusList" : [ "attack" ,"speed" ],
+    "effectStatusList" : [ "attack",  "defense" ,"speed" ],
     "effectStatus": {
       "attack": 20,
-      "speed": 20
+      "speed": 20,
+          "defense":0
       },
     "description": "'저격' 상태 시 공격력이 20% 증가한다. 힘으로 소문난 물소의 뿔과 힘줄으로 강화한 활. 먼 곳까지 장전이 가능하다."
   },
@@ -773,9 +803,10 @@
     "attackTypeList": [
       "arrow"
     ],
-    "effectStatusList" : [ "attack"  ],
+    "effectStatusList" : [ "attack",  "defense"  ],
     "effectStatus": {
-      "attack": 25
+      "attack": 25,
+          "defense":0
       },
     "description": "행동 게이지 소모량 -10. 힘들이지 않고 장전할 수 있는 편한 활"
   },
@@ -791,9 +822,10 @@
     "attackTypeList": [
       "arrow"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack" ],
+    "effectStatusList" : [ "attack",  "defense" ,"magicAttack" ],
     "effectStatus": {
       "attack": 15,
+          "defense":0,
       "magicAttack": 35
       },
     "description": "기본 공격의 데미지가 주문력 100%로 바뀐다. 화살대신 번개를 쏠 수 있는 활. 마나로즈의 마력이 담겨져 있다."
@@ -810,9 +842,10 @@
     "attackTypeList": [
       "arrow"
     ],
-    "effectStatusList" : [ "attack" ,"speed" ],
+    "effectStatusList" : [ "attack",  "defense" ,"speed" ],
     "effectStatus": {
       "attack": 30,
+        "defense":0,
       "magicAttack": 30
       },
     "description": "'정밀한 사격'시 치명도가 가장 높은 네 칸을 공격한다. 잊혀진 기사가 쓰던 활. 절대로 빗나가지 않는다."
@@ -829,9 +862,10 @@
     "attackTypeList": [
       "arrow"
     ],
-    "effectStatusList" : [ "attack" ,"speed" ],
+    "effectStatusList" : [ "attack",  "defense" ,"speed" ],
     "effectStatus": {
       "attack": 35,
+          "defense":0,
       "magicAttack": 30
       },
     "description": "기본 공격 시 공격한 히트박스에 기본 공격을 1회 더 가한다. 빠르게 움직이는 켄타우로스는 2개의 화살을 한번에 발사하는데에 특화된 활을 사용한다."
@@ -848,9 +882,10 @@
     "attackTypeList": [
       "arrow"
     ],
-    "effectStatusList" : [ "attack" ,"speed" ],
+    "effectStatusList" : [ "attack" ,  "defense","speed" ],
     "effectStatus": {
       "attack": 100,
+          "defense":0,
       "magicAttack": -50
       },
     "description": "거대한 몬스터를 잡기위해 최적화된 활이다. 매우 강력하지만 , 무겁다."
@@ -867,9 +902,10 @@
     "attackTypeList": [
       "arrow"
     ],
-    "effectStatusList" : [ "attack"],
+    "effectStatusList" : [ "attack",  "defense"],
     "effectStatus": {
-      "attack": 55
+      "attack": 55,
+          "defense":0
       },
     "description": "기술 사용 시 10% 확률로 행동 게이지 소모량 없이 1번 더 행동 가능. 신들의 힘을 빌려 소환한 활."
   },
@@ -893,9 +929,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" , "magicAttack"],
+    "effectStatusList" : [ "attack" ,   "defense", "magicAttack"],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack": 10
       },
     "description": "디오미론느가 오랬동안 쓰고 있는 강령술용 지팡이. 망자의 기운이 깃들어 음침해 보인다."
@@ -912,9 +949,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" , "magicAttack","speed"],
+    "effectStatusList" : [ "attack" ,   "defense", "magicAttack","speed"],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack": 10,
       "speed": 2
       },
@@ -932,9 +970,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatusList" : [ "attack",  "defense" ,"speed"],
     "effectStatus": {
       "attack": 10,
+          "defense":0,
       "speed": 5
       },
     "description": "블랙우드 지방의 특이한 나무로 만든 지팡이."
@@ -951,9 +990,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatusList" : [ "attack" ,  "defense","magicAttack"],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack": 20
       },
     "description": "마법(캐스팅 제외) 사용 시 체력 5% 회복. 영혼을 먹는 탐욕스러운 지팡이. 강령술에 어느 정도 익숙해진 자만이 다룰 수 있다."
@@ -970,9 +1010,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatusList" : [ "attack" ,  "defense","magicAttack"],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack": 25
       },
     "description": "기본 공격 시 캐스팅 스택이 1개 쌓인다. 황금으로 만들어진 박쥐형상의 지팡이, 양 끝에는 사파이어가 달려있다."
@@ -989,9 +1030,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatusList" : [ "attack",  "defense" ,"speed"],
     "effectStatus": {
       "attack": 15,
+          "defense":0,
       "speed": 20
       },
     "description": "산 필드맵에서 이동할 때 이동시간 5분 단축. 등산 시 좋다."
@@ -1008,9 +1050,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatusList" : [ "attack",  "defense" ,"magicAttack"],
     "effectStatus": {
       "attack": 5,
+          "defense":0,
       "magicAttack" : 27
       },
     "description": "자신이 받는 피해량 10% 증가, '강령의식-呪'의 데미지가 2배가 된다. 뱀 두마리가 교차된 형태로 이루어진 저주 특화 지팡이. 두 뱀은 각각 통곡과 절규를 상징한다."
@@ -1027,9 +1070,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatusList" : [ "attack",  "defense" ,"magicAttack"],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack" : 25
       },
     "description": "'망자의 속삭임' 사용 시 적에게 200의 고정 데미지를 입히고, 4개의 상태이상을 모두 건다. 망자들의 벗이라 인정받은 자의 증표."
@@ -1046,9 +1090,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatusList" : [ "attack" ,  "defense","magicAttack"],
     "effectStatus": {
       "attack": 2,
+          "defense":0,
       "magicAttack" : 50
       },
     "description": "전투에서 자신 이외의 동료가 사망해도 게임오버되지 않고, 전투 종료 시 체력 1로 살아난다. 죽음에 이르면 건너게 된다는 레테강 앞에서 직접 영들을 끌어올 수 있는 매우 강력한 무구."
@@ -1065,9 +1110,10 @@
     "attackTypeList": [
       "smash"
     ],
-    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatusList" : [ "attack",  "defense" ,"magicAttack"],
     "effectStatus": {
       "attack": 5,
+          "defense":0,
       "magicAttack" : 30
       },
     "description": "모든 마법의 요구 캐스팅 스택 1 감소. 신이 내려주었다고 전해지는 전설적인 지팡이. 섭리의 흐름을 뒤집어 환혼을 이룬다."

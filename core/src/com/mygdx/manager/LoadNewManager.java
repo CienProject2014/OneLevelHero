@@ -28,6 +28,8 @@ public class LoadNewManager {
 	@Autowired
 	private TimeManager timeManager;
 	@Autowired
+	private DungeonManager dungeonManager;
+	@Autowired
 	private BattleManager battleManager;
 	@Autowired
 	private BagManager bagManager;
@@ -82,9 +84,10 @@ public class LoadNewManager {
 
 	private void setCurrentLocatePosition() {
 		// 마왕성에서부터 게임을 시작한다.
-		positionManager.setCurrentNodePath("devil_castle");
-		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
+		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.DUNGEON);
 		positionManager.setCurrentEventPositionType(EventPosition.NONE);
+		positionManager.setCurrentNodePath("devil_castle");
+		dungeonManager.setDungeonInfo("devil_castle");
 		fieldManager.setArrowName("16to1");
 	}
 

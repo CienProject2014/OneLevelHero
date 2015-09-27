@@ -19,6 +19,7 @@ public class Status {
 	private int fireResistance; // fire resistance
 	private int waterResistance; // water
 	private int electricResistance; // electric
+	private int casting;
 
 	public String getHpState() {
 		return hp + "/" + maxHp;
@@ -191,5 +192,13 @@ public class Status {
 			Gdx.app.log("Status", "StatusType정보 오류");
 			return 0;
 		}
+	}
+
+	public int getCasting() {
+		return casting;
+	}
+
+	public void setCasting(int casting) {
+		this.casting = casting;
 	}
 }

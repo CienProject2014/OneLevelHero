@@ -9,6 +9,7 @@ import com.mygdx.enums.BuffEffectEnum;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Unit;
 
 public class MonsterBattleStrategy implements BattleStrategy {
@@ -87,10 +88,26 @@ public class MonsterBattleStrategy implements BattleStrategy {
 				break;
 			case DECREASE_MAGIC_ATTACK:
 				break;
+			case INCREASE_DEFENSE:
+				increaseDefense(defender, buff);
+				break;
+			case DECREASE_DEFENSE:
+				decreaseDefense(defender, buff);
+				break;
 			default:
 				break;
 			}
 		}
+	}
+
+	private void decreaseDefense(Unit defender, Buff buff) {
+		Hero hero = (Hero) defender;
+		defender.getStatus().setDefense(hero.getInventory().getAllDefense());
+	}
+
+	private void increaseDefense(Unit defender, Buff buff) {
+		defender.getStatus()
+				.setDefense(defender.getStatus().getDefense() / 100 * (buff.getIncreaseDefensePercent() + 100));
 	}
 
 	private void blockAction(Unit defender) {
