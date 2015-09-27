@@ -14,9 +14,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.NodeAssets;
+import com.mygdx.enums.DungeonEnum;
 import com.mygdx.enums.DungeonEnum.Direction;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.DungeonDoorButtonListener;
+import com.mygdx.listener.DungeonStairButtonListener;
 import com.mygdx.listener.LeaveDungeonButtonListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.DungeonEncounterManager;
@@ -86,6 +88,7 @@ public class DungeonStage extends BaseOneLevelStage {
 		showDoorButton(dungeonManager);
 		setOtherButtons(dungeonManager);
 	}
+
 	private void setInitialDungeonInfo(DungeonManager dungeonManager) {
 		if (positionManager.getCurrentSubNodePath() != null) {
 			dungeonManager.setDungeonInfo(positionManager.getCurrentSubNodePath());
@@ -255,6 +258,11 @@ public class DungeonStage extends BaseOneLevelStage {
 			otherButtonTable.left().bottom();
 			otherButtonTable.padLeft(808).padBottom(412);
 			otherButtonTable.add(upButton);
+			DungeonStairButtonListener dungeonStairButtonListener = listenerFactory.getDungeonStairButtonListener();
+			dungeonStairButtonListener.setStairType(DungeonEnum.Type.UP_STAIR);
+			dungeonStairButtonListener.setLink(dungeonManager.getDungeonInfo().getCurrentRoom().getLink());
+			upButton.addListener(dungeonStairButtonListener);
+			addActor(otherButtonTable);
 			addActor(otherButtonTable);
 		}
 	}
@@ -278,6 +286,10 @@ public class DungeonStage extends BaseOneLevelStage {
 			otherButtonTable.left().bottom();
 			otherButtonTable.padLeft(808).padBottom(412);
 			otherButtonTable.add(downButton);
+			DungeonStairButtonListener dungeonStairButtonListener = listenerFactory.getDungeonStairButtonListener();
+			dungeonStairButtonListener.setStairType(DungeonEnum.Type.DOWN_STAIR);
+			dungeonStairButtonListener.setLink(dungeonManager.getDungeonInfo().getCurrentRoom().getLink());
+			downButton.addListener(dungeonStairButtonListener);
 			addActor(otherButtonTable);
 		}
 	}

@@ -1,5 +1,6 @@
 package com.mygdx.manager;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,10 @@ import com.mygdx.assets.NodeAssets;
 import com.mygdx.currentState.DungeonInfo;
 import com.mygdx.enums.DungeonEnum;
 import com.mygdx.enums.DungeonEnum.Direction;
+import com.mygdx.enums.DungeonEnum.Type;
 import com.mygdx.model.location.Dungeon;
 import com.mygdx.model.location.DungeonConnection;
+import com.mygdx.model.location.DungeonFloor;
 import com.mygdx.model.location.DungeonRoom;
 
 public class DungeonManager {
@@ -43,7 +46,6 @@ public class DungeonManager {
 			dungeonInfo.getCurrentFloor().setMiniMap(minimapInfo);
 		}
 	}
-
 	private void setInitialCurrentRoomInfo(int startDungeonRoomIndex) {
 		dungeonInfo.setCurrentRoom(dungeonInfo.getCurrentFloor().getDungeonRooms().get(startDungeonRoomIndex));
 		dungeonInfo.setCurrentDirection(Direction.FORWARD);
@@ -114,5 +116,34 @@ public class DungeonManager {
 		String nodeName = dungeonInfo.getCurrentRoom().getLink();
 		movingManager.goToNode(nodeName);
 		dungeonInfo.setInDungeon(false);
+	}
+
+	public void moveStair(Type stairType, String link) {
+		int beforeFloorIndex = checkCurrentFloorIndex();
+		switch (stairType) {
+			case UP_STAIR :
+				dungeonInfo.setCurrentFloor(dungeonInfo.getCurrentDungeon().getDungeonFloors()
+						.get(beforeFloorIndex + 1));
+				Gdx.app.log("DungeonManager", "go up stair - " + dungeonInfo.getCurrentFloor().getFloorPath());
+				break;
+			case DOWN_STAIR :
+				dungeonInfo.setCurrentFloor(dungeonInfo.getCurrentDungeon().getDungeonFloors()
+						.get(beforeFloorIndex - 1));
+				Gdx.app.log("DungeonManager", "go down stair - " + dungeonInfo.getCurrentFloor().getFloorPath());
+				break;
+			default :
+				Gdx.app.log("DungeonManager", "StairType정보 오류" + stairType);
+				break;
+		}
+		setFloorMinimap(dungeonInfo);
+		dungeonInfo.setCurrentRoom(dungeonInfo.getCurrentFloor().findRoomByLabel(link));
+		dungeonInfo.setCurrentDirection(Direction.FORWARD);
+		setCurrentRoomVisibilityOn();
+	}
+
+	private int checkCurrentFloorIndex() {
+		ArrayList<DungeonFloor> dungeonFloorInfo = dungeonInfo.getCurrentDungeon().getDungeonFloors();
+		int currentFloorIndex = dungeonFloorInfo.indexOf(dungeonInfo.getCurrentFloor());
+		return currentFloorIndex;
 	}
 }

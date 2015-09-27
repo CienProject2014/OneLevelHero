@@ -12,14 +12,14 @@ public enum EventTypeEnum {
 			"rest_in_node"), GAME_OVER("game_over"), LEAVE_PARTY("leave_party"), SET_TIME("set_time"), GET_BUFF(
 			"get_buff"), JOIN_PARTY("join_party"), MOVE_SUB_NODE_AFTER_DAY_FROM("move_sub_node_after_day_from"), MOVE_SUB_NODE_BY_TIME_NEXTDAY(
 			"move_sub_node_by_time_nextday"), MOVE_SUB_NODE_BY_TIME_FROM("move_sub_node_by_time_from"), CLICK_ARROW(
-			"click_arrow"), MOVE_NODE_BY_TIME("move_node_by_time"), GET_EXP("get_exp"), GET_ITEM("get_item"), OPEN_NPC_EVENT(
-			"open_npc_event"), SET_NPC_TARGET_TIME("set_npc_target_time"), CLOSE_NPC_EVENT("close_npc_event"), QUEST_GET_ITEM(
-			"quest_get_item"), SELECT_CHAT("select_chat"), QUIT_PARTY("quit_party"), STOP_GO_SUB_NODE(
+			"click_arrow"), MOVE_NODE_BY_TIME("move_node_by_time"), GAME_CLEAR("game_clear"), GET_EXP("get_exp"), GET_ITEM(
+			"get_item"), OPEN_NPC_EVENT("open_npc_event"), SET_NPC_TARGET_TIME("set_npc_target_time"), CLOSE_NPC_EVENT(
+			"close_npc_event"), QUEST_GET_ITEM("quest_get_item"), SELECT_CHAT("select_chat"), QUIT_PARTY("quit_party"), STOP_GO_SUB_NODE(
 			"stop_go_sub_node"), GO_SUB_NODE("go_sub_node"), MOVE_DUNGEON_ROOM_IN_TARGET_TIME(
 			"move_dungeon_room_in_target_time"), MOVE_SUB_NODE_IN_TARGET_TIME("move_sub_node_in_target_time"), MOVE_DUNGEON_ROOM_AFTER_ABSOLUTE_TIME(
 			"move_dungeon_room_after_absolute_time"), MOVE_NODE_IN_TARGET_TIME("move_node_in_target_time"), MOVE_DUNGEON_ROOM_BEFORE_ABSOLUTE_TIME(
 			"move_dungeon_room_before_absolute_time"), ALWAYS_OPEN_NPC_EVENT("always_open_npc_event"), MOVE_SUB_NODE_BEFORE_SECTION_TIME(
-			"move_sub_node_before_section_time");
+			"move_sub_node_before_section_time"), QUEST_HUNT_MONSTER("quest_hunt_monster");
 	private String code;
 
 	EventTypeEnum(String code) {

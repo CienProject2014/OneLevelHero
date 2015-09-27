@@ -67,7 +67,7 @@
         }
       },
       {
-        "itemIdentifier": "oberon_house01",
+        "itemIdentifier": "oberon_house_01",
         "x": 269.99997,
         "y": 1234,
         "zIndex": 3,
@@ -143,7 +143,7 @@
         }
       },
       {
-        "itemIdentifier": "oberon_house02",
+        "itemIdentifier": "oberon_house_02",
         "x": 268.99997,
         "y": 290,
         "zIndex": 5,
@@ -181,7 +181,7 @@
         }
       },
       {
-        "itemIdentifier": "oberon_house03",
+        "itemIdentifier": "oberon_house_03",
         "x": 787,
         "y": 127.999985,
         "zIndex": 6,
@@ -219,7 +219,7 @@
         }
       },
       {
-        "itemIdentifier": "oberon_house04",
+        "itemIdentifier": "oberon_house_04",
         "x": 1332,
         "y": 651,
         "zIndex": 7,

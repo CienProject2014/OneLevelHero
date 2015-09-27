@@ -1,13 +1,13 @@
 package com.mygdx.model.eventParameter;
 
-public class BuffParameter {
-	private String buffName;
+public class BuffParameter extends Parameter {
+	private String buffPath;
 
-	public String getBuffName() {
-		return buffName;
+	public String getBuffPath() {
+		return buffPath;
 	}
 
-	public void setBuffName(String buffName) {
-		this.buffName = buffName;
+	public void setBuffPath(String buffPath) {
+		this.buffPath = buffPath;
 	}
 }

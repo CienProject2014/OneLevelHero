@@ -1,46 +1,54 @@
 package com.mygdx.model.eventParameter;
 
 public class LocationParameter extends Parameter {
-	private String nodeName;
-	private String subNodeName;
-	private String floorName;
-	private String arrowName;
+	private String nodePath;
+	private String subNodePath;
+	private String floorPath;
+	private String arrowLabel;
 	private String roomLabel;
-	private String npcName;
-	public String getNodeName() {
-		return nodeName;
-	}
-	public void setNodeName(String nodeName) {
-		this.nodeName = nodeName;
-	}
-	public String getSubNodeName() {
-		return subNodeName;
-	}
-	public void setSubNodeName(String subNodeName) {
-		this.subNodeName = subNodeName;
-	}
-	public String getArrowName() {
-		return arrowName;
-	}
-	public void setArrowName(String arrowName) {
-		this.arrowName = arrowName;
-	}
-	public String getFloorName() {
-		return floorName;
-	}
-	public void setFloorName(String floorName) {
-		this.floorName = floorName;
-	}
+	private String npcPath;
+	private String gameObjectPath;
+
 	public String getRoomLabel() {
 		return roomLabel;
 	}
 	public void setRoomLabel(String roomLabel) {
 		this.roomLabel = roomLabel;
 	}
-	public String getNpcName() {
-		return npcName;
+	public String getNodePath() {
+		return nodePath;
 	}
-	public void setNpcName(String npcName) {
-		this.npcName = npcName;
+	public void setNodePath(String nodePath) {
+		this.nodePath = nodePath;
+	}
+	public String getSubNodePath() {
+		return subNodePath;
+	}
+	public void setSubNodePath(String subNodePath) {
+		this.subNodePath = subNodePath;
+	}
+	public String getFloorPath() {
+		return floorPath;
+	}
+	public void setFloorPath(String floorPath) {
+		this.floorPath = floorPath;
+	}
+	public String getGameObjectPath() {
+		return gameObjectPath;
+	}
+	public void setGameObjectPath(String gameObjectPath) {
+		this.gameObjectPath = gameObjectPath;
+	}
+	public String getNpcPath() {
+		return npcPath;
+	}
+	public void setNpcPath(String npcPath) {
+		this.npcPath = npcPath;
+	}
+	public String getArrowLabel() {
+		return arrowLabel;
+	}
+	public void setArrowLabel(String arrowLabel) {
+		this.arrowLabel = arrowLabel;
 	}
 }

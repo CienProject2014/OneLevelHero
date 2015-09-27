@@ -10,12 +10,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.enums.DungeonEnum.Direction;
 import com.mygdx.manager.DungeonManager;
+import com.mygdx.manager.TextureManager;
 import com.mygdx.model.location.DungeonFloor;
 import com.mygdx.model.location.DungeonRoom;
 
 public class DungeonMinimapStage extends BaseOneLevelStage {
 	@Autowired
 	private DungeonManager dungeonManager;
+	@Autowired
+	private TextureManager textureManager;
 	private Texture map;
 	private TextureRegion[][] maptile;
 	private Table minimapTable = new Table();
@@ -102,14 +105,8 @@ public class DungeonMinimapStage extends BaseOneLevelStage {
 	}
 
 	private void showMapTile(DungeonManager dungeonManager) {
-		String minimapPath = "texture/dungeon_minimap/"
-				+ dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath() + "_minimap.png";
-
 		blacktile = new Texture(Gdx.files.internal("texture/dungeon_minimap/black_tile.png"));
-		map = new Texture(Gdx.files.internal(minimapPath));
-		if (map == null) {
-			map = new Texture(Gdx.files.internal("texture/dungeon_minimap/devil_castle_minimap.png"));
-		}
+		map = textureManager.getMinimapTexture(dungeonManager.getDungeonInfo().getCurrentFloor().getFloorPath());
 
 		maptile = TextureRegion.split(map, map.getWidth()
 				/ (dungeonManager.getDungeonInfo().getCurrentFloor().getMapWidth() + 2), map.getHeight()

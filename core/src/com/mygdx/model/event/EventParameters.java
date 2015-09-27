@@ -7,6 +7,7 @@ import com.mygdx.model.eventParameter.BuffParameter;
 import com.mygdx.model.eventParameter.ItemParameter;
 import com.mygdx.model.eventParameter.LocationParameter;
 import com.mygdx.model.eventParameter.MusicParameter;
+import com.mygdx.model.eventParameter.QuestParameter;
 import com.mygdx.model.eventParameter.TimeParameter;
 import com.mygdx.model.eventParameter.UnitParameter;
 
@@ -20,10 +21,12 @@ public class EventParameters {
 	private ArrayList<String> options;
 	private UnitParameter unit;
 	private String targetComponent;
+	private QuestParameter quest;
 	private int nextSectionNumber;
 	private MusicParameter music;
 	private ItemParameter item;
 	private BuffParameter buff;
+	private String battleCommand;
 
 	public TimeParameter getTime() {
 		return time;
@@ -102,5 +105,17 @@ public class EventParameters {
 	}
 	public void setBuff(BuffParameter buff) {
 		this.buff = buff;
+	}
+	public QuestParameter getQuest() {
+		return quest;
+	}
+	public void setQuest(QuestParameter quest) {
+		this.quest = quest;
+	}
+	public String getBattleCommand() {
+		return battleCommand;
+	}
+	public void setBattleCommand(String battleCommand) {
+		this.battleCommand = battleCommand;
 	}
 }
