@@ -77,6 +77,7 @@ public class BattleStage extends BaseOneLevelStage {
 	// Image
 	private Image currentAttackerBackground;
 	private Image turnTableBackground;
+	private Image textMenu;
 	private HashMap<String, Image> turnBigImageMap = new HashMap<String, Image>();
 	private HashMap<String, Image> turnSmallImageMap = new HashMap<String, Image>();
 	// Table
@@ -85,6 +86,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private Table smallImageTable = new Table();
 	private Table turnTable = new Table();
 	private Table rMenuTable = new Table();
+	private Table textMenuTable = new Table();
 	private int check = 0;
 	private Vector2 start, end;
 	private Unit currentAttackUnit;
@@ -225,21 +227,27 @@ public class BattleStage extends BaseOneLevelStage {
 		rMenuTable.addAction(Actions.moveTo(1920, 15));
 		rMenuTable.addAction(Actions.moveTo(1720, 15, 1));
 
-		turnTable.addAction(Actions.moveTo(15, -137));
-		turnTable.addAction(Actions.moveTo(15, 15, 1));
+		turnTable.addAction(Actions.moveTo(5, -137));
+		turnTable.addAction(Actions.moveTo(5, 5, 1));
 
-		imageTable.addAction(Actions.moveTo(15, -137));
-		imageTable.addAction(Actions.moveTo(15, 20, 1));
+		imageTable.addAction(Actions.moveTo(5, -137));
+		imageTable.addAction(Actions.moveTo(5, 5, 1));
 
+		textMenuTable.addAction(Actions.moveTo(150, -137));
+		textMenuTable.addAction(Actions.moveTo(150, 30, 1));
 	}
 
 	private Table makeTurnTable() {
+
+		textMenu = new Image(textureManager.getTexture("battleui_textmenu"));
 		makeTurnBackgroundImage();
 		makeBattleTurnImage();
 		currentAttackerBackground.setWidth(137);
 		currentAttackerBackground.setHeight(137);
 		turnTable.add(currentAttackerBackground);
 		turnTable.add(turnTableBackground);
+		turnTable.add(textMenu);
+
 		turnTable.left().bottom();
 		turnTable.padLeft(15).padBottom(15);
 		return turnTable;

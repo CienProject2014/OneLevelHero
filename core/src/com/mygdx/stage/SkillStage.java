@@ -250,7 +250,7 @@ public class SkillStage extends BaseOverlapStage {
 			Array<String> gaugeLabelList = sceneConstants.get("gauge_label");
 			skillInfo = new HashMap<>(SKILL_TAB_SIZE);
 
-			for (int i = 0; i < battleManager.getCurrentAttackUnit().getSkills().size() - 1; i++) {
+			for (int i = 0; i < battleManager.getCurrentAttackUnit().getSkills().size(); i++) {
 				if (tech) {
 					// 기술 텝이 열릴때
 					if (techIndex < 7) {

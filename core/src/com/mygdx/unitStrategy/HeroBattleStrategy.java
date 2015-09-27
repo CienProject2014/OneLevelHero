@@ -309,7 +309,6 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		for (Buff buff : defender.getBuffList()) {
 			if (buff.getDuration() == -1) {
-				continue;
 			} else {
 				if (buff.getFlyingTime() >= buff.getDuration()) {
 					cancelList.add(buff);
@@ -389,6 +388,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void decreaseDefense(Unit defender, Buff buff) {
 		Hero hero = (Hero) defender;
+		System.out.println("test");
 		defender.getStatus().setDefense(defender.getStatus().getDefense() - hero.getInventory().getAllDefense());
 	}
 
