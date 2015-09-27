@@ -2155,6 +2155,10 @@ bg_cape_of_tempest_04: {
 	class: java.lang.String,
 	value: texture/background/bg_cape_of_tempest_04.png/
 },
+bg_gameclear: {
+	class: java.lang.String,
+	value: texture/background/bg_gameclear.png/
+},
 battle_kentaurous_bow_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_kentaurous_bow_small.png/

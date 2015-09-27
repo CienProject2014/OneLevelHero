@@ -26,6 +26,7 @@ import com.mygdx.screen.EncounterScreen;
 import com.mygdx.screen.EndingScreen;
 import com.mygdx.screen.FieldScreen;
 import com.mygdx.screen.ForkScreen;
+import com.mygdx.screen.GameClearScreen;
 import com.mygdx.screen.GameObjectScreen;
 import com.mygdx.screen.GameOverScreen;
 import com.mygdx.screen.GreetingScreen;
@@ -91,6 +92,8 @@ public class ScreenFactory {
 				return context.getBean(EncounterScreen.class);
 			case ENDING :
 				return context.getBean(EndingScreen.class);
+			case GAME_CLEAR :
+				return context.getBean(GameClearScreen.class);
 			case GAME_OBJECT :
 				return context.getBean(GameObjectScreen.class);
 			case GAME_OVER :

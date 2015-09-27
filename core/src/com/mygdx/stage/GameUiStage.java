@@ -75,13 +75,14 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	private void showPlaceInfoButton() {
 		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.NODE)) {
-			placeInfoButton.setText(positionManager.getCurrentNodeName());
+			placeInfoButton.setText(positionManager.getCurrentNodeName() + CurrentInfo.getAdminMessage());
 		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.SUB_NODE)) {
-			placeInfoButton.setText(positionManager.getCurrentSubNodeName());
+			placeInfoButton.setText(positionManager.getCurrentSubNodeName() + CurrentInfo.getAdminMessage());
 		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
-			placeInfoButton.setText(dungeonManager.getDungeonInfo().getCurrentFloor().getFloorName());
+			placeInfoButton.setText(dungeonManager.getDungeonInfo().getCurrentFloor().getFloorName()
+					+ CurrentInfo.getAdminMessage());
 		} else {
-			placeInfoButton.setText(positionManager.getCurrentNodeName());
+			placeInfoButton.setText(positionManager.getCurrentNodeName() + CurrentInfo.getAdminMessage());
 		}
 
 	}

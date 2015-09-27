@@ -72,7 +72,5 @@ public class DungeonEntranceScreen extends BaseScreen {
 
 	@Override
 	public void hide() {
-		gameUiStage.dispose();
-		dungeonEntranceStage.dispose();
 	}
 }

@@ -8724,7 +8724,7 @@
             "backgroundPath": "devil_castle_06"
           }
         }
-      },
+      },	
       "3": {
         "eventState": "not_opened",
         "eventType": "game_clear"

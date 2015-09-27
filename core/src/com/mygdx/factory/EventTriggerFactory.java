@@ -12,6 +12,7 @@ import com.mygdx.eventTrigger.ChoiceOptionEventTrigger;
 import com.mygdx.eventTrigger.CloseGameObjectEventTrigger;
 import com.mygdx.eventTrigger.EndBattleEventTrigger;
 import com.mygdx.eventTrigger.EventTrigger;
+import com.mygdx.eventTrigger.GameClearEventTrigger;
 import com.mygdx.eventTrigger.GameOverEventTrigger;
 import com.mygdx.eventTrigger.GetBuffEventTrigger;
 import com.mygdx.eventTrigger.GoSubNodeEventTrigger;
@@ -46,6 +47,8 @@ public class EventTriggerFactory {
 				return context.getBean(ChoiceOptionEventTrigger.class);
 			case CLOSE_GAME_OBJECT_EVENT :
 				return context.getBean(CloseGameObjectEventTrigger.class);
+			case GAME_CLEAR :
+				return context.getBean(GameClearEventTrigger.class);
 			case GAME_OVER :
 				return context.getBean(GameOverEventTrigger.class);
 			case GET_BUFF :

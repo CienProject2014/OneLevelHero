@@ -6,7 +6,7 @@ public enum ScreenEnum {
 			"world_map"), CREDIT("credit"), EXTRA("extra"), SAVE("save"), BONUS_POINT("bonus_point"), LOAD("load"), CHAT_EVENT(
 			"event"), FIELD("field"), ENDING("ending"), CG("cg"), BGM("bgm"), COLLECTION("collection"), STATUS("status"), BATTLE(
 			"battle"), ENCOUNTER("encounter"), INVENTORY("inventory"), FORK("fork"), GAME_OVER("game_over"), CHARACTER_CHANGE(
-			"character_change"), CHOICE_OPTION("choice_option");
+			"character_change"), CHOICE_OPTION("choice_option"), GAME_CLEAR("game_clear");
 
 	private String code;
 
