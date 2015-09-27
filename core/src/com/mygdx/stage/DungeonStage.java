@@ -21,7 +21,6 @@ import com.mygdx.listener.DungeonDoorButtonListener;
 import com.mygdx.listener.DungeonStairButtonListener;
 import com.mygdx.listener.LeaveDungeonButtonListener;
 import com.mygdx.manager.AssetsManager;
-import com.mygdx.manager.DungeonEncounterManager;
 import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
@@ -51,8 +50,6 @@ public class DungeonStage extends BaseOneLevelStage {
 	private AtlasUiAssets atlasUiAssets;
 	@Autowired
 	private NodeAssets nodeAssets;
-	@Autowired
-	private DungeonEncounterManager dungeonEncounterManager;
 	@Autowired
 	private DungeonManager dungeonManager;
 	@Autowired
@@ -141,30 +138,33 @@ public class DungeonStage extends BaseOneLevelStage {
 	}
 
 	private void showDoorButton(DungeonManager dungeonManager) {
-		int currentDoorSize = dungeonManager.getCurrentDoorSize();
-		switch (currentDoorSize) {
-			case 0 :
-				removeDoorListener(INDEX_OF_LEFT);
-				removeDoorListener(INDEX_OF_MID);
-				removeDoorListener(INDEX_OF_RIGHT);
-				break;
-			case 1 :
-				addDoorListener(INDEX_OF_MID, 0);
-				removeDoorListener(INDEX_OF_LEFT);
-				removeDoorListener(INDEX_OF_RIGHT);
-				break;
-			case 2 :
-				addDoorListener(INDEX_OF_LEFT, 0);
-				removeDoorListener(INDEX_OF_MID);
-				addDoorListener(INDEX_OF_RIGHT, 1);
-				break;
-			case 3 :
-				addDoorListener(INDEX_OF_LEFT, 0);
-				addDoorListener(INDEX_OF_MID, 1);
-				addDoorListener(INDEX_OF_RIGHT, 2);
-				break;
-			default :
-				break;
+		if (!currentRoomLabel.equals(dungeonManager.getDungeonInfo().getCurrentRoom().getRoomLabel())
+				|| !currentDirection.equals(dungeonManager.getDungeonInfo().getCurrentDirection())) {
+			int currentDoorSize = dungeonManager.getCurrentDoorSize();
+			switch (currentDoorSize) {
+				case 0 :
+					removeDoorListener(INDEX_OF_LEFT);
+					removeDoorListener(INDEX_OF_MID);
+					removeDoorListener(INDEX_OF_RIGHT);
+					break;
+				case 1 :
+					addDoorListener(INDEX_OF_MID, 0);
+					removeDoorListener(INDEX_OF_LEFT);
+					removeDoorListener(INDEX_OF_RIGHT);
+					break;
+				case 2 :
+					addDoorListener(INDEX_OF_LEFT, 0);
+					removeDoorListener(INDEX_OF_MID);
+					addDoorListener(INDEX_OF_RIGHT, 1);
+					break;
+				case 3 :
+					addDoorListener(INDEX_OF_LEFT, 0);
+					addDoorListener(INDEX_OF_MID, 1);
+					addDoorListener(INDEX_OF_RIGHT, 2);
+					break;
+				default :
+					break;
+			}
 		}
 	}
 

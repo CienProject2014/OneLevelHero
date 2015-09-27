@@ -21,6 +21,8 @@ public class DungeonManager {
 	private NodeAssets nodeAssets;
 	@Autowired
 	private MovingManager movingManager;
+	@Autowired
+	private EncounterManager encounterManager;
 	private DungeonInfo dungeonInfo = new DungeonInfo();
 
 	public DungeonInfo getDungeonInfo() {
@@ -89,6 +91,20 @@ public class DungeonManager {
 		dungeonInfo.setCurrentDirection(dungeonConnection.getDirectionType());
 		dungeonInfo.getCurrentFloor().setMiniMapAttribute(targetRoom.getRoomPosY(), targetRoom.getRoomPosX());
 		setCurrentDoorSize(dungeonInfo);
+		if (dungeonInfo.getCurrentRoom().getRoomType().equals(DungeonEnum.Type.BOSS)) {
+			meetBossMonster(dungeonInfo.getCurrentRoom().getLink());
+		} else {
+			randomMeetMonster(dungeonInfo.getCurrentFloor().getFloorMonsterList());
+		}
+
+	}
+
+	private void meetBossMonster(String bossMonsterName) {
+		encounterManager.encountBossMonster(bossMonsterName);
+	}
+
+	private void randomMeetMonster(ArrayList<String> floorMonsterList) {
+		encounterManager.encountEnemy(floorMonsterList);
 	}
 
 	private DungeonRoom findDungeonRoomByLabel(String roomLabel) {
@@ -138,6 +154,7 @@ public class DungeonManager {
 		setFloorMinimap(dungeonInfo);
 		dungeonInfo.setCurrentRoom(dungeonInfo.getCurrentFloor().findRoomByLabel(link));
 		dungeonInfo.setCurrentDirection(Direction.FORWARD);
+		setCurrentDoorSize(dungeonInfo);
 		setCurrentRoomVisibilityOn();
 	}
 

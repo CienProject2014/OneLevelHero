@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.enums.FieldTypeEnum;
-import com.mygdx.enums.PositionEnum;
 import com.mygdx.model.unit.Monster;
 
 /**
@@ -32,32 +30,14 @@ public class MonsterPickManager {
 	@Autowired
 	private DungeonManager dungeonManager;
 
-	public Monster createMonster() {
-		Monster monster = unitAssets.getMonster(selectMonster());
-		return monster;
+	public Monster createMonsterByName(String Monstername) {
+		Monster selectedMonster = unitAssets.getMonster(Monstername);
+		unitManager.initiateMonster(selectedMonster);
+		return selectedMonster;
 	}
 
-	public Monster createSpecificMoster(String Montername) {
-		Monster monster = unitAssets.getMonster(Montername);
-		return monster;
-	}
-
-	public Monster createMonster(String monsterName) {
-		Monster monster = unitAssets.getMonster(monsterName);
-		unitManager.initiateMonster(monster);
-		return monster;
-	}
-
-	private String selectMonster() {
-		List<String> monsterStrings = null;
-
-		if (positionManager.getCurrentLocatePositionType().equals(PositionEnum.LocatePosition.FIELD)) {
-			FieldTypeEnum fieldType = fieldManager.getFieldType();
-			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
-		} else {
-			monsterStrings = dungeonManager.getDungeonInfo().getCurrentFloor().getFloorMonsterList();
-		}
-
-		return monsterStrings.get(ThreadLocalRandom.current().nextInt(monsterStrings.size()));
+	public Monster createMonster(List<String> monsterList) {
+		String selectedMonsterName = monsterList.get(ThreadLocalRandom.current().nextInt(monsterList.size()));
+		return createMonsterByName(selectedMonsterName);
 	}
 }

@@ -21,7 +21,6 @@ public class DungeonStairButtonListener extends ClickListener {
 		dungeonManager.moveStair(stairType, link);
 		timeManager.plusMinute(15);
 	}
-
 	public DungeonEnum.Type getStairType() {
 		return stairType;
 	}

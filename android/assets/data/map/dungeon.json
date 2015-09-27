@@ -1272,7 +1272,7 @@
             "roomPosX": "4",
             "roomPosY": "3",
             "roomType": "normal",
-            "forwardAngle": "top",
+            "forwardAngle": "bottom",
             "forwardConnections": [
               {
                 "roomLabel": "room_4_4",
