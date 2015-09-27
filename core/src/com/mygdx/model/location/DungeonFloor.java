@@ -1,6 +1,9 @@
 package com.mygdx.model.location;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.badlogic.gdx.Gdx;
 
 public class DungeonFloor {
 	private String floorPath;
@@ -10,6 +13,18 @@ public class DungeonFloor {
 	private boolean miniMap[][];
 	private ArrayList<DungeonRoom> dungeonRooms = new ArrayList<>();
 	private ArrayList<String> floorMonsterList;
+
+	public DungeonRoom findRoomByLabel(String roomLabel) {
+		Iterator<DungeonRoom> dungeonRoomIterator = dungeonRooms.iterator();
+		while (dungeonRoomIterator.hasNext()) {
+			DungeonRoom dungeonRoom = dungeonRoomIterator.next();
+			if (dungeonRoom.getRoomLabel().equals(roomLabel)) {
+				return dungeonRoom;
+			}
+		}
+		Gdx.app.log("DungeonFloor", "DungeonRoomLabel정보 오류" + roomLabel);
+		return null;
+	}
 
 	public String getFloorName() {
 		return floorName;

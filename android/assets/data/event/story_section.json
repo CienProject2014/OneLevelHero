@@ -47,9 +47,7 @@
         "nextSectionNumber": "103",
         "eventType": "battle_command",
         "eventParameter": {
-          "battle": {
-            "battleCommand": "normal_attack"
-          }
+          "battleCommand": "normal_attack"
         }
       }
     ]
@@ -70,9 +68,7 @@
         "nextSectionNumber": "104",
         "eventType": "battle_command",
         "eventParameter": {
-          "battle": {
-            "battleCommand": "skill_attack"
-          }
+          "battleCommand": "skill_attack"
         }
       }
     ]
@@ -93,9 +89,7 @@
         "nextSectionNumber": "105",
         "eventType": "battle_command",
         "eventParameter": {
-          "battle": {
-            "battleCommand": "skill_attack"
-          }
+          "battleCommand": "skill_attack"
         }
       }
     ]
@@ -116,9 +110,7 @@
         "nextSectionNumber": "106",
         "eventType": "battle_command",
         "eventParameter": {
-          "battle": {
-            "battleCommand": "use_item"
-          }
+          "battleCommand": "use_item"
         }
       }
     ]
@@ -162,7 +154,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "blackwood"
+            "nodePath": "blackwood"
           }
         }
       }
@@ -181,7 +173,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "1to2"
+            "arrowLabel": "1to2"
           }
         }
       }
@@ -200,7 +192,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb"
+            "nodePath": "cobweb"
           }
         }
       }
@@ -223,8 +215,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb",
-            "subNodeName": "cobweb_library"
+            "nodePath": "cobweb",
+            "subNodePath": "cobweb_library"
           }
         }
       }
@@ -247,7 +239,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb"
+            "nodePath": "cobweb"
           }
         }
       }
@@ -366,7 +358,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "kadilla_castle"
+            "nodePath": "kadilla_castle"
           }
         }
       }
@@ -385,8 +377,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "kadilla_castle",
-            "subNodeName": "kadilla_castle_school"
+            "nodePath": "kadilla_castle",
+            "subNodePath": "kadilla_castle_school"
           }
         }
       },
@@ -395,8 +387,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "kadilla_castle",
-            "subNodeName": "kadilla_castle_duke_mansion"
+            "nodePath": "kadilla_castle",
+            "subNodePath": "kadilla_castle_duke_mansion"
           }
         }
       }
@@ -419,8 +411,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "kadilla_castle",
-            "subNodeName": "kadilla_castle_duke_mansion"
+            "nodePath": "kadilla_castle",
+            "subNodePath": "kadilla_castle_duke_castle"
           }
         }
       }
@@ -443,8 +435,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "kadilla_castle",
-            "subNodeName": "kadilla_castle_square"
+            "nodePath": "kadilla_castle",
+            "subNodePath": "kadilla_castle_square"
           }
         }
       }
@@ -467,8 +459,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "kadilla_castle",
-            "subNodeName": "kadilla_castle_school"
+            "nodePath": "kadilla_castle",
+            "subNodePath": "kadilla_castle_school"
           }
         }
       }
@@ -491,8 +483,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "kadilla_castle",
-            "subNodeName": "kadilla_castle_duke_mansion"
+            "nodePath": "kadilla_castle",
+            "subNodePath": "kadilla_castle_duke_castle"
           }
         }
       }
@@ -515,8 +507,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "kadilla_castle",
-            "subNodeName": "kadilla_castle_square"
+            "nodePath": "kadilla_castle",
+            "subNodePath": "kadilla_castle_square"
           }
         }
       }
@@ -546,7 +538,11 @@
     ],
     "conditionalNpcEvents": [
       {
-        "eventElement": "mea",
+        "eventElement": "mea_01",
+        "eventNumber": "2"
+      },
+      {
+        "eventElement": "mea_02",
         "eventNumber": "2"
       }
     ],
@@ -556,7 +552,7 @@
         "eventType": "move_sub_node_in_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "caravanserai"
+            "nodePath": "caravanserai"
           },
           "time": {
             "startHour": 18,
@@ -583,7 +579,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape"
+            "nodePath": "southcape"
           }
         }
       }
@@ -602,7 +598,11 @@
     ],
     "conditionalNpcEvents": [
       {
-        "eventElement": "mea",
+        "eventElement": "mea_01",
+        "eventNumber": "3"
+      },
+      {
+        "eventElement": "mea_02",
         "eventNumber": "3"
       }
     ],
@@ -616,8 +616,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape",
-            "subNodeName": "southcape_bar"
+            "nodePath": "southcape",
+            "subNodePath": "southcape_bar"
           }
         }
       }
@@ -636,15 +636,15 @@
     ],
     "conditionalNpcEvents": [
       {
-        "eventElement": "sailor1",
+        "eventElement": "sailor_01",
         "eventNumber": "2"
       },
       {
-        "eventElement": "sailor2",
+        "eventElement": "sailor_02",
         "eventNumber": "2"
       },
       {
-        "eventElement": "sailor3",
+        "eventElement": "sailor_03",
         "eventNumber": "2"
       }
     ],
@@ -655,15 +655,15 @@
         "eventParameter": {
           "events": [
             {
-              "eventElement": "sailor1",
+              "eventElement": "sailor_01",
               "eventNumber": 2
             },
             {
-              "eventElement": "sailor2",
+              "eventElement": "sailor_02",
               "eventNumber": 2
             },
             {
-              "eventElement": "sailor3",
+              "eventElement": "sailor_03",
               "eventNumber": 2
             }
           ]
@@ -688,7 +688,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape"
+            "nodePath": "southcape"
           }
         }
       }
@@ -711,8 +711,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape",
-            "subNodeName": "southcape_dock"
+            "nodePath": "southcape",
+            "subNodePath": "southcape_dock"
           }
         }
       }
@@ -739,27 +739,27 @@
     ],
     "conditionalNpcEvents": [
       {
-        "eventElement": "resident_southcape1",
+        "eventElement": "resident_southcape_01",
         "eventNumber": "2"
       },
       {
-        "eventElement": "resident_southcape2",
+        "eventElement": "resident_southcape_02",
         "eventNumber": "2"
       },
       {
-        "eventElement": "resident_southcape3",
+        "eventElement": "resident_southcape_03",
         "eventNumber": "2"
       },
       {
-        "eventElement": "resident_southcape4",
+        "eventElement": "resident_southcape_04",
         "eventNumber": "2"
       },
       {
-        "eventElement": "resident_southcape5",
+        "eventElement": "resident_southcape_05",
         "eventNumber": "2"
       },
       {
-        "eventElement": "resident_southcape6",
+        "eventElement": "resident_southcape_06",
         "eventNumber": "2"
       }
     ],
@@ -770,27 +770,27 @@
         "eventParameter": {
           "events": [
             {
-              "eventElement": "resident_southcape1",
+              "eventElement": "resident_southcape_01",
               "eventNumber": 2
             },
             {
-              "eventElement": "resident_southcape2",
+              "eventElement": "resident_southcape_02",
               "eventNumber": 2
             },
             {
-              "eventElement": "resident_southcape3",
+              "eventElement": "resident_southcape_03",
               "eventNumber": 2
             },
             {
-              "eventElement": "resident_southcape4",
+              "eventElement": "resident_southcape_04",
               "eventNumber": 2
             },
             {
-              "eventElement": "resident_southcape5",
+              "eventElement": "resident_southcape_05",
               "eventNumber": 2
             },
             {
-              "eventElement": "resident_southcape6",
+              "eventElement": "resident_southcape_06",
               "eventNumber": 2
             }
           ]
@@ -801,7 +801,7 @@
         "eventType": "move_node_in_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape"
+            "nodePath": "southcape"
           },
           "time": {
             "startHour": 18,
@@ -828,8 +828,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape",
-            "subNodeName": "southcape_inn"
+            "nodePath": "southcape",
+            "subNodePath": "southcape_inn"
           }
         }
       }
@@ -860,8 +860,8 @@
         "eventType": "move_sub_node_in_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape",
-            "subNodeName": "southcape_dock"
+            "nodePath": "southcape",
+            "subNodePath": "southcape_dock"
           },
           "time": {
             "startHour": 0,
@@ -874,8 +874,8 @@
         "eventType": "move_sub_node_in_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape",
-            "subNodeName": "southcape_dock"
+            "nodePath": "southcape",
+            "subNodePath": "southcape_dock"
           },
           "time": {
             "startHour": 5,
@@ -888,8 +888,8 @@
         "eventType": "move_sub_node_in_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape",
-            "subNodeName": "southcape_dock"
+            "nodePath": "southcape",
+            "subNodePath": "southcape_dock"
           },
           "time": {
             "startHour": 11,
@@ -902,8 +902,8 @@
         "eventType": "move_sub_node_in_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape",
-            "subNodeName": "southcape_dock"
+            "nodePath": "southcape",
+            "subNodePath": "southcape_dock"
           },
           "time": {
             "startHour": 16,
@@ -930,8 +930,8 @@
         "eventType": "move_sub_node_in_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape",
-            "subNodeName": "southcape_dock"
+            "nodePath": "southcape",
+            "subNodePath": "southcape_dock"
           },
           "time": {
             "startHour": 5,
@@ -944,8 +944,8 @@
         "eventType": "move_sub_node_in_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape",
-            "subNodeName": "southcape_dock"
+            "nodePath": "southcape",
+            "subNodePath": "southcape_dock"
           },
           "time": {
             "startHour": 11,
@@ -958,8 +958,8 @@
         "eventType": "move_sub_node_in_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "southcape",
-            "subNodeName": "southcape_dock"
+            "nodePath": "southcape",
+            "subNodePath": "southcape_dock"
           },
           "time": {
             "startHour": 16,
@@ -1030,7 +1030,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_cape_of_tempest",
+            "subNodePath": "cave_of_cape_of_tempest",
+            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1100,7 +1101,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_cape_of_tempest",
+            "subNodePath": "cave_of_cape_of_tempest",
+            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1133,7 +1135,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_cape_of_tempest",
+            "subNodePath": "cave_of_cape_of_tempest",
+            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1190,7 +1193,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_cape_of_tempest",
+            "subNodePath": "cave_of_cape_of_tempest",
+            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1223,7 +1227,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_cape_of_tempest",
+            "subNodePath": "cave_of_cape_of_tempest",
+            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1280,7 +1285,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_cape_of_tempest",
+            "subNodePath": "cave_of_cape_of_tempest",
+            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1313,7 +1319,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_cape_of_tempest",
+            "subNodePath": "cave_of_cape_of_tempest",
+            "floorPath": "cave_of_cape_of_tempest",
             "roomLabel": "room_4_7"
           }
         }
@@ -1368,7 +1375,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cape_of_tempest"
+            "nodePath": "cape_of_tempest"
           }
         }
       }
@@ -1422,8 +1429,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "kadilla_castle",
-            "subNodeName": "kadilla_castle_duke_mansion"
+            "nodePath": "kadilla_castle",
+            "subNodePath": "kadilla_castle_duke_castle"
           }
         }
       }
@@ -1482,8 +1489,8 @@
         "eventType": "move_sub_node_before_section_time",
         "eventParameter": {
           "location": {
-            "nodeName": "kadilla_castle",
-            "subNodeName": "kadilla_castle_square"
+            "nodePath": "kadilla_castle",
+            "subNodePath": "kadilla_castle_square"
           },
           "time": {
             "hour": 3,
@@ -1644,7 +1651,40 @@
         "eventNumber": "109"
       }
     ],
-    "nextSections": []
+    "nextSections": [
+      {
+        "nextSectionNumber": "247",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_01"
+          }
+        }
+      }
+    ]
+  },
+  "244": {
+    "sequencialEvents": [
+      {
+        "eventElement": "kadilla_story",
+        "eventNumber": "111"
+      },
+      {
+        "eventElement": "kadilla_story",
+        "eventNumber": "112"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "247",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_01"
+          }
+        }
+      }
+    ]
   },
   "245": {
     "sequencialEvents": [
@@ -1661,7 +1701,17 @@
         "eventNumber": "109"
       }
     ],
-    "nextSections": []
+    "nextSections": [
+      {
+        "nextSectionNumber": "247",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_01"
+          }
+        }
+      }
+    ]
   },
   "246": {
     "sequencialEvents": [
@@ -1672,6 +1722,53 @@
       {
         "eventElement": "kadilla_story",
         "eventNumber": "118"
+      }
+    ],
+    "nextSections": []
+  },
+  "247": {
+    "sequencialEvents": [
+      {
+        "eventElement": "mawang_battle",
+        "eventNumber": "1"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "248",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_02"
+          }
+        }
+      }
+    ]
+  },
+  "248": {
+    "sequencialEvents": [
+      {
+        "eventElement": "mawang_battle",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "249",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_03"
+          }
+        }
+      }
+    ]
+  },
+  "249": {
+    "sequencialEvents": [
+      {
+        "eventElement": "mawang_battle",
+        "eventNumber": "3"
       }
     ],
     "nextSections": []
@@ -1689,7 +1786,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "2to13"
+            "arrowLabel": "2to13"
           }
         }
       }
@@ -1716,8 +1813,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb",
-            "subNodeName": "cobweb_cathedral"
+            "nodePath": "cobweb",
+            "subNodePath": "cobweb_cathedral"
           }
         }
       },
@@ -1726,7 +1823,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "2to13"
+            "arrowLabel": "2to13"
           }
         }
       }
@@ -1753,8 +1850,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb",
-            "subNodeName": "cobweb_cathedral"
+            "nodePath": "cobweb",
+            "subNodePath": "cobweb_cathedral"
           }
         }
       },
@@ -1763,7 +1860,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "2to13"
+            "arrowLabel": "2to13"
           }
         }
       }
@@ -1786,7 +1883,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb"
+            "nodePath": "cobweb"
           }
         }
       }
@@ -1809,8 +1906,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb",
-            "subNodeName": "cobweb_inn"
+            "nodePath": "cobweb",
+            "subNodePath": "cobweb_inn"
           }
         }
       }
@@ -1860,7 +1957,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "crystallized_valley_south"
+            "nodePath": "crystallized_valley_south"
           }
         }
       }
@@ -1883,8 +1980,8 @@
         "eventType": "move_dungeon_room_in_target_time",
         "eventParameter": {
           "location": {
-            "subNodeName": "crystallized_valley",
-            "floorName": "crystallized_valley",
+            "subNodePath": "crystallized_valley",
+            "floorPath": "crystallized_valley",
             "roomLabel": "room_5_5"
           },
           "time": {
@@ -1898,8 +1995,7 @@
         "eventType": "move_dungeon_room_in_target_time",
         "eventParameter": {
           "location": {
-            "subNodeName": "crystallized_valley",
-            "floorName": "crystallized_valley",
+            "subNodePath": "crystallized_valley",
             "roomLabel": "room_5_5"
           },
           "time": {
@@ -1927,7 +2023,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "winterfall"
+            "nodePath": "winterfall"
           }
         }
       }
@@ -1963,8 +2059,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "winterfall",
-            "subNodeName": "winterfall_dome"
+            "nodePath": "winterfall",
+            "subNodePath": "winterfall_dome"
           }
         }
       }
@@ -1992,11 +2088,12 @@
     "nextSections": [
       {
         "nextSectionNumber": "313",
-        "eventType": "move_sub_node",
+        "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_succubus",
-            "roomLabel": "normal_3_4"
+            "subNodePath": "cave_of_succubus",
+            "floorPath": "cave_of_succubus",
+            "roomLabel": "room_4_5"
           }
         }
       }
@@ -2066,11 +2163,12 @@
     "nextSections": [
       {
         "nextSectionNumber": "316",
-        "eventType": "move_sub_node_before_absolute_time",
+        "eventType": "move_dungeon_room_before_absolute_time",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_succubus",
-            "roomLabel": "normal_3_7"
+            "subNodePath": "cave_of_succubus",
+            "floorPath": "cave_of_succubus",
+            "roomLabel": "room_4_8"
           },
           "time": {
             "day": 4,
@@ -2080,11 +2178,11 @@
       },
       {
         "nextSectionNumber": "317",
-        "eventType": "move_sub_node_after_absolute_time",
+        "eventType": "move_dungeon_room_after_absolute_time",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_succubus",
-            "roomLabel": "normal_3_7"
+            "subNodePath": "cave_of_succubus",
+            "roomLabel": "room_4_8"
           },
           "time": {
             "day": 4,
@@ -2178,9 +2276,9 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "crystallized_valley",
-            "floorName": "crystallized_valley",
-            "roomLabel": "room_4_4"
+            "subNodePath": "crystallized_valley",
+            "floorPath": "crystallized_valley",
+            "roomLabel": "room_5_5"
           }
         }
       }
@@ -2195,6 +2293,10 @@
       {
         "eventElement": "cobweb_story",
         "eventNumber": "55"
+      },
+      {
+        "eventElement": "cobweb_story",
+        "eventNumber": "56"
       }
     ],
     "nextSections": [
@@ -2203,9 +2305,9 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "crystallized_valley",
-            "floorName": "crystallized_valley",
-            "roomLabel": "room_2_6"
+            "subNodePath": "crystallized_valley",
+            "floorPath": "crystallized_valley",
+            "roomLabel": "room_3_7"
           }
         }
       },
@@ -2214,8 +2316,9 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "crystallized_valley",
-            "roomLabel": "normal_4_3"
+            "subNodePath": "crystallized_valley",
+            "floorPath": "crystallized_valley",
+            "roomLabel": "room_5_4"
           }
         }
       },
@@ -2224,8 +2327,9 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "crystallized_valley",
-            "roomLabel": "normal_5_3"
+            "subNodePath": "crystallized_valley",
+            "floorPath": "crystallized_valley",
+            "roomLabel": "room_6_4"
           }
         }
       },
@@ -2234,9 +2338,9 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "crystallized_valley",
-            "floorName": "crystallized_valley",
-            "roomLabel": "normal_5_6"
+            "subNodePath": "crystallized_valley",
+            "floorPath": "crystallized_valley",
+            "roomLabel": "room_6_7"
           }
         }
       }
@@ -2286,7 +2390,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb"
+            "nodePath": "cobweb"
           }
         }
       }
@@ -2309,8 +2413,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb",
-            "subNodeName": "cobweb_cathedral"
+            "nodePath": "cobweb",
+            "subNodePath": "cobweb_cathedral"
           }
         }
       }
@@ -2333,7 +2437,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb"
+            "nodePath": "cobweb"
           }
         }
       }
@@ -2350,7 +2454,17 @@
         "eventNumber": "71"
       }
     ],
-    "nextSections": []
+    "nextSections": [
+      {
+        "nextSectionNumber": "327",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_01"
+          }
+        }
+      }
+    ]
   },
   "326": {
     "sequencialEvents": [
@@ -2361,6 +2475,53 @@
       {
         "eventElement": "cobweb_story",
         "eventNumber": "74"
+      }
+    ],
+    "nextSections": []
+  },
+  "327": {
+    "sequencialEvents": [
+      {
+        "eventElement": "mawang_battle",
+        "eventNumber": "1"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "328",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_02"
+          }
+        }
+      }
+    ]
+  },
+  "328": {
+    "sequencialEvents": [
+      {
+        "eventElement": "mawang_battle",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "329",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_03"
+          }
+        }
+      }
+    ]
+  },
+  "329": {
+    "sequencialEvents": [
+      {
+        "eventElement": "mawang_battle",
+        "eventNumber": "3"
       }
     ],
     "nextSections": []
@@ -2378,7 +2539,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "middle_ridge"
+            "nodePath": "middle_ridge"
           }
         }
       }
@@ -2396,13 +2557,14 @@
       }
     ],
     "nextSections": [
+     
       {
         "nextSectionNumber": "404",
         "eventType": "move_sub_node_before_absolute_time",
         "eventParameter": {
           "location": {
-            "nodeName": "middle_ridge",
-            "subNodeName": "middle_ridge_whisternhouse"
+            "nodePath": "middle_ridge",
+            "subNodePath": "middle_ridge_whisternhouse"
           },
           "time": {
             "day": 2,
@@ -2410,13 +2572,13 @@
           }
         }
       },
-      {
+       {
         "nextSectionNumber": "403",
         "eventType": "move_sub_node_after_absolute_time",
         "eventParameter": {
           "location": {
-            "nodeName": "middle_ridge",
-            "subNodeName": "middle_ridge_whisternhouse"
+            "nodePath": "middle_ridge",
+            "subNodePath": "middle_ridge_whisternhouse"
           },
           "time": {
             "day": 2,
@@ -2483,7 +2645,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "5to1"
+            "arrowLabel": "5to1"
           }
         }
       },
@@ -2492,7 +2654,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "5to2"
+            "arrowLabel": "5to2"
           }
         }
       },
@@ -2501,7 +2663,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "5to6"
+            "arrowLabel": "5to6"
           }
         }
       }
@@ -2524,7 +2686,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "5to1"
+            "arrowLabel": "5to1"
           }
         }
       },
@@ -2533,7 +2695,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "5to2"
+            "arrowLabel": "5to2"
           }
         }
       },
@@ -2542,7 +2704,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "5to6"
+            "arrowLabel": "5to6"
           }
         }
       }
@@ -2565,7 +2727,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "5to1"
+            "arrowLabel": "5to1"
           }
         }
       },
@@ -2574,7 +2736,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "5to2"
+            "arrowLabel": "5to2"
           }
         }
       },
@@ -2583,7 +2745,7 @@
         "eventType": "move_field",
         "eventParameter": {
           "location": {
-            "arrowName": "5to6"
+            "arrowLabel": "5to6"
           }
         }
       }
@@ -2606,7 +2768,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "golden_lake"
+            "nodePath": "golden_lake"
           }
         }
       }
@@ -2620,14 +2782,14 @@
       }
     ],
     "nextSections": [
-      
+     
       {
         "nextSectionNumber": "411",
         "eventType": "move_dungeon_room_after_absolute_time",
         "eventParameter": {
           "location": {
-            "subNodeName": "golden_lake",
-            "floorName": "golden_lake",
+            "subNodePath": "golden_lake",
+            "floorPath": "golden_lake",
             "roomLabel": "room_8_5"
           },
           "time": {
@@ -2636,13 +2798,13 @@
           }
         }
       },
-      {
+       {
         "nextSectionNumber": "410",
         "eventType": "move_dungeon_room_before_absolute_time",
         "eventParameter": {
           "location": {
-            "subNodeName": "golden_lake",
-            "floorName": "golden_lake",
+            "subNodePath": "golden_lake",
+            "floorPath": "golden_lake",
             "roomLabel": "room_8_5"
           },
           "time": {
@@ -2753,7 +2915,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "golden_lake"
+            "nodePath": "golden_lake"
           }
         }
       }
@@ -2784,8 +2946,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "middle_ridge",
-            "subNodeName": "middle_ridge_wallace"
+            "nodePath": "middle_ridge",
+            "subNodePath": "middle_ridge_wallacehouse"
           }
         }
       }
@@ -2806,7 +2968,6 @@
         "eventNumber": "46"
       }
     ],
-    "conditionalNpcEvents": [],
     "conditionalGameObjectEvents": [
       {
         "eventElement": "middle_ridge_drawer",
@@ -2917,7 +3078,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "middle_ridge"
+            "nodePath": "middle_ridge"
           }
         }
       }
@@ -2953,7 +3114,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "devil_castle_05",
+            "subNodePath": "devil_castle",
+            "floorPath": "devil_castle_5f",
             "roomLabel": "room_1_1"
           }
         }
@@ -2981,7 +3143,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb"
+            "nodePath": "cobweb"
           }
         }
       }
@@ -2996,6 +3158,63 @@
       {
         "eventElement": "middle_ridge_story",
         "eventNumber": "65"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "425",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_01"
+          }
+        }
+      }
+    ]
+  },
+  "425": {
+    "sequencialEvents": [
+      {
+        "eventElement": "mawang_battle",
+        "eventNumber": "1"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "426",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_02"
+          }
+        }
+      }
+    ]
+  },
+  "426": {
+    "sequencialEvents": [
+      {
+        "eventElement": "mawang_battle",
+        "eventNumber": "2"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "427",
+        "eventType": "end_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_03"
+          }
+        }
+      }
+    ]
+  },
+  "427": {
+    "sequencialEvents": [
+      {
+        "eventElement": "mawang_battle",
+        "eventNumber": "3"
       }
     ],
     "nextSections": []
@@ -3013,7 +3232,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "redrose_castle"
+            "nodePath": "redrose_castle"
           }
         }
       }
@@ -3059,8 +3278,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "ancient_library",
-            "floorName": "ancient_library_b1",
+            "subNodePath": "ancient_library",
+            "floorPath": "ancient_library_b1",
             "roomLabel": "room_1_2"
           }
         }
@@ -3084,8 +3303,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "ancient_library",
-            "floorName": "ancient_library_b2",
+            "subNodePath": "ancient_library",
+            "floorPath": "ancient_library_b2",
             "roomLabel": "room_1_2"
           }
         }
@@ -3109,8 +3328,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "ancient_library",
-            "floorName": "ancient_library_b3",
+            "subNodePath": "ancient_library",
+            "floorPath": "ancient_library_b3",
             "roomLabel": "room_3_2"
           }
         }
@@ -3134,8 +3353,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "ancient_library",
-            "floorName": "ancient_library_b3",
+            "subNodePath": "ancient_library",
+            "floorPath": "ancient_library_b3",
             "roomLabel": "room_2_7"
           }
         }
@@ -3264,8 +3483,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "ancient_library",
-            "floorName": "ancient_library_b2",
+            "subNodePath": "ancient_library",
+            "floorPath": "ancient_library_b2",
             "roomLabel": "room_4_4"
           }
         }
@@ -3289,8 +3508,8 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "ancient_library",
-            "floorName": "ancient_library_b1",
+            "subNodePath": "ancient_library",
+            "floorPath": "ancient_library_b1",
             "roomLabel": "room_5_1"
           }
         }
@@ -3318,7 +3537,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "oberon"
+            "nodePath": "oberon"
           }
         }
       }
@@ -3341,8 +3560,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "oberon",
-            "subNodeName": "oberon_square"
+            "nodePath": "oberon",
+            "subNodePath": "oberon_square"
           }
         }
       }
@@ -3373,8 +3592,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "oberon",
-            "subNodeName": "oberon_temple"
+            "nodePath": "oberon",
+            "subNodePath": "oberon_temple"
           }
         }
       }
@@ -3397,8 +3616,8 @@
         "eventType": "move_sub_node",
         "eventParameter": {
           "location": {
-            "nodeName": "oberon",
-            "subNodeName": "oberon_inn"
+            "nodePath": "oberon",
+            "subNodePath": "oberon_inn"
           }
         }
       }
@@ -3421,8 +3640,8 @@
         "eventType": "move_sub_node_in_target_time",
         "eventParameter": {
           "location": {
-            "nodeName": "oberon",
-            "subNodeName": "oberon_square"
+            "nodePath": "oberon",
+            "subNodePath": "oberon_square"
           },
           "time": {
             "startHour": 1,

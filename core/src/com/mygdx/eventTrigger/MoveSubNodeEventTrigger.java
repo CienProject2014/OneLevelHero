@@ -18,7 +18,7 @@ public class MoveSubNodeEventTrigger implements EventTrigger {
 
 	@Override
 	public void triggerEvent(EventParameters eventParameter) {
-		positionManager.setCurrentSubNodePath(eventParameter.getLocation().getSubNodeName());
+		positionManager.setCurrentSubNodePath(eventParameter.getLocation().getSubNodePath());
 		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
 		movingManager.goCurrentLocatePosition();
 		storySectionManager.runStorySequence();

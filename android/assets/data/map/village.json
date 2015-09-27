@@ -3,7 +3,7 @@
     "nodeName": "블랙우드",
     "villageDirection": "up_down",
     "nodePath": "blackwood",
-    "sceneName": "blackwood_scene",
+    "scenePath": "blackwood_scene",
     "arrowDirection": {
       "2to1": "up",
       "5to1": "up",
@@ -22,6 +22,8 @@
         },
         "buildingNpc": [
           "waiji"
+        ],
+        "gameObject": [
         ]
       },
       "blackwood_grocery": {
@@ -29,13 +31,15 @@
         "buildingType": "house",
         "outerPath": "blackwood_02",
         "subNodePath": "blackwood_grocery",
-        "buildingNpc": [
-          "blackwood_grocery_owner"
-        ],
         "targetTime": {
           "startHour": 9,
           "endHour": 21
-        }
+        },
+        "buildingNpc": [
+          "blackwood_grocery_owner"
+        ],
+        "gameObject": [
+        ]
       },
       "blackwood_inn": {
         "subNodeName": "블랙우드 여관",
@@ -45,12 +49,12 @@
           "startHour": 0,
           "endHour": 24
         },
+        "buildingNpc": [
+          "blackwood_inn_owner"
+        ],
         "gameObject": [
           "save",
           "rest"
-        ],
-        "buildingNpc": [
-          "blackwood_inn_owner"
         ]
       },
       "blackwood_house": {
@@ -75,7 +79,7 @@
     "nodeName": "콥웨브",
     "nodePath": "cobweb",
     "villageDirection": "up_down",
-    "sceneName": "cobweb_scene",
+    "scenePath": "cobweb_scene",
     "arrowDirection": {
       "1to2": "down",
       "7to2": "down",
@@ -95,7 +99,8 @@
         "buildingNpc": [
           "aimee"
         ],
-        "gameObject": []
+        "gameObject": [
+        ]
       },
       "cobweb_villagehall": {
         "subNodeName": "콥웨브 마을회관",
@@ -105,41 +110,51 @@
         "targetTime": {
           "startHour": 6,
           "endHour": 22
-        }
+        },
+        "buildingNpc": [
+        ],
+        "gameObject": [
+        ]
       },
-      "cobweb_drugstore": {
-        "subNodeName": "물약상점",
-        "buildingType": "house",
-        "subNodePath": "cobweb_drugstore",
-        "targetTime": {
-          "startHour": 6,
-          "endHour": 22
-        }
-      },
-      "cobweb_store1": {
-        "subNodeName": "상점1",
+      "cobweb_grocery": {
+        "subNodeName": "콥웨브 잡화점",
         "buildingType": "house",
         "outerPath": "cobweb_03",
-        "subNodePath": "cobweb_store1",
+        "subNodePath": "cobweb_grocery",
         "targetTime": {
           "startHour": 6,
           "endHour": 22
-        }
+        },
+        "buildingNpc": [
+          "cobweb_grocery_owner"
+        ],
+        "gameObject": [
+        ]
       },
-      "cobweb_store2": {
-        "subNodeName": "상점2",
+      "cobweb_smithy": {
+        "subNodeName": "콥웨브 대장간",
         "buildingType": "house",
         "outerPath": "cobweb_03",
-        "subNodePath": "cobweb_store2",
+        "subNodePath": "cobweb_smithy",
         "targetTime": {
           "startHour": 6,
           "endHour": 22
-        }
+        },
+        "buildingNpc": [
+          "cobweb_smithy_owner"
+        ],
+        "gameObject": [
+          "cobweb_anvil"
+        ]
       },
       "cobweb_inn": {
         "subNodeName": "콥웨브 여관",
         "buildingType": "inn",
         "subNodePath": "cobweb_inn",
+        "targetTime": {
+          "startHour": 0,
+          "endHour": 24
+        },
         "buildingNpc": [
           "cobweb_inn_owner"
         ],
@@ -159,6 +174,8 @@
         },
         "buildingNpc": [
           "holland"
+        ],
+        "gameObject": [
         ]
       }
     }
@@ -167,7 +184,7 @@
     "nodePath": "oberon",
     "nodeName": "오베론",
     "villageDirection": "up_down",
-    "sceneName": "oberon_scene",
+    "scenePath": "oberon_scene",
     "arrowDirection": {
       "20to3": "down",
       "10to3": "up"
@@ -178,6 +195,7 @@
         "buildingType": "house",
         "outerPath": "oberon_02",
         "subNodePath": "oberon_house_01",
+        "backgroundPath" : "oberon_house",
         "targetTime": {
           "startHour": 7,
           "endHour": 24
@@ -189,11 +207,12 @@
           "oberon_box_01"
         ]
       },
-      "oberon_house02": {
+      "oberon_house_02": {
         "subNodeName": "오베론 민가",
         "buildingType": "house",
         "outerPath": "oberon_03",
-        "subNodePath": "oberon_house02",
+        "subNodePath": "oberon_house_02",
+        "backgroundPath" : "oberon_house",
         "targetTime": {
           "startHour": 7,
           "endHour": 24
@@ -208,18 +227,18 @@
       "oberon_inn": {
         "subNodeName": "오베론 여관",
         "buildingType": "inn",
+        "backgroundPath" : "blackwood_inn",
         "subNodePath": "oberon_inn",
-        "backgroundPath": "blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
         },
+        "buildingNpc": [
+          "oberon_inn_owner"
+        ],
         "gameObject": [
           "save",
           "rest"
-        ],
-        "buildingNpc": [
-          "oberon_inn_owner"
         ]
       },
       "oberon_temple": {
@@ -229,7 +248,11 @@
         "targetTime": {
           "startHour": 0,
           "endHour": 24
-        }
+        },
+        "buildingNpc": [
+        ],
+        "gameObject": [
+        ]
       }
     }
   },
@@ -237,7 +260,7 @@
     "nodePath": "kadilla_castle",
     "nodeName": "카딜라 성",
     "villageDirection": "up_down",
-    "sceneName": "kadilla_castle_scene",
+    "scenePath": "kadilla_castle_scene",
     "arrowDirection": {
       "3to10": "up",
       "21to10": "down"
@@ -251,10 +274,14 @@
         "targetTime": {
           "startHour": 9,
           "endHour": 21
-        }
+        },
+        "buildingNpc": [
+        ],
+        "gameObject": [
+        ]
       },
       "kadilla_castle_duke_castle": {
-        "subNodeName": "카딜라 공작의 성",
+        "subNodeName": "공작의 성",
         "buildingType": "house",
         "subNodePath": "kadilla_castle_duke_castle",
         "outerPath": "kadilla_castle_02",
@@ -264,13 +291,15 @@
         },
         "buildingNpc": [
           "kasia_duke"
+        ],
+        "gameObject": [
         ]
       },
       "kadilla_castle_inn": {
         "subNodeName": "카딜라 여관",
         "buildingType": "inn",
+        "backgroundPath" : "blackwood_inn",
         "subNodePath": "kadilla_castle_inn",
-        "backgroundPath": "blackwood_inn",
         "outerPath": "kadilla_castle_02",
         "buildingNpc": [
           "kadilla_castle_inn_owner"
@@ -294,27 +323,32 @@
           "endHour": 22
         },
         "buildingNpc": [
-          "kadilla_castle_grocery_orner"
+          "kadilla_castle_grocery_owner"
+        ],
+        "gameObject": [
         ]
       },
       "kadilla_castle_smithy": {
         "subNodeName": "카딜라 대장간",
         "buildingType": "house",
         "outerPath": "kadilla_castle_02",
-        "subNodePath": "cobweb_smithy",
+        "backgroundPath": "cobweb_smithy",
+        "subNodePath": "kadilla_castle_smithy",
         "targetTime": {
           "startHour": 8,
           "endHour": 22
         },
         "buildingNpc": [
-          "kadilla_castle_smithy_orner"
+          "kadilla_castle_smithy_owner"
+        ],
+        "gameObject": [
         ]
       },
       "kadilla_castle_clothing_store": {
         "subNodeName": "카딜라 옷가게",
         "buildingType": "house",
         "outerPath": "kadilla_castle_03",
-        "backgroundPath": "cobweb_clothingstore",
+        "backgroundPath" :"cobweb_clothingstore", 
         "subNodePath": "kadilla_castle_clothing_store",
         "targetTime": {
           "startHour": 8,
@@ -322,6 +356,8 @@
         },
         "buildingNpc": [
           "kadilla_castle_clothingstore_owner"
+        ],
+        "gameObject": [
         ]
       },
       "kadilla_castle_square": {
@@ -334,12 +370,14 @@
         },
         "buildingNpc": [
           "plecha"
+        ],
+        "gameObject": [
         ]
       },
-      "kadilla_castle_guard_office": {
-        "subNodeName": "카딜라 경비실",
+      "kadilla_castle_castlegate": {
+        "subNodeName": "카딜라 성문",
         "buildingType": "house",
-        "subNodePath": "kadilla_castle_guard_office",
+        "subNodePath": "kadilla_castle_castlegate",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -347,6 +385,8 @@
         "buildingNpc": [
           "beck",
           "snoocks"
+        ],
+        "gameObject": [
         ]
       }
     }
@@ -355,7 +395,7 @@
     "nodePath": "winterfall",
     "nodeName": "윈터폴",
     "villageDirection": "center",
-    "sceneName": "winterfall_scene",
+    "scenePath": "winterfall_scene",
     "arrowDirection": {
       "13to8": "center"
     },
@@ -368,6 +408,8 @@
           "startHour": 0,
           "endHour": 24
         },
+        "buildingNpc": [
+        ],
         "gameObject": [
           "winterfall_portal",
           "winterfall_box_01"
@@ -376,8 +418,7 @@
       "winterfall_inn": {
         "subNodeName": "부서진 여관",
         "buildingType": "inn",
-        "backgroundPath": "blackwood_inn",
-        "subNodePath": "winterfall_inn",
+        "subNodePath": "blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -391,14 +432,15 @@
         ]
       },
       "winterfall_grocery": {
-        "subNodeName": "윈터폴 식료품점",
+        "subNodeName": "식료품점",
         "buildingType": "house",
-        "backgroundPath": "blackwood_grocery",
-        "subNodePath": "winterfall_grocery",
+        "subNodePath": "blackwood_grocery",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
         },
+        "buildingNpc": [
+        ],
         "gameObject": [
           "winterfall_glue_pile_01"
         ]
@@ -407,21 +449,28 @@
         "subNodeName": "허름한 민가",
         "buildingType": "house",
         "backgroundPath": "blackwood_house",
-        "subNodePath": "winterfall_house_01",
+        "subNodePath" : "winterfall_house_01",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
-        }
+        },
+        "buildingNpc": [
+        ],
+        "gameObject": [
+          "winterfall_box_02"
+        ]
       },
       "winterfall_house_02": {
         "subNodeName": "폐허가 된 민가",
         "buildingType": "house",
         "subNodePath": "winterfall_house_02",
-        "backgroundPath": "blackwood_house",
+        "backgroundPath" : "blackwood_house",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
         },
+        "buildingNpc": [
+        ],
         "gameObject": [
           "winterfall_glue_pile_02"
         ]
@@ -432,7 +481,7 @@
     "nodePath": "redrose_castle",
     "nodeName": "레드로즈 성",
     "villageDirection": "left_right",
-    "sceneName": "redrose_castle_scene",
+    "scenePath": "redrose_castle_scene",
     "arrowDirection": {
       "2to7": "left",
       "22to7": "left"
@@ -442,13 +491,14 @@
         "subNodeName": "레드로즈 민가",
         "buildingType": "house",
         "outerPath": "redrose_castle_02",
+        "backgroundPath" : "redrose_castle_hose",
         "subNodePath": "redrose_castle_house_01",
         "targetTime": {
           "startHour": 7,
           "endHour": 22
         },
         "buildingNpc": [
-          "remo"
+          "nia"
         ],
         "gameObject": [
           "redrose_castle_snack"
@@ -458,6 +508,7 @@
         "subNodeName": "레드로즈 민가",
         "buildingType": "house",
         "outerPath": "redrose_castle_03",
+        "backgroundPath" : "redrose_castle_house",
         "subNodePath": "redrose_castle_house_02",
         "targetTime": {
           "startHour": 7,
@@ -473,8 +524,7 @@
       "redrose_castle_inn": {
         "subNodeName": "레드로즈 여관",
         "buildingType": "inn",
-        "backgroundPath": "blackwood_inn",
-        "subNodePath": "redrose_castle_inn",
+        "subNodePath": "blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -501,16 +551,18 @@
         ]
       },
       "redrose_castle_castle": {
-        "subNodeName": "레드로즈 성",
+        "subNodeName": "레드로즈 성문",
         "buildingType": "house",
-        "outerPath": "redrose_castle_03",
-        "subNodePath": "redrose_castle_castle",
+        "outerPath": "redrose_castle_castlegate",
+        "subNodePath": "redrose_castle_castlegate",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
         },
         "buildingNpc": [
-          "redrose_castle_guardian"
+          "redrose_caslte_guardian"
+        ],
+        "gameObject": [
         ]
       }
     }
@@ -519,7 +571,7 @@
     "nodePath": "mirage_port",
     "nodeName": "미라지 포트",
     "villageDirection": "up_down",
-    "sceneName": "mirage_port_scene",
+    "scenePath": "mirage_port_scene",
     "arrowDirection": {
       "4to9": "down",
       "24to9": "up"
@@ -528,21 +580,21 @@
       "mirage_port_inn": {
         "subNodeName": "미라지 포트 여관",
         "buildingType": "inn",
-        "backgroundPath": "blackwood_inn",
         "subNodePath": "mirage_port_inn",
+        "backgroundPath" : "blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
         },
         "buildingNpc": [
-          "mirage_port_inn_owner"
+          "tenardie"
         ],
         "gameObject": [
           "save",
           "rest"
         ]
       },
-      "mirage_port_hermes": {
+      "mirage_port_hermesguild": {
         "subNodeName": "헤르메스 상회",
         "buildingType": "house",
         "outerPath": "mirage_port_02",
@@ -550,12 +602,14 @@
         "targetTime": {
           "startHour": 9,
           "endHour": 18
-        },
+        },	
         "buildingNpc": [
           "hermes"
+        ],
+        "gameObject": [
         ]
       },
-      "mirage_port_kaido": {
+      "mirage_port_kaidoguild": {
         "subNodeName": "카이도 상회",
         "buildingType": "house",
         "outerPath": "mirage_port_03",
@@ -566,6 +620,8 @@
         },
         "buildingNpc": [
           "kaido"
+        ],
+        "gameObject": [
         ]
       },
       "mirage_port_square": {
@@ -578,13 +634,15 @@
         },
         "buildingNpc": [
           "mirage_port_resident_01"
+        ],
+        "gameObject": [
         ]
       },
       "mirage_port_dock": {
         "subNodeName": "미라지 포트 선착장",
         "buildingType": "house",
         "outerPath": "mirage_port_03",
-        "backgroundPath": "bonichea_dock",
+        "backgroundPath" : "bonichea_dock",
         "subNodePath": "mirage_port_dock",
         "targetTime": {
           "startHour": 5,
@@ -592,6 +650,8 @@
         },
         "buildingNpc": [
           "mirage_port_pirate"
+        ],
+        "gameObject": [
         ]
       }
     }
@@ -600,7 +660,7 @@
     "nodePath": "middle_ridge",
     "nodeName": "미들 릿지",
     "villageDirection": "left_right",
-    "sceneName": "middle_ridge_scene",
+    "scenePath": "middle_ridge_scene",
     "arrowDirection": {
       "1to5": "left",
       "2to5": "left",
@@ -614,13 +674,16 @@
         "targetTime": {
           "startHour": 0,
           "endHour": 24
-        }
+        },
+        "buildingNpc": [
+        ],
+        "gameObject": [
+        ]
       },
       "middle_ridge_evergnailhouse": {
-        "subNodeName": "에버그네일가",
+        "subNodeName": "에버네그일가",
         "buildingType": "house",
         "outerPath": "middle_ridge_02",
-        "backgroundPath": "blackwood_house",
         "subNodePath": "middle_ridge_evergnailhouse",
         "targetTime": {
           "startHour": 6,
@@ -630,14 +693,16 @@
           "evergnail",
           "servant_01",
           "servant_02"
+        ],
+        "gameObject": [
         ]
       },
-      "middle_ridge_wallace": {
+      "middle_ridge_wallacehouse": {
         "subNodeName": "월라스가",
         "buildingType": "house",
         "outerPath": "middle_ridge_02",
         "backgroundPath": "blackwood_house",
-        "subNodePath": "middle_ridge_wallace",
+        "subNodePath" : "middle_ridge_wallacehouse",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
@@ -652,14 +717,15 @@
       "middle_ridge_inn": {
         "subNodeName": "미들릿지 여관",
         "buildingType": "inn",
-        "backgroundPath": "blackwood_inn",
+        "backgroundPath" : "blackwood_inn",
         "subNodePath": "middle_ridge_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
         },
         "buildingNpc": [
-          "middle_ridge_inn_orner"
+          "middle_ridge_inn_owner",
+          "noel_and_riam"
         ],
         "gameObject": [
           "save",
@@ -678,6 +744,8 @@
         },
         "buildingNpc": [
           "kein"
+        ],
+        "gameObject": [
         ]
       },
       "middle_ridge_training_area": {
@@ -698,8 +766,7 @@
           "endHour": 24
         },
         "buildingNpc": [
-          "farmer",
-          "noel_and_riam"
+          "farmer"
         ],
         "gameObject": [
           "middle_ridge_holl"
@@ -711,7 +778,7 @@
     "nodePath": "vaical_castle",
     "nodeName": "바이칼 성",
     "villageDirection": "up_down",
-    "sceneName": "vaical_castle_scene",
+    "scenePath": "vaical_castle_scene",
     "arrowDirection": {
       "18to6": "up",
       "5to6": "down"
@@ -728,10 +795,12 @@
         },
         "buildingNpc": [
           "fist"
+        ],
+        "gameObject": [
         ]
       },
       "vaical_castle_headhouse": {
-        "subNodeName": "바이칼 성 장로의 집",
+        "subNodeName": "장로의 집",
         "buildingType": "house",
         "outerPath": "vaical_castle_02",
         "subNodePath": "vaical_castle_headhouse",
@@ -740,7 +809,9 @@
           "endHour": 24
         },
         "buildingNpc": [
-          "vaical_castle_villagehead"
+          "vical_villigehead"
+        ],
+        "gameObject": [
         ]
       },
       "vaical_castle_colosseum": {
@@ -754,6 +825,8 @@
         },
         "buildingNpc": [
           "aren"
+        ],
+        "gameObject": [
         ]
       }
     }
@@ -762,24 +835,25 @@
     "nodePath": "southcape",
     "nodeName": "사우스케이프",
     "villageDirection": "left_right",
-    "sceneName": "southcape_scene",
+    "scenePath": "southcape_scene",
     "arrowDirection": {
       "23to4": "left",
       "9to4": "right"
     },
     "building": {
       "southcape_headhouse": {
-        "subNodeName": "사우스케이프 촌장의 집",
+        "subNodeName": "사우스케이프 촌장집",
         "buildingType": "house",
         "outerPath": "southcape_02",
         "subNodePath": "southcape_headhouse",
-        "backgroundPath": "southcape_house",
         "targetTime": {
           "startHour": 6,
           "endHour": 24
         },
         "buildingNpc": [
-          "southcape_villagehead"
+          "southcape_villigehead"
+        ],
+        "gameObject": [
         ]
       },
       "southcape_bar": {
@@ -793,20 +867,21 @@
         },
         "buildingNpc": [
           "southcape_bar_owner"
+        ],
+        "gameObject": [
         ]
       },
       "southcape_inn": {
         "subNodeName": "사우스케이프 여관",
         "buildingType": "inn",
-        "backgroundPath": "blackwood_inn",
-        "subNodePath": "southcape_inn",
+        "subNodePath": "blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
         },
         "buildingNpc": [
           "southcape_inn_owner",
-          "mea"
+          "mea_01"
         ],
         "gameObject": [
           "save",
@@ -817,7 +892,7 @@
         "subNodeName": "사우스케이프 잡화점",
         "buildingType": "house",
         "outerPath": "southcape_02",
-        "backgroundPath": "blackwood_grocery",
+        "backgroundPath" : "blackwood_grocery",
         "subNodePath": "southcape_grocery",
         "targetTime": {
           "startHour": 10,
@@ -825,28 +900,31 @@
         },
         "buildingNpc": [
           "southcape_grocery_owner",
-          "mea"
+          "mea_02"
+        ],
+        "gameObject": [
         ]
       },
       "southcape_smithy": {
         "subNodeName": "사우스케이프 대장간",
         "buildingType": "house",
         "outerPath": "southcape_03",
-        "backgroundPath": "cobweb_smithy",
+        "backgroundPath" : "cobweb_smithy",
         "subNodePath": "southcape_smithy",
         "targetTime": {
           "startHour": 10,
           "endHour": 22
         },
         "buildingNpc": [
-          "southcape_smithy_orner"
+          "southcape_smithy_owner"
+        ],
+        "gameObject": [
         ]
       },
       "southcape_house_01": {
-        "subNodeName": "사우스케이프 민가1",
+        "subNodeName": "사우스케이프 민가",
         "buildingType": "house",
         "outerPath": "southcape_02",
-        "backgroundPath": "southcape_house",
         "subNodePath": "southcape_house_01",
         "targetTime": {
           "startHour": 6,
@@ -854,13 +932,14 @@
         },
         "buildingNpc": [
           "southcape_resident_01"
+        ],
+        "gameObject": [
         ]
       },
       "southcape_house_02": {
-        "subNodeName": "사우스케이프 민가2",
+        "subNodeName": "사우스케이프 민가",
         "buildingType": "house",
         "outerPath": "southcape_02",
-        "backgroundPath": "southcape_house",
         "subNodePath": "southcape_house_02",
         "targetTime": {
           "startHour": 6,
@@ -868,13 +947,14 @@
         },
         "buildingNpc": [
           "southcape_resident_02"
+        ],
+        "gameObject": [
         ]
       },
       "southcape_house_03": {
-        "subNodeName": "사우스케이프 민가3",
+        "subNodeName": "사우스케이프 민가",
         "buildingType": "house",
         "outerPath": "southcape_03",
-        "backgroundPath": "southcape_house",
         "subNodePath": "southcape_house_03",
         "targetTime": {
           "startHour": 6,
@@ -882,13 +962,14 @@
         },
         "buildingNpc": [
           "southcape_resident_03"
+        ],
+        "gameObject": [
         ]
       },
       "southcape_house_04": {
-        "subNodeName": "사우스케이프 민가4",
+        "subNodeName": "사우스케이프 민가",
         "buildingType": "house",
         "outerPath": "southcape_03",
-        "backgroundPath": "southcape_house",
         "subNodePath": "southcape_house_04",
         "targetTime": {
           "startHour": 6,
@@ -896,13 +977,14 @@
         },
         "buildingNpc": [
           "southcape_resident_04"
+        ],
+        "gameObject": [
         ]
       },
       "southcape_house_05": {
-        "subNodeName": "사우스케이프 민가5",
+        "subNodeName": "사우스케이프 민가",
         "buildingType": "house",
         "outerPath": "southcape_03",
-        "backgroundPath": "southcape_house",
         "subNodePath": "southcape_house_05",
         "targetTime": {
           "startHour": 6,
@@ -910,13 +992,14 @@
         },
         "buildingNpc": [
           "southcape_resident_05"
+        ],
+        "gameObject": [
         ]
       },
       "southcape_house_06": {
-        "subNodeName": "사우스케이프 민가6",
+        "subNodeName": "사우스케이프 민가",
         "buildingType": "house",
         "outerPath": "southcape_03",
-        "backgroundPath": "southcape_house",
         "subNodePath": "southcape_house_06",
         "targetTime": {
           "startHour": 6,
@@ -924,6 +1007,8 @@
         },
         "buildingNpc": [
           "southcape_resident_06"
+        ],
+        "gameObject": [
         ]
       },
       "southcape_dock": {
@@ -936,6 +1021,8 @@
         },
         "buildingNpc": [
           "captain_jack"
+        ],
+        "gameObject": [
         ]
       }
     }

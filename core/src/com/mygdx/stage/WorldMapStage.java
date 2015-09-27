@@ -15,6 +15,7 @@ import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.StorySectionManager;
@@ -38,6 +39,8 @@ public class WorldMapStage extends BaseOverlapStage {
 	private AssetsManager assetsManager;
 	@Autowired
 	private BattleManager battleManager;
+	@Autowired
+	private DungeonManager dungeonManager;
 	private String nodePath;
 	private CompositeItem currentPosition;
 	private ImageItem currentNode;
@@ -92,6 +95,7 @@ public class WorldMapStage extends BaseOverlapStage {
 				nodeButton.addListener(new SimpleTouchListener() {
 					@Override
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+						dungeonManager.getDungeonInfo().setInDungeon(false);
 						positionManager.setInWorldMap(false);
 						Random random = new Random();
 						boolean randomBoolean = random.nextBoolean();
@@ -110,6 +114,7 @@ public class WorldMapStage extends BaseOverlapStage {
 					@Override
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 						positionManager.setInWorldMap(false);
+						dungeonManager.getDungeonInfo().setInDungeon(false);
 						Random random = new Random();
 						boolean randomBoolean = random.nextBoolean();
 						if (randomBoolean) {
@@ -129,6 +134,7 @@ public class WorldMapStage extends BaseOverlapStage {
 					@Override
 					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 						positionManager.setInWorldMap(false);
+						dungeonManager.getDungeonInfo().setInDungeon(false);
 						movingManager.goToNode(nodePath);
 						storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, nodePath);
 					}
@@ -151,6 +157,7 @@ public class WorldMapStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					positionManager.setInWorldMap(false);
+					dungeonManager.getDungeonInfo().setInDungeon(false);
 					movingManager.goToNode(nodePath);
 					storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, nodePath);
 				}
@@ -168,6 +175,7 @@ public class WorldMapStage extends BaseOverlapStage {
 				@Override
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					positionManager.setInWorldMap(false);
+					dungeonManager.getDungeonInfo().setInDungeon(false);
 					movingManager.goToNode(nodePath);
 					storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, nodePath);
 				}

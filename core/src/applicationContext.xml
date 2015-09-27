@@ -70,7 +70,6 @@
 	<bean id="textureManager" class="com.mygdx.manager.TextureManager"/>
 	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
 	<bean id="unitManager" class="com.mygdx.manager.UnitManager"/>
-	<bean id="dungeonEncounterManager" class="com.mygdx.manager.DungeonEncounterManager"/>
 	<bean id="dungeonManager" class="com.mygdx.manager.DungeonManager"/>
 	
 	<bean id="baseScreen" class="com.mygdx.screen.BaseScreen" scope="prototype"/>
@@ -176,6 +175,7 @@
 	<bean id="closeButtonListener" class="com.mygdx.listener.CloseButtonListener" scope="prototype"/>
 	<bean id="dungeonDoorButtonListener" class="com.mygdx.listener.DungeonDoorButtonListener" scope="prototype"/>
 	<bean id="dungeonEntranceButtonListener" class="com.mygdx.listener.DungeonEntranceButtonListener" scope="prototype"/>
+	<bean id="dungeonStairButtonListener" class="com.mygdx.listener.DungeonStairButtonListener" scope="prototype"/>
 	<bean id="gameObjectButtonListener" class="com.mygdx.listener.GameObjectButtonListener" scope="prototype"/>
 	<bean id="gameEndListener" class="com.mygdx.listener.GameEndListener" scope="prototype"/>
 	<bean id="goBackwardFieldButtonListener" class="com.mygdx.listener.GoBackwardFieldButtonListener" scope="prototype"/>

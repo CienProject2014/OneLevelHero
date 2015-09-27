@@ -17,6 +17,6 @@ public class QuitPartyEventTrigger implements EventTrigger {
 
 	@Override
 	public void triggerEvent(EventParameters eventParameter) {
-		partyManager.removeHero(eventManager.getHeroMap().get(eventParameter.getUnit().getHeroName()));
+		partyManager.removeHero(eventManager.getHeroMap().get(eventParameter.getUnit().getHeroPath()));
 	}
 }

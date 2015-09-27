@@ -345,7 +345,7 @@
         }
       },
       {
-        "itemIdentifier": "cobweb_store1",
+        "itemIdentifier": "cobweb_smithy",
         "x": 815,
         "y": 333.50003,
         "zIndex": 11,
@@ -384,7 +384,7 @@
         }
       },
       {
-        "itemIdentifier": "cobweb_store2",
+        "itemIdentifier": "cobweb_grocery",
         "x": 1053,
         "y": 595.5,
         "zIndex": 12,
