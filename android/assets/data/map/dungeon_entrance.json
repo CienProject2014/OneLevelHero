@@ -38,5 +38,9 @@
   "temple_of_moerae": {
     "nodeName": "모에라에의 신전",
     "nodePath": "temple_of_moerae"
+  },
+  "cave_of_cape_of_tempest": {
+    "nodeName": "폭풍의 곶 동굴",
+    "nodePath": "cave_of_cape_of_tempest"
   }
 }
