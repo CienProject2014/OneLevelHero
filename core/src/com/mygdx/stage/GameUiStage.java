@@ -65,11 +65,16 @@ public class GameUiStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		timeInfoButton.setText(timeManager.getTimeInfo());
-		if (storySectionManager.getCurrentStorySection().getNextSections() != null
-				&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
-			timeInfoButton.setText(timeManager.getTimeInfo() + " / "
-					+ storySectionManager.getCurrentStorySectionNumber());
+		if (CurrentInfo.isAdminMode) {
+			if (storySectionManager.getCurrentStorySection().getNextSections() != null
+					&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
+				timeInfoButton.setText(timeManager.getTimeInfo() + " / "
+						+ storySectionManager.getCurrentStorySectionNumber());
+			}
+		} else {
+			timeInfoButton.setText(timeManager.getTimeInfo());
 		}
+
 		showPlaceInfoButton();
 	}
 
@@ -193,7 +198,9 @@ public class GameUiStage extends BaseOneLevelStage {
 		helpButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				screenFactory.show(ScreenEnum.WORLD_MAP);
+				if (CurrentInfo.isAdminMode) {
+					screenFactory.show(ScreenEnum.WORLD_MAP);
+				}
 			}
 
 		});
