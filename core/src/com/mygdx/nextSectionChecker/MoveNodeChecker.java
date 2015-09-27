@@ -13,10 +13,10 @@ public class MoveNodeChecker implements NextSectionChecker {
 	public boolean checkNextEvent(EventParameters eventParameter, String... args) {
 		if (args != null) {
 			if (args.length == 1) {
-				String location = eventParameter.getLocation().getNodeName();
+				String location = eventParameter.getLocation().getNodePath();
 				return ArgumentChecker.checkIsSame(location, args[0]);
 			} else if (args.length == 3) {
-				String location = eventParameter.getLocation().getNodeName();
+				String location = eventParameter.getLocation().getNodePath();
 				int startHour = eventParameter.getTime().getStartHour();
 				int endHour = eventParameter.getTime().getEndHour();
 				int currentMinute = timeManager.getDayMinute();

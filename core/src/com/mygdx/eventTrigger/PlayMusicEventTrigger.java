@@ -14,7 +14,7 @@ public class PlayMusicEventTrigger implements EventTrigger {
 
 	@Override
 	public void triggerEvent(EventParameters eventParameter) {
-		musicManager.setMusicAndPlay(eventParameter.getMusic().getMusicName());
+		musicManager.setMusicAndPlay(eventParameter.getMusic().getMusicPath());
 		storySectionManager.runStorySequence();
 	}
 }

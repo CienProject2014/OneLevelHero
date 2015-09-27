@@ -12,7 +12,7 @@ public class MoveSubNodeBeforeAbsoluteTimeChecker implements NextSectionChecker 
 	@Override
 	public boolean checkNextEvent(EventParameters eventParameter, String... args) {
 		if (args != null) {
-			String subNodePath = eventParameter.getLocation().getSubNodeName();
+			String subNodePath = eventParameter.getLocation().getSubNodePath();
 			if (ArgumentChecker.checkIsSame(subNodePath, args[0])) {
 				TimeParameter currentTime = new TimeParameter(timeManager.getDay(), timeManager.getHour(),
 						timeManager.getMinute());

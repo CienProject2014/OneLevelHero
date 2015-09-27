@@ -13,11 +13,11 @@ public class MoveDungeonRoomInTargetTimeChecker implements NextSectionChecker {
 	public boolean checkNextEvent(EventParameters eventParameter, String... args) {
 		if (args != null) {
 			if (args.length == 3) {
-				String subNodeName = eventParameter.getLocation().getSubNodeName();
-				String floorName = eventParameter.getLocation().getFloorName();
+				String subNodePath = eventParameter.getLocation().getSubNodePath();
+				String floorPath = eventParameter.getLocation().getFloorPath();
 				String roomLabel = eventParameter.getLocation().getRoomLabel();
-				if (ArgumentChecker.checkIsSame(subNodeName, args[0])) {
-					if (ArgumentChecker.checkIsSame(floorName, args[1])) {
+				if (ArgumentChecker.checkIsSame(subNodePath, args[0])) {
+					if (ArgumentChecker.checkIsSame(floorPath, args[1])) {
 						if (ArgumentChecker.checkIsSame(roomLabel, args[2])) {
 							int startHour = eventParameter.getTime().getStartHour();
 							int endHour = eventParameter.getTime().getEndHour();

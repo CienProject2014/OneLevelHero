@@ -49,9 +49,9 @@
         "eventState": "not_opened",
         "eventType": "play_music",
         "eventParameter": {
-        	"music" : {
-        		"musicName": "fights"
-        	}          
+          "music" : {
+          	"musicPath": "fights"
+          }          
         }
       },
       "4": {
@@ -111,7 +111,7 @@
               "backgroundPath": "devil_castle_06"
             },
             {
-              "script": "저한테 맡기세요!",
+              "script": "저한테 맞기세요!",
               "characterPath": "parath",
               "faceNumber": "01",
               "speakerPosition": "left",
@@ -193,7 +193,7 @@
               "backgroundPath": "devil_castle_06"
             },
             {
-              "script": "용사님 물약을 드세요!",
+              "script": "용사님 물약 드세요!",
               "characterPath": "parath",
               "faceNumber": "01",
               "speakerPosition": "right",
@@ -285,7 +285,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "blackwood"
+            "nodePath": "blackwood"
           }
         }
       },
@@ -644,7 +644,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb"
+            "nodePath": "cobweb"
           }
         }
       },
@@ -862,7 +862,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "cobweb"
+            "nodePath": "cobweb"
           }
         }
       },
@@ -2066,8 +2066,9 @@
         "eventType": "move_dungeon_room",
         "eventParameter": {
           "location": {
-            "subNodeName": "cave_of_succubus",
-            "roomLabel" : "room_0_0"
+            "subNodePath": "cave_of_succubus",
+            "floorPath" : "cave_of_succubus",
+            "roomLabel" : "room_1_1"
           }
         }
       },
@@ -4235,6 +4236,18 @@
           }
         }
       },
+      "56": {
+        "eventState": "not_opened",
+        "eventType": "get_buff",
+        "eventParameter": {
+          "unit": {
+            "heroPath": "yongsa"
+          },
+          "buff" : {
+            "buffPath" : "curse_clear"
+          }
+        }
+      },
       "57": {
         "eventState": "not_opened",
         "eventType": "chat",
@@ -5307,7 +5320,7 @@
         "eventType": "move_node",
         "eventParameter": {
           "location": {
-            "nodeName": "middle_ridge"
+            "nodePath": "middle_ridge"
           }
         }
       },
@@ -5316,7 +5329,7 @@
         "eventType": "quit_party",
         "eventParameter": {
           "unit" : {
-            "heroName" : "parath"
+            "heroPath" : "parath"
           }
         }
       },
@@ -5325,7 +5338,7 @@
         "eventType": "quit_party",
         "eventParameter": {
           "unit" : {
-            "heroName" : "lilis"
+            "heroPath" : "lilis"
           }
         }
       },
@@ -5334,7 +5347,7 @@
         "eventType": "join_party",
         "eventParameter": {
           "unit" : {
-            "heroName" : "kein"
+            "heroPath" : "kein"
           }
         }
       },
@@ -6640,7 +6653,7 @@
         "eventType": "quit_party",
         "eventParameter": {
           "unit" : {
-            "heroName" : "kein"
+            "heroPath" : "kein"
           }
         }
       },
@@ -6649,7 +6662,7 @@
         "eventType": "join_party",
         "eventParameter": {
           "unit" : {
-            "heroName" : "parath"
+            "heroPath" : "parath"
           }
         }
       },
@@ -6658,7 +6671,7 @@
         "eventType": "join_party",
         "eventParameter": {
           "unit" : {
-            "heroName" : "lilis"
+            "heroPath" : "lilis"
           }
         }
       },
@@ -7470,10 +7483,10 @@
         "eventType": "get_buff",
         "eventParameter": {
           "unit": {
-            "heroName": "yongsa"
+            "heroPath": "yongsa"
           },
           "buff" : {
-            "buffName" : "curse_clear"
+            "buffPath" : "curse_clear"
           }
         }
       },
@@ -7723,7 +7736,7 @@
         "eventType": "set_npc_target_time",
         "eventParameter": {
           "location": {
-          	 "npcName" : "evergnail"
+          	 "npcPath" : "evergnail"
           },
           "time" : {
             "startHour" : 24,
@@ -7736,7 +7749,7 @@
         "eventType": "set_npc_target_time",
         "eventParameter": {
           "location": {
-          	 "npcName" : "wallace"
+           "npcPath" : "wallace"
           },
           "time" : {
             "startHour" : 24,
@@ -8687,6 +8700,34 @@
             "minute": 10
           }
         }
+      }
+    }
+  },
+  "mawang_battle":{
+    "events": {
+      "1": {
+        "eventState": "not_opened",
+        "eventType": "start_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_02",
+            "backgroundPath": "devil_castle_06"
+          }
+        }
+      },
+      "2": {
+        "eventState": "not_opened",
+        "eventType": "start_battle",
+        "eventParameter": {
+          "battle": {
+            "targetMonster": "mawang_03",
+            "backgroundPath": "devil_castle_06"
+          }
+        }
+      },	
+      "3": {
+        "eventState": "not_opened",
+        "eventType": "game_clear"
       }
     }
   }

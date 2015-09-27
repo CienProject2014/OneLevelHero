@@ -14,7 +14,7 @@ import com.mygdx.enums.VillageDirectionEnum;
 public class Village {
 	private String nodeName;
 	private String nodePath;
-	private String sceneName;
+	private String scenePath;
 	private HashMap<String, VillageDirectionEnum> arrowDirection;
 	private VillageDirectionEnum villageDirection;
 	private ArrayList<String> villageNpc;
@@ -34,14 +34,6 @@ public class Village {
 
 	public void setBuilding(HashMap<String, Building> building) {
 		this.building = building;
-	}
-
-	public String getSceneName() {
-		return sceneName;
-	}
-
-	public void setSceneName(String sceneName) {
-		this.sceneName = sceneName;
 	}
 
 	public VillageDirectionEnum getVillageDirection() {
@@ -74,5 +66,13 @@ public class Village {
 
 	public void setNodePath(String nodePath) {
 		this.nodePath = nodePath;
+	}
+
+	public String getScenePath() {
+		return scenePath;
+	}
+
+	public void setScenePath(String scenePath) {
+		this.scenePath = scenePath;
 	}
 }

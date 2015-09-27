@@ -65,6 +65,10 @@ public class MovingManager {
 			case NPC :
 				screenFactory.show(ScreenEnum.GREETING);
 				break;
+			case STORY :
+				positionManager.setCurrentEventPositionType(PositionEnum.EventPosition.NONE);
+				goCurrentLocatePosition();
+				break;
 			case WORLD_MAP :
 				positionManager.setCurrentEventPositionType(EventPosition.NONE);
 				screenFactory.show(ScreenEnum.STATUS);

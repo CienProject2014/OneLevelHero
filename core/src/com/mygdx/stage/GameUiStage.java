@@ -1,7 +1,6 @@
 package com.mygdx.stage;
 
 import java.util.HashMap;
-import java.util.Stack;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,15 +16,16 @@ import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.SimpleTouchListener;
+import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
-import com.mygdx.popup.GameObjectPopup;
 import com.mygdx.popup.SettingPopup;
 
 public class GameUiStage extends BaseOneLevelStage {
@@ -45,13 +45,14 @@ public class GameUiStage extends BaseOneLevelStage {
 	private SoundManager soundManager;
 	@Autowired
 	private ConstantsAssets constantsAssets;
+	@Autowired
+	private DungeonManager dungeonManager;
 	private HashMap<String, Float> uiConstantsMap;
 
 	private SettingPopup settingPopup;
 	private Table uiTable;
 	private Table topTable;
-	private Stack<GameObjectPopup> alertMessage;
-
+	private int adminCount;
 	private TextButton placeInfoButton;
 	private TextButton timeInfoButton;
 
@@ -64,13 +65,32 @@ public class GameUiStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		timeInfoButton.setText(timeManager.getTimeInfo());
-		if (storySectionManager.getCurrentStorySection().getNextSections() != null
-				&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
-			timeInfoButton.setText(timeManager.getTimeInfo() + " / "
-					+ storySectionManager.getCurrentStorySectionNumber());
+		if (CurrentInfo.isAdminMode) {
+			if (storySectionManager.getCurrentStorySection().getNextSections() != null
+					&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
+				timeInfoButton.setText(timeManager.getTimeInfo() + " / "
+						+ storySectionManager.getCurrentStorySectionNumber());
+			}
+		} else {
+			timeInfoButton.setText(timeManager.getTimeInfo());
 		}
+
+		showPlaceInfoButton();
 	}
 
+	private void showPlaceInfoButton() {
+		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.NODE)) {
+			placeInfoButton.setText(positionManager.getCurrentNodeName() + CurrentInfo.getAdminMessage());
+		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.SUB_NODE)) {
+			placeInfoButton.setText(positionManager.getCurrentSubNodeName() + CurrentInfo.getAdminMessage());
+		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
+			placeInfoButton.setText(dungeonManager.getDungeonInfo().getCurrentFloor().getFloorName()
+					+ CurrentInfo.getAdminMessage());
+		} else {
+			placeInfoButton.setText(positionManager.getCurrentNodeName() + CurrentInfo.getAdminMessage());
+		}
+
+	}
 	public Stage makeStage() {
 		super.makeStage();
 		// 초기화
@@ -143,6 +163,8 @@ public class GameUiStage extends BaseOneLevelStage {
 			placeInfoButton = new TextButton(positionManager.getCurrentNodeName(), style);
 		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.SUB_NODE)) {
 			placeInfoButton = new TextButton(positionManager.getCurrentSubNodeName(), style);
+		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
+			placeInfoButton = new TextButton(dungeonManager.getDungeonInfo().getCurrentFloor().getFloorName(), style);
 		} else {
 			placeInfoButton = new TextButton(positionManager.getCurrentNodeName(), style);
 		}
@@ -160,7 +182,11 @@ public class GameUiStage extends BaseOneLevelStage {
 		questLogButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
+				setAdminCount(getAdminCount() + 1);
+				if (getAdminCount() > 3) {
+					CurrentInfo.changeAdminMode();
+					setAdminCount(0);
+				}
 				return true;
 			}
 
@@ -172,7 +198,9 @@ public class GameUiStage extends BaseOneLevelStage {
 		helpButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				screenFactory.show(ScreenEnum.WORLD_MAP);
+				if (CurrentInfo.isAdminMode) {
+					screenFactory.show(ScreenEnum.WORLD_MAP);
+				}
 			}
 
 		});
@@ -196,5 +224,12 @@ public class GameUiStage extends BaseOneLevelStage {
 	@Override
 	public void dispose() {
 		super.dispose();
+	}
+	public void setAdminCount(int i) {
+		this.adminCount = i;
+	}
+
+	public int getAdminCount() {
+		return adminCount;
 	}
 }
