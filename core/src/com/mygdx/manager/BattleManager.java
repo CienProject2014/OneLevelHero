@@ -69,6 +69,7 @@ public class BattleManager {
 	private GridHitbox gridHitbox; // grid hitbox 테이블
 	private BattleStage battleStage;
 	private Unit currentAttackUnit;
+	private String text;
 	public SkillRunPopup gameObjectPopup;
 
 	public boolean isEventBattle() {
@@ -803,6 +804,14 @@ public class BattleManager {
 
 	public List<Buff> getMonsterBuffList() {
 		return getSelectedMonster().getBuffList();
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
 	}
 
 }

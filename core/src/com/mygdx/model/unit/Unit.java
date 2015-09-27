@@ -21,6 +21,10 @@ public abstract class Unit implements Comparable<Unit> {
 	private int casting;
 	private float percent;
 
+	private float preDecDefense;
+	private float preIncDefense;
+	private int preIncAggro;
+
 	private List<Buff> buffList = new ArrayList<Buff>();
 
 	public BattleStrategy getBattleStrategy() {
@@ -193,5 +197,29 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setCasting(int casting) {
 		this.casting = casting;
+	}
+
+	public int getPreIncAggro() {
+		return preIncAggro;
+	}
+
+	public void setPreIncAggro(int preIncAggro) {
+		this.preIncAggro = preIncAggro;
+	}
+
+	public float getPreIncDefense() {
+		return preIncDefense;
+	}
+
+	public void setPreIncDefense(float preIncDefense) {
+		this.preIncDefense = preIncDefense;
+	}
+
+	public float getPreDecDefense() {
+		return preDecDefense;
+	}
+
+	public void setPreDecDefense(float preDecDefense) {
+		this.preDecDefense = preDecDefense;
 	}
 }

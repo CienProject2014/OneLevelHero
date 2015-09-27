@@ -779,6 +779,10 @@ battle_moeraphim_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_moeraphim_big.png/
 },
+battleui_textmenu: {
+	class: java.lang.String,
+	value: texture/ui/battle/battleui_textmenu.png/
+},
 status_plecha: {
 	class: java.lang.String,
 	value: texture/character/status_plecha.png/

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.enums.BuffEffectEnum;
+import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
@@ -16,6 +17,8 @@ public class MonsterBattleStrategy implements BattleStrategy {
 
 	@Autowired
 	private TimeManager timeManager;
+	@Autowired
+	BattleManager battleManager;
 
 	@Override
 	public void attack(Unit attackMonster, Unit defender, int[][] hitArea) {
@@ -32,6 +35,8 @@ public class MonsterBattleStrategy implements BattleStrategy {
 			defender.getStatus().setHp(0);
 		}
 		Gdx.app.log("Monster", attackMonster.getName() + "이(가) " + defender.getName() + "을(를) 공격하였습니다!");
+		battleManager.setText(
+				attackMonster.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg + "를 입혔다!");
 	}
 
 	@Override

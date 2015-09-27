@@ -7,6 +7,8 @@ import java.util.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
@@ -16,10 +18,15 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.EventTypeEnum;
@@ -56,6 +63,8 @@ public class BattleStage extends BaseOneLevelStage {
 	private ListenerFactory listenerFactory;
 	@Autowired
 	private ConstantsAssets constantsAssets;
+	@Autowired
+	private UiComponentAssets uiComponentAssets;
 	private HashMap<String, Float> uiConstantsMap;
 	// Table
 	@Autowired
@@ -77,6 +86,7 @@ public class BattleStage extends BaseOneLevelStage {
 	// Image
 	private Image currentAttackerBackground;
 	private Image turnTableBackground;
+	private TextureRegion textMenu;
 	private HashMap<String, Image> turnBigImageMap = new HashMap<String, Image>();
 	private HashMap<String, Image> turnSmallImageMap = new HashMap<String, Image>();
 	// Table
@@ -85,9 +95,11 @@ public class BattleStage extends BaseOneLevelStage {
 	private Table smallImageTable = new Table();
 	private Table turnTable = new Table();
 	private Table rMenuTable = new Table();
+	private Table textMenuTable = new Table();
 	private int check = 0;
 	private Vector2 start, end;
 	private Unit currentAttackUnit;
+	private Label label;
 
 	@Override
 	public void act(float delta) {
@@ -124,6 +136,7 @@ public class BattleStage extends BaseOneLevelStage {
 			updateBigImageTable();
 			battleManager.setBigUpdate(false);
 		}
+		updateText();
 		cameraManager.act(delta);
 	}
 
@@ -135,6 +148,7 @@ public class BattleStage extends BaseOneLevelStage {
 		ArrayList<Unit> units = new ArrayList<Unit>(4);
 		units.addAll(partyManager.getBattleMemberList());
 		units.add(selectedMonster);
+		battleManager.setText(selectedMonster.getName() + "이(가) 수풀에서 튀어나왔다!");
 		battleManager.setUnits(units);
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 			initializeBattle(battleManager.getUnits(), selectedMonster);
@@ -225,24 +239,41 @@ public class BattleStage extends BaseOneLevelStage {
 		rMenuTable.addAction(Actions.moveTo(1920, 15));
 		rMenuTable.addAction(Actions.moveTo(1720, 15, 1));
 
-		turnTable.addAction(Actions.moveTo(15, -137));
-		turnTable.addAction(Actions.moveTo(15, 15, 1));
+		turnTable.addAction(Actions.moveTo(5, -137));
+		turnTable.addAction(Actions.moveTo(5, 5, 1));
 
-		imageTable.addAction(Actions.moveTo(15, -137));
-		imageTable.addAction(Actions.moveTo(15, 20, 1));
+		imageTable.addAction(Actions.moveTo(5, -137));
+		imageTable.addAction(Actions.moveTo(5, 5, 1));
 
 	}
 
 	private Table makeTurnTable() {
+		label = new Label("text", uiComponentAssets.getSkin());
+		label.setStyle(new LabelStyle(uiComponentAssets.getFont(), Color.WHITE));
+		label.setWrap(true);
+		label.setAlignment(Align.left, Align.left);
+		textMenu = new TextureRegion(textureManager.getTexture("battleui_textmenu"));
+		textMenuTable.setBackground(new TextureRegionDrawable(textMenu));
+		textMenuTable.add(label).width(800).height(10);
 		makeTurnBackgroundImage();
 		makeBattleTurnImage();
 		currentAttackerBackground.setWidth(137);
 		currentAttackerBackground.setHeight(137);
 		turnTable.add(currentAttackerBackground);
 		turnTable.add(turnTableBackground);
+		turnTable.add(textMenuTable);
+
 		turnTable.left().bottom();
 		turnTable.padLeft(15).padBottom(15);
 		return turnTable;
+	}
+
+	private void updateText() {
+		if (battleManager.getText() != null) {
+			label.setText(battleManager.getText());
+		} else {
+			label.setText("상황을 기다리는 중 입니다");
+		}
 	}
 
 	private Table makeTurnFaceTable() {

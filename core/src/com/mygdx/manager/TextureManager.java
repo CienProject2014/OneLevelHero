@@ -23,7 +23,7 @@ public class TextureManager {
 	private AssetsManager assetsManager;
 	@Autowired
 	private TextureAssets textureAssets;
-	private String[] preName = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+	private String[] preName = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
 	// 1. 똑같은걸 불러왔을 때
 	// 2. 전투 (미리 로드)
 	// 3. 목표마을(미리 로드)
@@ -169,8 +169,8 @@ public class TextureManager {
 	}
 
 	public Texture getBigBattleImage(String facePath) {
-		return getTexture(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE, TextureEnum.BATTLE
-				+ "_default_" + TextureEnum.BIG_IMAGE);
+		return getTexture(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE,
+				TextureEnum.BATTLE + "_default_" + TextureEnum.BIG_IMAGE);
 	}
 
 	public Texture getGameObjectTexture(String objectPath) {
@@ -192,8 +192,9 @@ public class TextureManager {
 			assetsManager.finishLoading();
 			return assetsManager.get(textureAssets.getTexturePath(preName[13]), Texture.class);
 		} else {
-			Gdx.app.log("TextureManager", floorPath + "_" + TextureEnum.MINIMAP + " is null");
+			Gdx.app.log("TextureManager", floorPath + "_" + TextureEnum.MINIMAP + "is null");
 			return getTexture(floorPath, TextureEnum.BUST + "_default_01");
 		}
 	}
+
 }
