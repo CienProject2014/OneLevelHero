@@ -37,6 +37,12 @@ public class EncounterManager {
 			battleManager.startBattle(selectedMonster);
 		}
 	}
+	public void encountEliteMonster(String eliteMonsterName) {
+		if (!CurrentInfo.isAdminMode) {
+			Monster selectedMonster = monsterManager.createMonsterByName(eliteMonsterName);
+			battleManager.startBattle(selectedMonster);
+		}
+	}
 
 	public void encountBossMonster(String bossMonsterName) {
 		Monster selectedMonster = monsterManager.createMonsterByName(bossMonsterName);

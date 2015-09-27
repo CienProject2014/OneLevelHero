@@ -93,6 +93,8 @@ public class DungeonManager {
 		setCurrentDoorSize(dungeonInfo);
 		if (dungeonInfo.getCurrentRoom().getRoomType().equals(DungeonEnum.Type.BOSS)) {
 			meetBossMonster(dungeonInfo.getCurrentRoom().getLink());
+		} else if (dungeonInfo.getCurrentRoom().getRoomType().equals(DungeonEnum.Type.ELITE)) {
+			meetEliteMonster(dungeonInfo.getCurrentRoom().getLink());
 		} else {
 			randomMeetMonster(dungeonInfo.getCurrentFloor().getFloorMonsterList());
 		}
@@ -101,6 +103,10 @@ public class DungeonManager {
 
 	private void meetBossMonster(String bossMonsterName) {
 		encounterManager.encountBossMonster(bossMonsterName);
+	}
+
+	private void meetEliteMonster(String eliteMonsterName) {
+		encounterManager.encountEliteMonster(eliteMonsterName);
 	}
 
 	private void randomMeetMonster(ArrayList<String> floorMonsterList) {
