@@ -11,6 +11,7 @@ public class Skill {
 	private int duplicateNumber;
 	private String[] effectNameList;
 	private String buffName;
+	private String[] buffNameList;
 	private String oneRegex;
 
 	private int costCasting;
@@ -172,6 +173,14 @@ public class Skill {
 
 	public void setBuffName(String buffName) {
 		this.buffName = buffName;
+	}
+
+	public String[] getBuffNameList() {
+		return buffNameList;
+	}
+
+	public void setBuffNameList(String[] buffNameList) {
+		this.buffNameList = buffNameList;
 	}
 
 }
