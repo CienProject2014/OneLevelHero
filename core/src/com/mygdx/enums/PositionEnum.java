@@ -3,7 +3,7 @@ package com.mygdx.enums;
 public class PositionEnum {
 	public enum EventPosition {
 		NONE("none"), GAME_OBJECT("game_object"), BATTLE("battle"), WORLD_MAP("world_map"), LOG("log"), NPC("greeting"), STORY(
-				"story");
+				"story"), DUNGEON("dungeon");
 
 		private String eventPositionString;
 

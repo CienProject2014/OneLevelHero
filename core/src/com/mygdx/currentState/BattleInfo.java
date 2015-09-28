@@ -3,6 +3,7 @@ package com.mygdx.currentState;
 import java.util.ArrayList;
 import java.util.Queue;
 
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
@@ -18,6 +19,7 @@ public class BattleInfo {
 	private Monster currentMonster;
 	private BattleStateEnum battleState;
 	private String backgroundPath;
+	private ArrayList<ImageButton> rMenuButtonList;
 	private CurrentClickStateEnum currentClickState;
 	private Skill currentSelectedSkill;
 	private Item currentSelectedItem;
@@ -186,6 +188,14 @@ public class BattleInfo {
 
 	public void setrMenuTable(Table rMenuTable) {
 		this.rMenuTable = rMenuTable;
+	}
+
+	public ArrayList<ImageButton> getrMenuButtonList() {
+		return rMenuButtonList;
+	}
+
+	public void setrMenuButtonList(ArrayList<ImageButton> rMenuButtonList) {
+		this.rMenuButtonList = rMenuButtonList;
 	}
 
 }

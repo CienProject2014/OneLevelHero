@@ -1159,6 +1159,10 @@ bg_crystallized_valley_04: {
 	class: java.lang.String,
 	value: texture/background/bg_crystallized_valley_04.png/
 },
+bg_crystallized_valley_03: {
+	class: java.lang.String,
+	value: texture/background/bg_crystallized_valley_03.png/
+},
 bg_cobweb_villagehall: {
 	class: java.lang.String,
 	value: texture/background/bg_cobweb_villagehall.png/
@@ -2234,6 +2238,10 @@ spiritbullet: {
 battle_lamia_army_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_lamia_army_small.png/
+},
+bg_crystallized_valley_gate: {
+	class: java.lang.String,
+	value: texture/background/bg_crystallized_valley_gate.png/
 },
 bust_grocerystore_01: {
 	class: java.lang.String,

@@ -87,7 +87,7 @@ public class LoadNewManager {
 		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.DUNGEON);
 		positionManager.setCurrentEventPositionType(EventPosition.NONE);
 		positionManager.setCurrentNodePath("devil_castle");
-		dungeonManager.setDungeonInfo("devil_castle");
+		dungeonManager.setInitialDungeonInfo("devil_castle");
 		fieldManager.setArrowName("16to1");
 	}
 

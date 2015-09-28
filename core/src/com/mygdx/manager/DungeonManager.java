@@ -11,6 +11,9 @@ import com.mygdx.currentState.DungeonInfo;
 import com.mygdx.enums.DungeonEnum;
 import com.mygdx.enums.DungeonEnum.Direction;
 import com.mygdx.enums.DungeonEnum.Type;
+import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
+import com.mygdx.model.eventParameter.LocationParameter;
 import com.mygdx.model.location.Dungeon;
 import com.mygdx.model.location.DungeonConnection;
 import com.mygdx.model.location.DungeonFloor;
@@ -23,13 +26,23 @@ public class DungeonManager {
 	private MovingManager movingManager;
 	@Autowired
 	private EncounterManager encounterManager;
+	@Autowired
+	private ScreenFactory screenFactory;
 	private DungeonInfo dungeonInfo = new DungeonInfo();
 
 	public DungeonInfo getDungeonInfo() {
 		return dungeonInfo;
 	}
 
-	public void setDungeonInfo(String dungeonPath) {
+	public void setDungeonEventInfo() {
+		if (!dungeonInfo.isInDungeon()) {
+			setCurrentDoorSize(dungeonInfo);
+			setFloorMinimap(dungeonInfo);
+		}
+		setCurrentRoomVisibilityOn();
+	}
+
+	public void setInitialDungeonInfo(String dungeonPath) {
 		if (!dungeonInfo.isInDungeon()) {
 			dungeonInfo.setInDungeon(true);
 			Dungeon currentDungeon = nodeAssets.getDungeonByPath(dungeonPath);
@@ -168,5 +181,15 @@ public class DungeonManager {
 		ArrayList<DungeonFloor> dungeonFloorInfo = dungeonInfo.getCurrentDungeon().getDungeonFloors();
 		int currentFloorIndex = dungeonFloorInfo.indexOf(dungeonInfo.getCurrentFloor());
 		return currentFloorIndex;
+	}
+
+	public void moveDungeonByEvent(LocationParameter location) {
+		Dungeon currentDungeon = nodeAssets.getDungeonByPath(location.getSubNodePath());
+		dungeonInfo.setCurrentDungeon(currentDungeon);
+		dungeonInfo.setCurrentFloor(currentDungeon.findFloorByPath(location.getFloorPath()));
+		dungeonInfo.setCurrentRoom(dungeonInfo.getCurrentFloor().findRoomByLabel(location.getRoomLabel()));
+		dungeonInfo.setCurrentDirection(Direction.FORWARD);
+		dungeonInfo.setCurrentForwardAngle(dungeonInfo.getCurrentRoom().getForwardAngle());
+		screenFactory.show(ScreenEnum.DUNGEON);
 	}
 }

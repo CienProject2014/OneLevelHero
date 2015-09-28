@@ -179,7 +179,7 @@ public class SaveManager {
 	}
 
 	public boolean isLoadable(SaveVersion saveVersion) {
-		return Gdx.files.local("SAVEPATH" + saveVersion.toString() + "_" + CurrentInfo.CURRENT_APP_VERSION).exists();
+		return Gdx.files.local(SAVEPATH + saveVersion.toString() + "_" + CurrentInfo.CURRENT_APP_VERSION).exists();
 	}
 
 	public void load(SaveVersion saveVersion) {

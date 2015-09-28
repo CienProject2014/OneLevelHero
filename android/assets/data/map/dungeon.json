@@ -1368,7 +1368,7 @@
             "roomPosX": "1",
             "roomPosY": "8",
             "roomType": "gate",
-            "link" : "crystallized_valley",
+            "link" : "crystallized_valley_south",
             "forwardAngle": "right",
             "forwardConnections": [
               {
