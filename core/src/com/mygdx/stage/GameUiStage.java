@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -61,6 +62,7 @@ public class GameUiStage extends BaseOneLevelStage {
 	private ImageButton helpButton;
 	private ImageButton settingButton;
 	private TextButtonStyle style;
+	private ImageButtonStyle noNextButtonStyle, backButtonStyle;
 
 	@Override
 	public void act(float delta) {
@@ -113,11 +115,15 @@ public class GameUiStage extends BaseOneLevelStage {
 
 		return this;
 	}
+
 	private void conditionalHidingBackButton() {
 		if (!positionManager.getCurrentLocatePositionType().equals(LocatePosition.SUB_NODE)) {
-			backButton.setVisible(false);
+			backButton.setStyle(noNextButtonStyle);
+		} else {
+			backButton.setStyle(backButtonStyle);
 		}
 		if (positionManager.isInWorldMap()) {
+			backButton.setStyle(backButtonStyle);
 			placeInfoButton.setVisible(false);
 			timeInfoButton.setVisible(false);
 			questLogButton.setVisible(false);
@@ -126,7 +132,6 @@ public class GameUiStage extends BaseOneLevelStage {
 			backButton.setVisible(true);
 		}
 	}
-
 	// 테이블 디자인
 	public void makeTable() {
 		topTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
@@ -148,13 +153,20 @@ public class GameUiStage extends BaseOneLevelStage {
 	}
 
 	public void makeButton() {
+		backButtonStyle = new ImageButtonStyle(atlasUiAssets.getAtlasUiFile("back_button"),
+				atlasUiAssets.getAtlasUiFile("back_toggle_button"), atlasUiAssets.getAtlasUiFile("back_toggle_button"),
+				atlasUiAssets.getAtlasUiFile("back_button"), atlasUiAssets.getAtlasUiFile("back_toggle_button"),
+				atlasUiAssets.getAtlasUiFile("back_toggle_button"));
+		noNextButtonStyle = new ImageButtonStyle(atlasUiAssets.getAtlasUiFile("no_next_button"),
+				atlasUiAssets.getAtlasUiFile("no_next_button"), atlasUiAssets.getAtlasUiFile("no_next_button"),
+				atlasUiAssets.getAtlasUiFile("no_next_button"), atlasUiAssets.getAtlasUiFile("no_next_button"),
+				atlasUiAssets.getAtlasUiFile("no_next_button"));
 		style = new TextButtonStyle(atlasUiAssets.getAtlasUiFile("time_info_button"),
 				atlasUiAssets.getAtlasUiFile("time_info_button"), atlasUiAssets.getAtlasUiFile("time_info_button"),
 				uiComponentAssets.getFont());
 		timeInfoButton = new TextButton("", style);
 		placeInfoButton = new TextButton("", style);
-		backButton = new ImageButton(atlasUiAssets.getAtlasUiFile("back_button"),
-				atlasUiAssets.getAtlasUiFile("back_toggle_button"));
+		backButton = new ImageButton(backButtonStyle);
 		questLogButton = new ImageButton(atlasUiAssets.getAtlasUiFile("quest_log_button"),
 				atlasUiAssets.getAtlasUiFile("quest_log_toggle_button"));
 		helpButton = new ImageButton(atlasUiAssets.getAtlasUiFile("help_button"),
@@ -162,7 +174,6 @@ public class GameUiStage extends BaseOneLevelStage {
 		settingButton = new ImageButton(atlasUiAssets.getAtlasUiFile("setting_button"),
 				atlasUiAssets.getAtlasUiFile("setting_toggle_button"));
 	}
-
 	// 리스너 할당
 	public void addListener() {
 		placeInfoButton.addListener(new InputListener() {
@@ -179,11 +190,7 @@ public class GameUiStage extends BaseOneLevelStage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				soundManager.playClickSound();
-				setAdminCount(getAdminCount() + 1);
-				if (getAdminCount() > 3) {
-					CurrentInfo.changeAdminMode();
-					setAdminCount(0);
-				}
+
 				return true;
 			}
 

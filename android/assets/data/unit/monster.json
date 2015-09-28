@@ -42,8 +42,8 @@
       ]
     ],
     "status": {
-      "hp": 700,
-      "maxHp": 700,
+      "hp": 300,
+      "maxHp": 300,
       "attack": 38,
       "defense": 22,
       "magicAttack": 0,
@@ -103,8 +103,8 @@
       ]
     ],
     "status": {
-      "hp": 1200,
-      "maxHp": 1200,
+      "hp": 800,
+      "maxHp": 800,
       "attack": 47,
       "defense": 21,
       "magicAttack": 0,
@@ -164,8 +164,8 @@
       ]
     ],
     "status": {
-      "hp": 1150,
-      "maxHp": 1150,
+      "hp": 750,
+      "maxHp": 750,
       "attack": 41,
       "defense": 21,
       "magicAttack": 0,
@@ -245,8 +245,8 @@
       ]
     ],
     "status": {
-      "hp": 1200,
-      "maxHp": 1200,
+      "hp": 800,
+      "maxHp": 800,
       "attack": 42,
       "defense": 22,
       "magicAttack": 0,
@@ -306,8 +306,8 @@
       ]
     ],
     "status": {
-      "hp": 800,
-      "maxHp": 800,
+      "hp": 400,
+      "maxHp": 400,
       "attack": 43,
       "defense": 25,
       "magicAttack": 35,
@@ -367,8 +367,8 @@
       ]
     ],
     "status": {
-      "hp": 800,
-      "maxHp": 800,
+      "hp": 400,
+      "maxHp": 400,
       "attack": 42,
       "defense": 22,
       "magicAttack": 0,
@@ -428,8 +428,8 @@
       ]
     ],
     "status": {
-      "hp": 900,
-      "maxHp": 900,
+      "hp": 500,
+      "maxHp": 500,
       "attack": 44,
       "defense": 24,
       "magicAttack": 34,
@@ -489,8 +489,8 @@
       ]
     ],
     "status": {
-      "hp": 700,
-      "maxHp": 700,
+      "hp": 300,
+      "maxHp": 300,
       "attack": 43,
       "defense": 16,
       "magicAttack": 0,
@@ -550,8 +550,8 @@
       ]
     ],
     "status": {
-      "hp": 1100,
-      "maxHp": 1100,
+      "hp": 700,
+      "maxHp": 700,
       "attack": 46,
       "defense": 19,
       "magicAttack": 39,
@@ -611,8 +611,8 @@
       ]
     ],
     "status": {
-      "hp": 700,
-      "maxHp": 700,
+      "hp": 300,
+      "maxHp": 300,
       "attack": 41,
       "defense": 15,
       "magicAttack": 33,
@@ -672,8 +672,8 @@
       ]
     ],
     "status": {
-      "hp": 600,
-      "maxHp": 600,
+      "hp": 200,
+      "maxHp": 200,
       "attack": 37,
       "defense": 31,
       "magicAttack": 0,
@@ -733,8 +733,8 @@
       ]
     ],
     "status": {
-      "hp": 700,
-      "maxHp": 700,
+      "hp": 300,
+      "maxHp": 300,
       "attack": 48,
       "defense": 24,
       "magicAttack": 0,
@@ -794,8 +794,8 @@
       ]
     ],
     "status": {
-      "hp": 1200,
-      "maxHp": 1200,
+      "hp": 800,
+      "maxHp": 800,
       "attack": 47,
       "defense": 32,
       "magicAttack": 0,
@@ -855,8 +855,8 @@
       ]
     ],
     "status": {
-      "hp": 1250,
-      "maxHp": 1250,
+      "hp": 850,
+      "maxHp": 850,
       "attack": 48,
       "defense": 34,
       "magicAttack": 0,
@@ -916,8 +916,8 @@
       ]
     ],
     "status": {
-      "hp": 1100,
-      "maxHp": 1100,
+      "hp": 700,
+      "maxHp": 700,
       "attack": 42,
       "defense": 31,
       "magicAttack": 0,
@@ -977,8 +977,8 @@
       ]
     ],
     "status": {
-      "hp": 1150,
-      "maxHp": 1150,
+      "hp": 750,
+      "maxHp": 750,
       "attack": 43,
       "defense": 28,
       "magicAttack": 0,
@@ -1038,8 +1038,8 @@
       ]
     ],
     "status": {
-      "hp": 1500,
-      "maxHp": 1500,
+      "hp": 1000,
+      "maxHp": 1000,
       "attack": 65,
       "defense": 34,
       "magicAttack": 0,
@@ -1079,8 +1079,8 @@
       ]
     ],
     "status": {
-      "hp": 400,
-      "maxHp": 400,
+      "hp": 100,
+      "maxHp": 100,
       "attack": 36,
       "defense": 24,
       "magicAttack": 0,
@@ -1138,8 +1138,8 @@
       ]
     ],
     "status": {
-      "hp": 1900,
-      "maxHp": 1900,
+      "hp": 1500,
+      "maxHp": 1500,
       "attack": 38,
       "defense": 32,
       "magicAttack": 54,
@@ -1286,8 +1286,8 @@
       ]
     ],
     "status": {
-      "hp": 700,
-      "maxHp": 700,
+      "hp": 300,
+      "maxHp": 300,
       "attack": 36,
       "defense": 20,
       "magicAttack": 36,
@@ -1325,8 +1325,8 @@
       ]
     ],
     "status": {
-      "hp": 600,
-      "maxHp": 600,
+      "hp": 200,
+      "maxHp": 200,
       "attack": 39,
       "defense": 28,
       "magicAttack": 0,
@@ -1386,8 +1386,8 @@
       ]
     ],
     "status": {
-      "hp": 1100,
-      "maxHp": 1100,
+      "hp": 700,
+      "maxHp": 700,
       "attack": 51,
       "defense": 28,
       "magicAttack": 41,
@@ -1473,8 +1473,8 @@
       ]
     ],
     "status": {
-      "hp": 1500,
-      "maxHp": 1500,
+      "hp": 1000,
+      "maxHp": 1000,
       "attack": 57,
       "defense": 33,
       "magicAttack": 0,
@@ -1799,8 +1799,8 @@
       ]
     ],
     "status": {
-      "hp": 700,
-      "maxHp": 700,
+      "hp": 300,
+      "maxHp": 300,
       "attack": 30,
       "defense": 37,
       "magicAttack": 42,
@@ -1840,8 +1840,8 @@
       ]
     ],
     "status": {
-      "hp": 700,
-      "maxHp": 700,
+      "hp": 300,
+      "maxHp": 300,
       "attack": 30,
       "defense": 37,
       "magicAttack": 43,
@@ -1881,8 +1881,8 @@
       ]
     ],
     "status": {
-      "hp": 700,
-      "maxHp": 700,
+      "hp": 300,
+      "maxHp": 300,
       "attack": 30,
       "defense": 38,
       "magicAttack": 42,
@@ -1942,8 +1942,8 @@
       ]
     ],
     "status": {
-      "hp": 1500,
-      "maxHp": 1500,
+      "hp": 1100,
+      "maxHp": 1100,
       "attack": 58,
       "defense": 34,
       "magicAttack": 0,
@@ -2029,8 +2029,8 @@
       ]
     ],
     "status": {
-      "hp": 950,
-      "maxHp": 950,
+      "hp": 550,
+      "maxHp": 550,
       "attack": 42,
       "defense": 32,
       "magicAttack": 0,
@@ -2177,8 +2177,8 @@
       ]
     ],
     "status": {
-      "hp": 1700,
-      "maxHp": 1700,
+      "hp": 1300,
+      "maxHp": 1300,
       "attack": 53,
       "defense": 21,
       "magicAttack": 0,
@@ -2324,8 +2324,8 @@
       ]
     ],
     "status": {
-      "hp": 450,
-      "maxHp": 450,
+      "hp": 150,
+      "maxHp": 150,
       "attack": 36,
       "defense": 14,
       "magicAttack": 0,
@@ -2383,8 +2383,8 @@
       ]
     ],
     "status": {
-      "hp": 650,
-      "maxHp": 650,
+      "hp": 250,
+      "maxHp": 250,
       "attack": 36,
       "defense": 16,
       "magicAttack": 24,
@@ -2442,8 +2442,8 @@
       ]
     ],
     "status": {
-      "hp": 950,
-      "maxHp": 950,
+      "hp": 550,
+      "maxHp": 550,
       "attack": 45,
       "defense": 23,
       "magicAttack": 0,
@@ -2529,8 +2529,8 @@
       ]
     ],
     "status": {
-      "hp": 900,
-      "maxHp": 900,
+      "hp": 500,
+      "maxHp": 500,
       "attack": 42,
       "defense": 26,
       "magicAttack": 53,
@@ -2677,8 +2677,8 @@
       ]
     ],
     "status": {
-      "hp": 1300,
-      "maxHp": 1300,
+      "hp": 900,
+      "maxHp": 900,
       "attack": 30,
       "defense": 18,
       "magicAttack": 53,
@@ -2764,8 +2764,8 @@
       ]
     ],
     "status": {
-      "hp": 1300,
-      "maxHp": 1300,
+      "hp": 900,
+      "maxHp": 900,
       "attack": 30,
       "defense": 16,
       "magicAttack": 55,
@@ -2851,8 +2851,8 @@
       ]
     ],
     "status": {
-      "hp": 1300,
-      "maxHp": 1300,
+      "hp": 900,
+      "maxHp": 900,
       "attack": 30,
       "defense": 17,
       "magicAttack": 52,
@@ -2999,8 +2999,8 @@
       ]
     ],
     "status": {
-      "hp": 500,
-      "maxHp": 500,
+      "hp": 200,
+      "maxHp": 200,
       "attack": 33,
       "defense": 21,
       "magicAttack": 0,
@@ -3058,8 +3058,8 @@
       ]
     ],
     "status": {
-      "hp": 1200,
-      "maxHp": 1200,
+      "hp": 800,
+      "maxHp": 800,
       "attack": 40,
       "defense": 20,
       "magicAttack": 0,
@@ -3145,8 +3145,8 @@
       ]
     ],
     "status": {
-      "hp": 650,
-      "maxHp": 650,
+      "hp": 250,
+      "maxHp": 250,
       "attack": 34,
       "defense": 23,
       "magicAttack": 37,
@@ -3204,8 +3204,8 @@
       ]
     ],
     "status": {
-      "hp": 400,
-      "maxHp": 400,
+      "hp": 100,
+      "maxHp": 100,
       "attack": 37,
       "defense": 18,
       "magicAttack": 0,
@@ -3342,8 +3342,8 @@
       ]
     ],
     "status": {
-      "hp": 1150,
-      "maxHp": 1150,
+      "hp": 750,
+      "maxHp": 750,
       "attack": 36,
       "defense": 19,
       "magicAttack": 0,
@@ -3429,8 +3429,8 @@
       ]
     ],
     "status": {
-      "hp": 650,
-      "maxHp": 650,
+      "hp": 250,
+      "maxHp": 250,
       "attack": 33,
       "defense": 16,
       "magicAttack": 41,
@@ -3610,8 +3610,8 @@
       ]
     ],
     "status": {
-      "hp": 600,
-      "maxHp": 600,
+      "hp": 250,
+      "maxHp": 250,
       "attack": 31,
       "defense": 11,
       "magicAttack": 39,
@@ -3649,8 +3649,8 @@
       ]
     ],
     "status": {
-      "hp": 550,
-      "maxHp": 550,
+      "hp": 200,
+      "maxHp": 200,
       "attack": 29,
       "defense": 23,
       "magicAttack": 47,
@@ -3769,8 +3769,8 @@
       ]
     ],
     "status": {
-      "hp": 1000,
-      "maxHp": 1000,
+      "hp": 600,
+      "maxHp": 600,
       "attack": 47,
       "defense": 27,
       "magicAttack": 0,
@@ -3828,8 +3828,8 @@
       ]
     ],
     "status": {
-      "hp": 1050,
-      "maxHp": 1050,
+      "hp": 650,
+      "maxHp": 650,
       "attack": 49,
       "defense": 28,
       "magicAttack": 0,
@@ -3887,8 +3887,8 @@
       ]
     ],
     "status": {
-      "hp": 1300,
-      "maxHp": 1300,
+      "hp": 800,
+      "maxHp": 800,
       "attack": 51,
       "defense": 30,
       "magicAttack": 44,
@@ -3946,8 +3946,8 @@
       ]
     ],
     "status": {
-      "hp": 2000,
-      "maxHp": 2000,
+      "hp": 1600,
+      "maxHp": 1600,
       "attack": 60,
       "defense": 34,
       "magicAttack": 44,
@@ -4053,8 +4053,8 @@
       ]
     ],
     "status": {
-      "hp": 2100,
-      "maxHp": 2100,
+      "hp": 1700,
+      "maxHp": 1700,
       "attack": 52,
       "defense": 45,
       "magicAttack": 67,
@@ -4140,8 +4140,8 @@
       ]
     ],
     "status": {
-      "hp": 2100,
-      "maxHp": 2100,
+      "hp": 1700,
+      "maxHp": 1700,
       "attack": 65,
       "defense": 37,
       "magicAttack": 44,
@@ -4227,8 +4227,8 @@
       ]
     ],
     "status": {
-      "hp": 2500,
-      "maxHp": 2500,
+      "hp": 2000,
+      "maxHp": 2000,
       "attack": 72,
       "defense": 47,
       "magicAttack": 73,
@@ -4715,8 +4715,8 @@
       ]
     ],
     "status": {
-      "hp": 700,
-      "maxHp": 700,
+      "hp": 300,
+      "maxHp": 300,
       "attack": 47,
       "defense": 22,
       "magicAttack": 0,
@@ -4728,8 +4728,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-    ],
+    "dropItemList": [],
     "skillList": []
   },
   "kadilla_guard": {
@@ -4775,8 +4774,8 @@
       ]
     ],
     "status": {
-      "hp": 1000,
-      "maxHp": 1000,
+      "hp": 600,
+      "maxHp": 600,
       "attack": 52,
       "defense": 32,
       "magicAttack": 0,
@@ -4788,8 +4787,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-    ],
+    "dropItemList": [],
     "skillList": []
   }
 }

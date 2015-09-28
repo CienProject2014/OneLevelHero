@@ -95,8 +95,11 @@ public class GreetingStage extends BaseOneLevelStage {
 	private void makeChatTable(EventElement eventElement, SubNode subNodeInfo) {
 		String backgroundPath = subNodeInfo.getSubNodePath();
 		backgroundImage = new Image(textureManager.getBackgroundTexture(backgroundPath));
-		characterImage = new Image(textureManager.getBustTexture(eventElement.getFacePath(), "01"));
-
+		if (eventElement.getFacePath() != null) {
+			characterImage = new Image(textureManager.getBustTexture(eventElement.getFacePath(), "01"));
+		} else {
+			characterImage = new Image(textureManager.getBustTexture(eventElement.getElementPath(), "01"));
+		}
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();
 		chatLineImageTable.left().bottom();

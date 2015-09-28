@@ -22,7 +22,7 @@ public class ChoiceNpcEventListener extends ClickListener {
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		soundManager.playClickSound();
-		EventPacket eventPacket = new EventPacket(eventManager.getCurrentNpc().getFacePath(), index);
+		EventPacket eventPacket = new EventPacket(eventManager.getCurrentNpc().getElementPath(), index);
 		eventManager.triggerEvent(EventElementEnum.NPC, eventPacket);
 	}
 	public int getIndex() {
