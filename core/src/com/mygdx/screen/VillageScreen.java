@@ -3,6 +3,7 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.enums.MusicEnum;
 import com.mygdx.enums.StageEnum;
 
 /**
@@ -13,46 +14,25 @@ import com.mygdx.enums.StageEnum;
  * 
  */
 public class VillageScreen extends BaseScreen {
-	private String villageName;
 	private Stage villageStage;
 	private Stage gameUiStage;
 	private Stage characterUiStage;
-	private boolean state = true;
 
-	public String getVillageName() {
-		return villageName;
-	}
+	VillageScreen() {
 
-	public void setVillageName(String villageName) {
-		this.villageName = villageName;
-	}
-
-	public boolean isState() {
-		return state;
-	}
-
-	public void setState(boolean state) {
-		this.state = state;
-	}
-
-	public VillageScreen(String villagename) {
-		this.villageName = villagename;
-	}
-
-	public VillageScreen() {
 	}
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		setInputProcessor();
+
 		villageStage.act();
 		characterUiStage.act(delta);
-		gameUiStage.act();
-
+		gameUiStage.act(delta);
 		villageStage.draw();
-		gameUiStage.draw();
 		characterUiStage.draw();
+		gameUiStage.draw();
 		if (showLoadStage) {
 			loadPopupStage.draw();
 		}
@@ -63,13 +43,13 @@ public class VillageScreen extends BaseScreen {
 	@Override
 	public void show() {
 		villageStage = stageFactory.makeStage(StageEnum.VILLAGE);
-		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
+		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		// 여러 스테이지에 인풋 프로세서를 동시에 할 당한다
-		setInputProcessor();
-		musicManager.setWorldNodeMusicAndPlay();
 
+		musicManager.setMusicAndPlay(MusicEnum.WORLD_NODE_MUSIC);
+		setInputProcessor();
 	}
 
 	private void setInputProcessor() {
@@ -88,16 +68,4 @@ public class VillageScreen extends BaseScreen {
 		Gdx.input.setInputProcessor(multiplexer);
 	}
 
-	@Override
-	public void hide() {
-		dispose();
-	}
-
-	public Stage getVillageStage() {
-		return villageStage;
-	}
-
-	public void setVillageStage(Stage villageStage) {
-		this.villageStage = villageStage;
-	}
 }

@@ -235,6 +235,8 @@ public class EventManager {
 				return EventElementEnum.NPC;
 			case GAME_OBJECT :
 				return EventElementEnum.GAME_OBJECT;
+			case STORY :
+				return EventElementEnum.STORY;
 			default :
 				Gdx.app.log("EventManager", "CurrentEventPositionType정보 오류");
 				return null;

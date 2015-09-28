@@ -15,12 +15,11 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0,
-      "casting":0
+      "electricResistance": 0
     },
     "initialInventoryList": {
-      "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
+      "rightHandGrip": "broad_sword",
+      "leftHandGrip": "round_shield",
       "clothes": "iron_armor"
     },
     "skillList": [
@@ -66,13 +65,12 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0,
-      "casting":0
+      "electricResistance": 0
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+      "rightHandGrip": "great_sword",
+      "clothes": "iron_armor"
+    },
     "skillList": [
       "provoke",
       "powerblade",
@@ -97,15 +95,12 @@
       "maxExperience": 3600,
       "fireResistance": 10,
       "waterResistance": 20,
-      "electricResistance": 10,
-      "casting":0
+      "electricResistance": 10
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+        "rightHandGrip": "bible",
+      "clothes": "cope"},
     "skillList": [
-      "casting",
       "cross",
       "heal",
       "smile",
@@ -129,13 +124,9 @@
       "maxExperience": 3600,
       "fireResistance": 10,
       "waterResistance": 20,
-      "electricResistance": 10,
-      "casting":0
+      "electricResistance": 10
     },
-    "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+    "initialInventoryList": {},
     "skillList": [
       "surpise_attack",
       "flying",
@@ -164,13 +155,11 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0,
-      "casting":0
+      "electricResistance": 0
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+        "rightHandGrip": "paulownia_bow",
+      "clothes": "leather_armor"},
     "skillList": [
       "piercearrow",
       "snipe",
@@ -198,9 +187,9 @@
       "electricResistance": 10
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
+        "rightHandGrip": "broad_sword",
       "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+      "clothes": "leather_armor"},
     "skillList": [
       "gale",
       "breeze",
@@ -234,13 +223,11 @@
       "maxExperience": 3600,
       "fireResistance": 10,
       "waterResistance": 10,
-      "electricResistance": 10,
-      "casting":0
+      "electricResistance": 10
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+        "rightHandGrip": "gloomy_cane",
+      "clothes": "necromantic_dress"},
     "skillList": [
       "casting",
       "soul_cover",
@@ -268,13 +255,11 @@
       "maxExperience": 3600,
       "fireResistance": 30,
       "waterResistance": 30,
-      "electricResistance": 30,
-      "casting":0
+      "electricResistance": 30
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+        "rightHandGrip": "sagediary",
+      "clothes": "magic_lob"},
     "skillList": [
       "casting",
       "amplified_casting",
@@ -302,12 +287,11 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0,
-      "casting":0
+      "electricResistance": 0
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
+        "rightHandGrip": "broad_sword",
+      "leftHandGrip": "round_shield",
       "clothes": "iron_armor"},
     "skillList": [
       "breeze",

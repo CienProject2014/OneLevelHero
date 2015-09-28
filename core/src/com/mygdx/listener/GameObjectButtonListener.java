@@ -8,6 +8,7 @@ import com.mygdx.enums.GameObjectEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.model.event.GameObject;
 
 public class GameObjectButtonListener extends ClickListener {
@@ -15,10 +16,13 @@ public class GameObjectButtonListener extends ClickListener {
 	private EventManager eventManager;
 	@Autowired
 	private ScreenFactory screenFactory;
+	@Autowired
+	private SoundManager soundManager;
 	private GameObject pressedGameObject;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		soundManager.playClickSound();
 		if (pressedGameObject.getObjectType().equals(GameObjectEnum.NORMAL)) {
 			pressedGameObject.setObjectType(GameObjectEnum.PRESSED);
 		}

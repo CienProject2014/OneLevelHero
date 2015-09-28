@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TimeManager;
 
@@ -19,10 +20,13 @@ public class DungeonDoorButtonListener extends ClickListener {
 	private PositionManager positionManager;
 	@Autowired
 	private TimeManager timeManager;
+	@Autowired
+	private SoundManager soundManager;
 
 	private int index;
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		soundManager.playClickSound();
 		dungeonManager.moveRoom(index);
 		String subNodePath = positionManager.getCurrentSubNodePath();
 		String floorPath = dungeonManager.getDungeonInfo().getCurrentFloor().getFloorPath();

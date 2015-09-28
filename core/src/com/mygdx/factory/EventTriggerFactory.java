@@ -24,6 +24,7 @@ import com.mygdx.eventTrigger.OpenNpcEventTrigger;
 import com.mygdx.eventTrigger.PassTimeEventTrigger;
 import com.mygdx.eventTrigger.PlayMusicEventTrigger;
 import com.mygdx.eventTrigger.QuitPartyEventTrigger;
+import com.mygdx.eventTrigger.SetGameObjectTargetTimeEventTrigger;
 import com.mygdx.eventTrigger.SetNpcTargetTimeEventTrigger;
 import com.mygdx.eventTrigger.StartBattleEventTrigger;
 
@@ -71,6 +72,8 @@ public class EventTriggerFactory {
 				return context.getBean(PlayMusicEventTrigger.class);
 			case SET_NPC_TARGET_TIME :
 				return context.getBean(SetNpcTargetTimeEventTrigger.class);
+			case SET_GAME_OBJECT_TARGET_TIME :
+				return context.getBean(SetGameObjectTargetTimeEventTrigger.class);
 			case QUIT_PARTY :
 				return context.getBean(QuitPartyEventTrigger.class);
 			default :

@@ -213,6 +213,7 @@
 	<bean id="quitPartyEventTrigger" class="com.mygdx.eventTrigger.QuitPartyEventTrigger"/>
 	<bean id="setSubNodeTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetSubNodeTargetTimeEventTrigger"/>
 	<bean id="setNpcTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetNpcTargetTimeEventTrigger"/>
+	<bean id="setGameObjectTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetGameObjectTargetTimeEventTrigger"/>
 	<bean id="startBattleEventTrigger" class="com.mygdx.eventTrigger.StartBattleEventTrigger"/>
 	
 	<bean id="battleCommandChecker" class="com.mygdx.nextSectionChecker.BattleCommandChecker"/>

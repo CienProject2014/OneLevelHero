@@ -1,7 +1,7 @@
 package com.mygdx.manager;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,6 +29,8 @@ public class MonsterPickManager {
 	private FieldManager fieldManager;
 	@Autowired
 	private DungeonManager dungeonManager;
+	@Autowired
+	private TimeManager timeManager;
 
 	public Monster createMonsterByName(String Monstername) {
 		Monster selectedMonster = unitAssets.getMonster(Monstername);
@@ -37,7 +39,9 @@ public class MonsterPickManager {
 	}
 
 	public Monster createMonster(List<String> monsterList) {
-		String selectedMonsterName = monsterList.get(ThreadLocalRandom.current().nextInt(monsterList.size()));
+		Random random = new Random();
+		random.setSeed(timeManager.getSecondTime());
+		String selectedMonsterName = monsterList.get(random.nextInt(monsterList.size()));
 		return createMonsterByName(selectedMonsterName);
 	}
 }

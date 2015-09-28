@@ -19,6 +19,11 @@ public class SoundManager {
 		}
 	}
 
+	public void playClickSound() {
+		setSoundByPath("cursor");
+		playSound(getSoundVolume());
+	}
+
 	public void setSoundByPathAndPlay(String soundPath) {
 		setSoundByPath(soundPath);
 		playSound(getSoundVolume());

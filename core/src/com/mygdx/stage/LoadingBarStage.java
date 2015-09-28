@@ -3,6 +3,7 @@ package com.mygdx.stage;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -36,6 +37,7 @@ public class LoadingBarStage extends BaseOneLevelStage {
 	@Autowired
 	private SaveManager saveManager;
 
+	private Music bgm;
 	private Image logo;
 	private Image loadingFrame;
 	private Image screenBg;
@@ -46,21 +48,33 @@ public class LoadingBarStage extends BaseOneLevelStage {
 	private int loadingBarHeight;
 	private final int loadingBarFinishOffset = 10;
 
-	private final String LOADING_MESSAGE = "게임에 필요한 리소스를 로딩하는 중입니다... ";
+	private final String LOADING_MESSAGE = "환영합니다 용사님..! 카딜라 지방으로 이동하는 중입니다... ";
 
 	public Stage makeStage() {
 		super.makeStage();
-
+		assetsManager.load("music/bgm_mongsimji.mp3", Music.class);
 		assetsManager.load("texture/loading/loading.pack", TextureAtlas.class);
 		assetsManager.load("texture/loading/cien_logo2.png", Texture.class);
 		assetsManager.finishLoading();
 
+		bgm = assetsManager.get("music/bgm_mongsimji.mp3", Music.class);
 		TextureAtlas atlas = assetsManager.get("texture/loading/loading.pack", TextureAtlas.class);
 		logo = new Image(assetsManager.get("texture/loading/cien_logo2.png", Texture.class));
 		loadingFrame = new Image(atlas.findRegion("loading-frame"));
 		screenBg = new Image(atlas.findRegion("screen-bg"));
 		loadingBg = new Image(atlas.findRegion("loading-frame-bg"));
 		textButton = new TextButton(LOADING_MESSAGE, StaticAssets.skin);
+
+		if (Gdx.app.getPreferences("MusicVolume").getFloat("musicVolume") == 0.0) {
+			Gdx.app.log("첫 번째", "게임을 처음 깔았습니다");
+			musicManager.setMusicVolume(0.5f);
+			soundManager.setSoundVolume(0.5f);
+		} else {
+			Gdx.app.log("첫 번째", "이미 데이터가 있습니다");
+			musicManager.setMusicVolume(Gdx.app.getPreferences("MusicVolume").getFloat("musicVolume"));
+			soundManager.setSoundVolume(Gdx.app.getPreferences("SoundVolume").getFloat("soundVolume"));
+		}
+		musicManager.playMusic(bgm);
 		Animation anim = new Animation(0.05f, atlas.findRegions("loading-bar-anim"));
 		anim.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
 		Table logoTable = new Table();
@@ -94,15 +108,6 @@ public class LoadingBarStage extends BaseOneLevelStage {
 		StaticAssets.loadAll();
 		assets.initialize();
 
-		if (Gdx.app.getPreferences("MusicVolume").getFloat("musicVolume") == 0.0) {
-			Gdx.app.log("첫 번째", "게임을 처음 깔았습니다");
-			musicManager.setMusicVolume(0.5f);
-			soundManager.setSoundVolume(0.5f);
-		} else {
-			Gdx.app.log("첫 번째", "이미 데이터가 있습니다");
-			musicManager.setMusicVolume(Gdx.app.getPreferences("MusicVolume").getFloat("musicVolume"));
-			soundManager.setSoundVolume(Gdx.app.getPreferences("SoundVolume").getFloat("soundVolume"));
-		}
 		String musicVolume = String.valueOf(musicManager.getMusicVolume());
 		String soundVolume = String.valueOf(soundManager.getSoundVolume());
 		Gdx.app.log("musicVolume", musicVolume);

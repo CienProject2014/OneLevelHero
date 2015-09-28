@@ -13,6 +13,7 @@ import com.mygdx.factory.EventTriggerFactory;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.event.EventParameters;
@@ -35,6 +36,8 @@ public class BuildingButtonListener extends ClickListener {
 	@Autowired
 	private EventAssets eventAssets;
 	@Autowired
+	private SoundManager soundManager;
+	@Autowired
 	private EventTriggerFactory eventTriggerFactory;
 	private String nodePath;
 	private String buildingPath;
@@ -42,6 +45,7 @@ public class BuildingButtonListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		soundManager.playClickSound();
 		if (buildingInfo.getTargetTime() == null) {
 			buildingInfo.setTargetTime(new TargetTime(0, 24));
 		}
