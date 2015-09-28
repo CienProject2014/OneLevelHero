@@ -146,7 +146,7 @@
 	<bean id="gameClearStage" class="com.mygdx.stage.GameClearStage" scope="prototype"/>
 	<bean id="gameObjectStage" class="com.mygdx.stage.GameObjectStage" scope="prototype"/>
 	<bean id="gameOverStage" class="com.mygdx.stage.GameOverStage" />
-	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" />
+	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype" />
 	<bean id="greetingStage" class="com.mygdx.stage.GreetingStage" scope="prototype"/>
 	<bean id="inventoryStage" class="com.mygdx.stage.InventoryStage" scope="prototype"/>
 	<bean id="itemStage" class="com.mygdx.stage.ItemStage" scope="prototype"/>
@@ -203,6 +203,7 @@
 	<bean id="gameOverEventTrigger" class="com.mygdx.eventTrigger.GameOverEventTrigger"/>
 	<bean id="goSubNodeEventTrigger" class="com.mygdx.eventTrigger.GoSubNodeEventTrigger"/>
 	<bean id="joinPartyEventTrigger" class="com.mygdx.eventTrigger.JoinPartyEventTrigger"/>
+	<bean id="moveDungeonRoomEventTrigger" class="com.mygdx.eventTrigger.MoveDungeonRoomEventTrigger"/>
 	<bean id="moveNodeEventTrigger" class="com.mygdx.eventTrigger.MoveNodeEventTrigger"/>
 	<bean id="moveSubNodeEventTrigger" class="com.mygdx.eventTrigger.MoveSubNodeEventTrigger"/>
 	<bean id="nextSectionEventTrigger" class="com.mygdx.eventTrigger.NextSectionEventTrigger"/>

@@ -15,11 +15,13 @@ import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.enums.DungeonEnum;
 import com.mygdx.enums.DungeonEnum.Direction;
+import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.DungeonDoorButtonListener;
 import com.mygdx.listener.DungeonStairButtonListener;
 import com.mygdx.listener.LeaveDungeonButtonListener;
 import com.mygdx.manager.DungeonManager;
+import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.manager.TimeManager;
@@ -30,12 +32,11 @@ import com.mygdx.manager.TimeManager;
  */
 
 public class DungeonStage extends BaseOneLevelStage {
-	private static final String BG_DOOR[] = { "devil_castle_02", "devil_castle_03", "devil_castle_04",
-			"devil_castle_05" };
+	private static final String BG_DOOR[] = {"02", "03", "04", "05"};
 	private static final String BG_DOOR_GATE = "devil_castle_gate";
 	private static final String BG_DOOR_UP_STAIR = "devil_castle_up";
 	private static final String BG_DOOR_DOWN_STAIR = "devil_castle_down";
-	private static final int DOOR_POSITION[][] = { { 80, 440 }, { 898, 440 }, { 1688, 440 } };
+	private static final int DOOR_POSITION[][] = {{80, 440}, {898, 440}, {1688, 440}};
 	private static final int TOTAL_DOOR_SIZE = 3;
 	private static final int INDEX_OF_LEFT = 0;
 	private static final int INDEX_OF_MID = 1;
@@ -57,6 +58,8 @@ public class DungeonStage extends BaseOneLevelStage {
 	private transient TextureManager textureManager;
 	@Autowired
 	private ListenerFactory listenerFactory;
+	@Autowired
+	private EventManager eventManager;
 	private ImageButton[] goDoorButton = new ImageButton[3];
 	private Table doorTable[] = new Table[3];
 	private Table outerTable = new Table();
@@ -64,13 +67,23 @@ public class DungeonStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
-		setInitialDungeonInfo(dungeonManager);
+		setDungeonInfo(dungeonManager);
+
 		showBackground(dungeonManager);
 		setChangeDirectionButton(dungeonManager);
 		setDoorButton(dungeonManager);
 		showDoorButton(dungeonManager);
 		setOtherButtons(dungeonManager);
 		return this;
+	}
+
+	private void setDungeonInfo(DungeonManager dungeonManager) {
+		if (positionManager.getCurrentEventPositionType().equals(EventPosition.DUNGEON)) {
+			dungeonManager.setDungeonEventInfo();
+			positionManager.setCurrentEventPositionType(EventPosition.NONE);
+		} else {
+			setInitialDungeonInfo(dungeonManager);
+		}
 	}
 
 	@Override
@@ -83,52 +96,53 @@ public class DungeonStage extends BaseOneLevelStage {
 
 	private void setInitialDungeonInfo(DungeonManager dungeonManager) {
 		if (positionManager.getCurrentSubNodePath() != null) {
-			dungeonManager.setDungeonInfo(positionManager.getCurrentSubNodePath());
+			dungeonManager.setInitialDungeonInfo(positionManager.getCurrentSubNodePath());
 		} else {
-			dungeonManager.setDungeonInfo("devil_castle");
+			dungeonManager.setInitialDungeonInfo("devil_castle");
 		}
 	}
 
 	private void showBackground(DungeonManager dungeonManager) {
 		String backgroundPath;
+		String subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath();
 		switch (dungeonManager.getCurrentDoorSize()) {
-		case 0:
-			backgroundPath = getBackgroundPathByType(dungeonManager);
-			break;
-		case 1:
-			backgroundPath = BG_DOOR[1];
-			break;
-		case 2:
-			backgroundPath = BG_DOOR[2];
-			break;
-		case 3:
-			backgroundPath = BG_DOOR[3];
-			break;
-		default:
-			Gdx.app.log("DungeonStage", "DoorSize 정보 오류");
-			backgroundPath = null;
-			break;
+			case 0 :
+				backgroundPath = getBackgroundPathByType(dungeonManager);
+				break;
+			case 1 :
+				backgroundPath = subNodePath + "_" + BG_DOOR[1];
+				break;
+			case 2 :
+				backgroundPath = subNodePath + "_" + BG_DOOR[2];
+				break;
+			case 3 :
+				backgroundPath = subNodePath + "_" + BG_DOOR[3];
+				break;
+			default :
+				Gdx.app.log("DungeonStage", "DoorSize 정보 오류");
+				backgroundPath = null;
+				break;
 		}
 		outerTable.remove();
-		outerTable.setBackground(
-				new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath))));
+		outerTable.setBackground(new TextureRegionDrawable(new TextureRegion(textureManager
+				.getBackgroundTexture(backgroundPath))));
 		tableStack.add(outerTable);
 	}
 
 	private String getBackgroundPathByType(DungeonManager dungeonManager) {
 		if (dungeonManager.getDungeonInfo().getCurrentDirection().equals(Direction.BACKWARD)) {
 			switch (dungeonManager.getDungeonInfo().getCurrentRoom().getRoomType()) {
-			case GATE:
-				return BG_DOOR_GATE;
-			case DOWN_STAIR:
-				return BG_DOOR_DOWN_STAIR;
-			case UP_STAIR:
-				return BG_DOOR_UP_STAIR;
-			default:
-				return BG_DOOR[0];
+				case GATE :
+					return BG_DOOR_GATE;
+				case DOWN_STAIR :
+					return BG_DOOR_DOWN_STAIR;
+				case UP_STAIR :
+					return BG_DOOR_UP_STAIR;
+				default :
+					return BG_DOOR[0];
 			}
 		} else {
-			return BG_DOOR[0];
+			return dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath() + "_" + BG_DOOR[0];
 		}
 	}
 
@@ -137,28 +151,28 @@ public class DungeonStage extends BaseOneLevelStage {
 				|| !currentDirection.equals(dungeonManager.getDungeonInfo().getCurrentDirection())) {
 			int currentDoorSize = dungeonManager.getCurrentDoorSize();
 			switch (currentDoorSize) {
-			case 0:
-				removeDoorListener(INDEX_OF_LEFT);
-				removeDoorListener(INDEX_OF_MID);
-				removeDoorListener(INDEX_OF_RIGHT);
-				break;
-			case 1:
-				addDoorListener(INDEX_OF_MID, 0);
-				removeDoorListener(INDEX_OF_LEFT);
-				removeDoorListener(INDEX_OF_RIGHT);
-				break;
-			case 2:
-				addDoorListener(INDEX_OF_LEFT, 0);
-				removeDoorListener(INDEX_OF_MID);
-				addDoorListener(INDEX_OF_RIGHT, 1);
-				break;
-			case 3:
-				addDoorListener(INDEX_OF_LEFT, 0);
-				addDoorListener(INDEX_OF_MID, 1);
-				addDoorListener(INDEX_OF_RIGHT, 2);
-				break;
-			default:
-				break;
+				case 0 :
+					removeDoorListener(INDEX_OF_LEFT);
+					removeDoorListener(INDEX_OF_MID);
+					removeDoorListener(INDEX_OF_RIGHT);
+					break;
+				case 1 :
+					addDoorListener(INDEX_OF_MID, 0);
+					removeDoorListener(INDEX_OF_LEFT);
+					removeDoorListener(INDEX_OF_RIGHT);
+					break;
+				case 2 :
+					addDoorListener(INDEX_OF_LEFT, 0);
+					removeDoorListener(INDEX_OF_MID);
+					addDoorListener(INDEX_OF_RIGHT, 1);
+					break;
+				case 3 :
+					addDoorListener(INDEX_OF_LEFT, 0);
+					addDoorListener(INDEX_OF_MID, 1);
+					addDoorListener(INDEX_OF_RIGHT, 2);
+					break;
+				default :
+					break;
 			}
 		}
 	}
@@ -214,27 +228,27 @@ public class DungeonStage extends BaseOneLevelStage {
 			setCurrentDirection(dungeonManager.getDungeonInfo().getCurrentDirection());
 			otherButtonTable.clear();
 			switch (dungeonManager.getDungeonInfo().getCurrentRoom().getRoomType()) {
-			case BOSS:
-				break;
-			case DOWN_STAIR:
-				makeDownStairRoomButton();
-				break;
-			case ELITE:
-				break;
-			case GATE:
-				makeGateRoomButton();
-				break;
-			case NORMAL:
-				break;
-			case OBJECT:
-				// makeObjectRoomButton();
-				break;
-			case UP_STAIR:
-				makeUpStairRoomButton();
-				break;
-			default:
-				Gdx.app.log("DungeonStage", "RoomType정보 오류");
-				break;
+				case BOSS :
+					break;
+				case DOWN_STAIR :
+					makeDownStairRoomButton();
+					break;
+				case ELITE :
+					break;
+				case GATE :
+					makeGateRoomButton();
+					break;
+				case NORMAL :
+					break;
+				case OBJECT :
+					// makeObjectRoomButton();
+					break;
+				case UP_STAIR :
+					makeUpStairRoomButton();
+					break;
+				default :
+					Gdx.app.log("DungeonStage", "RoomType정보 오류");
+					break;
 			}
 		}
 	}

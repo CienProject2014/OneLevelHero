@@ -25,6 +25,7 @@ public class BuildingScreen extends BaseScreen {
 		if (showLoadStage) {
 			loadStage.draw();
 		}
+		gameUiStage.act(delta);
 	}
 
 	@Override

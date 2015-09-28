@@ -27,8 +27,8 @@ public class DungeonScreen extends BaseScreen {
 		dungeonStage.act(delta);
 		minimapStage.act(delta);
 
-		gameUiStage.act(delta);
 		gameUiStage.draw();
+		gameUiStage.act(delta);
 	}
 
 	@Override

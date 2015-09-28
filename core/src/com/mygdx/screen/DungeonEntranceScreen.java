@@ -29,7 +29,7 @@ public class DungeonEntranceScreen extends BaseScreen {
 		dungeonEntranceStage.getCamera().update();
 		gameUiStage.draw();
 		characterUiStage.act();
-		gameUiStage.act();
+		gameUiStage.act(delta);
 		if (isInSave) {
 			saveStage.draw();
 		}

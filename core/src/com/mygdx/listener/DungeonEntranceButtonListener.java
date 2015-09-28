@@ -35,10 +35,10 @@ public class DungeonEntranceButtonListener extends ClickListener {
 		timeManager.plusMinute(15);
 		soundManager.setSoundByUseAndPlay("move_arrow");
 		positionManager.setCurrentSubNodePath(dungeonPath);
-		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.DUNGEON);
-		screenFactory.show(ScreenEnum.DUNGEON);
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE, dungeonPath);
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BY_TIME, dungeonPath);
+		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.DUNGEON);
+		screenFactory.show(ScreenEnum.DUNGEON);
 	}
 	public String getDungeonPath() {
 		return dungeonPath;

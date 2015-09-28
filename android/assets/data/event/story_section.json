@@ -1983,6 +1983,21 @@
       }
     ],
     "nextSections": [
+    {
+        "nextSectionNumber": "309",
+        "eventType": "move_dungeon_room_in_target_time",
+        "eventParameter": {
+          "location": {
+            "subNodePath": "crystallized_valley",
+            "floorPath": "crystallized_valley",
+            "roomLabel": "room_5_5"
+          },
+          "time": {
+            "startHour": 18,
+            "endHour": 6
+          }
+        }
+      },
       {
         "nextSectionNumber": "310",
         "eventType": "move_dungeon_room_in_target_time",
@@ -1997,21 +2012,7 @@
             "endHour": 18
           }
         }
-      },
-      {
-        "nextSectionNumber": "309",
-        "eventType": "move_dungeon_room_in_target_time",
-        "eventParameter": {
-          "location": {
-            "subNodePath": "crystallized_valley",
-            "roomLabel": "room_5_5"
-          },
-          "time": {
-            "startHour": 18,
-            "endHour": 6
-          }
-        }
-      }
+      }      
     ]
   },
   "309": {

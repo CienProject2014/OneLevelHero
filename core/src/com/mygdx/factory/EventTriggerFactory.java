@@ -17,6 +17,7 @@ import com.mygdx.eventTrigger.GameOverEventTrigger;
 import com.mygdx.eventTrigger.GetBuffEventTrigger;
 import com.mygdx.eventTrigger.GoSubNodeEventTrigger;
 import com.mygdx.eventTrigger.JoinPartyEventTrigger;
+import com.mygdx.eventTrigger.MoveDungeonRoomEventTrigger;
 import com.mygdx.eventTrigger.MoveNodeEventTrigger;
 import com.mygdx.eventTrigger.MoveSubNodeEventTrigger;
 import com.mygdx.eventTrigger.NextSectionEventTrigger;
@@ -58,6 +59,8 @@ public class EventTriggerFactory {
 				return context.getBean(GoSubNodeEventTrigger.class);
 			case JOIN_PARTY :
 				return context.getBean(JoinPartyEventTrigger.class);
+			case MOVE_DUNGEON_ROOM :
+				return context.getBean(MoveDungeonRoomEventTrigger.class);
 			case MOVE_NODE :
 				return context.getBean(MoveNodeEventTrigger.class);
 			case MOVE_SUB_NODE :

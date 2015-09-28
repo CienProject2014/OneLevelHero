@@ -10,7 +10,9 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.SkillAssets;
 import com.mygdx.assets.StaticAssets;
@@ -266,7 +268,7 @@ public class BattleManager {
 		}
 	}
 
-	public void FuckingCostGague(Unit unit, int typeOfAction) {
+	public void fuckingCostGague(Unit unit, int typeOfAction) {
 		unit.setPreGague(unit.getGauge());
 		unit.setGauge(unit.getGauge() - typeOfAction);
 		timeManager.setPreTime(typeOfAction * TIME_FLOW_RATE);
@@ -304,7 +306,7 @@ public class BattleManager {
 			battleInfo.getCurrentAttackUnit().setSubvalue(1);
 		}
 
-		FuckingCostGague(battleInfo.getCurrentAttackUnit(), 100 - maxGague);
+		fuckingCostGague(battleInfo.getCurrentAttackUnit(), 100 - maxGague);
 
 		for (Unit unit : partyManager.getBattleMemberList()) {
 			if (battleInfo.getCurrentAttackUnit() == unit) {
@@ -316,7 +318,7 @@ public class BattleManager {
 		}
 		battleInfo.getCurrentAttackUnit().setSubvalue(maxSubValue + 1);
 		if (battleInfo.getCurrentAttackUnit().getSubvalue() == 3) {
-			FuckingCostGague(battleInfo.getCurrentAttackUnit(), 1);
+			fuckingCostGague(battleInfo.getCurrentAttackUnit(), 1);
 			battleInfo.getCurrentAttackUnit().setSubvalue(0);
 		}
 	}
@@ -335,12 +337,20 @@ public class BattleManager {
 	}
 
 	public void hideRMenuButtons() {
+		for (ImageButton rMenuButton : battleInfo.getrMenuButtonList()) {
+			rMenuButton.setVisible(false);
+			rMenuButton.setTouchable(Touchable.disabled);
+		}
 		battleInfo.getRMenuTable().setVisible(false);
 	}
 
 	public void showRMenuButtons() {
+		for (ImageButton rMenuButton : battleInfo.getrMenuButtonList()) {
+			rMenuButton.setVisible(true);
+			rMenuButton.setTouchable(Touchable.enabled);
+		}
 		battleInfo.getRMenuTable().setVisible(true);
-		battleInfo.getRMenuTable().addAction(Actions.moveTo(1820, 15));
+		battleInfo.getRMenuTable().addAction(Actions.moveTo(1720, 15));
 		battleInfo.getRMenuTable().addAction(Actions.moveTo(1720, 15, 1));
 		gameObjectPopup.setVisible(false);
 	}
@@ -803,5 +813,10 @@ public class BattleManager {
 
 	public String getBackgroundPath() {
 		return battleInfo.getBackgroundPath();
+	}
+
+	public void setrMenuButtonList(ArrayList<ImageButton> rMenuButtonList) {
+		battleInfo.setrMenuButtonList(rMenuButtonList);
+
 	}
 }
