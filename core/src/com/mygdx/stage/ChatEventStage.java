@@ -33,7 +33,7 @@ import com.mygdx.model.unit.Hero;
  */
 public class ChatEventStage extends BaseOneLevelStage {
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
+	private transient UiComponentAssets uiComponentAssets;
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -41,11 +41,11 @@ public class ChatEventStage extends BaseOneLevelStage {
 	@Autowired
 	private RewardManager rewardManager;
 	@Autowired
-	private UnitAssets unitAssets;
+	private transient UnitAssets unitAssets;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
-	private ConstantsAssets constantsAssets;
+	private transient ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
 	private Label scriptTitle = new Label("", StaticAssets.skin);
 	private Label scriptContent = new Label("", StaticAssets.skin);
@@ -118,8 +118,8 @@ public class ChatEventStage extends BaseOneLevelStage {
 
 	private void makeChatTable(EventScene eventScene) {
 		backgroundImage = new Image(textureManager.getBackgroundTexture(eventScene.getBackgroundPath()));
-		characterImage = new Image(textureManager.getBustTexture(eventScene.getCharacterPath(),
-				eventScene.getFaceNumber()));
+		characterImage = new Image(
+				textureManager.getBustTexture(eventScene.getCharacterPath(), eventScene.getFaceNumber()));
 
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();

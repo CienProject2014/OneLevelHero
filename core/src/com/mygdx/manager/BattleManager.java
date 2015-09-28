@@ -52,13 +52,9 @@ public class BattleManager {
 	@Autowired
 	private BattleInfo battleInfo;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private ConstantsAssets constantsAssets;
-	@Autowired
-	private FieldManager fieldManager;
-	@Autowired
-	private DungeonManager dungeonManager;
 	@Autowired
 	private TimeManager timeManager;
 	@Autowired

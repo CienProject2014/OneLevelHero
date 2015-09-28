@@ -52,12 +52,12 @@
     "buffTableHeight": 30
   },
   "MonsterStage": {
-    "monsterPadTop": 212,
+    "monsterPadTop": 150,
     "monsterTableWidth": 640,
     "monsterTableHeight": 640,
     "MonsterBarSpace": 20,
     "hpTableWidth": 666,
-    "hpTablePadBottom": 128
+    "hpTablePadBottom": 170
   },
   "GameUiStage": {
     "padLeft": 15,

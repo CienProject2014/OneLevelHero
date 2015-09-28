@@ -21,13 +21,13 @@ public class HeroBattleStrategy implements BattleStrategy {
 	private final String TAG = "HeroBattleStrategy";
 
 	@Autowired
-	SkillAssets skillAssets;
+	private transient SkillAssets skillAssets;
 	@Autowired
-	TimeManager timeManager;
+	private transient TimeManager timeManager;
 	@Autowired
-	PartyManager partyManager;
+	private transient PartyManager partyManager;
 	@Autowired
-	BattleManager battleManager;
+	private transient BattleManager battleManager;
 
 	@Override
 	public void attack(Unit attacker, Unit defender, int[][] hitArea) {

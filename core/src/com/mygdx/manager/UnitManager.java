@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mygdx.assets.ItemAssets;
 import com.mygdx.assets.SkillAssets;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Hero;
@@ -20,8 +19,6 @@ import com.mygdx.unitStrategy.MonsterBattleStrategy;
 
 public class UnitManager {
 	private static final String EMPTY_ITEM = "empty_item";
-	@Autowired
-	private ItemAssets itemAssets;
 	@Autowired
 	private SkillAssets skillAssets;
 	@Autowired

@@ -37,7 +37,7 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 	@Autowired
 	private PartyManager partymanager;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private NodeAssets nodeAssets;
 	@Autowired

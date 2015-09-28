@@ -27,7 +27,7 @@ public class MenuStage extends BaseOneLevelStage {
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private ListenerFactory listenerFactory;
 	@Autowired

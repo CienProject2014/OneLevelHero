@@ -25,15 +25,15 @@ import com.mygdx.model.unit.Unit;
 
 public class CharacterUiStage extends BaseOneLevelStage {
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
+	private transient UiComponentAssets uiComponentAssets;
 	@Autowired
-	private ScreenFactory screenFactory;
+	private transient ScreenFactory screenFactory;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private BattleManager battleManager;
 	@Autowired
-	private ConstantsAssets constantsAssets;
+	private transient ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
 	private Table statusTable;
 	private Table barTable;

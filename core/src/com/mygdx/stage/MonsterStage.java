@@ -32,13 +32,13 @@ public class MonsterStage extends BaseOneLevelStage {
 	@Autowired
 	private BattleManager battleManager;
 	@Autowired
-	private ConstantsAssets constantsAssets;
+	private transient ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
 	private Monster monster;
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
+	private transient UiComponentAssets uiComponentAssets;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -84,10 +84,11 @@ public class MonsterStage extends BaseOneLevelStage {
 		uiTable.add(hpTable).padBottom(uiConstantsMap.get("hpTablePadBottom"));
 		uiTable.row();
 		buffTable = new Table();
-		uiTable.add(buffTable);
+		buffTable.bottom().padBottom(120f);
 
 		tableStack.add(outerTable);
 		tableStack.add(uiTable);
+		tableStack.add(buffTable);
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 			showBattleAnimation();
 		}
@@ -144,8 +145,8 @@ public class MonsterStage extends BaseOneLevelStage {
 			String backgroundPath = battleManager.getBackgroundPath();
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
 		} else {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
-					.getFieldType().toString())));
+			return new TextureRegionDrawable(
+					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
 		}
 	}
 

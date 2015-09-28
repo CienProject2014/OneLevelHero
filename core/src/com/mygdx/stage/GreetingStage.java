@@ -38,7 +38,7 @@ public class GreetingStage extends BaseOneLevelStage {
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
 	@Autowired

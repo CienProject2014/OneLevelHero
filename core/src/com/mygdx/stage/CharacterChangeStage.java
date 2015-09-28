@@ -20,14 +20,9 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.currentState.PartyInfo;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.AssetsManager;
-import com.mygdx.manager.BattleManager;
-import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TextureManager;
-import com.mygdx.model.unit.Hero;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
@@ -38,27 +33,18 @@ public class CharacterChangeStage extends BaseOverlapStage {
 	private final String PRESSED_VISIBILTY = "pressed";
 	private final int CHARACTER_TAB_SIZE = 3;
 	@Autowired
-	private BattleManager battleManager;
+	private transient UiComponentAssets uiComponentAssets;
 	@Autowired
-	private StorySectionManager storySectionManager;
+	private transient AssetsManager assetsManager;
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
+	private transient TextureManager textureManager;
 	@Autowired
-	private AssetsManager assetsManager;
-	@Autowired
-	private TextureManager textureManager;
-	@Autowired
-	private ConstantsAssets constantsAssets;
-	@Autowired
-	private ListenerFactory listenerFactory;
-	@Autowired
-	private PartyInfo partyInfo;
+	private transient ConstantsAssets constantsAssets;
 	// @Autowired
 	// private GridHitbox gridHitbox;
 	private Map<String, Array<String>> sceneConstants;
 	public final String SCENE_NAME = "character_change_scene";
 	private Camera cam;
-	private Map<Integer, Hero> heroInfo;
 	private List<CompositeItem> characterButtonList;
 
 	@Override
@@ -103,7 +89,6 @@ public class CharacterChangeStage extends BaseOverlapStage {
 				setCompositeItemVisibilty(apply, PRESSED_VISIBILTY);
 				// 이걸 실행하고 넘어가야 되는데 바로 show 로 넘어간는 것처럼 보임.
 
-				
 				return true;
 			}
 

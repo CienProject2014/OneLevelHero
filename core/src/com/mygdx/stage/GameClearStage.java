@@ -14,7 +14,7 @@ import com.mygdx.manager.TextureManager;
 
 public class GameClearStage extends BaseOneLevelStage {
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private SaveManager saveManager;
 	@Autowired
@@ -24,8 +24,8 @@ public class GameClearStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		table = new Table();
-		table.setBackground(new TextureRegionDrawable(new TextureRegion(textureManager
-				.getBackgroundTexture("gameclear"))));
+		table.setBackground(
+				new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture("gameclear"))));
 		this.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {

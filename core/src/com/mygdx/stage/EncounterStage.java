@@ -34,7 +34,7 @@ public class EncounterStage extends BaseOneLevelStage {
 	@Autowired
 	private MovingManager movingManager;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private ConstantsAssets constantsAssets;
 	@Autowired
@@ -95,10 +95,11 @@ public class EncounterStage extends BaseOneLevelStage {
 		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getTexture("bg_devil_castle_06")));
 		} else {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
-					.getFieldType().toString())));
+			return new TextureRegionDrawable(
+					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
 		}
 	}
+
 	private void addListener() {
 		fightButton.addListener(new SimpleTouchListener() {
 			@Override

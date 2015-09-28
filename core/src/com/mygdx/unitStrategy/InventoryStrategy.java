@@ -14,30 +14,30 @@ import com.mygdx.model.unit.Hero;
 
 public class InventoryStrategy {
 	@Autowired
-	private ItemAssets itemAssets;
+	private transient ItemAssets itemAssets;
 	@Autowired
-	private UnitManager unitManager;
+	private transient UnitManager unitManager;
 	@Autowired
-	private BagManager bagManager;
+	private transient BagManager bagManager;
 	public final String EMPTY_ITEM = "empty_item";
 
 	public void equip(Hero hero, ItemEnum equipmentType, String equipmentName) {
 		switch (equipmentType) {
-			case RIGHT_HANDGRIP :
-				equipRightHandGrip(hero, equipmentName);
-				break;
-			case LEFT_HANDGRIP :
-				equipLeftHandGrip(hero, equipmentName);
-				break;
-			case CLOTHES :
-				equipClothes(hero, equipmentName);
-				break;
-			case ACCESSORY :
-				equipAccessory(hero, equipmentName);
-				break;
-			default :
-				Gdx.app.log("InventoryStage", "EquipmentType 정보 오류");
-				break;
+		case RIGHT_HANDGRIP:
+			equipRightHandGrip(hero, equipmentName);
+			break;
+		case LEFT_HANDGRIP:
+			equipLeftHandGrip(hero, equipmentName);
+			break;
+		case CLOTHES:
+			equipClothes(hero, equipmentName);
+			break;
+		case ACCESSORY:
+			equipAccessory(hero, equipmentName);
+			break;
+		default:
+			Gdx.app.log("InventoryStage", "EquipmentType 정보 오류");
+			break;
 		}
 	}
 
@@ -54,8 +54,8 @@ public class InventoryStrategy {
 	public void unEquipRightHandGrip(Hero hero) {
 		unitManager.removeStatus(hero, hero.getInventory().getRightHandGrip().getEffectStatus());
 		bagManager.addEquipment(hero.getInventory().getRightHandGrip());
-		Gdx.app.log("UnitManager", hero.getName() + "은(는)" + hero.getInventory().getRightHandGrip().getName()
-				+ "을(를) 장착해제 하였다.");
+		Gdx.app.log("UnitManager",
+				hero.getName() + "은(는)" + hero.getInventory().getRightHandGrip().getName() + "을(를) 장착해제 하였다.");
 		Equipment emptyRightHandGrip = itemAssets.getHandGrip(EMPTY_ITEM);
 		hero.getInventory().setRightHandGrip(emptyRightHandGrip);
 	}
@@ -73,8 +73,8 @@ public class InventoryStrategy {
 	public void unEquipLeftHandGrip(Hero hero) {
 		unitManager.removeStatus(hero, hero.getInventory().getLeftHandGrip().getEffectStatus());
 		bagManager.addEquipment(hero.getInventory().getLeftHandGrip());
-		Gdx.app.log("UnitManager", hero.getName() + "은(는)" + hero.getInventory().getLeftHandGrip().getName()
-				+ "을(를) 장착해제 하였다.");
+		Gdx.app.log("UnitManager",
+				hero.getName() + "은(는)" + hero.getInventory().getLeftHandGrip().getName() + "을(를) 장착해제 하였다.");
 		Equipment emptyLeftHandGrip = itemAssets.getHandGrip(EMPTY_ITEM);
 		hero.getInventory().setLeftHandGrip(emptyLeftHandGrip);
 	}
@@ -110,8 +110,8 @@ public class InventoryStrategy {
 	public void unEquipAccessory(Hero hero) {
 		unitManager.removeStatus(hero, hero.getInventory().getAccessory().getEffectStatus());
 		bagManager.addEquipment(hero.getInventory().getAccessory());
-		Gdx.app.log("UnitManager", hero.getName() + "은(는)" + hero.getInventory().getAccessory().getName()
-				+ "을(를) 장착해제 하였다.");
+		Gdx.app.log("UnitManager",
+				hero.getName() + "은(는)" + hero.getInventory().getAccessory().getName() + "을(를) 장착해제 하였다.");
 		Accessory emptyAccessory = itemAssets.getAccessory(EMPTY_ITEM);
 		hero.getInventory().setAccessory(emptyAccessory);
 	}
