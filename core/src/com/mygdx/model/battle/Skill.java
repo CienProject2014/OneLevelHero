@@ -20,6 +20,7 @@ public class Skill {
 	private int[] hitboxCenter;
 	private int[][] hitboxShape;
 	private String description;
+	private String skillCheckType;
 
 	public String getName() {
 		return name;
@@ -43,6 +44,14 @@ public class Skill {
 
 	public void setSkillEffectType(String skillEffectType) {
 		this.skillEffectType = skillEffectType;
+	}
+
+	public void setSkillCheckType(String skillEffectType) {
+		this.skillCheckType = skillEffectType;
+	}
+
+	public String getSkillCheckType() {
+		return skillCheckType;
 	}
 
 	public String getSkillTargetType() {

@@ -19,6 +19,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.TextureManager;
+import com.mygdx.model.battle.Buff;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.StatusBar;
 import com.mygdx.model.unit.Unit;
@@ -37,10 +38,12 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private HashMap<String, Float> uiConstantsMap;
 	private Table statusTable;
 	private Table barTable;
+	private Table buffTable;
 	private List<Hero> battleMemberList;
 	private List<StatusBar> heroStatusBarList;
 	private List<Label> hpLabelList;
 	private Image heroImage;
+	private List<Table> buffTableList;
 
 	public Stage makeStage() {
 		super.makeStage();
@@ -57,8 +60,29 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	public void act(float delta) {
 		super.act(delta);
 		for (int i = 0; i < heroStatusBarList.size(); i++) {
+			buffTableList.get(i).clear();
 			heroStatusBarList.get(i).update();
 			hpLabelList.get(i).setText(heroStatusBarList.get(i).getHp() + "/" + heroStatusBarList.get(i).getMaxHp());
+		}
+		if (battleManager.getBattleState().equals(BattleStateEnum.IN_GAME)) {
+			int i = 0;
+			for (Unit hero : partyManager.getBattleMemberList()) {
+				for (Buff buff : hero.getBuffList()) {
+					if (buff.getBuffPath().equals("buff_en_casting_")) {
+						if (hero.getStatus().getCasting() == 0) {
+
+						} else {
+							Image buffIcon = new Image(textureManager
+									.getTexture(buff.getBuffPath() + String.valueOf(hero.getStatus().getCasting())));
+							buffTableList.get(i).add(buffIcon).width(35).height(35);
+						}
+					} else {
+						Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath()));
+						buffTableList.get(i).add(buffIcon).width(35).height(35);
+					}
+				}
+				i++;
+			}
 		}
 	}
 
@@ -66,6 +90,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		battleMemberList = partyManager.getBattleMemberList();
 		hpLabelList = new ArrayList<Label>(battleMemberList.size());
 		heroStatusBarList = new ArrayList<StatusBar>(battleMemberList.size());
+		buffTableList = new ArrayList<Table>(battleMemberList.size());
 		for (int i = 0; i < battleMemberList.size(); i++) {
 			if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 				partyManager.setCurrentSelectedHero(null);
@@ -103,9 +128,19 @@ public class CharacterUiStage extends BaseOneLevelStage {
 				.width(uiConstantsMap.get("heroImageWidth")).height(uiConstantsMap.get("heroImageHeight"));
 
 		barTable = new Table();
+
+		buffTable = new Table();
+
+		buffTableList.add(buffTable);
+		for (Buff buff : unit.getBuffList()) {
+			Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath()));
+			buffTableList.get(index).add(buffIcon).width(10).height(10);
+		}
+
 		Label hpLabel = new Label(unit.getStatus().getHp() + "/" + unit.getStatus().getMaxHp(),
 				uiComponentAssets.getSkin());
 		hpLabelList.add(hpLabel);
+		barTable.add(buffTableList.get(index)).row();
 		barTable.add(hpLabel).padBottom(uiConstantsMap.get("heroBarSpace")).row();
 		barTable.add(heroStatusBarList.get(index).getHpBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
 				.width(uiConstantsMap.get("barTableWidth")).row();
@@ -129,8 +164,9 @@ public class CharacterUiStage extends BaseOneLevelStage {
 							partyManager.setCurrentSelectedHero(null);
 						} else {
 							partyManager.setCurrentSelectedHero(battleMemberList.get(index));
-							battleManager.useSkill(battleManager.getCurrentAttackUnit(), partyManager
-									.getCurrentSelectedHero(), battleManager.getCurrentSelectedSkill().getSkillPath());
+							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
+									partyManager.getCurrentSelectedHero(),
+									battleManager.getCurrentSelectedSkill().getSkillPath());
 							battleManager.setSkill(false);
 						}
 					}

@@ -351,8 +351,13 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private int getWeaponHitboxSize() {
 		Hero forInv = (Hero) battleManager.getCurrentAttackUnit();
-		Weapon weapon = (Weapon) forInv.getInventory().getEquipment(ItemEnum.RIGHT_HANDGRIP);
-		return weapon.getHitboxSize();
+		Weapon rightWeapon = (Weapon) forInv.getInventory().getEquipment(ItemEnum.RIGHT_HANDGRIP);
+		Weapon leftWeapon = (Weapon) forInv.getInventory().getEquipment(ItemEnum.LEFT_HANDGRIP);
+		if (rightWeapon.getHitboxSize() >= leftWeapon.getHitboxSize()) {
+			return rightWeapon.getHitboxSize();
+		} else {
+			return leftWeapon.getHitboxSize();
+		}
 	}
 
 	private void addListener() {
