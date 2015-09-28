@@ -169,7 +169,9 @@ public class GameUiStage extends BaseOneLevelStage {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				soundManager.playClickSound();
-				partyManager.healAllHero();
+				if (CurrentInfo.isAdminMode) {
+					partyManager.healAllHero();
+				}
 				return true;
 			}
 		});

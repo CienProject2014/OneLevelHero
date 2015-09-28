@@ -17,6 +17,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.mygdx.assets.Assets;
+import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.currentState.EventInfo;
 import com.mygdx.currentState.PartyInfo;
 import com.mygdx.currentState.PositionInfo;
@@ -104,7 +105,7 @@ public class SaveManager {
 
 	public void saveNewGameInfo() {
 		FileHandle handle;
-		handle = Gdx.files.local(SAVEPATH + SaveVersion.NEW_GAME.toString());
+		handle = Gdx.files.local(SAVEPATH + SaveVersion.NEW_GAME.toString() + "_" + CurrentInfo.CURRENT_APP_VERSION);
 		Output output;
 		try {
 			Gdx.app.log("SaveManager", "save - " + handle.file().getParentFile().getAbsolutePath());
@@ -130,7 +131,8 @@ public class SaveManager {
 	}
 
 	public void loadNewGameInfo() {
-		FileHandle handle = Gdx.files.local(SAVEPATH + SaveVersion.NEW_GAME.toString());
+		FileHandle handle = Gdx.files.local(SAVEPATH + SaveVersion.NEW_GAME.toString() + "_"
+				+ CurrentInfo.CURRENT_APP_VERSION);
 		Input input;
 		try {
 			input = new Input(new FileInputStream(handle.file()));
@@ -147,7 +149,8 @@ public class SaveManager {
 
 	public void save() {
 		setSaveInfo();
-		FileHandle handle = Gdx.files.local(SAVEPATH + saveInfo.getSaveVersion().toString());
+		FileHandle handle = Gdx.files.local(SAVEPATH + saveInfo.getSaveVersion().toString() + "_"
+				+ CurrentInfo.CURRENT_APP_VERSION);
 		Preferences timePrefs = Gdx.app.getPreferences("Time");
 		timePrefs.putInteger("Time", timeInfo.getSecondTime());
 		timePrefs.flush();
@@ -176,12 +179,12 @@ public class SaveManager {
 	}
 
 	public boolean isLoadable(SaveVersion saveVersion) {
-		return Gdx.files.local("save/" + saveVersion.toString()).exists();
+		return Gdx.files.local("SAVEPATH" + saveVersion.toString() + "_" + CurrentInfo.CURRENT_APP_VERSION).exists();
 	}
 
 	public void load(SaveVersion saveVersion) {
 		assets.initializeUnitInfo();
-		FileHandle handle = Gdx.files.local(SAVEPATH + saveVersion.toString());
+		FileHandle handle = Gdx.files.local(SAVEPATH + saveVersion.toString() + "_" + CurrentInfo.CURRENT_APP_VERSION);
 		Input input;
 		try {
 			input = new Input(new FileInputStream(handle.file()));
@@ -206,8 +209,10 @@ public class SaveManager {
 		SaveInfo svInfo = null;
 
 		try {
-			svInfo = kryo.readObject(new Input(new FileInputStream(Gdx.files.local(SAVEPATH + saveVersion.toString())
-					.file())), SaveInfo.class);
+			svInfo = kryo.readObject(
+					new Input(new FileInputStream(Gdx.files.local(
+							SAVEPATH + saveVersion.toString() + "_" + CurrentInfo.CURRENT_APP_VERSION).file())),
+					SaveInfo.class);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

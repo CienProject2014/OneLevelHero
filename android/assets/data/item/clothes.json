@@ -2,7 +2,9 @@
   "empty_item" : {
   	"itemType" : "clothes",
   	"name" : "미 장착",
-  	"itemPath" : "empty_item"
+  	"itemPath" : "empty_item",
+  	 "effectStatus":{
+    }
   },
   "cope": {
     "itemType" : "clothes",
