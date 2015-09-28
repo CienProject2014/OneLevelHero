@@ -18,6 +18,7 @@ import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.PositionManager;
@@ -31,6 +32,8 @@ public class MonsterStage extends BaseOneLevelStage {
 	private FieldManager fieldManager;
 	@Autowired
 	private BattleManager battleManager;
+	@Autowired
+	private DungeonManager dungeonManager;
 	@Autowired
 	private transient ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
@@ -140,16 +143,16 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getTexture("bg_devil_castle_06")));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(dungeonManager
+					.getDungeonInfo().getBackground())));
 		} else if (eventManager.getCurrentEvent().getEventType().equals(EventTypeEnum.START_BATTLE)) {
 			String backgroundPath = battleManager.getBackgroundPath();
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
 		} else {
-			return new TextureRegionDrawable(
-					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
+					.getFieldType().toString())));
 		}
 	}
-
 	public HashMap<String, Float> getUiConstantsMap() {
 		return uiConstantsMap;
 	}

@@ -35,10 +35,8 @@ public class DungeonManager {
 	}
 
 	public void setDungeonEventInfo() {
-		if (!dungeonInfo.isInDungeon()) {
-			setCurrentDoorSize(dungeonInfo);
-			setFloorMinimap(dungeonInfo);
-		}
+		setCurrentDoorSize(dungeonInfo);
+		setFloorMinimap(dungeonInfo);
 		setCurrentRoomVisibilityOn();
 	}
 
