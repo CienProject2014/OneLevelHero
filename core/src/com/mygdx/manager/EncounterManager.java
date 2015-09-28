@@ -13,12 +13,6 @@ public class EncounterManager {
 	private MonsterPickManager monsterManager;
 	@Autowired
 	private BattleManager battleManager;
-	@Autowired
-	private FieldManager fieldManager;
-	@Autowired
-	private PositionManager positionManager;
-	@Autowired
-	private DungeonManager dungeonManager;
 
 	private Random random = new Random();
 	// FIXME 전투 랜덤으로 발생, 기획에 맞게 바꿀 것
@@ -32,11 +26,12 @@ public class EncounterManager {
 	}
 
 	public void encountEnemy(ArrayList<String> monsterList) {
-		if (isBattleOccured()) {
+		if (isBattleOccured() && monsterList.size() != 0) {
 			Monster selectedMonster = monsterManager.createMonster(monsterList);
 			battleManager.startBattle(selectedMonster);
 		}
 	}
+
 	public void encountEliteMonster(String eliteMonsterName) {
 		if (!CurrentInfo.isAdminMode) {
 			Monster selectedMonster = monsterManager.createMonsterByName(eliteMonsterName);

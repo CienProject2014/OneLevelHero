@@ -226,12 +226,12 @@
 	},
 	"casting" : {
 		"name" : "캐스팅",
-		"buffPath" : "buff_en_casting",
+		"buffPath" : "buff_en_casting_",
 		"duration" : "-1",
 		"stackScope" : "5",
 		"buffType" : "enbuff",
 		"buffEffectList" : [
-			""
+			"default"
 		]
 	},
     "fireshield" : {
