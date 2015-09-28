@@ -126,9 +126,9 @@ public class DungeonStage extends BaseOneLevelStage {
 		outerTable.remove();
 		outerTable.setBackground(new TextureRegionDrawable(new TextureRegion(textureManager
 				.getBackgroundTexture(backgroundPath))));
+		dungeonManager.getDungeonInfo().setBackground(backgroundPath);
 		tableStack.add(outerTable);
 	}
-
 	private String getBackgroundPathByType(DungeonManager dungeonManager) {
 		if (dungeonManager.getDungeonInfo().getCurrentDirection().equals(Direction.BACKWARD)) {
 			switch (dungeonManager.getDungeonInfo().getCurrentRoom().getRoomType()) {

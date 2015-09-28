@@ -23,7 +23,7 @@ public class TextureManager {
 	private AssetsManager assetsManager;
 	@Autowired
 	private TextureAssets textureAssets;
-	private String[] preName = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+	private String[] preName = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 	// 1. 똑같은걸 불러왔을 때
 	// 2. 전투 (미리 로드)
 	// 3. 목표마을(미리 로드)
@@ -59,10 +59,17 @@ public class TextureManager {
 		return getTexture(texturePath, TextureEnum.BUST + "_default_01");
 	}
 
-	public Texture getMonsterTexture(String monsterName) {
-		return getTexture(TextureEnum.MONSTER + "_" + monsterName);
+	public Texture getMonsterTexture(String monsterPath) {
+		if (textureAssets.getTexturePath(TextureEnum.MONSTER + "_" + monsterPath) != null) {
+			preName[14] = TextureEnum.MONSTER + "_" + monsterPath;
+			assetsManager.load(textureAssets.getTexturePath(preName[14]), Texture.class);
+			assetsManager.finishLoading();
+			return assetsManager.get(textureAssets.getTexturePath(preName[14]), Texture.class);
+		} else {
+			Gdx.app.log("TextureManager", TextureEnum.MONSTER.toString() + "_" + monsterPath + "가 없습니다");
+			return getTexture(preName[14]);
+		}
 	}
-
 	public Texture getBustTexture(String facePath) {
 		return getTexture(facePath);
 	}
@@ -169,8 +176,8 @@ public class TextureManager {
 	}
 
 	public Texture getBigBattleImage(String facePath) {
-		return getTexture(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE,
-				TextureEnum.BATTLE + "_default_" + TextureEnum.BIG_IMAGE);
+		return getTexture(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE, TextureEnum.BATTLE
+				+ "_default_" + TextureEnum.BIG_IMAGE);
 	}
 
 	public Texture getGameObjectTexture(String objectPath) {

@@ -3,8 +3,9 @@ package com.mygdx.currentState;
 import com.badlogic.gdx.Gdx;
 
 public class CurrentInfo {
-	public final static int CURRENT_APP_VERSION = 86;
+	public final static int CURRENT_APP_VERSION = 87;
 	public static boolean isAdminMode;
+
 	public static void changeAdminMode() {
 		isAdminMode = !isAdminMode;
 		if (isAdminMode) {
@@ -13,6 +14,7 @@ public class CurrentInfo {
 			Gdx.app.log("CurrentInfo", "==== 관리자모드 Off ====");
 		}
 	}
+
 	public static String getAdminMessage() {
 		if (isAdminMode) {
 			return " / On";

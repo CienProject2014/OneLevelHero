@@ -2013,49 +2013,49 @@
               "characterPath": "yongsa",
               "faceNumber": "01",
               "speakerPosition": "right",
-              "backgroundPath": "bg_winterfall_altar",
+              "backgroundPath": "bg_winterfall_dome",
               "script": "여긴 뭐지?"
             },
             {
               "characterPath": "lilis",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "bg_winterfall_altar",
+              "backgroundPath": "bg_winterfall_dome",
               "script": "이곳은 수정의 제단이에요. 여기서 수정에 대한 예를 올리곤 했죠."
             },
             {
               "characterPath": "yongsa",
               "faceNumber": "01",
               "speakerPosition": "right",
-              "backgroundPath": "bg_winterfall_altar",
+              "backgroundPath": "bg_winterfall_dome",
               "script": "호오…"
             },
             {
               "characterPath": "lilis",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "bg_winterfall_altar",
+              "backgroundPath": "bg_winterfall_dome",
               "script": "여기로 오세요."
             },
             {
               "characterPath": "lilis",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "bg_winterfall_altar",
+              "backgroundPath": "bg_winterfall_dome",
               "script": "자, 준비하세요."
             },
             {
               "characterPath": "yongsa",
               "faceNumber": "01",
               "speakerPosition": "right",
-              "backgroundPath": "bg_winterfall_altar",
+              "backgroundPath": "bg_winterfall_dome",
               "script": "뭘?"
             },
             {
               "characterPath": "yongsa",
               "faceNumber": "01",
               "speakerPosition": "right",
-              "backgroundPath": "bg_winterfall_altar",
+              "backgroundPath": "bg_winterfall_dome",
               "script": "으아아악!"
             }
           ]
@@ -4598,133 +4598,133 @@
               "characterPath": "holland",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "오오…! 다들 무사히 돌아왔군!"
             },
             {
               "characterPath": "yongsa",
               "faceNumber": "01",
               "speakerPosition": "right",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "용사 대주교님을 뵙습니다!"
             },
             {
               "characterPath": "holland",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "수고들 많았네! 전설은 확인 했나?"
             },
             {
               "characterPath": "yongsa",
               "faceNumber": "01",
               "speakerPosition": "right",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "예, 대주교님! 전설은 확실히 존재했습니다!"
             },
             {
               "characterPath": "yongsa",
               "faceNumber": "01",
               "speakerPosition": "right",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "전설의 묘약 덕으로 지금 저의 몸은 완전히 정화되었습니다!"
             },
             {
               "characterPath": "holland",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "오! 저주가 풀렸다는 말인가?"
             },
             {
               "characterPath": "yongsa",
               "faceNumber": "03",
               "speakerPosition": "right",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "네! 협곡의 빙룡도 저희가 청소해버렸습니다! 하하하!"
             },
             {
               "characterPath": "lilis",
               "faceNumber": "03",
               "speakerPosition": "right",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "대주교님, 빙룡이 죽자 폭설과 추위가 사라졌어요."
             },
             {
               "characterPath": "holland",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "오…! 그렇다면 이 일을 당장 윈터폴 주민들에게 알려야겠구나!"
             },
             {
               "characterPath": "",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "그런데 불멸의 수정은 지금 어디 있는가?"
             },
             {
               "characterPath": "yongsa",
               "faceNumber": "01",
               "speakerPosition": "right",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "아, 그건…"
             },
             {
               "characterPath": "parath",
               "faceNumber": "01",
               "speakerPosition": "right",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "불멸의 수정은 아쉽게도 자체 소멸해버렸습니다."
             },
             {
               "characterPath": "",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "자체 소멸되었다고…?"
             },
             {
               "characterPath": "parath",
               "faceNumber": "01",
               "speakerPosition": "right",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "네, 대주교님. 저희가 정화의 눈물을 채취하자 수정은 그 자리에서 소멸해버렸습니다."
             },
             {
               "characterPath": "holland",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "흠… 그렇다면 이것 또한 신의 뜻이군…"
             },
             {
               "characterPath": "holland",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "비록 수정은 사라졌지만, 윈터폴이 다시 살아났으니 이것이야말로 축복이 아니겠는가!"
             },
             {
               "characterPath": "holland",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "게다가 자네의 몸도 정화가 되었고 말이야!"
             },
             {
               "characterPath": "holland",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "그럼 난 윈터폴 촌장에게 희소식을 전하러 갈 테니, 자네들은 지친 몸을 회복하게!"
             },
             {
               "characterPath": "yongsa",
               "faceNumber": "03",
               "speakerPosition": "right",
-              "backgroundPath": "cobweb_altar",
+              "backgroundPath": "cobweb_dome",
               "script": "감사합니다, 대주교님!"
             }
           ]

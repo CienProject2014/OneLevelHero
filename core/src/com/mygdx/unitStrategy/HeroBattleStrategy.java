@@ -63,10 +63,10 @@ public class HeroBattleStrategy implements BattleStrategy {
 			defender.getStatus().setHp(0);
 		}
 
-		Gdx.app.log(TAG,
-				attacker.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg + "를 입혔다!");
-		battleManager.setText(
-				attacker.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg + "를 입혔다!");
+		Gdx.app.log(TAG, attacker.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg
+				+ "를 입혔다!");
+		battleManager.setText(attacker.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg
+				+ "를 입혔다!");
 	}
 
 	@Override
@@ -76,8 +76,8 @@ public class HeroBattleStrategy implements BattleStrategy {
 			return;
 		}
 
-		battleManager.setText(
-				skillUser.getName() + "이(가) " + targetList.get(0).getName() + "에게 " + skill.getName() + "을(를) 사용하였다!");
+		battleManager.setText(skillUser.getName() + "이(가) " + targetList.get(0).getName() + "에게 " + skill.getName()
+				+ "을(를) 사용하였다!");
 		// 각 타겟에 대해 SkillEffectType에 따라 사용
 		for (Unit target : targetList) {
 			if (skill.getSkillEffectType().equals(SkillEffectEnum.MULTI_EFFECT.toString())) {
@@ -101,39 +101,40 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void applyEffect(Unit attacker, Unit defender, Skill skill) {
 		switch (SkillEffectEnum.findSkillEffectEnum(skill.getSkillEffectType())) {
-		case ADD_SELF_STATE:
-			addSelfState(attacker, skill);
-			break;
-		case ADD_STATE:
-			addState(attacker, defender, skill);
-			break;
-		case ATTACK:
-			basicAttack(attacker, defender, skill.getSkillFactor(), skill.getMagicFactor());
-			break;
-		case CHANGE_GAUGE:
-			changeGauge(attacker, defender, skill.getMagicFactor());
-			break;
-		case CONDITIONAL_ATTACK:
-			conditionalAttack(attacker, defender, skill.getOneRegex(), skill.getSkillFactor(), skill.getMagicFactor());
-			break;
-		case DUPLICATED_ATTACK:
-			duplicatedAttack(attacker, defender, skill.getDuplicateNumber(), skill.getSkillFactor(),
-					skill.getMagicFactor());
-			break;
-		case HEAL:
-			heal(attacker, defender, skill.getMagicFactor());
-			break;
-		case ALL_HEAL:
-			allHeal(attacker, skill.getMagicFactor());
-			break;
-		case REMOVE_STATE:
-			removeState(attacker, defender, skill);
-			break;
-		case CASTING:
-			cast(attacker, skill);
-			break;
-		default:
-			break;
+			case ADD_SELF_STATE :
+				addSelfState(attacker, skill);
+				break;
+			case ADD_STATE :
+				addState(attacker, defender, skill);
+				break;
+			case ATTACK :
+				basicAttack(attacker, defender, skill.getSkillFactor(), skill.getMagicFactor());
+				break;
+			case CHANGE_GAUGE :
+				changeGauge(attacker, defender, skill.getMagicFactor());
+				break;
+			case CONDITIONAL_ATTACK :
+				conditionalAttack(attacker, defender, skill.getOneRegex(), skill.getSkillFactor(),
+						skill.getMagicFactor());
+				break;
+			case DUPLICATED_ATTACK :
+				duplicatedAttack(attacker, defender, skill.getDuplicateNumber(), skill.getSkillFactor(),
+						skill.getMagicFactor());
+				break;
+			case HEAL :
+				heal(attacker, defender, skill.getMagicFactor());
+				break;
+			case ALL_HEAL :
+				allHeal(attacker, skill.getMagicFactor());
+				break;
+			case REMOVE_STATE :
+				removeState(attacker, defender, skill);
+				break;
+			case CASTING :
+				cast(attacker, skill);
+				break;
+			default :
+				break;
 
 		}
 	}
@@ -203,8 +204,8 @@ public class HeroBattleStrategy implements BattleStrategy {
 		if (battleManager.getCurrentSelectedSkill().getBuffName().equals("solid")) {
 			totalDamage = realSkillDamage + realMagicDamage + attacker.getStatus().getDefense();
 		} else if (battleManager.getCurrentSelectedSkill().getSkillPath().equals("whirlwind")) {
-			totalDamage = realSkillDamage + realMagicDamage
-					+ attacker.getStatus().getAttack() * defender.getBuffList().size();
+			totalDamage = realSkillDamage + realMagicDamage + attacker.getStatus().getAttack()
+					* defender.getBuffList().size();
 		} else {
 			totalDamage = realSkillDamage + realMagicDamage;
 		}
@@ -232,8 +233,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
-	private void conditionalAttack(Unit attacker, Unit defender, String oneRegex, float skillFactor,
-			float magicFactor) {
+	private void conditionalAttack(Unit attacker, Unit defender, String oneRegex, float skillFactor, float magicFactor) {
 		boolean condition = true;
 
 		// TODO: oneRegex를 분석해서 조건을 충족시키는지 확인하는 로직 필요
@@ -349,33 +349,33 @@ public class HeroBattleStrategy implements BattleStrategy {
 	private void applyAllBuffEffect(Unit defender, Buff buff) {
 		for (String buffEffect : buff.getBuffEffectList()) {
 			switch (BuffEffectEnum.findBuffEffectEnum(buffEffect)) {
-			case BLOCK_ACTION:
-				blockAction(defender);
-				break;
-			case INCREASE_AGGRO:
-				increaseAggro(defender);
-				break;
-			case DECREASE_ATTACK:
-				break;
-			case DECREASE_HP_ITERATIVE:
-				decreaseHpIterative(defender, buff);
-				break;
-			case DECREASE_MAGIC_ATTACK:
-				break;
-			case INCREASE_DEFENSE:
-				increaseDefense(defender, buff);
-				break;
-			case DECREASE_DEFENSE:
-				decreaseDefense(defender, buff);
-				break;
-			case DECREASE_SPEED:
-				decreaseSpeed(defender, buff);
-				break;
-			case FLY_ACTION:
-				flyAction(defender);
-				break;
-			default:
-				break;
+				case BLOCK_ACTION :
+					blockAction(defender);
+					break;
+				case INCREASE_AGGRO :
+					increaseAggro(defender);
+					break;
+				case DECREASE_ATTACK :
+					break;
+				case DECREASE_HP_ITERATIVE :
+					decreaseHpIterative(defender, buff);
+					break;
+				case DECREASE_MAGIC_ATTACK :
+					break;
+				case INCREASE_DEFENSE :
+					increaseDefense(defender, buff);
+					break;
+				case DECREASE_DEFENSE :
+					decreaseDefense(defender, buff);
+					break;
+				case DECREASE_SPEED :
+					decreaseSpeed(defender, buff);
+					break;
+				case FLY_ACTION :
+					flyAction(defender);
+					break;
+				default :
+					break;
 			}
 		}
 	}

@@ -16,6 +16,7 @@ public class DungeonInfo {
 	private DungeonEnum.Direction currentDirection;
 	private int currentDoorSize;
 	private int startDungeonRoomIndex;
+	private String background;
 
 	public DungeonEnum.Direction getCurrentDirection() {
 		return currentDirection;
@@ -71,5 +72,11 @@ public class DungeonInfo {
 	}
 	public void setInDungeon(boolean isInDungeon) {
 		this.isInDungeon = isInDungeon;
+	}
+	public String getBackground() {
+		return background;
+	}
+	public void setBackground(String background) {
+		this.background = background;
 	}
 }
