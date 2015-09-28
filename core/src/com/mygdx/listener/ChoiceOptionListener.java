@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
 
 public class ChoiceOptionListener extends ClickListener {
@@ -13,10 +14,13 @@ public class ChoiceOptionListener extends ClickListener {
 	private StorySectionManager storySectionManager;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private SoundManager soundManager;
 	private String targetOption;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		soundManager.playClickSound();
 		eventManager.triggerCurrentEvent();
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.CHOICE_OPTION, getTargetOption());
 	}

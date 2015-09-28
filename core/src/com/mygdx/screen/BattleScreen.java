@@ -49,7 +49,6 @@ public class BattleScreen extends BaseScreen {
 		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		itemStage = stageFactory.makeStage(StageEnum.ITEM);
 		setInputProcessor();
-		// musicManager.setBattleMusicAndPlay();
 	}
 
 	private void setInputProcessor() {

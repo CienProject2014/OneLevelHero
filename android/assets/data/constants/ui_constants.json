@@ -27,7 +27,7 @@
     "RMenuTablePadRight": 15,
     "RButtonWidth": 138,
     "RButtonHeight": 138,
-    "RButtonSpace": 15,
+    "RButtonSpace": 10,
     "gridPadTop": 228,
     "gridTableWidthSmall": 640,
     "gridTableHeightSmall": 640,
@@ -41,7 +41,7 @@
     "TurnTableHeight": 137
   },
   "CharacterUiStage": {
-    "heroTablePadLeft": 13,
+    "heroTablePadLeft": 50,
     "heroTablePadBottom": 58,
     "heroImageWidth": 158,
     "heroImageHeight": 158,

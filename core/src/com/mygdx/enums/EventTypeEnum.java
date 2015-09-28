@@ -19,7 +19,8 @@ public enum EventTypeEnum {
 			"move_dungeon_room_in_target_time"), MOVE_SUB_NODE_IN_TARGET_TIME("move_sub_node_in_target_time"), MOVE_DUNGEON_ROOM_AFTER_ABSOLUTE_TIME(
 			"move_dungeon_room_after_absolute_time"), MOVE_NODE_IN_TARGET_TIME("move_node_in_target_time"), MOVE_DUNGEON_ROOM_BEFORE_ABSOLUTE_TIME(
 			"move_dungeon_room_before_absolute_time"), ALWAYS_OPEN_NPC_EVENT("always_open_npc_event"), MOVE_SUB_NODE_BEFORE_SECTION_TIME(
-			"move_sub_node_before_section_time"), QUEST_HUNT_MONSTER("quest_hunt_monster");
+			"move_sub_node_before_section_time"), HEAL_ALL_HERO("heal_all_hero"), SET_GAME_OBJECT_TARGET_TIME(
+			"set_game_object_target_time"), QUEST_HUNT_MONSTER("quest_hunt_monster");
 	private String code;
 
 	EventTypeEnum(String code) {

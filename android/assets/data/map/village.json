@@ -15,6 +15,7 @@
         "subNodeName": "촌장의 집",
         "buildingType": "house",
         "subNodePath": "blackwood_headhouse",
+        "backgroundPath":"blackwood_house",
         "outerPath": "blackwood_03",
         "targetTime": {
           "startHour": 6,
@@ -676,6 +677,7 @@
       "middle_ridge_temple": {
         "subNodeName": "파괴된 신전",
         "buildingType": "house",
+        "outerPath": "middle_ridge_02",
         "subNodePath": "middle_ridge_temple",
         "targetTime": {
           "startHour": 0,
@@ -724,6 +726,7 @@
         "subNodeName": "미들릿지 여관",
         "buildingType": "inn",
         "backgroundPath" : "blackwood_inn",
+        "outerPath": "middle_ridge_02",
         "subNodePath": "middle_ridge_inn",
         "targetTime": {
           "startHour": 0,
@@ -757,6 +760,7 @@
       "middle_ridge_training_area": {
         "subNodeName": "용사의 수련장소",
         "buildingType": "house",
+        "outerPath": "middle_ridge_03",
         "subNodePath": "middle_ridge_training_area",
         "targetTime": {
           "startHour": 0,
@@ -766,6 +770,7 @@
       "middle_ridge_farm": {
         "subNodeName": "논밭",
         "buildingType": "house",
+        "outerPath": "middle_ridge_02",
         "subNodePath": "middle_ridge_farm",
         "targetTime": {
           "startHour": 0,
@@ -814,7 +819,7 @@
           "endHour": 22
         },
         "buildingNpc": [
-          "vical_villigehead"
+          "vical_villagehead"
         ],
         "gameObject": [
         ]
@@ -857,7 +862,7 @@
           "endHour": 24
         },
         "buildingNpc": [
-          "southcape_villigehead"
+          "southcape_villagehead"
         ],
         "gameObject": [
         ]

@@ -3,6 +3,7 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.enums.MusicEnum;
 import com.mygdx.enums.StageEnum;
 
 public class BuildingScreen extends BaseScreen {
@@ -33,7 +34,7 @@ public class BuildingScreen extends BaseScreen {
 		saveStage = stageFactory.makeStage(StageEnum.SAVE);
 		loadStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		setInputProcessor();
-		musicManager.setWorldNodeMusicAndPlay();
+		musicManager.setMusicAndPlay(MusicEnum.WORLD_NODE_MUSIC);
 	}
 
 	private void setInputProcessor() {

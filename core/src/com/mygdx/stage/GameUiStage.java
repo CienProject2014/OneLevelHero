@@ -64,7 +64,11 @@ public class GameUiStage extends BaseOneLevelStage {
 
 	@Override
 	public void act(float delta) {
-		timeInfoButton.setText(timeManager.getTimeInfo());
+		showTimeInfoButton();
+		showPlaceInfoButton();
+	}
+
+	private void showTimeInfoButton() {
 		if (CurrentInfo.isAdminMode) {
 			if (storySectionManager.getCurrentStorySection().getNextSections() != null
 					&& storySectionManager.getCurrentStorySection().getNextSections().size() > 0) {
@@ -74,26 +78,28 @@ public class GameUiStage extends BaseOneLevelStage {
 		} else {
 			timeInfoButton.setText(timeManager.getTimeInfo());
 		}
-
-		showPlaceInfoButton();
 	}
 
 	private void showPlaceInfoButton() {
-		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.NODE)) {
-			placeInfoButton.setText(positionManager.getCurrentNodeName() + CurrentInfo.getAdminMessage());
-		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.SUB_NODE)) {
-			placeInfoButton.setText(positionManager.getCurrentSubNodeName() + CurrentInfo.getAdminMessage());
-		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
-			placeInfoButton.setText(dungeonManager.getDungeonInfo().getCurrentFloor().getFloorName()
-					+ CurrentInfo.getAdminMessage());
-		} else {
-			placeInfoButton.setText(positionManager.getCurrentNodeName() + CurrentInfo.getAdminMessage());
+		switch (positionManager.getCurrentLocatePositionType()) {
+			case NODE :
+				placeInfoButton.setText(positionManager.getCurrentNodeName() + CurrentInfo.getAdminMessage());
+				break;
+			case SUB_NODE :
+				placeInfoButton.setText(positionManager.getCurrentSubNodeName() + CurrentInfo.getAdminMessage());
+				break;
+			case DUNGEON :
+				placeInfoButton.setText(dungeonManager.getDungeonInfo().getCurrentFloor().getFloorName()
+						+ CurrentInfo.getAdminMessage());
+				break;
+			default :
+				placeInfoButton.setText(positionManager.getCurrentNodeName() + CurrentInfo.getAdminMessage());
+				break;
 		}
-
 	}
+
 	public Stage makeStage() {
 		super.makeStage();
-		// 초기화
 		uiConstantsMap = constantsAssets.getUiConstants("GameUiStage");
 		uiTable = new Table();
 		topTable = new Table(uiComponentAssets.getSkin());
@@ -107,7 +113,6 @@ public class GameUiStage extends BaseOneLevelStage {
 
 		return this;
 	}
-
 	private void conditionalHidingBackButton() {
 		if (!positionManager.getCurrentLocatePositionType().equals(LocatePosition.SUB_NODE)) {
 			backButton.setVisible(false);
@@ -146,8 +151,8 @@ public class GameUiStage extends BaseOneLevelStage {
 		style = new TextButtonStyle(atlasUiAssets.getAtlasUiFile("time_info_button"),
 				atlasUiAssets.getAtlasUiFile("time_info_button"), atlasUiAssets.getAtlasUiFile("time_info_button"),
 				uiComponentAssets.getFont());
-		timeInfoButton = new TextButton(timeManager.getTimeInfo(), style);
-		makePlaceInfoButton();
+		timeInfoButton = new TextButton("", style);
+		placeInfoButton = new TextButton("", style);
 		backButton = new ImageButton(atlasUiAssets.getAtlasUiFile("back_button"),
 				atlasUiAssets.getAtlasUiFile("back_toggle_button"));
 		questLogButton = new ImageButton(atlasUiAssets.getAtlasUiFile("quest_log_button"),
@@ -158,30 +163,22 @@ public class GameUiStage extends BaseOneLevelStage {
 				atlasUiAssets.getAtlasUiFile("setting_toggle_button"));
 	}
 
-	private void makePlaceInfoButton() {
-		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.NODE)) {
-			placeInfoButton = new TextButton(positionManager.getCurrentNodeName(), style);
-		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.SUB_NODE)) {
-			placeInfoButton = new TextButton(positionManager.getCurrentSubNodeName(), style);
-		} else if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
-			placeInfoButton = new TextButton(dungeonManager.getDungeonInfo().getCurrentFloor().getFloorName(), style);
-		} else {
-			placeInfoButton = new TextButton(positionManager.getCurrentNodeName(), style);
-		}
-	}
-
 	// 리스너 할당
 	public void addListener() {
 		placeInfoButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				partyManager.healAllHero();
+				soundManager.playClickSound();
+				if (CurrentInfo.isAdminMode) {
+					partyManager.healAllHero();
+				}
 				return true;
 			}
 		});
 		questLogButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				soundManager.playClickSound();
 				setAdminCount(getAdminCount() + 1);
 				if (getAdminCount() > 3) {
 					CurrentInfo.changeAdminMode();
@@ -198,6 +195,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		helpButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				soundManager.playClickSound();
 				if (CurrentInfo.isAdminMode) {
 					screenFactory.show(ScreenEnum.WORLD_MAP);
 				}
@@ -207,6 +205,7 @@ public class GameUiStage extends BaseOneLevelStage {
 		settingButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				soundManager.playClickSound();
 				settingPopup.setAtlasUiAssets(atlasUiAssets);
 				settingPopup.setListenerFactory(listenerFactory);
 				settingPopup.setConstantsAssets(constantsAssets);

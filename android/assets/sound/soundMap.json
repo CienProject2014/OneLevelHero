@@ -15,6 +15,10 @@ escape_success: {
 	class: java.lang.String,
 	value: sound/escape_success.mp3/
 },
+cursor: {
+	class: java.lang.String,
+	value: sound/cursor.mp3/
+},
 notice_enemy_turn: {
 	class: java.lang.String,
 	value: sound/notice_enemy_turn.mp3/

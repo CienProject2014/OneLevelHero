@@ -99,7 +99,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		Table heroTable = new Table();
 		heroImage = new Image(textureManager.getFaceImage(unit.getFacePath()));
 
-		heroTable.add(heroImage).padRight(uiConstantsMap.get("heroTablePadLeft"))
+		heroTable.add(heroImage).padLeft(uiConstantsMap.get("heroTablePadLeft"))
 				.width(uiConstantsMap.get("heroImageWidth")).height(uiConstantsMap.get("heroImageHeight"));
 
 		barTable = new Table();
@@ -129,9 +129,8 @@ public class CharacterUiStage extends BaseOneLevelStage {
 							partyManager.setCurrentSelectedHero(null);
 						} else {
 							partyManager.setCurrentSelectedHero(battleMemberList.get(index));
-							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
-									partyManager.getCurrentSelectedHero(),
-									battleManager.getCurrentSelectedSkill().getSkillPath());
+							battleManager.useSkill(battleManager.getCurrentAttackUnit(), partyManager
+									.getCurrentSelectedHero(), battleManager.getCurrentSelectedSkill().getSkillPath());
 							battleManager.setSkill(false);
 						}
 					}

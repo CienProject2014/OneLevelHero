@@ -50,7 +50,6 @@ public class VillageStage extends BaseOverlapStage {
 	public Stage makeStage() {
 		setVillage();
 		cameraManager.stretchToDevice(this, positionManager.getVillageDirection());
-		/* setVillage(); */
 		return this;
 	}
 

@@ -8,6 +8,7 @@ import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
 
 public class LeaveEventElementListener extends ClickListener {
@@ -17,9 +18,12 @@ public class LeaveEventElementListener extends ClickListener {
 	private MovingManager movingManager;
 	@Autowired
 	private StorySectionManager storySectionManager;
+	@Autowired
+	private SoundManager soundManager;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		soundManager.playClickSound();
 		positionManager.setCurrentEventPositionType(EventPosition.NONE);
 		movingManager.goCurrentLocatePosition();
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.COLLECT_EVENT);

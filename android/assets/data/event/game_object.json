@@ -1,23 +1,999 @@
 {
-  "chest": {
-    "name": "상자",
+  "blackwood_jar": {
+    "name": "항아리",
     "objectType" : "pressed",
-    "facePath" : "chest",
+    "facePath" : "jar",
     "events": {
       "1": {
+        "eventTitle": "물건을 꺼낸다",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "아니, 당신들 지금 뭘 하고 있는 건가?",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "네?",
+              "characterPath": "yongsa",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "왜 남의 집 물건에 함부로 손대는 거지?",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "아니, 뭐 도움이 될만한 물건이 있나 해서요…",
+              "characterPath": "yongsa",
+              "faceNumber": "11",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "도움이 될 거 같다고 남의 것을 막 훔쳐도 되는 건가!",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "그런 건 아니지만…",
+              "characterPath": "yongsa",
+              "faceNumber": "12",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "갑자기 막 집에 들어올 때부터 알아 봤어야 됬는데…",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "아니 그건 원래 불문율 같은 거라…",
+              "characterPath": "yongsa",
+              "faceNumber": "11",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "도둑이야, 도둑!!",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "우왓… 도…도망가자!",
+              "characterPath": "yongsa",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "blackwood"
+              }
+            }
+          },
+          {
+            "rewardType": "open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "blackwood_jar",
+                "eventNumber" : 2
+              }
+            }
+          }
+        ]
+      },
+      "2": {
+        "eventTitle": "물건을 꺼낸다",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "아니, 또 왔잖아?",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "으앗!",
+              "characterPath": "yongsa",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "도둑이야, 도둑!!",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "우왓… 도…도망가자!",
+              "characterPath": "yongsa",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "blackwood"
+              }
+            }
+          },
+          {
+            "rewardType": "open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "blackwood_jar",
+                "eventNumber" : 3
+              }
+            }
+          }
+        ]
+      },
+      "3": {
+        "eventTitle": "물건을 꺼낸다",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "아니, 또 왔잖아?",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "으앗!",
+              "characterPath": "yongsa",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "도둑이야, 도둑!!",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "우왓… 도…도망가자!",
+              "characterPath": "yongsa",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "blackwood"
+              }
+            }
+          },
+          {
+            "rewardType": "open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "blackwood_jar",
+                "eventNumber" : 4
+              }
+            }
+          }
+        ]
+      },
+      "4": {
+        "eventTitle": "물건을 꺼낸다",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "아니, 또 왔잖아?",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "으앗!",
+              "characterPath": "yongsa",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "도둑이야, 도둑!!",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "우왓… 도…도망가자!",
+              "characterPath": "yongsa",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "blackwood"
+              }
+            }
+          },
+          {
+            "rewardType": "open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "blackwood_jar",
+                "eventNumber" : 5
+              }
+            }
+          }
+        ]
+      },
+      "5": {
+        "eventTitle": "물건을 꺼낸다",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "지금이닷!",
+              "characterPath": "yongsa",
+              "faceNumber": "04",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "아스트라를 훔쳤다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "음? 아직도 내 물건을 노리는건 아니겠지?",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "에이... 설마요... 하핫",
+              "characterPath": "yongsa",
+              "faceNumber": "11",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "수상쩍은 걸...",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "그럼 전 이만!",
+              "characterPath": "yongsa",
+              "faceNumber": "11",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "blackwood",
+                "subNodePath":"blackwood_house"
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "astra",
+                "itemCount" : 1
+              }
+            }
+          }
+        ]
+      },
+      "6": {
+        "eventTitle": "깨뜨린다",
         "eventState": "always_open",
         "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "칙칙한 냄새가 나는 상자. 아무것도 들어있지 않다.",
-              "characterPath": "chest",
-              "backgroundPath": "bg_blackwood_03"
+              "script": "당신 지금 머하는 짓이야!!",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "헛!",
+              "characterPath": "yongsa",
+              "faceNumber": "10",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "그 항아리는 유서깊은 물건으로 내 할아버지의 할아버지의 할아버지의 할아버지의 할아버지의...",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "으악! 도망가자!",
+              "characterPath": "yongsa",
+              "faceNumber": "11",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
             }
           ]
-        }
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "blackwood"
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "blackwood_resident",
+                "eventNumber" : 1
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "blackwood_resident",
+                "eventNumber" : 2
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                  "gameObjectPath" : "blackwood_jar"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          }
+        ]
       }
-    }
+    },
+    "greetingMessages": [
+      "고풍스럽게 느껴지는 항아리다."
+    ]
+  },
+  "cobweb_anvil":{
+    "name": "모루",
+    "objectType" : "pressed",
+    "facePath" : "anvil",
+    "events": {
+      "1": {
+        "eventTitle": "만진다",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "앗! 뜨거!",
+              "characterPath": "yongsa",
+              "faceNumber": "06",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "뜨거운 모루에 손을 대어서 체력이 20 감소하였다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "열기가 느껴지는 모루다."
+    ]
+  },
+  "oberon_box_01":{
+    "name": "상자",
+    "objectType" : "pressed",
+    "facePath" : "anvil",
+    "events": {
+      "1": {
+        "eventTitle": "연다",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "어성초 3개, 브랜디 3개를 얻었다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "oberon_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "huttuynia_cordata",
+                "itemCount" : 3
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "brandy",
+                "itemCount" : 3
+              }
+            }
+          }
+        ]
+      },
+      "2": {
+        "eventTitle": "부순다",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "상자를 부셨다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "oberon_house"
+            },
+            {
+              "script": "갑자기 남의 집 물건을 부수다니...",
+              "characterPath": "mia_and_ai",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "oberon_house"
+            },
+            {
+              "script": "당장 나가주세요!",
+              "characterPath": "mia_and_ai",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "oberon_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "oberon",
+                "subNodePath":"oberon_house_01"
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "mia_and_ai",
+                "eventNumber" : 1
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "mia_and_ai",
+                "eventNumber" : 2
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "mia_and_ai",
+                "eventNumber" : 5
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                  "gameObjectPath" : "oberon_box_01"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "열기가 느껴지는 모루다."
+    ]
+  },
+  "redrose_caslte_snack":{
+    "name": "갓 구운 과자",
+    "objectType" : "pressed",
+    "facePath" : "snack",
+    "events": {
+      "1": {
+        "eventTitle": "먹는다",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "과자를 먹고 파티원의 체력이 모두 회복되었다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "heal_all_hero",
+            "rewardState": "not_opened"
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                  "gameObjectPath" : "redrose_caslte_snack"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          }
+        ]
+      },
+      "2": {
+        "eventTitle": "엎는다",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "과자를 엎었다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            },
+            {
+              "script": "지금 머하시는 거에요! 먹을라고 만든 과자를!",
+              "characterPath": "nia",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            },
+            {
+              "script": "당장 여기서 나가시죠!",
+              "characterPath": "nia",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "redrose_castle",
+                "subNodePath":"redrose_caslte_house_01"
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "nia",
+                "eventNumber" : 1
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "nia",
+                "eventNumber" : 2
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "nia",
+                "eventNumber" : 5
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                  "gameObjectPath" : "redrose_caslte_snack"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "갓 구워서 맛있어 보이는 과자다."
+    ]
+  },
+  "redrose_caslte_box_01":{
+    "name": "상자",
+    "objectType" : "pressed",
+    "facePath" : "snack",
+    "events": {
+      "1": {
+        "eventTitle": "연다",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "잠겨있다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      },
+      "2": {
+        "eventTitle": "부순다",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "상자를 부수고 생강 2개, 세이지 2개, 작약 뿌리 2개를 획득했다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            },
+            {
+              "script": "자네 지금 뭐 하는 건가! 완전 날강도가 따로 없구먼!",
+              "characterPath": "nia",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            },
+            {
+              "script": "당장 나가게!",
+              "characterPath": "nia",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "redrose_castle",
+                "subNodePath":"redrose_caslte_house_02"
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "ginger",
+                "itemCount" : 2
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "peony",
+                "itemCount" : 2
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "sage",
+                "itemCount" : 2
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "noctern",
+                "eventNumber" : 1
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "noctern",
+                "eventNumber" : 2
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "noctern",
+                "eventNumber" : 5
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                  "gameObjectPath" : "redrose_caslte_box_01"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "갓 구워서 맛있어 보이는 과자다."
+    ]
   },
   "save": {
     "name": "저장하기",
@@ -30,8 +1006,9 @@
           "eventScenes": [
             {
               "script": "저장되었습니다.",
-              "characterPath": "chest",
-              "backgroundPath": "black"
+              "characterPath": "nothing_image",
+              "faceNumber":"01",
+              "backgroundPath": "blackwood_inn"
             }
           ]
         },
@@ -54,9 +1031,10 @@
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "회복되었습니다.",
-              "characterPath": "nothing",
-              "backgroundPath": "01"
+              "script": "4시간이 흐르고 파티원의 체력과 피로도가 모두 회복되었습니다.",
+              "characterPath": "nothing_image",
+              "faceNumber":"01",
+              "backgroundPath": "blackwood_inn"
             }
           ]
         },

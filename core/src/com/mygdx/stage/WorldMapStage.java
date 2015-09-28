@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
@@ -50,17 +51,7 @@ public class WorldMapStage extends BaseOverlapStage {
 		assetsManager.initScene(SCENE_NAME);
 		positionManager.setInWorldMap(true);
 		initSceneLoader(assetsManager.rm);
-		/*
-		 * MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다. SceneVO가 반환되는데,
-		 * 이것은 CompositeVO를 가지고 있다. CompositeVO는 그 Scene이 가지고 있는 Label, Button등을
-		 * 다 가지고 있다.
-		 */
 		sceneLoader.loadScene(SCENE_NAME);
-		/*
-		 * getRoot()할시, CompositeItem이 반환된다. CompositeItem은 Composite들의 집합이다.
-		 * getCompositeById로 하나하나 가져올수 있다. 현재 위치 버튼을 가져온다. getX로 Image의 위치를 가져올
-		 * 수 있다.
-		 */
 		currentPosition = sceneLoader.getRoot().getCompositeById("cross");
 		currentNode = sceneLoader.getRoot().getImageById(positionManager.getCurrentNodePath());
 		// FIXME 예외적 상황
@@ -77,68 +68,76 @@ public class WorldMapStage extends BaseOverlapStage {
 		currentPosition.setY(currentNode.getY() - SET_POSITION + 16);
 
 		addActor(sceneLoader.getRoot());
-		setVillageNodeButton(positionManager, nodeAssets);
-		setForkNodeButton(positionManager, nodeAssets);
-		setDungeonEntranceButton(positionManager, nodeAssets);
+		if (CurrentInfo.isAdminMode) {
+			setVillageNodeButton(positionManager, nodeAssets);
+			setForkNodeButton(positionManager, nodeAssets);
+			setDungeonEntranceButton(positionManager, nodeAssets);
+		}
 		setCamera();
 		return this;
 	}
-
 	private void setDungeonEntranceButton(final PositionManager positionManager, NodeAssets nodeAssets) {
 		Map<String, DungeonEntrance> dungeonEntranceMap = nodeAssets.getDungeonEntranceMap();
 		Iterator<Entry<String, DungeonEntrance>> dungeonEntranceMapIterator = dungeonEntranceMap.entrySet().iterator();
 		while (dungeonEntranceMapIterator.hasNext()) {
-			final String nodePath = dungeonEntranceMapIterator.next().getKey();
-			if (nodePath.equals("elven_forest_east") || nodePath.equals("elven_forest_west")) {
+			Entry<String, DungeonEntrance> dungeonEntranceEntry = dungeonEntranceMapIterator.next();
+			if (!dungeonEntranceEntry.getValue().isHidden()) {
+				final String nodePath = dungeonEntranceEntry.getKey();
 
-				ImageItem nodeButton = sceneLoader.getRoot().getImageById("elven_forest");
-				nodeButton.addListener(new SimpleTouchListener() {
-					@Override
-					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-						dungeonManager.getDungeonInfo().setInDungeon(false);
-						positionManager.setInWorldMap(false);
-						Random random = new Random();
-						boolean randomBoolean = random.nextBoolean();
-						if (randomBoolean) {
-							movingManager.goToNode("elven_forest_east");
-							storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, "elven_forest_east");
-						} else {
-							movingManager.goToNode("elven_forest_west");
-							storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, "elven_forest_west");
+				if (nodePath.equals("elven_forest_east") || nodePath.equals("elven_forest_west")) {
+
+					ImageItem nodeButton = sceneLoader.getRoot().getImageById("elven_forest");
+					nodeButton.addListener(new SimpleTouchListener() {
+						@Override
+						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+							dungeonManager.getDungeonInfo().setInDungeon(false);
+							positionManager.setInWorldMap(false);
+							Random random = new Random();
+							boolean randomBoolean = random.nextBoolean();
+							if (randomBoolean) {
+								movingManager.goToNode("elven_forest_east");
+								storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE,
+										"elven_forest_east");
+							} else {
+								movingManager.goToNode("elven_forest_west");
+								storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE,
+										"elven_forest_west");
+							}
 						}
-					}
-				});
-			} else if ((nodePath.equals("crystallized_valley_south") || nodePath.equals("crystallized_valley_north"))) {
-				ImageItem nodeButton = sceneLoader.getRoot().getImageById("crystallized_valley");
-				nodeButton.addListener(new SimpleTouchListener() {
-					@Override
-					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-						positionManager.setInWorldMap(false);
-						dungeonManager.getDungeonInfo().setInDungeon(false);
-						Random random = new Random();
-						boolean randomBoolean = random.nextBoolean();
-						if (randomBoolean) {
-							movingManager.goToNode("crystallized_valley_south");
-							storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE,
-									"crystallized_valley_south");
-						} else {
-							movingManager.goToNode("crystallized_valley_north");
-							storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE,
-									"crystallized_valley_north");
+					});
+				} else if ((nodePath.equals("crystallized_valley_south") || nodePath
+						.equals("crystallized_valley_north"))) {
+					ImageItem nodeButton = sceneLoader.getRoot().getImageById("crystallized_valley");
+					nodeButton.addListener(new SimpleTouchListener() {
+						@Override
+						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+							positionManager.setInWorldMap(false);
+							dungeonManager.getDungeonInfo().setInDungeon(false);
+							Random random = new Random();
+							boolean randomBoolean = random.nextBoolean();
+							if (randomBoolean) {
+								movingManager.goToNode("crystallized_valley_south");
+								storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE,
+										"crystallized_valley_south");
+							} else {
+								movingManager.goToNode("crystallized_valley_north");
+								storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE,
+										"crystallized_valley_north");
+							}
 						}
-					}
-				});
-			} else {
-				ImageItem nodeButton = sceneLoader.getRoot().getImageById(nodePath);
-				nodeButton.addListener(new SimpleTouchListener() {
-					@Override
-					public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-						positionManager.setInWorldMap(false);
-						dungeonManager.getDungeonInfo().setInDungeon(false);
-						movingManager.goToNode(nodePath);
-						storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, nodePath);
-					}
-				});
+					});
+				} else {
+					ImageItem nodeButton = sceneLoader.getRoot().getImageById(nodePath);
+					nodeButton.addListener(new SimpleTouchListener() {
+						@Override
+						public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+							positionManager.setInWorldMap(false);
+							dungeonManager.getDungeonInfo().setInDungeon(false);
+							movingManager.goToNode(nodePath);
+							storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, nodePath);
+						}
+					});
+				}
 			}
 		}
 	}

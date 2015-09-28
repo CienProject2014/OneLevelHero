@@ -4554,8 +4554,8 @@
     "dropItemList": [],
     "skillList": []
   },
-  "god": {
-    "facePath": "god",
+  "moerae": {
+    "facePath": "moerae",
     "name": "신",
     "sizeType": "medium",
     "elementType": "none",

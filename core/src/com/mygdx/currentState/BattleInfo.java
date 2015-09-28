@@ -3,7 +3,7 @@ package com.mygdx.currentState;
 import java.util.ArrayList;
 import java.util.Queue;
 
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.FieldTypeEnum;
@@ -26,7 +26,7 @@ public class BattleInfo {
 	private FieldTypeEnum fieldType;
 	private ArrayList<Unit> units;
 	private Queue<Unit> orderedUnits;
-	private ArrayList<ImageButton> rMenuButtonList;
+	private Table rMenuTable;
 	private boolean isEventBattle;
 	private boolean isSmallUpdate;
 	private boolean isBigUpdate;
@@ -124,14 +124,6 @@ public class BattleInfo {
 		this.orderedUnits = orderedUnits;
 	}
 
-	public ArrayList<ImageButton> getrMenuButtonList() {
-		return rMenuButtonList;
-	}
-
-	public void setrMenuButtonList(ArrayList<ImageButton> rMenuButtonList) {
-		this.rMenuButtonList = rMenuButtonList;
-	}
-
 	public boolean isSmallUpdate() {
 		return isSmallUpdate;
 	}
@@ -186,6 +178,14 @@ public class BattleInfo {
 
 	public void setBackgroundPath(String backgroundPath) {
 		this.backgroundPath = backgroundPath;
+	}
+
+	public Table getRMenuTable() {
+		return rMenuTable;
+	}
+
+	public void setrMenuTable(Table rMenuTable) {
+		this.rMenuTable = rMenuTable;
 	}
 
 }

@@ -3,7 +3,9 @@
     "itemType": "handgrip",
     "name": "미 장착",
     "itemPath": "empty_item",
-    "isTwoHanded": "false"
+    "isTwoHanded": "false",
+    "effectStatus":{
+    }
   },
   "round_shield": {
     "itemType": "handgrip",

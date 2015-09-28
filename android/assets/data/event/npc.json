@@ -806,6 +806,49 @@
             }
           }
         ]
+      },
+      "2": {
+        "eventTitle": "대화하기",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "또 왔네? 저번에 깨뜨린 항아리는 말이야!",
+              "characterPath": "blackwood_resident",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            },
+            {
+              "script": "도망가자~",
+              "characterPath": "yongsa",
+              "faceNumber": "11",
+              "speakerPosition": "right",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "blackwood"
+              }
+            }
+          }
+        ]
       }
     },
     "greetingMessages": [
@@ -2688,6 +2731,33 @@
               }
             }
           },
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      },
+      "5": {
+        "eventTitle": "대화하기",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "당장 나가주세요!",
+              "characterPath": "mia_and_ai",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "oberon_house"
+            }
+          ]
+        },
+        "rewards": [
           {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
@@ -4985,9 +5055,9 @@
       "무슨 일인가?"
       ]
   },
-  "southcape_villigehead": {
+  "southcape_villagehead": {
     "name": "사우스케이프 촌장",
-    "facePath": "southcape_villigehead"
+    "facePath": "southcape_villagehead"
   },
   "southcape_inn_owner":{
     "name": "여관주인",
@@ -6838,9 +6908,9 @@
       "어이, 무슨 일이지?"
       ]
   },
-  "vical_villigehead": {
+  "vical_villagehead": {
     "name": "장로",
-    "facePath":"vical_villigehead",
+    "facePath":"vical_villagehead",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -6850,7 +6920,7 @@
           "eventScenes": [
             {
               "script": "오로랄 유니콘을 처치하면 유니콘 로브를 얻을 수 있지.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "vaical_castle_headhouse"
@@ -6877,49 +6947,49 @@
           "eventScenes": [
             {
               "script": "옛날부터 바이칼성엔 기형 몬스터는 마을에 저주를 내린다는 말이 내려왔네.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "전설일 줄만 알았던 말이 진짜 그렇게 될 줄은 몰랐네.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "바이칼성 사람이 그것을 죽이면 저주가 옮겨붙는단 말도 있어서 차마 손을 쓰지도 못하고……",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "아직 자네들이 그놈을 이길 수 있는지 알 수 없으니 우선 알비노 키메라를 처치하고 오겠나?",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "예전에 금빛 호수에 방생한 기형 키메라인데 더 강한 키메라가 되어 마을 사람들을 위협하고 있다네.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "타지에서 온 자네들이라면 이 저주를 없애줄 수 있지 않은가?",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "도와준다면 이 감사한 마음은 잊지 않겠네.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
@@ -6942,7 +7012,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
-                "eventElement": "vical_villigehead",
+                "eventElement": "vical_villagehead",
                 "eventNumber": 3
               }
             }
@@ -6966,7 +7036,7 @@
           "eventScenes": [
             {
               "script": "어서 알비노 키메라를 잡아오게.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
@@ -6993,35 +7063,35 @@
           "eventScenes": [
             {
               "script": "이제야 자네들에게 믿음이 가는군.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "저주를 내리는 몬스터로 알려진 건 오로랄 유니콘일세.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "몇 년 전 어떤 유니콘이 새벽에 태어나 오로라의 축복을 받아 강력한 힘을 가지게 되었지.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "그 몬스터만 처치해 준다면 나의 모든 것이라 할 수 있는 것을 주겠네.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "부탁하네. 여기에서 기다리고 있겠네.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
@@ -7044,7 +7114,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
-                "eventElement": "vical_villigehead",
+                "eventElement": "vical_villagehead",
                 "eventNumber": 5
               }
             }
@@ -7068,7 +7138,7 @@
           "eventScenes": [
             {
               "script": "어서 오로랄 유니콘을 잡아와주게.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
@@ -7095,21 +7165,21 @@
           "eventScenes": [
             {
               "script": "정말 고맙네! 이것은 장로가문에 대대로 내려오는 활이네.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
             "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "마을의 저주를 풀어준 자네들에게 주어도 아깝지 않겠지.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "정말 고맙네. 앞으로 좋은 일들만 있길 바라네.",
-              "characterPath": "vaical_villegehead",
+              "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "vaical_castle_headhouse"
@@ -7644,6 +7714,33 @@
             }
           }
         ]
+      },
+      "5": {
+        "eventTitle": "대화하기",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "당장 여기서 나가시죠!",
+              "characterPath": "nia",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
       }
     },
     "greetingMessages": [
@@ -7661,7 +7758,7 @@
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "다리에는 몬스터가 등장하지 않습니다.",
+              "script": "다리에는 몬스터가 등장하지 않는다네.",
               "characterPath": "noctern",
               "faceNumber": "01",
               "speakerPosition": "left",
@@ -7823,6 +7920,22 @@
             }
           }
         ]
+      },
+      "5": {
+        "eventTitle": "대화하기",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "당장 나가게!",
+              "characterPath": "noctern",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            }
+          ]
+        }
       }
     },
     "greetingMessages": [
