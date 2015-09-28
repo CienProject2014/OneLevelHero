@@ -1,0 +1,293 @@
+{
+  "sceneName": "vaical_castle_scene",
+  "composite": {
+    "sImages": [
+      {
+        "itemIdentifier": "background",
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "bgvaicalcastle"
+      }
+    ],
+    "sComposites": [
+	{
+        "itemIdentifier": "vaical_castle_headhouse",
+        "x": 788,
+        "y": 1510,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "vaical-top0002-------1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "vaical_castle_colosseum",
+        "x": 1220.0001,
+        "y": 689,
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "vaical-bot0000-------2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "vaical_castle_lab",
+        "x": 395,
+        "y": 1395,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "vaical-top0001-------2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      
+      {
+        "itemIdentifier": "6to18",
+        "x": 1438,
+        "y": 1536.5,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "vaical-top0000-------3"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "6to5",
+        "x": 619.5,
+        "y": 372.5,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "vaical-bot0001-------1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_down",
+        "x": 1670,
+        "y": 1830,
+        "zIndex": 6,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuidown"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_up",
+        "x": 1670,
+        "y": 750,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuiup"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ]
+  },
+  "physicsPropertiesVO": {}
+}

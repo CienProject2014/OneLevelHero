@@ -1,520 +1,444 @@
 {
-  "Kadilla Castle": {
-    "nodeName": "카딜라 성",
-    "type": "village",
-    "connection": {
-      "Oberon": {
-        "roadLength": "7",
-        "arrowName": "10to3",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Dogbenefit Camp": {
-        "roadLength": "6",
-        "arrowName" : "10to21",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      }
-    }
-  },
-  "Oberon": {
-    "nodeName": "오베론",
-    "type": "village",
-    "connection": {
-      "Kadilla Castle": {
-        "roadLength": "7",
-        "arrowName" : "3to10",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Retreat Stone": {
-        "roadLength": "2",
-        "arrowName" : "3to20",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      }
-    }
-  },
-  "Winterfall": {
-    "nodeName": "윈터폴",
-    "type": "village",
-    "connection": {
-      "Crystallized Valley": {
-      	"arrowName" : "8to13",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      }
-    }
-  },
-  "Cobweb": {
-    "nodeName": "콥웨브",
-    "type": "village",
-    "connection": {
-      "Crystallized Valley": {
-      	"arrowName" : "2to13",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Middle Ridge": {
-      	"arrowName": "2to5",
-        "roadLength": "10",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Blackwood": {
-      	"arrowName" : "2to1",
-        "roadLength": "13",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Redrose Castle": {
-      	"arrowName" : "2to6",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      }
-    }
-  },
-  "Redrose Castle": {
-    "nodeName": "레드로즈 성",
-    "type": "village",
-    "connection": {
-      "Cobweb": {
-      	"arrowName" : "6to2",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Cemetery": {
-      	"arrowName" : "7to22",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      }
-    }
-  },
-  "Mirage Port": {
-    "nodeName": "미라지 포트",
-    "type": "village",
-    "connection": {
-      "Entrance of the Temple of Moerae": {
-        "arrowName" : "9to24",
-        "roadLength": "6",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Statue of Golden Beetle Stone": {
-        "roadLength": "7",
-        "arrowName" : "9to25",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      }
-    }
-  },
-  "Southcape": {
-    "nodeName": "사우스케이프",
-    "type": "village",
-    "connection": {
-      "Caravanserial Place": {
-      	"arrowName" : "4to23",
-        "roadLength": "11",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Statue of Golden Beetle Stone": {
-      	"arrowName" : "4to25",
-        "roadLength": "7",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      }
-    }
-  },
-  "Blackwood": {
+  "blackwood": {
     "nodeName": "블랙우드",
-    "type": "village",
-    "connection": {
-      "Cobweb": {
-      	"arrowName" : "1to2",
-        "roadLength": "13",
-        "roadMonster": [
-          "assassin girl"
+    "nodeType": "village",
+    "nodeConnection": {
+      "cobweb": {
+        "arrowName": "1to2",
+        "fieldList": [
+          "bridge",
+          "blackwood_forest",
+          "grassland",
+          "grassland"
         ]
       },
-      "Middle Ridge": {
-      	"arrowName" : "1to5",
-        "roadLength": "5",
-        "roadMonster": [
-          "assassin girl"
+      "middle_ridge": {
+        "arrowName": "1to5",
+        "fieldList": [
+          "blackwood_forest",
+          "blackwood_forest"
         ]
       },
-      "Blackwood Forest": {
-      	"arrowName" : "1to17",
-        "roadLength": "4",
-        "roadMonster": [
-          "assassin girl"
+      "blackwood_forest": {
+        "arrowName": "1to17",
+        "fieldList": [
+          "blackwood_forest"
         ]
       },
-      "Devil Castle": {
-      	"arrowName" : "1to16",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
+      "devil_castle": {
+        "arrowName": "1to16",
+        "fieldList": []
+      }
+    }
+  },
+  "cobweb": {
+    "nodeName": "콥웨브",
+    "nodeType": "village",
+    "nodeConnection": {
+      "blackwood": {
+        "arrowName": "2to1",
+        "fieldList": [
+          "grassland",
+          "grassland",
+          "bridge",
+          "blackwood_forest"
+        ]
+      },
+      "redrose_castle": {
+        "arrowName": "2to7",
+        "fieldList": [
+          "bridge"
+        ]
+      },
+      "crystallized_valley_south": {
+        "arrowName": "2to13",
+        "fieldList": [
+          "grassland"
+        ]
+      },
+      "middle_ridge": {
+        "arrowName": "2to5",
+        "fieldList": [
+          "grassland",
+          "grassland",
+          "bridge"
         ]
       }
     }
   },
-  "Vaical Castle": {
-    "nodeName": "바이칼 성",
-    "type": "village",
-    "connection": {
-      "Middle Ridge": {
-      	"arrowName" : "6to5",
-        "roadLength": "12",
-        "roadMonster": [
-          "assassin girl"
-        ]
+  "oberon": {
+    "nodeName": "오베론",
+    "nodeType": "village",
+    "nodeConnection": {
+      "retreat_stone": {
+        "arrowName": "3to20",
+        "fieldList" : []
       },
-      "Golden Lake": {
-      	"arrowName" : "6to18",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
+      "kadilla_castle": {
+        "arrowName": "3to10",
+        "fieldList": [
+          "kadilla_mountain"
         ]
       }
     }
   },
-  "Boniche": {
-    "nodeName": "보니체아",
-    "type": "village",
-    "connection": {}
+  "southcape": {
+    "nodeName": "사우스케이프",
+    "nodeType": "village",
+    "nodeConnection": {
+      "caravanserai": {
+        "arrowName": "4to23",
+        "fieldList": [
+          "grassland",
+          "grassland",
+          "grassland"
+        ]
+      },
+      "mirage_port": {
+        "arrowName": "4to9",
+        "fieldList": [
+          "beach",
+          "beach",
+          "beach"
+        ]
+      }
+    }
   },
-  "Middle Ridge": {
+  "middle_ridge": {
     "nodeName": "미들 릿지",
-    "type": "village",
-    "connection": {
-      "Cobweb": {
-      	"arrowName" : "5to2",
-        "roadLength": "10",
-        "roadMonster": [
-          "assassin girl"
+    "nodeType": "village",
+    "nodeConnection": {
+      "blackwood": {
+        "arrowName": "5to1",
+        "fieldList": [
+          "blackwood_forest",
+          "elven_forest"
         ]
       },
-      "Vaical Castle": {
-      	"arrowName" : "5to6",
-        "roadLength": "12",
-        "roadMonster": [
-          "assassin girl"
+      "cobweb": {
+        "arrowName": "5to2",
+        "fieldList": [
+          "bridge",
+          "grassland",
+          "grassland"
         ]
       },
-      "Blackwood": {
-      	"arrowName" : "5to1",
-        "roadLength": "5",
-        "roadMonster": [
-          "assassin girl"
+      "vaical_castle": {
+        "arrowName": "5to6",
+        "fieldList": [
+          "blackwood_forest",
+          "blackwood_forest",
+          "blackwood_forest",
+          "blackwood_forest"
         ]
       }
     }
   },
-  "Mountain Titania": {
+  "vaical_castle": {
+    "nodeName": "바이칼 성",
+    "nodeType": "village",
+    "nodeConnection": {
+      "middle_ridge": {
+        "arrowName": "6to5",
+        "fieldList": [
+          "blackwood_forest",
+          "blackwood_forest",
+          "blackwood_forest",
+          "blackwood_forest"
+        ]
+      },
+      "golden_lake": {
+        "arrowName": "6to18",
+        "fieldList": []
+      }
+    }
+  },
+  "redrose_castle": {
+    "nodeName": "레드로즈 성",
+    "nodeType": "village",
+    "nodeConnection": {
+      "cobweb": {
+        "arrowName": "7to2",
+        "fieldList": [
+          "bridge"
+        ]
+      },
+      "caravanserai": {
+        "arrowName": "7to22",
+        "fieldList": [
+          "bridge"
+        ]
+      }
+    }
+  },
+  "winterfall": {
+    "nodeName": "윈터폴",
+    "nodeType": "village",
+    "nodeConnection": {
+      "crystallized_valley_north": {
+        "arrowName": "8to13",
+        "fieldList": []
+      }
+    }
+  },
+  "mirage_port": {
+    "nodeName": "미라지 포트",
+    "nodeType": "village",
+    "nodeConnection": {
+      "southcape": {
+        "arrowName": "9to4",
+        "fieldList": [
+          "beach",
+          "beach",
+          "beach"
+        ]
+      },
+      "statue_of_golden_beetle": {
+        "arrowName": "9to24",
+        "fieldList": [
+          "elven_forest",
+          "elven_forest"
+        ]
+      }
+    }
+  },
+  "kadilla_castle": {
+    "nodeName": "카딜라 성",
+    "nodeType": "village",
+    "nodeConnection": {
+      "oberon": {
+        "arrowName": "10to3",
+        "fieldList": [
+          "kadilla_mountain",
+          "kadilla_mountain"
+        ]
+      },
+      "dogbenefit_camp": {
+        "arrowName": "10to21",
+        "fieldList": [
+          "kadilla_mountain"
+        ]
+      }
+    }
+  },
+  "bonichea": {
+    "nodeName": "보니체아",
+    "nodeType": "village",
+    "nodeConnection": {}
+  },
+  "mountain_titania": {
     "nodeName": "티타니아 산",
-    "type": "dungeon",
-    "connection": {
-      "Retreat Stone": {
-      	"arrowName" : "12to20",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
+      "retreat_stone": {
+        "arrowName": "12to20",
+        "fieldList": []
+      }
+    }
+  },
+  "crystallized_valley_south": {
+    "nodeName": "수정 협곡 남쪽 입구",
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
+      "cobweb": {
+        "arrowName": "13to2",
+        "fieldList": [
+          "grassland"
         ]
       }
     }
   },
-  "Crystallized Valley": {
-    "nodeName": "수정 협곡",
-    "type": "dungeon",
-    "connection": {
-      "Winterfall": {
-      	"arrowName" : "13to8",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Cobweb": {
-      	"arrowName" : "13to2",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
+  "crystallized_valley_north": {
+    "nodeName": "수정 협곡 북쪽 입구",
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
+      "winterfall": {
+        "arrowName": "13to8",
+        "fieldList": []
+      }
+    }
+  },
+  "elven_forest_east": {
+    "nodeName": "엘프의 숲 동쪽 입구",
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
+      "statue_of_golden_beetle": {
+        "arrowName": "14to24",
+        "fieldList": [
+          "elven_forest"
         ]
       }
     }
   },
-  "Elven Forest": {
-    "nodeName": "엘프의 숲",
-    "type": "dungeon",
-    "connection": {
-      "Cemetery": {
-      	"arrowName" : "14to22",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Entrance of the Temple of Moerae": {
-        "arrowName" : "14to24",
-        "roadLength": "5",
-        "roadMonster": [
-          "assassin girl"
-        ]
+  "elven_forest_west": {
+    "nodeName": "엘프의 숲 서쪽 입구",
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
+      "caravanserai": {
+        "arrowName": "14to22",
+        "fieldList": []
       }
     }
   },
-  "Temple of Moerae": {
-    "nodeName": "모에라에 신전",
-    "type": "dungeon",
-    "connection": {
-      "Entrance of the Temple of Moerae": {
-        "arrowName" : "15to24",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
-        ]
+  "temple_of_moerae": {
+    "nodeName": "모에라에의 신전",
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
+      "statue_of_golden_beetle": {
+        "arrowName": "15to24",
+        "fieldList": []
       }
     }
   },
-  "Cape of Tempest": {
-    "nodeName": "폭풍의 곶",
-    "type": "dungeon",
-    "connection": {
-      "Statue of Golden Beetle Stone": {
-        "arrowName" : "15to19",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      }
-    }
-  },
-  "Devil Castle": {
+  "devil_castle": {
     "nodeName": "마왕성",
-    "type": "dungeon",
-    "connection": {
-      "Blackwood": {
-      	"arrowName" : "15to16",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
-        ]
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
+      "blackwood": {
+        "arrowName": "16to1",
+        "fieldList": []
       }
     }
   },
-  "Blackwood Forest": {
+  "blackwood_forest": {
     "nodeName": "블랙우드 숲",
-    "type": "dungeon",
-    "connection": {
-      "Blackwood": {
-      	"arrowName" : "17to1",
-        "roadLength": "4",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Vaical Castle": {
-      	"arrowName" : "17to6",
-        "roadLength": "4",
-        "roadMonster": [
-          "assassin girl"
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
+      "blackwood": {
+        "arrowName": "17to1",
+        "fieldList": [
+          "blackwood_forest"
         ]
       }
     }
   },
-  "Golden Lake": {
+  "golden_lake": {
     "nodeName": "금빛 호수",
-    "type": "dungeon",
-    "connection": {
-      "Vaical Castle": {
-      	"arrowName" : "18to6",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
-        ]
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {
+      "vaical_castle": {
+        "arrowName": "18to6",
+        "fieldList": []
       }
     }
   },
-  "Retreat Stone": {
+  "cape_of_tempest": {
+    "nodeName": "폭풍의 곶",
+    "nodeType": "dungeon_entrance",
+    "nodeConnection": {}
+  },
+  "retreat_stone": {
     "nodeName": "회군의 바위",
-    "type": "fork",
-    "connection": {
-      "Mountain Titania": {
-      	"arrowName" : "20to12",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
-        ]
+    "nodeType": "fork",
+    "nodeConnection": {
+      "oberon": {
+        "arrowName": "20to3",
+        "fieldList": []
       },
-      "Oberon": {
-      	"arrowName" : "20to3",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
-        ]
+      "mountain_titania": {
+        "arrowName": "20to12",
+        "fieldList": []
       },
-      "Dogbenefit Camp": {
-      	"arrowName" : "20to21",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
-        ]
+      "dogbenefit_camp": {
+        "arrowName": "20to21",
+        "fieldList": []
       }
     }
   },
-  "Dogbenefit Camp": {
+  "dogbenefit_camp": {
     "nodeName": "도그베네핏 야영지",
-    "type": "fork",
-    "connection": {
-      "Kadilla Castle": {
-      	"arrowName" : "21to10",
-        "roadLength": "6",
-        "roadMonster": [
-          "assassin girl"
+    "nodeType": "fork",
+    "nodeConnection": {
+      "retreat_stone": {
+        "arrowName": "21to20",
+        "fieldList": []
+      },
+      "kadilla_castle": {
+        "arrowName": "21to10",
+        "fieldList": [
+          "kadilla_mountain"
         ]
       },
-      "Retreat Stone": {
-      	"arrowName" : "21to20",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Caravanserial Place": {
-      	"arrowName" : "21to23",
-        "roadLength": "17",
-        "roadMonster": [
-          "assassin girl"
+      "caravanserai": {
+        "arrowName": "21to23",
+        "fieldList": [
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "elven_forest"
         ]
       }
     }
   },
-  "Cemetery": {
+  "cemetery": {
     "nodeName": "공동묘지",
-    "type": "fork",
-    "connection": {
-      "RedroseCastle": {
-      	"arrowName" : "22to7",
-        "roadLength": "2",
-        "roadMonster": [
-          "assassin girl"
-        ]
+    "nodeType": "fork",
+    "nodeConnection": {
+      "caravanserai": {
+        "arrowName": "22to23",
+        "fieldList": []
       },
-      "Elven Forest": {
-      	"arrowName" : "22to14",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
-        ]
+      "elven_forest_west": {
+        "arrowName": "22to14",
+        "fieldList": []
       },
-      "Caravanserial Place": {
-      	"arrowName" : "22to23",
-        "roadLength": "4",
-        "roadMonster": [
-          "assassin girl"
+      "redrose_castle": {
+        "arrowName": "22to7",
+        "fieldList": [
+          "bridge"
         ]
       }
     }
   },
-  "Caravanserial Place": {
+  "caravanserai": {
     "nodeName": "여행자의 쉼터",
-    "type": "fork",
-    "connection": {
-      "Dogbenefit Camp": {
-      	"arrowName" : "23to21",
-        "roadLength": "17",
-        "roadMonster": [
-          "assassin girl"
+    "nodeType": "fork",
+    "nodeConnection": {
+      "dogbenefit_camp": {
+        "arrowName": "23to21",
+        "fieldList": [
+          "elven_forest",
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "kadilla_mountain",
+          "kadilla_mountain"
         ]
       },
-      "Cemetery": {
-      	"arrowName" : "23to22",
-        "roadLength": "4",
-        "roadMonster": [
-          "assassin girl"
-        ]
+      "cemetery": {
+        "arrowName": "23to22",
+        "fieldList": []
       },
-      "Southcape": {
-      	"arrowName" : "23to4",
-        "roadLength": "11",
-        "roadMonster": [
-          "assassin girl"
+      "southcape": {
+        "arrowName": "23to4",
+        "fieldList": [
+          "grassland",
+          "grassland",
+          "grassland"
         ]
       }
     }
   },
-  "Entrance of the Temple of Moerae": {
-    "nodeName": "모에라에 신전 입구",
-    "type": "fork",
-    "connection": {
-      "Elven Forest": {
-      	"arrowName" : "24to14",
-        "roadLength": "5",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Temple of Moerae": {
-      	"arrowName" : "24to15",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Mirage Port": {
-      	"arrowName" : "24to9",
-        "roadLength": "6",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      }
-    }
-  },
-  "Statue of Golden Beetle Stone": {
+  "statue_of_golden_beetle": {
     "nodeName": "황금 풍뎅이 석상",
-    "type": "fork",
-    "connection": {
-      "Mirage Port": {
-      	"arrowName" : "25to9",
-        "roadLength": "7",
-        "roadMonster": [
-          "assassin girl"
+    "nodeType": "fork",
+    "nodeConnection": {
+      "temple_of_moerae": {
+        "arrowName": "24to15",
+        "fieldList": []
+      },
+      "mirage_port": {
+        "arrowName": "24to9",
+        "fieldList": [
+          "elven_forest",
+          "elven_forest"
         ]
       },
-      "Cape of Tempest": {
-      	"arrowName" : "25to19",
-        "roadLength": "3",
-        "roadMonster": [
-          "assassin girl"
-        ]
-      },
-      "Southcape": {
-      	"arrowName" : "25to4",
-        "roadLength": "7",
-        "roadMonster": [
-          "assassin girl"
+      "elven_forest_east": {
+        "arrowName": "24to14",
+        "fieldList": [
+          "elven_forest"
         ]
       }
     }

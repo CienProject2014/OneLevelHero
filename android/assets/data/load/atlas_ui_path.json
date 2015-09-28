@@ -1,5 +1,59 @@
 [
   {
+    "filePath": "texture/ui/popup/popup_atlas.atlas",
+    "element": [
+      "popupui_popup02",
+      "popupui_sound_acoff",
+      "popupui_sound_acon",
+      "popupui_sound_bar",
+      "popupui_sound_base",
+      "popupui_sound_button",
+      "popupui_sound_off",
+      "popupui_sound_on",
+      "popupui_acbutton",
+      "popupui_acbutton2",
+      "popupui_acbutton_accept",
+      "popupui_acbutton_cancel",
+      "popupui_acbutton_closed",
+      "popupui_acbutton_end",
+      "popupui_acbutton_load",
+      "popupui_acbutton_no",
+      "popupui_acbutton_sound",
+      "popupui_acbutton_title",
+      "popupui_acbutton_yes",
+      "popupui_button",
+      "popupui_button2",
+      "popupui_button_accept",
+      "popupui_button_cancel",
+      "popupui_button_closed",
+      "popupui_popup01",
+      "popupui_button_end",
+      "popupui_button_load",
+      "popupui_button_no",
+      "popupui_button_sound",
+      "popupui_button_title",
+      "popupui_button_yes",
+      "popupui_setmenu_base"
+    ]
+  },
+  {
+    "filePath": "texture/ui/battle/battle_right_menu.atlas",
+    "element": [
+      "battleui_rb_attack",
+      "battleui_rb_defense",
+      "battleui_rb_escape",
+      "battleui_rb_item",
+      "battleui_rb_skill",
+      "battleui_rb_wait",
+      "battleui_rbac_attack",
+      "battleui_rbac_defense",
+      "battleui_rbac_escape",
+      "battleui_rbac_item",
+      "battleui_rbac_skill",
+      "battleui_rbac_wait"
+    ]
+  },
+  {
     "filePath": "skin/Logo.atlas",
     "element": [
       "title"
@@ -18,14 +72,37 @@
     ]
   },
   {
+    "filePath": "texture/ui/dungeon_entrance/dungeon_entrance_atlas.atlas",
+    "element": [
+      "stay_button_field",
+      "stay_button_go",
+      "stay_button_memoraizing",
+      "stay_button_rest",
+      "stay_button_save"
+    ]
+  },
+  {
+  	"filePath" : "texture/ui/dungeon/dungeon_atlas.atlas",
+  	"element" : [
+  		"dungeonui_button_change_direction",
+  		"dungeonui_button_down",
+  		"dungeonui_button_exit",
+  		"dungeonui_button_go",
+  		"dungeonui_button_up"
+  	]
+  },
+  {
     "filePath": "skin/GameUiButton.pack",
     "element": [
-      "downArrowButton",
-      "bagButton",
-      "nameAndTime",
-      "helpButton",
-      "optionButton",
-      "upArrowButton"
+      "back_button",
+      "back_toggle_button",
+      "time_info_button",
+      "quest_log_button",
+      "quest_log_toggle_button",
+      "help_button",
+      "help_toggle_button",
+      "setting_button",
+      "setting_toggle_button"
     ]
   }
 ]

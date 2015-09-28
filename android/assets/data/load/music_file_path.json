@@ -1,23 +1,26 @@
 {
 	"opening":{
-		"filePath" : "sound/opening.mp3"
+		"filePath" : "music/opening.mp3"
 	},
-	"kingkai's_planet":{
-		"filePath" : "sound/kingkai's_planet.mp3"
+	"bgm_title" : {
+		"filePath" : "music/bgm_title.mp3"
 	},
-	"bigup":{
-		"filePath" : "sound/bigup.mp3"
+	"bgm_cobweb" : {
+		"filePath" : "music/bgm_cobweb.mp3"
 	},
-	"densetsu_fight":{
-		"filePath" : "sound/densetsu_fight.mp3"
+	"fights":{
+		"filePath" : "music/fights.mp3"
 	},
-	"grandpapa_eleven":{
-		"filePath" : "sound/grandpapa_eleven.mp3"
-	},
-	"old_battle":{
-		"filePath" : "sound/old_battle.mp3"
+	"fight_or_flight":{
+		"filePath" : "music/fight_or_flight.mp3"
 	},
 	"mihok_forest":{
-		"filePath" : "sound/mihok_forest.mp3"
+		"filePath" : "music/mihok_forest.mp3"
+	},
+	"seven_changer" : {
+		"filePath" : "music/seven_changer.mp3"
+	},
+	"tamsu03":{
+		"filePath" : "music/tamsu03.mp3"
 	}
 }

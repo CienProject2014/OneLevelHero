@@ -8,22 +8,34 @@
   "character_file_path": {
     "filePath": "data/load/character_file_path.json"
   },
-  "monster_file_path":{
-  	"filePath": "data/load/monster_file_path.json"
+  "monster_file_path": {
+    "filePath": "data/load/monster_file_path.json"
   },
-  "json_file_path":{
-  	"filePath":"data/load/json_file_path.json"
+  "animation_sheet_file_path": {
+    "filePath": "data/load/animation_sheet_file_path.json"
   },
-  "music_file_path":{
-  	"filePath":"data/load/music_file_path.json"
+  "sound_effect_file_path":{
+  	"filePath" : "data/load/sound_effect_file_path.json"
   },
-  "world_node_music_list":{
-  	"filePath":"data/sound/world_node_music_list.json"
+  "json_file_path": {
+    "filePath": "data/load/json_file_path.json"
   },
-  "battle_music_list":{
-  	"filePath":"data/sound/battle_music_list.json"
+  "music_file_path": {
+    "filePath": "data/load/music_file_path.json"
   },
-  "moving_music_list":{
-  	"filePath":"data/sound/moving_music_list.json"
+  "world_node_music_list": {
+    "filePath": "data/sound/world_node_music_list.json"
+  },
+  "sound_effect_list" : {
+  	"filePath" : "data/sound/sound_effect_list.json"
+  },
+  "battle_music_list": {
+    "filePath": "data/sound/battle_music_list.json"
+  },
+  "moving_music_list": {
+    "filePath": "data/sound/moving_music_list.json"
+  },
+  "event_music_list": {
+    "filePath": "data/sound/event_music_list.json"
   }
 }

@@ -7,13 +7,12 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.currentState.PositionInfo;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.manager.LoadManager;
-import com.mygdx.manager.MonsterManager;
-import com.mygdx.state.StaticAssets;
+import com.mygdx.manager.LoadNewManager;
 
 public class OneLevelTest extends Game {
 	private ApplicationContext context;
@@ -21,51 +20,47 @@ public class OneLevelTest extends Game {
 	@Override
 	public void create() {
 		Gdx.input.setCatchBackKey(true);
-		//디버그용 로그도 보이도록 설정
+		// 디버그용 로그도 보이도록 설정
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		StaticAssets.loadAll();
-		//context = RoboSpring.getContext(); 안드로이드에서 실행시
+		// context = RoboSpring.getContext(); 안드로이드에서 실행시
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		gameLoad();
-	}
 
-	public void gameLoad() {
-		context.getBean(ScreenFactory.class).setGame(this);
-		//가고자 하는 스크린의 메서드를 선택하자.
+		loadGame();
+
+		// goWorldMapScreen();
+		// context.getBean(PositionManager.class).setCurrentNodeName("oberon");
+		// goVillageScreen();
+		// goEncounterScreen();
+		// goVillageScreen();
+		// goWorldMapScreen();
 		goDungeonEntranceScreen();
 	}
 
-	//메뉴스크린은 게임을 로드할 필요가 없다.
-	private void goMenuScreen() {
-		context.getBean(ScreenFactory.class).show(ScreenEnum.MENU);
+	public void loadGame() {
+		context.getBean(ScreenFactory.class).setGame(this);
+		context.getBean(LoadNewManager.class).loadNewGame();
 	}
 
-	//이하 게임에 곧장 진입하고자 하는 경우
+	// 이하 게임에 곧장 진입하고자 하는 경우
+	private void goStatusScreen() {
+		context.getBean(ScreenFactory.class).show(ScreenEnum.STATUS);
+	}
+
 	private void goVillageScreen() {
-		context.getBean(LoadManager.class).loadNewGame();
 		context.getBean(ScreenFactory.class).show(ScreenEnum.VILLAGE);
 	}
 
 	private void goWorldMapScreen() {
-		context.getBean(LoadManager.class).loadNewGame();
 		context.getBean(ScreenFactory.class).show(ScreenEnum.WORLD_MAP);
 	}
 
-	private void goEncounterScreen() {
-		context.getBean(LoadManager.class).loadNewGame();
-		context.getBean(MonsterManager.class).createMonster();
-		context.getBean(ScreenFactory.class).show(ScreenEnum.ENCOUNTER);
-	}
-
 	private void goDungeonEntranceScreen() {
-		context.getBean(LoadManager.class).loadNewGame();
-		context.getBean(PositionInfo.class).setCurrentNode(
-				WorldNodeEnum.BLACKWOOD_FOREST.toString());
+		context.getBean(PositionInfo.class).setCurrentNodePath(WorldNodeEnum.BLACKWOOD_FOREST.toString());
 		context.getBean(ScreenFactory.class).show(ScreenEnum.DUNGEON_ENTRANCE);
 	}
 
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
 		if (keycode == Keys.BACK) {
 			// Do back button handling (show pause menu?)
 			// This will exit the app but you can add other

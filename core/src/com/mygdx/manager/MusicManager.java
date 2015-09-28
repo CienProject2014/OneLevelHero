@@ -6,66 +6,54 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
-import com.mygdx.currentState.MovingInfo;
+import com.mygdx.assets.MusicAssets;
 import com.mygdx.currentState.MusicInfo;
-import com.mygdx.currentState.PositionInfo;
-import com.mygdx.state.Assets;
+import com.mygdx.enums.MusicEnum;
 
 public class MusicManager {
 	@Autowired
+	private PositionManager positionManager;
+	@Autowired
+	private FieldManager fieldManager;
+	@Autowired
+	private MusicAssets musicAssets;
+	@Autowired
+	private EventManager eventManager;
+	@Autowired
 	private MusicInfo musicInfo;
-	@Autowired
-	private Assets assets;
-	@Autowired
-	private PositionInfo positionInfo;
-	@Autowired
-	private MovingInfo movingInfo;
 
 	public enum MusicCondition {
 		WHENEVER, IF_IS_NOT_PLAYING;
 	}
 
-	public MusicInfo getMusicInfo() {
-		return musicInfo;
-	}
-
-	public void setMusicInfo(MusicInfo musicInfo) {
-		this.musicInfo = musicInfo;
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
+	public float getMusicVolume() {
+		return musicInfo.getMusicVolume();
 	}
 
 	public void playMusic(Music music) {
-		musicInfo.getMusic().play();
+		music.setVolume(getMusicVolume());
+		musicInfo.setMusic(music);
+		playMusic();
 	}
 
-	public void setMusic(Music music) {
+	public void playMusic(String musicName) {
+		musicInfo.setPreMusicName(musicName);
+		Music music = musicAssets.getMusic(musicName);
+		music.setVolume(getMusicVolume());
 		musicInfo.setMusic(music);
+		playMusic();
 	}
 
 	public Music getMusic() {
 		return musicInfo.getMusic();
 	}
 
-	public void setVolume(float volume) {
-		musicInfo.getMusic().setVolume(volume);
+	public void setMusicVolume(float volume) {
+		musicInfo.setMusicVolume(volume);
 	}
 
 	public void playMusic() {
+		musicInfo.getMusic().setLooping(true);
 		musicInfo.getMusic().play();
 	}
 
@@ -73,71 +61,117 @@ public class MusicManager {
 		musicInfo.getMusic().stop();
 	}
 
-	public void setMusicAndPlay(Music music, float volume,
-			MusicCondition musicCondition) {
+	public void setMusicAndPlay(String musicName, MusicEnum musicType, MusicCondition musicCondition) {
 		switch (musicCondition) {
-			case WHENEVER:
-				if (musicInfo.getMusic() != null)
-					if (musicInfo.getMusic().isPlaying())
-						stopMusic();
+			case WHENEVER :
 				int delayTime = 2000;
-				Timer.schedule(new Task() {
-					@Override
-					public void run() {
-					}
-				}, delayTime);
-				setMusic(music);
-				setVolume(volume);
-				playMusic();
-				break;
-			case IF_IS_NOT_PLAYING:
-				if (musicInfo.getMusic() != null) {
-					if (musicInfo.getMusic().isPlaying()) {
-						return;
+				if (checkCurrentMusicIsNotNull()) {
+					if (!checkIsSameWithCurrentMusic(musicName, musicType)) {
+						stopMusic();
+						Timer.schedule(new Task() {
+							@Override
+							public void run() {
+							}
+						}, delayTime);
+						setMusicByType(musicName, musicType);
+						playMusic();
 					}
 				} else {
-					setMusic(music);
-					setVolume(volume);
+					setMusicByType(musicName, musicType);
 					playMusic();
 				}
 				break;
-			default:
+			case IF_IS_NOT_PLAYING :
+				if (checkCurrentMusicIsNotNull()) {
+					if (checkCurrentMusicIsPlaying())
+						return;
+				} else {
+					setMusicByType(musicName, musicType);
+					playMusic();
+				}
+				break;
+			default :
 				Gdx.app.error("MusicManager", "incorrect musicCondition");
 		}
 	}
 
-	public void setMusicAndPlay(Music music, MusicCondition musicCondition) {
-		setMusicAndPlay(music, assets.musicVolume, musicCondition);
+	private void setMusicByType(String musicName, MusicEnum musicType) {
+		Music music;
+		switch (musicType) {
+			case NORMAL :
+				setMusic(musicName);
+				break;
+			case WORLD_NODE_MUSIC :
+				String currentNode = positionManager.getCurrentNodePath();
+				music = musicAssets.getWorldNodeMusic(currentNode);
+				musicInfo.setPreMusicName(currentNode);
+				music.setVolume(musicInfo.getMusicVolume());
+				musicInfo.setMusic(music);
+				break;
+			case BATTLE_MUSIC :
+				music = musicAssets.getBattleMusic("fights");
+				musicInfo.setPreMusicName("fights");
+				music.setVolume(musicInfo.getMusicVolume());
+				musicInfo.setMusic(music);
+				break;
+			case MOVING_MUSIC : {
+				String arrowName = fieldManager.getArrowName();
+				musicInfo.setPreMusicName(arrowName);
+				music = musicAssets.getMovingMusic(arrowName);
+				music.setVolume(musicInfo.getMusicVolume());
+				musicInfo.setMusic(music);
+				break;
+			}
+			default :
+				Gdx.app.log("MusicManager", "musicType정보 오류 - " + musicType);
+				break;
+		}
 	}
 
-	public void setMusicAndPlay(Music music, float volume) {
-		setMusicAndPlay(music, volume, MusicCondition.WHENEVER);
+	private boolean checkCurrentMusicIsNotNull() {
+		return musicInfo.getMusic() != null;
 	}
 
-	public void setMusicAndPlay(Music music) {
-		setMusicAndPlay(music, assets.musicVolume);
+	private boolean checkCurrentMusicIsPlaying() {
+		return musicInfo.getMusic().isPlaying();
 	}
 
-	public void setWorldNodeMusicAndPlay() {
-		Music music = assets.worldNodeMusicMap.get(positionInfo.getCurrentNode());
-		setMusicAndPlay(music);
+	private boolean checkIsSameWithCurrentMusic(String musicName, MusicEnum musicType) {
+		switch (musicType) {
+			case NORMAL :
+				return musicInfo.getPreMusicName().equals(musicName);
+			case BATTLE_MUSIC :
+				return musicInfo.getPreMusicName().equals("fights");
+			case MOVING_MUSIC :
+				String arrowName = fieldManager.getArrowName();
+				return musicInfo.getPreMusicName().equals(arrowName);
+			case WORLD_NODE_MUSIC :
+				String currentNode = positionManager.getCurrentNodePath();
+				return musicInfo.getPreMusicName().equals(currentNode);
+			default :
+				Gdx.app.log("MusicManager", "musicType 정보 오류 - " + musicType);
+				return false;
+		}
+
 	}
 
-	public void setBattleMusicAndPlay() {
-		Music music = assets.battleMusicMap.get(movingInfo.getArrowName());
-		setMusicAndPlay(music);
+	public void setMusicAndPlay(String musicName) {
+		setMusicAndPlay(musicName, MusicEnum.NORMAL, MusicCondition.WHENEVER);
 	}
 
-	public void setMovingMusicAndPlay() {
-		Music music = assets.movingMusicMap.get(movingInfo.getArrowName());
-		setMusicAndPlay(music);
+	public void setMusicAndPlay(String musicName, MusicCondition musicCondition) {
+		setMusicAndPlay(musicName, MusicEnum.NORMAL, musicCondition);
 	}
 
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
+	public void setMusicAndPlay(MusicEnum musicType) {
+		setMusicAndPlay("", musicType, MusicCondition.WHENEVER);
 	}
 
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
+	public void setMusic(String musicName) {
+		musicInfo.setPreMusicName(musicName);
+		Music music = musicAssets.getMusic(musicName);
+		music.setVolume(musicInfo.getMusicVolume());
+		musicInfo.setMusic(music);
 	}
+
 }

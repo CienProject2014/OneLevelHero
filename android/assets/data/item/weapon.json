@@ -1,0 +1,1084 @@
+{
+  "empty_item": {
+    "itemType": "handgrip",
+    "name": "미 장착",
+    "itemPath": "empty_item",
+    "isTwoHanded": "false",
+    "effectStatus":{
+    }
+  },
+  "round_shield": {
+    "itemType": "handgrip",
+    "name": "라운드 쉴드",
+    "itemPath": "round_shield",
+    "category": "방패",
+    "grade": "일반",
+    "isTwoHanded": "false",
+    "effectStatusList": [
+      "defense",
+      "spped"
+    ],
+    "effectStatus": {
+      "defense": 5,
+      "speed":-5
+    },
+    "description": "나무로 만든, 동그랗고 작은 방패."
+  },
+  "buckler": {
+    "itemType": "handgrip",
+    "name": "버클러",
+    "itemPath": "buckler",
+    "category": "방패",
+    "grade": "일반",
+    "isTwoHanded": "false",
+    "effectStatusList": [
+      "defense",
+      "speed"
+    ],
+    "effectStatus": {
+      "defense": 7,
+      "speed": -7
+    },
+    "description": "라운드 실드에 철을 덧대 방어력을 높인 방패."
+  },
+  "tower_shield": {
+    "itemType": "handgrip",
+    "name": "타워 실드",
+    "itemPath": "tower_shield",
+    "category": "방패",
+    "grade": "레어",
+    "isTwoHanded": "false",
+    "effectStatusList": [
+      "defense",
+      "speed"
+    ],
+    "effectStatus": {
+      "defense": 20,
+      "speed": -15
+    },
+    "description": "기본 공격의 데미지를 10% 경감해준다. 문짝 같이 생긴 커다란 방패."
+  },
+  "crystal_shield": {
+    "itemType": "handgrip",
+    "name": "수정 방패",
+    "itemPath": "crystal_shield",
+    "category": "방패",
+    "grade": "레어",
+    "isTwoHanded": "false",
+    "effectStatusList": [
+      "defense",
+      "magicDefense",
+      "speed"
+    ],
+    "effectStatus": {
+      "defense": 10,
+      "magicDefense": 10,
+      "speed": -5
+    },
+    "description": "마법 공격의 데미지를 10% 경감시킨다. 한 때 윈터폴 지역에서 생산되던 방패다."
+  },
+  "ankillas_shield": {
+    "itemType": "handgrip",
+    "name": "안킬라스 쉴드",
+    "itemPath": "ankillas_shield",
+    "category": "방패",
+    "grade": "유니크",
+    "isTwoHanded": "false",
+    "effectStatusList": [
+      "defense",
+      "magicDefense",
+      "speed"
+    ],
+    "effectStatus": {
+      "defense": 15,
+      "magicDefense": 15,
+      "speed": -5
+    },
+    "description": "빙결 디버프 면역. 커다란 방패에 안킬라스 코어를 박아넣었다."
+  },
+  "empty_sword" : {
+  	"itemType" : "handgrip",
+  	"name" : "미 장착",
+  	"itemPath" : "empty_sword",
+  	"category" : "한손검",
+  	"isTwoHanded" : "false",
+  	"hitboxSize" :1
+  },
+  "broad_sword": {
+    "itemType" : "handgrip",
+    "name": "브로드 소드",
+    "itemPath" : "broad_sword",
+    "category": "한손검",
+    "grade": "일반",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "slash",
+      "stab"
+    ],
+    "effectStatusList" : [ "attack", "speed" ],
+    "effectStatus": {
+      "attack": 15,
+      "speed": -5
+    },
+    "description": "칼날이 넓은 검."
+  },
+  "sabre": {
+    "itemType" :"handgrip",
+    "name": "사브르",
+    "itemPath" : "sabre",
+    "category": "한손검",
+    "grade": "일반",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack", "speed" ],
+    "effectStatus": {
+      "attack": 12,
+      "speed": 5
+    },
+    "description": "외날이며 완만하게 구부러져 있다."
+  },
+  "rapier": {
+    "itemType" :  "handgrip",
+    "name": "레이피어",
+    "itemPath" : "rapier",
+    "category": "한손검",
+    "grade": "일반",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "stab"
+    ],
+    "effectStatusList" : [ "attack" ],
+    "effectStatus": {
+      "attack": 20
+    },
+    "description": "찌르기에 특화된 검."
+  },
+  "crysta_lsword": {
+    "itemType" :  "handgrip",
+    "name": "수정 직검",
+    "itemPath" : "crysta_lsword",
+    "category": "한손검",
+    "grade": "레어",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "slash",
+      "stab"
+    ],
+    "effectStatusList" : [ "attack", "magicAttack" ],
+    "effectStatus": {
+      "attack": 17,
+      "magicAttack":18
+      },
+    "description": "기본 공격 시 캐스팅 스택이 1개 쌓인다. 서큐버스가 사용하던 한손검. 수정으로 만들어져 있다."
+  },
+  "black_sword": {
+    "itemType" :  "handgrip",
+    "name": "검은 비수",
+    "itemPath" : "black_sword",
+    "category": "한손검",
+    "grade": "레어",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "stab"
+    ],
+    "effectStatusList" : [ "attack", "speed" ],
+    "effectStatus": {
+      "attack": 29,
+      "speed":10
+      },
+    "description": "암살자들이 사용하던 비수."
+  },
+  "cutlass": {
+    "itemType" :  "handgrip",
+    "name": "커틀러스",
+    "itemPath" : "cutlass",
+    "category": "한손검",
+    "grade": "레어",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack"],
+    "effectStatus": {
+      "attack": 22
+      },
+    "description": "선상전투를 위해 고안된 검. 길이가 짧고 베기에 특화된 단단한 날을 지님."
+  },
+  "strength_rapier": {
+    "itemType" :  "handgrip",
+    "name": "고강도 레이피어",
+    "itemPath" : "strength_rapier",
+    "category": "한손검",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "stab"
+    ],
+    "effectStatusList" : [ "attack" ],
+    "effectStatus": {
+      "attack": 37
+      },
+    "description": "찌르는 것에 특화된 검. 제작 기술의 어려움으로 고위직 장교들에게만 지급된다."
+  },
+  "ice_dragon_tooth": {
+    "itemType" :  "handgrip",
+    "name": "빙룡의 이빨",
+    "itemPath" : "ice_dragon_tooth",
+    "category": "한손검",
+    "grade": "유니크",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "slash" , "stab"
+    ],
+    "effectStatusList" : [ "attack" , "magicAttack"],
+    "effectStatus": {
+      "attack": 28,
+      "magicAttack": 5
+      },
+    "description": "기본 공격 시 적에게 지속시간 10초의 '빙결'을 건다. 안킬라스의 코어를 녹여 만든 검신으로 제작하였다. 가만히 들고 있기만 해도 냉기가 내려앉는다."
+  },
+  "redstar": {
+    "itemType" :  "handgrip",
+    "name": "레드스타",
+    "itemPath" : "redstar",
+    "category": "한손검",
+    "grade": "유니크",
+    "hitboxSize": 3,
+    "elementType": "불",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "slash" 
+    ],
+    "effectStatusList" : [ "attack" , "magicAttack"],
+    "effectStatus": {
+      "attack": 30,
+      "magicAttack": 15
+      },
+    "description": "착용 시간이 10시간을 넘으면 사망한다. 드래곤의 보물 중 하나로 전설의 도둑이 훔쳐냈다. 오래 착용하면 드래곤에 의해 죽을지도…"
+  },
+  "shield": {
+    "itemType" :  "handgrip",
+    "name": "쉴드",
+    "itemPath" : "shield",
+    "category": "한손검",
+    "grade": "레전드",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "slash" ,"stab"
+    ],
+    "effectStatusList" : [ "attack" , "magicAttack" , "defense","magicDefense"],
+    "effectStatus": {
+      "attack": 35,
+      "magicAttack": 15,
+      "defense": 5,
+      "magicDefense":5
+      },
+    "description": "'절대방어' 마법을 쓸 수 있다. 카딜라가 티타니아 반도를 정복할 때 사용했던 전설의 검. 신성한 기운을 내뿜고 있다."
+  },
+  "empty_twohandsword" : {
+  	"itemType" : "handgrip",
+  	"name" : "미 장착",
+  	"itemPath" : "empty_twohandsword",
+  	"category" : "양손검",
+  	"isTwoHanded" : "true",
+  	"hitboxSize":1
+  },
+  "great_sword": {
+    "itemType" :  "handgrip",
+    "name": "그레이트 소드",
+    "itemPath" : "great_sword",
+    "category": "양손검",
+    "grade": "일반",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack" ],
+    "effectStatus": {
+      "attack": 15
+      },
+    "description": "검신이 매우 크고 넓어 둔기처럼 생겼다."
+  },
+  "military_sword": {
+    "itemType" :  "handgrip",
+    "name": "왕국군 대검",
+    "itemPath" : "military_sword",
+    "category": "양손검",
+    "grade": "일반",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatus": {
+      "attack": 12,
+      "speed": 5 
+      },
+    "description": "왕국군에 보급되던 양손검."
+  },
+  "claymore": {
+    "itemType" :  "handgrip",
+    "name": "클레이모어",
+    "itemPath" : "claymore",
+    "category": "양손검",
+    "grade": "일반",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack" ],
+    "effectStatus": {
+      "attack": 17
+      },
+    "description": "등에 매고 다니는 대검."
+  },
+  "spirit_sword": {
+    "itemType" :  "handgrip",
+    "name": "수호의 정령 대검",
+    "itemPath" : "spirit_sword",
+    "category": "양손검",
+    "grade": "레어",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack" ,"defense"],
+    "effectStatus": {
+      "attack": 20,
+      "defense": 5
+      },
+    "description": "어그로 수치 20 증가. 수호의 힘을 지닌 정령의 혼이 깃들어 있다고 일컬어지는 대검."
+  },
+  "judgment_sword": {
+    "itemType" :  "handgrip",
+    "name": "심판자의 대검",
+    "itemPath" : "judgment_sword",
+    "category": "양손검",
+    "grade": "레어",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatus": {
+      "attack": 35,
+      "speed": -30
+      },
+    "description": "정제된 마력을 이용해 천상의 빛을 깃들게 한 검."
+  },
+  "berserker_sword": {
+    "itemType" : "handgrip",
+    "name": "광전사의 대검",
+    "itemPath" : "berserker_sword",
+    "category": "양손검",
+    "grade": "레어",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack" ],
+    "effectStatus": {
+      "attack": 32
+      },
+    "description": "공격 시 자신에게 '출혈'을 건다. 수많은 원혼의 기운으로 가득 찬 대검."
+  },
+  "goliath": {
+    "itemType" :  "handgrip",
+    "name": "골리앗",
+    "itemPath" : "goliath",
+    "category": "양손검",
+    "grade": "유니크",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack" ],
+    "effectStatus": {
+      "attack": 35
+      },
+    "description": "대형 몬스터에게 공격 시 데미지 20% 증가. 전설에 등장하는 거인의 대검. 그 위력은 천지를 두동강 내 버릴 정도라고 한다."
+  },
+  "tyrfingr": {
+    "itemType" :  "handgrip",
+    "name": "티르빙",
+    "itemPath" : "tyrfingr",
+    "category": "양손검",
+    "grade": "유니크",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack", "defense" ],
+    "effectStatus": {
+      "attack": 47,
+      "defense": -5
+      },
+    "description": "공격력 50% 증가. 착용자 외 다른 동료가 최후의 일격을 날린 경우 착용자의 체력이 30% 감소한다. 주인에게 강력한 힘을 가져다 주지만 결국에는 파멸로 이끈다는 마검."
+  },
+  "protect_sword": {
+    "itemType" :  "handgrip",
+    "name": "수호자 대검",
+    "itemPath" : "protect_sword",
+    "category": "양손검",
+    "grade": "유니크",
+    "hitboxSize": 3,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack" , "defense" ],
+    "effectStatus": {
+      "attack": 30,
+      "defense":5
+      },
+    "description": "공격 시 30%의 확률로 자신에게 '수호'가 걸린다. 마족으로부터 대륙을 수호한 기사가 사용했다고 전해지는 대검."
+  },
+  "storm_eye": {
+    "itemType" :  "handgrip",
+    "name": "폭풍의 눈",
+    "itemPath" : "storm_eye",
+    "category": "양손검",
+    "grade": "레전드",
+    "hitboxSize": 4,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "slash"
+    ],
+    "effectStatusList" : [ "attack"  ],
+    "effectStatus": {
+      "attack": 43
+      },
+    "description": "공격 시 40% 확률로 적의 방어력을 무시한다. 전설적인 대장장이가 마나 폭풍의 기운을 응축하여 벼려낸 검. 칼날이 닿고 지나간 자리에는 날카로운 한기만이 맴돈다."
+  },
+  "empty_book" : {
+  	"itemType" : "handgrip",
+  	"name" : "미 장착",
+  	"itemPath" : "empty_book",
+  	"category" : "책",
+  	"isTwoHanded" : "false",
+  	"hitboxSize":1
+  },
+  "bible": {
+    "itemType" :  "handgrip",
+    "name": "바이블",
+    "itemPath" : "bible",
+    "category": "책",
+    "grade": "일반",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack" ],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack":5 
+      },
+    "description": "회복 마법의 회복량 3% 증가. 신성한 말씀이 담겨져 있는 책"
+  },
+  "magic_procedure": {
+    "itemType" :  "handgrip",
+    "name": "마법의 정석",
+    "itemPath" : "magic_procedure",
+    "category": "책",
+    "grade": "일반",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack" ],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack":10
+      },
+    "description": "마법으로 공격 시 데미지 10 추가. 마법사용에 대한 기초가 담겨져 있는 책"
+  },
+  "for_adult": {
+    "itemType" :  "handgrip",
+    "name": "어른들을 위한 서적",
+    "itemPath" : "for_adult",
+    "category": "책",
+    "grade": "일반",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack"  ],
+    "effectStatus": {
+      "attack": 2
+      },
+    "description": "리리스가 착용한 경우 체력이 낮아져도 변신하지 않는다. 리리스가 들고 있기엔 부끄러운 책."
+  },
+  "high_rank": {
+    "itemType" :  "handgrip",
+    "name": "상위 1%",
+    "itemPath" : "high_rank",
+    "category": "책",
+    "grade": "레어",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack" ],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack":23
+      },
+    "description": "레벨이 70이상일 경우 주문력 + 5. 상위 1%만 제대로 능력을 발휘시킬 수 있는 책"
+  },
+  "sagediary": {
+    "itemType" :  "handgrip",
+    "name": "현자의 일기",
+    "itemPath" : "sagediary",
+    "category": "책",
+    "grade": "레어",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack" ],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack":25
+      },
+    "description": "리리스가 착용한 경우 1분당 경험치가 10 증가한다. 베르수스가 마법에 대해 쓴 일기장."
+  },
+  "encyclopedia": {
+    "itemType" :  "handgrip",
+    "name": "대백과사전",
+    "itemPath" : "encyclopedia",
+    "category": "책",
+    "grade": "레어",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ],
+    "effectStatus": {
+      "attack": 15
+      },
+    "description": "매우 두꺼워서 모서리에 찍히면 매우 아프다."
+  },
+  "death_note": {
+    "itemType" :  "handgrip",
+    "name": "사신의 명부",
+    "itemPath" : "death_note",
+    "category": "책",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack","defense","magicDefense", "speed"],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack": 40,
+      "defense": -10,
+      "magicDefense": -10,
+      "speed": -10
+      },
+    "description": "1분당 체력이 10 감소한다. 들고 있으면 사신에게 생명을 야금야금 빼앗긴다."
+  },
+  "golden_bible": {
+    "itemType" :  "handgrip",
+    "name": "금박 성서",
+    "itemPath" : "golden_bible",
+    "category": "책",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatus": {
+      "attack": 5,
+      "magicAttack": 30
+      },
+    "description": "착용자는 항상 '축복'상태가 된다. 금박으로 장식한 성서다."
+  },
+  "grimoires": {
+    "itemType" :  "handgrip",
+    "name": "고대 마법서",
+    "itemPath" : "grimoires",
+    "category": "책",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack": 30
+      },
+    "description": "착용자는 항상 '불굴'상태가 된다. 엘프들의 고대 마법에 대한 지식이 담겨져 있는 책"
+  },
+  "roar": {
+    "itemType" :  "handgrip",
+    "name": "로어",
+    "itemPath" : "roar",
+    "category": "책",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "false",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack": 35
+      },
+    "description": "캐스팅 사용 시 캐스팅 스택 1개가 추가로 쌓인다. 카딜라가 티타니아 반도를 정복할 때 가지고 다닌 마도서. 신성한 기운을 내뿜고 있다."
+  },
+  "empty_bow" : {
+  	"itemType" : "handgrip",
+  	"name" : "미 장착",
+  	"itemPath" : "empty_bow",
+  	"category" : "활",
+  	"isTwoHanded" : "true",
+  	"hitboxSize" :1
+  },
+  "long_bow": {
+    "itemType" :  "handgrip",
+    "name": "롱 보우",
+    "itemPath" : "long_bow",
+    "category": "활",
+    "grade": "일반",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "arrow"
+    ],
+    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatus": {
+      "attack": 15,
+      "speed": -10
+      },
+    "description": "길고 강력한 활."
+  },
+  "short_bow": {
+    "itemType" :  "handgrip",
+    "name": "숏보우",
+    "itemPath" : "short_bow",
+    "category": "활",
+    "grade": "일반",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "arrow"
+    ],
+    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatus": {
+      "attack": 8,
+      "speed": 20
+      },
+    "description": "작은 활. 빠르게 발사가 가능하나 위력이 떨어진다."
+  },
+  "paulownia_bow": {
+    "itemType" :  "handgrip",
+    "name": "오동나무 장궁",
+    "itemPath" : "paulownia_bow",
+    "category": "활",
+    "grade": "일반",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "arrow"
+    ],
+    "effectStatusList" : [ "attack" ],
+    "effectStatus": {
+      "attack": 12
+      },
+    "description": "손잡이에 붉은 천이 말려있는 일반적인 장궁."
+  },
+  "buffalo_bow": {
+    "itemType" :  "handgrip",
+    "name": "생의 각궁",
+    "itemPath" : "buffalo_bow",
+    "category": "활",
+    "grade": "레어",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "arrow"
+    ],
+    "effectStatusList" : [ "attack" ,"speed" ],
+    "effectStatus": {
+      "attack": 20,
+      "speed": 20
+      },
+    "description": "'저격' 상태 시 공격력이 20% 증가한다. 힘으로 소문난 물소의 뿔과 힘줄으로 강화한 활. 먼 곳까지 장전이 가능하다."
+  },
+  "catapult": {
+    "itemType" :  "handgrip",
+    "name": "쇠뇌",
+    "itemPath" : "catapult",
+    "category": "활",
+    "grade": "레어",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "arrow"
+    ],
+    "effectStatusList" : [ "attack"  ],
+    "effectStatus": {
+      "attack": 25
+      },
+    "description": "행동 게이지 소모량 -10. 힘들이지 않고 장전할 수 있는 편한 활"
+  },
+  "lighting": {
+    "itemType" :  "handgrip",
+    "name": "라이트닝",
+    "itemPath" : "lighting",
+    "category": "활",
+    "grade": "레어",
+    "hitboxSize": 1,
+    "elementType": "전기",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "arrow"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack" ],
+    "effectStatus": {
+      "attack": 0,
+      "magicAttack": 35
+      },
+    "description": "기본 공격의 데미지가 주문력 100%로 바뀐다. 화살대신 번개를 쏠 수 있는 활. 마나로즈의 마력이 담겨져 있다."
+  },
+  "palenote": {
+    "itemType" :  "handgrip",
+    "name": "페일노트",
+    "itemPath" : "palenote",
+    "category": "활",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "arrow"
+    ],
+    "effectStatusList" : [ "attack" ,"speed" ],
+    "effectStatus": {
+      "attack": 34,
+      "speed": 10
+      },
+    "description": "'정밀한 사격'시 치명도가 가장 높은 네 칸을 공격한다. 잊혀진 기사가 쓰던 활. 절대로 빗나가지 않는다."
+  },
+  "centauros_bow": {
+    "itemType" :  "handgrip",
+    "name": "켄타우로스의 활",
+    "itemPath" : "centauros_bow",
+    "category": "활",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "arrow"
+    ],
+    "effectStatusList" : [ "attack" ,"speed" ],
+    "effectStatus": {
+      "attack": 34,
+      "speed": 30
+      },
+    "description": "기본 공격 시 공격한 히트박스에 기본 공격을 1회 더 가한다. 빠르게 움직이는 켄타우로스는 2개의 화살을 한번에 발사하는데에 특화된 활을 사용한다."
+  },
+  "giant_bow": {
+    "itemType" :  "handgrip",
+    "name": "거인잡는 활",
+    "itemPath" : "giant_bow",
+    "category": "활",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "arrow"
+    ],
+    "effectStatusList" : [ "attack" ,"speed" ],
+    "effectStatus": {
+      "attack": 44,
+      "speed": -30
+      },
+    "description": "거대한 몬스터를 잡기위해 최적화된 활이다. 매우 강력하지만 , 무겁다."
+  },
+  "astra": {
+    "itemType" :  "handgrip",
+    "name": "아스트라",
+    "itemPath" : "astra",
+    "category": "활",
+    "grade": "레전드",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "arrow"
+    ],
+    "effectStatusList" : [ "attack"],
+    "effectStatus": {
+      "attack": 41
+      },
+    "description": "기술 사용 시 10% 확률로 행동 게이지 소모량 없이 1번 더 행동 가능. 신들의 힘을 빌려 소환한 활."
+  },
+  "empty_cane" : {
+  	"itemType" : "handgrip",
+  	"name" : "미 장착",
+  	"itemPath" : "empty_cane",
+  	"category" : "지팡이",
+  	"isTwoHanded" : "true",
+  	"hitboxSize":1
+  },
+  "gloomy_cane": {
+    "itemType" :  "handgrip",
+    "name": "음침한 지팡이",
+    "itemPath" : "gloomy_cane",
+    "category": "지팡이",
+    "grade": "일반",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" , "magicAttack"],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack": 11
+      },
+    "description": "디오미론느가 오랬동안 쓰고 있는 강령술용 지팡이. 망자의 기운이 깃들어 음침해 보인다."
+  },
+  "chestnut_cane": {
+    "itemType" :  "handgrip",
+    "name": "밤나무 지팡이",
+    "itemPath" : "chestnut_cane",
+    "category": "지팡이",
+    "grade": "일반",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" , "magicAttack","speed"],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack": 15,
+      "speed": 2
+      },
+    "description": "영혼들이 좋아한다는 밤나무로 만들어진 지팡이"
+  },
+  "blackwood_cane": {
+    "itemType" :  "handgrip",
+    "name": "블랙우드 스태프",
+    "itemPath" : "blackwood_cane",
+    "category": "지팡이",
+    "grade": "일반",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatus": {
+      "attack": 10,
+      "speed": 5
+      },
+    "description": "블랙우드 지방의 특이한 나무로 만든 지팡이."
+  },
+  "soul_predator": {
+    "itemType" :  "handgrip",
+    "name": "영혼포식자",
+    "itemPath" : "soul_predator",
+    "category": "지팡이",
+    "grade": "레어",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack": 23
+      },
+    "description": "마법(캐스팅 제외) 사용 시 체력 5% 회복. 영혼을 먹는 탐욕스러운 지팡이. 강령술에 어느 정도 익숙해진 자만이 다룰 수 있다."
+  },
+  "goldenbat_cane": {
+    "itemType" :  "handgrip",
+    "name": "황금박쥐 지팡이",
+    "itemPath" : "goldenbat_cane",
+    "category": "지팡이",
+    "grade": "레어",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack": 24
+      },
+    "description": "기본 공격 시 캐스팅 스택이 1개 쌓인다. 황금으로 만들어진 박쥐형상의 지팡이, 양 끝에는 사파이어가 달려있다."
+  },
+  "hiking_cane": {
+    "itemType" :  "handgrip",
+    "name": "등산 지팡이",
+    "itemPath" : "hiking_cane",
+    "category": "지팡이",
+    "grade": "레어",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"speed"],
+    "effectStatus": {
+      "attack": 15,
+      "speed": 20
+      },
+    "description": "산 필드맵에서 이동할 때 이동시간 5분 단축. 등산 시 좋다."
+  },
+  "wail_and_cry": {
+    "itemType" :  "handgrip",
+    "name": "통곡과 절규",
+    "itemPath" : "wail_and_cry",
+    "category": "지팡이",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatus": {
+      "attack": 5,
+      "magicAttack" : 27
+      },
+    "description": "자신이 받는 피해량 10% 증가, '강령의식-呪'의 데미지가 2배가 된다. 뱀 두마리가 교차된 형태로 이루어진 저주 특화 지팡이. 두 뱀은 각각 통곡과 절규를 상징한다."
+  },
+  "dark_moon": {
+    "itemType" :  "handgrip",
+    "name": "그믐달 나그네",
+    "itemPath" : "dark_moon",
+    "category": "지팡이",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack" : 29
+      },
+    "description": "'망자의 속삭임' 사용 시 적에게 100의 고정 데미지를 입히고, 4개의 상태이상을 모두 건다. 망자들의 벗이라 인정받은 자의 증표."
+  },
+  "lether_tear": {
+    "itemType" :  "handgrip",
+    "name": "레테강의 눈물",
+    "itemPath" : "lether_tear",
+    "category": "지팡이",
+    "grade": "유니크",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatus": {
+      "attack": 2,
+      "magicAttack" : 30
+      },
+    "description": "전투에서 자신 이외의 동료가 사망해도 게임오버되지 않고, 전투 종료 시 체력 1로 살아난다. 죽음에 이르면 건너게 된다는 레테강 앞에서 직접 영들을 끌어올 수 있는 매우 강력한 무구."
+  },
+  "reback_soul": {
+    "itemType" :  "handgrip",
+    "name": "환혼의 다로임",
+    "itemPath" : "reback_soul",
+    "category": "지팡이",
+    "grade": "레전드",
+    "hitboxSize": 1,
+    "elementType": "무",
+    "isTwoHanded": "true",
+    "attackTypeList": [
+      "smash"
+    ],
+    "effectStatusList" : [ "attack" ,"magicAttack"],
+    "effectStatus": {
+      "attack": 5,
+      "magicAttack" : 30
+      },
+    "description": "모든 마법의 요구 캐스팅 스택 1 감소. 신이 내려주었다고 전해지는 전설적인 지팡이. 섭리의 흐름을 뒤집어 환혼을 이룬다."
+  }
+}

@@ -1,144 +1,126 @@
 package com.mygdx.stage;
 
+import java.util.Map.Entry;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.mygdx.currentState.PositionInfo;
-import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.manager.CameraManager;
-import com.mygdx.manager.CameraManager.CameraPosition;
-import com.uwsoft.editor.renderer.Overlap2DStage;
-import com.uwsoft.editor.renderer.actor.CompositeItem;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.NodeAssets;
+import com.mygdx.assets.StaticAssets;
+import com.mygdx.assets.WorldMapAssets;
+import com.mygdx.enums.TextureEnum;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.ArrowButtonListener;
+import com.mygdx.listener.DungeonEntranceButtonListener;
+import com.mygdx.manager.DungeonManager;
+import com.mygdx.manager.PartyManager;
+import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.TextureManager;
+import com.mygdx.model.location.DungeonEntrance;
+import com.mygdx.model.location.NodeConnection;
+import com.mygdx.screen.DungeonEntranceScreen;
 
 /**
  * @author Velmont
- *
+ * 
  */
-public class DungeonEntranceStage extends Overlap2DStage {
+public class DungeonEntranceStage extends BaseOneLevelStage {
+	private ImageButton entranceButton, saveButton, restButton, backButton;
 	@Autowired
-	private PositionInfo positionInfo; //나중에 쓸거임 지우지 마셈
+	private PartyManager partymanager;
 	@Autowired
-	private ScreenFactory screenFactory;
+	private TextureManager textureManager;
 	@Autowired
-	private CameraManager cameraManager;
-	private CompositeItem entranceButton, saveButton, restButton,
-			worldMapButton;
+	private NodeAssets nodeAssets;
+	@Autowired
+	private WorldMapAssets worldMapAssets;
+	@Autowired
+	private AtlasUiAssets atlasUiAssets;
+	@Autowired
+	private ListenerFactory listenerFactory;
+	@Autowired
+	private DungeonManager dungeonManager;
+	@Autowired
+	private PositionManager positionManager;
+	private DungeonEntrance dungeonEntranceInfo;
 
 	public Stage makeStage() {
-		makeScene();
+		super.makeStage();
+		dungeonEntranceInfo = nodeAssets.getDungeonEntranceByPath(positionManager.getCurrentNodePath());
+		makeScene(dungeonEntranceInfo);
 		setButton();
 		return this;
 	}
 
-	private void makeScene() {
-		initSceneLoader();
-		//우선은 blackwood_forest_entrance_scene으로 통일하자
-		sceneLoader.loadScene("blackwood_forest_entrance_scene");
-		cameraManager.setCameraSize(this, CameraPosition.BELOW_GAME_UI);
-		addActor(sceneLoader.getRoot());
+	private void makeScene(DungeonEntrance dungeonEntranceInfo) {
+		Table backgroundTable = new Table();
+		backgroundTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
+		backgroundTable.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
+		TextureRegionDrawable backgroundImage = new TextureRegionDrawable(new TextureRegion(
+				textureManager.getBackgroundTexture(dungeonEntranceInfo.getNodePath(), TextureEnum.NORMAL)));
+		backgroundTable.setBackground(backgroundImage);
+		tableStack.addActor(backgroundTable);
 	}
 
 	private void setButton() {
-		entranceButton = sceneLoader.getRoot().getCompositeById(
-				"entrance_button");
-		saveButton = sceneLoader.getRoot().getCompositeById("save_button");
-		restButton = sceneLoader.getRoot().getCompositeById("rest_button");
-		worldMapButton = sceneLoader.getRoot().getCompositeById(
-				"worldmap_button");
+		entranceButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_go"));
+		saveButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_save"));
+		restButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_rest"));
+		backButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_field"));
 
-		entranceButton.setTouchable(Touchable.enabled);
-		entranceButton.addListener(new InputListener() {
+		dungeonManager.getDungeonInfo().setStartDungeonRoomIndex(dungeonEntranceInfo.getStartDungeonRoomIndex());
+		DungeonEntranceButtonListener dungeonEntranceButtonListener = listenerFactory
+				.getDungeonEntranceButtonListener();
+		dungeonEntranceButtonListener.setDungeonPath(dungeonEntranceInfo.getNodePath());
+		entranceButton.addListener(dungeonEntranceButtonListener);
+
+		saveButton.addListener(new ClickListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.debug("DungeonEntranceStage", "던전으로 들어가자!");
-				screenFactory.show(ScreenEnum.DUNGEON);
+			public void clicked(InputEvent event, float x, float y) {
+				DungeonEntranceScreen.isInSave = true;
 			}
 		});
 
-		saveButton.setTouchable(Touchable.enabled);
-		saveButton.addListener(new InputListener() {
+		restButton.addListener(new ClickListener() {
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				Gdx.app.debug("DungeonEntranceStage", "게임이 저장되었다...");
-			}
-		});
-
-		restButton.setTouchable(Touchable.enabled);
-		restButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+			public void clicked(InputEvent event, float x, float y) {
+				partymanager.setFatigue(0);
+				partymanager.healAllHero();
 				Gdx.app.debug("DungeonEntranceStage", "잘 쉬었도다...");
 			}
 		});
 
-		worldMapButton.setTouchable(Touchable.enabled);
-		worldMapButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
+		String currentNode = positionManager.getCurrentNodePath();
+		Entry<String, NodeConnection> nodeConnection = worldMapAssets.getWorldNodeInfo(currentNode).getNodeConnection()
+				.entrySet().iterator().next();
+		ArrowButtonListener arrowButtonListener = listenerFactory.getArrowButtonListener();
+		arrowButtonListener.setConnection(nodeConnection);
+		backButton.addListener(arrowButtonListener);
 
-				return true;
-			}
+		Table entranceTable = new Table();
+		entranceTable.setFillParent(true);
+		entranceTable.center();
+		entranceTable.add(entranceButton);
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				screenFactory.show(ScreenEnum.WORLD_MAP);
-			}
-		});
+		Table buttonTable = new Table();
+		buttonTable.setFillParent(true);
+		buttonTable.right().bottom();
+		buttonTable.padRight(StaticAssets.BASE_WINDOW_WIDTH * 0.14f).padBottom(StaticAssets.BASE_WINDOW_HEIGHT * 0.16f);
+		buttonTable.row();
+		buttonTable.add(saveButton);
+		buttonTable.row();
+		buttonTable.add(restButton);
+		buttonTable.row();
+		buttonTable.add(backButton);
+		tableStack.addActor(entranceTable);
+		tableStack.addActor(buttonTable);
 	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public CameraManager getCameraManager() {
-		return cameraManager;
-	}
-
-	public void setCameraManager(CameraManager cameraManager) {
-		this.cameraManager = cameraManager;
-	}
-
 }

@@ -1,0 +1,76 @@
+
+redrose_castle_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgredrosecastle
+  rotate: false
+  xy: 2, 656
+  size: 3840, 1080
+  orig: 3840, 1080
+  offset: 0, 0
+  index: -1
+redrose-left0000-------4
+  rotate: false
+  xy: 2, 448
+  size: 254, 206
+  orig: 254, 206
+  offset: 0, 0
+  index: -1
+redrose-left0001-------3
+  rotate: false
+  xy: 2, 238
+  size: 252, 208
+  orig: 252, 208
+  offset: 0, 0
+  index: -1
+redrose-left0002-------2
+  rotate: false
+  xy: 258, 574
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+redrose-left0003-------1
+  rotate: false
+  xy: 258, 492
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+redrose-right0000-------3
+  rotate: false
+  xy: 460, 574
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+redrose-right0001-------2
+  rotate: false
+  xy: 460, 492
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+redrose-right0002-------1
+  rotate: false
+  xy: 662, 574
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+townuileft
+  rotate: false
+  xy: 3844, 1502
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1
+townuiright
+  rotate: false
+  xy: 2, 2
+  size: 122, 234
+  orig: 122, 234
+  offset: 0, 0
+  index: -1

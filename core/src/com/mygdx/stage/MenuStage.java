@@ -1,141 +1,124 @@
 package com.mygdx.stage;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
+import com.mygdx.assets.AtlasUiAssets;
+import com.mygdx.assets.ConstantsAssets;
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.state.Assets;
-import com.mygdx.state.StaticAssets;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.manager.MusicManager;
+import com.mygdx.manager.SoundManager;
+import com.mygdx.manager.TextureManager;
+import com.mygdx.popup.SoundPopup;
 
-public class MenuStage extends Stage {
+public class MenuStage extends BaseOneLevelStage {
 	@Autowired
-	private Assets assets;
+	private AtlasUiAssets atlasUiAssets;
 	@Autowired
-	private ScreenFactory screenFactory;
-	private ImageButton[] button;
+	private TextureManager textureManager;
+	@Autowired
+	private ListenerFactory listenerFactory;
+	@Autowired
+	private MusicManager musicManager;
+	@Autowired
+	private SoundManager soundManager;
+
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
+	private SoundPopup soundPopup;
+	private Table buttonTable;
 
 	public Stage makeStage() {
-		button = new ImageButton[4];
-		Image logo = new Image(assets.atlasUiMap.get("title"));
-		Texture texture = StaticAssets.backgroundTextureMap
-				.get("main_background");
-		Image background = new Image(texture);
+		super.makeStage();
+		uiConstantsMap = constantsAssets.getUiConstants("MenuStage");
+		buttonTable = new Table();
+		soundPopup = new SoundPopup();
+		ImageButton startButton;
+		ImageButton settingButton;
+		ImageButton albumButton;
+		ImageButton creditButton;
+		Float buttonWidth = 630f;
+		Float buttonHeight = 195f;
+		ImageButton logo;
 
-		Table table = new Table(assets.skin);
+		Image background = new Image(textureManager.getBackgroundTexture("main_background"));
 
-		button[0] = new ImageButton(
-		// FIXME 버튼하나 없음
-				assets.atlasUiMap.get("button_start_after"),
-				assets.atlasUiMap.get("button_start_after"));
-		button[1] = new ImageButton(
-				assets.atlasUiMap.get("button_option_before"),
-				assets.atlasUiMap.get("button_option_after"));
-		button[2] = new ImageButton(
-				assets.atlasUiMap.get("button_credit_before"),
-				assets.atlasUiMap.get("button_credit_after"));
-		button[3] = new ImageButton(
-				assets.atlasUiMap.get("button_extra_before"),
-				assets.atlasUiMap.get("button_extra_after"));
+		// 이미지추가
+		startButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_start.png"))));
+		settingButton = new ImageButton(new SpriteDrawable(
+				new Sprite(new Texture("texture/ui/title/title_setting.png"))));
+		albumButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_album.png"))));
+		creditButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_credit.png"))));
 
-		button[0].addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
+		// 클릭리스너추가
+		startButton.addListener(listenerFactory.getLoadListener());
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				screenFactory.show(ScreenEnum.LOAD);
-			}
-		});
-		button[1].addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				screenFactory.show(ScreenEnum.OPTION);
-			}
-		});
-		button[2].addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				screenFactory.show(ScreenEnum.CREDIT);
-
-			}
-		});
-		button[3].addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
-				screenFactory.show(ScreenEnum.COLLETION);
-
+		settingButton.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
+				soundManager.playClickSound();
+				soundPopup.setAtlasUiAssets(atlasUiAssets);
+				soundPopup.setListenerFactory(listenerFactory);
+				soundPopup.setConstantsAssets(constantsAssets);
+				soundPopup.setMusicManager(musicManager);
+				soundPopup.setSoundManager(soundManager);
+				soundPopup.initialize();
+				addActor(soundPopup);
+				soundPopup.setVisible(true);
 			}
 		});
 
-		logo.setHeight((int) (0.4f * assets.windowHeight));
-		logo.setWidth((int) (0.6f * assets.windowWidth));
-		table.setFillParent(true);
+		albumButton.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
+				soundManager.playClickSound();
+				screenFactory.push(ScreenEnum.COLLECTION);
+			}
+		});
 
-		table.add(button[3]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).expand().top().left();
-		table.add(button[2]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).top().right();
-		table.row();
-		table.add(button[0]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).bottom().left();
-		table.add(button[1]).height(0.35f * assets.windowHeight)
-				.width(0.3f * assets.windowWidth).bottom().right();
-		logo.setPosition((int) (0.2f * assets.windowWidth),
-				(int) (0.3f * assets.windowHeight));
-		background.setSize(assets.windowWidth, assets.windowHeight);
+		creditButton.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y) {
+				soundManager.playClickSound();
+				screenFactory.push(ScreenEnum.CREDIT);
+			}
+		});
 
-		this.addActor(background);
-		this.addActor(logo);
-		this.addActor(table);
+		logo = new ImageButton(atlasUiAssets.getAtlasUiFile("title"));
+		logo.bottom().left();
+		logo.padLeft(0.113f * StaticAssets.BASE_WINDOW_WIDTH).padBottom(0.278f * StaticAssets.BASE_WINDOW_HEIGHT);
+
+		// logo.
+
+		buttonTable.top().right();
+		buttonTable.padRight(uiConstantsMap.get("tTablePadRight"));
+		buttonTable.setFillParent(true);
+		buttonTable.add(startButton).height(uiConstantsMap.get("tButtonHeight"))
+				.width(uiConstantsMap.get("tButtonWidth")).padTop(uiConstantsMap.get("tTablePadTop"));
+		buttonTable.row();
+		buttonTable.add(settingButton).height(uiConstantsMap.get("tButtonHeight"))
+				.width(uiConstantsMap.get("tButtonWidth")).padTop(uiConstantsMap.get("tButtonSpace"));
+		buttonTable.row();
+		buttonTable.add(albumButton).height(uiConstantsMap.get("tButtonHeight"))
+				.width(uiConstantsMap.get("tButtonWidth")).padTop(uiConstantsMap.get("tButtonSpace"));
+		buttonTable.row();
+		buttonTable.add(creditButton).height(buttonHeight).width(buttonWidth)
+				.padTop(uiConstantsMap.get("tButtonSpace"));
+		background.setSize(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
+		tableStack.addActor(background);
+		tableStack.addActor(logo);
+		tableStack.addActor(buttonTable);
+
 		return this;
 	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
 }

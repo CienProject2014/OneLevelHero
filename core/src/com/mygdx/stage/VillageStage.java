@@ -1,182 +1,231 @@
 package com.mygdx.stage;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.mygdx.currentState.PositionInfo;
-import com.mygdx.enums.PlaceEnum;
-import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.manager.CameraManager;
-import com.mygdx.manager.CameraManager.CameraPosition;
-import com.mygdx.model.Building;
-import com.mygdx.model.Village;
-import com.mygdx.state.Assets;
-import com.uwsoft.editor.renderer.Overlap2DStage;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.mygdx.assets.NodeAssets;
+import com.mygdx.assets.WorldMapAssets;
+import com.mygdx.enums.VillageDirectionEnum;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.ArrowButtonListener;
+import com.mygdx.listener.BuildingButtonListener;
+import com.mygdx.manager.AssetsManager;
+import com.mygdx.manager.CameraManager.CameraStateEnum;
+import com.mygdx.manager.FieldManager;
+import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.TimeManager;
+import com.mygdx.model.location.Building;
+import com.mygdx.model.location.NodeConnection;
+import com.mygdx.model.location.Village;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
-public class VillageStage extends Overlap2DStage {
+public class VillageStage extends BaseOverlapStage {
 	@Autowired
-	private Assets assets;
+	private NodeAssets nodeAssets;
 	@Autowired
-	private ScreenFactory screenFactory;
+	private WorldMapAssets worldMapAssets;
 	@Autowired
-	private PositionInfo positionInfo;
+	private ListenerFactory listenerFactory;
 	@Autowired
-	private CameraManager cameraManager;
-
+	private AssetsManager assetsManager;
+	@Autowired
+	private TimeManager timeManager;
+	@Autowired
+	private FieldManager fieldManager;
+	@Autowired
+	private PositionManager positionManager;
 	private Village villageInfo;
 	public TextButton shiftButton;
-	private BackgroundDirection backgroundDirection;
-
-	public enum BackgroundDirection {
-		UP, DOWN, MOVE_UP, MOVE_DOWN;
-	}
 
 	public Stage makeStage() {
 		setVillage();
+		cameraManager.stretchToDevice(this, positionManager.getVillageDirection());
 		return this;
+	}
+
+	private void setArrow() {
+		List<CompositeItem> arrowList = new ArrayList<CompositeItem>();
+		String currentNode = positionManager.getCurrentNodePath();
+		Map<String, NodeConnection> connectionMap = worldMapAssets.getWorldNodeInfo(currentNode).getNodeConnection();
+		for (final Entry<String, NodeConnection> connection : connectionMap.entrySet()) {
+			final CompositeItem arrow = sceneLoader.getRoot().getCompositeById(connection.getValue().getArrowName());
+			if (arrow != null) {
+				arrow.setVisible(true);
+				arrow.setTouchable(Touchable.enabled);
+				ArrowButtonListener arrowButtonListener = listenerFactory.getArrowButtonListener();
+				arrowButtonListener.setConnection(connection);
+				arrow.addListener(arrowButtonListener);
+				arrowList.add(arrow);
+			}
+		}
+	}
+
+	private void setVillageScene(PositionManager positionManager, NodeAssets nodeAssets) {
+		if (nodeAssets.getVillageByPath(positionManager.getCurrentNodePath()) != null) {
+			villageInfo = nodeAssets.getVillageByPath(positionManager.getCurrentNodePath());
+			assetsManager.initScene(villageInfo.getScenePath());
+			initSceneLoader(assetsManager.rm);
+			sceneLoader.loadScene(villageInfo.getScenePath());
+		} else {
+			villageInfo = nodeAssets.getVillageByPath("blackwood");
+			assetsManager.initScene(villageInfo.getScenePath());
+			initSceneLoader(assetsManager.rm);
+			sceneLoader.loadScene(villageInfo.getScenePath());
+		}
 	}
 
 	// 마을 정보에 맞게 스테이지 형성
 	private void setVillage() {
-		initSceneLoader();
-		Gdx.app.debug("VillageStage",
-				String.valueOf(positionInfo.getCurrentNode()));
-		// 임시로 블랙우드 정보를 넣는다.
-		// villageInfo = assets.villageMap.get(positionInfo.getCurrentNode());
-		villageInfo = assets.villageMap.get("Blackwood");
-		// 아직까진 블랙우드밖에 없으므로 블랙우드 sceneName을 넣어주자
-		// sceneLoader.loadScene(villageInfo.getSceneName());
-		sceneLoader.loadScene("blackwood_scene");
-		cameraManager.setCameraSize(this, CameraPosition.ABOVE_GAME_UI);
-		backgroundDirection = BackgroundDirection.DOWN;
-		addActor(sceneLoader.getRoot());
+		Gdx.app.log("VillageStage", String.valueOf(positionManager.getCurrentNodePath()));
+		setVillageScene(positionManager, nodeAssets);
+		setArrow();
+		setArrowDirection();
+
 		setBuildingButton();
-		shiftButton = new TextButton("전환", assets.skin);
-		shiftButton.center();
-		shiftButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				return true;
-			}
+		addActor(sceneLoader.getRoot());
+		VillageDirectionEnum villageDirection = villageInfo.getVillageDirection();
+		switch (villageDirection) {
+			case UP_DOWN :
+				final CompositeItem shiftbutton_up = sceneLoader.getRoot().getCompositeById("camera_up");
+				final CompositeItem shiftbutton_down = sceneLoader.getRoot().getCompositeById("camera_down");
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y,
-					int pointer, int button) {
+				shiftbutton_up.setTouchable(Touchable.enabled);
+				shiftbutton_down.setTouchable(Touchable.enabled);
 
-				if (backgroundDirection.equals(BackgroundDirection.DOWN)) {
-					backgroundDirection = BackgroundDirection.MOVE_UP;
-				} else if (backgroundDirection.equals(BackgroundDirection.UP)) {
-					backgroundDirection = BackgroundDirection.MOVE_DOWN;
-				}
+				shiftbutton_up.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						positionManager.setVillageDirection(VillageDirectionEnum.UP);
+						setCameraState(CameraStateEnum.MOVE_UP);
+						timeManager.plusMinute(15);
+						cameraManager.setMoveFlag(2);
+					}
+				});
 
-				event.getListenerActor().setVisible(false);
-			}
-		});
-		addActor(shiftButton);
+				shiftbutton_down.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						positionManager.setVillageDirection(VillageDirectionEnum.DOWN);
+						setCameraState(CameraStateEnum.MOVE_DOWN);
+						timeManager.plusMinute(15);
+						cameraManager.setMoveFlag(2);
+					}
+				});
+				cameraManager.setDirection(1);
+
+				break;
+			case LEFT_RIGHT :
+				final CompositeItem shiftbutton_left = sceneLoader.getRoot().getCompositeById("camera_left");
+				final CompositeItem shiftbutton_right = sceneLoader.getRoot().getCompositeById("camera_right");
+
+				shiftbutton_left.setTouchable(Touchable.enabled);
+				shiftbutton_right.setTouchable(Touchable.enabled);
+
+				shiftbutton_left.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						positionManager.setVillageDirection(VillageDirectionEnum.LEFT);
+						setCameraState(CameraStateEnum.MOVE_LEFT);
+						cameraManager.setMoveFlag(5);
+						timeManager.plusMinute(15);
+
+					}
+				});
+
+				shiftbutton_right.addListener(new ClickListener() {
+					@Override
+					public void clicked(InputEvent event, float x, float y) {
+						positionManager.setVillageDirection(VillageDirectionEnum.RIGHT);
+						setCameraState(CameraStateEnum.MOVE_RIGHT);
+						cameraManager.setMoveFlag(5);
+						timeManager.plusMinute(15);
+
+					}
+				});
+				cameraManager.setDirection(2);
+
+				break;
+			case CENTER :
+				break;
+			default :
+				Gdx.app.log("VillageStage", "VillageDirectionEnum정보 오류");
+		}
+		setNullCase(villageInfo);
 	}
-
-	@Override
-	public void draw() {
-		moveCam();
-		super.draw();
-	}
-
-	private void moveCam() {
-		int movingSpeed = 10;
-		checkCameraPosition();
-		if (backgroundDirection.equals(BackgroundDirection.MOVE_UP)) {
-			this.getCamera().translate(0, movingSpeed, 0);
-			shiftButton.moveBy(0, movingSpeed);
-		} else if (backgroundDirection.equals(BackgroundDirection.MOVE_DOWN)) {
-			this.getCamera().translate(0, -movingSpeed, 0);
-			shiftButton.moveBy(0, -movingSpeed);
-		} else {
-
+	private void setNullCase(Village villageInfo) {
+		if (villageInfo.getArrowDirection() == null || positionManager.getVillageDirection() == null) {
+			if (villageInfo.getVillageDirection().equals(VillageDirectionEnum.UP_DOWN)) {
+				positionManager.setVillageDirection(VillageDirectionEnum.DOWN);
+			} else if (villageInfo.getVillageDirection().equals(VillageDirectionEnum.LEFT_RIGHT)) {
+				positionManager.setVillageDirection(VillageDirectionEnum.LEFT);
+			} else {
+				positionManager.setVillageDirection(VillageDirectionEnum.CENTER);
+			}
 		}
 	}
 
-	private void checkCameraPosition() {
-		if (this.getCamera().position.y > sceneLoader.getRoot().getHeight()
-				- this.getCamera().viewportHeight / 2 * 0.90f) {
-			this.getCamera().position.y = sceneLoader.getRoot().getHeight()
-					- this.getCamera().viewportHeight / 2 * 0.90f;
-			backgroundDirection = BackgroundDirection.UP;
+	private void setArrowDirection() {
+		if (villageInfo.getArrowDirection() != null) {
+			for (Entry<String, VillageDirectionEnum> arrowInfo : villageInfo.getArrowDirection().entrySet()) {
+				if (arrowInfo.getKey().equals(fieldManager.getArrowName())) {
+					positionManager.setVillageDirection(arrowInfo.getValue());
+				}
+			}
+		}
+	}
 
-			shiftButton.setVisible(true);
+	private void controlButton() {
+		if (cameraManager.getMoveFlag() == 0) {
+			sceneLoader.getRoot().getCompositeById("camera_down").setVisible(true);
+			sceneLoader.getRoot().getCompositeById("camera_up").setVisible(false);
+		} else if (cameraManager.getMoveFlag() == 1) {
+			sceneLoader.getRoot().getCompositeById("camera_down").setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_up").setVisible(true);
+		} else if (cameraManager.getMoveFlag() == 2) {
+			sceneLoader.getRoot().getCompositeById("camera_down").setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_up").setVisible(false);
 
-		} else if (this.getCamera().position.y < sceneLoader.getRoot()
-				.getHeight() * 0.25f) {
-			this.getCamera().position.y = sceneLoader.getRoot().getHeight() * 0.25f;
-			backgroundDirection = BackgroundDirection.DOWN;
+		} else if (cameraManager.getMoveFlag() == 3) {
+			sceneLoader.getRoot().getCompositeById("camera_left").setVisible(true);
+			sceneLoader.getRoot().getCompositeById("camera_right").setVisible(false);
+		} else if (cameraManager.getMoveFlag() == 4) {
+			sceneLoader.getRoot().getCompositeById("camera_left").setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_right").setVisible(true);
+		} else if (cameraManager.getMoveFlag() == 5) {
+			sceneLoader.getRoot().getCompositeById("camera_left").setVisible(false);
+			sceneLoader.getRoot().getCompositeById("camera_right").setVisible(false);
+		}
+	}
 
-			shiftButton.setVisible(true);
+	@Override
+	public void act() {
+		super.act();
+		if (villageInfo.getVillageDirection() != VillageDirectionEnum.CENTER) {
+			controlButton();
 		}
 	}
 
 	private void setBuildingButton() {
-		for (final Entry<String, Building> building : villageInfo.getBuilding()
-				.entrySet()) {
-			CompositeItem buildingButton = sceneLoader.getRoot()
-					.getCompositeById(building.getValue().getBuildingPath());
-			buildingButton.setTouchable(Touchable.enabled);
-			buildingButton.addListener(new InputListener() {
-				@Override
-				public boolean touchDown(InputEvent event, float x, float y,
-						int pointer, int button) {
-					return true;
-				}
-
-				@Override
-				public void touchUp(InputEvent event, float x, float y,
-						int pointer, int button) {
-					positionInfo.setCurrentBuilding(building.getKey());
-					positionInfo.setCurrentPlace(PlaceEnum.BUILDING);
-					screenFactory.show(ScreenEnum.BUILDING);
-				}
-			});
+		if (villageInfo.getBuilding() != null) {
+			for (final Entry<String, Building> building : villageInfo.getBuilding().entrySet()) {
+				CompositeItem buildingButton = sceneLoader.getRoot().getCompositeById(building.getKey());
+				buildingButton.setTouchable(Touchable.enabled);
+				BuildingButtonListener buildingButtonListener = listenerFactory.getBuildingButtonListener();
+				buildingButtonListener.setNodePath(villageInfo.getNodePath());
+				buildingButtonListener.setBuildingPath(building.getKey());
+				buildingButtonListener.setBuildingInfo(building.getValue());
+				buildingButton.addListener(buildingButtonListener);
+			}
 		}
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public CameraManager getCameraManager() {
-		return cameraManager;
-	}
-
-	public void setCameraManager(CameraManager cameraManager) {
-		this.cameraManager = cameraManager;
 	}
 }

@@ -1,121 +1,72 @@
-﻿package com.mygdx.screen;
+package com.mygdx.screen;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
-import com.mygdx.state.Assets;
+import com.mygdx.listener.SimpleTouchListener;
 
-public class CollectionScreen implements Screen {
+public class CollectionScreen extends BaseScreen {
 	@Autowired
-	private Assets assets;
-	@Autowired
-	private ScreenFactory screenFactory;
+	private UiComponentAssets uiComponentAssets;
 	private Stage stage;
 	private TextButton endingButton;
 	private TextButton cgButton;
 	private TextButton bgmButton;
 	private TextButton backButton;
-	private TextButtonStyle textButtonStyle;
-	private BitmapFont font;
 
 	public CollectionScreen() {
-
 	}
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
-		Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
+
 		stage.draw();
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void show() {
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-		Table table = new Table(assets.skin);
+		Table table = new Table(uiComponentAssets.getSkin());
 
-		endingButton = new TextButton("엔딩", assets.skin);
-		cgButton = new TextButton("CG", assets.skin);
-		bgmButton = new TextButton("BGM", assets.skin);
-		backButton = new TextButton("Back", assets.skin);
+		endingButton = new TextButton("엔딩", uiComponentAssets.getSkin());
+		cgButton = new TextButton("CG", uiComponentAssets.getSkin());
+		bgmButton = new TextButton("BGM", uiComponentAssets.getSkin());
+		backButton = new TextButton("Back", uiComponentAssets.getSkin());
 
-		endingButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-
-				return true;
-			}
-
+		endingButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.ENDING);
+				screenFactory.push(ScreenEnum.ENDING);
 			}
 		});
-		cgButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				return true;
-			}
-
+		cgButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-
-				screenFactory.show(ScreenEnum.CG);
+				screenFactory.push(ScreenEnum.CG);
 			}
 		});
-		bgmButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				// TODO Auto-generated method stub
-				return true;
-			}
-
+		bgmButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-
-				screenFactory.show(ScreenEnum.BGM);
+				screenFactory.push(ScreenEnum.BGM);
 			}
 		});
-		backButton.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-
-				// TODO Auto-generated method stub
-				return true;
-			}
-
+		backButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				screenFactory.show(ScreenEnum.MENU);
+				screenFactory.pop();
 			}
 		});
 
@@ -129,45 +80,4 @@ public class CollectionScreen implements Screen {
 
 		stage.addActor(table);
 	}
-
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
 }

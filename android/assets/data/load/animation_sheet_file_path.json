@@ -1,0 +1,56 @@
+{
+  "attack_cutting": {
+    "filePath": "texture/animation_sheet/attack_cutting.png",
+	"frameNumber": 6,
+	"row": 2,
+	"column": 5
+  },
+    "attack_swing": {
+        "filePath": "texture/animation_sheet/attack_swing.png",
+        "frameNumber": 24,
+        "row": 5,
+        "column": 5
+    },
+    "casting": {
+        "filePath": "texture/animation_sheet/casting.png",
+        "frameNumber": 42,
+        "row": 3,
+        "column": 16
+    },
+    "gale": {
+        "filePath": "texture/animation_sheet/gale.png",
+        "frameNumber": 20,
+        "row": 2,
+        "column": 10
+    },
+    "hand_of_death": {
+        "filePath": "texture/animation_sheet/hand_of_death.png",
+        "frameNumber": 12,
+        "row": 2,
+        "column": 6
+    },
+	"back_of_sword" : {
+		"filePath"  :"texture/animation_sheet/back_of_sword.png",
+		"frameNumber" : 10,
+		"row" : 2,
+		"column" : 5
+	},
+    "meteor": {
+        "filePath": "texture/animation_sheet/meteor.png",
+        "frameNumber": 16,
+        "row": 3,
+        "column": 6
+    },
+    "spiritbullet": {
+        "filePath": "texture/animation_sheet/meteor.png",
+        "frameNumber": 24,
+        "row": 5,
+        "column": 5
+    },
+    "thunder_storm": {
+        "filePath": "texture/animation_sheet/thunder_storm.png",
+        "frameNumber": 15,
+        "row": 3,
+        "column": 5
+    },
+}

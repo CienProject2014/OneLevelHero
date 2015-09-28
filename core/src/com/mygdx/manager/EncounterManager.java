@@ -1,44 +1,51 @@
 package com.mygdx.manager;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mygdx.enums.ScreenEnum;
-import com.mygdx.factory.ScreenFactory;
+import com.mygdx.currentState.CurrentInfo;
+import com.mygdx.model.unit.Monster;
 
 public class EncounterManager {
 	@Autowired
-	private ScreenFactory screenFactory;
+	private MonsterPickManager monsterManager;
 	@Autowired
-	private MonsterManager monsterManager;
+	private BattleManager battleManager;
+	@Autowired
+	private FieldManager fieldManager;
+	@Autowired
+	private PositionManager positionManager;
+	@Autowired
+	private DungeonManager dungeonManager;
 
 	private Random random = new Random();
-
-	public void encountEnemy() {
-		// 몬스터 소환!
-		monsterManager.createMonster();
-		screenFactory.show(ScreenEnum.ENCOUNTER);
-	}
-
 	// FIXME 전투 랜덤으로 발생, 기획에 맞게 바꿀 것
+
 	public boolean isBattleOccured() {
-		return random.nextBoolean();
+		if (!CurrentInfo.isAdminMode) {
+			return random.nextBoolean();
+		} else {
+			return false;
+		}
 	}
 
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
+	public void encountEnemy(ArrayList<String> monsterList) {
+		if (isBattleOccured()) {
+			Monster selectedMonster = monsterManager.createMonster(monsterList);
+			battleManager.startBattle(selectedMonster);
+		}
+	}
+	public void encountEliteMonster(String eliteMonsterName) {
+		if (!CurrentInfo.isAdminMode) {
+			Monster selectedMonster = monsterManager.createMonsterByName(eliteMonsterName);
+			battleManager.startBattle(selectedMonster);
+		}
 	}
 
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public MonsterManager getMonsterManager() {
-		return monsterManager;
-	}
-
-	public void setMonsterManager(MonsterManager monsterManager) {
-		this.monsterManager = monsterManager;
+	public void encountBossMonster(String bossMonsterName) {
+		Monster selectedMonster = monsterManager.createMonsterByName(bossMonsterName);
+		battleManager.startBattle(selectedMonster);
 	}
 }

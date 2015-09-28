@@ -1,0 +1,202 @@
+{
+  "sceneName": "credit_scene",
+  "composite": {
+    "sComposites": [
+      {
+        "itemIdentifier": "background",
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "1",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "bgcredit01"
+            },
+            {
+              "itemIdentifier": "2",
+              "zIndex": 1,
+              "layerName": "normal",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "bgcredit02"
+            },
+            {
+              "itemIdentifier": "3",
+              "zIndex": 2,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "bgcredit03"
+            },
+            {
+              "itemIdentifier": "4",
+              "zIndex": 3,
+              "layerName": "pressed2",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "bgcredit04"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            },
+            {
+              "layerName": "pressed2"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "page_up",
+        "x": 68,
+        "y": 963,
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "credituiarrowdown"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "page_down",
+        "x": 68,
+        "y": 58,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "credituiarrowup"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "close_button",
+        "x": 1763,
+        "y": 987,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "credituiback"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ]
+  },
+  "physicsPropertiesVO": {}
+}

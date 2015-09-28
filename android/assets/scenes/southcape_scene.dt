@@ -1,0 +1,635 @@
+{
+  "sceneName": "southcape_scene",
+  "composite": {
+    "sImages": [
+      {
+        "itemIdentifier": "background",
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "bgsouthcape"
+      }
+    ],
+    "sComposites": [
+      {
+        "itemIdentifier": "southcape_dock",
+        "x": 3369,
+        "y": 380,
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-right0001-------7"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_bar",
+        "x": 2899,
+        "y": 639,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-right0007-------1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_house_01",
+        "x": 2407,
+        "y": 767,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-right0002-------6"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_house_02",
+        "x": 2078,
+        "y": 274,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-right0002-------6"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_house_03",
+        "x": 2383,
+        "y": 275,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-right0002-------6"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_house_04",
+        "x": 2709,
+        "y": 345.00003,
+        "zIndex": 6,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-right0002-------6"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_smithy",
+        "x": 2301,
+        "y": 582.00006,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "southcape_smithy",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-right0006-------2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_headhouse",
+        "x": 1261.0001,
+        "y": 557.00006,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-left0003-------3"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_inn",
+        "x": 623.99994,
+        "y": 368.00003,
+        "zIndex": 9,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-left0005-------1"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_grocery",
+        "x": 1135,
+        "y": 289,
+        "zIndex": 10,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-left0004-------2"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_house_05",
+        "x": 927,
+        "y": 736,
+        "zIndex": 11,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-right0002-------6"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "southcape_house_06",
+        "x": 1225,
+        "y": 737,
+        "zIndex": 12,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-right0002-------6"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "4to23",
+        "x": 559.5,
+        "y": 783.5,
+        "zIndex": 13,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-left0000-------6"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "4to9",
+        "x": 3257.5,
+        "y": 740,
+        "zIndex": 14,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "southcape-right0000-------8"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_left",
+        "x": 3700,
+        "y": 650,
+        "zIndex": 15,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuileft"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_right",
+        "x": 1780,
+        "y": 650,
+        "zIndex": 16,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuiright"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ]
+  },
+  "physicsPropertiesVO": {}
+}

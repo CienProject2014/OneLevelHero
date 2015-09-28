@@ -1,0 +1,174 @@
+{
+  "small_healing": {
+     "itemType" : "consumables",
+    "name": "소형 회복약",
+    "itemPath" : "small_healing",
+    "category": "소모품",
+    "grade": "일반",
+      "heal" : "30",
+    "description": "체력을 30 회복해준다."
+  },
+  "medium_healing": {
+     "itemType" : "consumables",
+    "name": "중형 회복약",
+    "itemPath" : "medium_healing",
+    "category": "소모품",
+    "grade": "일반",
+      "heal" : "60",
+    "description": "체력을 60 회복해준다."
+  },
+  "big_healing": {
+     "itemType" : "consumables",
+    "name": "대형 회복약",
+    "itemPath" : "big_healing",
+    "category": "소모품",
+    "grade": "일반",
+    "heal" : "120",
+    "description": "체력을 120 회복해준다."
+  },
+  "elixir": {
+     "itemType" : "consumables",
+    "name": "엘릭서",
+    "itemPath" : "elixir",
+    "category": "소모품",
+    "grade": "일반",
+       "heal" : "-1",     
+    "description": "체력 전체 회복, 죽은 사람도 살린다는 소문이 있지만, 살아나지 않으니 주의."
+  },
+  "pick_me_up": {
+     "itemType" : "consumables",
+    "name": "피로 회복제",
+    "itemPath" : "pick_me_up",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "피로도 10 감소, 피로 회복엔 1BD!"
+  },
+  "bulrush": {
+     "itemType" : "consumables",
+    "name": "부들 꽃가루",
+    "itemPath" : "bulrush",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "화상 회복, 화상부위에 바르면 시원하다."
+  },
+  "huttuynia_cordata": {
+     "itemType" : "consumables",
+    "name": "어성초",
+    "itemPath" : "huttuynia_cordata",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "중독 회복, 혈액의 독소를 제거해주는 약초."
+  },
+  "styptic": {
+     "itemType" : "consumables",
+    "name": "지혈제",
+    "itemPath" : "styptic",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "출혈 회복, 출혈 부위를 지혈할 때 도움을 주는 약"
+  },
+  "brandy": {
+     "itemType" : "consumables",
+    "name": "브랜디",
+    "itemPath" : "brandy",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "빙결 회복, 동상 회복, 높은 도수로 인해 몸이 뜨끈해진다."
+  },
+  "sage": {
+     "itemType" : "consumables",
+    "name": "세이지",
+    "itemPath" : "sage",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "기절 회복, 정신이 번쩍 드는 약초."
+  },
+  "peony": {
+     "itemType" : "consumables",
+    "name": "작약 뿌리",
+    "itemPath" : "peony",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "감전 회복, 근육 경련을 해소한다."
+  },
+  "ginger": {
+     "itemType" : "consumables",
+    "name": "생강",
+    "itemPath" : "ginger",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "침묵 회복, 부은 목을 가라앉혀 준다."
+  },
+  "panacea": {
+     "itemType" : "consumables",
+    "name": "만능 치료제",
+    "itemPath" : "panacea",
+    "category": "소모품",
+    "grade": "레어",
+    "description": "모든 디버프를 치료해주는 신기한 약"
+  },
+  "stimulant": {
+     "itemType" : "consumables",
+    "name": "각성제",
+    "itemPath" : "stimulant",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "불굴 상태가 된다. 재료 불명의 주사제. 고통을 느끼지 않게 된다."
+  },
+  "holy_water": {
+     "itemType" : "consumables",
+    "name": "성수",
+    "itemPath" : "holy_water",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "수호 상태가 된다. 성스러운 물이다. 유사품 주의."
+  },
+  "vervain": {
+     "itemType" : "consumables",
+    "name": "버베인",
+    "itemPath" : "vervain",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "신속 상태가 된다. 왜인지 모르겠지만 성스러운 약초이다."
+  },
+  "immediately": {
+     "itemType" : "consumables",
+    "name": "즉시 행동제",
+    "itemPath" : "immediately",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "이것을 먹이면 즉시 행동한다. 꼭 '먹여야' 한다고 주의사항에 명시되어 있다."
+  },
+  "smokescreen": {
+     "itemType" : "consumables",
+    "name": "연막탄",
+    "itemPath" : "smokescreen",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "도망 확률 50% 증가, 도망가기 쉬워진다."
+  },
+  "alcohol": {
+     "itemType" : "consumables",
+    "name": "알코올",
+    "itemPath" : "alcohol",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "적에게 기름을 뿌린다."
+  },
+  "firebomb": {
+     "itemType" : "consumables",
+    "name": "화염병",
+    "itemPath" : "firebomb",
+    "category": "소모품",
+    "grade": "일반",
+    "description": "적에게 화염병을 던진다."
+  },
+  "god_of_drug": {
+     "itemType" : "consumables",
+    "name": "궁극의 보약",
+    "itemPath" : "god_of_drug",
+    "category": "소모품",
+    "grade": "유니크",
+    "description": "레벨이 2 오른다. 백호의 심장으로 만들어진 보약."
+  }
+}

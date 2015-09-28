@@ -1,148 +1,150 @@
 package com.mygdx.stage;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.mygdx.currentState.PartyInfo;
-import com.mygdx.model.Hero;
-import com.mygdx.state.Assets;
-import com.mygdx.ui.StatusBarUi;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.mygdx.assets.ConstantsAssets;
+import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.ScreenEnum;
+import com.mygdx.factory.ScreenFactory;
+import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.TextureManager;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.StatusBar;
+import com.mygdx.model.unit.Unit;
 
-public class CharacterUiStage extends Stage {
+public class CharacterUiStage extends BaseOneLevelStage {
 	@Autowired
-	private Assets assets;
+	private UiComponentAssets uiComponentAssets;
 	@Autowired
-	private PartyInfo partyInfo;
-	private float realWidth, realHeight;
-
-	private Table uiTable; // 전체 화면을 차지하는 테이블
-	private Table bottomTable; // 케릭터 관련 부분을 담고 있는 테이블
-	private Table[] statusbarTable;
-	private Table[] charaterTable;
-
-	private int battleMemberNumber;
+	private ScreenFactory screenFactory;
+	@Autowired
+	private TextureManager textureManager;
+	@Autowired
+	private BattleManager battleManager;
+	@Autowired
+	private ConstantsAssets constantsAssets;
+	private HashMap<String, Float> uiConstantsMap;
+	private Table statusTable;
+	private Table barTable;
 	private List<Hero> battleMemberList;
-	private Image[] characterImage;
-
-	private StatusBarUi[] hpbar;
-	private StatusBarUi[] expbar;
-	private StatusBarUi[] turnbar;
-	private String[] hpbarName;
+	private List<StatusBar> heroStatusBarList;
+	private List<Label> hpLabelList;
+	private Image heroImage;
 
 	public Stage makeStage() {
-		uiTable = new Table();
-
-		initialize();
-
-		makeTable();
-
-		uiTable.setFillParent(true);
-		uiTable.align(Align.bottom);
-		uiTable.add(bottomTable);
-
-		addActor(uiTable);
+		super.makeStage();
+		uiConstantsMap = constantsAssets.getUiConstants("CharacterUiStage");
+		initializeList();
+		Table uiTable;
+		uiTable = makeUiTable();
+		tableStack.add(uiTable);
 		return this;
-	}
-
-	private void initialize() {
-		realHeight = assets.windowHeight;
-		realWidth = assets.windowWidth;
-
-		bottomTable = new Table(assets.skin);
-		statusbarTable = new Table[3];
-		charaterTable = new Table[3];
-
-		hpbar = new StatusBarUi[3];
-		hpbarName = new String[3];
-		expbar = new StatusBarUi[3];
-		turnbar = new StatusBarUi[3];
-		characterImage = new Image[3];
-	}
-
-	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
-	private void makeTable() {
-
-		battleMemberList = partyInfo.getBattleMemberList();
-		battleMemberNumber = battleMemberList.size();
-
-		for (int i = 0; i < battleMemberNumber; i++) {
-			hpbar[i] = new StatusBarUi("hp", 0f, 100f, 1f, false, assets.skin);
-			expbar[i] = new StatusBarUi("exp", 0f, 100f, 1f, false, assets.skin);
-			turnbar[i] = new StatusBarUi("turn", 0f, 100f, 1f, false,
-					assets.skin);
-
-			hpbar[i].setName("hpbar[" + i + "]");
-			hpbarName[i] = hpbar[i].getName();
-		}
-
-		// 캐릭터 이미지 세팅
-		for (int i = 0; i < battleMemberNumber; i++) {
-			characterImage[i] = new Image(battleMemberList.get(i)
-					.getStatusTexture());
-		}
-
-		for (int i = 0; i < battleMemberNumber; i++) {
-			statusbarTable[i] = new Table(assets.skin);
-			charaterTable[i] = new Table(assets.skin);
-		}
-
-		for (int i = 0; i < battleMemberNumber; i++) {
-			statusbarTable[i].add(hpbar[i]).width(realWidth / 12)
-					.height(realHeight / 12).bottom();
-			statusbarTable[i].row();
-			statusbarTable[i].add(expbar[i]).width(realWidth / 12)
-					.height(realHeight / 12).bottom();
-			statusbarTable[i].row();
-			statusbarTable[i].add(turnbar[i]).width(realWidth / 12)
-					.height(realHeight / 12).bottom();
-
-			bottomTable.add(charaterTable[i]);
-			bottomTable.add(statusbarTable[i]);
-		}
-
-		for (int i = 0; i < battleMemberNumber; i++) {
-			charaterTable[i].add(characterImage[i]).width(realWidth / 4)
-					.height(realHeight / 4);
-		}
 	}
 
 	// 정보 업데이트
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-
-		// Screen - act 에서 실행시킨다.
-		for (int i = 0; i < battleMemberNumber; i++) {
-			int hpValue = battleMemberList.get(i).getStatus().getHp();
-			//Gdx.app.log("이름?", hpbar[i].getName());
-
-//			if (!hpbar[i].setValue(hpValue))
-//				Gdx.app.log("GameUiStage", "체력 설정 실패");
-
-			hpbar[i].act(delta);
+		for (int i = 0; i < heroStatusBarList.size(); i++) {
+			heroStatusBarList.get(i).update();
+			hpLabelList.get(i).setText(heroStatusBarList.get(i).getHp() + "/" + heroStatusBarList.get(i).getMaxHp());
 		}
 	}
 
-	public Assets getAssets() {
-		return assets;
+	private void initializeList() {
+		battleMemberList = partyManager.getBattleMemberList();
+		hpLabelList = new ArrayList<Label>(battleMemberList.size());
+		heroStatusBarList = new ArrayList<StatusBar>(battleMemberList.size());
+		for (int i = 0; i < battleMemberList.size(); i++) {
+			if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+				partyManager.setCurrentSelectedHero(null);
+				heroStatusBarList.add(new StatusBar(battleMemberList.get(i), uiComponentAssets.getSkin(), true));
+			} else {
+				heroStatusBarList.add(new StatusBar(battleMemberList.get(i), uiComponentAssets.getSkin(), false));
+			}
+		}
+		statusTable = new Table();
 	}
 
-	public void setAssets(Assets assets) {
-		this.assets = assets;
+	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
+	private Table makeUiTable() {
+		Table table = new Table();
+		statusTable = makeStatusTable();
+		table.add(statusTable).expandX().left();
+		return table;
 	}
 
-	public PartyInfo getPartyInfo() {
-		return partyInfo;
+	private Table makeStatusTable() {
+		Table table = new Table();
+		for (int i = 0; i < battleMemberList.size(); i++) {
+			Table heroTable = makeHeroTable(battleMemberList.get(i), i);
+			table.add(heroTable).padBottom(uiConstantsMap.get("heroTablePadBottom"));
+			table.row();
+		}
+		return table;
 	}
 
-	public void setPartyInfo(PartyInfo partyInfo) {
-		this.partyInfo = partyInfo;
+	private Table makeHeroTable(final Unit unit, int index) {
+		Table heroTable = new Table();
+		heroImage = new Image(textureManager.getFaceImage(unit.getFacePath()));
+
+		heroTable.add(heroImage).padLeft(uiConstantsMap.get("heroTablePadLeft"))
+				.width(uiConstantsMap.get("heroImageWidth")).height(uiConstantsMap.get("heroImageHeight"));
+
+		barTable = new Table();
+		Label hpLabel = new Label(unit.getStatus().getHp() + "/" + unit.getStatus().getMaxHp(),
+				uiComponentAssets.getSkin());
+		hpLabelList.add(hpLabel);
+		barTable.add(hpLabel).padBottom(uiConstantsMap.get("heroBarSpace")).row();
+		barTable.add(heroStatusBarList.get(index).getHpBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
+				.width(uiConstantsMap.get("barTableWidth")).row();
+		barTable.add(heroStatusBarList.get(index).getGaugeBar()).padBottom(uiConstantsMap.get("heroBarSpace"))
+				.width(uiConstantsMap.get("barTableWidth")).row();
+		heroTable.add(barTable);
+		makeAddListener(index);
+		return heroTable;
 	}
 
+	private void makeAddListener(final int index) {
+		heroImage.clearListeners();
+		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			// 전투 중엔 다른 식으로 작동한다.
+			heroImage.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					if (battleManager.isSkill() == true) {
+						// 스킬 사용시
+						if (battleManager.isShowGrid()) {
+							partyManager.setCurrentSelectedHero(null);
+						} else {
+							partyManager.setCurrentSelectedHero(battleMemberList.get(index));
+							battleManager.useSkill(battleManager.getCurrentAttackUnit(), partyManager
+									.getCurrentSelectedHero(), battleManager.getCurrentSelectedSkill().getSkillPath());
+							battleManager.setSkill(false);
+						}
+					}
+				}
+			});
+		} else {
+			// 일상에서는 스테이터스 창이 보인다.
+			heroImage.addListener(new ClickListener() {
+				@Override
+				public void clicked(InputEvent event, float x, float y) {
+					partyManager.setCurrentSelectedHero(battleMemberList.get(index));
+					screenFactory.show(ScreenEnum.STATUS);
+				}
+			});
+		}
+	}
 }

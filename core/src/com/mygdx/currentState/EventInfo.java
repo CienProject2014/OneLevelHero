@@ -1,44 +1,133 @@
 package com.mygdx.currentState;
 
-import com.mygdx.enums.EventTypeEnum;
-import com.mygdx.model.NPC;
+import java.util.ArrayList;
+import java.util.Map;
+
+import com.mygdx.enums.EventElementEnum;
+import com.mygdx.model.event.Event;
+import com.mygdx.model.event.EventPacket;
+import com.mygdx.model.event.EventScene;
+import com.mygdx.model.event.GameObject;
+import com.mygdx.model.event.NPC;
+import com.mygdx.model.event.Quest;
+import com.mygdx.model.location.Building;
+import com.mygdx.model.unit.Hero;
 
 /**
  * npc정보, eventNumber, greeting여부 정보를 갖고있음
+ * 
  * @author Velmont
- *
+ * 
  */
 
 public class EventInfo {
-	private NPC npc;
-	private int eventNumber;
-	private boolean greeting;
+	private Map<String, NPC> npcMap;
+	private Map<String, Hero> heroMap;
+	private Map<String, GameObject> gameObjectMap;
+	private Map<String, Quest> questMap;
+	private Map<String, NPC> mainStoryMap;
+	private EventElementEnum currentEventElementType;
+	private ArrayList<EventScene> currentEventScenes;
+	private Event currentStoryEvent;
+	private Event currentNpcEvent;
+	private Event currentGameObjectEvent;
+	private GameObject currentGameObject;
+	private NPC currentNpc;
+	private Building currentBuildingInfo;
 
-	public NPC getNpc() {
-		return npc;
+	public EventElementEnum getCurrentEventElementType() {
+		return currentEventElementType;
+	}
+	public void setCurrentEventElementType(EventElementEnum currentEventElementType) {
+		this.currentEventElementType = currentEventElementType;
 	}
 
-	public void setNpc(NPC npc) {
-		this.npc = npc;
+	public void setCurrentNpcEvent(EventPacket eventPacket) {
+		this.currentNpcEvent = getNpc(eventPacket.getEventElement()).getEvent(eventPacket.getEventNumber());
 	}
 
-	public int getEventNumber() {
-		return eventNumber;
+	public Event getCurrentNpcEvent() {
+		return currentNpcEvent;
 	}
 
-	public void setEventNumber(int eventNumber) {
-		this.eventNumber = eventNumber;
+	public void setCurrentStoryEvent(EventPacket eventPacket) {
+		this.currentStoryEvent = getMainStory(eventPacket.getEventElement()).getEvent(eventPacket.getEventNumber());
 	}
 
-	public boolean isGreeting() {
-		return greeting;
+	public Event getCurrentStoryEvent() {
+		return currentStoryEvent;
 	}
 
-	public void setGreeting(boolean greeting) {
-		this.greeting = greeting;
+	public GameObject getCurrentGameObject() {
+		return currentGameObject;
 	}
 
-	public EventTypeEnum getEventType() {
-		return npc.getEvents().get(eventNumber).getEventType();
+	public void setCurrentGameObject(GameObject currentGameObject) {
+		this.currentGameObject = currentGameObject;
+	}
+
+	private NPC getNpc(String npcString) {
+		return npcMap.get(npcString);
+	}
+
+	private NPC getMainStory(String mainStory) {
+		return mainStoryMap.get(mainStory);
+	}
+
+	public Map<String, Quest> getQuestMap() {
+		return questMap;
+	}
+
+	public Map<String, NPC> getNpcMap() {
+		return npcMap;
+	}
+	public void setNpcMap(Map<String, NPC> npcMap) {
+		this.npcMap = npcMap;
+	}
+	public void setQuestMap(Map<String, Quest> questMap) {
+		this.questMap = questMap;
+	}
+	public Map<String, GameObject> getGameObjectMap() {
+		return gameObjectMap;
+	}
+	public void setGameObjectMap(Map<String, GameObject> gameObjectMap) {
+		this.gameObjectMap = gameObjectMap;
+	}
+	public NPC getCurrentNpc() {
+		return currentNpc;
+	}
+	public void setCurrentNpc(NPC currentNpc) {
+		this.currentNpc = currentNpc;
+	}
+	public Map<String, NPC> getMainStoryMap() {
+		return mainStoryMap;
+	}
+	public void setMainStoryMap(Map<String, NPC> mainStoryMap) {
+		this.mainStoryMap = mainStoryMap;
+	}
+	public Building getCurrentBuildingInfo() {
+		return currentBuildingInfo;
+	}
+	public void setCurrentBuildingInfo(Building currentBuildingInfo) {
+		this.currentBuildingInfo = currentBuildingInfo;
+	}
+	public ArrayList<EventScene> getCurrentEventScenes() {
+		return currentEventScenes;
+	}
+	public void setCurrentEventScenes(ArrayList<EventScene> currentEventScenes) {
+		this.currentEventScenes = currentEventScenes;
+	}
+	public Map<String, Hero> getHeroMap() {
+		return heroMap;
+	}
+	public void setHeroMap(Map<String, Hero> heroMap) {
+		this.heroMap = heroMap;
+	}
+	public Event getCurrentGameObjectEvent() {
+		return currentGameObjectEvent;
+	}
+	public void setCurrentGameObjectEvent(EventPacket eventPacket) {
+		this.currentGameObjectEvent = getGameObjectMap().get(eventPacket.getEventElement()).getEvent(
+				eventPacket.getEventNumber());
 	}
 }

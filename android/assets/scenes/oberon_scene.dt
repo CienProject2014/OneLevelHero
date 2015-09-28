@@ -1,0 +1,459 @@
+{
+  "sceneName": "oberon_scene",
+  "composite": {
+    "sImages": [
+      {
+        "itemIdentifier": "higher_background",
+        "y": 1080,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "oberen0007-------0"
+      },
+      {
+        "itemIdentifier": "lower_background",
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "oberen0012-------0"
+      }
+    ],
+    "sComposites": [
+      {
+        "itemIdentifier": "oberon_temple",
+        "x": 1388,
+        "y": 1480,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "oldtemple"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "oberon_house_01",
+        "x": 269.99997,
+        "y": 1234,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "house"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "oberon_inn",
+        "x": 366,
+        "y": 733,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "oberoninn"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "oberon_house_02",
+        "x": 268.99997,
+        "y": 290,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "house"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "oberon_house_03",
+        "x": 787,
+        "y": 127.999985,
+        "zIndex": 6,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "house"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "oberon_house_04",
+        "x": 1332,
+        "y": 651,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "house"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "oberon_store",
+        "x": 1411,
+        "y": 381,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "oberon_store",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "oberonstore"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "3to20",
+        "x": 515.5,
+        "y": 101.99989,
+        "zIndex": 9,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "3to20",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "retreatroad"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "3to10",
+        "x": 427.5,
+        "y": 1640.5,
+        "zIndex": 10,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "tokadillacastle"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_down",
+        "x": 1631,
+        "y": 1810,
+        "zIndex": 11,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuidown"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "camera_up",
+        "x": 1631,
+        "y": 730,
+        "zIndex": 12,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "townuiup"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ]
+  },
+  "physicsPropertiesVO": {}
+}

@@ -1,0 +1,83 @@
+
+mirage_port_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mirageport-bot0000-------3
+  rotate: false
+  xy: 529, 332
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+mirageport-bot0001-------2
+  rotate: false
+  xy: 3846, 1290
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+mirageport-bot0002-------1
+  rotate: false
+  xy: 261, 219
+  size: 266, 193
+  orig: 266, 193
+  offset: 0, 0
+  index: -1
+mirageport-bot0003-------0
+  rotate: false
+  xy: 2, 414
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+mirageport-top0000-------4
+  rotate: false
+  xy: 2, 208
+  size: 257, 204
+  orig: 257, 204
+  offset: 0, 0
+  index: -1
+mirageport-top0001-------3
+  rotate: false
+  xy: 2, 2
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+mirageport-top0002-------2
+  rotate: false
+  xy: 529, 250
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+mirageport-top0003-------1
+  rotate: false
+  xy: 731, 332
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+mirageport-top0004-------0
+  rotate: false
+  xy: 1924, 414
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 3846, 1372
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 84
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1

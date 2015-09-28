@@ -1,0 +1,229 @@
+worldmap_pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bluebutton
+  rotate: false
+  xy: 3004, 1214
+  size: 84, 85
+  orig: 84, 85
+  offset: 0, 0
+  index: -1
+currentlocation
+  rotate: false
+  xy: 3004, 1127
+  size: 84, 85
+  orig: 84, 85
+  offset: 0, 0
+  index: -1
+dogbenefitcamp
+  rotate: false
+  xy: 3004, 2001
+  size: 340, 44
+  orig: 340, 44
+  offset: 0, 0
+  index: -1
+purplebutton
+  rotate: false
+  xy: 3004, 1040
+  size: 84, 85
+  orig: 84, 85
+  offset: 0, 0
+  index: -1
+redbutton
+  rotate: false
+  xy: 3004, 1301
+  size: 86, 86
+  orig: 86, 86
+  offset: 0, 0
+  index: -1
+worldmaplight
+  rotate: false
+  xy: 2, 357
+  size: 3000, 1688
+  orig: 3000, 1688
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0000
+  rotate: false
+  xy: 244, 158
+  size: 198, 49
+  orig: 198, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0001
+  rotate: false
+  xy: 2, 209
+  size: 289, 49
+  orig: 289, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0002
+  rotate: false
+  xy: 293, 209
+  size: 239, 49
+  orig: 239, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0003
+  rotate: false
+  xy: 3004, 1542
+  size: 137, 49
+  orig: 137, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0004
+  rotate: false
+  xy: 3004, 1797
+  size: 198, 50
+  orig: 198, 50
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0005
+  rotate: false
+  xy: 2, 2
+  size: 193, 49
+  orig: 193, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0006
+  rotate: false
+  xy: 2, 53
+  size: 198, 49
+  orig: 198, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0007
+  rotate: false
+  xy: 333, 260
+  size: 242, 49
+  orig: 242, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0008
+  rotate: false
+  xy: 3004, 1695
+  size: 183, 49
+  orig: 183, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0009
+  rotate: false
+  xy: 3004, 1389
+  size: 131, 49
+  orig: 131, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0010
+  rotate: false
+  xy: 3004, 1644
+  size: 182, 49
+  orig: 182, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0011
+  rotate: false
+  xy: 3004, 1593
+  size: 175, 49
+  orig: 175, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0012
+  rotate: false
+  xy: 3004, 1491
+  size: 137, 49
+  orig: 137, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0013
+  rotate: false
+  xy: 3004, 1849
+  size: 237, 49
+  orig: 237, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0015
+  rotate: false
+  xy: 3346, 2001
+  size: 214, 44
+  orig: 214, 44
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0016
+  rotate: false
+  xy: 3318, 1955
+  size: 158, 44
+  orig: 158, 44
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0017
+  rotate: false
+  xy: 2, 311
+  size: 346, 44
+  orig: 346, 44
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0018
+  rotate: false
+  xy: 350, 311
+  size: 252, 44
+  orig: 252, 44
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0019
+  rotate: false
+  xy: 3004, 1954
+  size: 312, 45
+  orig: 312, 45
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0020
+  rotate: false
+  xy: 2, 260
+  size: 329, 49
+  orig: 329, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0021
+  rotate: false
+  xy: 215, 107
+  size: 198, 49
+  orig: 198, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0022
+  rotate: false
+  xy: 2, 158
+  size: 240, 49
+  orig: 240, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0023
+  rotate: false
+  xy: 3004, 1440
+  size: 137, 49
+  orig: 137, 49
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0024
+  rotate: false
+  xy: 3004, 1900
+  size: 255, 52
+  orig: 255, 52
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0025
+  rotate: false
+  xy: 2, 104
+  size: 211, 52
+  orig: 211, 52
+  offset: 0, 0
+  index: -1
+worldmaplight0000s0026
+  rotate: false
+  xy: 3004, 1746
+  size: 195, 49
+  orig: 195, 49
+  offset: 0, 0
+  index: -1

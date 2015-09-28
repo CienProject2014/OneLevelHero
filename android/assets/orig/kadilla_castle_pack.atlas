@@ -1,0 +1,97 @@
+
+kadilla_castle_pack.png
+size: 2048,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bgkadillacastle
+  rotate: false
+  xy: 2, 805
+  size: 1920, 2160
+  orig: 1920, 2160
+  offset: 0, 0
+  index: -1
+cadilla-------3
+  rotate: false
+  xy: 251, 599
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+cadilla0000-------5
+  rotate: false
+  xy: 2, 372
+  size: 243, 215
+  orig: 243, 215
+  offset: 0, 0
+  index: -1
+cadilla0001-------4
+  rotate: false
+  xy: 487, 723
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+cadilla0002-------3
+  rotate: false
+  xy: 2, 166
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+cadilla0003-------2
+  rotate: false
+  xy: 689, 723
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+cadilla0004-------1
+  rotate: false
+  xy: 2, 84
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+cadilla1-------4
+  rotate: false
+  xy: 891, 723
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+cadilla3-------2
+  rotate: false
+  xy: 2, 2
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+cadilla4-------1
+  rotate: false
+  xy: 1093, 723
+  size: 200, 80
+  orig: 200, 80
+  offset: 0, 0
+  index: -1
+cadilla5
+  rotate: false
+  xy: 2, 589
+  size: 247, 214
+  orig: 247, 214
+  offset: 0, 0
+  index: -1
+townuidown
+  rotate: false
+  xy: 251, 681
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1
+townuiup
+  rotate: false
+  xy: 2, 248
+  size: 234, 122
+  orig: 234, 122
+  offset: 0, 0
+  index: -1

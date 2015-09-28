@@ -1,66 +1,4616 @@
 {
-  "assassin girl": {
-    "name": "assassin girl",
+  "wyvern": {
+    "facePath": "wyvern",
+    "name": "와이번",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        0,
+        20,
+        20
+      ],
+      [
+        0,
+        0,
+        10,
+        200,
+        10
+      ],
+      [
+        0,
+        10,
+        200,
+        50,
+        0
+      ],
+      [
+        20,
+        200,
+        50,
+        10,
+        0
+      ],
+      [
+        20,
+        10,
+        10,
+        10,
+        0
+      ]
+    ],
     "status": {
-      "atk": 110,
-      "def": 34.5,
-      "hp": 338,
-      "spd": 1000,
-      "job": "monster",
-      "ftg" : 100,
-      "exp" : 0,
-      "mdef" : 0,
-      "fr" : 0.1,
-      "wr" : 0.1,
-      "er" : 0.1
-    }
+      "hp": 700,
+      "maxHp": 700,
+      "attack": 38,
+      "defense": 22,
+      "magicAttack": 0,
+      "magicDefense": 13,
+      "speed": 100,
+      "experience": 700,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "big_tail"
+    ],
+    "skillList": []
   },
-  "Monster2": {
-    "name": "Monster2",
+  "twinhead": {
+    "facePath": "twinhead",
+    "name": "멍청한 트윈헤드",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        30,
+        150,
+        200,
+        0
+      ],
+      [
+        20,
+        10,
+        100,
+        100,
+        50
+      ],
+      [
+        50,
+        50,
+        100,
+        100,
+        100
+      ],
+      [
+        0,
+        10,
+        100,
+        100,
+        100
+      ],
+      [
+        0,
+        0,
+        120,
+        120,
+        0
+      ]
+    ],
     "status": {
-      "atk": 110,
-      "def": 34.5,
-      "hp": 338,
-      "spd": 1000,
-      "job": "monster",
-      "ftg" : 100,
-      "exp" : 0,
-      "mdef" : 0,
-      "fr" : 0.1,
-      "wr" : 0.1,
-      "er" : 0.1
-    }
+      "hp": 1200,
+      "maxHp": 1200,
+      "attack": 47  ,
+      "defense": 21,
+      "magicAttack": 0,
+      "magicDefense": 15,
+      "speed": 80,
+      "experience": 650,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "seed_pocket"
+    ],
+    "skillList": []
   },
-  "Monster3": {
-    "name": "Monster3",
+  "yetie": {
+    "facePath": "yetie",
+    "name": "설산의 예티",
+    "sizeType": "medium",
+    "elementType": "water",
+    "hitArea": [
+      [
+        0,
+        0,
+        120,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        120,
+        80,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        80,
+        0
+      ],
+      [
+        0,
+        100,
+        130,
+        100,
+        0
+      ],
+      [
+        0,
+        80,
+        80,
+        80,
+        0
+      ]
+    ],
     "status": {
-      "atk": 110,
-      "def": 34.5,
-      "hp": 338,
-      "spd": 1000,
-      "job": "monster",
-      "ftg" : 100,
-      "exp" : 0,
-      "mdef" : 0,
-      "fr" : 0.1,
-      "wr" : 0.1,
-      "er" : 0.1
-    }
+      "hp": 1150,
+      "maxHp": 1150,
+      "attack": 41,
+      "defense": 21,
+      "magicAttack": 0,
+      "magicDefense": 19,
+      "speed": 80,
+      "experience": 750,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 50,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "wool_of_yetie"
+    ],
+    "skillList": []
   },
-  "b2": {
-    "name": "b2",
+  "golem_crystal": {
+    "facePath": "golem_crystal",
+    "name": "수정 골렘",
+    "sizeType": "large",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        50,
+        100,
+        100,
+        50,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        200,
+        200,
+        80,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        80,
+        80,
+        80,
+        80,
+        50,
+        80,
+        0
+      ],
+      [
+        0,
+        80,
+        80,
+        80,
+        80,
+        50,
+        50,
+        80,
+        0
+      ],
+      [
+        0,
+        0,
+        20,
+        10,
+        0,
+        40,
+        0,
+        0,
+        0
+      ]
+    ],
     "status": {
-      "atk": 110,
-      "def": 34.5,
-      "hp": 338,
-      "spd": 1000,
-      "job": "monster",
-      "ftg" : 100,
-      "exp" : 0,
-      "mdef" : 0,
-      "fr" : 0.1,
-      "wr" : 0.1,
-      "er" : 0.1
-    }
+      "hp": 1200,
+      "maxHp": 1200,
+      "attack": 42,
+      "defense": 22,
+      "magicAttack": 0,
+      "magicDefense": 24,
+      "speed": 80,
+      "experience": 800,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "piece_of_crystal"
+    ],
+    "skillList": []
+  },
+  "kentaurous_spear": {
+    "facePath": "kentaurous_spear",
+    "name": "창을 든 켄타우로스",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ],
+      [
+        0,
+        50,
+        50,
+        50,
+        0
+      ],
+      [
+        0,
+        50,
+        50,
+        50,
+        0
+      ],
+      [
+        0,
+        100,
+        150,
+        100,
+        0
+      ],
+      [
+        0,
+        0,
+        200,
+        200,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 800,
+      "maxHp": 800,
+      "attack": 43,
+      "defense": 25,
+      "magicAttack": 35,
+      "magicDefense": 22,
+      "speed": 100,
+      "experience": 540,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "spear_handle"
+    ],
+    "skillList": []
+  },
+  "kentaurous_bow": {
+    "facePath": "kentaurous_bow",
+    "name": "활을 든 켄타우로스",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        100,
+        120,
+        0,
+        0
+      ],
+      [
+        100,
+        120,
+        180,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        60,
+        0
+      ],
+      [
+        0,
+        100,
+        80,
+        100,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        100,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 800,
+      "maxHp": 800,
+      "attack": 42,
+      "defense": 22,
+      "magicAttack": 0,
+      "magicDefense": 20,
+      "speed": 100,
+      "experience": 530,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "arrowhead"
+    ],
+    "skillList": []
+  },
+  "chimera": {
+    "facePath": "chimera",
+    "name": "키메라",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        50,
+        200,
+        150,
+        0
+      ],
+      [
+        0,
+        50,
+        200,
+        70,
+        0
+      ],
+      [
+        0,
+        100,
+        200,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        200,
+        70,
+        0
+      ],
+      [
+        0,
+        50,
+        50,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 900,
+      "maxHp": 900,
+      "attack": 44,
+      "defense": 24,
+      "magicAttack": 34,
+      "magicDefense": 23,
+      "speed": 100,
+      "experience": 570,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "tooth_of_lion"
+    ],
+    "skillList": []
+  },
+  "elf": {
+    "facePath": "elf",
+    "name": "숲의 파수꾼",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        100,
+        0,
+        0,
+        0
+      ],
+      [
+        30,
+        80,
+        100,
+        10,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        20,
+        0
+      ],
+      [
+        0,
+        80,
+        80,
+        80,
+        0
+      ],
+      [
+        0,
+        50,
+        60,
+        80,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 700,
+      "maxHp": 700,
+      "attack": 43,
+      "defense": 16,
+      "magicAttack": 0,
+      "magicDefense": 28,
+      "speed": 100,
+      "experience": 560,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "hood_of_elf"
+    ],
+    "skillList": []
+  },
+  "ent": {
+    "facePath": "ent",
+    "name": "엔트",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        20,
+        50,
+        50,
+        50
+      ],
+      [
+        0,
+        0,
+        100,
+        100,
+        50
+      ],
+      [
+        50,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        40,
+        100,
+        100,
+        100,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1100,
+      "maxHp": 1100,
+      "attack": 46,
+      "defense": 19,
+      "magicAttack": 39,
+      "magicDefense": 16,
+      "speed": 80,
+      "experience": 570,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "firewood"
+    ],
+    "skillList": []
+  },
+  "rafflesia": {
+    "facePath": "rafflesia",
+    "name": "라플레시아",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        20,
+        70,
+        30,
+        0
+      ],
+      [
+        0,
+        150,
+        200,
+        70,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        70,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        100,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 700,
+      "maxHp": 700,
+      "attack": 41,
+      "defense": 15,
+      "magicAttack": 33,
+      "magicDefense": 23,
+      "speed": 80,
+      "experience": 600,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "petal_of_rafflesia"
+    ],
+    "skillList": []
+  },
+  "clam": {
+    "facePath": "clam",
+    "name": "대형조개",
+    "elementType": "water",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        10,
+        20,
+        20,
+        20,
+        10
+      ],
+      [
+        10,
+        80,
+        200,
+        50,
+        0
+      ],
+      [
+        10,
+        60,
+        100,
+        60,
+        0
+      ],
+      [
+        0,
+        30,
+        100,
+        30,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 600,
+      "maxHp": 600,
+      "attack": 37,
+      "defense": 31,
+      "magicAttack": 0,
+      "magicDefense": 15,
+      "speed": 40,
+      "experience": 720,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 50,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "nacre"
+    ],
+    "skillList": []
+  },
+  "mercensary": {
+    "facePath": "mercensary",
+    "name": "질 나쁜 용병",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        20,
+        200,
+        20,
+        0
+      ],
+      [
+        0,
+        80,
+        80,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        80,
+        60,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        20,
+        80,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 700,
+      "maxHp": 700,
+      "attack": 48,
+      "defense": 24,
+      "magicAttack": 0,
+      "magicDefense": 19,
+      "speed": 100,
+      "experience": 550,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "empty_bottle"
+    ],
+    "skillList": []
+  },
+  "bandit": {
+    "facePath": "bandit",
+    "name": "무섭게 생긴 산적",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        150,
+        70,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        100,
+        60
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        10,
+        80,
+        80,
+        0
+      ],
+      [
+        0,
+        0,
+        50,
+        20,
+        20
+      ]
+    ],
+    "status": {
+      "hp": 1200,
+      "maxHp": 1200,
+      "attack": 47,
+      "defense": 32,
+      "magicAttack": 0,
+      "magicDefense": 20,
+      "speed": 100,
+      "experience": 690,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "axe_handle"
+    ],
+    "skillList": []
+  },
+  "brown_bear": {
+    "facePath": "brown_bear",
+    "name": "불곰",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        50,
+        110,
+        110
+      ],
+      [
+        50,
+        100,
+        100,
+        100,
+        110
+      ],
+      [
+        100,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        100,
+        100,
+        20,
+        50,
+        0
+      ],
+      [
+        0,
+        50,
+        50,
+        50,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1250,
+      "maxHp": 1250,
+      "attack": 48,
+      "defense": 34,
+      "magicAttack": 0,
+      "magicDefense": 16,
+      "speed": 90,
+      "experience": 730,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "gall"
+    ],
+    "skillList": []
+  },
+  "troll": {
+    "facePath": "troll",
+    "name": "트로올",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        120,
+        30,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        150,
+        100,
+        0
+      ],
+      [
+        0,
+        20,
+        150,
+        150,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        80,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1100,
+      "maxHp": 1100,
+      "attack": 42,
+      "defense": 31,
+      "magicAttack": 0,
+      "magicDefense": 20,
+      "speed": 80,
+      "experience": 670,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "tooth_of_troll"
+    ],
+    "skillList": []
+  },
+  "griffon": {
+    "facePath": "griffon",
+    "name": "그리폰",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        80,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        200,
+        200,
+        100,
+        0
+      ],
+      [
+        50,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        100,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1150,
+      "maxHp": 1150,
+      "attack": 43,
+      "defense": 28,
+      "magicAttack": 0,
+      "magicDefense": 23,
+      "speed": 80,
+      "experience": 800,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "feather_of_griffon"
+    ],
+    "skillList": []
+  },
+  "cyclops": {
+    "facePath": "cyclops",
+    "name": "싸이클롭스",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        50,
+        50,
+        0,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        60,
+        0
+      ],
+      [
+        50,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        30,
+        100,
+        100,
+        100,
+        20
+      ],
+      [
+        10,
+        20,
+        60,
+        60,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1500,
+      "maxHp": 1500,
+      "attack": 65,
+      "defense": 34,
+      "magicAttack": 0,
+      "magicDefense": 19,
+      "speed": 80,
+      "experience": 1000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "stick_of_cyclops"
+    ],
+    "skillList": []
+  },
+  "piranha": {
+    "facePath": "piranha",
+    "name": "피라니아",
+    "elementType": "none",
+    "sizeType": "small",
+    "hitArea": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        100,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 400,
+      "maxHp": 400,
+      "attack": 36,
+      "defense": 24,
+      "magicAttack": 0,
+      "magicDefense": 15,
+      "speed": 110,
+      "experience": 200,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "kentaurous_elder": {
+    "facePath": "kentaurous_elder",
+    "name": "원로 켄타우로스",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        120,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        120,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        80,
+        100,
+        0
+      ],
+      [
+        0,
+        120,
+        0,
+        120,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1900,
+      "maxHp": 1900,
+      "attack": 38,
+      "defense": 32,
+      "magicAttack": 54,
+      "magicDefense": 31,
+      "speed": 100,
+      "experience": 3561,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant",
+      "high_rank"
+    ],
+    "skillList": []
+  },
+  "white_tiger": {
+    "facePath": "white_tiger",
+    "name": "백호",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        50,
+        100,
+        0
+      ],
+      [
+        20,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        0,
+        100,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        100,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2100,
+      "maxHp": 2100,
+      "attack": 66,
+      "defense": 41,
+      "magicAttack": 55,
+      "magicDefense": 33,
+      "speed": 110,
+      "experience": 7230,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "heart"
+    ],
+    "skillList": []
+  },
+  "succubus_junior": {
+    "facePath": "succubus_junior",
+    "name": "하위 서큐버스",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        120,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        80,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        200,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        50,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 700,
+      "maxHp": 700,
+      "attack": 36,
+      "defense": 20,
+      "magicAttack": 36,
+      "magicDefense": 29,
+      "speed": 100,
+      "experience": 300,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "hunting_dog": {
+    "facePath": "hunting_dog",
+    "name": "사냥개",
+    "elementType": "none",
+    "sizeType": "small",
+    "hitArea": [
+      [
+        0,
+        120,
+        50
+      ],
+      [
+        50,
+        100,
+        50
+      ],
+      [
+        50,
+        50,
+        50
+      ]
+    ],
+    "status": {
+      "hp": 600,
+      "maxHp": 600,
+      "attack": 39,
+      "defense": 28,
+      "magicAttack": 0,
+      "magicDefense": 11,
+      "speed": 100,
+      "experience": 250,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "tooth_of_dog"
+    ],
+    "skillList": []
+  },
+  "succubus_seniority": {
+    "facePath": "succubus_seniority",
+    "name": "고위 서큐버스",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        120,
+        0,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        200,
+        100,
+        50,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        60,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1100,
+      "maxHp": 1100,
+      "attack": 51,
+      "defense": 28,
+      "magicAttack": 41,
+      "magicDefense": 31,
+      "speed": 105,
+      "experience": 1200,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant",
+      "crysta_lsword"
+    ],
+    "skillList": []
+  },
+  "cerberus": {
+    "facePath": "cerberus",
+    "name": "케르베로스",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        200,
+        150,
+        150
+      ],
+      [
+        120,
+        100,
+        100,
+        100,
+        100
+      ],
+      [
+        120,
+        120,
+        100,
+        100,
+        100
+      ],
+      [
+        0,
+        10,
+        100,
+        0,
+        50
+      ],
+      [
+        0,
+        50,
+        10,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1500,
+      "maxHp": 1500,
+      "attack": 57,
+      "defense": 33,
+      "magicAttack": 0,
+      "magicDefense": 30,
+      "speed": 110,
+      "experience": 4444,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "nepel_01": {
+    "facePath": "nepel_01",
+    "name": "네펠",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        150,
+        0,
+        0
+      ],
+      [
+        80,
+        80,
+        100,
+        80,
+        80
+      ],
+      [
+        0,
+        0,
+        100,
+        200,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1800,
+      "maxHp": 1800,
+      "attack": 51,
+      "defense": 36,
+      "magicAttack": 42,
+      "magicDefense": 38,
+      "speed": 100,
+      "experience": 5000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "nepel_02": {
+    "facePath": "nepel_02",
+    "name": "네펠",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        150,
+        0,
+        0
+      ],
+      [
+        80,
+        80,
+        100,
+        80,
+        80
+      ],
+      [
+        0,
+        0,
+        100,
+        200,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2300,
+      "maxHp": 2300,
+      "attack": 61,
+      "defense": 36,
+      "magicAttack": 57,
+      "magicDefense": 38,
+      "speed": 105,
+      "experience": 5000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "nepel_03": {
+    "facePath": "nepel_03",
+    "name": "각성한 네펠",
+    "elementType": "none",
+    "sizeType": "medium",
+    "hitArea": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        10,
+        10,
+        200,
+        80,
+        30
+      ],
+      [
+        0,
+        80,
+        150,
+        80,
+        30
+      ],
+      [
+        0,
+        0,
+        50,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        50,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2600,
+      "maxHp": 2600,
+      "attack": 63,
+      "defense": 42,
+      "magicAttack": 68,
+      "magicDefense": 42,
+      "speed": 120,
+      "experience": 6000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "succubus_dress"
+    ],
+    "skillList": []
+  },
+  "ankillas": {
+    "facePath": "ankillas",
+    "name": "안킬라스",
+    "elementType": "none",
+    "sizeType": "large",
+    "hitArea": [
+      [
+        0,
+        0,
+        50,
+        0,
+        0,
+        80,
+        50,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        80,
+        50,
+        0,
+        80,
+        80,
+        50,
+        0
+      ],
+      [
+        50,
+        80,
+        80,
+        80,
+        50,
+        80,
+        80,
+        80,
+        50
+      ],
+      [
+        50,
+        200,
+        50,
+        20,
+        50,
+        50,
+        10,
+        10,
+        50
+      ],
+      [
+        0,
+        0,
+        0,
+        100,
+        0,
+        100,
+        50,
+        50,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2666,
+      "maxHp": 2666,
+      "attack": 76,
+      "defense": 47,
+      "magicAttack": 63,
+      "magicDefense": 37,
+      "speed": 100,
+      "experience": 7000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "core_of_ankillas"
+    ],
+    "skillList": []
+  },
+  "elemental_fire": {
+    "facePath": "elemental_fire",
+    "name": "불의 정령",
+    "elementType": "fire",
+    "sizeType": "small",
+    "hitArea": [
+      [
+        0,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 700,
+      "maxHp": 700,
+      "attack": 30,
+      "defense": 37,
+      "magicAttack": 42,
+      "magicDefense": 24,
+      "speed": 80,
+      "experience": 100,
+      "maxExperience": 20000,
+      "fireResistance": 50,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "core_of_spirit"
+    ],
+    "skillList": []
+  },
+  "elemental_water": {
+    "facePath": "elemental_water",
+    "name": "물의 정령",
+    "elementType": "water",
+    "sizeType": "small",
+    "hitArea": [
+      [
+        0,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 700,
+      "maxHp": 700,
+      "attack": 30,
+      "defense": 37,
+      "magicAttack": 43,
+      "magicDefense": 27,
+      "speed": 80,
+      "experience": 400,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 50,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "core_of_spirit"
+    ],
+    "skillList": []
+  },
+  "elemental_electric": {
+    "facePath": "elemental_electric",
+    "name": "전기의 정령",
+    "elementType": "electric",
+    "sizeType": "small",
+    "hitArea": [
+      [
+        0,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 700,
+      "maxHp": 700,
+      "attack": 30,
+      "defense": 38,
+      "magicAttack": 42,
+      "magicDefense": 26,
+      "speed": 80,
+      "experience": 400,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 50
+    },
+    "dropItemList": [
+      "core_of_spirit"
+    ],
+    "skillList": []
+  },
+  "albino_chimera": {
+    "facePath": "albino_chimera",
+    "name": "알비노 키메라",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        50,
+        200,
+        150,
+        0
+      ],
+      [
+        0,
+        50,
+        200,
+        70,
+        0
+      ],
+      [
+        0,
+        100,
+        200,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        200,
+        70,
+        0
+      ],
+      [
+        0,
+        50,
+        50,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1500,
+      "maxHp": 1500,
+      "attack": 58,
+      "defense": 34,
+      "magicAttack": 0,
+      "magicDefense": 25,
+      "speed": 100,
+      "experience": 1500,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "tooth_of_lion",
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "unicorn": {
+    "facePath": "unicorn",
+    "name": "유니콘",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        200,
+        80,
+        0,
+        0,
+        0
+      ],
+      [
+        80,
+        100,
+        100,
+        100,
+        50
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        50
+      ],
+      [
+        0,
+        150,
+        150,
+        50,
+        0
+      ],
+      [
+        0,
+        150,
+        150,
+        50,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 950,
+      "maxHp": 950,
+      "attack": 42,
+      "defense": 32,
+      "magicAttack": 0,
+      "magicDefense": 27,
+      "speed": 110,
+      "experience": 2500,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "bourre_of_unicorn",
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "auroral_unicorn": {
+    "facePath": "auroral_unicorn",
+    "name": "오로랄 유니콘",
+    "sizeType": "medium",
+    "elementType": "electric",
+    "hitArea": [
+      [
+        200,
+        80,
+        0,
+        0,
+        0
+      ],
+      [
+        80,
+        100,
+        100,
+        100,
+        50
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        50
+      ],
+      [
+        0,
+        150,
+        150,
+        50,
+        0
+      ],
+      [
+        0,
+        150,
+        150,
+        50,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1800,
+      "maxHp": 1800,
+      "attack": 52,
+      "defense": 30,
+      "magicAttack": 62,
+      "magicDefense": 33,
+      "speed": 120,
+      "experience": 8000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 50
+    },
+    "dropItemList": [
+      "unicorn_lob"
+    ],
+    "skillList": []
+  },
+  "kein_01": {
+    "facePath": "kein_01",
+    "name": "케인 휘스턴",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        200,
+        0,
+        0
+      ],
+      [
+        0,
+        50,
+        50,
+        50,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        70,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        70,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1700,
+      "maxHp": 1700,
+      "attack": 53,
+      "defense": 21,
+      "magicAttack": 0,
+      "magicDefense": 24,
+      "speed": 100,
+      "experience": 1500,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "kein_02": {
+    "facePath": "kein_02",
+    "name": "각성한 케인",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        200,
+        0,
+        0
+      ],
+      [
+        0,
+        120,
+        50,
+        70,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        70,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        70,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2100,
+      "maxHp": 2100,
+      "attack": 63,
+      "defense": 31,
+      "magicAttack": 0,
+      "magicDefense": 29,
+      "speed": 100,
+      "experience": 7000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "redstar"
+    ],
+    "skillList": []
+  },
+  "bat": {
+    "facePath": "bat",
+    "name": "박쥐",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        110,
+        100,
+        0
+      ],
+      [
+        100,
+        100,
+        100,
+        100,
+        50
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        50
+      ],
+      [
+        0,
+        0,
+        20,
+        0,
+        20
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 450,
+      "maxHp": 450,
+      "attack": 36,
+      "defense": 14,
+      "magicAttack": 0,
+      "magicDefense": 0,
+      "speed": 110,
+      "experience": 500,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "lamia": {
+    "facePath": "lamia",
+    "name": "라미아",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        50,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        50,
+        100,
+        50,
+        50
+      ],
+      [
+        0,
+        0,
+        100,
+        10,
+        0
+      ],
+      [
+        60,
+        50,
+        100,
+        40,
+        0
+      ],
+      [
+        70,
+        100,
+        50,
+        20,
+        30
+      ]
+    ],
+    "status": {
+      "hp": 650,
+      "maxHp": 650,
+      "attack": 36,
+      "defense": 16,
+      "magicAttack": 24,
+      "magicDefense": 18,
+      "speed": 100,
+      "experience": 1000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "lamia_soldier": {
+    "facePath": "lamia_soldier",
+    "name": "라미아 보병",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        10,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        50,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        50,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        70,
+        100,
+        10,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        10,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 950,
+      "maxHp": 950,
+      "attack": 45,
+      "defense": 23,
+      "magicAttack": 0,
+      "magicDefense": 22,
+      "speed": 95,
+      "experience": 3500,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "black_sword",
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "fledermaus": {
+    "facePath": "fledermaus",
+    "name": "플리데마우스",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        120,
+        0,
+        0
+      ],
+      [
+        10,
+        180,
+        100,
+        180,
+        10
+      ],
+      [
+        0,
+        50,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        70,
+        70,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 900,
+      "maxHp": 900,
+      "attack": 42,
+      "defense": 26,
+      "magicAttack": 53,
+      "magicDefense": 23,
+      "speed": 110,
+      "experience": 4500,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "goldenbat_cane",
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "bortise": {
+    "facePath": "bortise",
+    "name": "보르티세",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        120,
+        20,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        50,
+        20
+      ],
+      [
+        0,
+        100,
+        100,
+        50,
+        20
+      ],
+      [
+        40,
+        80,
+        80,
+        30,
+        0
+      ],
+      [
+        40,
+        80,
+        80,
+        30,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2300,
+      "maxHp": 2300,
+      "attack": 67,
+      "defense": 42,
+      "magicAttack": 0,
+      "magicDefense": 30,
+      "speed": 100,
+      "experience": 8000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "keep_pendant"
+    ],
+    "skillList": []
+  },
+  "elf_fire": {
+    "facePath": "elf_fire",
+    "name": "불을 다루는 엘프",
+    "sizeType": "medium",
+    "elementType": "fire",
+    "hitArea": [
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        60,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1300,
+      "maxHp": 1300,
+      "attack": 30,
+      "defense": 18,
+      "magicAttack": 53,
+      "magicDefense": 33,
+      "speed": 100,
+      "experience": 3000,
+      "maxExperience": 20000,
+      "fireResistance": 50,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "soul_predator",
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "elf_water": {
+    "facePath": "elf_water",
+    "name": "물을 다루는 엘프",
+    "sizeType": "medium",
+    "elementType": "water",
+    "hitArea": [
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        20,
+        100,
+        20,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        60,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1300,
+      "maxHp": 1300,
+      "attack": 30,
+      "defense": 16,
+      "magicAttack": 55,
+      "magicDefense": 31,
+      "speed": 100,
+      "experience": 3000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 50,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "soul_predator",
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "elf_electric": {
+    "facePath": "elf_electric",
+    "name": "전기를 다루는 엘프",
+    "sizeType": "medium",
+    "elementType": "electric",
+    "hitArea": [
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1300,
+      "maxHp": 1300,
+      "attack": 30,
+      "defense": 17,
+      "magicAttack": 52,
+      "magicDefense": 31,
+      "speed": 100,
+      "experience": 3000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 50
+    },
+    "dropItemList": [
+      "soul_predator",
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "aonin": {
+    "facePath": "aonin",
+    "name": "아오닌",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        150,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2000,
+      "maxHp": 2000,
+      "attack": 42,
+      "defense": 23,
+      "magicAttack": 78,
+      "magicDefense": 40,
+      "speed": 100,
+      "experience": 7500,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "lether_tear"
+    ],
+    "skillList": []
+  },
+  "candlestick": {
+    "facePath": "candlestick",
+    "name": "피 흘리는 촛대",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        100,
+        100,
+        0
+      ],
+      [
+        100,
+        80,
+        100,
+        100,
+        0
+      ],
+      [
+        80,
+        120,
+        120,
+        120,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 500,
+      "maxHp": 500,
+      "attack": 33,
+      "defense": 21,
+      "magicAttack": 0,
+      "magicDefense": 18,
+      "speed": 100,
+      "experience": 800,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "shelf": {
+    "facePath": "shelf",
+    "name": "삐걱거리는 선반",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        50,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1200,
+      "maxHp": 1200,
+      "attack": 40,
+      "defense": 20,
+      "magicAttack": 0,
+      "magicDefense": 27,
+      "speed": 80,
+      "experience": 1600,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant",
+      "encyclopedia"
+    ],
+    "skillList": []
+  },
+  "soul_ancient": {
+    "facePath": "soul_ancient",
+    "name": "타락한 고대 영령",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        100,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        80,
+        0
+      ],
+      [
+        0,
+        80,
+        80,
+        80,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 650,
+      "maxHp": 650,
+      "attack": 34,
+      "defense": 23,
+      "magicAttack": 37,
+      "magicDefense": 24,
+      "speed": 100,
+      "experience": 1300,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "girl": {
+    "facePath": "girl",
+    "name": "의문의 소녀",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        50,
+        0,
+        50,
+        0
+      ],
+      [
+        0,
+        50,
+        0,
+        50,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 400,
+      "maxHp": 400,
+      "attack": 37,
+      "defense": 18,
+      "magicAttack": 0,
+      "magicDefense": 0,
+      "speed": 80,
+      "experience": 4000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "Yurath": {
+    "facePath": "Yurath",
+    "name": "유라스",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1800,
+      "maxHp": 1800,
+      "attack": 51,
+      "defense": 33,
+      "magicAttack": 69,
+      "magicDefense": 31,
+      "speed": 100,
+      "experience": 4000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "golem_forest": {
+    "facePath": "golem_forest",
+    "name": "숲 골렘",
+    "sizeType": "large",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        50,
+        100,
+        100,
+        50,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        200,
+        200,
+        80,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        80,
+        80,
+        80,
+        80,
+        50,
+        80,
+        0
+      ],
+      [
+        0,
+        80,
+        80,
+        80,
+        80,
+        50,
+        50,
+        80,
+        0
+      ],
+      [
+        0,
+        0,
+        20,
+        10,
+        0,
+        40,
+        0,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1150,
+      "maxHp": 1150,
+      "attack": 36,
+      "defense": 19,
+      "magicAttack": 0,
+      "magicDefense": 22,
+      "speed": 80,
+      "experience": 2100,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant",
+      "hiking_cane"
+    ],
+    "skillList": []
+  },
+  "soul_deprave": {
+    "facePath": "soul_deprave",
+    "name": "타락한 정령",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        50,
+        0,
+        0
+      ],
+      [
+        0,
+        50,
+        70,
+        50,
+        0
+      ],
+      [
+        0,
+        70,
+        100,
+        70,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 650,
+      "maxHp": 650,
+      "attack": 33,
+      "defense": 16,
+      "magicAttack": 41,
+      "magicDefense": 13,
+      "speed": 100,
+      "experience": 1800,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "guard_forest": {
+    "facePath": "guard_forest",
+    "name": "숲의 수호자",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        30,
+        50,
+        80,
+        80
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        80
+      ],
+      [
+        0,
+        200,
+        100,
+        100,
+        0
+      ],
+      [
+        10,
+        100,
+        100,
+        100,
+        50
+      ],
+      [
+        10,
+        30,
+        20,
+        130,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1700,
+      "maxHp": 1700,
+      "attack": 63,
+      "defense": 32,
+      "magicAttack": 41,
+      "magicDefense": 30,
+      "speed": 80,
+      "experience": 3000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "wail_and_cry"
+    ],
+    "skillList": []
+  },
+  "titania": {
+    "facePath": "titania",
+    "name": "티타니아",
+    "sizeType": "medium",
+    "elementType": "water",
+    "hitArea": [
+      [
+        0,
+        0,
+        100,
+        10,
+        0
+      ],
+      [
+        0,
+        20,
+        100,
+        10,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2100,
+      "maxHp": 2100,
+      "attack": 42,
+      "defense": 31,
+      "magicAttack": 80,
+      "magicDefense": 40,
+      "speed": 100,
+      "experience": 7000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 50,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "spirit_lob"
+    ],
+    "skillList": []
+  },
+  "cleric_deprave": {
+    "facePath": "cleric_deprave",
+    "name": "타락한 성직자",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        80,
+        0
+      ],
+      [
+        0,
+        30,
+        100,
+        30,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        10,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 600,
+      "maxHp": 600,
+      "attack": 31,
+      "defense": 11,
+      "magicAttack": 39,
+      "magicDefense": 17,
+      "speed": 100,
+      "experience": 250,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "rabbit": {
+    "facePath": "rabbit",
+    "name": "시계토끼",
+    "sizeType": "small",
+    "elementType": "none",
+    "hitArea": [
+      [
+        50,
+        200,
+        80
+      ],
+      [
+        50,
+        150,
+        80
+      ],
+      [
+        0,
+        30,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 550,
+      "maxHp": 550,
+      "attack": 29,
+      "defense": 23,
+      "magicAttack": 47,
+      "magicDefense": 21,
+      "speed": 100,
+      "experience": 300,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "moeraphim": {
+    "facePath": "moeraphim",
+    "name": "모에라핌",
+    "sizeType": "medium",
+    "elementType": "fire",
+    "hitArea": [
+      [
+        50,
+        50,
+        0,
+        50,
+        50
+      ],
+      [
+        0,
+        100,
+        200,
+        100,
+        0
+      ],
+      [
+        50,
+        100,
+        150,
+        100,
+        50
+      ],
+      [
+        0,
+        50,
+        50,
+        50,
+        0
+      ],
+      [
+        0,
+        50,
+        0,
+        50,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2300,
+      "maxHp": 2300,
+      "attack": 75,
+      "defense": 47,
+      "magicAttack": 71,
+      "magicDefense": 43,
+      "speed": 110,
+      "experience": 8000,
+      "maxExperience": 20000,
+      "fireResistance": 50,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "reback_soul"
+    ],
+    "skillList": []
+  },
+  "chilly_ghoul": {
+    "facePath": "chilly_ghoul",
+    "name": "냉기구울",
+    "sizeType": "medium",
+    "elementType": "water",
+    "hitArea": [
+      [
+        0,
+        0,
+        200,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        80,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        80,
+        0
+      ],
+      [
+        0,
+        20,
+        100,
+        20,
+        0
+      ],
+      [
+        0,
+        0,
+        50,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1000,
+      "maxHp": 1000,
+      "attack": 47,
+      "defense": 27,
+      "magicAttack": 0,
+      "magicDefense": 28,
+      "speed": 70,
+      "experience": 500,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 50,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "blooder": {
+    "facePath": "blooder",
+    "name": "블러더",
+    "sizeType": "medium",
+    "elementType": "fire",
+    "hitArea": [
+      [
+        0,
+        80,
+        100,
+        80,
+        0
+      ],
+      [
+        10,
+        80,
+        100,
+        80,
+        10
+      ],
+      [
+        80,
+        80,
+        200,
+        80,
+        80
+      ],
+      [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1050,
+      "maxHp": 1050,
+      "attack": 49,
+      "defense": 28,
+      "magicAttack": 0,
+      "magicDefense": 22,
+      "speed": 80,
+      "experience": 500,
+      "maxExperience": 20000,
+      "fireResistance": 50,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "raijuu": {
+    "facePath": "raijuu",
+    "name": "라이주",
+    "sizeType": "medium",
+    "elementType": "electric",
+    "hitArea": [
+      [
+        0,
+        80,
+        100,
+        80,
+        0
+      ],
+      [
+        10,
+        80,
+        100,
+        80,
+        10
+      ],
+      [
+        80,
+        80,
+        200,
+        80,
+        80
+      ],
+      [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1300,
+      "maxHp": 1300,
+      "attack": 51,
+      "defense": 30,
+      "magicAttack": 44,
+      "magicDefense": 16,
+      "speed": 100,
+      "experience": 500,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 50
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "chromat": {
+    "facePath": "chromat",
+    "name": "창백한 크로마트",
+    "sizeType": "medium",
+    "elementType": "water",
+    "hitArea": [
+      [
+        50,
+        50,
+        200,
+        50,
+        50
+      ],
+      [
+        0,
+        50,
+        120,
+        50,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        80,
+        0
+      ],
+      [
+        0,
+        80,
+        50,
+        80,
+        0
+      ],
+      [
+        0,
+        50,
+        0,
+        50,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2000,
+      "maxHp": 2000,
+      "attack": 60,
+      "defense": 34,
+      "magicAttack": 44,
+      "magicDefense": 27,
+      "speed": 100,
+      "experience": 3000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 50,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "cutlass",
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "karunija": {
+    "facePath": "karunija",
+    "name": "핏빛의 카루니자",
+    "sizeType": "large",
+    "elementType": "fire",
+    "hitArea": [
+      [
+        0,
+        0,
+        0,
+        20,
+        50,
+        50,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        100,
+        120,
+        100,
+        150,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        150,
+        100,
+        100,
+        100,
+        100,
+        50,
+        10
+      ],
+      [
+        0,
+        0,
+        50,
+        150,
+        100,
+        100,
+        50,
+        10,
+        10
+      ],
+      [
+        0,
+        0,
+        50,
+        50,
+        0,
+        50,
+        50,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2100,
+      "maxHp": 2100,
+      "attack": 52,
+      "defense": 45,
+      "magicAttack": 67,
+      "magicDefense": 33,
+      "speed": 100,
+      "experience": 3000,
+      "maxExperience": 20000,
+      "fireResistance": 50,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "berserker_sword",
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "manarose": {
+    "facePath": "manarose",
+    "name": "눈부신 마나로즈",
+    "sizeType": "medium",
+    "elementType": "electric",
+    "hitArea": [
+      [
+        0,
+        50,
+        100,
+        50,
+        0
+      ],
+      [
+        0,
+        50,
+        100,
+        50,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        50,
+        50,
+        50,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2100,
+      "maxHp": 2100,
+      "attack": 65,
+      "defense": 37,
+      "magicAttack": 44,
+      "magicDefense": 37,
+      "speed": 120,
+      "experience": 3000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 50
+    },
+    "dropItemList": [
+      "lighting",
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "gromtranno": {
+    "facePath": "gromtranno",
+    "name": "마골렘 그롬트란노",
+    "sizeType": "large",
+    "elementType": "all",
+    "hitArea": [
+      [
+        0,
+        0,
+        120,
+        100,
+        10
+      ],
+      [
+        0,
+        80,
+        100,
+        100,
+        80
+      ],
+      [
+        50,
+        80,
+        100,
+        80,
+        100
+      ],
+      [
+        20,
+        80,
+        80,
+        100,
+        100
+      ],
+      [
+        0,
+        20,
+        20,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2500,
+      "maxHp": 2500,
+      "attack": 72,
+      "defense": 47,
+      "magicAttack": 73,
+      "magicDefense": 35,
+      "speed": 80,
+      "experience": 9000,
+      "maxExperience": 20000,
+      "fireResistance": 50,
+      "waterResistance": 50,
+      "electricResistance": 50
+    },
+    "dropItemList": [
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant"
+    ],
+    "skillList": []
+  },
+  "lamia_army": {
+    "facePath": "lamia_army",
+    "name": "라미아 부대",
+    "sizeType": "large",
+    "elementType": "none",
+    "hitArea": [
+      [
+        50,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        80,
+        0
+      ],
+      [
+        40,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        0
+      ],
+      [
+        40,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        50,
+        0
+      ],
+      [
+        30,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        10,
+        0
+      ],
+      [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 1000,
+      "maxHp": 1000,
+      "attack": 100,
+      "defense": 100,
+      "magicAttack": 100,
+      "magicDefense": 100,
+      "speed": 1,
+      "experience": 3000,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [
+      "broad_sword",
+      "sabre",
+      "rapier",
+      "great_sword",
+      "military_sword",
+      "claymore",
+      "bible",
+      "magic_procedure",
+      "for_adult",
+      "long_bow",
+      "short_bow",
+      "paulownia_bow",
+      "gloomy_cane",
+      "chestnut_cane",
+      "blackwood_cane",
+      "round_shield",
+      "buckler",
+      "cope",
+      "necromantic_dress",
+      "magician_dress",
+      "iron_armor",
+      "leather_armor",
+      "yettie_leather_armor",
+      "garnet_pendant",
+      "sapphire_pendant",
+      "exp_pendant",
+      "tower_shield"
+    ],
+    "skillList": []
+  },
+  "mawang_01": {
+    "facePath": "mawang_01",
+    "name": "마왕",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        200,
+        200,
+        200,
+        0
+      ],
+      [
+        0,
+        80,
+        100,
+        80,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        100,
+        5,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        5,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 2800,
+      "maxHp": 2800,
+      "attack": 74,
+      "defense": 50,
+      "magicAttack": 75,
+      "magicDefense": 48,
+      "speed": 100,
+      "experience": 0,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "mawang_02": {
+    "facePath": "mawang_02",
+    "name": "마왕",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        200,
+        100,
+        200,
+        0
+      ],
+      [
+        0,
+        100,
+        80,
+        100,
+        50
+      ],
+      [
+        0,
+        0,
+        100,
+        50,
+        0
+      ],
+      [
+        0,
+        10,
+        20,
+        50,
+        0
+      ],
+      [
+        0,
+        10,
+        20,
+        50,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 3100,
+      "maxHp": 3100,
+      "attack": 76,
+      "defense": 51,
+      "magicAttack": 78,
+      "magicDefense": 50,
+      "speed": 100,
+      "experience": 0,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "mawang_03": {
+    "facePath": "mawang_03",
+    "name": "마왕",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        10,
+        200,
+        50,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        100,
+        0
+      ],
+      [
+        0,
+        0,
+        50,
+        0,
+        0
+      ],
+      [
+        0,
+        20,
+        0,
+        20,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 3300,
+      "maxHp": 3300,
+      "attack": 80,
+      "defense": 53,
+      "magicAttack": 83,
+      "magicDefense": 52,
+      "speed": 120,
+      "experience": 0,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
+  },
+  "moerae": {
+    "facePath": "moerae",
+    "name": "신",
+    "sizeType": "medium",
+    "elementType": "none",
+    "hitArea": [
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        20,
+        200,
+        20,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        80,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        10,
+        0,
+        0
+      ]
+    ],
+    "status": {
+      "hp": 3600,
+      "maxHp": 3600,
+      "attack": 85,
+      "defense": 55,
+      "magicAttack": 88,
+      "magicDefense": 55,
+      "speed": 110,
+      "experience": 0,
+      "maxExperience": 20000,
+      "fireResistance": 0,
+      "waterResistance": 0,
+      "electricResistance": 0
+    },
+    "dropItemList": [],
+    "skillList": []
   }
 }

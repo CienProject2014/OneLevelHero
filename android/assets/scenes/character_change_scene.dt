@@ -1,0 +1,528 @@
+{
+  "sceneName": "character_change_scene",
+  "composite": {
+    "sImages": [
+      {
+        "itemIdentifier": "level01",
+        "x": 638,
+        "y": 448,
+        "zIndex": 8,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "pchangeuitxtlevel"
+      },
+      {
+        "itemIdentifier": "level02",
+        "x": 898,
+        "y": 448,
+        "zIndex": 9,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "pchangeuitxtlevel"
+      },
+      {
+        "itemIdentifier": "level03",
+        "x": 1158,
+        "y": 448,
+        "zIndex": 10,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "pchangeuitxtlevel"
+      },
+      {
+        "itemIdentifier": "character_image01",
+        "x": 638,
+        "y": 550,
+        "zIndex": 11,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "pchangeuiclosed"
+      },
+      {
+        "itemIdentifier": "character_image02",
+        "x": 898,
+        "y": 550,
+        "zIndex": 12,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "pchangeuiclosed"
+      },
+      {
+        "itemIdentifier": "character_image02",
+        "x": 898,
+        "y": 550,
+        "zIndex": 13,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "pchangeuiclosed"
+      },
+      {
+        "itemIdentifier": "character_image03",
+        "x": 1158,
+        "y": 550,
+        "zIndex": 14,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "pchangeuiclosed"
+      },
+      {
+        "itemIdentifier": "character_image_box01",
+        "x": 638,
+        "y": 550,
+        "zIndex": 15,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "pchangeuiparty"
+      },
+      {
+        "itemIdentifier": "character_image_box02",
+        "x": 898,
+        "y": 550,
+        "zIndex": 16,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "pchangeuiparty"
+      },
+      {
+        "itemIdentifier": "character_image_box03",
+        "x": 1158,
+        "y": 550,
+        "zIndex": 17,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "imageName": "pchangeuiparty"
+      }
+    ],
+    "sLabels": [
+      {
+        "itemIdentifier": "character_name_label01",
+        "x": 610,
+        "y": 501,
+        "zIndex": 2,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 180,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "character_name_label02",
+        "x": 870,
+        "y": 501,
+        "zIndex": 3,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 180,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "character_name_label03",
+        "x": 1130,
+        "y": 501,
+        "zIndex": 4,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "align": 8,
+        "width": 180,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "level_label01",
+        "x": 700,
+        "y": 453,
+        "zIndex": 5,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "level_label02",
+        "x": 960,
+        "y": 453,
+        "zIndex": 6,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 80,
+        "height": 40
+      },
+      {
+        "itemIdentifier": "level_label03",
+        "x": 1220,
+        "y": 453,
+        "zIndex": 7,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "style": "MaleMountain",
+        "size": 12,
+        "width": 80,
+        "height": 40
+      }
+    ],
+    "sComposites": [
+      {
+        "itemIdentifier": "background",
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "background",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "background"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "screen",
+        "x": 538,
+        "y": 286,
+        "zIndex": 1,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "pchangeuibase"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "character01",
+        "x": 578,
+        "y": 425,
+        "zIndex": 18,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "pchangeuiframe"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "pchangeuiframeac"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "character02",
+        "x": 838,
+        "y": 425,
+        "zIndex": 19,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "pchangeuiframe"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "pchangeuiframeac"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "character03",
+        "x": 1098,
+        "y": 425,
+        "zIndex": 20,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "pchangeuiframe"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "pchangeuiframeac"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "itemIdentifier": "apply",
+        "x": 830,
+        "y": 316,
+        "zIndex": 21,
+        "layerName": "Default",
+        "tint": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "composite": {
+          "sImages": [
+            {
+              "itemIdentifier": "normal",
+              "layerName": "Default",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "pchangeuibuttonapply"
+            },
+            {
+              "itemIdentifier": "pressed",
+              "zIndex": 1,
+              "layerName": "pressed",
+              "tint": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "imageName": "pchangeuiacbuttonapply"
+            }
+          ],
+          "layers": [
+            {
+              "layerName": "Default"
+            },
+            {
+              "layerName": "normal"
+            },
+            {
+              "layerName": "pressed"
+            }
+          ]
+        }
+      }
+    ],
+    "layers": [
+      {
+        "layerName": "Default"
+      }
+    ]
+  },
+  "physicsPropertiesVO": {}
+}

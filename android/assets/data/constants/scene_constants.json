@@ -1,0 +1,239 @@
+{
+  "status_scene": {
+    "status_label": [
+      "atk",
+      "def",
+      "electric_resistance",
+      "exp_points_label",
+      "fire_resistance",
+      "hp_label",
+      "level_label",
+      "matk",
+      "mdef",
+      "spd",
+      "water_resistance"
+    ],
+    "character_status_image" : [
+    	"change_image01",
+    	"change_image02",
+    	"change_image03",
+    	"change_image04"
+    ],
+    "character_change":[
+        "change01",
+        "change02",
+        "change03",
+        "change04"
+    ]
+  },
+  "inventory_scene": {
+    "inventory_equip_item": [
+      "rightHandGrip",
+      "leftHandGrip",
+      "clothes",
+      "accessory"
+    ],
+    "inventory_item_image": [
+      "item_image01",
+      "item_image02",
+      "item_image03",
+      "item_image04",
+      "item_image05",
+      "item_image06"
+    ],
+    "inventory_item_label": [
+      "item_label01",
+      "item_label02",
+      "item_label03",
+      "item_label04",
+      "item_label05",
+      "item_label06"
+    ],
+    "property_label": [
+    	"property_label01",
+    	"property_label02",
+    	"stats_label01",
+    	"stats_label02",
+    	"up_down01",
+    	"up_down02"
+    ],
+    "inventory_light_button": [
+      "page_light01",
+      "page_light02",
+      "page_light03",
+      "page_light04"
+    ],
+    "inventory_activate_line": [
+      "select_box01",
+      "select_box02",
+      "select_box03",
+      "select_box04",
+      "select_box05",
+      "select_box06"
+    ],
+    "drop_button":[
+    	"button_drop01",
+    	"button_drop02",
+    	"button_drop03",
+    	"button_drop04",
+    	"button_drop05",
+    	"button_drop06"
+    ],
+    "unequip_button":[
+    	"button_unequip01",
+    	"button_unequip02",
+    	"button_unequip03",
+    	"button_unequip04",
+    	"button_unequip05",
+    	"button_unequip06"
+    ],
+    "equip_button":[
+    	"button_equip01",
+    	"button_equip02",
+    	"button_equip03",
+    	"button_equip04",
+    	"button_equip05",
+    	"button_equip06"
+    ],
+    "character_status_image" : [
+    	"character_window01",
+    	"character_window02",
+    	"character_window03",
+    	"character_window04"
+    ],
+    "background" : [
+    	"background",
+    	"background02"
+    ]
+  },
+  "item_scene" : {
+	  "highlight_frame" :[
+	    	"highlight_01",
+	    	"highlight_02",
+	    	"highlight_03",
+	    	"highlight_04",
+	    	"highlight_05",
+	    	"highlight_06",
+	    	"highlight_07"
+	    ],
+	    "item_name_label" : [
+	    "item_name_label01",
+	    "item_name_label02",
+	    "item_name_label03",
+	    "item_name_label04",
+	    "item_name_label05",
+	    "item_name_label06",
+	    "item_name_label07"
+	    ],
+	    "item_amount_label" : [
+	    "item_amount_label01",
+	    "item_amount_label02",
+	    "item_amount_label03",
+	    "item_amount_label04",
+	    "item_amount_label05",
+	    "item_amount_label06",
+	    "item_amount_label07"
+	    ]
+  },
+  "skill_scene" : {
+    "use_button" : [
+    	"use_01",
+    	"use_02",
+    	"use_03",
+    	"use_04",
+    	"use_05",
+    	"use_06",
+    	"use_07"
+    ],
+    "highlight_frame" :[
+    	"highlight_01",
+    	"highlight_02",
+    	"highlight_03",
+    	"highlight_04",
+    	"highlight_05",
+    	"highlight_06",
+    	"highlight_07"
+    ],
+  	"skill_name_label" : [
+  		"skill_01",
+  		"skill_02",
+  		"skill_03",
+  		"skill_04",
+  		"skill_05",
+  		"skill_06",
+  		"skill_07"
+  	],
+  	"casting_label":[
+  		"casting_01",
+  		"casting_02",
+  		"casting_03",
+  		"casting_04",
+  		"casting_05",
+  		"casting_06",
+  		"casting_07"
+  	],
+  	"gauge_label":[
+  		"gauge_01",
+  		"gauge_02",
+  		"gauge_03",
+  		"gauge_04",
+  		"gauge_05",
+  		"gauge_06",
+  		"gauge_07"
+  	]
+  },
+  "save_scene" : {
+  	"save_version":[
+  		"save_01",
+  		"save_02",
+  		"save_03"
+  	],
+  	"subject_label":[
+  		"save01_label",
+  		"save02_label",
+  		"save03_label"
+  	],
+  	"game_time_label":[
+  		"save01_time_label",
+  		"save02_time_label",
+  		"save03_time_label"
+  	],
+  	"save_time_label":[
+  		"save01_real_time_label",
+  		"save02_real_time_label",
+  		"save03_real_time_label"
+  	],
+  	"place_label":[
+  		"save01_place_label",
+  		"save02_place_label",
+  		"save03_place_label"
+  	]
+  },
+  "load_scene" : {
+  	"save_version":[
+  		"save_01",
+  		"save_02",
+  		"save_03"
+  	],
+  	"subject_label":[
+  		"save01_label",
+  		"save02_label",
+  		"save03_label"
+  	],
+  	"game_time_label":[
+  		"save01_time_label",
+  		"save02_time_label",
+  		"save03_time_label"
+  	],
+  	"save_time_label":[
+  		"save01_real_time_label",
+  		"save02_real_time_label",
+  		"save03_real_time_label"
+  	],
+  	"place_label":[
+  		"save01_place_label",
+  		"save02_place_label",
+  		"save03_place_label"
+  	]
+  }
+}

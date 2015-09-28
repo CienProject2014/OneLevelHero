@@ -1,38 +1,61 @@
 package com.mygdx.currentState;
 
-import com.mygdx.enums.PlaceEnum;
-
+import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.VillageDirectionEnum;
 
 public class PositionInfo {
-	private PlaceEnum currentPlace; //마을인지, 갈림길인지, 던전인지, 건물안인지
-	private String currentNode; //현재 마을/던전/교차로 이름	
-	private String currentBuilding;
+	private VillageDirectionEnum villageDirection;
+	private PositionEnum.LocatePosition currentLocatePositionType; // 플레이어의 위치
+	private PositionEnum.EventPosition currentEventPositionType;
+	private String currentNodePath; // 최근 마을/던전입구/교차로/필드 이름
+	private String currentSubNodePath; // 최근 건물/던전이름
+	private String currentDungeonRoomPath; // 던전룸이름
 
-	public PositionInfo() {
+	public String getCurrentSubNodePath() {
+		return currentSubNodePath;
 	}
 
-	public String getCurrentNode() {
-		return currentNode;
+	public void setCurrentSubNodePath(String currentSubNodePath) {
+		this.currentSubNodePath = currentSubNodePath;
 	}
 
-	public void setCurrentNode(String currentNode) {
-		this.currentNode = currentNode;
+	public String getCurrentNodePath() {
+		return currentNodePath;
 	}
 
-	public String getCurrentBuilding() {
-		return currentBuilding;
+	public void setCurrentNodePath(String currentNodePath) {
+		this.currentNodePath = currentNodePath;
 	}
 
-	public void setCurrentBuilding(String currentBuilding) {
-		this.currentBuilding = currentBuilding;
+	public PositionEnum.LocatePosition getCurrentLocatePositionType() {
+		return currentLocatePositionType;
 	}
 
-	public PlaceEnum getCurrentPlace() {
-		return currentPlace;
+	public void setCurrentLocatePositionType(PositionEnum.LocatePosition currentPositionType) {
+		this.currentLocatePositionType = currentPositionType;
 	}
 
-	public void setCurrentPlace(PlaceEnum currentPlace) {
-		this.currentPlace = currentPlace;
+	public VillageDirectionEnum getVillageDirection() {
+		return villageDirection;
 	}
 
+	public void setVillageDirection(VillageDirectionEnum villageDirection) {
+		this.villageDirection = villageDirection;
+	}
+
+	public PositionEnum.EventPosition getCurrentEventPositionType() {
+		return currentEventPositionType;
+	}
+
+	public void setCurrentEventPositionType(PositionEnum.EventPosition currentEventPositionType) {
+		this.currentEventPositionType = currentEventPositionType;
+	}
+
+	public String getCurrentDungeonRoomPath() {
+		return currentDungeonRoomPath;
+	}
+
+	public void setCurrentDungeonRoomPath(String currentDungeonRoomPath) {
+		this.currentDungeonRoomPath = currentDungeonRoomPath;
+	}
 }

@@ -1,0 +1,194 @@
+{
+  "big_tail": {
+    "itemType": "etc_item",
+    "name": "대형 꼬리",
+    "itemPath": "big_tail",
+    "category": "기타",
+    "grade": "일반",
+    "description": "먹음직스러운(?) 와이번의 꼬리다."
+  },
+  "smelling_cloth": {
+    "itemType": "etc_item",
+    "name": "씨앗 주머니",
+    "itemPath": "seed_pocket",
+    "category": "기타",
+    "grade": "일반",
+    "description": "트윈헤드가 주운 씨앗 주머니. 누구의 것일까?"
+  },
+  "wool_of_yetie": {
+    "itemType": "etc_item",
+    "name": "예티의 털",
+    "itemPath": "wool_of_yetie",
+    "category": "기타",
+    "grade": "일반",
+    "description": "예티의 빳빳한 털가죽이다."
+  },
+  "piece_of_crystal": {
+    "itemType": "etc_item",
+    "name": "수정 조각",
+    "itemPath": "piece_of_crystal",
+    "category": "기타",
+    "grade": "일반",
+    "description": "수정 골렘의 파편이다."
+  },
+  "spear_handle": {
+    "itemType": "etc_item",
+    "name": "창자루",
+    "itemPath": "spear_handle",
+    "category": "기타",
+    "grade": "일반",
+    "description": "켄타우로스가 쓰는 창의 일부"
+  },
+  "arrowhead": {
+    "itemType": "etc_item",
+    "name": "화살촉",
+    "itemPath": "arrowhead",
+    "category": "기타",
+    "grade": "일반",
+    "description": "켄타우로스가 쓰는 화살촉"
+  },
+  "tooth_of_lion": {
+    "itemType": "etc_item",
+    "name": "사자 이빨",
+    "itemPath": "tooth_of_lion",
+    "category": "기타",
+    "grade": "일반",
+    "description": "키메라의 이빨이다."
+  },
+  "hood_of_elf": {
+    "itemType": "etc_item",
+    "name": "엘프의 후드",
+    "itemPath": "hood_of_elf",
+    "category": "기타",
+    "grade": "일반",
+    "description": "엘프들이 귀를 가리기 위해 쓰는 후드"
+  },
+  "firewood": {
+    "itemType": "etc_item",
+    "name": "장작",
+    "itemPath": "firewood",
+    "category": "기타",
+    "grade": "일반",
+    "description": "배 수리에 쓰이기도 한다."
+  },
+  "petal_of_rafflesia": {
+    "itemType": "etc_item",
+    "name": "라플레시아의 꽃잎",
+    "itemPath": "petal_of_rafflesia",
+    "category": "기타",
+    "grade": "일반",
+    "description": "염색약 만들기에 매우 좋은 재료"
+  },
+  "nacre": {
+    "itemType": "etc_item",
+    "name": "자개",
+    "itemPath": "nacre",
+    "category": "기타",
+    "grade": "일반",
+    "description": "실내 장식용으로 쓰인다."
+  },
+  "poisonous_liquid": {
+    "itemType": "etc_item",
+    "name": "독액",
+    "itemPath": "poisonous_liquid",
+    "category": "기타",
+    "grade": "일반",
+    "description": "가오리의 독을 담아놓은 병"
+  },
+  "empty_bottle": {
+    "itemType": "etc_item",
+    "name": "빈 병",
+    "itemPath": "empty_bottle",
+    "category": "기타",
+    "grade": "일반",
+    "description": "용병들이 먹고 버린 술병"
+  },
+  "axe_handle": {
+    "itemType": "etc_item",
+    "name": "칼자루",
+    "itemPath": "sword_handle",
+    "category": "기타",
+    "grade": "일반",
+    "description": "산적들이 쓰는 도끼의 일부"
+  },
+  "gall": {
+    "itemType": "etc_item",
+    "name": "최고급 쓸개",
+    "itemPath": "gall",
+    "category": "기타",
+    "grade": "일반",
+    "description": "건강에 매우 좋다는 쓸개"
+  },
+  "tooth_of_troll": {
+    "itemType": "etc_item",
+    "name": "트롤의 이빨",
+    "itemPath": "tooth_of_troll",
+    "category": "기타",
+    "grade": "일반",
+    "description": "트롤의 이빨"
+  },
+  "feather_of_griffon": {
+    "itemType": "etc_item",
+    "name": "그리폰의 깃털",
+    "itemPath": "feather_of_griffon",
+    "category": "기타",
+    "grade": "일반",
+    "description": "그리폰의 날개에서 빠진 깃털"
+  },
+  "horn_of_ogre": {
+    "itemType": "etc_item",
+    "name": "싸이클롭스의 몽둥이",
+    "itemPath": "stick_of_cyclops",
+    "category": "기타",
+    "grade": "일반",
+    "description": "싸이클롭스가 사용하는 몽둥이"
+  },
+  "tooth_of_dog": {
+    "itemType": "etc_item",
+    "name": "사냥개 이빨",
+    "itemPath": "tooth_of_dog",
+    "category": "기타",
+    "grade": "일반",
+    "description": "사냥개에게서 떨어진 날카로운 이빨이다."
+  },
+  "core_of_ankillas": {
+    "itemType": "etc_item",
+    "name": "안킬라스의 핵",
+    "itemPath": "core_of_ankillas",
+    "category": "기타",
+    "grade": "유니크",
+    "description": "안킬라스의 마력이 응축된 핵이다."
+  },
+  "core_of_spirit": {
+    "itemType": "etc_item",
+    "name": "정령의 핵",
+    "itemPath": "core_of_spirit",
+    "category": "기타",
+    "grade": "일반",
+    "description": "정령의 마력이 응축된 핵이다."
+  },
+  "bourre_of_unicorn": {
+    "itemType": "etc_item",
+    "name": "유니콘 털 뭉치",
+    "itemPath": "bourre_of_unicorn",
+    "category": "기타",
+    "grade": "레어",
+    "description": "고급스러운 유니콘의 털 뭉치이다."
+  },
+  "letter": {
+    "itemType": "etc_item",
+    "name": "편지 더미",
+    "itemPath": "letter",
+    "category": "기타",
+    "grade": "일반",
+    "description": "월라스가에서 발견된 편지더미다."
+  },
+  "heart": {
+    "itemType": "etc_item",
+    "name": "백호의 심장",
+    "itemPath": "heart ",
+    "category": "기타",
+    "grade": "유니크",
+    "description": "백호의 영력이 담긴 심장. 뛰는 것을 멈추지 않는다."
+  }
+}

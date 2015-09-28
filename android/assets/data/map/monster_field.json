@@ -1,0 +1,145 @@
+[
+  {
+    "fieldType": "bridge",
+    "fieldMonsterList": []
+  },
+  {
+    "fieldType": "grassland",
+    "fieldMonsterList": [
+      "twinhead",
+      "wyvern"
+    ]
+  },
+  {
+    "fieldType": "crystallized_valley",
+    "fieldMonsterList": [
+      "yetie",
+      "golem_crystal"
+    ]
+  },
+  {
+    "fieldType": "blackwood_forest",
+    "fieldMonsterList": [
+      "kentaurous_spear",
+      "kentaurous_bow",
+      "chimera"
+    ]
+  },
+  {
+    "fieldType": "elven_forest",
+    "fieldMonsterList": [
+      "elf",
+      "ent",
+      "rafflesia"
+    ]
+  },
+  {
+    "fieldType": "beach",
+    "fieldMonsterList": [
+      "clam",
+      "mercensary"
+    ]
+  },
+  {
+    "fieldType": "range_of_a_mountain_titania",
+    "fieldMonsterList": [
+      "bandit",
+      "brown_bear"
+    ]
+  },
+  {
+    "fieldType": "kadilla_mountain",
+    "fieldMonsterList": [
+      "troll",
+      "griffon",
+      "cyclops"
+    ]
+  },
+  {
+    "fieldType": "mountain_titania_dungeon",
+    "fieldMonsterList": [
+      "soul_deprave"
+    ]
+  },
+  {
+    "fieldType": "blackwood_forest_dungeon",
+    "fieldMonsterList": [
+      "kentaurous_spear",
+      "kentaurous_bow",
+      "chimera"
+    ]
+  },
+  {
+    "fieldType": "cave_of_succubus",
+    "fieldMonsterList": [
+      "succubus_junior",
+      "hunting_dog"
+    ]
+  },
+  {
+    "fieldType": "golden_lake",
+    "fieldMonsterList": [
+      "elemental_fire",
+      "elemental_water",
+      "elemental_electric"
+    ]
+  },
+  {
+    "fieldType": "cave_of_cape_of_tempest",
+    "fieldMonsterList": [
+      "bat",
+      "lamia"
+    ]
+  },
+  {
+    "fieldType": "ancient_library_b1",
+    "fieldMonsterList": [
+      "candlestick"
+    ]
+  },
+  {
+    "fieldType": "ancient_library_b2",
+    "fieldMonsterList": [
+      "soul_ancient"
+    ]
+  },
+  {
+    "fieldType": "ancient_library_b3",
+    "fieldMonsterList": [
+      "girl"
+    ]
+  },
+  {
+    "fieldType": "temple_of_moerae_b12",
+    "fieldMonsterList": [
+      "cleric_deprave",
+      "rabbit"
+    ]
+  },
+  {
+    "fieldType": "devil_castle_1f",
+    "fieldMonsterList": [
+      "chilly_ghoul"
+    ]
+  },
+  {
+    "fieldType": "devil_castle_2f",
+    "fieldMonsterList": [
+      "blooder"
+    ]
+  },
+  {
+    "fieldType": "devil_castle_3f",
+    "fieldMonsterList": [
+      "raijuu"
+    ]
+  },
+  {
+    "fieldType": "devil_castle_4f",
+    "fieldMonsterList": [
+      "elemental_fire",
+      "elemental_water",
+      "elemental_electric"
+    ]
+  }
+]

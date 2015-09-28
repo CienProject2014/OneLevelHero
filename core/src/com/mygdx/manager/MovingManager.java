@@ -3,127 +3,122 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.currentState.MovingInfo;
-import com.mygdx.currentState.PositionInfo;
-import com.mygdx.enums.PlaceEnum;
+import com.mygdx.enums.PositionEnum;
+import com.mygdx.enums.PositionEnum.EventPosition;
+import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.enums.ScreenEnum;
+import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.state.Assets;
 
 public class MovingManager {
 	@Autowired
-	private Assets assets;
-	@Autowired
 	private ScreenFactory screenFactory;
 	@Autowired
-	private PositionInfo positionInfo;
+	private PositionManager positionManager;
 	@Autowired
-	private MovingInfo movingInfo;
+	private EventManager eventManager;
 	@Autowired
-	private EncounterManager encounterManager;
+	private BattleManager battleManager;
 
-	public void goForward() {
-		if (isRoadLeft()) {
-			minusLeftRoadLength();
-			movingRoad();
+	public void goToNode(String Node) {
+		positionManager.setCurrentNodePath(Node);
+		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
+		goCurrentNode(nodeType);
+	}
+
+	public void goCurrentLocatePosition() {
+		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
+		if (positionManager.isInWorldMap()) {
+			positionManager.setInWorldMap(false);
+		}
+		if (positionManager.getCurrentEventPositionType() != PositionEnum.EventPosition.NONE) {
+			goBeforeEventPosition();
 		} else {
-			// 목적지 노드에 도착해서 현재 위치로 설정함
-			positionInfo.setCurrentNode(movingInfo.getDestinationNode());
-			goIntoCurrentNode();
+			Gdx.app.log("MovingManager", "go" + positionManager.getCurrentLocatePositionType());
+			switch (positionManager.getCurrentLocatePositionType()) {
+				case NODE :
+					goCurrentNode(nodeType);
+					break;
+				case SUB_NODE :
+					goCurrentSubNode(nodeType);
+					break;
+				case FIELD :
+					screenFactory.show(ScreenEnum.FIELD);
+					break;
+				case DUNGEON :
+					screenFactory.show(ScreenEnum.DUNGEON);
+				default :
+					Gdx.app.log("MovingManager", "NodeType정보 오류");
+					break;
+			}
 		}
 	}
-
-	public void goBackward() {
-		if (!isRoadFull()) {
-			plusLeftRoadLength();
-			movingRoad();
-		} else {
-			// 원래 노드로 다시 돌아옴
-			positionInfo.setCurrentNode(movingInfo.getStartNode());
-			goIntoCurrentNode();
-		}
-	}
-
-	private void plusLeftRoadLength() {
-		movingInfo.setLeftRoadLength(movingInfo.getLeftRoadLength() + 1);
-	}
-
-	public void minusLeftRoadLength() {
-		movingInfo.setLeftRoadLength(movingInfo.getLeftRoadLength() - 1);
-	}
-
-	private void movingRoad() {
-		if (encounterManager.isBattleOccured()) {
-			encounterManager.encountEnemy();
-		}
-	}
-
-	private void goIntoCurrentNode() {
-		String placeType = assets.worldNodeInfoMap.get(
-				positionInfo.getCurrentNode()).getType();
-		switch (PlaceEnum.findPlaceEnum(placeType)) {
-			case VILLAGE:
-				screenFactory.show(ScreenEnum.VILLAGE);
+	private void goBeforeEventPosition() {
+		switch (positionManager.getCurrentEventPositionType()) {
+			case GAME_OBJECT :
+				screenFactory.show(ScreenEnum.GAME_OBJECT);
 				break;
-			case DUNGEON:
+			case BATTLE :
+				positionManager.setCurrentEventPositionType(PositionEnum.EventPosition.NONE);
+				goCurrentLocatePosition();
+				break;
+			case NPC :
+				screenFactory.show(ScreenEnum.GREETING);
+				break;
+			case STORY :
+				positionManager.setCurrentEventPositionType(PositionEnum.EventPosition.NONE);
+				goCurrentLocatePosition();
+				break;
+			case WORLD_MAP :
+				positionManager.setCurrentEventPositionType(EventPosition.NONE);
+				screenFactory.show(ScreenEnum.STATUS);
+				break;
+			case LOG :
+				positionManager.setCurrentEventPositionType(EventPosition.NONE);
+				goCurrentLocatePosition();
+				break;
+			default :
+				Gdx.app.log("MovingManager", "EventPosition 정보 오류");
+				break;
+		}
+	}
+
+	public void goPreviousPosition() {
+		switch (positionManager.getCurrentLocatePositionType()) {
+			case SUB_NODE :
+				positionManager.setCurrentLocatePositionType(LocatePosition.NODE);
+				screenFactory.show(ScreenEnum.findScreenEnum(positionManager.getCurrentNodeType().toString()));
+				break;
+			default :
+				Gdx.app.log("MovingManager", "PositionEnum정보 오류");
+		}
+	}
+
+	public void goCurrentNode(WorldNodeEnum.NodeType nodeType) {
+		switch (nodeType) {
+			case VILLAGE :
+				screenFactory.show(ScreenEnum.VILLAGE);
+				return;
+			case DUNGEON_ENTRANCE :
 				screenFactory.show(ScreenEnum.DUNGEON_ENTRANCE);
-				break;
-			case FORK:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				break;
-			default:
-				screenFactory.show(ScreenEnum.VILLAGE);
-				Gdx.app.debug("MovingManager", "CurrentNode 타입 오류");
-				break;
+				return;
+			case FORK :
+				screenFactory.show(ScreenEnum.FORK);
+				return;
 		}
 	}
 
-	private boolean isRoadLeft() {
-		return (movingInfo.getLeftRoadLength() > 0) ? true : false;
-	}
-
-	private boolean isRoadFull() {
-		return (movingInfo.getRoadLength() <= movingInfo.getLeftRoadLength()) ? true
-				: false;
-	}
-
-	public Assets getAssets() {
-		return assets;
-	}
-
-	public void setAssets(Assets assets) {
-		this.assets = assets;
-	}
-
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
-	}
-
-	public void setScreenFactory(ScreenFactory screenFactory) {
-		this.screenFactory = screenFactory;
-	}
-
-	public PositionInfo getPositionInfo() {
-		return positionInfo;
-	}
-
-	public void setPositionInfo(PositionInfo positionInfo) {
-		this.positionInfo = positionInfo;
-	}
-
-	public MovingInfo getMovingInfo() {
-		return movingInfo;
-	}
-
-	public void setMovingInfo(MovingInfo movingInfo) {
-		this.movingInfo = movingInfo;
-	}
-
-	public EncounterManager getEncounterManager() {
-		return encounterManager;
-	}
-
-	public void setEncounterManager(EncounterManager encounterManager) {
-		this.encounterManager = encounterManager;
+	private void goCurrentSubNode(WorldNodeEnum.NodeType nodeType) {
+		switch (nodeType) {
+			case VILLAGE :
+				screenFactory.show(ScreenEnum.BUILDING);
+				return;
+			case DUNGEON_ENTRANCE :
+				screenFactory.show(ScreenEnum.DUNGEON);
+				return;
+			case FORK :
+				screenFactory.show(ScreenEnum.FIELD); // FIXME
+				return;
+		}
 	}
 }

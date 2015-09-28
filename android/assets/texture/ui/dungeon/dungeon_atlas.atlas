@@ -1,0 +1,41 @@
+
+atlas.png
+size: 810,214
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+dungeonui_button_change_direction
+  rotate: false
+  xy: 2, 94
+  size: 330, 120
+  orig: 330, 120
+  offset: 0, 0
+  index: -1
+dungeonui_button_down
+  rotate: false
+  xy: 2, 2
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+dungeonui_button_exit
+  rotate: false
+  xy: 334, 124
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
+dungeonui_button_go
+  rotate: false
+  xy: 666, 124
+  size: 144, 90
+  orig: 144, 90
+  offset: 0, 0
+  index: -1
+dungeonui_button_up
+  rotate: false
+  xy: 334, 32
+  size: 330, 90
+  orig: 330, 90
+  offset: 0, 0
+  index: -1
