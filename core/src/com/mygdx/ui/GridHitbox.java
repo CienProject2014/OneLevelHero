@@ -242,7 +242,7 @@ public class GridHitbox extends Table {
 	public boolean isInsideTile(int i, int j, float x, float y) {
 		// FIXME 좌표계 변환을 하지 못해서 우선 상수로 처리.
 		float centerX = tiles[i][j].getCenterX() + 640;
-		float centerY = tiles[i][j].getCenterY() + 215;
+		float centerY = tiles[i][j].getCenterY() + 270;
 		float width = tiles[i][j].getWidth();
 		float height = tiles[i][j].getHeight();
 
@@ -251,7 +251,7 @@ public class GridHitbox extends Table {
 
 	public boolean isInsideHitbox(float x, float y) {
 		float centerX = this.getCenterX();
-		float centerY = this.getCenterY();
+		float centerY = this.getCenterY() + 60;
 		float width = uiConstantsMap.get("gridTableWidthSmall");
 		float height = uiConstantsMap.get("gridTableHeightSmall");
 

@@ -3219,6 +3219,10 @@ talk_select: {
 	class: java.lang.String,
 	value: texture/ui/chat/talk_select.png/
 },
+monster_hunting_dog: {
+	class: java.lang.String,
+	value: texture/monster/monster_hunting_dog.png/
+},
 bg_bonichea_03: {
 	class: java.lang.String,
 	value: texture/background/bg_bonichea_03.png/
