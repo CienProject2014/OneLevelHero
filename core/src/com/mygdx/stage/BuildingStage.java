@@ -15,6 +15,7 @@ import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BuildingTypeEnum;
+import com.mygdx.enums.GameObjectEnum;
 import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
@@ -50,8 +51,7 @@ public class BuildingStage extends BaseOneLevelStage {
 	@Autowired
 	private PositionManager positionManager;
 
-	private static final int GAME_OBJECT_POSITION[][] = { { 80, 45 }, { 450, 45 }, { 820, 45 }, { 1210, 45 },
-			{ 1570, 45 } };
+	private static final int GAME_OBJECT_POSITION[][] = {{80, 45}, {450, 45}, {820, 45}, {1210, 45}, {1570, 45}};
 	private Building buildingInfo;
 	private GameObjectPopup gameObjectPopup;
 
@@ -82,8 +82,8 @@ public class BuildingStage extends BaseOneLevelStage {
 				}
 			});
 
-			ImageButton restButton = new ImageButton(
-					new TextureRegionDrawable(new TextureRegion(uiComponentAssets.getStayButton())));
+			ImageButton restButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+					uiComponentAssets.getStayButton())));
 			buttonTable.add(restButton);
 			buttonTable.row();
 			restButton.addListener(new SimpleTouchListener() {
@@ -114,23 +114,25 @@ public class BuildingStage extends BaseOneLevelStage {
 				final GameObject gameObject = eventManager.getEventInfo().getGameObjectMap().get(objectName);
 				{
 					if (gameObject != null) {
-						ImageButton gameObjectButton = new ImageButton(new TextureRegionDrawable(
-								new TextureRegion(textureManager.getGameObjectTexture(gameObject.getFacePath()))));
-						Table gameObjectTable = new Table();
-						gameObjectTable.add(gameObjectButton);
-						gameObjectTable.left().bottom();
-						gameObjectTable.padLeft(GAME_OBJECT_POSITION[gameObject.getPositionIndex()][0])
-								.padBottom(GAME_OBJECT_POSITION[gameObject.getPositionIndex()][1]);
-						gameObjectTable.addListener(new SimpleTouchListener() {
-							@Override
-							public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-								timeManager.plusMinute(5);
-								eventManager.setCurrentGameObject(gameObject);
-								positionManager.setCurrentEventPositionType(EventPosition.GAME_OBJECT);
-								screenFactory.show(ScreenEnum.GAME_OBJECT);
-							}
-						});
-						tableStack.add(gameObjectTable);
+						if (!gameObject.getObjectType().equals(GameObjectEnum.FUNCTION)) {
+							ImageButton gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+									textureManager.getGameObjectTexture(gameObject.getFacePath()))));
+							Table gameObjectTable = new Table();
+							gameObjectTable.add(gameObjectButton);
+							gameObjectTable.left().bottom();
+							gameObjectTable.padLeft(GAME_OBJECT_POSITION[gameObject.getPositionIndex()][0]).padBottom(
+									GAME_OBJECT_POSITION[gameObject.getPositionIndex()][1]);
+							gameObjectTable.addListener(new SimpleTouchListener() {
+								@Override
+								public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+									timeManager.plusMinute(5);
+									eventManager.setCurrentGameObject(gameObject);
+									positionManager.setCurrentEventPositionType(EventPosition.GAME_OBJECT);
+									screenFactory.show(ScreenEnum.GAME_OBJECT);
+								}
+							});
+							tableStack.add(gameObjectTable);
+						}
 					}
 				}
 			}
@@ -143,11 +145,11 @@ public class BuildingStage extends BaseOneLevelStage {
 		backgroundTable.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
 		TextureRegionDrawable backgroundImage;
 		if (buildingInfo.getBackgroundPath() != null) {
-			backgroundImage = new TextureRegionDrawable(
-					new TextureRegion(textureManager.getBackgroundTexture(buildingInfo.getBackgroundPath())));
+			backgroundImage = new TextureRegionDrawable(new TextureRegion(
+					textureManager.getBackgroundTexture(buildingInfo.getBackgroundPath())));
 		} else {
-			backgroundImage = new TextureRegionDrawable(
-					new TextureRegion(textureManager.getBackgroundTexture(buildingInfo.getSubNodePath())));
+			backgroundImage = new TextureRegionDrawable(new TextureRegion(
+					textureManager.getBackgroundTexture(buildingInfo.getSubNodePath())));
 		}
 		backgroundTable.setBackground(backgroundImage);
 		addActor(backgroundTable);
@@ -159,13 +161,20 @@ public class BuildingStage extends BaseOneLevelStage {
 				NPC npc = eventManager.getEventInfo().getNpcMap().get(npcName);
 				if (npc != null) {
 					if (ArgumentChecker.checkIsInTargetTime(npc.getTargetTime(), timeManager.getDayMinute())) {
-						ImageButton npcImage = new ImageButton(new TextureRegionDrawable(
-								new TextureRegion(textureManager.getBustTexture(npcName, "01"))));
+						ImageButton npcImage;
+						if (npc.getFacePath() != null) {
+							npcImage = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+									textureManager.getCharacterBodyTexture(npc.getFacePath()))));
+						} else {
+							npcImage = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+									textureManager.getCharacterBodyTexture(npc.getElementPath()))));
+						}
+
 						npcImage.setTouchable(Touchable.enabled);
 						Table npcTable = new Table();
 						npcTable.left().bottom();
-						npcTable.padLeft(GAME_OBJECT_POSITION[npc.getPositionIndex()][0])
-								.padBottom(GAME_OBJECT_POSITION[npc.getPositionIndex()][1]);
+						npcTable.padLeft(GAME_OBJECT_POSITION[npc.getPositionIndex()][0]).padBottom(
+								GAME_OBJECT_POSITION[npc.getPositionIndex()][1]);
 						npcTable.add(npcImage);
 						npcTable.addListener(new SimpleTouchListener() {
 							@Override

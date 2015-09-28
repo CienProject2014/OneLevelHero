@@ -1,76 +1,83 @@
 
-GameUiButton.png
-size: 916,409
+game_ui_button.png
+size: 925,958
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 back_button
   rotate: false
-  xy: 624, 278
-  size: 145, 131
-  orig: 145, 131
+  xy: 2, 552
+  size: 301, 273
+  orig: 301, 273
   offset: 0, 0
   index: -1
 back_toggle_button
   rotate: false
-  xy: 610, 145
-  size: 145, 131
-  orig: 145, 131
+  xy: 2, 277
+  size: 301, 273
+  orig: 301, 273
   offset: 0, 0
   index: -1
 help_button
   rotate: false
-  xy: 2, 2
-  size: 302, 274
-  orig: 302, 274
+  xy: 305, 552
+  size: 301, 273
+  orig: 301, 273
   offset: 0, 0
   index: -1
 help_toggle_button
   rotate: false
-  xy: 306, 3
-  size: 302, 273
-  orig: 302, 273
+  xy: 2, 2
+  size: 301, 273
+  orig: 301, 273
+  offset: 0, 0
+  index: -1
+no_next_button
+  rotate: false
+  xy: 305, 277
+  size: 301, 273
+  orig: 301, 273
   offset: 0, 0
   index: -1
 place_info_button
   rotate: false
-  xy: 2, 278
+  xy: 2, 827
   size: 620, 131
   orig: 620, 131
   offset: 0, 0
   index: -1
 time_info_button
   rotate: false
-  xy: 2, 278
+  xy: 2, 827
   size: 620, 131
   orig: 620, 131
   offset: 0, 0
   index: -1
 quest_log_button
   rotate: false
-  xy: 771, 278
-  size: 145, 131
-  orig: 145, 131
+  xy: 305, 2
+  size: 301, 273
+  orig: 301, 273
   offset: 0, 0
   index: -1
 quest_log_toggle_button
   rotate: false
-  xy: 610, 12
-  size: 145, 131
-  orig: 145, 131
+  xy: 624, 685
+  size: 301, 273
+  orig: 301, 273
   offset: 0, 0
   index: -1
 setting_button
   rotate: false
-  xy: 757, 145
-  size: 145, 131
-  orig: 145, 131
+  xy: 608, 410
+  size: 301, 273
+  orig: 301, 273
   offset: 0, 0
   index: -1
 setting_toggle_button
   rotate: false
-  xy: 757, 12
-  size: 145, 131
-  orig: 145, 131
+  xy: 608, 135
+  size: 301, 273
+  orig: 301, 273
   offset: 0, 0
   index: -1

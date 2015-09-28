@@ -92,7 +92,7 @@
   	]
   },
   {
-    "filePath": "skin/GameUiButton.pack",
+    "filePath": "skin/game_ui_button.atlas",
     "element": [
       "back_button",
       "back_toggle_button",
@@ -102,7 +102,9 @@
       "help_button",
       "help_toggle_button",
       "setting_button",
-      "setting_toggle_button"
+      "setting_toggle_button",
+      "no_next_button",
+      "place_info_button"
     ]
   }
 ]

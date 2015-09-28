@@ -14,8 +14,17 @@ public class EventElement {
 	protected HashMap<String, Event> events;
 	protected TargetTime targetTime;
 	protected String name;
+	protected String elementPath;
 	protected String facePath;
 	protected List<String> greetingMessages;
+
+	public String getElementPath() {
+		return elementPath;
+	}
+
+	public void setElementPath(String elementPath) {
+		this.elementPath = elementPath;
+	}
 
 	public int getPositionIndex() {
 		return positionIndex;
