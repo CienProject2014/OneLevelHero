@@ -101,6 +101,7 @@
         "rightHandGrip": "bible",
       "clothes": "cope"},
     "skillList": [
+      "casting",
       "cross",
       "heal",
       "smile",

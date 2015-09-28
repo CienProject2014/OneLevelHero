@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.currentState.CurrentInfo;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
@@ -50,17 +51,7 @@ public class WorldMapStage extends BaseOverlapStage {
 		assetsManager.initScene(SCENE_NAME);
 		positionManager.setInWorldMap(true);
 		initSceneLoader(assetsManager.rm);
-		/*
-		 * MainScene을 불러오자. SceneLoader는 CompositeItem을 가지고 있다. SceneVO가 반환되는데,
-		 * 이것은 CompositeVO를 가지고 있다. CompositeVO는 그 Scene이 가지고 있는 Label, Button등을
-		 * 다 가지고 있다.
-		 */
 		sceneLoader.loadScene(SCENE_NAME);
-		/*
-		 * getRoot()할시, CompositeItem이 반환된다. CompositeItem은 Composite들의 집합이다.
-		 * getCompositeById로 하나하나 가져올수 있다. 현재 위치 버튼을 가져온다. getX로 Image의 위치를 가져올
-		 * 수 있다.
-		 */
 		currentPosition = sceneLoader.getRoot().getCompositeById("cross");
 		currentNode = sceneLoader.getRoot().getImageById(positionManager.getCurrentNodePath());
 		// FIXME 예외적 상황
@@ -77,13 +68,14 @@ public class WorldMapStage extends BaseOverlapStage {
 		currentPosition.setY(currentNode.getY() - SET_POSITION + 16);
 
 		addActor(sceneLoader.getRoot());
-		setVillageNodeButton(positionManager, nodeAssets);
-		setForkNodeButton(positionManager, nodeAssets);
-		setDungeonEntranceButton(positionManager, nodeAssets);
+		if (CurrentInfo.isAdminMode) {
+			setVillageNodeButton(positionManager, nodeAssets);
+			setForkNodeButton(positionManager, nodeAssets);
+			setDungeonEntranceButton(positionManager, nodeAssets);
+		}
 		setCamera();
 		return this;
 	}
-
 	private void setDungeonEntranceButton(final PositionManager positionManager, NodeAssets nodeAssets) {
 		Map<String, DungeonEntrance> dungeonEntranceMap = nodeAssets.getDungeonEntranceMap();
 		Iterator<Entry<String, DungeonEntrance>> dungeonEntranceMapIterator = dungeonEntranceMap.entrySet().iterator();

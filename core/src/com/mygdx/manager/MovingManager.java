@@ -89,10 +89,6 @@ public class MovingManager {
 				positionManager.setCurrentLocatePositionType(LocatePosition.NODE);
 				screenFactory.show(ScreenEnum.findScreenEnum(positionManager.getCurrentNodeType().toString()));
 				break;
-			case NODE :
-				positionManager.setCurrentLocatePositionType(LocatePosition.FIELD);
-				screenFactory.show(ScreenEnum.FIELD);
-				break;
 			default :
 				Gdx.app.log("MovingManager", "PositionEnum정보 오류");
 		}

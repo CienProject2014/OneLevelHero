@@ -31,9 +31,9 @@ public class BackButtonListener extends ClickListener {
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		soundManager.playClickSound();
-		timeManager.plusMinute(15);
 		if (!positionManager.isInWorldMap()) {
 			movingManager.goPreviousPosition();
+			timeManager.plusMinute(15);
 			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, positionManager.getCurrentNodePath());
 		} else {
 			if (StatusScreen.isClickedWorldMap()) {
