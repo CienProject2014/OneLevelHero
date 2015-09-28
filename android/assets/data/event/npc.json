@@ -1,7 +1,7 @@
 {
   "lilis": {
     "name": "리리스",
-    "facePath": "lilis",
+    "elementPath": "lilis",
     "events": {
       "1": {
         "eventTitle": "저주를 풀 열쇠",
@@ -109,7 +109,7 @@
   },
   "parath": {
     "name": "파라스",
-    "facePath": "parath",
+    "elementPath": "parath",
     "events": {
       "1": {
         "eventTitle": "저주를 풀 열쇠",
@@ -242,7 +242,7 @@
   },
   "yongsa": {
     "name": "용사",
-    "facePath": "yongsa",
+    "elementPath": "yongsa",
     "events": {
       "1": {
         "eventTitle": "파라스와의 대화",
@@ -295,22 +295,21 @@
       "오늘은 누구에게 장난을 쳐볼까!"
     ]
   },
-  "yalluisroy":{
-    "name":"얄 루이스 로이",
-    "facePath":"yalluisroy"
+  "yalluisroy": {
+    "name": "얄 루이스 로이",
+    "elementPath": "yalluisroy"
   },
-  "diomirhone":{
-    "name":"디오미론느",
-    "facePath":"diomirhone"
+  "diomirhone": {
+    "name": "디오미론느",
+    "elementPath": "diomirhone"
   },
   "mawang": {
     "name": "마왕",
-    "facePath": "mawang"
+    "elementPath": "mawang"
   },
-  
   "waiji": {
     "name": "와이지",
-    "facePath": "waiji",
+    "elementPath": "waiji",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -469,9 +468,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "god_of_drug",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "god_of_drug",
+                "questObjectCount": 1
               }
             }
           },
@@ -603,6 +602,7 @@
   },
   "blackwood_grocery_owner": {
     "name": "잡화점 주인",
+    "elementPath": "blackwood_grocery_owner",
     "facePath": "grocery_owner",
     "events": {
       "1": {
@@ -673,9 +673,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "heart",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "heart",
+                "questObjectCount": 1
               }
             }
           },
@@ -778,6 +778,7 @@
   },
   "blackwood_resident": {
     "name": "마을사람",
+    "elementPath": "blackwood_resident",
     "facePath": "resident_03",
     "events": {
       "1": {
@@ -859,6 +860,7 @@
     "name": "수상한 투숙객",
     "positionIndex": 2,
     "facePath": "resident_04",
+    "elementPath": "blackwood_guest",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -1303,6 +1305,7 @@
     "name": "여관주인",
     "positionIndex": 1,
     "facePath": "inn_owner",
+    "elementPath": "blackwood_inn",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -1336,10 +1339,9 @@
       "무슨 일인가요?"
     ]
   },
-  
   "holland": {
     "name": "홀랜드",
-    "facePath": "holland",
+    "elementPath": "holland",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -1612,7 +1614,7 @@
   },
   "aimee": {
     "name": "에이미",
-    "facePath": "aimee",
+    "elementPath": "aimee",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -1656,6 +1658,7 @@
   "cobweb_grocery_owner": {
     "name": "잡화점 주인",
     "facePath": "grocery_owner",
+    "elementPath": "cobweb_grocery_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -1725,9 +1728,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "tooth_of_dog",
-                "questObjectCount" : 5
+              "quest": {
+                "questObjectPath": "tooth_of_dog",
+                "questObjectCount": 5
               }
             }
           },
@@ -1878,9 +1881,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "big_tail",
-                "questObjectCount" : 5
+              "quest": {
+                "questObjectPath": "big_tail",
+                "questObjectCount": 5
               }
             }
           },
@@ -1991,6 +1994,7 @@
     "name": "대장장이",
     "positionIndex": 1,
     "facePath": "smithy_owner",
+    "elementPath": "cobweb_smithy_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -2060,9 +2064,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "wool_of_yetie",
-                "questObjectCount" : 5
+              "quest": {
+                "questObjectPath": "wool_of_yetie",
+                "questObjectCount": 5
               }
             }
           },
@@ -2213,9 +2217,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "core_of_anhuntas",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "core_of_anhuntas",
+                "questObjectCount": 1
               }
             }
           },
@@ -2366,9 +2370,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "core_of_anhuntas",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "core_of_anhuntas",
+                "questObjectCount": 1
               }
             }
           },
@@ -2494,6 +2498,7 @@
     "name": "여관주인 ",
     "positionIndex": 1,
     "facePath": "inn_owner",
+    "elementPath": "cobweb_inn_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -2529,17 +2534,16 @@
   },
   "cobwebguard": {
     "name": "콥웨브 경비병",
-    "facePath": "cobwebguard"
+    "elementPath": "cobwebguard"
   },
   "nepel": {
     "name": "네펠",
-    "facePath": "nepel"
+    "elementPath": "nepel"
   },
-  
   "mia_and_ai": {
     "name": "미아와 아이",
     "positionIndex": 1,
-    "facePath": "mia_and_ai",
+    "elementPath": "mia_and_ai",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -2623,9 +2627,9 @@
             "rewardType": "quest_hunt_monster",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "soul_deprave",
-                "questObjectCount" : 10
+              "quest": {
+                "questObjectPath": "soul_deprave",
+                "questObjectCount": 10
               }
             }
           },
@@ -2774,9 +2778,10 @@
       "무슨 일인가요?"
     ]
   },
-  "nade":{
+  "nade": {
     "name": "네이드",
     "facePath": "resident_03",
+    "elementPath": "nade",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -2860,9 +2865,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "prickly_pear",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "prickly_pear",
+                "questObjectCount": 1
               }
             }
           },
@@ -2995,6 +3000,7 @@
     "name": "여관주인 ",
     "positionIndex": 1,
     "facePath": "inn_owner",
+    "elementPath": "oberon_inn_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -3028,15 +3034,15 @@
       "무슨 일인가요?"
     ]
   },
-  
-  "mea":{
-    "name":"메아",
-    "facePath":"mea"
+  "mea": {
+    "name": "메아",
+    "elementPath": "mea"
   },
   "mea_01": {
     "name": "메아",
     "positionIndex": 2,
     "facePath": "mea",
+    "elementPath": "mea_01",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -3570,6 +3576,7 @@
     "name": "메아",
     "positionIndex": 2,
     "facePath": "mea",
+    "elementPath": "mea_02",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4102,7 +4109,7 @@
   "sailor_01": {
     "name": "선원",
     "positionIndex": 1,
-    "facePath": "sailor_01",
+    "elementPath": "sailor_01",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4166,7 +4173,7 @@
   "sailor_02": {
     "name": "선원",
     "positionIndex": 2,
-    "facePath": "sailor_02",
+    "elementPath": "sailor_02",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4230,7 +4237,7 @@
   "sailor_03": {
     "name": "선원",
     "positionIndex": 3,
-    "facePath": "sailor_03",
+    "elementPath": "sailor_03",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4300,7 +4307,7 @@
   },
   "southcape_resident_01": {
     "name": "마을사람",
-    "facePath": "resident_01",
+    "elementPath": "resident_01",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4378,6 +4385,7 @@
   "southcape_resident_02": {
     "name": "마을사람",
     "facePath": "resident_02",
+    "elementPath": "southcape_resident_02",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4455,6 +4463,7 @@
   "southcape_resident_03": {
     "name": "마을사람",
     "facePath": "resident_03",
+    "elementPath": "southcape_resident_03",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4532,6 +4541,7 @@
   "southcape_resident_04": {
     "name": "마을사람",
     "facePath": "resident_04",
+    "elementPath": "southcape_resident_04",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4609,6 +4619,7 @@
   "southcape_resident_05": {
     "name": "마을사람",
     "facePath": "resident_05",
+    "elementPath": "southcape_resident_05",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4686,6 +4697,7 @@
   "southcape_resident_06": {
     "name": "마을사람",
     "facePath": "resident_06",
+    "elementPath": "southcape_resident_06",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4762,7 +4774,7 @@
   },
   "captain_jack": {
     "name": "캡틴 잭",
-    "facePath": "captain_jack",
+    "elementPath": "captain_jack",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4825,15 +4837,16 @@
   },
   "bortise": {
     "name": "보르티세",
-    "facePath": "bortise"
+    "elementPath": "bortise"
   },
-  "southcape_bar_owner":{
-    "name":"점장",
-    "facePath":"bar_owner"
+  "southcape_bar_owner": {
+    "name": "점장",
+    "elementPath": "bar_owner"
   },
   "southcape_smithy_owner": {
     "name": "대장장이",
-    "facePath":"smithy_owner",
+    "facePath": "smithy_owner",
+    "elementPath": "southcape_smithy_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -4917,9 +4930,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "stick_of_cyclops",
-                "questObjectCount" : 2
+              "quest": {
+                "questObjectPath": "stick_of_cyclops",
+                "questObjectCount": 2
               }
             }
           },
@@ -5028,8 +5041,8 @@
             }
           ]
         },
-         "rewards": [
-           {
+        "rewards": [
+          {
             "rewardType": "get_item",
             "rewardState": "not_opened",
             "rewardParameter": {
@@ -5053,16 +5066,17 @@
     },
     "greetingMessages": [
       "무슨 일인가?"
-      ]
+    ]
   },
   "southcape_villagehead": {
     "name": "사우스케이프 촌장",
-    "facePath": "southcape_villagehead"
+    "elementPath": "southcape_villagehead"
   },
-  "southcape_inn_owner":{
+  "southcape_inn_owner": {
     "name": "여관주인",
     "positionIndex": 1,
-    "facePath":"inn_owner",
+    "facePath": "inn_owner",
+    "elementPath": "southcape_inn_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -5096,9 +5110,10 @@
       "무슨 일인가요?"
     ]
   },
-  "southcape_grocery_owner":{
+  "southcape_grocery_owner": {
     "name": "잡화점 주인",
     "facePath": "grocery_owner",
+    "elementPath": "southcape_grocery_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -5132,14 +5147,13 @@
       "어서오세요."
     ]
   },
-  
   "kein_coworker": {
     "name": "케인의 동료",
-    "facePath": "kein_coworker"
+    "elementPath": "kein_coworker"
   },
   "kein": {
     "name": "케인",
-    "facePath": "kein",
+    "elementPath": "kein",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -5699,20 +5713,20 @@
   },
   "yongsa_young": {
     "name": "어린용사",
-    "facePath": "yongsa_young"
+    "elementPath": "yongsa_young"
   },
   "kein_father": {
     "name": "케인의 아버지",
-    "facePath":"nothing_image"
+    "elementPath": "kein_father"
   },
   "diarkan": {
     "name": "디아르칸",
-    "facePath": "diarkan"
+    "elementPath": "diarkan"
   },
   "servant_01": {
     "name": "하인1",
     "positionIndex": 1,
-    "facePath": "servant_01",
+    "elementPath": "servant_01",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -5796,7 +5810,7 @@
   "servant_02": {
     "name": "하인2",
     "positionIndex": 2,
-    "facePath": "servant_02",
+    "elementPath": "servant_02",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -5806,7 +5820,7 @@
           "eventScenes": [
             {
               "script": "저는 에버그네일님의 하인 2호입니다.",
-              "characterPath": "servant_01",
+              "characterPath": "servant_02",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "middle_ridge_evergnailhouse"
@@ -5873,7 +5887,7 @@
   "evergnail": {
     "name": "앨버트 에버그네일",
     "positionIndex": 3,
-    "facePath": "evergnail",
+    "elementPath": "evergnail",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -5910,7 +5924,7 @@
   "wallace": {
     "name": "월라스",
     "positionIndex": 1,
-    "facePath": "wallace",
+    "elementPath": "wallace",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -5947,7 +5961,7 @@
   "farmer": {
     "name": "농부",
     "positionIndex": 1,
-    "facePath": "farmer",
+    "elementPath": "farmer",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -6163,18 +6177,18 @@
       "이곳은 더 이상 성지가 아닙니다. 신조차 버리신 것 같은 저주받은 땅일 뿐이죠…"
     ]
   },
-  "noel":{
-    "name":"노엘",
-    "facePath":"noel"
+  "noel": {
+    "name": "노엘",
+    "elementPath": "noel"
   },
-  "riam":{
-    "name":"리암",
-    "facePath":"riam"
+  "riam": {
+    "name": "리암",
+    "elementPath": "riam"
   },
   "noel_and_riam": {
     "name": "노엘과 리암",
     "positionIndex": 3,
-    "facePath": "noel_and_riam",
+    "elementPath": "noel_and_riam",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -6511,6 +6525,7 @@
     "name": "여관주인",
     "positionIndex": 1,
     "facePath": "inn_owner",
+    "elementPath": "middle_ridge_inn_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -6594,9 +6609,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "bourre_of_unicorn",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "bourre_of_unicorn",
+                "questObjectCount": 1
               }
             }
           },
@@ -6718,10 +6733,9 @@
       "……하아"
     ]
   },
-  
   "fist": {
     "name": "피스트",
-    "facePath":"fist",
+    "elementPath": "fist",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -6768,7 +6782,7 @@
               "characterPath": "fist",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_lab"
+              "backgroundPath": "vaical_castle_lab"
             }
           ]
         },
@@ -6777,9 +6791,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "core_of_spirit",
-                "questObjectCount" : 5
+              "quest": {
+                "questObjectPath": "core_of_spirit",
+                "questObjectCount": 5
               }
             }
           },
@@ -6842,47 +6856,47 @@
               "characterPath": "fist",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_lab"
+              "backgroundPath": "vaical_castle_lab"
             },
             {
               "script": "귀찮긴 하지만 약속은 어기는 게 아니지. 여기서 잠시만 기다려.",
               "characterPath": "fist",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_lab"
+              "backgroundPath": "vaical_castle_lab"
             },
             {
               "script": "...",
               "characterPath": "fist",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_lab"
+              "backgroundPath": "vaical_castle_lab"
             },
             {
               "script": "......",
               "characterPath": "fist",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_lab"
+              "backgroundPath": "vaical_castle_lab"
             },
             {
               "script": "여기 완성되었어. 잘 쓰길 바라네",
               "characterPath": "fist",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_lab"
+              "backgroundPath": "vaical_castle_lab"
             },
             {
               "script": "은 목걸이를 받았다.",
               "characterPath": "nothing_image",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_lab"
+              "backgroundPath": "vaical_castle_lab"
             }
           ]
         },
-         "rewards": [
-           {
+        "rewards": [
+          {
             "rewardType": "get_item",
             "rewardState": "not_opened",
             "rewardParameter": {
@@ -6906,11 +6920,11 @@
     },
     "greetingMessages": [
       "어이, 무슨 일이지?"
-      ]
+    ]
   },
-  "vical_villagehead": {
+  "vaical_villagehead": {
     "name": "장로",
-    "facePath":"vical_villagehead",
+    "elementPath": "vaical_villagehead",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -6950,49 +6964,49 @@
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "전설일 줄만 알았던 말이 진짜 그렇게 될 줄은 몰랐네.",
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "바이칼성 사람이 그것을 죽이면 저주가 옮겨붙는단 말도 있어서 차마 손을 쓰지도 못하고……",
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "아직 자네들이 그놈을 이길 수 있는지 알 수 없으니 우선 알비노 키메라를 처치하고 오겠나?",
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "예전에 금빛 호수에 방생한 기형 키메라인데 더 강한 키메라가 되어 마을 사람들을 위협하고 있다네.",
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "타지에서 온 자네들이라면 이 저주를 없애줄 수 있지 않은가?",
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "도와준다면 이 감사한 마음은 잊지 않겠네.",
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             }
           ]
         },
@@ -7001,9 +7015,9 @@
             "rewardType": "quest_hunt_monster",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "albino_chimera",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "albino_chimera",
+                "questObjectCount": 1
               }
             }
           },
@@ -7017,7 +7031,7 @@
               }
             }
           },
-         {
+          {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
             "rewardParameter": {
@@ -7039,7 +7053,7 @@
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             }
           ]
         },
@@ -7066,35 +7080,35 @@
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "저주를 내리는 몬스터로 알려진 건 오로랄 유니콘일세.",
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "몇 년 전 어떤 유니콘이 새벽에 태어나 오로라의 축복을 받아 강력한 힘을 가지게 되었지.",
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "그 몬스터만 처치해 준다면 나의 모든 것이라 할 수 있는 것을 주겠네.",
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "부탁하네. 여기에서 기다리고 있겠네.",
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             }
           ]
         },
@@ -7103,9 +7117,9 @@
             "rewardType": "quest_hunt_monster",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "auroral_unicorn",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "auroral_unicorn",
+                "questObjectCount": 1
               }
             }
           },
@@ -7119,7 +7133,7 @@
               }
             }
           },
-         {
+          {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
             "rewardParameter": {
@@ -7128,7 +7142,7 @@
               }
             }
           }
-      ]
+        ]
       },
       "5": {
         "eventTitle": "마을의 저주(진행 중)",
@@ -7141,7 +7155,7 @@
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             }
           ]
         },
@@ -7168,7 +7182,7 @@
               "characterPath": "vaical_villagehead",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_headhouse"
+              "backgroundPath": "vaical_castle_headhouse"
             },
             {
               "script": "마을의 저주를 풀어준 자네들에게 주어도 아깝지 않겠지.",
@@ -7193,8 +7207,8 @@
             }
           ]
         },
-         "rewards": [
-           {
+        "rewards": [
+          {
             "rewardType": "get_item",
             "rewardState": "not_opened",
             "rewardParameter": {
@@ -7218,11 +7232,20 @@
     },
     "greetingMessages": [
       "……바이칼에는 무슨 용무인가?"
-      ]
+    ]
+  },
+  "mia": {
+    "name": "미아",
+    "facePath": "mia"
+  },
+  "ai": {
+    "name": "아이",
+    "facePath": "ai"
   },
   "aren": {
     "name": "아렌",
-    "facePath":"fist",
+    "facePath": "fist",
+    "elementPath": "aren",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -7303,7 +7326,7 @@
               "characterPath": "aren",
               "faceNumber": "01",
               "speakerPosition": "left",
-            "backgroundPath": "vaical_castle_colosseum"
+              "backgroundPath": "vaical_castle_colosseum"
             }
           ]
         },
@@ -7331,9 +7354,9 @@
             "rewardType": "quest_hunt_monster",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "chimera",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "chimera",
+                "questObjectCount": 1
               }
             }
           }
@@ -7363,9 +7386,9 @@
             "rewardType": "quest_hunt_monster",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "chimera",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "chimera",
+                "questObjectCount": 1
               }
             }
           }
@@ -7395,9 +7418,9 @@
             "rewardType": "quest_hunt_monster",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "chimera",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "chimera",
+                "questObjectCount": 1
               }
             }
           }
@@ -7427,9 +7450,9 @@
             "rewardType": "quest_hunt_monster",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "albino_chimera",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "albino_chimera",
+                "questObjectCount": 1
               }
             }
           }
@@ -7459,9 +7482,9 @@
             "rewardType": "quest_hunt_monster",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "albino_chimera",
-                "questObjectCount" : 1
+              "quest": {
+                "questObjectPath": "albino_chimera",
+                "questObjectCount": 1
               }
             }
           }
@@ -7514,12 +7537,11 @@
     },
     "greetingMessages": [
       "키메라 5마리에 도전하겠어?"
-      ]
+    ]
   },
-  
   "nia": {
     "name": "니아",
-    "facePath":"nia",
+    "elementPath": "nia",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -7603,9 +7625,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "peony",
-                "questObjectCount" : 3
+              "quest": {
+                "questObjectPath": "peony",
+                "questObjectCount": 3
               }
             }
           },
@@ -7631,10 +7653,10 @@
         ]
       },
       "3": {
-      "eventTitle": "병약한 레모(진행중)",
-      "eventState": "not_opened",
-      "eventType": "chat",
-      "eventParameter": {
+        "eventTitle": "병약한 레모(진행중)",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
           "eventScenes": [
             {
               "script": "필요한 약재는 작약 뿌리 3개에요.",
@@ -7658,43 +7680,43 @@
         ]
       },
       "4": {
-       "eventTitle": "병약한 레모(완료)",
-       "eventState": "not_opened",
-       "eventType": "chat",
+        "eventTitle": "병약한 레모(완료)",
+        "eventState": "not_opened",
+        "eventType": "chat",
         "eventParameter": {
-         "eventScenes": [
-          {
-            "script": "약재를 구해다 주셨군요! 정말 감사합니다.",
+          "eventScenes": [
+            {
+              "script": "약재를 구해다 주셨군요! 정말 감사합니다.",
               "characterPath": "nia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "redrose_castle_house"
-          },
-          {
-            "script": "덕분에 레모도 당분간 편안하게 보낼 수 있겠어요.",
+            },
+            {
+              "script": "덕분에 레모도 당분간 편안하게 보낼 수 있겠어요.",
               "characterPath": "nia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "redrose_castle_house"
-          },
-          {
-            "script": "고맙습니다. 이건 고생하신 보답이에요.",
+            },
+            {
+              "script": "고맙습니다. 이건 고생하신 보답이에요.",
               "characterPath": "nia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "redrose_castle_house"
-          },
-          {
-            "script": "신속의 목걸이를 받았다.",
+            },
+            {
+              "script": "신속의 목걸이를 받았다.",
               "characterPath": "nia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "redrose_castle_house"
-          }
+            }
           ]
         },
-          "rewards": [
-            {
+        "rewards": [
+          {
             "rewardType": "get_item",
             "rewardState": "not_opened",
             "rewardParameter": {
@@ -7749,7 +7771,8 @@
   },
   "noctern": {
     "name": "녹턴",
-    "facePath":"resident_03",
+    "facePath": "resident_03",
+    "elementPath": "noctern",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -7822,9 +7845,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "seed_pocket",
-                "questObjectCount" : 3
+              "quest": {
+                "questObjectPath": "seed_pocket",
+                "questObjectCount": 3
               }
             }
           },
@@ -7854,23 +7877,23 @@
         "eventState": "not_opened",
         "eventType": "chat",
         "eventParameter": {
-        "eventScenes": [
-          {
-            "script": "씨앗 주머니, 한 3개정도라도 있으면 됩니다.",
-            "characterPath": "noctern",
-            "faceNumber": "01",
-            "speakerPosition": "left",
-            "backgroundPath": "redrose_castle_house"
-           }
-         ]
+          "eventScenes": [
+            {
+              "script": "씨앗 주머니, 한 3개정도라도 있으면 됩니다.",
+              "characterPath": "noctern",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_house"
+            }
+          ]
         }
       },
       "4": {
-         "eventTitle": "잃어버린 것(완료)",
-         "eventState": "not_opened",
-         "eventType": "chat",
-         "eventParameter": {
-           "eventScenes": [
+        "eventTitle": "잃어버린 것(완료)",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
             {
               "script": "맞습니다! 바로 이겁니다! 정말 감사합니다! 다음 해 농사를 걱정하지 않아도 되겠군요.",
               "characterPath": "noctern",
@@ -7906,8 +7929,8 @@
               "speakerPosition": "left",
               "backgroundPath": "redrose_castle_house"
             }
-            ]
-          },
+          ]
+        },
         "rewards": [
           {
             "rewardType": "get_item",
@@ -7942,10 +7965,10 @@
       "아이고"
     ]
   },
-  "redrose_castle_guardian":{
+  "redrose_castle_guardian": {
     "name": "레드로즈 경비병",
     "positionIndex": 1,
-    "facePath":"redrose_castle_guardian",
+    "elementPath": "redrose_castle_guardian",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -7979,10 +8002,11 @@
       "근무 중 이상 무!"
     ]
   },
-  "redrose_castle_inn_owner":{
+  "redrose_castle_inn_owner": {
     "name": "여관주인",
     "positionIndex": 1,
-    "facePath":"inn_owner",
+    "facePath": "inn_owner",
+    "elementPath": "redrose_castle_inn_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -8016,11 +8040,11 @@
       "무슨 일인가요?"
     ]
   },
-  
   "hunter": {
     "name": "이름모를 사냥꾼",
     "positionIndex": 1,
     "facePath": "resident_01",
+    "elementPath": "hunter",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -8256,19 +8280,18 @@
       "이런 곳에서 사람을 만나다니…"
     ]
   },
-  "lilis_young":{
-    "name":"어린 리리스",
-    "facePath":"lilis_young"
+  "lilis_young": {
+    "name": "어린 리리스",
+    "elementPath": "lilis_young"
   },
-  "nepel_young":{
-    "name":"어린 네펠",
-    "facePath":"nepel_young"
+  "nepel_young": {
+    "name": "어린 네펠",
+    "elementPath": "nepel_young"
   },
-  
   "tenardie": {
     "name": "테나르디에",
     "positionIndex": 1,
-    "facePath":"tenardie",
+    "elementPath": "tenardie",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -8304,35 +8327,35 @@
         "eventParameter": {
           "eventScenes": [
             {
-            "script": "내가 오래전부터 짝사랑하던 여인이 있었는데, 몇 날 며칠을 벼르다 지난주에 데이트 신청을 했어.",
+              "script": "내가 오래전부터 짝사랑하던 여인이 있었는데, 몇 날 며칠을 벼르다 지난주에 데이트 신청을 했어.",
               "characterPath": "tenardie",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             },
             {
-            "script": "아무튼, 내일이 그녀를 만나는 3번째 날인데, 그녀를 위한 선물을 해주고 싶어.",
+              "script": "아무튼, 내일이 그녀를 만나는 3번째 날인데, 그녀를 위한 선물을 해주고 싶어.",
               "characterPath": "tenardie",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             },
             {
-            "script": "내가 직접 염색한 손수건을 선물하려는데, 라플라너스의 꽃잎으로 염색하면 염색이 잘된다고 하더라고.",
+              "script": "내가 직접 염색한 손수건을 선물하려는데, 라플라너스의 꽃잎으로 염색하면 염색이 잘된다고 하더라고.",
               "characterPath": "tenardie",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             },
             {
-            "script": "보다시피 나는 사나운 라플라너스를 물리칠 수 없을거야.",
+              "script": "보다시피 나는 사나운 라플라너스를 물리칠 수 없을거야.",
               "characterPath": "tenardie",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             },
             {
-            "script": " 그래서, 염색에 필요한 라플라너스 꽃잎을 5장만 구해줄 수 있을까?",
+              "script": " 그래서, 염색에 필요한 라플라너스 꽃잎을 5장만 구해줄 수 있을까?",
               "characterPath": "tenardie",
               "faceNumber": "01",
               "speakerPosition": "left",
@@ -8345,9 +8368,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "petal_of_rafflesia",
-                "questObjectCount" : 5
+              "quest": {
+                "questObjectPath": "petal_of_rafflesia",
+                "questObjectCount": 5
               }
             }
           },
@@ -8388,7 +8411,7 @@
         "eventParameter": {
           "eventScenes": [
             {
-            "script": "염색에 필요한 라플라너스 꽃잎은 5장이야.",
+              "script": "염색에 필요한 라플라너스 꽃잎은 5장이야.",
               "characterPath": "tenardie",
               "faceNumber": "01",
               "speakerPosition": "left",
@@ -8415,14 +8438,14 @@
         "eventParameter": {
           "eventScenes": [
             {
-            "script": "오, 색깔이 진한 것이 정말 염색하기 좋겠는걸? 정말 고맙네.  허허 ",
+              "script": "오, 색깔이 진한 것이 정말 염색하기 좋겠는걸? 정말 고맙네.  허허 ",
               "characterPath": "tenardie",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             },
             {
-            "script": "그녀의 기쁜 얼굴을 볼 생각을 하니 벌써 행복하군. 별건 아니지만, 이걸 받아두게",
+              "script": "그녀의 기쁜 얼굴을 볼 생각을 하니 벌써 행복하군. 별건 아니지만, 이걸 받아두게",
               "characterPath": "tenardie",
               "faceNumber": "01",
               "speakerPosition": "left",
@@ -8437,8 +8460,8 @@
             }
           ]
         },
-         "rewards": [
-           {
+        "rewards": [
+          {
             "rewardType": "get_item",
             "rewardState": "not_opened",
             "rewardParameter": {
@@ -8464,10 +8487,10 @@
       "어서오세요. 편하게 쉬다가세요."
     ]
   },
-  "hermes":{
+  "hermes": {
     "name": "헤르메스",
     "positionIndex": 1,
-    "facePath":"hermes",
+    "elementPath": "hermes",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -8595,9 +8618,9 @@
             "rewardType": "open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "eventPacket" : {
-                "eventElement" : "kaido",
-                "eventNumber" : 3
+              "eventPacket": {
+                "eventElement": "kaido",
+                "eventNumber": 3
               }
             }
           }
@@ -8608,10 +8631,10 @@
       "무슨 일인가요?"
     ]
   },
-  "kaido":{
+  "kaido": {
     "name": "카이도",
     "positionIndex": 1,
-    "facePath":"kaido",
+    "elementPath": "kaido",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -8697,9 +8720,9 @@
             "rewardType": "open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "eventPacket" : {
-                "eventElement" : "hermes",
-                "eventNumber" : 2
+              "eventPacket": {
+                "eventElement": "hermes",
+                "eventNumber": 2
               }
             }
           }
@@ -8839,9 +8862,9 @@
             "rewardType": "open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "eventPacket" : {
-                "eventElement" : "kaido",
-                "eventNumber" : 4
+              "eventPacket": {
+                "eventElement": "kaido",
+                "eventNumber": 4
               }
             }
           },
@@ -8849,9 +8872,9 @@
             "rewardType": "open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "eventPacket" : {
-                "eventElement" : "kaido",
-                "eventNumber" : 5
+              "eventPacket": {
+                "eventElement": "kaido",
+                "eventNumber": 5
               }
             }
           }
@@ -8935,9 +8958,9 @@
             "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "eventPacket" : {
-                "eventElement" : "mirage_port_pirate",
-                "eventNumber" : 3
+              "eventPacket": {
+                "eventElement": "mirage_port_pirate",
+                "eventNumber": 3
               }
             }
           },
@@ -8945,9 +8968,9 @@
             "rewardType": "close_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "eventPacket" : {
-                "eventElement" : "kaido",
-                "eventNumber" : 5
+              "eventPacket": {
+                "eventElement": "kaido",
+                "eventNumber": 5
               }
             }
           }
@@ -9101,8 +9124,8 @@
             "rewardType": "join_party",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "unit" : {
-                "heroPath" : "yalluisroy"
+              "unit": {
+                "heroPath": "yalluisroy"
               }
             }
           },
@@ -9110,9 +9133,9 @@
             "rewardType": "close_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "eventPacket" : {
-                "eventElement" : "kaido",
-                "eventNumber" : 4
+              "eventPacket": {
+                "eventElement": "kaido",
+                "eventNumber": 4
               }
             }
           }
@@ -9123,10 +9146,11 @@
       "무슨 일이지?"
     ]
   },
-  "mirage_port_resident":{
+  "mirage_port_resident": {
     "name": "마을주민",
     "positionIndex": 1,
-    "facePath":"resident_03",
+    "facePath": "resident_03",
+    "elementPath": "mirage_port_resident",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9212,9 +9236,9 @@
             "rewardType": "open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "eventPacket" : {
-                "eventElement" : "bonichea_grocery_owner",
-                "eventNumber" : 3
+              "eventPacket": {
+                "eventElement": "bonichea_grocery_owner",
+                "eventNumber": 3
               }
             }
           }
@@ -9225,10 +9249,11 @@
       "무슨 일인가요?"
     ]
   },
-  "mirage_port_pirate":{
+  "mirage_port_pirate": {
     "name": "배관리 해적",
     "positionIndex": 1,
-    "facePath":"pirate",
+    "facePath": "pirate",
+    "elementPath": "mirage_port_pirate",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9300,9 +9325,9 @@
             "rewardType": "open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "eventPacket" : {
-                "eventElement" : "kaido",
-                "eventNumber" : 2
+              "eventPacket": {
+                "eventElement": "kaido",
+                "eventNumber": 2
               }
             }
           }
@@ -9356,10 +9381,9 @@
       "무슨 일이야?"
     ]
   },
-  
   "kasia_duke": {
     "name": "카시아 공작",
-    "facePath": "kasia_duke",
+    "elementPath": "kasia_duke",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9395,7 +9419,7 @@
   },
   "plecha": {
     "name": "플레챠",
-    "facePath": "plecha",
+    "elementPath": "plecha",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9545,11 +9569,11 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "location": {
-                "npcPath" : "plecha"
+                "npcPath": "plecha"
               },
-              "time" : {
-                "startHour" : 24,
-                "endHour" : 24
+              "time": {
+                "startHour": 24,
+                "endHour": 24
               }
             }
           }
@@ -9565,7 +9589,8 @@
   },
   "kadilla_castle_smithy_owner": {
     "name": "대장장이",
-    "facePath":"smithy_owner",
+    "facePath": "smithy_owner",
+    "elementPath": "kadilla_castle_smithy_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9655,7 +9680,8 @@
   },
   "kadilla_castle_grocery_owner": {
     "name": "잡화점 주인",
-    "facePath":"grocery_owner",
+    "facePath": "grocery_owner",
+    "elementPath": "kadilla_castle_grocery_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9687,11 +9713,12 @@
     },
     "greetingMessages": [
       "무슨 일인가요?"
-      ]
+    ]
   },
   "kadilla_castle_clothing_store_owner": {
     "name": "옷가게 주인",
-    "facePath":"clothing_store_owner",
+    "facePath": "clothing_store_owner",
+    "elementPath": "kadilla_castle_clothing_store_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9755,7 +9782,7 @@
   "beck": {
     "name": "경비병 벡",
     "positionIndex": 1,
-    "facePath":"beck",
+    "elementPath": "beck",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9780,8 +9807,8 @@
   },
   "snocks": {
     "name": "경비병 스눅스",
-    "positionIndex": 5,
-    "facePath":"snocks",
+    "positionIndex": 3,
+    "elementPath": "snocks",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9807,7 +9834,8 @@
   "kadilla_castle_inn_owner": {
     "name": "여관주인",
     "positionIndex": 1,
-    "facePath":"inn_owner",
+    "facePath": "inn_owner",
+    "elementPath": "kadilla_castle_inn_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9841,31 +9869,31 @@
       "무슨 일인가요?"
     ]
   },
-  "officer":{
-    "name":"행정관",
-    "facePath":"officer"
+  "officer": {
+    "name": "행정관",
+    "elementPath": "officer"
   },
-  "miu":{
-    "name":"미우",
-    "facePath":"miu"
+  "miu": {
+    "name": "미우",
+    "elementPath": "miu"
   },
-  "animal_human":{
-    "name":"수인종",
-    "facePath":"nothing_image"
+  "animal_human": {
+    "name": "수인종",
+    "elementPath": "animal_human"
   },
-  "kadilla_guardian":{
-    "name":"카딜라 경비병",
-    "facePath":"nothing_image"
+  "kadilla_guardian": {
+    "name": "카딜라 경비병",
+    "elementPath": "kadilla_guardian"
   },
-  "chancellor":{
-    "name":"대학총장",
-    "facePath":"nothing_image"
+  "chancellor": {
+    "name": "대학총장",
+    "elementPath": "chancellor"
   },
-  
   "bonichea_inn_owner": {
     "name": "여관주인",
     "positionIndex": 1,
-    "facePath":"inn_owner",
+    "facePath": "inn_owner",
+    "elementPath": "bonichea_inn_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -9875,7 +9903,7 @@
           "eventScenes": [
             {
               "script": "하룻밤 주무실 건가?",
-             "characterPath": "bonichea_inn_owner",
+              "characterPath": "bonichea_inn_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
@@ -9901,29 +9929,29 @@
         "eventParameter": {
           "eventScenes": [
             {
-             "script": "최근 들어, 손님이 점점 줄어 드는 게 뭔가 원인이 있는 거 같아.",
-             "characterPath": "bonichea_inn_owner",
+              "script": "최근 들어, 손님이 점점 줄어 드는 게 뭔가 원인이 있는 거 같아.",
+              "characterPath": "bonichea_inn_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             },
             {
-            "script": "아무래도 그 원인이 인테리어가 아닐까? 이제 슬슬 새 단장을 할 때가 된 것 같군",
-             "characterPath": "bonichea_inn_owner",
+              "script": "아무래도 그 원인이 인테리어가 아닐까? 이제 슬슬 새 단장을 할 때가 된 것 같군",
+              "characterPath": "bonichea_inn_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             },
             {
-            "script": "흠… 이쯤에 반짝 거리는 걸 몇 개 달았으면 좋겠는데 말이지.",
-             "characterPath": "bonichea_inn_owner",
+              "script": "흠… 이쯤에 반짝 거리는 걸 몇 개 달았으면 좋겠는데 말이지.",
+              "characterPath": "bonichea_inn_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             },
             {
-            "script": "자네들이 해변에서 자개를 3개만 구해다 줄 수 있겠나? 난 여관을 지켜야 한다네.",
-             "characterPath": "bonichea_inn_owner",
+              "script": "자네들이 해변에서 자개를 3개만 구해다 줄 수 있겠나? 난 여관을 지켜야 한다네.",
+              "characterPath": "bonichea_inn_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
@@ -9935,9 +9963,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "quest" : {
-                "questObjectPath" : "nacre",
-                "questObjectCount" : 3
+              "quest": {
+                "questObjectPath": "nacre",
+                "questObjectCount": 3
               }
             }
           },
@@ -9969,8 +9997,8 @@
         "eventParameter": {
           "eventScenes": [
             {
-            "script": "자개를 3개만 구해다 주게",
-             "characterPath": "bonichea_inn_owner",
+              "script": "자개를 3개만 구해다 주게",
+              "characterPath": "bonichea_inn_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
@@ -9996,30 +10024,30 @@
         "eventParameter": {
           "eventScenes": [
             {
-            "script": "오 고맙네. 반짝반짝하니, 여기 달면, 여관 전체가 화사해 지겠는 걸?",
-             "characterPath": "bonichea_inn_owner",
+              "script": "오 고맙네. 반짝반짝하니, 여기 달면, 여관 전체가 화사해 지겠는 걸?",
+              "characterPath": "bonichea_inn_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             },
             {
-            "script": "이건 답례라네. 대단한 것을 바랬던 건 아니겠지?",
-             "characterPath": "bonichea_inn_owner",
+              "script": "이건 답례라네. 대단한 것을 바랬던 건 아니겠지?",
+              "characterPath": "bonichea_inn_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             },
             {
-            "script": "대형 회복제를 3개 받았다.",
-             "characterPath": "nothing_image",
+              "script": "대형 회복제를 3개 받았다.",
+              "characterPath": "nothing_image",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "blackwood_inn"
             }
           ]
         },
-         "rewards": [
-           {
+        "rewards": [
+          {
             "rewardType": "get_item",
             "rewardState": "not_opened",
             "rewardParameter": {
@@ -10045,9 +10073,10 @@
       "하룻밤 주무실 건가?"
     ]
   },
-  "bonichea_grocery_owner":{
+  "bonichea_grocery_owner": {
     "name": "잡화점 주인",
     "facePath": "grocery_owner",
+    "elementPath": "bonichea_grocery_owner",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -10140,9 +10169,9 @@
             "rewardType": "open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "eventPacket" : {
-                "eventElement" : "mirage_port_resident",
-                "eventNumber" : 2
+              "eventPacket": {
+                "eventElement": "mirage_port_resident",
+                "eventNumber": 2
               }
             }
           }
@@ -10191,9 +10220,9 @@
             "rewardType": "quest_get_item",
             "rewardState": "not_opened",
             "rewardParameter": {
-              "item" : {
-                "itemPath" : "huttuynia_cordata",
-                "itemCount" : 3
+              "item": {
+                "itemPath": "huttuynia_cordata",
+                "itemCount": 3
               }
             }
           }
@@ -10204,10 +10233,11 @@
       "어서오세요."
     ]
   },
-  "bonichea_pirate":{
+  "bonichea_pirate": {
     "name": "배관리 해적",
     "positionIndex": 1,
-    "facePath":"pirate",
+    "facePath": "pirate",
+    "elementPath": "bonichea_pirate",
     "events": {
       "1": {
         "eventTitle": "대화하기",
