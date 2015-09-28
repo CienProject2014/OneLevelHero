@@ -209,6 +209,8 @@ public class BattleStage extends BaseOneLevelStage {
 	 *            애니메이션 그림의 높이
 	 */
 	private void playAnimation(float delta) {
+
+		battleManager.hideRMenuButtons();
 		animationManager.nextFrame(delta);
 		if (animationManager.isEmptyAnimation()) {
 			storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_COMMAND, "normal_attack");

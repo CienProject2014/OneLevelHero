@@ -185,14 +185,14 @@ public class HeroBattleStrategy implements BattleStrategy {
 	}
 
 	private void basicAttack(Unit attacker, Unit defender, float skillFactor, float magicFactor) {
+
+		Monster monster = (Monster) defender;
 		int defenderHp = defender.getStatus().getHp();
 		int skillDamage = (int) attacker.getStatus().getAttack();
 		int skillDefense = (int) defender.getStatus().getDefense();
+		float tmpDmg = ((int) (skillDamage - skillDefense) * skillFactor / 100f);
 		float totalDamage;
-		float realSkillDamage = (int) (skillDamage - skillDefense) * skillFactor / 100f;
-		if (realSkillDamage < 1) {
-			realSkillDamage = 1;
-		}
+		float realSkillDamage = 0;
 
 		int magicDamage = (int) attacker.getStatus().getMagicAttack();
 		int magicDefense = (int) defender.getStatus().getMagicDefense();
@@ -200,7 +200,24 @@ public class HeroBattleStrategy implements BattleStrategy {
 		if (realMagicDamage < 1) {
 			realMagicDamage = 1;
 		}
+		if (battleManager.isShowGrid()) {
+			int[][] hitArea = battleManager.getNowGridHitbox().getPreviousHitArea();
+			for (int i = 0; i < hitArea.length; i++) {
+				for (int j = 0; j < hitArea[i].length; j++) {
+					if (hitArea[i][j] == 1) {
+						if (tmpDmg < 1) {
+							realSkillDamage += 1 * (monster.getHitArea()[i][j] / 100.0f);
+						} else {
+							realSkillDamage += tmpDmg * (monster.getHitArea()[i][j] / 100.0f);
+						}
+					}
+				}
+			}
+		}
 
+		if (realSkillDamage < 1) {
+			realSkillDamage = 1;
+		}
 		if (battleManager.getCurrentSelectedSkill().getBuffName().equals("solid")) {
 			totalDamage = realSkillDamage + realMagicDamage + attacker.getStatus().getDefense();
 		} else if (battleManager.getCurrentSelectedSkill().getSkillPath().equals("whirlwind")) {
