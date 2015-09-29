@@ -111,7 +111,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"shock"
 		]
 	},
 	"restriction" : {
@@ -131,7 +131,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"default"
 		]
 	},
 	"weaken" : {
@@ -141,7 +141,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"weak"
 		]
 	},
 	"decline" : {
@@ -151,7 +151,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"decline"
 		]
 	},
 	"slow" : {
@@ -181,7 +181,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"stink"
 		]
 	},
 	"confusion" : {
@@ -191,7 +191,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"default"
 		]
 	},
 	"oil" : {
@@ -201,7 +201,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"default"
 		]
 	},
 	"charm" : {
@@ -211,7 +211,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"charm"
 		]
 	},
     "ironwill" : {
@@ -240,8 +240,9 @@
 	"duration" : "300",
 	"stackScope" : "1",
 	"buffType" : "enbuff",
+        "increaseFireResistance":20,
 	"buffEffectList" : [
-		"block_action"
+		"increase_fire_resistance"
 	   ]
     },
     "iceshield" : {
@@ -250,8 +251,9 @@
 	"duration" : "300",
 	"stackScope" : "1",
 	"buffType" : "enbuff",
+        "increaseWaterResistance":20,
 	"buffEffectList" : [
-		"block_action"
+		"increase_water_resistance"
 	   ]
     },
     "electricshield" : {
@@ -260,8 +262,9 @@
 	"duration" : "300",
 	"stackScope" : "1",
 	"buffType" : "enbuff",
+        "increaseElectricResistance":20,
 	"buffEffectList" : [
-		"block_action"
+		"increase_electric_resistance"
 	   ]
     },
     "bless" : {
@@ -271,7 +274,7 @@
 	"stackScope" : "1",
 	"buffType" : "enbuff",
 	"buffEffectList" : [
-		"block_action"
+		"bless"
 	   ]
     },
     "quick" : {

@@ -35,6 +35,7 @@ public class BattleInfo {
 	private boolean showGrid;
 	private Unit currentAttackUnit;
 	private int runPercent;
+	private boolean endBuff;
 	private boolean isSkill;
 
 	public Hero getCurrentActor() {
@@ -196,6 +197,14 @@ public class BattleInfo {
 
 	public void setrMenuButtonList(ArrayList<ImageButton> rMenuButtonList) {
 		this.rMenuButtonList = rMenuButtonList;
+	}
+
+	public boolean isEndBuff() {
+		return endBuff;
+	}
+
+	public void setEndBuff(boolean endBuff) {
+		this.endBuff = endBuff;
 	}
 
 }
