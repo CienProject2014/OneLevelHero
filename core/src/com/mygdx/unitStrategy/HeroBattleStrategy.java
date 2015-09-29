@@ -286,32 +286,63 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void addState(Unit attacker, Unit defender, Skill skill) {
 		Buff buff = skillAssets.getBuff(skill.getBuffName());
+
 		Buff bleeding = skillAssets.getBuff("bleeding");
 		if (buff == null) {
 			return;
 		}
-		buff.setAttacker(attacker);
 
-		if (defender.getBuffList().contains(buff)) {
-			for (String buffEffect : buff.getBuffEffectList()) {
-				if (BuffEffectEnum.findBuffEffectEnum(buffEffect) == BuffEffectEnum.BLOCK_ACTION) {
-					Gdx.app.log("HeroBattleStrategy", "스턴은 갱신되지 않습니다.");
+		if (buff.getBuffPath().equals("multi")) {
+			for (String buffList : skill.getBuffNameList()) {
+				Buff buffs = skillAssets.getBuff(buffList);
+				buffs.setAttacker(attacker);
+				if (defender.getBuffList().contains(buffs)) {
+					for (String buffEffect : buffs.getBuffEffectList()) {
+						if (BuffEffectEnum.findBuffEffectEnum(buffEffect) == BuffEffectEnum.BLOCK_ACTION) {
+							Gdx.app.log("HeroBattleStrategy", "스턴은 갱신되지 않습니다.");
+						} else {
+							defender.getBuffList().remove(buffs);
+							defender.getBuffList().add(buffs);
+							applyBuff(defender);
+						}
+					}
 				} else {
-					defender.getBuffList().remove(buff);
-					defender.getBuffList().add(buff);
-					applyBuff(defender);
+					if (skill.getSkillPath().equals("strong_breeze")) {
+						// strong_breeze일때는 출혈에 걸린 상태에만 스턴을 건다.
+						if (defender.getBuffList().contains(bleeding)) {
+							defender.getBuffList().add(buffs);
+							applyBuff(defender);
+						}
+					} else {
+						defender.getBuffList().add(buffs);
+						applyBuff(defender);
+					}
 				}
 			}
 		} else {
-			if (skill.getSkillPath().equals("strong_breeze")) {
-				// strong_breeze일때는 출혈에 걸린 상태에만 스턴을 건다.
-				if (defender.getBuffList().contains(bleeding)) {
+			buff.setAttacker(attacker);
+
+			if (defender.getBuffList().contains(buff)) {
+				for (String buffEffect : buff.getBuffEffectList()) {
+					if (BuffEffectEnum.findBuffEffectEnum(buffEffect) == BuffEffectEnum.BLOCK_ACTION) {
+						Gdx.app.log("HeroBattleStrategy", "스턴은 갱신되지 않습니다.");
+					} else {
+						defender.getBuffList().remove(buff);
+						defender.getBuffList().add(buff);
+						applyBuff(defender);
+					}
+				}
+			} else {
+				if (skill.getSkillPath().equals("strong_breeze")) {
+					// strong_breeze일때는 출혈에 걸린 상태에만 스턴을 건다.
+					if (defender.getBuffList().contains(bleeding)) {
+						defender.getBuffList().add(buff);
+						applyBuff(defender);
+					}
+				} else {
 					defender.getBuffList().add(buff);
 					applyBuff(defender);
 				}
-			} else {
-				defender.getBuffList().add(buff);
-				applyBuff(defender);
 			}
 		}
 
@@ -406,7 +437,6 @@ public class HeroBattleStrategy implements BattleStrategy {
 	}
 
 	private void overwork(Unit defender) {
-
 		for (Hero hero : partyManager.getBattleMemberList()) {
 			float preAttack = hero.getStatus().getAttack() * 80 / 100;
 			float preDefense = hero.getStatus().getDefense() * 80 / 100;

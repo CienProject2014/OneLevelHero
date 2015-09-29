@@ -404,6 +404,9 @@
 	"buffEffectList" : [
 		"block_action"
 	   ]
+    },
+    "multi":{
+        "name" : "멀티"
     }
     
 }
