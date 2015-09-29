@@ -43,15 +43,21 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private List<StatusBar> heroStatusBarList;
 	private List<Label> hpLabelList;
 	private Image heroImage;
+	private Image[] highlightImage;
+	private Table highlightTable;
+	private Table uiTable;
 	private List<Table> buffTableList;
 
 	public Stage makeStage() {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("CharacterUiStage");
 		initializeList();
-		Table uiTable;
-		uiTable = makeUiTable();
-		tableStack.add(uiTable);
+		/*
+		 * Table uiTable; uiTable = makeUiTable(); Table highlightTable;
+		 * highlightTable = highlightTable(); tableStack.add(highlightTable);
+		 * 
+		 * tableStack.add(uiTable);
+		 */
 		return this;
 	}
 
@@ -59,6 +65,16 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
+		if (battleManager.isInBattle()) {
+			for (int i = 0; i < battleMemberList.size(); i++) {
+				if (battleManager.getCurrentActor() == partyManager.getBattleMemberList().get(i)) {
+					highlightImage[i % 3].setVisible(true);
+					highlightImage[(i + 1) % 3].setVisible(false);
+					highlightImage[(i + 2) % 3].setVisible(false);
+				}
+			}
+		}
+
 		for (int i = 0; i < heroStatusBarList.size(); i++) {
 			buffTableList.get(i).clear();
 			heroStatusBarList.get(i).update();
@@ -72,16 +88,16 @@ public class CharacterUiStage extends BaseOneLevelStage {
 					if (hero.getStatus().getCasting() == 0) {
 
 					} else {
-						Image buffIcon = new Image(textureManager
-								.getTexture(buff.getBuffPath() + String.valueOf(hero.getStatus().getCasting())));
+						Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath()
+								+ String.valueOf(hero.getStatus().getCasting())));
 						buffTableList.get(i).add(buffIcon).width(35).height(35);
 					}
 				} else if (buff.getBuffPath().equals("buff_de_overload")) {
 					if (hero.getOverload() == 0) {
 
 					} else {
-						Image buffIcon = new Image(textureManager
-								.getTexture(buff.getBuffPath() + "_" + String.valueOf(hero.getOverload())));
+						Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath() + "_"
+								+ String.valueOf(hero.getOverload())));
 						buffTableList.get(i).add(buffIcon).width(35).height(35);
 					}
 				} else {
@@ -94,6 +110,13 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	}
 
 	private void initializeList() {
+		highlightImage = new Image[3];
+		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			highlightTable = makeHighlightTable();
+			tableStack.add(highlightTable);
+			for (int i = 0; i < partyManager.getBattleMemberList().size(); i++)
+				highlightImage[i].setVisible(false);
+		}
 		battleMemberList = partyManager.getBattleMemberList();
 		hpLabelList = new ArrayList<Label>(battleMemberList.size());
 		heroStatusBarList = new ArrayList<StatusBar>(battleMemberList.size());
@@ -107,11 +130,14 @@ public class CharacterUiStage extends BaseOneLevelStage {
 			}
 		}
 		statusTable = new Table();
+		uiTable = makeUiTable();
+		tableStack.add(uiTable);
 	}
 
 	// CurrentState 에서 멤버를 가져와 Table 을 만든다.
 	private Table makeUiTable() {
 		Table table = new Table();
+
 		statusTable = makeStatusTable();
 		table.add(statusTable).expandX().left();
 		return table;
@@ -119,9 +145,26 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 	private Table makeStatusTable() {
 		Table table = new Table();
+
 		for (int i = 0; i < battleMemberList.size(); i++) {
+
 			Table heroTable = makeHeroTable(battleMemberList.get(i), i);
 			table.add(heroTable).padBottom(uiConstantsMap.get("heroTablePadBottom"));
+			table.row();
+
+		}
+		return table;
+	}
+
+	private Table makeHighlightTable() {
+		Table table = new Table();
+
+		for (int i = 0; i < partyManager.getBattleMemberList().size(); i++) {
+
+			highlightImage[i] = new Image(textureManager.getTexture("battleui_character_turn"));
+			table.add(highlightImage[i]).padBottom(uiConstantsMap.get("heroTablePadBottom"))
+					.padLeft(uiConstantsMap.get("heroTablePadLeft") - 1750)
+					.width(uiConstantsMap.get("heroImageWidth") + 350).height(uiConstantsMap.get("heroImageHeight"));
 			table.row();
 		}
 		return table;
@@ -171,9 +214,8 @@ public class CharacterUiStage extends BaseOneLevelStage {
 							partyManager.setCurrentSelectedHero(null);
 						} else {
 							partyManager.setCurrentSelectedHero(battleMemberList.get(index));
-							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
-									partyManager.getCurrentSelectedHero(),
-									battleManager.getCurrentSelectedSkill().getSkillPath());
+							battleManager.useSkill(battleManager.getCurrentAttackUnit(), partyManager
+									.getCurrentSelectedHero(), battleManager.getCurrentSelectedSkill().getSkillPath());
 							battleManager.setSkill(false);
 						}
 					}
