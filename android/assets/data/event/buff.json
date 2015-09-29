@@ -16,7 +16,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"overwork"
 		]
 	},
 	"burn" : {

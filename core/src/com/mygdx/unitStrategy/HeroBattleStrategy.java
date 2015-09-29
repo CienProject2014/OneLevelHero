@@ -396,10 +396,22 @@ public class HeroBattleStrategy implements BattleStrategy {
 				break;
 			case OVERLOAD:
 				overload(defender);
+			case OVERWORK:
+				overwork(defender);
 			case DEFAULT:
 			default:
 				break;
 			}
+		}
+	}
+
+	private void overwork(Unit defender) {
+
+		for (Hero hero : partyManager.getBattleMemberList()) {
+			float preAttack = hero.getStatus().getAttack() * 80 / 100;
+			float preDefense = hero.getStatus().getDefense() * 80 / 100;
+			hero.getStatus().setAttack(preAttack);
+			hero.getStatus().setDefense(preDefense);
 		}
 	}
 
