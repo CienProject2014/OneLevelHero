@@ -5731,8 +5731,12 @@
     ]
   },
   "yongsa_young": {
-    "name": "어린용사",
+    "name": "어린 용사",
     "elementPath": "yongsa_young"
+  },
+  "kein_young" : {
+  	"name" : "젊은 케인",
+  	"elementPath" : "kein_young"
   },
   "kein_father": {
     "name": "케인의 아버지",
