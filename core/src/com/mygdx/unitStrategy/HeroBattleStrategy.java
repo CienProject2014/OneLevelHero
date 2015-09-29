@@ -34,8 +34,10 @@ public class HeroBattleStrategy implements BattleStrategy {
 		Monster monster = (Monster) defender;
 
 		float factor = 1.0f;
-		int attackDmg = (int) attacker.getStatus().getAttack();
-		int defenseValue = (int) defender.getStatus().getDefense();
+
+		int attackDmg = (int) attacker.getRealStatus().getAttack();
+		int defenseValue = (int) defender.getRealStatus().getDefense();
+
 		int defenderHp = defender.getStatus().getHp();
 
 		int realDmg = 0;
@@ -189,14 +191,14 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		Monster monster = (Monster) defender;
 		int defenderHp = defender.getStatus().getHp();
-		int skillDamage = (int) attacker.getStatus().getAttack();
-		int skillDefense = (int) defender.getStatus().getDefense();
+		int skillDamage = (int) attacker.getRealStatus().getAttack();
+		int skillDefense = (int) defender.getRealStatus().getDefense();
 		float tmpDmg = ((int) (skillDamage - skillDefense) * skillFactor / 100f);
 		float totalDamage;
 		float realSkillDamage = 0;
 
-		int magicDamage = (int) attacker.getStatus().getMagicAttack();
-		int magicDefense = (int) defender.getStatus().getMagicDefense();
+		int magicDamage = (int) attacker.getRealStatus().getMagicAttack();
+		int magicDefense = (int) defender.getRealStatus().getMagicDefense();
 		float realMagicDamage = (magicDamage - magicDefense) * magicFactor / 100f;
 		if (realMagicDamage < 1) {
 			realMagicDamage = 1;
@@ -220,10 +222,12 @@ public class HeroBattleStrategy implements BattleStrategy {
 			realSkillDamage = 1;
 		}
 		if (battleManager.getCurrentSelectedSkill().getBuffName().equals("solid")) {
-			totalDamage = realSkillDamage + realMagicDamage + attacker.getStatus().getDefense();
+			// 견고화의 경우 대미지에 자신의 방어력을 더한 대미지를 준다.
+			totalDamage = realSkillDamage + realMagicDamage + attacker.getRealStatus().getDefense();
 		} else if (battleManager.getCurrentSelectedSkill().getSkillPath().equals("whirlwind")) {
+			// 휠윈드의 경우 상대방이 가지고 있는 버프 사이즈만큼 곱한 데미지를 더한다.
 			totalDamage = realSkillDamage + realMagicDamage
-					+ attacker.getStatus().getAttack() * defender.getBuffList().size();
+					+ attacker.getRealStatus().getAttack() * defender.getBuffList().size();
 		} else {
 			totalDamage = realSkillDamage + realMagicDamage;
 		}
@@ -407,6 +411,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 				increaseAggro(defender);
 				break;
 			case DECREASE_ATTACK:
+				decreaseAttack(defender, buff);
 				break;
 			case DECREASE_HP_ITERATIVE:
 				decreaseHpIterative(defender, buff);
@@ -455,7 +460,9 @@ public class HeroBattleStrategy implements BattleStrategy {
 			case INCREASE_ELECTRIC_RESISTANCE:
 				increaseElectricResistance(defender, buff);
 				break;
-
+			case BLESS:
+				bless(defender);
+				break;
 			case DEFAULT:
 			default:
 				break;
@@ -463,51 +470,61 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
-	private void increaseElectricResistance(Unit defender, Buff buff) {
-		defender.getStatus()
-				.setFireResistance(defender.getStatus().getFireResistance() + buff.getIncreaseElectricResistance());
+	private void decreaseAttack(Unit defender, Buff buff) {
+		float preAttack = defender.getStatus().getAttack() * buff.getDecreaseAttackPercent() / 100;
+		defender.getRealStatus().setAttack(defender.getStatus().getAttack() - preAttack);
 
+	}
+
+	private void bless(Unit defender) {
+		float preMagicDefense = defender.getStatus().getAttack() * 15 / 100;
+		float preDefense = defender.getStatus().getDefense() * 15 / 100;
+		defender.getRealStatus().setMagicDefense(defender.getStatus().getMagicDefense() + preMagicDefense);
+		defender.getRealStatus().setDefense(defender.getStatus().getDefense() + preDefense);
+	}
+
+	private void increaseElectricResistance(Unit defender, Buff buff) {
+		int resistance = buff.getIncreaseElectricResistance();
+		defender.getRealStatus().setElectricResistance(defender.getStatus().getElectricResistance() + resistance);
 	}
 
 	private void increaseWaterResistance(Unit defender, Buff buff) {
-		defender.getStatus()
-				.setFireResistance(defender.getStatus().getFireResistance() + buff.getIncreaseWaterResistance());
-
+		int resistance = +buff.getIncreaseWaterResistance();
+		defender.getRealStatus().setWaterResistance(defender.getStatus().getWaterResistance() + resistance);
 	}
 
 	private void increaseFireResistance(Unit defender, Buff buff) {
-		defender.getStatus()
-				.setFireResistance(defender.getStatus().getFireResistance() + buff.getIncreaseFireResistance());
-
+		int resistance = buff.getIncreaseFireResistance();
+		defender.getRealStatus().setFireResistance(defender.getStatus().getFireResistance() + resistance);
 	}
 
 	private void charm(Unit defender) {
-		float preAttack = defender.getStatus().getAttack() * 70 / 100;
-		float preMagicAttack = defender.getStatus().getMagicAttack() * 70 / 100;
-		defender.getStatus().setAttack(preAttack);
-		defender.getStatus().setDefense(preMagicAttack);
+		float preAttack = defender.getStatus().getAttack() * 30 / 100;
+		float preMagicAttack = defender.getStatus().getMagicAttack() * 30 / 100;
+		defender.getRealStatus().setAttack(defender.getStatus().getAttack() - preAttack);
+		defender.getRealStatus().setMagicAttack(defender.getStatus().getMagicAttack() - preMagicAttack);
 	}
 
 	private void decline(Unit defender) {
-		float preMagicDefense = defender.getStatus().getMagicDefense() * 80 / 100;
-		float preDefense = defender.getStatus().getDefense() * 80 / 100;
-		defender.getStatus().setAttack(preMagicDefense);
-		defender.getStatus().setDefense(preDefense);
+		float preMagicDefense = defender.getStatus().getMagicDefense() * 10 / 100;
+		float preDefense = defender.getStatus().getDefense() * 10 / 100;
+		defender.getRealStatus().setMagicDefense(defender.getStatus().getMagicDefense() - preMagicDefense);
+		defender.getRealStatus().setDefense(defender.getStatus().getDefense() - preDefense);
 	}
 
 	private void stink(Unit defender) {
-		float preAttack = defender.getStatus().getAttack() * 80 / 100;
-		float preDefense = defender.getStatus().getDefense() * 80 / 100;
-		defender.getStatus().setAttack(preAttack);
-		defender.getStatus().setDefense(preDefense);
+		float preAttack = defender.getStatus().getAttack() * 20 / 100;
+		float preDefense = defender.getStatus().getDefense() * 20 / 100;
+		defender.getRealStatus().setAttack(defender.getStatus().getAttack() - preAttack);
+		defender.getRealStatus().setDefense(defender.getStatus().getDefense() - preDefense);
 
 	}
 
 	private void weak(Unit defender) {
-		float preAttack = defender.getStatus().getAttack() * 90 / 100;
-		float preMagicAttack = defender.getStatus().getMagicAttack() * 90 / 100;
-		defender.getStatus().setAttack(preAttack);
-		defender.getStatus().setDefense(preMagicAttack);
+		float preAttack = defender.getStatus().getAttack() * 10 / 100;
+		float preMagicAttack = defender.getStatus().getMagicAttack() * 10 / 100;
+		defender.getRealStatus().setAttack(defender.getStatus().getAttack() - preAttack);
+		defender.getRealStatus().setMagicAttack(defender.getStatus().getMagicAttack() - preMagicAttack);
 	}
 
 	private void shock(Unit defender) {
@@ -519,13 +536,12 @@ public class HeroBattleStrategy implements BattleStrategy {
 		for (Hero hero : partyManager.getBattleMemberList()) {
 			float preAttack = hero.getStatus().getAttack() * 80 / 100;
 			float preDefense = hero.getStatus().getDefense() * 80 / 100;
-			hero.getStatus().setAttack(preAttack);
-			hero.getStatus().setDefense(preDefense);
+			hero.getRealStatus().setAttack(preAttack);
+			hero.getRealStatus().setDefense(preDefense);
 		}
 	}
 
 	private void overload(Unit defender) {
-
 	}
 
 	private void flyAction(Unit defender) {
@@ -533,21 +549,24 @@ public class HeroBattleStrategy implements BattleStrategy {
 	}
 
 	private void decreaseSpeed(Unit defender, Buff buff) {
-		defender.getStatus().setSpeed(defender.getStatus().getSpeed() - 50);
+		int preSpeed = defender.getStatus().getSpeed() - 50;
+		defender.getRealStatus().setSpeed(preSpeed);
 	}
 
 	private void increaseAggro(Unit defender) {
-		defender.setAggro(defender.getAggro() + 900);
+		int preAggro = defender.getAggro() + 900;
+		defender.setAggro(preAggro);
 	}
 
 	private void decreaseDefense(Unit defender, Buff buff) {
 		Hero hero = (Hero) defender;
-		defender.getStatus().setDefense(defender.getStatus().getDefense() - hero.getInventory().getAllDefense());
+		float preDefense = defender.getStatus().getDefense() - hero.getInventory().getAllDefense();
+		defender.getRealStatus().setDefense(preDefense);
 	}
 
 	private void increaseDefense(Unit defender, Buff buff) {
-		float defense = defender.getStatus().getDefense() / 100 * (buff.getIncreaseDefensePercent() + 100);
-		defender.getStatus().setDefense(defense);
+		float defense = defender.getStatus().getDefense() + buff.getIncreaseDefensePercent() / 100;
+		defender.getRealStatus().setDefense(defender.getStatus().getDefense() + defense);
 	}
 
 	private void blockAction(Unit defender) {

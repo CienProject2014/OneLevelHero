@@ -6,7 +6,7 @@ public enum BuffEffectEnum {
 					"increase_defense"), DECREASE_DEFENSE("decrease_defense"), INCREASE_AGGRO(
 							"increase_aggro"), OVERLOAD("overload"), OVERWORK("overwork"), DECREASE_SPEED(
 									"decrease_speed"), STINK("stink"), FLY_ACTION("fly_action"), SHOCK("shock"), WEAK(
-											"weak"), INCREASE_FIRE_RESISTANCE(
+											"weak"), BLESS("bless"), INCREASE_FIRE_RESISTANCE(
 													"increase_fire_resistance"), INCREASE_WATER_RESISTANCE(
 															"increase_water_resistance"), INCREASE_ELECTRIC_RESISTANCE(
 																	"increase_electric_resistance"), DECLINE(

@@ -12,6 +12,8 @@ public abstract class Unit implements Comparable<Unit> {
 	protected String facePath;
 	protected String name;
 	protected Status status;
+	protected Status realStatus;
+
 	protected List<Skill> skills;
 	protected int gauge;
 	protected int subvalue;
@@ -212,5 +214,12 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setOverload(int overload) {
 		this.overload = overload;
+	}
+	public Status getRealStatus() {
+		return realStatus;
+	}
+
+	public void setRealStatus(Status realStatus) {
+		this.realStatus = realStatus;
 	}
 }

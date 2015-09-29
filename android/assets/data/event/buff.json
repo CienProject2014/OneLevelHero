@@ -274,7 +274,7 @@
 	"stackScope" : "1",
 	"buffType" : "enbuff",
 	"buffEffectList" : [
-		"block_action"
+		"bless"
 	   ]
     },
     "quick" : {
