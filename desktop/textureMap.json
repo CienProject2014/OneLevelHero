@@ -2079,6 +2079,10 @@ bg_cape_of_tempest_04: {
 	class: java.lang.String,
 	value: texture/background/bg_cape_of_tempest_04.png/
 },
+battleui_character_turn: {
+	class: java.lang.String,
+	value: texture/ui/battle/battleui_character_turn.png/
+},
 battle_kentaurous_bow_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_kentaurous_bow_small.png/
