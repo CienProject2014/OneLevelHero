@@ -20,7 +20,7 @@ public abstract class Unit implements Comparable<Unit> {
 	private int aggro;
 	private int casting;
 	private float percent;
-
+	private int overload;
 	private float preDecDefense;
 	private float preIncDefense;
 	private int preIncAggro;
@@ -221,5 +221,13 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setPreDecDefense(float preDecDefense) {
 		this.preDecDefense = preDecDefense;
+	}
+
+	public int getOverload() {
+		return overload;
+	}
+
+	public void setOverload(int overload) {
+		this.overload = overload;
 	}
 }

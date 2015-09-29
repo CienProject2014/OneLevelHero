@@ -79,6 +79,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		battleManager.setText(
 				skillUser.getName() + "이(가) " + targetList.get(0).getName() + "에게 " + skill.getName() + "을(를) 사용하였다!");
 		// 각 타겟에 대해 SkillEffectType에 따라 사용
+
 		for (Unit target : targetList) {
 			if (skill.getSkillEffectType().equals(SkillEffectEnum.MULTI_EFFECT.toString())) {
 				String[] effectList = skill.getEffectNameList();
@@ -393,11 +394,17 @@ public class HeroBattleStrategy implements BattleStrategy {
 			case FLY_ACTION:
 				flyAction(defender);
 				break;
+			case OVERLOAD:
+				overload(defender);
 			case DEFAULT:
 			default:
 				break;
 			}
 		}
+	}
+
+	private void overload(Unit defender) {
+
 	}
 
 	private void flyAction(Unit defender) {
