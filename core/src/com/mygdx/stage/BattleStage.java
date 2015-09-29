@@ -180,6 +180,7 @@ public class BattleStage extends BaseOneLevelStage {
 		for (Unit unit : units) {
 			unit.setGauge(100);
 			unit.setAggro(100);
+			unit.setRealAggro(100);
 			unit.setSubvalue(0);
 			unit.setOverload(0);
 			unit.setActingPower(-24000 / (unit.getStatus().getSpeed() + 300) + 160);
@@ -191,9 +192,7 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private void doMonsterTurn(float delta) {
-		if (animationDelay == 0) {
-			battleManager.hideRMenuButtons();
-		}
+		battleManager.hideRMenuButtons();
 		animationDelay += delta;
 		if (animationDelay > MONSTER_ATTACK_DELAY) {
 			Hero randomHero = partyManager.pickRandomHero();
