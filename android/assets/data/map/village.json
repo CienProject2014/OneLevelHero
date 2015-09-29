@@ -529,14 +529,14 @@
       "redrose_castle_inn": {
         "subNodeName": "레드로즈 여관",
         "buildingType": "inn",
-        "subNodePath": "redrose_caslte_inn",
+        "subNodePath": "redrose_castle_inn",
         "backgroundPath" : "blackwood_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
         },
         "buildingNpc": [
-          "redrose_caslte_inn_owner"
+          "redrose_castle_inn_owner"
         ],
         "gameObject": [
           "save",
@@ -566,7 +566,7 @@
           "endHour": 24
         },
         "buildingNpc": [
-          "redrose_caslte_guardian"
+          "redrose_castle_guardian"
         ],
         "gameObject": [
         ]
