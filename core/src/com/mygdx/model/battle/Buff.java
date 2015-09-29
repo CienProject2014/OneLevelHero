@@ -21,6 +21,10 @@ public class Buff {
 	private int decreaseHpMagicPercent;
 	private int decreaseHpAttackPercent;
 
+	private int increaseFireResistance;
+	private int increaseElectricResistance;
+	private int increaseWaterResistance;
+
 	private int decreaseHpOffset;
 
 	private int increaseDefensePercent;
@@ -161,6 +165,30 @@ public class Buff {
 	public boolean equals(Object obj) {
 		Buff buff = (Buff) obj;
 		return this.name.equals(buff.getName());
+	}
+
+	public int getIncreaseFireResistance() {
+		return increaseFireResistance;
+	}
+
+	public void setIncreaseFireResistance(int increaseFireResistance) {
+		this.increaseFireResistance = increaseFireResistance;
+	}
+
+	public int getIncreaseElectricResistance() {
+		return increaseElectricResistance;
+	}
+
+	public void setIncreaseElectricResistance(int increaseElectricResistance) {
+		this.increaseElectricResistance = increaseElectricResistance;
+	}
+
+	public int getIncreaseWaterResistance() {
+		return increaseWaterResistance;
+	}
+
+	public void setIncreaseWaterResistance(int increaseWaterResistance) {
+		this.increaseWaterResistance = increaseWaterResistance;
 	}
 
 }

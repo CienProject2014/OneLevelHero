@@ -427,13 +427,92 @@ public class HeroBattleStrategy implements BattleStrategy {
 				break;
 			case OVERLOAD:
 				overload(defender);
+				break;
 			case OVERWORK:
 				overwork(defender);
+				break;
+			case SHOCK:
+				shock(defender);
+				break;
+			case WEAK:
+				weak(defender);
+				break;
+			case STINK:
+				stink(defender);
+				break;
+			case DECLINE:
+				decline(defender);
+				break;
+			case CHARM:
+				charm(defender);
+				break;
+			case INCREASE_FIRE_RESISTANCE:
+				increaseFireResistance(defender, buff);
+				break;
+			case INCREASE_WATER_RESISTANCE:
+				increaseWaterResistance(defender, buff);
+				break;
+			case INCREASE_ELECTRIC_RESISTANCE:
+				increaseElectricResistance(defender, buff);
+				break;
+
 			case DEFAULT:
 			default:
 				break;
 			}
 		}
+	}
+
+	private void increaseElectricResistance(Unit defender, Buff buff) {
+		defender.getStatus()
+				.setFireResistance(defender.getStatus().getFireResistance() + buff.getIncreaseElectricResistance());
+
+	}
+
+	private void increaseWaterResistance(Unit defender, Buff buff) {
+		defender.getStatus()
+				.setFireResistance(defender.getStatus().getFireResistance() + buff.getIncreaseWaterResistance());
+
+	}
+
+	private void increaseFireResistance(Unit defender, Buff buff) {
+		defender.getStatus()
+				.setFireResistance(defender.getStatus().getFireResistance() + buff.getIncreaseFireResistance());
+
+	}
+
+	private void charm(Unit defender) {
+		float preAttack = defender.getStatus().getAttack() * 70 / 100;
+		float preMagicAttack = defender.getStatus().getMagicAttack() * 70 / 100;
+		defender.getStatus().setAttack(preAttack);
+		defender.getStatus().setDefense(preMagicAttack);
+	}
+
+	private void decline(Unit defender) {
+		float preMagicDefense = defender.getStatus().getMagicDefense() * 80 / 100;
+		float preDefense = defender.getStatus().getDefense() * 80 / 100;
+		defender.getStatus().setAttack(preMagicDefense);
+		defender.getStatus().setDefense(preDefense);
+	}
+
+	private void stink(Unit defender) {
+		float preAttack = defender.getStatus().getAttack() * 80 / 100;
+		float preDefense = defender.getStatus().getDefense() * 80 / 100;
+		defender.getStatus().setAttack(preAttack);
+		defender.getStatus().setDefense(preDefense);
+
+	}
+
+	private void weak(Unit defender) {
+		float preAttack = defender.getStatus().getAttack() * 90 / 100;
+		float preMagicAttack = defender.getStatus().getMagicAttack() * 90 / 100;
+		defender.getStatus().setAttack(preAttack);
+		defender.getStatus().setDefense(preMagicAttack);
+	}
+
+	private void shock(Unit defender) {
+		// TODO Auto-generated method stub
+
 	}
 
 	private void overwork(Unit defender) {
