@@ -21,7 +21,7 @@ public class MovingManager {
 	private BattleManager battleManager;
 
 	public void goToNode(String Node) {
-		positionManager.setCurrentNodeName(Node);
+		positionManager.setCurrentNodePath(Node);
 		WorldNodeEnum.NodeType nodeType = positionManager.getCurrentNodeType();
 		goCurrentNode(nodeType);
 	}
@@ -34,6 +34,7 @@ public class MovingManager {
 		if (positionManager.getCurrentEventPositionType() != PositionEnum.EventPosition.NONE) {
 			goBeforeEventPosition();
 		} else {
+			Gdx.app.log("MovingManager", "go" + positionManager.getCurrentLocatePositionType());
 			switch (positionManager.getCurrentLocatePositionType()) {
 				case NODE :
 					goCurrentNode(nodeType);
@@ -52,15 +53,21 @@ public class MovingManager {
 			}
 		}
 	}
-
 	private void goBeforeEventPosition() {
 		switch (positionManager.getCurrentEventPositionType()) {
+			case GAME_OBJECT :
+				screenFactory.show(ScreenEnum.GAME_OBJECT);
+				break;
 			case BATTLE :
 				positionManager.setCurrentEventPositionType(PositionEnum.EventPosition.NONE);
 				goCurrentLocatePosition();
 				break;
-			case GREETING :
+			case NPC :
 				screenFactory.show(ScreenEnum.GREETING);
+				break;
+			case STORY :
+				positionManager.setCurrentEventPositionType(PositionEnum.EventPosition.NONE);
+				goCurrentLocatePosition();
 				break;
 			case WORLD_MAP :
 				positionManager.setCurrentEventPositionType(EventPosition.NONE);
@@ -81,10 +88,6 @@ public class MovingManager {
 			case SUB_NODE :
 				positionManager.setCurrentLocatePositionType(LocatePosition.NODE);
 				screenFactory.show(ScreenEnum.findScreenEnum(positionManager.getCurrentNodeType().toString()));
-				break;
-			case NODE :
-				positionManager.setCurrentLocatePositionType(LocatePosition.FIELD);
-				screenFactory.show(ScreenEnum.FIELD);
 				break;
 			default :
 				Gdx.app.log("MovingManager", "PositionEnum정보 오류");

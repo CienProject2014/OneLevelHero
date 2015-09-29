@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.EventElementEnum;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.event.EventPacket;
 
@@ -14,11 +15,14 @@ public class ChoiceNpcEventListener extends ClickListener {
 	private StorySectionManager storySectionManager;
 	@Autowired
 	private EventManager eventManager;
+	@Autowired
+	private SoundManager soundManager;
 	private int index;
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
-		EventPacket eventPacket = new EventPacket(eventManager.getCurrentNpc().getFacePath(), index);
+		soundManager.playClickSound();
+		EventPacket eventPacket = new EventPacket(eventManager.getCurrentNpc().getElementPath(), index);
 		eventManager.triggerEvent(EventElementEnum.NPC, eventPacket);
 	}
 	public int getIndex() {

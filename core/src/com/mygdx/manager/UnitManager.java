@@ -1,12 +1,12 @@
 package com.mygdx.manager;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mygdx.assets.ItemAssets;
 import com.mygdx.assets.SkillAssets;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Hero;
@@ -20,8 +20,6 @@ import com.mygdx.unitStrategy.MonsterBattleStrategy;
 
 public class UnitManager {
 	private static final String EMPTY_ITEM = "empty_item";
-	@Autowired
-	private ItemAssets itemAssets;
 	@Autowired
 	private SkillAssets skillAssets;
 	@Autowired
@@ -39,9 +37,9 @@ public class UnitManager {
 
 	public void setAttackStrategy(Unit unit) {
 		if (unit instanceof Hero) {
-			unit.setAttackStrategy(heroBattleStrategy);
+			unit.setBattleStrategy(heroBattleStrategy);
 		} else {
-			unit.setAttackStrategy(monsterBattleStrategy);
+			unit.setBattleStrategy(monsterBattleStrategy);
 		}
 	}
 
@@ -112,5 +110,12 @@ public class UnitManager {
 		heroStatus.setMagicAttack(heroStatus.getMagicAttack() - removeStatus.getMagicAttack());
 		heroStatus.setMagicDefense(heroStatus.getMagicDefense() + removeStatus.getMagicDefense());
 		heroStatus.setSpeed(heroStatus.getSpeed() - removeStatus.getSpeed());
+	}
+
+	public void initiateHeroes(List<Hero> battleMemberList) {
+		Iterator<Hero> heroIterator = battleMemberList.iterator();
+		while (heroIterator.hasNext()) {
+			heroIterator.next().setBattleStrategy(heroBattleStrategy);
+		}
 	}
 }

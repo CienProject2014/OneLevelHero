@@ -23,7 +23,7 @@ import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.event.EventScene;
-import com.mygdx.model.unit.Hero;
+import com.mygdx.model.event.NPC;
 
 /**
  * make and return stage(Event)
@@ -33,7 +33,7 @@ import com.mygdx.model.unit.Hero;
  */
 public class ChatEventStage extends BaseOneLevelStage {
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
+	private transient UiComponentAssets uiComponentAssets;
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -41,11 +41,11 @@ public class ChatEventStage extends BaseOneLevelStage {
 	@Autowired
 	private RewardManager rewardManager;
 	@Autowired
-	private UnitAssets unitAssets;
+	private transient UnitAssets unitAssets;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
-	private ConstantsAssets constantsAssets;
+	private transient ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
 	private Label scriptTitle = new Label("", StaticAssets.skin);
 	private Label scriptContent = new Label("", StaticAssets.skin);
@@ -58,8 +58,7 @@ public class ChatEventStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("EventStage");
-		final Iterator<EventScene> eventSceneIterator = eventManager.getCurrentEvent().getEventParameter()
-				.getEventScenes().iterator();
+		final Iterator<EventScene> eventSceneIterator = eventManager.getCurrentChatScenes().iterator();
 
 		if (eventSceneIterator.hasNext()) {
 			final EventScene eventScene = eventSceneIterator.next();
@@ -87,9 +86,9 @@ public class ChatEventStage extends BaseOneLevelStage {
 	}
 
 	private void setScript(EventScene eventScene) {
-		Hero hero = unitAssets.getHero(eventScene.getCharacterPath());
-		if (hero != null) {
-			scriptTitle.setText("[" + hero.getName() + "]");
+		NPC character = eventManager.getEventInfo().getNpcMap().get(eventScene.getCharacterPath());
+		if (character != null) {
+			scriptTitle.setText("[" + character.getName() + "]");
 		} else {
 			scriptTitle.setText("");
 		}

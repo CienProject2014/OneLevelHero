@@ -1,5 +1,7 @@
 package com.mygdx.manager;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
@@ -11,6 +13,7 @@ import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.model.event.EventPacket;
+import com.mygdx.model.event.Quest;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
 
@@ -28,6 +31,8 @@ public class LoadNewManager {
 	@Autowired
 	private TimeManager timeManager;
 	@Autowired
+	private DungeonManager dungeonManager;
+	@Autowired
 	private BattleManager battleManager;
 	@Autowired
 	private BagManager bagManager;
@@ -42,7 +47,7 @@ public class LoadNewManager {
 		Gdx.app.debug("LoadManager", "loadNewGame()");
 		setHero();
 		setCurrentLocatePosition();
-		setEventInfo(eventManager, eventAssets);
+		setEventInfo(eventManager, eventAssets, unitAssets);
 		setStorySection();
 		setTimeInfo();
 		setBattleInfo();
@@ -52,9 +57,11 @@ public class LoadNewManager {
 		bagManager.possessItem(ItemEnum.HANDGRIP, "sabre");
 	}
 
-	private void setEventInfo(EventManager eventManager, EventAssets eventAssets) {
+	private void setEventInfo(EventManager eventManager, EventAssets eventAssets, UnitAssets unitAssets) {
 		eventManager.setMainStoryMap(eventAssets.getMainStoryMap());
 		eventManager.setNpcMap(eventAssets.getNpcMap());
+		eventManager.setHeroMap(unitAssets.getHeroMap());
+		eventManager.setQuestMap(new HashMap<String, Quest>());
 		eventManager.setGameObjectMap(eventAssets.getGameObjectMap());
 		eventManager.setCurrentEvent(EventElementEnum.STORY, new EventPacket("prologue", 1));
 	}
@@ -81,9 +88,10 @@ public class LoadNewManager {
 
 	private void setCurrentLocatePosition() {
 		// 마왕성에서부터 게임을 시작한다.
-		positionManager.setCurrentNodeName("devil_castle");
-		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.SUB_NODE);
+		positionManager.setCurrentLocatePositionType(PositionEnum.LocatePosition.DUNGEON);
 		positionManager.setCurrentEventPositionType(EventPosition.NONE);
+		positionManager.setCurrentNodePath("devil_castle");
+		dungeonManager.setInitialDungeonInfo("devil_castle");
 		fieldManager.setArrowName("16to1");
 	}
 

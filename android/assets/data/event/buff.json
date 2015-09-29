@@ -6,7 +6,7 @@
 		"stackScope" : "5",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"overload"
 		]
 	},
     "overwork" : {
@@ -16,7 +16,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"overwork"
 		]
 	},
 	"burn" : {
@@ -74,7 +74,7 @@
 		"decreaseHpAttackPercent" : "20"
 	},
       
-	"cold" : {
+	"frozen" : {
 		"name" : "빙결",
 		"buffPath" : "buff_de_frozen",
 		"duration" : "60",
@@ -111,7 +111,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"shock"
 		]
 	},
 	"restriction" : {
@@ -131,7 +131,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"default"
 		]
 	},
 	"weaken" : {
@@ -141,7 +141,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"weak"
 		]
 	},
 	"decline" : {
@@ -151,7 +151,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"decline"
 		]
 	},
 	"slow" : {
@@ -161,7 +161,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"decrease_speed"
 		]
 	},
 	"defenseless" : {
@@ -171,7 +171,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"decrease_defense"
 		]
 	},
 	"stink" : {
@@ -181,7 +181,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"stink"
 		]
 	},
 	"confusion" : {
@@ -191,7 +191,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"default"
 		]
 	},
 	"oil" : {
@@ -201,7 +201,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"default"
 		]
 	},
 	"charm" : {
@@ -211,7 +211,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"charm"
 		]
 	},
     "ironwill" : {
@@ -226,12 +226,12 @@
 	},
 	"casting" : {
 		"name" : "캐스팅",
-		"buffPath" : "buff_en_casting",
+		"buffPath" : "buff_en_casting_",
 		"duration" : "-1",
 		"stackScope" : "5",
 		"buffType" : "enbuff",
 		"buffEffectList" : [
-			"block_action"
+			"default"
 		]
 	},
     "fireshield" : {
@@ -240,8 +240,9 @@
 	"duration" : "300",
 	"stackScope" : "1",
 	"buffType" : "enbuff",
+        "increaseFireResistance":20,
 	"buffEffectList" : [
-		"block_action"
+		"increase_fire_resistance"
 	   ]
     },
     "iceshield" : {
@@ -250,8 +251,9 @@
 	"duration" : "300",
 	"stackScope" : "1",
 	"buffType" : "enbuff",
+        "increaseWaterResistance":20,
 	"buffEffectList" : [
-		"block_action"
+		"increase_water_resistance"
 	   ]
     },
     "electricshield" : {
@@ -260,8 +262,9 @@
 	"duration" : "300",
 	"stackScope" : "1",
 	"buffType" : "enbuff",
+        "increaseElectricResistance":20,
 	"buffEffectList" : [
-		"block_action"
+		"increase_electric_resistance"
 	   ]
     },
     "bless" : {
@@ -271,7 +274,7 @@
 	"stackScope" : "1",
 	"buffType" : "enbuff",
 	"buffEffectList" : [
-		"block_action"
+		"bless"
 	   ]
     },
     "quick" : {
@@ -301,8 +304,9 @@
 	"stackScope" : "1",
 	"buffType" : "enbuff",
 	"buffEffectList" : [
-		"block_action"
-	   ]
+		"increase_defense"
+	   ],
+    "increaseDefensePercent" : "25"
     },
     "counter" : {
 	"name" : "반격",
@@ -321,7 +325,7 @@
 	"stackScope" : "1",
 	"buffType" : "enbuff",
 	"buffEffectList" : [
-		"block_action"
+		"increase_aggro"
 	   ]
     },
     "protect" : {
@@ -341,7 +345,7 @@
 	"stackScope" : "1",
 	"buffType" : "enbuff",
 	"buffEffectList" : [
-		"block_action"
+		"fly_action"
 	   ]
     },
     "flaudrise" : {
@@ -403,6 +407,9 @@
 	"buffEffectList" : [
 		"block_action"
 	   ]
+    },
+    "multi":{
+        "name" : "멀티"
     }
     
 }

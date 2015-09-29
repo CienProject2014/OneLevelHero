@@ -13,7 +13,6 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.WorldNodeEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.LoadNewManager;
-import com.mygdx.manager.MonsterPickManager;
 
 public class OneLevelTest extends Game {
 	private ApplicationContext context;
@@ -56,13 +55,8 @@ public class OneLevelTest extends Game {
 		context.getBean(ScreenFactory.class).show(ScreenEnum.WORLD_MAP);
 	}
 
-	private void goEncounterScreen() {
-		context.getBean(MonsterPickManager.class).createMonster();
-		context.getBean(ScreenFactory.class).show(ScreenEnum.ENCOUNTER);
-	}
-
 	private void goDungeonEntranceScreen() {
-		context.getBean(PositionInfo.class).setCurrentNodeName(WorldNodeEnum.BLACKWOOD_FOREST.toString());
+		context.getBean(PositionInfo.class).setCurrentNodePath(WorldNodeEnum.BLACKWOOD_FOREST.toString());
 		context.getBean(ScreenFactory.class).show(ScreenEnum.DUNGEON_ENTRANCE);
 	}
 

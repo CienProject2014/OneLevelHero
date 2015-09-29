@@ -2,7 +2,6 @@
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -44,40 +43,40 @@ public class NodeAssets implements JsonAssetsInitializable {
 	public SubNode getSubNodeInfo(WorldNodeEnum.NodeType nodeType, String nodeName, String subNodeName) {
 		switch (nodeType) {
 			case VILLAGE :
-				return getBuildingByName(nodeName, subNodeName);
+				return getBuildingByPath(nodeName, subNodeName);
 			case DUNGEON_ENTRANCE :
-				return getDungeonByName(subNodeName);
+				return getDungeonByPath(subNodeName);
 			default :
 				Gdx.app.log("NodeAssets", "nodeType정보 오류 ");
 				return null;
 		}
 	}
 
-	public Building getBuildingByName(String nodeName, String buildingName) {
-		return villageMap.get(nodeName).getBuilding().get(buildingName);
+	public Building getBuildingByPath(String nodeName, String buildingPath) {
+		return villageMap.get(nodeName).getBuilding().get(buildingPath);
 	}
 
 	public Map<String, DungeonEntrance> getDungeonEntranceMap() {
 		return dungeonEntranceMap;
 	}
 
-	public DungeonEntrance getDungeonEntranceByName(String dungeonEntranceName) {
-		return dungeonEntranceMap.get(dungeonEntranceName);
+	public DungeonEntrance getDungeonEntranceByPath(String dungeonEntrancePath) {
+		return dungeonEntranceMap.get(dungeonEntrancePath);
 	}
 
 	public Map<String, Village> getVillageMap() {
 		return villageMap;
 	}
 
-	public Village getVillageByName(String villageString) {
+	public Village getVillageByPath(String villageString) {
 		return villageMap.get(villageString);
 	}
 
-	public Dungeon getDungeonByName(String dungeonString) {
+	public Dungeon getDungeonByPath(String dungeonString) {
 		return dungeonMap.get(dungeonString);
 	}
 
-	public List<String> getMonsterFieldListByFieldType(FieldTypeEnum fieldType) {
+	public ArrayList<String> getMonsterFieldListByFieldType(FieldTypeEnum fieldType) {
 		return monsterFieldMap.get(fieldType);
 	}
 

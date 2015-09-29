@@ -72,7 +72,7 @@
     ]
   },
   {
-    "filePath": "texture/ui/dungeon/dungeon_atlas.atlas",
+    "filePath": "texture/ui/dungeon_entrance/dungeon_entrance_atlas.atlas",
     "element": [
       "stay_button_field",
       "stay_button_go",
@@ -82,7 +82,17 @@
     ]
   },
   {
-    "filePath": "skin/GameUiButton.pack",
+  	"filePath" : "texture/ui/dungeon/dungeon_atlas.atlas",
+  	"element" : [
+  		"dungeonui_button_change_direction",
+  		"dungeonui_button_down",
+  		"dungeonui_button_exit",
+  		"dungeonui_button_go",
+  		"dungeonui_button_up"
+  	]
+  },
+  {
+    "filePath": "skin/game_ui_button.atlas",
     "element": [
       "back_button",
       "back_toggle_button",
@@ -92,7 +102,9 @@
       "help_button",
       "help_toggle_button",
       "setting_button",
-      "setting_toggle_button"
+      "setting_toggle_button",
+      "no_next_button",
+      "place_info_button"
     ]
   }
 ]

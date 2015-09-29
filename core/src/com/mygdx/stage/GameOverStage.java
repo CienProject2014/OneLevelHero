@@ -13,7 +13,7 @@ import com.mygdx.manager.TextureManager;
 
 public class GameOverStage extends BaseOneLevelStage {
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	private Table table;
 
 	public Stage makeStage() {

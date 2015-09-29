@@ -1,114 +1,124 @@
 {
   "cut_01": {
-        "name": "성스러운 십자가",
-        "skillType": "magic",
-        "skillTargetType": "monster",
-        "skillEffectType": "add_state",
-		"buffName" : "burn",
-        "costGauge": "30",
-        "costCasting": "0",
-        "elementType": "none",
-        "magicFactor": "100",
-        "description": "성스러운 십자가 모양의 빛으로 적을 공격한다."
+    "name": "성스러운 십자가",
+    "skillType": "magic",
+    "skillTargetType": "monster",
+    "skillEffectType": "attack",
+    "buffName" : "burn",
+    "costGauge": "30",
+    "costCasting": "1",
+    "elementType": "none",
+    "magicFactor": "100",
+    "description": "주문력 100%. 성스러운 십자가 모양의 빛으로 적을 공격한다."
   },
   "provoke": {
     "name": "도발",
     "skillType" : "tech",
     "skillTargetType" : "self",
-    "skillEffectType" : "add_state",
+    "skillEffectType" : "add_self_state",
+    "buffName" : "provoke",
     "costGauge": "20",
-    "description": "적을 도발한다."
+    "description": "300초간 도발 상태가 되어 어그로수치가 900 증가한다."
   },
   "powerblade": {
     "name": "파워 블레이드",
     "skillType" : "tech",
-    "skillTargetType" : "monster",
+    "skillTargetType" : "monster", 
     "skillEffectType": "multi_effect",
-	"effectNameList" : [""],
+    "buffName" : "sturn",
+	"effectNameList" : ["attack", "add_state"],
     "costGauge": "40",
     "elementType": "none",
     "skillFactor": "130",
     "hitboxSize": "4",
-    "description": "거대한 검신에 강력한 힘을 실어 공격한다."
+    "description": "공격력 130%. 60초간 기절을 건다."
   },
   "saint_guardian": {
     "name": "세인트 가디언",
     "skillType" : "tech",
     "skillTargetType" : "self",
-    "skillEffectType" : "add_state",
+    "skillEffectType" : "add_self_state",
+    "buffName" : "solid",
     "costGauge": "20",
     "costCasting": "0",
     "elementType": "none",
-    "description": "자신의 신체를 극한으로 끌어올려 방어력을 증가시킨다."
+    "description": "견고화 상태가 되어 300초간 방어력을 25% 증가시킨다."
   },
   "counter_attack": {
     "name": "회심의 반격",
     "skillType" : "tech",
     "skillTargetType" : "self",
-    "skillEffectType" : "add_state",
+    "skillEffectType" : "add_self_state",
+    "buffName" : "counter",
     "costGauge": "40",
-    "description": "상대의 공격을 받았을 때, 그 힘을 역이용하여 반격을 가한다."
+    "description": "반격 상태가 되며 근접공격을 받으면 자신의 공격력 80%와 상대의 공격력 50%로 랜덤한 히트박스 1칸을 공격한다."
   },
   "last_judge": {
     "name": "마지막 심판",
     "skillType" : "tech",
     "skillTargetType" : "monster",
     "skillEffectType" : "multi_effect",
-	"effectNameList" : [""],
+    "effectNameList": [ "add_self_state", "attack" ],
+    "buffName" : "defenseless",
     "costGauge": "80",
     "elementType": "none",
-    "skillFactor": "150",
+    "skillFactor": "100",
     "hitboxSize": "4",
-    "description": "자신의 방어력을 공격력으로 전환하여 적에게 강한 데미지를 준다."
+    "description": "(공격력 + 방어력)의 100%로 4칸을 공격한다. 자세가 흐트러져 다음 차례가 오기 전까지 장비에 의한 방어력 증가효과가 없어진다."
   },
   "piercearrow": {
     "name": "꿰뚫는 화살",
     "skillType" : "tech",
     "skillTargetType" : "monster",
     "skillEffectType" : "duplicated_attack",
+    "buffName" : "",
     "duplicateNumber": "2",
     "costGauge": "45",
     "elementType": "none",
     "skillFactor": "110",
     "hitboxSize": "1",
-    "description": "한계까지 끌어올린 근력으로 화살을 2발 발사한다."
+    "description": "공격력 110%. 2회 공격. 한계까지 끌어올린 근력으로 화살을 2발 발사한다."
   },
   "snipe": {
     "name": "저격",
     "skillType": "tech",
     "skillTargetType": "self",
-    "skillEffectType": "add_state",
+    "skillEffectType": "add_self_state",
+    "buffName" : "snipe",
     "costGauge": "50",
-    "description": "전투현장에서 떨어져 몸을 숨긴다."
+    "description": "저격 상태가 되어 어그로수치가 0이 되며, 공격력이 20% 상승한다. 기술 및 아이템을 사용할 수 없다."
     },
   "return": {
     "name": "복귀",
     "skillType" : "tech",
     "skillTargetType" : "self",
     "skillEffectType" : "remove_state",
+    "buffName" : "snipe",
     "costGauge": "50",
-    "description": "다시 전장으로 복귀한다."
+    "description": "저격 상태를 해제한다."
   },
     "detailedshoot": {
         "name": "정밀한 사격",
         "skillType": "tech",
         "skillTargetType": "monster",
         "skillEffectType": "conditaional_attack",
+        "buffName" : "",
         "costGauge": "80",
         "elementType": "none",
         "skillFactor": "100",
-        "description": "수인의 육감을 최대한 끌어올려 강력한 화살을 발사한다."
+        "description": "공격력 100%. 치명도가 가장 높은 히트박스 1개와 나머지 히트박스 중에서 랜덤으로 3칸을 선택하여 공격한다."
     },
     "multishoot": {
         "name": "다중 사격",
         "skillType": "tech",
         "skillTargetType": "all_monster",
-        "skillEffectType": "attack",
+        "skillEffectType": "conditaional_attack",
+        "buffName" : "",
         "costGauge": "120",
         "costCasting": "0",
         "elementType": "none",
         "skillFactor": "50",
-        "description": "적의 모든 부위에 화살을 발사한다."
+        "description": "공격력 50%. 적의 모든 부위에 화살을 발사한다."
     },
     "gale": {
         "name": "질풍",
@@ -116,103 +126,113 @@
         "skillPath" : "gale",
         "skillTargetType": "monster",
         "skillEffectType": "duplicated_attack",
+        "buffName" : "",
         "duplicateNumber": "2",
         "costGauge": "45",
         "elementType": "none",
         "skillFactor": "100",
         "hitboxSize": "3",
-        "description": "쌍수를 이용해 연속으로 공격한다."
+        "description": "공격력 100%. 2회 공격한다."
     },
     "breeze": {
         "name": "연풍",
         "skillType": "tech",
         "skillTargetType": "monster",
         "skillEffectType": "multi_effect",
-		"effectNameList" : [""],
+		"effectNameList" : ["attack", "add_state"],
+        "buffName" : "bleeding",
         "costGauge": "45",
         "elementType": "none",
         "skillFactor": "150",
         "hitboxSize": "3",
-        "description": "빠르게 적을 내쳐친다."
+        "description": "공격력 150%. 출혈을 건다."
     },
     "strong_breeze": {
         "name": "웅풍",
         "skillType": "tech",
         "skillTargetType": "monster",
         "skillEffectType": "multi_effect",
-		"effectNameList" : [""],
+		"effectNameList" : ["attack","add_state"],
+        "buffName" : "sturn",
         "costGauge": "40",
         "elementType": "none",
         "skillFactor": "450",
         "hitboxSize": "1",
-        "description": "적의 상처에 공격을 하여 적에게 충격을 준다."
+        "description": "공격력 450%. 적이 출혈 상태이면 기절을 건다."
     },
     "back_of_sword": {
         "name": "칼등치기",
         "skillType": "tech",
         "skillTargetType": "monster",
-        "skillEffectType": "multi_effect",
-		"effectNameList" : [""],
+        "skillEffectType": "attack",
         "costGauge": "75",
         "elementType": "none",
+        "buffName" : "",
         "skillFactor": "50",
         "hitboxSize": "2",
-        "description": "칼등으로 밀쳐내어 행동에 지연을 준다."
+        "description": "공격력 50%. 적의 행동게이지를 25 감소시킨다."
     },
     "whirlwind": {
         "name": "돌개바람",
         "skillType": "tech",
         "skillTargetType": "monster",
         "skillEffectType": "multi_effect",
-		"effectNameList" : [""],
+		"effectNameList" : ["attack","remove_state"],
         "costGauge": "100",
+        "buffName" : "all",
         "elementType": "none",
         "skillFactor": "120",
         "hitboxSize": "3",
-        "description": "쌍수를 사용하는 이점으로 예측 불가능한 공격을 한다."
+        "description": "공격력 120%. (공격력100%*적에게 걸린 디버프 개수)만큼 추가 데미지를 준다. 적의 모든 디버프가 해제된다."
     },
     "surprise_attack": {
         "name": "배후 습격",
         "skillType": "tech",
         "skillTargetType": "monster",
         "skillEffectType": "multi_effect",
-		"effectNameList" : [""],
+		"effectNameList" : ["attack","add_state"],
         "costGauge": "45",
+        "buffName" : "slow",
         "elementType": "none",
         "skillFactor": "400",
         "hitboxSize": "1",
-        "description": "서큐버스의 특성을 이용해 적 뒤에서 갑자기 나타나 손톱으로 찌른다."
+        "description": "공격력 400%. 둔화를 건다."
     },
     "flying": {
         "name": "비행",
         "skillType": "tech",
         "skillTargetType": "self",
-        "skillEffectType": "add_state",
+        "skillEffectType": "add_self_state",
+        "buffName" : "fly",
         "costGauge": "45",
-        "description": "날개를 이용해 하늘을 난다."
+        "description": "비행상태가 되어 마법 외 공격의 피해를 받지 않는다. 대신 행동게이지 소모량이 15 증가한다."
     },
     "landing": {
         "name": "착지",
         "skillType": "tech",
         "skillTargetType": "self",
         "skillEffectType": "remove_state",
+        "buffName" : "fly",
         "costGauge": "30",
-        "description": "땅에 착지한다."
+        "description": "비행상태를 해제한다."
     },
     "casting": {
         "name": "캐스팅",
         "skillType": "magic",
         "skillTargetType": "self",
-        "skillEffectType": "add_state",
+        "skillEffectType": "multi_effect",
+		"effectNameList" : ["casting","add_self_state"],
+        "buffName" : "casting",
         "costGauge": "30",
         "costCasting": "0",
-        "description": "마법 영창을 왼다."
+        "description": "캐스팅 스택을 1개 쌓는다."
     },
     "cross": {
         "name": "성스러운 십자가",
         "skillType": "magic",
         "skillTargetType": "monster",
         "skillEffectType": "attack",
+        "buffName" : "",
         "costGauge": "30",
         "costCasting": "1",
         "elementType": "none",
@@ -223,53 +243,59 @@
             [ 1, 1, 1 ],
             [ 0, 1, 0 ]
         ],
-        "description": "성스러운 십자가 모양의 빛으로 적을 공격한다."
+        "description": "주문력 100%. 성스러운 십자가 모양의 빛으로 적을 공격한다."
     },
     "heal": {
         "name": "치유의 주문",
         "skillType": "magic",
         "skillTargetType": "one",
         "skillEffectType": "heal",
+        "buffName" : "",
         "costGauge": "30",
         "costCasting": "1",
         "magicFactor": "20",
-        "description": "아군을 치유한다."
+        "description": "체력 20% 회복. 아군을 치유한다."
     },
     "smile": {
         "name": "천국의 미소",
         "skillType": "magic",
         "skillTargetType": "one",
         "skillEffectType": "add_state",
+        "buffName" : "multi",
+        "buffNameList" : ["bless", "quick"],
         "costGauge": "40",
         "costCasting": "2",
-        "description": "천국에서 온 듯한 자애로운 기운으로 아군을 감싼다."
+        "description": "신속, 축복을 걸어 300초간 민첩성이 50, 방어력과 항마력이 15%씩 증가한다."
     },
     "handling": {
         "name": "신의 손길",
         "skillType": "magic",
         "skillTargetType": "one",
         "skillEffectType": "add_state",
+        "buffName" : "mulit",
+        "buffNameList" : ["electricshield", "fireshield", "iceshield"],
         "costGauge": "40",
         "costCasting": "2",
-        "description": "신의 권능으로 아군을 보호한다."
+        "description": "화염 방패, 얼음 방패, 전격 방패를 걸어 300초간 모든 속성 저항을 20 상승시킨다."
     },
     "lighting": {
         "name": "치유의 빛",
         "skillType": "magic",
         "skillTargetType": "all",
-        "skillEffectType": "all_heal",
-        "effectNameList": [ "remove_state", "heal" ],
-        "buffName": "all",
+        "skillEffectType": "multi_effect",
+        "effectNameList": [ "remove_state", "all_heal" ],
+        "buffName" : "all",
         "costGauge": "60",
         "costCasting": "3",
         "magicFactor": "100",
-        "description": "아군 전체를 치유한다."
+        "description": "아군 전체의 체력을 모두 회복하고, 모든 디버프를 해제한다."
     },
     "spiritbullet": {
         "name": "정령탄",
         "skillType": "magic",
         "skillTargetType": "monster",
         "skillEffectType": "conditional_attack",
+        "buffName" : "",
         "costGauge": "30",
         "elementType": "none",
         "magicFactor": "100",
@@ -277,13 +303,15 @@
         "hitboxShape": [
             [ 1 ]
         ],
-        "description": "정령의 에너지를 쏘아낸다."
+        "description": "주문력 100%. 연속으로 사용할 경우 데미지가 15%씩 증가한다."
     },
     "restriction": {
         "name": "대지의 속박",
         "skillType": "magic",
         "skillTargetType": "monster",
         "skillEffectType": "mulit_effect",
+        "effectNameList": [ "attack", "add_state" ],
+        "buffName" : "restriction",
         "costGauge": "30",
         "costCasting": "1",
         "elementType": "none",
@@ -294,19 +322,20 @@
             [ 0, 0, 0 ],
             [ 1, 1, 1 ]
         ],
-        "description": "대지의 힘을 빌려 적의 발을 묶는다."
+        "description": "주문력 50%. 속박을 걸어 120초간 기본 공격, 기술을 사용하지 못하게 한다.."
     },
     "electric_shock": {
         "name": "전기 충격",
         "skillType": "magic",
         "skillTargetType": "all_monster",
         "skillEffectType": "multi_effect",
-		"effectNameList" : [""],
+		"effectNameList" : ["attack","add_state"],
+        "buffName" : "shock",
         "costGauge": "30",
         "costCasting": "1",
         "elementType": "electric",
         "magicFactor": "15",
-        "description": "전기의 힘을 빌려 적을 감전시킨다."
+        "description": "주문력 15%. 감전을 걸어 120초간 행동게이지 소모량을 20 증가시킨다."
     },
     "freeze": {
         "name": "수분 빙화",
@@ -319,25 +348,29 @@
         "costCasting": "1",
         "elementType": "water",
         "magicFactor": "10",
-        "description": "물의 힘을 빌려 적의 신체를 얼린다."
+        "description": "주문력 10%. 빙결을 걸어 60초간 행동하지 못하게 한다."
     },
     "soul_cover": {
         "name": "사령씌우기",
         "skillType": "magic",
         "skillTargetType": "monster",
         "skillEffectType": "add_state",
+        "buffName" : "multi",
+        "buffNameList" : ["weaken", "decline"],
         "costGauge": "40",
         "costCasting": "1",
         "elementType": "none",
         "magicFactor": "15",
-        "description": "사령을 적에게 강제로 씌워 저주를 건다."
+        "description": "약화, 쇠화를 걸어 300초간 공격력, 주문력, 방어력, 항마력을 10% 감소시킨다."
     },
     "hand_of_death": {
         "name": "저승길 손아귀",
         "skillType": "magic",
         "skillTargetType": "monster",
         "skillEffectType": "multi_effect",
-		"effectNameList" : [""],
+		"effectNameList" : ["attack","add_state"],
+        "buffName" : "",    
+        "buffNameList" : ["restriction", "slow"],
         "costGauge": "40",
         "costCasting": "1",
         "elementType": "none",
@@ -348,25 +381,29 @@
             [ 0, 0, 0 ],
             [ 1, 1, 1 ]
         ],
-        "description": "바닥에서부터 사령들이 솟아나와 적에게 달라붙는다."
+        "description": "주문력 80%. 둔화, 속박을 걸어 300초간 민첩성이 50 감소되며, 120초간 기본 공격, 기술을 사용하지 못하게 한다."
     },
     "whisper_of_death": {
         "name": "망자의 속삭임",
         "skillType": "magic",
         "skillTargetType": "monster",
-        "skillEffectType": "add_effect",
+        "skillEffectType": "add_state",   
+        "buffName" : "",    
+        "buffNameList" : ["silence", "shock", "burn","poison"],
         "costGauge": "50",
         "costCasting": "2",
-        "description": "사령들이 원망이 가득한 속삭임으로 대상을 저주한다."
+        "description": "화상, 중독, 감전, 침묵 중 랜덤으로 2개를 건다."
     },
     "call_soul": {
         "name": "강령의식-呪",
         "skillType": "magic",
         "skillTargetType": "monster",
         "skillEffectType": "multi_effect",
-		"effectNameList" : [""],
+		"effectNameList" : ["duplicated_attack","add_state"],
+        "buffName" : "sturn",
         "costGauge": "80",
         "costCasting": "3",
+        "duplicateNumber": "3",
         "elementType": "none",
         "magicFactor": "50",
         "hitboxCenter": [ 1, 1 ],
@@ -375,17 +412,18 @@
             [ 0, 1, 0 ],
             [ 1, 0, 1 ]
         ],
-        "description": "수많은 사령들이 대상에게 저주를 퍼붓는다."
+        "description": "주문력 50%. 기절을 3회 건다."
     },
     "amplified_casting": {
         "name": "캐스팅 증폭",
         "skillType": "magic",
         "skillTargetType": "self",
-        "skillEffectType": "add_state",
+        "skillEffectType": "add_self_state",
+        "buffName" : "casting",
         "costGauge": "100",
         "costCasting": "1",
         "elementType": "none",
-        "description": "쌓인 마력을 증폭시킨다."
+        "description": "캐스팅 스택이 5개가 되고, 과부하 스택은 4개가 된다."
     },
     "meteor": {
         "name": "메테오",
@@ -398,7 +436,7 @@
         "costCasting": "5",
         "elementType": "fire",
         "magicFactor": "100",            
-        "description": "운석을 낙하시킨다."
+        "description": "주문력 100%. 화상을 4번 건다."
     },
     "blizzard": {
         "name": "블리자드",
@@ -411,43 +449,47 @@
         "costCasting": "5",
         "elementType": "water",
         "magicFactor": "80",        
-        "description": "눈보라를 일으킨다."
+        "description": "주문력 80%. 빙결을 4번 건다."
     },
     "thunder_storm": {
         "name": "썬더 스톰",
         "skillType": "magic",
         "skillTargetType": "all_monster",
         "skillEffectType": "multi_effect",
-		"effectNameList" : [""],
+		"effectNameList" : ["add_state","attack"],
+        "buffName" : "shock",
         "costGauge": "100",
         "costCasting": "5",
         "elementType": "electric",
         "magicFactor": "80",       
-        "description": "번개를 낙하시킨다."
+        "description": "주문력 80%. 감전을 4번 건다."
     },
     "sleep": {
         "name": "잠의 유혹",
         "skillType": "magic",
         "skillTargetType": "monster",
         "skillEffectType": "add_state",
+        "buffName" : "sleep",
         "costGauge": "40",
         "costCasting": "2",
-        "description": "적을 잠재운다."
+        "description": "수면을 걸어 60초간 행동하지 못하게 한다."
     },
     "charm": {
         "name": "매력 발산",
         "skillType": "magic",
         "skillTargetType": "monster",
         "skillEffectType": "add_state",
+        "buffName" : "charm",
         "costGauge": "40",
         "costCasting": "1",
-        "description": "적을 매혹시켜 자신을 공격하지 못하게 한다."
+        "description": "매혹을 걸어 300초간 공격력과 주문력이 30% 감소되고, 시전자의 어그로 수치가 100 감소된다."
     },
     "icearrow": {
         "name": "얼음 화살",
         "skillType": "magic",
         "skillTargetType": "monster",
         "skillEffectType": "attack",
+        "buffName" : "",
         "costGauge": "30",
         "costCasting": "1",
         "elementType": "water",
@@ -456,7 +498,7 @@
         "hitboxShape": [
             [ 1 ]
         ],
-        "description": "공기 중의 수분을 화살모양으로 얼려 발사한다."
+        "description": "주문력 300%."
     },
     "icestorm": {
         "name": "얼음 폭풍",
@@ -475,15 +517,16 @@
             [ 1, 1, 1 ],
             [ 1, 1, 1 ]
         ],
-        "description": "얼음이 휘날리는 폭풍을 적에게 날린다."
+        "description": "주문력 180%. 빙결을 걸어 60초간 행동하지 못하게 한다."
     },
     "absolute_defence": {
         "name": "절대 방어",
         "skillType": "magic",
         "skillTargetType": "all",
         "skillEffectType": "add_state",
+        "buffName" : "protect",
         "costGauge": "60",
         "costCasting": "0",
-        "description": "아군 전체를 보호한다."
+        "description": "아군 전체에게 수호를 걸어 1회의 공격에 저항하게 한다."
     }
 }

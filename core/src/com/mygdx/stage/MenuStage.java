@@ -27,7 +27,7 @@ public class MenuStage extends BaseOneLevelStage {
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private ListenerFactory listenerFactory;
 	@Autowired
@@ -58,17 +58,17 @@ public class MenuStage extends BaseOneLevelStage {
 
 		// 이미지추가
 		startButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_start.png"))));
-		settingButton = new ImageButton(
-				new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_setting.png"))));
+		settingButton = new ImageButton(new SpriteDrawable(
+				new Sprite(new Texture("texture/ui/title/title_setting.png"))));
 		albumButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_album.png"))));
-		creditButton = new ImageButton(
-				new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_credit.png"))));
+		creditButton = new ImageButton(new SpriteDrawable(new Sprite(new Texture("texture/ui/title/title_credit.png"))));
 
 		// 클릭리스너추가
 		startButton.addListener(listenerFactory.getLoadListener());
 
 		settingButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
+				soundManager.playClickSound();
 				soundPopup.setAtlasUiAssets(atlasUiAssets);
 				soundPopup.setListenerFactory(listenerFactory);
 				soundPopup.setConstantsAssets(constantsAssets);
@@ -82,13 +82,14 @@ public class MenuStage extends BaseOneLevelStage {
 
 		albumButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
+				soundManager.playClickSound();
 				screenFactory.push(ScreenEnum.COLLECTION);
 			}
 		});
 
 		creditButton.addListener(new ClickListener() {
-
 			public void clicked(InputEvent event, float x, float y) {
+				soundManager.playClickSound();
 				screenFactory.push(ScreenEnum.CREDIT);
 			}
 		});

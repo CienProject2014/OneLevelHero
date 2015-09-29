@@ -287,7 +287,7 @@
         }
       },
       {
-        "itemIdentifier": "kadilla_castle_guard_office",
+        "itemIdentifier": "kadilla_castle_castlegate",
         "x": 898,
         "y": 1675,
         "zIndex": 8,

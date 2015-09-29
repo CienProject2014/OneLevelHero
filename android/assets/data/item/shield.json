@@ -3,7 +3,9 @@
     "itemType": "handgrip",
     "name": "미 장착",
     "itemPath": "empty_item",
-    "isTwoHanded": "false"
+    "isTwoHanded": "false",
+     "effectStatus":{
+    }
   },
   "round_shield": {
     "itemType": "handgrip",
@@ -13,10 +15,12 @@
     "grade": "일반",
     "isTwoHanded": "false",
     "effectStatusList": [
-      "defense"
+      "defense",
+      "spped"
     ],
     "effectStatus": {
-      "defense": 20
+      "defense": 5,
+      "speed":-5
     },
     "description": "나무로 만든, 동그랗고 작은 방패."
   },
@@ -32,9 +36,64 @@
       "speed"
     ],
     "effectStatus": {
-      "defense": 25,
-      "speed": -2
+      "defense": 7,
+      "speed": -7
     },
     "description": "라운드 실드에 철을 덧대 방어력을 높인 방패."
+  },
+  "tower_shield": {
+    "itemType": "handgrip",
+    "name": "타워 실드",
+    "itemPath": "tower_shield",
+    "category": "방패",
+    "grade": "레어",
+    "isTwoHanded": "false",
+    "effectStatusList": [
+      "defense",
+      "speed"
+    ],
+    "effectStatus": {
+      "defense": 20,
+      "speed": -15
+    },
+    "description": "기본 공격의 데미지를 10% 경감해준다. 문짝 같이 생긴 커다란 방패."
+  },
+  "crystal_shield": {
+    "itemType": "handgrip",
+    "name": "수정 방패",
+    "itemPath": "crystal_shield",
+    "category": "방패",
+    "grade": "레어",
+    "isTwoHanded": "false",
+    "effectStatusList": [
+      "defense",
+      "magicDefense",
+      "speed"
+    ],
+    "effectStatus": {
+      "defense": 10,
+      "magicDefense": 10,
+      "speed": -5
+    },
+    "description": "마법 공격의 데미지를 10% 경감시킨다. 한 때 윈터폴 지역에서 생산되던 방패다."
+  },
+  "ankillas_shield": {
+    "itemType": "handgrip",
+    "name": "안킬라스 쉴드",
+    "itemPath": "ankillas_shield",
+    "category": "방패",
+    "grade": "유니크",
+    "isTwoHanded": "false",
+    "effectStatusList": [
+      "defense",
+      "magicDefense",
+      "speed"
+    ],
+    "effectStatus": {
+      "defense": 15,
+      "magicDefense": 15,
+      "speed": -5
+    },
+    "description": "빙결 디버프 면역. 커다란 방패에 안킬라스 코어를 박아넣었다."
   }
 }

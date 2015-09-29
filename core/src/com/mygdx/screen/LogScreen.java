@@ -55,7 +55,7 @@ public class LogScreen extends BaseScreen {
 		} else {
 			positionManager.setCurrentEventPositionType(EventPosition.LOG);
 			eventManager.setCurrentNpc(YONGSA_NAME);
-			selectEventStage = stageFactory.makeStage(StageEnum.CHOICE_NPCE_EVENT);
+			selectEventStage = stageFactory.makeStage(StageEnum.CHOICE_EVENT);
 		}
 
 		final NPC npc = eventManager.getCurrentNpc();

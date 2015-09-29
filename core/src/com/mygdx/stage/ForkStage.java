@@ -50,9 +50,9 @@ public class ForkStage extends BaseOverlapStage {
 	}
 
 	private void makeScene(PositionManager positionManager, NodeAssets nodeAssets) {
-		Gdx.app.log("forkStage", String.valueOf(positionManager.getCurrentNodeName()));
-		if (nodeAssets.getForkByName(positionManager.getCurrentNodeName()) != null) {
-			forkInfo = nodeAssets.getForkByName(positionManager.getCurrentNodeName());
+		Gdx.app.log("forkStage", String.valueOf(positionManager.getCurrentNodePath()));
+		if (nodeAssets.getForkByName(positionManager.getCurrentNodePath()) != null) {
+			forkInfo = nodeAssets.getForkByName(positionManager.getCurrentNodePath());
 			assetsManager.initScene(forkInfo.getSceneName());
 			initSceneLoader(assetsManager.rm);
 			sceneLoader.loadScene(forkInfo.getSceneName());
@@ -65,7 +65,7 @@ public class ForkStage extends BaseOverlapStage {
 	}
 
 	private void setButton() {
-		Gdx.app.log("forkStage", String.valueOf(positionManager.getCurrentNodeName()));
+		Gdx.app.log("forkStage", String.valueOf(positionManager.getCurrentNodePath()));
 
 		makeScene(positionManager, nodeAssets);
 		addActor(sceneLoader.getRoot());
@@ -88,7 +88,7 @@ public class ForkStage extends BaseOverlapStage {
 				Gdx.app.debug("DungeonEntranceStage", "잘 쉬었도다...");
 			}
 		});
-		String currentNode = positionManager.getCurrentNodeName();
+		String currentNode = positionManager.getCurrentNodePath();
 		Map<String, NodeConnection> connectionMap = worldMapAssets.getWorldNodeInfo(currentNode).getNodeConnection();
 
 		for (final Entry<String, NodeConnection> connection : connectionMap.entrySet()) {

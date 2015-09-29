@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.SkillAssets;
@@ -31,6 +32,7 @@ import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
 import com.mygdx.popup.SkillRunPopup;
+import com.mygdx.stage.BattleStage;
 import com.mygdx.ui.GridHitbox;
 
 public class BattleManager {
@@ -52,13 +54,9 @@ public class BattleManager {
 	@Autowired
 	private BattleInfo battleInfo;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private ConstantsAssets constantsAssets;
-	@Autowired
-	private FieldManager fieldManager;
-	@Autowired
-	private DungeonManager dungeonManager;
 	@Autowired
 	private TimeManager timeManager;
 	@Autowired
@@ -66,40 +64,32 @@ public class BattleManager {
 	@Autowired
 	private SoundManager soundManager;
 	private GridHitbox gridHitbox; // grid hitbox 테이블
-
+	private BattleStage battleStage;
+	private Unit currentAttackUnit;
+	private String text;
 	public SkillRunPopup gameObjectPopup;
-
-	public boolean isEventBattle() {
-		return battleInfo.isEventBattle();
-	}
-
-	public void setEventBattle(boolean isEventBattle) {
-		battleInfo.setEventBattle(isEventBattle);
-	}
-
-	public void setBackgroundPath(String backgroundPath) {
-		battleInfo.setBackgroundPath(backgroundPath);
-	}
-
-	public String getBackgroundPath() {
-		return battleInfo.getBackgroundPath();
-	}
 
 	public void startBattle(Monster selectedMonster) {
 		if (battleInfo.getBattleState().equals(BattleStateEnum.NOT_IN_BATTLE)) {
 			battleInfo.setBattleState(BattleStateEnum.ENCOUNTER);
 		}
+		unitManager.initiateHeroes(partyManager.getBattleMemberList());
 		unitManager.initiateMonster(selectedMonster);
 		battleInfo.setCurrentMonster(selectedMonster);
-		if (fieldManager.isInField()) {
-			screenFactory.show(ScreenEnum.BATTLE);
-		} else if (dungeonManager.isInDungeon()) {
-			screenFactory.show(ScreenEnum.BATTLE);
-		}
+		screenFactory.show(ScreenEnum.BATTLE);
 	}
 
 	public Unit getCurrentActors() {
-		Unit currentAttackUnit = getOrderedUnits().poll();
+		currentAttackUnit = getOrderedUnits().poll();
+		for (Buff buff : currentAttackUnit.getBuffList()) {
+			String buffPath = buff.getBuffPath();
+			if (buffPath.equals("buff_de_sturn") || buffPath.equals("buff_de_frozen")
+					|| buffPath.equals("buff_de_sleep")) {
+				getOrderedUnits().add(currentAttackUnit);
+				currentAttackUnit = getOrderedUnits().poll();
+				updateSubOrder();
+			}
+		}
 		if (currentAttackUnit instanceof Hero) {
 			setCurrentActor((Hero) currentAttackUnit);
 		}
@@ -194,6 +184,7 @@ public class BattleManager {
 
 		if (battleInfo.getRunPercent() > nGetVal) {
 			battleInfo.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+			initBattle();
 			movingManager.goCurrentLocatePosition();
 			Gdx.app.log(TAG, "도망!");
 		} else {
@@ -232,9 +223,24 @@ public class BattleManager {
 		setOrderedUnits(new LinkedList<Unit>(getUnits()));
 	}
 
+	@SuppressWarnings("unchecked")
+	public void updateSubOrder() {
+		List<Unit> units = new ArrayList<Unit>(getOrderedUnits());
+		Collections.sort(units);
+		getOrderedUnits().clear();
+		getOrderedUnits().addAll(units);
+	}
+
 	public void useSkill(Unit attackUnit, Unit targetUnit, String skillName) {
+		Buff overload = skillAssets.getBuff("overload");
 		Skill skill = skillAssets.getSkill(skillName);
 		ArrayList<Unit> targetList = getTargetList(skill.getSkillTargetType(), attackUnit, targetUnit);
+		attackUnit.getStatus().setCasting(attackUnit.getStatus().getCasting() - skill.getCostCasting());
+
+		if (attackUnit.getStatus().getCasting() == 0) {
+			attackUnit.setOverload(0);
+			attackUnit.getBuffList().remove(overload);
+		}
 		attackUnit.useSkill(targetList, skill);
 		if (attackUnit instanceof Hero) {
 			readyForPlayerAnimation(skillName, (int) (StaticAssets.windowHeight * 0.8f),
@@ -250,6 +256,14 @@ public class BattleManager {
 	public void calCostGague(Unit unit, int typeOfAction) {
 		unit.setPreGague(unit.getGauge());
 		int costGague = (int) (((double) (150 - unit.getActingPower()) / 50) * typeOfAction);
+		if (this.isSkill()) {
+			if (this.getCurrentSelectedSkill().getSkillPath().equals("flying")) {
+				costGague += 15;
+			}
+			if (this.getCurrentSelectedSkill().getSkillPath().equals("back_of_sword")) {
+				costGague += 25;
+			}
+		}
 		unit.setGauge(unit.getGauge() - costGague);
 		timeManager.setPreTime(costGague * TIME_FLOW_RATE);
 		timeManager.plusSecond(costGague * TIME_FLOW_RATE);
@@ -261,7 +275,7 @@ public class BattleManager {
 		}
 	}
 
-	public void FuckingCostGague(Unit unit, int typeOfAction) {
+	public void fuckingCostGague(Unit unit, int typeOfAction) {
 		unit.setPreGague(unit.getGauge());
 		unit.setGauge(unit.getGauge() - typeOfAction);
 		timeManager.setPreTime(typeOfAction * TIME_FLOW_RATE);
@@ -299,7 +313,7 @@ public class BattleManager {
 			battleInfo.getCurrentAttackUnit().setSubvalue(1);
 		}
 
-		FuckingCostGague(battleInfo.getCurrentAttackUnit(), 100 - maxGague);
+		fuckingCostGague(battleInfo.getCurrentAttackUnit(), 100 - maxGague);
 
 		for (Unit unit : partyManager.getBattleMemberList()) {
 			if (battleInfo.getCurrentAttackUnit() == unit) {
@@ -311,7 +325,7 @@ public class BattleManager {
 		}
 		battleInfo.getCurrentAttackUnit().setSubvalue(maxSubValue + 1);
 		if (battleInfo.getCurrentAttackUnit().getSubvalue() == 3) {
-			FuckingCostGague(battleInfo.getCurrentAttackUnit(), 1);
+			fuckingCostGague(battleInfo.getCurrentAttackUnit(), 1);
 			battleInfo.getCurrentAttackUnit().setSubvalue(0);
 		}
 	}
@@ -334,6 +348,7 @@ public class BattleManager {
 			rMenuButton.setVisible(false);
 			rMenuButton.setTouchable(Touchable.disabled);
 		}
+		battleInfo.getRMenuTable().setVisible(false);
 	}
 
 	public void showRMenuButtons() {
@@ -341,6 +356,9 @@ public class BattleManager {
 			rMenuButton.setVisible(true);
 			rMenuButton.setTouchable(Touchable.enabled);
 		}
+		battleInfo.getRMenuTable().setVisible(true);
+		battleInfo.getRMenuTable().addAction(Actions.moveTo(1720, 15));
+		battleInfo.getRMenuTable().addAction(Actions.moveTo(1720, 15, 1));
 		gameObjectPopup.setVisible(false);
 	}
 
@@ -479,6 +497,7 @@ public class BattleManager {
 		int localy = (int) (StaticAssets.windowHeight * 0.5f)
 				+ (int) (StaticAssets.windowHeight * (-0.24f + 0.12f * y));
 		animationManager.registerAnimation(animationName, localx, localy, width, height);
+		battleStage.getCameraManager().shaking();
 	}
 
 	/**
@@ -591,6 +610,7 @@ public class BattleManager {
 		for (Unit unit : battleInfo.getUnits()) {
 			unit.setGauge(100);
 			unit.setSubvalue(0);
+			unit.setOverload(0);
 		}
 	}
 
@@ -689,14 +709,6 @@ public class BattleManager {
 		battleInfo.setOrderedUnits(orderedUnits);
 	}
 
-	public ArrayList<ImageButton> getrMenuButtonList() {
-		return battleInfo.getrMenuButtonList();
-	}
-
-	public void setrMenuButtonList(ArrayList<ImageButton> rMenuButtonList) {
-		battleInfo.setrMenuButtonList(rMenuButtonList);
-	}
-
 	public boolean isSmallUpdate() {
 		return battleInfo.isSmallUpdate();
 	}
@@ -775,4 +787,52 @@ public class BattleManager {
 		return getSelectedMonster().getBuffList();
 	}
 
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public BattleInfo getBattleInfo() {
+		return battleInfo;
+	}
+
+	public void setBattleInfo(BattleInfo battleInfo) {
+		this.battleInfo = battleInfo;
+	}
+
+	public boolean isEventBattle() {
+		return battleInfo.isEventBattle();
+	}
+
+	public void setBattleStage(BattleStage stage) {
+		battleStage = stage;
+	}
+
+	public void setEventBattle(boolean isEventBattle) {
+		battleInfo.setEventBattle(isEventBattle);
+	}
+
+	public void setBackgroundPath(String backgroundPath) {
+		battleInfo.setBackgroundPath(backgroundPath);
+	}
+
+	public String getBackgroundPath() {
+		return battleInfo.getBackgroundPath();
+	}
+
+	public void setrMenuButtonList(ArrayList<ImageButton> rMenuButtonList) {
+		battleInfo.setrMenuButtonList(rMenuButtonList);
+
+	}
+
+	public void setEndBuff(boolean endBuff) {
+		battleInfo.setEndBuff(endBuff);
+	}
+
+	public boolean isEndBuff() {
+		return battleInfo.isEndBuff();
+	}
 }

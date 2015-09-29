@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Queue;
 
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.CurrentClickStateEnum;
 import com.mygdx.enums.FieldTypeEnum;
@@ -18,6 +19,7 @@ public class BattleInfo {
 	private Monster currentMonster;
 	private BattleStateEnum battleState;
 	private String backgroundPath;
+	private ArrayList<ImageButton> rMenuButtonList;
 	private CurrentClickStateEnum currentClickState;
 	private Skill currentSelectedSkill;
 	private Item currentSelectedItem;
@@ -26,13 +28,14 @@ public class BattleInfo {
 	private FieldTypeEnum fieldType;
 	private ArrayList<Unit> units;
 	private Queue<Unit> orderedUnits;
-	private ArrayList<ImageButton> rMenuButtonList;
+	private Table rMenuTable;
 	private boolean isEventBattle;
 	private boolean isSmallUpdate;
 	private boolean isBigUpdate;
 	private boolean showGrid;
 	private Unit currentAttackUnit;
 	private int runPercent;
+	private boolean endBuff;
 	private boolean isSkill;
 
 	public Hero getCurrentActor() {
@@ -124,14 +127,6 @@ public class BattleInfo {
 		this.orderedUnits = orderedUnits;
 	}
 
-	public ArrayList<ImageButton> getrMenuButtonList() {
-		return rMenuButtonList;
-	}
-
-	public void setrMenuButtonList(ArrayList<ImageButton> rMenuButtonList) {
-		this.rMenuButtonList = rMenuButtonList;
-	}
-
 	public boolean isSmallUpdate() {
 		return isSmallUpdate;
 	}
@@ -186,6 +181,30 @@ public class BattleInfo {
 
 	public void setBackgroundPath(String backgroundPath) {
 		this.backgroundPath = backgroundPath;
+	}
+
+	public Table getRMenuTable() {
+		return rMenuTable;
+	}
+
+	public void setrMenuTable(Table rMenuTable) {
+		this.rMenuTable = rMenuTable;
+	}
+
+	public ArrayList<ImageButton> getrMenuButtonList() {
+		return rMenuButtonList;
+	}
+
+	public void setrMenuButtonList(ArrayList<ImageButton> rMenuButtonList) {
+		this.rMenuButtonList = rMenuButtonList;
+	}
+
+	public boolean isEndBuff() {
+		return endBuff;
+	}
+
+	public void setEndBuff(boolean endBuff) {
+		this.endBuff = endBuff;
 	}
 
 }

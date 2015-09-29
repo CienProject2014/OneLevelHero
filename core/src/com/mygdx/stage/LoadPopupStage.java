@@ -25,6 +25,7 @@ import com.mygdx.manager.LoadNewManager;
 import com.mygdx.manager.MovingManager;
 import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.SaveManager;
+import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.screen.BaseScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -57,6 +58,9 @@ public class LoadPopupStage extends BaseOverlapStage {
 	private MusicManager musicManager;
 	@Autowired
 	private TimeManager timeManager;
+	@Autowired
+	private SoundManager soundManager;
+
 	private Camera cam;
 	private ImageItem save;
 	private CompositeItem closeButton;
@@ -144,6 +148,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 		save01.addListener(new TouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				soundManager.playClickSound();
 				saveInfo.setSaveVersion(SaveVersion.SAVE_01);
 				if (saveManager.isLoadable(SaveVersion.SAVE_01)) {
 					musicManager.stopMusic();
@@ -156,6 +161,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 		save02.addListener(new TouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				soundManager.playClickSound();
 				saveInfo.setSaveVersion(SaveVersion.SAVE_02);
 				if (saveManager.isLoadable(SaveVersion.SAVE_02)) {
 					musicManager.stopMusic();
@@ -168,6 +174,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 		save03.addListener(new TouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				soundManager.playClickSound();
 				saveInfo.setSaveVersion(SaveVersion.SAVE_03);
 				if (saveManager.isLoadable(SaveVersion.SAVE_03)) {
 					musicManager.stopMusic();
@@ -181,6 +188,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 		newButton.addListener(new TouchListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				soundManager.playClickSound();
 				newButton.setLayerVisibilty("pressed", true);
 				return true;
 			}
@@ -198,6 +206,7 @@ public class LoadPopupStage extends BaseOverlapStage {
 		closeButton.addListener(new TouchListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				soundManager.playClickSound();
 				closeButton.setLayerVisibilty("pressed", true);
 				return true;
 			}
@@ -210,7 +219,6 @@ public class LoadPopupStage extends BaseOverlapStage {
 			}
 		});
 	}
-
 	private void setCamera() {
 		cam = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);

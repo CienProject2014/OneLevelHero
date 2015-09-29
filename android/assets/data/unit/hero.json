@@ -15,11 +15,12 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0
+      "electricResistance": 0,
+        "casting" :0
     },
     "initialInventoryList": {
-      "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
+      "rightHandGrip": "broad_sword",
+      "leftHandGrip": "round_shield",
       "clothes": "iron_armor"
     },
     "skillList": [
@@ -60,7 +61,7 @@
       "magicAttack": 0,
       "defense": 18,
       "magicDefense": 0,
-      "speed": 70,
+      "speed": 75,
       "experience": 0,
       "maxExperience": 3600,
       "fireResistance": 0,
@@ -68,9 +69,9 @@
       "electricResistance": 0
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+      "rightHandGrip": "great_sword",
+      "clothes": "iron_armor"
+    },
     "skillList": [
       "provoke",
       "powerblade",
@@ -86,7 +87,7 @@
       "level": 40,
       "attack": 5,
       "magicAttack": 27,
-      "defense": 0,
+      "defense": 10,
       "magicDefense": 10,
       "hp": 140,
       "maxHp": 140,
@@ -95,13 +96,14 @@
       "maxExperience": 3600,
       "fireResistance": 10,
       "waterResistance": 20,
-      "electricResistance": 10
+      "electricResistance": 10,
+        "casting" :0
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+        "rightHandGrip": "bible",
+      "clothes": "cope"},
     "skillList": [
+      "casting",
       "cross",
       "heal",
       "smile",
@@ -116,7 +118,7 @@
       "level": 40,
       "attack": 5,
       "magicAttack": 27,
-      "defense": 0,
+      "defense": 10,
       "magicDefense": 10,
       "hp": 140,
       "maxHp": 140,
@@ -125,12 +127,10 @@
       "maxExperience": 3600,
       "fireResistance": 10,
       "waterResistance": 20,
-      "electricResistance": 10
+      "electricResistance": 10,
+        "casting" :0
     },
-    "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+    "initialInventoryList": {},
     "skillList": [
       "surpise_attack",
       "flying",
@@ -150,7 +150,7 @@
       "level": 40,
       "attack": 34,
       "magicAttack": 0,
-      "defense": 8,
+      "defense": 12,
       "magicDefense": 0,
       "hp": 190,
       "maxHp": 190,
@@ -159,12 +159,12 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0
+      "electricResistance": 0,
+        "casting" :0
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+        "rightHandGrip": "paulownia_bow",
+      "clothes": "leather_armor"},
     "skillList": [
       "piercearrow",
       "snipe",
@@ -189,12 +189,13 @@
       "maxExperience": 3600,
       "fireResistance": 10,
       "waterResistance": 10,
-      "electricResistance": 10
+      "electricResistance": 10,
+        "casting" :0
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
+        "rightHandGrip": "broad_sword",
       "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+      "clothes": "leather_armor"},
     "skillList": [
       "gale",
       "breeze",
@@ -219,7 +220,7 @@
       "level": 60,
       "attack": 5,
       "magicAttack": 31,
-      "defense": 0,
+      "defense": 10,
       "magicDefense": 14,
       "hp": 160,
       "maxHp": 160,
@@ -228,12 +229,12 @@
       "maxExperience": 3600,
       "fireResistance": 10,
       "waterResistance": 10,
-      "electricResistance": 10
+      "electricResistance": 10,
+        "casting" :0
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+        "rightHandGrip": "gloomy_cane",
+      "clothes": "necromantic_dress"},
     "skillList": [
       "casting",
       "soul_cover",
@@ -252,7 +253,7 @@
       "level": 88,
       "attack": 5,
       "magicAttack": 44,
-      "defense": 0,
+      "defense": 10,
       "magicDefense": 27,
       "hp": 188,
       "maxHp": 188,
@@ -261,12 +262,12 @@
       "maxExperience": 3600,
       "fireResistance": 30,
       "waterResistance": 30,
-      "electricResistance": 30
+      "electricResistance": 30,
+        "casting" :0
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
-      "clothes": "iron_armor"},
+        "rightHandGrip": "sagediary",
+      "clothes": "magic_lob"},
     "skillList": [
       "casting",
       "amplified_casting",
@@ -294,11 +295,12 @@
       "maxExperience": 3600,
       "fireResistance": 0,
       "waterResistance": 0,
-      "electricResistance": 0
+      "electricResistance": 0,
+        "casting" :0
     },
     "initialInventoryList": {
-        "rightHandGrip": "round_shield",
-      "leftHandGrip": "broad_sword",
+        "rightHandGrip": "broad_sword",
+      "leftHandGrip": "round_shield",
       "clothes": "iron_armor"},
     "skillList": [
       "breeze",

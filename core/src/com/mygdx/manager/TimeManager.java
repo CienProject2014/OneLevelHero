@@ -3,7 +3,10 @@ package com.mygdx.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.SkillAssets;
 import com.mygdx.currentState.TimeInfo;
+import com.mygdx.model.battle.Buff;
+import com.mygdx.model.unit.Hero;
 
 public class TimeManager {
 	public final static int SECOND_PER_MINUTES = 60;
@@ -17,6 +20,8 @@ public class TimeManager {
 	private PartyManager partyManager;
 	@Autowired
 	private TimeInfo timeInfo;
+	@Autowired
+	private transient SkillAssets skillAssets;
 
 	public void plusDay(int value) {
 		Gdx.app.log("TimeManager", "Plus Day : " + value);
@@ -41,12 +46,29 @@ public class TimeManager {
 	}
 
 	public void setTime(int time) {
+		Buff overwork = skillAssets.getBuff("overwork");
 		int beforeTime = getTime();
 		int beforeSecondTime = timeInfo.getSecondTime();
 		timeInfo.setTime(beforeSecondTime + time);
 		int leftHour = (getTime() / MINUTES_PER_HOUR) - (beforeTime / MINUTES_PER_HOUR);
 		if (leftHour >= 1) {
 			partyManager.setFatigue(partyManager.getFatigue() + leftHour);
+		}
+
+		if (partyManager.getFatigue() >= 20) {
+			for (Hero hero : partyManager.getBattleMemberList()) {
+				if (hero.getBuffList().contains(overwork)) {
+					hero.getBuffList().remove(overwork);
+				}
+				hero.getBuffList().add(overwork);
+			}
+		} else {
+			for (Hero hero : partyManager.getBattleMemberList()) {
+				if (hero.getBuffList().contains(overwork)) {
+					hero.getBuffList().remove(overwork);
+				}
+			}
+
 		}
 		partyManager.calculateLevel();
 	}

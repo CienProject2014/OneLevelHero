@@ -18,6 +18,8 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.enums.WorldNodeEnum;
+import com.mygdx.factory.ListenerFactory;
+import com.mygdx.listener.LeaveEventElementListener;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
@@ -36,9 +38,11 @@ public class GreetingStage extends BaseOneLevelStage {
 	@Autowired
 	private PositionManager positionManager;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private UiComponentAssets uiComponentAssets;
+	@Autowired
+	private ListenerFactory listenerFactory;
 	private Label scriptTitle = new Label("", StaticAssets.skin);
 	private Label scriptContent = new Label("", StaticAssets.skin);
 	private Image characterImage;
@@ -51,17 +55,22 @@ public class GreetingStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		setUiConstantsMap(constantsAssets.getUiConstants("EventStage"));
-
 		setScene();
+		addLeaveListener();
 		return this;
+	}
+
+	private void addLeaveListener() {
+		LeaveEventElementListener leaveEventElementListener = listenerFactory.getLeaveEventElementListener();
+		this.addListener(leaveEventElementListener);
 	}
 
 	public void setScene() {
 		List<String> greetingMessageList = eventManager.getCurrentNpc().getGreetingMessages();
-		WorldNodeEnum.NodeType nodeType = worldMapAssets.getNodeType(positionManager.getCurrentNodeName());
-		SubNode subNodeInfo = nodeAssets.getSubNodeInfo(nodeType, positionManager.getCurrentNodeName(),
-				positionManager.getCurrentSubNodeName());
-		EventElement eventElement = eventManager.getCurrentEventElement();
+		WorldNodeEnum.NodeType nodeType = worldMapAssets.getNodeType(positionManager.getCurrentNodePath());
+		SubNode subNodeInfo = nodeAssets.getSubNodeInfo(nodeType, positionManager.getCurrentNodePath(),
+				positionManager.getCurrentSubNodePath());
+		EventElement eventElement = eventManager.getCurrentNpc();
 		setScript(eventElement, greetingMessageList);
 		makeChatTable(eventElement, subNodeInfo);
 	}
@@ -86,8 +95,11 @@ public class GreetingStage extends BaseOneLevelStage {
 	private void makeChatTable(EventElement eventElement, SubNode subNodeInfo) {
 		String backgroundPath = subNodeInfo.getSubNodePath();
 		backgroundImage = new Image(textureManager.getBackgroundTexture(backgroundPath));
-		characterImage = new Image(textureManager.getBustTexture(eventElement.getFacePath(), "01"));
-
+		if (eventElement.getFacePath() != null) {
+			characterImage = new Image(textureManager.getBustTexture(eventElement.getFacePath(), "01"));
+		} else {
+			characterImage = new Image(textureManager.getBustTexture(eventElement.getElementPath(), "01"));
+		}
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();
 		chatLineImageTable.left().bottom();

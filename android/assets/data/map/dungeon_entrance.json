@@ -1,15 +1,18 @@
 {
   "devil_castle": {
     "nodeName": "마왕성",
-    "nodePath": "devil_castle"
+    "nodePath": "devil_castle",
+    "startDungeonRoomIndex" : 0
   },
   "crystallized_valley_north": {
     "nodeName": "수정 협곡 북쪽 입구",
-    "nodePath": "crystallized_valley"
+    "nodePath": "crystallized_valley",
+    "startDungeonRoomIndex" : 17
   },
   "crystallized_valley_south": {
     "nodeName": "수정 협곡 남쪽 입구",
-    "nodePath": "crystallized_valley"
+    "nodePath": "crystallized_valley",
+    "startDungeonRoomIndex" : 0
   },
   "elven_forest_east": {
     "nodeName": "엘프의 숲 동쪽 입구",
@@ -29,10 +32,16 @@
   },
   "golden_lake": {
     "nodeName": "금빛 호수",
-    "nodePath": "golden_lake"
+    "nodePath": "golden_lake",
+    "startDungeonRoomIndex" : 0
   },
   "temple_of_moerae": {
     "nodeName": "모에라에의 신전",
     "nodePath": "temple_of_moerae"
+  },
+  "cave_of_cape_of_tempest": {
+    "nodeName": "폭풍의 곶 동굴",
+    "nodePath": "cave_of_cape_of_tempest",
+    "isHidden" : "true"
   }
 }

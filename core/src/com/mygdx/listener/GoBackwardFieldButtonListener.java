@@ -27,11 +27,12 @@ public class GoBackwardFieldButtonListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		soundManager.playClickSound();
 		fieldManager.goBackwardField();
 		timeManager.plusMinute(30);
 		if (!fieldManager.isInField()) {
 			soundManager.setSoundByUseAndPlay("move_arrow");
-			String node = positionManager.getCurrentNodeName();
+			String node = positionManager.getCurrentNodePath();
 			movingManager.goToNode(node);
 		}
 	}

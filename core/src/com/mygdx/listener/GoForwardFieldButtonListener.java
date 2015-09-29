@@ -28,6 +28,7 @@ public class GoForwardFieldButtonListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		soundManager.playClickSound();
 		fieldManager.goForwardField();
 		timeManager.plusMinute(30);
 		if (!fieldManager.isInField()) {

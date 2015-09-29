@@ -18,6 +18,7 @@ import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.DungeonManager;
 import com.mygdx.manager.EventManager;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.PositionManager;
@@ -32,13 +33,15 @@ public class MonsterStage extends BaseOneLevelStage {
 	@Autowired
 	private BattleManager battleManager;
 	@Autowired
-	private ConstantsAssets constantsAssets;
+	private DungeonManager dungeonManager;
+	@Autowired
+	private transient ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
 	private Monster monster;
 	@Autowired
-	private UiComponentAssets uiComponentAssets;
+	private transient UiComponentAssets uiComponentAssets;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -84,10 +87,11 @@ public class MonsterStage extends BaseOneLevelStage {
 		uiTable.add(hpTable).padBottom(uiConstantsMap.get("hpTablePadBottom"));
 		uiTable.row();
 		buffTable = new Table();
-		uiTable.add(buffTable);
+		buffTable.bottom().padBottom(120f);
 
 		tableStack.add(outerTable);
 		tableStack.add(uiTable);
+		tableStack.add(buffTable);
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 			showBattleAnimation();
 		}
@@ -139,7 +143,8 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getTexture("bg_devil_castle_06")));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(dungeonManager
+					.getDungeonInfo().getBackground())));
 		} else if (eventManager.getCurrentEvent().getEventType().equals(EventTypeEnum.START_BATTLE)) {
 			String backgroundPath = battleManager.getBackgroundPath();
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
@@ -148,7 +153,6 @@ public class MonsterStage extends BaseOneLevelStage {
 					.getFieldType().toString())));
 		}
 	}
-
 	public HashMap<String, Float> getUiConstantsMap() {
 		return uiConstantsMap;
 	}

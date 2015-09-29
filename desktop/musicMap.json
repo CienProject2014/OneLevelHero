@@ -7,6 +7,10 @@ bgm_temple_of_moerae: {
 	class: java.lang.String,
 	value: music/bgm_temple_of_moerae.mp3/
 },
+bgm_mongsimji: {
+	class: java.lang.String,
+	value: music/bgm_mongsimji.mp3/
+},
 bgm_elven_forest: {
 	class: java.lang.String,
 	value: music/bgm_elven_forest.mp3/

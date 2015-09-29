@@ -1,47 +1,24 @@
 package com.mygdx.model.location;
 
-import java.util.HashMap;
+import com.mygdx.enums.DungeonEnum;
 
 public class DungeonConnection {
-	private final static String TAG_LABEL = "label";
-	private final static String TAG_FROM = "from";
-	private final static String TAG_TO = "to";
+	private DungeonEnum.Direction directionType;
+	private String roomLabel;
 
-	public HashMap<String, Object> data;
-
-	private int from;
-	private int to;
-	private String label;
-
-	public boolean isFrom(int Pos) {
-		return Pos == from;
+	public DungeonEnum.Direction getDirectionType() {
+		return directionType;
 	}
 
-	public boolean isTo(int Pos) {
-		return Pos == to;
+	public void setDirectionType(DungeonEnum.Direction directionType) {
+		this.directionType = directionType;
 	}
 
-	public String getLabel() {
-		return label;
+	public String getRoomLabel() {
+		return roomLabel;
 	}
 
-	public void setLabel(String label) {
-		this.data.put(TAG_LABEL, label);
-	}
-
-	public int getFrom() {
-		return from;
-	}
-
-	public void setFrom(DungeonNode from) {
-		this.data.put(TAG_FROM, from);
-	}
-
-	public int getTo() {
-		return to;
-	}
-
-	public void setTo(DungeonNode to) {
-		this.data.put(TAG_TO, to);
+	public void setRoomLabel(String roomLabel) {
+		this.roomLabel = roomLabel;
 	}
 }

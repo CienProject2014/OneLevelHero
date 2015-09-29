@@ -3,14 +3,17 @@ package com.mygdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.enums.MusicEnum;
 import com.mygdx.enums.StageEnum;
 
 public class BuildingScreen extends BaseScreen {
 	public static boolean isInSave;
+	public static boolean isClickPopup;
 	private Stage buildingStage;
 	private Stage gameUiStage;
 	private Stage saveStage;
 	private Stage loadStage;
+	private Stage gameObjectPopupStage;
 
 	@Override
 	public void render(float delta) {
@@ -24,16 +27,22 @@ public class BuildingScreen extends BaseScreen {
 		if (showLoadStage) {
 			loadStage.draw();
 		}
+		if (isClickPopup) {
+			gameObjectPopupStage.draw();
+		}
+		gameUiStage.act(delta);
+
 	}
 
 	@Override
 	public void show() {
+		gameObjectPopupStage = stageFactory.makeStage(StageEnum.GAME_OBJECT_POPUP);
 		buildingStage = stageFactory.makeStage(StageEnum.BUILDING);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		saveStage = stageFactory.makeStage(StageEnum.SAVE);
 		loadStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		setInputProcessor();
-		musicManager.setWorldNodeMusicAndPlay();
+		musicManager.setMusicAndPlay(MusicEnum.WORLD_NODE_MUSIC);
 	}
 
 	private void setInputProcessor() {
@@ -50,6 +59,9 @@ public class BuildingScreen extends BaseScreen {
 		}
 		if (showLoadStage) {
 			multiplexer.addProcessor(0, loadStage);
+		}
+		if (isClickPopup) {
+			multiplexer.addProcessor(0, gameObjectPopupStage);
 		}
 		Gdx.input.setInputProcessor(multiplexer);
 

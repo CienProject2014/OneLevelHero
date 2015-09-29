@@ -52,7 +52,6 @@ public class ChoiceOptionScreen extends BaseScreen {
 		int i = 0;
 
 		multiplexer.addProcessor(i++, choiceOptionStage);
-		multiplexer.addProcessor(i++, chatEventStage);
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		input.setInputProcessor(multiplexer);
 	}

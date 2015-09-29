@@ -12,6 +12,7 @@ import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.enums.EventElementEnum;
 import com.mygdx.enums.EventStateEnum;
 import com.mygdx.enums.EventTypeEnum;
+import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.factory.NextSectionCheckerFactory;
 import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.StorySection;
@@ -28,18 +29,36 @@ public class StorySectionManager {
 	@Autowired
 	private StorySectionInfo storySectionInfo;
 	@Autowired
+	private PositionManager positionManager;
+	@Autowired
 	private NextSectionCheckerFactory nextSectionCheckerFactory;
-
+	@Autowired
+	private TimeManager timeManager;
 	private Queue<EventPacket> eventSequenceQueue = new LinkedList<>();
 
 	public void setNewStorySectionAndPlay(int storyNumber) {
 		setNewStorySection(storyNumber);
 		setNewStorySectionNumber(storyNumber);
+		storySectionInfo.setStoryStartTime(timeManager);
 		Gdx.app.log("StorySectionManager", "현재 분기번호 [" + storyNumber
 				+ "] 가동중-------------------------------------------------------------------------------");
 		insertStorySequence();
-		insertConditionalEvents();
+		insertConditionalNpcEvents();
+		insertConditionalGameObjectEvents();
 		runStorySequence();
+	}
+
+	private void insertConditionalGameObjectEvents() {
+		if (storySectionInfo.getCurrentStorySection() == null) {
+			return;
+		}
+		List<EventPacket> conditionalGameObjectEvent = storySectionInfo.getCurrentStorySection()
+				.getConditionalGameObjectEvents();
+		if (conditionalGameObjectEvent != null) {
+			for (EventPacket eventPacket : conditionalGameObjectEvent) {
+				eventManager.setGameObjectEventState(eventPacket, EventStateEnum.OPENED);
+			}
+		}
 	}
 
 	private void setNewStorySectionNumber(int storyNumber) {
@@ -50,30 +69,31 @@ public class StorySectionManager {
 		return storySectionInfo.getCurrentSectionNumber();
 	}
 
-	private void insertConditionalEvents() {
+	private void insertConditionalNpcEvents() {
 		if (storySectionInfo.getCurrentStorySection() == null) {
 			return;
 		}
-		List<EventPacket> conditionalEvent = storySectionInfo.getCurrentStorySection().getConditionalEvents();
+		List<EventPacket> conditionalEvent = storySectionInfo.getCurrentStorySection().getConditionalNpcEvents();
 		if (conditionalEvent != null) {
 			for (EventPacket eventPacket : conditionalEvent) {
-				eventManager.getNpcEvent(eventPacket).setEventState(EventStateEnum.OPENED);
+				eventManager.setNpcEventState(eventPacket, EventStateEnum.OPENED);
 			}
 		}
 	}
 
-	public void triggerNextSectionEvent(EventTypeEnum eventType, String... args) {
+	public boolean triggerNextSectionEvent(EventTypeEnum eventType, String... args) {
 		if (getNextSections() != null) {
 			for (StorySectionPacket nextStorySectionPacket : getNextSections()) {
 				if (eventType.equals(nextStorySectionPacket.getEventType())) {
 					NextSectionChecker nextSectionChecker = nextSectionCheckerFactory.getNextSectionChecker(eventType);
 					if (nextSectionChecker.checkNextEvent(nextStorySectionPacket.getEventParameter(), args)) {
 						setNewStorySectionAndPlay(nextStorySectionPacket.getNextSectionNumber());
-						break;
+						return true;
 					}
 				}
 			}
 		}
+		return false;
 	}
 
 	public void insertStorySequence() {
@@ -92,6 +112,7 @@ public class StorySectionManager {
 		Gdx.app.log("StorySectionManager", "runStorySequence");
 		if (!eventSequenceQueue.isEmpty()) {
 			EventPacket polledEventPacket = eventSequenceQueue.poll();
+			positionManager.setCurrentEventPositionType(EventPosition.STORY);
 			eventManager.triggerEvent(EventElementEnum.STORY, polledEventPacket);
 		} else {
 			goCurrentPosition();

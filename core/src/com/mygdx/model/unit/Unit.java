@@ -8,20 +8,37 @@ import com.mygdx.model.battle.Skill;
 import com.mygdx.unitStrategy.BattleStrategy;
 
 public abstract class Unit implements Comparable<Unit> {
-	private BattleStrategy battleStrategy;
-	private String facePath;
-	private String name;
+	protected BattleStrategy battleStrategy;
+	protected String facePath;
+	protected String name;
 	protected Status status;
-	private List<Skill> skills;
-	private int gauge;
-	private int subvalue;
-	private int actingPower;
-	private int preGague;
+	protected Status realStatus;
 
-	private List<Buff> buffList = new ArrayList<Buff>();
+	protected List<Skill> skills;
+	protected int gauge;
+	protected int subvalue;
+	protected int actingPower;
+	protected int preGague;
+	protected int aggro;
+	protected int realAggro;
+	protected float percent;
+	protected int overload;
+	protected float preDecDefense;
+	protected float preIncDefense;
+	protected int preIncAggro;
+
+	protected List<Buff> buffList = new ArrayList<Buff>();
 
 	public BattleStrategy getBattleStrategy() {
 		return battleStrategy;
+	}
+
+	public int getRealAggro() {
+		return realAggro;
+	}
+
+	public void setRealAggro(int realAggro) {
+		this.realAggro = realAggro;
 	}
 
 	public void setBattleStrategy(BattleStrategy battleStrategy) {
@@ -50,7 +67,7 @@ public abstract class Unit implements Comparable<Unit> {
 	}
 
 	/* For Json Work */
-	private ArrayList<String> skillList;
+	protected ArrayList<String> skillList;
 
 	public String getName() {
 		return name;
@@ -152,19 +169,67 @@ public abstract class Unit implements Comparable<Unit> {
 		battleStrategy.skill(this, targetList, skill);
 	}
 
-	public BattleStrategy getAttackStrategy() {
-		return battleStrategy;
-	}
-
-	public void setAttackStrategy(BattleStrategy attackStrategy) {
-		this.battleStrategy = attackStrategy;
-	}
-
 	public List<Skill> getSkills() {
 		return skills;
 	}
 
 	public void setSkills(List<Skill> skills) {
 		this.skills = skills;
+	}
+
+	public int getAggro() {
+		return aggro;
+	}
+
+	public void setAggro(int aggro) {
+		this.aggro = aggro;
+	}
+
+	public float getPercent() {
+		return percent;
+	}
+
+	public void setPercent(float percent) {
+		this.percent = percent;
+	}
+
+	public int getPreIncAggro() {
+		return preIncAggro;
+	}
+
+	public void setPreIncAggro(int preIncAggro) {
+		this.preIncAggro = preIncAggro;
+	}
+
+	public float getPreIncDefense() {
+		return preIncDefense;
+	}
+
+	public void setPreIncDefense(float preIncDefense) {
+		this.preIncDefense = preIncDefense;
+	}
+
+	public float getPreDecDefense() {
+		return preDecDefense;
+	}
+
+	public void setPreDecDefense(float preDecDefense) {
+		this.preDecDefense = preDecDefense;
+	}
+
+	public int getOverload() {
+		return overload;
+	}
+
+	public void setOverload(int overload) {
+		this.overload = overload;
+	}
+
+	public Status getRealStatus() {
+		return realStatus;
+	}
+
+	public void setRealStatus(Status realStatus) {
+		this.realStatus = realStatus;
 	}
 }

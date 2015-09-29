@@ -1,16 +1,11 @@
 package com.mygdx.manager;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.enums.FieldTypeEnum;
 import com.mygdx.model.unit.Monster;
 
 /**
@@ -24,41 +19,20 @@ public class MonsterPickManager {
 	@Autowired
 	private UnitAssets unitAssets;
 	@Autowired
-	private NodeAssets nodeAssets;
-	@Autowired
-	private FieldManager fieldManager;
-	@Autowired
 	private UnitManager unitManager;
 	@Autowired
-	private DungeonManager dungeonManager;
+	private TimeManager timeManager;
 
-	public Monster createMonster() {
-		Monster monster = unitAssets.getMonster(selectMonster());
-		return monster;
+	public Monster createMonsterByName(String Monstername) {
+		Monster selectedMonster = unitAssets.getMonster(Monstername);
+		unitManager.initiateMonster(selectedMonster);
+		return selectedMonster;
 	}
 
-	public Monster createSpecificMoster(String Montername) {
-		Monster monster = unitAssets.getMonster(Montername);
-		return monster;
-	}
-
-	public Monster createMonster(String monsterName) {
-		Monster monster = unitAssets.getMonster(monsterName);
-		unitManager.initiateMonster(monster);
-		return monster;
-	}
-
-	private String selectMonster() {
-		List<String> monsterStrings = null;
-
-		if (fieldManager.isInField()) {
-			FieldTypeEnum fieldType = fieldManager.getFieldType();
-			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
-		} else if (dungeonManager.isInDungeon()) {
-			FieldTypeEnum fieldType = dungeonManager.getMapInfo().getFieldType();
-			monsterStrings = nodeAssets.getMonsterFieldListByFieldType(fieldType);
-		}
-
-		return monsterStrings.get(ThreadLocalRandom.current().nextInt(monsterStrings.size()));
+	public Monster createMonster(List<String> monsterList) {
+		Random random = new Random();
+		random.setSeed(timeManager.getSecondTime());
+		String selectedMonsterName = monsterList.get(random.nextInt(monsterList.size()));
+		return createMonsterByName(selectedMonsterName);
 	}
 }

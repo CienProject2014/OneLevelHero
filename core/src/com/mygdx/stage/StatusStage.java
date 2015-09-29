@@ -50,7 +50,7 @@ public class StatusStage extends BaseOverlapStage {
 	@Autowired
 	private AssetsManager assetsManager;
 	@Autowired
-	private TextureManager textureManager;
+	private transient TextureManager textureManager;
 	private Camera cam;
 
 	private CompositeItem inventoryButton;

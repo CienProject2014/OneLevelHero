@@ -7,17 +7,23 @@ import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.AttackButtonListener;
 import com.mygdx.listener.BackButtonListener;
 import com.mygdx.listener.BuildingButtonListener;
+import com.mygdx.listener.ChoiceGameObjectEventListener;
 import com.mygdx.listener.ChoiceNpcEventListener;
 import com.mygdx.listener.ChoiceOptionListener;
 import com.mygdx.listener.CloseButtonListener;
+import com.mygdx.listener.DungeonDoorButtonListener;
 import com.mygdx.listener.DungeonEntranceButtonListener;
+import com.mygdx.listener.DungeonStairButtonListener;
 import com.mygdx.listener.GameEndListener;
 import com.mygdx.listener.GameObjectButtonListener;
 import com.mygdx.listener.GoBackwardFieldButtonListener;
 import com.mygdx.listener.GoForwardFieldButtonListener;
 import com.mygdx.listener.GoTitleListener;
 import com.mygdx.listener.JumpSectionListener;
+import com.mygdx.listener.LeaveDungeonButtonListener;
+import com.mygdx.listener.LeaveEventElementListener;
 import com.mygdx.listener.LoadListener;
+import com.mygdx.listener.RestButtonListener;
 import com.mygdx.listener.RunAwayListener;
 
 public class ListenerFactory {
@@ -34,6 +40,10 @@ public class ListenerFactory {
 
 	public RunAwayListener getRunAwayListener() {
 		return context.getBean(RunAwayListener.class);
+	}
+
+	public ChoiceGameObjectEventListener getChoiceGameObjectEventListener() {
+		return context.getBean(ChoiceGameObjectEventListener.class);
 	}
 
 	public ChoiceNpcEventListener getChoiceNpcEventListener() {
@@ -53,6 +63,10 @@ public class ListenerFactory {
 
 	public DungeonEntranceButtonListener getDungeonEntranceButtonListener() {
 		return context.getBean(DungeonEntranceButtonListener.class);
+	}
+
+	public DungeonStairButtonListener getDungeonStairButtonListener() {
+		return context.getBean(DungeonStairButtonListener.class);
 	}
 
 	public GoBackwardFieldButtonListener getGoBackwardFieldButtonListener() {
@@ -87,4 +101,19 @@ public class ListenerFactory {
 		return context.getBean(LoadListener.class);
 	}
 
+	public DungeonDoorButtonListener getDungeonDoorButtonListener() {
+		return context.getBean(DungeonDoorButtonListener.class);
+	}
+
+	public LeaveDungeonButtonListener getLeaveDungeonButtonListener() {
+		return context.getBean(LeaveDungeonButtonListener.class);
+	}
+
+	public LeaveEventElementListener getLeaveEventElementListener() {
+		return context.getBean(LeaveEventElementListener.class);
+	}
+
+	public RestButtonListener getRestButtonListener() {
+		return context.getBean(RestButtonListener.class);
+	}
 }

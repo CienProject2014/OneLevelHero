@@ -15,7 +15,7 @@ import com.uwsoft.editor.renderer.Overlap2DStage;
 
 public class BaseOverlapStage extends Overlap2DStage {
 	@Autowired
-	protected Assets assets;
+	protected transient Assets assets;
 	@Autowired
 	protected ScreenFactory screenFactory;
 	@Autowired
@@ -25,8 +25,8 @@ public class BaseOverlapStage extends Overlap2DStage {
 	@Autowired
 	protected PositionManager positionManager;
 
-	protected OrthographicCamera orthographicCamera = new OrthographicCamera(
-			StaticAssets.BASE_WINDOW_WIDTH, StaticAssets.BASE_WINDOW_HEIGHT);
+	protected OrthographicCamera orthographicCamera = new OrthographicCamera(StaticAssets.BASE_WINDOW_WIDTH,
+			StaticAssets.BASE_WINDOW_HEIGHT);
 
 	protected CameraStateEnum cameraState = CameraStateEnum.STATIC;
 
