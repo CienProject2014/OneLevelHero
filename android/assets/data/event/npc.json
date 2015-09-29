@@ -5742,6 +5742,10 @@
     "name": "케인의 아버지",
     "elementPath": "kein_father"
   },
+  "kelen" : {
+  	"name" : "켈렌",
+  	"elementPath" : "kelen"
+  },
   "diarkan": {
     "name": "디아르칸",
     "elementPath": "diarkan"

@@ -67,6 +67,8 @@ public class BuildingStage extends BaseOneLevelStage {
 	private void setBuildingFunction() {
 		if (buildingInfo.getBuildingType().equals(BuildingTypeEnum.INN)) {
 			Table buttonTable = new Table();
+			buttonTable.bottom().left();
+			buttonTable.padLeft(1100).padBottom(500);
 			ImageButton saveButton = new ImageButton(atlasUiAssets.getAtlasUiFile("stay_button_save"));
 			buttonTable.add(saveButton);
 			buttonTable.row();

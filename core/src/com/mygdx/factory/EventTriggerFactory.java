@@ -28,6 +28,7 @@ import com.mygdx.eventTrigger.PlayMusicEventTrigger;
 import com.mygdx.eventTrigger.QuestGetItemEventTrigger;
 import com.mygdx.eventTrigger.QuestHuntMonsterEventTrigger;
 import com.mygdx.eventTrigger.QuitPartyEventTrigger;
+import com.mygdx.eventTrigger.RestInForkEventTrigger;
 import com.mygdx.eventTrigger.RestInNodeEventTrigger;
 import com.mygdx.eventTrigger.SetGameObjectTargetTimeEventTrigger;
 import com.mygdx.eventTrigger.SetNpcTargetTimeEventTrigger;
@@ -81,6 +82,8 @@ public class EventTriggerFactory {
 				return context.getBean(PlayMusicEventTrigger.class);
 			case REST_IN_NODE :
 				return context.getBean(RestInNodeEventTrigger.class);
+			case REST_IN_FORK :
+				return context.getBean(RestInForkEventTrigger.class);
 			case SET_NPC_TARGET_TIME :
 				return context.getBean(SetNpcTargetTimeEventTrigger.class);
 			case SET_GAME_OBJECT_TARGET_TIME :

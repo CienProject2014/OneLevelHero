@@ -919,6 +919,10 @@ battle_kein_big: {
 	class: java.lang.String,
 	value: texture/character/battle_kein_big.png/
 },
+npc_maker: {
+	class: java.lang.String,
+	value: texture/character/npc_maker.png/
+},
 bust_ai_01: {
 	class: java.lang.String,
 	value: texture/character/bust_ai_01.png/
@@ -1371,6 +1375,10 @@ battle_kentaurous_bow_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_kentaurous_bow_small.png/
 },
+battleui_character_turn: {
+	class: java.lang.String,
+	value: texture/ui/battle/battleui_character_turn.png/
+},
 fieldui_back: {
 	class: java.lang.String,
 	value: texture/worldmap/fieldui_back.png/
@@ -1474,6 +1482,10 @@ battle_bortise_big: {
 battle_auroral_unicorn_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_auroral_unicorn_big.png/
+},
+npc_evergnail_01: {
+	class: java.lang.String,
+	value: texture/character/npc_evergnail_01.png/
 },
 battle_ent_small: {
 	class: java.lang.String,
@@ -1763,6 +1775,10 @@ npc_plecha: {
 	class: java.lang.String,
 	value: texture/character/npc_plecha.png/
 },
+bust_kein_coworker_01: {
+	class: java.lang.String,
+	value: texture/character/bust_kein_coworker_01.png/
+},
 bg_kadilla_castle_castlegate: {
 	class: java.lang.String,
 	value: texture/background/bg_kadilla_castle_castlegate.png/
@@ -1986,6 +2002,10 @@ battle_succubus_junior_small: {
 npc_servant_02: {
 	class: java.lang.String,
 	value: texture/character/npc_servant_02.png/
+},
+npc_servant_01: {
+	class: java.lang.String,
+	value: texture/character/npc_servant_01.png/
 },
 battle_berusus_small: {
 	class: java.lang.String,
@@ -3047,13 +3067,13 @@ bg_oberen_03: {
 	class: java.lang.String,
 	value: texture/background/bg_oberen_03.png/
 },
-bg_oberen_02: {
-	class: java.lang.String,
-	value: texture/background/bg_oberen_02.png/
-},
 back_of_sword: {
 	class: java.lang.String,
 	value: texture/animation_sheet/back_of_sword.png/
+},
+bg_oberen_02: {
+	class: java.lang.String,
+	value: texture/background/bg_oberen_02.png/
 },
 battle_elementalfire_small: {
 	class: java.lang.String,

@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 import com.mygdx.stage.BattleStage;
+import com.mygdx.stage.BuildingRestPopupStage;
 import com.mygdx.stage.BuildingStage;
 import com.mygdx.stage.CharacterChangeStage;
 import com.mygdx.stage.CharacterUiStage;
@@ -14,14 +15,15 @@ import com.mygdx.stage.ChatEventStage;
 import com.mygdx.stage.ChoiceEventStage;
 import com.mygdx.stage.ChoiceOptionStage;
 import com.mygdx.stage.CreditStage;
+import com.mygdx.stage.DungeonEntranceRestPopupStage;
 import com.mygdx.stage.DungeonEntranceStage;
 import com.mygdx.stage.DungeonMinimapStage;
 import com.mygdx.stage.DungeonStage;
 import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.FieldStage;
+import com.mygdx.stage.ForkRestPopupStage;
 import com.mygdx.stage.ForkStage;
 import com.mygdx.stage.GameClearStage;
-import com.mygdx.stage.GameObjectPopupStage;
 import com.mygdx.stage.GameObjectStage;
 import com.mygdx.stage.GameOverStage;
 import com.mygdx.stage.GameUiStage;
@@ -48,6 +50,8 @@ public class StageFactory {
 				return context.getBean(BattleStage.class).makeStage();
 			case BUILDING :
 				return context.getBean(BuildingStage.class).makeStage();
+			case BUILDING_REST_POPUP :
+				return context.getBean(BuildingRestPopupStage.class).makeStage();
 			case CHARACTER_CHANGE :
 				return context.getBean(CharacterChangeStage.class).makeStage();
 			case CHARACTER_UI :
@@ -64,12 +68,16 @@ public class StageFactory {
 				return context.getBean(DungeonStage.class).makeStage();
 			case DUNGEON_ENTRANCE :
 				return context.getBean(DungeonEntranceStage.class).makeStage();
+			case DUNGEON_ENTRANCE_REST_POPUP :
+				return context.getBean(DungeonEntranceRestPopupStage.class).makeStage();
 			case DUNGEON_MINIMAP :
 				return context.getBean(DungeonMinimapStage.class).makeStage();
 			case ENCOUNTER :
 				return context.getBean(EncounterStage.class).makeStage();
 			case FORK :
 				return context.getBean(ForkStage.class).makeStage();
+			case FORK_REST_POPUP :
+				return context.getBean(ForkRestPopupStage.class).makeStage();
 			case GAME_CLEAR :
 				return context.getBean(GameClearStage.class).makeStage();
 			case GAME_UI :
@@ -78,8 +86,6 @@ public class StageFactory {
 				return context.getBean(GameOverStage.class).makeStage();
 			case GAME_OBJECT :
 				return context.getBean(GameObjectStage.class).makeStage();
-			case GAME_OBJECT_POPUP :
-				return context.getBean(GameObjectPopupStage.class).makeStage();
 			case GREETING :
 				return context.getBean(GreetingStage.class).makeStage();
 			case LOADING_BAR :

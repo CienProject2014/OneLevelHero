@@ -919,6 +919,10 @@ bg_blackwood_forest_05: {
 	class: java.lang.String,
 	value: texture/background/bg_blackwood_forest_05.png/
 },
+npc_maker: {
+	class: java.lang.String,
+	value: texture/character/npc_maker.png/
+},
 bust_ai_01: {
 	class: java.lang.String,
 	value: texture/character/bust_ai_01.png/
@@ -1367,6 +1371,10 @@ battle_parath_big: {
 	class: java.lang.String,
 	value: texture/character/battle_parath_big.png/
 },
+battleui_character_turn: {
+	class: java.lang.String,
+	value: texture/ui/battle/battleui_character_turn.png/
+},
 battle_kentaurous_bow_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_kentaurous_bow_small.png/
@@ -1470,6 +1478,10 @@ battle_chromat_small: {
 battle_bortise_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_bortise_big.png/
+},
+npc_evergnail_01: {
+	class: java.lang.String,
+	value: texture/character/npc_evergnail_01.png/
 },
 battle_auroral_unicorn_big: {
 	class: java.lang.String,
@@ -1763,6 +1775,10 @@ npc_plecha: {
 	class: java.lang.String,
 	value: texture/character/npc_plecha.png/
 },
+bust_kein_coworker_01: {
+	class: java.lang.String,
+	value: texture/character/bust_kein_coworker_01.png/
+},
 bg_kadilla_castle_castlegate: {
 	class: java.lang.String,
 	value: texture/background/bg_kadilla_castle_castlegate.png/
@@ -1986,6 +2002,10 @@ battle_succubus_junior_small: {
 npc_servant_02: {
 	class: java.lang.String,
 	value: texture/character/npc_servant_02.png/
+},
+npc_servant_01: {
+	class: java.lang.String,
+	value: texture/character/npc_servant_01.png/
 },
 battle_berusus_small: {
 	class: java.lang.String,
