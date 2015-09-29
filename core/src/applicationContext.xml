@@ -146,6 +146,7 @@
 	<bean id="forkStage" class="com.mygdx.stage.ForkStage" scope="prototype"/>
 	<bean id="gameClearStage" class="com.mygdx.stage.GameClearStage" scope="prototype"/>
 	<bean id="gameObjectStage" class="com.mygdx.stage.GameObjectStage" scope="prototype"/>
+	<bean id="gameObjectPopupStage" class="com.mygdx.stage.GameObjectPopupStage" scope="prototype"/>
 	<bean id="gameOverStage" class="com.mygdx.stage.GameOverStage" />
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype" />
 	<bean id="greetingStage" class="com.mygdx.stage.GreetingStage" scope="prototype"/>
@@ -188,6 +189,7 @@
 	<bean id="leaveDungeonButtonListener" class="com.mygdx.listener.LeaveDungeonButtonListener" scope="prototype"/>
 	<bean id="leaveEventElementListener" class="com.mygdx.listener.LeaveEventElementListener" scope="prototype"/>
 	<bean id="loadListener" class="com.mygdx.listener.LoadListener" scope="prototype"/>
+	<bean id="restButtonListener" class="com.mygdx.listener.RestButtonListener" scope="prototype"/>
 	<bean id="runAwayListener" class="com.mygdx.listener.RunAwayListener" scope="prototype"/>
 		
 	<bean id="atlasUiFile" class="com.mygdx.model.jsonModel.AtlasUiFile"/>
@@ -214,6 +216,7 @@
 	<bean id="playMusicEventTrigger" class="com.mygdx.eventTrigger.PlayMusicEventTrigger"/>
 	<bean id="playSoundEventTrigger" class="com.mygdx.eventTrigger.PlaySoundEventTrigger"/>
 	<bean id="quitPartyEventTrigger" class="com.mygdx.eventTrigger.QuitPartyEventTrigger"/>
+	<bean id="restInNodeEventTrigger" class="com.mygdx.eventTrigger.RestInNodeEventTrigger"/>
 	<bean id="setSubNodeTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetSubNodeTargetTimeEventTrigger"/>
 	<bean id="setNpcTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetNpcTargetTimeEventTrigger"/>
 	<bean id="setGameObjectTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetGameObjectTargetTimeEventTrigger"/>

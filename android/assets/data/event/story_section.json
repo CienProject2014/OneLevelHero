@@ -2176,7 +2176,7 @@
           "location": {
             "subNodePath": "cave_of_succubus",
             "floorPath": "cave_of_succubus",
-            "roomLabel": "room_4_8"
+            "roomLabel": "room_5_7"
           },
           "time": {
             "day": 4,
@@ -2190,7 +2190,7 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_succubus",
-            "roomLabel": "room_4_8"
+            "roomLabel": "room_5_7"
           },
           "time": {
             "day": 4,
