@@ -231,9 +231,15 @@ public class BattleManager {
 	}
 
 	public void useSkill(Unit attackUnit, Unit targetUnit, String skillName) {
+		Buff overload = skillAssets.getBuff("overload");
 		Skill skill = skillAssets.getSkill(skillName);
 		ArrayList<Unit> targetList = getTargetList(skill.getSkillTargetType(), attackUnit, targetUnit);
 		attackUnit.getStatus().setCasting(attackUnit.getStatus().getCasting() - skill.getCostCasting());
+
+		if (attackUnit.getStatus().getCasting() == 0) {
+			attackUnit.setOverload(0);
+			attackUnit.getBuffList().remove(overload);
+		}
 		attackUnit.useSkill(targetList, skill);
 		if (attackUnit instanceof Hero) {
 			readyForPlayerAnimation(skillName, (int) (StaticAssets.windowHeight * 0.8f),
@@ -603,6 +609,7 @@ public class BattleManager {
 		for (Unit unit : battleInfo.getUnits()) {
 			unit.setGauge(100);
 			unit.setSubvalue(0);
+			unit.setOverload(0);
 		}
 	}
 

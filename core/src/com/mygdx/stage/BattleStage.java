@@ -181,6 +181,7 @@ public class BattleStage extends BaseOneLevelStage {
 			unit.setGauge(100);
 			unit.setAggro(100);
 			unit.setSubvalue(0);
+			unit.setOverload(0);
 			unit.setActingPower(-24000 / (unit.getStatus().getSpeed() + 300) + 160);
 		}
 		selectedMonster.getStatus().setHp(selectedMonster.getStatus().getMaxHp());

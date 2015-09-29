@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.SkillAssets;
 import com.mygdx.enums.BuffEffectEnum;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.TimeManager;
 import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
@@ -16,12 +18,17 @@ import com.mygdx.model.unit.Unit;
 public class MonsterBattleStrategy implements BattleStrategy {
 
 	@Autowired
+	private transient SkillAssets skillAssets;
+	@Autowired
 	private TimeManager timeManager;
 	@Autowired
-	BattleManager battleManager;
+	private BattleManager battleManager;
+	@Autowired
+	private PartyManager partyManager;
 
 	@Override
 	public void attack(Unit attackMonster, Unit defender, int[][] hitArea) {
+		Buff overload = skillAssets.getBuff("overload");
 		int attackDmg = (int) attackMonster.getStatus().getAttack();
 		int defenseValue = (int) defender.getStatus().getDefense();
 		int defenderHp = defender.getStatus().getHp();
@@ -33,6 +40,24 @@ public class MonsterBattleStrategy implements BattleStrategy {
 			defender.getStatus().setHp(defenderHp - realDmg);
 		} else {
 			defender.getStatus().setHp(0);
+		}
+		if (defender.getStatus().getCasting() > 0) {
+			if (defender.getStatus().getCasting() == 1) {
+				defender.getBuffList().add(overload);
+			} else {
+				defender.getBuffList().remove(overload);
+				defender.getBuffList().add(overload);
+			}
+			defender.setOverload(defender.getOverload() + 1);
+			if (defender.getOverload() == 5) {
+				defender.getStatus().setCasting(0);
+				for (Hero hero : partyManager.getBattleMemberList()) {
+					hero.getStatus().setHp(hero.getStatus().getHp() - defender.getStatus().getCasting() * 10);
+				}
+				defender.setOverload(0);
+				defender.getBuffList().remove(overload);
+
+			}
 		}
 		Gdx.app.log("Monster", attackMonster.getName() + "이(가) " + defender.getName() + "을(를) 공격하였습니다!");
 		battleManager.setText(

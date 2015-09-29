@@ -6,7 +6,7 @@
 		"stackScope" : "5",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"overload"
 		]
 	},
     "overwork" : {
@@ -16,7 +16,7 @@
 		"stackScope" : "1",
 		"buffType" : "debuff",
 		"buffEffectList" : [
-			"block_action"
+			"overwork"
 		]
 	},
 	"burn" : {
@@ -404,6 +404,9 @@
 	"buffEffectList" : [
 		"block_action"
 	   ]
+    },
+    "multi":{
+        "name" : "멀티"
     }
     
 }

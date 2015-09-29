@@ -18,14 +18,13 @@ public abstract class Unit implements Comparable<Unit> {
 	protected int actingPower;
 	protected int preGague;
 	protected int aggro;
-	protected int casting;
 	protected float percent;
-
+	protected int overload;
 	protected float preDecDefense;
 	protected float preIncDefense;
 	protected int preIncAggro;
 
-	private List<Buff> buffList = new ArrayList<Buff>();
+	protected List<Buff> buffList = new ArrayList<Buff>();
 
 	public BattleStrategy getBattleStrategy() {
 		return battleStrategy;
@@ -57,7 +56,7 @@ public abstract class Unit implements Comparable<Unit> {
 	}
 
 	/* For Json Work */
-	private ArrayList<String> skillList;
+	protected ArrayList<String> skillList;
 
 	public String getName() {
 		return name;
@@ -191,14 +190,6 @@ public abstract class Unit implements Comparable<Unit> {
 		this.percent = percent;
 	}
 
-	public int getCasting() {
-		return casting;
-	}
-
-	public void setCasting(int casting) {
-		this.casting = casting;
-	}
-
 	public int getPreIncAggro() {
 		return preIncAggro;
 	}
@@ -221,5 +212,13 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setPreDecDefense(float preDecDefense) {
 		this.preDecDefense = preDecDefense;
+	}
+
+	public int getOverload() {
+		return overload;
+	}
+
+	public void setOverload(int overload) {
+		this.overload = overload;
 	}
 }

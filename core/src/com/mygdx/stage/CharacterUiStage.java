@@ -64,25 +64,32 @@ public class CharacterUiStage extends BaseOneLevelStage {
 			heroStatusBarList.get(i).update();
 			hpLabelList.get(i).setText(heroStatusBarList.get(i).getHp() + "/" + heroStatusBarList.get(i).getMaxHp());
 		}
-		if (battleManager.getBattleState().equals(BattleStateEnum.IN_GAME)) {
-			int i = 0;
-			for (Unit hero : partyManager.getBattleMemberList()) {
-				for (Buff buff : hero.getBuffList()) {
-					if (buff.getBuffPath().equals("buff_en_casting_")) {
-						if (hero.getStatus().getCasting() == 0) {
 
-						} else {
-							Image buffIcon = new Image(textureManager
-									.getTexture(buff.getBuffPath() + String.valueOf(hero.getStatus().getCasting())));
-							buffTableList.get(i).add(buffIcon).width(35).height(35);
-						}
+		int i = 0;
+		for (Unit hero : partyManager.getBattleMemberList()) {
+			for (Buff buff : hero.getBuffList()) {
+				if (buff.getBuffPath().equals("buff_en_casting_")) {
+					if (hero.getStatus().getCasting() == 0) {
+
 					} else {
-						Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath()));
+						Image buffIcon = new Image(textureManager
+								.getTexture(buff.getBuffPath() + String.valueOf(hero.getStatus().getCasting())));
 						buffTableList.get(i).add(buffIcon).width(35).height(35);
 					}
+				} else if (buff.getBuffPath().equals("buff_de_overload")) {
+					if (hero.getOverload() == 0) {
+
+					} else {
+						Image buffIcon = new Image(textureManager
+								.getTexture(buff.getBuffPath() + "_" + String.valueOf(hero.getOverload())));
+						buffTableList.get(i).add(buffIcon).width(35).height(35);
+					}
+				} else {
+					Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath()));
+					buffTableList.get(i).add(buffIcon).width(35).height(35);
 				}
-				i++;
 			}
+			i++;
 		}
 	}
 
@@ -175,6 +182,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		} else {
 			// 일상에서는 스테이터스 창이 보인다.
 			heroImage.addListener(new ClickListener() {
+
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
 					partyManager.setCurrentSelectedHero(battleMemberList.get(index));
