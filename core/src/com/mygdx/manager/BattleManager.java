@@ -607,11 +607,26 @@ public class BattleManager {
 	}
 
 	private void initBattle() {
+		Buff casting = skillAssets.getBuff("casting");
+		Buff overwork = skillAssets.getBuff("overwork");
 		for (Unit unit : battleInfo.getUnits()) {
+
+			ArrayList<Buff> cancelList = new ArrayList<Buff>();
 			unit.setGauge(100);
 			unit.setSubvalue(0);
 			unit.setOverload(0);
+			for (Buff buff : unit.getBuffList()) {
+				if (buff.equals(casting) || buff.equals(overwork)) {
+
+				} else {
+					cancelList.add(buff);
+				}
+			}
+			for (Buff removableBuff : cancelList) {
+				unit.getBuffList().remove(removableBuff);
+			}
 		}
+
 	}
 
 	private boolean isDead(Unit defendUnit) {

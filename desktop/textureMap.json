@@ -1367,6 +1367,10 @@ battle_parath_big: {
 	class: java.lang.String,
 	value: texture/character/battle_parath_big.png/
 },
+battleui_character_turn: {
+	class: java.lang.String,
+	value: texture/ui/battle/battleui_character_turn.png/
+},
 battle_kentaurous_bow_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_kentaurous_bow_small.png/
