@@ -21,6 +21,7 @@ import com.mygdx.stage.EncounterStage;
 import com.mygdx.stage.FieldStage;
 import com.mygdx.stage.ForkStage;
 import com.mygdx.stage.GameClearStage;
+import com.mygdx.stage.GameObjectPopupStage;
 import com.mygdx.stage.GameObjectStage;
 import com.mygdx.stage.GameOverStage;
 import com.mygdx.stage.GameUiStage;
@@ -77,6 +78,8 @@ public class StageFactory {
 				return context.getBean(GameOverStage.class).makeStage();
 			case GAME_OBJECT :
 				return context.getBean(GameObjectStage.class).makeStage();
+			case GAME_OBJECT_POPUP :
+				return context.getBean(GameObjectPopupStage.class).makeStage();
 			case GREETING :
 				return context.getBean(GreetingStage.class).makeStage();
 			case LOADING_BAR :

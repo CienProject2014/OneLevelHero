@@ -4951,7 +4951,7 @@
         "eventType": "set_game_object_target_time",
         "eventParameter": {
           "location": {
-            "npcPath" : "winterfall_portal"
+            "gameObjectPath" : "winterfall_portal"
           },
           "time" : {
             "startHour" : 24,

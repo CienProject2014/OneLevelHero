@@ -23,6 +23,7 @@ import com.mygdx.listener.JumpSectionListener;
 import com.mygdx.listener.LeaveDungeonButtonListener;
 import com.mygdx.listener.LeaveEventElementListener;
 import com.mygdx.listener.LoadListener;
+import com.mygdx.listener.RestButtonListener;
 import com.mygdx.listener.RunAwayListener;
 
 public class ListenerFactory {
@@ -110,5 +111,9 @@ public class ListenerFactory {
 
 	public LeaveEventElementListener getLeaveEventElementListener() {
 		return context.getBean(LeaveEventElementListener.class);
+	}
+
+	public RestButtonListener getRestButtonListener() {
+		return context.getBean(RestButtonListener.class);
 	}
 }

@@ -129,6 +129,7 @@
   },  
   "rest": {
     "name": "회복하기",
+    "elementPath" : "rest",
     "objectType" : "function",
     "events": {
       "1": {

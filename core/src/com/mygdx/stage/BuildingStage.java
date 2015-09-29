@@ -28,7 +28,6 @@ import com.mygdx.model.event.GameObject;
 import com.mygdx.model.event.NPC;
 import com.mygdx.model.location.Building;
 import com.mygdx.nextSectionChecker.ArgumentChecker;
-import com.mygdx.popup.GameObjectPopup;
 import com.mygdx.screen.BuildingScreen;
 
 public class BuildingStage extends BaseOneLevelStage {
@@ -53,18 +52,15 @@ public class BuildingStage extends BaseOneLevelStage {
 
 	private static final int GAME_OBJECT_POSITION[][] = {{80, 45}, {450, 45}, {820, 45}, {1210, 45}, {1570, 45}};
 	private Building buildingInfo;
-	private GameObjectPopup gameObjectPopup;
 
 	public Stage makeStage() {
 		super.makeStage();
-		cameraManager.stretchToDevice(this);
 		buildingInfo = nodeAssets.getVillageByPath(positionManager.getCurrentNodePath()).getBuilding()
 				.get(positionManager.getCurrentSubNodePath());
-		makeBuildingScene();
+		setBackground();
 		setBuildingFunction();
 		setNpcList();
 		setGameObject();
-		this.addActor(tableStack);
 		return this;
 	}
 
@@ -89,18 +85,14 @@ public class BuildingStage extends BaseOneLevelStage {
 			restButton.addListener(new SimpleTouchListener() {
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 					timeManager.plusMinute(5);
-					gameObjectPopup = new GameObjectPopup();
-					gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
-					gameObjectPopup.setListenerFactory(listenerFactory);
-					gameObjectPopup.setConstantsAssets(constantsAssets);
-					addActor(gameObjectPopup);
-					gameObjectPopup.setVisible(true);
+					GameObject gameObject = eventManager.getEventInfo().getGameObjectMap().get("rest");
+					eventManager.setCurrentGameObject(gameObject);
+					BuildingScreen.isClickPopup = true;
 				}
 			});
 			tableStack.add(buttonTable);
 		}
 	}
-
 	private void setGameObject() {
 		cameraManager.stretchToDevice(this);
 		Table buttonTable = new Table();
@@ -145,7 +137,7 @@ public class BuildingStage extends BaseOneLevelStage {
 		}
 	}
 
-	private void makeBuildingScene() {
+	private void setBackground() {
 		Table backgroundTable = new Table();
 		backgroundTable.setWidth(StaticAssets.BASE_WINDOW_WIDTH);
 		backgroundTable.setHeight(StaticAssets.BASE_WINDOW_HEIGHT);
@@ -158,7 +150,7 @@ public class BuildingStage extends BaseOneLevelStage {
 					textureManager.getBackgroundTexture(buildingInfo.getSubNodePath())));
 		}
 		backgroundTable.setBackground(backgroundImage);
-		addActor(backgroundTable);
+		tableStack.add(backgroundTable);
 	}
 
 	private void setNpcList() {
