@@ -38,6 +38,9 @@ public class PartyManager {
 	}
 
 	public void setFatigue(int fatigue) {
+		if (fatigue < 0) {
+			fatigue = 0;
+		}
 		partyInfo.setFatigue(fatigue);
 	}
 
@@ -90,8 +93,8 @@ public class PartyManager {
 			}
 		}
 		// 혹시 버그가있다면..
-		return partyInfo.getBattleMemberList()
-				.get(ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
+		return partyInfo.getBattleMemberList().get(
+				ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
 	}
 
 	public void calculateLevel() {

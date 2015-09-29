@@ -4,7 +4,6 @@ import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,9 +20,11 @@ import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.listener.DungeonEntranceButtonListener;
 import com.mygdx.manager.DungeonManager;
+import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
+import com.mygdx.model.event.GameObject;
 import com.mygdx.model.location.DungeonEntrance;
 import com.mygdx.model.location.NodeConnection;
 import com.mygdx.screen.DungeonEntranceScreen;
@@ -38,6 +39,8 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 	private PartyManager partymanager;
 	@Autowired
 	private transient TextureManager textureManager;
+	@Autowired
+	private transient EventManager eventManager;
 	@Autowired
 	private NodeAssets nodeAssets;
 	@Autowired
@@ -92,9 +95,11 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 		restButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				partymanager.setFatigue(0);
-				partymanager.healAllHero();
-				Gdx.app.debug("DungeonEntranceStage", "잘 쉬었도다...");
+				timeManager.plusMinute(5);
+				GameObject gameObject = eventManager.getEventInfo().getGameObjectMap().get("rest");
+				eventManager.setCurrentGameObject(gameObject);
+				DungeonEntranceScreen.isClickPopup = true;
+
 			}
 		});
 

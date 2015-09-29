@@ -15,10 +15,11 @@ import com.mygdx.enums.StageEnum;
 public class DungeonEntranceScreen extends BaseScreen {
 	public static boolean isInSave;
 	public static boolean showLoadStage;
+	public static boolean isClickPopup;
 	private Stage dungeonEntranceStage;
 	private Stage gameUiStage;
 	private Stage characterUiStage;
-	private Stage saveStage;
+	private Stage saveStage, gameObjectPopupStage;
 
 	@Override
 	public void render(float delta) {
@@ -36,11 +37,15 @@ public class DungeonEntranceScreen extends BaseScreen {
 		if (showLoadStage) {
 			loadPopupStage.draw();
 		}
+		if (isClickPopup) {
+			gameObjectPopupStage.draw();
+		}
 		// 카메라를 지속적으로 업데이트 해준다.
 	}
 
 	@Override
 	public void show() {
+		gameObjectPopupStage = stageFactory.makeStage(StageEnum.DUNGEON_ENTRANCE_REST_POPUP);
 		dungeonEntranceStage = stageFactory.makeStage(StageEnum.DUNGEON_ENTRANCE);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
@@ -65,6 +70,9 @@ public class DungeonEntranceScreen extends BaseScreen {
 		}
 		if (isInSave) {
 			multiplexer.addProcessor(0, saveStage);
+		}
+		if (isClickPopup) {
+			multiplexer.addProcessor(0, gameObjectPopupStage);
 		}
 		// 멀티 플렉서에 인풋 프로세서를 할당하게 되면 멀티 플렉서 안에 든 모든 스테이지의 인풋을 처리할 수 있다.
 		Gdx.input.setInputProcessor(multiplexer);

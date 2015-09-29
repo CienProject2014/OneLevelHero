@@ -26,7 +26,7 @@ public class PositionEnum {
 	}
 
 	public enum LocatePosition {
-		NODE("node"), SUB_NODE("sub_node"), FIELD("field"), DUNGEON("dungeon");
+		NODE("node"), SUB_NODE("sub_node"), FIELD("field"), DUNGEON("dungeon"), FORK("fork");
 
 		private String positionEnumString;
 
