@@ -21,6 +21,8 @@ public class BuildingScreen extends BaseScreen {
 		setInputProcessor();
 		buildingStage.draw();
 		gameUiStage.draw();
+		buildingStage.getCamera().update();
+		gameUiStage.act(delta);
 		if (isInSave) {
 			saveStage.draw();
 		}
@@ -30,13 +32,12 @@ public class BuildingScreen extends BaseScreen {
 		if (isClickPopup) {
 			gameObjectPopupStage.draw();
 		}
-		gameUiStage.act(delta);
 
 	}
 
 	@Override
 	public void show() {
-		gameObjectPopupStage = stageFactory.makeStage(StageEnum.GAME_OBJECT_POPUP);
+		gameObjectPopupStage = stageFactory.makeStage(StageEnum.BUILDING_REST_POPUP);
 		buildingStage = stageFactory.makeStage(StageEnum.BUILDING);
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		saveStage = stageFactory.makeStage(StageEnum.SAVE);

@@ -154,7 +154,33 @@
       }
     }
   },
-  
+  "rest_in_fork": {
+    "name": "회복하기",
+    "elementPath" : "rest_in_fork",
+    "objectType" : "function",
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "4시간이 흐르고 파티원의 체력 전부와 피로도 일부가 회복되었습니다.",
+              "characterPath": "nothing_image",
+              "faceNumber":"01",
+              "backgroundPath": "elven_forest"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "rest_in_fork",
+            "rewardState": "always_open"
+          }
+        ]
+      }
+    }
+  },
   "blackwood_jar": {
     "name": "항아리",
     "objectType" : "pressed",

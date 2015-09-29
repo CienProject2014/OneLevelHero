@@ -15,10 +15,14 @@ import com.mygdx.assets.WorldMapAssets;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.ArrowButtonListener;
 import com.mygdx.manager.AssetsManager;
+import com.mygdx.manager.EventManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.PositionManager;
+import com.mygdx.manager.TimeManager;
+import com.mygdx.model.event.GameObject;
 import com.mygdx.model.location.Fork;
 import com.mygdx.model.location.NodeConnection;
+import com.mygdx.screen.ForkScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 
 /**
@@ -26,7 +30,10 @@ import com.uwsoft.editor.renderer.actor.CompositeItem;
  * 
  */
 public class ForkStage extends BaseOverlapStage {
-
+	@Autowired
+	private TimeManager timeManager;
+	@Autowired
+	private EventManager eventManager;
 	@Autowired
 	private NodeAssets nodeAssets;
 	@Autowired
@@ -76,16 +83,17 @@ public class ForkStage extends BaseOverlapStage {
 		saveButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				Gdx.app.debug("DungeonEntranceStage", "게임이 저장되었다...");
+				ForkScreen.isInSave = true;
 			}
 		});
 
 		restButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				partymanager.setFatigue(0);
-				partymanager.healAllHero();
-				Gdx.app.debug("DungeonEntranceStage", "잘 쉬었도다...");
+				timeManager.plusMinute(5);
+				GameObject gameObject = eventManager.getEventInfo().getGameObjectMap().get("rest_in_fork");
+				eventManager.setCurrentGameObject(gameObject);
+				ForkScreen.isClickPopup = true;
 			}
 		});
 		String currentNode = positionManager.getCurrentNodePath();

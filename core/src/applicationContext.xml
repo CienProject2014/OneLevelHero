@@ -125,6 +125,7 @@
 	</bean>
 	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage"
 		scope="prototype"/>
+	<bean id="buildingRestPopupStage" class="com.mygdx.stage.BuildingRestPopupStage" scope="prototype"/>
 	<bean id="characterUiStage" class="com.mygdx.stage.CharacterUiStage"
 		scope="prototype"/>
 	<bean id="creditStage" class="com.mygdx.stage.CreditStage"
@@ -133,6 +134,7 @@
 		scope="prototype"/>
 	<bean id="dungeonEntranceStage" class="com.mygdx.stage.DungeonEntranceStage"
 		scope="prototype" />
+	<bean id="dungeonEntranceRestPopupStage" class="com.mygdx.stage.DungeonEntranceRestPopupStage" scope="prototype"/>
 	<bean id="dungeonMinimapStage" class="com.mygdx.stage.DungeonMinimapStage" scope="prototype"/>
 	<bean id="encounterStage" class="com.mygdx.stage.EncounterStage"
 		scope="prototype"/>
@@ -144,9 +146,9 @@
 		scope="prototype"/>
 	<bean id="fieldStage" class="com.mygdx.stage.FieldStage" scope="prototype"/>
 	<bean id="forkStage" class="com.mygdx.stage.ForkStage" scope="prototype"/>
+	<bean id="forkRestPopupStage" class="com.mygdx.stage.ForkRestPopupStage" scope="prototype"/>
 	<bean id="gameClearStage" class="com.mygdx.stage.GameClearStage" scope="prototype"/>
 	<bean id="gameObjectStage" class="com.mygdx.stage.GameObjectStage" scope="prototype"/>
-	<bean id="gameObjectPopupStage" class="com.mygdx.stage.GameObjectPopupStage" scope="prototype"/>
 	<bean id="gameOverStage" class="com.mygdx.stage.GameOverStage" />
 	<bean id="gameUiStage" class="com.mygdx.stage.GameUiStage" scope="prototype" />
 	<bean id="greetingStage" class="com.mygdx.stage.GreetingStage" scope="prototype"/>
@@ -217,6 +219,7 @@
 	<bean id="playSoundEventTrigger" class="com.mygdx.eventTrigger.PlaySoundEventTrigger"/>
 	<bean id="quitPartyEventTrigger" class="com.mygdx.eventTrigger.QuitPartyEventTrigger"/>
 	<bean id="restInNodeEventTrigger" class="com.mygdx.eventTrigger.RestInNodeEventTrigger"/>
+	<bean id="restInForkEventTrigger" class="com.mygdx.eventTrigger.RestInForkEventTrigger"/>
 	<bean id="setSubNodeTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetSubNodeTargetTimeEventTrigger"/>
 	<bean id="setNpcTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetNpcTargetTimeEventTrigger"/>
 	<bean id="setGameObjectTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetGameObjectTargetTimeEventTrigger"/>

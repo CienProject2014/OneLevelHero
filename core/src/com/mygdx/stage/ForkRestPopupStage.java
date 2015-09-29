@@ -19,11 +19,12 @@ import com.mygdx.assets.StaticAssets;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.listener.RestButtonListener;
 import com.mygdx.manager.EventManager;
+import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.TextureManager;
-import com.mygdx.screen.BuildingScreen;
+import com.mygdx.screen.ForkScreen;
 
-public class GameObjectPopupStage extends BaseOneLevelStage {
+public class ForkRestPopupStage extends BaseOneLevelStage {
 	@Autowired
 	private AtlasUiAssets atlasUiAssets;
 	@Autowired
@@ -32,6 +33,8 @@ public class GameObjectPopupStage extends BaseOneLevelStage {
 	private EventManager eventManager;
 	@Autowired
 	private TextureManager textureManager;
+	@Autowired
+	private PositionManager positionManager;
 	private ImageButton okayButton, closeButton;
 	private Label questionLabel;
 	private ImageButton popupImage;
@@ -64,12 +67,13 @@ public class GameObjectPopupStage extends BaseOneLevelStage {
 				atlasUiAssets.getAtlasUiFile("popupui_acbutton_no"));
 		// closeButton.addListener();
 		RestButtonListener restButtonListener = listenerFactory.getRestButtonListener();
+		restButtonListener.setPosition("fork");
 		okayButton.addListener(restButtonListener);
 		closeButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				soundManager.playClickSound();
-				BuildingScreen.isClickPopup = false;
+				ForkScreen.isClickPopup = false;
 			}
 		});
 		Table buttonTable = new Table();
