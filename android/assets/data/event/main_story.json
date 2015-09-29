@@ -47,15 +47,6 @@
       },
       "3": {
         "eventState": "not_opened",
-        "eventType": "play_music",
-        "eventParameter": {
-          "music" : {
-          	"musicPath": "fights"
-          }          
-        }
-      },
-      "4": {
-        "eventState": "not_opened",
         "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
@@ -88,12 +79,21 @@
           ]
         }
       },
+      "4": {
+        "eventState": "not_opened",
+        "eventType": "play_music",
+        "eventParameter": {
+          "music" : {
+          	"musicPath": "fights"
+          }          
+        }
+      },
       "5": {
         "eventState": "not_opened",
         "eventType": "start_battle",
         "eventParameter": {
           "battle": {
-            "targetMonster": "mawang_01",
+            "targetMonster": "mawang_00",
             "backgroundPath": "devil_castle_06"
           }
         }
@@ -138,7 +138,7 @@
         "eventType": "start_battle",
         "eventParameter": {
           "battle": {
-            "targetMonster": "mawang_01",
+            "targetMonster": "mawang_00",
             "backgroundPath": "devil_castle_06"
           }
         }
@@ -156,13 +156,13 @@
               "backgroundPath": "devil_castle_06"
             },
             {
-              "script": "마법을 사용하세요.",
+              "script": "캐스팅을 사용하세요.",
               "characterPath": "nothing_image",
               "faceNumber": "01",
               "backgroundPath": "tutorial_04"
             },
             {
-              "script": "마법을 사용하세요.",
+              "script": "캐스팅을 사용하세요.",
               "characterPath": "nothing_image",
               "faceNumber": "01",
               "backgroundPath": "tutorial_05"
@@ -175,7 +175,7 @@
         "eventType": "start_battle",
         "eventParameter": {
           "battle": {
-            "targetMonster": "mawang_01",
+            "targetMonster": "mawang_00",
             "backgroundPath": "devil_castle_06"
           }
         }
@@ -219,7 +219,7 @@
         "eventType": "start_battle",
         "eventParameter": {
           "battle": {
-            "targetMonster": "mawang_01",
+            "targetMonster": "mawang_00",
             "backgroundPath": "devil_castle_06"
           }
         }
@@ -680,6 +680,13 @@
               "faceNumber": "07",
               "speakerPosition": "right",
               "backgroundPath": "cobweb_02"
+            },
+            {
+              "script": "카딜라 성으로 가려면 레드로즈 성쪽으로 나가면 되요.",
+              "characterPath": "parath",
+              "faceNumber": "07",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_02"
             }
           ]
         }
@@ -711,7 +718,7 @@
               "backgroundPath": "cobweb_02"
             },
             {
-              "script": "당연하지!! 수정협곡은 에…그러니깐…어디로 가면 되는 거냐면…...",
+              "script": "당연하지!! 수정협곡은 에…그러니깐…어디로 가면 되는 거냐면…",
               "characterPath": "yongsa",
               "speakerPosition": "right",
               "faceNumber": "01",
@@ -725,7 +732,7 @@
               "backgroundPath": "cobweb_02"
             },
             {
-              "script": "하아…..따라오세요",
+              "script": "하아… 윈터폴 방향으로 나가야 하잖아요.",
               "characterPath": "parath",
               "speakerPosition": "left",
               "faceNumber": "09",
@@ -768,7 +775,7 @@
               "backgroundPath": "cobweb_02"
             },
             {
-              "script": "당연하지!! 바이칼 성은 에…그러니깐…어디로 가면 되는 거냐면…...",
+              "script": "당연하지!! 바이칼 성은 에…그러니깐…어디로 가면 되는 거냐면…",
               "characterPath": "yongsa",
               "faceNumber": "01",
               "speakerPosition": "right",
@@ -782,7 +789,7 @@
               "backgroundPath": "cobweb_02"
             },
             {
-              "script": "하아…..따라오세요",
+              "script": "하아… 미들릿지 방향으로 나가야 하잖아요.",
               "characterPath": "parath",
               "speakerPosition": "left",
               "faceNumber": "09",
@@ -823,7 +830,7 @@
               "backgroundPath": "cobweb_02"
             },
             {
-              "script": "당연하지!! 레드로즈 성은 에…그러니깐…어디로 가면 되는 거냐면…...",
+              "script": "당연하지!! 레드로즈 성은 에…그러니깐…어디로 가면 되는 거냐면…",
               "characterPath": "yongsa",
               "faceNumber": "01",
               "speakerPosition": "right",
@@ -837,7 +844,7 @@
               "backgroundPath": "cobweb_02"
             },
             {
-              "script": "하아…..따라오세요",
+              "script": "하아… 남쪽에 있는 레드로즈 성 방향으로 나가야 하잖아요.",
               "characterPath": "parath",
               "speakerPosition": "left",
               "faceNumber": "09",
@@ -1895,6 +1902,13 @@
               "speakerPosition": "left",
               "backgroundPath": "crystallized_valley_03",
               "script": "용사님!!!"
+            },
+            {
+              "script": "홀랜드의 충고에 귀를 기울이지 않아 빙룡에게 죽임을 당했다.",
+              "speakerPosition": "left",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "backgroundPath": "crystallized_valley_03"
             }
           ]
         }
@@ -3341,6 +3355,13 @@
               "speakerPosition": "right",
               "backgroundPath": "cave_of_succubus_02",
               "script": "아… 안돼… 파라스!!"
+            },
+            {
+              "script": "너무 늦게 도착하여 파라스가 죽어 있었다.",
+              "speakerPosition": "left",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "backgroundPath": "cave_of_succubus_02"
             }
           ]
         }
@@ -4900,6 +4921,13 @@
               "speakerPosition": "right",
               "backgroundPath": "crystallized_valley_03",
               "script": "콥웨브쪽으로 가야했는데 실수했네요."
+            },
+            {
+              "script": "이상한 방향으로 도망쳐서 빙룡에게 공격당했다.",
+              "speakerPosition": "left",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "backgroundPath": "crystallized_valley_03"
             }
           ]
         }
@@ -4907,6 +4935,29 @@
       "74": {
         "eventState": "not_opened",
         "eventType": "game_over"
+      },
+      "100": {
+        "eventState": "not_opened",
+        "eventType": "close_game_object_event",
+        "eventParameter": {
+          "eventPacket" : {
+            "eventElement" : "portal_25_02",
+            "eventNumber" : 1
+          }
+        }
+      },
+      "101": {
+        "eventState": "not_opened",
+        "eventType": "set_game_object_target_time",
+        "eventParameter": {
+          "location": {
+            "npcPath" : "winterfall_portal"
+          },
+          "time" : {
+            "startHour" : 24,
+            "endHour" : 24
+          }
+        }
       }
     }
   },
@@ -5021,14 +5072,14 @@
             {
               "script": "아이고 어떡해, 얼마 전까지만 해도 있으셨는데.",
               "speakerPosition": "left",
-              "characterPath": "resident",
+              "characterPath": "noel",
               "faceNumber": "01",
               "backgroundPath": "middle_ridge_03"
             },
             {
               "script": "조금 일찍 오시기 그러셨어요. 아마 한달 쯤 뒤에나 돌아올 거에요.",
               "speakerPosition": "left",
-              "characterPath": "resident",
+              "characterPath": "noel",
               "faceNumber": "01",
               "backgroundPath": "middle_ridge_03"
             },
@@ -5058,6 +5109,13 @@
               "speakerPosition": "right",
               "characterPath": "parath",
               "faceNumber": "08",
+              "backgroundPath": "middle_ridge_03"
+            },
+            {
+              "script": "저주 해제에 대한 힌트를 얻을 수 없게 되었다.",
+              "speakerPosition": "left",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
               "backgroundPath": "middle_ridge_03"
             }
           ]
@@ -6185,6 +6243,13 @@
               "speakerPosition": "left",
               "characterPath": "kein",
               "faceNumber": "02",
+              "backgroundPath": "golden_lake_06"
+            },
+            {
+              "script": "너무 빨리 도착하여 동료들이 도와주러 오지 못했다.",
+              "speakerPosition": "left",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
               "backgroundPath": "golden_lake_06"
             }
           ]
@@ -8438,6 +8503,13 @@
               "characterPath": "yongsa",
               "faceNumber": "04",
               "backgroundPath": "middle_ridge_02"
+            },
+            {
+              "script": "용사가 미쳤습니다.",
+              "speakerPosition": "left",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "backgroundPath": "middle_ridge_02"
             }
           ]
         }
@@ -8616,6 +8688,13 @@
               "speakerPosition": "left",
               "characterPath": "yongsa",
               "faceNumber": "06",
+              "backgroundPath": "devil_castle_06"
+            },
+            {
+              "script": "용사가 자신의 역할을 망각했군요.",
+              "speakerPosition": "left",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
               "backgroundPath": "devil_castle_06"
             }
           ]

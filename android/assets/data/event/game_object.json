@@ -1,7 +1,163 @@
 {
+  "save": {
+    "name": "저장하기",
+    "objectType" : "function",
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "저장되었습니다.",
+              "characterPath": "nothing_image",
+              "faceNumber":"01",
+              "backgroundPath": "blackwood_inn"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "save",
+            "rewardState": "not_opened"
+          }
+        ]
+      }
+    }
+  },  "portal_25_01":{
+    "name": "수정의 제단 포탈",
+    "objectType" : "pressed",
+    "facePath" : "portal",
+    "elementPath" : "portal_25_01",
+    "events": {
+      "1": {
+        "eventTitle": "들어간다",
+        "eventState": "always_open",
+        "eventType": "move_sub_node",
+        "eventParameter": {
+          "location": {
+            "nodePath":"winterfall",
+            "subNodePath": "winterfall_dome"
+          }
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "수정의 제단으로 통하는 포탈이다."
+    ]
+  },
+  "portal_25_02":{
+    "name": "네펠의 포탈",
+    "objectType" : "pressed",
+    "facePath" : "portal",
+    "elementPath" : "portal_25_02",
+    "events": {
+      "1": {
+        "eventTitle": "들어간다",
+        "eventState": "always_open",
+        "eventType": "move_dungeon_room",
+        "eventParameter": {
+          "location": {
+            "subNodePath": "crystallized_valley",
+            "floorPath" : "crystallized_valley",
+            "roomLabel" : "room_5_5"
+          }
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      },
+     "2": {
+        "eventTitle": "들어간다",
+        "eventState": "not_opened",
+        "eventType": "move_dungeon_room",
+        "eventParameter": {
+          "location": {
+            "subNodePath": "crystallized_valley",
+            "floorPath" : "crystallized_valley",
+            "roomLabel" : "room_5_5"
+          }
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "npcPath" : "portal_25_02"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "네펠이 만들어 둔 포탈이다."
+    ]
+  },  
+  "rest": {
+    "name": "회복하기",
+    "objectType" : "function",
+    "events": {
+      "1": {
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "4시간이 흐르고 파티원의 체력과 피로도가 모두 회복되었습니다.",
+              "characterPath": "nothing_image",
+              "faceNumber":"01",
+              "backgroundPath": "blackwood_inn"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "rest_in_node",
+            "rewardState": "always_open"
+          }
+        ]
+      }
+    }
+  },
+  
   "blackwood_jar": {
     "name": "항아리",
     "objectType" : "pressed",
+    "elementPath" : "blackwood_jar",
     "facePath" : "jar",
     "events": {
       "1": {
@@ -491,10 +647,12 @@
       "고풍스럽게 느껴지는 항아리다."
     ]
   },
+  
   "cobweb_anvil":{
     "name": "모루",
     "objectType" : "pressed",
     "facePath" : "anvil",
+    "elementPath" : "cobweb_anvil",
     "events": {
       "1": {
         "eventTitle": "만진다",
@@ -535,10 +693,12 @@
       "열기가 느껴지는 모루다."
     ]
   },
+  
   "oberon_box_01":{
     "name": "상자",
     "objectType" : "pressed",
-    "facePath" : "anvil",
+    "facePath" : "box",
+    "elementPath" : "oberon_box_01",
     "events": {
       "1": {
         "eventTitle": "연다",
@@ -584,10 +744,47 @@
                 "itemCount" : 3
               }
             }
+          },
+          {
+            "rewardType": "always_open_game_object_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "oberon_box_01",
+                "eventNumber" : 2
+              }
+            }
           }
         ]
       },
       "2": {
+        "eventTitle": "연다",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "비어있다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "oberon_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      },
+      "3": {
         "eventTitle": "부순다",
         "eventState": "always_open",
         "eventType": "chat",
@@ -602,14 +799,14 @@
             },
             {
               "script": "갑자기 남의 집 물건을 부수다니...",
-              "characterPath": "mia_and_ai",
+              "characterPath": "mia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
             },
             {
               "script": "당장 나가주세요!",
-              "characterPath": "mia_and_ai",
+              "characterPath": "ai",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
@@ -683,13 +880,15 @@
       }
     },
     "greetingMessages": [
-      "열기가 느껴지는 모루다."
+      "상자다."
     ]
   },
-  "redrose_caslte_snack":{
+  
+  "redrose_castle_snack":{
     "name": "갓 구운 과자",
     "objectType" : "pressed",
     "facePath" : "snack",
+    "elementPath" : "redrose_castle_snack",
     "events": {
       "1": {
         "eventTitle": "먹는다",
@@ -725,11 +924,21 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "location": {
-                  "gameObjectPath" : "redrose_caslte_snack"
+                  "gameObjectPath" : "redrose_castle_snack"
               },
               "time" : {
                 "startHour" : 24,
                 "endHour" : 24
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "redrose_castle",
+                "subNodePath":"redrose_castle_house_01"
               }
             }
           }
@@ -780,7 +989,7 @@
             "rewardParameter": {
               "location": {
                 "nodePath": "redrose_castle",
-                "subNodePath":"redrose_caslte_house_01"
+                "subNodePath":"redrose_castle_house_01"
               }
             }
           },
@@ -819,7 +1028,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "location": {
-                  "gameObjectPath" : "redrose_caslte_snack"
+                  "gameObjectPath" : "redrose_castle_snack"
               },
               "time" : {
                 "startHour" : 24,
@@ -834,10 +1043,11 @@
       "갓 구워서 맛있어 보이는 과자다."
     ]
   },
-  "redrose_caslte_box_01":{
+  "redrose_castle_box_01":{
     "name": "상자",
     "objectType" : "pressed",
-    "facePath" : "snack",
+    "facePath" : "box",
+    "elementPath" : "redrose_castle_box_01",
     "events": {
       "1": {
         "eventTitle": "연다",
@@ -880,14 +1090,14 @@
               "backgroundPath": "redrose_castle_house"
             },
             {
-              "script": "자네 지금 뭐 하는 건가! 완전 날강도가 따로 없구먼!",
+              "script": "자네 지금 뭐 하는 건가! 완전 날강도가 따로 없네!",
               "characterPath": "nia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "redrose_castle_house"
             },
             {
-              "script": "당장 나가게!",
+              "script": "당장 나가요!",
               "characterPath": "nia",
               "faceNumber": "01",
               "speakerPosition": "left",
@@ -911,7 +1121,7 @@
             "rewardParameter": {
               "location": {
                 "nodePath": "redrose_castle",
-                "subNodePath":"redrose_caslte_house_02"
+                "subNodePath":"redrose_castle_house_02"
               }
             }
           },
@@ -980,7 +1190,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "location": {
-                  "gameObjectPath" : "redrose_caslte_box_01"
+                  "gameObjectPath" : "redrose_castle_box_01"
               },
               "time" : {
                 "startHour" : 24,
@@ -992,65 +1202,230 @@
       }
     },
     "greetingMessages": [
-      "갓 구워서 맛있어 보이는 과자다."
+      "상자다."
     ]
   },
-  "save": {
-    "name": "저장하기",
-    "objectType" : "function",
+  "redrose_castle_box_02":{
+    "name": "상자",
+    "objectType" : "pressed",
+    "facePath" : "box",
+    "elementPath" : "redrose_castle_box_02",
     "events": {
       "1": {
-        "eventState": "always_open",
+        "eventTitle": "연다",
+        "eventState": "opened",
         "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "저장되었습니다.",
+              "script": "마법의 정석을 얻었다.",
               "characterPath": "nothing_image",
-              "faceNumber":"01",
-              "backgroundPath": "blackwood_inn"
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_cathedral"
             }
           ]
         },
         "rewards": [
           {
-            "rewardType": "save",
-            "rewardState": "not_opened"
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "magic_procedure",
+                "itemCount" : 1
+              }
+            }
+          },
+          {
+            "rewardType": "close_game_object_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "redrose_castle_box_02",
+                "eventNumber" : 3
+              }
+            }
+          },
+          {
+            "rewardType": "open_game_object_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "redrose_castle_box_02",
+                "eventNumber" : 4
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_game_object_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "redrose_castle_box_02",
+                "eventNumber" : 2
+              }
+            }
           }
         ]
-      }
-    }
-  },
-  "rest": {
-    "name": "회복하기",
-    "objectType" : "function",
-    "events": {
-      "1": {
-        "eventState": "always_open",
+      },
+      "2": {
+        "eventTitle": "연다",
+        "eventState": "not_opened",
         "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "4시간이 흐르고 파티원의 체력과 피로도가 모두 회복되었습니다.",
+              "script": "비어있다.",
               "characterPath": "nothing_image",
-              "faceNumber":"01",
-              "backgroundPath": "blackwood_inn"
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_cathedral"
             }
           ]
         },
         "rewards": [
           {
-            "rewardType": "rest_in_node",
-            "rewardState": "always_open"
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      },
+      "3": {
+        "eventTitle": "부순다",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "상자를 부수고 마법의 정석을 얻었다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_cathedral"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "redrose_castle",
+                "subNodePath":"redrose_castle_cathedral"
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "magic_procedure",
+                "itemCount" : 1
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                  "gameObjectPath" : "redrose_castle_box_02"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          }
+        ]
+      },
+      "4": {
+        "eventTitle": "부순다",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "상자를 부셨지만 아무 것도 나오지 않았다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "redrose_castle_cathedral"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "redrose_castle",
+                "subNodePath":"redrose_castle_cathedral"
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                  "gameObjectPath" : "redrose_castle_box_02"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
           }
         ]
       }
-    }
+    },
+    "greetingMessages": [
+      "상자다."
+    ]
   },
+  
   "middle_ridge_drawer": {
     "name": "서랍장",
     "objectType" : "pressed",
-    "facePath": "middle_ridge_drawer",
+    "facePath" : "drawer",
+    "elementPath": "middle_ridge_drawer",
     "events": {
       "1": {
         "eventTitle": "첫 번째 서랍",
@@ -1081,7 +1456,7 @@
       },
       "2": {
         "eventTitle": "두 번째 서랍",
-        "eventState": "opened",
+        "eventState": "always_open",
         "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
@@ -1304,6 +1679,778 @@
     },
     "greetingMessages": [
       "서랍이다."
+    ]
+  },
+  "middle_ridge_vase":{
+    "name": "꽃병",
+    "objectType" : "pressed",
+    "facePath" : "vase",
+    "elementPath" : "middle_ridge_vase",
+    "events": {
+      "1": {
+        "eventTitle": "꽃을 흔든다.",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "꽃을 흔들어 부들 꽃가루를 2개 얻었다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_inn"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "bulrush",
+                "itemCount" : 2
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_game_object_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "middle_ridge_vase",
+                "eventNumber" : 2
+              }
+            }
+          }
+        ]
+      },
+      "2": {
+        "eventTitle": "꽃을 흔든다.",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "이젠 꽃가루가 없다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_inn"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      },
+      "3": {
+        "eventTitle": "깨뜨린다",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "꽃병을 떨어뜨렸다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_inn"
+            },
+            {
+              "script": "지금 머하시는 거에요! 지금 일부러 그러신거죠!",
+              "characterPath": "middle_ridge_inn_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_inn"
+            },
+            {
+              "script": "더 파손하지 말고 당장 여기서 나가시죠!",
+              "characterPath": "middle_ridge_inn_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_inn"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "middle_ridge",
+                "subNodePath":"middle_ridge_inn"
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "middle_ridge_inn_owner",
+                "eventNumber" : 1
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "middle_ridge_inn_owner",
+                "eventNumber" : 2
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "middle_ridge_inn_owner",
+                "eventNumber" : 5
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                  "gameObjectPath" : "middle_ridge_vase"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "이쁜 꽃병이다."
+    ]
+  },
+  
+  "winterfall_portal":{
+    "name": "서큐버스 동굴 포탈",
+    "objectType" : "pressed",
+    "facePath" : "portal",
+    "elementPath" : "winterfall_portal",
+    "events": {
+      "1": {
+        "eventTitle": "들어간다",
+        "eventState": "always_open",
+        "eventType": "move_dungeon_room",
+        "eventParameter": {
+          "location": {
+            "subNodePath": "cave_of_succubus",
+            "floorPath" : "cave_of_succubus",
+            "roomLabel" : "room_1_1"
+          }
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "서큐버스 동굴로 통하는 포탈이다."
+    ]
+  },
+  "winterfall_box_01":{
+    "name": "상자",
+    "objectType" : "pressed",
+    "facePath" : "box",
+    "elementPath" : "winterfall_box_01",
+    "events": {
+      "1": {
+        "eventTitle": "연다",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "상자가 부서지면서 수정 골렘이 나타났다!",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "winterfall_dome"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location":{
+                "nodePath":"winterfall",
+                "subNodePath":"winterfall_dome"
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "npcPath" : "winterfall_box_01"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          },
+          {
+            "rewardType": "start_battle",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "battle": {
+                "targetMonster": "golem_crystal",
+                "backgroundPath": "winterfall_dome"
+              }
+            }
+          }
+        ]
+      },
+      "2": {
+        "eventTitle": "부순다",
+        "eventState": "always_open",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+             {
+              "script": "상자 부서지면서 수정 골렘이 나타났다!",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "winterfall_dome"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location":{
+                "nodePath":"winterfall",
+                "subNodePath":"winterfall_dome"
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "npcPath" : "winterfall_box_01"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          },
+          {
+            "rewardType": "start_battle",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "battle": {
+                "targetMonster": "golem_crystal",
+                "backgroundPath": "winterfall_dome"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "허름한 상자다."
+    ]
+  },
+  "winterfall_box_02":{
+    "name": "상자",
+    "objectType" : "pressed",
+    "facePath" : "box",
+    "elementPath" : "winterfall_box_02",
+    "events": {
+      "1": {
+        "eventTitle": "연다",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "어성초 1개를 얻었다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "huttuynia_cordata",
+                "itemCount" : 1
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_game_object_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "winterfall_box_02",
+                "eventNumber" : 2
+              }
+            }
+          },
+          {
+            "rewardType": "close_game_object_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "winterfall_box_02",
+                "eventNumber" : 3
+              }
+            }
+          },
+          {
+            "rewardType": "open_game_object_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket" : {
+                "eventElement" : "winterfall_box_02",
+                "eventNumber" : 4
+              }
+            }
+          }
+        ]
+      },
+      "2": {
+        "eventTitle": "연다",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "비어있다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      },
+      "3": {
+        "eventTitle": "부순다",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+             {
+              "script": "상자를 너무 세게 부셔서 안의 약초가 뭉개졌다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "npcPath" : "winterfall_box_02"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          }
+        ]
+      },
+      "4": {
+        "eventTitle": "부순다",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+             {
+              "script": "상자를 부셨다. 안에는 아무 것도 없다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "npcPath" : "winterfall_box_02"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "허름한 상자다."
+    ]
+  },
+  "winterfall_glue_pile_01":{
+    "name": "약초 더미",
+    "objectType" : "pressed",
+    "facePath" : "glue_pile",
+    "elementPath" : "winterfall_glue_pile_01",
+    "events": {
+      "1": {
+        "eventTitle": "줍는다",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "어성초 1개를 얻었다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_grocery"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "huttuynia_cordata",
+                "itemCount" : 1
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "npcPath" : "winterfall_glue_pile_01"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "winterfall",
+                "subNodePath":"winterfall_grocery"
+              }
+            }
+          }
+        ]
+      },
+      "2": {
+        "eventTitle": "발로 뭉갠다",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+             {
+              "script": "발로 약초 더미를 뭉갰다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_grocery"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "npcPath" : "winterfall_glue_pile_01"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "winterfall",
+                "subNodePath":"winterfall_grocery"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "약초가 놓여 있다."
+    ]
+  },
+  "winterfall_glue_pile_02":{
+    "name": "약초 더미",
+    "objectType" : "pressed",
+    "facePath" : "glue_pile",
+    "elementPath" : "winterfall_glue_pile_02",
+    "events": {
+      "1": {
+        "eventTitle": "줍는다",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "어성초 1개를 얻었다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item" : {
+                "itemPath" : "huttuynia_cordata",
+                "itemCount" : 1
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "npcPath" : "winterfall_glue_pile_02"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "winterfall",
+                "subNodePath":"winterfall_house_02"
+              }
+            }
+          }
+        ]
+      },
+      "2": {
+        "eventTitle": "발로 뭉갠다",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+             {
+              "script": "발로 약초 더미를 뭉갰다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_house"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "set_game_object_target_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "npcPath" : "winterfall_glue_pile_02"
+              },
+              "time" : {
+                "startHour" : 24,
+                "endHour" : 24
+              }
+            }
+          },
+          {
+            "rewardType": "move_sub_node",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "location": {
+                "nodePath": "winterfall",
+                "subNodePath":"winterfall_house_02"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "greetingMessages": [
+      "약초가 놓여 있다."
     ]
   }
 }
