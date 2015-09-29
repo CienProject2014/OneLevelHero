@@ -24,11 +24,11 @@
         ]
       }
     }
-  },  "portal_25_01":{
+  },  "winterfall_portal":{
     "name": "수정의 제단 포탈",
     "objectType" : "pressed",
     "facePath" : "portal",
-    "elementPath" : "portal_25_01",
+    "elementPath" : "winterfall_portal",
     "events": {
       "1": {
         "eventTitle": "들어간다",
@@ -1941,7 +1941,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "location": {
-                "npcPath" : "winterfall_box_01"
+                "gameObjectPath" : "winterfall_box_01"
               },
               "time" : {
                 "startHour" : 24,

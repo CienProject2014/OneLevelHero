@@ -11,6 +11,7 @@ import com.mygdx.nextSectionChecker.ChoiceOptionChecker;
 import com.mygdx.nextSectionChecker.CollectEventChecker;
 import com.mygdx.nextSectionChecker.MoveDungeonRoomAfterAbsoluteTimeChecker;
 import com.mygdx.nextSectionChecker.MoveDungeonRoomBeforeAbsoluteTimeChecker;
+import com.mygdx.nextSectionChecker.MoveDungeonRoomChecker;
 import com.mygdx.nextSectionChecker.MoveDungeonRoomInTargetTimeChecker;
 import com.mygdx.nextSectionChecker.MoveFieldChecker;
 import com.mygdx.nextSectionChecker.MoveNodeChecker;
@@ -33,6 +34,8 @@ public class NextSectionCheckerFactory {
 				return context.getBean(ChoiceOptionChecker.class);
 			case COLLECT_EVENT :
 				return context.getBean(CollectEventChecker.class);
+			case MOVE_DUNGEON_ROOM :
+				return context.getBean(MoveDungeonRoomChecker.class);
 			case MOVE_DUNGEON_ROOM_AFTER_ABSOLUTE_TIME :
 				return context.getBean(MoveDungeonRoomAfterAbsoluteTimeChecker.class);
 			case MOVE_DUNGEON_ROOM_BEFORE_ABSOLUTE_TIME :

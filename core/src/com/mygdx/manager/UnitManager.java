@@ -1,6 +1,7 @@
 package com.mygdx.manager;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -36,9 +37,9 @@ public class UnitManager {
 
 	public void setAttackStrategy(Unit unit) {
 		if (unit instanceof Hero) {
-			unit.setAttackStrategy(heroBattleStrategy);
+			unit.setBattleStrategy(heroBattleStrategy);
 		} else {
-			unit.setAttackStrategy(monsterBattleStrategy);
+			unit.setBattleStrategy(monsterBattleStrategy);
 		}
 	}
 
@@ -109,5 +110,12 @@ public class UnitManager {
 		heroStatus.setMagicAttack(heroStatus.getMagicAttack() - removeStatus.getMagicAttack());
 		heroStatus.setMagicDefense(heroStatus.getMagicDefense() + removeStatus.getMagicDefense());
 		heroStatus.setSpeed(heroStatus.getSpeed() - removeStatus.getSpeed());
+	}
+
+	public void initiateHeroes(List<Hero> battleMemberList) {
+		Iterator<Hero> heroIterator = battleMemberList.iterator();
+		while (heroIterator.hasNext()) {
+			heroIterator.next().setBattleStrategy(heroBattleStrategy);
+		}
 	}
 }

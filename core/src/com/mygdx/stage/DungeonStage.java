@@ -33,9 +33,9 @@ import com.mygdx.manager.TimeManager;
 
 public class DungeonStage extends BaseOneLevelStage {
 	private static final String BG_DOOR[] = {"02", "03", "04", "05"};
-	private static final String BG_DOOR_GATE = "devil_castle_gate";
-	private static final String BG_DOOR_UP_STAIR = "devil_castle_up";
-	private static final String BG_DOOR_DOWN_STAIR = "devil_castle_down";
+	private static final String BG_DOOR_GATE = "gate";
+	private static final String BG_DOOR_UP_STAIR = "up";
+	private static final String BG_DOOR_DOWN_STAIR = "down";
 	private static final int DOOR_POSITION[][] = {{80, 440}, {898, 440}, {1688, 440}};
 	private static final int TOTAL_DOOR_SIZE = 3;
 	private static final int INDEX_OF_LEFT = 0;
@@ -131,15 +131,16 @@ public class DungeonStage extends BaseOneLevelStage {
 	}
 	private String getBackgroundPathByType(DungeonManager dungeonManager) {
 		if (dungeonManager.getDungeonInfo().getCurrentDirection().equals(Direction.BACKWARD)) {
+			String subNodePath = positionManager.getCurrentSubNodePath();
 			switch (dungeonManager.getDungeonInfo().getCurrentRoom().getRoomType()) {
 				case GATE :
-					return BG_DOOR_GATE;
+					return subNodePath + BG_DOOR_GATE;
 				case DOWN_STAIR :
-					return BG_DOOR_DOWN_STAIR;
+					return subNodePath + BG_DOOR_DOWN_STAIR;
 				case UP_STAIR :
-					return BG_DOOR_UP_STAIR;
+					return subNodePath + BG_DOOR_UP_STAIR;
 				default :
-					return BG_DOOR[0];
+					return subNodePath + BG_DOOR[0];
 			}
 		} else {
 			return dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath() + "_" + BG_DOOR[0];

@@ -146,7 +146,7 @@ public class TextureManager {
 			}
 			return assetsManager.get(textureAssets.getTexturePath(preName[10]), Texture.class);
 		} else {
-			Gdx.app.log("TextureManager", "background_" + backgroundName + "is null");
+			Gdx.app.log("TextureManager", "bg_" + backgroundName + "is null");
 			return getTexture(preName[10], TextureEnum.BACKGROUND + "_" + "prog_team_01");
 		}
 	}
