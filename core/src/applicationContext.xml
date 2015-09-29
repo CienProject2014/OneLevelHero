@@ -226,6 +226,7 @@
 	<bean id="battleEndChecker" class="com.mygdx.nextSectionChecker.BattleEndChecker"/>
 	<bean id="choiceOptionChecker" class="com.mygdx.nextSectionChecker.ChoiceOptionChecker"/>
 	<bean id="collectEventChecker" class="com.mygdx.nextSectionChecker.CollectEventChecker"/>
+	<bean id="moveDungeonRoomChecker" class="com.mygdx.nextSectionChecker.MoveDungeonRoomChecker"/>
 	<bean id="moveDungeonRoomAfterAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveDungeonRoomAfterAbsoluteTimeChecker"/>
 	<bean id="moveDungeonRoomBeforeAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveDungeonRoomBeforeAbsoluteTimeChecker"/>
 	<bean id="moveDungeonRoomInTargetTimeChecker" class="com.mygdx.nextSectionChecker.MoveDungeonRoomInTargetTimeChecker"/>

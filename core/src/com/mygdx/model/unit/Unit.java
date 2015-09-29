@@ -158,14 +158,6 @@ public abstract class Unit implements Comparable<Unit> {
 		battleStrategy.skill(this, targetList, skill);
 	}
 
-	public BattleStrategy getAttackStrategy() {
-		return battleStrategy;
-	}
-
-	public void setAttackStrategy(BattleStrategy attackStrategy) {
-		this.battleStrategy = attackStrategy;
-	}
-
 	public List<Skill> getSkills() {
 		return skills;
 	}

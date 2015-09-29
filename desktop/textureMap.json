@@ -1155,6 +1155,10 @@ title_album: {
 	class: java.lang.String,
 	value: texture/ui/title/title_album.png/
 },
+npc_resident_01: {
+	class: java.lang.String,
+	value: texture/character/npc_resident_01.png/
+},
 npc_resident_02: {
 	class: java.lang.String,
 	value: texture/character/npc_resident_02.png/
