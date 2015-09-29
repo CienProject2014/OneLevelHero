@@ -469,6 +469,7 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "몸에 좋은 보약",
                 "questObjectPath": "god_of_drug",
                 "questObjectCount": 1
               }
@@ -674,6 +675,7 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "몸에 좋은 보약2",
                 "questObjectPath": "heart",
                 "questObjectCount": 1
               }
@@ -779,7 +781,7 @@
   "blackwood_resident": {
     "name": "마을사람",
     "elementPath": "blackwood_resident",
-    "facePath": "resident_03",
+    "facePath": "resident_07",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -859,7 +861,7 @@
   "blackwood_guest": {
     "name": "수상한 투숙객",
     "positionIndex": 2,
-    "facePath": "resident_04",
+    "facePath": "resident_03",
     "elementPath": "blackwood_guest",
     "events": {
       "1": {
@@ -1668,14 +1670,14 @@
           "eventScenes": [
             {
               "script": "와이번의 꼬리는 매우 두꺼워서 대형 꼬리라고 말하면 다들 와이번 꼬리라고 알아듣는대요.",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
             },
             {
               "script": "그만큼 와이번 꼬리 요리가 유행이라는 소리겠죠.",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
@@ -1702,21 +1704,21 @@
           "eventScenes": [
             {
               "script": "제가 취미로 목걸이를 만드는 일을 하거든요?",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
             },
             {
               "script": "그런데 어느 부족들은 자신이 사냥한 동물의 이빨로 목걸이를 만든다네요!",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
             },
             {
               "script": "저도 만들어 보고 싶은데 사냥개 이빨 5개 좀 구해주시겠어요?",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
@@ -1729,13 +1731,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "사냥개 이빨 묶음",
                 "questObjectPath": "tooth_of_dog",
                 "questObjectCount": 5
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -1763,7 +1766,7 @@
           "eventScenes": [
             {
               "script": "사냥개 이빨 5개 좀 구해주세요.",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
@@ -1790,28 +1793,28 @@
           "eventScenes": [
             {
               "script": "정말로 구해오셨네요! 잠시만 기다리세요",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
             },
             {
               "script": "...",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
             },
             {
               "script": "......",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
             },
             {
               "script": "만들었긴 했는데, 별로 제 취향은 아니네요. 용사님 드릴게요. 먼가 냄새나는거 같기도 하고...",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
@@ -1855,21 +1858,21 @@
           "eventScenes": [
             {
               "script": "최근 와이번이 잘 돌아다니면서 와이번 꼬리 요리가 유행되었어요.",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
             },
             {
               "script": "그런데 워낙 유행이라 요리는커녕 재료도 구하기가 힘들더군요. 물론 전 와이번을 잡을 수도 없고요.",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
             },
             {
               "script": "그래서 그런데 대형 꼬리 5개만 구해다 주시겠어요? 사례는 준비할게요.",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
@@ -1882,13 +1885,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "와이번 꼬리 요리",
                 "questObjectPath": "big_tail",
                 "questObjectCount": 5
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -1916,7 +1920,7 @@
           "eventScenes": [
             {
               "script": "대형 꼬리 5개면 되요.",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
@@ -1943,21 +1947,21 @@
           "eventScenes": [
             {
               "script": "정말로 구해오셨네요! 맛은 별로 궁금하진 않지만, 유행이라면 이 정도는 감수해봐야죠.",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
             },
             {
               "script": "아, 사례는 이걸로 드려도 될까요? 예전에 어찌어찌 구하게 된 수정 방패인데.",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
             },
             {
               "script": "그래요, 이걸로도 될 거에요. 거래 성사네요.",
-              "characterPath": "cobweb_grocery_owner",
+              "characterPath": "grocery_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_grocery"
@@ -2065,13 +2069,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "예티 가죽털 경갑",
                 "questObjectPath": "wool_of_yetie",
                 "questObjectCount": 5
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -2218,13 +2223,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "빙룡의 이빨",
                 "questObjectPath": "core_of_anhuntas",
                 "questObjectCount": 1
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -2371,13 +2377,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "안킬라스 쉴드",
                 "questObjectPath": "core_of_anhuntas",
                 "questObjectCount": 1
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -2540,10 +2547,19 @@
     "name": "네펠",
     "elementPath": "nepel"
   },
+  "mia":{
+    "name":"미아",
+    "elementPath":"mia"
+  },
+  "ai":{
+    "name":"아이",
+    "elementPath":"ai"
+  },
   "mia_and_ai": {
     "name": "미아와 아이",
     "positionIndex": 1,
     "elementPath": "mia_and_ai",
+    "facePath":"mia",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -2553,7 +2569,7 @@
           "eventScenes": [
             {
               "script": "저희는 매우 친한 자매에요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "mia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
@@ -2580,42 +2596,42 @@
           "eventScenes": [
             {
               "script": "안녕하세요. 제 이름은 미아. 저쪽은 아이라고 해요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "mia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
             },
             {
               "script": "다름이 아니라 언제부턴가 저희 자매가 자꾸 이유없는 악몽을 꾸고 있답니다. ",
-              "characterPath": "mia_and_ai",
+              "characterPath": "mia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
             },
             {
               "script": "잠에 드는 것 마저 겁이 나서 불면증으로 고생한 지 오래에요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "mia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
             },
             {
               "script": "그리고 찾아낸 원인은 티타니아 산의 몬스터들이었어요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "ai",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
             },
             {
               "script": "최근 갑자기 개체 수가 늘어난 몬스터들의 마력이 저희에게까지 영향을 미치는 거라 생각해요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "ai",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
             },
             {
               "script": "죄송하지만, 저희를 괴롭히는 티타니아 산의 타락한 정령들을 없애 주실 수 있을까요? 10마리정도 잡으면 될 거 같아요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "mia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
@@ -2628,13 +2644,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "끝나지 않는 악몽",
                 "questObjectPath": "soul_deprave",
                 "questObjectCount": 10
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -2662,7 +2679,7 @@
           "eventScenes": [
             {
               "script": "타락한 정령 10마리를 해치워 주신 후 저희에게 돌아와 주세요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "mia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
@@ -2689,28 +2706,28 @@
           "eventScenes": [
             {
               "script": "주변이 조용해진 게 느껴져요. 역시 그들의 탓이었나 봐요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "ai",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
             },
             {
               "script": "이젠 좋은 꿈을 꿀 수 있을 것 같아요. 감사합니다. 용사님 덕택이에요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "ai",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
             },
             {
               "script": "여기 작지만 저희의 성의입니다. 부디 받아주세요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "mia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
             },
             {
               "script": "사람 이름을 메모하는 데 쓰던 책인가봐요.",
-              "characterPath": "mia_and_ai",
+              "characterPath": "mia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
@@ -2754,7 +2771,7 @@
           "eventScenes": [
             {
               "script": "당장 나가주세요!",
-              "characterPath": "mia_and_ai",
+              "characterPath": "mia",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "oberon_house"
@@ -2866,13 +2883,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "소원의 끝",
                 "questObjectPath": "prickly_pear",
                 "questObjectCount": 1
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -4472,7 +4490,7 @@
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "소용돌이가 남쪽에 있어서 미라지포트의 선착장은 문제없이 이용할 수 있다네",
+              "script": "소용돌이가 남쪽에 있어서 미라지포트의 선착장은 문제없이 이용할 수 있어",
               "characterPath": "southcape_resident_03",
               "faceNumber": "01",
               "speakerPosition": "left",
@@ -4550,7 +4568,7 @@
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "재료만 갖춰진다면 대장간에 가서 장비를 만들 수도 있지",
+              "script": "재료만 갖춰진다면 대장간에 가서 장비를 만들 수도 있어요",
               "characterPath": "southcape_resident_04",
               "faceNumber": "01",
               "speakerPosition": "left",
@@ -4588,7 +4606,7 @@
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "southcape_house",
-              "script": "난 그것에 대해 알지만 그것에 대해 모른다오."
+              "script": "난 그것에 대해 알지만 그것에 대해 몰라요."
             },
             {
               "characterPath": "southcape_resident_04",
@@ -4628,7 +4646,7 @@
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "그거 아세요? 전설의 무기인 폭풍의 눈은 폭풍의 곶과 전혀 무관해요!",
+              "script": "그거 아세요? 전설의 무기인 폭풍의 눈은 폭풍의 곶과 전혀 무관해!",
               "characterPath": "southcape_resident_05",
               "faceNumber": "01",
               "speakerPosition": "left",
@@ -4931,13 +4949,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "거인을 잡는 활",
                 "questObjectPath": "stick_of_cyclops",
                 "questObjectCount": 2
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -5712,8 +5731,12 @@
     ]
   },
   "yongsa_young": {
-    "name": "어린용사",
+    "name": "어린 용사",
     "elementPath": "yongsa_young"
+  },
+  "kein_young" : {
+  	"name" : "젊은 케인",
+  	"elementPath" : "kein_young"
   },
   "kein_father": {
     "name": "케인의 아버지",
@@ -6060,13 +6083,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "농사를 도와주세요",
                 "questObjectPath": "chimera",
                 "questObjectCount": 5
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -6189,6 +6213,7 @@
     "name": "노엘과 리암",
     "positionIndex": 3,
     "elementPath": "noel_and_riam",
+    "facePath":"noel",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -6610,6 +6635,7 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "배게 부족",
                 "questObjectPath": "bourre_of_unicorn",
                 "questObjectCount": 1
               }
@@ -6727,6 +6753,33 @@
             }
           }
         ]
+      },
+      "5": {
+        "eventTitle": "대화하기",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "당장 나가시라니깐요!",
+              "characterPath": "middle_ridge_inn_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "blackwood_inn"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
       }
     },
     "greetingMessages": [
@@ -6792,13 +6845,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "연금술",
                 "questObjectPath": "core_of_spirit",
                 "questObjectCount": 5
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -7016,13 +7070,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "마을의 저주",
                 "questObjectPath": "albino_chimera",
                 "questObjectCount": 1
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -7118,13 +7173,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "마을의 저주2",
                 "questObjectPath": "auroral_unicorn",
                 "questObjectCount": 1
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -7233,14 +7289,6 @@
     "greetingMessages": [
       "……바이칼에는 무슨 용무인가?"
     ]
-  },
-  "mia": {
-    "name": "미아",
-    "facePath": "mia"
-  },
-  "ai": {
-    "name": "아이",
-    "facePath": "ai"
   },
   "aren": {
     "name": "아렌",
@@ -7355,6 +7403,7 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "키메라1",
                 "questObjectPath": "chimera",
                 "questObjectCount": 1
               }
@@ -7387,6 +7436,7 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "키메라2",
                 "questObjectPath": "chimera",
                 "questObjectCount": 1
               }
@@ -7419,6 +7469,7 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "키메라3",
                 "questObjectPath": "chimera",
                 "questObjectCount": 1
               }
@@ -7451,6 +7502,7 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "키메라4",
                 "questObjectPath": "albino_chimera",
                 "questObjectCount": 1
               }
@@ -7483,6 +7535,7 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "키메라5",
                 "questObjectPath": "albino_chimera",
                 "questObjectCount": 1
               }
@@ -7542,6 +7595,7 @@
   "nia": {
     "name": "니아",
     "elementPath": "nia",
+    "facePath":"nia",
     "events": {
       "1": {
         "eventTitle": "대화하기",
@@ -7623,9 +7677,10 @@
         "rewards": [
           {
             "rewardType": "quest_get_item",
-            "rewardState": "always_open",
+            "rewardState": "not_opened",
             "rewardParameter": {
               "quest": {
+                "questName" : "병악한 레모",
                 "questObjectPath": "peony",
                 "questObjectCount": 3
               }
@@ -7846,6 +7901,7 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "잃어버린 것",
                 "questObjectPath": "seed_pocket",
                 "questObjectCount": 3
               }
@@ -8128,14 +8184,15 @@
             "rewardType": "quest_get_item",
             "rewardState": "always_open",
             "rewardParameter": {
-              "item": {
-                "itemPath": "huttuynia_cordata",
-                "itemCount": 3
+              "quest": {
+                "questName" : "응급 처치",
+                "questObjectPath": "huttuynia_cordata",
+                "questObjectCount": 3
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -8369,13 +8426,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "그녀를 위한 선물",
                 "questObjectPath": "petal_of_rafflesia",
                 "questObjectCount": 5
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -9964,13 +10022,14 @@
             "rewardState": "always_open",
             "rewardParameter": {
               "quest": {
+                "questName" : "여관의 새단장",
                 "questObjectPath": "nacre",
                 "questObjectCount": 3
               }
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -10217,7 +10276,7 @@
             }
           },
           {
-            "rewardType": "quest_get_item",
+            "rewardType": "get_item",
             "rewardState": "not_opened",
             "rewardParameter": {
               "item": {

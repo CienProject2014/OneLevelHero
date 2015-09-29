@@ -23,7 +23,7 @@ import com.mygdx.manager.RewardManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TextureManager;
 import com.mygdx.model.event.EventScene;
-import com.mygdx.model.unit.Hero;
+import com.mygdx.model.event.NPC;
 
 /**
  * make and return stage(Event)
@@ -86,9 +86,9 @@ public class ChatEventStage extends BaseOneLevelStage {
 	}
 
 	private void setScript(EventScene eventScene) {
-		Hero hero = unitAssets.getHero(eventScene.getCharacterPath());
-		if (hero != null) {
-			scriptTitle.setText("[" + hero.getName() + "]");
+		NPC character = eventManager.getEventInfo().getNpcMap().get(eventScene.getCharacterPath());
+		if (character != null) {
+			scriptTitle.setText("[" + character.getName() + "]");
 		} else {
 			scriptTitle.setText("");
 		}
@@ -118,8 +118,8 @@ public class ChatEventStage extends BaseOneLevelStage {
 
 	private void makeChatTable(EventScene eventScene) {
 		backgroundImage = new Image(textureManager.getBackgroundTexture(eventScene.getBackgroundPath()));
-		characterImage = new Image(
-				textureManager.getBustTexture(eventScene.getCharacterPath(), eventScene.getFaceNumber()));
+		characterImage = new Image(textureManager.getBustTexture(eventScene.getCharacterPath(),
+				eventScene.getFaceNumber()));
 
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();

@@ -115,8 +115,14 @@ public class BuildingStage extends BaseOneLevelStage {
 				{
 					if (gameObject != null) {
 						if (!gameObject.getObjectType().equals(GameObjectEnum.FUNCTION)) {
-							ImageButton gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
-									textureManager.getGameObjectTexture(gameObject.getFacePath()))));
+							ImageButton gameObjectButton;
+							if (gameObject.getFacePath() != null) {
+								gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+										textureManager.getGameObjectTexture(gameObject.getFacePath()))));
+							} else {
+								gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+										textureManager.getGameObjectTexture(gameObject.getElementPath()))));
+							}
 							Table gameObjectTable = new Table();
 							gameObjectTable.add(gameObjectButton);
 							gameObjectTable.left().bottom();

@@ -2299,6 +2299,10 @@ battle_maria_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_maria_small.png/
 },
+object_drawer: {
+	class: java.lang.String,
+	value: texture/object/object_drawer.png/
+},
 spiritbullet: {
 	class: java.lang.String,
 	value: texture/animation_sheet/spiritbullet.png/

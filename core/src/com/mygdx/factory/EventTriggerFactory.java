@@ -21,9 +21,12 @@ import com.mygdx.eventTrigger.MoveDungeonRoomEventTrigger;
 import com.mygdx.eventTrigger.MoveNodeEventTrigger;
 import com.mygdx.eventTrigger.MoveSubNodeEventTrigger;
 import com.mygdx.eventTrigger.NextSectionEventTrigger;
+import com.mygdx.eventTrigger.OpenGameObjectEventTrigger;
 import com.mygdx.eventTrigger.OpenNpcEventTrigger;
 import com.mygdx.eventTrigger.PassTimeEventTrigger;
 import com.mygdx.eventTrigger.PlayMusicEventTrigger;
+import com.mygdx.eventTrigger.QuestGetItemEventTrigger;
+import com.mygdx.eventTrigger.QuestHuntMonsterEventTrigger;
 import com.mygdx.eventTrigger.QuitPartyEventTrigger;
 import com.mygdx.eventTrigger.SetGameObjectTargetTimeEventTrigger;
 import com.mygdx.eventTrigger.SetNpcTargetTimeEventTrigger;
@@ -67,6 +70,8 @@ public class EventTriggerFactory {
 				return context.getBean(MoveSubNodeEventTrigger.class);
 			case NEXT_SECTION :
 				return context.getBean(NextSectionEventTrigger.class);
+			case OPEN_GAME_OBJECT_EVENT :
+				return context.getBean(OpenGameObjectEventTrigger.class);
 			case OPEN_NPC_EVENT :
 				return context.getBean(OpenNpcEventTrigger.class);
 			case PASS_TIME :
@@ -77,6 +82,10 @@ public class EventTriggerFactory {
 				return context.getBean(SetNpcTargetTimeEventTrigger.class);
 			case SET_GAME_OBJECT_TARGET_TIME :
 				return context.getBean(SetGameObjectTargetTimeEventTrigger.class);
+			case QUEST_GET_ITEM :
+				return context.getBean(QuestGetItemEventTrigger.class);
+			case QUEST_HUNT_MONSTER :
+				return context.getBean(QuestHuntMonsterEventTrigger.class);
 			case QUIT_PARTY :
 				return context.getBean(QuitPartyEventTrigger.class);
 			default :

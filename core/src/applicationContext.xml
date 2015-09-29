@@ -53,6 +53,7 @@
 	<bean id="battleManager" class="com.mygdx.manager.BattleManager"/>
 	<bean id="bagManager" class="com.mygdx.manager.BagManager"/>
 	<bean id="cameraManager" class="com.mygdx.manager.CameraManager"/>
+	<bean id="dungeonManager" class="com.mygdx.manager.DungeonManager"/>
 	<bean id="encounterManager" class="com.mygdx.manager.EncounterManager"/>
 	<bean id="eventManager" class="com.mygdx.manager.EventManager"/>
 	<bean id="fieldManager" class="com.mygdx.manager.FieldManager"/>
@@ -64,13 +65,13 @@
 	<bean id="platformResourceManager" class="com.mygdx.manager.PlatformResourceManager" />
 	<bean id="positionManager" class="com.mygdx.manager.PositionManager"/>
 	<bean id="rewardManager" class="com.mygdx.manager.RewardManager"/>
+	<bean id="questManager" class="com.mygdx.manager.QuestManager"/>
 	<bean id="saveManager" class="com.mygdx.manager.SaveManager" />
 	<bean id="soundManager" class="com.mygdx.manager.SoundManager"/>
 	<bean id="storySectionManager" class="com.mygdx.manager.StorySectionManager"/>
 	<bean id="textureManager" class="com.mygdx.manager.TextureManager"/>
 	<bean id="timeManager" class="com.mygdx.manager.TimeManager"/>
 	<bean id="unitManager" class="com.mygdx.manager.UnitManager"/>
-	<bean id="dungeonManager" class="com.mygdx.manager.DungeonManager"/>
 	
 	<bean id="baseScreen" class="com.mygdx.screen.BaseScreen" scope="prototype"/>
 	<bean id="battleScreen" class="com.mygdx.screen.BattleScreen"/>
@@ -207,6 +208,7 @@
 	<bean id="moveNodeEventTrigger" class="com.mygdx.eventTrigger.MoveNodeEventTrigger"/>
 	<bean id="moveSubNodeEventTrigger" class="com.mygdx.eventTrigger.MoveSubNodeEventTrigger"/>
 	<bean id="nextSectionEventTrigger" class="com.mygdx.eventTrigger.NextSectionEventTrigger"/>
+	<bean id="openGameObjectEventTrigger" class="com.mygdx.eventTrigger.OpenGameObjectEventTrigger"/>
 	<bean id="openNpcEventTrigger" class="com.mygdx.eventTrigger.OpenNpcEventTrigger"/>
 	<bean id="passTimeEventTrigger" class="com.mygdx.eventTrigger.PassTimeEventTrigger"/>
 	<bean id="playMusicEventTrigger" class="com.mygdx.eventTrigger.PlayMusicEventTrigger"/>
@@ -216,6 +218,9 @@
 	<bean id="setNpcTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetNpcTargetTimeEventTrigger"/>
 	<bean id="setGameObjectTargetTimeEventTrigger" class="com.mygdx.eventTrigger.SetGameObjectTargetTimeEventTrigger"/>
 	<bean id="startBattleEventTrigger" class="com.mygdx.eventTrigger.StartBattleEventTrigger"/>
+	<bean id="questHuntMonsterEventTrigger" class="com.mygdx.eventTrigger.QuestHuntMonsterEventTrigger"/>
+	<bean id="questGetItemEventTrigger" class="com.mygdx.eventTrigger.QuestGetItemEventTrigger"/>
+	
 	
 	<bean id="battleCommandChecker" class="com.mygdx.nextSectionChecker.BattleCommandChecker"/>
 	<bean id="battleEndChecker" class="com.mygdx.nextSectionChecker.BattleEndChecker"/>
