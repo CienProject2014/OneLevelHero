@@ -47,31 +47,34 @@ public class ChoiceEventStage extends BaseOneLevelStage {
 		int visibleEventIndex = 0;
 		for (int eventNumber = 0; eventNumber < eventElement.getEvents().size(); eventNumber++) {
 			Event selectedEvent = eventElement.getEvent(eventNumber + 1);
+			if (selectedEvent == null) {
+				continue;
+			}
 			switch (selectedEvent.getEventState()) {
-			case ALWAYS_OPEN:
-			case OPENED:
-				if (currentElementType.equals(EventElementEnum.NPC)) {
-					ChoiceNpcEventListener choiceNpcEventListener = listenerFactory.getChoiceNpcEventListener();
-					choiceNpcEventListener.setIndex(eventNumber + 1);
-					chatButtons.get(visibleEventIndex).addListener(choiceNpcEventListener);
-				} else {
-					ChoiceGameObjectEventListener choiceGameObjectEventListener = listenerFactory
-							.getChoiceGameObjectEventListener();
-					choiceGameObjectEventListener.setIndex(eventNumber + 1);
-					chatButtons.get(visibleEventIndex).addListener(choiceGameObjectEventListener);
-				}
-				visibleEventIndex++;
-				break;
-			case CLEARED:
-				chatButtons.get(visibleEventIndex).setColor(Color.DARK_GRAY);
-				chatButtons.get(visibleEventIndex).setTouchable(Touchable.disabled);
-				break;
-			case CLOSED:
-			case NOT_OPENED:
-				break;
-			default:
-				Gdx.app.log("ChoiceEventStage", "EventState 정보 오류");
-				break;
+				case ALWAYS_OPEN :
+				case OPENED :
+					if (currentElementType.equals(EventElementEnum.NPC)) {
+						ChoiceNpcEventListener choiceNpcEventListener = listenerFactory.getChoiceNpcEventListener();
+						choiceNpcEventListener.setIndex(eventNumber + 1);
+						chatButtons.get(visibleEventIndex).addListener(choiceNpcEventListener);
+					} else {
+						ChoiceGameObjectEventListener choiceGameObjectEventListener = listenerFactory
+								.getChoiceGameObjectEventListener();
+						choiceGameObjectEventListener.setIndex(eventNumber + 1);
+						chatButtons.get(visibleEventIndex).addListener(choiceGameObjectEventListener);
+					}
+					visibleEventIndex++;
+					break;
+				case CLEARED :
+					chatButtons.get(visibleEventIndex).setColor(Color.DARK_GRAY);
+					chatButtons.get(visibleEventIndex).setTouchable(Touchable.disabled);
+					break;
+				case CLOSED :
+				case NOT_OPENED :
+					break;
+				default :
+					Gdx.app.log("ChoiceEventStage", "EventState 정보 오류");
+					break;
 			}
 		}
 	}
@@ -92,15 +95,15 @@ public class ChoiceEventStage extends BaseOneLevelStage {
 
 	private void setCurrentElementType(PositionManager positionManager) {
 		switch (positionManager.getCurrentEventPositionType()) {
-		case NPC:
-			currentElementType = EventElementEnum.NPC;
-			break;
-		case GAME_OBJECT:
-			currentElementType = EventElementEnum.GAME_OBJECT;
-			break;
-		default:
-			Gdx.app.log("ChoiceEventStage", "잘못된 EventElement정보" + positionManager.getCurrentEventPositionType());
-			break;
+			case NPC :
+				currentElementType = EventElementEnum.NPC;
+				break;
+			case GAME_OBJECT :
+				currentElementType = EventElementEnum.GAME_OBJECT;
+				break;
+			default :
+				Gdx.app.log("ChoiceEventStage", "잘못된 EventElement정보" + positionManager.getCurrentEventPositionType());
+				break;
 		}
 		eventElement = eventManager.getCurrentEventElement(currentElementType);
 		eventSize = eventElement.getVisibleEventSize();
@@ -108,12 +111,12 @@ public class ChoiceEventStage extends BaseOneLevelStage {
 
 	// StaticAssets.windowHeight * 0.185f
 	private void setButtonPosition() {
-		final float buttonPosition[][] = { { StaticAssets.windowWidth * 0.109375f, StaticAssets.windowHeight * 0.74f },
-				{ StaticAssets.windowWidth * 0.109375f, StaticAssets.windowHeight * 0.555f },
-				{ StaticAssets.windowWidth * 0.109375f, StaticAssets.windowHeight * 0.37f },
-				{ StaticAssets.windowWidth * 0.68f, StaticAssets.windowHeight * 0.74f },
-				{ StaticAssets.windowWidth * 0.68f, StaticAssets.windowHeight * 0.555f },
-				{ StaticAssets.windowWidth * 0.68f, StaticAssets.windowHeight * 0.37f } };
+		final float buttonPosition[][] = {{StaticAssets.windowWidth * 0.109375f, StaticAssets.windowHeight * 0.74f},
+				{StaticAssets.windowWidth * 0.109375f, StaticAssets.windowHeight * 0.555f},
+				{StaticAssets.windowWidth * 0.109375f, StaticAssets.windowHeight * 0.37f},
+				{StaticAssets.windowWidth * 0.68f, StaticAssets.windowHeight * 0.74f},
+				{StaticAssets.windowWidth * 0.68f, StaticAssets.windowHeight * 0.555f},
+				{StaticAssets.windowWidth * 0.68f, StaticAssets.windowHeight * 0.37f}};
 		for (int i = 0; i < eventSize; i++)
 			chatButtons.get(i).setPosition(buttonPosition[i][0], buttonPosition[i][1]);
 	}
@@ -122,7 +125,7 @@ public class ChoiceEventStage extends BaseOneLevelStage {
 	}
 
 	private void setSize() {
-		final float buttonSize[] = { StaticAssets.windowWidth * 0.208f, StaticAssets.windowHeight * 0.185f };
+		final float buttonSize[] = {StaticAssets.windowWidth * 0.208f, StaticAssets.windowHeight * 0.185f};
 		for (TextButton chatButton : chatButtons)
 			chatButton.setSize(buttonSize[0], buttonSize[1]);
 	}
@@ -130,12 +133,14 @@ public class ChoiceEventStage extends BaseOneLevelStage {
 	private void showEventButton() {
 		int visibleEventCount = 0;
 		for (int eventNumber = 0; eventNumber < eventElement.getEvents().size(); eventNumber++) {
+			if (eventElement.getEvent(eventNumber + 1) == null) {
+				continue;
+			}
 			if (EventManager.isEventVisible(eventElement.getEvent(eventNumber + 1))) {
-				chatStyles
-						.add(new TextButtonStyle(uiComponentAssets.getEventButton(), uiComponentAssets.getEventButton(),
-								uiComponentAssets.getEventButton(), uiComponentAssets.getFont()));
-				chatButtons.add(new TextButton(eventElement.getEvent(eventNumber + 1).getEventTitle(),
-						chatStyles.get(visibleEventCount)));
+				chatStyles.add(new TextButtonStyle(uiComponentAssets.getEventButton(), uiComponentAssets
+						.getEventButton(), uiComponentAssets.getEventButton(), uiComponentAssets.getFont()));
+				chatButtons.add(new TextButton(eventElement.getEvent(eventNumber + 1).getEventTitle(), chatStyles
+						.get(visibleEventCount)));
 				visibleEventCount++;
 			}
 		}

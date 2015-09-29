@@ -8,22 +8,22 @@ import com.mygdx.model.battle.Skill;
 import com.mygdx.unitStrategy.BattleStrategy;
 
 public abstract class Unit implements Comparable<Unit> {
-	private BattleStrategy battleStrategy;
-	private String facePath;
-	private String name;
+	protected BattleStrategy battleStrategy;
+	protected String facePath;
+	protected String name;
 	protected Status status;
-	private List<Skill> skills;
-	private int gauge;
-	private int subvalue;
-	private int actingPower;
-	private int preGague;
-	private int aggro;
-	private int casting;
-	private float percent;
+	protected List<Skill> skills;
+	protected int gauge;
+	protected int subvalue;
+	protected int actingPower;
+	protected int preGague;
+	protected int aggro;
+	protected int casting;
+	protected float percent;
 
-	private float preDecDefense;
-	private float preIncDefense;
-	private int preIncAggro;
+	protected float preDecDefense;
+	protected float preIncDefense;
+	protected int preIncAggro;
 
 	private List<Buff> buffList = new ArrayList<Buff>();
 

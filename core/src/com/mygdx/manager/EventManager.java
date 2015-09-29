@@ -21,6 +21,7 @@ import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.EventScene;
 import com.mygdx.model.event.GameObject;
 import com.mygdx.model.event.NPC;
+import com.mygdx.model.event.Quest;
 import com.mygdx.model.location.Building;
 import com.mygdx.model.unit.Hero;
 
@@ -146,6 +147,10 @@ public class EventManager {
 
 	public void setTargetBuildingInfo(Building buildingInfo) {
 		eventInfo.setCurrentBuildingInfo(buildingInfo);
+	}
+
+	public void setQuestMap(Map<String, Quest> questMap) {
+		eventInfo.setQuestMap(questMap);
 	}
 
 	public Building getTargetBuildingInfo() {

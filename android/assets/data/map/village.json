@@ -770,7 +770,7 @@
       "middle_ridge_farm": {
         "subNodeName": "논밭",
         "buildingType": "house",
-        "outerPath": "middle_ridge_02",
+        "outerPath": "middle_ridge_03",
         "subNodePath": "middle_ridge_farm",
         "targetTime": {
           "startHour": 0,

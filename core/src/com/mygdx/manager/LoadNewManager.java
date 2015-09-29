@@ -1,5 +1,7 @@
 package com.mygdx.manager;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
@@ -11,6 +13,7 @@ import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.PositionEnum;
 import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.model.event.EventPacket;
+import com.mygdx.model.event.Quest;
 import com.mygdx.model.event.StorySection;
 import com.mygdx.model.unit.Hero;
 
@@ -58,6 +61,7 @@ public class LoadNewManager {
 		eventManager.setMainStoryMap(eventAssets.getMainStoryMap());
 		eventManager.setNpcMap(eventAssets.getNpcMap());
 		eventManager.setHeroMap(unitAssets.getHeroMap());
+		eventManager.setQuestMap(new HashMap<String, Quest>());
 		eventManager.setGameObjectMap(eventAssets.getGameObjectMap());
 		eventManager.setCurrentEvent(EventElementEnum.STORY, new EventPacket("prologue", 1));
 	}

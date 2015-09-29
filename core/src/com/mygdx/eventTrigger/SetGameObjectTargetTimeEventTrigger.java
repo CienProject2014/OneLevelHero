@@ -25,9 +25,9 @@ public class SetGameObjectTargetTimeEventTrigger implements EventTrigger {
 			TargetTime targetTime = new TargetTime(eventParameter.getTime().getStartHour(), eventParameter.getTime()
 					.getEndHour());
 			gameObject.setTargetTime(targetTime);
-			storySectionManager.runStorySequence();
 		} else {
 			Gdx.app.log("SetNpcTargetTimeEventTrigger", "eventParameter is null");
 		}
+		storySectionManager.runStorySequence();
 	}
 }
