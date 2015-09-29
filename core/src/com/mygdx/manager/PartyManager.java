@@ -78,10 +78,10 @@ public class PartyManager {
 		int nGetVal = (int) Math.round(Math.random() * 100);
 
 		for (Hero hero : partyInfo.getBattleMemberList()) {
-			sumAggro += hero.getAggro();
+			sumAggro += hero.getRealAggro();
 		}
 		for (Hero hero : partyInfo.getBattleMemberList()) {
-			hero.setPercent((hero.getAggro() * 100 / sumAggro));
+			hero.setPercent((hero.getRealAggro() * 100 / sumAggro));
 		}
 		for (Hero hero : partyInfo.getBattleMemberList()) {
 			percent += hero.getPercent();

@@ -20,6 +20,7 @@ public abstract class Unit implements Comparable<Unit> {
 	protected int actingPower;
 	protected int preGague;
 	protected int aggro;
+	protected int realAggro;
 	protected float percent;
 	protected int overload;
 	protected float preDecDefense;
@@ -30,6 +31,14 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public BattleStrategy getBattleStrategy() {
 		return battleStrategy;
+	}
+
+	public int getRealAggro() {
+		return realAggro;
+	}
+
+	public void setRealAggro(int realAggro) {
+		this.realAggro = realAggro;
 	}
 
 	public void setBattleStrategy(BattleStrategy battleStrategy) {
@@ -215,6 +224,7 @@ public abstract class Unit implements Comparable<Unit> {
 	public void setOverload(int overload) {
 		this.overload = overload;
 	}
+
 	public Status getRealStatus() {
 		return realStatus;
 	}
