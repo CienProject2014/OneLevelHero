@@ -56,6 +56,10 @@ public class SoundManager {
 
 	private void setSoundByPath(String soundPath) {
 		Sound sound = musicAssets.getSound(soundPath);
-		soundInfo.setSound(sound);
+		if (sound != null) {
+			soundInfo.setSound(sound);
+		} else {
+			soundInfo.setSound(musicAssets.getSound("slash"));
+		}
 	}
 }

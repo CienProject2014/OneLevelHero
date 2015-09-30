@@ -47,29 +47,29 @@ buff_en_flaudrise: {
 	class: java.lang.String,
 	value: texture/icon/buff_en_flaudrise.png/
 },
-loading: {
-	class: java.lang.String,
-	value: texture/loading/loading.png/
-},
 item_item_armor: {
 	class: java.lang.String,
 	value: texture/icon/item_item_armor.png/
 },
-battle_mawang_02_big: {
+loading: {
 	class: java.lang.String,
-	value: texture/monster/battle_mawang_02_big.png/
+	value: texture/loading/loading.png/
 },
 temple_of_moerae_b2_minimap: {
 	class: java.lang.String,
 	value: texture/dungeon_minimap/temple_of_moerae_b2_minimap.png/
 },
-buff_en_fireshield: {
+battle_mawang_02_big: {
 	class: java.lang.String,
-	value: texture/icon/buff_en_fireshield.png/
+	value: texture/monster/battle_mawang_02_big.png/
 },
 cave_of_succubus_minimap: {
 	class: java.lang.String,
 	value: texture/dungeon_minimap/cave_of_succubus_minimap.png/
+},
+buff_en_fireshield: {
+	class: java.lang.String,
+	value: texture/icon/buff_en_fireshield.png/
 },
 battle_diomirhone_small: {
 	class: java.lang.String,
@@ -211,13 +211,13 @@ battle_mawang_01_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_mawang_01_small.png/
 },
-bg_cobweb_02: {
-	class: java.lang.String,
-	value: texture/background/bg_cobweb_02.png/
-},
 bg_kadilla_castle_peasanthouse: {
 	class: java.lang.String,
 	value: texture/background/bg_kadilla_castle_peasanthouse.png/
+},
+bg_cobweb_02: {
+	class: java.lang.String,
+	value: texture/background/bg_cobweb_02.png/
 },
 bg_cobweb_03: {
 	class: java.lang.String,
@@ -243,37 +243,37 @@ bg_blackwood_peasanthouse: {
 	class: java.lang.String,
 	value: texture/background/bg_blackwood_peasanthouse.png/
 },
-bust_kein_12: {
-	class: java.lang.String,
-	value: texture/character/bust_kein_12.png/
-},
 battle_lamia_soldier_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_lamia_soldier_small.png/
+},
+bust_kein_12: {
+	class: java.lang.String,
+	value: texture/character/bust_kein_12.png/
 },
 bust_kein_13: {
 	class: java.lang.String,
 	value: texture/character/bust_kein_13.png/
 },
-bust_kein_10: {
-	class: java.lang.String,
-	value: texture/character/bust_kein_10.png/
-},
 bg_popupui: {
 	class: java.lang.String,
 	value: texture/background/bg_popupui.png/
+},
+bust_kein_10: {
+	class: java.lang.String,
+	value: texture/character/bust_kein_10.png/
 },
 bust_kein_11: {
 	class: java.lang.String,
 	value: texture/character/bust_kein_11.png/
 },
-WorldMap: {
-	class: java.lang.String,
-	value: texture/WorldMap.jpg/
-},
 ani_magic_10_freeze: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_magic_10_freeze.png/
+},
+WorldMap: {
+	class: java.lang.String,
+	value: texture/WorldMap.jpg/
 },
 bust_mia_and_ai: {
 	class: java.lang.String,
@@ -283,13 +283,13 @@ bust_servant-_01: {
 	class: java.lang.String,
 	value: texture/character/bust_servant-_01.png/
 },
-bust_resident_07_01: {
-	class: java.lang.String,
-	value: texture/character/bust_resident_07_01.png/
-},
 bust_servant-_02: {
 	class: java.lang.String,
 	value: texture/character/bust_servant-_02.png/
+},
+bust_resident_07_01: {
+	class: java.lang.String,
+	value: texture/character/bust_resident_07_01.png/
 },
 battle_lilis_succubus_big: {
 	class: java.lang.String,
@@ -303,13 +303,13 @@ bg_cave_of_cape_of_tempest_04: {
 	class: java.lang.String,
 	value: texture/background/bg_cave_of_cape_of_tempest_04.png/
 },
-bg_cave_of_cape_of_tempest_03: {
-	class: java.lang.String,
-	value: texture/background/bg_cave_of_cape_of_tempest_03.png/
-},
 face_kein: {
 	class: java.lang.String,
 	value: texture/character/face_kein.png/
+},
+bg_cave_of_cape_of_tempest_03: {
+	class: java.lang.String,
+	value: texture/background/bg_cave_of_cape_of_tempest_03.png/
 },
 bg_cave_of_cape_of_tempest_05: {
 	class: java.lang.String,
@@ -779,13 +779,13 @@ bust_resident_04: {
 	class: java.lang.String,
 	value: texture/character/bust_resident_04.png/
 },
-bg_grassland: {
-	class: java.lang.String,
-	value: texture/background/bg_grassland.png/
-},
 bust_resident_06: {
 	class: java.lang.String,
 	value: texture/character/bust_resident_06.png/
+},
+bg_grassland: {
+	class: java.lang.String,
+	value: texture/background/bg_grassland.png/
 },
 bust_waiji_01: {
 	class: java.lang.String,
@@ -867,25 +867,25 @@ monster_moerae: {
 	class: java.lang.String,
 	value: texture/monster/monster_moerae.png/
 },
-npc_evergnail: {
+battle_troll_big: {
 	class: java.lang.String,
-	value: texture/character/npc_evergnail.png/
+	value: texture/monster/battle_troll_big.png/
 },
 battle_bear_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_bear_small.png/
 },
-battle_troll_big: {
+npc_evergnail: {
 	class: java.lang.String,
-	value: texture/monster/battle_troll_big.png/
-},
-battle_fledermause_big: {
-	class: java.lang.String,
-	value: texture/monster/battle_fledermause_big.png/
+	value: texture/character/npc_evergnail.png/
 },
 bg_blackwood_forest_gate: {
 	class: java.lang.String,
 	value: texture/background/bg_blackwood_forest_gate.png/
+},
+battle_fledermause_big: {
+	class: java.lang.String,
+	value: texture/monster/battle_fledermause_big.png/
 },
 battle_elementalelectric_small: {
 	class: java.lang.String,
@@ -895,13 +895,13 @@ bust_aimee_01: {
 	class: java.lang.String,
 	value: texture/character/bust_aimee_01.png/
 },
-battleui_battle_message: {
-	class: java.lang.String,
-	value: texture/ui/battle/battleui_battle_message.png/
-},
 npc_clothing_store_owner: {
 	class: java.lang.String,
 	value: texture/character/npc_clothing_store_owner.png/
+},
+battleui_battle_message: {
+	class: java.lang.String,
+	value: texture/ui/battle/battleui_battle_message.png/
 },
 bust_default_01: {
 	class: java.lang.String,
@@ -939,13 +939,13 @@ bg_cobweb_grocery: {
 	class: java.lang.String,
 	value: texture/background/bg_cobweb_grocery.png/
 },
-bg_blackwood_forest_02: {
-	class: java.lang.String,
-	value: texture/background/bg_blackwood_forest_02.png/
-},
 ani_normal_book: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_normal_book.png/
+},
+bg_blackwood_forest_02: {
+	class: java.lang.String,
+	value: texture/background/bg_blackwood_forest_02.png/
 },
 bg_blackwood_forest_01: {
 	class: java.lang.String,
@@ -959,13 +959,13 @@ bg_blackwood_forest_03: {
 	class: java.lang.String,
 	value: texture/background/bg_blackwood_forest_03.png/
 },
-bg_blackwood_forest_05: {
-	class: java.lang.String,
-	value: texture/background/bg_blackwood_forest_05.png/
-},
 battle_kein_big: {
 	class: java.lang.String,
 	value: texture/character/battle_kein_big.png/
+},
+bg_blackwood_forest_05: {
+	class: java.lang.String,
+	value: texture/background/bg_blackwood_forest_05.png/
 },
 npc_maker: {
 	class: java.lang.String,
@@ -983,13 +983,13 @@ monster_griffon: {
 	class: java.lang.String,
 	value: texture/monster/monster_griffon.png/
 },
-bg_devil_castle_up: {
-	class: java.lang.String,
-	value: texture/background/bg_devil_castle_up.png/
-},
 monster_elemental_fire: {
 	class: java.lang.String,
 	value: texture/monster/monster_elemental_fire.png/
+},
+bg_devil_castle_up: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_up.png/
 },
 battle_clam_small: {
 	class: java.lang.String,
@@ -1047,13 +1047,13 @@ monster_elf_fire: {
 	class: java.lang.String,
 	value: texture/monster/monster_elf_fire.png/
 },
-bust_lilis_11: {
-	class: java.lang.String,
-	value: texture/character/bust_lilis_11.png/
-},
 battle_mercensary_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_mercensary_small.png/
+},
+bust_lilis_11: {
+	class: java.lang.String,
+	value: texture/character/bust_lilis_11.png/
 },
 bust_lilis_10: {
 	class: java.lang.String,
@@ -1111,21 +1111,21 @@ monster_wyvern: {
 	class: java.lang.String,
 	value: texture/monster/monster_wyvern.png/
 },
-battle_black_gnoll_big: {
-	class: java.lang.String,
-	value: texture/monster/battle_black_gnoll_big.png/
-},
 battle_kentaurous_spear_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_kentaurous_spear_small.png/
 },
-battle_wyvern_small: {
+battle_black_gnoll_big: {
 	class: java.lang.String,
-	value: texture/monster/battle_wyvern_small.png/
+	value: texture/monster/battle_black_gnoll_big.png/
 },
 talkui_window: {
 	class: java.lang.String,
 	value: texture/ui/chat/talkui_window.png/
+},
+battle_wyvern_small: {
+	class: java.lang.String,
+	value: texture/monster/battle_wyvern_small.png/
 },
 bg_middle_ridge_training_area: {
 	class: java.lang.String,
@@ -1135,29 +1135,29 @@ splash: {
 	class: java.lang.String,
 	value: texture/splash.png/
 },
-bg_cave_of_succubus_gate: {
-	class: java.lang.String,
-	value: texture/background/bg_cave_of_succubus_gate.png/
-},
 bg_oberon_peasanthouse: {
 	class: java.lang.String,
 	value: texture/background/bg_oberon_peasanthouse.png/
+},
+bg_cave_of_succubus_gate: {
+	class: java.lang.String,
+	value: texture/background/bg_cave_of_succubus_gate.png/
 },
 bust_maria_01: {
 	class: java.lang.String,
 	value: texture/character/bust_maria_01.png/
 },
-bust_sailor_01_01: {
+battle_elementalwater_big: {
 	class: java.lang.String,
-	value: texture/character/bust_sailor_01_01.png/
+	value: texture/monster/battle_elementalwater_big.png/
 },
 bg_kadilla_story_5: {
 	class: java.lang.String,
 	value: texture/background/bg_kadilla_story_5.png/
 },
-battle_elementalwater_big: {
+bust_sailor_01_01: {
 	class: java.lang.String,
-	value: texture/monster/battle_elementalwater_big.png/
+	value: texture/character/bust_sailor_01_01.png/
 },
 bust_mia_01: {
 	class: java.lang.String,
@@ -1195,21 +1195,21 @@ npc_resident_03: {
 	class: java.lang.String,
 	value: texture/character/npc_resident_03.png/
 },
-npc_resident_04: {
-	class: java.lang.String,
-	value: texture/character/npc_resident_04.png/
-},
 buff_de_weaken: {
 	class: java.lang.String,
 	value: texture/icon/buff_de_weaken.png/
 },
-npc_resident_05: {
+npc_resident_04: {
 	class: java.lang.String,
-	value: texture/character/npc_resident_05.png/
+	value: texture/character/npc_resident_04.png/
 },
 ani_magic_14_call_of_soul: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_magic_14_call_of_soul.png/
+},
+npc_resident_05: {
+	class: java.lang.String,
+	value: texture/character/npc_resident_05.png/
 },
 npc_resident_06: {
 	class: java.lang.String,
@@ -1279,13 +1279,13 @@ ani_magic_9_electric_shock: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_magic_9_electric_shock.png/
 },
-battle_animal_human_small: {
-	class: java.lang.String,
-	value: texture/monster/battle_animal_human_small.png/
-},
 monster_golem_crystal: {
 	class: java.lang.String,
 	value: texture/monster/monster_golem_crystal.png/
+},
+battle_animal_human_small: {
+	class: java.lang.String,
+	value: texture/monster/battle_animal_human_small.png/
 },
 battle_succubus_junior_big: {
 	class: java.lang.String,
@@ -1303,21 +1303,21 @@ bg_crystallized_valley_04: {
 	class: java.lang.String,
 	value: texture/background/bg_crystallized_valley_04.png/
 },
-bg_crystallized_valley_03: {
-	class: java.lang.String,
-	value: texture/background/bg_crystallized_valley_03.png/
-},
 bg_cobweb_villagehall: {
 	class: java.lang.String,
 	value: texture/background/bg_cobweb_villagehall.png/
 },
-bg_crystallized_valley_02: {
+bg_crystallized_valley_03: {
 	class: java.lang.String,
-	value: texture/background/bg_crystallized_valley_02.png/
+	value: texture/background/bg_crystallized_valley_03.png/
 },
 bg_redrose_castle_castlegate: {
 	class: java.lang.String,
 	value: texture/background/bg_redrose_castle_castlegate.png/
+},
+bg_crystallized_valley_02: {
+	class: java.lang.String,
+	value: texture/background/bg_crystallized_valley_02.png/
 },
 bg_crystallized_valley_01: {
 	class: java.lang.String,
@@ -1327,13 +1327,13 @@ monster_huntingdog: {
 	class: java.lang.String,
 	value: texture/monster/monster_huntingdog.png/
 },
-battle_berusus_big: {
-	class: java.lang.String,
-	value: texture/character/battle_berusus_big.png/
-},
 ani_magic_8_restriction: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_magic_8_restriction.png/
+},
+battle_berusus_big: {
+	class: java.lang.String,
+	value: texture/character/battle_berusus_big.png/
 },
 bust_captain_jack_01: {
 	class: java.lang.String,
@@ -1387,13 +1387,13 @@ bust_yurath_01: {
 	class: java.lang.String,
 	value: texture/character/bust_yurath_01.png/
 },
-bg_southcape_peasanthouse: {
-	class: java.lang.String,
-	value: texture/background/bg_southcape_peasanthouse.png/
-},
 bg_oberon_temple: {
 	class: java.lang.String,
 	value: texture/background/bg_oberon_temple.png/
+},
+bg_southcape_peasanthouse: {
+	class: java.lang.String,
+	value: texture/background/bg_southcape_peasanthouse.png/
 },
 battle_huntingdog_big: {
 	class: java.lang.String,
@@ -1431,21 +1431,21 @@ stay_button_stay: {
 	class: java.lang.String,
 	value: texture/ui/dungeon/stay_button_stay.png/
 },
-battle_parath_big: {
-	class: java.lang.String,
-	value: texture/character/battle_parath_big.png/
-},
 buff_de_sturn: {
 	class: java.lang.String,
 	value: texture/icon/buff_de_sturn.png/
 },
-battle_kentaurous_bow_small: {
+battle_parath_big: {
 	class: java.lang.String,
-	value: texture/monster/battle_kentaurous_bow_small.png/
+	value: texture/character/battle_parath_big.png/
 },
 battleui_character_turn: {
 	class: java.lang.String,
 	value: texture/ui/battle/battleui_character_turn.png/
+},
+battle_kentaurous_bow_small: {
+	class: java.lang.String,
+	value: texture/monster/battle_kentaurous_bow_small.png/
 },
 fieldui_back: {
 	class: java.lang.String,
@@ -1459,13 +1459,13 @@ monster_mawang_02: {
 	class: java.lang.String,
 	value: texture/monster/monster_mawang_02.png/
 },
-monster_mawang_01: {
-	class: java.lang.String,
-	value: texture/monster/monster_mawang_01.png/
-},
 ani_magic_4_smile: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_magic_4_smile.png/
+},
+monster_mawang_01: {
+	class: java.lang.String,
+	value: texture/monster/monster_mawang_01.png/
 },
 battle_elf_water_big: {
 	class: java.lang.String,
@@ -1499,13 +1499,13 @@ bg_devil_castle_03: {
 	class: java.lang.String,
 	value: texture/background/bg_devil_castle_03.png/
 },
-bg_devil_castle_02: {
-	class: java.lang.String,
-	value: texture/background/bg_devil_castle_02.png/
-},
 ani_tech_5_lastjudgement: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_tech_5_lastjudgement.png/
+},
+bg_devil_castle_02: {
+	class: java.lang.String,
+	value: texture/background/bg_devil_castle_02.png/
 },
 bg_devil_castle_01: {
 	class: java.lang.String,
@@ -3075,13 +3075,13 @@ ani_magic_15_amplified_casting: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_magic_15_amplified_casting.png/
 },
-bust_religious_fanatic: {
-	class: java.lang.String,
-	value: texture/character/bust_religious_fanatic.png/
-},
 bust_resident_04_01: {
 	class: java.lang.String,
 	value: texture/character/bust_resident_04_01.png/
+},
+bust_religious_fanatic: {
+	class: java.lang.String,
+	value: texture/character/bust_religious_fanatic.png/
 },
 elemental_none: {
 	class: java.lang.String,
@@ -3103,13 +3103,13 @@ battle_ent_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_ent_big.png/
 },
-face_yalluisroy: {
-	class: java.lang.String,
-	value: texture/character/face_yalluisroy.png/
-},
 bg_vaical_castle_house: {
 	class: java.lang.String,
 	value: texture/background/bg_vaical_castle_house.png/
+},
+face_yalluisroy: {
+	class: java.lang.String,
+	value: texture/character/face_yalluisroy.png/
 },
 battle_candlestick_small: {
 	class: java.lang.String,
@@ -3135,13 +3135,13 @@ bg_oberon_hill: {
 	class: java.lang.String,
 	value: texture/background/bg_oberon_hill.png/
 },
-battle_parath_small: {
-	class: java.lang.String,
-	value: texture/character/battle_parath_small.png/
-},
 bg_cape_of_tempest_02: {
 	class: java.lang.String,
 	value: texture/background/bg_cape_of_tempest_02.png/
+},
+battle_parath_small: {
+	class: java.lang.String,
+	value: texture/character/battle_parath_small.png/
 },
 bg_cape_of_tempest_03: {
 	class: java.lang.String,
@@ -3163,17 +3163,17 @@ battle_elf_water_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_elf_water_small.png/
 },
-bust_yongsa_09: {
+bg_kadilla_castle_library: {
 	class: java.lang.String,
-	value: texture/character/bust_yongsa_09.png/
+	value: texture/background/bg_kadilla_castle_library.png/
 },
 battle_rabbit_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_rabbit_small.png/
 },
-bg_kadilla_castle_library: {
+bust_yongsa_09: {
 	class: java.lang.String,
-	value: texture/background/bg_kadilla_castle_library.png/
+	value: texture/character/bust_yongsa_09.png/
 },
 bust_redrosecount_01: {
 	class: java.lang.String,
@@ -3203,13 +3203,13 @@ bg_redrose_castle_square: {
 	class: java.lang.String,
 	value: texture/background/bg_redrose_castle_square.png/
 },
-bust_yongsa_10: {
-	class: java.lang.String,
-	value: texture/character/bust_yongsa_10.png/
-},
 devil_castle_4f_minimap: {
 	class: java.lang.String,
 	value: texture/dungeon_minimap/devil_castle_4f_minimap.png/
+},
+bust_yongsa_10: {
+	class: java.lang.String,
+	value: texture/character/bust_yongsa_10.png/
 },
 bust_yongsa_11: {
 	class: java.lang.String,
@@ -3227,13 +3227,13 @@ npc_resident: {
 	class: java.lang.String,
 	value: texture/character/npc_resident.png/
 },
-bust_yongsa_01: {
-	class: java.lang.String,
-	value: texture/character/bust_yongsa_01.png/
-},
 monster_lamia_soldier: {
 	class: java.lang.String,
 	value: texture/monster/monster_lamia_soldier.png/
+},
+bust_yongsa_01: {
+	class: java.lang.String,
+	value: texture/character/bust_yongsa_01.png/
 },
 bust_yongsa_02: {
 	class: java.lang.String,
@@ -3247,13 +3247,13 @@ bust_yongsa_04: {
 	class: java.lang.String,
 	value: texture/character/bust_yongsa_04.png/
 },
-bust_yongsa_05: {
-	class: java.lang.String,
-	value: texture/character/bust_yongsa_05.png/
-},
 battle_white_tiger_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_white_tiger_small.png/
+},
+bust_yongsa_05: {
+	class: java.lang.String,
+	value: texture/character/bust_yongsa_05.png/
 },
 bust_yongsa_06: {
 	class: java.lang.String,
@@ -3263,45 +3263,45 @@ bust_yongsa_07: {
 	class: java.lang.String,
 	value: texture/character/bust_yongsa_07.png/
 },
-bust_yongsa_08: {
-	class: java.lang.String,
-	value: texture/character/bust_yongsa_08.png/
-},
 ani_normal_one_hand_sword: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_normal_one_hand_sword.png/
 },
-object_middle_ridge_drawer: {
+bust_yongsa_08: {
 	class: java.lang.String,
-	value: texture/object/object_middle_ridge_drawer.png/
-},
-battle_elementalelectric_big: {
-	class: java.lang.String,
-	value: texture/monster/battle_elementalelectric_big.png/
+	value: texture/character/bust_yongsa_08.png/
 },
 bust_mia_and_ai_01: {
 	class: java.lang.String,
 	value: texture/character/bust_mia_and_ai_01.png/
 },
-face_parath: {
+battle_elementalelectric_big: {
 	class: java.lang.String,
-	value: texture/character/face_parath.png/
+	value: texture/monster/battle_elementalelectric_big.png/
+},
+object_middle_ridge_drawer: {
+	class: java.lang.String,
+	value: texture/object/object_middle_ridge_drawer.png/
 },
 bust_pirate_01: {
 	class: java.lang.String,
 	value: texture/character/bust_pirate_01.png/
 },
+face_parath: {
+	class: java.lang.String,
+	value: texture/character/face_parath.png/
+},
 bg_oberen_03: {
 	class: java.lang.String,
 	value: texture/background/bg_oberen_03.png/
 },
-back_of_sword: {
-	class: java.lang.String,
-	value: texture/animation_sheet/back_of_sword.png/
-},
 bg_oberen_02: {
 	class: java.lang.String,
 	value: texture/background/bg_oberen_02.png/
+},
+back_of_sword: {
+	class: java.lang.String,
+	value: texture/animation_sheet/back_of_sword.png/
 },
 ani_tech_2_powerblade: {
 	class: java.lang.String,
@@ -3347,93 +3347,93 @@ battle_chimera_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_chimera_big.png/
 },
-battle_kentaurous_bow_big: {
-	class: java.lang.String,
-	value: texture/monster/battle_kentaurous_bow_big.png/
-},
 monster_rabbit: {
 	class: java.lang.String,
 	value: texture/monster/monster_rabbit.png/
+},
+battle_kentaurous_bow_big: {
+	class: java.lang.String,
+	value: texture/monster/battle_kentaurous_bow_big.png/
 },
 status_yalluisroy: {
 	class: java.lang.String,
 	value: texture/character/status_yalluisroy.png/
 },
-bust_daimeast_01: {
-	class: java.lang.String,
-	value: texture/character/bust_daimeast_01.png/
-},
 bust_keinyoung_01: {
 	class: java.lang.String,
 	value: texture/character/bust_keinyoung_01.png/
 },
-battle_rabbit_big: {
+bust_daimeast_01: {
 	class: java.lang.String,
-	value: texture/monster/battle_rabbit_big.png/
-},
-bg_prologue_01: {
-	class: java.lang.String,
-	value: texture/background/bg_prologue_01.png/
+	value: texture/character/bust_daimeast_01.png/
 },
 grid_small: {
 	class: java.lang.String,
 	value: texture/ui/battle/grid_small.png/
 },
-bust_daimeast_05: {
+bg_prologue_01: {
 	class: java.lang.String,
-	value: texture/character/bust_daimeast_05.png/
+	value: texture/background/bg_prologue_01.png/
+},
+battle_rabbit_big: {
+	class: java.lang.String,
+	value: texture/monster/battle_rabbit_big.png/
 },
 bust_nepel_young_05: {
 	class: java.lang.String,
 	value: texture/character/bust_nepel_young_05.png/
 },
-bust_daimeast_04: {
+bust_daimeast_05: {
 	class: java.lang.String,
-	value: texture/character/bust_daimeast_04.png/
+	value: texture/character/bust_daimeast_05.png/
 },
 bust_nepel_young_06: {
 	class: java.lang.String,
 	value: texture/character/bust_nepel_young_06.png/
 },
-battleui_turntable_01: {
+bust_daimeast_04: {
 	class: java.lang.String,
-	value: texture/ui/battle/battleui_turntable_01.png/
-},
-bust_daimeast_03: {
-	class: java.lang.String,
-	value: texture/character/bust_daimeast_03.png/
+	value: texture/character/bust_daimeast_04.png/
 },
 bust_nepel_young_03: {
 	class: java.lang.String,
 	value: texture/character/bust_nepel_young_03.png/
 },
-bust_nepel_young_04: {
+bust_daimeast_03: {
 	class: java.lang.String,
-	value: texture/character/bust_nepel_young_04.png/
+	value: texture/character/bust_daimeast_03.png/
 },
-battleui_turntable_02: {
+battleui_turntable_01: {
 	class: java.lang.String,
-	value: texture/ui/battle/battleui_turntable_02.png/
-},
-bust_daimeast_02: {
-	class: java.lang.String,
-	value: texture/character/bust_daimeast_02.png/
+	value: texture/ui/battle/battleui_turntable_01.png/
 },
 buff_de_sleep: {
 	class: java.lang.String,
 	value: texture/icon/buff_de_sleep.png/
 },
+bust_daimeast_02: {
+	class: java.lang.String,
+	value: texture/character/bust_daimeast_02.png/
+},
+battleui_turntable_02: {
+	class: java.lang.String,
+	value: texture/ui/battle/battleui_turntable_02.png/
+},
+bust_nepel_young_04: {
+	class: java.lang.String,
+	value: texture/character/bust_nepel_young_04.png/
+},
 bust_nepel_young_01: {
 	class: java.lang.String,
 	value: texture/character/bust_nepel_young_01.png/
 },
-bust_nepel_young_02: {
-	class: java.lang.String,
-	value: texture/character/bust_nepel_young_02.png/
-},
 battle_rafflesia_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_rafflesia_big.png/
+},
+bust_nepel_young_02: {
+	class: java.lang.String,
+	value: texture/character/bust_nepel_young_02.png/
 },
 bust_daimeast_06: {
 	class: java.lang.String,
@@ -3467,13 +3467,13 @@ bg_golden_lake_02: {
 	class: java.lang.String,
 	value: texture/background/bg_golden_lake_02.png/
 },
-bg_golden_lake_01: {
-	class: java.lang.String,
-	value: texture/background/bg_golden_lake_01.png/
-},
 ani_magic_5_handing: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_magic_5_handing.png/
+},
+bg_golden_lake_01: {
+	class: java.lang.String,
+	value: texture/background/bg_golden_lake_01.png/
 },
 item_book: {
 	class: java.lang.String,
@@ -3487,21 +3487,21 @@ object_portal: {
 	class: java.lang.String,
 	value: texture/object/object_portal.png/
 },
-battle_nepel_02_small: {
-	class: java.lang.String,
-	value: texture/monster/battle_nepel_02_small.png/
-},
 battle_elemental_fire_big: {
 	class: java.lang.String,
 	value: texture/monster/battle_elemental_fire_big.png/
 },
-bg_golden_lake_06: {
+battle_nepel_02_small: {
 	class: java.lang.String,
-	value: texture/background/bg_golden_lake_06.png/
+	value: texture/monster/battle_nepel_02_small.png/
 },
 battle_yurath_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_yurath_small.png/
+},
+bg_golden_lake_06: {
+	class: java.lang.String,
+	value: texture/background/bg_golden_lake_06.png/
 },
 bg_golden_lake_05: {
 	class: java.lang.String,
@@ -3531,33 +3531,33 @@ battle_mercenary_small: {
 	class: java.lang.String,
 	value: texture/monster/battle_mercenary_small.png/
 },
-bust_sailor_02_01: {
-	class: java.lang.String,
-	value: texture/character/bust_sailor_02_01.png/
-},
 monster_kadilla_guard: {
 	class: java.lang.String,
 	value: texture/monster/monster_kadilla_guard.png/
 },
-bust_kaido: {
+bust_sailor_02_01: {
 	class: java.lang.String,
-	value: texture/character/bust_kaido.png/
+	value: texture/character/bust_sailor_02_01.png/
 },
 ani_magic_17_blizzard: {
 	class: java.lang.String,
 	value: texture/animation_sheet/ani_magic_17_blizzard.png/
 },
+bust_kaido: {
+	class: java.lang.String,
+	value: texture/character/bust_kaido.png/
+},
 monster_troll: {
 	class: java.lang.String,
 	value: texture/monster/monster_troll.png/
 },
-talk_select: {
-	class: java.lang.String,
-	value: texture/ui/chat/talk_select.png/
-},
 monster_rafflesia: {
 	class: java.lang.String,
 	value: texture/monster/monster_rafflesia.png/
+},
+talk_select: {
+	class: java.lang.String,
+	value: texture/ui/chat/talk_select.png/
 },
 monster_hunting_dog: {
 	class: java.lang.String,

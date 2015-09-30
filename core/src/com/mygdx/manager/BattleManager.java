@@ -210,7 +210,7 @@ public class BattleManager {
 		centerX = getCenterToHitAreaX(hitArea);
 		centerY = getCenterToHitAreaY(hitArea);
 		if (attackUnit instanceof Hero) {
-			soundManager.setSoundByPathAndPlay("slash");
+
 			readyForPlayerAnimation("empty hit", centerX, 4 - centerY, (int) (StaticAssets.windowHeight * 0.5f),
 					(int) (StaticAssets.windowHeight * 0.5f));
 		} else {

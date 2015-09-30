@@ -118,9 +118,16 @@ public class MusicAssets implements FileAssetsInitializable {
 	}
 
 	public Sound getSound(String soundString) {
-		assetsManager.load(soundEffectMap.get(soundString), Sound.class);
-		assetsManager.finishLoading();
-		return assetsManager.get(soundEffectMap.get(soundString), Sound.class);
+		if (soundEffectMap.containsKey(soundString)) {
+			assetsManager.load(soundEffectMap.get(soundString), Sound.class);
+			assetsManager.finishLoading();
+			return assetsManager.get(soundEffectMap.get(soundString), Sound.class);
+		} else {
+			assetsManager.load(soundEffectMap.get("slash"), Sound.class);
+			assetsManager.finishLoading();
+			return assetsManager.get(soundEffectMap.get("slash"), Sound.class);
+		}
+
 	}
 
 	public Sound getSoundEffectByType(String soundType) {
