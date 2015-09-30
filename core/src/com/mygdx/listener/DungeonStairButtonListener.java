@@ -21,6 +21,7 @@ public class DungeonStairButtonListener extends ClickListener {
 
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
+		soundManager.playClickSound();
 		soundManager.setSoundByPathAndPlay("notice_moving");
 		dungeonManager.moveStair(stairType, link);
 		timeManager.plusMinute(15);

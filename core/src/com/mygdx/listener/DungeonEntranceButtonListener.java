@@ -32,6 +32,7 @@ public class DungeonEntranceButtonListener extends ClickListener {
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		soundManager.playClickSound();
+		soundManager.setSoundByPathAndPlay("notice_moving");
 		timeManager.plusMinute(15);
 		soundManager.playClickSound();
 		positionManager.setCurrentSubNodePath(dungeonPath);
