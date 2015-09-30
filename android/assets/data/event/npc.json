@@ -476,7 +476,7 @@
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -591,6 +591,16 @@
                 "minute": 5
               }
             }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "waiji",
+                "eventNumber": 4
+              }
+            }
           }
         ]
       }
@@ -682,7 +692,7 @@
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -768,6 +778,16 @@
             "rewardParameter": {
               "time": {
                 "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "blackwood_grocery_owner",
+                "eventNumber": 3
               }
             }
           }
@@ -1847,6 +1867,16 @@
                 "minute": 5
               }
             }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "cobweb_grocery_owner",
+                "eventNumber": 3
+              }
+            }
           }
         ]
       },
@@ -1983,6 +2013,16 @@
               "item": {
                 "itemPath": "crystal_shield",
                 "itemCount": 1
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "cobweb_grocery_owner",
+                "eventNumber": 6
               }
             }
           }
@@ -2185,6 +2225,16 @@
                 "minute": 5
               }
             }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "cobweb_smithy_owner",
+                "eventNumber": 3
+              }
+            }
           }
         ]
       },
@@ -2339,6 +2389,16 @@
                 "minute": 5
               }
             }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "cobweb_smithy_owner",
+                "eventNumber": 6
+              }
+            }
           }
         ]
       },
@@ -2491,6 +2551,16 @@
             "rewardParameter": {
               "time": {
                 "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "cobweb_smithy_owner",
+                "eventNumber": 9
               }
             }
           }
@@ -2760,6 +2830,16 @@
                 "minute": 5
               }
             }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "mia_and_ai",
+                "eventNumber": 3
+              }
+            }
           }
         ]
       },
@@ -3004,6 +3084,16 @@
             "rewardParameter": {
               "time": {
                 "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "nade",
+                "eventNumber": 3
               }
             }
           }
@@ -6196,6 +6286,16 @@
                 "minute": 5
               }
             }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "farmer",
+                "eventNumber": 3
+              }
+            }
           }
         ]
       }
@@ -6646,7 +6746,7 @@
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -6753,6 +6853,16 @@
             "rewardParameter": {
               "time": {
                 "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "middle_ridge_inn_owner",
+                "eventNumber": 3
               }
             }
           }
@@ -6970,6 +7080,16 @@
             "rewardParameter": {
               "time": {
                 "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "fist",
+                "eventNumber": 3
               }
             }
           }
@@ -7201,6 +7321,16 @@
                 "minute": 5
               }
             }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "vical_villagehead",
+                "eventNumber": 3
+              }
+            }
           }
         ]
       },
@@ -7284,6 +7414,16 @@
             "rewardParameter": {
               "time": {
                 "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "vical_villagehead",
+                "eventNumber": 5
               }
             }
           }
@@ -7691,7 +7831,7 @@
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -7791,6 +7931,16 @@
             "rewardParameter": {
               "time": {
                 "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "nia",
+                "eventNumber": 3
               }
             }
           }
@@ -7912,7 +8062,7 @@
             }
           },
           {
-            "rewardType": "open_npc_event",
+            "rewardType": "always_open_npc_event",
             "rewardState": "not_opened",
             "rewardParameter": {
               "eventPacket": {
@@ -7999,6 +8149,16 @@
               "item": {
                 "itemPath": "palenote",
                 "itemCount": 1
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "noctern",
+                "eventNumber": 3
               }
             }
           }
@@ -8333,6 +8493,16 @@
                 "minute": 5
               }
             }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "hunter",
+                "eventNumber": 3
+              }
+            }
           }
         ]
       }
@@ -8539,6 +8709,16 @@
             "rewardParameter": {
               "time": {
                 "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "tenardie",
+                "eventNumber": 3
               }
             }
           }
@@ -10126,6 +10306,16 @@
             "rewardParameter": {
               "time": {
                 "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "bonichea_inn_owner",
+                "eventNumber": 3
               }
             }
           }

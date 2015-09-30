@@ -6,9 +6,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
 
 public class BattleScreen extends BaseScreen {
-	private Stage gameUiStage, characterUiStage, monsterStage, battleStage, skillStage, itemStage;
+	private Stage gameUiStage, battleInfoMessageStage, characterUiStage, monsterStage, battleStage, skillStage,
+			itemStage;
 	public static boolean showSkillStage = false;
 	public static boolean showItemStage = false;
+	public static boolean showBattleInfoMessage = false;
 
 	public BattleScreen() {
 	}
@@ -21,9 +23,12 @@ public class BattleScreen extends BaseScreen {
 		characterUiStage.draw();
 		battleStage.draw();
 		gameUiStage.draw();
-
+		if (showBattleInfoMessage) {
+			battleInfoMessageStage.draw();
+		}
 		if (showSkillStage) {
 			skillStage.draw();
+
 		}
 		if (showItemStage) {
 			itemStage.draw();
@@ -45,6 +50,7 @@ public class BattleScreen extends BaseScreen {
 		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
 		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
 		battleStage = stageFactory.makeStage(StageEnum.BATTLE);
+		battleInfoMessageStage = stageFactory.makeStage(StageEnum.BATTLE_INFO_MESSAGE);
 		skillStage = stageFactory.makeStage(StageEnum.SKILL);
 		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		itemStage = stageFactory.makeStage(StageEnum.ITEM);
@@ -59,12 +65,17 @@ public class BattleScreen extends BaseScreen {
 		} else if (showItemStage) {
 			multiplexer.addProcessor(i++, itemStage);
 		} else {
-			multiplexer.addProcessor(i++, gameUiStage);
-			multiplexer.addProcessor(i++, characterUiStage);
-			multiplexer.addProcessor(i++, monsterStage);
-			multiplexer.addProcessor(i++, battleStage);
-			multiplexer.addProcessor(i++, skillStage);
+			if (showBattleInfoMessage) {
+				multiplexer.addProcessor(0, battleInfoMessageStage);
+			} else {
+				multiplexer.addProcessor(i++, gameUiStage);
+				multiplexer.addProcessor(i++, characterUiStage);
+				multiplexer.addProcessor(i++, monsterStage);
+				multiplexer.addProcessor(i++, battleStage);
+				multiplexer.addProcessor(i++, skillStage);
+			}
 		}
+
 		if (showLoadStage) {
 			multiplexer.addProcessor(0, loadPopupStage);
 		}

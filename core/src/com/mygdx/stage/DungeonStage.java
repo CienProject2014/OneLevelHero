@@ -104,7 +104,13 @@ public class DungeonStage extends BaseOneLevelStage {
 
 	private void showBackground(DungeonManager dungeonManager) {
 		String backgroundPath;
-		String subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath();
+		String subNodePath;
+		if (dungeonManager.getDungeonInfo().getCurrentDungeon().getBackgroundPath() != null) {
+			subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getBackgroundPath();
+		} else {
+			subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath();
+		}
+
 		switch (dungeonManager.getCurrentDoorSize()) {
 			case 0 :
 				backgroundPath = getBackgroundPathByType(dungeonManager);
@@ -131,7 +137,12 @@ public class DungeonStage extends BaseOneLevelStage {
 	}
 	private String getBackgroundPathByType(DungeonManager dungeonManager) {
 		if (dungeonManager.getDungeonInfo().getCurrentDirection().equals(Direction.BACKWARD)) {
-			String subNodePath = positionManager.getCurrentSubNodePath();
+			String subNodePath;
+			if (dungeonManager.getDungeonInfo().getCurrentDungeon().getBackgroundPath() != null) {
+				subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getBackgroundPath();
+			} else {
+				subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath();
+			}
 			switch (dungeonManager.getDungeonInfo().getCurrentRoom().getRoomType()) {
 				case GATE :
 					return subNodePath + BG_DOOR_GATE;

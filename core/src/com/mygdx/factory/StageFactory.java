@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.enums.StageEnum;
+import com.mygdx.stage.BattleInfoMessageStage;
 import com.mygdx.stage.BattleStage;
 import com.mygdx.stage.BuildingRestPopupStage;
 import com.mygdx.stage.BuildingStage;
@@ -48,6 +49,8 @@ public class StageFactory {
 		switch (stageEnum) {
 			case BATTLE :
 				return context.getBean(BattleStage.class).makeStage();
+			case BATTLE_INFO_MESSAGE :
+				return context.getBean(BattleInfoMessageStage.class).makeStage();
 			case BUILDING :
 				return context.getBean(BuildingStage.class).makeStage();
 			case BUILDING_REST_POPUP :

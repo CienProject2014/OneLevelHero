@@ -30,7 +30,7 @@
 		],
 		"decreaseAttackPercent" : "30",
 		"decreaseHpPeriod" : "30",
-		"decreaseHpMagicPercent" : "10",
+		"decreaseHpMagicPercent" : "50",
 		"decreaseHpOffset" : "20"
 	},
     "poison" : {
@@ -44,7 +44,7 @@
 		],
 		"decreaseAttackPercent" : "30",
 		"decreaseHpPeriod" : "30",
-		"decreaseHpMagicPercent" : "10",
+		"decreaseHpMagicPercent" : "50",
 		"decreaseHpOffset" : "20"
 	},
       "chilblain" : {
@@ -58,7 +58,7 @@
 		],
 		"decreaseAttackPercent" : "30",
 		"decreaseHpPeriod" : "30",
-		"decreaseHpMagicPercent" : "10",
+		"decreaseHpMagicPercent" : "50",
 		"decreaseHpOffset" : "20"
 	},
 	"bleeding" : {
@@ -71,7 +71,7 @@
 			"decrease_hp_iterative"
 		],
 		"decreaseHpPeriod" : "30",
-		"decreaseHpAttackPercent" : "20"
+		"decreaseHpAttackPercent" : "70"
 	},
       
 	"frozen" : {

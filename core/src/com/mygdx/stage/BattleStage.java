@@ -49,6 +49,8 @@ import com.mygdx.screen.BattleScreen;
 
 public class BattleStage extends BaseOneLevelStage {
 	private final String TAG = "BattleStage";
+	private final String START_BATTLE_MESSAGE = "전투 시작!";
+	private final String PLAYER_WIN_MESSAGE = "몬스터를 물리쳤다!";
 	private final int NORMAL_ATTACK = 30;
 	private final int DEFENSE = 20;
 	private final int RUN = 30;
@@ -103,6 +105,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private Vector2 start, end;
 	private Unit currentAttackUnit;
 	private Label label;
+	private int messageCount;
 
 	@Override
 	public void act(float delta) {
@@ -156,6 +159,7 @@ public class BattleStage extends BaseOneLevelStage {
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 			initializeBattle(battleManager.getUnits(), selectedMonster);
 			showMenuBarAnimation();
+			showBattleInfoMessage(START_BATTLE_MESSAGE);
 		} else {
 			rMenuTable.addAction(Actions.moveTo(1720, 15));
 		}
@@ -174,6 +178,11 @@ public class BattleStage extends BaseOneLevelStage {
 		battleManager.setBattleStage(this);
 		addListener();
 		return this;
+	}
+
+	private void showBattleInfoMessage(String battleInfoMessage) {
+		battleManager.setBattleInfoMessage(battleInfoMessage);
+		BattleScreen.showBattleInfoMessage = true;
 	}
 
 	private void initializeBattle(ArrayList<Unit> units, Monster selectedMonster) {
@@ -227,8 +236,8 @@ public class BattleStage extends BaseOneLevelStage {
 				questManager.checkHuntQuest(selectedMonster.getFacePath());
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 				soundManager.setSoundByPathAndPlay("notice_victory");
-				movingManager.goCurrentLocatePosition();
-				storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE, selectedMonster.getFacePath());
+				showBattleInfoMessage(PLAYER_WIN_MESSAGE);
+
 			} else if (battleManager.getBattleState().equals(BattleStateEnum.GAME_OVER)) {
 				screenFactory.show(ScreenEnum.GAME_OVER);
 			}
@@ -438,8 +447,8 @@ public class BattleStage extends BaseOneLevelStage {
 				battleManager.gameObjectPopup.setListenerFactory(listenerFactory);
 				battleManager.gameObjectPopup.setConstantsAssets(constantsAssets);
 				checkRunAway();
-				battleManager.gameObjectPopup
-						.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent() + "%입니다");
+				battleManager.gameObjectPopup.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent()
+						+ "%입니다");
 				addActor(battleManager.gameObjectPopup);
 				battleManager.gameObjectPopup.setVisible(true);
 			}
@@ -494,11 +503,11 @@ public class BattleStage extends BaseOneLevelStage {
 		super.touchUp(screenX, screenY, pointer, button);
 		if (battleManager.isShowGrid() && battleManager.getNowGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 			if (!battleManager.isSkill()) {
-				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster,
-						battleManager.getNowGridHitbox().getPreviousHitArea());
+				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
+						.getNowGridHitbox().getPreviousHitArea());
 			} else {
-				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster,
-						battleManager.getCurrentSelectedSkill().getSkillPath());
+				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
+						.getCurrentSelectedSkill().getSkillPath());
 				battleManager.setSkill(false);
 			}
 			battleManager.setShowGrid(false);
@@ -541,8 +550,8 @@ public class BattleStage extends BaseOneLevelStage {
 		turnSmallImageMap.put(selectedMonster.getFacePath(),
 				new Image(textureManager.getSmallBattleImage(selectedMonster.getFacePath())));
 		for (Hero hero : partyManager.getBattleMemberList()) {
-			turnSmallImageMap.put(hero.getFacePath(),
-					new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
+			turnSmallImageMap
+					.put(hero.getFacePath(), new Image(textureManager.getSmallBattleImage(hero.getFacePath())));
 		}
 	}
 
