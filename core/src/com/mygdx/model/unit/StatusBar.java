@@ -28,6 +28,10 @@ public class StatusBar {
 		return unit.getStatus().getHp();
 	}
 
+	public void setHp(int hp) {
+		unit.getStatus().setHp(hp);
+	}
+
 	public int getMaxHp() {
 		return unit.getStatus().getMaxHp();
 	}

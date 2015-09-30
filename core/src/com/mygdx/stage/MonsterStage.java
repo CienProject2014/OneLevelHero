@@ -105,7 +105,13 @@ public class MonsterStage extends BaseOneLevelStage {
 			Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath()));
 			buffTable.add(buffIcon).width(63).height(63);
 		}
-		monsterHpLabel.setText(monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp());
+		if (monsterStatusBar.getHp() < 0) {
+			monsterStatusBar.setHp(0);
+			monsterHpLabel.setText(monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp());
+
+		} else {
+			monsterHpLabel.setText(monsterStatusBar.getHp() + "/" + monsterStatusBar.getMaxHp());
+		}
 		monsterStatusBar.update();
 	}
 
@@ -143,16 +149,17 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(dungeonManager
-					.getDungeonInfo().getBackground())));
+			return new TextureRegionDrawable(new TextureRegion(
+					textureManager.getBackgroundTexture(dungeonManager.getDungeonInfo().getBackground())));
 		} else if (eventManager.getCurrentEvent().getEventType().equals(EventTypeEnum.START_BATTLE)) {
 			String backgroundPath = battleManager.getBackgroundPath();
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
 		} else {
-			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
-					.getFieldType().toString())));
+			return new TextureRegionDrawable(
+					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
 		}
 	}
+
 	public HashMap<String, Float> getUiConstantsMap() {
 		return uiConstantsMap;
 	}

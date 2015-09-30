@@ -7,7 +7,7 @@
     "grade": "일반",
     "description": "먹음직스러운(?) 와이번의 꼬리다."
   },
-  "smelling_cloth": {
+  "seed_pocket": {
     "itemType": "etc_item",
     "name": "씨앗 주머니",
     "itemPath": "seed_pocket",
