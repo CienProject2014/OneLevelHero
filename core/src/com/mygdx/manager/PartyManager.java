@@ -103,9 +103,9 @@ public class PartyManager {
 			if (hero.getStatus().getLevel() == 1) {
 			} else {
 				if (hero.getStatus().getExperience() < 0) {
-					int exp = hero.getStatus().getExperience();
+
 					levelDown(hero);
-					hero.getStatus().setExperience(hero.getStatus().getMaxExperience() + exp);
+
 				} else if (hero.getStatus().getExperience() >= hero.getStatus().getMaxExperience()) {
 					int exp = hero.getStatus().getExperience() - hero.getStatus().getMaxExperience();
 					levelUp(hero);
@@ -198,16 +198,25 @@ public class PartyManager {
 
 	private void levelDown(Hero hero) {
 		// 체력+1 공격력+1/4 주문력+1/4 방어력+1/4 항마력+1/4 민첩성+1
-		if (hero.getStatus().getHp() == hero.getStatus().getMaxHp()) {
-			hero.getStatus().setHp(hero.getStatus().getHp() - 1);
+		while (true) {
+			if (hero.getStatus().getHp() == hero.getStatus().getMaxHp()) {
+				hero.getStatus().setHp(hero.getStatus().getHp() - 1);
+			}
+			hero.getStatus().setExperience(hero.getStatus().getMaxExperience() + hero.getStatus().getExperience());
+			hero.getStatus().setLevel(hero.getStatus().getLevel() - 1);
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() - 1);
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack() - 0.25));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() - 0.25));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() - 0.25));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() - 0.25));
+			hero.getStatus().setSpeed(hero.getStatus().getSpeed() - 1);
+
+			if (hero.getStatus().getExperience() > 0) {
+				break;
+			} else {
+
+			}
 		}
-		hero.getStatus().setLevel(hero.getStatus().getLevel() - 1);
-		hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() - 1);
-		hero.getStatus().setAttack((float) (hero.getStatus().getAttack() - 0.25));
-		hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() - 0.25));
-		hero.getStatus().setDefense((float) (hero.getStatus().getDefense() - 0.25));
-		hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() - 0.25));
-		hero.getStatus().setSpeed(hero.getStatus().getSpeed() - 1);
 	}
 
 	public void setCurrentSelectedHero(Hero hero) {
