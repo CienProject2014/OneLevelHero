@@ -53,7 +53,7 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 		}
 
 		messageButton.clearListeners();
-		this.addListener(new ClickListener() {
+		messageButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
