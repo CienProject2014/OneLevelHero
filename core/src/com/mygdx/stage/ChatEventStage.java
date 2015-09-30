@@ -118,8 +118,19 @@ public class ChatEventStage extends BaseOneLevelStage {
 
 	private void makeChatTable(EventScene eventScene) {
 		backgroundImage = new Image(textureManager.getBackgroundTexture(eventScene.getBackgroundPath()));
-		characterImage = new Image(textureManager.getBustTexture(eventScene.getCharacterPath(),
-				eventScene.getFaceNumber()));
+		NPC character = eventManager.getEventInfo().getNpcMap().get(eventScene.getCharacterPath());
+		String facePath;
+		if (character != null) {
+			if (character.getFacePath() != null) {
+				facePath = character.getFacePath();
+			} else {
+				facePath = character.getElementPath();
+			}
+		} else {
+			facePath = eventScene.getCharacterPath();
+		}
+
+		characterImage = new Image(textureManager.getBustTexture(facePath, eventScene.getFaceNumber()));
 
 		Image chatImage = uiComponentAssets.getChatLineImage();
 		chatLineImageTable.clear();

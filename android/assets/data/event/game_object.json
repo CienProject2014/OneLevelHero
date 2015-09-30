@@ -24,11 +24,13 @@
         ]
       }
     }
-  },  "winterfall_portal":{
+  },
+
+  "portal_25_01":{
     "name": "수정의 제단 포탈",
     "objectType" : "pressed",
     "facePath" : "portal",
-    "elementPath" : "winterfall_portal",
+    "elementPath" : "portal_25_01",
     "events": {
       "1": {
         "eventTitle": "들어간다",

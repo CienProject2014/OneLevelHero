@@ -1559,12 +1559,12 @@
       ]
     ],
     "status": {
-      "hp": 1800,
-      "maxHp": 1800,
-      "attack": 51,
-      "defense": 36,
+      "hp": 800,
+      "maxHp": 800,
+      "attack": 49,
+      "defense": 31,
       "magicAttack": 42,
-      "magicDefense": 38,
+      "magicDefense": 33,
       "speed": 100,
       "experience": 5000,
       "maxExperience": 20000,
@@ -1576,7 +1576,7 @@
     "skillList": []
   },
   "nepel_02": {
-    "facePath": "nepel_02",
+    "facePath": "nepel_01",
     "name": "네펠",
     "elementType": "none",
     "sizeType": "medium",
@@ -1635,7 +1635,7 @@
     "skillList": []
   },
   "nepel_03": {
-    "facePath": "nepel_03",
+    "facePath": "nepel_02",
     "name": "각성한 네펠",
     "elementType": "none",
     "sizeType": "medium",
