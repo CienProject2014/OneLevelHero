@@ -1,8 +1,11 @@
 package com.mygdx.model.eventParameter;
 
+import com.mygdx.enums.ItemEnum;
+
 public class ItemParameter {
 	private String itemPath;
 	private int itemCount;
+	private ItemEnum itemType;
 
 	public int getItemCount() {
 		return itemCount;
@@ -15,5 +18,11 @@ public class ItemParameter {
 	}
 	public void setItemPath(String itemPath) {
 		this.itemPath = itemPath;
+	}
+	public ItemEnum getItemType() {
+		return itemType;
+	}
+	public void setItemType(ItemEnum itemType) {
+		this.itemType = itemType;
 	}
 }

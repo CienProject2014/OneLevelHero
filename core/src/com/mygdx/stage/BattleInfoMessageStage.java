@@ -40,12 +40,18 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 	private void showButton() {
 		final String battleStatusMessage = battleManager.getBattleInfo().getBattleInfoMessage();
 		messageButton.setText(battleStatusMessage);
-		if (battleManager.getBattleInfo().isGetItem()) {
-			statusMessageButton.setText("[" + battleManager.getBattleInfo().getDropItem().getName() + "] 을 얻었다.");
-			battleStatusTable.setVisible(true);
+		if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
+			if (battleManager.getSelectedMonster().getDropItemList().size() > 0) {
+				statusMessageButton.setText("[" + battleManager.getBattleInfo().getDropItem().getName() + "] 을 얻었다.");
+				battleStatusTable.setVisible(true);
+				battleManager.getBattleInfo().setGetItem(false);
+			} else {
+				battleStatusTable.setVisible(false);
+			}
 		} else {
 			battleStatusTable.setVisible(false);
 		}
+
 		messageButton.clearListeners();
 		messageButton.addListener(new ClickListener() {
 			@Override
@@ -60,7 +66,6 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 			}
 		});
 	}
-
 	public Stage makeStage() {
 		super.makeStage();
 		TextureRegionDrawable textMenu = new TextureRegionDrawable(

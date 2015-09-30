@@ -108,30 +108,32 @@ public class BuildingStage extends BaseOneLevelStage {
 				final GameObject gameObject = eventManager.getEventInfo().getGameObjectMap().get(objectName);
 				{
 					if (gameObject != null) {
-						if (!gameObject.getObjectType().equals(GameObjectEnum.FUNCTION)) {
-							ImageButton gameObjectButton;
-							if (gameObject.getFacePath() != null) {
-								gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
-										textureManager.getGameObjectTexture(gameObject.getFacePath()))));
-							} else {
-								gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
-										textureManager.getGameObjectTexture(gameObject.getElementPath()))));
-							}
-							Table gameObjectTable = new Table();
-							gameObjectTable.add(gameObjectButton);
-							gameObjectTable.left().bottom();
-							gameObjectTable.padLeft(GAME_OBJECT_POSITION[gameObject.getPositionIndex()][0]).padBottom(
-									GAME_OBJECT_POSITION[gameObject.getPositionIndex()][1]);
-							gameObjectTable.addListener(new SimpleTouchListener() {
-								@Override
-								public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-									timeManager.plusMinute(5);
-									eventManager.setCurrentGameObject(gameObject);
-									positionManager.setCurrentEventPositionType(EventPosition.GAME_OBJECT);
-									screenFactory.show(ScreenEnum.GAME_OBJECT);
+						if (ArgumentChecker.checkIsInTargetTime(gameObject.getTargetTime(), timeManager.getDayMinute())) {
+							if (!gameObject.getObjectType().equals(GameObjectEnum.FUNCTION)) {
+								ImageButton gameObjectButton;
+								if (gameObject.getFacePath() != null) {
+									gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+											textureManager.getGameObjectTexture(gameObject.getFacePath()))));
+								} else {
+									gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+											textureManager.getGameObjectTexture(gameObject.getElementPath()))));
 								}
-							});
-							tableStack.add(gameObjectTable);
+								Table gameObjectTable = new Table();
+								gameObjectTable.add(gameObjectButton);
+								gameObjectTable.left().bottom();
+								gameObjectTable.padLeft(GAME_OBJECT_POSITION[gameObject.getPositionIndex()][0])
+										.padBottom(GAME_OBJECT_POSITION[gameObject.getPositionIndex()][1]);
+								gameObjectTable.addListener(new SimpleTouchListener() {
+									@Override
+									public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+										timeManager.plusMinute(5);
+										eventManager.setCurrentGameObject(gameObject);
+										positionManager.setCurrentEventPositionType(EventPosition.GAME_OBJECT);
+										screenFactory.show(ScreenEnum.GAME_OBJECT);
+									}
+								});
+								tableStack.add(gameObjectTable);
+							}
 						}
 					}
 				}

@@ -278,7 +278,7 @@
     ],
     "nextSections": [
       {
-        "nextSectionNumber": "201",
+        "nextSectionNumber": "114",
         "eventType": "choice_option",
         "eventParameter": {
           "targetComponent": "카딜라 성"
@@ -299,7 +299,7 @@
         }
       },
       {
-        "nextSectionNumber": "501",
+        "nextSectionNumber": "114",
         "eventType": "choice_option",
         "eventParameter": {
           "targetComponent": "레드로즈 성"
@@ -324,7 +324,7 @@
     ],
     "nextSections": [
       {
-        "nextSectionNumber": "201",
+        "nextSectionNumber": "114",
         "eventType": "choice_option",
         "eventParameter": {
           "targetComponent": "카딜라 성"
@@ -345,7 +345,91 @@
         }
       },
       {
-        "nextSectionNumber": "501",
+        "nextSectionNumber": "114",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "레드로즈 성"
+        }
+      }
+    ]
+  },
+  "114": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "40"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "34"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "115",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "카딜라 성"
+        }
+      },
+      {
+        "nextSectionNumber": "301",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "수정 협곡"
+        }
+      },
+      {
+        "nextSectionNumber": "401",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "바이칼 성"
+        }
+      },
+      {
+        "nextSectionNumber": "115",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "레드로즈 성"
+        }
+      }
+    ]
+  },
+  "115": {
+    "sequencialEvents": [
+      {
+        "eventElement": "prologue",
+        "eventNumber": "40"
+      },
+      {
+        "eventElement": "prologue",
+        "eventNumber": "34"
+      }
+    ],
+    "nextSections": [
+      {
+        "nextSectionNumber": "114",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "카딜라 성"
+        }
+      },
+      {
+        "nextSectionNumber": "301",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "수정 협곡"
+        }
+      },
+      {
+        "nextSectionNumber": "401",
+        "eventType": "choice_option",
+        "eventParameter": {
+          "targetComponent": "바이칼 성"
+        }
+      },
+      {
+        "nextSectionNumber": "114",
         "eventType": "choice_option",
         "eventParameter": {
           "targetComponent": "레드로즈 성"
@@ -2286,10 +2370,10 @@
         "eventNumber": "101"
       }
     ],
-    "conditionalGameObjectEvents":[
+    "conditionalGameObjectEvents": [
       {
-        "eventElement":"portal_25_02",
-        "eventNumber":"2"
+        "eventElement": "portal_25_02",
+        "eventNumber": "2"
       }
     ],
     "nextSections": [
@@ -2579,7 +2663,6 @@
       }
     ],
     "nextSections": [
-     
       {
         "nextSectionNumber": "404",
         "eventType": "move_sub_node_before_absolute_time",
@@ -2594,7 +2677,7 @@
           }
         }
       },
-       {
+      {
         "nextSectionNumber": "403",
         "eventType": "move_sub_node_after_absolute_time",
         "eventParameter": {
@@ -2804,7 +2887,6 @@
       }
     ],
     "nextSections": [
-     
       {
         "nextSectionNumber": "411",
         "eventType": "move_dungeon_room_after_absolute_time",
@@ -2820,7 +2902,7 @@
           }
         }
       },
-       {
+      {
         "nextSectionNumber": "410",
         "eventType": "move_dungeon_room_before_absolute_time",
         "eventParameter": {

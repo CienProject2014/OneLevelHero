@@ -33,7 +33,7 @@ public class DungeonEntranceButtonListener extends ClickListener {
 	public void clicked(InputEvent event, float x, float y) {
 		soundManager.playClickSound();
 		timeManager.plusMinute(15);
-		soundManager.setSoundByUseAndPlay("move_arrow");
+		soundManager.playClickSound();
 		positionManager.setCurrentSubNodePath(dungeonPath);
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE, dungeonPath);
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_SUB_NODE_BY_TIME, dungeonPath);

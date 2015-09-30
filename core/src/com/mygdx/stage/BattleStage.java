@@ -36,6 +36,7 @@ import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
+import com.mygdx.manager.MusicManager;
 import com.mygdx.manager.QuestManager;
 import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
@@ -48,6 +49,8 @@ import com.mygdx.popup.SkillRunPopup;
 import com.mygdx.screen.BattleScreen;
 
 public class BattleStage extends BaseOneLevelStage {
+	@Autowired
+	private MusicManager musicManager;
 	private final String TAG = "BattleStage";
 	private final String START_BATTLE_MESSAGE = "전투 시작!";
 	private final String PLAYER_WIN_MESSAGE = "몬스터를 물리쳤다!";
@@ -235,6 +238,7 @@ public class BattleStage extends BaseOneLevelStage {
 			if (battleManager.getBattleState().equals(BattleStateEnum.PLAYER_WIN)) {
 				questManager.checkHuntQuest(selectedMonster.getFacePath());
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				musicManager.stopMusic();
 				soundManager.setSoundByPathAndPlay("notice_victory");
 				getMonsterDropItem(selectedMonster);
 				getExperience(selectedMonster);
@@ -251,7 +255,7 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private void getMonsterDropItem(Monster selectedMonster) {
-		battleManager.getRandomDropItem(selectedMonster);
+		battleManager.getDropItem(selectedMonster);
 	}
 
 	private Table makeBattleUiTable() {

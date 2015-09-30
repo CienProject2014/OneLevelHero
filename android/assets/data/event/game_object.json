@@ -471,6 +471,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "handgrip",
                 "itemPath" : "astra",
                 "itemCount" : 1
               }
@@ -656,6 +657,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 3
               }
@@ -666,6 +668,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "brandy",
                 "itemCount" : 3
               }
@@ -1017,14 +1020,14 @@
             },
             {
               "script": "자네 지금 뭐 하는 건가! 완전 날강도가 따로 없네!",
-              "characterPath": "nia",
+              "characterPath": "noctern",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "redrose_castle_house"
             },
             {
-              "script": "당장 나가요!",
-              "characterPath": "nia",
+              "script": "당장 나가!",
+              "characterPath": "noctern",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "redrose_castle_house"
@@ -1056,6 +1059,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "ginger",
                 "itemCount" : 2
               }
@@ -1066,6 +1070,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "peony",
                 "itemCount" : 2
               }
@@ -1076,6 +1081,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "sage",
                 "itemCount" : 2
               }
@@ -1167,6 +1173,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "handgrip",
                 "itemPath" : "magic_procedure",
                 "itemCount" : 1
               }
@@ -1271,6 +1278,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "handgrip",
                 "itemPath" : "magic_procedure",
                 "itemCount" : 1
               }
@@ -1643,6 +1651,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "bulrush",
                 "itemCount" : 2
               }
@@ -1988,6 +1997,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -2173,6 +2183,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -2294,6 +2305,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -2416,6 +2428,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -2601,6 +2614,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -2786,6 +2800,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -2972,6 +2987,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -3158,6 +3174,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -3343,6 +3360,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -3528,6 +3546,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -3713,6 +3732,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -3899,6 +3919,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -4084,6 +4105,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -4269,6 +4291,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -4454,6 +4477,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -4639,6 +4663,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -4824,6 +4849,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -5009,6 +5035,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -5227,6 +5254,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -5412,6 +5440,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -5597,6 +5626,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -5782,6 +5812,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -5967,6 +5998,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -6152,6 +6184,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -6337,6 +6370,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -6522,6 +6556,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -6707,6 +6742,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -6892,6 +6928,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -7077,6 +7114,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -7262,6 +7300,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -7447,6 +7486,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -7633,6 +7673,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -7818,6 +7859,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -8003,6 +8045,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -8188,6 +8231,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -8374,6 +8418,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -8559,6 +8604,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -8744,6 +8790,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -8929,6 +8976,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
@@ -9219,6 +9267,7 @@
             "rewardState": "not_opened",
             "rewardParameter": {
               "item" : {
+                "itemType" : "consumables",
                 "itemPath" : "huttuynia_cordata",
                 "itemCount" : 1
               }
