@@ -31,7 +31,7 @@
     "elementType": "none",
     "skillFactor": "130",
     "hitboxSize": "4",
-    "description": "공격력 130%. 60초간 기절을 건다."
+    "description": "공격력 130%. 3칸. 60초간 기절을 건다."
   },
   "saint_guardian": {
     "name": "세인트 가디언",
@@ -77,7 +77,7 @@
     "elementType": "none",
     "skillFactor": "110",
     "hitboxSize": "1",
-    "description": "공격력 110%. 2회 공격. 한계까지 끌어올린 근력으로 화살을 2발 발사한다."
+    "description": "공격력 110%. 1칸. 2회 공격. 한계까지 끌어올린 근력으로 화살을 2발 발사한다."
   },
   "snipe": {
     "name": "저격",
@@ -132,7 +132,7 @@
         "elementType": "none",
         "skillFactor": "100",
         "hitboxSize": "3",
-        "description": "공격력 100%. 2회 공격한다."
+        "description": "공격력 100%. 3칸. 2회 공격한다."
     },
     "breeze": {
         "name": "연풍",
@@ -145,7 +145,7 @@
         "elementType": "none",
         "skillFactor": "150",
         "hitboxSize": "3",
-        "description": "공격력 150%. 출혈을 건다."
+        "description": "공격력 150%. 3칸. 출혈을 건다."
     },
     "strong_breeze": {
         "name": "웅풍",
@@ -156,9 +156,9 @@
         "buffName" : "sturn",
         "costGauge": "40",
         "elementType": "none",
-        "skillFactor": "450",
+        "skillFactor": "400",
         "hitboxSize": "1",
-        "description": "공격력 450%. 적이 출혈 상태이면 기절을 건다."
+        "description": "공격력 400%. 1칸. 적이 출혈 상태이면 기절을 건다."
     },
     "back_of_sword": {
         "name": "칼등치기",
@@ -170,7 +170,7 @@
         "buffName" : "",
         "skillFactor": "50",
         "hitboxSize": "2",
-        "description": "공격력 50%. 적의 행동게이지를 25 감소시킨다."
+        "description": "공격력 50%. 2칸. 적의 행동게이지를 25 감소시킨다."
     },
     "whirlwind": {
         "name": "돌개바람",
@@ -183,7 +183,7 @@
         "elementType": "none",
         "skillFactor": "120",
         "hitboxSize": "3",
-        "description": "공격력 120%. (공격력100%*적에게 걸린 디버프 개수)만큼 추가 데미지를 준다. 적의 모든 디버프가 해제된다."
+        "description": "공격력 120%. 3칸. (공격력100%*적에게 걸린 디버프 개수)만큼 추가 데미지를 준다. 적의 모든 디버프가 해제된다."
     },
     "surprise_attack": {
         "name": "배후 습격",
@@ -196,7 +196,7 @@
         "elementType": "none",
         "skillFactor": "400",
         "hitboxSize": "1",
-        "description": "공격력 400%. 둔화를 건다."
+        "description": "공격력 400%. 1칸. 둔화를 건다."
     },
     "flying": {
         "name": "비행",
