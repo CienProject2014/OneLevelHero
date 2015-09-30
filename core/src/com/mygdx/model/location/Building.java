@@ -12,7 +12,6 @@ import com.mygdx.enums.BuildingTypeEnum;
  */
 public class Building extends SubNode {
 	private BuildingTypeEnum buildingType;
-	private String backgroundPath;
 	private List<String> buildingNpc;
 	private List<String> gameObject;
 	private String outerPath;
@@ -46,13 +45,5 @@ public class Building extends SubNode {
 
 	public void setOuterPath(String outerPath) {
 		this.outerPath = outerPath;
-	}
-
-	public String getBackgroundPath() {
-		return backgroundPath;
-	}
-
-	public void setBackgroundPath(String backgroundPath) {
-		this.backgroundPath = backgroundPath;
 	}
 }

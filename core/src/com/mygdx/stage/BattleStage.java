@@ -236,12 +236,17 @@ public class BattleStage extends BaseOneLevelStage {
 				questManager.checkHuntQuest(selectedMonster.getFacePath());
 				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
 				soundManager.setSoundByPathAndPlay("notice_victory");
+				getMonsterDropItem(selectedMonster);
 				showBattleInfoMessage(PLAYER_WIN_MESSAGE);
 
 			} else if (battleManager.getBattleState().equals(BattleStateEnum.GAME_OVER)) {
 				screenFactory.show(ScreenEnum.GAME_OVER);
 			}
 		}
+	}
+
+	private void getMonsterDropItem(Monster selectedMonster) {
+		battleManager.getRandomDropItem(selectedMonster);
 	}
 
 	private Table makeBattleUiTable() {

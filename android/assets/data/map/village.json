@@ -151,8 +151,8 @@
       "cobweb_inn": {
         "subNodeName": "콥웨브 여관",
         "buildingType": "inn",
-        "subNodePath": "cobweb_inn",
         "backgroundPath":"blackwood_inn",
+        "subNodePath": "cobweb_inn",
         "targetTime": {
           "startHour": 0,
           "endHour": 24
@@ -1087,8 +1087,8 @@
         "buildingType": "inn",
         "outerPath": "bonichea_03",
         "subNodePath": "bonichea_inn",
-        "backgroundPath": "blackwood_inn",
-        "targetTime": {
+        "groundPath": "blackwood_inn",
+        "targetbackTime": {
           "startHour": 0,
           "endHour": 24
         },

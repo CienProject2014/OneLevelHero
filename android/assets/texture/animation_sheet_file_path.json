@@ -1,20 +1,230 @@
 {
   "attack_cutting": {
-    "filePath": "texture/animation_sheet/attack_cutting.png",
-	"frameNumber": 6,
-	"row": 2,
-	"column": 5
+      "filePath": "texture/animation_sheet/attack_cutting.png",
+    	"frameNumber": 6,
+    	"row": 2,
+    	"column": 5
   },
   "attack_swing": {
-	"filePath": "texture/animation_sheet/attack_swing.png",
-	"frameNumber": 24,
-	"row": 5,
-	"column": 5
+      "filePath": "texture/animation_sheet/ani_normal_one_hand_sword.png",
+      "frameNumber": 7,
+      "row": 5,
+      "column": 2
   },
-  "gale":{
-  	"filePath" : "texture/animation_sheet/gale.png",
-  	"frameNumber" : 20,
-  	"row" : 2,
-  	"column" : 10
+  "powerblade": {
+      "filePath": "texture/animation_sheet/ani_tech_2_powerblade.png",
+      "frameNumber": 6,
+      "row": 2,
+      "column": 5
+  },
+  "saint_guardian": {
+      "filePath": "texture/animation_sheet/ani_tech_3_saint_guardian.png",
+      "frameNumber": 20,
+      "row": 4,
+      "column": 5
+  },
+  "lastjudgement": {
+      "filePath": "texture/animation_sheet/ani_tech_5_lastjudgement.png",
+      "frameNumber": 36,
+      "row": 8,
+      "column": 5
+  },
+  "piercearrow": {
+      "filePath": "texture/animation_sheet/ani_tech_6_piercearrow.png",
+      "frameNumber": 10,
+      "row": 1,
+      "column": 10
+  },
+  "snipe": {
+      "filePath": "texture/animation_sheet/ani_tech_1_none.png",
+      "frameNumber": 1,
+      "row": 1,
+      "column": 1
+  },
+  "return": {
+      "filePath": "texture/animation_sheet/ani_tech_1_none.png",
+      "frameNumber": 1,
+      "row": 1,
+      "column": 1
+  },
+  "detailedshoot": {
+      "filePath": "texture/animation_sheet/ani_tech_6_piercearrow.png",
+      "frameNumber": 10,
+      "row": 1,
+      "column": 10
+  },
+  "multishoot": {
+      "filePath": "texture/animation_sheet/ani_tech_6_piercearrow.png",
+      "frameNumber": 10,
+      "row": 1,
+      "column": 10
+  },
+  "gale": {
+      "filePath": "texture/animation_sheet/ani_tech_11_gale.png",
+      "frameNumber": 10,
+      "row": 2,
+      "column": 5
+  },
+	"breeze" : {
+  		"filePath"  :"texture/animation_sheet/ani_tech_12_breeze.png",
+  		"frameNumber" : 10,
+  		"row" : 1,
+  		"column" : 10
+	},
+	"strong_breeze" : {
+  		"filePath"  :"texture/animation_sheet/ani_tech_13_strong_breeze.png",
+  		"frameNumber" : 8,
+  		"row" : 2,
+  		"column" : 5
+	},
+	"back_of_sword" : {
+  		"filePath"  :"texture/animation_sheet/ani_tech_14_back_of_sword.png",
+  		"frameNumber" : 10,
+  		"row" : 2,
+  		"column" : 5
+	},
+	"whirlwind" : {
+  		"filePath"  :"texture/animation_sheet/ani_tech_15_whirlwind.png",
+  		"frameNumber" : 24,
+  		"row" : 5,
+  		"column" : 5
+	},
+	"surprise_attack" : {
+  		"filePath"  :"texture/animation_sheet/ani_tech_16_surprise_attack.png",
+  		"frameNumber" : 8,
+  		"row" : 2,
+  		"column" : 5
+	},
+  "casting": {
+      "filePath": "texture/animation_sheet/ani_magic_1_casting.png",
+      "frameNumber": 20,
+      "row": 5,
+      "column": 4
+  },
+  "cross": {
+      "filePath": "texture/animation_sheet/ani_magic_2_cross.png",
+      "frameNumber": 7,
+      "row": 1,
+      "column": 7
+  },
+  "heal": {
+      "filePath": "texture/animation_sheet/ani_magic_3_heal.png",
+      "frameNumber": 21,
+      "row": 5,
+      "column": 5
+  },
+  "smile": {
+      "filePath": "texture/animation_sheet/ani_magic_4_smile.png",
+      "frameNumber": 16,
+      "row": 4,
+      "column": 5
+  },
+  "handing": {
+      "filePath": "texture/animation_sheet/ani_magic_5_handing.png",
+      "frameNumber": 19,
+      "row": 4,
+      "column": 5
+  },
+  "lighting": {
+      "filePath": "texture/animation_sheet/ani_magic_6_lighting.png",
+      "frameNumber": 33,
+      "row": 5,
+      "column": 7
+  },
+  "spiritbullet": {
+      "filePath": "texture/animation_sheet/ani_magic_7_spiritbullet.png",
+      "frameNumber": 24,
+      "row": 5,
+      "column": 5
+  },
+  "restriction": {
+      "filePath": "texture/animation_sheet/ani_magic_8_restriction.png",
+      "frameNumber": 16,
+      "row": 4,
+      "column": 5
+  },
+  "electric_shock": {
+      "filePath": "texture/animation_sheet/ani_magic_9_electric_shock.png",
+      "frameNumber": 15,
+      "row": 3,
+      "column": 5
+  },
+  "freeze": {
+      "filePath": "texture/animation_sheet/ani_magic_10_freeze.png",
+      "frameNumber": 30,
+      "row": 6,
+      "column": 5
+  },
+  "soul_cover": {
+      "filePath": "texture/animation_sheet/ani_magic_11_soul_cover.png",
+      "frameNumber": 20,
+      "row": 4,
+      "column": 5
+  },
+  "hand_of_death": {
+      "filePath": "texture/animation_sheet/ani_magic_12_hand_of_death.png",
+      "frameNumber": 12,
+      "row": 2,
+      "column": 6
+  },
+  "whisper_of_death": {
+      "filePath": "texture/animation_sheet/ani_magic_13_whisper_of_death.png",
+      "frameNumber": 30,
+      "row": 6,
+      "column": 5
+  },
+  "call_of_soul": {
+      "filePath": "texture/animation_sheet/ani_magic_14_call_of_soul.png",
+      "frameNumber": 15,
+      "row": 3,
+      "column": 5
+  },
+  "amplified_casting": {
+      "filePath": "texture/animation_sheet/ani_magic_15_amplified_casting.png",
+      "frameNumber": 20,
+      "row": 4,
+      "column": 5
+  },
+  "meteor": {
+      "filePath": "texture/animation_sheet/ani_magic_16_meteor.png",
+      "frameNumber": 17,
+      "row": 4,
+      "column": 5
+  },
+  "blizzard": {
+      "filePath": "texture/animation_sheet/ani_magic_17_blizzard.png",
+      "frameNumber": 33,
+      "row": 7,
+      "column": 5
+  },
+  "thunder_storm": {
+      "filePath": "texture/animation_sheet/ani_magic_18_thunder_storm.png",
+      "frameNumber": 23,
+      "row": 5,
+      "column": 5
+  },
+  "sleep": {
+      "filePath": "texture/animation_sheet/ani_magic_19_sleep.png",
+      "frameNumber": 34,
+      "row": 7,
+      "column": 5
+  },
+  "charm": {
+      "filePath": "texture/animation_sheet/ani_magic_20_charm.png",
+      "frameNumber": 15,
+      "row": 3,
+      "column": 5
+  },
+  "ice_arrow": {
+      "filePath": "texture/animation_sheet/ani_magic_21_ice_arrow.png",
+      "frameNumber": 17,
+      "row": 4,
+      "column": 5
+  },
+  "ice_storm": {
+      "filePath": "texture/animation_sheet/ani_magic_22_ice_storm.png",
+      "frameNumber": 29,
+      "row": 6,
+      "column": 5
   }
 }
