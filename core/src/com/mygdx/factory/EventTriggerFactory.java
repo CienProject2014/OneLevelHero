@@ -8,6 +8,7 @@ import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.eventTrigger.AlwaysOpenGameObjectEventTrigger;
 import com.mygdx.eventTrigger.AlwaysOpenNpcEventTrigger;
 import com.mygdx.eventTrigger.ChatEventTrigger;
+import com.mygdx.eventTrigger.CheckQuestEventTrigger;
 import com.mygdx.eventTrigger.ChoiceOptionEventTrigger;
 import com.mygdx.eventTrigger.CloseGameObjectEventTrigger;
 import com.mygdx.eventTrigger.CloseNpcEventTrigger;
@@ -51,6 +52,8 @@ public class EventTriggerFactory {
 				return context.getBean(StartBattleEventTrigger.class);
 			case CHAT :
 				return context.getBean(ChatEventTrigger.class);
+			case CHECK_QUEST :
+				return context.getBean(CheckQuestEventTrigger.class);
 			case CHOICE_OPTION :
 				return context.getBean(ChoiceOptionEventTrigger.class);
 			case CLOSE_GAME_OBJECT_EVENT :

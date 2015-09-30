@@ -38,6 +38,7 @@ public class ArrowButtonListener extends ClickListener {
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		soundManager.playClickSound();
+		soundManager.setSoundByPathAndPlay("notice_moving");
 		int beforeSectionNumber = storySectionManager.getCurrentStorySectionNumber();
 		storySectionManager.triggerNextSectionEvent(EventTypeEnum.CLICK_ARROW, connection.getValue().getArrowName());
 		int currentSectionNumber = storySectionManager.getCurrentStorySectionNumber();

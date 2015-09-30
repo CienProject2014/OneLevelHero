@@ -83,9 +83,9 @@
         "eventState": "not_opened",
         "eventType": "play_music",
         "eventParameter": {
-          "music" : {
-          	"musicPath": "fights"
-          }          
+          "music": {
+            "musicPath": "bossbattle"
+          }
         }
       },
       "5": {
@@ -539,9 +539,9 @@
         "eventState": "not_opened",
         "eventType": "pass_time",
         "eventParameter": {
-        	"time" : {
-        		"hour": 6
-        	}          
+          "time": {
+            "hour": 6
+          }
         }
       },
       "32": {
@@ -612,10 +612,9 @@
         "eventState": "not_opened",
         "eventType": "pass_time",
         "eventParameter": {
-        	"time" : {
-        	 	"minute": 5
-        	}
-         
+          "time": {
+            "minute": 5
+          }
         }
       },
       "34": {
@@ -859,6 +858,35 @@
             }
           ]
         }
+      },
+      "40": {
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "아직 구현이 안된 스토리네요",
+              "characterPath": "lilis",
+              "faceNumber": "07",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_02"
+            },
+            {
+              "script": "저런... 언젠가는 구현이 되겠지...",
+              "characterPath": "yongsa",
+              "faceNumber": "07",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_02"
+            },
+             {
+              "script": "CIEN 화이팅.....",
+              "characterPath": "parath",
+              "faceNumber": "07",
+              "speakerPosition": "right",
+              "backgroundPath": "cobweb_02"
+            }
+          ]
+        }
       }
     }
   },
@@ -900,7 +928,7 @@
               "backgroundPath": "cobweb_02"
             },
             {
-              "script": "수정협곡은 현재 거대 몬스터가 출몰하여 대주교령으로 통행이 금지된 상태입니다.", 
+              "script": "수정협곡은 현재 거대 몬스터가 출몰하여 대주교령으로 통행이 금지된 상태입니다.",
               "speakerPosition": "left",
               "characterPath": "cobwebguard",
               "faceNumber": "01",
@@ -949,11 +977,11 @@
               "backgroundPath": "cobweb_02"
             },
             {
-            "script": "파라스… 넌 한번이라도 내편 좀 들어주면 안되냐…",
-            "speakerPosition": "right",
-            "characterPath": "yongsa",
-            "faceNumber": "12",
-            "backgroundPath": "cobweb_02"
+              "script": "파라스… 넌 한번이라도 내편 좀 들어주면 안되냐…",
+              "speakerPosition": "right",
+              "characterPath": "yongsa",
+              "faceNumber": "12",
+              "backgroundPath": "cobweb_02"
             },
             {
               "script": "저도 그래보고 싶네요.",
@@ -2081,8 +2109,8 @@
         "eventParameter": {
           "location": {
             "subNodePath": "cave_of_succubus",
-            "floorPath" : "cave_of_succubus",
-            "roomLabel" : "room_1_1"
+            "floorPath": "cave_of_succubus",
+            "roomLabel": "room_1_1"
           }
         }
       },
@@ -4264,8 +4292,8 @@
           "unit": {
             "heroPath": "yongsa"
           },
-          "buff" : {
-            "buffPath" : "curse_clear"
+          "buff": {
+            "buffPath": "curse_clear"
           }
         }
       },
@@ -4940,9 +4968,9 @@
         "eventState": "not_opened",
         "eventType": "close_game_object_event",
         "eventParameter": {
-          "eventPacket" : {
-            "eventElement" : "portal_25_02",
-            "eventNumber" : 1
+          "eventPacket": {
+            "eventElement": "portal_25_02",
+            "eventNumber": 1
           }
         }
       },
@@ -4951,11 +4979,11 @@
         "eventType": "set_game_object_target_time",
         "eventParameter": {
           "location": {
-            "gameObjectPath" : "winterfall_portal"
+            "gameObjectPath": "winterfall_portal"
           },
-          "time" : {
-            "startHour" : 24,
-            "endHour" : 24
+          "time": {
+            "startHour": 24,
+            "endHour": 24
           }
         }
       }
@@ -5386,8 +5414,8 @@
         "eventState": "not_opened",
         "eventType": "quit_party",
         "eventParameter": {
-          "unit" : {
-            "heroPath" : "parath"
+          "unit": {
+            "heroPath": "parath"
           }
         }
       },
@@ -5395,8 +5423,8 @@
         "eventState": "not_opened",
         "eventType": "quit_party",
         "eventParameter": {
-          "unit" : {
-            "heroPath" : "lilis"
+          "unit": {
+            "heroPath": "lilis"
           }
         }
       },
@@ -5404,8 +5432,8 @@
         "eventState": "not_opened",
         "eventType": "join_party",
         "eventParameter": {
-          "unit" : {
-            "heroPath" : "kein"
+          "unit": {
+            "heroPath": "kein"
           }
         }
       },
@@ -6717,8 +6745,8 @@
         "eventState": "not_opened",
         "eventType": "quit_party",
         "eventParameter": {
-          "unit" : {
-            "heroPath" : "kein"
+          "unit": {
+            "heroPath": "kein"
           }
         }
       },
@@ -6726,8 +6754,8 @@
         "eventState": "not_opened",
         "eventType": "join_party",
         "eventParameter": {
-          "unit" : {
-            "heroPath" : "parath"
+          "unit": {
+            "heroPath": "parath"
           }
         }
       },
@@ -6735,8 +6763,8 @@
         "eventState": "not_opened",
         "eventType": "join_party",
         "eventParameter": {
-          "unit" : {
-            "heroPath" : "lilis"
+          "unit": {
+            "heroPath": "lilis"
           }
         }
       },
@@ -7550,8 +7578,8 @@
           "unit": {
             "heroPath": "yongsa"
           },
-          "buff" : {
-            "buffPath" : "curse_clear"
+          "buff": {
+            "buffPath": "curse_clear"
           }
         }
       },
@@ -7801,11 +7829,11 @@
         "eventType": "set_npc_target_time",
         "eventParameter": {
           "location": {
-          	 "npcPath" : "evergnail"
+            "npcPath": "evergnail"
           },
-          "time" : {
-            "startHour" : 24,
-            "endHour" : 24
+          "time": {
+            "startHour": 24,
+            "endHour": 24
           }
         }
       },
@@ -7814,11 +7842,11 @@
         "eventType": "set_npc_target_time",
         "eventParameter": {
           "location": {
-           "npcPath" : "wallace"
+            "npcPath": "wallace"
           },
-          "time" : {
-            "startHour" : 24,
-            "endHour" : 24
+          "time": {
+            "startHour": 24,
+            "endHour": 24
           }
         }
       },
@@ -7826,9 +7854,9 @@
         "eventState": "not_opened",
         "eventType": "close_game_object_event",
         "eventParameter": {
-          "eventPacket" : {
-            "eventElement" : "middle_ridge_drawer",
-            "eventNumber" : 2
+          "eventPacket": {
+            "eventElement": "middle_ridge_drawer",
+            "eventNumber": 2
           }
         }
       },
@@ -8782,7 +8810,7 @@
       }
     }
   },
-  "mawang_battle":{
+  "mawang_battle": {
     "events": {
       "1": {
         "eventState": "not_opened",

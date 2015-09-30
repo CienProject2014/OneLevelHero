@@ -25,7 +25,7 @@ public class QuestManager {
 			if (quest.getQuestState().equals(QuestState.CLEARD)) {
 				continue;
 			}
-			if (quest.getQuestName().equals(monsterPath)) {
+			if (quest.getQuestObjectPath().equals(monsterPath)) {
 				quest.setQuestCounter(quest.getQuestCounter() + 1);
 				checkClearQuest(quest);
 			}
