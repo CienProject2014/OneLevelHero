@@ -6,6 +6,7 @@ public class SubNode {
 	private String subNodeName;
 	private String subNodePath;
 	private TargetTime targetTime;
+	private String backgroundPath;
 
 	public boolean canGoBuilding(int currentMinute) {
 		return ArgumentChecker.checkIsInTargetTime(targetTime, currentMinute);
@@ -30,5 +31,13 @@ public class SubNode {
 
 	public void setSubNodePath(String subNodePath) {
 		this.subNodePath = subNodePath;
+	}
+
+	public String getBackgroundPath() {
+		return backgroundPath;
+	}
+
+	public void setBackgroundPath(String backgroundPath) {
+		this.backgroundPath = backgroundPath;
 	}
 }

@@ -104,7 +104,13 @@ public class DungeonStage extends BaseOneLevelStage {
 
 	private void showBackground(DungeonManager dungeonManager) {
 		String backgroundPath;
-		String subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath();
+		String subNodePath;
+		if (dungeonManager.getDungeonInfo().getCurrentDungeon().getBackgroundPath() != null) {
+			subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getBackgroundPath();
+		} else {
+			subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath();
+		}
+
 		switch (dungeonManager.getCurrentDoorSize()) {
 			case 0 :
 				backgroundPath = getBackgroundPathByType(dungeonManager);
@@ -131,22 +137,26 @@ public class DungeonStage extends BaseOneLevelStage {
 	}
 	private String getBackgroundPathByType(DungeonManager dungeonManager) {
 		if (dungeonManager.getDungeonInfo().getCurrentDirection().equals(Direction.BACKWARD)) {
-			String subNodePath = positionManager.getCurrentSubNodePath();
+			String subNodePath;
+			if (dungeonManager.getDungeonInfo().getCurrentDungeon().getBackgroundPath() != null) {
+				subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getBackgroundPath();
+			} else {
+				subNodePath = dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath();
+			}
 			switch (dungeonManager.getDungeonInfo().getCurrentRoom().getRoomType()) {
 				case GATE :
-					return subNodePath + BG_DOOR_GATE;
+					return subNodePath + "_" + BG_DOOR_GATE;
 				case DOWN_STAIR :
-					return subNodePath + BG_DOOR_DOWN_STAIR;
+					return subNodePath + "_" + BG_DOOR_DOWN_STAIR;
 				case UP_STAIR :
-					return subNodePath + BG_DOOR_UP_STAIR;
+					return subNodePath + "_" + BG_DOOR_UP_STAIR;
 				default :
-					return subNodePath + BG_DOOR[0];
+					return subNodePath + "_" + BG_DOOR[0];
 			}
 		} else {
 			return dungeonManager.getDungeonInfo().getCurrentDungeon().getSubNodePath() + "_" + BG_DOOR[0];
 		}
 	}
-
 	private void showDoorButton(DungeonManager dungeonManager) {
 		if (!currentRoomLabel.equals(dungeonManager.getDungeonInfo().getCurrentRoom().getRoomLabel())
 				|| !currentDirection.equals(dungeonManager.getDungeonInfo().getCurrentDirection())) {

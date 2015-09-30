@@ -18,6 +18,7 @@ import com.mygdx.model.unit.Unit;
 public class BattleInfo {
 	private Monster currentMonster;
 	private BattleStateEnum battleState;
+	private String battleInfoMessage;
 	private String backgroundPath;
 	private ArrayList<ImageButton> rMenuButtonList;
 	private CurrentClickStateEnum currentClickState;
@@ -205,6 +206,14 @@ public class BattleInfo {
 
 	public void setEndBuff(boolean endBuff) {
 		this.endBuff = endBuff;
+	}
+
+	public String getBattleInfoMessage() {
+		return battleInfoMessage;
+	}
+
+	public void setBattleInfoMessage(String battleInfoMessage) {
+		this.battleInfoMessage = battleInfoMessage;
 	}
 
 }

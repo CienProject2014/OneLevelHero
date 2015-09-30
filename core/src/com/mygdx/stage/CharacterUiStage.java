@@ -111,12 +111,10 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 	private void initializeList() {
 		highlightImage = new Image[3];
-		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
-			highlightTable = makeHighlightTable();
-			tableStack.add(highlightTable);
-			for (int i = 0; i < partyManager.getBattleMemberList().size(); i++)
-				highlightImage[i].setVisible(false);
-		}
+		highlightTable = makeHighlightTable();
+		tableStack.add(highlightTable);
+		for (int i = 0; i < partyManager.getBattleMemberList().size(); i++)
+			highlightImage[i].setVisible(false);
 		battleMemberList = partyManager.getBattleMemberList();
 		hpLabelList = new ArrayList<Label>(battleMemberList.size());
 		heroStatusBarList = new ArrayList<StatusBar>(battleMemberList.size());

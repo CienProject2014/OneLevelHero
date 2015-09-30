@@ -121,13 +121,12 @@
 		scope="prototype"/>
 	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage"
 		scope="prototype"/>
-	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype">
-	</bean>
+	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype"/>
+	<bean id="battleInfoMessageStage" class="com.mygdx.stage.BattleInfoMessageStage" scope="prototype"/>
 	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage"
 		scope="prototype"/>
 	<bean id="buildingRestPopupStage" class="com.mygdx.stage.BuildingRestPopupStage" scope="prototype"/>
-	<bean id="characterUiStage" class="com.mygdx.stage.CharacterUiStage"
-		scope="prototype"/>
+	<bean id="characterUiStage" class="com.mygdx.stage.CharacterUiStage" scope="prototype"/>
 	<bean id="creditStage" class="com.mygdx.stage.CreditStage"
 		scope="prototype"/>
 	<bean id="dungeonStage" class="com.mygdx.stage.DungeonStage"
