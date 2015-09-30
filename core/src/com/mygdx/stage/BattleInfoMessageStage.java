@@ -32,6 +32,7 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 	private TextButton messageButton;
 	private Table battleStatusTable;
 	private TextButton statusMessageButton;
+
 	public void act(float delta) {
 		showButton();
 	}
@@ -57,8 +58,8 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 			public void clicked(InputEvent event, float x, float y) {
 				if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
 					movingManager.goCurrentLocatePosition();
-					storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE, battleManager
-							.getSelectedMonster().getFacePath());
+					storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE,
+							battleManager.getSelectedMonster().getFacePath());
 				} else if (battleStatusMessage.equals(START_BATTLE_MESSAGE)) {
 					BattleScreen.showBattleInfoMessage = false;
 				}
@@ -67,8 +68,8 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 	}
 	public Stage makeStage() {
 		super.makeStage();
-		TextureRegionDrawable textMenu = new TextureRegionDrawable(new TextureRegion(
-				textureManager.getTexture("battleui_battle_message")));
+		TextureRegionDrawable textMenu = new TextureRegionDrawable(
+				new TextureRegion(textureManager.getTexture("battleui_battle_message")));
 		battleMessageTable.left().bottom();
 		battleMessageTable.padLeft(400).padBottom(600);
 		final String battleInfoMessage = battleManager.getBattleInfoMessage();

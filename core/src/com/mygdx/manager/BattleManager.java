@@ -861,6 +861,15 @@ public class BattleManager {
 		return battleInfo.isEndBuff();
 	}
 
+	public void getExperience(Monster selectedMonster) {
+		for (Unit unit : partyManager.getBattleMemberList()) {
+			unit.getStatus().setExperience(
+					unit.getStatus().getExperience() + selectedMonster.getStatus().getExperience());
+		}
+		setText("경험치 " + selectedMonster.getStatus().getExperience() + "을 얻었다!");
+		partyManager.calculateLevel();
+	}
+
 	public void getDropItem(Monster selectedMonster) {
 		Random random = new Random();
 		if (selectedMonster.getDropItems().size() != 0) {
