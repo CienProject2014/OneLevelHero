@@ -545,7 +545,7 @@
             "rewardParameter": {
               "quest": {
                 "questName": "몸에 좋은 보약",
-                "questObjectPath": "god_of_drug",
+                "questObjectPath": "white_tiger",
                 "questObjectCount": 1
               }
             }
@@ -769,7 +769,7 @@
             "rewardParameter": {
               "quest": {
                 "questName": "몸에 좋은 보약2",
-                "questObjectPath": "heart",
+                "questObjectPath": "white_tiger",
                 "questObjectCount": 1
               }
             }
@@ -1844,7 +1844,7 @@
             "rewardParameter": {
               "quest": {
                 "questName": "사냥개 이빨 묶음",
-                "questObjectPath": "tooth_of_dog",
+                "questObjectPath": "hunting_dog",
                 "questObjectCount": 3
               }
             }
@@ -2016,7 +2016,7 @@
             "rewardParameter": {
               "quest": {
                 "questName": "와이번 꼬리 요리",
-                "questObjectPath": "wyvern",
+                "questObjectPath": "big_tail",
                 "questObjectCount": 3
               }
             }
@@ -6907,7 +6907,7 @@
             "rewardParameter": {
               "quest": {
                 "questName": "배게 부족",
-                "questObjectPath": "bourre_of_unicorn",
+                "questObjectPath": "unicorn",
                 "questObjectCount": 1
               }
             }
@@ -7135,7 +7135,7 @@
             "rewardParameter": {
               "quest": {
                 "questName": "연금술",
-                "questObjectPath": "core_of_spirit",
+                "questObjectPath": "elemental_fire",
                 "questObjectCount": 3
               }
             }
@@ -8308,7 +8308,7 @@
             "rewardParameter": {
               "quest": {
                 "questName": "잃어버린 것",
-                "questObjectPath": "seed_pocket",
+                "questObjectPath": "twinhead",
                 "questObjectCount": 3
               }
             }
@@ -8869,7 +8869,7 @@
             "rewardParameter": {
               "quest": {
                 "questName": "그녀를 위한 선물",
-                "questObjectPath": "petal_of_rafflesia",
+                "questObjectPath": "rafflesia",
                 "questObjectCount": 5
               }
             }
@@ -10139,18 +10139,87 @@
       },
       "2": {
         "eventTitle": "이중 쇠사슬 갑옷",
-        "eventState": "always_open",
+        "eventState": "opened",
         "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "재료를 가져오면 갑옷을 만들어 줄 수 있다네.",
+              "script": "최근에 내가 갑옷을 더 단단히 만드는 방법을 알아냈다네.",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "용사인 자네라면, 내가 특별히 재료만 가져오는 것으로 만들어 줄 수 있지.",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "철제 갑옷 2개를 가져오면 더 좋은 갑옷으로 만들어 주겠네.",
               "characterPath": "kadilla_castle_smithy_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_smithy"
             }
           ]
+        },
+        "rewards": [
+          {
+            "rewardType": "quest_get_item",
+            "rewardState": "always_open",
+            "rewardParameter": {
+              "quest": {
+                "questName": "이중 쇠사슬 갑옷",
+                "questObjectPath": "iron_armor",
+                "questObjectCount": 2
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "kadilla_castle_smithy_owner",
+                "eventNumber": 3
+              }
+            }
+          },
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      },
+      "3": {
+        "eventTitle": "이중 쇠사슬 갑옷(진행중)",
+        "eventState": "not_opened",
+        "eventType": "check_quest",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "철제 갑옷 2개를 가져오면 더 좋은 갑옷으로 만들어 주겠네.",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            }
+          ],
+          "quest": {
+            "questName": "이중 쇠사슬 갑옷"
+          },
+          "eventPacket": {
+            "eventElement": "kadilla_castle_smithy_owner",
+            "eventNumber": 4
+          }
         },
         "rewards": [
           {
@@ -10164,14 +10233,110 @@
           }
         ]
       },
-      "3": {
-        "eventTitle": "수호의 정령 대검",
-        "eventState": "always_open",
+      "4": {
+        "eventTitle": "이중 쇠사슬 갑옷(완료)",
+        "eventState": "not_opened",
         "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "재료를 가져오면 양손검을 만들어 줄 수 있다네.",
+              "script": "가져왔구먼. 잠시만 기다리게",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "...",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "......",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "여기있네. 잘 써주길 바라네.",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "이중 쇠사슬 갑옷을 받았다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "backgroundPath": "cobweb_smithy"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item": {
+                "itemType": "clothes",
+                "itemPath": "double_chain_armor",
+                "itemCount": 1
+              }
+            }
+          },
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "kadilla_castle_smithy_owner",
+                "eventNumber": 3
+              }
+            }
+          }
+        ]
+      },
+      "5": {
+        "eventTitle": "수호의 정령 대검",
+        "eventState": "opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "최근에 내가 기운이 안좋아진 거 같다네.",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "몸에 좋은 음식을 먹어야 되겠는데...",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "곰의 쓸개가 그렇게 좋다던데... 사실 잘 모르지만...",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "그래도 먹어봐야겠네. 대신 최고급 쓸개 1개를 가져오면 좋은 무기를 주겠네.",
               "characterPath": "kadilla_castle_smithy_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
@@ -10181,11 +10346,141 @@
         },
         "rewards": [
           {
+            "rewardType": "quest_get_item",
+            "rewardState": "always_open",
+            "rewardParameter": {
+              "quest": {
+                "questName": "수호의 정령 대검",
+                "questObjectPath": "brown_bear",
+                "questObjectCount": 1
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "kadilla_castle_smithy_owner",
+                "eventNumber": 6
+              }
+            }
+          },
+          {
             "rewardType": "pass_time",
             "rewardState": "not_opened",
             "rewardParameter": {
               "time": {
                 "minute": 5
+              }
+            }
+          }
+        ]
+      },
+      "6": {
+        "eventTitle": "수호의 정령 대검(진행중)",
+        "eventState": "not_opened",
+        "eventType": "check_quest",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "최고급 쓸개 1개를 가져오면 좋은 무기를 주겠네.",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            }
+          ],
+          "quest": {
+            "questName": "수호의 정령 대검"
+          },
+          "eventPacket": {
+            "eventElement": "kadilla_castle_smithy_owner",
+            "eventNumber": 7
+          }
+        },
+        "rewards": [
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      },
+      "7": {
+        "eventTitle": "수호의 정령 대검(완료)",
+        "eventState": "not_opened",
+        "eventType": "chat",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "가져왔구먼. 잠시만 기다리게",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "...",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "......",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "여기있네. 잘 써주길 바라네.",
+              "characterPath": "kadilla_castle_smithy_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_smithy"
+            },
+            {
+              "script": "수호의 정령 대검을 받았다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "backgroundPath": "cobweb_smithy"
+            }
+          ]
+        },
+        "rewards": [
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item": {
+                "itemType": "handgrip",
+                "itemPath": "spirit_sword",
+                "itemCount": 1
+              }
+            }
+          },
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "kadilla_castle_smithy_owner",
+                "eventNumber": 6
               }
             }
           }
@@ -10267,18 +10562,87 @@
       },
       "2": {
         "eventTitle": "룬 문자 로브",
-        "eventState": "always_open",
+        "eventState": "opened",
         "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "재료를 가져오면 로브를 만들어 줄 수 있다네.",
+              "script": "최근에 남편이 몸이 쇠하다면서 약좀 지어달라는데.",
+              "characterPath": "kadilla_castle_clothing_store_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_clothingstore"
+            },
+            {
+              "script": "요 근방에서는 불곰에게서 나오는 최고급 쓸개 외에는 모르겠더라고요.",
+              "characterPath": "kadilla_castle_clothing_store_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_clothingstore"
+            },
+            {
+              "script": "그러니 불곰을 잡아서 최고급 쓸개 1개를 가져와 주시겠어요?",
               "characterPath": "kadilla_castle_clothing_store_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
               "backgroundPath": "cobweb_clothingstore"
             }
           ]
+        },
+        "rewards": [
+          {
+            "rewardType": "quest_get_item",
+            "rewardState": "always_open",
+            "rewardParameter": {
+              "quest": {
+                "questName": "룬 문자 로브",
+                "questObjectPath": "brown_bear",
+                "questObjectCount": 1
+              }
+            }
+          },
+          {
+            "rewardType": "always_open_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "kadilla_castle_clothing_store_owner",
+                "eventNumber": 3
+              }
+            }
+          },
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          }
+        ]
+      },
+      "3": {
+        "eventTitle": "룬 문자 로브(진행중)",
+        "eventState": "not_opened",
+        "eventType": "check_quest",
+        "eventParameter": {
+          "eventScenes": [
+            {
+              "script": "최고급 쓸개 1개를 가져와 주시겠어요?",
+              "characterPath": "kadilla_castle_clothing_store_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_clothingstore"
+            }
+          ],
+          "quest": {
+            "questName": "룬 문자 로브"
+          },
+          "eventPacket": {
+            "eventElement": "kadilla_castle_clothing_store_owner",
+            "eventNumber": 4
+          }
         },
         "rewards": [
           {
@@ -10291,62 +10655,78 @@
             }
           }
         ]
-      }
-    },
-    "greetingMessages": [
-      "무슨 일인가?"
-    ]
-  },
-  "beck": {
-    "name": "경비병 벡",
-    "positionIndex": 1,
-    "elementPath": "beck",
-    "events": {
-      "1": {
-        "eventTitle": "대화하기",
-        "eventState": "always_open",
+      },
+      "4": {
+        "eventTitle": "룬 문자 로브(완료)",
+        "eventState": "not_opened",
         "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {
-              "script": "근무 중 이상 무!!",
-              "characterPath": "beck",
+              "script": "가져오셨군요. 감사합니다.",
+              "characterPath": "kadilla_castle_clothing_store_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "kadilla_castle_castlegate"
-            }
-          ]
-        }
-      }
-    },
-    "greetingMessages": [
-      "근무 중 이상 무!"
-    ]
-  },
-  "snocks": {
-    "name": "경비병 스눅스",
-    "positionIndex": 3,
-    "elementPath": "snocks",
-    "events": {
-      "1": {
-        "eventTitle": "대화하기",
-        "eventState": "always_open",
-        "eventType": "chat",
-        "eventParameter": {
-          "eventScenes": [
+              "backgroundPath": "cobweb_clothingstore"
+            },
             {
-              "script": "근무 중 이상 무!!",
-              "characterPath": "snocks",
+              "script": "잠시만요.",
+              "characterPath": "kadilla_castle_clothing_store_owner",
               "faceNumber": "01",
               "speakerPosition": "left",
-              "backgroundPath": "kadilla_castle_castlegate"
+              "backgroundPath": "cobweb_clothingstore"
+            },
+            {
+              "script": "이건 대단한 거 아니지만, 감사의 표시에요. 받아주세요.",
+              "characterPath": "kadilla_castle_clothing_store_owner",
+              "faceNumber": "01",
+              "speakerPosition": "left",
+              "backgroundPath": "cobweb_clothingstore"
+            },
+            {
+              "script": "룬 문자 로브를 받았다.",
+              "characterPath": "nothing_image",
+              "faceNumber": "01",
+              "backgroundPath": "cobweb_smithy"
             }
           ]
-        }
+        },
+        "rewards": [
+          {
+            "rewardType": "get_item",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "item": {
+                "itemType": "clothes",
+                "itemPath": "rune_words_lob",
+                "itemCount": 1
+              }
+            }
+          },
+          {
+            "rewardType": "pass_time",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "time": {
+                "minute": 5
+              }
+            }
+          },
+          {
+            "rewardType": "close_npc_event",
+            "rewardState": "not_opened",
+            "rewardParameter": {
+              "eventPacket": {
+                "eventElement": "kadilla_castle_clothing_store_owner",
+                "eventNumber": 3
+              }
+            }
+          }
+        ]
       }
     },
     "greetingMessages": [
-      "근무 중 이상 무!"
+      "무슨 일인가요?"
     ]
   },
   "kadilla_castle_inn_owner": {
@@ -10483,7 +10863,7 @@
             "rewardParameter": {
               "quest": {
                 "questName": "여관의 새단장",
-                "questObjectPath": "nacre",
+                "questObjectPath": "clam",
                 "questObjectCount": 3
               }
             }
