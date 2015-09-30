@@ -68,9 +68,13 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		if (battleManager.isInBattle()) {
 			for (int i = 0; i < battleMemberList.size(); i++) {
 				if (battleManager.getCurrentActor() == partyManager.getBattleMemberList().get(i)) {
-					highlightImage[i % 3].setVisible(true);
-					highlightImage[(i + 1) % 3].setVisible(false);
-					highlightImage[(i + 2) % 3].setVisible(false);
+					highlightImage[i % battleMemberList.size()].setVisible(true);
+					if (battleMemberList.size() >= 2) {
+						highlightImage[(i + 1) % battleMemberList.size()].setVisible(false);
+					}
+					if (battleMemberList.size() >= 3) {
+						highlightImage[(i + 2) % battleMemberList.size()].setVisible(false);
+					}
 				}
 			}
 		}
@@ -88,16 +92,16 @@ public class CharacterUiStage extends BaseOneLevelStage {
 					if (hero.getStatus().getCasting() == 0) {
 
 					} else {
-						Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath()
-								+ String.valueOf(hero.getStatus().getCasting())));
+						Image buffIcon = new Image(textureManager
+								.getTexture(buff.getBuffPath() + String.valueOf(hero.getStatus().getCasting())));
 						buffTableList.get(i).add(buffIcon).width(35).height(35);
 					}
 				} else if (buff.getBuffPath().equals("buff_de_overload")) {
 					if (hero.getOverload() == 0) {
 
 					} else {
-						Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath() + "_"
-								+ String.valueOf(hero.getOverload())));
+						Image buffIcon = new Image(textureManager
+								.getTexture(buff.getBuffPath() + "_" + String.valueOf(hero.getOverload())));
 						buffTableList.get(i).add(buffIcon).width(35).height(35);
 					}
 				} else {
@@ -212,8 +216,9 @@ public class CharacterUiStage extends BaseOneLevelStage {
 							partyManager.setCurrentSelectedHero(null);
 						} else {
 							partyManager.setCurrentSelectedHero(battleMemberList.get(index));
-							battleManager.useSkill(battleManager.getCurrentAttackUnit(), partyManager
-									.getCurrentSelectedHero(), battleManager.getCurrentSelectedSkill().getSkillPath());
+							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
+									partyManager.getCurrentSelectedHero(),
+									battleManager.getCurrentSelectedSkill().getSkillPath());
 							battleManager.setSkill(false);
 						}
 					}
