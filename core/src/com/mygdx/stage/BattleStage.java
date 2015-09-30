@@ -462,19 +462,14 @@ public class BattleStage extends BaseOneLevelStage {
 		if (battleManager.isShowGrid()) {
 			end = (new Vector2(touched.x, touched.y));
 			if (battleManager.getNowGridHitbox().isInsideHitbox(touched.x, touched.y)) {
-				battleManager.setGridLimitNum(getWeaponHitboxSize());
+				if (battleManager.isSkill()) {
+					battleManager.setGridLimitNum(battleManager.getCurrentSelectedSkill().getHitboxSize());
+				} else {
+					battleManager.setGridLimitNum(getWeaponHitboxSize());
+				}
 				start = (new Vector2(touched.x, touched.y));
 				battleManager.getNowGridHitbox().setStartPosition(touched.x, touched.y);
 				battleManager.getNowGridHitbox().showTileWhereMoved(touched.x, touched.y);
-				if (battleManager.isSkill()) {
-
-				} else {
-					if (battleManager.getNowGridHitbox().isInsideEdge(touched.x, touched.y)) {
-						battleManager.setGridLimitNum(getWeaponHitboxSize());
-					} else {
-						battleManager.setGridLimitNum(1);
-					}
-				}
 			}
 		}
 		return true;
