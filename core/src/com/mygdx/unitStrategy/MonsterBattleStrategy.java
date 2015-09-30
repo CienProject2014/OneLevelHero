@@ -301,8 +301,8 @@ public class MonsterBattleStrategy implements BattleStrategy {
 	}
 
 	private void decline(Unit defender) {
-		float preMagicDefense = defender.getStatus().getMagicDefense() * 10 / 100;
-		float preDefense = defender.getStatus().getDefense() * 10 / 100;
+		float preMagicDefense = defender.getStatus().getMagicDefense() * 20 / 100;
+		float preDefense = defender.getStatus().getDefense() * 20 / 100;
 		if (battleManager.isEndBuff()) {
 			defender.getRealStatus().setMagicDefense(defender.getStatus().getMagicDefense());
 			defender.getRealStatus().setDefense(defender.getStatus().getDefense());
@@ -328,8 +328,8 @@ public class MonsterBattleStrategy implements BattleStrategy {
 	}
 
 	private void weak(Unit defender) {
-		float preAttack = defender.getStatus().getAttack() * 10 / 100;
-		float preMagicAttack = defender.getStatus().getMagicAttack() * 10 / 100;
+		float preAttack = defender.getStatus().getAttack() * 20 / 100;
+		float preMagicAttack = defender.getStatus().getMagicAttack() * 20 / 100;
 		if (battleManager.isEndBuff()) {
 			defender.getRealStatus().setAttack(defender.getStatus().getAttack());
 			defender.getRealStatus().setMagicAttack(defender.getStatus().getMagicAttack());
@@ -422,6 +422,9 @@ public class MonsterBattleStrategy implements BattleStrategy {
 		float attackerAttackDamage = buff.getAttacker().getStatus().getAttack()
 				* (buff.getDecreaseHpAttackPercent() / 100.0f);
 		float delta = factor * (attackerMagicDamage + attackerAttackDamage) + buff.getDecreaseHpOffset();
+		if (delta < 0) {
+			delta = 0;
+		}
 		defender.getStatus().setHp((int) (defender.getStatus().getHp() - delta));
 	}
 
