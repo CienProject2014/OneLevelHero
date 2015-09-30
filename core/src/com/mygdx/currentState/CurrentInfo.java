@@ -3,7 +3,7 @@ package com.mygdx.currentState;
 import com.badlogic.gdx.Gdx;
 
 public class CurrentInfo {
-	public final static int CURRENT_APP_VERSION = 89;
+	public final static int CURRENT_APP_VERSION = 90;
 	public static boolean isAdminMode;
 
 	public static void changeAdminMode() {
