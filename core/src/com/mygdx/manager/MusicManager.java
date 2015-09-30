@@ -109,8 +109,8 @@ public class MusicManager {
 				musicInfo.setMusic(music);
 				break;
 			case BATTLE_MUSIC :
-				music = musicAssets.getBattleMusic("fights");
-				musicInfo.setPreMusicName("fights");
+				music = musicAssets.getBattleMusic("bgm_battle");
+				musicInfo.setPreMusicName("bgm_battle");
 				music.setVolume(musicInfo.getMusicVolume());
 				musicInfo.setMusic(music);
 				break;
@@ -141,7 +141,7 @@ public class MusicManager {
 			case NORMAL :
 				return musicInfo.getPreMusicName().equals(musicName);
 			case BATTLE_MUSIC :
-				return musicInfo.getPreMusicName().equals("fights");
+				return musicInfo.getPreMusicName().equals("bgm_battle");
 			case MOVING_MUSIC :
 				String arrowName = fieldManager.getArrowName();
 				return musicInfo.getPreMusicName().equals(arrowName);

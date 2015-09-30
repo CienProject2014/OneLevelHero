@@ -33,7 +33,7 @@ public class GoForwardFieldButtonListener extends ClickListener {
 		timeManager.plusMinute(30);
 		if (!fieldManager.isInField()) {
 			String node = fieldManager.getDestinationNode();
-			soundManager.setSoundByUseAndPlay("move_arrow");
+			soundManager.setSoundByPathAndPlay("notice_moving");
 			movingManager.goToNode(node);
 			storySectionManager.triggerNextSectionEvent(EventTypeEnum.MOVE_NODE, node);
 		}

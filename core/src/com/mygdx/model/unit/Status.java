@@ -13,7 +13,7 @@ public class Status {
 	private int level;
 	private int hp; // 현재 체력
 	private int maxHp; // 최대 체력
-	private int speed; // speed
+	private float speed; // speed
 	private int experience; // 경험치
 	private int maxExperience; // 최대 경험치(레벨업)
 	private int fireResistance; // fire resistance
@@ -78,10 +78,10 @@ public class Status {
 	}
 
 	public int getSpeed() {
-		return speed;
+		return (int) speed;
 	}
 
-	public void setSpeed(int speed) {
+	public void setSpeed(float speed) {
 		this.speed = speed;
 	}
 
@@ -185,7 +185,7 @@ public class Status {
 		case "magicDefense":
 			return (int) magicDefense;
 		case "speed":
-			return speed;
+			return (int) speed;
 		case "waterResistance":
 			return waterResistance;
 		default:

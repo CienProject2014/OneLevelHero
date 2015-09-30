@@ -27,6 +27,7 @@ public class DungeonDoorButtonListener extends ClickListener {
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		soundManager.playClickSound();
+		soundManager.setSoundByPathAndPlay("notice_moving");
 		dungeonManager.moveRoom(index);
 		String subNodePath = positionManager.getCurrentSubNodePath();
 		String floorPath = dungeonManager.getDungeonInfo().getCurrentFloor().getFloorPath();

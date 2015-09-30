@@ -674,7 +674,7 @@ public class BattleManager {
 	public void setBattleState(BattleStateEnum battleStateEnum) {
 		battleInfo.setBattleState(battleStateEnum);
 		if (battleStateEnum.equals(BattleStateEnum.IN_GAME)) {
-			musicManager.setMusicAndPlay("fights");
+			musicManager.setMusicAndPlay("bgm_battle");
 		} else if (battleStateEnum.equals(BattleStateEnum.GAME_OVER)
 				|| battleStateEnum.equals(BattleStateEnum.NOT_IN_BATTLE)) {
 		}
@@ -861,34 +861,38 @@ public class BattleManager {
 		return battleInfo.isEndBuff();
 	}
 
-	public void getRandomDropItem(Monster selectedMonster) {
+	public void getExperience(Monster selectedMonster) {
+		for (Unit unit : partyManager.getBattleMemberList()) {
+			unit.getStatus().setExperience(
+					unit.getStatus().getExperience() + selectedMonster.getStatus().getExperience());
+		}
+		setText("경험치 " + selectedMonster.getStatus().getExperience() + "을 얻었다!");
+		partyManager.calculateLevel();
+	}
+
+	public void getDropItem(Monster selectedMonster) {
 		Random random = new Random();
-		random.setSeed(timeManager.getSecondTime());
-		if (random.nextBoolean()) {
-			if (selectedMonster.getDropItems().size() != 0) {
-				Item item = selectedMonster.getDropItems().get(random.nextInt(selectedMonster.getDropItems().size()));
-				Gdx.app.log("BattleManager", "아이템 [" + item.getName() + "]를 획득하였다.");
-				switch (item.getItemType()) {
-					case ACCESSORY :
-					case CLOTHES :
-					case HANDGRIP :
-						bagManager.getEquipmentList().add((Equipment) item);
-						break;
-					case CONSUMABLES :
-						bagManager.getConsumablesList().add((Consumables) item);
-						break;
-					case ETC_ITEM :
-						bagManager.getEtcItemList().add(item);
-						break;
-					default :
-						Gdx.app.log("BattleManager", "itemType정보 오류 - " + item.getItemType());
-						break;
-				}
-				battleInfo.setGetItem(true);
-				battleInfo.setDropItem(item);
+		if (selectedMonster.getDropItems().size() != 0) {
+			Item item = selectedMonster.getDropItems().get(random.nextInt(selectedMonster.getDropItems().size()));
+			Gdx.app.log("BattleManager", "아이템 [" + item.getName() + "]를 획득하였다.");
+			switch (item.getItemType()) {
+				case ACCESSORY :
+				case CLOTHES :
+				case HANDGRIP :
+					bagManager.getEquipmentList().add((Equipment) item);
+					break;
+				case CONSUMABLES :
+					bagManager.getConsumablesList().add((Consumables) item);
+					break;
+				case ETC_ITEM :
+					bagManager.getEtcItemList().add(item);
+					break;
+				default :
+					Gdx.app.log("BattleManager", "itemType정보 오류 - " + item.getItemType());
+					break;
 			}
-		} else {
-			battleInfo.setGetItem(false);
+			battleInfo.setGetItem(true);
+			battleInfo.setDropItem(item);
 		}
 	}
 }

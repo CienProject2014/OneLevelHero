@@ -199,6 +199,7 @@
 	<bean id="alwaysOpenGameObjectEventTrigger" class="com.mygdx.eventTrigger.AlwaysOpenGameObjectEventTrigger"/>
 	<bean id="alwaysOpenNpcEventTrigger" class="com.mygdx.eventTrigger.AlwaysOpenNpcEventTrigger"/>
 	<bean id="chatEventTrigger" class="com.mygdx.eventTrigger.ChatEventTrigger"/>
+	<bean id="checkQuestEventTrigger" class="com.mygdx.eventTrigger.CheckQuestEventTrigger"/>
 	<bean id="choiceOptionEventTrigger" class="com.mygdx.eventTrigger.ChoiceOptionEventTrigger"/>
 	<bean id="closeNpcEventTrigger" class="com.mygdx.eventTrigger.CloseNpcEventTrigger"/>
 	<bean id="closeGameObjectEventTrigger" class="com.mygdx.eventTrigger.CloseGameObjectEventTrigger"/>

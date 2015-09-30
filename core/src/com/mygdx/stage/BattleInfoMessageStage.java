@@ -32,6 +32,7 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 	private TextButton messageButton;
 	private Table battleStatusTable;
 	private TextButton statusMessageButton;
+
 	public void act(float delta) {
 		showButton();
 	}
@@ -39,31 +40,36 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 	private void showButton() {
 		final String battleStatusMessage = battleManager.getBattleInfo().getBattleInfoMessage();
 		messageButton.setText(battleStatusMessage);
-		if (battleManager.getBattleInfo().isGetItem()) {
-			statusMessageButton.setText("[" + battleManager.getBattleInfo().getDropItem().getName() + "] 을 얻었다.");
-			battleStatusTable.setVisible(true);
+		if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
+			if (battleManager.getSelectedMonster().getDropItemList().size() > 0) {
+				statusMessageButton.setText("[" + battleManager.getBattleInfo().getDropItem().getName() + "] 을 얻었다.");
+				battleStatusTable.setVisible(true);
+				battleManager.getBattleInfo().setGetItem(false);
+			} else {
+				battleStatusTable.setVisible(false);
+			}
 		} else {
 			battleStatusTable.setVisible(false);
 		}
+
 		messageButton.clearListeners();
 		messageButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
 					movingManager.goCurrentLocatePosition();
-					storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE, battleManager
-							.getSelectedMonster().getFacePath());
+					storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE,
+							battleManager.getSelectedMonster().getFacePath());
 				} else if (battleStatusMessage.equals(START_BATTLE_MESSAGE)) {
 					BattleScreen.showBattleInfoMessage = false;
 				}
 			}
 		});
 	}
-
 	public Stage makeStage() {
 		super.makeStage();
-		TextureRegionDrawable textMenu = new TextureRegionDrawable(new TextureRegion(
-				textureManager.getTexture("battleui_battle_message")));
+		TextureRegionDrawable textMenu = new TextureRegionDrawable(
+				new TextureRegion(textureManager.getTexture("battleui_battle_message")));
 		battleMessageTable.left().bottom();
 		battleMessageTable.padLeft(400).padBottom(600);
 		final String battleInfoMessage = battleManager.getBattleInfoMessage();

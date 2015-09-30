@@ -21,7 +21,7 @@ public enum EventTypeEnum {
 			"move_dungeon_room_before_absolute_time"), ALWAYS_OPEN_NPC_EVENT("always_open_npc_event"), MOVE_SUB_NODE_BEFORE_SECTION_TIME(
 			"move_sub_node_before_section_time"), HEAL_ALL_HERO("heal_all_hero"), SET_GAME_OBJECT_TARGET_TIME(
 			"set_game_object_target_time"), OPEN_GAME_OBJECT_EVENT("open_game_object_event"), QUEST_HUNT_MONSTER(
-			"quest_hunt_monster"), REST_IN_FORK("rest_in_fork");
+			"quest_hunt_monster"), CHECK_QUEST("check_quest"), REST_IN_FORK("rest_in_fork");
 	private String code;
 
 	EventTypeEnum(String code) {

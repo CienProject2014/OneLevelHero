@@ -93,8 +93,8 @@ public class PartyManager {
 			}
 		}
 		// 혹시 버그가있다면..
-		return partyInfo.getBattleMemberList().get(
-				ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
+		return partyInfo.getBattleMemberList()
+				.get(ThreadLocalRandom.current().nextInt(partyInfo.getBattleMemberList().size()));
 	}
 
 	public void calculateLevel() {
@@ -103,13 +103,12 @@ public class PartyManager {
 			if (hero.getStatus().getLevel() == 1) {
 			} else {
 				if (hero.getStatus().getExperience() < 0) {
-					int exp = hero.getStatus().getExperience();
+
 					levelDown(hero);
-					hero.getStatus().setExperience(hero.getStatus().getMaxExperience() + exp);
+
 				} else if (hero.getStatus().getExperience() >= hero.getStatus().getMaxExperience()) {
 					int exp = hero.getStatus().getExperience() - hero.getStatus().getMaxExperience();
-					hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
-					levelUp();
+					levelUp(hero);
 					hero.getStatus().setExperience(exp);
 				} else {
 
@@ -119,22 +118,105 @@ public class PartyManager {
 
 	}
 
-	private void levelUp() {
+	private void levelUp(Hero hero) {
+		switch (hero.getFacePath()) {
+		case "yongsa":
+			hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() + 1);
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack() + 0.25));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() + 0.25));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() + 0.25));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() + 0.25));
+			hero.getStatus().setSpeed(hero.getStatus().getSpeed() + 1);
+			break;
+		case "parath":
+			hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() + 1);
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack() + 0.2));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack()));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() + 0.25));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() + 0));
+			hero.getStatus().setSpeed((float) (hero.getStatus().getSpeed() + 0.5));
+			break;
+		case "lilis_succubus":
+			hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() + 1);
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack() + 0));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() + 0.25));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() + 0));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() + 0.2));
+			hero.getStatus().setSpeed((float) (hero.getStatus().getSpeed() + 0.5));
+			break;
+		case "plecha":
+			hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() + 1);
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack() + 0.34));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack()));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() + 0.2));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() + 0.25));
+			hero.getStatus().setSpeed((float) (hero.getStatus().getSpeed() + 1));
+			break;
+		case "yalluisroy":
+			hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() + 1);
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack() + 0.25));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() + 0.25));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() + 0.2));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() + 0.2));
+			hero.getStatus().setSpeed((float) (hero.getStatus().getSpeed() + 1));
+			break;
+		case "diomirhone":
+			hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() + 1);
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack() + 0));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() + 0.25));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() + 0));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() + 0.2));
+			hero.getStatus().setSpeed((float) (hero.getStatus().getSpeed() + 0.5));
+			break;
+		case "bersus":
+			hero.getStatus().setLevel(hero.getStatus().getLevel() + 1);
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() + 1);
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack() + 0));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() + 0.34));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() + 0));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() + 0.25));
+			hero.getStatus().setSpeed((float) (hero.getStatus().getSpeed() + 0.5));
+			break;
+		case "kein":
+			hero.getStatus().setLevel(hero.getStatus().getLevel());
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp());
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack()));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() + 0));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() + 0));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() + 0));
+			hero.getStatus().setSpeed((float) (hero.getStatus().getSpeed() + 0));
+			break;
 
+		}
 	}
 
 	private void levelDown(Hero hero) {
 		// 체력+1 공격력+1/4 주문력+1/4 방어력+1/4 항마력+1/4 민첩성+1
-		if (hero.getStatus().getHp() == hero.getStatus().getMaxHp()) {
-			hero.getStatus().setHp(hero.getStatus().getHp() - 1);
+		while (true) {
+			if (hero.getStatus().getHp() == hero.getStatus().getMaxHp()) {
+				hero.getStatus().setHp(hero.getStatus().getHp() - 1);
+			}
+			hero.getStatus().setExperience(hero.getStatus().getMaxExperience() + hero.getStatus().getExperience());
+			hero.getStatus().setLevel(hero.getStatus().getLevel() - 1);
+			hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() - 1);
+			hero.getStatus().setAttack((float) (hero.getStatus().getAttack() - 0.25));
+			hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() - 0.25));
+			hero.getStatus().setDefense((float) (hero.getStatus().getDefense() - 0.25));
+			hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() - 0.25));
+			hero.getStatus().setSpeed(hero.getStatus().getSpeed() - 1);
+
+			if (hero.getStatus().getExperience() > 0) {
+				break;
+			} else {
+
+			}
 		}
-		hero.getStatus().setLevel(hero.getStatus().getLevel() - 1);
-		hero.getStatus().setMaxHp(hero.getStatus().getMaxHp() - 1);
-		hero.getStatus().setAttack((float) (hero.getStatus().getAttack() - 0.25));
-		hero.getStatus().setMagicAttack((float) (hero.getStatus().getMagicAttack() - 0.25));
-		hero.getStatus().setDefense((float) (hero.getStatus().getDefense() - 0.25));
-		hero.getStatus().setMagicDefense((float) (hero.getStatus().getMagicDefense() - 0.25));
-		hero.getStatus().setSpeed(hero.getStatus().getSpeed() - 1);
 	}
 
 	public void setCurrentSelectedHero(Hero hero) {
