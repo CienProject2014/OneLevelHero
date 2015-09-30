@@ -23,13 +23,15 @@ public class TextureManager {
 	private AssetsManager assetsManager;
 	@Autowired
 	private TextureAssets textureAssets;
-	private String[] preName = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+	private int count;
+	private String[] preName = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
 	// 1. 똑같은걸 불러왔을 때
 	// 2. 전투 (미리 로드)
 	// 3. 목표마을(미리 로드)
 
 	public boolean checkPreName(String nowName, String preName) {
 		boolean check;
+		count = 0;
 		if (nowName == preName) {
 			check = true;
 		} else {
@@ -70,6 +72,7 @@ public class TextureManager {
 			return getTexture(preName[14]);
 		}
 	}
+
 	public Texture getBustTexture(String facePath) {
 		return getTexture(facePath);
 	}
@@ -84,12 +87,19 @@ public class TextureManager {
 
 	public Texture getCharacterBodyTexture(String facePath) {
 		if (textureAssets.getTexturePath(TextureEnum.NPC + "_" + facePath) != null) {
-			if (!checkPreName(TextureEnum.NPC + "_" + facePath, preName[5])) {
+			if (count > 4) {
+				if (!checkPreName(TextureEnum.NPC + "_" + facePath, preName[5])) {
+					preName[5] = TextureEnum.NPC + "_" + facePath;
+					assetsManager.load(textureAssets.getTexturePath(preName[5]), Texture.class);
+					assetsManager.finishLoading();
+				} else {
+					preName[5] = TextureEnum.NPC + "_" + facePath;
+				}
+			} else {
 				preName[5] = TextureEnum.NPC + "_" + facePath;
 				assetsManager.load(textureAssets.getTexturePath(preName[5]), Texture.class);
 				assetsManager.finishLoading();
-			} else {
-				preName[5] = TextureEnum.NPC + "_" + facePath;
+				count++;
 			}
 			return assetsManager.get(textureAssets.getTexturePath(preName[5]), Texture.class);
 		} else
@@ -176,8 +186,8 @@ public class TextureManager {
 	}
 
 	public Texture getBigBattleImage(String facePath) {
-		return getTexture(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE, TextureEnum.BATTLE
-				+ "_default_" + TextureEnum.BIG_IMAGE);
+		return getTexture(TextureEnum.BATTLE + "_" + facePath + "_" + TextureEnum.BIG_IMAGE,
+				TextureEnum.BATTLE + "_default_" + TextureEnum.BIG_IMAGE);
 	}
 
 	public Texture getGameObjectTexture(String objectPath) {
