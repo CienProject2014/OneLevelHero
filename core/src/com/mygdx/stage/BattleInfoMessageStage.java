@@ -29,31 +29,57 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 	@Autowired
 	private StorySectionManager storySectionManager;
 	private Table battleMessageTable = new Table();
+	private TextButton messageButton;
+	private Table battleStatusTable;
+	private TextButton statusMessageButton;
+	public void act(float delta) {
+		showButton();
+	}
+
+	private void showButton() {
+		final String battleStatusMessage = battleManager.getBattleInfo().getBattleInfoMessage();
+		messageButton.setText(battleStatusMessage);
+		if (battleManager.getBattleInfo().isGetItem()) {
+			statusMessageButton.setText("[" + battleManager.getBattleInfo().getDropItem().getName() + "] 을 얻었다.");
+			battleStatusTable.setVisible(true);
+		} else {
+			battleStatusTable.setVisible(false);
+		}
+		messageButton.clearListeners();
+		messageButton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
+					movingManager.goCurrentLocatePosition();
+					storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE, battleManager
+							.getSelectedMonster().getFacePath());
+				} else if (battleStatusMessage.equals(START_BATTLE_MESSAGE)) {
+					BattleScreen.showBattleInfoMessage = false;
+				}
+			}
+		});
+	}
+
 	public Stage makeStage() {
 		super.makeStage();
-		Table bgTable = new Table();
 		TextureRegionDrawable textMenu = new TextureRegionDrawable(new TextureRegion(
 				textureManager.getTexture("battleui_battle_message")));
 		battleMessageTable.left().bottom();
 		battleMessageTable.padLeft(400).padBottom(600);
 		final String battleInfoMessage = battleManager.getBattleInfoMessage();
 		TextButtonStyle messageStyle = new TextButtonStyle(textMenu, textMenu, textMenu, uiComponentAssets.getFont());
-		TextButton messageButton = new TextButton(battleInfoMessage, messageStyle);
+		messageButton = new TextButton(battleInfoMessage, messageStyle);
 		battleMessageTable.add(messageButton);
-		messageButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				if (battleInfoMessage.equals(PLAYER_WIN_MESSAGE)) {
-					BattleScreen.showBattleInfoMessage = false;
-					movingManager.goCurrentLocatePosition();
-					storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE, battleManager
-							.getSelectedMonster().getFacePath());
-				} else if (battleInfoMessage.equals(START_BATTLE_MESSAGE)) {
-					BattleScreen.showBattleInfoMessage = false;
-				}
-			}
-		});
-		tableStack.add(bgTable);
+
+		battleStatusTable = new Table();
+		battleStatusTable.left().bottom();
+		battleStatusTable.padLeft(400).padBottom(400);
+		final String battleStatusMessage = battleManager.getBattleInfoMessage();
+		statusMessageButton = new TextButton(battleStatusMessage, messageStyle);
+		battleStatusTable.add(statusMessageButton);
+
+		tableStack.add(battleStatusTable);
+
 		tableStack.add(battleMessageTable);
 		return this;
 	}
