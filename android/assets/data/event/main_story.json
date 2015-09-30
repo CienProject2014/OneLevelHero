@@ -5141,7 +5141,7 @@
               "script": "용사님! 정말 오랜만입니다. 그간 별고는 없으셨습니까?",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "middle_ridge_whisternhouse"
             },
             {
@@ -5162,14 +5162,14 @@
               "script": "……그 이야기는 나중에 개인적으로 하고 싶습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "08",
               "backgroundPath": "middle_ridge_whisternhouse"
             },
             {
               "script": "용사님께선 제가 듣기로는 마왕을 저지하러 가셨다고……",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "middle_ridge_whisternhouse"
             },
             {
@@ -5190,28 +5190,28 @@
               "script": "아, 그렇군요. 죄송합니다, 용사님을 뵌 게 너무나 반가워서……",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "middle_ridge_whisternhouse"
             },
             {
               "script": "우선 앉아서 얘기하도록 하죠.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "middle_ridge_whisternhouse"
             },
             {
               "script": "안녕하십니까. 저는 이 마을, 이스트릿지의 촌장을 맡고 있습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "middle_ridge_whisternhouse"
             },
             {
               "script": "그와 동시에 오랫동안 용사를 도와온 휘스턴 가의 가주, 케인 휘스턴이라고 합니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "middle_ridge_whisternhouse"
             },
             {
@@ -5440,14 +5440,14 @@
               "script": "……",
               "speakerPosition": "right",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "blackwood_forest"
             },
             {
               "script": "……얼마 전 돌아가셨습니다.",
               "speakerPosition": "right",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "blackwood_forest"
             },
             {
@@ -5482,7 +5482,7 @@
               "script": "케인? 케인? 헤헤, 케인!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "middle_ridge_03"
             },
             {
@@ -5503,7 +5503,7 @@
               "script": "우에에에엥!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "07",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
@@ -5524,28 +5524,28 @@
               "script": "마, 마을 애들이……훌쩍! 마을 애들이 나랑 안 놀아줘!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "07",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
               "script": "다들 난 신의 대리인이라고, 무서워해!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "07",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
               "script": "난 그냥 케인처럼 되고 싶어.",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
               "script": "모든 사람들의 사랑을 받는, 그런 사람이 되고 싶어.",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
@@ -5559,28 +5559,28 @@
               "script": "그, 그치만, 다들 날 어려워하는 걸.",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
               "script": "케인도 날 어려워하잖아?",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
               "script": "난 케인이 그냥 내 형이었으면 좋겠어!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
               "script": "용사가 아니라 동생이고 싶어, 우에에엥!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "07",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
@@ -5594,7 +5594,7 @@
               "script": "뚜, 뚝!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "08",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
@@ -5608,7 +5608,7 @@
               "script": "응? 으응.",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "08",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
@@ -5636,7 +5636,7 @@
               "script": "저, 정말?",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
@@ -5650,14 +5650,14 @@
               "script": "헤, 헤헷! 그럼, 이제 다시는 울지 않을 거야.",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
               "script": "대신, 다른 사람들을 위해 울어주면 되는 거야?",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
@@ -5706,21 +5706,21 @@
               "script": "아잣! 또 이겼어!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
               "script": "하하핫, 케인, 케인! 맨날 그렇게 나한테 지기만 할 거야?",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
               "script": "더 어려운 거, 더 어려운 거 배우자. 이제 이건 시시해.",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
@@ -5755,7 +5755,7 @@
               "script": "하, 하지만……난 아직 케인한테 더 배우고 싶어.",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
@@ -5769,7 +5769,7 @@
               "script": "그, 그럼……",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "08",
               "backgroundPath": "middle_ridge_training_area"
             },
             {
@@ -5821,7 +5821,7 @@
               "script": "나 술을 한 번 먹어보고 싶어!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "golden_lake_01"
             },
             {
@@ -5835,35 +5835,35 @@
               "script": "이, 이제 나도 어른이라고 할 수 있는 걸!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_01"
             },
             {
               "script": "케인이 그 때 그랬잖아!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_01"
             },
             {
               "script": "진정한 강자는 모든 이들을 경계하며 나무에 올라 잠을 자는 표범이 아니라",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_01"
             },
             {
               "script": "모든 이들 앞에서 편하게 잠잘 수 있는 사자라고!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_01"
             },
             {
               "script": "나도 남자답게 술 한 번 마셔볼거야!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_01"
             },
             {
@@ -5884,7 +5884,7 @@
               "script": "우와! 나도 드디어 어른이다!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "golden_lake_01"
             },
             {
@@ -5898,21 +5898,21 @@
               "script": "으, 으응?",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "13",
               "backgroundPath": "southcape_bar"
             },
             {
               "script": "푸우, 이거",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "13",
               "backgroundPath": "southcape_bar"
             },
             {
               "script": "후우, 원래 이렇게 어지러워?",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "13",
               "backgroundPath": "southcape_bar"
             },
             {
@@ -5926,28 +5926,28 @@
               "script": "싫어, 싫단 말이야!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "southcape_bar"
             },
             {
               "script": "나도 케인처럼, 케인같이 멋있게!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "southcape_bar"
             },
             {
               "script": "케인처럼 훌륭한 어른이 될 거야!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "southcape_bar"
             },
             {
               "script": "그러니까, 이런 건 아무 것도 아니야!",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "southcape_bar"
             },
             {
@@ -5961,7 +5961,7 @@
               "script": "……",
               "speakerPosition": "left",
               "characterPath": "yongsa_young",
-              "faceNumber": "01",
+              "faceNumber": "13",
               "backgroundPath": "southcape_bar"
             },
             {
@@ -6025,7 +6025,7 @@
               "script": "……",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6046,14 +6046,14 @@
               "script": "죄송합니다, 용사님.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "05",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "으응? 갑자기 왜 그래, 케인?",
               "speakerPosition": "right",
               "characterPath": "yongsa",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6081,7 +6081,7 @@
               "script": "잘했어. 용사님, 그 힘 제가 받아가겠습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6102,28 +6102,28 @@
               "script": "죄송합니다, 용사님.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "하지만, 당신이 저주에 걸려 힘을 잃을 바에야, 그 힘을 얻어 제가 새로운 용사가 되겠습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "당신의 그 무거운 짐, 덜어드리도록 하지요.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "(용사를 금빛 호수 속에 던진다)",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6151,7 +6151,7 @@
               "script": "그가… 내 요청에 응해주셨다!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6200,7 +6200,7 @@
               "script": "용사는 역시 용사란 말인가. 하지만 어림없다!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "05",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6214,7 +6214,7 @@
               "script": "원망하려면 아직도 마을에서 내가 꼬드긴 몬스터와 싸우고 있는 동료들을 원망하라고!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6271,7 +6271,7 @@
               "script": "……",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6292,14 +6292,14 @@
               "script": "죄송합니다, 용사님.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "05",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "으응? 갑자기 왜 그래, 케인?",
               "speakerPosition": "right",
               "characterPath": "yongsa",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6327,7 +6327,7 @@
               "script": "잘했어. 용사님, 그 힘 제가 받아가겠습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6348,28 +6348,28 @@
               "script": "죄송합니다, 용사님.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "하지만, 당신이 저주에 걸려 힘을 잃을 바에야, 그 힘을 얻어 제가 새로운 용사가 되겠습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "당신의 그 무거운 짐, 덜어드리도록 하지요.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "(용사를 금빛 호수 속에 던진다)",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6397,7 +6397,7 @@
               "script": "그가… 내 요청에 응해주셨다!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6446,14 +6446,14 @@
               "script": "용사는 역시 용사란 말인가. 하지만 어림없다!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "응?",
               "speakerPosition": "right",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6537,7 +6537,7 @@
               "script": "이젠 신성모독까지 하는가, 용사!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6558,21 +6558,21 @@
               "script": "정말 그렇게 생각하나?",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "05",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "천만에! 나는 너를 죽이고 싶어하는 게 아니야!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "05",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "너에게 질투심을 갖는 스스로를 용서할 수 없었지.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6586,77 +6586,77 @@
               "script": "나는 스스로 목숨을 끊는 게 낫다고 생각했어.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "그런데 어떤 일이 있었는지 아나?",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "05",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "술에 취한 니가 등불을 쓰러뜨리면서 주점엔 화재가 나기 시작했고,",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "05",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "나는 너를 구하려다가 무너지는 기둥에 내 오른팔을 끼고야 말았다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "절망스러웠지. 스스로도 구하지 못하는 비참함을 알기나 해?",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "05",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "나 같이 힘없는 놈이 용사를 하겠다고 나선 게 더욱 후회스러웠어.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "05",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "하지만, 그 무엇보다도!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "당시 휘스턴 가의 가주셨던 우리 아버지는 나를 버리고 너를 업고 나가셨어!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "자신의……친아들마저도 버릴 만큼, 그 용사라는 존재가 소중한 것인가?",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "그제서야 깨달았다. 너라는 존재뿐만 아니라 나 또한 하나의 도구처럼 다뤄지고 있었다는 걸.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "05",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "그래서, 팔을 잘라내어 스스로의 목숨을 구해냈다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6677,28 +6677,28 @@
               "script": "그렇다! 힘, 힘이야말로 내가 가지지 못한 유일한 것!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "힘을 가지고 나면 난 진정한 용사가 될 수 있어!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "더 이상 가문을 불안하게 지킬 필요가 없다고!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "12",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "그러니까… 이제 그만 죽어라!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "04",
               "backgroundPath": "golden_lake_06"
             }
           ]
@@ -6759,14 +6759,14 @@
               "script": "크, 크헉. 여, 역시 용사라는 건가……",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "내가 수 십 년을 익혀온 힘으로도 약해져 있는 너를 넘어서지 못한단 말인가……",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6780,7 +6780,7 @@
               "script": "크윽…",
               "speakerPosition": "left",
               "characterPath": "kein_coworker",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6794,14 +6794,14 @@
               "script": "크, 크큭. 그럴 수 없어.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "정 그렇다면, 정 그렇다면 내 동료라도 바치겠어.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "10",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6822,14 +6822,14 @@
               "script": "그녀의 존재 목적은 이럴 때를 대비해서 내게 힘이 되기 위해서이다!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "그녀도 자신의 희생으로 진정한 용사가 탄생하는 이 순간을 반기겠지!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6885,7 +6885,7 @@
               "script": "알겠습니다!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "11",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -6913,35 +6913,35 @@
               "script": "크, 크크크크큭.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "02",
+              "faceNumber": "13",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "힘이, 힘이 흘러 넘치는군.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "02",
+              "faceNumber": "13",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "하지만, 아직 모자르다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "02",
+              "faceNumber": "13",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "좀더 힘을, 힘을!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "02",
+              "faceNumber": "13",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "용사여, 쓸데없는 저항은 그만두고 내게 힘을 바쳐라!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "02",
+              "faceNumber": "13",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -7129,7 +7129,7 @@
               "script": "요……용사님.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -7143,7 +7143,7 @@
               "script": "제, 제가…… 진 겁니까?",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -7157,14 +7157,14 @@
               "script": "정말……정말 못 말리겠군요.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "당신의 강함은, 대체… 어디까지입니까.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -7178,14 +7178,14 @@
               "script": "하하하하, 저는 정말……멍청한가 봅니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "당신이……죽을 만큼, 부러웠습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -7220,14 +7220,14 @@
               "script": "후훗, 이 또한 제가 택한 길이 아닙니까.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "그러니, 울지 마십시오, 용사님.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -7276,35 +7276,35 @@
               "script": "그렇군요, 이게 바로 힘인가 봅니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "당신은, 힘으로서가 아니라, 사람으로서 당신의 동료들을 찾아냈군요.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "분명, 용사님이라면 이 세상을 구원해주실 수 있을 겁니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "저도 마지막으로, 마지막으로……",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "당신의 곁에서 함께하고자 합니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -7318,28 +7318,28 @@
               "script": "디아르 칸이여!",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "약속을 지키지 못하겠군요, 죄송합니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "나를 제물로 바치겠습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "부디, 부디 용사님에게 새로운 육체를……",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -7353,28 +7353,28 @@
               "script": "어차피 저는 제 동료들을 제물로 바쳤습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "그런데다가 죽어가기까지 하는 제가 더 이상 살아있을 수는 없습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "속죄는 될 수 없겠지만, 적어도 그들의 생명의 무게를 짊어진 만큼, 책임은 지고 싶습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "부디, 당신의 힘이 되는 걸, 허락해 주십시오.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "06",
               "backgroundPath": "golden_lake_06"
             },
             {
@@ -7388,28 +7388,28 @@
               "script": "용사님, 이것은 이용하는 것이 아닙니다…",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "03",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "저도 용사님의 동료로써, 스승으로써",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "힘이 되고 싶습니다. 함께 하고 싶습니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "02",
               "backgroundPath": "golden_lake_06"
             },
             {
               "script": "부디 저를 받아주시기 바랍니다.",
               "speakerPosition": "left",
               "characterPath": "kein",
-              "faceNumber": "01",
+              "faceNumber": "07",
               "backgroundPath": "golden_lake_06"
             },
             {

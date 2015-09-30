@@ -10,6 +10,7 @@ import com.mygdx.eventTrigger.AlwaysOpenNpcEventTrigger;
 import com.mygdx.eventTrigger.ChatEventTrigger;
 import com.mygdx.eventTrigger.ChoiceOptionEventTrigger;
 import com.mygdx.eventTrigger.CloseGameObjectEventTrigger;
+import com.mygdx.eventTrigger.CloseNpcEventTrigger;
 import com.mygdx.eventTrigger.EndBattleEventTrigger;
 import com.mygdx.eventTrigger.EventTrigger;
 import com.mygdx.eventTrigger.GameClearEventTrigger;
@@ -54,6 +55,8 @@ public class EventTriggerFactory {
 				return context.getBean(ChoiceOptionEventTrigger.class);
 			case CLOSE_GAME_OBJECT_EVENT :
 				return context.getBean(CloseGameObjectEventTrigger.class);
+			case CLOSE_NPC_EVENT :
+				return context.getBean(CloseNpcEventTrigger.class);
 			case GAME_CLEAR :
 				return context.getBean(GameClearEventTrigger.class);
 			case GAME_OVER :
