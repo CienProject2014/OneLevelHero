@@ -864,23 +864,31 @@ public class BattleManager {
 	public void getRandomDropItem(Monster selectedMonster) {
 		Random random = new Random();
 		random.setSeed(timeManager.getSecondTime());
-		Item item = selectedMonster.getDropItems().get(random.nextInt(selectedMonster.getDropItems().size()));
-		Gdx.app.log("BattleManager", "아이템 [" + item.getName() + "]를 획득하였다.");
-		switch (item.getItemType()) {
-			case ACCESSORY :
-			case CLOTHES :
-			case HANDGRIP :
-				bagManager.getEquipmentList().add((Equipment) item);
-				break;
-			case CONSUMABLES :
-				bagManager.getConsumablesList().add((Consumables) item);
-				break;
-			case ETC_ITEM :
-				bagManager.getEtcItemList().add(item);
-				break;
-			default :
-				Gdx.app.log("BattleManager", "itemType정보 오류 - " + item.getItemType());
-				break;
+		if (random.nextBoolean()) {
+			if (selectedMonster.getDropItems().size() != 0) {
+				Item item = selectedMonster.getDropItems().get(random.nextInt(selectedMonster.getDropItems().size()));
+				Gdx.app.log("BattleManager", "아이템 [" + item.getName() + "]를 획득하였다.");
+				switch (item.getItemType()) {
+					case ACCESSORY :
+					case CLOTHES :
+					case HANDGRIP :
+						bagManager.getEquipmentList().add((Equipment) item);
+						break;
+					case CONSUMABLES :
+						bagManager.getConsumablesList().add((Consumables) item);
+						break;
+					case ETC_ITEM :
+						bagManager.getEtcItemList().add(item);
+						break;
+					default :
+						Gdx.app.log("BattleManager", "itemType정보 오류 - " + item.getItemType());
+						break;
+				}
+				battleInfo.setGetItem(true);
+				battleInfo.setDropItem(item);
+			}
+		} else {
+			battleInfo.setGetItem(false);
 		}
 	}
 }

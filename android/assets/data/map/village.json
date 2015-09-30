@@ -1087,8 +1087,8 @@
         "buildingType": "inn",
         "outerPath": "bonichea_03",
         "subNodePath": "bonichea_inn",
-        "groundPath": "blackwood_inn",
-        "targetbackTime": {
+        "backgroundPath": "blackwood_inn",
+        "targetTime": {
           "startHour": 0,
           "endHour": 24
         },

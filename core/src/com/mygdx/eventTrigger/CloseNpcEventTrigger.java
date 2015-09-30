@@ -8,7 +8,7 @@ import com.mygdx.manager.StorySectionManager;
 import com.mygdx.model.event.EventPacket;
 import com.mygdx.model.event.EventParameters;
 
-public class CloseGameObjectEventTrigger implements EventTrigger {
+public class CloseNpcEventTrigger implements EventTrigger {
 	@Autowired
 	private EventManager eventManager;
 	@Autowired
@@ -17,7 +17,8 @@ public class CloseGameObjectEventTrigger implements EventTrigger {
 	@Override
 	public void triggerEvent(EventParameters eventParameter) {
 		EventPacket eventPacket = eventParameter.getEventPacket();
-		eventManager.setNpcEventState(eventPacket, EventStateEnum.CLOSED);
+		eventManager.setGameObjectEventState(eventPacket, EventStateEnum.CLOSED);
 		storySectionManager.runStorySequence();
 	}
+
 }

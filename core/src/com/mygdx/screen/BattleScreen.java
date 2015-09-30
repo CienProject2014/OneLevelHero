@@ -37,6 +37,7 @@ public class BattleScreen extends BaseScreen {
 		characterUiStage.act(delta);
 		gameUiStage.act();
 		battleStage.act(delta);
+		battleInfoMessageStage.act();
 		skillStage.act();
 	}
 

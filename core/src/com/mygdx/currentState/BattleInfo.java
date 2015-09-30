@@ -38,6 +38,8 @@ public class BattleInfo {
 	private int runPercent;
 	private boolean endBuff;
 	private boolean isSkill;
+	private boolean isGetItem;
+	private Item dropItem;
 
 	public Hero getCurrentActor() {
 		return currentActor;
@@ -214,6 +216,22 @@ public class BattleInfo {
 
 	public void setBattleInfoMessage(String battleInfoMessage) {
 		this.battleInfoMessage = battleInfoMessage;
+	}
+
+	public boolean isGetItem() {
+		return isGetItem;
+	}
+
+	public void setGetItem(boolean isGetItem) {
+		this.isGetItem = isGetItem;
+	}
+
+	public Item getDropItem() {
+		return dropItem;
+	}
+
+	public void setDropItem(Item dropItem) {
+		this.dropItem = dropItem;
 	}
 
 }
