@@ -53,7 +53,7 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 		}
 
 		messageButton.clearListeners();
-		messageButton.addListener(new ClickListener() {
+		this.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
@@ -66,6 +66,7 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 			}
 		});
 	}
+
 	public Stage makeStage() {
 		super.makeStage();
 		TextureRegionDrawable textMenu = new TextureRegionDrawable(
