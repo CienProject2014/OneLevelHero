@@ -6231,7 +6231,7 @@
             "forwardConnections": [
               {
                 "roomLabel": "room_2_4",
-                "directionType": "forward"
+                "directionType": "backward"
               }
             ],
             "backwardConnections": []
@@ -7720,7 +7720,7 @@
   },
   "temple_of_moerae": {
     "subNodePath": "temple_of_moerae",
-    "backgroundPath": "devil_castle",
+    "backgroundPath" : "devil_castle",
     "subNodeName": "모에라에의 신전",
     "dungeonFloors": [
       {

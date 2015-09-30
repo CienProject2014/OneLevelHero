@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.badlogic.gdx.Gdx;
+import com.mygdx.assets.ItemAssets;
 import com.mygdx.assets.SkillAssets;
+import com.mygdx.enums.ItemEnum;
 import com.mygdx.model.battle.Skill;
+import com.mygdx.model.item.Item;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Inventory;
 import com.mygdx.model.unit.Monster;
@@ -28,6 +33,8 @@ public class UnitManager {
 	private HeroBattleStrategy heroBattleStrategy;
 	@Autowired
 	private MonsterBattleStrategy monsterBattleStrategy;
+	@Autowired
+	private ItemAssets itemAssets;
 
 	public void initiateHero(Hero hero) {
 		intiallyEquipAllItems(hero);
@@ -45,6 +52,36 @@ public class UnitManager {
 
 	public void initiateMonster(Monster monster) {
 		setAttackStrategy(monster);
+		setDropItemList(monster);
+	}
+
+	private void setDropItemList(Monster monster) {
+		Iterator<Entry<String, ItemEnum>> dropItemListIterator = monster.getDropItemList().entrySet().iterator();
+		ArrayList<Item> items = new ArrayList<>();
+		while (dropItemListIterator.hasNext()) {
+			Entry<String, ItemEnum> dropItemEntry = dropItemListIterator.next();
+			Item item;
+			switch (dropItemEntry.getValue()) {
+				case HANDGRIP :
+					item = itemAssets.getHandGrip(dropItemEntry.getKey());
+					break;
+				case CLOTHES :
+					item = itemAssets.getClothes(dropItemEntry.getKey());
+					break;
+				case ACCESSORY :
+					item = itemAssets.getAccessory(dropItemEntry.getKey());
+					break;
+				case ETC_ITEM :
+					item = itemAssets.getEtcItem(dropItemEntry.getKey());
+					break;
+				default :
+					Gdx.app.log("UnitManager", "item정보 오류 - " + dropItemEntry.getKey());
+					item = null;
+					break;
+			}
+			items.add(item);
+		}
+		monster.setDropItems(items);
 	}
 
 	public void intiallyEquipAllItems(Hero hero) {

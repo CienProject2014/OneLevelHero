@@ -27,6 +27,7 @@ import com.mygdx.factory.ScreenFactory;
 import com.mygdx.model.battle.Buff;
 import com.mygdx.model.battle.Skill;
 import com.mygdx.model.item.Consumables;
+import com.mygdx.model.item.Equipment;
 import com.mygdx.model.item.Item;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
@@ -39,6 +40,8 @@ public class BattleManager {
 	private final String TAG = "BattleManager";
 	private final int TIME_FLOW_RATE = 1;
 
+	@Autowired
+	private BagManager bagManager;
 	@Autowired
 	private SkillAssets skillAssets;
 	@Autowired
@@ -856,5 +859,28 @@ public class BattleManager {
 
 	public boolean isEndBuff() {
 		return battleInfo.isEndBuff();
+	}
+
+	public void getRandomDropItem(Monster selectedMonster) {
+		Random random = new Random();
+		random.setSeed(timeManager.getSecondTime());
+		Item item = selectedMonster.getDropItems().get(random.nextInt(selectedMonster.getDropItems().size()));
+		Gdx.app.log("BattleManager", "아이템 [" + item.getName() + "]를 획득하였다.");
+		switch (item.getItemType()) {
+			case ACCESSORY :
+			case CLOTHES :
+			case HANDGRIP :
+				bagManager.getEquipmentList().add((Equipment) item);
+				break;
+			case CONSUMABLES :
+				bagManager.getConsumablesList().add((Consumables) item);
+				break;
+			case ETC_ITEM :
+				bagManager.getEtcItemList().add(item);
+				break;
+			default :
+				Gdx.app.log("BattleManager", "itemType정보 오류 - " + item.getItemType());
+				break;
+		}
 	}
 }

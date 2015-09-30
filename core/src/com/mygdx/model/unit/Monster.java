@@ -1,7 +1,9 @@
 package com.mygdx.model.unit;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.MonsterEnum;
 import com.mygdx.model.item.Item;
 
@@ -19,7 +21,7 @@ public class Monster extends Unit {
 	private int[][] hitArea;
 
 	/* For Json Work */
-	private ArrayList<String> dropItemList;
+	private HashMap<String, ItemEnum> dropItemList;
 
 	public MonsterEnum.SizeType getSizeType() {
 		return sizeType;
@@ -37,14 +39,6 @@ public class Monster extends Unit {
 		this.elementType = elementType;
 	}
 
-	public ArrayList<String> getDropItemList() {
-		return dropItemList;
-	}
-
-	public void setDropItemList(ArrayList<String> dropItemList) {
-		this.dropItemList = dropItemList;
-	}
-
 	public ArrayList<Item> getDropItems() {
 		return dropItems;
 	}
@@ -59,6 +53,14 @@ public class Monster extends Unit {
 
 	public void setHitArea(int[][] hitArea) {
 		this.hitArea = hitArea;
+	}
+
+	public HashMap<String, ItemEnum> getDropItemList() {
+		return dropItemList;
+	}
+
+	public void setDropItemList(HashMap<String, ItemEnum> dropItemList) {
+		this.dropItemList = dropItemList;
 	}
 
 }

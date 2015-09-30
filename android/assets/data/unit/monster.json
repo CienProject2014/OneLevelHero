@@ -55,9 +55,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "big_tail"
-    ],
+    "dropItemList": {
+      "big_tail" : "etc_item"
+    },
     "skillList": []
   },
   "twinhead": {
@@ -116,9 +116,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "seed_pocket"
-    ],
+    "dropItemList": {
+      "seed_pocket" : "etc_item"
+    },
     "skillList": []
   },
   "yetie": {
@@ -177,9 +177,9 @@
       "waterResistance": 50,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "wool_of_yetie"
-    ],
+    "dropItemList": {
+      "wool_of_yetie" : "etc_item"
+    },
     "skillList": []
   },
   "golem_crystal": {
@@ -258,9 +258,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "piece_of_crystal"
-    ],
+    "dropItemList": {
+      "piece_of_crystal" : "etc_item"
+    },
     "skillList": []
   },
   "kentaurous_spear": {
@@ -319,9 +319,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "spear_handle"
-    ],
+    "dropItemList": {
+      "spear_handle" : "etc_item"
+    },
     "skillList": []
   },
   "kentaurous_bow": {
@@ -380,9 +380,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "arrowhead"
-    ],
+    "dropItemList": {
+      "arrowhead" : "etc_item"
+    },
     "skillList": []
   },
   "chimera": {
@@ -441,9 +441,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "tooth_of_lion"
-    ],
+    "dropItemList": {
+      "tooth_of_lion" : "etc_item"
+    },
     "skillList": []
   },
   "elf": {
@@ -502,9 +502,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "hood_of_elf"
-    ],
+    "dropItemList": {
+      "hood_of_elf" : "etc_item"
+    },
     "skillList": []
   },
   "ent": {
@@ -563,9 +563,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "firewood"
-    ],
+    "dropItemList": {
+      "firewood" : "etc_item"
+    },
     "skillList": []
   },
   "rafflesia": {
@@ -624,9 +624,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "petal_of_rafflesia"
-    ],
+    "dropItemList": {
+      "petal_of_rafflesia" : "etc_item"
+    },
     "skillList": []
   },
   "clam": {
@@ -685,9 +685,9 @@
       "waterResistance": 50,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "nacre"
-    ],
+    "dropItemList": {
+      "nacre" : "etc_item"
+    },
     "skillList": []
   },
   "mercensary": {
@@ -746,9 +746,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "empty_bottle"
-    ],
+    "dropItemList": {
+      "empty_bottle" : "etc_item"
+    },
     "skillList": []
   },
   "bandit": {
@@ -807,9 +807,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "axe_handle"
-    ],
+    "dropItemList": {
+      "axe_handle" : "etc_item"
+    },
     "skillList": []
   },
   "brown_bear": {
@@ -868,9 +868,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "gall"
-    ],
+    "dropItemList": {
+      "gall" : "etc_item"
+    },
     "skillList": []
   },
   "troll": {
@@ -929,9 +929,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "tooth_of_troll"
-    ],
+    "dropItemList": {
+      "tooth_of_troll" : "etc_item"
+    },
     "skillList": []
   },
   "griffon": {
@@ -990,9 +990,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "feather_of_griffon"
-    ],
+    "dropItemList": {
+      "feather_of_griffon" : "etc_item"
+    },
     "skillList": []
   },
   "cyclops": {
@@ -1051,9 +1051,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "stick_of_cyclops"
-    ],
+    "dropItemList": {
+      "stick_of_cyclops" : "etc_item"
+    },
     "skillList": []
   },
   "piranha": {
@@ -1092,7 +1092,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "kentaurous_elder": {
@@ -1151,35 +1151,35 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant",
-      "high_rank"
-    ],
+    "dropItemList": {
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "high_rank" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory"
+    },
     "skillList": []
   },
   "white_tiger": {
@@ -1238,9 +1238,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "heart"
-    ],
+    "dropItemList": {
+      "heart" : "etc_item"
+    },
     "skillList": []
   },
   "succubus_junior": {
@@ -1299,7 +1299,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "hunting_dog": {
@@ -1338,9 +1338,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "tooth_of_dog"
-    ],
+    "dropItemList": {
+      "tooth_of_dog" : "etc_item"
+    },
     "skillList": []
   },
   "succubus_seniority": {
@@ -1399,35 +1399,35 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant",
-      "crysta_lsword"
-    ],
+    "dropItemList": {
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory",
+      "crysta_lsword" : "handgrip"
+    },
     "skillList": []
   },
   "cerberus": {
@@ -1486,34 +1486,34 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory"
+    },
     "skillList": []
   },
   "nepel_01": {
@@ -1572,7 +1572,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "nepel_02": {
@@ -1631,7 +1631,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "nepel_03": {
@@ -1690,9 +1690,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "succubus_dress"
-    ],
+    "dropItemList": {
+      "succubus_dress":"clothes"
+    },
     "skillList": []
   },
   "ankillas": {
@@ -1771,9 +1771,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "core_of_ankillas"
-    ],
+    "dropItemList": {
+      "core_of_ankillas":"etc_item"
+    },
     "skillList": []
   },
   "elemental_fire": {
@@ -1812,9 +1812,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "core_of_spirit"
-    ],
+    "dropItemList": {
+      "core_of_spirit":"etc_item"
+    },
     "skillList": []
   },
   "elemental_water": {
@@ -1853,9 +1853,9 @@
       "waterResistance": 50,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "core_of_spirit"
-    ],
+    "dropItemList": {
+      "core_of_spirit":"etc_item"
+    },
     "skillList": []
   },
   "elemental_electric": {
@@ -1894,9 +1894,9 @@
       "waterResistance": 0,
       "electricResistance": 50
     },
-    "dropItemList": [
-      "core_of_spirit"
-    ],
+    "dropItemList": {
+      "core_of_spirit":"etc_item"
+    },
     "skillList": []
   },
   "albino_chimera": {
@@ -1955,35 +1955,35 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "tooth_of_lion",
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "tooth_of_lion":"etc_item",
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory"
+    },
     "skillList": []
   },
   "unicorn": {
@@ -2042,35 +2042,35 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "bourre_of_unicorn",
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "bourre_of_unicorn":"etc_item",
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory"
+    },
     "skillList": []
   },
   "auroral_unicorn": {
@@ -2129,9 +2129,9 @@
       "waterResistance": 0,
       "electricResistance": 50
     },
-    "dropItemList": [
-      "unicorn_lob"
-    ],
+    "dropItemList": {
+      "unicorn_lob":"clothes"
+    },
     "skillList": []
   },
   "kein_01": {
@@ -2190,34 +2190,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {},
     "skillList": []
   },
   "kein_02": {
@@ -2276,9 +2249,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "redstar"
-    ],
+    "dropItemList": {
+      "redstar":"handgrip"
+    },
     "skillList": []
   },
   "bat": {
@@ -2337,7 +2310,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "lamia": {
@@ -2396,7 +2369,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "lamia_soldier": {
@@ -2455,35 +2428,35 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "black_sword",
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "black_sword":"handgrip",
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory"
+    },
     "skillList": []
   },
   "fledermaus": {
@@ -2542,35 +2515,35 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "goldenbat_cane",
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "goldenbat_cane":"handgrip",
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory"
+    },
     "skillList": []
   },
   "bortise": {
@@ -2629,9 +2602,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "keep_pendant"
-    ],
+    "dropItemList": {
+      "keep_pendant":"accessory"
+    },
     "skillList": []
   },
   "elf_fire": {
@@ -2690,35 +2663,35 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "soul_predator",
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "soul_predator":"handgrip",
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory"
+    },
     "skillList": []
   },
   "elf_water": {
@@ -2777,35 +2750,35 @@
       "waterResistance": 50,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "soul_predator",
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "soul_predator":"handgrip",
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory"
+    },
     "skillList": []
   },
   "elf_electric": {
@@ -2864,35 +2837,35 @@
       "waterResistance": 0,
       "electricResistance": 50
     },
-    "dropItemList": [
-      "soul_predator",
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "soul_predator":"handgrip",
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory"
+    },
     "skillList": []
   },
   "aonin": {
@@ -2951,9 +2924,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "lether_tear"
-    ],
+    "dropItemList": {
+      "lether_tear":"handgrip"
+    },
     "skillList": []
   },
   "candlestick": {
@@ -3012,7 +2985,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "shelf": {
@@ -3071,35 +3044,35 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant",
-      "encyclopedia"
-    ],
+    "dropItemList": {
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory",
+      "encyclopedia":"handgrip"
+    },
     "skillList": []
   },
   "soul_ancient": {
@@ -3158,7 +3131,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "girl": {
@@ -3217,7 +3190,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "yurath": {
@@ -3276,7 +3249,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "golem_forest": {
@@ -3355,35 +3328,35 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant",
-      "hiking_cane"
-    ],
+    "dropItemList": {
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory",
+      "hiking_cane":"handgrip"
+    },
     "skillList": []
   },
   "soul_deprave": {
@@ -3442,7 +3415,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "guard_forest": {
@@ -3501,9 +3474,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "wail_and_cry"
-    ],
+    "dropItemList": {
+      "wail_and_cry":"handgrip"
+    },
     "skillList": []
   },
   "titania": {
@@ -3562,9 +3535,9 @@
       "waterResistance": 50,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "spirit_lob"
-    ],
+    "dropItemList": {
+      "spirit_lob":"clothes"
+    },
     "skillList": []
   },
   "cleric_deprave": {
@@ -3623,7 +3596,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "rabbit": {
@@ -3662,7 +3635,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "moeraphim": {
@@ -3721,9 +3694,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "reback_soul"
-    ],
+    "dropItemList": {
+      "reback_soul":"handgrip"
+    },
     "skillList": []
   },
   "chilly_ghoul": {
@@ -3782,7 +3755,7 @@
       "waterResistance": 50,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "blooder": {
@@ -3841,7 +3814,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "raijuu": {
@@ -3900,7 +3873,7 @@
       "waterResistance": 0,
       "electricResistance": 50
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "chromat": {
@@ -3959,35 +3932,9 @@
       "waterResistance": 50,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "cutlass",
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "cutlass":"handgrip"
+    },
     "skillList": []
   },
   "karunija": {
@@ -4066,35 +4013,9 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "berserker_sword",
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "berserker_sword":"handgrip"
+    },
     "skillList": []
   },
   "manarose": {
@@ -4153,35 +4074,9 @@
       "waterResistance": 0,
       "electricResistance": 50
     },
-    "dropItemList": [
-      "lighting",
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "lighting" : "handgrip"
+    },
     "skillList": []
   },
   "gromtranno": {
@@ -4240,34 +4135,34 @@
       "waterResistance": 50,
       "electricResistance": 50
     },
-    "dropItemList": [
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant"
-    ],
+    "dropItemList": {
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory"
+    },
     "skillList": []
   },
   "lamia_army": {
@@ -4346,35 +4241,35 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [
-      "broad_sword",
-      "sabre",
-      "rapier",
-      "great_sword",
-      "military_sword",
-      "claymore",
-      "bible",
-      "magic_procedure",
-      "for_adult",
-      "long_bow",
-      "short_bow",
-      "paulownia_bow",
-      "gloomy_cane",
-      "chestnut_cane",
-      "blackwood_cane",
-      "round_shield",
-      "buckler",
-      "cope",
-      "necromantic_dress",
-      "magician_dress",
-      "iron_armor",
-      "leather_armor",
-      "yettie_leather_armor",
-      "garnet_pendant",
-      "sapphire_pendant",
-      "exp_pendant",
-      "tower_shield"
-    ],
+    "dropItemList": {
+      "broad_sword" : "handgrip",
+      "sabre" : "handgrip",
+      "rapier" : "handgrip",
+      "great_sword" : "handgrip",
+      "military_sword" : "handgrip",
+      "claymore" : "handgrip",
+      "bible" : "handgrip",
+      "magic_procedure" : "handgrip",
+      "for_adult" : "handgrip",
+      "long_bow" : "handgrip",
+      "short_bow" : "handgrip",
+      "paulownia_bow" : "handgrip",
+      "gloomy_cane" : "handgrip",
+      "chestnut_cane" : "handgrip",
+      "blackwood_cane" : "handgrip",
+      "round_shield" : "handgrip",
+      "buckler" : "handgrip",
+      "cope" : "clothes",
+      "necromantic_dress" : "clothes",
+      "magician_dress" : "clothes",
+      "iron_armor" : "clothes",
+      "leather_armor" : "clothes",
+      "yettie_leather_armor" : "clothes",
+      "garnet_pendant" : "accessory",
+      "sapphire_pendant" : "accessory",
+      "exp_pendant" : "accessory",
+      "tower_shield":"handgrip"
+    },
     "skillList": []
   },
   "mawang_00": {
@@ -4433,7 +4328,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "mawang_01": {
@@ -4492,7 +4387,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "mawang_02": {
@@ -4551,7 +4446,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "mawang_03": {
@@ -4610,7 +4505,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "moerae": {
@@ -4669,7 +4564,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "animal_human": {
@@ -4728,7 +4623,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   },
   "kadilla_guard": {
@@ -4787,7 +4682,7 @@
       "waterResistance": 0,
       "electricResistance": 0
     },
-    "dropItemList": [],
+    "dropItemList": {},
     "skillList": []
   }
 }
