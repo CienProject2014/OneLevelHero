@@ -84,7 +84,7 @@
         "eventType": "play_music",
         "eventParameter": {
           "music": {
-            "musicPath": "bossbattle"
+            "musicPath": "fights"
           }
         }
       },
