@@ -17,12 +17,14 @@ import com.mygdx.eventTrigger.EventTrigger;
 import com.mygdx.eventTrigger.GameClearEventTrigger;
 import com.mygdx.eventTrigger.GameOverEventTrigger;
 import com.mygdx.eventTrigger.GetBuffEventTrigger;
+import com.mygdx.eventTrigger.GetItemEventTrigger;
 import com.mygdx.eventTrigger.GoSubNodeEventTrigger;
 import com.mygdx.eventTrigger.JoinPartyEventTrigger;
 import com.mygdx.eventTrigger.MoveDungeonRoomEventTrigger;
 import com.mygdx.eventTrigger.MoveNodeEventTrigger;
 import com.mygdx.eventTrigger.MoveSubNodeEventTrigger;
 import com.mygdx.eventTrigger.NextSectionEventTrigger;
+import com.mygdx.eventTrigger.NoEventTrigger;
 import com.mygdx.eventTrigger.OpenGameObjectEventTrigger;
 import com.mygdx.eventTrigger.OpenNpcEventTrigger;
 import com.mygdx.eventTrigger.PassTimeEventTrigger;
@@ -37,6 +39,7 @@ import com.mygdx.eventTrigger.SetNpcTargetTimeEventTrigger;
 import com.mygdx.eventTrigger.StartBattleEventTrigger;
 
 public class EventTriggerFactory {
+	private static final EventTrigger NO_EVENT = null;
 	@Autowired
 	private ApplicationContext context;
 
@@ -66,6 +69,8 @@ public class EventTriggerFactory {
 				return context.getBean(GameOverEventTrigger.class);
 			case GET_BUFF :
 				return context.getBean(GetBuffEventTrigger.class);
+			case GET_ITEM :
+				return context.getBean(GetItemEventTrigger.class);
 			case GO_SUB_NODE :
 				return context.getBean(GoSubNodeEventTrigger.class);
 			case JOIN_PARTY :
@@ -102,7 +107,7 @@ public class EventTriggerFactory {
 				return context.getBean(QuitPartyEventTrigger.class);
 			default :
 				Gdx.app.log("EventTriggerFactory", "EventType정보 오류 - " + eventType);
-				return null;
+				return context.getBean(NoEventTrigger.class);
 		}
 	}
 }

@@ -9,6 +9,7 @@ import com.mygdx.nextSectionChecker.BattleCommandChecker;
 import com.mygdx.nextSectionChecker.BattleEndChecker;
 import com.mygdx.nextSectionChecker.ChoiceOptionChecker;
 import com.mygdx.nextSectionChecker.CollectEventChecker;
+import com.mygdx.nextSectionChecker.DoNothingChecker;
 import com.mygdx.nextSectionChecker.MoveDungeonRoomAfterAbsoluteTimeChecker;
 import com.mygdx.nextSectionChecker.MoveDungeonRoomBeforeAbsoluteTimeChecker;
 import com.mygdx.nextSectionChecker.MoveDungeonRoomChecker;
@@ -54,7 +55,7 @@ public class NextSectionCheckerFactory {
 				return context.getBean(MoveSubNodeBeforeAbsoluteTimeChecker.class);
 			default :
 				Gdx.app.log("NextSectionCheckerFactory", "eventType 정보 오류" + eventType);
-				return null;
+				return context.getBean(DoNothingChecker.class);
 		}
 	}
 }

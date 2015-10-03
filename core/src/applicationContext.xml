@@ -205,6 +205,7 @@
 	<bean id="closeGameObjectEventTrigger" class="com.mygdx.eventTrigger.CloseGameObjectEventTrigger"/>
 	<bean id="endBattleEventTrigger" class="com.mygdx.eventTrigger.EndBattleEventTrigger"/>
 	<bean id="getBuffEventTrigger" class="com.mygdx.eventTrigger.GetBuffEventTrigger"/>
+	<bean id="getItemEventTrigger" class="com.mygdx.eventTrigger.GetItemEventTrigger"/>
 	<bean id="gameClearEventTrigger" class="com.mygdx.eventTrigger.GameClearEventTrigger"/>
 	<bean id="gameOverEventTrigger" class="com.mygdx.eventTrigger.GameOverEventTrigger"/>
 	<bean id="goSubNodeEventTrigger" class="com.mygdx.eventTrigger.GoSubNodeEventTrigger"/>
@@ -213,6 +214,7 @@
 	<bean id="moveNodeEventTrigger" class="com.mygdx.eventTrigger.MoveNodeEventTrigger"/>
 	<bean id="moveSubNodeEventTrigger" class="com.mygdx.eventTrigger.MoveSubNodeEventTrigger"/>
 	<bean id="nextSectionEventTrigger" class="com.mygdx.eventTrigger.NextSectionEventTrigger"/>
+	<bean id="noEventTrigger" class="com.mygdx.eventTrigger.NoEventTrigger"/>
 	<bean id="openGameObjectEventTrigger" class="com.mygdx.eventTrigger.OpenGameObjectEventTrigger"/>
 	<bean id="openNpcEventTrigger" class="com.mygdx.eventTrigger.OpenNpcEventTrigger"/>
 	<bean id="passTimeEventTrigger" class="com.mygdx.eventTrigger.PassTimeEventTrigger"/>

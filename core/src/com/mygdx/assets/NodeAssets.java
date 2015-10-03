@@ -47,8 +47,8 @@ public class NodeAssets implements JsonAssetsInitializable {
 			case DUNGEON_ENTRANCE :
 				return getDungeonByPath(subNodeName);
 			default :
-				Gdx.app.log("NodeAssets", "nodeType정보 오류 ");
-				return null;
+				Gdx.app.log("NodeAssets", "nodeType or subNodeType정보 오류 ");
+				return getBuildingByPath("blackwood", "blackwood_inn");
 		}
 	}
 
