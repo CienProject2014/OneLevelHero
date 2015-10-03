@@ -39,7 +39,7 @@ public class EventElement {
 			return getEvents().get(String.valueOf(eventNo));
 		} catch (IndexOutOfBoundsException e) {
 			Gdx.app.error("error", String.format("eventNo %d not exist", eventNo));
-			return null;
+			return getEvents().get(1);
 		}
 	}
 

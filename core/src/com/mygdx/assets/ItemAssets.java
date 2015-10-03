@@ -16,6 +16,7 @@ import com.mygdx.model.item.Weapon;
 import com.mygdx.util.JsonParser;
 
 public class ItemAssets implements JsonAssetsInitializable {
+	private static final String EMPTY_ITEM = "empty_item";
 	private Map<String, Weapon> weaponMap;
 	private Map<String, Accessory> accessoryMap;
 	private Map<String, Clothes> clothesMap;
@@ -66,7 +67,7 @@ public class ItemAssets implements JsonAssetsInitializable {
 			}
 		}
 		Gdx.app.log("ItemAssets", "적합한 HandGrip 탐색 실패");
-		return null;
+		return getHandGrip(EMPTY_ITEM);
 	}
 
 	public Shield getShield(String shieldName) {

@@ -126,16 +126,17 @@ public class DungeonManager {
 
 	private DungeonRoom findDungeonRoomByLabel(String roomLabel) {
 		Iterator<DungeonRoom> roomIterator = dungeonInfo.getCurrentFloor().getDungeonRooms().iterator();
+		DungeonRoom lastDungeonRoom = null;
 		while (roomIterator.hasNext()) {
 			DungeonRoom dungeonRoom = roomIterator.next();
 			if (dungeonRoom.getRoomLabel().equals(roomLabel)) {
+				lastDungeonRoom = dungeonRoom;
 				return dungeonRoom;
 			}
 		}
 		Gdx.app.log("DungeonManager", "roomLabel 정보 오류 - " + roomLabel);
-		return null;
+		return lastDungeonRoom;
 	}
-
 	public void changeDirection() {
 		if (dungeonInfo.getCurrentDirection().equals(Direction.FORWARD)) {
 			dungeonInfo.setCurrentDirection(Direction.BACKWARD);
