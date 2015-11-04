@@ -60,7 +60,7 @@ public class MonsterBattleStrategy implements BattleStrategy {
 			}
 		}
 		Gdx.app.log("Monster", attackMonster.getName() + "이(가) " + defender.getName() + "을(를) 공격하였습니다!");
-		battleManager.setText(
+		battleManager.setBattleDescriptionLabel(
 				attackMonster.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg + "를 입혔다!");
 	}
 

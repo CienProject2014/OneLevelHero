@@ -28,18 +28,17 @@
 	<bean id="nodeAssets" class="com.mygdx.assets.NodeAssets" />
 
 	<bean id="currentInfo" class="com.mygdx.currentState.CurrentInfo" />
-	<bean id="BagInfo" class="com.mygdx.currentState.BagInfo "	    />
-	<bean id="BattleInfo" class="com.mygdx.currentState.BattleInfo  "	     />
-	<bean id="FieldInfo" class="com.mygdx.currentState.FieldInfo"/>
-	<bean id="EventInfo" class="com.mygdx.currentState.EventInfo " 	     />
-	<bean id="MusicInfo" class="com.mygdx.currentState.MusicInfo "	    />
-	<bean id="PartyInfo" class="com.mygdx.currentState.PartyInfo "	     />
-	<bean id="PositionInfo" class="com.mygdx.currentState.PositionInfo"    />
-	<bean id="RewardInfo" class="com.mygdx.currentState.RewardInfo" 	   />
-	<bean id="StorySectionInfo" class="com.mygdx.currentState.StorySectionInfo" />
-	<bean id="SaveInfo" class="com.mygdx.currentState.SaveInfo"/>
-	<bean id="SoundInfo" class="com.mygdx.currentState.SoundInfo"/>
-	<bean id="TimeInfo" class="com.mygdx.currentState.TimeInfo "/>
+	<bean id="bagInfo" class="com.mygdx.currentState.BagInfo "	    />
+	<bean id="fieldInfo" class="com.mygdx.currentState.FieldInfo"/>
+	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo " 	     />
+	<bean id="musicInfo" class="com.mygdx.currentState.MusicInfo "	    />
+	<bean id="partyInfo" class="com.mygdx.currentState.PartyInfo "	     />
+	<bean id="positionInfo" class="com.mygdx.currentState.PositionInfo"    />
+	<bean id="rewardInfo" class="com.mygdx.currentState.RewardInfo" 	   />
+	<bean id="storySectionInfo" class="com.mygdx.currentState.StorySectionInfo" />
+	<bean id="saveInfo" class="com.mygdx.currentState.SaveInfo"/>
+	<bean id="soundInfo" class="com.mygdx.currentState.SoundInfo"/>
+	<bean id="timeInfo" class="com.mygdx.currentState.TimeInfo "/>
 	
 	
 	<bean id="listenerFactory" class="com.mygdx.factory.ListenerFactory"/>
@@ -121,6 +120,7 @@
 		scope="prototype"/>
 	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage"
 		scope="prototype"/>
+	<bean id="battleCommandStage" class="com.mygdx.stage.BattleCommandStage" scope="prototype"/>
 	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype"/>
 	<bean id="battleInfoMessageStage" class="com.mygdx.stage.BattleInfoMessageStage" scope="prototype"/>
 	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage"

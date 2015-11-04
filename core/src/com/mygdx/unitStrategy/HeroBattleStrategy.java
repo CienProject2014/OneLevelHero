@@ -67,7 +67,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		Gdx.app.log(TAG,
 				attacker.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg + "를 입혔다!");
-		battleManager.setText(
+		battleManager.setBattleDescriptionLabel(
 				attacker.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg + "를 입혔다!");
 	}
 
@@ -78,7 +78,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 			return;
 		}
 
-		battleManager.setText(
+		battleManager.setBattleDescriptionLabel(
 				skillUser.getName() + "이(가) " + targetList.get(0).getName() + "에게 " + skill.getName() + "을(를) 사용하였다!");
 		// 각 타겟에 대해 SkillEffectType에 따라 사용
 
@@ -237,7 +237,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		} else {
 			defender.getStatus().setHp(0);
 		}
-		battleManager.setText(attacker.getName() + "이(가) " + defender.getName() + "에게 "
+		battleManager.setBattleDescriptionLabel(attacker.getName() + "이(가) " + defender.getName() + "에게 "
 				+ battleManager.getCurrentSelectedSkill().getName() + "을(를) 사용하였다!" + "데미지 " + (int) totalDamage
 				+ "를 입혔다!");
 

@@ -38,13 +38,13 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 	}
 
 	private void showButton() {
-		final String battleStatusMessage = battleManager.getBattleInfo().getBattleInfoMessage();
+		final String battleStatusMessage = battleManager.getBattleInfoMessage();
 		messageButton.setText(battleStatusMessage);
 		if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
 			if (battleManager.getSelectedMonster().getDropItemList().size() > 0) {
-				statusMessageButton.setText("[" + battleManager.getBattleInfo().getDropItem().getName() + "] 을 얻었다.");
+				statusMessageButton.setText("[" + battleManager.getDropItem().getName() + "] 을 얻었다.");
 				battleStatusTable.setVisible(true);
-				battleManager.getBattleInfo().setGetItem(false);
+				battleManager.setGetItem(false);
 			} else {
 				battleStatusTable.setVisible(false);
 			}
@@ -58,8 +58,8 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 			public void clicked(InputEvent event, float x, float y) {
 				if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
 					movingManager.goCurrentLocatePosition();
-					storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE,
-							battleManager.getSelectedMonster().getFacePath());
+					storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE, battleManager
+							.getSelectedMonster().getFacePath());
 				} else if (battleStatusMessage.equals(START_BATTLE_MESSAGE)) {
 					BattleScreen.showBattleInfoMessage = false;
 				}
@@ -68,8 +68,8 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 	}
 	public Stage makeStage() {
 		super.makeStage();
-		TextureRegionDrawable textMenu = new TextureRegionDrawable(
-				new TextureRegion(textureManager.getTexture("battleui_battle_message")));
+		TextureRegionDrawable textMenu = new TextureRegionDrawable(new TextureRegion(
+				textureManager.getTexture("battleui_battle_message")));
 		battleMessageTable.left().bottom();
 		battleMessageTable.padLeft(400).padBottom(600);
 		final String battleInfoMessage = battleManager.getBattleInfoMessage();

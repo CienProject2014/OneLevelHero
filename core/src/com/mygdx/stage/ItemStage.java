@@ -112,8 +112,8 @@ public class ItemStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				BattleScreen.showItemStage = false;
-				battleManager.checkCurrentState();
-				battleManager.showRMenuButtons();
+				battleManager.setStateByCurrentUsingCommand();
+				battleManager.showBattleCommandButtons();
 			}
 		});
 	}

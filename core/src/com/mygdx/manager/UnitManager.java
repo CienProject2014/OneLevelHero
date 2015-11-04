@@ -148,11 +148,4 @@ public class UnitManager {
 		heroStatus.setMagicDefense(heroStatus.getMagicDefense() + removeStatus.getMagicDefense());
 		heroStatus.setSpeed(heroStatus.getSpeed() - removeStatus.getSpeed());
 	}
-
-	public void initiateHeroes(List<Hero> battleMemberList) {
-		Iterator<Hero> heroIterator = battleMemberList.iterator();
-		while (heroIterator.hasNext()) {
-			heroIterator.next().setBattleStrategy(heroBattleStrategy);
-		}
-	}
 }

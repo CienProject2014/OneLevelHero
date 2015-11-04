@@ -19,6 +19,6 @@ public class StartBattleEventTrigger implements EventTrigger {
 	public void triggerEvent(EventParameters eventParameter) {
 		battleManager.setBackgroundPath(eventParameter.getBattle().getBackgroundPath());
 		battleManager.setEventBattle(true);
-		battleManager.startBattle(unitAssets.getMonster(eventParameter.getBattle().getTargetMonster()));
+		battleManager.startBattleWithMonster(unitAssets.getMonster(eventParameter.getBattle().getTargetMonster()));
 	}
 }

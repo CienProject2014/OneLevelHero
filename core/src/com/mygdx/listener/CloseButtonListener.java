@@ -16,7 +16,7 @@ public class CloseButtonListener extends ClickListener {
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		soundManager.playClickSound();
-		battleManager.showRMenuButtons();
-		battleManager.checkCurrentState();
+		battleManager.showBattleCommandButtons();
+		battleManager.setStateByCurrentUsingCommand();
 	}
 }
