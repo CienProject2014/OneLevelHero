@@ -28,6 +28,7 @@ import com.mygdx.enums.BattleStateEnum;
 import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.enums.SaveVersion;
 import com.mygdx.model.event.EventPacket;
+import com.mygdx.stage.LoadPopupStage;
 
 public class SaveManager {
 	@Autowired
@@ -54,6 +55,7 @@ public class SaveManager {
 	private PositionManager positionManager;
 	@Autowired
 	private EventManager eventManager;
+	private LoadPopupStage loadPopupStage;
 
 	private final static String SAVEPATH = "save/";
 
@@ -225,6 +227,14 @@ public class SaveManager {
 			return "blank_face";
 		else
 			return partyInfo.getPartyList().get(i).getFacePath();
+	}
+
+	public LoadPopupStage getLoadPopupStage() {
+		return loadPopupStage;
+	}
+
+	public void setLoadPopupStage(LoadPopupStage loadPopupStage) {
+		this.loadPopupStage = loadPopupStage;
 	}
 
 }

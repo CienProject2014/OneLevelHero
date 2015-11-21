@@ -47,7 +47,7 @@
 	<bean id="screenFactory" class="com.mygdx.factory.ScreenFactory" />
 	<bean id="stageFactory" class="com.mygdx.factory.StageFactory" />
 
-	<bean id="animationManager" class="com.mygdx.manager.RealAnimationManager" />
+	<bean id="animationManager" class="com.mygdx.manager.MockAnimationManager" />
 	<bean id="assetsManager" class="com.mygdx.manager.AssetsManager"/>
 	<bean id="battleManager" class="com.mygdx.manager.BattleManager"/>
 	<bean id="bagManager" class="com.mygdx.manager.BagManager"/>

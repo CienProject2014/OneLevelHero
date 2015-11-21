@@ -39,10 +39,10 @@ public class UnitManager {
 	public void initiateHero(Hero hero) {
 		intiallyEquipAllItems(hero);
 		setSkills(hero);
-		setAttackStrategy(hero);
+		setBattleStrategy(hero);
 	}
 
-	public void setAttackStrategy(Unit unit) {
+	public void setBattleStrategy(Unit unit) {
 		if (unit instanceof Hero) {
 			unit.setBattleStrategy(heroBattleStrategy);
 		} else {
@@ -51,7 +51,7 @@ public class UnitManager {
 	}
 
 	public void initiateMonster(Monster monster) {
-		setAttackStrategy(monster);
+		setBattleStrategy(monster);
 		setDropItemList(monster);
 	}
 

@@ -154,13 +154,13 @@ public class SkillStage extends BaseOverlapStage {
 						// 몬스터면 Hitbox가 보인다.
 						if (currentSelectedSkill.getSkillType().equals("magic")) {
 							// 마법일 경우에는 정해진 모양대로 나와야 한다.
-							battleManager.getNowGridHitbox().setHitboxCenter(currentSelectedSkill.getHitboxCenter());
-							battleManager.getNowGridHitbox().setHitboxShape(currentSelectedSkill.getHitboxShape());
+							battleManager.getGridHitbox().setHitboxCenter(currentSelectedSkill.getHitboxCenter());
+							battleManager.getGridHitbox().setHitboxShape(currentSelectedSkill.getHitboxShape());
 							battleManager.setShowGrid(true);
 						} else {
 							// 기술일 경우에는 히트박스 제한이 있다.
-							battleManager.getNowGridHitbox().setHitboxCenter(null);
-							battleManager.getNowGridHitbox().setHitboxShape(null);
+							battleManager.getGridHitbox().setHitboxCenter(null);
+							battleManager.getGridHitbox().setHitboxShape(null);
 							battleManager.setGridLimitNum(currentSelectedSkill.getHitboxSize());
 							battleManager.setShowGrid(true);
 						}

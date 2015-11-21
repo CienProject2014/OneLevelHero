@@ -27,7 +27,6 @@ public class RestButtonListener extends ClickListener {
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		soundManager.playClickSound();
-
 		soundManager.setSoundByPathAndPlay("notice_sleep");
 		eventManager.getEventInfo().setCurrentEventElementType(EventElementEnum.GAME_OBJECT);
 		eventManager.getEventInfo().setCurrentGameObjectEvent(
@@ -47,7 +46,6 @@ public class RestButtonListener extends ClickListener {
 			default :
 				Gdx.app.log("RestButtonListener", "position정보오류 - " + position);
 				break;
-
 		}
 
 		screenFactory.show(ScreenEnum.CHAT_EVENT);

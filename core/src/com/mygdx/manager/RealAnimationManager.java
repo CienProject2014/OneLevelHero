@@ -13,18 +13,45 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.assets.TextureAssets;
 import com.mygdx.model.jsonModel.FrameSheet;
 
-public abstract class AnimationManager {
+public class RealAnimationManager extends AnimationManager {
 	@Autowired
 	private TextureAssets textureAssets;
 	private SpriteBatch spriteBatch;
 	private ArrayList<OneAnimation> animations;
 
-	public abstract void registerAnimation(String name, int x, int y, int width, int height);
-	public abstract void nextFrame(float delta);
+	public RealAnimationManager() {
+		spriteBatch = new SpriteBatch();
+		animations = new ArrayList<OneAnimation>();
+	}
 
-	public abstract boolean isPlayable();
+	public void registerAnimation(String name, int x, int y, int width, int height) {
+		OneAnimation newAni = new OneAnimation();
+		newAni.registerAnimation(name, x, y, width, height);
+		animations.add(newAni);
+	}
 
-	public abstract boolean isEmptyAnimation();
+	public void nextFrame(float delta) {
+		for (int i = 0; i < animations.size(); i++) {
+			if (animations.get(i).isEndAnimation()) {
+				animations.remove(i);
+			} else {
+				animations.get(i).nextFrame(delta);
+			}
+		}
+	}
+
+	public boolean isPlayable() {
+		if (animations.isEmpty()) {
+			// resetTime();
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean isEmptyAnimation() {
+		return animations.isEmpty();
+	}
 
 	public class OneAnimation {
 		private float stateTime;

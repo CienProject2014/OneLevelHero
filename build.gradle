@@ -32,6 +32,7 @@ project(":desktop") {
 
     dependencies {
         compile project(":core")
+		testCompile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion" 
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
@@ -67,15 +68,38 @@ project(":android") {
 project(":core") {
     apply plugin: "java"
 	
-	sourceSets.test.java.srcDirs = ["test/"]	
-	
     dependencies {
+		compile "com.google.guava:guava:18.0"		
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
 		compile project(":Overlap2dRuntime")
-	compile "com.esotericsoftware:kryo:3.0.0"
+		compile "com.esotericsoftware:kryo:3.0.0"
         compile fileTree(dir: 'libs', include: '*.jar')             
-		testCompile group: 'junit', name: 'junit', version: '4.+'
+    }
+}
+
+project(":tests") {
+    apply plugin: "java"
+
+    sourceSets.test.java.srcDirs = ["src/"]
+
+    dependencies {
+
+		compile project(":desktop")
+        compile project(":core")
+
+        compile "junit:junit:4.+"
+        compile "org.mockito:mockito-all:1.9.+"
+
+        compile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"        
+
+        testCompile 'junit:junit:4.+'
+        testCompile "org.mockito:mockito-all:1.9.+"
+		testCompile 'org.springframework:spring-test:2.5'
+        testCompile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+        testCompile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        testCompile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
     }
 }
 

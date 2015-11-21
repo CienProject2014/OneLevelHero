@@ -82,7 +82,12 @@ public class LoadPopupStage extends BaseOverlapStage {
 		setCompositeItem();
 		setLabels(sceneConstants);
 		setAddListener();
+		saveManager.setLoadPopupStage(this);
 		return this;
+	}
+
+	public void update() {
+		setLabels(sceneConstants);
 	}
 
 	private void setLabelStyle(LabelItem labelItem) {

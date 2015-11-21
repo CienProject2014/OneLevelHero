@@ -36,6 +36,7 @@ public class ForkScreen extends BaseScreen {
 		if (showLoadStage) {
 			loadPopupStage.draw();
 		}
+		loadPopupStage.act();
 		if (isClickPopup) {
 			restPopupStage.draw();
 		}

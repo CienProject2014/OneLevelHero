@@ -27,6 +27,7 @@ public class SettingPopup extends Dialog {
 	private MusicManager musicManager;
 	private SoundManager soundManager;
 	private SoundPopup soundPopup;
+	private SettingPopup settingPopup;
 
 	public SettingPopup(String title, Skin skin) {
 		super(title, skin);
@@ -44,6 +45,7 @@ public class SettingPopup extends Dialog {
 		setSize(430, 700);
 		setResizable(false);
 		setVisible(false);
+		setSettingPopup(this);
 	}
 
 	private void makeListener() {
@@ -63,6 +65,7 @@ public class SettingPopup extends Dialog {
 				soundPopup.initialize();
 				getParent().addActor(soundPopup);
 				soundPopup.setVisible(true);
+				getSettingPopup().setVisible(false); // Manager통해 가능하게하자
 			}
 		});
 		titleButton.addListener(goTitleListener);
@@ -128,5 +131,13 @@ public class SettingPopup extends Dialog {
 
 	public void setSoundManager(SoundManager soundManager) {
 		this.soundManager = soundManager;
+	}
+
+	public SettingPopup getSettingPopup() {
+		return settingPopup;
+	}
+
+	public void setSettingPopup(SettingPopup settingPopup) {
+		this.settingPopup = settingPopup;
 	}
 }

@@ -13,18 +13,35 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.assets.TextureAssets;
 import com.mygdx.model.jsonModel.FrameSheet;
 
-public abstract class AnimationManager {
+public class MockAnimationManager extends AnimationManager {
 	@Autowired
 	private TextureAssets textureAssets;
 	private SpriteBatch spriteBatch;
 	private ArrayList<OneAnimation> animations;
 
-	public abstract void registerAnimation(String name, int x, int y, int width, int height);
-	public abstract void nextFrame(float delta);
+	public MockAnimationManager() {
+	}
 
-	public abstract boolean isPlayable();
+	public void registerAnimation(String name, int x, int y, int width, int height) {
 
-	public abstract boolean isEmptyAnimation();
+	}
+
+	public void nextFrame(float delta) {
+
+	}
+
+	public boolean isPlayable() {
+		if (animations.isEmpty()) {
+			// resetTime();
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean isEmptyAnimation() {
+		return animations.isEmpty();
+	}
 
 	public class OneAnimation {
 		private float stateTime;

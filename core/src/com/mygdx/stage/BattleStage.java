@@ -123,22 +123,21 @@ public class BattleStage extends BaseOneLevelStage {
 
 	public Stage makeStage() {
 		super.makeStage();
-		battleManager.intiateAllProperties();
+		selectedMonster = battleManager.getSelectedMonster();
+		battleManager.initializeProperties();
 		battleManager.gameObjectPopup = new SkillRunPopup();
 		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
 			showInEncounterCase();
 		}
 
-		battleManager.updateOrder();
-		currentAttackUnit = battleManager.getCurrentActors(); // 여기선 첫번째 턴
-		selectedMonster = battleManager.getSelectedMonster();
+		currentAttackUnit = battleManager.getPickedActor(battleManager.getOrderedUnits());
 		battleManager.setCurrentAttackUnit(currentAttackUnit);
 
 		tableStack.add(makeTurnTable()); // TurnTable 배경 테이블
 		tableStack.add(makeTurnFaceTable()); // TurnTable위에 있는 영웅들 이미지 테이블
 		battleManager.setMonsterSize(MonsterEnum.SizeType.MEDIUM);
 
-		tableStack.add(battleManager.getNowGridHitbox());
+		tableStack.add(battleManager.getGridHitbox());
 		battleManager.setShowGrid(false);
 		battleManager.setBattleStage(this);
 
@@ -147,7 +146,7 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private void showInEncounterCase() {
 		soundManager.setSoundByPathAndPlay("notice_encount");
-		battleManager.initializeBattleMember();
+		battleManager.initializeBattleMember(partyManager.getBattleMemberList(), selectedMonster);
 		showMenuBarAnimation();
 		showBattleInfoMessage(START_BATTLE_MESSAGE);
 	}
@@ -233,7 +232,6 @@ public class BattleStage extends BaseOneLevelStage {
 	}
 
 	private Table makeSmallImageTable() {
-		battleManager.updateSubOrder();
 		orderedUnits = battleManager.getOrderedUnits();
 		for (Unit unit : orderedUnits) {
 			turnSmallImageMap.get(unit.getFacePath()).setWidth(80);
@@ -269,15 +267,15 @@ public class BattleStage extends BaseOneLevelStage {
 		super.touchDown(screenX, screenY, pointer, button);
 		if (battleManager.isShowGrid()) {
 			end = (new Vector2(touched.x, touched.y));
-			if (battleManager.getNowGridHitbox().isInsideHitbox(touched.x, touched.y)) {
+			if (battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 				if (battleManager.isSkill()) {
 					battleManager.setGridLimitNum(battleManager.getCurrentSelectedSkill().getHitboxSize());
 				} else {
 					battleManager.setGridLimitNum(getWeaponHitboxSize());
 				}
 				start = (new Vector2(touched.x, touched.y));
-				battleManager.getNowGridHitbox().setStartPosition(touched.x, touched.y);
-				battleManager.getNowGridHitbox().showTileWhereMoved(touched.x, touched.y);
+				battleManager.getGridHitbox().setStartPosition(touched.x, touched.y);
+				battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
 			}
 		}
 		return true;
@@ -289,12 +287,12 @@ public class BattleStage extends BaseOneLevelStage {
 		if (battleManager.isShowGrid()) {
 			end = (new Vector2(touched.x, touched.y));
 			if (!battleManager.isSkill()) {
-				battleManager.getNowGridHitbox().showTileWhereMoved(touched.x, touched.y);
+				battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
 			} else {
-				if (battleManager.getNowGridHitbox().getHitboxCenter() == null) {
-					battleManager.getNowGridHitbox().showTileWhereMoved(touched.x, touched.y);
+				if (battleManager.getGridHitbox().getHitboxCenter() == null) {
+					battleManager.getGridHitbox().showTileWhereMoved(touched.x, touched.y);
 				} else {
-					battleManager.getNowGridHitbox().showFixedTilesAt(touched.x, touched.y);
+					battleManager.getGridHitbox().showFixedTilesAt(touched.x, touched.y);
 				}
 			}
 		}
@@ -304,11 +302,11 @@ public class BattleStage extends BaseOneLevelStage {
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		super.touchUp(screenX, screenY, pointer, button);
-		if (battleManager.isShowGrid() && battleManager.getNowGridHitbox().isInsideHitbox(touched.x, touched.y)) {
+		if (battleManager.isShowGrid() && battleManager.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 			if (!battleManager.isSkill()) {
 				soundManager.setSoundByPathAndPlay("slash");
 				battleManager.attack(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
-						.getNowGridHitbox().getPreviousHitArea());
+						.getGridHitbox().getPreviousHitArea());
 			} else {
 
 				battleManager.useSkill(battleManager.getCurrentAttackUnit(), selectedMonster, battleManager
@@ -325,7 +323,7 @@ public class BattleStage extends BaseOneLevelStage {
 	private void resetHitboxState() {
 		start = null;
 		end = null;
-		battleManager.getNowGridHitbox().hideAllTiles();
+		battleManager.getGridHitbox().hideAllTiles();
 	}
 
 	private void makeTurnBackgroundImage() {

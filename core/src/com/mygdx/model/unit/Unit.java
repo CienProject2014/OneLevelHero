@@ -105,7 +105,7 @@ public abstract class Unit implements Comparable<Unit> {
 		return subvalue;
 	}
 
-	public void setSubvalue(int subvalue) {
+	public void setSubValue(int subvalue) {
 		this.subvalue = subvalue;
 	}
 
@@ -125,7 +125,7 @@ public abstract class Unit implements Comparable<Unit> {
 					if (obj instanceof Monster) {
 						// 몬스터는 꼴지!
 						return 1;
-					} else if (obj.getFacePath() == "yongsa") {
+					} else if (obj.getFacePath().equals("yongsa")) {
 						// 용사는 일등!
 						return -1;
 					} else {

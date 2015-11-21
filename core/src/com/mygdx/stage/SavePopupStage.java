@@ -171,15 +171,16 @@ public class SavePopupStage extends BaseOverlapStage {
 		public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 			setLabels(sceneConstants);
 			switch (positionManager.getCurrentLocatePositionType()) {
-			case SUB_NODE:
-				BuildingScreen.isInSave = false;
-				break;
-			case NODE:
-				DungeonEntranceScreen.isInSave = false;
-				break;
-			default:
-				Gdx.app.log("SavePopupStage", "LocatePosition정보 오류" + positionManager.getCurrentLocatePositionType());
-				break;
+				case SUB_NODE :
+					BuildingScreen.isInSave = false;
+					break;
+				case NODE :
+					DungeonEntranceScreen.isInSave = false;
+					break;
+				default :
+					Gdx.app.log("SavePopupStage",
+							"LocatePosition정보 오류" + positionManager.getCurrentLocatePositionType());
+					break;
 			}
 		}
 	}

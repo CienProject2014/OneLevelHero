@@ -37,6 +37,7 @@ public class DungeonEntranceScreen extends BaseScreen {
 		if (showLoadStage) {
 			loadPopupStage.draw();
 		}
+		loadPopupStage.act();
 		if (isClickPopup) {
 			gameObjectPopupStage.draw();
 		}

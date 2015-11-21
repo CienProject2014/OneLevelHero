@@ -21,7 +21,6 @@ public class BuildingScreen extends BaseScreen {
 		setInputProcessor();
 		buildingStage.draw();
 		gameUiStage.draw();
-		buildingStage.getCamera().update();
 		gameUiStage.act(delta);
 		if (isInSave) {
 			saveStage.draw();
@@ -32,7 +31,6 @@ public class BuildingScreen extends BaseScreen {
 		if (isClickPopup) {
 			gameObjectPopupStage.draw();
 		}
-
 	}
 
 	@Override

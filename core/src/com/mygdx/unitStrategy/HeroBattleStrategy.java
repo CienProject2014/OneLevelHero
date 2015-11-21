@@ -204,7 +204,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 			realMagicDamage = 1;
 		}
 		if (battleManager.isShowGrid()) {
-			int[][] hitArea = battleManager.getNowGridHitbox().getPreviousHitArea();
+			int[][] hitArea = battleManager.getGridHitbox().getPreviousHitArea();
 			for (int i = 0; i < hitArea.length; i++) {
 				for (int j = 0; j < hitArea[i].length; j++) {
 					if (hitArea[i][j] == 1) {
