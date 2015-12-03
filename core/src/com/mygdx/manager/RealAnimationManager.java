@@ -10,12 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.TextureAssets;
 import com.mygdx.model.jsonModel.FrameSheet;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.Unit;
 
 public class RealAnimationManager extends AnimationManager {
 	@Autowired
 	private TextureAssets textureAssets;
+	@Autowired
+	private PartyManager partyManager;
+	@Autowired
+	private BattleManager battleManager;
 	private SpriteBatch spriteBatch;
 	private ArrayList<OneAnimation> animations;
 
@@ -24,9 +31,72 @@ public class RealAnimationManager extends AnimationManager {
 		animations = new ArrayList<OneAnimation>();
 	}
 
-	public void registerAnimation(String name, int x, int y, int width, int height) {
+	public void registerAnimation(Hero attackedHero, String animationName, int xx, int yy) {
+		int playerOrder = partyManager.getPlayerOrder(attackedHero);
+		final int x;
+		final int y;
+		switch (playerOrder) {
+			case 0 :
+				x = (int) (StaticAssets.windowWidth * 0.1f);
+				y = (int) (StaticAssets.windowHeight * 0.6f);
+				break;
+			case 1 :
+				x = (int) (StaticAssets.windowWidth * 0.1f);
+				y = (int) (StaticAssets.windowHeight * 0.5f);
+				break;
+			case 2 :
+				x = (int) (StaticAssets.windowWidth * 0.1f);
+				y = (int) (StaticAssets.windowHeight * 0.4f);
+				break;
+			default :
+				x = (int) (StaticAssets.windowWidth * 0.1f);
+				y = (int) (StaticAssets.windowHeight * 0.6f);
+				break;
+		}
+
+		registerAnimation("attack_cutting", x, y);
+	}
+
+	public void registerAnimation(String name, int x, int y) {
+		if (partyManager.getCurrentSelectedHero() == null) {
+			// 팀원을 누르는 경우가 아닐때는 받아온 경로로 실행시킨다.
+			x = (int) (StaticAssets.windowWidth / 2);
+			y = (int) (StaticAssets.windowHeight / 2);
+			name = "attack_swing";
+			/*
+			 * int localx = (int) (StaticAssets.windowWidth * 0.5f) + (int)
+			 * (StaticAssets.windowHeight * (-0.24f + 0.12f * x)); int localy =
+			 * (int) (StaticAssets.windowHeight * 0.5f) + (int)
+			 * (StaticAssets.windowHeight * (-0.24f + 0.12f * y));
+			 */
+		} else {
+			int playerOrder = partyManager.getPlayerOrder(partyManager.getCurrentSelectedHero());
+			switch (playerOrder) {
+				case 0 :
+					x = (int) (StaticAssets.windowWidth * 0.1f);
+					y = (int) (StaticAssets.windowHeight * 0.6f);
+					break;
+				case 1 :
+					x = (int) (StaticAssets.windowWidth * 0.1f);
+					y = (int) (StaticAssets.windowHeight * 0.5f);
+					break;
+				case 2 :
+					x = (int) (StaticAssets.windowWidth * 0.1f);
+					y = (int) (StaticAssets.windowHeight * 0.4f);
+					break;
+				default :
+					x = (int) (StaticAssets.windowWidth * 0.1f);
+					y = (int) (StaticAssets.windowHeight * 0.6f);
+					break;
+			}
+			name = "attack_cutting";
+		}
+
+		int height = (int) (StaticAssets.windowHeight * 0.5f);
+		int width = (int) (StaticAssets.windowHeight * 0.5f);
 		OneAnimation newAni = new OneAnimation();
 		newAni.registerAnimation(name, x, y, width, height);
+		battleManager.getBattleUi().getBattleStage().getCameraManager().shaking();
 		animations.add(newAni);
 	}
 
@@ -250,4 +320,10 @@ public class RealAnimationManager extends AnimationManager {
 	 * public void setAnimations(Queue<OneImageBit> animations) {
 	 * this.animations = animations; }
 	 */
+
+	@Override
+	public void registerAnimation(Unit attackUnit, Unit defendUnit, String animationName) {
+		// TODO Auto-generated method stub
+
+	}
 }

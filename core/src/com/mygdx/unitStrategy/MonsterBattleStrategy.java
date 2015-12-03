@@ -32,12 +32,12 @@ public class MonsterBattleStrategy implements BattleStrategy {
 		int attackDmg = (int) attackMonster.getRealStatus().getAttack();
 		int defenseValue = (int) defender.getRealStatus().getDefense();
 		int defenderHp = defender.getStatus().getHp();
-		int realDmg = attackDmg - defenseValue;
-		if (realDmg < 1) {
-			realDmg = 1;
+		int realDamage = attackDmg - defenseValue;
+		if (realDamage < 1) {
+			realDamage = 1;
 		}
-		if (defenderHp - realDmg > 0) {
-			defender.getStatus().setHp(defenderHp - realDmg);
+		if (defenderHp - realDamage > 0) {
+			defender.getStatus().setHp(defenderHp - realDamage);
 		} else {
 			defender.getStatus().setHp(0);
 		}
@@ -59,13 +59,11 @@ public class MonsterBattleStrategy implements BattleStrategy {
 
 			}
 		}
-		Gdx.app.log("Monster", attackMonster.getName() + "이(가) " + defender.getName() + "을(를) 공격하였습니다!");
-		battleManager.setBattleDescriptionLabel(
-				attackMonster.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg + "를 입혔다!");
+		defender.setRecentSufferedDamage(realDamage);
 	}
 
 	@Override
-	public void skill(Unit attackMonster, ArrayList<Unit> targetList, Skill skill) {
+	public void useSkill(Unit attackMonster, ArrayList<Unit> targetList, Skill skill) {
 		Gdx.app.log("Monster", attackMonster.getName() + "이(가) " + skill.getName() + "을(를) 사용하였습니다!");
 	}
 
@@ -73,7 +71,7 @@ public class MonsterBattleStrategy implements BattleStrategy {
 
 		ArrayList<Buff> cancelList = new ArrayList<Buff>();
 
-		int deltaTime = timeManager.getPreTime();
+		int deltaTime = BattleManager.TIME_FLOW_RATE;
 
 		for (Buff buff : defender.getBuffList()) {
 			if (buff.getFlyingTime() >= buff.getDuration()) {
@@ -105,68 +103,68 @@ public class MonsterBattleStrategy implements BattleStrategy {
 		battleManager.setEndBuff(true);
 		for (String buffEffect : buff.getBuffEffectList()) {
 			switch (BuffEffectEnum.findBuffEffectEnum(buffEffect)) {
-			case BLOCK_ACTION:
-				blockAction(defender);
-				break;
-			case INCREASE_AGGRO:
-				increaseAggro(defender);
-				break;
-			case DECREASE_ATTACK:
-				decreaseAttack(defender, buff);
-				break;
-			case DECREASE_HP_ITERATIVE:
-				decreaseHpIterative(defender, buff);
-				break;
-			case DECREASE_MAGIC_ATTACK:
-				break;
-			case INCREASE_DEFENSE:
-				increaseDefense(defender, buff);
-				break;
-			case DECREASE_DEFENSE:
-				decreaseDefense(defender, buff);
-				break;
-			case DECREASE_SPEED:
-				decreaseSpeed(defender, buff);
-				break;
-			case FLY_ACTION:
-				flyAction(defender);
-				break;
-			case OVERLOAD:
-				overload(defender);
-				break;
-			case OVERWORK:
-				overwork(defender);
-				break;
-			case SHOCK:
-				shock(defender);
-				break;
-			case WEAK:
-				weak(defender);
-				break;
-			case STINK:
-				stink(defender);
-				break;
-			case DECLINE:
-				decline(defender);
-				break;
-			case CHARM:
-				charm(defender);
-				break;
-			case INCREASE_FIRE_RESISTANCE:
-				increaseFireResistance(defender, buff);
-				break;
-			case INCREASE_WATER_RESISTANCE:
-				increaseWaterResistance(defender, buff);
-				break;
-			case INCREASE_ELECTRIC_RESISTANCE:
-				increaseElectricResistance(defender, buff);
-				break;
-			case BLESS:
-				bless(defender);
-				break;
-			case DEFAULT:
-			default:
-				break;
+				case BLOCK_ACTION :
+					blockAction(defender);
+					break;
+				case INCREASE_AGGRO :
+					increaseAggro(defender);
+					break;
+				case DECREASE_ATTACK :
+					decreaseAttack(defender, buff);
+					break;
+				case DECREASE_HP_ITERATIVE :
+					decreaseHpIterative(defender, buff);
+					break;
+				case DECREASE_MAGIC_ATTACK :
+					break;
+				case INCREASE_DEFENSE :
+					increaseDefense(defender, buff);
+					break;
+				case DECREASE_DEFENSE :
+					decreaseDefense(defender, buff);
+					break;
+				case DECREASE_SPEED :
+					decreaseSpeed(defender, buff);
+					break;
+				case FLY_ACTION :
+					flyAction(defender);
+					break;
+				case OVERLOAD :
+					overload(defender);
+					break;
+				case OVERWORK :
+					overwork(defender);
+					break;
+				case SHOCK :
+					shock(defender);
+					break;
+				case WEAK :
+					weak(defender);
+					break;
+				case STINK :
+					stink(defender);
+					break;
+				case DECLINE :
+					decline(defender);
+					break;
+				case CHARM :
+					charm(defender);
+					break;
+				case INCREASE_FIRE_RESISTANCE :
+					increaseFireResistance(defender, buff);
+					break;
+				case INCREASE_WATER_RESISTANCE :
+					increaseWaterResistance(defender, buff);
+					break;
+				case INCREASE_ELECTRIC_RESISTANCE :
+					increaseElectricResistance(defender, buff);
+					break;
+				case BLESS :
+					bless(defender);
+					break;
+				case DEFAULT :
+				default :
+					break;
 			}
 		}
 	}
@@ -174,68 +172,68 @@ public class MonsterBattleStrategy implements BattleStrategy {
 	private void applyAllBuffEffect(Unit defender, Buff buff) {
 		for (String buffEffect : buff.getBuffEffectList()) {
 			switch (BuffEffectEnum.findBuffEffectEnum(buffEffect)) {
-			case BLOCK_ACTION:
-				blockAction(defender);
-				break;
-			case INCREASE_AGGRO:
-				increaseAggro(defender);
-				break;
-			case DECREASE_ATTACK:
-				decreaseAttack(defender, buff);
-				break;
-			case DECREASE_HP_ITERATIVE:
-				decreaseHpIterative(defender, buff);
-				break;
-			case DECREASE_MAGIC_ATTACK:
-				break;
-			case INCREASE_DEFENSE:
-				increaseDefense(defender, buff);
-				break;
-			case DECREASE_DEFENSE:
-				decreaseDefense(defender, buff);
-				break;
-			case DECREASE_SPEED:
-				decreaseSpeed(defender, buff);
-				break;
-			case FLY_ACTION:
-				flyAction(defender);
-				break;
-			case OVERLOAD:
-				overload(defender);
-				break;
-			case OVERWORK:
-				overwork(defender);
-				break;
-			case SHOCK:
-				shock(defender);
-				break;
-			case WEAK:
-				weak(defender);
-				break;
-			case STINK:
-				stink(defender);
-				break;
-			case DECLINE:
-				decline(defender);
-				break;
-			case CHARM:
-				charm(defender);
-				break;
-			case INCREASE_FIRE_RESISTANCE:
-				increaseFireResistance(defender, buff);
-				break;
-			case INCREASE_WATER_RESISTANCE:
-				increaseWaterResistance(defender, buff);
-				break;
-			case INCREASE_ELECTRIC_RESISTANCE:
-				increaseElectricResistance(defender, buff);
-				break;
-			case BLESS:
-				bless(defender);
-				break;
-			case DEFAULT:
-			default:
-				break;
+				case BLOCK_ACTION :
+					blockAction(defender);
+					break;
+				case INCREASE_AGGRO :
+					increaseAggro(defender);
+					break;
+				case DECREASE_ATTACK :
+					decreaseAttack(defender, buff);
+					break;
+				case DECREASE_HP_ITERATIVE :
+					decreaseHpIterative(defender, buff);
+					break;
+				case DECREASE_MAGIC_ATTACK :
+					break;
+				case INCREASE_DEFENSE :
+					increaseDefense(defender, buff);
+					break;
+				case DECREASE_DEFENSE :
+					decreaseDefense(defender, buff);
+					break;
+				case DECREASE_SPEED :
+					decreaseSpeed(defender, buff);
+					break;
+				case FLY_ACTION :
+					flyAction(defender);
+					break;
+				case OVERLOAD :
+					overload(defender);
+					break;
+				case OVERWORK :
+					overwork(defender);
+					break;
+				case SHOCK :
+					shock(defender);
+					break;
+				case WEAK :
+					weak(defender);
+					break;
+				case STINK :
+					stink(defender);
+					break;
+				case DECLINE :
+					decline(defender);
+					break;
+				case CHARM :
+					charm(defender);
+					break;
+				case INCREASE_FIRE_RESISTANCE :
+					increaseFireResistance(defender, buff);
+					break;
+				case INCREASE_WATER_RESISTANCE :
+					increaseWaterResistance(defender, buff);
+					break;
+				case INCREASE_ELECTRIC_RESISTANCE :
+					increaseElectricResistance(defender, buff);
+					break;
+				case BLESS :
+					bless(defender);
+					break;
+				case DEFAULT :
+				default :
+					break;
 			}
 		}
 	}

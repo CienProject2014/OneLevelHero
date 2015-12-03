@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.BattleSituationEnum;
 import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.listener.SimpleTouchListener;
@@ -52,7 +52,7 @@ public class EncounterStage extends BaseOneLevelStage {
 	public Stage makeStage() {
 		super.makeStage();
 		uiConstantsMap = constantsAssets.getUiConstants("MonsterStage");
-		monster = battleManager.getSelectedMonster();
+		monster = battleManager.getCurrentMonster();
 		setMonsterTable();
 
 		fightButton = new TextButton("싸운다", uiComponentAssets.getSkin());
@@ -95,8 +95,8 @@ public class EncounterStage extends BaseOneLevelStage {
 		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getTexture("bg_devil_castle_06")));
 		} else {
-			return new TextureRegionDrawable(
-					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
+					.getFieldType().toString())));
 		}
 	}
 
@@ -111,7 +111,7 @@ public class EncounterStage extends BaseOneLevelStage {
 		fleeButton.addListener(new SimpleTouchListener() {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+				battleManager.setCurrentBattleSituation(BattleSituationEnum.NOT_IN_BATTLE);
 				movingManager.goCurrentLocatePosition();
 			}
 		});

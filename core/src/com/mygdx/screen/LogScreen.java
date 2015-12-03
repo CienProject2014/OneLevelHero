@@ -51,7 +51,7 @@ public class LogScreen extends BaseScreen {
 	@Override
 	public void show() {
 		if (battleManager.isInBattle()) {
-			eventManager.setCurrentNpc(battleManager.getSelectedMonster().getFacePath());
+			eventManager.setCurrentNpc(battleManager.getCurrentMonster().getFacePath());
 		} else {
 			positionManager.setCurrentEventPositionType(EventPosition.LOG);
 			eventManager.setCurrentNpc(YONGSA_NAME);

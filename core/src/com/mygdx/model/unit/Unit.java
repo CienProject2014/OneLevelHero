@@ -26,6 +26,7 @@ public abstract class Unit implements Comparable<Unit> {
 	protected float preDecDefense;
 	protected float preIncDefense;
 	protected int preIncAggro;
+	protected int recentSufferedDamage;
 
 	protected List<Buff> buffList = new ArrayList<Buff>();
 
@@ -98,6 +99,9 @@ public abstract class Unit implements Comparable<Unit> {
 	}
 
 	public void setGauge(int gauge) {
+		if (gauge < 0) {
+			this.gauge = 0;
+		}
 		this.gauge = gauge;
 	}
 
@@ -153,12 +157,12 @@ public abstract class Unit implements Comparable<Unit> {
 		}
 	}
 
-	public int getPreGague() {
+	public int getPreGauge() {
 		return preGague;
 	}
 
-	public void setPreGague(int preGague) {
-		this.preGague = preGague;
+	public void setPreGauge(int preGauge) {
+		this.preGague = preGauge;
 	}
 
 	public void attack(Unit opponent, int[][] hitArea) {
@@ -166,7 +170,7 @@ public abstract class Unit implements Comparable<Unit> {
 	}
 
 	public void useSkill(ArrayList<Unit> targetList, Skill skill) {
-		battleStrategy.skill(this, targetList, skill);
+		battleStrategy.useSkill(this, targetList, skill);
 	}
 
 	public List<Skill> getSkills() {
@@ -231,5 +235,13 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setRealStatus(Status realStatus) {
 		this.realStatus = realStatus;
+	}
+
+	public int getRecentSufferedDamage() {
+		return recentSufferedDamage;
+	}
+
+	public void setRecentSufferedDamage(int recentSufferedDamage) {
+		this.recentSufferedDamage = recentSufferedDamage;
 	}
 }

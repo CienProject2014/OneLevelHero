@@ -142,4 +142,22 @@ public class BagManager {
 			return null;
 		}
 	}
+	public void putItemInBag(Item item) {
+		switch (item.getItemType()) {
+			case ACCESSORY :
+			case CLOTHES :
+			case HANDGRIP :
+				getEquipmentList().add((Equipment) item);
+				break;
+			case CONSUMABLES :
+				getConsumablesList().add((Consumables) item);
+				break;
+			case ETC_ITEM :
+				getEtcItemList().add(item);
+				break;
+			default :
+				Gdx.app.log("BattleManager", "itemType정보 오류 - " + item.getItemType());
+				break;
+		}
+	}
 }

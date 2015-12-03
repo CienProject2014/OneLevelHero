@@ -244,4 +244,14 @@
 	<bean id="moveSubNodeAfterAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeAfterAbsoluteTimeChecker"/>
 	<bean id="moveSubNodeBeforeAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeBeforeAbsoluteTimeChecker"/>
 	<bean id="moveSubNodeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeChecker"/>
+	
+	<bean id="battleCommandController" class="com.mygdx.controller.BattleCommandController"/>
+	<bean id="waitOnBattleCommand" class="com.mygdx.model.battle.WaitOnBattleCommand"/>
+	<bean id="defendOnBattleCommand" class="com.mygdx.model.battle.DefendOnBattleCommand"/>
+	<bean id="generalAttackOnBattleCommand" class="com.mygdx.model.battle.GeneralAttackOnBattleCommand"/>
+	<bean id="noCommandOnBattleCommand" class="com.mygdx.model.battle.NoCommandOnBattleCommand"/>
+	<bean id="useItemOnBattleCommand" class="com.mygdx.model.battle.UseItemOnBattleCommand"/>
+	<bean id="useSkillOnBattleCommand" class="com.mygdx.model.battle.UseSkillOnBattleCommand"/>
+	<bean id="useMagicOnBattleCommand" class="com.mygdx.model.battle.UseMagicOnBattleCommand"/>
+	<bean id="runAwayOnBattleCommand" class="com.mygdx.model.battle.RunAwayOnBattleCommand"/>
 </beans>

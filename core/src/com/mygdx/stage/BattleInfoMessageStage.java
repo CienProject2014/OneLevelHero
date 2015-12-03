@@ -41,7 +41,7 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 		final String battleStatusMessage = battleManager.getBattleInfoMessage();
 		messageButton.setText(battleStatusMessage);
 		if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
-			if (battleManager.getSelectedMonster().getDropItemList().size() > 0) {
+			if (battleManager.getCurrentMonster().getDropItemList().size() > 0) {
 				statusMessageButton.setText("[" + battleManager.getDropItem().getName() + "] 을 얻었다.");
 				battleStatusTable.setVisible(true);
 				battleManager.setGetItem(false);
@@ -59,7 +59,7 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 				if (battleStatusMessage.equals(PLAYER_WIN_MESSAGE)) {
 					movingManager.goCurrentLocatePosition();
 					storySectionManager.triggerNextSectionEvent(EventTypeEnum.END_BATTLE, battleManager
-							.getSelectedMonster().getFacePath());
+							.getCurrentMonster().getFacePath());
 				} else if (battleStatusMessage.equals(START_BATTLE_MESSAGE)) {
 					BattleScreen.showBattleInfoMessage = false;
 				}

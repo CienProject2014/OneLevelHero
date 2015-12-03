@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.BattleSituationEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.manager.BattleManager;
@@ -23,6 +23,7 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
+import com.mygdx.model.battle.BattleInfo;
 import com.mygdx.model.battle.Buff;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.StatusBar;
@@ -38,6 +39,7 @@ public class MonsterStage extends BaseOneLevelStage {
 	private transient ConstantsAssets constantsAssets;
 	private HashMap<String, Float> uiConstantsMap;
 	private Monster monster;
+	private BattleInfo battleInfo;
 	@Autowired
 	private transient UiComponentAssets uiComponentAssets;
 	@Autowired
@@ -59,9 +61,10 @@ public class MonsterStage extends BaseOneLevelStage {
 	@Override
 	public Stage makeStage() {
 		super.makeStage();
+		battleInfo = battleManager.getBattleInfo();
 		uiConstantsMap = constantsAssets.getUiConstants("MonsterStage");
-		monster = battleManager.getSelectedMonster();
-		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+		monster = battleManager.getCurrentMonster();
+		if (battleInfo.equals(BattleSituationEnum.ENCOUNTER)) {
 			monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin(), true);
 		} else {
 			monsterStatusBar = new StatusBar(monster, uiComponentAssets.getSkin(), false);
@@ -92,7 +95,7 @@ public class MonsterStage extends BaseOneLevelStage {
 		tableStack.add(outerTable);
 		tableStack.add(uiTable);
 		tableStack.add(buffTable);
-		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+		if (battleInfo.equals(BattleSituationEnum.ENCOUNTER)) {
 			showBattleAnimation();
 		}
 	}
@@ -149,14 +152,14 @@ public class MonsterStage extends BaseOneLevelStage {
 
 	private TextureRegionDrawable getBackgroundTRD() {
 		if (positionManager.getCurrentLocatePositionType().equals(LocatePosition.DUNGEON)) {
-			return new TextureRegionDrawable(new TextureRegion(
-					textureManager.getBackgroundTexture(dungeonManager.getDungeonInfo().getBackground())));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(dungeonManager
+					.getDungeonInfo().getBackground())));
 		} else if (eventManager.getCurrentEvent().getEventType().equals(EventTypeEnum.START_BATTLE)) {
 			String backgroundPath = battleManager.getBackgroundPath();
 			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(backgroundPath)));
 		} else {
-			return new TextureRegionDrawable(
-					new TextureRegion(textureManager.getBackgroundTexture(fieldManager.getFieldType().toString())));
+			return new TextureRegionDrawable(new TextureRegion(textureManager.getBackgroundTexture(fieldManager
+					.getFieldType().toString())));
 		}
 	}
 

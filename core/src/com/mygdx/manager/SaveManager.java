@@ -24,7 +24,7 @@ import com.mygdx.currentState.PositionInfo;
 import com.mygdx.currentState.SaveInfo;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.currentState.TimeInfo;
-import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.BattleSituationEnum;
 import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.enums.SaveVersion;
 import com.mygdx.model.event.EventPacket;
@@ -201,7 +201,7 @@ public class SaveManager {
 			e.printStackTrace();
 		}
 		timeInfo.setTime(Gdx.app.getPreferences("Time").getInteger("Time"));
-		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+		battleManager.setCurrentBattleSituation(BattleSituationEnum.NOT_IN_BATTLE);
 		if (eventManager.getCurrentEvent() == null) {
 			eventManager.setCurrentNpcEvent(new EventPacket("waiji", 1));
 			eventManager.setCurrentStoryEvent(new EventPacket("prologue", 1));

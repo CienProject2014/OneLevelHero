@@ -1,11 +1,11 @@
 package com.mygdx.enums;
 
-public enum SkillTargetEnum {
+public enum SkillTargetUnitEnum {
 	MONSTER("monster"), SELF("self"), ALL("all"), ONE("one"), RANDOM("random");
 
 	private String skillTargetType;
 
-	SkillTargetEnum(String skillTargetType) {
+	SkillTargetUnitEnum(String skillTargetType) {
 		this.skillTargetType = skillTargetType;
 	}
 
@@ -14,8 +14,8 @@ public enum SkillTargetEnum {
 		return skillTargetType;
 	}
 
-	public static SkillTargetEnum findSkillTargetEnum(String stringName) {
-		for (SkillTargetEnum skillTargetEnum : SkillTargetEnum.values())
+	public static SkillTargetUnitEnum findSkillTargetEnum(String stringName) {
+		for (SkillTargetUnitEnum skillTargetEnum : SkillTargetUnitEnum.values())
 			if (skillTargetEnum.toString().equals(stringName))
 				return skillTargetEnum;
 		return null;

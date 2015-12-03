@@ -24,8 +24,8 @@ public class StaticAssets {
 	public static float resolutionFactor;
 
 	public static void loadAll() {
-		filePathMap = JsonParser.parseMap(StringFile.class,
-				Gdx.files.internal("data/load/file_path.json").readString());
+		filePathMap = JsonParser
+				.parseMap(StringFile.class, Gdx.files.internal("data/load/file_path.json").readString());
 		loadSize(new Stage());
 		{
 			Pixmap pixmap = new Pixmap(1, 22, Format.RGBA8888);

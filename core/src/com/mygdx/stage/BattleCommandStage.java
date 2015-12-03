@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
+import com.mygdx.controller.BattleCommandController;
 import com.mygdx.enums.BattleCommandEnum;
 import com.mygdx.factory.ListenerFactory;
 import com.mygdx.manager.BattleManager;
@@ -31,12 +33,32 @@ public class BattleCommandStage extends BaseOneLevelStage {
 	private SoundManager soundManager;
 	@Autowired
 	private ListenerFactory listenerFactory;
-	private Table rMenuTable = new Table();
-	private ArrayList<ImageButton> rMenuButtonList;
+	@Autowired
+	private BattleCommandController battleCommandController;
+	private Table battleCommandButtonTable = new Table();
+	private ArrayList<ImageButton> battleCommandButtonList;
 	private HashMap<String, Float> uiConstantsMap;
 	// RMenuButton
 	private ImageButton attackButton, skillButton, itemButton, defenseButton, waitButton, escapeButton;
 	private int check = 0;
+
+	public void act(float delta) {
+		if (battleManager.getBattleFlag().isMonsterTurnEnd()) {
+			for (ImageButton battleCommandButtons : battleCommandButtonList) {
+				battleCommandButtons.setVisible(true);
+				battleCommandButtons.setTouchable(Touchable.enabled);
+			}
+			battleCommandButtonTable.setVisible(true);
+			battleCommandButtonTable.addAction(Actions.moveTo(1720, 15));
+			battleCommandButtonTable.addAction(Actions.moveTo(1720, 15, 1));
+		} else {
+			for (ImageButton battleCommandButtons : battleCommandButtonList) {
+				battleCommandButtons.setVisible(false);
+				battleCommandButtons.setTouchable(Touchable.disabled);
+			}
+			battleCommandButtonTable.setVisible(false);
+		}
+	}
 
 	public Stage makeStage() {
 		super.makeStage();
@@ -47,41 +69,41 @@ public class BattleCommandStage extends BaseOneLevelStage {
 
 	private Table makeBattleCommandTable() {
 		Table uiTable = new Table();
-		rMenuTable = makeRMenuTable();
+		battleCommandButtonTable = battleCommandButtonTable();
 		uiTable.right().bottom();
 		uiTable.padRight(40).padBottom(20);
-		uiTable.add(rMenuTable);
+		uiTable.add(battleCommandButtonTable);
 		addBattleCommandButtonListener();
 		return uiTable;
 	}
 
-	private Table makeRMenuTable() {
-		makeRButton();
-		rMenuButtonList = new ArrayList<>();
-		rMenuButtonList.add(attackButton);
-		rMenuButtonList.add(skillButton);
-		rMenuButtonList.add(itemButton);
-		rMenuButtonList.add(defenseButton);
-		rMenuButtonList.add(waitButton);
-		rMenuButtonList.add(escapeButton);
-		battleManager.setrMenuButtonList(rMenuButtonList);
-		for (int i = 0; i < rMenuButtonList.size(); i++) {
+	private Table battleCommandButtonTable() {
+		makebattleCommandButtonTable();
+		battleCommandButtonList = new ArrayList<>();
+		battleCommandButtonList.add(attackButton);
+		battleCommandButtonList.add(skillButton);
+		battleCommandButtonList.add(itemButton);
+		battleCommandButtonList.add(defenseButton);
+		battleCommandButtonList.add(waitButton);
+		battleCommandButtonList.add(escapeButton);
+		battleManager.setBattleCommandButtonList(battleCommandButtonList);
+		for (int i = 0; i < battleCommandButtonList.size(); i++) {
 			if (i == 0) {
-				rMenuTable.add(rMenuButtonList.get(i)).width(uiConstantsMap.get("RButtonWidth"))
+				battleCommandButtonTable.add(battleCommandButtonList.get(i)).width(uiConstantsMap.get("RButtonWidth"))
 						.height(uiConstantsMap.get("RButtonHeight")).padTop(uiConstantsMap.get("RMenuTablePadTop"))
 						.padBottom(uiConstantsMap.get("RButtonSpace")).expandX();
-				rMenuTable.row();
+				battleCommandButtonTable.row();
 			} else {
-				rMenuTable.add(rMenuButtonList.get(i)).width(uiConstantsMap.get("RButtonWidth"))
+				battleCommandButtonTable.add(battleCommandButtonList.get(i)).width(uiConstantsMap.get("RButtonWidth"))
 						.height(uiConstantsMap.get("RButtonHeight")).padBottom(uiConstantsMap.get("RButtonSpace"));
-				rMenuTable.row();
+				battleCommandButtonTable.row();
 			}
 		}
-		battleManager.setRMenuTable(rMenuTable);
-		return rMenuTable;
+		battleManager.setBattleCommandButtonTable(battleCommandButtonTable);
+		return battleCommandButtonTable;
 	}
 
-	private void makeRButton() {
+	private void makebattleCommandButtonTable() {
 		// 이미지 추가
 		attackButton = new ImageButton(atlasUiAssets.getAtlasUiFile("battleui_rb_attack"),
 				atlasUiAssets.getAtlasUiFile("battleui_rbac_attack"));
@@ -98,7 +120,7 @@ public class BattleCommandStage extends BaseOneLevelStage {
 	}
 
 	private void setDarkButton(ImageButton button) {
-		for (ImageButton buttons : rMenuButtonList) {
+		for (ImageButton buttons : battleCommandButtonList) {
 			buttons.setVisible(true);
 			buttons.setTouchable(Touchable.enabled);
 		}
@@ -112,11 +134,8 @@ public class BattleCommandStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				soundManager.playClickSound();
-				battleManager.setCurrentUsingCommand(BattleCommandEnum.GENERAL_ATTACK);
-				battleManager.setStateByCurrentUsingCommand();
+				battleManager.setBattleCommand(BattleCommandEnum.GENERAL_ATTACK);;
 				setDarkButton(attackButton);
-				battleManager.updateGauge(BattleCommandEnum.GENERAL_ATTACK.getCostGauge());
-				battleManager.setShowGrid(true);
 			}
 		});
 
@@ -124,9 +143,8 @@ public class BattleCommandStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				soundManager.playClickSound();
-				battleManager.setStateByCurrentUsingCommand();
 				setDarkButton(skillButton);
-				battleManager.setSkill(true);
+				battleManager.setUsingSkill(true);
 				BattleScreen.showSkillStage = true;
 			}
 		});
@@ -135,10 +153,8 @@ public class BattleCommandStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				soundManager.playClickSound();
-				battleManager.setStateByCurrentUsingCommand();
-				battleManager.setCurrentUsingCommand(BattleCommandEnum.USE_ITEM);
+				battleManager.setBattleCommand(BattleCommandEnum.USE_ITEM);
 				setDarkButton(itemButton);
-				battleManager.updateGauge(BattleCommandEnum.USE_ITEM.getCostGauge());
 				BattleScreen.showItemStage = true;
 			}
 		});
@@ -146,22 +162,20 @@ public class BattleCommandStage extends BaseOneLevelStage {
 		defenseButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
 				soundManager.playClickSound();
-				battleManager.setStateByCurrentUsingCommand();
-				battleManager.setCurrentUsingCommand(BattleCommandEnum.DEFEND);
+				battleManager.setBattleCommand(BattleCommandEnum.DEFEND);
 				setDarkButton(defenseButton);
-				battleManager.updateGauge(BattleCommandEnum.DEFEND.getCostGauge());
-				battleManager.endTurn();
+				battleManager.handleTurnEnd();
 			}
 		});
 
 		waitButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y) {
 				soundManager.playClickSound();
-				battleManager.setStateByCurrentUsingCommand();
-				battleManager.setCurrentUsingCommand(BattleCommandEnum.WAIT);
+				battleManager.setBattleCommand(BattleCommandEnum.WAIT);
+
 				setDarkButton(waitButton);
-				battleManager.doWaitCommand();
-				battleManager.endTurn();
+				battleCommandController.doBattleCommand(battleManager.getCurrentActor(), null, null);
+				battleManager.handleTurnEnd();
 			}
 		});
 
@@ -169,23 +183,20 @@ public class BattleCommandStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				soundManager.playClickSound();
-				battleManager.setStateByCurrentUsingCommand();
-				battleManager.setCurrentUsingCommand(BattleCommandEnum.RUN_AWAY);
+				battleManager.setBattleCommand(BattleCommandEnum.RUN_AWAY);
 				setDarkButton(escapeButton);
-				battleManager.updateGauge(BattleCommandEnum.RUN_AWAY.getCostGauge());
-				battleManager.gameObjectPopup.setAtlasUiAssets(atlasUiAssets);
-				battleManager.gameObjectPopup.setListenerFactory(listenerFactory);
-				battleManager.gameObjectPopup.setConstantsAssets(constantsAssets);
+				battleManager.getGameObjectPopup().setAtlasUiAssets(atlasUiAssets);
+				battleManager.getGameObjectPopup().setListenerFactory(listenerFactory);
+				battleManager.getGameObjectPopup().setConstantsAssets(constantsAssets);
 				checkRunAway();
-				battleManager.gameObjectPopup.initialize("도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent()
-						+ "%입니다");
-				addActor(battleManager.gameObjectPopup);
-				battleManager.gameObjectPopup.setVisible(true);
+				battleManager.getGameObjectPopup().initialize(
+						"도망 치시겠습니까?" + "\n" + "도망칠 확률" + battleManager.getRunPercent() + "%입니다");
+				addActor(battleManager.getGameObjectPopup());
+				battleManager.getGameObjectPopup().setVisible(true);
 			}
 		});
 
 	}
-
 	private void checkRunAway() {
 		int minSpeed = 500;
 		for (Unit unit : partyManager.getBattleMemberList()) {
@@ -193,7 +204,7 @@ public class BattleCommandStage extends BaseOneLevelStage {
 				minSpeed = unit.getStatus().getSpeed();
 			}
 		}
-		check = 50 + battleManager.getSelectedMonster().getStatus().getSpeed() - minSpeed;
+		check = 50 + battleManager.getCurrentMonster().getStatus().getSpeed() - minSpeed;
 		if (check < 5) {
 			check = 5;
 		}

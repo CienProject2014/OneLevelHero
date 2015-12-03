@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.assets.TextureAssets;
 import com.mygdx.model.jsonModel.FrameSheet;
+import com.mygdx.model.unit.Hero;
+import com.mygdx.model.unit.Unit;
 
 public class MockAnimationManager extends AnimationManager {
 	@Autowired
@@ -22,7 +24,7 @@ public class MockAnimationManager extends AnimationManager {
 	public MockAnimationManager() {
 	}
 
-	public void registerAnimation(String name, int x, int y, int width, int height) {
+	public void registerAnimation(String name, int x, int y) {
 
 	}
 
@@ -240,4 +242,16 @@ public class MockAnimationManager extends AnimationManager {
 	 * public void setAnimations(Queue<OneImageBit> animations) {
 	 * this.animations = animations; }
 	 */
+
+	@Override
+	public void registerAnimation(Unit attackUnit, Unit defendUnit, String animationName) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void registerAnimation(Hero attackedHero, String animationName, int x, int y) {
+		// TODO Auto-generated method stub
+
+	}
 }
