@@ -14,12 +14,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.battle.BattleInfo;
+import com.mygdx.battle.Buff;
+import com.mygdx.enums.BattleSituationEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.TextureManager;
-import com.mygdx.model.battle.Buff;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.StatusBar;
 import com.mygdx.model.unit.Unit;
@@ -47,9 +48,11 @@ public class CharacterUiStage extends BaseOneLevelStage {
 	private Table highlightTable;
 	private Table uiTable;
 	private List<Table> buffTableList;
+	private BattleInfo battleInfo;
 
 	public Stage makeStage() {
 		super.makeStage();
+		battleInfo = battleManager.getBattleInfo();
 		uiConstantsMap = constantsAssets.getUiConstants("CharacterUiStage");
 		initializeList();
 		/*
@@ -92,16 +95,16 @@ public class CharacterUiStage extends BaseOneLevelStage {
 					if (hero.getStatus().getCasting() == 0) {
 
 					} else {
-						Image buffIcon = new Image(textureManager
-								.getTexture(buff.getBuffPath() + String.valueOf(hero.getStatus().getCasting())));
+						Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath()
+								+ String.valueOf(hero.getStatus().getCasting())));
 						buffTableList.get(i).add(buffIcon).width(35).height(35);
 					}
 				} else if (buff.getBuffPath().equals("buff_de_overload")) {
 					if (hero.getOverload() == 0) {
 
 					} else {
-						Image buffIcon = new Image(textureManager
-								.getTexture(buff.getBuffPath() + "_" + String.valueOf(hero.getOverload())));
+						Image buffIcon = new Image(textureManager.getTexture(buff.getBuffPath() + "_"
+								+ String.valueOf(hero.getOverload())));
 						buffTableList.get(i).add(buffIcon).width(35).height(35);
 					}
 				} else {
@@ -124,7 +127,7 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		heroStatusBarList = new ArrayList<StatusBar>(battleMemberList.size());
 		buffTableList = new ArrayList<Table>(battleMemberList.size());
 		for (int i = 0; i < battleMemberList.size(); i++) {
-			if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+			if (battleInfo.equals(BattleSituationEnum.ENCOUNTER)) {
 				partyManager.setCurrentSelectedHero(null);
 				heroStatusBarList.add(new StatusBar(battleMemberList.get(i), uiComponentAssets.getSkin(), true));
 			} else {
@@ -149,20 +152,16 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		Table table = new Table();
 
 		for (int i = 0; i < battleMemberList.size(); i++) {
-
 			Table heroTable = makeHeroTable(battleMemberList.get(i), i);
 			table.add(heroTable).padBottom(uiConstantsMap.get("heroTablePadBottom"));
 			table.row();
-
 		}
 		return table;
 	}
 
 	private Table makeHighlightTable() {
 		Table table = new Table();
-
 		for (int i = 0; i < partyManager.getBattleMemberList().size(); i++) {
-
 			highlightImage[i] = new Image(textureManager.getTexture("battleui_character_turn"));
 			table.add(highlightImage[i]).padBottom(uiConstantsMap.get("heroTablePadBottom"))
 					.padLeft(uiConstantsMap.get("heroTablePadLeft") - 1750)
@@ -205,21 +204,20 @@ public class CharacterUiStage extends BaseOneLevelStage {
 
 	private void makeAddListener(final int index) {
 		heroImage.clearListeners();
-		if (battleManager.getBattleState().equals(BattleStateEnum.ENCOUNTER)) {
+		if (battleInfo.equals(BattleSituationEnum.ENCOUNTER)) {
 			// 전투 중엔 다른 식으로 작동한다.
 			heroImage.addListener(new ClickListener() {
 				@Override
 				public void clicked(InputEvent event, float x, float y) {
-					if (battleManager.isSkill() == true) {
+					if (battleManager.isUsingSkill() == true) {
 						// 스킬 사용시
 						if (battleManager.isShowGrid()) {
 							partyManager.setCurrentSelectedHero(null);
 						} else {
 							partyManager.setCurrentSelectedHero(battleMemberList.get(index));
-							battleManager.useSkill(battleManager.getCurrentAttackUnit(),
-									partyManager.getCurrentSelectedHero(),
-									battleManager.getCurrentSelectedSkill().getSkillPath());
-							battleManager.setSkill(false);
+							battleManager.useSkill(battleManager.getCurrentActor(), partyManager
+									.getCurrentSelectedHero(), battleManager.getCurrentSelectedSkill().getSkillPath());
+							battleManager.setUsingSkill(false);
 						}
 					}
 				}

@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.SkillAssets;
+import com.mygdx.battle.Buff;
+import com.mygdx.battle.Skill;
 import com.mygdx.enums.BuffEffectEnum;
 import com.mygdx.enums.SkillEffectEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.PartyManager;
-import com.mygdx.manager.TimeManager;
-import com.mygdx.model.battle.Buff;
-import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.Unit;
@@ -22,8 +21,6 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	@Autowired
 	private transient SkillAssets skillAssets;
-	@Autowired
-	private transient TimeManager timeManager;
 	@Autowired
 	private transient PartyManager partyManager;
 	@Autowired
@@ -40,46 +37,42 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		int defenderHp = defender.getStatus().getHp();
 
-		int realDmg = 0;
+		int realDamage = 0;
 
 		for (int i = 0; i < hitArea.length; i++) {
 			for (int j = 0; j < hitArea[i].length; j++) {
 				if (hitArea[i][j] == 1) {
 					int tmpDmg = (int) (attackDmg * factor - defenseValue);
 					if (tmpDmg < 1) {
-						realDmg += 1 * (monster.getHitArea()[i][j] / 100.0f);
+						realDamage += 1 * (monster.getHitArea()[i][j] / 100.0f);
 					} else {
-						realDmg += tmpDmg * (monster.getHitArea()[i][j] / 100.0f);
+						realDamage += tmpDmg * (monster.getHitArea()[i][j] / 100.0f);
 					}
 				}
 			}
 		}
 
-		if (realDmg < 1) {
-			realDmg = 1;
+		if (realDamage < 1) {
+			realDamage = 1;
 		}
 
-		if (defenderHp - realDmg > 0) {
-			defender.getStatus().setHp(defenderHp - realDmg);
+		if (defenderHp - realDamage > 0) {
+			defender.getStatus().setHp(defenderHp - realDamage);
 		} else {
 			defender.getStatus().setHp(0);
 		}
-
-		Gdx.app.log(TAG,
-				attacker.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg + "를 입혔다!");
-		battleManager.setText(
-				attacker.getName() + "이(가) " + defender.getName() + "을(를) 공격하였다! " + "데미지 " + realDmg + "를 입혔다!");
+		defender.setRecentSufferedDamage(realDamage);
 	}
 
 	@Override
-	public void skill(Unit skillUser, ArrayList<Unit> targetList, Skill skill) {
+	public void useSkill(Unit skillUser, ArrayList<Unit> targetList, Skill skill) {
 		if (skill == null) {
 			Gdx.app.log(TAG, "잘못된 스킬: null 입력");
 			return;
 		}
 
-		battleManager.setText(
-				skillUser.getName() + "이(가) " + targetList.get(0).getName() + "에게 " + skill.getName() + "을(를) 사용하였다!");
+		battleManager.setBattleDescriptionLabel(skillUser.getName() + "이(가) " + targetList.get(0).getName() + "에게 "
+				+ skill.getName() + "을(를) 사용하였다!");
 		// 각 타겟에 대해 SkillEffectType에 따라 사용
 
 		for (Unit target : targetList) {
@@ -105,39 +98,40 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 	private void applyEffect(Unit attacker, Unit defender, Skill skill) {
 		switch (SkillEffectEnum.findSkillEffectEnum(skill.getSkillCheckType())) {
-		case ADD_SELF_STATE:
-			addSelfState(attacker, skill);
-			break;
-		case ADD_STATE:
-			addState(attacker, defender, skill);
-			break;
-		case ATTACK:
-			basicAttack(attacker, defender, skill.getSkillFactor(), skill.getMagicFactor());
-			break;
-		case CHANGE_GAUGE:
-			changeGauge(attacker, defender, skill.getMagicFactor());
-			break;
-		case CONDITIONAL_ATTACK:
-			conditionalAttack(attacker, defender, skill.getOneRegex(), skill.getSkillFactor(), skill.getMagicFactor());
-			break;
-		case DUPLICATED_ATTACK:
-			duplicatedAttack(attacker, defender, skill.getDuplicateNumber(), skill.getSkillFactor(),
-					skill.getMagicFactor());
-			break;
-		case HEAL:
-			heal(attacker, defender, skill.getMagicFactor());
-			break;
-		case ALL_HEAL:
-			allHeal(attacker, skill.getMagicFactor());
-			break;
-		case REMOVE_STATE:
-			removeState(attacker, defender, skill);
-			break;
-		case CASTING:
-			cast(attacker, skill);
-			break;
-		default:
-			break;
+			case ADD_SELF_STATE :
+				addSelfState(attacker, skill);
+				break;
+			case ADD_STATE :
+				addState(attacker, defender, skill);
+				break;
+			case ATTACK :
+				basicAttack(attacker, defender, skill.getSkillFactor(), skill.getMagicFactor());
+				break;
+			case CHANGE_GAUGE :
+				changeGauge(attacker, defender, skill.getMagicFactor());
+				break;
+			case CONDITIONAL_ATTACK :
+				conditionalAttack(attacker, defender, skill.getOneRegex(), skill.getSkillFactor(),
+						skill.getMagicFactor());
+				break;
+			case DUPLICATED_ATTACK :
+				duplicatedAttack(attacker, defender, skill.getDuplicateNumber(), skill.getSkillFactor(),
+						skill.getMagicFactor());
+				break;
+			case HEAL :
+				heal(attacker, defender, skill.getMagicFactor());
+				break;
+			case ALL_HEAL :
+				allHeal(attacker, skill.getMagicFactor());
+				break;
+			case REMOVE_STATE :
+				removeState(attacker, defender, skill);
+				break;
+			case CASTING :
+				cast(attacker, skill);
+				break;
+			default :
+				break;
 
 		}
 	}
@@ -204,7 +198,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 			realMagicDamage = 1;
 		}
 		if (battleManager.isShowGrid()) {
-			int[][] hitArea = battleManager.getNowGridHitbox().getPreviousHitArea();
+			int[][] hitArea = battleManager.getGridHitbox().getPreviousHitArea();
 			for (int i = 0; i < hitArea.length; i++) {
 				for (int j = 0; j < hitArea[i].length; j++) {
 					if (hitArea[i][j] == 1) {
@@ -226,8 +220,8 @@ public class HeroBattleStrategy implements BattleStrategy {
 			totalDamage = realSkillDamage + realMagicDamage + attacker.getRealStatus().getDefense();
 		} else if (battleManager.getCurrentSelectedSkill().getSkillPath().equals("whirlwind")) {
 			// 휠윈드의 경우 상대방이 가지고 있는 버프 사이즈만큼 곱한 데미지를 더한다.
-			totalDamage = realSkillDamage + realMagicDamage
-					+ attacker.getRealStatus().getAttack() * defender.getBuffList().size();
+			totalDamage = realSkillDamage + realMagicDamage + attacker.getRealStatus().getAttack()
+					* defender.getBuffList().size();
 		} else {
 			totalDamage = realSkillDamage + realMagicDamage;
 		}
@@ -237,7 +231,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		} else {
 			defender.getStatus().setHp(0);
 		}
-		battleManager.setText(attacker.getName() + "이(가) " + defender.getName() + "에게 "
+		battleManager.setBattleDescriptionLabel(attacker.getName() + "이(가) " + defender.getName() + "에게 "
 				+ battleManager.getCurrentSelectedSkill().getName() + "을(를) 사용하였다!" + "데미지 " + (int) totalDamage
 				+ "를 입혔다!");
 
@@ -255,8 +249,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 		}
 	}
 
-	private void conditionalAttack(Unit attacker, Unit defender, String oneRegex, float skillFactor,
-			float magicFactor) {
+	private void conditionalAttack(Unit attacker, Unit defender, String oneRegex, float skillFactor, float magicFactor) {
 		boolean condition = true;
 
 		// TODO: oneRegex를 분석해서 조건을 충족시키는지 확인하는 로직 필요
@@ -365,7 +358,7 @@ public class HeroBattleStrategy implements BattleStrategy {
 
 		ArrayList<Buff> cancelList = new ArrayList<Buff>();
 
-		int deltaTime = timeManager.getPreTime();
+		int deltaTime = BattleManager.TIME_FLOW_RATE;
 
 		for (Buff buff : defender.getBuffList()) {
 			if (buff.getDuration() == -1) {
@@ -401,68 +394,68 @@ public class HeroBattleStrategy implements BattleStrategy {
 		battleManager.setEndBuff(true);
 		for (String buffEffect : buff.getBuffEffectList()) {
 			switch (BuffEffectEnum.findBuffEffectEnum(buffEffect)) {
-			case BLOCK_ACTION:
-				blockAction(defender);
-				break;
-			case INCREASE_AGGRO:
-				increaseAggro(defender);
-				break;
-			case DECREASE_ATTACK:
-				decreaseAttack(defender, buff);
-				break;
-			case DECREASE_HP_ITERATIVE:
-				decreaseHpIterative(defender, buff);
-				break;
-			case DECREASE_MAGIC_ATTACK:
-				break;
-			case INCREASE_DEFENSE:
-				increaseDefense(defender, buff);
-				break;
-			case DECREASE_DEFENSE:
-				decreaseDefense(defender, buff);
-				break;
-			case DECREASE_SPEED:
-				decreaseSpeed(defender, buff);
-				break;
-			case FLY_ACTION:
-				flyAction(defender);
-				break;
-			case OVERLOAD:
-				overload(defender);
-				break;
-			case OVERWORK:
-				overwork(defender);
-				break;
-			case SHOCK:
-				shock(defender);
-				break;
-			case WEAK:
-				weak(defender);
-				break;
-			case STINK:
-				stink(defender);
-				break;
-			case DECLINE:
-				decline(defender);
-				break;
-			case CHARM:
-				charm(defender);
-				break;
-			case INCREASE_FIRE_RESISTANCE:
-				increaseFireResistance(defender, buff);
-				break;
-			case INCREASE_WATER_RESISTANCE:
-				increaseWaterResistance(defender, buff);
-				break;
-			case INCREASE_ELECTRIC_RESISTANCE:
-				increaseElectricResistance(defender, buff);
-				break;
-			case BLESS:
-				bless(defender);
-				break;
-			case DEFAULT:
-			default:
-				break;
+				case BLOCK_ACTION :
+					blockAction(defender);
+					break;
+				case INCREASE_AGGRO :
+					increaseAggro(defender);
+					break;
+				case DECREASE_ATTACK :
+					decreaseAttack(defender, buff);
+					break;
+				case DECREASE_HP_ITERATIVE :
+					decreaseHpIterative(defender, buff);
+					break;
+				case DECREASE_MAGIC_ATTACK :
+					break;
+				case INCREASE_DEFENSE :
+					increaseDefense(defender, buff);
+					break;
+				case DECREASE_DEFENSE :
+					decreaseDefense(defender, buff);
+					break;
+				case DECREASE_SPEED :
+					decreaseSpeed(defender, buff);
+					break;
+				case FLY_ACTION :
+					flyAction(defender);
+					break;
+				case OVERLOAD :
+					overload(defender);
+					break;
+				case OVERWORK :
+					overwork(defender);
+					break;
+				case SHOCK :
+					shock(defender);
+					break;
+				case WEAK :
+					weak(defender);
+					break;
+				case STINK :
+					stink(defender);
+					break;
+				case DECLINE :
+					decline(defender);
+					break;
+				case CHARM :
+					charm(defender);
+					break;
+				case INCREASE_FIRE_RESISTANCE :
+					increaseFireResistance(defender, buff);
+					break;
+				case INCREASE_WATER_RESISTANCE :
+					increaseWaterResistance(defender, buff);
+					break;
+				case INCREASE_ELECTRIC_RESISTANCE :
+					increaseElectricResistance(defender, buff);
+					break;
+				case BLESS :
+					bless(defender);
+					break;
+				case DEFAULT :
+				default :
+					break;
 			}
 		}
 	}
@@ -472,68 +465,68 @@ public class HeroBattleStrategy implements BattleStrategy {
 		battleManager.setEndBuff(false);
 		for (String buffEffect : buff.getBuffEffectList()) {
 			switch (BuffEffectEnum.findBuffEffectEnum(buffEffect)) {
-			case BLOCK_ACTION:
-				blockAction(defender);
-				break;
-			case INCREASE_AGGRO:
-				increaseAggro(defender);
-				break;
-			case DECREASE_ATTACK:
-				decreaseAttack(defender, buff);
-				break;
-			case DECREASE_HP_ITERATIVE:
-				decreaseHpIterative(defender, buff);
-				break;
-			case DECREASE_MAGIC_ATTACK:
-				break;
-			case INCREASE_DEFENSE:
-				increaseDefense(defender, buff);
-				break;
-			case DECREASE_DEFENSE:
-				decreaseDefense(defender, buff);
-				break;
-			case DECREASE_SPEED:
-				decreaseSpeed(defender, buff);
-				break;
-			case FLY_ACTION:
-				flyAction(defender);
-				break;
-			case OVERLOAD:
-				overload(defender);
-				break;
-			case OVERWORK:
-				overwork(defender);
-				break;
-			case SHOCK:
-				shock(defender);
-				break;
-			case WEAK:
-				weak(defender);
-				break;
-			case STINK:
-				stink(defender);
-				break;
-			case DECLINE:
-				decline(defender);
-				break;
-			case CHARM:
-				charm(defender);
-				break;
-			case INCREASE_FIRE_RESISTANCE:
-				increaseFireResistance(defender, buff);
-				break;
-			case INCREASE_WATER_RESISTANCE:
-				increaseWaterResistance(defender, buff);
-				break;
-			case INCREASE_ELECTRIC_RESISTANCE:
-				increaseElectricResistance(defender, buff);
-				break;
-			case BLESS:
-				bless(defender);
-				break;
-			case DEFAULT:
-			default:
-				break;
+				case BLOCK_ACTION :
+					blockAction(defender);
+					break;
+				case INCREASE_AGGRO :
+					increaseAggro(defender);
+					break;
+				case DECREASE_ATTACK :
+					decreaseAttack(defender, buff);
+					break;
+				case DECREASE_HP_ITERATIVE :
+					decreaseHpIterative(defender, buff);
+					break;
+				case DECREASE_MAGIC_ATTACK :
+					break;
+				case INCREASE_DEFENSE :
+					increaseDefense(defender, buff);
+					break;
+				case DECREASE_DEFENSE :
+					decreaseDefense(defender, buff);
+					break;
+				case DECREASE_SPEED :
+					decreaseSpeed(defender, buff);
+					break;
+				case FLY_ACTION :
+					flyAction(defender);
+					break;
+				case OVERLOAD :
+					overload(defender);
+					break;
+				case OVERWORK :
+					overwork(defender);
+					break;
+				case SHOCK :
+					shock(defender);
+					break;
+				case WEAK :
+					weak(defender);
+					break;
+				case STINK :
+					stink(defender);
+					break;
+				case DECLINE :
+					decline(defender);
+					break;
+				case CHARM :
+					charm(defender);
+					break;
+				case INCREASE_FIRE_RESISTANCE :
+					increaseFireResistance(defender, buff);
+					break;
+				case INCREASE_WATER_RESISTANCE :
+					increaseWaterResistance(defender, buff);
+					break;
+				case INCREASE_ELECTRIC_RESISTANCE :
+					increaseElectricResistance(defender, buff);
+					break;
+				case BLESS :
+					bless(defender);
+					break;
+				case DEFAULT :
+				default :
+					break;
 			}
 		}
 	}

@@ -68,8 +68,8 @@ public class Assets {
 		worldNodeAssets.set(jsonStringMap);
 		constantsAssets.set(jsonStringMap);
 		textureAssets.loadTexture();
-		assetsManager.load(textureAssets.getTexturePath(TextureEnum.BUST + "_" + "default" + "_" + "01"),
-				Texture.class);
+		assetsManager
+				.load(textureAssets.getTexturePath(TextureEnum.BUST + "_" + "default" + "_" + "01"), Texture.class);
 		assetsManager.loadOverlapResources();
 
 	}
@@ -88,5 +88,9 @@ public class Assets {
 			jsonStringMap.put(entry.getKey(), entry.getValue().loadFile());
 		return jsonStringMap;
 
+	}
+
+	public UnitAssets getUnitAssets() {
+		return unitAssets;
 	}
 }

@@ -28,19 +28,19 @@ public class EncounterManager {
 	public void encountEnemy(ArrayList<String> monsterList) {
 		if (isBattleOccured() && monsterList.size() != 0) {
 			Monster selectedMonster = monsterManager.createMonster(monsterList);
-			battleManager.startBattle(selectedMonster);
+			battleManager.startBattleWithMonster(selectedMonster);
 		}
 	}
 
 	public void encountEliteMonster(String eliteMonsterName) {
 		if (!CurrentInfo.isAdminMode) {
 			Monster selectedMonster = monsterManager.createMonsterByName(eliteMonsterName);
-			battleManager.startBattle(selectedMonster);
+			battleManager.startBattleWithMonster(selectedMonster);
 		}
 	}
 
 	public void encountBossMonster(String bossMonsterName) {
 		Monster selectedMonster = monsterManager.createMonsterByName(bossMonsterName);
-		battleManager.startBattle(selectedMonster);
+		battleManager.startBattleWithMonster(selectedMonster);
 	}
 }

@@ -99,9 +99,9 @@ public class RewardManager {
 				eventTrigger.triggerEvent(peekedReward.getRewardParameter());
 				if (!peekedReward.getRewardState().equals(EventStateEnum.ALWAYS_OPEN)) {
 					peekedReward.setRewardState(EventStateEnum.CLEARED);
-					rewardIterator.remove();
 					getAchievedRewards().add(peekedReward);
 				}
+				rewardIterator.remove();
 			}
 		}
 	}

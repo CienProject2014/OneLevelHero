@@ -6,7 +6,7 @@
     	"column": 5
   },
   "attack_swing": {
-      "filePath": "texture/animation_sheet/ani_normal_one_hand_sword.png",
+      "filePath": "texture/animation_sheet/attack_swing.png",
       "frameNumber": 7,
       "row": 5,
       "column": 2

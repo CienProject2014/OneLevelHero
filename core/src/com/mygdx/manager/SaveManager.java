@@ -24,10 +24,11 @@ import com.mygdx.currentState.PositionInfo;
 import com.mygdx.currentState.SaveInfo;
 import com.mygdx.currentState.StorySectionInfo;
 import com.mygdx.currentState.TimeInfo;
-import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.BattleSituationEnum;
 import com.mygdx.enums.PositionEnum.LocatePosition;
 import com.mygdx.enums.SaveVersion;
 import com.mygdx.model.event.EventPacket;
+import com.mygdx.stage.LoadPopupStage;
 
 public class SaveManager {
 	@Autowired
@@ -54,6 +55,7 @@ public class SaveManager {
 	private PositionManager positionManager;
 	@Autowired
 	private EventManager eventManager;
+	private LoadPopupStage loadPopupStage;
 
 	private final static String SAVEPATH = "save/";
 
@@ -199,7 +201,7 @@ public class SaveManager {
 			e.printStackTrace();
 		}
 		timeInfo.setTime(Gdx.app.getPreferences("Time").getInteger("Time"));
-		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+		battleManager.setCurrentBattleSituation(BattleSituationEnum.NOT_IN_BATTLE);
 		if (eventManager.getCurrentEvent() == null) {
 			eventManager.setCurrentNpcEvent(new EventPacket("waiji", 1));
 			eventManager.setCurrentStoryEvent(new EventPacket("prologue", 1));
@@ -225,6 +227,14 @@ public class SaveManager {
 			return "blank_face";
 		else
 			return partyInfo.getPartyList().get(i).getFacePath();
+	}
+
+	public LoadPopupStage getLoadPopupStage() {
+		return loadPopupStage;
+	}
+
+	public void setLoadPopupStage(LoadPopupStage loadPopupStage) {
+		this.loadPopupStage = loadPopupStage;
 	}
 
 }

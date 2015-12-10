@@ -15,7 +15,6 @@ import com.mygdx.assets.NodeAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
 import com.mygdx.enums.BuildingTypeEnum;
-import com.mygdx.enums.GameObjectEnum;
 import com.mygdx.enums.PositionEnum.EventPosition;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ListenerFactory;
@@ -86,7 +85,6 @@ public class BuildingStage extends BaseOneLevelStage {
 			buttonTable.row();
 			restButton.addListener(new SimpleTouchListener() {
 				public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-					timeManager.plusMinute(5);
 					GameObject gameObject = eventManager.getEventInfo().getGameObjectMap().get("rest");
 					eventManager.setCurrentGameObject(gameObject);
 					BuildingScreen.isClickPopup = true;
@@ -109,31 +107,29 @@ public class BuildingStage extends BaseOneLevelStage {
 				{
 					if (gameObject != null) {
 						if (ArgumentChecker.checkIsInTargetTime(gameObject.getTargetTime(), timeManager.getDayMinute())) {
-							if (!gameObject.getObjectType().equals(GameObjectEnum.FUNCTION)) {
-								ImageButton gameObjectButton;
-								if (gameObject.getFacePath() != null) {
-									gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
-											textureManager.getGameObjectTexture(gameObject.getFacePath()))));
-								} else {
-									gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
-											textureManager.getGameObjectTexture(gameObject.getElementPath()))));
-								}
-								Table gameObjectTable = new Table();
-								gameObjectTable.add(gameObjectButton);
-								gameObjectTable.left().bottom();
-								gameObjectTable.padLeft(GAME_OBJECT_POSITION[gameObject.getPositionIndex()][0])
-										.padBottom(GAME_OBJECT_POSITION[gameObject.getPositionIndex()][1]);
-								gameObjectTable.addListener(new SimpleTouchListener() {
-									@Override
-									public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-										timeManager.plusMinute(5);
-										eventManager.setCurrentGameObject(gameObject);
-										positionManager.setCurrentEventPositionType(EventPosition.GAME_OBJECT);
-										screenFactory.show(ScreenEnum.GAME_OBJECT);
-									}
-								});
-								tableStack.add(gameObjectTable);
+							ImageButton gameObjectButton;
+							if (gameObject.getFacePath() != null) {
+								gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+										textureManager.getGameObjectTexture(gameObject.getFacePath()))));
+							} else {
+								gameObjectButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(
+										textureManager.getGameObjectTexture(gameObject.getElementPath()))));
 							}
+							Table gameObjectTable = new Table();
+							gameObjectTable.add(gameObjectButton);
+							gameObjectTable.left().bottom();
+							gameObjectTable.padLeft(GAME_OBJECT_POSITION[gameObject.getPositionIndex()][0]).padBottom(
+									GAME_OBJECT_POSITION[gameObject.getPositionIndex()][1]);
+							gameObjectTable.addListener(new SimpleTouchListener() {
+								@Override
+								public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+									timeManager.plusMinute(5);
+									eventManager.setCurrentGameObject(gameObject);
+									positionManager.setCurrentEventPositionType(EventPosition.GAME_OBJECT);
+									screenFactory.show(ScreenEnum.GAME_OBJECT);
+								}
+							});
+							tableStack.add(gameObjectTable);
 						}
 					}
 				}

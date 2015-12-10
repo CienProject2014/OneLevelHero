@@ -28,18 +28,17 @@
 	<bean id="nodeAssets" class="com.mygdx.assets.NodeAssets" />
 
 	<bean id="currentInfo" class="com.mygdx.currentState.CurrentInfo" />
-	<bean id="BagInfo" class="com.mygdx.currentState.BagInfo "	    />
-	<bean id="BattleInfo" class="com.mygdx.currentState.BattleInfo  "	     />
-	<bean id="FieldInfo" class="com.mygdx.currentState.FieldInfo"/>
-	<bean id="EventInfo" class="com.mygdx.currentState.EventInfo " 	     />
-	<bean id="MusicInfo" class="com.mygdx.currentState.MusicInfo "	    />
-	<bean id="PartyInfo" class="com.mygdx.currentState.PartyInfo "	     />
-	<bean id="PositionInfo" class="com.mygdx.currentState.PositionInfo"    />
-	<bean id="RewardInfo" class="com.mygdx.currentState.RewardInfo" 	   />
-	<bean id="StorySectionInfo" class="com.mygdx.currentState.StorySectionInfo" />
-	<bean id="SaveInfo" class="com.mygdx.currentState.SaveInfo"/>
-	<bean id="SoundInfo" class="com.mygdx.currentState.SoundInfo"/>
-	<bean id="TimeInfo" class="com.mygdx.currentState.TimeInfo "/>
+	<bean id="bagInfo" class="com.mygdx.currentState.BagInfo "	    />
+	<bean id="fieldInfo" class="com.mygdx.currentState.FieldInfo"/>
+	<bean id="eventInfo" class="com.mygdx.currentState.EventInfo " 	     />
+	<bean id="musicInfo" class="com.mygdx.currentState.MusicInfo "	    />
+	<bean id="partyInfo" class="com.mygdx.currentState.PartyInfo "	     />
+	<bean id="positionInfo" class="com.mygdx.currentState.PositionInfo"    />
+	<bean id="rewardInfo" class="com.mygdx.currentState.RewardInfo" 	   />
+	<bean id="storySectionInfo" class="com.mygdx.currentState.StorySectionInfo" />
+	<bean id="saveInfo" class="com.mygdx.currentState.SaveInfo"/>
+	<bean id="soundInfo" class="com.mygdx.currentState.SoundInfo"/>
+	<bean id="timeInfo" class="com.mygdx.currentState.TimeInfo "/>
 	
 	
 	<bean id="listenerFactory" class="com.mygdx.factory.ListenerFactory"/>
@@ -48,7 +47,7 @@
 	<bean id="screenFactory" class="com.mygdx.factory.ScreenFactory" />
 	<bean id="stageFactory" class="com.mygdx.factory.StageFactory" />
 
-	<bean id="animationManager" class="com.mygdx.manager.AnimationManager" />
+	<bean id="animationManager" class="com.mygdx.manager.RealAnimationManager" />
 	<bean id="assetsManager" class="com.mygdx.manager.AssetsManager"/>
 	<bean id="battleManager" class="com.mygdx.manager.BattleManager"/>
 	<bean id="bagManager" class="com.mygdx.manager.BagManager"/>
@@ -121,6 +120,7 @@
 		scope="prototype"/>
 	<bean id="baseOverlapStage" class="com.mygdx.stage.BaseOverlapStage"
 		scope="prototype"/>
+	<bean id="battleCommandStage" class="com.mygdx.stage.BattleCommandStage" scope="prototype"/>
 	<bean id="battleStage" class="com.mygdx.stage.BattleStage" scope="prototype"/>
 	<bean id="battleInfoMessageStage" class="com.mygdx.stage.BattleInfoMessageStage" scope="prototype"/>
 	<bean id="buildingStage" class="com.mygdx.stage.BuildingStage"
@@ -244,4 +244,14 @@
 	<bean id="moveSubNodeAfterAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeAfterAbsoluteTimeChecker"/>
 	<bean id="moveSubNodeBeforeAbsoluteTimeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeBeforeAbsoluteTimeChecker"/>
 	<bean id="moveSubNodeChecker" class="com.mygdx.nextSectionChecker.MoveSubNodeChecker"/>
+	
+	<bean id="battleCommandController" class="com.mygdx.controller.BattleCommandController"/>
+	<bean id="waitOnBattleCommand" class="com.mygdx.battle.WaitOnBattleCommand"/>
+	<bean id="defendOnBattleCommand" class="com.mygdx.battle.DefendOnBattleCommand"/>
+	<bean id="generalAttackOnBattleCommand" class="com.mygdx.battle.GeneralAttackOnBattleCommand"/>
+	<bean id="noCommandOnBattleCommand" class="com.mygdx.battle.NoCommandOnBattleCommand"/>
+	<bean id="useItemOnBattleCommand" class="com.mygdx.battle.UseItemOnBattleCommand"/>
+	<bean id="useSkillOnBattleCommand" class="com.mygdx.battle.UseSkillOnBattleCommand"/>
+	<bean id="useMagicOnBattleCommand" class="com.mygdx.battle.UseMagicOnBattleCommand"/>
+	<bean id="runAwayOnBattleCommand" class="com.mygdx.battle.RunAwayOnBattleCommand"/>
 </beans>

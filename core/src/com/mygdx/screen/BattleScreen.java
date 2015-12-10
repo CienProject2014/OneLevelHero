@@ -7,7 +7,7 @@ import com.mygdx.enums.StageEnum;
 
 public class BattleScreen extends BaseScreen {
 	private Stage gameUiStage, battleInfoMessageStage, characterUiStage, monsterStage, battleStage, skillStage,
-			itemStage;
+			itemStage, battleCommandStage;
 	public static boolean showSkillStage = false;
 	public static boolean showItemStage = false;
 	public static boolean showBattleInfoMessage = false;
@@ -22,6 +22,7 @@ public class BattleScreen extends BaseScreen {
 		monsterStage.draw();
 		characterUiStage.draw();
 		battleStage.draw();
+		battleCommandStage.draw();
 		gameUiStage.draw();
 		if (showBattleInfoMessage) {
 			battleInfoMessageStage.draw();
@@ -37,6 +38,7 @@ public class BattleScreen extends BaseScreen {
 		characterUiStage.act(delta);
 		gameUiStage.act();
 		battleStage.act(delta);
+		battleCommandStage.act(delta);
 		battleInfoMessageStage.act();
 		skillStage.act();
 	}
@@ -50,8 +52,10 @@ public class BattleScreen extends BaseScreen {
 		gameUiStage = stageFactory.makeStage(StageEnum.GAME_UI);
 		characterUiStage = stageFactory.makeStage(StageEnum.CHARACTER_UI);
 		monsterStage = stageFactory.makeStage(StageEnum.MONSTER);
+		battleCommandStage = stageFactory.makeStage(StageEnum.BATTLE_COMMAND);
 		battleStage = stageFactory.makeStage(StageEnum.BATTLE);
 		battleInfoMessageStage = stageFactory.makeStage(StageEnum.BATTLE_INFO_MESSAGE);
+
 		skillStage = stageFactory.makeStage(StageEnum.SKILL);
 		loadPopupStage = stageFactory.makeStage(StageEnum.LOAD_POPUP);
 		itemStage = stageFactory.makeStage(StageEnum.ITEM);
@@ -72,6 +76,7 @@ public class BattleScreen extends BaseScreen {
 				multiplexer.addProcessor(i++, gameUiStage);
 				multiplexer.addProcessor(i++, characterUiStage);
 				multiplexer.addProcessor(i++, monsterStage);
+				multiplexer.addProcessor(i++, battleCommandStage);
 				multiplexer.addProcessor(i++, battleStage);
 				multiplexer.addProcessor(i++, skillStage);
 			}

@@ -17,5 +17,6 @@ public class RunAwayListener extends ClickListener {
 	public void clicked(InputEvent event, float x, float y) {
 		soundManager.playClickSound();
 		battleManager.runAway();
+		battleManager.getBattleUi().getSkillRunPopup().setVisible(false);
 	}
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.EventAssets;
 import com.mygdx.assets.UnitAssets;
-import com.mygdx.enums.BattleStateEnum;
+import com.mygdx.enums.BattleSituationEnum;
 import com.mygdx.enums.EventElementEnum;
 import com.mygdx.enums.ItemEnum;
 import com.mygdx.enums.PositionEnum;
@@ -67,7 +67,7 @@ public class LoadNewManager {
 	}
 
 	private void setBattleInfo() {
-		battleManager.setBattleState(BattleStateEnum.NOT_IN_BATTLE);
+		battleManager.setCurrentBattleSituation(BattleSituationEnum.NOT_IN_BATTLE);
 	}
 
 	private void setTimeInfo() {

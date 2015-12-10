@@ -35,8 +35,6 @@ public class GridHitbox extends Table {
 
 	private float startX, startY;
 
-	private boolean gridShow;
-
 	public TextureManager getTextureManager() {
 		return textureManager;
 	}
@@ -56,15 +54,15 @@ public class GridHitbox extends Table {
 	public void setSizeType(MonsterEnum.SizeType sizeType) {
 
 		switch (sizeType) {
-		case SMALL:
-			// TODO 추후 구현
-			break;
-		case MEDIUM:
-			setMediumSizeType();
-			break;
-		case LARGE:
-			// TODO 추후 구현
-			break;
+			case SMALL :
+				// TODO 추후 구현
+				break;
+			case MEDIUM :
+				setMediumSizeType();
+				break;
+			case LARGE :
+				// TODO 추후 구현
+				break;
 		}
 		Stack stk = makeGridTable(sizeType);
 		this.add(stk).padTop(uiConstantsMap.get("gridPadTop"));
@@ -85,7 +83,7 @@ public class GridHitbox extends Table {
 	}
 
 	public Stack makeGridTable(MonsterEnum.SizeType sizeType) {
-
+		this.clear();
 		Stack stack = new Stack();
 		Table tileTable = new Table();
 
@@ -116,17 +114,6 @@ public class GridHitbox extends Table {
 		startX = x;
 		startY = y;
 	}
-
-	public void showGrid() {
-		gridShow = true;
-		setVisible(true);
-	}
-
-	public void hideGrid() {
-		gridShow = false;
-		setVisible(false);
-	}
-
 	public void showTileWhereMoved(float x, float y) {
 		hideAllTiles();
 
@@ -270,8 +257,7 @@ public class GridHitbox extends Table {
 	}
 
 	private boolean isInside(float centerX, float centerY, float width, float height, float x, float y) {
-		return (x > (centerX - width / 2) && x < (centerX + width / 2) && y < (centerY + height / 2)
-				&& y > (centerY - height / 2));
+		return (x > (centerX - width / 2) && x < (centerX + width / 2) && y < (centerY + height / 2) && y > (centerY - height / 2));
 	}
 
 	public float getTableWidth() {
@@ -292,10 +278,6 @@ public class GridHitbox extends Table {
 
 	private Image getGridImage(MonsterEnum.SizeType sizeType) {
 		return new Image(textureManager.getTexture("grid_" + sizeType));
-	}
-
-	public boolean isGridShow() {
-		return gridShow;
 	}
 
 	public int getLimitNum() {

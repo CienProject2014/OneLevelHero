@@ -54,8 +54,6 @@
           "blackwood_inn_owner"
         ],
         "gameObject": [
-          "save",
-          "rest"
         ]
       },
       "blackwood_house": {
@@ -161,8 +159,6 @@
           "cobweb_inn_owner"
         ],
         "gameObject": [
-          "save",
-          "rest"
         ]
       },
       "cobweb_cathedral": {
@@ -239,8 +235,6 @@
           "oberon_inn_owner"
         ],
         "gameObject": [
-          "save",
-          "rest"
         ]
       },
       "oberon_temple": {
@@ -311,8 +305,6 @@
           "endHour": 24
         },
         "gameObject": [
-          "save",
-          "rest"
         ]
       },
       "kadilla_castle_grocery": {
@@ -431,8 +423,6 @@
           "hunter"
         ],
         "gameObject": [
-          "save",
-          "rest"
         ]
       },
       "winterfall_grocery": {
@@ -539,8 +529,6 @@
           "redrose_castle_inn_owner"
         ],
         "gameObject": [
-          "save",
-          "rest"
         ]
       },
       "redrose_castle_cathedral": {
@@ -596,8 +584,6 @@
           "tenardie"
         ],
         "gameObject": [
-          "save",
-          "rest"
         ]
       },
       "mirage_port_hermesguild": {
@@ -737,8 +723,6 @@
           "noel_and_riam"
         ],
         "gameObject": [
-          "save",
-          "rest",
           "middle_ridge_vase"
         ]
       },
@@ -896,8 +880,6 @@
           "mea_01"
         ],
         "gameObject": [
-          "save",
-          "rest"
         ]
       },
       "southcape_grocery": {
@@ -1096,8 +1078,6 @@
           "bonichea_inn_owner"
         ],
         "gameObject": [
-          "save",
-          "rest"
         ]
       },
       "bonichea_square": {

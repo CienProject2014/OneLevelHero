@@ -97,8 +97,8 @@ public class ItemStage extends BaseOverlapStage {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				setCompositeItemVisibilty(useButton, PRESSED_VISIBILTY);
 				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_COMMAND, "use_item");
-				battleManager.useItem();
-				battleManager.endTurn();
+				battleManager.doBattleCommand(battleManager.getCurrentActor(), null, null);
+				battleManager.checkTurnEnd();
 				BattleScreen.showItemStage = false;
 			}
 		});
@@ -112,8 +112,8 @@ public class ItemStage extends BaseOverlapStage {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				BattleScreen.showItemStage = false;
-				battleManager.checkCurrentState();
-				battleManager.showRMenuButtons();
+				battleManager.setBattleCommandButtonClickState();
+				battleManager.getBattleFlag().setMonsterTurnEnd(true);
 			}
 		});
 	}

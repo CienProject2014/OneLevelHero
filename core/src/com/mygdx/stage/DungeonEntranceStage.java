@@ -95,7 +95,6 @@ public class DungeonEntranceStage extends BaseOneLevelStage {
 		restButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				timeManager.plusMinute(5);
 				GameObject gameObject = eventManager.getEventInfo().getGameObjectMap().get("rest");
 				eventManager.setCurrentGameObject(gameObject);
 				DungeonEntranceScreen.isClickPopup = true;
