@@ -21,11 +21,10 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.StaticAssets;
 import com.mygdx.assets.UiComponentAssets;
-import com.mygdx.enums.BattleCommandEnum;
+import com.mygdx.battle.Skill;
 import com.mygdx.listener.SimpleTouchListener;
 import com.mygdx.manager.AssetsManager;
 import com.mygdx.manager.BattleManager;
-import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.screen.BattleScreen;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
@@ -166,24 +165,27 @@ public class SkillStage extends BaseOverlapStage {
 						}
 					} else if (currentSelectedSkill.getSkillTargetType().equals("all_monster")) {
 						// 몬스터 즉시 공격일 경우 바로 스킬을 사용한다.
-						battleManager.useSkill(battleManager.getCurrentActor(), battleManager.getCurrentMonster(),
-								currentSelectedSkill.getSkillPath());
+						battleManager.doBattleCommand(battleManager.getCurrentActor(),
+								battleManager.getCurrentMonster(), null);
 						battleManager.setUsingSkill(false);
 					} else {
 						// 일단 타겟이 몬스터가 아니다.
 						if (currentSelectedSkill.getSkillTargetType().equals("self")) {
 							// 자기 자신에게 쓰는 경우
-							battleManager.useSkill(battleManager.getCurrentActor(), battleManager.getCurrentActor(),
-									currentSelectedSkill.getSkillPath());
+							battleManager.doBattleCommand(battleManager.getCurrentActor(),
+									battleManager.getCurrentActor(), null);
 							battleManager.setUsingSkill(false);
+							battleManager.setShowGrid(false);
 						} else if (currentSelectedSkill.getSkillTargetType().equals("one")) {
 							// 팀원 중 한 명을 선택해야 하는 경우에는 먼저 선택창이 뜬다
 							partyManager.setCurrentSelectedHero(null);
+							battleManager.setShowGrid(false);
 						} else {
 							// 팀원 전체일 경우
-							battleManager.useSkill(battleManager.getCurrentActor(), battleManager.getCurrentMonster(),
-									currentSelectedSkill.getSkillPath());
+							battleManager.doBattleCommand(battleManager.getCurrentActor(),
+									battleManager.getCurrentMonster(), null);
 							battleManager.setUsingSkill(false);
+							battleManager.setShowGrid(false);
 						}
 					}
 					setAllVoidUseButton(sceneConstants);
@@ -390,7 +392,6 @@ public class SkillStage extends BaseOverlapStage {
 							}
 							battleManager.setCurrentSelectedSkill(skillInfo.get(index));
 							battleManager.applyGauge(battleManager.getCurrentSelectedSkill().getCostGauge());
-							battleManager.setBattleCommand(BattleCommandEnum.USE_SKILL);
 							showSkillDescription(index);
 
 						} else {
@@ -420,7 +421,6 @@ public class SkillStage extends BaseOverlapStage {
 								}
 								battleManager.setCurrentSelectedSkill(skillInfo.get(index));
 								battleManager.applyGauge(battleManager.getCurrentSelectedSkill().getCostGauge());
-								battleManager.setBattleCommand(BattleCommandEnum.USE_SKILL);
 								showSkillDescription(index);
 							} else {
 								battleManager.setBattleCommandButtonClickState();
@@ -434,7 +434,6 @@ public class SkillStage extends BaseOverlapStage {
 							}
 						} else {
 							battleManager.setBattleCommandButtonClickState();
-							battleManager.setBattleCommand(BattleCommandEnum.NO_COMMAND);
 							setVoidDescription();
 							setAllVoidUseButton(sceneConstants);
 							for (int j = 0; j < SKILL_TAB_SIZE; j++) {

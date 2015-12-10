@@ -2,7 +2,7 @@ package com.mygdx.unitStrategy;
 
 import java.util.ArrayList;
 
-import com.mygdx.model.battle.Skill;
+import com.mygdx.battle.Skill;
 import com.mygdx.model.unit.Unit;
 
 public interface BattleStrategy {

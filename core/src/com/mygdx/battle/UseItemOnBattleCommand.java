@@ -1,4 +1,4 @@
-package com.mygdx.model.battle;
+package com.mygdx.battle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

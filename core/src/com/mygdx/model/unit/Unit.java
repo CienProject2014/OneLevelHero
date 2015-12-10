@@ -3,8 +3,8 @@ package com.mygdx.model.unit;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mygdx.model.battle.Buff;
-import com.mygdx.model.battle.Skill;
+import com.mygdx.battle.Buff;
+import com.mygdx.battle.Skill;
 import com.mygdx.unitStrategy.BattleStrategy;
 
 public abstract class Unit implements Comparable<Unit> {
@@ -13,7 +13,6 @@ public abstract class Unit implements Comparable<Unit> {
 	protected String name;
 	protected Status status;
 	protected Status realStatus;
-
 	protected List<Skill> skills;
 	protected int gauge;
 	protected int subvalue;
@@ -27,8 +26,14 @@ public abstract class Unit implements Comparable<Unit> {
 	protected float preIncDefense;
 	protected int preIncAggro;
 	protected int recentSufferedDamage;
-
 	protected List<Buff> buffList = new ArrayList<Buff>();
+
+	public void setBattleStrategy(BattleStrategy battleStrategy) {
+		this.battleStrategy = battleStrategy;
+	}
+	public void attack(Unit opponent, int[][] hitArea) {
+		battleStrategy.attack(this, opponent, hitArea);
+	}
 
 	public BattleStrategy getBattleStrategy() {
 		return battleStrategy;
@@ -40,10 +45,6 @@ public abstract class Unit implements Comparable<Unit> {
 
 	public void setRealAggro(int realAggro) {
 		this.realAggro = realAggro;
-	}
-
-	public void setBattleStrategy(BattleStrategy battleStrategy) {
-		this.battleStrategy = battleStrategy;
 	}
 
 	public List<Buff> getBuffList() {
@@ -127,20 +128,15 @@ public abstract class Unit implements Comparable<Unit> {
 			if (this.getSubvalue() == obj.getSubvalue()) {
 				if (this.getStatus().getSpeed() == obj.getStatus().getSpeed()) {
 					if (obj instanceof Monster) {
-						// 몬스터는 꼴지!
 						return 1;
 					} else if (obj.getFacePath().equals("yongsa")) {
-						// 용사는 일등!
 						return -1;
 					} else {
-						// 나머지는 첨 들어갈때 그대로 있어 그냥 어차피 리스트는 순서대로 들어가니 적용댈듯
 						return 0;
 					}
 				} else if (this.getStatus().getSpeed() > obj.getStatus().getSpeed()) {
-					// 스피드가 더 크다
 					return -1;
 				} else {
-					// 스피드가 더 작다
 					return 1;
 				}
 			} else if (this.getSubvalue() > obj.getSubvalue()) {
@@ -149,10 +145,8 @@ public abstract class Unit implements Comparable<Unit> {
 				return -1;
 			}
 		} else if (this.getGauge() > obj.getGauge()) {
-			// 행동 게이지가 더 클 때
 			return -1;
 		} else {
-			// 행동 게이지가 더 작을 때
 			return 1;
 		}
 	}
@@ -164,11 +158,6 @@ public abstract class Unit implements Comparable<Unit> {
 	public void setPreGauge(int preGauge) {
 		this.preGague = preGauge;
 	}
-
-	public void attack(Unit opponent, int[][] hitArea) {
-		battleStrategy.attack(this, opponent, hitArea);
-	}
-
 	public void useSkill(ArrayList<Unit> targetList, Skill skill) {
 		battleStrategy.useSkill(this, targetList, skill);
 	}

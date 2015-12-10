@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.SkillAssets;
+import com.mygdx.battle.Buff;
+import com.mygdx.battle.Skill;
 import com.mygdx.enums.BuffEffectEnum;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.PartyManager;
 import com.mygdx.manager.TimeManager;
-import com.mygdx.model.battle.Buff;
-import com.mygdx.model.battle.Skill;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Unit;
 

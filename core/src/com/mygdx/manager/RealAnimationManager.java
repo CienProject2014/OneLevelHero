@@ -31,7 +31,7 @@ public class RealAnimationManager extends AnimationManager {
 		animations = new ArrayList<OneAnimation>();
 	}
 
-	public void registerAnimation(Hero attackedHero, String animationName, int xx, int yy) {
+	public void registerAnimation(Hero attackedHero, String animationName) {
 		int playerOrder = partyManager.getPlayerOrder(attackedHero);
 		final int x;
 		final int y;
@@ -57,12 +57,11 @@ public class RealAnimationManager extends AnimationManager {
 		registerAnimation("attack_cutting", x, y);
 	}
 
-	public void registerAnimation(String name, int x, int y) {
+	public void registerAnimation(String animationName, int x, int y) {
 		if (partyManager.getCurrentSelectedHero() == null) {
 			// 팀원을 누르는 경우가 아닐때는 받아온 경로로 실행시킨다.
 			x = (int) (StaticAssets.windowWidth / 2);
 			y = (int) (StaticAssets.windowHeight / 2);
-			name = "attack_swing";
 			/*
 			 * int localx = (int) (StaticAssets.windowWidth * 0.5f) + (int)
 			 * (StaticAssets.windowHeight * (-0.24f + 0.12f * x)); int localy =
@@ -89,14 +88,12 @@ public class RealAnimationManager extends AnimationManager {
 					y = (int) (StaticAssets.windowHeight * 0.6f);
 					break;
 			}
-			name = "attack_cutting";
 		}
 
 		int height = (int) (StaticAssets.windowHeight * 0.5f);
 		int width = (int) (StaticAssets.windowHeight * 0.5f);
 		OneAnimation newAni = new OneAnimation();
-		newAni.registerAnimation(name, x, y, width, height);
-		battleManager.getBattleUi().getBattleStage().getCameraManager().shaking();
+		newAni.registerAnimation(animationName, x, y, width, height);
 		animations.add(newAni);
 	}
 
@@ -133,41 +130,6 @@ public class RealAnimationManager extends AnimationManager {
 			stateTime = 0;
 		}
 
-		/**
-		 * Animation 시퀀스에 재생하고자 하는 애니메이션을 등록
-		 * 
-		 * @param name
-		 *            재생하고자 하는 애니메이션의 TextureEnum
-		 * @param x
-		 *            재생하고자 하는 x위치
-		 * @param y
-		 *            재생하고자 하는 y위치
-		 * 
-		 *            public void registerAnimation(String name, int x, int y) {
-		 *            FrameSheet sheet = textureAssets.getAnimationSheet(name);
-		 * 
-		 *            TextureRegion[][] splitted = splitSheet(sheet);
-		 * 
-		 *            TextureRegion[] frames = matrixToArray(splitted, sheet);
-		 * 
-		 *            images.add(new OneImageBit(new Animation(0.025f, frames),
-		 *            x, y)); }
-		 */
-
-		/**
-		 * Animation 시퀀스에 재생하고자 하는 애니메이션을 등록
-		 * 
-		 * @param name
-		 *            재생하고자 하는 애니메이션의 TextureEnum
-		 * @param x
-		 *            재생하고자 하는 x위치
-		 * @param y
-		 *            재생하고자 하는 y위치
-		 * @param width
-		 *            애니메이션의 폭
-		 * @param height
-		 *            애니메이션의 높이
-		 */
 		public void registerAnimation(String name, int x, int y, int width, int height) {
 			textureAssets.loadTexture();
 			FrameSheet sheet = textureAssets.getAnimationSheet(name);
@@ -323,7 +285,6 @@ public class RealAnimationManager extends AnimationManager {
 
 	@Override
 	public void registerAnimation(Unit attackUnit, Unit defendUnit, String animationName) {
-		// TODO Auto-generated method stub
-
+		registerAnimation(animationName, 0, 0);
 	}
 }

@@ -12,7 +12,7 @@ public abstract class AnimationManager {
 
 	public abstract void registerAnimation(Unit attackUnit, Unit defendUnit, String animationName);
 
-	public abstract void registerAnimation(Hero attackedHero, String animationName, int x, int y);
+	public abstract void registerAnimation(Hero attackedHero, String animationName);
 
 	public abstract void registerAnimation(String name, int x, int y);
 

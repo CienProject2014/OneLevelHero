@@ -1,4 +1,4 @@
-package com.mygdx.model.battle;
+package com.mygdx.battle;
 
 public class BattleFlag {
 	private boolean isGetItem;

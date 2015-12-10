@@ -7,8 +7,9 @@ public enum BattleCommandEnum {
 	private String code;
 	private int costGauge;
 
-	BattleCommandEnum(String code, int costCauge) {
+	BattleCommandEnum(String code, int costGauge) {
 		this.code = code;
+		this.costGauge = costGauge;
 	}
 
 	@Override

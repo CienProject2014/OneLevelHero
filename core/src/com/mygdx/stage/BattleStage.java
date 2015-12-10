@@ -23,6 +23,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.AtlasUiAssets;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.battle.BattleFlag;
+import com.mygdx.battle.BattleInfo;
+import com.mygdx.battle.BattleUi;
 import com.mygdx.enums.BattleCommandEnum;
 import com.mygdx.enums.BattleMessages;
 import com.mygdx.enums.BattleSituationEnum;
@@ -36,9 +39,6 @@ import com.mygdx.manager.QuestManager;
 import com.mygdx.manager.SoundManager;
 import com.mygdx.manager.StorySectionManager;
 import com.mygdx.manager.TextureManager;
-import com.mygdx.model.battle.BattleFlag;
-import com.mygdx.model.battle.BattleInfo;
-import com.mygdx.model.battle.BattleUi;
 import com.mygdx.model.item.Weapon;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
@@ -75,7 +75,6 @@ public class BattleStage extends BaseOneLevelStage {
 	private Image currentAttackerBackground;
 	private Image turnTableBackground;
 	private TextureRegion textMenu;
-	private BattleInfo battleState;
 	private BattleFlag battleFlag;
 	private BattleInfo battleInfo;
 	private BattleUi battleUi;
@@ -100,15 +99,16 @@ public class BattleStage extends BaseOneLevelStage {
 
 		if (animationManager.isPlayable()) {
 			playBattleAction(delta);
-		} else {
-			checkTurnEnd();
+			if (animationManager.isEmptyAnimation()) {
+				checkTurnEnd();
+			}
 		}
 
 		if (isLineTouchOccured()) {
 			drawRedTouchLine();
 		}
 
-		if (battleManager.isSmallUpdate()) {
+		if (battleManager.isSmallTurnTableUpdate()) {
 			updateSmallImageTable();
 			battleManager.setSmallTurnTableUpdate(false);
 		}
@@ -148,8 +148,8 @@ public class BattleStage extends BaseOneLevelStage {
 		battleInfo = battleManager.getBattleInfo();
 		battleUi = battleManager.getBattleUi();
 		battleUi.setSkillRunPopup(new SkillRunPopup());
-		if (battleState.getCurrentBattleSituation().equals(BattleSituationEnum.ENCOUNTER)) {
-			showInEncounterCase(partyManager.getBattleMemberList(), battleState.getCurrentMonster());
+		if (battleInfo.getCurrentBattleSituation().equals(BattleSituationEnum.ENCOUNTER)) {
+			showInEncounterCase(partyManager.getBattleMemberList(), battleInfo.getCurrentMonster());
 		}
 
 		tableStack.add(makeTurnFrameTable()); // TurnTable 배경 테이블
@@ -158,7 +158,7 @@ public class BattleStage extends BaseOneLevelStage {
 																	// 옮기세요
 
 		tableStack.add(battleManager.getGridHitbox());
-		battleFlag.setShowGrid(false); // TODO 옮기세요
+		battleManager.setShowGrid(false); // TODO 옮기세요
 		battleUi.setBattleStage(this);
 
 		return this;
@@ -180,22 +180,13 @@ public class BattleStage extends BaseOneLevelStage {
 		animationDelay += delta;
 		if (animationDelay > MONSTER_ATTACK_DELAY) {
 			Hero randomHero = partyManager.pickRandomHero();
-			battleManager.applyGauge(BattleCommandEnum.GENERAL_ATTACK.getCostGauge());
+			battleManager.setBattleCommand(BattleCommandEnum.GENERAL_ATTACK);
 			battleManager.doBattleCommand(battleManager.getCurrentActor(), randomHero, null);
-			battleManager.handleTurnEnd();
+			battleManager.checkTurnEnd();
 			animationDelay = 0;
 		}
 	}
 
-	/***
-	 * playBattleAction 애니메이션을 재생한다.
-	 * 
-	 * @param delta
-	 * @param width
-	 *            애니메이션 그림의 폭
-	 * @param height
-	 *            애니메이션 그림의 높이
-	 */
 	private void playBattleAction(float delta) {
 		battleManager.playBattleAction(delta);
 	}
@@ -254,10 +245,13 @@ public class BattleStage extends BaseOneLevelStage {
 
 	private Table makeSmallTurnImageTable() {
 		PriorityQueue<Unit> orderedUnits = battleInfo.getBattleQueue();
+		Unit bigUnit = orderedUnits.peek();
 		for (Unit unit : orderedUnits) {
-			turnSmallImageMap.get(unit.getFacePath()).setWidth(80);
-			turnSmallImageMap.get(unit.getFacePath()).setHeight(80);
-			wailtListImageTable.add(turnSmallImageMap.get(unit.getFacePath())).padLeft(12).padBottom(0);
+			if (!unit.getFacePath().equals(bigUnit.getFacePath())) {
+				turnSmallImageMap.get(unit.getFacePath()).setWidth(80);
+				turnSmallImageMap.get(unit.getFacePath()).setHeight(80);
+				wailtListImageTable.add(turnSmallImageMap.get(unit.getFacePath())).padLeft(12).padBottom(0);
+			}
 		}
 		return wailtListImageTable;
 	}
@@ -326,16 +320,10 @@ public class BattleStage extends BaseOneLevelStage {
 		if (battleFlag.isShowGrid() && battleUi.getGridHitbox().isInsideHitbox(touched.x, touched.y)) {
 			if (!battleFlag.isUsingSkill()) {
 				soundManager.setSoundByPathAndPlay("slash");
-				battleManager.doBattleCommand(battleManager.getCurrentActor(), battleManager.getCurrentMonster(),
-						battleManager.getGridHitbox().getPreviousHitArea());
-			} else {
-
-				battleManager.useSkill(battleManager.getCurrentActor(), battleManager.getCurrentMonster(),
-						battleManager.getCurrentSelectedSkill().getSkillPath());
-				soundManager.setSoundByPathAndPlay("skill_" + battleManager.getCurrentSelectedSkill().getSkillPath());
-				battleFlag.setUsingSkill(false);
 			}
-			battleFlag.setShowGrid(false);
+			battleManager.doBattleCommand(battleManager.getCurrentActor(), battleManager.getCurrentMonster(),
+					battleManager.getGridHitbox().getPreviousHitArea());
+			battleManager.setShowGrid(false);
 		}
 		resetHitboxState();
 		return false;
@@ -346,7 +334,6 @@ public class BattleStage extends BaseOneLevelStage {
 		end = null;
 		battleUi.getGridHitbox().hideAllTiles();
 	}
-
 	private void makeTurnBackgroundImage() {
 		currentAttackerBackground = new Image(textureManager.getTexture("battleui_turntable_01"));
 		turnTableBackground = new Image(textureManager.getTexture("battleui_turntable_02"));

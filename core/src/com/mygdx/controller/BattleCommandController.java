@@ -3,16 +3,16 @@ package com.mygdx.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.battle.BattleCommand;
+import com.mygdx.battle.DefendOnBattleCommand;
+import com.mygdx.battle.GeneralAttackOnBattleCommand;
+import com.mygdx.battle.NoCommandOnBattleCommand;
+import com.mygdx.battle.RunAwayOnBattleCommand;
+import com.mygdx.battle.UseItemOnBattleCommand;
+import com.mygdx.battle.UseMagicOnBattleCommand;
+import com.mygdx.battle.UseSkillOnBattleCommand;
+import com.mygdx.battle.WaitOnBattleCommand;
 import com.mygdx.enums.BattleCommandEnum;
-import com.mygdx.model.battle.BattleCommand;
-import com.mygdx.model.battle.DefendOnBattleCommand;
-import com.mygdx.model.battle.GeneralAttackOnBattleCommand;
-import com.mygdx.model.battle.NoCommandOnBattleCommand;
-import com.mygdx.model.battle.RunAwayOnBattleCommand;
-import com.mygdx.model.battle.UseItemOnBattleCommand;
-import com.mygdx.model.battle.UseMagicOnBattleCommand;
-import com.mygdx.model.battle.UseSkillOnBattleCommand;
-import com.mygdx.model.battle.WaitOnBattleCommand;
 import com.mygdx.model.unit.Unit;
 
 public class BattleCommandController {

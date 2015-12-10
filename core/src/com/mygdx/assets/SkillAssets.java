@@ -2,9 +2,9 @@ package com.mygdx.assets;
 
 import java.util.Map;
 
+import com.mygdx.battle.Buff;
+import com.mygdx.battle.Skill;
 import com.mygdx.enums.JsonEnum;
-import com.mygdx.model.battle.Buff;
-import com.mygdx.model.battle.Skill;
 import com.mygdx.util.JsonParser;
 
 public class SkillAssets implements JsonAssetsInitializable {

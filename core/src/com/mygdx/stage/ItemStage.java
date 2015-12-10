@@ -98,7 +98,7 @@ public class ItemStage extends BaseOverlapStage {
 				setCompositeItemVisibilty(useButton, PRESSED_VISIBILTY);
 				storySectionManager.triggerNextSectionEvent(EventTypeEnum.BATTLE_COMMAND, "use_item");
 				battleManager.doBattleCommand(battleManager.getCurrentActor(), null, null);
-				battleManager.handleTurnEnd();
+				battleManager.checkTurnEnd();
 				BattleScreen.showItemStage = false;
 			}
 		});

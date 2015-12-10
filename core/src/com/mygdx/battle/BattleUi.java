@@ -1,4 +1,4 @@
-package com.mygdx.model.battle;
+package com.mygdx.battle;
 
 import java.util.ArrayList;
 
@@ -14,6 +14,7 @@ public class BattleUi {
 	private Table battleCommandButtonTable;
 	private BattleStage battleStage;
 	private SkillRunPopup skillRunPopup;
+	private Table gridTable;
 
 	public BattleUi() {
 		gridHitbox = new GridHitbox();
@@ -57,5 +58,14 @@ public class BattleUi {
 
 	public void setSkillRunPopup(SkillRunPopup skillRunPopup) {
 		this.skillRunPopup = skillRunPopup;
+	}
+
+	public Table getGridTable() {
+		return gridTable;
+	}
+
+	public void setGridTable(Table gridTable) {
+		this.gridTable = gridTable;
+
 	}
 }

@@ -14,13 +14,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.battle.BattleInfo;
+import com.mygdx.battle.Buff;
 import com.mygdx.enums.BattleSituationEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.factory.ScreenFactory;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.manager.TextureManager;
-import com.mygdx.model.battle.BattleInfo;
-import com.mygdx.model.battle.Buff;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.StatusBar;
 import com.mygdx.model.unit.Unit;
@@ -152,20 +152,16 @@ public class CharacterUiStage extends BaseOneLevelStage {
 		Table table = new Table();
 
 		for (int i = 0; i < battleMemberList.size(); i++) {
-
 			Table heroTable = makeHeroTable(battleMemberList.get(i), i);
 			table.add(heroTable).padBottom(uiConstantsMap.get("heroTablePadBottom"));
 			table.row();
-
 		}
 		return table;
 	}
 
 	private Table makeHighlightTable() {
 		Table table = new Table();
-
 		for (int i = 0; i < partyManager.getBattleMemberList().size(); i++) {
-
 			highlightImage[i] = new Image(textureManager.getTexture("battleui_character_turn"));
 			table.add(highlightImage[i]).padBottom(uiConstantsMap.get("heroTablePadBottom"))
 					.padLeft(uiConstantsMap.get("heroTablePadLeft") - 1750)

@@ -250,7 +250,7 @@ public class MockAnimationManager extends AnimationManager {
 	}
 
 	@Override
-	public void registerAnimation(Hero attackedHero, String animationName, int x, int y) {
+	public void registerAnimation(Hero attackedHero, String animationName) {
 		// TODO Auto-generated method stub
 
 	}

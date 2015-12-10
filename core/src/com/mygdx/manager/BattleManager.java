@@ -17,6 +17,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.SkillAssets;
 import com.mygdx.assets.StaticAssets;
+import com.mygdx.battle.BattleFlag;
+import com.mygdx.battle.BattleInfo;
+import com.mygdx.battle.BattleUi;
+import com.mygdx.battle.Buff;
+import com.mygdx.battle.Skill;
 import com.mygdx.controller.BattleCommandController;
 import com.mygdx.enums.BattleCommandEnum;
 import com.mygdx.enums.BattleMessages;
@@ -27,11 +32,6 @@ import com.mygdx.enums.MonsterEnum;
 import com.mygdx.enums.ScreenEnum;
 import com.mygdx.enums.SkillTargetUnitEnum;
 import com.mygdx.factory.ScreenFactory;
-import com.mygdx.model.battle.BattleFlag;
-import com.mygdx.model.battle.BattleInfo;
-import com.mygdx.model.battle.BattleUi;
-import com.mygdx.model.battle.Buff;
-import com.mygdx.model.battle.Skill;
 import com.mygdx.model.item.Item;
 import com.mygdx.model.unit.Hero;
 import com.mygdx.model.unit.Monster;
@@ -179,7 +179,7 @@ public class BattleManager {
 			movingManager.goCurrentLocatePosition();
 			Gdx.app.log(TAG, "도망!");
 		} else {
-			handleTurnEnd();
+			checkTurnEnd();
 			Gdx.app.log(TAG, "도망 실패!");
 		}
 	}
@@ -197,7 +197,6 @@ public class BattleManager {
 		checkCastingValue(attackUnit);
 		attackUnit.useSkill(targetList, skill);
 		animationManager.registerAnimation(attackUnit, targetUnit, skillName);
-		isBattleEnd();
 	}
 
 	public void checkCastingValue(Unit attackUnit) {
@@ -221,7 +220,7 @@ public class BattleManager {
 		}
 	}
 
-	private ArrayList<Unit> getSkillTargetUnitList(String targetType, Unit skillUser, Unit selectedUnit) {
+	public ArrayList<Unit> getSkillTargetUnitList(String targetType, Unit skillUser, Unit selectedUnit) {
 		ArrayList<Unit> list = new ArrayList<Unit>();
 		SkillTargetUnitEnum skillTargetUnitEnum = SkillTargetUnitEnum.findSkillTargetEnum(targetType);
 		switch (skillTargetUnitEnum) {
@@ -366,9 +365,9 @@ public class BattleManager {
 
 	public void setShowGrid(boolean showGrid) {
 		if (showGrid) {
-			battleUi.getGridHitbox().showGrid();
+			battleUi.getGridHitbox().setVisible(true);
 		} else {
-			battleUi.getGridHitbox().hideGrid();
+			battleUi.getGridHitbox().setVisible(false);
 		}
 
 		battleFlag.setShowGrid(showGrid);
@@ -382,7 +381,7 @@ public class BattleManager {
 		battleInfo.setBattleQueue(battleQueue);
 	}
 
-	public boolean isSmallUpdate() {
+	public boolean isSmallTurnTableUpdate() {
 		return battleFlag.isSmallUpdate();
 	}
 
@@ -686,7 +685,6 @@ public class BattleManager {
 			handleTurnEnd();
 			setCurrentSelectedSkill(null);
 		}
-
 	}
 
 	private void processWhenBattleEnd() {

@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.badlogic.gdx.Gdx;
 import com.mygdx.assets.SkillAssets;
+import com.mygdx.battle.Buff;
 import com.mygdx.currentState.TimeInfo;
-import com.mygdx.model.battle.Buff;
 import com.mygdx.model.unit.Hero;
 
 public class TimeManager {

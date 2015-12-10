@@ -1,9 +1,7 @@
-package com.mygdx.model.battle;
+package com.mygdx.battle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.badlogic.gdx.Gdx;
-import com.mygdx.assets.StaticAssets;
 import com.mygdx.manager.AnimationManager;
 import com.mygdx.manager.BattleManager;
 import com.mygdx.model.unit.Hero;
@@ -18,21 +16,19 @@ public class GeneralAttackOnBattleCommand implements BattleCommand {
 	@Override
 	public void doCommand(Unit attackUnit, Unit defendUnit, int[][] hitArea) {
 		attackUnit.attack(defendUnit, hitArea);
+		battleManager.getBattleUi().getBattleStage().getCameraManager().shaking();
 
 		if (attackUnit instanceof Hero) {
 			int centerX = getCenterToHitAreaX(hitArea);
 			int centerY = getCenterToHitAreaY(hitArea);
 			animationManager.registerAnimation("empty hit", centerX, 4 - centerY);
 		} else {
-			animationManager.registerAnimation((Hero) defendUnit, "empty hit",
-					(int) (StaticAssets.windowHeight * 0.3f), (int) (StaticAssets.windowHeight * 0.3f));
+			animationManager.registerAnimation((Hero) defendUnit, "empty hit");
 		}
-		Gdx.app.log("GeneralAttackCommand", attackUnit.getName() + "이(가) " + defendUnit.getName() + "을(를) 공격하였다! "
-				+ "데미지 " + defendUnit.getRecentSufferedDamage() + "를 입혔다!");
-		battleManager.setBattleDescriptionLabel(attackUnit.getName() + "이(가) " + defendUnit.getName() + "을(를) 공격하였다! "
-				+ "데미지 " + defendUnit.getRecentSufferedDamage() + "를 입혔다!");
-		battleManager.isBattleEnd();
 
+		if (animationManager.isEmptyAnimation()) {
+			battleManager.checkTurnEnd();
+		}
 	}
 
 	private int getCenterToHitAreaY(int[][] hit) {

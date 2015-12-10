@@ -143,6 +143,8 @@ public class BattleCommandStage extends BaseOneLevelStage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				soundManager.playClickSound();
+
+				battleManager.setBattleCommand(BattleCommandEnum.USE_SKILL);
 				setDarkButton(skillButton);
 				battleManager.setUsingSkill(true);
 				BattleScreen.showSkillStage = true;
@@ -164,7 +166,7 @@ public class BattleCommandStage extends BaseOneLevelStage {
 				soundManager.playClickSound();
 				battleManager.setBattleCommand(BattleCommandEnum.DEFEND);
 				setDarkButton(defenseButton);
-				battleManager.handleTurnEnd();
+				battleManager.checkTurnEnd();
 			}
 		});
 
@@ -175,7 +177,7 @@ public class BattleCommandStage extends BaseOneLevelStage {
 
 				setDarkButton(waitButton);
 				battleCommandController.doBattleCommand(battleManager.getCurrentActor(), null, null);
-				battleManager.handleTurnEnd();
+				battleManager.checkTurnEnd();
 			}
 		});
 

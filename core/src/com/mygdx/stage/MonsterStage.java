@@ -14,6 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.assets.ConstantsAssets;
 import com.mygdx.assets.UiComponentAssets;
+import com.mygdx.battle.BattleInfo;
+import com.mygdx.battle.Buff;
 import com.mygdx.enums.BattleSituationEnum;
 import com.mygdx.enums.EventTypeEnum;
 import com.mygdx.enums.PositionEnum.LocatePosition;
@@ -23,8 +25,6 @@ import com.mygdx.manager.EventManager;
 import com.mygdx.manager.FieldManager;
 import com.mygdx.manager.PositionManager;
 import com.mygdx.manager.TextureManager;
-import com.mygdx.model.battle.BattleInfo;
-import com.mygdx.model.battle.Buff;
 import com.mygdx.model.unit.Monster;
 import com.mygdx.model.unit.StatusBar;
 
