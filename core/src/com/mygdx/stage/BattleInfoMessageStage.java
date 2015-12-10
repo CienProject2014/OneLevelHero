@@ -66,6 +66,7 @@ public class BattleInfoMessageStage extends BaseOneLevelStage {
 			}
 		});
 	}
+
 	public Stage makeStage() {
 		super.makeStage();
 		TextureRegionDrawable textMenu = new TextureRegionDrawable(new TextureRegion(

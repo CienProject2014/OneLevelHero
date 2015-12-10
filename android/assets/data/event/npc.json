@@ -6853,7 +6853,7 @@
       "2": {
         "eventTitle": "배게 부족",
         "eventState": "opened",
-        "eventType": "select_chat",
+        "eventType": "chat",
         "eventParameter": {
           "eventScenes": [
             {

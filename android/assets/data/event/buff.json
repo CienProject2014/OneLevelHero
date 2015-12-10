@@ -409,7 +409,8 @@
 	   ]
     },
     "multi":{
-        "name" : "멀티"
+        "name" : "멀티",
+        "buffPath" : "multi"
     }
     
 }
