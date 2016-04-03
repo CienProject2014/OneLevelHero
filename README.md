@@ -8,8 +8,10 @@ libGDX-based Role Playing Game
 	* `sdk.dir=안드로이드sdk경로`  
 * 3) Gradle로 프로젝트 불러오기(Build Model클릭)
 * 4) 추가 환경세팅  
-  * http://cien.woobi.co.kr/dokuwiki/doku.php?id=%EC%A0%9C%EC%9E%91%ED%99%9C%EB%8F%99:%EC%B2%98%EC%9D%8C%EC%8B%9C%EC%9E%91%ED%95%A0%EB%95%8C
+  * http://wiki.cien.or.kr/doku.php?id=%EC%A0%9C%EC%9E%91%ED%99%9C%EB%8F%99:%EC%B2%98%EC%9D%8C%EC%8B%9C%EC%9E%91%ED%95%A0%EB%95%8C
 
-![OneLevelHero](http://cien.woobi.co.kr/dokuwiki/lib/exe/fetch.php?media=onelevelhero.jpg).
+![OneLevelHero](http://wiki.or.kr/lib/exe/fetch.php?media=onelevelhero.jpg).
 
 
+#Play Demo Video
+[![Screenshot](http://img.youtube.com/vi/fC2No9jUI5E/0.jpg)](https://www.youtube.com/watch?v=fC2No9jUI5E)
